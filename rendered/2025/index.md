@@ -10,7 +10,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | clcw.md | worksheet | 33 |
 | clcw26.md | worksheet | 19 |
 | dcprov.md | worksheet | 6 |
-| dependent.md | worksheet | 98 |
+| dependent.md | worksheet | 104 |
 | div.md | form | 22 |
 | eic.md | worksheet | 88 |
 | f1040.md | form | 65 |
@@ -32,7 +32,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | ftc.md | form | 12 |
 | g28.md | form | 9 |
 | gift.md | form | 5 |
-| household.md | form | 39 |
+| household.md | form | 41 |
 | interest.md | form | 2 |
 | ira.md | worksheet | 57 |
 | ltc.md | form | 4 |

@@ -194,7 +194,7 @@ def gen_case(rng, i):
         inputs.update({f"{key}.relationship": "child", f"{key}.age": age, f"{key}.younger": True, f"{key}.student": age >= 17, f"{key}.disabled": False,
                        f"{key}.months": 12, f"{key}.self_support": False, f"{key}.joint_return": False, f"{key}.citizen": True,
                        f"{key}.canada_mexico": False, f"{key}.married": False, f"{key}.tin": True, f"{key}.work_ssn": True,
-                       f"{key}.gross_income": 0, f"{key}.supported": True, f"{key}.kidnapped": False, f"{key}.other_claimant": False,
+                       f"{key}.gross_income": 0, f"{key}.supported": True, f"{key}.kidnapped": False, f"{key}.spouse_relative": False, f"{key}.qr_all_year": True, f"{key}.absence_no_return": False, f"{key}.other_claimant": False,
                        f"{key}.divorced_rule": False, f"{key}.multiple_support": False, f"{key}.parent_home_paid": False,
                        f"{key}.us_half": True, f"{key}.eic_ssn": True})
     hoh = n_children > 0 and rng.random() < 0.5

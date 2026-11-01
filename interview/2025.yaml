@@ -34,6 +34,9 @@ interview:
   - dependent.married
   - dependent.tin
   - dependent.lawful
+  - dependent.spouse_relative
+  - dependent.qr_all_year
+  - dependent.absence_no_return
   - person.x_other
   - dependent.work_ssn
   - dependent.gross_income

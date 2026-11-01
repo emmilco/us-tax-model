@@ -4,17 +4,17 @@ The rendered English of every printed line of `Household facts for dependents an
 
 | field | value |
 | --- | --- |
-| date | 2026-10-30 |
+| date | 2026-10-31 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 48d1697b32ed44c87f616892fa7274b2288930ee3d158a0c0715fc8299d14339 |
+| prompt sha256 | fbd4b937cad4b2ded7217bd601c23cd838c2c54ca2106b75558244e9e2b042f4 |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
-| subject sha256 | 6c07c8cf3e4ccbb17ac1cfbccb02fef0bdc91feb9169993b37332b137c0f686d |
-| lines judged | 39 |
-| match / mismatch / unclear / missing | 38 / 0 / 1 / 0 |
+| subject sha256 | 0f13b65328288794688ba841bdb9a9f05903cfcd2c86461b6b70e636123ccaee |
+| lines judged | 41 |
+| match / mismatch / unclear / missing | 41 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -24,9 +24,9 @@ The rendered English of every printed line of `Household facts for dependents an
 | f1040 | 2025; created 2025-09-05 | 1, 2 | whole document | ac32f00aed489e0722d0b409c0eb12915801d66f3a2fab05bc8391af61426383 | - | 72926cc2b256a68592e6cf0f2aa384ef8371eec968a0c8c62e050edf5bfea76a |
 | i1040gi | 2025; printed date 2026-02-25 | 14, 15, 17, 18, 19, 23, 39, 40, 41, 43, 44, 66 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 14, 15, 17, 18, 19, 23, 39, 40, 41, 43, 44, 66 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
 | i8889 | 2025 | 2, 4, 5, 6, 7 | cited pages | bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c | 2, 4, 5, 7 | 533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7 |
+| p501 | 2025 returns; PDF created 2026-02-04 | 9, 11 | cited pages | 6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b | 11 | 2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671 |
 | f1040s8812 | 2025; created 2025-07-30 | 1, 2 | whole document | 9b38295071c42fe489ec8f93e117b31eda11355b5a95e3fe388eeee69601c8c9 | - | 3525d47f51cb713591081610a862cae77eff08a8aa7e2064a96b15cee4fd5cb9 |
 | f8889 | 2025; created 2025-03-28 | 1 | whole document | f1ae3589453f3dd1d5277a79409bd7d0bf4772715fa8bd11d58126e6f387c0cf | - | 85ba6183eb2c35cf7b6d63eb6fd515be7234f5f938da39d7d000a6a7f2359d4e |
-| p501 | 2025 returns; PDF created 2026-02-04 | 9 | pages named by another document's citation | 6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b | - | 2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671 |
 | i1040s8812 | 2025; printed date 2026-01-23 | 2 | pages named by another document's citation | fd50a5266cc20aa5a31de0535658793f75c7abbb12fd83b65dc5b21c6ede2765 | 2 | e6ba91f54df679c9c19c23169c369f14bff012ba2fe110c3973bde59676c1d45 |
 
 ## Lines
@@ -34,201 +34,207 @@ The rendered English of every printed line of `Household facts for dependents an
 ### persons — Number of people on the return (you, and your spouse if filing jointly)
 Status: **MATCH**
 
-Model: Counts one entry each for you and, on a joint return, your spouse, which fits the form's taxpayer and spouse structure. It is a plain count of the people on the return.
+Model: Counts you, and your spouse on a joint return, as the people on the return. This matches the 'you, and your spouse if filing jointly' wording used throughout the instructions.
 
 ### taxpayers — Number of entries for you
 Status: **MATCH**
 
-Model: Counts the entries identified as yours, as the label says.
+Model: Counts the entries marked as yours. This is a structural count that the text does not contradict.
 
 ### spouses — Number of entries for your spouse
 Status: **MATCH**
 
-Model: Counts the entries identified as your spouse's, as the label says.
+Model: Counts the entries marked as your spouse's. This is a structural count that the text does not contradict.
 
 ### roster_ok — One entry for you, and one for your spouse exactly when filing jointly
 Status: **MATCH**
 
-Model: Requires one taxpayer entry, plus one spouse entry exactly when married filing jointly, consistent with the Form 1040 filing status and spouse lines. The under-16 refusal is a named narrowing, and it correctly says the rule is not in the instructions; the only under-16 text given is the Self-Select PIN caution for first-time filers.
+Model: Requires one entry for you, plus one spouse entry exactly when the status is 'Married filing jointly'. This fits the Form 1040 filing statuses. The under-16 refusal is openly recorded as an owner-decided entry check and names what it excludes.
 
 ### roster_bad — The people entered do not match the filing status
 Status: **MATCH**
 
-Model: This is the direct negation of roster_ok, as labeled.
+Model: This is the negation of roster_ok.
 
 ### hsa_people — Number of people on the return with a Form 8889
 Status: **MATCH**
 
-Model: Counts people with at least one Form 8889, consistent with 'complete a separate Form 8889 for each of you.'
+Model: Counts the people on the return who have a Form 8889. The i8889 text says to 'complete a separate Form 8889 for each spouse'.
 
 ### hsa_both — You and your spouse each have a Form 8889
 Status: **MATCH**
 
-Model: A count of two people with Forms 8889 means you and your spouse each have one, as labeled.
+Model: A count of 2 means both spouses have a Form 8889. That is the case where 'both you and your spouse have HSAs'.
 
 ### hsa_split_count — Number of Forms 8889 using the spouse rule of line 6
 Status: **MATCH**
 
-Model: Counts Forms 8889 flagged for spouses with separate HSAs and family coverage at any time during 2025, the condition stated in the line 6 instructions.
+Model: Counts the Forms 8889 that use the line 6 rule for 'Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025'.
 
 ### hsa_agreed_count — Number of Forms 8889 using an agreed allocation
 Status: **MATCH**
 
-Model: Counts flagged forms using an agreed allocation, which matches 'unless you both agree on a different allocation.'
+Model: Counts the Forms 8889 that use the line 6 option 'unless you both agree on a different allocation'.
 
 ### hsa_step1_sum — Both spouses Step 1 limits added together
 Status: **MATCH**
 
-Model: Adds each spouse's Step 1 limit, refigured from the worksheet amounts for family-coverage months less line 4, as the line 6 instructions describe. The glossary sets f8889 line 4 to $0 with no refusal shown, although the form says to enter Archer MSA contributions from Form 8853; that issue belongs to f8889 line 4 but flows into this sum.
+Model: Adds each spouse's Step 1 limit. Step 1 is refigured from 'the total of the worksheet amounts only for the months you were treated as having family coverage', and the line 6 instructions support this.
 
 ### hsa_share_sum — Both spouses parts of the Step 1 limit added together
 Status: **MATCH**
 
-Model: Adds each spouse's part of the Step 1 limit, using an equal split or an agreed allocation as in Steps 2 and 3 of the line 6 instructions. It inherits the same f8889 line 4 $0 issue when the split is equal.
+Model: Adds each spouse's share under Steps 2–3. The line 6 instructions divide the Step 1 limit between the spouses.
 
 ### work_ssn_count — Number of people on the return with an SSN valid for employment
 Status: **MATCH**
 
-Model: Counts people with an SSN 'valid for employment and issued before the due date of your return (including extensions).' The label's omission of extensions is only wording.
+Model: Counts the people who have an SSN 'valid for employment and issued before the due date of your return'.
 
 ### any_work_ssn — You, or your spouse if filing jointly, have an SSN valid for employment
 Status: **MATCH**
 
-Model: Matches 'only one spouse is required to have a valid SSN to be eligible for the CTC and ACTC.'
+Model: Is true when at least one person has a valid SSN. This matches 'only one spouse is required to have a valid SSN to be eligible for the CTC and ACTC'.
 
 ### eic_ssn_count — Number of people on the return with an SSN valid for the EIC
 Status: **MATCH**
 
-Model: Counts people with an SSN valid for the EIC and issued on or before the due date, as in EIC Step 1, question 2.
+Model: Counts the people who have an SSN 'issued on or before the due date ... that allows you to work and is valid for EIC purposes'.
 
 ### all_eic_ssn — You, and your spouse if filing jointly, have SSNs valid for the EIC
 Status: **MATCH**
 
-Model: Requiring every person on the return to qualify matches 'Do you, and your spouse if filing a joint return, have a social security number' valid for EIC purposes.
+Model: Requires everyone on the return to have such an SSN. This matches EIC Step 1 question 2: 'Do you, and your spouse if filing a joint return, have a social security number...'.
 
 ### under16_count — Number of people on the return under age 16 at the end of 2025
 Status: **MATCH**
 
-Model: Counts people on the return who were under age 16 at the end of 2025, as labeled. The count supports the program's own entry check.
+Model: Counts the people on the return who were under 16 at the end of 2025. It supports the owner-decided entry check.
 
 ### filer_under16 — You, or your spouse if filing jointly, were under age 16 at the end of 2025
 Status: **MATCH**
 
-Model: True when at least one person on the return was under 16, as labeled. It serves as the named gate for the roster_ok refusal.
+Model: Is true when any person on the return was under 16. This is consistent with its label.
 
 ### tin_count — Number of people on the return with an SSN or ITIN, or who have applied for an ITIN
 Status: **MATCH**
 
-Model: Counts people with an SSN or ITIN issued on or before the due date or an ITIN application, matching Step 5: 'Answer “Yes” if you are applying for an ITIN on or before the return due date.'
+Model: Counts the people who have an SSN or ITIN, or who applied for an ITIN. This follows Step 5 question 1: '(Answer “Yes” if you are applying for an ITIN on or before the return due date ...)'.
 
 ### all_tin — You, and your spouse if filing jointly, have an SSN or ITIN, or have applied for an ITIN
 Status: **MATCH**
 
-Model: Requiring all people on the return to qualify matches 'you, and your spouse if filing jointly, must have either an SSN or ITIN' for the credit for other dependents.
+Model: Requires you, and your spouse if filing jointly, to have an SSN or ITIN. This matches 'you, and your spouse if filing jointly, must have either an SSN or ITIN' for the credit for other dependents.
 
 ### id_count — Number of people on the return with an SSN valid for employment or an SSN or ITIN
 Status: **MATCH**
 
-Model: Counts people holding either an SSN valid for employment or an SSN or ITIN, the two identifications named in the child tax credit rule. It is correct as a supporting count for ctc_ssn.
+Model: Counts the people who have either an employment-valid SSN or an issued SSN or ITIN. It does not count an applied-for ITIN, which is consistent with the CTC rule that the other spouse's number 'must have been issued on or before the due date'.
 
 ### ctc_ssn — Child tax credit identification: you, or your spouse if filing jointly, have an SSN valid
 Status: **MATCH**
 
-Model: Requires one valid-for-employment SSN and identification for everyone on the return. This matches 'only one spouse is required to have a valid SSN' and 'The other spouse must have either an SSN or ITIN.'
+Model: Requires at least one valid SSN, with every other person holding an SSN or ITIN. This matches 'only one spouse is required to have a valid SSN ... The other spouse must have either an SSN or ITIN'.
 
 ### taxpayer_work_ssn_count — Your entry, if the answer is yes
 Status: **MATCH**
 
-Model: Counts your own entry when it has an SSN valid for employment, which is the condition the label describes.
+Model: Counts your own entry when you have an employment-valid SSN. This is a structural count.
 
 ### taxpayer_work_ssn — Do you have an SSN valid for employment issued before the due date of your return?
 Status: **MATCH**
 
-Model: True when your own entry has an SSN valid for employment and issued before the due date, matching the SSN definition in the instructions.
+Model: Is true when your own entry has an SSN 'valid for employment and issued before the due date of your return'.
 
 ### home_cost — Did you pay over half the cost of keeping up your home for 2025?
 Status: **MATCH**
 
-Model: The included and excluded costs match Pub. 501. Its 'person who lives in the home' wording is slightly broader than Pub. 501's 'child’s or qualifying person’s name' but keeps the same meaning that such funds are not paid by you.
+Model: The included and excluded costs follow Pub. 501's 'Costs you include' and 'Costs you don’t include'. Funds held in a household member's name count as paid by that person, which matches 'considered paid by the child, not you'.
 
 ### unmarried — Were you unmarried, or considered unmarried under the head of household rules, at the end
 Status: **MATCH**
 
-Model: The input asks the condition stated in the instructions: 'only if you are unmarried (or considered unmarried).'
+Model: This is a direct input. It matches 'Check the “Head of household” box only if you are unmarried (or considered unmarried)'.
 
 ### married — Were you married at the end of 2025?
 Status: **MATCH**
 
-Model: The input asks about marital status at the end of 2025 and includes married people considered unmarried, a category the head of household instructions recognize.
+Model: This is a direct input on marital status at year end. The instructions use it for the Form 8889 age-55 rules ('unmarried' versus 'married').
 
 ### community_property — Did you live in a community property state at any time in 2025?
 Status: **MATCH**
 
-Model: The nine states match the list under Community Property States in the instructions.
+Model: The list of states matches 'Community property states include Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, and Wisconsin'.
 
 ### hoh_community_property — Married, filing as head of household, and living in a community property state
 Status: **MATCH**
 
-Model: Combines head of household status, marriage and community property residence, as labeled. It serves as the gate for the named Form 8958 and Pub. 555 refusal, which the instructions support.
+Model: This is a refusal gate for a married head of household in a community property state. The text says such filers 'must usually follow state law to determine what is community income ... see Form 8958 and Pub. 555'.
 
 ### credit_disallowed — Was your EIC for a year after 1996, or your child tax credit, additional child tax credit
 Status: **MATCH**
 
-Model: The years, credits, math or clerical error carve-out, and 2- and 10-year periods match the Form 8862 and improper-claim text. 'Disallowed' versus 'denied' for the post-2015 credits is only wording.
+Model: This matches the Form 8862 triggers: an EIC 'for a year after 1996' and the CTC, ACTC or ODC 'for a year after 2015', reduced or disallowed other than for math or clerical error. It also covers the 2- and 10-year bans.
 
 ### test1_persons — Number of parents who qualify you under Test 1
 Status: **MATCH**
 
-Model: Counts parents who qualify you under Test 1, which covers a parent you can claim whose main home you paid over half the cost of keeping up; 'Your parent didn't have to live with you.' The per-dependent helper is not defined in the glossary, so only its label and the count could be checked.
+Model: Counts the parents who qualify you under Test 1. The text says 'Your parent didn’t have to live with you'.
 
 ### test2_persons — Number of persons who qualify you under Test 2
 Status: **MATCH**
 
-Model: Counts persons who lived with you for more than half the year, or more than half the part of the year they were alive, matching Test 2 and Pub. 501. The per-dependent helper is not defined in the glossary, so only its label and the count could be checked.
+Model: Counts the persons who lived with you 'for more than half of the year'. The home-cost part of Test 2 is tested separately in test2_met.
+
+### test2_absence_persons — Number of persons who would qualify you under Test 2 only by counting an absence head of h
+Status: **MATCH**
+
+Model: Flags persons who would qualify only through an absence that Pub. 501 does not count. Pub. 501 requires that 'It must be reasonable to assume the absent person will return' and that 'You must continue to keep up the home'.
+
+### hoh_absence — Head of household turns on a person who lived with you more than half the year only by cou
+Status: **MATCH**
+
+Model: Gates the refusal for the case where head of household status turns only on a disallowed absence. This is consistent with the Pub. 501 'Temporary absences' rule.
 
 ### test1_met — Test 1 met
 Status: **MATCH**
 
-Model: At least one qualifying parent under Test 1 means the test is met. The home-cost condition is carried in the per-parent helper, which is appropriate because the home may be the parent's own.
+Model: Test 1 is met when there is a qualifying parent. This matches 'You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent'.
 
 ### test2_met — Test 2 met, having paid over half the cost of keeping up your own home
 Status: **MATCH**
 
-Model: Requires a Test 2 person and over half the cost of your home, matching 'You paid over half the cost of keeping up a home in which you lived and in which one of the following also lived.'
+Model: Requires both paying over half the home cost and having a qualifying person. This matches 'You paid over half the cost of keeping up a home in which you lived and in which one of the following also lived'.
 
 ### hoh_eligible — Unmarried or considered unmarried, and Test 1 or Test 2 applies
 Status: **MATCH**
 
-Model: Matches 'only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies.' The refusal names the excluded community property case and Form 8958 and Pub. 555, which the instructions cite.
+Model: Matches 'only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies'. The refusals name the absence and community property cases that are excluded.
 
 ### hoh_fails — Head of household checked without meeting its tests
 Status: **MATCH**
 
-Model: True when the head of household box is selected and the eligibility test fails, as labeled.
+Model: Flags a return where the head of household box is checked but hoh_eligible is false. This is consistent with the instructions.
 
 ### qss_eligible — Do all five qualifying surviving spouse tests apply to you?
 Status: **MATCH**
 
-Model: The five tests track the Qualifying Surviving Spouse instructions, including the 2023 or 2024 death, the $5,200 and joint-return exceptions, and the time-lived and adoption rules. The home-cost wording also agrees with Pub. 501 in substance.
+Model: The input restates the five tests in the instructions and Pub. 501. This includes 'If your spouse died in 2025, you can't file as qualifying surviving spouse' and the rules for absences, births, deaths and adoptions.
 
 ### qss_fails — Qualifying surviving spouse checked without meeting its tests
 Status: **MATCH**
 
-Model: True when the qualifying surviving spouse box is selected and the five-test answer is no, as labeled.
+Model: Flags a return where the qualifying surviving spouse box is checked but not all five tests apply.
 
 ### rdp — Were you a registered domestic partner in Nevada, Washington or California at any time in
 Status: **MATCH**
 
-Model: The input asks about the status named in the instructions: 'A registered domestic partner in Nevada, Washington, or California.' The text gives no timing rule that contradicts 'at any time in 2025.'
+Model: This is a direct input. It matches 'Nevada, Washington, and California domestic partners'.
 
 ### rdp_community_property — Not filing jointly, living in a community property state, and a registered domestic partne
-Status: **UNCLEAR**
+Status: **MATCH**
 
-Restated: f1040 line Filing Status ≠ 'mfj' and helper "Did you live in a community property state at any time in 2025?" = true and helper "Were you a registered domestic partner in Nevada, Washington or California at any time in 2025?" = true
-
-Model: The text says a registered domestic partner in these states 'must generally report half the combined community income' but states no exception for joint filers. The pages given do not show whether this gate's 'not filing jointly' condition is correct; Form 8958 and Pub. 555 would be needed.
-
-Ruling: interface gap; i1040gi p. 23, Community Property States: "Nevada, Washington, and California domestic partners. A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555." The model asks whether the gate's 'not filing jointly' condition is right and says the pages given do not decide it. What decides it is p501 p. 6, not among the pages given (the render had p501 p. 9 only): "Individuals who have entered into a registered domestic partnership, civil union, or other similar relationship that isn't denominated as a marriage under the law of the state ... aren't lawfully married for federal tax purposes", and a joint return requires that "You were married at the end of 2025" or that your spouse died in 2025 (i1040gi p. 13, Married Filing Jointly). A joint filer is therefore filing with a spouse, not a domestic partner, and the joint return already reports both spouses' combined income; the partner rule reaches a partner on a single, head of household or qualifying surviving spouse return, which is where the gate refuses (the separate married-filing-separately refusal, s3.mfs, covers the remaining status). The restatement (status not mfj, community property state, registered domestic partner) is otherwise the source's condition. The line is unchanged since fix round 2, where it was checked against p. 23, p525 p. 24 and p501 p. 6. Project stands.
+Model: Flags registered domestic partners who are not filing jointly. The text says they 'must generally report half the combined community income ... See Form 8958 and Pub. 555'.
 
 ## Raw response
 
@@ -237,120 +243,126 @@ Ruling: interface gap; i1040gi p. 23, Community Property States: "Nevada, Washin
 lines:
   - key: "persons"
     status: MATCH
-    reason: "Counts one entry each for you and, on a joint return, your spouse, which fits the form's taxpayer and spouse structure. It is a plain count of the people on the return."
+    reason: "Counts you, and your spouse on a joint return, as the people on the return. This matches the 'you, and your spouse if filing jointly' wording used throughout the instructions."
   - key: "taxpayers"
     status: MATCH
-    reason: "Counts the entries identified as yours, as the label says."
+    reason: "Counts the entries marked as yours. This is a structural count that the text does not contradict."
   - key: "spouses"
     status: MATCH
-    reason: "Counts the entries identified as your spouse's, as the label says."
+    reason: "Counts the entries marked as your spouse's. This is a structural count that the text does not contradict."
   - key: "roster_ok"
     status: MATCH
-    reason: "Requires one taxpayer entry, plus one spouse entry exactly when married filing jointly, consistent with the Form 1040 filing status and spouse lines. The under-16 refusal is a named narrowing, and it correctly says the rule is not in the instructions; the only under-16 text given is the Self-Select PIN caution for first-time filers."
+    reason: "Requires one entry for you, plus one spouse entry exactly when the status is 'Married filing jointly'. This fits the Form 1040 filing statuses. The under-16 refusal is openly recorded as an owner-decided entry check and names what it excludes."
   - key: "roster_bad"
     status: MATCH
-    reason: "This is the direct negation of roster_ok, as labeled."
+    reason: "This is the negation of roster_ok."
   - key: "hsa_people"
     status: MATCH
-    reason: "Counts people with at least one Form 8889, consistent with 'complete a separate Form 8889 for each of you.'"
+    reason: "Counts the people on the return who have a Form 8889. The i8889 text says to 'complete a separate Form 8889 for each spouse'."
   - key: "hsa_both"
     status: MATCH
-    reason: "A count of two people with Forms 8889 means you and your spouse each have one, as labeled."
+    reason: "A count of 2 means both spouses have a Form 8889. That is the case where 'both you and your spouse have HSAs'."
   - key: "hsa_split_count"
     status: MATCH
-    reason: "Counts Forms 8889 flagged for spouses with separate HSAs and family coverage at any time during 2025, the condition stated in the line 6 instructions."
+    reason: "Counts the Forms 8889 that use the line 6 rule for 'Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025'."
   - key: "hsa_agreed_count"
     status: MATCH
-    reason: "Counts flagged forms using an agreed allocation, which matches 'unless you both agree on a different allocation.'"
+    reason: "Counts the Forms 8889 that use the line 6 option 'unless you both agree on a different allocation'."
   - key: "hsa_step1_sum"
     status: MATCH
-    reason: "Adds each spouse's Step 1 limit, refigured from the worksheet amounts for family-coverage months less line 4, as the line 6 instructions describe. The glossary sets f8889 line 4 to $0 with no refusal shown, although the form says to enter Archer MSA contributions from Form 8853; that issue belongs to f8889 line 4 but flows into this sum."
+    reason: "Adds each spouse's Step 1 limit. Step 1 is refigured from 'the total of the worksheet amounts only for the months you were treated as having family coverage', and the line 6 instructions support this."
   - key: "hsa_share_sum"
     status: MATCH
-    reason: "Adds each spouse's part of the Step 1 limit, using an equal split or an agreed allocation as in Steps 2 and 3 of the line 6 instructions. It inherits the same f8889 line 4 $0 issue when the split is equal."
+    reason: "Adds each spouse's share under Steps 2–3. The line 6 instructions divide the Step 1 limit between the spouses."
   - key: "work_ssn_count"
     status: MATCH
-    reason: "Counts people with an SSN 'valid for employment and issued before the due date of your return (including extensions).' The label's omission of extensions is only wording."
+    reason: "Counts the people who have an SSN 'valid for employment and issued before the due date of your return'."
   - key: "any_work_ssn"
     status: MATCH
-    reason: "Matches 'only one spouse is required to have a valid SSN to be eligible for the CTC and ACTC.'"
+    reason: "Is true when at least one person has a valid SSN. This matches 'only one spouse is required to have a valid SSN to be eligible for the CTC and ACTC'."
   - key: "eic_ssn_count"
     status: MATCH
-    reason: "Counts people with an SSN valid for the EIC and issued on or before the due date, as in EIC Step 1, question 2."
+    reason: "Counts the people who have an SSN 'issued on or before the due date ... that allows you to work and is valid for EIC purposes'."
   - key: "all_eic_ssn"
     status: MATCH
-    reason: "Requiring every person on the return to qualify matches 'Do you, and your spouse if filing a joint return, have a social security number' valid for EIC purposes."
+    reason: "Requires everyone on the return to have such an SSN. This matches EIC Step 1 question 2: 'Do you, and your spouse if filing a joint return, have a social security number...'."
   - key: "under16_count"
     status: MATCH
-    reason: "Counts people on the return who were under age 16 at the end of 2025, as labeled. The count supports the program's own entry check."
+    reason: "Counts the people on the return who were under 16 at the end of 2025. It supports the owner-decided entry check."
   - key: "filer_under16"
     status: MATCH
-    reason: "True when at least one person on the return was under 16, as labeled. It serves as the named gate for the roster_ok refusal."
+    reason: "Is true when any person on the return was under 16. This is consistent with its label."
   - key: "tin_count"
     status: MATCH
-    reason: "Counts people with an SSN or ITIN issued on or before the due date or an ITIN application, matching Step 5: 'Answer “Yes” if you are applying for an ITIN on or before the return due date.'"
+    reason: "Counts the people who have an SSN or ITIN, or who applied for an ITIN. This follows Step 5 question 1: '(Answer “Yes” if you are applying for an ITIN on or before the return due date ...)'."
   - key: "all_tin"
     status: MATCH
-    reason: "Requiring all people on the return to qualify matches 'you, and your spouse if filing jointly, must have either an SSN or ITIN' for the credit for other dependents."
+    reason: "Requires you, and your spouse if filing jointly, to have an SSN or ITIN. This matches 'you, and your spouse if filing jointly, must have either an SSN or ITIN' for the credit for other dependents."
   - key: "id_count"
     status: MATCH
-    reason: "Counts people holding either an SSN valid for employment or an SSN or ITIN, the two identifications named in the child tax credit rule. It is correct as a supporting count for ctc_ssn."
+    reason: "Counts the people who have either an employment-valid SSN or an issued SSN or ITIN. It does not count an applied-for ITIN, which is consistent with the CTC rule that the other spouse's number 'must have been issued on or before the due date'."
   - key: "ctc_ssn"
     status: MATCH
-    reason: "Requires one valid-for-employment SSN and identification for everyone on the return. This matches 'only one spouse is required to have a valid SSN' and 'The other spouse must have either an SSN or ITIN.'"
+    reason: "Requires at least one valid SSN, with every other person holding an SSN or ITIN. This matches 'only one spouse is required to have a valid SSN ... The other spouse must have either an SSN or ITIN'."
   - key: "taxpayer_work_ssn_count"
     status: MATCH
-    reason: "Counts your own entry when it has an SSN valid for employment, which is the condition the label describes."
+    reason: "Counts your own entry when you have an employment-valid SSN. This is a structural count."
   - key: "taxpayer_work_ssn"
     status: MATCH
-    reason: "True when your own entry has an SSN valid for employment and issued before the due date, matching the SSN definition in the instructions."
+    reason: "Is true when your own entry has an SSN 'valid for employment and issued before the due date of your return'."
   - key: "home_cost"
     status: MATCH
-    reason: "The included and excluded costs match Pub. 501. Its 'person who lives in the home' wording is slightly broader than Pub. 501's 'child’s or qualifying person’s name' but keeps the same meaning that such funds are not paid by you."
+    reason: "The included and excluded costs follow Pub. 501's 'Costs you include' and 'Costs you don’t include'. Funds held in a household member's name count as paid by that person, which matches 'considered paid by the child, not you'."
   - key: "unmarried"
     status: MATCH
-    reason: "The input asks the condition stated in the instructions: 'only if you are unmarried (or considered unmarried).'"
+    reason: "This is a direct input. It matches 'Check the “Head of household” box only if you are unmarried (or considered unmarried)'."
   - key: "married"
     status: MATCH
-    reason: "The input asks about marital status at the end of 2025 and includes married people considered unmarried, a category the head of household instructions recognize."
+    reason: "This is a direct input on marital status at year end. The instructions use it for the Form 8889 age-55 rules ('unmarried' versus 'married')."
   - key: "community_property"
     status: MATCH
-    reason: "The nine states match the list under Community Property States in the instructions."
+    reason: "The list of states matches 'Community property states include Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, and Wisconsin'."
   - key: "hoh_community_property"
     status: MATCH
-    reason: "Combines head of household status, marriage and community property residence, as labeled. It serves as the gate for the named Form 8958 and Pub. 555 refusal, which the instructions support."
+    reason: "This is a refusal gate for a married head of household in a community property state. The text says such filers 'must usually follow state law to determine what is community income ... see Form 8958 and Pub. 555'."
   - key: "credit_disallowed"
     status: MATCH
-    reason: "The years, credits, math or clerical error carve-out, and 2- and 10-year periods match the Form 8862 and improper-claim text. 'Disallowed' versus 'denied' for the post-2015 credits is only wording."
+    reason: "This matches the Form 8862 triggers: an EIC 'for a year after 1996' and the CTC, ACTC or ODC 'for a year after 2015', reduced or disallowed other than for math or clerical error. It also covers the 2- and 10-year bans."
   - key: "test1_persons"
     status: MATCH
-    reason: "Counts parents who qualify you under Test 1, which covers a parent you can claim whose main home you paid over half the cost of keeping up; 'Your parent didn't have to live with you.' The per-dependent helper is not defined in the glossary, so only its label and the count could be checked."
+    reason: "Counts the parents who qualify you under Test 1. The text says 'Your parent didn’t have to live with you'."
   - key: "test2_persons"
     status: MATCH
-    reason: "Counts persons who lived with you for more than half the year, or more than half the part of the year they were alive, matching Test 2 and Pub. 501. The per-dependent helper is not defined in the glossary, so only its label and the count could be checked."
+    reason: "Counts the persons who lived with you 'for more than half of the year'. The home-cost part of Test 2 is tested separately in test2_met."
+  - key: "test2_absence_persons"
+    status: MATCH
+    reason: "Flags persons who would qualify only through an absence that Pub. 501 does not count. Pub. 501 requires that 'It must be reasonable to assume the absent person will return' and that 'You must continue to keep up the home'."
+  - key: "hoh_absence"
+    status: MATCH
+    reason: "Gates the refusal for the case where head of household status turns only on a disallowed absence. This is consistent with the Pub. 501 'Temporary absences' rule."
   - key: "test1_met"
     status: MATCH
-    reason: "At least one qualifying parent under Test 1 means the test is met. The home-cost condition is carried in the per-parent helper, which is appropriate because the home may be the parent's own."
+    reason: "Test 1 is met when there is a qualifying parent. This matches 'You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent'."
   - key: "test2_met"
     status: MATCH
-    reason: "Requires a Test 2 person and over half the cost of your home, matching 'You paid over half the cost of keeping up a home in which you lived and in which one of the following also lived.'"
+    reason: "Requires both paying over half the home cost and having a qualifying person. This matches 'You paid over half the cost of keeping up a home in which you lived and in which one of the following also lived'."
   - key: "hoh_eligible"
     status: MATCH
-    reason: "Matches 'only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies.' The refusal names the excluded community property case and Form 8958 and Pub. 555, which the instructions cite."
+    reason: "Matches 'only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies'. The refusals name the absence and community property cases that are excluded."
   - key: "hoh_fails"
     status: MATCH
-    reason: "True when the head of household box is selected and the eligibility test fails, as labeled."
+    reason: "Flags a return where the head of household box is checked but hoh_eligible is false. This is consistent with the instructions."
   - key: "qss_eligible"
     status: MATCH
-    reason: "The five tests track the Qualifying Surviving Spouse instructions, including the 2023 or 2024 death, the $5,200 and joint-return exceptions, and the time-lived and adoption rules. The home-cost wording also agrees with Pub. 501 in substance."
+    reason: "The input restates the five tests in the instructions and Pub. 501. This includes 'If your spouse died in 2025, you can't file as qualifying surviving spouse' and the rules for absences, births, deaths and adoptions."
   - key: "qss_fails"
     status: MATCH
-    reason: "True when the qualifying surviving spouse box is selected and the five-test answer is no, as labeled."
+    reason: "Flags a return where the qualifying surviving spouse box is checked but not all five tests apply."
   - key: "rdp"
     status: MATCH
-    reason: "The input asks about the status named in the instructions: 'A registered domestic partner in Nevada, Washington, or California.' The text gives no timing rule that contradicts 'at any time in 2025.'"
+    reason: "This is a direct input. It matches 'Nevada, Washington, and California domestic partners'."
   - key: "rdp_community_property"
-    status: UNCLEAR
-    reason: "The text says a registered domestic partner in these states 'must generally report half the combined community income' but states no exception for joint filers. The pages given do not show whether this gate's 'not filing jointly' condition is correct; Form 8958 and Pub. 555 would be needed."
+    status: MATCH
+    reason: "Flags registered domestic partners who are not filing jointly. The text says they 'must generally report half the combined community income ... See Form 8958 and Pub. 555'."
 ```
 ```

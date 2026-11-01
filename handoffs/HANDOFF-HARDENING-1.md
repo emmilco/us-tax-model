@@ -43,6 +43,8 @@ owner decided, what is open, and what a fresh session needs to know.
   about one line comes due only when that line changes (line-level subjects; 2026-10-30). T-094 is the burn-down.
 - Fix-and-review loop: fix medium and high findings at once and re-review those forms; batch low findings (T-092) for
   when each form next changes; stop when a round finds nothing medium or higher.
+- Regressions in uncommitted work (2026-10-31, T-091): a defect introduced by the change being prepared is fixed before
+  that change is committed, whatever its severity. Batching lows applies only to findings in code already committed.
 - T-066: class M moves to printed lines form by form; printed-only mode for single documents is the next step there.
 - T-067: worksheet lines get printed markers (`(CLW A n)`) and may be hidden by `shown_when`.
 - Form 2441 equal plan maximums: reading 1 kept (`amb.2025.dc_plan_maximum`).

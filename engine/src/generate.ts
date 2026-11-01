@@ -570,7 +570,14 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   inputs["$dependent"] = s.dependents.map((_, i) => `dep_${String.fromCharCode(97 + i)}`);
   s.dependents.forEach((d, i) => { for (const [k, v] of Object.entries(d)) inputs[`dependent[dep_${String.fromCharCode(97 + i)}].${k}`] = v; });
   // An "other" household member's relationship is lawful (Step 4); answered without a draw, so the stream is unchanged.
-  s.dependents.forEach((_, i) => { inputs[`dependent[dep_${String.fromCharCode(97 + i)}].lawful`] = true; });
+  // The spouse-relative and returning-absence answers are fixed, and the all-year household answer follows the drawn months, so the stream is unchanged.
+  s.dependents.forEach((d, i) => {
+    const key = `dependent[dep_${String.fromCharCode(97 + i)}]`;
+    inputs[`${key}.lawful`] = true;
+    inputs[`${key}.spouse_relative`] = false;
+    inputs[`${key}.qr_all_year`] = d.months === 12;
+    inputs[`${key}.absence_no_return`] = false;
+  });
   // Form 2441, derived from the generated facts so the random stream is unchanged: a child turning 13 is under 13
   // for part of the year, a permanently and totally disabled person cannot care for themselves, and the expenses vary
   // with the age. One care provider, identified by its number.

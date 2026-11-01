@@ -609,7 +609,7 @@ Findings: none of medium or higher severity. Low L1 (for T-092) in `.transcripti
 `dependent.supported` should say that state benefits are the state's support when the state provides them to this person
 as a needy person. As now worded, a filer may apply the sentence to their own benefits, against p501 p. 20's TANF rule.
 
-## Fix round 4
+## Fix round 4 (superseded subject)
 
 Subject after BUG-0258 (`parent_home_paid` gains the p501 p. 9 definition of the cost of keeping up a home and the
 parent's own-funds rule), with the BUG-0257 engine change in place. No expression changed. Fresh replies of 2026-10-30.
@@ -686,3 +686,157 @@ Counts:
 
 Findings: none of medium or higher severity for dependent. Low L1 (for T-092) in
 `.transcription/proposed/fixr4/dependent.findings.md`.
+
+## T-091 round (superseded subject)
+
+Subject after BUG-0264 to BUG-0266 (`dependent.spouse_relative`, `dependent.qr_all_year`, `dependent.absence_no_return`;
+gates `dependent.hoh_absence` on `hoh_test2` and `dependent.qr_kidnapped` on `qualifying_relative`). Fresh replies of
+2026-10-31. Transcription rulings: `.transcription/proposed/t091/transcription.dependent.json` and
+`transcription.dependent.deepseek.json`; findings in `.transcription/proposed/t091/dependent.findings.md`. Render and class M
+rows of this round are adjudicated separately (`dependent.classm.findings.md`, `render.dependent*.json`, `classm.dependent*.json`
+in the same directory) and are merged here by the orchestrator. Triage `../triage/dependent.json`, executable-triage-v2 (1,408
+fixtures, 500 generated returns seed 20261026, 2,809 partial records; 8,269 comparisons per line), reproduced exactly by an
+uncapped rerun (scratch `adj-t091-dep-transcription/`); every completed-return difference of the Claude reply was assigned
+to a named cause, none unexplained. The deepseek reply is invalid only on `dependent.dc_count` (collection parent binding
+mismatch); its other lines validate and are ruled by reading.
+
+T-091 introduces no error of medium severity. The Claude reply encodes the three new inputs as the project does; the only
+triage differences they produce are partial records, the two `hoh_absence` regressions (the reply makes the absence a
+condition of Test 2 instead of a refusal) and one mfj value of `hoh_test2` that no head-of-household return reads. One low
+(L1, for T-092): `hoh_absence` refuses the return for any entry with an absence answer, even one that is not needed to
+qualify you. Compared with fix round 4, the Claude reply's Step 3 lines and `hoh_test2` no longer inherit the multiple-support
+refusal (now scope); it still declares multiple_support on `claimed` (2 completed returns, classm.s3.4 dep_a), has no
+f2441.care test, and no filer-TIN or f8863.paid test for the education lines. The deepseek reply's `ctc_child` now tests
+any dependent instead of a qualifying child, and its `hoh_test2` has no absence rule.
+
+Counts:
+- Claude transcription: model error 13, scope 5.
+- Deepseek transcription: model error 15, scope 3.
+- Render (both families): ambiguity 1 each (2(d), amb.2025.dc_line30).
+- Class M (both families, same 8 cases): model error 1 (classm.dependent.2 dc_line2c), representation 1 (classm.dependent.8 dc_line2d), both dropped; the project is right on both, and the dc_* lines are unchanged by T-091.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | dependent.claimed | model error | 7,820/8,269 agree; completed returns: 31 candidate-unknown, 2 candidate-refuses, 1 project-unknown | i1040gi p. 21, Multiple support agreements; p. 17, Step 1 | Multiple-support refusal on a qualifying child (classm.s3.4 dep_a); lawful asked of a household_member; rest partial records. |
+| claude | transcription | dependent.ctc_child | scope | 8,240/8,269 agree; completed returns: none | i1040gi p. 18, Steps 2 and 3; p501 p. 18 | Project's Step 3 test; kidnapped refusals on T-091 regressions and the sa.dependent joint-return route, on refused or incomplete returns. |
+| claude | transcription | dependent.odc_person | model error | 7,933/8,269 agree; completed returns: 9 candidate-unknown, 2 candidate-refuses | i1040gi p. 19, Step 5; p. 21 | Inherits its claimed. |
+| claude | transcription | dependent.ctc_amount | scope | 8,240/8,269 agree; completed returns: none | f1040s8812 line 5 | Inherited from ctc_child. |
+| claude | transcription | dependent.actc_amount | scope | 8,240/8,269 agree; completed returns: none | f1040s8812 line 16b | Inherited from ctc_child. |
+| claude | transcription | dependent.odc_amount | model error | 7,933/8,269 agree; completed returns: 9 candidate-unknown, 2 candidate-refuses | f1040s8812 line 7 | Inherited from odc_person. |
+| claude | transcription | dependent.hoh_test2 | scope | 7,980/8,269 agree; completed returns: 8 project-unknown, 6 candidate-unknown | i1040gi p. 14, Test 2; p501 pp. 9, 19 | Absence as a condition, not a refusal (meets the project on completed returns); all completed differences partial records; mfj value unread. |
+| claude | transcription | dependent.hoh_test1 | scope | 7,955/8,269 agree; completed returns: 1 project-unknown | i1040gi p. 14, Test 1; p. 22 | Project's test; differences are the project's cited refusals and 1 partial record. |
+| claude | transcription | dependent.dc_qp | model error | 4,771/8,269 agree; completed returns: 825 value, 30 candidate-unknown | i2441 pp. 1, 3; p503 p. 3 | No f2441.care test: 825 values reach no amount; asks care questions without care. |
+| claude | transcription | dependent.dc_count | model error | 2,313/8,269 agree; completed returns: 1,845 value, 30 candidate-unknown | i2441 p. 3, Line 2 | Values on entries f2441.qp_count never counts; inherits dc_qp. |
+| claude | transcription | dependent.ptc_magi_counted | model error | 7,826/8,269 agree; completed returns: 30 project-unknown, 2 candidate-refuses | i8962 p. 8, Line 2b | Own formula representation; inherits claimed. |
+| claude | transcription | 2(d) | model error | 7,452/8,269 agree; completed returns: 44 project-unknown, 28 candidate-unknown | i2441 p. 3, Column (d), Line 2 | No completed value; refused-return values are non-qualifying persons (dc_paid's own wording makes them $0.00). |
+| claude | transcription | 2(c) | model error | 7,598/8,269 agree; completed returns: 19 candidate-unknown, 4 value | i2441 p. 3, Column (c) | 4 care-omission boxes reach no amount; classm.dependent.2 dep_b: project right (no care). |
+| claude | transcription | 27 | model error | 4,681/8,269 agree; completed returns: 765 candidate-unknown, 2 candidate-refuses | i8863 p. 2; p. 3, item 5 | No filer-TIN test (jack_kay rerun: line 30 $2,500.00 against line 31 $4,300.00) and no f8863.paid test (755 asks). |
+| claude | transcription | 28 | model error | 4,681/8,269 agree; completed returns: 765 candidate-unknown, 2 candidate-refuses | i8863 p. 2; p. 3, item 5 | As line 27. |
+| claude | transcription | 29 | model error | 4,681/8,269 agree; completed returns: 765 candidate-unknown, 2 candidate-refuses | i8863 p. 2; p. 3, item 5 | As line 27. |
+| claude | transcription | 30 | model error | 4,681/8,269 agree; completed returns: 765 candidate-unknown, 2 candidate-refuses | i8863 p. 2; p. 3, item 5 | As line 27. |
+| claude | transcription | 31 | model error | 4,682/8,269 agree; completed returns: 765 candidate-unknown, 2 candidate-refuses | i8863 p. 2; p. 3, item 5; p. 9 | As line 27 (line 31 $0.00 against $4,300.00). |
+| deepseek | transcription | dependent.claimed | model error | not executable (reply invalid on dc_count) | i1040gi p. 21; p. 17, Step 1 | T-091 inputs as the project; multiple-support refusal on the line reaches a qualifying child. |
+| deepseek | transcription | dependent.ctc_child | model error | not executable (reply invalid on dc_count) | i1040gi p. 18, Step 3 | Reads claimed, not a qualifying child (a qualifying relative under 17 gets the CTC); no household.ctc_ssn. |
+| deepseek | transcription | dependent.odc_person | model error | not executable (reply invalid on dc_count) | i1040gi p. 19, Step 5 | No filers' TIN test; inherits claimed and ctc_child. |
+| deepseek | transcription | dependent.ctc_amount | model error | not executable (reply invalid on dc_count) | f1040s8812 line 5 | Inherited from ctc_child. |
+| deepseek | transcription | dependent.actc_amount | model error | not executable (reply invalid on dc_count) | f1040s8812 line 16b | Inherited from ctc_child. |
+| deepseek | transcription | dependent.odc_amount | model error | not executable (reply invalid on dc_count) | f1040s8812 line 7 | Inherited from odc_person. |
+| deepseek | transcription | dependent.hoh_test2 | model error | not executable (reply invalid on dc_count) | p501 p. 9, Temporary absences, Death or birth; i1040gi p. 14 | No absence rule (t091.absence.hoh_refused met), no part-year route, relative counted without sa.dependent. |
+| deepseek | transcription | dependent.hoh_test1 | scope | not executable (reply invalid on dc_count) | i1040gi p. 14, Test 1 | Project's test; differences are the project's refusals. |
+| deepseek | transcription | dependent.eic_child | scope | not executable (reply invalid on dc_count) | i1040gi pp. 20, 41 | divorced_rule refusal reaches only refused returns. |
+| deepseek | transcription | dependent.eic_ssn_child | scope | not executable (reply invalid on dc_count) | i1040gi pp. 41, 46 | Inherits eic_child. |
+| deepseek | transcription | dependent.dc_qp | model error | not executable (reply invalid on dc_count) | i2441 p. 1; p503 p. 3 | Under-13 route takes any dependent; no death-year route. |
+| deepseek | transcription | dependent.dc_count | model error | not executable (reply invalid on dc_count) | README (validation); i2441 p. 3 | Collection parent binding mismatch. |
+| deepseek | transcription | 2(c) | model error | not executable (reply invalid on dc_count) | i2441 p. 3, Column (c), Line 2 | No qualifying-person condition. |
+| deepseek | transcription | 27 | model error | not executable (reply invalid on dc_count) | f8863 p. 2, line 26; i8863 p. 3, item 5 | No filers' TIN or f8863.paid test; raw edu_over refusal. |
+| deepseek | transcription | 28 | model error | not executable (reply invalid on dc_count) | f8863 p. 2, line 26; i8863 p. 3, item 5 | As line 27. |
+| deepseek | transcription | 29 | model error | not executable (reply invalid on dc_count) | f8863 p. 2, line 26; i8863 p. 3, item 5 | As line 27. |
+| deepseek | transcription | 30 | model error | not executable (reply invalid on dc_count) | f8863 p. 2, line 26; i8863 p. 3, item 5 | As line 27. |
+| deepseek | transcription | 31 | model error | not executable (reply invalid on dc_count) | f8863 p. 2; i8863 p. 9 | Inherits line 27's missing filers' TIN test. |
+| claude | render | 2(d) | ambiguity | render MISMATCH | amb.2025.dc_line30; i2441 p. 3, Column (d) | Rejected reading (column (d) net of benefits); line unchanged by T-091. |
+| deepseek | render | 2(d) | ambiguity | render MISMATCH | amb.2025.dc_line30 | Rejected reading; unchanged. |
+| claude | class M | classm.dependent.2 — dependent[dep_b].dc_line2c | model error (drop) | f2441.care no, benefits no; dc_disabled_qp yes, dc_qp no; qp_count 0 | i2441 p. 1, Purpose of Form; p. 3, Column (c) | Box checked with no care paid: no line 2 entry, no "time the care was provided". |
+| deepseek | class M | classm.dependent.2 — dependent[dep_b].dc_line2c | model error (drop) | same inputs | i2441 p. 1; p. 3, Column (c) | Same; also reads permanent disability for inability to care for oneself. |
+| claude | class M | classm.dependent.8 — dependent[dep_b].dc_line2d | representation (drop) | dc_qp no; dc_paid $250.00 supplied; line 3 $1,480.00 either way; targeted eval never demands dep_b's dc_paid | i2441 p. 3, Line 2 | Model's $0.00 is the source reading; $250.00 displays an answer never asked and never summed. |
+| deepseek | class M | classm.dependent.8 — dependent[dep_b].dc_line2d | representation (drop) | same inputs | i2441 p. 3, Line 2 | Same. |
+
+Findings (transcription): none of medium or higher severity. Low L1 (for T-092) in
+`.transcription/proposed/t091/dependent.findings.md`.
+
+## T-091 round 2
+
+Subject after BUG-0267 (the correction of T-091 before commit): `dependent.hoh_test2_lived` (the former Test 2 expression),
+`dependent.hoh_test2` = `hoh_test2_lived` and not `absence_no_return`, `dependent.hoh_absence` = `hoh_test2_lived` and
+`absence_no_return`, and the return-level gate `household.hoh_absence` (unmarried, Test 1 not met, home cost yes, no Test 2
+person, at least one absence person) refusing `household.hoh_eligible`. Fresh replies of 2026-10-31. Transcription rulings:
+`.transcription/proposed/t091r2/transcription.dependent.json` and `transcription.dependent.deepseek.json`; findings in
+`.transcription/proposed/t091r2/dependent.findings.md`. Render and class M rows of this round are adjudicated separately and
+merged here by the orchestrator. Triage `../triage/dependent.json`, executable-triage-v2 (1,411 fixtures, 500 generated returns
+seed 20261026, 2,809 partial records; 8,275 comparisons per line), reproduced exactly by an uncapped rerun (scratch
+`adj-t091r2-dep-transcription/`); every completed-return difference of the Claude reply was assigned to a named cause, none
+unexplained. The deepseek reply is invalid in triage (`dc_count` collection parent binding; `dc_over12_care` redeclared over
+the published input; `edu_line31` reads a line `aqee` lacks); its other lines are ruled by reading.
+
+No finding: neither T-091 nor its correction introduces an error of any severity. The gate fires exactly when head of
+household turns on the recount (192-scenario matrix; the household adjudicator's 19 scenarios agree), the former Test 2
+expression is unchanged as `hoh_test2_lived`, and nothing else in the subject changed. The Claude reply's 55 completed
+claimed/odc values are contradictory married-no/joint-return-yes records; its `hoh_test2` counts an absence head of household
+does not count and has no part-year route; its claimed no longer refuses multiple support on a qualifying child (Step 3 and
+ptc lines now scope). The deepseek reply excludes the absence person from Test 2 as the project does, but marks every entry's
+absence answer on `hoh_absence`, omits `spouse_relative`, treats sibling_descendant as a relative who need not live with you,
+and has no ctc_ssn or all_tin test.
+
+Counts:
+- Claude transcription: model error 13, scope 8.
+- Deepseek transcription: model error 16, scope 3.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | dependent.claimed | model error | 7,623/8,275 agree; completed returns: 55 value, 30 candidate-unknown, 1 project-unknown | i1040gi p. 19, Step 4; p. 21, Married person | lawful asked of a household_member (classm.clcw26.2 dep_b); 55 values contradictory married/joint_return records; rest partial records. |
+| claude | transcription | dependent.ctc_child | scope | 8,178/8,275 agree; completed returns: none | i1040gi p. 18, Step 3; p501 p. 18 | Project's Step 3 test; kidnapped refusals and the joint-return route on refused or incomplete returns. |
+| claude | transcription | dependent.odc_person | model error | 7,705/8,275 agree; completed returns: 55 value, 28 candidate-unknown | i1040gi p. 19, Step 5 | Inherits its claimed. |
+| claude | transcription | dependent.ctc_amount | scope | 8,178/8,275 agree; completed returns: none | f1040s8812 line 5 | Inherited from ctc_child. |
+| claude | transcription | dependent.odc_amount | model error | 7,705/8,275 agree; completed returns: 55 value, 28 candidate-unknown | f1040s8812 line 7 | Inherited from odc_person. |
+| claude | transcription | dependent.actc_amount | scope | 8,178/8,275 agree; completed returns: none | f1040s8812 line 16b | Inherited from ctc_child. |
+| claude | transcription | dependent.hoh_absence | scope | 8,038/8,275 agree; completed returns: 1 project-unknown | p501 p. 9, Temporary absences | The project's definition; differences are the project's cited screens and 1 partial record. |
+| claude | transcription | dependent.hoh_test2 | model error | 7,469/8,275 agree; completed returns: 82 project-unknown, 23 candidate-unknown, 7 value | i1040gi p. 14, Test 2; p501 p. 9 | Counts an absence head of household does not count (t091.absence.hoh_refused child) and has no part-year route (stage8.hoh.parent.died_lived_part_year); completed: 7 contradictory records, unknowns unread or partial. |
+| claude | transcription | dependent.hoh_test1 | scope | 7,958/8,275 agree; completed returns: 1 project-unknown | i1040gi p. 14, Test 1 | Project's test; project's cited refusals and 1 partial record. |
+| claude | transcription | dependent.eic_child | scope | 8,072/8,275 agree; completed returns: 3 candidate-unknown, 2 project-unknown | i1040gi pp. 20, 41, 44 | divorced_rule refusals on refused returns; married refused by the project; partial records. |
+| claude | transcription | dependent.eic_ssn_child | scope | completed returns: 3 candidate-unknown, 2 project-unknown | i1040gi p. 46 | Inherits eic_child. |
+| claude | transcription | dependent.dc_qp | model error | 4,957/8,275 agree; completed returns: 840 value, 27 candidate-unknown | i2441 p. 1; p503 p. 3 | No f2441.care test (840 values reach no amount); no death-year route (stage15.f2441.parent_died_part_year). |
+| claude | transcription | dependent.dc_count | model error | 2,346/8,275 agree; completed returns: 1,878 value, 27 candidate-unknown | i2441 p. 3, Line 2 | Values on care-no entries f2441.qp_count never counts; inherits dc_qp. |
+| claude | transcription | dependent.ptc_magi_counted | scope | 7,798/8,275 agree; completed returns: 31 project-unknown | i8962 p. 8, Line 2b | Own formula a representation; unknowns on entries line 2b does not sum; candidate refusals on refused returns. |
+| claude | transcription | 2(d) | model error | 7,395/8,275 agree; completed returns: 45 project-unknown, 26 candidate-unknown | i2441 p. 3, Column (d); p503 p. 3 | Inherits dc_qp's death-year omission ($4,000.00 against $0.00); no completed value. |
+| claude | transcription | 2(c) | model error | 7,658/8,275 agree; completed returns: 17 candidate-unknown, 4 value | i2441 p. 3, Column (c) | Care omission reaches no amount; inherits dc_qp's death-year omission. |
+| claude | transcription | 27 | model error | 4,819/8,275 agree; completed returns: 758 candidate-unknown | i8863 p. 2; p. 3, item 5 | No filer-TIN test (jack_kay rerun: line 30 $2,500.00 against line 31 $4,300.00) and no f8863.paid test (741 asks). |
+| claude | transcription | 28 | model error | 4,819/8,275 agree; completed returns: 758 candidate-unknown | i8863 p. 2; p. 3, item 5 | As line 27. |
+| claude | transcription | 29 | model error | 4,819/8,275 agree; completed returns: 758 candidate-unknown | i8863 p. 2; p. 3, item 5 | As line 27. |
+| claude | transcription | 30 | model error | 4,819/8,275 agree; completed returns: 758 candidate-unknown | i8863 p. 2; p. 3, item 5 | As line 27. |
+| claude | transcription | 31 | model error | 4,820/8,275 agree; completed returns: 758 candidate-unknown | i8863 p. 2; p. 3, item 5; p. 9 | As line 27 (line 31 $0.00 against $4,300.00). |
+| deepseek | transcription | dependent.claimed | model error | not executable (reply invalid) | p501 p. 19, Relatives who don't have to live with you, Joint return; i1040gi p. 21 | sibling_descendant needs no all-year test; no spouse_relative; multiple-support refusal reaches a qualifying child. |
+| deepseek | transcription | dependent.ctc_child | model error | not executable (reply invalid) | i1040gi p. 18, Step 3, question 4 | No household.ctc_ssn. |
+| deepseek | transcription | dependent.odc_person | model error | not executable (reply invalid) | i1040gi p. 19, Step 5, question 1 | No filers' TIN test; inherits claimed and ctc_child. |
+| deepseek | transcription | dependent.ctc_amount | model error | not executable (reply invalid) | f1040s8812 line 5 | Inherited from ctc_child. |
+| deepseek | transcription | dependent.odc_amount | model error | not executable (reply invalid) | f1040s8812 line 7 | Inherited from odc_person. |
+| deepseek | transcription | dependent.actc_amount | model error | not executable (reply invalid) | f1040s8812 line 16b | Inherited from ctc_child. |
+| deepseek | transcription | dependent.hoh_absence | model error | not executable (reply invalid) | p501 p. 9, Temporary absences | Copies absence_no_return for every entry (yes for a non-Test-2 roommate; answer asked of every entry). |
+| deepseek | transcription | dependent.hoh_test2 | model error | not executable (reply invalid) | p501 p. 9, Death or birth; i1040gi p. 14 | No part-year route; sibling_descendant counted; home_cost read on the line. |
+| deepseek | transcription | dependent.hoh_test1 | scope | not executable (reply invalid) | i1040gi p. 14, Test 1 | Project's test; differences are refusals. |
+| deepseek | transcription | dependent.eic_child | scope | not executable (reply invalid) | i1040gi pp. 41, 44 | Married child refused through its claimed; refusals only. |
+| deepseek | transcription | dependent.eic_ssn_child | scope | not executable (reply invalid) | i1040gi p. 46 | Inherits eic_child. |
+| deepseek | transcription | dependent.dc_qp | model error | not executable (reply invalid) | i2441 p. 1; p503 p. 3 | No death-year route; inherits claimed. |
+| deepseek | transcription | dependent.dc_count | model error | not executable (reply invalid) | README (validation); i2441 p. 3 | Collection parent binding mismatch. |
+| deepseek | transcription | 2(c) | model error | not executable (reply invalid) | README (validation); i2441 p. 3, Column (c) | Reads dc_over12_care redeclared over the published input. |
+| deepseek | transcription | 27 | model error | not executable (reply invalid) | f8863 p. 2, line 26; i8863 p. 3, item 5 | Copies aqee line 27 for every entry, no eligibility test. |
+| deepseek | transcription | 28 | model error | not executable (reply invalid) | f8863 p. 2, line 26 | As line 27. |
+| deepseek | transcription | 29 | model error | not executable (reply invalid) | f8863 p. 2, line 26 | As line 27. |
+| deepseek | transcription | 30 | model error | not executable (reply invalid) | f8863 p. 2, line 26 | As line 27. |
+| deepseek | transcription | 31 | model error | not executable (reply invalid) | README (validation); i8863 p. 9 | aqee has no line 31. |
+| claude | render | 2(d) | ambiguity | render MISMATCH | amb.2025.dc_line30; i2441 p. 3, Column (d) | Rejected reading (column (d) net of benefits); line unchanged. |
+| claude | render | 2(c) | interface gap | render MISMATCH (MATCH in round 1 on identical text) | i2441 p. 1, Qualifying Person(s), item 3 | Non-dependent disabled person (items a-c) is refused by f2441.nondependent_gate on qp_count and paid_total, a form the reviewer did not see; column (c) test matches. |
+| deepseek | render | 2(d) | ambiguity | render MISMATCH | amb.2025.dc_line30 | Rejected reading; unchanged. |
+| claude | class M | classm.dependent.8 — dependent[dep_b].dc_line2d | representation (drop) | dc_qp no; dc_paid $250.00 supplied; line 3 $1,480.00 either way; targeted eval demands only dep_a's dc_paid | i2441 p. 3, Line 2 | Model's $0.00 is the source reading; $250.00 displays an answer never asked and never summed. |
+| deepseek | class M | classm.dependent.2 — dependent[dep_b].dc_line2c | model error (drop) | f2441.care no, benefits no; dc_disabled_qp yes, dc_qp no; qp_count 0 | i2441 p. 1, Purpose of Form; p. 3, Column (c) | Box checked with no care paid; also reads permanent disability for inability to care for oneself. (Claude now agrees.) |
+| deepseek | class M | classm.dependent.8 — dependent[dep_b].dc_line2d | representation (drop) | same inputs as Claude | i2441 p. 3, Line 2 | Same as Claude. |
+
+Findings (transcription): none. `.transcription/proposed/t091r2/dependent.findings.md`.

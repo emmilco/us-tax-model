@@ -1,3 +1,17 @@
+# Handoff — updated 2026-10-31, late (Claude Opus 5.5)
+
+## T-091 done and committed; next is T-092
+
+**Read `handoffs/HANDOFF-T091.md` first (its top block is current), then `handoffs/HANDOFF-HARDENING-1.md` for the owner's
+standing decisions**, including the new one: a regression introduced by uncommitted work is fixed before commit, whatever its
+severity.
+
+T-091 (BUG-0264 to BUG-0267): `dependent.spouse_relative`, `dependent.qr_all_year`, `dependent.absence_no_return`; gate
+`dependent.qr_kidnapped`; the head-of-household absence refusal is the return-level gate `household.hoh_absence` (BUG-0267,
+after round 1 found the per-person refusal refused returns another person qualified). Two review rounds, all ruled; round 2
+found nothing. Next: T-092 (now including the newborn hospital-stay clause, Form 2441 line 2 `shown_when`, and a
+considered-unmarried check), T-094 alongside, Schedule E after.
+
 # Handoff — updated 2026-10-31 (Claude Opus 5.5)
 
 ## State: the hardening phase is under way

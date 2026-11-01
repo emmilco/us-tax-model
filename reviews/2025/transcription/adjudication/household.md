@@ -188,7 +188,7 @@ Counts:
 Findings: two of medium severity, F1 (`household.home_cost` own-funds rule) and F2 (`household.qss_eligible` cost
 definition), and one low (L1, the TANF note, for T-092), in `.transcription/proposed/fixr4/household.findings.md`.
 
-## Fix round 5
+## Fix round 5 (superseded subject)
 
 Subject after BUG-0260: `household.home_cost` and test 4 of `household.qss_eligible` gain the p501 p. 9 cost definition
 and the own-funds rule. No expression changed. Fresh replies of 2026-10-30. Triage `../triage/household.json` and
@@ -243,3 +243,115 @@ Counts:
 Findings: none of medium or higher severity. There are two lows for T-092: L1, the TANF note, and L2, "anyone's
 services" in test 4, both in `.transcription/proposed/fixr5/household.findings.md`. Completeness review round 5
 (`../../completeness/r5.findings.md`) has no real gap.
+
+## T-091 round (superseded subject)
+
+Subject after T-091 (BUG-0264 to BUG-0266). In household, only the wording of `household.qss_eligible` changed: test 3
+gains p501 p. 9's expected-return condition, which p501 p. 11 applies to QSS. The new dependent gate
+`dependent.hoh_absence` refuses `dependent.hoh_test2` and reaches household only through `household.test2_persons`. Fresh
+replies of 2026-10-31. Triage `../triage/household.json` and `../triage/household.deepseek.json`
+(executable-triage-v2; 1,408 fixtures, 500 generated returns seed 20261026, 211 partial records from 40 bases; 2,119
+comparisons per line). An uncapped rerun reproduced the recorded counts exactly, and every completed-return difference
+was enumerated (scratch `/private/var/folders/kw/rp67pf8d5ng588lqp7d_gb240000gn/T/opencode/adj-t091-household/`). Full
+ruling text is in `.transcription/proposed/t091/` (`transcription.household[.deepseek].json`). Both replies validate.
+Both render logs are 39/0/0/0 with no open section.
+
+The Claude reply is new. Five lines are the project's test in another form. Unlike its fix-round-5 reply, it drops
+`f1040.status` from hoh_fails and qss_fails. Its rdp_community_property reads any registered domestic partner and any
+married filer in a community property state. The deepseek reply is new on roster_bad (it reads `dependent.claimed`), on
+all_tin and ctc_ssn (it adds dependents' TINs and SSNs; ctc_ssn has a cycle), on taxpayer_work_ssn (it counts the
+spouse) and on hsa_both (it adds `household.married`). It repeats its earlier hoh_fails, qss_fails and
+rdp_community_property.
+
+T-091 introduced no error that changes an amount. The QSS clause matches p501 pp. 9 and 11. On head of household,
+`hoh_absence` refuses as designed, and it cannot reach another status. One low for T-092: the gate refuses a head of
+household return even when another person qualifies cleanly, or when the gated person could never be a Test 2 person
+(L1). The completed-return sample is smaller than in fix round 5 for an unrelated reason: many fixtures stop at
+`s179.line10`, an input added in the hardening commit.
+
+Counts:
+- Claude transcription: representation 5, ambiguity 1, model error 3.
+- Deepseek transcription: representation 1, model error 7.
+- Render: no open sections.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | household.roster_bad | ambiguity | 2,107/2,119 agree; completed returns: none | amb.2025.filer_under_16 | As before. |
+| claude | transcription | household.hsa_both | representation | 2,119/2,119 agree | i8889 p. 4 | Two and at least two coincide. |
+| claude | transcription | household.all_eic_ssn | representation | 2,119/2,119 agree | i1040gi p. 40 | None answering no equals all answering yes. |
+| claude | transcription | household.all_tin | representation | 2,119/2,119 agree | i1040gi pp. 17, 19 | Same test (De Morgan). |
+| claude | transcription | household.ctc_ssn | representation | 2,119/2,119 agree | i1040gi p. 17; amb.2025.ctc_spouse_itin_application | Same test, reading 1. |
+| claude | transcription | household.taxpayer_work_ssn | representation | 2,119/2,119 agree | i1040gi p. 18 | Same test on a count. |
+| claude | transcription | household.hoh_fails | model error | 562/2,119 agree; completed returns: 230 value, 14 candidate-unknown | i1040gi p. 14 | Drops f1040.status; no completed head of household return differs. |
+| claude | transcription | household.qss_fails | model error | 624/2,119 agree; completed returns: 201 candidate-unknown | i1040gi p. 15 | Drops f1040.status; asks qss_eligible of every filer. |
+| claude | transcription | household.rdp_community_property | model error | 595/2,119 agree; completed returns: 220 candidate-unknown | i1040gi p. 23; p501 p. 6 | Any partner, any status; drops not-joint. |
+| deepseek | transcription | household.roster_bad | model error | 1,721/2,119 agree; completed returns: 66 value | f1040 p. 1 | Reads an unclaimed listed entry as a roster mismatch. |
+| deepseek | transcription | household.hsa_both | representation | 2,110/2,119 agree; completed returns: none | i8889 p. 4; i1040gi p. 13 | Added married conjunct only bites on contradictory joint answers (refused). |
+| deepseek | transcription | household.all_tin | model error | 2,040/2,119 agree; completed returns: none | i1040gi pp. 17, 18 | Adds every dependent entry's TIN; 79 values off completed returns. |
+| deepseek | transcription | household.ctc_ssn | model error | 1,650/2,119 agree; completed returns: 103 candidate-unknown | i1040gi p. 17 | Cycle through dependent.ctc_child; drops the other spouse's SSN or ITIN. |
+| deepseek | transcription | household.taxpayer_work_ssn | model error | 2,108/2,119 agree; completed returns: 3 value | i1040gi p. 18; s1a line 36a | Counts the spouse's SSN as yours. |
+| deepseek | transcription | household.hoh_fails | model error | 530/2,119 agree; completed returns: 237 value, 14 candidate-unknown | i1040gi p. 14 | Ignores f1040.status; home cost for Test 1 (generated 381). |
+| deepseek | transcription | household.qss_fails | model error | 624/2,119 agree; completed returns: 201 candidate-unknown | i1040gi p. 15 | Ignores f1040.status. |
+| deepseek | transcription | household.rdp_community_property | model error | 2,110/2,119 agree; completed returns: 3 candidate-unknown | i1040gi p. 23; p501 p. 6 | Drops the not-joint condition. |
+
+Findings: none of medium or higher severity. One low for T-092, L1 (`dependent.hoh_absence` over-refuses on head of
+household returns), is in `.transcription/proposed/t091/household.findings.md`.
+
+## T-091 round 2
+
+Subject after the T-091 correction (BUG-0267). `household.test2_absence_persons` counts the entries with
+`dependent.hoh_absence`. The gate `household.hoh_absence` (unmarried, Test 1 not met, home cost yes, no clean Test 2
+person, at least one absence-only Test 2 person) refuses `household.hoh_eligible`. No other household expression changed.
+Fresh replies of 2026-10-31. Triage `../triage/household.json` and `../triage/household.deepseek.json`
+(executable-triage-v2; 1,411 fixtures, 500 generated returns seed 20261026, 211 partial records from 40 bases; 2,122
+comparisons per line). An uncapped rerun reproduced the recorded counts exactly, and every completed-return difference
+was enumerated (scratch `/private/var/folders/kw/rp67pf8d5ng588lqp7d_gb240000gn/T/opencode/adj-t091r2-household/`). Full
+ruling text is in `.transcription/proposed/t091r2/` (`transcription.household[.deepseek].json`,
+`render.household.deepseek.json`). Both replies validate. The Claude render log is 41/0/0/0 with no open section.
+
+The gate was checked on 19 scenarios built from `t091.absence.hoh_refused`. It fires only when head of household turns
+on the recount. It does not fire when Test 1 is met, when unmarried or home cost is no, when another person passes Test 2
+cleanly, or when the absence person cannot be a Test 2 person. It does fire for one or more absence-only persons. It
+cannot reach another status. All six absence regressions hold. The details are in
+`.transcription/proposed/t091r2/household.findings.md`.
+
+The Claude reply restores the `f1040.status` test on hoh_fails. Its only differences there are the project's two cited
+refusals on `hoh_eligible` (scope). Its ctc_ssn is new in form, and it differs only on contradictory answers. The deepseek
+reply again adds dependent entries to `persons` and dependents' SSNs to all_eic_ssn. Its roster_bad now reads claimed
+entries that are neither kind of dependent, and it misses both stage13 roster-mismatch fixtures. Its hoh_fails is AGREE,
+but the comparison does not judge refusals (an observation in the findings file). The deepseek render objects to three
+lines. The test2_persons objection is to the helper label's summary, which predates T-091 (interface gap). The
+qss_eligible objection is fix round 2's F1, already in T-092. The rdp_community_property objection turns on p501 p. 6,
+which was not given.
+
+Counts:
+- Claude transcription: representation 5, ambiguity 1, scope 1, model error 1.
+- Deepseek transcription: representation 1, model error 7.
+- Deepseek render: interface gap 2, finding 1 (existing, T-092).
+- Claude render: no open sections.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | household.roster_bad | ambiguity | 2,109/2,122 agree; completed returns: none | amb.2025.filer_under_16 | As before. |
+| claude | transcription | household.hsa_both | representation | 2,122/2,122 agree | i8889 p. 4 | Above zero and at least one coincide. |
+| claude | transcription | household.all_eic_ssn | representation | 2,122/2,122 agree | i1040gi p. 40 | None answering no equals all answering yes. |
+| claude | transcription | household.all_tin | representation | 2,122/2,122 agree | i1040gi pp. 17, 19 | Same test (De Morgan). |
+| claude | transcription | household.ctc_ssn | representation | 2,098/2,122 agree; completed returns: 1 value (generated 147, contradictory answers) | i1040gi p. 17; amb.2025.ctc_spouse_itin_application | Requires person.tin of everyone; a work SSN implies it on consistent answers. |
+| claude | transcription | household.taxpayer_work_ssn | representation | 2,122/2,122 agree | i1040gi p. 18 | Same test on a count. |
+| claude | transcription | household.hoh_fails | scope | 2,119/2,122 agree; completed returns: none | i1040gi pp. 14, 23; p501 p. 9; amb.2025.hoh_community_property | Omits the cited absence and community property refusals on hoh_eligible. |
+| claude | transcription | household.rdp_community_property | model error | 595/2,122 agree; completed returns: 220 candidate-unknown | i1040gi p. 23; p501 p. 6 | Any partner, any status. |
+| deepseek | transcription | household.persons | model error | 1,139/2,122 agree; completed returns: 207 value | f1040 p. 1 | Adds dependent entries. |
+| deepseek | transcription | household.roster_bad | model error | 1,951/2,122 agree; completed returns: none | f1040 p. 1 | Reads dependent tests; misses stage13.refuse.joint_without_spouse and single_with_spouse. |
+| deepseek | transcription | household.hsa_both | representation | 2,122/2,122 agree | i8889 p. 4 | At least two and exactly two coincide under the roster. |
+| deepseek | transcription | household.all_eic_ssn | model error | 1,972/2,122 agree; completed returns: 2 value | i1040gi p. 40 | Adds EIC children's SSNs. |
+| deepseek | transcription | household.all_tin | model error | 2,043/2,122 agree; completed returns: none | i1040gi pp. 17, 18 | Adds every dependent entry's TIN. |
+| deepseek | transcription | household.ctc_ssn | model error | 1,650/2,122 agree; completed returns: 103 candidate-unknown | i1040gi p. 17 | Cycle through dependent.ctc_child. |
+| deepseek | transcription | household.taxpayer_work_ssn | model error | 2,111/2,122 agree; completed returns: 3 value | i1040gi p. 18; s1a line 36a | Counts the spouse's SSN as yours. |
+| deepseek | transcription | household.rdp_community_property | model error | 2,113/2,122 agree; completed returns: 3 candidate-unknown | i1040gi p. 23; p501 p. 6 | Drops the not-joint condition. |
+| deepseek | render | test2_persons | interface gap | render MISMATCH | p501 p. 9; rendered/2025/dependent.md | Adoption and kidnapping are handled in dependent helpers outside the text; the label predates T-091. |
+| deepseek | render | qss_eligible | finding | render MISMATCH | p501 p. 11, Kidnapped child | Fix round 2 household F1, already in T-092; not new. |
+| deepseek | render | rdp_community_property | interface gap | render MISMATCH | i1040gi pp. 13, 23; p501 p. 6 | The not-joint condition is decided by p501 p. 6, not given. |
+
+Findings: none. No error introduced by T-091 or its correction, and no new low. Two observations (refusals are not
+judged by the comparison; the generated sample never sets `absence_no_return`) are in
+`.transcription/proposed/t091r2/household.findings.md`.

@@ -60,6 +60,13 @@
   {
    "printed": "2(d)",
    "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
+   "model": "IRS Form 2441 line 2, column (d) instructions: 'If you completed Part III, don't include in column (d) any benefits shown on line 28'; the restatement's helper includes 'expenses paid with dependent care benefits' instead of excluding them.",
+   "ruling": "Ruling: ambiguity; amb.2025.dc_line30 (owner ruling, Stage 15 decision 6, T-048). i2441 p. 3, Column (d): \"If you completed Part III, don't include in column (d) any benefits shown on line 28\"; Form 2441 line 30 subtracts them once (\"Don't include in column (d) any benefits shown on line 28 above. Then, add the amounts in column (d)\"); the instructions give no rule for dividing line 28 among persons. The deepseek model reads the register's rejected reading. dependent.dc_paid and dependent.dc_line2d are unchanged by T-091 (HEAD and working tree compared). As ruled since fix round 2. Project stands.",
+   "context": "7db521c7072076b34de2c46f48269a11b55c4015f638afcdab65367b53e69b35"
+  },
+  {
+   "printed": "2(d)",
+   "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
    "model": "The Form 2441 instructions for line 2(d) say 'If you completed Part III, don't include in column (d) any benefits shown on line 28,' but the helper includes expenses paid with dependent care benefits.",
    "ruling": "Ruling: ambiguity; amb.2025.dc_line30 (owner ruling, Stage 15 decision 6, T-048). i2441 p. 3, Column (d): \"If you completed Part III, don't include in column (d) any benefits shown on line 28\"; Form 2441 line 30 subtracts them once (\"Don't include in column (d) any benefits shown on line 28 above. Then, add the amounts in column (d)\"); the instructions give no rule for dividing line 28 among persons. The deepseek model reads the register's rejected reading. As ruled since round 2. Project stands.",
    "context": "2794b4ea6f0f070b878ed76033131131a92f3226a93921bb21a6681466652cbd"
@@ -69,6 +76,13 @@
    "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
    "model": "The IRS column (d) instruction says “If you completed Part III, don't include in column (d) any benefits shown on line 28,” but the helper says to include expenses paid with dependent care benefits and only subtracts excluded benefits later.",
    "ruling": "Ruling: ambiguity; existing owner ruling amb.2025.dc_line30, Stage 15 decision 6 (T-048). Archived f2441 (2025) p. 2 line 30 and i2441 p. 3 Column (d) request excluding benefits shown on line 28. The project deliberately presents each person's gross expenses and subtracts the excluded benefits once in the aggregate f2441.line30; the register records the owner's choice because the sources give no allocation rule among persons. This is an acknowledged departure in per-person display under that recorded ruling, not model error and not a claim that literal column (d) wording matches. Retain the ambiguity reference and the objection."
+  },
+  {
+   "printed": "2(d)",
+   "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
+   "model": "The IRS instruction for column (d) says 'If you completed Part III, don't include in column (d) any benefits shown on line 28,' but the helper includes 'expenses paid with dependent care benefits' and the line enters that helper amount without excluding line 28 benefits.",
+   "ruling": "Ruling: ambiguity; amb.2025.dc_line30 (owner ruling, Stage 15 decision 6, T-048). i2441 p. 3, Column (d): \"If you completed Part III, don't include in column (d) any benefits shown on line 28\"; Form 2441 line 30 subtracts them once (\"Don't include in column (d) any benefits shown on line 28 above. Then, add the amounts in column (d)\"); the instructions give no rule for dividing line 28 among persons. The deepseek model reads the register's rejected reading. dependent.dc_paid and dependent.dc_line2d are identical in HEAD and the working tree, and the BUG-0267 correction (hoh_test2_lived, hoh_absence, hoh_test2) touches no dc_* section of the rendered subject. As ruled since fix round 2 and in the T-091 round. Project stands.",
+   "context": "31a1751955301d1e53e6963397271199a5c7b2877d3ab114409047226fb89172"
   },
   {
    "printed": "2(d)",

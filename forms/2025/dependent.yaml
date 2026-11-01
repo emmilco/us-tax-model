@@ -27,7 +27,9 @@ form:
           member of your household, if your relationship did not violate local law), or other (any other relationship;
           such a person is a Step 4 relative only if they lived with you all year as a member of your household and the
           relationship did not violate local law). Do not list a person who was your spouse at any time during 2025:
-          that person can't be your qualifying relative."
+          that person can't be your qualifying relative. Give the relationship to you; on a joint return, a relative of
+          your spouse who is no relative of yours is entered as household_member or other, and a later question asks
+          about the relationship to your spouse."
       cite:
         doc: i1040gi
         locator: pp. 17 and 19, Steps 1 and 4, "A qualifying child is your..." and "A qualifying relative is your..."; p. 20, Adopted child, "An adopted child includes a child lawfully placed with you for legal adoption"; p. 21, Foster child, "A foster child is any child placed with you by an authorized placement agency or by judgment, decree, or other order of any court of competent jurisdiction"; p501 p. 19, Relatives who don't have to live with you, "Your father, mother, grandparent, or other direct ancestor, but not foster parent"; p501 p. 19, Member of Household or Relationship Test, "If at any time during the year the person was your spouse, that person can’t be your qualifying relative."; p501 p. 19, "Any of these relationships that were established by marriage aren’t ended by death or divorce."
@@ -629,6 +631,16 @@ form:
           - op: test
             all:
               - op: test
+                eq:
+                  - f1040.status
+                  - const: mfj
+              - op: test
+                eq:
+                  - dependent.spouse_relative
+                  - const: true
+          - op: test
+            all:
+              - op: test
                 any:
                   - op: test
                     eq:
@@ -644,9 +656,8 @@ form:
                       - const: other
               - op: test
                 eq:
-                  - dependent.months
-                  - const: 12
-                    type: Count
+                  - dependent.qr_all_year
+                  - const: true
               - op: test
                 any:
                   - op: test
@@ -665,7 +676,40 @@ form:
                       - const: true
       cite:
         doc: i1040gi
-        locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived with you all year as a member of your household"
+        locator: p. 19, Step 4, "A qualifying relative is your..." through "Any other person (other than your spouse) who lived with you all year as a member of your household"; p501 p. 19, Joint return, "If you file a joint return, the person can be related to either you or your spouse."
+    - id: dependent.spouse_relative
+      printed: (helper)
+      type: Bool
+      label: On a joint return, related to your spouse in one of the Step 4 ways
+      expr:
+        op: input
+        source: "Is this person related to your spouse in one of these ways: your spouse's child, stepchild or foster child, or a
+          descendant of any of them; your spouse's brother, sister, half brother, half sister, stepbrother or stepsister; your
+          spouse's father, mother, grandparent or other direct ancestor (not a foster parent); your spouse's stepfather or
+          stepmother; a son or daughter of your spouse's brother, sister, half brother or half sister; a brother or sister of
+          your spouse's father or mother; or your spouse's son-in-law, daughter-in-law, father-in-law, mother-in-law,
+          brother-in-law or sister-in-law? A relationship established by marriage is not ended by death or divorce. (Asked
+          only on a joint return, for a person who is not one of these relatives of yours.)"
+      cite:
+        doc: p501
+        locator: p. 19, Joint return, "If you file a joint return, the person can be related to either you or your spouse. Also, the person doesn’t need to be related to the spouse who provides support."; p. 19, Relatives who don't have to live with you, "Your child, stepchild, or foster child, or a descendant of any of them" through "mother-in-law, brother-in-law, or sister-in-law." and "Any of these relationships that were established by marriage aren’t ended by death or divorce."
+    - id: dependent.qr_all_year
+      printed: (helper)
+      type: Bool
+      label: Lived with you all of 2025 as a member of your household (qualifying relative test)
+      expr:
+        op: input
+        source: Did this person live with you all of 2025 as a member of your household? Count as time lived with you a
+          temporary absence by you or the person for special circumstances, such as illness, education, business, vacation,
+          military service or detention in a juvenile facility, and a stay in a nursing home for an indefinite period to
+          receive constant medical care. Answer Yes also for a person who died in 2025 and lived with you as a member of your
+          household until death; a child born in 2025 who lived with you as a member of your household for the rest of the
+          year, apart from any required hospital stay following birth; and a person you adopted, who was lawfully placed with
+          you for legal adoption, or who was placed with you as an eligible foster child in 2025, if your main home was the
+          person's main home for the entire time since the adoption or placement.
+      cite:
+        doc: p501
+        locator: p. 19, Temporary absences, "A person is considered to live with you as a member of your household during periods of time when one of you, or both, is temporarily absent due to special circumstances" and "If the person is placed in a nursing home for an indefinite period of time to receive constant medical care, the absence may be considered temporary."; p. 19, Death or birth, "A person who died during the year, but lived with you as a member of your household until death, will meet this test." through "your main home was the person’s main home for the entire time since the person was adopted or placed with you in 2025."; i1040gi p. 19, Step 4, "Any other person (other than your spouse) who lived with you all year as a member of your household"
     - id: dependent.lawful
       printed: (helper)
       type: Bool
@@ -708,6 +752,25 @@ form:
       cite:
         doc: i1040gi
         locator: p. 19, Step 4, "If the person was permanently and totally disabled, see Exception to gross income test"
+    - id: dependent.qr_kidnapped
+      printed: (gate)
+      type: Bool
+      label: A child aged 18 or under at the end of 2025 presumed kidnapped by someone who isn't a family member
+      expr:
+        op: test
+        all:
+          - op: test
+            lt:
+              - dependent.age
+              - const: 19
+                type: Count
+          - op: test
+            eq:
+              - dependent.kidnapped
+              - const: true
+      cite:
+        doc: p501
+        locator: 'p. 18, Kidnapped child, "This treatment applies for all years until the earlier of: 1. The year there is a determination that the child is dead, or 2. The year the child would have reached age 18."'
     - id: dependent.qualifying_relative
       printed: (helper)
       type: Bool
@@ -753,6 +816,13 @@ form:
           cite:
             doc: i1040gi
             locator: p. 21, Married person
+        - when: dependent.qr_kidnapped
+          form: Kidnapped child (Pub. 501)
+          remedy: A child presumed kidnapped by someone who isn't a family member may be your qualifying relative under
+            part-year rules this tool does not apply.
+          cite:
+            doc: p501
+            locator: p. 18, Kidnapped child, "You can treat a child as your qualifying relative even if the child has been kidnapped, but the following statements must be true."
     - id: dependent.qr_dependent
       printed: (helper)
       type: Bool
@@ -999,10 +1069,23 @@ form:
         doc: f1040s8812
         locator: p. 2, Part II-A Additional Child Tax Credit for All Filers, line 16b, "b Number of qualifying
           children under age 17 with the required social security number", "x $1,700. Enter the result"
-    - id: dependent.hoh_test2
+    - id: dependent.absence_no_return
       printed: (helper)
       type: Bool
-      label: A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive (the home-cost condition of Test 2 is tested on the household form)
+      label: Counted an absence the person was not expected to return from, or during which you did not keep up the home
+      expr:
+        op: input
+        source: In counting the time this person lived with you in 2025, did you count as time lived with you an absence by
+          you or the person from which it was not reasonable to assume the absent person would return to the home, or
+          during which you did not continue to keep up the home? (Asked when this person may qualify you for head of
+          household.)
+      cite:
+        doc: p501
+        locator: p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
+    - id: dependent.hoh_test2_lived
+      printed: (helper)
+      type: Bool
+      label: A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting every absence you counted (the home-cost condition of Test 2 is tested on the household form)
       expr:
         op: test
         any:
@@ -1045,6 +1128,42 @@ form:
       cite:
         doc: i1040gi
         locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year)
+    - id: dependent.hoh_absence
+      printed: (helper)
+      type: Bool
+      label: A Test 2 person only by counting an absence head of household does not count
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - dependent.hoh_test2_lived
+              - const: true
+          - op: test
+            eq:
+              - dependent.absence_no_return
+              - const: true
+      cite:
+        doc: p501
+        locator: p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the absent person will return to the home after the temporary absence."
+    - id: dependent.hoh_test2
+      printed: (helper)
+      type: Bool
+      label: A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting only absences head of household counts (the home-cost condition of Test 2 is tested on the household form)
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - dependent.hoh_test2_lived
+              - const: true
+          - op: test
+            eq:
+              - dependent.absence_no_return
+              - const: false
+      cite:
+        doc: i1040gi
+        locator: p. 14, Head of Household, Test 2 (a dependent, other than one who is your dependent only because they lived with you all year, which is any person claimed through the last Step 4 bullet, or your unmarried qualifying child, who lived with you more than half the year); p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
     - id: dependent.hoh_test1
       printed: (helper)
       type: Bool

@@ -1,81 +1,22 @@
 {
  "rulings": {
-  "unruled:dependent#1": {
-   "class": "out of scope",
-   "prompt_sha": "a1b75dcb86dbfc85db05df81d6878092f53c60ffe71c9868cee2578c9add683b",
-   "evidence": "low, batched in T-092. Repeat of round-3 dependent#3 (r3 L1), widened to the whole support list of p501 pp. 15 and 20-21. Covered in substance by dependent.supported: lodging at fair rental value (the person's own home, and lodging they give you, are theirs), own funds actually spent (savings, tax-exempt income, borrowed amounts), the dependency allotment, care payments you make (care you pay for is support you provide). Arithmetic of the over-half test: household-expense division, fair market value, capital items. Rare: fiscal year, borrowed money repaid later, lump-sum home-for-the-aged payment, foster-care expenses of a business or charitable caregiver, one check to both spouses, GI Bill. Not in the question and plausible: medical insurance premiums you pay are your support and Medicare and other insurance benefits are not (p501 p. 21; r3 L1); income and social security taxes the person pays, life insurance premiums and funeral expenses are not support (p501 p. 21), so a filer who counts a parent's life insurance premiums or funeral costs as support may cross the over-half line. Support-definition omissions are Low, as round-1 PENDING-8 and r3 L1."
-  },
-  "unruled:dependent#2": {
-   "class": "out of scope",
-   "prompt_sha": "a1b75dcb86dbfc85db05df81d6878092f53c60ffe71c9868cee2578c9add683b",
-   "evidence": "low, batched in T-092. Repeat of round-3 dependent#4 (r3 L2), which named state benefits, GI Bill and DEA payments. dependent.self_support carries own funds actually spent (which covers savings, tax-exempt income and borrowed amounts spent), lodging at fair rental value (which covers a home the person owns), foster payments, scholarships and social security. Arithmetic: capital items. Not in the question: GI Bill amounts are in total support, DEA payments used for the child's support are excluded, Medicare and insurance benefits are not support, and income and social security taxes the person pays from their own income are not support (p501 p. 21). The tax rule needs a working child whose withheld taxes would carry them past half their own support; GI Bill and DEA students are rare. Low."
-  },
-  "unruled:dependent#3": {
-   "class": "out of scope",
-   "gate": "dependent.other_claimant",
-   "prompt_sha": "a1b75dcb86dbfc85db05df81d6878092f53c60ffe71c9868cee2578c9add683b",
-   "evidence": "Repeat of round-3 dependent#1 (r3 N1): the non-taxpayer carve-out (i1040gi p. 19; p501 p. 18) is absent from dependent.other_claimant, but a Yes refuses, through the refusal on dependent.qualifying_child, which reaches the qualifying-relative path. Witness rerun on the current tree (stage8.hoh.parent.test1 filed single; /tmp/adj-compl-r4/w/q_single*): other_claimant No gives line 19 $500; Yes gives the refusal 'Qualifying child of more than one person (tie-breaker rules)' on line 19 and household.hoh_eligible. An over-refusal, never a wrong amount."
-  },
-  "unruled:dependent#4": {
-   "class": "out of scope",
-   "prompt_sha": "a1b75dcb86dbfc85db05df81d6878092f53c60ffe71c9868cee2578c9add683b",
-   "evidence": "open as T-091 (item 1, round-1 PENDING-4); repeat of round-3 dependent#2. On a joint return a relative of either spouse counts (p501 p. 19), but dependent.relationship feeds the qualifying-child and qualifying-relative tests alike, so the fix needs logic. The spouse's-stepparent sentence arises only on a married filing separately return, which is refused (s3.mfs, scope.ready)."
-  },
-  "unruled:dependent#5": {
-   "class": "out of scope",
-   "prompt_sha": "a1b75dcb86dbfc85db05df81d6878092f53c60ffe71c9868cee2578c9add683b",
-   "evidence": "open as T-091 (item 2, round-1 PENDING-7); repeat of round-3 dependent#6. The reasonable-return condition (p501 p. 9) and the indefinite nursing-home stay (p501 p. 19) pull dependent.months (and part_year_home) in opposite directions for head of household and the qualifying-relative household test. Keeping up the home during the absence is household.home_cost (Test 2, 'for 2025') or dependent.parent_home_paid (Test 1). New in this round, and covered in substance: a required hospital stay after birth is a temporary absence for medical care, which dependent.months counts as time lived with you."
-  },
-  "unruled:dependent#6": {
-   "class": "covered",
-   "line": "dependent.student",
-   "prompt_sha": "a1b75dcb86dbfc85db05df81d6878092f53c60ffe71c9868cee2578c9add683b",
-   "evidence": "Repeat of round-3 dependent#5: dependent.student asks whether the person was enrolled as a full-time student at a school, including a technical, trade or mechanical school. A co-op student is enrolled in the school's regular course, of which the co-op job is part, so the plain answer is Yes; the on-the-job-training exclusion concerns training courses, not a school's co-op. 'Enrolled as a full-time student' is naturally read by the school's own standard, which is the second quoted sentence."
-  },
-  "unruled:dependent#7": {
-   "class": "out of scope",
-   "prompt_sha": "a1b75dcb86dbfc85db05df81d6878092f53c60ffe71c9868cee2578c9add683b",
-   "evidence": "low, batched in T-092. Repeat of round-3 dependent#8 (r3 L3). dependent.divorced_rule asks whether a Form 8332 release or a decree lets the noncustodial parent claim the child, and a Yes refuses (dependent.qualifying_child). It does not say that a revocation counts for 2025 only if written notice was given in 2024 or earlier (p501 pp. 14-15); a custodial parent who revoked in 2025 plausibly answers No when the release still holds and the answer should be Yes (refusal). The attachment of the revocation is a paper entry. Rare: it needs a release revoked in 2025 specifically."
-  },
-  "unruled:dependent#8": {
-   "class": "covered",
-   "line": "dependent.dc_paid",
-   "prompt_sha": "a1b75dcb86dbfc85db05df81d6878092f53c60ffe71c9868cee2578c9add683b",
-   "evidence": "Repeat of round-3 dependent#9: dc_paid asks only for expenses for the person's care so that the filer could work or look for work, which carries the daily allocation for part-period work and the division of mixed-purpose expenses; chauffeur, bartender and gardener services are not care of the person. Child support goes to a child who does not live with the payer, who is then not the payer's qualifying person (dependent.dc_qp)."
-  },
-  "unruled:dependent#9": {
-   "class": "out of scope",
-   "gate": "f8863.ban_refused",
-   "prompt_sha": "a1b75dcb86dbfc85db05df81d6878092f53c60ffe71c9868cee2578c9add683b",
-   "evidence": "Repeat of round-3 dependent#10: f8863.ban asks about a denial or reduction after 2015 needing Form 8862 and the 2- and 10-year bans, and f8863.ban_refused refuses Form 8863 line 7. The HANDLED ELSEWHERE list still misses it because the refusal is on f8863.line7, which reads dependent only through other f8863 lines."
-  },
-  "unruled:dependent#10": {
-   "class": "out of scope",
-   "prompt_sha": "a1b75dcb86dbfc85db05df81d6878092f53c60ffe71c9868cee2578c9add683b",
-   "evidence": "low, batched in T-092. New. The American opportunity credit needs the student's TIN issued by the due date (i8863 pp. 1 and 3); dependent.edu_student reads dependent.tin, which also answers Yes for an ITIN or ATIN merely applied for by then (the Step 3 and credit-for-other-dependents standard; amb.2025.ctc_spouse_itin_application confines the deeming of an applied-for ITIN to the credit for other dependents). Witness (stage19.example.jack_kay; /tmp/adj-compl-r4/w/e_*): tin Yes gives line 29 $1,000 and Form 8863 line 19 $1,500; No refuses the return (dependent.claimed_no_tin), so a student with an ITIN applied for but not issued gets the credit wrongly and no answer is right. Rare: a dependent student who needs an ITIN and whose application is pending at the due date; the same rarity as round-1 PENDING-10 (expired ITIN, Low)."
-  },
   "unruled:household#1": {
    "class": "out of scope",
-   "gate": "household.hoh_fails",
-   "prompt_sha": "66464b9ecfd786e89dd1fc1b87219f24daac60fc332e11227fc02234a280619a",
-   "evidence": "Low, batched in T-092. p501 p. 9, Note: TANF or similar payments you received and used to support another person are support you provided. household.home_cost (BUG-0260) states the included and excluded costs and the own-funds rule but not TANF; a filer whose TANF grant is issued for the child may read the own-funds sentence as making the rent paid from it the child's and answer No. A No ends in a refusal at household.hoh_fails when no other test is met, never a wrong amount (stage8.hoh.child.ctc with home_cost false: lines 12e, 16 and 24 refused at household.hoh_fails; /tmp/adj-fixr5-household-refund/). Repeat of fix round 4 L1 (.transcription/proposed/fixr4/household.findings.md); see r5.findings.md and .transcription/proposed/fixr5/household.findings.md L1."
+   "gate": "dependent.kidnapped",
+   "prompt_sha": "3269f9fd0e4d6c9b0bfa475d80741c6a686f2c30eb1efd73b0dd5c70a1d30a39",
+   "evidence": "Repeats the kidnapped-child and one-taxpayer parts of round-6 household#2, re-checked against BUG-0267. The kidnapped-child rule of p501 pp. 9-10 is refused, not encoded: household.test2_persons counts dependent.hoh_test2, now hoh_test2_lived and not absence_no_return; hoh_test2_lived reads dependent.lived_half (directly and through hoh_lived_half), which carries the refusal when dependent.kidnapped; a relative under 19 is also refused by dependent.qr_kidnapped on dependent.qualifying_relative. The refusal also reaches the new household.test2_absence_persons and household.hoh_absence. Witness (stage8.hoh.child.ctc): kidnapped No gives line 12e $23,625, line 16 $14,378; kidnapped Yes refuses lines 12e, 16, 19 and 24 at dependent[child].kidnapped, also with absence_no_return Yes. The one-taxpayer limit (p501 p. 10) bites only when another taxpayer could use the same person: a qualifying child of another person is refused by dependent.other_claimant, a relative is claimed by only one taxpayer, and a multiple-support person is refused by dependent.multiple_support. The name of an unclaimed qualifying child (i1040gi p. 14) is a page-1 entry the tool does not produce (presentation, as r5 N2). The claim's description of hoh_eligible's refusals (the absence gate and community property) is accurate; the household prompt does not show the dependent questions and refusals its counts read."
   },
   "unruled:household#2": {
-   "class": "out of scope",
-   "gate": "household.qss_fails",
-   "prompt_sha": "66464b9ecfd786e89dd1fc1b87219f24daac60fc332e11227fc02234a280619a",
-   "evidence": "Low, batched in T-092. Two sentences. (1) The TANF note of p501 p. 9 is missing from test 4 of household.qss_eligible, as in household#1; a wrong No ends in a refusal at household.qss_fails (stage21.pending1.qss_valid_computes with qss_eligible false: lines 12e, 16 and 24 refused), never a wrong amount. (2) The name of an unclaimed qualifying child (i1040gi p. 15) is a page-1 paper entry, presentation, as round-4 household#4; the child condition itself is in test 2 of the question. See r5.findings.md."
+   "class": "covered",
+   "line": "dependent.parent_home_paid",
+   "prompt_sha": "3269f9fd0e4d6c9b0bfa475d80741c6a686f2c30eb1efd73b0dd5c70a1d30a39",
+   "evidence": "Repeat of round-6 household#1. household.test1_met counts dependent.hoh_test1, which requires dependent.parent_home_paid: 'did you pay over half the cost of keeping up a home that was their main home for all of 2025 (or, if your parent died in 2025, for the entire part of 2025 your parent was alive)? A rest home or home for the elderly counts as your parent's main home if you paid over half the cost of keeping your parent there', with the cost definition and own-funds rule (round-1 PENDING-6 fixed as BUG-0222; BUG-0258). The household prompt does not show dependent's questions. Witness rerun on the current tree (stage8.hoh.parent.test1): parent_home_paid Yes gives head of household (line 12e $23,625, line 16 $14,378, test1_met true, household.hoh_absence false); No refuses lines 12e, 16, 19 and 24 at household.hoh_fails. Test 1 is untouched by BUG-0267: household.hoh_absence requires test1_met false."
   },
   "unruled:household#3": {
-   "class": "presentation",
-   "prompt_sha": "66464b9ecfd786e89dd1fc1b87219f24daac60fc332e11227fc02234a280619a",
-   "evidence": "Repeat of round-4 household#3 (and round-3 household#3): the name of an unclaimed qualifying child is a paper entry beside the head of household box (i1040gi p. 14). The tool already lets such a child qualify the filer (dependent.hoh_test2) and produces no page-1 name entries."
-  },
-  "unruled:household#4": {
    "class": "out of scope",
-   "gate": "household.credit_disallowed",
-   "prompt_sha": "66464b9ecfd786e89dd1fc1b87219f24daac60fc332e11227fc02234a280619a",
-   "evidence": "Repeat of round-4 household#2 (r3 N1, r4 N1): household.credit_disallowed omits the exceptions to filing Form 8862 (i1040gi pp. 39 and 43, i1040s8812 p. 2), so a filer within one answers Yes literally and is refused through eic.credit and s8812.line12. An over-refusal, never a wrong amount; carried as in r4 N1."
+   "gate": "household.qss_fails",
+   "prompt_sha": "3269f9fd0e4d6c9b0bfa475d80741c6a686f2c30eb1efd73b0dd5c70a1d30a39",
+   "evidence": "Low, already batched in T-092 (fix round 2 household F1; r6 L3): test 3 of household.qss_eligible states temporary absences, birth, death and adoption but not the kidnapped-child exception (p501 p. 11), so a filer whose child was kidnapped answers No, and household.qss_fails refuses (stage21.pending1.qss_valid_computes: qss_eligible Yes gives line 12e $31,500, line 16 $3,186; No refuses lines 12e, 16, 19 and 24 at household.qss_fails); never a wrong amount. The name entry for an unclaimed child is a page-1 entry (presentation). Predates T-091: the T-091 sentence (an absence counts only if a return was reasonable to assume and the home was kept up) does not touch it, and BUG-0267 did not change qss_eligible."
   },
   "unruled:f2441#1": {
    "class": "out of scope",
@@ -133,6 +74,40 @@
    "class": "presentation",
    "prompt_sha": "284becf9ba08d2217f0321b6ba7f181259c7ce0f4239b8adc514eff7c76d1c58",
    "evidence": "f2441.line2_box checks the box, with a display note to attach a statement listing the other qualifying persons (i2441 p. 3, Line 2); the column (c) box is dependent.dc_line2c ('Check here if the qualifying person was over age 12 and was disabled', from dependent.dc_over12_care). Choosing the three people with the highest expenses for the form and the statement's contents change no amount."
+  },
+  "unruled:dependent#1": {
+   "class": "out of scope",
+   "prompt_sha": "7ae470b2ba7cca17d1f09eb859482ed075a8e9d55c1cef589f5b14ce9966ef5d",
+   "evidence": "Rerun after the citation-quote fix: repeat of round-7 dependent#5. low, batched in T-092. Repeat of round-6 dependent#1 (r4 L1, r3 L1), the support list of p501 pp. 15 and 20-21; dependent.supported is unchanged by T-091. Covered in substance: lodging at fair rental value (which covers lodging the person gives you, the rent-free reduction and a partial-lodging share), own funds only if actually spent, both parts of the dependency allotment (the quarters allowance with it), care you pay for (childcare payments). Arithmetic of the over-half test. Rare: lump-sum home-for-the-aged payment, borrowed money repaid later, capital items, foster care as a trade or business or for a charity, one check to both spouses, need-based payments shown not used for support. Not in the question and plausible: medical insurance premiums you pay are your support and Medicare and other insurance benefits are not; the excluded items of p501 p. 21. Support-definition omissions are Low, as round-1 PENDING-8, r3 L1, r4 L1 and r6 L1. See r7.findings.md L1."
+  },
+  "unruled:dependent#2": {
+   "class": "out of scope",
+   "prompt_sha": "7ae470b2ba7cca17d1f09eb859482ed075a8e9d55c1cef589f5b14ce9966ef5d",
+   "evidence": "Rerun after the citation-quote fix: repeat of round-7 dependent#4. low, batched in T-092. Repeat of round-6 dependent#2 (r4 L2, r3 L2). dependent.self_support (unchanged by T-091) carries own funds only if actually spent (which covers savings, tax-exempt income and borrowed amounts spent for support), lodging at fair rental value (which covers a home the person owns), foster payments, scholarships and social security. Arithmetic of the over-half test: fair market value of property, division of household expenses. Not in the question: GI Bill amounts are in total support; the excluded items of p501 p. 21 (income and social security taxes the person pays, Survivors' and Dependents' Educational Assistance payments). The tax rule needs a working child whose withheld taxes carry them past half their own support; GI Bill students are rare. Low. See r7.findings.md L2."
+  },
+  "unruled:dependent#3": {
+   "class": "out of scope",
+   "gate": "dependent.other_claimant",
+   "prompt_sha": "7ae470b2ba7cca17d1f09eb859482ed075a8e9d55c1cef589f5b14ce9966ef5d",
+   "evidence": "Rerun after the citation-quote fix. Repeat of the first completeness round's note N1 (dependent_household.findings.md): i1040gi p. 19 and p501 p. 18, a person who isn't required to file and doesn't file or files only for a refund isn't a taxpayer, so the child isn't that person's qualifying child. dependent.other_claimant asks about any other person and omits the carve-out; a Yes refuses through dependent.qualifying_child, so the gap is an over-refusal, never a wrong amount. Unchanged by T-091."
+  },
+  "unruled:dependent#4": {
+   "class": "covered",
+   "line": "dependent.months",
+   "prompt_sha": "7ae470b2ba7cca17d1f09eb859482ed075a8e9d55c1cef589f5b14ce9966ef5d",
+   "evidence": "Rerun after the citation-quote fix: repeat of round-7 dependent#2 (the clause is also batched in T-092 by the owner). New as a claim. p501 p. 13, Death or birth of child: a child born or who died during the year is treated as having lived with you more than half the year if your home was the child's home more than half the time the child was alive; 'The same is true if the child lived with you more than half the year except for any required hospital stay following birth.' dependent.months tells the filer to count temporary absences for medical care as time lived with you, and for a child born in 2025 who meets the other qualifying-child conditions to enter 12 if 'your home was their home for more than half the time they were alive'. A required hospital stay after birth is an absence for medical care, and a hospital is not the newborn's home, so the plain answer counts it; the sentence is stated explicitly in dependent.qr_all_year (T-091) because that question lists its own absences, which does not narrow months. Stake if a filer read it otherwise: stage8.hoh.child.ctc filed single with age 0, born_died Yes: months 12 gives line 19 $2,200 and line 24 $15,642; months 0 gives line 19 $500 and line 24 $17,342 (head of household: refused at household.hoh_fails). months is unchanged by T-091 (owner's design). An explicit clause would remove the claim; see r7.findings.md N2."
+  },
+  "unruled:dependent#5": {
+   "class": "out of scope",
+   "gate": "dependent.claimed_no_tin",
+   "prompt_sha": "7ae470b2ba7cca17d1f09eb859482ed075a8e9d55c1cef589f5b14ce9966ef5d",
+   "evidence": "Rerun after the citation-quote fix: repeat of round-7 dependent#1. Repeat of round-6 dependent#3. p501 p. 13: a stillborn child can't be claimed; state or local law must treat the child as born alive, with proof of a live birth. No question asks it, but a stillborn child has no SSN, ITIN or ATIN, so dependent.tin is No, and dependent.claimed_no_tin refuses the return; its remedy names the born-and-died child entered as 'Died' with a birth certificate as outside this tool, which is where the live-birth proof applies. Witness rerun on the current tree (stage8.hoh.child.ctc with age 0, born_died Yes, tin No, work_ssn No): lines 12e, 16, 19 and 24 refused at dependent[child].claimed_no_tin. Only a false Yes to dependent.tin lets a stillborn child compute. A refusal, never a wrong amount. Not touched by T-091 or BUG-0267."
+  },
+  "unruled:dependent#6": {
+   "class": "covered",
+   "line": "dependent.student",
+   "prompt_sha": "7ae470b2ba7cca17d1f09eb859482ed075a8e9d55c1cef589f5b14ce9966ef5d",
+   "evidence": "Rerun after the citation-quote fix: repeat of round-7 dependent#3. Repeat of round-6 dependent#5 (round-4 dependent#6, round-3 dependent#5): dependent.student asks whether the person was enrolled as a full-time student at a school, including a technical, trade or mechanical school. A co-op student is enrolled in the school's regular course, of which the co-op job is part, so the plain answer is Yes; the on-the-job-training exclusion concerns training courses, not a school's co-op. Unchanged by T-091."
   }
  },
  "baseline": {

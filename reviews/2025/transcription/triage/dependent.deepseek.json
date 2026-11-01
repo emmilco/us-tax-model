@@ -2,20 +2,12 @@
  "bank": null,
  "errors": [
   {
-   "line": "dependent.h_qr_dep",
-   "message": "dependent.dependent.h_qr_dep: reference 'dependent.h_qr_rel' does not resolve"
+   "line": "dependent.dc_over12_care",
+   "message": "model changed a published input interface"
   },
   {
-   "line": "dependent.h_qr_dep",
-   "message": "dependent.dependent.h_qr_dep: comparison operands have incompatible types"
-  },
-  {
-   "line": "dependent.h_dc_would_be",
-   "message": "dependent.dependent.h_dc_would_be: reference 'dependent.h_qr_rel' does not resolve"
-  },
-  {
-   "line": "dependent.h_dc_would_be",
-   "message": "dependent.dependent.h_dc_would_be: comparison operands have incompatible types"
+   "line": "dependent.edu_line31",
+   "message": "dependent.dependent.edu_line31: 'aqee' has no line 'line31'"
   },
   {
    "line": "dependent.dc_count",
@@ -81,6 +73,15 @@
    "triage": "candidate invalid"
   },
   {
+   "candidate": "dependent.hoh_absence",
+   "handle": "dependent.hoh_absence",
+   "open_at_triage": true,
+   "project": "dependent.hoh_absence",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
    "candidate": "dependent.hoh_test2",
    "handle": "dependent.hoh_test2",
    "open_at_triage": true,
@@ -130,15 +131,6 @@
    "handle": "dependent.dc_count",
    "open_at_triage": true,
    "project": "dependent.dc_count",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "dependent.ptc_magi_counted",
-   "handle": "dependent.ptc_magi_counted",
-   "open_at_triage": true,
-   "project": "dependent.ptc_magi_counted",
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -198,10 +190,10 @@
    "triage": "candidate invalid"
   }
  ],
- "log_sha256_at_triage": "0664c98534803a7fa7298be6118353b8f1e5cc09875a91afeb87af19e7e25f3f",
+ "log_sha256_at_triage": "4e6519ec266a14566a9cf458f8fa4a1b47997867a934de279a4d92cabc3ddf8d",
  "policy": "executable-triage-v2",
- "response_sha256": "d41ce10e9a8098af2f7918c1d478a5738537ad0cc5a03e5021546aada0daf006",
+ "response_sha256": "b8d2f2d65563ac4067c9647736db0c46bb7bc1f83658a49f38abb997bbf52f3e",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "invalid",
- "subject_sha256": "9447fba25075e5716eb5ee416844e8b751d79adc45a511815db0feebab514f4b"
+ "subject_sha256": "6fa85d097894227afd08a82d62ff32a64334ea5ab0bae9a9f8cd4f16f67c4c81"
 }

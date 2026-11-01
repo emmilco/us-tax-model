@@ -3840,3 +3840,78 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Where:** `forms/2025/person.yaml`, `person.sep_s3`.
 - **Fix:** `ambiguity: amb.2025.sep_loss_floor`. No value change (`stage14.sep.loss_floor` pins the reading).
 - **Tags:** traceability; value-neutral
+
+## BUG-0264 — A relative of the spouse on a joint return could not be a qualifying relative
+
+- **Date:** 2026-10-31
+- **Caught by:** the standing completeness review of `dependent`, adjudicated
+  (`reviews/2025/completeness/dependent_household.findings.md`, PENDING-4; T-091 (1)). Witness: base `stage13.ctc_spouse_ssn`
+  (mfj) with a person aged 30, `months` 0, not in the household: `other` gave line 19 $0 where the relationship through the
+  spouse gives $500.
+- **Symptom:** p501 p. 19, Joint return, "If you file a joint return, the person can be related to either you or your spouse."
+  `dependent.relationship` asked only the relationship to you, and a spouse's nephew, niece, aunt or uncle fitted only `other`,
+  which needs a full year in the household.
+- **Root cause:** `dependent.relationship` feeds both the qualifying-child and the qualifying-relative tests; the review's
+  proposed rewording would have let a spouse's relative pass the qualifying-child test, which the joint-return sentence does not
+  reach.
+- **Where:** `forms/2025/dependent.yaml`, `dependent.relationship`, `dependent.qr_relationship`.
+- **Fix:** a new input `dependent.spouse_relative`, read only by `qr_relationship` and only on a joint return; the relationship
+  question says to give the relationship to you. Regressions `stage8.t091.spouse_relative.*`.
+- **Tags:** input-conflation; amount-affecting; caught-by-completeness-review
+
+## BUG-0265 — A temporary absence counted for head of household without the expected-return condition
+
+- **Date:** 2026-10-31
+- **Caught by:** the standing completeness review of `dependent`, adjudicated
+  (`reviews/2025/completeness/dependent_household.findings.md`, PENDING-7; T-091 (2)). Witness: base `stage8.hoh.parent.test1`
+  with `relationship` `parent_relative` and `household.home_cost` Yes: a grandparent who moved permanently into a nursing home,
+  counted at `months` 12, gave head of household (line 16 $14,378) where 0 gives the refusal `household.hoh_fails`.
+- **Symptom:** p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after
+  the temporary absence. You must continue to keep up the home during the absence." `dependent.months` counted absences for
+  medical care with no condition. The QSS question carried the same unconditioned list, and p501 p. 11 points QSS to this rule.
+- **Root cause:** `dependent.months` served head of household and the qualifying-relative household test alike, but the
+  expected-return sentence sits only under head of household, while p501 p. 19 lets an indefinite nursing-home stay count for a
+  qualifying relative.
+- **Where:** `forms/2025/dependent.yaml`, `dependent.months`, `dependent.hoh_test2`, `dependent.qr_relationship`;
+  `forms/2025/household.yaml`, `household.qss_eligible`.
+- **Fix:** a new input `dependent.absence_no_return` and gate `dependent.hoh_absence` refuse `hoh_test2` when the time lived with
+  you counted such an absence; the qualifying-relative test reads a new input `dependent.qr_all_year` that counts the indefinite
+  nursing-home stay; `months`, `part_year_home` and `us_half` are unchanged; `household.qss_eligible` states the condition.
+  Regressions `stage8.t091.absence.*`, `stage8.t091.nursing_home.*`.
+- **Tags:** input-conflation; question-incomplete; refusal-added; caught-by-completeness-review
+
+## BUG-0266 — A kidnapped child was not refused on the qualifying-relative test
+
+- **Date:** 2026-10-31
+- **Caught by:** BUG-0234's write-up ("`dependent.qr_relationship` was not given a refusal"); T-091 (3). Witness:
+  `stage8.t091.kidnapped.qr_refused`, a household-member child presumed kidnapped with `months` 0: the full-year household test
+  gave line 19 $0 with no refusal.
+- **Symptom:** p501 p. 18, Kidnapped child, "You can treat a child as your qualifying relative even if the child has been
+  kidnapped"; the part-year rule there was not applied, and the refusal of BUG-0213 covered only the qualifying-child tests.
+- **Where:** `forms/2025/dependent.yaml`, `dependent.qualifying_relative`.
+- **Fix:** gate `dependent.qr_kidnapped` (kidnapped, age under 19 at the end of 2025, the safe side of p501 p. 18's "the year
+  the child would have reached age 18") refuses `qualifying_relative`; the part-year rule is not encoded. Regressions
+  `stage8.t091.kidnapped.*`.
+- **Tags:** part-year-rule-missing; refusal-added; fix-sibling-missed; caught-by-audit
+
+## BUG-0267 — The head-of-household absence refusal refused returns another person qualified
+
+- **Date:** 2026-10-31
+- **Caught by:** the T-091 round adjudication of `dependent` and `household` (`.transcription/proposed/t091/dependent.findings.md`
+  and `household.findings.md`, L1 in each, found independently). Introduced by BUG-0265's fix before it was committed.
+  Witness: `stage8.t091r.absence.second_child_clean`, two children of whom one counted an absence head of household does not
+  count: lines 12e and 16 were refused at `dependent[child].hoh_absence` where the other child alone gives head of household
+  (line 12e $23,625, line 16 $14,378).
+- **Symptom:** i1040gi p. 14, Test 2, "in which one of the following also lived for more than half of the year": one Test 2
+  person is enough. The gate refused `dependent.hoh_test2` for any entry that lived with you more than half the year and
+  answered yes to the absence question, including a person who was not a Test 2 person, and `household.test2_persons` sums
+  over every entry, so one entry's refusal refused the return.
+- **Root cause:** the refusal sat on the per-person line, below a sum in which a refusal outranks the other entries (spec
+  4.7.5, the limit kept at T-093), while whether the absence matters is a fact about the whole return.
+- **Where:** `forms/2025/dependent.yaml`, `dependent.hoh_absence`, `dependent.hoh_test2`; `forms/2025/household.yaml`.
+- **Fix:** `dependent.hoh_test2_lived` holds the former Test 2 expression; `dependent.hoh_test2` counts a person only without
+  such an absence; `dependent.hoh_absence` marks a person who is a Test 2 person only by counting one; the return-level gate
+  `household.hoh_absence` (unmarried, Test 1 not met, home cost paid, no Test 2 person, at least one such person) refuses
+  `household.hoh_eligible`. Regressions `stage8.t091r.absence.*`; `stage8.t091.absence.hoh_refused` now refuses at the
+  household gate.
+- **Tags:** over-refusal; fix-introduced; refusal-placement; caught-by-source-adjudication

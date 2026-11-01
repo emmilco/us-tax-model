@@ -9,7 +9,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 | deduction_choice | With no election to itemize and no spouse itemizing, Form 1040 line 16 under the project's standard-or-itemized choice is at most line 16 under either deduction forced. | 400 | 140 | holds |
 | edu_clw_nonneg | Form 8863 Credit Limit Worksheet line 6 (Form 1040 line 18 less Schedule 3 lines 1 and 2) is never negative. | 400 | 132 | holds |
 | refusal_propagates | No line computes a value from an operand that is a refusal; every line evaluated from a refused operand is a refusal. | 400 | 343 | holds |
-| refusal_outranks_unknown | On generated returns with up to eight answers removed, every line evaluated from a refused operand is a refusal, whatever its other operands are; in particular an unknown operand does not hide a refused one. | 400 | 318 | holds |
+| refusal_outranks_unknown | On generated returns with up to eight answers removed, every line evaluated from a refused operand is a refusal, whatever its other operands are; in particular an unknown operand does not hide a refused one. | 400 | 319 | holds |
 | tax_monotone | Raising W-2 box 1 of the first employer, all else fixed, never lowers Form 1040 line 16. | 400 | 139 | holds |
 | tax_monotone_by_method | Raising W-2 box 1 of the first employer, all else fixed, never lowers the Qualified Dividends and Capital Gain Tax Worksheet line 25 or the Schedule D Tax Worksheet line 47, each where it is computed on both returns. | 400 | 140 | holds |
 | screens_respected | No generated return answers a screen No while an amount asked only after a Yes is nonzero (the generator's screens: Form 5695 Parts I and II, Sections A and B and lines 5a, 25a and 26a; Form 2441 care and benefits; Form W-2 box 12; the Simplified Method; owned vehicles; Form 7206). | 400 | 94 | holds |
@@ -25,7 +25,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## refusal_outranks_unknown
 
-- Cases with a refused operand somewhere: 318; cases with a line that has both a refused and an unknown operand (the order this property guards): 231.
+- Cases with a refused operand somewhere: 319; cases with a line that has both a refused and an unknown operand (the order this property guards): 236.
 
 ## tax_monotone
 
@@ -41,7 +41,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## Branch coverage of the generated corpus
 
-2502 of 2832 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
+2506 of 2846 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
 
 - asset.outside:true
 - asset.screen:true
@@ -53,6 +53,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - asset.bonus_mixed:true
 - clcw.spouse_screen:true
 - clcw.bad:true
+- clcw.line10:positive
 - dcprov.household:true
 - dcprov.related:true
 - dcprov.see_statement:true
@@ -65,7 +66,11 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - dependent.part_year_home:true
 - dependent.hoh_lived_half:false
 - dependent.dc_lived_half:false
+- dependent.spouse_relative:true
 - dependent.lawful:false
+- dependent.qr_kidnapped:true
+- dependent.absence_no_return:true
+- dependent.hoh_absence:true
 - dependent.dc_under13:false
 - dependent.dc_over12_care:false
 - dependent.dc_over12_care:true
@@ -74,7 +79,6 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - dependent.ptc_magi_counted#0
 - dependent.edu_over:true
 - dependent.edu_over_refused:true
-- dependent.edu_line25:true
 - dependent.edu_line26:true
 - div.bad_special:true
 - eic.died_2025:true
@@ -108,7 +112,6 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f2441.line29:floor
 - f2441.line31:left
 - f5329.l3_s:positive
-- f5329.l49_base:right
 - f5695.line15:right
 - f5695.line16:positive
 - f5695.ins_capped:right
@@ -123,6 +126,8 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f8606.dist:true
 - f8863.ban:true
 - f8863.ban_refused:true
+- f8863.no_refund:true
+- f8863.line8#0
 - f8889.bad_months:true
 - f8889.use_last_month:true
 - f8889.line3_part_year#0
@@ -163,6 +168,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - household.community_property:true
 - household.hoh_community_property:true
 - household.credit_disallowed:true
+- household.hoh_absence:true
 - household.qss_eligible:false
 - household.qss_fails:true
 - household.rdp:true
@@ -220,8 +226,8 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - person.ira_ssb#0
 - person.edu_over:true
 - person.edu_over_refused:true
-- person.edu_line25:true
 - person.edu_line26:true
+- person.edu_kid:true
 - person.x_cap09:floor
 - person.x_c05#0
 - person.x_has05:true
@@ -235,7 +241,6 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - person.x_c22:right
 - person.x_c23:right
 - person.x_two23:true
-- person.x_other_exc:positive
 - person.x_limit_binds:true
 - person.x_other:true
 - refund.has:true
@@ -286,12 +291,17 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - retirement.code_screen:true
 - retirement.screen_refused:true
 - retirement.wrong_kind:true
+- retirement.exc_capped:right
 - retirement.is_e05:true
 - retirement.l2_e05#0
 - retirement.is_e09:true
 - retirement.l2_e09#0
+- retirement.is_e19:true
+- retirement.l2_e19#0
 - retirement.is_e22:true
 - retirement.l2_e22#0
+- retirement.is_e23:true
+- retirement.l2_e23#0
 - retirement.is_s:true
 - retirement.l1_s#0
 - retirement.l2_s#0

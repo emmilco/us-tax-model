@@ -226,18 +226,24 @@
   "findings": [
    {
     "kind": "WIDE",
-    "situation": "A person who was married at the end of 2025 and either files no joint return or files one only to claim a refund must answer YES, so the tool refuses the qualifying child and qualifying relative lines even though it computes them correctly.",
-    "irs_text": "Question: \"Was this person married at the end of 2025...\" IRS: \"if the person is married but doesn't file a joint return or files a joint return only to claim a refund of withheld income tax or estimated tax paid, you may be able to claim that person as a dependent... In that case, go to Step 2, question 3 (for a qualifying child), or Step 4, question 4 (for a qualifying relative).\" (i1040gi 2025 p. 21, Married person)",
-    "why": "Marriage alone does not change either test, and the Married person rule returns this case to the ordinary flow. The qualifying child line already has a helper for a joint return filed other than only to claim a refund, and the qualifying relative conditions at Step 4 do not depend on marital status, so the refusal is unnecessary for these two lines. It remains needed for the EIC line, which does not compute the dependency test that a married child must meet (i1040gi p. 44)."
+    "situation": "The person was married at the end of 2025 but neither files a joint return nor files one only to claim a refund, so the Step 1 and Step 4 tests, which the tool computes, apply to this person unchanged.",
+    "irs_text": "Question: \"Was this person married at the end of 2025 ...?\"; i1040gi p. 21: \"if the person is married but doesn't file a joint return or files a joint return only to claim a refund of withheld income tax or estimated tax paid, you may be able to claim that person as a dependent ... go to Step 2, question 3 ... or Step 4, question 4\"",
+    "why": "Marriage is not one of the conditions in Step 1 (p. 17) or Step 4 (p. 19). Marriage matters only at Step 2, question 2 and Step 4, question 3, after these lines are decided, so the qualifying_child and qualifying_relative computations are correct for this person but the question forces YES. The EIC line does need the refusal, because the Married child rule (p. 44) makes EIC status depend on dependency."
    },
    {
     "kind": "WIDE",
-    "situation": "A person whose spouse died during 2025, who was therefore not married at the end of 2025, and who files a joint return only to claim a refund must answer YES, so the tool refuses all three lines even though it computes them correctly.",
-    "irs_text": "Question: \"or is a joint return being filed for 2025 that includes this person (including one filed by this person with a spouse who died during 2025...)\" IRS: \"Who isn't filing a joint return for 2025 or is filing a joint return for 2025 only to claim a refund of withheld income tax or estimated tax paid\" (i1040gi 2025 pp. 17, 41); \"A child who was married at the end of 2025 is a qualifying child only if...\" (i1040gi 2025 p. 44, Married child)",
-    "why": "The joint-return clause has no exception for a return filed only to claim a refund, but the IRS text treats that return as passing the joint-return test. The Married child dependency limit does not apply because the person was not married at year-end, so the computed EIC line is also correct on these facts."
+    "situation": "The person's spouse died during 2025, so the person was not married at year end, and a joint return is filed only to claim a refund of withholding.",
+    "irs_text": "Question: \"or is a joint return being filed for 2025 that includes this person (including one filed by this person with a spouse who died during 2025 ...)\"; i1040gi p. 17: \"Who isn't filing a joint return for 2025 or is filing a joint return for 2025 only to claim a refund of withheld income tax or estimated tax paid\"; p. 44: \"A child who was married at the end of 2025\"",
+    "why": "The tool's helper \"Included on a 2025 joint return filed other than only to claim a refund?\" = false is correct for a joint return filed only for a refund. The EIC Married child rule does not reach a person who was unmarried at year end. The question still forces YES for any joint return."
+   },
+   {
+    "kind": "UNCLEAR",
+    "situation": "When the filer answers, they do not know whether the dependent will file a joint return, or the dependent later files or amends to a joint return.",
+    "irs_text": "Question: \"is a joint return being filed for 2025 that includes this person\"; i1040gi p. 17: \"Who isn't filing a joint return for 2025\"",
+    "why": "The phrase \"being filed\" can be read as \"already filed or decided,\" and a filer who is unsure of the dependent's plans could truthfully answer NO even though the joint return test may later fail."
    }
   ],
-  "prompt_sha": "07e7735bc49ac721e4fd4f32057b210f7d25a7641df3d3ae38fdffb9ed934687",
+  "prompt_sha": "53ffe965f12475e84ec4c3d10e3405d8ae5346695a8ed40b1138bb6194612d84",
   "used": [
    {
     "doc": "i1040gi",
@@ -277,9 +283,25 @@
      44
     ],
     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+   },
+   {
+    "doc": "p501",
+    "revision": "2025 returns; PDF created 2026-02-04",
+    "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+    "pages": [
+     18
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 18, Kidnapped child, \"You can treat a child as your qualifying relative even if the child has been kidnapped, but the following statements must be true.\""
+    ],
+    "cols_pages": [
+     18
+    ],
+    "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
    }
   ],
-  "cost": 0.170564,
+  "cost": 0.135793,
   "model": "claude-opus-5-5"
  },
  {
@@ -288,52 +310,28 @@
   "lines": [
    "dependent.qualifying_relative"
   ],
-  "verdict": "NARROW",
+  "verdict": "WIDE",
   "findings": [
    {
-    "kind": "NARROW",
-    "situation": "A noncustodial parent can claim a child as a qualifying relative under Form 8332 or a qualifying decree, although the parent did not personally provide over half of the child's support and no multiple support situation exists.",
-    "irs_text": "\"For whom you provided over half of the person's support in 2025. But see Children of divorced or separated parents, Multiple support agreements, and Kidnapped child, later.\" (i1040gi 2025 p. 19); \"A child will be treated as the qualifying child or qualifying relative of the child's noncustodial parent\" (i1040gi 2025 p. 20)",
-    "why": "The computed line requires that the filer provided over half of the support, and this question asks only about multiple support, so the parent truthfully answers NO. Unless another screen not shown here catches this case, the tool wrongly computes that the child is not a qualifying relative."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A child presumed kidnapped by a nonfamily member may be taken into account under special rules that the question does not mention.",
-    "irs_text": "\"But see Children of divorced or separated parents, Multiple support agreements, and Kidnapped child, later.\" (i1040gi 2025 p. 19); \"you may be able to take the child into account in determining your eligibility for... the credit for other dependents\" (i1040gi 2025 p. 21)",
-    "why": "A parent in this situation truthfully answers NO because the question asks only about shared support. The computed conditions show no kidnapped-child exception, so the tool may wrongly deny qualifying relative status."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A permanently and totally disabled person has sheltered workshop income that may be excluded from the gross income test, bringing countable income under $5,200.",
-    "irs_text": "\"If your relative... is permanently and totally disabled (defined later), certain income for services performed at a sheltered workshop may be excluded for this test.\" (i1040gi 2025 p. 20)",
-    "why": "The question does not address gross income, so the filer truthfully answers NO. If the helper \"Gross income under $5,200\" is answered using total gross income, the tool wrongly computes that the person is not a qualifying relative."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "The person is not the filer's qualifying child but is the qualifying child of another taxpayer, which disqualifies the person as a qualifying relative.",
-    "irs_text": "\"Who wasn't a qualifying child (see Step 1) of any taxpayer for 2025.\" (i1040gi 2025 p. 19)",
-    "why": "The helper label \"Qualifying child (Step 1)\" does not show that it tests for a qualifying child of any taxpayer, and this question does not ask. If the helper tests only the filer, the filer truthfully answers NO and the tool may wrongly compute qualifying relative status."
+    "kind": "WIDE",
+    "situation": "The filer is one of several contributors in a multiple support situation, but another contributor claims the person, so the filer cannot claim the person; the tool already computes this correctly as not a qualifying relative because the filer did not provide over half.",
+    "irs_text": "Question: \"...with no one person providing over half (a multiple support situation), whether you or another contributor claims the person?\" i1040gi p. 19: \"For whom you provided over half of the person's support in 2025.\"",
+    "why": "The clause \"whether you or another contributor claims the person\" makes this filer answer YES and get refused. Yet the computed line already gives the right result here: the support helper is false, so there is no qualifying relative for this filer."
    },
    {
     "kind": "WIDE",
-    "situation": "A filer contributes to shared support in a multiple support situation, but another contributor claims the person, so the filer correctly cannot treat the person as a qualifying relative.",
-    "irs_text": "Question: \"whether you or another contributor claims the person\"; IRS: \"special rules may apply that would treat you as having provided over half of the support\" (i1040gi 2025 p. 21)",
-    "why": "The wording requires YES even when the filer is not claiming the person and is not treated as providing over half. On a NO path, the tool's false result on \"You provided over half\" would be correct, so the refusal is unnecessary."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "Support is shared with no one providing over half, but the person fails another qualifying relative test, such as having gross income of $5,200 or more or being outside the listed relationships and household rule.",
-    "irs_text": "Question: \"Did you and others together provide over half of this person's support for 2025, with no one person providing over half\"; IRS: \"Who had gross income of less than $5,200 in 2025.\" (i1040gi 2025 p. 19)",
-    "why": "The question makes the filer answer YES based on support alone, even though the person fails another required condition. The tool could correctly compute false for that condition, so the refusal is unnecessary."
+    "situation": "Several people together provided over half the support, but the filer cannot be treated as providing over half (for example, the filer's own contribution is too small, or the other contributors could not claim the person anyway), so the tool's 'not a qualifying relative' result is correct.",
+    "irs_text": "i1040gi p. 21, Multiple support agreements: \"special rules may apply that would treat you as having provided over half of the support. For details, see Pub. 501.\"",
+    "why": "The question asks only whether the combined contributions passed half with no single person over half. The IRS rule says the special treatment only \"may apply,\" so filers it can never help still answer YES and are refused."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer may be unsure whether \"others\" includes the person being supported or a government or other public source, such as when the filer and one of those sources together provide over half of the support.",
-    "irs_text": "Question: \"you and others together\"; IRS: \"If no one person contributed over half of the support of your relative... but you and another person(s) provided more than half of your relative's support\" (i1040gi 2025 p. 21)",
-    "why": "Neither the question nor the quoted IRS text says which contributors count as \"others\" or \"another person(s)\", and the details are left to Pub. 501. Filers with the same facts could reasonably answer either YES or NO, which determines whether the tool refuses or computes the line."
+    "situation": "A filer may not know whether 'others' includes the person's own funds, or public assistance and government payments, when judging whether 'you and others together' provided over half of the support.",
+    "irs_text": "i1040gi p. 21: \"If no one person contributed over half of the support of your relative ... but you and another person(s) provided more than half of your relative's support\"; \"Public assistance payments ... see Pub. 501.\"",
+    "why": "The question uses 'others' and 'support' without saying who counts as a contributor. A filer could count the dependent's own money or government aid toward the combined total, or leave it out, and so answer either way."
    }
   ],
-  "prompt_sha": "7334b70c5258bb7478297ccf6b5085864a7d328f66bcdd9c09ddbec37a6824ac",
+  "prompt_sha": "ffe43ba7497e64b5adf3e654eaf31be9315950c28532eac04023c39ae3bb5331",
   "used": [
    {
     "doc": "i1040gi",
@@ -358,9 +356,25 @@
      21
     ],
     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+   },
+   {
+    "doc": "p501",
+    "revision": "2025 returns; PDF created 2026-02-04",
+    "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+    "pages": [
+     18
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 18, Kidnapped child, \"You can treat a child as your qualifying relative even if the child has been kidnapped, but the following statements must be true.\""
+    ],
+    "cols_pages": [
+     18
+    ],
+    "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
    }
   ],
-  "cost": 0.136176,
+  "cost": 0.08168800000000001,
   "model": "claude-opus-5-5"
  },
  {

@@ -21,54 +21,29 @@
    "adjudication": "reviews/2025/screens/adjudication/group0.md"
   },
   "unruled:dependent.multiple_support": {
-   "prompt_sha": "7334b70c5258bb7478297ccf6b5085864a7d328f66bcdd9c09ddbec37a6824ac",
-   "reason": "NARROW findings are all caught by derived refusals through dependent.qualifying_child (divorced_rule, kidnapped via lived_half, other_claimant) or by dependent.income_exception on the same line; WIDE accepted; 'others' UNCLEAR leans WIDE.",
+   "reason": "No defect: both WIDE findings repeat group 3 findings 4 and 5 (refusal of a contributor the tool would correctly reject); the UNCLEAR on who counts as 'others' errs only toward YES, as group 3 finding 6.",
+   "prompt_sha": "ffe43ba7497e64b5adf3e654eaf31be9315950c28532eac04023c39ae3bb5331",
    "findings": [
     {
      "n": 0,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "dependent.qualifying_relative reads dependent.qualifying_child, which refuses on dependent.divorced_rule ('for example because a Form 8332 release or a decree lets the noncustodial parent claim the child'). Eval: months 0, supported false, divorced_rule yes -> qualifying_relative refusal gate dependent.divorced_rule."
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "i1040gi p. 19, Step 4, 'For whom you provided over half of the person's support in 2025'. A contributor in a multiple support situation whom another contributor claims answers Yes ('whether you or another contributor claims the person') and is refused, though dependent.supported No would give no qualifying relative. Eval (stage8.hoh.parent.test1 filed single, supported No): multiple_support Yes refuses lines 19 and 24 at dependent[parent].multiple_support; No gives line 19 $0, line 24 $17,867. Safe; as group 3 finding 4."
     },
     {
      "n": 1,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "dependent.lived_half refuses on dependent.kidnapped; derived through qualifying_child. Eval: kidnapped yes -> qualifying_relative refusal gate dependent.kidnapped."
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "i1040gi p. 21, Multiple support agreements, 'special rules may apply that would treat you as having provided over half of the support'. A filer the special rule cannot help (contribution of 10% or less, or others who could not claim the person) answers Yes and is refused where the computed not-a-qualifying-relative result would be right. Safe; as group 3 finding 5."
     },
     {
      "n": 2,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "dependent.income_exception (disabled and gross income not under $5,200) is a refusal gate on dependent.qualifying_relative (forms/2025/dependent.yaml); i1040gi p. 20 sheltered workshop exception falls under it."
-    },
-    {
-     "n": 3,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "dependent.qualifying_child refuses on dependent.other_claimant ('meets the conditions to be the qualifying child of any other person for 2025'); derived to qualifying_relative."
-    },
-    {
-     "n": 4,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "Refuses a contributor who does not claim the person; tool's false would be right. Safe."
-    },
-    {
-     "n": 5,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "Support alone triggers YES though another test fails. Safe."
-    },
-    {
-     "n": 6,
      "kind": "UNCLEAR",
      "class": "accepted WIDE",
-     "evidence": "i1040gi p. 21: 'you and another person(s) provided more than half'. Government sources or the person are not persons who could claim the dependent, so NO is correct for the filer+public-source case and supported=false computes not-QR correctly; the other reading gives YES (refusal). Either reading is safe."
+     "evidence": "i1040gi p. 21: 'you and another person(s) provided more than half of your relative's support'. Counting the person's own funds or public assistance among 'others' can only turn a No into a Yes (refusal). Leaving them out is the source's reading: neither the person nor a state agency is a contributor who could claim the person, so a true multiple support situation (you plus another person over half, no one over half) is answered Yes on either reading. If the state or the person provided over half, there is no multiple support situation and No with dependent.supported No computes correctly. As group 3 finding 6."
     }
    ],
-   "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group3.md"
+   "bugs": []
   },
   "unruled:f2441.plans_differ": {
    "prompt_sha": "f21b3bc90f3b302ece734bb6397fee928154ee39e9e5870ee87b5d6afdfdc9e6",
@@ -1147,24 +1122,29 @@
    "adjudication": "reviews/2025/screens/adjudication/group4.md"
   },
   "unruled:dependent.married": {
-   "prompt_sha": "07e7735bc49ac721e4fd4f32057b210f7d25a7641df3d3ae38fdffb9ed934687",
-   "reason": "Round-1 PENDING-0-2 closed (both marriage questions now name a joint return filed by the surviving spouse); both findings are WIDE as in round 1.",
+   "reason": "No defect: findings 0 and 1 are the WIDE findings accepted in rounds 1 and 4; the new UNCLEAR (a joint return not yet decided) repeats the source's own present tense, which the computing sibling dependent.joint_return asks identically, and no rewording can supply knowledge the filer lacks.",
+   "prompt_sha": "53ffe965f12475e84ec4c3d10e3405d8ae5346695a8ed40b1138bb6194612d84",
    "findings": [
     {
      "n": 0,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i1040gi pp. 21, 44: Married, no joint return or refund-only joint return: refused on qualifying_child/qualifying_relative though computable; still needed for eic_child. Safe (round 1)."
+     "evidence": "i1040gi p. 21, Married person: a married person who files no joint return, or one only for a refund, may still be claimed. The screen refuses dependent.qualifying_child and dependent.qualifying_relative though the Step 1 and Step 4 tests compute; the refusal is still needed on dependent.eic_child (i1040gi p. 44, Married child). Eval (stage8.hoh.child.ctc filed single): married Yes refuses lines 19 and 24 at dependent[child].married; No gives line 19 $2,200, line 24 $15,642. Safe; as group 0 and group 4 finding 0."
     },
     {
      "n": 1,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i1040gi pp. 17, 41, 44: Refund-only joint return by a person whose spouse died: refused though dependent.joint_return carves it out. Safe (round 1)."
+     "evidence": "i1040gi p. 17, Step 1, 'or is filing a joint return for 2025 only to claim a refund'; p. 44, 'A child who was married at the end of 2025'. A person widowed in 2025 on a refund-only joint return answers Yes and is refused though dependent.joint_return carves the refund-only return out. Safe; as group 0 and group 4 finding 1."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "out of scope",
+     "evidence": "i1040gi p. 17, 'Who isn't filing a joint return for 2025'. The question's 'is a joint return being filed' follows the source's present tense. The doubtful case needs a person not married at the end of 2025 (else the first clause answers Yes), that is one widowed in 2025, and a filer who does not know whether that person's joint return will be filed or later amended; dependent.joint_return asks the same clause and computes, so the screen adds nothing a rewording could fix, and a later joint return disallows the claim by amendment, as under the source. No EIC exposure: the Married child rule (p. 44) reaches only a person married at year end, whom the first clause catches."
     }
    ],
-   "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group4.md"
+   "bugs": []
   },
   "unruled:dependent.other_claimant": {
    "prompt_sha": "4690c3d384d62fd8c1f29cc7f7bd6bfedbc3af6a3d5ffd6bfae7aa051e99afb9",

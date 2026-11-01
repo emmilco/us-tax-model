@@ -534,6 +534,54 @@ form:
       cite:
         doc: i1040gi
         locator: p. 14, Head of Household, Test 2
+    - id: household.test2_absence_persons
+      printed: (helper)
+      type: Count
+      label: Number of persons who would qualify you under Test 2 only by counting an absence head of household does not count
+      expr:
+        op: sum_over
+        collection: dependent
+        field: dependent.one
+        where:
+          op: test
+          eq:
+            - dependent.hoh_absence
+            - const: true
+      cite:
+        doc: p501
+        locator: p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
+    - id: household.hoh_absence
+      printed: (gate)
+      type: Bool
+      label: Head of household turns on a person who lived with you more than half the year only by counting an absence head of household does not count
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - household.unmarried
+              - const: true
+          - op: test
+            eq:
+              - household.test1_met
+              - const: false
+          - op: test
+            eq:
+              - household.home_cost
+              - const: true
+          - op: test
+            eq:
+              - household.test2_persons
+              - const: 0
+                type: Count
+          - op: test
+            gt:
+              - household.test2_absence_persons
+              - const: 0
+                type: Count
+      cite:
+        doc: p501
+        locator: p. 9, Temporary absences, "You and your qualifying person are considered to live together even if one or both of you are temporarily absent from your home due to special circumstances" and "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
     - id: household.test1_met
       printed: (helper)
       type: Bool
@@ -591,6 +639,14 @@ form:
         doc: i1040gi
         locator: p. 14, Head of Household, "Check the 'Head of household' box only if you are unmarried (or considered unmarried) and either Test 1 or Test 2 applies"
       refuses:
+        - when: household.hoh_absence
+          form: Temporary absences for head of household (Pub. 501)
+          remedy: For head of household, an absence counts as time lived with you only if it was reasonable to assume the
+            absent person would return and you kept up the home; the time the person who would qualify you lived with you
+            must be recounted under that rule, which this tool does not do.
+          cite:
+            doc: p501
+            locator: p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
         - when: household.hoh_community_property
           form: Community income on a married head of household return in a community property state (Form 8958; Pub. 555)
           remedy: A married person filing as head of household who lived in a community property state may have to report
@@ -629,14 +685,15 @@ form:
           else's return; an adopted child, including a child lawfully placed with you for legal adoption, is always your
           own child. 3. This child lived in your home for all of 2025, counting temporary absences by you or the child
           for special circumstances, such as school, vacation, business, medical care, military service or detention in a
-          juvenile facility, as time lived in the home; a child born or who died in 2025, or adopted or lawfully placed
+          juvenile facility, as time lived in the home, but only an absence from which it was reasonable to assume the
+          absent person would return and during which you kept up the home; a child born or who died in 2025, or adopted or lawfully placed
           with you for legal adoption in 2025, lived with you all year if your home was the child's home for the entire
           time the child was alive, or since the adoption or placement. 4. You paid over half the cost of keeping up your
           home (rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities and food eaten in the home; not clothing, education, medical treatment, vacations, life insurance, transportation or anyone’s services; amounts paid from a household member’s own funds, such as Social Security, count as paid by them). 5. You could have filed a joint return with your spouse the year your spouse died, even if you didn't
           actually do so."
       cite:
         doc: i1040gi
-        locator: 'p. 15, Qualifying Surviving Spouse, "You can check the “Qualifying surviving spouse” box in the Filing Status section on page 1 of Form 1040 or 1040-SR and use joint return tax rates for 2025 if all of the following apply. 1. Your spouse died in 2023 or 2024 and you didn’t remarry before the end of 2025. 2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent except that, for 2025: a. The child had gross income of $5,200 or more, b. The child filed a joint return, or c. You could be claimed as a dependent on someone else’s return." and "3. This child lived in your home for all of 2025. If the child didn’t live with you for the required time, see Exception to time lived with you, later. 4. You paid over half the cost of keeping up your home. 5. You could have filed a joint return with your spouse the year your spouse died, even if you didn’t actually do so."; "If your spouse died in 2025, you can''t file as qualifying surviving spouse"; "An adopted child is always treated as your own child. An adopted child includes a child lawfully placed with you for legal adoption"; Exception to time lived with you, "Temporary absences by you or the child for special circumstances, such as school, vacation, business, medical care, military service, or detention in a juvenile facility, count as time lived in the home" and "A child is considered to have lived with you for all of 2025 if the child was born or died in 2025 and your home was the child’s home for the entire time the child was alive"; p501 p. 9, Note, "Amounts paid out of funds received in the child’s or qualifying person’s name, such as Social Security, are considered paid by the child, not you."'
+        locator: 'p. 15, Qualifying Surviving Spouse, "You can check the “Qualifying surviving spouse” box in the Filing Status section on page 1 of Form 1040 or 1040-SR and use joint return tax rates for 2025 if all of the following apply. 1. Your spouse died in 2023 or 2024 and you didn’t remarry before the end of 2025. 2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent except that, for 2025: a. The child had gross income of $5,200 or more, b. The child filed a joint return, or c. You could be claimed as a dependent on someone else’s return." and "3. This child lived in your home for all of 2025. If the child didn’t live with you for the required time, see Exception to time lived with you, later. 4. You paid over half the cost of keeping up your home. 5. You could have filed a joint return with your spouse the year your spouse died, even if you didn’t actually do so."; "If your spouse died in 2025, you can''t file as qualifying surviving spouse"; "An adopted child is always treated as your own child. An adopted child includes a child lawfully placed with you for legal adoption"; Exception to time lived with you, "Temporary absences by you or the child for special circumstances, such as school, vacation, business, medical care, military service, or detention in a juvenile facility, count as time lived in the home" and "A child is considered to have lived with you for all of 2025 if the child was born or died in 2025 and your home was the child’s home for the entire time the child was alive"; p501 p. 9, Note, "Amounts paid out of funds received in the child’s or qualifying person’s name, such as Social Security, are considered paid by the child, not you."; p501 p. 11, Qualifying Surviving Spouse, "4. This child lived in your home all year, except for temporary absences. See Temporary absences, earlier, under Head of Household."; p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."'
     - id: household.qss_fails
       printed: (gate)
       type: Bool

@@ -4,17 +4,17 @@ The rendered English of every printed line of `Dependents — qualifying child a
 
 | field | value |
 | --- | --- |
-| date | 2026-10-30 |
+| date | 2026-10-31 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 28fa49b1970c8899a65b36e8950baed85fdb8a704cbb6c7d4fc14b42e512dfee |
+| prompt sha256 | 803b6b0ccffb494cac88f15bd5a36afd206d92ef45d3e68f8e241b1e143b4d22 |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
-| subject sha256 | a912066380307126cf7fdc54dc2d4cae644ddc358e66e92e6310ac906ac234ac |
+| subject sha256 | 28e045bd0204ff24cd65160e24083d802e4d1f73c6404a64c9a494c3c0789466 |
 | lines judged | 11 |
-| match / mismatch / unclear / missing | 8 / 3 / 0 / 0 |
+| match / mismatch / unclear / missing | 9 / 2 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -40,67 +40,63 @@ Status: **MISMATCH**
 
 Restated: Enter the amount from helper "Qualified expenses incurred and paid in 2025 for this person's care".
 
-Model: The restatement's input includes expenses paid with dependent care benefits and leaves Form 2441 to subtract them later, so the printed column holds the gross amount. The IRS text says 'If you completed Part III, don't include in column (d) any benefits shown on line 28' (also Form 2441 line 30: 'Don't include in column (d) any benefits shown on line 28 above').
+Model: The restatement includes expenses paid with dependent care benefits and relies on Form 2441 to subtract them later. The column (d) instructions say "If you completed Part III, don't include in column (d) any benefits shown on line 28", and Part III line 30 repeats "Don't include in column (d) any benefits shown on line 28 above."
 
-Ruling: ambiguity; amb.2025.dc_line30 (owner ruling, Stage 15 decision 6, T-048). Form 2441 line 30: "Complete line 2 on page 1 of this form. Don't include in column (d) any benefits shown on line 28 above. Then, add the amounts in column (d) and enter the total here"; i2441 p. 3, Column (d): "If you completed Part III, don't include in column (d) any benefits shown on line 28"; the instructions give no rule for dividing line 28 among persons. The model reads the register's rejected reading (column (d) net of benefits). The chosen reading shows each person's expenses including those paid with dependent care benefits and subtracts line 28 once at line 30. dependent.dc_paid is unchanged since fix round 2. As ruled since round 2. The subject change of this round (BUG-0258, dependent.parent_home_paid) does not touch this line. Project stands.
+Ruling: ambiguity; amb.2025.dc_line30 (owner ruling, Stage 15 decision 6, T-048). Form 2441 line 30: "Complete line 2 on page 1 of this form. Don't include in column (d) any benefits shown on line 28 above. Then, add the amounts in column (d) and enter the total here"; i2441 p. 3, Column (d): "If you completed Part III, don't include in column (d) any benefits shown on line 28"; the instructions give no rule for dividing line 28 among persons. The model reads the register's rejected reading (column (d) net of benefits). The chosen reading shows each person's expenses including those paid with dependent care benefits and subtracts line 28 once at line 30. dependent.dc_paid and dependent.dc_line2d are identical in HEAD and the working tree, f2441.yaml is unchanged, and no hunk of the rendered subject's diff (rendered/2025/dependent.md, HEAD to now) touches a dc_* section; the BUG-0267 correction (hoh_test2_lived, hoh_absence, hoh_test2) does not reach this line. As ruled since fix round 2 and in the T-091 round. Project stands.
 
 ### 2(c) — Check here if the qualifying person was over age 12 and was disabled
 Status: **MISMATCH**
 
 Restated: helper "A qualifying person for Form 2441 (you have care expenses, and this person is your dependent and either your qualifying child under 13 or not able to care for themselves and living with you for more than half the year)" = true and helper "Physically or mentally not able to care for themselves?" = true and (helper "Age at the end of 2025" > 13 (dc.child_age) or helper "Age at the end of 2025" = 13 (dc.child_age) and helper "Care provided while this qualifying person was age 13 or older and disabled" = true)
 
-Model: The age and disability logic fits 'over age 12 at the time the care was provided and was disabled', but the qualifying-person helper requires the person to be your dependent, and no refusal covers all the exceptions. The Form 2441 instructions also include a disabled person whom you 'could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, ... or c. You (or your spouse if filing jointly) could be claimed as a dependent on another taxpayer's 2025 tax return', so the box is wrongly left unchecked in those cases.
+Model: The age tests match the column (c) wording "over age 12 at the time the care was provided and was disabled". But the gate requires the person to be your dependent, so it drops a disabled person the instructions still count as a qualifying person, with no refusal. The text covers anyone "whom you can claim as a dependent or could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, b. The disabled person filed a joint return, or c. You (or your spouse if filing jointly) could be claimed as a dependent on another taxpayer's 2025 tax return."
 
-Ruling: interface gap; i2441 p. 1, Qualifying Person(s), item 3: "... whom you can claim as a dependent or could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, b. The disabled person filed a joint return, or c. You (or your spouse if filing jointly) could be claimed as a dependent". The cases the model names are refused, but on Form 2441: f2441.qp_count refuses f2441.nondependent_gate ("A qualifying person you cannot claim as a dependent ... is outside this tool"), which is not in the dependent render the reviewer was given. The column (c) test itself matches, as the model says. BUG-0253's gross income definition does not change who reaches the gate. Same objection and ruling as fix rounds 2 and 3. Project stands.
+Ruling: interface gap; i2441 p. 1, Qualifying Person(s), item 3: "Any disabled person who wasn't physically or mentally able to care for themselves who lived with you for more than half the year and whom you can claim as a dependent or could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, b. The disabled person filed a joint return, or c. You (or your spouse if filing jointly) could be claimed as a dependent on another taxpayer's 2025 tax return." The cases the model names are refused, but on Form 2441: f2441.qp_count and f2441.paid_total refuse when f2441.nondependent_gate (f2441.care and f2441.nondependent, whose question asks exactly items a to c) holds ("A qualifying person you cannot claim as a dependent ... is outside this tool"); that form is not in the dependent render the reviewer was given, so the model reports "no refusal". The column (c) test itself matches, as the model says. Why this log has a second mismatch this round: the subject hash changed (768bd246 to 28e045bd) because the BUG-0267 correction rewrote the hoh_test2 section and added hoh_test2_lived and hoh_absence, which reran the review; the 2(c) restatement and every helper it names (dc_qp, dc_incapable, dc_disabled_qp, dc_over12_care, age) are identical to HEAD, and so to round 1's subject, whose dc lines round 1 also found identical to HEAD (the diff's hunks fall at current rendered lines 10, 12, 260-276, 299-313 and 402-429; the dc sections sit at 169 and 455-540), and no dc_* line reads a hoh_* or absence line. Round 1 judged the same text MATCH; fix rounds 2 to 4 raised this same objection. The flip is sampling variance, not a change. Same ruling as fix rounds 2 to 4. Project stands.
 
 ### 23 — Has the American opportunity credit been claimed for this student for any 4 prior tax year
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: Input — Has the American opportunity credit been claimed (by you or anyone else) for this student for any 4 tax years before 2025?
-
-Model: The question matches the form, but its gate uses a 1098-T exception requiring a request 'after February 2, 2026', while the Form 8863 instructions say 'After January 31, 2026, but before you file the return'. A request made February 1 or 2 fails the gate and drops the student from lines 23 to 31; this shared defect is reported only here.
-
-Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, "After January 31, 2026, but before you file the return"; p970 p. 2, "After February 2, 2026 (January 31 falls on a Saturday)"; the register chooses Pub. 970, which the reviewer was not given. Line 23's own question matches, as the model says. The model objects only to the date in the eligible-student gate (dependent.edu_1098t), unchanged since fix round 2. Same objection as round 3. Project stands.
+Model: This is the line 23 question: has the American opportunity credit been claimed for this student for any 4 tax years before 2025. It is asked per eligible student.
 
 ### 24 — Was the student enrolled at least half-time for at least one academic period that began or
 Status: **MATCH**
 
-Model: This restates line 24 and its instruction that an academic period in the first 3 months of 2026 paid for in 2025 is treated as beginning in 2025, and the gate follows line 23's 'No' path. The Form 1098-T box 8 reference is not in the text given but does not change the test; the shared gate defect is reported at line 23.
+Model: This restates line 24 and its instruction: at least half-time enrollment for an academic period beginning in 2025, or treated as beginning in 2025 if prepaid in 2025 for the first 3 months of 2026, in a postsecondary credential program. It is reached only when line 23 is No.
 
 ### 25 — Did the student complete the first 4 years of postsecondary education before 2025?
 Status: **MATCH**
 
-Model: This matches line 25 and its instruction on 4 years of academic credit, disregarding credit awarded solely for proficiency examinations, and the gate follows line 24's 'Yes' path. The shared gate defect is reported at line 23.
+Model: This restates line 25 and its instruction on completing 4 years of academic credit before 2025, disregarding credit awarded for proficiency examinations. It is reached only when line 24 is Yes.
 
 ### 26 — Was the student convicted, before the end of 2025, of a felony for possession or distribut
 Status: **MATCH**
 
-Model: This matches line 26 and its instruction on a federal or state felony conviction before the end of 2025 for possession or distribution of a controlled substance, and the gate follows line 25's 'No' path. The shared gate defect is reported at line 23.
+Model: This restates line 26: a federal or state felony conviction for possession or distribution of a controlled substance before the end of 2025. It is reached only when line 25 is No.
 
 ### 27 — Adjusted qualified education expenses. Don't enter more than $4,000
 Status: **MATCH**
 
-Model: Expenses including course materials, less worksheet line 3, floored at zero and capped at $4,000, match line 27 and the worksheet, and the refusal names the period-by-period case it excludes. The conditions for the American opportunity credit match the instructions; the shared gate defect is reported at line 23.
+Model: The amount is the worksheet's line 1 less line 3, floored at zero, using tuition, fees and course materials for the American opportunity credit, and capped at "Don't enter more than $4,000". It is reported only for American opportunity credit students, who must also meet the filer TIN and institution EIN requirements. The refusal covers the per-academic-period worksheet case that cannot be netted.
 
 ### 28 — Subtract $2,000 from line 27. If zero or less, enter -0-
 Status: **MATCH**
 
-Model: Subtracting $2,000 from line 27 and entering zero if the result is zero or less matches 'Subtract $2,000 from line 27. If zero or less, enter -0-'. The shared gate defect is reported at line 23.
+Model: This computes "Subtract $2,000 from line 27. If zero or less, enter -0-" for an American opportunity credit student.
 
 ### 29 — Multiply line 28 by 25% (0.25)
 Status: **MATCH**
 
-Model: Multiplying line 28 by 25% matches 'Multiply line 28 by 25% (0.25)'. The shared gate defect is reported at line 23.
+Model: This computes "Multiply line 28 by 25% (0.25)".
 
 ### 30 — American opportunity credit for this student. If line 28 is zero, enter the amount from li
 Status: **MATCH**
 
-Model: Using line 27 when line 28 is zero, and otherwise adding $2,000 to line 29, matches the printed line 30. The shared gate defect is reported at line 23.
+Model: This computes "If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29".
 
 ### 31 — Adjusted qualified education expenses for the lifetime learning credit
 Status: **MATCH**
 
-Model: Expenses required to be paid to the institution, less worksheet line 3 and floored at zero, match the lifetime learning credit definition and worksheet, and the line is reported only when lines 27 to 30 are not, as the form requires. The refusal names the period-by-period case it excludes; the shared gate defect is reported at line 23.
+Model: For an eligible student routed to the lifetime learning credit, the amount is expenses required to be paid to the institution less worksheet line 3, floored at zero. That matches the lifetime learning credit's qualified expenses and the worksheet's line 4. The per-period case is refused.
 
 ## Raw response
 
@@ -109,36 +105,36 @@ Model: Expenses required to be paid to the institution, less worksheet line 3 an
 lines:
   - key: "2(d)"
     status: MISMATCH
-    reason: "The restatement's input includes expenses paid with dependent care benefits and leaves Form 2441 to subtract them later, so the printed column holds the gross amount. The IRS text says 'If you completed Part III, don't include in column (d) any benefits shown on line 28' (also Form 2441 line 30: 'Don't include in column (d) any benefits shown on line 28 above')."
+    reason: "The restatement includes expenses paid with dependent care benefits and relies on Form 2441 to subtract them later. The column (d) instructions say \"If you completed Part III, don't include in column (d) any benefits shown on line 28\", and Part III line 30 repeats \"Don't include in column (d) any benefits shown on line 28 above.\""
   - key: "2(c)"
     status: MISMATCH
-    reason: "The age and disability logic fits 'over age 12 at the time the care was provided and was disabled', but the qualifying-person helper requires the person to be your dependent, and no refusal covers all the exceptions. The Form 2441 instructions also include a disabled person whom you 'could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, ... or c. You (or your spouse if filing jointly) could be claimed as a dependent on another taxpayer's 2025 tax return', so the box is wrongly left unchecked in those cases."
+    reason: "The age tests match the column (c) wording \"over age 12 at the time the care was provided and was disabled\". But the gate requires the person to be your dependent, so it drops a disabled person the instructions still count as a qualifying person, with no refusal. The text covers anyone \"whom you can claim as a dependent or could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, b. The disabled person filed a joint return, or c. You (or your spouse if filing jointly) could be claimed as a dependent on another taxpayer's 2025 tax return.\""
   - key: "23"
-    status: MISMATCH
-    reason: "The question matches the form, but its gate uses a 1098-T exception requiring a request 'after February 2, 2026', while the Form 8863 instructions say 'After January 31, 2026, but before you file the return'. A request made February 1 or 2 fails the gate and drops the student from lines 23 to 31; this shared defect is reported only here."
+    status: MATCH
+    reason: "This is the line 23 question: has the American opportunity credit been claimed for this student for any 4 tax years before 2025. It is asked per eligible student."
   - key: "24"
     status: MATCH
-    reason: "This restates line 24 and its instruction that an academic period in the first 3 months of 2026 paid for in 2025 is treated as beginning in 2025, and the gate follows line 23's 'No' path. The Form 1098-T box 8 reference is not in the text given but does not change the test; the shared gate defect is reported at line 23."
+    reason: "This restates line 24 and its instruction: at least half-time enrollment for an academic period beginning in 2025, or treated as beginning in 2025 if prepaid in 2025 for the first 3 months of 2026, in a postsecondary credential program. It is reached only when line 23 is No."
   - key: "25"
     status: MATCH
-    reason: "This matches line 25 and its instruction on 4 years of academic credit, disregarding credit awarded solely for proficiency examinations, and the gate follows line 24's 'Yes' path. The shared gate defect is reported at line 23."
+    reason: "This restates line 25 and its instruction on completing 4 years of academic credit before 2025, disregarding credit awarded for proficiency examinations. It is reached only when line 24 is Yes."
   - key: "26"
     status: MATCH
-    reason: "This matches line 26 and its instruction on a federal or state felony conviction before the end of 2025 for possession or distribution of a controlled substance, and the gate follows line 25's 'No' path. The shared gate defect is reported at line 23."
+    reason: "This restates line 26: a federal or state felony conviction for possession or distribution of a controlled substance before the end of 2025. It is reached only when line 25 is No."
   - key: "27"
     status: MATCH
-    reason: "Expenses including course materials, less worksheet line 3, floored at zero and capped at $4,000, match line 27 and the worksheet, and the refusal names the period-by-period case it excludes. The conditions for the American opportunity credit match the instructions; the shared gate defect is reported at line 23."
+    reason: "The amount is the worksheet's line 1 less line 3, floored at zero, using tuition, fees and course materials for the American opportunity credit, and capped at \"Don't enter more than $4,000\". It is reported only for American opportunity credit students, who must also meet the filer TIN and institution EIN requirements. The refusal covers the per-academic-period worksheet case that cannot be netted."
   - key: "28"
     status: MATCH
-    reason: "Subtracting $2,000 from line 27 and entering zero if the result is zero or less matches 'Subtract $2,000 from line 27. If zero or less, enter -0-'. The shared gate defect is reported at line 23."
+    reason: "This computes \"Subtract $2,000 from line 27. If zero or less, enter -0-\" for an American opportunity credit student."
   - key: "29"
     status: MATCH
-    reason: "Multiplying line 28 by 25% matches 'Multiply line 28 by 25% (0.25)'. The shared gate defect is reported at line 23."
+    reason: "This computes \"Multiply line 28 by 25% (0.25)\"."
   - key: "30"
     status: MATCH
-    reason: "Using line 27 when line 28 is zero, and otherwise adding $2,000 to line 29, matches the printed line 30. The shared gate defect is reported at line 23."
+    reason: "This computes \"If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29\"."
   - key: "31"
     status: MATCH
-    reason: "Expenses required to be paid to the institution, less worksheet line 3 and floored at zero, match the lifetime learning credit definition and worksheet, and the line is reported only when lines 27 to 30 are not, as the form requires. The refusal names the period-by-period case it excludes; the shared gate defect is reported at line 23."
+    reason: "For an eligible student routed to the lifetime learning credit, the amount is expenses required to be paid to the institution less worksheet line 3, floored at zero. That matches the lifetime learning credit's qualified expenses and the worksheet's line 4. The per-period case is refused."
 ```
 ```
