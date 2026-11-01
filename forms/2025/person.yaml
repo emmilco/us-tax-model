@@ -2126,7 +2126,7 @@ form:
       - when: person.ira_excess_gate
         form: Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A)
         remedy: Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an
-          excess contribution from an earlier year still in an IRA, are outside this tool.
+          excess contribution from an earlier year that remained in an IRA at the end of 2025, are outside this tool.
         cite:
           doc: p590a
           locator: 'p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional
@@ -2402,8 +2402,8 @@ form:
         locator: Form 8880 (2025), line 1, "Traditional and Roth IRA contributions"
     - id: person.ira_excess
       printed: (screen)
-      label: Were your 2025 IRA contributions more than allowed, recharacterized, or is an earlier excess contribution still in
-        your IRA?
+      label: Were your 2025 IRA contributions more than allowed, recharacterized, or did an earlier excess contribution remain in
+        your traditional or Roth IRA at the end of 2025?
       type: Bool
       expr:
         op: input
@@ -2411,7 +2411,7 @@ form:
           you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your
           taxable compensation, or a Roth contribution above the limit for your income), and the excess was not withdrawn with
           its earnings by the due date of your return; you recharacterized a 2025 contribution (moved it from a traditional to
-          a Roth IRA or the reverse); or an excess contribution from an earlier year is still in your traditional or Roth IRA?'
+          a Roth IRA or the reverse); or an excess contribution from an earlier year remained in your traditional or Roth IRA at the end of 2025?'
       cite:
         doc: p590a
         locator: 'p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional
@@ -2420,7 +2420,7 @@ form:
           shown on Form 8606 is less than your total traditional IRA contributions for 2025, see Pub. 590-A for special rules"'
     - id: person.ira_excess_gate
       printed: (gate)
-      label: This person's IRA contributions for 2025 are excess or recharacterized, or an earlier excess remains (screen)
+      label: This person's IRA contributions for 2025 are excess or recharacterized, or an earlier excess remained at the end of 2025 (screen)
       type: Bool
       expr:
         op: test
@@ -3006,7 +3006,7 @@ form:
       - when: person.ira_excess_gate
         form: Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A)
         remedy: Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an
-          excess contribution from an earlier year still in an IRA, are outside this tool.
+          excess contribution from an earlier year that remained in an IRA at the end of 2025, are outside this tool.
         cite:
           doc: i1040gi
           locator: 'p. 95, Line 20, "If the total of your IRA deduction on line 20 plus any nondeductible contributions to your
@@ -4622,8 +4622,8 @@ form:
       expr:
         op: input
         source: 'Does any of these apply to you: a taxable distribution from a Coverdell ESA, a qualified tuition program (529
-          plan) or an ABLE account; excess contributions to a traditional or Roth IRA for an earlier year that are still in the
-          IRA (whether or not you contributed for 2025); excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account;
+          plan) or an ABLE account; excess contributions to a traditional or Roth IRA for an earlier year that remained in the
+          IRA at the end of 2025 (whether or not you contributed for 2025); excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account;
           excess HSA contributions from an earlier year when you have no Form 8889 for 2025; or a required minimum distribution
           from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)?'
       cite:

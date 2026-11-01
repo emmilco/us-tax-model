@@ -4173,3 +4173,12 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Disposition:** T-158, with the asset form pass; add the acquisition-date boundary and the 50% category (input and branch), then rerun the asset and Schedule C reviews.
 - **Validation:** source and implementation inspection and one render-review objection; no fixture or numerical evidence claimed.
 - **Tags:** source-definition-debt; existing-form-pass; explicitly-deferred
+
+## BUG-0292 — Earlier-year HSA excess is not asked when a 2025 Form 8889 exists (open)
+
+- **Caught by:** the 2026-11-01 screen review of `person.x_other` after the T-118 wording fix.
+- **Source:** f5329 p. 2, Part VII, line 46 "Prior year excess contributions" and line 48 "Total excess contributions. Add lines 46 and 47".
+- **Symptom:** `person.x_other` asks about an earlier-year HSA excess only when there is no 2025 Form 8889. A filer with a 2025 Form 8889 and an unabsorbed earlier-year excess answers No; `f5329.l48` copies only line 47 and lines 42 to 46 are zero, so the 6% tax on the carried excess is omitted.
+- **Disposition:** T-161, with the Form 5329/person pass: add the carried excess as an input or extend the question, then rerun the screen review and the f5329/person reviews.
+- **Validation:** one screen-review finding and source/implementation inspection; no fixture or numerical evidence claimed.
+- **Tags:** source-definition-debt; existing-form-pass; explicitly-deferred

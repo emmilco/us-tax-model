@@ -14555,7 +14555,7 @@
           "kind": "refusal",
           "gate": "person[taxpayer].ira_excess_gate",
           "form": "Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A)",
-          "remedy": "Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year still in an IRA, are outside this tool.",
+          "remedy": "Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year that remained in an IRA at the end of 2025, are outside this tool.",
           "cite": {
             "doc": "i1040gi",
             "locator": "p. 95, Line 20, \"If the total of your IRA deduction on line 20 plus any nondeductible contributions to your traditional IRAs shown on Form 8606 is less than your total traditional IRA contributions for 2025, see Pub. 590-A for special rules\"",
@@ -14568,7 +14568,7 @@
           "kind": "refusal",
           "gate": "person[taxpayer].ira_excess_gate",
           "form": "Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A)",
-          "remedy": "Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year still in an IRA, are outside this tool.",
+          "remedy": "Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year that remained in an IRA at the end of 2025, are outside this tool.",
           "cite": {
             "doc": "p590a",
             "locator": "p. 35, Excess Contributions, \"Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of\"",
@@ -14581,7 +14581,7 @@
           "kind": "refusal",
           "gate": "person[taxpayer].ira_excess_gate",
           "form": "Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A)",
-          "remedy": "Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year still in an IRA, are outside this tool.",
+          "remedy": "Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year that remained in an IRA at the end of 2025, are outside this tool.",
           "cite": {
             "doc": "i1040gi",
             "locator": "p. 95, Line 20, \"If the total of your IRA deduction on line 20 plus any nondeductible contributions to your traditional IRAs shown on Form 8606 is less than your total traditional IRA contributions for 2025, see Pub. 590-A for special rules\"",
@@ -14594,7 +14594,7 @@
           "kind": "refusal",
           "gate": "person[taxpayer].ira_excess_gate",
           "form": "Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A)",
-          "remedy": "Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year still in an IRA, are outside this tool.",
+          "remedy": "Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year that remained in an IRA at the end of 2025, are outside this tool.",
           "cite": {
             "doc": "i1040gi",
             "locator": "p. 95, Line 20, \"If the total of your IRA deduction on line 20 plus any nondeductible contributions to your traditional IRAs shown on Form 8606 is less than your total traditional IRA contributions for 2025, see Pub. 590-A for special rules\"",

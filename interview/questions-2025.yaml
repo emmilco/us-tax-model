@@ -2036,7 +2036,7 @@ bank:
       to your traditional IRA for 2025.
   - input: person.ira_excess
     order: 26
-    help: Answer true or false. An excess contribution, a recharacterization, or an earlier excess still in the IRA is reported
+    help: Answer true or false. An excess contribution, a recharacterization, or an earlier excess that remained in the IRA at the end of 2025 is reported
       on Form 5329 or with Pub. 590-A rules, which this tool does not prepare; true refuses the return.
   - input: person.ira_age50
     order: 23

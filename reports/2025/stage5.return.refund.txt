@@ -3121,10 +3121,10 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) This person made traditional or Roth IRA contributions for 2025
       = false
       cite: [f8880] Form 8880 (2025), line 1, "Traditional and Roth IRA contributions" (2025; created 2025-11-04; ba2b2877)
-  (screen) Were your 2025 IRA contributions more than allowed, recharacterized, or is an earlier excess contribution still in your IRA?
+  (screen) Were your 2025 IRA contributions more than allowed, recharacterized, or did an earlier excess contribution remain in your traditional or Roth IRA at the end of 2025?
       = UNKNOWN (no input supplied for person[taxpayer].ira_excess)
       cite: [p590a] p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of"; p. 30, "Recharacterizing excess contributions"; i1040gi p. 95, Line 20, "If the total of your IRA deduction on line 20 plus any nondeductible contributions to your traditional IRAs shown on Form 8606 is less than your total traditional IRA contributions for 2025, see Pub. 590-A for special rules" (2025; ca0e4287)
-  (gate) This person's IRA contributions for 2025 are excess or recharacterized, or an earlier excess remains (screen)
+  (gate) This person's IRA contributions for 2025 are excess or recharacterized, or an earlier excess remained at the end of 2025 (screen)
       = false
       cite: [p590a] p. 35, Excess Contributions, "In general, if the excess contributions for a year aren’t withdrawn by the date your return for the year is due (including extensions), you are subject to a 6% tax" (2025; ca0e4287)
   (helper) Were you age 50 or older at the end of 2025?

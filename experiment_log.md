@@ -125,3 +125,16 @@ definition-bind operands. The full audit list (also table keys, choose branches 
 guard/branch survivors before it can enter the score. The 7 table-key survivors are genuine fixture gaps:
 the EIC table lookup by line 3 versus line 1 and by line 1 versus earned_for_limit is not exercised where the
 two keys fall in different table bands.
+
+### Q1 wording batch: T-118 and BUG-0290 — 2026-11-01
+
+Changed the IRA excess questions to ask whether the earlier excess remained in the IRA at the end of 2025
+(T-118). The person review prompt and rendered English changed, so the person transcription and render logs
+were rerun under both families after archiving under
+`.transcription/archive/before-known-defects-2026-11-01/`. The Claude logs are ruled and clean; the new
+person DeepSeek transcription reply is type-invalid with 70 open sections, recorded as T-160. The screen
+review for person.x_other was rerun and ruled: T-118 is closed, and it found a new gap, BUG-0292/T-161
+(earlier-year HSA excess alongside a 2025 Form 8889). One stage16 refusal fixture carried the old remedy text
+and was updated; fixtures pass 1,425/1,425. The sc.at_risk wording (BUG-0290/T-157) was reverted and returned
+to the Schedule C pass: the sc form would then be due for completeness review, which produced 18 claims and is
+the form pass, not a wording fix.

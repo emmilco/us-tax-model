@@ -2013,7 +2013,7 @@
  },
  {
   "screen": "person.x_other",
-  "question": "Does any of these apply to you: a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account; excess contributions to a traditional or Roth IRA for an earlier year that are still in the IRA (whether or not you contributed for 2025); excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account; excess HSA contributions from an earlier year when you have no Form 8889 for 2025; or a required minimum distribution from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)?",
+  "question": "Does any of these apply to you: a taxable distribution from a Coverdell ESA, a qualified tuition program (529 plan) or an ABLE account; excess contributions to a traditional or Roth IRA for an earlier year that remained in the IRA at the end of 2025 (whether or not you contributed for 2025); excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account; excess HSA contributions from an earlier year when you have no Form 8889 for 2025; or a required minimum distribution from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)?",
   "lines": [
    "f5329.l4",
    "f5329.l49"
@@ -2022,42 +2022,36 @@
   "findings": [
    {
     "kind": "NARROW",
-    "situation": "A filer has an earlier-year HSA excess carried into 2025 and files Form 8889 for 2025, but makes no excess contribution for 2025 and does not absorb the carryover.",
-    "irs_text": "f5329 (2025) p. 2, Part VII: 'or you had an amount on line 49 of your 2024 Form 5329'; line 46 'Prior year excess contributions'; line 48 'Total excess contributions. Add lines 46 and 47'",
-    "why": "The question reaches an earlier-year HSA excess only 'when you have no Form 8889 for 2025', so this filer truthfully answers NO. Line 49 is then zero if the helper 'Any 2025 HSA excess contributions' is false, though Part VII taxes the remaining carryover; the helper's definition is not shown, and the finding assumes it does not count the carryover."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "An earlier-year traditional or Roth IRA excess stayed in the IRA throughout 2025 but was withdrawn in 2026 before the filer answers the question.",
-    "irs_text": "f5329 (2025) p. 1, Part III: line 12 '2025 distributions of prior year excess contributions'; line 17 'Enter 6% (0.06) of the smaller of line 16 or the value of your traditional IRAs on December 31, 2025'; Part IV lines 20, 22 and 25 work the same way for Roth IRAs",
-    "why": "The present-tense 'are still in the IRA' lets this filer truthfully answer NO. Only 2025 distributions reduce the 2025 carryover, so the 6% tax is still owed, and the tool does not compute it."
+    "situation": "A filer has a 2025 Form 8889 and an earlier-year HSA excess that is not fully absorbed in 2025, but makes no new 2025 excess contribution, so they answer NO because the question covers earlier-year HSA excess only with no Form 8889.",
+    "irs_text": "f5329 (2025) p. 2, Part VII: \"or you had an amount on line 49 of your 2024 Form 5329\"; line 46 \"Prior year excess contributions\"; line 48 \"Total excess contributions. Add lines 46 and 47\"",
+    "why": "Line 49 taxes a carried-over excess even with no new 2025 excess, but the tool returns zero when helper \"Any 2025 HSA excess contributions\" is false. Unless that helper also counts line 46, which its name does not suggest, the tax is omitted and the wording does not catch it."
    },
    {
     "kind": "WIDE",
-    "situation": "A filer's RMD shortfall belongs on another year's return, such as an earlier-year miss already reported or a first RMD for 2025 missed at its April 1, 2026 deadline, and nothing else on the screen applies for 2025.",
-    "irs_text": "i5329 (2025) p. 9, Part IX: 'The tax is due for the tax year that includes the last day by which the minimum required distribution must be taken.'",
-    "why": "The question says 'a required minimum distribution from an IRA or plan that you did not receive in full by its deadline' and gives no year, so this filer answers YES. No Part IX tax falls on the 2025 return, so the tool's result without Part IX would be correct."
+    "situation": "A filer answers YES because of a missed required minimum distribution whose tax belongs to a year other than 2025, such as a 2022 shortfall or a first RMD for 2025 missed at its April 1, 2026 deadline.",
+    "irs_text": "Question: \"a required minimum distribution from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)\". i5329 (2025) p. 9, Part IX: \"The tax is due for the tax year that includes the last day by which the minimum required distribution must be taken.\"",
+    "why": "The question has no year limit, so it catches deadlines falling outside 2025. Those shortfalls produce no tax on the 2025 Part IX, so the tool's result for 2025 is correct."
    },
    {
     "kind": "WIDE",
-    "situation": "An excess ABLE contribution for 2025 and its net income are returned to the contributor by the return due date, including extensions.",
-    "irs_text": "i5329 (2025) p. 9, Part VIII: 'You won't incur a tax on a contribution to your ABLE account that is in excess of the contribution limit if the qualified ABLE program returns the contribution, including all net income attributable to the contribution'",
-    "why": "The question says 'excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account' without excluding returned amounts, so this filer may answer YES and be refused. No Part VIII tax is due, so treating it as zero would be correct."
+    "situation": "A filer with an ABLE contribution above the limit answers YES even though the program returned the excess and all net income to the contributor by the return due date.",
+    "irs_text": "Question: \"excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account\". i5329 (2025) p. 9, Part VIII: \"You won't incur a tax on a contribution to your ABLE account that is in excess of the contribution limit if the qualified ABLE program returns the contribution, including all net income attributable to the contribution\"",
+    "why": "The wording turns on the excess having been made, not on whether it stayed in the account. No Part VIII tax is due after a timely return, so treating that tax as zero is correct."
+   },
+   {
+    "kind": "WIDE",
+    "situation": "A filer's earlier-year IRA excess stays in the IRA at the end of 2025 but is fully absorbed by 2025 under-contribution or by 2025 distributions included in income, so line 14 or line 22 is zero.",
+    "irs_text": "Question: \"excess contributions to a traditional or Roth IRA for an earlier year that remained in the IRA at the end of 2025 (whether or not you contributed for 2025)\". f5329 (2025) p. 1, line 10: \"If your traditional IRA contributions for 2025 are less than your maximum allowable contribution, see instructions\"; line 14: \"Prior year excess contributions. Subtract line 13 from line 9. If zero or less, enter -0-\"",
+    "why": "The wording tests whether the money physically stayed in the IRA, while the form tests whether a carried-over excess is left after absorption. A filer with no 6% tax for 2025 could still have to answer YES, even though zero is correct for that tax."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer had a taxable education or ABLE distribution, or a Coverdell ESA or Archer MSA excess, only in an earlier year, and the excess was fully cleared before 2025.",
-    "irs_text": "f5329 (2025) p. 2, Part V: 'Complete this part if the contributions to your Coverdell ESAs for 2025 were more than is allowable or you had an amount on line 33 of your 2024 Form 5329.' Part VI uses the same test with line 41; p. 1, Part II line 5 covers 'Distributions included in income'",
-    "why": "The question gives no year for these items, unlike its IRA and HSA items, so 'Does any of these apply to you' can be read as any past year or as 2025 only. Parts II, V and VI do not apply to these past events on the 2025 return, so a YES would be an unnecessary refusal."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer is unsure how to answer the HSA item because an earlier-year excess was fully removed or absorbed before 2025, or because they do not know whether they have a Form 8889 for 2025.",
-    "irs_text": "f5329 (2025) p. 2, Part VII: 'or you had an amount on line 49 of your 2024 Form 5329'; line 42 'Enter the excess contributions from line 48 of your 2024 Form 5329. If zero, go to line 47'",
-    "why": "'Excess HSA contributions from an earlier year' has no 'still in the account' limit, unlike the IRA item, and does not refer to the 2024 Form 5329 amount. A filer whose excess was already cleared could answer YES or NO, even though no carryover reaches 2025."
+    "situation": "A filer whose Coverdell, Archer MSA or HSA excess from an earlier year was fully cured before 2025 cannot tell whether the question still applies.",
+    "irs_text": "Question: \"excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account; excess HSA contributions from an earlier year when you have no Form 8889 for 2025\". f5329 (2025) p. 2, Part V: \"were more than is allowable or you had an amount on line 33 of your 2024 Form 5329\"; Part VI: \"or you had an amount on line 41 of your 2024 Form 5329\"; Part VII: \"or you had an amount on line 49 of your 2024 Form 5329\"",
+    "why": "The form reaches only 2025 excess or an amount carried from the 2024 form, but these clauses lack the IRA clause's \"remained\" limit, and the Coverdell and Archer clause names no year. A filer could read them as asking about any past excess or only one still uncorrected."
    }
   ],
-  "prompt_sha": "a08c66227c6ec23377e834fde63b11139ad969a7a2b6c6724937ae6f9cbb4eb5",
+  "prompt_sha": "1419a0fadfab81430f480c2f93c1bd3615addaec67c436ad4480367005d7a5fc",
   "used": [
    {
     "doc": "f5329",
@@ -2113,7 +2107,7 @@
     "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
    }
   ],
-  "cost": 0.22568,
+  "cost": 0.230624,
   "model": "claude-opus-5-5"
  },
  {

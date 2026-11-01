@@ -25,7 +25,7 @@ Update status, next action, and closure evidence as work proceeds. Use ready, ac
 | --- | --- | --- | --- |
 | P0 Household closure | Done 2026-11-01 (household closure commit) | T-114–117; bug entries for the introduced corrections and new gates; source-predicted regression fixtures; gate placement; round-two reviews | Required reviews adjudicated (114 current rulings, 0 open); all introduced defects and medium/high findings resolved; exact tested tree committed. Evidence: closure section below. |
 | P1 Verification integrity | Done in part 2026-11-01 | Reproduce and resolve the differential reader, memo aliases, green-history update race, push-guard scope, renderer markers, mutation operand omissions; T-096 | Memo aliases, differential reader, push-guard scope, green-list race and `--year` forwarding fixed (BUG-0287–0289); renderer marker fixed (T-155, 20 lines in five forms, ten render reviews rerun; BUG-0290/0291 recorded). Mutation coverage is T-156 (done in part; guard/table-key remainder is T-159); T-096 remains open. Evidence: P1 checkpoint below. |
-| P2 Review preparation | Triage sample investigated 2026-11-01 (309 completed returns, not 95; 95 counted disagreements). T-150 done 2026-11-01. Next T-139–140, T-142–144, T-146–148 | T-150; T-139–140, T-142–144, T-146–148 | Review inputs usable; mutation-critical regressions survive regeneration; interfaces explicit; printed-only mode ready before single-document Class M reruns. Evidence: `tools/siblings.py` and its check-all steps. |
+| P2 Review preparation | Triage sample investigated 2026-11-01 (309 completed returns, not 95; 95 counted disagreements). T-150 done 2026-11-01; the wording refresh left T-160 (person/sc DeepSeek backlogs). Next T-139–140, T-142–144, T-146–148 | T-150; T-160; T-139–140, T-142–144, T-146–148 | Review inputs usable; mutation-critical regressions survive regeneration; interfaces explicit; printed-only mode ready before single-document Class M reruns. Evidence: `tools/siblings.py` and its check-all steps. |
 | P3 Existing behavior and form debt | After relevant P2 dependencies; batches below | T-104–113, T-118–121, T-123–134, T-136–137, T-141, T-145; applicable T-094, T-057, T-095, T-101 | Each form batch meets the closure procedure; every remaining form scheduled for a pass. Evidence: pending. |
 | P4 Evidence and reporting | Small reporting corrections can run early; final closure after P3 | Remaining T-094/T-057; T-006/T-095; T-098–100; T-099 and documentation portion of T-012; reconcile older integrity obligations | Claims supported or narrowed; required review gaps resolved; remaining exceptions explicitly dispositioned. Evidence: pending. |
 | P5 Bounded maintenance | After higher-priority work; pull forward only a demonstrated dependency | Selected audit improvements to helpers/parsers, generators, Lean batching, fixture formatting, extraction, and year handling | Concrete maintenance failure or measured benefit addressed; remaining design proposals explicitly accepted or given real external triggers. Evidence: pending. |
@@ -231,3 +231,18 @@ sibling form has no review log changed since the entry's base (the commit that a
 an uncommitted entry). The first closure followed computed values and was too broad (283 lines for
 `sa.dependent`); the rule-leaf version yields 5 there and 1 for `sc.at_risk`. A synthetic entry naming
 only `sa.standard` for a fix on `sa.dependent` still fails, as intended.
+
+## Known-defect queue checkpoint — 2026-11-01
+
+Queue 1 of the hardening pass, first batch: T-118 (the IRA excess questions now say the excess must have
+remained in the IRA at the end of 2025). The person transcription and render logs were rerun and ruled; the
+stage16 remedy fixture and `docs/COVERAGE.md` were regenerated. The screen review for `person.x_other` was
+rerun and ruled; it found a new gap, BUG-0292/T-161 (an earlier-year HSA excess alongside a 2025 Form 8889 is
+not asked). The new person DeepSeek transcription reply is type-invalid with 70 open sections, recorded as T-160.
+
+BUG-0290/T-157 was reverted from this batch and returned to the Schedule C pass: changing `sc.at_risk` makes
+the sc form due for completeness review, and that review produced 18 claims — the Schedule C form pass, not a
+wording fix. The sc evidence is restored to HEAD.
+
+Still to do in this queue: T-157 (Schedule C at-risk), T-134 (Form 8962 other coverage) and BUG-0291/T-158
+(asset special allowance: refuse the 50% reuse/recycling class and the pre-September-27-2017 boundary).

@@ -76,6 +76,13 @@
   {
    "printed": "Step 3",
    "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
+   "model": "Pub. 560 Step 3 says only “Net earnings from self-employment. Subtract step 2 from step 1”; the restatement adds “If zero or less, enter -0-,” which changes a negative result to zero.",
+   "ruling": "Ruling: ambiguity; amb.2025.sep_loss_floor (BUG-0181, the disposition of the round-4 finding BUG-0180). p560 p. 39, Deduction Worksheet for Self-Employed: \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" prints no floor. The model read the page and the English correctly: person.sep_s3 floors Step 3 at zero and the English says so (\"If zero or less, enter -0-\"). The register records both readings and chooses the floor (\"A maximum deductible contribution below zero has no meaning\"; where both readings complete the return no Form 1040 or Schedule 1 amount differs, only the printed worksheet steps), naming person.sep_s3 in its chosen reading. Unchanged since round 1; fix round 3 changed only the person.tin wording (BUG-0256), which does not touch person.sep_s3 or its English, and the reply repeats the same reading. Project stands.",
+   "context": "a6d724dd6bf9ec8bf236a48d186ff365be281136d76c83fc7e927ec432e740ff"
+  },
+  {
+   "printed": "Step 3",
+   "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
    "model": "The IRS Step 3 says only 'Net earnings from self-employment. Subtract step 2 from step 1'; it does not provide the added 'If zero or less, enter -0-' floor.",
    "ruling": "Ruling: ambiguity; amb.2025.sep_loss_floor (BUG-0181, the disposition of the round-4 finding BUG-0180). p560 p. 39, Deduction Worksheet for Self-Employed: \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" prints no floor. The model read the page and the English correctly: person.sep_s3 floors Step 3 at zero and the English says so (\"If zero or less, enter -0-\"). The register records both readings and chooses the floor (\"A maximum deductible contribution below zero has no meaning\"; where both readings complete the return no Form 1040 or Schedule 1 amount differs, only the printed worksheet steps), naming person.sep_s3 in its chosen reading. Unchanged since round 1; fix round 4 changed only the person.itin_applied wording (BUG-0259), which does not touch person.sep_s3 or its English, and the reply repeats the same reading. Project stands.",
    "context": "9b31ffa7bfab2e33b3d7010d89b92e9320958592a28897c9d5afef83755d4560"

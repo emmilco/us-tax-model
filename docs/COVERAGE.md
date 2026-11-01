@@ -685,10 +685,10 @@ The data holds **188 refusal gates**: 150 tax situations the tool does not prepa
     *Source:* [i8606] p. 9, Line 2, "you may need to enter an amount that is more than -0- (even if this is the first year you are required to file Form 8606) or increase or decrease the amount from the chart"
   - *Refused at:* `person.ira_8606_line2`
 - **`person.ira_excess_gate`**: Are any IRA contributions for 2025 excess or recharacterized, or is an earlier excess still in an IRA?
-  - *The data asks or tests:* This person's IRA contributions for 2025 are excess or recharacterized, or an earlier excess remains (screen) (`test`)
-  - *Not covered:* Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A). Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year still in an IRA, are outside this tool.
+  - *The data asks or tests:* This person's IRA contributions for 2025 are excess or recharacterized, or an earlier excess remained at the end of 2025 (screen) (`test`)
+  - *Not covered:* Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A). Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year that remained in an IRA at the end of 2025, are outside this tool.
     *Source:* [p590a] p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of"
-  - *Not covered:* Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A). Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year still in an IRA, are outside this tool.
+  - *Not covered:* Excess or recharacterized IRA contributions (Form 5329 Parts III and IV, Pub. 590-A). Traditional or Roth IRA contributions for 2025 that are more than allowed or were recharacterized, and an excess contribution from an earlier year that remained in an IRA at the end of 2025, are outside this tool.
     *Source:* [i1040gi] p. 95, Line 20, "If the total of your IRA deduction on line 20 plus any nondeductible contributions to your traditional IRAs shown on Form 8606 is less than your total traditional IRA contributions for 2025, see Pub. 590-A for special rules"
   - *Refused at:* `person.sav_line1`, `person.ira_line11`
 - **`person.ira_over_limit`**: Are a person's traditional and Roth IRA contributions together above $7,000 ($8,000 at age 50 or older)?
