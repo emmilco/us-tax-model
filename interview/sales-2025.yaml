@@ -120,6 +120,8 @@ interview:
   - household.married
   - household.community_property
   - household.rdp
+  - household.spouse_died_2025
+  - household.cp_married
   - household.qss_eligible
   - household.credit_disallowed
   - s8812.combat_pay

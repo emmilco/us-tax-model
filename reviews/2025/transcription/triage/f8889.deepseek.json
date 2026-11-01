@@ -2,12 +2,8 @@
  "bank": null,
  "errors": [
   {
-   "line": "f8889.split",
-   "message": "malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object"
-  },
-  {
-   "line": "f8889.split",
-   "message": "f8889.f8889.split: malformed expression"
+   "line": "f8889.line3",
+   "message": "model changed a published result type"
   }
  ],
  "failures": [],
@@ -55,6 +51,15 @@
    "handle": "3",
    "open_at_triage": true,
    "project": "f8889.line3",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "f8889.line5",
+   "handle": "5",
+   "open_at_triage": true,
+   "project": "f8889.line5",
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -114,6 +119,15 @@
    "triage": "candidate invalid"
   },
   {
+   "candidate": "f8889.line14c",
+   "handle": "14c",
+   "open_at_triage": true,
+   "project": "f8889.line14c",
+   "shown_when": null,
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
    "candidate": "f8889.line15",
    "handle": "15",
    "open_at_triage": true,
@@ -141,9 +155,9 @@
    "triage": "candidate invalid"
   }
  ],
- "log_sha256_at_triage": "c1cbc0b35d1b495b04333728200d52bf5b5248c83a4854040e2f46bb04351c32",
+ "log_sha256_at_triage": "222a11177d2318d5ae1b45884cfd178825046c5eab96547e729c973d30021fe8",
  "policy": "executable-triage-v2",
- "response_sha256": "f8e4883f1bb2469a606489d3570550aba331fa3ed4c36fffd5c83518a1b596a0",
+ "response_sha256": "e7990a1dd3d566517586e263a7c7c66351b00f4d54f94f0d0cc41f0a6204d504",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "invalid",
  "subject_sha256": "79c60bf9932b030f9f08f341a8d5c3a650d43b73947734f5851cbcc73cb846a9"

@@ -1,3 +1,150 @@
+# Household closure committed — 2026-11-01
+
+P0 (household closure) is committed and pushed. HEAD is the household closure commit (parent f44bae4); the large
+uncommitted tree described below is closed. T-114–117 are done; BUG-0272–0286 are recorded; the two new gates are
+placed in the coverage tree (188 gates); both review families were rerun for household and f1040, and eic/f8889
+transcription for the changed shared input. The full suite caught that the hh4 render batch had reviewed a stale
+`rendered/` tree (it predated BUG-0286); the rendered English was regenerated, the prior receipts archived under
+`.transcription/archive/before-render-refresh-2026-11-01/`, and the four render reviews rerun. All 114 hh4 rulings
+plus 12 render-refresh rulings are applied and `check_logs.py` reports 0 open.
+Completeness passes at 92 findings (0 new, 55 deferred baseline forms, 37 ruled); consumers pass at 438 (0 new,
+380 baseline, 58 ruled); second-family model-error noise is 8.7% (409/4,675, provisional for pending reviews).
+Strict citations, instruction cites, screens, coverage placement, operands, signs, limits, bug inventory and
+whitespace checks pass. The full suite ran through the tested-tree guard; the commit message records its result.
+See the P0 closure section of [the backlog plan](docs/2026-11-01_backlog_plan.md) for the package evidence.
+
+Corrections made while checking the pre-commit summaries: the eic/f8889 summaries named no archive (the prior logs
+are in `.transcription/archive/before-household-definition-review-2026-11-01/`); the f1040 DeepSeek line 19 ruling
+claimed an interface label that does not exist (the decision rests on the printed Schedule 8812 line 14 destination);
+the Claude eic scope reclassifications were confirmed against zero completed-return differences; and f8889 lines 3
+and 6 are now compound ambiguity-and-model-error rulings for the withheld `last_month` partial.
+
+Next: the approved plan continues with T-102 (dependent-filer coverage reporting) and P1 verification repairs, then
+P2. Coverage expansion remains last. `docs/2026-11-01_contributor_safe_gating_sketch.md` remains untracked on disk
+(not part of this commit); decide whether to adopt it.
+
+# Usage pause — 2026-11-01 (superseded by the closure entry above)
+
+The owner explicitly stopped work because usage ran out. Do not launch further work until resumed.
+Read [the complete current handoff](handoffs/HANDOFF-HOUSEHOLD-CLOSE-2026-11-01.md) first.
+It supersedes the execution/state notes below. P0 is unfinished; HEAD remains f44bae4, with a large
+uncommitted tree. Build/render, strict citations and 1,425 CLI fixtures passed, but final review
+adjudication and the full suite remain. New BUG-0280–0286 and explicit deferred tasks are recorded.
+Final Claude reviews and four completeness reviews finished; the DeepSeek batch was interrupted.
+Known jobs were stopped and a process check found no remaining matching review processes. No commit/push.
+
+# Narrow baseline repair — 2026-11-01
+
+Owner selected and implementation added as BUG-0279. See the latest tracker subsection and tools README. Historical migration reproduced 56 fingerprints; 55 untouched forms remain deferred. Current completeness blockers are dependent, f1040, f2441 and household claim1. Four new regression tests pass through the normal completeness self-test. No full suite, commit or push yet. This supersedes the pending scope choice below.
+
+# P0 execution checkpoint — 2026-11-01 (Codex)
+
+The latest execution evidence and unresolved choices are in the final “P0 execution checkpoint” section of
+[the backlog tracker](docs/2026-11-01_backlog_plan.md). The older household to-do list below is partly superseded:
+bug entries, eight regression fixtures, gate placement, round-two transcription/render reviews and all 51 rulings
+are now recorded. CLI fixtures passed 1,419/1,419; `check_logs.py` passed. Household completeness has one unresolved
+claim (marital-status definitions); global completeness invalidation remains unresolved. No full suite, commit or
+push has occurred. Preserve the working tree and archived review receipts. The tracker records the unanswered
+scope choice and the read-only counterfactual evidence; do not silently rebaseline to bypass the failure.
+
+# Current execution — owner-approved backlog plan, 2026-11-01
+
+Read [the temporary backlog plan](docs/2026-11-01_backlog_plan.md) for the current priority order,
+package tracker, closure rules, and disposal checklist. It supersedes the execution orders below:
+finish the household batch, correct reporting and verification defects, prepare the review tools,
+then clear existing form/evidence/maintenance debt; coverage expansion is last.
+`TASKS.md` remains the task-status authority. Delete the temporary plan and replace this pointer
+when its retirement checklist is satisfied.
+
+The tech-debt audit was investigated read-only by three Luna agents; findings and qualifications
+are carried in the plan for T-152 disposition. No implementation fixes, builds, or review reruns
+were performed by that investigation or by writing this plan. Preserve the existing working tree.
+The household notes below remain the implementation handoff; their test claims need current checks.
+
+# Handoff — updated 2026-11-01, session wound down for credits (Claude Opus 5.5)
+
+## State: household pass in the working tree, NOT committed, round 2 of reviews due
+
+HEAD f44bae4 (= origin/main, pushed). Everything below is uncommitted; do not reset, stash or clean. The owner's priority
+order is in the entry below (unchanged). Step 1 (quick clearance) is done except T-113, which the owner scheduled with the
+dependent and person passes. Step 4 began early with the household pass, because T-117 was medium and the owner said fix
+it now.
+
+Not mine, untracked, leave it alone: `docs/2026-11-01_tech_debt_audit.md` (appeared during the session; ask the owner).
+
+### Done in the working tree (verified: build OK, citations 0 findings, fixtures 1411/1411 on the final tree)
+
+- Quick clearance: T-058 (BUG-0270, `person.itin_applied` order 3; checked both ways with a scripted interview), T-149
+  (BUG-0271), T-135 closed as done; owner decisions recorded: T-046 accepted (register updated), T-122 and T-138 closed,
+  T-131 (add the wash-loss check, in the sales pass) and T-113 (refuse the lifetime learning credit with only an applied-for
+  ATIN/ITIN, with the dependent and person passes) restated as decided. T-151 (Schedule E) added.
+- Household pass, round 1 (reviewed and ruled): BUG-0272 (`household.unmarried` states the considered-unmarried rules,
+  T-117), BUG-0273 (QSS kidnapped child, T-114, remedy at f1040 line 12e), BUG-0274 (TANF sentence on `home_cost` and
+  `qss_eligible`, T-115; the dependent half is T-111), BUG-0275 (services wording, T-116). Reviews (both families,
+  transcription and render, household and f1040) rerun on the round-1 wording and all 58 rulings applied
+  (`.transcription/proposed/hhpass/`; brief section "Household pass"). Logs before it archived in
+  `.transcription/archive/before-household-pass-2026-11-01/`.
+- After round 1, NOT yet reviewed (round 2 due):
+  - Fixes of three errors round 1 found in my rewording (owner's rule: regressions in uncommitted work are fixed whatever
+    their severity; `.transcription/proposed/hhpass/household.findings.md`): F1 the lived-apart child test now carries
+    the exceptions (temporary absence; born or died; adopted or placed), F2 "claims" -> "can claim", F3 the QSS kidnapped
+    instruction applies only when the kidnapping kept the child away in 2025. Also P1 (medium, older): `household.unmarried`
+    opens with "if your spouse died in 2025, you are considered married for the whole year: answer No" (p501 p. 6).
+  - Owner's decisions 2026-11-01 on the two older mediums, implemented: new input `household.spouse_died_2025` and gate
+    `household.widowed_2025` (single or head of household with a spouse who died in 2025) refusing at f1040 line 12e;
+    new input `household.cp_married` and gate `household.cp_marriage_ended` (not joint, lived in a community property
+    state, not married at the end of 2025, married during 2025 there) refusing at f1040 line 1a. Ripple done: question
+    bank, profiles 2025, sales-2025, stage4-2025, `engine/src/generate.ts` (FIXED, answered false), `generate_cases.py`,
+    1,400 fixtures answered false (8 partial-input cases need neither; they pass). household has no input contract.
+
+### Still to do, in order
+
+1. Bug entries for F1 to F3 (one entry citing BUG-0272/0273, tagged fix-introduced), P1, and the two gates (P2 and the
+   widow); next number BUG-0276 (confirm with grep). Update TASKS: T-114 to T-117 to done when committed; add nothing for
+   P1/P2 (fixed). `household.findings.md` notes P1's sibling is now covered by `household.widowed_2025`.
+2. Regression fixtures for the two gates, predicted from source before recording: a single filer and a head of household
+   with `spouse_died_2025` true (refused at line 12e with the new remedy) and false (computes); a single filer with
+   `community_property`, `cp_married` true and `married` false (refused at line 1a), and with `married` true as head of
+   household (still the old `hoh_community_property` refusal, not the new gate).
+3. Offline checks: `check_consumers.py` (expect new pairs for the new inputs/gates), instruction cites, operands, signs,
+   limits, `check_screens.py`, `python3 tools/coverage/tree.py --check` (the two new gates must be placed in
+   `tools/coverage/tree.json` as situations under household, then `python3 tools/coverage/tree.py`), `check_logs.py`.
+4. Round 2 of reviews: archive logs, `npm run render`, rerun transcription and render for household and f1040, both
+   families (Claude via plain `claude -p`: the owner removed the API key from the keychain; do not use the keychain
+   lookup), completeness for household; triage; adjudicate (brief: append "Household pass, round 2"); apply. The round-1
+   completeness rulings (`.transcription/proposed/hhpass/completeness.rulings.json`, r8) were not merged; the rerun
+   supersedes them, but r8's two PENDING claims (#3 = F1, #4 = P2) are now fixed.
+5. Fix-and-review until a round finds nothing introduced and nothing medium; then `npm run check-all-bg`, and
+   `tools/commit_tested.sh -F <file>`; push (pre-push checks the tree).
+
+Then continue the owner's priorities: T-102, T-150, the remaining form passes (dependent and person with T-113 first).
+
+Open observations, not yet tracked: triage now finds far fewer completed returns than in fix round 2 (f1040: about 95
+against 500). One agent guessed the T-091 inputs, another earlier traced it to `s179.line10` (hardening). Unverified;
+worth a check, since fewer completed returns weakens triage.
+
+# Handoff — updated 2026-10-31 (Claude Opus 5.5)
+
+## State: T-103 done; TASKS.md cleaned up; priorities set by the owner
+
+- T-103 committed and pushed (0a0d2f4): `npm run check-all-bg` tests a snapshot in `.git/check-all-worktree` while the
+  main tree stays editable; `tools/commit_tested.sh -F <file>` commits exactly the tested tree; `tools/hooks/pre-push`
+  refuses untested trees (closes the merge gap, BUG-0269); the build now runs alone before its readers (BUG-0268). See
+  `tools/README.md`, "Commit guard".
+- TASKS.md cleanup (owner-approved): finished rows moved to `TASKS-DONE.md`; T-092 split into T-104 to T-137; leftovers
+  of partial rows are T-138 to T-148; T-149 (bug-entry corrections), T-150 (fix-sibling tool), T-151 (Schedule E).
+  Verification notes: `/private/var/folders/kw/rp67pf8d5ng588lqp7d_gb240000gn/T/opencode/tasks-cleanup/` (scratch).
+
+Owner's priorities (2026-10-31), in order:
+1. Quick clearance: T-058; T-149; the checks T-113, T-117, T-135; owner decisions T-046, T-122, T-131, T-138.
+2. T-102 (measure dependent filers; the 82.2% headline counts them as covered).
+3. T-150 (fix-sibling tool), before the form passes.
+4. Form-by-form passes: each form's lows (T-104 to T-137) with its T-094 baseline items and reviews; dependent and
+   household first, then person, f2441, s1 and the rest. Build T-139 (single-document printed-only class M) before the
+   first single-document form. Review-tool items T-140 to T-148 at the next review-tool change.
+5. Schedule E (T-151).
+6. Background, on their triggers: T-011, T-012, T-034, T-040, T-057, T-095 to T-101.
+
 # Handoff — updated 2026-10-31, end of session (Claude Opus 5.5)
 
 ## Finish first: one small commit, then push (nothing of this session is pushed yet)

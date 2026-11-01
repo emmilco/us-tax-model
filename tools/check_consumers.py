@@ -92,7 +92,10 @@ def check_rulings(found):
 
 def write_prompts(found, folder):
     data = json.loads(RULINGS.read_text()) if RULINGS.exists() else {}
-    accepted = set(data.get("rulings", {})) | set(data.get("baseline", {}))
+    # A changed baseline question is due again, even though its pair key still exists.
+    current = {baseline_check.key(f): baseline_check.subject_hash(f, {}) for f in found}
+    accepted = set(data.get("rulings", {})) | {
+        k for k, h in data.get("baseline", {}).items() if current.get(k) == h}
     folder = Path(folder)
     folder.mkdir(parents=True, exist_ok=True)
     n = 0
@@ -135,6 +138,22 @@ def self_test():
         {"id": "x.b", "type": "Bool", "expr": {"op": "test", "eq": ["x.q", {"const": True}]},
          "cite": {"doc": "i1040gi", "locator": "p. 42"}}]}]
     assert [f["line"] for f in findings(forms)] == ["x.q@i1040gi:p42"]
+    # Reproduce the real failure: an existing pair with a changed question must get a prompt.
+    import tempfile
+    from unittest.mock import patch
+    sample = {"kind": "consumer", "line": "x.q@d:p1", "subject": "Old question?",
+              "input": "x.q", "doc": "d", "page": 1, "reader": "x.b"}
+    old_hash = baseline_check.subject_hash(sample, {})
+    with tempfile.TemporaryDirectory() as tmp:
+        record = Path(tmp) / "rulings.json"
+        record.write_text(json.dumps({"baseline": {baseline_check.key(sample): old_hash}}))
+        folder = Path(tmp) / "prompts"
+        with patch(__name__ + ".RULINGS", record), patch.object(archive_text, "manifest", return_value={}):
+            write_prompts([sample], folder)
+            assert not list(folder.glob("*.txt"))
+            write_prompts([{**sample, "subject": "Changed question?"}], folder)
+            prompts = list(folder.glob("*.txt"))
+            assert len(prompts) == 1 and "Changed question?" in prompts[0].read_text()
     print("consumers self-test: ok")
     return 0
 

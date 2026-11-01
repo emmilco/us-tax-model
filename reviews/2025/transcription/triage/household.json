@@ -1,10 +1,10 @@
 {
  "bank": {
   "evaluation_failures": 0,
-  "fixtures": 1411,
+  "fixtures": 1425,
   "generated": 500,
   "partial_bases": 40,
-  "partial_records": 211,
+  "partial_records": 291,
   "seed": 20261026
  },
  "errors": [],
@@ -14,21 +14,21 @@
  "lines": [
   {
    "absent": 0,
-   "agree": 2109,
+   "agree": 2204,
    "candidate": "household.roster_bad",
-   "compared": 2122,
+   "compared": 2216,
    "completed_witnesses": [],
-   "differ": 13,
+   "differ": 12,
    "handle": "household.roster_bad",
-   "in_scope": 2121,
-   "in_scope_agree": 2109,
+   "in_scope": 2215,
+   "in_scope_agree": 2204,
    "kinds": {
     "project-refuses": 1,
-    "project-unknown": 12
+    "project-unknown": 11
    },
    "kinds_by_return": {
     "incomplete": {
-     "project-unknown": 12
+     "project-unknown": 11
     },
     "refused": {
      "project-refuses": 1
@@ -38,9 +38,9 @@
    "project": "household.roster_bad",
    "shown_when": null,
    "sources": {
-    "fixture": 1411,
+    "fixture": 1425,
     "generated": 500,
-    "partial": 211
+    "partial": 291
    },
    "status": "DISAGREE",
    "triage": "differs",
@@ -52,35 +52,7 @@
      },
      "candidate_operands": [
       {
-       "ref": "household.h_mfj",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_mfj",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "household.persons",
+       "ref": "household.h_taxpayer_entries",
        "value": {
         "kind": "count",
         "value": 1
@@ -94,17 +66,45 @@
        }
       },
       {
-       "ref": "household.h_taxpayers",
+       "ref": "f1040.status",
        "value": {
-        "kind": "count",
-        "value": 1
+        "kind": "enum",
+        "value": "single"
        }
       },
       {
-       "ref": "1",
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "household.h_spouse_entries",
        "value": {
         "kind": "count",
-        "value": 1
+        "value": 0
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
        }
       }
      ],
@@ -147,35 +147,7 @@
      },
      "candidate_operands": [
       {
-       "ref": "household.h_mfj",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_mfj",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "household.persons",
+       "ref": "household.h_taxpayer_entries",
        "value": {
         "kind": "count",
         "value": 1
@@ -189,17 +161,45 @@
        }
       },
       {
-       "ref": "household.h_taxpayers",
+       "ref": "f1040.status",
        "value": {
-        "kind": "count",
-        "value": 1
+        "kind": "enum",
+        "value": "single"
        }
       },
       {
-       "ref": "1",
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "household.h_spouse_entries",
        "value": {
         "kind": "count",
-        "value": 1
+        "value": 0
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
        }
       }
      ],
@@ -242,35 +242,7 @@
      },
      "candidate_operands": [
       {
-       "ref": "household.h_mfj",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_mfj",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "household.persons",
+       "ref": "household.h_taxpayer_entries",
        "value": {
         "kind": "count",
         "value": 1
@@ -284,17 +256,45 @@
        }
       },
       {
-       "ref": "household.h_taxpayers",
+       "ref": "f1040.status",
        "value": {
-        "kind": "count",
-        "value": 1
+        "kind": "enum",
+        "value": "single"
        }
       },
       {
-       "ref": "1",
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "household.h_spouse_entries",
        "value": {
         "kind": "count",
-        "value": 1
+        "value": 0
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
        }
       }
      ],
@@ -337,35 +337,7 @@
      },
      "candidate_operands": [
       {
-       "ref": "household.h_mfj",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_mfj",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "household.persons",
+       "ref": "household.h_taxpayer_entries",
        "value": {
         "kind": "count",
         "value": 1
@@ -379,17 +351,45 @@
        }
       },
       {
-       "ref": "household.h_taxpayers",
+       "ref": "f1040.status",
        "value": {
-        "kind": "count",
-        "value": 1
+        "kind": "enum",
+        "value": "single"
        }
       },
       {
-       "ref": "1",
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "household.h_spouse_entries",
        "value": {
         "kind": "count",
-        "value": 1
+        "value": 0
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
        }
       }
      ],
@@ -432,35 +432,7 @@
      },
      "candidate_operands": [
       {
-       "ref": "household.h_mfj",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_mfj",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "household.persons",
+       "ref": "household.h_taxpayer_entries",
        "value": {
         "kind": "count",
         "value": 1
@@ -474,17 +446,45 @@
        }
       },
       {
-       "ref": "household.h_taxpayers",
+       "ref": "f1040.status",
        "value": {
-        "kind": "count",
-        "value": 1
+        "kind": "enum",
+        "value": "single"
        }
       },
       {
-       "ref": "1",
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "household.h_spouse_entries",
        "value": {
         "kind": "count",
-        "value": 1
+        "value": 0
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
        }
       }
      ],
@@ -527,35 +527,7 @@
      },
      "candidate_operands": [
       {
-       "ref": "household.h_mfj",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_mfj",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "household.persons",
+       "ref": "household.h_taxpayer_entries",
        "value": {
         "kind": "count",
         "value": 1
@@ -569,17 +541,45 @@
        }
       },
       {
-       "ref": "household.h_taxpayers",
+       "ref": "f1040.status",
        "value": {
-        "kind": "count",
-        "value": 1
+        "kind": "enum",
+        "value": "single"
        }
       },
       {
-       "ref": "1",
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "household.h_spouse_entries",
        "value": {
         "kind": "count",
-        "value": 1
+        "value": 0
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
        }
       }
      ],
@@ -622,35 +622,7 @@
      },
      "candidate_operands": [
       {
-       "ref": "household.h_mfj",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_mfj",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "household.persons",
+       "ref": "household.h_taxpayer_entries",
        "value": {
         "kind": "count",
         "value": 1
@@ -664,17 +636,45 @@
        }
       },
       {
-       "ref": "household.h_taxpayers",
+       "ref": "f1040.status",
        "value": {
-        "kind": "count",
-        "value": 1
+        "kind": "enum",
+        "value": "single"
        }
       },
       {
-       "ref": "1",
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "household.h_spouse_entries",
        "value": {
         "kind": "count",
-        "value": 1
+        "value": 0
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
        }
       }
      ],
@@ -722,23 +722,23 @@
   },
   {
    "absent": 0,
-   "agree": 2122,
+   "agree": 2216,
    "candidate": "household.hsa_both",
-   "compared": 2122,
+   "compared": 2216,
    "completed_witnesses": [],
    "differ": 0,
    "handle": "household.hsa_both",
-   "in_scope": 2122,
-   "in_scope_agree": 2122,
+   "in_scope": 2216,
+   "in_scope_agree": 2216,
    "kinds": {},
    "kinds_by_return": {},
    "open_at_triage": true,
    "project": "household.hsa_both",
    "shown_when": null,
    "sources": {
-    "fixture": 1411,
+    "fixture": 1425,
     "generated": 500,
-    "partial": 211
+    "partial": 291
    },
    "status": "DISAGREE",
    "triage": "agrees on sample",
@@ -746,1137 +746,47 @@
   },
   {
    "absent": 0,
-   "agree": 2122,
-   "candidate": "household.all_eic_ssn",
-   "compared": 2122,
-   "completed_witnesses": [],
-   "differ": 0,
-   "handle": "household.all_eic_ssn",
-   "in_scope": 2122,
-   "in_scope_agree": 2122,
-   "kinds": {},
-   "kinds_by_return": {},
-   "open_at_triage": true,
-   "project": "household.all_eic_ssn",
-   "shown_when": null,
-   "sources": {
-    "fixture": 1411,
-    "generated": 500,
-    "partial": 211
-   },
-   "status": "DISAGREE",
-   "triage": "agrees on sample",
-   "witnesses": []
-  },
-  {
-   "absent": 0,
-   "agree": 2122,
-   "candidate": "household.all_tin",
-   "compared": 2122,
-   "completed_witnesses": [],
-   "differ": 0,
-   "handle": "household.all_tin",
-   "in_scope": 2122,
-   "in_scope_agree": 2122,
-   "kinds": {},
-   "kinds_by_return": {},
-   "open_at_triage": true,
-   "project": "household.all_tin",
-   "shown_when": null,
-   "sources": {
-    "fixture": 1411,
-    "generated": 500,
-    "partial": 211
-   },
-   "status": "DISAGREE",
-   "triage": "agrees on sample",
-   "witnesses": []
-  },
-  {
-   "absent": 0,
-   "agree": 2098,
+   "agree": 2216,
    "candidate": "household.ctc_ssn",
-   "compared": 2122,
-   "completed_witnesses": [
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.h_work_ssn_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.h_no_issued_tin",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "household.any_work_ssn",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.id_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.persons",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "index": 147,
-      "kind": "generated",
-      "seed": 20261026
-     }
-    }
-   ],
-   "differ": 24,
+   "compared": 2216,
+   "completed_witnesses": [],
+   "differ": 0,
    "handle": "household.ctc_ssn",
-   "in_scope": 2122,
-   "in_scope_agree": 2098,
-   "kinds": {
-    "candidate-unknown": 7,
-    "value": 17
-   },
-   "kinds_by_return": {
-    "completed": {
-     "value": 1
-    },
-    "incomplete": {
-     "candidate-unknown": 2
-    },
-    "refused": {
-     "candidate-unknown": 5,
-     "value": 16
-    }
-   },
+   "in_scope": 2216,
+   "in_scope_agree": 2216,
+   "kinds": {},
+   "kinds_by_return": {},
    "open_at_triage": true,
    "project": "household.ctc_ssn",
    "shown_when": null,
    "sources": {
-    "fixture": 1411,
+    "fixture": 1425,
     "generated": 500,
-    "partial": 211
+    "partial": 291
    },
    "status": "DISAGREE",
-   "triage": "differs",
-   "witnesses": [
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.h_work_ssn_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.h_no_issued_tin",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "household.any_work_ssn",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.id_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.persons",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.otjob.2",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.h_work_ssn_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.h_no_issued_tin",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "household.any_work_ssn",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.id_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.persons",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.sc.3",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.h_work_ssn_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.h_no_issued_tin",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "household.any_work_ssn",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.id_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.persons",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.ssb.2",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.h_work_ssn_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.h_no_issued_tin",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "household.any_work_ssn",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.id_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.persons",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.tcw.10",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.h_work_ssn_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.h_no_issued_tin",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "household.any_work_ssn",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.id_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.persons",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.tcw.11",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": false
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.h_work_ssn_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.h_no_issued_tin",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "household.any_work_ssn",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.id_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.persons",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.tcw.8",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].tin",
-      "kind": "unknown",
-      "lowerBound": 0,
-      "reason": "no input supplied for person[taxpayer].tin"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.h_work_ssn_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.h_no_issued_tin",
-       "value": {
-        "input": "person[taxpayer].tin",
-        "kind": "unknown",
-        "lowerBound": 0,
-        "reason": "no input supplied for person[taxpayer].tin"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "household.any_work_ssn",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.id_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.persons",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "stage16.cleanup.refuse.rrta_medicare",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].tin",
-      "kind": "unknown",
-      "lowerBound": 0,
-      "reason": "no input supplied for person[taxpayer].tin"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.h_work_ssn_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.h_no_issued_tin",
-       "value": {
-        "input": "person[taxpayer].tin",
-        "kind": "unknown",
-        "lowerBound": 0,
-        "reason": "no input supplied for person[taxpayer].tin"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "household.any_work_ssn",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.id_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.persons",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "stage16.cleanup.refuse.f4952_unsupported",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].tin",
-      "kind": "unknown",
-      "lowerBound": 0,
-      "reason": "no input supplied for person[taxpayer].tin"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.h_work_ssn_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.h_no_issued_tin",
-       "value": {
-        "input": "person[taxpayer].tin",
-        "kind": "unknown",
-        "lowerBound": 0,
-        "reason": "no input supplied for person[taxpayer].tin"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "household.any_work_ssn",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.id_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.persons",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "stage16.cleanup.f8959_line16_se_refused",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[spouse].tin",
-      "kind": "unknown",
-      "lowerBound": 0,
-      "reason": "no input supplied for person[spouse].tin"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.h_work_ssn_count",
-       "value": {
-        "kind": "count",
-        "value": 2
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.h_no_issued_tin",
-       "value": {
-        "input": "person[spouse].tin",
-        "kind": "unknown",
-        "lowerBound": 0,
-        "reason": "no input supplied for person[spouse].tin"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "household.any_work_ssn",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.id_count",
-       "value": {
-        "kind": "count",
-        "value": 2
-       }
-      },
-      {
-       "ref": "household.persons",
-       "value": {
-        "kind": "count",
-        "value": 2
-       }
-      }
-     ],
-     "project_return": "incomplete",
-     "source": {
-      "id": "stage16.cleanup.f5695_no_audit",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].tin",
-      "kind": "unknown",
-      "lowerBound": 0,
-      "reason": "no input supplied for person[taxpayer].tin"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.h_work_ssn_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.h_no_issued_tin",
-       "value": {
-        "input": "person[taxpayer].tin",
-        "kind": "unknown",
-        "lowerBound": 0,
-        "reason": "no input supplied for person[taxpayer].tin"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "household.any_work_ssn",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.id_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.persons",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      }
-     ],
-     "project_return": "incomplete",
-     "source": {
-      "id": "stage16.cleanup.f5695_no_section_b",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].tin",
-      "kind": "unknown",
-      "lowerBound": 0,
-      "reason": "no input supplied for person[taxpayer].tin"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.h_work_ssn_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.h_no_issued_tin",
-       "value": {
-        "input": "person[taxpayer].tin",
-        "kind": "unknown",
-        "lowerBound": 0,
-        "reason": "no input supplied for person[taxpayer].tin"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "household.any_work_ssn",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.id_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "household.persons",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "stage16.cleanup.refuse.f8889.screen_no_amounts",
-      "kind": "fixture"
-     }
-    }
-   ]
+   "triage": "agrees on sample",
+   "witnesses": []
   },
   {
    "absent": 0,
-   "agree": 2122,
+   "agree": 2216,
    "candidate": "household.taxpayer_work_ssn",
-   "compared": 2122,
+   "compared": 2216,
    "completed_witnesses": [],
    "differ": 0,
    "handle": "household.taxpayer_work_ssn",
-   "in_scope": 2122,
-   "in_scope_agree": 2122,
+   "in_scope": 2216,
+   "in_scope_agree": 2216,
    "kinds": {},
    "kinds_by_return": {},
    "open_at_triage": true,
    "project": "household.taxpayer_work_ssn",
    "shown_when": null,
    "sources": {
-    "fixture": 1411,
+    "fixture": 1425,
     "generated": 500,
-    "partial": 211
+    "partial": 291
    },
    "status": "DISAGREE",
    "triage": "agrees on sample",
@@ -1884,16 +794,16 @@
   },
   {
    "absent": 0,
-   "agree": 2119,
+   "agree": 2212,
    "candidate": "household.hoh_fails",
-   "compared": 2122,
+   "compared": 2216,
    "completed_witnesses": [],
-   "differ": 3,
+   "differ": 4,
    "handle": "household.hoh_fails",
-   "in_scope": 2098,
-   "in_scope_agree": 2097,
+   "in_scope": 2189,
+   "in_scope_agree": 2188,
    "kinds": {
-    "project-refuses": 2,
+    "project-refuses": 3,
     "project-unknown": 1
    },
    "kinds_by_return": {
@@ -1901,16 +811,16 @@
      "project-unknown": 1
     },
     "refused": {
-     "project-refuses": 2
+     "project-refuses": 3
     }
    },
    "open_at_triage": true,
    "project": "household.hoh_fails",
    "shown_when": null,
    "sources": {
-    "fixture": 1411,
+    "fixture": 1425,
     "generated": 500,
-    "partial": 211
+    "partial": 291
    },
    "status": "DISAGREE",
    "triage": "differs",
@@ -1964,6 +874,109 @@
        }
       },
       {
+       "ref": "household.home_cost",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "household.h_hoh_test2_count",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555\""
+      },
+      "form": "Community income on a married head of household return in a community property state (Form 8958; Pub. 555)",
+      "gate": "household.hoh_community_property",
+      "kind": "refusal",
+      "remedy": "A married person filing as head of household who lived in a community property state may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
+       "ref": "\"hoh\"",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
+       "ref": "household.hoh_eligible",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 23, Community Property States, \"If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555\""
+        },
+        "form": "Community income on a married head of household return in a community property state (Form 8958; Pub. 555)",
+        "gate": "household.hoh_community_property",
+        "kind": "refusal",
+        "remedy": "A married person filing as head of household who lived in a community property state may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool."
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage21.household.community_still_married",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
+       "ref": "\"hoh\"",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
        "ref": "household.unmarried",
        "value": {
         "kind": "bool",
@@ -1975,6 +988,20 @@
        "value": {
         "kind": "bool",
         "value": true
+       }
+      },
+      {
+       "ref": "household.h_hoh_test1_count",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
        }
       },
       {
@@ -2109,20 +1136,6 @@
        }
       },
       {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
        "ref": "household.home_cost",
        "value": {
         "kind": "bool",
@@ -2254,20 +1267,6 @@
        }
       },
       {
-       "ref": "household.unmarried",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
        "ref": "household.home_cost",
        "value": {
         "kind": "bool",
@@ -2331,9 +1330,159 @@
   },
   {
    "absent": 0,
-   "agree": 595,
+   "agree": 2215,
+   "candidate": "household.widowed_2025",
+   "compared": 2216,
+   "completed_witnesses": [],
+   "differ": 1,
+   "handle": "household.widowed_2025",
+   "in_scope": 2216,
+   "in_scope_agree": 2215,
+   "kinds": {
+    "value": 1
+   },
+   "kinds_by_return": {
+    "incomplete": {
+     "value": 1
+    }
+   },
+   "open_at_triage": true,
+   "project": "household.widowed_2025",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1425,
+    "generated": 500,
+    "partial": 291
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "\"hoh\"",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "household.married",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "household.spouse_died_2025",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "\"hoh\"",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.household.status_joint_death_year",
+      "kind": "fixture"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 609,
    "candidate": "household.rdp_community_property",
-   "compared": 2122,
+   "compared": 2216,
    "completed_witnesses": [
     {
      "candidate": {
@@ -2348,20 +1497,6 @@
         "input": "household.rdp",
         "kind": "unknown",
         "reason": "no input supplied for household.rdp"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.community_property",
-       "value": {
-        "kind": "bool",
-        "value": false
        }
       },
       {
@@ -2413,20 +1548,6 @@
         "input": "household.rdp",
         "kind": "unknown",
         "reason": "no input supplied for household.rdp"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.community_property",
-       "value": {
-        "kind": "bool",
-        "value": false
        }
       },
       {
@@ -2500,20 +1621,6 @@
         "kind": "bool",
         "value": true
        }
-      },
-      {
-       "ref": "household.community_property",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
       }
      ],
      "instance": "household",
@@ -2557,20 +1664,6 @@
         "input": "household.rdp",
         "kind": "unknown",
         "reason": "no input supplied for household.rdp"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.community_property",
-       "value": {
-        "kind": "bool",
-        "value": false
        }
       },
       {
@@ -2644,20 +1737,6 @@
         "kind": "bool",
         "value": true
        }
-      },
-      {
-       "ref": "household.community_property",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
       }
      ],
      "instance": "household",
@@ -2723,20 +1802,6 @@
         "kind": "bool",
         "value": true
        }
-      },
-      {
-       "ref": "household.community_property",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
       }
      ],
      "instance": "household",
@@ -2782,33 +1847,31 @@
      }
     }
    ],
-   "differ": 1527,
+   "differ": 1607,
    "handle": "household.rdp_community_property",
-   "in_scope": 2122,
-   "in_scope_agree": 595,
+   "in_scope": 2216,
+   "in_scope_agree": 609,
    "kinds": {
-    "candidate-unknown": 1526,
-    "value": 1
+    "candidate-unknown": 1607
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-unknown": 220
+     "candidate-unknown": 226
     },
     "incomplete": {
-     "candidate-unknown": 757
+     "candidate-unknown": 796
     },
     "refused": {
-     "candidate-unknown": 549,
-     "value": 1
+     "candidate-unknown": 585
     }
    },
    "open_at_triage": true,
    "project": "household.rdp_community_property",
    "shown_when": null,
    "sources": {
-    "fixture": 1411,
+    "fixture": 1425,
     "generated": 500,
-    "partial": 211
+    "partial": 291
    },
    "status": "DISAGREE",
    "triage": "differs",
@@ -2826,20 +1889,6 @@
         "input": "household.rdp",
         "kind": "unknown",
         "reason": "no input supplied for household.rdp"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.community_property",
-       "value": {
-        "kind": "bool",
-        "value": false
        }
       },
       {
@@ -2913,20 +1962,6 @@
         "kind": "bool",
         "value": true
        }
-      },
-      {
-       "ref": "household.community_property",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
       }
      ],
      "instance": "household",
@@ -2970,20 +2005,6 @@
         "input": "household.rdp",
         "kind": "unknown",
         "reason": "no input supplied for household.rdp"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.community_property",
-       "value": {
-        "kind": "bool",
-        "value": false
        }
       },
       {
@@ -3057,20 +2078,6 @@
         "kind": "bool",
         "value": true
        }
-      },
-      {
-       "ref": "household.community_property",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
       }
      ],
      "instance": "household",
@@ -3128,20 +2135,6 @@
         "input": "household.rdp",
         "kind": "unknown",
         "reason": "no input supplied for household.rdp"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.community_property",
-       "value": {
-        "kind": "bool",
-        "value": false
        }
       },
       {
@@ -3215,20 +2208,6 @@
         "kind": "bool",
         "value": true
        }
-      },
-      {
-       "ref": "household.community_property",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
       }
      ],
      "instance": "household",
@@ -3272,15 +2251,342 @@
       "id": "classm.f2441.6.deepseek",
       "kind": "fixture"
      }
-    },
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 2048,
+   "candidate": "household.filing_status_conflict",
+   "compared": 2216,
+   "completed_witnesses": [
     {
      "candidate": {
-      "kind": "bool",
-      "value": true
+      "input": "household.married",
+      "kind": "unknown",
+      "reason": "no input supplied for household.married"
      },
      "candidate_operands": [
       {
-       "ref": "household.rdp",
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      },
+      {
+       "ref": "\"hoh\"",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      },
+      {
+       "ref": "\"qss\"",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      },
+      {
+       "ref": "household.married",
+       "value": {
+        "input": "household.married",
+        "kind": "unknown",
+        "reason": "no input supplied for household.married"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.dependent.3.deepseek",
+      "kind": "partial",
+      "withheld": "household.married"
+     }
+    },
+    {
+     "candidate": {
+      "input": "household.married",
+      "kind": "unknown",
+      "reason": "no input supplied for household.married"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      },
+      {
+       "ref": "\"hoh\"",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      },
+      {
+       "ref": "\"qss\"",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      },
+      {
+       "ref": "household.married",
+       "value": {
+        "input": "household.married",
+        "kind": "unknown",
+        "reason": "no input supplied for household.married"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f5695.2.deepseek",
+      "kind": "partial",
+      "withheld": "household.married"
+     }
+    }
+   ],
+   "differ": 168,
+   "handle": "household.filing_status_conflict",
+   "in_scope": 2216,
+   "in_scope_agree": 2048,
+   "kinds": {
+    "candidate-unknown": 40,
+    "value": 128
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-unknown": 2
+    },
+    "incomplete": {
+     "candidate-unknown": 23
+    },
+    "refused": {
+     "candidate-unknown": 15,
+     "value": 128
+    }
+   },
+   "open_at_triage": true,
+   "project": "household.filing_status_conflict",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1425,
+    "generated": 500,
+    "partial": 291
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "input": "household.spouse_died_2025",
+      "kind": "unknown",
+      "reason": "no input supplied for household.spouse_died_2025"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "household.married",
        "value": {
         "kind": "bool",
         "value": false
@@ -3294,24 +2600,11 @@
        }
       },
       {
-       "ref": "household.community_property",
+       "ref": "household.widowed_2025",
        "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.married",
-       "value": {
-        "kind": "bool",
-        "value": true
+        "input": "household.spouse_died_2025",
+        "kind": "unknown",
+        "reason": "no input supplied for household.spouse_died_2025"
        }
       },
       {
@@ -3325,7 +2618,7 @@
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
-        "value": "hoh"
+        "value": "single"
        }
       },
       {
@@ -3333,6 +2626,153 @@
        "value": {
         "kind": "enum",
         "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"hoh\"",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "household.married",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "household.married",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
        }
       }
      ],
@@ -3347,7 +2787,62 @@
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
-        "value": "hoh"
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw26.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
        }
       },
       {
@@ -3358,21 +2853,519 @@
        }
       },
       {
-       "ref": "household.community_property",
+       "ref": "f1040.status",
        "value": {
-        "kind": "bool",
-        "value": true
+        "kind": "enum",
+        "value": "mfs"
        }
       },
       {
-       "ref": "true",
+       "ref": "\"mfs\"",
        "value": {
-        "kind": "bool",
-        "value": true
+        "kind": "enum",
+        "value": "mfs"
        }
       },
       {
-       "ref": "household.rdp",
+       "ref": "household.married",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "household.married",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.eic.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "household.married",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.eic.8.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "household.married",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.retirement.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "household.married",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.retirement.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "household.spouse_died_2025",
+      "kind": "unknown",
+      "reason": "no input supplied for household.spouse_died_2025"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "household.married",
        "value": {
         "kind": "bool",
         "value": false
@@ -3384,21 +3377,724 @@
         "kind": "bool",
         "value": true
        }
+      },
+      {
+       "ref": "household.widowed_2025",
+       "value": {
+        "input": "household.spouse_died_2025",
+        "kind": "unknown",
+        "reason": "no input supplied for household.spouse_died_2025"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"hoh\"",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
       }
      ],
-     "project_return": "refused",
+     "instance": "household",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "household.married",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "incomplete",
      "source": {
-      "id": "audit.household.hoh_community_property",
+      "id": "classm.f8889.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "household.spouse_died_2025",
+      "kind": "unknown",
+      "reason": "no input supplied for household.spouse_died_2025"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "household.married",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "household.widowed_2025",
+       "value": {
+        "input": "household.spouse_died_2025",
+        "kind": "unknown",
+        "reason": "no input supplied for household.spouse_died_2025"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"hoh\"",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "household.married",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage16.hsa.partial.H05",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "household.spouse_died_2025",
+      "kind": "unknown",
+      "reason": "no input supplied for household.spouse_died_2025"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "household.married",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "household.widowed_2025",
+       "value": {
+        "input": "household.spouse_died_2025",
+        "kind": "unknown",
+        "reason": "no input supplied for household.spouse_died_2025"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"hoh\"",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "household.married",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage16.hsa.partial.H06",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "household.spouse_died_2025",
+      "kind": "unknown",
+      "reason": "no input supplied for household.spouse_died_2025"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "household.married",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "household.widowed_2025",
+       "value": {
+        "input": "household.spouse_died_2025",
+        "kind": "unknown",
+        "reason": "no input supplied for household.spouse_died_2025"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"hoh\"",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "household.married",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage16.hsa.partial.H07",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "household.spouse_died_2025",
+      "kind": "unknown",
+      "reason": "no input supplied for household.spouse_died_2025"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "household.married",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "household.widowed_2025",
+       "value": {
+        "input": "household.spouse_died_2025",
+        "kind": "unknown",
+        "reason": "no input supplied for household.spouse_died_2025"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfs\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"hoh\"",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"single\"",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "household.married",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage16.hsa.partial.H08",
       "kind": "fixture"
      }
     }
    ]
   }
  ],
- "log_sha256_at_triage": "7f17e635d9756d3141721ca6d8f810e95c8d1ff9bea18757ce36dfb9db2f8224",
+ "log_sha256_at_triage": "4af24f3524035e2a6e5cce8a2587ed4d46cf05874a9262566cf759b95bb6e6ae",
  "policy": "executable-triage-v2",
- "response_sha256": "2e3f17ba3f8a08080b32ab4f1865f814525a61ea43f1bacc29ab5f3aa3a917bf",
+ "response_sha256": "613ee014114d0f1aeccc8d3f0dcd2d98db641c119b984b0fdcaab96e5afc6392",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "evaluated",
- "subject_sha256": "5ee788cba783257784151e57c5c3df3340b30fa22691f1858e75fd7517f54fe9"
+ "subject_sha256": "5466d64fb38b72b9dac93e0afe2ba271ce519579f173651c0c7af2c1e2eeae23"
 }

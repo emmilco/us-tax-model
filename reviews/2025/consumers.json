@@ -306,11 +306,47 @@
    "source_phrase": "Temporary absences by you or the other person for special circumstances, such as school, vacation, business, medical care, military service, or detention in a juvenile facility, count as time lived with you (i1040gi p. 14, Exception to time lived with you)",
    "reason": "The question picks out the absences that are not temporary under p501 p. 9's head-of-household conditions, which the line also cites; Test 2 on p. 14 counts only temporary absences."
   },
-  "consumer:household.unmarried@p501:p9": {
+  "consumer:f1040.status@i1040gi:p13": {
    "verdict": "same",
-   "question_phrase": "Were you unmarried, or considered unmarried under the head of household rules, at the end of 2025?",
-   "source_phrase": "Example. You are unmarried. Your parent, who you claim as a dependent, lived in an apartment alone (p501 p. 9, Head of Household); the term is the head-of-household one defined on p. 8, \"must be either unmarried or considered unmarried\"",
-   "reason": "Page 9 uses unmarried in the head-of-household sense of p. 8, which is what the question asks, at the end of the year."
+   "question_phrase": "Form 1040, Filing Status checkboxes",
+   "source_phrase": "You were widowed before January 1, 2025, and didn\u2019t remarry before the end of 2025",
+   "reason": "The consumer household.widowed_2025 uses status only to select the single/HOH boxes for a scope refusal, and independently reads household.spouse_died_2025 for the death-year fact. The isolated model response inferred that status must itself establish widowhood; the actual conjunction does not use it that way (BUG-0277)."
+  },
+  "consumer:f1040.status@p501:p6": {
+   "verdict": "same",
+   "question_phrase": "Form 1040, Filing Status checkboxes",
+   "source_phrase": "If your spouse died during the year, you are considered married for the whole year for filing status purposes.",
+   "reason": "The consumer household.widowed_2025 uses status only to select the single/HOH boxes for a scope refusal, and independently reads household.spouse_died_2025 for the death-year fact. The isolated model response inferred that status must itself establish widowhood; the actual conjunction does not use it that way (BUG-0277)."
+  },
+  "consumer:household.spouse_died_2025@i1040gi:p13": {
+   "verdict": "same",
+   "question_phrase": "Did your spouse die in 2025? (Asked when your filing status is single or head of household.)",
+   "source_phrase": "Your spouse died in 2025 and you didn\u2019t remarry in 2025.",
+   "reason": "The input supplies the death-year fact, not eligibility to file jointly. household.widowed_2025 combines it with a single/HOH status guard and refuses the owner-selected death-year situation (BUG-0277); it never treats this answer alone as establishing the quoted joint-return rule. The isolated model response conflated that scope screen with a joint-return eligibility predicate."
+  },
+  "consumer:household.married@i1040gi:p23": {
+   "verdict": "same",
+   "question_phrase": "Were you married at the end of 2025 (including married but considered unmarried for head of household status)?",
+   "source_phrase": "If you and your spouse lived in a community property state, you must usually follow state law",
+   "reason": "household.hoh_community_property screens the still-married HOH case only. Ended marriages are separately covered by household.cp_marriage_ended and domestic partners by household.rdp_community_property. The model interpreted this one reader as the whole scope policy; the actual sibling gates cover the two cases it identified."
+  },
+  "consumer:household.married@i8889:p5": {
+   "verdict": "same",
+   "question_phrase": "Were you married at the end of 2025 (including married but considered unmarried for head of household status)?",
+   "source_phrase": "If you are married and had family coverage at any time during the year",
+   "reason": "Read with i8889 p.4 rule6 and p.6 chart, which explicitly determine unmarried status at year end. The at-any-time phrase concerns family coverage, not an alternative year-end-marriage definition. The current question keeps legally married HOH filers married and distinguishes the filing-status death-year rule. The model disclosed its competing grammatical reading; p.6 supplies the explicit temporal definition used here."
+  },
+  "consumer:household.married@i8889:p6": {
+   "verdict": "same",
+   "question_phrase": "Were you married at the end of 2025 (including married but considered unmarried for head of household status)?",
+   "source_phrase": "If, at the end of 2025, you were unmarried and age 55 or older",
+   "reason": "The year-end unmarried chart condition is the negation of the question\u2019s year-end marriage answer; age is tested separately. The isolated model draft also returned same."
+  },
+  "consumer:household.married@i1040gi:p13": {
+   "verdict": "same",
+   "question_phrase": "Were you married at the end of 2025 (including married but considered unmarried for head of household status)?",
+   "source_phrase": "You were married at the end of 2025, even if you didn\u2019t live with your spouse at the end of 2025.",
+   "reason": "Both use the same year-end marital-status test with the same treatment of living apart, legal separation and interlocutory decrees, while the death-year joint-filing route on p. 13 is explicitly left by the question to household.spouse_died_2025, which household.filing_status_conflict reads alongside household.married."
   }
  },
  "baseline": {
@@ -486,9 +522,6 @@
   "consumer:household.credit_disallowed@i1040gi:p44": "37c69cb901db03e8",
   "consumer:household.credit_disallowed@i1040gi:p45": "37c69cb901db03e8",
   "consumer:household.credit_disallowed@i1040gi:p46": "37c69cb901db03e8",
-  "consumer:household.married@i1040gi:p23": "024bb7ee0dc64de4",
-  "consumer:household.married@i8889:p5": "024bb7ee0dc64de4",
-  "consumer:household.married@i8889:p6": "024bb7ee0dc64de4",
   "consumer:ira.deduct_less@p590a:p16": "e2536c3a062ef3cc",
   "consumer:oi8z.kind@i1040gi:p93": "37117cd33fe493d6",
   "consumer:otjob.flsa@i1040gi:p107": "8df0c4bc77003105",

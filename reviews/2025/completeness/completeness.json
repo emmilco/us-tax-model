@@ -1,25 +1,59 @@
 [
  {
   "form": "dependent",
-  "prompt_sha": "7ae470b2ba7cca17d1f09eb859482ed075a8e9d55c1cef589f5b14ce9966ef5d",
+  "prompt_sha": "3c47691431d486ea9d61837fc64cb33b43c076b66b802552a0377b1c4a8abdc0",
   "claims": [
+   {
+    "item": "dependent.other_claimant",
+    "sentences": [
+     {
+      "quote": "For this purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t file such a return or files only to get a refund of withheld income tax or estimated tax paid.",
+      "page": "i1040gi p. 19"
+     },
+     {
+      "quote": "A child isn’t the qualifying child of any other taxpayer and so may qualify as your qualifying relative if the child’s parent (or other person for whom the child is defined as a qualifying child) isn’t required to file an income tax return and either: • Doesn’t file an income tax return, or • Files a return only to get a refund of in- come tax withheld or estimated tax paid.",
+      "page": "p501 p. 18"
+     },
+     {
+      "quote": "If the persons the child does live with aren’t U.S. citizens and have no U.S. gross income, those persons aren’t “taxpayers,” so the child isn’t the qualifying child of any other taxpayer.",
+      "page": "p501 p. 18"
+     }
+    ],
+    "quote": "For this purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t file such a return or files only to get a refund of withheld income tax or estimated tax paid. / A child isn’t the qualifying child of any other taxpayer and so may qualify as your qualifying relative if the child’s parent (or other person for whom the child is defined as a qualifying child) isn’t required to file an income tax return and either: • Doesn’t file an income tax return, or • Files a return only to get a refund of in- come tax withheld or estimated tax paid. / If the persons the child does live with aren’t U.S. citizens and have no U.S. gross income, those persons aren’t “taxpayers,” so the child isn’t the qualifying child of any other taxpayer.",
+    "page": "i1040gi p. 19; p501 p. 18",
+    "why_uncovered": "The question asks only whether the person meets the conditions to be the qualifying child of any other person. It has no carve-out for a person who is not a taxpayer because they need not file, do not file or file only for a refund, or have no U.S. gross income and are not U.S. citizens. A filer supporting a friend's child, or a child living in Mexico with a non-taxpayer grandparent, would answer yes and lose qualifying-relative treatment. No encoded question or refusal covers this exception.",
+    "closest_item": "dependent.other_claimant",
+    "effect": "eligibility"
+   },
    {
     "item": "dependent.supported",
     "sentences": [
      {
-      "quote": "Expenses not directly related to any one member of a household, such as the cost of food for the household, must be divided among the members of the household.",
+      "quote": "These allowances are treated the same way as dependency allotments in figuring support.",
       "page": "p501 p. 20"
      },
      {
-      "quote": "If you live with a person rent free in that person’s home, you must reduce the amount you provide for support of that person by the fair rental value of lodging the person provides you.",
-      "page": "p501 p. 21"
+      "quote": "In figuring a person’s total support, include tax-exempt income, savings, and borrowed amounts used to support that person.",
+      "page": "p501 p. 20"
+     },
+     {
+      "quote": "If you make a lump-sum advance payment to a home for the aged to take care of your relative for life and the payment is based on that person’s life expectancy, the amount of support you provide each year is the lump-sum payment divided by the relative’s life expectancy.",
+      "page": "p501 p. 20"
+     },
+     {
+      "quote": "If you are in the trade or business of providing foster care, your unreimbursed expenses aren’t considered support provided by you.",
+      "page": "p501 p. 15"
+     },
+     {
+      "quote": "Expenses not directly related to any one member of a household, such as the cost of food for the household, must be divided among the members of the household.",
+      "page": "p501 p. 20"
      },
      {
       "quote": "The total fair rental value of a person’s home that the person owns is considered support contributed by that person.",
       "page": "p501 p. 21"
      },
      {
-      "quote": "If you don’t provide the total lodging, the total fair rental value must be divided depending on how much of the total lodging you provide.",
+      "quote": "If you live with a person rent free in that person’s home, you must reduce the amount you provide for support of that person by the fair rental value of lodging the person provides you.",
       "page": "p501 p. 21"
      },
      {
@@ -45,31 +79,11 @@
      {
       "quote": "The following items aren’t included in total support.",
       "page": "p501 p. 21"
-     },
-     {
-      "quote": "In figuring a person’s total support, include tax-exempt income, savings, and borrowed amounts used to support that person.",
-      "page": "p501 p. 20"
-     },
-     {
-      "quote": "If you make a lump-sum advance payment to a home for the aged to take care of your relative for life and the payment is based on that person’s life expectancy, the amount of support you provide each year is the lump-sum payment divided by the relative’s life expectancy.",
-      "page": "p501 p. 20"
-     },
-     {
-      "quote": "If you are in the trade or business of providing foster care, your unreimbursed expenses aren’t considered support provided by you.",
-      "page": "p501 p. 15"
-     },
-     {
-      "quote": "If you aren’t in the trade or business of providing foster care and your unreimbursed out-of-pocket expenses in caring for a foster child were mainly to benefit an organization qualified to receive deductible charitable contributions, the expenses are deductible as charitable contributions but aren’t considered support you provided.",
-      "page": "p501 p. 15"
-     },
-     {
-      "quote": "The year you provide the support is the year you pay for it, even if you do so with borrowed money that you repay in a later year.",
-      "page": "p501 p. 20"
      }
     ],
-    "quote": "Expenses not directly related to any one member of a household, such as the cost of food for the household, must be divided among the members of the household. / If you live with a person rent free in that person’s home, you must reduce the amount you provide for support of that person by the fair rental value of lodging the person provides you. / The total fair rental value of a person’s home that the person owns is considered support contributed by that person. / If you don’t provide the total lodging, the total fair rental value must be divided depending on how much of the total lodging you provide. / Property provided as support is measured by its fair market value. / Medical insurance premiums you pay, including premiums for supplementary Medicare coverage, are included in the support you provide. / Medical insurance benefits, including basic and supplementary Medicare benefits, aren’t part of support. / Amounts veterans receive under the GI Bill for tuition payments and allowances while they attend school are included in total support. / If you pay someone to provide child or dependent care, you can include these payments in the amount you provided for the support of your child or disabled dependent, even if you claim a credit for the payments. / The following items aren’t included in total support. / In figuring a person’s total support, include tax-exempt income, savings, and borrowed amounts used to support that person. / If you make a lump-sum advance payment to a home for the aged to take care of your relative for life and the payment is based on that person’s life expectancy, the amount of support you provide each year is the lump-sum payment divided by the relative’s life expectancy. / If you are in the trade or business of providing foster care, your unreimbursed expenses aren’t considered support provided by you. / If you aren’t in the trade or business of providing foster care and your unreimbursed out-of-pocket expenses in caring for a foster child were mainly to benefit an organization qualified to receive deductible charitable contributions, the expenses are deductible as charitable contributions but aren’t considered support you provided. / The year you provide the support is the year you pay for it, even if you do so with borrowed money that you repay in a later year.",
-    "page": "p501 p. 20; p501 p. 21; p501 p. 15",
-    "why_uncovered": "The support question lists several measurement rules (fair rental value of lodging, TANF, military allotments, foster care payments, state benefits, the child's wages, scholarships). It leaves out the rules on dividing household expenses, the rent-free offset, a person's own home, items excluded from total support (income and payroll taxes, life insurance, funeral expenses), insurance premiums and benefits, GI Bill amounts, tax-exempt income and borrowed amounts, home-for-the-aged lump sums, foster-care business or charitable expenses, and the year support is provided. No question or refusal addresses these rules.",
+    "quote": "These allowances are treated the same way as dependency allotments in figuring support. / In figuring a person’s total support, include tax-exempt income, savings, and borrowed amounts used to support that person. / If you make a lump-sum advance payment to a home for the aged to take care of your relative for life and the payment is based on that person’s life expectancy, the amount of support you provide each year is the lump-sum payment divided by the relative’s life expectancy. / If you are in the trade or business of providing foster care, your unreimbursed expenses aren’t considered support provided by you. / Expenses not directly related to any one member of a household, such as the cost of food for the household, must be divided among the members of the household. / The total fair rental value of a person’s home that the person owns is considered support contributed by that person. / If you live with a person rent free in that person’s home, you must reduce the amount you provide for support of that person by the fair rental value of lodging the person provides you. / Property provided as support is measured by its fair market value. / Medical insurance premiums you pay, including premiums for supplementary Medicare coverage, are included in the support you provide. / Medical insurance benefits, including basic and supplementary Medicare benefits, aren’t part of support. / Amounts veterans receive under the GI Bill for tuition payments and allowances while they attend school are included in total support. / If you pay someone to provide child or dependent care, you can include these payments in the amount you provided for the support of your child or disabled dependent, even if you claim a credit for the payments. / The following items aren’t included in total support.",
+    "page": "p501 p. 20; p501 p. 15; p501 p. 21",
+    "why_uncovered": "The support question is a single yes/no with instructions for lodging, allotments, the person's own funds, foster payments, child wages, state benefits and scholarships. It does not state these other rules on what counts in total support and how it is measured, including the exclusions for income and payroll taxes, life insurance premiums, funeral expenses and Survivors' and Dependents' Educational Assistance. Applying them could change the answer to the over-half test.",
     "closest_item": "dependent.supported",
     "effect": "eligibility"
    },
@@ -81,52 +95,44 @@
       "page": "p501 p. 20"
      },
      {
-      "quote": "Amounts veterans receive under the GI Bill for tuition payments and allowances while they attend school are included in total support.",
-      "page": "p501 p. 21"
-     },
-     {
-      "quote": "Because the car is bought and owned by your child, the car’s fair market value ($4,500) must be included in your child’s support.",
-      "page": "p501 p. 21"
-     },
-     {
       "quote": "The total fair rental value of a person’s home that the person owns is considered support contributed by that person.",
       "page": "p501 p. 21"
      },
      {
-      "quote": "Survivors’ and Dependents’ Educational Assistance payments used for the support of the child who receives them.",
+      "quote": "Property provided as support is measured by its fair market value.",
       "page": "p501 p. 21"
      },
      {
-      "quote": "If spouses each receive benefits that are paid by one check made out to both of them, half of the total paid is considered to be for the support of each spouse, unless they can show otherwise.",
-      "page": "p501 p. 20"
+      "quote": "Medical insurance benefits, including basic and supplementary Medicare benefits, aren’t part of support.",
+      "page": "p501 p. 21"
+     },
+     {
+      "quote": "Amounts veterans receive under the GI Bill for tuition payments and allowances while they attend school are included in total support.",
+      "page": "p501 p. 21"
+     },
+     {
+      "quote": "The following items aren’t included in total support.",
+      "page": "p501 p. 21"
      }
     ],
-    "quote": "In figuring a person’s total support, include tax-exempt income, savings, and borrowed amounts used to support that person. / Amounts veterans receive under the GI Bill for tuition payments and allowances while they attend school are included in total support. / Because the car is bought and owned by your child, the car’s fair market value ($4,500) must be included in your child’s support. / The total fair rental value of a person’s home that the person owns is considered support contributed by that person. / Survivors’ and Dependents’ Educational Assistance payments used for the support of the child who receives them. / If spouses each receive benefits that are paid by one check made out to both of them, half of the total paid is considered to be for the support of each spouse, unless they can show otherwise.",
+    "quote": "In figuring a person’s total support, include tax-exempt income, savings, and borrowed amounts used to support that person. / The total fair rental value of a person’s home that the person owns is considered support contributed by that person. / Property provided as support is measured by its fair market value. / Medical insurance benefits, including basic and supplementary Medicare benefits, aren’t part of support. / Amounts veterans receive under the GI Bill for tuition payments and allowances while they attend school are included in total support. / The following items aren’t included in total support.",
     "page": "p501 p. 20; p501 p. 21",
-    "why_uncovered": "The own-support question covers own funds actually spent, wages, lodging at fair rental value, foster payments, scholarships and social security benefits. It does not say that borrowed amounts (such as student loans), GI Bill amounts and property bought with the child's own funds count as the child's support. It also omits that Survivors' and Dependents' Educational Assistance payments and the other listed items are excluded from total support.",
+    "why_uncovered": "The question covers own funds actually spent, lodging at fair rental value, foster payments, scholarships and social security benefits. It omits these rules on what else enters the child's total support, such as borrowed amounts, a home the child owns, property bought with the child's funds, GI Bill amounts, and the excluded items such as taxes paid from the child's own income. These can change whether the child provided over half of their own support.",
     "closest_item": "dependent.self_support",
     "effect": "eligibility"
    },
    {
-    "item": "dependent.other_claimant",
+    "item": "dependent.student",
     "sentences": [
      {
-      "quote": "For this purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t file such a return or files only to get a refund of withheld income tax or estimated tax paid.",
-      "page": "i1040gi p. 19"
-     },
-     {
-      "quote": "A child isn’t the qualifying child of any other taxpayer and so may qualify as your qualifying relative if the child’s parent (or other person for whom the child is defined as a qualifying child) isn’t required to file an income tax return and either: • Doesn’t file an income tax return, or • Files a return only to get a refund of in- come tax withheld or estimated tax paid.",
-      "page": "p501 p. 18"
-     },
-     {
-      "quote": "If the persons the child does live with aren’t U.S. citizens and have no U.S. gross income, those persons aren’t “taxpayers,” so the child isn’t the qualifying child of any other taxpayer.",
-      "page": "p501 p. 18"
+      "quote": "Students who work on “co-op” jobs in private industry as a part of a school’s regular course of classroom and practical training are considered full-time students.",
+      "page": "p501 p. 13"
      }
     ],
-    "quote": "For this purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t file such a return or files only to get a refund of withheld income tax or estimated tax paid. / A child isn’t the qualifying child of any other taxpayer and so may qualify as your qualifying relative if the child’s parent (or other person for whom the child is defined as a qualifying child) isn’t required to file an income tax return and either: • Doesn’t file an income tax return, or • Files a return only to get a refund of in- come tax withheld or estimated tax paid. / If the persons the child does live with aren’t U.S. citizens and have no U.S. gross income, those persons aren’t “taxpayers,” so the child isn’t the qualifying child of any other taxpayer.",
-    "page": "i1040gi p. 19; p501 p. 18",
-    "why_uncovered": "The question asks whether the person meets the conditions to be the qualifying child of any other person. It never applies the rule that a person who isn't required to file, and doesn't file or files only for a refund, is not a 'taxpayer'. As a result, a qualifying relative whose only other claimant is such a non-filer, or a child in Canada or Mexico living with non-taxpayers, would be wrongly excluded.",
-    "closest_item": "dependent.other_claimant",
+    "quote": "Students who work on “co-op” jobs in private industry as a part of a school’s regular course of classroom and practical training are considered full-time students.",
+    "page": "p501 p. 13",
+    "why_uncovered": "The full-time student question defines enrollment and excludes on-the-job training courses, but it does not say that co-op vocational students are treated as full-time. A filer could read the on-the-job exclusion as applying to them and answer no.",
+    "closest_item": "dependent.student",
     "effect": "eligibility"
    },
    {
@@ -139,48 +145,134 @@
     ],
     "quote": "The same is true if the child lived with you more than half the year except for any required hospital stay following birth.",
     "page": "p501 p. 13",
-    "why_uncovered": "The months question counts temporary absences and the born/died rules. It does not tell the filer to count a required hospital stay following birth as time lived with them for the qualifying child residency test.",
+    "why_uncovered": "The months question addresses temporary absences and the home's share of a born child's life, but not a required hospital stay after birth for a qualifying child. That stay comes before the child has lived in the home, so the temporary-absence wording does not clearly reach it. The hospital-stay rule appears only in dependent.qr_all_year, for the qualifying-relative test.",
     "closest_item": "dependent.months",
     "effect": "eligibility"
    },
    {
-    "item": "dependent.born_died",
+    "item": "dependent.parent_home_paid",
     "sentences": [
      {
-      "quote": "State or local law must treat the child as having been born alive.",
-      "page": "p501 p. 13"
-     },
-     {
-      "quote": "There must be proof of a live birth shown by an official document, such as a birth certificate.",
-      "page": "p501 p. 13"
-     },
-     {
-      "quote": "You can’t claim a stillborn child as a dependent.",
-      "page": "p501 p. 13"
+      "quote": "Under proposed Treasury regulations, if you received Temporary Assistance to Needy Families (TANF) payments or other similar payments and used the payment to support another person, those payments are considered support you provided for that person, rather than support provided by the government or other third party.",
+      "page": "p501 p. 9"
      }
     ],
-    "quote": "State or local law must treat the child as having been born alive. / There must be proof of a live birth shown by an official document, such as a birth certificate. / You can’t claim a stillborn child as a dependent.",
-    "page": "p501 p. 13",
-    "why_uncovered": "The born/died question asks only whether the person was born or died in 2025. No question or refusal requires a live birth under state or local law or proof of it, or excludes a stillborn child.",
-    "closest_item": "dependent.born_died",
+    "quote": "Under proposed Treasury regulations, if you received Temporary Assistance to Needy Families (TANF) payments or other similar payments and used the payment to support another person, those payments are considered support you provided for that person, rather than support provided by the government or other third party.",
+    "page": "p501 p. 9",
+    "why_uncovered": "The question explains which costs count and that a parent's own funds count as paid by the parent. It does not address TANF or similar payments the filer used toward the home, although this note appears with the keeping-up-a-home worksheet. A filer could wrongly exclude those payments from the amount they paid.",
+    "closest_item": "dependent.parent_home_paid",
     "effect": "eligibility"
    },
    {
-    "item": "dependent.student",
+    "item": "dependent.dc_paid",
     "sentences": [
      {
-      "quote": "Students who work on “co-op” jobs in private industry as a part of a school’s regular course of classroom and practical training are considered full-time students.",
-      "page": "p501 p. 13"
+      "quote": "Child support payments aren't qualified expenses.",
+      "page": "i2441 p. 2"
      },
      {
-      "quote": "A full-time student at a school that has a regular teaching staff and course of study, and a regularly enrolled student body at the school",
-      "page": "p501 p. 13"
+      "quote": "Generally, if you worked or actively looked for work during only part of the period in which you incurred the expenses, you must figure your expenses for each day.",
+      "page": "i2441 p. 2"
+     },
+     {
+      "quote": "Also, if part of an expense is work related (for either household services or the care of a qualifying person) and part is for other purposes, you have to divide the expense.",
+      "page": "i2441 p. 2"
+     },
+     {
+      "quote": "However, they don't include the services of a chauffeur, bartender, or gardener.",
+      "page": "i2441 p. 2"
      }
     ],
-    "quote": "Students who work on “co-op” jobs in private industry as a part of a school’s regular course of classroom and practical training are considered full-time students. / A full-time student at a school that has a regular teaching staff and course of study, and a regularly enrolled student body at the school",
-    "page": "p501 p. 13",
-    "why_uncovered": "The student question defines a school by type only. It omits the regular teaching staff, course of study and enrolled student body requirement. It also omits the rule that vocational co-op students are treated as full-time students.",
-    "closest_item": "dependent.student",
+    "quote": "Child support payments aren't qualified expenses. / Generally, if you worked or actively looked for work during only part of the period in which you incurred the expenses, you must figure your expenses for each day. / Also, if part of an expense is work related (for either household services or the care of a qualifying person) and part is for other purposes, you have to divide the expense. / However, they don't include the services of a chauffeur, bartender, or gardener.",
+    "page": "i2441 p. 2",
+    "why_uncovered": "The question gives a detailed list of inclusions and exclusions but omits child support payments and non-qualifying household services. It also lacks the daily allocation for part-period work and the division of mixed-purpose expenses. The exhaustive-looking list invites a filer to include these amounts.",
+    "closest_item": "dependent.dc_paid",
+    "effect": "amount"
+   },
+   {
+    "item": "dependent.dc_line2d",
+    "sentences": [
+     {
+      "quote": "If you completed Part III, don't include in column (d) any benefits shown on line 28.",
+      "page": "i2441 p. 3"
+     }
+    ],
+    "quote": "If you completed Part III, don't include in column (d) any benefits shown on line 28.",
+    "page": "i2441 p. 3",
+    "why_uncovered": "The line is described as the expenses incurred and paid, and dependent.dc_paid tells the filer to include expenses paid with dependent care benefits because Form 2441 subtracts them later. No item shows those benefits being removed from the column (d) entry itself. The later subtraction may protect the credit amount, but the entry on this line would not follow the instruction.",
+    "closest_item": "dependent.dc_line2d",
+    "effect": "presentation"
+   },
+   {
+    "item": "dependent.dc_count",
+    "sentences": [
+     {
+      "quote": "If you have more than three qualifying persons, check the box on line 2 and attach a statement to your return with the required information.",
+      "page": "i2441 p. 3"
+     }
+    ],
+    "quote": "If you have more than three qualifying persons, check the box on line 2 and attach a statement to your return with the required information.",
+    "page": "i2441 p. 3",
+    "why_uncovered": "The item counts each qualifying person, but nothing encodes the line 2 checkbox, the attached statement, or listing the three people with the highest expenses when there are more than three.",
+    "closest_item": "dependent.dc_count",
+    "effect": "presentation"
+   },
+   {
+    "item": "dependent.claimed",
+    "sentences": [
+     {
+      "quote": "If you have more than four dependents, check the box under Dependents on page 1 of Form 1040 or 1040-SR and include a statement showing the information requested in the Dependents section.",
+      "page": "i1040gi p. 17"
+     },
+     {
+      "quote": "If the child is a full-time student, check the “Full-time student” box on row (6) of the Dependents section on page 1 of Form 1040 or 1040-SR",
+      "page": "i1040gi p. 17"
+     },
+     {
+      "quote": "If the child is permanently and totally disabled, check the “Permanently and totally disabled” box on row (6) of the Dependents section on page 1 of Form 1040 or 1040-SR.",
+      "page": "i1040gi p. 17"
+     },
+     {
+      "quote": "If the child lived with you for more than half of 2025, check the “Yes” box (box (a)) on row (5) of the Dependents section on page 1 of Form 1040 or 1040-SR.",
+      "page": "i1040gi p. 17"
+     }
+    ],
+    "quote": "If you have more than four dependents, check the box under Dependents on page 1 of Form 1040 or 1040-SR and include a statement showing the information requested in the Dependents section. / If the child is a full-time student, check the “Full-time student” box on row (6) of the Dependents section on page 1 of Form 1040 or 1040-SR / If the child is permanently and totally disabled, check the “Permanently and totally disabled” box on row (6) of the Dependents section on page 1 of Form 1040 or 1040-SR. / If the child lived with you for more than half of 2025, check the “Yes” box (box (a)) on row (5) of the Dependents section on page 1 of Form 1040 or 1040-SR.",
+    "page": "i1040gi p. 17",
+    "why_uncovered": "The encoding computes the underlying status but has no output line for the Dependents section rows or the over-four-dependents box and statement.",
+    "closest_item": "dependent.claimed",
+    "effect": "presentation"
+   },
+   {
+    "item": "dependent.edu_aoc",
+    "sentences": [
+     {
+      "quote": "Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.",
+      "page": "i8863 p. 3"
+     },
+     {
+      "quote": "If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
+      "page": "i8863 p. 1"
+     }
+    ],
+    "quote": "Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud. / If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
+    "page": "i8863 p. 3; i8863 p. 1",
+    "why_uncovered": "dependent.edu_aoc turns only on lines 23 to 26, filer TINs and the institution's EIN. No listed question or refusal, including those in HANDLED ELSEWHERE, addresses the 2-year or 10-year ban or the Form 8862 requirement after a prior disallowance.",
+    "closest_item": "dependent.edu_aoc",
+    "effect": "eligibility"
+   },
+   {
+    "item": "dependent.edu_1098t",
+    "sentences": [
+     {
+      "quote": "After January 31, 2026, but before you file the return, you or the student must request that the educational institution furnish a Form 1098-T.",
+      "page": "i8863 p. 1"
+     }
+    ],
+    "quote": "After January 31, 2026, but before you file the return, you or the student must request that the educational institution furnish a Form 1098-T.",
+    "page": "i8863 p. 1",
+    "why_uncovered": "The question implements this exception but uses \"after February 2, 2026\" rather than the date stated in the instructions. As worded, a request made on February 1 or 2, 2026 would not satisfy the question, though it falls within the stated window.",
+    "closest_item": "dependent.edu_1098t",
     "effect": "eligibility"
    }
   ],
@@ -280,12 +372,401 @@
     ]
    }
   ],
-  "cost": 0.586293,
+  "cost": 0.9997268,
+  "model": "claude-opus-5-5"
+ },
+ {
+  "form": "f1040",
+  "prompt_sha": "7f0caef60bf48f8640556fb7ae1380663d2e38c7131780a2de16bdad3ee56f56",
+  "claims": [
+   {
+    "item": "f1040.status",
+    "sentences": [
+     {
+      "quote": "If you obtain a divorce for the sole purpose of filing tax returns as unmarried individuals, and at the time of divorce you intend to and do, in fact, remarry each other in the next tax year, you and your spouse must file as married individuals in both years.",
+      "page": "p501 p. 6"
+     }
+    ],
+    "quote": "If you obtain a divorce for the sole purpose of filing tax returns as unmarried individuals, and at the time of divorce you intend to and do, in fact, remarry each other in the next tax year, you and your spouse must file as married individuals in both years.",
+    "page": "p501 p. 6",
+    "why_uncovered": "The filing status question and the household refusals test marriage facts and the head of household and qualifying surviving spouse conditions. Nothing asks about a divorce obtained for tax purposes and followed by remarriage to the same person, or refuses that case.",
+    "closest_item": "f1040.status",
+    "effect": "eligibility"
+   },
+   {
+    "item": "f1040.line1a",
+    "sentences": [
+     {
+      "quote": "Because this income is taxable to the estate, don’t include this income on your own individual income tax return.",
+      "page": "i1040gi p. 23"
+     },
+     {
+      "quote": "Also, you (or the trustee if one is appointed) must allocate between you and the bankruptcy estate the wages, salary, or other compensation and withheld income tax reported to you on Form W-2.",
+      "page": "i1040gi p. 23"
+     },
+     {
+      "quote": "You must also include a statement that indicates you filed a chapter 11 case and that explains how income and withheld income tax reported to you on Forms W-2 and 1099 are allocated between you and the estate.",
+      "page": "i1040gi p. 23"
+     }
+    ],
+    "quote": "Because this income is taxable to the estate, don’t include this income on your own individual income tax return. / Also, you (or the trustee if one is appointed) must allocate between you and the bankruptcy estate the wages, salary, or other compensation and withheld income tax reported to you on Form W-2. / You must also include a statement that indicates you filed a chapter 11 case and that explains how income and withheld income tax reported to you on Forms W-2 and 1099 are allocated between you and the estate.",
+    "page": "i1040gi p. 23",
+    "why_uncovered": "Line 1a takes the Form W-2 box 1 total, and its refusals cover only the roster and community property situations. No question or refusal identifies a chapter 11 debtor, so income taxable to the estate would stay on the individual return.",
+    "closest_item": "f1040.line1a",
+    "effect": "amount"
+   },
+   {
+    "item": "f1040.line1z",
+    "sentences": [
+     {
+      "quote": "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2.",
+      "page": "i1040gi p. 24"
+     },
+     {
+      "quote": "Enter the total of your tip income that was not reported on Form 1040, line 1a.",
+      "page": "i1040gi p. 24"
+     },
+     {
+      "quote": "Although you don’t report these noncash tips to your employer, you must report them on line 1c.",
+      "page": "i1040gi p. 24"
+     },
+     {
+      "quote": "Enter the total of your employer-provided adoption benefits from Form 8839, line 31.",
+      "page": "i1040gi p. 24"
+     },
+     {
+      "quote": "Enter the total of your wages from Form 8919, line 6.",
+      "page": "i1040gi p. 24"
+     },
+     {
+      "quote": "Strike or lockout benefits (other than bona fide gifts).",
+      "page": "i1040gi p. 24"
+     },
+     {
+      "quote": "Disability pensions shown on Form 1099-R if you haven’t reached the minimum retirement age set by your employer.",
+      "page": "i1040gi p. 25"
+     },
+     {
+      "quote": "Corrective distributions from a retirement plan shown on Form 1099-R of excess elective deferrals and excess contributions (plus earnings).",
+      "page": "i1040gi p. 25"
+     }
+    ],
+    "quote": "Enter the total of your wages received as a household employee that was not reported on Form(s) W-2. / Enter the total of your tip income that was not reported on Form 1040, line 1a. / Although you don’t report these noncash tips to your employer, you must report them on line 1c. / Enter the total of your employer-provided adoption benefits from Form 8839, line 31. / Enter the total of your wages from Form 8919, line 6. / Strike or lockout benefits (other than bona fide gifts). / Disability pensions shown on Form 1099-R if you haven’t reached the minimum retirement age set by your employer. / Corrective distributions from a retirement plan shown on Form 1099-R of excess elective deferrals and excess contributions (plus earnings).",
+    "page": "i1040gi p. 24; i1040gi p. 25",
+    "why_uncovered": "Line 1z adds lines 1a through 1h, but the encoding lists only lines 1a and 1e as inputs. Nothing supplies or refuses household wages, unreported or allocated tips, taxable adoption benefits, Form 8919 wages, or the line 1h income types.",
+    "closest_item": "f1040.line1z",
+    "effect": "amount"
+   },
+   {
+    "item": "f1040.line4b",
+    "sentences": [
+     {
+      "quote": "If all or part of the distribution is a qualified charitable distribution (QCD), enter the total distribution on line 4a.",
+      "page": "i1040gi p. 27"
+     },
+     {
+      "quote": "If the total amount distributed is a QCD, enter -0- on line 4b.",
+      "page": "i1040gi p. 27"
+     },
+     {
+      "quote": "You must have been at least age 70 1/2 when the distribution was made.",
+      "page": "i1040gi p. 27"
+     },
+     {
+      "quote": "Generally, your total QCDs for the year can’t be more than $108,000.",
+      "page": "i1040gi p. 27"
+     },
+     {
+      "quote": "The amount of the QCD is limited to the amount that would otherwise be included in your income.",
+      "page": "i1040gi p. 27"
+     },
+     {
+      "quote": "If all or part of the distribution is a health savings account (HSA) funding distribution (HFD), enter the total distribution on line 4a.",
+      "page": "i1040gi p. 27"
+     },
+     {
+      "quote": "You can’t exclude more than the limit on HSA contributions or more than the amount that would otherwise be included in your income.",
+      "page": "i1040gi p. 27"
+     },
+     {
+      "quote": "If Exception 3 applies to you, check box 2 on line 4c.",
+      "page": "i1040gi p. 28"
+     },
+     {
+      "quote": "If Exception 4 applies to you, check box 3 on line 4c and enter “HFD” in the entry space next to box 3.",
+      "page": "i1040gi p. 28"
+     }
+    ],
+    "quote": "If all or part of the distribution is a qualified charitable distribution (QCD), enter the total distribution on line 4a. / If the total amount distributed is a QCD, enter -0- on line 4b. / You must have been at least age 70 1/2 when the distribution was made. / Generally, your total QCDs for the year can’t be more than $108,000. / The amount of the QCD is limited to the amount that would otherwise be included in your income. / If all or part of the distribution is a health savings account (HSA) funding distribution (HFD), enter the total distribution on line 4a. / You can’t exclude more than the limit on HSA contributions or more than the amount that would otherwise be included in your income. / If Exception 3 applies to you, check box 2 on line 4c. / If Exception 4 applies to you, check box 3 on line 4c and enter “HFD” in the entry space next to box 3.",
+    "page": "i1040gi p. 27; i1040gi p. 28",
+    "why_uncovered": "The only line 4c item encoded is the rollover box. No question, computation or refusal handles a QCD or HFD, including their age, dollar and otherwise-taxable limits, so these exclusions cannot reduce line 4b and are not refused.",
+    "closest_item": "f1040.line4b",
+    "effect": "amount"
+   },
+   {
+    "item": "f1040.line5b",
+    "sentences": [
+     {
+      "quote": "If your Form 1099-R doesn’t show the taxable amount, you must use the General Rule explained in Pub. 939 to figure the taxable part to enter on line 5b.",
+      "page": "i1040gi p. 28"
+     },
+     {
+      "quote": "You can exclude from income the smaller of the amount of the premiums paid or $3,000.",
+      "page": "i1040gi p. 28"
+     },
+     {
+      "quote": "The distribution must be from the plan maintained by the employer from which you retired as a public safety officer.",
+      "page": "i1040gi p. 28"
+     },
+     {
+      "quote": "If you make this election, reduce the otherwise taxable amount of your pension or annuity by the amount excluded.",
+      "page": "i1040gi p. 28"
+     },
+     {
+      "quote": "Also check box 2 on line 5c.",
+      "page": "i1040gi p. 28"
+     },
+     {
+      "quote": "You must include in your income any amounts that you received that you would have received in retirement had you not become disabled as a result of a terrorist attack.",
+      "page": "i1040gi p. 30"
+     },
+     {
+      "quote": "If you received U.S. Civil Service retirement benefits and you chose the alternative annuity option, see Pub. 721 to figure the taxable part of your annuity.",
+      "page": "i1040gi p. 30"
+     },
+     {
+      "quote": "If you are the beneficiary of an employee who died, see Pub. 575.",
+      "page": "i1040gi p. 30"
+     }
+    ],
+    "quote": "If your Form 1099-R doesn’t show the taxable amount, you must use the General Rule explained in Pub. 939 to figure the taxable part to enter on line 5b. / You can exclude from income the smaller of the amount of the premiums paid or $3,000. / The distribution must be from the plan maintained by the employer from which you retired as a public safety officer. / If you make this election, reduce the otherwise taxable amount of your pension or annuity by the amount excluded. / Also check box 2 on line 5c. / You must include in your income any amounts that you received that you would have received in retirement had you not become disabled as a result of a terrorist attack. / If you received U.S. Civil Service retirement benefits and you chose the alternative annuity option, see Pub. 721 to figure the taxable part of your annuity. / If you are the beneficiary of an employee who died, see Pub. 575.",
+    "page": "i1040gi p. 28; i1040gi p. 30",
+    "why_uncovered": "Lines 5a and 5b have no listed question or refusal for the public safety officer election, the General Rule, terrorist-attack disability payments, the alternative annuity option or a deceased employee's beneficiary. Only the rollover box on line 5c is encoded.",
+    "closest_item": "f1040.line5b",
+    "effect": "amount"
+   },
+   {
+    "item": "f1040.line6b",
+    "sentences": [
+     {
+      "quote": "You file Form 2555, 4563, or 8815, or you exclude employer-provided adoption benefits or income from sources within Puerto Rico.",
+      "page": "i1040gi p. 31"
+     },
+     {
+      "quote": "Instead, use the worksheet in Pub. 915.",
+      "page": "i1040gi p. 31"
+     },
+     {
+      "quote": "Don’t include in your income any disability payments (including Social Security Disability Insurance (SSDI) payments) you receive for injuries incurred as a direct result of a terrorist attack directed against the United States (or its allies), whether outside or within the United States.",
+      "page": "i1040gi p. 31"
+     },
+     {
+      "quote": "If these payments are incorrectly reported as taxable on Form SSA-1099, don’t include the nontaxable portion of income on your tax return.",
+      "page": "i1040gi p. 31"
+     }
+    ],
+    "quote": "You file Form 2555, 4563, or 8815, or you exclude employer-provided adoption benefits or income from sources within Puerto Rico. / Instead, use the worksheet in Pub. 915. / Don’t include in your income any disability payments (including Social Security Disability Insurance (SSDI) payments) you receive for injuries incurred as a direct result of a terrorist attack directed against the United States (or its allies), whether outside or within the United States. / If these payments are incorrectly reported as taxable on Form SSA-1099, don’t include the nontaxable portion of income on your tax return.",
+    "page": "i1040gi p. 31",
+    "why_uncovered": "Line 6b follows the Social Security Benefits Worksheet. The handled refusals cover the IRA deduction exception, the lump-sum election, Schedule 1 adjustments and Form 8815, but not Form 4563 or excluded adoption benefits or Puerto Rico income on this worksheet. Nothing removes terrorist-attack disability payments from the benefit amount.",
+    "closest_item": "f1040.line6b",
+    "effect": "amount"
+   },
+   {
+    "item": "f1040.line7a",
+    "sentences": [
+     {
+      "quote": "After you get back all of your cost (or other basis), you must report these distributions as capital gains on Form 8949.",
+      "page": "i1040gi p. 26"
+     },
+     {
+      "quote": "Check the “Yes” box next to the question on digital assets on page 1 of Form 1040 or 1040-SR if at any time during 2025, you (a) received (as a reward, award, or payment for property or services); or (b) sold, exchanged, or otherwise disposed of a digital asset (or any financial interest in any digital asset).",
+      "page": "i1040gi p. 15"
+     }
+    ],
+    "quote": "After you get back all of your cost (or other basis), you must report these distributions as capital gains on Form 8949. / Check the “Yes” box next to the question on digital assets on page 1 of Form 1040 or 1040-SR if at any time during 2025, you (a) received (as a reward, award, or payment for property or services); or (b) sold, exchanged, or otherwise disposed of a digital asset (or any financial interest in any digital asset).",
+    "page": "i1040gi p. 26; i1040gi p. 15",
+    "why_uncovered": "No listed item tracks nondividend distributions that exceed basis and must be reported as capital gain. The required digital asset question on page 1 is also not encoded.",
+    "closest_item": "f1040.line7a",
+    "effect": "amount"
+   },
+   {
+    "item": "f1040.line12e",
+    "sentences": [
+     {
+      "quote": "If you checked the box on line 12b, your standard deduction is zero, even if you were born before January 2, 1961, or were blind.",
+      "page": "i1040gi p. 34"
+     },
+     {
+      "quote": "If your filing status is married filing separately and your spouse itemizes deductions on their return, check the box on line 12b.",
+      "page": "i1040gi p. 33"
+     },
+     {
+      "quote": "You also can’t take the standard deduction if your spouse itemizes deductions.",
+      "page": "i1040gi p. 14"
+     },
+     {
+      "quote": "If your filing status is married filing separately and your spouse was born before January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your spouse had no income, isn’t filing a return, and can’t be claimed as a dependent on another person’s return.",
+      "page": "i1040gi p. 33"
+     },
+     {
+      "quote": "If you had a net qualified disaster loss and you elect to increase your standard deduction by the amount of your net qualified disaster loss, use Schedule A to figure your standard deduction.",
+      "page": "i1040gi p. 34"
+     }
+    ],
+    "quote": "If you checked the box on line 12b, your standard deduction is zero, even if you were born before January 2, 1961, or were blind. / If your filing status is married filing separately and your spouse itemizes deductions on their return, check the box on line 12b. / You also can’t take the standard deduction if your spouse itemizes deductions. / If your filing status is married filing separately and your spouse was born before January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your spouse had no income, isn’t filing a return, and can’t be claimed as a dependent on another person’s return. / If you had a net qualified disaster loss and you elect to increase your standard deduction by the amount of your net qualified disaster loss, use Schedule A to figure your standard deduction.",
+    "page": "i1040gi p. 34; i1040gi p. 33; i1040gi p. 14",
+    "why_uncovered": "The line 12e refusals concern filing status only. No listed question establishes whether a separately filing spouse itemizes, whether the spouse meets the conditions for the line 12d boxes, or whether the filer elects the disaster-loss increase.",
+    "closest_item": "f1040.line12e",
+    "effect": "amount"
+   },
+   {
+    "item": "f1040.line16",
+    "sentences": [
+     {
+      "quote": "If you had a triggering event under section 965(i) during the year and did not enter into a transfer agreement, check box 3 and enter the amount of the triggered deferred net 965 tax liability and enter “965INC” on the line next to that box.",
+      "page": "i1040gi p. 36"
+     }
+    ],
+    "quote": "If you had a triggering event under section 965(i) during the year and did not enter into a transfer agreement, check box 3 and enter the amount of the triggered deferred net 965 tax liability and enter “965INC” on the line next to that box.",
+    "page": "i1040gi p. 36",
+    "why_uncovered": "The line 16 refusal names Forms 8814, 4972, 8615, 8621 and 8978, a section 962 election and education credit recapture. It does not name a section 965(i) triggering event, and no line or question adds that liability to line 16.",
+    "closest_item": "f1040.line16",
+    "effect": "amount"
+   },
+   {
+    "item": "f1040.line26",
+    "sentences": [
+     {
+      "quote": "If you can’t agree, you must divide the payments in proportion to each spouse’s individual tax as shown on your separate returns for 2025.",
+      "page": "i1040gi p. 39"
+     },
+     {
+      "quote": "If you got divorced in 2025 and you made joint estimated tax payments with your former spouse, enter your former spouse’s SSN in the space provided on line 26.",
+      "page": "i1040gi p. 39"
+     }
+    ],
+    "quote": "If you can’t agree, you must divide the payments in proportion to each spouse’s individual tax as shown on your separate returns for 2025. / If you got divorced in 2025 and you made joint estimated tax payments with your former spouse, enter your former spouse’s SSN in the space provided on line 26.",
+    "page": "i1040gi p. 39",
+    "why_uncovered": "Line 26 is a supplied total. Its question does not address dividing joint estimated payments between separately filing spouses, and it does not collect a former spouse's SSN.",
+    "closest_item": "f1040.line26",
+    "effect": "amount"
+   },
+   {
+    "item": "f1040.line27a",
+    "sentences": [
+     {
+      "quote": "If you elect to include your nontaxable combat pay in your earned income when figuring the EIC, enter the amount on line 1i.",
+      "page": "i1040gi p. 25"
+     },
+     {
+      "quote": "Enter all of your nontaxable combat pay if you elect to include it in earned income.",
+      "page": "i1040gi p. 42"
+     },
+     {
+      "quote": "If you are filing a joint return and both you and your spouse received nontaxable combat pay, you can each make your own election.",
+      "page": "i1040gi p. 43"
+     }
+    ],
+    "quote": "If you elect to include your nontaxable combat pay in your earned income when figuring the EIC, enter the amount on line 1i. / Enter all of your nontaxable combat pay if you elect to include it in earned income. / If you are filing a joint return and both you and your spouse received nontaxable combat pay, you can each make your own election.",
+    "page": "i1040gi p. 25; i1040gi p. 42; i1040gi p. 43",
+    "why_uncovered": "Line 1i is not encoded, and no listed question or handled refusal covers the combat pay election. That election changes the earned income used to figure the EIC.",
+    "closest_item": "f1040.line27a",
+    "effect": "amount"
+   },
+   {
+    "item": "f1040.line29",
+    "sentences": [
+     {
+      "quote": "You must file Form 8862 to claim the American opportunity credit if your American opportunity credit for a year after 2015 was denied or reduced for any reason other than a math or clerical error.",
+      "page": "i1040gi p. 61"
+     },
+     {
+      "quote": "If you claim the American opportunity credit even though you aren’t eligible and it is determined that your error is due to reckless or intentional disregard of the American opportunity credit rules, you won’t be allowed to take the credit for 2 years even if you’re otherwise eligible to do so.",
+      "page": "i1040gi p. 61"
+     },
+     {
+      "quote": "If you claim the American opportunity credit even though you aren’t eligible and it is determined that you fraudulently claimed the credit, you won’t be allowed to take the credit for 10 years.",
+      "page": "i1040gi p. 61"
+     }
+    ],
+    "quote": "You must file Form 8862 to claim the American opportunity credit if your American opportunity credit for a year after 2015 was denied or reduced for any reason other than a math or clerical error. / If you claim the American opportunity credit even though you aren’t eligible and it is determined that your error is due to reckless or intentional disregard of the American opportunity credit rules, you won’t be allowed to take the credit for 2 years even if you’re otherwise eligible to do so. / If you claim the American opportunity credit even though you aren’t eligible and it is determined that you fraudulently claimed the credit, you won’t be allowed to take the credit for 10 years.",
+    "page": "i1040gi p. 61",
+    "why_uncovered": "The handled Form 8862 refusal, as listed, names the EIC, child tax credit, additional child tax credit and credit for other dependents. It does not name the American opportunity credit, and line 29 has no question or refusal for a prior denial or a 2-year or 10-year ban.",
+    "closest_item": "f1040.line29",
+    "effect": "eligibility"
+   }
+  ],
+  "used": [
+   {
+    "doc": "i1040gi",
+    "pages": [
+     13,
+     14,
+     15
+    ]
+   },
+   {
+    "doc": "i1040gi",
+    "pages": [
+     23,
+     24,
+     25,
+     26,
+     27,
+     28,
+     29,
+     30,
+     31,
+     32,
+     33,
+     34,
+     35,
+     36,
+     37,
+     38,
+     39,
+     40,
+     41,
+     42,
+     43,
+     44,
+     45,
+     46,
+     47,
+     48
+    ]
+   },
+   {
+    "doc": "i1040gi",
+    "pages": [
+     61
+    ]
+   },
+   {
+    "doc": "i1040sd",
+    "pages": [
+     15
+    ]
+   },
+   {
+    "doc": "p501",
+    "pages": [
+     6
+    ]
+   },
+   {
+    "doc": "p501",
+    "pages": [
+     11
+    ]
+   }
+  ],
+  "cost": 0.7542628,
   "model": "claude-opus-5-5"
  },
  {
   "form": "f2441",
-  "prompt_sha": "284becf9ba08d2217f0321b6ba7f181259c7ce0f4239b8adc514eff7c76d1c58",
+  "prompt_sha": "df5bcc830fb64dd8b7cea2329f195b90924f37667d98f004e484e888745685ed",
   "claims": [
    {
     "item": "f2441.paid_total",
@@ -307,7 +788,15 @@
       "page": "i2441 p. 2"
      },
      {
+      "quote": "However, you don't have to divide the expense if only a small part is for other purposes.",
+      "page": "i2441 p. 2"
+     },
+     {
       "quote": "However, they don't include the services of a chauffeur, bartender, or gardener.",
+      "page": "i2441 p. 2"
+     },
+     {
+      "quote": "You can also include your share of the employment taxes paid on wages for qualifying child and dependent care services.",
       "page": "i2441 p. 2"
      },
      {
@@ -323,6 +812,10 @@
       "page": "i2441 p. 2"
      },
      {
+      "quote": "You can include amounts paid for items other than the care of your child (such as food and schooling) only if the items are incidental to the care of the child and can't be separated from the total cost.",
+      "page": "i2441 p. 2"
+     },
+     {
       "quote": "But don't include the cost of schooling for a child in kindergarten or above.",
       "page": "i2441 p. 2"
      },
@@ -335,21 +828,29 @@
       "page": "i2441 p. 2"
      },
      {
-      "quote": "You determine a person's qualifying status each day.",
-      "page": "p503 p. 3"
+      "quote": "If you pay for services before they are provided, you can count the prepaid expenses only in the year the care is received.",
+      "page": "p503 p. 10"
      },
      {
-      "quote": "If you pay for services before they are provided, you can count the prepaid expenses only in the year the care is received.",
+      "quote": "Claim the expenses for the later year as if they were actually paid in that later year.",
       "page": "p503 p. 10"
      },
      {
       "quote": "If a state social services agency pays you a nontaxable amount to reimburse you for some of your child and dependent care expenses, you can't count the expenses that are reimbursed as work-related expenses.",
       "page": "p503 p. 10"
+     },
+     {
+      "quote": "If you have expenses for meals that your housekeeper eats in your home because of their employment, count these as work-related expenses.",
+      "page": "p503 p. 8"
+     },
+     {
+      "quote": "If you have extra expenses for providing lodging in your home to the housekeeper, count these as work-related expenses also.",
+      "page": "p503 p. 8"
      }
     ],
-    "quote": "Child support payments aren't qualified expenses. / Also, expenses reimbursed by a state social service agency aren't qualified expenses. / Generally, if you worked or actively looked for work during only part of the period in which you incurred the expenses, you must figure your expenses for each day. / Also, if part of an expense is work related (for either household services or the care of a qualifying person) and part is for other purposes, you have to divide the expense. / However, they don't include the services of a chauffeur, bartender, or gardener. / It doesn't include the cost of food, lodging, education, clothing, or entertainment. / You can include the cost of care provided outside your home for your dependent under age 13, or any other qualifying person who regularly spends at least 8 hours a day in your home. / If the care was provided by a dependent care center, the center must meet all applicable state and local regulations. / But don't include the cost of schooling for a child in kindergarten or above. / But don't include any expenses for sending your child to an overnight camp, a summer school, or a tutoring program. / However, you can't claim the same expense as both a dependent care expense and a medical expense. / You determine a person's qualifying status each day. / If you pay for services before they are provided, you can count the prepaid expenses only in the year the care is received. / If a state social services agency pays you a nontaxable amount to reimburse you for some of your child and dependent care expenses, you can't count the expenses that are reimbursed as work-related expenses.",
-    "page": "i2441 p. 2; p503 p. 3; p503 p. 10",
-    "why_uncovered": "The item only totals amounts labeled as qualified expenses. No listed question, line or refusal states these inclusion rules, reductions or apportionments, or the treatment of expenses prepaid in 2024. The refusals on this item concern only non-dependents and ineligible related providers, and line 30 removes only employer benefits on line 28.",
+    "quote": "Child support payments aren't qualified expenses. / Also, expenses reimbursed by a state social service agency aren't qualified expenses. / Generally, if you worked or actively looked for work during only part of the period in which you incurred the expenses, you must figure your expenses for each day. / Also, if part of an expense is work related (for either household services or the care of a qualifying person) and part is for other purposes, you have to divide the expense. / However, you don't have to divide the expense if only a small part is for other purposes. / However, they don't include the services of a chauffeur, bartender, or gardener. / You can also include your share of the employment taxes paid on wages for qualifying child and dependent care services. / It doesn't include the cost of food, lodging, education, clothing, or entertainment. / You can include the cost of care provided outside your home for your dependent under age 13, or any other qualifying person who regularly spends at least 8 hours a day in your home. / If the care was provided by a dependent care center, the center must meet all applicable state and local regulations. / You can include amounts paid for items other than the care of your child (such as food and schooling) only if the items are incidental to the care of the child and can't be separated from the total cost. / But don't include the cost of schooling for a child in kindergarten or above. / But don't include any expenses for sending your child to an overnight camp, a summer school, or a tutoring program. / However, you can't claim the same expense as both a dependent care expense and a medical expense. / If you pay for services before they are provided, you can count the prepaid expenses only in the year the care is received. / Claim the expenses for the later year as if they were actually paid in that later year. / If a state social services agency pays you a nontaxable amount to reimburse you for some of your child and dependent care expenses, you can't count the expenses that are reimbursed as work-related expenses. / If you have expenses for meals that your housekeeper eats in your home because of their employment, count these as work-related expenses. / If you have extra expenses for providing lodging in your home to the housekeeper, count these as work-related expenses also.",
+    "page": "i2441 p. 2; p503 p. 10; p503 p. 8",
+    "why_uncovered": "The encoding takes the per-person qualified expense total as given. No question, line or refusal applies the exclusions, the allocation of partly work-related or part-period expenses, the agency reimbursement reduction, the bar on also deducting the expense as medical, or the treatment of amounts prepaid in an earlier year for 2025 care. The care question only asks whether care was paid for or incurred so the filer could work or look for work, and the provider_ineligible refusal and line 30 address only related providers and Part III benefits.",
     "closest_item": "f2441.paid_total",
     "effect": "amount"
    },
@@ -361,11 +862,23 @@
       "page": "i2441 p. 1"
      },
      {
-      "quote": "To be a qualifying person, generally the person must have lived with you for more than half of 2025.",
-      "page": "i2441 p. 1"
+      "quote": "A person over age 12 at the time the care was provided must be physically or mentally incapable of caring for themselves to be listed on line 2.",
+      "page": "i2441 p. 3"
+     },
+     {
+      "quote": "Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled.",
+      "page": "i2441 p. 3"
+     },
+     {
+      "quote": "You determine a person's qualifying status each day.",
+      "page": "p503 p. 3"
      },
      {
       "quote": "You must enter the qualifying person's SSN.",
+      "page": "i2441 p. 3"
+     },
+     {
+      "quote": "Be sure the name and SSN entered agree with the person's social security card.",
       "page": "i2441 p. 3"
      },
      {
@@ -377,41 +890,27 @@
       "page": "i2441 p. 3"
      },
      {
-      "quote": "If your qualifying person is a nonresident or resident alien who doesn't have and can't get an SSN, use that person's ITIN.",
-      "page": "p503 p. 3"
-     },
-     {
       "quote": "If your qualifying person is a child who was placed in your home for adoption and for whom you don't have an SSN, you must get an ATIN for the child.",
       "page": "p503 p. 3"
      }
     ],
-    "quote": "Generally, the noncustodial parent can't treat the child as a qualifying person even if that parent is entitled to claim the child as a dependent under the special rules for a child of divorced or separated parents or parents who live apart. / To be a qualifying person, generally the person must have lived with you for more than half of 2025. / You must enter the qualifying person's SSN. / Otherwise, at the time we process your return, we may reduce or disallow your credit. / If the child was born and died in 2025 and didn't have an SSN, enter “Died” in column (b) and attach a copy of the child's birth certificate, death certificate, or hospital medical records. / If your qualifying person is a nonresident or resident alien who doesn't have and can't get an SSN, use that person's ITIN. / If your qualifying person is a child who was placed in your home for adoption and for whom you don't have an SSN, you must get an ATIN for the child.",
+    "quote": "Generally, the noncustodial parent can't treat the child as a qualifying person even if that parent is entitled to claim the child as a dependent under the special rules for a child of divorced or separated parents or parents who live apart. / A person over age 12 at the time the care was provided must be physically or mentally incapable of caring for themselves to be listed on line 2. / Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled. / You determine a person's qualifying status each day. / You must enter the qualifying person's SSN. / Be sure the name and SSN entered agree with the person's social security card. / Otherwise, at the time we process your return, we may reduce or disallow your credit. / If the child was born and died in 2025 and didn't have an SSN, enter “Died” in column (b) and attach a copy of the child's birth certificate, death certificate, or hospital medical records. / If your qualifying person is a child who was placed in your home for adoption and for whom you don't have an SSN, you must get an ATIN for the child.",
     "page": "i2441 p. 1; i2441 p. 3; p503 p. 3",
-    "why_uncovered": "The nondependent question and gate address only people who are not the filer's dependents, including a custodial parent's child. Nothing excludes a noncustodial parent's dependent child or a dependent who did not live with the filer for more than half the year. No listed item tests or reports the qualifying person's identification number or handles the born-and-died child case.",
+    "why_uncovered": "No question or refusal excludes a noncustodial parent's dependent child from the count. The nondependent question covers only the custodial parent who cannot claim the child. Nothing encodes line 2 column (c), the over-age-12 disability requirement for a person who is a dependent, day-by-day qualifying status for a person who ages out during the year, or the line 2 column (b) identification requirements, including the “Died” entry and its attachment.",
     "closest_item": "f2441.qp_count",
     "effect": "eligibility"
    },
    {
-    "item": "f2441.line12",
+    "item": "f2441.line22",
     "sentences": [
-     {
-      "quote": "Benefits you received as a partner should be shown in box 13 of your Schedule K-1 (Form 1065) with code O.",
-      "page": "i2441 p. 1"
-     },
      {
       "quote": "If you were self-employed or a partner, include amounts you received under a dependent care assistance program from your sole proprietorship or partnership.",
       "page": "i2441 p. 5"
-     }
-    ],
-    "quote": "Benefits you received as a partner should be shown in box 13 of your Schedule K-1 (Form 1065) with code O. / If you were self-employed or a partner, include amounts you received under a dependent care assistance program from your sole proprietorship or partnership.",
-    "page": "i2441 p. 1; i2441 p. 5",
-    "why_uncovered": "The f2441.benefits question and the line 12 label refer only to Form W-2 box 10 and grace-period amounts. No question or refusal captures benefits from a sole proprietorship or partnership.",
-    "closest_item": "f2441.line12",
-    "effect": "amount"
-   },
-   {
-    "item": "f2441.line22",
-    "sentences": [
+     },
+     {
+      "quote": "Include your deductible benefits in the total entered on Schedule C (Form 1040), line 14; Schedule E (Form 1040), line 19 or line 28; or Schedule F (Form 1040), line 15, whichever applies.",
+      "page": "i2441 p. 5"
+     },
      {
       "quote": "If you are self-employed and receive benefits from a qualified dependent care benefit plan, you are treated as both employer and employee.",
       "page": "p503 p. 10"
@@ -419,26 +918,16 @@
      {
       "quote": "Therefore, you wouldn't get an exclusion from wages.",
       "page": "p503 p. 10"
-     }
-    ],
-    "quote": "If you are self-employed and receive benefits from a qualified dependent care benefit plan, you are treated as both employer and employee. / Therefore, you wouldn't get an exclusion from wages.",
-    "page": "p503 p. 10",
-    "why_uncovered": "Line 22 is listed without a question or refusal, so nothing identifies benefits that come from the filer's own business. Those benefits could therefore be treated as excluded on line 25 rather than deductible on line 24.",
-    "closest_item": "f2441.line22",
-    "effect": "amount"
-   },
-   {
-    "item": "f2441.line24",
-    "sentences": [
+     },
      {
-      "quote": "Include your deductible benefits in the total entered on Schedule C (Form 1040), line 14; Schedule E (Form 1040), line 19 or line 28; or Schedule F (Form 1040), line 15, whichever applies.",
-      "page": "i2441 p. 5"
+      "quote": "Instead, you would get a deduction on Schedule C (Form 1040), line 14; Schedule E (Form 1040), line 19 or 28; or Schedule F (Form 1040), line 15.",
+      "page": "p503 p. 10"
      }
     ],
-    "quote": "Include your deductible benefits in the total entered on Schedule C (Form 1040), line 14; Schedule E (Form 1040), line 19 or line 28; or Schedule F (Form 1040), line 15, whichever applies.",
-    "page": "i2441 p. 5",
-    "why_uncovered": "Line 24 is computed, but no listed item carries the deductible benefits to Schedule C, E or F, and no refusal covers that flow. The handled-elsewhere refusals do not specifically address this deduction.",
-    "closest_item": "f2441.line24",
+    "quote": "If you were self-employed or a partner, include amounts you received under a dependent care assistance program from your sole proprietorship or partnership. / Include your deductible benefits in the total entered on Schedule C (Form 1040), line 14; Schedule E (Form 1040), line 19 or line 28; or Schedule F (Form 1040), line 15, whichever applies. / If you are self-employed and receive benefits from a qualified dependent care benefit plan, you are treated as both employer and employee. / Therefore, you wouldn't get an exclusion from wages. / Instead, you would get a deduction on Schedule C (Form 1040), line 14; Schedule E (Form 1040), line 19 or 28; or Schedule F (Form 1040), line 15.",
+    "page": "i2441 p. 5; p503 p. 10",
+    "why_uncovered": "The benefits question asks only about Form W-2 box 10 amounts and grace-period carryovers, and line 22 shows no question or refusal. A Schedule C filer's benefits from their own sole proprietorship are therefore neither collected nor refused, and nothing carries line 24 deductible benefits to Schedule C line 14.",
+    "closest_item": "f2441.line22",
     "effect": "amount"
    },
    {
@@ -455,7 +944,7 @@
     ],
     "quote": "If you use either optional method to figure self-employment tax, subtract any deduction you claim on Schedule 1 (Form 1040), line 15, from the total of the amounts shown on Schedule SE (Form 1040), lines 3 and 4b. / If you use an optional method to figure net earnings for self-employment tax purposes, include those net earnings in your earned income for this credit.",
     "page": "i2441 p. 4; p503 p. 11",
-    "why_uncovered": "The refusals on line 4 cover deemed income, combat pay, excluded income and the attribution of benefits. Its citations mention only the self-employment loss rule. No listed item implements or refuses optional-method net earnings, and the handled-elsewhere Schedule SE refusal is limited to clergy.",
+    "why_uncovered": "Line 4 cites only the general earned income entry and the self-employment loss reduction. No question or refusal addresses optional-method net earnings, and the refusals listed for lines 4 and 18 do not cover them. The Schedule SE refusal in HANDLED ELSEWHERE applies to clergy filers only.",
     "closest_item": "f2441.line4",
     "effect": "amount"
    },
@@ -467,11 +956,7 @@
       "page": "i2441 p. 3"
      },
      {
-      "quote": "If the care provider is an individual, enter their SSN or individual taxpayer identification number (ITIN).",
-      "page": "i2441 p. 3"
-     },
-     {
-      "quote": "Otherwise, enter the provider's employer identification number (EIN).",
+      "quote": "Then, enter “See W-2” in column (b), leave column (c) blank, check the “No” box in column (d), and enter -0- in column (e).",
       "page": "i2441 p. 3"
      },
      {
@@ -483,28 +968,10 @@
       "page": "i2441 p. 3"
      }
     ],
-    "quote": "If you had neither a qualifying person nor any care providers for 2025, and you are filing Form 2441 only to report taxable income in Part III, enter “none” on line 1, column (a). / If the care provider is an individual, enter their SSN or individual taxpayer identification number (ITIN). / Otherwise, enter the provider's employer identification number (EIN). / If the provider is a tax-exempt organization, enter “Tax-Exempt” in column (c). / If so, enter “LAFCP” (Living Abroad Foreign Care Provider) in the space for the care provider's taxpayer identification number.",
+    "quote": "If you had neither a qualifying person nor any care providers for 2025, and you are filing Form 2441 only to report taxable income in Part III, enter “none” on line 1, column (a). / Then, enter “See W-2” in column (b), leave column (c) blank, check the “No” box in column (d), and enter -0- in column (e). / If the provider is a tax-exempt organization, enter “Tax-Exempt” in column (c). / If so, enter “LAFCP” (Living Abroad Foreign Care Provider) in the space for the care provider's taxpayer identification number.",
     "page": "i2441 p. 3",
-    "why_uncovered": "The listed provider items cover counts, related-person status, the statement count, household-employee status and amounts paid. None sets the required column (a) or column (c) entries for these situations.",
+    "why_uncovered": "The encoding counts providers and handles missing information, ineligible providers and household employee status, but does not implement these special line 1 entries. The employer_care question and gates test whether a refusal applies; they do not produce the entries.",
     "closest_item": "f2441.provider_count",
-    "effect": "presentation"
-   },
-   {
-    "item": "f2441.employer_care",
-    "sentences": [
-     {
-      "quote": "Then, enter “See W-2” in column (b), leave column (c) blank, check the “No” box in column (d), and enter -0- in column (e).",
-      "page": "i2441 p. 3"
-     },
-     {
-      "quote": "But if your employer paid a third party (not hired by your employer) on your behalf to provide the care, you must provide information on the third party in columns (a) through (e).",
-      "page": "i2441 p. 3"
-     }
-    ],
-    "quote": "Then, enter “See W-2” in column (b), leave column (c) blank, check the “No” box in column (d), and enter -0- in column (e). / But if your employer paid a third party (not hired by your employer) on your behalf to provide the care, you must provide information on the third party in columns (a) through (e).",
-    "page": "i2441 p. 3",
-    "why_uncovered": "The employer_care question feeds only the refusals on lines 17 and 30. No listed item produces the prescribed line 1 entries for employer-furnished care or third-party information for employer-paid care.",
-    "closest_item": "f2441.employer_care",
     "effect": "presentation"
    },
    {
@@ -525,7 +992,7 @@
     ],
     "quote": "Be sure to put your name and social security number (SSN) on the statement. / In this situation, all the lines on line 1 of Form 2441 must be completed with information for the three highest paid providers. / The attached statement must provide the same information for the additional providers not listed on the form.",
     "page": "i2441 p. 2; i2441 pp. 2-3",
-    "why_uncovered": "The item only checks the box. No listed item selects the three highest-paid providers or requires the statement's contents.",
+    "why_uncovered": "The item checks the box, but no attachment notice or line covers the required statement for additional providers or the rule that the three highest paid providers go on the form. The existing statement notice concerns only a provider who withheld information.",
     "closest_item": "f2441.line1_box",
     "effect": "presentation"
    },
@@ -543,15 +1010,11 @@
      {
       "quote": "The attached statement must provide the same information for the additional qualifying people not listed on the form.",
       "page": "i2441 p. 3"
-     },
-     {
-      "quote": "Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled.",
-      "page": "i2441 p. 3"
      }
     ],
-    "quote": "Be sure to put your name and SSN on the statement. / In this situation, all the lines on line 2 of Form 2441 must be completed with information for the three people with the highest qualifying expenses. / The attached statement must provide the same information for the additional qualifying people not listed on the form. / Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled.",
+    "quote": "Be sure to put your name and SSN on the statement. / In this situation, all the lines on line 2 of Form 2441 must be completed with information for the three people with the highest qualifying expenses. / The attached statement must provide the same information for the additional qualifying people not listed on the form.",
     "page": "i2441 p. 3",
-    "why_uncovered": "The item only checks the box for more than three qualifying persons. No listed item selects the three people with the highest expenses, requires the statement's contents, or produces the column (c) disabled checkbox.",
+    "why_uncovered": "The item checks the box, but nothing covers the required statement for additional qualifying persons or the rule that the three people with the highest expenses go on the form.",
     "closest_item": "f2441.line2_box",
     "effect": "presentation"
    }
@@ -585,57 +1048,15 @@
     ]
    }
   ],
-  "cost": 0.494588,
+  "cost": 0.4489268,
   "model": "claude-opus-5-5"
  },
  {
   "form": "household",
-  "prompt_sha": "3269f9fd0e4d6c9b0bfa475d80741c6a686f2c30eb1efd73b0dd5c70a1d30a39",
+  "prompt_sha": "f049d8a43b1b266557445897a04b2bb295d9292493c4c82133a188e54cc6b151",
   "claims": [
    {
-    "item": "household.hoh_eligible",
-    "sentences": [
-     {
-      "quote": "You may be eligible to file as head of household even if the child who is your qualifying person has been kidnapped.",
-      "page": "p501 p. 9"
-     },
-     {
-      "quote": "You can claim head of household filing status if all the following statements are true.",
-      "page": "p501 p. 9"
-     },
-     {
-      "quote": "The child is presumed by law enforcement authorities to have been kidnapped by someone who isn’t a member of your family or the child’s family.",
-      "page": "p501 p. 9"
-     },
-     {
-      "quote": "In the year of the kidnapping, the child lived with you for more than half the part of the year before the kidnapping.",
-      "page": "p501 p. 10"
-     },
-     {
-      "quote": "In the year of the child’s return, the child lived with you for more than half the part of the year following the date of the child’s return.",
-      "page": "p501 p. 10"
-     },
-     {
-      "quote": "You would have qualified for head of household filing status if the child hadn’t been kidnapped.",
-      "page": "p501 p. 10"
-     },
-     {
-      "quote": "A person can’t qualify more than one taxpayer to use the head of household filing status for the year.",
-      "page": "p501 p. 10"
-     },
-     {
-      "quote": "If the child isn’t claimed as your dependent, enter the child’s name in the entry space below qualifying surviving spouse.",
-      "page": "i1040gi p. 14"
-     }
-    ],
-    "quote": "You may be eligible to file as head of household even if the child who is your qualifying person has been kidnapped. / You can claim head of household filing status if all the following statements are true. / The child is presumed by law enforcement authorities to have been kidnapped by someone who isn’t a member of your family or the child’s family. / In the year of the kidnapping, the child lived with you for more than half the part of the year before the kidnapping. / In the year of the child’s return, the child lived with you for more than half the part of the year following the date of the child’s return. / You would have qualified for head of household filing status if the child hadn’t been kidnapped. / A person can’t qualify more than one taxpayer to use the head of household filing status for the year. / If the child isn’t claimed as your dependent, enter the child’s name in the entry space below qualifying surviving spouse.",
-    "page": "p501 p. 9; p501 p. 10; i1040gi p. 14",
-    "why_uncovered": "hoh_eligible is built from the unmarried and home-cost questions and the Test 1 and Test 2 person counts. It refuses only temporary absences that head of household does not count and community property. Nothing asks about the kidnapped-child rule, which makes a kidnapped child count as living with you, and nothing refuses it. Nothing checks that the qualifying person has not already qualified another taxpayer for head of household. Nothing provides for entering the name of a qualifying child who is not claimed as a dependent.",
-    "closest_item": "household.hoh_eligible",
-    "effect": "eligibility"
-   },
-   {
-    "item": "household.test1_met",
+    "item": "household.test1_persons",
     "sentences": [
      {
       "quote": "If you pay more than half the cost of keeping your parent in a rest home or home for the elderly, that counts as paying more than half the cost of keeping up your parent’s main home.",
@@ -648,38 +1069,106 @@
     ],
     "quote": "If you pay more than half the cost of keeping your parent in a rest home or home for the elderly, that counts as paying more than half the cost of keeping up your parent’s main home. / Your parent for whom you paid, for the entire part of the year your parent was alive, more than half the cost of keeping up the home your parent lived in.",
     "page": "p501 p. 9",
-    "why_uncovered": "Test 1 is encoded only from the i1040gi Test 1 text, which requires the parent's main home for all of 2025. No question or refusal covers a parent who died during the year, for whom only the part of the year the parent was alive counts. Nothing covers the rule that paying for a rest home or home for the elderly counts as keeping up the parent's main home. The home_cost question asks only about your own home.",
-    "closest_item": "household.test1_met",
+    "why_uncovered": "Test 1 is encoded citing only the i1040gi p. 14 wording, which requires the parent's main home for all of 2025. The only listed cost question, household.home_cost, asks about your own home. Nothing listed extends Test 1 to a parent who died or was born during the year, or says that a rest home counts as the parent's main home. No refusal covers these cases.",
+    "closest_item": "household.test1_persons",
     "effect": "eligibility"
+   },
+   {
+    "item": "household.test2_persons",
+    "sentences": [
+     {
+      "quote": "If the person is your qualifying child, the child must have lived with you for more than half the part of the year the child was alive.",
+      "page": "i1040gi p. 15"
+     },
+     {
+      "quote": "Similarly, if you adopted the person for whom you kept up a home in 2025, the person was lawfully placed with you for legal adoption by you in 2025, or the person was an eligible foster child placed with you during 2025, the person is considered to have lived with you for more than half of 2025 if your main home was this person’s main home for more than half the time since the person was adopted or placed with you in 2025.",
+      "page": "i1040gi p. 15"
+     },
+     {
+      "quote": "Your qualifying child or qualifying relative who lived with you for more than half the part of the year they were alive.",
+      "page": "p501 p. 9"
+     },
+     {
+      "quote": "You can claim head of household filing status if all the following statements are true.",
+      "page": "p501 p. 9"
+     },
+     {
+      "quote": "A person can’t qualify more than one taxpayer to use the head of household filing status for the year.",
+      "page": "p501 p. 10"
+     }
+    ],
+    "quote": "If the person is your qualifying child, the child must have lived with you for more than half the part of the year the child was alive. / Similarly, if you adopted the person for whom you kept up a home in 2025, the person was lawfully placed with you for legal adoption by you in 2025, or the person was an eligible foster child placed with you during 2025, the person is considered to have lived with you for more than half of 2025 if your main home was this person’s main home for more than half the time since the person was adopted or placed with you in 2025. / Your qualifying child or qualifying relative who lived with you for more than half the part of the year they were alive. / You can claim head of household filing status if all the following statements are true. / A person can’t qualify more than one taxpayer to use the head of household filing status for the year.",
+    "page": "i1040gi p. 15; p501 p. 9; p501 p. 10",
+    "why_uncovered": "Test 2 is encoded citing only the p. 14 test. The birth, death, adoption and foster placement rules appear only inside the household.unmarried question, which applies to married persons living apart, so they are not applied to the Test 2 qualifying person. The kidnapped-child rule for head of household has no question or refusal; only the qualifying surviving spouse question addresses kidnapping. Nothing listed enforces the limit of one taxpayer per qualifying person.",
+    "closest_item": "household.test2_persons",
+    "effect": "eligibility"
+   },
+   {
+    "item": "household.hoh_eligible",
+    "sentences": [
+     {
+      "quote": "If the child isn’t claimed as your dependent, enter the child’s name in the entry space below qualifying surviving spouse.",
+      "page": "i1040gi p. 14"
+     }
+    ],
+    "quote": "If the child isn’t claimed as your dependent, enter the child’s name in the entry space below qualifying surviving spouse.",
+    "page": "i1040gi p. 14",
+    "why_uncovered": "No listed line or question captures the name of a non-dependent child who qualifies the filer for head of household.",
+    "closest_item": "household.hoh_eligible",
+    "effect": "presentation"
    },
    {
     "item": "household.qss_eligible",
     "sentences": [
      {
-      "quote": "You may be eligible to file as a qualifying surviving spouse even if the child who qualifies you for this filing status has been kidnapped.",
-      "page": "p501 p. 11"
-     },
-     {
-      "quote": "You can claim qualifying surviving spouse filing status if all the following statements are true.",
-      "page": "p501 p. 11"
-     },
-     {
-      "quote": "You would have qualified for qualifying surviving spouse filing status if the child had not been kidnapped.",
-      "page": "p501 p. 11"
-     },
-     {
-      "quote": "This treatment applies for all years until the earlier of:",
-      "page": "p501 p. 10"
-     },
-     {
-      "quote": "If the child isn’t claimed as your dependent in the Dependents section on Form 1040 or 1040-SR, enter the child’s name in the entry space below the filing status checkboxes.",
-      "page": "p501 p. 11"
+      "quote": "If the child isn’t claimed as your dependent, enter the child’s name in the entry space.",
+      "page": "i1040gi p. 15"
      }
     ],
-    "quote": "You may be eligible to file as a qualifying surviving spouse even if the child who qualifies you for this filing status has been kidnapped. / You can claim qualifying surviving spouse filing status if all the following statements are true. / You would have qualified for qualifying surviving spouse filing status if the child had not been kidnapped. / This treatment applies for all years until the earlier of: / If the child isn’t claimed as your dependent in the Dependents section on Form 1040 or 1040-SR, enter the child’s name in the entry space below the filing status checkboxes.",
-    "page": "p501 p. 11; p501 p. 10",
-    "why_uncovered": "The five-test question covers temporary absences, birth, death, adoption and placement for time lived in the home. It does not mention the kidnapped-child exception, which treats a kidnapped child as living with you all year, and no refusal covers it. Nothing provides for entering the name of a qualifying child who is not claimed as a dependent.",
+    "quote": "If the child isn’t claimed as your dependent, enter the child’s name in the entry space.",
+    "page": "i1040gi p. 15",
+    "why_uncovered": "The question establishes that a non-dependent child can qualify the filer, but no listed line or question captures the child's name for the entry space.",
     "closest_item": "household.qss_eligible",
+    "effect": "presentation"
+   },
+   {
+    "item": "household.credit_disallowed",
+    "sentences": [
+     {
+      "quote": "Don’t file Form 8862 if you filed Form 8862 for 2024, and the child tax credit, additional child tax credit, or credit for other dependents was allowed for that year.",
+      "page": "i1040gi p. 39"
+     },
+     {
+      "quote": "You filed Form 8862 for another year, the EIC was allowed for that year, and your EIC hasn’t been reduced or disallowed again for any reason other than a math or clerical error.",
+      "page": "i1040gi p. 43"
+     },
+     {
+      "quote": "You are taking the EIC without a qualifying child and the only reason your EIC was reduced or disallowed in the other year was because it was determined that a child listed on Schedule EIC wasn’t your qualifying child.",
+      "page": "i1040gi p. 43"
+     }
+    ],
+    "quote": "Don’t file Form 8862 if you filed Form 8862 for 2024, and the child tax credit, additional child tax credit, or credit for other dependents was allowed for that year. / You filed Form 8862 for another year, the EIC was allowed for that year, and your EIC hasn’t been reduced or disallowed again for any reason other than a math or clerical error. / You are taking the EIC without a qualifying child and the only reason your EIC was reduced or disallowed in the other year was because it was determined that a child listed on Schedule EIC wasn’t your qualifying child.",
+    "page": "i1040gi p. 39; i1040gi p. 43",
+    "why_uncovered": "The question asks only whether a credit was ever reduced or disallowed, or whether the filer is in a disallowance period. It does not carve out these exceptions, so a filer who meets one still answers Yes and is treated the same as a filer who must attach Form 8862.",
+    "closest_item": "household.credit_disallowed",
+    "effect": "eligibility"
+   },
+   {
+    "item": "household.filing_status_conflict",
+    "sentences": [
+     {
+      "quote": "Generally, a married couple can’t file a joint return if either spouse is a nonresident alien at any time during the year.",
+      "page": "i1040gi p. 13"
+     },
+     {
+      "quote": "To make either choice for 2025, you and your spouse must file a joint return and attach a statement, signed by both spouses, to your return.",
+      "page": "i1040gi p. 14"
+     }
+    ],
+    "quote": "Generally, a married couple can’t file a joint return if either spouse is a nonresident alien at any time during the year. / To make either choice for 2025, you and your spouse must file a joint return and attach a statement, signed by both spouses, to your return.",
+    "page": "i1040gi p. 13; i1040gi p. 14",
+    "why_uncovered": "The conflict gate tests marriage and death facts only. The nonresident alien election appears only in household.unmarried for head of household, and the nonresident refusal listed under HANDLED ELSEWHERE applies only to the EIC. Nothing blocks or refuses a joint return with a nonresident spouse when no election was made, and nothing requires the signed statement.",
+    "closest_item": "household.filing_status_conflict",
     "effect": "eligibility"
    }
   ],
@@ -687,6 +1176,7 @@
    {
     "doc": "i1040gi",
     "pages": [
+     13,
      14,
      15,
      16,
@@ -736,13 +1226,16 @@
    {
     "doc": "p501",
     "pages": [
+     6,
+     7,
+     8,
      9,
      10,
      11
     ]
    }
   ],
-  "cost": 0.29411299999999996,
+  "cost": 0.6006268,
   "model": "claude-opus-5-5"
  }
 ]

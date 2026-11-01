@@ -115,6 +115,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "a"
         ],
@@ -301,6 +303,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "a"
         ],
@@ -482,6 +486,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "r"
         ],
@@ -659,6 +665,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "r"
         ],
@@ -833,6 +841,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "r"
         ],
@@ -1015,6 +1025,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "a"
         ],
@@ -1211,6 +1223,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "a"
         ],
@@ -1406,6 +1420,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "p"
         ],
@@ -1588,6 +1604,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "p"
         ],
@@ -1770,6 +1788,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "p"
         ],
@@ -1970,6 +1990,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "p"
         ],
@@ -2161,6 +2183,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "p"
         ],
@@ -2357,6 +2381,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "p"
         ],
@@ -2548,6 +2574,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [],
         "ssb.benefits": 2000000,
         "person[taxpayer].born_after_1960": true,
@@ -2720,6 +2748,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [],
         "ssb.benefits": 2000000,
         "person[taxpayer].born_after_1960": true,
@@ -2888,6 +2918,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [],
         "ssb.benefits": 2000000,
         "person[taxpayer].born_after_1960": true,
@@ -3061,6 +3093,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "a"
         ],
@@ -3243,6 +3277,8 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [],
         "$retirement@person[spouse]": [],
         "ssb.benefits": 3000000,
@@ -3432,6 +3468,8 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [],
         "ssb.benefits": 2000000,
         "person[taxpayer].born_after_1960": true,
@@ -3601,6 +3639,8 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [],
         "ssb.benefits": 2000000,
         "person[taxpayer].born_after_1960": true,
@@ -3770,6 +3810,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [],
         "ssb.benefits": 2000000,
         "person[taxpayer].born_after_1960": true,
@@ -3943,6 +3985,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [],
         "ssb.benefits": 2000000,
         "person[taxpayer].born_after_1960": true,
@@ -4122,6 +4166,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "a",
           "p"
@@ -4331,6 +4377,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "p"
         ],
@@ -4516,6 +4564,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "r"
         ],
@@ -4702,6 +4752,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "k1",
           "k2",
@@ -4956,6 +5008,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "j1",
           "j2",
@@ -5202,6 +5256,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [],
         "ssb.benefits": 2000000,
         "person[taxpayer].born_after_1960": true,
@@ -5370,6 +5426,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [],
         "ssb.benefits": 400000,
         "person[taxpayer].born_after_1960": true,
@@ -5543,6 +5601,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "p"
         ],
@@ -5727,6 +5787,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "p"
         ],
@@ -5910,6 +5972,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "p"
         ],
@@ -6111,6 +6175,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [],
         "ssb.benefits": 2000000,
         "person[taxpayer].born_after_1960": true,
@@ -6284,6 +6350,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "p"
         ],
@@ -6466,6 +6534,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [
           "p"
         ],
@@ -6649,6 +6719,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [],
         "ssb.benefits": 2000000,
         "person[taxpayer].born_after_1960": true,
@@ -6816,6 +6888,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$retirement@person[taxpayer]": [],
         "ssb.benefits": 2000000,
         "person[taxpayer].born_after_1960": true,

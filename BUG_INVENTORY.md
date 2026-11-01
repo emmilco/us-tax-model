@@ -3945,3 +3945,189 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
   50 green trees of the clone (`.git/check-all-green-trees`), which both hooks accept. Owner's choice over a
   pre-merge-commit hook: it covers whatever reaches GitHub (merge, rebase, cherry-pick) and keeps `git pull` one step.
 - **Tags:** tool-defect; guard-gap; caught-by-audit
+
+## BUG-0270 — A filer with an SSN was asked whether they had applied for an ITIN
+
+- **Date:** 2026-10-31
+- **Caught by:** T-058 (cleanup pass, 2026-10-22), reproduced by a scripted interview: a single filer with wages and a
+  claimed parent was asked `person[taxpayer].itin_applied` (question 115) before `person[taxpayer].tin` had been asked.
+- **Symptom:** i1040gi p. 19, Step 5, question 1, asks about an ITIN application only of a filer without an SSN or ITIN.
+  `household.tin_count` and the education test read `person.tin` or `person.itin_applied`; both questions had order 2, so
+  the interview asked them by key, `itin_applied` first. The answer did not change a value.
+- **Root cause:** a tie in the question bank's order resolved by name. T-058's trigger ("the next change to the person
+  questions") fired in 34b2346 and a428e8b without the change being made.
+- **Where:** `interview/questions-2025.yaml`, `person.itin_applied`.
+- **Fix:** `person.itin_applied` has order 3, after `person.tin`. Checked by the same scripted interview: with an SSN, `tin` is
+  asked and `itin_applied` is not; without one, `itin_applied` is asked after `tin`.
+- **Tags:** interview-order; value-neutral; trigger-missed; caught-by-audit
+
+## BUG-0271 — Five entries left with an open or staged fix after the fix was made
+
+- **Date:** 2026-10-31
+- **Caught by:** the TASKS.md verification of 2026-10-31 (T-149).
+- **Symptom:** these entries still say the fix is open or not applied, though it is done: BUG-0081 ("Fix: open (TASKS.md
+  T-050)"; fixed in 6fb728b), BUG-0111 ("staged ... Not applied to the active tree"; integrated in 2fdec33, T-061),
+  BUG-0129 ("Status: open"; closed by the owner's decision on per-form qualification, 73b1ebe, T-062), BUG-0134 ("Status:
+  open, T-063"; source-based input contracts, 0ef4912) and BUG-0135 ("Status: open, T-064"; adapter contracts, 1b75a3b,
+  f4952 adjudicated by 4d24cbc).
+- **Root cause:** the inventory is append-only, and no step asked for a closing entry when a fix landed later than the
+  entry; the TASKS rows were the only record and were not closed either.
+- **Where:** `BUG_INVENTORY.md`.
+- **Fix:** this entry records the fixes; the five entries stand as written.
+- **Tags:** record-drift; closes-earlier-entry; caught-by-audit
+
+## BUG-0272 — The considered-unmarried question stated none of the rules
+
+- **Date:** 2026-11-01
+- **Caught by:** the T-117 check (from the T-091 round 2 adjudication, a question about the spouse's temporary absence).
+- **Symptom:** `household.unmarried` asked "Were you unmarried, or considered unmarried under the head of household rules,
+  at the end of 2025?" with no rule stated. i1040gi p. 14 gives three ways to be considered unmarried, p. 15 the five
+  conditions for married persons who live apart, and p501 p. 8 (test 3) says "Your spouse is considered to live in your
+  home even if your spouse is temporarily absent due to special circumstances. See Temporary absences", which brings in
+  p. 9's expected-return condition. A filer whose spouse was away on a temporary deployment for the last six months could
+  read "lived apart" literally, answer Yes and get head of household where the source makes the filer married (a joint
+  return, or a separate one, which the tool refuses). Severity medium: it changes the filing status on a reachable return.
+- **Where:** `forms/2025/household.yaml`, `household.unmarried`.
+- **Fix:** the question states the three ways, the five conditions and the spouse's temporary-absence rule with its
+  expected-return and keeping-up-the-home conditions, citing i1040gi pp. 14 and 15 and p501 pp. 8 and 9. Wording only; no
+  value changes for a given answer.
+- **Tags:** question-incomplete; definition-omitted; household-predicates; caught-by-source-adjudication
+
+## BUG-0273 — The qualifying surviving spouse question left out the kidnapped-child rule
+
+- **Date:** 2026-11-01
+- **Caught by:** fix round 2 adjudication (`.transcription/proposed/fixr2/household.findings.md`, F1; T-114).
+- **Symptom:** p501 p. 11, "You may be eligible to file as a qualifying surviving spouse even if the child who qualifies
+  you for this filing status has been kidnapped"; test 3 of `household.qss_eligible` listed temporary absences and the
+  birth, death and adoption rules but not the kidnapped child, so such a filer answered No and was refused with "the tests
+  are not met", which is not true. Every path ended in a refusal; the wrong one fired.
+- **Where:** `forms/2025/household.yaml`, `household.qss_eligible`; `forms/2025/f1040.yaml`, the `household.qss_fails`
+  refusal at line 12e.
+- **Fix:** test 3 tells the filer to answer No for a child presumed kidnapped (the rule of Pub. 501 is outside this tool),
+  and the refusal's remedy names that case, citing p501 p. 11. `stage21.pending1.single_claims_qss_refused` carries the
+  new remedy.
+- **Tags:** question-incomplete; refusal-wording; caught-by-source-adjudication
+
+## BUG-0274 — The household home-cost questions did not say that TANF payments count as paid by you
+
+- **Date:** 2026-11-01
+- **Caught by:** fix rounds 4 and 5 and completeness round 5 (`fixr4/household.findings.md` L1, `fixr5/household.findings.md`
+  L1, `reviews/2025/completeness/r5.findings.md` L1; T-115).
+- **Symptom:** p501 p. 9, Note: TANF or similar payments "used ... to support another person ... are considered support you
+  provided"; `household.home_cost` and test 4 of `household.qss_eligible` gave only the own-funds rule, which can lead a
+  filer with a child-only TANF grant to count the rent as the child's and answer No. Every path ended in a refusal.
+- **Where:** `forms/2025/household.yaml`, `household.home_cost`, `household.qss_eligible`.
+- **Fix:** both say "TANF or similar payments you received and used for the home count as paid by you", citing p501 p. 9.
+  The same sentence is due on `dependent.parent_home_paid` (T-111), with the dependent pass.
+- **Tags:** question-incomplete; definition-omitted; caught-by-source-adjudication
+
+## BUG-0275 — The qualifying surviving spouse home-cost test excluded "anyone's services"
+
+- **Date:** 2026-11-01
+- **Caught by:** fix round 5 adjudication (`fixr5/household.findings.md`, L2; T-116).
+- **Symptom:** p501 p. 9 excludes "the value of your services or those of a member of your household"; test 4 of
+  `household.qss_eligible` said "anyone's services", which can be read to exclude paid labour such as a repair bill.
+- **Where:** `forms/2025/household.yaml`, `household.qss_eligible`.
+- **Fix:** test 4 excludes "the value of your own or a household member's services", citing p501 p. 9.
+- **Tags:** question-wording; caught-by-source-adjudication
+
+## BUG-0276 — Household wording fixes introduced three narrower eligibility readings
+
+- **Date:** 2026-11-01
+- **Caught by:** household pass round-one render/completeness adjudication, `.transcription/proposed/hhpass/household.findings.md`, F1–F3.
+- **Symptom:** BUG-0272's considered-unmarried text omitted the child's birth/death, adoption/placement and temporary-absence exceptions, and said the other parent "claims" rather than "can claim" the child. BUG-0273's kidnapped-child instruction could refuse a child returned before 2025 who lived at home throughout 2025.
+- **Root cause:** paraphrasing the general tests dropped their exceptions and the kidnapping's connection to the tax-year absence.
+- **Where:** `forms/2025/household.yaml`, `household.unmarried` and `household.qss_eligible`.
+- **Fix:** the working-tree questions include the residence exceptions, "can claim", and a kidnapping that kept the child from living at home throughout 2025. Checked against archived i1040gi pp. 14–15 and p501 pp. 8–11; round-two independent review remains required. These are wording corrections, not changed computations for fixed answers.
+- **Siblings checked:** `dependent.kidnapped` timing remains T-104; `dependent.parent_home_paid` TANF wording remains T-111. No claim that those tasks are fixed here.
+- **Tags:** fix-introduced; question-incomplete; over-refusal; caught-by-source-adjudication
+
+## BUG-0277 — Single and head-of-household selections had no spouse-death-year check
+
+- **Date:** 2026-11-01
+- **Caught by:** household pass round-one adjudication P1 and the Form 1040 sibling check.
+- **Symptom:** a filer whose spouse died in 2025 could select single or head of household without answering any death-year question. The household unmarried question did not explain p501 p. 6's whole-year married rule; i1040gi p. 13 permits the widowed Single condition only for a death before January 1, 2025.
+- **Root cause:** the qualifying-surviving-spouse question covered an earlier spouse death, but single/HOH had no corresponding death-year boundary.
+- **Where:** `forms/2025/household.yaml` and `forms/2025/f1040.yaml`, line 12e.
+- **Fix:** owner's 2026-11-01 decision: `household.spouse_died_2025` feeds `household.widowed_2025`, refusing single/HOH at line 12e. The unmarried question states the death-year rule. Source-predicted `stage21.household.widow_*` fixtures cover both statuses with true and false answers; round-two review and full validation remain required.
+- **Siblings checked:** qualifying surviving spouse already asks for death in 2023/2024; married-filing-jointly is outside this new gate. Question bank, profiles, both generators and fixture inputs carry the new input.
+- **Tags:** missing-condition; filing-status; household-predicates; caught-by-source-adjudication
+
+## BUG-0278 — A marriage ending during the year escaped community-property screening
+
+- **Date:** 2026-11-01
+- **Caught by:** household completeness/adjudication P2, `.transcription/proposed/hhpass/household.findings.md`.
+- **Symptom:** a non-joint filer divorced or legally separated during 2025 after living married in a community property state could compute from the income entered without a community-income allocation screen. i1040gi p. 23 directs the filer to state law, Form 8958 and Pub. 555.
+- **Root cause:** existing gates covered a married head-of-household filer and registered domestic partners, but not a marriage that ended during the year.
+- **Where:** `forms/2025/household.yaml` and `forms/2025/f1040.yaml`, line 1a.
+- **Fix:** owner's 2026-11-01 decision: ask `household.cp_married` and refuse via `household.cp_marriage_ended` when not joint, community-property residence is yes, married at year end is no, and married during the year in that state is yes. No state-law allocation is inferred. Source-predicted `stage21.household.community_*` fixtures cover the new refusal and negative controls; round-two review and full validation remain required.
+- **Siblings checked:** the existing `household.hoh_community_property` refusal is retained and tested separately; registered-domestic-partner screening remains separate. Question bank, profiles, both generators and fixture inputs carry the new input.
+- **Tags:** scope-screen-missing; community-property; caught-by-source-adjudication
+
+## BUG-0279 — Foreign return refusals made untouched completeness debt immediately due
+
+- **Caught by:** household round-two completeness check, 2026-11-01.
+- **Symptom:** adding the widow and ended-marriage community-property refusals to Form 1040 altered HANDLED ELSEWHERE in foreign review prompts, invalidating 55 untouched forms' deferred baseline subjects. This defeated the approved form-by-form T-094 schedule.
+- **Cause:** the exact review-prompt hash also served as the change trigger for never-reviewed baseline debt.
+- **Fix:** preserve exact full-prompt matching for every actual review and claim ruling; add verified historical local subjects for never-reviewed debt only. Own canonical form, cited source sections and review policy still invalidate that debt. Original baseline hashes are preserved. Migration reproduced all 56 original fingerprints from an independently built f44bae4 checkout; 55 remain deferred and the changed f1040 remains due.
+- **Validation:** completeness self-tests include four debt regression tests, covering own arithmetic/source/policy changes, bad migration records, foreign context changes and the inability to qualify an existing stale receipt. Current completeness check intentionally fails on dependent, f1040, f2441 and household claim1. Full-suite validation and commit remain pending.
+- **Tags:** review-debt-invalidation; baseline-scope; tooling
+
+## BUG-0280 — Shared year-end marriage question omitted the federal marriage definitions
+
+- **Caught by:** household completeness round two claim1 (p501 p.6), 2026-11-01.
+- **Symptom:** household.married asked whether the filer was married at year end without explaining recognized common-law/foreign/tribal marriages, nonfinal divorce decrees, final divorces/legal separation, annulments or partnerships that are not marriages. A wrong answer can bypass the EIC married-filer tests or alter the HSA age-55 family-coverage limit. Filing-status selection also lacked the cited divorce/remarriage warning.
+- **Fix:** the input now states the source definitions and separately labels the divorce/remarriage filing-status warning. It retains the distinction between legal year-end marriage (read by HSA) and the spouse-death filing-status rule, which has a separate screen. The underlying Boolean and all calculation guards are unchanged.
+- **Validation:** archived p501 p.6, i1040gi p.13 and i8889 p.4 inspected before editing. Build passed; fresh source/render/completeness reviews and final validation pending. Existing marriage/HOH/HSA fixtures provide calculation controls; the changed rule interpretation is supplied as question text, not a new computed determination of civil status.
+- **Tags:** undefined-legal-input; household-wording; source-completeness
+
+## BUG-0281 — Consumer prompt writer skipped changed baseline questions
+
+- **Caught by:** household marriage-definition follow-up, 2026-11-01: the checker reported three new/due pairs but `--prompts` wrote zero prompts.
+- **Cause:** write_prompts treated existence of a baseline pair key as acceptance without comparing its recorded subject hash to the current question.
+- **Fix:** baseline keys suppress prompt generation only while their subject hash matches. Actual rulings retain the existing acceptance policy.
+- **Validation:** reproduce with the three household.married pairs (i8889 pp.5–6 and i1040gi p.23); after correction, all three prompts are generated. A regression is added to the consumer self-test.
+- **Tags:** review-prompt-omission; changed-baseline-subject; verification-tooling
+
+## BUG-0282 — Remaining support-definition details in the dependent questions (open)
+
+- **Caught by:** dependent completeness refresh claims1–2; archived earlier rulings already classified these as low and batched them, 2026-11-01.
+- **Symptom/source:** dependent.supported and dependent.self_support omit or compress parts of p501 pp.15,20–21: insurance premiums/benefits, excluded taxes and educational assistance, GI Bill amounts, and rarer allocation, property, foster-business and lump-sum support cases.
+- **Disposition:** T-107/T-109, expanded with the remaining source sentences, in the dependent form pass. The form is unchanged in the household package. This is deferred definition debt, not an implemented refusal or a certified complete support worksheet.
+- **Validation status:** source/implementation inspection and fresh completeness claim; no fix or new independent numeric evidence claimed.
+- **Tags:** source-definition-debt; existing-form-pass; explicitly-deferred
+
+## BUG-0283 — Other-claimant screen does not exclude people who are not taxpayers (open)
+
+- **Caught by:** dependent completeness refresh claim3; repeats the original completeness note, 2026-11-01.
+- **Symptom/source:** dependent.other_claimant asks about another person without i1040gi p.19 / p501 p.18’s exception for someone not required to file who does not file or files only for a refund. It can refuse an otherwise eligible qualifying relative; it does not produce a wrong completed amount on the identified path.
+- **Disposition:** T-153, low over-refusal, with the dependent form pass; preserve existing multi-claimant refusal until that source definition is corrected.
+- **Validation status:** source/implementation inspection and fresh completeness claim; no fix or new independent numeric evidence claimed.
+- **Tags:** source-definition-debt; existing-form-pass; explicitly-deferred
+
+## BUG-0284 — Care-expense question omits explicit mixed-purpose and daily allocation detail (open)
+
+- **Caught by:** dependent claim9 and f2441 claim1; repeats the previously batched care-definition observation, 2026-11-01.
+- **Symptom/source:** dependent.dc_paid asks for care while a qualifying person so the filer can work, and names the major exclusions, but does not explicitly state child-support exclusion, allocation of mixed-purpose costs or the day-by-day work-period method from i2441 p.2 / p503. Unusual entries can overstate qualified expenses if the filer interprets the short definition too broadly.
+- **Disposition:** T-154, low clarification debt, in the dependent/f2441 passes. Noncustodial divorced-parent cases are refused separately; the remaining allocation gap is not being treated as a refusal.
+- **Validation status:** source/implementation inspection and fresh completeness claim; no fix or new independent numeric evidence claimed.
+- **Tags:** source-definition-debt; existing-form-pass; explicitly-deferred
+
+## BUG-0285 — Lifetime learning student eligibility accepts an applied-for TIN (open)
+
+- **Caught by:** dependent completeness refresh claim12; existing owner decision T-113, 2026-11-01.
+- **Symptom/source:** dependent.edu_student accepts dependent.tin, whose question includes a timely applied-for ATIN/ITIN. i8863 requires an issued TIN; the p970 p.11 deemed-issuance rule is stated in the American opportunity chapter, not for lifetime learning.
+- **Disposition:** Owner decision T-113 schedules the issued-versus-applied-for split for both dependent and person in their form passes. Keep the AOC deeming and refuse the unsupported lifetime-learning case; do not silently change that selected scope during household closure.
+- **Validation status:** source/implementation inspection and fresh completeness claim; no fix or new independent numeric evidence claimed.
+- **Tags:** source-definition-debt; existing-form-pass; explicitly-deferred
+
+## BUG-0286 — Filing status could contradict the supplied marriage facts
+
+- **Caught by:** household final completeness claim1 and f1040 completeness claim1, 2026-11-01.
+- **Source:** i1040gi p.13, Single and Married Filing Jointly; p501 p.6.
+- **Symptom:** Single could compute with household.married Yes; joint could compute with year-end marriage No and no spouse death in 2025. The roster check tests counts, not these eligibility contradictions.
+- **Fix:** household.filing_status_conflict refuses those two contradictions at f1040.line12e. The joint death-year exception remains supported; HOH/QSS retain their separate tests. The death-year question now also covers joint filers who were not married at year end. This is an entry consistency check, not a new excluded tax situation.
+- **Regression predictions:** six stage21.household.status_* cases cover both contradictions, valid single/joint, joint death-year and married HOH. Expected deductions/refusals were written from source before running the evaluator.
+- **Fixture context repair:** 17 older Claude ClassM cases supplied joint status and no death-year fact but had household.married False as unused context. Corrected that inferred context fact to True and annotated the host repair; expected numerical values and original model receipts are untouched. Raw saved prompts are not assumed to be the original receipt when hashes differ. These cases do not acquire any new evidence credit.
+- **Validation:** build, render, 1,425 CLI fixtures, strict citations, both families' reviews and the offline check set passed before commit; the full check-all is the commit gate for this final gate.
+- **Tags:** contradictory-inputs; filing-status-eligibility; source-completeness

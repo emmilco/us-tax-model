@@ -37,6 +37,8 @@ from completeness_review import load_forms, prompt_for, MAX_CHARS, OUT  # noqa: 
 from transcribe import ROOT, manifest  # noqa: E402
 from taxyear import Y  # noqa: E402
 import baseline_check  # noqa: E402
+import completeness_debt  # noqa: E402
+from completeness_review import sections, SYSTEM  # noqa: E402
 
 RECORD = Path(OUT) / "completeness.json"
 RULINGS = Path(OUT) / "rulings.json"
@@ -88,7 +90,8 @@ def accepted(rulings, shas):
             if not isinstance(r, dict) or r.get("prompt_sha") == shas.get(form_of(k))}
 
 
-def findings(forms, mani, reviewed):
+def findings(forms, mani, reviewed, debt=None, baseline=None):
+    debt, baseline = debt or {}, baseline or {}
     out, notes = [], []
     for f in forms:
         p = prompt_for(f, mani)
@@ -102,7 +105,12 @@ def findings(forms, mani, reviewed):
         r = reviewed.get(f["id"])
         if not r or r.get("prompt_sha") != sha:
             why = "never reviewed" if not r else "lines, citations or cited pages changed since the review"
-            out.append({"kind": "stale", "line": f["id"], "form": f["id"], "subject": sha,
+            local = completeness_debt.subject(f, sections(f, mani)[0], SYSTEM)
+            deferred = completeness_debt.eligible(debt.get("stale:" + f["id"]),
+                                                  baseline.get("stale:" + f["id"]), local, r)
+            # Keep the original baseline fingerprint only while verified local debt is unchanged.
+            debt_sha = debt["stale:" + f["id"]]["prompt_sha"] if deferred else sha
+            out.append({"kind": "stale", "line": f["id"], "form": f["id"], "subject": debt_sha,
                         "detail": f"{why}; rerun completeness_review.py --forms {f['id']}"})
         elif r.get("parse_error"):
             out.append({"kind": "unparsed", "line": f["id"], "form": f["id"], "subject": sha,
@@ -117,7 +125,8 @@ def findings(forms, mani, reviewed):
 def check(rebaseline=False):
     forms = baseline_check.load_forms(Path(ROOT) / "canonical" / Y)
     reviewed = {r["form"]: r for r in json.loads(RECORD.read_text())} if RECORD.exists() else {}
-    found, notes = findings(forms, manifest(), reviewed)
+    data = json.loads(RULINGS.read_text()) if RULINGS.exists() else {}
+    found, notes = findings(forms, manifest(), reviewed, data.get("deferred_debt"), data.get("baseline"))
     line_ids = {l["id"] for f in forms for l in f["lines"]}
     data = json.loads(RULINGS.read_text()) if RULINGS.exists() else {}
     rulings = data.get("rulings", {})
@@ -184,7 +193,10 @@ def self_test():
           and parse("claims: []") == [] and parse("not: [yaml") is None and parse("hello") is None)
     status = status or (0 if ok else 1)
     print(f"completeness self-test, lenient parse: {'as expected' if ok else 'WRONG'}")
-    return status
+    import unittest
+    from test_completeness_debt import DebtTests
+    result = unittest.TextTestRunner().run(unittest.defaultTestLoader.loadTestsFromTestCase(DebtTests))
+    return status or (0 if result.wasSuccessful() else 1)
 
 
 if __name__ == "__main__":

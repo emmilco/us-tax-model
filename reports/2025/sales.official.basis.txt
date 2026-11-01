@@ -285,6 +285,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040gi] p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025" (2025; printed date 2026-02-25; 482e9c48)
       note: Interpretation amb.2025.filer_under_16: The second. The refusal cites the one sentence the text has about age 16 and names the register entry; it does not claim the text forbids the return. The owner's decision of 2026-10-22 (integrity plan decision 10). A return for a child under 16 is one the tool's slice does not model well (Form 8615 is refused through scope.other_line16 only when the filer knows to answer it); the refusal makes the age an explicit entry rather than a silent assumption. (i1040gi, p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025")
+  (helper) Were you married at the end of 2025?
+      = false
+      cite: [i1040gi] p. 41, Step 3, question 3, and Step 4, question 1, "Are you a married taxpayer whose filing status is married filing separately or head of household?"; i8889 p. 4, Line 3, rule 6, "If, at the end of 2025, you were age 55 or older and unmarried or married with self-only HDHP coverage for the entire year"; p501 p. 6, Marital Status, "State law governs whether you are married or legally separated under a divorce or separate maintenance decree."; p501 p. 6, Definition of marriage, "Individuals who have entered into a registered domestic partnership, civil union, or other similar relationship"; p501 p. 6, Considered married, "You are living together in a common law marriage recognized in the state where you now live or in the state where the common law marriage began."; p501 p. 6, Divorce and remarriage, "you and your spouse must file as married individuals in both years."; p501 p. 6, Annulled marriages, "you are considered unmarried even if you filed joint returns for earlier years." (2025; printed date 2026-02-25; 482e9c48)
   (helper) Did you live in a community property state at any time in 2025?
       = false
       cite: [i1040gi] p. 23, Community Property States, "Community property states include Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington, and Wisconsin" (2025; printed date 2026-02-25; 482e9c48)
@@ -294,9 +297,21 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) Qualifying surviving spouse checked without meeting its tests
       = false
       cite: [i1040gi] p. 15, Qualifying Surviving Spouse, "use joint return tax rates for 2025 if all of the following apply" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Did your spouse die in 2025?
+      = false
+      cite: [p501] p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes." (2025 returns; PDF created 2026-02-04; 288b62a4)
+  (gate) Filing as single or head of household although your spouse died in 2025
+      = false
+      cite: [i1040gi] p. 13, Single, "You were widowed before January 1, 2025, and didn’t remarry before the end of 2025"; p. 13, Married Filing Jointly, "Your spouse died in 2025 and you didn’t remarry in 2025."; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes." (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Not filing jointly, and married for part of 2025 while living in a community property state
+      = false
+      cite: [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555." (2025; printed date 2026-02-25; 482e9c48)
   (gate) Not filing jointly, living in a community property state, and a registered domestic partner in Nevada, Washington or California
       = false
       cite: [i1040gi] p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) The filing status conflicts with the marriage facts entered
+      = false
+      cite: [i1040gi] p. 13, Single, "But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box."; p. 13, Married Filing Jointly, "You were married at the end of 2025"; p. 13, "Your spouse died in 2025 and you didn’t remarry in 2025." (2025; printed date 2026-02-25; 482e9c48)
 
 == IRA Deduction Worksheet — Schedule 1, Line 20 ==
   (helper) Add the amounts on lines 12a and 12b
@@ -1230,9 +1245,11 @@ Derivations:
   household.roster_ok: test(household.filer_under16 = false; f1040.status = single; "mfj" = mfj; f1040.status = single; "mfj" = mfj; household.taxpayers = 1; 1 = 1; household.spouses = 0; 0 = 0)
   household.roster_bad: test(household.roster_ok = true; false = false)
   f1040.household.roster_bad: test(household.roster_ok = true; false = false)
+  household.cp_marriage_ended: test(f1040.status = single; "mfj" = mfj; household.community_property = false; true = true)
+  f1040.household.cp_marriage_ended: test(f1040.status = single; "mfj" = mfj; household.community_property = false; true = true)
   household.rdp_community_property: test(f1040.status = single; "mfj" = mfj; household.community_property = false; true = true)
   f1040.household.rdp_community_property: test(f1040.status = single; "mfj" = mfj; household.community_property = false; true = true)
-  f1040.line1a: sum_over(household.roster_bad = false; household.rdp_community_property = false; person[taxpayer].box1 = $0)
+  f1040.line1a: sum_over(household.roster_bad = false; household.cp_marriage_ended = false; household.rdp_community_property = false; person[taxpayer].box1 = $0)
   f2441.zero: param(#sales.zero = $0)
   f1040.f2441.zero: param(#sales.zero = $0)
   f1040.line1e: choose(f2441.benefits = false; true = true; f2441.benefits = false; false = false; f2441.zero = $0)
@@ -1314,8 +1331,12 @@ Derivations:
   f1040.line10: copy(scope.schedule1 = false; s1.line26 = $0)
   f1040.line11a: subtract(f1040.line9 = $900; f1040.line10 = $0)
   f1040.line11b: copy(f1040.line11a = $900)
+  household.filing_status_conflict: test(f1040.status = single; "single" = single; household.married = false; true = true; f1040.status = single; "mfj" = mfj)
+  f1040.household.filing_status_conflict: test(f1040.status = single; "single" = single; household.married = false; true = true; f1040.status = single; "mfj" = mfj)
   household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
   f1040.household.hoh_fails: test(f1040.status = single; "hoh" = hoh)
+  household.widowed_2025: test(f1040.status = single; "single" = single; household.spouse_died_2025 = false; true = true)
+  f1040.household.widowed_2025: test(f1040.status = single; "single" = single; household.spouse_died_2025 = false; true = true)
   household.qss_fails: test(f1040.status = single; "qss" = qss)
   f1040.household.qss_fails: test(f1040.status = single; "qss" = qss)
   sa.mfs: test(f1040.status = single; "mfs" = mfs)
@@ -1387,7 +1408,7 @@ Derivations:
   sa.itemizes: test(sa.elect_itemize = false; true = true; sa.mfs_spouse_itemizes = false; true = true; sa.line17 = $0; sa.standard = $15,750)
   sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
   f1040.sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
-  f1040.line12e: copy(household.hoh_fails = false; household.qss_fails = false; sa.deduction = $15,750)
+  f1040.line12e: copy(household.filing_status_conflict = false; household.hoh_fails = false; household.widowed_2025 = false; household.qss_fails = false; sa.deduction = $15,750)
   qbi.sa.agi: copy(f1040.line11b = $900)
   qbi.sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
   s1.sc_1a_count: sum_over(person[taxpayer].sc_1a = 0)

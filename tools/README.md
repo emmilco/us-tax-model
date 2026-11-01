@@ -79,3 +79,9 @@ starred cell's footnote (read from the page text, matched by order) fits the row
 and the column. `node engine/dist/main.js conjecture` checks every cell against
 the credit formula built from Rev. Proc. 2024-40 section 3.06(1); see
 `reports/2025/eic_table_conjecture.md`.
+
+## Completeness review debt
+
+Completed completeness reviews and claim rulings always require their exact current prompt hash, including foreign refusal context. Legacy never-reviewed debt has a separate local subject: full own canonical form, cited source sections, system instructions and reviewer implementation. A foreign refusal addition alone does not bring that deferred debt due; own arithmetic, wording, source or policy changes do. The original baseline hashes remain intact.
+
+`tools/transcription/migrate_completeness_debt.py CHECKOUT COMMIT` reconstructs historical full prompts from a built historical checkout, verifies authored inputs, reviewer and source manifest against Git, and refuses any baseline mismatch before recording local subjects in `reviews/2025/completeness/rulings.json`. The 2026-11-01 migration used f44bae4801bc36934cfc361bf2d9f8c52884a8bf and independently rebuilt its canonical output. Existing completed reviews are never eligible for this exemption. The normal completeness self-test includes the debt regression tests.

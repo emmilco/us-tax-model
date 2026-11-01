@@ -2,24 +2,8 @@
  "bank": null,
  "errors": [
   {
-   "line": "f1040.line19",
-   "message": "model changed a published result type"
-  },
-  {
-   "line": "f1040.line20",
-   "message": "model changed a published result type"
-  },
-  {
-   "line": "f1040.line35a",
-   "message": "model changed a published input interface"
-  },
-  {
-   "line": "f1040.line36",
-   "message": "model changed a published input interface"
-  },
-  {
-   "line": "f1040.line28",
-   "message": "f1040.f1040.line28: reference 's8812.line28' does not resolve"
+   "line": "f1040.line28_box",
+   "message": "f1040.f1040.line28_box: reference 's8812.no_refund' does not resolve"
   }
  ],
  "failures": [],
@@ -108,42 +92,6 @@
    "triage": "candidate invalid"
   },
   {
-   "candidate": "f1040.line20",
-   "handle": "20",
-   "open_at_triage": true,
-   "project": "f1040.line20",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "f1040.line21",
-   "handle": "21",
-   "open_at_triage": true,
-   "project": "f1040.line21",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "f1040.line22",
-   "handle": "22",
-   "open_at_triage": true,
-   "project": "f1040.line22",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "f1040.line24",
-   "handle": "24",
-   "open_at_triage": true,
-   "project": "f1040.line24",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
    "candidate": "f1040.line25a",
    "handle": "25a",
    "open_at_triage": true,
@@ -162,19 +110,10 @@
    "triage": "candidate invalid"
   },
   {
-   "candidate": "f1040.line27a",
-   "handle": "27a",
+   "candidate": "f1040.line28_box",
+   "handle": "28 (box)",
    "open_at_triage": true,
-   "project": "f1040.line27a",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "f1040.line28",
-   "handle": "28",
-   "open_at_triage": true,
-   "project": "f1040.line28",
+   "project": "f1040.line28_box",
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
@@ -187,48 +126,12 @@
    "shown_when": null,
    "status": "DISAGREE",
    "triage": "candidate invalid"
-  },
-  {
-   "candidate": "f1040.line32",
-   "handle": "32",
-   "open_at_triage": true,
-   "project": "f1040.line32",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "f1040.line33",
-   "handle": "33",
-   "open_at_triage": true,
-   "project": "f1040.line33",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "f1040.line34",
-   "handle": "34",
-   "open_at_triage": true,
-   "project": "f1040.line34",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
-  },
-  {
-   "candidate": "f1040.line37",
-   "handle": "37",
-   "open_at_triage": true,
-   "project": "f1040.line37",
-   "shown_when": null,
-   "status": "DISAGREE",
-   "triage": "candidate invalid"
   }
  ],
- "log_sha256_at_triage": "35f99a6251ca293f3ddade405ddd01bdd068d636d606936b995f9542ff691c5c",
+ "log_sha256_at_triage": "6ca3b1da21d1adba429512c286cf013d33312f5211304f661c2ece8137df1e52",
  "policy": "executable-triage-v2",
- "response_sha256": "0c9865a7e35a63dd3d660e0da581932bfd1d824fbac037645771c2e543ab7128",
+ "response_sha256": "208ff0556fdebfd46a484a3b9cd1e88cb2fd6bef3e2aa0a156ff93b289f15886",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "invalid",
- "subject_sha256": "395044be4e50a2485963db6ceeffb2ea4ca2a17a9fcc04e5c0a9c9aa93785ad2"
+ "subject_sha256": "a564ef395ea5e865a0e2ca18fefe42a7f377429d4f9b7fce7870ba17880a513f"
 }

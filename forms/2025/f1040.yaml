@@ -36,6 +36,14 @@ form:
             doc: f1040
             locator: Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first
               name and middle initial"; Filing Status
+        - when: household.cp_marriage_ended
+          form: Community income of a marriage that ended in 2025 (Form 8958; Pub. 555)
+          remedy: Income earned while you were married and living in a community property state may be community income
+            under state law, half yours and half your former spouse's; Form 8958 and the community property rules of Pub.
+            555 are outside this tool.
+          cite:
+            doc: i1040gi
+            locator: 'p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555."'
         - when: household.rdp_community_property
           form: Community income of a registered domestic partner (Form 8958; Pub. 555)
           remedy: A registered domestic partner in Nevada, Washington or California must generally report half the combined
@@ -385,18 +393,35 @@ form:
         doc: i1040gi
         locator: pp. 34–35, line 12e and Standard Deduction Chart
       refuses:
+        - when: household.filing_status_conflict
+          form: Filing status inconsistent with your marriage facts
+          remedy: Correct the filing status or marriage facts. A person married at the end of 2025 cannot file as single;
+            filing jointly requires marriage at year end or the death of a spouse during 2025. The head of household
+            and qualifying surviving spouse tests are checked separately.
+          cite:
+            doc: i1040gi
+            locator: 'p. 13, Single and Married Filing Jointly, "You were married at the end of 2025" and "Your spouse died in 2025 and you didn’t remarry in 2025."'
+
         - when: household.hoh_fails
           form: Head of household filing status
           remedy: Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person.
           cite:
             doc: i1040gi
             locator: p. 14, Head of Household
-        - when: household.qss_fails
-          form: Qualifying surviving spouse filing status
-          remedy: Qualifying surviving spouse is checked but the tests are not met; your spouse must have died in 2023 or 2024 and you must not have remarried before the end of 2025, a child or stepchild (not a foster child) you can claim as a dependent must have lived in your home all year, you must have paid over half the cost of keeping up your home, and you must have been able to file jointly the year your spouse died.
+        - when: household.widowed_2025
+          form: Filing status after a spouse's death in 2025
+          remedy: Your spouse died in 2025, so you are considered married for the whole year for filing status; file a joint
+            return with your deceased spouse (married filing jointly), or a separate return, which this tool does not
+            support.
           cite:
             doc: i1040gi
-            locator: p. 15, Qualifying Surviving Spouse
+            locator: 'p. 13, Single, "You were widowed before January 1, 2025, and didn’t remarry before the end of 2025"; p. 13, Married Filing Jointly, "Your spouse died in 2025 and you didn’t remarry in 2025."; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."'
+        - when: household.qss_fails
+          form: Qualifying surviving spouse filing status
+          remedy: Qualifying surviving spouse is checked but the tests are not met; your spouse must have died in 2023 or 2024 and you must not have remarried before the end of 2025, a child or stepchild (not a foster child) you can claim as a dependent must have lived in your home all year, you must have paid over half the cost of keeping up your home, and you must have been able to file jointly the year your spouse died; or the qualifying child was presumed kidnapped, whose rule (Pub. 501) is outside this tool.
+          cite:
+            doc: i1040gi
+            locator: 'p. 15, Qualifying Surviving Spouse; p501 p. 11, Kidnapped child, "You may be eligible to file as a qualifying surviving spouse even if the child who qualifies you for this filing status has been kidnapped."'
     - id: f1040.line13a
       printed: 13a
       label: Qualified business income deduction from Form 8995 or Form 8995-A

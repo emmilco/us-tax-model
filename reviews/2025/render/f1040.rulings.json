@@ -15,6 +15,20 @@
    "ruling": "Ruling: refusal located elsewhere; restatement accepted (as the prior ruling). A patron of an agricultural or horticultural cooperative, specified or not, is refused through qbi.unsupported (\"are you a patron of any agricultural or horticultural cooperative, specified or not\", amb.2025.qbi_cooperative_patron), so the threshold test alone chooses Form 8995. i1040gi p. 34, \"You aren't a patron in a specified agricultural or horticultural cooperative\". No change."
   },
   {
+   "printed": "13a",
+   "restated": "Enter the amount from qbi helper \"Select Form 8995 or dividend-only Form 8995-A\".",
+   "model": "The form is selected by the income threshold alone, with no patron condition or patron refusal visible. The IRS says 'Use Form 8995 if ... You aren't a patron in a specified agricultural or horticultural cooperative,' and patrons otherwise use Form 8995-A, while Schedule C line 6 accepts Form 1099-PATR amounts.",
+   "ruling": "Ruling: scope — qbi.unsupported explicitly asks whether the filer is a patron of any agricultural or horticultural cooperative, including Form 1099-PATR payments, and gates the QBI result. amb.2025.qbi_cooperative_patron records the broader refusal. The model assertion that the selector has no patron screen is incorrect.",
+   "context": "392795f9530c446fd88f9849fac96e36c9e282435dcb64bb7a307d17a103d941"
+  },
+  {
+   "printed": "13a",
+   "restated": "Enter the amount from qbi helper \"Select Form 8995 or dividend-only Form 8995-A\".",
+   "model": "The selector tests only taxable income against the threshold, but the instructions also require for Form 8995 that 'You aren't a patron in a specified agricultural or horticultural cooperative.' A patron below the threshold must use Form 8995-A and apply the patron reduction, and no patron test or refusal is shown here. The threshold amounts themselves agree with the text.",
+   "ruling": "Ruling: scope — i1040gi p. 34, Line 13a; f8995 p. 1 and i8995 pp. 3–4. The patron question is asked by `qbi.unsupported`, which names a patron of any agricultural or horticultural cooperative, specified or not, including Form 1099-PATR payments, and the qbi form refuses the QBI path when it is true (`amb.2025.qbi_cooperative_patron`). Form 1040 line 13a restates only the copy from `qbi.deduction`; the screen and the Form 8995/8995-A selection are restated in the qbi form's own rendered English, which this review did not include. The reviewer's complaint that no patron test appears on line 13a is a review-context limitation, not a missing screen.",
+   "context": "843a71728ef663c15dff2a9185b01b314f76feffdb46fc9985e6c87d52953b12"
+  },
+  {
    "printed": "16",
    "restated": "Choose — [helper \"Schedule D Tax Worksheet required after its exceptions\" = true → sdtw line 47] [helper \"Schedule D Tax Worksheet required after its exceptions\" = false → helper \"Tax when Schedule D Tax Worksheet does not apply\"]",
    "model": "Several required texts are missing. The line 16 instructions say \"Figure the tax using one of the methods described later\", but the pages describing how to choose the method are not provided. The Tax Table and Tax Computation Worksheet texts are also absent, so the brackets and subtraction amounts cannot be checked.",
@@ -29,9 +43,37 @@
   {
    "printed": "1a",
    "restated": "Add person.box1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The restatement adds all W-2 box 1 amounts, and no visible refusal covers two carve-outs. The IRS says of inmate wages 'Do not report these wages on line 1a' and of nonqualified or nongovernmental section 457 pensions in box 1 'do not include this amount on Form 1040, line 1a.'",
+   "ruling": "Ruling: scope — i1040gi pp. 23–24 route incarcerated wages to Schedule 1 line 8u and the specified nonqualified/nongovernmental 457 pensions to line 8t. s1.line8_other explicitly asks both categories and refuses them on Schedule 1. The line1a sum is not used to certify a completed return in those regimes; the model missed the downstream scope screen.",
+   "context": "392795f9530c446fd88f9849fac96e36c9e282435dcb64bb7a307d17a103d941"
+  },
+  {
+   "printed": "1a",
+   "restated": "Add person.box1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The restatement adds all W-2 box 1 amounts, with no carve-out or named refusal for amounts the instructions exclude: inmate wages ('Do not report these wages on line 1a') and nonqualified or nongovernmental section 457 pensions in box 1 ('do not include this amount on Form 1040, line 1a'). The total of box 1 is otherwise correct, including the spouse's on a joint return.",
+   "ruling": "Ruling: scope; the model says the restatement adds every W-2 box 1 amount with no carve-out for amounts i1040gi keeps off line 1a. i1040gi p. 23, \"If you earned wages while you were an inmate in a penal institution, report these amounts on Schedule 1, line 8u. Do not report these wages on line 1a\"; the nonqualified deferred compensation and section 457 pension sentence is on p. 24. Both are behind s1.line8_other, whose question names \"a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (8t); wages earned while incarcerated (8u)\", and Schedule 1 refuses on it. Married filing separately is refused for the whole return (s3.mfs); a married head of household filer in a community property state is refused by household.hoh_community_property; a registered domestic partner in a community property state not filing jointly is refused at line 1a itself (household.rdp_community_property). Within scope, box 1 holds none of these amounts. Same ruling as Fix round 2.",
+   "context": "a4f185d5a236efccc09564713213bcb5237d775500490e81435c8e27d03ee383"
+  },
+  {
+   "printed": "1a",
+   "restated": "Add person.box1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The restatement adds each person's own W-2 box 1, and the refusals cover only a marriage that ended and registered domestic partners. No refusal is shown for a spouse filing separately while married at year end in a community property state, yet the instructions say 'you must usually follow state law to determine what is community income and what is separate income.' No subtraction or named refusal is shown for the box 1 amounts the instructions keep off line 1a: inmate wages ('Do not report these wages on line 1a') and nonqualified or nongovernmental section 457 pensions.",
+   "ruling": "Ruling: scope — i1040gi pp. 23–24, Line 1a. The two categories the reviewer keeps off line 1a are refused upstream: wages earned while incarcerated (Schedule 1 line 8u) and nonqualified or nongovernmental section 457 pensions (line 8t) are named by `s1.line8_other`, which refuses Schedule 1. A still-married filer who files separately in a community property state is refused for the whole return by `s3.mfs` on `scope.ready` (i1040gi p. 14, Married Filing Separately), so line 1a never computes that return; `household.cp_marriage_ended` already covers the marriage that ended during 2025 (BUG-0278). The reviewer judged the line's English without those return-level screens.",
+   "context": "843a71728ef663c15dff2a9185b01b314f76feffdb46fc9985e6c87d52953b12"
+  },
+  {
+   "printed": "1a",
+   "restated": "Add person.box1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The sum of W-2 box 1 matches 'Enter the total amount from Form(s) W-2, box 1', including a spouse's amount on a joint return. However, the IRS also says inmate wages and nonqualified or section 457 pensions in box 1 do not go on line 1a, and a married-filing-separately filer in a community property state must follow state law; the material shown does not reveal whether a screen handles these cases.",
    "ruling": "Ruling: scope; the model asks whether the cases i1040gi keeps off line 1a are screened. i1040gi p. 23, \"If you earned wages while you were an inmate in a penal institution, report these amounts on Schedule 1, line 8u. Do not report these wages on line 1a\". The nonqualified deferred compensation and section 457 pension sentence is on p. 24. Both are behind s1.line8_other, whose question names \"a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (8t); wages earned while incarcerated (8u)\", and Schedule 1 refuses on it. Married filing separately is refused for the whole return (s3.mfs). A married head of household filer in a community property state is refused by household.hoh_community_property. A registered domestic partner who lived in a community property state and does not file jointly is refused at line 1a itself (household.rdp_community_property, i1040gi p. 23, \"A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income\"). Within scope, box 1 holds none of these amounts. Same reading as the round-2 ruling of this line.",
    "context": "c95f5c394958abe4c7136dee37a4c7edc82896a723fcf892637bdbbd4223adf0"
+  },
+  {
+   "printed": "1a",
+   "restated": "Add person.box1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The total of W-2 box 1 and the refusals are right for most filers, but no refusal covers a married filer filing separately who lived in a community property state; the cp_marriage_ended and hoh_community_property gates do not reach this case. The IRS text says \"Different rules apply to people in community property states; see Pub. 555\" and \"you must usually follow state law to determine what is community income.\" Inmate wages and nonqualified or section 457 box 1 amounts (\"Do not report these wages on line 1a\") also have no visible carve-out, though the line 8 screens are not shown.",
+   "ruling": "Ruling: scope — i1040gi pp. 23–24 route incarcerated wages to Schedule 1 line 8u and the specified nonqualified/nongovernmental 457 pensions to line 8t; s1.line8_other explicitly asks both categories and refuses them on Schedule 1. Married filing separately is refused for the whole return by s3.mfs in scope.ready (i1040gi p. 14), so a married filer filing separately in a community property state cannot complete a return. The model missed the return-level s3.mfs and Schedule 1 scope screens.",
+   "context": "b5bc205f3ae7c7fde984fa4077f0924f6a96bf0732176bbf952c0927fd035a07"
   },
   {
    "printed": "27a",
@@ -104,6 +146,13 @@
   {
    "printed": "27c",
    "restated": "Enter the amount from eic helper \"The instructions say to check the box on line 27c (a STOP that says so, or Worksheet A line 2 is zero); the filer's own choice not to claim the EIC is not asked\".",
+   "model": "The instructed STOP conditions are captured, but the filer's choice is omitted and no refusal covers it. The IRS says \"Check the box on line 27c if you do not want to claim the earned income credit.\" Only the helper label discloses this, and a filer declining the credit would still get it on line 27a.",
+   "ruling": "Ruling: ambiguity — i1040gi p. 43, Line 27c; T-027 in TASKS-DONE records the owner's disclosed design limit: instruction-mandated STOP boxes are computed, while the filer's voluntary EIC opt-out is not asked. The helper label explicitly discloses that limitation.",
+   "context": "b5bc205f3ae7c7fde984fa4077f0924f6a96bf0732176bbf952c0927fd035a07"
+  },
+  {
+   "printed": "27c",
+   "restated": "Enter the amount from eic helper \"The instructions say to check the box on line 27c (a STOP that says so, or Worksheet A line 2 is zero); the filer's own choice not to claim the EIC is not asked\".",
    "model": "The program covers the Step 1, Step 3, Step 4 and Worksheet A line 2 triggers. It misses the Worksheet B triggers: 'If line 4b is zero or less... Check the box on Form 1040 or 1040-SR, line 27c', the line 5 'No... Check the box on... line 27c', and 'If line 7 is zero... Check the box.' The filer's own choice not to claim the EIC ('if you do not want to claim the earned income credit') is also not asked.",
    "ruling": "Ruling: fixed (BUG-0057), then scope; project retained. The Worksheet B STOPs: line 4b zero or less reaches the box through Worksheet B line 6 zero and Worksheet A line 2 zero (stage14.eic.wsb_stop_27c); line 5 'No' is now a term of eic.check_27c (eic.wsb_line5_stop; stage14.eic.wsb_line5_stop_27c); line 7 zero is the shared line 2 zero. scope; project retained. The STOPs that say to check line 27c follow the flow chart; the filer's own choice not to claim the EIC is not asked (TASKS.md T-027). The filer's and spouse's SSN question uses the wording of the child tax credit and Schedule 1-A ('valid for employment, issued before the due date'); the EIC's Step 1, question 2 says 'issued on or before the due date ... valid for EIC purposes' (i1040gi p. 40). The two differ only for a number issued on the due date itself or a card marked 'Not Valid for Employment' for a reason other than a federally funded benefit; this is the question of amb.2025.eic_valid_ssn for the filer and spouse, put to the owner in TASKS.md T-038."
   },
@@ -122,9 +171,44 @@
   {
    "printed": "28 (box)",
    "restated": "true = false",
+   "model": "The restatement fixes the box as unchecked and asks no question, while the IRS text says 'If you do not want to claim the additional child tax credit, check the box on line 28'. No refusal or helper label names this exclusion.",
+   "ruling": "Ruling: scope; the model says the box is fixed unchecked and no question is asked. Form 1040 (2025) line 28, \"If you do not want to claim the ACTC, check here\"; i1040gi p. 61, Line 28: \"If you do not want to claim the additional child tax credit, check the box on line 28\". This is the recorded design limit BUG-0174 (owner's decision, 2026-10-27), and the printed label says so (\"not asked; this tool always claims the credit\"). Same ruling as Fix round 2.",
+   "context": "a4f185d5a236efccc09564713213bcb5237d775500490e81435c8e27d03ee383"
+  },
+  {
+   "printed": "28 (box)",
+   "restated": "true = false",
+   "model": "The restatement is a constant false, with no election input and no refusal. The form says 'If you do not want to claim the ACTC, check here,' and the instructions repeat that choice, so a filer declining the credit gets a different box and line 28.",
+   "ruling": "Ruling: ambiguity — Form 1040 line 28 and i1040gi p. 61; BUG-0174 records the owner's 2026-10-27 decision to retain the ACTC opt-out as a disclosed design limit, closing BUG-0162. The label and note explicitly state that the choice is not asked.",
+   "context": "843a71728ef663c15dff2a9185b01b314f76feffdb46fc9985e6c87d52953b12"
+  },
+  {
+   "printed": "28 (box)",
+   "restated": "true = false",
+   "model": "The restatement is always false, and neither a helper nor a refusal discloses the excluded choice. The IRS says 'If you do not want to claim the additional child tax credit, check the box on line 28.'",
+   "ruling": "Ruling: ambiguity — The opt-out choice is deliberately unsupported, as disclosed by the label and note. BUG-0174 records the owner decision of 2026-10-27 closing BUG-0162; i1040gi p. 61 and the printed line28 box support the alternative. This ruling preserves that design limit rather than claiming the source has no opt-out.",
+   "context": "392795f9530c446fd88f9849fac96e36c9e282435dcb64bb7a307d17a103d941"
+  },
+  {
+   "printed": "28 (box)",
+   "restated": "true = false",
    "model": "The restatement is always false, but the IRS says 'If you do not want to claim the ACTC, check here'. The filer's choice is neither asked nor named in a refusal, and line 28 is still entered from Schedule 8812.",
    "ruling": "Ruling: scope; the model says the opt-out is not asked. Form 1040 (2025) line 28, \"If you do not want to claim the ACTC, check here\"; i1040gi p. 61, Line 28: \"If you do not want to claim the additional child tax credit, check the box on line 28\". This is the recorded design limit BUG-0174 (owner's decision, 2026-10-27), and the printed label says so (\"not asked; this tool always claims the credit\"). Same ruling as round 4 and Stages 19 to 21.",
    "context": "c95f5c394958abe4c7136dee37a4c7edc82896a723fcf892637bdbbd4223adf0"
+  },
+  {
+   "printed": "28 (box)",
+   "restated": "true = false",
+   "model": "The restatement is constantly false, with no input or refusal for a filer who declines the credit. The IRS says \"If you do not want to claim the additional child tax credit, check the box on line 28.\"",
+   "ruling": "Ruling: ambiguity — Form 1040 line 28 and i1040gi p. 61; BUG-0174 records the owner's 2026-10-27 decision to retain the ACTC opt-out as a disclosed design limit, closing BUG-0162. The label and note explicitly state that the choice is not asked.",
+   "context": "b5bc205f3ae7c7fde984fa4077f0924f6a96bf0732176bbf952c0927fd035a07"
+  },
+  {
+   "printed": "29",
+   "restated": "Choose — [f8863 helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = true → f8863 line 8] [f8863 helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = false → f8863 helper \"Zero\"]",
+   "model": "Entering Form 8863 line 8 is right, but the eligibility gate tests only expenses paid and dependent status, while the IRS says you cannot claim the credit if \"Your filing status is married filing separately.\" The program's Form 8863 lines and any refusal for that status are not provided, so the result for a separate return cannot be judged.",
+   "ruling": "Ruling: scope — scope.ready refuses s3.mfs (married filing separately) for the whole return (i1040gi p. 14; i8863 p. 3). f8863.line3 through line8 perform the MAGI limit and phaseout. The narrow f8863.eligible helper does not purport to decide every restriction; the missing Form 8863 restatements are a review-context limitation.",
+   "context": "b5bc205f3ae7c7fde984fa4077f0924f6a96bf0732176bbf952c0927fd035a07"
   },
   {
    "printed": "29",
@@ -132,6 +216,20 @@
    "model": "The eligibility gate tests only that expenses were paid and that no one claims the filer as a dependent. The instructions also say 'You cannot claim an education credit... if... 2. Your filing status is married filing separately,' and the gate does not exclude MFS.",
    "ruling": "Ruling: scope; the model says the gate does not exclude married filing separately. i8863 p. 3, Who cannot claim a credit: \"2. Your filing status is married filing separately\". A married filing separately return is refused for the whole return (s3.mfs, read by scope.yaml and f2441.yaml; i1040gi p. 14, Married Filing Separately), so f8863.eligible never meets such a filer; the restatement of line 29 need not repeat it. Same reading as the Stage 19 adjudication of line 29.",
    "context": "a041f34b15c92976bcabb7019060368c3a16b2f8bfe5b963429102ae14bda7cf"
+  },
+  {
+   "printed": "29",
+   "restated": "Choose — [f8863 helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = true → f8863 line 8] [f8863 helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = false → f8863 helper \"Zero\"]",
+   "model": "The eligibility gate tests only that expenses were paid and that no one on the return is claimed as a dependent, but the Form 8863 instructions also bar a credit when 'Your filing status is married filing separately.' The restatement of Form 8863 line 8 and its refusals are not given, so it cannot be determined whether a separate return reaches zero or a refusal. The routing to line 8 otherwise agrees with the text.",
+   "ruling": "Ruling: scope — MFS is refused by `scope.ready` through `s3.mfs` for the whole return (i1040gi p. 14), and nonresident aliens are refused by `scope.other_income`. `f8863.line3` through `line8` implement the MAGI limit and phaseout, and the student SSN/TIN requirements are gated on Form 8863. The reviewer mistakes the initial `f8863.eligible` gate for the entire Form 8863 calculation; the restatement of Form 8863 line 8 is not part of the Form 1040 rendering.",
+   "context": "843a71728ef663c15dff2a9185b01b314f76feffdb46fc9985e6c87d52953b12"
+  },
+  {
+   "printed": "29",
+   "restated": "Choose — [f8863 helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = true → f8863 line 8] [f8863 helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = false → f8863 helper \"Zero\"]",
+   "model": "The gate tests only expenses paid and dependent status, but the IRS says you cannot claim the credit if 'Your filing status is married filing separately.' The program's Form 8863 line restatements are missing, so the text does not show whether lines 2 through 8 yield zero or refuse for that status.",
+   "ruling": "Ruling: scope — scope.ready refuses s3.mfs for the whole return (i1040gi p. 14). f8863.line3 through line8 perform the income limit/phaseout. The narrow f8863.eligible helper does not purport to decide every restriction; the missing dependent restatements are a review-context limitation.",
+   "context": "392795f9530c446fd88f9849fac96e36c9e282435dcb64bb7a307d17a103d941"
   },
   {
    "printed": "2b",

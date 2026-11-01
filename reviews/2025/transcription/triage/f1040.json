@@ -1,7 +1,7 @@
 {
  "bank": {
   "evaluation_failures": 0,
-  "fixtures": 1382,
+  "fixtures": 1425,
   "generated": 500,
   "partial_bases": 40,
   "partial_records": 315,
@@ -14,30 +14,875 @@
  "lines": [
   {
    "absent": 0,
-   "agree": 754,
+   "agree": 793,
    "candidate": "f1040.line1e",
-   "compared": 2197,
-   "differ": 1443,
+   "compared": 2240,
+   "completed_witnesses": [
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+      },
+      "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+      "gate": "f2441.plans_differ",
+      "kind": "refusal",
+      "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+        },
+        "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+        "gate": "f2441.plans_differ",
+        "kind": "refusal",
+        "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s3.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+      },
+      "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+      "gate": "f2441.plans_differ",
+      "kind": "refusal",
+      "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+        },
+        "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+        "gate": "f2441.plans_differ",
+        "kind": "refusal",
+        "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.8.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+      },
+      "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+      "gate": "f2441.plans_differ",
+      "kind": "refusal",
+      "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+        },
+        "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+        "gate": "f2441.plans_differ",
+        "kind": "refusal",
+        "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.8",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8995.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8995.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.ltc.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s179.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+      },
+      "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+      "gate": "f2441.plans_differ",
+      "kind": "refusal",
+      "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+        },
+        "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+        "gate": "f2441.plans_differ",
+        "kind": "refusal",
+        "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s3.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.sc.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.scveh.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+      },
+      "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+      "gate": "f2441.plans_differ",
+      "kind": "refusal",
+      "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+        },
+        "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+        "gate": "f2441.plans_differ",
+        "kind": "refusal",
+        "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f5695.8",
+      "kind": "partial",
+      "withheld": "f1040.line35a"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+      },
+      "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+      "gate": "f2441.plans_differ",
+      "kind": "refusal",
+      "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f2441.line26",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+        },
+        "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+        "gate": "f2441.plans_differ",
+        "kind": "refusal",
+        "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f2441.benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f2441.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f5695.8",
+      "kind": "partial",
+      "withheld": "f1040.line36"
+     }
+    }
+   ],
+   "differ": 1447,
    "handle": "1e",
-   "in_scope": 1890,
-   "in_scope_agree": 744,
+   "in_scope": 1955,
+   "in_scope_agree": 782,
    "kinds": {
-    "candidate-refuses": 297,
-    "candidate-unknown": 1135,
+    "candidate-refuses": 274,
+    "candidate-unknown": 1162,
     "value": 11
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-refuses": 4,
-     "candidate-unknown": 472,
-     "value": 8
+     "candidate-refuses": 6,
+     "candidate-unknown": 88
     },
     "incomplete": {
-     "candidate-unknown": 341
+     "candidate-refuses": 5,
+     "candidate-unknown": 733,
+     "value": 8
     },
     "refused": {
-     "candidate-refuses": 293,
-     "candidate-unknown": 322,
+     "candidate-refuses": 263,
+     "candidate-unknown": 341,
      "value": 3
     }
    },
@@ -45,7 +890,7 @@
    "project": "f1040.line1e",
    "shown_when": null,
    "sources": {
-    "fixture": 1382,
+    "fixture": 1425,
     "generated": 500,
     "partial": 315
    },
@@ -498,7 +1343,7 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.dependent.3.deepseek",
+      "id": "classm.dependent.1.deepseek",
       "kind": "fixture"
      }
     },
@@ -561,7 +1406,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "classm.s8812.4.deepseek",
       "kind": "fixture"
@@ -626,7 +1471,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "classm.f5695.3.deepseek",
       "kind": "fixture"
@@ -691,7 +1536,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "classm.f5695.4.deepseek",
       "kind": "fixture"
@@ -756,7 +1601,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "classm.f5695.5.deepseek",
       "kind": "fixture"
@@ -821,7 +1666,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "classm.f5695.6.deepseek",
       "kind": "fixture"
@@ -886,7 +1731,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "classm.f5695.9.deepseek",
       "kind": "fixture"
@@ -949,7 +1794,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "stage18.blind.p6",
       "kind": "fixture"
@@ -1012,7 +1857,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "stage18.blind.p10",
       "kind": "fixture"
@@ -1075,7 +1920,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "stage18.blind.p20",
       "kind": "fixture"
@@ -1201,7 +2046,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "stage18.mut.family_of_20",
       "kind": "fixture"
@@ -1274,26 +2119,292 @@
   },
   {
    "absent": 0,
-   "agree": 1012,
+   "agree": 1035,
    "candidate": "f1040.line6c",
-   "compared": 2197,
-   "differ": 1185,
+   "compared": 2240,
+   "completed_witnesses": [
+    {
+     "candidate": {
+      "input": "ssb.lump_sum",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.lump_sum"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "input": "ssb.lump_sum",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.lump_sum"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s179.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "ssb.lump_sum",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.lump_sum"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "input": "ssb.lump_sum",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.lump_sum"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage14.sc.basic",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "ssb.lump_sum",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.lump_sum"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "input": "ssb.lump_sum",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.lump_sum"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage14.sc.meals_full",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "ssb.lump_sum",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.lump_sum"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "input": "ssb.lump_sum",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.lump_sum"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage14.se.wage_base",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "ssb.lump_sum",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.lump_sum"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "input": "ssb.lump_sum",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.lump_sum"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage14.se.partial_base",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "ssb.lump_sum",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.lump_sum"
+     },
+     "candidate_operands": [
+      {
+       "ref": "ssb.lump_sum",
+       "value": {
+        "input": "ssb.lump_sum",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.lump_sum"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "ssb.has_benefits",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage14.sc.loss",
+      "kind": "fixture"
+     }
+    }
+   ],
+   "differ": 1205,
    "handle": "6c",
-   "in_scope": 2197,
-   "in_scope_agree": 1012,
+   "in_scope": 2240,
+   "in_scope_agree": 1035,
    "kinds": {
-    "candidate-unknown": 1166,
+    "candidate-unknown": 1186,
     "value": 19
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-unknown": 503
+     "candidate-unknown": 79
     },
     "incomplete": {
-     "candidate-unknown": 329
+     "candidate-unknown": 760
     },
     "refused": {
-     "candidate-unknown": 334,
+     "candidate-unknown": 347,
      "value": 19
     }
    },
@@ -1301,7 +2412,7 @@
    "project": "f1040.line6c",
    "shown_when": null,
    "sources": {
-    "fixture": 1382,
+    "fixture": 1425,
     "generated": 500,
     "partial": 315
    },
@@ -1346,7 +2457,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "classm.f2441.1.deepseek",
       "kind": "fixture"
@@ -1390,7 +2501,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "classm.f2441.2.deepseek",
       "kind": "fixture"
@@ -1434,7 +2545,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "classm.f2441.3.deepseek",
       "kind": "fixture"
@@ -1478,7 +2589,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "classm.f2441.4.deepseek",
       "kind": "fixture"
@@ -1522,7 +2633,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "classm.f2441.5.deepseek",
       "kind": "fixture"
@@ -1566,7 +2677,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "classm.f2441.6.deepseek",
       "kind": "fixture"
@@ -1832,963 +2943,10 @@
   },
   {
    "absent": 0,
-   "agree": 1236,
+   "agree": 1199,
    "candidate": "f1040.line16",
-   "compared": 2197,
-   "differ": 961,
-   "handle": "16",
-   "in_scope": 1347,
-   "in_scope_agree": 532,
-   "kinds": {
-    "candidate-refuses": 125,
-    "candidate-unknown": 815,
-    "project-refuses": 21
-   },
-   "kinds_by_return": {
-    "completed": {
-     "candidate-refuses": 4,
-     "candidate-unknown": 516
-    },
-    "incomplete": {
-     "candidate-unknown": 223
-    },
-    "refused": {
-     "candidate-refuses": 121,
-     "candidate-unknown": 76,
-     "project-refuses": 21
-    }
-   },
-   "open_at_triage": true,
-   "project": "f1040.line16",
-   "shown_when": null,
-   "sources": {
-    "fixture": 1382,
-    "generated": 500,
-    "partial": 315
-   },
-   "status": "DISAGREE",
-   "triage": "differs",
-   "witnesses": [
-    {
-     "candidate": {
-      "input": "ssb.pub915",
-      "kind": "unknown",
-      "reason": "no input supplied for ssb.pub915"
-     },
-     "candidate_operands": [
-      {
-       "ref": "scope.other_line16",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sa.excluded_income",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_qualified_over_ordinary",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_use_sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_use_qdcg",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_use_regular",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_tax_regular",
-       "value": {
-        "input": "ssb.pub915",
-        "kind": "unknown",
-        "reason": "no input supplied for ssb.pub915"
-       }
-      }
-     ],
-     "instance": "f1040",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 282500,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "scope.other_line16",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.gate.sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.gate.sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.non_sdtw_tax",
-       "value": {
-        "cents": 282500,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f2441.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "ssb.pub915",
-      "kind": "unknown",
-      "reason": "no input supplied for ssb.pub915"
-     },
-     "candidate_operands": [
-      {
-       "ref": "scope.other_line16",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sa.excluded_income",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_qualified_over_ordinary",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_use_sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_use_qdcg",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_use_regular",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_tax_regular",
-       "value": {
-        "input": "ssb.pub915",
-        "kind": "unknown",
-        "reason": "no input supplied for ssb.pub915"
-       }
-      }
-     ],
-     "instance": "f1040",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 594600,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "scope.other_line16",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.gate.sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.gate.sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.non_sdtw_tax",
-       "value": {
-        "cents": 594600,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f2441.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "ssb.pub915",
-      "kind": "unknown",
-      "reason": "no input supplied for ssb.pub915"
-     },
-     "candidate_operands": [
-      {
-       "ref": "scope.other_line16",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sa.excluded_income",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_qualified_over_ordinary",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_use_sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_use_qdcg",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_use_regular",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_tax_regular",
-       "value": {
-        "input": "ssb.pub915",
-        "kind": "unknown",
-        "reason": "no input supplied for ssb.pub915"
-       }
-      }
-     ],
-     "instance": "f1040",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 180500,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "scope.other_line16",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.gate.sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.gate.sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.non_sdtw_tax",
-       "value": {
-        "cents": 180500,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f2441.3.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "ssb.pub915",
-      "kind": "unknown",
-      "reason": "no input supplied for ssb.pub915"
-     },
-     "candidate_operands": [
-      {
-       "ref": "scope.other_line16",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sa.excluded_income",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_qualified_over_ordinary",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_use_sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_use_qdcg",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_use_regular",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_tax_regular",
-       "value": {
-        "input": "ssb.pub915",
-        "kind": "unknown",
-        "reason": "no input supplied for ssb.pub915"
-       }
-      }
-     ],
-     "instance": "f1040",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "scope.other_line16",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.gate.sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.gate.sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.non_sdtw_tax",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f2441.4.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "ssb.pub915",
-      "kind": "unknown",
-      "reason": "no input supplied for ssb.pub915"
-     },
-     "candidate_operands": [
-      {
-       "ref": "scope.other_line16",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sa.excluded_income",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_qualified_over_ordinary",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_use_sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_use_qdcg",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_use_regular",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_tax_regular",
-       "value": {
-        "input": "ssb.pub915",
-        "kind": "unknown",
-        "reason": "no input supplied for ssb.pub915"
-       }
-      }
-     ],
-     "instance": "f1040",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 43800,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "scope.other_line16",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.gate.sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.gate.sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.non_sdtw_tax",
-       "value": {
-        "cents": 43800,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f2441.5.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "ssb.pub915",
-      "kind": "unknown",
-      "reason": "no input supplied for ssb.pub915"
-     },
-     "candidate_operands": [
-      {
-       "ref": "scope.other_line16",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sa.excluded_income",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_qualified_over_ordinary",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_use_sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_use_qdcg",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_use_regular",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_tax_regular",
-       "value": {
-        "input": "ssb.pub915",
-        "kind": "unknown",
-        "reason": "no input supplied for ssb.pub915"
-       }
-      }
-     ],
-     "instance": "f1040",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 222500,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "scope.other_line16",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.gate.sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.gate.sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.non_sdtw_tax",
-       "value": {
-        "cents": 222500,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f2441.6.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": {
-       "doc": "i2441",
-       "locator": "p. 2, Married Persons Filing Separately, \"Generally, married persons must file a joint return to claim the credit\""
-      },
-      "form": "Form 2441 for married filing separately (line A; lines 19 and 21)",
-      "gate": "s3.mfs",
-      "kind": "refusal",
-      "remedy": "A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is outside this tool. Married filing jointly is supported."
-     },
-     "candidate_operands": [
-      {
-       "ref": "scope.other_line16",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sa.excluded_income",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_qualified_over_ordinary",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_use_sdtw",
-       "value": {
-        "cite": {
-         "doc": "i2441",
-         "locator": "p. 2, Married Persons Filing Separately, \"Generally, married persons must file a joint return to claim the credit\""
-        },
-        "form": "Form 2441 for married filing separately (line A; lines 19 and 21)",
-        "gate": "s3.mfs",
-        "kind": "refusal",
-        "remedy": "A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is outside this tool. Married filing jointly is supported."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "f1040",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "scope.other_line16",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.gate.sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.gate.sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.non_sdtw_tax",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.dependent.3.deepseek",
-      "kind": "fixture"
-     }
-    },
+   "compared": 2240,
+   "completed_witnesses": [
     {
      "candidate": {
       "cite": {
@@ -2816,14 +2974,7 @@
        }
       },
       {
-       "ref": "f1040.h_qualified_over_ordinary",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_use_sdtw",
+       "ref": "f1040.h_no_gain_worksheet",
        "value": {
         "cite": {
          "doc": "i2441",
@@ -2926,14 +3077,2170 @@
        }
       },
       {
-       "ref": "f1040.h_qualified_over_ordinary",
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+        },
+        "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+        "gate": "f2441.plans_differ",
+        "kind": "refusal",
+        "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
        "value": {
         "kind": "bool",
         "value": false
        }
       },
       {
-       "ref": "f1040.h_use_sdtw",
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.8.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+      },
+      "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+      "gate": "f2441.plans_differ",
+      "kind": "refusal",
+      "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+        },
+        "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+        "gate": "f2441.plans_differ",
+        "kind": "refusal",
+        "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.8",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 3450517,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 3450517,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8995.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 10400,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 10400,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8995.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "bind amount = f1040.line15",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "bind status = f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "qss"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 2936169,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 2936169,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.ltc.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 845000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 845000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s179.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+      },
+      "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+      "gate": "f2441.plans_differ",
+      "kind": "refusal",
+      "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+        },
+        "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+        "gate": "f2441.plans_differ",
+        "kind": "refusal",
+        "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s3.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 265192,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 265192,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.sc.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.scveh.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+      },
+      "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+      "gate": "f2441.plans_differ",
+      "kind": "refusal",
+      "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+        },
+        "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+        "gate": "f2441.plans_differ",
+        "kind": "refusal",
+        "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f5695.8",
+      "kind": "partial",
+      "withheld": "f1040.line35a"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+      },
+      "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+      "gate": "f2441.plans_differ",
+      "kind": "refusal",
+      "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+        },
+        "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+        "gate": "f2441.plans_differ",
+        "kind": "refusal",
+        "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f5695.8",
+      "kind": "partial",
+      "withheld": "f1040.line36"
+     }
+    }
+   ],
+   "differ": 1041,
+   "handle": "16",
+   "in_scope": 1377,
+   "in_scope_agree": 556,
+   "kinds": {
+    "candidate-refuses": 112,
+    "candidate-unknown": 821,
+    "project-refuses": 108
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-refuses": 6,
+     "candidate-unknown": 88
+    },
+    "incomplete": {
+     "candidate-refuses": 6,
+     "candidate-unknown": 659
+    },
+    "refused": {
+     "candidate-refuses": 100,
+     "candidate-unknown": 74,
+     "project-refuses": 108
+    }
+   },
+   "open_at_triage": true,
+   "project": "f1040.line16",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1425,
+    "generated": 500,
+    "partial": 315
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "input": "ssb.pub915",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.pub915"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "input": "ssb.pub915",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.pub915"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 282500,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 282500,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f2441.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "ssb.pub915",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.pub915"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "input": "ssb.pub915",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.pub915"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 594600,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 594600,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f2441.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "ssb.pub915",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.pub915"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "input": "ssb.pub915",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.pub915"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 180500,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 180500,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f2441.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "ssb.pub915",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.pub915"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "input": "ssb.pub915",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.pub915"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f2441.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "ssb.pub915",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.pub915"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "input": "ssb.pub915",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.pub915"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 43800,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 43800,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f2441.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "ssb.pub915",
+      "kind": "unknown",
+      "reason": "no input supplied for ssb.pub915"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "input": "ssb.pub915",
+        "kind": "unknown",
+        "reason": "no input supplied for ssb.pub915"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 222500,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 222500,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f2441.6.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 2, Married Persons Filing Separately, \"Generally, married persons must file a joint return to claim the credit\""
+      },
+      "form": "Form 2441 for married filing separately (line A; lines 19 and 21)",
+      "gate": "s3.mfs",
+      "kind": "refusal",
+      "remedy": "A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is outside this tool. Married filing jointly is supported."
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 2, Married Persons Filing Separately, \"Generally, married persons must file a joint return to claim the credit\""
+        },
+        "form": "Form 2441 for married filing separately (line A; lines 19 and 21)",
+        "gate": "s3.mfs",
+        "kind": "refusal",
+        "remedy": "A married filing separately return (the credit only when considered unmarried, the exclusion at $2,500) is outside this tool. Married filing jointly is supported."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 2011530,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sdtw.line47",
+       "value": {
+        "cents": 2011530,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 350300,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "bind amount = f1040.line15",
+       "value": {
+        "cents": 3201810,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "bind status = f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 14, Head of Household"
+      },
+      "form": "Head of household filing status",
+      "gate": "household.hoh_fails",
+      "kind": "refusal",
+      "remedy": "Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person."
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 14, Head of Household"
+        },
+        "form": "Head of household filing status",
+        "gate": "household.hoh_fails",
+        "kind": "refusal",
+        "remedy": "Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.7.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+      },
+      "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+      "gate": "f2441.plans_differ",
+      "kind": "refusal",
+      "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+        },
+        "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+        "gate": "f2441.plans_differ",
+        "kind": "refusal",
+        "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.non_sdtw_tax",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s3.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "bind amount = f1040.line15",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "bind status = f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 14, Head of Household"
+      },
+      "form": "Head of household filing status",
+      "gate": "household.hoh_fails",
+      "kind": "refusal",
+      "remedy": "Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person."
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 14, Head of Household"
+        },
+        "form": "Head of household filing status",
+        "gate": "household.hoh_fails",
+        "kind": "refusal",
+        "remedy": "Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8962.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 350300,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "bind amount = f1040.line15",
+       "value": {
+        "cents": 3201810,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "bind status = f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "hoh"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 14, Head of Household"
+      },
+      "form": "Head of household filing status",
+      "gate": "household.hoh_fails",
+      "kind": "refusal",
+      "remedy": "Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person."
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 14, Head of Household"
+        },
+        "form": "Head of household filing status",
+        "gate": "household.hoh_fails",
+        "kind": "refusal",
+        "remedy": "Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8962.6.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+      },
+      "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+      "gate": "f2441.plans_differ",
+      "kind": "refusal",
+      "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
        "value": {
         "cite": {
          "doc": "i2441",
@@ -3036,14 +5343,7 @@
        }
       },
       {
-       "ref": "f1040.h_qualified_over_ordinary",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_use_sdtw",
+       "ref": "f1040.h_no_gain_worksheet",
        "value": {
         "cite": {
          "doc": "i2441",
@@ -3132,14 +5432,7 @@
        }
       },
       {
-       "ref": "f1040.h_qualified_over_ordinary",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_use_sdtw",
+       "ref": "f1040.h_no_gain_worksheet",
        "value": {
         "cite": {
          "doc": "i2441",
@@ -3242,14 +5535,7 @@
        }
       },
       {
-       "ref": "f1040.h_qualified_over_ordinary",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_use_sdtw",
+       "ref": "f1040.h_no_gain_worksheet",
        "value": {
         "cite": {
          "doc": "i2441",
@@ -3327,9 +5613,8 @@
     },
     {
      "candidate": {
-      "input": "f2441.line14",
-      "kind": "unknown",
-      "reason": "no input supplied for f2441.line14"
+      "cents": 895887,
+      "kind": "money"
      },
      "candidate_operands": [
       {
@@ -3347,7 +5632,28 @@
        }
       },
       {
-       "ref": "f1040.h_qualified_over_ordinary",
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
        "value": {
         "kind": "bool",
         "value": false
@@ -3368,7 +5674,104 @@
        }
       },
       {
-       "ref": "f1040.h_use_qdcg",
+       "ref": "f1040.h_no_gain_worksheet",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_use_sdtw",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 22, Social security number, \"You must enter each dependent\u2019s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter \u201cDied\u201d on row (3) of the Dependents section and include a copy of the child\u2019s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\""
+      },
+      "form": "Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3))",
+      "gate": "dependent[dep_b].claimed_no_tin",
+      "kind": "refusal",
+      "remedy": "Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.gate.sdtw",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 22, Social security number, \"You must enter each dependent\u2019s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter \u201cDied\u201d on row (3) of the Dependents section and include a copy of the child\u2019s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\""
+        },
+        "form": "Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3))",
+        "gate": "dependent[dep_b].claimed_no_tin",
+        "kind": "refusal",
+        "remedy": "Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.retirement.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "scope.other_line16",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.excluded_income",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.h_no_gain_worksheet",
        "value": {
         "input": "f2441.line14",
         "kind": "unknown",
@@ -3452,60 +5855,18 @@
        }
       },
       {
-       "ref": "f1040.h_qualified_over_ordinary",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_use_sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_use_qdcg",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_use_regular",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_tax_regular",
+       "ref": "f1040.h_no_gain_worksheet",
        "value": {
         "input": "f2441.line14",
         "kind": "unknown",
         "reason": "no input supplied for f2441.line14"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
        }
       }
      ],
@@ -3514,12 +5875,12 @@
      "project": {
       "cite": {
        "doc": "i1040gi",
-       "locator": "p. 103, \"If you received tips as an employee in more than one occupation for the same employer, only those tips that were received in an occupation on the list ... are considered qualified tips. Do not include tips received in occupations that are not included on this list in line 4a, 4b, or 4c\""
+       "locator": "p. 14, Head of Household"
       },
-      "form": "Qualified tips from an employer where some tips were not qualified tips",
-      "gate": "person[taxpayer].tipjob[emp0].mixed",
+      "form": "Head of household filing status",
+      "gate": "household.hoh_fails",
       "kind": "refusal",
-      "remedy": "Splitting one employer's reported tips between qualified and nonqualified tips is outside this tool."
+      "remedy": "Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person."
      },
      "project_operands": [
       {
@@ -3534,12 +5895,12 @@
        "value": {
         "cite": {
          "doc": "i1040gi",
-         "locator": "p. 103, \"If you received tips as an employee in more than one occupation for the same employer, only those tips that were received in an occupation on the list ... are considered qualified tips. Do not include tips received in occupations that are not included on this list in line 4a, 4b, or 4c\""
+         "locator": "p. 14, Head of Household"
         },
-        "form": "Qualified tips from an employer where some tips were not qualified tips",
-        "gate": "person[taxpayer].tipjob[emp0].mixed",
+        "form": "Head of household filing status",
+        "gate": "household.hoh_fails",
         "kind": "refusal",
-        "remedy": "Splitting one employer's reported tips between qualified and nonqualified tips is outside this tool."
+        "remedy": "Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person."
        }
       },
       {
@@ -3552,511 +5913,7 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "stage12.refuse.tips_mixed",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "f2441.line14",
-      "kind": "unknown",
-      "reason": "no input supplied for f2441.line14"
-     },
-     "candidate_operands": [
-      {
-       "ref": "scope.other_line16",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sa.excluded_income",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_qualified_over_ordinary",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_use_sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_use_qdcg",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_use_regular",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_tax_regular",
-       "value": {
-        "input": "f2441.line14",
-        "kind": "unknown",
-        "reason": "no input supplied for f2441.line14"
-       }
-      }
-     ],
-     "instance": "f1040",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "n-25-69",
-       "locator": "pp. 22\u201325, Section III.B.2, methods (E), (F) and (G)"
-      },
-      "form": "Qualified overtime compensation by a reasonable-method estimate, at an overtime rate other than one and one-half or two times the regular rate, or under a special FLSA overtime rule",
-      "gate": "person[taxpayer].otjob[ot0].refused",
-      "kind": "refusal",
-      "remedy": "Figure the amount by the method that applies to you; this tool covers the employer-reported amount and methods 1 to 4 at time-and-a-half or double time."
-     },
-     "project_operands": [
-      {
-       "ref": "scope.other_line16",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.gate.sdtw",
-       "value": {
-        "cite": {
-         "doc": "n-25-69",
-         "locator": "pp. 22\u201325, Section III.B.2, methods (E), (F) and (G)"
-        },
-        "form": "Qualified overtime compensation by a reasonable-method estimate, at an overtime rate other than one and one-half or two times the regular rate, or under a special FLSA overtime rule",
-        "gate": "person[taxpayer].otjob[ot0].refused",
-        "kind": "refusal",
-        "remedy": "Figure the amount by the method that applies to you; this tool covers the employer-reported amount and methods 1 to 4 at time-and-a-half or double time."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "stage12.refuse.ot_other_method",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "f2441.line14",
-      "kind": "unknown",
-      "reason": "no input supplied for f2441.line14"
-     },
-     "candidate_operands": [
-      {
-       "ref": "scope.other_line16",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sa.excluded_income",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_qualified_over_ordinary",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_use_sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_use_qdcg",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_use_regular",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_tax_regular",
-       "value": {
-        "input": "f2441.line14",
-        "kind": "unknown",
-        "reason": "no input supplied for f2441.line14"
-       }
-      }
-     ],
-     "instance": "f1040",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "n-25-69",
-       "locator": "pp. 22\u201325, Section III.B.2, methods (E), (F) and (G)"
-      },
-      "form": "Qualified overtime compensation by a reasonable-method estimate, at an overtime rate other than one and one-half or two times the regular rate, or under a special FLSA overtime rule",
-      "gate": "person[taxpayer].otjob[ot0].refused",
-      "kind": "refusal",
-      "remedy": "Figure the amount by the method that applies to you; this tool covers the employer-reported amount and methods 1 to 4 at time-and-a-half or double time."
-     },
-     "project_operands": [
-      {
-       "ref": "scope.other_line16",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.gate.sdtw",
-       "value": {
-        "cite": {
-         "doc": "n-25-69",
-         "locator": "pp. 22\u201325, Section III.B.2, methods (E), (F) and (G)"
-        },
-        "form": "Qualified overtime compensation by a reasonable-method estimate, at an overtime rate other than one and one-half or two times the regular rate, or under a special FLSA overtime rule",
-        "gate": "person[taxpayer].otjob[ot0].refused",
-        "kind": "refusal",
-        "remedy": "Figure the amount by the method that applies to you; this tool covers the employer-reported amount and methods 1 to 4 at time-and-a-half or double time."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "stage12.refuse.ot_special_rule",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "f2441.line14",
-      "kind": "unknown",
-      "reason": "no input supplied for f2441.line14"
-     },
-     "candidate_operands": [
-      {
-       "ref": "scope.other_line16",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sa.excluded_income",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_qualified_over_ordinary",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_use_sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_use_qdcg",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_use_regular",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_tax_regular",
-       "value": {
-        "input": "f2441.line14",
-        "kind": "unknown",
-        "reason": "no input supplied for f2441.line14"
-       }
-      }
-     ],
-     "instance": "f1040",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "fr-2025-24154",
-       "locator": "pp. 20\u201322, Proposed \u00a7 1.163-16(d)(2)(iii) and (d)(4)"
-      },
-      "form": "Refinancing of a loan that was itself only partly a qualifying vehicle loan",
-      "gate": "carloan[VIN0].refi_nested",
-      "kind": "refusal",
-      "remedy": "Allocating a refinancing of a partly qualifying loan is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "scope.other_line16",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.gate.sdtw",
-       "value": {
-        "cite": {
-         "doc": "fr-2025-24154",
-         "locator": "pp. 20\u201322, Proposed \u00a7 1.163-16(d)(2)(iii) and (d)(4)"
-        },
-        "form": "Refinancing of a loan that was itself only partly a qualifying vehicle loan",
-        "gate": "carloan[VIN0].refi_nested",
-        "kind": "refusal",
-        "remedy": "Allocating a refinancing of a partly qualifying loan is outside this tool."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "stage12.refuse.car_nested_refinancing",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "f2441.line14",
-      "kind": "unknown",
-      "reason": "no input supplied for f2441.line14"
-     },
-     "candidate_operands": [
-      {
-       "ref": "scope.other_line16",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sa.excluded_income",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_qualified_over_ordinary",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.h_use_sdtw",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_use_qdcg",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_use_regular",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f1040.h_tax_regular",
-       "value": {
-        "input": "f2441.line14",
-        "kind": "unknown",
-        "reason": "no input supplied for f2441.line14"
-       }
-      }
-     ],
-     "instance": "f1040",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 101, Schedule 1-A, Part II, \"If you received cash and charge tips of $20 or more in a calendar month and didn't report all of those tips to your employer, you must file Form 4137\"; p. 104, line 4b"
-      },
-      "form": "Form 4137 (Social Security and Medicare Tax on Unreported Tip Income)",
-      "gate": "s2.other",
-      "kind": "refusal",
-      "remedy": "Tips reported on Form 4137 are outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "scope.other_line16",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.gate.sdtw",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 101, Schedule 1-A, Part II, \"If you received cash and charge tips of $20 or more in a calendar month and didn't report all of those tips to your employer, you must file Form 4137\"; p. 104, line 4b"
-        },
-        "form": "Form 4137 (Social Security and Medicare Tax on Unreported Tip Income)",
-        "gate": "s2.other",
-        "kind": "refusal",
-        "remedy": "Tips reported on Form 4137 are outside this tool."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "stage12.refuse.form4137_one_employer",
+      "id": "classm.f8995.1",
       "kind": "fixture"
      }
     }
@@ -4064,37 +5921,906 @@
   },
   {
    "absent": 0,
-   "agree": 502,
+   "agree": 2240,
+   "candidate": "f1040.line28_box",
+   "compared": 2240,
+   "completed_witnesses": [],
+   "differ": 0,
+   "handle": "28 (box)",
+   "in_scope": 2240,
+   "in_scope_agree": 2240,
+   "kinds": {},
+   "kinds_by_return": {},
+   "open_at_triage": true,
+   "project": "f1040.line28_box",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1425,
+    "generated": 500,
+    "partial": 315
+   },
+   "status": "DISAGREE",
+   "triage": "agrees on sample",
+   "witnesses": []
+  },
+  {
+   "absent": 0,
+   "agree": 580,
    "candidate": "f1040.line29",
-   "compared": 2197,
-   "differ": 1695,
+   "compared": 2240,
+   "completed_witnesses": [
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+      },
+      "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+      "gate": "f2441.plans_differ",
+      "kind": "refusal",
+      "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line8",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+        },
+        "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+        "gate": "f2441.plans_differ",
+        "kind": "refusal",
+        "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s3.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+      },
+      "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+      "gate": "f2441.plans_differ",
+      "kind": "refusal",
+      "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line8",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+        },
+        "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+        "gate": "f2441.plans_differ",
+        "kind": "refusal",
+        "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.8.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+      },
+      "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+      "gate": "f2441.plans_differ",
+      "kind": "refusal",
+      "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line8",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+        },
+        "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+        "gate": "f2441.plans_differ",
+        "kind": "refusal",
+        "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.8",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line8",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8995.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line8",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8995.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line8",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.ltc.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line8",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s179.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+      },
+      "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+      "gate": "f2441.plans_differ",
+      "kind": "refusal",
+      "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line8",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+        },
+        "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+        "gate": "f2441.plans_differ",
+        "kind": "refusal",
+        "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s3.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line8",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.sc.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f2441.line14",
+      "kind": "unknown",
+      "reason": "no input supplied for f2441.line14"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line8",
+       "value": {
+        "input": "f2441.line14",
+        "kind": "unknown",
+        "reason": "no input supplied for f2441.line14"
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.scveh.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+      },
+      "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+      "gate": "f2441.plans_differ",
+      "kind": "refusal",
+      "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line8",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+        },
+        "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+        "gate": "f2441.plans_differ",
+        "kind": "refusal",
+        "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f5695.8",
+      "kind": "partial",
+      "withheld": "f1040.line35a"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+      },
+      "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+      "gate": "f2441.plans_differ",
+      "kind": "refusal",
+      "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8863.line8",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 21, \"Don't enter more than the maximum amount allowed under your dependent care plan\""
+        },
+        "form": "Two or more dependent care plans with different maximums (Form 2441, line 21)",
+        "gate": "f2441.plans_differ",
+        "kind": "refusal",
+        "remedy": "The instructions speak of one plan's maximum; which maximum line 21 takes when your plans allow different amounts is not settled there and is outside this tool."
+       }
+      }
+     ],
+     "instance": "f1040",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8863.eligible",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8863.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f5695.8",
+      "kind": "partial",
+      "withheld": "f1040.line36"
+     }
+    }
+   ],
+   "differ": 1660,
    "handle": "29",
-   "in_scope": 1497,
-   "in_scope_agree": 454,
+   "in_scope": 1641,
+   "in_scope_agree": 541,
    "kinds": {
-    "candidate-refuses": 650,
-    "candidate-unknown": 1043,
-    "project-refuses": 2
+    "candidate-refuses": 559,
+    "candidate-unknown": 1100,
+    "project-refuses": 1
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-refuses": 4,
-     "candidate-unknown": 516
+     "candidate-refuses": 6,
+     "candidate-unknown": 88
     },
     "incomplete": {
-     "candidate-unknown": 376
+     "candidate-refuses": 6,
+     "candidate-unknown": 819
     },
     "refused": {
-     "candidate-refuses": 646,
-     "candidate-unknown": 151,
-     "project-refuses": 2
+     "candidate-refuses": 547,
+     "candidate-unknown": 193,
+     "project-refuses": 1
     }
    },
    "open_at_triage": true,
    "project": "f1040.line29",
    "shown_when": null,
    "sources": {
-    "fixture": 1382,
+    "fixture": 1425,
     "generated": 500,
     "partial": 315
    },
@@ -4160,7 +6886,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "classm.f2441.1.deepseek",
       "kind": "fixture"
@@ -4225,7 +6951,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "classm.f2441.2.deepseek",
       "kind": "fixture"
@@ -4290,7 +7016,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "classm.f2441.3.deepseek",
       "kind": "fixture"
@@ -4355,7 +7081,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "classm.f2441.4.deepseek",
       "kind": "fixture"
@@ -4420,7 +7146,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "classm.f2441.5.deepseek",
       "kind": "fixture"
@@ -4485,7 +7211,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "classm.f2441.6.deepseek",
       "kind": "fixture"
@@ -4991,76 +7717,14 @@
       "id": "stage19.refuse.ban",
       "kind": "fixture"
      }
-    },
-    {
-     "candidate": {
-      "kind": "unknown",
-      "reason": "filing status not supplied for status-keyed parameter"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8863.line8",
-       "value": {
-        "kind": "unknown",
-        "reason": "filing status not supplied for status-keyed parameter"
-       }
-      }
-     ],
-     "instance": "f1040",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040sb",
-       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
-      },
-      "form": "Schedule B special treatment / Form 8815",
-      "gate": "sb.unsupported",
-      "kind": "refusal",
-      "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
-     },
-     "project_operands": [
-      {
-       "ref": "f8863.eligible",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f8863.line8",
-       "value": {
-        "cite": {
-         "doc": "i1040sb",
-         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
-        },
-        "form": "Schedule B special treatment / Form 8815",
-        "gate": "sb.unsupported",
-        "kind": "refusal",
-        "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.dependent.7.deepseek",
-      "kind": "partial",
-      "withheld": "f1040.status"
-     }
     }
    ]
   }
  ],
- "log_sha256_at_triage": "10ded66ecbf4b85a9d42ffc7025e6c6d15ae3bf7a4163c6120d539d3eef1acf4",
+ "log_sha256_at_triage": "0d55c245c0ec7233581d659614053ff00e30306478993a8b41c6deb76ed72e70",
  "policy": "executable-triage-v2",
- "response_sha256": "c38b02000dc56b725f124b80119eefa44d4d4790e0190523debc060746f48427",
+ "response_sha256": "ad566bfcdf4a190e5bd7f2def5bb033d44c76e763c68c242ffd9b1c1c8029dbc",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "evaluated",
- "subject_sha256": "395044be4e50a2485963db6ceeffb2ea4ca2a17a9fcc04e5c0a9c9aa93785ad2"
+ "subject_sha256": "a564ef395ea5e865a0e2ca18fefe42a7f377429d4f9b7fce7870ba17880a513f"
 }

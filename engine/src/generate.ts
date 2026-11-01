@@ -122,12 +122,14 @@ const EARLY_SET = new Set(EARLY_ROOTS);
 // from no arbitrary, so the random stream is the same as without them: alimony, canceled debt and HSA distributions
 // (Schedule 1 lines 2a, 8c, 8f, 19a); the marital answer (joint filers are married; a head of household is married on
 // the household draw); the EIC SSN (the same as the employment-valid SSN); the filer's age under 16; a prior credit
-// disallowance; a community property state; a registered domestic partnership; the qualifying surviving spouse tests
-// (met, so a drawn qss status stays valid).
+// disallowance; a community property state; a registered domestic partnership; a spouse's death in 2025; a marriage
+// ended in 2025 in a community property state; the qualifying surviving spouse tests (met, so a drawn qss status stays
+// valid).
 const FIXED = new Set([
   "s1.alimony", "s1.alimony_received", "s1.alimony_paid", "s1.alimony_unsupported", "s1.cod_any", "s1.cod_amount", "s1.cod_unsupported",
   `${HSA}.line14a`, `${HSA}.rollover`, `${HSA}.medical`, `${HSA}.line17a`, `${HSA}.subject_part`,
-  "household.married", "household.credit_disallowed", "household.community_property", "household.rdp", "household.qss_eligible", "eic.died_2025",
+  "household.married", "household.credit_disallowed", "household.community_property", "household.rdp", "household.spouse_died_2025",
+  "household.cp_married", "household.qss_eligible", "eic.died_2025",
   "person[taxpayer].eic_ssn", "person[taxpayer].under16",
   "clcw.spouse_screen", "clcw.prior_11", "clcw.prior_14", "clcw.prior_sd7", "clcw.prior_sd15", "clcw.prior_sd21",
   "f4952.prior_7", "f8960.prior_2i",
@@ -596,6 +598,8 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   inputs["household.credit_disallowed"] = false;
   inputs["household.community_property"] = false;
   inputs["household.rdp"] = false;
+  inputs["household.spouse_died_2025"] = false;
+  inputs["household.cp_married"] = false;
   inputs["household.qss_eligible"] = true;
   inputs["eic.died_2025"] = false;
   inputs["person[taxpayer].itin_applied"] = false;

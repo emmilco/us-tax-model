@@ -81,7 +81,7 @@ def gen_case(rng, i):
         # Earned income credit questions: an adult aged 25 to 64 living in the United States who is
         # nobody's qualifying child, with no tax-exempt interest.
         "f1040.tax_exempt_interest": 0, "div.box12": 0, "eic.qc_of_another": False, "person[taxpayer].born_before_2001": True, "person[taxpayer].born_after_1960": True, "eic.us_home": True, "household.married": False,
-        "household.credit_disallowed": False, "household.community_property": False, "household.rdp": False, "eic.died_2025": False,
+        "household.credit_disallowed": False, "household.community_property": False, "household.rdp": False, "household.spouse_died_2025": False, "household.cp_married": False, "eic.died_2025": False,
         "person[taxpayer].eic_ssn": True, "person[taxpayer].under16": False,
         "$retirement@person[taxpayer]": [],
         # Form 2441: no care expenses and no dependent care benefits.

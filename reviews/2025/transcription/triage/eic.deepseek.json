@@ -2,36 +2,16 @@
  "bank": null,
  "errors": [
   {
-   "line": "eic.h_qc_conditions",
-   "message": "malformed expression (project schema): data/any/0 must have required property 'op', data/any/0 must have required property 'eq', data/any/0 must NOT have additional properties"
+   "line": "eic.self_employed",
+   "message": "eic.eic.self_employed: collection reference requires sum_over"
   },
   {
-   "line": "eic.h_step34_ok",
-   "message": "malformed expression (project schema): data/any/0 must have required property 'op', data/any/0 must have required property 'eq', data/any/0 must NOT have additional properties"
+   "line": "eic.self_employed",
+   "message": "eic.eic.self_employed: comparison operands have incompatible types"
   },
   {
-   "line": "eic.h_income_below_limit",
-   "message": "malformed expression (project schema): data/any/0 must have required property 'op', data/any/0 must have required property 'eq', data/any/0 must NOT have additional properties"
-  },
-  {
-   "line": "eic.h_earned_below_limit",
-   "message": "malformed expression (project schema): data/any/0 must have required property 'op', data/any/0 must have required property 'eq', data/any/0 must NOT have additional properties"
-  },
-  {
-   "line": "eic.h_wsb_below_limit",
-   "message": "malformed expression (project schema): data/any/0 must have required property 'op', data/any/0 must have required property 'eq', data/any/0 must NOT have additional properties"
-  },
-  {
-   "line": "eic.h_step5_ok",
-   "message": "malformed expression (project schema): data/any/0 must have required property 'op', data/any/0 must have required property 'eq', data/any/0 must NOT have additional properties"
-  },
-  {
-   "line": "eic.h_below_threshold",
-   "message": "malformed expression (project schema): data/any/0 must have required property 'op', data/any/0 must have required property 'eq', data/any/0 must NOT have additional properties"
-  },
-  {
-   "line": "eic.h_qc_conditions",
-   "message": "eic.eic.h_qc_conditions: empty all"
+   "line": "eic.clergy",
+   "message": "eic.eic.clergy: collection reference requires sum_over"
   }
  ],
  "failures": [],
@@ -84,6 +64,69 @@
    "triage": "candidate invalid"
   },
   {
+   "candidate": "eic.step5_line1",
+   "handle": "(Step 5, 1)",
+   "open_at_triage": true,
+   "project": "eic.step5_line1",
+   "shown_when": "eic.reached_step5",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "eic.step5_line2",
+   "handle": "(Step 5, 2)",
+   "open_at_triage": true,
+   "project": "eic.step5_line2",
+   "shown_when": "eic.reached_step5",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "eic.step5_line3",
+   "handle": "(Step 5, 3)",
+   "open_at_triage": true,
+   "project": "eic.step5_line3",
+   "shown_when": "eic.reached_step5",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "eic.step5_line4",
+   "handle": "(Step 5, 4)",
+   "open_at_triage": true,
+   "project": "eic.step5_line4",
+   "shown_when": "eic.reached_step5",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "eic.earned_income",
+   "handle": "(Step 5, 5)",
+   "open_at_triage": true,
+   "project": "eic.earned_income",
+   "shown_when": "eic.reached_step5",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "eic.wsb_4b",
+   "handle": "4b",
+   "open_at_triage": true,
+   "project": "eic.wsb_4b",
+   "shown_when": "eic.show_wsb4b",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "eic.wsb_6",
+   "handle": "6 (eic.wsb_6)",
+   "open_at_triage": true,
+   "project": "eic.wsb_6",
+   "shown_when": "eic.show_wsb6",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
    "candidate": "eic.line1",
    "handle": "1",
    "open_at_triage": true,
@@ -98,6 +141,15 @@
    "open_at_triage": true,
    "project": "eic.line2",
    "shown_when": "eic.eligible",
+   "status": "DISAGREE",
+   "triage": "candidate invalid"
+  },
+  {
+   "candidate": "eic.line3",
+   "handle": "3",
+   "open_at_triage": true,
+   "project": "eic.line3",
+   "shown_when": "eic.show3",
    "status": "DISAGREE",
    "triage": "candidate invalid"
   },
@@ -120,9 +172,9 @@
    "triage": "candidate invalid"
   }
  ],
- "log_sha256_at_triage": "c060ece3f4969630ca4dbe09fd65de6a9a79095521a2fb0cb38478fdd811c33e",
+ "log_sha256_at_triage": "524519c7f3401ee947c8f22ae8c6ba13a6b4ba6afcf78e1b761946c0034c0077",
  "policy": "executable-triage-v2",
- "response_sha256": "3c2545098a03c38e4487aff0762e5cfb297564f4cf7f4b71e3a7e3ef479e0a1e",
+ "response_sha256": "4ccc460059daa7f45477d0dd03b845d2df577d4126e67bfd2ab8f7a737890d74",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "invalid",
  "subject_sha256": "c78b786cc175a0755dd745262684676e0644d5aa9553812515f8653c6b4d6cfd"

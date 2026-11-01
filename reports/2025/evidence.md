@@ -1,6 +1,6 @@
 # Evidence coverage per line
 
-**Scoreboard.** Share of computed lines with at least one outside-family assertion: 554 of 1916 (28.9%). H (human source reading): 0, B (human worked values): 0, second-family M: 435, E: 220.
+**Scoreboard.** Share of computed lines with at least one outside-family assertion: 554 of 1919 (28.9%). H (human source reading): 0, B (human worked values): 0, second-family M: 435, E: 220.
 
 A computed line is one whose atom is not `input`, `param` or `copy`. An outside-family assertion is a signed human source reading (H), a class B fixture (human worked values), a class M fixture whose recorded model is not a Claude model (second-family M), or an engine assertion (E) under the rule below. The sub-counts overlap: a line with several kinds counts once in the share. H checks the encoded rule against IRS text; B and M check worked values. Second-family transcription and render readings are reported separately in second_family.md and do not yet enter this scoreboard. Class A, Claude-family M, C and R do not move it.
 
@@ -444,7 +444,7 @@ Unasserted lines: eic.age_range_count, eic.married_rules, eic.top_limit, eic.bel
 | line | A | B | C | M | H | E | R |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | f1040.status | 1 (example.official) | — | — | — | — | — | 58 |
-| f1040.line1a | — | — | — | 12 | — | UsTaxes: 1400 compared (1400 nonzero), 300 excluded | 26 |
+| f1040.line1a | — | — | — | 12 | — | UsTaxes: 1400 compared (1400 nonzero), 300 excluded | 30 |
 | f1040.line1e | — | — | — | 12 | — | — | 16 |
 | f1040.line1z | — | — | — | 12; via eic.step5_line1: 5 | — | OpenTaxSolver: 1700 compared (1700 nonzero), 0 excluded; UsTaxes: 1400 compared (1400 nonzero), 300 excluded | 31 |
 | f1040.tax_exempt_interest | — | — | — | — | — | — | — |
@@ -470,7 +470,7 @@ Unasserted lines: eic.age_range_count, eic.married_rules, eic.top_limit, eic.bel
 | f1040.line10 | — | — | — | 12 | — | PE: 1640 compared (975 nonzero), 19 excluded; TC: 1370 compared (771 nonzero), 330 excluded; OpenTaxSolver: 1589 compared (955 nonzero), 111 excluded; UsTaxes: 1153 compared (587 nonzero), 547 excluded | 41 |
 | f1040.line11a | — | — | — | 12; via eic.line3 → f1040.line11b: 4; via f1040.line11b: 6; via f2441.line7: 4; via f8863.line3 → f1040.line11b: 4; via f8863.line14 → f1040.line11b: 1 (classm.f8863.2.deepseek); via f8880.line8: 1 (classm.f8880.2.deepseek); via f8960.line13 → sa.agi → f1040.line11b: 2 (classm.f8960.1.deepseek, classm.f8960.2.deepseek); via s8812.line1: 4 | — | UsTaxes: 1153 compared (1153 nonzero), 547 excluded; E via f1040.line11b (PE, TC, OpenTaxSolver, UsTaxes); E via f2441.line7 (OpenTaxSolver) | 164 |
 | f1040.line11b | 8 | — | — | 12 | — | PE: 1640 compared (1640 nonzero), 19 excluded; TC: 1370 compared (1370 nonzero), 330 excluded; OpenTaxSolver: 1589 compared (1589 nonzero), 111 excluded; UsTaxes: 1153 compared (1153 nonzero), 547 excluded | 40 |
-| f1040.line12e | — | — | — | 12 | — | OpenTaxSolver: 1476 compared (1476 nonzero), 224 excluded; UsTaxes: 1057 compared (1057 nonzero), 643 excluded | 73 |
+| f1040.line12e | — | — | — | 12 | — | OpenTaxSolver: 1476 compared (1476 nonzero), 224 excluded; UsTaxes: 1057 compared (1057 nonzero), 643 excluded | 86 |
 | f1040.line13a | — | — | — | 12 | — | PE: 1490 compared (380 nonzero), 139 excluded; TC below rule: 1039 compared (135 nonzero), 643 excluded; OpenTaxSolver: 387 compared (329 nonzero), 130 excluded; UsTaxes below rule: 819 compared (0 nonzero), 881 excluded | 7 |
 | f1040.line13b | — | — | — | 12 | — | PE: 1536 compared (514 nonzero), 143 excluded; TC: 1370 compared (492 nonzero), 330 excluded; OpenTaxSolver: 1437 compared (447 nonzero), 263 excluded; UsTaxes below rule: 819 compared (244 nonzero), 881 excluded | 13 |
 | f1040.line14 | — | — | — | 12 | — | OpenTaxSolver: 1235 compared (1235 nonzero), 465 excluded; UsTaxes: 819 compared (819 nonzero), 881 excluded | 22 |
@@ -1502,7 +1502,12 @@ Unasserted lines: g28.reached, g28.combined
 | household.qss_eligible | — | — | — | — | — | — | — |
 | household.qss_fails | — | — | — | — | — | — | 2 (stage21.pending1.single_claims_qss_refused, stage21.pending1.qss_valid_computes) |
 | household.rdp | — | — | — | — | — | — | — |
+| household.spouse_died_2025 | — | — | — | — | — | — | — |
+| household.widowed_2025 | — | — | — | — | — | — | 4 |
+| household.cp_married | — | — | — | — | — | — | — |
+| household.cp_marriage_ended | — | — | — | — | — | — | 4 |
 | household.rdp_community_property | — | — | — | — | — | — | 1 (stage21.pending2.rdp_community_income_refused) |
+| household.filing_status_conflict | — | — | — | — | — | — | 6 |
 
 Unasserted lines: household.persons, household.taxpayers, household.spouses, household.roster_bad, household.hsa_people, household.hsa_both, household.hsa_split_count, household.hsa_agreed_count, household.work_ssn_count, household.eic_ssn_count, household.under16_count, household.tin_count, household.all_tin, household.id_count, household.ctc_ssn, household.taxpayer_work_ssn_count, household.taxpayer_work_ssn, household.test2_absence_persons
 

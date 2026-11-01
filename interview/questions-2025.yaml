@@ -657,7 +657,7 @@ bank:
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
       do not guess. Married filing separately and unsupported items are refused with citations.
   - input: person.itin_applied
-    order: 2
+    order: 3
     help: Answer true or false. An application by the due date counts for the credit for other dependents only.
   - input: person.work_ssn
     order: 2
@@ -712,6 +712,16 @@ bank:
       refused, since a registered domestic partner in Nevada, Washington or California must generally report half the
       partners' combined community income (Form 8958, Pub. 555), which is outside this tool. Unknown may be null; do not
       guess.
+  - input: household.spouse_died_2025
+    order: 2
+    help: Answer true or false. Asked when your filing status is single or head of household; a Yes is refused, since a
+      person whose spouse died in 2025 is considered married for the whole year and files jointly or separately. Unknown
+      may be null; do not guess.
+  - input: household.cp_married
+    order: 2
+    help: Answer true or false. Asked when you lived in a community property state, are not filing jointly and were not
+      married at the end of 2025; a Yes is refused, since income from the months of the marriage may be community income
+      under state law (Form 8958, Pub. 555), which is outside this tool. Unknown may be null; do not guess.
   - input: household.qss_eligible
     order: 2
     help: Answer true or false. Asked only when your filing status is qualifying surviving spouse; a No refuses the return,

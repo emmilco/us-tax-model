@@ -241,7 +241,7 @@
 - Candidate readings: The section 179 cost elected for the vehicle this year (Form 4562 column (i)), not more than line 9. | The part of that election deducted this year after the business income limit of Form 4562 line 11, the rest being carried over.
 - **Chosen:** The first (scveh.line10 through scveh.s179_line10).
 - Reason: The two differ only when the business income limit cuts the year's section 179 deduction and the vehicle carries part of it. The basis is reduced by the whole amount elected, the carryover included, since Pub. 946 says that on a disposition before the carryover is used "you must add it back to the property's basis" (p. 20); the worksheet then limits the year's depreciation by the same amount. The second reading would let the year's depreciation room grow by an amount that is still deductible later.
-- Status: Agent reading, after Stage 14 (scveh render review), for the owner's review (TASKS.md T-046).
+- Status: Owner accepted, 2026-11-01 (TASKS.md T-046).
 - Cite: [p946] p. 62, Depreciation Worksheet for Passenger Automobiles, line 10; p. 20, Carryover of disallowed deduction (For use in preparing 2025 returns; sha256 07fadfb2)
 
 ## amb.2025.dc_ineligible_providers

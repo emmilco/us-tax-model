@@ -430,31 +430,59 @@ form:
       label: Did you pay over half the cost of keeping up your home for 2025?
       expr:
         op: input
-        source: Did you pay over half the cost of keeping up your home for 2025? Cost of keeping up a home includes expenses such as rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities, and food eaten in the home. It does not include the cost of clothing, education, medical treatment, vacations, life insurance, or transportation, or the value of your services or those of a member of your household. Amounts paid out of funds received in the name of a person who lives in the home, such as their Social Security, count as paid by that person, not you.
+        source: Did you pay over half the cost of keeping up your home for 2025? Cost of keeping up a home includes expenses such as rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities, and food eaten in the home. It does not include the cost of clothing, education, medical treatment, vacations, life insurance, or transportation, or the value of your services or those of a member of your household. Amounts paid out of funds received in the name of a person who lives in the home, such as their Social Security, count as paid by that person, not you. TANF or similar payments you received and used for the home count as paid by you.
       cite:
         doc: i1040gi
-        locator: 'p. 14, Head of Household, Test 2; p. 15, "Keeping up a home. To find out what is included in the cost of keeping up a home, see Pub. 501."; p501 p. 9, Keeping Up a Home, "Costs you include. Include in the cost of keeping up a home expenses such as rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities, and food eaten in the home." p501 p. 9, "Costs you don’t include. Don’t include the cost of clothing, education, medical treatment, vacations, life insurance, or transportation. Also don’t include the value of your services or those of a member of your household." p501 p. 9, Note, "Amounts paid out of funds received in the child’s or qualifying person’s name, such as Social Security, are considered paid by the child, not you."'
+        locator: 'p. 14, Head of Household, Test 2; p. 15, "Keeping up a home. To find out what is included in the cost of keeping up a home, see Pub. 501."; p501 p. 9, Keeping Up a Home, "Costs you include. Include in the cost of keeping up a home expenses such as rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities, and food eaten in the home." p501 p. 9, "Costs you don’t include. Don’t include the cost of clothing, education, medical treatment, vacations, life insurance, or transportation. Also don’t include the value of your services or those of a member of your household." p501 p. 9, Note, "Amounts paid out of funds received in the child’s or qualifying person’s name, such as Social Security, are considered paid by the child, not you."; p501 p. 9, Note, "if you received Temporary Assistance to Needy Families (TANF) payments or other similar payments and used the payment to support another person, those payments are considered support you provided for that person"'
     - id: household.unmarried
       printed: (helper)
       type: Bool
       label: Were you unmarried, or considered unmarried under the head of household rules, at the end of 2025?
       expr:
         op: input
-        source: Were you unmarried, or considered unmarried under the head of household rules, at the end of 2025?
+        source: "Were you unmarried at the end of 2025, or considered unmarried for head of household? You are considered
+          unmarried if any of these applies (if your spouse died in 2025, you are considered married for the whole year:
+          answer No). 1. At the end of 2025 you were legally separated under your state's law by a
+          decree of divorce or separate maintenance (if your divorce wasn't final at the end of 2025, an interlocutory
+          decree, you were married). 2. You are married but lived apart from your spouse for the last 6 months of 2025,
+          and all of these apply: you file a separate return from your spouse; you paid over half the cost of keeping up
+          your home for 2025; your home was the main home of your child, stepchild or foster child for more than half of
+          2025 (temporary absences by you or the child for special circumstances count as time lived in the home; a child
+          born or who died in 2025 meets this if the child lived with you for more than half the part of the year the
+          child was alive; a child adopted, lawfully placed with you for legal adoption or placed as an eligible foster
+          child in 2025 meets it if your main home was the child's main home for more than half the time since); and you
+          can claim this child as your dependent, or could except that the child's other parent can claim the child under
+          the rule for children of divorced or separated parents. Your spouse counts as living in your home
+          during a temporary absence for special circumstances, such as business, medical care, school or military
+          service, if it was reasonable to assume your spouse would return and you kept up the home during the absence.
+          3. Your spouse was a nonresident alien at any time during 2025 and you did not elect to treat your spouse as a
+          resident alien."
       cite:
         doc: i1040gi
-        locator: p. 14, Head of Household, "You are considered unmarried for this purpose if any of the following applies"
+        locator: 'p. 14, Head of Household, "You are considered unmarried for this purpose if any of the following applies" through "the election to treat the alien spouse as a resident alien is not made"; p. 15, Married persons who live apart, "Even if you weren’t divorced or legally separated at the end of 2025, you are considered unmarried if all of the following apply" through "under the rule for Children of divorced or separated parents"; p. 14, Exception to time lived with you, "Temporary absences by you or the other person for special circumstances"; p. 15, Exception to time lived with you, "If the person is your qualifying child, the child must have lived with you for more than half the part of the year the child was alive" through "for more than half the time since the person was adopted or placed with you in 2025"; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."; p501 p. 8, Considered Unmarried, "Your spouse is considered to live in your home even if your spouse is temporarily absent due to special circumstances. See Temporary absences, later."; p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."'
     - id: household.married
       printed: (helper)
       type: Bool
       label: Were you married at the end of 2025?
       expr:
         op: input
-        source: Were you married at the end of 2025 (including married but considered unmarried for head of household
-          status)?
+        source: >-
+          Were you married at the end of 2025 (including married but considered unmarried for head of household
+          status)? Use the marriage recognized under the law of the state or territory where it was entered into;
+          a marriage entered into under foreign or American Indian tribal law counts if at least one U.S. state or
+          territory would recognize it as a marriage. Include a common law marriage recognized in the state where
+          you now live or where it began. Living apart does not end a marriage; an interlocutory (not final) divorce
+          decree still means married. Answer No if, by December 31, you were divorced under a final decree, legally
+          separated under a decree of divorce or separate maintenance, or had a court decree of annulment holding
+          that no valid marriage ever existed. A registered domestic partnership, civil union or similar relationship
+          not denominated as a marriage is not a marriage for federal tax purposes. This question asks whether you
+          were married at year end; the separate filing-status rules for a spouse who died during 2025 are addressed
+          separately. When choosing your filing status, also note: if you divorced solely to file as unmarried,
+          intending at the time to remarry each other in the next tax year, and actually do so, you must file as
+          married in both years.
       cite:
         doc: i1040gi
-        locator: 'p. 41, Step 3, question 3, and Step 4, question 1, "Are you a married taxpayer whose filing status is married filing separately or head of household?"; i8889 p. 4, Line 3, rule 6, "If, at the end of 2025, you were age 55 or older and unmarried or married with self-only HDHP coverage for the entire year"'
+        locator: 'p. 41, Step 3, question 3, and Step 4, question 1, "Are you a married taxpayer whose filing status is married filing separately or head of household?"; i8889 p. 4, Line 3, rule 6, "If, at the end of 2025, you were age 55 or older and unmarried or married with self-only HDHP coverage for the entire year"; p501 p. 6, Marital Status, "State law governs whether you are married or legally separated under a divorce or separate maintenance decree."; p501 p. 6, Definition of marriage, "Individuals who have entered into a registered domestic partnership, civil union, or other similar relationship"; p501 p. 6, Considered married, "You are living together in a common law marriage recognized in the state where you now live or in the state where the common law marriage began."; p501 p. 6, Divorce and remarriage, "you and your spouse must file as married individuals in both years."; p501 p. 6, Annulled marriages, "you are considered unmarried even if you filed joint returns for earlier years."'
     - id: household.community_property
       printed: (helper)
       type: Bool
@@ -688,12 +716,12 @@ form:
           juvenile facility, as time lived in the home, but only an absence from which it was reasonable to assume the
           absent person would return and during which you kept up the home; a child born or who died in 2025, or adopted or lawfully placed
           with you for legal adoption in 2025, lived with you all year if your home was the child's home for the entire
-          time the child was alive, or since the adoption or placement. 4. You paid over half the cost of keeping up your
-          home (rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities and food eaten in the home; not clothing, education, medical treatment, vacations, life insurance, transportation or anyone’s services; amounts paid from a household member’s own funds, such as Social Security, count as paid by them). 5. You could have filed a joint return with your spouse the year your spouse died, even if you didn't
+          time the child was alive, or since the adoption or placement; if the child did not live with you all of 2025 because the child was presumed by law enforcement authorities to have been kidnapped by someone who isn't a member of your family or the child's family, answer No (the kidnapped-child rule of Pub. 501 is outside this tool). 4. You paid over half the cost of keeping up your
+          home (rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities and food eaten in the home; not clothing, education, medical treatment, vacations, life insurance, transportation, or the value of your own or a household member’s services; amounts paid from a household member’s own funds, such as Social Security, count as paid by them; TANF or similar payments you received and used for the home count as paid by you). 5. You could have filed a joint return with your spouse the year your spouse died, even if you didn't
           actually do so."
       cite:
         doc: i1040gi
-        locator: 'p. 15, Qualifying Surviving Spouse, "You can check the “Qualifying surviving spouse” box in the Filing Status section on page 1 of Form 1040 or 1040-SR and use joint return tax rates for 2025 if all of the following apply. 1. Your spouse died in 2023 or 2024 and you didn’t remarry before the end of 2025. 2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent except that, for 2025: a. The child had gross income of $5,200 or more, b. The child filed a joint return, or c. You could be claimed as a dependent on someone else’s return." and "3. This child lived in your home for all of 2025. If the child didn’t live with you for the required time, see Exception to time lived with you, later. 4. You paid over half the cost of keeping up your home. 5. You could have filed a joint return with your spouse the year your spouse died, even if you didn’t actually do so."; "If your spouse died in 2025, you can''t file as qualifying surviving spouse"; "An adopted child is always treated as your own child. An adopted child includes a child lawfully placed with you for legal adoption"; Exception to time lived with you, "Temporary absences by you or the child for special circumstances, such as school, vacation, business, medical care, military service, or detention in a juvenile facility, count as time lived in the home" and "A child is considered to have lived with you for all of 2025 if the child was born or died in 2025 and your home was the child’s home for the entire time the child was alive"; p501 p. 9, Note, "Amounts paid out of funds received in the child’s or qualifying person’s name, such as Social Security, are considered paid by the child, not you."; p501 p. 11, Qualifying Surviving Spouse, "4. This child lived in your home all year, except for temporary absences. See Temporary absences, earlier, under Head of Household."; p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."'
+        locator: 'p. 15, Qualifying Surviving Spouse, "You can check the “Qualifying surviving spouse” box in the Filing Status section on page 1 of Form 1040 or 1040-SR and use joint return tax rates for 2025 if all of the following apply. 1. Your spouse died in 2023 or 2024 and you didn’t remarry before the end of 2025. 2. You have a child or stepchild (not a foster child) whom you can claim as a dependent or could claim as a dependent except that, for 2025: a. The child had gross income of $5,200 or more, b. The child filed a joint return, or c. You could be claimed as a dependent on someone else’s return." and "3. This child lived in your home for all of 2025. If the child didn’t live with you for the required time, see Exception to time lived with you, later. 4. You paid over half the cost of keeping up your home. 5. You could have filed a joint return with your spouse the year your spouse died, even if you didn’t actually do so."; "If your spouse died in 2025, you can''t file as qualifying surviving spouse"; "An adopted child is always treated as your own child. An adopted child includes a child lawfully placed with you for legal adoption"; Exception to time lived with you, "Temporary absences by you or the child for special circumstances, such as school, vacation, business, medical care, military service, or detention in a juvenile facility, count as time lived in the home" and "A child is considered to have lived with you for all of 2025 if the child was born or died in 2025 and your home was the child’s home for the entire time the child was alive"; p501 p. 9, Note, "Amounts paid out of funds received in the child’s or qualifying person’s name, such as Social Security, are considered paid by the child, not you."; p501 p. 11, Qualifying Surviving Spouse, "4. This child lived in your home all year, except for temporary absences. See Temporary absences, earlier, under Head of Household."; p501 p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."; p501 p. 9, "Also don’t include the value of your services or those of a member of your household."; p501 p. 9, Note, "if you received Temporary Assistance to Needy Families (TANF) payments or other similar payments and used the payment to support another person, those payments are considered support you provided for that person"; p501 p. 11, Kidnapped child, "You may be eligible to file as a qualifying surviving spouse even if the child who qualifies you for this filing status has been kidnapped."'
     - id: household.qss_fails
       printed: (gate)
       type: Bool
@@ -722,6 +750,79 @@ form:
       cite:
         doc: i1040gi
         locator: 'p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner"'
+    - id: household.spouse_died_2025
+      printed: (helper)
+      type: Bool
+      label: Did your spouse die in 2025?
+      expr:
+        op: input
+        source: Did your spouse die in 2025? (Asked when your filing status is single or head of household, or when filing jointly although not married at the end of 2025.)
+      cite:
+        doc: p501
+        locator: p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."
+    - id: household.widowed_2025
+      printed: (gate)
+      type: Bool
+      label: Filing as single or head of household although your spouse died in 2025
+      expr:
+        op: test
+        all:
+          - op: test
+            any:
+              - op: test
+                eq:
+                  - f1040.status
+                  - const: single
+              - op: test
+                eq:
+                  - f1040.status
+                  - const: hoh
+          - op: test
+            eq:
+              - household.spouse_died_2025
+              - const: true
+      cite:
+        doc: i1040gi
+        locator: 'p. 13, Single, "You were widowed before January 1, 2025, and didn’t remarry before the end of 2025"; p. 13, Married Filing Jointly, "Your spouse died in 2025 and you didn’t remarry in 2025."; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."'
+    - id: household.cp_married
+      printed: (helper)
+      type: Bool
+      label: Married at any time in 2025 while living in a community property state, though not married at the end of 2025
+      expr:
+        op: input
+        source: Were you married at any time during 2025, before a divorce or legal separation, while you lived in a
+          community property state (Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas, Washington or
+          Wisconsin)? (Asked when you lived in a community property state in 2025, are not filing jointly and were not
+          married at the end of 2025.)
+      cite:
+        doc: i1040gi
+        locator: 'p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555."'
+    - id: household.cp_marriage_ended
+      printed: (gate)
+      type: Bool
+      label: Not filing jointly, and married for part of 2025 while living in a community property state
+      expr:
+        op: test
+        all:
+          - op: test
+            ne:
+              - f1040.status
+              - const: mfj
+          - op: test
+            eq:
+              - household.community_property
+              - const: true
+          - op: test
+            eq:
+              - household.married
+              - const: false
+          - op: test
+            eq:
+              - household.cp_married
+              - const: true
+      cite:
+        doc: i1040gi
+        locator: 'p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555."'
     - id: household.rdp_community_property
       printed: (gate)
       type: Bool
@@ -745,3 +846,27 @@ form:
       cite:
         doc: i1040gi
         locator: 'p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555"'
+    - id: household.filing_status_conflict
+      printed: (gate)
+      type: Bool
+      label: The filing status conflicts with the marriage facts entered
+      expr:
+        op: test
+        any:
+          - op: test
+            all:
+              - op: test
+                eq: [f1040.status, {const: single}]
+              - op: test
+                eq: [household.married, {const: true}]
+          - op: test
+            all:
+              - op: test
+                eq: [f1040.status, {const: mfj}]
+              - op: test
+                eq: [household.married, {const: false}]
+              - op: test
+                eq: [household.spouse_died_2025, {const: false}]
+      cite:
+        doc: i1040gi
+        locator: 'p. 13, Single, "But if, at the end of 2025, your divorce wasn’t final (an interlocutory decree), you are considered married and can’t check the box."; p. 13, Married Filing Jointly, "You were married at the end of 2025"; p. 13, "Your spouse died in 2025 and you didn’t remarry in 2025."'

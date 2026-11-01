@@ -63,6 +63,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$f1095a": []
       },
       "expect": {
@@ -142,6 +144,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$f1095a": []
       },
       "expect": {
@@ -221,6 +225,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$f1095a": []
       },
       "expect": {
@@ -300,6 +306,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$f1095a": []
       },
       "expect": {
@@ -379,6 +387,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$f1095a": []
       },
       "expect": {
@@ -458,6 +468,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$f1095a": []
       },
       "expect": {
@@ -537,6 +549,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$f1095a": []
       },
       "expect": {
@@ -612,6 +626,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$f1095a": []
       },
       "expect": {
@@ -693,6 +709,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$f1095a": []
       },
       "expect": {
@@ -771,6 +789,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$f1095a": []
       },
       "expect": {
@@ -880,6 +900,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$f1095a": []
       },
       "expect": {
@@ -986,6 +1008,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$f1095a": []
       },
       "expect": {
@@ -1056,6 +1080,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$f1095a": []
       },
       "expect": {
@@ -1138,6 +1164,8 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$f1095a": []
       },
       "expect": {
@@ -1208,6 +1236,8 @@
         "household.married": true,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$f1095a": []
       },
       "expect": {
@@ -1305,6 +1335,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$f1095a": []
       },
       "expect": {
@@ -1411,6 +1443,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$f1095a": []
       },
       "expect": {
@@ -1491,6 +1525,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$f1095a": []
       },
       "expect": {
@@ -1570,6 +1606,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$f1095a": []
       },
       "expect": {
@@ -1657,6 +1695,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$f1095a": []
       },
       "expect": {
@@ -1738,6 +1778,8 @@
         "household.married": false,
         "household.credit_disallowed": false,
         "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
         "$f1095a": []
       },
       "expect": {

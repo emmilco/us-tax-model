@@ -1,5 +1,10 @@
 # Plan revision — owner amendment, 2026-10-26
 
+**Execution-order update, 2026-11-01:** the owner-approved
+[temporary backlog plan](2026-11-01_backlog_plan.md) now controls sequencing, with coverage expansion
+last. This document retains its validation/evidence requirements and historical decisions except
+where a later owner decision supersedes them.
+
 This amendment re-sequences the remaining integrity work in `2026-10-22_integrity_plan.md` (as
 amended by `2026-10-24_validation_policy.md`) and fixes the gate for resuming coverage. It does not
 change the evidence definitions, the scoreboard rule, the noise floor, the provenance rules or any

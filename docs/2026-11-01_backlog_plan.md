@@ -1,0 +1,189 @@
+# Temporary backlog plan — 2026-11-01
+
+**Status: active. Owner-approved sequence, recorded 2026-11-01. Delete this document when the retirement checklist below is satisfied.**
+
+## Authority and purpose
+
+Clear the existing hardening backlog systematically, in bounded packages grouped by their shared review footprint. Coverage expansion is the lowest priority. This plan supersedes earlier execution orders in handoffs, the 2026-10-26 plan revision, and the spec; it does not supersede validation requirements, source-evidence rules, existing ambiguity decisions, or owner verdicts.
+
+`../TASKS.md` remains the authoritative task register; `../TASKS-DONE.md` holds completed and explicitly closed items. This document owns package order, dependencies, and program progress. It is temporary coordination material, not a second permanent backlog. Never mark a task done solely because a package row says done.
+
+Backlog closure means each item is fixed, explicitly accepted with a reason, or assigned a concrete external trigger. It does not require implementing every proposed refactor. Waiting on another package is an internal dependency, not an external trigger that permits retirement.
+
+## Start here
+
+- **P0 — household closure is closed** (2026-11-01, household closure commit; evidence in the closure section below). T-114–117 are done and BUG-0272–0286 are recorded.
+- Current active package: **P1 verification integrity**, with the early **T-102 reporting correction** alongside it. Then **P2 bounded review preparation**, then **P3 coordinated form passes**.
+- Preserve the uncommitted household work and existing review receipts. This planning session changed no implementation and ran no build or review suite.
+- The latest household implementation notes are in `../HANDOFF-NEXT-SESSION.md`, under the 2026-11-01 household handoff. Older reported test results are historical evidence, not a green result for the current tree.
+
+## Package tracker
+
+Update status, next action, and closure evidence as work proceeds. Use ready, active, blocked (name the dependency), done (cite commit/evidence), or accepted (cite decision). Each package may contain several small, independently validated commits.
+
+| Package | Status / dependency | Scope | Exit condition / closure evidence |
+| --- | --- | --- | --- |
+| P0 Household closure | Done 2026-11-01 (household closure commit) | T-114–117; bug entries for the introduced corrections and new gates; source-predicted regression fixtures; gate placement; round-two reviews | Required reviews adjudicated (114 current rulings, 0 open); all introduced defects and medium/high findings resolved; exact tested tree committed. Evidence: closure section below. |
+| P1 Verification integrity | Ready for investigation; integrate separately from P0 | Reproduce and resolve the differential reader, memo aliases, green-history update race, push-guard scope, renderer markers, mutation operand omissions; T-096 | Each issue fixed with appropriate regression evidence or explicitly disposed of; full required checks pass on each committed candidate. Evidence: pending. |
+| P2 Review preparation | After necessary P1 repairs; do not delay urgent tax fixes | T-150; T-139–140, T-142–144, T-146–148; investigate the handoff's reduced completed-return triage sample | Review inputs usable; mutation-critical regressions survive regeneration; interfaces explicit; printed-only mode ready before single-document Class M reruns. Evidence: pending. |
+| P3 Existing behavior and form debt | After relevant P2 dependencies; batches below | T-104–113, T-118–121, T-123–134, T-136–137, T-141, T-145; applicable T-094, T-057, T-095, T-101 | Each form batch meets the closure procedure; every remaining form scheduled for a pass. Evidence: pending. |
+| P4 Evidence and reporting | Small reporting corrections can run early; final closure after P3 | Remaining T-094/T-057; T-006/T-095; T-098–100; T-099 and documentation portion of T-012; reconcile older integrity obligations | Claims supported or narrowed; required review gaps resolved; remaining exceptions explicitly dispositioned. Evidence: pending. |
+| P5 Bounded maintenance | After higher-priority work; pull forward only a demonstrated dependency | Selected audit improvements to helpers/parsers, generators, Lean batching, fixture formatting, extraction, and year handling | Concrete maintenance failure or measured benefit addressed; remaining design proposals explicitly accepted or given real external triggers. Evidence: pending. |
+| P6 Coverage expansion | Deferred until this finite hardening program retires | T-151 Schedule E; T-002/003/005; remaining scope additions in T-012 | Outside this temporary program. Resume from the permanent task register after retirement. |
+
+### Priority exceptions and limits
+
+- **T-102 is early reporting work**, alongside closing P0/P1: correct the dependent-filer coverage estimate. Reporting accuracy is not coverage expansion.
+- Known amount-affecting defects do not wait behind a long tooling project. T-118 and T-134 deserve early attention under the existing medium/high rule. Tooling precedes such fixes only where required to validate them.
+- Fix medium/high findings promptly and re-review; fix every regression introduced by uncommitted work, regardless of severity. Batch older lows with their owning forms.
+- P2 is bounded. T-150 addresses recorded sibling/input-ripple failures; it is not a general dependency-platform rewrite. T-143 needs a concrete failing candidate and explicit treatment of invalid dependencies before partial execution is trusted.
+- Preserve the review-tool freeze's requirement for a concrete failure before changing policy/checker versions. Do not trigger a global receipt refresh merely for architectural tidiness.
+- T-101 corrections within already supported situations are maintenance, even if measured coverage rises.
+- Final-year adoption is maintenance of the intended filing year, not expansion. Prepare year handling before its external trigger arrives.
+
+## P3 form-batch tracker
+
+Before editing a batch, identify its full review footprint, relevant baseline entries, consumers, ambiguity links, and existing lows. Coordinate shared person/dependent changes so the same interfaces are not repeatedly reopened. The rows describe coordination groups, not a requirement for one giant commit.
+
+| Batch | Status | Tasks / footprint | Closure evidence |
+| --- | --- | --- | --- |
+| F1 Dependent and education eligibility | Pending | T-104–113; include the person-side T-113 change and related education/household consumers | Pending |
+| F2 Person, retirement, dependent care | Pending; coordinate with F1 | T-118–121, T-123, T-127–129; person, retirement, Form 2441, affected scope questions | Pending |
+| F3 Premium tax credit and energy credits | Pending; T-134 may be expedited | T-134; T-132 and T-145 together; relevant generator and partial-input cases | Pending |
+| F4 Income, investments, deductions | Pending | T-124–126, T-130–131, T-133, T-136–137, T-141 | Pending |
+| F5 Remaining forms | Pending inventory | Remaining T-094 baselines and review migrations, ordered by risk and shared dependencies | Pending |
+
+Apply T-101 gate by gate within its owning batch. Carry T-057's ten legacy render reviews and T-095's ambiguity links with the affected forms; use P4 for any residue.
+
+**Approved change to the former opportunistic burn-down:** schedule every remaining form for a pass. Keep the existing line-level invalidation rules, but do not leave T-094 indefinitely waiting for a form to change accidentally. At batch closure, no baseline entry in its agreed scope remains unexamined. A disposition may be defect, justified exception, duplicate, obsolete entry, or explicit follow-up task; it is not automatically a bug.
+
+## Intake and T-152 disposition work
+
+- [ ] Reconcile `TASKS.md`, completed tasks, older integrity plans, the current handoff, and audit claims into one task inventory. Check blind whole-return work, product-surface work, completeness definitions, and prevalence work against artifacts before declaring them open or done.
+- [ ] For each actionable task, record package, priority, dependencies, exit condition, and disposition in the register or its linked detail. Keep existing IDs. Split a bundle only when its pieces have different dependencies or exit conditions.
+- [ ] Give every audit subclaim a disposition and a task ID where action remains. Do not mechanically create 37 implementation tasks: the audit's grouping is inconsistent.
+- [ ] Map every remaining form into F1–F5, with its baseline/review inventory. Initialize the progress measures below from current artifacts.
+- [ ] Record accepted design tradeoffs with their reason. A speculative redesign requires a bounded investigation, concrete benefit, and migration cost; preserve independent evaluators.
+
+### Audit investigation carry-forward
+
+Three Luna agents inspected the audit's sections on 2026-11-01; the parent reviewed their findings. This was source inspection and read-only counting/JSON probing, not runtime reproduction or a full check run. The table preserves investigation leads and corrections, not new bug certifications. Recheck against current code when creating tasks; record detailed evidence in the permanent task/bug records before retiring this document.
+
+| Audit sections | Carry-forward assessment | Destination |
+| --- | --- | --- |
+| 1.1 | Memo aliases supported by TS/Lean source and export paths; tax-value/performance impact not established | P1 |
+| 1.2; 2.1 | Missing `(screen)` renderer marker; 20 saved prose lines contain `column (screen)`, not the headings claimed. Different helper consumers may have different semantics | P1 focused correction; P5 any broader consolidation |
+| 1.3 | 56 step calls, 23 without argument forwarding in the inspected script; only some are year-aware. Reproduce named year-sensitive cases | P1 if needed for current checks; otherwise year preparation/P5 |
+| 1.4; 2.2 | Operand traversal omissions supported; mutation-score effect unmeasured. Other AST walkers have differing responsibilities | P1 mutation coverage; P5 shared visitor proposal |
+| 1.5 | `differentialClassC` assumes `.values` on existing investigation-array JSON; fixture coverage calls it. Failure path inspected, not run | P1 |
+| 1.6 | Tip-only push check differs from its comment; unlocked green-history update has a separate lost-update risk. BUG-0268's build/read race does not resolve it. Snapshot Git objects alone are not a correctness defect | P1; dispose of housekeeping separately |
+| 1.7; 4.3–4.4 | Direct PTC text reads bypass archive-reader regex enforcement; hardcoded year/page assumptions and fragile parsing patterns exist, but resulting corruption not demonstrated | Extraction/year package; prioritize demonstrated failures |
+| 2.3–2.5 | Repeated key regexes and import-time year state exist; duplicate atom sets exist, but unsupported vocabulary need not be obsolete | P5; accept intentional constraints where justified |
+| 2.6–2.8 | Generator coupling, form-specific mutation equivalence logic, and early-stage workflows exist; their existence alone does not establish incorrect behavior | P2 specific generator defects; P5 remaining proposals |
+| 3.1–3.3 | Raw JSON evaluation and inline arithmetic exist. Weak evaluator theorem scope is already documented; no wrong valid-data calculation established. Missing monotonicity lemmas overlap T-100 | P4 T-100/claim accuracy; P5 robustness/design |
+| 3.4 | Audit's operand examples are materially inaccurate: several cited inline operands already work in Lean. Per-case subprocess spawning is real; inspected fixture/generator counts imply 2,011 cases, not saved 1,994 | Correct T-152 disposition; P5 measured batching benefit |
+| 4.1–4.2 | Multiple specialized renderers, models, parsers, loaders exist; they are not all interchangeable duplicates. `UnroundedModel` is specialized comparison tooling | P5 only with demonstrated overlap/benefit |
+| 4.5 | Blanket zero-self-tests claim false: UsTaxes has a scoped self-test. Listed LOC subtotals wrong; inspected eleven files total 5,051 lines. Integration evidence differs from unit coverage | P2/P5 targeted testing gaps; correct audit disposition |
+| 5.1–5.3 | Large forms, parallel education blocks, schema constraints, monthly repetition and generic interview help exist. Whole-file lengths are not a count of monthly boilerplate | Owning form pass for wording; P5 bounded architecture proposals |
+| 5.4 | Input ripple is not universal. Fixture JSON round-trips semantically, though formatting changes. Unasked contradictory answers do not by themselves prove an invalid evaluated return | P2 fixture/generator cases; P5 formatting |
+| 6.1 | Conflicting entrypoints/spec claims; 91 ambiguity entries with 12 unlinked were recounted | P4; update entrypoints immediately when needed |
+| 6.2 | Recounted 736 baseline entries, 11 citation exceptions, 27 PDF exceptions. Not 736 certified defects. Screen table's 70 is `covered` findings, not all rulings. 78/149 pending is a saved report figure, not recomputed eligibility | P3/P4; initialize current metrics before relying on totals |
+| 7 | 37/12/25 split not a reliable atomic issue count; T-152 is umbrella tracking and several task mappings need correction | Intake; close T-152 only after dispositions and task mapping |
+
+## Conditional work
+
+Waiting items stay in the permanent register with explicit triggers and do not keep this temporary tracker alive indefinitely.
+
+| Work | Trigger / handling |
+| --- | --- |
+| T-011 final TY2026 adoption | Required final documents available; prepare year forwarding and year-specific tooling beforehand. Check availability when this work is scheduled; no availability claim is made here |
+| T-034 refreshed prevalence estimates | Suitable new data available; distinguish data waiting from methodological work that can be done now |
+| T-097 platform requirements and distribution/legal questions in T-012 | Before outside reproduction/distribution; explicitly document the supported platform if portability is not implemented |
+| T-040 and related extraction findings | Scheduled extraction-maintenance package in P5, or earlier if needed for a current source check. This is internal work, not an indefinite external wait |
+
+Broad proposals such as a typed Lean AST, a month-indexed schema, a Date type, person-form decomposition, or wholesale year-context redesign need bounded investigations. At program close they must be implemented, explicitly accepted as tradeoffs, or genuinely externally waiting; simply moving them to another unprioritized list is not closure.
+
+## Closure procedure for each package
+
+1. Inspect current artifacts; confirm the issue and identify sibling lines, consumers, fixtures and review footprint.
+2. State expected behavior and predict regression results from the governing source before recording evaluator output.
+3. Implement the bounded batch, including applicable known lows and baseline work.
+4. Run targeted checks first; resolve mechanical failures before expensive reviews.
+5. Review the final candidate: preserve/archive prior receipts, rerun affected required reviews, triage and adjudicate. Preserve original owner verdicts and ambiguity choices.
+6. Resolve all introduced defects and medium/high findings under the standing rules. Run the required full suite on the candidate, commit the exact tested tree through the guard, and update task/package dispositions with evidence. A later edit invalidates any claim that the earlier green result covers it.
+
+## Work in progress and progress measures
+
+One active integration package at a time. Parallel read-only investigations or isolated changes may proceed where they do not share inputs, generators, or review receipts. Only one owner controls a shared input change and its ripple. Finish and commit a package before opening another shared-schema/evaluator change.
+
+Update these measures at package closure; label snapshots with date/tree and do not substitute historic reports for current results:
+
+| Measure | Current baseline | Latest / evidence |
+| --- | --- | --- |
+| Confirmed correctness defects by severity | Not yet reconciled | Pending intake |
+| Packages ready / active / blocked / closed | P1 active, T-102 alongside; P0 closed | Closure snapshot, 2026-11-01 |
+| Baseline entries dispositioned / newly added | Historical inspection counted 736 entries; current scoped inventory pending | Pending intake |
+| Forms with current, adjudicated required reviews | Not freshly measured | Pending inventory |
+| Completed / partial / refused scenarios exercised in triage | Reduced completed sample reported by household handoff; cause unverified | P2 investigation |
+| Accepted tradeoffs / external waits | Decisions not yet consolidated | Pending intake |
+
+Fixture counts, model-call counts, and deleted task rows alone do not establish progress.
+
+## Retirement: dispose of this document
+
+- [ ] P0–P5 and early T-102 are closed with evidence or explicit accepted dispositions; no internally blocked work remains hidden here.
+- [ ] T-152's subclaims and older-plan obligations have permanent task/closure records; all remaining forms received their scheduled disposition.
+- [ ] External waits retain their exact triggers in `TASKS.md`; coverage expansion remains there in its agreed order.
+- [ ] Move durable decisions and still-needed evidence into the relevant spec, tool docs, task records, or bug inventory. Do not preserve this entire tracker as another historical handoff.
+- [ ] Replace its links in `TASKS.md`, `HANDOFF-NEXT-SESSION.md`, `PROJECT_INDEX.md`, and the 2026-10-26 plan revision with the next current entrypoint; search for other backlinks.
+- [ ] Delete this file in the closing change, recording program closure and relevant evidence in the commit/task records. Git history retains the temporary plan.
+
+The program ends before P6 begins; this document need not survive until every future coverage stage or external trigger finishes.
+
+## P0 execution checkpoint — 2026-11-01
+
+Still active; no commit and no full-suite success claimed.
+
+- Added BUG-0276–0278, eight source-predicted `stage21.household.*` fixtures, and the two new refusal gates to the coverage tree. Build and render succeeded. Full CLI fixture run: **1,419/1,419 passed**, recorded in `.transcription/hh2-fixtures.log`.
+- Refreshed household and f1040 transcription/render reviews under both families, archived the prior receipts with hashes, and adjudicated all 51 disagreements. Summaries: `reviews/2025/transcription/adjudication/{household,f1040}.md`, section “Household pass, round 2”. `check_logs.py` passed; this does not qualify the type-invalid DeepSeek f1040 reply or other pending second-family evidence.
+- Consumer checks: three new pairs adjudicated after isolated Claude responses and inspection of the actual conjunctions; 437 findings, 54 ruled, 383 baseline, zero new/stale. Instruction citations, operands, signs, limits, screens, strict citations and coverage placement passed their targeted checks. Existing baseline debt remains.
+- Household completeness: six fresh claims. Five ruled against the current prompt; claim #1 (marital-status definitions) remains open. `household.married` is also used by EIC and HSA, so a filing-status-only definition must not be copied blindly into that shared input. Inspect each consumer before fixing or disposing of this claim. No new bug has yet been certified for it.
+- Completeness check currently fails with 59 new findings: 58 stale/missing reviews and the one unruled household claim. Of 56 existing baseline entries, **55 recover their original baseline fingerprint when only the two new f1040 refusal declarations are removed in a read-only counterfactual**; f1040 itself remains changed. Evidence: `.transcription/proposed/hhpass2/completeness-impact.json`. `elsewhere()` adds every f1040 refusal to all foreign prompts, and the checker uses that full prompt hash as the baseline subject. Thus the additions pull untouched forms out of the agreed form-by-form backlog.
+- A scope choice was presented to the owner: investigate a narrow baseline-policy repair (recommended), or refresh/adjudicate all affected forms. No answer recorded at this checkpoint. No baseline entries or receipt fingerprints have been relaxed. Investigation is not authorization to accept stale reviews.
+
+Proposed bounds for a baseline repair, if selected: preserve full prompt hashing for every actual review and claim ruling; give never-reviewed legacy debt a separate fingerprint tied to its own canonical form, source sections and review policy; migrate only entries whose historical provenance can be reconstructed and verified. Keep changed own forms due now. Prove with tests that foreign refusal additions cannot silently qualify an old review, own form/source/policy changes still invalidate debt, and malformed/mismatched migration records fail closed. Do not simply run `--baseline`. Previously reviewed dependent/f2441 and changed f1040 still need current review/disposition under the selected policy.
+
+Next: resolve the open household claim and the completeness scope choice; rerun only reviews/checks invalidated by resulting changes; run the full snapshot suite and use the tested-tree commit guard. T-114–117 stay in progress until package closure.
+
+### Narrow completeness repair — owner selected, 2026-11-01
+
+Implemented BUG-0279 after the owner selected the narrow baseline approach. All 56 historical baseline prompt fingerprints were reconstructed from an independently exported/built f44bae4 checkout before migration. The original baseline map is unchanged; 55 untouched forms are deferred by matching local subjects. f1040 remains due. Existing dependent/f2441 receipts remain stale and cannot use the exemption. Four regression tests are included in the normal completeness self-test; all pass. The live check reports 55 baseline, five ruled and four new: dependent, f1040, f2441 and household claim1. Full-suite validation and P0 commit remain pending. This supersedes the unanswered scope choice recorded above.
+
+## Usage pause checkpoint — 2026-11-01
+
+Owner stopped work for usage. Full restart state: [household closure handoff](../handoffs/HANDOFF-HOUSEHOLD-CLOSE-2026-11-01.md). P0 remains active/uncommitted. BUG-0280/0286 add marriage definitions and filing-status entry consistency; BUG-0281 fixes consumer prompt generation. BUG-0282–0285 explicitly preserve older definition debt with T-107/T-109/T-111/T-113 and new T-153/T-154. Latest build/render, strict citations and 1,425/1,425 fixtures passed; no full-suite result. Final source/render/completeness rulings are pending; DeepSeek batch interrupted, all matching jobs stopped. Do not rerun the old ordinal-based completeness adjudication script.
+
+## P0 closure — 2026-11-01
+
+P0 is closed in the household closure commit (parent f44bae4). The exact tree passed the full suite through
+`tools/commit_tested.sh`.
+
+- Authored: BUG-0272–0286; T-114–117 done. `household.married` definitions (BUG-0280), the filing-status
+  consistency gate (BUG-0286), the death-year and community-property gates (BUG-0277/0278), the consumer prompt
+  fix (BUG-0281) and the narrow completeness debt repair (BUG-0279). The older definition debt remains open in
+  BUG-0282–0285 with T-107/T-109/T-111/T-113/T-153/T-154.
+- Fixtures: 1,425/1,425 CLI fixtures passed (`.transcription/hh4-fixtures.log`); six source-predicted status cases
+  matched; the coverage tree has 188 gates.
+- Reviews: household and f1040 transcription and render under both families; eic and f8889 transcription refreshed
+  for the changed shared input. The full suite caught that the hh4 render batch had reviewed a stale `rendered/`
+  tree (it predated BUG-0286); the rendered English was regenerated, the prior receipts archived under
+  `.transcription/archive/before-render-refresh-2026-11-01/`, and the four render reviews rerun. 114 hh4 rulings
+  plus 12 render-refresh rulings applied; `check_logs.py` reports 0 open.
+- Completeness: 92 findings, 0 new, 55 deferred baseline forms, 37 ruled. Consumers: 438 findings, 0 new, 380
+  baseline, 58 ruled. Second-family model-error noise 8.7% (409/4,675), provisional for pending reviews.
+- Offline checks: strict citations, instruction cites, consumers, screens, coverage placement, operands, signs,
+  limits, bug inventory and `git diff --check` all passed.
+- Corrections made while checking the hhpass4 work before commit: the eic/f8889 archive pointer (the prior logs
+  are under `.transcription/archive/before-household-definition-review-2026-11-01/`), the f1040 DeepSeek line 19
+  justification (the printed Schedule 8812 line 14 destination, not an interface label), and the f8889 line 3 and
+  line 6 splits into ambiguity plus model error for the withheld `last_month` partial.
