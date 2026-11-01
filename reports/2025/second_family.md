@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 149 form-kind pair(s) with logs from Claude and deepseek; ruled model-error noise 8.7% (409/4676 second-family lines judged; pending reviews are provisional); 71 eligible, 77 pending; raw agreement 79.3% (diagnostic only); current independence yield 271 line(s); both families disputed 514
+Summary: 149 form-kind pair(s) with logs from Claude and deepseek; ruled model-error noise 8.7% (409/4676 second-family lines judged; pending reviews are provisional); 73 eligible, 75 pending; raw agreement 79.3% (diagnostic only); current independence yield 269 line(s); both families disputed 512
 
 Written by `tools/transcription/compare_families.py` on 2026-11-01 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -766,7 +766,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | form | second family (model) | lines judged by both | both agree | raw agreement | noise / judged | eligibility | current yield | both disputed | Claude only | not judged by both |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | aqee | deepseek (deepseek-flash) | 4 | 4 | 100.0% | 0/4 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| asset | deepseek (deepseek-flash) | 15 | 11 | 73.3% | 0/15 (0.0%) | pending | 4 | 0 | 0 | 0 |
+| asset | deepseek (deepseek-flash) | 15 | 10 | 66.7% | 0/15 (0.0%) | pass | 4 | 0 | 1 | 0 |
 | carloan | deepseek (deepseek-flash) | 2 | 1 | 50.0% | 0/2 (0.0%) | pass | 0 | 1 | 0 | 0 |
 | clcw | deepseek (deepseek-flash) | 13 | 12 | 92.3% | 0/13 (0.0%) | pass | 0 | 0 | 1 | 0 |
 | clcw26 | deepseek (deepseek-flash) | 13 | 12 | 92.3% | 0/13 (0.0%) | pass | 0 | 0 | 1 | 0 |
@@ -795,12 +795,12 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | gift | deepseek (deepseek-flash) | 5 | 5 | 100.0% | 0/5 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | household | deepseek (deepseek-flash) | 46 | 44 | 95.7% | 0/46 (0.0%) | pass | 0 | 1 | 1 | 0 |
 | interest | deepseek (deepseek-flash) | 2 | 2 | 100.0% | 0/2 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| ira | deepseek (deepseek-flash) | 21 | 16 | 76.2% | 0/21 (0.0%) | pending | 1 | 4 | 0 | 0 |
+| ira | deepseek (deepseek-flash) | 21 | 13 | 61.9% | 0/21 (0.0%) | pending | 2 | 4 | 2 | 0 |
 | ltc | deepseek (deepseek-flash) | 2 | 1 | 50.0% | 0/2 (0.0%) | pending | 1 | 0 | 0 | 0 |
 | mq | deepseek (deepseek-flash) | 7 | 5 | 71.4% | 0/7 (0.0%) | pending | 0 | 2 | 0 | 0 |
 | oi8z | deepseek (deepseek-flash) | 2 | 1 | 50.0% | 0/2 (0.0%) | pending | 1 | 0 | 0 | 0 |
 | otjob | deepseek (deepseek-flash) | 1 | 1 | 100.0% | 0/1 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| person | deepseek (deepseek-flash) | 32 | 27 | 84.4% | 0/32 (0.0%) | pass | 0 | 0 | 5 | 0 |
+| person | deepseek (deepseek-flash) | 32 | 26 | 81.2% | 0/32 (0.0%) | pass | 1 | 0 | 5 | 0 |
 | qbi | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 1/1 (100.0%) | pending | 0 | 1 | 0 | 0 |
 | qdcg | deepseek (deepseek-flash) | 25 | 24 | 96.0% | 0/25 (0.0%) | pass | 0 | 0 | 1 | 0 |
 | refund | deepseek (deepseek-flash) | 9 | 7 | 77.8% | 0/9 (0.0%) | pass | 0 | 2 | 0 | 0 |
@@ -814,9 +814,9 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | sa | deepseek (deepseek-flash) | 24 | 21 | 87.5% | 0/24 (0.0%) | pending | 2 | 1 | 0 | 0 |
 | sales | deepseek (deepseek-flash) | 3 | 1 | 33.3% | 0/3 (0.0%) | pass | 0 | 2 | 0 | 0 |
 | sb | deepseek (deepseek-flash) | 6 | 4 | 66.7% | 0/6 (0.0%) | pending | 1 | 1 | 0 | 0 |
-| sc | deepseek (deepseek-flash) | 75 | 68 | 90.7% | 0/75 (0.0%) | pending | 3 | 1 | 3 | 0 |
+| sc | deepseek (deepseek-flash) | 75 | 71 | 94.7% | 0/75 (0.0%) | pass | 0 | 0 | 4 | 0 |
 | scope | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pass | 0 | 0 | 2 | 0 |
-| scveh | deepseek (deepseek-flash) | 25 | 16 | 64.0% | 0/25 (0.0%) | pending | 2 | 4 | 3 | 0 |
+| scveh | deepseek (deepseek-flash) | 25 | 16 | 64.0% | 0/25 (0.0%) | pending | 1 | 3 | 5 | 0 |
 | sd | deepseek (deepseek-flash) | 46 | 45 | 97.8% | 0/46 (0.0%) | pass | 1 | 0 | 0 | 0 |
 | sdtw | deepseek (deepseek-flash) | 47 | 46 | 97.9% | 0/47 (0.0%) | pass | 0 | 1 | 0 | 0 |
 | se | deepseek (deepseek-flash) | 15 | 10 | 66.7% | 0/15 (0.0%) | pending | 0 | 5 | 0 | 0 |
@@ -827,9 +827,8 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | tipjob | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 4 | 22.2% | 0/18 (0.0%) | pass | 0 | 13 | 1 | 0 |
 | w2 | deepseek (deepseek-flash) | 17 | 17 | 100.0% | 0/17 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| **all** | | 1321 | 1088 | 82.4% | | | 49 | 79 | 105 | 0 |
+| **all** | | 1321 | 1086 | 82.2% | | | 47 | 77 | 111 | 0 |
 
-Pending asset [deepseek]: 4 open, unclassified or interface-gap rulings.
 Pending f8606 [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending f8995 [deepseek]: 2 open, unclassified or interface-gap rulings.
 Pending f8995a [deepseek]: 1 open, unclassified or interface-gap rulings.
@@ -840,8 +839,7 @@ Pending oi8z [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending qbi [deepseek]: model-error noise above 10%.
 Pending sa [deepseek]: 3 open, unclassified or interface-gap rulings.
 Pending sb [deepseek]: 1 open, unclassified or interface-gap rulings.
-Pending sc [deepseek]: 4 open, unclassified or interface-gap rulings.
-Pending scveh [deepseek]: 6 open, unclassified or interface-gap rulings.
+Pending scveh [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending se [deepseek]: 5 open, unclassified or interface-gap rulings.
 Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 
@@ -849,10 +847,10 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 
 | form | second family | line | second family's verdict | second family's reason |
 | --- | --- | --- | --- | --- |
-| asset | deepseek | (a) | MISMATCH | Column (a) asks for the classification, such as 3-year property, 5-year property, etc.; the restatement instead directs use of Pub. 946 Appendix B asset classes/class-life tables. |
-| asset | deepseek | (b) | MISMATCH | Column (b) is month and year placed in service; the restatement captures only the year and limits it to 2005-2025. |
-| asset | deepseek | (c) | MISMATCH | Column (c) requires subtracting allocable credits and deductions, including section 179 and the special allowance, after multiplying; the restatement stops at the multiplication. |
-| asset | deepseek | 14 | MISMATCH | The IRS line also provides a 50% special allowance for qualified reuse and recycling property; the full/forty/none choices do not cover it and no refusal names it. |
+| asset | deepseek | 14 | MISMATCH | The IRS also provides a 50% allowance for qualified reuse and recycling property and limits the 40% rate to property acquired after September 27, 2017; the restatement applies 40% to any property not acquired after January 19, 2025. |
+| asset | deepseek | 19(c) | MISMATCH | IRS line 19(c) says to subtract 'any credits and deductions allocable to the property'; the restatement subtracts only section 179 and the special allowance. |
+| asset | deepseek | 25 | MISMATCH | IRS line 25 says 'Enter on line 25 your total special depreciation allowance for all qualified listed property'; it is not the line 14 amount, which the restatement reports only for property other than listed property. |
+| asset | deepseek | 26(i) | MISMATCH | IRS line 6 says 'Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26'; line 26(i) is not the line 6(c) amount. |
 | f1040 | deepseek | 16 | MISMATCH | The restatement also requires the Qualified Dividends and Capital Gain Tax Worksheet to apply, but the IRS says to use the Schedule D Tax Worksheet if 'You have to file Form 4952 and you have an amount on line 4g, even if you don’t need to file Schedule D.' |
 | f1040 | deepseek | 1z | MISMATCH | IRS line 1z says 'Add lines 1a through 1h', but the restatement adds only line 1a and line 1e, omitting lines 1b through 1d and 1f through 1h. |
 | f1040 | deepseek | 27c | MISMATCH | IRS says 'Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box'; the restatement deliberately omits the filer's own choice not to claim the EIC. |
@@ -878,9 +876,11 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | f8995 | deepseek | 11 | MISMATCH | IRS line 11 instructions compute 'Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b' and do not provide a zero floor; the restatement adds an 'If zero or less, enter -0-' condition. |
 | f8995a | deepseek | 33 | MISMATCH | The restatement adds an 'if zero or less, enter -0-' floor, but the IRS instruction is only 'Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b'; no zero floor is stated for line 33. |
 | g28 | deepseek | 2 | MISMATCH | IRS line 2 requires the positive total of section 1202 exclusions from Form 8949 Part II code Q at 50%, 2/3, or 1/3; the restatement enters $0 from a distribution helper and does not compute those amounts, and its refusal covers only section 1202 distributions, not Code Q exclusions generally. |
-| ira | deepseek | 2b | MISMATCH | IRS line 2 says married filing separately and lived apart from your spouse for all of 2025 enter $89,000; the line 2 helper maps every MFS return to $10,000. |
+| ira | deepseek | 1b | MISMATCH | The IRS line is 'If married filing jointly, was your spouse covered by a retirement plan?'; the restatement adds a contribution condition and does not condition the line on married filing jointly. |
+| ira | deepseek | 8 | MISMATCH | The IRS line includes 'Nontaxable combat pay' in the total; the restatement adds only W-2 box 1 wages and Schedule 1 line 2a. |
 | ltc | deepseek | 2(a) | MISMATCH | The IRS note excludes payments for any month you were eligible to participate in a long-term care insurance plan subsidized by your employer or your spouse's employer, or the employer of either your dependent or your child who was under age 27 at the end of 2025; the restatement instead states the exclusion in terms of the covered person's eligibility for a plan subsidized by an employer. |
 | oi8z | deepseek | 8z (amount) | MISMATCH | The line is NonNegDollars, but the IRS line 8z examples include a 'Loss on certain corrective distributions of excess deferrals'; a loss cannot be entered as a nonnegative amount to include in income. |
+| person | deepseek | Step 3 | MISMATCH | IRS Step 3 says only 'Net earnings from self-employment. Subtract step 2 from step 1'; it does not say to enter -0- if zero or less, so the added zero floor can change a negative result. |
 | s1 | deepseek | 16 | MISMATCH | IRS line 16 is 'Self-employed SEP, SIMPLE, and qualified plans'; the helper computes only SEP or SIMPLE and returns zero for a qualified plan such as a solo 401(k) without refusing it. |
 | s1 | deepseek | 8f | MISMATCH | IRS line 8f says 'Enter the total of the amounts from Form 8889, lines 16 and 20'; the restatement uses only Form 8889 line 16. |
 | s1 | deepseek | 8i | MISMATCH | IRS Pub. 525 says 'These rules don’t apply to scholarship or fellowship awards. See Scholarships and fellowships, later'; the restatement puts a 'scholarship prize' on line 8i. |
@@ -891,11 +891,7 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | sa | deepseek | 5e | MISMATCH | IRS line 5e says if you completed Form 2555 or 4563, or excluded Puerto Rico income, see the SALT worksheet; that worksheet adds those excluded amounts to line 11b. The program's ceiling helper uses only Form 1040 line 11b and there is no excluded-income refusal on line 5e. |
 | sa | deepseek | 9 | UNCLEAR | The provided Schedule A text only says 'Investment interest. Attach Form 4952 if required. See instructions'; the line 9 instructions, including how to figure investment interest when Form 4952 is not required, are not provided. |
 | sb | deepseek | 7a | MISMATCH | The restatement covers only Question 1; the IRS line also has Line 7a—Question 2, which asks whether you are required to file FinCEN Form 114. |
-| sc | deepseek | 23 | MISMATCH | IRS line 23 includes 'Contributions to a state unemployment insurance fund, or paid family and medical leave program disability benefit fund if they are considered taxes under state law'; the restatement omits the paid family and medical leave fund. |
-| sc | deepseek | 4 (sc.f7206_line4) | MISMATCH | IRS line 4 says 'Enter your net profit* and any other earned income** from the trade or business under which the insurance plan is established'; the restatement uses only this business's net profit. |
-| sc | deepseek | 5 (sc.f7206_line5) | MISMATCH | IRS line 5 says 'total of all net profits* from Schedule C..., Schedule F..., or Schedule K-1..., plus any other income allocable to the profitable businesses'; the restatement uses only this person's Schedule C net profits. |
-| scveh | deepseek | 7 | MISMATCH | IRS states 'The depreciation deduction, including the section 179 expense deduction and special depreciation allowance, for passenger automobiles is limited'; the restatement applies a published passenger-automobile limit unconditionally and has no refusal when scveh.passenger is false. |
-| scveh | deepseek | 9 (scveh.line9) | MISMATCH | IRS says 'You can’t use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle'; the restatement allows actual whenever method is actual and only refuses standard under smr_bad. |
+| scveh | deepseek | 19 | MISMATCH | For a 2019 vehicle, the IRS says 'If the recovery period for an automobile ended before your tax year beginning in 2025, enter your unrecovered basis, if any, in column (h)' and permits deductions after the recovery period; the restatement returns zero for a 2019 vehicle. |
 | sd | deepseek | 20 | MISMATCH | IRS line 17 says: 'No. Skip lines 18 through 21, and go to line 22.' The restatement computes line 20 even when line 17 is No; it should be skipped. |
 | sli | deepseek | 6 | MISMATCH | The IRS line says "No. Skip lines 6 and 7, enter -0- on line 8, and go to line 9"; the restatement subtracts line 5 from line 4 without that condition, so line 6 would be negative when line 4 is not more than line 5. |
 
@@ -929,10 +925,10 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | g28 | deepseek | 4 | MISMATCH | MISMATCH | IRS line 4 is "the total of any collectibles gain reported to you on: Form 1099-DIV, box 2d; Form 2439, box 1d; and Schedule K-1"; the restatement uses only Form 1099-DIV box 2d and omits the other two sources without a refusal. |
 | g28 | deepseek | 5 | MISMATCH | MISMATCH | IRS line 5 says to enter long-term capital loss carryovers from "Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D"; the restatement uses only Schedule D line 14 and does not refuse or account for the K-1 amount. |
 | household | deepseek | filing_status_conflict | MISMATCH | MISMATCH | The restatement only flags single and MFJ conflicts; IRS says "Check the 'Married filing separately' box ... if you are married at the end of 2025 and file a separate return," so MFS with not married should also be flagged. |
-| ira | deepseek | 1a | MISMATCH | MISMATCH | IRS says if you weren't covered but your spouse was, you are considered covered unless you lived apart for all of 2025; cov_you counts only actual work or self-employed plan coverage, so the deemed-coverage case is omitted. |
-| ira | deepseek | 2a | MISMATCH | MISMATCH | IRS line 2 says married filing separately and lived apart from your spouse for all of 2025 enter $89,000; the line 2 helper maps every MFS return to $10,000. |
-| ira | deepseek | 4 | MISMATCH | MISMATCH | IRS line 4 is the total of Schedule 1 'lines 11 through 19a, plus 23 and 25'; the restatement omits lines 12, 14, and 23 and lists only selected lines. |
-| ira | deepseek | 9 | UNCLEAR | MISMATCH | IRS line 9 includes earned income received 'as a self-employed individual or a partner'; person.ira_se is zero without a Schedule C, so partner or other self-employment income not on Schedule C is omitted, and the stated refusal covers only Schedule C income not from personal services. |
+| ira | deepseek | 1a | MISMATCH | MISMATCH | The IRS line asks 'Were you covered by a retirement plan' without requiring traditional IRA contributions; the restatement adds that condition and does not reflect the MFS spouse-plan deemed-coverage rule. |
+| ira | deepseek | 2a | MISMATCH | MISMATCH | For married filing separately and living apart from the spouse all year, the IRS says 'enter $89,000'; the program uses $10,000 for all married-filing-separately cases. |
+| ira | deepseek | 4 | MISMATCH | MISMATCH | The IRS says to add Schedule 1 'lines 11 through 19a, plus 23 and 25'; the restatement omits Schedule 1 line 12, line 14, and line 23. |
+| ira | deepseek | 9 | MISMATCH | MISMATCH | The IRS line includes earned income 'as a self-employed individual or a partner'; the restatement uses only Schedule C amounts and zeros anyone without a Schedule C. |
 | mq | deepseek | q4 | MISMATCH | MISMATCH | The IRS test uses the total depreciable bases of MACRS property placed in service during the last 3 months, excluding nonresidential real property, residential rental property, railroad grading/tunnel bore, property placed in service and disposed of in the same year, and non-MACRS property; the helper merely adds person.mq_q4 and does not apply those exclusions or the personal-use basis reduction. |
 | mq | deepseek | total | MISMATCH | MISMATCH | The IRS denominator is the total depreciable bases of all MACRS property placed in service during the entire year, with the same exclusions and personal-use reduction; the helper adds person.mq_total without those limitations. |
 | qbi | deepseek | 3 | MISMATCH | MISMATCH | IRS line 3 is "Qualified business net (loss) carryforward from the prior year" shown with parentheses, and line 4 says "Combine lines 2 and 3," so the carryforward is a negative amount; the restatement instead says "entered as a positive amount." The line 3 instructions also require the "qualified portion" allowed in calculating taxable income in the current year, not merely prior-year line 16. |
@@ -956,11 +952,9 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | sales | deepseek | (e) | MISMATCH | MISMATCH | The restatement's 'Basis reported to IRS' gate is true only for classifications A or D, but the IRS form also treats boxes G and J as 'reported on Form(s) 1099-DA showing basis was reported to the IRS'; for those rows column (e) must use the reported basis, not the records basis. |
 | sales | deepseek | (g) | MISMATCH | MISMATCH | IRS column (g) says 'Enter in this column any necessary adjustments to gain (or loss)' and, for multiple codes, 'enter the net adjustment in column (g)'; the restatement only adds B basis correction and W wash-sale adjustment, omitting other required adjustment codes. |
 | sb | deepseek | 4 | UNCLEAR | UNCLEAR | The provided IRS text contains no line 4 instruction or statement that line 4 is line 2 minus line 3, so the arithmetic cannot be verified from the text given. |
-| sc | deepseek | 9 (sc.f7206_line9) | UNCLEAR | UNCLEAR | IRS line 9 says only to enter the Schedule 1 line 16 amount 'attributable to the same trade or business'; it does not state the line 4/line 5 allocation used here. |
-| scveh | deepseek | (b) | MISMATCH | MISMATCH | IRS column (b) says 'Date placed in service. Enter the date the property was placed in service' (including conversion date); the restatement asks only for the year. |
-| scveh | deepseek | 19 | MISMATCH | MISMATCH | For a vehicle whose recovery period ended before 2025, IRS says 'enter your unrecovered basis, if any, in column (h)' and Pub. 946 allows unrecovered basis after the recovery period; the restatement forces zero for a 2019-placed vehicle. |
-| scveh | deepseek | 20a | MISMATCH | MISMATCH | IRS line 20a says 'if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount'; the restatement uses the gross business lease payments without the inclusion amount. |
-| scveh | deepseek | 43 | MISMATCH | MISMATCH | IRS line 43 asks 'When did you place your vehicle in service for business purposes? (month/day/year)'; the restatement captures only the year, not the required date. |
+| scveh | deepseek | (b) | MISMATCH | MISMATCH | Form 4562 Part V column (b) says 'Enter the date the property was placed in service'; the restatement asks only for the year. |
+| scveh | deepseek | 20a | MISMATCH | MISMATCH | The IRS says 'enter on line 20a the business portion of your rental cost. But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount'; the restatement omits the inclusion amount. |
+| scveh | deepseek | 43 | MISMATCH | MISMATCH | The IRS line asks 'When did you place your vehicle in service for business purposes? (month/day/year)'; the restatement records only the year, omitting the month and day. |
 | sdtw | deepseek | 1 | MISMATCH | MISMATCH | IRS line 1 says to enter line 3 of the Foreign Earned Income Tax Worksheet instead when filing Form 2555; the restatement always uses Form 1040 line 15. |
 | se | deepseek | 2 | MISMATCH | MISMATCH | IRS line 2 includes "Schedule K-1 (Form 1065), box 14, code A" and other income per instructions; restatement uses only this person Schedule C results. |
 | se | deepseek | 3 | MISMATCH | MISMATCH | IRS line 3 says "Combine lines 1a, 1b, and 2"; restatement enters only the amount from line 2. |

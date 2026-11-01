@@ -1,0 +1,35 @@
+{
+ "kind": "render",
+ "form": "scveh",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "(b)",
+   "restated": "Input — The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in service earlier is outside this tool)",
+   "model": "Form 4562 Part V column (b) says 'Enter the date the property was placed in service'; the restatement asks only for the year.",
+   "ruling": "Ruling: representation; restatement accepted. As line 43: the year chooses the recovery year and the limits, the quarter (asked separately) the mid-quarter table; the filer enters the full date on Form 4562 column (b).",
+   "context": "5506eb798c3a6f707b769e989b5eb088b509a7825a8d69f7a0fcf65723baed56"
+  },
+  {
+   "printed": "19",
+   "restated": "Choose — [helper \"Placed in service in 2025\" = true → helper \"Line 19 for a 2025 vehicle, half-year or mid-quarter\"] [helper \"Placed in service in 2025\" = false → helper \"Line 19 for a vehicle placed in service before 2025 (zero after the recovery period, when the worksheet is not used)\"]",
+   "model": "For a 2019 vehicle, the IRS says 'If the recovery period for an automobile ended before your tax year beginning in 2025, enter your unrecovered basis, if any, in column (h)' and permits deductions after the recovery period; the restatement returns zero for a 2019 vehicle.",
+   "ruling": "Ruling: representation; restatement accepted. Line 19 is a line of the automobile worksheet, which is not used after the recovery period; a 2019 vehicle's deduction is its unrecovered basis, limited and prorated (scveh.post, read by scveh.macrs_pass for column (h); Pub. 946 p. 61, Deductions After the Recovery Period), as stage14.veh.2019_cheap_mq3 asserts (BUG-0059).",
+   "context": "5506eb798c3a6f707b769e989b5eb088b509a7825a8d69f7a0fcf65723baed56"
+  },
+  {
+   "printed": "20a",
+   "restated": "Choose — [helper \"Leased and on actual expenses\" = true → helper \"The business portion of the lease payments\"] [helper \"Leased and on actual expenses\" = false → helper \"Zero\"]",
+   "model": "The IRS says 'enter on line 20a the business portion of your rental cost. But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount'; the restatement omits the inclusion amount.",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. An inclusion amount for leased property is refused for the business through sc.special ('an inclusion amount for leased property'), so the business portion of the lease payments is the line 20a amount for every vehicle that reaches it.",
+   "context": "5506eb798c3a6f707b769e989b5eb088b509a7825a8d69f7a0fcf65723baed56"
+  },
+  {
+   "printed": "43",
+   "restated": "Input — The year you first placed this vehicle in service for business purposes (for example 2023)",
+   "model": "The IRS line asks 'When did you place your vehicle in service for business purposes? (month/day/year)'; the restatement records only the year, omitting the month and day.",
+   "ruling": "Ruling: representation; restatement accepted. The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; the filer writes the full date on Schedule C line 43 and Form 4562 from their own records. No value depends on the month or day except through the quarter, which is asked separately.",
+   "context": "5506eb798c3a6f707b769e989b5eb088b509a7825a8d69f7a0fcf65723baed56"
+  }
+ ]
+}

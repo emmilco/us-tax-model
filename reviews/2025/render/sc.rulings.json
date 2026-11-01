@@ -27,6 +27,13 @@
    "ruling": "Ruling: agent reading for the owner (amb.2025.qbi_attribution, TASKS.md T-041); restatement accepted. i8995 p. 2 says QBI accounts for the deductible part of self-employment tax, the self-employment health insurance deduction and contributions to qualified retirement plans attributable to the business but gives no method; the project attributes them by the business's share of net profits (Form 7206 lines 7 and 9) and its own Form 7206 line 14."
   },
   {
+   "printed": "12 (sc.s179_allowed)",
+   "restated": "Choose — [s179 helper \"The deduction differs from the amounts elected for 2025\" = false → helper \"Section 179 elected for this business's 2025 property\"] [s179 helper \"The deduction differs from the amounts elected for 2025\" = true → helper \"The return's section 179 deduction, for its only Schedule C\"]",
+   "model": "The program sets Form 4562 line 1 to a flat $2,500,000, but Worksheet 1 says 'Enter the smaller of line 1 or line 2' and 'Enter the amount from line 3 here and on Form 4562, line 1'. When 2025 section 179 cost is below $2,500,000, this overstates lines 5 and 11, so a carryover can raise the line 12 deduction and Schedule C line 13 too much.",
+   "ruling": "Ruling: ambiguity — T-043 / amb.2025.s179_carryover_no_property (owner adopted): s179.line1 is the $2,500,000 limitation, not the smaller of the limitation and the 2025 cost, on the line 1 instruction's reading. Worksheet 1's \"Enter the smaller of line 1 or line 2\" is the recorded competing reading; the project keeps the owner's adopted line 1. The render complaint repeats it.",
+   "context": "af1fe9bfbef82edd091d3e4f96182123ef14a48ad827c32d0d01aaa8210a0300"
+  },
+  {
    "printed": "13 (sc.line13)",
    "restated": "Add helper \"Depreciation other than the section 179 deduction (Form 4562 lines 14, 17, 19 and 21)\" and line 12 (sc.s179_allowed).",
    "model": "Form 4562 line 22 adds 'line 12, lines 14 through 17, lines 19 and 20 in column (g), and line 21'. The helper covers only lines 14, 17 and 19 (3- to 20-year and 15-year SL), plus listed property from line 25 and 'line 26' column (h); it omits lines 15, 16, 19g–j, 20 and line 27, with no refusal shown. Whether the asset roster can contain such property cannot be determined from the text.",
@@ -89,8 +96,29 @@
   {
    "printed": "24b",
    "restated": "Add helper \"50% of the meals subject to the 50% limit\", helper \"80% of the meals under the hours of service limits\", and helper \"Meals and incidentals not subject to the 50% limit, deducted in full\".",
+   "model": "The 50% and 80% rates and the first two full-deduction categories match 'Amount of deduction'. The text only points to Pub. 15 and Pub. 334 for 'other exceptions', so the customer-reimbursed, employee-recreation, public-promotion and sold-to-public categories need those missing sources.",
+   "ruling": "Ruling: owner ruling (T-042; amb.2025.meals_full_exceptions); restatement accepted. The 50% and 80% rates and the two full-deduction cases match i1040sc p. 10 as the model says. The other categories come from Pub. 463 (2025) p. 16, Exception to the 50% Limit for Meals, which the instruction reaches through 'See chapter 5 of Pub. 15 ... for details and other exceptions. See also chapter 8 of Pub. 334': Pub. 15 chapter 5 lists no exceptions and Pub. 334 refers to Pub. 463. The model was given the i1040sc pages only, so it could not see that list.",
+   "context": "af1fe9bfbef82edd091d3e4f96182123ef14a48ad827c32d0d01aaa8210a0300"
+  },
+  {
+   "printed": "24b",
+   "restated": "Add helper \"50% of the meals subject to the 50% limit\", helper \"80% of the meals under the hours of service limits\", and helper \"Meals and incidentals not subject to the 50% limit, deducted in full\".",
    "model": "The 50% and 80% rates and the two full-deduction cases (wages subject to withholding; nonemployee amounts reported on Form 1099-NEC) match the text. The other fully deductible categories in the helper (client reimbursements, employee recreation, food for the public, meals sold) are not in the given text, which only refers to 'chapter 5 of Pub. 15 ... for details and other exceptions'.",
    "ruling": "Ruling: owner ruling (T-042; amb.2025.meals_full_exceptions); restatement accepted. The 50% and 80% rates and the two full-deduction cases match i1040sc p. 10 as the model says. The other categories come from Pub. 463 (2025) p. 16, Exception to the 50% Limit for Meals, which the instruction reaches through 'See chapter 5 of Pub. 15 ... for details and other exceptions. See also chapter 8 of Pub. 334': Pub. 15 chapter 5 lists no exceptions and Pub. 334 refers to Pub. 463. The model was given the i1040sc pages only, so it could not see that list."
+  },
+  {
+   "printed": "32",
+   "restated": "Input — All your investment in this business is at risk: you have no nonrecourse loans not secured by your own property, no amounts protected against loss by a guarantee or stop-loss agreement, and no amounts borrowed from someone with an interest in the business (box 32a)",
+   "model": "The box 32b test omits part of the IRS condition: amounts borrowed 'from a person who has an interest in the business other than as a creditor or who is related under section 465(b)(3)(C) to a person (other than you) having such an interest'. A related-party loan would pass as at risk, while an ordinary creditor could be read as disqualifying.",
+   "ruling": "Ruling: finding — i1040sc p. 15, Line 32, Some investment is not at risk: \"Amounts borrowed for use in the business from a person who has an interest in the business other than as a creditor or who is related under section 465(b)(3)(C) to a person (other than you) having such an interest.\" The box 32a question names a lender with an interest in the business but omits the related-party prong, so a related-party loan can answer Yes and deduct a loss the at-risk rules would limit. BUG-0290; fix the question with the Schedule C form pass (T-157).",
+   "context": "af1fe9bfbef82edd091d3e4f96182123ef14a48ad827c32d0d01aaa8210a0300"
+  },
+  {
+   "printed": "7 (sc.f7206_line7)",
+   "restated": "Choose — [helper \"Line 4 is more than zero\" = true → helper \"Schedule 1, line 15 (this person's), times line 4 divided by line 5\"] [helper \"Line 4 is more than zero\" = false → helper \"Zero\"]",
+   "model": "Form 7206 says to multiply 'Schedule 1 (Form 1040), line 15' by line 6, while the program uses only this person's Schedule SE line 13 and this person's profits. The text does not say how to apply lines 5 and 7 on a joint return where both spouses have self-employment income; the computation is otherwise right.",
+   "ruling": "Ruling: owner accepted (amb.2025.f7206_line15_person, T-041); restatement accepted. On a joint return Schedule 1 line 15 combines both spouses; Form 7206 is figured for the person whose business establishes the plan, and line 9 looks to 'the same trade or business', so the project uses that person's own Schedule SE line 13. The readings agree when only one spouse is self-employed.",
+   "context": "af1fe9bfbef82edd091d3e4f96182123ef14a48ad827c32d0d01aaa8210a0300"
   },
   {
    "printed": "7 (sc.f7206_line7)",

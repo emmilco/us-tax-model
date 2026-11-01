@@ -101,3 +101,16 @@ input ripple, bug-entry check). The first run showed `sa.dependent` reaches 283 
 so the check's review-refresh gate is strict by design. A synthetic BUG-0290 entry naming only
 `sa.standard` failed with 282 omitted siblings and 21 unrefreshed forms, as intended. Self-test and
 `--check` run in check-all; the earliest real entry to exercise the gate is the next bug.
+
+### T-155 renderer marker and the render refresh — 2026-11-01
+
+Added `"(screen)"` to `render.ts`'s `HELPER_MARKERS`; 20 lines in asset, ira, person, sc and scveh changed
+from `column (screen)` to helper labels, and no `column (screen)` remains. The ten render logs were stale,
+so the prior receipts were archived under `.transcription/archive/before-screen-marker-refresh-2026-11-01/`
+and both families were rerun. The rerun surfaced 24 Claude and 14 DeepSeek disagreements: most repeat old
+rulings (IRA MFS scope, Schedule 1 lines 12/14/23, education TIN date, vehicle date/inclusion amount); two
+are new findings. `sc.at_risk` omits i1040sc p. 15's related-party at-risk prong (BUG-0290/T-157), and
+`asset.bonus_fullcase` applies 40% to any property not acquired after 2026-01-19 and has no 50% reuse/
+recycling branch (BUG-0291/T-158). Both are deferred to their form passes; the render logs are ruled.
+Also refined `siblings.py`: the first closure followed computed values into the whole return (283 lines for
+`sa.dependent`); it now uses the input/gate leaves a line directly reads, giving 5 there and 1 for `sc.at_risk`.

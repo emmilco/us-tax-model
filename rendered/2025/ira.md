@@ -320,14 +320,14 @@
 ## (gate) — `ira.se_capital_gate`
 
 - **Authored helper label:** Traditional IRA contributions with Schedule C income not from personal services (screen)
-- **Encoded (Bool):** helper "Anyone on the return made traditional IRA contributions for 2025" = true and s1 helper "The return has a Schedule C" = true and column (screen) (ira.se_capital) = true
+- **Encoded (Bool):** helper "Anyone on the return made traditional IRA contributions for 2025" = true and s1 helper "The return has a Schedule C" = true and helper "Is any Schedule C income on this return from a business in which your (or your spouse's) personal services are not a material income-producing factor (for example, income mainly from investments or from property)?" = true
 - Expr: `{"all":[{"eq":["ira.any_trad",{"const":true}],"op":"test"},{"eq":["s1.has_sc",{"const":true}],"op":"test"},{"eq":["ira.se_capital",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [p590a] pp. 6–7, Self-employment income, "provided your personal services are a material income-producing factor" (2025; sha256 ca0e4287)
 
 ## (gate) — `ira.special_gate`
 
 - **Authored helper label:** Traditional IRA contributions with an IRA deduction special case (screen)
-- **Encoded (Bool):** helper "Anyone on the return made traditional IRA contributions for 2025" = true and column (screen) (ira.special) = true
+- **Encoded (Bool):** helper "Anyone on the return made traditional IRA contributions for 2025" = true and helper "Does any of these apply to you or your spouse (the IRA deduction special cases)?" = true
 - Expr: `{"all":[{"eq":["ira.any_trad",{"const":true}],"op":"test"},{"eq":["ira.special",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 95, Line 20, "But read the following list before you fill in the worksheet" (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -391,7 +391,7 @@
 ## (gate) — `ira.less_gate`
 
 - **Authored helper label:** An IRA deduction above zero and the election to deduct less
-- **Encoded (Bool):** helper "Add the amounts on lines 12a and 12b" > $0 (sales.zero) and column (screen) (ira.deduct_less) = true
+- **Encoded (Bool):** helper "Add the amounts on lines 12a and 12b" > $0 (sales.zero) and helper "Do you want to deduct less than the most you can deduct, treating the rest as a nondeductible contribution?" = true
 - Expr: `{"all":[{"gt":["ira.total",{"param":"sales.zero"}],"op":"test"},{"eq":["ira.deduct_less",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [p590a] p. 16, Form 8606, "When you file, you can even designate otherwise deductible contributions as nondeductible contributions" (2025; sha256 ca0e4287)
 

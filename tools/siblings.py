@@ -85,19 +85,32 @@ def readers(docs, ids):
     return out
 
 
-def closure(target, reader_map, limit=250):
-    seen, frontier = set(), {target}
-    while frontier:
-        nxt = set()
-        for t in frontier:
-            for r in reader_map.get(t, ()):
-                if r != target and r not in seen:
-                    seen.add(r)
-                    nxt.add(r)
-        frontier = nxt
-        if len(seen) > limit:
-            break
-    return seen
+def leaves(docs, ids, target, seen=None):
+    """The input or gate lines a changed line directly reads.
+
+    A rule input is its own leaf. A computed line contributes the input and gate lines it
+    reads; recursing through every computed operand would pull in unrelated inputs and the
+    whole return, which is not a sibling set."""
+    if target not in ids:
+        return {target}
+    doc, line = ids[target]
+    if (line.get("expr") or {}).get("op") == "input" or line.get("printed") in ("(gate)", "(screen)"):
+        return {target}
+    out = set()
+    for ref in line_refs(docs, line):
+        if ref in ids and ids[ref][0] is doc:
+            ref_line = ids[ref][1]
+            if (ref_line.get("expr") or {}).get("op") == "input" or ref_line.get("printed") in ("(gate)", "(screen)"):
+                out.add(ref)
+    return out or {target}
+
+
+def siblings_of(docs, ids, target, reader_map):
+    found = set()
+    for leaf in leaves(docs, ids, target):
+        found |= reader_map.get(leaf, set())
+    found.discard(target)
+    return found
 
 
 def enum_predicates(docs, ids, target):
@@ -181,7 +194,7 @@ def report(docs, ids, targets, anchor_map, limit):
         doc, line = ids[target]
         print(f"\n## {target} — {line.get('label', '')}")
         found = {}
-        found["readers"] = closure(target, reader_map) - {target}
+        found["readers"] = siblings_of(docs, ids, target, reader_map)
         found["enum values"] = {f"{owner} = {value}" for owner, value in enum_predicates(docs, ids, target)}
         target_anchors = anchors(line)
         anchor_hits = set()
@@ -289,7 +302,7 @@ def check(docs, ids):
             continue
         siblings = set()
         for target in fix:
-            siblings |= closure(target, reader_map) - {target}
+            siblings |= siblings_of(docs, ids, target, reader_map)
         checked = checked_ids(fields["Siblings checked"])
         unknown = checked - set(ids)
         if unknown:
@@ -333,7 +346,7 @@ def reviews_since(docs, ids, rev):
 
 def self_test(docs, ids):
     reader_map = readers(docs, ids)
-    eic = closure("sa.dependent", reader_map)
+    eic = siblings_of(docs, ids, "sa.dependent", reader_map)
     assert "eic.step4" in eic, "sa.dependent should reach eic.step4"
     assert "sa.standard" in eic, "sa.dependent should reach sa.standard"
     assert any(q for q in anchor_index(docs).values() if any(x.startswith("question:") for x in q)), "question anchors"

@@ -4155,3 +4155,21 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Fix:** the hook computes the pushed range (`remote..local`, or `local --not --remotes` for a new ref) and requires every commit's tree in the green record. `record_green` takes a directory lock for the read-modify-write.
 - **Validation:** `tools/hooks/test_pre_push.sh` covers an untested intermediate, a fully green range, a new ref against a remote-tracking base, and a new ref with an untested commit; `tools/hooks/test_green.sh` records 20 concurrent entries and finds all 20. Both run in check-all. One audit subclaim (dangling snapshot commits in `check_all_bg.sh`) is housekeeping, not a guard defect; git's object pruning handles it.
 - **Tags:** commit-guard; process-integrity; fixed
+
+## BUG-0290 — Schedule C at-risk question omits the related-party prong (open)
+
+- **Caught by:** render comparison of `sc` after the 2026-11-01 renderer marker refresh.
+- **Source:** i1040sc p. 15, Line 32, Some investment is not at risk: "Amounts borrowed for use in the business from a person who has an interest in the business other than as a creditor or who is related under section 465(b)(3)(C) to a person (other than you) having such an interest."
+- **Symptom:** `sc.at_risk` (box 32a) asks about "amounts borrowed from someone with an interest in the business" but omits the related-party prong. A filer with a loan from a person related to an owner could answer Yes and take a loss the at-risk rules would limit.
+- **Disposition:** T-157, with the Schedule C form pass; wording only, no new input. Do not change the at-risk refusal path before that pass.
+- **Validation:** source and implementation inspection and one render-review objection; no fixture or numerical evidence claimed.
+- **Tags:** source-definition-debt; existing-form-pass; explicitly-deferred
+
+## BUG-0291 — Special allowance wording overstates the 40% class and omits 50% reuse property (open)
+
+- **Caught by:** DeepSeek render comparison of `asset` after the 2026-11-01 renderer marker refresh.
+- **Source:** i4562 pp. 5–7, Line 14: the 40% allowance is for property acquired after September 27, 2017 and before January 20, 2025; qualified reuse and recycling property placed in service after August 31, 2008 is eligible for a 50% allowance.
+- **Symptom:** `asset.bonus_fullcase`'s English says "100% if acquired after January 19, 2025, otherwise 40%," so it applies 40% to property acquired before September 27, 2017, and `asset.bonus_choice` has no 50% reuse/recycling branch. A pre-2017 asset answered "full" gets 40%; a reuse/recycling asset cannot get 50%.
+- **Disposition:** T-158, with the asset form pass; add the acquisition-date boundary and the 50% category (input and branch), then rerun the asset and Schedule C reviews.
+- **Validation:** source and implementation inspection and one render-review objection; no fixture or numerical evidence claimed.
+- **Tags:** source-definition-debt; existing-form-pass; explicitly-deferred

@@ -63,7 +63,7 @@
 ## (gate) — `sc.screened`
 
 - **Authored helper label:** Something on this Schedule C is outside this tool
-- **Encoded (Bool):** (column (screen) (sc.statutory) = true or line G = false or column (screen) (sc.spouse_owned) = true or line F = true or column (screen) (sc.special) = true)
+- **Encoded (Bool):** (helper "Is this business income you received as a statutory employee (the "Statutory employee" box in box 13 of your Form W-2 was checked), or fees you received as a notary public?" = true or line G = false or helper "Do you own this business together with your spouse (as a qualified joint venture, as community property, or as partners)?" = true or line F = true or helper "For this business, do you have any of these: depletion (line 12); the energy efficient commercial buildings deduction (Form 7205); wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994); business interest limited by Form 8990; recapture of depreciation or section 179 on listed property, or an inclusion amount for leased property; a chapter 11 bankruptcy case; extraterritorial income (Form 8873); installment sales of timeshares or residential lots; nontaxable Medicaid waiver payments (Notice 2014-7); research or experimental expenditures you elect to capitalize; a capital construction fund; or contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III)?" = true)
 - Expr: `{"any":[{"eq":["sc.statutory",{"const":true}],"op":"test"},{"eq":["sc.passive",{"const":false}],"op":"test"},{"eq":["sc.spouse_owned",{"const":true}],"op":"test"},{"eq":["sc.method_other",{"const":true}],"op":"test"},{"eq":["sc.special",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040sc] pp. 2-15, the items named in the screens of this Schedule C (2025; sha256 b5536db9)
 
@@ -373,14 +373,14 @@
 ## (gate) — `sc.ho_screened`
 
 - **Authored helper label:** The home office deduction is outside the simplified method this tool covers
-- **Encoded (Bool):** column (screen) (sc.ho_uses) = true and column (screen) (sc.ho_other) = true
+- **Encoded (Bool):** helper "Do you claim a deduction for business use of your home for this business?" = true and helper "Does any of these apply to your business use of your home for this business?" = true
 - Expr: `{"all":[{"eq":["sc.ho_uses",{"const":true}],"op":"test"},{"eq":["sc.ho_other",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040sc] pp. 10-13, Line 30 and the Simplified Method Worksheet (2025; sha256 b5536db9)
 
 ## (gate) — `sc.ho_multi`
 
 - **Authored helper label:** This person claims the business use of the home for more than one business
-- **Encoded (Bool):** column (screen) (sc.ho_uses) = true and person helper "Number of this person's Schedules C that claim the business use of the home" > 1 (a count)
+- **Encoded (Bool):** helper "Do you claim a deduction for business use of your home for this business?" = true and person helper "Number of this person's Schedules C that claim the business use of the home" > 1 (a count)
 - Expr: `{"all":[{"eq":["sc.ho_uses",{"const":true}],"op":"test"},{"gt":["person.ho_count",{"const":1,"type":"Count"}],"op":"test"}],"op":"test"}`
 - Cite: [i1040sc] p. 10, Simplified method, "If you conduct more than one business that qualifies for this deduction in your home, your election to use the simplified method applies to all your qualified business uses of your home. You are limited to a maximum of 300 square feet for all of the businesses you conduct in your home" (owner: refused) (2025; sha256 b5536db9)
 
@@ -523,7 +523,7 @@
 ## 30 — `sc.line30`
 
 - **IRS:** Expenses for business use of your home
-- **Encoded (NonNegDollars):** Choose — [column (screen) (sc.ho_uses) = true → line 5 (sc.ho_line5)] [column (screen) (sc.ho_uses) = false → helper "Zero"]
+- **Encoded (NonNegDollars):** Choose — [helper "Do you claim a deduction for business use of your home for this business?" = true → line 5 (sc.ho_line5)] [helper "Do you claim a deduction for business use of your home for this business?" = false → helper "Zero"]
 - Expr: `{"alternatives":[{"guard":{"eq":["sc.ho_uses",{"const":true}],"op":"test"},"then":"sc.ho_line5"},{"guard":{"eq":["sc.ho_uses",{"const":false}],"op":"test"},"then":"sc.zero"}],"op":"choose"}`
 - Cite: [i1040sc] p. 14, Reporting your expenses for business use of the home, "Include the amount from line 5 of the Simplified Method Worksheet on line 30" (2025; sha256 b5536db9)
 
@@ -911,7 +911,7 @@
 ## (gate) — `sc.hi_screened`
 
 - **Authored helper label:** This health insurance deduction is outside this tool
-- **Encoded (Bool):** column (screen) (sc.hi_screen) = true
+- **Encoded (Bool):** helper "Does any of these apply to this health insurance?" = true
 - Expr: `{"eq":["sc.hi_screen",{"const":true}],"op":"test"}`
 - Cite: [i1040gi] p. 95, Schedule 1, line 17, Exceptions (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -1017,7 +1017,7 @@
 ## 14 — `sc.f7206_line14`
 
 - **IRS:** Self-employed health insurance deduction
-- **Encoded (NonNegDollars):** Choose — [column (screen) (sc.hi_uses) = true → helper "The smaller of line 3 or line 13"] [column (screen) (sc.hi_uses) = false → helper "Zero"]
+- **Encoded (NonNegDollars):** Choose — [helper "Health insurance established under this business" = true → helper "The smaller of line 3 or line 13"] [helper "Health insurance established under this business" = false → helper "Zero"]
 - Expr: `{"alternatives":[{"guard":{"eq":["sc.hi_uses",{"const":true}],"op":"test"},"then":"sc.f7206_min"},{"guard":{"eq":["sc.hi_uses",{"const":false}],"op":"test"},"then":"sc.zero"}],"op":"choose"}`
 - Cite: [f7206] Form 7206 (2025), line 14, "Enter the smaller of line 3 or line 13 here and on Schedule 1 (Form 1040), line 17" (2025; created 2025-10-02; sha256 822203c9)
 

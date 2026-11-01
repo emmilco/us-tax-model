@@ -127,7 +127,7 @@
 ## (gate) — `scveh.smr_bad`
 
 - **Authored helper label:** The standard mileage rate is not available for this vehicle
-- **Encoded (Bool):** column (screen) (scveh.smr_ok) = false
+- **Encoded (Bool):** helper "May you use the standard mileage rate for this vehicle?" = false
 - Expr: `{"eq":["scveh.smr_ok",{"const":false}],"op":"test"}`
 - Cite: [i1040sc] p. 6, Line 9 (2025; sha256 b5536db9)
 
@@ -241,7 +241,7 @@
 ## (gate) — `scveh.screened`
 
 - **Authored helper label:** This vehicle's depreciation is outside this tool
-- **Encoded (Bool):** column (screen) (scveh.screen) = true
+- **Encoded (Bool):** helper "Does any of these apply to this vehicle?" = true
 - Expr: `{"eq":["scveh.screen",{"const":true}],"op":"test"}`
 - Cite: [i4562] pp. 13-15, Part V (2025; sha256 5c1c95b7)
 
@@ -348,7 +348,7 @@
 ## (gate) — `scveh.bonus_mixed`
 
 - **Authored helper label:** The special allowance choice differs within the 5-year class
-- **Encoded (Bool):** column (screen) (scveh.bonus_same) = false
+- **Encoded (Bool):** helper "Is the choice the same for all 5-year property placed in service in 2025?" = false
 - Expr: `{"eq":["scveh.bonus_same",{"const":false}],"op":"test"}`
 - Cite: [i4562] p. 7, Election out (2025; sha256 5c1c95b7)
 

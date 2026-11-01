@@ -414,7 +414,7 @@
 ## (helper) — `person.ho_count`
 
 - **Authored helper label:** Number of this person's Schedules C that claim the business use of the home
-- **Encoded (Count):** Add sc.one over every confirmed sc entry for which column (screen) (sc.ho_uses) = true, within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Count):** Add sc.one over every confirmed sc entry for which helper "Do you claim a deduction for business use of your home for this business?" = true, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"sc","field":"sc.one","op":"sum_over","where":{"eq":["sc.ho_uses",{"const":true}],"op":"test"}}`
 - Cite: [i1040sc] p. 10, Simplified method, "You are limited to a maximum of 300 square feet for all of the businesses you conduct in your home that qualify for this deduction" (2025; sha256 b5536db9)
 
@@ -484,7 +484,7 @@
 ## (gate) — `person.se_screened`
 
 - **Authored helper label:** This person's self-employment tax is outside this tool
-- **Encoded (Bool):** column (screen) (person.se_screen) = true
+- **Encoded (Bool):** helper "Does any of these apply to this person's self-employment?" = true
 - Expr: `{"eq":["person.se_screen",{"const":true}],"op":"test"}`
 - Cite: [i1040sse] pp. 1-5 (2025; sha256 ea9e3120)
 
@@ -545,7 +545,7 @@
 ## (gate) — `person.plan_screened`
 
 - **Authored helper label:** This person's retirement contributions are outside this tool (screened, or a plan with more than one Schedule C)
-- **Encoded (Bool):** (column (screen) (person.plan_screen) = true or not helper "Retirement plan of this self-employed person" = 'none' and helper "Number of Schedules C for this person" > 1 (a count))
+- **Encoded (Bool):** (helper "Does any of these apply to this person's retirement contributions?" = true or not helper "Retirement plan of this self-employed person" = 'none' and helper "Number of Schedules C for this person" > 1 (a count))
 - Expr: `{"any":[{"eq":["person.plan_screen",{"const":true}],"op":"test"},{"all":[{"not":{"eq":["person.plan",{"const":"none"}],"op":"test"},"op":"test"},{"gt":["person.sc_count",{"const":1,"type":"Count"}],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [p560] pp. 8–11, 14–17, 38–40, chapters 2, 3 and 5; p. 7, "If you have more than one business, but only one has a retirement plan, only the earned income from that business is considered for that plan" (For use in preparing 2025 returns; sha256 1f1f7abe)
 
@@ -887,7 +887,7 @@
 ## (helper) — `person.sc_1a`
 
 - **Authored helper label:** This person's Schedules C with Schedule 1-A tips or overtime
-- **Encoded (Count):** Add sc.one over every confirmed sc entry for which column (screen) (sc.tips_ot) = true, within the current person when parent-bound. An unanswered roster is unknown.
+- **Encoded (Count):** Add sc.one over every confirmed sc entry for which helper "Tips or overtime in this business to be deducted on Schedule 1-A" = true, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"sc","field":"sc.one","op":"sum_over","where":{"eq":["sc.tips_ot",{"const":true}],"op":"test"}}`
 - Cite: [i1040gi] p. 104, Schedule 1-A, line 5 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -1036,7 +1036,7 @@
 ## (gate) — `person.sav_excess_gate`
 
 - **Authored helper label:** Elective deferrals in box 12 over the limit for 2025
-- **Encoded (Bool):** helper "Elective deferrals and designated Roth contributions for 2025 from this person's Forms W-2, box 12" > $0 (sales.zero) and column (screen) (person.sav_excess) = true
+- **Encoded (Bool):** helper "Elective deferrals and designated Roth contributions for 2025 from this person's Forms W-2, box 12" > $0 (sales.zero) and helper "Were your elective deferrals and designated Roth contributions for 2025 more than the limit for your plans?" = true
 - Expr: `{"all":[{"gt":["person.sav_w2",{"param":"sales.zero"}],"op":"test"},{"eq":["person.sav_excess",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [iw2w3] p. 20, Box 12—Codes, "Even though the 2025 limit for elective deferrals and designated Roth contributions is $23,500, Alex's total elective deferral amount of $26,500 is reported in box 12 with code D" (2025; printed date 2025-02-19; sha256 bfecbc99)
 
@@ -1125,7 +1125,7 @@
 ## (gate) — `person.ira_excess_gate`
 
 - **Authored helper label:** This person's IRA contributions for 2025 are excess or recharacterized, or an earlier excess remains (screen)
-- **Encoded (Bool):** helper "This person made traditional or Roth IRA contributions for 2025" = true and column (screen) (person.ira_excess) = true
+- **Encoded (Bool):** helper "This person made traditional or Roth IRA contributions for 2025" = true and helper "Were your 2025 IRA contributions more than allowed, recharacterized, or is an earlier excess contribution still in your IRA?" = true
 - Expr: `{"all":[{"eq":["person.ira_any_contrib",{"const":true}],"op":"test"},{"eq":["person.ira_excess",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [p590a] p. 35, Excess Contributions, "In general, if the excess contributions for a year aren’t withdrawn by the date your return for the year is due (including extensions), you are subject to a 6% tax" (2025; sha256 ca0e4287)
 

@@ -4,27 +4,44 @@ The rendered English of every printed line of `IRA Deduction Worksheet — Sched
 
 | field | value |
 | --- | --- |
-| date | 2026-10-23 |
+| date | 2026-11-01 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | a2746e6673a2d4fcd2095a8499f330f0975255b86532f6477cef146d7bf393d0 |
+| prompt sha256 | 107635c74346a6a226391f0d7ff37324be3354a80a24beb2a5281f14d36b730e |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
-| subject sha256 | 7ed94ed95355b32558ece2f6f4945c15fe8a98659bab2f180970bbe7ec2175e3 |
+| subject sha256 | 3fea6ef10ddd71ffce11cdd033d4b6e23f04833830ca272aab263a390a4cd005 |
 | lines judged | 21 |
-| match / mismatch / unclear / missing | 16 / 5 / 0 / 0 |
+| match / mismatch / unclear / missing | 15 / 6 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
 
 | document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
 | --- | --- | --- | --- | --- | --- | --- |
-| i1040gi | 2025; printed date 2026-02-25 | 31, 95, 96, 97, 98 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 31, 95, 96, 98 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
-| p590a | 2025 | 6, 7, 16, 35 | cited pages | be942a345a01a8f875a2a625b400d7760221e1a55a2c85dca5ab75826e6c801a | 6, 7, 35 | cbe3b3b920a64ff514424a52a467ab8efabacfe958197d1ca8aabaee71ca5a3b |
-| i8606 | 2025 | 5 | cited pages | 242e712835ef634f3af8f1d0f19435b236e9c54b80921d6017c153b3e6c2aec6 | 5 | 805e59f2458d33a3fc0a1d17ebede2ecd59e18d911069bbe84987e53e297ec79 |
+| i1040gi | 2025; printed date 2026-02-25 | 31, 93, 95, 96, 97, 98, 117 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 31, 93, 95, 96, 98, 117 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| p590a | 2025 | 6, 7, 15, 16, 35 | cited pages | be942a345a01a8f875a2a625b400d7760221e1a55a2c85dca5ab75826e6c801a | 6, 7, 15, 35 | cbe3b3b920a64ff514424a52a467ab8efabacfe958197d1ca8aabaee71ca5a3b |
+| i8606 | 2025 | 2, 5, 9 | cited pages | 242e712835ef634f3af8f1d0f19435b236e9c54b80921d6017c153b3e6c2aec6 | 2, 5, 9 | 805e59f2458d33a3fc0a1d17ebede2ecd59e18d911069bbe84987e53e297ec79 |
 | f8606 | 2025 | 1, 2 | whole document | 1e2747fd38afcfefc11564f9673556808470614c153f2d34458afe98a560cb2c | - | 47a023b69eb81610f8bf73059c609131854d900f1694660f8496a7791f974233 |
+| f1040 | 2025; created 2025-09-05 | 1, 2 | whole document | ac32f00aed489e0722d0b409c0eb12915801d66f3a2fab05bc8391af61426383 | - | 72926cc2b256a68592e6cf0f2aa384ef8371eec968a0c8c62e050edf5bfea76a |
+| f1040s1 | 2025; created 2025-07-25 | 1, 2 | whole document | 30004f72691a7078d8720e432e83110aa2bc3852ce9b45867becdb8c28222956 | - | 2293cadd525c2df84256455db693bbd46b710c62d28a98d503b1a6f8d8aea444 |
+| i1040sse | 2025 | 1, 2, 3, 4, 5 | whole document | bd4768e77e9087e707701447574c3fd8b1b6ac8deca77fcf2e1bce4c50b7db28 | 1, 2, 3, 4, 5 | 6cb68f929e214450ea7ffa33648d5602e2431f38e91c7a6c83dfbee0ab23f08c |
+| f8880 | 2025; created 2025-11-04 | 1, 2 | whole document | e8b37e5065850674d94eecd145d787e1789924b0c2b09bf3693992c45ba9dc94 | 2 | e082ccb481b2d0e872449d7728c290669213b8d16d4c94f281c1bb70aeaed575 |
+| iw2w3 | 2025; printed date 2025-02-19 | 17, 18 | cited pages | 27ad850a44d58d9186afcccb33b8a32f4747911e2b1b3138de515f44d4de33f3 | 17, 18 | 3876738db222e8abe6103f29d8a8654a3139b9896f97e325d50e80b87ed5b26a |
+| i1040sc | 2025 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | cited pages | dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a | 2, 3, 4, 5, 6, 7, 8, 9, 10, 13, 14, 15 | 616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918 |
+| f1040sse | 2025; created 2025-05-07 | 1, 2 | whole document | d214b41a4e42da1953a1ee216b6f9d263be284a90cf9f7f28dcb87cd0e9913e6 | - | fbeaf5e9b8509f8fe754b52a6b5a643934ae2ff1a6f76e6e69af8be42fcd2cdd |
+| f1040sc | 2025; created 2025-04-03 | 1, 2 | whole document | ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022 | - | 44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376 |
+| f1040sa | 2025; created 2025-11-20 | 1 | whole document | 225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd | - | bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe |
+| i1040s8812 | 2025; printed date 2026-01-23 | 8 | cited pages | fd50a5266cc20aa5a31de0535658793f75c7abbb12fd83b65dc5b21c6ede2765 | - | e6ba91f54df679c9c19c23169c369f14bff012ba2fe110c3973bde59676c1d45 |
+| p560 | For use in preparing 2025 returns | 7, 8, 9, 10, 11, 14, 15, 16, 17, 38, 39, 40 | cited pages | 38bbfa2efb2894e2527d66cd3478f33c6ceae4b777f78674c22bec16db9809aa | 7, 8, 9, 10, 11, 14, 15, 16, 17, 38, 40 | 7ef279c8f34addc2ff13420e35fab4a092bf8027f53907c28a5f46d2c21da737 |
+| f7206 | 2025; created 2025-10-02 | 1 | whole document | 1f54af11e092a24258ac71f29d2bcfeeda1d6100ca332357d4569eea889e1dbb | - | e3b265efad583dd859c584d4e7e8a17d7b6e927878922ab5f020e2ff79a18d87 |
+| i4562 | 2025 | 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
+| p946 | For use in preparing 2025 returns | 17, 18, 19, 34, 37, 39, 41, 59, 61, 62, 63, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 17, 18, 19, 34, 37, 39, 41, 63 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
+| i7206 | 2025 | 1, 2 | whole document | 88aebffe01e22b57dadeb703483459075718cb0b2514fe8f00185975cfbeef3a | 1, 2 | 5bfa308e7e4634d4a0162d76b4af6a4182b8539a390109360875303222231cfe |
+| f4562 | 2025; created 2025-10-09 | 1, 2, 3 | whole document | 71e2ace527072aaa7293e77897bb4ab8e473fa9c47b6b1ccb977fdc58a93bc2d | - | a1330c49d931e7ecdc867aef2d9e01390fc7b4d7e9321943a21ed0f8e883ed18 |
+| n-25-05 | Notice 2025-5 | 1, 2, 3, 4, 5 | whole document | 394f6b5ffb7c30e745322f0f20d9137608b1e2429fc4c76b06dedd690d4fb6e3 | - | 349e2797f87c588214722bcd22b7ec317c86c90a255ec8496941ac0c09909a8d |
 
 ## Lines
 
@@ -33,125 +50,129 @@ Status: **MISMATCH**
 
 Restated: helper "Anyone on the return made traditional IRA contributions for 2025" = true and helper "You were covered by a retirement plan (1 if Yes)" > 0 (a count)
 
-Model: IRS says if you weren't covered but your spouse was, you are considered covered unless you lived apart for all of 2025; cov_you counts only actual work or self-employed plan coverage, so the deemed-coverage case is omitted.
+Model: The IRS line asks 'Were you covered by a retirement plan' without requiring traditional IRA contributions; the restatement adds that condition and does not reflect the MFS spouse-plan deemed-coverage rule.
 
-Ruling: open
+Ruling: refusal located elsewhere; project retained. Married filing separately is refused for the whole return before the worksheet is reached: scope.ready refuses on s3.mfs (Form 1040 filing status married filing separately; i1040gi p. 14, Married Filing Separately), so the worksheet's married-filing-separately rule (i1040gi p. 97, "If you weren't covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025") is never needed; on the statuses the tool completes, line 1a is the filer's own coverage, as the line asks.
 
 ### 1b — If married filing jointly, was your spouse covered by a retirement plan?
-Status: **MATCH**
+Status: **MISMATCH**
 
-Model: On a joint return the restatement tests spouse retirement-plan coverage, which matches line 1b's spouse-covered question.
+Restated: helper "Anyone on the return made traditional IRA contributions for 2025" = true and helper "Your spouse was covered by a retirement plan (1 if Yes)" > 0 (a count)
+
+Model: The IRS line is 'If married filing jointly, was your spouse covered by a retirement plan?'; the restatement adds a contribution condition and does not condition the line on married filing jointly.
+
+Ruling: representation — i1040gi p. 97, line 1b: "If married filing jointly, was your spouse covered by a retirement plan?" The added contribution condition does not matter because the worksheet applies only when traditional IRA contributions were made, and a spouse entry exists only on a joint return; the line is the spouse's own coverage, as the source asks.
 
 ### 2a — Enter the amount shown below that applies to you (your IRA)
 Status: **MISMATCH**
 
 Restated: Choose — [helper "Lines 2 through 6 are completed (traditional IRA contributions, and someone is covered by a retirement plan)" = true → helper "Line 2, your column"] [helper "Lines 2 through 6 are completed (traditional IRA contributions, and someone is covered by a retirement plan)" = false → helper "Zero"]
 
-Model: IRS line 2 says married filing separately and lived apart from your spouse for all of 2025 enter $89,000; the line 2 helper maps every MFS return to $10,000.
+Model: For married filing separately and living apart from the spouse all year, the IRS says 'enter $89,000'; the program uses $10,000 for all married-filing-separately cases.
 
-Ruling: open
+Ruling: refusal located elsewhere; project retained. Married filing separately is refused for the whole return before the worksheet is reached: scope.ready refuses on s3.mfs (Form 1040 filing status married filing separately; i1040gi p. 14, Married Filing Separately), so the $89,000 amount for a married filer who lived apart all year and the $10,000 amount (i1040gi p. 97, line 2) are never read; the single, head of household, qualifying surviving spouse and joint amounts agree, as the model says.
 
 ### 2b — Enter the amount shown below that applies to you (your spouse's IRA)
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: Choose — [helper "Lines 2 through 6 are completed (traditional IRA contributions, and someone is covered by a retirement plan)" = true → helper "Line 2, your spouse's column"] [helper "Lines 2 through 6 are completed (traditional IRA contributions, and someone is covered by a retirement plan)" = false → helper "Zero"]
-
-Model: IRS line 2 says married filing separately and lived apart from your spouse for all of 2025 enter $89,000; the line 2 helper maps every MFS return to $10,000.
-
-Ruling: open
+Model: For the spouse's column in supported joint-return cases, the $146,000/$246,000 computation matches the IRS line 2 instructions.
 
 ### 3 — Enter the amount from Form 1040 or 1040-SR, line 9
 Status: **MATCH**
 
-Model: Enters the amount from Form 1040 line 9, as line 3 instructs.
+Model: The restatement uses Form 1040 line 9, matching 'Enter the amount from Form 1040 or 1040-SR, line 9.'
 
 ### 4 — Enter the total of the amounts from Schedule 1, lines 11 through 19a, plus 23 and 25
 Status: **MISMATCH**
 
 Restated: Add s1 line 11, s1 line 13, s1 line 15, s1 line 16, s1 line 17, s1 line 18, s1 line 19a, and s1 line 25.
 
-Model: IRS line 4 is the total of Schedule 1 'lines 11 through 19a, plus 23 and 25'; the restatement omits lines 12, 14, and 23 and lists only selected lines.
+Model: The IRS says to add Schedule 1 'lines 11 through 19a, plus 23 and 25'; the restatement omits Schedule 1 line 12, line 14, and line 23.
 
-Ruling: open
+Ruling: refusal located elsewhere; project retained (as ruled before). Schedule 1 lines 12, 14 and 23 are outside this tool: scope.schedule1 asks about "an adjustment on Schedule 1 line 12, 14 or 23" and refuses Form 1040 lines 8 and 10, so worksheet line 3 (Form 1040 line 9) refuses whenever one applies and within scope they are zero, as the line's citation says. The lines in scope (11, 13, 15 to 19a and 25) are all added. i1040gi p. 97, line 4, "Enter the total of the amounts from Schedule 1, lines 11 through 19a, plus 23 and 25".
 
 ### 5 — Subtract line 4 from line 3. If married filing jointly, enter the result in both columns
 Status: **MATCH**
 
-Model: Subtracts line 4 from line 3, matching line 5; the same result applies to both joint columns.
+Model: The restatement subtracts line 4 from line 3 as the IRS line directs.
 
-### 6a — Is the amount on line 5 less than the amount on line 2? If yes, subtract line 5 from line 
+### 6a — Is the amount on line 5 less than the amount on line 2? If yes, subtract line 5 from line
 Status: **MATCH**
 
-Model: When lines 2 through 6 apply, it subtracts line 5 from the line 2 taxpayer column and floors at zero, matching line 6's Yes/No result; otherwise it uses zero.
+Model: The restatement subtracts line 5 from line 2 for your column when line 5 is less, with a zero floor, matching line 6.
 
-### 6b — Is the amount on line 5 less than the amount on line 2? If yes, subtract line 5 from line 
+### 6b — Is the amount on line 5 less than the amount on line 2? If yes, subtract line 5 from line
 Status: **MATCH**
 
-Model: When lines 2 through 6 apply, it subtracts line 5 from the line 2 spouse column and floors at zero, matching line 6's Yes/No result; otherwise it uses zero.
+Model: The restatement subtracts line 5 from line 2 for the spouse's column when line 5 is less, with a zero floor, matching line 6.
 
 ### 7a — Multiply line 6a by the percentage that applies to you, increased to a multiple of $10 and
 Status: **MATCH**
 
-Model: Uses the line 7 threshold, applicable amount, percentage, rounding up to the next $10, and $200 floor for the taxpayer column.
+Model: The restatement follows the line 7 percentage, threshold, rounding, and $200 minimum rules for your column.
 
 ### 7b — Multiply line 6b by the percentage that applies to you, increased to a multiple of $10 and
 Status: **MATCH**
 
-Model: Uses the line 7 threshold, applicable amount, percentage, rounding up to the next $10, and $200 floor for the spouse column.
+Model: The restatement follows the line 7 percentage, threshold, rounding, and $200 minimum rules for the spouse's column.
 
 ### 8 — Enter the total of your (and your spouse's if filing jointly): wages, salaries, tips, etc.
-Status: **MATCH**
+Status: **MISMATCH**
 
-Model: Adds W-2 box 1 wages and Schedule 1 line 2a; nontaxable combat pay, which the IRS also includes, is excluded by the ira.combat_gate refusal.
+Restated: Add helper "Wages, salaries, tips, etc. (box 1 of the Forms W-2 of you and your spouse)" and s1 line 2a.
+
+Model: The IRS line includes 'Nontaxable combat pay' in the total; the restatement adds only W-2 box 1 wages and Schedule 1 line 2a.
+
+Ruling: refusal located elsewhere; project retained. Nontaxable combat pay is refused: ira.combat_gate (traditional IRA contributions and s8812.combat_pay, "Did you receive any nontaxable combat pay in 2025 (it is generally shown in Form W-2, box 12, code Q)?") refuses person.ira_line11, so line 12 and Schedule 1 line 20, on every return that has it; within scope line 8 is wages and line 2a, as the line's citation says. i1040gi p. 98, line 8, "Nontaxable combat pay. This amount should be reported in box 12 of Form W-2 with code Q".
 
 ### 9 — Enter the earned income you (and your spouse if filing jointly) received as a self-employe
 Status: **MISMATCH**
 
 Restated: Add person.ira_se over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
 
-Model: IRS line 9 includes earned income received 'as a self-employed individual or a partner'; person.ira_se is zero without a Schedule C, so partner or other self-employment income not on Schedule C is omitted, and the stated refusal covers only Schedule C income not from personal services.
+Model: The IRS line includes earned income 'as a self-employed individual or a partner'; the restatement uses only Schedule C amounts and zeros anyone without a Schedule C.
 
-Ruling: open
+Ruling: owner ruling (register entry amb.2025.ira_se_floor); project retained. person.ira_se, now shown in the glossary, is each person's Schedule C profit or loss less that person's Schedule 1 lines 15 and 16 deductions, floored at zero per person (i1040gi p. 98, line 9, "Enter the earned income you (and your spouse if filing jointly) received as a self-employed individual or a partner, minus any deductions on Schedule 1, lines 15 and 16. If zero or less, enter -0-"); whether one spouse's loss nets against the other's earnings is the ambiguity the owner settled. Partnership earned income is refused before this line by the Schedule SE screen (person.se_screened, 'partnership and other self-employment income'), so only Schedule C earnings reach it.
 
 ### 10 — Add lines 8 and 9
 Status: **MATCH**
 
-Model: Adds line 8 and line 9, as line 10 instructs.
+Model: The restatement adds line 8 and line 9 as the IRS line directs.
 
 ### (screen) (ira.special) — Does any of these apply to you or your spouse (the IRA deduction special cases)?
 Status: **MATCH**
 
-Model: The screen lists the nonqualified deferred compensation/457, fellowship or stipend, qualified reservist repayment, and difficulty-of-care special cases reflected in the line 20 instructions.
+Model: The screen lists the nonqualified deferred compensation, fellowship/stipend, qualified reservist repayment, and difficulty-of-care special cases described in the IRS materials.
 
 ### (screen) (ira.se_capital) — Is any Schedule C income on this return from a business in which your (or your spouse's) p
 Status: **MATCH**
 
-Model: Asks whether Schedule C income is from a business where personal services are not a material income-producing factor, matching the line 9 rule.
+Model: The screen matches the IRS rule that self-employment income counts only where personal services are a material income-producing factor.
 
 ### 11a — Enter traditional IRA contributions made, or that will be made by the due date of your 202
 Status: **MATCH**
 
-Model: Sums the taxpayer's traditional IRA contributions for 2025, excluding rollovers and other noncontributions as the line 20 instructions require.
+Model: The restatement totals this person's traditional IRA contributions for your IRA, matching line 11a.
 
 ### 11b — Enter traditional IRA contributions made, or that will be made by the due date of your 202
 Status: **MATCH**
 
-Model: Sums the spouse's traditional IRA contributions for 2025, excluding rollovers and other noncontributions as the line 20 instructions require.
+Model: The restatement totals this person's traditional IRA contributions for the spouse's IRA, matching line 11b.
 
 ### 12a — Enter the smallest of line 7a, 10, or 11a. This is the most you can deduct (your IRA)
 Status: **MATCH**
 
-Model: Computes the smallest of line 7a, line 10, and line 11a for the taxpayer's column, as line 12a instructs, with refusals narrowing unsupported cases.
+Model: The restatement computes the smallest of line 7a, line 10, and line 11a for your column, as line 12 directs.
 
-### 12b — Enter the smallest of line 7b, 10, or 11b. This is the most you can deduct (your spouse's 
+### 12b — Enter the smallest of line 7b, 10, or 11b. This is the most you can deduct (your spouse's
 Status: **MATCH**
 
-Model: Computes the smallest of line 7b, line 10, and line 11b for the spouse's column, as line 12b instructs, with refusals narrowing unsupported cases.
+Model: The restatement computes the smallest of line 7b, line 10, and line 11b for the spouse's column, as line 12 directs.
 
 ### (screen) (ira.deduct_less) — Do you want to deduct less than the most you can deduct, treating the rest as a nondeducti
 Status: **MATCH**
 
-Model: Matches line 12's option to deduct a smaller amount and treat the rest as a nondeductible contribution under Form 8606.
+Model: The screen matches the IRS line 12 option to deduct a smaller amount and treat the rest as a nondeductible contribution.
 
 ## Raw response
 
@@ -159,65 +180,65 @@ Model: Matches line 12's option to deduct a smaller amount and treat the rest as
 lines:
   - key: "1a"
     status: MISMATCH
-    reason: "IRS says if you weren't covered but your spouse was, you are considered covered unless you lived apart for all of 2025; cov_you counts only actual work or self-employed plan coverage, so the deemed-coverage case is omitted."
+    reason: "The IRS line asks 'Were you covered by a retirement plan' without requiring traditional IRA contributions; the restatement adds that condition and does not reflect the MFS spouse-plan deemed-coverage rule."
   - key: "1b"
-    status: MATCH
-    reason: "On a joint return the restatement tests spouse retirement-plan coverage, which matches line 1b's spouse-covered question."
+    status: MISMATCH
+    reason: "The IRS line is 'If married filing jointly, was your spouse covered by a retirement plan?'; the restatement adds a contribution condition and does not condition the line on married filing jointly."
   - key: "2a"
     status: MISMATCH
-    reason: "IRS line 2 says married filing separately and lived apart from your spouse for all of 2025 enter $89,000; the line 2 helper maps every MFS return to $10,000."
+    reason: "For married filing separately and living apart from the spouse all year, the IRS says 'enter $89,000'; the program uses $10,000 for all married-filing-separately cases."
   - key: "2b"
-    status: MISMATCH
-    reason: "IRS line 2 says married filing separately and lived apart from your spouse for all of 2025 enter $89,000; the line 2 helper maps every MFS return to $10,000."
+    status: MATCH
+    reason: "For the spouse's column in supported joint-return cases, the $146,000/$246,000 computation matches the IRS line 2 instructions."
   - key: "3"
     status: MATCH
-    reason: "Enters the amount from Form 1040 line 9, as line 3 instructs."
+    reason: "The restatement uses Form 1040 line 9, matching 'Enter the amount from Form 1040 or 1040-SR, line 9.'"
   - key: "4"
     status: MISMATCH
-    reason: "IRS line 4 is the total of Schedule 1 'lines 11 through 19a, plus 23 and 25'; the restatement omits lines 12, 14, and 23 and lists only selected lines."
+    reason: "The IRS says to add Schedule 1 'lines 11 through 19a, plus 23 and 25'; the restatement omits Schedule 1 line 12, line 14, and line 23."
   - key: "5"
     status: MATCH
-    reason: "Subtracts line 4 from line 3, matching line 5; the same result applies to both joint columns."
+    reason: "The restatement subtracts line 4 from line 3 as the IRS line directs."
   - key: "6a"
     status: MATCH
-    reason: "When lines 2 through 6 apply, it subtracts line 5 from the line 2 taxpayer column and floors at zero, matching line 6's Yes/No result; otherwise it uses zero."
+    reason: "The restatement subtracts line 5 from line 2 for your column when line 5 is less, with a zero floor, matching line 6."
   - key: "6b"
     status: MATCH
-    reason: "When lines 2 through 6 apply, it subtracts line 5 from the line 2 spouse column and floors at zero, matching line 6's Yes/No result; otherwise it uses zero."
+    reason: "The restatement subtracts line 5 from line 2 for the spouse's column when line 5 is less, with a zero floor, matching line 6."
   - key: "7a"
     status: MATCH
-    reason: "Uses the line 7 threshold, applicable amount, percentage, rounding up to the next $10, and $200 floor for the taxpayer column."
+    reason: "The restatement follows the line 7 percentage, threshold, rounding, and $200 minimum rules for your column."
   - key: "7b"
     status: MATCH
-    reason: "Uses the line 7 threshold, applicable amount, percentage, rounding up to the next $10, and $200 floor for the spouse column."
+    reason: "The restatement follows the line 7 percentage, threshold, rounding, and $200 minimum rules for the spouse's column."
   - key: "8"
-    status: MATCH
-    reason: "Adds W-2 box 1 wages and Schedule 1 line 2a; nontaxable combat pay, which the IRS also includes, is excluded by the ira.combat_gate refusal."
+    status: MISMATCH
+    reason: "The IRS line includes 'Nontaxable combat pay' in the total; the restatement adds only W-2 box 1 wages and Schedule 1 line 2a."
   - key: "9"
     status: MISMATCH
-    reason: "IRS line 9 includes earned income received 'as a self-employed individual or a partner'; person.ira_se is zero without a Schedule C, so partner or other self-employment income not on Schedule C is omitted, and the stated refusal covers only Schedule C income not from personal services."
+    reason: "The IRS line includes earned income 'as a self-employed individual or a partner'; the restatement uses only Schedule C amounts and zeros anyone without a Schedule C."
   - key: "10"
     status: MATCH
-    reason: "Adds line 8 and line 9, as line 10 instructs."
+    reason: "The restatement adds line 8 and line 9 as the IRS line directs."
   - key: "(screen) (ira.special)"
     status: MATCH
-    reason: "The screen lists the nonqualified deferred compensation/457, fellowship or stipend, qualified reservist repayment, and difficulty-of-care special cases reflected in the line 20 instructions."
+    reason: "The screen lists the nonqualified deferred compensation, fellowship/stipend, qualified reservist repayment, and difficulty-of-care special cases described in the IRS materials."
   - key: "(screen) (ira.se_capital)"
     status: MATCH
-    reason: "Asks whether Schedule C income is from a business where personal services are not a material income-producing factor, matching the line 9 rule."
+    reason: "The screen matches the IRS rule that self-employment income counts only where personal services are a material income-producing factor."
   - key: "11a"
     status: MATCH
-    reason: "Sums the taxpayer's traditional IRA contributions for 2025, excluding rollovers and other noncontributions as the line 20 instructions require."
+    reason: "The restatement totals this person's traditional IRA contributions for your IRA, matching line 11a."
   - key: "11b"
     status: MATCH
-    reason: "Sums the spouse's traditional IRA contributions for 2025, excluding rollovers and other noncontributions as the line 20 instructions require."
+    reason: "The restatement totals this person's traditional IRA contributions for the spouse's IRA, matching line 11b."
   - key: "12a"
     status: MATCH
-    reason: "Computes the smallest of line 7a, line 10, and line 11a for the taxpayer's column, as line 12a instructs, with refusals narrowing unsupported cases."
+    reason: "The restatement computes the smallest of line 7a, line 10, and line 11a for your column, as line 12 directs."
   - key: "12b"
     status: MATCH
-    reason: "Computes the smallest of line 7b, line 10, and line 11b for the spouse's column, as line 12b instructs, with refusals narrowing unsupported cases."
+    reason: "The restatement computes the smallest of line 7b, line 10, and line 11b for the spouse's column, as line 12 directs."
   - key: "(screen) (ira.deduct_less)"
     status: MATCH
-    reason: "Matches line 12's option to deduct a smaller amount and treat the rest as a nondeductible contribution under Form 8606."
+    reason: "The screen matches the IRS line 12 option to deduct a smaller amount and treat the rest as a nondeductible contribution."
 ```

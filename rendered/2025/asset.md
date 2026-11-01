@@ -42,7 +42,7 @@
 ## (gate) — `asset.screened`
 
 - **Authored helper label:** This property is outside this tool
-- **Encoded (Bool):** (helper "The asset class is outside this tool" = true or column (screen) (asset.screen) = true)
+- **Encoded (Bool):** (helper "The asset class is outside this tool" = true or helper "Does any of these apply to this property?" = true)
 - Expr: `{"any":[{"eq":["asset.outside",{"const":true}],"op":"test"},{"eq":["asset.screen",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i4562] pp. 8-12, Part III (2025; sha256 5c1c95b7)
 
@@ -242,7 +242,7 @@
 ## (gate) — `asset.bonus_mixed`
 
 - **Authored helper label:** The special allowance choice differs within a class
-- **Encoded (Bool):** column (screen) (asset.bonus_same) = false
+- **Encoded (Bool):** helper "Is the choice the same for all property of this class placed in service in 2025?" = false
 - Expr: `{"eq":["asset.bonus_same",{"const":false}],"op":"test"}`
 - Cite: [i4562] p. 7, Election out (2025; sha256 5c1c95b7)
 

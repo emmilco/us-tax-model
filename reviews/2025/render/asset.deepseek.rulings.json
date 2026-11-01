@@ -1,0 +1,35 @@
+{
+ "kind": "render",
+ "form": "asset",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "14",
+   "restated": "Choose — [helper \"Special depreciation allowance for this class of property\" = 'full' → helper \"The allowance when it is claimed: 100% if acquired after January 19, 2025, otherwise 40%\"] [helper \"Special depreciation allowance for this class of property\" = 'forty' → helper \"40% special allowance\"] [helper \"Special depreciation allowance for this class of property\" = 'none' → helper \"Zero\"]",
+   "model": "The IRS also provides a 50% allowance for qualified reuse and recycling property and limits the 40% rate to property acquired after September 27, 2017; the restatement applies 40% to any property not acquired after January 19, 2025.",
+   "ruling": "Ruling: finding — i4562 pp. 5–7, Line 14. The 40% rate applies to property acquired after September 27, 2017 and before January 20, 2025; qualified reuse and recycling property placed in service after August 31, 2008 is eligible for 50%. The restatement's \"otherwise 40%\" applies 40% to any property not acquired after January 19, 2025, and the bonus-choice question has no 50% branch. A pre-September-27-2017 asset can be given 40% and a reuse/recycling asset cannot be given 50%. BUG-0291; fix the screen and add the branches with the asset pass (T-158).",
+   "context": "1d792bef21c02f77bb109f5db9a4960fc2c1612d2849bb469bd71625b8e9715c"
+  },
+  {
+   "printed": "19(c)",
+   "restated": "Enter the amount from helper \"Basis for MACRS depreciation (after section 179 and the special allowance)\".",
+   "model": "IRS line 19(c) says to subtract 'any credits and deductions allocable to the property'; the restatement subtracts only section 179 and the special allowance.",
+   "ruling": "Ruling: scope — asset.screen refuses an asset whose basis was adjusted for anything other than depreciation (i4562 pp. 11–12), which covers the credits and deductions allocable to the property that column (c) subtracts. The MACRS basis subtracts section 179 and the special allowance, the two adjustments in this slice.",
+   "context": "1d792bef21c02f77bb109f5db9a4960fc2c1612d2849bb469bd71625b8e9715c"
+  },
+  {
+   "printed": "25",
+   "restated": "Enter the amount from line 14.",
+   "model": "IRS line 25 says 'Enter on line 25 your total special depreciation allowance for all qualified listed property'; it is not the line 14 amount, which the restatement reports only for property other than listed property.",
+   "ruling": "Ruling: representation — i4562 p. 13, Line 25. asset.f25 copies asset.bonus, the per-asset special allowance; the printed line 14 is the non-listed-property line, so \"from line 14\" is loose wording, not the value. The line is shown only for listed property placed in service in 2025, and the Schedule C totals read the per-asset amount filtered by asset.listed.",
+   "context": "1d792bef21c02f77bb109f5db9a4960fc2c1612d2849bb469bd71625b8e9715c"
+  },
+  {
+   "printed": "26(i)",
+   "restated": "Enter the amount from line 6(c).",
+   "model": "IRS line 6 says 'Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26'; line 26(i) is not the line 6(c) amount.",
+   "ruling": "Ruling: representation — i4562 p. 5, Line 6, and p. 16, Column (i). asset.f26i copies asset.s179, the per-asset elected section 179 cost; the printed line 6(c) is the non-listed-property column, so \"from line 6(c)\" is loose wording. A listed property's elected cost is the amount the 26(i) column asks for.",
+   "context": "1d792bef21c02f77bb109f5db9a4960fc2c1612d2849bb469bd71625b8e9715c"
+  }
+ ]
+}

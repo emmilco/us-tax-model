@@ -63,6 +63,13 @@
    "ruling": "Ruling: deferred to T-030 (owner); values unaffected. The sum is figured for every asset; line 26 column (h) adds it only for listed property (sc.f26_assets, where listed). Entry lines are not printed on the values sheet (TASKS.md T-030), and the Form 4562 totals take the asset's amounts only where they belong (the sc sums select 2025 property, earlier property and listed property: sc.f14, sc.f17, sc.f19_*, sc.f25, sc.f26h). The owner chose that, when entry lines are printed, each per-asset printed line will carry the form's value for that asset (T-030)."
   },
   {
+   "printed": "26(h)",
+   "restated": "Add helper \"MACRS on 2025 property\" and helper \"MACRS on property placed in service before 2025\".",
+   "model": "The computation matches column (h), but the gate that reports this line asks only about 'a computer placed in service before 2018', while i4562 column (a) lists 'computers and peripheral equipment placed in service before 2018'. A pre-2018 peripheral not used exclusively at a regular business establishment would be treated as non-listed, so it would miss line 26(h) and go to line 17.",
+   "ruling": "Ruling: deferred to T-030 (owner); values unaffected. The sum is figured for every asset; line 26 column (h) adds it only for listed property (sc.f26_assets, where listed). Entry lines are not printed on the values sheet (TASKS.md T-030), and the Form 4562 totals take the asset's amounts only where they belong (the sc sums select 2025 property, earlier property and listed property: sc.f14, sc.f17, sc.f19_*, sc.f25, sc.f26h). The owner chose that, when entry lines are printed, each per-asset printed line will carry the form's value for that asset (T-030).",
+   "context": "f82b64828609ce185f95acd87ad07eb3f4c9433618abc78b50fe9a4474db5cca"
+  },
+  {
    "printed": "6(c)",
    "restated": "Input — The amount of this property's cost you elect to expense under section 179 (zero if none; not more than its business cost)",
    "model": "The elected-cost input and its more-than-50% limit are right, but listed property used more than 50% is not kept off this line. The IRS says: \"Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26.\"",

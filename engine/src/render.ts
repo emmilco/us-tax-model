@@ -61,7 +61,7 @@ function operandText(op: Operand, doc: FormDoc, ctx: RenderCtx): string {
 // Printed markers of lines that are not on the IRS page: helpers, gates and
 // interview questions. They are named by their authored label, since the
 // marker alone says nothing a reader could check.
-const HELPER_MARKERS = new Set(["(helper)", "(gate)", "(computed helper)", "(question)", "(status)"]);
+const HELPER_MARKERS = new Set(["(helper)", "(gate)", "(computed helper)", "(question)", "(status)", "(screen)"]);
 
 function lineName(line: Line, prefix: string, doc: FormDoc): string {
   if (HELPER_MARKERS.has(line.printed)) return `${prefix}helper "${line.label}"`;
