@@ -81,6 +81,7 @@ step check_table_logs python3 tools/transcription/check_table_logs.py "$@"
 step citations python3 tools/citations.py --strict "$@"
 step citations_self_test python3 tools/citations.py --self-test "$@"
 step year_diff_self_test python3 tools/year_diff.py --self-test "$@"
+step coverage_tree_self_test python3 tools/coverage/tree.py --self-test
 step build build_and_render "$@"
 # Source-coverage checks (T-084 to T-089) read the canonical data and rendered English the build writes.
 step instruction_cites python3 tools/check_instruction_cites.py
@@ -105,6 +106,8 @@ step test_integration "${node[@]}" test-integration "$@"
 step human_review python3 tools/human_review/test_review.py
 step classm_job_seeds "${node[0]}" tools/transcription/test_classm_jobs.mjs
 step coverage "${node[@]}" coverage "$@"
+# Every refusal gate placed in the decision tree, and docs/COVERAGE.md and the README block current.
+step coverage_tree python3 tools/coverage/tree.py --check "$@"
 step properties "${node[@]}" properties "$@"
 step differential "${node[@]}" differential "$@"
 step engine_differential tools/engines/run.sh "$@"
