@@ -16,6 +16,7 @@
     "coverage": "node engine/dist/main.js coverage",
     "check-all": "tools/check_all.sh",
     "check-all-steps": "tools/check_all_steps.sh",
+    "check-all-bg": "tools/check_all_bg.sh",
     "compare": "cd lean && lake build taxeval >/dev/null 2>&1 && cd .. && npm run compile --silent && node engine/dist/main.js compare",
     "mutate": "node engine/dist/main.js mutate",
     "properties": "node engine/dist/main.js properties",

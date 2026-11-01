@@ -455,7 +455,7 @@ Apple's PDFKit through Swift. Prerequisites: Node and npm; Lean 4 through elan (
 the network: `npm install` fetches packages, elan fetches the Lean toolchain, and the outside engines
 are installed with `tools/engines/setup.sh` (OpenTaxSolver must be downloaded by hand; the script says
 how). After that, the suite runs offline. Without the engines, the engine step is skipped visibly and
-its check is not claimed. Turn on the commit guard with `git config core.hooksPath tools/hooks`.
+its check is not claimed. Turn on the commit and push guard with `git config core.hooksPath tools/hooks`.
 
 To start an interview (use synthetic figures; never commit real return data):
 

@@ -153,11 +153,13 @@ claim to test, the stated invariants hold, and the interview has no dead end on 
 `BUG_INVENTORY.md` records every defect caught by any check or reading, before or with its fix: how it
 was caught, the symptom, the root cause, why the existing checks missed it, the fix and its commit. It
 is append-only; `check-all` fails if the committed prefix changes or the ids are not sequential.
-`tools/hooks/pre-commit` refuses any commit whose tree is not the tree the last green
-`npm run check-all` tested, and a run is green only if nothing outside its own outputs changed while it
-ran (`tools/README.md`, "Commit guard"). **Guarantees:** a change to the committed defect record fails
-the suite, and in a clone with the hook enabled (`git config core.hooksPath tools/hooks`) no commit
-lands unless the whole suite passed on that exact tree. **Does not guarantee:** that the suite catches
+`tools/hooks/pre-commit` refuses any commit whose tree is not a tree a green check-all run tested (in
+the working tree, or on a snapshot in a separate worktree), `tools/hooks/pre-push` refuses a push whose
+commits' trees no green run tested (git runs no pre-commit hook on a merge), and a run is green only if
+nothing outside its own outputs changed while it ran (`tools/README.md`, "Commit guard").
+**Guarantees:** a change to the committed defect record fails the suite, and in a clone with the hooks
+enabled (`git config core.hooksPath tools/hooks`) no commit lands, and nothing is pushed, unless the
+whole suite passed on that exact tree. **Does not guarantee:** that the suite catches
 what it does not test for (the "why it survived" field exists to turn each such miss into a new check),
 or anything in a clone without the hook, or a commit made with `--no-verify`.
 

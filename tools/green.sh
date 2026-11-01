@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
-# Shared by tools/check_all.sh and tools/hooks/pre-commit.
+# Shared by tools/check_all.sh, tools/check_all_bg.sh, tools/commit_tested.sh and the hooks.
 # worktree_tree prints the hash of the tree a full `git add -A` would commit
 # (tracked and untracked files, ignored files excluded), without touching the
-# real index. The marker holds that hash after a green check-all run.
+# real index. The marker holds that hash after a green check-all run in this
+# worktree. GREEN_TREES lists the trees of the last 50 green runs in any
+# worktree of the clone, most recent last; is_green accepts a tree in either.
 MARKER="$(git rev-parse --git-path check-all-green)"
+GREEN_TREES="$(cd "$(git rev-parse --git-common-dir)" && pwd)/check-all-green-trees"
 
 worktree_tree() {
   local tmp
@@ -12,4 +15,16 @@ worktree_tree() {
   GIT_INDEX_FILE="$tmp/index" git add -A
   GIT_INDEX_FILE="$tmp/index" git write-tree
   rm -rf "$tmp"
+}
+
+record_green() {
+  local tmp
+  tmp="$(mktemp "$GREEN_TREES.XXXXXX")"
+  { [ -f "$GREEN_TREES" ] && tail -n 49 "$GREEN_TREES"; echo "$1"; } > "$tmp"
+  mv "$tmp" "$GREEN_TREES"
+}
+
+is_green() {
+  { [ -s "$MARKER" ] && [ "$(cat "$MARKER")" = "$1" ]; } && return 0
+  [ -f "$GREEN_TREES" ] && grep -qx "$1" "$GREEN_TREES"
 }

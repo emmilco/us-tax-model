@@ -3,13 +3,14 @@
 # than the default (the newest adopted year in years.json); every step receives
 # the same arguments. tools/check_all.sh runs this and guards it.
 #
-# Compile first: review tools and every build consumer import engine/dist.
-# Other steps run in three waves; the steps of a wave run side by side, each writing
-# its output to its own log, printed in the order below when the wave ends. No
-# two steps of a wave write the same file, and none reads what another of its
-# wave writes: wave 1 checks the sources and logs while it builds and renders,
-# wave 2 runs the checks that read the build, wave 3 writes the evidence report and review packets. A
-# failing step fails the run after its wave. Each step's wall time, in seconds,
+# Compile first: review tools and every build consumer import engine/dist. Then
+# build and render alone: canonical/ and rendered/ are read by the log, review and
+# source-coverage checks. The other steps run in three waves; the steps of a wave
+# run side by side, each writing its output to its own log, printed in the order
+# below when the wave ends. No two steps of a wave write the same file, and none
+# reads what another of its wave writes: wave 1 checks the sources, logs and the
+# build's data, wave 2 runs the evaluator checks, wave 3 writes the evidence report
+# and review packets. A failing step fails the run after its wave. Each step's wall time, in seconds,
 # goes to .git/check-all-times (not tracked).
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
@@ -59,6 +60,9 @@ lean_compare() {
 step compile npm run compile --silent
 wave
 
+step build build_and_render "$@"
+wave
+
 step fetch_sources python3 tools/fetch_sources.py "$@"
 step fetch_sources_self_test python3 tools/fetch_sources.py --self-test
 step archive_text_self_test python3 tools/archive_text.py --self-test
@@ -82,7 +86,6 @@ step citations python3 tools/citations.py --strict "$@"
 step citations_self_test python3 tools/citations.py --self-test "$@"
 step year_diff_self_test python3 tools/year_diff.py --self-test "$@"
 step coverage_tree_self_test python3 tools/coverage/tree.py --self-test
-step build build_and_render "$@"
 # Source-coverage checks (T-084 to T-089) read the canonical data and rendered English the build writes.
 step instruction_cites python3 tools/check_instruction_cites.py
 step instruction_cites_self_test python3 tools/check_instruction_cites.py --self-test

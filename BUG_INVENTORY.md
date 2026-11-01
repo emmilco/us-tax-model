@@ -3915,3 +3915,33 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
   `household.hoh_eligible`. Regressions `stage8.t091r.absence.*`; `stage8.t091.absence.hoh_refused` now refuses at the
   household gate.
 - **Tags:** over-refusal; fix-introduced; refusal-placement; caught-by-source-adjudication
+
+## BUG-0268 — check-all ran the checks that read the build beside the build
+
+- **Date:** 2026-10-31
+- **Caught by:** reading `tools/check_all_steps.sh` while designing the background runner (T-103).
+- **Symptom:** the step list's own rule, "none reads what another of its wave writes", was broken: `build` (which writes
+  `canonical/` and `rendered/`) ran in the same wave as the source-coverage checks (`check_instruction_cites.py`,
+  `check_operands.py`, `check_signs.py`, `check_consumers.py`, `check_limits.py`, `check_screens.py`,
+  `check_completeness.py`, all reading `canonical/`) and as `check_logs.py`, `compare_families.py` and
+  `audit_skipped.py` (reading `rendered/` and `canonical/` through `subjects.py` and `classm.py`). They read whatever the
+  previous build left, or a file the build was writing. A run on edited but unbuilt forms could pass those checks on the
+  old data. No wrong green run is known; runs usually followed a build.
+- **Where:** `tools/check_all_steps.sh`.
+- **Fix:** `build` runs alone, in its own wave after `compile`; every later step sees the build of the tree under test.
+  About 50 seconds longer per run (the build no longer overlaps other steps).
+- **Tags:** tool-defect; race; caught-by-audit
+
+## BUG-0269 — A merge commit bypassed the commit guard
+
+- **Date:** 2026-10-31
+- **Caught by:** the T-091 session: `git pull` made merge commit 286792c, which no check-all run tested; git runs no
+  pre-commit hook on a merge and the repository had no other hook.
+- **Symptom:** `docs/TRUST.md` section 11 guaranteed that "no commit lands unless the whole suite passed on that exact
+  tree", but a merge commit could land, and be pushed, untested. (The tree pushed then was not affected: the next commit,
+  274f913, was green and was the tip pushed.)
+- **Where:** `tools/hooks/` (no pre-push or pre-merge-commit hook).
+- **Fix:** `tools/hooks/pre-push` refuses a push whose commits' trees no green run tested; `tools/green.sh` keeps the last
+  50 green trees of the clone (`.git/check-all-green-trees`), which both hooks accept. Owner's choice over a
+  pre-merge-commit hook: it covers whatever reaches GitHub (merge, rebase, cherry-pick) and keeps `git pull` one step.
+- **Tags:** tool-defect; guard-gap; caught-by-audit

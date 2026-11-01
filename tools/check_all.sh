@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Runs the whole suite (tools/check_all_steps.sh, passing on its arguments,
 # e.g. --year N) and, when it passes, writes
-# the tested tree's hash to .git/check-all-green for tools/hooks/pre-commit.
+# the tested tree's hash to .git/check-all-green and to the clone's list of
+# green trees (tools/green.sh) for tools/hooks/pre-commit and pre-push.
 # A run is green only if nothing outside the suite's own outputs (reports/,
 # rendered/) changed while it ran; an edit made mid-run gets no marker. A run
 # for a year other than the default (--year N) is checked but never marked
@@ -29,4 +30,5 @@ if [ "$year" != "$default_year" ]; then
   exit 0
 fi
 echo "$after" > "$MARKER"
+record_green "$after"
 echo "check-all green: tree $after"

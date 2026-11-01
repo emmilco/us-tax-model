@@ -35,24 +35,39 @@ No project toolchain is pinned yet; engine/proof configuration belongs to Stage 
 `npm run check-all` runs `tools/check_all.sh`, which runs the whole suite
 (`tools/check_all_steps.sh`, for the default year or the one given with
 `npm run check-all -- --year N`) and, when it passes, writes the hash of the tested
-working tree to `.git/check-all-green`. The run counts as green only if nothing
+working tree to `.git/check-all-green` and appends it to `.git/check-all-green-trees`
+(the last 50 green trees of the clone). The run counts as green only if nothing
 outside the suite's own outputs (`reports/`, `rendered/`) changed while it ran.
+
+`npm run check-all-bg` (`tools/check_all_bg.sh`) runs the same suite on a snapshot of
+the working tree in `.git/check-all-worktree`, detached, so the main tree can be
+edited while it runs (`--wait` runs it in the foreground; `--status` reports the
+running and last runs; the log is `.git/check-all-bg/log`). The snapshot is the tree
+`git add -A` would commit; the worktree is the script's own and is reset before each
+run; ignored data the suite reads is copied in as copy-on-write clones, and the build
+outputs are rebuilt from the snapshot. One run at a time. When it is green,
+`tools/commit_tested.sh -F <file>` commits exactly that tree, leaving edits made since
+the snapshot uncommitted; it refuses if HEAD has moved since the snapshot or anything
+is staged, and writes the regenerated `reports/` and `rendered/` files into the
+working tree where it still holds the snapshot's version.
 
 A run for a year other than the default passes or fails as usual but writes no
 marker.
 
-The steps run in three waves of side-by-side steps (see the head of
-`tools/check_all_steps.sh`); a step's output is printed when its wave ends, and
+After compiling and building, the steps run in three waves of side-by-side steps
+(see the head of `tools/check_all_steps.sh`); a step's output is printed when its wave ends, and
 each step's wall time is in `.git/check-all-times`. Mutation spreads its mutants
 over worker threads; `MUTATE_WORKERS=1` runs it on one.
 
-`tools/hooks/pre-commit` refuses any commit whose tree is not exactly the
-tested tree: no green run, a tree changed since the run, or a partial stage.
-Enable it once per clone:
+`tools/hooks/pre-commit` refuses any commit whose tree is not exactly a tested
+tree (the marker, or one of the recorded green trees): no green run, a tree changed
+since the run, or a partial stage. Git runs no pre-commit hook on a merge, so
+`tools/hooks/pre-push` refuses a push whose commits' trees no green run tested, which
+catches a merge made by `git pull`. Enable both once per clone:
 
     git config core.hooksPath tools/hooks
 
-`git commit --no-verify` bypasses it; that is a deliberate act, not a routine.
+`--no-verify` bypasses either hook; that is a deliberate act, not a routine.
 
 ## EIC Table
 
