@@ -85,3 +85,19 @@ top-level document id after an instance bracket. Fixed the class C differential 
 update, and forwarded `--year` to the 16 year-aware steps that dropped it. Renderer marker (1.2) and mutation
 operand coverage (1.4) are scheduled as T-155 and T-156: the first reopens five forms' render reviews, the
 second needs the new mutants' survivors classified. Hook and green-list self-tests run in check-all.
+
+### Triage completed-return sample — 2026-11-01
+
+Checked the handoff's report that f1040 triage had fallen to about 95 completed returns against 500. The sample
+did not fall: 309 returns complete (193 of 1,425 fixtures and 116 of 500 generated), plus completed partials,
+the same as f44bae4 (194/116). The 95 and the earlier 520 were disagreement counts on completed returns; the
+refreshed candidate disagrees on 94 instead of 520, which is an improvement. Added `bank.return_states` to the
+triage output and a docstring note that `kinds_by_return` is not a sample size.
+
+### T-150 fix-sibling tool — 2026-11-01
+
+Built `tools/siblings.py` (readers through helpers, enum predicates, citation and question anchors,
+input ripple, bug-entry check). The first run showed `sa.dependent` reaches 283 lines across 21 forms,
+so the check's review-refresh gate is strict by design. A synthetic BUG-0290 entry naming only
+`sa.standard` failed with 282 omitted siblings and 21 unrefreshed forms, as intended. Self-test and
+`--check` run in check-all; the earliest real entry to exercise the gate is the next bug.

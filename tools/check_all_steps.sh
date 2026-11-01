@@ -79,6 +79,8 @@ step input_context python3 tools/transcription/test_input_context.py
 step pre_push_self_test bash tools/hooks/test_pre_push.sh
 step green_self_test bash tools/hooks/test_green.sh
 step consistency_checks node tools/test_consistency_checks.mjs
+step siblings_self_test python3 tools/siblings.py --self-test
+step siblings_check python3 tools/siblings.py --check
 step adapter_contracts python3 tools/transcription/adapter_contracts.py "$@"
 step classm_skipped python3 tools/transcription/audit_skipped.py "$@"
 step compare_families python3 tools/transcription/compare_families.py "$@"

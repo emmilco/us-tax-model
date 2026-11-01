@@ -25,7 +25,7 @@ Update status, next action, and closure evidence as work proceeds. Use ready, ac
 | --- | --- | --- | --- |
 | P0 Household closure | Done 2026-11-01 (household closure commit) | T-114–117; bug entries for the introduced corrections and new gates; source-predicted regression fixtures; gate placement; round-two reviews | Required reviews adjudicated (114 current rulings, 0 open); all introduced defects and medium/high findings resolved; exact tested tree committed. Evidence: closure section below. |
 | P1 Verification integrity | Done in part 2026-11-01 | Reproduce and resolve the differential reader, memo aliases, green-history update race, push-guard scope, renderer markers, mutation operand omissions; T-096 | Memo aliases, differential reader, push-guard scope, green-list race and `--year` forwarding fixed (BUG-0287–0289). Renderer marker is T-155 (next render refresh), mutation coverage is T-156 (next mutation change), T-096 remains open. Evidence: P1 checkpoint below. |
-| P2 Review preparation | After necessary P1 repairs; do not delay urgent tax fixes | T-150; T-139–140, T-142–144, T-146–148; investigate the handoff's reduced completed-return triage sample | Review inputs usable; mutation-critical regressions survive regeneration; interfaces explicit; printed-only mode ready before single-document Class M reruns. Evidence: pending. |
+| P2 Review preparation | Triage sample investigated 2026-11-01 (309 completed returns, not 95; 95 counted disagreements). T-150 done 2026-11-01. Next T-139–140, T-142–144, T-146–148 | T-150; T-139–140, T-142–144, T-146–148 | Review inputs usable; mutation-critical regressions survive regeneration; interfaces explicit; printed-only mode ready before single-document Class M reruns. Evidence: `tools/siblings.py` and its check-all steps. |
 | P3 Existing behavior and form debt | After relevant P2 dependencies; batches below | T-104–113, T-118–121, T-123–134, T-136–137, T-141, T-145; applicable T-094, T-057, T-095, T-101 | Each form batch meets the closure procedure; every remaining form scheduled for a pass. Evidence: pending. |
 | P4 Evidence and reporting | Small reporting corrections can run early; final closure after P3 | Remaining T-094/T-057; T-006/T-095; T-098–100; T-099 and documentation portion of T-012; reconcile older integrity obligations | Claims supported or narrowed; required review gaps resolved; remaining exceptions explicitly dispositioned. Evidence: pending. |
 | P5 Bounded maintenance | After higher-priority work; pull forward only a demonstrated dependency | Selected audit improvements to helpers/parsers, generators, Lean batching, fixture formatting, extraction, and year handling | Concrete maintenance failure or measured benefit addressed; remaining design proposals explicitly accepted or given real external triggers. Evidence: pending. |
@@ -208,3 +208,24 @@ Reproduced the audit findings on the current tree and fixed the evidence-integri
   forms; 1.4 (mutation operands) is T-156 because the added mutants need survivor classification; T-096
   stays open for the next checker change. The one 1.6 subclaim not fixed (dangling snapshot commits) is
   git housekeeping, not a guard defect.
+
+## Triage sample check — 2026-11-01
+
+The household handoff read f1040's ~95 completed-return differences as a collapsed sample. It is not: the
+completed sample is 309 returns (1,425 fixtures + 500 generated), plus completed partial records; 95 was the
+number of disagreements *on* completed returns, which fell from 520 because the refreshed candidate computes
+more of them. The fixture and generated states are unchanged from f44bae4 (194/193 completed fixtures,
+116/116 generated). `triage.py` now records `bank.return_states` and says that `kinds_by_return` counts
+differences, not sample size.
+
+## T-150 — fix-sibling tool, 2026-11-01
+
+`tools/siblings.py` lists, for changed lines, the lines that read the same input or gate through
+helpers, predicates testing the same constants, and lines and questions anchored on the same
+(document, page, heading); `--input` lists a new input's ripple across forms, questions, fixtures,
+the generators, input contracts and Class M jobs. Check-all runs its self-test and `--check`.
+Bug entries from BUG-0290 onward with a Fix field must name `Fix lines` and `Siblings checked`; the
+check generates the sibling set and fails when it is omitted, and when a sibling form has no review
+log changed since the entry's base (the commit that added it, or HEAD for an uncommitted entry).
+The manual test: a synthetic entry naming only `sa.standard` for a fix on `sa.dependent` failed with
+282 omitted siblings and 21 forms without a refreshed log.

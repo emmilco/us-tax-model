@@ -87,6 +87,7 @@ function operands(derivations, key) {
 
 const stats = new Map(pairs.map(pair => [pair.handle, { handle: pair.handle, project: pair.project, candidate: pair.candidate, shown_when: pair.shown_when ?? null,
   compared: 0, agree: 0, differ: 0, absent: 0, in_scope: 0, in_scope_agree: 0, kinds: {}, kinds_by_return: {}, sources: {}, witnesses: [], completed_witnesses: [] }]));
+const returnCounts = { completed: 0, refused: 0, incomplete: 0 };
 const known = value => value && !['refusal', 'unknown'].includes(value.kind);
 
 function run(source, inputs) {
@@ -97,6 +98,8 @@ function run(source, inputs) {
   } catch (error) {
     return { reached: false, error: String(error.message ?? error).slice(0, 300) };
   }
+  const whole = returnState(inputs);
+  returnCounts[whole] += 1;
   const p = collect(project.values, byProject), m = collect(model.values, byCandidate);
   // A project line hidden by its shown_when shows no amount: compare what the filer sees.
   for (const [key, value] of p) {
@@ -105,7 +108,7 @@ function run(source, inputs) {
     if (!cond) continue;
     p.set(key, displayed(value, project.values.get(`${prefix}.${localOf(cond)}`)));
   }
-  let reached = false, whole = null;
+  let reached = false;
   for (const key of new Set([...p.keys(), ...m.keys()])) {
     const [handle, prefix] = key.split('\u0000');
     const s = stats.get(handle);
@@ -120,7 +123,6 @@ function run(source, inputs) {
     s.differ += 1;
     const kind = difference(a, b);
     s.kinds[kind] = (s.kinds[kind] ?? 0) + 1;
-    whole ??= returnState(inputs);
     s.kinds_by_return[whole] ??= {};
     s.kinds_by_return[whole][kind] = (s.kinds_by_return[whole][kind] ?? 0) + 1;
     recordWitness(s, kind, whole, () => ({ kind, source, instance: prefix, project_return: whole, project: a, candidate: b,
@@ -207,6 +209,6 @@ for (const base of reachedBases.filter((_, i) => i % 4 === 0).slice(0, partialBa
   }
 }
 process.stdout.write(JSON.stringify({ state: 'evaluated', errors: [],
-  bank: { fixtures: fixtures.length, generated, seed, partial_bases: partialBases, partial_records: partials, evaluation_failures: failures.length },
+  bank: { fixtures: fixtures.length, generated, seed, partial_bases: partialBases, partial_records: partials, evaluation_failures: failures.length, return_states: returnCounts },
   failures: failures.slice(0, 20), lines: [...stats.values()] }));
 }

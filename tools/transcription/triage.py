@@ -6,6 +6,8 @@ validated candidate line on the same inputs: every fixture case, a deterministic
 generated returns, and partial records that withhold one answer the reviewed document asks.
 The result is evidence for adjudication, not a ruling: agreement on every input run is observed
 equivalence on that sample, and each difference comes with witness inputs and both values.
+`bank.return_states` counts the sample by return state; `kinds_by_return` counts only the differences,
+so it is not the size of the completed sample.
 
 Usage: triage.py --form sd [--family deepseek] [--generated 500] [--seed 20261026] [--partial-bases 40]
        triage.py --form sd [--family deepseek] --explain <handle> [--witness N] [--completed] [--depth 6]
