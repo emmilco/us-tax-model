@@ -306,8 +306,14 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
         return unknown s!"cycle at {key}"
       modify (fun st => { st with inflight := st.inflight.insert key true })
       let result ← eval ctx fuel frame (.fresh lineId)
+      -- A resolved cross-document reference is memoized under the target line's key by its
+      -- recursive call; caching it under the caller's key as well would create an alias.
+      let own := (findLine frame.doc lineId).isSome
+      let elsewhere := match ctx.forms.get? ((lineId.splitOn ".").headD "") with
+        | some doc => (findLine doc lineId).isSome
+        | none => false
       -- An exhausted budget is not a value of the line, so it is not remembered.
-      if result != budgetExhausted then
+      if result != budgetExhausted && (own || !elsewhere) then
         modify (fun st => { st with memo := st.memo.insert key result })
       modify (fun st => { st with inflight := st.inflight.insert key false })
       return result

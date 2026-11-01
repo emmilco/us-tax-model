@@ -3,6 +3,8 @@
 # green check-all run (tools/green.sh: is_green). Commits are checked by
 # tools/hooks/pre-commit, but git runs no pre-commit hook on a merge, so a merge
 # made by `git pull` reaches this hook untested; run check-all on it first.
+# The whole pushed range is checked, not only the tip: an untested intermediate
+# commit would otherwise reach the remote inside a green tip's range.
 # Enabled with the other hooks:
 #   git config core.hooksPath tools/hooks
 set -euo pipefail
@@ -10,12 +12,21 @@ cd "$(git rev-parse --show-toplevel)"
 . tools/green.sh
 
 failed=0
-while read -r local_ref local_sha _remote_ref _remote_sha; do
+while read -r local_ref local_sha _remote_ref remote_sha; do
   [[ "$local_sha" =~ ^0+$ ]] && continue
-  tree="$(git rev-parse "$local_sha^{tree}")"
-  if ! is_green "$tree"; then
-    echo "pre-push: $local_ref ($(git rev-parse --short "$local_sha")) has a tree no green check-all run tested; run npm run check-all (or npm run check-all-bg) on it first" >&2
-    failed=1
+  if [[ "$remote_sha" =~ ^0+$ ]]; then
+    # A new ref: every commit reachable here and from no remote-tracking ref is being pushed.
+    commits="$(git rev-list "$local_sha" --not --remotes)"
+  else
+    commits="$(git rev-list "$remote_sha..$local_sha")"
   fi
+  for commit in $commits; do
+    tree="$(git rev-parse "$commit^{tree}")"
+    if ! is_green "$tree"; then
+      echo "pre-push: $local_ref commit $(git rev-parse --short "$commit") (tree $tree) has a tree no green check-all run tested; run npm run check-all (or npm run check-all-bg) on it first" >&2
+      failed=1
+      break
+    fi
+  done
 done
 exit "$failed"

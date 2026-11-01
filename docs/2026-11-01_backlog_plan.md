@@ -24,7 +24,7 @@ Update status, next action, and closure evidence as work proceeds. Use ready, ac
 | Package | Status / dependency | Scope | Exit condition / closure evidence |
 | --- | --- | --- | --- |
 | P0 Household closure | Done 2026-11-01 (household closure commit) | T-114–117; bug entries for the introduced corrections and new gates; source-predicted regression fixtures; gate placement; round-two reviews | Required reviews adjudicated (114 current rulings, 0 open); all introduced defects and medium/high findings resolved; exact tested tree committed. Evidence: closure section below. |
-| P1 Verification integrity | Ready for investigation; integrate separately from P0 | Reproduce and resolve the differential reader, memo aliases, green-history update race, push-guard scope, renderer markers, mutation operand omissions; T-096 | Each issue fixed with appropriate regression evidence or explicitly disposed of; full required checks pass on each committed candidate. Evidence: pending. |
+| P1 Verification integrity | Done in part 2026-11-01 | Reproduce and resolve the differential reader, memo aliases, green-history update race, push-guard scope, renderer markers, mutation operand omissions; T-096 | Memo aliases, differential reader, push-guard scope, green-list race and `--year` forwarding fixed (BUG-0287–0289). Renderer marker is T-155 (next render refresh), mutation coverage is T-156 (next mutation change), T-096 remains open. Evidence: P1 checkpoint below. |
 | P2 Review preparation | After necessary P1 repairs; do not delay urgent tax fixes | T-150; T-139–140, T-142–144, T-146–148; investigate the handoff's reduced completed-return triage sample | Review inputs usable; mutation-critical regressions survive regeneration; interfaces explicit; printed-only mode ready before single-document Class M reruns. Evidence: pending. |
 | P3 Existing behavior and form debt | After relevant P2 dependencies; batches below | T-104–113, T-118–121, T-123–134, T-136–137, T-141, T-145; applicable T-094, T-057, T-095, T-101 | Each form batch meets the closure procedure; every remaining form scheduled for a pass. Evidence: pending. |
 | P4 Evidence and reporting | Small reporting corrections can run early; final closure after P3 | Remaining T-094/T-057; T-006/T-095; T-098–100; T-099 and documentation portion of T-012; reconcile older integrity obligations | Claims supported or narrowed; required review gaps resolved; remaining exceptions explicitly dispositioned. Evidence: pending. |
@@ -187,3 +187,24 @@ P0 is closed in the household closure commit (parent f44bae4). The exact tree pa
   are under `.transcription/archive/before-household-definition-review-2026-11-01/`), the f1040 DeepSeek line 19
   justification (the printed Schedule 8812 line 14 destination, not an interface label), and the f8889 line 3 and
   line 6 splits into ambiguity plus model error for the withheld `last_month` partial.
+
+## P1 checkpoint — 2026-11-01
+
+Reproduced the audit findings on the current tree and fixed the evidence-integrity items in one batch:
+
+- **1.1 memo aliases (BUG-0287).** A cross-document reference from a collection entry cached its result
+  under a key such as `person[spouse].f8606[form].person.ira_files_8606`; one return carried 64 aliases
+  into `eval --json`, values-sheet derivations and the TS/Lean comparison. Both evaluators now memoize
+  under the target key only. The comparison loses 87,101 alias values and still agrees on 2,025 cases;
+  `test-integration` asserts no alias keys. Fifty-nine stage1 fixtures had recorded the aliases as
+  duplicate expectations; the canonical keys remain and the CLI fixtures pass 1,425/1,425.
+- **1.5 differential reader (BUG-0288).** `differentialClassC` read the investigation-log array as a
+  calculator record; both readers now use one `calculatorRecords()` filter.
+- **1.6 commit guard (BUG-0289).** `pre-push` checks every commit in the pushed range, not only the tip;
+  `record_green` takes a lock. `test_pre_push.sh` and `test_green.sh` run in check-all.
+- **1.3 `--year` forwarding.** The 16 year-aware steps that dropped the arguments now receive them; the
+  script's comment no longer claims every step does.
+- **Measured follow-ups.** 1.2 (renderer marker) is T-155 because it reopens the render reviews of five
+  forms; 1.4 (mutation operands) is T-156 because the added mutants need survivor classification; T-096
+  stays open for the next checker change. The one 1.6 subclaim not fixed (dangling snapshot commits) is
+  git housekeeping, not a guard defect.

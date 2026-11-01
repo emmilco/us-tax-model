@@ -4131,3 +4131,27 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Fixture context repair:** 17 older Claude ClassM cases supplied joint status and no death-year fact but had household.married False as unused context. Corrected that inferred context fact to True and annotated the host repair; expected numerical values and original model receipts are untouched. Raw saved prompts are not assumed to be the original receipt when hashes differ. These cases do not acquire any new evidence credit.
 - **Validation:** build, render, 1,425 CLI fixtures, strict citations, both families' reviews and the offline check set passed before commit; the full check-all is the commit gate for this final gate.
 - **Tags:** contradictory-inputs; filing-status-eligibility; source-completeness
+
+## BUG-0287 — Cross-document references were memoized under aliased caller keys
+
+- **Caught by:** technical debt audit 1.1 (memo key pollution), reproduced on the current tree, 2026-11-01.
+- **Symptom/source:** `evalLine` computed the memo key from the caller's frame before deciding whether the line belonged to the current document. A reference from inside a collection entry to a top-level line cached the result a second time under a composite key such as `person[spouse].f8606[form].person.ira_files_8606`. On a single return the `values` map carried 64 such aliases; `eval --json`, values-sheet derivations and the TS/Lean comparison exported them. No tax value changed.
+- **Fix:** both evaluators memoize a resolved cross-document reference only under the target line's key. TypeScript drops the caller-key insertion; Lean skips insertion when the line is not in the frame's document but resolves elsewhere. `test-integration` asserts no alias keys in the eval values of a return with a collection-entry reference.
+- **Validation:** `eval --json` on `stage16.ira.i1` has no alias candidate (was 64); `npm run compare` passes 2,025 cases with 4,471,784 values, 87,101 fewer than before, 0 differing cases; 805 integration checks pass. Fifty-nine stage1 fixtures had recorded the three `qdcg.f1040.*` aliases (and 12 more `f1040.qdcg.line25` or `qdcg.sd.distributions`); those duplicate expectations were removed, leaving the canonical keys, and the CLI fixtures pass 1,425/1,425.
+- **Tags:** evidence-integrity; evaluator; fixed
+
+## BUG-0288 — Class C differential reader scanned the investigation log as a calculator record
+
+- **Caught by:** technical debt audit 1.5, confirmed in `engine/src/differential.ts`, 2026-11-01.
+- **Symptom/source:** `differential()` filtered directory entries to objects with a `calculator` field, but `differentialClassC()` read every `.json` file in `fixtures/2025/differential/` and immediately accessed `rec.values`. The engine differential's investigation log is a JSON array, so the fixture-coverage path could throw on a directory the comparison path accepts.
+- **Fix:** one `calculatorRecords()` helper filters both readers. The class C coverage map now sees only calculator records.
+- **Validation:** `node engine/dist/main.js differential` and `coverage` pass on the current tree; the full suite exercises both.
+- **Tags:** evidence-integrity; tooling; fixed
+
+## BUG-0289 — Push guard checked only the tip, and the green list had a lost-update race
+
+- **Caught by:** technical debt audit 1.6, confirmed in `tools/hooks/pre-push` and `tools/green.sh`, 2026-11-01.
+- **Symptom/source:** the hook's comment promised every commit being pushed, but it checked only the local tip's tree; an untested intermediate commit could ride a green tip. `record_green` read and rewrote `.git/check-all-green-trees` with `tail` plus `mv` and no lock, so two runs finishing together could lose one entry.
+- **Fix:** the hook computes the pushed range (`remote..local`, or `local --not --remotes` for a new ref) and requires every commit's tree in the green record. `record_green` takes a directory lock for the read-modify-write.
+- **Validation:** `tools/hooks/test_pre_push.sh` covers an untested intermediate, a fully green range, a new ref against a remote-tracking base, and a new ref with an untested commit; `tools/hooks/test_green.sh` records 20 concurrent entries and finds all 20. Both run in check-all. One audit subclaim (dangling snapshot commits in `check_all_bg.sh`) is housekeeping, not a guard defect; git's object pruning handles it.
+- **Tags:** commit-guard; process-integrity; fixed

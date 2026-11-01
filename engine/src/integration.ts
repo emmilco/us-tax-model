@@ -51,6 +51,22 @@ export function integrationChecks(): void {
     const early={...inputs};delete early["person[taxpayer].w2[b].box4"];
     delete early["person[taxpayer].w2[a].box3"];early["person[taxpayer].w2[a].box4"]=1091821;
     assert.equal(evaluate(early).values["f1040.line31"].value.kind,"refusal");
+    // Cross-document references are memoized under the target line's key, not an alias of
+    // the caller's collection frame (audit 1.1: person[taxpayer].f8606[form].person.x).
+    {
+      const data=loadCanonical();
+      const ids=new Set(data.forms.map(f=>f.id));
+      const probe=evaluate(inputs);
+      const alias=Object.keys(probe.values).filter(k=>{
+        let bracketed=false;
+        for(const seg of k.split(".")){
+          if(seg.includes("["))bracketed=true;
+          else if(bracketed&&ids.has(seg))return true;
+        }
+        return false;
+      });
+      assert.deepEqual(alias,[],`cross-document aliases in values: ${alias.join(",")}`);checks++;
+    }
     const missing={...inputs};delete missing["$w2@person[taxpayer]"];
     for(const k of Object.keys(missing))if(k.includes(".w2["))delete missing[k];
     assert.equal(evaluate(missing).values["f1040.line31"].value.kind,"unknown");

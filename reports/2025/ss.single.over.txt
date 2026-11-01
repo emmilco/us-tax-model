@@ -70,7 +70,6 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
 
 Derivations:
   f8962.any: test(f8962.forms = 0; 0 = 0)
-  s3.f8962.any: test(f8962.forms = 0; 0 = 0)
   s3.zero: param(#sales.zero = $0)
   s3.line9: choose(f8962.any = false; true = true; f8962.any = false; false = false; s3.zero = $0)
   s3.mfs: test(f1040.status = single; "mfs" = mfs)
@@ -81,7 +80,6 @@ Derivations:
   person[taxpayer].credit: gate(person[taxpayer].rrta = false; person[taxpayer].over = true)
   s3.line11: sum_over(s3.mfs = false; person[taxpayer].credit = REFUSED: Form 843. An employer withheld more than $10,918.20. Ask that employer to adjust the tax. If the employer does not adjust the overcollection, you can file a refund claim using Form 843. This tool cannot complete the credit until the overcollection is resolved. (trigger: person[taxpayer].over; i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld))
   s3.line15: sum(s3.line9 = $0; s3.line10 = $0; s3.line11 = REFUSED: Form 843. An employer withheld more than $10,918.20. Ask that employer to adjust the tax. If the employer does not adjust the overcollection, you can file a refund claim using Form 843. This tool cannot complete the credit until the overcollection is resolved. (trigger: person[taxpayer].over; i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld))
-  f1040.s3.line15: sum(s3.line9 = $0; s3.line10 = $0; s3.line11 = REFUSED: Form 843. An employer withheld more than $10,918.20. Ask that employer to adjust the tax. If the employer does not adjust the overcollection, you can file a refund claim using Form 843. This tool cannot complete the credit until the overcollection is resolved. (trigger: person[taxpayer].over; i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld))
   f1040.line31: copy(s3.line15 = REFUSED: Form 843. An employer withheld more than $10,918.20. Ask that employer to adjust the tax. If the employer does not adjust the overcollection, you can file a refund claim using Form 843. This tool cannot complete the credit until the overcollection is resolved. (trigger: person[taxpayer].over; i1040gi, p. 117, Schedule 3 line 11 — Excess Social Security and Tier 1 RRTA Tax Withheld))
 Scope: Form 1040 lines 1a–37 with the schedules and forms this tool implements and their refusal screens. Unsupported paths are refused with citations. No filing or transmission.
 Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/2025.yaml).

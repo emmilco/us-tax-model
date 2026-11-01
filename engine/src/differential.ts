@@ -95,6 +95,16 @@ function entrySheet(data: ReturnType<typeof loadCanonical>, c: CaseFixture, expe
   return out.join("\n");
 }
 
+/** The calculator records in DIR: objects with a `calculator` field, not the investigation log array. */
+function calculatorRecords(): { file: string; rec: DifferentialRecord }[] {
+  if (!existsSync(DIR)) return [];
+  return readdirSync(DIR).filter((f) => f.endsWith(".json")).sort().flatMap((file) => {
+    const parsed = JSON.parse(readFileSync(join(DIR, file), "utf8")) as unknown;
+    if (typeof parsed !== "object" || parsed === null || Array.isArray(parsed) || !("calculator" in parsed)) return [];
+    return [{ file, rec: parsed as DifferentialRecord }];
+  });
+}
+
 export function differential(): number {
   const data = loadCanonical();
   const cases = (JSON.parse(readFileSync(yearPath("fixtures", "stage5.json"), "utf8")) as { cases: CaseFixture[] }).cases;
@@ -105,19 +115,13 @@ export function differential(): number {
   }
   console.log(`differential: entry sheets written for ${returnCases.length} whole-return cases (reports/${YEAR}/differential.<case>.md)`);
   if (!existsSync(DIR)) { console.log("differential: no calculator records yet; comparison pending."); return 0; }
-  // Calculator records are objects with a `calculator` field; the directory also holds
-  // the engine differential's investigation log, which is a JSON array.
-  const files = readdirSync(DIR).filter((f) => f.endsWith(".json")).sort().filter((f) => {
-    const parsed = JSON.parse(readFileSync(join(DIR, f), "utf8")) as unknown;
-    return typeof parsed === "object" && parsed !== null && !Array.isArray(parsed) && "calculator" in parsed;
-  });
+  const files = calculatorRecords();
   if (files.length === 0) { console.log("differential: no calculator records yet; comparison pending."); return 0; }
   const lines: string[] = [];
   lines.push("# Differential comparison — recorded independent calculators", "");
   lines.push("Class C evidence: whole-return cases compared against named, versioned calculators run outside the repository. Only lines present in a record are compared. An unexplained difference fails the build; an investigated difference carries its cited cause.", "");
   let mismatches = 0;
-  for (const f of files) {
-    const rec = JSON.parse(readFileSync(join(DIR, f), "utf8")) as DifferentialRecord;
+  for (const { file: f, rec } of files) {
     const c = cases.find((x) => x.id === rec.case);
     if (!c) { lines.push(`## ${f}`, "", `Unknown case \`${rec.case}\` — not in stage5.json.`, ""); mismatches++; continue; }
     const result = evaluate(data, c.inputs, Object.keys(rec.values));
@@ -143,9 +147,7 @@ export function differential(): number {
 
 export function differentialClassC(): Map<string, Set<string>> {
   const coverage = new Map<string, Set<string>>();
-  if (!existsSync(DIR)) return coverage;
-  for (const f of readdirSync(DIR).filter((x) => x.endsWith(".json"))) {
-    const rec = JSON.parse(readFileSync(join(DIR, f), "utf8")) as DifferentialRecord;
+  for (const { rec } of calculatorRecords()) {
     for (const key of Object.keys(rec.values)) {
       const set = coverage.get(key) ?? new Set<string>();
       set.add(`${rec.calculator} ${rec.case}`);

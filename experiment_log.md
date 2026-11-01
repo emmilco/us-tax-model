@@ -74,3 +74,14 @@ measured category. The independence-assumed estimate moves from 82.2% (range 81.
 76.9–85.7%); the greedy ladder now runs Schedule E 84.1%, other Schedule 1 89.9%, dependent filers 94.3%, MFS 96.8%.
 The old figure had counted dependent returns as covered even though `sa.dependent` refuses them at the standard
 deduction. Consequence: the first 80% goal is open again; Schedule E is the first expansion step that crosses it.
+
+### P1 verification-integrity batch — 2026-11-01
+
+Reproduced audit 1.1 on `stage16.ira.i1`: 64 alias keys in the eval values. Fixed TS and Lean to memoize a
+resolved cross-document reference only under the target key; the comparison falls from 4,558,885 to 4,471,784
+values and still agrees on 2,025 cases. Added an integration assertion that no value key contains a
+top-level document id after an instance bracket. Fixed the class C differential reader's unfiltered scan
+(one shared filter), extended the pre-push hook to every commit in the pushed range, locked the green-list
+update, and forwarded `--year` to the 16 year-aware steps that dropped it. Renderer marker (1.2) and mutation
+operand coverage (1.4) are scheduled as T-155 and T-156: the first reopens five forms' render reviews, the
+second needs the new mutants' survivors classified. Hook and green-list self-tests run in check-all.

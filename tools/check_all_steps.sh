@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # The steps of check-all for one tax year: pass --year N to check a year other
-# than the default (the newest adopted year in years.json); every step receives
-# the same arguments. tools/check_all.sh runs this and guards it.
+# than the default (the newest adopted year in years.json); every year-aware step
+# receives the same arguments. tools/check_all.sh runs this and guards it.
 #
 # Compile first: review tools and every build consumer import engine/dist. Then
 # build and render alone: canonical/ and rendered/ are read by the log, review and
@@ -76,37 +76,39 @@ step check_auto_limits_self_test python3 tools/check_auto_limits.py --self-test 
 step check_bug_inventory python3 tools/check_bug_inventory.py
 step review_tools python3 tools/transcription/test_review_tools.py
 step input_context python3 tools/transcription/test_input_context.py
+step pre_push_self_test bash tools/hooks/test_pre_push.sh
+step green_self_test bash tools/hooks/test_green.sh
 step consistency_checks node tools/test_consistency_checks.mjs
 step adapter_contracts python3 tools/transcription/adapter_contracts.py "$@"
-step classm_skipped python3 tools/transcription/audit_skipped.py
+step classm_skipped python3 tools/transcription/audit_skipped.py "$@"
 step compare_families python3 tools/transcription/compare_families.py "$@"
 step check_logs python3 tools/transcription/check_logs.py "$@"
 step check_table_logs python3 tools/transcription/check_table_logs.py "$@"
 step citations python3 tools/citations.py --strict "$@"
 step citations_self_test python3 tools/citations.py --self-test "$@"
 step year_diff_self_test python3 tools/year_diff.py --self-test "$@"
-step coverage_tree_self_test python3 tools/coverage/tree.py --self-test
+step coverage_tree_self_test python3 tools/coverage/tree.py --self-test "$@"
 # Source-coverage checks (T-084 to T-089) read the canonical data and rendered English the build writes.
-step instruction_cites python3 tools/check_instruction_cites.py
-step instruction_cites_self_test python3 tools/check_instruction_cites.py --self-test
-step operands python3 tools/check_operands.py
-step operands_self_test python3 tools/check_operands.py --self-test
-step signs python3 tools/check_signs.py
-step signs_self_test python3 tools/check_signs.py --self-test
-step screen_currency python3 tools/transcription/check_screens.py
-step consumers python3 tools/check_consumers.py
-step consumers_self_test python3 tools/check_consumers.py --self-test
-step limits python3 tools/check_limits.py
-step limits_self_test python3 tools/check_limits.py --self-test
-step completeness python3 tools/transcription/check_completeness.py
-step completeness_self_test python3 tools/transcription/check_completeness.py --self-test
+step instruction_cites python3 tools/check_instruction_cites.py "$@"
+step instruction_cites_self_test python3 tools/check_instruction_cites.py --self-test "$@"
+step operands python3 tools/check_operands.py "$@"
+step operands_self_test python3 tools/check_operands.py --self-test "$@"
+step signs python3 tools/check_signs.py "$@"
+step signs_self_test python3 tools/check_signs.py --self-test "$@"
+step screen_currency python3 tools/transcription/check_screens.py "$@"
+step consumers python3 tools/check_consumers.py "$@"
+step consumers_self_test python3 tools/check_consumers.py --self-test "$@"
+step limits python3 tools/check_limits.py "$@"
+step limits_self_test python3 tools/check_limits.py --self-test "$@"
+step completeness python3 tools/transcription/check_completeness.py "$@"
+step completeness_self_test python3 tools/transcription/check_completeness.py --self-test "$@"
 wave
 
 step conjecture "${node[@]}" conjecture "$@"
 step test_fixtures "${node[@]}" test-fixtures "$@"
 step refusal_reach "${node[0]}" tools/check_refusal_reach.mjs
 step test_integration "${node[@]}" test-integration "$@"
-step human_review python3 tools/human_review/test_review.py
+step human_review python3 tools/human_review/test_review.py "$@"
 step classm_job_seeds "${node[0]}" tools/transcription/test_classm_jobs.mjs
 step coverage "${node[@]}" coverage "$@"
 # Every refusal gate placed in the decision tree, and docs/COVERAGE.md and the README block current.

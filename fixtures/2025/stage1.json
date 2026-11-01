@@ -143,18 +143,6 @@
           "kind": "enum",
           "value": "single"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 200
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 200
@@ -324,18 +312,6 @@
           "cents": 0
         },
         "f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 2500000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "single"
         },
@@ -510,18 +486,6 @@
           "kind": "enum",
           "value": "single"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 9999000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 9999000
@@ -690,18 +654,6 @@
           "cents": 0
         },
         "f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 9999999
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "single"
         },
@@ -876,18 +828,6 @@
           "kind": "enum",
           "value": "single"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 10000000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 10000000
@@ -1056,18 +996,6 @@
           "cents": 0
         },
         "f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 10167500
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "single"
         },
@@ -1242,18 +1170,6 @@
           "kind": "enum",
           "value": "single"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 15032500
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 15032500
@@ -1422,18 +1338,6 @@
           "cents": 0
         },
         "f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 22391250
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "single"
         },
@@ -1608,18 +1512,6 @@
           "kind": "enum",
           "value": "single"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 43843750
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 43843750
@@ -1788,18 +1680,6 @@
           "cents": 0
         },
         "f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 70000000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "single"
         },
@@ -1974,18 +1854,6 @@
           "kind": "enum",
           "value": "single"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 10335000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 10335000
@@ -2157,18 +2025,6 @@
           "kind": "enum",
           "value": "single"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 25052500
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 25052500
@@ -2337,18 +2193,6 @@
           "cents": 0
         },
         "f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 62635000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "single"
         },
@@ -2538,18 +2382,6 @@
           "kind": "enum",
           "value": "mfj"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 15335000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "mfj"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 15335000
@@ -2733,18 +2565,6 @@
           "cents": 0
         },
         "f1040.status": {
-          "kind": "enum",
-          "value": "mfj"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 30065000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "mfj"
         },
@@ -2934,18 +2754,6 @@
           "kind": "enum",
           "value": "mfj"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 44782500
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "mfj"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 44782500
@@ -3129,18 +2937,6 @@
           "cents": 0
         },
         "f1040.status": {
-          "kind": "enum",
-          "value": "mfj"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 62632500
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "mfj"
         },
@@ -3330,18 +3126,6 @@
           "kind": "enum",
           "value": "mfj"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 80000000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "mfj"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 80000000
@@ -3511,18 +3295,6 @@
           "cents": 0
         },
         "f1040.status": {
-          "kind": "enum",
-          "value": "mfs"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 10167500
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "mfs"
         },
@@ -3698,18 +3470,6 @@
           "kind": "enum",
           "value": "mfs"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 15032500
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "mfs"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 15032500
@@ -3879,18 +3639,6 @@
           "cents": 0
         },
         "f1040.status": {
-          "kind": "enum",
-          "value": "mfs"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 22391250
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "mfs"
         },
@@ -4066,18 +3814,6 @@
           "kind": "enum",
           "value": "mfs"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 31316250
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "mfs"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 31316250
@@ -4247,18 +3983,6 @@
           "cents": 0
         },
         "f1040.status": {
-          "kind": "enum",
-          "value": "mfs"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 50000000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "mfs"
         },
@@ -4458,18 +4182,6 @@
           "kind": "enum",
           "value": "hoh"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 10167500
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "hoh"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 10167500
@@ -4663,18 +4375,6 @@
           "cents": 0
         },
         "f1040.status": {
-          "kind": "enum",
-          "value": "hoh"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 15032500
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "hoh"
         },
@@ -4874,18 +4574,6 @@
           "kind": "enum",
           "value": "hoh"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 22390000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "hoh"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 22390000
@@ -5079,18 +4767,6 @@
           "cents": 0
         },
         "f1040.status": {
-          "kind": "enum",
-          "value": "hoh"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 43842500
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "hoh"
         },
@@ -5290,18 +4966,6 @@
           "kind": "enum",
           "value": "hoh"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 70000000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "hoh"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 70000000
@@ -5474,18 +5138,6 @@
           "kind": "enum",
           "value": "qss"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 15335000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "qss"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 15335000
@@ -5655,18 +5307,6 @@
           "cents": 0
         },
         "f1040.status": {
-          "kind": "enum",
-          "value": "qss"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 30065000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "qss"
         },
@@ -5856,18 +5496,6 @@
           "kind": "enum",
           "value": "mfj"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 2530000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "mfj"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 2530000
@@ -6036,23 +5664,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f1040.qdcg.line25": {
-          "kind": "money",
-          "cents": 541250
-        },
         "f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 5000000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 500000
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "single"
         },
@@ -6159,10 +5771,6 @@
         "qdcg.schedule_d_filed": {
           "kind": "bool",
           "value": false
-        },
-        "qdcg.sd.distributions": {
-          "kind": "money",
-          "cents": 0
         }
       }
     },
@@ -6303,23 +5911,7 @@
           "kind": "money",
           "cents": 500000
         },
-        "f1040.qdcg.line25": {
-          "kind": "money",
-          "cents": 541250
-        },
         "f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 5000000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "single"
         },
@@ -6426,10 +6018,6 @@
         "qdcg.schedule_d_filed": {
           "kind": "bool",
           "value": false
-        },
-        "qdcg.sd.distributions": {
-          "kind": "money",
-          "cents": 500000
         }
       }
     },
@@ -6581,23 +6169,7 @@
           "kind": "money",
           "cents": 300000
         },
-        "f1040.qdcg.line25": {
-          "kind": "money",
-          "cents": 505250
-        },
         "f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 5000000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 500000
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "single"
         },
@@ -6848,23 +6420,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f1040.qdcg.line25": {
-          "kind": "money",
-          "cents": 0
-        },
         "f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 1000000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 2000000
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "single"
         },
@@ -6971,10 +6527,6 @@
         "qdcg.schedule_d_filed": {
           "kind": "bool",
           "value": false
-        },
-        "qdcg.sd.distributions": {
-          "kind": "money",
-          "cents": 0
         }
       }
     },
@@ -7115,23 +6667,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f1040.qdcg.line25": {
-          "kind": "money",
-          "cents": 0
-        },
         "f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 500000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 600000
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "single"
         },
@@ -7238,10 +6774,6 @@
         "qdcg.schedule_d_filed": {
           "kind": "bool",
           "value": false
-        },
-        "qdcg.sd.distributions": {
-          "kind": "money",
-          "cents": 0
         }
       }
     },
@@ -7383,23 +6915,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f1040.qdcg.line25": {
-          "kind": "money",
-          "cents": 10607750
-        },
         "f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 70000000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 70000000
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "single"
         },
@@ -7506,10 +7022,6 @@
         "qdcg.schedule_d_filed": {
           "kind": "bool",
           "value": false
-        },
-        "qdcg.sd.distributions": {
-          "kind": "money",
-          "cents": 0
         }
       }
     },
@@ -7650,23 +7162,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f1040.qdcg.line25": {
-          "kind": "money",
-          "cents": 100300
-        },
         "f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 2000000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 1000000
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "single"
         },
@@ -7773,10 +7269,6 @@
         "qdcg.schedule_d_filed": {
           "kind": "bool",
           "value": false
-        },
-        "qdcg.sd.distributions": {
-          "kind": "money",
-          "cents": 0
         }
       }
     },
@@ -7932,23 +7424,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f1040.qdcg.line25": {
-          "kind": "money",
-          "cents": 2682800
-        },
         "f1040.status": {
-          "kind": "enum",
-          "value": "mfj"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 20000000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 10000000
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "mfj"
         },
@@ -8055,10 +7531,6 @@
         "qdcg.schedule_d_filed": {
           "kind": "bool",
           "value": false
-        },
-        "qdcg.sd.distributions": {
-          "kind": "money",
-          "cents": 0
         }
       }
     },
@@ -8200,23 +7672,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f1040.qdcg.line25": {
-          "kind": "money",
-          "cents": 481250
-        },
         "f1040.status": {
-          "kind": "enum",
-          "value": "mfs"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 5000000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 1000000
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "mfs"
         },
@@ -8323,10 +7779,6 @@
         "qdcg.schedule_d_filed": {
           "kind": "bool",
           "value": false
-        },
-        "qdcg.sd.distributions": {
-          "kind": "money",
-          "cents": 0
         }
       }
     },
@@ -8492,23 +7944,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f1040.qdcg.line25": {
-          "kind": "money",
-          "cents": 446300
-        },
         "f1040.status": {
-          "kind": "enum",
-          "value": "hoh"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 5000000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 1000000
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "hoh"
         },
@@ -8615,10 +8051,6 @@
         "qdcg.schedule_d_filed": {
           "kind": "bool",
           "value": false
-        },
-        "qdcg.sd.distributions": {
-          "kind": "money",
-          "cents": 0
         }
       }
     },
@@ -8760,23 +8192,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f1040.qdcg.line25": {
-          "kind": "money",
-          "cents": 432600
-        },
         "f1040.status": {
-          "kind": "enum",
-          "value": "qss"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 5000000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 1000000
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "qss"
         },
@@ -8883,10 +8299,6 @@
         "qdcg.schedule_d_filed": {
           "kind": "bool",
           "value": false
-        },
-        "qdcg.sd.distributions": {
-          "kind": "money",
-          "cents": 0
         }
       }
     },
@@ -9027,23 +8439,7 @@
           "kind": "money",
           "cents": 0
         },
-        "f1040.qdcg.line25": {
-          "kind": "money",
-          "cents": 5134700
-        },
         "f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 30000000
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 15000000
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "single"
         },
@@ -9150,10 +8546,6 @@
         "qdcg.schedule_d_filed": {
           "kind": "bool",
           "value": false
-        },
-        "qdcg.sd.distributions": {
-          "kind": "money",
-          "cents": 0
         }
       }
     },
@@ -9295,18 +8687,6 @@
           "cents": 0
         },
         "f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 10335099
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "single"
         },
@@ -9481,18 +8861,6 @@
           "kind": "enum",
           "value": "single"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 19730099
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 19730099
@@ -9664,18 +9032,6 @@
           "kind": "enum",
           "value": "single"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 25052599
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 25052599
@@ -9844,18 +9200,6 @@
           "cents": 0
         },
         "f1040.status": {
-          "kind": "enum",
-          "value": "single"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 62635099
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "single"
         },
@@ -10045,18 +9389,6 @@
           "kind": "enum",
           "value": "mfj"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 20670099
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "mfj"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 20670099
@@ -10240,18 +9572,6 @@
           "cents": 0
         },
         "f1040.status": {
-          "kind": "enum",
-          "value": "mfj"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 39460099
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "mfj"
         },
@@ -10441,18 +9761,6 @@
           "kind": "enum",
           "value": "mfj"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 50105099
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "mfj"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 50105099
@@ -10639,18 +9947,6 @@
           "kind": "enum",
           "value": "mfj"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 75160099
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "mfj"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 75160099
@@ -10820,18 +10116,6 @@
           "cents": 0
         },
         "f1040.status": {
-          "kind": "enum",
-          "value": "mfs"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 10335099
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "mfs"
         },
@@ -11007,18 +10291,6 @@
           "kind": "enum",
           "value": "mfs"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 19730099
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "mfs"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 19730099
@@ -11191,18 +10463,6 @@
           "kind": "enum",
           "value": "mfs"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 25052599
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "mfs"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 25052599
@@ -11372,18 +10632,6 @@
           "cents": 0
         },
         "f1040.status": {
-          "kind": "enum",
-          "value": "mfs"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 37580099
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "mfs"
         },
@@ -11583,18 +10831,6 @@
           "kind": "enum",
           "value": "hoh"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 10335099
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "hoh"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 10335099
@@ -11788,18 +11024,6 @@
           "cents": 0
         },
         "f1040.status": {
-          "kind": "enum",
-          "value": "hoh"
-        },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 19730099
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
           "kind": "enum",
           "value": "hoh"
         },
@@ -11999,18 +11223,6 @@
           "kind": "enum",
           "value": "hoh"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 25050099
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "hoh"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 25050099
@@ -12207,18 +11419,6 @@
           "kind": "enum",
           "value": "hoh"
         },
-        "qdcg.f1040.line15": {
-          "kind": "money",
-          "cents": 62635099
-        },
-        "qdcg.f1040.line3a": {
-          "kind": "money",
-          "cents": 0
-        },
-        "qdcg.f1040.status": {
-          "kind": "enum",
-          "value": "hoh"
-        },
         "qdcg.line1": {
           "kind": "money",
           "cents": 62635099
@@ -12255,7 +11455,7 @@
         "qdcg.line25 right"
       ],
       "evidence": "synthetic-regression",
-      "evidence_note": "Agent-derived regression, pending human review: i1040gi Tax Table $50,000–$50,050 Single cell is $5,920; QDCG ordinary portion $50,009 and total $50,010 are in that same band, while $1 at 15% adds $0.15 to line 23. Line 24 must win. Not class B.",
+      "evidence_note": "Agent-derived regression, pending human review: i1040gi Tax Table $50,000\u2013$50,050 Single cell is $5,920; QDCG ordinary portion $50,009 and total $50,010 are in that same band, while $1 at 15% adds $0.15 to line 23. Line 24 must win. Not class B.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,

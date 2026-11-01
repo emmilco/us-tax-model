@@ -187,7 +187,8 @@ function evalLine(ctx: Ctx, frame: Frame, lineId: string): Derivation {
       // A line of an enclosing collection entry is read in that entry; any other document at top level.
       const enclosing = target.collection ? enclosingKey(frame.instKey, target.id) : null;
       result = evalLine(ctx, { doc: target, instKey: enclosing, bind: null, caller: null }, lineId);
-      ctx.memo.set(key, result);
+      // The recursive call memoizes under the target line's key; caching under the caller's
+      // key as well would create an alias such as person[taxpayer].f8606[form].person.x.
       ctx.inProgress.delete(key);
       return result;
     }

@@ -17,12 +17,20 @@ worktree_tree() {
   rm -rf "$tmp"
 }
 
-record_green() {
-  local tmp
+record_green() (
+  # Serialize the read-modify-write: a foreground and a background run can finish together,
+  # and an unlocked tail/mv would lose one of the entries.
+  local lock="$GREEN_TREES.lock" tmp n=0
+  until mkdir "$lock" 2>/dev/null; do
+    n=$((n + 1))
+    if [ "$n" -gt 600 ]; then echo "green.sh: timed out waiting for $lock" >&2; exit 1; fi
+    sleep 0.1
+  done
+  trap 'rmdir "$lock" 2>/dev/null || true' EXIT
   tmp="$(mktemp "$GREEN_TREES.XXXXXX")"
   { [ -f "$GREEN_TREES" ] && tail -n 49 "$GREEN_TREES"; echo "$1"; } > "$tmp"
   mv "$tmp" "$GREEN_TREES"
-}
+)
 
 is_green() {
   { [ -s "$MARKER" ] && [ "$(cat "$MARKER")" = "$1" ]; } && return 0
