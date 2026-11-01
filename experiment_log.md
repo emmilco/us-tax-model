@@ -114,3 +114,14 @@ are new findings. `sc.at_risk` omits i1040sc p. 15's related-party at-risk prong
 recycling branch (BUG-0291/T-158). Both are deferred to their form passes; the render logs are ruled.
 Also refined `siblings.py`: the first closure followed computed values into the whole return (283 lines for
 `sa.dependent`); it now uses the input/gate leaves a line directly reads, giving 5 there and 1 for `sc.at_risk`.
+
+### T-156 mutation operand coverage — 2026-11-01
+
+Extended the operand walker to string `multiply_rate.rate`, `prorate.whole`, `percent_floor.whole` and
+definition-bind operands. The full audit list (also table keys, choose branches and test operands) produced
+4,981 mutants with 518 unexplained survivors; without guards 3,559/256; without guards and branches 2,786/7
+(EIC table-key replacements). The shipped subset is 2,778 mutants, 123 equivalent survivors, 95.6% raw /
+100% adjusted. The remainder is T-159: it needs fixtures or equivalence rules for the EIC table keys and the
+guard/branch survivors before it can enter the score. The 7 table-key survivors are genuine fixture gaps:
+the EIC table lookup by line 3 versus line 1 and by line 1 versus earned_for_limit is not exercised where the
+two keys fall in different table bands.

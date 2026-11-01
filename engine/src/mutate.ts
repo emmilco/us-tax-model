@@ -46,6 +46,73 @@ function lineType(data: CanonicalData, doc: FormDoc, id: string): string | undef
   return doc.lines.find((l) => l.id === id)?.type;
 }
 
+type OperandSite = { ref: string; kind: string; path: (string | number)[]; wantType: string | undefined };
+// Table keys, choose branches and test operands are measured but not yet mutated: replacing
+// them selects another branch that agrees on the fixture corpus, and the full set produces
+// hundreds of unexplained survivors that need fixtures or equivalence rules first (T-159).
+
+/** Every string line reference in an expression position the mutator can replace. */
+function collectOperandSites(expr: any, lineType: string, doc: FormDoc): OperandSite[] {
+  const sites: OperandSite[] = [];
+  const typeOf = (ref: unknown): string | undefined =>
+    typeof ref === "string" ? doc.lines.find((l) => l.id === ref)?.type : undefined;
+  const push = (ref: unknown, kind: string, path: (string | number)[], wantType: string | undefined) => {
+    if (typeof ref === "string") sites.push({ ref, kind, path, wantType });
+  };
+  switch (expr?.op) {
+    case "sum": case "smaller_of": case "larger_of":
+      (expr.of ?? []).forEach((ref: any, i: number) => push(ref, "of", ["of", i], lineType));
+      break;
+    case "subtract": case "subtract_floor0":
+      push(expr.from, "from", ["from"], lineType);
+      push(expr.take, "take", ["take"], lineType);
+      break;
+    case "multiply_rate":
+      push(expr.amount, "amount", ["amount"], lineType);
+      push(expr.rate, "rate", ["rate"], typeOf(expr.rate));
+      break;
+    case "round":
+      push(expr.of, "of", ["of"], lineType);
+      break;
+    case "multiply_count":
+      push(expr.amount, "amount", ["amount"], lineType);
+      push(expr.count, "count", ["count"], lineType);
+      break;
+    case "prorate":
+      push(expr.amount, "amount", ["amount"], lineType);
+      push(expr.part, "part", ["part"], lineType);
+      push(expr.whole, "whole", ["whole"], typeOf(expr.whole));
+      break;
+    case "percent_floor":
+      push(expr.part, "part", ["part"], lineType);
+      push(expr.whole, "whole", ["whole"], typeOf(expr.whole));
+      break;
+    case "keyed_lookup":
+      (expr.keys ?? []).forEach((ref: any, i: number) => push(ref, "keys", ["keys", i], typeOf(ref)));
+      break;
+    case "rate_lookup":
+      push(expr.key, "key", ["key"], typeOf(expr.key));
+      push(expr.status, "status", ["status"], typeOf(expr.status));
+      break;
+    case "copy":
+      if (typeof expr.from === "string") push(expr.from, "from", ["from"], lineType);
+      else if (expr.from && typeof expr.from === "object" && expr.from.bind && typeof expr.from.bind === "object") {
+        for (const [key, value] of Object.entries(expr.from.bind)) {
+          push(value, "bind", ["from", "bind", key], typeOf(value));
+        }
+      }
+      break;
+  }
+  return sites;
+}
+
+/** Replace the value at a nested path in an expression. */
+function replaceAtPath(root: unknown, path: (string | number)[], value: string): void {
+  let cursor: any = root;
+  for (let i = 0; i < path.length - 1; i++) cursor = cursor[path[i]!];
+  cursor[path[path.length - 1]!] = value;
+}
+
 export function mutations(data: CanonicalData): Mutation[] {
   const out: Mutation[] = [];
 
@@ -93,49 +160,31 @@ export function mutations(data: CanonicalData): Mutation[] {
       }
       // Operand replacement: replace one referenced same-document line with the
       // nearest earlier same-typed line that the expression does not already use.
-      const refs: string[] = [];
-      if (expr.op === "sum" || expr.op === "smaller_of" || expr.op === "larger_of") refs.push(...expr.of);
-      if (expr.op === "subtract" || expr.op === "subtract_floor0") {
-        refs.push(expr.from);
-        if (typeof expr.take === "string") refs.push(expr.take);
-      }
-      if (expr.op === "multiply_rate") refs.push(expr.amount);
-      if (expr.op === "round") refs.push(expr.of);
-      if (expr.op === "multiply_count") refs.push(expr.amount, expr.count);
-      if (expr.op === "prorate") refs.push(expr.amount, expr.part);
-      if (expr.op === "percent_floor") refs.push(expr.part);
-      if (expr.op === "keyed_lookup") refs.push(...expr.keys);
-      if (expr.op === "rate_lookup") refs.push(expr.key, ...(expr.status ? [expr.status] : []));
-      if (expr.op === "copy" && typeof expr.from === "string") refs.push(expr.from);
-      for (const ref of refs) {
+      const sites = collectOperandSites(expr, line.type, doc);
+      const refs = new Set(sites.map((s) => s.ref));
+      for (const site of sites) {
+        const ref = site.ref;
         if (!ref.startsWith(doc.id + ".")) continue; // same-document only
-        // A lookup key is replaced by a line of the key's own type (an enum, a count or an amount), not the result's.
-        const wantType = expr.op === "keyed_lookup" || expr.op === "rate_lookup" ? doc.lines.find((l) => l.id === ref)?.type : line.type;
+        const wantType = site.wantType ?? line.type;
         const candidate = [...doc.lines]
           .slice(0, idx)
           .reverse()
-          .find((l) => l.type === wantType && l.id !== ref && !refs.includes(l.id) && l.expr.op !== "input");
+          .find((l) => l.type === wantType && l.id !== ref && !refs.has(l.id) && l.expr.op !== "input");
         if (!candidate) continue;
+        const existing = site.kind === "of" || site.kind === "from" || site.kind === "take"
+          || site.kind === "amount" || site.kind === "count" || site.kind === "part"
+          || site.kind === "keys" || (site.kind === "key" && expr.op === "rate_lookup")
+          || (site.kind === "status" && expr.op === "rate_lookup");
+        const id = existing
+          ? `operand.${where}.${ref.split(".").pop()}`
+          : `operand.${where}.${ref.split(".").pop()}.${site.kind}`;
         out.push({
-          id: `operand.${where}.${ref.split(".").pop()}`,
+          id,
           kind: "replace an operand",
           where,
           note: `${ref} -> ${candidate.id} (${candidate.type})`,
           apply: (d) => {
-            const l = findLine(d, line.id)!;
-            const e = l.expr as Expr & { of?: string[] | string; from?: string; take?: string | object; amount?: string; count?: string; part?: string };
-            if (Array.isArray(e.of)) e.of = e.of.map((r) => (r === ref ? candidate.id : r));
-            else if (e.of === ref) e.of = candidate.id; // round takes one operand
-            if (e.from === ref) e.from = candidate.id;
-            if (e.take === ref) e.take = candidate.id;
-            if (e.amount === ref) e.amount = candidate.id;
-            if (e.count === ref) e.count = candidate.id;
-            if (e.part === ref) e.part = candidate.id;
-            const rk = e as { key?: string; status?: string };
-            if (rk.key === ref) rk.key = candidate.id;
-            if (rk.status === ref) rk.status = candidate.id;
-            const k = e as { keys?: string[] };
-            if (Array.isArray(k.keys)) k.keys = k.keys.map((r) => (r === ref ? candidate.id : r));
+            replaceAtPath(findLine(d, line.id)!.expr, site.path, candidate.id);
           },
         });
       }

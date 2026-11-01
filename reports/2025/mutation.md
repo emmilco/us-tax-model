@@ -7,11 +7,11 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 2728 |
-| Killed by the checker | 294 |
-| Killed by fixtures | 2321 |
-| Surviving | 113 (113 provably equivalent) |
-| Mutation score (raw) | 95.9% |
+| Mutants | 2778 |
+| Killed by the checker | 296 |
+| Killed by fixtures | 2359 |
+| Surviving | 123 (123 provably equivalent) |
+| Mutation score (raw) | 95.6% |
 | Mutation score (equivalent mutants excluded) | 100.0% |
 
 ## Surviving — classified equivalent
@@ -26,6 +26,16 @@ the fixture test compares).
 - `operand.f5329.f5329.l49_base.l48` (replace an operand, f5329.f5329.l49_base): Copy-chain identity: f5329.l48 and f5329.l47 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f5695.f5695.line15.line14` (replace an operand, f5695.f5695.line15): Copy-chain identity: f5695.line14 and f5695.rce_ws3 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f5695.f5695.line16.line15` (replace an operand, f5695.f5695.line16): Floor-minus-min identity: f5695.line16 is f5695.line13 less f5695.line15, floored at zero, and one of f5695.line15 and f5695.line14 is the ungated smaller of f5695.line13 and the other, so f5695.line13 less either, floored at zero, is the same at every input; f5695.line13 is read first on both routes and the other operand second, so the same refusal or unknown wins.
+- `operand.f5695.f5695.ins_30.eehi_rate.rate` (replace an operand, f5695.f5695.ins_30): Copy-chain identity: f5695.eehi_rate and f5695.rce_rate expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.f5695.f5695.door1_30.eehi_rate.rate` (replace an operand, f5695.f5695.door1_30): Copy-chain identity: f5695.eehi_rate and f5695.rce_rate expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.f5695.f5695.line19g.eehi_rate.rate` (replace an operand, f5695.f5695.line19g): Copy-chain identity: f5695.eehi_rate and f5695.rce_rate expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.f5695.f5695.windows_30.eehi_rate.rate` (replace an operand, f5695.f5695.windows_30): Copy-chain identity: f5695.eehi_rate and f5695.rce_rate expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.f5695.f5695.ac_30.eehi_rate.rate` (replace an operand, f5695.f5695.ac_30): Copy-chain identity: f5695.eehi_rate and f5695.rce_rate expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.f5695.f5695.wh_30.eehi_rate.rate` (replace an operand, f5695.f5695.wh_30): Copy-chain identity: f5695.eehi_rate and f5695.rce_rate expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.f5695.f5695.furnace_30.eehi_rate.rate` (replace an operand, f5695.f5695.furnace_30): Copy-chain identity: f5695.eehi_rate and f5695.rce_rate expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.f5695.f5695.enabling_30.eehi_rate.rate` (replace an operand, f5695.f5695.enabling_30): Copy-chain identity: f5695.eehi_rate and f5695.rce_rate expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.f5695.f5695.audit_30.eehi_rate.rate` (replace an operand, f5695.f5695.audit_30): Copy-chain identity: f5695.eehi_rate and f5695.rce_rate expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.f5695.f5695.hp_30.eehi_rate.rate` (replace an operand, f5695.f5695.hp_30): Copy-chain identity: f5695.eehi_rate and f5695.rce_rate expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f5695.f5695.line32.line31` (replace an operand, f5695.f5695.line32): Copy-chain identity: f5695.line31 and f5695.eehi_ws3 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8863.f8863.clw3.clw1` (replace an operand, f8863.f8863.clw3): Copy-chain identity: f8863.clw1 and f8863.line18 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8959.f8959.line3.zero` (replace an operand, f8959.f8959.line3): Copy-chain identity: f8959.zero and f8959.line2 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
