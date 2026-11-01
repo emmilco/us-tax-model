@@ -14,16 +14,16 @@ Measured, below 0.5% of returns, and not in the table:
 - Foreign earned income exclusion (Form 2555): 0.3%
 - Alternative minimum tax: 0.1%
 
-Not named in the table: 138 of the 146 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
+Not named in the table: 140 of the 148 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
 
 The estimate puts coverage at 82.2% of returns (`reports/2025/filer_coverage.json`). It does not count the unmeasured situations, so the true figure is lower.
 
 ## Every refusal
 
-The data holds **183 refusal gates**: 146 tax situations the tool does not prepare, grouped by topic below, and 37 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
+The data holds **185 refusal gates**: 148 tax situations the tool does not prepare, grouped by topic below, and 37 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
 
 - [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (30)
-- [Household and dependents](#household-and-dependents) (8)
+- [Household and dependents](#household-and-dependents) (10)
 - [Interest and dividends](#interest-and-dividends) (4)
 - [Sales and capital gains](#sales-and-capital-gains) (5)
 - [Retirement distributions](#retirement-distributions) (7)
@@ -301,6 +301,11 @@ The data holds **183 refusal gates**: 146 tax situations the tool does not prepa
   - *Not covered:* Community income on a married head of household return in a community property state (Form 8958; Pub. 555). A married person filing as head of household who lived in a community property state may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.
     *Source:* [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555"
   - *Refused at:* `household.hoh_eligible`
+- **`household.hoh_absence`**: Filing as head of household, does every person who would qualify you count as living with you only by counting an absence they weren't expected to return from, or during which you didn't keep up the home?
+  - *The data asks or tests:* Head of household turns on a person who lived with you more than half the year only by counting an absence head of household does not count (`test`)
+  - *Not covered:* Temporary absences for head of household (Pub. 501). For head of household, an absence counts as time lived with you only if it was reasonable to assume the absent person would return and you kept up the home; the time the person who would qualify you lived with you must be recounted under that rule, which this tool does not do.
+    *Source:* [p501] p. 9, Temporary absences, "It must be reasonable to assume the absent person will return to the home after the temporary absence. You must continue to keep up the home during the absence."
+  - *Refused at:* `household.hoh_eligible`
 - **`dependent.claimed_no_tin`**: Does someone who would be your dependent lack an SSN, ITIN or ATIN issued by the due date of your return?
   - *The data asks or tests:* A person who meets the tests to be your dependent but has no SSN, ITIN or ATIN (`test`)
   - *Not covered:* Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3)). Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as "Died" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool.
@@ -337,6 +342,11 @@ The data holds **183 refusal gates**: 146 tax situations the tool does not prepa
   - *Not covered:* Kidnapped child (Pub. 501; Pub. 596 for the EIC). A child presumed kidnapped by someone who isn't a family member may count as living with you under rules this tool does not apply.
     *Source:* [i1040gi] p. 21, Kidnapped child, "For details, see Pub. 501 (Pub. 596 for the EIC)"
   - *Refused at:* `dependent.lived_half`, `dependent.eic_child`
+- **`dependent.qr_kidnapped`**: Was a child under 19 whom you would claim as a qualifying relative presumed kidnapped during 2025 by someone outside the family?
+  - *The data asks or tests:* A child aged 18 or under at the end of 2025 presumed kidnapped by someone who isn't a family member (`test`)
+  - *Not covered:* Kidnapped child (Pub. 501). A child presumed kidnapped by someone who isn't a family member may be your qualifying relative under part-year rules this tool does not apply.
+    *Source:* [p501] p. 18, Kidnapped child, "You can treat a child as your qualifying relative even if the child has been kidnapped, but the following statements must be true."
+  - *Refused at:* `dependent.qualifying_relative`
 - **`dependent.income_exception`**: Does a permanently and totally disabled relative have gross income of $5,200 or more (the sheltered workshop exception)?
   - *The data asks or tests:* Permanently and totally disabled with gross income at or over the limit (`test`)
   - *Not covered:* Exception to gross income test. The sheltered-workshop exception to the gross income test for a disabled person is outside this tool.
