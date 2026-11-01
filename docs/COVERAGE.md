@@ -16,7 +16,7 @@ Measured, below 0.5% of returns, and not in the table:
 
 Not named in the table: 142 of the 150 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
 
-The estimate puts coverage at 82.2% of returns (`reports/2025/filer_coverage.json`). It does not count the unmeasured situations, so the true figure is lower.
+The estimate puts coverage at 78.4% of returns (`reports/2025/filer_coverage.json`). It does not count the unmeasured situations, so the true figure is lower.
 
 ## Every refusal
 
@@ -74,6 +74,7 @@ The data holds **188 refusal gates**: 150 tax situations the tool does not prepa
   - *Not covered:* Standard Deduction Worksheet for Dependents / dual-status rules. Dependent and dual-status standard deductions are outside this resident nondependent slice.
     *Source:* [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart
   - *Refused at:* `eic.step4`, `sa.standard`
+  - *Share of returns (coverage estimate):* Returns of filers who can be claimed as a dependent (SOI Table 1.7 dependent returns), 4.7%
 - **`household.filer_under16`**: Were you, or your spouse on a joint return, under 16 at the end of 2025?
   - *The data asks or tests:* You, or your spouse if filing jointly, were under age 16 at the end of 2025 (`test`)
   - *Not covered:* A filer under age 16 at the end of 2025. A return for a person under age 16 at the end of 2025 (you, or your spouse on a joint return) is outside this tool. The archived instructions state no such rule; this is an entry check the owner decided on, recorded in the ambiguity register (amb.2025.filer_under_16).

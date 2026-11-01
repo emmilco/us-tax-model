@@ -19,8 +19,9 @@ claimed an interface label that does not exist (the decision rests on the printe
 the Claude eic scope reclassifications were confirmed against zero completed-return differences; and f8889 lines 3
 and 6 are now compound ambiguity-and-model-error rulings for the withheld `last_month` partial.
 
-Next: the approved plan continues with T-102 (dependent-filer coverage reporting) and P1 verification repairs, then
-P2. Coverage expansion remains last. `docs/2026-11-01_contributor_safe_gating_sketch.md` remains untracked on disk
+Next: the approved plan continues with P1 verification integrity, then P2. T-102 is done: dependent filers are now
+a measured refusal category (`dependent_filer`, 4.7% of returns), which brings the estimate to 78.4% (range 76.9% to
+85.7%) and reopens the first 80% goal until Schedule E. Coverage expansion remains last. `docs/2026-11-01_contributor_safe_gating_sketch.md` remains untracked on disk
 (not part of this commit); decide whether to adopt it.
 
 # Usage pause — 2026-11-01 (superseded by the closure entry above)

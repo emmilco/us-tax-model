@@ -2385,6 +2385,17 @@
       "revision_status": "Pending inspection of archived document; not cleared for encoding"
     },
     {
+      "id": "soi-23in17dp",
+      "url": "https://www.irs.gov/pub/irs-soi/23in17dp.xls",
+      "format": "xls",
+      "resolved_url": "https://www.irs.gov/pub/irs-soi/23in17dp.xls",
+      "fetched_at": "2026-11-01T17:27:42.966452+00:00",
+      "file": "soi-23in17dp.xls",
+      "sha256": "f64d88d1662cc2b11234e2ba90a0e4910b8326032ea465e342d92b3b13673ce4",
+      "revision": null,
+      "revision_status": "Pending inspection of archived document; not cleared for encoding"
+    },
+    {
       "id": "soi-23in27aca",
       "format": "xls",
       "url": "https://www.irs.gov/pub/irs-soi/23in27aca.xls",

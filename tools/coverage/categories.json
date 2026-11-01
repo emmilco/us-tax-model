@@ -7,6 +7,7 @@
  },
  "groups": {
   "married": "Married filing separately",
+  "dependent_filer": "Filers who can be claimed as a dependent",
   "self_employment": "Self-employment (Schedule C and SE)",
   "premium_tax_credit": "Premium tax credit (Form 8962)",
   "education": "Education credits (Form 8863)",
@@ -728,6 +729,24 @@
       "source": "soi-23in14ar",
       "column": 11,
       "header": "Tip income not reported"
+     }
+    ]
+   }
+  },
+  {
+   "id": "dependent_filer",
+   "group": "dependent_filer",
+   "gates": [
+    "sa.dependent"
+   ],
+   "label": "Returns of filers who can be claimed as a dependent (SOI Table 1.7 dependent returns)",
+   "irs": {
+    "combine": "sum",
+    "cells": [
+     {
+      "source": "soi-23in17dp",
+      "column": 1,
+      "header": "number of returns"
      }
     ]
    }

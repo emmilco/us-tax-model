@@ -65,3 +65,12 @@ reviews were current because their prompts come from the forms, but the render p
 `.transcription/archive/before-render-refresh-2026-11-01/`, and reran the four render reviews. Twelve disagreements
 were ruled (scope 8, ambiguity 3, model error 1) and all logs report 0 open. This is a failed pre-commit hypothesis:
 the rendered tree was assumed current after the hh4 batch; the snapshot rebuild proved otherwise.
+
+### T-102: dependent filers enter the coverage estimate — 2026-11-01
+
+Archived SOI Table 1.7 as `soi-23in17dp` (7,525,664 dependent returns; 160,602,107 total returns, 4.7%). Added
+`dependent_filer` gated by `sa.dependent` and switched the existing README table item from an unmeasured gate to the
+measured category. The independence-assumed estimate moves from 82.2% (range 81.6–85.7%) to **78.4%** (range
+76.9–85.7%); the greedy ladder now runs Schedule E 84.1%, other Schedule 1 89.9%, dependent filers 94.3%, MFS 96.8%.
+The old figure had counted dependent returns as covered even though `sa.dependent` refuses them at the standard
+deduction. Consequence: the first 80% goal is open again; Schedule E is the first expansion step that crosses it.

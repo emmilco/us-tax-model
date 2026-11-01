@@ -102,7 +102,9 @@ the resumed coverage work as reaching the first goal of spec 2.4, 80% of returns
 be shown stage by stage.
 
 The order in item 2.6 (Schedule E, the rest of Schedule 1, the premium tax credit) and in spec 2.4 is
-the estimator's greedy order over whole groups. Run over single categories with the same raking and
+the estimator's greedy order over whole groups. (The percentages in this section predate T-102, which on
+2026-11-01 added dependent filers as a refused category; each figure is about 4.7 points lower now, but the
+ordering is unchanged.) Run over single categories with the same raking and
 data (`tools/coverage/estimate.py`, `covered()` with chosen categories removed), the gains if covered
 alone from 68.6% are: premium tax credit +4.4, education credits +3.3, rental and royalty +3.2, capital
 loss carryover +2.5, other income +2.4, Form 5329 +2.2, married filing separately +2.1, partnership and

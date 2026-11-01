@@ -13,7 +13,8 @@ the integrity stack (Stage 7), dependents, head of household and Schedule 8812
 compensation and the common Schedule 1 adjustments (11), the Schedule 1-A
 deductions (12), married filing jointly (13), self-employment (14), other
 credits (15), the remaining Schedule 1 items (16), the premium tax credit (18), the education credits (19), the
-capital loss carryover (20) and Form 5329 (21), which reached the first coverage goal (82.2%). A hardening phase
+capital loss carryover (20) and Form 5329 (21). The estimate then read 82.2%; T-102 later counted filers
+who can be claimed as a dependent, correcting it to 78.4%, so the first 80% goal remains open. A hardening phase
 followed (`handoffs/HANDOFF-HARDENING-1.md`); see `HANDOFF-NEXT-SESSION.md` to continue. The product goal, coverage plan and verification regime are in
 `spec/spec.md` sections 1, 2.4 and 6.5; the build order is in `spec/design.md`
 section 5. No human line-by-line reading is claimed; see the trust statement in

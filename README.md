@@ -124,7 +124,7 @@ free-text description; here, every line names the archived document, its revisio
 and the place on the page it was read from, usually with the sentence quoted. From Catala it takes the
 conviction that an encoding should be readable against its source line by line, and proved wherever
 proof can reach. Its scope runs well past Direct File's: dividends and capital gains, self-employment,
-itemized deductions, the education credits and more, for an estimated 82% of returns. And unlike Direct File, it
+itemized deductions, the education credits and more, for an estimated 78% of returns. And unlike Direct File, it
 files nothing: it hands back a values sheet, and you file your own return.
 
 The last column of that table is the important one. Direct File could be trusted because the IRS stood
@@ -169,7 +169,7 @@ the instruction that requires it.
 
 | | The tool handles | The tool can't handle |
 |---|---|---|
-| **Filing status** | ✓ Single, married filing jointly, head of household or qualifying surviving spouse | ✗ Married filing separately: 2.6% of returns<br>✗ A return for someone who can be claimed as a dependent, such as a student or a teenager with a job: not measured |
+| **Filing status** | ✓ Single, married filing jointly, head of household or qualifying surviving spouse | ✗ Married filing separately: 2.6% of returns<br>✗ A return for someone who can be claimed as a dependent, such as a student or a teenager with a job: 4.7% of returns |
 | **Wages** | ✓ Wages and tips on Form W-2 | ✗ Wages or tips not on a Form W-2, and other earned income: 0.8% of returns |
 | **Investments** | ✓ Interest, dividends, and sales of stocks, bonds and funds | ✗ Crypto and other digital assets: not measured |
 | **Retirement** | ✓ Pensions, annuities, IRA and 401(k) distributions, Social Security and unemployment compensation | — |
@@ -414,29 +414,33 @@ npm run check-all
 ## Where the project is
 
 **Can I do my taxes with it?** Not comfortably, yet. The interview runs end to end today for an
-estimated 82% of returns, but it is a command-line program that speaks JSON, its forms are 2025's while
+estimated 78% of returns, but it is a command-line program that speaks JSON, its forms are 2025's while
 the first return it is meant to prepare for real is 2026's, and its independent verification is still
 climbing.
 
-**Coverage.** The tool fully covers an estimated **82.2% of individual returns**, counting a return only
-when nothing on it is refused ([`reports/2025/filer_coverage.md`](reports/2025/filer_coverage.md)). The
-estimate starts from IRS Statistics of Income counts and uses household microdata, reweighted to those
+**Coverage.** The tool fully covers an estimated **78.4% of individual returns** (range 76.9% to 85.7%),
+counting a return only when nothing on it is refused ([`reports/2025/filer_coverage.md`](reports/2025/filer_coverage.md)).
+The estimate starts from IRS Statistics of Income counts and uses household microdata, reweighted to those
 counts, for the overlaps between situations. Treat it as an ordering and a rough measure, not a
-certified share: most refusal gates have no IRS count to measure them by (170 of the 177 the estimate
-saw when it was last run), so the true figure is lower by their share. Every gate, measured or not, is
-in the [coverage decision tree](docs/COVERAGE.md).
+certified share: most refusal gates have no IRS count to measure them by (180 of the 188 refusal gates
+in the forms), so the true figure is lower by their share. Every gate, measured or not, is
+in the [coverage decision tree](docs/COVERAGE.md). A 2026-11-01 correction counts filers who can be
+claimed as a dependent (4.7% of returns, SOI Table 1.7) as refused; the earlier estimate had counted
+them as covered, so the first 80% goal is not yet reached.
 
-**Now: hardening.** Having passed the first coverage goal of 80%, the project has turned to
-verification: the source-coverage checks and standing reviews above, the fixes they turn up, and
-raising the scoreboard.
+**Now: hardening.** The measured coverage is just below the first coverage goal of 80%. The approved
+plan keeps verification ahead of coverage expansion; the first expansion step, Schedule E, would bring
+the estimate to about 84%. The work is the source-coverage checks and standing reviews above, the fixes
+they turn up, and raising the scoreboard.
 
 **Next, in order of the coverage each adds:**
 
-1. Schedule E: rental and royalty income, partnerships, S corporations, estates and trusts (to about 88%).
+1. Schedule E: rental and royalty income, partnerships, S corporations, estates and trusts (to about 84%).
 2. The rest of Schedule 1: the remaining income kinds, Form 4797, the net operating loss deduction and
-   the foreign earned income exclusion (to about 94%).
-3. Married filing separately (to about 97%, past the next goal of 95%).
-4. After that, Schedule F (farm income) and the smaller situations the estimate lists, along with Form
+   the foreign earned income exclusion (to about 90%).
+3. Returns of filers who can be claimed as a dependent (to about 94%).
+4. Married filing separately (to about 97%, past the next goal of 95%).
+5. After that, Schedule F (farm income) and the smaller situations the estimate lists, along with Form
    1116, which the estimate does not measure.
 
 **Tax year 2026 is the target**: the first return the tool is meant to prepare for real. The tooling for

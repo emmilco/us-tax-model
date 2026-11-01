@@ -13,7 +13,7 @@ Backlog closure means each item is fixed, explicitly accepted with a reason, or 
 ## Start here
 
 - **P0 — household closure is closed** (2026-11-01, household closure commit; evidence in the closure section below). T-114–117 are done and BUG-0272–0286 are recorded.
-- Current active package: **P1 verification integrity**, with the early **T-102 reporting correction** alongside it. Then **P2 bounded review preparation**, then **P3 coordinated form passes**.
+- Current active package: **P1 verification integrity**. The early **T-102 reporting correction is done** (2026-11-01, `dependent_filer`; estimate 78.4%). Then **P2 bounded review preparation**, then **P3 coordinated form passes**.
 - Preserve the uncommitted household work and existing review receipts. This planning session changed no implementation and ran no build or review suite.
 - The latest household implementation notes are in `../HANDOFF-NEXT-SESSION.md`, under the 2026-11-01 household handoff. Older reported test results are historical evidence, not a green result for the current tree.
 
