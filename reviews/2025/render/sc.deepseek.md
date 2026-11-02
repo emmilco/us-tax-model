@@ -61,7 +61,7 @@ Restated: Input — Do you use an accounting method other than cash or accrual, 
 
 Model: Line F asks only for the accounting method, including cash, accrual, other, and method changes via Form 3115; section 263A capitalization is a Part II/Part III matter, not a line F question.
 
-Ruling: open
+Ruling: representation; the input is a scope screen that also carries the section 263A questions; it narrows the supported returns and changes no amount on a computed return.
 
 ### (screen) (sc.special) — For this business, do you have any of these: depletion (line 12); the energy efficient com
 Status: **MATCH**
@@ -265,7 +265,7 @@ Restated: Enter $5 (sc.ho_rate).
 
 Model: the model returned no verdict for this line
 
-Ruling: open
+Ruling: model error; the model returned no verdict for this line, so there is no objection to rule on. The Claude render log judges it.
 
 ### 4 (sc.ho_line4) — Multiply line 2 by line 3c
 Status: **MATCH**
@@ -379,7 +379,7 @@ Restated: Enter the amount from helper "Net profit of this business (zero for a 
 
 Model: IRS line 4 says 'Enter your net profit* and any other earned income** from the trade or business'; the restatement uses only net profit, zero for a loss.
 
-Ruling: open
+Ruling: scope; f7206 line 4 footnote: "Earned income includes net earnings and gains from the sale, transfer, or licensing of property you created. However, it doesn't include capital gain income." The tool admits no such income outside Schedule C: Form 4797 and other income are refused (sd.other_forms, scope.yaml), and Schedule F and K-1 profits are refused by the self-employment screen (person.x_other).
 
 ### 5 (sc.f7206_line5) — Total of all net profits from Schedule C, line 31
 Status: **MISMATCH**
@@ -388,7 +388,7 @@ Restated: Enter the amount from person helper "Total of all net profits of this 
 
 Model: IRS line 5 requires 'the total of all net profits from Schedule C..., Schedule F..., or Schedule K-1..., plus any other income'; the restatement sums only Schedule C net profits.
 
-Ruling: open
+Ruling: scope; f7206 line 4 footnote: "Earned income includes net earnings and gains from the sale, transfer, or licensing of property you created. However, it doesn't include capital gain income." The tool admits no such income outside Schedule C: Form 4797 and other income are refused (sd.other_forms, scope.yaml), and Schedule F and K-1 profits are refused by the self-employment screen (person.x_other).
 
 ### 7 (sc.f7206_line7) — Multiply Schedule 1 (Form 1040), line 15, deductible part of self-employment tax, by the p
 Status: **MATCH**
@@ -407,7 +407,7 @@ Restated: Choose — [helper "Line 4 is more than zero" = true → helper "This 
 
 Model: IRS line 9 includes 'Schedule 1..., line 16, self-employed SEP, SIMPLE, and qualified plans'; the restatement uses only the SEP or SIMPLE deduction.
 
-Ruling: open
+Ruling: scope; person.plan_screen refuses contributions "to a qualified plan (such as a solo 401(k))", so line 16 on a computed return holds only the SEP or SIMPLE deduction.
 
 ### 10 (sc.f7206_line10) — Subtract line 9 from line 8
 Status: **MATCH**

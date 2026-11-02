@@ -71,7 +71,7 @@ Second:
 {"args": [{"args": [{"const": true}, {"line": "(screen)"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.rrta"}], "test": "eq"}], "test": "all"}
 ```
 
-Ruling: open
+Ruling: model error; the line carries the owner's railroad retirement answer. The candidate also requires the screen, so it is false on the refused railroad fixtures, where the project reports true and refuses. Triage executable-triage-v2 (triage/sc.deepseek.json): 3830 of 3842 comparisons agree; on completed returns no difference.
 
 ### sc.line31_pre179 — Line 31 without the section 179 expense deduction
 Status: **DISAGREE**
@@ -88,7 +88,7 @@ Second:
 {"expression": {"of": [{"line": "12 (sc.s179_allowed)"}, {"line": "31"}], "op": "sum"}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
 
 ### sc.result — The amount for Schedule 1, line 3 and Schedule SE, line 2
 Status: **DISAGREE**
@@ -105,7 +105,7 @@ Second:
 {"expression": {"line": "31"}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
 
 ### sc.f6 — Section 179 elected on property other than listed property
 Status: **DISAGREE**
@@ -122,7 +122,7 @@ Second:
 {"collection": "asset", "field": "asset.s179", "op": "sum_over", "where": null}
 ```
 
-Ruling: open
+Ruling: model error; i4562 p. 5, Line 6: "Do not include any listed property on line 6". The candidate sums the election over every asset, listed or not, and for any year. Triage executable-triage-v2 (triage/sc.deepseek.json): 3836 of 3842 comparisons agree; on completed returns {"value": 4}.
 
 ### sc.f14 — Special allowance on property other than listed property
 Status: **DISAGREE**
@@ -139,7 +139,7 @@ Second:
 {"collection": "f4562", "field": "f4562.line14", "op": "sum_over", "where": null}
 ```
 
-Ruling: open
+Ruling: model error; the candidate reads Form 4562 and Schedule C amounts through a reference cycle (for example person.sc.f4562.line14 back to this line), so it is unknown on every record. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): 0 of 3842 comparisons agree; on completed returns {"candidate-unknown": 230}.
 
 ### sc.f17 — MACRS on earlier property other than listed property
 Status: **DISAGREE**
@@ -156,7 +156,7 @@ Second:
 {"collection": "f4562", "field": "f4562.line17", "op": "sum_over", "where": null}
 ```
 
-Ruling: open
+Ruling: model error; the candidate reads Form 4562 and Schedule C amounts through a reference cycle (for example person.sc.f4562.line14 back to this line), so it is unknown on every record. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): 0 of 3842 comparisons agree; on completed returns {"candidate-unknown": 230}.
 
 ### sc.f19_y3 — MACRS on 2025 property of period y3 other than listed property
 Status: **DISAGREE**
@@ -173,7 +173,7 @@ Second:
 {"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"const": "y3"}, {"ref": "asset.period"}], "test": "eq"}}
 ```
 
-Ruling: open
+Ruling: model error; i4562 p. 9, Lines 19a Through 19j: "Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025". The candidate sums the recovery class over prior-year property as well, where the project takes $0. Triage executable-triage-v2 (triage/sc.deepseek.json): 3835 of 3842 comparisons agree; on completed returns {"value": 2}.
 
 ### sc.f19_y5 — MACRS on 2025 property of period y5 other than listed property
 Status: **DISAGREE**
@@ -190,7 +190,7 @@ Second:
 {"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"const": "y5"}, {"ref": "asset.period"}], "test": "eq"}}
 ```
 
-Ruling: open
+Ruling: model error; i4562 p. 9, Lines 19a Through 19j: "Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025". The candidate sums the recovery class over prior-year property as well, where the project takes $0. Triage executable-triage-v2 (triage/sc.deepseek.json): 3399 of 3842 comparisons agree; on completed returns {"candidate-unknown": 7, "value": 6}.
 
 ### sc.f19_y7 — MACRS on 2025 property of period y7 other than listed property
 Status: **DISAGREE**
@@ -207,7 +207,7 @@ Second:
 {"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"const": "y7"}, {"ref": "asset.period"}], "test": "eq"}}
 ```
 
-Ruling: open
+Ruling: model error; i4562 p. 9, Lines 19a Through 19j: "Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025". The candidate sums the recovery class over prior-year property as well, where the project takes $0. Triage executable-triage-v2 (triage/sc.deepseek.json): 3579 of 3842 comparisons agree; on completed returns {"candidate-unknown": 6, "value": 8}.
 
 ### sc.f19_y10 — MACRS on 2025 property of period y10 other than listed property
 Status: **DISAGREE**
@@ -224,7 +224,7 @@ Second:
 {"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"const": "y10"}, {"ref": "asset.period"}], "test": "eq"}}
 ```
 
-Ruling: open
+Ruling: model error; i4562 p. 9, Lines 19a Through 19j: "Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025". The candidate sums the recovery class over prior-year property as well, where the project takes $0. Triage executable-triage-v2 (triage/sc.deepseek.json): 3831 of 3842 comparisons agree; on completed returns {"candidate-unknown": 2, "value": 1}.
 
 ### sc.f19_y15 — MACRS on 2025 property of period y15 other than listed property
 Status: **DISAGREE**
@@ -241,7 +241,7 @@ Second:
 {"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"const": "y15"}, {"ref": "asset.period"}], "test": "eq"}}
 ```
 
-Ruling: open
+Ruling: model error; i4562 p. 9, Lines 19a Through 19j: "Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025". The candidate sums the recovery class over prior-year property as well, where the project takes $0. Triage executable-triage-v2 (triage/sc.deepseek.json): 3826 of 3842 comparisons agree; on completed returns no difference.
 
 ### sc.f19_y20 — MACRS on 2025 property of period y20 other than listed property
 Status: **DISAGREE**
@@ -258,7 +258,7 @@ Second:
 {"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"const": "y20"}, {"ref": "asset.period"}], "test": "eq"}}
 ```
 
-Ruling: open
+Ruling: model error; i4562 p. 9, Lines 19a Through 19j: "Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025". The candidate sums the recovery class over prior-year property as well, where the project takes $0. Triage executable-triage-v2 (triage/sc.deepseek.json): 3647 of 3842 comparisons agree; on completed returns {"value": 16}.
 
 ### sc.f19_y15sl — MACRS on 2025 property of period y15sl other than listed property
 Status: **DISAGREE**
@@ -275,7 +275,7 @@ Second:
 {"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"const": "y15sl"}, {"ref": "asset.period"}], "test": "eq"}}
 ```
 
-Ruling: open
+Ruling: representation; triage found no difference. Triage executable-triage-v2 (triage/sc.deepseek.json): 3842 of 3842 comparisons agree; on completed returns no difference.
 
 ### sc.f25 — Line 25 for this business
 Status: **DISAGREE**
@@ -292,7 +292,7 @@ Second:
 {"collection": "f4562", "field": "f4562.line25", "op": "sum_over", "where": null}
 ```
 
-Ruling: open
+Ruling: model error; the candidate reads Form 4562 and Schedule C amounts through a reference cycle (for example person.sc.f4562.line14 back to this line), so it is unknown on every record. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): 1 of 3842 comparisons agree; on completed returns {"candidate-unknown": 230}.
 
 ### sc.f26h — Column (h), line 26, for this business
 Status: **DISAGREE**
@@ -309,7 +309,7 @@ Second:
 {"collection": "f4562", "field": "f4562.line26h", "op": "sum_over", "where": null}
 ```
 
-Ruling: open
+Ruling: model error; the candidate reads Form 4562 and Schedule C amounts through a reference cycle (for example person.sc.f4562.line14 back to this line), so it is unknown on every record. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): 0 of 3842 comparisons agree; on completed returns {"candidate-unknown": 230}.
 
 ### sc.f28 — Line 28 for this business
 Status: **DISAGREE**
@@ -326,7 +326,7 @@ Second:
 {"collection": "f4562", "field": "f4562.line28", "op": "sum_over", "where": null}
 ```
 
-Ruling: open
+Ruling: model error; the candidate reads Form 4562 and Schedule C amounts through a reference cycle (for example person.sc.f4562.line14 back to this line), so it is unknown on every record. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): 0 of 3842 comparisons agree; on completed returns {"candidate-unknown": 230}.
 
 ### sc.f29 — Line 29 for this business
 Status: **DISAGREE**
@@ -343,7 +343,7 @@ Second:
 {"collection": "f4562", "field": "f4562.line29", "op": "sum_over", "where": null}
 ```
 
-Ruling: open
+Ruling: model error; the candidate reads Form 4562 and Schedule C amounts through a reference cycle (for example person.sc.f4562.line14 back to this line), so it is unknown on every record. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): 0 of 3842 comparisons agree; on completed returns {"candidate-unknown": 230}.
 
 ### sc.mq_q4 — mq_q4 of this business
 Status: **AGREE**
@@ -369,7 +369,7 @@ Second:
 {"expression": {"from": {"line": "31"}, "op": "subtract_floor0", "take": {"const": 0}}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
 
 ### 3 (sc.line3) — Subtract line 2 from line 1
 Status: **AGREE**
@@ -404,7 +404,7 @@ Second:
 {"collection": "f4562", "field": "f4562.line22", "op": "sum_over", "where": null}
 ```
 
-Ruling: open
+Ruling: model error; the candidate reads Form 4562 and Schedule C amounts through a reference cycle (for example person.sc.f4562.line14 back to this line), so it is unknown on every record. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): 2774 of 3842 comparisons agree; on completed returns {"candidate-unknown": 230}.
 
 ### 20a — Rent or lease: vehicles, machinery, and equipment
 Status: **DISAGREE**
@@ -421,7 +421,7 @@ Second:
 {"input": "sc.rent_equipment"}
 ```
 
-Ruling: open
+Ruling: model error; i1040sc line 20a includes the rent or lease of vehicles. The candidate omits scveh.line20a (classm.s8812.3: project $1,370.09, candidate $0). Triage executable-triage-v2 (triage/sc.deepseek.json): 3647 of 3842 comparisons agree; on completed returns {"value": 7}.
 
 ### 24b — Deductible meals
 Status: **AGREE**
@@ -456,7 +456,7 @@ Second:
 {"expression": {"amount": {"line": "3a"}, "count": {"of": [{"line": "30(b)"}, {"param": "sc.ho_max_sqft"}], "op": "smaller_of"}, "op": "multiply_count"}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
 
 ### 1 (sc.ho_line1) — Gross income limitation (Schedule C, line 29)
 Status: **AGREE**
@@ -476,7 +476,7 @@ Second:
 {"expression": {"from": {"of": [{"line": "1 (sc.ho_line1)"}, {"line": "4 (sc.ho_line4)"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"const": 0}}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
 
 ### 30 — Expenses for business use of your home
 Status: **DISAGREE**
@@ -493,7 +493,7 @@ Second:
 {"expression": {"alternatives": [{"guard": {"args": [{"const": false}, {"line": "(screen)"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"line": "(screen)"}], "test": "eq"}, "then": {"line": "5 (sc.ho_line5)"}}], "op": "choose"}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
 
 ### 31 — Net profit or (loss). Subtract line 30 from line 29
 Status: **DISAGREE**
@@ -510,7 +510,7 @@ Second:
 {"expression": {"from": {"line": "29"}, "op": "subtract", "take": {"line": "30"}}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
 
 ### 40 — Add lines 35 through 39
 Status: **AGREE**
@@ -533,7 +533,7 @@ Second:
 {"collection": "f4562", "field": "f4562.line12", "op": "sum_over", "where": null}
 ```
 
-Ruling: open
+Ruling: model error; the candidate reads Form 4562 and Schedule C amounts through a reference cycle (for example person.sc.f4562.line14 back to this line), so it is unknown on every record. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): 2760 of 3842 comparisons agree; on completed returns {"candidate-unknown": 230}.
 
 ### 2 (sc.f7206_line2) — Qualified long-term care insurance (the smaller of payments or the age limit, for each per
 Status: **AGREE**
@@ -556,7 +556,7 @@ Second:
 {"expression": {"from": {"line": "31"}, "op": "subtract_floor0", "take": {"const": 0}}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
 
 ### 5 (sc.f7206_line5) — Total of all net profits from Schedule C, line 31
 Status: **AGREE**
@@ -578,7 +578,7 @@ Second:
 
 Second transcription's note: Form 7206 line 6 does not state a rounding rule; this line applies prorate with 9 decimal places to the line 4/line 5 ratio.
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
 
 ### 8 (sc.f7206_line8) — Subtract line 7 from line 4
 Status: **DISAGREE**
@@ -595,7 +595,7 @@ Second:
 {"expression": {"from": {"line": "4 (sc.f7206_line4)"}, "op": "subtract_floor0", "take": {"line": "7 (sc.f7206_line7)"}}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
 
 ### 9 (sc.f7206_line9) — Schedule 1, line 16, attributable to the same trade or business
 Status: **DISAGREE**
@@ -614,7 +614,7 @@ Second:
 
 Second transcription's note: The supplied interface provides only the Schedule 1 line 16 total, not a per-business allocation; this line uses that total.
 
-Ruling: open
+Ruling: ambiguity (amb.2025.f7206_plan_attribution); the candidate enters the Schedule 1 line 16 total for each business and its note says the interface gives no allocation; f7206 line 9 says "attributable to the same trade or business". The candidate needs sc.result on returns that do not reach it. Triage executable-triage-v2 (triage/sc.deepseek.json): 737 of 3842 comparisons agree; on completed returns {"candidate-unknown": 12}.
 
 ### 10 (sc.f7206_line10) — Subtract line 9 from line 8
 Status: **DISAGREE**
@@ -631,7 +631,7 @@ Second:
 {"expression": {"from": {"line": "8 (sc.f7206_line8)"}, "op": "subtract_floor0", "take": {"line": "9 (sc.f7206_line9)"}}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
 
 ### 13 (sc.f7206_line13) — Subtract line 12 from line 10
 Status: **DISAGREE**
@@ -648,7 +648,7 @@ Second:
 {"expression": {"line": "10 (sc.f7206_line10)"}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
 
 ### 14 (sc.f7206_line14) — Self-employed health insurance deduction
 Status: **DISAGREE**
@@ -665,7 +665,7 @@ Second:
 {"expression": {"alternatives": [{"guard": {"args": [{"const": false}, {"line": "(screen)"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"line": "(screen)"}], "test": "eq"}, "then": {"of": [{"line": "13 (sc.f7206_line13)"}, {"line": "3 (sc.f7206_line3)"}], "op": "smaller_of"}}], "op": "choose"}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
 
 ### 1(c) — Qualified business income or (loss) of this business
 Status: **DISAGREE**
@@ -684,7 +684,7 @@ Second:
 
 Second transcription's note: The supplied text and inputs do not provide a per-business allocation of the deductible part of self-employment tax, retirement plan contributions, or similar QBI reductions; this line reports the Schedule C net profit as the business's QBI.
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
 
 ## Refusal gates listed by the second transcription
 

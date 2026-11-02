@@ -474,9 +474,23 @@
 ## (helper) — `asset.cost179_2025`
 
 - **Authored helper label:** The business cost when used more than 50% in the business
-- **Encoded (NonNegDollars):** Choose — [helper "Business use is more than 50%" = true → column (c)] [helper "Business use is more than 50%" = false → helper "Zero"]
-- Expr: `{"alternatives":[{"guard":{"eq":["asset.over_half",{"const":true}],"op":"test"},"then":"asset.basis"},{"guard":{"eq":["asset.over_half",{"const":false}],"op":"test"},"then":"asset.zero"}],"op":"choose"}`
+- **Encoded (NonNegDollars):** Choose — [helper "Business use is more than 50%" = true → helper "The business cost, when this property is section 179 property"] [helper "Business use is more than 50%" = false → helper "Zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["asset.over_half",{"const":true}],"op":"test"},"then":"asset.cost179_real"},{"guard":{"eq":["asset.over_half",{"const":false}],"op":"test"},"then":"asset.zero"}],"op":"choose"}`
 - Cite: [i4562] p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during the tax year"; Worksheet 1, line 1, "include the total amount of eligible section 179 property ... not just the amount for which you are making the election" (2025; sha256 5c1c95b7)
+
+## (helper) — `asset.is_section179`
+
+- **Authored helper label:** This property is section 179 property (qualified improvement property only when you elect to expense it)
+- **Encoded (Bool):** (column (a) ≠ 'cqip' or line 6(c) > helper "Zero")
+- Expr: `{"any":[{"ne":["asset.class",{"const":"cqip"}],"op":"test"},{"gt":["asset.s179","asset.zero"],"op":"test"}],"op":"test"}`
+- Cite: [i4562] pp. 2-3, Special rules for qualified section 179 real property, "You can elect to treat certain qualified real property placed in service during the tax year as section 179 property" (2025; sha256 5c1c95b7)
+
+## (helper) — `asset.cost179_real`
+
+- **Authored helper label:** The business cost, when this property is section 179 property
+- **Encoded (NonNegDollars):** Choose — [helper "This property is section 179 property (qualified improvement property only when you elect to expense it)" = true → column (c)] [helper "This property is section 179 property (qualified improvement property only when you elect to expense it)" = false → helper "Zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["asset.is_section179",{"const":true}],"op":"test"},"then":"asset.basis"},{"guard":{"eq":["asset.is_section179",{"const":false}],"op":"test"},"then":"asset.zero"}],"op":"choose"}`
+- Cite: [i4562] p. 4, Line 2, "including the total cost of qualified real property that you elect to treat as section 179 property" (2025; sha256 5c1c95b7)
 
 ## (helper) — `asset.dep_prior`
 

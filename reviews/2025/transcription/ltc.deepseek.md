@@ -4,28 +4,22 @@ Second transcription of `Form 7206, line 2 — qualified long-term care insuranc
 
 | field | value |
 | --- | --- |
-| date | 2026-10-26 |
-| review provenance | verified saved-response replay; no model call |
-| parent review log sha256 | 952527373dc6b3842f4bb28e5eac858726de219c17bfaf455c6941ad376cd2c6 |
-| original review date | 2026-10-26 |
-| original comparison policy | checked-expression-types-v2 |
-| original type validation policy | project-expression-types-v2 |
-| original input context policy | required-review-interfaces-v2 |
+| date | 2026-11-02 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 0218f8f68548456e1b5fdab5bef66d9cfb6e0896357f6f4f4b3bc91ded87c5a4 |
+| prompt sha256 | 7f20b1f058536fef47681530ccd97e2351404ce06fa95e6041fced2169c293a5 |
 | prompt policy | source-only-computation-v2 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
 | complete input context | pass |
-| required input context sha256 | 0b1eb00f49c949648ce90a2b057d2c9b2da5a14cc7627c6c7f0ee46a60966134 |
+| required input context sha256 | 1133623277ebbee04df833cd34e52da1ce46437b30608d9ec5bf7daf3ab3bf59 |
 | type validation policy | project-expression-types-v3 |
 | model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 7725642cb923e811f4d5df5cade9656856609c785f5d22f318800bdb04234fe8 |
+| subject sha256 | 82179fa79df561ead41677aec2bae4c74cce769404aabd860a16977fb583e4d2 |
 | printed lines compared | 2 |
 | agree / disagree / missing | 2 / 0 / 0 |
 | extra printed lines in second | none |
@@ -51,20 +45,17 @@ Status: **AGREE**
 lines:
   - id: ltc.limit
     printed: "2(b)"
-    label: "The amount shown below. Use the person's age at the end of the tax year."
+    label: "The amount shown below. Use the person’s age at the end of the tax year."
     type: NonNegDollars
     expr:
       op: keyed_lookup
       table: ltc_limit
-      keys:
-        - ltc.age
+      keys: [ltc.age]
   - id: ltc.amount
     printed: "(helper)"
-    label: "Amount included for this person: the smaller of line 2(a) or line 2(b)."
+    label: "For coverage under a qualified long-term care insurance contract, enter for each person covered the smaller of (a) or (b)."
     type: NonNegDollars
     expr:
       op: smaller_of
-      of:
-        - ltc.payments
-        - ltc.limit
+      of: [ltc.payments, ltc.limit]
 ```

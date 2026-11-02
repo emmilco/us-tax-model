@@ -7,21 +7,21 @@ The rendered English of every printed line of `Form 4562 — one item of depreci
 | date | 2026-11-02 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | a68093ca3c6f6b3e431c81d51bf8877e253d972a5c369d9caa135de96b11bf7d |
+| prompt sha256 | 77833620d219cb4f9c568dea77631cb2db9c9ad543369a2bb01774ec062a0b2b |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
-| output token budget | 131072 |
-| subject sha256 | 8bde0b7ebdf9b1be027a1d6024ba04d896ec78485f583d4db0c5680a6fc7bcbf |
+| output token budget | 65536 |
+| subject sha256 | 2ac0576d88cb323f64f71c418327b6fe3b235d5641e72f5107aacd18c16aeea1 |
 | lines judged | 15 |
-| match / mismatch / unclear / missing | 10 / 5 / 0 / 0 |
+| match / mismatch / unclear / missing | 12 / 3 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
 
 | document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
 | --- | --- | --- | --- | --- | --- | --- |
-| i4562 | 2025 | 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
+| i4562 | 2025 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
 | p946 | For use in preparing 2025 returns | 34, 37, 39, 41, 59, 61, 62, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 34, 37, 39, 41 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
 | i1040sc | 2025 | 6, 7, 14, 15 | cited pages | dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a | 6, 7, 14, 15 | 616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918 |
 | f1040sc | 2025; created 2025-04-03 | 1, 2 | whole document | ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022 | - | 44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376 |
@@ -30,147 +30,139 @@ The rendered English of every printed line of `Form 4562 — one item of depreci
 ## Lines
 
 ### (a) — Asset class of the property (Pub. 946, Appendix B)
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: Input — The asset class of this property: find the property in Pub. 946 Appendix B, Table B-1, and the activity it is used in in Table B-2 (use the Table B-2 class when the property is specifically listed there under your activity); or choose A (personal property with no class life), B (qualified technological equipment), C (property used in research and experimentation), or qualified improvement property
-
-Model: The IRS column (a) is 'Classification of property' and says to sort the property 'according to its classification (3-year property, 5-year property, etc.)'; the restatement instead asks for the Appendix B asset class or A/B/C/QIP.
-
-Ruling: representation — the line is an intermediate in the project's basis computation. (a) the class input derives the form's 3/5/7-year classification through the Appendix B class; (b) the year plus the 2025 quarter gives the MACRS convention the form's month would give; (c) the pre-section-179 basis is shown under the column marker (c), and the form's column (c) after section 179 and the special allowance is item 19(c) (asset.col19c), which subtracts them. No printed tax amount differs. Lines 25 and 26(i) copy the per-asset allowance and elected cost, not the other lines' columns.
+Model: IRS line 19(a) classification is determined from Pub. 946 Appendix B Tables B-1/B-2 and the listed special categories; the restatement follows that approach.
 
 ### (d) — Recovery period under GDS for the asset class
 Status: **MATCH**
 
-Model: This matches the column (d) instruction to determine the GDS recovery period from Pub. 946; using the asset class from column (a) is the prescribed way to find it.
+Model: IRS line 19(d) directs determining the recovery period from the property classification; using the GDS recovery period for the selected asset class in Pub. 946 Appendix B is consistent.
 
 ### (screen) (asset.screen) — Does any of these apply to this property?
 Status: **MATCH**
 
-Model: These are support gates that exclude cases the IRS text treats specially, such as ADS, real property, vehicles, basis adjustments, general asset accounts, amortization, and pre-2005 property; the refusal names the excluded cases.
+Model: The screen lists conditions that place the property outside the supported MACRS-table computation, and the refusals for screened property name those exclusions.
 
 ### (b) — Year placed in service
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: Input — The year you placed this property in service in the business (2005 to 2025)
-
-Model: The IRS column (b) calls for the 'Month and year placed in service' and line 19 is only for assets placed in service during 2025, while the restatement asks only for the year and permits 2005 through 2025.
-
-Ruling: representation — the line is an intermediate in the project's basis computation. (a) the class input derives the form's 3/5/7-year classification through the Appendix B class; (b) the year plus the 2025 quarter gives the MACRS convention the form's month would give; (c) the pre-section-179 basis is shown under the column marker (c), and the form's column (c) after section 179 and the special allowance is item 19(c) (asset.col19c), which subtracts them. No printed tax amount differs. Lines 25 and 26(i) copy the per-asset allowance and elected cost, not the other lines' columns.
+Model: The year placed in service is the input needed to select line 17 versus line 19 and the recovery year; the mid-quarter quarter is captured separately.
 
 ### (c) — Basis for depreciation (business/investment use only), before section 179 and the special
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: Divide helper "The business use percentage, as cents" by helper "One hundred cents (100%)", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper "Cost or other basis" by the result.
-
-Model: IRS line 19 column (c) says after multiplying cost by business use, 'subtract any credits and deductions allocable to the property' (including section 179 and the special allowance); the restatement stops after the multiplication.
-
-Ruling: representation — the line is an intermediate in the project's basis computation. (a) the class input derives the form's 3/5/7-year classification through the Appendix B class; (b) the year plus the 2025 quarter gives the MACRS convention the form's month would give; (c) the pre-section-179 basis is shown under the column marker (c), and the form's column (c) after section 179 and the special allowance is item 19(c) (asset.col19c), which subtracts them. No printed tax amount differs. Lines 25 and 26(i) copy the per-asset allowance and elected cost, not the other lines' columns.
+Model: The computation multiplies cost by the business/investment-use percentage, matching the first step for basis; section 179 and the special allowance are applied in the later line 19(c) helper.
 
 ### 6(c) — Section 179 elected cost
 Status: **MATCH**
 
-Model: This matches line 6 column (c), the elected section 179 cost, limited by the business-use cost and excluded from listed property by the reporting rule.
+Model: Line 6(c) is the elected section 179 cost, not more than the business cost, for property placed in service in 2025 that is not listed property.
 
 ### (screen) (asset.bonus_same) — Is the choice the same for all property of this class placed in service in 2025?
 Status: **MATCH**
 
-Model: The IRS text requires a special-allowance election for a class to apply to all such property in that class placed in service during the tax year; the screen checks the same class-wide consistency.
+Model: The special allowance election must be consistent for the class of property placed in service in 2025; the screen tests that consistency.
 
 ### 14 — Special depreciation allowance for this property
 Status: **MATCH**
 
-Model: The IRS text provides 100% for certain qualified property acquired after Jan. 19, 2025, 40% for certain property acquired after Sept. 27, 2017 and before Jan. 20, 2025 (with 60% exceptions screened out), and allows electing no allowance.
+Model: Line 14 applies the applicable special allowance percentage, 100% or 40%, to the basis less the section 179 election, as described for qualified property.
 
 ### 25 — Special depreciation allowance for this listed property (line 25)
 Status: **MISMATCH**
 
 Restated: Enter the amount from line 14.
 
-Model: IRS line 25 says 'Enter on line 25 your total special depreciation allowance for all qualified listed property'; it does not say to enter the amount from line 14, and line 14 is not the listed-property allowance.
+Model: IRS line 25 says 'Enter on line 25 your total special depreciation allowance for all qualified listed property'; the restatement instead takes the line 14 amount, which is for non-listed property.
 
-Ruling: representation — the line is an intermediate in the project's basis computation. (a) the class input derives the form's 3/5/7-year classification through the Appendix B class; (b) the year plus the 2025 quarter gives the MACRS convention the form's month would give; (c) the pre-section-179 basis is shown under the column marker (c), and the form's column (c) after section 179 and the special allowance is item 19(c) (asset.col19c), which subtracts them. No printed tax amount differs. Lines 25 and 26(i) copy the per-asset allowance and elected cost, not the other lines' columns.
+Ruling: representation; restatement accepted. Line 14 and line 19 amounts are figured per asset and shown by listed status (asset.on_19, asset.on_26_2025); for listed property the same per-asset allowance, election and depreciation appear on lines 25, 26(i) and 26(h), figured by the line 19 instructions as i4562 p. 15, Column (h) directs. The objection reads the shared helper names as the other lines' columns.
 
 ### 26(i) — Elected section 179 cost of this listed property (column (i))
 Status: **MISMATCH**
 
 Restated: Enter the amount from line 6(c).
 
-Model: The IRS text says 'Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26'; line 26(i) is not the amount from line 6(c).
+Model: IRS line 6 says 'Do not include any listed property on line 6,' and line 26 column (i) is the elected section 179 cost for listed property; the restatement takes line 6(c).
 
-Ruling: representation — the line is an intermediate in the project's basis computation. (a) the class input derives the form's 3/5/7-year classification through the Appendix B class; (b) the year plus the 2025 quarter gives the MACRS convention the form's month would give; (c) the pre-section-179 basis is shown under the column marker (c), and the form's column (c) after section 179 and the special allowance is item 19(c) (asset.col19c), which subtracts them. No printed tax amount differs. Lines 25 and 26(i) copy the per-asset allowance and elected cost, not the other lines' columns.
+Ruling: representation; restatement accepted. Line 14 and line 19 amounts are figured per asset and shown by listed status (asset.on_19, asset.on_26_2025); for listed property the same per-asset allowance, election and depreciation appear on lines 25, 26(i) and 26(h), figured by the line 19 instructions as i4562 p. 15, Column (h) directs. The objection reads the shared helper names as the other lines' columns.
 
 ### 19(c) — Basis for depreciation (business/investment use only), column (c), after the section 179 d
 Status: **MATCH**
 
-Model: The helper subtracts the section 179 election and the special allowance from the business-use basis, which is the computation described for line 19 column (c) within the screened cases.
+Model: The helper subtracts section 179 and the special allowance from the business basis, matching line 19(c).
 
 ### 19(g) — MACRS depreciation for 2025 property
 Status: **MATCH**
 
-Model: The restatement uses the MACRS table rate under the half-year or mid-quarter convention selected by the 40%-of-bases test, matching line 19 column (g).
+Model: The restatement selects half-year or mid-quarter MACRS depreciation according to the mid-quarter test and applies the applicable rate to the line 19(c) basis.
 
 ### (e) — Convention used in the year placed in service
 Status: **MATCH**
 
-Model: The IRS column (e) requires HY or MQ (mid-month is outside this property screen), and the restatement asks for the convention including the mid-quarter quarter.
+Model: The convention is half-year or mid-quarter; mid-month is not needed because real property is screened out.
 
 ### 17 — MACRS deduction for 2025 on property placed in service before 2025
 Status: **MATCH**
 
-Model: Line 17 is the current-year MACRS deduction for property placed in service before 2025; once the recovery period has ended, no current deduction remains for this nonvehicle property.
+Model: Line 17 is the current-year MACRS deduction for property placed in service before 2025, with zero after the recovery period ends.
 
 ### 26(h) — Depreciation of this listed property (column (h))
-Status: **MATCH**
+Status: **MISMATCH**
 
-Model: For listed property used more than 50% in qualified business use, line 26 column (h) is the MACRS depreciation for the current year, computed by the line 19(g) method; the helper combines the 2025 and prior-year cases with one zero.
+Restated: Add helper "MACRS on 2025 property" and helper "MACRS on property placed in service before 2025".
+
+Model: IRS line 26(h) says for property used more than 50% in a qualified business use and placed in service after 1986, 'figure column (h) by following the instructions for line 19, column (g)'; the restatement adds line 19(g)/line 17 amounts, which are for non-listed property, instead of computing from the listed property's own basis after line 26(i) and line 25.
+
+Ruling: representation; restatement accepted. Line 14 and line 19 amounts are figured per asset and shown by listed status (asset.on_19, asset.on_26_2025); for listed property the same per-asset allowance, election and depreciation appear on lines 25, 26(i) and 26(h), figured by the line 19 instructions as i4562 p. 15, Column (h) directs. The objection reads the shared helper names as the other lines' columns.
 
 ## Raw response
 
 ```yaml
 lines:
   - key: "(a)"
-    status: MISMATCH
-    reason: "The IRS column (a) is 'Classification of property' and says to sort the property 'according to its classification (3-year property, 5-year property, etc.)'; the restatement instead asks for the Appendix B asset class or A/B/C/QIP."
+    status: MATCH
+    reason: "IRS line 19(a) classification is determined from Pub. 946 Appendix B Tables B-1/B-2 and the listed special categories; the restatement follows that approach."
   - key: "(d)"
     status: MATCH
-    reason: "This matches the column (d) instruction to determine the GDS recovery period from Pub. 946; using the asset class from column (a) is the prescribed way to find it."
+    reason: "IRS line 19(d) directs determining the recovery period from the property classification; using the GDS recovery period for the selected asset class in Pub. 946 Appendix B is consistent."
   - key: "(screen) (asset.screen)"
     status: MATCH
-    reason: "These are support gates that exclude cases the IRS text treats specially, such as ADS, real property, vehicles, basis adjustments, general asset accounts, amortization, and pre-2005 property; the refusal names the excluded cases."
+    reason: "The screen lists conditions that place the property outside the supported MACRS-table computation, and the refusals for screened property name those exclusions."
   - key: "(b)"
-    status: MISMATCH
-    reason: "The IRS column (b) calls for the 'Month and year placed in service' and line 19 is only for assets placed in service during 2025, while the restatement asks only for the year and permits 2005 through 2025."
+    status: MATCH
+    reason: "The year placed in service is the input needed to select line 17 versus line 19 and the recovery year; the mid-quarter quarter is captured separately."
   - key: "(c)"
-    status: MISMATCH
-    reason: "IRS line 19 column (c) says after multiplying cost by business use, 'subtract any credits and deductions allocable to the property' (including section 179 and the special allowance); the restatement stops after the multiplication."
+    status: MATCH
+    reason: "The computation multiplies cost by the business/investment-use percentage, matching the first step for basis; section 179 and the special allowance are applied in the later line 19(c) helper."
   - key: "6(c)"
     status: MATCH
-    reason: "This matches line 6 column (c), the elected section 179 cost, limited by the business-use cost and excluded from listed property by the reporting rule."
+    reason: "Line 6(c) is the elected section 179 cost, not more than the business cost, for property placed in service in 2025 that is not listed property."
   - key: "(screen) (asset.bonus_same)"
     status: MATCH
-    reason: "The IRS text requires a special-allowance election for a class to apply to all such property in that class placed in service during the tax year; the screen checks the same class-wide consistency."
+    reason: "The special allowance election must be consistent for the class of property placed in service in 2025; the screen tests that consistency."
   - key: "14"
     status: MATCH
-    reason: "The IRS text provides 100% for certain qualified property acquired after Jan. 19, 2025, 40% for certain property acquired after Sept. 27, 2017 and before Jan. 20, 2025 (with 60% exceptions screened out), and allows electing no allowance."
+    reason: "Line 14 applies the applicable special allowance percentage, 100% or 40%, to the basis less the section 179 election, as described for qualified property."
   - key: "25"
     status: MISMATCH
-    reason: "IRS line 25 says 'Enter on line 25 your total special depreciation allowance for all qualified listed property'; it does not say to enter the amount from line 14, and line 14 is not the listed-property allowance."
+    reason: "IRS line 25 says 'Enter on line 25 your total special depreciation allowance for all qualified listed property'; the restatement instead takes the line 14 amount, which is for non-listed property."
   - key: "26(i)"
     status: MISMATCH
-    reason: "The IRS text says 'Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26'; line 26(i) is not the amount from line 6(c)."
+    reason: "IRS line 6 says 'Do not include any listed property on line 6,' and line 26 column (i) is the elected section 179 cost for listed property; the restatement takes line 6(c)."
   - key: "19(c)"
     status: MATCH
-    reason: "The helper subtracts the section 179 election and the special allowance from the business-use basis, which is the computation described for line 19 column (c) within the screened cases."
+    reason: "The helper subtracts section 179 and the special allowance from the business basis, matching line 19(c)."
   - key: "19(g)"
     status: MATCH
-    reason: "The restatement uses the MACRS table rate under the half-year or mid-quarter convention selected by the 40%-of-bases test, matching line 19 column (g)."
+    reason: "The restatement selects half-year or mid-quarter MACRS depreciation according to the mid-quarter test and applies the applicable rate to the line 19(c) basis."
   - key: "(e)"
     status: MATCH
-    reason: "The IRS column (e) requires HY or MQ (mid-month is outside this property screen), and the restatement asks for the convention including the mid-quarter quarter."
+    reason: "The convention is half-year or mid-quarter; mid-month is not needed because real property is screened out."
   - key: "17"
     status: MATCH
-    reason: "Line 17 is the current-year MACRS deduction for property placed in service before 2025; once the recovery period has ended, no current deduction remains for this nonvehicle property."
+    reason: "Line 17 is the current-year MACRS deduction for property placed in service before 2025, with zero after the recovery period ends."
   - key: "26(h)"
-    status: MATCH
-    reason: "For listed property used more than 50% in qualified business use, line 26 column (h) is the MACRS depreciation for the current year, computed by the line 19(g) method; the helper combines the 2025 and prior-year cases with one zero."
+    status: MISMATCH
+    reason: "IRS line 26(h) says for property used more than 50% in a qualified business use and placed in service after 1986, 'figure column (h) by following the instructions for line 19, column (g)'; the restatement adds line 19(g)/line 17 amounts, which are for non-listed property, instead of computing from the listed property's own basis after line 26(i) and line 25."
 ```

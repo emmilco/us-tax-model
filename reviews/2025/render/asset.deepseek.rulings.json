@@ -53,6 +53,27 @@
    "context": "1d792bef21c02f77bb109f5db9a4960fc2c1612d2849bb469bd71625b8e9715c"
   },
   {
+   "printed": "25",
+   "restated": "Enter the amount from line 14.",
+   "model": "IRS line 25 says 'Enter on line 25 your total special depreciation allowance for all qualified listed property'; the restatement instead takes the line 14 amount, which is for non-listed property.",
+   "ruling": "Ruling: representation; restatement accepted. Line 14 and line 19 amounts are figured per asset and shown by listed status (asset.on_19, asset.on_26_2025); for listed property the same per-asset allowance, election and depreciation appear on lines 25, 26(i) and 26(h), figured by the line 19 instructions as i4562 p. 15, Column (h) directs. The objection reads the shared helper names as the other lines' columns.",
+   "context": "f7853019cac1504acce66c1cce52a0d338c753ca90fef571243279035ad08afb"
+  },
+  {
+   "printed": "26(h)",
+   "restated": "Add helper \"MACRS on 2025 property\" and helper \"MACRS on property placed in service before 2025\".",
+   "model": "IRS line 26(h) says for property used more than 50% in a qualified business use and placed in service after 1986, 'figure column (h) by following the instructions for line 19, column (g)'; the restatement adds line 19(g)/line 17 amounts, which are for non-listed property, instead of computing from the listed property's own basis after line 26(i) and line 25.",
+   "ruling": "Ruling: representation; restatement accepted. Line 14 and line 19 amounts are figured per asset and shown by listed status (asset.on_19, asset.on_26_2025); for listed property the same per-asset allowance, election and depreciation appear on lines 25, 26(i) and 26(h), figured by the line 19 instructions as i4562 p. 15, Column (h) directs. The objection reads the shared helper names as the other lines' columns.",
+   "context": "f7853019cac1504acce66c1cce52a0d338c753ca90fef571243279035ad08afb"
+  },
+  {
+   "printed": "26(i)",
+   "restated": "Enter the amount from line 6(c).",
+   "model": "IRS line 6 says 'Do not include any listed property on line 6,' and line 26 column (i) is the elected section 179 cost for listed property; the restatement takes line 6(c).",
+   "ruling": "Ruling: representation; restatement accepted. Line 14 and line 19 amounts are figured per asset and shown by listed status (asset.on_19, asset.on_26_2025); for listed property the same per-asset allowance, election and depreciation appear on lines 25, 26(i) and 26(h), figured by the line 19 instructions as i4562 p. 15, Column (h) directs. The objection reads the shared helper names as the other lines' columns.",
+   "context": "f7853019cac1504acce66c1cce52a0d338c753ca90fef571243279035ad08afb"
+  },
+  {
    "printed": "26(i)",
    "restated": "Enter the amount from line 6(c).",
    "model": "IRS line 6 says 'Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26'; line 26(i) is not the line 6(c) amount.",

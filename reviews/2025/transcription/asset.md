@@ -7,7 +7,7 @@ Second transcription of `Form 4562 — one item of depreciable property (other t
 | date | 2026-11-02 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 1e804de2adc85ee0a1874085d1130512e80b77a7fd9917cf96441ecf0be4432c |
+| prompt sha256 | 4662d0f05f157c9eeccfef3381641f281bc5f15e545c65c5288c0b870d116cd7 |
 | prompt policy | source-only-computation-v2 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
@@ -19,7 +19,7 @@ Second transcription of `Form 4562 — one item of depreciable property (other t
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 9ee21d333a313ab2156e18b7d8e7c0397d069fb44a24764a8c399efa55575472 |
+| subject sha256 | bd4ca2151f405573538c0fa0fab0e154c0d1c2f8d2daef9fa7e59d2481ca07ba |
 | printed lines compared | 16 |
 | agree / disagree / missing | 2 / 14 / 0 |
 | extra printed lines in second | none |
@@ -28,7 +28,7 @@ Second transcription of `Form 4562 — one item of depreciable property (other t
 
 | document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
 | --- | --- | --- | --- | --- | --- | --- |
-| i4562 | 2025 | 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
+| i4562 | 2025 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
 | p946 | For use in preparing 2025 returns | 34, 37, 39, 41, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 34, 37, 39, 41 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
 
 ## Lines
@@ -45,12 +45,12 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}], "test": "le"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"param": "sc.conv_hy"}, {"const": 1, "type": "Count"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}], "test": "lt"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"keys": [{"input": "asset.quarter"}], "op": "keyed_lookup", "table": "quarter_convention"}, {"const": 1, "type": "Count"}], "op": "keyed_lookup", "table": "macrs_gds"}}}], "op": "choose"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}], "test": "le"}, "then": {"amount": {"line": "19(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"param": "sc.conv_hy"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}], "test": "lt"}, "then": {"amount": {"line": "19(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"keys": [{"input": "asset.quarter"}], "op": "keyed_lookup", "table": "quarter_convention"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}], "op": "choose"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Second transcription's note: Interface meaning not stated; read as the 2025 MACRS deduction (excluding section 179 and special allowance, which have their own interfaces) for property placed in service in 2025, listed or not.
+Second transcription's note: The interface name does not define this result. Chosen: regular MACRS depreciation for 2025 on property placed in service in 2025, whether or not it is listed, excluding section 179 and the special allowance. Assumes a calendar tax year.
 
-Ruling: open
+Ruling: model error; i4562 p. 7, Election out: "You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class placed in service during the tax year". The candidate reads asset.bonus_same on returns that claim no allowance, an answer the source does not need there, so it is unknown where the project gives the amount. Differences on partial records withhold an answer the interview asks, so the interview cannot produce them. Triage executable-triage-v2 (triage/asset.json): 1618 of 1710 comparisons agree; on completed returns {"candidate-unknown": 4}.
 
 ### asset.bonus_2025 — Special allowance on 2025 property
 Status: **DISAGREE**
@@ -64,10 +64,12 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"const": 100}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"const": 100}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "ne"}], "test": "all"}], "test": "all"}, "then": {"line": "(c)"}}, {"guard": {"args": [{"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "ne"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: open
+Second transcription's note: The interface name does not define this result. Chosen: this asset's 2025 special allowance whether or not it is listed, split between lines 14 and 25 below. Property acquired before January 20, 2025 is limited to 40%, so a 'full' answer for it gives 40%. All table recovery periods are 20 years or less.
+
+Ruling: model error; i4562 p. 7, Election out: "You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class placed in service during the tax year". The candidate reads asset.bonus_same on returns that claim no allowance, an answer the source does not need there, so it is unknown where the project gives the amount. Differences on partial records withhold an answer the interview asks, so the interview cannot produce them. Triage executable-triage-v2 (triage/asset.json): 1556 of 1710 comparisons agree; on completed returns {"candidate-unknown": 4}.
 
 ### asset.s179_2025 — Section 179 elected on 2025 property
 Status: **AGREE**
@@ -84,10 +86,12 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": "q4"}, {"input": "asset.quarter"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"const": 100}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "q4"}, {"input": "asset.quarter"}], "test": "ne"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"const": "q4"}, {"input": "asset.quarter"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"line": "6(c)"}}}, {"guard": {"args": [{"args": [{"const": "q4"}, {"input": "asset.quarter"}], "test": "ne"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: open
+Second transcription's note: Per Pub. 946, this basis reflects the section 179 reduction and the personal-use part but not any special allowance. Listed property is included because nothing in the text excludes it from the mid-quarter test.
+
+Ruling: representation; p946 p. 34: "the total depreciable bases of MACRS property you placed in service during the last 3 months". representation; every difference is on a partial or refused record: refusals sit on different lines and the withheld answers are ones the interview asks. No completed return differs. Triage executable-triage-v2 (triage/asset.json): 1579 of 1710 comparisons agree; on completed returns no difference.
 
 ### asset.mq_total — Mid-quarter test basis, all of 2025
 Status: **DISAGREE**
@@ -101,10 +105,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"const": 100}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"line": "6(c)"}}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: open
+Ruling: representation; p946 p. 34, the same test over the entire year. representation; every difference is on a partial or refused record: refusals sit on different lines and the withheld answers are ones the interview asks. No completed return differs. Triage executable-triage-v2 (triage/asset.json): 1645 of 1710 comparisons agree; on completed returns no difference.
 
 ### asset.cost179 — Cost of section 179 property placed in service in 2025
 Status: **DISAGREE**
@@ -112,18 +116,18 @@ Status: **DISAGREE**
 Project:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, {"param": "sc.fifty_cents"}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"param": "sc.fifty_cents"}, {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}], "test": "lt"}, "then": {"line": "(c)"}}], "op": "choose"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, {"param": "sc.fifty_cents"}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"param": "sc.fifty_cents"}, {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}], "test": "lt"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "cqip"}, {"line": "(a)"}], "test": "eq"}, {"args": [{"line": "6(c)"}, {"const": 0}], "test": "le"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": 0}, {"line": "6(c)"}], "test": "lt"}, {"args": [{"const": "cqip"}, {"line": "(a)"}], "test": "ne"}], "test": "any"}, "then": {"line": "(c)"}}], "op": "choose"}}], "op": "choose"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": 50, "type": "Count"}, {"input": "asset.pct"}], "test": "lt"}], "test": "all"}, "then": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"const": 100}}}, {"guard": {"args": [{"args": [{"input": "asset.pct"}, {"const": 50, "type": "Count"}], "test": "le"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 0}, {"line": "6(c)"}], "test": "lt"}, {"args": [{"const": "cqip"}, {"line": "(a)"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}}, {"guard": {"args": [{"args": [{"args": [{"const": "cqip"}, {"line": "(a)"}], "test": "eq"}, {"args": [{"line": "6(c)"}, {"const": 0}], "test": "le"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Second transcription's note: Open points: whether line 2 counts total cost or business-use cost (line 6(b) is 'cost (business use only)'; business cost chosen), whether property used 50% or less is 'section 179 property' (excluded), and whether qualified improvement property counts only when the qualified real property election is made (counted whenever placed in service in 2025).
+Second transcription's note: Open points. (1) The interface has no question on whether an item meets the section 179 property definition, so all unscreened 2025 property counts, except that qualified improvement property counts only when an amount is elected for it. (2) The more-than-50% use test is worded as a limit on the election, not in the definition, so property used 50% or less still counts if it is not listed. (3) Cost is the business-use cost, following line 6 column (b).
 
-Ruling: open
+Ruling: model error; i4562 p. 3, Part I: "used predominantly (more than 50%) in your trade or business". The candidate counts non-listed property at 2% business use (witness classm.f8995.3: project $0, candidate $886.60); its reading of qualified improvement property without an election is right and is BUG-0303, fixed before this run. Differences on partial records withhold an answer the interview asks, so the interview cannot produce them. Triage executable-triage-v2 (triage/asset.json): 1571 of 1710 comparisons agree; on completed returns {"value": 2}.
 
 ### asset.dep_prior — MACRS on property placed in service before 2025
 Status: **DISAGREE**
@@ -137,12 +141,12 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"alternatives": [{"guard": {"args": [{"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}, {"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}], "test": "le"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"line": "(e)"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}, {"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}], "test": "le"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, "then": {"amount": {"line": "19(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"line": "(e)"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"args": [{"args": [{"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "test": "lt"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Second transcription's note: Interface meaning not stated; read as the 2025 MACRS deduction for property placed in service before 2025, listed or not.
+Second transcription's note: The interface name does not define this result. Chosen: regular MACRS depreciation for 2025 on property placed in service before 2025, whether or not it is listed. It is zero after the last table year of the recovery period, because depreciation ends once the basis is recovered.
 
-Ruling: open
+Ruling: representation; i4562 p. 9, Line 17: "enter the deductions for the current year". representation; every difference is on a partial or refused record: refusals sit on different lines and the withheld answers are ones the interview asks. No completed return differs. Triage executable-triage-v2 (triage/asset.json): 1603 of 1710 comparisons agree; on completed returns no difference.
 
 ### (d) — Recovery period under GDS for the asset class
 Status: **AGREE**
@@ -159,12 +163,12 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"from": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"const": 100}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"const": 100}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"const": 100}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"const": 100}}, "op": "subtract_floor0", "take": {"of": [{"input": "asset.prior_179"}, {"input": "asset.prior_bonus"}], "op": "sum"}}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"line": "6(c)"}}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"of": [{"input": "asset.prior_179"}, {"input": "asset.prior_bonus"}], "op": "sum"}}}], "op": "choose"}
 ```
 
-Second transcription's note: Read as the basis to which the percentage-table rate is applied, for property placed in service in 2025 (column (c)) or earlier (unadjusted basis, Pub. 946); line 19(c) is reported separately for 2025 non-listed property only.
+Second transcription's note: Open: the printed (c) and 19(c) are both basis figures. Chosen: (c) is the depreciable basis the allowance percentage applies to, and 19(c) is that amount less the 2025 allowance. For earlier property, both are the unadjusted basis Pub. 946 applies the table rates to.
 
-Ruling: open
+Ruling: representation; i4562 p. 11, Column (c): "multiply the cost or other basis of the property by the percentage of business/investment use". The project shows the amount before section 179 under this marker and the form's reduced column (c) at 19(c); the candidate nets section 179 here. The value difference is in this intermediate only and reaches no printed tax amount by a different route: both reach column (g) on the same basis. Triage executable-triage-v2 (triage/asset.json): 1168 of 1710 comparisons agree; on completed returns {"value": 64}.
 
 ### 14 — Special depreciation allowance for this property
 Status: **DISAGREE**
@@ -178,10 +182,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"const": 100}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"const": 100}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}, {"guard": {"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "ne"}], "test": "all"}], "test": "all"}, "then": {"line": "(c)"}}, {"guard": {"args": [{"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "ne"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}, {"guard": {"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: open
+Ruling: model error; i4562 p. 7, Election out: "You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class placed in service during the tax year". The candidate reads asset.bonus_same on returns that claim no allowance, an answer the source does not need there, so it is unknown where the project gives the amount. Differences on partial records withhold an answer the interview asks, so the interview cannot produce them. Triage executable-triage-v2 (triage/asset.json): 1562 of 1710 comparisons agree; on completed returns {"candidate-unknown": 4}.
 
 ### 25 — Special depreciation allowance for this listed property (line 25)
 Status: **DISAGREE**
@@ -195,10 +199,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"const": 100}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"const": 100}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "ne"}], "test": "all"}], "test": "all"}, "then": {"line": "(c)"}}, {"guard": {"args": [{"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "ne"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}], "op": "choose"}
 ```
 
-Ruling: open
+Ruling: representation; i4562 p. 13, Line 25. representation; every difference is on a partial or refused record: refusals sit on different lines and the withheld answers are ones the interview asks. No completed return differs. Triage executable-triage-v2 (triage/asset.json): 1674 of 1710 comparisons agree; on completed returns no difference.
 
 ### 26(i) — Elected section 179 cost of this listed property (column (i))
 Status: **DISAGREE**
@@ -215,7 +219,7 @@ Second:
 {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}], "op": "choose"}
 ```
 
-Ruling: open
+Ruling: representation; i4562 p. 5, Line 6: "Enter the elected section 179 cost of listed property in column (i) of line 26". representation; every difference is on a partial or refused record: refusals sit on different lines and the withheld answers are ones the interview asks. No completed return differs. Triage executable-triage-v2 (triage/asset.json): 1669 of 1710 comparisons agree; on completed returns no difference.
 
 ### 19(c) — Basis for depreciation (business/investment use only), column (c), after the section 179 d
 Status: **DISAGREE**
@@ -229,10 +233,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}], "test": "all"}, "then": {"line": "(c)"}}, {"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"from": {"line": "(c)"}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "ne"}], "test": "all"}], "test": "all"}, "then": {"line": "(c)"}}, {"guard": {"args": [{"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "ne"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}
 ```
 
-Ruling: open
+Ruling: model error; i4562 p. 9, Lines 19a Through 19j: "Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025"; "For listed property, use Part V". The candidate shows an amount on the column for prior-year and listed property, where the project hides the line; it also reads bonus_same without need. Triage executable-triage-v2 (triage/asset.json): 929 of 1710 comparisons agree; on completed returns {"candidate-shows-skipped": 90, "candidate-unknown": 4}.
 
 ### 19(g) — MACRS depreciation for 2025 property
 Status: **DISAGREE**
@@ -246,10 +250,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}], "test": "le"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"param": "sc.conv_hy"}, {"const": 1, "type": "Count"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}], "test": "lt"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"keys": [{"input": "asset.quarter"}], "op": "keyed_lookup", "table": "quarter_convention"}, {"const": 1, "type": "Count"}], "op": "keyed_lookup", "table": "macrs_gds"}}}], "op": "choose"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, {"guard": {"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}], "test": "le"}, "then": {"amount": {"line": "19(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"param": "sc.conv_hy"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}], "test": "lt"}, "then": {"amount": {"line": "19(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"keys": [{"input": "asset.quarter"}], "op": "keyed_lookup", "table": "quarter_convention"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}], "op": "choose"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, {"guard": {"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: open
+Ruling: model error; i4562 p. 7, Election out: "You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class placed in service during the tax year". The candidate reads asset.bonus_same on returns that claim no allowance, an answer the source does not need there, so it is unknown where the project gives the amount. Differences on partial records withhold an answer the interview asks, so the interview cannot produce them. Triage executable-triage-v2 (triage/asset.json): 1612 of 1710 comparisons agree; on completed returns {"candidate-unknown": 4}.
 
 ### 17 — MACRS deduction for 2025 on property placed in service before 2025
 Status: **DISAGREE**
@@ -263,10 +267,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"alternatives": [{"guard": {"args": [{"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}, {"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}], "test": "le"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"line": "(e)"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}}], "op": "choose"}}, {"guard": {"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}, {"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}], "test": "le"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, "then": {"amount": {"line": "19(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"line": "(e)"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"args": [{"args": [{"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "test": "lt"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}, {"guard": {"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: open
+Ruling: representation; i4562 p. 9, Line 17. representation; every difference is on a partial or refused record: refusals sit on different lines and the withheld answers are ones the interview asks. No completed return differs. Triage executable-triage-v2 (triage/asset.json): 1591 of 1710 comparisons agree; on completed returns no difference.
 
 ### 26(h) — Depreciation of this listed property (column (h))
 Status: **DISAGREE**
@@ -280,10 +284,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, "then": {"of": [{"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"alternatives": [{"guard": {"args": [{"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}, {"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}], "test": "le"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"line": "(e)"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}}], "op": "choose"}, {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}], "test": "le"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"param": "sc.conv_hy"}, {"const": 1, "type": "Count"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}], "test": "lt"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"keys": [{"input": "asset.quarter"}], "op": "keyed_lookup", "table": "quarter_convention"}, {"const": 1, "type": "Count"}], "op": "keyed_lookup", "table": "macrs_gds"}}}], "op": "choose"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}], "op": "sum"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, "then": {"of": [{"alternatives": [{"guard": {"args": [{"args": [{"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}, {"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}], "test": "le"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, "then": {"amount": {"line": "19(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"line": "(e)"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"args": [{"args": [{"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "test": "lt"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}, {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}], "test": "le"}, "then": {"amount": {"line": "19(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"param": "sc.conv_hy"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}], "test": "lt"}, "then": {"amount": {"line": "19(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"keys": [{"input": "asset.quarter"}], "op": "keyed_lookup", "table": "quarter_convention"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}], "op": "choose"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}], "op": "sum"}}], "op": "choose"}
 ```
 
-Ruling: open
+Ruling: representation; i4562 p. 15, Column (h). representation; every difference is on a partial or refused record: refusals sit on different lines and the withheld answers are ones the interview asks. No completed return differs. Triage executable-triage-v2 (triage/asset.json): 1704 of 1710 comparisons agree; on completed returns no difference.
 
 ## Refusal gates listed by the second transcription
 
@@ -291,217 +295,197 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 
 | line | gates listed | not read by the project's line |
 | --- | --- | --- |
-| asset.dep_2025 | asset.h_bonus_mixed, asset.h_listed_low, asset.h_outside, asset.h_prior_over, asset.h_s179_lowuse, asset.h_s179_over, asset.screen | asset.h_bonus_mixed, asset.h_listed_low, asset.h_outside, asset.h_prior_over, asset.h_s179_lowuse, asset.h_s179_over, asset.screen |
-| asset.bonus_2025 | asset.h_bonus_mixed, asset.h_listed_low, asset.h_outside, asset.h_s179_lowuse, asset.h_s179_over, asset.screen | asset.h_bonus_mixed, asset.h_listed_low, asset.h_outside, asset.h_s179_lowuse, asset.h_s179_over, asset.screen |
-| asset.mq_q4 | asset.h_listed_low, asset.h_s179_lowuse, asset.h_s179_over, asset.screen | asset.h_listed_low, asset.h_s179_lowuse, asset.h_s179_over, asset.screen |
-| asset.mq_total | asset.h_listed_low, asset.h_s179_lowuse, asset.h_s179_over, asset.screen | asset.h_listed_low, asset.h_s179_lowuse, asset.h_s179_over, asset.screen |
-| asset.cost179 | asset.h_listed_low, asset.screen | asset.h_listed_low, asset.screen |
-| asset.dep_prior | asset.h_bonus_mixed, asset.h_listed_low, asset.h_outside, asset.h_prior_over, asset.h_s179_lowuse, asset.h_s179_over, asset.screen | asset.h_bonus_mixed, asset.h_listed_low, asset.h_outside, asset.h_prior_over, asset.h_s179_lowuse, asset.h_s179_over, asset.screen |
+| asset.dep_2025 | asset.h_bonus_mixed, asset.h_low_listed, asset.h_outside, asset.h_pct_bad, asset.h_prior_bad, asset.h_s179_bad, asset.screen | asset.h_bonus_mixed, asset.h_low_listed, asset.h_outside, asset.h_pct_bad, asset.h_prior_bad, asset.h_s179_bad, asset.screen |
+| asset.bonus_2025 | asset.h_bonus_mixed, asset.h_low_listed, asset.h_outside, asset.h_pct_bad, asset.h_prior_bad, asset.h_s179_bad, asset.screen | asset.h_bonus_mixed, asset.h_low_listed, asset.h_outside, asset.h_pct_bad, asset.h_prior_bad, asset.h_s179_bad, asset.screen |
+| asset.s179_2025 | asset.h_low_listed, asset.h_s179_bad, asset.screen | asset.h_low_listed, asset.h_s179_bad, asset.screen |
+| asset.mq_q4 | asset.h_low_listed, asset.h_pct_bad, asset.h_s179_bad, asset.screen | asset.h_low_listed, asset.h_pct_bad, asset.h_s179_bad, asset.screen |
+| asset.mq_total | asset.h_low_listed, asset.h_pct_bad, asset.h_s179_bad, asset.screen | asset.h_low_listed, asset.h_pct_bad, asset.h_s179_bad, asset.screen |
+| asset.cost179 | asset.h_low_listed, asset.h_pct_bad, asset.screen | asset.h_low_listed, asset.h_pct_bad, asset.screen |
+| asset.dep_prior | asset.h_bonus_mixed, asset.h_low_listed, asset.h_outside, asset.h_pct_bad, asset.h_prior_bad, asset.h_s179_bad, asset.screen | asset.h_bonus_mixed, asset.h_low_listed, asset.h_outside, asset.h_pct_bad, asset.h_prior_bad, asset.h_s179_bad, asset.screen |
 | (d) | asset.screen | asset.screen |
-| (c) | asset.h_bonus_mixed, asset.h_listed_low, asset.h_outside, asset.h_prior_over, asset.h_s179_lowuse, asset.h_s179_over, asset.screen | asset.h_bonus_mixed, asset.h_listed_low, asset.h_outside, asset.h_prior_over, asset.h_s179_lowuse, asset.h_s179_over, asset.screen |
-| 14 | asset.h_bonus_mixed, asset.h_listed_low, asset.h_outside, asset.h_s179_lowuse, asset.h_s179_over, asset.screen | asset.h_bonus_mixed, asset.h_listed_low, asset.h_outside, asset.h_s179_lowuse, asset.h_s179_over, asset.screen |
-| 25 | asset.h_bonus_mixed, asset.h_listed_low, asset.h_outside, asset.h_s179_lowuse, asset.h_s179_over, asset.screen | asset.h_bonus_mixed, asset.h_listed_low, asset.h_outside, asset.h_s179_lowuse, asset.h_s179_over, asset.screen |
-| 19(c) | asset.h_bonus_mixed, asset.h_listed_low, asset.h_outside, asset.h_prior_over, asset.h_s179_lowuse, asset.h_s179_over, asset.screen | asset.h_bonus_mixed, asset.h_listed_low, asset.h_outside, asset.h_prior_over, asset.h_s179_lowuse, asset.h_s179_over, asset.screen |
-| 19(g) | asset.h_bonus_mixed, asset.h_listed_low, asset.h_outside, asset.h_prior_over, asset.h_s179_lowuse, asset.h_s179_over, asset.screen | asset.h_bonus_mixed, asset.h_listed_low, asset.h_outside, asset.h_prior_over, asset.h_s179_lowuse, asset.h_s179_over, asset.screen |
-| 17 | asset.h_bonus_mixed, asset.h_listed_low, asset.h_outside, asset.h_prior_over, asset.h_s179_lowuse, asset.h_s179_over, asset.screen | asset.h_bonus_mixed, asset.h_listed_low, asset.h_outside, asset.h_prior_over, asset.h_s179_lowuse, asset.h_s179_over, asset.screen |
-| 26(h) | asset.h_bonus_mixed, asset.h_listed_low, asset.h_outside, asset.h_prior_over, asset.h_s179_lowuse, asset.h_s179_over, asset.screen | asset.h_bonus_mixed, asset.h_listed_low, asset.h_outside, asset.h_prior_over, asset.h_s179_lowuse, asset.h_s179_over, asset.screen |
+| (c) | asset.h_low_listed, asset.h_pct_bad, asset.h_prior_bad, asset.h_s179_bad, asset.screen | asset.h_low_listed, asset.h_pct_bad, asset.h_prior_bad, asset.h_s179_bad, asset.screen |
+| 14 | asset.h_bonus_mixed, asset.h_low_listed, asset.h_outside, asset.h_pct_bad, asset.h_prior_bad, asset.h_s179_bad, asset.screen | asset.h_bonus_mixed, asset.h_low_listed, asset.h_outside, asset.h_pct_bad, asset.h_prior_bad, asset.h_s179_bad, asset.screen |
+| 25 | asset.h_bonus_mixed, asset.h_low_listed, asset.h_outside, asset.h_pct_bad, asset.h_prior_bad, asset.h_s179_bad, asset.screen | asset.h_bonus_mixed, asset.h_low_listed, asset.h_outside, asset.h_pct_bad, asset.h_prior_bad, asset.h_s179_bad, asset.screen |
+| 26(i) | asset.h_low_listed, asset.h_s179_bad, asset.screen | asset.h_low_listed, asset.h_s179_bad, asset.screen |
+| 19(c) | asset.h_bonus_mixed, asset.h_low_listed, asset.h_outside, asset.h_pct_bad, asset.h_prior_bad, asset.h_s179_bad, asset.screen | asset.h_bonus_mixed, asset.h_low_listed, asset.h_outside, asset.h_pct_bad, asset.h_prior_bad, asset.h_s179_bad, asset.screen |
+| 19(g) | asset.h_bonus_mixed, asset.h_low_listed, asset.h_outside, asset.h_pct_bad, asset.h_prior_bad, asset.h_s179_bad, asset.screen | asset.h_bonus_mixed, asset.h_low_listed, asset.h_outside, asset.h_pct_bad, asset.h_prior_bad, asset.h_s179_bad, asset.screen |
+| 17 | asset.h_bonus_mixed, asset.h_low_listed, asset.h_outside, asset.h_pct_bad, asset.h_prior_bad, asset.h_s179_bad, asset.screen | asset.h_bonus_mixed, asset.h_low_listed, asset.h_outside, asset.h_pct_bad, asset.h_prior_bad, asset.h_s179_bad, asset.screen |
+| 26(h) | asset.h_bonus_mixed, asset.h_low_listed, asset.h_outside, asset.h_pct_bad, asset.h_prior_bad, asset.h_s179_bad, asset.screen | asset.h_bonus_mixed, asset.h_low_listed, asset.h_outside, asset.h_pct_bad, asset.h_prior_bad, asset.h_s179_bad, asset.screen |
 
 ## Raw second transcription
 
 ```yaml
-```yaml
 lines:
-  - id: asset.period
-    printed: "(d)"
-    label: "Recovery period (determine the recovery period from the property's classification; see the Table of Class Lives and Recovery Periods in Pub. 946)"
-    type: Enum(macrs_period)
-    expr: {op: keyed_lookup, table: class_lives, keys: [asset.class]}
-    refuses: [asset.screen]
-
   - id: asset.h_zero
     printed: "(helper)"
     label: "Zero"
     type: NonNegDollars
     expr: {op: param, ref: ss.zero}
-
-  - id: asset.h_cent
+  - id: asset.h_is2025
     printed: "(helper)"
-    label: "One cent (to turn the business-use percentage into an amount)"
-    type: NonNegDollars
-    expr: {op: param, ref: sc.one_cent}
-
-  - id: asset.h_pct_c
+    label: "Placed in service during the 2025 tax year"
+    type: Bool
+    expr: {op: test, eq: [asset.placed, {const: "y2025"}]}
+  - id: asset.h_low_listed
     printed: "(helper)"
-    label: "Business/investment use percentage, as cents"
-    type: NonNegDollars
-    expr: {op: multiply_count, amount: asset.h_cent, count: asset.pct}
-
-  - id: asset.h_listed_low
-    printed: "(helper)"
-    label: "Listed property used 50% or less in a qualified business use (line 27, straight line over the ADS recovery period; not computed)"
+    label: "Listed property used 50% or less in a qualified business use (line 27, straight line over the ADS recovery period)"
     type: Bool
     expr:
       op: test
       all:
         - {op: test, eq: [asset.listed, {const: true}]}
         - {op: test, le: [asset.pct, {const: 50, type: Count}]}
-
+    note: "Line 27 requires the ADS straight line method, which this interface does not compute (no line 27 result is requested, and ADS is outside the screened scope). Such property is refused rather than computed."
+  - id: asset.h_pct_bad
+    printed: "(helper)"
+    label: "Business use percentage is not a whole number from 1 to 100"
+    type: Bool
+    expr:
+      op: test
+      any:
+        - {op: test, lt: [asset.pct, {const: 1, type: Count}]}
+        - {op: test, gt: [asset.pct, {const: 100, type: Count}]}
+  - id: asset.h_cent
+    printed: "(helper)"
+    label: "One cent, used to express the percentage as money for the division"
+    type: NonNegDollars
+    expr: {op: param, ref: sc.one_cent}
+  - id: asset.h_pct_c
+    printed: "(helper)"
+    label: "Business/investment use percentage, expressed in cents"
+    type: NonNegDollars
+    expr: {op: multiply_count, amount: asset.h_cent, count: asset.pct}
   - id: asset.h_bus_cost
     printed: "(helper)"
     label: "Multiply the cost or other basis of the property by the percentage of business/investment use"
     type: NonNegDollars
-    expr: {op: prorate, amount: asset.cost, part: asset.h_pct_c, whole: {const: 100}, places: 2}
-    refuses: [asset.screen, asset.h_listed_low]
-
-  - id: asset.h_is2025
-    printed: "(helper)"
-    label: "Placed in service during the tax year beginning in 2025"
-    type: Bool
-    expr: {op: test, eq: [asset.placed, {const: "y2025"}]}
-
+    expr: {op: prorate, amount: asset.cost, part: asset.h_pct_c, whole: {param: sc.hundred_cents}, places: 2}
+    refuses:
+      - asset.screen
+      - asset.h_low_listed
+      - {when: asset.h_pct_bad, when_known: true}
+  - id: asset.period
+    printed: "(d)"
+    label: "Column (d)—Recovery period"
+    type: Enum(macrs_period)
+    expr: {op: keyed_lookup, table: class_lives, keys: [asset.class]}
+    refuses: [asset.screen]
   - id: asset.h_outside
     printed: "(helper)"
-    label: "Recovery period outside the 3- to 20-year GDS percentage tables"
+    label: "The recovery period is not one the MACRS percentage tables here cover"
     type: Bool
     expr: {op: test, eq: [asset.period, {const: "outside"}]}
-
-  - id: asset.s179_2025
+  - id: asset.h_s179_bad
     printed: "(helper)"
-    label: "Elected section 179 cost of this property placed in service in 2025"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [asset.h_is2025, {const: true}]}
-          then: asset.s179
-        - guard: {op: test, eq: [asset.h_is2025, {const: false}]}
-          then: asset.h_zero
-    note: "The basis is reduced by the elected section 179 cost (line 6(c) / 26(i)); any part of the election disallowed by the business income limit and carried over to 2026 is not added back. The text says 'reduce ... by the section 179 expense deduction' without addressing the carryover; the elected amount was chosen."
-
-  - id: asset.h_s179_over
-    printed: "(helper)"
-    label: "Elected section 179 cost is more than the business cost of the property"
+    label: "Elected section 179 cost is more than the business cost, or is elected for property not used more than 50% in the business"
     type: Bool
     expr:
       op: test
       all:
         - {op: test, eq: [asset.h_is2025, {const: true}]}
-        - {op: test, gt: [asset.s179, asset.h_bus_cost]}
-
-  - id: asset.h_s179_lowuse
-    printed: "(helper)"
-    label: "Section 179 elected for property not used predominantly (more than 50%) in the trade or business"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [asset.h_is2025, {const: true}]}
-        - {op: test, gt: [asset.s179, {const: 0}]}
-        - {op: test, le: [asset.pct, {const: 50, type: Count}]}
-
+        - op: test
+          any:
+            - {op: test, gt: [asset.s179, asset.h_bus_cost]}
+            - op: test
+              all:
+                - {op: test, gt: [asset.s179, {const: 0}]}
+                - {op: test, le: [asset.pct, {const: 50, type: Count}]}
   - id: asset.h_after179
     printed: "(helper)"
-    label: "Business/investment cost reduced by the section 179 expense deduction (depreciable basis before any special depreciation allowance)"
+    label: "Business/investment portion of the cost, less the section 179 expense deduction"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: asset.h_bus_cost, take: asset.s179_2025}
+    expr: {op: subtract_floor0, from: asset.h_bus_cost, take: asset.s179}
     refuses:
-      - {when: asset.h_s179_over, when_known: true}
-      - asset.h_s179_lowuse
-
-  - id: asset.h_bonus_mixed
-    printed: "(helper)"
-    label: "Special depreciation allowance choice differs within the same class of property"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [asset.h_is2025, {const: true}]}
-        - {op: test, eq: [asset.bonus_same, {const: false}]}
-
-  - id: asset.h_bonus_40
-    printed: "(helper)"
-    label: "Depreciable basis multiplied by 40%"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: asset.h_after179, rate: {param: sc.bonus_rate_40}}
-
-  - id: asset.bonus_2025
-    printed: "(helper)"
-    label: "Special depreciation allowance: multiply the depreciable basis of the property by the applicable percentage (100% for qualified property acquired after January 19, 2025, unless the 40% allowance is elected; 40% for qualified property acquired after September 27, 2017, and before January 20, 2025; none if elected out)"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [asset.h_is2025, {const: true}]}
-              - {op: test, eq: [asset.bonus_choice, {const: "full"}]}
-              - {op: test, eq: [asset.after_jan19, {const: true}]}
-          then: asset.h_after179
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [asset.h_is2025, {const: true}]}
-              - op: test
-                any:
-                  - {op: test, eq: [asset.bonus_choice, {const: "forty"}]}
-                  - op: test
-                    all:
-                      - {op: test, eq: [asset.bonus_choice, {const: "full"}]}
-                      - {op: test, eq: [asset.after_jan19, {const: false}]}
-          then: asset.h_bonus_40
-        - guard:
-            op: test
-            any:
-              - {op: test, eq: [asset.h_is2025, {const: false}]}
-              - {op: test, eq: [asset.bonus_choice, {const: "none"}]}
-          then: asset.h_zero
-    refuses: [asset.h_bonus_mixed, asset.h_outside]
-
-  - id: asset.h_basis_2025
-    printed: "(helper)"
-    label: "Basis for depreciation of 2025 property: business cost less section 179 deduction and any special depreciation allowance"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: asset.h_after179, take: asset.bonus_2025}
-
+      - {when: asset.h_s179_bad, when_known: true}
   - id: asset.h_prior_sum
     printed: "(helper)"
-    label: "Section 179 deduction and special depreciation allowance taken in the year placed in service"
+    label: "Section 179 amount and special depreciation allowance taken in the year placed in service"
     type: NonNegDollars
     expr: {op: sum, of: [asset.prior_179, asset.prior_bonus]}
-
-  - id: asset.h_prior_over
+  - id: asset.h_prior_bad
     printed: "(helper)"
-    label: "Earlier section 179 and special allowance are more than the business cost"
+    label: "Earlier section 179 amount and special allowance are more than the business cost"
     type: Bool
     expr:
       op: test
       all:
         - {op: test, eq: [asset.h_is2025, {const: false}]}
         - {op: test, gt: [asset.h_prior_sum, asset.h_bus_cost]}
-
-  - id: asset.h_basis_prior
+  - id: asset.h_prior_after
     printed: "(helper)"
-    label: "Unadjusted basis of earlier-year property: business cost reduced by any section 179 deduction claimed and any special depreciation allowance taken (not by earlier MACRS depreciation)"
+    label: "Business/investment portion of the cost, less the section 179 deduction and special allowance of the year placed in service (unadjusted basis)"
     type: NonNegDollars
     expr: {op: subtract_floor0, from: asset.h_bus_cost, take: asset.h_prior_sum}
     refuses:
-      - {when: asset.h_prior_over, when_known: true}
-
+      - {when: asset.h_prior_bad, when_known: true}
   - id: asset.basis
     printed: "(c)"
-    label: "Basis for depreciation (business/investment use only): multiply the cost or other basis of the property by the percentage of business/investment use; from that result, subtract any section 179 expense deduction and any special depreciation allowance"
+    label: "Depreciable basis: the business/investment portion of the cost or other basis, less any credits and deductions allocable to the property (before any special depreciation allowance of 2025)"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
         - guard: {op: test, eq: [asset.h_is2025, {const: true}]}
-          then: asset.h_basis_2025
+          then: asset.h_after179
         - guard: {op: test, eq: [asset.h_is2025, {const: false}]}
-          then: asset.h_basis_prior
-    refuses: [asset.h_outside]
-    note: "Read as the basis to which the percentage-table rate is applied, for property placed in service in 2025 (column (c)) or earlier (unadjusted basis, Pub. 946); line 19(c) is reported separately for 2025 non-listed property only."
-
+          then: asset.h_prior_after
+    refuses: [asset.screen, asset.h_low_listed]
+    note: "Open: the printed (c) and 19(c) are both basis figures. Chosen: (c) is the depreciable basis the allowance percentage applies to, and 19(c) is that amount less the 2025 allowance. For earlier property, both are the unadjusted basis Pub. 946 applies the table rates to."
+  - id: asset.h_no_bonus
+    printed: "(helper)"
+    label: "No special depreciation allowance in 2025: not placed in service in 2025, or elected out for the class"
+    type: Bool
+    expr:
+      op: test
+      any:
+        - {op: test, eq: [asset.h_is2025, {const: false}]}
+        - {op: test, eq: [asset.bonus_choice, {const: "none"}]}
+  - id: asset.h_bonus_100
+    printed: "(helper)"
+    label: "Qualified property acquired after January 19, 2025, with the 100% special depreciation allowance"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [asset.bonus_choice, {const: "full"}]}
+        - {op: test, eq: [asset.after_jan19, {const: true}]}
+  - id: asset.h_bonus_40
+    printed: "(helper)"
+    label: "Depreciable basis multiplied by 40%"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: asset.basis, rate: {param: sc.bonus_rate_40}}
+  - id: asset.h_bonus_mixed
+    printed: "(helper)"
+    label: "The special allowance choice is not the same for all property in the class placed in service in 2025"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [asset.h_is2025, {const: true}]}
+        - {op: test, eq: [asset.bonus_same, {const: false}]}
+  - id: asset.bonus_2025
+    printed: "(helper)"
+    label: "Figure the special depreciation allowance by multiplying the depreciable basis of the property by the applicable percentage"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [asset.h_no_bonus, {const: true}]}
+          then: asset.h_zero
+        - guard:
+            op: test
+            all:
+              - {op: test, eq: [asset.h_no_bonus, {const: false}]}
+              - {op: test, eq: [asset.h_bonus_100, {const: true}]}
+          then: asset.basis
+        - guard:
+            op: test
+            all:
+              - {op: test, eq: [asset.h_no_bonus, {const: false}]}
+              - {op: test, eq: [asset.h_bonus_100, {const: false}]}
+          then: asset.h_bonus_40
+    refuses: [asset.screen, asset.h_low_listed, asset.h_outside, asset.h_bonus_mixed]
+    note: "The interface name does not define this result. Chosen: this asset's 2025 special allowance whether or not it is listed, split between lines 14 and 25 below. Property acquired before January 20, 2025 is limited to 40%, so a 'full' answer for it gives 40%. All table recovery periods are 20 years or less."
   - id: asset.bonus
     printed: "14"
     label: "Special depreciation allowance for qualified property (other than listed property) placed in service during the tax year"
@@ -513,10 +497,9 @@ lines:
           then: asset.bonus_2025
         - guard: {op: test, eq: [asset.listed, {const: true}]}
           then: asset.h_zero
-
   - id: asset.f25
     printed: "25"
-    label: "Special depreciation allowance for qualified listed property placed in service during the tax year and used more than 50% in a qualified business use"
+    label: "Special depreciation allowance for qualified listed property placed in service during the tax year"
     type: NonNegDollars
     expr:
       op: choose
@@ -525,10 +508,25 @@ lines:
           then: asset.bonus_2025
         - guard: {op: test, eq: [asset.listed, {const: false}]}
           then: asset.h_zero
-
+  - id: asset.s179_2025
+    printed: "(helper)"
+    label: "The amount you elect to expense under section 179 for property placed in service during the tax year"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [asset.h_is2025, {const: true}]}
+          then: asset.s179
+        - guard: {op: test, eq: [asset.h_is2025, {const: false}]}
+          then: asset.h_zero
+    refuses:
+      - asset.screen
+      - asset.h_low_listed
+      - {when: asset.h_s179_bad, when_known: true}
+    note: "The interface name does not define this result. Chosen: this asset's 2025 elected cost whether or not it is listed. It is the elected amount, before the Form 4562 lines 5 and 11 limits, which apply to the taxpayer rather than the item."
   - id: asset.f26i
     printed: "26(i)"
-    label: "Elected section 179 cost (listed property used more than 50% in a qualified business use)"
+    label: "Column (i)—Elected section 179 cost"
     type: NonNegDollars
     expr:
       op: choose
@@ -537,74 +535,54 @@ lines:
           then: asset.s179_2025
         - guard: {op: test, eq: [asset.listed, {const: false}]}
           then: asset.h_zero
-
-  - id: asset.h_nonlisted_2025
-    printed: "(helper)"
-    label: "Property other than listed property placed in service in 2025 (lines 19a through 19h)"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [asset.h_is2025, {const: true}]}
-        - {op: test, eq: [asset.listed, {const: false}]}
-
   - id: asset.col19c
     printed: "19(c)"
-    label: "Basis for depreciation (business/investment use only), lines 19a through 19h"
+    label: "Column (c)—Basis for depreciation (business/investment use only)"
     type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [asset.h_nonlisted_2025, {const: true}]}
-          then: asset.basis
-        - guard: {op: test, eq: [asset.h_nonlisted_2025, {const: false}]}
-          then: asset.h_zero
-
+    expr: {op: subtract_floor0, from: asset.basis, take: asset.bonus_2025}
+  - id: asset.h_year
+    printed: "(helper)"
+    label: "Year of recovery in 2025"
+    type: Count
+    expr: {op: keyed_lookup, table: recovery_year, keys: [asset.placed]}
+  - id: asset.h_last_year
+    printed: "(helper)"
+    label: "Last year of recovery of the recovery period"
+    type: Count
+    expr: {op: keyed_lookup, table: macrs_last_year, keys: [asset.period]}
   - id: asset.h_hy
     printed: "(helper)"
     label: "Half-year convention"
     type: Enum(macrs_convention)
     expr: {op: param, ref: sc.conv_hy}
-
-  - id: asset.h_year1
-    printed: "(helper)"
-    label: "First recovery year"
-    type: Count
-    expr: {op: param, ref: sc.year1}
-
   - id: asset.h_qconv
     printed: "(helper)"
     label: "Mid-quarter convention for the quarter placed in service"
     type: Enum(macrs_convention)
     expr: {op: keyed_lookup, table: quarter_convention, keys: [asset.quarter]}
-
   - id: asset.h_rate_hy
     printed: "(helper)"
-    label: "Applicable rate, half-year convention, year 1 (Table A-1)"
+    label: "Applicable rate from the appropriate table, half-year convention"
     type: Rate
-    expr: {op: keyed_lookup, table: macrs_gds, keys: [asset.period, asset.h_hy, asset.h_year1]}
-
+    expr: {op: keyed_lookup, table: macrs_gds, keys: [asset.period, asset.h_hy, asset.h_year]}
   - id: asset.h_rate_mq
     printed: "(helper)"
-    label: "Applicable rate, mid-quarter convention, year 1 (Tables A-2 to A-5)"
+    label: "Applicable rate from the appropriate table, mid-quarter convention"
     type: Rate
-    expr: {op: keyed_lookup, table: macrs_gds, keys: [asset.period, asset.h_qconv, asset.h_year1]}
-
+    expr: {op: keyed_lookup, table: macrs_gds, keys: [asset.period, asset.h_qconv, asset.h_year]}
   - id: asset.h_dep_hy
     printed: "(helper)"
-    label: "Multiply column (c) by the half-year rate"
+    label: "Multiply column (c) by the applicable rate, half-year convention"
     type: NonNegDollars
-    expr: {op: multiply_rate, amount: asset.basis, rate: asset.h_rate_hy}
-
+    expr: {op: multiply_rate, amount: asset.col19c, rate: asset.h_rate_hy}
   - id: asset.h_dep_mq
     printed: "(helper)"
-    label: "Multiply column (c) by the mid-quarter rate"
+    label: "Multiply column (c) by the applicable rate, mid-quarter convention"
     type: NonNegDollars
-    expr: {op: multiply_rate, amount: asset.basis, rate: asset.h_rate_mq}
-
-  - id: asset.h_dep_new
+    expr: {op: multiply_rate, amount: asset.col19c, rate: asset.h_rate_mq}
+  - id: asset.h_dep_figured
     printed: "(helper)"
-    label: "Depreciation deduction for 2025 property: the mid-quarter convention applies if the depreciable bases placed in service in the last 3 months exceed 40% of the total; otherwise the half-year convention"
+    label: "Depreciation deduction under the convention that applies"
     type: NonNegDollars
     expr:
       op: choose
@@ -613,84 +591,22 @@ lines:
           then: asset.h_dep_mq
         - guard: {op: test, eq: [mq.applies, {const: false}]}
           then: asset.h_dep_hy
-
-  - id: asset.h_ryear
-    printed: "(helper)"
-    label: "Year of recovery in 2025"
-    type: Count
-    expr: {op: keyed_lookup, table: recovery_year, keys: [asset.placed]}
-
-  - id: asset.h_last
-    printed: "(helper)"
-    label: "Last year of the recovery period"
-    type: Count
-    expr: {op: keyed_lookup, table: macrs_last_year, keys: [asset.period]}
-
-  - id: asset.h_in_period
-    printed: "(helper)"
-    label: "2025 falls within the recovery period"
-    type: Bool
-    expr: {op: test, le: [asset.h_ryear, asset.h_last]}
-
-  - id: asset.h_rate_prior
-    printed: "(helper)"
-    label: "Applicable rate from the appropriate table for the convention used and the year of recovery"
-    type: Rate
-    expr: {op: keyed_lookup, table: macrs_gds, keys: [asset.period, asset.prior_conv, asset.h_ryear]}
-
-  - id: asset.h_dep_old_raw
-    printed: "(helper)"
-    label: "Multiply the unadjusted basis by the applicable rate"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: asset.basis, rate: asset.h_rate_prior}
-
-  - id: asset.h_dep_old
-    printed: "(helper)"
-    label: "Depreciation deduction for earlier-year property (zero after the recovery period ends)"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [asset.h_in_period, {const: true}]}
-          then: asset.h_dep_old_raw
-        - guard: {op: test, eq: [asset.h_in_period, {const: false}]}
-          then: asset.h_zero
-
   - id: asset.dep_2025
     printed: "(helper)"
-    label: "MACRS depreciation deduction for this property placed in service in 2025 (line 19(g) or line 26(h))"
+    label: "Depreciation deduction for property placed in service during the 2025 tax year"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
         - guard: {op: test, eq: [asset.h_is2025, {const: true}]}
-          then: asset.h_dep_new
+          then: asset.h_dep_figured
         - guard: {op: test, eq: [asset.h_is2025, {const: false}]}
           then: asset.h_zero
-    note: "Interface meaning not stated; read as the 2025 MACRS deduction (excluding section 179 and special allowance, which have their own interfaces) for property placed in service in 2025, listed or not."
-
-  - id: asset.dep_prior
-    printed: "(helper)"
-    label: "MACRS depreciation deduction for 2025 for this property placed in service in an earlier year (line 17 or line 26(h))"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [asset.h_is2025, {const: false}]}
-          then: asset.h_dep_old
-        - guard: {op: test, eq: [asset.h_is2025, {const: true}]}
-          then: asset.h_zero
-    note: "Interface meaning not stated; read as the 2025 MACRS deduction for property placed in service before 2025, listed or not."
-
-  - id: asset.h_dep_all
-    printed: "(helper)"
-    label: "MACRS depreciation deduction for this property for 2025"
-    type: NonNegDollars
-    expr: {op: sum, of: [asset.dep_2025, asset.dep_prior]}
-
+    refuses: [asset.screen, asset.h_low_listed, asset.h_outside]
+    note: "The interface name does not define this result. Chosen: regular MACRS depreciation for 2025 on property placed in service in 2025, whether or not it is listed, excluding section 179 and the special allowance. Assumes a calendar tax year."
   - id: asset.macrs2025
     printed: "19(g)"
-    label: "Depreciation deduction (assets placed in service during the 2025 tax year, General Depreciation System): multiply column (c) by the applicable rate from the appropriate table"
+    label: "Column (g)—Depreciation deduction"
     type: NonNegDollars
     expr:
       op: choose
@@ -699,7 +615,39 @@ lines:
           then: asset.dep_2025
         - guard: {op: test, eq: [asset.listed, {const: true}]}
           then: asset.h_zero
-
+  - id: asset.h_rate_prior
+    printed: "(helper)"
+    label: "Applicable rate from the appropriate table, convention used in the year placed in service"
+    type: Rate
+    expr: {op: keyed_lookup, table: macrs_gds, keys: [asset.period, asset.prior_conv, asset.h_year]}
+  - id: asset.h_dep_prior_figured
+    printed: "(helper)"
+    label: "Multiply the basis for depreciation by the applicable rate for the year of recovery"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: asset.col19c, rate: asset.h_rate_prior}
+  - id: asset.dep_prior
+    printed: "(helper)"
+    label: "Deduction for the current year for tangible property placed in service in tax years beginning before 2025 and depreciated under MACRS"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [asset.h_is2025, {const: true}]}
+          then: asset.h_zero
+        - guard:
+            op: test
+            all:
+              - {op: test, eq: [asset.h_is2025, {const: false}]}
+              - {op: test, gt: [asset.h_year, asset.h_last_year]}
+          then: asset.h_zero
+        - guard:
+            op: test
+            all:
+              - {op: test, eq: [asset.h_is2025, {const: false}]}
+              - {op: test, le: [asset.h_year, asset.h_last_year]}
+          then: asset.h_dep_prior_figured
+    refuses: [asset.screen, asset.h_low_listed, asset.h_outside]
+    note: "The interface name does not define this result. Chosen: regular MACRS depreciation for 2025 on property placed in service before 2025, whether or not it is listed. It is zero after the last table year of the recovery period, because depreciation ends once the basis is recovered."
   - id: asset.macrs_prior
     printed: "17"
     label: "MACRS deductions for assets placed in service in tax years beginning before 2025"
@@ -711,10 +659,14 @@ lines:
           then: asset.dep_prior
         - guard: {op: test, eq: [asset.listed, {const: true}]}
           then: asset.h_zero
-
+  - id: asset.h_dep_all
+    printed: "(helper)"
+    label: "Depreciation deduction for the property, whenever placed in service"
+    type: NonNegDollars
+    expr: {op: sum, of: [asset.dep_2025, asset.dep_prior]}
   - id: asset.dep_listed
     printed: "26(h)"
-    label: "Depreciation deduction (listed property used more than 50% in a qualified business use): figure column (h) by following the instructions for line 19, column (g)"
+    label: "Column (h)—Depreciation deduction"
     type: NonNegDollars
     expr:
       op: choose
@@ -723,17 +675,15 @@ lines:
           then: asset.h_dep_all
         - guard: {op: test, eq: [asset.listed, {const: false}]}
           then: asset.h_zero
-
   - id: asset.h_q4
     printed: "(helper)"
-    label: "Placed in service during the last 3 months of the 2025 tax year"
+    label: "Placed in service during the last 3 months of the tax year"
     type: Bool
     expr:
       op: test
       all:
         - {op: test, eq: [asset.h_is2025, {const: true}]}
         - {op: test, eq: [asset.quarter, {const: "q4"}]}
-
   - id: asset.mq_q4
     printed: "(helper)"
     label: "Depreciable basis (before any special depreciation allowance) of MACRS property placed in service during the last 3 months of the tax year"
@@ -745,7 +695,8 @@ lines:
           then: asset.h_after179
         - guard: {op: test, eq: [asset.h_q4, {const: false}]}
           then: asset.h_zero
-
+    refuses: [asset.screen, asset.h_low_listed]
+    note: "Per Pub. 946, this basis reflects the section 179 reduction and the personal-use part but not any special allowance. Listed property is included because nothing in the text excludes it from the mid-quarter test."
   - id: asset.mq_total
     printed: "(helper)"
     label: "Depreciable basis (before any special depreciation allowance) of MACRS property placed in service during the entire tax year"
@@ -757,28 +708,30 @@ lines:
           then: asset.h_after179
         - guard: {op: test, eq: [asset.h_is2025, {const: false}]}
           then: asset.h_zero
-
-  - id: asset.h_179_eligible
+    refuses: [asset.screen, asset.h_low_listed]
+  - id: asset.h_cost179_counts
     printed: "(helper)"
-    label: "Section 179 property placed in service in 2025 (used more than 50% in the trade or business)"
+    label: "Section 179 property placed in service during the tax year; qualified improvement property counts only if you elect to treat it as section 179 property"
     type: Bool
     expr:
       op: test
       all:
         - {op: test, eq: [asset.h_is2025, {const: true}]}
-        - {op: test, gt: [asset.pct, {const: 50, type: Count}]}
-
+        - op: test
+          any:
+            - {op: test, ne: [asset.class, {const: "cqip"}]}
+            - {op: test, gt: [asset.s179, {const: 0}]}
   - id: asset.cost179
     printed: "(helper)"
-    label: "Cost (business use only) of section 179 property placed in service during the tax year, for Form 4562 line 2 / Worksheet 1 line 1 (including listed property)"
+    label: "Total cost of section 179 property placed in service during the tax year (Form 4562, line 2), including listed property, and not just the amount for which you are making the election"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [asset.h_179_eligible, {const: true}]}
+        - guard: {op: test, eq: [asset.h_cost179_counts, {const: true}]}
           then: asset.h_bus_cost
-        - guard: {op: test, eq: [asset.h_179_eligible, {const: false}]}
+        - guard: {op: test, eq: [asset.h_cost179_counts, {const: false}]}
           then: asset.h_zero
-    note: "Open points: whether line 2 counts total cost or business-use cost (line 6(b) is 'cost (business use only)'; business cost chosen), whether property used 50% or less is 'section 179 property' (excluded), and whether qualified improvement property counts only when the qualified real property election is made (counted whenever placed in service in 2025)."
-```
+    refuses: [asset.screen, asset.h_low_listed]
+    note: "Open points. (1) The interface has no question on whether an item meets the section 179 property definition, so all unscreened 2025 property counts, except that qualified improvement property counts only when an amount is elected for it. (2) The more-than-50% use test is worded as a limit on the election, not in the definition, so property used 50% or less still counts if it is not listed. (3) Cost is the business-use cost, following line 6 column (b)."
 ```

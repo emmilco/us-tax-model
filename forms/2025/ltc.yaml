@@ -12,7 +12,9 @@ form:
     expr:
       op: input
       source: The qualified long-term care insurance premiums paid in 2025 for this person under a policy established under
-        this business (not for any month the person was eligible for a long-term care plan subsidized by an employer)
+        this business (not for any month you were eligible to participate in a long-term care insurance plan subsidized
+        by your employer or your spouse's employer, or the employer of your dependent or of your child under age 27 at the
+        end of 2025)
     cite:
       doc: f7206
       locator: Form 7206 (2025), line 2(a)

@@ -224,3 +224,16 @@ directly comparable because their subjects differ (6.1 Sol ran before the final 
 6.1 Sol agreed 26/3 on f1095a and 95/0 on the f8962 render; on the final tree Astra agreed 14/15 on f1095a and
 23/11 with 61 unclear on the f8962 render. Both omitted `shown_when`. The owner's authority ranking is recorded in
 the validation policy.
+
+## 2026-11-02 — Reading the cloud Claude logs through triage
+
+- Attempt: triage the cloud session's Claude asset and sc logs.
+- Observation: their prompt hashes reproduce locally, but the raw replies were not committed; the local receipts were from earlier runs, and the audit rejected both records.
+- Ruled out: triage on those logs would have evaluated older replies against the new rulings.
+- Outcome: fresh local requests; both replies then verified under the audit.
+
+## 2026-11-02 — Inherited scveh line 9 ruling tested by execution
+
+- Attempt: `stage14.veh.leased_actual` with `scveh.screen` answered Yes and No.
+- Observation: both complete with line 9 $1,000, line 20a $3,000 and the same f1040 line 24.
+- Learning: one fixture run, one leased path. It suggests the inherited "refusal located elsewhere" reading was wrong for this path; recorded as BUG-0310.

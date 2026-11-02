@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 155 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 8.8% (436/4927 second-family lines judged; pending reviews are provisional); 79 eligible, 75 pending; raw agreement 77.6% (diagnostic only); current independence yield 305 line(s); both families disputed 707
+Summary: 155 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 9.2% (451/4926 second-family lines judged; pending reviews are provisional); 79 eligible, 75 pending; raw agreement 77.5% (diagnostic only); current independence yield 296 line(s); both families disputed 720
 
 Written by `tools/transcription/compare_families.py` on 2026-11-02 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -17,7 +17,7 @@ Written by `tools/transcription/compare_families.py` on 2026-11-02 from the revi
 | form | second family (model) | lines judged by both | both agree | raw agreement | noise / judged | eligibility | current yield | both disputed | Claude only | not judged by both |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | aqee | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| asset | deepseek (deepseek-flash) | 16 | 2 | 12.5% | 10/16 (62.5%) | pending | 0 | 12 | 2 | 0 |
+| asset | deepseek (deepseek-flash) | 16 | 1 | 6.2% | 8/16 (50.0%) | pending | 1 | 14 | 0 | 0 |
 | carloan | deepseek (deepseek-flash) | 2 | 0 | 0.0% | 2/2 (100.0%) | pending | 0 | 2 | 0 | 0 |
 | clcw | deepseek (deepseek-flash) | 13 | 13 | 100.0% | 0/13 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | clcw26 | deepseek (deepseek-flash) | 13 | 12 | 92.3% | 1/13 (7.7%) | pass | 1 | 0 | 0 | 0 |
@@ -67,9 +67,9 @@ Written by `tools/transcription/compare_families.py` on 2026-11-02 from the revi
 | sa | deepseek (deepseek-flash) | 22 | 15 | 68.2% | 5/22 (22.7%) | pending | 3 | 3 | 1 | 0 |
 | sales | deepseek (deepseek-flash) | 4 | 2 | 50.0% | 0/4 (0.0%) | pass | 0 | 2 | 0 | 0 |
 | sb | deepseek (deepseek-flash) | 4 | 4 | 100.0% | 0/4 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| sc | deepseek (deepseek-flash) | 55 | 20 | 36.4% | 34/55 (61.8%) | pending | 18 | 17 | 0 | 0 |
+| sc | deepseek (deepseek-flash) | 55 | 22 | 40.0% | 31/55 (56.4%) | pending | 8 | 25 | 0 | 0 |
 | scope | deepseek (deepseek-flash) | 0 | 0 | n/a | 0/0 (n/a) | no lines | 0 | 0 | 0 | 0 |
-| scveh | deepseek (deepseek-flash) | 21 | 2 | 9.5% | 0/21 (0.0%) | pending | 7 | 12 | 0 | 0 |
+| scveh | deepseek (deepseek-flash) | 21 | 0 | 0.0% | 20/21 (95.2%) | pending | 8 | 13 | 0 | 0 |
 | sd | deepseek (deepseek-flash) | 55 | 7 | 12.7% | 4/55 (7.3%) | pending | 8 | 37 | 3 | 0 |
 | sdtw | deepseek (deepseek-flash) | 47 | 20 | 42.6% | 12/47 (25.5%) | pending | 2 | 19 | 6 | 0 |
 | se | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 1 | 0 | 0 |
@@ -80,7 +80,7 @@ Written by `tools/transcription/compare_families.py` on 2026-11-02 from the revi
 | tipjob | deepseek (deepseek-flash) | 3 | 2 | 66.7% | 0/3 (0.0%) | pending | 0 | 0 | 1 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 6 | 33.3% | 7/18 (38.9%) | pending | 4 | 6 | 2 | 0 |
 | w2 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 0 | 1 | 1 | 0 |
-| **all** | | 1307 | 468 | 35.8% | | | 187 | 620 | 32 | 0 |
+| **all** | | 1307 | 467 | 35.7% | | | 179 | 631 | 30 | 0 |
 
 Pending asset [deepseek]: model-error noise above 10%.
 Pending carloan [deepseek]: model-error noise above 10%.
@@ -90,8 +90,8 @@ Excluded internal adapters for div: div.screen. Original logs/rulings are preser
 Pending div [deepseek]: no source-defined computed targets; internal adapter checks earn no tax-evidence credit; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending eic [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending f1040 [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
-Pending f1095a [deepseek]: no verified current request context for claude: [Errno 2] No such file or directory: '/Users/elliotmilco/Documents/GitHub/tax-formalization/.transcription/f1095a.prompt.txt'.
-Pending f1095a [gpt]: no verified current request context for claude: [Errno 2] No such file or directory: '/Users/elliotmilco/Documents/GitHub/tax-formalization/.transcription/f1095a.prompt.txt'.
+Pending f1095a [deepseek]: no verified current request context for claude: [Errno 2] No such file or directory: '/Users/elliotmilco/Documents/GitHub/tax-formalization/.git/check-all-worktree/.transcription/f1095a.prompt.txt'.
+Pending f1095a [gpt]: no verified current request context for claude: [Errno 2] No such file or directory: '/Users/elliotmilco/Documents/GitHub/tax-formalization/.git/check-all-worktree/.transcription/f1095a.prompt.txt'.
 Pending f2441 [deepseek]: model-error noise above 10%.
 Pending f4562 [deepseek]: 14 open, unclassified or interface-gap rulings; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Excluded internal adapters for f4952: f4952.election. Original logs/rulings are preserved; separate engineering checks earn no independent tax-evidence credit.
@@ -104,8 +104,8 @@ Pending f8880 [deepseek]: model-error noise above 10%; no passing current expres
 Pending f8889 [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails; no passing current source-based partial-input checks: deepseek.
 Pending f8959 [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending f8960 [deepseek]: model-error noise above 10%.
-Pending f8962 [deepseek]: 69 open, unclassified or interface-gap rulings; model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: [Errno 2] No such file or directory: '/Users/elliotmilco/Documents/GitHub/tax-formalization/.transcription/f8962.prompt.txt'; no verified current request context for deepseek: current expression/refusal validation fails.
-Pending f8962 [gpt]: 91 open, unclassified or interface-gap rulings; no verified current request context for claude: [Errno 2] No such file or directory: '/Users/elliotmilco/Documents/GitHub/tax-formalization/.transcription/f8962.prompt.txt'.
+Pending f8962 [deepseek]: 69 open, unclassified or interface-gap rulings; model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: [Errno 2] No such file or directory: '/Users/elliotmilco/Documents/GitHub/tax-formalization/.git/check-all-worktree/.transcription/f8962.prompt.txt'; no verified current request context for deepseek: current expression/refusal validation fails.
+Pending f8962 [gpt]: 91 open, unclassified or interface-gap rulings; no verified current request context for claude: [Errno 2] No such file or directory: '/Users/elliotmilco/Documents/GitHub/tax-formalization/.git/check-all-worktree/.transcription/f8962.prompt.txt'.
 Pending f8995 [deepseek]: 9 open, unclassified or interface-gap rulings; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending f8995a [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending ftc [deepseek]: model-error noise above 10%; no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
@@ -127,8 +127,8 @@ Pending s2 [deepseek]: 1 open, unclassified or interface-gap rulings; model-erro
 Pending s3 [deepseek]: model-error noise above 10%.
 Pending s8812 [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending sa [deepseek]: 1 open, unclassified or interface-gap rulings; model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt.
-Pending sc [deepseek]: model-error noise above 10%; transcription predates unit-preserving comparison; verified re-comparison required: claude; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude; no verified current request context for deepseek: current expression/refusal validation fails.
-Pending scveh [deepseek]: 19 open, unclassified or interface-gap rulings; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending sc [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
+Pending scveh [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending sd [deepseek]: 2 open, unclassified or interface-gap rulings; no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
 Pending sdtw [deepseek]: model-error noise above 10%; no passing current expression type validation: claude; no verified current request context for claude: current expression/refusal validation fails.
 Pending se [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
@@ -143,6 +143,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 
 | form | second family | line | second family's verdict | second family's reason |
 | --- | --- | --- | --- | --- |
+| asset | deepseek | asset.s179_2025 | DISAGREE | (no reason given) |
 | clcw26 | deepseek | 3 | DISAGREE | (no reason given) |
 | eic | deepseek | eic.self_employed | DISAGREE | (no reason given) |
 | f1040 | deepseek | 19 | DISAGREE | (no reason given) |
@@ -291,30 +292,21 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | sa | deepseek | 17 | DISAGREE | (no reason given) |
 | sa | deepseek | 5e | DISAGREE | (no reason given) |
 | sa | deepseek | 9 | DISAGREE | (no reason given) |
+| sc | deepseek | 10 (sc.f7206_line10) | DISAGREE | (no reason given) |
+| sc | deepseek | 13 (sc.f7206_line13) | DISAGREE | (no reason given) |
 | sc | deepseek | 14 (sc.f7206_line14) | DISAGREE | (no reason given) |
 | sc | deepseek | 20a | DISAGREE | (no reason given) |
 | sc | deepseek | 30 | DISAGREE | (no reason given) |
 | sc | deepseek | 31 | DISAGREE | (no reason given) |
-| sc | deepseek | sc.cost179 | DISAGREE | (no reason given) |
-| sc | deepseek | sc.f14 | DISAGREE | (no reason given) |
-| sc | deepseek | sc.f17 | DISAGREE | (no reason given) |
-| sc | deepseek | sc.f19_y10 | DISAGREE | (no reason given) |
-| sc | deepseek | sc.f19_y15 | DISAGREE | (no reason given) |
-| sc | deepseek | sc.f19_y15sl | DISAGREE | (no reason given) |
-| sc | deepseek | sc.f19_y20 | DISAGREE | (no reason given) |
-| sc | deepseek | sc.f19_y3 | DISAGREE | (no reason given) |
-| sc | deepseek | sc.f19_y5 | DISAGREE | (no reason given) |
-| sc | deepseek | sc.f19_y7 | DISAGREE | (no reason given) |
+| sc | deepseek | 8 (sc.f7206_line8) | DISAGREE | (no reason given) |
 | sc | deepseek | sc.f26h | DISAGREE | (no reason given) |
-| sc | deepseek | sc.f6 | DISAGREE | (no reason given) |
-| sc | deepseek | sc.mq_q4 | DISAGREE | (no reason given) |
-| sc | deepseek | sc.mq_total | DISAGREE | (no reason given) |
 | scveh | deepseek | 11 | DISAGREE | (no reason given) |
+| scveh | deepseek | 14 | DISAGREE | (no reason given) |
 | scveh | deepseek | 15 | DISAGREE | (no reason given) |
-| scveh | deepseek | 17 | DISAGREE | (no reason given) |
-| scveh | deepseek | 18 | DISAGREE | (no reason given) |
+| scveh | deepseek | 17 | DISAGREE | Uses the allowed special allowance on line 25, capped at line 11, so the passenger automobile limit is not exceeded. |
+| scveh | deepseek | 18 | DISAGREE | Uses the allowed special allowance on line 25. |
+| scveh | deepseek | 20 | DISAGREE | (no reason given) |
 | scveh | deepseek | 25 | DISAGREE | (no reason given) |
-| scveh | deepseek | scveh.bonus | DISAGREE | (no reason given) |
 | scveh | deepseek | scveh.s179_2025 | DISAGREE | (no reason given) |
 | sd | deepseek | 11 | DISAGREE | (no reason given) |
 | sd | deepseek | 12 | DISAGREE | (no reason given) |
@@ -335,18 +327,20 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 
 | form | second family | line | Claude | second family | second family's reason |
 | --- | --- | --- | --- | --- | --- |
-| asset | deepseek | 14 | DISAGREE | DISAGREE | (no reason given) |
+| asset | deepseek | (c) | DISAGREE | DISAGREE | Read printed (c) as the business/investment portion of cost before the section 179 and special allowance reductions itemized in the column (c) instructions; asset.col19c is the line 19(c) basis after those reductions. |
+| asset | deepseek | 14 | DISAGREE | DISAGREE | Line 14 is used for property other than listed property; listed property's special allowance is line 25. |
 | asset | deepseek | 17 | DISAGREE | DISAGREE | (no reason given) |
-| asset | deepseek | 19(c) | DISAGREE | DISAGREE | (no reason given) |
+| asset | deepseek | 19(c) | DISAGREE | DISAGREE | This is the line 19(c) basis after section 179 and special allowance reductions. |
 | asset | deepseek | 19(g) | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | 25 | DISAGREE | DISAGREE | (no reason given) |
-| asset | deepseek | 26(h) | DISAGREE | DISAGREE | (no reason given) |
+| asset | deepseek | 26(h) | DISAGREE | DISAGREE | Refuses listed property used 50% or less because the line 27 straight-line ADS computation is outside this slice. |
 | asset | deepseek | 26(i) | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | asset.bonus_2025 | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | asset.cost179 | DISAGREE | DISAGREE | (no reason given) |
-| asset | deepseek | asset.dep_2025 | DISAGREE | DISAGREE | (no reason given) |
-| asset | deepseek | asset.dep_prior | DISAGREE | DISAGREE | (no reason given) |
+| asset | deepseek | asset.dep_2025 | DISAGREE | DISAGREE | Read as regular MACRS depreciation only; section 179 and the special allowance are separate result ids. Listed property used 50% or less is refused because line 27 is outside this slice. |
+| asset | deepseek | asset.dep_prior | DISAGREE | DISAGREE | Read as regular MACRS depreciation only; this equals line 17 for non-listed prior-year property and the line 26(h) amount for listed prior-year property. |
 | asset | deepseek | asset.mq_q4 | DISAGREE | DISAGREE | (no reason given) |
+| asset | deepseek | asset.mq_total | DISAGREE | DISAGREE | (no reason given) |
 | carloan | deepseek | 22(ii) | DISAGREE | DISAGREE | (no reason given) |
 | carloan | deepseek | 22(iii) | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | 2(c) | DISAGREE | DISAGREE | For a person over age 13 at year end, all 2025 care was after age 12, so the flag follows incapacity and paid expenses; at age 13 the explicit dc_over12_care answer is used. |
@@ -851,31 +845,40 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | sa | deepseek | sa.itemizes | DISAGREE | DISAGREE | (no reason given) |
 | sales | deepseek | (e) | DISAGREE | DISAGREE | (no reason given) |
 | sales | deepseek | (g) | DISAGREE | DISAGREE | (no reason given) |
-| sc | deepseek | 1(c) | DISAGREE | DISAGREE | The archived Schedule C and Form 8995 pages do not give a business-by-business allocation of the person-level deductions (deductible part of self-employment tax, self-employed health insurance, and retirement plan contributions) that reduce QBI. This line reports the Schedule C net profit or loss before those person-level reductions. |
-| sc | deepseek | 10 (sc.f7206_line10) | DISAGREE | DISAGREE | (no reason given) |
+| sc | deepseek | 1(c) | DISAGREE | DISAGREE | The supplied text and inputs do not provide a per-business allocation of the deductible part of self-employment tax, retirement plan contributions, or similar QBI reductions; this line reports the Schedule C net profit as the business's QBI. |
 | sc | deepseek | 12 (sc.s179_allowed) | DISAGREE | DISAGREE | (no reason given) |
-| sc | deepseek | 13 (sc.f7206_line13) | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | 13 (sc.line13) | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | 4 (sc.f7206_line4) | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | 4 (sc.ho_line4) | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | 5 (sc.ho_line5) | DISAGREE | DISAGREE | (no reason given) |
-| sc | deepseek | 7 (sc.f7206_line7) | DISAGREE | DISAGREE | (no reason given) |
-| sc | deepseek | 8 (sc.f7206_line8) | DISAGREE | DISAGREE | (no reason given) |
-| sc | deepseek | 9 (sc.f7206_line9) | DISAGREE | DISAGREE | (no reason given) |
+| sc | deepseek | 7 (sc.f7206_line7) | DISAGREE | DISAGREE | Form 7206 line 6 does not state a rounding rule; this line applies prorate with 9 decimal places to the line 4/line 5 ratio. |
+| sc | deepseek | 9 (sc.f7206_line9) | DISAGREE | DISAGREE | The supplied interface provides only the Schedule 1 line 16 total, not a per-business allocation; this line uses that total. |
+| sc | deepseek | sc.f14 | DISAGREE | DISAGREE | (no reason given) |
+| sc | deepseek | sc.f17 | DISAGREE | DISAGREE | (no reason given) |
+| sc | deepseek | sc.f19_y10 | DISAGREE | DISAGREE | (no reason given) |
+| sc | deepseek | sc.f19_y15 | DISAGREE | DISAGREE | (no reason given) |
+| sc | deepseek | sc.f19_y15sl | DISAGREE | DISAGREE | (no reason given) |
+| sc | deepseek | sc.f19_y20 | DISAGREE | DISAGREE | (no reason given) |
+| sc | deepseek | sc.f19_y3 | DISAGREE | DISAGREE | (no reason given) |
+| sc | deepseek | sc.f19_y5 | DISAGREE | DISAGREE | (no reason given) |
+| sc | deepseek | sc.f19_y7 | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | sc.f25 | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | sc.f28 | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | sc.f29 | DISAGREE | DISAGREE | (no reason given) |
+| sc | deepseek | sc.f6 | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | sc.line31_pre179 | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | sc.profit_pos | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | sc.result | DISAGREE | DISAGREE | (no reason given) |
-| scveh | deepseek | 10 | DISAGREE | DISAGREE | (no reason given) |
-| scveh | deepseek | 13 | DISAGREE | DISAGREE | Business/investment-use percentage is figured from business, commuting and other miles and rounded to four decimal places where the IRS text does not state a rounding rule. |
-| scveh | deepseek | 16 | DISAGREE | DISAGREE | (no reason given) |
-| scveh | deepseek | 19 | DISAGREE | DISAGREE | For a vehicle placed in service in 2019 the recovery period has ended; the provided inputs do not include prior-year MACRS amounts, so the unrecovered basis shown here is cost less prior section 179 only. |
-| scveh | deepseek | 20a | DISAGREE | DISAGREE | (no reason given) |
-| scveh | deepseek | 7 | DISAGREE | DISAGREE | The passenger automobile limit table is read with the placed-in-service year, the tax-year-in-service key (capped at 4th or later) and the bonus choice. |
-| scveh | deepseek | 9 (scveh.line9) | DISAGREE | DISAGREE | (no reason given) |
+| sc | deepseek | sc.rrta | DISAGREE | DISAGREE | (no reason given) |
+| scveh | deepseek | 10 | DISAGREE | DISAGREE | Section 179 is zero unless actual expenses are used and the vehicle was placed in service in 2025; an SUV election is limited to $31,300. |
+| scveh | deepseek | 13 | DISAGREE | DISAGREE | Business-use percentage is business miles divided by total miles (business + commuting + other), rounded to 9 decimal places. |
+| scveh | deepseek | 16 | DISAGREE | DISAGREE | For property acquired before January 20, 2025, the applicable special allowance is 40%, not 100%. |
+| scveh | deepseek | 19 | DISAGREE | DISAGREE | (no reason given) |
+| scveh | deepseek | 20a | DISAGREE | DISAGREE | Lease payments are deducted for actual expenses only and only when the vehicle is not owned. |
+| scveh | deepseek | 7 | DISAGREE | DISAGREE | For a non-passenger vehicle not subject to passenger automobile limits, cost is used as a nonbinding maximum. For a passenger automobile, the first-year no-special-allowance limit is used when no special allowance applies; later-year limits use auto_limit. |
+| scveh | deepseek | 9 (scveh.line9) | DISAGREE | DISAGREE | For actual expenses, applies the business-mileage fraction to operating expenses and adds business parking/tolls; standard uses 70 cents per business mile plus parking/tolls. A standard-mileage method is refused when scveh.smr_ok is false. |
 | scveh | deepseek | 9 (scveh.line9w) | DISAGREE | DISAGREE | (no reason given) |
+| scveh | deepseek | scveh.bonus | DISAGREE | DISAGREE | (no reason given) |
 | scveh | deepseek | scveh.cost179 | DISAGREE | DISAGREE | (no reason given) |
 | scveh | deepseek | scveh.macrs | DISAGREE | DISAGREE | (no reason given) |
 | scveh | deepseek | scveh.mq_q4 | DISAGREE | DISAGREE | (no reason given) |
@@ -961,7 +964,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | form | second family (model) | lines judged by both | both agree | raw agreement | noise / judged | eligibility | current yield | both disputed | Claude only | not judged by both |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | aqee | deepseek (deepseek-flash) | 4 | 4 | 100.0% | 0/4 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| asset | deepseek (deepseek-flash) | 15 | 10 | 66.7% | 0/15 (0.0%) | pass | 4 | 0 | 1 | 0 |
+| asset | deepseek (deepseek-flash) | 15 | 12 | 80.0% | 0/15 (0.0%) | pass | 3 | 0 | 0 | 0 |
 | carloan | deepseek (deepseek-flash) | 2 | 1 | 50.0% | 0/2 (0.0%) | pass | 0 | 1 | 0 | 0 |
 | clcw | deepseek (deepseek-flash) | 13 | 12 | 92.3% | 0/13 (0.0%) | pass | 0 | 0 | 1 | 0 |
 | clcw26 | deepseek (deepseek-flash) | 13 | 12 | 92.3% | 0/13 (0.0%) | pass | 0 | 0 | 1 | 0 |
@@ -993,7 +996,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | household | deepseek (deepseek-flash) | 46 | 44 | 95.7% | 0/46 (0.0%) | pass | 0 | 1 | 1 | 0 |
 | interest | deepseek (deepseek-flash) | 2 | 2 | 100.0% | 0/2 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | ira | deepseek (deepseek-flash) | 21 | 13 | 61.9% | 0/21 (0.0%) | pending | 2 | 4 | 2 | 0 |
-| ltc | deepseek (deepseek-flash) | 2 | 1 | 50.0% | 0/2 (0.0%) | pending | 1 | 0 | 0 | 0 |
+| ltc | deepseek (deepseek-flash) | 2 | 1 | 50.0% | 0/2 (0.0%) | pass | 0 | 0 | 1 | 0 |
 | mq | deepseek (deepseek-flash) | 7 | 5 | 71.4% | 0/7 (0.0%) | pending | 0 | 2 | 0 | 0 |
 | oi8z | deepseek (deepseek-flash) | 2 | 1 | 50.0% | 0/2 (0.0%) | pending | 1 | 0 | 0 | 0 |
 | otjob | deepseek (deepseek-flash) | 1 | 1 | 100.0% | 0/1 (0.0%) | pass | 0 | 0 | 0 | 0 |
@@ -1011,9 +1014,9 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | sa | deepseek (deepseek-flash) | 24 | 23 | 95.8% | 0/24 (0.0%) | pass | 0 | 1 | 0 | 0 |
 | sales | deepseek (deepseek-flash) | 3 | 1 | 33.3% | 0/3 (0.0%) | pass | 0 | 2 | 0 | 0 |
 | sb | deepseek (deepseek-flash) | 6 | 4 | 66.7% | 0/6 (0.0%) | pending | 1 | 1 | 0 | 0 |
-| sc | deepseek (deepseek-flash) | 75 | 71 | 94.7% | 0/75 (0.0%) | pass | 0 | 0 | 4 | 0 |
+| sc | deepseek (deepseek-flash) | 74 | 66 | 89.2% | 0/74 (0.0%) | pending | 2 | 2 | 4 | 1 |
 | scope | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pass | 0 | 0 | 2 | 0 |
-| scveh | deepseek (deepseek-flash) | 25 | 16 | 64.0% | 0/25 (0.0%) | pending | 1 | 3 | 5 | 0 |
+| scveh | deepseek (deepseek-flash) | 25 | 18 | 72.0% | 0/25 (0.0%) | pending | 0 | 3 | 4 | 0 |
 | sd | deepseek (deepseek-flash) | 46 | 45 | 97.8% | 0/46 (0.0%) | pass | 1 | 0 | 0 | 0 |
 | sdtw | deepseek (deepseek-flash) | 47 | 46 | 97.9% | 0/47 (0.0%) | pass | 0 | 1 | 0 | 0 |
 | se | deepseek (deepseek-flash) | 15 | 10 | 66.7% | 0/15 (0.0%) | pending | 0 | 5 | 0 | 0 |
@@ -1024,17 +1027,17 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | tipjob | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 4 | 22.2% | 0/18 (0.0%) | pass | 0 | 13 | 1 | 0 |
 | w2 | deepseek (deepseek-flash) | 17 | 17 | 100.0% | 0/17 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| **all** | | 1494 | 1255 | 84.0% | | | 115 | 81 | 43 | 0 |
+| **all** | | 1493 | 1254 | 84.0% | | | 114 | 83 | 42 | 1 |
 
 Pending f8606 [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending f8995 [deepseek]: 2 open, unclassified or interface-gap rulings.
 Pending f8995a [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending ira [deepseek]: 5 open, unclassified or interface-gap rulings.
-Pending ltc [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending mq [deepseek]: 2 open, unclassified or interface-gap rulings.
 Pending oi8z [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending qbi [deepseek]: model-error noise above 10%.
 Pending sb [deepseek]: 1 open, unclassified or interface-gap rulings.
+Pending sc [deepseek]: 1 missing expected lines.
 Pending scveh [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending se [deepseek]: 5 open, unclassified or interface-gap rulings.
 Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
@@ -1043,10 +1046,9 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 
 | form | second family | line | second family's verdict | second family's reason |
 | --- | --- | --- | --- | --- |
-| asset | deepseek | 14 | MISMATCH | The IRS also provides a 50% allowance for qualified reuse and recycling property and limits the 40% rate to property acquired after September 27, 2017; the restatement applies 40% to any property not acquired after January 19, 2025. |
-| asset | deepseek | 19(c) | MISMATCH | IRS line 19(c) says to subtract 'any credits and deductions allocable to the property'; the restatement subtracts only section 179 and the special allowance. |
-| asset | deepseek | 25 | MISMATCH | IRS line 25 says 'Enter on line 25 your total special depreciation allowance for all qualified listed property'; it is not the line 14 amount, which the restatement reports only for property other than listed property. |
-| asset | deepseek | 26(i) | MISMATCH | IRS line 6 says 'Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26'; line 26(i) is not the line 6(c) amount. |
+| asset | deepseek | 25 | MISMATCH | IRS line 25 says 'Enter on line 25 your total special depreciation allowance for all qualified listed property'; the restatement instead takes the line 14 amount, which is for non-listed property. |
+| asset | deepseek | 26(h) | MISMATCH | IRS line 26(h) says for property used more than 50% in a qualified business use and placed in service after 1986, 'figure column (h) by following the instructions for line 19, column (g)'; the restatement adds line 19(g)/line 17 amounts, which are for non-listed property, instead of computing from the listed property's own basis after line 26(i) and line 25. |
+| asset | deepseek | 26(i) | MISMATCH | IRS line 6 says 'Do not include any listed property on line 6,' and line 26 column (i) is the elected section 179 cost for listed property; the restatement takes line 6(c). |
 | f1040 | deepseek | 16 | MISMATCH | The restatement also requires the Qualified Dividends and Capital Gain Tax Worksheet to apply, but the IRS says to use the Schedule D Tax Worksheet if 'You have to file Form 4952 and you have an amount on line 4g, even if you don’t need to file Schedule D.' |
 | f1040 | deepseek | 1z | MISMATCH | IRS line 1z says 'Add lines 1a through 1h', but the restatement adds only line 1a and line 1e, omitting lines 1b through 1d and 1f through 1h. |
 | f1040 | deepseek | 27c | MISMATCH | IRS says 'Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box'; the restatement deliberately omits the filer's own choice not to claim the EIC. |
@@ -1144,7 +1146,6 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | g28 | deepseek | 2 | MISMATCH | IRS line 2 requires the positive total of section 1202 exclusions from Form 8949 Part II code Q at 50%, 2/3, or 1/3; the restatement enters $0 from a distribution helper and does not compute those amounts, and its refusal covers only section 1202 distributions, not Code Q exclusions generally. |
 | ira | deepseek | 1b | MISMATCH | The IRS line is 'If married filing jointly, was your spouse covered by a retirement plan?'; the restatement adds a contribution condition and does not condition the line on married filing jointly. |
 | ira | deepseek | 8 | MISMATCH | The IRS line includes 'Nontaxable combat pay' in the total; the restatement adds only W-2 box 1 wages and Schedule 1 line 2a. |
-| ltc | deepseek | 2(a) | MISMATCH | The IRS note excludes payments for any month you were eligible to participate in a long-term care insurance plan subsidized by your employer or your spouse's employer, or the employer of either your dependent or your child who was under age 27 at the end of 2025; the restatement instead states the exclusion in terms of the covered person's eligibility for a plan subsidized by an employer. |
 | oi8z | deepseek | 8z (amount) | MISMATCH | The line is NonNegDollars, but the IRS line 8z examples include a 'Loss on certain corrective distributions of excess deferrals'; a loss cannot be entered as a nonnegative amount to include in income. |
 | person | deepseek | Step 3 | MISMATCH | Pub. 560 Step 3 says only “Net earnings from self-employment. Subtract step 2 from step 1”; the restatement adds “If zero or less, enter -0-,” which changes a negative result to zero. |
 | s1 | deepseek | 16 | MISMATCH | IRS line 16 is 'Self-employed SEP, SIMPLE, and qualified plans'; the helper computes only SEP or SIMPLE and returns zero for a qualified plan such as a solo 401(k) without refusing it. |
@@ -1155,7 +1156,8 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | s2 | deepseek | 1z | MISMATCH | The IRS says 'Add lines 1a through 1y,' but the restatement enters only the amount from line 1a. |
 | s3 | deepseek | 14 | MISMATCH | IRS line 14 says "Add lines 13a through 13z," but the restatement accepts a supplied subtotal instead of adding those lines. |
 | sb | deepseek | 7a | MISMATCH | The restatement covers only Question 1; the IRS line also has Line 7a—Question 2, which asks whether you are required to file FinCEN Form 114. |
-| scveh | deepseek | 19 | MISMATCH | For a 2019 vehicle, the IRS says 'If the recovery period for an automobile ended before your tax year beginning in 2025, enter your unrecovered basis, if any, in column (h)' and permits deductions after the recovery period; the restatement returns zero for a 2019 vehicle. |
+| sc | deepseek | 9 (sc.f7206_line9) | MISMATCH | IRS line 9 includes 'Schedule 1..., line 16, self-employed SEP, SIMPLE, and qualified plans'; the restatement uses only the SEP or SIMPLE deduction. |
+| sc | deepseek | F | MISMATCH | Line F asks only for the accounting method, including cash, accrual, other, and method changes via Form 3115; section 263A capitalization is a Part II/Part III matter, not a line F question. |
 | sd | deepseek | 20 | MISMATCH | IRS line 17 says: 'No. Skip lines 18 through 21, and go to line 22.' The restatement computes line 20 even when line 17 is No; it should be skipped. |
 | sli | deepseek | 6 | MISMATCH | The IRS line says "No. Skip lines 6 and 7, enter -0- on line 8, and go to line 9"; the restatement subtracts line 5 from line 4 without that condition, so line 6 would be negative when line 4 is not more than line 5. |
 
@@ -1220,9 +1222,11 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | sales | deepseek | (e) | MISMATCH | MISMATCH | The restatement's 'Basis reported to IRS' gate is true only for classifications A or D, but the IRS form also treats boxes G and J as 'reported on Form(s) 1099-DA showing basis was reported to the IRS'; for those rows column (e) must use the reported basis, not the records basis. |
 | sales | deepseek | (g) | MISMATCH | MISMATCH | IRS column (g) says 'Enter in this column any necessary adjustments to gain (or loss)' and, for multiple codes, 'enter the net adjustment in column (g)'; the restatement only adds B basis correction and W wash-sale adjustment, omitting other required adjustment codes. |
 | sb | deepseek | 4 | UNCLEAR | UNCLEAR | The provided IRS text contains no line 4 instruction or statement that line 4 is line 2 minus line 3, so the arithmetic cannot be verified from the text given. |
-| scveh | deepseek | (b) | MISMATCH | MISMATCH | Form 4562 Part V column (b) says 'Enter the date the property was placed in service'; the restatement asks only for the year. |
-| scveh | deepseek | 20a | MISMATCH | MISMATCH | The IRS says 'enter on line 20a the business portion of your rental cost. But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount'; the restatement omits the inclusion amount. |
-| scveh | deepseek | 43 | MISMATCH | MISMATCH | The IRS line asks 'When did you place your vehicle in service for business purposes? (month/day/year)'; the restatement records only the year, omitting the month and day. |
+| sc | deepseek | 4 (sc.f7206_line4) | MISMATCH | MISMATCH | IRS line 4 says 'Enter your net profit* and any other earned income** from the trade or business'; the restatement uses only net profit, zero for a loss. |
+| sc | deepseek | 5 (sc.f7206_line5) | MISMATCH | MISMATCH | IRS line 5 requires 'the total of all net profits from Schedule C..., Schedule F..., or Schedule K-1..., plus any other income'; the restatement sums only Schedule C net profits. |
+| scveh | deepseek | (b) | MISMATCH | MISMATCH | Form 4562 Part V column (b) says 'Date placed in service. Enter the date the property was placed in service' and treats conversion date as placed-in-service; the restatement asks only for a year. |
+| scveh | deepseek | 20a | MISMATCH | MISMATCH | IRS says to enter the business portion of rental cost, but 'if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount.' The restatement omits that reduction. |
+| scveh | deepseek | 43 | MISMATCH | MISMATCH | IRS line 43 asks 'When did you place your vehicle in service for business purposes? (month/day/year)'; the restatement asks only for the year, omitting month and day. |
 | sdtw | deepseek | 1 | MISMATCH | MISMATCH | IRS line 1 says to enter line 3 of the Foreign Earned Income Tax Worksheet instead when filing Form 2555; the restatement always uses Form 1040 line 15. |
 | se | deepseek | 2 | MISMATCH | MISMATCH | IRS line 2 includes "Schedule K-1 (Form 1065), box 14, code A" and other income per instructions; restatement uses only this person Schedule C results. |
 | se | deepseek | 3 | MISMATCH | MISMATCH | IRS line 3 says "Combine lines 1a, 1b, and 2"; restatement enters only the amount from line 2. |

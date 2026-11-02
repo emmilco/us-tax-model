@@ -5,7 +5,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | File | Kind | Lines |
 | --- | --- | --- |
 | aqee.md | def | 16 |
-| asset.md | form | 68 |
+| asset.md | form | 70 |
 | carloan.md | form | 29 |
 | clcw.md | worksheet | 33 |
 | clcw26.md | worksheet | 19 |

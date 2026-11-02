@@ -1033,7 +1033,7 @@ form:
           eq:
           - asset.over_half
           - const: true
-        then: asset.basis
+        then: asset.cost179_real
       - guard:
           op: test
           eq:
@@ -1045,6 +1045,47 @@ form:
       locator: p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during the tax year";
         Worksheet 1, line 1, "include the total amount of eligible section 179 property ... not just the amount for which
         you are making the election"
+  - id: asset.is_section179
+    printed: (helper)
+    label: This property is section 179 property (qualified improvement property only when you elect to expense it)
+    type: Bool
+    expr:
+      op: test
+      any:
+      - op: test
+        ne:
+        - asset.class
+        - const: cqip
+      - op: test
+        gt:
+        - asset.s179
+        - asset.zero
+    cite:
+      doc: i4562
+      locator: pp. 2-3, Special rules for qualified section 179 real property, "You can elect to treat certain qualified real
+        property placed in service during the tax year as section 179 property"
+  - id: asset.cost179_real
+    printed: (helper)
+    label: The business cost, when this property is section 179 property
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - asset.is_section179
+          - const: true
+        then: asset.basis
+      - guard:
+          op: test
+          eq:
+          - asset.is_section179
+          - const: false
+        then: asset.zero
+    cite:
+      doc: i4562
+      locator: p. 4, Line 2, "including the total cost of qualified real property that you elect to treat as section 179 property"
   - id: asset.dep_prior
     printed: (helper)
     label: MACRS on property placed in service before 2025

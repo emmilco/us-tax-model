@@ -7,8 +7,8 @@
 ## 2(a) — `ltc.payments`
 
 - **IRS:** Total payments made for that person during the year
-- **Encoded (NonNegDollars):** Input — The qualified long-term care insurance premiums paid in 2025 for this person under a policy established under this business (not for any month the person was eligible for a long-term care plan subsidized by an employer)
-- Expr: `{"op":"input","source":"The qualified long-term care insurance premiums paid in 2025 for this person under a policy established under this business (not for any month the person was eligible for a long-term care plan subsidized by an employer)"}`
+- **Encoded (NonNegDollars):** Input — The qualified long-term care insurance premiums paid in 2025 for this person under a policy established under this business (not for any month you were eligible to participate in a long-term care insurance plan subsidized by your employer or your spouse's employer, or the employer of your dependent or of your child under age 27 at the end of 2025)
+- Expr: `{"op":"input","source":"The qualified long-term care insurance premiums paid in 2025 for this person under a policy established under this business (not for any month you were eligible to participate in a long-term care insurance plan subsidized by your employer or your spouse's employer, or the employer of your dependent or of your child under age 27 at the end of 2025)"}`
 - Cite: [f7206] Form 7206 (2025), line 2(a) (2025; created 2025-10-02; sha256 822203c9)
 
 ## (helper) — `ltc.age`
