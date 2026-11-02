@@ -174,3 +174,18 @@ check, and the valid lines' differences support the model-error classes. The sc 
 were ruled: 34 model error, 1 representation; 14 are candidate-invalid through sc.ho_line2 → line 30/31 →
 result/profit_pos → Form 7206. Both triages have zero evaluation failures. The old sc log was the pre-Q1
 review; the fresh reply is the one T-160 refers to.
+
+### T-134 f8962 screen attempt — 2026-11-01
+
+Extended f8962.other with the other-MEC question and reran f8962. The change stales the whole form, not the
+screen: 95 transcription disagreements per family and 20 render sections, plus 8 completeness claims. The
+completeness review found enrolled unaffordable employer coverage (the current wording only asks about
+affordable/minimum-value offers), VOID/CORRECTED 1095-A handling, SLCSP correction, first-of-month enrollment,
+line 28 self-employed health insurance, and intentional/reckless Marketplace misreporting. The dependent and
+line 1 claims are likely covered by sa.dependent. Reverted the screen change and all f8962 receipts to HEAD;
+T-134 is now scheduled as the f8962 form pass with T-162 for the extra claims.
+
+Gemini auxiliary: ran the same f8962 completeness prompt through agy with Gemini 3.8 Flash (Medium). It returned
+claims: [] while the primary review found 8, so the broad completeness pass is too weak to be evidence. Recorded
+under .transcription/aux/gemini/ as an advisory third reader; use it for targeted second opinions, not as a
+substitute for the primary review.

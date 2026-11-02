@@ -49,7 +49,7 @@ Before editing a batch, identify its full review footprint, relevant baseline en
 | --- | --- | --- | --- |
 | F1 Dependent and education eligibility | Pending | T-104–113; include the person-side T-113 change and related education/household consumers | Pending |
 | F2 Person, retirement, dependent care | Pending; coordinate with F1 | T-118–121, T-123, T-127–129; person, retirement, Form 2441, affected scope questions | Pending |
-| F3 Premium tax credit and energy credits | Pending; T-134 may be expedited | T-134; T-132 and T-145 together; relevant generator and partial-input cases | Pending |
+| F3 Premium tax credit and energy credits | Pending; T-134 is the f8962 form pass (a screen-only attempt reverted 2026-11-01) | T-134 and T-162 (f8962); T-132 and T-145 together; relevant generator and partial-input cases | Pending |
 | F4 Income, investments, deductions | Pending | T-124–126, T-130–131, T-133, T-136–137, T-141 | Pending |
 | F5 Remaining forms | Pending inventory | Remaining T-094 baselines and review migrations, ordered by risk and shared dependencies | Pending |
 

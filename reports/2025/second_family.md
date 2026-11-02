@@ -101,7 +101,7 @@ Pending f8880 [deepseek]: model-error noise above 10%; no passing current expres
 Pending f8889 [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails; no passing current source-based partial-input checks: deepseek.
 Pending f8959 [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending f8960 [deepseek]: model-error noise above 10%.
-Pending f8962 [deepseek]: model-error noise above 10%.
+Pending f8962 [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending f8995 [deepseek]: 9 open, unclassified or interface-gap rulings; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending f8995a [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending ftc [deepseek]: model-error noise above 10%; no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
