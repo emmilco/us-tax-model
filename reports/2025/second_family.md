@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 149 form-kind pair(s) with logs from Claude and deepseek; ruled model-error noise 7.6% (357/4676 second-family lines judged; pending reviews are provisional); 74 eligible, 74 pending; raw agreement 79.2% (diagnostic only); current independence yield 273 line(s); both families disputed 514
+Summary: 149 form-kind pair(s) with logs from Claude and deepseek; ruled model-error noise 9.7% (453/4683 second-family lines judged; pending reviews are provisional); 74 eligible, 74 pending; raw agreement 79.2% (diagnostic only); current independence yield 272 line(s); both families disputed 516
 
 Written by `tools/transcription/compare_families.py` on 2026-11-01 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -51,7 +51,7 @@ Written by `tools/transcription/compare_families.py` on 2026-11-01 from the revi
 | mq | deepseek (deepseek-flash) | 1 | 1 | 100.0% | 0/1 (0.0%) | pending | 0 | 0 | 0 | 0 |
 | oi8z | deepseek (deepseek-flash) | 1 | 1 | 100.0% | 0/1 (0.0%) | pending | 0 | 0 | 0 | 0 |
 | otjob | deepseek (deepseek-flash) | 2 | 1 | 50.0% | 0/2 (0.0%) | pending | 0 | 1 | 0 | 0 |
-| person | deepseek (deepseek-flash) | 99 | 29 | 29.3% | 0/99 (0.0%) | pending | 26 | 44 | 0 | 0 |
+| person | deepseek (deepseek-flash) | 99 | 29 | 29.3% | 62/99 (62.6%) | pending | 26 | 44 | 0 | 0 |
 | qbi | deepseek (deepseek-flash) | 5 | 1 | 20.0% | 0/5 (0.0%) | pending | 2 | 2 | 0 | 0 |
 | qdcg | deepseek (deepseek-flash) | 26 | 23 | 88.5% | 0/26 (0.0%) | pass | 0 | 3 | 0 | 0 |
 | refund | deepseek (deepseek-flash) | 11 | 6 | 54.5% | 5/11 (45.5%) | pending | 2 | 3 | 0 | 0 |
@@ -65,7 +65,7 @@ Written by `tools/transcription/compare_families.py` on 2026-11-01 from the revi
 | sa | deepseek (deepseek-flash) | 22 | 15 | 68.2% | 6/22 (27.3%) | pending | 2 | 5 | 0 | 0 |
 | sales | deepseek (deepseek-flash) | 4 | 2 | 50.0% | 0/4 (0.0%) | pass | 0 | 2 | 0 | 0 |
 | sb | deepseek (deepseek-flash) | 4 | 4 | 100.0% | 0/4 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| sc | deepseek (deepseek-flash) | 48 | 13 | 27.1% | 0/48 (0.0%) | pending | 19 | 15 | 1 | 7 |
+| sc | deepseek (deepseek-flash) | 55 | 20 | 36.4% | 34/55 (61.8%) | pending | 18 | 17 | 0 | 0 |
 | scope | deepseek (deepseek-flash) | 0 | 0 | n/a | 0/0 (n/a) | no lines | 0 | 0 | 0 | 0 |
 | scveh | deepseek (deepseek-flash) | 21 | 2 | 9.5% | 0/21 (0.0%) | pending | 7 | 12 | 0 | 0 |
 | sd | deepseek (deepseek-flash) | 55 | 7 | 12.7% | 4/55 (7.3%) | pending | 8 | 37 | 3 | 0 |
@@ -78,7 +78,7 @@ Written by `tools/transcription/compare_families.py` on 2026-11-01 from the revi
 | tipjob | deepseek (deepseek-flash) | 3 | 2 | 66.7% | 0/3 (0.0%) | pending | 0 | 0 | 1 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 6 | 33.3% | 7/18 (38.9%) | pending | 4 | 6 | 2 | 0 |
 | w2 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 0 | 1 | 1 | 0 |
-| **all** | | 1174 | 495 | 42.2% | | | 190 | 431 | 58 | 7 |
+| **all** | | 1181 | 502 | 42.5% | | | 189 | 433 | 57 | 0 |
 
 Pending asset [deepseek]: model-error noise above 10%.
 Pending carloan [deepseek]: model-error noise above 10%.
@@ -112,7 +112,7 @@ Pending ira [deepseek]: model-error noise above 10%; no verified current request
 Pending mq [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending oi8z [deepseek]: transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending otjob [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending person [deepseek]: 70 open, unclassified or interface-gap rulings; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
+Pending person [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending qbi [deepseek]: 4 open, unclassified or interface-gap rulings; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending refund [deepseek]: model-error noise above 10%.
 Pending retirement [deepseek]: model-error noise above 10%.
@@ -123,7 +123,7 @@ Pending s2 [deepseek]: 1 open, unclassified or interface-gap rulings; model-erro
 Pending s3 [deepseek]: model-error noise above 10%.
 Pending s8812 [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending sa [deepseek]: 1 open, unclassified or interface-gap rulings; model-error noise above 10%.
-Pending sc [deepseek]: 7 missing expected lines; 34 open, unclassified or interface-gap rulings; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending sc [deepseek]: model-error noise above 10%; transcription predates unit-preserving comparison; verified re-comparison required: claude; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending scveh [deepseek]: 19 open, unclassified or interface-gap rulings; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending sd [deepseek]: 2 open, unclassified or interface-gap rulings; no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
 Pending sdtw [deepseek]: model-error noise above 10%; no passing current expression type validation: claude; no verified current request context for claude: current expression/refusal validation fails.
@@ -290,15 +290,15 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | sa | deepseek | 12 | DISAGREE | No noncash charitable gift input is provided in this closed interface; entered as zero. |
 | sa | deepseek | 9 | DISAGREE | The archived text only says attach Form 4952; the amount is taken from Form 4952 line 7 as the investment interest deduction. |
 | sc | deepseek | 14 (sc.f7206_line14) | DISAGREE | (no reason given) |
-| sc | deepseek | 28 | DISAGREE | (no reason given) |
-| sc | deepseek | 29 | DISAGREE | (no reason given) |
+| sc | deepseek | 20a | DISAGREE | (no reason given) |
 | sc | deepseek | 30 | DISAGREE | (no reason given) |
+| sc | deepseek | 31 | DISAGREE | (no reason given) |
 | sc | deepseek | sc.cost179 | DISAGREE | (no reason given) |
 | sc | deepseek | sc.f14 | DISAGREE | (no reason given) |
 | sc | deepseek | sc.f17 | DISAGREE | (no reason given) |
 | sc | deepseek | sc.f19_y10 | DISAGREE | (no reason given) |
 | sc | deepseek | sc.f19_y15 | DISAGREE | (no reason given) |
-| sc | deepseek | sc.f19_y15sl | DISAGREE | The supplied Form 4562 lines do not print a separate 15-year straight-line line. This helper totals asset entries whose MACRS period is y15sl and is not added again to Schedule C line 13 because line 19e already covers 15-year property. |
+| sc | deepseek | sc.f19_y15sl | DISAGREE | (no reason given) |
 | sc | deepseek | sc.f19_y20 | DISAGREE | (no reason given) |
 | sc | deepseek | sc.f19_y3 | DISAGREE | (no reason given) |
 | sc | deepseek | sc.f19_y5 | DISAGREE | (no reason given) |
@@ -307,7 +307,6 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | sc | deepseek | sc.f6 | DISAGREE | (no reason given) |
 | sc | deepseek | sc.mq_q4 | DISAGREE | (no reason given) |
 | sc | deepseek | sc.mq_total | DISAGREE | (no reason given) |
-| sc | deepseek | sc.rrta | DISAGREE | The supplied Schedule C text has no separate RRTA input for this business. The statutory-employee flag is the supplied flag that removes this business from Schedule SE, so it is used for this RRTA self-employment screening helper. |
 | scveh | deepseek | 11 | DISAGREE | (no reason given) |
 | scveh | deepseek | 15 | DISAGREE | (no reason given) |
 | scveh | deepseek | 17 | DISAGREE | (no reason given) |
@@ -663,9 +662,11 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | sa | deepseek | sa.itemizes | DISAGREE | DISAGREE | (no reason given) |
 | sales | deepseek | (e) | DISAGREE | DISAGREE | (no reason given) |
 | sales | deepseek | (g) | DISAGREE | DISAGREE | (no reason given) |
-| sc | deepseek | 1(c) | DISAGREE | DISAGREE | (no reason given) |
+| sc | deepseek | 1(c) | DISAGREE | DISAGREE | The archived Schedule C and Form 8995 pages do not give a business-by-business allocation of the person-level deductions (deductible part of self-employment tax, self-employed health insurance, and retirement plan contributions) that reduce QBI. This line reports the Schedule C net profit or loss before those person-level reductions. |
 | sc | deepseek | 10 (sc.f7206_line10) | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | 12 (sc.s179_allowed) | DISAGREE | DISAGREE | (no reason given) |
+| sc | deepseek | 13 (sc.f7206_line13) | DISAGREE | DISAGREE | (no reason given) |
+| sc | deepseek | 13 (sc.line13) | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | 4 (sc.f7206_line4) | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | 4 (sc.ho_line4) | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | 5 (sc.ho_line5) | DISAGREE | DISAGREE | (no reason given) |

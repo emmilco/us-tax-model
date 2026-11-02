@@ -164,3 +164,13 @@ The f8889 DeepSeek reply is the demonstration: previously `state: invalid` with 
 line13, excess_amt and three helpers). The valid-line differences are consistent with the hh4 rulings, but
 the "executable triage was unavailable" caveat in those rulings is historical; the f8889 summary records the
 replay. The f8889 Claude reply still executes unchanged (8 differs, 1 agrees).
+
+### T-160 person and sc DeepSeek adjudication — 2026-11-01
+
+Ruled the person DeepSeek reply's 70 open sections on the T-143 execution: 62 model error, 4 representation,
+3 scope, 1 ambiguity; the six HSA lines are candidate-invalid because the HSA chain fails the current type
+check, and the valid lines' differences support the model-error classes. The sc DeepSeek log was the old
+2026-10-23 review, so it was rerun fresh against the current form (20 agree / 35 disagree) and its 35 sections
+were ruled: 34 model error, 1 representation; 14 are candidate-invalid through sc.ho_line2 → line 30/31 →
+result/profit_pos → Form 7206. Both triages have zero evaluation failures. The old sc log was the pre-Q1
+review; the fresh reply is the one T-160 refers to.
