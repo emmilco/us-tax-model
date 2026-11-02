@@ -4,24 +4,24 @@ Second transcription of `Schedule C (Form 1040) — Profit or Loss From Business
 
 | field | value |
 | --- | --- |
-| date | 2026-11-01 |
+| date | 2026-11-02 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 06db6ce208dcba8711a2edc4fe93c80fe46579a5600832344e51ce379d9959e5 |
+| prompt sha256 | 632f9e265413f19f5e52a4fa88b2d14ad89617becb42bc96eafb64e13b73e392 |
 | prompt policy | source-only-computation-v2 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
 | complete input context | pass |
-| required input context sha256 | 6bf480b5cfb41265b354e11eb2541dc66fc9b7af9b492d9d2103d9163fa2e879 |
+| required input context sha256 | 05f45aa981f458eb86c17a381396370038b4a6a90a758cb7b45a42678650b81d |
 | type validation policy | project-expression-types-v3 |
 | model type validation | fail |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
-| output token budget | 65536 |
+| output token budget | 131072 |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | f2becc16c3eeae8f68992cc2f01efbff5b42801963cbe3b20f870db4d59276b6 |
+| subject sha256 | 4607a00dac7de74c9c7fb227b2ed575b6dbe22cdd9463e03f53f0a97e1b9a8a0 |
 | printed lines compared | 55 |
-| agree / disagree / missing | 20 / 35 / 0 |
+| agree / disagree / missing | 22 / 33 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -43,9 +43,13 @@ Second transcription of `Schedule C (Form 1040) — Profit or Loss From Business
 ## Host-side model expression type checks
 
 The build's reference/type checker rejected these model expressions; none were executed.
-- sc.sc.ho_line2: operand 'sc.ho_sqft' is not money
-- sc.sc.ho_line2: reference 'sc.ho_max_sqft' does not resolve
-- sc.sc.ho_line2: declared count but the expression produces money
+- malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object
+- malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object
+- sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money
+- sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money
+- sc.sc.h_ho_sqft_capped: declared count but the expression produces money
+- sc.sc.h_at_risk_bad: malformed expression
+- sc.sc.h_passive_bad: malformed expression
 
 ## Lines
 
@@ -53,7 +57,21 @@ The build's reference/type checker rejected these model expressions; none were e
 Status: **AGREE**
 
 ### sc.rrta — This business's owner has railroad retirement compensation
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"ref": "person.rrta"}
+```
+
+Second:
+
+```json
+{"args": [{"args": [{"const": true}, {"line": "(screen)"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.rrta"}], "test": "eq"}], "test": "all"}
+```
+
+Ruling: open
 
 ### sc.line31_pre179 — Line 31 without the section 179 expense deduction
 Status: **DISAGREE**
@@ -67,10 +85,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"of": [{"line": "12 (sc.s179_allowed)"}, {"line": "31"}], "op": "sum"}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: reference 'sc.ho_max_sqft' does not resolve"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
+{"expression": {"of": [{"line": "12 (sc.s179_allowed)"}, {"line": "31"}], "op": "sum"}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error — T-143 records 3973 comparisons as candidate-invalid; the declaration, or the ho_line2/line 31 chain it depends on, fails current validation (see the log's type-check section). project retained. Two differences. (1) Inside Form 4562 line 28, the second sums asset.f25 over the listed assets where the project sums asset.bonus_2025. asset.f25 is a display line, shown only for listed property placed in service in 2025 (asset.on_26_2025), and copies asset.bonus for every asset; for listed property placed in service before 2025, asset.bonus is the allowance elected in the year of placement (asset.bonus_choice is asked of every asset, for the basis), which is not a 2025 line 25 amount ('If you placed in service certain qualified listed property during the tax year, you may be able to deduct the special depreciation allowance', i4562 p. 13, Line 25). asset.bonus_2025 is that allowance for 2025 property and zero otherwise, so the project is right and the second over-counts an earlier year's allowance. (2) As ruled before: both figure line 31 before the section 179 deduction for Pub. 946's two income limits (pp. 17-19, Steps 1 to 5); the project subtracts the home office deduction of line 30 as figured, the second refigures it inside this line from the worksheet; the line-30 value is the same.
+Ruling: open
 
 ### sc.result — The amount for Schedule 1, line 3 and Schedule SE, line 2
 Status: **DISAGREE**
@@ -84,10 +102,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"line": "31"}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: reference 'sc.ho_max_sqft' does not resolve"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
+{"expression": {"line": "31"}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error — T-143 records 3973 comparisons as candidate-invalid; the declaration, or the ho_line2/line 31 chain it depends on, fails current validation (see the log's type-check section). project retained. The project's choose has one alternative whose guard (line 31 at least zero, or less than zero) always holds; it is line 31 on both sides. The choose carries the refusals that reach this line (statutory employee income, box 32b, and the others on sc.result).
+Ruling: open
 
 ### sc.f6 — Section 179 elected on property other than listed property
 Status: **DISAGREE**
@@ -104,7 +122,7 @@ Second:
 {"collection": "asset", "field": "asset.s179", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error — executable triage (T-143): 3973 comparisons; differences by kind {"value": 6}.
+Ruling: open
 
 ### sc.f14 — Special allowance on property other than listed property
 Status: **DISAGREE**
@@ -118,10 +136,10 @@ Project:
 Second:
 
 ```json
-{"collection": "asset", "field": "asset.bonus", "op": "sum_over", "where": null}
+{"collection": "f4562", "field": "f4562.line14", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error — executable triage (T-143): 3973 comparisons; differences by kind {"value": 850}.
+Ruling: open
 
 ### sc.f17 — MACRS on earlier property other than listed property
 Status: **DISAGREE**
@@ -135,10 +153,10 @@ Project:
 Second:
 
 ```json
-{"collection": "asset", "field": "asset.macrs_prior", "op": "sum_over", "where": null}
+{"collection": "f4562", "field": "f4562.line17", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error — executable triage (T-143): 3973 comparisons; differences by kind {"candidate-refuses": 2, "candidate-unknown": 47, "value": 1258}.
+Ruling: open
 
 ### sc.f19_y3 — MACRS on 2025 property of period y3 other than listed property
 Status: **DISAGREE**
@@ -155,7 +173,7 @@ Second:
 {"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"const": "y3"}, {"ref": "asset.period"}], "test": "eq"}}
 ```
 
-Ruling: model error — executable triage (T-143): 3973 comparisons; differences by kind {"candidate-unknown": 3, "project-refuses": 2, "value": 4}.
+Ruling: open
 
 ### sc.f19_y5 — MACRS on 2025 property of period y5 other than listed property
 Status: **DISAGREE**
@@ -172,7 +190,7 @@ Second:
 {"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"const": "y5"}, {"ref": "asset.period"}], "test": "eq"}}
 ```
 
-Ruling: model error — executable triage (T-143): 3973 comparisons; differences by kind {"candidate-unknown": 300, "value": 143}.
+Ruling: open
 
 ### sc.f19_y7 — MACRS on 2025 property of period y7 other than listed property
 Status: **DISAGREE**
@@ -189,7 +207,7 @@ Second:
 {"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"const": "y7"}, {"ref": "asset.period"}], "test": "eq"}}
 ```
 
-Ruling: model error — executable triage (T-143): 3973 comparisons; differences by kind {"candidate-refuses": 1, "candidate-unknown": 109, "project-refuses": 3, "value": 196}.
+Ruling: open
 
 ### sc.f19_y10 — MACRS on 2025 property of period y10 other than listed property
 Status: **DISAGREE**
@@ -206,7 +224,7 @@ Second:
 {"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"const": "y10"}, {"ref": "asset.period"}], "test": "eq"}}
 ```
 
-Ruling: model error — executable triage (T-143): 3973 comparisons; differences by kind {"candidate-unknown": 51, "value": 6}.
+Ruling: open
 
 ### sc.f19_y15 — MACRS on 2025 property of period y15 other than listed property
 Status: **DISAGREE**
@@ -223,7 +241,7 @@ Second:
 {"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"const": "y15"}, {"ref": "asset.period"}], "test": "eq"}}
 ```
 
-Ruling: model error — executable triage (T-143): 3973 comparisons; differences by kind {"candidate-unknown": 2, "project-refuses": 1, "value": 14}.
+Ruling: open
 
 ### sc.f19_y20 — MACRS on 2025 property of period y20 other than listed property
 Status: **DISAGREE**
@@ -240,7 +258,7 @@ Second:
 {"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"const": "y20"}, {"ref": "asset.period"}], "test": "eq"}}
 ```
 
-Ruling: model error — executable triage (T-143): 3973 comparisons; differences by kind {"project-refuses": 1, "value": 195}.
+Ruling: open
 
 ### sc.f19_y15sl — MACRS on 2025 property of period y15sl other than listed property
 Status: **DISAGREE**
@@ -257,7 +275,7 @@ Second:
 {"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"const": "y15sl"}, {"ref": "asset.period"}], "test": "eq"}}
 ```
 
-Ruling: representation — executable triage (T-143) agrees on all 3973 comparisons on the valid line. The earlier by-reading ruling is superseded.
+Ruling: open
 
 ### sc.f25 — Line 25 for this business
 Status: **DISAGREE**
@@ -271,10 +289,10 @@ Project:
 Second:
 
 ```json
-{"collection": "asset", "field": "asset.f25", "op": "sum_over", "where": null}
+{"collection": "f4562", "field": "f4562.line25", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error — executable triage (T-143): 3973 comparisons; differences by kind {"candidate-refuses": 2, "project-refuses": 104, "project-unknown": 1, "value": 944}. project retained. Form 4562 line 25 for the business: the second sums asset.f25 over the listed assets where the project sums asset.bonus_2025. asset.f25 is a display line, shown only for listed property placed in service in 2025 (asset.on_26_2025), and copies asset.bonus for every asset; for listed property placed in service before 2025, asset.bonus is the allowance elected in the year of placement (asset.bonus_choice is asked of every asset, for the basis), which is not a 2025 line 25 amount ('If you placed in service certain qualified listed property during the tax year, you may be able to deduct the special depreciation allowance', i4562 p. 13, Line 25). asset.bonus_2025 is that allowance for 2025 property and zero otherwise, so the project is right and the second over-counts an earlier year's allowance. The vehicle term (scveh.bonus) is the same on both sides.
+Ruling: open
 
 ### sc.f26h — Column (h), line 26, for this business
 Status: **DISAGREE**
@@ -288,10 +306,10 @@ Project:
 Second:
 
 ```json
-{"collection": "asset", "field": "asset.dep_listed", "op": "sum_over", "where": null}
+{"collection": "f4562", "field": "f4562.line26h", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error — executable triage (T-143): 3973 comparisons; differences by kind {"candidate-refuses": 6, "project-refuses": 105, "value": 1285}. project retained. Column (h) of line 26 summed over the business's listed assets and vehicles on both sides. Listed property used 50% or less (Form 4562 line 27) is refused on both the asset and the vehicle (asset.yaml, scveh.yaml), so the second's filter for more than 50% business use selects the same entries within scope.
+Ruling: open
 
 ### sc.f28 — Line 28 for this business
 Status: **DISAGREE**
@@ -305,10 +323,10 @@ Project:
 Second:
 
 ```json
-{"of": [{"collection": "asset", "field": "asset.dep_listed", "op": "sum_over", "where": null}, {"collection": "asset", "field": "asset.f25", "op": "sum_over", "where": null}], "op": "sum"}
+{"collection": "f4562", "field": "f4562.line28", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error — executable triage (T-143): 3973 comparisons; differences by kind {"candidate-refuses": 6, "project-refuses": 105, "value": 1786}. project retained. Line 28 (lines 25 and 26 column (h)) on both sides, summed in another order; within it the second sums asset.f25 over the listed assets where the project sums asset.bonus_2025. asset.f25 is a display line, shown only for listed property placed in service in 2025 (asset.on_26_2025), and copies asset.bonus for every asset; for listed property placed in service before 2025, asset.bonus is the allowance elected in the year of placement (asset.bonus_choice is asked of every asset, for the basis), which is not a 2025 line 25 amount ('If you placed in service certain qualified listed property during the tax year, you may be able to deduct the special depreciation allowance', i4562 p. 13, Line 25). asset.bonus_2025 is that allowance for 2025 property and zero otherwise, so the project is right and the second over-counts an earlier year's allowance.
+Ruling: open
 
 ### sc.f29 — Line 29 for this business
 Status: **DISAGREE**
@@ -322,61 +340,19 @@ Project:
 Second:
 
 ```json
-{"collection": "asset", "field": "asset.f26i", "op": "sum_over", "where": null}
+{"collection": "f4562", "field": "f4562.line29", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error — executable triage (T-143): 3973 comparisons; differences by kind {"project-refuses": 102, "value": 233}. project retained. Line 29 for the business: the second sums asset.f26i over the listed assets where the project sums asset.s179_2025. asset.f26i is a display line, shown only for listed property placed in service in 2025 (asset.on_26_2025), and copies asset.s179, which is asked of every asset; column (i) of line 26 is the section 179 cost elected in 2025 ('Enter the amount you elect to expense', i4562 p. 16, Column (i)), so for listed property placed in service before 2025 the second would carry an earlier year's election into line 29. asset.s179_2025 is the election on 2025 property and zero otherwise. The vehicle term (scveh.s179_2025) is the same on both sides.
+Ruling: open
 
 ### sc.mq_q4 — mq_q4 of this business
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"of": [{"collection": "asset", "field": "asset.mq_q4", "op": "sum_over", "where": null}, {"collection": "scveh", "field": "scveh.mq_q4", "op": "sum_over", "where": null}], "op": "sum"}
-```
-
-Second:
-
-```json
-{"collection": "asset", "field": "asset.mq_q4", "op": "sum_over", "where": null}
-```
-
-Ruling: model error — executable triage (T-143): 3973 comparisons; differences by kind {"project-refuses": 99, "value": 5}.
+Status: **AGREE**
 
 ### sc.mq_total — mq_total of this business
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"of": [{"collection": "asset", "field": "asset.mq_total", "op": "sum_over", "where": null}, {"collection": "scveh", "field": "scveh.mq_total", "op": "sum_over", "where": null}], "op": "sum"}
-```
-
-Second:
-
-```json
-{"collection": "asset", "field": "asset.mq_total", "op": "sum_over", "where": null}
-```
-
-Ruling: model error — executable triage (T-143): 3973 comparisons; differences by kind {"project-refuses": 102, "value": 21}.
+Status: **AGREE**
 
 ### sc.cost179 — cost179 of this business
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"of": [{"collection": "asset", "field": "asset.cost179", "op": "sum_over", "where": null}, {"collection": "scveh", "field": "scveh.cost179", "op": "sum_over", "where": null}], "op": "sum"}
-```
-
-Second:
-
-```json
-{"collection": "asset", "field": "asset.cost179", "op": "sum_over", "where": null}
-```
-
-Ruling: model error — executable triage (T-143): 3973 comparisons; differences by kind {"project-refuses": 100, "value": 23}.
+Status: **AGREE**
 
 ### sc.profit_pos — Net profit of this business (zero for a loss)
 Status: **DISAGREE**
@@ -390,10 +366,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"from": {"line": "31"}, "op": "subtract_floor0", "take": {"const": 0}}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: reference 'sc.ho_max_sqft' does not resolve"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
+{"expression": {"from": {"line": "31"}, "op": "subtract_floor0", "take": {"const": 0}}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error — T-143 records 3973 comparisons as candidate-invalid; the declaration, or the ho_line2/line 31 chain it depends on, fails current validation (see the log's type-check section). project retained. The project selects line 31 under a guard that holds for every value (line 31 at least zero, or less than zero) and floors it at zero; the second takes the larger of zero and line 31. Both are line 31 when it is positive and zero otherwise.
+Ruling: open
 
 ### 3 (sc.line3) — Subtract line 2 from line 1
 Status: **AGREE**
@@ -428,7 +404,7 @@ Second:
 {"collection": "f4562", "field": "f4562.line22", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error — executable triage (T-143): 3973 comparisons; differences by kind {"candidate-unknown": 821, "project-refuses": 264}. project retained. Form 4562 line 22 for the business (line 12, lines 14 to 17, line 19 column (g), line 21) on both sides, with line 21 (line 28) summed in another order; within it the second sums asset.f25 over the listed assets where the project sums asset.bonus_2025. asset.f25 is a display line, shown only for listed property placed in service in 2025 (asset.on_26_2025), and copies asset.bonus for every asset; for listed property placed in service before 2025, asset.bonus is the allowance elected in the year of placement (asset.bonus_choice is asked of every asset, for the basis), which is not a 2025 line 25 amount ('If you placed in service certain qualified listed property during the tax year, you may be able to deduct the special depreciation allowance', i4562 p. 13, Line 25). asset.bonus_2025 is that allowance for 2025 property and zero otherwise, so the project is right and the second over-counts an earlier year's allowance. Lines 15, 16 and 20 are refused on the asset (asset.screen), as the second's note says.
+Ruling: open
 
 ### 20a — Rent or lease: vehicles, machinery, and equipment
 Status: **DISAGREE**
@@ -445,7 +421,7 @@ Second:
 {"input": "sc.rent_equipment"}
 ```
 
-Ruling: model error — executable triage (T-143): 3973 comparisons; differences by kind {"project-refuses": 1, "value": 154}.
+Ruling: open
 
 ### 24b — Deductible meals
 Status: **AGREE**
@@ -477,10 +453,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"amount": {"line": "3a"}, "count": {"of": [{"line": "30(b)"}, {"ref": "sc.ho_max_sqft"}], "op": "smaller_of"}, "op": "multiply_count"}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: reference 'sc.ho_max_sqft' does not resolve"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
+{"expression": {"amount": {"line": "3a"}, "count": {"of": [{"line": "30(b)"}, {"param": "sc.ho_max_sqft"}], "op": "smaller_of"}, "op": "multiply_count"}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error — T-143 records 3973 comparisons as candidate-invalid; the declaration, or the ho_line2/line 31 chain it depends on, fails current validation (see the log's type-check section). project retained. $5 times the smaller of the square footage and 300 (i1040sc Simplified Method Worksheet); the project chooses by an interval on the footage, the second takes the smaller of the two counts.
+Ruling: open
 
 ### 1 (sc.ho_line1) — Gross income limitation (Schedule C, line 29)
 Status: **AGREE**
@@ -497,10 +473,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"from": {"of": [{"line": "1 (sc.ho_line1)"}, {"line": "4 (sc.ho_line4)"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"const": 0}}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: reference 'sc.ho_max_sqft' does not resolve"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
+{"expression": {"from": {"of": [{"line": "1 (sc.ho_line1)"}, {"line": "4 (sc.ho_line4)"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"const": 0}}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error — T-143 records 3973 comparisons as candidate-invalid; the declaration, or the ho_line2/line 31 chain it depends on, fails current validation (see the log's type-check section). project retained. The smaller of worksheet lines 1 and 4 on both sides. The project tests whether line 4 can exceed line 1 under the most section 179 deduction the business could take (its 2025 elections plus the carryover, since BUG-0060) and refuses where the two limits of Pub. 946 (p. 19) interact (sc.ho_both); the second takes the smaller of the two lines directly. Equal on every return the project computes.
+Ruling: open
 
 ### 30 — Expenses for business use of your home
 Status: **DISAGREE**
@@ -514,10 +490,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"alternatives": [{"guard": {"args": [{"const": false}, {"line": "(screen)"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"line": "(screen)"}], "test": "eq"}, "then": {"line": "5 (sc.ho_line5)"}}], "op": "choose"}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: reference 'sc.ho_max_sqft' does not resolve"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
+{"expression": {"alternatives": [{"guard": {"args": [{"const": false}, {"line": "(screen)"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"line": "(screen)"}], "test": "eq"}, "then": {"line": "5 (sc.ho_line5)"}}], "op": "choose"}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error — T-143 records 3973 comparisons as candidate-invalid; the declaration, or the ho_line2/line 31 chain it depends on, fails current validation (see the log's type-check section).
+Ruling: open
 
 ### 31 — Net profit or (loss). Subtract line 30 from line 29
 Status: **DISAGREE**
@@ -531,10 +507,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"from": {"line": "29"}, "op": "subtract", "take": {"line": "30"}}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: reference 'sc.ho_max_sqft' does not resolve"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
+{"expression": {"from": {"line": "29"}, "op": "subtract", "take": {"line": "30"}}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error — T-143 records 3973 comparisons as candidate-invalid; the declaration, or the ho_line2/line 31 chain it depends on, fails current validation (see the log's type-check section).
+Ruling: open
 
 ### 40 — Add lines 35 through 39
 Status: **AGREE**
@@ -557,7 +533,7 @@ Second:
 {"collection": "f4562", "field": "f4562.line12", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error — executable triage (T-143): 3973 comparisons; differences by kind {"candidate-unknown": 821, "project-refuses": 271}.
+Ruling: open
 
 ### 2 (sc.f7206_line2) — Qualified long-term care insurance (the smaller of payments or the age limit, for each per
 Status: **AGREE**
@@ -577,10 +553,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"from": {"line": "31"}, "op": "subtract_floor0", "take": {"const": 0}}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: reference 'sc.ho_max_sqft' does not resolve"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
+{"expression": {"from": {"line": "31"}, "op": "subtract_floor0", "take": {"const": 0}}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error — T-143 records 3973 comparisons as candidate-invalid; the declaration, or the ho_line2/line 31 chain it depends on, fails current validation (see the log's type-check section). project retained. The project selects line 31 under a guard that holds for every value (line 31 at least zero, or less than zero) and floors it at zero; the second takes the larger of zero and line 31. Both are line 31 when it is positive and zero otherwise.
+Ruling: open
 
 ### 5 (sc.f7206_line5) — Total of all net profits from Schedule C, line 31
 Status: **AGREE**
@@ -597,10 +573,12 @@ Project:
 Second:
 
 ```json
-{"expression": {"amount": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}, {"const": 0, "type": "Count"}], "test": "le"}, "then": {"ref": "person.zero"}}, {"guard": {"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"ref": "person.wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}], "op": "choose"}, "op": "prorate", "part": {"line": "4 (sc.f7206_line4)"}, "places": 3, "whole": {"line": "5 (sc.f7206_line5)"}}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: reference 'sc.ho_max_sqft' does not resolve"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
+{"expression": {"alternatives": [{"guard": {"args": [{"line": "4 (sc.f7206_line4)"}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"line": "4 (sc.f7206_line4)"}], "test": "lt"}, "then": {"amount": {"ref": "s1.line15"}, "op": "prorate", "part": {"line": "4 (sc.f7206_line4)"}, "places": 9, "whole": {"line": "5 (sc.f7206_line5)"}}}], "op": "choose"}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error — T-143 records 3973 comparisons as candidate-invalid; the declaration, or the ho_line2/line 31 chain it depends on, fails current validation (see the log's type-check section). project retained. Schedule 1 line 15 times line 4 over line 5 on both sides. The project rounds the ratio to six places (amb.2025.f7206_ratio_places, an agent reading for owner review in TASKS.md); the second to four.
+Second transcription's note: Form 7206 line 6 does not state a rounding rule; this line applies prorate with 9 decimal places to the line 4/line 5 ratio.
+
+Ruling: open
 
 ### 8 (sc.f7206_line8) — Subtract line 7 from line 4
 Status: **DISAGREE**
@@ -614,10 +592,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"from": {"line": "4 (sc.f7206_line4)"}, "op": "subtract_floor0", "take": {"line": "7 (sc.f7206_line7)"}}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: reference 'sc.ho_max_sqft' does not resolve"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
+{"expression": {"from": {"line": "4 (sc.f7206_line4)"}, "op": "subtract_floor0", "take": {"line": "7 (sc.f7206_line7)"}}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error — T-143 records 3973 comparisons as candidate-invalid; the declaration, or the ho_line2/line 31 chain it depends on, fails current validation (see the log's type-check section). project retained. Line 7 is this business's share of the deductible part of self-employment tax, which is less than its net profit on line 4, so line 4 less line 7 is never negative and the project's floor at zero changes nothing.
+Ruling: open
 
 ### 9 (sc.f7206_line9) — Schedule 1, line 16, attributable to the same trade or business
 Status: **DISAGREE**
@@ -631,10 +609,12 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, "then": {"ref": "person.zero"}}, {"guard": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "then": {"input": "person.sep_contrib"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.simple_employer"}, {"of": [{"of": [{"input": "person.simple_deferral"}, {"param": "ret.simple_limit"}], "op": "smaller_of"}, {"from": {"input": "person.simple_deferral"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.simple_deferral"}, {"param": "ret.simple_limit"}], "op": "smaller_of"}}], "op": "sum"}], "op": "sum"}}], "op": "choose"}
+{"ref": "s1.line16"}
 ```
 
-Ruling: model error — executable triage (T-143): 3973 comparisons; differences by kind {"candidate-refuses": 393, "candidate-unknown": 41, "project-refuses": 266, "project-unknown": 2513}. project retained. Schedule 1 line 16 times line 4 over line 5 on both sides (amb.2025.f7206_plan_attribution); the project also enters zero for a person with no Schedule C, which cannot occur within this collection. The project rounds the ratio to six places (amb.2025.f7206_ratio_places, an agent reading for owner review in TASKS.md); the second to four.
+Second transcription's note: The supplied interface provides only the Schedule 1 line 16 total, not a per-business allocation; this line uses that total.
+
+Ruling: open
 
 ### 10 (sc.f7206_line10) — Subtract line 9 from line 8
 Status: **DISAGREE**
@@ -648,10 +628,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"from": {"line": "8 (sc.f7206_line8)"}, "op": "subtract_floor0", "take": {"line": "9 (sc.f7206_line9)"}}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: reference 'sc.ho_max_sqft' does not resolve"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
+{"expression": {"from": {"line": "8 (sc.f7206_line8)"}, "op": "subtract_floor0", "take": {"line": "9 (sc.f7206_line9)"}}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error — T-143 records 3973 comparisons as candidate-invalid; the declaration, or the ho_line2/line 31 chain it depends on, fails current validation (see the log's type-check section). project retained. Form 7206 (2025) line 10 reads 'Subtract line 9 from line 8' with no floor; the project floors it at zero. The values differ only when line 9 (the plan contribution attributable to the business) exceeds line 8; then line 13 copies line 10 (lines 11 and 12, an S corporation and Form 2555, are refused) and line 14 is 'the smaller of line 3 or line 13', so the second would enter a negative amount as the self-employed health insurance deduction on Schedule 1 line 17, which is not a deduction; the project enters zero, the only amount the line can carry.
+Ruling: open
 
 ### 13 (sc.f7206_line13) — Subtract line 12 from line 10
 Status: **DISAGREE**
@@ -665,10 +645,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"from": {"line": "10 (sc.f7206_line10)"}, "op": "subtract_floor0", "take": {"const": 0}}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: reference 'sc.ho_max_sqft' does not resolve"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
+{"expression": {"line": "10 (sc.f7206_line10)"}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error — T-143 records 3973 comparisons as candidate-invalid; the declaration, or the ho_line2/line 31 chain it depends on, fails current validation (see the log's type-check section). project retained. Line 12 (Form 2555) is refused and line 11 (S corporation) does not apply, so line 13 is line 10 on both sides.
+Ruling: open
 
 ### 14 (sc.f7206_line14) — Self-employed health insurance deduction
 Status: **DISAGREE**
@@ -682,10 +662,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"of": [{"line": "13 (sc.f7206_line13)"}, {"line": "3 (sc.f7206_line3)"}], "op": "smaller_of"}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: reference 'sc.ho_max_sqft' does not resolve"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
+{"expression": {"alternatives": [{"guard": {"args": [{"const": false}, {"line": "(screen)"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"line": "(screen)"}], "test": "eq"}, "then": {"of": [{"line": "13 (sc.f7206_line13)"}, {"line": "3 (sc.f7206_line3)"}], "op": "smaller_of"}}], "op": "choose"}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error — T-143 records 3973 comparisons as candidate-invalid; the declaration, or the ho_line2/line 31 chain it depends on, fails current validation (see the log's type-check section).
+Ruling: open
 
 ### 1(c) — Qualified business income or (loss) of this business
 Status: **DISAGREE**
@@ -699,12 +679,12 @@ Project:
 Second:
 
 ```json
-{"expression": {"line": "31"}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: reference 'sc.ho_max_sqft' does not resolve"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
+{"expression": {"line": "31"}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
 ```
 
-Second transcription's note: The archived Schedule C and Form 8995 pages do not give a business-by-business allocation of the person-level deductions (deductible part of self-employment tax, self-employed health insurance, and retirement plan contributions) that reduce QBI. This line reports the Schedule C net profit or loss before those person-level reductions.
+Second transcription's note: The supplied text and inputs do not provide a per-business allocation of the deductible part of self-employment tax, retirement plan contributions, or similar QBI reductions; this line reports the Schedule C net profit as the business's QBI.
 
-Ruling: model error — T-143 records 3973 comparisons as candidate-invalid; the declaration, or the ho_line2/line 31 chain it depends on, fails current validation (see the log's type-check section). project retained. Both subtract from line 31 the deductible part of self-employment tax, the SEP or SIMPLE deduction and the health insurance deduction attributable to the business (i8995 p. 2; amb.2025.qbi_attribution). The second uses Form 7206 lines 7, 9 and 14 for the first two; the project's sc.qbi_se and sc.qbi_plan prorate the same amounts by the same ratio (net profit over person.positive_profits, which is Form 7206 line 5), so the comparison sees references on one side and their expansion on the other.
+Ruling: open
 
 ## Refusal gates listed by the second transcription
 
@@ -712,24 +692,24 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 
 | line | gates listed | not read by the project's line |
 | --- | --- | --- |
-| sc.line31_pre179 | sc.at_risk, sc.ho_other, sc.passive, sc.special | sc.at_risk, sc.ho_other, sc.passive, sc.special |
-| sc.result | sc.at_risk, sc.ho_other, sc.passive, sc.special | sc.at_risk, sc.ho_other, sc.passive, sc.special |
-| sc.profit_pos | sc.at_risk, sc.ho_other, sc.passive, sc.special | sc.at_risk, sc.ho_other, sc.passive, sc.special |
+| sc.line31_pre179 | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special |
+| sc.result | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special |
+| sc.profit_pos | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special |
 | 12 (sc.line12) | sc.special | sc.special |
 | 27a | sc.special | sc.special |
 | 28 | sc.special | sc.special |
 | 29 | sc.special | sc.special |
 | 1 (sc.ho_line1) | sc.special | sc.special |
 | 5 (sc.ho_line5) | sc.special | sc.special |
-| 30 | sc.ho_other, sc.special | sc.ho_other, sc.special |
-| 31 | sc.at_risk, sc.ho_other, sc.passive, sc.special | sc.at_risk, sc.ho_other, sc.passive, sc.special |
-| 4 (sc.f7206_line4) | sc.at_risk, sc.ho_other, sc.passive, sc.special | sc.at_risk, sc.ho_other, sc.passive, sc.special |
-| 7 (sc.f7206_line7) | sc.at_risk, sc.ho_other, sc.passive, sc.special | sc.at_risk, sc.ho_other, sc.passive, sc.special |
-| 8 (sc.f7206_line8) | sc.at_risk, sc.ho_other, sc.passive, sc.special | sc.at_risk, sc.ho_other, sc.passive, sc.special |
-| 10 (sc.f7206_line10) | sc.at_risk, sc.ho_other, sc.passive, sc.special | sc.at_risk, sc.ho_other, sc.passive, sc.special |
-| 13 (sc.f7206_line13) | sc.at_risk, sc.ho_other, sc.passive, sc.special | sc.at_risk, sc.ho_other, sc.passive, sc.special |
-| 14 (sc.f7206_line14) | sc.at_risk, sc.ho_other, sc.passive, sc.special | sc.at_risk, sc.ho_other, sc.passive, sc.special |
-| 1(c) | sc.at_risk, sc.ho_other, sc.passive, sc.special | sc.at_risk, sc.ho_other, sc.passive, sc.special |
+| 30 | sc.h_ho_bad, sc.special | sc.h_ho_bad, sc.special |
+| 31 | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special |
+| 4 (sc.f7206_line4) | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special |
+| 7 (sc.f7206_line7) | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special |
+| 8 (sc.f7206_line8) | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special |
+| 10 (sc.f7206_line10) | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special |
+| 13 (sc.f7206_line13) | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special |
+| 14 (sc.f7206_line14) | sc.h_at_risk_bad, sc.h_hi_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special | sc.h_at_risk_bad, sc.h_hi_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special |
+| 1(c) | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special |
 
 ## Raw second transcription
 
@@ -757,7 +737,7 @@ lines:
     expr: {op: sum, of: [sc.line5, sc.line6]}
   - id: sc.line9
     printed: "9 (sc.line9)"
-    label: "Car and truck expenses (see instructions)"
+    label: "Car and truck expenses"
     type: NonNegDollars
     expr: {op: sum_over, collection: scveh, field: scveh.line9}
   - id: sc.line12
@@ -768,19 +748,19 @@ lines:
     refuses: [sc.special]
   - id: sc.line13
     printed: "13 (sc.line13)"
-    label: "Depreciation and section 179 expense deduction (not included in Part III) (see instructions)"
+    label: "Depreciation and section 179 expense deduction (not included in Part III)"
     type: NonNegDollars
     expr: {op: sum_over, collection: f4562, field: f4562.line22}
   - id: sc.line20a
     printed: "20a"
-    label: "Rent or lease: Vehicles, machinery, and equipment"
+    label: "Rent or lease: vehicles, machinery, and equipment"
     type: NonNegDollars
     expr: {op: copy, from: sc.rent_equipment}
   - id: sc.line24b
     printed: "24b"
-    label: "Deductible meals (see instructions)"
+    label: "Deductible meals"
     type: NonNegDollars
-    expr: {op: sum, of: [sc.h_meals50, sc.h_meals80, sc.meals_100]}
+    expr: {op: sum, of: [sc.h_meals_50_ded, sc.h_meals_80_ded, sc.meals_100]}
   - id: sc.line27a
     printed: "27a"
     label: "Energy efficient commercial bldgs deduction (attach Form 7205)"
@@ -811,29 +791,35 @@ lines:
     printed: "4 (sc.ho_line4)"
     label: "Multiply line 2 by line 3c"
     type: NonNegDollars
-    expr: {op: multiply_count, amount: sc.ho_rate, count: sc.ho_line2}
+    expr: {op: multiply_count, amount: sc.ho_rate, count: sc.h_ho_sqft_capped}
   - id: sc.ho_line1
     printed: "1 (sc.ho_line1)"
     label: "Enter the amount of the gross income limitation"
     type: Dollars
-    expr: {op: copy, from: sc.ho_line1_source}
+    expr: {op: copy, from: sc.line29}
   - id: sc.ho_line5
     printed: "5 (sc.ho_line5)"
     label: "Allowable expenses using the simplified method. Enter the smaller of line 1 or line 4 here and include that amount on Schedule C, line 30. If zero or less, enter -0-"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: sc.ho_smaller, take: {const: 0}}
+    expr: {op: subtract_floor0, from: sc.h_ho_line5_raw, take: {const: 0}}
   - id: sc.line30
     printed: "30"
-    label: "Expenses for business use of your home. Do not report these expenses elsewhere. Attach Form 8829 unless using the simplified method"
+    label: "Expenses for business use of your home"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: {op: test, eq: [sc.ho_uses, {const: true}]}, then: sc.ho_line5}, {guard: {op: test, eq: [sc.ho_uses, {const: false}]}, then: sc.h_zero}]}
-    refuses: [sc.ho_other]
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [sc.ho_uses, {const: false}]}
+          then: sc.h_zero
+        - guard: {op: test, eq: [sc.ho_uses, {const: true}]}
+          then: sc.ho_line5
+    refuses: [sc.h_ho_bad]
   - id: sc.line31
     printed: "31"
     label: "Net profit or (loss). Subtract line 30 from line 29"
     type: Dollars
-    expr: {op: subtract, from: sc.line29, take: sc.line30}
-    refuses: [sc.at_risk, sc.passive]
+    expr: {op: copy, from: sc.h_line31_pre}
+    refuses: [sc.special, sc.h_at_risk_bad, sc.h_passive_bad]
   - id: sc.line40
     printed: "40"
     label: "Add lines 35 through 39"
@@ -863,17 +849,24 @@ lines:
     printed: "4 (sc.f7206_line4)"
     label: "Enter your net profit and any other earned income from the trade or business under which the insurance plan is established"
     type: NonNegDollars
-    expr: {op: copy, from: sc.profit_pos}
+    expr: {op: subtract_floor0, from: sc.line31, take: {const: 0}}
   - id: sc.f7206_line5
     printed: "5 (sc.f7206_line5)"
-    label: "Enter the total of all net profits from Schedule C, Schedule F, or Schedule K-1 plus any other income allocable to the profitable businesses"
+    label: "Enter the total of all net profits from Schedule C, Schedule F, or Schedule K-1, plus other income allocable to profitable businesses. Do not include net losses"
     type: NonNegDollars
     expr: {op: copy, from: person.positive_profits}
   - id: sc.f7206_line7
     printed: "7 (sc.f7206_line7)"
-    label: "Multiply Schedule 1, line 15, deductible part of self-employment tax, by the percentage on line 6"
+    label: "Multiply Schedule 1 line 15, deductible part of self-employment tax, by the percentage on line 6"
     type: NonNegDollars
-    expr: {op: prorate, amount: person.se_line13, part: sc.f7206_line4, whole: sc.f7206_line5, places: 3}
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [sc.f7206_line4, {const: 0}]}
+          then: sc.h_zero
+        - guard: {op: test, ne: [sc.f7206_line4, {const: 0}]}
+          then: sc.h_f7206_line7_calc
+    note: "Form 7206 line 6 does not state a rounding rule; this line applies prorate with 9 decimal places to the line 4/line 5 ratio."
   - id: sc.f7206_line8
     printed: "8 (sc.f7206_line8)"
     label: "Subtract line 7 from line 4"
@@ -881,9 +874,10 @@ lines:
     expr: {op: subtract_floor0, from: sc.f7206_line4, take: sc.f7206_line7}
   - id: sc.f7206_line9
     printed: "9 (sc.f7206_line9)"
-    label: "Enter the amount from Schedule 1, line 16, self-employed SEP, SIMPLE, and qualified plans, attributable to the same trade or business in which the insurance plan is established"
+    label: "Enter the amount, if any, from Schedule 1 line 16 attributable to the same trade or business in which the insurance plan is established"
     type: NonNegDollars
-    expr: {op: copy, from: person.plan_deduction}
+    expr: {op: copy, from: s1.line16}
+    note: "The supplied interface provides only the Schedule 1 line 16 total, not a per-business allocation; this line uses that total."
   - id: sc.f7206_line10
     printed: "10 (sc.f7206_line10)"
     label: "Subtract line 9 from line 8"
@@ -893,158 +887,233 @@ lines:
     printed: "13 (sc.f7206_line13)"
     label: "Subtract line 12 from line 10 or line 11, whichever applies"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: sc.f7206_line10, take: {const: 0}}
+    expr: {op: copy, from: sc.f7206_line10}
   - id: sc.f7206_line14
     printed: "14 (sc.f7206_line14)"
     label: "Self-employed health insurance deduction. Enter the smaller of line 3 or line 13 here and on Schedule 1, line 17"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [sc.f7206_line3, sc.f7206_line13]}
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [sc.hi_uses, {const: false}]}
+          then: sc.h_zero
+        - guard: {op: test, eq: [sc.hi_uses, {const: true}]}
+          then: sc.h_f7206_min
+    refuses: [sc.h_hi_bad]
   - id: sc.qbi
     printed: "1(c)"
     label: "Qualified business income or (loss)"
     type: Dollars
     expr: {op: copy, from: sc.line31}
-    note: "The archived Schedule C and Form 8995 pages do not give a business-by-business allocation of the person-level deductions (deductible part of self-employment tax, self-employed health insurance, and retirement plan contributions) that reduce QBI. This line reports the Schedule C net profit or loss before those person-level reductions."
-
+    note: "The supplied text and inputs do not provide a per-business allocation of the deductible part of self-employment tax, retirement plan contributions, or similar QBI reductions; this line reports the Schedule C net profit as the business's QBI."
   - id: sc.one
     printed: "(helper)"
     label: "Count of this business"
     type: Count
-    expr: {op: param, ref: sc.one}
+    expr: {op: param, ref: sales.one}
   - id: sc.rrta
     printed: "(helper)"
-    label: "Railroad retirement compensation indicator for this person"
+    label: "This business's income is railroad retirement compensation reported as a statutory employee"
     type: Bool
-    expr: {op: copy, from: person.rrta}
+    expr: {op: test, all: [{op: test, eq: [sc.statutory, {const: true}]}, {op: test, eq: [person.rrta, {const: true}]}]}
   - id: sc.line31_pre179
     printed: "(helper)"
-    label: "Net profit or loss before the section 179 expense deduction"
+    label: "Net profit before section 179"
     type: Dollars
     expr: {op: sum, of: [sc.line31, sc.s179_allowed]}
   - id: sc.result
     printed: "(helper)"
-    label: "Schedule C net profit or loss reported on Schedule 1, line 3, and Schedule SE, line 2"
+    label: "Schedule C net profit or loss after limitations"
     type: Dollars
     expr: {op: copy, from: sc.line31}
   - id: sc.f6
     printed: "(helper)"
-    label: "Total elected section 179 cost of property"
+    label: "Total elected cost of section 179 property (Form 4562 line 6, column (c))"
     type: NonNegDollars
     expr: {op: sum_over, collection: asset, field: asset.s179}
   - id: sc.f14
     printed: "(helper)"
-    label: "Special depreciation allowance for qualified property"
+    label: "Special depreciation allowance for qualified property (Form 4562 line 14)"
     type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.bonus}
+    expr: {op: sum_over, collection: f4562, field: f4562.line14}
   - id: sc.f17
     printed: "(helper)"
-    label: "MACRS deductions for assets placed in service in tax years beginning before 2025"
+    label: "MACRS deductions for assets placed in service in tax years beginning before 2025 (Form 4562 line 17)"
     type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.macrs_prior}
+    expr: {op: sum_over, collection: f4562, field: f4562.line17}
   - id: sc.f19_y3
     printed: "(helper)"
-    label: "MACRS depreciation deduction for 3-year property placed in service during 2025"
+    label: "3-year property MACRS deduction (Form 4562 line 19a, column (g))"
     type: NonNegDollars
     expr: {op: sum_over, collection: asset, field: asset.macrs2025, where: {op: test, eq: [asset.period, {const: "y3"}]}}
   - id: sc.f19_y5
     printed: "(helper)"
-    label: "MACRS depreciation deduction for 5-year property placed in service during 2025"
+    label: "5-year property MACRS deduction (Form 4562 line 19b, column (g))"
     type: NonNegDollars
     expr: {op: sum_over, collection: asset, field: asset.macrs2025, where: {op: test, eq: [asset.period, {const: "y5"}]}}
   - id: sc.f19_y7
     printed: "(helper)"
-    label: "MACRS depreciation deduction for 7-year property placed in service during 2025"
+    label: "7-year property MACRS deduction (Form 4562 line 19c, column (g))"
     type: NonNegDollars
     expr: {op: sum_over, collection: asset, field: asset.macrs2025, where: {op: test, eq: [asset.period, {const: "y7"}]}}
   - id: sc.f19_y10
     printed: "(helper)"
-    label: "MACRS depreciation deduction for 10-year property placed in service during 2025"
+    label: "10-year property MACRS deduction (Form 4562 line 19d, column (g))"
     type: NonNegDollars
     expr: {op: sum_over, collection: asset, field: asset.macrs2025, where: {op: test, eq: [asset.period, {const: "y10"}]}}
   - id: sc.f19_y15
     printed: "(helper)"
-    label: "MACRS depreciation deduction for 15-year property placed in service during 2025"
+    label: "15-year property MACRS deduction (Form 4562 line 19e, column (g))"
     type: NonNegDollars
     expr: {op: sum_over, collection: asset, field: asset.macrs2025, where: {op: test, eq: [asset.period, {const: "y15"}]}}
   - id: sc.f19_y20
     printed: "(helper)"
-    label: "MACRS depreciation deduction for 20-year property placed in service during 2025"
+    label: "20-year property MACRS deduction (Form 4562 line 19f, column (g))"
     type: NonNegDollars
     expr: {op: sum_over, collection: asset, field: asset.macrs2025, where: {op: test, eq: [asset.period, {const: "y20"}]}}
   - id: sc.f19_y15sl
     printed: "(helper)"
-    label: "MACRS depreciation deduction for 15-year straight line property placed in service during 2025"
+    label: "15-year straight-line property MACRS deduction"
     type: NonNegDollars
     expr: {op: sum_over, collection: asset, field: asset.macrs2025, where: {op: test, eq: [asset.period, {const: "y15sl"}]}}
   - id: sc.f25
     printed: "(helper)"
-    label: "Special depreciation allowance for qualified listed property placed in service during the tax year and used more than 50% in a qualified business use"
+    label: "Special depreciation allowance for qualified listed property (Form 4562 line 25)"
     type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.f25}
+    expr: {op: sum_over, collection: f4562, field: f4562.line25}
   - id: sc.f26h
     printed: "(helper)"
-    label: "Depreciation deduction for listed property used more than 50% in a qualified business use"
+    label: "Depreciation deduction for listed property used more than 50% in a qualified business use (Form 4562 line 26(h))"
     type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.dep_listed}
+    expr: {op: sum_over, collection: f4562, field: f4562.line26h}
   - id: sc.f28
     printed: "(helper)"
-    label: "Total listed property depreciation. Add amounts in column (h), lines 25 through 27"
+    label: "Total listed property depreciation (Form 4562 line 28)"
     type: NonNegDollars
-    expr: {op: sum, of: [sc.f25, sc.f26h]}
+    expr: {op: sum_over, collection: f4562, field: f4562.line28}
   - id: sc.f29
     printed: "(helper)"
-    label: "Total elected section 179 cost of listed property"
+    label: "Elected section 179 cost of listed property (Form 4562 line 29)"
     type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.f26i}
+    expr: {op: sum_over, collection: f4562, field: f4562.line29}
   - id: sc.mq_q4
     printed: "(helper)"
-    label: "Total mid-quarter fourth-quarter depreciable basis"
+    label: "Fourth-quarter depreciable basis for mid-quarter convention"
     type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.mq_q4}
+    expr: {op: sum, of: [sc.h_asset_mq_q4, sc.h_scveh_mq_q4]}
   - id: sc.mq_total
     printed: "(helper)"
-    label: "Total mid-quarter depreciable basis"
+    label: "Total depreciable basis for mid-quarter convention"
     type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.mq_total}
+    expr: {op: sum, of: [sc.h_asset_mq_total, sc.h_scveh_mq_total]}
   - id: sc.cost179
     printed: "(helper)"
     label: "Total cost of section 179 property placed in service"
     type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.cost179}
+    expr: {op: sum, of: [sc.h_asset_cost179, sc.h_scveh_cost179]}
   - id: sc.profit_pos
     printed: "(helper)"
-    label: "Positive net profit from this business"
+    label: "Positive net profit"
     type: NonNegDollars
     expr: {op: subtract_floor0, from: sc.line31, take: {const: 0}}
-
-  - id: sc.h_meals50
-    printed: "(helper)"
-    label: "Business meals subject to the 50% limit, after applying the percentage"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: sc.meals_50, rate: {param: sc.meals_rate}}
-  - id: sc.h_meals80
-    printed: "(helper)"
-    label: "Business meals subject to the 80% limit, after applying the percentage"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: sc.meals_80, rate: {param: sc.meals_rate_dot}}
   - id: sc.h_zero
     printed: "(helper)"
     label: "Zero amount"
     type: NonNegDollars
     expr: {op: param, ref: sales.zero}
-  - id: sc.ho_line2
+  - id: sc.h_ho_max_sqft
     printed: "(helper)"
-    label: "Allowable square footage for the qualified business use, not more than 300 square feet"
+    label: "Maximum allowable square footage"
     type: Count
-    expr: {op: smaller_of, of: [sc.ho_sqft, sc.ho_max_sqft]}
-  - id: sc.ho_line1_source
+    expr: {op: param, ref: sc.ho_max_sqft}
+  - id: sc.h_ho_sqft_capped
     printed: "(helper)"
-    label: "Gross income limitation source amount from Schedule C, line 29"
-    type: Dollars
-    expr: {op: copy, from: sc.line29}
-  - id: sc.ho_smaller
+    label: "Allowable square footage, not more than 300 square feet"
+    type: Count
+    expr: {op: smaller_of, of: [sc.ho_sqft, sc.h_ho_max_sqft]}
+  - id: sc.h_meals_50_ded
     printed: "(helper)"
-    label: "Smaller of the gross income limitation and the simplified method amount"
+    label: "Meals subject to the 50% limit, deductible amount"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: sc.meals_50, rate: {param: sc.meals_rate}}
+  - id: sc.h_meals_80_ded
+    printed: "(helper)"
+    label: "Meals subject to the 80% limit, deductible amount"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: sc.meals_80, rate: {param: sc.meals_rate_dot}}
+  - id: sc.h_ho_line5_raw
+    printed: "(helper)"
+    label: "Smaller of line 1 or line 4 before the zero floor"
     type: Dollars
     expr: {op: smaller_of, of: [sc.ho_line1, sc.ho_line4]}
+  - id: sc.h_ho_bad
+    printed: "(helper)"
+    label: "Home office simplified method is unsupported for this home office"
+    type: Bool
+    expr: {op: test, all: [{op: test, eq: [sc.ho_uses, {const: true}]}, {op: test, eq: [sc.ho_other, {const: true}]}]}
+  - id: sc.h_line31_pre
+    printed: "(helper)"
+    label: "Net profit or loss before at-risk and passive activity limits"
+    type: Dollars
+    expr: {op: subtract, from: sc.line29, take: sc.line30}
+  - id: sc.h_line31_loss
+    printed: "(helper)"
+    label: "Whether the Schedule C result before limitations is a loss"
+    type: Bool
+    expr: {op: test, lt: [sc.h_line31_pre, {const: 0}]}
+  - id: sc.h_at_risk_bad
+    printed: "(helper)"
+    label: "Loss with some investment not at risk; Form 6198 required"
+    type: Bool
+    expr: {op: test, all: [sc.h_line31_loss, {op: test, eq: [sc.at_risk, {const: false}]}]}
+  - id: sc.h_passive_bad
+    printed: "(helper)"
+    label: "Loss from a passive activity; Form 8582 required"
+    type: Bool
+    expr: {op: test, all: [sc.h_line31_loss, {op: test, eq: [sc.passive, {const: false}]}]}
+  - id: sc.h_f7206_line7_calc
+    printed: "(helper)"
+    label: "Form 7206 line 7 prorated amount"
+    type: NonNegDollars
+    expr: {op: prorate, amount: s1.line15, part: sc.f7206_line4, whole: sc.f7206_line5, places: 9}
+  - id: sc.h_f7206_min
+    printed: "(helper)"
+    label: "Smaller of Form 7206 line 3 or line 13"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [sc.f7206_line3, sc.f7206_line13]}
+  - id: sc.h_hi_bad
+    printed: "(helper)"
+    label: "Health insurance deduction is unsupported for this business"
+    type: Bool
+    expr: {op: test, all: [{op: test, eq: [sc.hi_uses, {const: true}]}, {op: test, eq: [sc.hi_screen, {const: true}]}]}
+  - id: sc.h_asset_mq_q4
+    printed: "(helper)"
+    label: "Asset fourth-quarter depreciable basis"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: asset, field: asset.mq_q4}
+  - id: sc.h_scveh_mq_q4
+    printed: "(helper)"
+    label: "Vehicle fourth-quarter depreciable basis"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: scveh, field: scveh.mq_q4}
+  - id: sc.h_asset_mq_total
+    printed: "(helper)"
+    label: "Asset total depreciable basis"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: asset, field: asset.mq_total}
+  - id: sc.h_scveh_mq_total
+    printed: "(helper)"
+    label: "Vehicle total depreciable basis"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: scveh, field: scveh.mq_total}
+  - id: sc.h_asset_cost179
+    printed: "(helper)"
+    label: "Asset section 179 cost"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: asset, field: asset.cost179}
+  - id: sc.h_scveh_cost179
+    printed: "(helper)"
+    label: "Vehicle section 179 cost"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: scveh, field: scveh.cost179}
 ```
