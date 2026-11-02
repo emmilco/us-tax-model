@@ -77,6 +77,15 @@
   {
    "case": "classm.scveh.1",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_1].bus_cost",
+   "project": "$43,355.22",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].bus_cost",
    "project": "$47,144.27",
    "model": "$47,144.29",
    "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence.",
@@ -116,6 +125,24 @@
   },
   {
    "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line11",
+   "project": "$4,849.61",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line15",
+   "project": "$43,355.22",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.1",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line15",
    "project": "$47,144.27",
    "model": "$47,144.29",
@@ -129,6 +156,15 @@
    "model": "$18,857.72",
    "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence.",
    "drop": true
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line17",
+   "project": "$4,849.61",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
   },
   {
    "case": "classm.scveh.1",
@@ -148,6 +184,15 @@
   },
   {
    "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line18",
+   "project": "$43,355.22",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.1",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line19_earlier",
    "project": "$1,414.33",
    "model": "$0.00",
@@ -161,6 +206,24 @@
    "model": "$577.27",
    "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence.",
    "drop": true
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line7",
+   "project": "$5,760.00",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line9w",
+   "project": "$4,849.61",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
   },
   {
    "case": "classm.scveh.1",
@@ -372,6 +435,15 @@
   },
   {
    "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].line11",
+   "project": "$3,988.45",
+   "model": "$3,988.46",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct); the model multiplied by the exact fraction, a difference of a cent.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.1",
    "printed": "person[taxpayer].sc[biz_b].scveh[car_1].line15",
    "project": "$6,673.89",
    "model": "$6,673.90",
@@ -380,11 +452,29 @@
   },
   {
    "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].line17",
+   "project": "$3,988.45",
+   "model": "$3,988.46",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct); the model multiplied by the exact fraction, a difference of a cent.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.1",
    "printed": "person[taxpayer].sc[biz_b].scveh[car_1].line18",
    "project": "$6,673.89",
    "model": "$6,673.90",
    "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence.",
    "drop": true
+  },
+  {
+   "case": "classm.scveh.1",
+   "printed": "person[taxpayer].sc[biz_b].scveh[car_1].line9w",
+   "project": "$3,988.45",
+   "model": "$3,988.46",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct); the model multiplied by the exact fraction, a difference of a cent.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
   },
   {
    "case": "classm.scveh.1",
@@ -668,6 +758,15 @@
   },
   {
    "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].bus_cost",
+   "project": "$62,561.38",
+   "model": "$62,561.37",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct); the model multiplied by the exact fraction, a difference of a cent.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.2",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_1].cm_c",
    "project": "$8.61",
    "model": "$861.00",
@@ -716,6 +815,15 @@
   },
   {
    "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line11",
+   "project": "$11,058.53",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.2",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line15",
    "project": "$23,668.25",
    "model": "$23,668.26",
@@ -724,11 +832,38 @@
   },
   {
    "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line15",
+   "project": "$62,561.38",
+   "model": "$62,561.37",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct); the model multiplied by the exact fraction, a difference of a cent.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line17",
+   "project": "$11,058.53",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.2",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line18",
    "project": "$23,668.25",
    "model": "$23,668.26",
    "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
    "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line18",
+   "project": "$62,561.38",
+   "model": "$62,561.37",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct); the model multiplied by the exact fraction, a difference of a cent.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
   },
   {
    "case": "classm.scveh.2",
@@ -756,6 +891,15 @@
   },
   {
    "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line7",
+   "project": "$12,200.00",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.2",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line9",
    "project": "$4,585.08",
    "model": "$4,585.09",
@@ -769,6 +913,15 @@
    "model": "$4,585.09",
    "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
    "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line9w",
+   "project": "$11,058.53",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
   },
   {
    "case": "classm.scveh.2",
@@ -1045,6 +1198,15 @@
   {
    "case": "classm.scveh.2",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line11",
+   "project": "$17,176.74",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line11",
    "project": "$18,787.39",
    "model": "$18,787.40",
    "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence.",
@@ -1085,6 +1247,15 @@
   {
    "case": "classm.scveh.2",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line17",
+   "project": "$17,176.74",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line17",
    "project": "$4,048.44",
    "model": "$4,048.45",
    "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
@@ -1097,6 +1268,33 @@
    "model": "$43,844.12",
    "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
    "drop": true
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line7",
+   "project": "$19,800.00",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line9",
+   "project": "$6,698.00",
+   "model": "$6,697.99",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct); the model multiplied by the exact fraction, a difference of a cent.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.2",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line9w",
+   "project": "$17,176.74",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
   },
   {
    "case": "classm.scveh.2",
@@ -1413,6 +1611,15 @@
   {
    "case": "classm.scveh.3",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_1].bus_cost",
+   "project": "$4,575.15",
+   "model": "$4,575.14",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct); the model multiplied by the exact fraction, a difference of a cent.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].bus_cost",
    "project": "$48,214.49",
    "model": "$48,214.52",
    "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence.",
@@ -1492,11 +1699,29 @@
   },
   {
    "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line15",
+   "project": "$4,575.15",
+   "model": "$4,575.14",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct); the model multiplied by the exact fraction, a difference of a cent.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.3",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line18",
    "project": "$38,364.49",
    "model": "$38,364.52",
    "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025.vehicle_business_pct in ambiguities/2025.yaml); the model multiplied by the exact fraction, a difference of a few cents. Not evidence.",
    "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line18",
+   "project": "$4,575.15",
+   "model": "$4,575.14",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct); the model multiplied by the exact fraction, a difference of a cent.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
   },
   {
    "case": "classm.scveh.3",
@@ -1613,6 +1838,15 @@
   {
    "case": "classm.scveh.3",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bus_cost",
+   "project": "$17,095.98",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bus_cost",
    "project": "$34,906.81",
    "model": "$34,906.79",
    "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
@@ -1645,10 +1879,28 @@
   {
    "case": "classm.scveh.3",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line11",
+   "project": "$17,222.10",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line11",
    "project": "$5,464.90",
    "model": "$5,464.89",
    "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
    "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line15",
+   "project": "$17,095.98",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
   },
   {
    "case": "classm.scveh.3",
@@ -1661,6 +1913,15 @@
   {
    "case": "classm.scveh.3",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line17",
+   "project": "$17,222.10",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line17",
    "project": "$5,464.90",
    "model": "$5,464.89",
    "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
@@ -1669,10 +1930,28 @@
   {
    "case": "classm.scveh.3",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line18",
+   "project": "$17,095.98",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line18",
    "project": "$32,538.81",
    "model": "$32,538.79",
    "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
    "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line19",
+   "project": "$5,812.63",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
   },
   {
    "case": "classm.scveh.3",
@@ -1697,6 +1976,33 @@
    "model": "$4,880.82",
    "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
    "drop": true
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line20",
+   "project": "$5,812.63",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line7",
+   "project": "$19,800.00",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.3",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line9w",
+   "project": "$17,222.10",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
   },
   {
    "case": "classm.scveh.3",
@@ -1788,6 +2094,15 @@
   },
   {
    "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].bus_cost",
+   "project": "$39,085.35",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.4",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_1].cost179_a2",
    "project": "$7,658.80",
    "model": "$0.00",
@@ -1820,11 +2135,65 @@
   },
   {
    "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line11",
+   "project": "$3,253.86",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line15",
+   "project": "$39,085.35",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line17",
+   "project": "$3,253.86",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line18",
+   "project": "$39,085.35",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.4",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line19_earlier",
    "project": "$2,270.65",
    "model": "$0.00",
    "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
    "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line7",
+   "project": "$5,760.00",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line9w",
+   "project": "$3,253.86",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
   },
   {
    "case": "classm.scveh.4",
@@ -1981,6 +2350,15 @@
   {
    "case": "classm.scveh.4",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bus_cost",
+   "project": "$21,535.84",
+   "model": "$21,535.85",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct); the model multiplied by the exact fraction, a difference of a cent.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].bus_cost",
    "project": "$55,566.49",
    "model": "$55,566.50",
    "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
@@ -2004,11 +2382,47 @@
   },
   {
    "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line11",
+   "project": "$17,345.71",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line15",
+   "project": "$21,535.84",
+   "model": "$21,535.85",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct); the model multiplied by the exact fraction, a difference of a cent.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.4",
    "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line15",
    "project": "$55,566.49",
    "model": "$55,566.50",
    "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (owner ruling 3c, amb.2025 register); the model multiplied by the exact fraction, a difference of a few cents.",
    "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line17",
+   "project": "$17,345.71",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line18",
+   "project": "$21,535.84",
+   "model": "$21,535.85",
+   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct); the model multiplied by the exact fraction, a difference of a cent.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
   },
   {
    "case": "classm.scveh.4",
@@ -2041,6 +2455,24 @@
    "model": "$19,448.28",
    "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry (the 2025 lines for an earlier vehicle, the 2019 recovery chain for a later one, the owned-vehicle lines for a leased one, the fourth-quarter basis for another quarter); no printed result reads it in this case, and the printed lines of the entry agree. The model entered zero or worked it as if it applied. Not evidence.",
    "drop": true
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line7",
+   "project": "$19,800.00",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+  },
+  {
+   "case": "classm.scveh.4",
+   "printed": "person[taxpayer].sc[biz_a].scveh[car_2].line9w",
+   "project": "$17,345.71",
+   "model": "$0.00",
+   "ruling": "Ruling: helper of a branch this vehicle does not take; project retained. The project figures every line of every entry; these worksheet lines are read only for an owned passenger automobile on actual expenses (scveh.bonus_v, scveh.macrs_pass), so this amount reaches no return for this vehicle. The model entered zero as not applicable.",
+   "drop": true,
+   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
   },
   {
    "case": "classm.scveh.4",

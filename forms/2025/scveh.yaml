@@ -380,6 +380,29 @@ form:
     cite:
       doc: i1040sc
       locator: p. 8, Lines 20a and 20b, "enter on line 20a the business portion of your rental cost"
+  - id: scveh.lease_smr_before
+    printed: (screen)
+    label: The standard mileage rate was used for this leased vehicle before
+    type: Bool
+    expr:
+      op: input
+      source: Did you use the standard mileage rate for this leased vehicle in an earlier year?
+    cite:
+      doc: i1040sc
+      locator: p. 6, Line 9, "You can't use actual expenses for a leased vehicle if you previously used the standard mileage
+        rate for that vehicle"
+  - id: scveh.lease_smr_bad
+    printed: (gate)
+    label: Actual expenses on a leased vehicle after the standard mileage rate
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - scveh.lease_smr_before
+      - const: true
+    cite:
+      doc: i1040sc
+      locator: p. 6, Line 9
   - id: scveh.lease_business
     printed: (helper)
     label: The business portion of the lease payments
@@ -393,6 +416,13 @@ form:
     cite:
       doc: i1040sc
       locator: p. 8, Lines 20a and 20b
+    refuses:
+    - when: scveh.lease_smr_bad
+      form: Actual expenses on a leased vehicle after using the standard mileage rate for it in an earlier year
+      remedy: You can't use actual expenses for this leased vehicle; use the standard mileage rate for the rest of the lease.
+      cite:
+        doc: i1040sc
+        locator: p. 6, Line 9
   - id: scveh.line20a
     printed: 20a
     label: Rent or lease of this vehicle (business portion)

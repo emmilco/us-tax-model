@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 155 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 9.2% (451/4926 second-family lines judged; pending reviews are provisional); 79 eligible, 75 pending; raw agreement 77.5% (diagnostic only); current independence yield 296 line(s); both families disputed 720
+Summary: 155 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 9.2% (451/4927 second-family lines judged; pending reviews are provisional); 79 eligible, 75 pending; raw agreement 77.5% (diagnostic only); current independence yield 295 line(s); both families disputed 721
 
 Written by `tools/transcription/compare_families.py` on 2026-11-02 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -69,7 +69,7 @@ Written by `tools/transcription/compare_families.py` on 2026-11-02 from the revi
 | sb | deepseek (deepseek-flash) | 4 | 4 | 100.0% | 0/4 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | sc | deepseek (deepseek-flash) | 55 | 22 | 40.0% | 31/55 (56.4%) | pending | 8 | 25 | 0 | 0 |
 | scope | deepseek (deepseek-flash) | 0 | 0 | n/a | 0/0 (n/a) | no lines | 0 | 0 | 0 | 0 |
-| scveh | deepseek (deepseek-flash) | 21 | 0 | 0.0% | 20/21 (95.2%) | pending | 8 | 13 | 0 | 0 |
+| scveh | deepseek (deepseek-flash) | 21 | 0 | 0.0% | 20/21 (95.2%) | pending | 7 | 14 | 0 | 0 |
 | sd | deepseek (deepseek-flash) | 55 | 7 | 12.7% | 4/55 (7.3%) | pending | 8 | 37 | 3 | 0 |
 | sdtw | deepseek (deepseek-flash) | 47 | 20 | 42.6% | 12/47 (25.5%) | pending | 2 | 19 | 6 | 0 |
 | se | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 1 | 0 | 0 |
@@ -80,7 +80,7 @@ Written by `tools/transcription/compare_families.py` on 2026-11-02 from the revi
 | tipjob | deepseek (deepseek-flash) | 3 | 2 | 66.7% | 0/3 (0.0%) | pending | 0 | 0 | 1 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 6 | 33.3% | 7/18 (38.9%) | pending | 4 | 6 | 2 | 0 |
 | w2 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 0 | 1 | 1 | 0 |
-| **all** | | 1307 | 467 | 35.7% | | | 179 | 631 | 30 | 0 |
+| **all** | | 1307 | 467 | 35.7% | | | 178 | 632 | 30 | 0 |
 
 Pending asset [deepseek]: model-error noise above 10%.
 Pending carloan [deepseek]: model-error noise above 10%.
@@ -303,11 +303,10 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | scveh | deepseek | 11 | DISAGREE | (no reason given) |
 | scveh | deepseek | 14 | DISAGREE | (no reason given) |
 | scveh | deepseek | 15 | DISAGREE | (no reason given) |
-| scveh | deepseek | 17 | DISAGREE | Uses the allowed special allowance on line 25, capped at line 11, so the passenger automobile limit is not exceeded. |
-| scveh | deepseek | 18 | DISAGREE | Uses the allowed special allowance on line 25. |
+| scveh | deepseek | 17 | DISAGREE | (no reason given) |
+| scveh | deepseek | 18 | DISAGREE | (no reason given) |
 | scveh | deepseek | 20 | DISAGREE | (no reason given) |
 | scveh | deepseek | 25 | DISAGREE | (no reason given) |
-| scveh | deepseek | scveh.s179_2025 | DISAGREE | (no reason given) |
 | sd | deepseek | 11 | DISAGREE | (no reason given) |
 | sd | deepseek | 12 | DISAGREE | (no reason given) |
 | sd | deepseek | 21 | DISAGREE | (no reason given) |
@@ -870,19 +869,20 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | sc | deepseek | sc.profit_pos | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | sc.result | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | sc.rrta | DISAGREE | DISAGREE | (no reason given) |
-| scveh | deepseek | 10 | DISAGREE | DISAGREE | Section 179 is zero unless actual expenses are used and the vehicle was placed in service in 2025; an SUV election is limited to $31,300. |
-| scveh | deepseek | 13 | DISAGREE | DISAGREE | Business-use percentage is business miles divided by total miles (business + commuting + other), rounded to 9 decimal places. |
-| scveh | deepseek | 16 | DISAGREE | DISAGREE | For property acquired before January 20, 2025, the applicable special allowance is 40%, not 100%. |
+| scveh | deepseek | 10 | DISAGREE | DISAGREE | (no reason given) |
+| scveh | deepseek | 13 | DISAGREE | DISAGREE | (no reason given) |
+| scveh | deepseek | 16 | DISAGREE | DISAGREE | For property acquired on or before January 19, 2025, the applicable allowance is 40%; for property acquired after that date, it is 100% unless the 40% election is made. |
 | scveh | deepseek | 19 | DISAGREE | DISAGREE | (no reason given) |
-| scveh | deepseek | 20a | DISAGREE | DISAGREE | Lease payments are deducted for actual expenses only and only when the vehicle is not owned. |
-| scveh | deepseek | 7 | DISAGREE | DISAGREE | For a non-passenger vehicle not subject to passenger automobile limits, cost is used as a nonbinding maximum. For a passenger automobile, the first-year no-special-allowance limit is used when no special allowance applies; later-year limits use auto_limit. |
-| scveh | deepseek | 9 (scveh.line9) | DISAGREE | DISAGREE | For actual expenses, applies the business-mileage fraction to operating expenses and adds business parking/tolls; standard uses 70 cents per business mile plus parking/tolls. A standard-mileage method is refused when scveh.smr_ok is false. |
+| scveh | deepseek | 20a | DISAGREE | DISAGREE | (no reason given) |
+| scveh | deepseek | 7 | DISAGREE | DISAGREE | The worksheet line 7 is the passenger-automobile limit. For a vehicle not subject to those limits I used its cost as the unconstrained maximum, so that line 9 is its business cost. |
+| scveh | deepseek | 9 (scveh.line9) | DISAGREE | DISAGREE | (no reason given) |
 | scveh | deepseek | 9 (scveh.line9w) | DISAGREE | DISAGREE | (no reason given) |
 | scveh | deepseek | scveh.bonus | DISAGREE | DISAGREE | (no reason given) |
 | scveh | deepseek | scveh.cost179 | DISAGREE | DISAGREE | (no reason given) |
 | scveh | deepseek | scveh.macrs | DISAGREE | DISAGREE | (no reason given) |
 | scveh | deepseek | scveh.mq_q4 | DISAGREE | DISAGREE | (no reason given) |
 | scveh | deepseek | scveh.mq_total | DISAGREE | DISAGREE | (no reason given) |
+| scveh | deepseek | scveh.s179_2025 | DISAGREE | DISAGREE | (no reason given) |
 | sd | deepseek | 10(d) | DISAGREE | DISAGREE | (no reason given) |
 | sd | deepseek | 10(e) | DISAGREE | DISAGREE | (no reason given) |
 | sd | deepseek | 10(g) | DISAGREE | DISAGREE | (no reason given) |
@@ -1016,7 +1016,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | sb | deepseek (deepseek-flash) | 6 | 4 | 66.7% | 0/6 (0.0%) | pending | 1 | 1 | 0 | 0 |
 | sc | deepseek (deepseek-flash) | 74 | 66 | 89.2% | 0/74 (0.0%) | pending | 2 | 2 | 4 | 1 |
 | scope | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pass | 0 | 0 | 2 | 0 |
-| scveh | deepseek (deepseek-flash) | 25 | 18 | 72.0% | 0/25 (0.0%) | pending | 0 | 3 | 4 | 0 |
+| scveh | deepseek (deepseek-flash) | 26 | 19 | 73.1% | 0/26 (0.0%) | pending | 0 | 3 | 4 | 0 |
 | sd | deepseek (deepseek-flash) | 46 | 45 | 97.8% | 0/46 (0.0%) | pass | 1 | 0 | 0 | 0 |
 | sdtw | deepseek (deepseek-flash) | 47 | 46 | 97.9% | 0/47 (0.0%) | pass | 0 | 1 | 0 | 0 |
 | se | deepseek (deepseek-flash) | 15 | 10 | 66.7% | 0/15 (0.0%) | pending | 0 | 5 | 0 | 0 |
@@ -1027,7 +1027,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | tipjob | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 4 | 22.2% | 0/18 (0.0%) | pass | 0 | 13 | 1 | 0 |
 | w2 | deepseek (deepseek-flash) | 17 | 17 | 100.0% | 0/17 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| **all** | | 1493 | 1254 | 84.0% | | | 114 | 83 | 42 | 1 |
+| **all** | | 1494 | 1255 | 84.0% | | | 114 | 83 | 42 | 1 |
 
 Pending f8606 [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending f8995 [deepseek]: 2 open, unclassified or interface-gap rulings.
@@ -1224,9 +1224,9 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | sb | deepseek | 4 | UNCLEAR | UNCLEAR | The provided IRS text contains no line 4 instruction or statement that line 4 is line 2 minus line 3, so the arithmetic cannot be verified from the text given. |
 | sc | deepseek | 4 (sc.f7206_line4) | MISMATCH | MISMATCH | IRS line 4 says 'Enter your net profit* and any other earned income** from the trade or business'; the restatement uses only net profit, zero for a loss. |
 | sc | deepseek | 5 (sc.f7206_line5) | MISMATCH | MISMATCH | IRS line 5 requires 'the total of all net profits from Schedule C..., Schedule F..., or Schedule K-1..., plus any other income'; the restatement sums only Schedule C net profits. |
-| scveh | deepseek | (b) | MISMATCH | MISMATCH | Form 4562 Part V column (b) says 'Date placed in service. Enter the date the property was placed in service' and treats conversion date as placed-in-service; the restatement asks only for a year. |
-| scveh | deepseek | 20a | MISMATCH | MISMATCH | IRS says to enter the business portion of rental cost, but 'if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount.' The restatement omits that reduction. |
-| scveh | deepseek | 43 | MISMATCH | MISMATCH | IRS line 43 asks 'When did you place your vehicle in service for business purposes? (month/day/year)'; the restatement asks only for the year, omitting month and day. |
+| scveh | deepseek | (b) | MISMATCH | MISMATCH | IRS says 'Column (b)—Date placed in service. Enter the date the property was placed in service'; the restatement asks only for the year. |
+| scveh | deepseek | 20a | MISMATCH | MISMATCH | IRS says 'But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount'; the restatement omits the inclusion amount. |
+| scveh | deepseek | 43 | MISMATCH | MISMATCH | IRS line asks 'When did you place your vehicle in service for business purposes? (month/day/year)'; the restatement collects only the year. |
 | sdtw | deepseek | 1 | MISMATCH | MISMATCH | IRS line 1 says to enter line 3 of the Foreign Earned Income Tax Worksheet instead when filing Form 2555; the restatement always uses Form 1040 line 15. |
 | se | deepseek | 2 | MISMATCH | MISMATCH | IRS line 2 includes "Schedule K-1 (Form 1065), box 14, code A" and other income per instructions; restatement uses only this person Schedule C results. |
 | se | deepseek | 3 | MISMATCH | MISMATCH | IRS line 3 says "Combine lines 1a, 1b, and 2"; restatement enters only the amount from line 2. |

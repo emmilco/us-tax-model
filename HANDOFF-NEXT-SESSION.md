@@ -1,3 +1,11 @@
+# Session handoff — 2026-11-02; T-173 fixed, next is T-161
+
+**State:** T-173/BUG-0310 is fixed (BUG-0312): new input `scveh.lease_smr_before`, gate `scveh.lease_smr_bad`, refusal on `scveh.lease_business`, regression `stage14.veh.refuse_lease_smr_before`. scveh reviews, class M and completeness are rerun and ruled. See the latest commit for the suite result and where it sits.
+
+**Next:** T-161/BUG-0292 (HSA carryover, the Form 5329/person pass), then T-159 and the rows listed in the entry below. The deferred completeness gaps T-170, T-171, T-172 and T-174 stay open.
+
+---
+
 # Session handoff — 2026-11-02; asset/Schedule C pass closed
 
 **State:** the asset/Schedule C pass (T-157/T-158) is ruled, reviewed and on `main` as one squashed commit of the tested tree, because the pre-push guard refuses the branch's untested WIP commits; full suite green (see the commit message). `asset-sc-pass` keeps the commit-by-commit history.

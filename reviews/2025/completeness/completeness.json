@@ -2457,24 +2457,10 @@
  },
  {
   "form": "scveh",
-  "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576",
+  "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6",
   "claims": [
    {
-    "item": "scveh.is_actual_leased",
-    "sentences": [
-     {
-      "quote": "You can’t use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle.",
-      "page": "i1040sc p. 6"
-     }
-    ],
-    "quote": "You can’t use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle.",
-    "page": "i1040sc p. 6",
-    "why_uncovered": "scveh.smr_ok tests eligibility only for the standard mileage rate. The screen's 'used the standard mileage rate in an earlier year' item gates owned-vehicle depreciation through scveh.cost, so nothing stops a lessee who used the standard rate earlier from switching to actual expenses.",
-    "closest_item": "scveh.is_actual_leased",
-    "effect": "eligibility"
-   },
-   {
-    "item": "scveh.line20a",
+    "item": "scveh.lease_business",
     "sentences": [
      {
       "quote": "But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount.",
@@ -2487,8 +2473,8 @@
     ],
     "quote": "But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount. / Report the inclusion amount figured (as described in the preceding discussions) as other income on the same form or schedule on which you took the deduction for your rental costs.",
     "page": "i1040sc p. 8; p946 p. 59",
-    "why_uncovered": "scveh.line20a is only the business portion of the lease payments. No question, line or refusal addresses the inclusion amount for a leased vehicle.",
-    "closest_item": "scveh.line20a",
+    "why_uncovered": "The lease path only multiplies lease payments by the business percentage. No question, line or refusal deals with the lease inclusion amount for a leased vehicle.",
+    "closest_item": "scveh.lease_business",
     "effect": "amount"
    },
    {
@@ -2499,40 +2485,44 @@
       "page": "i4562 p. 14"
      },
      {
-      "quote": "Your percentage of qualified business use may be smaller than the business/investment use percentage.",
+      "quote": "Leasing the property to a 5% owner or related person if the value related to such usage is not reported as income to the individual.",
       "page": "i4562 p. 14"
      },
+     {
+      "quote": "The use of the property as compensation for services performed by a 5% owner or related person.",
+      "page": "i4562 p. 14"
+     },
+     {
+      "quote": "The use of the property as compensation for services performed by any person (who is not a 5% owner or related person), unless an amount is included in that person’s income for the use of the property and, if required, income tax was withheld on that amount.",
+      "page": "i4562 p. 14"
+     },
+     {
+      "quote": "The use of property that is determined to be non-deductible under section 274.",
+      "page": "i4562 p. 14"
+     },
+     {
+      "quote": "Your percentage of qualified business use may be smaller than the business/investment use percentage.",
+      "page": "i4562 p. 14"
+     }
+    ],
+    "quote": "To determine whether to use line 26 or line 27 to report your listed property, you must first determine the percentage of qualified business use for each property. / Leasing the property to a 5% owner or related person if the value related to such usage is not reported as income to the individual. / The use of the property as compensation for services performed by a 5% owner or related person. / The use of the property as compensation for services performed by any person (who is not a 5% owner or related person), unless an amount is included in that person’s income for the use of the property and, if required, income tax was withheld on that amount. / The use of property that is determined to be non-deductible under section 274. / Your percentage of qualified business use may be smaller than the business/investment use percentage.",
+    "page": "i4562 p. 14",
+    "why_uncovered": "The over-50% test is drawn from business miles over total miles. Nothing asks about or refuses the uses excluded from qualified business use, so a vehicle at or below 50% qualified use could pass the test and receive accelerated depreciation, the special allowance or section 179.",
+    "closest_item": "scveh.over_half",
+    "effect": "eligibility"
+   },
+   {
+    "item": "scveh.bm_c",
+    "sentences": [
      {
       "quote": "Treat vehicles used by employees as being used 100% for business/investment purposes if the value of personal use is included in the employees’ gross income, or the employees reimburse the employer for the personal use.",
       "page": "i4562 p. 14"
      }
     ],
-    "quote": "To determine whether to use line 26 or line 27 to report your listed property, you must first determine the percentage of qualified business use for each property. / Your percentage of qualified business use may be smaller than the business/investment use percentage. / Treat vehicles used by employees as being used 100% for business/investment purposes if the value of personal use is included in the employees’ gross income, or the employees reimburse the employer for the personal use.",
+    "quote": "Treat vehicles used by employees as being used 100% for business/investment purposes if the value of personal use is included in the employees’ gross income, or the employees reimburse the employer for the personal use.",
     "page": "i4562 p. 14",
-    "why_uncovered": "The more-than-50% test and the use percentage come only from the three mileage questions. Nothing asks about or refuses the excluded uses (such as leasing to or compensating a 5% owner or related person, or compensating others without income inclusion), and nothing applies the 100% treatment for employee-used vehicles.",
-    "closest_item": "scveh.over_half",
-    "effect": "amount"
-   },
-   {
-    "item": "scveh.screen",
-    "sentences": [
-     {
-      "quote": "Property converted from business or income-producing use to personal use in the same tax year it is acquired;",
-      "page": "i4562 p. 7"
-     },
-     {
-      "quote": "If during the tax year you convert property used solely for personal purposes to business/investment use (or vice versa), figure the percentage of business/investment use only for the number of months you use the property in your business or for the production of income.",
-      "page": "i4562 p. 14"
-     },
-     {
-      "quote": "Multiply that percentage by the number of months you use the property in your business or for the production of income, and divide the result by 12.",
-      "page": "i4562 p. 14"
-     }
-    ],
-    "quote": "Property converted from business or income-producing use to personal use in the same tax year it is acquired; / If during the tax year you convert property used solely for personal purposes to business/investment use (or vice versa), figure the percentage of business/investment use only for the number of months you use the property in your business or for the production of income. / Multiply that percentage by the number of months you use the property in your business or for the production of income, and divide the result by 12.",
-    "page": "i4562 p. 7; i4562 p. 14",
-    "why_uncovered": "The screen refuses a personal-to-business conversion during 2025 and a disposition, but not a business-to-personal conversion. Such a vehicle still gets the special allowance and the ordinary mileage-based use percentage, without the monthly proration.",
-    "closest_item": "scveh.screen",
+    "why_uncovered": "The business percentage is computed only from the filer's mileage answers. No question or refusal covers an employee-used vehicle treated as 100% business.",
+    "closest_item": "scveh.bm_c",
     "effect": "amount"
    },
    {
@@ -2545,13 +2535,55 @@
     ],
     "quote": "If you converted your vehicle during the year from personal to business use (or vice versa), enter your commuting miles only for the period you drove your vehicle for business.",
     "page": "i1040sc p. 15",
-    "why_uncovered": "The question asks for all commuting miles driven in 2025 and has no limit to the business period. The screen's conversion item does not reach standard mileage or leased filers, who report on Part IV.",
+    "why_uncovered": "The commuting-miles question asks for miles driven in 2025 with no limit to the business period. The screen's conversion item is tied to the depreciation path and does not reach a standard mileage filer's line 44b, nor a conversion from business to personal use.",
     "closest_item": "scveh.miles_commuting",
     "effect": "presentation"
    },
    {
-    "item": "scveh.line19",
+    "item": "scveh.screen",
     "sentences": [
+     {
+      "quote": "If during the tax year you convert property used solely for personal purposes to business/investment use (or vice versa), figure the percentage of business/investment use only for the number of months you use the property in your business or for the production of income.",
+      "page": "i4562 p. 14"
+     },
+     {
+      "quote": "Property converted from business or income-producing use to personal use in the same tax year it is acquired;",
+      "page": "i4562 p. 7"
+     },
+     {
+      "quote": "Generally, you must depreciate the carryover basis of property you acquire in a like-kind exchange or involuntary conversion during the current tax year over the remaining recovery period of the property exchanged or involuntarily converted.",
+      "page": "i4562 p. 9"
+     }
+    ],
+    "quote": "If during the tax year you convert property used solely for personal purposes to business/investment use (or vice versa), figure the percentage of business/investment use only for the number of months you use the property in your business or for the production of income. / Property converted from business or income-producing use to personal use in the same tax year it is acquired; / Generally, you must depreciate the carryover basis of property you acquire in a like-kind exchange or involuntary conversion during the current tax year over the remaining recovery period of the property exchanged or involuntarily converted.",
+    "page": "i4562 p. 14; i4562 p. 7; i4562 p. 9",
+    "why_uncovered": "The screen lists only conversion from personal to business use, and trade-ins. It omits conversion from business to personal use, including the bar on the special allowance when that happens in the year of acquisition. It also omits a replacement vehicle acquired in an involuntary conversion, which carries over basis and recovery period.",
+    "closest_item": "scveh.screen",
+    "effect": "amount"
+   },
+   {
+    "item": "scveh.rate_hy",
+    "sentences": [
+     {
+      "quote": "The following types of property must be depreciated under ADS.",
+      "page": "i4562 p. 12"
+     },
+     {
+      "quote": "Tangible property used predominantly outside the United States.",
+      "page": "i4562 p. 12"
+     },
+     {
+      "quote": "You must use ADS for all property you place in service in any year the election is in effect.",
+      "page": "p946 p. 35"
+     },
+     {
+      "quote": "Any property required to be depreciated under the Alternative Depreciation System (ADS) (that is, not property for which you elected to use ADS);",
+      "page": "i4562 p. 7"
+     },
+     {
+      "quote": "Instead of depreciating property under GDS (line 19), you can make an irrevocable election for any classification of property for any tax year to use ADS.",
+      "page": "i4562 p. 12"
+     },
      {
       "quote": "However, you can make an irrevocable election to use the straight line method for all property within a classification that is placed in service during the tax year.",
       "page": "i4562 p. 11"
@@ -2559,64 +2591,48 @@
      {
       "quote": "For 3-, 5-, 7-, or 10-year property eligible for the 200% declining balance method, you can make an irrevocable election to use the 150% declining balance method, switching to the straight line method in the first tax year that the straight line rate exceeds the declining balance rate.",
       "page": "i4562 p. 11"
-     },
-     {
-      "quote": "The following types of property must be depreciated under ADS.",
-      "page": "i4562 p. 12"
-     },
-     {
-      "quote": "Instead of depreciating property under GDS (line 19), you can make an irrevocable election for any classification of property for any tax year to use ADS.",
-      "page": "i4562 p. 12"
-     },
-     {
-      "quote": "Any property required to be depreciated under the Alternative Depreciation System (ADS) (that is, not property for which you elected to use ADS);",
-      "page": "i4562 p. 7"
-     },
-     {
-      "quote": "If you elect to use a different method for one item in a property class, you must apply the same method to all property in that class placed in service during the year of the election.",
-      "page": "p946 p. 35"
      }
     ],
-    "quote": "However, you can make an irrevocable election to use the straight line method for all property within a classification that is placed in service during the tax year. / For 3-, 5-, 7-, or 10-year property eligible for the 200% declining balance method, you can make an irrevocable election to use the 150% declining balance method, switching to the straight line method in the first tax year that the straight line rate exceeds the declining balance rate. / The following types of property must be depreciated under ADS. / Instead of depreciating property under GDS (line 19), you can make an irrevocable election for any classification of property for any tax year to use ADS. / Any property required to be depreciated under the Alternative Depreciation System (ADS) (that is, not property for which you elected to use ADS); / If you elect to use a different method for one item in a property class, you must apply the same method to all property in that class placed in service during the year of the election.",
-    "page": "i4562 p. 11; i4562 p. 12; i4562 p. 7; p946 p. 35",
-    "why_uncovered": "Line 19 always uses the 200% declining balance GDS rates from Tables A-1 to A-5. No question or refusal covers a straight line, 150% or ADS election, in 2025 or an earlier year. None covers mandatory ADS (for example, a vehicle used predominantly outside the United States) or the resulting loss of the special allowance. Only ADS from 50%-or-less use is refused.",
-    "closest_item": "scveh.line19",
-    "effect": "amount"
-   },
-   {
-    "item": "scveh.line7",
-    "sentences": [
-     {
-      "quote": "Caution: If you have a short tax year, you must reduce the maximum deduction amount by multiplying the maximum amount by a fraction.",
-      "page": "p946 p. 60"
-     },
-     {
-      "quote": "You cannot use the percentage tables for a short tax year.",
-      "page": "p946 p. 37"
-     }
-    ],
-    "quote": "Caution: If you have a short tax year, you must reduce the maximum deduction amount by multiplying the maximum amount by a fraction. / You cannot use the percentage tables for a short tax year.",
-    "page": "p946 p. 60; p946 p. 37",
-    "why_uncovered": "The limits and the table rates are applied as if every tax year were a full 12 months. No question or refusal identifies a short tax year.",
-    "closest_item": "scveh.line7",
+    "quote": "The following types of property must be depreciated under ADS. / Tangible property used predominantly outside the United States. / You must use ADS for all property you place in service in any year the election is in effect. / Any property required to be depreciated under the Alternative Depreciation System (ADS) (that is, not property for which you elected to use ADS); / Instead of depreciating property under GDS (line 19), you can make an irrevocable election for any classification of property for any tax year to use ADS. / However, you can make an irrevocable election to use the straight line method for all property within a classification that is placed in service during the tax year. / For 3-, 5-, 7-, or 10-year property eligible for the 200% declining balance method, you can make an irrevocable election to use the 150% declining balance method, switching to the straight line method in the first tax year that the straight line rate exceeds the declining balance rate.",
+    "page": "i4562 p. 12; p946 p. 35; i4562 p. 7; i4562 p. 11",
+    "why_uncovered": "The rate helpers apply only the 200% declining balance GDS percentages from Tables A-1 to A-5. Nothing asks about or refuses required ADS (which also bars the special allowance) or an elected ADS, straight line or 150% method, whether made in 2025 or binding from an earlier year.",
+    "closest_item": "scveh.rate_hy",
     "effect": "amount"
    },
    {
     "item": "scveh.rate_prior",
     "sentences": [
      {
-      "quote": "You must stop using the tables if you adjust the basis of the property for any reason other than:",
+      "quote": "You cannot use the percentage tables for a short tax year.",
       "page": "p946 p. 37"
      },
      {
       "quote": "If you reduce the basis of your property because of a casualty, you cannot continue to use the percentage tables.",
       "page": "p946 p. 37"
+     },
+     {
+      "quote": "For the year of the adjustment and the remaining recovery period, you must figure the depreciation yourself using the property’s adjusted basis at the end of the year.",
+      "page": "p946 p. 37"
      }
     ],
-    "quote": "You must stop using the tables if you adjust the basis of the property for any reason other than: / If you reduce the basis of your property because of a casualty, you cannot continue to use the percentage tables.",
+    "quote": "You cannot use the percentage tables for a short tax year. / If you reduce the basis of your property because of a casualty, you cannot continue to use the percentage tables. / For the year of the adjustment and the remaining recovery period, you must figure the depreciation yourself using the property’s adjusted basis at the end of the year.",
     "page": "p946 p. 37",
-    "why_uncovered": "The screen refuses basis reductions only for a clean-fuel deduction or a vehicle credit. A casualty or other basis adjustment is neither asked about nor refused, so the table rate continues to apply to the vehicle.",
+    "why_uncovered": "The encoding always applies table percentages to the unadjusted basis. The screen covers clean-fuel and credit basis adjustments, but no question or refusal covers a casualty basis reduction or a short tax year.",
     "closest_item": "scveh.rate_prior",
+    "effect": "amount"
+   },
+   {
+    "item": "scveh.line7",
+    "sentences": [
+     {
+      "quote": "If you have a short tax year, you must reduce the maximum deduction amount by multiplying the maximum amount by a fraction.",
+      "page": "p946 p. 60"
+     }
+    ],
+    "quote": "If you have a short tax year, you must reduce the maximum deduction amount by multiplying the maximum amount by a fraction.",
+    "page": "p946 p. 60",
+    "why_uncovered": "Line 7 takes the full-year table limit. Nothing asks about or refuses a short tax year.",
+    "closest_item": "scveh.line7",
     "effect": "amount"
    },
    {
@@ -2633,9 +2649,23 @@
     ],
     "quote": "The business use requirement and the limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly engaged in the business of leasing passenger automobiles. / The passenger automobile limits generally do not apply to passenger automobiles leased or held for leasing by anyone regularly engaged in the business of leasing passenger automobiles.",
     "page": "i4562 p. 15; p946 p. 59",
-    "why_uncovered": "The passenger question and the screen cover weight, qualified nonpersonal use vehicles, for-hire transport, and ambulances and hearses. They do not cover the exception for a business regularly leasing automobiles, so the limits would be wrongly applied to such a filer.",
+    "why_uncovered": "The passenger question covers weight and qualified nonpersonal use modifications, and the screen covers for-hire use, ambulances and hearses. Neither addresses the exception for a business of leasing automobiles, so its limits and low-use refusal would apply to a vehicle exempt from them.",
     "closest_item": "scveh.passenger",
     "effect": "amount"
+   },
+   {
+    "item": "scveh.macrs_v",
+    "sentences": [
+     {
+      "quote": "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove your business/investment use with adequate records or with sufficient evidence to support your own statements.",
+      "page": "p946 p. 63"
+     }
+    ],
+    "quote": "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove your business/investment use with adequate records or with sufficient evidence to support your own statements.",
+    "page": "p946 p. 63",
+    "why_uncovered": "No question or refusal asks whether the filer has adequate records or sufficient evidence of business use, yet depreciation and section 179 are computed from the mileage answers.",
+    "closest_item": "scveh.macrs_v",
+    "effect": "eligibility"
    },
    {
     "item": "scveh.line9",
@@ -2651,29 +2681,29 @@
     ],
     "quote": "If you produced real or tangible personal property or acquired real or personal property for resale, you must generally capitalize certain expenses in inventory or other property. / Reduce the amounts on lines 8 through 27a and Part V by amounts capitalized.",
     "page": "i1040sc p. 6",
-    "why_uncovered": "Line 9, line 20a and the depreciation amounts are computed with no reduction for capitalized costs. Nothing asks whether vehicle costs are allocable to produced or resale property, or whether the small business exception applies.",
+    "why_uncovered": "Line 9 and the Part V amounts are deducted in full. Nothing in the encoding reduces them for capitalized costs or asks whether the small business taxpayer or creative property exception applies.",
     "closest_item": "scveh.line9",
     "effect": "amount"
    },
    {
-    "item": "scveh.macrs",
+    "item": "scveh.bonus_choice",
     "sentences": [
      {
-      "quote": "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove your business/investment use with adequate records or with sufficient evidence to support your own statements.",
-      "page": "p946 p. 63"
+      "quote": "To make an election, attach a statement to your timely filed return (including extensions) indicating the class of property for which you are making the election and that, for such class, you are not to claim any special depreciation allowance.",
+      "page": "i4562 p. 7"
      }
     ],
-    "quote": "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove your business/investment use with adequate records or with sufficient evidence to support your own statements.",
-    "page": "p946 p. 63",
-    "why_uncovered": "Depreciation and section 179 are allowed on the entered miles alone. No question or refusal conditions them on having adequate records or sufficient evidence of business use.",
-    "closest_item": "scveh.macrs",
-    "effect": "eligibility"
+    "quote": "To make an election, attach a statement to your timely filed return (including extensions) indicating the class of property for which you are making the election and that, for such class, you are not to claim any special depreciation allowance.",
+    "page": "i4562 p. 7",
+    "why_uncovered": "The question records the choice not to claim the allowance, but no line or instruction produces the required election statement or tests that the election was timely.",
+    "closest_item": "scveh.bonus_choice",
+    "effect": "presentation"
    },
    {
-    "item": "scveh.miles_business",
+    "item": "scveh.placed_date",
     "sentences": [
      {
-      "quote": "If you used more than one vehicle during the year, attach a statement with the information requested in Schedule C, Part IV, for each additional vehicle.",
+      "quote": "Complete Schedule C, Part IV, if (a) you are claiming the standard mileage rate, you lease your vehicle, or your vehicle is fully depreciated; and (b) you are not required to file Form 4562 for any other reason.",
       "page": "i1040sc p. 7"
      },
      {
@@ -2681,14 +2711,22 @@
       "page": "i1040sc p. 7"
      },
      {
+      "quote": "If you used more than one vehicle during the year, attach a statement with the information requested in Schedule C, Part IV, for each additional vehicle.",
+      "page": "i1040sc p. 7"
+     },
+     {
+      "quote": "Enter the date the property was placed in service.",
+      "page": "i4562 p. 14"
+     },
+     {
       "quote": "Except as noted below, you must complete lines 30 through 36 for each vehicle identified in Section A.",
       "page": "i4562 p. 16"
      }
     ],
-    "quote": "If you used more than one vehicle during the year, attach a statement with the information requested in Schedule C, Part IV, for each additional vehicle. / Complete Form 4562, Part V, if you are claiming depreciation on your vehicle or you are required to file Form 4562 for any other reason (see Line 13, later). / Except as noted below, you must complete lines 30 through 36 for each vehicle identified in Section A.",
-    "page": "i1040sc p. 7; i4562 p. 16",
-    "why_uncovered": "The miles are encoded only as Schedule C lines 44a to 44c. No item routes the vehicle information to Form 4562 Part V when depreciation is claimed, encodes Section B lines 30 through 36, or provides the additional-vehicle statement.",
-    "closest_item": "scveh.miles_business",
+    "quote": "Complete Schedule C, Part IV, if (a) you are claiming the standard mileage rate, you lease your vehicle, or your vehicle is fully depreciated; and (b) you are not required to file Form 4562 for any other reason. / Complete Form 4562, Part V, if you are claiming depreciation on your vehicle or you are required to file Form 4562 for any other reason (see Line 13, later). / If you used more than one vehicle during the year, attach a statement with the information requested in Schedule C, Part IV, for each additional vehicle. / Enter the date the property was placed in service. / Except as noted below, you must complete lines 30 through 36 for each vehicle identified in Section A.",
+    "page": "i1040sc p. 7; i4562 p. 14; i4562 p. 16",
+    "why_uncovered": "The encoding collects the placed-in-service year and the three mileage figures, but it does not route the vehicle information to Part IV or Part V. It also does not collect the full date, produce the additional-vehicle statement, or encode the remaining vehicle-use questions in Form 4562 Section B.",
+    "closest_item": "scveh.placed_date",
     "effect": "presentation"
    }
   ],
@@ -2759,7 +2797,7 @@
     ]
    }
   ],
-  "cost": 0.7433708,
+  "cost": 0.751884,
   "model": "claude-opus-5-5"
  },
  {

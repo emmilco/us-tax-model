@@ -4021,7 +4021,8 @@
         "person[spouse].x_prior09": 0,
         "person[spouse].x_births": 0,
         "person[spouse].x_hsa_value": 433400,
-        "person[spouse].f8889[hsa].employer_in_box1": false
+        "person[spouse].f8889[hsa].employer_in_box1": false,
+        "person[taxpayer].sc[biz_b].scveh[car_2].lease_smr_before": false
       },
       "expect": {
         "person[spouse].f8889[hsa].line3": {
@@ -7358,7 +7359,8 @@
         "person[spouse].simple_age": "age50",
         "person[spouse].simple_kind": "nonelective",
         "person[spouse].simple_employer": 0,
-        "$f1095a": []
+        "$f1095a": [],
+        "person[taxpayer].sc[biz_a].scveh[car_2].lease_smr_before": false
       },
       "expect": {
         "f4952.line4a": {
@@ -10416,7 +10418,8 @@
         "person[spouse].simple_age": "under50",
         "person[spouse].simple_kind": "nonelective",
         "person[spouse].simple_employer": 0,
-        "$f1095a": []
+        "$f1095a": [],
+        "person[spouse].sc[biz_a].scveh[car_2].lease_smr_before": false
       },
       "expect": {
         "g28.line4": {
@@ -38975,7 +38978,8 @@
         "person[taxpayer].x_prior09": 0,
         "person[taxpayer].x_births": 0,
         "person[taxpayer].x_hsa_value": 0,
-        "person[taxpayer].f8889[hsa].employer_in_box1": false
+        "person[taxpayer].f8889[hsa].employer_in_box1": false,
+        "person[taxpayer].sc[biz_a].scveh[car_1].lease_smr_before": false
       },
       "expect": {
         "s8812.line1": {

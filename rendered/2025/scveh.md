@@ -202,10 +202,25 @@
 - Expr: `{"op":"input","source":"Your 2025 lease payments for this vehicle"}`
 - Cite: [i1040sc] p. 8, Lines 20a and 20b, "enter on line 20a the business portion of your rental cost" (2025; sha256 b5536db9)
 
+## (screen) — `scveh.lease_smr_before`
+
+- **Authored helper label:** The standard mileage rate was used for this leased vehicle before
+- **Encoded (Bool):** Input — Did you use the standard mileage rate for this leased vehicle in an earlier year?
+- Expr: `{"op":"input","source":"Did you use the standard mileage rate for this leased vehicle in an earlier year?"}`
+- Cite: [i1040sc] p. 6, Line 9, "You can't use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle" (2025; sha256 b5536db9)
+
+## (gate) — `scveh.lease_smr_bad`
+
+- **Authored helper label:** Actual expenses on a leased vehicle after the standard mileage rate
+- **Encoded (Bool):** helper "The standard mileage rate was used for this leased vehicle before" = true
+- Expr: `{"eq":["scveh.lease_smr_before",{"const":true}],"op":"test"}`
+- Cite: [i1040sc] p. 6, Line 9 (2025; sha256 b5536db9)
+
 ## (helper) — `scveh.lease_business`
 
 - **Authored helper label:** The business portion of the lease payments
 - **Encoded (NonNegDollars):** Divide helper "Business miles, as cents" by helper "Total miles, as cents", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper "Lease payments for the vehicle" by the result.
+- **Refusal:** when scveh.lease_smr_bad is true, cannot complete Actual expenses on a leased vehicle after using the standard mileage rate for it in an earlier year. You can't use actual expenses for this leased vehicle; use the standard mileage rate for the rest of the lease. Cite: [i1040sc] p. 6, Line 9 (2025; sha256 b5536db9)
 - Expr: `{"amount":"scveh.lease","op":"prorate","part":"scveh.bm_c","places":6,"whole":"scveh.total_c"}`
 - Cite: [i1040sc] p. 8, Lines 20a and 20b (2025; sha256 b5536db9)
 

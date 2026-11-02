@@ -466,74 +466,79 @@
    "gate": "asset.screened"
   },
   "unruled:scveh#1": {
-   "class": "real gap",
-   "evidence": "i1040sc p. 6. Reproduced: stage14.veh.leased_actual with scveh.screen true still completes. BUG-0310/T-173 records it.",
-   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576",
-   "bug": "BUG-0310"
+   "class": "out of scope",
+   "evidence": "i1040sc p. 8; p946 p. 59. sc.special refuses \"an inclusion amount for leased property\" for the business.",
+   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6",
+   "gate": "sc.special"
   },
   "unruled:scveh#2": {
-   "class": "out of scope",
-   "evidence": "i1040sc p. 8. sc.special refuses \"an inclusion amount for leased property\" for the business.",
-   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576",
-   "gate": "sc.special"
+   "class": "real gap",
+   "evidence": "i4562 p. 14. The over-50% test is drawn from business miles over total miles. Nothing asks about or refuses the uses excluded from qualified business use, so a vehicle at or below 50% qualified use could pass the BUG-0311/T-174 records the gap.",
+   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6",
+   "bug": "BUG-0311"
   },
   "unruled:scveh#3": {
    "class": "real gap",
-   "evidence": "i4562 p. 14, qualified business use exclusions. BUG-0311/T-174 records the gap.",
-   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576",
+   "evidence": "i4562 p. 14. The business percentage is computed only from the filer's mileage answers. No question or refusal covers an employee-used vehicle treated as 100% business. BUG-0311/T-174 records the gap.",
+   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6",
    "bug": "BUG-0311"
   },
-  "unruled:scveh#4": {
+  "unruled:scveh#5": {
    "class": "real gap",
-   "evidence": "i4562 pp. 7, 14, business-to-personal conversion. BUG-0311/T-174 records the gap.",
-   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576",
+   "evidence": "i4562 p. 14; i4562 p. 7; i4562 p. 9. The screen lists only conversion from personal to business use, and trade-ins. It omits conversion from business to personal use, including the bar on the special allowance when that happens in the ye BUG-0311/T-174 records the gap.",
+   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6",
    "bug": "BUG-0311"
   },
   "unruled:scveh#6": {
    "class": "real gap",
-   "evidence": "i4562 pp. 7, 11-12; p946 p. 35, method and ADS elections and mandatory ADS. BUG-0311/T-174 records the gap.",
-   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576",
+   "evidence": "i4562 p. 12; p946 p. 35; i4562 p. 7; i4562 p. 11. The rate helpers apply only the 200% declining balance GDS percentages from Tables A-1 to A-5. Nothing asks about or refuses required ADS (which also bars the special allowance) or an elected ADS, str BUG-0311/T-174 records the gap.",
+   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6",
    "bug": "BUG-0311"
   },
   "unruled:scveh#7": {
    "class": "real gap",
-   "evidence": "p946 pp. 37, 60, a short tax year. BUG-0311/T-174 records the gap.",
-   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576",
+   "evidence": "p946 p. 37. The encoding always applies table percentages to the unadjusted basis. The screen covers clean-fuel and credit basis adjustments, but no question or refusal covers a casualty basis reduction or a shor BUG-0311/T-174 records the gap.",
+   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6",
    "bug": "BUG-0311"
   },
   "unruled:scveh#8": {
    "class": "real gap",
-   "evidence": "p946 p. 37, a basis adjustment stops the tables. BUG-0311/T-174 records the gap.",
-   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576",
+   "evidence": "p946 p. 60. Line 7 takes the full-year table limit. Nothing asks about or refuses a short tax year. BUG-0311/T-174 records the gap.",
+   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6",
    "bug": "BUG-0311"
   },
   "unruled:scveh#9": {
    "class": "real gap",
-   "evidence": "i4562 p. 15; p946 p. 59, a regular lessor of automobiles. BUG-0311/T-174 records the gap.",
-   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576",
+   "evidence": "i4562 p. 15; p946 p. 59. The passenger question covers weight and qualified nonpersonal use modifications, and the screen covers for-hire use, ambulances and hearses. Neither addresses the exception for a business of leasing BUG-0311/T-174 records the gap.",
+   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6",
    "bug": "BUG-0311"
   },
   "unruled:scveh#10": {
    "class": "real gap",
-   "evidence": "i1040sc p. 6, capitalized costs. BUG-0311/T-174 records the gap.",
-   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576",
+   "evidence": "p946 p. 63. No question or refusal asks whether the filer has adequate records or sufficient evidence of business use, yet depreciation and section 179 are computed from the mileage answers. BUG-0311/T-174 records the gap.",
+   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6",
    "bug": "BUG-0311"
   },
   "unruled:scveh#11": {
    "class": "real gap",
-   "evidence": "p946 p. 63, adequate records. BUG-0311/T-174 records the gap.",
-   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576",
+   "evidence": "i1040sc p. 6. Line 9 and the Part V amounts are deducted in full. Nothing in the encoding reduces them for capitalized costs or asks whether the small business taxpayer or creative property exception applies. BUG-0311/T-174 records the gap.",
+   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6",
    "bug": "BUG-0311"
   },
-  "unruled:scveh#5": {
+  "unruled:scveh#4": {
    "class": "presentation",
-   "evidence": "i1040sc p. 15. Commuting miles for a converted vehicle are a Part IV entry; a 2025 conversion of an owned vehicle on actual expenses is refused by the screen.",
-   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576"
+   "evidence": "i1040sc p. 15. Commuting miles for a converted vehicle are a Part IV entry; no computed amount on a screened return depends on the period.",
+   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6"
   },
   "unruled:scveh#12": {
    "class": "presentation",
-   "evidence": "i1040sc p. 7; i4562 p. 16. The attachment and Part V Section B entries are filing information; no computed amount depends on them.",
-   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576"
+   "evidence": "i4562 p. 7. The election statement is filing information; the choice itself is asked.",
+   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6"
+  },
+  "unruled:scveh#13": {
+   "class": "presentation",
+   "evidence": "i1040sc p. 7; i4562 pp. 14, 16. Part IV and Part V routing and the attachment are filing information.",
+   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6"
   }
  },
  "baseline": {

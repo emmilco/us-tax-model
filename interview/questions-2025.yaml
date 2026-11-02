@@ -1718,6 +1718,9 @@ bank:
   - input: scveh.lease
     order: 12
     help: Money is integer cents.
+  - input: scveh.lease_smr_before
+    order: 12
+    help: Answer true or false.
   - input: scveh.placed
     order: 12
     help: One of the values of placed_year.

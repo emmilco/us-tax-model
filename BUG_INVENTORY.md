@@ -4376,3 +4376,15 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Disposition:** T-174, with the F4 vehicle pass: extend the questions or add refusals; rerun the scveh reviews and this completeness review.
 - **Validation:** one completeness review with eight real-gap claims of twelve, each quote matched against the archive; no fixture or numerical evidence claimed.
 - **Tags:** source-definition-debt; existing-form-pass; explicitly-deferred
+
+## BUG-0312 — BUG-0310 is fixed: a lessee who used the standard mileage rate earlier is refused actual expenses
+
+- **Caught by:** BUG-0310, recorded open; this entry closes it because the inventory is append-only.
+- **Source:** i1040sc p. 6, "You can't use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle."
+- **Symptom:** as recorded in BUG-0310.
+- **Fix:** new input `scveh.lease_smr_before` and gate `scveh.lease_smr_bad`; the refusal is declared on `scveh.lease_business`, which only the leased actual-expense path of line 20a reads, so an owned vehicle or a lessee on the standard rate is not asked.
+- **Fix lines:** `scveh.lease_smr_before`, `scveh.lease_smr_bad`, `scveh.lease_business`
+- **Siblings checked:** `scveh.lease_business`, `scveh.lease_smr_bad`, `scveh.line20a`, `scveh.is_actual_leased`, `scveh.line9`, `scveh.line9_actual`, `scveh.smr_ok`, `scveh.smr_bad`, `scveh.screen`
+- **Regression predictions:** `stage14.veh.refuse_lease_smr_before` answers Yes and is refused at line 20a; `stage14.veh.leased_actual` answers No and keeps its amounts. Written from the source before the evaluator was run.
+- **Validation:** scveh reviews rerun under both families.
+- **Tags:** eligibility; amount-affecting; fixed

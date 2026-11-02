@@ -1,6 +1,6 @@
 # Evidence coverage per line
 
-**Scoreboard.** Share of computed lines with at least one outside-family assertion: 554 of 1923 (28.8%). H (human source reading): 0, B (human worked values): 0, second-family M: 435, E: 220.
+**Scoreboard.** Share of computed lines with at least one outside-family assertion: 554 of 1924 (28.8%). H (human source reading): 0, B (human worked values): 0, second-family M: 435, E: 220.
 
 A computed line is one whose atom is not `input`, `param` or `copy`. An outside-family assertion is a signed human source reading (H), a class B fixture (human worked values), a class M fixture whose recorded model is not a Claude model (second-family M), or an engine assertion (E) under the rule below. The sub-counts overlap: a line with several kinds counts once in the share. H checks the encoded rule against IRS text; B and M check worked values. Second-family transcription and render readings are reported separately in second_family.md and do not yet enter this scoreboard. Class A, Claude-family M, C and R do not move it.
 
@@ -2827,143 +2827,145 @@ Unasserted lines: sc.one, sc.zero, sc.ho_rate, sc.ho_cap_sqft
 | scveh.miles_other | — | — | — | — | — | — | — |
 | scveh.cent | — | — | — | — | — | — | — |
 | scveh.bm_c | — | — | — | — | — | — | — |
-| scveh.cm_c | — | — | — | 6 | — | — | — |
+| scveh.cm_c | — | — | — | — | — | — | — |
 | scveh.om_c | — | — | — | — | — | — | — |
 | scveh.nonbusiness_c | — | — | — | — | — | — | — |
 | scveh.total_c | — | — | — | — | — | — | 1 (stage14.refuse.veh_no_miles) |
-| scveh.no_miles | — | — | — | 6 | — | — | — |
-| scveh.over_half | — | — | — | 6 | — | — | — |
+| scveh.no_miles | — | — | — | — | — | — | — |
+| scveh.over_half | — | — | — | — | — | — | — |
 | scveh.parking | — | — | — | — | — | — | — |
 | scveh.smr_ok | — | — | — | — | — | — | — |
-| scveh.smr_bad | — | — | — | 6 | — | — | — |
+| scveh.smr_bad | — | — | — | — | — | — | — |
 | scveh.rate | — | — | — | — | — | — | — |
-| scveh.smr_amount | — | — | — | 6 | — | — | 1 (stage14.veh.refuse_smr) |
-| scveh.line9_standard | — | — | — | 6 | — | — | — |
+| scveh.smr_amount | — | — | — | — | — | — | 1 (stage14.veh.refuse_smr) |
+| scveh.line9_standard | — | — | — | — | — | — | — |
 | scveh.operating | — | — | — | — | — | — | — |
-| scveh.operating_business | — | — | — | 6 | — | — | — |
-| scveh.line9_actual | — | — | — | 6 | — | — | — |
-| scveh.line9 | — | — | — | 6 | — | — | 5 |
-| scveh.is_actual_owned | — | — | — | 6 | — | — | — |
-| scveh.is_actual_leased | — | — | — | 6 | — | — | — |
+| scveh.operating_business | — | — | — | — | — | — | — |
+| scveh.line9_actual | — | — | — | — | — | — | — |
+| scveh.line9 | — | — | — | 5 | — | — | 5 |
+| scveh.is_actual_owned | — | — | — | — | — | — | — |
+| scveh.is_actual_leased | — | — | — | — | — | — | — |
 | scveh.lease | — | — | — | — | — | — | — |
-| scveh.lease_business | — | — | — | 5 | — | — | — |
-| scveh.line20a | — | — | — | 6 | — | — | — |
-| scveh.low_use | — | — | — | 6 | — | — | — |
+| scveh.lease_smr_before | — | — | — | — | — | — | — |
+| scveh.lease_smr_bad | — | — | — | — | — | — | — |
+| scveh.lease_business | — | — | — | — | — | — | — |
+| scveh.line20a | — | — | — | 5 | — | — | 1 (stage14.veh.refuse_lease_smr_before) |
+| scveh.low_use | — | — | — | — | — | — | — |
 | scveh.placed | — | — | — | — | — | — | 2 (stage14.veh.refuse_low_use, stage14.veh.refuse_half_use) |
 | scveh.screen | — | — | — | — | — | — | — |
-| scveh.screened | — | — | — | 6 | — | — | — |
+| scveh.screened | — | — | — | — | — | — | — |
 | scveh.cost | — | — | — | — | — | — | 3 |
 | scveh.passenger | — | — | — | — | — | — | — |
 | scveh.suv | — | — | — | — | — | — | — |
-| scveh.year | — | — | — | 6 | — | — | — |
-| scveh.is2025 | — | — | — | 6 | — | — | — |
-| scveh.is2019 | — | — | — | 6 | — | — | — |
+| scveh.year | — | — | — | — | — | — | — |
+| scveh.is2025 | — | — | — | — | — | — | — |
+| scveh.is2019 | — | — | — | — | — | — | — |
 | scveh.y5 | — | — | — | — | — | — | — |
 | scveh.bus_cost | — | — | — | 4 | — | — | — |
 | scveh.s179_elect | — | — | — | — | — | — | — |
 | scveh.suv_cap | — | — | — | — | — | — | — |
-| scveh.s179_bad | — | — | — | 6 | — | — | — |
+| scveh.s179_bad | — | — | — | — | — | — | — |
 | scveh.after_jan19 | — | — | — | — | — | — | — |
 | scveh.bonus_choice | — | — | — | — | — | — | — |
 | scveh.bonus_same | — | — | — | — | — | — | — |
-| scveh.bonus_mixed | — | — | — | 6 | — | — | — |
-| scveh.claims_bonus | — | — | — | 6 | — | — | — |
+| scveh.bonus_mixed | — | — | — | — | — | — | — |
+| scveh.claims_bonus | — | — | — | — | — | — | — |
 | scveh.rate40 | — | — | — | — | — | — | — |
-| scveh.lim_first_bonus | — | — | — | 3 | — | — | — |
-| scveh.lim_first_none | — | — | — | 3 | — | — | — |
-| scveh.lim_2025 | — | — | — | 3 | — | — | — |
-| scveh.lim_prior | — | — | — | 6 | — | — | — |
-| scveh.line7 | — | — | — | 6 | — | — | 3 |
-| scveh.line9w | — | — | — | 6 | — | — | 3 |
-| scveh.s179_2025_ok | — | — | — | 6 | — | — | 2 (stage14.veh.refuse_suv_cap, stage14.veh.refuse_suv_cap_by_1) |
-| scveh.line10 | — | — | — | 6 | — | — | 1 (stage14.veh.2025_179_limit) |
-| scveh.line10_2025 | — | — | — | 6 | — | — | — |
-| scveh.s179_line10 | — | — | — | 6 | — | — | — |
-| scveh.line11 | — | — | — | 6 | — | — | 1 (stage14.veh.2025_179_limit) |
+| scveh.lim_first_bonus | — | — | — | — | — | — | — |
+| scveh.lim_first_none | — | — | — | — | — | — | — |
+| scveh.lim_2025 | — | — | — | — | — | — | — |
+| scveh.lim_prior | — | — | — | — | — | — | — |
+| scveh.line7 | — | — | — | 3 | — | — | 3 |
+| scveh.line9w | — | — | — | 3 | — | — | 3 |
+| scveh.s179_2025_ok | — | — | — | — | — | — | 2 (stage14.veh.refuse_suv_cap, stage14.veh.refuse_suv_cap_by_1) |
+| scveh.line10 | — | — | — | 5 | — | — | 1 (stage14.veh.2025_179_limit) |
+| scveh.line10_2025 | — | — | — | — | — | — | — |
+| scveh.s179_line10 | — | — | — | — | — | — | — |
+| scveh.line11 | — | — | — | 3 | — | — | 1 (stage14.veh.2025_179_limit) |
 | scveh.prior_179 | — | — | — | — | — | — | — |
-| scveh.line14 | — | — | — | 6 | — | — | — |
+| scveh.line14 | — | — | — | 5 | — | — | — |
 | scveh.line15 | — | — | — | 4 | — | — | 1 (stage14.veh.2024_prior179) |
-| scveh.bonus_full | — | — | — | 4 | — | — | 1 (stage14.veh.refuse_bonus_mixed) |
-| scveh.bonus_forty | — | — | — | 5 | — | — | 1 (stage14.veh.refuse_bonus_mixed_forty) |
-| scveh.bonus_fullcase | — | — | — | 4 | — | — | — |
-| scveh.bonus_2025 | — | — | — | 6 | — | — | — |
-| scveh.line16 | — | — | — | 6 | — | — | 2 (stage14.veh.suv_179, stage14.veh.2025_forty) |
-| scveh.bonus_allowed | — | — | — | 6 | — | — | 2 (stage14.veh.2025_bonus, stage14.veh.2025_forty) |
-| scveh.line17 | — | — | — | 6 | — | — | 1 (stage14.veh.2025_forty) |
+| scveh.bonus_full | — | — | — | — | — | — | 1 (stage14.veh.refuse_bonus_mixed) |
+| scveh.bonus_forty | — | — | — | — | — | — | 1 (stage14.veh.refuse_bonus_mixed_forty) |
+| scveh.bonus_fullcase | — | — | — | — | — | — | — |
+| scveh.bonus_2025 | — | — | — | — | — | — | — |
+| scveh.line16 | — | — | — | 5 | — | — | 2 (stage14.veh.suv_179, stage14.veh.2025_forty) |
+| scveh.bonus_allowed | — | — | — | 5 | — | — | 2 (stage14.veh.2025_bonus, stage14.veh.2025_forty) |
+| scveh.line17 | — | — | — | 3 | — | — | 1 (stage14.veh.2025_forty) |
 | scveh.line18 | — | — | — | 4 | — | — | — |
 | scveh.quarter | — | — | — | — | — | — | — |
-| scveh.qconv | — | — | — | 6 | — | — | — |
+| scveh.qconv | — | — | — | — | — | — | — |
 | scveh.hy | — | — | — | — | — | — | — |
 | scveh.prior_conv | — | — | — | — | — | — | — |
-| scveh.rate_hy | — | — | — | 3 | — | — | — |
-| scveh.rate_mq | — | — | — | 3 | — | — | — |
-| scveh.rate_prior | — | — | — | 5 | — | — | — |
-| scveh.line19_hy | — | — | — | 4 | — | — | — |
-| scveh.line19_mq | — | — | — | 4 | — | — | — |
-| scveh.line19_prior | — | — | — | 5 | — | — | — |
-| scveh.line19 | — | — | — | 6 | — | — | 5 |
-| scveh.line19_earlier | — | — | — | 6 | — | — | — |
-| scveh.line19_2025 | — | — | — | 4 | — | — | — |
-| scveh.line20 | — | — | — | 6 | — | — | 8 |
-| scveh.b100 | — | — | — | 6 | — | — | — |
+| scveh.rate_hy | — | — | — | — | — | — | — |
+| scveh.rate_mq | — | — | — | — | — | — | — |
+| scveh.rate_prior | — | — | — | — | — | — | — |
+| scveh.line19_hy | — | — | — | — | — | — | — |
+| scveh.line19_mq | — | — | — | — | — | — | — |
+| scveh.line19_prior | — | — | — | — | — | — | — |
+| scveh.line19 | — | — | — | 5 | — | — | 5 |
+| scveh.line19_earlier | — | — | — | — | — | — | — |
+| scveh.line19_2025 | — | — | — | — | — | — | — |
+| scveh.line20 | — | — | — | 5 | — | — | 8 |
+| scveh.b100 | — | — | — | — | — | — | — |
 | scveh.k1 | — | — | — | — | — | — | — |
-| scveh.r1 | — | — | — | 6 | — | — | — |
-| scveh.t1 | — | — | — | 6 | — | — | — |
-| scveh.l1 | — | — | — | 5 | — | — | — |
-| scveh.t1s | — | — | — | 6 | — | — | — |
-| scveh.d1 | — | — | — | 4 | — | — | 1 (stage14.veh.2019_cheap_mq3) |
+| scveh.r1 | — | — | — | — | — | — | — |
+| scveh.t1 | — | — | — | — | — | — | — |
+| scveh.l1 | — | — | — | — | — | — | — |
+| scveh.t1s | — | — | — | — | — | — | — |
+| scveh.d1 | — | — | — | — | — | — | 1 (stage14.veh.2019_cheap_mq3) |
 | scveh.k2 | — | — | — | — | — | — | — |
-| scveh.r2 | — | — | — | 6 | — | — | — |
-| scveh.t2 | — | — | — | 6 | — | — | — |
-| scveh.l2 | — | — | — | 6 | — | — | — |
-| scveh.d2 | — | — | — | 6 | — | — | — |
+| scveh.r2 | — | — | — | — | — | — | — |
+| scveh.t2 | — | — | — | — | — | — | — |
+| scveh.l2 | — | — | — | — | — | — | — |
+| scveh.d2 | — | — | — | — | — | — | — |
 | scveh.k3 | — | — | — | — | — | — | — |
-| scveh.r3 | — | — | — | 6 | — | — | — |
-| scveh.t3 | — | — | — | 6 | — | — | — |
-| scveh.l3 | — | — | — | 5 | — | — | — |
-| scveh.d3 | — | — | — | 5 | — | — | — |
+| scveh.r3 | — | — | — | — | — | — | — |
+| scveh.t3 | — | — | — | — | — | — | — |
+| scveh.l3 | — | — | — | — | — | — | — |
+| scveh.d3 | — | — | — | — | — | — | — |
 | scveh.k4 | — | — | — | — | — | — | — |
-| scveh.r4 | — | — | — | 6 | — | — | — |
-| scveh.t4 | — | — | — | 6 | — | — | — |
-| scveh.l4 | — | — | — | 5 | — | — | — |
-| scveh.d4 | — | — | — | 5 | — | — | — |
+| scveh.r4 | — | — | — | — | — | — | — |
+| scveh.t4 | — | — | — | — | — | — | — |
+| scveh.l4 | — | — | — | — | — | — | — |
+| scveh.d4 | — | — | — | — | — | — | — |
 | scveh.k5 | — | — | — | — | — | — | — |
-| scveh.r5 | — | — | — | 6 | — | — | — |
-| scveh.t5 | — | — | — | 6 | — | — | — |
-| scveh.l5 | — | — | — | 5 | — | — | — |
-| scveh.d5 | — | — | — | 5 | — | — | — |
+| scveh.r5 | — | — | — | — | — | — | — |
+| scveh.t5 | — | — | — | — | — | — | — |
+| scveh.l5 | — | — | — | — | — | — | — |
+| scveh.d5 | — | — | — | — | — | — | — |
 | scveh.k6 | — | — | — | — | — | — | — |
-| scveh.r6 | — | — | — | 6 | — | — | — |
-| scveh.t6 | — | — | — | 6 | — | — | — |
-| scveh.l6 | — | — | — | 5 | — | — | — |
-| scveh.d6 | — | — | — | 5 | — | — | — |
-| scveh.d_total | — | — | — | 4 | — | — | 3 |
-| scveh.unrecovered | — | — | — | 4 | — | — | 3 |
-| scveh.post_amount | — | — | — | 4 | — | — | — |
-| scveh.post | — | — | — | 4 | — | — | 3 |
-| scveh.too_old | — | — | — | 6 | — | — | — |
-| scveh.bonus_v | — | — | — | 6 | — | — | — |
-| scveh.macrs_pass | — | — | — | 6 | — | — | — |
-| scveh.macrs_heavy | — | — | — | 6 | — | — | — |
-| scveh.macrs_v | — | — | — | 6 | — | — | 2 (stage14.veh.heavy_prior, stage14.veh.heavy_2019) |
-| scveh.bonus | — | — | — | 6 | — | — | — |
-| scveh.macrs | — | — | — | 6 | — | — | — |
-| scveh.s179_2025 | — | — | — | 6 | — | — | — |
-| scveh.mq_q4 | — | — | — | 6 | — | — | — |
-| scveh.mq_total | — | — | — | 6 | — | — | — |
-| scveh.cost179 | — | — | — | 6 | — | — | — |
-| scveh.bonus_o | — | — | — | 6 | — | — | — |
-| scveh.macrs_o | — | — | — | 5 | — | — | — |
-| scveh.s179_2025_o | — | — | — | 6 | — | — | — |
-| scveh.q4_basis | — | — | — | 5 | — | — | — |
-| scveh.mq_q4_o | — | — | — | 6 | — | — | — |
-| scveh.mq_q4_a2 | — | — | — | 6 | — | — | — |
-| scveh.mq_total_o | — | — | — | 6 | — | — | — |
-| scveh.mq_total_a2 | — | — | — | 3 | — | — | — |
-| scveh.cost179_o | — | — | — | 6 | — | — | — |
-| scveh.cost179_a2 | — | — | — | 2 (classm.scveh.2, classm.scveh.5) | — | — | — |
+| scveh.r6 | — | — | — | — | — | — | — |
+| scveh.t6 | — | — | — | — | — | — | — |
+| scveh.l6 | — | — | — | — | — | — | — |
+| scveh.d6 | — | — | — | — | — | — | — |
+| scveh.d_total | — | — | — | — | — | — | 3 |
+| scveh.unrecovered | — | — | — | — | — | — | 3 |
+| scveh.post_amount | — | — | — | — | — | — | — |
+| scveh.post | — | — | — | — | — | — | 3 |
+| scveh.too_old | — | — | — | — | — | — | — |
+| scveh.bonus_v | — | — | — | — | — | — | — |
+| scveh.macrs_pass | — | — | — | — | — | — | — |
+| scveh.macrs_heavy | — | — | — | — | — | — | — |
+| scveh.macrs_v | — | — | — | — | — | — | 2 (stage14.veh.heavy_prior, stage14.veh.heavy_2019) |
+| scveh.bonus | — | — | — | — | — | — | — |
+| scveh.macrs | — | — | — | — | — | — | — |
+| scveh.s179_2025 | — | — | — | — | — | — | — |
+| scveh.mq_q4 | — | — | — | — | — | — | — |
+| scveh.mq_total | — | — | — | — | — | — | — |
+| scveh.cost179 | — | — | — | — | — | — | — |
+| scveh.bonus_o | — | — | — | — | — | — | — |
+| scveh.macrs_o | — | — | — | — | — | — | — |
+| scveh.s179_2025_o | — | — | — | — | — | — | — |
+| scveh.q4_basis | — | — | — | — | — | — | — |
+| scveh.mq_q4_o | — | — | — | — | — | — | — |
+| scveh.mq_q4_a2 | — | — | — | — | — | — | — |
+| scveh.mq_total_o | — | — | — | — | — | — | — |
+| scveh.mq_total_a2 | — | — | — | — | — | — | — |
+| scveh.cost179_o | — | — | — | — | — | — | — |
+| scveh.cost179_a2 | — | — | — | — | — | — | — |
 
-Unasserted lines: scveh.zero, scveh.cent, scveh.bm_c, scveh.om_c, scveh.nonbusiness_c, scveh.rate, scveh.y5, scveh.suv_cap, scveh.rate40, scveh.hy, scveh.k1, scveh.k2, scveh.k3, scveh.k4, scveh.k5, scveh.k6
+Unasserted lines: scveh.zero, scveh.cent, scveh.bm_c, scveh.cm_c, scveh.om_c, scveh.nonbusiness_c, scveh.no_miles, scveh.over_half, scveh.smr_bad, scveh.rate, scveh.line9_standard, scveh.operating_business, scveh.line9_actual, scveh.is_actual_owned, scveh.is_actual_leased, scveh.lease_smr_bad, scveh.lease_business, scveh.low_use, scveh.screened, scveh.year, scveh.is2025, scveh.is2019, scveh.y5, scveh.suv_cap, scveh.s179_bad, scveh.bonus_mixed, scveh.claims_bonus, scveh.rate40, scveh.lim_first_bonus, scveh.lim_first_none, scveh.lim_2025, scveh.lim_prior, scveh.line10_2025, scveh.s179_line10, scveh.bonus_fullcase, scveh.bonus_2025, scveh.qconv, scveh.hy, scveh.rate_hy, scveh.rate_mq, scveh.rate_prior, scveh.line19_hy, scveh.line19_mq, scveh.line19_prior, scveh.line19_earlier, scveh.line19_2025, scveh.b100, scveh.k1, scveh.r1, scveh.t1, scveh.l1, scveh.t1s, scveh.k2, scveh.r2, scveh.t2, scveh.l2, scveh.d2, scveh.k3, scveh.r3, scveh.t3, scveh.l3, scveh.d3, scveh.k4, scveh.r4, scveh.t4, scveh.l4, scveh.d4, scveh.k5, scveh.r5, scveh.t5, scveh.l5, scveh.d5, scveh.k6, scveh.r6, scveh.t6, scveh.l6, scveh.d6, scveh.post_amount, scveh.too_old, scveh.bonus_v, scveh.macrs_pass, scveh.macrs_heavy, scveh.bonus, scveh.macrs, scveh.s179_2025, scveh.mq_q4, scveh.mq_total, scveh.cost179, scveh.bonus_o, scveh.macrs_o, scveh.s179_2025_o, scveh.q4_basis, scveh.mq_q4_o, scveh.mq_q4_a2, scveh.mq_total_o, scveh.mq_total_a2, scveh.cost179_o, scveh.cost179_a2
 
 ## Schedule D — securities sales and supplied distribution subtotals
 
@@ -3402,5 +3404,5 @@ Unasserted lines: below_boundary, table_tax, worksheet_tax, tax
 
 Unasserted lines: single.row1.product, single.row1.tax, single.row2.product, single.row2.tax, single.row3.product, single.row3.tax, single.row4.product, single.row4.tax, single.row5.product, single.row5.tax, single.result, mfj.row1.product, mfj.row1.tax, mfj.row2.product, mfj.row2.tax, mfj.row3.product, mfj.row3.tax, mfj.row4.product, mfj.row4.tax, mfj.row5.product, mfj.row5.tax, mfj.result, mfs.row1.product, mfs.row1.tax, mfs.row2.product, mfs.row2.tax, mfs.row3.product, mfs.row3.tax, mfs.row4.product, mfs.row4.tax, mfs.row5.product, mfs.row5.tax, mfs.result, hoh.row1.product, hoh.row1.tax, hoh.row2.product, hoh.row2.tax, hoh.row3.product, hoh.row3.tax, hoh.row4.product, hoh.row4.tax, hoh.row5.product, hoh.row5.tax, hoh.result, tax
 
-Unasserted computed lines across all documents: 1040. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
+Unasserted computed lines across all documents: 1122. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
 Asserted keys not matching a line id: dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line27, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line29, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28_zero, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line30, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line27, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line29, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28_zero, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line30, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line3, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.positive, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4a, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.owes, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4c, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line5b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line6, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line7, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line8d, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line9, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line10, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line11, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line12, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line13, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax

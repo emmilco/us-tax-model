@@ -271,7 +271,7 @@ function putBusinesses(data: CanonicalData, inputs: Inputs, P: string, list: Bus
       const s179 = method === "actual" && v.owned && v.year === YEAR ? Math.min(v.s179, v.cost) : 0;
       Object.assign(inputs, {
         [`${V}.method`]: method, [`${V}.owned`]: v.owned, [`${V}.placed_date`]: v.year, [`${V}.miles_business`]: v.business,
-        [`${V}.miles_commuting`]: v.commuting, [`${V}.miles_other`]: v.other, [`${V}.parking`]: v.parking, [`${V}.smr_ok`]: true,
+        [`${V}.miles_commuting`]: v.commuting, [`${V}.miles_other`]: v.other, [`${V}.parking`]: v.parking, [`${V}.smr_ok`]: true, [`${V}.lease_smr_before`]: false,
         [`${V}.operating`]: v.operating, [`${V}.lease`]: v.lease, [`${V}.placed`]: `y${v.year}`, [`${V}.screen`]: false,
         [`${V}.cost`]: v.cost, [`${V}.passenger`]: v.passenger, [`${V}.suv`]: false, [`${V}.s179_elect`]: s179,
         [`${V}.after_jan19`]: v.afterJan19, [`${V}.bonus_choice`]: v.year === YEAR ? v.bonus : "none", [`${V}.bonus_same`]: true,

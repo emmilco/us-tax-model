@@ -17,6 +17,13 @@
   {
    "printed": "(b)",
    "restated": "Input — The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in service earlier is outside this tool)",
+   "model": "Column (b) says 'Enter the date the property was placed in service', but the restatement collects only a year. The year is enough for the table lookups, and the low-use refusal correctly follows the line 26/27 split, but the printed entry would be incomplete.",
+   "ruling": "Ruling: representation; restatement accepted. The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; the filer writes the full date on the form from their own records. No value depends on the month or day except through the quarter, asked separately.",
+   "context": "dab3066b16d4084ca2512d449da54deb70776213099a37d2fea75dcf4b3aa167"
+  },
+  {
+   "printed": "(b)",
+   "restated": "Input — The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in service earlier is outside this tool)",
    "model": "Column (b) says 'Enter the date the property was placed in service', but the restatement collects only the year. The 2019 to 2025 limit and the refusal for 50% or less business use (line 27) are acceptable narrowings.",
    "ruling": "Ruling: representation; restatement accepted. As line 43: the year chooses the recovery year and the limits, the quarter (asked separately) the mid-quarter table; the filer enters the full date on Form 4562 column (b).",
    "context": "74feabfb1dacf4424dabc87e1372010af3201f9377ef188894855f3b360ab349"
@@ -98,6 +105,13 @@
   {
    "printed": "19",
    "restated": "Choose — [helper \"Placed in service in 2025\" = true → helper \"Line 19 for a 2025 vehicle, half-year or mid-quarter\"] [helper \"Placed in service in 2025\" = false → helper \"Line 19 for a vehicle placed in service before 2025 (zero after the recovery period, when the worksheet is not used)\"]",
+   "model": "Line 18 x the table rate matches 'Multiply line 18 by line 6' within the recovery period, with the half-year and mid-quarter choice following the 40% test. A 2019 vehicle gets zero and is not refused, whereas the text says 'If the recovery period for an automobile ended before your tax year beginning in 2025, enter your unrecovered basis, if any, in column (h)', subject to the annual limit.",
+   "ruling": "Ruling: representation; restatement accepted. The worksheet is not used after the recovery period; a 2019 vehicle's deduction is its unrecovered basis (scveh.post, read by scveh.macrs_pass for column (h); p946 p. 61), as stage14.veh.2019_cheap_mq3 asserts (BUG-0059).",
+   "context": "dab3066b16d4084ca2512d449da54deb70776213099a37d2fea75dcf4b3aa167"
+  },
+  {
+   "printed": "19",
+   "restated": "Choose — [helper \"Placed in service in 2025\" = true → helper \"Line 19 for a 2025 vehicle, half-year or mid-quarter\"] [helper \"Placed in service in 2025\" = false → helper \"Line 19 for a vehicle placed in service before 2025 (zero after the recovery period, when the worksheet is not used)\"]",
    "model": "The 2025 half-year and mid-quarter branches match \"Multiply line 18 by line 6\". But a 2019 vehicle (not refused) gets zero, and the instructions say \"If the recovery period for an automobile ended before your tax year beginning in 2025, enter your unrecovered basis, if any, in column (h)\", subject to the yearly limit (Pub. 946, Deductions After the Recovery Period). No refusal names this case.",
    "ruling": "Ruling: representation; restatement accepted. Line 19 is a line of the automobile worksheet, which is not used after the recovery period; a 2019 vehicle's deduction is its unrecovered basis, limited and prorated (scveh.post, read by scveh.macrs_pass for column (h); Pub. 946 p. 61, Deductions After the Recovery Period), as stage14.veh.2019_cheap_mq3 asserts (BUG-0059)."
   },
@@ -107,6 +121,13 @@
    "model": "The in-recovery branches agree with 'Multiply line 18 by line 6' and the half-year and mid-quarter tables, but a 2019 vehicle gets zero with no other computation shown. The instructions say, 'If the recovery period for an automobile ended before your tax year beginning in 2025, enter your unrecovered basis, if any, in column (h)', subject to the annual limit.",
    "ruling": "Ruling: representation; restatement accepted. Lines 19 and 20 belong to the automobile worksheet, which is not used after the recovery period; a 2019 vehicle's deduction is its unrecovered basis, limited and prorated (scveh.post, read by scveh.macrs_pass for column (h); p946 p. 61, Deductions After the Recovery Period), as stage14.veh.2019_cheap_mq3 asserts (BUG-0059).",
    "context": "c5d32ef54a7054781c0615a3d7747434f2008210f01c2e5c0d5c5fb828d7b47d"
+  },
+  {
+   "printed": "20",
+   "restated": "Enter the smaller of line 17 or line 19.",
+   "model": "'Enter the lesser of line 17 or line 19' is followed arithmetically, but line 17 carries the passenger limit to vehicles not subject to it, whose deduction is wrongly capped. A 2019 vehicle also ends at zero despite the text's 'enter your unrecovered basis, if any, in column (h)'.",
+   "ruling": "Ruling: representation; restatement accepted. The worksheet is not used after the recovery period; a 2019 vehicle's deduction is its unrecovered basis (scveh.post, read by scveh.macrs_pass for column (h); p946 p. 61), as stage14.veh.2019_cheap_mq3 asserts (BUG-0059). representation; restatement accepted. The worksheet lines are figured for every vehicle but read only for a passenger automobile (scveh.bonus_v, scveh.macrs_pass). Checked by evaluation on stage14.veh.suv_179 with passenger answered both ways: the allowance is $20,200 and $70,000.",
+   "context": "dab3066b16d4084ca2512d449da54deb70776213099a37d2fea75dcf4b3aa167"
   },
   {
    "printed": "20",
@@ -156,6 +177,13 @@
   {
    "printed": "20a",
    "restated": "Choose — [helper \"Leased and on actual expenses\" = true → helper \"The business portion of the lease payments\"] [helper \"Leased and on actual expenses\" = false → helper \"Zero\"]",
+   "model": "The restatement enters the business portion of lease payments with no adjustment or refusal, but the text adds 'if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount.' The omission can change the amount. Pub. 946 instead reports the inclusion as other income, but neither treatment is computed or refused here.",
+   "ruling": "Ruling: refusal located elsewhere; restatement accepted. sc.special refuses \"an inclusion amount for leased property\" for the business, read for every Schedule C, so the business portion of the lease payments is the line 20a amount on a computed return.",
+   "context": "dab3066b16d4084ca2512d449da54deb70776213099a37d2fea75dcf4b3aa167"
+  },
+  {
+   "printed": "20a",
+   "restated": "Choose — [helper \"Leased and on actual expenses\" = true → helper \"The business portion of the lease payments\"] [helper \"Leased and on actual expenses\" = false → helper \"Zero\"]",
    "model": "The restatement enters the business portion of the lease payments but never applies the inclusion amount. The instructions say \"if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount.\" No refusal covers this case.",
    "ruling": "Ruling: refusal located elsewhere; restatement accepted. An inclusion amount for leased property is refused for the business through sc.special ('an inclusion amount for leased property'), so the business portion of the lease payments is the line 20a amount for every vehicle that reaches it."
   },
@@ -184,6 +212,13 @@
    "model": "Capping at line 11 is right for a passenger automobile, but the restatement also caps vehicles outside the limits, because line 11 derives from the ungated line 7. The text says 'This special depreciation allowance is included in the overall limit on depreciation and section 179 expense deduction for passenger automobiles', and the limits apply to vehicles 'rated at 6,000 pounds unloaded gross vehicle weight or less'.",
    "ruling": "Ruling: representation; project retained. The automobile worksheet lines are figured for every vehicle but read only for a passenger automobile: the vehicle's special allowance (scveh.bonus_v) takes line 25 only when scveh.passenger is true and line 16 otherwise, and column (h) takes line 20 only through scveh.macrs_pass, the passenger-automobile route. A vehicle that is not a passenger automobile is not limited.",
    "context": "74feabfb1dacf4424dabc87e1372010af3201f9377ef188894855f3b360ab349"
+  },
+  {
+   "printed": "25",
+   "restated": "Enter the smaller of line 16 or line 11.",
+   "model": "Capping at line 11 is right for passenger automobiles, since the allowance 'is included in the overall limit' for them. The program applies the cap to all vehicles, so a vehicle answered as not subject to the limits has its allowance reduced by a limit that applies only to 'passenger automobiles'.",
+   "ruling": "Ruling: representation; restatement accepted. The worksheet lines are figured for every vehicle but read only for a passenger automobile (scveh.bonus_v, scveh.macrs_pass). Checked by evaluation on stage14.veh.suv_179 with passenger answered both ways: the allowance is $20,200 and $70,000.",
+   "context": "dab3066b16d4084ca2512d449da54deb70776213099a37d2fea75dcf4b3aa167"
   },
   {
    "printed": "25",
@@ -225,6 +260,13 @@
   {
    "printed": "43",
    "restated": "Input — The year you first placed this vehicle in service for business purposes (for example 2023)",
+   "model": "The form asks for a full date, 'When did you place your vehicle in service for business purposes? (month/day/year)', but the restatement collects only the year. No computation is affected, but the printed entry would be incomplete.",
+   "ruling": "Ruling: representation; restatement accepted. The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; the filer writes the full date on the form from their own records. No value depends on the month or day except through the quarter, asked separately.",
+   "context": "dab3066b16d4084ca2512d449da54deb70776213099a37d2fea75dcf4b3aa167"
+  },
+  {
+   "printed": "43",
+   "restated": "Input — The year you first placed this vehicle in service for business purposes (for example 2023)",
    "model": "The form asks for a full date: 'When did you place your vehicle in service for business purposes? (month/day/year)'. The restatement collects only the year, so it cannot supply the entry the line asks for.",
    "ruling": "Ruling: representation; restatement accepted. The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; the filer writes the full date on Schedule C line 43 and Form 4562 from their own records. No value depends on the month or day except through the quarter, which is asked separately.",
    "context": "74feabfb1dacf4424dabc87e1372010af3201f9377ef188894855f3b360ab349"
@@ -253,6 +295,13 @@
    "restated": "Choose — [helper \"Placed in service in 2025\" = true → helper \"Limit for a 2025 vehicle\"] [helper \"Placed in service in 2025\" = false → helper \"Limit for the vehicle's 2025 year of recovery\"]",
    "model": "The passenger automobile table limit ($20,200 or $12,200 for 2025, and later-year amounts) is applied to every vehicle. The text says the limits apply only to passenger automobiles \"rated at 6,000 pounds unloaded gross vehicle weight or less,\" yet the program applies them even when its own passenger question is No. Those vehicles then get limited special allowance and MACRS amounts.",
    "ruling": "Ruling: representation; project retained. The automobile worksheet, line 7 included, is figured for every vehicle but read only for a passenger automobile: the vehicle's special allowance (scveh.bonus_v) takes the worksheet's limited figure only when scveh.passenger is true and line 16 otherwise, and column (h) takes the worksheet's line 20 only through scveh.macrs_pass, the passenger-automobile route. A vehicle that is not a passenger automobile is not limited."
+  },
+  {
+   "printed": "7",
+   "restated": "Choose — [helper \"Placed in service in 2025\" = true → helper \"Limit for a 2025 vehicle\"] [helper \"Placed in service in 2025\" = false → helper \"Limit for the vehicle's 2025 year of recovery\"]",
+   "model": "The restatement applies the limit to every vehicle with no passenger-automobile condition, although the limits apply to 'passenger automobiles' and the text lists vehicles 'not considered passenger automobiles' (also over 6,000 pounds). The amounts themselves follow the tables for passenger automobiles ($20,200 with the allowance, $12,200 without), but a non-passenger vehicle is wrongly carried through this limit.",
+   "ruling": "Ruling: representation; restatement accepted. The worksheet lines are figured for every vehicle but read only for a passenger automobile (scveh.bonus_v, scveh.macrs_pass). Checked by evaluation on stage14.veh.suv_179 with passenger answered both ways: the allowance is $20,200 and $70,000.",
+   "context": "dab3066b16d4084ca2512d449da54deb70776213099a37d2fea75dcf4b3aa167"
   },
   {
    "printed": "7",

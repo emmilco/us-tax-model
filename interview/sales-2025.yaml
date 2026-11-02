@@ -299,6 +299,7 @@ interview:
   - scveh.smr_ok
   - scveh.operating
   - scveh.lease
+  - scveh.lease_smr_before
   - scveh.placed
   - scveh.screen
   - scveh.cost

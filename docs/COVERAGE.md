@@ -14,13 +14,13 @@ Measured, below 0.5% of returns, and not in the table:
 - Foreign earned income exclusion (Form 2555): 0.3%
 - Alternative minimum tax: 0.1%
 
-Not named in the table: 144 of the 152 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
+Not named in the table: 145 of the 153 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
 
 The estimate puts coverage at 78.4% of returns (`reports/2025/filer_coverage.json`). It does not count the unmeasured situations, so the true figure is lower.
 
 ## Every refusal
 
-The data holds **190 refusal gates**: 152 tax situations the tool does not prepare, grouped by topic below, and 38 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
+The data holds **191 refusal gates**: 153 tax situations the tool does not prepare, grouped by topic below, and 38 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
 
 - [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (30)
 - [Household and dependents](#household-and-dependents) (12)
@@ -28,7 +28,7 @@ The data holds **190 refusal gates**: 152 tax situations the tool does not prepa
 - [Sales and capital gains](#sales-and-capital-gains) (5)
 - [Retirement distributions](#retirement-distributions) (7)
 - [Social Security](#social-security) (3)
-- [Self-employment](#self-employment) (24)
+- [Self-employment](#self-employment) (25)
 - [State and local tax refunds](#state-and-local-tax-refunds) (4)
 - [Other income and alimony](#other-income-and-alimony) (8)
 - [IRA contributions](#ira-contributions) (12)
@@ -573,6 +573,11 @@ The data holds **190 refusal gates**: 152 tax situations the tool does not prepa
   - *Not covered:* Section 179 deduction on a separate return (the spouses' property and the allocation of the dollar limitation). On a separate return the dollar limitation is shared with your spouse and figured with your spouse's property; that is outside this tool.
     *Source:* [i4562] p. 5, Line 5, "If you are married filing separately, you and your spouse must allocate the dollar limitation for the tax year"; p. 4, Line 2, "Any property placed in service by your spouse, even if you are filing a separate return"
   - *Refused at:* `s179.line5`
+- **`scveh.lease_smr_bad`**: Did you use the standard mileage rate in an earlier year for a leased vehicle on which you now deduct actual expenses?
+  - *The data asks or tests:* Actual expenses on a leased vehicle after the standard mileage rate (`test`)
+  - *Not covered:* Actual expenses on a leased vehicle after using the standard mileage rate for it in an earlier year. You can't use actual expenses for this leased vehicle; use the standard mileage rate for the rest of the lease.
+    *Source:* [i1040sc] p. 6, Line 9
+  - *Refused at:* `scveh.lease_business`
 
 *Self-employment tax, retirement plans and the QBI deduction*
 
