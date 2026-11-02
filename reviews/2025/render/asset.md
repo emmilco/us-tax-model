@@ -4,17 +4,17 @@ The rendered English of every printed line of `Form 4562 — one item of depreci
 
 | field | value |
 | --- | --- |
-| date | 2026-11-01 |
+| date | 2026-11-02 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 0d6acd42866d2ff044415426c352ba5f890cb99b812e2787a925380570b40a0a |
+| prompt sha256 | a68093ca3c6f6b3e431c81d51bf8877e253d972a5c369d9caa135de96b11bf7d |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
-| subject sha256 | 4d1235b5b9ff5f6cfc82c7026f6b53a277116a95b32c3330be03b0b244e9de48 |
+| subject sha256 | 8bde0b7ebdf9b1be027a1d6024ba04d896ec78485f583d4db0c5680a6fc7bcbf |
 | lines judged | 15 |
-| match / mismatch / unclear / missing | 14 / 1 / 0 / 0 |
+| match / mismatch / unclear / missing | 15 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -32,81 +32,77 @@ The rendered English of every printed line of `Form 4562 — one item of depreci
 ### (a) — Asset class of the property (Pub. 946, Appendix B)
 Status: **MATCH**
 
-Model: Follows Pub. 946 Appendix B: check Table B-1 and the activity in Table B-2, and use the Table B-2 class when the property is specifically listed under the activity. Classes A, B and C appear under 'Certain Property for Which Recovery Periods Assigned', and i4562 places qualified improvement property in 15-year property.
+Model: This follows Pub. 946 Appendix B: check Table B-1, then Table B-2, and use the Table B-2 class when the property is specifically listed under the activity. Property in neither table goes to 'Certain Property for Which Recovery Periods Assigned' (A, B, C), and the i4562 lists qualified improvement property as 15-year property.
 
 ### (d) — Recovery period under GDS for the asset class
 Status: **MATCH**
 
-Model: Looking up the GDS recovery period by asset class is what Pub. 946 Appendix B directs ('use the recovery period shown in the appropriate column'). The program's lookup table itself is not shown, so only the rule, not each entry, could be checked.
+Model: The GDS recovery period is read from the GDS (MACRS) column of Tables B-1/B-2 for the asset class, as Appendix B directs. i4562 line 19(d) gives the same periods by classification.
 
 ### (screen) (asset.screen) — Does any of these apply to this property?
 Status: **MATCH**
 
-Model: This gate narrows the tool to property under the MACRS percentage tables and sends excluded cases to a named refusal. Its exclusions track the text, including the Pub. 946 rule to stop using the tables after a basis adjustment such as a casualty loss, and the required ADS categories.
+Model: This is an input screen that narrows the tool to cases the text supports. Excluded property (dispositions, like-kind exchanges, real property, ADS, other methods, basis adjustments per Pub. 946 table rule 4, general asset accounts, reuse and recycling property, and so on) is refused, not miscomputed.
 
 ### (b) — Year placed in service
 Status: **MATCH**
 
-Model: The filer enters the year placed in service, which matches the i4562 placed-in-service entries and is what the recovery-year lookup needs. Years before 2005 are excluded by the screen.
+Model: The year placed in service is an input, consistent with i4562 column (b) and Pub. 946's rules for determining the year of recovery.
 
 ### (c) — Basis for depreciation (business/investment use only), before section 179 and the special
 Status: **MATCH**
 
-Model: Cost or other basis times the business-use percentage is the first step of i4562 line 19 column (c): 'multiply the cost or other basis of the property by the percentage of business/investment use.' Later subtractions are handled in helpers and line 19(c), and listed property used 50% or less is refused as outside the tool.
+Model: i4562 line 19(c) says 'multiply the cost or other basis of the property by the percentage of business/investment use'; this computes that product before the later subtractions. Listed property used 50% or less is refused, which matches the line 26/27 split.
 
 ### 6(c) — Section 179 elected cost
 Status: **MATCH**
 
-Model: i4562 line 6 column (c) says 'Enter the amount you elect to expense', and line 6 excludes listed property, as the reporting rule does. Elections above business cost or on property used 50% or less for business are refused, consistent with 'used predominantly (more than 50%)'.
+Model: Line 6 column (c): 'Enter the amount you elect to expense.' It is limited to non-listed 2025 property ('Do not include any listed property on line 6'), and the refusal enforces the 'used predominantly (more than 50%)' condition and the business-cost limit.
 
 ### (screen) (asset.bonus_same) — Is the choice the same for all property of this class placed in service in 2025?
 Status: **MATCH**
 
-Model: i4562 describes the election out as applying 'for all such property in such class placed in service during the tax year.' A choice that differs within a class is refused by name, which is a permitted narrowing.
+Model: The election out applies 'for any class of property ... for all such property in such class placed in service during the tax year'. Mixed elections within a class are refused.
 
 ### 14 — Special depreciation allowance for this property
 Status: **MATCH**
 
-Model: The allowance is 100% of basis after section 179 if acquired after January 19, 2025, 40% if acquired earlier or if the 40% election is made, and zero on election out, as i4562 line 14 provides. It is figured on depreciable basis after section 179, and long-production property, aircraft and qualified production property are screened out.
+Model: The allowance is basis after the section 179 deduction times 100% (acquired after Jan 19, 2025), 40% (acquired Sept 28, 2017–Jan 19, 2025, or the elected 40%), or zero if elected out. This matches 'multiplying the depreciable basis of the property by the applicable percentage', with depreciable basis reduced by the section 179 deduction.
 
 ### 25 — Special depreciation allowance for this listed property (line 25)
 Status: **MATCH**
 
-Model: i4562 line 25 refers to the line 14 instructions for how to figure the allowance and says to enter the special depreciation allowance for qualified listed property. This entry's line 14 amount is that figure, and listed property used 50% or less is refused.
+Model: Line 25 is the special allowance for qualified listed property figured as under line 14 ('See the instructions for line 14 for ... how to figure the deduction'). The line 14 computation is reused for listed property placed in service in 2025.
 
 ### 26(i) — Elected section 179 cost of this listed property (column (i))
 Status: **MATCH**
 
-Model: i4562 line 6 says 'Enter the elected section 179 cost of listed property in column (i) of line 26', and the restatement carries the elected amount there. Use of 50% or less is refused, consistent with the column (i) requirement of more than 50% use.
+Model: Line 6 instructions: 'Enter the elected section 179 cost of listed property in column (i) of line 26.' The same election input is reported here for listed property; the passenger automobile limits do not arise because vehicles are entered separately.
 
 ### 19(c) — Basis for depreciation (business/investment use only), column (c), after the section 179 d
 Status: **MATCH**
 
-Model: Business-use cost less section 179 less the line 14 allowance matches i4562 line 19 column (c), which lists 'Section 179 expense deduction' and 'Any special depreciation allowance included on line 14' as reductions. Other credit and basis adjustments are excluded by the screen.
+Model: Line 19(c) is business cost less the section 179 deduction and 'Any special depreciation allowance included on line 14', which is exactly the helper used.
 
 ### 19(g) — MACRS depreciation for 2025 property
 Status: **MATCH**
 
-Model: Column (c) times the applicable table rate matches 'Multiply column (c) by the applicable rate from the appropriate table.' The test 5 x fourth-quarter bases > 2 x total bases equals 'exceed 40%', and the bases are after section 179 and business-use reduction but before the special allowance, as Pub. 946 states.
+Model: Mid-quarter applies when fourth-quarter bases exceed 40% of the year's bases (5×Q4 > 2×total). The test uses bases after section 179 and before the special allowance, per Pub. 946's caution, and includes vehicle bases. The deduction is column (c) times the year-1 rate from the GDS percentage tables for the convention and quarter.
 
 ### (e) — Convention used in the year placed in service
 Status: **MATCH**
 
-Model: i4562 column (e) and Pub. 946 provide half-year and mid-quarter conventions for this property, with the mid-quarter rate depending on the quarter placed in service. Mid-month applies only to real property and railroad gradings and tunnel bores, which the screen and class lookup exclude.
+Model: The convention used in the year placed in service (half-year or mid-quarter with quarter) is an input, consistent with i4562 column (e) and Pub. 946's rule to keep using the same tables for the whole recovery period.
 
 ### 17 — MACRS deduction for 2025 on property placed in service before 2025
 Status: **MATCH**
 
-Model: Line 17 follows the line 19 column (g) method, and Pub. 946 applies table rates to unadjusted basis reduced by section 179 and any special allowance, as the restatement does. The result is zero once the recovery period has ended, since the table has no further rate; the listed-property routing gap noted at 26(h) is the only exception.
+Model: For MACRS property placed in service before 2025, the deduction is unadjusted basis (business cost less prior section 179 and prior special allowance, per Pub. 946 'Figuring the Unadjusted Basis') times the table rate for the 2025 year of recovery and the original convention. It is zero after the recovery period ends.
 
 ### 26(h) — Depreciation of this listed property (column (h))
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: Add helper "MACRS on 2025 property" and helper "MACRS on property placed in service before 2025".
-
-Model: The computation matches column (h), but the gate that reports this line asks only about 'a computer placed in service before 2018', while i4562 column (a) lists 'computers and peripheral equipment placed in service before 2018'. A pre-2018 peripheral not used exclusively at a regular business establishment would be treated as non-listed, so it would miss line 26(h) and go to line 17.
-
-Ruling: deferred to T-030 (owner); values unaffected. The sum is figured for every asset; line 26 column (h) adds it only for listed property (sc.f26_assets, where listed). Entry lines are not printed on the values sheet (TASKS.md T-030), and the Form 4562 totals take the asset's amounts only where they belong (the sc sums select 2025 property, earlier property and listed property: sc.f14, sc.f17, sc.f19_*, sc.f25, sc.f26h). The owner chose that, when entry lines are printed, each per-asset printed line will carry the form's value for that asset (T-030).
+Model: For listed property used more than 50%, 'figure column (h) by following the instructions for line 19, column (g)'. That is the line 19(g) computation for 2025 property or the line 17 computation for earlier property. Pub. 946 allows no deduction after the recovery period for listed property other than passenger automobiles.
 
 ## Raw response
 
@@ -115,48 +111,48 @@ Ruling: deferred to T-030 (owner); values unaffected. The sum is figured for eve
 lines:
   - key: "(a)"
     status: MATCH
-    reason: "Follows Pub. 946 Appendix B: check Table B-1 and the activity in Table B-2, and use the Table B-2 class when the property is specifically listed under the activity. Classes A, B and C appear under 'Certain Property for Which Recovery Periods Assigned', and i4562 places qualified improvement property in 15-year property."
+    reason: "This follows Pub. 946 Appendix B: check Table B-1, then Table B-2, and use the Table B-2 class when the property is specifically listed under the activity. Property in neither table goes to 'Certain Property for Which Recovery Periods Assigned' (A, B, C), and the i4562 lists qualified improvement property as 15-year property."
   - key: "(d)"
     status: MATCH
-    reason: "Looking up the GDS recovery period by asset class is what Pub. 946 Appendix B directs ('use the recovery period shown in the appropriate column'). The program's lookup table itself is not shown, so only the rule, not each entry, could be checked."
+    reason: "The GDS recovery period is read from the GDS (MACRS) column of Tables B-1/B-2 for the asset class, as Appendix B directs. i4562 line 19(d) gives the same periods by classification."
   - key: "(screen) (asset.screen)"
     status: MATCH
-    reason: "This gate narrows the tool to property under the MACRS percentage tables and sends excluded cases to a named refusal. Its exclusions track the text, including the Pub. 946 rule to stop using the tables after a basis adjustment such as a casualty loss, and the required ADS categories."
+    reason: "This is an input screen that narrows the tool to cases the text supports. Excluded property (dispositions, like-kind exchanges, real property, ADS, other methods, basis adjustments per Pub. 946 table rule 4, general asset accounts, reuse and recycling property, and so on) is refused, not miscomputed."
   - key: "(b)"
     status: MATCH
-    reason: "The filer enters the year placed in service, which matches the i4562 placed-in-service entries and is what the recovery-year lookup needs. Years before 2005 are excluded by the screen."
+    reason: "The year placed in service is an input, consistent with i4562 column (b) and Pub. 946's rules for determining the year of recovery."
   - key: "(c)"
     status: MATCH
-    reason: "Cost or other basis times the business-use percentage is the first step of i4562 line 19 column (c): 'multiply the cost or other basis of the property by the percentage of business/investment use.' Later subtractions are handled in helpers and line 19(c), and listed property used 50% or less is refused as outside the tool."
+    reason: "i4562 line 19(c) says 'multiply the cost or other basis of the property by the percentage of business/investment use'; this computes that product before the later subtractions. Listed property used 50% or less is refused, which matches the line 26/27 split."
   - key: "6(c)"
     status: MATCH
-    reason: "i4562 line 6 column (c) says 'Enter the amount you elect to expense', and line 6 excludes listed property, as the reporting rule does. Elections above business cost or on property used 50% or less for business are refused, consistent with 'used predominantly (more than 50%)'."
+    reason: "Line 6 column (c): 'Enter the amount you elect to expense.' It is limited to non-listed 2025 property ('Do not include any listed property on line 6'), and the refusal enforces the 'used predominantly (more than 50%)' condition and the business-cost limit."
   - key: "(screen) (asset.bonus_same)"
     status: MATCH
-    reason: "i4562 describes the election out as applying 'for all such property in such class placed in service during the tax year.' A choice that differs within a class is refused by name, which is a permitted narrowing."
+    reason: "The election out applies 'for any class of property ... for all such property in such class placed in service during the tax year'. Mixed elections within a class are refused."
   - key: "14"
     status: MATCH
-    reason: "The allowance is 100% of basis after section 179 if acquired after January 19, 2025, 40% if acquired earlier or if the 40% election is made, and zero on election out, as i4562 line 14 provides. It is figured on depreciable basis after section 179, and long-production property, aircraft and qualified production property are screened out."
+    reason: "The allowance is basis after the section 179 deduction times 100% (acquired after Jan 19, 2025), 40% (acquired Sept 28, 2017–Jan 19, 2025, or the elected 40%), or zero if elected out. This matches 'multiplying the depreciable basis of the property by the applicable percentage', with depreciable basis reduced by the section 179 deduction."
   - key: "25"
     status: MATCH
-    reason: "i4562 line 25 refers to the line 14 instructions for how to figure the allowance and says to enter the special depreciation allowance for qualified listed property. This entry's line 14 amount is that figure, and listed property used 50% or less is refused."
+    reason: "Line 25 is the special allowance for qualified listed property figured as under line 14 ('See the instructions for line 14 for ... how to figure the deduction'). The line 14 computation is reused for listed property placed in service in 2025."
   - key: "26(i)"
     status: MATCH
-    reason: "i4562 line 6 says 'Enter the elected section 179 cost of listed property in column (i) of line 26', and the restatement carries the elected amount there. Use of 50% or less is refused, consistent with the column (i) requirement of more than 50% use."
+    reason: "Line 6 instructions: 'Enter the elected section 179 cost of listed property in column (i) of line 26.' The same election input is reported here for listed property; the passenger automobile limits do not arise because vehicles are entered separately."
   - key: "19(c)"
     status: MATCH
-    reason: "Business-use cost less section 179 less the line 14 allowance matches i4562 line 19 column (c), which lists 'Section 179 expense deduction' and 'Any special depreciation allowance included on line 14' as reductions. Other credit and basis adjustments are excluded by the screen."
+    reason: "Line 19(c) is business cost less the section 179 deduction and 'Any special depreciation allowance included on line 14', which is exactly the helper used."
   - key: "19(g)"
     status: MATCH
-    reason: "Column (c) times the applicable table rate matches 'Multiply column (c) by the applicable rate from the appropriate table.' The test 5 x fourth-quarter bases > 2 x total bases equals 'exceed 40%', and the bases are after section 179 and business-use reduction but before the special allowance, as Pub. 946 states."
+    reason: "Mid-quarter applies when fourth-quarter bases exceed 40% of the year's bases (5×Q4 > 2×total). The test uses bases after section 179 and before the special allowance, per Pub. 946's caution, and includes vehicle bases. The deduction is column (c) times the year-1 rate from the GDS percentage tables for the convention and quarter."
   - key: "(e)"
     status: MATCH
-    reason: "i4562 column (e) and Pub. 946 provide half-year and mid-quarter conventions for this property, with the mid-quarter rate depending on the quarter placed in service. Mid-month applies only to real property and railroad gradings and tunnel bores, which the screen and class lookup exclude."
+    reason: "The convention used in the year placed in service (half-year or mid-quarter with quarter) is an input, consistent with i4562 column (e) and Pub. 946's rule to keep using the same tables for the whole recovery period."
   - key: "17"
     status: MATCH
-    reason: "Line 17 follows the line 19 column (g) method, and Pub. 946 applies table rates to unadjusted basis reduced by section 179 and any special allowance, as the restatement does. The result is zero once the recovery period has ended, since the table has no further rate; the listed-property routing gap noted at 26(h) is the only exception."
+    reason: "For MACRS property placed in service before 2025, the deduction is unadjusted basis (business cost less prior section 179 and prior special allowance, per Pub. 946 'Figuring the Unadjusted Basis') times the table rate for the 2025 year of recovery and the original convention. It is zero after the recovery period ends."
   - key: "26(h)"
-    status: MISMATCH
-    reason: "The computation matches column (h), but the gate that reports this line asks only about 'a computer placed in service before 2018', while i4562 column (a) lists 'computers and peripheral equipment placed in service before 2018'. A pre-2018 peripheral not used exclusively at a regular business establishment would be treated as non-listed, so it would miss line 26(h) and go to line 17."
+    status: MATCH
+    reason: "For listed property used more than 50%, 'figure column (h) by following the instructions for line 19, column (g)'. That is the line 19(g) computation for 2025 property or the line 17 computation for earlier property. Pub. 946 allows no deduction after the recovery period for listed property other than passenger automobiles."
 ```
 ```
