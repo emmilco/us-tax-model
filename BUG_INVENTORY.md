@@ -4226,3 +4226,60 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Siblings checked:** `f8962.applicable`
 - **Regression predictions:** no new numeric fixture is needed: the input is a Boolean screen, and every existing return answers it. The change is question wording and a citation; the screen review rerun covers the reading.
 - **Tags:** source-completeness; premium-tax-credit; fixed
+
+## BUG-0297 — A dependent filer who itemizes bypasses the dependent refusal
+
+- **Caught by:** the cloud Claude session's read-only audit of the f8962 pass rulings, 2026-11-02; reproduced locally.
+- **Source:** i8962 p. 6, "Generally, you are an applicable taxpayer if your household income for 2025 ... is at least 100% of the federal poverty line for your family size ... and no one can claim you as a dependent for 2025"; i1040gi pp. 34–35, line 12e.
+- **Symptom:** the `sa.dependent` refusal was declared only on `sa.standard`. `sa.itemizes` short-circuits on `sa.elect_itemize`, and `sa.deduction` then takes `sa.line17` without ever evaluating `sa.standard`, so a filer who can be claimed as a dependent and elects to itemize completed the return: witness `stage18.blind.p1` with `sa.dependent=true, sa.elect_itemize=true` gives f1040.line24 $4,565, f8962.line24 $3,560. The 4.7% dependent-filer refusal category was therefore under-enforced, and the completeness and render rulings that rely on a return-wide dependent refusal were true only for standard-deduction filers.
+- **Fix:** the same `sa.dependent` refusal (its own form and remedy wording) is declared on `sa.deduction`, the line both branches pass through, so the itemized branch refuses as well. The `sa.standard` refusal stays for the standard branch. New regression `stage4.refuse.dependent_itemizes` asserts the refusal at `sa.deduction`, `f1040.line12e` and f1040.line24.
+- **Fix lines:** `sa.deduction`
+- **Siblings checked:** `dependent.qc_dependent`, `dependent.qr_dependent`, `eic.step4`, `person.sav_ineligible`, `sa.standard`, `f1040.line12e`
+- **Regression predictions:** `stage4.refuse.dependent_itemizes` answers `sa.dependent` true and elects to itemize; the return is refused at sa.deduction, f1040.line12e and f1040.line24 with the new form and remedy, written from the source before the evaluator was run.
+- **Validation:** pending the sa and sibling reviews and the full suite.
+- **Tags:** source-completeness; eligibility; fixed
+
+## BUG-0298 — The column B questions end with "zero if blank" after asking for the corrected premium
+
+- **Caught by:** the cloud Claude session's audit of the f8962/f1095a completeness rulings, 2026-11-02.
+- **Source:** i8962 p. 17, Column (b): "If not allowed a monthly credit amount because your enrollment premiums for the month were unpaid, enter -0- on the appropriate line on Form 8962, column (b). However, if your enrollment premiums for the month were paid by the due date of your return ... enter your applicable SLCSP premium for the month"; p. 16: if no APTC was paid, column B may be blank or wrong and the filer must determine the correct applicable SLCSP premium.
+- **Symptom:** the `f1095a.in_b_<month>` and `f1095a.mo_b` questions ask for "the amount in column B, or the correct applicable SLCSP premium if column B is blank, zero or wrong (from the Marketplace's tool…)" and then end with "; zero if blank". For a covered month with a blank column B, the trailing clause tells the filer to enter zero, understating column (b), the SLCSP premium and the PTC. The clause is apt only for a month with no coverage.
+- **Disposition:** T-165. Reword the 13 questions to "zero if blank and no one was enrolled that month" at the next f1095a change, then rerun the f1095a and f8962 reviews. The completeness claim `unruled:f8962#3` is ruled a real gap on this entry.
+- **Validation:** source and implementation inspection; the first clause already asks for the corrected premium, so no new input or fixture is needed.
+- **Tags:** source-definition-debt; premium-tax-credit; explicitly-deferred
+
+## BUG-0299 — The employer-coverage limb of f8962.other leaves "affordable" undefined
+
+- **Caught by:** the cloud Claude session's statement-coverage check of `f8962.other`, 2026-11-02.
+- **Source:** i8962 p. 5, "The coverage offered by your employer is generally considered affordable for you if your share of the annual cost for self-only coverage ... is not more than 9.02% of your household income"; "If your employer coverage is affordable for you but not affordable for your other family members, you may be able to take the PTC for your other family members."
+- **Symptom:** the question asks whether employer coverage "was offered and was affordable and provided minimum value" without saying whose cost is tested. An employee whose self-only cost is at or below 9.02% but whose family cost is above it may judge affordability by the family premium, answer no, and keep the PTC for the employee's own months. The source makes the employee eligible for MEC in that case. The screen ruling's statement that the undefined measure errs only toward a yes answer holds for family members, not the employee.
+- **Disposition:** T-166. Add the 9.02% self-only test for the employee and the family-cost test for a family member to the `f8962.other` question at the f8962/PTC next change (T-132/T-145 or the F3 remainder), then rerun the f8962 reviews and completeness. The question is otherwise complete on i8962 pp. 5–6.
+- **Validation:** source and implementation inspection; no fixture change until the wording is fixed.
+- **Tags:** source-definition-debt; premium-tax-credit; explicitly-deferred
+
+## BUG-0300 — The dependent questions do not exclude a stillborn child or ask for a live-birth record
+
+- **Caught by:** the dependent completeness review (prompt after BUG-0297), 2026-11-02.
+- **Source:** p501 p. 13, "Stillborn child. You can't claim a stillborn child as a dependent"; "State or local law must treat the child as having been born alive."
+- **Symptom:** `dependent.born_died` asks only whether the person was born or died in 2025; a stillborn child can be entered as a dependent, and no question asks whether state or local law treats the child as born alive or requires the official record.
+- **Disposition:** T-167, with the F1 dependent pass: add the stillborn exclusion and the live-birth requirement to the born/died or claimed question (wording only).
+- **Validation:** one completeness claim and source inspection; no fixture or numerical evidence claimed.
+- **Tags:** source-definition-debt; dependent; explicitly-deferred
+
+## BUG-0301 — The dependent student question does not define a school or treat co-op students as full-time
+
+- **Caught by:** the dependent completeness review, 2026-11-02.
+- **Source:** p501 p. 13, "Students who work on 'co-op' jobs in private industry as a part of a school's regular course of classroom and practical training are considered full-time students"; "A full-time student at a school that has a regular teaching staff and course of study, and a regularly enrolled student body at the school."
+- **Symptom:** `dependent.student` asks whether the person was a full-time student without the school definition or the co-op rule; a co-op student can answer no and fail the qualifying-child student test.
+- **Disposition:** T-168, with the F1 dependent pass; wording only.
+- **Validation:** one completeness claim and source inspection.
+- **Tags:** source-definition-debt; dependent; explicitly-deferred
+
+## BUG-0302 — Schedule A definition details in the medical, tax, charity and blindness questions
+
+- **Caught by:** the Schedule A completeness review (prompt after BUG-0297), 2026-11-02.
+- **Source:** i1040sca p. 1 (HSA/MSA distributions, pretax insurance premiums, public-safety-officer premiums, long-term care limits, nursing/housework pay, meals with lodging, estate-paid expenses); p. 7 (U.S. territory taxes belong on the state and local line; only taxes paid in 2025 and assessed before 2026); p. 11 (good used condition, the $500 single-item appraisal exception, the $250 contemporaneous acknowledgment for property); i1040gi p. 33 (the certified statement for partial blindness).
+- **Symptom:** the `sa.line1`, `sa.line5a`, `sa.line5b`, `sa.line12` and `sa.boxes_blind` questions do not carry these rules, so a filer can omit territory taxes, deduct prepaid 2026 property tax, take a noncash gift without the condition or acknowledgment, miss the blindness certification, or compute the medical deduction without the listed adjustments.
+- **Disposition:** T-169, with the Schedule A form pass (F4): extend the questions or add refusals; rerun the sa reviews and this completeness review.
+- **Validation:** one completeness review with six claims (five mapped here, the MFS joint-expense claim refused by s3.mfs) and source inspection.
+- **Tags:** source-definition-debt; schedule-a; explicitly-deferred

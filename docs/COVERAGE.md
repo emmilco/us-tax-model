@@ -73,7 +73,9 @@ The data holds **190 refusal gates**: 152 tax situations the tool does not prepa
     *Source:* [i1040gi] p. 42, Step 4, question 6
   - *Not covered:* Standard Deduction Worksheet for Dependents / dual-status rules. Dependent and dual-status standard deductions are outside this resident nondependent slice.
     *Source:* [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart
-  - *Refused at:* `eic.step4`, `sa.standard`
+  - *Not covered:* A return for a dependent or dual-status alien. A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized.
+    *Source:* [i1040gi] pp. 34–35, line 12e and Standard Deduction Chart
+  - *Refused at:* `eic.step4`, `sa.standard`, `sa.deduction`
   - *Share of returns (coverage estimate):* Returns of filers who can be claimed as a dependent (SOI Table 1.7 dependent returns), 4.7%
 - **`household.filer_under16`**: Were you, or your spouse on a joint return, under 16 at the end of 2025?
   - *The data asks or tests:* You, or your spouse if filing jointly, were under age 16 at the end of 2025 (`test`)

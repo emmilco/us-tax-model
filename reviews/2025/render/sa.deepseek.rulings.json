@@ -1,0 +1,14 @@
+{
+ "kind": "render",
+ "form": "sa",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "2",
+   "restated": "Enter the amount from helper \"Form 1040 line 11b adjusted gross income, but not less than zero\".",
+   "model": "The IRS line says 'Enter amount from Form 1040 or 1040-SR, line 11b'; the restatement uses a helper that floors line 11b at zero, changing the amount when AGI is negative.",
+   "ruling": "Ruling: ambiguity — amb.2025.sa_medical_negative_agi. The project floors AGI at zero for the medical-expense 7.5% limitation (the recorded reading), and the helper line 2 displays that floored amount. The IRS line says \"Enter amount from Form 1040 or 1040-SR, line 11b\"; a negative AGI is the registered ambiguity, not a new defect.",
+   "context": "a3c824fe95742926f1b5ad19eb137ffdfd78fc1c6e7201fe94a1520f7ee449f3"
+  }
+ ]
+}

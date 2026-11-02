@@ -701,28 +701,6 @@
    "bugs": [],
    "adjudication": "reviews/2025/screens/adjudication/group2.md"
   },
-  "unruled:sa.dependent": {
-   "prompt_sha": "761febbf31cef23c96097bc105e481b2cdd09da094cec5f0733ed3eabe19ff8c",
-   "reason": "Disaster-loss finding covered by sa.unsupported (derived refusal on sa.deduction). Defect: no screen follows i1040gi Step 4 question 2's referral to Pub. 596 for a decedent or a spouse who died in 2025; the EIC age test is computed from birth dates.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "sa.unsupported asks 'Any casualty or theft loss (including a disaster loss added to the standard deduction)'. Eval (stage1 table.band.first with sa.unsupported = true): sa.itemizes, sa.deduction and f1040.line12e are refusals (gate sa.unsupported), sa.standard alone computes but feeds nothing printed."
-    },
-    {
-     "n": 1,
-     "kind": "NARROW",
-     "class": "defect",
-     "evidence": "i1040gi p. 42, EIC Step 4 question 2: 'If your spouse died in 2025 or if you are preparing a return for someone who died in 2025, see Pub. 596 before you answer.' eic.age_range counts birth-date flags only; no screen asks about a death (person.died_before_65 serves Schedule 1-A only). Pub. 596 is not archived, so the different rule (age at death, per secondary knowledge) is unconfirmed here; the defect is the unhonored referral. PENDING-1-9."
-    }
-   ],
-   "bugs": [
-    "PENDING-1-9"
-   ],
-   "adjudication": "reviews/2025/screens/adjudication/group1.md"
-  },
   "unruled:sa.excluded_income": {
    "prompt_sha": "4afc486c20482a2de3fae91aa4b45571f59f827385187bdf79949acb06768057",
    "reason": "No defect: the five NARROW Schedule A items are screened by sa.unsupported and sa.charity_limited, which gate the same lines; the WIDE findings are accepted; bare form numbers are a presentation point.",
@@ -1765,6 +1743,10 @@
   "unruled:f8962.premium_adjust": {
    "prompt_sha": "403ddc38ee389a532427046a4d726ffd2f6356adbd635233df6336f077904a44",
    "reason": "The NARROW unpaid-premium finding is not a gap: f8962.other already asks whether any part of a month's premium was not paid by the return due date (or a Form 1095-A shows zero in column A for a month whose premium was paid) and refuses the return, so no unadjusted column A computes. The WIDE mid-month limb is accepted over-refusal: \"coverage\" is read in the Form 1095-A context, but a dependent's employer, Medicaid or other non-Marketplace coverage starting mid-month can produce a yes; refusing is safe. The UNCLEAR refund-year reading also errs toward a yes and a refusal; a refund for a 2024 month can be read into the question. T-164 records the two wording narrowings (\"Marketplace coverage\", \"for a 2025 month\") for the next f8962 review refresh."
+  },
+  "unruled:sa.dependent": {
+   "prompt_sha": "ed663816b735dbfc49af3fa0ce3e076713185f92fdb0104a368707b0d0425394",
+   "reason": "No defect: the parenthetical is the Form 1040 dependent-question carve-out, not an EIC import. i1040gi pp. 18\u201319, Step 4/5: \"If the person who could claim you on their 2025 tax return is not required to file, and isn\u2019t filing a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid, check \u2018No.\u2019\" The reviewer's pages (34\u201335, 41\u201342) do not include pp. 18\u201319. The line 12a checkbox and the Standard Deduction Worksheet for Dependents use that answer, so a filer in the carve-out is not claimable for this purpose and the full standard deduction is right."
   }
  },
  "baseline": {

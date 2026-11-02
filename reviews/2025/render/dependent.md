@@ -4,7 +4,7 @@ The rendered English of every printed line of `Dependents — qualifying child a
 
 | field | value |
 | --- | --- |
-| date | 2026-10-31 |
+| date | 2026-11-02 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 803b6b0ccffb494cac88f15bd5a36afd206d92ef45d3e68f8e241b1e143b4d22 |
@@ -14,7 +14,7 @@ The rendered English of every printed line of `Dependents — qualifying child a
 | output token budget | transport default (65536 for DeepSeek) |
 | subject sha256 | 28e045bd0204ff24cd65160e24083d802e4d1f73c6404a64c9a494c3c0789466 |
 | lines judged | 11 |
-| match / mismatch / unclear / missing | 9 / 2 / 0 / 0 |
+| match / mismatch / unclear / missing | 10 / 1 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -40,63 +40,59 @@ Status: **MISMATCH**
 
 Restated: Enter the amount from helper "Qualified expenses incurred and paid in 2025 for this person's care".
 
-Model: The restatement includes expenses paid with dependent care benefits and relies on Form 2441 to subtract them later. The column (d) instructions say "If you completed Part III, don't include in column (d) any benefits shown on line 28", and Part III line 30 repeats "Don't include in column (d) any benefits shown on line 28 above."
+Model: The helper includes expenses paid with dependent care benefits and leaves Form 2441 to subtract the excluded benefits elsewhere. The column (d) instruction keeps them out of this line: "If you completed Part III, don't include in column (d) any benefits shown on line 28."
 
-Ruling: ambiguity; amb.2025.dc_line30 (owner ruling, Stage 15 decision 6, T-048). Form 2441 line 30: "Complete line 2 on page 1 of this form. Don't include in column (d) any benefits shown on line 28 above. Then, add the amounts in column (d) and enter the total here"; i2441 p. 3, Column (d): "If you completed Part III, don't include in column (d) any benefits shown on line 28"; the instructions give no rule for dividing line 28 among persons. The model reads the register's rejected reading (column (d) net of benefits). The chosen reading shows each person's expenses including those paid with dependent care benefits and subtracts line 28 once at line 30. dependent.dc_paid and dependent.dc_line2d are identical in HEAD and the working tree, f2441.yaml is unchanged, and no hunk of the rendered subject's diff (rendered/2025/dependent.md, HEAD to now) touches a dc_* section; the BUG-0267 correction (hoh_test2_lived, hoh_absence, hoh_test2) does not reach this line. As ruled since fix round 2 and in the T-091 round. Project stands.
+Ruling: ambiguity — amb.2025.dc_line30 (owner's decision, Stage 15 decision 6). Column (d) shows each person's expenses before excluding the dependent care benefits, and line 30 subtracts line 28 from the total; the instructions give no rule for dividing line 28 among the qualifying persons. The rendering's reading (net each column (d)) is the unchosen reading.
 
 ### 2(c) — Check here if the qualifying person was over age 12 and was disabled
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: helper "A qualifying person for Form 2441 (you have care expenses, and this person is your dependent and either your qualifying child under 13 or not able to care for themselves and living with you for more than half the year)" = true and helper "Physically or mentally not able to care for themselves?" = true and (helper "Age at the end of 2025" > 13 (dc.child_age) or helper "Age at the end of 2025" = 13 (dc.child_age) and helper "Care provided while this qualifying person was age 13 or older and disabled" = true)
-
-Model: The age tests match the column (c) wording "over age 12 at the time the care was provided and was disabled". But the gate requires the person to be your dependent, so it drops a disabled person the instructions still count as a qualifying person, with no refusal. The text covers anyone "whom you can claim as a dependent or could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, b. The disabled person filed a joint return, or c. You (or your spouse if filing jointly) could be claimed as a dependent on another taxpayer's 2025 tax return."
-
-Ruling: interface gap; i2441 p. 1, Qualifying Person(s), item 3: "Any disabled person who wasn't physically or mentally able to care for themselves who lived with you for more than half the year and whom you can claim as a dependent or could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, b. The disabled person filed a joint return, or c. You (or your spouse if filing jointly) could be claimed as a dependent on another taxpayer's 2025 tax return." The cases the model names are refused, but on Form 2441: f2441.qp_count and f2441.paid_total refuse when f2441.nondependent_gate (f2441.care and f2441.nondependent, whose question asks exactly items a to c) holds ("A qualifying person you cannot claim as a dependent ... is outside this tool"); that form is not in the dependent render the reviewer was given, so the model reports "no refusal". The column (c) test itself matches, as the model says. Why this log has a second mismatch this round: the subject hash changed (768bd246 to 28e045bd) because the BUG-0267 correction rewrote the hoh_test2 section and added hoh_test2_lived and hoh_absence, which reran the review; the 2(c) restatement and every helper it names (dc_qp, dc_incapable, dc_disabled_qp, dc_over12_care, age) are identical to HEAD, and so to round 1's subject, whose dc lines round 1 also found identical to HEAD (the diff's hunks fall at current rendered lines 10, 12, 260-276, 299-313 and 402-429; the dc sections sit at 169 and 455-540), and no dc_* line reads a hoh_* or absence line. Round 1 judged the same text MATCH; fix rounds 2 to 4 raised this same objection. The flip is sampling variance, not a change. Same ruling as fix rounds 2 to 4. Project stands.
+Model: The box is checked for a qualifying person who "was over age 12 at the time the care was provided and was disabled." The age test, the 13-at-year-end care question and the incapacity input restate that within the qualifying-person cases.
 
 ### 23 — Has the American opportunity credit been claimed for this student for any 4 prior tax year
 Status: **MATCH**
 
-Model: This is the line 23 question: has the American opportunity credit been claimed for this student for any 4 tax years before 2025. It is asked per eligible student.
+Model: This restates line 23, "Has the American opportunity credit been claimed for this student for any 4 prior tax years?" The "by you or anyone else" wording comes from the student qualifications text.
 
 ### 24 — Was the student enrolled at least half-time for at least one academic period that began or
 Status: **MATCH**
 
-Model: This restates line 24 and its instruction: at least half-time enrollment for an academic period beginning in 2025, or treated as beginning in 2025 if prepaid in 2025 for the first 3 months of 2026, in a postsecondary credential program. It is reached only when line 23 is No.
+Model: This restates line 24 and its instruction, including that an academic period beginning in the first 3 months of 2026 counts if the expenses for it were paid in 2025. It is reached only when line 23 is No, as the form directs.
 
 ### 25 — Did the student complete the first 4 years of postsecondary education before 2025?
 Status: **MATCH**
 
-Model: This restates line 25 and its instruction on completing 4 years of academic credit before 2025, disregarding credit awarded for proficiency examinations. It is reached only when line 24 is Yes.
+Model: This restates line 25 and its instruction that 4 years of academic credit awarded by the institution count, disregarding credit "awarded solely on the basis of the student's performance on proficiency examinations." It is reached only when line 24 is Yes.
 
 ### 26 — Was the student convicted, before the end of 2025, of a felony for possession or distribut
 Status: **MATCH**
 
-Model: This restates line 26: a federal or state felony conviction for possession or distribution of a controlled substance before the end of 2025. It is reached only when line 25 is No.
+Model: This restates line 26 with the instruction's "federal or state felony for possession or distribution of a controlled substance." It is reached only when line 25 is No.
 
 ### 27 — Adjusted qualified education expenses. Don't enter more than $4,000
 Status: **MATCH**
 
-Model: The amount is the worksheet's line 1 less line 3, floored at zero, using tuition, fees and course materials for the American opportunity credit, and capped at "Don't enter more than $4,000". It is reported only for American opportunity credit students, who must also meet the filer TIN and institution EIN requirements. The refusal covers the per-academic-period worksheet case that cannot be netted.
+Model: Line 27 takes the smaller of worksheet line 4 (total AOC expenses less line 3, floored at 0) and $4,000, matching "Don't enter more than $4,000." It is gated on the AOC requirements, including the TINs and EIN. The refusal covers the period-by-period worksheet case where totals could differ.
 
 ### 28 — Subtract $2,000 from line 27. If zero or less, enter -0-
 Status: **MATCH**
 
-Model: This computes "Subtract $2,000 from line 27. If zero or less, enter -0-" for an American opportunity credit student.
+Model: This computes "Subtract $2,000 from line 27. If zero or less, enter -0-" for AOC students.
 
 ### 29 — Multiply line 28 by 25% (0.25)
 Status: **MATCH**
 
-Model: This computes "Multiply line 28 by 25% (0.25)".
+Model: This computes "Multiply line 28 by 25% (0.25)."
 
 ### 30 — American opportunity credit for this student. If line 28 is zero, enter the amount from li
 Status: **MATCH**
 
-Model: This computes "If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29".
+Model: This computes "If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29."
 
 ### 31 — Adjusted qualified education expenses for the lifetime learning credit
 Status: **MATCH**
 
-Model: For an eligible student routed to the lifetime learning credit, the amount is expenses required to be paid to the institution less worksheet line 3, floored at zero. That matches the lifetime learning credit's qualified expenses and the worksheet's line 4. The per-period case is refused.
+Model: For a student not taking the AOC, line 31 uses worksheet line 4 with lifetime learning credit expenses: tuition, fees and materials required to be paid to the institution, less adjustments, floored at 0. This matches the line 31 instruction and the LLC definition of qualified expenses.
 
 ## Raw response
 
@@ -105,36 +101,36 @@ Model: For an eligible student routed to the lifetime learning credit, the amoun
 lines:
   - key: "2(d)"
     status: MISMATCH
-    reason: "The restatement includes expenses paid with dependent care benefits and relies on Form 2441 to subtract them later. The column (d) instructions say \"If you completed Part III, don't include in column (d) any benefits shown on line 28\", and Part III line 30 repeats \"Don't include in column (d) any benefits shown on line 28 above.\""
+    reason: "The helper includes expenses paid with dependent care benefits and leaves Form 2441 to subtract the excluded benefits elsewhere. The column (d) instruction keeps them out of this line: \"If you completed Part III, don't include in column (d) any benefits shown on line 28.\""
   - key: "2(c)"
-    status: MISMATCH
-    reason: "The age tests match the column (c) wording \"over age 12 at the time the care was provided and was disabled\". But the gate requires the person to be your dependent, so it drops a disabled person the instructions still count as a qualifying person, with no refusal. The text covers anyone \"whom you can claim as a dependent or could claim as a dependent except: a. The disabled person had gross income of $5,200 or more, b. The disabled person filed a joint return, or c. You (or your spouse if filing jointly) could be claimed as a dependent on another taxpayer's 2025 tax return.\""
+    status: MATCH
+    reason: "The box is checked for a qualifying person who \"was over age 12 at the time the care was provided and was disabled.\" The age test, the 13-at-year-end care question and the incapacity input restate that within the qualifying-person cases."
   - key: "23"
     status: MATCH
-    reason: "This is the line 23 question: has the American opportunity credit been claimed for this student for any 4 tax years before 2025. It is asked per eligible student."
+    reason: "This restates line 23, \"Has the American opportunity credit been claimed for this student for any 4 prior tax years?\" The \"by you or anyone else\" wording comes from the student qualifications text."
   - key: "24"
     status: MATCH
-    reason: "This restates line 24 and its instruction: at least half-time enrollment for an academic period beginning in 2025, or treated as beginning in 2025 if prepaid in 2025 for the first 3 months of 2026, in a postsecondary credential program. It is reached only when line 23 is No."
+    reason: "This restates line 24 and its instruction, including that an academic period beginning in the first 3 months of 2026 counts if the expenses for it were paid in 2025. It is reached only when line 23 is No, as the form directs."
   - key: "25"
     status: MATCH
-    reason: "This restates line 25 and its instruction on completing 4 years of academic credit before 2025, disregarding credit awarded for proficiency examinations. It is reached only when line 24 is Yes."
+    reason: "This restates line 25 and its instruction that 4 years of academic credit awarded by the institution count, disregarding credit \"awarded solely on the basis of the student's performance on proficiency examinations.\" It is reached only when line 24 is Yes."
   - key: "26"
     status: MATCH
-    reason: "This restates line 26: a federal or state felony conviction for possession or distribution of a controlled substance before the end of 2025. It is reached only when line 25 is No."
+    reason: "This restates line 26 with the instruction's \"federal or state felony for possession or distribution of a controlled substance.\" It is reached only when line 25 is No."
   - key: "27"
     status: MATCH
-    reason: "The amount is the worksheet's line 1 less line 3, floored at zero, using tuition, fees and course materials for the American opportunity credit, and capped at \"Don't enter more than $4,000\". It is reported only for American opportunity credit students, who must also meet the filer TIN and institution EIN requirements. The refusal covers the per-academic-period worksheet case that cannot be netted."
+    reason: "Line 27 takes the smaller of worksheet line 4 (total AOC expenses less line 3, floored at 0) and $4,000, matching \"Don't enter more than $4,000.\" It is gated on the AOC requirements, including the TINs and EIN. The refusal covers the period-by-period worksheet case where totals could differ."
   - key: "28"
     status: MATCH
-    reason: "This computes \"Subtract $2,000 from line 27. If zero or less, enter -0-\" for an American opportunity credit student."
+    reason: "This computes \"Subtract $2,000 from line 27. If zero or less, enter -0-\" for AOC students."
   - key: "29"
     status: MATCH
-    reason: "This computes \"Multiply line 28 by 25% (0.25)\"."
+    reason: "This computes \"Multiply line 28 by 25% (0.25).\""
   - key: "30"
     status: MATCH
-    reason: "This computes \"If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29\"."
+    reason: "This computes \"If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29.\""
   - key: "31"
     status: MATCH
-    reason: "For an eligible student routed to the lifetime learning credit, the amount is expenses required to be paid to the institution less worksheet line 3, floored at zero. That matches the lifetime learning credit's qualified expenses and the worksheet's line 4. The per-period case is refused."
+    reason: "For a student not taking the AOC, line 31 uses worksheet line 4 with lifetime learning credit expenses: tuition, fees and materials required to be paid to the institution, less adjustments, floored at 0. This matches the line 31 instruction and the LLC definition of qualified expenses."
 ```
 ```

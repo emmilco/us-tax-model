@@ -3494,24 +3494,19 @@
   "question": "Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)",
   "lines": [
    "eic.step4",
-   "sa.standard"
+   "sa.standard",
+   "sa.deduction"
   ],
   "verdict": "NARROW",
   "findings": [
    {
     "kind": "NARROW",
-    "situation": "A filer who is not a dependent or dual-status alien has a net qualified disaster loss and elects to increase the standard deduction by that loss.",
-    "irs_text": "\"Exception 5—Increased standard deduction for net qualified disaster loss. If you had a net qualified disaster loss and you elect to increase your standard deduction by the amount of your net qualified disaster loss, use Schedule A to figure your standard deduction.\" (i1040gi 2025, p. 34, line 12e)",
-    "why": "The question asks only about dependent and dual-status alien status, so this filer truthfully answers NO. sa.standard then adds only the base and age/blind amounts, which leaves out the disaster-loss increase."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A return is prepared for a filer who died in 2025, and the filer's age affects the EIC age test in Step 4.",
-    "irs_text": "\"If your spouse died in 2025 or if you are preparing a return for someone who died in 2025, see Pub. 596 before you answer.\" (i1040gi 2025, pp. 41–42, Step 4, question 2)",
-    "why": "Nothing in the question reaches a decedent's return, so the answer can truthfully be NO, and eic.step4 then applies the plain end-of-2025 age helper without the Pub. 596 referral. Pub. 596 is not in the supplied text, so the extent of any different result cannot be confirmed here."
+    "situation": "A filer whose parent could claim them as a dependent, but who is not required to file and files only to claim a refund of withheld tax, answers NO under the parenthetical, and the tool then computes the full standard deduction instead of the dependent worksheet amount.",
+    "irs_text": "i1040gi p. 34: \"Exception 1—Dependent. Line 12a. If you checked a box on line 12a, use the Standard Deduction Worksheet for Dependents to figure your standard deduction.\" i1040gi p. 35: \"Use this worksheet only if someone can claim you, or your spouse if filing jointly, as a dependent.\"",
+    "why": "The refund-only carve-out comes from EIC Step 4, question 6 (p. 42), but the line 12e standard deduction text gives no such exception. The parenthetical therefore tells a claimable filer to answer NO, and sa.standard and sa.deduction apply the regular amount where the IRS text requires the limited worksheet amount."
    }
   ],
-  "prompt_sha": "761febbf31cef23c96097bc105e481b2cdd09da094cec5f0733ed3eabe19ff8c",
+  "prompt_sha": "ed663816b735dbfc49af3fa0ce3e076713185f92fdb0104a368707b0d0425394",
   "used": [
    {
     "doc": "f1040sa",
@@ -3551,7 +3546,7 @@
     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
    }
   ],
-  "cost": 0.17652800000000002,
+  "cost": 0.13561600000000001,
   "model": "claude-opus-5-5"
  },
  {

@@ -85,6 +85,13 @@
   {
    "printed": "2(d)",
    "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
+   "model": "The helper includes expenses paid with dependent care benefits and leaves Form 2441 to subtract the excluded benefits elsewhere. The column (d) instruction keeps them out of this line: \"If you completed Part III, don't include in column (d) any benefits shown on line 28.\"",
+   "ruling": "Ruling: ambiguity — amb.2025.dc_line30 (owner's decision, Stage 15 decision 6). Column (d) shows each person's expenses before excluding the dependent care benefits, and line 30 subtracts line 28 from the total; the instructions give no rule for dividing line 28 among the qualifying persons. The rendering's reading (net each column (d)) is the unchosen reading.",
+   "context": "69d419c8acd2d92af28ab51d2daf2b69a74004a6c41ed95b4e8901a52377ab51"
+  },
+  {
+   "printed": "2(d)",
+   "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
    "model": "The helper includes expenses paid with dependent care benefits and relies on Form 2441 to subtract them later. The IRS text says to leave them out of column (d) itself: \"If you completed Part III, don't include in column (d) any benefits shown on line 28,\" and line 30 repeats \"Don't include in column (d) any benefits shown on line 28 above.\" Line 29 subtracts line 28 from the $3,000/$6,000 limit, not from column (d), so including the benefits would overstate line 30.",
    "ruling": "Ruling: interpretation; project retained. Column (d) shows each person's qualified expenses before excluding dependent care benefits, and line 30 subtracts line 28 from their total; this is the binding register reading amb.2025.dc_line30 (owner, Stage 15), recorded on this line. The restatement says what the project does."
   },

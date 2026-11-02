@@ -4,17 +4,17 @@ The rendered English of every printed line of `Schedule A — supported itemized
 
 | field | value |
 | --- | --- |
-| date | 2026-10-23 |
+| date | 2026-11-02 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 1029f15f22721147e31bd0c17653daad2e15602b716ba08b63c9a68e2372e012 |
+| prompt sha256 | 5de99380799ad1169fa5acb2ca84317a6364e3fc97c141539848fdf2d0ad1dfe |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
-| output token budget | 65536 |
-| subject sha256 | bebc7c02c8aa1f42d39df14282d7609d61b67f805714977d544e2a0038bc1833 |
+| output token budget | 131072 |
+| subject sha256 | 07cf46dea57cb017583f862171ff7aecbb94337900ce0f92280207140c50232d |
 | lines judged | 24 |
-| match / mismatch / unclear / missing | 21 / 2 / 1 / 0 |
+| match / mismatch / unclear / missing | 23 / 1 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -22,143 +22,137 @@ The rendered English of every printed line of `Schedule A — supported itemized
 | document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
 | --- | --- | --- | --- | --- | --- | --- |
 | f1040sa | 2025; created 2025-11-20 | 1 | whole document | 225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd | - | bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe |
-| i1040gi | 2025; printed date 2026-02-25 | 33, 34, 35 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 33, 34 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| i1040gi | 2025; printed date 2026-02-25 | 33, 34, 35, 91 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 33, 34, 91 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
 | i1040sca | 2025; printed date 2025-12-08 | 1, 7, 11 | cited pages | 18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b | 1, 11 | 5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c |
+| i8283 | December 2025; printed date 2026-01-30 | 1, 2, 3 | cited pages | cd582a9f231564c755d552a21d937b33e24df8b9fe65f4f823b7c9eca9dfe1ad | 1, 2, 3 | 53a4b54ff613d5c600c1af7ba5bf9024418fe89441ae8d629a955bd59aa6e3c7 |
 | p525 | 2025 | 33 | pages named by another document's citation | 7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182 | 33 | 27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65 |
+| f8283 | December 2025; created 2025-07-01 | 1, 2 | whole document | d33f4c2762c7366b560ae700f7c403b698b6567187a94eb4f7943b3ab6c20219 | - | 2a4ef5ee41c489f0de7f68915540d45a11937f39759f0c9ffb0f326461ee9320 |
 
 ## Lines
 
 ### 1 — Unreimbursed eligible medical and dental expenses
 Status: **MATCH**
 
-Model: Line 1 calls for medical and dental expenses, and the form cautions not to include expenses reimbursed or paid by others; the restatement's 'unreimbursed eligible' matches that.
+Model: Matches the IRS medical and dental expenses line, with the reimbursement caution reflected as unreimbursed eligible expenses.
 
 ### 5a — State/local income taxes paid, including withholding; no sales-tax election
 Status: **MATCH**
 
-Model: Line 5a permits state and local income taxes or general sales taxes, but not both; the program limits to income taxes and the sales-tax election is an excluded unsupported case named by sa.unsupported.
+Model: Restates state/local income taxes and excludes the sales-tax election, which the unsupported gate refuses.
 
 ### 5b — Deductible state/local real estate taxes
 Status: **MATCH**
 
-Model: Line 5b is state and local real estate taxes; 'deductible state/local real estate taxes' is consistent.
+Model: Matches state and local real estate taxes.
 
 ### 5c — Deductible state/local personal property taxes
 Status: **MATCH**
 
-Model: Line 5c is state and local personal property taxes; matches.
+Model: Matches state and local personal property taxes.
 
 ### 8a — Eligible home mortgage interest and points on Form 1098, after confirming the debt/use lim
 Status: **MATCH**
 
-Model: Line 8a is home mortgage interest and points reported on Form 1098; the program narrows to cases where the debt/use limits do not apply, which sa.unsupported names as excluded.
+Model: Matches Form 1098 home mortgage interest and points, limited to cases where the debt/use limits do not apply.
 
 ### 11 — Deductible cash/check charitable gifts before income limits, after benefits received and r
 Status: **MATCH**
 
-Model: Line 11 is gifts by cash or check; the program's after-benefits and substantiation conditions match the instructions, and income-limited/carryover cases are excluded by sa.charity_limited.
+Model: Matches cash/check gifts, with benefits received and substantiation reflected and income-limited cases refused.
 
 ### 2 — Amount from sa.agi_floor
 Status: **MISMATCH**
 
 Restated: Enter the amount from helper "Form 1040 line 11b adjusted gross income, but not less than zero".
 
-Model: IRS line 2 says simply 'Enter amount from Form 1040 or 1040-SR, line 11b'; the program adds a 'but not less than zero' floor, which is not in the line text.
+Model: The IRS line says 'Enter amount from Form 1040 or 1040-SR, line 11b'; the restatement uses a helper that floors line 11b at zero, changing the amount when AGI is negative.
 
-Ruling: open
+Ruling: ambiguity — amb.2025.sa_medical_negative_agi. The project floors AGI at zero for the medical-expense 7.5% limitation (the recorded reading), and the helper line 2 displays that floored amount. The IRS line says "Enter amount from Form 1040 or 1040-SR, line 11b"; a negative AGI is the registered ambiguity, not a new defect.
 
 ### 3 — Multiply sa.line2 by sa.medical_rate
 Status: **MATCH**
 
-Model: 7.5% equals 75/1000; matches 'Multiply line 2 by 7.5% (0.075)'.
+Model: Matches multiplying line 2 by 7.5% (75/1000).
 
 ### 4 — Subtract sa.line3 from sa.line1; if zero or less, enter zero
 Status: **MATCH**
 
-Model: Same direction and zero floor as 'Subtract line 3 from line 1. If line 3 is more than line 1, enter -0-'.
+Model: Matches subtracting line 3 from line 1 and entering -0- when the result is zero or less.
 
 ### 5d — Add sa.line5a, sa.line5b, sa.line5c
 Status: **MATCH**
 
-Model: Adds lines 5a through 5c, as the form says.
+Model: Matches adding lines 5a through 5c.
 
 ### 5e — Smaller of sa.line5d, sa.saltlimit
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: Enter the smaller of line 5d or helper "Half the worksheet ceiling if married filing separately".
-
-Model: IRS line 5e says if you completed Form 2555 or 4563, or excluded Puerto Rico income, see the SALT worksheet; that worksheet adds those excluded amounts to line 11b. The program's ceiling helper uses only Form 1040 line 11b and there is no excluded-income refusal on line 5e.
-
-Ruling: open
+Model: Matches the smaller-of line 5d or ceiling rule; the excluded-income refusal on the SALT worksheet covers the Form 2555/4563 and Puerto Rico addback cases.
 
 ### 6 — Amount from sa.zero
 Status: **MATCH**
 
-Model: Line 6 is other taxes; the only line 6 taxes identified in the provided instructions are foreign income taxes and GST, which the program excludes via sa.unsupported, so zero within supported cases.
+Model: The only line 6 items in the provided instructions are foreign tax and GST, which the unsupported gate refuses; zero is correct within supported cases.
 
 ### 8b — Amount from sa.zero
 Status: **MATCH**
 
-Model: Line 8b is mortgage interest not reported on Form 1098; the program sets zero and excludes non-1098 mortgage interest through sa.unsupported, naming the excluded item.
+Model: Line 8b is by definition non-Form 1098 mortgage interest, which the unsupported gate refuses; zero is correct within supported cases.
 
 ### 8c — Amount from sa.zero
 Status: **MATCH**
 
-Model: Line 8c is points not reported on Form 1098; the program excludes points not on Form 1098 through sa.unsupported, so zero within supported cases.
+Model: Line 8c is by definition points not reported on Form 1098, which the unsupported gate refuses; zero is correct within supported cases.
 
 ### 13 — Amount from sa.zero
 Status: **MATCH**
 
-Model: Line 13 is carryover from prior year; the program excludes carryovers and income-limited charitable deductions through sa.charity_limited, so zero within supported cases.
+Model: Carryover from a prior year is excluded by the charity_limited gate, so zero is correct within supported cases.
 
 ### 15 — Amount from sa.zero
 Status: **MATCH**
 
-Model: Line 15 is casualty and theft losses from a federally declared disaster; the program excludes casualty/theft losses through sa.unsupported, so zero within supported cases.
+Model: Casualty and theft losses are excluded by the unsupported gate, so zero is correct within supported cases.
 
 ### 16 — Other—from list in instructions. List type and amount:
 Status: **MATCH**
 
-Model: Line 16 permits gambling losses only up to gambling winnings; the program computes the smaller of gambling losses and Schedule 1 line 8b and excludes other line 16 items via sa.unsupported.
+Model: Computes gambling losses limited to Schedule 1 line 8b winnings, matching the IRS line 16 instruction for gambling losses.
 
 ### 7 — Add sa.line5e, sa.line6
 Status: **MATCH**
 
-Model: Adds lines 5e and 6, as the form says.
+Model: Matches adding lines 5e and 6.
 
 ### 8e — Add sa.line8a, sa.line8b, sa.line8c
 Status: **MATCH**
 
-Model: Adds lines 8a through 8c, as the form says.
+Model: Matches adding lines 8a through 8c.
 
 ### 9 — Amount from f4952.line8
-Status: **UNCLEAR**
+Status: **MATCH**
 
-Restated: Enter the amount from f4952 line 8.
-
-Model: The provided Schedule A text only says 'Investment interest. Attach Form 4952 if required. See instructions'; the line 9 instructions, including how to figure investment interest when Form 4952 is not required, are not provided.
-
-Ruling: open
+Model: Matches the investment interest deduction from Form 4952 line 8.
 
 ### 10 — Add sa.line8e, sa.line9
 Status: **MATCH**
 
-Model: Adds lines 8e and 9, as the form says.
+Model: Matches adding lines 8e and 9.
 
 ### 12 — Total supported noncash donations before income limits
 Status: **MATCH**
 
-Model: Line 12 is gifts other than by cash or check; summing allowed gift deductions for confirmed gift entries matches the deduction amount, and the gift-helper refusals exclude appraisal/Section B special treatment.
+Model: Sums noncash charitable deductions through gift.allowed, with special appraisal and Section B cases refused.
 
 ### 14 — Add sa.line11, sa.line12, sa.line13
 Status: **MATCH**
 
-Model: Adds lines 11 through 13, as the form says.
+Model: Matches adding lines 11 through 13.
 
 ### 17 — Add sa.line4, sa.line7, sa.line10, sa.line14, sa.line15, sa.line16
 Status: **MATCH**
 
-Model: Adds the far-right-column totals for lines 4 through 16, which are lines 4, 7, 10, 14, 15, and 16.
+Model: Matches adding the far-right-column amounts for lines 4 through 16 via the listed subtotals.
 
 ## Raw response
 
@@ -166,74 +160,74 @@ Model: Adds the far-right-column totals for lines 4 through 16, which are lines 
 lines:
   - key: "1"
     status: MATCH
-    reason: "Line 1 calls for medical and dental expenses, and the form cautions not to include expenses reimbursed or paid by others; the restatement's 'unreimbursed eligible' matches that."
+    reason: "Matches the IRS medical and dental expenses line, with the reimbursement caution reflected as unreimbursed eligible expenses."
   - key: "5a"
     status: MATCH
-    reason: "Line 5a permits state and local income taxes or general sales taxes, but not both; the program limits to income taxes and the sales-tax election is an excluded unsupported case named by sa.unsupported."
+    reason: "Restates state/local income taxes and excludes the sales-tax election, which the unsupported gate refuses."
   - key: "5b"
     status: MATCH
-    reason: "Line 5b is state and local real estate taxes; 'deductible state/local real estate taxes' is consistent."
+    reason: "Matches state and local real estate taxes."
   - key: "5c"
     status: MATCH
-    reason: "Line 5c is state and local personal property taxes; matches."
+    reason: "Matches state and local personal property taxes."
   - key: "8a"
     status: MATCH
-    reason: "Line 8a is home mortgage interest and points reported on Form 1098; the program narrows to cases where the debt/use limits do not apply, which sa.unsupported names as excluded."
+    reason: "Matches Form 1098 home mortgage interest and points, limited to cases where the debt/use limits do not apply."
   - key: "11"
     status: MATCH
-    reason: "Line 11 is gifts by cash or check; the program's after-benefits and substantiation conditions match the instructions, and income-limited/carryover cases are excluded by sa.charity_limited."
+    reason: "Matches cash/check gifts, with benefits received and substantiation reflected and income-limited cases refused."
   - key: "2"
     status: MISMATCH
-    reason: "IRS line 2 says simply 'Enter amount from Form 1040 or 1040-SR, line 11b'; the program adds a 'but not less than zero' floor, which is not in the line text."
+    reason: "The IRS line says 'Enter amount from Form 1040 or 1040-SR, line 11b'; the restatement uses a helper that floors line 11b at zero, changing the amount when AGI is negative."
   - key: "3"
     status: MATCH
-    reason: "7.5% equals 75/1000; matches 'Multiply line 2 by 7.5% (0.075)'."
+    reason: "Matches multiplying line 2 by 7.5% (75/1000)."
   - key: "4"
     status: MATCH
-    reason: "Same direction and zero floor as 'Subtract line 3 from line 1. If line 3 is more than line 1, enter -0-'."
+    reason: "Matches subtracting line 3 from line 1 and entering -0- when the result is zero or less."
   - key: "5d"
     status: MATCH
-    reason: "Adds lines 5a through 5c, as the form says."
+    reason: "Matches adding lines 5a through 5c."
   - key: "5e"
-    status: MISMATCH
-    reason: "IRS line 5e says if you completed Form 2555 or 4563, or excluded Puerto Rico income, see the SALT worksheet; that worksheet adds those excluded amounts to line 11b. The program's ceiling helper uses only Form 1040 line 11b and there is no excluded-income refusal on line 5e."
+    status: MATCH
+    reason: "Matches the smaller-of line 5d or ceiling rule; the excluded-income refusal on the SALT worksheet covers the Form 2555/4563 and Puerto Rico addback cases."
   - key: "6"
     status: MATCH
-    reason: "Line 6 is other taxes; the only line 6 taxes identified in the provided instructions are foreign income taxes and GST, which the program excludes via sa.unsupported, so zero within supported cases."
+    reason: "The only line 6 items in the provided instructions are foreign tax and GST, which the unsupported gate refuses; zero is correct within supported cases."
   - key: "8b"
     status: MATCH
-    reason: "Line 8b is mortgage interest not reported on Form 1098; the program sets zero and excludes non-1098 mortgage interest through sa.unsupported, naming the excluded item."
+    reason: "Line 8b is by definition non-Form 1098 mortgage interest, which the unsupported gate refuses; zero is correct within supported cases."
   - key: "8c"
     status: MATCH
-    reason: "Line 8c is points not reported on Form 1098; the program excludes points not on Form 1098 through sa.unsupported, so zero within supported cases."
+    reason: "Line 8c is by definition points not reported on Form 1098, which the unsupported gate refuses; zero is correct within supported cases."
   - key: "13"
     status: MATCH
-    reason: "Line 13 is carryover from prior year; the program excludes carryovers and income-limited charitable deductions through sa.charity_limited, so zero within supported cases."
+    reason: "Carryover from a prior year is excluded by the charity_limited gate, so zero is correct within supported cases."
   - key: "15"
     status: MATCH
-    reason: "Line 15 is casualty and theft losses from a federally declared disaster; the program excludes casualty/theft losses through sa.unsupported, so zero within supported cases."
+    reason: "Casualty and theft losses are excluded by the unsupported gate, so zero is correct within supported cases."
   - key: "16"
     status: MATCH
-    reason: "Line 16 permits gambling losses only up to gambling winnings; the program computes the smaller of gambling losses and Schedule 1 line 8b and excludes other line 16 items via sa.unsupported."
+    reason: "Computes gambling losses limited to Schedule 1 line 8b winnings, matching the IRS line 16 instruction for gambling losses."
   - key: "7"
     status: MATCH
-    reason: "Adds lines 5e and 6, as the form says."
+    reason: "Matches adding lines 5e and 6."
   - key: "8e"
     status: MATCH
-    reason: "Adds lines 8a through 8c, as the form says."
+    reason: "Matches adding lines 8a through 8c."
   - key: "9"
-    status: UNCLEAR
-    reason: "The provided Schedule A text only says 'Investment interest. Attach Form 4952 if required. See instructions'; the line 9 instructions, including how to figure investment interest when Form 4952 is not required, are not provided."
+    status: MATCH
+    reason: "Matches the investment interest deduction from Form 4952 line 8."
   - key: "10"
     status: MATCH
-    reason: "Adds lines 8e and 9, as the form says."
+    reason: "Matches adding lines 8e and 9."
   - key: "12"
     status: MATCH
-    reason: "Line 12 is gifts other than by cash or check; summing allowed gift deductions for confirmed gift entries matches the deduction amount, and the gift-helper refusals exclude appraisal/Section B special treatment."
+    reason: "Sums noncash charitable deductions through gift.allowed, with special appraisal and Section B cases refused."
   - key: "14"
     status: MATCH
-    reason: "Adds lines 11 through 13, as the form says."
+    reason: "Matches adding lines 11 through 13."
   - key: "17"
     status: MATCH
-    reason: "Adds the far-right-column totals for lines 4 through 16, which are lines 4, 7, 10, 14, 15, and 16."
+    reason: "Matches adding the far-right-column amounts for lines 4 through 16 via the listed subtotals."
 ```

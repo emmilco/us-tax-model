@@ -976,6 +976,14 @@ form:
       cite:
         doc: i1040gi
         locator: pp. 34–35, line 12e and Standard Deduction Chart
+      refuses:
+        - when: sa.dependent
+          form: A return for a dependent or dual-status alien
+          remedy: A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside
+            this resident nondependent slice, whether the deduction is standard or itemized.
+          cite:
+            doc: i1040gi
+            locator: pp. 34–35, line 12e and Standard Deduction Chart
     - id: sa.mfs_spouse_itemizes
       printed: (helper)
       type: Bool

@@ -1268,6 +1268,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+  (helper) Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)
+      = false
+      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
   (helper) Your entry, if the answer is yes
       = 0
       cite: [f1040sa] i1040gi p. 35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind, "You were born before January 2, 1961", "Enter the total number of boxes checked" (2025; created 2025-11-20; c14acf34)
@@ -1979,7 +1982,7 @@ Derivations:
   sa.line15: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
   sa.line16: choose(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; s1.has_gambling = false; true = true; s1.has_gambling = false; false = false; sa.zero = $0)
   sa.line17: sum(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.line4 = $0; sa.line7 = $5,000; sa.line10 = $1,000; sa.line14 = $0; sa.line15 = $0; sa.line16 = $0)
-  sa.deduction: choose(sa.itemizes = true; true = true; sa.line17 = $6,000)
+  sa.deduction: choose(sa.dependent = false; sa.itemizes = true; true = true; sa.line17 = $6,000)
   f1040.line12e: copy(household.filing_status_conflict = false; household.hoh_fails = false; household.widowed_2025 = false; household.qss_fails = false; sa.deduction = $6,000)
   s1.sc_1a_count: sum_over(person[taxpayer].sc_1a = 0)
   s1.sc_1a: test(s1.sc_1a_count = 0; 0 = 0)

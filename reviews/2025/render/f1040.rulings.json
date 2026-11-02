@@ -3,6 +3,13 @@
  "form": "f1040",
  "rulings": [
   {
+   "printed": "12e",
+   "restated": "Enter the amount from sa helper \"Deduction selected for Form 1040 line 12e\".",
+   "model": "The base amounts, the extra per box ($2,000 single/HOH, $1,600 otherwise), the itemize choice, the SALT worksheet and the refusals all match the IRS text. However, the age-box count filters on a helper labeled 'Were you born before January 2, 1961?' The only glossary entry with that label (sa.age65) counts the taxpayer's entry alone, so it cannot be confirmed that a spouse born before January 2, 1961 on a joint return gets a box as line 12d requires.",
+   "ruling": "Ruling: representation — the age boxes on line 12d come from sa.boxes_age65, which sums person.age65 over every person entry (you and your spouse on a joint return), not from sa.age65, which is the taxpayer-only box that Schedule 1-A line 36a reads. The spouse's box is counted; no amount differs.",
+   "context": "fdfacc7f5238348f41e906caa5827b008cc1d9240ce4c4422ce4d65beec9fd6e"
+  },
+  {
    "printed": "13a",
    "restated": "Enter the amount from qbi helper \"Select Form 8995 or dividend-only Form 8995-A\".",
    "model": "Form 8995 is chosen only by comparing taxable income before the QBI deduction with the threshold. The IRS also requires 'You aren't a patron in a specified agricultural or horticultural cooperative' before Form 8995 can be used, and the program has no test or refusal for patrons.",

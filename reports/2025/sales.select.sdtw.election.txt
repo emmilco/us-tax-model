@@ -1689,7 +1689,7 @@ Derivations:
   sa.standardraw: sum(sa.standardbase = $15,750; sa.extra_age65 = $0; sa.extra_blind = $0)
   sa.standard: choose(sa.dependent = false; sa.mfs_spouse_extra = false; sa.mfs_spouse_itemizes = false; true = true; sa.mfs_spouse_itemizes = false; false = false; sa.standardraw = $15,750)
   sa.itemizes: test(sa.elect_itemize = false; true = true; sa.mfs_spouse_itemizes = false; true = true; sa.line17 = $0; sa.standard = $15,750)
-  sa.deduction: choose(sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
+  sa.deduction: choose(sa.dependent = false; sa.itemizes = false; true = true; sa.itemizes = false; false = false; sa.standard = $15,750)
   f1040.line12e: copy(household.filing_status_conflict = false; household.hoh_fails = false; household.widowed_2025 = false; household.qss_fails = false; sa.deduction = $15,750)
   s1.sc_1a_count: sum_over(person[taxpayer].sc_1a = 0)
   s1.sc_1a: test(s1.sc_1a_count = 0; 0 = 0)

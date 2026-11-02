@@ -60737,7 +60737,7 @@
         "tax_on_amount"
       ],
       "evidence": "M",
-      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 604571736c7c7a70a9ea2f8e315d3c6e2f0c2f66fad8fe62d71e2f55dd65e68e; pages i1040gi 68,80 (6024dc94dd1f); branches below_boundary:true, tax#0",
+      "evidence_note": "Class M: claude-opus-5-5; prompt sha256 604571736c7c7a70a9ea2f8e315d3c6e2f0c2f66fad8fe62d71e2f55dd65e68e; pages i1040gi 68,80 (6024dc94dd1f); branches below_boundary:true, tax#0 Context repair 2026-11-02: sa.dependent was incorrectly true on this hand-worked tax_on_amount case; the BUG-0297 refusal on sa.deduction then refuses the return. The case does not concern dependency, so the fact is corrected to false; expected values and the original model receipt are untouched.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -60788,7 +60788,7 @@
         "sa.unsupported": false,
         "sa.charity_limited": false,
         "sa.excluded_income": false,
-        "sa.dependent": true,
+        "sa.dependent": false,
         "sa.spouse_extra": false,
         "person[taxpayer].age65": false,
         "person[taxpayer].blind": false,
