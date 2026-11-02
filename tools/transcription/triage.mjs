@@ -116,19 +116,18 @@ function run(source, inputs) {
     const [handle, prefix] = key.split('\u0000');
     const s = stats.get(handle);
     const a = p.get(key), b = m.get(key);
-    if (!a || !b) {
-      if (!b && invalidHandles.has(handle)) {
-        s.invalid += 1;
-        const kind = 'candidate-invalid';
-        s.kinds[kind] = (s.kinds[kind] ?? 0) + 1;
-        const whole = returnState(inputs);
-        s.kinds_by_return[whole] ??= {};
-        s.kinds_by_return[whole][kind] = (s.kinds_by_return[whole][kind] ?? 0) + 1;
-        recordWitness(s, kind, whole, () => ({ kind, source, instance: prefix, project_return: whole, project: a,
-          candidate_error: invalidErrors.get(handle) }), maxWitnesses);
-      } else s.absent += 1;
+    if (invalidHandles.has(handle)) {
+      s.invalid += 1;
+      const kind = 'candidate-invalid';
+      s.kinds[kind] = (s.kinds[kind] ?? 0) + 1;
+      const whole = returnState(inputs);
+      s.kinds_by_return[whole] ??= {};
+      s.kinds_by_return[whole][kind] = (s.kinds_by_return[whole][kind] ?? 0) + 1;
+      recordWitness(s, kind, whole, () => ({ kind, source, instance: prefix, project_return: whole, project: a,
+        candidate_error: invalidErrors.get(handle) }), maxWitnesses);
       continue;
     }
+    if (!a || !b) { s.absent += 1; continue; }
     if (known(a) || a.kind === 'hidden') reached = true;
     s.compared += 1;
     s.sources[source.kind] = (s.sources[source.kind] ?? 0) + 1;

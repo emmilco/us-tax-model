@@ -11,6 +11,19 @@ export function executableCandidate(context, form, lines) {
   const invalid = new Set(errors.map(error => error.line).filter(Boolean));
   const inputIds = new Set(candidate.lines.filter(line => line.expr.op === "input").map(line => line.id));
   const allIds = new Set(candidate.lines.map(line => line.id));
+  const original = [...context.forms, ...context.defs].find(doc => doc.id === form);
+  const publishedTypes = new Map((original?.lines ?? []).map(line => [line.id, line.type]));
+  const refsOf = (value, out = []) => {
+    if (typeof value === "string") out.push(value);
+    else if (Array.isArray(value)) value.forEach(item => refsOf(item, out));
+    else if (value && typeof value === "object") Object.values(value).forEach(item => refsOf(item, out));
+    return out;
+  };
+  const dependencyRefs = line => new Set([
+    ...refsOf(line.expr),
+    ...(line.shown_when ? [line.shown_when] : []),
+    ...(line.refuses ?? []).map(refusal => typeof refusal === "string" ? refusal : refusal?.when),
+  ].filter(Boolean));
 
   const assemble = () => {
     const gateChecks = [];
@@ -19,9 +32,11 @@ export function executableCandidate(context, form, lines) {
     const ids = new Set(allIds);
     const runtimeLines = [];
     let invalidated = 0;
+    const stub = line => ({ id: line.id, type: publishedTypes.get(line.id) ?? line.type,
+      expr: { op: "input", source: "invalid candidate declaration" }, refuses: [], cite: null });
     for (const line of candidate.lines) {
       const publishedInput = inputIds.has(line.id);
-      if (!publishedInput && invalid.has(line.id)) continue;
+      if (!publishedInput && invalid.has(line.id)) { runtimeLines.push(stub(line)); continue; }
       let bad = false;
       const refuses = (line.refuses ?? []).map(refusal => {
         const when = typeof refusal === 'string' ? refusal : refusal?.when;
@@ -59,8 +74,18 @@ export function executableCandidate(context, form, lines) {
 
   let built = assemble();
   for (let round = 0; round < 8; round++) {
-    const typeErrors = checkExpressionTypes(built.checking, form);
     let changed = built.invalidated > 0;
+    // A valid line that reads an invalid (stubbed) line is invalid too, including a
+    // shown_when or foreign-consumer reference the type checker does not visit.
+    for (const line of built.runtimeLines) {
+      if (inputIds.has(line.id) || invalid.has(line.id)) continue;
+      if ([...dependencyRefs(line)].some(ref => allIds.has(ref) && invalid.has(ref))) {
+        invalid.add(line.id);
+        changed = true;
+      }
+    }
+    if (changed) { built = assemble(); continue; }
+    const typeErrors = checkExpressionTypes(built.checking, form);
     for (const error of typeErrors) {
       const owner = built.gateOwners.get(error.line) ?? error.line;
       if (!allIds.has(owner) || inputIds.has(owner) || invalid.has(owner)) continue;
