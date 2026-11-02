@@ -867,6 +867,27 @@ function analyzeGuards(ctx: Ctx, doc: FormDoc, line: Line): void {
     ctx.errors.push(`${where}: interval guards start at -infinity`);
     return;
   }
+  // The first bound must cover the operand's whole domain; a value below it reaches the
+  // evaluator's "no guard matched" unknown (T-096).
+  {
+    const ref = ivs[0]!.ref;
+    const hit = resolveRef(ctx, doc, ref);
+    if (hit) {
+      const ty = declaredTyOf(ctx, hit.doc, hit.line);
+      const min = ty.kind === "money" ? (ty.nonneg ? 0 : -Infinity)
+        : ty.kind === "count" || ty.kind === "rate" ? 0 : undefined;
+      if (min !== undefined && ivs[0]!.lo > min) {
+        // A source can state a domain precondition (the Tax Computation Worksheet applies only
+        // at $100,000 or more). Accept the first bound when the line's label or citation states
+        // that same dollar bound; otherwise the values below it are unguarded.
+        const text = `${line.label} ${line.cite?.locator ?? ""}`;
+        const bounds = [...text.matchAll(/\$([\d,]+)/g)].map((m) => Number(m[1]!.replace(/,/g, "")) * 100);
+        if (!bounds.includes(ivs[0]!.lo)) {
+          ctx.errors.push(`${where}: interval guards start at ${ivs[0]!.lo} but ${ref} is ${ty.kind} with minimum ${min}; values below the first bound are unguarded and no cited precondition names that bound`);
+        }
+      }
+    }
+  }
   for (let i = 0; i < ivs.length; i++) {
     const g = ivs[i]!;
     if (g.lo !== undefined && g.hi !== undefined && g.lo >= g.hi) {

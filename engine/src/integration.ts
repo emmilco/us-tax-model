@@ -5,6 +5,7 @@ import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 import { loadCanonical } from "./canonical.js";
+import { runChecks } from "./check.js";
 import { loadCases } from "./fixtures.js";
 import type { CanonicalData, Inputs } from "./types.js";
 import { YEAR_ARGS, yearPath } from "./year.js";
@@ -66,6 +67,18 @@ export function integrationChecks(): void {
         return false;
       });
       assert.deepEqual(alias,[],`cross-document aliases in values: ${alias.join(",")}`);checks++;
+    }
+    // T-096: an interval tiling whose first bound is above the operand's domain and has no
+    // cited precondition must fail the checker.
+    {
+      const data=loadCanonical();
+      const tcw=data.defs.find(d=>d.id==="tcw")!;
+      const line=tcw.lines.find(l=>l.id==="single.result")!;
+      const alt=(line.expr as any).alternatives[0];
+      alt.guard.all[0].ge[1]={const:20000000};
+      line.label="Section A—Use if your filing status is Single. Tax.";
+      const errors=runChecks(data).errors;
+      assert.ok(errors.some(e=>e.includes("values below the first bound")),`T-096 regression: ${errors.slice(0,3).join("; ")}`);checks++;
     }
     const missing={...inputs};delete missing["$w2@person[taxpayer]"];
     for(const k of Object.keys(missing))if(k.includes(".w2["))delete missing[k];

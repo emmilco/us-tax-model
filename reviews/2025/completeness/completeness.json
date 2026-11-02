@@ -1237,5 +1237,20 @@
   ],
   "cost": 0.6006268,
   "model": "claude-opus-5-5"
+ },
+ {
+  "form": "tcw",
+  "prompt_sha": "f3059455c6d81070befd07468494f31f1aa838dd0e3d9750eaada650c54fcd3b",
+  "claims": [],
+  "used": [
+   {
+    "doc": "i1040gi",
+    "pages": [
+     80
+    ]
+   }
+  ],
+  "cost": 0.120312,
+  "model": "claude-opus-5-5"
  }
 ]

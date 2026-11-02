@@ -86,7 +86,7 @@
   "unruled:f2441#3": {
    "class": "out of scope",
    "gate": "sc.special",
-   "evidence": "Source: i2441 p. 5; p503 p. 10. sc.special explicitly refuses contributions on the self-employed owner\u2019s behalf to a dependent-care assistance program. Partnership benefits require Schedule K-1/E and are refused by scope.schedule1. Hence supported line 22 is zero and line 24 carries no Schedule C/E/F deduction, as the line 22 note states.",
+   "evidence": "Source: i2441 p. 5; p503 p. 10. sc.special explicitly refuses contributions on the self-employed owner’s behalf to a dependent-care assistance program. Partnership benefits require Schedule K-1/E and are refused by scope.schedule1. Hence supported line 22 is zero and line 24 carries no Schedule C/E/F deduction, as the line 22 note states.",
    "prompt_sha": "df5bcc830fb64dd8b7cea2329f195b90924f37667d98f004e484e888745685ed"
   },
   "unruled:f2441#4": {
@@ -116,7 +116,7 @@
   "unruled:f1040#1": {
    "class": "covered",
    "line": "household.married",
-   "evidence": "Source: p501 p. 6. BUG-0280 adds the explicit divorce-to-file-unmarried-and-remarry warning to household.married (\"if you divorced solely to file as unmarried, intending at the time to remarry each other in the next tax year, and actually do so, you must file as married in both years\"), and BUG-0286 enforces consistency between household.married and f1040.status via household.filing_status_conflict. The f1040 completeness prompt did not include household.married\u2019s question text.",
+   "evidence": "Source: p501 p. 6. BUG-0280 adds the explicit divorce-to-file-unmarried-and-remarry warning to household.married (\"if you divorced solely to file as unmarried, intending at the time to remarry each other in the next tax year, and actually do so, you must file as married in both years\"), and BUG-0286 enforces consistency between household.married and f1040.status via household.filing_status_conflict. The f1040 completeness prompt did not include household.married’s question text.",
    "prompt_sha": "7f0caef60bf48f8640556fb7ae1380663d2e38c7131780a2de16bdad3ee56f56"
   },
   "unruled:f1040#2": {
@@ -128,7 +128,7 @@
   "unruled:f1040#3": {
    "class": "out of scope",
    "gate": "scope.other_income",
-   "evidence": "Source: i1040gi p. 24; i1040gi p. 25. The whole-return scope input explicitly names Form 1040 lines 1b\u20131d and 1f\u20131h, unreported wages/tips, adoption benefits and other earned income. s1.line8_other additionally names wages while incarcerated and the specified nonqualified/457 pensions; retirement.special screens pre-retirement disability pensions and corrective distributions. The reviewer missed these external scope inputs.",
+   "evidence": "Source: i1040gi p. 24; i1040gi p. 25. The whole-return scope input explicitly names Form 1040 lines 1b–1d and 1f–1h, unreported wages/tips, adoption benefits and other earned income. s1.line8_other additionally names wages while incarcerated and the specified nonqualified/457 pensions; retirement.special screens pre-retirement disability pensions and corrective distributions. The reviewer missed these external scope inputs.",
    "prompt_sha": "7f0caef60bf48f8640556fb7ae1380663d2e38c7131780a2de16bdad3ee56f56"
   },
   "unruled:f1040#4": {
@@ -216,7 +216,7 @@
   "unruled:household#6": {
    "class": "out of scope",
    "gate": "scope.other_income",
-   "evidence": "Source: i1040gi p. 13; i1040gi p. 14. scope.other_income explicitly asks about nonresident alien status of you or your spouse for any part of 2025; scope.ready refuses the return on that answer. The resident-election route described by i1040gi pp. 13\u201314 is outside this tool, not left unscreened by household.filing_status_conflict.",
+   "evidence": "Source: i1040gi p. 13; i1040gi p. 14. scope.other_income explicitly asks about nonresident alien status of you or your spouse for any part of 2025; scope.ready refuses the return on that answer. The resident-election route described by i1040gi pp. 13–14 is outside this tool, not left unscreened by household.filing_status_conflict.",
    "prompt_sha": "f049d8a43b1b266557445897a04b2bb295d9292493c4c82133a188e54cc6b151"
   }
  },
@@ -272,7 +272,6 @@
   "stale:sli": "05e0cd85adaedb89",
   "stale:ssb": "790b403a8f0a743a",
   "stale:tax_on_amount": "c72ec94877503867",
-  "stale:tcw": "b2725528be301e6d",
   "stale:tipjob": "c840977b8b9629f7",
   "stale:u1250": "06908376dca570ad",
   "stale:w2": "aef29c773db0970e"
@@ -583,12 +582,6 @@
    "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
    "prompt_sha": "908e6e0cddc535e0d91a6827d0fbf3469f2a2b317a7ca488085dcc8eb6becc1a",
    "subject": "44f37d619985e18426a1a9c917cedfce415d2eb4caa76ddd875fe6b15f9c8e80"
-  },
-  "stale:tcw": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "34f215477f3e4bb90382a61fd34b74fb6954b9b16ee87a90010e2dd733681dc3",
-   "subject": "aea991224b86c903841319c612bb4e64101391e7a5de6ae9c1e881a786caca95"
   },
   "stale:tipjob": {
    "policy": "never-reviewed-completeness-debt-v1",

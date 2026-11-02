@@ -94,7 +94,7 @@ def:
       cite: { doc: i1040gi, locator: 'p. 80, Section A—Use if your filing status is Single, row 5, "Over $626,350", "$ 42,979.75", "Tax. Subtract (d) from (c)"' }
     - id: single.result
       printed: "Tax"
-      label: "Section A—Use if your filing status is Single. Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
+      label: "Section A—Use if your taxable income is $100,000 or more and your filing status is Single. Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr:
         op: choose
@@ -190,7 +190,7 @@ def:
       cite: { doc: i1040gi, locator: 'p. 80, Section B—Use if your filing status is Married filing jointly or Qualifying surviving spouse, row 5, "Over $751,600", "$ 75,937.50", "Tax. Subtract (d) from (c)"' }
     - id: mfj.result
       printed: "Tax"
-      label: "Section B—Use if your filing status is Married filing jointly or Qualifying surviving spouse. Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
+      label: "Section B—Use if your taxable income is $100,000 or more and your filing status is Married filing jointly or Qualifying surviving spouse. Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr:
         op: choose
@@ -286,7 +286,7 @@ def:
       cite: { doc: i1040gi, locator: 'p. 80, Section C—Use if your filing status is Married filing separately, row 5, "Over $375,800", "$ 37,968.75", "Tax. Subtract (d) from (c)"' }
     - id: mfs.result
       printed: "Tax"
-      label: "Section C—Use if your filing status is Married filing separately. Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
+      label: "Section C—Use if your taxable income is $100,000 or more and your filing status is Married filing separately. Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr:
         op: choose
@@ -382,7 +382,7 @@ def:
       cite: { doc: i1040gi, locator: 'p. 80, Section D—Use if your filing status is Head of household, row 5, "Over $626,350", "$ 44,718.00", "Tax. Subtract (d) from (c)"' }
     - id: hoh.result
       printed: "Tax"
-      label: "Section D—Use if your filing status is Head of household. Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
+      label: "Section D—Use if your taxable income is $100,000 or more and your filing status is Head of household. Tax. Subtract (d) from (c). Enter the result here and on the entry space on line 16."
       type: Dollars
       expr:
         op: choose

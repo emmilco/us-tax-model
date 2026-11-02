@@ -138,3 +138,15 @@ review for person.x_other was rerun and ruled: T-118 is closed, and it found a n
 and was updated; fixtures pass 1,425/1,425. The sc.at_risk wording (BUG-0290/T-157) was reverted and returned
 to the Schedule C pass: the sc form would then be due for completeness review, which produced 18 claims and is
 the form pass, not a wording fix.
+
+### T-096 guard-domain check — 2026-11-01
+
+`analyzeGuards` now compares the lowest interval bound with the operand's domain minimum. A tiling that
+starts above the minimum is accepted only when the choose line's label or citation states the same dollar
+bound; otherwise the build fails. The Tax Computation Worksheet sections state their real precondition
+("taxable income is $100,000 or more") in the four section labels, so the four errors the new check first
+raised are now cited. Added an integration regression that raises the first bound without the precondition
+and expects the checker to reject it. The tcw def labels changed, so the tcw transcription and render reviews
+were rerun under both families and ruled; the render logs match 46/46. The tcw completeness review now exists
+with zero claims, so its `stale:tcw` baseline and deferred-debt records were retired intentionally (the same
+treatment f1040 received after its actual review).

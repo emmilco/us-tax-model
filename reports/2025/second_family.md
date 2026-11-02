@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 149 form-kind pair(s) with logs from Claude and deepseek; ruled model-error noise 7.6% (357/4676 second-family lines judged; pending reviews are provisional); 73 eligible, 75 pending; raw agreement 79.2% (diagnostic only); current independence yield 273 line(s); both families disputed 514
+Summary: 149 form-kind pair(s) with logs from Claude and deepseek; ruled model-error noise 7.6% (357/4676 second-family lines judged; pending reviews are provisional); 74 eligible, 74 pending; raw agreement 79.2% (diagnostic only); current independence yield 273 line(s); both families disputed 514
 
 Written by `tools/transcription/compare_families.py` on 2026-11-01 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -74,7 +74,7 @@ Written by `tools/transcription/compare_families.py` on 2026-11-01 from the revi
 | sli | deepseek (deepseek-flash) | 9 | 4 | 44.4% | 0/9 (0.0%) | pending | 0 | 5 | 0 | 0 |
 | ssb | deepseek (deepseek-flash) | 19 | 13 | 68.4% | 3/19 (15.8%) | pending | 0 | 4 | 2 | 0 |
 | tax_on_amount | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 1 | 0 | 0 |
-| tcw | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 1 | 0 | 0 |
+| tcw | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pass | 0 | 1 | 0 | 0 |
 | tipjob | deepseek (deepseek-flash) | 3 | 2 | 66.7% | 0/3 (0.0%) | pending | 0 | 0 | 1 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 6 | 33.3% | 7/18 (38.9%) | pending | 4 | 6 | 2 | 0 |
 | w2 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 0 | 1 | 1 | 0 |
@@ -131,7 +131,6 @@ Pending se [deepseek]: no passing current expression type validation: claude, de
 Pending sli [deepseek]: 5 open, unclassified or interface-gap rulings; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending ssb [deepseek]: model-error noise above 10%.
 Pending tax_on_amount [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending tcw [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending tipjob [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending u1250 [deepseek]: model-error noise above 10%; no passing current expression type validation: claude, deepseek; no verified current request context for claude: current expression/refusal validation fails; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending w2 [deepseek]: transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
