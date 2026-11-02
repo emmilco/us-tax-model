@@ -82,7 +82,7 @@ Written by `tools/transcription/compare_families.py` on 2026-11-02 from the revi
 | w2 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 0 | 1 | 1 | 0 |
 | **all** | | 1307 | 468 | 35.8% | | | 187 | 620 | 32 | 0 |
 
-Pending asset [deepseek]: model-error noise above 10%.
+Pending asset [deepseek]: model-error noise above 10%; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending carloan [deepseek]: model-error noise above 10%.
 Pending dcprov [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending dependent [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails; no passing current source-based partial-input checks: deepseek.
@@ -127,7 +127,7 @@ Pending s2 [deepseek]: 1 open, unclassified or interface-gap rulings; model-erro
 Pending s3 [deepseek]: model-error noise above 10%.
 Pending s8812 [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending sa [deepseek]: 1 open, unclassified or interface-gap rulings; model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt.
-Pending sc [deepseek]: model-error noise above 10%; transcription predates unit-preserving comparison; verified re-comparison required: claude; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude; no verified current request context for deepseek: current expression/refusal validation fails.
+Pending sc [deepseek]: model-error noise above 10%; transcription predates unit-preserving comparison; verified re-comparison required: claude; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending scveh [deepseek]: 19 open, unclassified or interface-gap rulings; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending sd [deepseek]: 2 open, unclassified or interface-gap rulings; no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
 Pending sdtw [deepseek]: model-error noise above 10%; no passing current expression type validation: claude; no verified current request context for claude: current expression/refusal validation fails.

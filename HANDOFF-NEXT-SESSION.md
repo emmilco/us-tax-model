@@ -1,3 +1,93 @@
+# Session handoff — 2026-11-02; asset/Schedule C pass in progress
+
+**State:** `main` is at `1547d27` (the f8962 form pass and the BUG-0297 fix; both full-suite green on their tested
+trees). The working tree is clean. The **asset/Schedule C pass (T-157/T-158) is in progress on branch
+`asset-sc-pass`** (tip `27b6e8f`, pushed) and is **not merged**: its review rulings are open and its sc render review
+must be rerun. Do not merge that branch or claim the pass closed until the steps below are done.
+
+## What is closed on main
+
+- `804cb65` **f8962 form pass** (T-134/T-162, BUG-0293–0296): the full MEC rule in `f8962.other`, the
+  intentional/reckless misreporting limb, `f1095a.void` + `f8962.void_form`, `f8962.premium_adjust`; 190 gates;
+  1,433 fixtures; Claude/DeepSeek/GPT-6 reviews ruled; completeness and screen reviews closed. See the entry below.
+- `1547d27` **BUG-0297**: `sa.dependent` was declared only on `sa.standard`, so a claimable dependent who elected to
+  itemize completed the return (witness: f1040 line 24 $4,565, Form 8962 line 24 $3,560). The refusal is now also on
+  `sa.deduction`; `stage4.refuse.dependent_itemizes` is the regression; the stage8 recorded refusal follows the new
+  wording; one classm `tax_on_amount` case had an incidental dependent fact corrected. The same commit carries the
+  cloud audit's evidence corrections and closes the completeness reviews it pulled in. Full suite green on
+  `c9978e49`.
+
+## Asset/Schedule C pass — exact state on `asset-sc-pass`
+
+The owner approved the decision memo (read-only, from the cloud session) and asked to start the pass:
+
+- **Authored and committed** (`1cf431a`):
+  - `sc.at_risk` now states the related-party prong (i1040sc p. 15) and corrects the nonrecourse-loan limb: a loan
+    secured only by business property is not at risk (p. 14, "other than property used in the business").
+  - `asset.screen` adds qualified reuse and recycling property (the 50% class, i4562 pp. 5–6) and an acquisition
+    before September 28, 2017 (the 40% window begins September 28, 2017); both route through the existing
+    `asset.screened` refusal. `asset.bonus_fullcase`'s label states the 100%/40% windows; `asset.after_jan19`
+    points at the screen.
+  - Two source-predicted refusal fixtures: `stage14.asset.refuse_reuse_recycling` and
+    `stage14.asset.refuse_pre_2017`; `stage14.asset.refuse_class`'s recorded form text was refreshed. 1,435/1,435
+    fixtures.
+- **Claude reviews** (`99b8325`): asset transcription 2 agree / 14 disagree; sc transcription 30/25; asset render
+  15 match / 0 mismatch; sc render 65/0/1 unclear with **9 lines keyed by bare line numbers** (10, 14, 2, 3, 4, 5,
+  7, 8, 9), so the sc render log is incomplete and must be rerun.
+- **DeepSeek reviews** (`27b6e8f`): asset transcription 1/15 (13 candidate-invalid, 2 differs) with all 15 sections
+  ruled; asset render 10/5 with all 5 ruled; sc transcription 22/33 (14 candidate-invalid) with **33 sections
+  still open**; sc render 70/4 with 1 missing line and 4 open.
+- **Not done:** rule the Claude asset transcription (14), Claude sc transcription (25), Claude sc render (1 unclear),
+  and DeepSeek sc transcription (33) and sc render (4); rerun the sc render review once to get all printed keys;
+  then run the full suite and commit the tested tree.
+
+The memo's design decisions are recorded here: the 50% reuse/recycling class and pre-September-28-2017 acquisitions
+are refused (no 2025 rate for the latter; i4562 and Pub. 946 disagree on whether 168(m) applies when 168(k) does),
+and the alternative to refusing the 50% class is a computed `fifty` path with an ambiguity entry. The archived
+sources do not define "acquired" by binding-contract date; do not add that language without archiving the
+regulation. The suggested screen reviews for `asset.screen` and `sc.at_risk` do **not** apply: both are inputs read
+through helper gates (`asset.screened`, `sc.not_at_risk`) and are not refusal gates themselves.
+
+## Cloud session
+
+The owner's cloud Claude session is no longer part of the repository: `CLOUD_CLAUDE_INSTRUCTIONS.md` was removed in
+this handoff commit. Its audit and task history are in this handoff and the experiment log. The session produced two
+material results worth keeping: BUG-0297 (the itemizing dependent, fixed) and the ruling corrections in BUG-0297's
+commit (DeepSeek's real f8962 model errors, the `sc.hi_screened` attribution, GPT's APTC entry gate, and the
+completeness evidence for f1095a#3).
+
+## Branches
+
+- `asset-sc-pass` — the WIP above; keep it for the next session, do not merge until green.
+- `f8962-form-pass` and `dependent-itemize-fix` — deleted after this handoff; their content is in `main` (the f8962
+  tree is the parent of `804cb65`; the dependent fix's tested tree is `1547d27`). `coverage-tree` is an ancestor of
+  `main`.
+
+## Open queues and tasks
+
+- **Queue 1, amount-affecting:** T-157 and T-158 are in progress on `asset-sc-pass`; T-161/BUG-0292 (HSA carryover)
+  remains.
+- **Queue 2, checker:** T-096 done.
+- **Queue 3, evidence/tooling:** T-143/T-160 done. Open: T-159, T-163 (shown_when prompt wording), T-164
+  (premium_adjust wording), T-165 (column B "zero if blank", BUG-0298), T-166 (affordability in f8962.other,
+  BUG-0299), T-167 (stillbirth, BUG-0300), T-168 (dependent student, BUG-0301), T-169 (Schedule A details,
+  BUG-0302), and the P2 rows T-139–140, T-142, T-144, T-146–148.
+- **P2 review backlog:** unchanged; Claude logs are clean. Optional DeepSeek transcription remains open in f4562
+  (14), f8606 (3), f8995 (9), qbi (4), scveh (19), sli (5); optional DeepSeek render in f8606 (1), f8995 (2),
+  f8995a (1), ltc (1), mq (2), oi8z (1), sa (3), se (5), sli (3).
+- **Next broad batch after these:** F1 dependent/education (T-104–113, T-153/154, etc.), then F2/F4/F5, then
+  coverage expansion (Schedule E last).
+
+## Reading order for the next session
+
+1. This entry; then `TASKS.md` and `docs/2026-11-01_backlog_plan.md`.
+2. `git log --oneline -3` and `git diff main asset-sc-pass` for the WIP.
+3. The asset/Schedule C memo is summarized above; the original task and result were in the deleted cloud file.
+4. Model authority and the GPT-6 transport are in `docs/2026-10-24_validation_policy.md` and
+   `tools/transcription/README.md`.
+
+---
+
 # f8962 form pass closed — 2026-11-02; next is the asset/Schedule C pass
 
 **State:** the f8962 form pass (T-134 and T-162) is committed here; `TASKS.md` moves both rows to `TASKS-DONE.md`
