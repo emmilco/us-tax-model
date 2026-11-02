@@ -4283,3 +4283,96 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Disposition:** T-169, with the Schedule A form pass (F4): extend the questions or add refusals; rerun the sa reviews and this completeness review.
 - **Validation:** one completeness review with six claims (five mapped here, the MFS joint-expense claim refused by s3.mfs) and source inspection.
 - **Tags:** source-definition-debt; schedule-a; explicitly-deferred
+
+## BUG-0303 — Form 4562 line 2 counted qualified improvement property with no section 179 election
+
+- **Caught by:** Claude transcription of `asset` (asset.cost179, candidate zero against project $30,000 on `stage14.asset.qip`), 2026-11-02, during the T-157/T-158 pass.
+- **Source:** i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during the tax year (including the total cost of qualified real property that you elect to treat as section 179 property)"; pp. 2-3, Special rules for qualified section 179 real property, "You can elect to treat certain qualified real property placed in service during the tax year as section 179 property".
+- **Symptom:** `asset.cost179_2025` took the business cost of every 2025 asset used more than 50% in the business, so qualified improvement property with no election appeared on Form 4562 line 2 ($30,000 instead of $0 on the witness) and counted toward the $4,000,000 threshold that reduces the limit.
+- **Fix:** `asset.cost179_2025` now reads `asset.cost179_real`, which takes the business cost only when `asset.is_section179` holds: the class is not qualified improvement property, or an amount is elected on line 6(c). The other qualified section 179 real property (roofs, HVAC, fire protection and security systems) is real property `asset.screen` already refuses.
+- **Fix lines:** `asset.cost179_2025`, `asset.cost179_real`, `asset.is_section179`
+- **Siblings checked:** `asset.cost179_2025`, `asset.cost179`, `asset.bonus_2025`, `asset.dep_2025`, `asset.mq_q4`, `asset.mq_total`, `asset.s179_2025`, `s179.line2`, `s179.line5`, `s179.mfs`, `sc.cost179`, `sc.cost179_a`, `sc.cost179_v`, `sc.mq_q4`, `sc.mq_q4_a`, `sc.mq_q4_v`, `sc.mq_total`, `sc.mq_total_a`, `sc.mq_total_v`, `scveh.cost179_o`, `scveh.mq_q4_o`, `scveh.mq_total_o`, `asset.after179`, `asset.f26i`, `asset.period`, `asset.s179_bad`
+- **Regression predictions:** `stage14.asset.qip` now asserts line 2 $0; `stage14.asset.qip_elected` ($30,000 cost, $10,000 elected) asserts line 2 $30,000 and depreciation of $666 (3.33% of $20,000). Both were written from the source before the evaluator was run.
+- **Validation:** fixtures 1,436/1,436 on the fixed tree; asset reviews rerun on it.
+- **Tags:** source-transcription; section-179; fixed
+
+## BUG-0304 — The long-term care question tested the covered person's employer eligibility, not the filer's
+
+- **Caught by:** Claude render comparison of `sc` (line 2), 2026-11-02, during the T-157/T-158 pass.
+- **Source:** f7206 line 2, "Don't include payments for any month you were eligible to participate in a long-term care insurance plan subsidized by your employer or your spouse's employer, or the employer of either your dependent or your child who was under the age of 27 at the end of 2025."
+- **Symptom:** `ltc.payments` excluded months "the person was eligible for a long-term care plan subsidized by an employer". A filer eligible through their own employer who paid premiums for a covered spouse or dependent could answer with the full amount and overstate the deduction.
+- **Fix:** the question now states the form's test in its own terms: months you were eligible, through your, your spouse's, your dependent's or your under-27 child's employer.
+- **Fix lines:** `ltc.payments`
+- **Siblings checked:** `ltc.amount`, `sc.f7206_line1`, `sc.f7206_line2`
+- **Regression predictions:** wording only; no new input or fixture amount. The evidence is the ltc reviews rerun on the new wording.
+- **Validation:** ltc transcription and render reviews rerun under both families.
+- **Tags:** source-definition-debt; wording; fixed
+
+## BUG-0305 — BUG-0290 and BUG-0291 are fixed by the asset/Schedule C pass
+
+- **Caught by:** BUG-0290 and BUG-0291, recorded open; this entry closes them because the inventory is append-only.
+- **Source:** i1040sc pp. 14-15, Line 32; i4562 pp. 5-7, Line 14.
+- **Symptom:** as recorded in those entries.
+- **Fix:** `sc.at_risk` states the related-party prong and that a nonrecourse loan secured only by property used in the business is not at risk. `asset.screen` refuses qualified reuse and recycling property and an acquisition before September 28, 2017, the owner-accepted refusal in place of a computed 50% branch; the `asset.bonus_fullcase` label states the 100% and 40% windows; `asset.after_jan19` points at the screen.
+- **Fix lines:** `sc.at_risk`, `asset.screen`, `asset.bonus_fullcase`, `asset.after_jan19`
+- **Siblings checked:** `asset.bonus_fullcase`, `sc.not_at_risk`, `asset.screened`, `asset.bonus_choice`, `asset.bonus`
+- **Regression predictions:** `stage14.asset.refuse_reuse_recycling` and `stage14.asset.refuse_pre_2017`, predicted from the source before recording.
+- **Validation:** asset, sc and scveh reviews rerun; sc completeness rerun.
+- **Tags:** source-definition-debt; existing-form-pass; fixed
+
+## BUG-0306 — A vehicle placed in service in 2025 but acquired before September 28, 2017 took the 40% allowance
+
+- **Caught by:** Claude and DeepSeek render comparisons of `scveh` (line 16), 2026-11-02, after BUG-0291's fix reached only `asset`.
+- **Source:** i4562 p. 5, Line 14, "Certain qualified property acquired after September 27, 2017, and before January 20, 2025".
+- **Symptom:** `scveh.rate40` gives 40% to any claimed 2025 vehicle not acquired after January 19, 2025, including one acquired earlier than the window, which has no allowance at that rate.
+- **Fix:** `scveh.screen` refuses a vehicle placed in service in 2025 but acquired before September 28, 2017. It is narrower than the `asset.screen` item so that an older vehicle with no allowance in play is not refused.
+- **Fix lines:** `scveh.screen`
+- **Siblings checked:** `scveh.screened`, `scveh.rate40`, `scveh.after_jan19`, `asset.screen`
+- **Regression predictions:** `stage14.veh.refuse_pre_2017` answers the screen Yes and is refused at the cost line, written from the source before the evaluator was run.
+- **Validation:** scveh reviews rerun under both families.
+- **Tags:** fix-sibling; source-definition-debt; fixed
+
+## BUG-0307 — Form 4562 property questions omit section 179, allowance, class and listed-use rules
+
+- **Caught by:** the asset completeness review, 2026-11-02, during the T-157/T-158 pass.
+- **Source:** i4562 p. 2 (section 179 property and its exclusions); pp. 6-7 (section 168(k)(9) exclusions and used property); pp. 10-11 (statutory classifications outside Appendix B); p946 p. 37 and i4562 p. 12 (short tax year); i4562 p. 14 (qualified business use exclusions and listed property converted to business use); p. 3 (a home as a regular business establishment).
+- **Symptom:** the asset questions do not state these rules, so a filer can elect section 179 on ineligible property, claim the allowance on excluded property, take the wrong recovery period, pass the 50% test on general business use, or answer that property is not listed. Each can change an amount or eligibility.
+- **Disposition:** T-170, with the F4 asset pass: extend the questions or add refusals; rerun the asset reviews and this completeness review.
+- **Validation:** one completeness review with seven claims, each quote matched against the archive; no fixture or numerical evidence claimed.
+- **Tags:** source-definition-debt; existing-form-pass; explicitly-deferred
+
+## BUG-0308 — The long-term care entry does not limit who the covered person may be
+
+- **Caught by:** the ltc completeness review, 2026-11-02.
+- **Source:** i7206 p. 1, premiums for yourself, your spouse, your dependents, and your child under age 27 at the end of the year.
+- **Symptom:** `ltc.payments` accepts premiums for "this person" with no test of the relationship, so premiums for a nondependent parent or an older nondependent child can enter line 2.
+- **Disposition:** T-171, with the next ltc or Form 7206 change: state the covered people in the question; rerun the ltc reviews.
+- **Validation:** one completeness claim, its quotes matched against the archive.
+- **Tags:** source-definition-debt; explicitly-deferred
+
+## BUG-0309 — Schedule C questions omit income, expense, election and QBI rules
+
+- **Caught by:** the sc completeness review, 2026-11-02, during the T-157/T-158 pass.
+- **Source:** i1040sc pp. 2-5 (business against hobby; an LLC electing corporate treatment), pp. 5-6 and 9 (sales tax; fuel tax credit), pp. 4 and 15 (tax shelters; long-term contracts), p. 8 (prepaid and shared interest), pp. 9-10 (travel and meal limits; fringe benefits), p. 1 (the $150,000 ceiling), pp. 10 and 13-14 (simplified method conditions), p. 14 (prior-year passive losses); i4562 p. 4 (recapture on non-listed section 179 property); p946 p. 17 (noncorporate lessors; trade-ins); i1040gi p. 94 (personal services as a material income factor); i8995 pp. 2-3 (former employees; Form 1099-PATR).
+- **Symptom:** the sc questions do not state these rules or refuse them, so a filer can report an activity that is not a business, misstate income or expenses, keep a double deduction, skip a recapture, or carry an unallowed passive loss. Most can change an amount.
+- **Disposition:** T-172, with the F4 Schedule C pass: extend the questions or add refusals; rerun the sc reviews and this completeness review.
+- **Validation:** one completeness review with fifteen real-gap claims of seventeen, each quote matched against the archive; no fixture or numerical evidence claimed.
+- **Tags:** source-definition-debt; existing-form-pass; explicitly-deferred
+
+## BUG-0310 — A lessee who used the standard mileage rate earlier can switch to actual expenses (open)
+
+- **Caught by:** the scveh completeness review (claim 1), 2026-11-02; reproduced by evaluation. It also shows the earlier render ruling "refusal located elsewhere" on scveh line 9 was wrong.
+- **Source:** i1040sc p. 6, "You can't use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle."
+- **Symptom:** the `scveh.screen` refusal is declared on `scveh.cost`, which a leased vehicle does not read. `stage14.veh.leased_actual` with the screen answered Yes still completes: line 9 $1,000, line 20a $3,000, and f1040 line 24 unchanged.
+- **Disposition:** T-173, in queue 1. Declaring the screen on the leased branch would refuse lessees for its owned-vehicle items, so the fix is a new question for a leased vehicle on actual expenses with its own refusal, which ripples through the question bank and fixtures.
+- **Validation:** evaluator run on the fixture with the screen answered both ways; no regression yet.
+- **Tags:** eligibility; amount-affecting; explicitly-deferred
+
+## BUG-0311 — Vehicle questions omit qualified use, method, basis, lessor and record rules
+
+- **Caught by:** the scveh completeness review, 2026-11-02.
+- **Source:** i4562 p. 14 (qualified business use exclusions); p. 7 and p. 14 (business-to-personal conversion); pp. 7, 11-12 and p946 p. 35 (method and ADS elections, mandatory ADS); p946 pp. 37, 60 (short tax year; basis adjustments); i4562 p. 15 and p946 p. 59 (regular lessors); i1040sc p. 6 (capitalized costs); p946 p. 63 (adequate records).
+- **Symptom:** the vehicle questions neither state nor refuse these rules, so a filer can pass the 50% test on excluded use, take the allowance on a vehicle converted to personal use in the same year, keep the table rates after a basis adjustment or an election, or have the limits wrongly applied. Most can change an amount.
+- **Disposition:** T-174, with the F4 vehicle pass: extend the questions or add refusals; rerun the scveh reviews and this completeness review.
+- **Validation:** one completeness review with eight real-gap claims of twelve, each quote matched against the archive; no fixture or numerical evidence claimed.
+- **Tags:** source-definition-debt; existing-form-pass; explicitly-deferred

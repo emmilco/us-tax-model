@@ -1,6 +1,6 @@
 # Evidence coverage per line
 
-**Scoreboard.** Share of computed lines with at least one outside-family assertion: 554 of 1921 (28.8%). H (human source reading): 0, B (human worked values): 0, second-family M: 435, E: 220.
+**Scoreboard.** Share of computed lines with at least one outside-family assertion: 554 of 1923 (28.8%). H (human source reading): 0, B (human worked values): 0, second-family M: 435, E: 220.
 
 A computed line is one whose atom is not `input`, `param` or `copy`. An outside-family assertion is a signed human source reading (H), a class B fixture (human worked values), a class M fixture whose recorded model is not a Claude model (second-family M), or an engine assertion (E) under the rule below. The sub-counts overlap: a line with several kinds counts once in the share. H checks the encoded rule against IRS text; B and M check worked values. Second-family transcription and render readings are reported separately in second_family.md and do not yet enter this scoreboard. Class A, Claude-family M, C and R do not move it.
 
@@ -21,73 +21,75 @@ Engine ids with no line of their own (never an E assertion): f1040.tax_before_cr
 | asset.zero | — | — | — | — | — | — | — |
 | asset.class | — | — | — | — | — | — | — |
 | asset.period | — | — | — | 4 | — | — | — |
-| asset.outside | — | — | — | 4 | — | — | — |
+| asset.outside | — | — | — | — | — | — | — |
 | asset.screen | — | — | — | — | — | — | — |
-| asset.screened | — | — | — | 4 | — | — | — |
+| asset.screened | — | — | — | — | — | — | — |
 | asset.placed | — | — | — | — | — | — | — |
-| asset.cost | — | — | — | — | — | — | 1 (stage14.asset.refuse_class) |
+| asset.cost | — | — | — | — | — | — | 3 |
 | asset.pct | — | — | — | — | — | — | — |
 | asset.cent | — | — | — | — | — | — | — |
 | asset.hundred | — | — | — | — | — | — | — |
 | asset.pct_c | — | — | — | — | — | — | — |
-| asset.pct_bad | — | — | — | 4 | — | — | — |
+| asset.pct_bad | — | — | — | — | — | — | — |
 | asset.listed | — | — | — | — | — | — | — |
 | asset.half | — | — | — | — | — | — | — |
-| asset.over_half | — | — | — | 4 | — | — | — |
-| asset.listed_low | — | — | — | 4 | — | — | — |
+| asset.over_half | — | — | — | — | — | — | — |
+| asset.listed_low | — | — | — | — | — | — | — |
 | asset.basis | — | — | — | 4 | — | — | 3 |
-| asset.is2025 | — | — | — | 4 | — | — | — |
-| asset.on_19 | — | — | — | 4 | — | — | — |
-| asset.on_17 | — | — | — | 4 | — | — | — |
-| asset.on_26_2025 | — | — | — | 4 | — | — | — |
-| asset.year | — | — | — | 4 | — | — | — |
-| asset.last | — | — | — | 4 | — | — | — |
-| asset.done | — | — | — | 4 | — | — | — |
+| asset.is2025 | — | — | — | — | — | — | — |
+| asset.on_19 | — | — | — | — | — | — | — |
+| asset.on_17 | — | — | — | — | — | — | — |
+| asset.on_26_2025 | — | — | — | — | — | — | — |
+| asset.year | — | — | — | — | — | — | — |
+| asset.last | — | — | — | — | — | — | — |
+| asset.done | — | — | — | — | — | — | — |
 | asset.quarter | — | — | — | — | — | — | — |
-| asset.qconv | — | — | — | 4 | — | — | — |
+| asset.qconv | — | — | — | — | — | — | — |
 | asset.s179 | — | — | — | — | — | — | — |
-| asset.s179_bad | — | — | — | 4 | — | — | — |
-| asset.after179 | — | — | — | 4 | — | — | 3 |
+| asset.s179_bad | — | — | — | — | — | — | — |
+| asset.after179 | — | — | — | — | — | — | 3 |
 | asset.after_jan19 | — | — | — | — | — | — | — |
 | asset.bonus_choice | — | — | — | — | — | — | — |
 | asset.bonus_same | — | — | — | — | — | — | — |
-| asset.bonus_mixed | — | — | — | 4 | — | — | — |
+| asset.bonus_mixed | — | — | — | — | — | — | — |
 | asset.rate40 | — | — | — | — | — | — | — |
-| asset.bonus_full | — | — | — | 3 | — | — | 1 (stage14.asset.refuse_bonus_mixed) |
-| asset.bonus_forty | — | — | — | 3 | — | — | 1 (stage14.asset.refuse_bonus_mixed_forty) |
-| asset.bonus_fullcase | — | — | — | 3 | — | — | — |
+| asset.bonus_full | — | — | — | — | — | — | 1 (stage14.asset.refuse_bonus_mixed) |
+| asset.bonus_forty | — | — | — | — | — | — | 1 (stage14.asset.refuse_bonus_mixed_forty) |
+| asset.bonus_fullcase | — | — | — | — | — | — | — |
 | asset.bonus | — | — | — | 3 | — | — | 4 |
-| asset.f25 | — | — | — | 1 (classm.asset.2) | — | — | 2 (stage14.asset.listed_and_not, stage14.asset.listed_forty) |
-| asset.f26i | — | — | — | 1 (classm.asset.2) | — | — | 1 (stage14.asset.listed_and_not) |
-| asset.ub | — | — | — | 4 | — | — | — |
+| asset.f25 | — | — | — | 2 (classm.asset.1, classm.asset.4) | — | — | 2 (stage14.asset.listed_and_not, stage14.asset.listed_forty) |
+| asset.f26i | — | — | — | 2 (classm.asset.1, classm.asset.4) | — | — | 1 (stage14.asset.listed_and_not) |
+| asset.ub | — | — | — | — | — | — | — |
 | asset.col19c | — | — | — | 3 | — | — | 1 (stage14.asset.listed_and_not) |
 | asset.hy | — | — | — | — | — | — | — |
-| asset.rate_hy | — | — | — | 3 | — | — | — |
-| asset.rate_mq | — | — | — | 3 | — | — | — |
-| asset.macrs_hy | — | — | — | 3 | — | — | — |
-| asset.macrs_mq | — | — | — | 3 | — | — | — |
-| asset.macrs2025 | — | — | — | 3 | — | — | 13 |
-| asset.mqbase | — | — | — | 4 | — | — | — |
-| asset.mq_q4_2025 | — | — | — | 4 | — | — | — |
+| asset.rate_hy | — | — | — | — | — | — | — |
+| asset.rate_mq | — | — | — | — | — | — | — |
+| asset.macrs_hy | — | — | — | — | — | — | — |
+| asset.macrs_mq | — | — | — | — | — | — | — |
+| asset.macrs2025 | — | — | — | 3 | — | — | 14 |
+| asset.mqbase | — | — | — | — | — | — | — |
+| asset.mq_q4_2025 | — | — | — | — | — | — | — |
 | asset.prior_conv | — | — | — | — | — | — | — |
 | asset.prior_179 | — | — | — | — | — | — | — |
 | asset.prior_bonus | — | — | — | — | — | — | — |
-| asset.ub_prior_a | — | — | — | 4 | — | — | 1 (stage14.asset.prior_179_full) |
-| asset.ub_prior | — | — | — | 4 | — | — | 1 (stage14.asset.prior_179_bonus) |
-| asset.rate_prior | — | — | — | 4 | — | — | — |
-| asset.macrs_prior_live | — | — | — | 4 | — | — | — |
+| asset.ub_prior_a | — | — | — | — | — | — | 1 (stage14.asset.prior_179_full) |
+| asset.ub_prior | — | — | — | — | — | — | 1 (stage14.asset.prior_179_bonus) |
+| asset.rate_prior | — | — | — | — | — | — | — |
+| asset.macrs_prior_live | — | — | — | — | — | — | — |
 | asset.macrs_prior | — | — | — | 2 (classm.asset.1, classm.asset.4) | — | — | 7 |
-| asset.dep_2025 | — | — | — | 4 | — | — | — |
-| asset.bonus_2025 | — | — | — | 4 | — | — | — |
-| asset.s179_2025 | — | — | — | 4 | — | — | — |
-| asset.mq_q4 | — | — | — | 4 | — | — | — |
-| asset.mq_total | — | — | — | 4 | — | — | — |
-| asset.cost179 | — | — | — | 4 | — | — | — |
-| asset.cost179_2025 | — | — | — | 3 | — | — | — |
-| asset.dep_prior | — | — | — | 4 | — | — | — |
-| asset.dep_listed | — | — | — | 1 (classm.asset.2) | — | — | 2 (stage14.asset.listed_prior, stage14.asset.listed_forty) |
+| asset.dep_2025 | — | — | — | — | — | — | — |
+| asset.bonus_2025 | — | — | — | — | — | — | — |
+| asset.s179_2025 | — | — | — | — | — | — | — |
+| asset.mq_q4 | — | — | — | — | — | — | — |
+| asset.mq_total | — | — | — | — | — | — | — |
+| asset.cost179 | — | — | — | — | — | — | — |
+| asset.cost179_2025 | — | — | — | — | — | — | — |
+| asset.is_section179 | — | — | — | — | — | — | — |
+| asset.cost179_real | — | — | — | — | — | — | — |
+| asset.dep_prior | — | — | — | — | — | — | — |
+| asset.dep_listed | — | — | — | 2 (classm.asset.1, classm.asset.4) | — | — | 2 (stage14.asset.listed_prior, stage14.asset.listed_forty) |
 
-Unasserted lines: asset.zero, asset.cent, asset.hundred, asset.pct_c, asset.half, asset.rate40, asset.hy
+Unasserted lines: asset.zero, asset.outside, asset.screened, asset.cent, asset.hundred, asset.pct_c, asset.pct_bad, asset.half, asset.over_half, asset.listed_low, asset.is2025, asset.on_19, asset.on_17, asset.on_26_2025, asset.year, asset.last, asset.done, asset.qconv, asset.s179_bad, asset.bonus_mixed, asset.rate40, asset.bonus_fullcase, asset.ub, asset.hy, asset.rate_hy, asset.rate_mq, asset.macrs_hy, asset.macrs_mq, asset.mqbase, asset.mq_q4_2025, asset.rate_prior, asset.macrs_prior_live, asset.dep_2025, asset.bonus_2025, asset.s179_2025, asset.mq_q4, asset.mq_total, asset.cost179, asset.cost179_2025, asset.is_section179, asset.cost179_real, asset.dep_prior
 
 ## Qualified passenger vehicle loan interest (Schedule 1-A, line 22) — one entry per loan
 
@@ -2208,7 +2210,7 @@ Unasserted lines: s1.zero, s1.has_uc, s1.line7_figured, s1.ebl_loss, s1.ebl_tota
 
 | line | A | B | C | M | H | E | R |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| s179.line2 | — | — | — | 4 | — | — | 2 (stage14.asset.partial_use, stage14.asset.low_use_nonlisted) |
+| s179.line2 | — | — | — | 4 | — | — | 4 |
 | s179.max | — | — | — | — | — | — | — |
 | s179.line1 | — | — | — | 1 (classm.s179.2) | — | — | 2 (stage14.s179.carryover_no_property, stage14.s179.dollar_limit) |
 | s179.line3 | — | — | — | 4 | — | — | — |
@@ -2746,7 +2748,7 @@ Unasserted lines: sb.zero
 | sc.f19_y10 | — | — | — | 4 | — | — | — |
 | sc.f19_y15 | — | — | — | 4 | — | — | — |
 | sc.f19_y20 | — | — | — | 4 | — | — | — |
-| sc.f19_y15sl | — | — | — | 4 | — | — | 1 (stage14.asset.qip) |
+| sc.f19_y15sl | — | — | — | 4 | — | — | 2 (stage14.asset.qip, stage14.asset.qip_elected) |
 | sc.f25_assets | — | — | — | 4 | — | — | — |
 | sc.f25_veh | — | — | — | 4 | — | — | — |
 | sc.f25 | — | — | — | 4 | — | — | 2 (stage14.asset.listed_and_not, stage14.asset.listed_forty) |
@@ -2850,7 +2852,7 @@ Unasserted lines: sc.one, sc.zero, sc.ho_rate, sc.ho_cap_sqft
 | scveh.placed | — | — | — | — | — | — | 2 (stage14.veh.refuse_low_use, stage14.veh.refuse_half_use) |
 | scveh.screen | — | — | — | — | — | — | — |
 | scveh.screened | — | — | — | 6 | — | — | — |
-| scveh.cost | — | — | — | — | — | — | 2 (stage14.veh.refuse_screen, stage14.veh.refuse_too_old) |
+| scveh.cost | — | — | — | — | — | — | 3 |
 | scveh.passenger | — | — | — | — | — | — | — |
 | scveh.suv | — | — | — | — | — | — | — |
 | scveh.year | — | — | — | 6 | — | — | — |
@@ -3400,5 +3402,5 @@ Unasserted lines: below_boundary, table_tax, worksheet_tax, tax
 
 Unasserted lines: single.row1.product, single.row1.tax, single.row2.product, single.row2.tax, single.row3.product, single.row3.tax, single.row4.product, single.row4.tax, single.row5.product, single.row5.tax, single.result, mfj.row1.product, mfj.row1.tax, mfj.row2.product, mfj.row2.tax, mfj.row3.product, mfj.row3.tax, mfj.row4.product, mfj.row4.tax, mfj.row5.product, mfj.row5.tax, mfj.result, mfs.row1.product, mfs.row1.tax, mfs.row2.product, mfs.row2.tax, mfs.row3.product, mfs.row3.tax, mfs.row4.product, mfs.row4.tax, mfs.row5.product, mfs.row5.tax, mfs.result, hoh.row1.product, hoh.row1.tax, hoh.row2.product, hoh.row2.tax, hoh.row3.product, hoh.row3.tax, hoh.row4.product, hoh.row4.tax, hoh.row5.product, hoh.row5.tax, hoh.result, tax
 
-Unasserted computed lines across all documents: 1005. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
+Unasserted computed lines across all documents: 1040. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
 Asserted keys not matching a line id: dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line27, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line29, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28_zero, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line30, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line27, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line29, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28_zero, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line30, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line3, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.positive, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4a, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.owes, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4c, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line5b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line6, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line7, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line8d, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line9, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line10, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line11, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line12, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line13, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax

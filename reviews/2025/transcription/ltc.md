@@ -4,28 +4,22 @@ Second transcription of `Form 7206, line 2 — qualified long-term care insuranc
 
 | field | value |
 | --- | --- |
-| date | 2026-10-26 |
-| review provenance | verified saved-response replay; no model call |
-| parent review log sha256 | dee8257a2ddc623925c5fc4567f1478b831e8f7cfbe540e4e66f67b2bed113ed |
-| original review date | 2026-10-26 |
-| original comparison policy | checked-expression-types-v2 |
-| original type validation policy | project-expression-types-v2 |
-| original input context policy | required-review-interfaces-v2 |
+| date | 2026-11-02 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 0218f8f68548456e1b5fdab5bef66d9cfb6e0896357f6f4f4b3bc91ded87c5a4 |
+| prompt sha256 | 7f20b1f058536fef47681530ccd97e2351404ce06fa95e6041fced2169c293a5 |
 | prompt policy | source-only-computation-v2 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
 | complete input context | pass |
-| required input context sha256 | 0b1eb00f49c949648ce90a2b057d2c9b2da5a14cc7627c6c7f0ee46a60966134 |
+| required input context sha256 | 1133623277ebbee04df833cd34e52da1ce46437b30608d9ec5bf7daf3ab3bf59 |
 | type validation policy | project-expression-types-v3 |
 | model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 7725642cb923e811f4d5df5cade9656856609c785f5d22f318800bdb04234fe8 |
+| subject sha256 | 82179fa79df561ead41677aec2bae4c74cce769404aabd860a16977fb583e4d2 |
 | printed lines compared | 2 |
 | agree / disagree / missing | 2 / 0 / 0 |
 | extra printed lines in second | none |
@@ -48,16 +42,18 @@ Status: **AGREE**
 ## Raw second transcription
 
 ```yaml
+```yaml
 lines:
   - id: ltc.limit
     printed: "2(b)"
-    label: "(b) The amount shown below. Use the person's age at the end of the tax year. $480— if that person is age 40 or younger; $900— if age 41 to 50; $1,800— if age 51 to 60; $4,810— if age 61 to 70; $6,020— if age 71 or older"
+    label: "The amount shown below. Use the person's age at the end of the tax year. $480 if that person is age 40 or younger; $900 if age 41 to 50; $1,800 if age 51 to 60; $4,810 if age 61 to 70; $6,020 if age 71 or older"
     type: NonNegDollars
     expr: {op: keyed_lookup, table: ltc_limit, keys: [ltc.age]}
   - id: ltc.amount
     printed: "(helper)"
-    label: "For coverage under a qualified long-term care insurance contract, enter for each person covered the smaller of (a) or (b). If more than one person is covered, figure separately the amount to enter for each person."
+    label: "For coverage under a qualified long-term care insurance contract, enter for each person covered the smaller of (a) or (b)"
     type: NonNegDollars
     expr: {op: smaller_of, of: [ltc.payments, ltc.limit]}
-    note: "Line 2 itself is the total of these per-person amounts over all persons covered; that total belongs to the Form 7206 line 2 of the business entry, which is outside this per-person slice. Two points in the IRS text are not computed here. First, the i7206 rule that the line 2 amounts for one person, added across all Forms 7206, can't be more than that person's limit. Second, the exclusion of months in which the person was eligible for an employer-subsidized long-term care plan. The first is left to the business-level screen (sc.hi_screen, which covers long-term care insurance entered for more than one business). The second is already excluded by the definition of the ltc.payments input."
+    note: "The IRS pages do not name ltc.amount. I read it as the per-person amount entered for Form 7206, line 2: the smaller of (a) and (b), before the total across persons. The instructions also cap the total for a person across all Forms 7206 at that person's limit. This per-entry line does not enforce that cap, because the closed interface has no cross-business input for it."
+```
 ```

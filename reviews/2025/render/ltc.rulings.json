@@ -1,0 +1,13 @@
+{
+ "kind": "render",
+ "form": "ltc",
+ "rulings": [
+  {
+   "printed": "2(b)",
+   "restated": "Find the entry in Qualified long-term care premium limit by age (Form 7206, line 2(b)) for age helper \"That person's age at the end of 2025\".",
+   "model": "The age bands and use of age at year-end match \"Use the person's age at the end of the tax year,\" but the restated table's dollar amounts are not provided, so they cannot be compared with the IRS's $480, $900, $1,800, $4,810, and $6,020. The restatement also does not show how it handles the multiple-business rule that the total on line 2 of \"all Form(s) 7206 can't be more than the appropriate limit shown on line 2 for that person.\"",
+   "ruling": "Ruling: representation; restatement accepted. tables/2025/ltc_limit.yaml holds $480, $900, $1,800, $4,810 and $6,020, the f7206 line 2 amounts by age at year-end. The multiple-business rule is refused by sc.hi_screen (\"anyone is covered by qualified long-term care insurance entered for more than one business on this return\").",
+   "context": "f6a78d63a095c0d12ad820fa857c43e3f03e5ef82f6666190619c2e61f4aa781"
+  }
+ ]
+}

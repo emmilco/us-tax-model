@@ -165,6 +165,15 @@
   {
    "case": "classm.asset.2",
    "printed": "person[taxpayer].sc[biz_a].asset[item_1].macrs2025",
+   "project": "$1,548.12",
+   "model": "$2,324.50",
+   "ruling": "Ruling: model error; p946 Table 4-1, GDS using SL, as above. The model applied Table A-1's 150% declining balance rate of 5.00%; the straight-line half-year rate of 3.33% gives the project's $1,548.12.",
+   "drop": true,
+   "context": "53b8313f9707e5e78e93cca2617019c97a90bd2963ef5050d6adc0200943151b"
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].macrs2025",
    "project": "$4,762.09",
    "model": "$1,667.40",
    "ruling": "Ruling: model error; project retained. The model took the recovery period from memory ('recalled'): Pub. 946 Table B-2 (archived p946, Appendix B) gives class 48.41 (CATV, Headend) a class life of 11 years and a GDS period of 7, and class 48.44 (CATV, Service and Test) 8.5 and 5, as the project's class_lives table has them (and the table's second transcription agrees, reviews/2025/tables/class_lives.json); the model's rates, last recovery years and MACRS amounts for the asset follow from its wrong period. Not evidence.",
@@ -217,6 +226,15 @@
    "model": "$100.00",
    "ruling": "Ruling: representation; project retained. The business-use percentage is carried as one cent per percentage point (multiply_count by one cent) so it can be divided like an amount; the model read the cents as dollars. Not evidence.",
    "drop": true
+  },
+  {
+   "case": "classm.asset.2",
+   "printed": "person[taxpayer].sc[biz_a].asset[item_1].period",
+   "project": "y15sl",
+   "model": "y15",
+   "ruling": "Ruling: model error; p946 Table 4-1, GDS using SL: \"Qualified improvement property (as defined in section 168(e)(6) of the Internal Revenue Code) placed in service after 2017\". The class is 15-year straight line, as the project has it.",
+   "drop": true,
+   "context": "53b8313f9707e5e78e93cca2617019c97a90bd2963ef5050d6adc0200943151b"
   },
   {
    "case": "classm.asset.2",

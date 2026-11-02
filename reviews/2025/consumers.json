@@ -395,6 +395,18 @@
    "question_phrase": "someone not lawfully present; eligibility for other minimum essential coverage; an HRA; unpaid premiums; advance payments for someone in no tax family; a Marketplace Medicaid or CHIP determination on intentionally or recklessly incorrect information; or an incarcerated enrollee",
    "source_phrase": "i8962 p. 17, Column (b): if you or a family member isn't lawfully present and was enrolled in a qualified health plan, see Individuals Not Lawfully Present in the United States Enrolled in a Qualified Health Plan",
    "reason": "p. 17 points to the Pub. 974 rule for an unlawfully present enrollee, one of the input's exclusions; the page does not give the exclusion a different definition, and the line refuses on the gate."
+  },
+  "consumer:asset.class@i4562:p2": {
+   "verdict": "same",
+   "question_phrase": "Qualified improvement property placed in service after 2017",
+   "source_phrase": "Section 179 Property (p. 2), \"Qualified section 179 real property\"",
+   "reason": "The enum value names the same qualified improvement property the section 179 rule names; the election itself is read from line 6(c), not from this input."
+  },
+  "consumer:asset.class@i4562:p3": {
+   "verdict": "same",
+   "question_phrase": "Qualified improvement property placed in service after 2017",
+   "source_phrase": "Special rules for qualified section 179 real property (pp. 2-3), \"Qualified improvement property as described in section 168(e)(6)\"",
+   "reason": "The enum value names the same qualified improvement property the section 179 rule names; the election itself is read from line 6(c), not from this input."
   }
  },
  "baseline": {

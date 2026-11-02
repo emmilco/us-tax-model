@@ -27,11 +27,25 @@
    "ruling": "Ruling: agent reading for the owner (amb.2025.qbi_attribution, TASKS.md T-041); restatement accepted. i8995 p. 2 says QBI accounts for the deductible part of self-employment tax, the self-employment health insurance deduction and contributions to qualified retirement plans attributable to the business but gives no method; the project attributes them by the business's share of net profits (Form 7206 lines 7 and 9) and its own Form 7206 line 14."
   },
   {
+   "printed": "1(c)",
+   "restated": "Subtract helper \"Deductions attributable to this business: self-employment tax, retirement plan and health insurance (Form 7206 for this business)\" from helper \"The amount for Schedule 1, line 3 and Schedule SE, line 2\".",
+   "model": "Subtracting the self-employment tax deduction, retirement contributions and health insurance deduction agrees with the Form 8995 instructions on attributable items. The text does not say how to attribute the deductible self-employment tax among several businesses, so the net-profit-share allocation cannot be confirmed; the instructions' full QBI exclusions are also only partly provided.",
+   "ruling": "Ruling: ambiguity (amb.2025.qbi_attribution); i8995 p. 2 names the attributable deductions but no allocation among businesses; the project prorates by net profit, the recorded reading.",
+   "context": "7a157c97682457e376bc058594d39b430bf20bf394ac663ca62e123e6aec07b3"
+  },
+  {
    "printed": "12 (sc.s179_allowed)",
    "restated": "Choose — [s179 helper \"The deduction differs from the amounts elected for 2025\" = false → helper \"Section 179 elected for this business's 2025 property\"] [s179 helper \"The deduction differs from the amounts elected for 2025\" = true → helper \"The return's section 179 deduction, for its only Schedule C\"]",
    "model": "The program sets Form 4562 line 1 to a flat $2,500,000, but Worksheet 1 says 'Enter the smaller of line 1 or line 2' and 'Enter the amount from line 3 here and on Form 4562, line 1'. When 2025 section 179 cost is below $2,500,000, this overstates lines 5 and 11, so a carryover can raise the line 12 deduction and Schedule C line 13 too much.",
    "ruling": "Ruling: ambiguity — T-043 / amb.2025.s179_carryover_no_property (owner adopted): s179.line1 is the $2,500,000 limitation, not the smaller of the limitation and the 2025 cost, on the line 1 instruction's reading. Worksheet 1's \"Enter the smaller of line 1 or line 2\" is the recorded competing reading; the project keeps the owner's adopted line 1. The render complaint repeats it.",
    "context": "af1fe9bfbef82edd091d3e4f96182123ef14a48ad827c32d0d01aaa8210a0300"
+  },
+  {
+   "printed": "12 (sc.s179_allowed)",
+   "restated": "Choose — [s179 helper \"The deduction differs from the amounts elected for 2025\" = false → helper \"Section 179 elected for this business's 2025 property\"] [s179 helper \"The deduction differs from the amounts elected for 2025\" = true → helper \"The return's section 179 deduction, for its only Schedule C\"]",
+   "model": "The return's deduction relies on Form 4562 line 1 being a flat $2,500,000, but Worksheet 1 says to enter the smaller of total section 179 cost or the limit: 'Enter the amount from line 3 here and on Form 4562, line 1.' With a carryover, line 5 and therefore lines 11 and 12 can differ: $10,000 of cost and a $5,000 carryover give $10,000 under the worksheet and $15,000 here.",
+   "ruling": "Ruling: ambiguity (owner ruling T-043, amb.2025.s179_carryover_no_property); s179.line1 is the $2,500,000 limitation on the line 1 instruction's reading, and Worksheet 1's smaller-of reading is the recorded competing one.",
+   "context": "7a157c97682457e376bc058594d39b430bf20bf394ac663ca62e123e6aec07b3"
   },
   {
    "printed": "13 (sc.line13)",
@@ -88,6 +102,13 @@
    "ruling": "Ruling: representation; restatement accepted. ltc.amount is the smaller of the payments and the age limit for each person covered under this business's plan (ltc.yaml, Form 7206 line 2(a), 2(b)); the sum is over this business's entries, which are children of the sc entry. A person covered under more than one business is refused since BUG-0063."
   },
   {
+   "printed": "2 (sc.f7206_line2)",
+   "restated": "Add ltc.amount over every confirmed ltc entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The smaller-of test and total per person are right, but the helper excludes months when 'the person' was eligible for a subsidized plan. The form says: 'Don't include payments for any month you were eligible to participate in a long-term care insurance plan subsidized by your employer or your spouse's employer, or the employer of either your dependent or your child.' A covered person's premiums would be wrongly included when the filer is the one eligible.",
+   "ruling": "Ruling: finding (BUG-0304, fixed in this pass); f7206 line 2: \"any month you were eligible to participate in a long-term care insurance plan subsidized by your employer or your spouse's employer, or the employer of either your dependent or your child\". ltc.payments tested the person covered; it now states the filer's test, and the ltc reviews were rerun on the new wording.",
+   "context": "7a157c97682457e376bc058594d39b430bf20bf394ac663ca62e123e6aec07b3"
+  },
+  {
    "printed": "24b",
    "restated": "Add helper \"50% of the meals subject to the 50% limit\" and helper \"80% of the meals under the hours of service limits\".",
    "model": "Only the 50% and 80% categories are provided. The instructions also say 'you can fully deduct meals and incidentals furnished or reimbursed to an employee if you properly treat the expense as wages', and likewise for amounts reported on Form 1099-NEC. These 100% meals have no place, and no refusal names them.",
@@ -107,11 +128,32 @@
    "ruling": "Ruling: owner ruling (T-042; amb.2025.meals_full_exceptions); restatement accepted. The 50% and 80% rates and the two full-deduction cases match i1040sc p. 10 as the model says. The other categories come from Pub. 463 (2025) p. 16, Exception to the 50% Limit for Meals, which the instruction reaches through 'See chapter 5 of Pub. 15 ... for details and other exceptions. See also chapter 8 of Pub. 334': Pub. 15 chapter 5 lists no exceptions and Pub. 334 refers to Pub. 463. The model was given the i1040sc pages only, so it could not see that list."
   },
   {
+   "printed": "24b",
+   "restated": "Add helper \"50% of the meals subject to the 50% limit\", helper \"80% of the meals under the hours of service limits\", and helper \"Meals and incidentals not subject to the 50% limit, deducted in full\".",
+   "model": "The 50%, 80% and full-deduction structure agrees with 'Amount of deduction', and the employee and nonemployee full-deduction cases are in the text. The other full-deduction categories (client-reimbursed meals, employee recreation, public promotion, meals sold) rest on Pub. 15 chapter 5 and Pub. 334 chapter 8, which are not provided.",
+   "ruling": "Ruling: ambiguity (owner ruling T-042, amb.2025.meals_full_exceptions); restatement accepted. The 50% and 80% rates and the two full-deduction cases match i1040sc p. 10. The other categories come from Pub. 463 p. 16, which the instruction reaches through its references; the model was given the i1040sc pages only.",
+   "context": "7a157c97682457e376bc058594d39b430bf20bf394ac663ca62e123e6aec07b3"
+  },
+  {
    "printed": "32",
    "restated": "Input — All your investment in this business is at risk: you have no nonrecourse loans not secured by your own property, no amounts protected against loss by a guarantee or stop-loss agreement, and no amounts borrowed from someone with an interest in the business (box 32a)",
    "model": "The box 32b test omits part of the IRS condition: amounts borrowed 'from a person who has an interest in the business other than as a creditor or who is related under section 465(b)(3)(C) to a person (other than you) having such an interest'. A related-party loan would pass as at risk, while an ordinary creditor could be read as disqualifying.",
    "ruling": "Ruling: finding — i1040sc p. 15, Line 32, Some investment is not at risk: \"Amounts borrowed for use in the business from a person who has an interest in the business other than as a creditor or who is related under section 465(b)(3)(C) to a person (other than you) having such an interest.\" The box 32a question names a lender with an interest in the business but omits the related-party prong, so a related-party loan can answer Yes and deduct a loss the at-risk rules would limit. BUG-0290; fix the question with the Schedule C form pass (T-157).",
    "context": "af1fe9bfbef82edd091d3e4f96182123ef14a48ad827c32d0d01aaa8210a0300"
+  },
+  {
+   "printed": "4 (sc.f7206_line4)",
+   "restated": "Enter the amount from helper \"Net profit of this business (zero for a loss)\".",
+   "model": "It enters only this business's net profit. The form says: 'Enter your net profit* and any other earned income** from the trade or business,' and earned income includes gains from property you created. No screen excludes that income.",
+   "ruling": "Ruling: scope; f7206 line 4 footnote: \"Earned income includes net earnings and gains from the sale, transfer, or licensing of property you created. However, it doesn't include capital gain income.\" The tool admits no such income outside Schedule C: Form 4797 and other income are refused (sd.other_forms, scope.yaml), and Schedule F and K-1 profits are refused by the self-employment screen (person.x_other).",
+   "context": "7a157c97682457e376bc058594d39b430bf20bf394ac663ca62e123e6aec07b3"
+  },
+  {
+   "printed": "5 (sc.f7206_line5)",
+   "restated": "Enter the amount from person helper \"Total of all net profits of this person's businesses (losses not included)\".",
+   "model": "It totals only the Schedule C net profits. The form also adds 'plus any other income allocable to the profitable businesses,' and no screen excludes that income. Schedule F and K-1 profits are excluded by the self-employment screen, but this item is not.",
+   "ruling": "Ruling: scope; f7206 line 4 footnote: \"Earned income includes net earnings and gains from the sale, transfer, or licensing of property you created. However, it doesn't include capital gain income.\" The tool admits no such income outside Schedule C: Form 4797 and other income are refused (sd.other_forms, scope.yaml), and Schedule F and K-1 profits are refused by the self-employment screen (person.x_other). The same holds for \"other income allocable to the profitable businesses\".",
+   "context": "7a157c97682457e376bc058594d39b430bf20bf394ac663ca62e123e6aec07b3"
   },
   {
    "printed": "7 (sc.f7206_line7)",

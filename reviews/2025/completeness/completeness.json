@@ -1,5 +1,249 @@
 [
  {
+  "form": "asset",
+  "prompt_sha": "69ffb2173382c3b203bd710ba08e9556ed3deae95f995020450981a8e09513a5",
+  "claims": [
+   {
+    "item": "asset.s179",
+    "sentences": [
+     {
+      "quote": "Section 179 property is property that you acquire by purchase for use in the active conduct of your trade or business, and is one of the following.",
+      "page": "i4562 p. 2"
+     },
+     {
+      "quote": "Other tangible property (except buildings and their structural components) used as: 1. An integral part of manufacturing, production, or extraction, or of furnishing transportation, communications, electricity, gas, water, or sewage disposal services; 2. A research facility used in connection with any of the activities in (1) above; or 3. A facility used in connection with any of the activities in (1) above for the bulk storage of fungible commodities.",
+      "page": "i4562 p. 2"
+     },
+     {
+      "quote": "Property held for investment (section 212 property).",
+      "page": "i4562 p. 2"
+     },
+     {
+      "quote": "However, for taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased to others unless: • You manufactured or produced the property; or • The term of the lease is less than 50% of the property’s class life and, for the first 12 months after the property is transferred to the lessee, the deductions related to the property allowed to you as trade or business expenses (except rents and reimbursed amounts) are more than 15% of the rental income from the property.",
+      "page": "i4562 p. 3"
+     }
+    ],
+    "quote": "Section 179 property is property that you acquire by purchase for use in the active conduct of your trade or business, and is one of the following. / Other tangible property (except buildings and their structural components) used as: 1. An integral part of manufacturing, production, or extraction, or of furnishing transportation, communications, electricity, gas, water, or sewage disposal services; 2. A research facility used in connection with any of the activities in (1) above; or 3. A facility used in connection with any of the activities in (1) above for the bulk storage of fungible commodities. / Property held for investment (section 212 property). / However, for taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased to others unless: • You manufactured or produced the property; or • The term of the lease is less than 50% of the property’s class life and, for the first 12 months after the property is transferred to the lessee, the deductions related to the property allowed to you as trade or business expenses (except rents and reimbursed amounts) are more than 15% of the rental income from the property.",
+    "page": "i4562 p. 2; i4562 p. 3",
+    "why_uncovered": "asset.s179_bad tests only the elected amount against business cost and use above 50%. asset.is_section179 turns only on qualified improvement property. No question or refusal screens investment property, property converted from personal use rather than purchased for business use, noncorporate leased property, or non-personal tangible property such as a land improvement in class 00.3 that is not an integral part of a listed activity. The screen removes related-party, gift and exchange acquisitions, but not these cases.",
+    "closest_item": "asset.s179",
+    "effect": "eligibility"
+   },
+   {
+    "item": "asset.bonus",
+    "sentences": [
+     {
+      "quote": "Property described in section 168(k)(9)(A) or 168(k)(9)(B); or",
+      "page": "i4562 p. 7"
+     },
+     {
+      "quote": "Qualified property can be either new property or certain used property.",
+      "page": "i4562 p. 6"
+     }
+    ],
+    "quote": "Property described in section 168(k)(9)(A) or 168(k)(9)(B); or / Qualified property can be either new property or certain used property.",
+    "page": "i4562 p. 7; i4562 p. 6",
+    "why_uncovered": "The screen does not ask whether the property falls under section 168(k)(9)(A) or (B), and no asset class gate excludes it. The allowance is figured for any property in a 3-to-20-year class unless the filer elects out. Nothing asks whether used property meets the conditions for used property, beyond the related-person and gift screens.",
+    "closest_item": "asset.bonus",
+    "effect": "amount"
+   },
+   {
+    "item": "asset.class",
+    "sentences": [
+     {
+      "quote": "Any qualified rent-to-own property (as defined in section 168(i)(14)).",
+      "page": "i4562 p. 10"
+     },
+     {
+      "quote": "Certain energy property specified in section 168(e)(3)(B) (vi).",
+      "page": "i4562 p. 10"
+     },
+     {
+      "quote": "Any motorsports entertainment complex (as defined in section 168(i)(15)).",
+      "page": "i4562 p. 10"
+     },
+     {
+      "quote": "Any natural gas gathering line (as defined in section 168(i) (17)) placed in service after April 11, 2005, the original use of which begins with you after April 11, 2005, and is not under self-construction or subject to a binding contract in existence before April 12, 2005.",
+      "page": "i4562 p. 10"
+     },
+     {
+      "quote": "Any qualified smart electric meter property.",
+      "page": "i4562 p. 10"
+     },
+     {
+      "quote": "Any qualified smart electric grid system property.",
+      "page": "i4562 p. 10"
+     },
+     {
+      "quote": "Certain electric transmission property specified in section 168(e)(3)(E)(v) placed in service after April 11, 2005, the original use of which begins with you after April 11, 2005, and is not under self-construction or subject to a binding contract in existence before April 12, 2005.",
+      "page": "i4562 p. 10"
+     },
+     {
+      "quote": "Qualified improvement property, as defined in section 168(e)(6), placed in service by you after December 31, 2017.",
+      "page": "i4562 p. 10"
+     },
+     {
+      "quote": "The 150% declining balance method is the only applicable method for any qualified smart electric meter or any qualified smart electric grid system property placed in service after October 3, 2008.",
+      "page": "i4562 p. 11"
+     }
+    ],
+    "quote": "Any qualified rent-to-own property (as defined in section 168(i)(14)). / Certain energy property specified in section 168(e)(3)(B) (vi). / Any motorsports entertainment complex (as defined in section 168(i)(15)). / Any natural gas gathering line (as defined in section 168(i) (17)) placed in service after April 11, 2005, the original use of which begins with you after April 11, 2005, and is not under self-construction or subject to a binding contract in existence before April 12, 2005. / Any qualified smart electric meter property. / Any qualified smart electric grid system property. / Certain electric transmission property specified in section 168(e)(3)(E)(v) placed in service after April 11, 2005, the original use of which begins with you after April 11, 2005, and is not under self-construction or subject to a binding contract in existence before April 12, 2005. / Qualified improvement property, as defined in section 168(e)(6), placed in service by you after December 31, 2017. / The 150% declining balance method is the only applicable method for any qualified smart electric meter or any qualified smart electric grid system property placed in service after October 3, 2008.",
+    "page": "i4562 p. 10; i4562 p. 11",
+    "why_uncovered": "The class question offers only Appendix B classes, options A, B and C, and qualified improvement property. These statutory classifications override or fall outside the Appendix B lookup, so a filer following the question could get the wrong recovery period or rate. The smart meter and grid property method is also not modeled. The qualified improvement option does not test for placement in service after 2017, even though the placed-in-service question allows earlier years.",
+    "closest_item": "asset.class",
+    "effect": "amount"
+   },
+   {
+    "item": "asset.screen",
+    "sentences": [
+     {
+      "quote": "You cannot use the percentage tables for a short tax year.",
+      "page": "p946 p. 37"
+     },
+     {
+      "quote": "See Pub. 946 for rules on how to compute the depreciation deduction for property placed in service in a short tax year.",
+      "page": "i4562 p. 12"
+     }
+    ],
+    "quote": "You cannot use the percentage tables for a short tax year. / See Pub. 946 for rules on how to compute the depreciation deduction for property placed in service in a short tax year.",
+    "page": "p946 p. 37; i4562 p. 12",
+    "why_uncovered": "The screen covers methods other than the percentage tables, but it does not mention a short tax year, and no other question asks about one. The encoded computation always applies table rates and assumes calendar-year quarters.",
+    "closest_item": "asset.screen",
+    "effect": "amount"
+   },
+   {
+    "item": "asset.listed_low",
+    "sentences": [
+     {
+      "quote": "To determine whether to use line 26 or line 27 to report your listed property, you must first determine the percentage of qualified business use for each property.",
+      "page": "i4562 p. 14"
+     },
+     {
+      "quote": "Generally, a qualified business use is any use in your trade or business.",
+      "page": "i4562 p. 14"
+     },
+     {
+      "quote": "However, it does not include any of the following. • Investment use. • Leasing the property to a 5% owner or related person if the value related to such usage is not reported as income to the individual. • The use of the property as compensation for services performed by a 5% owner or related person. • The use of the property as compensation for services performed by any person (who is not a 5% owner or related person), unless an amount is included in that person’s income for the use of the property and, if required, income tax was withheld on that amount. • The use of property that is determined to be non-deductible under section 274.",
+      "page": "i4562 p. 14"
+     },
+     {
+      "quote": "Excluding these uses above from the numerator, determine your percentage of qualified business use similar to the method used to figure the business/investment use percentage in column (c).",
+      "page": "i4562 p. 14"
+     }
+    ],
+    "quote": "To determine whether to use line 26 or line 27 to report your listed property, you must first determine the percentage of qualified business use for each property. / Generally, a qualified business use is any use in your trade or business. / However, it does not include any of the following. • Investment use. • Leasing the property to a 5% owner or related person if the value related to such usage is not reported as income to the individual. • The use of the property as compensation for services performed by a 5% owner or related person. • The use of the property as compensation for services performed by any person (who is not a 5% owner or related person), unless an amount is included in that person’s income for the use of the property and, if required, income tax was withheld on that amount. • The use of property that is determined to be non-deductible under section 274. / Excluding these uses above from the numerator, determine your percentage of qualified business use similar to the method used to figure the business/investment use percentage in column (c).",
+    "page": "i4562 p. 14",
+    "why_uncovered": "The 50% test uses the single percentage from asset.pct, which asks about use for this business. Nothing asks about or removes the listed exclusions from the numerator. Listed property could pass the test on its general business use percentage when its qualified business use is 50% or less, wrongly keeping section 179, the special allowance and accelerated depreciation.",
+    "closest_item": "asset.listed_low",
+    "effect": "eligibility"
+   },
+   {
+    "item": "asset.listed",
+    "sentences": [
+     {
+      "quote": "For purposes of the exceptions above, a portion of the taxpayer’s home is treated as a regular business establishment only if that portion meets the requirements for deducting expenses attributable to the business use of a home.",
+      "page": "i4562 p. 3"
+     }
+    ],
+    "quote": "For purposes of the exceptions above, a portion of the taxpayer’s home is treated as a regular business establishment only if that portion meets the requirements for deducting expenses attributable to the business use of a home.",
+    "page": "i4562 p. 3",
+    "why_uncovered": "The listed property question refers to the filer's regular business establishment, but it does not state or ask about this limit on treating part of a home as one. A home-based filer could wrongly answer that the property is not listed property.",
+    "closest_item": "asset.listed",
+    "effect": "eligibility"
+   },
+   {
+    "item": "asset.pct",
+    "sentences": [
+     {
+      "quote": "If during the tax year you convert property used solely for personal purposes to business/investment use (or vice versa), figure the percentage of business/investment use only for the number of months you use the property in your business or for the production of income.",
+      "page": "i4562 p. 14"
+     },
+     {
+      "quote": "Multiply that percentage by the number of months you use the property in your business or for the production of income, and divide the result by 12.",
+      "page": "i4562 p. 14"
+     }
+    ],
+    "quote": "If during the tax year you convert property used solely for personal purposes to business/investment use (or vice versa), figure the percentage of business/investment use only for the number of months you use the property in your business or for the production of income. / Multiply that percentage by the number of months you use the property in your business or for the production of income, and divide the result by 12.",
+    "page": "i4562 p. 14",
+    "why_uncovered": "The cost question handles the basis of property converted from personal use, and the screen refuses conversion to personal use. Neither applies this months-based adjustment to listed property converted to business use during 2025, and asset.pct takes the percentage without it.",
+    "closest_item": "asset.pct",
+    "effect": "amount"
+   }
+  ],
+  "used": [
+   {
+    "doc": "i4562",
+    "pages": [
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "doc": "p946",
+    "pages": [
+     34,
+     35,
+     36,
+     37,
+     38,
+     39,
+     40,
+     41
+    ]
+   },
+   {
+    "doc": "p946",
+    "pages": [
+     71,
+     72,
+     73,
+     74,
+     75,
+     76,
+     77,
+     78,
+     79,
+     80,
+     81,
+     82,
+     83,
+     84
+    ]
+   },
+   {
+    "doc": "p946",
+    "pages": [
+     98,
+     99,
+     100,
+     101,
+     102,
+     103,
+     104,
+     105,
+     106,
+     107,
+     108
+    ]
+   }
+  ],
+  "cost": 0.9192520000000001,
+  "model": "claude-opus-5-5"
+ },
+ {
   "form": "dependent",
   "prompt_sha": "5934f439a7b02d1e82132ccf7ac3e6202d9b46458cb5c0f673dc18a666784fc9",
   "claims": [
@@ -1557,6 +1801,73 @@
   "model": "claude-opus-5-5"
  },
  {
+  "form": "ltc",
+  "prompt_sha": "675c44d68e965e5f0c66c1f1216b9606cacd38c367caf008c771edf03f1ba14c",
+  "claims": [
+   {
+    "item": "ltc.payments",
+    "sentences": [
+     {
+      "quote": "Amounts paid for health insurance coverage from retirement plan distributions that were nontaxable because you are a retired public safety officer can’t be used to figure the deduction.",
+      "page": "i7206 p. 1"
+     },
+     {
+      "quote": "If you are a retired public safety officer, amounts excluded from gross income, not to exceed $3,000, if the amounts (1) were paid by your retirement plan directly to the insurer for qualified health insurance premiums or (2) were received by you from that retirement plan and used to pay those premiums.",
+      "page": "i7206 p. 1"
+     }
+    ],
+    "quote": "Amounts paid for health insurance coverage from retirement plan distributions that were nontaxable because you are a retired public safety officer can’t be used to figure the deduction. / If you are a retired public safety officer, amounts excluded from gross income, not to exceed $3,000, if the amounts (1) were paid by your retirement plan directly to the insurer for qualified health insurance premiums or (2) were received by you from that retirement plan and used to pay those premiums.",
+    "page": "i7206 p. 1",
+    "why_uncovered": "The ltc.payments question excludes only premiums for months of subsidized-plan eligibility and premiums not under a policy established under this business. It does not tell the filer to leave out premiums paid with excluded retired public safety officer distributions, and no line or refusal addresses this situation.",
+    "closest_item": "ltc.payments",
+    "effect": "amount"
+   },
+   {
+    "item": "ltc.payments",
+    "sentences": [
+     {
+      "quote": "You may be able to deduct the amount you paid for health insurance, which includes medical, dental, and vision insurance and qualified long-term care insurance for yourself, your spouse, and your dependents.",
+      "page": "i7206 p. 1"
+     },
+     {
+      "quote": "The health insurance can cover your child who was under age 27 at the end of 2025, even if the child wasn’t your dependent.",
+      "page": "i7206 p. 1"
+     }
+    ],
+    "quote": "You may be able to deduct the amount you paid for health insurance, which includes medical, dental, and vision insurance and qualified long-term care insurance for yourself, your spouse, and your dependents. / The health insurance can cover your child who was under age 27 at the end of 2025, even if the child wasn’t your dependent.",
+    "page": "i7206 p. 1",
+    "why_uncovered": "The ltc.payments question accepts premiums for 'this person' without limiting who that person may be. Nothing asks whether the person is the filer, the spouse, a dependent, or a child under age 27 at the end of 2025, and no refusal rejects premiums for anyone else, such as a nondependent parent or an older nondependent child.",
+    "closest_item": "ltc.payments",
+    "effect": "amount"
+   },
+   {
+    "item": "ltc.amount",
+    "sentences": [
+     {
+      "quote": "For a plan that provides long-term care insurance, the total of the amounts entered for each person on line 2 of all Form(s) 7206 can’t be more than the appropriate limit shown on line 2 for that person.",
+      "page": "i7206 p. 2"
+     }
+    ],
+    "quote": "For a plan that provides long-term care insurance, the total of the amounts entered for each person on line 2 of all Form(s) 7206 can’t be more than the appropriate limit shown on line 2 for that person.",
+    "page": "i7206 p. 2",
+    "why_uncovered": "ltc.amount takes the smaller of the premiums and the age limit for each person on a single form. Nothing aggregates a person's line 2 amounts across multiple Forms 7206, reduces them to one age limit, or refuses the multiple-business case, so the same person could receive the full limit on each form.",
+    "closest_item": "ltc.amount",
+    "effect": "amount"
+   }
+  ],
+  "used": [
+   {
+    "doc": "i7206",
+    "pages": [
+     1,
+     2
+    ]
+   }
+  ],
+  "cost": 0.09544,
+  "model": "claude-opus-5-5"
+ },
+ {
   "form": "sa",
   "prompt_sha": "f6fc8403cbbbc99f855346069feafceabbdb11a1b345cb0d7243360ff2a044c8",
   "claims": [
@@ -1712,6 +2023,743 @@
    }
   ],
   "cost": 0.0871278,
+  "model": "claude-opus-5-5"
+ },
+ {
+  "form": "sc",
+  "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
+  "claims": [
+   {
+    "item": "sc.one",
+    "sentences": [
+     {
+      "quote": "For example, a sporadic activity, a not-for-profit activity, or a hobby does not qualify as a business.",
+      "page": "i1040sc p. 2"
+     },
+     {
+      "quote": "If you are the sole member of a domestic LLC, file Schedule C (or Schedule E or F, if applicable) unless you have elected to treat the domestic LLC as a corporation.",
+      "page": "i1040sc p. 2"
+     },
+     {
+      "quote": "Enter on line B the six-digit code from the Principal Business or Professional Activity Codes chart at the end of these instructions.",
+      "page": "i1040sc pp. 3-4"
+     },
+     {
+      "quote": "If you made any payment in 2025 that would require you to file any Forms 1099, check the “Yes” box.",
+      "page": "i1040sc p. 5"
+     }
+    ],
+    "quote": "For example, a sporadic activity, a not-for-profit activity, or a hobby does not qualify as a business. / If you are the sole member of a domestic LLC, file Schedule C (or Schedule E or F, if applicable) unless you have elected to treat the domestic LLC as a corporation. / Enter on line B the six-digit code from the Principal Business or Professional Activity Codes chart at the end of these instructions. / If you made any payment in 2025 that would require you to file any Forms 1099, check the “Yes” box.",
+    "page": "i1040sc p. 2; i1040sc pp. 3-4; i1040sc p. 5",
+    "why_uncovered": "No question or refusal tests whether the activity is a business rather than a hobby, or whether a single-member LLC elected corporate treatment. Header lines such as B and I are not encoded either, though those two entries affect presentation only.",
+    "closest_item": "sc.one",
+    "effect": "eligibility"
+   },
+   {
+    "item": "sc.line1",
+    "sentences": [
+     {
+      "quote": "If you collected this tax from the buyer, you must also include the amount collected in gross receipts or sales on line 1.",
+      "page": "i1040sc p. 9"
+     },
+     {
+      "quote": "If the total amounts that were reported in box 1 of Forms 1099-NEC are more than the total you are reporting on line 1, attach a statement explaining the difference.",
+      "page": "i1040sc p. 5"
+     }
+    ],
+    "quote": "If you collected this tax from the buyer, you must also include the amount collected in gross receipts or sales on line 1. / If the total amounts that were reported in box 1 of Forms 1099-NEC are more than the total you are reporting on line 1, attach a statement explaining the difference.",
+    "page": "i1040sc p. 9; i1040sc p. 5",
+    "why_uncovered": "The line 1 question mentions Form 1099 amounts but not seller-imposed sales tax collected from buyers, while line 23 lets that tax be deducted. Nothing provides for the statement explaining a Form 1099-NEC difference.",
+    "closest_item": "sc.line1",
+    "effect": "amount"
+   },
+   {
+    "item": "sc.line6",
+    "sentences": [
+     {
+      "quote": "However, if the state or local government allowed you to retain any part of the sales tax you collected, you must include that amount as income on line 6.",
+      "page": "i1040sc p. 9"
+     },
+     {
+      "quote": "Credit for federal tax paid on fuels claimed on your 2024 Form 1040 or 1040-SR.",
+      "page": "i1040sc p. 6"
+     }
+    ],
+    "quote": "However, if the state or local government allowed you to retain any part of the sales tax you collected, you must include that amount as income on line 6. / Credit for federal tax paid on fuels claimed on your 2024 Form 1040 or 1040-SR.",
+    "page": "i1040sc p. 9; i1040sc p. 6",
+    "why_uncovered": "The line 6 question lists examples of other income, but neither retained sales tax nor the prior-year federal fuel tax credit is among them. Its gasoline and fuel example is limited to state refunds.",
+    "closest_item": "sc.line6",
+    "effect": "amount"
+   },
+   {
+    "item": "sc.special",
+    "sentences": [
+     {
+      "quote": "If the section 179 property is not used predominantly (more than 50%) in your trade or business at any time before the end of the property’s recovery period, the benefit of the section 179 expense deduction must be reported as “other income” on your return.",
+      "page": "i4562 p. 4"
+     }
+    ],
+    "quote": "If the section 179 property is not used predominantly (more than 50%) in your trade or business at any time before the end of the property’s recovery period, the benefit of the section 179 expense deduction must be reported as “other income” on your return.",
+    "page": "i4562 p. 4",
+    "why_uncovered": "The screen asks only about recapture of depreciation or section 179 on listed property. Recapture on section 179 property that is not listed property is neither computed nor refused.",
+    "closest_item": "sc.special",
+    "effect": "amount"
+   },
+   {
+    "item": "sc.method_other",
+    "sentences": [
+     {
+      "quote": "You qualify as a small business taxpayer if you (a) have average annual gross receipts of $31 million or less for the 3 prior tax years (indexed for inflation), and (b) are not a tax shelter (as defined in section 448(d)(3)).",
+      "page": "i1040sc p. 15"
+     },
+     {
+      "quote": "Special rules apply to long-term contracts (see section 460 for details).",
+      "page": "i1040sc p. 4"
+     }
+    ],
+    "quote": "You qualify as a small business taxpayer if you (a) have average annual gross receipts of $31 million or less for the 3 prior tax years (indexed for inflation), and (b) are not a tax shelter (as defined in section 448(d)(3)). / Special rules apply to long-term contracts (see section 460 for details).",
+    "page": "i1040sc p. 15; i1040sc p. 4",
+    "why_uncovered": "The question tests only the gross receipts prong, so a tax shelter under the $31 million limit is still treated as a small business taxpayer for capitalization and inventory. Long-term contracts are not asked about or refused.",
+    "closest_item": "sc.method_other",
+    "effect": "amount"
+   },
+   {
+    "item": "sc.line9",
+    "sentences": [
+     {
+      "quote": "If you claim any car and truck expenses, you must provide certain information on the use of your vehicle by completing one of the following.",
+      "page": "i1040sc p. 7"
+     }
+    ],
+    "quote": "If you claim any car and truck expenses, you must provide certain information on the use of your vehicle by completing one of the following.",
+    "page": "i1040sc p. 7",
+    "why_uncovered": "The encoding lists no Schedule C Part IV lines (43 to 47) and no provision for the required vehicle information statement.",
+    "closest_item": "sc.line9",
+    "effect": "presentation"
+   },
+   {
+    "item": "sc.f6",
+    "sentences": [
+     {
+      "quote": "Land and land improvements do not qualify as section 179 property.",
+      "page": "p946 p. 17"
+     },
+     {
+      "quote": "Even if the requirements explained earlier under What Property Qualifies? are met, you cannot elect the section 179 deduction for the following property.",
+      "page": "p946 p. 17"
+     },
+     {
+      "quote": "Generally, you cannot claim a section 179 deduction based on the cost of property you lease to someone else.",
+      "page": "p946 p. 17"
+     },
+     {
+      "quote": "If you acquire qualified property in a like-kind exchange, only the excess basis of the acquired property is eligible for the section 179 deduction.",
+      "page": "p946 p. 17"
+     },
+     {
+      "quote": "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid.",
+      "page": "p946 p. 17"
+     }
+    ],
+    "quote": "Land and land improvements do not qualify as section 179 property. / Even if the requirements explained earlier under What Property Qualifies? are met, you cannot elect the section 179 deduction for the following property. / Generally, you cannot claim a section 179 deduction based on the cost of property you lease to someone else. / If you acquire qualified property in a like-kind exchange, only the excess basis of the acquired property is eligible for the section 179 deduction. / If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid.",
+    "page": "p946 p. 17",
+    "why_uncovered": "The listed section 179 items only total elected amounts. No listed question or refusal excludes land, excepted property or noncorporate leased property, or limits trade-in cost to excess basis or cash paid.",
+    "closest_item": "sc.f6",
+    "effect": "amount"
+   },
+   {
+    "item": "sc.dep_other",
+    "sentences": [
+     {
+      "quote": "The following types of property must be depreciated under ADS.",
+      "page": "i4562 p. 12"
+     },
+     {
+      "quote": "Instead of depreciating property under GDS (line 19), you can make an irrevocable election for any classification of property for any tax year to use ADS.",
+      "page": "i4562 p. 12"
+     },
+     {
+      "quote": "Generally, you must depreciate the carryover basis of property you acquire in a like-kind exchange or involuntary conversion during the current tax year over the remaining recovery period of the property exchanged or involuntarily converted.",
+      "page": "i4562 p. 9"
+     }
+    ],
+    "quote": "The following types of property must be depreciated under ADS. / Instead of depreciating property under GDS (line 19), you can make an irrevocable election for any classification of property for any tax year to use ADS. / Generally, you must depreciate the carryover basis of property you acquire in a like-kind exchange or involuntary conversion during the current tax year over the remaining recovery period of the property exchanged or involuntarily converted.",
+    "page": "i4562 p. 12; i4562 p. 9",
+    "why_uncovered": "This helper totals Form 4562 lines 14, 17, 19 and 21 and leaves out line 20 (ADS). No listed question or refusal catches property that must use ADS, an ADS election, or carryover basis from an exchange or conversion.",
+    "closest_item": "sc.dep_other",
+    "effect": "amount"
+   },
+   {
+    "item": "sc.line16b",
+    "sentences": [
+     {
+      "quote": "If you paid interest in 2025 that also applies to future years, deduct only the part that applies to 2025.",
+      "page": "i1040sc p. 8"
+     },
+     {
+      "quote": "If you and at least one other person (other than your spouse if you file a joint return) were liable for and paid interest on the mortgage and the other person received the Form 1098, include your share of the interest on line 16b.",
+      "page": "i1040sc p. 8"
+     },
+     {
+      "quote": "Attach a statement to your return showing the name and address of the person who received the Form 1098.",
+      "page": "i1040sc p. 8"
+     }
+    ],
+    "quote": "If you paid interest in 2025 that also applies to future years, deduct only the part that applies to 2025. / If you and at least one other person (other than your spouse if you file a joint return) were liable for and paid interest on the mortgage and the other person received the Form 1098, include your share of the interest on line 16b. / Attach a statement to your return showing the name and address of the person who received the Form 1098.",
+    "page": "i1040sc p. 8",
+    "why_uncovered": "The line 16b question does not limit prepaid interest to the 2025 part or a shared mortgage to the filer's share. It also makes no provision for the required statement.",
+    "closest_item": "sc.line16b",
+    "effect": "amount"
+   },
+   {
+    "item": "sc.line24a",
+    "sentences": [
+     {
+      "quote": "You can’t deduct expenses paid or incurred in connection with employment away from home if that period of employment exceeds 1 year.",
+      "page": "i1040sc p. 9"
+     },
+     {
+      "quote": "Also, you cannot deduct travel expenses for your spouse, your dependent, or any other individual unless that person is your employee, the travel is for a bona fide business purpose, and the expenses would otherwise be deductible by that person.",
+      "page": "i1040sc p. 9"
+     },
+     {
+      "quote": "You can’t deduct expenses for attending a convention, seminar, or similar meeting held outside the North American area unless the meeting is directly related to your trade or business and it is as reasonable for the meeting to be held outside the North American area as within it.",
+      "page": "i1040sc p. 9"
+     }
+    ],
+    "quote": "You can’t deduct expenses paid or incurred in connection with employment away from home if that period of employment exceeds 1 year. / Also, you cannot deduct travel expenses for your spouse, your dependent, or any other individual unless that person is your employee, the travel is for a bona fide business purpose, and the expenses would otherwise be deductible by that person. / You can’t deduct expenses for attending a convention, seminar, or similar meeting held outside the North American area unless the meeting is directly related to your trade or business and it is as reasonable for the meeting to be held outside the North American area as within it.",
+    "page": "i1040sc p. 9",
+    "why_uncovered": "The question excludes only meals and entertainment. It does not apply the one-year limit, the companion travel limit or the foreign convention limit.",
+    "closest_item": "sc.line24a",
+    "effect": "amount"
+   },
+   {
+    "item": "sc.meals_50",
+    "sentences": [
+     {
+      "quote": "Do not include entertainment expenses on this line.",
+      "page": "i1040sc p. 9"
+     },
+     {
+      "quote": "You can deduct a percentage of the actual cost of a meal if the following conditions are met.",
+      "page": "i1040sc p. 9"
+     },
+     {
+      "quote": "If you receive reimbursement under a food program of the Department of Agriculture, only deduct the cost of food that exceeds reimbursement, if any.",
+      "page": "i1040sc p. 10"
+     }
+    ],
+    "quote": "Do not include entertainment expenses on this line. / You can deduct a percentage of the actual cost of a meal if the following conditions are met. / If you receive reimbursement under a food program of the Department of Agriculture, only deduct the cost of food that exceeds reimbursement, if any.",
+    "page": "i1040sc p. 9; i1040sc p. 10",
+    "why_uncovered": "The question asks for the full cost of business meals. It does not state the deductibility conditions, such as not lavish, taxpayer present and business contact, and does not exclude entertainment or food program reimbursements.",
+    "closest_item": "sc.meals_50",
+    "effect": "amount"
+   },
+   {
+    "item": "sc.line26",
+    "sentences": [
+     {
+      "quote": "If you provided taxable fringe benefits to your employees, such as personal use of a car, do not deduct as wages the amount applicable to depreciation and other expenses claimed elsewhere.",
+      "page": "i1040sc p. 10"
+     }
+    ],
+    "quote": "If you provided taxable fringe benefits to your employees, such as personal use of a car, do not deduct as wages the amount applicable to depreciation and other expenses claimed elsewhere.",
+    "page": "i1040sc p. 10",
+    "why_uncovered": "The question excludes wages deducted elsewhere but not the fringe benefit amount representing depreciation or other expenses claimed on other lines, which allows a double deduction.",
+    "closest_item": "sc.line26",
+    "effect": "amount"
+   },
+   {
+    "item": "sc.line48",
+    "sentences": [
+     {
+      "quote": "You may be eligible to deduct up to $150,000 of qualified sound recording production costs.",
+      "page": "i1040sc p. 1"
+     }
+    ],
+    "quote": "You may be eligible to deduct up to $150,000 of qualified sound recording production costs.",
+    "page": "i1040sc p. 1",
+    "why_uncovered": "Other expenses are a single free-form total, and nothing applies or refuses the $150,000 ceiling on these costs.",
+    "closest_item": "sc.line48",
+    "effect": "amount"
+   },
+   {
+    "item": "sc.ho_uses",
+    "sentences": [
+     {
+      "quote": "You can’t deduct any depreciation (including any additional first-year depreciation) or section 179 expense for the portion of your home that is used in a qualified business use if you figure the deduction for the business use of your home using the simplified method.",
+      "page": "i1040sc p. 13"
+     },
+     {
+      "quote": "You can’t deduct any excess mortgage interest, excess real estate taxes, or excess casualty losses on Schedule C for this home.",
+      "page": "i1040sc p. 14"
+     },
+     {
+      "quote": "Make the election by using the simplified method to figure the deduction for the qualified business use of a home on a timely filed, original federal income tax return for that year.",
+      "page": "i1040sc p. 10"
+     }
+    ],
+    "quote": "You can’t deduct any depreciation (including any additional first-year depreciation) or section 179 expense for the portion of your home that is used in a qualified business use if you figure the deduction for the business use of your home using the simplified method. / You can’t deduct any excess mortgage interest, excess real estate taxes, or excess casualty losses on Schedule C for this home. / Make the election by using the simplified method to figure the deduction for the qualified business use of a home on a timely filed, original federal income tax return for that year.",
+    "page": "i1040sc p. 13; i1040sc p. 14; i1040sc p. 10",
+    "why_uncovered": "Nothing stops home depreciation, section 179 or home-related mortgage interest and real estate taxes from also being entered on lines 13, 16a or 23 under the simplified method. Nothing tests the timely filed, original return condition for the election.",
+    "closest_item": "sc.ho_uses",
+    "effect": "amount"
+   },
+   {
+    "item": "sc.line31",
+    "sentences": [
+     {
+      "quote": "If your gross income is more than your expenses (including the expenses you report on line 30) and you have prior year unallowed passive activity losses, don’t enter your net profit on line 31 until you have figured the amount of prior year unallowed passive activity losses you may claim this year for this activity.",
+      "page": "i1040sc p. 14"
+     },
+     {
+      "quote": "Be sure to indicate that you are including prior year passive activity losses by entering “PAL” to the left of the entry space.",
+      "page": "i1040sc p. 14"
+     }
+    ],
+    "quote": "If your gross income is more than your expenses (including the expenses you report on line 30) and you have prior year unallowed passive activity losses, don’t enter your net profit on line 31 until you have figured the amount of prior year unallowed passive activity losses you may claim this year for this activity. / Be sure to indicate that you are including prior year passive activity losses by entering “PAL” to the left of the entry space.",
+    "page": "i1040sc p. 14",
+    "why_uncovered": "Line G asks only about 2025 participation. Nothing asks about or refuses prior-year unallowed passive losses for a business that materially participates in 2025.",
+    "closest_item": "sc.line31",
+    "effect": "amount"
+   },
+   {
+    "item": "sc.hi_uses",
+    "sentences": [
+     {
+      "quote": "Your personal services must have been a material income-producing factor in the business.",
+      "page": "i1040gi p. 94"
+     }
+    ],
+    "quote": "Your personal services must have been a material income-producing factor in the business.",
+    "page": "i1040gi p. 94",
+    "why_uncovered": "The question tests only whether the policy is established under the business. Neither it nor the health insurance screen tests whether the filer's personal services were a material income-producing factor.",
+    "closest_item": "sc.hi_uses",
+    "effect": "eligibility"
+   },
+   {
+    "item": "sc.qbi",
+    "sentences": [
+     {
+      "quote": "If you were previously an employee of a business and continue to provide substantially the same services to that business after you’re no longer treated as an employee, there is a presumption that you’re providing services as an employee for purposes of section 199A for the 3-year period after ceasing to be an employee.",
+      "page": "i8995 p. 2"
+     },
+     {
+      "quote": "Payments may be included in QBI to the extent they are (1) related to your trade or business, (2) reported to you by the cooperative as qualified income items on an attachment to Form 1099-PATR, and (3) not payments reported as from an SSTB, unless your taxable income is at or below the threshold, in which case payments from SSTBs are included in your QBI.",
+      "page": "i8995 p. 3"
+     },
+     {
+      "quote": "If you received qualified payments reported to you on Form 1099-PATR from a specified agricultural or horticultural cooperative, you must reduce your QBI by the patron reduction and use Form 8995-A to compute your QBI deduction.",
+      "page": "i8995 p. 3"
+     }
+    ],
+    "quote": "If you were previously an employee of a business and continue to provide substantially the same services to that business after you’re no longer treated as an employee, there is a presumption that you’re providing services as an employee for purposes of section 199A for the 3-year period after ceasing to be an employee. / Payments may be included in QBI to the extent they are (1) related to your trade or business, (2) reported to you by the cooperative as qualified income items on an attachment to Form 1099-PATR, and (3) not payments reported as from an SSTB, unless your taxable income is at or below the threshold, in which case payments from SSTBs are included in your QBI. / If you received qualified payments reported to you on Form 1099-PATR from a specified agricultural or horticultural cooperative, you must reduce your QBI by the patron reduction and use Form 8995-A to compute your QBI deduction.",
+    "page": "i8995 p. 2; i8995 p. 3",
+    "why_uncovered": "QBI is derived from the business's net profit less attributable deductions. Nothing tests the former-employee presumption, and Form 1099-PATR amounts on line 6 are not separately qualified, reduced or refused.",
+    "closest_item": "sc.qbi",
+    "effect": "amount"
+   }
+  ],
+  "used": [
+   {
+    "doc": "i1040gi",
+    "pages": [
+     94,
+     95
+    ]
+   },
+   {
+    "doc": "i1040gi",
+    "pages": [
+     104
+    ]
+   },
+   {
+    "doc": "i1040gi",
+    "pages": [
+     108
+    ]
+   },
+   {
+    "doc": "i1040sc",
+    "pages": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15
+    ]
+   },
+   {
+    "doc": "i4562",
+    "pages": [
+     4,
+     5
+    ]
+   },
+   {
+    "doc": "i4562",
+    "pages": [
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "doc": "i7206",
+    "pages": [
+     1,
+     2
+    ]
+   },
+   {
+    "doc": "i8995",
+    "pages": [
+     2,
+     3,
+     4,
+     5,
+     6
+    ]
+   },
+   {
+    "doc": "p946",
+    "pages": [
+     17,
+     18,
+     19
+    ]
+   },
+   {
+    "doc": "p946",
+    "pages": [
+     34
+    ]
+   }
+  ],
+  "cost": 1.021556,
+  "model": "claude-opus-5-5"
+ },
+ {
+  "form": "scveh",
+  "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576",
+  "claims": [
+   {
+    "item": "scveh.is_actual_leased",
+    "sentences": [
+     {
+      "quote": "You can’t use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle.",
+      "page": "i1040sc p. 6"
+     }
+    ],
+    "quote": "You can’t use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle.",
+    "page": "i1040sc p. 6",
+    "why_uncovered": "scveh.smr_ok tests eligibility only for the standard mileage rate. The screen's 'used the standard mileage rate in an earlier year' item gates owned-vehicle depreciation through scveh.cost, so nothing stops a lessee who used the standard rate earlier from switching to actual expenses.",
+    "closest_item": "scveh.is_actual_leased",
+    "effect": "eligibility"
+   },
+   {
+    "item": "scveh.line20a",
+    "sentences": [
+     {
+      "quote": "But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount.",
+      "page": "i1040sc p. 8"
+     },
+     {
+      "quote": "Report the inclusion amount figured (as described in the preceding discussions) as other income on the same form or schedule on which you took the deduction for your rental costs.",
+      "page": "p946 p. 59"
+     }
+    ],
+    "quote": "But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount. / Report the inclusion amount figured (as described in the preceding discussions) as other income on the same form or schedule on which you took the deduction for your rental costs.",
+    "page": "i1040sc p. 8; p946 p. 59",
+    "why_uncovered": "scveh.line20a is only the business portion of the lease payments. No question, line or refusal addresses the inclusion amount for a leased vehicle.",
+    "closest_item": "scveh.line20a",
+    "effect": "amount"
+   },
+   {
+    "item": "scveh.over_half",
+    "sentences": [
+     {
+      "quote": "To determine whether to use line 26 or line 27 to report your listed property, you must first determine the percentage of qualified business use for each property.",
+      "page": "i4562 p. 14"
+     },
+     {
+      "quote": "Your percentage of qualified business use may be smaller than the business/investment use percentage.",
+      "page": "i4562 p. 14"
+     },
+     {
+      "quote": "Treat vehicles used by employees as being used 100% for business/investment purposes if the value of personal use is included in the employees’ gross income, or the employees reimburse the employer for the personal use.",
+      "page": "i4562 p. 14"
+     }
+    ],
+    "quote": "To determine whether to use line 26 or line 27 to report your listed property, you must first determine the percentage of qualified business use for each property. / Your percentage of qualified business use may be smaller than the business/investment use percentage. / Treat vehicles used by employees as being used 100% for business/investment purposes if the value of personal use is included in the employees’ gross income, or the employees reimburse the employer for the personal use.",
+    "page": "i4562 p. 14",
+    "why_uncovered": "The more-than-50% test and the use percentage come only from the three mileage questions. Nothing asks about or refuses the excluded uses (such as leasing to or compensating a 5% owner or related person, or compensating others without income inclusion), and nothing applies the 100% treatment for employee-used vehicles.",
+    "closest_item": "scveh.over_half",
+    "effect": "amount"
+   },
+   {
+    "item": "scveh.screen",
+    "sentences": [
+     {
+      "quote": "Property converted from business or income-producing use to personal use in the same tax year it is acquired;",
+      "page": "i4562 p. 7"
+     },
+     {
+      "quote": "If during the tax year you convert property used solely for personal purposes to business/investment use (or vice versa), figure the percentage of business/investment use only for the number of months you use the property in your business or for the production of income.",
+      "page": "i4562 p. 14"
+     },
+     {
+      "quote": "Multiply that percentage by the number of months you use the property in your business or for the production of income, and divide the result by 12.",
+      "page": "i4562 p. 14"
+     }
+    ],
+    "quote": "Property converted from business or income-producing use to personal use in the same tax year it is acquired; / If during the tax year you convert property used solely for personal purposes to business/investment use (or vice versa), figure the percentage of business/investment use only for the number of months you use the property in your business or for the production of income. / Multiply that percentage by the number of months you use the property in your business or for the production of income, and divide the result by 12.",
+    "page": "i4562 p. 7; i4562 p. 14",
+    "why_uncovered": "The screen refuses a personal-to-business conversion during 2025 and a disposition, but not a business-to-personal conversion. Such a vehicle still gets the special allowance and the ordinary mileage-based use percentage, without the monthly proration.",
+    "closest_item": "scveh.screen",
+    "effect": "amount"
+   },
+   {
+    "item": "scveh.miles_commuting",
+    "sentences": [
+     {
+      "quote": "If you converted your vehicle during the year from personal to business use (or vice versa), enter your commuting miles only for the period you drove your vehicle for business.",
+      "page": "i1040sc p. 15"
+     }
+    ],
+    "quote": "If you converted your vehicle during the year from personal to business use (or vice versa), enter your commuting miles only for the period you drove your vehicle for business.",
+    "page": "i1040sc p. 15",
+    "why_uncovered": "The question asks for all commuting miles driven in 2025 and has no limit to the business period. The screen's conversion item does not reach standard mileage or leased filers, who report on Part IV.",
+    "closest_item": "scveh.miles_commuting",
+    "effect": "presentation"
+   },
+   {
+    "item": "scveh.line19",
+    "sentences": [
+     {
+      "quote": "However, you can make an irrevocable election to use the straight line method for all property within a classification that is placed in service during the tax year.",
+      "page": "i4562 p. 11"
+     },
+     {
+      "quote": "For 3-, 5-, 7-, or 10-year property eligible for the 200% declining balance method, you can make an irrevocable election to use the 150% declining balance method, switching to the straight line method in the first tax year that the straight line rate exceeds the declining balance rate.",
+      "page": "i4562 p. 11"
+     },
+     {
+      "quote": "The following types of property must be depreciated under ADS.",
+      "page": "i4562 p. 12"
+     },
+     {
+      "quote": "Instead of depreciating property under GDS (line 19), you can make an irrevocable election for any classification of property for any tax year to use ADS.",
+      "page": "i4562 p. 12"
+     },
+     {
+      "quote": "Any property required to be depreciated under the Alternative Depreciation System (ADS) (that is, not property for which you elected to use ADS);",
+      "page": "i4562 p. 7"
+     },
+     {
+      "quote": "If you elect to use a different method for one item in a property class, you must apply the same method to all property in that class placed in service during the year of the election.",
+      "page": "p946 p. 35"
+     }
+    ],
+    "quote": "However, you can make an irrevocable election to use the straight line method for all property within a classification that is placed in service during the tax year. / For 3-, 5-, 7-, or 10-year property eligible for the 200% declining balance method, you can make an irrevocable election to use the 150% declining balance method, switching to the straight line method in the first tax year that the straight line rate exceeds the declining balance rate. / The following types of property must be depreciated under ADS. / Instead of depreciating property under GDS (line 19), you can make an irrevocable election for any classification of property for any tax year to use ADS. / Any property required to be depreciated under the Alternative Depreciation System (ADS) (that is, not property for which you elected to use ADS); / If you elect to use a different method for one item in a property class, you must apply the same method to all property in that class placed in service during the year of the election.",
+    "page": "i4562 p. 11; i4562 p. 12; i4562 p. 7; p946 p. 35",
+    "why_uncovered": "Line 19 always uses the 200% declining balance GDS rates from Tables A-1 to A-5. No question or refusal covers a straight line, 150% or ADS election, in 2025 or an earlier year. None covers mandatory ADS (for example, a vehicle used predominantly outside the United States) or the resulting loss of the special allowance. Only ADS from 50%-or-less use is refused.",
+    "closest_item": "scveh.line19",
+    "effect": "amount"
+   },
+   {
+    "item": "scveh.line7",
+    "sentences": [
+     {
+      "quote": "Caution: If you have a short tax year, you must reduce the maximum deduction amount by multiplying the maximum amount by a fraction.",
+      "page": "p946 p. 60"
+     },
+     {
+      "quote": "You cannot use the percentage tables for a short tax year.",
+      "page": "p946 p. 37"
+     }
+    ],
+    "quote": "Caution: If you have a short tax year, you must reduce the maximum deduction amount by multiplying the maximum amount by a fraction. / You cannot use the percentage tables for a short tax year.",
+    "page": "p946 p. 60; p946 p. 37",
+    "why_uncovered": "The limits and the table rates are applied as if every tax year were a full 12 months. No question or refusal identifies a short tax year.",
+    "closest_item": "scveh.line7",
+    "effect": "amount"
+   },
+   {
+    "item": "scveh.rate_prior",
+    "sentences": [
+     {
+      "quote": "You must stop using the tables if you adjust the basis of the property for any reason other than:",
+      "page": "p946 p. 37"
+     },
+     {
+      "quote": "If you reduce the basis of your property because of a casualty, you cannot continue to use the percentage tables.",
+      "page": "p946 p. 37"
+     }
+    ],
+    "quote": "You must stop using the tables if you adjust the basis of the property for any reason other than: / If you reduce the basis of your property because of a casualty, you cannot continue to use the percentage tables.",
+    "page": "p946 p. 37",
+    "why_uncovered": "The screen refuses basis reductions only for a clean-fuel deduction or a vehicle credit. A casualty or other basis adjustment is neither asked about nor refused, so the table rate continues to apply to the vehicle.",
+    "closest_item": "scveh.rate_prior",
+    "effect": "amount"
+   },
+   {
+    "item": "scveh.passenger",
+    "sentences": [
+     {
+      "quote": "The business use requirement and the limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly engaged in the business of leasing passenger automobiles.",
+      "page": "i4562 p. 15"
+     },
+     {
+      "quote": "The passenger automobile limits generally do not apply to passenger automobiles leased or held for leasing by anyone regularly engaged in the business of leasing passenger automobiles.",
+      "page": "p946 p. 59"
+     }
+    ],
+    "quote": "The business use requirement and the limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly engaged in the business of leasing passenger automobiles. / The passenger automobile limits generally do not apply to passenger automobiles leased or held for leasing by anyone regularly engaged in the business of leasing passenger automobiles.",
+    "page": "i4562 p. 15; p946 p. 59",
+    "why_uncovered": "The passenger question and the screen cover weight, qualified nonpersonal use vehicles, for-hire transport, and ambulances and hearses. They do not cover the exception for a business regularly leasing automobiles, so the limits would be wrongly applied to such a filer.",
+    "closest_item": "scveh.passenger",
+    "effect": "amount"
+   },
+   {
+    "item": "scveh.line9",
+    "sentences": [
+     {
+      "quote": "If you produced real or tangible personal property or acquired real or personal property for resale, you must generally capitalize certain expenses in inventory or other property.",
+      "page": "i1040sc p. 6"
+     },
+     {
+      "quote": "Reduce the amounts on lines 8 through 27a and Part V by amounts capitalized.",
+      "page": "i1040sc p. 6"
+     }
+    ],
+    "quote": "If you produced real or tangible personal property or acquired real or personal property for resale, you must generally capitalize certain expenses in inventory or other property. / Reduce the amounts on lines 8 through 27a and Part V by amounts capitalized.",
+    "page": "i1040sc p. 6",
+    "why_uncovered": "Line 9, line 20a and the depreciation amounts are computed with no reduction for capitalized costs. Nothing asks whether vehicle costs are allocable to produced or resale property, or whether the small business exception applies.",
+    "closest_item": "scveh.line9",
+    "effect": "amount"
+   },
+   {
+    "item": "scveh.macrs",
+    "sentences": [
+     {
+      "quote": "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove your business/investment use with adequate records or with sufficient evidence to support your own statements.",
+      "page": "p946 p. 63"
+     }
+    ],
+    "quote": "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove your business/investment use with adequate records or with sufficient evidence to support your own statements.",
+    "page": "p946 p. 63",
+    "why_uncovered": "Depreciation and section 179 are allowed on the entered miles alone. No question or refusal conditions them on having adequate records or sufficient evidence of business use.",
+    "closest_item": "scveh.macrs",
+    "effect": "eligibility"
+   },
+   {
+    "item": "scveh.miles_business",
+    "sentences": [
+     {
+      "quote": "If you used more than one vehicle during the year, attach a statement with the information requested in Schedule C, Part IV, for each additional vehicle.",
+      "page": "i1040sc p. 7"
+     },
+     {
+      "quote": "Complete Form 4562, Part V, if you are claiming depreciation on your vehicle or you are required to file Form 4562 for any other reason (see Line 13, later).",
+      "page": "i1040sc p. 7"
+     },
+     {
+      "quote": "Except as noted below, you must complete lines 30 through 36 for each vehicle identified in Section A.",
+      "page": "i4562 p. 16"
+     }
+    ],
+    "quote": "If you used more than one vehicle during the year, attach a statement with the information requested in Schedule C, Part IV, for each additional vehicle. / Complete Form 4562, Part V, if you are claiming depreciation on your vehicle or you are required to file Form 4562 for any other reason (see Line 13, later). / Except as noted below, you must complete lines 30 through 36 for each vehicle identified in Section A.",
+    "page": "i1040sc p. 7; i4562 p. 16",
+    "why_uncovered": "The miles are encoded only as Schedule C lines 44a to 44c. No item routes the vehicle information to Form 4562 Part V when depreciation is claimed, encodes Section B lines 30 through 36, or provides the additional-vehicle statement.",
+    "closest_item": "scveh.miles_business",
+    "effect": "presentation"
+   }
+  ],
+  "used": [
+   {
+    "doc": "i1040sc",
+    "pages": [
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "doc": "i1040sc",
+    "pages": [
+     15
+    ]
+   },
+   {
+    "doc": "i4562",
+    "pages": [
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16
+    ]
+   },
+   {
+    "doc": "p946",
+    "pages": [
+     34,
+     35,
+     36,
+     37
+    ]
+   },
+   {
+    "doc": "p946",
+    "pages": [
+     41
+    ]
+   },
+   {
+    "doc": "p946",
+    "pages": [
+     59,
+     60,
+     61,
+     62,
+     63
+    ]
+   },
+   {
+    "doc": "p946",
+    "pages": [
+     71,
+     72,
+     73
+    ]
+   }
+  ],
+  "cost": 0.7433708,
   "model": "claude-opus-5-5"
  },
  {

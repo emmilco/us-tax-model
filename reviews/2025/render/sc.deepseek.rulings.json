@@ -1,0 +1,42 @@
+{
+ "kind": "render",
+ "form": "sc",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "3a",
+   "restated": "Enter $5 (sc.ho_rate).",
+   "model": "the model returned no verdict for this line",
+   "ruling": "Ruling: model error; the model returned no verdict for this line, so there is no objection to rule on. The Claude render log judges it.",
+   "context": "4c25d28949ee3bae493f9488370dcb6a674c86a8f9ab83d8c671e3cc61681574"
+  },
+  {
+   "printed": "4 (sc.f7206_line4)",
+   "restated": "Enter the amount from helper \"Net profit of this business (zero for a loss)\".",
+   "model": "IRS line 4 says 'Enter your net profit* and any other earned income** from the trade or business'; the restatement uses only net profit, zero for a loss.",
+   "ruling": "Ruling: scope; f7206 line 4 footnote: \"Earned income includes net earnings and gains from the sale, transfer, or licensing of property you created. However, it doesn't include capital gain income.\" The tool admits no such income outside Schedule C: Form 4797 and other income are refused (sd.other_forms, scope.yaml), and Schedule F and K-1 profits are refused by the self-employment screen (person.x_other).",
+   "context": "4c25d28949ee3bae493f9488370dcb6a674c86a8f9ab83d8c671e3cc61681574"
+  },
+  {
+   "printed": "5 (sc.f7206_line5)",
+   "restated": "Enter the amount from person helper \"Total of all net profits of this person's businesses (losses not included)\".",
+   "model": "IRS line 5 requires 'the total of all net profits from Schedule C..., Schedule F..., or Schedule K-1..., plus any other income'; the restatement sums only Schedule C net profits.",
+   "ruling": "Ruling: scope; f7206 line 4 footnote: \"Earned income includes net earnings and gains from the sale, transfer, or licensing of property you created. However, it doesn't include capital gain income.\" The tool admits no such income outside Schedule C: Form 4797 and other income are refused (sd.other_forms, scope.yaml), and Schedule F and K-1 profits are refused by the self-employment screen (person.x_other).",
+   "context": "4c25d28949ee3bae493f9488370dcb6a674c86a8f9ab83d8c671e3cc61681574"
+  },
+  {
+   "printed": "9 (sc.f7206_line9)",
+   "restated": "Choose — [helper \"Line 4 is more than zero\" = true → helper \"This person's SEP or SIMPLE deduction times line 4 divided by line 5\"] [helper \"Line 4 is more than zero\" = false → helper \"Zero\"]",
+   "model": "IRS line 9 includes 'Schedule 1..., line 16, self-employed SEP, SIMPLE, and qualified plans'; the restatement uses only the SEP or SIMPLE deduction.",
+   "ruling": "Ruling: scope; person.plan_screen refuses contributions \"to a qualified plan (such as a solo 401(k))\", so line 16 on a computed return holds only the SEP or SIMPLE deduction.",
+   "context": "4c25d28949ee3bae493f9488370dcb6a674c86a8f9ab83d8c671e3cc61681574"
+  },
+  {
+   "printed": "F",
+   "restated": "Input — Do you use an accounting method other than cash or accrual, or did you change your accounting method for 2025 (Form 3115 or a section 481(a) adjustment), or must you capitalize costs under the uniform capitalization rules (section 263A) because your average annual gross receipts for the 3 prior years were more than $31 million?",
+   "model": "Line F asks only for the accounting method, including cash, accrual, other, and method changes via Form 3115; section 263A capitalization is a Part II/Part III matter, not a line F question.",
+   "ruling": "Ruling: representation; the input is a scope screen that also carries the section 263A questions; it narrows the supported returns and changes no amount on a computed return.",
+   "context": "4c25d28949ee3bae493f9488370dcb6a674c86a8f9ab83d8c671e3cc61681574"
+  }
+ ]
+}

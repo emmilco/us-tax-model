@@ -35,8 +35,8 @@
 ## (screen) — `asset.screen`
 
 - **Authored helper label:** Does any of these apply to this property?
-- **Encoded (Bool):** Input — Does any of these apply to this property: you disposed of it or converted it to personal use in 2025; you acquired it in a like-kind exchange or an involuntary conversion, from a related person, or by gift or inheritance; it is real property (a building or a structural component, other than qualified improvement property) or land; it is a car, truck or other vehicle (enter vehicles separately); you depreciate it under ADS, under an elected straight line or 150% declining balance method, or by a method other than the MACRS percentage tables; its basis was adjusted for anything other than depreciation (for example a casualty loss); it is in a general asset account; you amortize it; it is used predominantly outside the United States, or is tax-exempt use or tax-exempt bond financed property; it was placed in service before 2005; its business use percentage has changed since you placed it in service; or it is property with a long production period, an aircraft, or qualified production property?
-- Expr: `{"op":"input","source":"Does any of these apply to this property: you disposed of it or converted it to personal use in 2025; you acquired it in a like-kind exchange or an involuntary conversion, from a related person, or by gift or inheritance; it is real property (a building or a structural component, other than qualified improvement property) or land; it is a car, truck or other vehicle (enter vehicles separately); you depreciate it under ADS, under an elected straight line or 150% declining balance method, or by a method other than the MACRS percentage tables; its basis was adjusted for anything other than depreciation (for example a casualty loss); it is in a general asset account; you amortize it; it is used predominantly outside the United States, or is tax-exempt use or tax-exempt bond financed property; it was placed in service before 2005; its business use percentage has changed since you placed it in service; or it is property with a long production period, an aircraft, or qualified production property?"}`
+- **Encoded (Bool):** Input — Does any of these apply to this property: you disposed of it or converted it to personal use in 2025; you acquired it in a like-kind exchange or an involuntary conversion, from a related person, or by gift or inheritance; it is real property (a building or a structural component, other than qualified improvement property) or land; it is a car, truck or other vehicle (enter vehicles separately); you depreciate it under ADS, under an elected straight line or 150% declining balance method, or by a method other than the MACRS percentage tables; its basis was adjusted for anything other than depreciation (for example a casualty loss); it is in a general asset account; you amortize it; it is used predominantly outside the United States, or is tax-exempt use or tax-exempt bond financed property; it was placed in service before 2005; its business use percentage has changed since you placed it in service; it is qualified reuse and recycling property (machinery or equipment used exclusively to collect, distribute or recycle reuse and recyclable materials, section 168(m)); you acquired it before September 28, 2017; or it is property with a long production period, an aircraft, or qualified production property?
+- Expr: `{"op":"input","source":"Does any of these apply to this property: you disposed of it or converted it to personal use in 2025; you acquired it in a like-kind exchange or an involuntary conversion, from a related person, or by gift or inheritance; it is real property (a building or a structural component, other than qualified improvement property) or land; it is a car, truck or other vehicle (enter vehicles separately); you depreciate it under ADS, under an elected straight line or 150% declining balance method, or by a method other than the MACRS percentage tables; its basis was adjusted for anything other than depreciation (for example a casualty loss); it is in a general asset account; you amortize it; it is used predominantly outside the United States, or is tax-exempt use or tax-exempt bond financed property; it was placed in service before 2005; its business use percentage has changed since you placed it in service; it is qualified reuse and recycling property (machinery or equipment used exclusively to collect, distribute or recycle reuse and recyclable materials, section 168(m)); you acquired it before September 28, 2017; or it is property with a long production period, an aircraft, or qualified production property?"}`
 - Cite: [i4562] pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p946 p. 37, Rules Covering the Use of the Tables (2025; sha256 5c1c95b7)
 
 ## (gate) — `asset.screened`
@@ -57,7 +57,7 @@
 
 - **Authored helper label:** Cost or other basis
 - **Encoded (NonNegDollars):** Input — The cost or other basis of the property (what you paid, including sales tax, delivery and installation; for property converted from personal use, the smaller of its adjusted basis or its fair market value on the date of conversion)
-- **Refusal:** when asset.screened is true, cannot complete Form 4562 property outside this tool (Pub. 946 Appendix B class, disposition, exchange, real property, ADS, other methods, basis adjustment, amortization and the other items of the screen). This property is outside the depreciation this tool covers. Cite: [i4562] pp. 8-12, Part III, and Pub. 946 Appendix B (2025; sha256 5c1c95b7)
+- **Refusal:** when asset.screened is true, cannot complete Form 4562 property outside this tool (Pub. 946 Appendix B class, disposition, exchange, real property, reuse and recycling property, an acquisition before September 28, 2017, ADS, other methods, basis adjustment, amortization and the other items of the screen). This property is outside the depreciation this tool covers. Cite: [i4562] pp. 8-12, Part III, and Pub. 946 Appendix B (2025; sha256 5c1c95b7)
 - Expr: `{"op":"input","source":"The cost or other basis of the property (what you paid, including sales tax, delivery and installation; for property converted from personal use, the smaller of its adjusted basis or its fair market value on the date of conversion)"}`
 - Cite: [i4562] p. 11, Column (c)—Basis for depreciation; p. 14, Column (d)—Cost or other basis (2025; sha256 5c1c95b7)
 
@@ -221,8 +221,8 @@
 ## (helper) — `asset.after_jan19`
 
 - **Authored helper label:** Acquired after January 19, 2025
-- **Encoded (Bool):** Input — Did you acquire this property after January 19, 2025?
-- Expr: `{"op":"input","source":"Did you acquire this property after January 19, 2025?"}`
+- **Encoded (Bool):** Input — Did you acquire this property after January 19, 2025? (Property acquired before September 28, 2017 is screened out above.)
+- Expr: `{"op":"input","source":"Did you acquire this property after January 19, 2025? (Property acquired before September 28, 2017 is screened out above.)"}`
 - Cite: [i4562] p. 5, Line 14, Certain qualified property acquired after January 19, 2025, and Certain qualified property acquired after September 27, 2017, and before January 20, 2025 (2025; sha256 5c1c95b7)
 
 ## (helper) — `asset.bonus_choice`
@@ -271,7 +271,7 @@
 
 ## (helper) — `asset.bonus_fullcase`
 
-- **Authored helper label:** The allowance when it is claimed: 100% if acquired after January 19, 2025, otherwise 40%
+- **Authored helper label:** The allowance when it is claimed: 100% if acquired after January 19, 2025; 40% if acquired after September 27, 2017 and before January 20, 2025
 - **Encoded (NonNegDollars):** Choose — [helper "Acquired after January 19, 2025" = true → helper "100% special allowance"] [helper "Acquired after January 19, 2025" = false → helper "40% special allowance"]
 - Expr: `{"alternatives":[{"guard":{"eq":["asset.after_jan19",{"const":true}],"op":"test"},"then":"asset.bonus_full"},{"guard":{"eq":["asset.after_jan19",{"const":false}],"op":"test"},"then":"asset.bonus_forty"}],"op":"choose"}`
 - Cite: [i4562] p. 5, Line 14, Certain qualified property acquired after January 19, 2025, and Certain qualified property acquired after September 27, 2017, and before January 20, 2025 (2025; sha256 5c1c95b7)
@@ -279,7 +279,7 @@
 ## 14 — `asset.bonus`
 
 - **IRS:** Special depreciation allowance for this property
-- **Encoded (NonNegDollars):** Choose — [helper "Special depreciation allowance for this class of property" = 'full' → helper "The allowance when it is claimed: 100% if acquired after January 19, 2025, otherwise 40%"] [helper "Special depreciation allowance for this class of property" = 'forty' → helper "40% special allowance"] [helper "Special depreciation allowance for this class of property" = 'none' → helper "Zero"]
+- **Encoded (NonNegDollars):** Choose — [helper "Special depreciation allowance for this class of property" = 'full' → helper "The allowance when it is claimed: 100% if acquired after January 19, 2025; 40% if acquired after September 27, 2017 and before January 20, 2025"] [helper "Special depreciation allowance for this class of property" = 'forty' → helper "40% special allowance"] [helper "Special depreciation allowance for this class of property" = 'none' → helper "Zero"]
 - **Shown on the values sheet only when:** Reported on lines 6, 14 and 19 (property placed in service in 2025 that is not listed property) (`asset.on_19`)
 - Expr: `{"alternatives":[{"guard":{"eq":["asset.bonus_choice",{"const":"full"}],"op":"test"},"then":"asset.bonus_fullcase"},{"guard":{"eq":["asset.bonus_choice",{"const":"forty"}],"op":"test"},"then":"asset.bonus_forty"},{"guard":{"eq":["asset.bonus_choice",{"const":"none"}],"op":"test"},"then":"asset.zero"}],"op":"choose"}`
 - Cite: [i4562] pp. 5-7, Line 14, Qualified property and Election out (2025; sha256 5c1c95b7)
@@ -474,9 +474,23 @@
 ## (helper) — `asset.cost179_2025`
 
 - **Authored helper label:** The business cost when used more than 50% in the business
-- **Encoded (NonNegDollars):** Choose — [helper "Business use is more than 50%" = true → column (c)] [helper "Business use is more than 50%" = false → helper "Zero"]
-- Expr: `{"alternatives":[{"guard":{"eq":["asset.over_half",{"const":true}],"op":"test"},"then":"asset.basis"},{"guard":{"eq":["asset.over_half",{"const":false}],"op":"test"},"then":"asset.zero"}],"op":"choose"}`
+- **Encoded (NonNegDollars):** Choose — [helper "Business use is more than 50%" = true → helper "The business cost, when this property is section 179 property"] [helper "Business use is more than 50%" = false → helper "Zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["asset.over_half",{"const":true}],"op":"test"},"then":"asset.cost179_real"},{"guard":{"eq":["asset.over_half",{"const":false}],"op":"test"},"then":"asset.zero"}],"op":"choose"}`
 - Cite: [i4562] p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during the tax year"; Worksheet 1, line 1, "include the total amount of eligible section 179 property ... not just the amount for which you are making the election" (2025; sha256 5c1c95b7)
+
+## (helper) — `asset.is_section179`
+
+- **Authored helper label:** This property is section 179 property (qualified improvement property only when you elect to expense it)
+- **Encoded (Bool):** (column (a) ≠ 'cqip' or line 6(c) > helper "Zero")
+- Expr: `{"any":[{"ne":["asset.class",{"const":"cqip"}],"op":"test"},{"gt":["asset.s179","asset.zero"],"op":"test"}],"op":"test"}`
+- Cite: [i4562] pp. 2-3, Special rules for qualified section 179 real property, "You can elect to treat certain qualified real property placed in service during the tax year as section 179 property" (2025; sha256 5c1c95b7)
+
+## (helper) — `asset.cost179_real`
+
+- **Authored helper label:** The business cost, when this property is section 179 property
+- **Encoded (NonNegDollars):** Choose — [helper "This property is section 179 property (qualified improvement property only when you elect to expense it)" = true → column (c)] [helper "This property is section 179 property (qualified improvement property only when you elect to expense it)" = false → helper "Zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["asset.is_section179",{"const":true}],"op":"test"},"then":"asset.basis"},{"guard":{"eq":["asset.is_section179",{"const":false}],"op":"test"},"then":"asset.zero"}],"op":"choose"}`
+- Cite: [i4562] p. 4, Line 2, "including the total cost of qualified real property that you elect to treat as section 179 property" (2025; sha256 5c1c95b7)
 
 ## (helper) — `asset.dep_prior`
 

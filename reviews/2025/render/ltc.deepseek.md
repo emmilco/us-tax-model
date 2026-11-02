@@ -4,18 +4,18 @@ The rendered English of every printed line of `Form 7206, line 2 — qualified l
 
 | field | value |
 | --- | --- |
-| date | 2026-10-23 |
+| date | 2026-11-02 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 56034c0085eb7128f9236c72f54e519b2e7ee4a2d2028fa9234f4b4512455e03 |
+| prompt sha256 | 98dcb5fd5496a0a0beb16828b8347396bf996e433a913272a3345e25a6c83de1 |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
-| subject sha256 | 7470681aa9b71dbcc40db5df670c57193a834f34ac1be822d03a73c420eb27b9 |
+| subject sha256 | d3da815e06eeea1e381805a795dd0c772122a188eb854cd37cc6f033559b5d2c |
 | lines judged | 2 |
-| match / mismatch / unclear / missing | 1 / 1 / 0 / 0 |
-| verdicts for lines not in the form | ltc.age |
+| match / mismatch / unclear / missing | 2 / 0 / 0 / 0 |
+| verdicts for lines not in the form | none |
 
 ## Source pages given to the model
 
@@ -27,30 +27,23 @@ The rendered English of every printed line of `Form 7206, line 2 — qualified l
 ## Lines
 
 ### 2(a) — Total payments made for that person during the year
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: Input — The qualified long-term care insurance premiums paid in 2025 for this person under a policy established under this business (not for any month the person was eligible for a long-term care plan subsidized by an employer)
-
-Model: The IRS note excludes payments for any month you were eligible to participate in a long-term care insurance plan subsidized by your employer or your spouse's employer, or the employer of either your dependent or your child who was under age 27 at the end of 2025; the restatement instead states the exclusion in terms of the covered person's eligibility for a plan subsidized by an employer.
-
-Ruling: open
+Model: The restatement captures line 2(a)’s total payments for the covered person and correctly excludes months of eligibility for an employer-subsidized long-term care insurance plan.
 
 ### 2(b) — The amount for that person's age
 Status: **MATCH**
 
-Model: The restatement selects the applicable age-based qualified long-term care premium limit using the person's age at the end of 2025, matching Form 7206 line 2(b).
+Model: The IRS line 2(b) amount is determined from the covered person’s age at the end of 2025 using the listed age bands, which is what the restatement directs.
 
 ## Raw response
 
 ```yaml
 lines:
   - key: "2(a)"
-    status: MISMATCH
-    reason: "The IRS note excludes payments for any month you were eligible to participate in a long-term care insurance plan subsidized by your employer or your spouse's employer, or the employer of either your dependent or your child who was under age 27 at the end of 2025; the restatement instead states the exclusion in terms of the covered person's eligibility for a plan subsidized by an employer."
+    status: MATCH
+    reason: "The restatement captures line 2(a)’s total payments for the covered person and correctly excludes months of eligibility for an employer-subsidized long-term care insurance plan."
   - key: "2(b)"
     status: MATCH
-    reason: "The restatement selects the applicable age-based qualified long-term care premium limit using the person's age at the end of 2025, matching Form 7206 line 2(b)."
-  - key: "ltc.age"
-    status: MATCH
-    reason: "The age brackets and end-of-2025 measurement match the IRS age categories used for the line 2(b) limit."
+    reason: "The IRS line 2(b) amount is determined from the covered person’s age at the end of 2025 using the listed age bands, which is what the restatement directs."
 ```

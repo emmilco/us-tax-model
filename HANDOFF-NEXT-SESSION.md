@@ -1,4 +1,29 @@
-# Session handoff — 2026-11-02; asset/Schedule C pass in progress
+# Session handoff — 2026-11-02; asset/Schedule C pass closed
+
+**State:** the asset/Schedule C pass (T-157/T-158) is ruled, reviewed and on `main` as one squashed commit of the tested tree, because the pre-push guard refuses the branch's untested WIP commits; full suite green (see the commit message). `asset-sc-pass` keeps the commit-by-commit history.
+
+## What this session changed from the entry below
+
+- The cloud session's Claude logs had no local raw replies, so triage could not read them. All Claude asset and sc reviews were rerun locally with fresh receipts; the handoff's 14/25 counts below were replaced by the rerun's.
+- New fixes: BUG-0303 (unelected qualified improvement property on Form 4562 line 2), BUG-0304 (`ltc.payments` tested the covered person, not the filer), BUG-0306 (`scveh.screen`, a 2025 vehicle acquired before September 28, 2017). BUG-0305 closes BUG-0290 and BUG-0291.
+- Reruns under both families: asset, ltc, scveh transcription and render; sc under both. Class M asset rerun (36 values, down from 322, because the tool now requests printed lines only). Completeness rerun and ruled for sc, asset, ltc and scveh (39 claims); their `stale:` debt entries are retired.
+- **Correction of an inherited ruling:** the scveh line 9 render ruling "refusal located elsewhere" was wrong. It is now a finding (BUG-0310). The same inherited rulings on `sc.special` and line 7 were re-checked by reading the question, not by execution.
+
+## Open and next
+
+- **Queue 1, amount-affecting:** **T-173/BUG-0310** (a lessee who used the standard rate earlier can switch to actual expenses; reproduced; needs a new input), then T-161/BUG-0292 (HSA carryover).
+- **Deferred real gaps from the completeness reviews:** T-170/BUG-0307 (asset, 7), T-171/BUG-0308 (ltc, 1), T-172/BUG-0309 (sc, 15), T-174/BUG-0311 (scveh, 8). Many can change an amount; they are recorded, not fixed.
+- Queue 3 and the P2 backlog are as in the entry below. Optional DeepSeek transcription stays open in f4562 (14), f8606 (3), f8995 (9), qbi (4), sli (5).
+
+## Operational notes
+
+- After switching branches, run `npm run build` before `npm run render`: `canonical/` is git-ignored, so rendering alone restores the other branch's wording.
+- A ruling edited by hand must go through `rulings.save`: a re-compare restores the log from the sidecar.
+- Archives: `.transcription/archive/before-asset-sc-local-rerun-2026-11-02/`, `before-qip-ltc-fix-reruns-2026-11-02/`, `before-scveh-screen-rerun-2026-11-02/`. Ruling inputs: `.transcription/proposed/asset-sc/`.
+
+---
+
+# Session handoff — 2026-11-02; asset/Schedule C pass in progress (historical; superseded by the entry above)
 
 **State:** `main` is at `1547d27` (the f8962 form pass and the BUG-0297 fix; both full-suite green on their tested
 trees). The working tree is clean. The **asset/Schedule C pass (T-157/T-158) is in progress on branch

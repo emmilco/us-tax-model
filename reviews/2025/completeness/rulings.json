@@ -303,11 +303,241 @@
    "evidence": "i1040gi p. 33. The certified statement for partial blindness is not asked; BUG-0302/T-169 records it.",
    "prompt_sha": "f6fc8403cbbbc99f855346069feafceabbdb11a1b345cb0d7243360ff2a044c8",
    "bug": "BUG-0302"
+  },
+  "unruled:asset#1": {
+   "class": "real gap",
+   "evidence": "i4562 p. 2. Investment, purchased-for-business, noncorporate-lessor and other-tangible limits are not asked. BUG-0307/T-170 records the gap.",
+   "prompt_sha": "69ffb2173382c3b203bd710ba08e9556ed3deae95f995020450981a8e09513a5",
+   "bug": "BUG-0307"
+  },
+  "unruled:asset#2": {
+   "class": "real gap",
+   "evidence": "i4562 pp. 6-7. The section 168(k)(9) exclusions and the used-property conditions are not asked. BUG-0307/T-170 records the gap.",
+   "prompt_sha": "69ffb2173382c3b203bd710ba08e9556ed3deae95f995020450981a8e09513a5",
+   "bug": "BUG-0307"
+  },
+  "unruled:asset#3": {
+   "class": "real gap",
+   "evidence": "i4562 pp. 10-11. Statutory classifications outside the Appendix B list are not offered. BUG-0307/T-170 records the gap.",
+   "prompt_sha": "69ffb2173382c3b203bd710ba08e9556ed3deae95f995020450981a8e09513a5",
+   "bug": "BUG-0307"
+  },
+  "unruled:asset#4": {
+   "class": "real gap",
+   "evidence": "p946 p. 37; i4562 p. 12. A short tax year is not named or asked. BUG-0307/T-170 records the gap.",
+   "prompt_sha": "69ffb2173382c3b203bd710ba08e9556ed3deae95f995020450981a8e09513a5",
+   "bug": "BUG-0307"
+  },
+  "unruled:asset#5": {
+   "class": "real gap",
+   "evidence": "i4562 p. 14. The exclusions from qualified business use are not asked. BUG-0307/T-170 records the gap.",
+   "prompt_sha": "69ffb2173382c3b203bd710ba08e9556ed3deae95f995020450981a8e09513a5",
+   "bug": "BUG-0307"
+  },
+  "unruled:asset#6": {
+   "class": "real gap",
+   "evidence": "i4562 p. 3. The limit on a home as a regular business establishment is not stated. BUG-0307/T-170 records the gap.",
+   "prompt_sha": "69ffb2173382c3b203bd710ba08e9556ed3deae95f995020450981a8e09513a5",
+   "bug": "BUG-0307"
+  },
+  "unruled:asset#7": {
+   "class": "real gap",
+   "evidence": "i4562 p. 14. The months-based percentage for listed property converted to business use is not applied. BUG-0307/T-170 records the gap.",
+   "prompt_sha": "69ffb2173382c3b203bd710ba08e9556ed3deae95f995020450981a8e09513a5",
+   "bug": "BUG-0307"
+  },
+  "unruled:ltc#1": {
+   "class": "out of scope",
+   "evidence": "i7206 p. 1. sc.hi_screen refuses \"a retired public safety officer who paid premiums from retirement plan distributions\".",
+   "prompt_sha": "675c44d68e965e5f0c66c1f1216b9606cacd38c367caf008c771edf03f1ba14c",
+   "gate": "sc.hi_screened"
+  },
+  "unruled:ltc#2": {
+   "class": "real gap",
+   "evidence": "i7206 p. 1. ltc.payments does not limit the covered person; BUG-0308/T-171 records the gap.",
+   "prompt_sha": "675c44d68e965e5f0c66c1f1216b9606cacd38c367caf008c771edf03f1ba14c",
+   "bug": "BUG-0308"
+  },
+  "unruled:ltc#3": {
+   "class": "out of scope",
+   "evidence": "i7206 p. 2. sc.hi_screen refuses \"anyone is covered by qualified long-term care insurance entered for more than one business on this return\".",
+   "prompt_sha": "675c44d68e965e5f0c66c1f1216b9606cacd38c367caf008c771edf03f1ba14c",
+   "gate": "sc.hi_screened"
+  },
+  "unruled:sc#1": {
+   "class": "real gap",
+   "evidence": "i1040sc pp. 2-5, business against hobby and an LLC electing corporate treatment. BUG-0309/T-172 records the gap.",
+   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
+   "bug": "BUG-0309"
+  },
+  "unruled:sc#2": {
+   "class": "real gap",
+   "evidence": "i1040sc pp. 5, 9, seller-imposed sales tax. BUG-0309/T-172 records the gap.",
+   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
+   "bug": "BUG-0309"
+  },
+  "unruled:sc#3": {
+   "class": "real gap",
+   "evidence": "i1040sc pp. 6, 9, retained sales tax and the federal fuel tax credit. BUG-0309/T-172 records the gap.",
+   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
+   "bug": "BUG-0309"
+  },
+  "unruled:sc#4": {
+   "class": "real gap",
+   "evidence": "i4562 p. 4, recapture on non-listed section 179 property; sc.special names only listed property. BUG-0309/T-172 records the gap.",
+   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
+   "bug": "BUG-0309"
+  },
+  "unruled:sc#5": {
+   "class": "real gap",
+   "evidence": "i1040sc pp. 4, 15, a tax shelter under the gross receipts limit and long-term contracts. BUG-0309/T-172 records the gap.",
+   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
+   "bug": "BUG-0309"
+  },
+  "unruled:sc#7": {
+   "class": "real gap",
+   "evidence": "p946 p. 17, noncorporate lessors and the trade-in cost limit; land itself is refused by asset.screen. BUG-0309/T-172 records the gap.",
+   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
+   "bug": "BUG-0309"
+  },
+  "unruled:sc#9": {
+   "class": "real gap",
+   "evidence": "i1040sc p. 8, prepaid and shared interest. BUG-0309/T-172 records the gap.",
+   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
+   "bug": "BUG-0309"
+  },
+  "unruled:sc#10": {
+   "class": "real gap",
+   "evidence": "i1040sc p. 9, travel limits. BUG-0309/T-172 records the gap.",
+   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
+   "bug": "BUG-0309"
+  },
+  "unruled:sc#11": {
+   "class": "real gap",
+   "evidence": "i1040sc pp. 9-10, meal conditions. BUG-0309/T-172 records the gap.",
+   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
+   "bug": "BUG-0309"
+  },
+  "unruled:sc#12": {
+   "class": "real gap",
+   "evidence": "i1040sc p. 10, fringe benefit amounts claimed on other lines. BUG-0309/T-172 records the gap.",
+   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
+   "bug": "BUG-0309"
+  },
+  "unruled:sc#13": {
+   "class": "real gap",
+   "evidence": "i1040sc p. 1, the $150,000 ceiling. BUG-0309/T-172 records the gap.",
+   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
+   "bug": "BUG-0309"
+  },
+  "unruled:sc#14": {
+   "class": "real gap",
+   "evidence": "i1040sc pp. 10, 13-14, simplified method conditions and double deductions. BUG-0309/T-172 records the gap.",
+   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
+   "bug": "BUG-0309"
+  },
+  "unruled:sc#15": {
+   "class": "real gap",
+   "evidence": "i1040sc p. 14, prior-year unallowed passive losses. BUG-0309/T-172 records the gap.",
+   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
+   "bug": "BUG-0309"
+  },
+  "unruled:sc#16": {
+   "class": "real gap",
+   "evidence": "i1040gi p. 94, personal services as a material income factor. BUG-0309/T-172 records the gap.",
+   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
+   "bug": "BUG-0309"
+  },
+  "unruled:sc#17": {
+   "class": "real gap",
+   "evidence": "i8995 pp. 2-3, the former-employee presumption and Form 1099-PATR. BUG-0309/T-172 records the gap.",
+   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
+   "bug": "BUG-0309"
+  },
+  "unruled:sc#6": {
+   "class": "presentation",
+   "evidence": "i1040sc p. 7. Part IV and the vehicle statement are filing information the filer enters; no computed amount depends on them.",
+   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3"
+  },
+  "unruled:sc#8": {
+   "class": "out of scope",
+   "evidence": "i4562 pp. 9, 12. asset.screen refuses ADS and property from an exchange or conversion, so line 20 and carryover basis cannot reach a computed return.",
+   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
+   "gate": "asset.screened"
+  },
+  "unruled:scveh#1": {
+   "class": "real gap",
+   "evidence": "i1040sc p. 6. Reproduced: stage14.veh.leased_actual with scveh.screen true still completes. BUG-0310/T-173 records it.",
+   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576",
+   "bug": "BUG-0310"
+  },
+  "unruled:scveh#2": {
+   "class": "out of scope",
+   "evidence": "i1040sc p. 8. sc.special refuses \"an inclusion amount for leased property\" for the business.",
+   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576",
+   "gate": "sc.special"
+  },
+  "unruled:scveh#3": {
+   "class": "real gap",
+   "evidence": "i4562 p. 14, qualified business use exclusions. BUG-0311/T-174 records the gap.",
+   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576",
+   "bug": "BUG-0311"
+  },
+  "unruled:scveh#4": {
+   "class": "real gap",
+   "evidence": "i4562 pp. 7, 14, business-to-personal conversion. BUG-0311/T-174 records the gap.",
+   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576",
+   "bug": "BUG-0311"
+  },
+  "unruled:scveh#6": {
+   "class": "real gap",
+   "evidence": "i4562 pp. 7, 11-12; p946 p. 35, method and ADS elections and mandatory ADS. BUG-0311/T-174 records the gap.",
+   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576",
+   "bug": "BUG-0311"
+  },
+  "unruled:scveh#7": {
+   "class": "real gap",
+   "evidence": "p946 pp. 37, 60, a short tax year. BUG-0311/T-174 records the gap.",
+   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576",
+   "bug": "BUG-0311"
+  },
+  "unruled:scveh#8": {
+   "class": "real gap",
+   "evidence": "p946 p. 37, a basis adjustment stops the tables. BUG-0311/T-174 records the gap.",
+   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576",
+   "bug": "BUG-0311"
+  },
+  "unruled:scveh#9": {
+   "class": "real gap",
+   "evidence": "i4562 p. 15; p946 p. 59, a regular lessor of automobiles. BUG-0311/T-174 records the gap.",
+   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576",
+   "bug": "BUG-0311"
+  },
+  "unruled:scveh#10": {
+   "class": "real gap",
+   "evidence": "i1040sc p. 6, capitalized costs. BUG-0311/T-174 records the gap.",
+   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576",
+   "bug": "BUG-0311"
+  },
+  "unruled:scveh#11": {
+   "class": "real gap",
+   "evidence": "p946 p. 63, adequate records. BUG-0311/T-174 records the gap.",
+   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576",
+   "bug": "BUG-0311"
+  },
+  "unruled:scveh#5": {
+   "class": "presentation",
+   "evidence": "i1040sc p. 15. Commuting miles for a converted vehicle are a Part IV entry; a 2025 conversion of an owned vehicle on actual expenses is refused by the screen.",
+   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576"
+  },
+  "unruled:scveh#12": {
+   "class": "presentation",
+   "evidence": "i1040sc p. 7; i4562 p. 16. The attachment and Part V Section B entries are filing information; no computed amount depends on them.",
+   "prompt_sha": "7bb3b2623294b57caec2cb03d2669f1feaea641ee6744acfe2be56fe50110576"
   }
  },
  "baseline": {
   "stale:aqee": "d15582a45b6b1039",
-  "stale:asset": "9c99a6489678e918",
   "stale:carloan": "44531dc4ccfd9e43",
   "stale:clcw": "885c3876f926cc8b",
   "stale:clcw26": "e3c46be5e85a7726",
@@ -329,7 +559,6 @@
   "stale:gift": "fcd3987b7a83c19d",
   "stale:interest": "97f205f37a88494d",
   "stale:ira": "2ae2bbd35ba14464",
-  "stale:ltc": "45d20b2831a8f520",
   "stale:mq": "a99b6b462733fb77",
   "stale:oi8z": "a2c769cd8e33535e",
   "stale:otjob": "cd3314ea0e1ad44f",
@@ -345,9 +574,7 @@
   "stale:s8812": "f2586d134aa9f899",
   "stale:sales": "614e07bdc846f102",
   "stale:sb": "0f0a684b10c9f479",
-  "stale:sc": "7ab4da489a665cea",
   "stale:scope": "477e2bc8dc8b081b",
-  "stale:scveh": "4160cbe5f22fae98",
   "stale:sd": "5113116df3dad152",
   "stale:sdtw": "dd17643c30dd8c36",
   "stale:se": "6b1cfbae347682c0",
@@ -364,12 +591,6 @@
    "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
    "prompt_sha": "cbab5d9655bb26b179c75db3a1e436e5a28f04dcb8ab116245722ee9a7fb9a2c",
    "subject": "e1676b4e9d71293231dcf3a78f2f1f55d41c1b4a68df5dd1604fe28cbd923497"
-  },
-  "stale:asset": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "0cef30f1a809ae750ee27f6255927f01d8989c15a91045d5456f0f71051aa2c8",
-   "subject": "57a819af56b22dde3affb0d6d909c596adba3c967e8d6633a5f298d87689aec6"
   },
   "stale:carloan": {
    "policy": "never-reviewed-completeness-debt-v1",
@@ -497,12 +718,6 @@
    "prompt_sha": "1a46e4f426103b6f0d76b641b6ba08dc761e4cfe7c19f5d3e89e6f91226895ec",
    "subject": "6dee12143b5b18ee850c5724655fb5a2e486647a32617fa78f17a5276b6717f0"
   },
-  "stale:ltc": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "6ef4a73559738f61cf34c359dd7a976a8eed34718bc6def3a5e5468829ee5774",
-   "subject": "f091a7819a12cf5427e42bdd56003c192e113f254003b680f57bd42e3b19710d"
-  },
   "stale:mq": {
    "policy": "never-reviewed-completeness-debt-v1",
    "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
@@ -593,23 +808,11 @@
    "prompt_sha": "98bc8a3bdf9134feeac952bdec3f0c098586da6fe2d02a016ce00378f0331cbc",
    "subject": "d336019d470d04ac1d849a8db385601a691a29435c82da8bc275fc084c467afc"
   },
-  "stale:sc": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "1a2c4c111f8db409b6b5fa94686e4eb1b66d5ea8a7e0b945f867f0a4339c9ea9",
-   "subject": "9e3bf7a68382257d24cb13afda6acbc9e4bd356c5442b5adc0ef4e5646e2cf2b"
-  },
   "stale:scope": {
    "policy": "never-reviewed-completeness-debt-v1",
    "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
    "prompt_sha": "e8cda63ac4214585f3ea5cca8b864f679ee8ee3bca51e5955aaf57bf69cc0e53",
    "subject": "bc942e638beea6bc00cbb6f97afb3e017e8639f73cf2ccf58d100975a98a837e"
-  },
-  "stale:scveh": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "889b1d0ae4834d10ec2b0d2d0124afb57025cb8c5ff06a65f70b03f2e8adedcc",
-   "subject": "4258149f9f6c81b6d6713fbca39824bf50943956ed55822ea88ab6a8b0bb3cbe"
   },
   "stale:sd": {
    "policy": "never-reviewed-completeness-debt-v1",
