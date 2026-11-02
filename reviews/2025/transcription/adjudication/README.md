@@ -31,6 +31,7 @@ written into the log and its sidecar by `tools/transcription/rule.py`.
 | project-refuses / candidate-refuses | one side refuses the return, the other computes |
 | project-unknown / candidate-unknown | one side needs an answer that was not supplied, the other gives a value |
 | candidate-shows-skipped | the project hides the line (`shown_when` false) and the candidate shows a nonzero amount (v2) |
+| candidate-invalid | the candidate line, or a line it depends on, failed schema, type or reference validation; it was not executed |
 
 ## Classes
 

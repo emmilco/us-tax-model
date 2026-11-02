@@ -7,7 +7,9 @@ generated returns, and partial records that withhold one answer the reviewed doc
 The result is evidence for adjudication, not a ruling: agreement on every input run is observed
 equivalence on that sample, and each difference comes with witness inputs and both values.
 `bank.return_states` counts the sample by return state; `kinds_by_return` counts only the differences,
-so it is not the size of the completed sample.
+so it is not the size of the completed sample. A reply with invalid declarations is executed line by line
+(T-143): valid lines are compared, and a pair whose candidate line or dependency failed schema, type or
+reference validation is reported as `candidate-invalid` and listed in `invalid_lines`.
 
 Usage: triage.py --form sd [--family deepseek] [--generated 500] [--seed 20261026] [--partial-bases 40]
        triage.py --form sd [--family deepseek] --explain <handle> [--witness N] [--completed] [--depth 6]
@@ -93,13 +95,15 @@ def triage(form, family, generated, seed, partial_bases, max_witnesses=6):
     else:
         answer = {"state": "no candidate lines", "errors": [], "lines": []}
     evaluated = {l["handle"]: l for l in answer.get("lines", [])}
-    record.update({"state": answer["state"], "errors": answer.get("errors", []), "bank": answer.get("bank"),
-                   "failures": answer.get("failures", []), "lines": []})
+    record.update({"state": answer["state"], "errors": answer.get("errors", []), "invalid_lines": answer.get("invalid_lines", []),
+                   "bank": answer.get("bank"), "failures": answer.get("failures", []), "lines": []})
     for p in pairs:
         line = evaluated.get(p["handle"], {})
         if p["candidate"] is None:
             verdict = "missing"
         elif answer["state"] != "evaluated":
+            verdict = "candidate invalid"
+        elif line.get("invalid"):
             verdict = "candidate invalid"
         elif not line.get("compared"):
             verdict = "not reached"

@@ -150,3 +150,17 @@ and expects the checker to reject it. The tcw def labels changed, so the tcw tra
 were rerun under both families and ruled; the render logs match 46/46. The tcw completeness review now exists
 with zero claims, so its `stale:tcw` baseline and deferred-debt records were retired intentionally (the same
 treatment f1040 received after its actual review).
+
+### T-143 line-by-line candidate execution — 2026-11-01
+
+`executableCandidate` now validates and executes per line: declarations that fail schema, type or reference
+validation are removed with their dependency closure, and triage reports them as `candidate-invalid` instead
+of abandoning the whole reply. A valid line that reads a removed line is pruned in the same iterative pass;
+published inputs stay executable because they are facts, but a model redefinition is still invalid for
+comparison. `triage.py` records `invalid_lines`, and the per-pair verdict says "candidate invalid".
+
+The f8889 DeepSeek reply is the demonstration: previously `state: invalid` with no comparisons; now
+`evaluated`, with 9 pairs compared and 7 marked candidate-invalid (line3, line5, line6, line8, line12,
+line13, excess_amt and three helpers). The valid-line differences are consistent with the hh4 rulings, but
+the "executable triage was unavailable" caveat in those rulings is historical; the f8889 summary records the
+replay. The f8889 Claude reply still executes unchanged (8 differs, 1 agrees).

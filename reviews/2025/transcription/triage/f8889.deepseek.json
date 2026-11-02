@@ -1,5 +1,17 @@
 {
- "bank": null,
+ "bank": {
+  "evaluation_failures": 0,
+  "fixtures": 1425,
+  "generated": 500,
+  "partial_bases": 40,
+  "partial_records": 598,
+  "return_states": {
+   "completed": 461,
+   "incomplete": 862,
+   "refused": 1200
+  },
+  "seed": 20261026
+ },
  "errors": [
   {
    "line": "f8889.line3",
@@ -9,156 +21,8496 @@
  "failures": [],
  "family": "deepseek",
  "form": "f8889",
+ "invalid_lines": [
+  "f8889.line3",
+  "f8889.line5",
+  "f8889.line6",
+  "f8889.h_other",
+  "f8889.line8",
+  "f8889.h_line6_split",
+  "f8889.line12",
+  "f8889.h_min_line2_line12",
+  "f8889.line13",
+  "f8889.excess_amt"
+ ],
  "lines": [
   {
+   "absent": 0,
+   "agree": 1467,
    "candidate": "f8889.step1",
+   "compared": 1487,
+   "completed_witnesses": [],
+   "differ": 20,
    "handle": "f8889.step1",
-   "open_at_triage": true,
+   "in_scope": 1487,
+   "in_scope_agree": 1467,
+   "invalid": 0,
+   "kinds": {
+    "candidate-unknown": 1,
+    "project-unknown": 2,
+    "value": 17
+   },
+   "kinds_by_return": {
+    "incomplete": {
+     "value": 1
+    },
+    "refused": {
+     "candidate-unknown": 1,
+     "project-unknown": 2,
+     "value": 16
+    }
+   },
+   "open_at_triage": false,
    "project": "f8889.step1",
    "shown_when": null,
+   "sources": {
+    "fixture": 351,
+    "generated": 516,
+    "partial": 620
+   },
    "status": "DISAGREE",
-   "triage": "candidate invalid"
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 285000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_last_family",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_last_family",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_family_prorated",
+       "value": {
+        "cents": 285000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].step1_line3",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line4",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 285000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_last_family",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_last_family",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_family_prorated",
+       "value": {
+        "cents": 285000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].step1_line3",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line4",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 285000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_last_family",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_last_family",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_family_prorated",
+       "value": {
+        "cents": 285000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].step1_line3",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line4",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage11.hsa.last_month_changed",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 213750,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_last_family",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_last_family",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_family_prorated",
+       "value": {
+        "cents": 213750,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].step1_line3",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line4",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 306,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 285000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_last_family",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_last_family",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_family_prorated",
+       "value": {
+        "cents": 285000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].step1_line3",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line4",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.4.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].line2"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 285000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_last_family",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_last_family",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_family_prorated",
+       "value": {
+        "cents": 285000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].step1_line3",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line4",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.4.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].line9"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].months_family",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].months_family"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_last_family",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_last_family",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_family_prorated",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].months_family",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].months_family"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].step1_line3",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line4",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.4.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].months_family"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 285000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_last_family",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_last_family",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_family_prorated",
+       "value": {
+        "cents": 285000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].f8889[hsa].last_month",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].last_month"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].step1_line3",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].last_month",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].last_month"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line4",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.4.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].last_month"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].f8889[hsa].h_last_family",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].f8889[hsa].h_last_family",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].f8889[hsa].h_family_prorated",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[spouse].f8889[hsa].last_month",
+      "kind": "unknown",
+      "reason": "no input supplied for person[spouse].f8889[hsa].last_month"
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].f8889[hsa].step1_line3",
+       "value": {
+        "input": "person[spouse].f8889[hsa].last_month",
+        "kind": "unknown",
+        "reason": "no input supplied for person[spouse].f8889[hsa].last_month"
+       }
+      },
+      {
+       "ref": "person[spouse].f8889[hsa].line4",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.otjob.1",
+      "kind": "partial",
+      "withheld": "person[spouse].f8889[hsa].last_month"
+     }
+    }
+   ]
   },
   {
+   "absent": 0,
+   "agree": 1232,
    "candidate": "f8889.share_raw",
+   "compared": 1487,
+   "completed_witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 35625,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].share_equal",
+       "value": {
+        "cents": 35625,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s3.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 35625,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].share_equal",
+       "value": {
+        "cents": 35625,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8880.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 35625,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].share_equal",
+       "value": {
+        "cents": 35625,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.8.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 35625,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].share_equal",
+       "value": {
+        "cents": 35625,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5329.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 35625,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].share_equal",
+       "value": {
+        "cents": 35625,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.8",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 35625,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].share_equal",
+       "value": {
+        "cents": 35625,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8880.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].f8889[hsa].allocation",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].allocation",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f4952.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].allocation"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].f8889[hsa].allocation",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].allocation",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f8960.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].allocation"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].f8889[hsa].allocation",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].allocation",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.clcw26.1.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].allocation"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].f8889[hsa].allocation",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].allocation",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.s2.1.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].allocation"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].f8889[hsa].allocation",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].allocation",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.s3.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].allocation"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].f8889[hsa].allocation",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].allocation",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f8962.5.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].allocation"
+     }
+    }
+   ],
+   "differ": 255,
    "handle": "f8889.share_raw",
-   "open_at_triage": true,
+   "in_scope": 1487,
+   "in_scope_agree": 1232,
+   "invalid": 0,
+   "kinds": {
+    "project-unknown": 127,
+    "value": 128
+   },
+   "kinds_by_return": {
+    "completed": {
+     "project-unknown": 20,
+     "value": 34
+    },
+    "incomplete": {
+     "project-unknown": 45,
+     "value": 15
+    },
+    "refused": {
+     "project-unknown": 62,
+     "value": 79
+    }
+   },
+   "open_at_triage": false,
    "project": "f8889.share_raw",
    "shown_when": null,
+   "sources": {
+    "fixture": 351,
+    "generated": 516,
+    "partial": 620
+   },
    "status": "DISAGREE",
-   "triage": "candidate invalid"
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 581200,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].f8889[hsa].allocation",
+       "value": {
+        "kind": "enum",
+        "value": "agreed"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      },
+      {
+       "ref": "person[spouse].f8889[hsa].allocation",
+       "value": {
+        "kind": "enum",
+        "value": "agreed"
+       }
+      },
+      {
+       "ref": "\"agreed\"",
+       "value": {
+        "kind": "enum",
+        "value": "agreed"
+       }
+      },
+      {
+       "ref": "person[spouse].f8889[hsa].allocated",
+       "value": {
+        "cents": 581200,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.6.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 273800,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "kind": "enum",
+        "value": "agreed"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "kind": "enum",
+        "value": "agreed"
+       }
+      },
+      {
+       "ref": "\"agreed\"",
+       "value": {
+        "kind": "enum",
+        "value": "agreed"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocated",
+       "value": {
+        "cents": 273800,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.6.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 35625,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].share_equal",
+       "value": {
+        "cents": 35625,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s3.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 35625,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].share_equal",
+       "value": {
+        "cents": 35625,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.person.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 35625,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].share_equal",
+       "value": {
+        "cents": 35625,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8880.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 35625,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].share_equal",
+       "value": {
+        "cents": 35625,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8880.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].f8889[hsa].allocation",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].allocation",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage11.hsa.self_full_year",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].f8889[hsa].allocation",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].allocation",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage11.hsa.family_55",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].f8889[hsa].allocation",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].allocation",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage11.hsa.employer",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].f8889[hsa].allocation",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].allocation",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage11.hsa.part_year",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].f8889[hsa].allocation",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].allocation",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage11.hsa.changed",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].split",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].f8889[hsa].allocation",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].allocation",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].allocation",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].allocation"
+       }
+      },
+      {
+       "ref": "\"equal\"",
+       "value": {
+        "kind": "enum",
+        "value": "equal"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage11.hsa.last_month",
+      "kind": "fixture"
+     }
+    }
+   ]
   },
   {
+   "absent": 0,
+   "agree": 1487,
    "candidate": "f8889.split",
+   "compared": 1487,
+   "completed_witnesses": [],
+   "differ": 0,
    "handle": "f8889.split",
-   "open_at_triage": true,
+   "in_scope": 1487,
+   "in_scope_agree": 1487,
+   "invalid": 0,
+   "kinds": {},
+   "kinds_by_return": {},
+   "open_at_triage": false,
    "project": "f8889.split",
    "shown_when": null,
+   "sources": {
+    "fixture": 351,
+    "generated": 516,
+    "partial": 620
+   },
    "status": "DISAGREE",
-   "triage": "candidate invalid"
+   "triage": "agrees on sample",
+   "witnesses": []
   },
   {
+   "absent": 0,
+   "agree": 0,
    "candidate": "f8889.excess_amt",
+   "compared": 0,
+   "completed_witnesses": [
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 163200,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8960.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8960.2.deepseek",
+      "kind": "fixture"
+     }
+    }
+   ],
+   "differ": 0,
    "handle": "f8889.excess_amt",
-   "open_at_triage": true,
+   "in_scope": 0,
+   "in_scope_agree": 0,
+   "invalid": 1487,
+   "kinds": {
+    "candidate-invalid": 1487
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-invalid": 387
+    },
+    "incomplete": {
+     "candidate-invalid": 194
+    },
+    "refused": {
+     "candidate-invalid": 906
+    }
+   },
+   "open_at_triage": false,
    "project": "f8889.excess_amt",
    "shown_when": null,
+   "sources": {},
    "status": "DISAGREE",
-   "triage": "candidate invalid"
+   "triage": "candidate invalid",
+   "witnesses": [
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "refused",
+     "source": {
+      "id": "classm.w2.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 163200,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 90675,
+      "kind": "money"
+     },
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[sample].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3.deepseek",
+      "kind": "fixture"
+     }
+    }
+   ]
   },
   {
+   "absent": 0,
+   "agree": 0,
    "candidate": "f8889.line3",
+   "compared": 0,
+   "completed_witnesses": [
+    {
+     "candidate_error": "model changed a published result type",
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 530000,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "model changed a published result type",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "model changed a published result type",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "model changed a published result type",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "model changed a published result type",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8960.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "model changed a published result type",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8960.2.deepseek",
+      "kind": "fixture"
+     }
+    }
+   ],
+   "differ": 0,
    "handle": "3",
-   "open_at_triage": true,
+   "in_scope": 0,
+   "in_scope_agree": 0,
+   "invalid": 1487,
+   "kinds": {
+    "candidate-invalid": 1487
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-invalid": 387
+    },
+    "incomplete": {
+     "candidate-invalid": 194
+    },
+    "refused": {
+     "candidate-invalid": 906
+    }
+   },
+   "open_at_triage": false,
    "project": "f8889.line3",
    "shown_when": null,
+   "sources": {},
    "status": "DISAGREE",
-   "triage": "candidate invalid"
+   "triage": "candidate invalid",
+   "witnesses": [
+    {
+     "candidate_error": "model changed a published result type",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "refused",
+     "source": {
+      "id": "classm.w2.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "model changed a published result type",
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 530000,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "model changed a published result type",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "model changed a published result type",
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 855000,
+      "kind": "money"
+     },
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "model changed a published result type",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 855000,
+      "kind": "money"
+     },
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "model changed a published result type",
+     "instance": "person[sample].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 430000,
+      "kind": "money"
+     },
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3.deepseek",
+      "kind": "fixture"
+     }
+    }
+   ]
   },
   {
+   "absent": 0,
+   "agree": 0,
    "candidate": "f8889.line5",
+   "compared": 0,
+   "completed_witnesses": [
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 530000,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8960.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8960.2.deepseek",
+      "kind": "fixture"
+     }
+    }
+   ],
+   "differ": 0,
    "handle": "5",
-   "open_at_triage": true,
+   "in_scope": 0,
+   "in_scope_agree": 0,
+   "invalid": 1487,
+   "kinds": {
+    "candidate-invalid": 1487
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-invalid": 387
+    },
+    "incomplete": {
+     "candidate-invalid": 194
+    },
+    "refused": {
+     "candidate-invalid": 906
+    }
+   },
+   "open_at_triage": false,
    "project": "f8889.line5",
    "shown_when": null,
+   "sources": {},
    "status": "DISAGREE",
-   "triage": "candidate invalid"
+   "triage": "candidate invalid",
+   "witnesses": [
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "refused",
+     "source": {
+      "id": "classm.w2.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 530000,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 855000,
+      "kind": "money"
+     },
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 855000,
+      "kind": "money"
+     },
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[sample].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 430000,
+      "kind": "money"
+     },
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3.deepseek",
+      "kind": "fixture"
+     }
+    }
+   ]
   },
   {
+   "absent": 0,
+   "agree": 0,
    "candidate": "f8889.line6",
+   "compared": 0,
+   "completed_witnesses": [
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 530000,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8960.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8960.2.deepseek",
+      "kind": "fixture"
+     }
+    }
+   ],
+   "differ": 0,
    "handle": "6",
-   "open_at_triage": true,
+   "in_scope": 0,
+   "in_scope_agree": 0,
+   "invalid": 1487,
+   "kinds": {
+    "candidate-invalid": 1487
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-invalid": 387
+    },
+    "incomplete": {
+     "candidate-invalid": 194
+    },
+    "refused": {
+     "candidate-invalid": 906
+    }
+   },
+   "open_at_triage": false,
    "project": "f8889.line6",
    "shown_when": null,
+   "sources": {},
    "status": "DISAGREE",
-   "triage": "candidate invalid"
+   "triage": "candidate invalid",
+   "witnesses": [
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "refused",
+     "source": {
+      "id": "classm.w2.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 530000,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 428125,
+      "kind": "money"
+     },
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 428125,
+      "kind": "money"
+     },
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[sample].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 430000,
+      "kind": "money"
+     },
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3.deepseek",
+      "kind": "fixture"
+     }
+    }
+   ]
   },
   {
+   "absent": 0,
+   "agree": 1416,
    "candidate": "f8889.line7",
+   "compared": 1487,
+   "completed_witnesses": [],
+   "differ": 71,
    "handle": "7",
-   "open_at_triage": true,
+   "in_scope": 1473,
+   "in_scope_agree": 1416,
+   "invalid": 0,
+   "kinds": {
+    "candidate-refuses": 14,
+    "candidate-unknown": 41,
+    "project-unknown": 2,
+    "value": 14
+   },
+   "kinds_by_return": {
+    "incomplete": {
+     "candidate-unknown": 20,
+     "project-unknown": 2,
+     "value": 1
+    },
+    "refused": {
+     "candidate-refuses": 14,
+     "candidate-unknown": 21,
+     "value": 13
+    }
+   },
+   "open_at_triage": false,
    "project": "f8889.line7",
    "shown_when": null,
+   "sources": {
+    "fixture": 351,
+    "generated": 516,
+    "partial": 620
+   },
    "status": "DISAGREE",
-   "triage": "candidate invalid"
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 75000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_line7",
+       "value": {
+        "cents": 75000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 100000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_worksheet",
+       "value": {
+        "cents": 100000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8959.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 25000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_line7",
+       "value": {
+        "cents": 25000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8959.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 75000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_line7",
+       "value": {
+        "cents": 75000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 100000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_worksheet",
+       "value": {
+        "cents": 100000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage11.refuse.hsa_screen",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage12.car.mixed_sc_interest_prorated",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.refuse.f8889.unsupported_part2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 100000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_worksheet",
+       "value": {
+        "cents": 100000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "audit.f8889.married_hoh_family_age55",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[sample].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[sample].f8889[hsa].h_line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[sample].f8889[hsa]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[sample].f8889[hsa].age55",
+      "kind": "unknown",
+      "reason": "no input supplied for person[sample].f8889[hsa].age55"
+     },
+     "project_operands": [
+      {
+       "ref": "person[sample].f8889[hsa].line7_applies",
+       "value": {
+        "input": "person[sample].f8889[hsa].age55",
+        "kind": "unknown",
+        "reason": "no input supplied for person[sample].f8889[hsa].age55"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage16.hsa.partial.H01",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[sample].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[sample].f8889[hsa].h_line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[sample].f8889[hsa]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[sample].f8889[hsa].age55",
+      "kind": "unknown",
+      "reason": "no input supplied for person[sample].f8889[hsa].age55"
+     },
+     "project_operands": [
+      {
+       "ref": "person[sample].f8889[hsa].line7_applies",
+       "value": {
+        "input": "person[sample].f8889[hsa].age55",
+        "kind": "unknown",
+        "reason": "no input supplied for person[sample].f8889[hsa].age55"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage16.hsa.partial.H02",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 100000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_line7",
+       "value": {
+        "cents": 100000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 128,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 8333,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].f8889[hsa].h_line7",
+       "value": {
+        "cents": 8333,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 100000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].f8889[hsa].line7_worksheet",
+       "value": {
+        "cents": 100000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 154,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.w2.1.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.4.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f4952.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f8960.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.sd.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line7_applies",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.clcw.1.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    }
+   ]
   },
   {
+   "absent": 0,
+   "agree": 0,
    "candidate": "f8889.line8",
+   "compared": 0,
+   "completed_witnesses": [
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 530000,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8960.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8960.2.deepseek",
+      "kind": "fixture"
+     }
+    }
+   ],
+   "differ": 0,
    "handle": "8",
-   "open_at_triage": true,
+   "in_scope": 0,
+   "in_scope_agree": 0,
+   "invalid": 1487,
+   "kinds": {
+    "candidate-invalid": 1487
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-invalid": 387
+    },
+    "incomplete": {
+     "candidate-invalid": 194
+    },
+    "refused": {
+     "candidate-invalid": 906
+    }
+   },
+   "open_at_triage": false,
    "project": "f8889.line8",
    "shown_when": null,
+   "sources": {},
    "status": "DISAGREE",
-   "triage": "candidate invalid"
+   "triage": "candidate invalid",
+   "witnesses": [
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "refused",
+     "source": {
+      "id": "classm.w2.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 530000,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 428125,
+      "kind": "money"
+     },
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 528125,
+      "kind": "money"
+     },
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[sample].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 430000,
+      "kind": "money"
+     },
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3.deepseek",
+      "kind": "fixture"
+     }
+    }
+   ]
   },
   {
+   "absent": 0,
+   "agree": 0,
    "candidate": "f8889.line12",
+   "compared": 0,
+   "completed_witnesses": [
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 530000,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8960.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8960.2.deepseek",
+      "kind": "fixture"
+     }
+    }
+   ],
+   "differ": 0,
    "handle": "12",
-   "open_at_triage": true,
+   "in_scope": 0,
+   "in_scope_agree": 0,
+   "invalid": 1487,
+   "kinds": {
+    "candidate-invalid": 1487
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-invalid": 387
+    },
+    "incomplete": {
+     "candidate-invalid": 194
+    },
+    "refused": {
+     "candidate-invalid": 906
+    }
+   },
+   "open_at_triage": false,
    "project": "f8889.line12",
    "shown_when": null,
+   "sources": {},
    "status": "DISAGREE",
-   "triage": "candidate invalid"
+   "triage": "candidate invalid",
+   "witnesses": [
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "refused",
+     "source": {
+      "id": "classm.w2.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 530000,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 428125,
+      "kind": "money"
+     },
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 528125,
+      "kind": "money"
+     },
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[sample].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 430000,
+      "kind": "money"
+     },
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3.deepseek",
+      "kind": "fixture"
+     }
+    }
+   ]
   },
   {
+   "absent": 0,
+   "agree": 0,
    "candidate": "f8889.line13",
+   "compared": 0,
+   "completed_witnesses": [
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 530000,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8960.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8960.2.deepseek",
+      "kind": "fixture"
+     }
+    }
+   ],
+   "differ": 0,
    "handle": "13",
-   "open_at_triage": true,
+   "in_scope": 0,
+   "in_scope_agree": 0,
+   "invalid": 1487,
+   "kinds": {
+    "candidate-invalid": 1487
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-invalid": 387
+    },
+    "incomplete": {
+     "candidate-invalid": 194
+    },
+    "refused": {
+     "candidate-invalid": 906
+    }
+   },
+   "open_at_triage": false,
    "project": "f8889.line13",
    "shown_when": null,
+   "sources": {},
    "status": "DISAGREE",
-   "triage": "candidate invalid"
+   "triage": "candidate invalid",
+   "witnesses": [
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "refused",
+     "source": {
+      "id": "classm.w2.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 530000,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8889.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[spouse].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 428125,
+      "kind": "money"
+     },
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[sample].f8889[hsa]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3.deepseek",
+      "kind": "fixture"
+     }
+    }
+   ]
   },
   {
+   "absent": 0,
+   "agree": 1431,
    "candidate": "f8889.line14b",
+   "compared": 1487,
+   "completed_witnesses": [],
+   "differ": 56,
    "handle": "14b",
-   "open_at_triage": true,
+   "in_scope": 1472,
+   "in_scope_agree": 1431,
+   "invalid": 0,
+   "kinds": {
+    "candidate-refuses": 14,
+    "candidate-unknown": 41,
+    "project-refuses": 1
+   },
+   "kinds_by_return": {
+    "incomplete": {
+     "candidate-unknown": 20
+    },
+    "refused": {
+     "candidate-refuses": 14,
+     "candidate-unknown": 21,
+     "project-refuses": 1
+    }
+   },
+   "open_at_triage": false,
    "project": "f8889.line14b",
    "shown_when": null,
+   "sources": {
+    "fixture": 351,
+    "generated": 516,
+    "partial": 620
+   },
    "status": "DISAGREE",
-   "triage": "candidate invalid"
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].rollover_bad",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8959.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].rollover_bad",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage11.refuse.hsa_screen",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage12.car.mixed_sc_interest_prorated",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 300000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14a",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14a",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_rollover_capped",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "f8889",
+       "locator": "Form 8889 (2025), line 14b, \"Distributions included on line 14a\""
+      },
+      "form": "Form 8889 line 14b",
+      "gate": "person[taxpayer].f8889[hsa].rollover_bad",
+      "kind": "refusal",
+      "remedy": "The distributions rolled over are part of the total distributions on line 14a and cannot be more than it."
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].rollover_bad",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.refuse.f8889.rollover_over",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].rollover_bad",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].rollover",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.refuse.f8889.unsupported_part2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].rollover_bad",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.w2.1.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].rollover_bad",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.4.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].rollover_bad",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f4952.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].rollover_bad",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f8960.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].rollover_bad",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.sd.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].rollover_bad",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.clcw.1.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    }
+   ]
   },
   {
+   "absent": 0,
+   "agree": 1431,
    "candidate": "f8889.line14c",
+   "compared": 1487,
+   "completed_witnesses": [],
+   "differ": 56,
    "handle": "14c",
-   "open_at_triage": true,
+   "in_scope": 1472,
+   "in_scope_agree": 1431,
+   "invalid": 0,
+   "kinds": {
+    "candidate-refuses": 14,
+    "candidate-unknown": 41,
+    "project-refuses": 1
+   },
+   "kinds_by_return": {
+    "incomplete": {
+     "candidate-unknown": 20
+    },
+    "refused": {
+     "candidate-refuses": 14,
+     "candidate-unknown": 21,
+     "project-refuses": 1
+    }
+   },
+   "open_at_triage": false,
    "project": "f8889.line14c",
    "shown_when": null,
+   "sources": {
+    "fixture": 351,
+    "generated": 516,
+    "partial": 620
+   },
    "status": "DISAGREE",
-   "triage": "candidate invalid"
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8959.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage11.refuse.hsa_screen",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage12.car.mixed_sc_interest_prorated",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14a",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14a",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_line14c_sub",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "f8889",
+       "locator": "Form 8889 (2025), line 14b, \"Distributions included on line 14a\""
+      },
+      "form": "Form 8889 line 14b",
+      "gate": "person[taxpayer].f8889[hsa].rollover_bad",
+      "kind": "refusal",
+      "remedy": "The distributions rolled over are part of the total distributions on line 14a and cannot be more than it."
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14a",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14b",
+       "value": {
+        "cite": {
+         "doc": "f8889",
+         "locator": "Form 8889 (2025), line 14b, \"Distributions included on line 14a\""
+        },
+        "form": "Form 8889 line 14b",
+        "gate": "person[taxpayer].f8889[hsa].rollover_bad",
+        "kind": "refusal",
+        "remedy": "The distributions rolled over are part of the total distributions on line 14a and cannot be more than it."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.refuse.f8889.rollover_over",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 300000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14a",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.refuse.f8889.unsupported_part2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.w2.1.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.4.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f4952.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f8960.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.sd.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14a",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.clcw.1.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    }
+   ]
   },
   {
+   "absent": 0,
+   "agree": 1431,
    "candidate": "f8889.line15",
+   "compared": 1487,
+   "completed_witnesses": [],
+   "differ": 56,
    "handle": "15",
-   "open_at_triage": true,
+   "in_scope": 1473,
+   "in_scope_agree": 1431,
+   "invalid": 0,
+   "kinds": {
+    "candidate-refuses": 14,
+    "candidate-unknown": 41,
+    "value": 1
+   },
+   "kinds_by_return": {
+    "incomplete": {
+     "candidate-unknown": 20
+    },
+    "refused": {
+     "candidate-refuses": 14,
+     "candidate-unknown": 21,
+     "value": 1
+    }
+   },
+   "open_at_triage": false,
    "project": "f8889.line15",
    "shown_when": null,
+   "sources": {
+    "fixture": 351,
+    "generated": 516,
+    "partial": 620
+   },
    "status": "DISAGREE",
-   "triage": "candidate invalid"
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8959.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage11.refuse.hsa_screen",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage12.car.mixed_sc_interest_prorated",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14c",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "value",
+     "project": {
+      "cents": 100000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].medical",
+       "value": {
+        "cents": 100000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.refuse.f8889.rollover_over",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 100000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].medical",
+       "value": {
+        "cents": 100000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.refuse.f8889.unsupported_part2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.w2.1.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.4.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f4952.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f8960.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.sd.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].f8889[hsa].unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].unsupported"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.clcw.1.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].f8889[hsa].unsupported"
+     }
+    }
+   ]
   },
   {
+   "absent": 0,
+   "agree": 1486,
    "candidate": "f8889.line16",
+   "compared": 1487,
+   "completed_witnesses": [],
+   "differ": 1,
    "handle": "16",
-   "open_at_triage": true,
+   "in_scope": 1472,
+   "in_scope_agree": 1472,
+   "invalid": 0,
+   "kinds": {
+    "project-refuses": 1
+   },
+   "kinds_by_return": {
+    "refused": {
+     "project-refuses": 1
+    }
+   },
+   "open_at_triage": false,
    "project": "f8889.line16",
    "shown_when": null,
+   "sources": {
+    "fixture": 351,
+    "generated": 516,
+    "partial": 620
+   },
    "status": "DISAGREE",
-   "triage": "candidate invalid"
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line14c",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line15",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "f8889",
+       "locator": "Form 8889 (2025), line 14b, \"Distributions included on line 14a\""
+      },
+      "form": "Form 8889 line 14b",
+      "gate": "person[taxpayer].f8889[hsa].rollover_bad",
+      "kind": "refusal",
+      "remedy": "The distributions rolled over are part of the total distributions on line 14a and cannot be more than it."
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_dist",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line16_figured",
+       "value": {
+        "cite": {
+         "doc": "f8889",
+         "locator": "Form 8889 (2025), line 14b, \"Distributions included on line 14a\""
+        },
+        "form": "Form 8889 line 14b",
+        "gate": "person[taxpayer].f8889[hsa].rollover_bad",
+        "kind": "refusal",
+        "remedy": "The distributions rolled over are part of the total distributions on line 14a and cannot be more than it."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.refuse.f8889.rollover_over",
+      "kind": "fixture"
+     }
+    }
+   ]
   },
   {
+   "absent": 0,
+   "agree": 1485,
    "candidate": "f8889.line17b",
+   "compared": 1487,
+   "completed_witnesses": [],
+   "differ": 2,
    "handle": "17b",
-   "open_at_triage": true,
+   "in_scope": 1471,
+   "in_scope_agree": 1471,
+   "invalid": 0,
+   "kinds": {
+    "project-refuses": 2
+   },
+   "kinds_by_return": {
+    "refused": {
+     "project-refuses": 2
+    }
+   },
+   "open_at_triage": false,
    "project": "f8889.line17b",
    "shown_when": null,
+   "sources": {
+    "fixture": 351,
+    "generated": 516,
+    "partial": 620
+   },
    "status": "DISAGREE",
-   "triage": "candidate invalid"
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line16",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "f8889",
+       "locator": "Form 8889 (2025), line 14b, \"Distributions included on line 14a\""
+      },
+      "form": "Form 8889 line 14b",
+      "gate": "person[taxpayer].f8889[hsa].rollover_bad",
+      "kind": "refusal",
+      "remedy": "The distributions rolled over are part of the total distributions on line 14a and cannot be more than it."
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_taxable",
+       "value": {
+        "cite": {
+         "doc": "f8889",
+         "locator": "Form 8889 (2025), line 14b, \"Distributions included on line 14a\""
+        },
+        "form": "Form 8889 line 14b",
+        "gate": "person[taxpayer].f8889[hsa].rollover_bad",
+        "kind": "refusal",
+        "remedy": "The distributions rolled over are part of the total distributions on line 14a and cannot be more than it."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.refuse.f8889.rollover_over",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 100000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line16",
+       "value": {
+        "cents": 400000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line16",
+       "value": {
+        "cents": 400000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line17a",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].h_tax_subject",
+       "value": {
+        "cents": 100000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f8889[hsa]",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i8889",
+       "locator": "p. 9, Exceptions to the Additional 20% Tax"
+      },
+      "form": "Form 8889 line 17b",
+      "gate": "person[taxpayer].f8889[hsa].subject_bad",
+      "kind": "refusal",
+      "remedy": "The part subject to the additional 20% tax is part of line 16 and cannot be more than it."
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f8889[hsa].has_taxable",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f8889[hsa].line17b_figured",
+       "value": {
+        "cite": {
+         "doc": "i8889",
+         "locator": "p. 9, Exceptions to the Additional 20% Tax"
+        },
+        "form": "Form 8889 line 17b",
+        "gate": "person[taxpayer].f8889[hsa].subject_bad",
+        "kind": "refusal",
+        "remedy": "The part subject to the additional 20% tax is part of line 16 and cannot be more than it."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.refuse.f8889.subject_over",
+      "kind": "fixture"
+     }
+    }
+   ]
   }
  ],
- "log_sha256_at_triage": "222a11177d2318d5ae1b45884cfd178825046c5eab96547e729c973d30021fe8",
+ "log_sha256_at_triage": "ac379448a77168c6b537e9b26b4168b54dd350e5f5406f4673236a804071428c",
  "policy": "executable-triage-v2",
  "response_sha256": "e7990a1dd3d566517586e263a7c7c66351b00f4d54f94f0d0cc41f0a6204d504",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
- "state": "invalid",
+ "state": "evaluated",
  "subject_sha256": "79c60bf9932b030f9f08f341a8d5c3a650d43b73947734f5851cbcc73cb846a9"
 }

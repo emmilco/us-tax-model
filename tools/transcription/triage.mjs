@@ -11,10 +11,10 @@ import { sampleReturns } from '../../engine/dist/generate.js';
 import { loadInterview } from '../../engine/dist/interview.js';
 
 const { context, form, lines, pairs, ownInputs, generated, seed, partialBases, maxWitnesses, explain } = JSON.parse(readFileSync(0, 'utf8'));
-const { runtime, errors } = executableCandidate(context, form, lines);
+const { runtime, errors, invalid } = executableCandidate(context, form, lines);
 // Output is written once at the end; exiting right after a large piped write can truncate it.
 main: {
-if (errors.length) {
+if (!runtime) {
   process.stdout.write(JSON.stringify({ state: 'invalid', errors }));
   break main;
 }
@@ -40,6 +40,9 @@ function ownPrefix(prefix) {
 const localOf = id => id.startsWith(`${form}.`) ? id.slice(form.length + 1) : id;
 const byProject = new Map(pairs.map(pair => [localOf(pair.project), pair]));
 const byCandidate = new Map(pairs.filter(pair => pair.candidate).map(pair => [localOf(pair.candidate), pair]));
+const invalidHandles = new Set(pairs.filter(pair => pair.candidate && invalid.has(pair.candidate)).map(pair => pair.handle));
+const invalidErrors = new Map(pairs.filter(pair => pair.candidate && invalid.has(pair.candidate)).map(pair => [pair.handle,
+  errors.find(error => error.line === pair.candidate)?.message ?? 'invalid candidate declaration']));
 
 function targets(data, inputs) {
   const all = allTargets(data, inputs);
@@ -86,7 +89,7 @@ function operands(derivations, key) {
 }
 
 const stats = new Map(pairs.map(pair => [pair.handle, { handle: pair.handle, project: pair.project, candidate: pair.candidate, shown_when: pair.shown_when ?? null,
-  compared: 0, agree: 0, differ: 0, absent: 0, in_scope: 0, in_scope_agree: 0, kinds: {}, kinds_by_return: {}, sources: {}, witnesses: [], completed_witnesses: [] }]));
+  compared: 0, agree: 0, differ: 0, absent: 0, invalid: 0, in_scope: 0, in_scope_agree: 0, kinds: {}, kinds_by_return: {}, sources: {}, witnesses: [], completed_witnesses: [] }]));
 const returnCounts = { completed: 0, refused: 0, incomplete: 0 };
 const known = value => value && !['refusal', 'unknown'].includes(value.kind);
 
@@ -113,7 +116,19 @@ function run(source, inputs) {
     const [handle, prefix] = key.split('\u0000');
     const s = stats.get(handle);
     const a = p.get(key), b = m.get(key);
-    if (!a || !b) { s.absent += 1; continue; }
+    if (!a || !b) {
+      if (!b && invalidHandles.has(handle)) {
+        s.invalid += 1;
+        const kind = 'candidate-invalid';
+        s.kinds[kind] = (s.kinds[kind] ?? 0) + 1;
+        const whole = returnState(inputs);
+        s.kinds_by_return[whole] ??= {};
+        s.kinds_by_return[whole][kind] = (s.kinds_by_return[whole][kind] ?? 0) + 1;
+        recordWitness(s, kind, whole, () => ({ kind, source, instance: prefix, project_return: whole, project: a,
+          candidate_error: invalidErrors.get(handle) }), maxWitnesses);
+      } else s.absent += 1;
+      continue;
+    }
     if (known(a) || a.kind === 'hidden') reached = true;
     s.compared += 1;
     s.sources[source.kind] = (s.sources[source.kind] ?? 0) + 1;
@@ -158,6 +173,11 @@ if (explain) {
   const fixtures = loadCases().cases;
   const inputs = witnessInputs(explain.source, fixtures);
   const pair = pairs.find(p => p.handle === explain.handle);
+  if (pair?.candidate && invalid.has(pair.candidate)) {
+    process.stdout.write(JSON.stringify({ handle: explain.handle, source: explain.source, instance: explain.instance,
+      invalid: invalidErrors.get(explain.handle) }, null, 1));
+    break main;
+  }
   const project = evaluate(context, inputs, targets(context, inputs));
   const model = evaluate(runtime, inputs, targets(runtime, inputs));
   const usedP = new Set(), usedM = new Set();
@@ -208,7 +228,7 @@ for (const base of reachedBases.filter((_, i) => i % 4 === 0).slice(0, partialBa
     if (result.error) failures.push({ source: `${base.id} without ${key}`, error: result.error });
   }
 }
-process.stdout.write(JSON.stringify({ state: 'evaluated', errors: [],
+process.stdout.write(JSON.stringify({ state: 'evaluated', errors, invalid_lines: [...invalid],
   bank: { fixtures: fixtures.length, generated, seed, partial_bases: partialBases, partial_records: partials, evaluation_failures: failures.length, return_states: returnCounts },
   failures: failures.slice(0, 20), lines: [...stats.values()] }));
 }

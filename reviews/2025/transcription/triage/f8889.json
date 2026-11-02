@@ -5,12 +5,18 @@
   "generated": 500,
   "partial_bases": 40,
   "partial_records": 598,
+  "return_states": {
+   "completed": 461,
+   "incomplete": 862,
+   "refused": 1200
+  },
   "seed": 20261026
  },
  "errors": [],
  "failures": [],
  "family": "claude",
  "form": "f8889",
+ "invalid_lines": [],
  "lines": [
   {
    "absent": 0,
@@ -22,6 +28,7 @@
    "handle": "f8889.step1",
    "in_scope": 1473,
    "in_scope_agree": 1432,
+   "invalid": 0,
    "kinds": {
     "candidate-refuses": 14,
     "candidate-unknown": 41
@@ -35,7 +42,7 @@
      "candidate-unknown": 21
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "f8889.step1",
    "shown_when": null,
    "sources": {
@@ -700,6 +707,7 @@
    "handle": "f8889.share_raw",
    "in_scope": 1463,
    "in_scope_agree": 1422,
+   "invalid": 0,
    "kinds": {
     "candidate-refuses": 24,
     "candidate-unknown": 41
@@ -713,7 +721,7 @@
      "candidate-unknown": 21
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "f8889.share_raw",
    "shown_when": null,
    "sources": {
@@ -1600,6 +1608,7 @@
    "handle": "f8889.split",
    "in_scope": 1487,
    "in_scope_agree": 1485,
+   "invalid": 0,
    "kinds": {
     "candidate-unknown": 2
    },
@@ -1608,7 +1617,7 @@
      "candidate-unknown": 2
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "f8889.split",
    "shown_when": null,
    "sources": {
@@ -1942,6 +1951,7 @@
    "handle": "f8889.excess_amt",
    "in_scope": 1429,
    "in_scope_agree": 1414,
+   "invalid": 0,
    "kinds": {
     "candidate-unknown": 6,
     "project-refuses": 38,
@@ -1964,7 +1974,7 @@
      "value": 3
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "f8889.excess_amt",
    "shown_when": null,
    "sources": {
@@ -3361,6 +3371,7 @@
    "handle": "3",
    "in_scope": 1485,
    "in_scope_agree": 1462,
+   "invalid": 0,
    "kinds": {
     "candidate-refuses": 2,
     "candidate-unknown": 4,
@@ -3381,7 +3392,7 @@
      "value": 16
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "f8889.line3",
    "shown_when": null,
    "sources": {
@@ -4623,6 +4634,7 @@
    "handle": "6",
    "in_scope": 1451,
    "in_scope_agree": 1376,
+   "invalid": 0,
    "kinds": {
     "candidate-refuses": 16,
     "candidate-unknown": 47,
@@ -4647,7 +4659,7 @@
      "value": 21
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "f8889.line6",
    "shown_when": null,
    "sources": {
@@ -6889,6 +6901,7 @@
    "handle": "7",
    "in_scope": 1487,
    "in_scope_agree": 1472,
+   "invalid": 0,
    "kinds": {
     "candidate-unknown": 1,
     "project-unknown": 2,
@@ -6903,7 +6916,7 @@
      "value": 12
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "f8889.line7",
    "shown_when": null,
    "sources": {
@@ -7735,6 +7748,7 @@
    "handle": "13",
    "in_scope": 1435,
    "in_scope_agree": 1384,
+   "invalid": 0,
    "kinds": {
     "candidate-unknown": 1,
     "project-refuses": 35,
@@ -7756,7 +7770,7 @@
      "value": 3
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "f8889.line13",
    "shown_when": null,
    "sources": {
@@ -9504,9 +9518,10 @@
    "handle": "16",
    "in_scope": 1472,
    "in_scope_agree": 1472,
+   "invalid": 0,
    "kinds": {},
    "kinds_by_return": {},
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "f8889.line16",
    "shown_when": null,
    "sources": {
@@ -9519,7 +9534,7 @@
    "witnesses": []
   }
  ],
- "log_sha256_at_triage": "985f7d04d134def654108c1d358437febf867ec0ca33f6dc3a9d377f83ed2de9",
+ "log_sha256_at_triage": "3295da10aba605b7d7e01a337075ad7e257af932abf00e53266981aa01b23b33",
  "policy": "executable-triage-v2",
  "response_sha256": "34d7583ffc1a4a103470aa6f8abbe032c133650251dc2b4a826edef078bbf0e6",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
