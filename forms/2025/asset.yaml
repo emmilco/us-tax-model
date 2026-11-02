@@ -71,8 +71,10 @@ form:
         declining balance method, or by a method other than the MACRS percentage tables; its basis was adjusted for anything
         other than depreciation (for example a casualty loss); it is in a general asset account; you amortize it; it is used
         predominantly outside the United States, or is tax-exempt use or tax-exempt bond financed property; it was placed
-        in service before 2005; its business use percentage has changed since you placed it in service; or it is property
-        with a long production period, an aircraft, or qualified production property?'
+        in service before 2005; its business use percentage has changed since you placed it in service; it is qualified
+        reuse and recycling property (machinery or equipment used exclusively to collect, distribute or recycle reuse and
+        recyclable materials, section 168(m)); you acquired it before September 28, 2017; or it is property with a long
+        production period, an aircraft, or qualified production property?'
     cite:
       doc: i4562
       locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p946 p. 37, Rules Covering the Use of the
@@ -118,8 +120,9 @@ form:
       locator: p. 11, Column (c)—Basis for depreciation; p. 14, Column (d)—Cost or other basis
     refuses:
     - when: asset.screened
-      form: Form 4562 property outside this tool (Pub. 946 Appendix B class, disposition, exchange, real property, ADS, other
-        methods, basis adjustment, amortization and the other items of the screen)
+      form: Form 4562 property outside this tool (Pub. 946 Appendix B class, disposition, exchange, real property, reuse
+        and recycling property, an acquisition before September 28, 2017, ADS, other methods, basis adjustment,
+        amortization and the other items of the screen)
       remedy: This property is outside the depreciation this tool covers.
       cite:
         doc: i4562
@@ -454,7 +457,8 @@ form:
     type: Bool
     expr:
       op: input
-      source: Did you acquire this property after January 19, 2025?
+      source: Did you acquire this property after January 19, 2025? (Property acquired before September 28, 2017 is
+        screened out above.)
     cite:
       doc: i4562
       locator: p. 5, Line 14, Certain qualified property acquired after January 19, 2025, and Certain qualified property acquired
@@ -544,7 +548,8 @@ form:
         locator: p. 7, Election out
   - id: asset.bonus_fullcase
     printed: (helper)
-    label: 'The allowance when it is claimed: 100% if acquired after January 19, 2025, otherwise 40%'
+    label: 'The allowance when it is claimed: 100% if acquired after January 19, 2025; 40% if acquired after September 27,
+      2017 and before January 20, 2025'
     type: NonNegDollars
     expr:
       op: choose
