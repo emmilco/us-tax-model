@@ -1874,9 +1874,19 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) A joint return with Marketplace coverage before the first full month of a 2025 marriage
       = false
       cite: [i8962] p. 13, Table 4, "Was anyone in your tax family enrolled in a qualified health plan before your first full month of marriage?" (2025; f4ac86ad)
-  (gate) Coverage this tool does not reconcile (not lawfully present, an HRA, unpaid premiums, no tax family)
+  (gate) Coverage or eligibility this tool does not reconcile (other minimum essential coverage, an HRA, unpaid premiums, no tax family, incarceration)
       = UNKNOWN (no input supplied for f8962.other)
-      cite: [i8962] p. 6, "Individuals who are not lawfully present in the United States are not eligible for the PTC for their coverage in a qualified health plan through a Marketplace."; p. 3, "If you were covered under an individual coverage HRA for 2025, you are not allowed a PTC for your 2025 Marketplace health insurance."; p. 1, "If the QSEHRA is affordable for a month, no PTC is allowed for the month."; p. 4, Enrollment premiums, "You are generally not allowed a monthly credit amount for the month if any part of that month"; p. 3, "if you became eligible for APTC because of a successful eligibility appeal and you retroactively enrolled in the plan, then the portion of the enrollment premium for which you are responsible must be paid on or before the 120th day following the date of the appeals decision"; p. 4, "due date of your tax return (not including extensions)" (2025; f4ac86ad)
+      cite: [i8962] p. 5, "An individual in your tax family who is eligible for MEC (except coverage in the individual market) for a month is not in your coverage family for that month."; p. 5, "Most coverage through government-sponsored programs (including Medicaid coverage, Medicare Part A or C, the Children’s Health Insurance Program (CHIP), certain benefits for veterans and their families, TRICARE, and health coverage for Peace Corps volunteers);"; p. 5, "Other health coverage the Department of Health and Human Services designates as MEC."; p. 5, "In addition, if you or your family member enrolls in employer-sponsored coverage for a month, you or your family member is considered eligible for employer-sponsored coverage for that month, even if the coverage does not satisfy the affordability and minimum value standards."; p. 6, "Also, if you leave your employment and are offered post-employment coverage such as COBRA or retiree coverage, you are not considered eligible for that post-employment coverage unless you actually enroll in the coverage."; p. 6, "Individuals who are incarcerated (other than pending disposition of charges, for example, awaiting trial) are not eligible for coverage in a qualified health plan through a Marketplace."; p. 6, "You or the family member may be treated as eligible for Medicaid, CHIP, or the similar program, and not eligible for the PTC, if the Marketplace determination is later found to be based on incorrect information that was given with an intentional or reckless disregard for the facts."; p. 6, "While coverage purchased in the individual market outside the Marketplace is MEC, eligibility for this type of coverage does not prevent you from being eligible for the PTC for Marketplace coverage."; p. 6, "Individuals who are not lawfully present in the United States are not eligible for the PTC for their coverage in a qualified health plan through a Marketplace."; p. 3, "If you were covered under an individual coverage HRA for 2025, you are not allowed a PTC for your 2025 Marketplace health insurance."; p. 1, "If the QSEHRA is affordable for a month, no PTC is allowed for the month."; p. 4, Enrollment premiums, "You are generally not allowed a monthly credit amount for the month if any part of that month"; p. 3, "if you became eligible for APTC because of a successful eligibility appeal and you retroactively enrolled in the plan, then the portion of the enrollment premium for which you are responsible must be paid on or before the 120th day following the date of the appeals decision"; p. 4, "due date of your tax return (not including extensions)" (2025; f4ac86ad)
+  (gate) A Marketplace premium needs an adjustment this tool does not make (coverage began after the first day of a month, or a premium was refunded)
+      = UNKNOWN (no input supplied for f8962.premium_adjust)
+      cite: [i8962] p. 4, "Generally, if coverage in a qualified health plan began after the first day of the month, you are not allowed a monthly credit amount for the coverage for that month."; p. 4, "if an individual in your tax family enrolled in a qualified health plan in 2025 and the enrollment was effective on the date of the individual’s birth, adoption, or placement for adoption or in foster care, or on the effective date of a court order placing the individual with your family, the individual is treated as enrolled as of the first day of that month."; p. 4, "The enrollment premiums are the total amount of the premiums for the month, reduced by any premium amounts for that month that were refunded in 2025" (2025; f4ac86ad)
+  (helper) Forms 1095-A entered that are marked VOID or replaced by a corrected form
+      = 0
+      cite: [i8962] p. 2, "Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962." (2025; f4ac86ad)
+      note: confirmed roster $f1095a:
+  (gate) A Form 1095-A entered is marked VOID or replaced by a corrected form
+      = false
+      cite: [i8962] p. 2, "Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962."; p. 2, "If you receive a Form 1095-A with the “CORRECTED” box checked at the top of the form, use the information on the Form 1095-A with the “CORRECTED” box checked to figure the PTC and reconcile any APTC on Form 8962." (2025; f4ac86ad)
   (gate) Column B counted on two Forms 1095-A from the same state for the same month
       = false
       cite: [i8962] p. 15, Column (b), "Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form." (2025; f4ac86ad)
@@ -1915,9 +1925,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $0
       cite: [i8962] p. 16, Column (f), "If you have more than one Form 1095-A, add the amounts together and enter the total on Form 8962, line 11, column (f)." (2025; f4ac86ad)
       note: confirmed roster $f1095a:
-  (gate) The Marketplace estimated household income of at least 100% of the poverty line
+  (gate) The Marketplace estimated household income of at least 100% of the poverty line, without misreporting
       = UNKNOWN (no input supplied for f8962.estimate_100)
-      cite: [i8962] p. 9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal poverty line for your family size for 2025." (2025; f4ac86ad)
+      cite: [i8962] p. 9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal poverty line for your family size for 2025."; p. 9, "You, with intentional or reckless disregard for the facts, provided incorrect information to a Marketplace for the year of coverage." (2025; f4ac86ad)
   (helper) You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)
       = UNKNOWN (no input supplied for f1040.tax_exempt_interest)
       cite: [i8962] p. 6, Applicable taxpayer, "Generally, you are an applicable taxpayer if your household income for 2025"; p. 9, "The Marketplace estimated at the time of enrollment that your household income would be at least 100% of the federal poverty line for your family size for 2025." (2025; f4ac86ad)
@@ -7233,6 +7243,7 @@ Derivations:
   f8880.line12_figured: smaller_of(f8880.line10 = $0; f8880.line11 = $20,267)
   f8962.zero: param(#sales.zero = $0)
   f8962.marriage: test(f1040.status = single; "mfj" = mfj)
+  f8962.void_form: test(f8962.void_forms = 0; 0 = 0)
   f8962.two_counted: test(f8962.forms = 0; 1 = 1)
   f8962.line1: sum(household.persons = 1; f8962.deps = 0)
   f8962.ws1_1: copy(f1040.line11a = $130,000)

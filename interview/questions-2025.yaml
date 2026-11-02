@@ -758,6 +758,10 @@ bank:
     prompt: List stable keys for each Form 1095-A (Health Insurance Marketplace Statement) you received, one key per form.
       Do not list a VOID form, or the form a CORRECTED one replaces, or a form for a catastrophic or stand-alone dental plan.
       Use [] if you received none.
+  - input: f1095a.void
+    order: 2
+    help: Answer yes only if you entered a form you should not have. A form marked VOID, and the original that a corrected
+      Form 1095-A for the same policy replaces, must not be used to complete Form 8962.
   - input: f1095a.uniform
     order: 2
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
@@ -934,6 +938,11 @@ bank:
     order: 10
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
       do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: f8962.premium_adjust
+    order: 10
+    help: Answer yes if coverage began after the first day of a month (a birth, adoption, placement for adoption or foster
+      care, or a court order placing the child with you counts from the first day) or a Marketplace premium was refunded
+      in 2025. The tool takes Form 1095-A column A as reported and cannot make either adjustment.
   - input: f8962.same_state_counted
     order: 10
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;

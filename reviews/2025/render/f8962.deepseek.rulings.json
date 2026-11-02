@@ -6,9 +6,23 @@
   {
    "printed": "1",
    "restated": "Add household helper \"Number of people on the return (you, and your spouse if filing jointly)\" and helper \"Dependents you claim\".",
+   "model": "IRS line 1 is tax family size, and the instructions say 'you or your spouse is not included in the tax family size calculation' if someone can claim you as a dependent; the restatement counts all persons on the return plus dependents.",
+   "ruling": "Ruling: scope — the instruction that a claimable filer or spouse is not included in the tax family size (i8962 p. 8) is enforced at the return level: sa.dependent answers whether someone can claim the filer or spouse, and its refusal on sa.standardraw propagates to f1040.line12e and the whole return (i1040gi pp. 34–35), so no return with a claimable filer or spouse computes line 1. A witness with a Form 1095-A and sa.dependent true was checked on 2026-11-01: f1040.line24 is refused. The render review of f8962 does not show the return-wide refusal.",
+   "context": "78eadf94c9d8cef0ded172b74acb523e1a4e9bd2400727984c3efb77d126f433"
+  },
+  {
+   "printed": "1",
+   "restated": "Add household helper \"Number of people on the return (you, and your spouse if filing jointly)\" and helper \"Dependents you claim\".",
    "model": "The line 1 instructions say that if someone can claim you, or your spouse on a joint return, as a dependent, that person is not included in the tax family size calculation; the restatement adds the filer and spouse unconditionally.",
    "ruling": "Ruling: scope; screen sa.dependent (root S2). i8962 p. 8, Line 1, \"If you checked the “Someone can claim you as a dependent” box, or if you are filing jointly and you checked the “Someone can claim your spouse as a dependent” box on your tax return, you or your spouse is not included in the tax family size calculation\". A return on which you or your spouse can be claimed is never completed: sa.dependent (\"Can someone claim you or your spouse as a dependent for 2025 ...\", forms/2025/sa.yaml) refuses f1040.line12e on every return, and D1 keeps the claimable filer refused. On the returns computed nobody on the return can be claimed, so everyone on it is in the tax family, as the restatement says. Re-checked this round on stage18.married_in_2025_single (a completed fixture; line 24 $3,560) with one answer changed by the adjudicator (constructed variants, not fixtures): sa.dependent true refuses Form 1040 lines 12e, 16 and 37 with gate sa.dependent.",
    "context": "3889fbb890657f09ccfa552b63c4460370bf16db22ecd5360baf508305936c20"
+  },
+  {
+   "printed": "24",
+   "restated": "Choose — [helper \"You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)\" = false → helper \"Year parameter sales.zero\"] [helper \"You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)\" = true → helper \"The PTC allowed: line 11, column (e), or lines 12 through 23, column (e), added\"]",
+   "model": "The IRS applicable-taxpayer test also requires that 'no one can claim you as a dependent for 2025' and, if married at year end, that you 'must file a joint return'; the restatement's applicable helper tests only line 5 at least 100 or the Marketplace estimate exception.",
+   "ruling": "Ruling: scope — the applicable-taxpayer conditions the model names are enforced elsewhere: a claimable filer or spouse is refused at the return level through sa.dependent (sa.standardraw → f1040.line12e), and married filing separately is refused for the whole return by s3.mfs. The applicable helper covers the income and Marketplace-estimate limbs, and the estimate question now carries the intentional/reckless misreporting disqualifier (T-162e). The render review does not show the return-wide refusals.",
+   "context": "78eadf94c9d8cef0ded172b74acb523e1a4e9bd2400727984c3efb77d126f433"
   },
   {
    "printed": "24",

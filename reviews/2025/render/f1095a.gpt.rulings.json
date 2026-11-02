@@ -1,0 +1,21 @@
+{
+ "kind": "render",
+ "form": "f1095a",
+ "family": "gpt",
+ "rulings": [
+  {
+   "printed": "b_counted",
+   "restated": "Input — Do you count this Form 1095-A's column B? Count it unless another Form 1095-A from the same state, whose column B you count, shows coverage in every month this one does. For a month that several forms from one state cover, column B is entered from only one of them; forms from different states, and policies from one state that follow one another, are each counted.",
+   "model": "The IRS requires selecting column B 'for that month' and says 'Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form'; a whole-form coverage-containment test counts both forms when their coverage overlaps only partly. It also omits the marriage exception requiring taxpayers to 'add together the amounts from column B of the Forms 1095-A for each month before the first full month of marriage.'",
+   "ruling": "Ruling: scope — the objection is a partial same-state overlap where both forms' column B would be counted and the overlapping months added twice, and the December-2025 marriage with separate plans where column B is added across plans. The project refuses both: f8962.two_counted asks whether two counted Forms 1095-A from one state show coverage in the same month and refuses on yes (i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"); f8962.marriage refuses a return married in 2025 with coverage before the first full month of marriage, through Part V (i8962 p. 13, Table 4). The render review of this collection form does not include the consuming form's gates.",
+   "context": "1503ea6d0a96fdd715e052a39066a808a39a39638deda2bc7f58c898d503460c"
+  },
+  {
+   "printed": "b_used",
+   "restated": "(f8962 helper \"Number of Forms 1095-A\" = 1 (a count) or helper \"Do you count this Form 1095-A's column B?\" = true)",
+   "model": "For multiple forms, this adopts a whole-form flag that cannot implement the IRS selection 'for that month' when coverage overlaps only partly. It also inherits the omission of the marriage instruction to 'add together the amounts from column B of the Forms 1095-A for each month before the first full month of marriage.'",
+   "ruling": "Ruling: scope — the objection is a partial same-state overlap where both forms' column B would be counted and the overlapping months added twice, and the December-2025 marriage with separate plans where column B is added across plans. The project refuses both: f8962.two_counted asks whether two counted Forms 1095-A from one state show coverage in the same month and refuses on yes (i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"); f8962.marriage refuses a return married in 2025 with coverage before the first full month of marriage, through Part V (i8962 p. 13, Table 4). The render review of this collection form does not include the consuming form's gates.",
+   "context": "1503ea6d0a96fdd715e052a39066a808a39a39638deda2bc7f58c898d503460c"
+  }
+ ]
+}

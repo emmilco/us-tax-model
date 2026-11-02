@@ -21,6 +21,24 @@ Human packets, highest-stakes-line reviews at future stages and the ten-ruling s
 The owner may supply them at any time. Engineering proceeds without waiting for them; owner decisions
 are reserved for substantive scope choices or ambiguities requiring owner judgment, not routine work.
 
+## Model authority — owner decision, 2026-11-01
+
+The owner ranked the review models by authority. The ranking is about the evidence a model's reading
+can carry; it is not a pin on any one run.
+
+- **Superior to all the others:** `claude-fable-5-1`.
+- **Interchangeable in authority:** `gpt-6-astra`, `claude-opus-5-5`, `gemini-4-argon`,
+  `deepseek-v4.1-flash`, `gpt-6.1-sol`. A reading from any of these stands as a peer of the others.
+- **Mechanical or advisory work only, nothing judgment-heavy:** `gemini-3`, `gpt-6-luna`,
+  `gpt-6-terra`, `claude-sonnet`, `claude-haiku`.
+
+A model's rank does not by itself qualify a review: the provenance, subject, noise and ruling rules
+above still decide whether a run is evidence. The Claude family remains the required reviewer for the
+standing logs; `deepseek-flash` and `gpt-6-astra` are optional peer families under `families.json`.
+GPT-6 Astra runs through `codex exec` in an empty read-only scratch directory with `--ignore-user-config`;
+any tool event in its stream fails the call, and the model codex actually used is read from its session
+rollout (deleted after the fact, so the review's own receipt is the only retained copy).
+
 ## Existing human evidence
 
 The owner completed item 2: fourteen saved answers, ten MATCH, three MISMATCH and one UNCLEAR.

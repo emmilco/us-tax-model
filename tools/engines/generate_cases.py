@@ -450,7 +450,7 @@ def add_marketplace(r, inputs, facts, features):
     advance payments from none to more than the credit. The screens are answered No (the generated families are
     unaffected by them), the 48-state poverty table applies, and claimed dependents are not required to file. A
     separate generator leaves every earlier draw unchanged."""
-    inputs.update({"f8962.alloc": False, "f8962.married_in_2025": False, "f8962.other": False, "f8962.same_state_counted": False, "f8962.alien_below": False,
+    inputs.update({"f8962.alloc": False, "f8962.married_in_2025": False, "f8962.other": False, "f8962.premium_adjust": False, "f8962.same_state_counted": False, "f8962.alien_below": False,
                    "f8962.fpl_table": "contiguous", "f8962.estimate_100": True})
     for k in inputs.get("$dependent", []):
         inputs.update({f"dependent[{k}].ptc_files": False, f"dependent[{k}].ptc_magi": 0})
@@ -458,7 +458,7 @@ def add_marketplace(r, inputs, facts, features):
         return
     a, b = r.randint(20_000, 150_000), r.randint(15_000, 130_000)
     c_total = r.randint(0, 12 * b) if r.random() < 0.8 else 0
-    inputs.update({"$f1095a": ["mkt"], "f1095a[mkt].uniform": True, "f1095a[mkt].b_counted": True, "f1095a[mkt].mo_a": a,
+    inputs.update({"$f1095a": ["mkt"], "f1095a[mkt].uniform": True, "f1095a[mkt].void": False, "f1095a[mkt].b_counted": True, "f1095a[mkt].mo_a": a,
                    "f1095a[mkt].mo_b": b, "f1095a[mkt].c_total": c_total})
     facts["marketplace"] = {"premium": a, "slcsp": b, "advance": c_total}
     features.add("marketplace")

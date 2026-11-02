@@ -237,7 +237,9 @@
   {"gate": "f5695.wh_no_qmid", "topic": "energy", "kind": "entry"},
   {"gate": "f5695.windows_no_qmid", "topic": "energy", "kind": "entry"},
 
-  {"gate": "f8962.other", "topic": "ptc", "kind": "situation", "question": "Does Marketplace coverage involve someone not lawfully present, an HRA, unpaid premiums, or advance payments for someone in no tax family?"},
+  {"gate": "f8962.other", "topic": "ptc", "kind": "situation", "question": "Is anyone in the tax family eligible for other minimum essential coverage (Medicare, Medicaid, CHIP, TRICARE, veterans' or Peace Corps coverage, an affordable employer offer, employer coverage actually enrolled in including COBRA or retiree coverage), or is a Marketplace Medicaid or CHIP determination based on intentionally or recklessly incorrect information, or is an enrolled person incarcerated, not lawfully present, or covered by an HRA, or are premiums unpaid or advance payments made for someone in no tax family?"},
+  {"gate": "f8962.premium_adjust", "topic": "ptc", "kind": "situation", "question": "Did Marketplace coverage begin after the first day of a month (other than on a birth, adoption, placement for adoption or foster care, or a court order), or were any Marketplace premiums refunded in 2025?"},
+  {"gate": "f8962.void_form", "topic": "ptc", "kind": "situation", "question": "Is a Form 1095-A you entered marked VOID, or the original that a corrected Form 1095-A for the same policy replaces?"},
   {"gate": "f8962.alloc", "topic": "ptc", "kind": "situation", "question": "Did a Marketplace policy cover someone outside your tax family, or were you divorced or separated in 2025 while sharing a policy?"},
   {"gate": "f8962.marriage", "topic": "ptc", "kind": "situation", "question": "Did you marry in 2025 with Marketplace coverage before the first full month of marriage?"},
   {"gate": "f8962.alien_branch", "topic": "ptc", "kind": "situation", "question": "Is a lawfully present alien with household income below 100% of the poverty line enrolled in Marketplace coverage?"},

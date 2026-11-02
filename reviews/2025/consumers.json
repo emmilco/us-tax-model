@@ -347,6 +347,54 @@
    "question_phrase": "Were you married at the end of 2025 (including married but considered unmarried for head of household status)?",
    "source_phrase": "You were married at the end of 2025, even if you didn\u2019t live with your spouse at the end of 2025.",
    "reason": "Both use the same year-end marital-status test with the same treatment of living apart, legal separation and interlocutory decrees, while the death-year joint-filing route on p. 13 is explicitly left by the question to household.spouse_died_2025, which household.filing_status_conflict reads alongside household.married."
+  },
+  "consumer:f8962.premium_adjust@i8962:p17": {
+   "verdict": "same",
+   "question_phrase": "coverage for anyone in your tax family began after the first day of a month, other than coverage effective on the date of a birth, adoption, or placement for adoption or in foster care, or on the effective date of a court order; or any Marketplace premiums for a month were refunded in 2025",
+   "source_phrase": "i8962 p. 17, Lines 12 Through 23, column (c) and Column (c): the monthly contribution amount and the column (c) entries for lines 12 through 23",
+   "reason": "p. 17 states where the monthly contribution amount and the column (c) entries come from; it does not define the premium adjustments the input asks about, and the line reads the gate only to refuse a return with an unadjusted premium."
+  },
+  "consumer:f8962.premium_adjust@i8962:p18": {
+   "verdict": "same",
+   "question_phrase": "coverage for anyone in your tax family began after the first day of a month, other than coverage effective on the date of a birth, adoption, or placement for adoption or in foster care, or on the effective date of a court order; or any Marketplace premiums for a month were refunded in 2025",
+   "source_phrase": "i8962 p. 18, Line 25: enter the amount from line 11(f) or add lines 12(f) through 23(f), and Line 29: enter the smaller of line 27 or line 28",
+   "reason": "p. 18 states the line 25 and line 29 amounts; it does not redefine the mid-month or refunded-premium adjustment, and the line reads the gate only to refuse the return."
+  },
+  "consumer:f8962.alloc@i8962:p18": {
+   "verdict": "same",
+   "question_phrase": "a Marketplace policy covered someone in your tax family and also someone not in it, or a divorce or legal separation during 2025 with coverage shared with the former spouse",
+   "source_phrase": "i8962 p. 18, Part IV\u2014Allocation of Policy Amounts: see Line 1 and Line 9 to determine whether you need to complete Part IV",
+   "reason": "The p. 18 reference is to Part IV allocation, the same rule the input asks about; the input's question already covers a shared policy and a divorce or separation in 2025, and the line refuses rather than allocating."
+  },
+  "consumer:f8962.other@i8962:p18": {
+   "verdict": "same",
+   "question_phrase": "someone not lawfully present; eligibility for other minimum essential coverage; an HRA; unpaid premiums; advance payments for someone in no tax family; a Marketplace Medicaid or CHIP determination on intentionally or recklessly incorrect information; or an incarcerated enrollee",
+   "source_phrase": "i8962 p. 18, Not an applicable taxpayer: if you are not an applicable taxpayer because you are using filing status married filing separately, you must repay some or all of the APTC",
+   "reason": "p. 18's eligibility paragraph is the married-filing-separately rule, which the return-level s3.mfs refusal already handles; it does not give the input's other coverage-eligibility exclusions a different meaning, and the line refuses on the gate."
+  },
+  "consumer:f8962.estimate_100@i8962:p6": {
+   "verdict": "same",
+   "question_phrase": "the Marketplace estimated household income of at least 100% of the poverty line; answer no if you, with intentional or reckless disregard for the facts, provided incorrect information to a Marketplace",
+   "source_phrase": "i8962 p. 6, Applicable taxpayer: generally, you are an applicable taxpayer if household income is at least 100% of the federal poverty line and no one can claim you as a dependent",
+   "reason": "p. 6 states the applicable-taxpayer income test and the dependency condition; the input's estimate and misreporting limbs come from p. 9 and refine the same eligibility rule rather than contradicting p. 6."
+  },
+  "consumer:f8962.alloc@i8962:p17": {
+   "verdict": "same",
+   "question_phrase": "a Marketplace policy covered someone in your tax family and also someone not in it, or a divorce or legal separation during 2025 with coverage shared with the former spouse",
+   "source_phrase": "i8962 p. 17, Lines 12 through 23, column (b): if you completed Part IV for any Form 1095-A, add the applicable SLCSP premium allocated to you",
+   "reason": "p. 17's allocation sentence refers to the Part IV allocation the input asks about; the input's shared-policy and divorce-or-separation limbs are the same rule, and the line refuses rather than allocating."
+  },
+  "consumer:f8962.premium_adjust@f8962:p1": {
+   "verdict": "same",
+   "question_phrase": "coverage began after the first day of a month, other than on a birth, adoption, placement for adoption or foster care, or court order; or Marketplace premiums for a month were refunded in 2025",
+   "source_phrase": "f8962 p. 1, Part II, line 24: Total PTC",
+   "reason": "The form face states the total the gate's refusal protects; it does not define the premium adjustment, which comes from i8962 p. 4."
+  },
+  "consumer:f8962.other@i8962:p17": {
+   "verdict": "same",
+   "question_phrase": "someone not lawfully present; eligibility for other minimum essential coverage; an HRA; unpaid premiums; advance payments for someone in no tax family; a Marketplace Medicaid or CHIP determination on intentionally or recklessly incorrect information; or an incarcerated enrollee",
+   "source_phrase": "i8962 p. 17, Column (b): if you or a family member isn't lawfully present and was enrolled in a qualified health plan, see Individuals Not Lawfully Present in the United States Enrolled in a Qualified Health Plan",
+   "reason": "p. 17 points to the Pub. 974 rule for an unlawfully present enrollee, one of the input's exclusions; the page does not give the exclusion a different definition, and the line refuses on the gate."
   }
  },
  "baseline": {

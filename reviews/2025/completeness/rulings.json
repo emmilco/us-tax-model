@@ -86,7 +86,7 @@
   "unruled:f2441#3": {
    "class": "out of scope",
    "gate": "sc.special",
-   "evidence": "Source: i2441 p. 5; p503 p. 10. sc.special explicitly refuses contributions on the self-employed owner’s behalf to a dependent-care assistance program. Partnership benefits require Schedule K-1/E and are refused by scope.schedule1. Hence supported line 22 is zero and line 24 carries no Schedule C/E/F deduction, as the line 22 note states.",
+   "evidence": "Source: i2441 p. 5; p503 p. 10. sc.special explicitly refuses contributions on the self-employed owner\u2019s behalf to a dependent-care assistance program. Partnership benefits require Schedule K-1/E and are refused by scope.schedule1. Hence supported line 22 is zero and line 24 carries no Schedule C/E/F deduction, as the line 22 note states.",
    "prompt_sha": "df5bcc830fb64dd8b7cea2329f195b90924f37667d98f004e484e888745685ed"
   },
   "unruled:f2441#4": {
@@ -116,7 +116,7 @@
   "unruled:f1040#1": {
    "class": "covered",
    "line": "household.married",
-   "evidence": "Source: p501 p. 6. BUG-0280 adds the explicit divorce-to-file-unmarried-and-remarry warning to household.married (\"if you divorced solely to file as unmarried, intending at the time to remarry each other in the next tax year, and actually do so, you must file as married in both years\"), and BUG-0286 enforces consistency between household.married and f1040.status via household.filing_status_conflict. The f1040 completeness prompt did not include household.married’s question text.",
+   "evidence": "Source: p501 p. 6. BUG-0280 adds the explicit divorce-to-file-unmarried-and-remarry warning to household.married (\"if you divorced solely to file as unmarried, intending at the time to remarry each other in the next tax year, and actually do so, you must file as married in both years\"), and BUG-0286 enforces consistency between household.married and f1040.status via household.filing_status_conflict. The f1040 completeness prompt did not include household.married\u2019s question text.",
    "prompt_sha": "7f0caef60bf48f8640556fb7ae1380663d2e38c7131780a2de16bdad3ee56f56"
   },
   "unruled:f1040#2": {
@@ -128,7 +128,7 @@
   "unruled:f1040#3": {
    "class": "out of scope",
    "gate": "scope.other_income",
-   "evidence": "Source: i1040gi p. 24; i1040gi p. 25. The whole-return scope input explicitly names Form 1040 lines 1b–1d and 1f–1h, unreported wages/tips, adoption benefits and other earned income. s1.line8_other additionally names wages while incarcerated and the specified nonqualified/457 pensions; retirement.special screens pre-retirement disability pensions and corrective distributions. The reviewer missed these external scope inputs.",
+   "evidence": "Source: i1040gi p. 24; i1040gi p. 25. The whole-return scope input explicitly names Form 1040 lines 1b\u20131d and 1f\u20131h, unreported wages/tips, adoption benefits and other earned income. s1.line8_other additionally names wages while incarcerated and the specified nonqualified/457 pensions; retirement.special screens pre-retirement disability pensions and corrective distributions. The reviewer missed these external scope inputs.",
    "prompt_sha": "7f0caef60bf48f8640556fb7ae1380663d2e38c7131780a2de16bdad3ee56f56"
   },
   "unruled:f1040#4": {
@@ -216,8 +216,62 @@
   "unruled:household#6": {
    "class": "out of scope",
    "gate": "scope.other_income",
-   "evidence": "Source: i1040gi p. 13; i1040gi p. 14. scope.other_income explicitly asks about nonresident alien status of you or your spouse for any part of 2025; scope.ready refuses the return on that answer. The resident-election route described by i1040gi pp. 13–14 is outside this tool, not left unscreened by household.filing_status_conflict.",
+   "evidence": "Source: i1040gi p. 13; i1040gi p. 14. scope.other_income explicitly asks about nonresident alien status of you or your spouse for any part of 2025; scope.ready refuses the return on that answer. The resident-election route described by i1040gi pp. 13\u201314 is outside this tool, not left unscreened by household.filing_status_conflict.",
    "prompt_sha": "f049d8a43b1b266557445897a04b2bb295d9292493c4c82133a188e54cc6b151"
+  },
+  "unruled:f8962#1": {
+   "class": "covered",
+   "line": "f1095a.uniform",
+   "prompt_sha": "c62987e59ef0425c5fee0aea8adcd017bfaac670b2f4f8cc0dcb6b782422bfc8",
+   "evidence": "i8962 p. 14, \"If the correct applicable SLCSP premium is not the same for every month of 2025, check \u201cNo\u201d and continue to lines 12 through 23.\" The f1095a.uniform question asks whether both columns are the same every month and says \"Use the corrected column B if column B is blank, zero or wrong\"; the monthly in_b_* questions ask for \"the amount in column B, or the correct applicable SLCSP premium if column B is blank, zero or wrong (from the Marketplace's tool\u2026)\". A corrected column B that varies by month therefore makes uniform No, which is the line 10 route test. The completeness prompt does not include the foreign form's question text, only its refusals, which is why the reviewer could not see it."
+  },
+  "unruled:f8962#2": {
+   "class": "covered",
+   "line": "f1095a.mo_b",
+   "prompt_sha": "c62987e59ef0425c5fee0aea8adcd017bfaac670b2f4f8cc0dcb6b782422bfc8",
+   "evidence": "i8962 pp. 4\u20135 and p. 16: if no APTC was paid, column B may be wrong, blank or zero, and the filer must determine the correct applicable SLCSP premium. The f1095a.mo_b question asks for \"the monthly amount in Part III, column B (monthly SLCSP premium) \u2026 or the correct applicable SLCSP premium if column B is blank, zero or wrong (from the Marketplace's tool, for example HealthCare.gov/Tax-Tool)\"; f8962.line11b sums f1095a.line33b, which is built from that answer."
+  },
+  "unruled:f8962#3": {
+   "class": "covered",
+   "line": "f1095a.in_b_jan",
+   "prompt_sha": "c62987e59ef0425c5fee0aea8adcd017bfaac670b2f4f8cc0dcb6b782422bfc8",
+   "evidence": "i8962 p. 17, \"See Missing or incorrect SLCSP premium on Form 1095-A under Line 10, earlier, to determine your correct applicable SLCSP premium to enter in column (b).\" Each f1095a.in_b_<month> question asks for \"the amount in column B, or the correct applicable SLCSP premium if column B is blank, zero or wrong (from the Marketplace's tool\u2026)\", and f8962.line12b to 23b sum those answers. The foreign question text is not in the completeness prompt."
+  },
+  "unruled:f8962#4": {
+   "class": "covered",
+   "line": "sa.dependent",
+   "prompt_sha": "c62987e59ef0425c5fee0aea8adcd017bfaac670b2f4f8cc0dcb6b782422bfc8",
+   "evidence": "i8962 p. 8: a filer or spouse who can be claimed as a dependent is not included in the tax family size. The return is refused for that filer: sa.dependent asks whether someone can claim the filer or spouse, and its refusal on sa.standardraw propagates to f1040.line12e and the whole return (i1040gi pp. 34\u201335). A witness with a Form 1095-A and sa.dependent true was checked on 2026-11-01: f1040.line24 is refused, so no return with a claimable filer or spouse computes line 1."
+  },
+  "unruled:f8962#5": {
+   "class": "covered",
+   "line": "f8962.applicable",
+   "prompt_sha": "c62987e59ef0425c5fee0aea8adcd017bfaac670b2f4f8cc0dcb6b782422bfc8",
+   "evidence": "Two limbs. A claimable filer is refused at the return level through sa.dependent (sa.standardraw \u2192 f1040.line12e; witness checked 2026-11-01). The below-100% exception already requires APTC: f8962.applicable is any(line 5 \u2265 100, all(f8962.aptc, f8962.estimate_100)), and f8962.aptc is f8962.aptc_total > 0, where aptc_total sums Form 1095-A line 33C; i8962 p. 9 requires \"APTC was paid for the coverage of 1 or more months during 2025.\" The estimate_100 question also now carries the intentional/reckless misreporting disqualifier (BUG-0296)."
+  },
+  "unruled:f1095a#1": {
+   "class": "covered",
+   "line": "f8962.other",
+   "prompt_sha": "e506e96b6283ddcabc4e0500221a1e63ef20bbbb7f9071ad9b2d9fe40740d39c",
+   "evidence": "The unpaid-premium and not-lawfully-present cases the claim names are refused by f8962.other, whose question asks whether \"any part of a month's premium was not paid by the due date of your return \u2026 or a Form 1095-A shows zero in column A for a month whose premium you paid\" and whether \"someone enrolled \u2026 was not lawfully present\"; answering yes refuses the return (i8962 p. 4 and p. 6, cited by the gate). The tool does not compute the adjusted column A in those cases; it refuses them, which is what the completeness rule asks for."
+  },
+  "unruled:f1095a#2": {
+   "class": "covered",
+   "line": "f8962.other",
+   "prompt_sha": "e506e96b6283ddcabc4e0500221a1e63ef20bbbb7f9071ad9b2d9fe40740d39c",
+   "evidence": "The same f8962.other refusal covers the unpaid-premium cases under i8962 p. 16 Column (a) and p. 17 Column (b), including the instruction to enter -0- in column (b) when the month's premiums were unpaid and to enter the SLCSP when they were paid by the due date; the not-lawfully-present limb is named in the same question. Those returns are refused, not computed with the unadjusted column B."
+  },
+  "unruled:f1095a#3": {
+   "class": "covered",
+   "line": "f8962.marriage",
+   "prompt_sha": "e506e96b6283ddcabc4e0500221a1e63ef20bbbb7f9071ad9b2d9fe40740d39c",
+   "evidence": "i8962 p. 15's December-marriage addition applies only to a 2025 marriage with separate plans. f8962.marriage refuses a joint return with a 2025 marriage and Marketplace coverage before the first full month of marriage (i8962 p. 13, Table 4), which is every December-2025 marriage with 2025 coverage; a filer married at year end who files single or head of household is refused by household.filing_status_conflict at f1040.line12e. The b_counted answer cannot reach a computed return in that case."
+  },
+  "unruled:f1095a#4": {
+   "class": "covered",
+   "line": "f8962.alloc",
+   "prompt_sha": "e506e96b6283ddcabc4e0500221a1e63ef20bbbb7f9071ad9b2d9fe40740d39c",
+   "evidence": "A policy shared with another tax family is refused by f8962.alloc (i8962 p. 12, Allocating policy amounts: the policy covered someone in the tax family and someone in another tax family, or a divorce or separation in 2025 with a shared policy), which refuses lines 24 and 25. APTC for someone in no tax family is refused by f8962.other's \"advance payments were made for someone who is in no one's tax family\" limb. Neither case reaches the unallocated column C amounts."
   }
  },
  "baseline": {
@@ -229,7 +283,6 @@
   "stale:dcprov": "fd8b358c3c3132e0",
   "stale:div": "3deed82bc592ec40",
   "stale:eic": "f9839c7000d5c609",
-  "stale:f1095a": "e5d55081fea45091",
   "stale:f4562": "3b54e59971843c84",
   "stale:f5329": "ef503afdbb69d36d",
   "stale:f5695": "4fd3ec308474d4ff",
@@ -238,7 +291,6 @@
   "stale:f8889": "018f5d48a1d27eeb",
   "stale:f8959": "e9f1f8ad4bf41b47",
   "stale:f8960": "0b50cebd96c4ff01",
-  "stale:f8962": "62ff36ce10ea3610",
   "stale:f8995": "c6f2f32ab2d5ab70",
   "stale:f8995a": "86ce0a903667413c",
   "stale:ftc": "269edc66a7f596b0",
@@ -325,12 +377,6 @@
    "prompt_sha": "e3852f2ad7c425b4df32e7a4f813f0ef457e1c93e7af9aeae11b22d2826de8fc",
    "subject": "5b19bbaae43996e7ec01e58fb753bd56e1fbf172b7ef2cf72f99052425442714"
   },
-  "stale:f1095a": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "d72e8a373fb4a75b70a5a563d7c7110619385610ce19fd63990ef04f60d45471",
-   "subject": "2215557fb401bbfd3b61555829e2bb49e1dcfeb35338af471c3004f8ca735a09"
-  },
   "stale:f4562": {
    "policy": "never-reviewed-completeness-debt-v1",
    "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
@@ -378,12 +424,6 @@
    "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
    "prompt_sha": "71f335551119f8db016e9c62867aa396a3eba0363963338ceb3550b72fd6d082",
    "subject": "4718a9069af15f189a8005e917dc0c31ac22aad92eb8bbeb75b490844f2b0026"
-  },
-  "stale:f8962": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "b1c307517e6ee341f04a233f217b4f92f4e99a932117d3876de792c158aa87e9",
-   "subject": "1afab1da503f84bb70c7d8db399db33a5eec199b8ccebf58b9ee5343c3486885"
   },
   "stale:f8995": {
    "policy": "never-reviewed-completeness-debt-v1",

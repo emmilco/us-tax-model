@@ -189,3 +189,38 @@ Gemini auxiliary: ran the same f8962 completeness prompt through agy with Gemini
 claims: [] while the primary review found 8, so the broad completeness pass is too weak to be evidence. Recorded
 under .transcription/aux/gemini/ as an advisory third reader; use it for targeted second opinions, not as a
 substitute for the primary review.
+
+### f8962 form pass — 2026-11-02
+
+T-134/T-162. `f8962.other` now states the whole minimum-essential-coverage rule (government programs, employer
+coverage offered at an affordable price with minimum value or actually enrolled in including COBRA and retiree
+coverage, HHS-designated MEC, the Marketplace Medicaid/CHIP misdetermination, incarceration, and the
+individual-market exclusion); `f8962.estimate_100` carries the intentional/reckless misreporting disqualifier; a
+new per-form `f1095a.void` question plus `f8962.void_form` refuses a VOID or superseded Form 1095-A; and a new
+`f8962.premium_adjust` gate refuses a coverage start after the first day of a month or a refunded premium.
+BUG-0293 to BUG-0296; the coverage tree holds 190 gates. Three new stage18 refusal cases and the refreshed
+`other_coverage` case; 1,428/1,428 CLI fixtures, build, render, strict citations, instruction cites, operands,
+signs, limits, consumers, coverage placement, refusal reach, properties (2523/2862 branches), Lean agreement
+(2,028 cases, 0 differences) and mutation (2,784 mutants, 123 equivalent, 100.0% adjusted) pass on the tree.
+
+Review evidence. DeepSeek: f8962 transcription 0/97 (18 model errors: 17 unpublished `f1095a.c_<month>`
+declarations and the line 24 amount on completed returns; the rest interface gaps and two scope rulings), render
+93/2; f1095a transcription 1/28 (distributed sums and floor guards are scope/representation, the annual-total
+reading of line 33C is a model error), render 76/1; class M f8962 167/0, f1095a 65/1. GPT-6 Astra: f8962
+transcription 0/97 (no invalid declarations and no completed-return amount difference), render 23/11 with 61
+unclear, f1095a transcription 14/15, render 75/2, class M f8962 105/1/61 skipped, f1095a 66/0.
+
+Two review-tool findings. First, the transcription prompt labels `shown_when` "Optional", and Claude, DeepSeek and
+GPT-6 Astra each omitted it on every f8962 line; with the visibility comparison added on 2026-10-31, that makes
+every line a disagreement regardless of the tax reading. The visibility-only limbs are ruled interface gaps, not
+model errors, and T-163 schedules the prompt wording. Second, the class M second-family comparison keys lines by
+`<case> — <line>` and the second family's case ids carry a `.deepseek`/`.gpt` suffix, so every second-family class M
+pair reports hundreds of unjudged lines; that is a comparison-tool defect, not a review result.
+
+The owner added GPT-6 as an optional peer family. `codex exec` runs in an empty read-only scratch directory with
+`--ignore-user-config`; any tool event fails the call, and the model codex used is read from its session rollout.
+GPT-6 Astra replaced GPT-6.1 Sol as the selected gpt model at the owner's request. The two gpt runs are not
+directly comparable because their subjects differ (6.1 Sol ran before the final VOID wording): on the earlier tree
+6.1 Sol agreed 26/3 on f1095a and 95/0 on the f8962 render; on the final tree Astra agreed 14/15 on f1095a and
+23/11 with 61 unclear on the f8962 render. Both omitted `shown_when`. The owner's authority ranking is recorded in
+the validation policy.

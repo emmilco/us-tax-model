@@ -765,6 +765,147 @@
   "model": "claude-opus-5-5"
  },
  {
+  "form": "f1095a",
+  "prompt_sha": "e506e96b6283ddcabc4e0500221a1e63ef20bbbb7f9071ad9b2d9fe40740d39c",
+  "claims": [
+   {
+    "item": "f1095a.in_a_jan",
+    "sentences": [
+     {
+      "quote": "You are not allowed a monthly credit amount for any month that the enrollment premiums for the month were not paid by the due date of your return (not including extensions), unless the amount of the premium paid for the month is sufficient to avoid termination of the coverage for that month under one of the scenarios described under Enrollment premiums, earlier.",
+      "page": "i8962 p. 16"
+     },
+     {
+      "quote": "If so, and the premiums for the month are not paid by the due date of your return (not including extensions), enter -0- for the month on the appropriate line on Form 8962, column (a).",
+      "page": "i8962 p. 16"
+     },
+     {
+      "quote": "If the enrollment premiums for the month are paid by the due date of your return (not including extensions), enter the enrollment premiums for the month on the appropriate line on Form 8962, column (a), even if your Form 1095-A shows -0- as the enrollment premium for the month.",
+      "page": "i8962 p. 16"
+     },
+     {
+      "quote": "If you or a family member isn't lawfully present in the United States and was enrolled in a qualified health plan, see Individuals Not Lawfully Present in the United States Enrolled in a Qualified Health Plan in Pub. 974 for instructions on what amounts to enter in columns (a) and (b).",
+      "page": "i8962 p. 16"
+     }
+    ],
+    "quote": "You are not allowed a monthly credit amount for any month that the enrollment premiums for the month were not paid by the due date of your return (not including extensions), unless the amount of the premium paid for the month is sufficient to avoid termination of the coverage for that month under one of the scenarios described under Enrollment premiums, earlier. / If so, and the premiums for the month are not paid by the due date of your return (not including extensions), enter -0- for the month on the appropriate line on Form 8962, column (a). / If the enrollment premiums for the month are paid by the due date of your return (not including extensions), enter the enrollment premiums for the month on the appropriate line on Form 8962, column (a), even if your Form 1095-A shows -0- as the enrollment premium for the month. / If you or a family member isn't lawfully present in the United States and was enrolled in a qualified health plan, see Individuals Not Lawfully Present in the United States Enrolled in a Qualified Health Plan in Pub. 974 for instructions on what amounts to enter in columns (a) and (b).",
+    "page": "i8962 p. 16",
+    "why_uncovered": "The monthly column A questions (in_a_jan through in_a_dec, and mo_a) ask only for the amount printed on Form 1095-A, with zero if blank. No question asks whether premiums for a month where Form 1095-A shows -0- were paid by the return due date. That payment would require entering the full premium instead of zero. No question, adjustment or refusal addresses the different column A amounts that apply when an enrollee is not lawfully present.",
+    "closest_item": "f1095a.in_a_jan",
+    "effect": "amount"
+   },
+   {
+    "item": "f1095a.in_b_jan",
+    "sentences": [
+     {
+      "quote": "If a -0- appears on Form 1095-A, on any of lines 21 through 32, column A, because your enrollment premiums were not paid for one or more months and the amount of the premium paid for the month is not sufficient to avoid termination of the coverage for that month under one of the three scenarios described under Enrollment premiums, earlier, then you are not entitled to a monthly credit amount for that month.",
+      "page": "i8962 p. 16"
+     },
+     {
+      "quote": "If not allowed a monthly credit amount because your enrollment premiums for the month were unpaid, enter -0- on the appropriate line on Form 8962, column (b).",
+      "page": "i8962 p. 17"
+     },
+     {
+      "quote": "However, if your enrollment premiums for the month were paid by the due date of your return, not including extensions, enter your applicable SLCSP premium for the month on the appropriate line on Form 8962, column (b), even if your Form 1095-A shows -0- as the enrollment premium for the month.",
+      "page": "i8962 p. 17"
+     },
+     {
+      "quote": "If you or a family member isn't lawfully present in the United States and was enrolled in a qualified health plan, see Individuals Not Lawfully Present in the United States Enrolled in a Qualified Health Plan in Pub. 974 for instructions on what amounts to enter in columns (a) and (b).",
+      "page": "i8962 p. 16"
+     }
+    ],
+    "quote": "If a -0- appears on Form 1095-A, on any of lines 21 through 32, column A, because your enrollment premiums were not paid for one or more months and the amount of the premium paid for the month is not sufficient to avoid termination of the coverage for that month under one of the three scenarios described under Enrollment premiums, earlier, then you are not entitled to a monthly credit amount for that month. / If not allowed a monthly credit amount because your enrollment premiums for the month were unpaid, enter -0- on the appropriate line on Form 8962, column (b). / However, if your enrollment premiums for the month were paid by the due date of your return, not including extensions, enter your applicable SLCSP premium for the month on the appropriate line on Form 8962, column (b), even if your Form 1095-A shows -0- as the enrollment premium for the month. / If you or a family member isn't lawfully present in the United States and was enrolled in a qualified health plan, see Individuals Not Lawfully Present in the United States Enrolled in a Qualified Health Plan in Pub. 974 for instructions on what amounts to enter in columns (a) and (b).",
+    "page": "i8962 p. 16; i8962 p. 17",
+    "why_uncovered": "The column B questions (in_b_jan through in_b_dec, and mo_b) take the printed or corrected SLCSP premium. Nothing forces column B to zero for a month whose premiums went unpaid and were not paid by the return due date. Nothing restores the SLCSP amount when those premiums were paid late but by the due date. The not-lawfully-present adjustment to column B is neither asked about nor refused.",
+    "closest_item": "f1095a.in_b_jan",
+    "effect": "amount"
+   },
+   {
+    "item": "f1095a.b_counted",
+    "sentences": [
+     {
+      "quote": "If you got married in 2025, and someone in your tax family who you enrolled in a qualified health plan (including yourself) and someone in your tax family who your spouse enrolled in a qualified health plan (including your spouse) prior to your first month of marriage receives separate Forms 1095-A, add together the amounts from column B of the Forms 1095-A for each month before the first full month of marriage and enter the total.",
+      "page": "i8962 p. 17"
+     },
+     {
+      "quote": "However, if you got married in December of 2025 and you and your spouse, or individuals in your and your spouse's tax family, were enrolled in separate qualified health plans, add the amounts from Form 1095-A, column B, for each plan (or plans) and enter the total.",
+      "page": "i8962 p. 15"
+     },
+     {
+      "quote": "If you got married in a month other than December, your applicable SLCSP premium may not be the same for every month. If it is not the same for every month, you cannot use line 11.",
+      "page": "i8962 p. 15"
+     }
+    ],
+    "quote": "If you got married in 2025, and someone in your tax family who you enrolled in a qualified health plan (including yourself) and someone in your tax family who your spouse enrolled in a qualified health plan (including your spouse) prior to your first month of marriage receives separate Forms 1095-A, add together the amounts from column B of the Forms 1095-A for each month before the first full month of marriage and enter the total. / However, if you got married in December of 2025 and you and your spouse, or individuals in your and your spouse's tax family, were enrolled in separate qualified health plans, add the amounts from Form 1095-A, column B, for each plan (or plans) and enter the total. / If you got married in a month other than December, your applicable SLCSP premium may not be the same for every month. If it is not the same for every month, you cannot use line 11.",
+    "page": "i8962 p. 17; i8962 p. 15",
+    "why_uncovered": "The b_counted gate tells the filer to count only one same-state form's column B whenever another counted form covers the same months. It has no exception for spouses who married in 2025 and had separate pre-marriage policies. For those pre-marriage months, column B from each form must be added. The HANDLED ELSEWHERE refusal for f8962 also applies the one-form rule only, so it does not cover this marriage exception.",
+    "closest_item": "f1095a.b_counted",
+    "effect": "amount"
+   },
+   {
+    "item": "f1095a.in_c_jan",
+    "sentences": [
+     {
+      "quote": "If you completed Part IV for any Form 1095-A, include only the amounts of the monthly APTC allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (g), and combine that amount with the amounts of the monthly APTC for other policies that you did not allocate.",
+      "page": "i8962 p. 17"
+     },
+     {
+      "quote": "If you completed Part IV for any Form 1095-A, add the monthly premium amounts allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (e), to the monthly premiums for other policies that you did not allocate.",
+      "page": "i8962 p. 16"
+     },
+     {
+      "quote": "If you indicated to the Marketplace at enrollment that you would claim an individual in your tax family for the year of coverage but the individual is not included in any tax family for the year of coverage, you must report any APTC paid for that individual's coverage.",
+      "page": "i8962 p. 17"
+     },
+     {
+      "quote": "If an individual you enrolled in coverage is not included in any tax family, you must reconcile the APTC paid for the individual's coverage, even if you are claimed as a dependent by another taxpayer.",
+      "page": "p974 p. 27"
+     },
+     {
+      "quote": "If you are enrolled in the same policy as the individual not included in any tax family, you have to allocate policy amounts even though the conditions in the Form 8962 instructions for line 9 are not met.",
+      "page": "p974 p. 27"
+     }
+    ],
+    "quote": "If you completed Part IV for any Form 1095-A, include only the amounts of the monthly APTC allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (g), and combine that amount with the amounts of the monthly APTC for other policies that you did not allocate. / If you completed Part IV for any Form 1095-A, add the monthly premium amounts allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (e), to the monthly premiums for other policies that you did not allocate. / If you indicated to the Marketplace at enrollment that you would claim an individual in your tax family for the year of coverage but the individual is not included in any tax family for the year of coverage, you must report any APTC paid for that individual's coverage. / If an individual you enrolled in coverage is not included in any tax family, you must reconcile the APTC paid for the individual's coverage, even if you are claimed as a dependent by another taxpayer. / If you are enrolled in the same policy as the individual not included in any tax family, you have to allocate policy amounts even though the conditions in the Form 8962 instructions for line 9 are not met.",
+    "page": "i8962 p. 17; i8962 p. 16; p974 p. 27",
+    "why_uncovered": "The column C questions (in_c_jan through in_c_dec, and c_total) take the full amount from each Form 1095-A. Nothing asks whether the policy is shared with another tax family and needs Part IV allocation. Nothing asks whether the filer enrolled someone who is in no tax family and must reconcile that person's APTC. No refusal here or in HANDLED ELSEWHERE covers shared-policy allocation, so the full APTC and premiums would be used without allocation.",
+    "closest_item": "f1095a.in_c_jan",
+    "effect": "amount"
+   }
+  ],
+  "used": [
+   {
+    "doc": "i1095a",
+    "pages": [
+     2
+    ]
+   },
+   {
+    "doc": "i8962",
+    "pages": [
+     2
+    ]
+   },
+   {
+    "doc": "i8962",
+    "pages": [
+     14,
+     15,
+     16,
+     17
+    ]
+   },
+   {
+    "doc": "p974",
+    "pages": [
+     27
+    ]
+   }
+  ],
+  "cost": 0.29412799999999995,
+  "model": "claude-opus-5-5"
+ },
+ {
   "form": "f2441",
   "prompt_sha": "df5bcc830fb64dd8b7cea2329f195b90924f37667d98f004e484e888745685ed",
   "claims": [
@@ -1049,6 +1190,149 @@
    }
   ],
   "cost": 0.4489268,
+  "model": "claude-opus-5-5"
+ },
+ {
+  "form": "f8962",
+  "prompt_sha": "c62987e59ef0425c5fee0aea8adcd017bfaac670b2f4f8cc0dcb6b782422bfc8",
+  "claims": [
+   {
+    "item": "f8962.line10",
+    "sentences": [
+     {
+      "quote": "If either of these two situations applies to you, or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, you must determine the correct applicable SLCSP premium for every month.",
+      "page": "i8962 p. 14"
+     },
+     {
+      "quote": "If the correct applicable SLCSP premium is not the same for every month of 2025, check “No”and continue to lines 12 through 23.",
+      "page": "i8962 p. 14"
+     },
+     {
+      "quote": "If your correct applicable SLCSP premium is not the same for all 12 months, check “No” and continue to lines 12 through 23.",
+      "page": "i8962 p. 15"
+     },
+     {
+      "quote": "If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected.",
+      "page": "i8962 p. 15"
+     }
+    ],
+    "quote": "If either of these two situations applies to you, or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, you must determine the correct applicable SLCSP premium for every month. / If the correct applicable SLCSP premium is not the same for every month of 2025, check “No”and continue to lines 12 through 23. / If your correct applicable SLCSP premium is not the same for all 12 months, check “No” and continue to lines 12 through 23. / If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected.",
+    "page": "i8962 p. 14; i8962 p. 15",
+    "why_uncovered": "Line 10 is decided only from whether Forms 1095-A columns A and B are uniform for 12 months. No question asks about the conditions that make the reported column B wrong: no APTC was paid, or an unreported change in circumstances such as a newborn, a death, a move, or a change in MEC eligibility. No refusal covers them either. So the correct SLCSP can differ by month while line 10 is still answered Yes.",
+    "closest_item": "f8962.line10",
+    "effect": "amount"
+   },
+   {
+    "item": "f8962.line11b",
+    "sentences": [
+     {
+      "quote": "If no APTC was paid for your coverage, Form 1095-A, Part III, column B, may be wrong or blank or may report your applicable SLCSP premium as -0-.",
+      "page": "i8962 pp. 4-5"
+     },
+     {
+      "quote": "In either case, you must determine your correct applicable SLCSP premium.",
+      "page": "i8962 p. 5"
+     },
+     {
+      "quote": "See Missing or incorrect SLCSP premium on Form 1095-A under Line 10, earlier, to determine your correct applicable SLCSP premium to enter in column (b).",
+      "page": "i8962 p. 16"
+     }
+    ],
+    "quote": "If no APTC was paid for your coverage, Form 1095-A, Part III, column B, may be wrong or blank or may report your applicable SLCSP premium as -0-. / In either case, you must determine your correct applicable SLCSP premium. / See Missing or incorrect SLCSP premium on Form 1095-A under Line 10, earlier, to determine your correct applicable SLCSP premium to enter in column (b).",
+    "page": "i8962 pp. 4-5; i8962 p. 5; i8962 p. 16",
+    "why_uncovered": "Line 11(b) copies Form 1095-A line 33B. Nothing asks whether APTC was absent and column B is blank, zero or wrong, or whether an unreported change made it incorrect. Nothing refuses those cases. A zero or wrong SLCSP flows directly into lines 11(d) and 11(e).",
+    "closest_item": "f8962.line11b",
+    "effect": "amount"
+   },
+   {
+    "item": "f8962.line12b",
+    "sentences": [
+     {
+      "quote": "Need to determine correct applicable SLCSP premium. If, during 2025, your coverage family changed or you moved and you did not notify the Marketplace, or if no APTC was paid, the applicable SLCSP premium reported on your Form(s) 1095-A may be missing or incorrect.",
+      "page": "i8962 p. 17"
+     },
+     {
+      "quote": "See Missing or incorrect SLCSP premium on Form 1095-A under Line 10, earlier, to determine your correct applicable SLCSP premium to enter in column (b).",
+      "page": "i8962 p. 17"
+     }
+    ],
+    "quote": "Need to determine correct applicable SLCSP premium. If, during 2025, your coverage family changed or you moved and you did not notify the Marketplace, or if no APTC was paid, the applicable SLCSP premium reported on your Form(s) 1095-A may be missing or incorrect. / See Missing or incorrect SLCSP premium on Form 1095-A under Line 10, earlier, to determine your correct applicable SLCSP premium to enter in column (b).",
+    "page": "i8962 p. 17",
+    "why_uncovered": "The monthly column (b) lines (12(b) through 23(b)) take Form 1095-A column B as reported. No question or refusal covers the case where that amount is missing, zero, or incorrect. This happens when no APTC was paid or an unreported coverage-family change or move occurred.",
+    "closest_item": "f8962.line12b",
+    "effect": "amount"
+   },
+   {
+    "item": "f8962.line1",
+    "sentences": [
+     {
+      "quote": "If you checked the “Someone can claim you as a dependent” box, or if you are filing jointly and you checked the “Someone can claim your spouse as a dependent” box on your tax return, you or your spouse is not included in the tax family size calculation for purposes of Form 8962, line 1.",
+      "page": "i8962 p. 8"
+     },
+     {
+      "quote": "Your spouse if filing jointly and your spouse can’t be claimed as a dependent on someone else’s 2025 tax return.",
+      "page": "i8962 p. 3"
+     }
+    ],
+    "quote": "If you checked the “Someone can claim you as a dependent” box, or if you are filing jointly and you checked the “Someone can claim your spouse as a dependent” box on your tax return, you or your spouse is not included in the tax family size calculation for purposes of Form 8962, line 1. / Your spouse if filing jointly and your spouse can’t be claimed as a dependent on someone else’s 2025 tax return.",
+    "page": "i8962 p. 8; i8962 p. 3",
+    "why_uncovered": "Line 1 is encoded as the tax family size with no listed question or rule about whether the filer or spouse can be claimed as someone else's dependent. Those people must be excluded from family size, which changes the line 4 poverty line and the line 5 percentage.",
+    "closest_item": "f8962.line1",
+    "effect": "amount"
+   },
+   {
+    "item": "f8962.applicable",
+    "sentences": [
+     {
+      "quote": "No one can claim you as a dependent for the year.",
+      "page": "i8962 p. 3"
+     },
+     {
+      "quote": "Generally, you are an applicable taxpayer if your household income for 2025 (described earlier) is at least 100% of the federal poverty line for your family size (provided in Tables 1-1, 1-2, and 1-3) and no one can claim you as a dependent for 2025.",
+      "page": "i8962 p. 6"
+     },
+     {
+      "quote": "APTC was paid for the coverage of 1 or more months during 2025.",
+      "page": "i8962 p. 9"
+     },
+     {
+      "quote": "You do not meet the requirements under Estimated household income at least 100% of the federal poverty line, earlier, if: • No APTC was paid for your or your family’s coverage; or",
+      "page": "i8962 p. 9"
+     }
+    ],
+    "quote": "No one can claim you as a dependent for the year. / Generally, you are an applicable taxpayer if your household income for 2025 (described earlier) is at least 100% of the federal poverty line for your family size (provided in Tables 1-1, 1-2, and 1-3) and no one can claim you as a dependent for 2025. / APTC was paid for the coverage of 1 or more months during 2025. / You do not meet the requirements under Estimated household income at least 100% of the federal poverty line, earlier, if: • No APTC was paid for your or your family’s coverage; or",
+    "page": "i8962 p. 3; i8962 p. 6; i8962 p. 9",
+    "why_uncovered": "The applicable-taxpayer helper is described only as line 5 being at least 100 or the Marketplace-estimate exception. No question or refusal tests whether someone can claim the filer as a dependent, and that alone denies the PTC. The estimate_100 question also does not condition the below-100% exception on APTC having been paid. So a filer with no APTC could wrongly qualify by answering yes.",
+    "closest_item": "f8962.applicable",
+    "effect": "eligibility"
+   }
+  ],
+  "used": [
+   {
+    "doc": "i8962",
+    "pages": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17,
+     18
+    ]
+   }
+  ],
+  "cost": 0.560272,
   "model": "claude-opus-5-5"
  },
  {

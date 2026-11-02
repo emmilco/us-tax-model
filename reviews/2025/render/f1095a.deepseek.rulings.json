@@ -1,0 +1,28 @@
+{
+ "kind": "render",
+ "form": "f1095a",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "b_counted",
+   "restated": "Input — Do you count this Form 1095-A's column B? Count it unless another Form 1095-A from the same state, whose column B you count, shows coverage in every month this one does. For a month that several forms from one state cover, column B is entered from only one of them; forms from different states, and policies from one state that follow one another, are each counted.",
+   "model": "The IRS rule is monthly: 'If you have more than one Form 1095-A showing coverage in a particular month... Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.' The program's form-level 'shows coverage in every month this one does' rule can count both forms in a partial overlap and double-count the overlapping months.",
+   "ruling": "Ruling: scope — the objection is a partial same-state overlap where both forms' column B would be counted and the overlapping months added twice. The project refuses that return at f8962.two_counted: \"Of the Forms 1095-A whose column B you counted, do two from the same state show coverage in the same month?\" answered yes refuses Form 8962 lines 24 and 25 with the citation i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\" The render review of this collection form does not include the consuming form's gate, so it cannot see the refusal.",
+   "context": "5956851a1542cda3e03e0e989378bf88b5d31cbe2bde0ea02efb83b83cd76ff7"
+  },
+  {
+   "printed": "b_counted",
+   "restated": "Input — Do you count this Form 1095-A's column B? Count it unless another Form 1095-A from the same state, whose column B you count, shows coverage in every month this one does. For a month that several forms from one state cover, column B is entered from only one of them; forms from different states, and policies from one state that follow one another, are each counted.",
+   "model": "The rule would count two same-state forms with partially overlapping months, but IRS says 'Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.' It also omits the December-marriage exception.",
+   "ruling": "Ruling: scope — the objection is a partial same-state overlap where both forms' column B would be counted and the overlapping months added twice, and the December-2025 marriage with separate plans where column B is added across plans. The project refuses both: f8962.two_counted asks whether two counted Forms 1095-A from one state show coverage in the same month and refuses on yes (i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"); f8962.marriage refuses a return married in 2025 with coverage before the first full month of marriage, which covers a December marriage, through Part V (i8962 p. 13, Table 4). The render review of this collection form does not include the consuming form's gates, so it cannot see either refusal.",
+   "context": "cc725948ed542e262e9c271bd0b63e7298734b905ec075bb8516585908f5252f"
+  },
+  {
+   "printed": "b_used",
+   "restated": "(f8962 helper \"Number of Forms 1095-A\" = 1 (a count) or helper \"Do you count this Form 1095-A's column B?\" = true)",
+   "model": "This gate applies b_counted to the whole form, so in a partial same-state overlap it can count both forms; IRS says for a particular month with multiple Forms 1095-A, 'Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.'",
+   "ruling": "Ruling: scope — the gate's per-form answer cannot by itself prevent a partial same-state overlap, but the return is refused there by f8962.two_counted, which asks whether two counted Forms 1095-A from one state show coverage in the same month and refuses on yes (i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"). The render review of this collection form does not see the consuming form's refusal.",
+   "context": "5956851a1542cda3e03e0e989378bf88b5d31cbe2bde0ea02efb83b83cd76ff7"
+  }
+ ]
+}

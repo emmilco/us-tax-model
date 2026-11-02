@@ -1,3 +1,87 @@
+# f8962 form pass closed — 2026-11-02; next is the asset/Schedule C pass
+
+**State:** the f8962 form pass (T-134 and T-162) is committed here; `TASKS.md` moves both rows to `TASKS-DONE.md`
+and `BUG_INVENTORY.md` ends at BUG-0296. The coverage tree holds **190 refusal gates**; the estimate is unchanged
+at **78.4% (range 76.9–85.7)**. Full suite green on the tested tree (see the commit message). The working tree is
+clean and `main` is pushed.
+
+## What the pass changed
+
+- `f8962.other` now states the whole minimum-essential-coverage eligibility rule: government programs (Medicare
+  Part A/C, Medicaid, CHIP, TRICARE, veterans' benefits, Peace Corps), employer coverage that was offered and was
+  affordable with minimum value (excluding a waiting period), employer coverage actually enrolled in including
+  COBRA and retiree coverage, other HHS-designated MEC, the Marketplace Medicaid/CHIP misdetermination,
+  incarceration, and the individual-market exclusion; the remedy and citation were rewritten (BUG-0293).
+- `f8962.estimate_100` now carries the intentional/reckless misreporting disqualifier inline (BUG-0296).
+- New `f1095a.void` question per entered form, `f8962.void_forms` count and `f8962.void_form` refusal for a VOID,
+  replaced or superseded Form 1095-A (BUG-0294); the question covers a later VOID form as well as a CORRECTED one,
+  after a render review of the first wording found the gap.
+- New `f8962.premium_adjust` gate refusing coverage that began after the first day of a month (other than the
+  birth/adoption/placement/court-order exception) and premiums refunded in 2025 (BUG-0295).
+- Three new stage18 refusal fixtures and the refreshed `other_coverage` case; 1,428/1,428 CLI fixtures; build,
+  render, strict citations, instruction cites, operands, signs, limits, consumers, coverage placement, refusal
+  reach, properties, Lean agreement and mutation pass on the tree.
+
+## Review evidence and the two new review-tool findings
+
+- Claude (required family): f8962 transcription **0/97** — 85 interface gaps and 12 scope rulings, no completed-
+  return amount difference; f1095a **14/15** (representation; `b_used` one model error); render f8962 91/3/1 and
+  f1095a 76/1, all scope; class M f8962 clean, f1095a one model error dropped.
+- DeepSeek and GPT-6 Astra were also rerun and ruled. DeepSeek f8962 has 18 real model errors (17 unpublished
+  `f1095a.c_<month>` declarations and the line 24 amount); Astra has none.
+- **T-163:** the transcription prompt calls `shown_when` "Optional", and all three families omitted it on every
+  f8962 line. The comparison added 2026-10-31 counts visibility, so the 0/97 is mostly a request-wording gap, not
+  a tax-reading failure; the visibility-only limbs are ruled interface gaps. Fixing the prompt stales every
+  transcription log, so it is one bounded refresh, not a side change.
+- **T-164:** the screen review found two over-refusals in the new `f8962.premium_adjust` wording ("coverage" should
+  say Marketplace coverage; "a month refunded in 2025" should say a 2025 month). Accepted as over-refusal now;
+  narrow the wording at the next f8962 review refresh.
+
+## GPT-6 as an optional peer family
+
+The owner added GPT-6 as an optional third family, equal in authority to `claude-opus-5-5` and
+`deepseek-v4.1-flash` (the ranking is in `docs/2026-10-24_validation_policy.md`). `codex exec` runs in an empty
+read-only scratch directory with `--ignore-user-config`; any tool event fails the call, and the model codex used
+is read from its session rollout. The selected model is `gpt-6-astra`. Both gpt runs omit `shown_when`; the Astra
+runs were not better than 6.1 Sol on these two forms, and the temporary comparison is in the experiment log.
+
+## Where the queues stand
+
+- **Queue 1, amount-affecting defects:** T-134 and T-162 are done. Open: **T-157/BUG-0290** (sc.at_risk),
+  **T-158/BUG-0291** (asset allowance), **T-161/BUG-0292** (HSA carryover).
+- **Queue 2, checker:** T-096 done; no open item.
+- **Queue 3, evidence/tooling:** T-143 and T-160 done. Open: **T-159** (mutation table/guard/choose), **T-163**
+  (shown_when prompt), **T-164** (premium_adjust wording), and the P2 rows T-139–140, T-142, T-144, T-146–148.
+- **P2 review backlog:** unchanged; Claude logs are clean. Optional DeepSeek transcription remains open in f4562
+  (14), f8606 (3), f8995 (9), qbi (4), scveh (19), sli (5); optional DeepSeek render in f8606 (1), f8995 (2),
+  f8995a (1), ltc (1), mq (2), oi8z (1), sa (3), se (5), sli (3). These are pre-existing and optional.
+- **Second-family noise:** the aggregate is 8.6% (425/4,925) after the interface-gap reclassification; per
+  form-kind runs govern. f8962 DeepSeek is still above 10% because of its 18 real model errors; the f8962 pairs
+  remain pending on the interface gaps until T-163.
+
+## Next action: the asset/Schedule C pass
+
+Do **T-157/BUG-0290** (sc.at_risk related-party prong) and **T-158/BUG-0291** (asset: the September 27, 2017
+boundary and the 50% reuse/recycling class, with the owner-accepted refusal) together; they share the sc form and
+the asset screen. Rerun the asset, sc and scveh reviews and the sc completeness review (the 18 claims were
+discarded when the wording was reverted; rerun it). Then the **Form 5329/person pass** (T-161/BUG-0292), then
+T-159, the P2 rows, and the F1 dependent/education batch.
+
+## Operational notes
+
+- `CLOUD_CLAUDE_INSTRUCTIONS.md` is the task channel for the owner's cloud Claude session: it polls
+  `origin/f8962-form-pass` about every ten minutes, pulls, executes the tasks written in that file, and records
+  the result under Completed. It never pushes to `main`. The branch contains the WIP tree and the force-added
+  raw review receipts; `main` does not track them.
+- The model authority ranking, the GPT-6 transport and its isolation rule are in the validation policy.
+- Archives for this pass: `.transcription/archive/before-f8962-form-pass-2026-11-01/`,
+  `before-final-wording-2026-11-01/`, `before-gpt6-astra-2026-11-01/`, `before-f8962-classm-2026-11-01/`,
+  `before-f8962-deepseek-rerun-2026-11-01/`, `before-f8962-deepseek-higheffort-2026-11-01/`.
+- Do not bypass hooks on `main`; the branch push used `--no-verify` only to hand the tree to the cloud session,
+  with the owner's approval.
+
+---
+
 # Hardening session — 2026-11-01; next is the f8962 form pass
 
 **State:** code tree `cbd7302` (this handoff commit's parent, pushed), working tree clean, full suite green on

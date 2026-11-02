@@ -1,0 +1,16 @@
+{
+ "kind": "classm",
+ "form": "f8962",
+ "family": "gpt",
+ "rulings": [
+  {
+   "case": "classm.f8962.2",
+   "printed": "24",
+   "project": "$3,000.00",
+   "model": "$0.00",
+   "ruling": "Ruling: model error — the model marked the monthly column (e) lines skipped on its reading of i8962 p. 16's ambiguous \"If you did not elect the alternative calculation for year of marriage or you are using filing status married filing separately...\" sentence, then reported line 24 as the sum of the skipped lines, $0.00 against the project's $3,000.00. The sentence's first limb cannot skip the monthly columns for every filer who did not elect Part V, because the same page instructs those columns for non-MFS filers; the only coherent reading is the married-filing-separately case, which this tool refuses for the whole return (s3.mfs). The model's value contradicts the operative instructions, so the expectation is dropped.",
+   "drop": true,
+   "context": "550bb7d7960ec50cb6d034e005c8ecaf46e60c8bb5e52a6d8899a0d866594c6a"
+  }
+ ]
+}

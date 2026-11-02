@@ -133,7 +133,7 @@ const FIXED = new Set([
   "person[taxpayer].eic_ssn", "person[taxpayer].under16",
   "clcw.spouse_screen", "clcw.prior_11", "clcw.prior_14", "clcw.prior_sd7", "clcw.prior_sd15", "clcw.prior_sd21",
   "f4952.prior_7", "f8960.prior_2i",
-  "f8962.alloc", "f8962.married_in_2025", "f8962.other", "f8962.same_state_counted", "f8962.estimate_100", "f8962.alien_below", "f8962.fpl_table",
+  "f8962.alloc", "f8962.married_in_2025", "f8962.other", "f8962.premium_adjust", "f8962.same_state_counted", "f8962.estimate_100", "f8962.alien_below", "f8962.fpl_table",
   "f8863.paid", "f8863.ban",
   ...EARLY_ROOTS,
   ...["", "_1098t", "_inst", "_mat", "_a2025", "_a2026", "_refunds", "_over", "_line23", "_line24", "_line25", "_line26", "_ein",
@@ -853,7 +853,7 @@ function putEarly(inputs: Inputs): void {
 function putPtc(inputs: Inputs): void {
   const next = derivedStream(inputs, "ptc");
   const between = (lo: number, hi: number) => lo + Math.floor(next() * (hi - lo + 1));
-  Object.assign(inputs, { "f8962.alloc": false, "f8962.married_in_2025": false, "f8962.other": false, "f8962.same_state_counted": false, "f8962.alien_below": false,
+  Object.assign(inputs, { "f8962.alloc": false, "f8962.married_in_2025": false, "f8962.other": false, "f8962.premium_adjust": false, "f8962.same_state_counted": false, "f8962.alien_below": false,
     "f8962.estimate_100": next() < 0.7, "f8962.fpl_table": next() < 0.9 ? "contiguous" : next() < 0.5 ? "alaska" : "hawaii" });
   for (const k of (inputs["$dependent"] as string[] | undefined) ?? []) Object.assign(inputs, { [`dependent[${k}].ptc_files`]: false, [`dependent[${k}].ptc_magi`]: 0 });
   if (next() >= 0.15) { inputs["$f1095a"] = []; return; }
@@ -871,6 +871,7 @@ function putPtc(inputs: Inputs): void {
     const uniform = !sequential && next() < 0.7 && !(i === 1 && !twoStates && firstStart > 0);
     const a = between(15_000, 150_000), b = between(15_000, 120_000);
     inputs[`${E}.uniform`] = uniform;
+    inputs[`${E}.void`] = false;
     inputs[`${E}.b_counted`] = i === 0 || twoStates || sequential;
     // Both the uniform answers and the monthly amounts are filled, agreeing with each other, so every line of the entry is
     // computed whichever route the form takes (the interview asks only one set).

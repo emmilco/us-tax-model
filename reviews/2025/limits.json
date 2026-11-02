@@ -13,6 +13,18 @@
     "s1.alimony_refused"
    ],
    "reason": "Pub. 504's presumption that alimony reduced at a time clearly associated with a child contingency is child support; the tool does not apply it but refuses: s1.alimony_unsupported asks for \"an amount the instrument reduces on a contingency relating to a child, such as reaching a certain age, or at a time associated with one\", which takes in every reduction this window describes, and s1.alimony_refused refuses on yes."
+  },
+  "limit:i8962:p5:3868b34e": {
+   "enforced_by": [
+    "f8962.other"
+   ],
+   "reason": "The employer-coverage affordability and minimum-value standard is enforced as a screen: f8962.other asks whether anyone in the tax family was eligible for employer-sponsored coverage that \"was offered and was affordable and provided minimum value (other than during a waiting period before the benefits begin)\", and refuses on yes. The 9.02% measurement and the minimum-value actuarial test are applied by the filer or the Marketplace; this tool encodes neither as a computed amount, and the screen refuses rather than assuming eligibility."
+  },
+  "limit:i8962:p5:dfeb1b0b": {
+   "enforced_by": [
+    "f8962.other"
+   ],
+   "reason": "The family-member affordability sentence states the same 9.02% standard as the self-only test; f8962.other's \"was affordable and provided minimum value\" screen covers the family member's offer as well as the filer's, and the gate refuses on yes. The percentage is the filer's or Marketplace's measurement, not an amount this tool computes."
   }
  },
  "baseline": {

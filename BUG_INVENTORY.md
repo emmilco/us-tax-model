@@ -4182,3 +4182,47 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Disposition:** T-161, with the Form 5329/person pass: add the carried excess as an input or extend the question, then rerun the screen review and the f5329/person reviews.
 - **Validation:** one screen-review finding and source/implementation inspection; no fixture or numerical evidence claimed.
 - **Tags:** source-definition-debt; existing-form-pass; explicitly-deferred
+
+## BUG-0293 — The f8962 other-coverage screen missed other minimum essential coverage and incarcerated enrollees
+
+- **Caught by:** f8962 completeness review claim 4 (`.transcription/completeness/f8962.response.txt`), 2026-11-01; the same gap as the earlier `f8962.other` screen review finding PENDING-4-4.
+- **Source:** i8962 p. 5, Minimum essential coverage (MEC): "Most coverage through government-sponsored programs (including Medicaid coverage, Medicare Part A or C, the Children’s Health Insurance Program (CHIP), certain benefits for veterans and their families, TRICARE, and health coverage for Peace Corps volunteers)", "Most types of employer-sponsored coverage", and "Other health coverage the Department of Health and Human Services designates as MEC"; p. 5, "In addition, if you or your family member enrolls in employer-sponsored coverage for a month, you or your family member is considered eligible for employer-sponsored coverage for that month, even if the coverage does not satisfy the affordability and minimum value standards"; p. 6, COBRA and retiree coverage; p. 6, "Individuals who are incarcerated (other than pending disposition of charges, for example, awaiting trial) are not eligible for coverage in a qualified health plan through a Marketplace"; p. 6, a Marketplace Medicaid or CHIP determination based on intentionally or recklessly incorrect information.
+- **Symptom:** `f8962.other` asked only about an unlawfully present enrollee, a QSEHRA or individual coverage HRA, unpaid premiums and advance payments for someone in no tax family. A filer who was eligible for other MEC for a month — including one who enrolled in unaffordable or non-minimum-value employer coverage, or in COBRA or retiree coverage — could truthfully answer no, remain in the coverage family, and take the full credit. The closed program list omitted Peace Corps coverage and other HHS-designated MEC, and the question did not ask about incarceration or a Marketplace Medicaid/CHIP determination later found to rest on intentional or reckless misinformation.
+- **Fix:** the `f8962.other` question and label now state every limb of the MEC eligibility rule, the enrollment rule for employer coverage including COBRA and retiree coverage, the Marketplace Medicaid/CHIP misdetermination, and incarceration, and exclude coverage bought in the individual market outside the Marketplace. The refusal and remedy name the situations; the refusal cites i8962 pp. 5–6. The existing stage18.refuse.other_coverage expectation was refreshed and a named enrolled-unaffordable-employer case added.
+- **Fix lines:** `f8962.other`
+- **Siblings checked:** `f8962.line24`, `f8962.line25`
+- **Regression predictions:** stage18.refuse.other_coverage (same screen, refreshed remedy/cite) and stage18.refuse.other_mec_enrolled both refuse at f8962.line24, f8962.line25 and s3.line9 with the new form name, remedy and i8962 pp. 5–6 cite, written from the source before the evaluator was run. The fixture suite is 1,428/1,428 through the command-line program.
+- **Tags:** source-completeness; premium-tax-credit; fixed
+
+## BUG-0294 — A VOID or replaced Form 1095-A could feed the Form 8962 columns
+
+- **Caught by:** f8962 completeness review claim 5 (`.transcription/completeness/f8962.response.txt`), 2026-11-01.
+- **Source:** i8962 p. 2, "Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962"; "If you receive a Form 1095-A with the “CORRECTED” box checked at the top of the form, use the information on the Form 1095-A with the “CORRECTED” box checked to figure the PTC and reconcile any APTC on Form 8962"; "Do not use the information on the original Form 1095-A you received for the policy shown in Part I of the corrected Form 1095-A."
+- **Symptom:** the f1095a collection counted and summed every entered form, with no question, filter or refusal for a VOID form, an original that a later VOID form supersedes (i8962 p. 2: a VOID form means the Marketplace previously sent a form for that policy in error, and neither the VOID form nor the previously received one may be used), or an original that a corrected form replaces. If a filer entered both, the premiums, SLCSP amounts and advance payments were counted twice; if they entered only the VOID or superseded form, its amounts were used. A GPT-6 Astra render review of the first wording found that it named only the corrected-form case; the question and remedy were extended before the pass closed.
+- **Fix:** new `f1095a.void` question on each entry (marked VOID, or an original superseded by a later VOID or corrected form); `f8962.void_forms` counts the entries answered yes and `f8962.void_form` refuses the return with a remedy to enter the form the Marketplace says to use and omit the void, replaced or superseded one (i8962 p. 2).
+- **Fix lines:** `f1095a.void`, `f8962.void_forms`, `f8962.void_form`
+- **Siblings checked:** `f8962.void_forms`, `f8962.void_form`, `f8962.line24`, `f8962.line25`
+- **Regression predictions:** stage18.refuse.void_1095a answers `f1095a[m].void` true and refuses at f8962.line24, f8962.line25 and s3.line9 with the `f8962.void_form` form, remedy and i8962 p. 2 cite, written from the source before the evaluator was run. Fixtures 1,428/1,428.
+- **Tags:** source-completeness; premium-tax-credit; fixed
+
+## BUG-0295 — Form 8962 took column A as reported when coverage began mid-month or a premium was refunded
+
+- **Caught by:** f8962 completeness review claim 7 (`.transcription/completeness/f8962.response.txt`), 2026-11-01.
+- **Source:** i8962 p. 4, "To qualify for a monthly credit amount, at least one individual in your tax family must be enrolled in a qualified health plan on the first day of that month. Generally, if coverage in a qualified health plan began after the first day of the month, you are not allowed a monthly credit amount for the coverage for that month"; the birth, adoption, foster-care placement and court-order exception that treats the individual as enrolled on the first day; "The enrollment premiums are the total amount of the premiums for the month, reduced by any premium amounts for that month that were refunded in 2025".
+- **Symptom:** lines 11(a) and 12(a) to 23(a) summed Form 1095-A column A as entered. A month whose coverage began after the first day kept a monthly credit amount, and a premium refunded in 2025 kept inflating the enrollment premium.
+- **Fix:** new `f8962.premium_adjust` gate, answered when coverage began after the first day of a month other than on a birth, adoption, placement for adoption or foster care, or a court order (which count from the first day) or when a Marketplace premium was refunded in 2025; the return is refused with the p. 4 rule and remedy. The monthly-adjustment alternative (per-month inputs) was rejected as a fifteen-input change for a narrow case.
+- **Fix lines:** `f8962.premium_adjust`
+- **Siblings checked:** `f8962.line24`, `f8962.line25`
+- **Regression predictions:** stage18.refuse.premium_adjust answers the gate true and refuses at f8962.line24, f8962.line25 and s3.line9 with the `f8962.premium_adjust` form, remedy and p. 4 cite, written from the source before the evaluator was run. Fixtures 1,428/1,428.
+- **Tags:** source-completeness; premium-tax-credit; fixed
+
+## BUG-0296 — The below-100% Marketplace-estimate exception ignored intentional or reckless misreporting
+
+- **Caught by:** f8962 completeness review claim 3 (`.transcription/completeness/f8962.response.txt`), 2026-11-01.
+- **Source:** i8962 p. 9, "You do not meet the requirements under Estimated household income at least 100% of the federal poverty line, earlier, if: ... You, with intentional or reckless disregard for the facts, provided incorrect information to a Marketplace for the year of coverage."
+- **Symptom:** `f8962.estimate_100` asked only whether the Marketplace estimated income at or above 100% of the poverty line. A filer who provided incorrect information with intentional or reckless disregard could answer yes, meet the exception in `f8962.applicable`, and take the PTC below 100% of the poverty line.
+- **Fix:** the question now says "Answer no if you, with intentional or reckless disregard for the facts, provided incorrect information to a Marketplace for 2025", and the line cites both p. 9 sentences. No new input: the disqualifier belongs to the same Marketplace-estimate exception.
+- **Fix lines:** `f8962.estimate_100`
+- **Siblings checked:** `f8962.applicable`
+- **Regression predictions:** no new numeric fixture is needed: the input is a Boolean screen, and every existing return answers it. The change is question wording and a citation; the screen review rerun covers the reading.
+- **Tags:** source-completeness; premium-tax-credit; fixed

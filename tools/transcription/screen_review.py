@@ -14,7 +14,7 @@ and the archived pages those lines cite, and asks for every case the wording mis
 Standing review (T-088): a screen whose prompt hash (its question, the gated lines' English and refusals, and
 the pages they cite) differs from its recorded review is stale in check-all (tools/transcription/check_screens.py)
 and is rerun with --screens, which merges into reviews/<year>/screens/screen_review.json; findings are adjudicated
-in reviews/<year>/screens/screen_review.md and ruled in reviews/<year>/screens/rulings.json. Each call is one fixed-prompt `claude -p` with no tools (fixed-prompt, curated input, no action surface).
+in reviews/<year>/screens/screen_review.md and ruled in reviews/<year>/screens/rulings.json. Each call is one fixed-prompt call to the selected model with no tools (fixed-prompt, curated input, no action surface): `claude` through `claude -p`, or an equal-authority peer through its transport (families.py; docs/2026-10-24_validation_policy.md).
 """
 import argparse, datetime, glob, hashlib, json, os, re, sys
 from concurrent.futures import ThreadPoolExecutor

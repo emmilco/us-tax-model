@@ -1052,7 +1052,8 @@ class MissingCredential(RuntimeError):
 def call_model(prompt, model, timeout=900, system=TRANSCRIBE_SYSTEM, reasoning_effort=None, max_output_tokens=None):
     """One fixed-prompt call; returns (text, meta). The transport follows the model name:
     `claude*` runs `claude -p` in print mode with no tools; `deepseek*` posts to DeepSeek's
-    hosted OpenAI-compatible endpoint. meta carries model_reported (a list), usage and cost_usd."""
+    hosted OpenAI-compatible endpoint; `gpt*` runs `codex exec` in an empty read-only scratch
+    directory. meta carries model_reported (a list), usage and cost_usd."""
     families.require_selected_model(model)
     if not model.startswith("deepseek") and (reasoning_effort is not None or max_output_tokens is not None):
         raise ValueError("reasoning/output-budget options are supported only by the DeepSeek transport")
@@ -1060,7 +1061,9 @@ def call_model(prompt, model, timeout=900, system=TRANSCRIBE_SYSTEM, reasoning_e
         return _call_claude(prompt, model, timeout, system)
     if model.startswith("deepseek"):
         return _call_deepseek(prompt, model, timeout, system, reasoning_effort, max_output_tokens)
-    raise ValueError(f"no transport for model {model!r}: a model name begins with 'claude' or 'deepseek'")
+    if model.startswith("gpt"):
+        return _call_codex(prompt, model, timeout, system)
+    raise ValueError(f"no transport for model {model!r}: a model name begins with 'claude', 'deepseek' or 'gpt'")
 
 
 def _call_claude(prompt, model, timeout, system):
@@ -1093,6 +1096,88 @@ def _deepseek_key():
         raise MissingCredential(f"no DeepSeek API key in the macOS keychain (service {service!r}, account {account!r}); "
                                 f"add it with: security add-generic-password -s {service} -a {account} -w")
     return key
+
+
+def _call_codex(prompt, model, timeout, system):
+    """Run `codex exec` as a fixed-prompt transport (owner decision 2026-11-01: gpt-6 is an
+    optional third family, not a required reviewer).
+
+    Isolation: the agent runs in an empty scratch directory with `--ignore-user-config`,
+    `--skip-git-repo-check` and the read-only sandbox, so no project file is in its workspace and
+    it cannot write. The system prompt and the review prompt are joined, because codex has no
+    separate system-prompt flag; both hashes are bound in the receipt. Codex is an agent harness,
+    so the call fails closed if the event stream reports any tool activity (command execution,
+    file change, MCP or web search); the reply is accepted only from agent messages. The model the
+    run actually used is read from codex's own session rollout, and the rollout is deleted after
+    the model is recorded so the only retained copy of the request and reply is the review's own
+    raw receipt."""
+    import glob, tempfile, shutil
+    workdir = tempfile.mkdtemp(prefix="codex-review-")
+    cmd = ["codex", "exec", "--skip-git-repo-check", "--ignore-user-config", "-s", "read-only",
+           "--json", "--model", model, "-C", workdir, "-"]
+    try:
+        proc = subprocess.run(cmd, input=system + "\n\n" + prompt, capture_output=True, text=True,
+                              timeout=timeout, cwd=workdir)
+    finally:
+        shutil.rmtree(workdir, ignore_errors=True)
+    if proc.returncode != 0:
+        raise RuntimeError(f"codex exited {proc.returncode}: {(proc.stderr or proc.stdout)[:400]}")
+    events = []
+    for line in proc.stdout.splitlines():
+        line = line.strip()
+        if line:
+            try:
+                events.append(json.loads(line))
+            except json.JSONDecodeError:
+                raise RuntimeError(f"codex emitted a non-JSON event line: {line[:200]}") from None
+    thread = next((e.get("thread_id") for e in events if e.get("type") == "thread.started"), None)
+    messages, tools_used = [], []
+    for event in events:
+        kind = event.get("type")
+        item = event.get("item") or {}
+        if kind in ("thread.started", "turn.started"):
+            continue
+        if kind == "turn.completed":
+            usage = event.get("usage") or {}
+            continue
+        if kind == "turn.failed":
+            raise RuntimeError(f"codex turn failed: {json.dumps(event)[:400]}")
+        if kind in ("item.started", "item.completed", "item.updated"):
+            itype = item.get("type")
+            if itype == "agent_message":
+                if kind == "item.completed" and item.get("text"):
+                    messages.append(item["text"])
+            elif itype in ("reasoning", "todo_list"):
+                continue
+            else:
+                tools_used.append(itype or "unknown")
+            continue
+        if kind == "error":
+            raise RuntimeError(f"codex error: {json.dumps(event)[:400]}")
+        tools_used.append(kind or "unknown")
+    if tools_used:
+        raise RuntimeError("codex used an action outside the fixed prompt (tool events: "
+                           + ", ".join(sorted(set(tools_used))) + "); the reply was rejected")
+    if not messages:
+        raise RuntimeError("codex returned no agent message")
+    reported = []
+    if thread:
+        stamp = datetime.datetime.now(datetime.timezone.utc).astimezone()
+        for path in glob.glob(os.path.expanduser(f"~/.codex/sessions/*/*/*/rollout-*-{thread}.jsonl")):
+            try:
+                found = re.findall(r'"model"\s*:\s*"([^"]+)"', open(path, encoding="utf-8").read())
+            except OSError:
+                found = []
+            if found:
+                reported = [found[0]]
+            try:
+                os.remove(path)
+            except OSError:
+                pass
+    meta = {"model_reported": reported or [f"{model} (requested; codex session did not name the model)"],
+            "usage": usage if "usage" in locals() else {}, "cost_usd": None,
+            "transport": "codex-exec", "isolation": "empty scratch cwd, read-only sandbox, tool events rejected"}
+    return "\n".join(messages), meta
 
 
 def _call_deepseek(prompt, model, timeout, system, reasoning_effort=None, max_output_tokens=None):

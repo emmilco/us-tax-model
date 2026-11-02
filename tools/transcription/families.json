@@ -1,1 +1,1 @@
-{"required": ["claude"], "optional": ["deepseek"], "models": {"deepseek": "deepseek-flash"}}
+{"required": ["claude"], "optional": ["deepseek", "gpt"], "models": {"deepseek": "deepseek-flash", "gpt": "gpt-6-astra"}}

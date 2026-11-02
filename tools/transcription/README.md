@@ -35,6 +35,17 @@ every tool here (`transcribe.py`, `render_compare.py`, `classm.py`,
   --permission-prompts none --model <pinned>`, system prompt task-only. The tool
   list in the init event is empty and a request to read a file is refused;
   verified before the first run. No credential beyond the CLI's own.
+- `gpt*` — `codex exec --skip-git-repo-check --ignore-user-config -s read-only
+  --json --model <pinned> -` with the working directory set to an empty scratch
+  directory, so no project file is in its workspace. Codex has no separate
+  system-prompt flag, so the system prompt and the review prompt are joined on
+  stdin; both hashes are bound in the receipt. Codex is an agent harness, so the
+  call **fails closed** if the event stream reports any tool activity (command
+  execution, file change, MCP or web search); only agent messages are accepted.
+  The model actually used is read from codex's session rollout, which is deleted
+  after the model is recorded. The owner's authority ranking is in
+  `docs/2026-10-24_validation_policy.md`: `gpt-6-astra` is a peer of
+  `claude-opus-5-5` and `deepseek-v4.1-flash`.
 - `deepseek*` — DeepSeek's hosted OpenAI-compatible endpoint
   (`https://api.deepseek.com/chat/completions`), standard library only: the
   system and user prompts become the two messages, temperature 0, one
@@ -61,13 +72,15 @@ python3 tools/transcription/transport_check.py [--model deepseek-flash]   # one 
 
 ## Model families
 
-The owner's selected second-family model is `deepseek-flash` (correction 2026-10-23).
-Use that id explicitly for new runs; earlier Pro artifacts retain their actual model labels.
-The `models` pin in `families.json` is enforced before network calls and when qualifying review
-logs, so another member of the same family cannot silently substitute for Flash.
+The owner's selected second-family model is `deepseek-flash` (correction 2026-10-23), and
+`gpt-6-astra` is the selected optional third family (owner decision 2026-11-01: equal in authority to
+`claude-opus-5-5` and `deepseek-flash`, not a required reviewer). Use those ids explicitly for
+new runs; earlier Pro artifacts retain their actual model labels. The `models` pin in
+`families.json` is enforced before network calls and when qualifying review logs, so another
+member of the same family cannot silently substitute.
 
 A family is the first token of the model name (`families.py`: `claude-opus-5-5`
-is `claude`, `deepseek-v4-pro` is `deepseek`). Each family's review of a form
+is `claude`, `deepseek-v4-pro` is `deepseek`, `gpt-6-astra` is `gpt`). Each family's review of a form
 is its own log beside the others, never a replacement: the Claude logs keep
 their plain names, and a run with another family writes
 

@@ -14,13 +14,13 @@ Measured, below 0.5% of returns, and not in the table:
 - Foreign earned income exclusion (Form 2555): 0.3%
 - Alternative minimum tax: 0.1%
 
-Not named in the table: 142 of the 150 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
+Not named in the table: 144 of the 152 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
 
 The estimate puts coverage at 78.4% of returns (`reports/2025/filer_coverage.json`). It does not count the unmeasured situations, so the true figure is lower.
 
 ## Every refusal
 
-The data holds **188 refusal gates**: 150 tax situations the tool does not prepare, grouped by topic below, and 38 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
+The data holds **190 refusal gates**: 152 tax situations the tool does not prepare, grouped by topic below, and 38 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
 
 - [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (30)
 - [Household and dependents](#household-and-dependents) (12)
@@ -39,7 +39,7 @@ The data holds **188 refusal gates**: 150 tax situations the tool does not prepa
 - [Child and dependent care](#child-and-dependent-care) (9)
 - [Education credits](#education-credits) (3)
 - [Home energy credits](#home-energy-credits) (7)
-- [Premium tax credit](#premium-tax-credit) (5)
+- [Premium tax credit](#premium-tax-credit) (7)
 - [Entry checks](#entry-checks) (38)
 
 ### Filing status, residency, wages, accounts and other taxes
@@ -952,10 +952,20 @@ The data holds **188 refusal gates**: 150 tax situations the tool does not prepa
 
 ### Premium tax credit
 
-- **`f8962.other`**: Does Marketplace coverage involve someone not lawfully present, an HRA, unpaid premiums, or advance payments for someone in no tax family?
-  - *The data asks or tests:* Coverage this tool does not reconcile (not lawfully present, an HRA, unpaid premiums, no tax family) (`input`)
-  - *Not covered:* Form 8962 with coverage outside this tool. Coverage of someone not lawfully present, a QSEHRA or individual coverage HRA, unpaid premiums and advance payments for someone in no tax family need Pub. 974 rules this tool does not prepare.
-    *Source:* [i8962] p. 6, "Individuals who are not lawfully present in the United States are not eligible for the PTC for their coverage in a qualified health plan through a Marketplace."
+- **`f8962.other`**: Is anyone in the tax family eligible for other minimum essential coverage (Medicare, Medicaid, CHIP, TRICARE, veterans' or Peace Corps coverage, an affordable employer offer, employer coverage actually enrolled in including COBRA or retiree coverage), or is a Marketplace Medicaid or CHIP determination based on intentionally or recklessly incorrect information, or is an enrolled person incarcerated, not lawfully present, or covered by an HRA, or are premiums unpaid or advance payments made for someone in no tax family?
+  - *The data asks or tests:* Coverage or eligibility this tool does not reconcile (other minimum essential coverage, an HRA, unpaid premiums, no tax family, incarceration) (`input`)
+  - *Not covered:* Form 8962 with coverage or eligibility outside this tool. Eligibility for other minimum essential coverage for any month (Medicare, Medicaid, CHIP, TRICARE, veterans' or Peace Corps coverage, an affordable employer offer with minimum value, employer coverage actually enrolled in including COBRA or retiree coverage, or other coverage the Department of Health and Human Services designates), a Marketplace Medicaid or CHIP determination based on intentionally or recklessly incorrect information, incarceration of an enrolled person, coverage of someone not lawfully present, a QSEHRA or individual coverage HRA, unpaid premiums and advance payments for someone in no tax family need rules this tool does not prepare.
+    *Source:* [i8962] p. 5, "An individual in your tax family who is eligible for MEC (except coverage in the individual market) for a month is not in your coverage family for that month."; p. 6, "Individuals who are not lawfully present in the United States are not eligible for the PTC for their coverage in a qualified health plan through a Marketplace."
+  - *Refused at:* `f8962.line24`, `f8962.line25`
+- **`f8962.premium_adjust`**: Did Marketplace coverage begin after the first day of a month (other than on a birth, adoption, placement for adoption or foster care, or a court order), or were any Marketplace premiums refunded in 2025?
+  - *The data asks or tests:* A Marketplace premium needs an adjustment this tool does not make (coverage began after the first day of a month, or a premium was refunded) (`input`)
+  - *Not covered:* Form 8962 with a Marketplace premium this tool does not adjust. Coverage that began after the first day of a month is not allowed a monthly credit amount for that month (except coverage effective on a birth, adoption, placement for adoption or foster care, or the effective date of a court order, which counts from the first day), and the enrollment premiums for a month are reduced by any premium amounts refunded in 2025. This tool takes Form 1095-A column A as reported and does not make either adjustment.
+    *Source:* [i8962] p. 4, "Generally, if coverage in a qualified health plan began after the first day of the month, you are not allowed a monthly credit amount for the coverage for that month."; p. 4, "The enrollment premiums are the total amount of the premiums for the month, reduced by any premium amounts for that month that were refunded in 2025"
+  - *Refused at:* `f8962.line24`, `f8962.line25`
+- **`f8962.void_form`**: Is a Form 1095-A you entered marked VOID, or the original that a corrected Form 1095-A for the same policy replaces?
+  - *The data asks or tests:* A Form 1095-A entered is marked VOID or replaced by a corrected form (`test`)
+  - *Not covered:* Form 8962 using a VOID or replaced Form 1095-A. Enter the form the Marketplace says to use, and leave out a form marked VOID, an original that a corrected form replaces, and an original that a later VOID form supersedes. Their premiums, SLCSP amounts and advance payments must not be used on Form 8962.
+    *Source:* [i8962] p. 2, "Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962."
   - *Refused at:* `f8962.line24`, `f8962.line25`
 - **`f8962.alloc`**: Did a Marketplace policy cover someone outside your tax family, or were you divorced or separated in 2025 while sharing a policy?
   - *The data asks or tests:* A policy shared with another tax family, or a divorce or separation in 2025 with a shared policy (`input`)

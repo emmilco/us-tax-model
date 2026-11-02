@@ -153,7 +153,7 @@
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "f4952.alternative_allocation ('Elect an alternative allocation of Form 4952 line 4g to qualified dividends instead of capital gains first?') refuses f4952.line2, election, line5 and required — exactly the f4952 p. 4 'Elec.' choice."
+     "evidence": "f4952.alternative_allocation ('Elect an alternative allocation of Form 4952 line 4g to qualified dividends instead of capital gains first?') refuses f4952.line2, election, line5 and required \u2014 exactly the f4952 p. 4 'Elec.' choice."
     },
     {
      "n": 1,
@@ -1282,72 +1282,6 @@
    ],
    "adjudication": "reviews/2025/screens/adjudication/group4.md"
   },
-  "unruled:f8962.alloc": {
-   "prompt_sha": "ad10008712993d4376a4f95f427ac660cce6c860e19fbb62546cd96514e2a518",
-   "reason": "Round-1 PENDING-1-5 closed (a policy whose Form 1095-A went only to someone else; a child you claim whom someone else enrolled); finding 0 WIDE; finding 1 is caught by the question's own first limb.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "i8962 p. 12: Condition 2 unmet (each family has an accurate Form 1095-A): refused though computable. Safe."
-    },
-    {
-     "n": 1,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "i8962 pp. 3, 12-13: A former spouse divorced during 2025 is not in the filer's 2025 tax family, so a policy that covered both in earlier months is 'a policy that covered someone in your tax family and also someone who is not in it'. The first limb names 'a former spouse' as its first example, so the filer answers yes there whatever 'while enrolled' means."
-    }
-   ],
-   "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group4.md"
-  },
-  "unruled:f8962.other": {
-   "prompt_sha": "5f5fb02450042398838ef28cabf386aa18e7c53366ced0327c53ae8beb8b2351",
-   "reason": "Round-1 PENDING-1-6 closed (unextended due date, 120-day rule); the lawfully present alien and dependent-filer findings are covered; eligibility for other minimum essential coverage has no screen (PENDING-4-4, low to medium); HRA findings WIDE.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "NARROW",
-     "class": "model error",
-     "evidence": "i8962 p. 9; forms/2025/f8962.yaml: f8962.alien_below asks this exact question, and f8962.alien_branch (Form 1095-A, line 5 < 100, alien_below) refuses f8962.line24. The reviewer saw only the applicable-taxpayer label."
-    },
-    {
-     "n": 1,
-     "kind": "NARROW",
-     "class": "defect",
-     "evidence": "i8962 pp. 3-6, 15: PENDING-4-4. 'An individual in your tax family who is eligible for MEC ... for a month is not in your coverage family for that month' (p. 5). No screen asks about it; the only route is f1095a's 'correct applicable SLCSP premium if column B is ... wrong', which does not say MEC eligibility makes column B wrong (p. 15, Example 3). A filer who took an affordable employer offer mid-year without telling the Marketplace answers no; the months keep the full SLCSP and PTC, understating the excess APTC."
-    },
-    {
-     "n": 2,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "i8962 pp. 3, 9; forms/2025/sa.yaml: sa.dependent ('Can someone claim you or your spouse as a dependent for 2025 ...') refuses the standard deduction (sa.yaml) and the EIC, so the return does not complete for a claimable filer on the standard deduction. Itemizers are not caught, so this is a return-level backstop rather than a gate on lines 24/25; see uncertainties."
-    },
-    {
-     "n": 3,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "i8962 pp. 1, 3: A QSEHRA that was offered but did not cover anyone: refused. Safe (round 1)."
-    },
-    {
-     "n": 4,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "i8962 p. 3: HRA of a relative outside the tax family: refused. Safe (round 1)."
-    },
-    {
-     "n": 5,
-     "kind": "UNCLEAR",
-     "class": "accepted WIDE",
-     "evidence": "i8962 p. 3: 'Family member' read broadly (relatives) refuses more; read as the tax family, it matches the IRS rule. Safe either way."
-    }
-   ],
-   "bugs": [
-    "PENDING-4-4"
-   ],
-   "adjudication": "reviews/2025/screens/adjudication/group4.md"
-  },
   "unruled:gift.special": {
    "prompt_sha": "5c320260136696dcb1146b2c3e0902e334074cbfa69df5319d00bb16b3a4ff9d",
    "reason": "Round-1 PENDING-1-7 closed (similar items defined here and in gift.deduction); WIDE findings accepted; 'publicly traded securities' is undefined in this question and in gift.public_securities, so an over-$5,000 gift of thinly traded stock can compute (PENDING-4-5, low).",
@@ -1390,7 +1324,7 @@
   },
   "unruled:person.x_other": {
    "prompt_sha": "1419a0fadfab81430f480c2f93c1bd3615addaec67c436ad4480367005d7a5fc",
-   "reason": "T-118 is fixed: both IRA excess questions now say the excess remained in the IRA at the end of 2025, so the present-tense gap is closed. The refreshed review's NARROW is new and real: an earlier-year HSA excess alongside a 2025 Form 8889 is not asked, and f5329 lines 42 to 46 are zero, so the 6% tax on the carried excess is omitted (BUG-0293, T-161). The WIDE findings are harmless over-refusals (an RMD deadline outside 2025, a returned ABLE excess, an IRA excess absorbed by 2025) and the UNCLEAR cases are the same over-broad wording; accepted as over-refusal until the f5329/person pass.",
+   "reason": "T-118 is fixed: both IRA excess questions now say the excess remained in the IRA at the end of 2025, so the present-tense gap is closed. The refreshed review's NARROW is new and real: an earlier-year HSA excess alongside a 2025 Form 8889 is not asked, and f5329 lines 42 to 46 are zero, so the 6% tax on the carried excess is omitted (BUG-0292, T-161). The WIDE findings are harmless over-refusals (an RMD deadline outside 2025, a returned ABLE excess, an IRA excess absorbed by 2025) and the UNCLEAR cases are the same over-broad wording; accepted as over-refusal until the f5329/person pass.",
    "findings": [
     {
      "n": 0,
@@ -1819,6 +1753,18 @@
    ],
    "bugs": [],
    "adjudication": "reviews/2025/screens/adjudication/group5.md"
+  },
+  "unruled:f8962.alloc": {
+   "prompt_sha": "f0aa042df98b02175949c7c13f350e47f49cf5fdbaf29c83f8e6270a24235cb1",
+   "reason": "WIDE accepted as over-refusal: the question tests i8962 p. 12 condition 1 but not condition 2 (the received Form 1095-A does not accurately represent the tax family, or the other family's form includes a member of this one). A filer whose separately issued form is accurate needs no allocation and is refused; refusing is the safe direction, and the alternative would put the condition-2 judgement on the filer. The UNCLEAR is not a defect: the parenthetical example \"a former spouse\" and the divorce-or-separation limb state the year-end tax family the first limb asks about, so the filer whose spouse was covered during the marriage and divorced in 2025 answers yes and is refused."
+  },
+  "unruled:f8962.other": {
+   "prompt_sha": "bd2a4535619b24d685caf9723a6e74a087e7d80d3c6b24bef92e04c2e8408139",
+   "reason": "WIDE and UNCLEAR accepted as over-refusal. The two Marketplace-determination carve-outs (an accurate report that led the Marketplace to find an employer offer unaffordable or a family member ineligible for Medicaid/CHIP) are fact-intensive and deliberately omitted; a filer who qualifies answers yes and is refused, which cannot understate the credit. The unaffordable individual coverage HRA, partial-month MEC eligibility, the undefined affordability measure and a COBRA offer not enrolled in all err toward a yes answer and a refusal; the last is clarified by the question's \"actually enrolled in (including COBRA or retiree coverage)\" limb. No NARROW finding."
+  },
+  "unruled:f8962.premium_adjust": {
+   "prompt_sha": "403ddc38ee389a532427046a4d726ffd2f6356adbd635233df6336f077904a44",
+   "reason": "The NARROW unpaid-premium finding is not a gap: f8962.other already asks whether any part of a month's premium was not paid by the return due date (or a Form 1095-A shows zero in column A for a month whose premium was paid) and refuses the return, so no unadjusted column A computes. The WIDE mid-month limb is accepted over-refusal: \"coverage\" is read in the Form 1095-A context, but a dependent's employer, Medicaid or other non-Marketplace coverage starting mid-month can produce a yes; refusing is safe. The UNCLEAR refund-year reading also errs toward a yes and a refusal; a refund for a 2024 month can be read into the question. T-164 records the two wording narrowings (\"Marketplace coverage\", \"for a 2025 month\") for the next f8962 review refresh."
   }
  },
  "baseline": {
