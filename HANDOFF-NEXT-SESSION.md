@@ -1,4 +1,129 @@
-# Household closure committed — 2026-11-01
+# Hardening session — 2026-11-01; next is the f8962 form pass
+
+**State:** code tree `cbd7302` (this handoff commit's parent, pushed), working tree clean, full suite green on
+tree `ea29fdda`. The P0 household
+closure, the T-102 coverage correction, P1's verification repairs, P2's T-150/T-143/T-160, and the T-118 wording
+fix are committed. The corrected coverage estimate is **78.4% (range 76.9–85.7)**: dependent filers are a
+measured refusal category (4.7%), and the first 80% goal is open until Schedule E. `TASKS.md` is the task
+authority; `docs/2026-11-01_backlog_plan.md` is the current package plan; `BUG_INVENTORY.md` ends at BUG-0292.
+
+## What is done (commits, in order)
+
+- `55cb9f1` P0 household closure: T-114–T-117, BUG-0272–0286, 1,425 fixtures, reviews, completeness.
+- `e6a8053` T-102: SOI Table 1.7 dependent filers (4.7%); coverage 82.2% → **78.4%**; README/COVERAGE/roadmap.
+- `05ede53` P1: memo aliases (BUG-0287), differential reader (BUG-0288), push-guard range and green-list lock
+  (BUG-0289), `--year` forwarding; comparison loses 87,101 alias values, still 2,025 cases.
+- `1a98539` P2: triage `return_states` (309 completed, not 95; 95 counted disagreements) and `tools/siblings.py`
+  (T-150) with the BUG-0290+ Fix lines/Siblings checked gate and check-all self-tests.
+- `10c590d` T-155: `(screen)` renderer marker; 20 lines in asset/ira/person/sc/scveh; ten render logs rerun;
+  BUG-0290 (Schedule C at-risk related-party wording) and BUG-0291 (asset 40%/50% allowance) recorded.
+- `338a62f` T-156: mutation `rate`, `prorate.whole`, `percent_floor.whole` and def-bind operands; **2,778
+  mutants, 123 equivalent, 95.6% raw / 100.0% adjusted**. T-159 carries table keys/choose/test (measured:
+  full 4,981/518 unexplained; no guards 3,559/256; no guards+branches 2,786/7).
+- `d04780d` T-118: IRA excess questions use the year-end value; person reviews rerun; the `person.x_other`
+  screen review found **BUG-0292/T-161** (earlier-year HSA excess alongside a 2025 Form 8889 is not asked).
+- `149ebc9` T-096: guard tilings must cover the operand's domain; the four TCW sections now state their
+  $100,000 precondition; integration regression; tcw reviews rerun; `stale:tcw` completeness debt retired.
+- `8663f04` + `86f5b26` T-143: line-by-line candidate execution; invalid declarations and their dependency
+  closure are `candidate-invalid`; typed stubs keep foreign consumers executable; `invalid_lines` recorded.
+  f8889 DeepSeek now 9 valid pairs / 7 invalid; person and sc triage run with 0 failures.
+- `aa70db2` T-160: person DeepSeek 70 sections ruled (62 model error, 4 representation, 3 scope, 1 ambiguity;
+  six HSA lines candidate-invalid); sc DeepSeek rerun fresh and 35 sections ruled (34 model error, 1
+  representation; 14 candidate-invalid through `sc.ho_line2` → line 30/31 → Form 7206). Both logs 0 open.
+- `cbd7302` T-134 scoping: a screen-only `f8962.other` change was tried and **reverted**; it stales 95
+  transcription disagreements per family, 20 render sections, and opens 8 completeness claims. T-134 is now
+  the **f8962 form pass**; T-162 carries the extra claims; the Gemini auxiliary result is recorded.
+
+## Where the queues stand
+
+- **Queue 1, known amount-affecting defects:** T-118 done. Open: **T-134 + T-162** (f8962), **T-157/BUG-0290**
+  (sc.at_risk), **T-158/BUG-0291** (asset allowance), **T-161/BUG-0292** (HSA carryover).
+- **Queue 2, checker:** T-096 done.
+- **Queue 3, evidence/tooling:** T-143 and T-160 done. Open: **T-159** (mutation table/guard/choose), and the P2
+  rows T-139–140, T-142, T-144, T-146–148.
+- **P2 review backlog:** Claude logs are clean. Optional DeepSeek transcription remains open in f4562 (14),
+  f8606 (3), f8995 (9), qbi (4), scveh (19), sli (5); optional DeepSeek render in f8606 (1), f8995 (2),
+  f8995a (1), ltc (1), mq (2), oi8z (1), sa (3), se (5), sli (3). These are pre-existing and optional.
+- **Second-family noise is now 9.7% (453/4,683), 74 eligible / 74 pending** — close to the 10% limit. Person
+  and sc remain pending qualification because their replies are type-invalid even though their open rulings
+  are zero.
+
+## Next action: the f8962 form pass (T-134 + T-162)
+
+Do this as one form pass, not a screen tweak. The HEAD f8962 tree and receipts are the pre-change state.
+
+1. **Finalize `f8962.other`.** The primary completeness review found that the initial wording ("affordable and
+   provided minimum value") still misses a filer who **enrolled** in unaffordable/non-minimum-value employer
+   coverage, and COBRA/retiree coverage actually enrolled in. Include: employer coverage offered that was
+   affordable and provided minimum value, **or employer coverage actually enrolled in (including COBRA or
+   retiree coverage)**; Medicare; Medicaid; CHIP; TRICARE; certain veterans' coverage; Peace Corps coverage;
+   other HHS-designated MEC; a Marketplace Medicaid/CHIP determination later found to be based on incorrect
+   information; and incarcerated enrollees (other than pending charges). Exclude individual-market coverage.
+   The exact source sentences are in the 8 f8962 completeness claims (i8962 pp. 5–6, 8, 9, 14–18).
+2. Add/refresh a refusal fixture for other MEC (the existing `stage18.refuse.other_coverage` tests the screen;
+   add an enrolled-unaffordable-employer case) and update the remedy text.
+3. Build and render. Rerun f8962 transcription and render under both families (95 disagreements per family and
+   20 render sections last time). Run `triage.py --form f8962` for both families; rule with T-143 evidence.
+   The old HEAD sidecars are a prior, not a carry-forward: rebind each ruling to the new context. The old f8962
+   Claude log is clean; the DeepSeek log has 34 open rulings at HEAD.
+4. Run `completeness_review.py --forms f8962`; rule all 8 claims. `f8962.applicable` and `f8962.line1` are
+   likely covered by `sa.dependent` (the return-wide dependent refusal) — check before ruling. T-134 covers the
+   `f8962.other` claim; T-162 covers VOID/CORRECTED 1095-A, SLCSP correction/blank column B, first-of-month
+   enrollment and the birth/adoption exception, line 28 self-employed health insurance/PTC, and intentional or
+   reckless Marketplace misreporting. Record new amount-affecting findings as BUG entries with T-162 references;
+   do not silently accept a claim.
+5. Run the full suite and commit the exact tested tree with `tools/commit_tested.sh`.
+
+## After the f8962 pass
+
+1. **Asset/Schedule C pass:** T-157/BUG-0290 (sc.at_risk related-party prong) and T-158/BUG-0291 (asset:
+   refuse the 50% reuse/recycling class and the pre-September-27-2017 boundary — the owner accepted the
+   refusal). Do them together; they share the sc form and the asset screen. Rerun asset/sc/scveh reviews and
+   the sc completeness review (it produced 18 claims; the run was discarded when the sc wording was reverted —
+   rerun it).
+2. **Form 5329/person pass:** T-161/BUG-0292 — add the carried HSA excess (f5329 line 46) or extend
+   `person.x_other`; f5329/person completeness. Person reviews are expensive (602k prompt).
+3. **T-159:** mutation table-key/choose/test coverage. The 7 EIC table-key survivors are genuine fixture gaps
+   (line 3 vs line 1; line 1 vs `earned_for_limit`); add fixtures/equivalence before enabling the full set.
+4. **P2 rows:** T-139–140 (class M printed-only/interface docs), T-142 (generator unasked answers), T-144
+   (mutation class M kills), T-146–148 (fixture cleanups).
+5. **F1 dependent/education pass:** T-104–113, T-107/109/111, T-153/154, T-106, T-113, BUG-0282–0285. This is
+   the next broad hardening batch after the named defects; coverage expansion remains last.
+
+## Larger roadmap
+
+The project is in the hardening program of `docs/2026-11-01_backlog_plan.md`, not coverage expansion. P0 is
+closed; P1 and P2 are largely done (T-159 and the P2 rows remain); P3 form passes are now the active work:
+F3 (f8962/T-134+T-162, f5695/T-132/T-145), then F1 (dependent/education), F2 (person/retirement/Form 2441),
+F4 (income/investments/deductions, including the asset pass and BUG-0291), F5 (remaining forms). P4 evidence/
+reporting and P5 maintenance follow; P6 coverage expansion is last.
+
+The corrected coverage ladder is: 78.4% today; **Schedule E 84.1%** (the first step past 80%); the rest of
+Schedule 1 89.9%; returns of filers who can be claimed as a dependent 94.3%; married filing separately 96.8%;
+then Schedule F and Form 1116. TY2026 is the target: the final forms are expected in early 2027, the year is
+adopted as a reviewed diff, and drafts cannot back a release. Do not resume coverage expansion merely because
+the hardening program feels long; the plan's exit conditions are in the tracker.
+
+## Operational notes
+
+- **Gemini auxiliary:** the available model is **`Gemini 3.8 Flash (Medium)`** via `agy
+  --model='Gemini 3.8 Flash (Medium)' --print="$(cat prompt)"`. A broad f8962 completeness pass returned
+  `claims: []` while the primary review found 8, so it is too weak for broad completeness. Use it for targeted
+  second opinions (the 8 f8962 claims, the 18 sc claims), source scouting, structured extraction drafts, or
+  doc/log audits. Record prompt, response, prompt/response hashes and the exact model under
+  `.transcription/aux/gemini/`; policy `auxiliary-third-reader-v1`; weight it below Claude/DeepSeek; it is not
+  in `families.py`, `compare_families` or the noise metric unless the owner decides otherwise.
+- **Archives:** preserve `.transcription/archive/before-screen-marker-refresh-2026-11-01/`,
+  `before-known-defects-2026-11-01/`, `before-t096-2026-11-01/`, `before-f8962-mec-2026-11-01/`,
+  `before-render-refresh-2026-11-01/` and the household archives. The f8962 archive holds the pre-attempt
+  receipts; the current HEAD receipts are the same.
+- **Review tools:** `tools/siblings.py --check` requires Fix lines/Siblings checked for BUG-0290+ entries and
+  fails when a sibling form has no review log changed since the entry's base. `check-all` runs the pre-push
+  and green-list self-tests; `tools/commit_tested.sh` commits exactly the tested tree. Do not bypass hooks.
+- `docs/2026-11-01_contributor_safe_gating_sketch.md` remains untracked on disk (ignored via
+  `.git/info/exclude`), not part of the repository; the owner has not adopted it.
+
+# Household closure committed — 2026-11-01 (historical; superseded by the entry above)
 
 P0 (household closure) is committed and pushed. HEAD is the household closure commit (parent f44bae4); the large
 uncommitted tree described below is closed. T-114–117 are done; BUG-0272–0286 are recorded; the two new gates are
