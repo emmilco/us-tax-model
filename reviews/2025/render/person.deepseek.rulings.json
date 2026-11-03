@@ -18,6 +18,20 @@
    "context": "9b31ffa7bfab2e33b3d7010d89b92e9320958592a28897c9d5afef83755d4560"
   },
   {
+   "printed": "(screen) (person.ira_excess)",
+   "restated": "Input — Does any of these apply to you: your contributions for 2025 to traditional and Roth IRAs together were more than you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a Roth contribution above the limit for your income), and the excess was not withdrawn with its earnings by the due date of your return; you recharacterized a 2025 contribution (moved it from a traditional to a Roth IRA or the reverse); or an excess contribution from an earlier year remained in your traditional or Roth IRA at the end of 2025?",
+   "model": "Pub. 590-A defines an excess contribution as the amount over the smaller of $7,000 ($8,000 if 50 or older) or taxable compensation; a recharacterized 2025 contribution is not itself an excess contribution.",
+   "ruling": "Ruling: scope; accepted over-refusal. A recharacterized 2025 contribution that answers Yes is refused rather than computed; the screen never lets an excess through.",
+   "context": "4917603b44ead740d1a8c1dad66b6c5ce764c9569fd12497af0a0775a401f100"
+  },
+  {
+   "printed": "(screen) (person.sav_able)",
+   "restated": "Input — As the designated beneficiary of an ABLE account, did you contribute to it for 2025, or did you receive any distribution from an ABLE account after 2022 and before the due date of your 2025 return (including extensions)?",
+   "model": "Form 8880 line 4 is limited to certain distributions received after 2022, with rollovers and other amounts excluded; the restatement asks about any ABLE distribution and merges it with a contribution question.",
+   "ruling": "Ruling: scope; accepted over-refusal. The screen refuses any ABLE distribution alongside the credit, wider than the f8880 line 4 rule; it refuses returns the tool could support and never computes a wrong amount.",
+   "context": "4917603b44ead740d1a8c1dad66b6c5ce764c9569fd12497af0a0775a401f100"
+  },
+  {
    "printed": "(screen) (person.sav_able)",
    "restated": "Input — As the designated beneficiary of an ABLE account, did you contribute to it for 2025, or did you receive any distribution from an ABLE account after 2022 and before the due date of your 2025 return (including extensions)?",
    "model": "IRS Form 8880 line 4 includes only 'Certain distributions received after 2022 and before the due date' rather than any ABLE distribution; the restatement also combines that with the separate line 1 ABLE contribution question.",
@@ -86,6 +100,13 @@
    "model": "Pub. 560 Step 3 says only 'Net earnings from self-employment. Subtract step 2 from step 1'; the restatement adds 'If zero or less, enter -0-,' which is not in the IRS text and changes a negative result.",
    "ruling": "Ruling: ambiguity; amb.2025.sep_loss_floor (BUG-0181, the disposition of the round-4 finding BUG-0180). p560 p. 39, Deduction Worksheet for Self-Employed: \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" prints no floor. The model read the page and the English correctly: person.sep_s3 floors Step 3 at zero and the English says so (\"If zero or less, enter -0-\"). The register records both readings and chooses the floor (\"A maximum deductible contribution below zero has no meaning\"; where both readings complete the return no Form 1040 or Schedule 1 amount differs, only the printed worksheet steps), naming person.sep_s3 in its chosen reading. Unchanged since round 1; the fixes of this round (person.tin, person.edu_1098t, person.edu_inst, person.x_other wording) do not touch person.sep_s3 or its English, and the reply repeats the same reading. Project stands.",
    "context": "4db6b6b97c40cd71f754549f888b08b83309fecdbcf7f79548ef2d03baa9160e"
+  },
+  {
+   "printed": "Step 3",
+   "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
+   "model": "Pub. 560 Step 3 says only to subtract step 2 from step 1; it does not say to enter -0- when zero or less.",
+   "ruling": "Ruling: representation; a contribution limit cannot go below zero; the floor changes no deduction, which p560 p. 39 limits by the worksheet.",
+   "context": "4917603b44ead740d1a8c1dad66b6c5ce764c9569fd12497af0a0775a401f100"
   },
   {
    "printed": "Step 3",

@@ -56,7 +56,7 @@
  },
  {
   "screen": "dependent.divorced_rule",
-  "question": "Does the special rule for children of divorced or separated parents, or parents who lived apart (including parents who never married), apply to this person, for example because a Form 8332 release or a decree lets the noncustodial parent claim the child? Answer yes whether you are the custodial parent who signed the release (or whose decree or agreement lets the other parent claim the child) or the noncustodial parent using it.",
+  "question": "Does the special rule for children of divorced or separated parents, or parents who lived apart (including parents who never married), apply to this person, for example because a Form 8332 release or a decree lets the noncustodial parent claim the child? Answer yes whether you are the custodial parent who signed the release (or whose decree or agreement lets the other parent claim the child) or the noncustodial parent using it. A release the custodial parent has revoked still applies for 2025 unless written notice of the revocation was given (or reasonable efforts were made to give it) to the noncustodial parent in 2024 or earlier.",
   "lines": [
    "dependent.qualifying_child"
   ],
@@ -64,36 +64,30 @@
   "findings": [
    {
     "kind": "WIDE",
-    "situation": "A custodial parent has a post-2008 decree or agreement saying the other parent may claim the child, but has signed no Form 8332 or substantially similar statement.",
-    "irs_text": "i1040gi p. 20: \"If the divorce decree or separation agreement went into effect after 2008, the noncustodial parent can't include pages from the decree or agreement instead of Form 8332.\" Question: \"(or whose decree or agreement lets the other parent claim the child)\"",
-    "why": "The wording makes this filer answer YES because the decree says the other parent may claim the child, yet condition 4 is not met and the special rule does not apply. The tool's ordinary Step 1 test would treat the child correctly as the custodial parent's qualifying child, so the refusal is unnecessary. A post-1984, pre-2009 decree that makes the claim conditional, such as on paying support, raises the same problem."
+    "situation": "A custodial parent's post-2008 divorce decree says the noncustodial parent may claim the child, but the custodial parent never signed Form 8332 or a similar statement, so the special rule does not apply and the custodial parent's qualifying-child result is computed correctly.",
+    "irs_text": "i1040gi p. 20: \"If the divorce decree or separation agreement went into effect after 2008, the noncustodial parent can't include pages from the decree or agreement instead of Form 8332. The custodial parent must sign either Form 8332 or a substantially similar statement\"",
+    "why": "The question tells the filer to answer yes if they are the custodial parent \"whose decree or agreement lets the other parent claim the child.\" A post-2008 decree alone does not satisfy condition 4, so this filer is refused even though the tool would compute their case correctly."
    },
    {
     "kind": "WIDE",
-    "situation": "A release or decree exists, but another condition of the special rule fails, such as the parents living together during the last 6 months of 2025 or the parents not providing over half of the child's support.",
-    "irs_text": "i1040gi p. 20: \"if all of the following conditions apply. 1. The parents are divorced, legally separated, separated under a written separation agreement, or lived apart at all times during the last 6 months of 2025... 2. The child received over half of the child's support for 2025 from the parents... 3. The child is in custody of one or both of the parents for more than half of 2025.\" Question: \"parents who lived apart\"; \"for example because a Form 8332 release or a decree lets the noncustodial parent claim the child\"",
-    "why": "The question does not state the 6-month period, the support test, or the custody test, and its example suggests that a release alone triggers the rule. A custodial filer would answer YES and be refused even though the rule does not apply and the tool computes the child correctly."
+    "situation": "A pre-1985 decree lets the noncustodial parent claim the child, but that parent provided less than $600 of support in 2025, so the rule does not apply and the custodial parent keeps the child.",
+    "irs_text": "i1040gi p. 20: \"A pre-1985 decree ... provides that the noncustodial parent can claim the child as a dependent, and the noncustodial parent provides at least $600 for support of the child during 2025.\"",
+    "why": "The question's wording (\"a decree lets the noncustodial parent claim the child\") leads to yes without the $600 support condition, so a case the tool computes correctly is refused."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A divorced, separated, or never-married custodial parent has not released the claim, and no decree or agreement lets the other parent claim the child.",
-    "irs_text": "i1040gi p. 20: \"A child will be treated as the qualifying child or qualifying relative of the child's noncustodial parent... if all of the following conditions apply.\" Question: \"Does the special rule for children of divorced or separated parents, or parents who lived apart (including parents who never married), apply to this person\"",
-    "why": "The rule's name and the question's parenthetical can be read to mean that the parents' status alone makes the rule apply, which leads to YES. The example points to NO, which is the correct answer because the tool computes this common case correctly."
+    "situation": "A custodial parent signed a Form 8332 release that covers only alternate years (for example 2024 and 2026), not 2025.",
+    "irs_text": "p501 p. 22: \"The release can be for 1 year, for a number of specified years (for example, alternate years), or for all future years, as specified in the declaration.\"",
+    "why": "The question asks about \"a Form 8332 release\" that \"lets the noncustodial parent claim the child\" without saying it must cover 2025. The filer could answer yes even though, for 2025, the custodial parent's case is computed correctly."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A custodial parent signed a Form 8332 only for a year other than 2025, or revoked an earlier release so that it no longer applies to 2025.",
-    "irs_text": "i1040gi p. 20: \"they won't claim the child as a dependent for 2025\"; \"A custodial parent who has revoked their previous release of a claim to certain tax benefits for a child must include a copy of the revocation with their return.\" Question: \"the custodial parent who signed the release\"",
-    "why": "The question names no tax year and does not mention revocation, so this filer could read \"signed the release\" as YES even though no release applies to 2025. A filer who answers NO after a revocation gets the computed line with no prompt to attach the required copy."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer who is neither parent, such as a grandparent or aunt, lives with the child and the custodial parent, and the custodial parent has released the claim to the noncustodial parent.",
-    "irs_text": "i1040gi p. 20: \"If conditions (1) through (4) apply, only the noncustodial parent can claim the child for purposes of the child tax credit and credit for other dependents (lines 19 and 28).\" Question: \"Answer yes whether you are the custodial parent who signed the release... or the noncustodial parent using it.\"",
-    "why": "The first sentence asks whether the rule applies to the child, which would be YES, but the last sentence names only the two parents, so a third-party filer could read the rule as not reaching them and answer NO. The tool would then compute the child as this filer's qualifying child even though the release bars the filer from claiming the child for those credits."
+    "situation": "Divorced or never-married parents lived apart, and no release or qualifying decree exists, so the custodial parent claims the child under the ordinary rules.",
+    "irs_text": "i1040gi p. 20: \"A child will be treated as the qualifying child or qualifying relative of the child's noncustodial parent (defined later) if all of the following conditions apply.\"",
+    "why": "The question asks whether \"the special rule for children of divorced or separated parents, or parents who lived apart\" applies, and gives a release only as an example. A divorced custodial parent could read the rule as applying just because the parents are divorced and live apart, and answer yes."
    }
   ],
-  "prompt_sha": "696407ed2a4e27b745fa8ecdd5f8d1f2ab253afce63ce96c7ab9cb3c1f0d13b6",
+  "prompt_sha": "9adf644187e8637e84cafbea541d7886c7a01ffbff9d81e24b51dcf0a3aa3ac6",
   "used": [
    {
     "doc": "i1040gi",
@@ -108,7 +102,7 @@
     "how": "cited pages",
     "locators": [
      "p. 17, Step 1, \"Do you have a child who meets the conditions to be your qualifying child?\"",
-     "p. 19, Step 4, \"But see Children of divorced or separated parents\"; p. 20, Children of divorced or separated parents, \"If conditions (1) through (4) apply, only the noncustodial parent can claim the child for purposes of the child tax credit and credit for other dependents\"",
+     "p. 19, Step 4, \"But see Children of divorced or separated parents\"; p. 20, Children of divorced or separated parents, \"If conditions (1) through (4) apply, only the noncustodial parent can claim the child for purposes of the child tax credit and credit for other dependents\"; Revocation of release of claim to an exemption, \"For the revocation to be effective for 2025, the custodial parent must have given (or made reasonable efforts to give) written notice of the revocation to the noncustodial parent in 2024 or earlier.\"",
      "p. 20, Children of divorced or separated parents",
      "p. 21, Married person",
      "p. 21, Qualifying child of more than one person"
@@ -120,9 +114,23 @@
      21
     ],
     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+   },
+   {
+    "doc": "p501",
+    "revision": "2025 returns; PDF created 2026-02-04",
+    "text_sha256": "6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b",
+    "pages": [
+     22
+    ],
+    "how": "pages named by another document's citation",
+    "locators": [],
+    "cols_pages": [
+     22
+    ],
+    "cols_sha256": "2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671"
    }
   ],
-  "cost": 0.14349599999999998,
+  "cost": 0.143592,
   "model": "claude-opus-5-5"
  },
  {

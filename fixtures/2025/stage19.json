@@ -4939,7 +4939,7 @@
         "s3"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 19 return E3: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage19/); they agreed with each other and with the evaluator on all 38 values asserted here. Lines a predictor marked blank are not asserted.",
+      "evidence_note": "Stage 19 return E3: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage19/); they agreed with each other and with the evaluator on all 38 values asserted here. Lines a predictor marked blank are not asserted. F1 pass context repair: dependent[daughter].edu_tin_issued is supplied as true, read from the case's answer that the student has a TIN (inferred: the case does not say whether it was issued or applied for); no expected value changed.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "$dependent": [
@@ -4969,6 +4969,7 @@
         "dependent[daughter].edu_a2025": 0,
         "dependent[daughter].edu_a2026": 0,
         "dependent[daughter].edu_ein": true,
+        "dependent[daughter].edu_tin_issued": true,
         "dependent[daughter].edu_inst": 720000,
         "dependent[daughter].edu_line23": false,
         "dependent[daughter].edu_line24": true,
@@ -7252,7 +7253,7 @@
         "s3"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 19 return E9: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage19/); they agreed with each other and with the evaluator on all 38 values asserted here. Lines a predictor marked blank are not asserted.",
+      "evidence_note": "Stage 19 return E9: blind-predicted. Two agents worked it from the archived 2025 text without the encoding (facts, predictions and derivations in reviews/2025/blind/stage19/); they agreed with each other and with the evaluator on all 38 values asserted here. Lines a predictor marked blank are not asserted. F1 pass context repair: dependent[son].edu_tin_issued is supplied as true, read from the case's answer that the student has a TIN (inferred: the case does not say whether it was issued or applied for); no expected value changed.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "$dependent": [
@@ -7311,6 +7312,7 @@
         "dependent[son].edu_a2025": 0,
         "dependent[son].edu_a2026": 0,
         "dependent[son].edu_ein": true,
+        "dependent[son].edu_tin_issued": true,
         "dependent[son].edu_inst": 800000,
         "dependent[son].edu_line23": true,
         "dependent[son].edu_line24": true,
@@ -8630,7 +8632,7 @@
         "dependent"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 19 mutation scenario: blind return E3 whose dependent student has $1,000 of tax-free assistance exceeding one academic period's own expenses (refused, D3).",
+      "evidence_note": "Stage 19 mutation scenario: blind return E3 whose dependent student has $1,000 of tax-free assistance exceeding one academic period's own expenses (refused, D3). F1 pass context repair: dependent[daughter].edu_tin_issued is supplied as true, read from the case's answer that the student has a TIN (inferred: the case does not say whether it was issued or applied for); no expected value changed.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "$dependent": [
@@ -8660,6 +8662,7 @@
         "dependent[daughter].edu_a2025": 100000,
         "dependent[daughter].edu_a2026": 0,
         "dependent[daughter].edu_ein": true,
+        "dependent[daughter].edu_tin_issued": true,
         "dependent[daughter].edu_inst": 720000,
         "dependent[daughter].edu_line23": false,
         "dependent[daughter].edu_line24": true,

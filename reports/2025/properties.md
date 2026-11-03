@@ -7,9 +7,9 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 | sdtw_skip_rule | Computing lines 23–43 of the Schedule D Tax Worksheet unconditionally gives the same lines 45, 47 and Form 1040 line 16 as skipping them, and every skipped component of line 41 and line 45 is zero when computed anyway. | 400 | 141 | holds |
 | tax_bounds | Form 1040 line 16 is non-negative, at most the top rate (37/100) on taxable income plus one Tax Table band ($50), and at most the tax on all taxable income from the Tax Table or Tax Computation Worksheet. | 400 | 140 | holds |
 | deduction_choice | With no election to itemize and no spouse itemizing, Form 1040 line 16 under the project's standard-or-itemized choice is at most line 16 under either deduction forced. | 400 | 140 | holds |
-| edu_clw_nonneg | Form 8863 Credit Limit Worksheet line 6 (Form 1040 line 18 less Schedule 3 lines 1 and 2) is never negative. | 400 | 130 | holds |
+| edu_clw_nonneg | Form 8863 Credit Limit Worksheet line 6 (Form 1040 line 18 less Schedule 3 lines 1 and 2) is never negative. | 400 | 134 | holds |
 | refusal_propagates | No line computes a value from an operand that is a refusal; every line evaluated from a refused operand is a refusal. | 400 | 343 | holds |
-| refusal_outranks_unknown | On generated returns with up to eight answers removed, every line evaluated from a refused operand is a refusal, whatever its other operands are; in particular an unknown operand does not hide a refused one. | 400 | 317 | holds |
+| refusal_outranks_unknown | On generated returns with up to eight answers removed, every line evaluated from a refused operand is a refusal, whatever its other operands are; in particular an unknown operand does not hide a refused one. | 400 | 320 | holds |
 | tax_monotone | Raising W-2 box 1 of the first employer, all else fixed, never lowers Form 1040 line 16. | 400 | 139 | holds |
 | tax_monotone_by_method | Raising W-2 box 1 of the first employer, all else fixed, never lowers the Qualified Dividends and Capital Gain Tax Worksheet line 25 or the Schedule D Tax Worksheet line 47, each where it is computed on both returns. | 400 | 140 | holds |
 | screens_respected | No generated return answers a screen No while an amount asked only after a Yes is nonzero (the generator's screens: Form 5695 Parts I and II, Sections A and B and lines 5a, 25a and 26a; Form 2441 care and benefits; Form W-2 box 12; the Simplified Method; owned vehicles; Form 7206). | 400 | 94 | holds |
@@ -25,7 +25,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## refusal_outranks_unknown
 
-- Cases with a refused operand somewhere: 317; cases with a line that has both a refused and an unknown operand (the order this property guards): 234.
+- Cases with a refused operand somewhere: 320; cases with a line that has both a refused and an unknown operand (the order this property guards): 235.
 
 ## tax_monotone
 
@@ -41,7 +41,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## Branch coverage of the generated corpus
 
-2530 of 2872 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
+2536 of 2888 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
 
 - asset.outside:true
 - asset.qip_early:true
@@ -58,6 +58,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - dcprov.related:true
 - dcprov.see_statement:true
 - dependent.kidnapped:true
+- dependent.other_nontaxpayer:true
 - dependent.born_died:false
 - dependent.born_died:true
 - dependent.placed:false
@@ -66,11 +67,13 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - dependent.part_year_home:true
 - dependent.hoh_lived_half:false
 - dependent.dc_lived_half:false
+- dependent.kidnap_residency:true
 - dependent.spouse_relative:true
 - dependent.lawful:false
 - dependent.qr_kidnapped:true
 - dependent.absence_no_return:true
 - dependent.hoh_absence:true
+- dependent.kidnap_eic:true
 - dependent.dc_under13:false
 - dependent.dc_over12_care:false
 - dependent.dc_over12_care:true
@@ -79,8 +82,9 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - dependent.ptc_magi_counted#0
 - dependent.edu_over:true
 - dependent.edu_over_refused:true
-- dependent.edu_line25:true
 - dependent.edu_line26:true
+- dependent.edu_tin_issued:false
+- dependent.edu_llc_tin_refused:true
 - div.bad_special:true
 - eic.died_2025:true
 - eic.step1_foreign:false
@@ -235,7 +239,9 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - person.ira_ssb#0
 - person.edu_over:true
 - person.edu_over_refused:true
+- person.edu_line25:true
 - person.edu_line26:true
+- person.edu_llc_tin_refused:true
 - person.edu_kid:true
 - person.x_cap09:floor
 - person.x_c05_min:right
@@ -248,6 +254,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - person.x_c22:right
 - person.x_c23:right
 - person.x_two23:true
+- person.x_other_exc:positive
 - person.x_limit_binds:true
 - person.x_other:true
 - refund.has:true
@@ -298,6 +305,9 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - retirement.code_screen:true
 - retirement.screen_refused:true
 - retirement.wrong_kind:true
+- retirement.exc_capped:right
+- retirement.is_e09:true
+- retirement.l2_e09#0
 - retirement.is_e19:true
 - retirement.l2_e19#0
 - retirement.is_e23:true

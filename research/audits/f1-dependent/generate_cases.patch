@@ -1,0 +1,11 @@
+--- a/tools/engines/generate_cases.py	2026-11-03 01:35:57.708598643 +0000
++++ b/tools/engines/generate_cases.py	2026-11-03 02:30:02.833487704 +0000
+@@ -392,6 +392,8 @@
+                    f"{entry}.edu_a2025": a2025, f"{entry}.edu_a2026": a2026, f"{entry}.edu_refunds": refunds, f"{entry}.edu_over": False,
+                    f"{entry}.edu_line23": why == "line23", f"{entry}.edu_line24": why != "line24", f"{entry}.edu_line25": why == "line25",
+                    f"{entry}.edu_line26": False, f"{entry}.edu_ein": why != "ein"})
++    if entry.startswith("dependent["):
++        inputs[f"{entry}.edu_tin_issued"] = True
+     assistance = a2025 + a2026 + refunds
+     aoc_expenses = max(0, inst + mat - assistance)
+     capped = min(aoc_expenses, 400_000)

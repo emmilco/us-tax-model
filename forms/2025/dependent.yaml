@@ -51,13 +51,16 @@ form:
       expr:
         op: input
         source: Was this person a full-time student in 2025, that is, during any part of 5 calendar months of 2025
-          enrolled as a full-time student at a school (including a technical, trade or mechanical school) or taking a
-          full-time, on-farm training course given by a school or a state, county or local government agency? An
-          on-the-job training course, a correspondence school or a school offering courses only through the Internet
-          does not count.
+          (not necessarily consecutive) enrolled for the hours or courses the school considers full-time attendance at a
+          school that has a regular teaching staff and course of study and a regularly enrolled student body (an
+          elementary school, junior or senior high school, college, university, or technical, trade or mechanical school),
+          or taking a full-time, on-farm training course given by such a school or a state, county or local government
+          agency? A student who works on a "co-op" job in private industry as part of a school's regular course of
+          classroom and practical training is a full-time student. An on-the-job training course, a correspondence school
+          or a school offering courses only through the Internet does not count.
       cite:
         doc: i1040gi
-        locator: p. 17, Step 1, "Under age 24 at the end of 2025, a full-time student (defined later)"; p. 21, Full-time student, "A full-time student is a child who during any part of 5 calendar months of 2025 was enrolled as a full-time student at a school"
+        locator: p. 17, Step 1, "Under age 24 at the end of 2025, a full-time student (defined later)"; p. 21, Full-time student, "A full-time student is a child who during any part of 5 calendar months of 2025 was enrolled as a full-time student at a school"; p501 p. 13, Student defined, "1. A full-time student at a school that has a regular teaching staff and course of study, and a regularly enrolled student body at the school; or"; p501 p. 13, Full-time student, "A full-time student is a student who is enrolled for the number of hours or courses the school considers to be full-time attendance."; p501 p. 13, Vocational high school students, "Students who work on “co-op” jobs in private industry as a part of a school’s regular course of classroom and practical training are considered full-time students."
     - id: dependent.disabled
       printed: (helper)
       type: Bool
@@ -77,7 +80,9 @@ form:
       expr:
         op: input
         source: Months this person lived with you in 2025, counting temporary absences for school, vacation, business,
-          medical care, military service or detention in a juvenile facility as time lived with you (0–12); enter 7 if
+          medical care, military service or detention in a juvenile facility as time lived with you, and counting a newborn's
+          required hospital stay following birth as time lived with you (0–12), but not counting time a child presumed
+          kidnapped was missing because of the kidnapping; enter 7 if
           the person lived with you for more than half of 2025 but fewer than 7 full months. For a person born, died, adopted
           or placed with you in 2025 who meets the other conditions to be your qualifying child, enter 12 if your home
           was their home for more than half the time they were alive or with you, and 0 otherwise; for any other person
@@ -86,22 +91,30 @@ form:
           the adoption or placement, and 0 otherwise
       cite:
         doc: i1040gi
-        locator: p. 17, Step 1, "Who lived with you for more than half of 2025"; p. 21, Exception to time lived with you ("the person is considered to have lived with you for more than half of 2025 if your home was this person's home for more than half the time the person was alive in 2025"; "Any other person is considered to have lived with you for all of 2025 if the person was born or died in 2025 and your home was this person's home for the entire time the person was alive in 2025")
+        locator: p. 17, Step 1, "Who lived with you for more than half of 2025"; p501 p. 13, Death or birth of child, "The same is true if the child lived with you more than half the year except for any required hospital stay following birth."; p501 p. 13, Kidnapped child, "You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true."; p. 21, Exception to time lived with you ("the person is considered to have lived with you for more than half of 2025 if your home was this person's home for more than half the time the person was alive in 2025"; "Any other person is considered to have lived with you for all of 2025 if the person was born or died in 2025 and your home was this person's home for the entire time the person was alive in 2025")
     - id: dependent.self_support
       printed: (helper)
       type: Bool
       label: Provided over half of their own support?
       expr:
         op: input
-        source: Did this person provide over half of their own support for 2025? Count the person's own funds only if
-          actually spent for their support (support the person paid for with their own wages is theirs, even if you paid
-          the wages), and count lodging at its fair rental value. Payments you receive from a child placement agency,
-          state or county for a foster child's support are support provided by the agency, state or county. Do not count a
-          scholarship the person received as a student. Social security benefits the person receives and uses for their
-          own support are support the person provided.
+        source: Did this person provide over half of their own support for 2025? Total support is the amount spent for
+          their food, lodging, clothing, education, medical and dental care, recreation, transportation and similar
+          necessities, including tax-exempt income, savings and borrowed amounts used for their support and GI Bill tuition
+          payments and allowances; it does not include income, social security or Medicare taxes paid from their own
+          income, life insurance premiums, funeral expenses, medical insurance benefits (including Medicare benefits), or
+          Survivors' and Dependents' Educational Assistance payments used for the support of the child who receives them.
+          Count the person's own funds only if actually spent for their support (support the person paid for with their own
+          wages is theirs, even if you paid the wages, and a person living in their own home provides its fair rental
+          value), count lodging at its fair rental value and property, such as a car the person bought with their own
+          funds, at its fair market value. Payments you receive from a child placement agency, state or county for a
+          foster child's support are support provided by the agency, state or county, and benefits a state provides to this
+          person as a needy person (welfare, food benefits, housing, etc.) are support provided by the state, not by the
+          person. Do not count a scholarship the person received as a student. Social security benefits the person receives
+          and uses for their own support are support the person provided.
       cite:
         doc: i1040gi
-        locator: p. 17, Step 1, "Who didn't provide over half of their own support for 2025"; p501 p. 15, Support Test (To Be a Qualifying Child), "However, to see what is or isn’t support, see Support Test (To Be a Qualifying Relative), later."; p501 p. 19, "A person’s own funds aren’t support unless they are actually spent for support."; p501 p. 20, "For lodging, the amount of support is the fair rental value of the lodging."; p501 p. 20, "You can’t include in your contribution to your child’s support any support paid for by the child with the child’s own wages, even if you paid the wages."; p501 p. 15, Foster care payments and expenses, "Payments you receive for the support of a foster child from a child placement agency are considered support provided by the agency."; p501 p. 15, Scholarships, "A scholarship received by a child who is a student isn’t taken into account in determining whether the child provided more than half of their own support."; p501 p. 20, "If a child receives social security benefits and uses them toward their own support, the benefits are considered as provided by the child."
+        locator: p. 17, Step 1, "Who didn't provide over half of their own support for 2025"; p501 p. 15, Support Test (To Be a Qualifying Child), "However, to see what is or isn’t support, see Support Test (To Be a Qualifying Relative), later."; p501 p. 19, "A person’s own funds aren’t support unless they are actually spent for support."; p501 p. 20, "For lodging, the amount of support is the fair rental value of the lodging."; p501 p. 20, "You can’t include in your contribution to your child’s support any support paid for by the child with the child’s own wages, even if you paid the wages."; p501 p. 15, Foster care payments and expenses, "Payments you receive for the support of a foster child from a child placement agency are considered support provided by the agency."; p501 p. 15, Scholarships, "A scholarship received by a child who is a student isn’t taken into account in determining whether the child provided more than half of their own support."; p501 p. 20, "If a child receives social security benefits and uses them toward their own support, the benefits are considered as provided by the child."; p501 p. 20, Total Support, "Total support includes amounts spent to provide food, lodging, clothing, education, medical and dental care, recreation, transportation, and similar necessities."; p501 p. 20, Tax-exempt income, "In figuring a person’s total support, include tax-exempt income, savings, and borrowed amounts used to support that person."; p501 p. 20, Support provided by the state (welfare, food benefits, housing, etc.), "Benefits provided by the state to a needy person are generally considered support provided by the state."; p501 p. 15, "Similarly, payments you receive for the support of a foster child from a state or county are considered support provided by the state or county."; p501 p. 21, Person living in their own home, "The total fair rental value of a person’s home that the person owns is considered support contributed by that person."; p501 p. 21, Property, "Property provided as support is measured by its fair market value."; p501 p. 21, Capital expenses, "Because the car is bought and owned by your child, the car’s fair market value ($4,500) must be included in your child’s support."; p501 p. 21, Medical insurance benefits, "Medical insurance benefits, including basic and supplementary Medicare benefits, aren’t part of support."; p501 p. 21, Tuition payments and allowances under the GI Bill, "Amounts veterans receive under the GI Bill for tuition payments and allowances while they attend school are included in total support."; p501 p. 21, Don’t Include in Total Support, "1. Federal, state, and local income taxes paid by persons from their own income.", "2. Social security and Medicare taxes paid by persons from their own income.", "3. Life insurance premiums.", "4. Funeral expenses." and "6. Survivors’ and Dependents’ Educational Assistance payments used for the support of the child who receives them."
     - id: dependent.joint_return
       printed: (helper)
       type: Bool
@@ -190,30 +203,47 @@ form:
       label: You provided over half of this person's support?
       expr:
         op: input
-        source: Did you provide over half of this person's support in 2025? TANF or other public assistance payments you
-          received and used to support this person count as support you provided. Count lodging you provide at its fair
-          rental value, and count both the government's part and the part taken out of your military pay of an Armed
-          Forces dependency allotment as yours. The person's own funds are support only if actually spent for their
-          support. Payments you receive from a child placement agency, state or county for a foster child's support are
-          support provided by the agency, state or county, not by you, and support your child paid for with the child's
-          own wages is not yours, even if you paid the wages. Benefits a state provides to a needy person (welfare, food
-          benefits, housing, etc.) are support provided by the state, not by you. Do not count a scholarship your child
-          received as a student.
+        source: Did you provide over half of this person's support in 2025? Total support is the amount spent for the
+          person's food, lodging, clothing, education, medical and dental care, recreation, transportation and similar
+          necessities, including their tax-exempt income, savings and borrowed amounts used for their support and GI Bill
+          tuition payments and allowances; it does not include income, social security or Medicare taxes the person paid
+          from their own income, life insurance premiums, funeral expenses, a scholarship your child received as a student,
+          or Survivors' and Dependents' Educational Assistance payments used for the support of the child who receives
+          them. TANF or other public assistance payments you received and used to support this person count as support you
+          provided. Count lodging at its fair rental value (a person living in their own home provides its fair rental
+          value, and if you live rent free in this person's home, reduce your support by the fair rental value of the
+          lodging they provide you), property at its fair market value, and expenses for the whole household, such as
+          food, divided among its members. Medical insurance premiums you pay, including premiums for supplementary
+          Medicare coverage, are support you provide; medical insurance benefits, including Medicare benefits, are not
+          support. Count both the government's part and the part taken out of your military pay of an Armed Forces
+          dependency allotment, and a tax-exempt military quarters allowance, as yours, and count payments you make for
+          the person's child or dependent care as yours. A lump-sum advance payment to a home for the aged for a relative's
+          care for life, based on their life expectancy, counts each year as the payment divided by that life expectancy.
+          A capital item such as furniture, an appliance or a car counts only if bought for the person and given to them,
+          not one the household shares or that you own and let them use. The person's own funds are support only if
+          actually spent for their support. Payments you receive from a child placement agency, state or county for a
+          foster child's support are support provided by the agency, state or county, not by you; your unreimbursed foster
+          care expenses are not support you provided if you are in the trade or business of providing foster care or if
+          they are deductible as a charitable contribution. Support your child paid for with the child's own wages is not
+          yours, even if you paid the wages. Benefits a state provides to this person as a needy person (welfare, food
+          benefits, housing, etc.) are support provided by the state, not by you. The year you provide support is the year
+          you pay for it, even with borrowed money you repay later.
       cite:
         doc: i1040gi
-        locator: p. 19, Step 4, "For whom you provided over half of the person's support in 2025"; p. 21, Public assistance payments; p501 p. 20, TANF and other governmental payments, "those payments are considered support you provided for that person"; p501 p. 20, "For lodging, the amount of support is the fair rental value of the lodging."; p501 p. 20, Armed Forces dependency allotments, "The part of the allotment contributed by the government and the part taken out of your military pay are both considered provided by you in figuring whether you provide more than half of the support."; p501 p. 19, "A person’s own funds aren’t support unless they are actually spent for support."; p501 p. 20, Foster care, "Payments you receive for the support of a foster child from a child placement agency are considered support provided by the agency."; p501 p. 15, "Similarly, payments you receive for the support of a foster child from a state or county are considered support provided by the state or county."; p501 p. 20, Child’s wages used for own support, "You can’t include in your contribution to your child’s support any support paid for by the child with the child’s own wages, even if you paid the wages."; p501 p. 20, Support provided by the state (welfare, food benefits, housing, etc.), "Benefits provided by the state to a needy person are generally considered support provided by the state."; p501 p. 21, Total support, "Scholarships received by your child if your child is a student"
+        locator: p. 19, Step 4, "For whom you provided over half of the person's support in 2025"; p. 21, Public assistance payments; p501 p. 20, TANF and other governmental payments, "those payments are considered support you provided for that person"; p501 p. 20, "For lodging, the amount of support is the fair rental value of the lodging."; p501 p. 20, Armed Forces dependency allotments, "The part of the allotment contributed by the government and the part taken out of your military pay are both considered provided by you in figuring whether you provide more than half of the support."; p501 p. 19, "A person’s own funds aren’t support unless they are actually spent for support."; p501 p. 20, Foster care, "Payments you receive for the support of a foster child from a child placement agency are considered support provided by the agency."; p501 p. 15, "Similarly, payments you receive for the support of a foster child from a state or county are considered support provided by the state or county."; p501 p. 20, Child’s wages used for own support, "You can’t include in your contribution to your child’s support any support paid for by the child with the child’s own wages, even if you paid the wages."; p501 p. 20, Support provided by the state (welfare, food benefits, housing, etc.), "Benefits provided by the state to a needy person are generally considered support provided by the state."; p501 p. 20, Total Support, "Total support includes amounts spent to provide food, lodging, clothing, education, medical and dental care, recreation, transportation, and similar necessities."; p501 p. 20, Tax-exempt income, "In figuring a person’s total support, include tax-exempt income, savings, and borrowed amounts used to support that person."; p501 p. 20, "Expenses not directly related to any one member of a household, such as the cost of food for the household, must be divided among the members of the household."; p501 p. 20, Year support is provided, "The year you provide the support is the year you pay for it, even if you do so with borrowed money that you repay in a later year."; p501 p. 20, Tax-exempt military quarters allowances, "These allowances are treated the same way as dependency allotments in figuring support."; p501 p. 20, Home for the aged, "the amount of support you provide each year is the lump-sum payment divided by the relative’s life expectancy"; p501 p. 21, Person living in their own home, "The total fair rental value of a person’s home that the person owns is considered support contributed by that person."; p501 p. 21, Living with someone rent free, "you must reduce the amount you provide for support of that person by the fair rental value of lodging the person provides you"; p501 p. 21, Property, "Property provided as support is measured by its fair market value."; p501 p. 21, Capital expenses, "Because you own the car and don’t give it to your child but merely let your child use it, don’t include the cost of the car in your child’s total support."; p501 p. 21, Medical insurance premiums, "Medical insurance premiums you pay, including premiums for supplementary Medicare coverage, are included in the support you provide."; p501 p. 21, Medical insurance benefits, "Medical insurance benefits, including basic and supplementary Medicare benefits, aren’t part of support."; p501 p. 21, Tuition payments and allowances under the GI Bill, "Amounts veterans receive under the GI Bill for tuition payments and allowances while they attend school are included in total support."; p501 p. 21, Childcare expenses, "If you pay someone to provide child or dependent care, you can include these payments in the amount you provided for the support of your child or disabled dependent"; p501 p. 21, Don’t Include in Total Support, "1. Federal, state, and local income taxes paid by persons from their own income.", "2. Social security and Medicare taxes paid by persons from their own income.", "3. Life insurance premiums.", "4. Funeral expenses.", "5. Scholarships received by your child if your child is a student." and "6. Survivors’ and Dependents’ Educational Assistance payments used for the support of the child who receives them."; p501 p. 15, Foster care payments and expenses, "If you are in the trade or business of providing foster care, your unreimbursed expenses aren’t considered support provided by you."
     - id: dependent.kidnapped
       printed: (helper)
       type: Bool
-      label: A child presumed kidnapped, at any time in 2025, by someone who isn't a member of your family or the child's family?
+      label: A child kidnapped by someone who isn't a member of your family or the child's family, presumed kidnapped by law enforcement, and missing because of it at some time in 2025?
       expr:
         op: input
-        source: Is this person a child who, at any time during 2025, was presumed by law enforcement authorities to have
-          been kidnapped by someone who isn't a member of your family or the child's family (even if the child has since
-          been returned)?
+        source: Is this person a child who was kidnapped by someone who isn't a member of your family or the child's family,
+          whom law enforcement authorities presume to have been kidnapped, and who was missing because of the kidnapping at
+          some time during 2025 (a kidnapping in 2025, or an earlier kidnapping before the child's return)? Answer yes even
+          if law enforcement first presumed the kidnapping after 2025, or the child has since been returned.
       cite:
         doc: i1040gi
-        locator: p. 21, Kidnapped child, "If your child is presumed by law enforcement authorities to have been kidnapped by someone who isn’t a family member, you may be able to take the child into account"; p501 p. 13, Kidnapped child, "1. The child is presumed by law enforcement authorities to have been kidnapped by someone who isn’t a member of your family or the child’s family." and "3. In the year of the child’s return, the child lived with you for more than half the part of the year following the date of the child’s return."; p501 p. 18, Kidnapped child, "You can treat a child as your qualifying relative even if the child has been kidnapped"
+        locator: p. 21, Kidnapped child, "If your child is presumed by law enforcement authorities to have been kidnapped by someone who isn’t a family member, you may be able to take the child into account"; p501 p. 13, Kidnapped child, "1. The child is presumed by law enforcement authorities to have been kidnapped by someone who isn’t a member of your family or the child’s family.", "2. In the year the kidnapping occurred, the child lived with you for more than half of the part of the year before the date of the kidnapping." and "3. In the year of the child’s return, the child lived with you for more than half the part of the year following the date of the child’s return."; p501 p. 13, "This treatment applies for all years until the earlier of"; p501 p. 18, Kidnapped child, "You can treat a child as your qualifying relative even if the child has been kidnapped"
     - id: dependent.other_claimant
       printed: (helper)
       type: Bool
@@ -224,16 +254,26 @@ form:
       cite:
         doc: i1040gi
         locator: p. 17, Step 1, "If the child meets the conditions to be a qualifying child of any other person ... see Qualifying child of more than one person"
+    - id: dependent.other_nontaxpayer
+      printed: (helper)
+      type: Bool
+      label: Every other person this person is a qualifying child of is not a taxpayer?
+      expr:
+        op: input
+        source: 'If this person meets the conditions to be the qualifying child of another person: is every such other person not a taxpayer for 2025? A person is not a taxpayer if they are not required to file a 2025 U.S. income tax return and either do not file one or file only to get a refund of withheld income tax or estimated tax paid (claiming no earned income credit or other tax credit or deduction), or if they are not a U.S. citizen and have no U.S. gross income.'
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "Who wasn’t a qualifying child (see Step 1) of any taxpayer for 2025. For this purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t file such a return or files only to get a refund of withheld income tax or estimated tax paid."; p501 p. 18, Example 2—return filed to claim refund, "Your friend files a return only to get a refund of the income tax withheld and doesn’t claim the earned income credit or any other tax credits or deductions."; p501 p. 18, Child in Canada or Mexico, "If the persons the child does live with aren’t U.S. citizens and have no U.S. gross income, those persons aren’t “taxpayers,” so the child isn’t the qualifying child of any other taxpayer."
     - id: dependent.divorced_rule
       printed: (helper)
       type: Bool
       label: Rule for children of divorced or separated parents applies?
       expr:
         op: input
-        source: 'Does the special rule for children of divorced or separated parents, or parents who lived apart (including parents who never married), apply to this person, for example because a Form 8332 release or a decree lets the noncustodial parent claim the child? Answer yes whether you are the custodial parent who signed the release (or whose decree or agreement lets the other parent claim the child) or the noncustodial parent using it.'
+        source: 'Does the special rule for children of divorced or separated parents, or parents who lived apart (including parents who never married), apply to this person, for example because a Form 8332 release or a decree lets the noncustodial parent claim the child? Answer yes whether you are the custodial parent who signed the release (or whose decree or agreement lets the other parent claim the child) or the noncustodial parent using it. A release the custodial parent has revoked still applies for 2025 unless written notice of the revocation was given (or reasonable efforts were made to give it) to the noncustodial parent in 2024 or earlier.'
       cite:
         doc: i1040gi
-        locator: p. 19, Step 4, "But see Children of divorced or separated parents"; p. 20, Children of divorced or separated parents, "If conditions (1) through (4) apply, only the noncustodial parent can claim the child for purposes of the child tax credit and credit for other dependents"
+        locator: p. 19, Step 4, "But see Children of divorced or separated parents"; p. 20, Children of divorced or separated parents, "If conditions (1) through (4) apply, only the noncustodial parent can claim the child for purposes of the child tax credit and credit for other dependents"; p501 p. 22, Revocation of release of claim to an exemption, "For the revocation to be effective for 2025, the custodial parent must have given (or made reasonable efforts to give) written notice of the revocation to the noncustodial parent in 2024 or earlier."
     - id: dependent.multiple_support
       printed: (helper)
       type: Bool
@@ -255,25 +295,30 @@ form:
           home for all of 2025 (or, if your parent died in 2025, for the entire part of 2025 your parent was alive)? A
           rest home or home for the elderly counts as your parent's main home if you paid over half the cost of keeping
           your parent there. Cost of keeping up a home includes expenses such as rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities, and food eaten in the home. It does not include the cost of clothing, education, medical treatment, vacations, life insurance, or transportation, or the value of your services or those of a member of your household. Money your parent spent on the home out of their own income, such as Social
-          Security, counts as paid by your parent, not by you.
+          Security, counts as paid by your parent, not by you. TANF or other similar payments you received and used to
+          keep up the home count as paid by you.
       cite:
         doc: i1040gi
         locator: p. 14, Head of Household, Test 1; p. 15, "If the person is anyone else, see Pub. 501"; p501 p. 9, Death or
           birth, "Your parent for whom you paid, for the entire part of the year your parent was alive, more than half the
           cost of keeping up the home your parent lived in"; p501 p. 9, "If you pay more than half the cost of keeping your
           parent in a rest home or home for the elderly, that counts as paying more than half the cost of keeping up your
-          parent’s main home." p501 p. 9, Keeping Up a Home, "Costs you include. Include in the cost of keeping up a home expenses such as rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities, and food eaten in the home." p501 p. 9, "Costs you don’t include. Don’t include the cost of clothing, education, medical treatment, vacations, life insurance, or transportation. Also don’t include the value of your services or those of a member of your household." p501 p. 9, Note, "Amounts paid out of funds received in the child’s or qualifying person’s name, such as Social Security, are considered paid by the child, not you."
+          parent’s main home." p501 p. 9, Keeping Up a Home, "Costs you include. Include in the cost of keeping up a home expenses such as rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities, and food eaten in the home." p501 p. 9, "Costs you don’t include. Don’t include the cost of clothing, education, medical treatment, vacations, life insurance, or transportation. Also don’t include the value of your services or those of a member of your household." p501 p. 9, Note, "Amounts paid out of funds received in the child’s or qualifying person’s name, such as Social Security, are considered paid by the child, not you."; p501 p. 9, Note, "if you received Temporary Assistance to Needy Families (TANF) payments or other similar payments and used the payment to support another person, those payments are considered support you provided for that person, rather than support provided by the government or other third party."
     - id: dependent.born_died
       printed: (helper)
       type: Bool
       label: Born or died in 2025?
       expr:
         op: input
-        source: Was this person born in 2025, or did this person die in 2025?
+        source: Was this person born in 2025, or did this person die in 2025? A child born in 2025 is born alive only if
+          state or local law treats the child as born alive and an official document, such as a birth certificate, shows
+          the live birth (even if the child lived only for a moment). Do not list a stillborn child.
       cite:
         doc: i1040gi
         locator: p. 15, "If the person for whom you kept up a home was born or died in 2025, you still may be able to file as
-          head of household"
+          head of household"; p501 p. 13, Child born alive, "State or local law must treat the child as having been born
+          alive. There must be proof of a live birth shown by an official document, such as a birth certificate."; p501 p.
+          13, Stillborn child, "You can’t claim a stillborn child as a dependent."
     - id: dependent.placed
       printed: (helper)
       type: Bool
@@ -432,7 +477,8 @@ form:
         source: Did this person live with you in the United States (the 50 states and the District of Columbia) for more
           than half of 2025? If you were on extended active military duty outside the United States, your main home is
           considered to be in the United States during that duty. Temporary absences for school, vacation, business, medical care, military service or
-          juvenile detention count as time lived with you. A child born or who died in 2025 counts if your home was
+          juvenile detention count as time lived with you; time a child presumed kidnapped was missing because of the
+          kidnapping does not. A child born or who died in 2025 counts if your home was
           the child's home for more than half the time the child was alive, and a child you adopted, who was lawfully
           placed with you for legal adoption, or who was placed with you as an eligible foster child in 2025 counts if
           your main home was the child's main home for more than half the time since the adoption or placement.
@@ -506,12 +552,31 @@ form:
         doc: i1040gi
         locator: p. 17, Step 1, "Who lived with you for more than half of 2025"
       refuses:
-        - when: dependent.kidnapped
+        - when: dependent.kidnap_residency
           form: Kidnapped child (Pub. 501; Pub. 596 for the EIC)
-          remedy: A child presumed kidnapped by someone who isn't a family member may count as living with you under rules this tool does not apply.
+          remedy: A child presumed kidnapped by someone who isn't a family member, who lived with you for fewer than 7 months of 2025 without counting the time missing, may count as living with you under rules this tool does not apply.
           cite:
             doc: i1040gi
             locator: p. 21, Kidnapped child, "For details, see Pub. 501 (Pub. 596 for the EIC)"
+    - id: dependent.kidnap_residency
+      printed: (gate)
+      type: Bool
+      label: A child presumed kidnapped who lived with you for fewer than 7 months of 2025, not counting the time missing
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - dependent.kidnapped
+              - const: true
+          - op: test
+            lt:
+              - dependent.months
+              - const: 7
+                type: Count
+      cite:
+        doc: p501
+        locator: p. 13, Kidnapped child, "You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true." (a child who lived with you for more than half of 2025 meets the residency test without this treatment)
     - id: dependent.qualifying_child
       printed: (helper)
       type: Bool
@@ -543,7 +608,7 @@ form:
         doc: i1040gi
         locator: p. 17, Step 1, "Do you have a child who meets the conditions to be your qualifying child?"
       refuses:
-        - when: dependent.other_claimant
+        - when: dependent.qc_tiebreak
           form: Qualifying child of more than one person (tie-breaker rules)
           remedy: This person may be the qualifying child of another person. The tie-breaker rules are outside this tool.
           cite:
@@ -1187,6 +1252,48 @@ form:
         doc: i1040gi
         locator: p. 14, Head of Household, Test 1, "You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent"
       refuses: *claimed_no_tin
+    - id: dependent.qc_tiebreak
+      printed: (gate)
+      type: Bool
+      label: The qualifying child of another person who is also your qualifying child, or whose other person is a taxpayer
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - dependent.other_claimant
+              - const: true
+          - op: test
+            any:
+              - op: test
+                eq:
+                  - dependent.other_nontaxpayer
+                  - const: false
+              - op: test
+                all:
+                  - op: test
+                    eq:
+                      - dependent.qc_relationship
+                      - const: true
+                  - op: test
+                    eq:
+                      - dependent.qc_age
+                      - const: true
+                  - op: test
+                    eq:
+                      - dependent.self_support
+                      - const: false
+                  - op: test
+                    eq:
+                      - dependent.joint_return
+                      - const: false
+                  - op: test
+                    eq:
+                      - dependent.lived_half
+                      - const: true
+      cite:
+        doc: p501
+        locator: p. 15, Qualifying Child of More Than One Person, "Sometimes, a child meets the relationship, age, residency, support, and joint return tests to be a qualifying child of more than one person."; i1040gi p. 19, Step 4, "For this purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t file such a return or files only to get a refund of withheld income tax or estimated tax paid."
     - id: dependent.eic_child
       printed: (helper)
       type: Bool
@@ -1215,13 +1322,13 @@ form:
         locator: p. 41, Step 3, "A qualifying child for the EIC is your..." (relationship AND age AND not filing a joint
           return AND lived with you in the United States for more than half of 2025)
       refuses:
-        - when: dependent.kidnapped
+        - when: dependent.kidnap_eic
           form: Kidnapped child (Pub. 501; Pub. 596 for the EIC)
-          remedy: A child presumed kidnapped by someone who isn't a family member may count as living with you under rules this tool does not apply.
+          remedy: A child presumed kidnapped by someone who isn't a family member, who did not live with you in the United States for more than half of 2025 without counting the time missing, may count as living with you under rules this tool does not apply.
           cite:
             doc: i1040gi
             locator: p. 21, Kidnapped child, "For details, see Pub. 501 (Pub. 596 for the EIC)"
-        - when: dependent.other_claimant
+        - when: dependent.eic_tiebreak
           form: Qualifying child of more than one person (EIC)
           remedy: The tie-breaker rules for a child who is the qualifying child of more than one person are outside this tool.
           cite:
@@ -1233,6 +1340,58 @@ form:
           cite:
             doc: i1040gi
             locator: p. 44, Married child
+    - id: dependent.eic_tiebreak
+      printed: (gate)
+      type: Bool
+      label: The qualifying child of another person who is also your qualifying child for the EIC
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - dependent.other_claimant
+              - const: true
+          - op: test
+            eq:
+              - dependent.qc_relationship
+              - const: true
+          - op: test
+            eq:
+              - dependent.qc_age
+              - const: true
+          - op: test
+            eq:
+              - dependent.joint_return
+              - const: false
+          - op: test
+            eq:
+              - dependent.us_half
+              - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 44, Qualifying child of more than one person, "Even if a child meets the conditions to be the qualifying child of more than one person, only one person can claim the child as a qualifying child for all of the following tax benefits"
+    - id: dependent.kidnap_eic
+      printed: (gate)
+      type: Bool
+      label: A child presumed kidnapped who meets the EIC relationship test but did not live with you in the United States for more than half of 2025, not counting the time missing
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - dependent.kidnapped
+              - const: true
+          - op: test
+            eq:
+              - dependent.qc_relationship
+              - const: true
+          - op: test
+            eq:
+              - dependent.us_half
+              - const: false
+      cite:
+        doc: i1040gi
+        locator: p. 21, Kidnapped child, "the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC)." (a child who lived with you in the United States for more than half of 2025 meets the residency test without this treatment)
     - id: dependent.eic_ssn_child
       printed: (helper)
       type: Bool
@@ -1408,13 +1567,20 @@ form:
           be included, but never schooling for a child in kindergarten or above), expenses for an overnight camp, a
           summer school or a tutoring program, care outside your home for a qualifying person other than your dependent
           under 13 who does not regularly spend at least 8 hours a day in your home, or care at a dependent care center
-          that does not meet all applicable state and local regulations; zero if none
+          that does not meet all applicable state and local regulations, or child support payments. If you (or your spouse)
+          worked or looked for work during only part of the period the expenses cover, count the expenses only for the days
+          of work or looking for work (a day you work at least 1 hour is a day of work), but include care you had to pay for
+          anyway during a short, temporary absence from work, such as a vacation or minor illness (2 weeks or less, or
+          longer depending on the circumstances), and, for part-time work, care you must pay for weekly, monthly or in
+          another way that covers both days worked and days not worked. If part of an expense is work related and part is
+          for other purposes, count only the work-related part, unless only a small part is for other purposes; zero if none
       cite:
         doc: i2441
-        locator: 'pp. 3–4, Column (d), "Enter the qualified expenses you incurred and paid in 2025 for the person listed in column (a)" and "Expenses you incurred in 2025 but didn''t pay until 2026"; p503 p. 10, Expenses prepaid in an earlier year, "If you pay for services before they are provided, you can count the prepaid expenses only in the year the care is received"; p. 2, Care of the qualifying person, "It doesn''t include the cost of food, lodging, education, clothing, or entertainment. You can include the cost of care provided outside your home for your dependent under age 13, or any other qualifying person who regularly spends at least 8 hours a day in your home. If the care was provided by a dependent care center, the center must meet all applicable state and local regulations." and "But don''t include the cost of schooling for a child in kindergarten or above." and "But don''t include any expenses for sending your child to an overnight camp, a summer school, or a tutoring program."'
+        locator: 'pp. 3–4, Column (d), "Enter the qualified expenses you incurred and paid in 2025 for the person listed in column (a)" and "Expenses you incurred in 2025 but didn''t pay until 2026"; p503 p. 10, Expenses prepaid in an earlier year, "If you pay for services before they are provided, you can count the prepaid expenses only in the year the care is received"; p. 2, Care of the qualifying person, "It doesn''t include the cost of food, lodging, education, clothing, or entertainment. You can include the cost of care provided outside your home for your dependent under age 13, or any other qualifying person who regularly spends at least 8 hours a day in your home. If the care was provided by a dependent care center, the center must meet all applicable state and local regulations." and "But don''t include the cost of schooling for a child in kindergarten or above." and "But don''t include any expenses for sending your child to an overnight camp, a summer school, or a tutoring program."; p. 2, "Child support payments aren''t qualified expenses." and "Generally, if you worked or actively looked for work during only part of the period in which you incurred the expenses, you must figure your expenses for each day."; p503 p. 6, Temporary absence from work, "An absence of 2 weeks or less is a short, temporary absence."; p503 p. 6, Part-time work, "However, if you are required to pay for care weekly, monthly, or in another way that includes both days worked and days not worked, you can figure your credit including the expenses you paid for days you didn''t work. Any day when you work at least 1 hour is a day of work."; p503 p. 8, Expenses partly work related, "If part of an expense is work related (for either household services or the care of a qualifying person) and part is for other purposes, you have to divide the expense." and "However, you don''t have to divide the expense if only a small part is for other purposes."'
       ambiguity: amb.2025.dc_line30
     - id: dependent.dc_line2d
       printed: 2(d)
+      shown_when: dependent.dc_qp
       type: NonNegDollars
       label: Qualified expenses you incurred and paid in 2025 for the person listed in column (a)
       expr:
@@ -1438,6 +1604,7 @@ form:
         locator: 'p. 3, Column (c), "Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled"'
     - id: dependent.dc_line2c
       printed: 2(c)
+      shown_when: dependent.dc_qp
       type: Bool
       label: Check here if the qualifying person was over age 12 and was disabled
       display: The line 2 column (c) check box, shown on the values sheet; it changes no amount.
@@ -1919,6 +2086,39 @@ form:
         locator: p. 4, Tip, "If the requirements above aren’t met for any student, you cannot claim the American opportunity credit
           for that student. You may be able to claim the lifetime learning credit for part or all of that student’s qualified
           education expenses instead if certain requirements are met."
+    - id: dependent.edu_tin_issued
+      printed: (helper)
+      label: The student's SSN, ITIN or ATIN was issued on or before the due date of your return
+      type: Bool
+      expr:
+        op: input
+        source: Was this student's SSN, ITIN or ATIN issued on or before the due date of your 2025 return (including
+          extensions)? Answer no if an ITIN or ATIN had only been applied for by then, even if it has been or will be issued
+          later.
+      cite:
+        doc: i8863
+        locator: p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025
+          return (including extensions)."; p. 3, Table 1, "Students must have been issued a TIN by the due date of their 2025
+          return (including extensions)"
+    - id: dependent.edu_llc_tin_refused
+      printed: (gate)
+      label: A lifetime learning credit student whose ITIN or ATIN was only applied for by the due date of the return
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - dependent.edu_llc
+          - const: true
+        - op: test
+          eq:
+          - dependent.edu_tin_issued
+          - const: false
+      cite:
+        doc: i8863
+        locator: p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025
+          return (including extensions)."
     - id: dependent.edu_line27
       printed: '27'
       label: Adjusted qualified education expenses. Don't enter more than $4,000
@@ -2112,6 +2312,12 @@ form:
         locator: p. 2, Part III, line 31, "Adjusted qualified education expenses (see instructions). Include the total of all
           amounts from all Parts III, line 31, on Part II, line 10"; i8863 p. 9, Line 31
       refuses:
+      - when: dependent.edu_llc_tin_refused
+        form: Lifetime learning credit for a student whose ITIN or ATIN was only applied for
+        remedy: The lifetime learning credit requires the student to have been issued a TIN by the due date of the return (including extensions); an ITIN or ATIN only applied for by then counts as issued for the American opportunity credit only. This tool does not prepare the return without the lifetime learning credit for this student.
+        cite:
+          doc: i8863
+          locator: p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)."; p970 p. 11, "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return."
       - when: dependent.edu_over_refused
         form: Adjusted Qualified Education Expenses Worksheet for more than one academic period
         remedy: The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance

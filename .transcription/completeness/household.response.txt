@@ -1,0 +1,29 @@
+```yaml
+claims:
+  - item: "household.hoh_eligible"
+    sentences:
+      - quote: "You may be eligible to file as head of household even if the child who is your qualifying person has been kidnapped. You can claim head of household filing status if all the following statements are true."
+        page: "p501 p. 9"
+      - quote: "The child is presumed by law enforcement authorities to have been kidnapped by someone who isn’t a member of your family or the child’s family."
+        page: "p501 p. 9"
+      - quote: "In the year of the kidnapping, the child lived with you for more than half the part of the year before the kidnapping."
+        page: "p501 p. 10"
+      - quote: "In the year of the child’s return, the child lived with you for more than half the part of the year following the date of the child’s return."
+        page: "p501 p. 10"
+      - quote: "You would have qualified for head of household filing status if the child hadn’t been kidnapped."
+        page: "p501 p. 10"
+      - quote: "A person can’t qualify more than one taxpayer to use the head of household filing status for the year."
+        page: "p501 p. 10"
+    why_uncovered: "The head of household items cover temporary absences only as a refusal (hoh_absence). Test 2 is computed from persons who lived with the filer for more than half the year. No question or refusal deals with the kidnapped-child rule for head of household; the qualifying surviving spouse question excludes that rule only for QSS. Nothing checks that a qualifying person has not already qualified another taxpayer for head of household."
+    effect: "eligibility"
+  - item: "household.filing_status_conflict"
+    sentences:
+      - quote: "Generally, a married couple can’t file a joint return if either spouse is a nonresident alien at any time during the year."
+        page: "i1040gi p. 13"
+      - quote: "To make either choice for 2025, you and your spouse must file a joint return and attach a statement, signed by both spouses, to your return."
+        page: "i1040gi p. 14"
+      - quote: "If your spouse is a nonresident alien, your spouse must have either an SSN or an ITIN if: • You file a joint return, or • Your spouse is filing a separate return."
+        page: "i1040gi p. 13"
+    why_uncovered: "The marriage and filing-status checks ask about marriage, death, divorce and community property. They do not ask whether either spouse was a nonresident alien during 2025 on a joint return, or whether the election to be treated as residents was made. The nonresident alien fact appears only inside the head of household 'considered unmarried' question. The EIC nonresident refusal applies only to the EIC and does not block an otherwise improper joint filing status."
+    effect: "amount"
+```

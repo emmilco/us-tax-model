@@ -64,7 +64,7 @@ Second:
 {"expression": {"alternatives": [{"guard": {"args": [{"const": "actual"}, {"input": "scveh.method"}], "test": "eq"}, "then": {"line": "25"}}, {"guard": {"args": [{"const": "standard"}, {"input": "scveh.method"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}, "invalid_model_types": [{"line": "scveh.bus_cost", "message": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money"}, {"line": "scveh.bus_cost", "message": "scveh.scveh.bus_cost: whole operand is not money"}, {"line": "scveh.line9w", "message": "scveh.scveh.line9w: part 'scveh.miles_business' is not money"}, {"line": "scveh.line9w", "message": "scveh.scveh.line9w: whole operand is not money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/scveh.deepseek.json): candidate-invalid on all 2551 records; this adjudicates the declaration, not the tax reading.
 
 ### scveh.macrs — Column (h): depreciation of this vehicle
 Status: **DISAGREE**
@@ -81,7 +81,7 @@ Second:
 {"expression": {"alternatives": [{"guard": {"args": [{"const": "actual"}, {"input": "scveh.method"}], "test": "eq"}, "then": {"line": "20"}}, {"guard": {"args": [{"const": "standard"}, {"input": "scveh.method"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}, "invalid_model_types": [{"line": "scveh.rate", "message": "model changed a published result type"}, {"line": "scveh.bus_cost", "message": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money"}, {"line": "scveh.bus_cost", "message": "scveh.scveh.bus_cost: whole operand is not money"}, {"line": "scveh.line9w", "message": "scveh.scveh.line9w: part 'scveh.miles_business' is not money"}, {"line": "scveh.line9w", "message": "scveh.scveh.line9w: whole operand is not money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/scveh.deepseek.json): candidate-invalid on all 2551 records; this adjudicates the declaration, not the tax reading.
 
 ### scveh.s179_2025 — Column (i): elected section 179 cost of this vehicle
 Status: **DISAGREE**
@@ -98,7 +98,7 @@ Second:
 {"expression": {"alternatives": [{"guard": {"args": [{"const": "actual"}, {"input": "scveh.method"}], "test": "eq"}, "then": {"line": "10"}}, {"guard": {"args": [{"const": "standard"}, {"input": "scveh.method"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}, "invalid_model_types": [{"line": "scveh.line9w", "message": "scveh.scveh.line9w: part 'scveh.miles_business' is not money"}, {"line": "scveh.line9w", "message": "scveh.scveh.line9w: whole operand is not money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/scveh.deepseek.json): candidate-invalid on all 2551 records; this adjudicates the declaration, not the tax reading.
 
 ### scveh.mq_q4 — Mid-quarter test basis, fourth quarter of this vehicle
 Status: **DISAGREE**
@@ -115,7 +115,7 @@ Second:
 {"expression": {"alternatives": [{"guard": {"args": [{"args": [{"const": "actual"}, {"input": "scveh.method"}], "test": "eq"}, {"args": [{"const": "q4"}, {"input": "scveh.quarter"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"line": "15"}}, {"guard": {"args": [{"args": [{"const": "actual"}, {"input": "scveh.method"}], "test": "ne"}, {"args": [{"const": "q4"}, {"input": "scveh.quarter"}], "test": "ne"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}, "invalid_model_types": [{"line": "scveh.bus_cost", "message": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money"}, {"line": "scveh.bus_cost", "message": "scveh.scveh.bus_cost: whole operand is not money"}, {"line": "scveh.line9w", "message": "scveh.scveh.line9w: part 'scveh.miles_business' is not money"}, {"line": "scveh.line9w", "message": "scveh.scveh.line9w: whole operand is not money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/scveh.deepseek.json): candidate-invalid on all 2551 records; this adjudicates the declaration, not the tax reading.
 
 ### scveh.mq_total — Mid-quarter test basis, 2025 of this vehicle
 Status: **DISAGREE**
@@ -132,7 +132,7 @@ Second:
 {"expression": {"alternatives": [{"guard": {"args": [{"args": [{"const": "actual"}, {"input": "scveh.method"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"line": "15"}}, {"guard": {"args": [{"args": [{"const": "actual"}, {"input": "scveh.method"}], "test": "ne"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}, "invalid_model_types": [{"line": "scveh.bus_cost", "message": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money"}, {"line": "scveh.bus_cost", "message": "scveh.scveh.bus_cost: whole operand is not money"}, {"line": "scveh.line9w", "message": "scveh.scveh.line9w: part 'scveh.miles_business' is not money"}, {"line": "scveh.line9w", "message": "scveh.scveh.line9w: whole operand is not money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/scveh.deepseek.json): candidate-invalid on all 2551 records; this adjudicates the declaration, not the tax reading.
 
 ### scveh.cost179 — Cost of section 179 property placed in service in 2025 of this vehicle
 Status: **DISAGREE**
@@ -149,7 +149,7 @@ Second:
 {"expression": {"alternatives": [{"guard": {"args": [{"args": [{"const": "actual"}, {"input": "scveh.method"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"line": "13"}}, {"guard": {"args": [{"args": [{"const": "actual"}, {"input": "scveh.method"}], "test": "ne"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}, "invalid_model_types": [{"line": "scveh.bus_cost", "message": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money"}, {"line": "scveh.bus_cost", "message": "scveh.scveh.bus_cost: whole operand is not money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/scveh.deepseek.json): candidate-invalid on all 2551 records; this adjudicates the declaration, not the tax reading.
 
 ### 9 (scveh.line9) — Car and truck expenses for this vehicle
 Status: **DISAGREE**
@@ -166,7 +166,7 @@ Second:
 {"expression": {"alternatives": [{"guard": {"args": [{"const": "actual"}, {"input": "scveh.method"}], "test": "eq"}, "then": {"of": [{"input": "scveh.parking"}, {"amount": {"input": "scveh.operating"}, "op": "prorate", "part": {"line": "44a"}, "places": 3, "whole": {"of": [{"line": "44a"}, {"line": "44b"}, {"line": "44c"}], "op": "sum"}}], "op": "sum"}}, {"guard": {"args": [{"const": "standard"}, {"input": "scveh.method"}], "test": "eq"}, "then": {"of": [{"input": "scveh.parking"}, {"amount": {"param": "sc.mileage_rate"}, "count": {"line": "44a"}, "op": "multiply_count"}], "op": "sum"}}], "op": "choose"}, "invalid_model_types": [{"line": "scveh.operating_business", "message": "scveh.scveh.operating_business: part 'scveh.miles_business' is not money"}, {"line": "scveh.operating_business", "message": "scveh.scveh.operating_business: whole operand is not money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/scveh.deepseek.json): candidate-invalid on all 2551 records; this adjudicates the declaration, not the tax reading.
 
 ### 20a — Rent or lease of this vehicle (business portion)
 Status: **DISAGREE**
@@ -183,7 +183,7 @@ Second:
 {"expression": {"alternatives": [{"guard": {"args": [{"const": "actual"}, {"input": "scveh.method"}], "test": "eq"}, "then": {"amount": {"input": "scveh.lease"}, "op": "prorate", "part": {"line": "44a"}, "places": 3, "whole": {"of": [{"line": "44a"}, {"line": "44b"}, {"line": "44c"}], "op": "sum"}}}, {"guard": {"args": [{"const": "standard"}, {"input": "scveh.method"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}, "invalid_model_types": [{"line": "scveh.lease_actual", "message": "scveh.scveh.lease_actual: part 'scveh.miles_business' is not money"}, {"line": "scveh.lease_actual", "message": "scveh.scveh.lease_actual: whole operand is not money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/scveh.deepseek.json): candidate-invalid on all 2551 records; this adjudicates the declaration, not the tax reading.
 
 ### 13 — Business/investment cost (cost times business use)
 Status: **DISAGREE**
@@ -202,7 +202,7 @@ Second:
 
 Second transcription's note: The IRS worksheet states the business/investment use percentage but does not state a rounding precision; this model rounds the mileage ratio to three decimal places.
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/scveh.deepseek.json): candidate-invalid on all 2551 records; this adjudicates the declaration, not the tax reading.
 
 ### 7 — Maximum depreciation deduction for this year from the appropriate table
 Status: **DISAGREE**
@@ -219,7 +219,7 @@ Second:
 {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "scveh.bonus_choice"}], "test": "ne"}, {"args": [{"const": 1, "type": "Count"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "scveh.passenger"}], "test": "eq"}], "test": "all"}, "then": {"keys": [{"line": "(b)"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "auto_limit"}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "scveh.bonus_choice"}], "test": "eq"}, {"args": [{"const": 1, "type": "Count"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "test": "eq"}, {"args": [{"const": true}, {"input": "scveh.passenger"}], "test": "eq"}], "test": "all"}, "then": {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "auto_limit_first_nobonus"}}, {"guard": {"args": [{"const": false}, {"input": "scveh.passenger"}], "test": "eq"}, "then": {"line": "(d)"}}], "op": "choose"}
 ```
 
-Ruling: open
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, differs only through recorded ambiguities or read gates, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/scveh.deepseek.json): 1618 of 2551 comparisons agree; on completed returns {"candidate-unknown": 15, "project-refuses": 41, "project-unknown": 12, "value": 69}.
 
 ### 9 (scveh.line9w) — Adjusted maximum depreciation deduction (line 7 times the business/investment-use percenta
 Status: **DISAGREE**
@@ -238,7 +238,7 @@ Second:
 
 Second transcription's note: The IRS worksheet states the business/investment use percentage but does not state a rounding precision; this model rounds the mileage ratio to three decimal places.
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/scveh.deepseek.json): candidate-invalid on all 2551 records; this adjudicates the declaration, not the tax reading.
 
 ### 10 — Section 179 deduction claimed this year (not more than line 9 for a passenger automobile)
 Status: **DISAGREE**
@@ -255,7 +255,7 @@ Second:
 {"expression": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"of": [{"line": "9 (scveh.line9w)"}, {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "scveh.suv"}], "test": "eq"}, "then": {"line": "(i)"}}, {"guard": {"args": [{"const": true}, {"input": "scveh.suv"}], "test": "eq"}, "then": {"param": "s179.suv_limit"}}], "op": "choose"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}, "invalid_model_types": [{"line": "scveh.line9w", "message": "scveh.scveh.line9w: part 'scveh.miles_business' is not money"}, {"line": "scveh.line9w", "message": "scveh.scveh.line9w: whole operand is not money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/scveh.deepseek.json): candidate-invalid on all 2551 records; this adjudicates the declaration, not the tax reading.
 
 ### 11 — Subtract line 10 from line 9
 Status: **DISAGREE**
@@ -272,7 +272,7 @@ Second:
 {"expression": {"from": {"line": "9 (scveh.line9w)"}, "op": "subtract_floor0", "take": {"line": "10"}}, "invalid_model_types": [{"line": "scveh.line9w", "message": "scveh.scveh.line9w: part 'scveh.miles_business' is not money"}, {"line": "scveh.line9w", "message": "scveh.scveh.line9w: whole operand is not money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/scveh.deepseek.json): candidate-invalid on all 2551 records; this adjudicates the declaration, not the tax reading.
 
 ### 14 — Section 179 deduction claimed in the year you placed the car in service
 Status: **DISAGREE**
@@ -289,7 +289,7 @@ Second:
 {"expression": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "10"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"input": "scveh.prior_179"}}], "op": "choose"}, "invalid_model_types": [{"line": "scveh.line9w", "message": "scveh.scveh.line9w: part 'scveh.miles_business' is not money"}, {"line": "scveh.line9w", "message": "scveh.scveh.line9w: whole operand is not money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/scveh.deepseek.json): candidate-invalid on all 2551 records; this adjudicates the declaration, not the tax reading.
 
 ### 15 — Tentative basis for depreciation (line 13 less line 14)
 Status: **DISAGREE**
@@ -306,7 +306,7 @@ Second:
 {"expression": {"from": {"line": "13"}, "op": "subtract_floor0", "take": {"line": "14"}}, "invalid_model_types": [{"line": "scveh.bus_cost", "message": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money"}, {"line": "scveh.bus_cost", "message": "scveh.scveh.bus_cost: whole operand is not money"}, {"line": "scveh.line9w", "message": "scveh.scveh.line9w: part 'scveh.miles_business' is not money"}, {"line": "scveh.line9w", "message": "scveh.scveh.line9w: whole operand is not money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/scveh.deepseek.json): candidate-invalid on all 2551 records; this adjudicates the declaration, not the tax reading.
 
 ### 16 — Special depreciation allowance
 Status: **DISAGREE**
@@ -323,7 +323,7 @@ Second:
 {"expression": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "forty"}, {"input": "scveh.bonus_choice"}], "test": "ne"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"const": "full"}, {"input": "scveh.bonus_choice"}], "test": "ne"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "forty"}, {"input": "scveh.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"line": "15"}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "full"}, {"input": "scveh.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"line": "15"}}], "op": "choose"}, "invalid_model_types": [{"line": "scveh.bus_cost", "message": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money"}, {"line": "scveh.bus_cost", "message": "scveh.scveh.bus_cost: whole operand is not money"}, {"line": "scveh.line9w", "message": "scveh.scveh.line9w: part 'scveh.miles_business' is not money"}, {"line": "scveh.line9w", "message": "scveh.scveh.line9w: whole operand is not money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/scveh.deepseek.json): candidate-invalid on all 2551 records; this adjudicates the declaration, not the tax reading.
 
 ### 25 — Special depreciation allowance allowed (not more than line 11)
 Status: **DISAGREE**
@@ -340,7 +340,7 @@ Second:
 {"expression": {"of": [{"line": "11"}, {"line": "16"}], "op": "smaller_of"}, "invalid_model_types": [{"line": "scveh.bus_cost", "message": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money"}, {"line": "scveh.bus_cost", "message": "scveh.scveh.bus_cost: whole operand is not money"}, {"line": "scveh.line9w", "message": "scveh.scveh.line9w: part 'scveh.miles_business' is not money"}, {"line": "scveh.line9w", "message": "scveh.scveh.line9w: whole operand is not money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/scveh.deepseek.json): candidate-invalid on all 2551 records; this adjudicates the declaration, not the tax reading.
 
 ### 17 — Limit on the MACRS depreciation (line 11 less line 16)
 Status: **DISAGREE**
@@ -359,7 +359,7 @@ Second:
 
 Second transcription's note: The worksheet says to subtract line 16; the special depreciation allowance allowed is capped by line 11 and reported on line 25, so the capped amount is subtracted.
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/scveh.deepseek.json): candidate-invalid on all 2551 records; this adjudicates the declaration, not the tax reading.
 
 ### 18 — Basis for depreciation (line 15 less line 16)
 Status: **DISAGREE**
@@ -378,7 +378,7 @@ Second:
 
 Second transcription's note: The worksheet says to subtract line 16; the special depreciation allowance allowed is capped by line 11 and reported on line 25, so the capped amount is subtracted.
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/scveh.deepseek.json): candidate-invalid on all 2551 records; this adjudicates the declaration, not the tax reading.
 
 ### 19 — Tentative MACRS depreciation deduction (line 18 times line 6)
 Status: **DISAGREE**
@@ -395,7 +395,7 @@ Second:
 {"expression": {"amount": {"line": "18"}, "op": "multiply_rate", "rate": {"keys": [{"param": "sc.period_y5"}, {"input": "scveh.prior_conv"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}, "invalid_model_types": [{"line": "scveh.rate", "message": "model changed a published result type"}, {"line": "scveh.bus_cost", "message": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money"}, {"line": "scveh.bus_cost", "message": "scveh.scveh.bus_cost: whole operand is not money"}, {"line": "scveh.line9w", "message": "scveh.scveh.line9w: part 'scveh.miles_business' is not money"}, {"line": "scveh.line9w", "message": "scveh.scveh.line9w: whole operand is not money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/scveh.deepseek.json): candidate-invalid on all 2551 records; this adjudicates the declaration, not the tax reading.
 
 ### 20 — MACRS depreciation deduction (the lesser of line 17 or line 19)
 Status: **DISAGREE**
@@ -412,7 +412,7 @@ Second:
 {"expression": {"of": [{"line": "17"}, {"line": "19"}], "op": "smaller_of"}, "invalid_model_types": [{"line": "scveh.rate", "message": "model changed a published result type"}, {"line": "scveh.bus_cost", "message": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money"}, {"line": "scveh.bus_cost", "message": "scveh.scveh.bus_cost: whole operand is not money"}, {"line": "scveh.line9w", "message": "scveh.scveh.line9w: part 'scveh.miles_business' is not money"}, {"line": "scveh.line9w", "message": "scveh.scveh.line9w: whole operand is not money"}]}
 ```
 
-Ruling: open
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/scveh.deepseek.json): candidate-invalid on all 2551 records; this adjudicates the declaration, not the tax reading.
 
 ## Refusal gates listed by the second transcription
 

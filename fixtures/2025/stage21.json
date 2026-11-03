@@ -8935,7 +8935,7 @@
         "household"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Completeness-experiment finding D3 (BUG-0213): stage9.eic.one_child.line5 with the child presumed kidnapped by someone who isn't a family member. i1040gi p. 21, Kidnapped child: \"you may be able to take the child into account in determining your eligibility for head of household ... the child tax credit, the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC).\" Those conditions are not encoded, so the residency tests refuse.",
+      "evidence_note": "Completeness-experiment finding D3 (BUG-0213): stage9.eic.one_child.line5 with the child presumed kidnapped by someone who isn't a family member. i1040gi p. 21, Kidnapped child: \"you may be able to take the child into account in determining your eligibility for head of household ... the child tax credit, the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC).\" Those conditions are not encoded, so the residency tests refuse. The child lived with you 4 months of 2025 and not in the United States for more than half of 2025, without counting the time missing; a child who meets the residency tests on actual time is computed (stage8 f1.kidnapped.returned_11).",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -9044,7 +9044,7 @@
         "dependent[child].spouse_relative": false,
         "dependent[child].qr_all_year": true,
         "dependent[child].absence_no_return": false,
-        "dependent[child].months": 12,
+        "dependent[child].months": 4,
         "dependent[child].self_support": false,
         "dependent[child].joint_return": false,
         "dependent[child].citizen": true,
@@ -9069,7 +9069,7 @@
         "household.community_property": false,
         "household.spouse_died_2025": false,
         "household.cp_married": false,
-        "dependent[child].us_half": true,
+        "dependent[child].us_half": false,
         "interest[bank_a].amount": 500000,
         "interest[bank_a].penalty": 0,
         "dependent[child].eic_ssn": true,
@@ -9120,9 +9120,9 @@
       "expect": {
         "f1040.line27a": {
           "kind": "refusal",
-          "gate": "dependent[child].kidnapped",
+          "gate": "dependent[child].kidnap_eic",
           "form": "Kidnapped child (Pub. 501; Pub. 596 for the EIC)",
-          "remedy": "A child presumed kidnapped by someone who isn't a family member may count as living with you under rules this tool does not apply.",
+          "remedy": "A child presumed kidnapped by someone who isn't a family member, who did not live with you in the United States for more than half of 2025 without counting the time missing, may count as living with you under rules this tool does not apply.",
           "cite": {
             "doc": "i1040gi",
             "locator": "p. 21, Kidnapped child, \"For details, see Pub. 501 (Pub. 596 for the EIC)\"",
@@ -9133,9 +9133,9 @@
         },
         "f1040.line16": {
           "kind": "refusal",
-          "gate": "dependent[child].kidnapped",
+          "gate": "dependent[child].kidnap_residency",
           "form": "Kidnapped child (Pub. 501; Pub. 596 for the EIC)",
-          "remedy": "A child presumed kidnapped by someone who isn't a family member may count as living with you under rules this tool does not apply.",
+          "remedy": "A child presumed kidnapped by someone who isn't a family member, who lived with you for fewer than 7 months of 2025 without counting the time missing, may count as living with you under rules this tool does not apply.",
           "cite": {
             "doc": "i1040gi",
             "locator": "p. 21, Kidnapped child, \"For details, see Pub. 501 (Pub. 596 for the EIC)\"",
@@ -9364,7 +9364,7 @@
         "f1040"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Completeness finding PENDING-1: stage19.blind.e3 (wages $62,000, a 22-year-old student daughter who lived with the filer all year) filed as qss with all five qualifying surviving spouse tests answered Yes. Checked by hand against i1040gi: standard deduction for qss $31,500 (line 12e); taxable income $30,500 (line 15); tax from the Tax Table, married filing jointly column, $3,186 (line 16); credit for other dependents $500 (line 19); unchanged education credit $2,000, so line 24 is $686.",
+      "evidence_note": "Completeness finding PENDING-1: stage19.blind.e3 (wages $62,000, a 22-year-old student daughter who lived with the filer all year) filed as qss with all five qualifying surviving spouse tests answered Yes. Checked by hand against i1040gi: standard deduction for qss $31,500 (line 12e); taxable income $30,500 (line 15); tax from the Tax Table, married filing jointly column, $3,186 (line 16); credit for other dependents $500 (line 19); unchanged education credit $2,000, so line 24 is $686. F1 pass context repair: dependent[daughter].edu_tin_issued is supplied as true, read from the case's answer that the student has a TIN (inferred: the case does not say whether it was issued or applied for); no expected value changed.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "$dependent": [
@@ -9394,6 +9394,7 @@
         "dependent[daughter].edu_a2025": 0,
         "dependent[daughter].edu_a2026": 0,
         "dependent[daughter].edu_ein": true,
+        "dependent[daughter].edu_tin_issued": true,
         "dependent[daughter].edu_inst": 720000,
         "dependent[daughter].edu_line23": false,
         "dependent[daughter].edu_line24": true,
@@ -13415,7 +13416,7 @@
         "household"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "stage8.hoh.actc.three_children with dependent[b].kidnapped withheld. Before the fix household.test2_met was decided true from a lower bound of 2 and Form 1040 line 16 computed. Finding F1 extended to the where-test path: sum_over kept the known entries as a lower bound while another entry's where test awaited dependent.kidnapped, a refusal gate on dependent.lived_half and dependent.eic_child. The unanswered gate can become a refusal, so the counts, the tests decided from them and the return must stay unknown.",
+      "evidence_note": "stage8.hoh.actc.three_children with dependent[b].kidnapped withheld. Before the fix household.test2_met was decided true from a lower bound of 2 and Form 1040 line 16 computed. Finding F1 extended to the where-test path: sum_over kept the known entries as a lower bound while another entry's where test awaited dependent.kidnapped, a refusal gate on dependent.lived_half and dependent.eic_child. The unanswered gate can become a refusal, so the counts, the tests decided from them and the return must stay unknown. The withheld child lived with you 4 months: the kidnapped answer decides the refusal gate dependent.kidnap_residency only below 7 months, so the case keeps an unanswered gate on the where path.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -13546,7 +13547,7 @@
         "dependent[b].spouse_relative": false,
         "dependent[b].qr_all_year": true,
         "dependent[b].absence_no_return": false,
-        "dependent[b].months": 12,
+        "dependent[b].months": 4,
         "dependent[b].self_support": false,
         "dependent[b].joint_return": false,
         "dependent[b].citizen": true,
@@ -13668,7 +13669,7 @@
         "eic"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "stage9.eic.two_children.15000 with dependent[c2].kidnapped withheld. Before the fix eic.has_qc was decided true from a lower bound of 1 and Form 1040 line 16 computed. Finding F1 extended to the where-test path: sum_over kept the known entries as a lower bound while another entry's where test awaited dependent.kidnapped, a refusal gate on dependent.lived_half and dependent.eic_child. The unanswered gate can become a refusal, so the counts, the tests decided from them and the return must stay unknown.",
+      "evidence_note": "stage9.eic.two_children.15000 with dependent[c2].kidnapped withheld. Before the fix eic.has_qc was decided true from a lower bound of 1 and Form 1040 line 16 computed. Finding F1 extended to the where-test path: sum_over kept the known entries as a lower bound while another entry's where test awaited dependent.kidnapped, a refusal gate on dependent.lived_half and dependent.eic_child. The unanswered gate can become a refusal, so the counts, the tests decided from them and the return must stay unknown. The withheld child lived with you 4 months and not in the United States for more than half of 2025: the kidnapped answer decides the refusal gates dependent.kidnap_residency and dependent.kidnap_eic only then, so the case keeps an unanswered gate on the where path.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -13809,7 +13810,7 @@
         "dependent[c2].spouse_relative": false,
         "dependent[c2].qr_all_year": true,
         "dependent[c2].absence_no_return": false,
-        "dependent[c2].months": 12,
+        "dependent[c2].months": 4,
         "dependent[c2].self_support": false,
         "dependent[c2].joint_return": false,
         "dependent[c2].citizen": true,
@@ -13824,7 +13825,7 @@
         "dependent[c2].multiple_support": false,
         "dependent[c2].parent_home_paid": false,
         "dependent[c2].younger": true,
-        "dependent[c2].us_half": true,
+        "dependent[c2].us_half": false,
         "dependent[c1].eic_ssn": true,
         "dependent[c2].eic_ssn": true,
         "$retirement@person[taxpayer]": [],

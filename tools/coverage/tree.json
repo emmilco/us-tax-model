@@ -79,10 +79,12 @@
   {"gate": "household.hoh_absence", "topic": "household", "kind": "situation", "question": "Filing as head of household, does every person who would qualify you count as living with you only by counting an absence they weren't expected to return from, or during which you didn't keep up the home?"},
   {"gate": "dependent.claimed_no_tin", "topic": "household", "kind": "situation", "question": "Does someone who would be your dependent lack an SSN, ITIN or ATIN issued by the due date of your return?"},
   {"gate": "dependent.divorced_rule", "topic": "household", "kind": "situation", "question": "Does the rule for children of divorced or separated parents (for example a Form 8332 release) apply to a child?"},
-  {"gate": "dependent.other_claimant", "topic": "household", "kind": "situation", "question": "Could a person you would claim also be the qualifying child of someone else (the tie-breaker rules)?", "stop": "Qualifying child of more than one person (tie-breaker rules)"},
+  {"gate": "dependent.qc_tiebreak", "topic": "household", "kind": "situation", "question": "Could your qualifying child also be the qualifying child of someone else (the tie-breaker rules), or could a person you would claim be the qualifying child of another taxpayer?", "stop": "Qualifying child of more than one person (tie-breaker rules)"},
+  {"gate": "dependent.eic_tiebreak", "topic": "household", "kind": "situation", "question": "Could your qualifying child for the EIC also be the qualifying child of someone else (the EIC tie-breaker rules)?"},
   {"gate": "dependent.multiple_support", "topic": "household", "kind": "situation", "question": "Is anyone supported under a multiple support arrangement?"},
   {"gate": "dependent.married", "topic": "household", "kind": "situation", "question": "Is a person you would claim married, or on a 2025 joint return?", "stop": "A married dependent (Married person rules)"},
-  {"gate": "dependent.kidnapped", "topic": "household", "kind": "situation", "question": "Was a child presumed kidnapped during 2025 by someone outside the family?"},
+  {"gate": "dependent.kidnap_residency", "topic": "household", "kind": "situation", "question": "Did a child presumed kidnapped by someone outside the family live with you for fewer than 7 months of 2025, not counting the time missing?"},
+  {"gate": "dependent.kidnap_eic", "topic": "household", "kind": "situation", "question": "For the EIC, did a child presumed kidnapped by someone outside the family live with you in the United States for half of 2025 or less, not counting the time missing?"},
   {"gate": "dependent.qr_kidnapped", "topic": "household", "kind": "situation", "question": "Was a child under 19 whom you would claim as a qualifying relative presumed kidnapped during 2025 by someone outside the family?"},
   {"gate": "dependent.income_exception", "topic": "household", "kind": "situation", "question": "Does a permanently and totally disabled relative have gross income of $5,200 or more (the sheltered workshop exception)?"},
 
@@ -221,6 +223,8 @@
 
   {"gate": "f8863.ban_refused", "topic": "education", "kind": "situation", "question": "Are you claiming the American opportunity credit after an earlier denial (Form 8862), or within a ban period?"},
   {"gate": "person.edu_over_refused", "topic": "education", "kind": "situation", "question": "For you or your spouse as a student: did tax-free assistance and refunds exceed one academic period's own expenses?"},
+  {"gate": "person.edu_llc_tin_refused", "topic": "education", "kind": "situation", "question": "For you or your spouse as a lifetime learning credit student: was your ITIN only applied for, not issued, by the due date of the return?"},
+  {"gate": "dependent.edu_llc_tin_refused", "topic": "education", "kind": "situation", "question": "For a dependent who is a lifetime learning credit student: was the ITIN or ATIN only applied for, not issued, by the due date of the return?"},
   {"gate": "dependent.edu_over_refused", "topic": "education", "kind": "situation", "question": "For a dependent student: did tax-free assistance and refunds exceed one academic period's own expenses?"},
 
   {"gate": "f5695.line7a", "topic": "energy", "kind": "situation", "question": "Did you install qualified fuel cell property?"},

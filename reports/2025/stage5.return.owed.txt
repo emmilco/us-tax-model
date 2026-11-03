@@ -3391,6 +3391,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) A lifetime learning credit student: an eligible student who is not an American opportunity credit student
       = false
       cite: [i8863] p. 4, Tip, "If the requirements above aren’t met for any student, you cannot claim the American opportunity credit for that student. You may be able to claim the lifetime learning credit for part or all of that student’s qualified education expenses instead if certain requirements are met." (2025; 195cfd5e)
+  (gate) A lifetime learning credit student whose ITIN was only applied for by the due date of the return
+      = false
+      cite: [i8863] p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)." (2025; 195cfd5e)
   (helper) Were you born before January 2, 2007?
       = UNKNOWN (no input supplied for person[taxpayer].edu_born_2007)
       cite: [i8863] p. 7, Line 7, "b. Age 18 at the end of 2025 and your earned income (defined later) was less than one-half of your support (defined later), or" (2025; 195cfd5e)
@@ -7358,7 +7361,8 @@ Derivations:
   f8863.line8: choose(f8863.no_refund = false; true = true; f8863.no_refund = false; false = false; f8863.line7_40 = $0)
   f8863.line9: subtract_floor0(f8863.line7 = $0; f8863.line8 = $0)
   person[taxpayer].edu_llc: test(person[taxpayer].edu_student = false; true = true)
-  person[taxpayer].edu_line31: choose(person[taxpayer].edu_over_refused = false; person[taxpayer].edu_llc = false; true = true; person[taxpayer].edu_llc = false; false = false; person[taxpayer].zero = $0)
+  person[taxpayer].edu_llc_tin_refused: test(person[taxpayer].edu_llc = false; true = true)
+  person[taxpayer].edu_line31: choose(person[taxpayer].edu_llc_tin_refused = false; person[taxpayer].edu_over_refused = false; person[taxpayer].edu_llc = false; true = true; person[taxpayer].edu_llc = false; false = false; person[taxpayer].zero = $0)
   f8863.llc_person: sum_over(person[taxpayer].edu_line31 = $0)
   f8863.llc_sum: sum(f8863.llc_person = $0; f8863.llc_dep = $0)
   f8863.line10: choose(f8863.eligible = false; true = true; f8863.eligible = false; false = false; f8863.zero = $0)

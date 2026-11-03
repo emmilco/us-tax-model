@@ -1,3 +1,14 @@
+# F1 and T-176 integration — 2026-11-03
+
+**Owner decisions (2026-11-03), on the F1 owner questions:**
+1. The dependency and EIC tie-breaker refusals stay when the other person is a non-taxpayer (no exception in p501 pp. 15-17; a refusal cannot give a wrong answer).
+2. T-113's "or filer" means the filer who is the student; a filer with only an applied-for ITIN claiming the lifetime learning credit for a student with an issued number is not refused (i8863 Table 1).
+3. T-104's question covers a child kidnapped before 2025 and still missing at some time in 2025.
+
+**State:** T-176 (BUG-0325, fixed by BUG-0328) is on `main`. The F1 cloud batch (T-104 to T-113, T-153, T-154, T-167, T-168; BUG-0329 to BUG-0337, open BUG-0338 and BUG-0339) is integrated on this branch with its DeepSeek reviews rerun locally. Next: integrate `claude/t159-mutation` (tier 1 shipped; tier 2 still gated with 114 unexplained survivors), then T-178 to T-185 and the remaining backlog.
+
+---
+
 # Owner decisions and parallel work — 2026-11-02
 
 **Owner decisions (2026-11-02), on the T-169 owner questions:**

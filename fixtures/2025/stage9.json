@@ -7017,7 +7017,7 @@
       "expect": {
         "f1040.line27a": {
           "kind": "refusal",
-          "gate": "dependent[child].other_claimant",
+          "gate": "dependent[child].eic_tiebreak",
           "form": "Qualifying child of more than one person (EIC)",
           "remedy": "The tie-breaker rules for a child who is the qualifying child of more than one person are outside this tool.",
           "cite": {

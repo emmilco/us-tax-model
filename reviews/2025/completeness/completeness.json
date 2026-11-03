@@ -227,59 +227,61 @@
  },
  {
   "form": "dependent",
-  "prompt_sha": "5934f439a7b02d1e82132ccf7ac3e6202d9b46458cb5c0f673dc18a666784fc9",
+  "prompt_sha": "7ca60a19aef52a39f88f4c6e8ed536f9fcef9880ebe7c286e67ac4d10956a3db",
   "claims": [
+   {
+    "item": "dependent.dc_paid",
+    "sentences": [
+     {
+      "quote": "They include, for example, the services of a cook, maid, babysitter, housekeeper, or cleaning person if the services were partly for the care of the qualifying person.",
+      "page": "i2441 p. 2"
+     },
+     {
+      "quote": "However, they don't include the services of a chauffeur, bartender, or gardener.",
+      "page": "i2441 p. 2"
+     },
+     {
+      "quote": "For this purpose, you aren't considered to be working if you do unpaid volunteer work or work for a nominal salary.",
+      "page": "p503 p. 6"
+     },
+     {
+      "quote": "If a care provider takes a qualifying person to or from a place where care is provided, that transportation is for the care of the qualifying person.",
+      "page": "p503 p. 7"
+     },
+     {
+      "quote": "However, transportation not provided by a care provider isn't for the care of a qualifying person.",
+      "page": "p503 p. 7"
+     },
+     {
+      "quote": "Also, if you pay the transportation cost for the care provider to come to your home, that expense isn't for care of a qualifying person.",
+      "page": "p503 p. 7"
+     },
+     {
+      "quote": "Fees you paid to an agency to get the services of a care provider, deposits you paid to an agency or preschool, application fees, and other indirect expenses are work-related expenses if you have to pay them to get care, even though they aren't directly for care.",
+      "page": "p503 p. 7"
+     },
+     {
+      "quote": "However, a forfeited deposit isn't for the care of a qualifying person if care isn't provided.",
+      "page": "p503 p. 7"
+     },
+     {
+      "quote": "If you have expenses for meals that your housekeeper eats in your home because of their employment, count these as work-related expenses.",
+      "page": "p503 p. 8"
+     },
+     {
+      "quote": "If you have extra expenses for providing lodging in your home to the housekeeper, count these as work-related expenses also.",
+      "page": "p503 p. 8"
+     }
+    ],
+    "quote": "They include, for example, the services of a cook, maid, babysitter, housekeeper, or cleaning person if the services were partly for the care of the qualifying person. / However, they don't include the services of a chauffeur, bartender, or gardener. / For this purpose, you aren't considered to be working if you do unpaid volunteer work or work for a nominal salary. / If a care provider takes a qualifying person to or from a place where care is provided, that transportation is for the care of the qualifying person. / However, transportation not provided by a care provider isn't for the care of a qualifying person. / Also, if you pay the transportation cost for the care provider to come to your home, that expense isn't for care of a qualifying person. / Fees you paid to an agency to get the services of a care provider, deposits you paid to an agency or preschool, application fees, and other indirect expenses are work-related expenses if you have to pay them to get care, even though they aren't directly for care. / However, a forfeited deposit isn't for the care of a qualifying person if care isn't provided. / If you have expenses for meals that your housekeeper eats in your home because of their employment, count these as work-related expenses. / If you have extra expenses for providing lodging in your home to the housekeeper, count these as work-related expenses also.",
+    "page": "i2441 p. 2; p503 p. 6; p503 p. 7; p503 p. 8",
+    "why_uncovered": "The dc_paid question lists many inclusions and exclusions, but it never mentions any of these. It does not include household services such as a cook or maid. It does not exclude chauffeur, bartender or gardener services. It does not cover transportation by the provider or by others, agency fees and deposits, or forfeited deposits. It does not include a housekeeper's meals and lodging. It does not treat volunteer or nominal-salary work as not work. Its general exclusion of 'food, lodging' would also wrongly exclude a housekeeper's meals and lodging.",
+    "closest_item": "dependent.dc_paid",
+    "effect": "amount"
+   },
    {
     "item": "dependent.supported",
     "sentences": [
-     {
-      "quote": "Medical insurance premiums you pay, including premiums for supplementary Medicare coverage, are included in the support you provide.",
-      "page": "p501 p. 21"
-     },
-     {
-      "quote": "Medical insurance benefits, including basic and supplementary Medicare benefits, aren’t part of support.",
-      "page": "p501 p. 21"
-     },
-     {
-      "quote": "Amounts veterans receive under the GI Bill for tuition payments and allowances while they attend school are included in total support.",
-      "page": "p501 p. 21"
-     },
-     {
-      "quote": "If you live with a person rent free in that person’s home, you must reduce the amount you provide for support of that person by the fair rental value of lodging the person provides you.",
-      "page": "p501 p. 21"
-     },
-     {
-      "quote": "The total fair rental value of a person’s home that the person owns is considered support contributed by that person.",
-      "page": "p501 p. 21"
-     },
-     {
-      "quote": "If you provide only a part and the person supplies the rest, the fair rental value must be divided between both of you according to the amount each provides.",
-      "page": "p501 p. 21"
-     },
-     {
-      "quote": "If you make a lump-sum advance payment to a home for the aged to take care of your relative for life and the payment is based on that person’s life expectancy, the amount of support you provide each year is the lump-sum payment divided by the relative’s life expectancy.",
-      "page": "p501 p. 20"
-     },
-     {
-      "quote": "The allotment of pay and the tax-exempt basic allowance for quarters are both considered as provided by you for support.",
-      "page": "p501 p. 20"
-     },
-     {
-      "quote": "If you remarry, the support provided by your new spouse is treated as provided by you.",
-      "page": "p501 p. 15"
-     },
-     {
-      "quote": "The year you provide the support is the year you pay for it, even if you do so with borrowed money that you repay in a later year.",
-      "page": "p501 p. 20"
-     },
-     {
-      "quote": "If you use a fiscal year to report your income, you must provide more than half of the dependent’s support for the calendar year in which your fiscal year begins.",
-      "page": "p501 p. 20"
-     },
-     {
-      "quote": "In figuring a person’s total support, include tax-exempt income, savings, and borrowed amounts used to support that person.",
-      "page": "p501 p. 20"
-     },
      {
       "quote": "If spouses each receive benefits that are paid by one check made out to both of them, half of the total paid is considered to be for the support of each spouse, unless they can show otherwise.",
       "page": "p501 p. 20"
@@ -289,171 +291,23 @@
       "page": "p501 p. 20"
      },
      {
-      "quote": "Expenses not directly related to any one member of a household, such as the cost of food for the household, must be divided among the members of the household.",
+      "quote": "Payments to a spouse that are alimony or separate maintenance payments, or similar payments from an estate or trust, aren’t treated as a payment for the support of a dependent.",
+      "page": "p501 p. 22"
+     },
+     {
+      "quote": "If you don’t provide the total lodging, the total fair rental value must be divided depending on how much of the total lodging you provide.",
+      "page": "p501 p. 21"
+     },
+     {
+      "quote": "Fair rental value includes a reasonable allowance for the use of furniture and appliances, and for heat and other utilities that are provided.",
       "page": "p501 p. 20"
-     },
-     {
-      "quote": "Property provided as support is measured by its fair market value.",
-      "page": "p501 p. 21"
-     },
-     {
-      "quote": "If you pay someone to provide child or dependent care, you can include these payments in the amount you provided for the support of your child or disabled dependent, even if you claim a credit for the payments.",
-      "page": "p501 p. 21"
-     },
-     {
-      "quote": "The following items aren’t included in total support.",
-      "page": "p501 p. 21"
-     },
-     {
-      "quote": "If you are in the trade or business of providing foster care, your unreimbursed expenses aren’t considered support provided by you.",
-      "page": "p501 p. 15"
-     },
-     {
-      "quote": "If you aren’t in the trade or business of providing foster care and your unreimbursed out-of-pocket expenses in caring for a foster child were mainly to benefit an organization qualified to receive deductible charitable contributions, the expenses are deductible as charitable contributions but aren’t considered support you provided.",
-      "page": "p501 p. 15"
      }
     ],
-    "quote": "Medical insurance premiums you pay, including premiums for supplementary Medicare coverage, are included in the support you provide. / Medical insurance benefits, including basic and supplementary Medicare benefits, aren’t part of support. / Amounts veterans receive under the GI Bill for tuition payments and allowances while they attend school are included in total support. / If you live with a person rent free in that person’s home, you must reduce the amount you provide for support of that person by the fair rental value of lodging the person provides you. / The total fair rental value of a person’s home that the person owns is considered support contributed by that person. / If you provide only a part and the person supplies the rest, the fair rental value must be divided between both of you according to the amount each provides. / If you make a lump-sum advance payment to a home for the aged to take care of your relative for life and the payment is based on that person’s life expectancy, the amount of support you provide each year is the lump-sum payment divided by the relative’s life expectancy. / The allotment of pay and the tax-exempt basic allowance for quarters are both considered as provided by you for support. / If you remarry, the support provided by your new spouse is treated as provided by you. / The year you provide the support is the year you pay for it, even if you do so with borrowed money that you repay in a later year. / If you use a fiscal year to report your income, you must provide more than half of the dependent’s support for the calendar year in which your fiscal year begins. / In figuring a person’s total support, include tax-exempt income, savings, and borrowed amounts used to support that person. / If spouses each receive benefits that are paid by one check made out to both of them, half of the total paid is considered to be for the support of each spouse, unless they can show otherwise. / However, payments based on the needs of the recipient won’t be considered as used entirely for that person’s support if it is shown that part of the payments weren’t used for that purpose. / Expenses not directly related to any one member of a household, such as the cost of food for the household, must be divided among the members of the household. / Property provided as support is measured by its fair market value. / If you pay someone to provide child or dependent care, you can include these payments in the amount you provided for the support of your child or disabled dependent, even if you claim a credit for the payments. / The following items aren’t included in total support. / If you are in the trade or business of providing foster care, your unreimbursed expenses aren’t considered support provided by you. / If you aren’t in the trade or business of providing foster care and your unreimbursed out-of-pocket expenses in caring for a foster child were mainly to benefit an organization qualified to receive deductible charitable contributions, the expenses are deductible as charitable contributions but aren’t considered support you provided.",
-    "page": "p501 p. 21; p501 p. 20; p501 p. 15",
-    "why_uncovered": "The support question lists TANF, fair rental value of lodging, military allotments, the person's own funds, foster-care agency payments, the child's wages, state benefits and scholarships. It does not mention any of these other rules. Missing are: medical insurance premiums and benefits, GI Bill amounts, the reduction for living rent free, the person's own home and shared lodging, the home-for-the-aged lump sum, quarters allowances, a new spouse's support, the year support counts, tax-exempt income, savings and borrowed amounts in total support, split social security checks, need-based payments not fully used, dividing household expenses, property at fair market value, childcare payments, the excluded items (income and social security taxes, life insurance premiums, funeral expenses, Survivors' and Dependents' Educational Assistance), and foster-care expenses incurred as a business or for charity.",
+    "quote": "If spouses each receive benefits that are paid by one check made out to both of them, half of the total paid is considered to be for the support of each spouse, unless they can show otherwise. / However, payments based on the needs of the recipient won’t be considered as used entirely for that person’s support if it is shown that part of the payments weren’t used for that purpose. / Payments to a spouse that are alimony or separate maintenance payments, or similar payments from an estate or trust, aren’t treated as a payment for the support of a dependent. / If you don’t provide the total lodging, the total fair rental value must be divided depending on how much of the total lodging you provide. / Fair rental value includes a reasonable allowance for the use of furniture and appliances, and for heat and other utilities that are provided.",
+    "page": "p501 p. 20; p501 p. 22; p501 p. 21",
+    "why_uncovered": "The supported question's long definition of support leaves out several rules. It does not split a joint social security check between spouses. It does not carve out the unused part of needs-based state payments. It does not say that alimony or separate maintenance is not support of a dependent. It does not divide fair rental value when you provide only part of the lodging, or say what fair rental value includes.",
     "closest_item": "dependent.supported",
     "effect": "eligibility"
-   },
-   {
-    "item": "dependent.self_support",
-    "sentences": [
-     {
-      "quote": "In figuring a person’s total support, include tax-exempt income, savings, and borrowed amounts used to support that person.",
-      "page": "p501 p. 20"
-     },
-     {
-      "quote": "The total fair rental value of a person’s home that the person owns is considered support contributed by that person.",
-      "page": "p501 p. 21"
-     },
-     {
-      "quote": "Property provided as support is measured by its fair market value.",
-      "page": "p501 p. 21"
-     },
-     {
-      "quote": "Amounts veterans receive under the GI Bill for tuition payments and allowances while they attend school are included in total support.",
-      "page": "p501 p. 21"
-     },
-     {
-      "quote": "Medical insurance benefits, including basic and supplementary Medicare benefits, aren’t part of support.",
-      "page": "p501 p. 21"
-     },
-     {
-      "quote": "The following items aren’t included in total support.",
-      "page": "p501 p. 21"
-     },
-     {
-      "quote": "Expenses not directly related to any one member of a household, such as the cost of food for the household, must be divided among the members of the household.",
-      "page": "p501 p. 20"
-     }
-    ],
-    "quote": "In figuring a person’s total support, include tax-exempt income, savings, and borrowed amounts used to support that person. / The total fair rental value of a person’s home that the person owns is considered support contributed by that person. / Property provided as support is measured by its fair market value. / Amounts veterans receive under the GI Bill for tuition payments and allowances while they attend school are included in total support. / Medical insurance benefits, including basic and supplementary Medicare benefits, aren’t part of support. / The following items aren’t included in total support. / Expenses not directly related to any one member of a household, such as the cost of food for the household, must be divided among the members of the household.",
-    "page": "p501 p. 20; p501 p. 21",
-    "why_uncovered": "The self-support question covers the person's own funds spent, fair rental value, foster-care agency payments, scholarships and social security. It does not tell the filer to count tax-exempt income, savings and borrowed amounts, a home the person owns, property at fair market value, or GI Bill amounts in total support. It also does not exclude medical insurance benefits and the listed non-support items, or require dividing household expenses. Each of these changes whether the child provided over half of their own support.",
-    "closest_item": "dependent.self_support",
-    "effect": "eligibility"
-   },
-   {
-    "item": "dependent.other_claimant",
-    "sentences": [
-     {
-      "quote": "For this purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t file such a return or files only to get a refund of withheld income tax or estimated tax paid.",
-      "page": "i1040gi p. 19"
-     },
-     {
-      "quote": "A child isn’t the qualifying child of any other taxpayer and so may qualify as your qualifying relative if the child’s parent (or other person for whom the child is defined as a qualifying child) isn’t required to file an income tax return and either: • Doesn’t file an income tax return, or • Files a return only to get a refund of in- come tax withheld or estimated tax paid.",
-      "page": "p501 p. 18"
-     }
-    ],
-    "quote": "For this purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t file such a return or files only to get a refund of withheld income tax or estimated tax paid. / A child isn’t the qualifying child of any other taxpayer and so may qualify as your qualifying relative if the child’s parent (or other person for whom the child is defined as a qualifying child) isn’t required to file an income tax return and either: • Doesn’t file an income tax return, or • Files a return only to get a refund of in- come tax withheld or estimated tax paid.",
-    "page": "i1040gi p. 19; p501 p. 18",
-    "why_uncovered": "The question asks only whether the person meets the conditions to be the qualifying child of any other person. It gives no exception for another person who is not a 'taxpayer' because they are not required to file and either don't file or file only for a refund. A filer in that situation would answer yes, and the person would wrongly fail the not-a-qualifying-child test for a qualifying relative, or trigger the tie-breaker refusal.",
-    "closest_item": "dependent.other_claimant",
-    "effect": "eligibility"
-   },
-   {
-    "item": "dependent.claimed",
-    "sentences": [
-     {
-      "quote": "Stillborn child. You can’t claim a stillborn child as a dependent.",
-      "page": "p501 p. 13"
-     },
-     {
-      "quote": "State or local law must treat the child as having been born alive.",
-      "page": "p501 p. 13"
-     },
-     {
-      "quote": "There must be proof of a live birth shown by an official document, such as a birth certificate.",
-      "page": "p501 p. 13"
-     }
-    ],
-    "quote": "Stillborn child. You can’t claim a stillborn child as a dependent. / State or local law must treat the child as having been born alive. / There must be proof of a live birth shown by an official document, such as a birth certificate.",
-    "page": "p501 p. 13",
-    "why_uncovered": "The born_died question asks only whether the person was born or died in 2025. No question or refusal excludes a stillborn child or requires a live birth recognized by law and proved by an official document.",
-    "closest_item": "dependent.claimed",
-    "effect": "eligibility"
-   },
-   {
-    "item": "dependent.months",
-    "sentences": [
-     {
-      "quote": "The same is true if the child lived with you more than half the year except for any required hospital stay following birth.",
-      "page": "p501 p. 13"
-     }
-    ],
-    "quote": "The same is true if the child lived with you more than half the year except for any required hospital stay following birth.",
-    "page": "p501 p. 13",
-    "why_uncovered": "The months question counts temporary absences, birth or death, and adoption or placement. It does not let a required hospital stay after birth count as time lived with you for the qualifying-child residency test. The qr_all_year question covers this only for the qualifying-relative household test.",
-    "closest_item": "dependent.months",
-    "effect": "eligibility"
-   },
-   {
-    "item": "dependent.student",
-    "sentences": [
-     {
-      "quote": "Students who work on “co-op” jobs in private industry as a part of a school’s regular course of classroom and practical training are considered full-time students.",
-      "page": "p501 p. 13"
-     },
-     {
-      "quote": "A full-time student at a school that has a regular teaching staff and course of study, and a regularly enrolled student body at the school; or",
-      "page": "p501 p. 13"
-     }
-    ],
-    "quote": "Students who work on “co-op” jobs in private industry as a part of a school’s regular course of classroom and practical training are considered full-time students. / A full-time student at a school that has a regular teaching staff and course of study, and a regularly enrolled student body at the school; or",
-    "page": "p501 p. 13",
-    "why_uncovered": "The student question does not treat vocational co-op students as full-time students. It also does not require the school to have a regular teaching staff, course of study and enrolled student body.",
-    "closest_item": "dependent.student",
-    "effect": "eligibility"
-   },
-   {
-    "item": "dependent.dc_paid",
-    "sentences": [
-     {
-      "quote": "Child support payments aren't qualified expenses.",
-      "page": "i2441 p. 2"
-     },
-     {
-      "quote": "However, they don't include the services of a chauffeur, bartender, or gardener.",
-      "page": "i2441 p. 2"
-     },
-     {
-      "quote": "Generally, if you worked or actively looked for work during only part of the period in which you incurred the expenses, you must figure your expenses for each day.",
-      "page": "i2441 p. 2"
-     },
-     {
-      "quote": "Also, if part of an expense is work related (for either household services or the care of a qualifying person) and part is for other purposes, you have to divide the expense.",
-      "page": "i2441 p. 2"
-     }
-    ],
-    "quote": "Child support payments aren't qualified expenses. / However, they don't include the services of a chauffeur, bartender, or gardener. / Generally, if you worked or actively looked for work during only part of the period in which you incurred the expenses, you must figure your expenses for each day. / Also, if part of an expense is work related (for either household services or the care of a qualifying person) and part is for other purposes, you have to divide the expense.",
-    "page": "i2441 p. 2",
-    "why_uncovered": "The expense question lists many exclusions. It does not exclude child support payments or chauffeur, bartender and gardener services. It also does not require figuring expenses by day for part-period work, or dividing an expense that is only partly work related.",
-    "closest_item": "dependent.dc_paid",
-    "effect": "amount"
    },
    {
     "item": "dependent.edu_aoc",
@@ -469,9 +323,31 @@
     ],
     "quote": "Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud. / If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
     "page": "i8863 p. 3; i8863 p. 1",
-    "why_uncovered": "The AOC student test checks lines 23–26, the filers' TINs and the EIN. No question or refusal, here or in the handled-elsewhere list, covers the 2/10-year ban or the Form 8862 requirement after a prior disallowance.",
+    "why_uncovered": "edu_aoc depends only on lines 23 to 26, the filers' TINs and the institution's EIN. No question asks about a prior disallowance, the 2-year or 10-year ban, or the required Form 8862, and no refusal covers them, so the credit is allowed during a ban period.",
     "closest_item": "dependent.edu_aoc",
     "effect": "eligibility"
+   },
+   {
+    "item": "dependent.edu_ein",
+    "sentences": [
+     {
+      "quote": "If the student attended only one educational institution, enter the information about the institution and answer the questions about Form 1098-T in column (a).",
+      "page": "i8863 p. 8"
+     },
+     {
+      "quote": "If the student attended more than two educational institutions, attach an additional page 2 completed only through line 22.",
+      "page": "i8863 p. 8"
+     },
+     {
+      "quote": "The educational institution’s EIN must be provided on line 22(4) if the American opportunity credit is claimed for this student.",
+      "page": "i8863 p. 8"
+     }
+    ],
+    "quote": "If the student attended only one educational institution, enter the information about the institution and answer the questions about Form 1098-T in column (a). / If the student attended more than two educational institutions, attach an additional page 2 completed only through line 22. / The educational institution’s EIN must be provided on line 22(4) if the American opportunity credit is claimed for this student.",
+    "page": "i8863 p. 8",
+    "why_uncovered": "The encoding only asks whether the EIN is available, as a gate. It has no Form 8863 line 22 entries: institution name and address, EIN, and the Form 1098-T answers. It also does not handle a second institution or an extra page 2 for more than two institutions.",
+    "closest_item": "dependent.edu_ein",
+    "effect": "presentation"
    }
   ],
   "used": [
@@ -554,23 +430,31 @@
      18,
      19,
      20,
-     21
+     21,
+     22
     ]
    },
    {
     "doc": "p503",
     "pages": [
-     3
-    ]
-   },
-   {
-    "doc": "p503",
-    "pages": [
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
      10
+    ]
+   },
+   {
+    "doc": "p970",
+    "pages": [
+     11
     ]
    }
   ],
-  "cost": 0.9369187999999999,
+  "cost": 1.1104148,
   "model": "claude-opus-5-5"
  },
  {
@@ -1787,104 +1671,40 @@
  },
  {
   "form": "household",
-  "prompt_sha": "f049d8a43b1b266557445897a04b2bb295d9292493c4c82133a188e54cc6b151",
+  "prompt_sha": "84a610ed4046225828bdb31398a780d2cec580b945f898d3e544b8c50dc441c0",
   "claims": [
    {
-    "item": "household.test1_persons",
+    "item": "household.hoh_eligible",
     "sentences": [
      {
-      "quote": "If you pay more than half the cost of keeping your parent in a rest home or home for the elderly, that counts as paying more than half the cost of keeping up your parent’s main home.",
+      "quote": "You may be eligible to file as head of household even if the child who is your qualifying person has been kidnapped. You can claim head of household filing status if all the following statements are true.",
       "page": "p501 p. 9"
      },
      {
-      "quote": "Your parent for whom you paid, for the entire part of the year your parent was alive, more than half the cost of keeping up the home your parent lived in.",
-      "page": "p501 p. 9"
-     }
-    ],
-    "quote": "If you pay more than half the cost of keeping your parent in a rest home or home for the elderly, that counts as paying more than half the cost of keeping up your parent’s main home. / Your parent for whom you paid, for the entire part of the year your parent was alive, more than half the cost of keeping up the home your parent lived in.",
-    "page": "p501 p. 9",
-    "why_uncovered": "Test 1 is encoded citing only the i1040gi p. 14 wording, which requires the parent's main home for all of 2025. The only listed cost question, household.home_cost, asks about your own home. Nothing listed extends Test 1 to a parent who died or was born during the year, or says that a rest home counts as the parent's main home. No refusal covers these cases.",
-    "closest_item": "household.test1_persons",
-    "effect": "eligibility"
-   },
-   {
-    "item": "household.test2_persons",
-    "sentences": [
-     {
-      "quote": "If the person is your qualifying child, the child must have lived with you for more than half the part of the year the child was alive.",
-      "page": "i1040gi p. 15"
-     },
-     {
-      "quote": "Similarly, if you adopted the person for whom you kept up a home in 2025, the person was lawfully placed with you for legal adoption by you in 2025, or the person was an eligible foster child placed with you during 2025, the person is considered to have lived with you for more than half of 2025 if your main home was this person’s main home for more than half the time since the person was adopted or placed with you in 2025.",
-      "page": "i1040gi p. 15"
-     },
-     {
-      "quote": "Your qualifying child or qualifying relative who lived with you for more than half the part of the year they were alive.",
+      "quote": "The child is presumed by law enforcement authorities to have been kidnapped by someone who isn’t a member of your family or the child’s family.",
       "page": "p501 p. 9"
      },
      {
-      "quote": "You can claim head of household filing status if all the following statements are true.",
-      "page": "p501 p. 9"
+      "quote": "In the year of the kidnapping, the child lived with you for more than half the part of the year before the kidnapping.",
+      "page": "p501 p. 10"
+     },
+     {
+      "quote": "In the year of the child’s return, the child lived with you for more than half the part of the year following the date of the child’s return.",
+      "page": "p501 p. 10"
+     },
+     {
+      "quote": "You would have qualified for head of household filing status if the child hadn’t been kidnapped.",
+      "page": "p501 p. 10"
      },
      {
       "quote": "A person can’t qualify more than one taxpayer to use the head of household filing status for the year.",
       "page": "p501 p. 10"
      }
     ],
-    "quote": "If the person is your qualifying child, the child must have lived with you for more than half the part of the year the child was alive. / Similarly, if you adopted the person for whom you kept up a home in 2025, the person was lawfully placed with you for legal adoption by you in 2025, or the person was an eligible foster child placed with you during 2025, the person is considered to have lived with you for more than half of 2025 if your main home was this person’s main home for more than half the time since the person was adopted or placed with you in 2025. / Your qualifying child or qualifying relative who lived with you for more than half the part of the year they were alive. / You can claim head of household filing status if all the following statements are true. / A person can’t qualify more than one taxpayer to use the head of household filing status for the year.",
-    "page": "i1040gi p. 15; p501 p. 9; p501 p. 10",
-    "why_uncovered": "Test 2 is encoded citing only the p. 14 test. The birth, death, adoption and foster placement rules appear only inside the household.unmarried question, which applies to married persons living apart, so they are not applied to the Test 2 qualifying person. The kidnapped-child rule for head of household has no question or refusal; only the qualifying surviving spouse question addresses kidnapping. Nothing listed enforces the limit of one taxpayer per qualifying person.",
-    "closest_item": "household.test2_persons",
-    "effect": "eligibility"
-   },
-   {
-    "item": "household.hoh_eligible",
-    "sentences": [
-     {
-      "quote": "If the child isn’t claimed as your dependent, enter the child’s name in the entry space below qualifying surviving spouse.",
-      "page": "i1040gi p. 14"
-     }
-    ],
-    "quote": "If the child isn’t claimed as your dependent, enter the child’s name in the entry space below qualifying surviving spouse.",
-    "page": "i1040gi p. 14",
-    "why_uncovered": "No listed line or question captures the name of a non-dependent child who qualifies the filer for head of household.",
+    "quote": "You may be eligible to file as head of household even if the child who is your qualifying person has been kidnapped. You can claim head of household filing status if all the following statements are true. / The child is presumed by law enforcement authorities to have been kidnapped by someone who isn’t a member of your family or the child’s family. / In the year of the kidnapping, the child lived with you for more than half the part of the year before the kidnapping. / In the year of the child’s return, the child lived with you for more than half the part of the year following the date of the child’s return. / You would have qualified for head of household filing status if the child hadn’t been kidnapped. / A person can’t qualify more than one taxpayer to use the head of household filing status for the year.",
+    "page": "p501 p. 9; p501 p. 10",
+    "why_uncovered": "The head of household items cover temporary absences only as a refusal (hoh_absence). Test 2 is computed from persons who lived with the filer for more than half the year. No question or refusal deals with the kidnapped-child rule for head of household; the qualifying surviving spouse question excludes that rule only for QSS. Nothing checks that a qualifying person has not already qualified another taxpayer for head of household.",
     "closest_item": "household.hoh_eligible",
-    "effect": "presentation"
-   },
-   {
-    "item": "household.qss_eligible",
-    "sentences": [
-     {
-      "quote": "If the child isn’t claimed as your dependent, enter the child’s name in the entry space.",
-      "page": "i1040gi p. 15"
-     }
-    ],
-    "quote": "If the child isn’t claimed as your dependent, enter the child’s name in the entry space.",
-    "page": "i1040gi p. 15",
-    "why_uncovered": "The question establishes that a non-dependent child can qualify the filer, but no listed line or question captures the child's name for the entry space.",
-    "closest_item": "household.qss_eligible",
-    "effect": "presentation"
-   },
-   {
-    "item": "household.credit_disallowed",
-    "sentences": [
-     {
-      "quote": "Don’t file Form 8862 if you filed Form 8862 for 2024, and the child tax credit, additional child tax credit, or credit for other dependents was allowed for that year.",
-      "page": "i1040gi p. 39"
-     },
-     {
-      "quote": "You filed Form 8862 for another year, the EIC was allowed for that year, and your EIC hasn’t been reduced or disallowed again for any reason other than a math or clerical error.",
-      "page": "i1040gi p. 43"
-     },
-     {
-      "quote": "You are taking the EIC without a qualifying child and the only reason your EIC was reduced or disallowed in the other year was because it was determined that a child listed on Schedule EIC wasn’t your qualifying child.",
-      "page": "i1040gi p. 43"
-     }
-    ],
-    "quote": "Don’t file Form 8862 if you filed Form 8862 for 2024, and the child tax credit, additional child tax credit, or credit for other dependents was allowed for that year. / You filed Form 8862 for another year, the EIC was allowed for that year, and your EIC hasn’t been reduced or disallowed again for any reason other than a math or clerical error. / You are taking the EIC without a qualifying child and the only reason your EIC was reduced or disallowed in the other year was because it was determined that a child listed on Schedule EIC wasn’t your qualifying child.",
-    "page": "i1040gi p. 39; i1040gi p. 43",
-    "why_uncovered": "The question asks only whether a credit was ever reduced or disallowed, or whether the filer is in a disallowance period. It does not carve out these exceptions, so a filer who meets one still answers Yes and is treated the same as a filer who must attach Form 8862.",
-    "closest_item": "household.credit_disallowed",
     "effect": "eligibility"
    },
    {
@@ -1897,13 +1717,17 @@
      {
       "quote": "To make either choice for 2025, you and your spouse must file a joint return and attach a statement, signed by both spouses, to your return.",
       "page": "i1040gi p. 14"
+     },
+     {
+      "quote": "If your spouse is a nonresident alien, your spouse must have either an SSN or an ITIN if: • You file a joint return, or • Your spouse is filing a separate return.",
+      "page": "i1040gi p. 13"
      }
     ],
-    "quote": "Generally, a married couple can’t file a joint return if either spouse is a nonresident alien at any time during the year. / To make either choice for 2025, you and your spouse must file a joint return and attach a statement, signed by both spouses, to your return.",
+    "quote": "Generally, a married couple can’t file a joint return if either spouse is a nonresident alien at any time during the year. / To make either choice for 2025, you and your spouse must file a joint return and attach a statement, signed by both spouses, to your return. / If your spouse is a nonresident alien, your spouse must have either an SSN or an ITIN if: • You file a joint return, or • Your spouse is filing a separate return.",
     "page": "i1040gi p. 13; i1040gi p. 14",
-    "why_uncovered": "The conflict gate tests marriage and death facts only. The nonresident alien election appears only in household.unmarried for head of household, and the nonresident refusal listed under HANDLED ELSEWHERE applies only to the EIC. Nothing blocks or refuses a joint return with a nonresident spouse when no election was made, and nothing requires the signed statement.",
+    "why_uncovered": "The marriage and filing-status checks ask about marriage, death, divorce and community property. They do not ask whether either spouse was a nonresident alien during 2025 on a joint return, or whether the election to be treated as residents was made. The nonresident alien fact appears only inside the head of household 'considered unmarried' question. The EIC nonresident refusal applies only to the EIC and does not block an otherwise improper joint filing status.",
     "closest_item": "household.filing_status_conflict",
-    "effect": "eligibility"
+    "effect": "amount"
    }
   ],
   "used": [
@@ -1969,7 +1793,7 @@
     ]
    }
   ],
-  "cost": 0.6006268,
+  "cost": 0.5281348,
   "model": "claude-opus-5-5"
  },
  {

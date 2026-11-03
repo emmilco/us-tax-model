@@ -121,6 +121,13 @@
   {
    "printed": "2(d)",
    "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
+   "model": "The helper includes expenses paid with dependent care benefits, but the Form 2441 column (d) instruction says \"If you completed Part III, don't include in column (d) any benefits shown on line 28.\"",
+   "ruling": "Ruling: ambiguity (amb.2025.dc_line30, owner decision, Stage 15 decision 6); each person's column (d) is kept before excluding the dependent care benefits and line 30 subtracts line 28 from the total, since the instructions give no rule for dividing line 28 among the qualifying persons.",
+   "context": "a40cb8f2e180e4f7df6ae2c26e1ad86221605035a3987cd27fc11cdab527c944"
+  },
+  {
+   "printed": "2(d)",
+   "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
    "model": "The helper includes expenses paid with dependent care benefits, but the Form 2441 line 2(d) instructions say: 'If you completed Part III, don't include in column (d) any benefits shown on line 28.'",
    "ruling": "Ruling: ambiguity; amb.2025.dc_line30 (owner ruling, Stage 15 decision 6, T-048). Form 2441 line 30: \"Complete line 2 on page 1 of this form. Don't include in column (d) any benefits shown on line 28 above. Then, add the amounts in column (d) and enter the total here\"; i2441 p. 3, Column (d): \"If you completed Part III, don't include in column (d) any benefits shown on line 28\"; the instructions give no rule for dividing line 28 among persons. The model reads the register's rejected reading (column (d) net of benefits). The chosen reading shows each person's expenses including those paid with dependent care benefits and subtracts line 28 once at line 30 (f2441.line30 is f2441.paid_total less f2441.line28), and the helper's English says what the project asks. Unchanged by Stage 19 and by the round-2 fixes; as ruled in rounds 2 to 4, Stage 18 and Stage 19 rounds 1 and 2. Project stands.",
    "context": "efdc90ccf40bd09eec32fd6398a9e53d2cee0036f5533be9108d4dcba1938c2d"

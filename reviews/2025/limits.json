@@ -25,6 +25,26 @@
     "f8962.other"
    ],
    "reason": "The family-member affordability sentence states the same 9.02% standard as the self-only test; f8962.other's \"was affordable and provided minimum value\" screen covers the family member's offer as well as the filer's, and the gate refuses on yes. The percentage is the filer's or Marketplace's measurement, not an amount this tool computes."
+  },
+  "limit:p503:p6:c9ac1836": {
+   "enforced_by": [
+    "f2441.line4",
+    "f2441.line5",
+    "f2441.line6"
+   ],
+   "reason": "Form 2441 line 6 takes the smallest of line 3 and the earned income of each spouse (lines 4 and 5), the limit this sentence states."
+  },
+  "limit:p503:p6:463a57ef": {
+   "enforced_by": [
+    "dependent.dc_paid"
+   ],
+   "reason": "The example applies the day-allocation rule; dependent.dc_paid asks for the expenses only for the days of work or looking for work, so the amount entered is already the allocated one."
+  },
+  "limit:p503:p6:ea477d7e": {
+   "enforced_by": [
+    "dependent.dc_paid"
+   ],
+   "reason": "The weekly example is the same allocation; dependent.dc_paid asks for expenses only for the days of work or looking for work."
   }
  },
  "baseline": {

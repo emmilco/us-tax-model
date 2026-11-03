@@ -104,6 +104,7 @@ interview:
   - dependent.supported
   - dependent.kidnapped
   - dependent.other_claimant
+  - dependent.other_nontaxpayer
   - dependent.divorced_rule
   - dependent.multiple_support
   - dependent.parent_home_paid

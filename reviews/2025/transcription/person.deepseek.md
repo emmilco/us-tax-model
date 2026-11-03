@@ -4,22 +4,22 @@ Second transcription of `Each person on the return — per-person facts and tota
 
 | field | value |
 | --- | --- |
-| date | 2026-11-02 |
+| date | 2026-11-03 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 72a929cd784823cfd51b483f8cd91d44cf7bab6d5e7e8634320c06a49a915c1e |
+| prompt sha256 | 36aec0fec2b14dd676262e1f01f5c717b34535a98f996f1d9c771740f7af938f |
 | prompt policy | source-only-computation-v2 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
 | complete input context | pass |
-| required input context sha256 | 08e5f19c745380480a4a647dc873e3848e3fd871e2dfac28d1cfdc024d62b04c |
+| required input context sha256 | 43f7e067ac536987e0dfd2f25f6ad5038d6499cd41bbd0bf3c99591ab1b1e2f4 |
 | type validation policy | project-expression-types-v3 |
 | model type validation | fail |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 72ca343250eeb71a6c1ae0e628d5837ebaf95a3d7a8a5a5d6dcc9fdad7c18808 |
+| subject sha256 | 23a2c0c44f1a05df257bacd3810606e6948a1655a974a44fedb6e5debc3e96c2 |
 | printed lines compared | 99 |
 | agree / disagree / missing | 43 / 56 / 0 |
 | extra printed lines in second | none |
@@ -56,11 +56,15 @@ Second transcription of `Each person on the return — per-person facts and tota
 | i4562 | 2025 | 4, 11 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 11 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
 | p503 | For use in preparing 2025 returns | 3, 11 | pages named by another document's citation | a1ff9e2c3120455f6049fc50f0af8c5b8160302c198162dede66b2c8a5640607 | 3, 11 | 44d87f0ddfd4f953ea02cf5cc31e203e754c88aa74627dac5a551f46c6bf65b9 |
 | i8959 | 2025; printed date 2025-08-07 | 1, 2, 3, 4 | whole document | 0ec9603864196115a05c89675c3cf1ea20ce0384fb59e2195b2dbd8c65d3e85d | 1, 2, 3, 4 | 926d666edb486650f74da8863ef35ce5a9fe82c240719196138fdc8d40bf40df |
+| p970 | 2025 | 11 | pages named by another document's citation | a5c80030374da420bbaf3118a8a42fe79092e8529663d02ef601b6ae06657e00 | 11 | f6622ed07641c7d4e2a217fb9d9b1fecb7ab16f08dbc758f1a0963e1fe677e0a |
 
 ## Host-side model expression type checks
 
 The build's reference/type checker rejected these model expressions; none were executed.
-- person.person.edu_line31: 'aqee' has no line 'line31'
+- malformed expression (project schema): data/all/1 must have required property 'op', data/all/1 must have required property 'eq', data/all/1 must NOT have additional properties
+- person.person.se_line6: reference 'line6' does not resolve
+- person.person.se_line12: reference 'line12' does not resolve
+- person.person.se_line13: reference 'line13' does not resolve
 
 ## Lines
 
@@ -82,7 +86,7 @@ Second:
 {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.eligible_educator"}], "test": "eq"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": true}, {"input": "person.eligible_educator"}], "test": "eq"}, "then": {"of": [{"input": "person.educator_expenses"}, {"param": "s1.educator_max"}], "op": "smaller_of"}}], "op": "choose"}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 3161 of 4945 comparisons agree; on completed returns {"candidate-unknown": 96}.
+Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 3157 of 4960 comparisons agree; on completed returns {"candidate-unknown": 97}.
 
 ### person.hsa_forms — Number of Forms 8889 entered for this person
 Status: **AGREE**
@@ -105,7 +109,7 @@ Second:
 {"collection": "f8889", "field": "f8889.one", "op": "sum_over", "where": {"args": [{"const": "agreed"}, {"ref": "f8889.allocation"}], "test": "eq"}}
 ```
 
-Ruling: scope; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/person.deepseek.json): 4651 of 4945 comparisons agree; on completed returns no difference.
+Ruling: scope; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/person.deepseek.json): 4666 of 4960 comparisons agree; on completed returns no difference.
 
 ### person.hsa_step1 — This persons Step 1 limit under the spouse rule of line 6
 Status: **DISAGREE**
@@ -122,7 +126,7 @@ Second:
 {"collection": "f8889", "field": "f8889.step1", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, differs only through recorded ambiguities or read gates, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/person.deepseek.json): 4621 of 4945 comparisons agree; on completed returns {"value": 24}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, differs only through recorded ambiguities or read gates, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/person.deepseek.json): 4636 of 4960 comparisons agree; on completed returns {"value": 23}.
 
 ### person.hsa_share — This persons part of the Step 1 limit under the spouse rule of line 6
 Status: **DISAGREE**
@@ -139,7 +143,7 @@ Second:
 {"collection": "f8889", "field": "f8889.share", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, differs only through recorded ambiguities or read gates, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/person.deepseek.json): 4309 of 4945 comparisons agree; on completed returns {"value": 24}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, differs only through recorded ambiguities or read gates, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/person.deepseek.json): 4324 of 4960 comparisons agree; on completed returns {"value": 23}.
 
 ### person.hsa_deduction — Form 8889 line 13 for this person
 Status: **AGREE**
@@ -157,7 +161,21 @@ Status: **AGREE**
 Status: **AGREE**
 
 ### person.tip_reported — This person's worksheet column (b) total
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"collection": "tipjob", "field": "tipjob.amount", "op": "sum_over", "where": null}
+```
+
+Second:
+
+```json
+{"collection": "tipjob", "field": "tipjob.col_c", "op": "sum_over", "where": null}
+```
+
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/person.deepseek.json): 4585 of 4960 comparisons agree; on completed returns {"value": 1}.
 
 ### person.ot_employers — Number of employers that paid this person qualified overtime compensation
 Status: **AGREE**
@@ -172,21 +190,7 @@ Status: **AGREE**
 Status: **AGREE**
 
 ### person.ira_amount_a — IRA distributions on this person's Forms 1099-R (line 4a amounts)
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "retirement", "field": "retirement.amount_a", "op": "sum_over", "where": {"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "ne"}}
-```
-
-Second:
-
-```json
-{"collection": "retirement", "field": "retirement.amount_a", "op": "sum_over", "where": {"args": [{"args": [{"const": "roth_ira"}, {"ref": "retirement.account"}], "test": "eq"}, {"args": [{"const": "traditional_ira"}, {"ref": "retirement.account"}], "test": "eq"}], "test": "any"}}
-```
-
-Ruling: representation; triage found no difference. Triage executable-triage-v2 (triage/person.deepseek.json): 4945 of 4945 comparisons agree; on completed returns no difference.
+Status: **AGREE**
 
 ### person.ira_taxable — Taxable IRA distributions on this person's Forms 1099-R (line 4b amounts)
 Status: **DISAGREE**
@@ -200,27 +204,13 @@ Project:
 Second:
 
 ```json
-{"collection": "retirement", "field": "retirement.ira_taxable", "op": "sum_over", "where": {"args": [{"args": [{"const": "roth_ira"}, {"ref": "retirement.account"}], "test": "eq"}, {"args": [{"const": "traditional_ira"}, {"ref": "retirement.account"}], "test": "eq"}], "test": "any"}}
+{"collection": "retirement", "field": "retirement.ira_taxable", "op": "sum_over", "where": {"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "ne"}}
 ```
 
-Ruling: scope; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/person.deepseek.json): 4933 of 4945 comparisons agree; on completed returns no difference.
+Ruling: scope; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/person.deepseek.json): 4945 of 4960 comparisons agree; on completed returns no difference.
 
 ### person.ira_rollovers — Number of this person's IRA distributions with a rollover
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "retirement", "field": "retirement.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": 0}, {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}], "test": "lt"}], "test": "any"}, {"args": [{"const": "plan"}, {"input": "retirement.account"}], "test": "ne"}], "test": "all"}}
-```
-
-Second:
-
-```json
-{"collection": "retirement", "field": "retirement.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": 0}, {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}], "test": "lt"}], "test": "any"}, {"args": [{"args": [{"const": "roth_ira"}, {"ref": "retirement.account"}], "test": "eq"}, {"args": [{"const": "traditional_ira"}, {"ref": "retirement.account"}], "test": "eq"}], "test": "any"}], "test": "all"}}
-```
-
-Ruling: representation; triage found no difference. Triage executable-triage-v2 (triage/person.deepseek.json): 4945 of 4945 comparisons agree; on completed returns no difference.
+Status: **AGREE**
 
 ### person.plan_amount_a — Pension and annuity distributions on this person's Forms 1099-R (line 5a amounts)
 Status: **DISAGREE**
@@ -237,7 +227,7 @@ Second:
 {"collection": "retirement", "field": "retirement.amount_a", "op": "sum_over", "where": {"args": [{"const": "plan"}, {"ref": "retirement.account"}], "test": "eq"}}
 ```
 
-Ruling: representation; triage found no difference. Triage executable-triage-v2 (triage/person.deepseek.json): 4945 of 4945 comparisons agree; on completed returns no difference.
+Ruling: representation; triage found no difference. Triage executable-triage-v2 (triage/person.deepseek.json): 4960 of 4960 comparisons agree; on completed returns no difference.
 
 ### person.plan_taxable — Taxable pension and annuity distributions on this person's Forms 1099-R (line 5b amounts)
 Status: **DISAGREE**
@@ -254,7 +244,7 @@ Second:
 {"collection": "retirement", "field": "retirement.plan_taxable", "op": "sum_over", "where": {"args": [{"const": "plan"}, {"ref": "retirement.account"}], "test": "eq"}}
 ```
 
-Ruling: scope; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/person.deepseek.json): 4905 of 4945 comparisons agree; on completed returns no difference.
+Ruling: scope; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/person.deepseek.json): 4919 of 4960 comparisons agree; on completed returns no difference.
 
 ### person.plan_rollovers — Number of this person's pension distributions with a rollover
 Status: **DISAGREE**
@@ -271,7 +261,7 @@ Second:
 {"collection": "retirement", "field": "retirement.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": 0}, {"alternatives": [{"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "eq"}, "then": {"input": "retirement.box1"}}, {"guard": {"args": [{"const": "direct_rollover_G"}, {"input": "retirement.code"}], "test": "ne"}, "then": {"input": "retirement.rollover"}}], "op": "choose"}], "test": "lt"}], "test": "any"}, {"args": [{"const": "plan"}, {"ref": "retirement.account"}], "test": "eq"}], "test": "all"}}
 ```
 
-Ruling: representation; triage found no difference. Triage executable-triage-v2 (triage/person.deepseek.json): 4945 of 4945 comparisons agree; on completed returns no difference.
+Ruling: representation; triage found no difference. Triage executable-triage-v2 (triage/person.deepseek.json): 4960 of 4960 comparisons agree; on completed returns no difference.
 
 ### person.sav_dist — Distributions received in 2025 that Form 8880 line 4 counts, on this person's Forms 1099-R
 Status: **AGREE**
@@ -312,9 +302,7 @@ Second:
 {"collection": "sc", "field": "sc.cost179_a", "op": "sum_over", "where": null}
 ```
 
-Second transcription's note: The supplied Schedule C fields separate section 179 cost into assets and vehicles; the listed-property split is not otherwise supplied at the person level.
-
-Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/person.deepseek.json): 4518 of 4945 comparisons agree; on completed returns {"value": 116}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, differs only through recorded ambiguities or read gates, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/person.deepseek.json): 4532 of 4960 comparisons agree; on completed returns {"value": 116}.
 
 ### person.s179_listed — Section 179 elected on listed property, this person
 Status: **DISAGREE**
@@ -331,9 +319,7 @@ Second:
 {"collection": "sc", "field": "sc.cost179_v", "op": "sum_over", "where": null}
 ```
 
-Second transcription's note: The supplied Schedule C fields separate section 179 cost into assets and vehicles; vehicles are used as the listed-property amount here.
-
-Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/person.deepseek.json): 4912 of 4945 comparisons agree; on completed returns {"value": 18}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, differs only through recorded ambiguities or read gates, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/person.deepseek.json): 4927 of 4960 comparisons agree; on completed returns {"value": 18}.
 
 ### person.income179 — Business net profit or loss without section 179, this person
 Status: **DISAGREE**
@@ -347,13 +333,27 @@ Project:
 Second:
 
 ```json
+{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}
+```
+
+Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 4138 of 4960 comparisons agree; on completed returns {"candidate-refuses": 2, "candidate-unknown": 266}.
+
+### person.sc_total — This person's Schedule C net profit or loss (all businesses)
+Status: **DISAGREE**
+
+Project:
+
+```json
 {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 4134 of 4945 comparisons agree; on completed returns {"candidate-refuses": 2, "candidate-unknown": 266}.
+Second:
 
-### person.sc_total — This person's Schedule C net profit or loss (all businesses)
-Status: **AGREE**
+```json
+{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}
+```
+
+Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 4175 of 4960 comparisons agree; on completed returns {"candidate-refuses": 2, "candidate-unknown": 266}.
 
 ### person.se_line6 — Schedule SE line 6 for this person
 Status: **DISAGREE**
@@ -367,10 +367,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}
+{"expression": {"ref": "line6"}, "invalid_model_types": [{"line": "person.se_line6", "message": "person.person.se_line6: reference 'line6' does not resolve"}]}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 2465 of 4945 comparisons agree; on completed returns {"candidate-refuses": 5, "candidate-unknown": 279}.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/person.deepseek.json): candidate-invalid on all 4960 records; this adjudicates the declaration, not the tax reading.
 
 ### person.se_line12 — Schedule SE line 12 (self-employment tax) for this person
 Status: **DISAGREE**
@@ -384,10 +384,10 @@ Project:
 Second:
 
 ```json
-{"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}
+{"expression": {"ref": "line12"}, "invalid_model_types": [{"line": "person.se_line12", "message": "person.person.se_line12: reference 'line12' does not resolve"}]}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 2465 of 4945 comparisons agree; on completed returns {"candidate-refuses": 5, "candidate-unknown": 279}.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/person.deepseek.json): candidate-invalid on all 4960 records; this adjudicates the declaration, not the tax reading.
 
 ### person.se_line13 — Schedule SE line 13 (deduction for one-half of self-employment tax) for this person
 Status: **DISAGREE**
@@ -401,10 +401,10 @@ Project:
 Second:
 
 ```json
-{"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}
+{"expression": {"ref": "line13"}, "invalid_model_types": [{"line": "person.se_line13", "message": "person.person.se_line13: reference 'line13' does not resolve"}]}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 2465 of 4945 comparisons agree; on completed returns {"candidate-refuses": 5, "candidate-unknown": 279}.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/person.deepseek.json): candidate-invalid on all 4960 records; this adjudicates the declaration, not the tax reading.
 
 ### person.s16 — Schedule 1 line 16 for this person
 Status: **DISAGREE**
@@ -418,33 +418,33 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.sep_contrib"}, {"line": "Step 21"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"line": "Step 21"}, {"of": [{"input": "person.simple_deferral"}, {"input": "person.simple_employer"}], "op": "sum"}], "op": "smaller_of"}}], "op": "choose"}
+{"expression": {"alternatives": [{"guard": {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.sep_contrib"}, {"line": "Step 21"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.simple_deferral"}, {"input": "person.simple_employer"}], "op": "sum"}}], "op": "choose"}, "invalid_model_types": [{"line": "person.se_line13", "message": "person.person.se_line13: reference 'line13' does not resolve"}]}
 ```
 
-Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/person.deepseek.json): 2714 of 4945 comparisons agree; on completed returns {"candidate-unknown": 113, "value": 121}.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/person.deepseek.json): candidate-invalid on all 4960 records; this adjudicates the declaration, not the tax reading.
 
 ### person.positive_profits — Total of all net profits of this person's businesses (losses not included)
-Status: **AGREE**
-
-### person.sehi — Self-employed health insurance deduction, this person
-Status: **AGREE**
-
-### person.qbi — Qualified business income or loss of this person's businesses
 Status: **DISAGREE**
 
 Project:
 
 ```json
-{"collection": "sc", "field": "sc.qbi", "op": "sum_over", "where": null}
+{"collection": "sc", "field": "sc.profit_pos", "op": "sum_over", "where": null}
 ```
 
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"from": {"ref": "f1040.line11b"}, "op": "subtract_floor0", "take": {"of": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, {"args": [{"ref": "sa.line17"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}}, "op": "multiply_count"}, {"param": "sa.standard_base"}], "op": "sum"}}], "op": "choose"}], "test": "le"}, {"args": [{"const": true}, {"input": "sa.elect_itemize"}], "test": "ne"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}}, "op": "multiply_count"}, {"param": "sa.standard_base"}], "op": "sum"}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "sa.elect_itemize"}], "test": "eq"}, {"args": [{"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}}, "op": "multiply_count"}, {"param": "sa.standard_base"}], "op": "sum"}}], "op": "choose"}, {"ref": "sa.line17"}], "test": "lt"}], "test": "any"}, "then": {"ref": "sa.line17"}}], "op": "choose"}, {"ref": "f1040.line13b"}], "op": "sum"}}, {"param": "qbi.threshold"}], "test": "le"}, "then": {"ref": "f8995.line15"}}, {"guard": {"args": [{"param": "qbi.threshold"}, {"from": {"ref": "f1040.line11b"}, "op": "subtract_floor0", "take": {"of": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, {"args": [{"ref": "sa.line17"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}}, "op": "multiply_count"}, {"param": "sa.standard_base"}], "op": "sum"}}], "op": "choose"}], "test": "le"}, {"args": [{"const": true}, {"input": "sa.elect_itemize"}], "test": "ne"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}}, "op": "multiply_count"}, {"param": "sa.standard_base"}], "op": "sum"}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "sa.elect_itemize"}], "test": "eq"}, {"args": [{"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}}, "op": "multiply_count"}, {"param": "sa.standard_base"}], "op": "sum"}}], "op": "choose"}, {"ref": "sa.line17"}], "test": "lt"}], "test": "any"}, "then": {"ref": "sa.line17"}}], "op": "choose"}, {"ref": "f1040.line13b"}], "op": "sum"}}], "test": "lt"}, "then": {"ref": "f8995a.line39"}}], "op": "choose"}
+{"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 174 of 4945 comparisons agree; on completed returns {"candidate-refuses": 5, "candidate-unknown": 1053}.
+Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 4175 of 4960 comparisons agree; on completed returns {"candidate-refuses": 2, "candidate-unknown": 266}.
+
+### person.sehi — Self-employed health insurance deduction, this person
+Status: **AGREE**
+
+### person.qbi — Qualified business income or loss of this person's businesses
+Status: **AGREE**
 
 ### person.eic_se — Worksheet B, Parts 1 and 2, for this person
 Status: **DISAGREE**
@@ -458,27 +458,13 @@ Project:
 Second:
 
 ```json
-{"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}
+{"expression": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract", "take": {"ref": "line13"}}, "invalid_model_types": [{"line": "person.se_line13", "message": "person.person.se_line13: reference 'line13' does not resolve"}]}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 2465 of 4945 comparisons agree; on completed returns {"candidate-refuses": 5, "candidate-unknown": 279}.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/person.deepseek.json): candidate-invalid on all 4960 records; this adjudicates the declaration, not the tax reading.
 
 ### person.sc_1a — This person's Schedules C with Schedule 1-A tips or overtime
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "sc", "field": "sc.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "sc.tips_ot"}], "test": "eq"}}
-```
-
-Second:
-
-```json
-{"collection": "sc", "field": "sc.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "sc.statutory"}], "test": "eq"}}
-```
-
-Ruling: scope; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/person.deepseek.json): 4940 of 4945 comparisons agree; on completed returns no difference.
+Status: **AGREE**
 
 ### person.dc_benefits — This person's dependent care benefits from Forms W-2 box 10, less the part reported in box
 Status: **AGREE**
@@ -495,10 +481,10 @@ Project:
 Second:
 
 ```json
-{"args": [{"const": 0}, {"collection": "w2", "field": "w2.dc_benefits", "op": "sum_over", "where": null}], "test": "lt"}
+{"args": [{"const": 0, "type": "Count"}, {"collection": "w2", "field": "w2.one", "op": "sum_over", "where": {"args": [{"const": 0}, {"ref": "w2.box10"}], "test": "lt"}}], "test": "lt"}
 ```
 
-Ruling: scope; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/person.deepseek.json): 4944 of 4945 comparisons agree; on completed returns no difference.
+Ruling: representation; triage found no difference. Triage executable-triage-v2 (triage/person.deepseek.json): 4960 of 4960 comparisons agree; on completed returns no difference.
 
 ### person.dc_earned — This person's earned income for Form 2441 lines 4 and 5: Form W-2 box 1, the person's shar
 Status: **DISAGREE**
@@ -512,10 +498,10 @@ Project:
 Second:
 
 ```json
-{"of": [{"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}, {"collection": "w2", "field": "w2.box1", "op": "sum_over", "where": null}], "op": "sum"}
+{"expression": {"of": [{"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract", "take": {"ref": "line13"}}, {"collection": "w2", "field": "w2.box1", "op": "sum_over", "where": null}], "op": "sum"}, "invalid_model_types": [{"line": "person.se_line13", "message": "person.person.se_line13: reference 'line13' does not resolve"}]}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 2483 of 4945 comparisons agree; on completed returns {"candidate-refuses": 5, "candidate-unknown": 279}.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/person.deepseek.json): candidate-invalid on all 4960 records; this adjudicates the declaration, not the tax reading.
 
 ### person.dc_earned_b — This person's earned income for Form 2441 lines 18 and 19: as for lines 4 and 5, without t
 Status: **DISAGREE**
@@ -529,12 +515,10 @@ Project:
 Second:
 
 ```json
-{"of": [{"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}, {"collection": "w2", "field": "w2.box1", "op": "sum_over", "where": null}], "op": "sum"}
+{"from": {"line": "zero"}, "op": "subtract_floor0", "take": {"line": "zero"}}
 ```
 
-Second transcription's note: The per-person form supplies one earned-income amount; the second column is represented by the same amount.
-
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 2483 of 4945 comparisons agree; on completed returns {"candidate-refuses": 5, "candidate-unknown": 279}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/person.deepseek.json): 1219 of 4960 comparisons agree; on completed returns {"value": 884}.
 
 ### person.sav_ineligible — Born after January 1, 2008, claimed as a dependent on someone else's 2025 return, or a stu
 Status: **DISAGREE**
@@ -551,7 +535,7 @@ Second:
 {"args": [{"args": [{"const": true}, {"input": "person.sav_claimed"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.sav_student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.sav_born"}], "test": "ne"}], "test": "any"}
 ```
 
-Ruling: ambiguity (amb.2025.savers_ineligible_column, owner decision). Triage executable-triage-v2 (triage/person.deepseek.json): 4760 of 4945 comparisons agree; on completed returns {"candidate-unknown": 12, "value": 2}.
+Ruling: ambiguity (amb.2025.savers_ineligible_column, owner decision). Triage executable-triage-v2 (triage/person.deepseek.json): 4774 of 4960 comparisons agree; on completed returns {"candidate-unknown": 12, "value": 2}.
 
 ### person.sav_line1 — Form 8880 line 1 for this person (traditional IRA contributions for 2025, deductible or no
 Status: **DISAGREE**
@@ -568,7 +552,7 @@ Second:
 {"of": [{"input": "person.ira_trad"}, {"input": "person.sav_roth"}], "op": "sum"}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 3320 of 4945 comparisons agree; on completed returns {"candidate-unknown": 103}.
+Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 3266 of 4960 comparisons agree; on completed returns {"candidate-unknown": 104, "project-unknown": 12}.
 
 ### person.sav_line2 — Form 8880 line 2 for this person (box 12 deferrals, voluntary contributions and own SIMPLE
 Status: **DISAGREE**
@@ -585,7 +569,7 @@ Second:
 {"of": [{"input": "person.sav_voluntary"}, {"collection": "w2", "field": "w2.sav_deferral", "op": "sum_over", "where": null}], "op": "sum"}
 ```
 
-Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, differs only through recorded ambiguities or read gates, so the weight of the readings is against this candidate. amb.2025.ira_covered also applies. Triage executable-triage-v2 (triage/person.deepseek.json): 4898 of 4945 comparisons agree; on completed returns {"project-unknown": 1, "value": 5}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, differs only through recorded ambiguities or read gates, so the weight of the readings is against this candidate. amb.2025.ira_covered also applies. Triage executable-triage-v2 (triage/person.deepseek.json): 4912 of 4960 comparisons agree; on completed returns {"project-unknown": 1, "value": 5}.
 
 ### person.ira_contrib — This person's traditional IRA contributions for 2025 (zero if the traditional IRA question
 Status: **DISAGREE**
@@ -602,7 +586,7 @@ Second:
 {"input": "person.ira_trad"}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 3126 of 4945 comparisons agree; on completed returns {"candidate-unknown": 103}.
+Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 3122 of 4960 comparisons agree; on completed returns {"candidate-unknown": 104}.
 
 ### person.ira_cov — Covered by a retirement plan (worksheet line 1a or 1b for this person)
 Status: **DISAGREE**
@@ -619,7 +603,7 @@ Second:
 {"input": "person.ira_work_plan"}
 ```
 
-Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, differs only through recorded ambiguities or read gates, so the weight of the readings is against this candidate. amb.2025.ira_covered also applies. Triage executable-triage-v2 (triage/person.deepseek.json): 4735 of 4945 comparisons agree; on completed returns {"candidate-unknown": 8, "value": 2}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, differs only through recorded ambiguities or read gates, so the weight of the readings is against this candidate. amb.2025.ira_covered also applies. Triage executable-triage-v2 (triage/person.deepseek.json): 4750 of 4960 comparisons agree; on completed returns {"candidate-unknown": 8, "value": 2}.
 
 ### person.ira_line2 — Worksheet line 2 for this person's column
 Status: **DISAGREE**
@@ -636,7 +620,7 @@ Second:
 {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}
 ```
 
-Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, differs only through recorded ambiguities or read gates, so the weight of the readings is against this candidate. amb.2025.ira_covered also applies. Triage executable-triage-v2 (triage/person.deepseek.json): 1660 of 4945 comparisons agree; on completed returns {"candidate-unknown": 90, "value": 644}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, differs only through recorded ambiguities or read gates, so the weight of the readings is against this candidate. amb.2025.ira_covered also applies. Triage executable-triage-v2 (triage/person.deepseek.json): 1672 of 4960 comparisons agree; on completed returns {"candidate-unknown": 91, "value": 642}.
 
 ### person.ira_line6 — Worksheet line 6 for this person's column: is line 5 less than line 2? If yes, subtract li
 Status: **DISAGREE**
@@ -650,10 +634,10 @@ Project:
 Second:
 
 ```json
-{"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"from": {"ref": "f1040.line9"}, "op": "subtract", "take": {"ref": "f1040.line10"}}}
+{"ref": "ira.line6a"}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 1617 of 4945 comparisons agree; on completed returns {"candidate-refuses": 5, "candidate-unknown": 1039}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, differs only through recorded ambiguities or read gates, so the weight of the readings is against this candidate. amb.2025.ira_covered also applies. Triage executable-triage-v2 (triage/person.deepseek.json): 1290 of 4960 comparisons agree; on completed returns {"candidate-unknown": 81, "project-unknown": 3, "value": 657}.
 
 ### person.ira_line7 — Worksheet line 7 for this person's column
 Status: **DISAGREE**
@@ -667,12 +651,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"from": {"ref": "f1040.line9"}, "op": "subtract", "take": {"ref": "f1040.line10"}}}], "test": "lt"}], "test": "all"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"from": {"ref": "f1040.line9"}, "op": "subtract", "take": {"ref": "f1040.line10"}}}], "test": "lt"}], "test": "all"}, "then": {"param": "ira.limit_50"}}, {"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"from": {"ref": "f1040.line9"}, "op": "subtract", "take": {"ref": "f1040.line10"}}}, {"const": 0}], "test": "le"}, "then": {"line": "zero"}}], "op": "choose"}
+{"ref": "ira.line7a"}
 ```
 
-Second transcription's note: The phase-out percentage and dollar-rounding steps of the IRA Deduction Worksheet are not separately supplied in the interface; the worksheet's full age-based contribution limit is used when line 6 is positive.
-
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 1845 of 4945 comparisons agree; on completed returns {"candidate-refuses": 5, "candidate-unknown": 939}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, differs only through recorded ambiguities or read gates, so the weight of the readings is against this candidate. amb.2025.ira_covered also applies. Triage executable-triage-v2 (triage/person.deepseek.json): 1804 of 4960 comparisons agree; on completed returns {"candidate-unknown": 16, "project-unknown": 27, "value": 918}.
 
 ### person.ira_deduction — This person's IRA deduction (worksheet line 12; zero with no traditional IRA contributions
 Status: **DISAGREE**
@@ -686,10 +668,10 @@ Project:
 Second:
 
 ```json
-{"of": [{"input": "person.ira_trad"}, {"of": [{"alternatives": [{"guard": {"args": [{"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"from": {"ref": "f1040.line9"}, "op": "subtract", "take": {"ref": "f1040.line10"}}}], "test": "lt"}], "test": "all"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"from": {"ref": "f1040.line9"}, "op": "subtract", "take": {"ref": "f1040.line10"}}}], "test": "lt"}], "test": "all"}, "then": {"param": "ira.limit_50"}}, {"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"from": {"ref": "f1040.line9"}, "op": "subtract", "take": {"ref": "f1040.line10"}}}, {"const": 0}], "test": "le"}, "then": {"line": "zero"}}], "op": "choose"}, {"from": {"of": [{"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}, {"collection": "w2", "field": "w2.box1", "op": "sum_over", "where": null}], "op": "sum"}, "op": "subtract_floor0", "take": {"const": 0}}], "op": "smaller_of"}], "op": "smaller_of"}
+{"ref": "ira.line12a"}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 64 of 4945 comparisons agree; on completed returns {"candidate-refuses": 5, "candidate-unknown": 1053}.
+Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 72 of 4960 comparisons agree; on completed returns {"candidate-unknown": 1055}.
 
 ### person.ira_nondeductible — This person's nondeductible traditional IRA contributions for 2025 (Form 8606 line 1)
 Status: **DISAGREE**
@@ -703,10 +685,10 @@ Project:
 Second:
 
 ```json
-{"from": {"input": "person.ira_trad"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.ira_trad"}, {"of": [{"alternatives": [{"guard": {"args": [{"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"from": {"ref": "f1040.line9"}, "op": "subtract", "take": {"ref": "f1040.line10"}}}], "test": "lt"}], "test": "all"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"from": {"ref": "f1040.line9"}, "op": "subtract", "take": {"ref": "f1040.line10"}}}], "test": "lt"}], "test": "all"}, "then": {"param": "ira.limit_50"}}, {"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"from": {"ref": "f1040.line9"}, "op": "subtract", "take": {"ref": "f1040.line10"}}}, {"const": 0}], "test": "le"}, "then": {"line": "zero"}}], "op": "choose"}, {"from": {"of": [{"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}, {"collection": "w2", "field": "w2.box1", "op": "sum_over", "where": null}], "op": "sum"}, "op": "subtract_floor0", "take": {"const": 0}}], "op": "smaller_of"}], "op": "smaller_of"}}
+{"from": {"input": "person.ira_trad"}, "op": "subtract_floor0", "take": {"ref": "ira.line12a"}}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 64 of 4945 comparisons agree; on completed returns {"candidate-refuses": 5, "candidate-unknown": 1053}.
+Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 72 of 4960 comparisons agree; on completed returns {"candidate-unknown": 1055}.
 
 ### person.ira_files_8606 — This person files Form 8606 for nondeductible contributions to a traditional IRA for 2025
 Status: **DISAGREE**
@@ -720,10 +702,10 @@ Project:
 Second:
 
 ```json
-{"args": [{"args": [{"const": true}, {"input": "person.ira_basis_adjusted"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_dist"}], "test": "eq"}, {"args": [{"const": 0}, {"from": {"input": "person.ira_trad"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.ira_trad"}, {"of": [{"alternatives": [{"guard": {"args": [{"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"from": {"ref": "f1040.line9"}, "op": "subtract", "take": {"ref": "f1040.line10"}}}], "test": "lt"}], "test": "all"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"from": {"ref": "f1040.line9"}, "op": "subtract", "take": {"ref": "f1040.line10"}}}], "test": "lt"}], "test": "all"}, "then": {"param": "ira.limit_50"}}, {"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"from": {"ref": "f1040.line9"}, "op": "subtract", "take": {"ref": "f1040.line10"}}}, {"const": 0}], "test": "le"}, "then": {"line": "zero"}}], "op": "choose"}, {"from": {"of": [{"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}, {"collection": "w2", "field": "w2.box1", "op": "sum_over", "where": null}], "op": "sum"}, "op": "subtract_floor0", "take": {"const": 0}}], "op": "smaller_of"}], "op": "smaller_of"}}], "test": "lt"}], "test": "any"}
+{"expression": {"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_basis_adjusted"}], "test": "eq"}, {"args": [{"const": 0}, {"input": "person.ira_basis"}], "test": "lt"}, {"args": [{"const": 0}, {"from": {"input": "person.ira_trad"}, "op": "subtract_floor0", "take": {"ref": "ira.line12a"}}], "test": "lt"}], "test": "any"}, {"args": [{"const": true}, {"input": "person.ira_dist"}], "test": "eq"}], "test": "all"}, {"args": [{"const": 0}, {"from": {"input": "person.ira_trad"}, "op": "subtract_floor0", "take": {"ref": "ira.line12a"}}], "test": "lt"}], "test": "any"}, "invalid_model_types": [{"line": "person.ira_dist_gate", "message": "malformed expression (project schema): data/all/1 must have required property 'op', data/all/1 must have required property 'eq', data/all/1 must NOT have additional properties"}]}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 66 of 4945 comparisons agree; on completed returns {"candidate-refuses": 5, "candidate-unknown": 1053}.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/person.deepseek.json): candidate-invalid on all 4960 records; this adjudicates the declaration, not the tax reading.
 
 ### person.ira_8606_line2 — Form 8606 line 2 for this person (asked only when the person files Form 8606)
 Status: **DISAGREE**
@@ -740,7 +722,7 @@ Second:
 {"input": "person.ira_basis"}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 3115 of 4945 comparisons agree; on completed returns {"candidate-unknown": 103}.
+Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 3111 of 4960 comparisons agree; on completed returns {"candidate-unknown": 104}.
 
 ### person.ira_dist_gate — Nondeductible contributions for 2025 with a 2025 traditional IRA distribution or Roth conv
 Status: **DISAGREE**
@@ -754,27 +736,13 @@ Project:
 Second:
 
 ```json
-{"input": "person.ira_dist"}
+{"expression": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_basis_adjusted"}], "test": "eq"}, {"args": [{"const": 0}, {"input": "person.ira_basis"}], "test": "lt"}, {"args": [{"const": 0}, {"from": {"input": "person.ira_trad"}, "op": "subtract_floor0", "take": {"ref": "ira.line12a"}}], "test": "lt"}], "test": "any"}, {"args": [{"const": true}, {"input": "person.ira_dist"}], "test": "eq"}], "test": "all"}, "invalid_model_types": [{"line": "person.ira_dist_gate", "message": "malformed expression (project schema): data/all/1 must have required property 'op', data/all/1 must have required property 'eq', data/all/1 must NOT have additional properties"}]}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 3148 of 4945 comparisons agree; on completed returns {"candidate-unknown": 103}.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/person.deepseek.json): candidate-invalid on all 4960 records; this adjudicates the declaration, not the tax reading.
 
 ### person.ira_8606_line14 — Form 8606 line 14 for this person (total basis in traditional IRAs for 2025 and earlier ye
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "f8606", "field": "f8606.line14", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_dist"}], "test": "eq"}, "then": {"of": [{"input": "person.ira_basis"}, {"from": {"input": "person.ira_trad"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.ira_trad"}, {"of": [{"alternatives": [{"guard": {"args": [{"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"from": {"ref": "f1040.line9"}, "op": "subtract", "take": {"ref": "f1040.line10"}}}], "test": "lt"}], "test": "all"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"from": {"ref": "f1040.line9"}, "op": "subtract", "take": {"ref": "f1040.line10"}}}], "test": "lt"}], "test": "all"}, "then": {"param": "ira.limit_50"}}, {"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"from": {"ref": "f1040.line9"}, "op": "subtract", "take": {"ref": "f1040.line10"}}}, {"const": 0}], "test": "le"}, "then": {"line": "zero"}}], "op": "choose"}, {"from": {"of": [{"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}, {"collection": "w2", "field": "w2.box1", "op": "sum_over", "where": null}], "op": "sum"}, "op": "subtract_floor0", "take": {"const": 0}}], "op": "smaller_of"}], "op": "smaller_of"}}], "op": "sum"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_dist"}], "test": "eq"}, "then": {"collection": "f8606", "field": "f8606.line14", "op": "sum_over", "where": null}}], "op": "choose"}
-```
-
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 68 of 4945 comparisons agree; on completed returns {"candidate-refuses": 3, "candidate-unknown": 1055}.
+Status: **AGREE**
 
 ### person.ira_ssb — This person's IRA deduction as the Social Security Benefits Worksheet reads it (zero with
 Status: **DISAGREE**
@@ -788,10 +756,10 @@ Project:
 Second:
 
 ```json
-{"ref": "f1040.line6b"}
+{"ref": "ira.line12a"}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 4262 of 4945 comparisons agree; on completed returns {"candidate-unknown": 303}.
+Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 72 of 4960 comparisons agree; on completed returns {"candidate-unknown": 1055}.
 
 ### person.ira_se — This person's part of worksheet line 9 (zero without a Schedule C)
 Status: **DISAGREE**
@@ -805,10 +773,10 @@ Project:
 Second:
 
 ```json
-{"from": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}, "op": "subtract_floor0", "take": {"const": 0}}
+{"expression": {"from": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"line": "zero"}}, "op": "subtract_floor0", "take": {"of": [{"alternatives": [{"guard": {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.sep_contrib"}, {"line": "Step 21"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.simple_deferral"}, {"input": "person.simple_employer"}], "op": "sum"}}], "op": "choose"}, {"ref": "line13"}], "op": "sum"}}, "invalid_model_types": [{"line": "person.se_line13", "message": "person.person.se_line13: reference 'line13' does not resolve"}]}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 2478 of 4945 comparisons agree; on completed returns {"candidate-refuses": 5, "candidate-unknown": 279}.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/person.deepseek.json): candidate-invalid on all 4960 records; this adjudicates the declaration, not the tax reading.
 
 ### person.edu_kid — Line 7 conditions 1 and 2 for you: under 18; or 18 with earned income less than half of yo
 Status: **DISAGREE**
@@ -822,10 +790,10 @@ Project:
 Second:
 
 ```json
-{"args": [{"args": [{"const": true}, {"input": "person.edu"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "eq"}, {"args": [{"const": true}, {"line": "24"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_over"}], "test": "ne"}, {"args": [{"const": true}, {"line": "23"}], "test": "ne"}, {"args": [{"const": true}, {"line": "25"}], "test": "ne"}, {"args": [{"const": true}, {"line": "26"}], "test": "ne"}], "test": "all"}
+{"args": [{"args": [{"const": true}, {"input": "person.edu"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "eq"}, {"args": [{"const": true}, {"line": "24"}], "test": "eq"}, {"args": [{"const": true}, {"line": "23"}], "test": "ne"}, {"args": [{"const": true}, {"line": "25"}], "test": "ne"}, {"args": [{"const": true}, {"line": "26"}], "test": "ne"}], "test": "all"}
 ```
 
-Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/person.deepseek.json): 2518 of 4945 comparisons agree; on completed returns {"candidate-unknown": 169, "value": 4}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/person.deepseek.json): 2544 of 4960 comparisons agree; on completed returns {"candidate-unknown": 170, "value": 2}.
 
 ### person.x_l1 — Form 5329 line 1 for this person: early distributions includible in income
 Status: **AGREE**
@@ -840,7 +808,21 @@ Status: **AGREE**
 Status: **AGREE**
 
 ### person.x_tax — This person's Form 5329 taxes
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"collection": "f5329", "field": "f5329.tax", "op": "sum_over", "where": null}
+```
+
+Second:
+
+```json
+{"collection": "f5329", "field": "f5329.l4", "op": "sum_over", "where": null}
+```
+
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/person.deepseek.json): 4587 of 4960 comparisons agree; on completed returns {"value": 19}.
 
 ### person.x_must — One if this person must file Form 5329
 Status: **AGREE**
@@ -860,7 +842,7 @@ Second:
 {"collection": "retirement", "field": "retirement.l2_e05", "op": "sum_over", "where": null}
 ```
 
-Ruling: scope; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/person.deepseek.json): 4944 of 4945 comparisons agree; on completed returns no difference.
+Ruling: scope; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/person.deepseek.json): 4959 of 4960 comparisons agree; on completed returns no difference.
 
 ### person.x_two23 — Exception 23 claimed on more than one distribution
 Status: **DISAGREE**
@@ -874,10 +856,10 @@ Project:
 Second:
 
 ```json
-{"args": [{"const": 0}, {"collection": "retirement", "field": "retirement.l2_e23", "op": "sum_over", "where": null}], "test": "lt"}
+{"args": [{"const": 0, "type": "Count"}, {"collection": "retirement", "field": "retirement.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "e22"}, {"input": "retirement.exception"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "e23"}, {"input": "retirement.exception"}], "test": "eq"}], "test": "all"}], "test": "all"}}], "test": "lt"}
 ```
 
-Ruling: scope; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/person.deepseek.json): 4941 of 4945 comparisons agree; on completed returns no difference.
+Ruling: scope; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/person.deepseek.json): 4959 of 4960 comparisons agree; on completed returns no difference.
 
 ### person.x_limited_sum — Exceptions 05, 09, 19, 22 and 23 within their limits
 Status: **DISAGREE**
@@ -891,27 +873,13 @@ Project:
 Second:
 
 ```json
-{"collection": "retirement", "field": "retirement.exc_capped", "op": "sum_over", "where": null}
+{"of": [{"collection": "retirement", "field": "retirement.l2_e05", "op": "sum_over", "where": null}, {"collection": "retirement", "field": "retirement.l2_e09", "op": "sum_over", "where": null}, {"collection": "retirement", "field": "retirement.l2_e19", "op": "sum_over", "where": null}, {"collection": "retirement", "field": "retirement.l2_e22", "op": "sum_over", "where": null}, {"collection": "retirement", "field": "retirement.l2_e23", "op": "sum_over", "where": null}], "op": "sum"}
 ```
 
-Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/person.deepseek.json): 4702 of 4945 comparisons agree; on completed returns {"candidate-unknown": 4, "value": 1}.
+Ruling: scope; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/person.deepseek.json): 4955 of 4960 comparisons agree; on completed returns no difference.
 
 ### person.x_other_exc — Exceptions without a fixed limit
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"from": {"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"of": [{"collection": "retirement", "field": "retirement.l2_e05", "op": "sum_over", "where": null}, {"collection": "retirement", "field": "retirement.l2_e09", "op": "sum_over", "where": null}, {"collection": "retirement", "field": "retirement.l2_e19", "op": "sum_over", "where": null}, {"collection": "retirement", "field": "retirement.l2_e22", "op": "sum_over", "where": null}, {"collection": "retirement", "field": "retirement.l2_e23", "op": "sum_over", "where": null}], "op": "sum"}}
-```
-
-Second:
-
-```json
-{"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": null}
-```
-
-Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/person.deepseek.json): 4931 of 4945 comparisons agree; on completed returns {"value": 1}.
+Status: **AGREE**
 
 ### person.x_limit_binds — A limited exception over its limit on a person with a code S distribution
 Status: **DISAGREE**
@@ -925,27 +893,15 @@ Project:
 Second:
 
 ```json
-{"args": [{"collection": "retirement", "field": "retirement.exc_capped", "op": "sum_over", "where": null}, {"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": null}], "test": "lt"}
+{"args": [{"of": [{"collection": "retirement", "field": "retirement.l2_e05", "op": "sum_over", "where": null}, {"collection": "retirement", "field": "retirement.l2_e09", "op": "sum_over", "where": null}, {"collection": "retirement", "field": "retirement.l2_e19", "op": "sum_over", "where": null}, {"collection": "retirement", "field": "retirement.l2_e22", "op": "sum_over", "where": null}, {"collection": "retirement", "field": "retirement.l2_e23", "op": "sum_over", "where": null}], "op": "sum"}, {"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": null}], "test": "lt"}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 4774 of 4945 comparisons agree; on completed returns {"candidate-unknown": 4}.
+Second transcription's note: The archived text does not supply an aggregate indicator for whether a Form 5329 exception limit binds; this comparison is a conservative flag that other exceptions or uncapped amounts remain.
+
+Ruling: scope; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/person.deepseek.json): 4889 of 4960 comparisons agree; on completed returns no difference.
 
 ### person.x_hsa_excess — This person's 2025 HSA excess contributions (Form 8889)
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "f8889", "field": "f8889.excess_amt", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"collection": "f5329", "field": "f5329.l48", "op": "sum_over", "where": null}
-```
-
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 8 of 4945 comparisons agree; on completed returns {"candidate-unknown": 1058}.
+Status: **AGREE**
 
 ### employers — Total w2.one for this person
 Status: **AGREE**
@@ -977,47 +933,33 @@ Second:
 {"args": [{"args": [{"const": 1, "type": "Count"}, {"line": "employers"}], "test": "lt"}, {"args": [{"param": "ss.base"}, {"line": "wages"}], "test": "lt"}, {"args": [{"const": true}, {"line": "over"}], "test": "ne"}], "test": "all"}
 ```
 
-Ruling: scope; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/person.deepseek.json): 4732 of 4945 comparisons agree; on completed returns no difference.
+Ruling: scope; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/person.deepseek.json): 4952 of 4960 comparisons agree; on completed returns no difference.
 
 ### excess — Withholding above $10,918.20, if any
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"from": {"line": "withheld"}, "op": "subtract_floor0", "take": {"param": "ss.limit"}}
-```
-
-Second:
-
-```json
-{"alternatives": [{"guard": {"args": [{"const": false}, {"line": "eligible"}], "test": "eq"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": true}, {"line": "eligible"}], "test": "eq"}, "then": {"from": {"line": "withheld"}, "op": "subtract_floor0", "take": {"param": "ss.limit"}}}], "op": "choose"}
-```
-
-Ruling: scope; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/person.deepseek.json): 4721 of 4945 comparisons agree; on completed returns no difference.
+Status: **AGREE**
 
 ### zero — No excess credit
 Status: **AGREE**
 
 ### credit — Excess social security tax withheld, figured separately for this person
+Status: **AGREE**
+
+### Step 1 — Net profit from Schedule C, line 31
 Status: **DISAGREE**
 
 Project:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": false}, {"line": "eligible"}], "test": "eq"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": true}, {"line": "eligible"}], "test": "eq"}, "then": {"line": "excess"}}], "op": "choose"}
+{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}
 ```
 
 Second:
 
 ```json
-{"line": "excess"}
+{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}
 ```
 
-Ruling: scope; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/person.deepseek.json): 4928 of 4945 comparisons agree; on completed returns no difference.
-
-### Step 1 — Net profit from Schedule C, line 31
-Status: **AGREE**
+Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 2452 of 4960 comparisons agree; on completed returns {"candidate-refuses": 2, "candidate-unknown": 266, "project-refuses": 3, "project-unknown": 13}.
 
 ### Step 2 — Deduction for self-employment tax from Schedule 1, line 15
 Status: **DISAGREE**
@@ -1031,22 +973,82 @@ Project:
 Second:
 
 ```json
-{"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}
+{"expression": {"ref": "line13"}, "invalid_model_types": [{"line": "person.se_line13", "message": "person.person.se_line13: reference 'line13' does not resolve"}]}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 2390 of 4945 comparisons agree; on completed returns {"candidate-refuses": 3, "candidate-unknown": 290}.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/person.deepseek.json): candidate-invalid on all 4960 records; this adjudicates the declaration, not the tax reading.
 
 ### Step 3 — Net earnings from self-employment. Subtract step 2 from step 1
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"from": {"line": "Step 1"}, "op": "subtract_floor0", "take": {"line": "Step 2"}}
+```
+
+Second:
+
+```json
+{"expression": {"from": {"line": "Step 1"}, "op": "subtract_floor0", "take": {"line": "Step 2"}}, "invalid_model_types": [{"line": "person.se_line13", "message": "person.person.se_line13: reference 'line13' does not resolve"}]}
+```
+
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/person.deepseek.json): candidate-invalid on all 4960 records; this adjudicates the declaration, not the tax reading.
 
 ### Step 5 — Multiply step 3 by step 4 (the plan rate divided by the plan rate plus 1, to six decimal p
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"amount": {"line": "Step 3"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "person.sep_rate"}, "op": "multiply_count"}, "places": 6, "whole": {"of": [{"amount": {"const": 1}, "count": {"input": "person.sep_rate"}, "op": "multiply_count"}, {"param": "sc.hundred_cents"}], "op": "sum"}}
+```
+
+Second:
+
+```json
+{"expression": {"amount": {"line": "Step 3"}, "op": "multiply_rate", "rate": {"param": "qbi.rate"}}, "invalid_model_types": [{"line": "person.se_line13", "message": "person.person.se_line13: reference 'line13' does not resolve"}]}
+```
+
+Second transcription's note: Pub. 560 Step 4 uses the reduced plan contribution rate from the Rate Table for Self-Employed; the supplied operators do not include that table or a way to derive a rate from the whole-percent Count in person.sep_rate. This line uses the 20% maximum self-employed rate, and person.sep_contrib limits the actual deduction at person.s16.
+
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/person.deepseek.json): candidate-invalid on all 4960 records; this adjudicates the declaration, not the tax reading.
 
 ### Step 6 — Multiply $350,000 by your plan contribution rate (not the reduced rate)
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"amount": {"param": "ret.comp_limit"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "person.sep_rate"}, "op": "multiply_count"}, "places": 6, "whole": {"param": "sc.hundred_cents"}}
+```
+
+Second:
+
+```json
+{"amount": {"param": "ret.comp_limit"}, "op": "multiply_rate", "rate": {"param": "qbi.rate"}}
+```
+
+Second transcription's note: Pub. 560 Step 6 multiplies $350,000 by the plan contribution rate, not the reduced rate. The supplied operators cannot derive that rate from person.sep_rate; this line uses the 20% maximum rate as a ceiling.
+
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/person.deepseek.json): 27 of 4960 comparisons agree; on completed returns {"project-unknown": 94, "value": 953}.
 
 ### Step 7 — Enter the smaller of step 5 or step 6
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"of": [{"line": "Step 5"}, {"line": "Step 6"}], "op": "smaller_of"}
+```
+
+Second:
+
+```json
+{"expression": {"of": [{"line": "Step 5"}, {"line": "Step 6"}], "op": "smaller_of"}, "invalid_model_types": [{"line": "person.se_line13", "message": "person.person.se_line13: reference 'line13' does not resolve"}]}
+```
+
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/person.deepseek.json): candidate-invalid on all 4960 records; this adjudicates the declaration, not the tax reading.
 
 ### Step 8 — Contribution dollar limit
 Status: **AGREE**
@@ -1063,12 +1065,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"line": "Step 7"}, {"line": "Step 8"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.simple_deferral"}, {"input": "person.simple_employer"}], "op": "sum"}}], "op": "choose"}
+{"expression": {"of": [{"line": "Step 7"}, {"line": "Step 8"}], "op": "smaller_of"}, "invalid_model_types": [{"line": "person.se_line13", "message": "person.person.se_line13: reference 'line13' does not resolve"}]}
 ```
 
-Second transcription's note: For a SEP, Step 21 is the smaller of Step 7 and Step 8 because no elective-deferral steps are supplied. For a SIMPLE plan, the supplied text does not determine a Step 21, so the plan contributions are used.
-
-Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/person.deepseek.json): 4027 of 4945 comparisons agree; on completed returns {"candidate-unknown": 30, "project-refuses": 3, "project-unknown": 21, "value": 176}.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/person.deepseek.json): candidate-invalid on all 4960 records; this adjudicates the declaration, not the tax reading.
 
 ### 27 — Adjusted qualified education expenses. Don't enter more than $4,000
 Status: **DISAGREE**
@@ -1085,7 +1085,7 @@ Second:
 {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 2393 of 4945 comparisons agree; on completed returns {"candidate-shows-skipped": 41, "candidate-unknown": 231}.
+Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 2393 of 4960 comparisons agree; on completed returns {"candidate-shows-skipped": 42, "candidate-unknown": 232}.
 
 ### 28 — Subtract $2,000 from line 27. If zero or less, enter -0-
 Status: **DISAGREE**
@@ -1099,10 +1099,10 @@ Project:
 Second:
 
 ```json
-{"from": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"param": "aoc.full_band"}}
+{"from": {"line": "27"}, "op": "subtract_floor0", "take": {"param": "aoc.full_band"}}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 2396 of 4945 comparisons agree; on completed returns {"candidate-shows-skipped": 41, "candidate-unknown": 231}.
+Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 2395 of 4960 comparisons agree; on completed returns {"candidate-shows-skipped": 42, "candidate-unknown": 232}.
 
 ### 29 — Multiply line 28 by 25% (0.25)
 Status: **DISAGREE**
@@ -1116,10 +1116,10 @@ Project:
 Second:
 
 ```json
-{"amount": {"from": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"param": "aoc.full_band"}}, "op": "multiply_rate", "rate": {"param": "aoc.second_rate"}}
+{"amount": {"line": "28"}, "op": "multiply_rate", "rate": {"param": "aoc.second_rate"}}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 2396 of 4945 comparisons agree; on completed returns {"candidate-shows-skipped": 41, "candidate-unknown": 231}.
+Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 2395 of 4960 comparisons agree; on completed returns {"candidate-shows-skipped": 42, "candidate-unknown": 232}.
 
 ### 30 — American opportunity credit for this student. If line 28 is zero, enter the amount from li
 Status: **DISAGREE**
@@ -1133,10 +1133,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": 0}, {"from": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"param": "aoc.full_band"}}], "test": "eq"}, "then": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": 0}, {"from": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"param": "aoc.full_band"}}], "test": "ne"}, "then": {"of": [{"amount": {"from": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"param": "aoc.full_band"}}, "op": "multiply_rate", "rate": {"param": "aoc.second_rate"}}, {"param": "aoc.full_band"}], "op": "sum"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"line": "28"}, {"const": 0}], "test": "le"}, "then": {"line": "27"}}, {"guard": {"args": [{"const": 0}, {"line": "28"}], "test": "lt"}, "then": {"of": [{"line": "29"}, {"param": "aoc.full_band"}], "op": "sum"}}], "op": "choose"}
 ```
 
-Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 2393 of 4945 comparisons agree; on completed returns {"candidate-shows-skipped": 41, "candidate-unknown": 231}.
+Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 2393 of 4960 comparisons agree; on completed returns {"candidate-shows-skipped": 42, "candidate-unknown": 232}.
 
 ### 31 — Adjusted qualified education expenses for the lifetime learning credit
 Status: **DISAGREE**
@@ -1150,10 +1150,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"unknown": "def line line31"}, "invalid_model_types": [{"line": "person.edu_line31", "message": "person.person.edu_line31: 'aqee' has no line 'line31'"}]}
+{"from": {"input": "person.edu_inst"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}
 ```
 
-Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/person.deepseek.json): candidate-invalid on all 4945 records; this adjudicates the declaration, not the tax reading.
+Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/person.deepseek.json): 2389 of 4960 comparisons agree; on completed returns {"candidate-shows-skipped": 2, "candidate-unknown": 221}.
 
 ## Refusal gates listed by the second transcription
 
@@ -1161,30 +1161,9 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 
 | line | gates listed | not read by the project's line |
 | --- | --- | --- |
-| person.se_line6 | person.se_screen | person.se_screen |
-| person.se_line12 | person.se_screen | person.se_screen |
-| person.se_line13 | person.se_screen | person.se_screen |
-| person.s16 | person.plan_screen, person.se_screen | person.plan_screen, person.se_screen |
-| person.eic_se | person.se_screen | person.se_screen |
-| person.dc_earned | person.se_screen | person.se_screen |
-| person.dc_earned_b | person.se_screen | person.se_screen |
-| person.sav_line1 | person.sav_able | - |
-| person.ira_deduction | person.se_screen | person.se_screen |
-| person.ira_nondeductible | person.se_screen | person.se_screen |
-| person.ira_files_8606 | person.se_screen | person.se_screen |
-| person.ira_8606_line14 | person.se_screen | person.se_screen |
-| person.ira_se | person.se_screen | person.se_screen |
-| eligible | person.rrta | person.rrta |
-| excess | person.rrta | person.rrta |
+| person.s16 | person.plan_screen | person.plan_screen |
+| person.ira_se | person.plan_screen | person.plan_screen |
 | credit | person.rrta | - |
-| Step 1 | person.plan_screen | person.plan_screen |
-| Step 2 | person.plan_screen, person.se_screen | person.plan_screen, person.se_screen |
-| Step 3 | person.plan_screen, person.se_screen | person.plan_screen, person.se_screen |
-| Step 5 | person.plan_screen, person.se_screen | person.plan_screen, person.se_screen |
-| Step 6 | person.plan_screen | person.plan_screen |
-| Step 7 | person.plan_screen, person.se_screen | person.plan_screen, person.se_screen |
-| Step 8 | person.plan_screen | person.plan_screen |
-| Step 21 | person.plan_screen, person.se_screen | person.plan_screen, person.se_screen |
 | 27 | person.edu_over | person.edu_over |
 | 28 | person.edu_over | person.edu_over |
 | 29 | person.edu_over | person.edu_over |
@@ -1197,17 +1176,21 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 lines:
   - id: person.employers
     printed: "employers"
-    label: "Number of employers"
+    label: "Number of employers reporting Social Security wages or tips for this person"
     type: Count
     expr: {op: sum_over, collection: w2, field: w2.one}
   - id: person.overcount
     printed: "overcount"
-    label: "Number of employers that withheld more than the Social Security tax limit"
+    label: "Number of employers that withheld more than the Social Security wage base limit"
     type: Count
-    expr: {op: sum_over, collection: w2, field: w2.one, where: {op: test, eq: [w2.over, {const: true}]}}
+    expr:
+      op: sum_over
+      collection: w2
+      field: w2.one
+      where: {op: test, gt: [w2.box4, {param: ss.limit}]}
   - id: person.over
     printed: "over"
-    label: "Did any one employer withhold more than the Social Security tax limit?"
+    label: "Did any one employer withhold more than the Social Security wage base limit?"
     type: Bool
     expr: {op: test, gt: [person.overcount, {const: 0, type: Count}]}
   - id: person.wages
@@ -1222,15 +1205,19 @@ lines:
     expr: {op: sum_over, collection: w2, field: w2.box4}
   - id: person.eligible
     printed: "eligible"
-    label: "Eligible for the excess Social Security credit"
+    label: "Is the person eligible for the excess Social Security credit?"
     type: Bool
-    expr: {op: test, all: [{op: test, gt: [person.employers, {const: 1, type: Count}]}, {op: test, gt: [person.wages, {param: ss.base}]}, {op: test, not: {op: test, eq: [person.over, {const: true}]}}]}
-    refuses: [person.rrta]
+    expr:
+      op: test
+      all:
+        - {op: test, gt: [person.employers, {const: 1, type: Count}]}
+        - {op: test, gt: [person.wages, {param: ss.base}]}
+        - {op: test, not: {op: test, eq: [person.over, {const: true}]}}
   - id: person.excess
     printed: "excess"
-    label: "Excess Social Security tax"
+    label: "Social Security tax withheld in excess of the wage base limit"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: {op: test, eq: [person.eligible, {const: true}]}, then: person.h_excess_raw}, {guard: {op: test, eq: [person.eligible, {const: false}]}, then: person.zero}]}
+    expr: {op: subtract_floor0, from: person.withheld, take: {param: ss.limit}}
   - id: person.zero
     printed: "zero"
     label: "Zero"
@@ -1238,121 +1225,138 @@ lines:
     expr: {op: param, ref: ss.zero}
   - id: person.credit
     printed: "credit"
-    label: "Excess Social Security and tier 1 RRTA tax withheld credit"
+    label: "Excess Social Security credit"
     type: NonNegDollars
-    expr: {op: copy, from: person.excess}
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.eligible, {const: true}]}
+          then: person.excess
+        - guard: {op: test, eq: [person.eligible, {const: false}]}
+          then: person.zero
+    refuses: [person.rrta]
   - id: person.sep_s1
     printed: "Step 1"
-    label: "Net profit from Schedule C, Schedule F, or Schedule K-1 box 14 code A"
+    label: "Enter your net profit from Schedule C, line 31"
     type: Dollars
     expr: {op: copy, from: person.sc_total}
-    refuses: [person.plan_screen]
   - id: person.sep_s2
     printed: "Step 2"
-    label: "Deduction for self-employment tax"
+    label: "Enter your deduction for self-employment tax from Schedule 1, line 15"
     type: NonNegDollars
     expr: {op: copy, from: person.se_line13}
-    refuses: [person.plan_screen]
   - id: person.sep_s3
     printed: "Step 3"
-    label: "Net earnings from self-employment"
+    label: "Net earnings from self-employment: subtract step 2 from step 1"
     type: NonNegDollars
     expr: {op: subtract_floor0, from: person.sep_s1, take: person.sep_s2}
-    refuses: [person.plan_screen]
   - id: person.sep_s5
     printed: "Step 5"
-    label: "Step 3 multiplied by the self-employed rate"
+    label: "Multiply step 3 by your self-employed rate"
     type: NonNegDollars
-    expr: {op: prorate, amount: person.sep_s3, part: person.sep_rate_cents, whole: person.sep_rate_denom, places: 6}
-    refuses: [person.plan_screen]
+    expr: {op: multiply_rate, amount: person.sep_s3, rate: {param: qbi.rate}}
+    note: "Pub. 560 Step 4 uses the reduced plan contribution rate from the Rate Table for Self-Employed; the supplied operators do not include that table or a way to derive a rate from the whole-percent Count in person.sep_rate. This line uses the 20% maximum self-employed rate, and person.sep_contrib limits the actual deduction at person.s16."
   - id: person.sep_s6
     printed: "Step 6"
-    label: "Compensation limit multiplied by the plan contribution rate"
+    label: "Multiply the compensation limit by your plan contribution rate"
     type: NonNegDollars
-    expr: {op: prorate, amount: person.comp_limit, part: person.sep_rate_cents, whole: {param: sc.hundred_cents}, places: 6}
-    refuses: [person.plan_screen]
+    expr: {op: multiply_rate, amount: person.h_comp_limit, rate: {param: qbi.rate}}
+    note: "Pub. 560 Step 6 multiplies $350,000 by the plan contribution rate, not the reduced rate. The supplied operators cannot derive that rate from person.sep_rate; this line uses the 20% maximum rate as a ceiling."
   - id: person.sep_s7
     printed: "Step 7"
-    label: "Smaller of Step 5 or Step 6"
+    label: "Enter the smaller of step 5 or step 6"
     type: NonNegDollars
     expr: {op: smaller_of, of: [person.sep_s5, person.sep_s6]}
-    refuses: [person.plan_screen]
   - id: person.sep_s8
     printed: "Step 8"
     label: "Contribution dollar limit"
     type: NonNegDollars
     expr: {op: param, ref: ret.sep_dollar_limit}
-    refuses: [person.plan_screen]
   - id: person.sep_s21
     printed: "Step 21"
-    label: "Maximum deductible contribution"
+    label: "Maximum deductible contribution: subtract step 20 from step 19"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: {op: test, eq: [person.plan, {const: "sep"}]}, then: person.sep_limit_cap}, {guard: {op: test, eq: [person.plan, {const: "simple"}]}, then: person.simple_total}, {guard: {op: test, eq: [person.plan, {const: "none"}]}, then: person.zero}]}
-    refuses: [person.plan_screen]
-    note: "For a SEP, Step 21 is the smaller of Step 7 and Step 8 because no elective-deferral steps are supplied. For a SIMPLE plan, the supplied text does not determine a Step 21, so the plan contributions are used."
+    expr: {op: smaller_of, of: [person.sep_s7, person.sep_s8]}
   - id: person.edu_line27
     printed: "27"
-    label: "Adjusted qualified education expenses for the American opportunity credit"
+    label: "Adjusted qualified education expenses for the American opportunity credit, not more than $4,000"
     type: NonNegDollars
-    expr: {op: copy, from: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.edu_adj}, line: line27}}
+    expr: {op: smaller_of, of: [person.h_aqe_aoc, person.h_aoc_cap]}
     refuses: [person.edu_over]
   - id: person.edu_line28
     printed: "28"
-    label: "Subtract $2,000 from line 27"
+    label: "Subtract $2,000 from line 27. If zero or less, enter -0-"
     type: NonNegDollars
-    expr: {op: copy, from: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.edu_adj}, line: line28}}
-    refuses: [person.edu_over]
+    expr: {op: subtract_floor0, from: person.edu_line27, take: {param: aoc.full_band}}
   - id: person.edu_line29
     printed: "29"
     label: "Multiply line 28 by 25%"
     type: NonNegDollars
-    expr: {op: copy, from: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.edu_adj}, line: line29}}
-    refuses: [person.edu_over]
+    expr: {op: multiply_rate, amount: person.edu_line28, rate: {param: aoc.second_rate}}
   - id: person.edu_line30
     printed: "30"
-    label: "American opportunity credit amount"
+    label: "If line 28 is zero, enter line 27; otherwise add $2,000 to line 29"
     type: NonNegDollars
-    expr: {op: copy, from: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.edu_adj}, line: line30}}
-    refuses: [person.edu_over]
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.h_l28_zero, {const: true}]}
+          then: person.edu_line27
+        - guard: {op: test, eq: [person.h_l28_zero, {const: false}]}
+          then: person.h_aoc_add
   - id: person.edu_line31
     printed: "31"
     label: "Adjusted qualified education expenses for the lifetime learning credit"
     type: NonNegDollars
-    expr: {op: copy, from: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.edu_adj}, line: line31}}
+    expr: {op: subtract_floor0, from: person.edu_inst, take: person.h_adj_sum}
     refuses: [person.edu_over]
   - id: person.one
     printed: "(helper)"
-    label: "Constant one"
+    label: "One"
     type: Count
-    expr: {op: param, ref: ss.one}
+    expr: {op: param, ref: person.one}
   - id: person.educator_deduction
     printed: "(helper)"
-    label: "Educator expense deduction"
+    label: "Educator expenses deduction"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: {op: test, eq: [person.eligible_educator, {const: true}]}, then: person.educator_cap_applied}, {guard: {op: test, eq: [person.eligible_educator, {const: false}]}, then: person.zero}]}
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.eligible_educator, {const: true}]}
+          then: person.h_educator_capped
+        - guard: {op: test, eq: [person.eligible_educator, {const: false}]}
+          then: person.zero
   - id: person.hsa_forms
     printed: "(helper)"
-    label: "Number of Forms 8889 for this person"
+    label: "Number of HSA forms for this person"
     type: Count
     expr: {op: sum_over, collection: f8889, field: f8889.one}
   - id: person.hsa_split
     printed: "(helper)"
-    label: "Number of Forms 8889 with a family-coverage split"
+    label: "Number of HSA forms requiring a spouse allocation"
     type: Count
-    expr: {op: sum_over, collection: f8889, field: f8889.one, where: {op: test, eq: [f8889.split, {const: true}]}}
+    expr:
+      op: sum_over
+      collection: f8889
+      field: f8889.one
+      where: {op: test, eq: [f8889.split, {const: true}]}
   - id: person.hsa_agreed
     printed: "(helper)"
-    label: "Number of Forms 8889 with an agreed allocation"
+    label: "Number of HSA forms using an agreed allocation"
     type: Count
-    expr: {op: sum_over, collection: f8889, field: f8889.one, where: {op: test, eq: [f8889.allocation, {const: "agreed"}]}}
+    expr:
+      op: sum_over
+      collection: f8889
+      field: f8889.one
+      where: {op: test, eq: [f8889.allocation, {const: "agreed"}]}
   - id: person.hsa_step1
     printed: "(helper)"
-    label: "Total HSA Step 1 contribution limit"
+    label: "Total HSA family contribution limit before allocation"
     type: NonNegDollars
     expr: {op: sum_over, collection: f8889, field: f8889.step1}
   - id: person.hsa_share
     printed: "(helper)"
-    label: "Total allocated HSA family contribution share"
+    label: "Total HSA contribution limit allocated to this person"
     type: NonNegDollars
     expr: {op: sum_over, collection: f8889, field: f8889.share}
   - id: person.hsa_deduction
@@ -1382,9 +1386,9 @@ lines:
     expr: {op: sum_over, collection: tipjob, field: tipjob.col_d}
   - id: person.tip_reported
     printed: "(helper)"
-    label: "Qualified tips reported by employers or by the taxpayer"
+    label: "Total qualified tips reported on Form 4137 for all employers"
     type: NonNegDollars
-    expr: {op: sum_over, collection: tipjob, field: tipjob.amount}
+    expr: {op: sum_over, collection: tipjob, field: tipjob.col_c}
   - id: person.ot_employers
     printed: "(helper)"
     label: "Number of employers with qualified overtime compensation"
@@ -1392,62 +1396,94 @@ lines:
     expr: {op: sum_over, collection: otjob, field: otjob.one}
   - id: person.ot_total
     printed: "(helper)"
-    label: "Total qualified overtime compensation"
+    label: "Total qualified overtime compensation from all employers"
     type: NonNegDollars
     expr: {op: sum_over, collection: otjob, field: otjob.col_b}
   - id: person.box1
     printed: "(helper)"
-    label: "Total Form W-2 box 1 wages"
+    label: "Total wages, tips and other compensation"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.box1}
   - id: person.box2
     printed: "(helper)"
-    label: "Total Form W-2 box 2 federal income tax withheld"
+    label: "Total federal income tax withheld on Forms W-2"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.box2}
   - id: person.ira_amount_a
     printed: "(helper)"
     label: "Total IRA distributions"
     type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: retirement.amount_a, where: {op: test, any: [{op: test, eq: [retirement.account, {const: "traditional_ira"}]}, {op: test, eq: [retirement.account, {const: "roth_ira"}]}]}}
+    expr:
+      op: sum_over
+      collection: retirement
+      field: retirement.amount_a
+      where: {op: test, eq: [retirement.is_ira, {const: true}]}
   - id: person.ira_taxable
     printed: "(helper)"
     label: "Taxable amount of IRA distributions"
     type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: retirement.ira_taxable, where: {op: test, any: [{op: test, eq: [retirement.account, {const: "traditional_ira"}]}, {op: test, eq: [retirement.account, {const: "roth_ira"}]}]}}
+    expr:
+      op: sum_over
+      collection: retirement
+      field: retirement.ira_taxable
+      where: {op: test, eq: [retirement.is_ira, {const: true}]}
   - id: person.ira_rollovers
     printed: "(helper)"
-    label: "Number of IRA distributions rolled over"
+    label: "Number of IRA distributions with a rollover"
     type: Count
-    expr: {op: sum_over, collection: retirement, field: retirement.one, where: {op: test, all: [{op: test, any: [{op: test, eq: [retirement.account, {const: "traditional_ira"}]}, {op: test, eq: [retirement.account, {const: "roth_ira"}]}]}, {op: test, eq: [retirement.has_rollover, {const: true}]}]}}
+    expr:
+      op: sum_over
+      collection: retirement
+      field: retirement.one
+      where:
+        op: test
+        all:
+          - {op: test, eq: [retirement.is_ira, {const: true}]}
+          - {op: test, eq: [retirement.has_rollover, {const: true}]}
   - id: person.plan_amount_a
     printed: "(helper)"
     label: "Total pension and annuity distributions"
     type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: retirement.amount_a, where: {op: test, eq: [retirement.account, {const: "plan"}]}}
+    expr:
+      op: sum_over
+      collection: retirement
+      field: retirement.amount_a
+      where: {op: test, eq: [retirement.account, {const: "plan"}]}
   - id: person.plan_taxable
     printed: "(helper)"
     label: "Taxable amount of pension and annuity distributions"
     type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: retirement.plan_taxable, where: {op: test, eq: [retirement.account, {const: "plan"}]}}
+    expr:
+      op: sum_over
+      collection: retirement
+      field: retirement.plan_taxable
+      where: {op: test, eq: [retirement.account, {const: "plan"}]}
   - id: person.plan_rollovers
     printed: "(helper)"
-    label: "Number of pension and annuity distributions rolled over"
+    label: "Number of pension and annuity distributions with a rollover"
     type: Count
-    expr: {op: sum_over, collection: retirement, field: retirement.one, where: {op: test, all: [{op: test, eq: [retirement.account, {const: "plan"}]}, {op: test, eq: [retirement.has_rollover, {const: true}]}]}}
+    expr:
+      op: sum_over
+      collection: retirement
+      field: retirement.one
+      where:
+        op: test
+        all:
+          - {op: test, eq: [retirement.account, {const: "plan"}]}
+          - {op: test, eq: [retirement.has_rollover, {const: true}]}
   - id: person.sav_dist
     printed: "(helper)"
-    label: "Certain distributions for the retirement savings contributions credit"
+    label: "Total distributions counted for the retirement savings contributions credit"
     type: NonNegDollars
     expr: {op: sum_over, collection: retirement, field: retirement.sav_amount}
   - id: person.medicare5
     printed: "(helper)"
-    label: "Total Form W-2 box 5 Medicare wages and tips"
+    label: "Total Medicare wages and tips"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.box5}
   - id: person.medicare6
     printed: "(helper)"
-    label: "Total Form W-2 box 6 Medicare tax withheld"
+    label: "Total Medicare tax withheld"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.box6}
   - id: person.sc_count
@@ -1457,75 +1493,82 @@ lines:
     expr: {op: sum_over, collection: sc, field: sc.one}
   - id: person.ho_count
     printed: "(helper)"
-    label: "Number of Schedule C businesses with home-office use"
+    label: "Number of Schedule C businesses claiming business use of home"
     type: Count
-    expr: {op: sum_over, collection: sc, field: sc.one, where: {op: test, eq: [sc.ho_uses, {const: true}]}}
+    expr:
+      op: sum_over
+      collection: sc
+      field: sc.one
+      where: {op: test, eq: [sc.ho_uses, {const: true}]}
   - id: person.mq_q4
     printed: "(helper)"
-    label: "Total depreciable basis placed in service in the fourth quarter"
+    label: "Total fourth-quarter mid-quarter depreciation base"
     type: NonNegDollars
     expr: {op: sum_over, collection: sc, field: sc.mq_q4}
   - id: person.mq_total
     printed: "(helper)"
-    label: "Total depreciable basis placed in service during the year"
+    label: "Total mid-quarter depreciation base"
     type: NonNegDollars
     expr: {op: sum_over, collection: sc, field: sc.mq_total}
   - id: person.cost179
     printed: "(helper)"
-    label: "Total cost of section 179 property"
+    label: "Total section 179 cost"
     type: NonNegDollars
     expr: {op: sum_over, collection: sc, field: sc.cost179}
   - id: person.s179_nonlisted
     printed: "(helper)"
-    label: "Section 179 cost of non-vehicle property"
+    label: "Section 179 cost for non-listed property"
     type: NonNegDollars
     expr: {op: sum_over, collection: sc, field: sc.cost179_a}
-    note: "The supplied Schedule C fields separate section 179 cost into assets and vehicles; the listed-property split is not otherwise supplied at the person level."
   - id: person.s179_listed
     printed: "(helper)"
-    label: "Section 179 cost of listed property"
+    label: "Section 179 cost for listed property"
     type: NonNegDollars
     expr: {op: sum_over, collection: sc, field: sc.cost179_v}
-    note: "The supplied Schedule C fields separate section 179 cost into assets and vehicles; vehicles are used as the listed-property amount here."
   - id: person.income179
     printed: "(helper)"
-    label: "Business income for the section 179 limitation"
+    label: "Business income for the section 179 limit"
     type: Dollars
-    expr: {op: sum_over, collection: sc, field: sc.result}
+    expr: {op: sum_over, collection: sc, field: sc.line31}
   - id: person.sc_total
     printed: "(helper)"
     label: "Total Schedule C net profit or loss"
     type: Dollars
-    expr: {op: sum_over, collection: sc, field: sc.result}
+    expr: {op: sum_over, collection: sc, field: sc.line31}
   - id: person.se_line6
     printed: "(helper)"
-    label: "Schedule SE line 6"
+    label: "Schedule SE, line 6"
     type: NonNegDollars
-    expr: {op: copy, from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line6}}
-    refuses: [person.se_screen]
+    expr: {op: copy, from: line6}
   - id: person.se_line12
     printed: "(helper)"
-    label: "Schedule SE line 12 self-employment tax"
+    label: "Schedule SE, line 12"
     type: NonNegDollars
-    expr: {op: copy, from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line12}}
-    refuses: [person.se_screen]
+    expr: {op: copy, from: line12}
   - id: person.se_line13
     printed: "(helper)"
-    label: "Schedule SE line 13 deduction for one-half of self-employment tax"
+    label: "Schedule SE, line 13"
     type: NonNegDollars
-    expr: {op: copy, from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line13}}
-    refuses: [person.se_screen]
+    expr: {op: copy, from: line13}
   - id: person.s16
     printed: "(helper)"
-    label: "Self-employed SEP, SIMPLE, and qualified plans deduction"
+    label: "Self-employed SEP, SIMPLE and qualified plan contributions"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: {op: test, eq: [person.plan, {const: "sep"}]}, then: person.s16_sep}, {guard: {op: test, eq: [person.plan, {const: "simple"}]}, then: person.s16_simple}, {guard: {op: test, eq: [person.plan, {const: "none"}]}, then: person.zero}]}
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.plan, {const: "sep"}]}
+          then: person.h_sep_actual
+        - guard: {op: test, eq: [person.plan, {const: "simple"}]}
+          then: person.h_simple_total
+        - guard: {op: test, eq: [person.plan, {const: "none"}]}
+          then: person.zero
     refuses: [person.plan_screen]
   - id: person.positive_profits
     printed: "(helper)"
-    label: "Total positive Schedule C profits"
+    label: "Positive net profit from self-employment"
     type: NonNegDollars
-    expr: {op: sum_over, collection: sc, field: sc.profit_pos}
+    expr: {op: subtract_floor0, from: person.sc_total, take: person.zero}
   - id: person.sehi
     printed: "(helper)"
     label: "Self-employed health insurance deduction"
@@ -1535,28 +1578,31 @@ lines:
     printed: "(helper)"
     label: "Qualified business income deduction"
     type: Dollars
-    expr: {op: copy, from: qbi.deduction}
+    expr: {op: sum_over, collection: sc, field: sc.qbi}
   - id: person.eic_se
     printed: "(helper)"
     label: "Self-employment earned income for the earned income credit"
     type: Dollars
-    expr: {op: subtract, from: person.se_line3, take: person.se_line13}
-    refuses: [person.se_screen]
+    expr: {op: subtract, from: person.sc_total, take: person.se_line13}
   - id: person.sc_1a
     printed: "(helper)"
-    label: "Number of statutory-employee Schedule C businesses"
+    label: "Number of Schedule C businesses with qualified tips or overtime"
     type: Count
-    expr: {op: sum_over, collection: sc, field: sc.one, where: {op: test, eq: [sc.statutory, {const: true}]}}
+    expr:
+      op: sum_over
+      collection: sc
+      field: sc.one
+      where: {op: test, eq: [sc.tips_ot, {const: true}]}
   - id: person.dc_benefits
     printed: "(helper)"
-    label: "Total dependent care benefits from Forms W-2"
+    label: "Dependent care benefits from Forms W-2"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.dc_benefits}
   - id: person.dc_has_box10
     printed: "(helper)"
     label: "Did any Form W-2 show dependent care benefits?"
     type: Bool
-    expr: {op: test, gt: [person.dc_benefits, {const: 0}]}
+    expr: {op: test, gt: [person.h_dc_box10_count, {const: 0, type: Count}]}
   - id: person.dc_earned
     printed: "(helper)"
     label: "Earned income for the child and dependent care credit"
@@ -1564,26 +1610,29 @@ lines:
     expr: {op: sum, of: [person.box1, person.eic_se]}
   - id: person.dc_earned_b
     printed: "(helper)"
-    label: "Second earned income amount for the child and dependent care credit"
+    label: "Spouse earned income placeholder for this person"
     type: Dollars
-    expr: {op: copy, from: person.dc_earned}
-    note: "The per-person form supplies one earned-income amount; the second column is represented by the same amount."
+    expr: {op: subtract_floor0, from: person.zero, take: person.zero}
   - id: person.sav_ineligible
     printed: "(helper)"
-    label: "Ineligible for the retirement savings contributions credit"
+    label: "Is the person ineligible for the retirement savings contributions credit?"
     type: Bool
-    expr: {op: test, any: [{op: test, not: {op: test, eq: [person.sav_born, {const: true}]}}, {op: test, eq: [person.sav_student, {const: true}]}, {op: test, eq: [person.sav_claimed, {const: true}]}]}
+    expr:
+      op: test
+      any:
+        - {op: test, not: {op: test, eq: [person.sav_born, {const: true}]}}
+        - {op: test, eq: [person.sav_student, {const: true}]}
+        - {op: test, eq: [person.sav_claimed, {const: true}]}
   - id: person.sav_line1
     printed: "(helper)"
-    label: "Traditional and Roth IRA contributions, and ABLE account contributions"
+    label: "Traditional and Roth IRA contributions and ABLE contributions"
     type: NonNegDollars
-    expr: {op: sum, of: [person.ira_trad, person.sav_roth]}
-    refuses: [person.sav_able]
+    expr: {op: sum, of: [person.ira_contrib, person.sav_roth]}
   - id: person.sav_line2
     printed: "(helper)"
-    label: "Elective deferrals, voluntary employee contributions, and 501(c)(18)(D) contributions"
+    label: "Elective deferrals and voluntary employee contributions"
     type: NonNegDollars
-    expr: {op: sum, of: [person.sav_deferral_sum, person.sav_voluntary]}
+    expr: {op: sum, of: [person.h_sav_def, person.sav_voluntary]}
   - id: person.ira_contrib
     printed: "(helper)"
     label: "Traditional IRA contributions for 2025"
@@ -1591,40 +1640,49 @@ lines:
     expr: {op: copy, from: person.ira_trad}
   - id: person.ira_cov
     printed: "(helper)"
-    label: "Covered by a retirement plan at work"
+    label: "Was the person covered by a retirement plan at work?"
     type: Bool
     expr: {op: copy, from: person.ira_work_plan}
   - id: person.ira_line2
     printed: "(helper)"
-    label: "IRA deduction worksheet line 2 threshold"
+    label: "IRA deduction worksheet line 2"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: {op: test, eq: [person.ira_work_plan, {const: true}]}, then: person.ira_line2_covered}, {guard: {op: test, eq: [person.ira_work_plan, {const: false}]}, then: person.ira_line2_uncovered}]}
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.ira_cov, {const: true}]}
+          then: person.h_ira_line2_cov
+        - guard: {op: test, eq: [person.ira_cov, {const: false}]}
+          then: person.h_ira_line2_not
   - id: person.ira_line6
     printed: "(helper)"
-    label: "IRA deduction worksheet line 6"
+    label: "IRA deduction worksheet line 6a"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.ira_line2, take: person.ira_line5}
+    expr: {op: copy, from: ira.line6a}
   - id: person.ira_line7
     printed: "(helper)"
-    label: "IRA deduction worksheet line 7"
+    label: "IRA deduction worksheet line 7a"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: {op: test, all: [{op: test, gt: [person.ira_line6, {const: 0}]}, {op: test, eq: [person.ira_age50, {const: true}]}]}, then: person.ira_limit_50}, {guard: {op: test, all: [{op: test, gt: [person.ira_line6, {const: 0}]}, {op: test, eq: [person.ira_age50, {const: false}]}]}, then: person.ira_limit}, {guard: {op: test, le: [person.ira_line6, {const: 0}]}, then: person.zero}]}
-    note: "The phase-out percentage and dollar-rounding steps of the IRA Deduction Worksheet are not separately supplied in the interface; the worksheet's full age-based contribution limit is used when line 6 is positive."
+    expr: {op: copy, from: ira.line7a}
   - id: person.ira_deduction
     printed: "(helper)"
-    label: "IRA deduction"
+    label: "IRA deduction worksheet line 12a"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [person.ira_cap, person.ira_trad]}
+    expr: {op: copy, from: ira.line12a}
   - id: person.ira_nondeductible
     printed: "(helper)"
     label: "Nondeductible traditional IRA contributions"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.ira_trad, take: person.ira_deduction}
+    expr: {op: subtract_floor0, from: person.ira_contrib, take: person.ira_deduction}
   - id: person.ira_files_8606
     printed: "(helper)"
-    label: "Must file Form 8606"
+    label: "Must the person file Form 8606?"
     type: Bool
-    expr: {op: test, any: [{op: test, gt: [person.ira_nondeductible, {const: 0}]}, {op: test, eq: [person.ira_basis_adjusted, {const: true}]}, {op: test, eq: [person.ira_dist, {const: true}]}]}
+    expr:
+      op: test
+      any:
+        - {op: test, gt: [person.ira_nondeductible, {const: 0}]}
+        - {op: test, eq: [person.ira_dist_gate, {const: true}]}
   - id: person.ira_8606_line2
     printed: "(helper)"
     label: "Form 8606 line 2 total basis in traditional IRAs"
@@ -1632,29 +1690,46 @@ lines:
     expr: {op: copy, from: person.ira_basis}
   - id: person.ira_dist_gate
     printed: "(helper)"
-    label: "Did the taxpayer take a traditional IRA distribution or make a Roth IRA conversion?"
+    label: "Does a 2025 IRA distribution require Form 8606 Part I?"
     type: Bool
-    expr: {op: copy, from: person.ira_dist}
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [person.ira_dist, {const: true}]}
+        - any:
+            - {op: test, gt: [person.ira_basis, {const: 0}]}
+            - {op: test, gt: [person.ira_nondeductible, {const: 0}]}
+            - {op: test, eq: [person.ira_basis_adjusted, {const: true}]}
   - id: person.ira_8606_line14
     printed: "(helper)"
     label: "Form 8606 line 14 total basis in traditional IRAs for 2025 and earlier years"
     type: NonNegDollars
-    expr: {op: choose, alternatives: [{guard: {op: test, eq: [person.ira_dist, {const: true}]}, then: person.ira_8606_dist}, {guard: {op: test, eq: [person.ira_dist, {const: false}]}, then: person.ira_8606_no_dist}]}
+    expr: {op: sum_over, collection: f8606, field: f8606.line14}
   - id: person.ira_ssb
     printed: "(helper)"
-    label: "Taxable social security benefits for the IRA deduction"
+    label: "IRA deduction used in the social security benefits worksheet"
     type: NonNegDollars
-    expr: {op: copy, from: f1040.line6b}
+    expr: {op: copy, from: person.ira_deduction}
   - id: person.ira_se
     printed: "(helper)"
     label: "Self-employment earned income for the IRA deduction"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.eic_se, take: {const: 0}}
+    expr: {op: subtract_floor0, from: person.positive_profits, take: person.h_ira_se_ded}
   - id: person.edu_kid
     printed: "(helper)"
-    label: "Student meets the American opportunity credit student conditions"
+    label: "Does this student meet the American opportunity credit eligibility gates?"
     type: Bool
-    expr: {op: test, all: [{op: test, eq: [person.edu, {const: true}]}, {op: test, eq: [person.edu_1098t, {const: true}]}, {op: test, not: {op: test, eq: [person.edu_line23, {const: true}]}}, {op: test, eq: [person.edu_line24, {const: true}]}, {op: test, not: {op: test, eq: [person.edu_line25, {const: true}]}}, {op: test, not: {op: test, eq: [person.edu_line26, {const: true}]}}, {op: test, eq: [person.edu_ein, {const: true}]}, {op: test, not: {op: test, eq: [person.edu_over, {const: true}]}}]}
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [person.edu, {const: true}]}
+        - {op: test, eq: [person.edu_1098t, {const: true}]}
+        - {op: test, eq: [person.edu_ein, {const: true}]}
+        - {op: test, eq: [person.tin, {const: true}]}
+        - {op: test, not: {op: test, eq: [person.edu_line23, {const: true}]}}
+        - {op: test, eq: [person.edu_line24, {const: true}]}
+        - {op: test, not: {op: test, eq: [person.edu_line25, {const: true}]}}
+        - {op: test, not: {op: test, eq: [person.edu_line26, {const: true}]}}
   - id: person.x_l1
     printed: "(helper)"
     label: "Total early distributions includible in income"
@@ -1662,188 +1737,187 @@ lines:
     expr: {op: sum_over, collection: retirement, field: retirement.l1}
   - id: person.x_l2_all
     printed: "(helper)"
-    label: "Total early distributions not subject to the additional tax"
+    label: "Total early distributions claimed as not subject to the additional tax"
     type: NonNegDollars
     expr: {op: sum_over, collection: retirement, field: retirement.l2}
   - id: person.x_l1_s
     printed: "(helper)"
-    label: "Early SIMPLE IRA distributions"
+    label: "Total SIMPLE IRA early distributions includible in income"
     type: NonNegDollars
     expr: {op: sum_over, collection: retirement, field: retirement.l1_s}
   - id: person.x_l2_s
     printed: "(helper)"
-    label: "Early SIMPLE IRA distributions not subject to the additional tax"
+    label: "Total SIMPLE IRA early distributions claimed as not subject to the additional tax"
     type: NonNegDollars
     expr: {op: sum_over, collection: retirement, field: retirement.l2_s}
   - id: person.x_tax
     printed: "(helper)"
-    label: "Additional tax on early distributions"
+    label: "Total additional tax on early distributions"
     type: NonNegDollars
-    expr: {op: sum_over, collection: f5329, field: f5329.tax}
+    expr: {op: sum_over, collection: f5329, field: f5329.l4}
   - id: person.x_must
     printed: "(helper)"
-    label: "Number of Forms 5329 required for this person"
+    label: "Number of Forms 5329 required"
     type: Count
-    expr: {op: sum_over, collection: f5329, field: f5329.one, where: {op: test, eq: [f5329.must, {const: true}]}}
+    expr:
+      op: sum_over
+      collection: f5329
+      field: f5329.one
+      where: {op: test, eq: [f5329.must, {const: true}]}
   - id: person.x_c05
     printed: "(helper)"
-    label: "Exception 05 amount for medical expenses"
+    label: "Medical expenses exception amounts claimed"
     type: NonNegDollars
     expr: {op: sum_over, collection: retirement, field: retirement.l2_e05}
   - id: person.x_two23
     printed: "(helper)"
-    label: "Exception 23 amount present"
+    label: "Does any single distribution claim both exception 22 and exception 23?"
     type: Bool
-    expr: {op: test, gt: [person.x_e23, {const: 0}]}
+    expr: {op: test, gt: [person.h_two23_count, {const: 0, type: Count}]}
   - id: person.x_limited_sum
     printed: "(helper)"
-    label: "Total early-distribution exceptions after dollar limits"
+    label: "Total exceptions subject to dollar or account limits"
     type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: retirement.exc_capped}
+    expr:
+      op: sum
+      of: [person.x_c05, person.h_x_e09, person.h_x_e19, person.h_x_e22, person.h_x_e23]
   - id: person.x_other_exc
     printed: "(helper)"
-    label: "Total early-distribution exceptions before dollar limits"
+    label: "Exceptions not included in the limited-exception total"
     type: NonNegDollars
-    expr: {op: copy, from: person.x_l2_all}
+    expr: {op: subtract_floor0, from: person.x_l2_all, take: person.x_limited_sum}
+    note: "Form 5329 aggregates several exceptions with different dollar limits. This line treats the limited exceptions as the sum of the medical, first-home, birth or adoption, domestic abuse, and emergency personal expense amounts, and the remainder as other exceptions."
   - id: person.x_limit_binds
     printed: "(helper)"
-    label: "Do the dollar limits reduce the early-distribution exception?"
+    label: "Do the exception amounts exceed the limited-exception total?"
     type: Bool
     expr: {op: test, gt: [person.x_l2_all, person.x_limited_sum]}
+    note: "The archived text does not supply an aggregate indicator for whether a Form 5329 exception limit binds; this comparison is a conservative flag that other exceptions or uncapped amounts remain."
   - id: person.x_hsa_excess
     printed: "(helper)"
-    label: "Total excess HSA contributions"
+    label: "Excess HSA contributions for 2025"
     type: NonNegDollars
-    expr: {op: sum_over, collection: f5329, field: f5329.l48}
-  - id: person.h_excess_raw
-    printed: "(helper)"
-    label: "Excess Social Security tax before eligibility"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.withheld, take: {param: ss.limit}}
-  - id: person.comp_limit
+    expr: {op: sum_over, collection: f8889, field: f8889.excess_amt}
+  - id: person.h_comp_limit
     printed: "(helper)"
     label: "Compensation limit"
     type: NonNegDollars
     expr: {op: param, ref: ret.comp_limit}
-  - id: person.one_cent
+  - id: person.h_educator_capped
     printed: "(helper)"
-    label: "One cent"
+    label: "Educator expenses capped at the annual limit"
     type: NonNegDollars
-    expr: {op: param, ref: sc.one_cent}
-  - id: person.hundred_cents
+    expr: {op: smaller_of, of: [person.educator_expenses, person.h_educator_max]}
+  - id: person.h_educator_max
     printed: "(helper)"
-    label: "One dollar in cents"
-    type: NonNegDollars
-    expr: {op: param, ref: sc.hundred_cents}
-  - id: person.sep_rate_cents
-    printed: "(helper)"
-    label: "Plan contribution rate expressed in cents"
-    type: NonNegDollars
-    expr: {op: multiply_count, amount: person.one_cent, count: person.sep_rate}
-  - id: person.sep_rate_denom
-    printed: "(helper)"
-    label: "One dollar plus the plan contribution rate in cents"
-    type: NonNegDollars
-    expr: {op: sum, of: [person.hundred_cents, person.sep_rate_cents]}
-  - id: person.sep_limit_cap
-    printed: "(helper)"
-    label: "Smaller of Step 7 and Step 8"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.sep_s7, person.sep_s8]}
-  - id: person.simple_total
-    printed: "(helper)"
-    label: "Total SIMPLE IRA contributions"
-    type: NonNegDollars
-    expr: {op: sum, of: [person.simple_deferral, person.simple_employer]}
-  - id: person.s16_sep
-    printed: "(helper)"
-    label: "SEP deduction"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.sep_contrib, person.sep_s21]}
-  - id: person.s16_simple
-    printed: "(helper)"
-    label: "SIMPLE deduction"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.simple_total, person.sep_s21]}
-  - id: person.educator_cap
-    printed: "(helper)"
-    label: "Educator expense maximum"
+    label: "Maximum educator expenses deduction"
     type: NonNegDollars
     expr: {op: param, ref: s1.educator_max}
-  - id: person.educator_cap_applied
+  - id: person.h_aoc_total
     printed: "(helper)"
-    label: "Educator expenses limited to the maximum"
+    label: "Total American opportunity credit qualified expenses before adjustments"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [person.educator_expenses, person.educator_cap]}
-  - id: person.edu_adj
+    expr: {op: sum, of: [person.edu_inst, person.edu_mat]}
+  - id: person.h_adj_sum
     printed: "(helper)"
-    label: "Total adjustments to qualified education expenses"
+    label: "Total education expense adjustments"
     type: NonNegDollars
     expr: {op: sum, of: [person.edu_a2025, person.edu_a2026, person.edu_refunds]}
-  - id: person.se_line3
+  - id: person.h_aqe_aoc
     printed: "(helper)"
-    label: "Schedule SE line 3"
-    type: Dollars
-    expr: {op: copy, from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line3}}
-    refuses: [person.se_screen]
-  - id: person.sav_deferral_sum
+    label: "Adjusted qualified education expenses for the American opportunity credit"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: person.h_aoc_total, take: person.h_adj_sum}
+  - id: person.h_aoc_cap
     printed: "(helper)"
-    label: "Total elective deferrals from Forms W-2"
+    label: "American opportunity credit expense cap"
+    type: NonNegDollars
+    expr: {op: param, ref: aoc.expense_cap}
+  - id: person.h_l28_zero
+    printed: "(helper)"
+    label: "Is line 28 zero?"
+    type: Bool
+    expr: {op: test, eq: [person.edu_line28, {const: 0}]}
+  - id: person.h_aoc_2000
+    printed: "(helper)"
+    label: "First $2,000 of American opportunity credit expenses"
+    type: NonNegDollars
+    expr: {op: param, ref: aoc.full_band}
+  - id: person.h_aoc_add
+    printed: "(helper)"
+    label: "Add $2,000 to line 29"
+    type: NonNegDollars
+    expr: {op: sum, of: [person.h_aoc_2000, person.edu_line29]}
+  - id: person.h_dc_box10_count
+    printed: "(helper)"
+    label: "Count of Forms W-2 with dependent care benefits"
+    type: Count
+    expr:
+      op: sum_over
+      collection: w2
+      field: w2.one
+      where: {op: test, eq: [w2.has_box10, {const: true}]}
+  - id: person.h_sav_def
+    printed: "(helper)"
+    label: "Total elective deferrals for the retirement savings contributions credit"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.sav_deferral}
-  - id: person.ira_line2_covered
+  - id: person.h_ira_line2_cov
     printed: "(helper)"
-    label: "IRA deduction worksheet line 2, covered by a plan"
+    label: "IRA deduction worksheet line 2 for a person covered by a plan"
     type: NonNegDollars
     expr: {op: param, ref: ira.line2}
-  - id: person.ira_line2_uncovered
+  - id: person.h_ira_line2_not
     printed: "(helper)"
-    label: "IRA deduction worksheet line 2, not covered by a plan"
+    label: "IRA deduction worksheet line 2 for a person not covered by a plan"
     type: NonNegDollars
     expr: {op: param, ref: ira.line2_not_covered}
-  - id: person.ira_line5
+  - id: person.h_ira_se_ded
     printed: "(helper)"
-    label: "IRA deduction worksheet line 5"
-    type: Dollars
-    expr: {op: subtract, from: f1040.line9, take: f1040.line10}
-  - id: person.ira_limit
-    printed: "(helper)"
-    label: "IRA contribution limit"
+    label: "Self-employment tax and plan contribution deductions from self-employment earned income"
     type: NonNegDollars
-    expr: {op: param, ref: ira.limit}
-  - id: person.ira_limit_50
+    expr: {op: sum, of: [person.se_line13, person.s16]}
+  - id: person.h_x_e09
     printed: "(helper)"
-    label: "IRA contribution limit age 50 or older"
+    label: "First-home exception amounts claimed"
     type: NonNegDollars
-    expr: {op: param, ref: ira.limit_50}
-  - id: person.ira_line10
+    expr: {op: sum_over, collection: retirement, field: retirement.l2_e09}
+  - id: person.h_x_e19
     printed: "(helper)"
-    label: "IRA deduction worksheet line 10"
-    type: Dollars
-    expr: {op: sum, of: [person.box1, person.eic_se]}
-  - id: person.ira_line10_pos
-    printed: "(helper)"
-    label: "IRA deduction worksheet line 10, not below zero"
+    label: "Birth or adoption exception amounts claimed"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.ira_line10, take: {const: 0}}
-  - id: person.ira_cap
+    expr: {op: sum_over, collection: retirement, field: retirement.l2_e19}
+  - id: person.h_x_e22
     printed: "(helper)"
-    label: "Smaller of IRA worksheet line 7 and line 10"
+    label: "Domestic abuse exception amounts claimed"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [person.ira_line7, person.ira_line10_pos]}
-  - id: person.ira_8606_no_dist
+    expr: {op: sum_over, collection: retirement, field: retirement.l2_e22}
+  - id: person.h_x_e23
     printed: "(helper)"
-    label: "Form 8606 line 14 when there was no IRA distribution"
-    type: NonNegDollars
-    expr: {op: sum, of: [person.ira_nondeductible, person.ira_basis]}
-  - id: person.ira_8606_dist
-    printed: "(helper)"
-    label: "Form 8606 line 14 from Forms 8606"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: f8606, field: f8606.line14}
-  - id: person.x_e23
-    printed: "(helper)"
-    label: "Exception 23 amount"
+    label: "Emergency personal expense exception amounts claimed"
     type: NonNegDollars
     expr: {op: sum_over, collection: retirement, field: retirement.l2_e23}
+  - id: person.h_two23_count
+    printed: "(helper)"
+    label: "Count of distributions claiming both exception 22 and exception 23"
+    type: Count
+    expr:
+      op: sum_over
+      collection: retirement
+      field: retirement.one
+      where:
+        op: test
+        all:
+          - {op: test, eq: [retirement.is_e22, {const: true}]}
+          - {op: test, eq: [retirement.is_e23, {const: true}]}
+  - id: person.h_sep_actual
+    printed: "(helper)"
+    label: "SEP contribution deductible after applying the maximum"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.sep_contrib, person.sep_s21]}
+  - id: person.h_simple_total
+    printed: "(helper)"
+    label: "SIMPLE IRA contributions made for the person"
+    type: NonNegDollars
+    expr: {op: sum, of: [person.simple_deferral, person.simple_employer]}
 ```

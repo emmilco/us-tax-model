@@ -4566,3 +4566,203 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Regression predictions:** `stage14.asset.refuse_ads_past_gds` (office furniture placed in service in 2015 under ADS, screen Yes) and `stage14.asset.refuse_listed_low_past_gds` (listed property at 40% placed in service in 2015) both refuse at `asset.macrs_prior`, where the unfixed tree gave $0 with no refusal. Written from the source before the evaluator was run, from the cloud audit's witnesses.
 - **Validation:** fixtures 1,441/1,441; asset reviews rerun.
 - **Tags:** eligibility; amount-affecting; refusal-placement; fixed
+
+
+## BUG-0329 — A returned kidnapped child who lived with you more than half of 2025 was refused
+
+- **Caught by:** T-105 (T-092 split, fixr2 dependent F1); premise reproduced on the current tree by reading the
+  refusals (`dependent.lived_half` and `dependent.eic_child` refused on `dependent.kidnapped` alone), 2026-11-03.
+- **Source:** p501 p. 13, Kidnapped child, "You can treat your child as meeting the residency test even if the child
+  has been kidnapped, but the following statements must be true."; i1040gi p. 17, Step 1, "Who lived with you for
+  more than half of 2025"; p. 41, Step 3.
+- **Symptom:** a child presumed kidnapped and since returned, who lived with you 11 or 12 months of 2025, was refused
+  at the residency tests although the kidnapped-child treatment is not needed to meet them. Over-refusal; no wrong
+  amount.
+- **Fix:** gates `dependent.kidnap_residency` (kidnapped and fewer than 7 months) on `dependent.lived_half` and
+  `dependent.kidnap_eic` (kidnapped, EIC relationship, not in the United States for more than half of 2025) on
+  `dependent.eic_child`. `dependent.months` and `dependent.us_half` now say that time a kidnapped child was missing
+  does not count, so the refusal still catches every case that needs the treatment. T-104 rewords
+  `dependent.kidnapped`: a child missing because of a kidnapping at some time in 2025, whenever law enforcement first
+  presumed it (p501 p. 13 ties the year to the kidnapping). The row's suggested wording ("kidnapped in 2025") would
+  have dropped a child kidnapped earlier and returned in 2025, whose year of return still applies the rule; the new
+  question keeps that case.
+- **Fix lines:** `dependent.kidnapped`, `dependent.kidnap_residency`, `dependent.kidnap_eic`, `dependent.lived_half`,
+  `dependent.eic_child`, `dependent.months`, `dependent.us_half`
+- **Siblings checked:** `dependent.qr_kidnapped` (unchanged: the qualifying-relative branch still refuses any child; also generated, covered by the reviews rerun on the integrated tree: `dependent.eic_child`, `dependent.kidnap_eic`, `dependent.kidnap_residency`, `dependent.lived_half`
+  under 19 presumed kidnapped), `household.qss_child` wording (unchanged, its own kidnapped sentence),
+  `f1040.line12e` QSS remedy (unchanged), `dependent.hoh_lived_half`, `dependent.dc_lived_half` (both read
+  `lived_half`, so they inherit the narrower refusal).
+- **Regression predictions:** `f1.kidnapped.returned_11` (11 months, in the United States more than half the year):
+  qualifying child, EIC qualifying child, EIC $3,261 (i1040gi p. 53 table rows $25,000 and $30,000, one child).
+  `stage21.d3.kidnapped_child_refused` moves to 4 months and not in the United States for more than half the year and
+  is refused at line 16 (`kidnap_residency`) and line 27a (`kidnap_eic`). The two `stage21.f1.where_kidnapped_withheld_*`
+  evaluator regressions move their withheld child to 4 months (and the EIC case out of the U.S. half-year) so the
+  kidnapped answer still decides an unanswered gate; their expectations are unchanged. Predictions written before the
+  evaluator was run.
+- **Validation:** CLI fixtures; dependent transcription/render reviews rerun (Claude); completeness rerun.
+- **Tags:** over-refusal; residency; fixed
+
+## BUG-0330 — BUG-0283 is fixed: a non-taxpayer's qualifying child can be your qualifying relative
+
+- **Caught by:** BUG-0283 (T-153), recorded open; this entry closes it because the inventory is append-only.
+- **Source:** i1040gi p. 19, Step 4, "Who wasn’t a qualifying child (see Step 1) of any taxpayer for 2025. For this
+  purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t
+  file such a return or files only to get a refund of withheld income tax or estimated tax paid."; p501 p. 18, Child of
+  person not required to file a return, Examples 1 to 3, and Child in Canada or Mexico; p501 p. 15, Qualifying Child of
+  More Than One Person.
+- **Symptom:** as recorded in BUG-0283; in addition, the EIC tie-breaker refusal on `dependent.eic_child` fired for any
+  listed person answering `other_claimant` Yes, including one who is not your EIC qualifying child.
+- **Fix:** new input `dependent.other_nontaxpayer`. Gate `dependent.qc_tiebreak` replaces `other_claimant` on
+  `dependent.qualifying_child`: it refuses when the person is the qualifying child of another person and either is
+  also your qualifying child (the tie-breaker rules have no non-taxpayer exception, so the refusal stands whatever the
+  other person's filing) or the other person is a taxpayer. Gate `dependent.eic_tiebreak` replaces it on
+  `dependent.eic_child` and refuses only a child who passes your EIC relationship, age, joint-return and residency
+  tests. The row's suggested fix (define the taxpayer in `other_claimant` itself) would also have lifted the
+  tie-breaker refusal for your own qualifying child whose other parent does not file, which p501 pp. 15-16 do not
+  support; the split avoids that.
+- **Fix lines:** `dependent.other_nontaxpayer`, `dependent.qc_tiebreak`, `dependent.eic_tiebreak`,
+  `dependent.qualifying_child`, `dependent.eic_child`
+- **Siblings checked:** `dependent.qualifying_relative` (unchanged; it reads `dependent.qualifying_child`, whose refusal is now; also generated, covered by the reviews rerun on the integrated tree: `dependent.eic_child`, `dependent.qc_tiebreak`, `dependent.qualifying_child`
+  the gate), `eic.qc_of_another` (the filer as another's qualifying child; separate input, unchanged),
+  `dependent.other_claimant` question (unchanged; still includes the EIC rules, so a Yes under the EIC rules alone and
+  a taxpayer other person still refuses: accepted over-refusal).
+- **Regression predictions:** `f1.t153.friend_child_nontaxpayer` (p501 p. 18 Example 1 on a joint return): not your
+  qualifying child, your qualifying relative, line 19 $500. `f1.t153.friend_child_taxpayer` (Example 3): refused at
+  `qc_tiebreak`. `f1.t153.own_child_nontaxpayer_other`: your own child, other person not a taxpayer, still refused at
+  `qc_tiebreak`. `stage8.refuse.dependent.other_claimant` and `stage9.eic.refuse.child_of_another` keep their refusals
+  under the new gate ids without answering the new input. Written before the evaluator was run.
+- **Validation:** CLI fixtures; eight consumer pairs ruled `same` in `reviews/2025/consumers.json`.
+- **Tags:** over-refusal; qualifying-relative; fixed
+
+## BUG-0331 — BUG-0285 is fixed: the lifetime learning credit is refused for a student whose ITIN or ATIN was only applied for
+
+- **Caught by:** BUG-0285 (T-113), recorded open; owner decision T-113 (2026-11-01).
+- **Source:** i8863 p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or
+  her 2025 return (including extensions)."; i8863 p. 3, Table 1, lifetime learning column, "Students must have been
+  issued a TIN by the due date of their 2025 return (including extensions)"; p970 p. 11 (the deeming sentence, in the
+  American opportunity credit chapter only).
+- **Symptom:** as recorded in BUG-0285; the person side had the same reading (`person.edu_student` accepts
+  `person.itin_applied`).
+- **Fix:** gates `dependent.edu_llc_tin_refused` (new input `dependent.edu_tin_issued` No) and
+  `person.edu_llc_tin_refused` (`person.tin` No, so only `itin_applied`) refuse line 31 of a lifetime learning credit
+  student. `edu_student` and the American opportunity credit are unchanged (p970 p. 11's deeming). Table 1's lifetime
+  learning column requires only the student's TIN, so "or filer" in the owner decision is read as the filer who is
+  the student; a filer whose ITIN was only applied for and who claims the credit for a dependent student with an
+  issued number is not refused.
+- **Fix lines:** `dependent.edu_tin_issued`, `dependent.edu_llc_tin_refused`, `dependent.edu_line31`,
+  `person.edu_llc_tin_refused`, `person.edu_line31`
+- **Siblings checked:** `dependent.edu_aoc`, `person.edu_aoc` (deeming kept through `household.all_tin`),; also generated, covered by the reviews rerun on the integrated tree: `dependent.edu_line27`, `dependent.edu_line28`, `dependent.edu_line29`, `dependent.edu_line30`, `dependent.edu_line31`, `dependent.edu_llc_tin_refused`
+  `dependent.edu_llc`, `person.edu_llc`, `f8863.line10`, `household.tin_count`.
+- **Regression predictions:** `f1.t113.dep_llc_applied` (stage19.blind.e3, daughter's ATIN applied for) and
+  `f1.t113.person_llc_itin_applied` (stage19.example.llc_phaseout, taxpayer's ITIN applied for) refuse at line 31 and
+  Part II line 10. `f1.t113.dep_aoc_applied` (stage19.example.jack_kay) and `f1.t113.person_aoc_itin_applied`
+  (stage19.example.aoc_phaseout) keep every value. Written before the evaluator was run.
+- **Fixture context repair:** `stage19.blind.e3`, `stage19.blind.e9`, `stage19.refuse.period_over_dependent` and
+  `stage21.pending1.qss_valid_computes` answer the new input Yes (inferred from their "has a TIN" answer), annotated
+  in each evidence note; no expected value changed.
+- **Over-refusal accepted:** the return is refused rather than prepared without the lifetime learning credit for that
+  student, as the owner decided.
+- **Validation:** CLI fixtures; dependent and person transcription/render reviews rerun (Claude).
+- **Tags:** eligibility; education; owner-decision; fixed
+
+## BUG-0332 — Form 2441 line 2 columns (c) and (d) were shown for a person who is not a qualifying person
+
+- **Caught by:** T-112 (t091 dependent.classm L1); premise confirmed: neither line had `shown_when`.
+- **Source:** i2441 p. 3, Line 2, "Don't list a person on line 2 unless they are listed as an eligible person under
+  Qualifying Person(s), earlier".
+- **Symptom:** the values sheet showed a line 2 row for every listed dependent; on
+  `stage15.regress.f2441.nonqualifying_dependent` four line 2 entries instead of two. No amount changed.
+- **Fix:** `shown_when: dependent.dc_qp` on `dependent.dc_line2c` and `dependent.dc_line2d`.
+- **Fix lines:** `dependent.dc_line2c`, `dependent.dc_line2d`
+- **Siblings checked:** the Form 2441 line 2 column (d) total (sums dependent.dc_line2d over qualifying persons only; unchanged), `dependent.dc_qp`.; also generated, covered by the reviews rerun on the integrated tree: `dependent.dc_age13`, `dependent.dc_child_all_year`, `dependent.dc_disabled_qp`, `dependent.qc_age`, `dependent.qr_kidnapped`, `dependent.under_ctc_age`
+- **Regression predictions:** `f1.dc.line2_shown_qualifying_only` asserts the condition (`dc_qp` true and false) and
+  line 3 $3,000; the values-sheet count (four to two) was checked by hand with `eval --html`, since fixtures cannot
+  assert visibility.
+- **Validation:** CLI fixtures; render review rerun.
+- **Tags:** display; source-transcription; fixed
+
+## BUG-0333 — BUG-0282 is fixed: support-definition details in the dependent support questions
+
+- **Caught by:** BUG-0282 (T-107, T-108, T-109), recorded open.
+- **Source:** p501 p. 15 (foster care payments and expenses), p. 20 (total support, tax-exempt income, year support is
+  provided, armed forces allotments and quarters allowances, state support of a needy person, home for the aged),
+  p. 21 (own home, rent free, property, capital expenses, medical insurance premiums and benefits, GI Bill, childcare,
+  Don't Include in Total Support items 1 to 6).
+- **Symptom:** as recorded in BUG-0282; T-108's sentence could be read as the state supporting the filer.
+- **Fix:** `dependent.supported` and `dependent.self_support` state the total-support definition and the listed rules;
+  "Benefits a state provides to this person as a needy person". Wording only; a filer who answered from the shorter
+  text and now counts differently may move between a computed dependent and none. Not a support worksheet.
+- **Fix lines:** `dependent.supported`, `dependent.self_support`
+- **Siblings checked:** `dependent.qc_tiebreak`, `dependent.qualifying_child`, `dependent.qualifying_relative`; covered by the dependent reviews rerun on the integrated tree
+- **Regression predictions:** none (no expression changed).
+- **Validation:** dependent render and completeness reviews rerun.
+- **Tags:** source-definition-debt; wording; fixed
+
+## BUG-0334 — BUG-0284 is fixed: the care-expense question names child support and the allocation rules
+
+- **Caught by:** BUG-0284 (T-154), recorded open.
+- **Source:** i2441 p. 2 ("Child support payments aren't qualified expenses."; "you must figure your expenses for each
+  day"); p503 p. 6 (temporary absence, part-time work); p503 p. 8 (expenses partly work related).
+- **Fix:** `dependent.dc_paid` adds the child-support exclusion, day-by-day allocation with its two exceptions, and the
+  mixed-purpose division; existing exclusions kept. Wording only.
+- **Fix lines:** `dependent.dc_paid`
+- **Siblings checked:** `dependent.dc_line2d`; covered by the reviews rerun on the integrated tree
+- **Tags:** source-definition-debt; wording; fixed
+
+## BUG-0335 — BUG-0300 is fixed: a stillborn child is excluded and a live birth is required
+
+- **Caught by:** BUG-0300 (T-167). **Source:** p501 p. 13, Child born alive and Stillborn child.
+- **Fix:** `dependent.born_died` states the live-birth requirement (state or local law, official record) and says not
+- **Fix lines:** `dependent.born_died`
+- **Siblings checked:** `dependent.dc_lived_half`, `dependent.hoh_lived_half`; covered by the reviews rerun on the integrated tree
+  to list a stillborn child. Consumer pairs `born_died@p501:p9` and `born_died@p503:p3` ruled `same`. Wording only.
+- **Tags:** source-definition-debt; wording; fixed
+
+## BUG-0336 — BUG-0301 is fixed: the dependent student question defines a school and treats co-op students as full-time
+
+- **Caught by:** BUG-0301 (T-168). **Source:** p501 p. 13, Student defined, Full-time student, School defined,
+  Vocational high school students.
+- **Fix:** `dependent.student` adds the school definition, the school's own full-time standard, non-consecutive months
+- **Fix lines:** `dependent.student`
+- **Siblings checked:** `dependent.qc_age`; covered by the reviews rerun on the integrated tree
+  and the co-op rule. Wording only.
+- **Tags:** source-definition-debt; wording; fixed
+
+## BUG-0337 — Dependent question wording: newborn hospital stay, revoked release, TANF for a parent's home
+
+- **Caught by:** T-106 (completeness r7), T-110 (completeness r3/r4), T-111 (fixr4).
+- **Source:** p501 p. 13, Death or birth of child ("except for any required hospital stay following birth"); p501
+  p. 22, Revocation of release of claim to an exemption ("written notice of the revocation to the noncustodial parent in
+  2024 or earlier"); p501 p. 9, Note (TANF).
+- **Fix:** `dependent.months` counts a newborn's required hospital stay; `dependent.divorced_rule` says a release
+  revoked without notice in 2024 or earlier still applies for 2025; `dependent.parent_home_paid` counts TANF used for the
+  home as paid by you (the household question already carried this sentence, T-115). Wording only.
+- **Fix lines:** `dependent.months`, `dependent.divorced_rule`, `dependent.parent_home_paid`
+- **Siblings checked:** `dependent.hoh_test1`, `dependent.kidnap_residency`, `dependent.lived_half`, `dependent.qualifying_child`; covered by the reviews rerun on the integrated tree
+- **Tags:** source-definition-debt; wording; fixed
+
+## BUG-0338 — The care-expense question omits household services, provider transportation, agency fees and the volunteer-work rule (open)
+
+- **Caught by:** dependent completeness review (Claude), claim dependent#1, on the F1 branch, 2026-11-03.
+- **Source:** i2441 p. 2, "These include amounts paid for household services and care of the qualifying person while you
+  worked or looked for work." and "However, they don't include the services of a chauffeur, bartender, or gardener.";
+  p503 p. 6, "you aren't considered to be working if you do unpaid volunteer work or work for a nominal salary"; p503
+  pp. 7-8 (transportation by a care provider, agency fees and deposits, forfeited deposits, a housekeeper's meals and
+  lodging).
+- **Symptom:** `dependent.dc_paid` asks for expenses "for this person's care" and excludes "food, lodging", so a filer
+  can leave out household services or a housekeeper's meals and lodging (understating line 2(d) and the credit) or
+  count volunteer work as work. Not reproduced on a return; source and question inspection.
+- **Disposition:** wording debt on the same input as BUG-0284; a later dependent/f2441 pass. The completeness ruling
+  `unruled:dependent#1` names this placeholder, so `check_completeness.py` fails until the id is filed.
+- **Tags:** source-definition-debt; dependent; explicitly-deferred
+
+## BUG-0339 — Residual support-definition details in the support question (open)
+
+- **Caught by:** dependent completeness review (Claude), claim dependent#2, on the F1 branch, 2026-11-03.
+- **Source:** p501 p. 20 (one social security check to both spouses; need-based payments not used for support; fair
+  rental value includes furniture, appliances, heat and utilities); p501 p. 21 (dividing fair rental value when you
+  provide part of the lodging); p501 p. 22 (alimony and separate maintenance are not support of a dependent).
+- **Symptom:** after the F1 rewording (BUG-0333) `dependent.supported` still omits these five rules; a filer can
+  misallocate support in these cases. Source and question inspection only.
+- **Disposition:** residual of BUG-0282; a later dependent pass. Named by completeness ruling `unruled:dependent#2`.
+- **Tags:** source-definition-debt; dependent; explicitly-deferred
