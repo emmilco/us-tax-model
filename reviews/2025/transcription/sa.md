@@ -7,19 +7,19 @@ Second transcription of `Schedule A — supported itemized deductions and standa
 | date | 2026-11-02 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 05207ae10d6b53be05f8a3f4cc4756f2c59a442edeaad971454e6d805079a695 |
+| prompt sha256 | 83b7208aafbda50b78badb5a09ce0db28fe11aecdcefcbcd4257fe04a0e4b475 |
 | prompt policy | source-only-computation-v2 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
 | complete input context | pass |
-| required input context sha256 | d19ac55850f1d8ef60a44b84476defa0db233b903176f18c1991c4688f0f7c68 |
+| required input context sha256 | 233d34af8788f07ed9c930fdfedc03fa88f550fd9fa5ffc3e4de3e1f3c883d82 |
 | type validation policy | project-expression-types-v3 |
 | model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 020691577e6a177170e9b20d041662f1cabe6c2c88cf306ab0c7a09a508e07cf |
+| subject sha256 | 2b65b38ab5b3b60fe9ee7aea0c8532c37fcc95869af6ec9a1e0705376cd919ec |
 | printed lines compared | 22 |
 | agree / disagree / missing | 18 / 4 / 0 |
 | extra printed lines in second | none |
@@ -30,7 +30,8 @@ Second transcription of `Schedule A — supported itemized deductions and standa
 | --- | --- | --- | --- | --- | --- | --- |
 | f1040sa | 2025; created 2025-11-20 | 1 | whole document | 225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd | - | bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe |
 | i1040gi | 2025; printed date 2026-02-25 | 33, 34, 35 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 33, 34 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
-| i1040sca | 2025; printed date 2025-12-08 | 1, 7, 11 | cited pages | 18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b | 1, 11 | 5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c |
+| i1040sca | 2025; printed date 2025-12-08 | 1, 2, 3, 6, 7, 11 | cited pages | 18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b | 1, 2, 3, 6, 11 | 5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c |
+| p969 | 2025 | 9, 13 | pages named by another document's citation | 0491c6445304fc8c1b7ae3097b8a3ea30260bb35f706da40900d06416502b9c8 | 9, 13 | f643ce7086d88eabd1d8006ab0b5609f775af36b9b8a5b74637e1f366d8c29c3 |
 | p525 | 2025 | 33 | pages named by another document's citation | 7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182 | 33 | 27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65 |
 
 ## Lines
@@ -47,12 +48,12 @@ Project:
 Second:
 
 ```json
-{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}], "test": "lt"}
+{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": "spouse"}, {"ref": "person.role"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.died_before_65"}], "test": "ne"}], "test": "all"}}], "test": "lt"}], "test": "all"}, {"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": "taxpayer"}, {"ref": "person.role"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.died_before_65"}], "test": "ne"}], "test": "all"}}], "test": "lt"}], "test": "any"}
 ```
 
-Second transcription's note: The interface name does not fix its meaning. Read as: at least one 'born before January 2, 1961' box on line 12d is checked (you or your spouse). Blindness boxes are excluded.
+Second transcription's note: Open point: the pages do not define this interface. It is read as 'an age box on line 12d is checked' (you, or your spouse on a joint return, born before January 2, 1961), excluding a person who died in 2025 before reaching 65. Blindness is not included.
 
-Ruling: model error — i1040gi p. 33, line 12d, checks the box for you and, on a joint return, a separate box for your spouse; sa.age65 is the taxpayer-only box that Schedule 1-A line 36a reads. The candidate counts every person entry with age65, so it counts the spouse twice or on a return where the box is the filer's. Triage: 2480 comparisons; 43 completed-return value differences.
+Ruling: model error; sa.age65 is the taxpayer's box, "Were you born before January 2, 1961?" (f1040 line 12d, "You: Were born before January 2, 1961"). The candidate adds the spouse on a joint return, which is a separate box. Triage executable-triage-v2 (triage/sa.json): 2429 of 2487 comparisons agree; on completed returns {"value": 21}.
 
 ### sa.agi — Form 1040 line 11b adjusted gross income
 Status: **AGREE**
@@ -69,12 +70,12 @@ Project:
 Second:
 
 ```json
-{"args": [{"args": [{"const": true}, {"input": "sa.elect_itemize"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}, {"args": [{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "sa.spouse_itemizes"}], "test": "eq"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}}, "op": "multiply_count"}, {"param": "sa.standard_base"}], "op": "sum"}}, {"guard": {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}, {"line": "17"}], "test": "lt"}], "test": "any"}
+{"args": [{"args": [{"const": true}, {"input": "sa.elect_itemize"}], "test": "eq"}, {"args": [{"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"alternatives": [{"guard": {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": "spouse"}, {"ref": "person.role"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.died_before_65"}], "test": "ne"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": "spouse"}, {"ref": "person.role"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}], "op": "sum"}}, {"guard": {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}, {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": "taxpayer"}, {"ref": "person.role"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.died_before_65"}], "test": "ne"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": "taxpayer"}, {"ref": "person.role"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}], "op": "sum"}, {"param": "sa.standard_base"}], "op": "sum"}}], "op": "choose"}, {"line": "17"}], "test": "lt"}], "test": "any"}
 ```
 
-Second transcription's note: When itemized deductions equal the standard deduction, the standard deduction is chosen unless the line 18 election is made.
+Second transcription's note: The instructions say to take the larger of the standard deduction or itemized deductions. A tie is treated as not itemizing unless the line 18 election is made; the deduction amount is the same either way.
 
-Ruling: representation — the candidate's itemize test is the project's with the married-filing-separately condition on sa.spouse_itemizes dropped; the input is asked only for MFS, so the two are equal on every reachable return, and the election and line-17 comparison are the same (i1040gi p. 34, line 12e). Triage: 2480 comparisons, no completed-return value difference.
+Ruling: model error; i1040gi p. 34, line 12e). The candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/sa.json): 1451 of 2487 comparisons agree; on completed returns {"candidate-unknown": 118}.
 
 ### sa.deduction — Deduction selected for Form 1040 line 12e
 Status: **DISAGREE**
@@ -88,10 +89,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"line": "17"}, {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "sa.spouse_itemizes"}], "test": "eq"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}}, "op": "multiply_count"}, {"param": "sa.standard_base"}], "op": "sum"}}, {"guard": {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}], "test": "le"}, {"args": [{"const": true}, {"input": "sa.elect_itemize"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "sa.spouse_itemizes"}], "test": "eq"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}}, "op": "multiply_count"}, {"param": "sa.standard_base"}], "op": "sum"}}, {"guard": {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "sa.elect_itemize"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}, {"args": [{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "sa.spouse_itemizes"}], "test": "eq"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": false}, {"ref": "person.died_before_65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}}, "op": "multiply_count"}, {"param": "sa.standard_base"}], "op": "sum"}}, {"guard": {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}, {"line": "17"}], "test": "lt"}], "test": "any"}, "then": {"line": "17"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"line": "17"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"alternatives": [{"guard": {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": "spouse"}, {"ref": "person.role"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.died_before_65"}], "test": "ne"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": "spouse"}, {"ref": "person.role"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}], "op": "sum"}}, {"guard": {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}, {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": "taxpayer"}, {"ref": "person.role"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.died_before_65"}], "test": "ne"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": "taxpayer"}, {"ref": "person.role"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}], "op": "sum"}, {"param": "sa.standard_base"}], "op": "sum"}}], "op": "choose"}], "test": "le"}, {"args": [{"const": true}, {"input": "sa.elect_itemize"}], "test": "ne"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"alternatives": [{"guard": {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": "spouse"}, {"ref": "person.role"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.died_before_65"}], "test": "ne"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": "spouse"}, {"ref": "person.role"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}], "op": "sum"}}, {"guard": {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}, {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": "taxpayer"}, {"ref": "person.role"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.died_before_65"}], "test": "ne"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": "taxpayer"}, {"ref": "person.role"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}], "op": "sum"}, {"param": "sa.standard_base"}], "op": "sum"}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "sa.elect_itemize"}], "test": "eq"}, {"args": [{"alternatives": [{"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "eq"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "sa.spouse_itemizes"}], "test": "ne"}], "test": "any"}, "then": {"of": [{"alternatives": [{"guard": {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, "then": {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": "spouse"}, {"ref": "person.role"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.died_before_65"}], "test": "ne"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": "spouse"}, {"ref": "person.role"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}], "op": "sum"}}, {"guard": {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}, {"of": [{"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": "taxpayer"}, {"ref": "person.role"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.age65"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.died_before_65"}], "test": "ne"}], "test": "all"}}, "op": "multiply_count"}, {"amount": {"param": "sa.standard_extra"}, "count": {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": "taxpayer"}, {"ref": "person.role"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.blind"}], "test": "eq"}], "test": "all"}}, "op": "multiply_count"}], "op": "sum"}, {"param": "sa.standard_base"}], "op": "sum"}}], "op": "choose"}, {"line": "17"}], "test": "lt"}], "test": "any"}, "then": {"line": "17"}}], "op": "choose"}
 ```
 
-Ruling: representation — the line inherits the sa.itemizes equivalence above; the standard-or-itemized selection and both amounts agree on reachable returns. Triage: 2480 comparisons, no completed-return value difference.
+Ruling: model error; The candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/sa.json): 1449 of 2487 comparisons agree; on completed returns {"candidate-unknown": 118}.
 
 ### 2 — Amount from sa.agi_floor
 Status: **AGREE**
@@ -138,9 +139,9 @@ Second:
 {"of": [{"input": "sa.gambling_losses"}, {"ref": "s1.line8b"}], "op": "smaller_of"}
 ```
 
-Second transcription's note: Only gambling losses are supported, limited to the gambling winnings on Schedule 1, line 8b. Every other item on the list, including a net qualified disaster loss, is screened by sa.unsupported.
+Second transcription's note: Only gambling losses are computed. They are allowed 'only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b'. All other line 16 items are screened by sa.unsupported.
 
-Ruling: interface gap — the candidate's smaller_of needs sa.gambling_losses on every return; the project asks it only when s1.gambling_winnings is positive (amb.2025.gambling_losses) and enters zero otherwise (i1040sca p. 11, Other Itemized Deductions, gambling losses only to the extent of gambling winnings). The amount agrees when the losses are supplied. Triage: 2480 comparisons; 1277 candidate-unknown, no completed-return value difference.
+Ruling: model error; amb.2025. The candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/sa.json): 1111 of 2487 comparisons agree; on completed returns {"candidate-unknown": 102}.
 
 ### 7 — Add sa.line5e, sa.line6
 Status: **AGREE**
@@ -169,7 +170,6 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 
 | line | gates listed | not read by the project's line |
 | --- | --- | --- |
-| sa.age65 | sa.spouse_extra | sa.spouse_extra |
 | sa.itemizes | sa.charity_limited, sa.dependent, sa.excluded_income, sa.spouse_extra, sa.unsupported | sa.spouse_extra |
 | sa.deduction | sa.charity_limited, sa.dependent, sa.excluded_income, sa.spouse_extra, sa.unsupported | sa.spouse_extra |
 | 5d | sa.unsupported | sa.unsupported |
@@ -183,6 +183,7 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | 7 | sa.excluded_income, sa.unsupported | - |
 | 8e | sa.unsupported | - |
 | 10 | sa.unsupported | - |
+| 12 | sa.charity_limited | - |
 | 14 | sa.charity_limited | - |
 | 17 | sa.charity_limited, sa.excluded_income, sa.unsupported | - |
 
@@ -193,16 +194,17 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 lines:
   - id: sa.agi
     printed: "(helper)"
-    label: "Adjusted gross income: amount from Form 1040 or 1040-SR, line 11b"
+    label: "Amount from Form 1040 or 1040-SR, line 11b (adjusted gross income)"
     type: Dollars
     expr: {op: copy, from: f1040.line11b}
+    note: "Schedule A line 2 and SALT worksheet line 2 both say to enter the amount from Form 1040 or 1040-SR, line 11b. This keeps the signed value, which the SALT worksheet uses."
 
   - id: sa.line2
     printed: "2"
     label: "Enter amount from Form 1040 or 1040-SR, line 11b"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: f1040.line11b, take: {const: 0}}
-    note: "The schedule says to enter line 11b, but the required type is NonNegDollars. A negative AGI is therefore entered as zero. Line 3 then becomes zero instead of negative, so line 4 can never be more than line 1."
+    expr: {op: subtract_floor0, from: sa.agi, take: {const: 0}}
+    note: "Open point: the form does not say what to do when line 11b is negative. The required type is NonNegDollars, so a negative AGI is entered as zero. Line 3 is then zero and line 4 equals line 1."
 
   - id: sa.line3
     printed: "3"
@@ -222,68 +224,61 @@ lines:
     type: NonNegDollars
     expr: {op: sum, of: [sa.line5a, sa.line5b, sa.line5c]}
     refuses: [sa.unsupported]
-    note: "The sales-tax election on line 5a is outside this slice. It is refused here because line 5a is a supplied input."
+    note: "The general sales tax election on line 5a is outside the tool and is screened by sa.unsupported. Line 5a holds income taxes only."
 
-  - id: sa.h_salt_line1
+  - id: sa.h_salt_base
     printed: "(helper)"
-    label: "SALT Worksheet line 1: Enter $40,000"
+    label: "SALT worksheet line 1: Enter $40,000"
     type: NonNegDollars
     expr: {op: param, ref: sa.salt_base}
 
-  - id: sa.h_salt_line5
+  - id: sa.h_salt_excess
     printed: "(helper)"
-    label: "SALT Worksheet line 5: Enter $500,000 ($250,000 if married filing separately)"
+    label: "SALT worksheet line 6: Subtract line 5 ($500,000; $250,000 if married filing separately) from line 4 (if not more, skip lines 7 and 8)"
     type: NonNegDollars
-    expr: {op: param, ref: sa.salt_threshold}
+    expr: {op: subtract_floor0, from: sa.agi, take: {param: sa.salt_threshold}}
+    note: "Worksheet line 4 is line 2 plus line 3e (lines 3a to 3d are excluded Puerto Rico, Form 2555 and Form 4563 amounts). Those amounts are refused through sa.excluded_income, so line 4 equals AGI. When line 4 is not more than line 5 the result is zero, so line 8 equals line 1. That matches 'skip lines 7 and 8 and enter the amount from line 1 on line 9'."
 
-  - id: sa.h_salt_line6
+  - id: sa.h_salt_reduce
     printed: "(helper)"
-    label: "SALT Worksheet line 6: Subtract line 5 from line 4 (line 4 = line 11b plus excluded income)"
+    label: "SALT worksheet line 7: Multiply line 6 by 30% (0.30)"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: sa.agi, take: sa.h_salt_line5}
-    refuses: [sa.excluded_income]
-    note: "Worksheet lines 3a-3d (excluded Puerto Rico, Form 2555 and Form 4563 income) are refused, so line 4 equals line 11b. When line 4 is not more than line 5 the worksheet skips lines 7 and 8 and uses line 1 on line 9. Flooring line 6 at zero gives that same result."
-
-  - id: sa.h_salt_line7
-    printed: "(helper)"
-    label: "SALT Worksheet line 7: Multiply line 6 by 30% (0.30)"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: sa.h_salt_line6, rate: {param: sa.salt_rate}}
+    expr: {op: multiply_rate, amount: sa.h_salt_excess, rate: {param: sa.salt_rate}}
 
   - id: sa.h_salt_line8
     printed: "(helper)"
-    label: "SALT Worksheet line 8: Subtract line 7 from line 1"
+    label: "SALT worksheet line 8: Subtract line 7 from line 1"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: sa.h_salt_line1, take: sa.h_salt_line7}
-    note: "Floored at zero to keep the type nonnegative. Line 9 takes the larger of this and $10,000, so the floor never changes the result."
+    expr: {op: subtract_floor0, from: sa.h_salt_base, take: sa.h_salt_reduce}
+    note: "The worksheet subtracts without a floor. Line 9 takes the larger of line 8 and $10,000, so flooring at zero here does not change line 9."
 
   - id: sa.h_salt_floor
     printed: "(helper)"
-    label: "SALT Worksheet line 9 amount: $10,000"
+    label: "SALT worksheet line 9 floor: $10,000"
     type: NonNegDollars
     expr: {op: param, ref: sa.salt_floor}
 
   - id: sa.h_salt_line9
     printed: "(helper)"
-    label: "SALT Worksheet line 9: Enter the larger of the amount on line 8 or $10,000"
+    label: "SALT worksheet line 9: Enter the larger of the amount on line 8 or $10,000"
     type: NonNegDollars
     expr: {op: larger_of, of: [sa.h_salt_line8, sa.h_salt_floor]}
 
-  - id: sa.h_salt_line9_half
+  - id: sa.h_salt_half
     printed: "(helper)"
-    label: "SALT Worksheet line 10: half the amount on line 9 (married filing separately)"
+    label: "Half the amount on SALT worksheet line 9 (married filing separately)"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: sa.h_salt_line9, rate: {param: sa.half}}
 
   - id: sa.h_salt_limit
     printed: "(helper)"
-    label: "SALT Worksheet line 10: the amount on line 9 (half the amount on line 9 if married filing separately)"
+    label: "SALT worksheet line 10 limit: the amount on line 9 (half the amount on line 9 if married filing separately)"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
         - guard: {op: test, eq: [f1040.status, {const: "mfs"}]}
-          then: sa.h_salt_line9_half
+          then: sa.h_salt_half
         - guard: {op: test, ne: [f1040.status, {const: "mfs"}]}
           then: sa.h_salt_line9
 
@@ -293,13 +288,14 @@ lines:
     type: NonNegDollars
     expr: {op: smaller_of, of: [sa.h_salt_limit, sa.line5d]}
     refuses: [sa.excluded_income]
-    note: "The State and Local Tax Deduction Worksheet is applied in every case. At or below the AGI threshold it gives the smaller of line 5d or $40,000 ($20,000 MFS), as the line instruction does. The before-you-begin and line 1 'No' shortcuts (line 5d of $10,000, or $5,000 MFS, or less) give the same result, because line 9 is at least $10,000."
+    note: "The worksheet path is used for every case. When AGI is not over the threshold it gives the smaller of line 5d or $40,000 ($20,000 MFS), as line 5e says. When line 5d is at most $10,000 ($5,000 MFS) it gives line 5d, as the 'Before you begin' rule says. Form 2555, Form 4563 and Puerto Rico exclusions are refused because the worksheet's lines 3a to 3d have no inputs."
 
   - id: sa.h_zero
     printed: "(helper)"
-    label: "Zero amount"
+    label: "Zero"
     type: NonNegDollars
     expr: {op: param, ref: ss.zero}
+    note: "A zero-valued money parameter from the catalog, used for lines whose only nonzero cases are refused."
 
   - id: sa.line6
     printed: "6"
@@ -307,7 +303,7 @@ lines:
     type: NonNegDollars
     expr: {op: copy, from: sa.h_zero}
     refuses: [sa.unsupported]
-    note: "Foreign income taxes and generation-skipping tax are screened by sa.unsupported. The supported case has no other taxes."
+    note: "Line 6 holds foreign income taxes and generation-skipping tax. Both are screened by sa.unsupported, so the computed case is zero."
 
   - id: sa.line8b
     printed: "8b"
@@ -343,7 +339,7 @@ lines:
     type: NonNegDollars
     expr: {op: smaller_of, of: [sa.gambling_losses, s1.line8b]}
     refuses: [sa.unsupported]
-    note: "Only gambling losses are supported, limited to the gambling winnings on Schedule 1, line 8b. Every other item on the list, including a net qualified disaster loss, is screened by sa.unsupported."
+    note: "Only gambling losses are computed. They are allowed 'only to the extent of gambling winnings reported on Schedule 1 (Form 1040), line 8b'. All other line 16 items are screened by sa.unsupported."
 
   - id: sa.line7
     printed: "7"
@@ -362,7 +358,7 @@ lines:
     label: "Investment interest. Attach Form 4952 if required"
     type: NonNegDollars
     expr: {op: copy, from: f4952.line8}
-    note: "Read as the deductible investment interest expense figured on Form 4952, line 8 (catalog line). This assumes that line is zero when there is no investment interest."
+    note: "The supplied pages do not include the line 9 instructions that name the source line. The interface has no investment interest input, so this copies the deductible investment interest from Form 4952, line 8 (in the catalog). That is assumed to be zero when there is no investment interest."
 
   - id: sa.line10
     printed: "10"
@@ -375,6 +371,7 @@ lines:
     label: "Other than by cash or check. If you made any gift of $250 or more, see instructions. You must attach Form 8283 if over $500"
     type: NonNegDollars
     expr: {op: sum_over, collection: gift, field: gift.allowed}
+    refuses: [sa.charity_limited]
 
   - id: sa.line14
     printed: "14"
@@ -389,9 +386,22 @@ lines:
     type: NonNegDollars
     expr: {op: sum, of: [sa.line4, sa.line7, sa.line10, sa.line14, sa.line15, sa.line16]}
 
-  - id: sa.h_boxes_age
+  - id: sa.h_std_base
     printed: "(helper)"
-    label: "Line 12d boxes checked for born before January 2, 1961 (not for a person who died in 2025 before reaching age 65)"
+    label: "Standard deduction for your filing status (amounts to the left of Form 1040 line 12e)"
+    type: NonNegDollars
+    expr: {op: param, ref: sa.standard_base}
+
+  - id: sa.h_std_extra
+    printed: "(helper)"
+    label: "Additional amount per box checked on line 12d ($2,000 single or head of household; $1,600 otherwise), from the Standard Deduction Chart"
+    type: NonNegDollars
+    expr: {op: param, ref: sa.standard_extra}
+    note: "The chart amounts equal the base plus the number of boxes times $2,000 (single, HOH) or $1,600 (MFJ, QSS, MFS). Checked: single 17,750/19,750; MFJ 33,100 to 37,900; QSS 33,100/34,700; MFS 17,350 to 22,150; HOH 25,625/27,625."
+
+  - id: sa.h_tp_age
+    printed: "(helper)"
+    label: "Box checked: You were born before January 2, 1961"
     type: Count
     expr:
       op: sum_over
@@ -400,88 +410,147 @@ lines:
       where:
         op: test
         all:
+          - {op: test, eq: [person.role, {const: "taxpayer"}]}
           - {op: test, eq: [person.age65, {const: true}]}
-          - {op: test, eq: [person.died_before_65, {const: false}]}
-    refuses: [sa.spouse_extra]
-    note: "Counts the people in the person collection. Spouse boxes on a married-filing-separately return (sa.spouse_extra) are refused, because the number of such boxes is not supplied."
+          - {op: test, not: {op: test, eq: [person.died_before_65, {const: true}]}}
+    note: "The death rule in the pages is stated for a spouse who died before reaching 65. For a deceased taxpayer the text refers to Pub. 501, which is not supplied. The per-person question person.died_before_65 asks about any person, so the same rule is applied to the taxpayer."
 
-  - id: sa.h_boxes_blind
+  - id: sa.h_tp_blind
     printed: "(helper)"
-    label: "Line 12d boxes checked for blind"
+    label: "Box checked: You are blind"
     type: Count
     expr:
       op: sum_over
       collection: person
       field: person.one
-      where: {op: test, eq: [person.blind, {const: true}]}
-    refuses: [sa.spouse_extra]
+      where:
+        op: test
+        all:
+          - {op: test, eq: [person.role, {const: "taxpayer"}]}
+          - {op: test, eq: [person.blind, {const: true}]}
 
-  - id: sa.age65
+  - id: sa.h_sp_age
     printed: "(helper)"
-    label: "A box on line 12d is checked for born before January 2, 1961"
-    type: Bool
-    expr: {op: test, gt: [sa.h_boxes_age, {const: 0, type: Count}]}
-    note: "The interface name does not fix its meaning. Read as: at least one 'born before January 2, 1961' box on line 12d is checked (you or your spouse). Blindness boxes are excluded."
+    label: "Box checked: Spouse was born before January 2, 1961 (not if spouse died in 2025 before reaching age 65)"
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.one
+      where:
+        op: test
+        all:
+          - {op: test, eq: [person.role, {const: "spouse"}]}
+          - {op: test, eq: [person.age65, {const: true}]}
+          - {op: test, not: {op: test, eq: [person.died_before_65, {const: true}]}}
 
-  - id: sa.h_std_base
+  - id: sa.h_sp_blind
     printed: "(helper)"
-    label: "Standard deduction for filing status (amounts to the left of line 12e)"
+    label: "Box checked: Spouse is blind"
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.one
+      where:
+        op: test
+        all:
+          - {op: test, eq: [person.role, {const: "spouse"}]}
+          - {op: test, eq: [person.blind, {const: true}]}
+
+  - id: sa.h_tp_age_amt
+    printed: "(helper)"
+    label: "Additional amount for your age box"
     type: NonNegDollars
-    expr: {op: param, ref: sa.standard_base}
+    expr: {op: multiply_count, amount: sa.h_std_extra, count: sa.h_tp_age}
 
-  - id: sa.h_std_extra
+  - id: sa.h_tp_blind_amt
     printed: "(helper)"
-    label: "Additional amount per box checked on line 12d (Standard Deduction Chart)"
+    label: "Additional amount for your blindness box"
     type: NonNegDollars
-    expr: {op: param, ref: sa.standard_extra}
+    expr: {op: multiply_count, amount: sa.h_std_extra, count: sa.h_tp_blind}
 
-  - id: sa.h_std_extra_age
+  - id: sa.h_sp_age_amt
     printed: "(helper)"
-    label: "Additional standard deduction for age boxes"
+    label: "Additional amount for spouse's age box"
     type: NonNegDollars
-    expr: {op: multiply_count, amount: sa.h_std_extra, count: sa.h_boxes_age}
+    expr: {op: multiply_count, amount: sa.h_std_extra, count: sa.h_sp_age}
 
-  - id: sa.h_std_extra_blind
+  - id: sa.h_sp_blind_amt
     printed: "(helper)"
-    label: "Additional standard deduction for blindness boxes"
+    label: "Additional amount for spouse's blindness box"
     type: NonNegDollars
-    expr: {op: multiply_count, amount: sa.h_std_extra, count: sa.h_boxes_blind}
+    expr: {op: multiply_count, amount: sa.h_std_extra, count: sa.h_sp_blind}
 
-  - id: sa.h_std_full
+  - id: sa.h_tp_extra
     printed: "(helper)"
-    label: "Standard deduction (Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind, or line 12e amount)"
+    label: "Additional standard deduction for your boxes"
     type: NonNegDollars
-    expr: {op: sum, of: [sa.h_std_base, sa.h_std_extra_age, sa.h_std_extra_blind]}
-    refuses: [sa.dependent, sa.spouse_extra]
-    note: "The chart amounts equal the base amount plus $2,000 (single or HOH) or $1,600 (others) per box checked. The Standard Deduction Worksheet for Dependents and dual-status aliens are refused through sa.dependent."
+    expr: {op: sum, of: [sa.h_tp_age_amt, sa.h_tp_blind_amt]}
 
-  - id: sa.h_std
+  - id: sa.h_sp_extra
     printed: "(helper)"
-    label: "Standard deduction (zero if married filing separately and spouse itemizes)"
+    label: "Additional standard deduction for spouse's boxes"
+    type: NonNegDollars
+    expr: {op: sum, of: [sa.h_sp_age_amt, sa.h_sp_blind_amt]}
+
+  - id: sa.h_sp_counted
+    printed: "(helper)"
+    label: "Spouse's boxes counted (joint return only)"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [sa.spouse_itemizes, {const: true}]}
+        - guard: {op: test, eq: [f1040.status, {const: "mfj"}]}
+          then: sa.h_sp_extra
+        - guard: {op: test, ne: [f1040.status, {const: "mfj"}]}
           then: sa.h_zero
-        - guard: {op: test, eq: [sa.spouse_itemizes, {const: false}]}
+    note: "Spouse boxes are not checked on a head of household return, and the QSS chart has only 1 or 2 boxes. The married-filing-separately spouse-box case is refused through sa.spouse_extra, so spouse boxes count only on a joint return."
+
+  - id: sa.h_std_full
+    printed: "(helper)"
+    label: "Standard deduction (base amount plus Standard Deduction Chart additions for boxes checked on line 12d)"
+    type: NonNegDollars
+    expr: {op: sum, of: [sa.h_std_base, sa.h_tp_extra, sa.h_sp_counted]}
+
+  - id: sa.h_spouse_itemizes_mfs
+    printed: "(helper)"
+    label: "Line 12b: married filing separately and your spouse itemizes deductions"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [sa.spouse_itemizes, {const: true}]}
+        - {op: test, eq: [f1040.status, {const: "mfs"}]}
+
+  - id: sa.h_std
+    printed: "(helper)"
+    label: "Standard deduction (zero if the box on line 12b is checked)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [sa.h_spouse_itemizes_mfs, {const: true}]}
+          then: sa.h_zero
+        - guard: {op: test, eq: [sa.h_spouse_itemizes_mfs, {const: false}]}
           then: sa.h_std_full
+    refuses: [sa.dependent, sa.spouse_extra]
+    note: "Two cases are refused. Line 12a dependents use the Standard Deduction Worksheet for Dependents, which needs earned income not in this interface; the same question also covers line 12c dual-status aliens. For married filing separately with spouse boxes, the spouse_extra input does not say which boxes (age, blindness) apply, so it is refused."
 
   - id: sa.itemizes
     printed: "(helper)"
-    label: "Itemize deductions on Schedule A (larger than standard deduction, spouse itemizes on separate return, or election on line 18)"
+    label: "Itemize: itemized deductions (line 17) are larger than the standard deduction, or you elect to itemize (line 18)"
     type: Bool
     expr:
       op: test
       any:
-        - {op: test, eq: [sa.elect_itemize, {const: true}]}
-        - {op: test, eq: [sa.spouse_itemizes, {const: true}]}
         - {op: test, gt: [sa.line17, sa.h_std]}
-    note: "When itemized deductions equal the standard deduction, the standard deduction is chosen unless the line 18 election is made."
+        - {op: test, eq: [sa.elect_itemize, {const: true}]}
+    note: "The instructions say to take the larger of the standard deduction or itemized deductions. A tie is treated as not itemizing unless the line 18 election is made; the deduction amount is the same either way."
 
   - id: sa.deduction
     printed: "(helper)"
-    label: "Form 1040, line 12e: standard deduction or itemized deductions"
+    label: "Form 1040 or 1040-SR, line 12e: standard deduction or itemized deductions"
     type: NonNegDollars
     expr:
       op: choose
@@ -490,5 +559,19 @@ lines:
           then: sa.line17
         - guard: {op: test, eq: [sa.itemizes, {const: false}]}
           then: sa.h_std
+
+  - id: sa.age65
+    printed: "(helper)"
+    label: "Line 12d age box checked: you (or your spouse on a joint return) were born before January 2, 1961"
+    type: Bool
+    expr:
+      op: test
+      any:
+        - {op: test, gt: [sa.h_tp_age, {const: 0, type: Count}]}
+        - op: test
+          all:
+            - {op: test, eq: [f1040.status, {const: "mfj"}]}
+            - {op: test, gt: [sa.h_sp_age, {const: 0, type: Count}]}
+    note: "Open point: the pages do not define this interface. It is read as 'an age box on line 12d is checked' (you, or your spouse on a joint return, born before January 2, 1961), excluding a person who died in 2025 before reaching 65. Blindness is not included."
 ```
 ```

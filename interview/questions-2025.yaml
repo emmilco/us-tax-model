@@ -940,9 +940,10 @@ bank:
       do not guess. Married filing separately and unsupported items are refused with citations.
   - input: f8962.premium_adjust
     order: 10
-    help: Answer yes if coverage began after the first day of a month (a birth, adoption, placement for adoption or foster
-      care, or a court order placing the child with you counts from the first day) or a Marketplace premium was refunded
-      in 2025. The tool takes Form 1095-A column A as reported and cannot make either adjustment.
+    help: Answer yes if Marketplace coverage reported on a Form 1095-A began after the first day of a 2025 month (a birth,
+      adoption, placement for adoption or foster care, or a court order placing the child with you counts from the first
+      day) or premiums for a 2025 month of that coverage were refunded in 2025. Other coverage starting mid-month does not
+      count. The tool takes Form 1095-A column A as reported and cannot make either adjustment.
   - input: f8962.same_state_counted
     order: 10
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;

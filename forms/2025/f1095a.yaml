@@ -62,11 +62,14 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: The monthly amount in Part III, column A (monthly enrollment premiums), the same in every month
+      source: The monthly amount in Part III, column A (monthly enrollment premiums), the same in every month (if column A shows
+        zero but you paid the premiums by the due date of your return, not including extensions, the premiums you paid)
     cite: &id002
       doc: i8962
       locator: p. 16, Column (a), "If you have more than one Form 1095-A affecting a particular month, add the amounts together
-        for that month and enter the total on the appropriate line on Form 8962, column (a)."
+        for that month and enter the total on the appropriate line on Form 8962, column (a)."; p. 16, "If the enrollment
+        premiums for the month are paid by the due date of your return (not including extensions), enter the enrollment
+        premiums"
   - id: f1095a.mo_b
     printed: (helper)
     label: The monthly amount in column B (the same every month)
@@ -74,12 +77,13 @@ form:
     expr:
       op: input
       source: 'The monthly amount in Part III, column B (monthly SLCSP premium), the same in every month: the amount in column
-        B, or the correct applicable SLCSP premium if column B is blank, zero or wrong (from the Marketplace''s tool, for
-        example HealthCare.gov/Tax-Tool)'
+        B, or the correct applicable SLCSP premium if column B is blank, wrong, or zero although the premiums were paid by the due date
+        of your return (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if the premiums were not
+        paid by the due date of your return (not including extensions)'
     cite: &id003
       doc: i8962
       locator: p. 14, "you must determine the correct applicable SLCSP premium for every month."; p974 p. 27, Applicable SLCSP
-        premium tools, "Only the Marketplaces are able to provide applicable SLCSP premiums."
+        premium tools, "Only the Marketplaces are able to provide applicable SLCSP premiums."; i1095a p. 3, Column B
   - id: f1095a.c_total
     printed: (helper)
     label: Line 33, column C (annual advance payment of premium tax credit)
@@ -97,7 +101,9 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: January 2025, column A (monthly enrollment premiums); zero if blank
+      source: 'January 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero
+        but you paid that month''s enrollment premiums by the due date of your return (not including extensions), the premiums
+        you paid; zero only if no premiums were paid for that month by that date'
     cite: *id002
   - id: f1095a.in_a_feb
     printed: (helper)
@@ -105,7 +111,9 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: February 2025, column A (monthly enrollment premiums); zero if blank
+      source: 'February 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero
+        but you paid that month''s enrollment premiums by the due date of your return (not including extensions), the premiums
+        you paid; zero only if no premiums were paid for that month by that date'
     cite: *id002
   - id: f1095a.in_a_mar
     printed: (helper)
@@ -113,7 +121,9 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: March 2025, column A (monthly enrollment premiums); zero if blank
+      source: 'March 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero
+        but you paid that month''s enrollment premiums by the due date of your return (not including extensions), the premiums
+        you paid; zero only if no premiums were paid for that month by that date'
     cite: *id002
   - id: f1095a.in_a_apr
     printed: (helper)
@@ -121,7 +131,9 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: April 2025, column A (monthly enrollment premiums); zero if blank
+      source: 'April 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero
+        but you paid that month''s enrollment premiums by the due date of your return (not including extensions), the premiums
+        you paid; zero only if no premiums were paid for that month by that date'
     cite: *id002
   - id: f1095a.in_a_may
     printed: (helper)
@@ -129,7 +141,9 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: May 2025, column A (monthly enrollment premiums); zero if blank
+      source: 'May 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero
+        but you paid that month''s enrollment premiums by the due date of your return (not including extensions), the premiums
+        you paid; zero only if no premiums were paid for that month by that date'
     cite: *id002
   - id: f1095a.in_a_jun
     printed: (helper)
@@ -137,7 +151,9 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: June 2025, column A (monthly enrollment premiums); zero if blank
+      source: 'June 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero
+        but you paid that month''s enrollment premiums by the due date of your return (not including extensions), the premiums
+        you paid; zero only if no premiums were paid for that month by that date'
     cite: *id002
   - id: f1095a.in_a_jul
     printed: (helper)
@@ -145,7 +161,9 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: July 2025, column A (monthly enrollment premiums); zero if blank
+      source: 'July 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero
+        but you paid that month''s enrollment premiums by the due date of your return (not including extensions), the premiums
+        you paid; zero only if no premiums were paid for that month by that date'
     cite: *id002
   - id: f1095a.in_a_aug
     printed: (helper)
@@ -153,7 +171,9 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: August 2025, column A (monthly enrollment premiums); zero if blank
+      source: 'August 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero
+        but you paid that month''s enrollment premiums by the due date of your return (not including extensions), the premiums
+        you paid; zero only if no premiums were paid for that month by that date'
     cite: *id002
   - id: f1095a.in_a_sep
     printed: (helper)
@@ -161,7 +181,9 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: September 2025, column A (monthly enrollment premiums); zero if blank
+      source: 'September 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero
+        but you paid that month''s enrollment premiums by the due date of your return (not including extensions), the premiums
+        you paid; zero only if no premiums were paid for that month by that date'
     cite: *id002
   - id: f1095a.in_a_oct
     printed: (helper)
@@ -169,7 +191,9 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: October 2025, column A (monthly enrollment premiums); zero if blank
+      source: 'October 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero
+        but you paid that month''s enrollment premiums by the due date of your return (not including extensions), the premiums
+        you paid; zero only if no premiums were paid for that month by that date'
     cite: *id002
   - id: f1095a.in_a_nov
     printed: (helper)
@@ -177,7 +201,9 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: November 2025, column A (monthly enrollment premiums); zero if blank
+      source: 'November 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero
+        but you paid that month''s enrollment premiums by the due date of your return (not including extensions), the premiums
+        you paid; zero only if no premiums were paid for that month by that date'
     cite: *id002
   - id: f1095a.in_a_dec
     printed: (helper)
@@ -185,7 +211,9 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: December 2025, column A (monthly enrollment premiums); zero if blank
+      source: 'December 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero
+        but you paid that month''s enrollment premiums by the due date of your return (not including extensions), the premiums
+        you paid; zero only if no premiums were paid for that month by that date'
     cite: *id002
   - id: f1095a.in_b_jan
     printed: (helper)
@@ -194,7 +222,9 @@ form:
     expr:
       op: input
       source: 'January 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
+        (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
   - id: f1095a.in_b_feb
     printed: (helper)
@@ -203,7 +233,9 @@ form:
     expr:
       op: input
       source: 'February 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
+        (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
   - id: f1095a.in_b_mar
     printed: (helper)
@@ -212,7 +244,9 @@ form:
     expr:
       op: input
       source: 'March 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
+        (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
   - id: f1095a.in_b_apr
     printed: (helper)
@@ -221,7 +255,9 @@ form:
     expr:
       op: input
       source: 'April 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
+        (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
   - id: f1095a.in_b_may
     printed: (helper)
@@ -230,7 +266,9 @@ form:
     expr:
       op: input
       source: 'May 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
+        (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
   - id: f1095a.in_b_jun
     printed: (helper)
@@ -239,7 +277,9 @@ form:
     expr:
       op: input
       source: 'June 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
+        (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
   - id: f1095a.in_b_jul
     printed: (helper)
@@ -248,7 +288,9 @@ form:
     expr:
       op: input
       source: 'July 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
+        (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
   - id: f1095a.in_b_aug
     printed: (helper)
@@ -257,7 +299,9 @@ form:
     expr:
       op: input
       source: 'August 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
+        (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
   - id: f1095a.in_b_sep
     printed: (helper)
@@ -266,7 +310,9 @@ form:
     expr:
       op: input
       source: 'September 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
+        (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
   - id: f1095a.in_b_oct
     printed: (helper)
@@ -275,7 +321,9 @@ form:
     expr:
       op: input
       source: 'October 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
+        (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
   - id: f1095a.in_b_nov
     printed: (helper)
@@ -284,7 +332,9 @@ form:
     expr:
       op: input
       source: 'November 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
+        (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
   - id: f1095a.in_b_dec
     printed: (helper)
@@ -293,7 +343,9 @@ form:
     expr:
       op: input
       source: 'December 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
+        (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
   - id: f1095a.in_c_jan
     printed: (helper)

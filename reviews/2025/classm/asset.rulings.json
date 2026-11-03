@@ -167,9 +167,9 @@
    "printed": "person[taxpayer].sc[biz_a].asset[item_1].macrs2025",
    "project": "$1,548.12",
    "model": "$2,324.50",
-   "ruling": "Ruling: model error; p946 Table 4-1, GDS using SL, as above. The model applied Table A-1's 150% declining balance rate of 5.00%; the straight-line half-year rate of 3.33% gives the project's $1,548.12.",
+   "ruling": "Ruling: model error; p946 Table 4-1, GDS using SL: \"Qualified improvement property (as defined in section 168(e)(6) of the Internal Revenue Code) placed in service after 2017\". The class is 15-year straight line, as the project has it. The model applied Table A-1's 150% declining balance rate of 5.00%; the straight-line half-year rate of 3.33% gives the project's $1,548.12.",
    "drop": true,
-   "context": "53b8313f9707e5e78e93cca2617019c97a90bd2963ef5050d6adc0200943151b"
+   "context": "c5acd52bb7f42e34a16ab9b695df52d11d8f0c1088fde4222ba891dd576e1b95"
   },
   {
    "case": "classm.asset.2",
@@ -234,7 +234,7 @@
    "model": "y15",
    "ruling": "Ruling: model error; p946 Table 4-1, GDS using SL: \"Qualified improvement property (as defined in section 168(e)(6) of the Internal Revenue Code) placed in service after 2017\". The class is 15-year straight line, as the project has it.",
    "drop": true,
-   "context": "53b8313f9707e5e78e93cca2617019c97a90bd2963ef5050d6adc0200943151b"
+   "context": "c5acd52bb7f42e34a16ab9b695df52d11d8f0c1088fde4222ba891dd576e1b95"
   },
   {
    "case": "classm.asset.2",

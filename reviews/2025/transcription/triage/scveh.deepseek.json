@@ -1,21 +1,29 @@
 {
  "bank": {
   "evaluation_failures": 0,
-  "fixtures": 1437,
+  "fixtures": 1439,
   "generated": 500,
   "partial_bases": 40,
-  "partial_records": 1288,
+  "partial_records": 1289,
   "return_states": {
-   "completed": 554,
+   "completed": 555,
    "incomplete": 1048,
-   "refused": 1623
+   "refused": 1625
   },
   "seed": 20261026
  },
  "errors": [
   {
-   "line": "scveh.s179_limited",
-   "message": "malformed expression (project schema): data/alternatives/0/then must be string, data/alternatives/0/then must have required property 'def', data/alternatives/0/then must have required property 'bind'"
+   "line": "scveh.rate",
+   "message": "model changed a published result type"
+  },
+  {
+   "line": "scveh.bus_cost",
+   "message": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money"
+  },
+  {
+   "line": "scveh.bus_cost",
+   "message": "scveh.scveh.bus_cost: whole operand is not money"
   },
   {
    "line": "scveh.line9w",
@@ -26,14 +34,6 @@
    "message": "scveh.scveh.line9w: whole operand is not money"
   },
   {
-   "line": "scveh.h_business_cost",
-   "message": "scveh.scveh.h_business_cost: part 'scveh.miles_business' is not money"
-  },
-  {
-   "line": "scveh.h_business_cost",
-   "message": "scveh.scveh.h_business_cost: whole operand is not money"
-  },
-  {
    "line": "scveh.operating_business",
    "message": "scveh.scveh.operating_business: part 'scveh.miles_business' is not money"
   },
@@ -42,59 +42,44 @@
    "message": "scveh.scveh.operating_business: whole operand is not money"
   },
   {
-   "line": "scveh.lease_business",
-   "message": "scveh.scveh.lease_business: part 'scveh.miles_business' is not money"
+   "line": "scveh.lease_actual",
+   "message": "scveh.scveh.lease_actual: part 'scveh.miles_business' is not money"
   },
   {
-   "line": "scveh.lease_business",
-   "message": "scveh.scveh.lease_business: whole operand is not money"
-  },
-  {
-   "line": "scveh.s179_limited",
-   "message": "scveh.scveh.s179_limited: instance def 'undefined' does not exist"
-  },
-  {
-   "line": "scveh.s179_limited",
-   "message": "scveh.scveh.s179_limited: declared NonNegDollars but the expression does not prove non-negativity"
+   "line": "scveh.lease_actual",
+   "message": "scveh.scveh.lease_actual: whole operand is not money"
   }
  ],
  "failures": [],
  "family": "deepseek",
  "form": "scveh",
  "invalid_lines": [
-  "scveh.s179_limited",
+  "scveh.rate",
+  "scveh.bus_cost",
   "scveh.line9w",
-  "scveh.h_business_cost",
   "scveh.operating_business",
-  "scveh.lease_business",
+  "scveh.lease_actual",
   "scveh.line20a",
   "scveh.line11",
   "scveh.line15",
+  "scveh.line16",
   "scveh.bonus_allowed",
   "scveh.line17",
   "scveh.line18",
+  "scveh.line19",
   "scveh.line20",
   "scveh.bonus",
   "scveh.macrs",
+  "scveh.mq_q4",
+  "scveh.mq_total",
   "scveh.cost179",
-  "scveh.actual_amount",
-  "scveh.total_bus_cost",
-  "scveh.line10_smaller",
-  "scveh.amount_hy",
-  "scveh.amount_mq",
-  "scveh.amount_prior",
-  "scveh.mq_basis",
-  "scveh.bonus_full",
-  "scveh.bonus_40",
+  "scveh.actual_total",
+  "scveh.s179_current",
+  "scveh.bonus_forty",
   "scveh.line9",
-  "scveh.bus_cost",
   "scveh.line10",
   "scveh.line14",
-  "scveh.line16",
-  "scveh.line19",
-  "scveh.s179_2025",
-  "scveh.mq_total",
-  "scveh.mq_q4"
+  "scveh.s179_2025"
  ],
  "lines": [
   {
@@ -192,9 +177,9 @@
    "handle": "scveh.bonus",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2550,
+   "invalid": 2551,
    "kinds": {
-    "candidate-invalid": 2550
+    "candidate-invalid": 2551
    },
    "kinds_by_return": {
     "completed": {
@@ -204,7 +189,7 @@
      "candidate-invalid": 553
     },
     "refused": {
-     "candidate-invalid": 1413
+     "candidate-invalid": 1414
     }
    },
    "open_at_triage": true,
@@ -395,9 +380,9 @@
    "handle": "scveh.macrs",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2550,
+   "invalid": 2551,
    "kinds": {
-    "candidate-invalid": 2550
+    "candidate-invalid": 2551
    },
    "kinds_by_return": {
     "completed": {
@@ -407,7 +392,7 @@
      "candidate-invalid": 553
     },
     "refused": {
-     "candidate-invalid": 1413
+     "candidate-invalid": 1414
     }
    },
    "open_at_triage": true,
@@ -598,9 +583,9 @@
    "handle": "scveh.s179_2025",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2550,
+   "invalid": 2551,
    "kinds": {
-    "candidate-invalid": 2550
+    "candidate-invalid": 2551
    },
    "kinds_by_return": {
     "completed": {
@@ -610,7 +595,7 @@
      "candidate-invalid": 553
     },
     "refused": {
-     "candidate-invalid": 1413
+     "candidate-invalid": 1414
     }
    },
    "open_at_triage": true,
@@ -801,9 +786,9 @@
    "handle": "scveh.mq_q4",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2550,
+   "invalid": 2551,
    "kinds": {
-    "candidate-invalid": 2550
+    "candidate-invalid": 2551
    },
    "kinds_by_return": {
     "completed": {
@@ -813,7 +798,7 @@
      "candidate-invalid": 553
     },
     "refused": {
-     "candidate-invalid": 1413
+     "candidate-invalid": 1414
     }
    },
    "open_at_triage": true,
@@ -1004,9 +989,9 @@
    "handle": "scveh.mq_total",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2550,
+   "invalid": 2551,
    "kinds": {
-    "candidate-invalid": 2550
+    "candidate-invalid": 2551
    },
    "kinds_by_return": {
     "completed": {
@@ -1016,7 +1001,7 @@
      "candidate-invalid": 553
     },
     "refused": {
-     "candidate-invalid": 1413
+     "candidate-invalid": 1414
     }
    },
    "open_at_triage": true,
@@ -1207,9 +1192,9 @@
    "handle": "scveh.cost179",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2550,
+   "invalid": 2551,
    "kinds": {
-    "candidate-invalid": 2550
+    "candidate-invalid": 2551
    },
    "kinds_by_return": {
     "completed": {
@@ -1219,7 +1204,7 @@
      "candidate-invalid": 553
     },
     "refused": {
-     "candidate-invalid": 1413
+     "candidate-invalid": 1414
     }
    },
    "open_at_triage": true,
@@ -1410,9 +1395,9 @@
    "handle": "9 (scveh.line9)",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2550,
+   "invalid": 2551,
    "kinds": {
-    "candidate-invalid": 2550
+    "candidate-invalid": 2551
    },
    "kinds_by_return": {
     "completed": {
@@ -1422,7 +1407,7 @@
      "candidate-invalid": 553
     },
     "refused": {
-     "candidate-invalid": 1413
+     "candidate-invalid": 1414
     }
    },
    "open_at_triage": true,
@@ -1613,9 +1598,9 @@
    "handle": "20a",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2550,
+   "invalid": 2551,
    "kinds": {
-    "candidate-invalid": 2550
+    "candidate-invalid": 2551
    },
    "kinds_by_return": {
     "completed": {
@@ -1625,7 +1610,7 @@
      "candidate-invalid": 553
     },
     "refused": {
-     "candidate-invalid": 1413
+     "candidate-invalid": 1414
     }
    },
    "open_at_triage": true,
@@ -1728,7 +1713,7 @@
    "compared": 0,
    "completed_witnesses": [
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1742,7 +1727,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1756,7 +1741,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
@@ -1770,7 +1755,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1784,7 +1769,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1798,7 +1783,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1816,9 +1801,9 @@
    "handle": "13",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2550,
+   "invalid": 2551,
    "kinds": {
-    "candidate-invalid": 2550
+    "candidate-invalid": 2551
    },
    "kinds_by_return": {
     "completed": {
@@ -1828,7 +1813,7 @@
      "candidate-invalid": 553
     },
     "refused": {
-     "candidate-invalid": 1413
+     "candidate-invalid": 1414
     }
    },
    "open_at_triage": true,
@@ -1839,7 +1824,7 @@
    "triage": "candidate invalid",
    "witnesses": [
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1853,7 +1838,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money",
      "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1867,7 +1852,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money",
      "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
@@ -1881,7 +1866,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1895,7 +1880,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1909,7 +1894,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1926,9 +1911,9 @@
   },
   {
    "absent": 0,
-   "agree": 1580,
+   "agree": 1618,
    "candidate": "scveh.line7",
-   "compared": 2550,
+   "compared": 2551,
    "completed_witnesses": [
     {
      "candidate": {
@@ -1938,20 +1923,6 @@
      "candidate_operands": [
       {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_2].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].actual_lease_bad",
        "value": {
         "kind": "bool",
         "value": false
@@ -2022,20 +1993,6 @@
      "candidate_operands": [
       {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_2].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].actual_lease_bad",
        "value": {
         "kind": "bool",
         "value": false
@@ -2117,20 +2074,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
        "value": {
         "kind": "bool",
@@ -2201,20 +2144,6 @@
        }
       },
       {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[spouse].sc[biz_a].scveh[car_1].passenger",
        "value": {
         "kind": "bool",
@@ -2243,31 +2172,17 @@
        }
       },
       {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].placed",
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].year",
        "value": {
-        "kind": "enum",
-        "value": "y2020"
+        "kind": "count",
+        "value": 6
        }
       },
       {
-       "ref": "\"y2025\"",
+       "ref": "1",
        "value": {
-        "kind": "enum",
-        "value": "y2025"
-       }
-      },
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "count",
+        "value": 1
        }
       },
       {
@@ -2275,6 +2190,34 @@
        "value": {
         "kind": "bool",
         "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].year",
+       "value": {
+        "kind": "count",
+        "value": 6
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].line7_limited",
+       "value": {
+        "cents": 576000,
+        "kind": "money"
        }
       }
      ],
@@ -2332,20 +2275,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
        "value": {
         "kind": "bool",
@@ -2374,31 +2303,17 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].placed",
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
        "value": {
-        "kind": "enum",
-        "value": "y2023"
+        "kind": "count",
+        "value": 3
        }
       },
       {
-       "ref": "\"y2025\"",
+       "ref": "1",
        "value": {
-        "kind": "enum",
-        "value": "y2025"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "count",
+        "value": 1
        }
       },
       {
@@ -2406,6 +2321,34 @@
        "value": {
         "kind": "bool",
         "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
+       "value": {
+        "kind": "count",
+        "value": 3
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].line7_limited",
+       "value": {
+        "cents": 1170000,
+        "kind": "money"
        }
       }
      ],
@@ -2457,20 +2400,6 @@
      "candidate_operands": [
       {
        "ref": "person[spouse].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].actual_lease_bad",
        "value": {
         "kind": "bool",
         "value": false
@@ -2561,20 +2490,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
        "value": {
         "kind": "bool",
@@ -2603,31 +2518,17 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].placed",
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
        "value": {
-        "kind": "enum",
-        "value": "y2020"
+        "kind": "count",
+        "value": 6
        }
       },
       {
-       "ref": "\"y2025\"",
+       "ref": "1",
        "value": {
-        "kind": "enum",
-        "value": "y2025"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "count",
+        "value": 1
        }
       },
       {
@@ -2635,6 +2536,34 @@
        "value": {
         "kind": "bool",
         "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
+       "value": {
+        "kind": "count",
+        "value": 6
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].line7_limited",
+       "value": {
+        "cents": 576000,
+        "kind": "money"
        }
       }
      ],
@@ -2692,20 +2621,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
        "value": {
         "kind": "bool",
@@ -2734,31 +2649,17 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].placed",
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].year",
        "value": {
-        "kind": "enum",
-        "value": "y2023"
+        "kind": "count",
+        "value": 3
        }
       },
       {
-       "ref": "\"y2025\"",
+       "ref": "1",
        "value": {
-        "kind": "enum",
-        "value": "y2025"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "count",
+        "value": 1
        }
       },
       {
@@ -2766,6 +2667,34 @@
        "value": {
         "kind": "bool",
         "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].year",
+       "value": {
+        "kind": "count",
+        "value": 3
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].line7_limited",
+       "value": {
+        "cents": 1170000,
+        "kind": "money"
        }
       }
      ],
@@ -2823,20 +2752,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
        "value": {
         "kind": "bool",
@@ -2865,31 +2780,17 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].placed",
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].year",
        "value": {
-        "kind": "enum",
-        "value": "y2023"
+        "kind": "count",
+        "value": 3
        }
       },
       {
-       "ref": "\"y2025\"",
+       "ref": "1",
        "value": {
-        "kind": "enum",
-        "value": "y2025"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "count",
+        "value": 1
        }
       },
       {
@@ -2897,6 +2798,34 @@
        "value": {
         "kind": "bool",
         "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].year",
+       "value": {
+        "kind": "count",
+        "value": 3
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].line7_limited",
+       "value": {
+        "cents": 1170000,
+        "kind": "money"
        }
       }
      ],
@@ -2948,20 +2877,6 @@
      "candidate_operands": [
       {
        "ref": "person[taxpayer].sc[haul].scveh[suv].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[haul].scveh[suv].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[haul].scveh[suv].actual_lease_bad",
        "value": {
         "kind": "bool",
         "value": false
@@ -3032,20 +2947,6 @@
      "candidate_operands": [
       {
        "ref": "person[taxpayer].sc[r].scveh[truck].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[r].scveh[truck].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[r].scveh[truck].actual_lease_bad",
        "value": {
         "kind": "bool",
         "value": false
@@ -3136,20 +3037,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[r].scveh[truck].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[r].scveh[truck].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[r].scveh[truck].passenger",
        "value": {
         "kind": "bool",
@@ -3234,20 +3121,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
        "value": {
         "kind": "bool",
@@ -3276,31 +3149,17 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].placed",
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
        "value": {
-        "kind": "enum",
-        "value": "y2024"
+        "kind": "count",
+        "value": 2
        }
       },
       {
-       "ref": "\"y2025\"",
+       "ref": "1",
        "value": {
-        "kind": "enum",
-        "value": "y2025"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "count",
+        "value": 1
        }
       },
       {
@@ -3308,6 +3167,34 @@
        "value": {
         "kind": "bool",
         "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
+       "value": {
+        "kind": "count",
+        "value": 2
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].line7_limited",
+       "value": {
+        "cents": 1980000,
+        "kind": "money"
        }
       }
      ],
@@ -3356,20 +3243,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
        "value": {
         "kind": "bool",
@@ -3398,31 +3271,17 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].placed",
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
        "value": {
-        "kind": "enum",
-        "value": "y2024"
+        "kind": "count",
+        "value": 2
        }
       },
       {
-       "ref": "\"y2025\"",
+       "ref": "1",
        "value": {
-        "kind": "enum",
-        "value": "y2025"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "count",
+        "value": 1
        }
       },
       {
@@ -3430,6 +3289,34 @@
        "value": {
         "kind": "bool",
         "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
+       "value": {
+        "kind": "count",
+        "value": 2
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].line7_limited",
+       "value": {
+        "cents": 1980000,
+        "kind": "money"
        }
       }
      ],
@@ -3545,20 +3432,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
        "value": {
         "input": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
@@ -3632,20 +3505,6 @@
      "candidate_operands": [
       {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_2].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].actual_lease_bad",
        "value": {
         "kind": "bool",
         "value": false
@@ -3771,20 +3630,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
        "value": {
         "kind": "bool",
@@ -3858,20 +3703,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
        "value": {
         "input": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
@@ -3931,20 +3762,6 @@
      "candidate_operands": [
       {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_2].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].actual_lease_bad",
        "value": {
         "kind": "bool",
         "value": false
@@ -4024,20 +3841,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
        "value": {
         "kind": "bool",
@@ -4066,31 +3869,17 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].placed",
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
        "value": {
-        "kind": "enum",
-        "value": "y2019"
+        "kind": "count",
+        "value": 7
        }
       },
       {
-       "ref": "\"y2025\"",
+       "ref": "1",
        "value": {
-        "kind": "enum",
-        "value": "y2025"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "count",
+        "value": 1
        }
       },
       {
@@ -4098,6 +3887,34 @@
        "value": {
         "kind": "bool",
         "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
+       "value": {
+        "kind": "count",
+        "value": 7
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].line7_limited",
+       "value": {
+        "cents": 576000,
+        "kind": "money"
        }
       }
      ],
@@ -4146,20 +3963,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
        "value": {
         "kind": "bool",
@@ -4188,31 +3991,17 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].placed",
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
        "value": {
-        "kind": "enum",
-        "value": "y2019"
+        "kind": "count",
+        "value": 7
        }
       },
       {
-       "ref": "\"y2025\"",
+       "ref": "1",
        "value": {
-        "kind": "enum",
-        "value": "y2025"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "count",
+        "value": 1
        }
       },
       {
@@ -4220,6 +4009,34 @@
        "value": {
         "kind": "bool",
         "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
+       "value": {
+        "kind": "count",
+        "value": 7
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].line7_limited",
+       "value": {
+        "cents": 576000,
+        "kind": "money"
        }
       }
      ],
@@ -4321,17 +4138,17 @@
      }
     }
    ],
-   "differ": 970,
+   "differ": 933,
    "handle": "7",
-   "in_scope": 2326,
-   "in_scope_agree": 1579,
+   "in_scope": 2327,
+   "in_scope_agree": 1618,
    "invalid": 0,
    "kinds": {
     "candidate-refuses": 2,
-    "candidate-unknown": 168,
-    "project-refuses": 221,
+    "candidate-unknown": 120,
+    "project-refuses": 222,
     "project-unknown": 188,
-    "value": 391
+    "value": 401
    },
    "kinds_by_return": {
     "completed": {
@@ -4341,17 +4158,17 @@
      "value": 69
     },
     "incomplete": {
-     "candidate-unknown": 67,
+     "candidate-unknown": 40,
      "project-refuses": 37,
      "project-unknown": 85,
-     "value": 52
+     "value": 58
     },
     "refused": {
      "candidate-refuses": 2,
-     "candidate-unknown": 86,
-     "project-refuses": 143,
+     "candidate-unknown": 65,
+     "project-refuses": 144,
      "project-unknown": 91,
-     "value": 270
+     "value": 274
     }
    },
    "open_at_triage": true,
@@ -4360,7 +4177,7 @@
    "sources": {
     "fixture": 155,
     "generated": 156,
-    "partial": 2239
+    "partial": 2240
    },
    "status": "DISAGREE",
    "triage": "differs",
@@ -4373,20 +4190,6 @@
      "candidate_operands": [
       {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].actual_lease_bad",
        "value": {
         "kind": "bool",
         "value": false
@@ -4477,20 +4280,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
        "value": {
         "kind": "bool",
@@ -4575,20 +4364,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
        "value": {
         "kind": "bool",
@@ -4659,20 +4434,6 @@
        }
       },
       {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[spouse].sc[biz_a].scveh[car_1].passenger",
        "value": {
         "kind": "bool",
@@ -4701,17 +4462,17 @@
        }
       },
       {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].placed",
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].year",
        "value": {
-        "kind": "enum",
-        "value": "y2025"
+        "kind": "count",
+        "value": 1
        }
       },
       {
-       "ref": "\"y2025\"",
+       "ref": "1",
        "value": {
-        "kind": "enum",
-        "value": "y2025"
+        "kind": "count",
+        "value": 1
        }
       },
       {
@@ -4733,6 +4494,20 @@
        "value": {
         "kind": "bool",
         "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].year",
+       "value": {
+        "kind": "count",
+        "value": 1
        }
       }
      ],
@@ -4790,20 +4565,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
        "value": {
         "kind": "bool",
@@ -4832,31 +4593,17 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].placed",
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].year",
        "value": {
-        "kind": "enum",
-        "value": "y2022"
+        "kind": "count",
+        "value": 4
        }
       },
       {
-       "ref": "\"y2025\"",
+       "ref": "1",
        "value": {
-        "kind": "enum",
-        "value": "y2025"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "count",
+        "value": 1
        }
       },
       {
@@ -4864,6 +4611,34 @@
        "value": {
         "kind": "bool",
         "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].year",
+       "value": {
+        "kind": "count",
+        "value": 4
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].line7_limited",
+       "value": {
+        "cents": 646000,
+        "kind": "money"
        }
       }
      ],
@@ -4921,20 +4696,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
        "value": {
         "kind": "bool",
@@ -4963,31 +4724,17 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].placed",
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].year",
        "value": {
-        "kind": "enum",
-        "value": "y2024"
+        "kind": "count",
+        "value": 2
        }
       },
       {
-       "ref": "\"y2025\"",
+       "ref": "1",
        "value": {
-        "kind": "enum",
-        "value": "y2025"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "count",
+        "value": 1
        }
       },
       {
@@ -4995,6 +4742,34 @@
        "value": {
         "kind": "bool",
         "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].year",
+       "value": {
+        "kind": "count",
+        "value": 2
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].line7_limited",
+       "value": {
+        "cents": 1980000,
+        "kind": "money"
        }
       }
      ],
@@ -5046,20 +4821,6 @@
      "candidate_operands": [
       {
        "ref": "person[taxpayer].sc[biz_b].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].actual_lease_bad",
        "value": {
         "kind": "bool",
         "value": false
@@ -5150,20 +4911,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_b].scveh[car_2].passenger",
        "value": {
         "kind": "bool",
@@ -5228,20 +4975,6 @@
      "candidate_operands": [
       {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].actual_lease_bad",
        "value": {
         "kind": "bool",
         "value": false
@@ -5332,20 +5065,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
        "value": {
         "kind": "bool",
@@ -5421,20 +5140,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
        "value": {
         "kind": "bool",
@@ -5463,31 +5168,17 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].placed",
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].year",
        "value": {
-        "kind": "enum",
-        "value": "y2019"
+        "kind": "count",
+        "value": 7
        }
       },
       {
-       "ref": "\"y2025\"",
+       "ref": "1",
        "value": {
-        "kind": "enum",
-        "value": "y2025"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "count",
+        "value": 1
        }
       },
       {
@@ -5495,6 +5186,34 @@
        "value": {
         "kind": "bool",
         "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].year",
+       "value": {
+        "kind": "count",
+        "value": 7
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].line7_limited",
+       "value": {
+        "cents": 576000,
+        "kind": "money"
        }
       }
      ],
@@ -5552,20 +5271,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
        "value": {
         "kind": "bool",
@@ -5594,31 +5299,17 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].placed",
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].year",
        "value": {
-        "kind": "enum",
-        "value": "y2022"
+        "kind": "count",
+        "value": 4
        }
       },
       {
-       "ref": "\"y2025\"",
+       "ref": "1",
        "value": {
-        "kind": "enum",
-        "value": "y2025"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "count",
+        "value": 1
        }
       },
       {
@@ -5626,6 +5317,34 @@
        "value": {
         "kind": "bool",
         "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].year",
+       "value": {
+        "kind": "count",
+        "value": 4
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].line7_limited",
+       "value": {
+        "cents": 646000,
+        "kind": "money"
        }
       }
      ],
@@ -5787,20 +5506,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
        "value": {
         "kind": "bool",
@@ -5861,20 +5566,6 @@
      "candidate_operands": [
       {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].actual_lease_bad",
        "value": {
         "kind": "bool",
         "value": false
@@ -5947,20 +5638,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
        "value": {
         "kind": "bool",
@@ -6015,99 +5692,12 @@
     },
     {
      "candidate": {
-      "input": "person[taxpayer].sc[biz_a].scveh[car_1].smr_ok",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].smr_ok"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].standard_bad",
-       "value": {
-        "input": "person[taxpayer].sc[biz_a].scveh[car_1].smr_ok",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].smr_ok"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 1980000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior",
-       "value": {
-        "cents": 1980000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.f8889.2.deepseek",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_a].scveh[car_1].smr_ok"
-     }
-    },
-    {
-     "candidate": {
       "cents": 7954900,
       "kind": "money"
      },
      "candidate_operands": [
       {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].actual_lease_bad",
        "value": {
         "kind": "bool",
         "value": false
@@ -6247,20 +5837,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
        "value": {
         "kind": "bool",
@@ -6348,20 +5924,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
        "value": {
         "input": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
@@ -6429,9 +5991,8 @@
     },
     {
      "candidate": {
-      "input": "person[taxpayer].sc[biz_b].scveh[car_1].owned",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_1].owned"
+      "cents": 646000,
+      "kind": "money"
      },
      "candidate_operands": [
       {
@@ -6442,47 +6003,10 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].actual_lease_bad",
-       "value": {
-        "input": "person[taxpayer].sc[biz_b].scveh[car_1].owned",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_1].owned"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 646000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
        "value": {
         "kind": "bool",
         "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
        }
       },
       {
@@ -6493,108 +6017,66 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].lim_prior",
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].year",
+       "value": {
+        "kind": "count",
+        "value": 4
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].year",
+       "value": {
+        "kind": "count",
+        "value": 4
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].line7_limited",
        "value": {
         "cents": 646000,
         "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.f8889.2.deepseek",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_b].scveh[car_1].owned"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 646000,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].placed",
-       "value": {
-        "kind": "enum",
-        "value": "y2022"
-       }
-      },
-      {
-       "ref": "\"y2025\"",
-       "value": {
-        "kind": "enum",
-        "value": "y2025"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
        }
       }
      ],
@@ -6643,20 +6125,6 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].standard_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].actual_lease_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
        "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
        "value": {
         "kind": "bool",
@@ -6685,31 +6153,17 @@
        }
       },
       {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].placed",
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].year",
        "value": {
-        "kind": "enum",
-        "value": "y2022"
+        "kind": "count",
+        "value": 4
        }
       },
       {
-       "ref": "\"y2025\"",
+       "ref": "1",
        "value": {
-        "kind": "enum",
-        "value": "y2025"
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
+        "kind": "count",
+        "value": 1
        }
       },
       {
@@ -6717,6 +6171,34 @@
        "value": {
         "kind": "bool",
         "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].year",
+       "value": {
+        "kind": "count",
+        "value": 4
+       }
+      },
+      {
+       "ref": "1",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].line7_limited",
+       "value": {
+        "cents": 646000,
+        "kind": "money"
        }
       }
      ],
@@ -6816,6 +6298,138 @@
       "kind": "partial",
       "withheld": "person[taxpayer].sc[biz_b].scveh[car_1].screen"
      }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_1].passenger"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
+       "value": {
+        "input": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_1].passenger"
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 646000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].lim_prior",
+       "value": {
+        "cents": 646000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].sc[biz_b].scveh[car_1].passenger"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sc[biz_b].scveh[car_2].screen",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_2].screen"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].screen",
+       "value": {
+        "input": "person[taxpayer].sc[biz_b].scveh[car_2].screen",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_2].screen"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 1220000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].is2025",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].lim_2025",
+       "value": {
+        "cents": 1220000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].sc[biz_b].scveh[car_2].screen"
+     }
     }
    ]
   },
@@ -6914,9 +6528,9 @@
    "handle": "9 (scveh.line9w)",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2550,
+   "invalid": 2551,
    "kinds": {
-    "candidate-invalid": 2550
+    "candidate-invalid": 2551
    },
    "kinds_by_return": {
     "completed": {
@@ -6926,7 +6540,7 @@
      "candidate-invalid": 553
     },
     "refused": {
-     "candidate-invalid": 1413
+     "candidate-invalid": 1414
     }
    },
    "open_at_triage": true,
@@ -7117,9 +6731,9 @@
    "handle": "10",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2550,
+   "invalid": 2551,
    "kinds": {
-    "candidate-invalid": 2550
+    "candidate-invalid": 2551
    },
    "kinds_by_return": {
     "completed": {
@@ -7129,7 +6743,7 @@
      "candidate-invalid": 553
     },
     "refused": {
-     "candidate-invalid": 1413
+     "candidate-invalid": 1414
     }
    },
    "open_at_triage": true,
@@ -7320,9 +6934,9 @@
    "handle": "11",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2550,
+   "invalid": 2551,
    "kinds": {
-    "candidate-invalid": 2550
+    "candidate-invalid": 2551
    },
    "kinds_by_return": {
     "completed": {
@@ -7332,7 +6946,7 @@
      "candidate-invalid": 553
     },
     "refused": {
-     "candidate-invalid": 1413
+     "candidate-invalid": 1414
     }
    },
    "open_at_triage": true,
@@ -7523,9 +7137,9 @@
    "handle": "14",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2550,
+   "invalid": 2551,
    "kinds": {
-    "candidate-invalid": 2550
+    "candidate-invalid": 2551
    },
    "kinds_by_return": {
     "completed": {
@@ -7535,7 +7149,7 @@
      "candidate-invalid": 553
     },
     "refused": {
-     "candidate-invalid": 1413
+     "candidate-invalid": 1414
     }
    },
    "open_at_triage": true,
@@ -7726,9 +7340,9 @@
    "handle": "15",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2550,
+   "invalid": 2551,
    "kinds": {
-    "candidate-invalid": 2550
+    "candidate-invalid": 2551
    },
    "kinds_by_return": {
     "completed": {
@@ -7738,7 +7352,7 @@
      "candidate-invalid": 553
     },
     "refused": {
-     "candidate-invalid": 1413
+     "candidate-invalid": 1414
     }
    },
    "open_at_triage": true,
@@ -7929,9 +7543,9 @@
    "handle": "16",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2550,
+   "invalid": 2551,
    "kinds": {
-    "candidate-invalid": 2550
+    "candidate-invalid": 2551
    },
    "kinds_by_return": {
     "completed": {
@@ -7941,7 +7555,7 @@
      "candidate-invalid": 553
     },
     "refused": {
-     "candidate-invalid": 1413
+     "candidate-invalid": 1414
     }
    },
    "open_at_triage": true,
@@ -8132,9 +7746,9 @@
    "handle": "25",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2550,
+   "invalid": 2551,
    "kinds": {
-    "candidate-invalid": 2550
+    "candidate-invalid": 2551
    },
    "kinds_by_return": {
     "completed": {
@@ -8144,7 +7758,7 @@
      "candidate-invalid": 553
     },
     "refused": {
-     "candidate-invalid": 1413
+     "candidate-invalid": 1414
     }
    },
    "open_at_triage": true,
@@ -8335,9 +7949,9 @@
    "handle": "17",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2550,
+   "invalid": 2551,
    "kinds": {
-    "candidate-invalid": 2550
+    "candidate-invalid": 2551
    },
    "kinds_by_return": {
     "completed": {
@@ -8347,7 +7961,7 @@
      "candidate-invalid": 553
     },
     "refused": {
-     "candidate-invalid": 1413
+     "candidate-invalid": 1414
     }
    },
    "open_at_triage": true,
@@ -8538,9 +8152,9 @@
    "handle": "18",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2550,
+   "invalid": 2551,
    "kinds": {
-    "candidate-invalid": 2550
+    "candidate-invalid": 2551
    },
    "kinds_by_return": {
     "completed": {
@@ -8550,7 +8164,7 @@
      "candidate-invalid": 553
     },
     "refused": {
-     "candidate-invalid": 1413
+     "candidate-invalid": 1414
     }
    },
    "open_at_triage": true,
@@ -8741,9 +8355,9 @@
    "handle": "19",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2550,
+   "invalid": 2551,
    "kinds": {
-    "candidate-invalid": 2550
+    "candidate-invalid": 2551
    },
    "kinds_by_return": {
     "completed": {
@@ -8753,7 +8367,7 @@
      "candidate-invalid": 553
     },
     "refused": {
-     "candidate-invalid": 1413
+     "candidate-invalid": 1414
     }
    },
    "open_at_triage": true,
@@ -8944,9 +8558,9 @@
    "handle": "20",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2550,
+   "invalid": 2551,
    "kinds": {
-    "candidate-invalid": 2550
+    "candidate-invalid": 2551
    },
    "kinds_by_return": {
     "completed": {
@@ -8956,7 +8570,7 @@
      "candidate-invalid": 553
     },
     "refused": {
-     "candidate-invalid": 1413
+     "candidate-invalid": 1414
     }
    },
    "open_at_triage": true,
@@ -9053,10 +8667,10 @@
    ]
   }
  ],
- "log_sha256_at_triage": "5b65921fa1596db03a9cb561068aa43b7e114a24e49b58fdd8b21c11046a4181",
+ "log_sha256_at_triage": "263102e441b16284336e4fe54defc6877c8bd2d4e800a6b3a24730c9476647d0",
  "policy": "executable-triage-v2",
- "response_sha256": "9e05d009371705ec98544a87226fbe286e7851667e463c3fe31bd0b816c38fec",
+ "response_sha256": "d6475d03a11fc69b70a1d0c84cb2b2a3f01683ad26703b61038e515f5ce85fd9",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "evaluated",
- "subject_sha256": "91dba7afb747e63ea0fd232952204e9c58e4f1a6edb5c5bc6072e9cc601dc840"
+ "subject_sha256": "21ed42ae791e3370832f9db89dc59af7b9c11eac73013dc57226b7d810990087"
 }

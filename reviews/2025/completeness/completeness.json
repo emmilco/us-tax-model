@@ -1,172 +1,32 @@
 [
  {
   "form": "asset",
-  "prompt_sha": "69ffb2173382c3b203bd710ba08e9556ed3deae95f995020450981a8e09513a5",
+  "prompt_sha": "a6abc11b29f315944388768b8f2631df185f66a3197db431fe6f8985667bbf28",
   "claims": [
-   {
-    "item": "asset.s179",
-    "sentences": [
-     {
-      "quote": "Section 179 property is property that you acquire by purchase for use in the active conduct of your trade or business, and is one of the following.",
-      "page": "i4562 p. 2"
-     },
-     {
-      "quote": "Other tangible property (except buildings and their structural components) used as: 1. An integral part of manufacturing, production, or extraction, or of furnishing transportation, communications, electricity, gas, water, or sewage disposal services; 2. A research facility used in connection with any of the activities in (1) above; or 3. A facility used in connection with any of the activities in (1) above for the bulk storage of fungible commodities.",
-      "page": "i4562 p. 2"
-     },
-     {
-      "quote": "Property held for investment (section 212 property).",
-      "page": "i4562 p. 2"
-     },
-     {
-      "quote": "However, for taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased to others unless: • You manufactured or produced the property; or • The term of the lease is less than 50% of the property’s class life and, for the first 12 months after the property is transferred to the lessee, the deductions related to the property allowed to you as trade or business expenses (except rents and reimbursed amounts) are more than 15% of the rental income from the property.",
-      "page": "i4562 p. 3"
-     }
-    ],
-    "quote": "Section 179 property is property that you acquire by purchase for use in the active conduct of your trade or business, and is one of the following. / Other tangible property (except buildings and their structural components) used as: 1. An integral part of manufacturing, production, or extraction, or of furnishing transportation, communications, electricity, gas, water, or sewage disposal services; 2. A research facility used in connection with any of the activities in (1) above; or 3. A facility used in connection with any of the activities in (1) above for the bulk storage of fungible commodities. / Property held for investment (section 212 property). / However, for taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased to others unless: • You manufactured or produced the property; or • The term of the lease is less than 50% of the property’s class life and, for the first 12 months after the property is transferred to the lessee, the deductions related to the property allowed to you as trade or business expenses (except rents and reimbursed amounts) are more than 15% of the rental income from the property.",
-    "page": "i4562 p. 2; i4562 p. 3",
-    "why_uncovered": "asset.s179_bad tests only the elected amount against business cost and use above 50%. asset.is_section179 turns only on qualified improvement property. No question or refusal screens investment property, property converted from personal use rather than purchased for business use, noncorporate leased property, or non-personal tangible property such as a land improvement in class 00.3 that is not an integral part of a listed activity. The screen removes related-party, gift and exchange acquisitions, but not these cases.",
-    "closest_item": "asset.s179",
-    "effect": "eligibility"
-   },
-   {
-    "item": "asset.bonus",
-    "sentences": [
-     {
-      "quote": "Property described in section 168(k)(9)(A) or 168(k)(9)(B); or",
-      "page": "i4562 p. 7"
-     },
-     {
-      "quote": "Qualified property can be either new property or certain used property.",
-      "page": "i4562 p. 6"
-     }
-    ],
-    "quote": "Property described in section 168(k)(9)(A) or 168(k)(9)(B); or / Qualified property can be either new property or certain used property.",
-    "page": "i4562 p. 7; i4562 p. 6",
-    "why_uncovered": "The screen does not ask whether the property falls under section 168(k)(9)(A) or (B), and no asset class gate excludes it. The allowance is figured for any property in a 3-to-20-year class unless the filer elects out. Nothing asks whether used property meets the conditions for used property, beyond the related-person and gift screens.",
-    "closest_item": "asset.bonus",
-    "effect": "amount"
-   },
    {
     "item": "asset.class",
     "sentences": [
      {
-      "quote": "Any qualified rent-to-own property (as defined in section 168(i)(14)).",
+      "quote": "Appliances, carpets, furniture, etc., used in a rental real estate activity.",
       "page": "i4562 p. 10"
      },
      {
-      "quote": "Certain energy property specified in section 168(e)(3)(B) (vi).",
+      "quote": "Initial clearing and grading land improvements for gas utility property.",
       "page": "i4562 p. 10"
      },
      {
-      "quote": "Any motorsports entertainment complex (as defined in section 168(i)(15)).",
+      "quote": "Initial clearing and grading land improvements for electric utility transmission and distribution plants.",
       "page": "i4562 p. 10"
      },
      {
-      "quote": "Any natural gas gathering line (as defined in section 168(i) (17)) placed in service after April 11, 2005, the original use of which begins with you after April 11, 2005, and is not under self-construction or subject to a binding contract in existence before April 12, 2005.",
-      "page": "i4562 p. 10"
-     },
-     {
-      "quote": "Any qualified smart electric meter property.",
-      "page": "i4562 p. 10"
-     },
-     {
-      "quote": "Any qualified smart electric grid system property.",
-      "page": "i4562 p. 10"
-     },
-     {
-      "quote": "Certain electric transmission property specified in section 168(e)(3)(E)(v) placed in service after April 11, 2005, the original use of which begins with you after April 11, 2005, and is not under self-construction or subject to a binding contract in existence before April 12, 2005.",
-      "page": "i4562 p. 10"
-     },
-     {
-      "quote": "Qualified improvement property, as defined in section 168(e)(6), placed in service by you after December 31, 2017.",
-      "page": "i4562 p. 10"
-     },
-     {
-      "quote": "The 150% declining balance method is the only applicable method for any qualified smart electric meter or any qualified smart electric grid system property placed in service after October 3, 2008.",
-      "page": "i4562 p. 11"
+      "quote": "Natural gas gathering and distribution lines placed in service after April 11, 2005.",
+      "page": "p946 p. 98"
      }
     ],
-    "quote": "Any qualified rent-to-own property (as defined in section 168(i)(14)). / Certain energy property specified in section 168(e)(3)(B) (vi). / Any motorsports entertainment complex (as defined in section 168(i)(15)). / Any natural gas gathering line (as defined in section 168(i) (17)) placed in service after April 11, 2005, the original use of which begins with you after April 11, 2005, and is not under self-construction or subject to a binding contract in existence before April 12, 2005. / Any qualified smart electric meter property. / Any qualified smart electric grid system property. / Certain electric transmission property specified in section 168(e)(3)(E)(v) placed in service after April 11, 2005, the original use of which begins with you after April 11, 2005, and is not under self-construction or subject to a binding contract in existence before April 12, 2005. / Qualified improvement property, as defined in section 168(e)(6), placed in service by you after December 31, 2017. / The 150% declining balance method is the only applicable method for any qualified smart electric meter or any qualified smart electric grid system property placed in service after October 3, 2008.",
-    "page": "i4562 p. 10; i4562 p. 11",
-    "why_uncovered": "The class question offers only Appendix B classes, options A, B and C, and qualified improvement property. These statutory classifications override or fall outside the Appendix B lookup, so a filer following the question could get the wrong recovery period or rate. The smart meter and grid property method is also not modeled. The qualified improvement option does not test for placement in service after 2017, even though the placed-in-service question allows earlier years.",
+    "quote": "Appliances, carpets, furniture, etc., used in a rental real estate activity. / Initial clearing and grading land improvements for gas utility property. / Initial clearing and grading land improvements for electric utility transmission and distribution plants. / Natural gas gathering and distribution lines placed in service after April 11, 2005.",
+    "page": "i4562 p. 10; p946 p. 98",
+    "why_uncovered": "The asset class question only lets the filer choose an Appendix B class from Table B-1 or B-2, or option A, B, C, or qualified improvement property. These sentences assign classes by statute, overriding the tables: 5-year for appliances, carpets and furniture used in rental real estate; 15-year and 20-year for initial clearing and grading land improvements for utilities; 15-year for natural gas distribution lines. Nothing in the question offers these classifications. The table lookup would give a different class: 00.11 (7-year) for rental furniture, and 49.21 or Rev. Rul. 72-403 exclusions for the utility items. The screen covers only natural gas gathering lines, not distribution lines, and it does not cover the clearing and grading improvements or rental-activity furnishings.",
     "closest_item": "asset.class",
-    "effect": "amount"
-   },
-   {
-    "item": "asset.screen",
-    "sentences": [
-     {
-      "quote": "You cannot use the percentage tables for a short tax year.",
-      "page": "p946 p. 37"
-     },
-     {
-      "quote": "See Pub. 946 for rules on how to compute the depreciation deduction for property placed in service in a short tax year.",
-      "page": "i4562 p. 12"
-     }
-    ],
-    "quote": "You cannot use the percentage tables for a short tax year. / See Pub. 946 for rules on how to compute the depreciation deduction for property placed in service in a short tax year.",
-    "page": "p946 p. 37; i4562 p. 12",
-    "why_uncovered": "The screen covers methods other than the percentage tables, but it does not mention a short tax year, and no other question asks about one. The encoded computation always applies table rates and assumes calendar-year quarters.",
-    "closest_item": "asset.screen",
-    "effect": "amount"
-   },
-   {
-    "item": "asset.listed_low",
-    "sentences": [
-     {
-      "quote": "To determine whether to use line 26 or line 27 to report your listed property, you must first determine the percentage of qualified business use for each property.",
-      "page": "i4562 p. 14"
-     },
-     {
-      "quote": "Generally, a qualified business use is any use in your trade or business.",
-      "page": "i4562 p. 14"
-     },
-     {
-      "quote": "However, it does not include any of the following. • Investment use. • Leasing the property to a 5% owner or related person if the value related to such usage is not reported as income to the individual. • The use of the property as compensation for services performed by a 5% owner or related person. • The use of the property as compensation for services performed by any person (who is not a 5% owner or related person), unless an amount is included in that person’s income for the use of the property and, if required, income tax was withheld on that amount. • The use of property that is determined to be non-deductible under section 274.",
-      "page": "i4562 p. 14"
-     },
-     {
-      "quote": "Excluding these uses above from the numerator, determine your percentage of qualified business use similar to the method used to figure the business/investment use percentage in column (c).",
-      "page": "i4562 p. 14"
-     }
-    ],
-    "quote": "To determine whether to use line 26 or line 27 to report your listed property, you must first determine the percentage of qualified business use for each property. / Generally, a qualified business use is any use in your trade or business. / However, it does not include any of the following. • Investment use. • Leasing the property to a 5% owner or related person if the value related to such usage is not reported as income to the individual. • The use of the property as compensation for services performed by a 5% owner or related person. • The use of the property as compensation for services performed by any person (who is not a 5% owner or related person), unless an amount is included in that person’s income for the use of the property and, if required, income tax was withheld on that amount. • The use of property that is determined to be non-deductible under section 274. / Excluding these uses above from the numerator, determine your percentage of qualified business use similar to the method used to figure the business/investment use percentage in column (c).",
-    "page": "i4562 p. 14",
-    "why_uncovered": "The 50% test uses the single percentage from asset.pct, which asks about use for this business. Nothing asks about or removes the listed exclusions from the numerator. Listed property could pass the test on its general business use percentage when its qualified business use is 50% or less, wrongly keeping section 179, the special allowance and accelerated depreciation.",
-    "closest_item": "asset.listed_low",
-    "effect": "eligibility"
-   },
-   {
-    "item": "asset.listed",
-    "sentences": [
-     {
-      "quote": "For purposes of the exceptions above, a portion of the taxpayer’s home is treated as a regular business establishment only if that portion meets the requirements for deducting expenses attributable to the business use of a home.",
-      "page": "i4562 p. 3"
-     }
-    ],
-    "quote": "For purposes of the exceptions above, a portion of the taxpayer’s home is treated as a regular business establishment only if that portion meets the requirements for deducting expenses attributable to the business use of a home.",
-    "page": "i4562 p. 3",
-    "why_uncovered": "The listed property question refers to the filer's regular business establishment, but it does not state or ask about this limit on treating part of a home as one. A home-based filer could wrongly answer that the property is not listed property.",
-    "closest_item": "asset.listed",
-    "effect": "eligibility"
-   },
-   {
-    "item": "asset.pct",
-    "sentences": [
-     {
-      "quote": "If during the tax year you convert property used solely for personal purposes to business/investment use (or vice versa), figure the percentage of business/investment use only for the number of months you use the property in your business or for the production of income.",
-      "page": "i4562 p. 14"
-     },
-     {
-      "quote": "Multiply that percentage by the number of months you use the property in your business or for the production of income, and divide the result by 12.",
-      "page": "i4562 p. 14"
-     }
-    ],
-    "quote": "If during the tax year you convert property used solely for personal purposes to business/investment use (or vice versa), figure the percentage of business/investment use only for the number of months you use the property in your business or for the production of income. / Multiply that percentage by the number of months you use the property in your business or for the production of income, and divide the result by 12.",
-    "page": "i4562 p. 14",
-    "why_uncovered": "The cost question handles the basis of property converted from personal use, and the screen refuses conversion to personal use. Neither applies this months-based adjustment to listed property converted to business use during 2025, and asset.pct takes the percentage without it.",
-    "closest_item": "asset.pct",
     "effect": "amount"
    }
   ],
@@ -189,6 +49,12 @@
      14,
      15,
      16
+    ]
+   },
+   {
+    "doc": "p946",
+    "pages": [
+     17
     ]
    },
    {
@@ -240,7 +106,7 @@
     ]
    }
   ],
-  "cost": 0.9192520000000001,
+  "cost": 0.8612868,
   "model": "claude-opus-5-5"
  },
  {
@@ -1044,8 +910,82 @@
  },
  {
   "form": "f1095a",
-  "prompt_sha": "e506e96b6283ddcabc4e0500221a1e63ef20bbbb7f9071ad9b2d9fe40740d39c",
+  "prompt_sha": "b07da2f39312cf811cac6674cfbe9f0e2353edd7eb2ecfa3a54f9588dcee2a3a",
   "claims": [
+   {
+    "item": "f1095a.b_counted",
+    "sentences": [
+     {
+      "quote": "However, if you got married in December of 2025 and you and your spouse, or individuals in your and your spouse’s tax family, were enrolled in separate qualified health plans, add the amounts from Form 1095-A, column B, for each plan (or plans) and enter the total.",
+      "page": "i8962 p. 15"
+     },
+     {
+      "quote": "If you got married in a month other than December, your applicable SLCSP premium may not be the same for every month. If it is not the same for every month, you cannot use line 11.",
+      "page": "i8962 p. 15"
+     },
+     {
+      "quote": "If you got married in 2025, and someone in your tax family who you enrolled in a qualified health plan (including yourself) and someone in your tax family who your spouse enrolled in a qualified health plan (including your spouse) prior to your first month of marriage receives separate Forms 1095-A, add together the amounts from column B of the Forms 1095-A for each month before the first full month of marriage and enter the total.",
+      "page": "i8962 p. 17"
+     },
+     {
+      "quote": "If you completed Part V, use the instructions in Pub. 974 for the entries to make for your pre-marriage months.",
+      "page": "i8962 p. 17"
+     }
+    ],
+    "quote": "However, if you got married in December of 2025 and you and your spouse, or individuals in your and your spouse’s tax family, were enrolled in separate qualified health plans, add the amounts from Form 1095-A, column B, for each plan (or plans) and enter the total. / If you got married in a month other than December, your applicable SLCSP premium may not be the same for every month. If it is not the same for every month, you cannot use line 11. / If you got married in 2025, and someone in your tax family who you enrolled in a qualified health plan (including yourself) and someone in your tax family who your spouse enrolled in a qualified health plan (including your spouse) prior to your first month of marriage receives separate Forms 1095-A, add together the amounts from column B of the Forms 1095-A for each month before the first full month of marriage and enter the total. / If you completed Part V, use the instructions in Pub. 974 for the entries to make for your pre-marriage months.",
+    "page": "i8962 p. 15; i8962 p. 17",
+    "why_uncovered": "The b_counted question tells the filer to count column B from only one same-state form when coverage overlaps. It makes no exception for spouses who each had a separate policy before marriage. For pre-marriage months (or for a December marriage on line 11), the instructions require adding both forms' column B amounts. The question's wording would therefore have the filer drop one spouse's SLCSP premium. No question asks about marriage in 2025 or about Part V (the alternative calculation). The HANDLED ELSEWHERE f8962 refusal addresses forms that share only some months. It does not address the marriage addition rule.",
+    "closest_item": "f1095a.b_counted",
+    "effect": "amount"
+   },
+   {
+    "item": "f1095a.one",
+    "sentences": [
+     {
+      "quote": "If you completed Part IV for any Form 1095-A, add the monthly premium amounts allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (e), to the monthly premiums for other policies that you did not allocate.",
+      "page": "i8962 p. 16"
+     },
+     {
+      "quote": "If you completed Part IV for any Form 1095-A, add the amounts of applicable SLCSP premium allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (f), to the applicable SLCSP premium shown on the Form(s) 1095-A that you did not allocate.",
+      "page": "i8962 p. 16"
+     },
+     {
+      "quote": "If you completed Part IV for any Form 1095-A, include only the amounts of the monthly APTC allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (g), and combine that amount with the amounts of the monthly APTC for other policies that you did not allocate.",
+      "page": "i8962 p. 17"
+     },
+     {
+      "quote": "If you indicated to the Marketplace at enrollment that you would claim an individual in your tax family for the year of coverage but the individual is not included in any tax family for the year of coverage, you must report any APTC paid for that individual’s coverage.",
+      "page": "i8962 p. 17"
+     },
+     {
+      "quote": "If an individual you enrolled in coverage is not included in any tax family, you must reconcile the APTC paid for the individual’s coverage, even if you are claimed as a dependent by another taxpayer.",
+      "page": "p974 p. 27"
+     },
+     {
+      "quote": "If you are enrolled in the same policy as the individual not included in any tax family, you have to allocate policy amounts even though the conditions in the Form 8962 instructions for line 9 are not met.",
+      "page": "p974 p. 27"
+     }
+    ],
+    "quote": "If you completed Part IV for any Form 1095-A, add the monthly premium amounts allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (e), to the monthly premiums for other policies that you did not allocate. / If you completed Part IV for any Form 1095-A, add the amounts of applicable SLCSP premium allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (f), to the applicable SLCSP premium shown on the Form(s) 1095-A that you did not allocate. / If you completed Part IV for any Form 1095-A, include only the amounts of the monthly APTC allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (g), and combine that amount with the amounts of the monthly APTC for other policies that you did not allocate. / If you indicated to the Marketplace at enrollment that you would claim an individual in your tax family for the year of coverage but the individual is not included in any tax family for the year of coverage, you must report any APTC paid for that individual’s coverage. / If an individual you enrolled in coverage is not included in any tax family, you must reconcile the APTC paid for the individual’s coverage, even if you are claimed as a dependent by another taxpayer. / If you are enrolled in the same policy as the individual not included in any tax family, you have to allocate policy amounts even though the conditions in the Form 8962 instructions for line 9 are not met.",
+    "page": "i8962 p. 16; i8962 p. 17; p974 p. 27",
+    "why_uncovered": "Each Form 1095-A's columns A, B and C are taken at their full reported amounts. No question asks whether the policy is shared with another taxpayer (for example, after a divorce, with a separate filer, or with an enrolled individual in no tax family). No refusal covers Part IV allocation, and no allocation percentage is applied to any column. A filer who must allocate would report the full policy premiums, SLCSP premium and APTC instead of only the allocated share.",
+    "closest_item": "f1095a.one",
+    "effect": "amount"
+   },
+   {
+    "item": "f1095a.in_b_jan",
+    "sentences": [
+     {
+      "quote": "If you or a family member isn’t lawfully present in the United States and was enrolled in a qualified health plan, see Individuals Not Lawfully Present in the United States Enrolled in a Qualified Health Plan in Pub. 974 for instructions on what amounts to enter in columns (a) and (b).",
+      "page": "i8962 p. 16"
+     }
+    ],
+    "quote": "If you or a family member isn’t lawfully present in the United States and was enrolled in a qualified health plan, see Individuals Not Lawfully Present in the United States Enrolled in a Qualified Health Plan in Pub. 974 for instructions on what amounts to enter in columns (a) and (b).",
+    "page": "i8962 p. 16",
+    "why_uncovered": "The monthly column A and B questions (all months, and the uniform mo_a/mo_b questions) take the Form 1095-A amounts or the correct SLCSP premium. None of them asks whether a covered individual is not lawfully present. No refusal covers the special Pub. 974 computation for that case.",
+    "closest_item": "f1095a.in_b_jan",
+    "effect": "amount"
+   },
    {
     "item": "f1095a.in_a_jan",
     "sentences": [
@@ -1056,98 +996,12 @@
      {
       "quote": "If so, and the premiums for the month are not paid by the due date of your return (not including extensions), enter -0- for the month on the appropriate line on Form 8962, column (a).",
       "page": "i8962 p. 16"
-     },
-     {
-      "quote": "If the enrollment premiums for the month are paid by the due date of your return (not including extensions), enter the enrollment premiums for the month on the appropriate line on Form 8962, column (a), even if your Form 1095-A shows -0- as the enrollment premium for the month.",
-      "page": "i8962 p. 16"
-     },
-     {
-      "quote": "If you or a family member isn't lawfully present in the United States and was enrolled in a qualified health plan, see Individuals Not Lawfully Present in the United States Enrolled in a Qualified Health Plan in Pub. 974 for instructions on what amounts to enter in columns (a) and (b).",
-      "page": "i8962 p. 16"
      }
     ],
-    "quote": "You are not allowed a monthly credit amount for any month that the enrollment premiums for the month were not paid by the due date of your return (not including extensions), unless the amount of the premium paid for the month is sufficient to avoid termination of the coverage for that month under one of the scenarios described under Enrollment premiums, earlier. / If so, and the premiums for the month are not paid by the due date of your return (not including extensions), enter -0- for the month on the appropriate line on Form 8962, column (a). / If the enrollment premiums for the month are paid by the due date of your return (not including extensions), enter the enrollment premiums for the month on the appropriate line on Form 8962, column (a), even if your Form 1095-A shows -0- as the enrollment premium for the month. / If you or a family member isn't lawfully present in the United States and was enrolled in a qualified health plan, see Individuals Not Lawfully Present in the United States Enrolled in a Qualified Health Plan in Pub. 974 for instructions on what amounts to enter in columns (a) and (b).",
+    "quote": "You are not allowed a monthly credit amount for any month that the enrollment premiums for the month were not paid by the due date of your return (not including extensions), unless the amount of the premium paid for the month is sufficient to avoid termination of the coverage for that month under one of the scenarios described under Enrollment premiums, earlier. / If so, and the premiums for the month are not paid by the due date of your return (not including extensions), enter -0- for the month on the appropriate line on Form 8962, column (a).",
     "page": "i8962 p. 16",
-    "why_uncovered": "The monthly column A questions (in_a_jan through in_a_dec, and mo_a) ask only for the amount printed on Form 1095-A, with zero if blank. No question asks whether premiums for a month where Form 1095-A shows -0- were paid by the return due date. That payment would require entering the full premium instead of zero. No question, adjustment or refusal addresses the different column A amounts that apply when an enrollee is not lawfully present.",
+    "why_uncovered": "The monthly column A questions (and mo_a) say to enter 'the premiums you paid' and to use 'zero only if no premiums were paid for that month by that date.' A month with a partial payment that was neither a full payment by the return due date nor enough to avoid termination would therefore get a nonzero partial amount. The instructions require -0- for that month and deny the monthly credit.",
     "closest_item": "f1095a.in_a_jan",
-    "effect": "amount"
-   },
-   {
-    "item": "f1095a.in_b_jan",
-    "sentences": [
-     {
-      "quote": "If a -0- appears on Form 1095-A, on any of lines 21 through 32, column A, because your enrollment premiums were not paid for one or more months and the amount of the premium paid for the month is not sufficient to avoid termination of the coverage for that month under one of the three scenarios described under Enrollment premiums, earlier, then you are not entitled to a monthly credit amount for that month.",
-      "page": "i8962 p. 16"
-     },
-     {
-      "quote": "If not allowed a monthly credit amount because your enrollment premiums for the month were unpaid, enter -0- on the appropriate line on Form 8962, column (b).",
-      "page": "i8962 p. 17"
-     },
-     {
-      "quote": "However, if your enrollment premiums for the month were paid by the due date of your return, not including extensions, enter your applicable SLCSP premium for the month on the appropriate line on Form 8962, column (b), even if your Form 1095-A shows -0- as the enrollment premium for the month.",
-      "page": "i8962 p. 17"
-     },
-     {
-      "quote": "If you or a family member isn't lawfully present in the United States and was enrolled in a qualified health plan, see Individuals Not Lawfully Present in the United States Enrolled in a Qualified Health Plan in Pub. 974 for instructions on what amounts to enter in columns (a) and (b).",
-      "page": "i8962 p. 16"
-     }
-    ],
-    "quote": "If a -0- appears on Form 1095-A, on any of lines 21 through 32, column A, because your enrollment premiums were not paid for one or more months and the amount of the premium paid for the month is not sufficient to avoid termination of the coverage for that month under one of the three scenarios described under Enrollment premiums, earlier, then you are not entitled to a monthly credit amount for that month. / If not allowed a monthly credit amount because your enrollment premiums for the month were unpaid, enter -0- on the appropriate line on Form 8962, column (b). / However, if your enrollment premiums for the month were paid by the due date of your return, not including extensions, enter your applicable SLCSP premium for the month on the appropriate line on Form 8962, column (b), even if your Form 1095-A shows -0- as the enrollment premium for the month. / If you or a family member isn't lawfully present in the United States and was enrolled in a qualified health plan, see Individuals Not Lawfully Present in the United States Enrolled in a Qualified Health Plan in Pub. 974 for instructions on what amounts to enter in columns (a) and (b).",
-    "page": "i8962 p. 16; i8962 p. 17",
-    "why_uncovered": "The column B questions (in_b_jan through in_b_dec, and mo_b) take the printed or corrected SLCSP premium. Nothing forces column B to zero for a month whose premiums went unpaid and were not paid by the return due date. Nothing restores the SLCSP amount when those premiums were paid late but by the due date. The not-lawfully-present adjustment to column B is neither asked about nor refused.",
-    "closest_item": "f1095a.in_b_jan",
-    "effect": "amount"
-   },
-   {
-    "item": "f1095a.b_counted",
-    "sentences": [
-     {
-      "quote": "If you got married in 2025, and someone in your tax family who you enrolled in a qualified health plan (including yourself) and someone in your tax family who your spouse enrolled in a qualified health plan (including your spouse) prior to your first month of marriage receives separate Forms 1095-A, add together the amounts from column B of the Forms 1095-A for each month before the first full month of marriage and enter the total.",
-      "page": "i8962 p. 17"
-     },
-     {
-      "quote": "However, if you got married in December of 2025 and you and your spouse, or individuals in your and your spouse's tax family, were enrolled in separate qualified health plans, add the amounts from Form 1095-A, column B, for each plan (or plans) and enter the total.",
-      "page": "i8962 p. 15"
-     },
-     {
-      "quote": "If you got married in a month other than December, your applicable SLCSP premium may not be the same for every month. If it is not the same for every month, you cannot use line 11.",
-      "page": "i8962 p. 15"
-     }
-    ],
-    "quote": "If you got married in 2025, and someone in your tax family who you enrolled in a qualified health plan (including yourself) and someone in your tax family who your spouse enrolled in a qualified health plan (including your spouse) prior to your first month of marriage receives separate Forms 1095-A, add together the amounts from column B of the Forms 1095-A for each month before the first full month of marriage and enter the total. / However, if you got married in December of 2025 and you and your spouse, or individuals in your and your spouse's tax family, were enrolled in separate qualified health plans, add the amounts from Form 1095-A, column B, for each plan (or plans) and enter the total. / If you got married in a month other than December, your applicable SLCSP premium may not be the same for every month. If it is not the same for every month, you cannot use line 11.",
-    "page": "i8962 p. 17; i8962 p. 15",
-    "why_uncovered": "The b_counted gate tells the filer to count only one same-state form's column B whenever another counted form covers the same months. It has no exception for spouses who married in 2025 and had separate pre-marriage policies. For those pre-marriage months, column B from each form must be added. The HANDLED ELSEWHERE refusal for f8962 also applies the one-form rule only, so it does not cover this marriage exception.",
-    "closest_item": "f1095a.b_counted",
-    "effect": "amount"
-   },
-   {
-    "item": "f1095a.in_c_jan",
-    "sentences": [
-     {
-      "quote": "If you completed Part IV for any Form 1095-A, include only the amounts of the monthly APTC allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (g), and combine that amount with the amounts of the monthly APTC for other policies that you did not allocate.",
-      "page": "i8962 p. 17"
-     },
-     {
-      "quote": "If you completed Part IV for any Form 1095-A, add the monthly premium amounts allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (e), to the monthly premiums for other policies that you did not allocate.",
-      "page": "i8962 p. 16"
-     },
-     {
-      "quote": "If you indicated to the Marketplace at enrollment that you would claim an individual in your tax family for the year of coverage but the individual is not included in any tax family for the year of coverage, you must report any APTC paid for that individual's coverage.",
-      "page": "i8962 p. 17"
-     },
-     {
-      "quote": "If an individual you enrolled in coverage is not included in any tax family, you must reconcile the APTC paid for the individual's coverage, even if you are claimed as a dependent by another taxpayer.",
-      "page": "p974 p. 27"
-     },
-     {
-      "quote": "If you are enrolled in the same policy as the individual not included in any tax family, you have to allocate policy amounts even though the conditions in the Form 8962 instructions for line 9 are not met.",
-      "page": "p974 p. 27"
-     }
-    ],
-    "quote": "If you completed Part IV for any Form 1095-A, include only the amounts of the monthly APTC allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (g), and combine that amount with the amounts of the monthly APTC for other policies that you did not allocate. / If you completed Part IV for any Form 1095-A, add the monthly premium amounts allocated to you, if any, using the allocation percentage you entered on Form 8962, lines 30 through 33, column (e), to the monthly premiums for other policies that you did not allocate. / If you indicated to the Marketplace at enrollment that you would claim an individual in your tax family for the year of coverage but the individual is not included in any tax family for the year of coverage, you must report any APTC paid for that individual's coverage. / If an individual you enrolled in coverage is not included in any tax family, you must reconcile the APTC paid for the individual's coverage, even if you are claimed as a dependent by another taxpayer. / If you are enrolled in the same policy as the individual not included in any tax family, you have to allocate policy amounts even though the conditions in the Form 8962 instructions for line 9 are not met.",
-    "page": "i8962 p. 17; i8962 p. 16; p974 p. 27",
-    "why_uncovered": "The column C questions (in_c_jan through in_c_dec, and c_total) take the full amount from each Form 1095-A. Nothing asks whether the policy is shared with another tax family and needs Part IV allocation. Nothing asks whether the filer enrolled someone who is in no tax family and must reconcile that person's APTC. No refusal here or in HANDLED ELSEWHERE covers shared-policy allocation, so the full APTC and premiums would be used without allocation.",
-    "closest_item": "f1095a.in_c_jan",
     "effect": "amount"
    }
   ],
@@ -1155,7 +1009,8 @@
    {
     "doc": "i1095a",
     "pages": [
-     2
+     2,
+     3
     ]
    },
    {
@@ -1180,7 +1035,7 @@
     ]
    }
   ],
-  "cost": 0.29412799999999995,
+  "cost": 0.32437479999999996,
   "model": "claude-opus-5-5"
  },
  {
@@ -1667,73 +1522,29 @@
  },
  {
   "form": "f8962",
-  "prompt_sha": "c62987e59ef0425c5fee0aea8adcd017bfaac670b2f4f8cc0dcb6b782422bfc8",
+  "prompt_sha": "e7cc67f14305830ba33e4df8eb7400fa9e9e15336b395cc28619c1ab91738007",
   "claims": [
    {
-    "item": "f8962.line10",
+    "item": "f8962.applicable",
     "sentences": [
      {
-      "quote": "If either of these two situations applies to you, or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, you must determine the correct applicable SLCSP premium for every month.",
-      "page": "i8962 p. 14"
+      "quote": "2. No one can claim you as a dependent for the year.",
+      "page": "i8962 p. 3"
      },
      {
-      "quote": "If the correct applicable SLCSP premium is not the same for every month of 2025, check “No”and continue to lines 12 through 23.",
-      "page": "i8962 p. 14"
+      "quote": "Generally, you are an applicable taxpayer if your household income for 2025 (described earlier) is at least 100% of the federal poverty line for your family size (provided in Tables 1-1, 1-2, and 1-3) and no one can claim you as a dependent for 2025.",
+      "page": "i8962 p. 6"
      },
      {
-      "quote": "If your correct applicable SLCSP premium is not the same for all 12 months, check “No” and continue to lines 12 through 23.",
-      "page": "i8962 p. 15"
-     },
-     {
-      "quote": "If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected.",
-      "page": "i8962 p. 15"
+      "quote": "No one can claim you as a dependent for the year.",
+      "page": "i8962 p. 9"
      }
     ],
-    "quote": "If either of these two situations applies to you, or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, you must determine the correct applicable SLCSP premium for every month. / If the correct applicable SLCSP premium is not the same for every month of 2025, check “No”and continue to lines 12 through 23. / If your correct applicable SLCSP premium is not the same for all 12 months, check “No” and continue to lines 12 through 23. / If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected.",
-    "page": "i8962 p. 14; i8962 p. 15",
-    "why_uncovered": "Line 10 is decided only from whether Forms 1095-A columns A and B are uniform for 12 months. No question asks about the conditions that make the reported column B wrong: no APTC was paid, or an unreported change in circumstances such as a newborn, a death, a move, or a change in MEC eligibility. No refusal covers them either. So the correct SLCSP can differ by month while line 10 is still answered Yes.",
-    "closest_item": "f8962.line10",
-    "effect": "amount"
-   },
-   {
-    "item": "f8962.line11b",
-    "sentences": [
-     {
-      "quote": "If no APTC was paid for your coverage, Form 1095-A, Part III, column B, may be wrong or blank or may report your applicable SLCSP premium as -0-.",
-      "page": "i8962 pp. 4-5"
-     },
-     {
-      "quote": "In either case, you must determine your correct applicable SLCSP premium.",
-      "page": "i8962 p. 5"
-     },
-     {
-      "quote": "See Missing or incorrect SLCSP premium on Form 1095-A under Line 10, earlier, to determine your correct applicable SLCSP premium to enter in column (b).",
-      "page": "i8962 p. 16"
-     }
-    ],
-    "quote": "If no APTC was paid for your coverage, Form 1095-A, Part III, column B, may be wrong or blank or may report your applicable SLCSP premium as -0-. / In either case, you must determine your correct applicable SLCSP premium. / See Missing or incorrect SLCSP premium on Form 1095-A under Line 10, earlier, to determine your correct applicable SLCSP premium to enter in column (b).",
-    "page": "i8962 pp. 4-5; i8962 p. 5; i8962 p. 16",
-    "why_uncovered": "Line 11(b) copies Form 1095-A line 33B. Nothing asks whether APTC was absent and column B is blank, zero or wrong, or whether an unreported change made it incorrect. Nothing refuses those cases. A zero or wrong SLCSP flows directly into lines 11(d) and 11(e).",
-    "closest_item": "f8962.line11b",
-    "effect": "amount"
-   },
-   {
-    "item": "f8962.line12b",
-    "sentences": [
-     {
-      "quote": "Need to determine correct applicable SLCSP premium. If, during 2025, your coverage family changed or you moved and you did not notify the Marketplace, or if no APTC was paid, the applicable SLCSP premium reported on your Form(s) 1095-A may be missing or incorrect.",
-      "page": "i8962 p. 17"
-     },
-     {
-      "quote": "See Missing or incorrect SLCSP premium on Form 1095-A under Line 10, earlier, to determine your correct applicable SLCSP premium to enter in column (b).",
-      "page": "i8962 p. 17"
-     }
-    ],
-    "quote": "Need to determine correct applicable SLCSP premium. If, during 2025, your coverage family changed or you moved and you did not notify the Marketplace, or if no APTC was paid, the applicable SLCSP premium reported on your Form(s) 1095-A may be missing or incorrect. / See Missing or incorrect SLCSP premium on Form 1095-A under Line 10, earlier, to determine your correct applicable SLCSP premium to enter in column (b).",
-    "page": "i8962 p. 17",
-    "why_uncovered": "The monthly column (b) lines (12(b) through 23(b)) take Form 1095-A column B as reported. No question or refusal covers the case where that amount is missing, zero, or incorrect. This happens when no APTC was paid or an unreported coverage-family change or move occurred.",
-    "closest_item": "f8962.line12b",
-    "effect": "amount"
+    "quote": "2. No one can claim you as a dependent for the year. / Generally, you are an applicable taxpayer if your household income for 2025 (described earlier) is at least 100% of the federal poverty line for your family size (provided in Tables 1-1, 1-2, and 1-3) and no one can claim you as a dependent for 2025. / No one can claim you as a dependent for the year.",
+    "page": "i8962 p. 3; i8962 p. 6; i8962 p. 9",
+    "why_uncovered": "The applicable-taxpayer helper tests only line 5 being at least 100 or the Marketplace-estimate exception. Neither the estimate_100 nor the alien_below question asks whether someone can claim the filer as a dependent, and no refusal names that case. A filer who can be claimed by someone else would still be treated as an applicable taxpayer and allowed a PTC.",
+    "closest_item": "f8962.applicable",
+    "effect": "eligibility"
    },
    {
     "item": "f8962.line1",
@@ -1743,41 +1554,53 @@
       "page": "i8962 p. 8"
      },
      {
-      "quote": "Your spouse if filing jointly and your spouse can’t be claimed as a dependent on someone else’s 2025 tax return.",
+      "quote": "Your spouse if filing jointly and your spouse can't be claimed as a dependent on someone else’s 2025 tax return.",
       "page": "i8962 p. 3"
      }
     ],
-    "quote": "If you checked the “Someone can claim you as a dependent” box, or if you are filing jointly and you checked the “Someone can claim your spouse as a dependent” box on your tax return, you or your spouse is not included in the tax family size calculation for purposes of Form 8962, line 1. / Your spouse if filing jointly and your spouse can’t be claimed as a dependent on someone else’s 2025 tax return.",
+    "quote": "If you checked the “Someone can claim you as a dependent” box, or if you are filing jointly and you checked the “Someone can claim your spouse as a dependent” box on your tax return, you or your spouse is not included in the tax family size calculation for purposes of Form 8962, line 1. / Your spouse if filing jointly and your spouse can't be claimed as a dependent on someone else’s 2025 tax return.",
     "page": "i8962 p. 8; i8962 p. 3",
-    "why_uncovered": "Line 1 is encoded as the tax family size with no listed question or rule about whether the filer or spouse can be claimed as someone else's dependent. Those people must be excluded from family size, which changes the line 4 poverty line and the line 5 percentage.",
+    "why_uncovered": "Line 1 is encoded only as 'Tax family size'. No question, condition or refusal removes a taxpayer or spouse who can be claimed as a dependent from the count. A family size that is too large raises line 4 and lowers line 5, which changes the applicable figure, line 8a and the Table 5 repayment cap.",
     "closest_item": "f8962.line1",
     "effect": "amount"
    },
    {
-    "item": "f8962.applicable",
+    "item": "f8962.line11b",
     "sentences": [
      {
-      "quote": "No one can claim you as a dependent for the year.",
-      "page": "i8962 p. 3"
+      "quote": "Also, if you had a change in circumstances during 2025 that you did not report to the Marketplace, the SLCSP premium reported in Part III, column B, may be wrong. In either case, you must determine your correct applicable SLCSP premium.",
+      "page": "i8962 p. 5"
      },
      {
-      "quote": "Generally, you are an applicable taxpayer if your household income for 2025 (described earlier) is at least 100% of the federal poverty line for your family size (provided in Tables 1-1, 1-2, and 1-3) and no one can claim you as a dependent for 2025.",
-      "page": "i8962 p. 6"
+      "quote": "If either of these two situations applies to you, or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, you must determine the correct applicable SLCSP premium for every month.",
+      "page": "i8962 p. 14"
      },
      {
-      "quote": "APTC was paid for the coverage of 1 or more months during 2025.",
-      "page": "i8962 p. 9"
+      "quote": "If the correct applicable SLCSP premium is not the same for every month of 2025, check “No”and continue to lines 12 through 23.",
+      "page": "i8962 p. 14"
      },
      {
-      "quote": "You do not meet the requirements under Estimated household income at least 100% of the federal poverty line, earlier, if: • No APTC was paid for your or your family’s coverage; or",
-      "page": "i8962 p. 9"
+      "quote": "If no APTC was paid for your or your family member’s coverage, the SLCSP premium reported in Part III, lines 21 through 32, column B, of Form 1095-A may be wrong, left blank, or reported as -0-.",
+      "page": "i8962 p. 14"
+     },
+     {
+      "quote": "If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected.",
+      "page": "i8962 p. 15"
+     },
+     {
+      "quote": "If, during 2025, your coverage family changed or you moved and you did not notify the Marketplace, or if no APTC was paid, the applicable SLCSP premium reported on your Form(s) 1095-A may be missing or incorrect.",
+      "page": "i8962 p. 16"
+     },
+     {
+      "quote": "If, during 2025, your coverage family changed or you moved and you did not notify the Marketplace, or if no APTC was paid, the applicable SLCSP premium reported on your Form(s) 1095-A may be missing or incorrect. See Missing or incorrect SLCSP premium on Form 1095-A under Line 10, earlier, to determine your correct applicable SLCSP premium to enter in column (b).",
+      "page": "i8962 p. 17"
      }
     ],
-    "quote": "No one can claim you as a dependent for the year. / Generally, you are an applicable taxpayer if your household income for 2025 (described earlier) is at least 100% of the federal poverty line for your family size (provided in Tables 1-1, 1-2, and 1-3) and no one can claim you as a dependent for 2025. / APTC was paid for the coverage of 1 or more months during 2025. / You do not meet the requirements under Estimated household income at least 100% of the federal poverty line, earlier, if: • No APTC was paid for your or your family’s coverage; or",
-    "page": "i8962 p. 3; i8962 p. 6; i8962 p. 9",
-    "why_uncovered": "The applicable-taxpayer helper is described only as line 5 being at least 100 or the Marketplace-estimate exception. No question or refusal tests whether someone can claim the filer as a dependent, and that alone denies the PTC. The estimate_100 question also does not condition the below-100% exception on APTC having been paid. So a filer with no APTC could wrongly qualify by answering yes.",
-    "closest_item": "f8962.applicable",
-    "effect": "eligibility"
+    "quote": "Also, if you had a change in circumstances during 2025 that you did not report to the Marketplace, the SLCSP premium reported in Part III, column B, may be wrong. In either case, you must determine your correct applicable SLCSP premium. / If either of these two situations applies to you, or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, you must determine the correct applicable SLCSP premium for every month. / If the correct applicable SLCSP premium is not the same for every month of 2025, check “No”and continue to lines 12 through 23. / If no APTC was paid for your or your family member’s coverage, the SLCSP premium reported in Part III, lines 21 through 32, column B, of Form 1095-A may be wrong, left blank, or reported as -0-. / If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected. / If, during 2025, your coverage family changed or you moved and you did not notify the Marketplace, or if no APTC was paid, the applicable SLCSP premium reported on your Form(s) 1095-A may be missing or incorrect. / If, during 2025, your coverage family changed or you moved and you did not notify the Marketplace, or if no APTC was paid, the applicable SLCSP premium reported on your Form(s) 1095-A may be missing or incorrect. See Missing or incorrect SLCSP premium on Form 1095-A under Line 10, earlier, to determine your correct applicable SLCSP premium to enter in column (b).",
+    "page": "i8962 p. 5; i8962 p. 14; i8962 p. 15; i8962 p. 16; i8962 p. 17",
+    "why_uncovered": "Lines 11(b) and 12(b)–23(b), and the line 10 Yes/No test, take column B straight from the Forms 1095-A. The 'other' gate covers only newly gained MEC eligibility. No question or refusal covers the other situations that require a corrected SLCSP premium: an unreported move, a birth or added family member, an enrollee's death, a tax family that differs from what was told to the Marketplace, or no APTC paid with column B blank, -0- or wrong. In those cases the tool would use an incorrect SLCSP premium.",
+    "closest_item": "f8962.line11b",
+    "effect": "amount"
    }
   ],
   "used": [
@@ -1805,7 +1628,7 @@
     ]
    }
   ],
-  "cost": 0.560272,
+  "cost": 0.5412428,
   "model": "claude-opus-5-5"
  },
  {
@@ -2102,43 +1925,47 @@
  },
  {
   "form": "sa",
-  "prompt_sha": "f6fc8403cbbbc99f855346069feafceabbdb11a1b345cb0d7243360ff2a044c8",
+  "prompt_sha": "8d10c37923534b74424d32689ac9e0d210c7051fa0295f9efc1c3242c94f5d1c",
   "claims": [
    {
     "item": "sa.line1",
     "sentences": [
      {
-      "quote": "If you received a distribution from a health savings account or a medical savings account in 2025, see Pub. 969 to figure your deduction.",
-      "page": "i1040sca p. 1"
+      "quote": "You can include medical and dental bills you paid in 2025 for anyone who was one of the following either when the services were provided or when you paid for them.",
+      "page": "i1040sca p. 2"
      },
      {
-      "quote": "You can't include insurance premiums paid by making a pretax reduction to your employee compensation because these amounts are already being excluded from your income by not being included in box 1 of your Form(s) W-2.",
-      "page": "i1040sca p. 1"
+      "quote": "Any person you could have claimed as a dependent on your return except that person received $5,200 or more of gross income or filed a joint return.",
+      "page": "i1040sca p. 2"
      },
      {
-      "quote": "If you are a retired public safety officer, you can't include any premiums you paid to the extent they were paid for with a tax-free distribution from your retirement plan.",
-      "page": "i1040sca p. 1"
+      "quote": "Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return.",
+      "page": "i1040sca p. 2"
      },
      {
-      "quote": "But see Limit on long-term care premiums you can deduct, later.",
-      "page": "i1040sca p. 1"
+      "quote": "You can't deduct any premiums attributable to this individual unless this individual is a person described under Whose medical and dental expenses can you include, earlier.",
+      "page": "i1040sca p. 2"
      },
      {
-      "quote": "If you paid someone to do both nursing and housework, you can deduct only the cost of the nursing help.",
-      "page": "i1040sca p. 1"
+      "quote": "However, if you had family coverage when you added this individual to your policy and your premiums didn't increase, you can enter on line 1 the full amount of your medical and dental insurance premiums.",
+      "page": "i1040sca p. 2"
      },
      {
-      "quote": "Lodging expenses (but not meals) while away from home to receive medical care provided by a physician in a hospital or a medical care facility related to a hospital provided there was no",
-      "page": "i1040sca p. 1"
+      "quote": "If you received a reimbursement in 2025 for prior year medical or dental expenses, don't reduce your 2025 expenses by this amount.",
+      "page": "i1040sca p. 2"
      },
      {
-      "quote": "Certain medical expenses paid out of a deceased taxpayer's estate can be claimed on the deceased taxpayer's final return.",
-      "page": "i1040sca p. 1"
+      "quote": "You can't deduct amounts that have already been excluded from your income, so don't include on line 1 insurance premiums paid by an employer-sponsored health insurance plan (cafeteria plan) unless the premiums are included in box 1 of your Form(s) W-2.",
+      "page": "i1040sca p. 2"
+     },
+     {
+      "quote": "Also, don't include any other medical and dental expenses paid by the plan unless the amount paid is included in box 1 of your Form(s) W-2.",
+      "page": "i1040sca p. 2"
      }
     ],
-    "quote": "If you received a distribution from a health savings account or a medical savings account in 2025, see Pub. 969 to figure your deduction. / You can't include insurance premiums paid by making a pretax reduction to your employee compensation because these amounts are already being excluded from your income by not being included in box 1 of your Form(s) W-2. / If you are a retired public safety officer, you can't include any premiums you paid to the extent they were paid for with a tax-free distribution from your retirement plan. / But see Limit on long-term care premiums you can deduct, later. / If you paid someone to do both nursing and housework, you can deduct only the cost of the nursing help. / Lodging expenses (but not meals) while away from home to receive medical care provided by a physician in a hospital or a medical care facility related to a hospital provided there was no / Certain medical expenses paid out of a deceased taxpayer's estate can be claimed on the deceased taxpayer's final return.",
-    "page": "i1040sca p. 1",
-    "why_uncovered": "Line 1 is a single free-entry question for 'unreimbursed eligible medical and dental expenses'. It gives no guidance and has no gate or refusal for these cases: HSA or MSA distributions, premiums paid pretax, premiums paid with a tax-free distribution to a retired public safety officer, the long-term care premium limit, mixed nursing and housework pay, the exclusion of meals from lodging, and estate-paid expenses on a final return. Each of these changes which amounts belong on line 1.",
+    "quote": "You can include medical and dental bills you paid in 2025 for anyone who was one of the following either when the services were provided or when you paid for them. / Any person you could have claimed as a dependent on your return except that person received $5,200 or more of gross income or filed a joint return. / Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return. / You can't deduct any premiums attributable to this individual unless this individual is a person described under Whose medical and dental expenses can you include, earlier. / However, if you had family coverage when you added this individual to your policy and your premiums didn't increase, you can enter on line 1 the full amount of your medical and dental insurance premiums. / If you received a reimbursement in 2025 for prior year medical or dental expenses, don't reduce your 2025 expenses by this amount. / You can't deduct amounts that have already been excluded from your income, so don't include on line 1 insurance premiums paid by an employer-sponsored health insurance plan (cafeteria plan) unless the premiums are included in box 1 of your Form(s) W-2. / Also, don't include any other medical and dental expenses paid by the plan unless the amount paid is included in box 1 of your Form(s) W-2.",
+    "page": "i1040sca p. 2",
+    "why_uncovered": "The line 1 question asks for 'eligible' expenses after insurance payments and refers to Pub. 502 for what counts. It never says whose expenses qualify: the $5,200 gross-income or joint-return exception people, or the case where the filer is someone else's dependent. It does not cover premiums for nondependents covered on the policy, or the family-coverage exception. It also does not say that a 2025 reimbursement of prior-year expenses must not reduce 2025 expenses; its 'after payments from insurance or other sources' wording invites that reduction. Finally, it excludes only pretax-reduction premiums, not other cafeteria-plan-paid expenses or the box 1 inclusion exception.",
     "closest_item": "sa.line1",
     "effect": "amount"
    },
@@ -2146,13 +1973,37 @@
     "item": "sa.line5a",
     "sentences": [
      {
-      "quote": "Don't include taxes you paid to a U.S. territory on this line; instead, include U.S. territory taxes on the appropriate state and local tax line.",
-      "page": "i1040sca p. 7"
+      "quote": "State and local income taxes paid in 2025 for a prior year, such as taxes paid with your 2024 state or local income tax return. Don't include penalties or interest.",
+      "page": "i1040sca p. 3"
+     },
+     {
+      "quote": "Mandatory contributions you made to the California, New Jersey, or New York Nonoccupational Disability Benefit Fund; Rhode Island Temporary Disability Benefit Fund; or Washington State Supplemental Workmen's Compensation Fund.",
+      "page": "i1040sca p. 3"
+     },
+     {
+      "quote": "Mandatory contributions to the Alaska, California, New Jersey, or Pennsylvania state unemployment fund.",
+      "page": "i1040sca p. 3"
+     },
+     {
+      "quote": "Mandatory contributions to state family leave programs, such as the New Jersey Family Leave Insurance (FLI) program and the California Paid Family Leave program.",
+      "page": "i1040sca p. 3"
+     },
+     {
+      "quote": "Don't reduce your deduction by any: State or local income tax refund or credit you expect to receive for 2025; or Refund of or credit for prior year state and local income taxes you actually received in 2025.",
+      "page": "i1040sca p. 3"
+     },
+     {
+      "quote": "If you meet these conditions and to the extent you apply the state or local tax credit to this or a prior year's state or local tax liability, you may include this amount on line 5a, 5b, or 5c, whichever is appropriate.",
+      "page": "i1040sca p. 3"
+     },
+     {
+      "quote": "To the extent you apply a portion of the credit to offset your state or local tax liability in a subsequent year (as permitted by law), you may treat this amount as state or local tax paid in the year the credit is applied.",
+      "page": "i1040sca p. 3"
      }
     ],
-    "quote": "Don't include taxes you paid to a U.S. territory on this line; instead, include U.S. territory taxes on the appropriate state and local tax line.",
-    "page": "i1040sca p. 7",
-    "why_uncovered": "The line 5a question asks only for state and local income taxes. Nothing tells the filer that U.S. territory income taxes belong here. Line 6 and foreign taxes are refused, so territory taxes would end up omitted rather than routed to line 5a.",
+    "quote": "State and local income taxes paid in 2025 for a prior year, such as taxes paid with your 2024 state or local income tax return. Don't include penalties or interest. / Mandatory contributions you made to the California, New Jersey, or New York Nonoccupational Disability Benefit Fund; Rhode Island Temporary Disability Benefit Fund; or Washington State Supplemental Workmen's Compensation Fund. / Mandatory contributions to the Alaska, California, New Jersey, or Pennsylvania state unemployment fund. / Mandatory contributions to state family leave programs, such as the New Jersey Family Leave Insurance (FLI) program and the California Paid Family Leave program. / Don't reduce your deduction by any: State or local income tax refund or credit you expect to receive for 2025; or Refund of or credit for prior year state and local income taxes you actually received in 2025. / If you meet these conditions and to the extent you apply the state or local tax credit to this or a prior year's state or local tax liability, you may include this amount on line 5a, 5b, or 5c, whichever is appropriate. / To the extent you apply a portion of the credit to offset your state or local tax liability in a subsequent year (as permitted by law), you may treat this amount as state or local tax paid in the year the credit is applied.",
+    "page": "i1040sca p. 3",
+    "why_uncovered": "The line 5a question asks only for income taxes paid, including withholding, plus territory taxes. It does not exclude penalties and interest. It does not include the mandatory state disability, unemployment and family-leave fund contributions. It does not say that expected or received refunds must not reduce the amount. It does not mention the safe harbor that treats a charitable contribution disallowed because of a state tax credit as state or local tax paid. No refusal covers the safe harbor.",
     "closest_item": "sa.line5a",
     "effect": "amount"
    },
@@ -2160,28 +2011,68 @@
     "item": "sa.line5b",
     "sentences": [
      {
-      "quote": "Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025.",
-      "page": "i1040sca p. 7"
+      "quote": "Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business, but only if the taxes are assessed uniformly at a like rate on all real property throughout the community, and the proceeds are used for general community or governmental purposes.",
+      "page": "i1040sca p. 6"
+     },
+     {
+      "quote": "Foreign taxes you paid on real estate.",
+      "page": "i1040sca p. 6"
+     },
+     {
+      "quote": "Itemized charges for services to specific property or persons (for example, a $20 monthly charge per house for trash collection, a $5 charge for every 1,000 gallons of water consumed, or a flat charge for mowing a lawn that had grown higher than permitted under a local ordinance).",
+      "page": "i1040sca p. 6"
+     },
+     {
+      "quote": "Charges for improvements that tend to increase the value of your property (for example, an assessment to build a new sidewalk).",
+      "page": "i1040sca p. 6"
+     },
+     {
+      "quote": "However, a charge is deductible if it is used only to maintain an existing public facility in service (for example, a charge to repair an existing sidewalk and any interest included in that charge).",
+      "page": "i1040sca p. 6"
+     },
+     {
+      "quote": "If your mortgage payments include your real estate taxes, you can include only the amount the mortgage company actually paid to the taxing authority in 2025.",
+      "page": "i1040sca p. 6"
+     },
+     {
+      "quote": "This amount is considered a refund of real estate taxes.",
+      "page": "i1040sca p. 6"
+     },
+     {
+      "quote": "If you received a refund or rebate in 2025 of real estate taxes you paid in 2025, reduce your deduction by the amount of the refund or rebate.",
+      "page": "i1040sca p. 6"
+     },
+     {
+      "quote": "If you received a refund or rebate in 2025 of real estate taxes you paid in an earlier year, don't reduce your deduction by this amount.",
+      "page": "i1040sca p. 6"
      }
     ],
-    "quote": "Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025.",
-    "page": "i1040sca p. 7",
-    "why_uncovered": "The real estate tax question asks for 'deductible' amounts but never states the rule on prepaying next year's taxes. That rule requires the tax to be paid in 2025 and assessed before 2026. No question or refusal addresses prepaid 2026 property taxes.",
+    "quote": "Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business, but only if the taxes are assessed uniformly at a like rate on all real property throughout the community, and the proceeds are used for general community or governmental purposes. / Foreign taxes you paid on real estate. / Itemized charges for services to specific property or persons (for example, a $20 monthly charge per house for trash collection, a $5 charge for every 1,000 gallons of water consumed, or a flat charge for mowing a lawn that had grown higher than permitted under a local ordinance). / Charges for improvements that tend to increase the value of your property (for example, an assessment to build a new sidewalk). / However, a charge is deductible if it is used only to maintain an existing public facility in service (for example, a charge to repair an existing sidewalk and any interest included in that charge). / If your mortgage payments include your real estate taxes, you can include only the amount the mortgage company actually paid to the taxing authority in 2025. / This amount is considered a refund of real estate taxes. / If you received a refund or rebate in 2025 of real estate taxes you paid in 2025, reduce your deduction by the amount of the refund or rebate. / If you received a refund or rebate in 2025 of real estate taxes you paid in an earlier year, don't reduce your deduction by this amount.",
+    "page": "i1040sca p. 6",
+    "why_uncovered": "The line 5b question covers only the paid-and-assessed timing rule and territory taxes. It does not exclude business-use property, non-uniform or non-general-purpose levies, foreign real estate taxes, itemized service charges, or improvement assessments, and it does not give the maintenance exception. It does not limit escrowed taxes to the amount the lender actually paid. It does not treat buyer-charged tax at a sale as a refund, or apply the rule that same-year refunds reduce the deduction while prior-year refunds don't.",
     "closest_item": "sa.line5b",
     "effect": "amount"
    },
    {
-    "item": "sa.mfs",
+    "item": "sa.line5c",
     "sentences": [
      {
-      "quote": "If you and your spouse paid expenses jointly and are filing separate returns for 2025, see Pub. 504 to figure the portion of joint expenses that you can claim as itemized deductions.",
-      "page": "i1040sca p. 1"
+      "quote": "Enter on line 5c the state and local personal property taxes you paid, but only if the taxes were based on value alone and were imposed on a yearly basis.",
+      "page": "i1040sca p. 6"
+     },
+     {
+      "quote": "You can deduct only the part of the fee that was based on the car's value.",
+      "page": "i1040sca p. 6"
+     },
+     {
+      "quote": "Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025.",
+      "page": "i1040sca p. 7"
      }
     ],
-    "quote": "If you and your spouse paid expenses jointly and are filing separate returns for 2025, see Pub. 504 to figure the portion of joint expenses that you can claim as itemized deductions.",
-    "page": "i1040sca p. 1",
-    "why_uncovered": "The encoding supports married filing separately itemized returns. It never asks whether expenses were paid jointly, and it neither allocates such expenses nor refuses the case. The amount questions assume the entire amount entered belongs to the filer.",
-    "closest_item": "sa.mfs",
+    "quote": "Enter on line 5c the state and local personal property taxes you paid, but only if the taxes were based on value alone and were imposed on a yearly basis. / You can deduct only the part of the fee that was based on the car's value. / Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025.",
+    "page": "i1040sca p. 6; i1040sca p. 7",
+    "why_uncovered": "The line 5c question asks for 'deductible' personal property taxes plus territory taxes. It does not state the value-only and yearly requirements, or that only the value-based part of a registration fee counts. Unlike the line 5b question, it omits the rule that the tax must be paid in 2025 and assessed before 2026.",
+    "closest_item": "sa.line5c",
     "effect": "amount"
    },
    {
@@ -2194,31 +2085,13 @@
      {
       "quote": "However, this rule doesn't apply to a contribution of any single item for which a deduction of more than $500 is claimed and for which you include a qualified appraisal and Form 8283 with your tax return.",
       "page": "i1040sca p. 11"
-     },
-     {
-      "quote": "If the gift of property is $250 or more, you must also have a contemporaneous written acknowledgment from the charity.",
-      "page": "i1040sca p. 11"
      }
     ],
-    "quote": "A deduction for these contributions will be allowed only if the items are in good used condition or better. / However, this rule doesn't apply to a contribution of any single item for which a deduction of more than $500 is claimed and for which you include a qualified appraisal and Form 8283 with your tax return. / If the gift of property is $250 or more, you must also have a contemporaneous written acknowledgment from the charity.",
+    "quote": "A deduction for these contributions will be allowed only if the items are in good used condition or better. / However, this rule doesn't apply to a contribution of any single item for which a deduction of more than $500 is claimed and for which you include a qualified appraisal and Form 8283 with your tax return.",
     "page": "i1040sca p. 11",
-    "why_uncovered": "Line 12 totals 'supported' noncash donations. No question tests the good-used-condition requirement for clothing and household items, or its appraisal exception. Nothing confirms the contemporaneous written acknowledgment for property gifts of $250 or more; line 11 mentions substantiation, but only for cash gifts. The handled-elsewhere Form 8283 refusals cover only appraisal, special-property and Section B cases.",
+    "why_uncovered": "Line 12 totals supported noncash donations with no question that applies the good-used-condition requirement for clothing and household items. The listed refusals cover only appraisal and special-property treatment and Section B; none denies items in worse condition, and none handles the exception for a single appraised item over $500.",
     "closest_item": "sa.line12",
     "effect": "amount"
-   },
-   {
-    "item": "sa.boxes_blind",
-    "sentences": [
-     {
-      "quote": "If you weren’t totally blind as of December 31, 2025, you must get a statement certified by your eye doctor (ophthalmologist or optometrist) that: • You can't see better than 20/200 in your better eye with glasses or contact lenses, or • Your field of vision is 20 degrees or less.",
-      "page": "i1040gi p. 33"
-     }
-    ],
-    "quote": "If you weren’t totally blind as of December 31, 2025, you must get a statement certified by your eye doctor (ophthalmologist or optometrist) that: • You can't see better than 20/200 in your better eye with glasses or contact lenses, or • Your field of vision is 20 degrees or less.",
-    "page": "i1040gi p. 33",
-    "why_uncovered": "The blindness boxes are counted without any question that defines blindness. A partially blind filer who meets the 20/200 or 20-degree test, with a certified statement, qualifies. Such a filer could answer 'no' and lose the additional standard deduction, and nothing asks for the certification.",
-    "closest_item": "sa.boxes_blind",
-    "effect": "eligibility"
    }
   ],
   "used": [
@@ -2233,12 +2106,12 @@
    {
     "doc": "i1040sca",
     "pages": [
-     1
-    ]
-   },
-   {
-    "doc": "i1040sca",
-    "pages": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
      7
     ]
    },
@@ -2253,125 +2126,167 @@
     "pages": [
      33
     ]
+   },
+   {
+    "doc": "p969",
+    "pages": [
+     9
+    ]
+   },
+   {
+    "doc": "p969",
+    "pages": [
+     13
+    ]
    }
   ],
-  "cost": 0.0871278,
+  "cost": 0.4225508,
   "model": "claude-opus-5-5"
  },
  {
   "form": "sc",
-  "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
+  "prompt_sha": "e1cb1bf4bf08e2e95387de3d124a6cc437675baca64e31acdda1e6825c293cc7",
   "claims": [
    {
-    "item": "sc.one",
+    "item": "sc.line9",
     "sentences": [
      {
-      "quote": "For example, a sporadic activity, a not-for-profit activity, or a hobby does not qualify as a business.",
-      "page": "i1040sc p. 2"
+      "quote": "You must use actual expenses if you used five or more vehicles simultaneously in your business (such as in fleet operations).",
+      "page": "i1040sc p. 6"
      },
      {
-      "quote": "If you are the sole member of a domestic LLC, file Schedule C (or Schedule E or F, if applicable) unless you have elected to treat the domestic LLC as a corporation.",
-      "page": "i1040sc p. 2"
+      "quote": "You can’t use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle.",
+      "page": "i1040sc p. 6"
      },
      {
-      "quote": "Enter on line B the six-digit code from the Principal Business or Professional Activity Codes chart at the end of these instructions.",
-      "page": "i1040sc pp. 3-4"
+      "quote": "You can take the standard mileage rate for 2025 only if you: • Owned the vehicle and used the standard mileage rate for the first year you placed the vehicle in service, or • Leased the vehicle and are using the standard mileage rate for the entire lease period.",
+      "page": "i1040sc p. 6"
      },
      {
-      "quote": "If you made any payment in 2025 that would require you to file any Forms 1099, check the “Yes” box.",
-      "page": "i1040sc p. 5"
+      "quote": "Do not deduct depreciation, rent or lease payments, or your actual operating expenses.",
+      "page": "i1040sc p. 6"
+     },
+     {
+      "quote": "If you used more than one vehicle during the year, attach a statement with the information requested in Schedule C, Part IV, for each additional vehicle.",
+      "page": "i1040sc p. 7"
      }
     ],
-    "quote": "For example, a sporadic activity, a not-for-profit activity, or a hobby does not qualify as a business. / If you are the sole member of a domestic LLC, file Schedule C (or Schedule E or F, if applicable) unless you have elected to treat the domestic LLC as a corporation. / Enter on line B the six-digit code from the Principal Business or Professional Activity Codes chart at the end of these instructions. / If you made any payment in 2025 that would require you to file any Forms 1099, check the “Yes” box.",
-    "page": "i1040sc p. 2; i1040sc pp. 3-4; i1040sc p. 5",
-    "why_uncovered": "No question or refusal tests whether the activity is a business rather than a hobby, or whether a single-member LLC elected corporate treatment. Header lines such as B and I are not encoded either, though those two entries affect presentation only.",
-    "closest_item": "sc.one",
-    "effect": "eligibility"
+    "quote": "You must use actual expenses if you used five or more vehicles simultaneously in your business (such as in fleet operations). / You can’t use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle. / You can take the standard mileage rate for 2025 only if you: • Owned the vehicle and used the standard mileage rate for the first year you placed the vehicle in service, or • Leased the vehicle and are using the standard mileage rate for the entire lease period. / Do not deduct depreciation, rent or lease payments, or your actual operating expenses. / If you used more than one vehicle during the year, attach a statement with the information requested in Schedule C, Part IV, for each additional vehicle.",
+    "page": "i1040sc p. 6; i1040sc p. 7",
+    "why_uncovered": "Line 9 is listed only as a computed line ('standard mileage rate or actual expenses, for each vehicle'). No listed question asks how many vehicles were used at once, whether the standard mileage rate was used in the vehicle's first year or for the entire lease, or whether actual expenses were used before. No refusal covers these cases. Nothing listed bars depreciation or lease payments for a vehicle that uses the standard mileage rate, and nothing produces the Part IV statement for each additional vehicle.",
+    "closest_item": "sc.line9",
+    "effect": "amount"
    },
    {
     "item": "sc.line1",
     "sentences": [
      {
-      "quote": "If you collected this tax from the buyer, you must also include the amount collected in gross receipts or sales on line 1.",
-      "page": "i1040sc p. 9"
-     },
-     {
       "quote": "If the total amounts that were reported in box 1 of Forms 1099-NEC are more than the total you are reporting on line 1, attach a statement explaining the difference.",
       "page": "i1040sc p. 5"
+     },
+     {
+      "quote": "Generally, the installment method can’t be used to report income from the sale of (a) personal property regularly sold under the installment method, or (b) real property held for resale to customers.",
+      "page": "i1040sc p. 6"
+     },
+     {
+      "quote": "If you use the installment method, attach a statement to your return.",
+      "page": "i1040sc p. 6"
+     },
+     {
+      "quote": "However, report royalties and other NIL income that is not self-employment income on Schedule E instead.",
+      "page": "i1040sc p. 6"
      }
     ],
-    "quote": "If you collected this tax from the buyer, you must also include the amount collected in gross receipts or sales on line 1. / If the total amounts that were reported in box 1 of Forms 1099-NEC are more than the total you are reporting on line 1, attach a statement explaining the difference.",
-    "page": "i1040sc p. 9; i1040sc p. 5",
-    "why_uncovered": "The line 1 question mentions Form 1099 amounts but not seller-imposed sales tax collected from buyers, while line 23 lets that tax be deducted. Nothing provides for the statement explaining a Form 1099-NEC difference.",
+    "quote": "If the total amounts that were reported in box 1 of Forms 1099-NEC are more than the total you are reporting on line 1, attach a statement explaining the difference. / Generally, the installment method can’t be used to report income from the sale of (a) personal property regularly sold under the installment method, or (b) real property held for resale to customers. / If you use the installment method, attach a statement to your return. / However, report royalties and other NIL income that is not self-employment income on Schedule E instead.",
+    "page": "i1040sc p. 5; i1040sc p. 6",
+    "why_uncovered": "The line 1 question asks only for gross receipts. Nothing produces the required statement when Forms 1099-NEC total more than line 1. The screen refuses only installment sales of timeshares and residential lots. General installment-method reporting, its bar for dealer property, and its required statement are not asked about or refused. Nothing moves NIL income that is not self-employment income off Schedule C.",
     "closest_item": "sc.line1",
     "effect": "amount"
    },
    {
-    "item": "sc.line6",
+    "item": "sc.line16a",
     "sentences": [
      {
-      "quote": "However, if the state or local government allowed you to retain any part of the sales tax you collected, you must include that amount as income on line 6.",
-      "page": "i1040sc p. 9"
-     },
-     {
-      "quote": "Credit for federal tax paid on fuels claimed on your 2024 Form 1040 or 1040-SR.",
-      "page": "i1040sc p. 6"
+      "quote": "If you paid more mortgage interest than is shown on Form 1098, include the amount on line 16a. Attach a statement to your return explaining the difference and enter “See attached” in the margin next to line 16a.",
+      "page": "i1040sc p. 8"
      }
     ],
-    "quote": "However, if the state or local government allowed you to retain any part of the sales tax you collected, you must include that amount as income on line 6. / Credit for federal tax paid on fuels claimed on your 2024 Form 1040 or 1040-SR.",
-    "page": "i1040sc p. 9; i1040sc p. 6",
-    "why_uncovered": "The line 6 question lists examples of other income, but neither retained sales tax nor the prior-year federal fuel tax credit is among them. Its gasoline and fuel example is limited to state refunds.",
-    "closest_item": "sc.line6",
-    "effect": "amount"
-   },
-   {
-    "item": "sc.special",
-    "sentences": [
-     {
-      "quote": "If the section 179 property is not used predominantly (more than 50%) in your trade or business at any time before the end of the property’s recovery period, the benefit of the section 179 expense deduction must be reported as “other income” on your return.",
-      "page": "i4562 p. 4"
-     }
-    ],
-    "quote": "If the section 179 property is not used predominantly (more than 50%) in your trade or business at any time before the end of the property’s recovery period, the benefit of the section 179 expense deduction must be reported as “other income” on your return.",
-    "page": "i4562 p. 4",
-    "why_uncovered": "The screen asks only about recapture of depreciation or section 179 on listed property. Recapture on section 179 property that is not listed property is neither computed nor refused.",
-    "closest_item": "sc.special",
-    "effect": "amount"
-   },
-   {
-    "item": "sc.method_other",
-    "sentences": [
-     {
-      "quote": "You qualify as a small business taxpayer if you (a) have average annual gross receipts of $31 million or less for the 3 prior tax years (indexed for inflation), and (b) are not a tax shelter (as defined in section 448(d)(3)).",
-      "page": "i1040sc p. 15"
-     },
-     {
-      "quote": "Special rules apply to long-term contracts (see section 460 for details).",
-      "page": "i1040sc p. 4"
-     }
-    ],
-    "quote": "You qualify as a small business taxpayer if you (a) have average annual gross receipts of $31 million or less for the 3 prior tax years (indexed for inflation), and (b) are not a tax shelter (as defined in section 448(d)(3)). / Special rules apply to long-term contracts (see section 460 for details).",
-    "page": "i1040sc p. 15; i1040sc p. 4",
-    "why_uncovered": "The question tests only the gross receipts prong, so a tax shelter under the $31 million limit is still treated as a small business taxpayer for capitalization and inventory. Long-term contracts are not asked about or refused.",
-    "closest_item": "sc.method_other",
-    "effect": "amount"
-   },
-   {
-    "item": "sc.line9",
-    "sentences": [
-     {
-      "quote": "If you claim any car and truck expenses, you must provide certain information on the use of your vehicle by completing one of the following.",
-      "page": "i1040sc p. 7"
-     }
-    ],
-    "quote": "If you claim any car and truck expenses, you must provide certain information on the use of your vehicle by completing one of the following.",
-    "page": "i1040sc p. 7",
-    "why_uncovered": "The encoding lists no Schedule C Part IV lines (43 to 47) and no provision for the required vehicle information statement.",
-    "closest_item": "sc.line9",
+    "quote": "If you paid more mortgage interest than is shown on Form 1098, include the amount on line 16a. Attach a statement to your return explaining the difference and enter “See attached” in the margin next to line 16a.",
+    "page": "i1040sc p. 8",
+    "why_uncovered": "The question asks for interest for which a Form 1098 was received. It does not ask whether the amount paid is more than the Form 1098 shows. Nothing produces the required statement or the 'See attached' notation.",
+    "closest_item": "sc.line16a",
     "effect": "presentation"
    },
    {
-    "item": "sc.f6",
+    "item": "sc.line22",
+    "sentences": [
+     {
+      "quote": "You can also deduct the cost of books, professional instruments, equipment, etc., if you normally use them within a year. However, if their usefulness extends substantially beyond a year, you must generally recover their costs through depreciation.",
+      "page": "i1040sc p. 9"
+     }
+    ],
+    "quote": "You can also deduct the cost of books, professional instruments, equipment, etc., if you normally use them within a year. However, if their usefulness extends substantially beyond a year, you must generally recover their costs through depreciation.",
+    "page": "i1040sc p. 9",
+    "why_uncovered": "The line 22 question covers only materials and supplies consumed. It neither includes books and instruments used within a year nor excludes items whose usefulness lasts substantially beyond a year, which must be depreciated.",
+    "closest_item": "sc.line22",
+    "effect": "amount"
+   },
+   {
+    "item": "sc.line23",
+    "sentences": [
+     {
+      "quote": "But some licenses, such as liquor licenses, may have to be amortized.",
+      "page": "i1040sc p. 9"
+     }
+    ],
+    "quote": "But some licenses, such as liquor licenses, may have to be amortized.",
+    "page": "i1040sc p. 9",
+    "why_uncovered": "The question asks for licenses and regulatory fees without separating licenses that must be amortized. No screen covers amortizing licenses.",
+    "closest_item": "sc.line23",
+    "effect": "amount"
+   },
+   {
+    "item": "sc.line24a",
+    "sentences": [
+     {
+      "quote": "Instead of keeping records of your actual incidental expenses, you can use an optional method for deducting incidental expenses only if you did not pay or incur meal expenses on a day you were traveling away from your tax home. The amount of the deduction is $5 a day.",
+      "page": "i1040sc p. 9"
+     },
+     {
+      "quote": "You cannot use this method on any day that you use the standard meal allowance (as explained under Line 24b, later).",
+      "page": "i1040sc p. 9"
+     },
+     {
+      "quote": "Other rules apply to luxury water travel.",
+      "page": "i1040sc p. 9"
+     }
+    ],
+    "quote": "Instead of keeping records of your actual incidental expenses, you can use an optional method for deducting incidental expenses only if you did not pay or incur meal expenses on a day you were traveling away from your tax home. The amount of the deduction is $5 a day. / You cannot use this method on any day that you use the standard meal allowance (as explained under Line 24b, later). / Other rules apply to luxury water travel.",
+    "page": "i1040sc p. 9",
+    "why_uncovered": "The travel question covers only lodging and transportation. No question offers the $5-a-day incidental-expenses method or enforces its restrictions (no meal expenses that day, and not combined with the standard meal allowance). Nothing asks about or refuses luxury water travel.",
+    "closest_item": "sc.line24a",
+    "effect": "amount"
+   },
+   {
+    "item": "sc.line13",
+    "sentences": [
+     {
+      "quote": "You can’t deduct any depreciation (including any additional first-year depreciation) or section 179 expense for the portion of your home that is used in a qualified business use if you figure the deduction for the business use of your home using the simplified method.",
+      "page": "i1040sc p. 13"
+     },
+     {
+      "quote": "The depreciation deduction allowable for that portion of the home for that year is deemed to be zero.",
+      "page": "i1040sc p. 13"
+     }
+    ],
+    "quote": "You can’t deduct any depreciation (including any additional first-year depreciation) or section 179 expense for the portion of your home that is used in a qualified business use if you figure the deduction for the business use of your home using the simplified method. / The depreciation deduction allowable for that portion of the home for that year is deemed to be zero.",
+    "page": "i1040sc p. 13",
+    "why_uncovered": "The home office items compute the simplified method. Nothing bars depreciation or section 179 on the home's business portion from flowing into line 13 when the simplified method is used. No question or refusal ties the two together.",
+    "closest_item": "sc.line13",
+    "effect": "amount"
+   },
+   {
+    "item": "sc.s179_elected",
     "sentences": [
      {
       "quote": "Land and land improvements do not qualify as section 179 property.",
@@ -2392,205 +2307,57 @@
      {
       "quote": "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid.",
       "page": "p946 p. 17"
+     },
+     {
+      "quote": "You cannot elect to expense more than $31,300 of the cost of any heavy sport utility vehicle (SUV) and certain other vehicles placed in service in tax years beginning in 2025.",
+      "page": "p946 p. 18"
      }
     ],
-    "quote": "Land and land improvements do not qualify as section 179 property. / Even if the requirements explained earlier under What Property Qualifies? are met, you cannot elect the section 179 deduction for the following property. / Generally, you cannot claim a section 179 deduction based on the cost of property you lease to someone else. / If you acquire qualified property in a like-kind exchange, only the excess basis of the acquired property is eligible for the section 179 deduction. / If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid.",
-    "page": "p946 p. 17",
-    "why_uncovered": "The listed section 179 items only total elected amounts. No listed question or refusal excludes land, excepted property or noncorporate leased property, or limits trade-in cost to excess basis or cash paid.",
-    "closest_item": "sc.f6",
+    "quote": "Land and land improvements do not qualify as section 179 property. / Even if the requirements explained earlier under What Property Qualifies? are met, you cannot elect the section 179 deduction for the following property. / Generally, you cannot claim a section 179 deduction based on the cost of property you lease to someone else. / If you acquire qualified property in a like-kind exchange, only the excess basis of the acquired property is eligible for the section 179 deduction. / If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid. / You cannot elect to expense more than $31,300 of the cost of any heavy sport utility vehicle (SUV) and certain other vehicles placed in service in tax years beginning in 2025.",
+    "page": "p946 p. 17; p946 p. 18",
+    "why_uncovered": "The section 179 helpers sum the elected amounts, but the listed encoding has no question or refusal for these situations: excepted property (property leased by a noncorporate lessor, property used predominantly outside the US, property used by tax-exempt or governmental users), land, trade-in or like-kind basis limits, or the $31,300 heavy SUV cap. HANDLED ELSEWHERE covers only listed property used 50% or less and separate returns.",
+    "closest_item": "sc.s179_elected",
     "effect": "amount"
    },
    {
-    "item": "sc.dep_other",
+    "item": "sc.f7206_line1",
     "sentences": [
      {
-      "quote": "The following types of property must be depreciated under ADS.",
-      "page": "i4562 p. 12"
-     },
-     {
-      "quote": "Instead of depreciating property under GDS (line 19), you can make an irrevocable election for any classification of property for any tax year to use ADS.",
-      "page": "i4562 p. 12"
-     },
-     {
-      "quote": "Generally, you must depreciate the carryover basis of property you acquire in a like-kind exchange or involuntary conversion during the current tax year over the remaining recovery period of the property exchanged or involuntarily converted.",
-      "page": "i4562 p. 9"
-     }
-    ],
-    "quote": "The following types of property must be depreciated under ADS. / Instead of depreciating property under GDS (line 19), you can make an irrevocable election for any classification of property for any tax year to use ADS. / Generally, you must depreciate the carryover basis of property you acquire in a like-kind exchange or involuntary conversion during the current tax year over the remaining recovery period of the property exchanged or involuntarily converted.",
-    "page": "i4562 p. 12; i4562 p. 9",
-    "why_uncovered": "This helper totals Form 4562 lines 14, 17, 19 and 21 and leaves out line 20 (ADS). No listed question or refusal catches property that must use ADS, an ADS election, or carryover basis from an exchange or conversion.",
-    "closest_item": "sc.dep_other",
-    "effect": "amount"
-   },
-   {
-    "item": "sc.line16b",
-    "sentences": [
-     {
-      "quote": "If you paid interest in 2025 that also applies to future years, deduct only the part that applies to 2025.",
-      "page": "i1040sc p. 8"
-     },
-     {
-      "quote": "If you and at least one other person (other than your spouse if you file a joint return) were liable for and paid interest on the mortgage and the other person received the Form 1098, include your share of the interest on line 16b.",
-      "page": "i1040sc p. 8"
-     },
-     {
-      "quote": "Attach a statement to your return showing the name and address of the person who received the Form 1098.",
-      "page": "i1040sc p. 8"
-     }
-    ],
-    "quote": "If you paid interest in 2025 that also applies to future years, deduct only the part that applies to 2025. / If you and at least one other person (other than your spouse if you file a joint return) were liable for and paid interest on the mortgage and the other person received the Form 1098, include your share of the interest on line 16b. / Attach a statement to your return showing the name and address of the person who received the Form 1098.",
-    "page": "i1040sc p. 8",
-    "why_uncovered": "The line 16b question does not limit prepaid interest to the 2025 part or a shared mortgage to the filer's share. It also makes no provision for the required statement.",
-    "closest_item": "sc.line16b",
-    "effect": "amount"
-   },
-   {
-    "item": "sc.line24a",
-    "sentences": [
-     {
-      "quote": "You can’t deduct expenses paid or incurred in connection with employment away from home if that period of employment exceeds 1 year.",
-      "page": "i1040sc p. 9"
-     },
-     {
-      "quote": "Also, you cannot deduct travel expenses for your spouse, your dependent, or any other individual unless that person is your employee, the travel is for a bona fide business purpose, and the expenses would otherwise be deductible by that person.",
-      "page": "i1040sc p. 9"
-     },
-     {
-      "quote": "You can’t deduct expenses for attending a convention, seminar, or similar meeting held outside the North American area unless the meeting is directly related to your trade or business and it is as reasonable for the meeting to be held outside the North American area as within it.",
-      "page": "i1040sc p. 9"
-     }
-    ],
-    "quote": "You can’t deduct expenses paid or incurred in connection with employment away from home if that period of employment exceeds 1 year. / Also, you cannot deduct travel expenses for your spouse, your dependent, or any other individual unless that person is your employee, the travel is for a bona fide business purpose, and the expenses would otherwise be deductible by that person. / You can’t deduct expenses for attending a convention, seminar, or similar meeting held outside the North American area unless the meeting is directly related to your trade or business and it is as reasonable for the meeting to be held outside the North American area as within it.",
-    "page": "i1040sc p. 9",
-    "why_uncovered": "The question excludes only meals and entertainment. It does not apply the one-year limit, the companion travel limit or the foreign convention limit.",
-    "closest_item": "sc.line24a",
-    "effect": "amount"
-   },
-   {
-    "item": "sc.meals_50",
-    "sentences": [
-     {
-      "quote": "Do not include entertainment expenses on this line.",
-      "page": "i1040sc p. 9"
-     },
-     {
-      "quote": "You can deduct a percentage of the actual cost of a meal if the following conditions are met.",
-      "page": "i1040sc p. 9"
-     },
-     {
-      "quote": "If you receive reimbursement under a food program of the Department of Agriculture, only deduct the cost of food that exceeds reimbursement, if any.",
-      "page": "i1040sc p. 10"
-     }
-    ],
-    "quote": "Do not include entertainment expenses on this line. / You can deduct a percentage of the actual cost of a meal if the following conditions are met. / If you receive reimbursement under a food program of the Department of Agriculture, only deduct the cost of food that exceeds reimbursement, if any.",
-    "page": "i1040sc p. 9; i1040sc p. 10",
-    "why_uncovered": "The question asks for the full cost of business meals. It does not state the deductibility conditions, such as not lavish, taxpayer present and business contact, and does not exclude entertainment or food program reimbursements.",
-    "closest_item": "sc.meals_50",
-    "effect": "amount"
-   },
-   {
-    "item": "sc.line26",
-    "sentences": [
-     {
-      "quote": "If you provided taxable fringe benefits to your employees, such as personal use of a car, do not deduct as wages the amount applicable to depreciation and other expenses claimed elsewhere.",
-      "page": "i1040sc p. 10"
-     }
-    ],
-    "quote": "If you provided taxable fringe benefits to your employees, such as personal use of a car, do not deduct as wages the amount applicable to depreciation and other expenses claimed elsewhere.",
-    "page": "i1040sc p. 10",
-    "why_uncovered": "The question excludes wages deducted elsewhere but not the fringe benefit amount representing depreciation or other expenses claimed on other lines, which allows a double deduction.",
-    "closest_item": "sc.line26",
-    "effect": "amount"
-   },
-   {
-    "item": "sc.line48",
-    "sentences": [
-     {
-      "quote": "You may be eligible to deduct up to $150,000 of qualified sound recording production costs.",
-      "page": "i1040sc p. 1"
-     }
-    ],
-    "quote": "You may be eligible to deduct up to $150,000 of qualified sound recording production costs.",
-    "page": "i1040sc p. 1",
-    "why_uncovered": "Other expenses are a single free-form total, and nothing applies or refuses the $150,000 ceiling on these costs.",
-    "closest_item": "sc.line48",
-    "effect": "amount"
-   },
-   {
-    "item": "sc.ho_uses",
-    "sentences": [
-     {
-      "quote": "You can’t deduct any depreciation (including any additional first-year depreciation) or section 179 expense for the portion of your home that is used in a qualified business use if you figure the deduction for the business use of your home using the simplified method.",
-      "page": "i1040sc p. 13"
-     },
-     {
-      "quote": "You can’t deduct any excess mortgage interest, excess real estate taxes, or excess casualty losses on Schedule C for this home.",
-      "page": "i1040sc p. 14"
-     },
-     {
-      "quote": "Make the election by using the simplified method to figure the deduction for the qualified business use of a home on a timely filed, original federal income tax return for that year.",
-      "page": "i1040sc p. 10"
-     }
-    ],
-    "quote": "You can’t deduct any depreciation (including any additional first-year depreciation) or section 179 expense for the portion of your home that is used in a qualified business use if you figure the deduction for the business use of your home using the simplified method. / You can’t deduct any excess mortgage interest, excess real estate taxes, or excess casualty losses on Schedule C for this home. / Make the election by using the simplified method to figure the deduction for the qualified business use of a home on a timely filed, original federal income tax return for that year.",
-    "page": "i1040sc p. 13; i1040sc p. 14; i1040sc p. 10",
-    "why_uncovered": "Nothing stops home depreciation, section 179 or home-related mortgage interest and real estate taxes from also being entered on lines 13, 16a or 23 under the simplified method. Nothing tests the timely filed, original return condition for the election.",
-    "closest_item": "sc.ho_uses",
-    "effect": "amount"
-   },
-   {
-    "item": "sc.line31",
-    "sentences": [
-     {
-      "quote": "If your gross income is more than your expenses (including the expenses you report on line 30) and you have prior year unallowed passive activity losses, don’t enter your net profit on line 31 until you have figured the amount of prior year unallowed passive activity losses you may claim this year for this activity.",
-      "page": "i1040sc p. 14"
-     },
-     {
-      "quote": "Be sure to indicate that you are including prior year passive activity losses by entering “PAL” to the left of the entry space.",
-      "page": "i1040sc p. 14"
-     }
-    ],
-    "quote": "If your gross income is more than your expenses (including the expenses you report on line 30) and you have prior year unallowed passive activity losses, don’t enter your net profit on line 31 until you have figured the amount of prior year unallowed passive activity losses you may claim this year for this activity. / Be sure to indicate that you are including prior year passive activity losses by entering “PAL” to the left of the entry space.",
-    "page": "i1040sc p. 14",
-    "why_uncovered": "Line G asks only about 2025 participation. Nothing asks about or refuses prior-year unallowed passive losses for a business that materially participates in 2025.",
-    "closest_item": "sc.line31",
-    "effect": "amount"
-   },
-   {
-    "item": "sc.hi_uses",
-    "sentences": [
-     {
-      "quote": "Your personal services must have been a material income-producing factor in the business.",
+      "quote": "A qualified small employer health reimbursement arrangement (QSEHRA) is considered to be a subsidized health plan maintained by an employer.",
       "page": "i1040gi p. 94"
      }
     ],
-    "quote": "Your personal services must have been a material income-producing factor in the business.",
+    "quote": "A qualified small employer health reimbursement arrangement (QSEHRA) is considered to be a subsidized health plan maintained by an employer.",
     "page": "i1040gi p. 94",
-    "why_uncovered": "The question tests only whether the policy is established under the business. Neither it nor the health insurance screen tests whether the filer's personal services were a material income-producing factor.",
-    "closest_item": "sc.hi_uses",
-    "effect": "eligibility"
+    "why_uncovered": "The question excludes months of eligibility for an employer-subsidized plan. It does not say that QSEHRA eligibility counts as such a plan, so a filer with a QSEHRA would likely include those months.",
+    "closest_item": "sc.f7206_line1",
+    "effect": "amount"
    },
    {
-    "item": "sc.qbi",
+    "item": "sc.one",
     "sentences": [
      {
-      "quote": "If you were previously an employee of a business and continue to provide substantially the same services to that business after you’re no longer treated as an employee, there is a presumption that you’re providing services as an employee for purposes of section 199A for the 3-year period after ceasing to be an employee.",
-      "page": "i8995 p. 2"
+      "quote": "Enter on line B the six-digit code from the Principal Business or Professional Activity Codes chart at the end of these instructions.",
+      "page": "i1040sc p. 3"
      },
      {
-      "quote": "Payments may be included in QBI to the extent they are (1) related to your trade or business, (2) reported to you by the cooperative as qualified income items on an attachment to Form 1099-PATR, and (3) not payments reported as from an SSTB, unless your taxable income is at or below the threshold, in which case payments from SSTBs are included in your QBI.",
-      "page": "i8995 p. 3"
+      "quote": "Enter on line D the EIN that was issued to you on Form SS-4.",
+      "page": "i1040sc p. 4"
      },
      {
-      "quote": "If you received qualified payments reported to you on Form 1099-PATR from a specified agricultural or horticultural cooperative, you must reduce your QBI by the patron reduction and use Form 8995-A to compute your QBI deduction.",
-      "page": "i8995 p. 3"
+      "quote": "If you started or acquired this business in 2025, check the box on line H.",
+      "page": "i1040sc p. 5"
+     },
+     {
+      "quote": "If you made any payment in 2025 that would require you to file any Forms 1099, check the “Yes” box. Otherwise, check the “No” box.",
+      "page": "i1040sc p. 5"
      }
     ],
-    "quote": "If you were previously an employee of a business and continue to provide substantially the same services to that business after you’re no longer treated as an employee, there is a presumption that you’re providing services as an employee for purposes of section 199A for the 3-year period after ceasing to be an employee. / Payments may be included in QBI to the extent they are (1) related to your trade or business, (2) reported to you by the cooperative as qualified income items on an attachment to Form 1099-PATR, and (3) not payments reported as from an SSTB, unless your taxable income is at or below the threshold, in which case payments from SSTBs are included in your QBI. / If you received qualified payments reported to you on Form 1099-PATR from a specified agricultural or horticultural cooperative, you must reduce your QBI by the patron reduction and use Form 8995-A to compute your QBI deduction.",
-    "page": "i8995 p. 2; i8995 p. 3",
-    "why_uncovered": "QBI is derived from the business's net profit less attributable deductions. Nothing tests the former-employee presumption, and Form 1099-PATR amounts on line 6 are not separately qualified, reduced or refused.",
-    "closest_item": "sc.qbi",
-    "effect": "amount"
+    "quote": "Enter on line B the six-digit code from the Principal Business or Professional Activity Codes chart at the end of these instructions. / Enter on line D the EIN that was issued to you on Form SS-4. / If you started or acquired this business in 2025, check the box on line H. / If you made any payment in 2025 that would require you to file any Forms 1099, check the “Yes” box. Otherwise, check the “No” box.",
+    "page": "i1040sc p. 3; i1040sc p. 4; i1040sc p. 5",
+    "why_uncovered": "No encoded item asks for or produces the header entries on lines A, B, D, E, H and I. Only lines F and G have screening questions.",
+    "closest_item": "sc.one",
+    "effect": "presentation"
    }
   ],
   "used": [
@@ -2685,15 +2452,15 @@
     ]
    }
   ],
-  "cost": 1.021556,
+  "cost": 0.8804988,
   "model": "claude-opus-5-5"
  },
  {
   "form": "scveh",
-  "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6",
+  "prompt_sha": "eb6d671732a53fd709212567ba0266103d38b965a789d43faa9f97f551cda5ff",
   "claims": [
    {
-    "item": "scveh.lease_business",
+    "item": "scveh.line20a",
     "sentences": [
      {
       "quote": "But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount.",
@@ -2702,60 +2469,38 @@
      {
       "quote": "Report the inclusion amount figured (as described in the preceding discussions) as other income on the same form or schedule on which you took the deduction for your rental costs.",
       "page": "p946 p. 59"
+     },
+     {
+      "quote": "For example, report the inclusion amount as other income on Schedule C (Form 1040) if you took the deduction on Schedule C.",
+      "page": "p946 p. 59"
      }
     ],
-    "quote": "But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount. / Report the inclusion amount figured (as described in the preceding discussions) as other income on the same form or schedule on which you took the deduction for your rental costs.",
+    "quote": "But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount. / Report the inclusion amount figured (as described in the preceding discussions) as other income on the same form or schedule on which you took the deduction for your rental costs. / For example, report the inclusion amount as other income on Schedule C (Form 1040) if you took the deduction on Schedule C.",
     "page": "i1040sc p. 8; p946 p. 59",
-    "why_uncovered": "The lease path only multiplies lease payments by the business percentage. No question, line or refusal deals with the lease inclusion amount for a leased vehicle.",
-    "closest_item": "scveh.lease_business",
+    "why_uncovered": "The lease path asks only for the 2025 lease payments and takes their business portion (scveh.lease, scveh.lease_business, scveh.line20a). Nothing asks about the lease term or the vehicle's fair market value. Nothing computes a lease inclusion amount, reports it as other income, or refuses a leased vehicle with a lease term of 30 days or more. The only refusal on this path is for actual expenses after the standard mileage rate was used. The screen's 'regularly engaged in the business of leasing passenger automobiles' item covers lessors, not a filer who leases a car.",
+    "closest_item": "scveh.line20a",
     "effect": "amount"
    },
    {
-    "item": "scveh.over_half",
+    "item": "scveh.line9",
     "sentences": [
      {
-      "quote": "To determine whether to use line 26 or line 27 to report your listed property, you must first determine the percentage of qualified business use for each property.",
-      "page": "i4562 p. 14"
+      "quote": "If you produced real or tangible personal property or acquired real or personal property for resale, you must generally capitalize certain expenses in inventory or other property.",
+      "page": "i1040sc p. 6"
      },
      {
-      "quote": "Leasing the property to a 5% owner or related person if the value related to such usage is not reported as income to the individual.",
-      "page": "i4562 p. 14"
+      "quote": "Reduce the amounts on lines 8 through 27a and Part V by amounts capitalized.",
+      "page": "i1040sc p. 6"
      },
      {
-      "quote": "The use of the property as compensation for services performed by a 5% owner or related person.",
-      "page": "i4562 p. 14"
-     },
-     {
-      "quote": "The use of the property as compensation for services performed by any person (who is not a 5% owner or related person), unless an amount is included in that person’s income for the use of the property and, if required, income tax was withheld on that amount.",
-      "page": "i4562 p. 14"
-     },
-     {
-      "quote": "The use of property that is determined to be non-deductible under section 274.",
-      "page": "i4562 p. 14"
-     },
-     {
-      "quote": "Your percentage of qualified business use may be smaller than the business/investment use percentage.",
-      "page": "i4562 p. 14"
+      "quote": "Exception for a small business taxpayer. A small business taxpayer (defined later under Part III) is not required to capitalize certain expenses to inventory or other property.",
+      "page": "i1040sc p. 6"
      }
     ],
-    "quote": "To determine whether to use line 26 or line 27 to report your listed property, you must first determine the percentage of qualified business use for each property. / Leasing the property to a 5% owner or related person if the value related to such usage is not reported as income to the individual. / The use of the property as compensation for services performed by a 5% owner or related person. / The use of the property as compensation for services performed by any person (who is not a 5% owner or related person), unless an amount is included in that person’s income for the use of the property and, if required, income tax was withheld on that amount. / The use of property that is determined to be non-deductible under section 274. / Your percentage of qualified business use may be smaller than the business/investment use percentage.",
-    "page": "i4562 p. 14",
-    "why_uncovered": "The over-50% test is drawn from business miles over total miles. Nothing asks about or refuses the uses excluded from qualified business use, so a vehicle at or below 50% qualified use could pass the test and receive accelerated depreciation, the special allowance or section 179.",
-    "closest_item": "scveh.over_half",
-    "effect": "eligibility"
-   },
-   {
-    "item": "scveh.bm_c",
-    "sentences": [
-     {
-      "quote": "Treat vehicles used by employees as being used 100% for business/investment purposes if the value of personal use is included in the employees’ gross income, or the employees reimburse the employer for the personal use.",
-      "page": "i4562 p. 14"
-     }
-    ],
-    "quote": "Treat vehicles used by employees as being used 100% for business/investment purposes if the value of personal use is included in the employees’ gross income, or the employees reimburse the employer for the personal use.",
-    "page": "i4562 p. 14",
-    "why_uncovered": "The business percentage is computed only from the filer's mileage answers. No question or refusal covers an employee-used vehicle treated as 100% business.",
-    "closest_item": "scveh.bm_c",
+    "quote": "If you produced real or tangible personal property or acquired real or personal property for resale, you must generally capitalize certain expenses in inventory or other property. / Reduce the amounts on lines 8 through 27a and Part V by amounts capitalized. / Exception for a small business taxpayer. A small business taxpayer (defined later under Part III) is not required to capitalize certain expenses to inventory or other property.",
+    "page": "i1040sc p. 6",
+    "why_uncovered": "Line 9, line 20a and the Part V depreciation are figured in full from mileage, operating expenses, lease payments and depreciation. Nothing asks whether the business produces property or acquires it for resale, or whether it is a small business taxpayer. Nothing reduces these amounts by vehicle costs that must be capitalized, and nothing refuses that case.",
+    "closest_item": "scveh.line9",
     "effect": "amount"
    },
    {
@@ -2768,172 +2513,12 @@
     ],
     "quote": "If you converted your vehicle during the year from personal to business use (or vice versa), enter your commuting miles only for the period you drove your vehicle for business.",
     "page": "i1040sc p. 15",
-    "why_uncovered": "The commuting-miles question asks for miles driven in 2025 with no limit to the business period. The screen's conversion item is tied to the depreciation path and does not reach a standard mileage filer's line 44b, nor a conversion from business to personal use.",
+    "why_uncovered": "The question asks for all commuting miles driven in 2025. It does not limit them to the business-use period of a converted vehicle. The screen's conversion items gate only the depreciation cost (scveh.cost), so a converted vehicle on the standard mileage rate or on actual expenses without depreciation still reaches Part IV line 44b with full-year commuting miles.",
     "closest_item": "scveh.miles_commuting",
     "effect": "presentation"
    },
    {
-    "item": "scveh.screen",
-    "sentences": [
-     {
-      "quote": "If during the tax year you convert property used solely for personal purposes to business/investment use (or vice versa), figure the percentage of business/investment use only for the number of months you use the property in your business or for the production of income.",
-      "page": "i4562 p. 14"
-     },
-     {
-      "quote": "Property converted from business or income-producing use to personal use in the same tax year it is acquired;",
-      "page": "i4562 p. 7"
-     },
-     {
-      "quote": "Generally, you must depreciate the carryover basis of property you acquire in a like-kind exchange or involuntary conversion during the current tax year over the remaining recovery period of the property exchanged or involuntarily converted.",
-      "page": "i4562 p. 9"
-     }
-    ],
-    "quote": "If during the tax year you convert property used solely for personal purposes to business/investment use (or vice versa), figure the percentage of business/investment use only for the number of months you use the property in your business or for the production of income. / Property converted from business or income-producing use to personal use in the same tax year it is acquired; / Generally, you must depreciate the carryover basis of property you acquire in a like-kind exchange or involuntary conversion during the current tax year over the remaining recovery period of the property exchanged or involuntarily converted.",
-    "page": "i4562 p. 14; i4562 p. 7; i4562 p. 9",
-    "why_uncovered": "The screen lists only conversion from personal to business use, and trade-ins. It omits conversion from business to personal use, including the bar on the special allowance when that happens in the year of acquisition. It also omits a replacement vehicle acquired in an involuntary conversion, which carries over basis and recovery period.",
-    "closest_item": "scveh.screen",
-    "effect": "amount"
-   },
-   {
-    "item": "scveh.rate_hy",
-    "sentences": [
-     {
-      "quote": "The following types of property must be depreciated under ADS.",
-      "page": "i4562 p. 12"
-     },
-     {
-      "quote": "Tangible property used predominantly outside the United States.",
-      "page": "i4562 p. 12"
-     },
-     {
-      "quote": "You must use ADS for all property you place in service in any year the election is in effect.",
-      "page": "p946 p. 35"
-     },
-     {
-      "quote": "Any property required to be depreciated under the Alternative Depreciation System (ADS) (that is, not property for which you elected to use ADS);",
-      "page": "i4562 p. 7"
-     },
-     {
-      "quote": "Instead of depreciating property under GDS (line 19), you can make an irrevocable election for any classification of property for any tax year to use ADS.",
-      "page": "i4562 p. 12"
-     },
-     {
-      "quote": "However, you can make an irrevocable election to use the straight line method for all property within a classification that is placed in service during the tax year.",
-      "page": "i4562 p. 11"
-     },
-     {
-      "quote": "For 3-, 5-, 7-, or 10-year property eligible for the 200% declining balance method, you can make an irrevocable election to use the 150% declining balance method, switching to the straight line method in the first tax year that the straight line rate exceeds the declining balance rate.",
-      "page": "i4562 p. 11"
-     }
-    ],
-    "quote": "The following types of property must be depreciated under ADS. / Tangible property used predominantly outside the United States. / You must use ADS for all property you place in service in any year the election is in effect. / Any property required to be depreciated under the Alternative Depreciation System (ADS) (that is, not property for which you elected to use ADS); / Instead of depreciating property under GDS (line 19), you can make an irrevocable election for any classification of property for any tax year to use ADS. / However, you can make an irrevocable election to use the straight line method for all property within a classification that is placed in service during the tax year. / For 3-, 5-, 7-, or 10-year property eligible for the 200% declining balance method, you can make an irrevocable election to use the 150% declining balance method, switching to the straight line method in the first tax year that the straight line rate exceeds the declining balance rate.",
-    "page": "i4562 p. 12; p946 p. 35; i4562 p. 7; i4562 p. 11",
-    "why_uncovered": "The rate helpers apply only the 200% declining balance GDS percentages from Tables A-1 to A-5. Nothing asks about or refuses required ADS (which also bars the special allowance) or an elected ADS, straight line or 150% method, whether made in 2025 or binding from an earlier year.",
-    "closest_item": "scveh.rate_hy",
-    "effect": "amount"
-   },
-   {
-    "item": "scveh.rate_prior",
-    "sentences": [
-     {
-      "quote": "You cannot use the percentage tables for a short tax year.",
-      "page": "p946 p. 37"
-     },
-     {
-      "quote": "If you reduce the basis of your property because of a casualty, you cannot continue to use the percentage tables.",
-      "page": "p946 p. 37"
-     },
-     {
-      "quote": "For the year of the adjustment and the remaining recovery period, you must figure the depreciation yourself using the property’s adjusted basis at the end of the year.",
-      "page": "p946 p. 37"
-     }
-    ],
-    "quote": "You cannot use the percentage tables for a short tax year. / If you reduce the basis of your property because of a casualty, you cannot continue to use the percentage tables. / For the year of the adjustment and the remaining recovery period, you must figure the depreciation yourself using the property’s adjusted basis at the end of the year.",
-    "page": "p946 p. 37",
-    "why_uncovered": "The encoding always applies table percentages to the unadjusted basis. The screen covers clean-fuel and credit basis adjustments, but no question or refusal covers a casualty basis reduction or a short tax year.",
-    "closest_item": "scveh.rate_prior",
-    "effect": "amount"
-   },
-   {
-    "item": "scveh.line7",
-    "sentences": [
-     {
-      "quote": "If you have a short tax year, you must reduce the maximum deduction amount by multiplying the maximum amount by a fraction.",
-      "page": "p946 p. 60"
-     }
-    ],
-    "quote": "If you have a short tax year, you must reduce the maximum deduction amount by multiplying the maximum amount by a fraction.",
-    "page": "p946 p. 60",
-    "why_uncovered": "Line 7 takes the full-year table limit. Nothing asks about or refuses a short tax year.",
-    "closest_item": "scveh.line7",
-    "effect": "amount"
-   },
-   {
-    "item": "scveh.passenger",
-    "sentences": [
-     {
-      "quote": "The business use requirement and the limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly engaged in the business of leasing passenger automobiles.",
-      "page": "i4562 p. 15"
-     },
-     {
-      "quote": "The passenger automobile limits generally do not apply to passenger automobiles leased or held for leasing by anyone regularly engaged in the business of leasing passenger automobiles.",
-      "page": "p946 p. 59"
-     }
-    ],
-    "quote": "The business use requirement and the limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly engaged in the business of leasing passenger automobiles. / The passenger automobile limits generally do not apply to passenger automobiles leased or held for leasing by anyone regularly engaged in the business of leasing passenger automobiles.",
-    "page": "i4562 p. 15; p946 p. 59",
-    "why_uncovered": "The passenger question covers weight and qualified nonpersonal use modifications, and the screen covers for-hire use, ambulances and hearses. Neither addresses the exception for a business of leasing automobiles, so its limits and low-use refusal would apply to a vehicle exempt from them.",
-    "closest_item": "scveh.passenger",
-    "effect": "amount"
-   },
-   {
-    "item": "scveh.macrs_v",
-    "sentences": [
-     {
-      "quote": "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove your business/investment use with adequate records or with sufficient evidence to support your own statements.",
-      "page": "p946 p. 63"
-     }
-    ],
-    "quote": "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove your business/investment use with adequate records or with sufficient evidence to support your own statements.",
-    "page": "p946 p. 63",
-    "why_uncovered": "No question or refusal asks whether the filer has adequate records or sufficient evidence of business use, yet depreciation and section 179 are computed from the mileage answers.",
-    "closest_item": "scveh.macrs_v",
-    "effect": "eligibility"
-   },
-   {
-    "item": "scveh.line9",
-    "sentences": [
-     {
-      "quote": "If you produced real or tangible personal property or acquired real or personal property for resale, you must generally capitalize certain expenses in inventory or other property.",
-      "page": "i1040sc p. 6"
-     },
-     {
-      "quote": "Reduce the amounts on lines 8 through 27a and Part V by amounts capitalized.",
-      "page": "i1040sc p. 6"
-     }
-    ],
-    "quote": "If you produced real or tangible personal property or acquired real or personal property for resale, you must generally capitalize certain expenses in inventory or other property. / Reduce the amounts on lines 8 through 27a and Part V by amounts capitalized.",
-    "page": "i1040sc p. 6",
-    "why_uncovered": "Line 9 and the Part V amounts are deducted in full. Nothing in the encoding reduces them for capitalized costs or asks whether the small business taxpayer or creative property exception applies.",
-    "closest_item": "scveh.line9",
-    "effect": "amount"
-   },
-   {
-    "item": "scveh.bonus_choice",
-    "sentences": [
-     {
-      "quote": "To make an election, attach a statement to your timely filed return (including extensions) indicating the class of property for which you are making the election and that, for such class, you are not to claim any special depreciation allowance.",
-      "page": "i4562 p. 7"
-     }
-    ],
-    "quote": "To make an election, attach a statement to your timely filed return (including extensions) indicating the class of property for which you are making the election and that, for such class, you are not to claim any special depreciation allowance.",
-    "page": "i4562 p. 7",
-    "why_uncovered": "The question records the choice not to claim the allowance, but no line or instruction produces the required election statement or tests that the election was timely.",
-    "closest_item": "scveh.bonus_choice",
-    "effect": "presentation"
-   },
-   {
-    "item": "scveh.placed_date",
+    "item": "scveh.miles_business",
     "sentences": [
      {
       "quote": "Complete Schedule C, Part IV, if (a) you are claiming the standard mileage rate, you lease your vehicle, or your vehicle is fully depreciated; and (b) you are not required to file Form 4562 for any other reason.",
@@ -2944,22 +2529,28 @@
       "page": "i1040sc p. 7"
      },
      {
-      "quote": "If you used more than one vehicle during the year, attach a statement with the information requested in Schedule C, Part IV, for each additional vehicle.",
-      "page": "i1040sc p. 7"
-     },
-     {
-      "quote": "Enter the date the property was placed in service.",
-      "page": "i4562 p. 14"
-     },
-     {
       "quote": "Except as noted below, you must complete lines 30 through 36 for each vehicle identified in Section A.",
       "page": "i4562 p. 16"
      }
     ],
-    "quote": "Complete Schedule C, Part IV, if (a) you are claiming the standard mileage rate, you lease your vehicle, or your vehicle is fully depreciated; and (b) you are not required to file Form 4562 for any other reason. / Complete Form 4562, Part V, if you are claiming depreciation on your vehicle or you are required to file Form 4562 for any other reason (see Line 13, later). / If you used more than one vehicle during the year, attach a statement with the information requested in Schedule C, Part IV, for each additional vehicle. / Enter the date the property was placed in service. / Except as noted below, you must complete lines 30 through 36 for each vehicle identified in Section A.",
-    "page": "i1040sc p. 7; i4562 p. 14; i4562 p. 16",
-    "why_uncovered": "The encoding collects the placed-in-service year and the three mileage figures, but it does not route the vehicle information to Part IV or Part V. It also does not collect the full date, produce the additional-vehicle statement, or encode the remaining vehicle-use questions in Form 4562 Section B.",
-    "closest_item": "scveh.placed_date",
+    "quote": "Complete Schedule C, Part IV, if (a) you are claiming the standard mileage rate, you lease your vehicle, or your vehicle is fully depreciated; and (b) you are not required to file Form 4562 for any other reason. / Complete Form 4562, Part V, if you are claiming depreciation on your vehicle or you are required to file Form 4562 for any other reason (see Line 13, later). / Except as noted below, you must complete lines 30 through 36 for each vehicle identified in Section A.",
+    "page": "i1040sc p. 7; i4562 p. 16",
+    "why_uncovered": "The encoding computes Schedule C Part IV lines 43–44c and the Form 4562 Part V Section A amounts. No item decides whether the vehicle information goes on Schedule C Part IV or on Form 4562 Part V, including when another reason requires Form 4562. No item encodes Part V Section B lines 30–36: the mileage lines for that section, or the questions on availability for personal use, use by a more-than-5% owner or related person, and another vehicle being available.",
+    "closest_item": "scveh.miles_business",
+    "effect": "presentation"
+   },
+   {
+    "item": "scveh.placed",
+    "sentences": [
+     {
+      "quote": "Enter the date the property was placed in service.",
+      "page": "i4562 p. 14"
+     }
+    ],
+    "quote": "Enter the date the property was placed in service.",
+    "page": "i4562 p. 14",
+    "why_uncovered": "Form 4562 column (b) needs the full date placed in service, and Schedule C line 43 asks for month/day/year. The encoding asks only for the year (scveh.placed, scveh.placed_date) and, for 2025, the quarter (scveh.quarter). So it cannot enter the required date.",
+    "closest_item": "scveh.placed",
     "effect": "presentation"
    }
   ],
@@ -3030,7 +2621,7 @@
     ]
    }
   ],
-  "cost": 0.751884,
+  "cost": 0.6621508,
   "model": "claude-opus-5-5"
  },
  {

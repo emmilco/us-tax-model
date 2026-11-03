@@ -23,6 +23,90 @@
    "model": "This gate applies b_counted to the whole form, so in a partial same-state overlap it can count both forms; IRS says for a particular month with multiple Forms 1095-A, 'Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.'",
    "ruling": "Ruling: scope — the gate's per-form answer cannot by itself prevent a partial same-state overlap, but the return is refused there by f8962.two_counted, which asks whether two counted Forms 1095-A from one state show coverage in the same month and refuses on yes (i8962 p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"). The render review of this collection form does not see the consuming form's refusal.",
    "context": "5956851a1542cda3e03e0e989378bf88b5d31cbe2bde0ea02efb83b83cd76ff7"
+  },
+  {
+   "printed": "in_a_apr",
+   "restated": "Input — April 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
+   "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
+   "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+  },
+  {
+   "printed": "in_a_aug",
+   "restated": "Input — August 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
+   "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
+   "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+  },
+  {
+   "printed": "in_a_dec",
+   "restated": "Input — December 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
+   "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
+   "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+  },
+  {
+   "printed": "in_a_feb",
+   "restated": "Input — February 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
+   "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
+   "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+  },
+  {
+   "printed": "in_a_jan",
+   "restated": "Input — January 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
+   "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
+   "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+  },
+  {
+   "printed": "in_a_jul",
+   "restated": "Input — July 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
+   "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
+   "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+  },
+  {
+   "printed": "in_a_jun",
+   "restated": "Input — June 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
+   "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
+   "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+  },
+  {
+   "printed": "in_a_mar",
+   "restated": "Input — March 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
+   "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
+   "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+  },
+  {
+   "printed": "in_a_may",
+   "restated": "Input — May 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
+   "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
+   "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+  },
+  {
+   "printed": "in_a_nov",
+   "restated": "Input — November 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
+   "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
+   "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+  },
+  {
+   "printed": "in_a_oct",
+   "restated": "Input — October 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
+   "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
+   "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
+  },
+  {
+   "printed": "in_a_sep",
+   "restated": "Input — September 2025, column A (monthly enrollment premiums): the amount in column A; if column A is blank or zero but you paid that month's enrollment premiums by the due date of your return (not including extensions), the premiums you paid; zero only if no premiums were paid for that month by that date",
+   "model": "IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed.",
+   "ruling": "Ruling: finding, recorded (BUG-0327, T-180, open); i8962 p. 16: a -0- for an unpaid month counts only if \"the amount of the premium paid for the month is not sufficient to avoid termination\". The question zeroes a month whose premiums were not paid by the due date without that exception, so a partial payment that kept coverage in force is treated as unpaid. That under-allows the credit (the conservative direction); the fix is the question or refusal T-180 adds.",
+   "context": "137da6d196111ee4f5c4194891a05d128fb1172929c8fff573ca6672100697b9"
   }
  ]
 }

@@ -152,40 +152,84 @@ form:
       label: Unreimbursed eligible medical and dental expenses
       expr:
         op: input
-        source: Unreimbursed eligible medical and dental expenses
+        source: 'Unreimbursed eligible medical and dental expenses paid in 2025, after payments from insurance or other
+          sources (Pub. 502 lists what counts). Leave out: amounts equal to tax-free distributions from a health savings
+          account (HSA) or an Archer MSA; insurance premiums paid by a pretax reduction of your pay; if you are a retired
+          public safety officer, premiums to the extent paid with a tax-free distribution from your retirement plan; the
+          housework part of pay to someone who did both nursing and housework (only the nursing help counts); and meals
+          while away from home for medical care, other than hospital care, which includes its meals and lodging (other
+          lodging for medical care counts at no more than $50 a night for each person who meets the Pub. 502 lodging
+          requirements). Reduce health insurance premiums by any self-employed health insurance deduction on Schedule 1
+          (Form 1040), line 17, and leave out premiums paid by advance payments of the premium tax credit. Include
+          qualified long-term care insurance premiums only up to the limit for the age at the end
+          of 2025 of the person for whom they were paid: $480 if 40 or under, $900 if 41 to 50, $1,800 if 51 to 60, $4,810
+          if 61 to 70, $6,020 if 71 or older. On the final return of a person who died in 2025, include the medical
+          expenses paid out of that person''s estate that Pub. 502 allows on the final return.'
       cite:
-        doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        doc: i1040sca
+        locator: 'p. 1, Medical and Dental Expenses, "If you received a distribution from a health savings account or a
+          medical savings account in 2025, see Pub. 969 to figure your deduction", "Certain medical expenses paid out of a
+          deceased taxpayer''s estate can be claimed on the deceased taxpayer''s final return", "You can''t include
+          insurance premiums paid by making a pretax reduction to your employee compensation", "If you are a retired public
+          safety officer, you can''t include any premiums you paid to the extent they were paid for with a tax-free
+          distribution from your retirement plan", "If you paid someone to do both nursing and housework, you can deduct
+          only the cost of the nursing help", "Hospital care (including meals and lodging), clinic costs, and lab fees",
+          "Lodging expenses (but not meals) while away from home to receive medical care"; p. 2, "Don''t deduct more than
+          $50 a night for each person who meets the requirements in Pub. 502 under Lodging", "Limit on long-term care
+          premiums you can include. The amount you can include for qualified long-term care insurance contracts (as defined
+          in Pub. 502) depends on the age at the end of 2025 of the person for whom the premiums were paid", Line 1 Medical
+          and Dental Expenses, "Enter the total of your medical and dental expenses after you reduce these expenses by any
+          payments received from insurance or other sources", "self-employed health insurance deduction on Schedule 1 (Form 1040), line 17, reduce the
+          premiums by the amount on line 17"; p969 p. 9, "You can’t deduct qualified medical expenses as
+          an itemized deduction on Schedule A (Form 1040) that are equal to the tax-free distribution from your HSA"; p969
+          p. 13, "You can’t deduct qualified medical expenses as an itemized deduction on Schedule A (Form 1040) that are
+          equal to the tax-free distribution from your Archer MSA"'
     - id: sa.line5a
       printed: 5a
       type: NonNegDollars
       label: State/local income taxes paid, including withholding; no sales-tax election
       expr:
         op: input
-        source: State/local income taxes paid, including withholding; no sales-tax election
+        source: 'State/local income taxes paid, including withholding; no sales-tax election. Include income taxes imposed by
+          a U.S. territory here (not as foreign taxes), except territory taxes allocable to excluded income and territory
+          taxes you take as a credit instead of a deduction.'
       cite:
-        doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        doc: i1040sca
+        locator: 'p. 3, U.S. territory taxes, "Include taxes imposed by a U.S. territory with your state and local taxes on
+          lines 5a, 5b, and 5c", "However, don''t include any U.S. territory taxes you paid that are allocable to excluded
+          income", "You may want to take a credit for U.S. territory tax instead of a deduction"; p. 7, Line 6, "Don''t include
+          taxes you paid to a U.S. territory on this line; instead, include U.S. territory taxes on the appropriate state
+          and local tax line"'
     - id: sa.line5b
       printed: 5b
       type: NonNegDollars
       label: Deductible state/local real estate taxes
       expr:
         op: input
-        source: Deductible state/local real estate taxes
+        source: 'Deductible state/local real estate taxes: only taxes paid in 2025 and assessed before 2026 (state or local
+          law determines when a tax is assessed, generally when you become liable for it), so leave out a prepayment of
+          2026 property tax not assessed before 2026. Include real estate taxes imposed by a U.S. territory, except those
+          allocable to excluded income.'
       cite:
-        doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        doc: i1040sca
+        locator: 'p. 3, U.S. territory taxes, "Include taxes imposed by a U.S. territory with your state and local taxes on
+          lines 5a, 5b, and 5c", "However, don''t include any U.S. territory taxes you paid that are allocable to excluded
+          income"; p. 6, Line 5b, "Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025", "State or local
+          law determines whether and when a property tax is assessed, which is generally when the taxpayer becomes liable
+          for the property tax imposed"'
     - id: sa.line5c
       printed: 5c
       type: NonNegDollars
       label: Deductible state/local personal property taxes
       expr:
         op: input
-        source: Deductible state/local personal property taxes
+        source: Deductible state/local personal property taxes. Include personal property taxes imposed by a U.S. territory,
+          except those allocable to excluded income.
       cite:
-        doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        doc: i1040sca
+        locator: 'p. 3, U.S. territory taxes, "Include taxes imposed by a U.S. territory with your state and local taxes on
+          lines 5a, 5b, and 5c", "However, don''t include any U.S. territory taxes you paid that are allocable to excluded
+          income"'
     - id: sa.line8a
       printed: 8a
       type: NonNegDollars

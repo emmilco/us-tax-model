@@ -6,6 +6,17 @@
 3. The self-employed health insurance double count on Schedule A line 1 (proposed by the T-169 session as PENDING-4; the `sa.line1` question has no reduction for Schedule 1 line 17 or Form 8962): wording first, a cited refusal if wording is not enough; not a computed split. Apply when integrating `claude/A-backlog`, which rewrites `sa.line1`.
 4. Pub. 502 is archived as `sources/2025/p502` (2025 edition).
 
+**Owner decisions (2026-11-02), on the A- and C-backlog owner questions:**
+- A1 used property and the special allowance: refuse through the screen for now; archive the conditions later if needed.
+- A2 section 168(k)(9) property: add a plain-language description to the asset questions, and ask it for vehicles too (wording).
+- A3 `asset.is_section179` over-counting on Form 4562 line 2 above $4,000,000: an engineering defect to investigate and record, not an owner choice.
+- A4 the 100% treatment of employee-used vehicles for operating expenses and leases: refuse through the vehicle screen.
+- A5 archive Pub. 538 and settle the small business capitalization exemption from its text.
+- A6 QBI-only refusals: keep refusing the whole Schedule C; record a task to narrow it with a new input.
+- C1 archive Pub. 974, check it for a legitimate column A > 0 with column B = 0 month, then add a cited refusal if none exists.
+- C2 keep refusing a 2025 refund already netted in column A (accepted over-refusal).
+- C3 keep the 9.02% affordability test as wording; do not compute it.
+
 **Parallel work in flight (branches to integrate; each is re-tested locally before `main`):**
 - `claude/ruling-audit-1`: done. Two confirmed findings with one cause: an asset past its GDS period is never screened, so ADS property and listed property used 50% or less complete with $0 depreciation (reproduced locally for ADS). Fix after the asset work below lands; it is the new top of queue 1.
 - `claude/f1-dependent` (routine), `claude/t159-mutation` (routine): running.

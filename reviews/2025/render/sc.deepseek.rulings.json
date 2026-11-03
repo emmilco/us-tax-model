@@ -4,6 +4,13 @@
  "family": "deepseek",
  "rulings": [
   {
+   "printed": "32",
+   "restated": "Input — Is all your investment in this business at risk (box 32a)? Answer no if any of these is invested in it: a nonrecourse loan used to finance the business, buy property used in it, or buy the business, that is not secured by your own property other than property used in the business and that you are not personally responsible to repay; cash, property or borrowed money protected against loss by a guarantee, stop-loss agreement or similar arrangement (casualty and tort-liability insurance do not count); money borrowed for use in the business from someone who has an interest in it other than as a creditor, or from a person related (under section 465(b)(3)(C)) to someone other than you who has such an interest",
+   "model": "The IRS line 32 instructions include an exception for certain nonrecourse financing borrowed in connection with holding real property; the restatement says to answer no for any such nonrecourse loan without mentioning that exception.",
+   "ruling": "Ruling: scope; accepted over-refusal. A filer whose only nonrecourse financing is qualified real property financing answers no and is refused through sc.not_at_risk, though that financing is at risk; a refusal, never a wrong amount.",
+   "context": "6d6176476fc8561220fef03d134bb0276d0978d9eb8e73b2523780953c8d05c0"
+  },
+  {
    "printed": "3a",
    "restated": "Enter $5 (sc.ho_rate).",
    "model": "the model returned no verdict for this line",
@@ -25,11 +32,25 @@
    "context": "4c25d28949ee3bae493f9488370dcb6a674c86a8f9ab83d8c671e3cc61681574"
   },
   {
+   "printed": "5 (sc.f7206_line5)",
+   "restated": "Enter the amount from person helper \"Total of all net profits of this person's businesses (losses not included)\".",
+   "model": "The IRS line 5 requires the total of net profits from Schedule C, Schedule F, and Schedule K-1, plus other income allocable to profitable businesses; the helper adds only confirmed Schedule C entries.",
+   "ruling": "Ruling: scope; Schedule F and K-1 profits are refused by the self-employment screen (person.x_other) and other earned income outside Schedule C is refused (sd.other_forms, scope.yaml).",
+   "context": "6d6176476fc8561220fef03d134bb0276d0978d9eb8e73b2523780953c8d05c0"
+  },
+  {
    "printed": "9 (sc.f7206_line9)",
    "restated": "Choose — [helper \"Line 4 is more than zero\" = true → helper \"This person's SEP or SIMPLE deduction times line 4 divided by line 5\"] [helper \"Line 4 is more than zero\" = false → helper \"Zero\"]",
    "model": "IRS line 9 includes 'Schedule 1..., line 16, self-employed SEP, SIMPLE, and qualified plans'; the restatement uses only the SEP or SIMPLE deduction.",
    "ruling": "Ruling: scope; person.plan_screen refuses contributions \"to a qualified plan (such as a solo 401(k))\", so line 16 on a computed return holds only the SEP or SIMPLE deduction.",
    "context": "4c25d28949ee3bae493f9488370dcb6a674c86a8f9ab83d8c671e3cc61681574"
+  },
+  {
+   "printed": "9 (sc.f7206_line9)",
+   "restated": "Choose — [helper \"Line 4 is more than zero\" = true → helper \"This person's SEP or SIMPLE deduction times line 4 divided by line 5\"] [helper \"Line 4 is more than zero\" = false → helper \"Zero\"]",
+   "model": "The IRS line 9 says to enter the amount from Schedule 1 line 16 attributable to the same trade or business; the restatement instead multiplies that deduction by line 4 divided by line 5.",
+   "ruling": "Ruling: ambiguity (amb.2025.f7206_plan_attribution); the line 16 deduction is attributed in proportion to net profit, the recorded reading.",
+   "context": "6d6176476fc8561220fef03d134bb0276d0978d9eb8e73b2523780953c8d05c0"
   },
   {
    "printed": "F",

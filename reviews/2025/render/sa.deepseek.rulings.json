@@ -6,6 +6,13 @@
   {
    "printed": "2",
    "restated": "Enter the amount from helper \"Form 1040 line 11b adjusted gross income, but not less than zero\".",
+   "model": "IRS line 2 says 'Enter amount from Form 1040 or 1040-SR, line 11b'; the restatement instead uses an AGI floored at zero, which changes the amount if line 11b is negative.",
+   "ruling": "Ruling: ambiguity (amb.2025.sa_medical_negative_agi); the project floors AGI at zero for the 7.5% limit, the recorded reading.",
+   "context": "a974dad0027e2b455fea02a1dea2297fc2b5189c8d237d72ef5ba8db43d4118e"
+  },
+  {
+   "printed": "2",
+   "restated": "Enter the amount from helper \"Form 1040 line 11b adjusted gross income, but not less than zero\".",
    "model": "The IRS line says 'Enter amount from Form 1040 or 1040-SR, line 11b'; the restatement uses a helper that floors line 11b at zero, changing the amount when AGI is negative.",
    "ruling": "Ruling: ambiguity — amb.2025.sa_medical_negative_agi. The project floors AGI at zero for the medical-expense 7.5% limitation (the recorded reading), and the helper line 2 displays that floored amount. The IRS line says \"Enter amount from Form 1040 or 1040-SR, line 11b\"; a negative AGI is the registered ambiguity, not a new defect.",
    "context": "a3c824fe95742926f1b5ad19eb137ffdfd78fc1c6e7201fe94a1520f7ee449f3"

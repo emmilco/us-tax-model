@@ -7,21 +7,21 @@ Second transcription of `Schedule C (Form 1040) — Profit or Loss From Business
 | date | 2026-11-02 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 632f9e265413f19f5e52a4fa88b2d14ad89617becb42bc96eafb64e13b73e392 |
+| prompt sha256 | 6b466633a2fa45e60fd5bddd75548b20e6e25ef4b062c9b9f844282bede64e13 |
 | prompt policy | source-only-computation-v2 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
 | complete input context | pass |
-| required input context sha256 | 05f45aa981f458eb86c17a381396370038b4a6a90a758cb7b45a42678650b81d |
+| required input context sha256 | 32126ab84e7faf703aef479eaf9211ed7e1861cf529ee144f3d6140177877f39 |
 | type validation policy | project-expression-types-v3 |
 | model type validation | fail |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
-| output token budget | 131072 |
+| output token budget | 65536 |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 4607a00dac7de74c9c7fb227b2ed575b6dbe22cdd9463e03f53f0a97e1b9a8a0 |
+| subject sha256 | 1dd3fb853efa2cc97643f219d8b52a808b8ed7f97e4ea5d62d56851fc4ea1322 |
 | printed lines compared | 55 |
-| agree / disagree / missing | 22 / 33 / 0 |
+| agree / disagree / missing | 19 / 36 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -45,11 +45,11 @@ Second transcription of `Schedule C (Form 1040) — Profit or Loss From Business
 The build's reference/type checker rejected these model expressions; none were executed.
 - malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object
 - malformed expression (project schema): data/all/0 must be object, data/all/0 must be object, data/all/0 must be object
-- sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money
-- sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money
-- sc.sc.h_ho_sqft_capped: declared count but the expression produces money
-- sc.sc.h_at_risk_bad: malformed expression
-- sc.sc.h_passive_bad: malformed expression
+- sc.sc.ho_line2: operand 'sc.ho_sqft' is not money
+- sc.sc.ho_line2: operand 'sc.ho_max' is not money
+- sc.sc.ho_line2: declared count but the expression produces money
+- sc.sc.at_risk_bad: malformed expression
+- sc.sc.passive_bad: malformed expression
 
 ## Lines
 
@@ -68,10 +68,10 @@ Project:
 Second:
 
 ```json
-{"args": [{"args": [{"const": true}, {"line": "(screen)"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.rrta"}], "test": "eq"}], "test": "all"}
+{"line": "(screen)"}
 ```
 
-Ruling: model error; the line carries the owner's railroad retirement answer. The candidate also requires the screen, so it is false on the refused railroad fixtures, where the project reports true and refuses. Triage executable-triage-v2 (triage/sc.deepseek.json): 3830 of 3842 comparisons agree; on completed returns no difference.
+Ruling: scope; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/sc.deepseek.json): 3592 of 3697 comparisons agree; on completed returns no difference.
 
 ### sc.line31_pre179 — Line 31 without the section 179 expense deduction
 Status: **DISAGREE**
@@ -85,10 +85,12 @@ Project:
 Second:
 
 ```json
-{"expression": {"of": [{"line": "12 (sc.s179_allowed)"}, {"line": "31"}], "op": "sum"}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
+{"expression": {"of": [{"line": "12 (sc.s179_allowed)"}, {"line": "31"}], "op": "sum"}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_max' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
+Second transcription's note: Schedule SE line 2 adds back the section 179 deduction to Schedule C line 31.
+
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3697 records; this adjudicates the declaration, not the tax reading.
 
 ### sc.result — The amount for Schedule 1, line 3 and Schedule SE, line 2
 Status: **DISAGREE**
@@ -102,10 +104,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"line": "31"}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
+{"expression": {"line": "31"}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_max' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3697 records; this adjudicates the declaration, not the tax reading.
 
 ### sc.f6 — Section 179 elected on property other than listed property
 Status: **DISAGREE**
@@ -119,10 +121,10 @@ Project:
 Second:
 
 ```json
-{"collection": "asset", "field": "asset.s179", "op": "sum_over", "where": null}
+{"collection": "asset", "field": "asset.s179", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}}
 ```
 
-Ruling: model error; i4562 p. 5, Line 6: "Do not include any listed property on line 6". The candidate sums the election over every asset, listed or not, and for any year. Triage executable-triage-v2 (triage/sc.deepseek.json): 3836 of 3842 comparisons agree; on completed returns {"value": 4}.
+Ruling: representation; triage found no difference. Triage executable-triage-v2 (triage/sc.deepseek.json): 3697 of 3697 comparisons agree; on completed returns no difference.
 
 ### sc.f14 — Special allowance on property other than listed property
 Status: **DISAGREE**
@@ -136,10 +138,10 @@ Project:
 Second:
 
 ```json
-{"collection": "f4562", "field": "f4562.line14", "op": "sum_over", "where": null}
+{"collection": "asset", "field": "asset.bonus", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}}
 ```
 
-Ruling: model error; the candidate reads Form 4562 and Schedule C amounts through a reference cycle (for example person.sc.f4562.line14 back to this line), so it is unknown on every record. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): 0 of 3842 comparisons agree; on completed returns {"candidate-unknown": 230}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/sc.deepseek.json): 3370 of 3697 comparisons agree; on completed returns {"value": 20}.
 
 ### sc.f17 — MACRS on earlier property other than listed property
 Status: **DISAGREE**
@@ -153,10 +155,10 @@ Project:
 Second:
 
 ```json
-{"collection": "f4562", "field": "f4562.line17", "op": "sum_over", "where": null}
+{"collection": "asset", "field": "asset.macrs_prior", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}}
 ```
 
-Ruling: model error; the candidate reads Form 4562 and Schedule C amounts through a reference cycle (for example person.sc.f4562.line14 back to this line), so it is unknown on every record. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): 0 of 3842 comparisons agree; on completed returns {"candidate-unknown": 230}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/sc.deepseek.json): 2508 of 3697 comparisons agree; on completed returns {"candidate-unknown": 1, "value": 80}.
 
 ### sc.f19_y3 — MACRS on 2025 property of period y3 other than listed property
 Status: **DISAGREE**
@@ -170,10 +172,10 @@ Project:
 Second:
 
 ```json
-{"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"const": "y3"}, {"ref": "asset.period"}], "test": "eq"}}
+{"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y3"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}
 ```
 
-Ruling: model error; i4562 p. 9, Lines 19a Through 19j: "Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025". The candidate sums the recovery class over prior-year property as well, where the project takes $0. Triage executable-triage-v2 (triage/sc.deepseek.json): 3835 of 3842 comparisons agree; on completed returns {"value": 2}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/sc.deepseek.json): 3691 of 3697 comparisons agree; on completed returns {"value": 2}.
 
 ### sc.f19_y5 — MACRS on 2025 property of period y5 other than listed property
 Status: **DISAGREE**
@@ -187,10 +189,10 @@ Project:
 Second:
 
 ```json
-{"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"const": "y5"}, {"ref": "asset.period"}], "test": "eq"}}
+{"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y5"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}
 ```
 
-Ruling: model error; i4562 p. 9, Lines 19a Through 19j: "Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025". The candidate sums the recovery class over prior-year property as well, where the project takes $0. Triage executable-triage-v2 (triage/sc.deepseek.json): 3399 of 3842 comparisons agree; on completed returns {"candidate-unknown": 7, "value": 6}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/sc.deepseek.json): 3438 of 3697 comparisons agree; on completed returns {"candidate-unknown": 7, "value": 6}.
 
 ### sc.f19_y7 — MACRS on 2025 property of period y7 other than listed property
 Status: **DISAGREE**
@@ -204,10 +206,10 @@ Project:
 Second:
 
 ```json
-{"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"const": "y7"}, {"ref": "asset.period"}], "test": "eq"}}
+{"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y7"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}
 ```
 
-Ruling: model error; i4562 p. 9, Lines 19a Through 19j: "Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025". The candidate sums the recovery class over prior-year property as well, where the project takes $0. Triage executable-triage-v2 (triage/sc.deepseek.json): 3579 of 3842 comparisons agree; on completed returns {"candidate-unknown": 6, "value": 8}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/sc.deepseek.json): 3438 of 3697 comparisons agree; on completed returns {"candidate-unknown": 6, "value": 9}.
 
 ### sc.f19_y10 — MACRS on 2025 property of period y10 other than listed property
 Status: **DISAGREE**
@@ -221,10 +223,10 @@ Project:
 Second:
 
 ```json
-{"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"const": "y10"}, {"ref": "asset.period"}], "test": "eq"}}
+{"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y10"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}
 ```
 
-Ruling: model error; i4562 p. 9, Lines 19a Through 19j: "Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025". The candidate sums the recovery class over prior-year property as well, where the project takes $0. Triage executable-triage-v2 (triage/sc.deepseek.json): 3831 of 3842 comparisons agree; on completed returns {"candidate-unknown": 2, "value": 1}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/sc.deepseek.json): 3687 of 3697 comparisons agree; on completed returns {"candidate-unknown": 2, "value": 1}.
 
 ### sc.f19_y15 — MACRS on 2025 property of period y15 other than listed property
 Status: **DISAGREE**
@@ -238,10 +240,10 @@ Project:
 Second:
 
 ```json
-{"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"const": "y15"}, {"ref": "asset.period"}], "test": "eq"}}
+{"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y15"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}
 ```
 
-Ruling: model error; i4562 p. 9, Lines 19a Through 19j: "Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025". The candidate sums the recovery class over prior-year property as well, where the project takes $0. Triage executable-triage-v2 (triage/sc.deepseek.json): 3826 of 3842 comparisons agree; on completed returns no difference.
+Ruling: scope; all differences are on refused or partial records; no completed return differs. Triage executable-triage-v2 (triage/sc.deepseek.json): 3591 of 3697 comparisons agree; on completed returns no difference.
 
 ### sc.f19_y20 — MACRS on 2025 property of period y20 other than listed property
 Status: **DISAGREE**
@@ -255,10 +257,10 @@ Project:
 Second:
 
 ```json
-{"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"const": "y20"}, {"ref": "asset.period"}], "test": "eq"}}
+{"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y20"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}
 ```
 
-Ruling: model error; i4562 p. 9, Lines 19a Through 19j: "Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025". The candidate sums the recovery class over prior-year property as well, where the project takes $0. Triage executable-triage-v2 (triage/sc.deepseek.json): 3647 of 3842 comparisons agree; on completed returns {"value": 16}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/sc.deepseek.json): 3596 of 3697 comparisons agree; on completed returns {"value": 3}.
 
 ### sc.f19_y15sl — MACRS on 2025 property of period y15sl other than listed property
 Status: **DISAGREE**
@@ -272,10 +274,10 @@ Project:
 Second:
 
 ```json
-{"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"const": "y15sl"}, {"ref": "asset.period"}], "test": "eq"}}
+{"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y15sl"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}
 ```
 
-Ruling: representation; triage found no difference. Triage executable-triage-v2 (triage/sc.deepseek.json): 3842 of 3842 comparisons agree; on completed returns no difference.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/sc.deepseek.json): 3695 of 3697 comparisons agree; on completed returns {"value": 1}.
 
 ### sc.f25 — Line 25 for this business
 Status: **DISAGREE**
@@ -289,10 +291,10 @@ Project:
 Second:
 
 ```json
-{"collection": "f4562", "field": "f4562.line25", "op": "sum_over", "where": null}
+{"collection": "asset", "field": "asset.f25", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}}
 ```
 
-Ruling: model error; the candidate reads Form 4562 and Schedule C amounts through a reference cycle (for example person.sc.f4562.line14 back to this line), so it is unknown on every record. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): 1 of 3842 comparisons agree; on completed returns {"candidate-unknown": 230}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/sc.deepseek.json): 3163 of 3697 comparisons agree; on completed returns {"value": 23}.
 
 ### sc.f26h — Column (h), line 26, for this business
 Status: **DISAGREE**
@@ -306,10 +308,10 @@ Project:
 Second:
 
 ```json
-{"collection": "f4562", "field": "f4562.line26h", "op": "sum_over", "where": null}
+{"collection": "asset", "field": "asset.dep_listed", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error; the candidate reads Form 4562 and Schedule C amounts through a reference cycle (for example person.sc.f4562.line14 back to this line), so it is unknown on every record. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): 0 of 3842 comparisons agree; on completed returns {"candidate-unknown": 230}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/sc.deepseek.json): 2113 of 3697 comparisons agree; on completed returns {"value": 105}.
 
 ### sc.f28 — Line 28 for this business
 Status: **DISAGREE**
@@ -323,10 +325,10 @@ Project:
 Second:
 
 ```json
-{"collection": "f4562", "field": "f4562.line28", "op": "sum_over", "where": null}
+{"of": [{"collection": "asset", "field": "asset.dep_listed", "op": "sum_over", "where": null}, {"collection": "asset", "field": "asset.f25", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}}], "op": "sum"}
 ```
 
-Ruling: model error; the candidate reads Form 4562 and Schedule C amounts through a reference cycle (for example person.sc.f4562.line14 back to this line), so it is unknown on every record. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): 0 of 3842 comparisons agree; on completed returns {"candidate-unknown": 230}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/sc.deepseek.json): 2027 of 3697 comparisons agree; on completed returns {"value": 110}.
 
 ### sc.f29 — Line 29 for this business
 Status: **DISAGREE**
@@ -340,19 +342,61 @@ Project:
 Second:
 
 ```json
-{"collection": "f4562", "field": "f4562.line29", "op": "sum_over", "where": null}
+{"collection": "asset", "field": "asset.f26i", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error; the candidate reads Form 4562 and Schedule C amounts through a reference cycle (for example person.sc.f4562.line14 back to this line), so it is unknown on every record. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): 0 of 3842 comparisons agree; on completed returns {"candidate-unknown": 230}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/sc.deepseek.json): 3241 of 3697 comparisons agree; on completed returns {"value": 18}.
 
 ### sc.mq_q4 — mq_q4 of this business
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"of": [{"collection": "asset", "field": "asset.mq_q4", "op": "sum_over", "where": null}, {"collection": "scveh", "field": "scveh.mq_q4", "op": "sum_over", "where": null}], "op": "sum"}
+```
+
+Second:
+
+```json
+{"collection": "asset", "field": "asset.mq_q4", "op": "sum_over", "where": null}
+```
+
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/sc.deepseek.json): 3542 of 3697 comparisons agree; on completed returns {"value": 2}.
 
 ### sc.mq_total — mq_total of this business
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"of": [{"collection": "asset", "field": "asset.mq_total", "op": "sum_over", "where": null}, {"collection": "scveh", "field": "scveh.mq_total", "op": "sum_over", "where": null}], "op": "sum"}
+```
+
+Second:
+
+```json
+{"collection": "asset", "field": "asset.mq_total", "op": "sum_over", "where": null}
+```
+
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/sc.deepseek.json): 3252 of 3697 comparisons agree; on completed returns {"value": 26}.
 
 ### sc.cost179 — cost179 of this business
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"of": [{"collection": "asset", "field": "asset.cost179", "op": "sum_over", "where": null}, {"collection": "scveh", "field": "scveh.cost179", "op": "sum_over", "where": null}], "op": "sum"}
+```
+
+Second:
+
+```json
+{"collection": "asset", "field": "asset.cost179_2025", "op": "sum_over", "where": null}
+```
+
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/sc.deepseek.json): 2713 of 3697 comparisons agree; on completed returns {"value": 59}.
 
 ### sc.profit_pos — Net profit of this business (zero for a loss)
 Status: **DISAGREE**
@@ -366,10 +410,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"from": {"line": "31"}, "op": "subtract_floor0", "take": {"const": 0}}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
+{"expression": {"from": {"line": "31"}, "op": "subtract_floor0", "take": {"const": 0}}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_max' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3697 records; this adjudicates the declaration, not the tax reading.
 
 ### 3 (sc.line3) — Subtract line 2 from line 1
 Status: **AGREE**
@@ -401,10 +445,10 @@ Project:
 Second:
 
 ```json
-{"collection": "f4562", "field": "f4562.line22", "op": "sum_over", "where": null}
+{"of": [{"line": "12 (sc.s179_allowed)"}, {"of": [{"collection": "asset", "field": "asset.dep_listed", "op": "sum_over", "where": null}, {"collection": "asset", "field": "asset.f25", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "asset.listed"}], "test": "eq"}}], "op": "sum"}, {"collection": "asset", "field": "asset.bonus", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}}, {"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y10"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y15"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y15sl"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y20"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y3"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y5"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.macrs2025", "op": "sum_over", "where": {"args": [{"args": [{"const": "y7"}, {"ref": "asset.period"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}], "test": "all"}}, {"collection": "asset", "field": "asset.macrs_prior", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "asset.listed"}], "test": "eq"}}], "op": "sum"}
 ```
 
-Ruling: model error; the candidate reads Form 4562 and Schedule C amounts through a reference cycle (for example person.sc.f4562.line14 back to this line), so it is unknown on every record. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): 2774 of 3842 comparisons agree; on completed returns {"candidate-unknown": 230}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, differs only through recorded ambiguities or read gates, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/sc.deepseek.json): 412 of 3697 comparisons agree; on completed returns {"candidate-unknown": 16, "value": 134}.
 
 ### 20a — Rent or lease: vehicles, machinery, and equipment
 Status: **DISAGREE**
@@ -421,7 +465,7 @@ Second:
 {"input": "sc.rent_equipment"}
 ```
 
-Ruling: model error; i1040sc line 20a includes the rent or lease of vehicles. The candidate omits scveh.line20a (classm.s8812.3: project $1,370.09, candidate $0). Triage executable-triage-v2 (triage/sc.deepseek.json): 3647 of 3842 comparisons agree; on completed returns {"value": 7}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, shows no value difference, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/sc.deepseek.json): 3502 of 3697 comparisons agree; on completed returns {"value": 6}.
 
 ### 24b — Deductible meals
 Status: **AGREE**
@@ -453,10 +497,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"amount": {"line": "3a"}, "count": {"of": [{"line": "30(b)"}, {"param": "sc.ho_max_sqft"}], "op": "smaller_of"}, "op": "multiply_count"}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
+{"expression": {"amount": {"line": "3a"}, "count": {"of": [{"line": "30(b)"}, {"param": "sc.ho_max_sqft"}], "op": "smaller_of"}, "op": "multiply_count"}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_max' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3697 records; this adjudicates the declaration, not the tax reading.
 
 ### 1 (sc.ho_line1) — Gross income limitation (Schedule C, line 29)
 Status: **AGREE**
@@ -473,10 +517,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"from": {"of": [{"line": "1 (sc.ho_line1)"}, {"line": "4 (sc.ho_line4)"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"const": 0}}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
+{"expression": {"from": {"of": [{"line": "1 (sc.ho_line1)"}, {"line": "4 (sc.ho_line4)"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"const": 0}}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_max' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3697 records; this adjudicates the declaration, not the tax reading.
 
 ### 30 — Expenses for business use of your home
 Status: **DISAGREE**
@@ -490,10 +534,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"alternatives": [{"guard": {"args": [{"const": false}, {"line": "(screen)"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"line": "(screen)"}], "test": "eq"}, "then": {"line": "5 (sc.ho_line5)"}}], "op": "choose"}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
+{"expression": {"from": {"alternatives": [{"guard": {"args": [{"const": false}, {"line": "(screen)"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"line": "(screen)"}], "test": "eq"}, "then": {"line": "5 (sc.ho_line5)"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_max' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3697 records; this adjudicates the declaration, not the tax reading.
 
 ### 31 — Net profit or (loss). Subtract line 30 from line 29
 Status: **DISAGREE**
@@ -507,10 +551,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"from": {"line": "29"}, "op": "subtract", "take": {"line": "30"}}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
+{"expression": {"from": {"line": "29"}, "op": "subtract", "take": {"line": "30"}}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_max' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3697 records; this adjudicates the declaration, not the tax reading.
 
 ### 40 — Add lines 35 through 39
 Status: **AGREE**
@@ -530,10 +574,10 @@ Project:
 Second:
 
 ```json
-{"collection": "f4562", "field": "f4562.line12", "op": "sum_over", "where": null}
+{"collection": "asset", "field": "asset.s179_2025", "op": "sum_over", "where": null}
 ```
 
-Ruling: model error; the candidate reads Form 4562 and Schedule C amounts through a reference cycle (for example person.sc.f4562.line14 back to this line), so it is unknown on every record. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): 2760 of 3842 comparisons agree; on completed returns {"candidate-unknown": 230}.
+Ruling: model error; its amounts differ from the project on completed returns, where the Claude transcription, read independently, differs only through recorded ambiguities or read gates, so the weight of the readings is against this candidate. Triage executable-triage-v2 (triage/sc.deepseek.json): 742 of 3697 comparisons agree; on completed returns {"value": 6}.
 
 ### 2 (sc.f7206_line2) — Qualified long-term care insurance (the smaller of payments or the age limit, for each per
 Status: **AGREE**
@@ -553,10 +597,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"from": {"line": "31"}, "op": "subtract_floor0", "take": {"const": 0}}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
+{"expression": {"from": {"line": "31"}, "op": "subtract_floor0", "take": {"const": 0}}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_max' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3697 records; this adjudicates the declaration, not the tax reading.
 
 ### 5 (sc.f7206_line5) — Total of all net profits from Schedule C, line 31
 Status: **AGREE**
@@ -573,12 +617,12 @@ Project:
 Second:
 
 ```json
-{"expression": {"alternatives": [{"guard": {"args": [{"line": "4 (sc.f7206_line4)"}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"line": "4 (sc.f7206_line4)"}], "test": "lt"}, "then": {"amount": {"ref": "s1.line15"}, "op": "prorate", "part": {"line": "4 (sc.f7206_line4)"}, "places": 9, "whole": {"line": "5 (sc.f7206_line5)"}}}], "op": "choose"}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
+{"expression": {"amount": {"ref": "s1.line15"}, "op": "prorate", "part": {"line": "4 (sc.f7206_line4)"}, "places": 3, "whole": {"line": "5 (sc.f7206_line5)"}}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_max' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
 ```
 
-Second transcription's note: Form 7206 line 6 does not state a rounding rule; this line applies prorate with 9 decimal places to the line 4/line 5 ratio.
+Second transcription's note: The IRS text does not state rounding for line 6; the line 4 / line 5 ratio is rounded half-up to three decimal places.
 
-Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3697 records; this adjudicates the declaration, not the tax reading.
 
 ### 8 (sc.f7206_line8) — Subtract line 7 from line 4
 Status: **DISAGREE**
@@ -592,10 +636,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"from": {"line": "4 (sc.f7206_line4)"}, "op": "subtract_floor0", "take": {"line": "7 (sc.f7206_line7)"}}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
+{"expression": {"from": {"line": "4 (sc.f7206_line4)"}, "op": "subtract_floor0", "take": {"line": "7 (sc.f7206_line7)"}}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_max' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3697 records; this adjudicates the declaration, not the tax reading.
 
 ### 9 (sc.f7206_line9) — Schedule 1, line 16, attributable to the same trade or business
 Status: **DISAGREE**
@@ -609,12 +653,12 @@ Project:
 Second:
 
 ```json
-{"ref": "s1.line16"}
+{"alternatives": [{"guard": {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, "then": {"ref": "person.zero"}}, {"guard": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "then": {"input": "person.sep_contrib"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.simple_employer"}, {"of": [{"of": [{"input": "person.simple_deferral"}, {"param": "ret.simple_limit"}], "op": "smaller_of"}, {"from": {"input": "person.simple_deferral"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.simple_deferral"}, {"param": "ret.simple_limit"}], "op": "smaller_of"}}], "op": "sum"}], "op": "sum"}}], "op": "choose"}
 ```
 
-Second transcription's note: The supplied interface provides only the Schedule 1 line 16 total, not a per-business allocation; this line uses that total.
+Second transcription's note: The provided interface does not supply a per-business allocation of the SEP, SIMPLE, and qualified plan deduction; this uses the person-level plan deduction.
 
-Ruling: ambiguity (amb.2025.f7206_plan_attribution); the candidate enters the Schedule 1 line 16 total for each business and its note says the interface gives no allocation; f7206 line 9 says "attributable to the same trade or business". The candidate needs sc.result on returns that do not reach it. Triage executable-triage-v2 (triage/sc.deepseek.json): 737 of 3842 comparisons agree; on completed returns {"candidate-unknown": 12}.
+Ruling: model error; the candidate needs answers, applies screens or shows amounts on completed returns where the source does not require them. Triage executable-triage-v2 (triage/sc.deepseek.json): 736 of 3697 comparisons agree; on completed returns {"candidate-unknown": 11}.
 
 ### 10 (sc.f7206_line10) — Subtract line 9 from line 8
 Status: **DISAGREE**
@@ -628,10 +672,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"from": {"line": "8 (sc.f7206_line8)"}, "op": "subtract_floor0", "take": {"line": "9 (sc.f7206_line9)"}}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
+{"expression": {"from": {"line": "8 (sc.f7206_line8)"}, "op": "subtract_floor0", "take": {"line": "9 (sc.f7206_line9)"}}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_max' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3697 records; this adjudicates the declaration, not the tax reading.
 
 ### 13 (sc.f7206_line13) — Subtract line 12 from line 10
 Status: **DISAGREE**
@@ -645,10 +689,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"line": "10 (sc.f7206_line10)"}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
+{"expression": {"line": "10 (sc.f7206_line10)"}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_max' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3697 records; this adjudicates the declaration, not the tax reading.
 
 ### 14 (sc.f7206_line14) — Self-employed health insurance deduction
 Status: **DISAGREE**
@@ -662,10 +706,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"alternatives": [{"guard": {"args": [{"const": false}, {"line": "(screen)"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"line": "(screen)"}], "test": "eq"}, "then": {"of": [{"line": "13 (sc.f7206_line13)"}, {"line": "3 (sc.f7206_line3)"}], "op": "smaller_of"}}], "op": "choose"}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
+{"expression": {"of": [{"line": "13 (sc.f7206_line13)"}, {"line": "3 (sc.f7206_line3)"}], "op": "smaller_of"}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_max' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
 ```
 
-Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3697 records; this adjudicates the declaration, not the tax reading.
 
 ### 1(c) — Qualified business income or (loss) of this business
 Status: **DISAGREE**
@@ -679,12 +723,12 @@ Project:
 Second:
 
 ```json
-{"expression": {"line": "31"}, "invalid_model_types": [{"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.ho_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: operand 'sc.h_ho_max_sqft' is not money"}, {"line": "sc.h_ho_sqft_capped", "message": "sc.sc.h_ho_sqft_capped: declared count but the expression produces money"}]}
+{"expression": {"line": "31"}, "invalid_model_types": [{"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_sqft' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: operand 'sc.ho_max' is not money"}, {"line": "sc.ho_line2", "message": "sc.sc.ho_line2: declared count but the expression produces money"}]}
 ```
 
-Second transcription's note: The supplied text and inputs do not provide a per-business allocation of the deductible part of self-employment tax, retirement plan contributions, or similar QBI reductions; this line reports the Schedule C net profit as the business's QBI.
+Second transcription's note: The provided interface does not supply per-business allocations of the deductible part of self-employment tax, SEP/SIMPLE/qualified plan contributions, or the self-employed health insurance deduction for Form 8995 line 1(c); this records the Schedule C result before those QBI reductions.
 
-Ruling: model error on the declaration; the line or a line it depends on fails the host check (sc.h_at_risk_bad and sc.h_passive_bad malformed; sc.h_ho_sqft_capped reads counts as money), so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3842 records; this adjudicates the declaration, not the tax reading.
+Ruling: model error on the declaration; the line or a line it depends on fails the host check, so it was not executed. This adjudicates the declaration, not the tax reading. Triage executable-triage-v2 (triage/sc.deepseek.json): candidate-invalid on all 3697 records; this adjudicates the declaration, not the tax reading.
 
 ## Refusal gates listed by the second transcription
 
@@ -692,24 +736,29 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 
 | line | gates listed | not read by the project's line |
 | --- | --- | --- |
-| sc.line31_pre179 | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special |
-| sc.result | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special |
-| sc.profit_pos | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special |
+| sc.line31_pre179 | sc.at_risk_bad, sc.ho_bad, sc.inventory_other, sc.method_other, sc.passive_bad, sc.special | sc.at_risk_bad, sc.ho_bad, sc.method_other, sc.passive_bad, sc.special |
+| sc.result | sc.at_risk_bad, sc.ho_bad, sc.inventory_other, sc.method_other, sc.passive_bad, sc.special | sc.at_risk_bad, sc.ho_bad, sc.method_other, sc.passive_bad, sc.special |
+| sc.profit_pos | sc.at_risk_bad, sc.ho_bad, sc.inventory_other, sc.method_other, sc.passive_bad, sc.special | sc.at_risk_bad, sc.ho_bad, sc.method_other, sc.passive_bad, sc.special |
+| 4 (sc.line4) | sc.inventory_other | - |
+| 5 (sc.line5) | sc.inventory_other | - |
+| 7 (sc.line7) | sc.inventory_other, sc.method_other | sc.method_other |
 | 12 (sc.line12) | sc.special | sc.special |
 | 27a | sc.special | sc.special |
 | 28 | sc.special | sc.special |
-| 29 | sc.special | sc.special |
-| 1 (sc.ho_line1) | sc.special | sc.special |
-| 5 (sc.ho_line5) | sc.special | sc.special |
-| 30 | sc.h_ho_bad, sc.special | sc.h_ho_bad, sc.special |
-| 31 | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special |
-| 4 (sc.f7206_line4) | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special |
-| 7 (sc.f7206_line7) | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special |
-| 8 (sc.f7206_line8) | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special |
-| 10 (sc.f7206_line10) | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special |
-| 13 (sc.f7206_line13) | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special |
-| 14 (sc.f7206_line14) | sc.h_at_risk_bad, sc.h_hi_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special | sc.h_at_risk_bad, sc.h_hi_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special |
-| 1(c) | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special | sc.h_at_risk_bad, sc.h_ho_bad, sc.h_passive_bad, sc.special |
+| 29 | sc.inventory_other, sc.method_other, sc.special | sc.method_other, sc.special |
+| 4 (sc.ho_line4) | sc.ho_bad | sc.ho_bad |
+| 1 (sc.ho_line1) | sc.ho_bad, sc.inventory_other, sc.method_other, sc.special | sc.ho_bad, sc.method_other, sc.special |
+| 5 (sc.ho_line5) | sc.ho_bad, sc.inventory_other, sc.method_other, sc.special | sc.ho_bad, sc.method_other, sc.special |
+| 30 | sc.ho_bad, sc.inventory_other, sc.method_other, sc.special | sc.ho_bad, sc.method_other, sc.special |
+| 31 | sc.at_risk_bad, sc.ho_bad, sc.inventory_other, sc.method_other, sc.passive_bad, sc.special | sc.at_risk_bad, sc.ho_bad, sc.method_other, sc.passive_bad, sc.special |
+| 42 | sc.inventory_other | - |
+| 4 (sc.f7206_line4) | sc.at_risk_bad, sc.ho_bad, sc.inventory_other, sc.method_other, sc.passive_bad, sc.special | sc.at_risk_bad, sc.ho_bad, sc.method_other, sc.passive_bad, sc.special |
+| 7 (sc.f7206_line7) | sc.at_risk_bad, sc.ho_bad, sc.inventory_other, sc.method_other, sc.passive_bad, sc.special | sc.at_risk_bad, sc.ho_bad, sc.method_other, sc.passive_bad, sc.special |
+| 8 (sc.f7206_line8) | sc.at_risk_bad, sc.ho_bad, sc.inventory_other, sc.method_other, sc.passive_bad, sc.special | sc.at_risk_bad, sc.ho_bad, sc.method_other, sc.passive_bad, sc.special |
+| 10 (sc.f7206_line10) | sc.at_risk_bad, sc.ho_bad, sc.inventory_other, sc.method_other, sc.passive_bad, sc.special | sc.at_risk_bad, sc.ho_bad, sc.method_other, sc.passive_bad, sc.special |
+| 13 (sc.f7206_line13) | sc.at_risk_bad, sc.hi_screen, sc.ho_bad, sc.inventory_other, sc.method_other, sc.passive_bad, sc.special | sc.at_risk_bad, sc.hi_screen, sc.ho_bad, sc.method_other, sc.passive_bad, sc.special |
+| 14 (sc.f7206_line14) | sc.at_risk_bad, sc.hi_screen, sc.ho_bad, sc.inventory_other, sc.method_other, sc.passive_bad, sc.special | sc.at_risk_bad, sc.hi_screen, sc.ho_bad, sc.method_other, sc.passive_bad, sc.special |
+| 1(c) | sc.at_risk_bad, sc.ho_bad, sc.inventory_other, sc.method_other, sc.passive_bad, sc.special | sc.at_risk_bad, sc.ho_bad, sc.method_other, sc.passive_bad, sc.special |
 
 ## Raw second transcription
 
@@ -719,401 +768,597 @@ lines:
     printed: "3 (sc.line3)"
     label: "Subtract line 2 from line 1"
     type: Dollars
-    expr: {op: subtract, from: sc.line1, take: sc.line2}
+    expr:
+      op: subtract
+      from: sc.line1
+      take: sc.line2
   - id: sc.line4
     printed: "4 (sc.line4)"
     label: "Cost of goods sold (from line 42)"
     type: Dollars
-    expr: {op: copy, from: sc.line42}
+    expr:
+      op: copy
+      from: sc.line42
   - id: sc.line5
     printed: "5 (sc.line5)"
     label: "Gross profit. Subtract line 4 from line 3"
     type: Dollars
-    expr: {op: subtract, from: sc.line3, take: sc.line4}
+    expr:
+      op: subtract
+      from: sc.line3
+      take: sc.line4
   - id: sc.line7
     printed: "7 (sc.line7)"
     label: "Gross income. Add lines 5 and 6"
     type: Dollars
-    expr: {op: sum, of: [sc.line5, sc.line6]}
+    expr:
+      op: sum
+      of: [sc.line5, sc.line6]
+    refuses: [sc.method_other]
   - id: sc.line9
     printed: "9 (sc.line9)"
     label: "Car and truck expenses"
     type: NonNegDollars
-    expr: {op: sum_over, collection: scveh, field: scveh.line9}
+    expr:
+      op: sum_over
+      collection: scveh
+      field: scveh.line9
   - id: sc.line12
     printed: "12 (sc.line12)"
     label: "Depletion"
     type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
+    expr:
+      op: copy
+      from: sc.zero
     refuses: [sc.special]
   - id: sc.line13
     printed: "13 (sc.line13)"
     label: "Depreciation and section 179 expense deduction (not included in Part III)"
     type: NonNegDollars
-    expr: {op: sum_over, collection: f4562, field: f4562.line22}
+    expr:
+      op: sum
+      of:
+        - sc.s179_allowed
+        - sc.f14
+        - sc.f17
+        - sc.f19_y3
+        - sc.f19_y5
+        - sc.f19_y7
+        - sc.f19_y10
+        - sc.f19_y15
+        - sc.f19_y20
+        - sc.f19_y15sl
+        - sc.f28
   - id: sc.line20a
     printed: "20a"
     label: "Rent or lease: vehicles, machinery, and equipment"
     type: NonNegDollars
-    expr: {op: copy, from: sc.rent_equipment}
+    expr:
+      op: copy
+      from: sc.rent_equipment
   - id: sc.line24b
     printed: "24b"
     label: "Deductible meals"
     type: NonNegDollars
-    expr: {op: sum, of: [sc.h_meals_50_ded, sc.h_meals_80_ded, sc.meals_100]}
+    expr:
+      op: sum
+      of: [sc.meals_50_ded, sc.meals_80_ded, sc.meals_100]
   - id: sc.line27a
     printed: "27a"
-    label: "Energy efficient commercial bldgs deduction (attach Form 7205)"
+    label: "Energy efficient commercial buildings deduction (attach Form 7205)"
     type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
+    expr:
+      op: copy
+      from: sc.zero
     refuses: [sc.special]
   - id: sc.line27b
     printed: "27b"
     label: "Other expenses (from line 48)"
     type: NonNegDollars
-    expr: {op: copy, from: sc.line48}
+    expr:
+      op: copy
+      from: sc.line48
   - id: sc.line28
     printed: "28"
     label: "Total expenses before expenses for business use of home. Add lines 8 through 27b"
     type: NonNegDollars
-    expr: {op: sum, of: [sc.line8, sc.line9, sc.line10, sc.line11, sc.line12, sc.line13, sc.line14, sc.line15, sc.line16a, sc.line16b, sc.line17, sc.line18, sc.line19, sc.line20a, sc.line20b, sc.line21, sc.line22, sc.line23, sc.line24a, sc.line24b, sc.line25, sc.line26, sc.line27a, sc.line27b]}
+    expr:
+      op: sum
+      of:
+        - sc.line8
+        - sc.line9
+        - sc.line10
+        - sc.line11
+        - sc.line12
+        - sc.line13
+        - sc.line14
+        - sc.line15
+        - sc.line16a
+        - sc.line16b
+        - sc.line17
+        - sc.line18
+        - sc.line19
+        - sc.line20a
+        - sc.line20b
+        - sc.line21
+        - sc.line22
+        - sc.line23
+        - sc.line24a
+        - sc.line24b
+        - sc.line25
+        - sc.line26
+        - sc.line27a
+        - sc.line27b
   - id: sc.line29
     printed: "29"
     label: "Tentative profit or (loss). Subtract line 28 from line 7"
     type: Dollars
-    expr: {op: subtract, from: sc.line7, take: sc.line28}
+    expr:
+      op: subtract
+      from: sc.line7
+      take: sc.line28
   - id: sc.ho_rate
     printed: "3a"
     label: "Maximum allowable amount"
     type: NonNegDollars
-    expr: {op: param, ref: sc.ho_rate}
+    expr:
+      op: param
+      ref: sc.ho_rate
   - id: sc.ho_line4
     printed: "4 (sc.ho_line4)"
     label: "Multiply line 2 by line 3c"
     type: NonNegDollars
-    expr: {op: multiply_count, amount: sc.ho_rate, count: sc.h_ho_sqft_capped}
+    expr:
+      op: multiply_count
+      amount: sc.ho_rate
+      count: sc.ho_line2
   - id: sc.ho_line1
     printed: "1 (sc.ho_line1)"
     label: "Enter the amount of the gross income limitation"
     type: Dollars
-    expr: {op: copy, from: sc.line29}
+    expr:
+      op: copy
+      from: sc.line29
+    refuses: [sc.ho_bad]
   - id: sc.ho_line5
     printed: "5 (sc.ho_line5)"
-    label: "Allowable expenses using the simplified method. Enter the smaller of line 1 or line 4 here and include that amount on Schedule C, line 30. If zero or less, enter -0-"
+    label: "Allowable expenses using the simplified method. Enter the smaller of line 1 or line 4. If zero or less, enter -0-"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: sc.h_ho_line5_raw, take: {const: 0}}
+    expr:
+      op: subtract_floor0
+      from: sc.ho_line5_raw
+      take: {const: 0}
   - id: sc.line30
     printed: "30"
     label: "Expenses for business use of your home"
     type: NonNegDollars
     expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [sc.ho_uses, {const: false}]}
-          then: sc.h_zero
-        - guard: {op: test, eq: [sc.ho_uses, {const: true}]}
-          then: sc.ho_line5
-    refuses: [sc.h_ho_bad]
+      op: subtract_floor0
+      from: sc.line30_raw
+      take: {const: 0}
   - id: sc.line31
     printed: "31"
     label: "Net profit or (loss). Subtract line 30 from line 29"
     type: Dollars
-    expr: {op: copy, from: sc.h_line31_pre}
-    refuses: [sc.special, sc.h_at_risk_bad, sc.h_passive_bad]
+    expr:
+      op: subtract
+      from: sc.line29
+      take: sc.line30
+    refuses: [sc.at_risk_bad, sc.passive_bad]
   - id: sc.line40
     printed: "40"
     label: "Add lines 35 through 39"
     type: NonNegDollars
-    expr: {op: sum, of: [sc.line35, sc.line36, sc.line37, sc.line38, sc.line39]}
+    expr:
+      op: sum
+      of: [sc.line35, sc.line36, sc.line37, sc.line38, sc.line39]
   - id: sc.line42
     printed: "42"
     label: "Cost of goods sold. Subtract line 41 from line 40. Enter the result here and on line 4"
     type: Dollars
-    expr: {op: subtract, from: sc.line40, take: sc.line41}
+    expr:
+      op: subtract
+      from: sc.line40
+      take: sc.line41
+    refuses: [sc.inventory_other]
   - id: sc.s179_allowed
     printed: "12 (sc.s179_allowed)"
     label: "Section 179 expense deduction"
     type: NonNegDollars
-    expr: {op: sum_over, collection: f4562, field: f4562.line12}
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.s179_2025
   - id: sc.f7206_line2
     printed: "2 (sc.f7206_line2)"
-    label: "For coverage under a qualified long-term care insurance contract, enter for each person covered the smaller of (a) or (b)"
+    label: "Qualified long-term care insurance premiums"
     type: NonNegDollars
-    expr: {op: sum_over, collection: ltc, field: ltc.amount}
+    expr:
+      op: sum_over
+      collection: ltc
+      field: ltc.amount
   - id: sc.f7206_line3
     printed: "3 (sc.f7206_line3)"
     label: "Add lines 1 and 2"
     type: NonNegDollars
-    expr: {op: sum, of: [sc.f7206_line1, sc.f7206_line2]}
+    expr:
+      op: sum
+      of: [sc.f7206_line1, sc.f7206_line2]
   - id: sc.f7206_line4
     printed: "4 (sc.f7206_line4)"
     label: "Enter your net profit and any other earned income from the trade or business under which the insurance plan is established"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: sc.line31, take: {const: 0}}
+    expr:
+      op: copy
+      from: sc.profit_pos
   - id: sc.f7206_line5
     printed: "5 (sc.f7206_line5)"
-    label: "Enter the total of all net profits from Schedule C, Schedule F, or Schedule K-1, plus other income allocable to profitable businesses. Do not include net losses"
-    type: NonNegDollars
-    expr: {op: copy, from: person.positive_profits}
-  - id: sc.f7206_line7
-    printed: "7 (sc.f7206_line7)"
-    label: "Multiply Schedule 1 line 15, deductible part of self-employment tax, by the percentage on line 6"
+    label: "Enter the total of all net profits from Schedule C, Schedule F, or Schedule K-1 plus any other income allocable to the profitable businesses"
     type: NonNegDollars
     expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [sc.f7206_line4, {const: 0}]}
-          then: sc.h_zero
-        - guard: {op: test, ne: [sc.f7206_line4, {const: 0}]}
-          then: sc.h_f7206_line7_calc
-    note: "Form 7206 line 6 does not state a rounding rule; this line applies prorate with 9 decimal places to the line 4/line 5 ratio."
+      op: copy
+      from: person.positive_profits
+    note: "Uses the published person-level aggregate of positive Schedule C profits as the total on line 5; the provided interface does not separately allocate other businesses."
+  - id: sc.f7206_line7
+    printed: "7 (sc.f7206_line7)"
+    label: "Multiply Schedule 1 (Form 1040), line 15, deductible part of self-employment tax, by the percentage on line 6"
+    type: NonNegDollars
+    expr:
+      op: prorate
+      amount: s1.line15
+      part: sc.f7206_line4
+      whole: sc.f7206_line5
+      places: 3
+    note: "The IRS text does not state rounding for line 6; the line 4 / line 5 ratio is rounded half-up to three decimal places."
   - id: sc.f7206_line8
     printed: "8 (sc.f7206_line8)"
     label: "Subtract line 7 from line 4"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: sc.f7206_line4, take: sc.f7206_line7}
+    expr:
+      op: subtract_floor0
+      from: sc.f7206_line4
+      take: sc.f7206_line7
   - id: sc.f7206_line9
     printed: "9 (sc.f7206_line9)"
-    label: "Enter the amount, if any, from Schedule 1 line 16 attributable to the same trade or business in which the insurance plan is established"
+    label: "Enter the amount, if any, from Schedule 1 (Form 1040), line 16, attributable to the same trade or business in which the insurance plan is established"
     type: NonNegDollars
-    expr: {op: copy, from: s1.line16}
-    note: "The supplied interface provides only the Schedule 1 line 16 total, not a per-business allocation; this line uses that total."
+    expr:
+      op: copy
+      from: person.plan_deduction
+    note: "The provided interface does not supply a per-business allocation of the SEP, SIMPLE, and qualified plan deduction; this uses the person-level plan deduction."
   - id: sc.f7206_line10
     printed: "10 (sc.f7206_line10)"
     label: "Subtract line 9 from line 8"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: sc.f7206_line8, take: sc.f7206_line9}
+    expr:
+      op: subtract_floor0
+      from: sc.f7206_line8
+      take: sc.f7206_line9
   - id: sc.f7206_line13
     printed: "13 (sc.f7206_line13)"
-    label: "Subtract line 12 from line 10 or line 11, whichever applies"
-    type: NonNegDollars
-    expr: {op: copy, from: sc.f7206_line10}
-  - id: sc.f7206_line14
-    printed: "14 (sc.f7206_line14)"
-    label: "Self-employed health insurance deduction. Enter the smaller of line 3 or line 13 here and on Schedule 1, line 17"
+    label: "Subtract line 12 from line 10 or 11, whichever applies"
     type: NonNegDollars
     expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [sc.hi_uses, {const: false}]}
-          then: sc.h_zero
-        - guard: {op: test, eq: [sc.hi_uses, {const: true}]}
-          then: sc.h_f7206_min
-    refuses: [sc.h_hi_bad]
+      op: copy
+      from: sc.f7206_line10
+    refuses: [sc.hi_screen]
+  - id: sc.f7206_line14
+    printed: "14 (sc.f7206_line14)"
+    label: "Self-employed health insurance deduction. Enter the smaller of line 3 or line 13"
+    type: NonNegDollars
+    expr:
+      op: smaller_of
+      of: [sc.f7206_line3, sc.f7206_line13]
+    refuses: [sc.hi_screen]
   - id: sc.qbi
     printed: "1(c)"
     label: "Qualified business income or (loss)"
     type: Dollars
-    expr: {op: copy, from: sc.line31}
-    note: "The supplied text and inputs do not provide a per-business allocation of the deductible part of self-employment tax, retirement plan contributions, or similar QBI reductions; this line reports the Schedule C net profit as the business's QBI."
+    expr:
+      op: copy
+      from: sc.result
+    note: "The provided interface does not supply per-business allocations of the deductible part of self-employment tax, SEP/SIMPLE/qualified plan contributions, or the self-employed health insurance deduction for Form 8995 line 1(c); this records the Schedule C result before those QBI reductions."
   - id: sc.one
     printed: "(helper)"
-    label: "Count of this business"
+    label: "Count of one"
     type: Count
-    expr: {op: param, ref: sales.one}
+    expr: {op: param, ref: sc.one}
   - id: sc.rrta
     printed: "(helper)"
-    label: "This business's income is railroad retirement compensation reported as a statutory employee"
+    label: "Statutory employee or notary public income excluded from self-employment tax"
     type: Bool
-    expr: {op: test, all: [{op: test, eq: [sc.statutory, {const: true}]}, {op: test, eq: [person.rrta, {const: true}]}]}
+    expr:
+      op: copy
+      from: sc.statutory
   - id: sc.line31_pre179
     printed: "(helper)"
-    label: "Net profit before section 179"
+    label: "Net profit or (loss) before the section 179 deduction, for Schedule SE line 2"
     type: Dollars
-    expr: {op: sum, of: [sc.line31, sc.s179_allowed]}
+    expr:
+      op: sum
+      of: [sc.line31, sc.s179_allowed]
+    note: "Schedule SE line 2 adds back the section 179 deduction to Schedule C line 31."
   - id: sc.result
     printed: "(helper)"
-    label: "Schedule C net profit or loss after limitations"
+    label: "Schedule C net profit or (loss)"
     type: Dollars
-    expr: {op: copy, from: sc.line31}
-  - id: sc.f6
-    printed: "(helper)"
-    label: "Total elected cost of section 179 property (Form 4562 line 6, column (c))"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.s179}
-  - id: sc.f14
-    printed: "(helper)"
-    label: "Special depreciation allowance for qualified property (Form 4562 line 14)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: f4562, field: f4562.line14}
-  - id: sc.f17
-    printed: "(helper)"
-    label: "MACRS deductions for assets placed in service in tax years beginning before 2025 (Form 4562 line 17)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: f4562, field: f4562.line17}
-  - id: sc.f19_y3
-    printed: "(helper)"
-    label: "3-year property MACRS deduction (Form 4562 line 19a, column (g))"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.macrs2025, where: {op: test, eq: [asset.period, {const: "y3"}]}}
-  - id: sc.f19_y5
-    printed: "(helper)"
-    label: "5-year property MACRS deduction (Form 4562 line 19b, column (g))"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.macrs2025, where: {op: test, eq: [asset.period, {const: "y5"}]}}
-  - id: sc.f19_y7
-    printed: "(helper)"
-    label: "7-year property MACRS deduction (Form 4562 line 19c, column (g))"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.macrs2025, where: {op: test, eq: [asset.period, {const: "y7"}]}}
-  - id: sc.f19_y10
-    printed: "(helper)"
-    label: "10-year property MACRS deduction (Form 4562 line 19d, column (g))"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.macrs2025, where: {op: test, eq: [asset.period, {const: "y10"}]}}
-  - id: sc.f19_y15
-    printed: "(helper)"
-    label: "15-year property MACRS deduction (Form 4562 line 19e, column (g))"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.macrs2025, where: {op: test, eq: [asset.period, {const: "y15"}]}}
-  - id: sc.f19_y20
-    printed: "(helper)"
-    label: "20-year property MACRS deduction (Form 4562 line 19f, column (g))"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.macrs2025, where: {op: test, eq: [asset.period, {const: "y20"}]}}
-  - id: sc.f19_y15sl
-    printed: "(helper)"
-    label: "15-year straight-line property MACRS deduction"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.macrs2025, where: {op: test, eq: [asset.period, {const: "y15sl"}]}}
-  - id: sc.f25
-    printed: "(helper)"
-    label: "Special depreciation allowance for qualified listed property (Form 4562 line 25)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: f4562, field: f4562.line25}
-  - id: sc.f26h
-    printed: "(helper)"
-    label: "Depreciation deduction for listed property used more than 50% in a qualified business use (Form 4562 line 26(h))"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: f4562, field: f4562.line26h}
-  - id: sc.f28
-    printed: "(helper)"
-    label: "Total listed property depreciation (Form 4562 line 28)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: f4562, field: f4562.line28}
-  - id: sc.f29
-    printed: "(helper)"
-    label: "Elected section 179 cost of listed property (Form 4562 line 29)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: f4562, field: f4562.line29}
-  - id: sc.mq_q4
-    printed: "(helper)"
-    label: "Fourth-quarter depreciable basis for mid-quarter convention"
-    type: NonNegDollars
-    expr: {op: sum, of: [sc.h_asset_mq_q4, sc.h_scveh_mq_q4]}
-  - id: sc.mq_total
-    printed: "(helper)"
-    label: "Total depreciable basis for mid-quarter convention"
-    type: NonNegDollars
-    expr: {op: sum, of: [sc.h_asset_mq_total, sc.h_scveh_mq_total]}
-  - id: sc.cost179
-    printed: "(helper)"
-    label: "Total cost of section 179 property placed in service"
-    type: NonNegDollars
-    expr: {op: sum, of: [sc.h_asset_cost179, sc.h_scveh_cost179]}
+    expr:
+      op: copy
+      from: sc.line31
   - id: sc.profit_pos
     printed: "(helper)"
-    label: "Positive net profit"
+    label: "Positive Schedule C net profit"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: sc.line31, take: {const: 0}}
-  - id: sc.h_zero
+    expr:
+      op: subtract_floor0
+      from: sc.line31
+      take: {const: 0}
+  - id: sc.zero
     printed: "(helper)"
-    label: "Zero amount"
+    label: "Zero dollars"
     type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
-  - id: sc.h_ho_max_sqft
+    expr: {op: param, ref: ss.zero}
+  - id: sc.ho_max
     printed: "(helper)"
-    label: "Maximum allowable square footage"
+    label: "Maximum simplified-method square footage"
     type: Count
     expr: {op: param, ref: sc.ho_max_sqft}
-  - id: sc.h_ho_sqft_capped
+  - id: sc.ho_bad
     printed: "(helper)"
-    label: "Allowable square footage, not more than 300 square feet"
+    label: "Simplified method home-use screen"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [sc.ho_uses, {const: true}]}
+        - {op: test, eq: [sc.ho_other, {const: true}]}
+  - id: sc.ho_line2
+    printed: "(helper)"
+    label: "Allowable square footage for the qualified business use"
     type: Count
-    expr: {op: smaller_of, of: [sc.ho_sqft, sc.h_ho_max_sqft]}
-  - id: sc.h_meals_50_ded
+    expr:
+      op: smaller_of
+      of: [sc.ho_sqft, sc.ho_max]
+    refuses: [sc.ho_bad]
+  - id: sc.ho_line5_raw
     printed: "(helper)"
-    label: "Meals subject to the 50% limit, deductible amount"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: sc.meals_50, rate: {param: sc.meals_rate}}
-  - id: sc.h_meals_80_ded
-    printed: "(helper)"
-    label: "Meals subject to the 80% limit, deductible amount"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: sc.meals_80, rate: {param: sc.meals_rate_dot}}
-  - id: sc.h_ho_line5_raw
-    printed: "(helper)"
-    label: "Smaller of line 1 or line 4 before the zero floor"
+    label: "Smaller of gross income limitation or simplified method amount before zero floor"
     type: Dollars
-    expr: {op: smaller_of, of: [sc.ho_line1, sc.ho_line4]}
-  - id: sc.h_ho_bad
+    expr:
+      op: smaller_of
+      of: [sc.ho_line1, sc.ho_line4]
+  - id: sc.line30_raw
     printed: "(helper)"
-    label: "Home office simplified method is unsupported for this home office"
-    type: Bool
-    expr: {op: test, all: [{op: test, eq: [sc.ho_uses, {const: true}]}, {op: test, eq: [sc.ho_other, {const: true}]}]}
-  - id: sc.h_line31_pre
-    printed: "(helper)"
-    label: "Net profit or loss before at-risk and passive activity limits"
+    label: "Business use of home deduction before zero floor"
     type: Dollars
-    expr: {op: subtract, from: sc.line29, take: sc.line30}
-  - id: sc.h_line31_loss
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [sc.ho_uses, {const: true}]}
+          then: sc.ho_line5
+        - guard: {op: test, eq: [sc.ho_uses, {const: false}]}
+          then: sc.zero
+  - id: sc.loss
     printed: "(helper)"
-    label: "Whether the Schedule C result before limitations is a loss"
+    label: "Schedule C loss indicator"
     type: Bool
-    expr: {op: test, lt: [sc.h_line31_pre, {const: 0}]}
-  - id: sc.h_at_risk_bad
+    expr:
+      op: test
+      lt: [sc.line29, sc.line30]
+  - id: sc.at_risk_bad
     printed: "(helper)"
-    label: "Loss with some investment not at risk; Form 6198 required"
+    label: "Loss with investment not fully at risk"
     type: Bool
-    expr: {op: test, all: [sc.h_line31_loss, {op: test, eq: [sc.at_risk, {const: false}]}]}
-  - id: sc.h_passive_bad
+    expr:
+      op: test
+      all:
+        - sc.loss
+        - {op: test, eq: [sc.at_risk, {const: false}]}
+  - id: sc.passive_bad
     printed: "(helper)"
-    label: "Loss from a passive activity; Form 8582 required"
+    label: "Loss from passive activity"
     type: Bool
-    expr: {op: test, all: [sc.h_line31_loss, {op: test, eq: [sc.passive, {const: false}]}]}
-  - id: sc.h_f7206_line7_calc
+    expr:
+      op: test
+      all:
+        - sc.loss
+        - {op: test, eq: [sc.passive, {const: false}]}
+  - id: sc.meals_50_ded
     printed: "(helper)"
-    label: "Form 7206 line 7 prorated amount"
+    label: "Deductible meals subject to the 50% limit"
     type: NonNegDollars
-    expr: {op: prorate, amount: s1.line15, part: sc.f7206_line4, whole: sc.f7206_line5, places: 9}
-  - id: sc.h_f7206_min
+    expr:
+      op: multiply_rate
+      amount: sc.meals_50
+      rate: {param: sc.meals_rate}
+  - id: sc.meals_80_ded
     printed: "(helper)"
-    label: "Smaller of Form 7206 line 3 or line 13"
+    label: "Deductible meals subject to the 80% limit"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [sc.f7206_line3, sc.f7206_line13]}
-  - id: sc.h_hi_bad
+    expr:
+      op: multiply_rate
+      amount: sc.meals_80
+      rate: {param: sc.meals_rate_dot}
+  - id: sc.f6
     printed: "(helper)"
-    label: "Health insurance deduction is unsupported for this business"
-    type: Bool
-    expr: {op: test, all: [{op: test, eq: [sc.hi_uses, {const: true}]}, {op: test, eq: [sc.hi_screen, {const: true}]}]}
-  - id: sc.h_asset_mq_q4
-    printed: "(helper)"
-    label: "Asset fourth-quarter depreciable basis"
+    label: "Form 4562 line 6 column (c) total elected section 179 cost, non-listed property"
     type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.mq_q4}
-  - id: sc.h_scveh_mq_q4
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.s179
+      where:
+        op: test
+        eq: [asset.listed, {const: false}]
+  - id: sc.f14
     printed: "(helper)"
-    label: "Vehicle fourth-quarter depreciable basis"
+    label: "Form 4562 line 14 special depreciation allowance, non-listed property"
     type: NonNegDollars
-    expr: {op: sum_over, collection: scveh, field: scveh.mq_q4}
-  - id: sc.h_asset_mq_total
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.bonus
+      where:
+        op: test
+        eq: [asset.listed, {const: false}]
+  - id: sc.f17
     printed: "(helper)"
-    label: "Asset total depreciable basis"
+    label: "Form 4562 line 17 MACRS deductions for prior-year assets, non-listed property"
     type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.mq_total}
-  - id: sc.h_scveh_mq_total
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.macrs_prior
+      where:
+        op: test
+        eq: [asset.listed, {const: false}]
+  - id: sc.f19_y3
     printed: "(helper)"
-    label: "Vehicle total depreciable basis"
+    label: "Form 4562 line 19a 3-year property"
     type: NonNegDollars
-    expr: {op: sum_over, collection: scveh, field: scveh.mq_total}
-  - id: sc.h_asset_cost179
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.macrs2025
+      where:
+        op: test
+        all:
+          - {op: test, eq: [asset.period, {const: "y3"}]}
+          - {op: test, eq: [asset.listed, {const: false}]}
+  - id: sc.f19_y5
     printed: "(helper)"
-    label: "Asset section 179 cost"
+    label: "Form 4562 line 19b 5-year property"
     type: NonNegDollars
-    expr: {op: sum_over, collection: asset, field: asset.cost179}
-  - id: sc.h_scveh_cost179
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.macrs2025
+      where:
+        op: test
+        all:
+          - {op: test, eq: [asset.period, {const: "y5"}]}
+          - {op: test, eq: [asset.listed, {const: false}]}
+  - id: sc.f19_y7
     printed: "(helper)"
-    label: "Vehicle section 179 cost"
+    label: "Form 4562 line 19c 7-year property"
     type: NonNegDollars
-    expr: {op: sum_over, collection: scveh, field: scveh.cost179}
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.macrs2025
+      where:
+        op: test
+        all:
+          - {op: test, eq: [asset.period, {const: "y7"}]}
+          - {op: test, eq: [asset.listed, {const: false}]}
+  - id: sc.f19_y10
+    printed: "(helper)"
+    label: "Form 4562 line 19d 10-year property"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.macrs2025
+      where:
+        op: test
+        all:
+          - {op: test, eq: [asset.period, {const: "y10"}]}
+          - {op: test, eq: [asset.listed, {const: false}]}
+  - id: sc.f19_y15
+    printed: "(helper)"
+    label: "Form 4562 line 19e 15-year property"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.macrs2025
+      where:
+        op: test
+        all:
+          - {op: test, eq: [asset.period, {const: "y15"}]}
+          - {op: test, eq: [asset.listed, {const: false}]}
+  - id: sc.f19_y20
+    printed: "(helper)"
+    label: "Form 4562 line 19f 20-year property"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.macrs2025
+      where:
+        op: test
+        all:
+          - {op: test, eq: [asset.period, {const: "y20"}]}
+          - {op: test, eq: [asset.listed, {const: false}]}
+  - id: sc.f19_y15sl
+    printed: "(helper)"
+    label: "Form 4562 line 19 15-year straight-line property"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.macrs2025
+      where:
+        op: test
+        all:
+          - {op: test, eq: [asset.period, {const: "y15sl"}]}
+          - {op: test, eq: [asset.listed, {const: false}]}
+  - id: sc.f25
+    printed: "(helper)"
+    label: "Form 4562 line 25 special depreciation allowance for listed property"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.f25
+      where:
+        op: test
+        eq: [asset.listed, {const: true}]
+  - id: sc.f26h
+    printed: "(helper)"
+    label: "Form 4562 line 26 column (h) depreciation for listed property used more than 50%"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.dep_listed
+  - id: sc.f28
+    printed: "(helper)"
+    label: "Form 4562 line 28 total listed property depreciation"
+    type: NonNegDollars
+    expr:
+      op: sum
+      of: [sc.f25, sc.f26h]
+  - id: sc.f29
+    printed: "(helper)"
+    label: "Form 4562 line 29 elected section 179 cost for listed property"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.f26i
+  - id: sc.mq_q4
+    printed: "(helper)"
+    label: "Mid-quarter fourth-quarter depreciable basis"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.mq_q4
+  - id: sc.mq_total
+    printed: "(helper)"
+    label: "Mid-quarter total depreciable basis"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.mq_total
+  - id: sc.cost179
+    printed: "(helper)"
+    label: "Form 4562 line 2 total cost of section 179 property placed in service"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: asset
+      field: asset.cost179_2025
 ```

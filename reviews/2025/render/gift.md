@@ -30,47 +30,45 @@ The rendered English of every printed line of `Form 8283 — groups of similar n
 ### deduction — Deduction before income limits for this item or group of similar items across all donees,
 Status: **MATCH**
 
-Model: The instructions say the 'amount of your deduction' is the amount 'before applying any income limits that could result in a carryover', after 'any required reductions', and that a similar-items group counts all items 'even if items in the group were donated to more than one donee organization'. Leaving out clothing and household items in poor condition and $250+ gifts with no contemporaneous written acknowledgment follows the Schedule A instructions, and the over-$500 poor-condition case is sent to the 'special' refusal.
+Model: The instructions define the amount as 'your deduction before applying any income limits' after 'any required reductions'. They also say to 'consider all items in the group, even if items in the group were donated to more than one donee organization.' Leaving out the excluded items follows the Schedule A text: clothing and household items are deductible 'only if the items are in good used condition or better', and gifts of $250 or more 'must also have a contemporaneous written acknowledgment'.
 
 ### public_securities — Is this group publicly traded securities?
 Status: **MATCH**
 
-Model: This is a yes/no input for publicly traded securities. The text treats them as a Section A exception: 'Also list publicly traded securities ... even if the deduction is more than $5,000.'
+Model: This is a plain filer input. It matches the Section A exception for 'publicly traded securities' listed in the form and instructions.
 
 ### special — Does this group need an appraisal or other special treatment: a deduction over $5,000 (bef
 Status: **MATCH**
 
-Model: Each listed case has a basis in the text: an appraisal is needed 'for any gift of property valued in excess of $5,000'; there are separate rules for pass-through members; Section B covers single clothing or household items over $500 not in good used condition; and partial-interest and restricted-use property are covered. Some cases it refuses, such as vehicles, intellectual property and inventory, could be reported in Section A, but refusing them only narrows what the program supports.
+Model: Each listed condition appears in the instructions as a case that needs Section B, an appraisal or special reporting. These include the over-$5,000 thresholds, pass-through (K-1) contributions, vehicles, intellectual property, inventory, partial interests and restricted use, conservation contributions, and a single clothing or household item over $500 not in good used condition. As a refusal gate, it only narrows the program to the cases it supports.
 
 ### section_b — Appraisal threshold: non-publicly-traded group over $5,000
 Status: **MATCH**
 
-Model: This matches 'Use Section B to report donations of property for which you claimed a deduction of more than $5,000 per item or group of similar items' with the publicly traded securities exception. The other Section A exceptions (vehicles, intellectual property, inventory) are already caught by the 'special' refusal.
+Model: Section B covers items or groups 'for which you claimed a deduction of more than $5,000', except publicly traded securities and other items reportable in Section A. The test is 'more than $5,000', which matches '> $5,000'. The other Section A exceptions (vehicles, IP, inventory) are already caught by the special refusal.
 
 ### allowed — Amount from gift.deduction
 Status: **MATCH**
 
-Model: This copies the deduction amount and is only computed when the special-treatment and Section B refusals don't apply, so it stays within the Section A range of 'more than $500 but not more than $5,000'. The refusals correctly name what is excluded: Section B with a qualified appraisal, and special property.
+Model: It passes through the deduction amount as its label says. Its refusals name the excluded Section B and special-treatment cases, leaving the Section A cases of more than $500 but not more than $5,000 that the text says to report there.
 
 ## Raw response
 
 ```yaml
-```yaml
 lines:
   - key: "deduction"
     status: MATCH
-    reason: "The instructions say the 'amount of your deduction' is the amount 'before applying any income limits that could result in a carryover', after 'any required reductions', and that a similar-items group counts all items 'even if items in the group were donated to more than one donee organization'. Leaving out clothing and household items in poor condition and $250+ gifts with no contemporaneous written acknowledgment follows the Schedule A instructions, and the over-$500 poor-condition case is sent to the 'special' refusal."
+    reason: "The instructions define the amount as 'your deduction before applying any income limits' after 'any required reductions'. They also say to 'consider all items in the group, even if items in the group were donated to more than one donee organization.' Leaving out the excluded items follows the Schedule A text: clothing and household items are deductible 'only if the items are in good used condition or better', and gifts of $250 or more 'must also have a contemporaneous written acknowledgment'."
   - key: "public_securities"
     status: MATCH
-    reason: "This is a yes/no input for publicly traded securities. The text treats them as a Section A exception: 'Also list publicly traded securities ... even if the deduction is more than $5,000.'"
+    reason: "This is a plain filer input. It matches the Section A exception for 'publicly traded securities' listed in the form and instructions."
   - key: "special"
     status: MATCH
-    reason: "Each listed case has a basis in the text: an appraisal is needed 'for any gift of property valued in excess of $5,000'; there are separate rules for pass-through members; Section B covers single clothing or household items over $500 not in good used condition; and partial-interest and restricted-use property are covered. Some cases it refuses, such as vehicles, intellectual property and inventory, could be reported in Section A, but refusing them only narrows what the program supports."
+    reason: "Each listed condition appears in the instructions as a case that needs Section B, an appraisal or special reporting. These include the over-$5,000 thresholds, pass-through (K-1) contributions, vehicles, intellectual property, inventory, partial interests and restricted use, conservation contributions, and a single clothing or household item over $500 not in good used condition. As a refusal gate, it only narrows the program to the cases it supports."
   - key: "section_b"
     status: MATCH
-    reason: "This matches 'Use Section B to report donations of property for which you claimed a deduction of more than $5,000 per item or group of similar items' with the publicly traded securities exception. The other Section A exceptions (vehicles, intellectual property, inventory) are already caught by the 'special' refusal."
+    reason: "Section B covers items or groups 'for which you claimed a deduction of more than $5,000', except publicly traded securities and other items reportable in Section A. The test is 'more than $5,000', which matches '> $5,000'. The other Section A exceptions (vehicles, IP, inventory) are already caught by the special refusal."
   - key: "allowed"
     status: MATCH
-    reason: "This copies the deduction amount and is only computed when the special-treatment and Section B refusals don't apply, so it stays within the Section A range of 'more than $500 but not more than $5,000'. The refusals correctly name what is excluded: Section B with a qualified appraisal, and special property."
-```
+    reason: "It passes through the deduction amount as its label says. Its refusals name the excluded Section B and special-treatment cases, leaving the Section A cases of more than $500 but not more than $5,000 that the text says to report there."
 ```

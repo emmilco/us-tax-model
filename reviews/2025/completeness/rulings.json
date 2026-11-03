@@ -196,60 +196,6 @@
    "evidence": "Source: i1040gi p. 13; i1040gi p. 14. scope.other_income explicitly asks about nonresident alien status of you or your spouse for any part of 2025; scope.ready refuses the return on that answer. The resident-election route described by i1040gi pp. 13\u201314 is outside this tool, not left unscreened by household.filing_status_conflict.",
    "prompt_sha": "f049d8a43b1b266557445897a04b2bb295d9292493c4c82133a188e54cc6b151"
   },
-  "unruled:f8962#1": {
-   "class": "covered",
-   "line": "f1095a.uniform",
-   "prompt_sha": "c62987e59ef0425c5fee0aea8adcd017bfaac670b2f4f8cc0dcb6b782422bfc8",
-   "evidence": "i8962 p. 14, \"If the correct applicable SLCSP premium is not the same for every month of 2025, check \u201cNo\u201d and continue to lines 12 through 23.\" The f1095a.uniform question asks whether both columns are the same every month and says \"Use the corrected column B if column B is blank, zero or wrong\"; the monthly in_b_* questions ask for \"the amount in column B, or the correct applicable SLCSP premium if column B is blank, zero or wrong (from the Marketplace's tool\u2026)\". A corrected column B that varies by month therefore makes uniform No, which is the line 10 route test. The completeness prompt does not include the foreign form's question text, only its refusals, which is why the reviewer could not see it."
-  },
-  "unruled:f8962#2": {
-   "class": "covered",
-   "line": "f1095a.mo_b",
-   "prompt_sha": "c62987e59ef0425c5fee0aea8adcd017bfaac670b2f4f8cc0dcb6b782422bfc8",
-   "evidence": "i8962 pp. 4\u20135 and p. 16: if no APTC was paid, column B may be wrong, blank or zero, and the filer must determine the correct applicable SLCSP premium. The f1095a.mo_b question asks for \"the monthly amount in Part III, column B (monthly SLCSP premium) \u2026 or the correct applicable SLCSP premium if column B is blank, zero or wrong (from the Marketplace's tool, for example HealthCare.gov/Tax-Tool)\"; f8962.line11b sums f1095a.line33b, which is built from that answer."
-  },
-  "unruled:f8962#3": {
-   "class": "real gap",
-   "bug": "BUG-0298",
-   "prompt_sha": "c62987e59ef0425c5fee0aea8adcd017bfaac670b2f4f8cc0dcb6b782422bfc8",
-   "evidence": "i8962 p. 17 tells the filer to enter the correct applicable SLCSP premium in column (b) when the reported amount is missing or wrong, and the f1095a.in_b_<month> question does ask for \"the amount in column B, or the correct applicable SLCSP premium if column B is blank, zero or wrong (from the Marketplace's tool\u2026)\". But the same question ends with \"; zero if blank\", which contradicts that instruction for a covered month whose column B is blank: a filer following the trailing clause enters zero and understates column (b) and the PTC. The first clause covers the source's rule; the trailing convention does not. BUG-0298 records the wording defect and T-165 schedules the fix at the next f1095a change."
-  },
-  "unruled:f8962#4": {
-   "class": "covered",
-   "line": "sa.dependent",
-   "prompt_sha": "c62987e59ef0425c5fee0aea8adcd017bfaac670b2f4f8cc0dcb6b782422bfc8",
-   "evidence": "i8962 p. 8: a filer or spouse who can be claimed as a dependent is not included in the tax family size. The return is refused for that filer: sa.dependent asks whether someone can claim the filer or spouse, and its refusal on sa.standardraw propagates to f1040.line12e and the whole return (i1040gi pp. 34\u201335). A witness with a Form 1095-A and sa.dependent true was checked on 2026-11-01: f1040.line24 is refused, so no return with a claimable filer or spouse computes line 1."
-  },
-  "unruled:f8962#5": {
-   "class": "covered",
-   "line": "f8962.applicable",
-   "prompt_sha": "c62987e59ef0425c5fee0aea8adcd017bfaac670b2f4f8cc0dcb6b782422bfc8",
-   "evidence": "Two limbs. A claimable filer is refused at the return level through sa.dependent (sa.standardraw \u2192 f1040.line12e; witness checked 2026-11-01). The below-100% exception already requires APTC: f8962.applicable is any(line 5 \u2265 100, all(f8962.aptc, f8962.estimate_100)), and f8962.aptc is f8962.aptc_total > 0, where aptc_total sums Form 1095-A line 33C; i8962 p. 9 requires \"APTC was paid for the coverage of 1 or more months during 2025.\" The estimate_100 question also now carries the intentional/reckless misreporting disqualifier (BUG-0296)."
-  },
-  "unruled:f1095a#1": {
-   "class": "covered",
-   "line": "f8962.other",
-   "prompt_sha": "e506e96b6283ddcabc4e0500221a1e63ef20bbbb7f9071ad9b2d9fe40740d39c",
-   "evidence": "The unpaid-premium and not-lawfully-present cases the claim names are refused by f8962.other, whose question asks whether \"any part of a month's premium was not paid by the due date of your return \u2026 or a Form 1095-A shows zero in column A for a month whose premium you paid\" and whether \"someone enrolled \u2026 was not lawfully present\"; answering yes refuses the return (i8962 p. 4 and p. 6, cited by the gate). The tool does not compute the adjusted column A in those cases; it refuses them, which is what the completeness rule asks for."
-  },
-  "unruled:f1095a#2": {
-   "class": "covered",
-   "line": "f8962.other",
-   "prompt_sha": "e506e96b6283ddcabc4e0500221a1e63ef20bbbb7f9071ad9b2d9fe40740d39c",
-   "evidence": "The same f8962.other refusal covers the unpaid-premium cases under i8962 p. 16 Column (a) and p. 17 Column (b), including the instruction to enter -0- in column (b) when the month's premiums were unpaid and to enter the SLCSP when they were paid by the due date; the not-lawfully-present limb is named in the same question. Those returns are refused, not computed with the unadjusted column B."
-  },
-  "unruled:f1095a#3": {
-   "class": "covered",
-   "line": "f8962.marriage",
-   "prompt_sha": "e506e96b6283ddcabc4e0500221a1e63ef20bbbb7f9071ad9b2d9fe40740d39c",
-   "evidence": "i8962 p. 15's December-marriage addition applies to a 2025 marriage with separate plans. A joint return with a 2025 marriage and Marketplace coverage before the first full month of marriage is refused by f8962.marriage (i8962 p. 13, Table 4). A married filer using head-of-household status under the considered-unmarried rule has a tax family that excludes the spouse, so the p. 15 addition, which requires the spouses' separate plans to be in the two tax families, does not apply; the b_counted answer therefore cannot reach a computed return in the December-marriage case. This corrects the earlier evidence's reliance on household.filing_status_conflict, which tests only single+married and joint+not-married."
-  },
-  "unruled:f1095a#4": {
-   "class": "covered",
-   "line": "f8962.alloc",
-   "prompt_sha": "e506e96b6283ddcabc4e0500221a1e63ef20bbbb7f9071ad9b2d9fe40740d39c",
-   "evidence": "A policy shared with another tax family is refused by f8962.alloc (i8962 p. 12, Allocating policy amounts: the policy covered someone in the tax family and someone in another tax family, or a divorce or separation in 2025 with a shared policy), which refuses lines 24 and 25. APTC for someone in no tax family is refused by f8962.other's \"advance payments were made for someone who is in no one's tax family\" limb. Neither case reaches the unallocated column C amounts."
-  },
   "unruled:f1040#13": {
    "class": "covered",
    "evidence": "Revalidated against the current prompt; the encoding and gates it names are unchanged. Source: i1040gi p. 39. Line 26 is explicitly a supplied total for this return, not a calculation assigning joint payments to former spouses. MFS returns are refused; a supported filer must supply the amount allocable to their own return. Former-spouse SSN entry belongs to the official identity/output surface T-012.",
@@ -268,84 +214,6 @@
    "prompt_sha": "69a773ffe02e41fd7dfc567e80251610e6f75491ba5b6c2060fee7c0232889be",
    "gate": "f8863.ban"
   },
-  "unruled:sa#1": {
-   "class": "real gap",
-   "evidence": "i1040sca p. 1. The medical-expense details (HSA/MSA distributions, pretax premiums, public-safety-officer premiums, the long-term care limit, mixed nursing and housework pay, meals with lodging, estate-paid expenses) are not asked; BUG-0302/T-169 records the gap.",
-   "prompt_sha": "f6fc8403cbbbc99f855346069feafceabbdb11a1b345cb0d7243360ff2a044c8",
-   "bug": "BUG-0302"
-  },
-  "unruled:sa#2": {
-   "class": "real gap",
-   "evidence": "i1040sca p. 7, \"Don't include taxes you paid to a U.S. territory on this line; instead, include U.S. territory taxes on the appropriate state and local tax line.\" The question does not route territory taxes; BUG-0302/T-169 records it.",
-   "prompt_sha": "f6fc8403cbbbc99f855346069feafceabbdb11a1b345cb0d7243360ff2a044c8",
-   "bug": "BUG-0302"
-  },
-  "unruled:sa#3": {
-   "class": "real gap",
-   "evidence": "i1040sca p. 7, \"Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025.\" The prepaid-2026 property tax rule is not stated; BUG-0302/T-169 records it.",
-   "prompt_sha": "f6fc8403cbbbc99f855346069feafceabbdb11a1b345cb0d7243360ff2a044c8",
-   "bug": "BUG-0302"
-  },
-  "unruled:sa#4": {
-   "class": "out of scope",
-   "evidence": "i1040sca p. 1, joint expenses on separate returns. A married-filing-separately return is refused for the whole return by s3.mfs, so the joint-expense allocation cannot reach a computed return; the sa MFS branch exists only for the schedule's internal comparison.",
-   "prompt_sha": "f6fc8403cbbbc99f855346069feafceabbdb11a1b345cb0d7243360ff2a044c8",
-   "gate": "s3.mfs"
-  },
-  "unruled:sa#5": {
-   "class": "real gap",
-   "evidence": "i1040sca p. 11. The good-used-condition rule, the $500 single-item appraisal exception and the $250 contemporaneous acknowledgment for property are not asked; BUG-0302/T-169 records the gap.",
-   "prompt_sha": "f6fc8403cbbbc99f855346069feafceabbdb11a1b345cb0d7243360ff2a044c8",
-   "bug": "BUG-0302"
-  },
-  "unruled:sa#6": {
-   "class": "real gap",
-   "evidence": "i1040gi p. 33. The certified statement for partial blindness is not asked; BUG-0302/T-169 records it.",
-   "prompt_sha": "f6fc8403cbbbc99f855346069feafceabbdb11a1b345cb0d7243360ff2a044c8",
-   "bug": "BUG-0302"
-  },
-  "unruled:asset#1": {
-   "class": "real gap",
-   "evidence": "i4562 p. 2. Investment, purchased-for-business, noncorporate-lessor and other-tangible limits are not asked. BUG-0307/T-170 records the gap.",
-   "prompt_sha": "69ffb2173382c3b203bd710ba08e9556ed3deae95f995020450981a8e09513a5",
-   "bug": "BUG-0307"
-  },
-  "unruled:asset#2": {
-   "class": "real gap",
-   "evidence": "i4562 pp. 6-7. The section 168(k)(9) exclusions and the used-property conditions are not asked. BUG-0307/T-170 records the gap.",
-   "prompt_sha": "69ffb2173382c3b203bd710ba08e9556ed3deae95f995020450981a8e09513a5",
-   "bug": "BUG-0307"
-  },
-  "unruled:asset#3": {
-   "class": "real gap",
-   "evidence": "i4562 pp. 10-11. Statutory classifications outside the Appendix B list are not offered. BUG-0307/T-170 records the gap.",
-   "prompt_sha": "69ffb2173382c3b203bd710ba08e9556ed3deae95f995020450981a8e09513a5",
-   "bug": "BUG-0307"
-  },
-  "unruled:asset#4": {
-   "class": "real gap",
-   "evidence": "p946 p. 37; i4562 p. 12. A short tax year is not named or asked. BUG-0307/T-170 records the gap.",
-   "prompt_sha": "69ffb2173382c3b203bd710ba08e9556ed3deae95f995020450981a8e09513a5",
-   "bug": "BUG-0307"
-  },
-  "unruled:asset#5": {
-   "class": "real gap",
-   "evidence": "i4562 p. 14. The exclusions from qualified business use are not asked. BUG-0307/T-170 records the gap.",
-   "prompt_sha": "69ffb2173382c3b203bd710ba08e9556ed3deae95f995020450981a8e09513a5",
-   "bug": "BUG-0307"
-  },
-  "unruled:asset#6": {
-   "class": "real gap",
-   "evidence": "i4562 p. 3. The limit on a home as a regular business establishment is not stated. BUG-0307/T-170 records the gap.",
-   "prompt_sha": "69ffb2173382c3b203bd710ba08e9556ed3deae95f995020450981a8e09513a5",
-   "bug": "BUG-0307"
-  },
-  "unruled:asset#7": {
-   "class": "real gap",
-   "evidence": "i4562 p. 14. The months-based percentage for listed property converted to business use is not applied. BUG-0307/T-170 records the gap.",
-   "prompt_sha": "69ffb2173382c3b203bd710ba08e9556ed3deae95f995020450981a8e09513a5",
-   "bug": "BUG-0307"
-  },
   "unruled:ltc#1": {
    "class": "out of scope",
    "evidence": "i7206 p. 1. sc.hi_screen refuses \"a retired public safety officer who paid premiums from retirement plan distributions\".",
@@ -363,182 +231,6 @@
    "evidence": "i7206 p. 2. sc.hi_screen refuses \"anyone is covered by qualified long-term care insurance entered for more than one business on this return\".",
    "prompt_sha": "675c44d68e965e5f0c66c1f1216b9606cacd38c367caf008c771edf03f1ba14c",
    "gate": "sc.hi_screened"
-  },
-  "unruled:sc#1": {
-   "class": "real gap",
-   "evidence": "i1040sc pp. 2-5, business against hobby and an LLC electing corporate treatment. BUG-0309/T-172 records the gap.",
-   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
-   "bug": "BUG-0309"
-  },
-  "unruled:sc#2": {
-   "class": "real gap",
-   "evidence": "i1040sc pp. 5, 9, seller-imposed sales tax. BUG-0309/T-172 records the gap.",
-   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
-   "bug": "BUG-0309"
-  },
-  "unruled:sc#3": {
-   "class": "real gap",
-   "evidence": "i1040sc pp. 6, 9, retained sales tax and the federal fuel tax credit. BUG-0309/T-172 records the gap.",
-   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
-   "bug": "BUG-0309"
-  },
-  "unruled:sc#4": {
-   "class": "real gap",
-   "evidence": "i4562 p. 4, recapture on non-listed section 179 property; sc.special names only listed property. BUG-0309/T-172 records the gap.",
-   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
-   "bug": "BUG-0309"
-  },
-  "unruled:sc#5": {
-   "class": "real gap",
-   "evidence": "i1040sc pp. 4, 15, a tax shelter under the gross receipts limit and long-term contracts. BUG-0309/T-172 records the gap.",
-   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
-   "bug": "BUG-0309"
-  },
-  "unruled:sc#7": {
-   "class": "real gap",
-   "evidence": "p946 p. 17, noncorporate lessors and the trade-in cost limit; land itself is refused by asset.screen. BUG-0309/T-172 records the gap.",
-   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
-   "bug": "BUG-0309"
-  },
-  "unruled:sc#9": {
-   "class": "real gap",
-   "evidence": "i1040sc p. 8, prepaid and shared interest. BUG-0309/T-172 records the gap.",
-   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
-   "bug": "BUG-0309"
-  },
-  "unruled:sc#10": {
-   "class": "real gap",
-   "evidence": "i1040sc p. 9, travel limits. BUG-0309/T-172 records the gap.",
-   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
-   "bug": "BUG-0309"
-  },
-  "unruled:sc#11": {
-   "class": "real gap",
-   "evidence": "i1040sc pp. 9-10, meal conditions. BUG-0309/T-172 records the gap.",
-   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
-   "bug": "BUG-0309"
-  },
-  "unruled:sc#12": {
-   "class": "real gap",
-   "evidence": "i1040sc p. 10, fringe benefit amounts claimed on other lines. BUG-0309/T-172 records the gap.",
-   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
-   "bug": "BUG-0309"
-  },
-  "unruled:sc#13": {
-   "class": "real gap",
-   "evidence": "i1040sc p. 1, the $150,000 ceiling. BUG-0309/T-172 records the gap.",
-   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
-   "bug": "BUG-0309"
-  },
-  "unruled:sc#14": {
-   "class": "real gap",
-   "evidence": "i1040sc pp. 10, 13-14, simplified method conditions and double deductions. BUG-0309/T-172 records the gap.",
-   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
-   "bug": "BUG-0309"
-  },
-  "unruled:sc#15": {
-   "class": "real gap",
-   "evidence": "i1040sc p. 14, prior-year unallowed passive losses. BUG-0309/T-172 records the gap.",
-   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
-   "bug": "BUG-0309"
-  },
-  "unruled:sc#16": {
-   "class": "real gap",
-   "evidence": "i1040gi p. 94, personal services as a material income factor. BUG-0309/T-172 records the gap.",
-   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
-   "bug": "BUG-0309"
-  },
-  "unruled:sc#17": {
-   "class": "real gap",
-   "evidence": "i8995 pp. 2-3, the former-employee presumption and Form 1099-PATR. BUG-0309/T-172 records the gap.",
-   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
-   "bug": "BUG-0309"
-  },
-  "unruled:sc#6": {
-   "class": "presentation",
-   "evidence": "i1040sc p. 7. Part IV and the vehicle statement are filing information the filer enters; no computed amount depends on them.",
-   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3"
-  },
-  "unruled:sc#8": {
-   "class": "out of scope",
-   "evidence": "i4562 pp. 9, 12. asset.screen refuses ADS and property from an exchange or conversion, so line 20 and carryover basis cannot reach a computed return.",
-   "prompt_sha": "41c6cb202f9b1039ab139b091b987615df3f7dc30792cd40e0ec3fd085de0bf3",
-   "gate": "asset.screened"
-  },
-  "unruled:scveh#1": {
-   "class": "out of scope",
-   "evidence": "i1040sc p. 8; p946 p. 59. sc.special refuses \"an inclusion amount for leased property\" for the business.",
-   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6",
-   "gate": "sc.special"
-  },
-  "unruled:scveh#2": {
-   "class": "real gap",
-   "evidence": "i4562 p. 14. The over-50% test is drawn from business miles over total miles. Nothing asks about or refuses the uses excluded from qualified business use, so a vehicle at or below 50% qualified use could pass the BUG-0311/T-174 records the gap.",
-   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6",
-   "bug": "BUG-0311"
-  },
-  "unruled:scveh#3": {
-   "class": "real gap",
-   "evidence": "i4562 p. 14. The business percentage is computed only from the filer's mileage answers. No question or refusal covers an employee-used vehicle treated as 100% business. BUG-0311/T-174 records the gap.",
-   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6",
-   "bug": "BUG-0311"
-  },
-  "unruled:scveh#5": {
-   "class": "real gap",
-   "evidence": "i4562 p. 14; i4562 p. 7; i4562 p. 9. The screen lists only conversion from personal to business use, and trade-ins. It omits conversion from business to personal use, including the bar on the special allowance when that happens in the ye BUG-0311/T-174 records the gap.",
-   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6",
-   "bug": "BUG-0311"
-  },
-  "unruled:scveh#6": {
-   "class": "real gap",
-   "evidence": "i4562 p. 12; p946 p. 35; i4562 p. 7; i4562 p. 11. The rate helpers apply only the 200% declining balance GDS percentages from Tables A-1 to A-5. Nothing asks about or refuses required ADS (which also bars the special allowance) or an elected ADS, str BUG-0311/T-174 records the gap.",
-   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6",
-   "bug": "BUG-0311"
-  },
-  "unruled:scveh#7": {
-   "class": "real gap",
-   "evidence": "p946 p. 37. The encoding always applies table percentages to the unadjusted basis. The screen covers clean-fuel and credit basis adjustments, but no question or refusal covers a casualty basis reduction or a shor BUG-0311/T-174 records the gap.",
-   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6",
-   "bug": "BUG-0311"
-  },
-  "unruled:scveh#8": {
-   "class": "real gap",
-   "evidence": "p946 p. 60. Line 7 takes the full-year table limit. Nothing asks about or refuses a short tax year. BUG-0311/T-174 records the gap.",
-   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6",
-   "bug": "BUG-0311"
-  },
-  "unruled:scveh#9": {
-   "class": "real gap",
-   "evidence": "i4562 p. 15; p946 p. 59. The passenger question covers weight and qualified nonpersonal use modifications, and the screen covers for-hire use, ambulances and hearses. Neither addresses the exception for a business of leasing BUG-0311/T-174 records the gap.",
-   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6",
-   "bug": "BUG-0311"
-  },
-  "unruled:scveh#10": {
-   "class": "real gap",
-   "evidence": "p946 p. 63. No question or refusal asks whether the filer has adequate records or sufficient evidence of business use, yet depreciation and section 179 are computed from the mileage answers. BUG-0311/T-174 records the gap.",
-   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6",
-   "bug": "BUG-0311"
-  },
-  "unruled:scveh#11": {
-   "class": "real gap",
-   "evidence": "i1040sc p. 6. Line 9 and the Part V amounts are deducted in full. Nothing in the encoding reduces them for capitalized costs or asks whether the small business taxpayer or creative property exception applies. BUG-0311/T-174 records the gap.",
-   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6",
-   "bug": "BUG-0311"
-  },
-  "unruled:scveh#4": {
-   "class": "presentation",
-   "evidence": "i1040sc p. 15. Commuting miles for a converted vehicle are a Part IV entry; no computed amount on a screened return depends on the period.",
-   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6"
-  },
-  "unruled:scveh#12": {
-   "class": "presentation",
-   "evidence": "i4562 p. 7. The election statement is filing information; the choice itself is asked.",
-   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6"
-  },
-  "unruled:scveh#13": {
-   "class": "presentation",
-   "evidence": "i1040sc p. 7; i4562 pp. 14, 16. Part IV and Part V routing and the attachment are filing information.",
-   "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6"
   },
   "unruled:f5329#1": {
    "class": "real gap",
@@ -568,6 +260,169 @@
    "class": "presentation",
    "evidence": "i8283 p. 3. The reduction is asked for in the amount; the attached statement is filing information the filer prepares.",
    "prompt_sha": "d942ba2e0b07852d0bc1ac5dea474c6c5e087ac911f17a377591fb4e28ae66f1"
+  },
+  "unruled:asset#1": {
+   "class": "real gap",
+   "evidence": "i4562 p. 10. Statutory recovery classes are not offered; one claim quote did not match the archive and is unverified. BUG-0326/T-183.",
+   "prompt_sha": "a6abc11b29f315944388768b8f2631df185f66a3197db431fe6f8985667bbf28",
+   "bug": "BUG-0326"
+  },
+  "unruled:sc#1": {
+   "class": "real gap",
+   "evidence": "i1040sc p. 6; i1040sc p. 7. Line 9 is listed only as a computed line ('standard mileage rate or actual expenses, for each vehicle'). No listed question asks how many vehicles were used at  BUG-0326/T-183.",
+   "prompt_sha": "e1cb1bf4bf08e2e95387de3d124a6cc437675baca64e31acdda1e6825c293cc7",
+   "bug": "BUG-0326"
+  },
+  "unruled:sc#2": {
+   "class": "real gap",
+   "evidence": "i1040sc p. 5; i1040sc p. 6. The line 1 question asks only for gross receipts. Nothing produces the required statement when Forms 1099-NEC total more than line 1. The screen refuses only in BUG-0326/T-183.",
+   "prompt_sha": "e1cb1bf4bf08e2e95387de3d124a6cc437675baca64e31acdda1e6825c293cc7",
+   "bug": "BUG-0326"
+  },
+  "unruled:sc#4": {
+   "class": "real gap",
+   "evidence": "i1040sc p. 9. The line 22 question covers only materials and supplies consumed. It neither includes books and instruments used within a year nor excludes items whose usefulne BUG-0326/T-183.",
+   "prompt_sha": "e1cb1bf4bf08e2e95387de3d124a6cc437675baca64e31acdda1e6825c293cc7",
+   "bug": "BUG-0326"
+  },
+  "unruled:sc#5": {
+   "class": "real gap",
+   "evidence": "i1040sc p. 9. The question asks for licenses and regulatory fees without separating licenses that must be amortized. No screen covers amortizing licenses. BUG-0326/T-183.",
+   "prompt_sha": "e1cb1bf4bf08e2e95387de3d124a6cc437675baca64e31acdda1e6825c293cc7",
+   "bug": "BUG-0326"
+  },
+  "unruled:sc#6": {
+   "class": "real gap",
+   "evidence": "i1040sc p. 9. The travel question covers only lodging and transportation. No question offers the $5-a-day incidental-expenses method or enforces its restrictions (no meal exp BUG-0326/T-183.",
+   "prompt_sha": "e1cb1bf4bf08e2e95387de3d124a6cc437675baca64e31acdda1e6825c293cc7",
+   "bug": "BUG-0326"
+  },
+  "unruled:sc#7": {
+   "class": "real gap",
+   "evidence": "i1040sc p. 13. The home office items compute the simplified method. Nothing bars depreciation or section 179 on the home's business portion from flowing into line 13 when the  BUG-0326/T-183.",
+   "prompt_sha": "e1cb1bf4bf08e2e95387de3d124a6cc437675baca64e31acdda1e6825c293cc7",
+   "bug": "BUG-0326"
+  },
+  "unruled:sc#8": {
+   "class": "real gap",
+   "evidence": "p946 p. 17; p946 p. 18. The section 179 helpers sum the elected amounts, but the listed encoding has no question or refusal for these situations: excepted property (property leased by  BUG-0326/T-183.",
+   "prompt_sha": "e1cb1bf4bf08e2e95387de3d124a6cc437675baca64e31acdda1e6825c293cc7",
+   "bug": "BUG-0326"
+  },
+  "unruled:sc#9": {
+   "class": "real gap",
+   "evidence": "i1040gi p. 94. The question excludes months of eligibility for an employer-subsidized plan. It does not say that QSEHRA eligibility counts as such a plan, so a filer with a QS BUG-0326/T-183.",
+   "prompt_sha": "e1cb1bf4bf08e2e95387de3d124a6cc437675baca64e31acdda1e6825c293cc7",
+   "bug": "BUG-0326"
+  },
+  "unruled:sc#3": {
+   "class": "presentation",
+   "evidence": "i1040sc p. 8. The statement and \"See attached\" notation are filing information.",
+   "prompt_sha": "e1cb1bf4bf08e2e95387de3d124a6cc437675baca64e31acdda1e6825c293cc7"
+  },
+  "unruled:sc#10": {
+   "class": "presentation",
+   "evidence": "i1040sc pp. 3-5. Header entries are filing information.",
+   "prompt_sha": "e1cb1bf4bf08e2e95387de3d124a6cc437675baca64e31acdda1e6825c293cc7"
+  },
+  "unruled:scveh#1": {
+   "class": "out of scope",
+   "evidence": "i1040sc p. 8; p946 p. 59. sc.special refuses an inclusion amount for leased property.",
+   "prompt_sha": "eb6d671732a53fd709212567ba0266103d38b965a789d43faa9f97f551cda5ff",
+   "gate": "sc.screened"
+  },
+  "unruled:scveh#2": {
+   "class": "real gap",
+   "evidence": "i1040sc p. 6. Capitalized vehicle costs beyond sc.method_other. BUG-0326/T-183.",
+   "prompt_sha": "eb6d671732a53fd709212567ba0266103d38b965a789d43faa9f97f551cda5ff",
+   "bug": "BUG-0326"
+  },
+  "unruled:scveh#3": {
+   "class": "presentation",
+   "evidence": "i1040sc p. 15. Commuting miles for a converted vehicle are a Part IV entry.",
+   "prompt_sha": "eb6d671732a53fd709212567ba0266103d38b965a789d43faa9f97f551cda5ff"
+  },
+  "unruled:scveh#4": {
+   "class": "presentation",
+   "evidence": "i1040sc p. 7; i4562 p. 16. Routing between Part IV and Part V is filing information.",
+   "prompt_sha": "eb6d671732a53fd709212567ba0266103d38b965a789d43faa9f97f551cda5ff"
+  },
+  "unruled:scveh#5": {
+   "class": "presentation",
+   "evidence": "i4562 p. 14. The full date is entered by the filer from their records; the year and quarter decide every amount.",
+   "prompt_sha": "eb6d671732a53fd709212567ba0266103d38b965a789d43faa9f97f551cda5ff"
+  },
+  "unruled:sa#1": {
+   "class": "real gap",
+   "evidence": "i1040sca p. 2. The line 1 question asks for 'eligible' expenses after insurance payments and refers to Pub. 502 for what counts. It never says whose expenses qualify: the $5,2 BUG-0326/T-183.",
+   "prompt_sha": "8d10c37923534b74424d32689ac9e0d210c7051fa0295f9efc1c3242c94f5d1c",
+   "bug": "BUG-0326"
+  },
+  "unruled:sa#2": {
+   "class": "real gap",
+   "evidence": "i1040sca p. 3. The line 5a question asks only for income taxes paid, including withholding, plus territory taxes. It does not exclude penalties and interest. It does not inclu BUG-0326/T-183.",
+   "prompt_sha": "8d10c37923534b74424d32689ac9e0d210c7051fa0295f9efc1c3242c94f5d1c",
+   "bug": "BUG-0326"
+  },
+  "unruled:sa#3": {
+   "class": "real gap",
+   "evidence": "i1040sca p. 6. The line 5b question covers only the paid-and-assessed timing rule and territory taxes. It does not exclude business-use property, non-uniform or non-general-pu BUG-0326/T-183.",
+   "prompt_sha": "8d10c37923534b74424d32689ac9e0d210c7051fa0295f9efc1c3242c94f5d1c",
+   "bug": "BUG-0326"
+  },
+  "unruled:sa#4": {
+   "class": "real gap",
+   "evidence": "i1040sca p. 6; i1040sca p. 7. The line 5c question asks for 'deductible' personal property taxes plus territory taxes. It does not state the value-only and yearly requirements, or that only  BUG-0326/T-183.",
+   "prompt_sha": "8d10c37923534b74424d32689ac9e0d210c7051fa0295f9efc1c3242c94f5d1c",
+   "bug": "BUG-0326"
+  },
+  "unruled:sa#5": {
+   "class": "covered",
+   "evidence": "i1040sca p. 11. gift.deduction now states the good-used-condition rule (BUG-0319).",
+   "prompt_sha": "8d10c37923534b74424d32689ac9e0d210c7051fa0295f9efc1c3242c94f5d1c",
+   "line": "gift.deduction"
+  },
+  "unruled:f8962#1": {
+   "class": "out of scope",
+   "evidence": "i8962 pp. 3, 6, 9. A filer someone can claim as a dependent is refused for the whole return by sa.dependent (BUG-0297).",
+   "prompt_sha": "e7cc67f14305830ba33e4df8eb7400fa9e9e15336b395cc28619c1ab91738007",
+   "gate": "sa.dependent"
+  },
+  "unruled:f8962#2": {
+   "class": "out of scope",
+   "evidence": "i8962 pp. 3, 8. As #1: the dependency case is refused by sa.dependent.",
+   "prompt_sha": "e7cc67f14305830ba33e4df8eb7400fa9e9e15336b395cc28619c1ab91738007",
+   "gate": "sa.dependent"
+  },
+  "unruled:f8962#3": {
+   "class": "real gap",
+   "evidence": "i8962 pp. 14-17. Other corrected-SLCSP situations and unpaid months are not asked. BUG-0327/T-180.",
+   "prompt_sha": "e7cc67f14305830ba33e4df8eb7400fa9e9e15336b395cc28619c1ab91738007",
+   "bug": "BUG-0327"
+  },
+  "unruled:f1095a#1": {
+   "class": "out of scope",
+   "evidence": "i8962 pp. 13, 15. A 2025 marriage with separate coverage before the first full month of marriage is refused by f8962.marriage.",
+   "prompt_sha": "b07da2f39312cf811cac6674cfbe9f0e2353edd7eb2ecfa3a54f9588dcee2a3a",
+   "gate": "f8962.marriage"
+  },
+  "unruled:f1095a#2": {
+   "class": "out of scope",
+   "evidence": "i8962 pp. 16-17; p974 p. 27. A policy shared with someone outside the tax family, or a divorce or separation while enrolled, is refused by f8962.alloc.",
+   "prompt_sha": "b07da2f39312cf811cac6674cfbe9f0e2353edd7eb2ecfa3a54f9588dcee2a3a",
+   "gate": "f8962.alloc"
+  },
+  "unruled:f1095a#3": {
+   "class": "real gap",
+   "evidence": "i8962 p. 16. A covered individual who is not lawfully present is not asked. BUG-0327/T-180.",
+   "prompt_sha": "b07da2f39312cf811cac6674cfbe9f0e2353edd7eb2ecfa3a54f9588dcee2a3a",
+   "bug": "BUG-0327"
+  },
+  "unruled:f1095a#4": {
+   "class": "real gap",
+   "evidence": "i8962 p. 16. A partial payment that avoided termination is not distinguished from an unpaid month. BUG-0327/T-180.",
+   "prompt_sha": "b07da2f39312cf811cac6674cfbe9f0e2353edd7eb2ecfa3a54f9588dcee2a3a",
+   "bug": "BUG-0327"
   }
  },
  "baseline": {

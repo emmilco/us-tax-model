@@ -413,6 +413,144 @@
    "question_phrase": "a taxable distribution ...; excess contributions ...; a required minimum distribution",
    "source_phrase": "Line 4 (p. 5), \"you must multiply that amount by 25% instead of 10%\"",
    "reason": "Line 4 reads the screen only through its Part refusal; the rate rule on p. 5 uses no word of the question, whose items concern other Parts."
+  },
+  "consumer:asset.listed@i4562:p14": {
+   "verdict": "same",
+   "question_phrase": "Is this listed property ... A part of your home is your regular business establishment only if that part meets the requirements for deducting expenses for the business use of a home",
+   "source_phrase": "i4562 p. 14, listed property as defined on p. 3 (read by asset.listed_low)",
+   "reason": "The page uses listed property in the sense p. 3 defines; the question states that definition, now with p. 3's limit on a home as a regular business establishment."
+  },
+  "consumer:asset.listed@i4562:p5": {
+   "verdict": "same",
+   "question_phrase": "Is this listed property ... A part of your home is your regular business establishment only if that part meets the requirements for deducting expenses for the business use of a home",
+   "source_phrase": "i4562 p. 5, listed property as defined on p. 3 (read by asset.on_19)",
+   "reason": "The page uses listed property in the sense p. 3 defines; the question states that definition, now with p. 3's limit on a home as a regular business establishment."
+  },
+  "consumer:asset.listed@i4562:p9": {
+   "verdict": "same",
+   "question_phrase": "Is this listed property ... A part of your home is your regular business establishment only if that part meets the requirements for deducting expenses for the business use of a home",
+   "source_phrase": "i4562 p. 9, listed property as defined on p. 3 (read by asset.on_19)",
+   "reason": "The page uses listed property in the sense p. 3 defines; the question states that definition, now with p. 3's limit on a home as a regular business establishment."
+  },
+  "consumer:asset.listed@i4562:p15": {
+   "verdict": "same",
+   "question_phrase": "Is this listed property ... A part of your home is your regular business establishment only if that part meets the requirements for deducting expenses for the business use of a home",
+   "source_phrase": "i4562 p. 15, listed property as defined on p. 3 (read by asset.dep_listed)",
+   "reason": "The page uses listed property in the sense p. 3 defines; the question states that definition, now with p. 3's limit on a home as a regular business establishment."
+  },
+  "consumer:sc.special@i1040sc:p4": {
+   "verdict": "same",
+   "question_phrase": "the screen's items (asked of this business; the line refuses on Yes)",
+   "source_phrase": "i1040sc p. 4, one of the pages sc.screened cites for the items it refuses",
+   "reason": "sc.screened reads the input only to refuse the Schedule C on Yes; no rule on this page computes an amount from the answer."
+  },
+  "consumer:sc.special@i1040sc:p11": {
+   "verdict": "same",
+   "question_phrase": "the screen's items (asked of this business; the line refuses on Yes)",
+   "source_phrase": "i1040sc p. 11, one of the pages sc.screened cites for the items it refuses",
+   "reason": "sc.screened reads the input only to refuse the Schedule C on Yes; no rule on this page computes an amount from the answer."
+  },
+  "consumer:sc.special@i1040sc:p12": {
+   "verdict": "same",
+   "question_phrase": "the screen's items (asked of this business; the line refuses on Yes)",
+   "source_phrase": "i1040sc p. 12, one of the pages sc.screened cites for the items it refuses",
+   "reason": "sc.screened reads the input only to refuse the Schedule C on Yes; no rule on this page computes an amount from the answer."
+  },
+  "consumer:sc.special@i1040sc:p13": {
+   "verdict": "same",
+   "question_phrase": "the screen's items (asked of this business; the line refuses on Yes)",
+   "source_phrase": "i1040sc p. 13, one of the pages sc.screened cites for the items it refuses",
+   "reason": "sc.screened reads the input only to refuse the Schedule C on Yes; no rule on this page computes an amount from the answer."
+  },
+  "consumer:sc.special@i1040sc:p15": {
+   "verdict": "same",
+   "question_phrase": "the screen's items (asked of this business; the line refuses on Yes)",
+   "source_phrase": "i1040sc p. 15, one of the pages sc.screened cites for the items it refuses",
+   "reason": "sc.screened reads the input only to refuse the Schedule C on Yes; no rule on this page computes an amount from the answer."
+  },
+  "consumer:sc.method_other@i1040sc:p2": {
+   "verdict": "same",
+   "question_phrase": "the screen's items (asked of this business; the line refuses on Yes)",
+   "source_phrase": "i1040sc p. 2, one of the pages sc.screened cites for the items it refuses",
+   "reason": "sc.screened reads the input only to refuse the Schedule C on Yes; no rule on this page computes an amount from the answer."
+  },
+  "consumer:sc.method_other@i1040sc:p3": {
+   "verdict": "same",
+   "question_phrase": "the screen's items (asked of this business; the line refuses on Yes)",
+   "source_phrase": "i1040sc p. 3, one of the pages sc.screened cites for the items it refuses",
+   "reason": "sc.screened reads the input only to refuse the Schedule C on Yes; no rule on this page computes an amount from the answer."
+  },
+  "consumer:sc.method_other@i1040sc:p5": {
+   "verdict": "same",
+   "question_phrase": "the screen's items (asked of this business; the line refuses on Yes)",
+   "source_phrase": "i1040sc p. 5, one of the pages sc.screened cites for the items it refuses",
+   "reason": "sc.screened reads the input only to refuse the Schedule C on Yes; no rule on this page computes an amount from the answer."
+  },
+  "consumer:sc.method_other@i1040sc:p7": {
+   "verdict": "same",
+   "question_phrase": "the screen's items (asked of this business; the line refuses on Yes)",
+   "source_phrase": "i1040sc p. 7, one of the pages sc.screened cites for the items it refuses",
+   "reason": "sc.screened reads the input only to refuse the Schedule C on Yes; no rule on this page computes an amount from the answer."
+  },
+  "consumer:sc.method_other@i1040sc:p8": {
+   "verdict": "same",
+   "question_phrase": "the screen's items (asked of this business; the line refuses on Yes)",
+   "source_phrase": "i1040sc p. 8, one of the pages sc.screened cites for the items it refuses",
+   "reason": "sc.screened reads the input only to refuse the Schedule C on Yes; no rule on this page computes an amount from the answer."
+  },
+  "consumer:sc.method_other@i1040sc:p9": {
+   "verdict": "same",
+   "question_phrase": "the screen's items (asked of this business; the line refuses on Yes)",
+   "source_phrase": "i1040sc p. 9, one of the pages sc.screened cites for the items it refuses",
+   "reason": "sc.screened reads the input only to refuse the Schedule C on Yes; no rule on this page computes an amount from the answer."
+  },
+  "consumer:sc.method_other@i1040sc:p10": {
+   "verdict": "same",
+   "question_phrase": "the screen's items (asked of this business; the line refuses on Yes)",
+   "source_phrase": "i1040sc p. 10, one of the pages sc.screened cites for the items it refuses",
+   "reason": "sc.screened reads the input only to refuse the Schedule C on Yes; no rule on this page computes an amount from the answer."
+  },
+  "consumer:sc.method_other@i1040sc:p11": {
+   "verdict": "same",
+   "question_phrase": "the screen's items (asked of this business; the line refuses on Yes)",
+   "source_phrase": "i1040sc p. 11, one of the pages sc.screened cites for the items it refuses",
+   "reason": "sc.screened reads the input only to refuse the Schedule C on Yes; no rule on this page computes an amount from the answer."
+  },
+  "consumer:sc.method_other@i1040sc:p12": {
+   "verdict": "same",
+   "question_phrase": "the screen's items (asked of this business; the line refuses on Yes)",
+   "source_phrase": "i1040sc p. 12, one of the pages sc.screened cites for the items it refuses",
+   "reason": "sc.screened reads the input only to refuse the Schedule C on Yes; no rule on this page computes an amount from the answer."
+  },
+  "consumer:sc.method_other@i1040sc:p13": {
+   "verdict": "same",
+   "question_phrase": "the screen's items (asked of this business; the line refuses on Yes)",
+   "source_phrase": "i1040sc p. 13, one of the pages sc.screened cites for the items it refuses",
+   "reason": "sc.screened reads the input only to refuse the Schedule C on Yes; no rule on this page computes an amount from the answer."
+  },
+  "consumer:sc.method_other@i1040sc:p14": {
+   "verdict": "same",
+   "question_phrase": "the screen's items (asked of this business; the line refuses on Yes)",
+   "source_phrase": "i1040sc p. 14, one of the pages sc.screened cites for the items it refuses",
+   "reason": "sc.screened reads the input only to refuse the Schedule C on Yes; no rule on this page computes an amount from the answer."
+  },
+  "consumer:asset.listed@i4562:p10": {
+   "verdict": "same",
+   "question_phrase": "Is this listed property ... A part of your home is your regular business establishment only if that part meets the requirements for deducting expenses for the business use of a home",
+   "source_phrase": "i4562 p. 10, listed property as defined on p. 3 (read by sc.f19_y3)",
+   "reason": "The page uses listed property in the sense p. 3 defines; the question states that definition, now with p. 3's limit on a home as a regular business establishment."
+  },
+  "consumer:asset.listed@i4562:p16": {
+   "verdict": "same",
+   "question_phrase": "Is this listed property ... A part of your home is your regular business establishment only if that part meets the requirements for deducting expenses for the business use of a home",
+   "source_phrase": "i4562 p. 16, listed property as defined on p. 3 (read by sc.f29_assets)",
+   "reason": "The page uses listed property in the sense p. 3 defines; the question states that definition, now with p. 3's limit on a home as a regular business establishment."
+  },
+  "consumer:f1095a.uniform@i1095a:p3": {
+   "verdict": "same",
+   "question_phrase": "the same in every month",
+   "source_phrase": "Column B (p. 3), the monthly applicable SLCSP premium reported for each month",
+   "reason": "The uniform question asks whether the monthly column B amounts printed are equal; the p. 3 rule says what column B reports for each month, the same column the question reads."
   }
  },
  "baseline": {
@@ -758,9 +896,7 @@
   "consumer:sc.special@i1040sc:p11": "b0f579ccba546ff0",
   "consumer:sc.special@i1040sc:p12": "b0f579ccba546ff0",
   "consumer:sc.special@i1040sc:p13": "b0f579ccba546ff0",
-  "consumer:sc.special@i1040sc:p14": "b0f579ccba546ff0",
   "consumer:sc.special@i1040sc:p15": "b0f579ccba546ff0",
-  "consumer:sc.special@i1040sc:p2": "b0f579ccba546ff0",
   "consumer:sc.special@i1040sc:p4": "b0f579ccba546ff0",
   "consumer:sc.spouse_owned@i1040sc:p10": "ea818fae9365d4bf",
   "consumer:sc.spouse_owned@i1040sc:p11": "ea818fae9365d4bf",

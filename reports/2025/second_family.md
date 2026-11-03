@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 155 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 8.7% (430/4927 second-family lines judged; pending reviews are provisional); 79 eligible, 75 pending; raw agreement 77.7% (diagnostic only); current independence yield 285 line(s); both families disputed 720
+Summary: 155 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 9.4% (464/4928 second-family lines judged; pending reviews are provisional); 80 eligible, 74 pending; raw agreement 76.8% (diagnostic only); current independence yield 288 line(s); both families disputed 729
 
 Written by `tools/transcription/compare_families.py` on 2026-11-02 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -17,7 +17,7 @@ Written by `tools/transcription/compare_families.py` on 2026-11-02 from the revi
 | form | second family (model) | lines judged by both | both agree | raw agreement | noise / judged | eligibility | current yield | both disputed | Claude only | not judged by both |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | aqee | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| asset | deepseek (deepseek-flash) | 16 | 1 | 6.2% | 8/16 (50.0%) | pending | 1 | 14 | 0 | 0 |
+| asset | deepseek (deepseek-flash) | 16 | 2 | 12.5% | 13/16 (81.2%) | pending | 0 | 14 | 0 | 0 |
 | carloan | deepseek (deepseek-flash) | 2 | 0 | 0.0% | 2/2 (100.0%) | pending | 0 | 2 | 0 | 0 |
 | clcw | deepseek (deepseek-flash) | 13 | 13 | 100.0% | 0/13 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | clcw26 | deepseek (deepseek-flash) | 13 | 12 | 92.3% | 1/13 (7.7%) | pass | 1 | 0 | 0 | 0 |
@@ -26,8 +26,8 @@ Written by `tools/transcription/compare_families.py` on 2026-11-02 from the revi
 | div | deepseek (deepseek-flash) | 0 | 0 | n/a | 0/0 (n/a) | pending | 0 | 0 | 0 | 0 |
 | eic | deepseek (deepseek-flash) | 18 | 1 | 5.6% | 15/18 (83.3%) | pending | 1 | 16 | 0 | 0 |
 | f1040 | deepseek (deepseek-flash) | 52 | 39 | 75.0% | 11/52 (21.2%) | pending | 8 | 5 | 0 | 0 |
-| f1095a | deepseek (deepseek-flash) | 29 | 1 | 3.4% | 2/29 (6.9%) | pending | 13 | 15 | 0 | 0 |
-| f1095a | gpt (gpt-6-astra) | 29 | 14 | 48.3% | 1/29 (3.4%) | pending | 0 | 15 | 0 | 0 |
+| f1095a | deepseek (deepseek-flash) | 29 | 13 | 44.8% | 15/29 (51.7%) | pending | 1 | 15 | 0 | 0 |
+| f1095a | gpt (gpt-6-astra) | 29 | 14 | 48.3% | 1/29 (3.4%) | pass | 0 | 3 | 12 | 0 |
 | f2441 | deepseek (deepseek-flash) | 37 | 22 | 59.5% | 10/37 (27.0%) | pending | 4 | 7 | 4 | 0 |
 | f4562 | deepseek (deepseek-flash) | 15 | 1 | 6.7% | 0/15 (0.0%) | pending | 0 | 14 | 0 | 0 |
 | f4952 | deepseek (deepseek-flash) | 14 | 9 | 64.3% | 3/14 (21.4%) | pending | 1 | 4 | 0 | 0 |
@@ -39,7 +39,7 @@ Written by `tools/transcription/compare_families.py` on 2026-11-02 from the revi
 | f8889 | deepseek (deepseek-flash) | 20 | 4 | 20.0% | 10/20 (50.0%) | pending | 7 | 9 | 0 | 0 |
 | f8959 | deepseek (deepseek-flash) | 24 | 22 | 91.7% | 0/24 (0.0%) | pending | 0 | 2 | 0 | 0 |
 | f8960 | deepseek (deepseek-flash) | 25 | 19 | 76.0% | 3/25 (12.0%) | pending | 3 | 3 | 0 | 0 |
-| f8962 | deepseek (deepseek-flash) | 97 | 0 | 0.0% | 26/97 (26.8%) | pending | 0 | 97 | 0 | 0 |
+| f8962 | deepseek (deepseek-flash) | 97 | 0 | 0.0% | 0/97 (0.0%) | pending | 0 | 97 | 0 | 0 |
 | f8962 | gpt (gpt-6-astra) | 97 | 0 | 0.0% | 4/97 (4.1%) | pending | 0 | 97 | 0 | 0 |
 | f8995 | deepseek (deepseek-flash) | 16 | 7 | 43.8% | 0/16 (0.0%) | pending | 4 | 5 | 0 | 0 |
 | f8995a | deepseek (deepseek-flash) | 14 | 2 | 14.3% | 9/14 (64.3%) | pending | 7 | 5 | 0 | 0 |
@@ -64,12 +64,12 @@ Written by `tools/transcription/compare_families.py` on 2026-11-02 from the revi
 | s2 | deepseek (deepseek-flash) | 13 | 8 | 61.5% | 4/13 (30.8%) | pending | 4 | 1 | 0 | 0 |
 | s3 | deepseek (deepseek-flash) | 11 | 6 | 54.5% | 5/11 (45.5%) | pending | 0 | 5 | 0 | 0 |
 | s8812 | deepseek (deepseek-flash) | 51 | 24 | 47.1% | 20/51 (39.2%) | pending | 14 | 10 | 3 | 0 |
-| sa | deepseek (deepseek-flash) | 22 | 15 | 68.2% | 5/22 (22.7%) | pending | 3 | 3 | 1 | 0 |
+| sa | deepseek (deepseek-flash) | 22 | 18 | 81.8% | 0/22 (0.0%) | pending | 0 | 3 | 1 | 0 |
 | sales | deepseek (deepseek-flash) | 4 | 2 | 50.0% | 0/4 (0.0%) | pass | 0 | 2 | 0 | 0 |
 | sb | deepseek (deepseek-flash) | 4 | 4 | 100.0% | 0/4 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| sc | deepseek (deepseek-flash) | 55 | 22 | 40.0% | 31/55 (56.4%) | pending | 8 | 25 | 0 | 0 |
+| sc | deepseek (deepseek-flash) | 55 | 19 | 34.5% | 33/55 (60.0%) | pending | 13 | 23 | 0 | 0 |
 | scope | deepseek (deepseek-flash) | 0 | 0 | n/a | 0/0 (n/a) | no lines | 0 | 0 | 0 | 0 |
-| scveh | deepseek (deepseek-flash) | 21 | 0 | 0.0% | 20/21 (95.2%) | pending | 7 | 14 | 0 | 0 |
+| scveh | deepseek (deepseek-flash) | 21 | 0 | 0.0% | 0/21 (0.0%) | pending | 7 | 14 | 0 | 0 |
 | sd | deepseek (deepseek-flash) | 55 | 7 | 12.7% | 4/55 (7.3%) | pending | 8 | 37 | 3 | 0 |
 | sdtw | deepseek (deepseek-flash) | 47 | 20 | 42.6% | 12/47 (25.5%) | pending | 2 | 19 | 6 | 0 |
 | se | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 1 | 0 | 0 |
@@ -80,9 +80,9 @@ Written by `tools/transcription/compare_families.py` on 2026-11-02 from the revi
 | tipjob | deepseek (deepseek-flash) | 3 | 2 | 66.7% | 0/3 (0.0%) | pending | 0 | 0 | 1 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 6 | 33.3% | 7/18 (38.9%) | pending | 4 | 6 | 2 | 0 |
 | w2 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 0 | 1 | 1 | 0 |
-| **all** | | 1307 | 477 | 36.5% | | | 166 | 632 | 32 | 0 |
+| **all** | | 1307 | 490 | 37.5% | | | 155 | 618 | 44 | 0 |
 
-Pending asset [deepseek]: model-error noise above 10%.
+Pending asset [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending carloan [deepseek]: model-error noise above 10%.
 Pending dcprov [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending dependent [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails; no passing current source-based partial-input checks: deepseek.
@@ -90,8 +90,7 @@ Excluded internal adapters for div: div.screen. Original logs/rulings are preser
 Pending div [deepseek]: no source-defined computed targets; internal adapter checks earn no tax-evidence credit; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending eic [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending f1040 [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
-Pending f1095a [deepseek]: no verified current request context for claude: [Errno 2] No such file or directory: '/Users/elliotmilco/Documents/GitHub/tax-formalization/.git/check-all-worktree/.transcription/f1095a.prompt.txt'.
-Pending f1095a [gpt]: no verified current request context for claude: [Errno 2] No such file or directory: '/Users/elliotmilco/Documents/GitHub/tax-formalization/.git/check-all-worktree/.transcription/f1095a.prompt.txt'.
+Pending f1095a [deepseek]: model-error noise above 10%.
 Pending f2441 [deepseek]: model-error noise above 10%.
 Pending f4562 [deepseek]: 14 open, unclassified or interface-gap rulings; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Excluded internal adapters for f4952: f4952.election. Original logs/rulings are preserved; separate engineering checks earn no independent tax-evidence credit.
@@ -104,8 +103,8 @@ Pending f8880 [deepseek]: model-error noise above 10%; no passing current expres
 Pending f8889 [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails; no passing current source-based partial-input checks: deepseek.
 Pending f8959 [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending f8960 [deepseek]: model-error noise above 10%.
-Pending f8962 [deepseek]: 69 open, unclassified or interface-gap rulings; model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: [Errno 2] No such file or directory: '/Users/elliotmilco/Documents/GitHub/tax-formalization/.git/check-all-worktree/.transcription/f8962.prompt.txt'; no verified current request context for deepseek: current expression/refusal validation fails.
-Pending f8962 [gpt]: 91 open, unclassified or interface-gap rulings; no verified current request context for claude: [Errno 2] No such file or directory: '/Users/elliotmilco/Documents/GitHub/tax-formalization/.git/check-all-worktree/.transcription/f8962.prompt.txt'.
+Pending f8962 [deepseek]: 97 open, unclassified or interface-gap rulings; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
+Pending f8962 [gpt]: 91 open, unclassified or interface-gap rulings.
 Pending f8995 [deepseek]: 9 open, unclassified or interface-gap rulings; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending f8995a [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending ftc [deepseek]: model-error noise above 10%; no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
@@ -126,9 +125,9 @@ Pending s1a [deepseek]: model-error noise above 10%; no passing current expressi
 Pending s2 [deepseek]: 1 open, unclassified or interface-gap rulings; model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending s3 [deepseek]: model-error noise above 10%.
 Pending s8812 [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: current expression/refusal validation fails.
-Pending sa [deepseek]: 1 open, unclassified or interface-gap rulings; model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt.
+Pending sa [deepseek]: 3 open, unclassified or interface-gap rulings.
 Pending sc [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
-Pending scveh [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
+Pending scveh [deepseek]: 21 open, unclassified or interface-gap rulings; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending sd [deepseek]: 2 open, unclassified or interface-gap rulings; no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
 Pending sdtw [deepseek]: model-error noise above 10%; no passing current expression type validation: claude; no verified current request context for claude: current expression/refusal validation fails.
 Pending se [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
@@ -143,7 +142,6 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 
 | form | second family | line | second family's verdict | second family's reason |
 | --- | --- | --- | --- | --- |
-| asset | deepseek | asset.s179_2025 | DISAGREE | (no reason given) |
 | clcw26 | deepseek | 3 | DISAGREE | (no reason given) |
 | eic | deepseek | eic.self_employed | DISAGREE | (no reason given) |
 | f1040 | deepseek | 19 | DISAGREE | (no reason given) |
@@ -154,19 +152,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f1040 | deepseek | 2b | DISAGREE | (no reason given) |
 | f1040 | deepseek | 3b | DISAGREE | (no reason given) |
 | f1040 | deepseek | 6d | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_apr | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_aug | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_dec | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_feb | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_jan | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_jul | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_jun | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_mar | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_may | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_nov | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_oct | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.a_sep | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.line33c | DISAGREE | (no reason given) |
+| f1095a | deepseek | f1095a.line33c | DISAGREE | Line 33 column C is supplied as the annual total of the monthly advance payments. |
 | f2441 | deepseek | 20 | DISAGREE | (no reason given) |
 | f2441 | deepseek | 21 | DISAGREE | The $5,000 limit is halved for married filing separately only when the spouse's earned income must be entered on line 19; the interface does not supply the considered-unmarried fact, so the MFS branch uses $2,500. |
 | f2441 | deepseek | 25 | DISAGREE | (no reason given) |
@@ -277,9 +263,6 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | s8812 | deepseek | 25 | DISAGREE | (no reason given) |
 | s8812 | deepseek | 26 | DISAGREE | (no reason given) |
 | s8812 | deepseek | s8812.clwb_complete | DISAGREE | Credit Limit Worksheet B is completed when a supported credit requiring it is claimed (residential clean energy credit), Form 2555 is not filed (approximated by sa.excluded_income false), and line 4 is more than zero. Other credits that would require Worksheet B are refused through scope.credits. |
-| sa | deepseek | 17 | DISAGREE | (no reason given) |
-| sa | deepseek | 5e | DISAGREE | (no reason given) |
-| sa | deepseek | 9 | DISAGREE | (no reason given) |
 | sc | deepseek | 10 (sc.f7206_line10) | DISAGREE | (no reason given) |
 | sc | deepseek | 13 (sc.f7206_line13) | DISAGREE | (no reason given) |
 | sc | deepseek | 14 (sc.f7206_line14) | DISAGREE | (no reason given) |
@@ -287,14 +270,19 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | sc | deepseek | 30 | DISAGREE | (no reason given) |
 | sc | deepseek | 31 | DISAGREE | (no reason given) |
 | sc | deepseek | 8 (sc.f7206_line8) | DISAGREE | (no reason given) |
+| sc | deepseek | sc.cost179 | DISAGREE | (no reason given) |
 | sc | deepseek | sc.f26h | DISAGREE | (no reason given) |
+| sc | deepseek | sc.f29 | DISAGREE | (no reason given) |
+| sc | deepseek | sc.f6 | DISAGREE | (no reason given) |
+| sc | deepseek | sc.mq_q4 | DISAGREE | (no reason given) |
+| sc | deepseek | sc.mq_total | DISAGREE | (no reason given) |
 | scveh | deepseek | 11 | DISAGREE | (no reason given) |
-| scveh | deepseek | 14 | DISAGREE | (no reason given) |
 | scveh | deepseek | 15 | DISAGREE | (no reason given) |
-| scveh | deepseek | 17 | DISAGREE | (no reason given) |
-| scveh | deepseek | 18 | DISAGREE | (no reason given) |
+| scveh | deepseek | 17 | DISAGREE | The worksheet says to subtract line 16; the special depreciation allowance allowed is capped by line 11 and reported on line 25, so the capped amount is subtracted. |
+| scveh | deepseek | 18 | DISAGREE | The worksheet says to subtract line 16; the special depreciation allowance allowed is capped by line 11 and reported on line 25, so the capped amount is subtracted. |
 | scveh | deepseek | 20 | DISAGREE | (no reason given) |
-| scveh | deepseek | 25 | DISAGREE | (no reason given) |
+| scveh | deepseek | scveh.cost179 | DISAGREE | (no reason given) |
+| scveh | deepseek | scveh.mq_total | DISAGREE | (no reason given) |
 | sd | deepseek | 11 | DISAGREE | (no reason given) |
 | sd | deepseek | 12 | DISAGREE | (no reason given) |
 | sd | deepseek | 21 | DISAGREE | (no reason given) |
@@ -314,18 +302,18 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 
 | form | second family | line | Claude | second family | second family's reason |
 | --- | --- | --- | --- | --- | --- |
-| asset | deepseek | (c) | DISAGREE | DISAGREE | Read printed (c) as the business/investment portion of cost before the section 179 and special allowance reductions itemized in the column (c) instructions; asset.col19c is the line 19(c) basis after those reductions. |
-| asset | deepseek | 14 | DISAGREE | DISAGREE | Line 14 is used for property other than listed property; listed property's special allowance is line 25. |
+| asset | deepseek | (c) | DISAGREE | DISAGREE | (no reason given) |
+| asset | deepseek | 14 | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | 17 | DISAGREE | DISAGREE | (no reason given) |
-| asset | deepseek | 19(c) | DISAGREE | DISAGREE | This is the line 19(c) basis after section 179 and special allowance reductions. |
+| asset | deepseek | 19(c) | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | 19(g) | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | 25 | DISAGREE | DISAGREE | (no reason given) |
-| asset | deepseek | 26(h) | DISAGREE | DISAGREE | Refuses listed property used 50% or less because the line 27 straight-line ADS computation is outside this slice. |
+| asset | deepseek | 26(h) | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | 26(i) | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | asset.bonus_2025 | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | asset.cost179 | DISAGREE | DISAGREE | (no reason given) |
-| asset | deepseek | asset.dep_2025 | DISAGREE | DISAGREE | Read as regular MACRS depreciation only; section 179 and the special allowance are separate result ids. Listed property used 50% or less is refused because line 27 is outside this slice. |
-| asset | deepseek | asset.dep_prior | DISAGREE | DISAGREE | Read as regular MACRS depreciation only; this equals line 17 for non-listed prior-year property and the line 26(h) amount for listed prior-year property. |
+| asset | deepseek | asset.dep_2025 | DISAGREE | DISAGREE | (no reason given) |
+| asset | deepseek | asset.dep_prior | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | asset.mq_q4 | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | asset.mq_total | DISAGREE | DISAGREE | (no reason given) |
 | carloan | deepseek | 22(ii) | DISAGREE | DISAGREE | (no reason given) |
@@ -382,24 +370,12 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f1095a | deepseek | f1095a.b_nov | DISAGREE | DISAGREE | (no reason given) |
 | f1095a | deepseek | f1095a.b_oct | DISAGREE | DISAGREE | (no reason given) |
 | f1095a | deepseek | f1095a.b_sep | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.b_used | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.line33a | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | deepseek | f1095a.line33b | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | gpt | f1095a.b_apr | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | gpt | f1095a.b_aug | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | gpt | f1095a.b_dec | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | gpt | f1095a.b_feb | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | gpt | f1095a.b_jan | DISAGREE | DISAGREE | Within the declared scope, zero enrollment premiums yield zero applicable SLCSP premium for the month. Paid premiums reported as zero and other adjustments are screened outside this slice. Column B amounts remain per-form amounts; f1095a.b_used identifies whether to include them in totals across forms. |
-| f1095a | gpt | f1095a.b_jul | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | gpt | f1095a.b_jun | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | gpt | f1095a.b_mar | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | gpt | f1095a.b_may | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | gpt | f1095a.b_nov | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | gpt | f1095a.b_oct | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | gpt | f1095a.b_sep | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | gpt | f1095a.b_used | DISAGREE | DISAGREE | This is the inclusion flag for aggregating this entry's column B amounts. The supplied per-form flag cannot express selecting a form for only some overlapping months; such cases require a consistent selection outside this slice. The special marriage rules are not derivable from this entry's closed inputs. |
+| f1095a | deepseek | f1095a.b_used | DISAGREE | DISAGREE | The IRS text does not define a separate b_used value; read it as true when this form is not void and its column B is counted (f1095a.b_counted). |
+| f1095a | deepseek | f1095a.line33a | DISAGREE | DISAGREE | Sums the monthly column A amounts, using mo_a for every month when the form is uniform. |
+| f1095a | deepseek | f1095a.line33b | DISAGREE | DISAGREE | Sums the monthly column B amounts counted for this form; a form whose column B is not counted contributes zero. |
+| f1095a | gpt | f1095a.b_used | DISAGREE | DISAGREE | Uses the supplied selection of forms for column B. The closed interface cannot represent selecting a form for only some of its covered months; partial overlaps requiring month-specific selection are not determined by this single flag. |
 | f1095a | gpt | f1095a.line33a | DISAGREE | DISAGREE | (no reason given) |
-| f1095a | gpt | f1095a.line33b | DISAGREE | DISAGREE | Uses the correct applicable monthly SLCSP premiums supplied through the closed interface, which may differ from the printed statement. |
+| f1095a | gpt | f1095a.line33b | DISAGREE | DISAGREE | (no reason given) |
 | f2441 | deepseek | 1 (box) | DISAGREE | DISAGREE | (no reason given) |
 | f2441 | deepseek | 16 | DISAGREE | DISAGREE | (no reason given) |
 | f2441 | deepseek | 2 (box) | DISAGREE | DISAGREE | (no reason given) |
@@ -475,7 +451,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f8960 | deepseek | 13 | DISAGREE | DISAGREE | (no reason given) |
 | f8960 | deepseek | 2 | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | deepseek | 1 | DISAGREE | DISAGREE | (no reason given) |
-| f8962 | deepseek | 10 | DISAGREE | DISAGREE | (no reason given) |
+| f8962 | deepseek | 10 | DISAGREE | DISAGREE | Line 10 is false when line 9 is true (allocation or alternative calculation) or when the premium_adjust gate applies. |
 | f8962 | deepseek | 11(a) | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | deepseek | 11(b) | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | deepseek | 11(c) | DISAGREE | DISAGREE | (no reason given) |
@@ -484,7 +460,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f8962 | deepseek | 11(f) | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | deepseek | 12(a) | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | deepseek | 12(b) | DISAGREE | DISAGREE | (no reason given) |
-| f8962 | deepseek | 12(c) | DISAGREE | DISAGREE | Blank monthly columns are represented as zero; the contribution amount is shown only when the month has enrollment or SLCSP premium. |
+| f8962 | deepseek | 12(c) | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | deepseek | 12(d) | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | deepseek | 12(e) | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | deepseek | 12(f) | DISAGREE | DISAGREE | (no reason given) |
@@ -558,9 +534,9 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f8962 | deepseek | 25 | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | deepseek | 26 | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | deepseek | 27 | DISAGREE | DISAGREE | (no reason given) |
-| f8962 | deepseek | 28 | DISAGREE | DISAGREE | When line 5 is 400 or more there is no repayment limitation. Line 28 is set to line 27 in that case so that line 29 equals line 27, although the printed line 28 would be blank. |
+| f8962 | deepseek | 28 | DISAGREE | DISAGREE | For line 5 of 400 or more, the printed line 28 is blank; here it is represented as zero and line 29 uses line 27 as the blank-line instruction directs. |
 | f8962 | deepseek | 29 | DISAGREE | DISAGREE | (no reason given) |
-| f8962 | deepseek | 2a | DISAGREE | DISAGREE | The closed interface has no Form 2555 amount, so that component of Worksheet 1-1 is not included. |
+| f8962 | deepseek | 2a | DISAGREE | DISAGREE | Worksheet 1-1: modified AGI is AGI plus tax-exempt interest plus the nontaxable part of social security benefits; Form 2555 amounts are omitted because no such input is supplied in this closed interface. |
 | f8962 | deepseek | 2b | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | deepseek | 3 | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | deepseek | 4 | DISAGREE | DISAGREE | (no reason given) |
@@ -568,10 +544,10 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f8962 | deepseek | 7 | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | deepseek | 8a | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | deepseek | 8b | DISAGREE | DISAGREE | (no reason given) |
-| f8962 | deepseek | 9 | DISAGREE | DISAGREE | (no reason given) |
-| f8962 | deepseek | f8962.any | DISAGREE | DISAGREE | The pages do not name this helper. Read as whether there is at least one nonvoid Form 1095-A. |
-| f8962 | deepseek | f8962.forms | DISAGREE | DISAGREE | The pages do not name this helper. Read as the number of nonvoid Forms 1095-A. |
-| f8962 | gpt | 1 | DISAGREE | DISAGREE | Uses the Stage 18 extension permitting sums of Count lines. The supplied dependent screen excludes returns on which a filer can be claimed as a dependent. |
+| f8962 | deepseek | 9 | DISAGREE | DISAGREE | Parts IV and V are outside this slice; a yes on allocation or the year-of-marriage alternative stops here. |
+| f8962 | deepseek | f8962.any | DISAGREE | DISAGREE | (no reason given) |
+| f8962 | deepseek | f8962.forms | DISAGREE | DISAGREE | (no reason given) |
+| f8962 | gpt | 1 | DISAGREE | DISAGREE | Uses the Stage 18 extension permitting sum over Count lines. The combined dependency screening question does not identify which filer can be claimed; that situation is refused. |
 | f8962 | gpt | 10 | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | gpt | 11(a) | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | gpt | 11(b) | DISAGREE | DISAGREE | (no reason given) |
@@ -579,9 +555,9 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f8962 | gpt | 11(d) | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | gpt | 11(e) | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | gpt | 11(f) | DISAGREE | DISAGREE | (no reason given) |
-| f8962 | gpt | 12(a) | DISAGREE | DISAGREE | (no reason given) |
+| f8962 | gpt | 12(a) | DISAGREE | DISAGREE | The sentence on p. 16 directing non-electors to skip columns (a)–(e) conflicts with line 10, the monthly column instructions, and p. 17 column (c). This transcription follows those explicit monthly computations for eligible taxpayers who did not elect Part V. |
 | f8962 | gpt | 12(b) | DISAGREE | DISAGREE | (no reason given) |
-| f8962 | gpt | 12(c) | DISAGREE | DISAGREE | The interface normalizes blank monthly premiums to zero and does not preserve blank-versus-zero information. Column (c) is computed from line 8b; a blank-only display cannot be determined. The p. 16 sentence directing non-electors to skip columns (a)–(e) conflicts with the form and p. 17 column (c); this transcription follows the form and the explicit non-Part-V calculation. |
+| f8962 | gpt | 12(c) | DISAGREE | DISAGREE | The supplied monthly fields use zero for absent coverage and do not preserve blank cells. The contribution is computed for every month; zero enrollment premiums still force zero monthly credit. |
 | f8962 | gpt | 12(d) | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | gpt | 12(e) | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | gpt | 12(f) | DISAGREE | DISAGREE | (no reason given) |
@@ -651,23 +627,23 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f8962 | gpt | 23(d) | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | gpt | 23(e) | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | gpt | 23(f) | DISAGREE | DISAGREE | (no reason given) |
-| f8962 | gpt | 24 | DISAGREE | DISAGREE | The supplied text refers to married-filing-separately exceptions but omits their defining page and the interface has no exception facts. Such returns are refused rather than presumed eligible or ineligible. Below-100% ineligibility returns zero without evaluating contribution or credit arithmetic. |
-| f8962 | gpt | 25 | DISAGREE | DISAGREE | Annual column C and the sum of monthly column C represent the same annual APTC. Their consistency is checked only when both are known; missing monthly figures do not block the annual route. |
-| f8962 | gpt | 26 | DISAGREE | DISAGREE | A blank when APTC exceeds PTC is represented as zero for the Schedule 3 result. Alternative-calculation cases are refused upstream. |
+| f8962 | gpt | 24 | DISAGREE | DISAGREE | (no reason given) |
+| f8962 | gpt | 25 | DISAGREE | DISAGREE | (no reason given) |
+| f8962 | gpt | 26 | DISAGREE | DISAGREE | A blank net-credit line is represented internally by zero. Part V is refused. The below-poverty STOP reaches this result as zero. |
 | f8962 | gpt | 27 | DISAGREE | DISAGREE | (no reason given) |
-| f8962 | gpt | 28 | DISAGREE | DISAGREE | The blank at 400% or more has a hidden zero representation, never used as a repayment cap. Line 29 directly uses line 27 in that case. |
+| f8962 | gpt | 28 | DISAGREE | DISAGREE | For 400% or more, the printed blank is represented internally by zero; line 29 bypasses this value. Coordination with a Marketplace self-employed health insurance deduction is excluded by the supplied Schedule C screening interface. |
 | f8962 | gpt | 29 | DISAGREE | DISAGREE | (no reason given) |
-| f8962 | gpt | 2a | DISAGREE | DISAGREE | Form 2555 amounts and Form 8814 treatment are outside the screened scope. |
-| f8962 | gpt | 2b | DISAGREE | DISAGREE | (no reason given) |
+| f8962 | gpt | 2a | DISAGREE | DISAGREE | Form 2555 amounts are outside this slice; the supplied excluded-income screen is used conservatively. |
+| f8962 | gpt | 2b | DISAGREE | DISAGREE | Form 8814 is excluded by the supplied scope screen. |
 | f8962 | gpt | 3 | DISAGREE | DISAGREE | (no reason given) |
-| f8962 | gpt | 4 | DISAGREE | DISAGREE | The supplied table interface must include the printed additional-person rule for family sizes above eight; an absent key remains unknown. |
+| f8962 | gpt | 4 | DISAGREE | DISAGREE | The supplied table interface must include the printed extensions for family sizes above eight; missing entries remain unknown. |
 | f8962 | gpt | 5 | DISAGREE | DISAGREE | (no reason given) |
-| f8962 | gpt | 7 | DISAGREE | DISAGREE | (no reason given) |
+| f8962 | gpt | 7 | DISAGREE | DISAGREE | Computed but hidden when the below-poverty instruction skips lines 7 and 8; the credit result separately enforces that instruction. |
 | f8962 | gpt | 8a | DISAGREE | DISAGREE | (no reason given) |
 | f8962 | gpt | 8b | DISAGREE | DISAGREE | (no reason given) |
-| f8962 | gpt | 9 | DISAGREE | DISAGREE | The closed interface supplies neither an alternative-calculation election nor all facts needed for Table 4. Pre-marriage Marketplace coverage is conservatively refused; within the remaining scope no alternative calculation applies. |
-| f8962 | gpt | f8962.any | DISAGREE | DISAGREE | Interpreted as presence of a usable Marketplace statement, not a complete determination of a filing obligation or a PTC election. The closed interface does not supply an election to claim PTC when no APTC was paid, or independently establish that all required statements were obtained. |
-| f8962 | gpt | f8962.forms | DISAGREE | DISAGREE | Interpreted as the number of usable Forms 1095-A, excluding void and superseded forms; the IRS text does not name this project interface. |
+| f8962 | gpt | 9 | DISAGREE | DISAGREE | The interface supplies neither the alternative-calculation election nor all its eligibility facts. Pre-marriage Marketplace coverage is conservatively refused, including its special SLCSP aggregation rules; within the remaining scope line 9 is No. |
+| f8962 | gpt | f8962.any | DISAGREE | DISAGREE | Chosen reading: at least one usable Form 1095-A is supplied. This is not independently a determination that Form 8962 must be filed; the closed interface has no separate election to claim PTC. |
+| f8962 | gpt | f8962.forms | DISAGREE | DISAGREE | The IRS does not define this project interface name. Chosen reading: count usable Forms 1095-A, excluding void or superseded forms; not the number of Forms 8962 to file. |
 | f8995 | deepseek | 16 | DISAGREE | DISAGREE | (no reason given) |
 | f8995 | deepseek | 17 | DISAGREE | DISAGREE | (no reason given) |
 | f8995 | deepseek | 3 | DISAGREE | DISAGREE | (no reason given) |
@@ -832,14 +808,14 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | sa | deepseek | sa.itemizes | DISAGREE | DISAGREE | (no reason given) |
 | sales | deepseek | (e) | DISAGREE | DISAGREE | (no reason given) |
 | sales | deepseek | (g) | DISAGREE | DISAGREE | (no reason given) |
-| sc | deepseek | 1(c) | DISAGREE | DISAGREE | The supplied text and inputs do not provide a per-business allocation of the deductible part of self-employment tax, retirement plan contributions, or similar QBI reductions; this line reports the Schedule C net profit as the business's QBI. |
+| sc | deepseek | 1(c) | DISAGREE | DISAGREE | The provided interface does not supply per-business allocations of the deductible part of self-employment tax, SEP/SIMPLE/qualified plan contributions, or the self-employed health insurance deduction for Form 8995 line 1(c); this records the Schedule C result before those QBI reductions. |
 | sc | deepseek | 12 (sc.s179_allowed) | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | 13 (sc.line13) | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | 4 (sc.f7206_line4) | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | 4 (sc.ho_line4) | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | 5 (sc.ho_line5) | DISAGREE | DISAGREE | (no reason given) |
-| sc | deepseek | 7 (sc.f7206_line7) | DISAGREE | DISAGREE | Form 7206 line 6 does not state a rounding rule; this line applies prorate with 9 decimal places to the line 4/line 5 ratio. |
-| sc | deepseek | 9 (sc.f7206_line9) | DISAGREE | DISAGREE | The supplied interface provides only the Schedule 1 line 16 total, not a per-business allocation; this line uses that total. |
+| sc | deepseek | 7 (sc.f7206_line7) | DISAGREE | DISAGREE | The IRS text does not state rounding for line 6; the line 4 / line 5 ratio is rounded half-up to three decimal places. |
+| sc | deepseek | 9 (sc.f7206_line9) | DISAGREE | DISAGREE | The provided interface does not supply a per-business allocation of the SEP, SIMPLE, and qualified plan deduction; this uses the person-level plan deduction. |
 | sc | deepseek | sc.f14 | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | sc.f17 | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | sc.f19_y10 | DISAGREE | DISAGREE | (no reason given) |
@@ -851,25 +827,23 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | sc | deepseek | sc.f19_y7 | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | sc.f25 | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | sc.f28 | DISAGREE | DISAGREE | (no reason given) |
-| sc | deepseek | sc.f29 | DISAGREE | DISAGREE | (no reason given) |
-| sc | deepseek | sc.f6 | DISAGREE | DISAGREE | (no reason given) |
-| sc | deepseek | sc.line31_pre179 | DISAGREE | DISAGREE | (no reason given) |
+| sc | deepseek | sc.line31_pre179 | DISAGREE | DISAGREE | Schedule SE line 2 adds back the section 179 deduction to Schedule C line 31. |
 | sc | deepseek | sc.profit_pos | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | sc.result | DISAGREE | DISAGREE | (no reason given) |
 | sc | deepseek | sc.rrta | DISAGREE | DISAGREE | (no reason given) |
 | scveh | deepseek | 10 | DISAGREE | DISAGREE | (no reason given) |
-| scveh | deepseek | 13 | DISAGREE | DISAGREE | (no reason given) |
-| scveh | deepseek | 16 | DISAGREE | DISAGREE | For property acquired on or before January 19, 2025, the applicable allowance is 40%; for property acquired after that date, it is 100% unless the 40% election is made. |
+| scveh | deepseek | 13 | DISAGREE | DISAGREE | The IRS worksheet states the business/investment use percentage but does not state a rounding precision; this model rounds the mileage ratio to three decimal places. |
+| scveh | deepseek | 14 | DISAGREE | DISAGREE | (no reason given) |
+| scveh | deepseek | 16 | DISAGREE | DISAGREE | (no reason given) |
 | scveh | deepseek | 19 | DISAGREE | DISAGREE | (no reason given) |
 | scveh | deepseek | 20a | DISAGREE | DISAGREE | (no reason given) |
-| scveh | deepseek | 7 | DISAGREE | DISAGREE | The worksheet line 7 is the passenger-automobile limit. For a vehicle not subject to those limits I used its cost as the unconstrained maximum, so that line 9 is its business cost. |
+| scveh | deepseek | 25 | DISAGREE | DISAGREE | (no reason given) |
+| scveh | deepseek | 7 | DISAGREE | DISAGREE | (no reason given) |
 | scveh | deepseek | 9 (scveh.line9) | DISAGREE | DISAGREE | (no reason given) |
-| scveh | deepseek | 9 (scveh.line9w) | DISAGREE | DISAGREE | (no reason given) |
+| scveh | deepseek | 9 (scveh.line9w) | DISAGREE | DISAGREE | The IRS worksheet states the business/investment use percentage but does not state a rounding precision; this model rounds the mileage ratio to three decimal places. |
 | scveh | deepseek | scveh.bonus | DISAGREE | DISAGREE | (no reason given) |
-| scveh | deepseek | scveh.cost179 | DISAGREE | DISAGREE | (no reason given) |
 | scveh | deepseek | scveh.macrs | DISAGREE | DISAGREE | (no reason given) |
 | scveh | deepseek | scveh.mq_q4 | DISAGREE | DISAGREE | (no reason given) |
-| scveh | deepseek | scveh.mq_total | DISAGREE | DISAGREE | (no reason given) |
 | scveh | deepseek | scveh.s179_2025 | DISAGREE | DISAGREE | (no reason given) |
 | sd | deepseek | 10(d) | DISAGREE | DISAGREE | (no reason given) |
 | sd | deepseek | 10(e) | DISAGREE | DISAGREE | (no reason given) |
@@ -952,7 +926,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | form | second family (model) | lines judged by both | both agree | raw agreement | noise / judged | eligibility | current yield | both disputed | Claude only | not judged by both |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | aqee | deepseek (deepseek-flash) | 4 | 4 | 100.0% | 0/4 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| asset | deepseek (deepseek-flash) | 15 | 12 | 80.0% | 0/15 (0.0%) | pass | 3 | 0 | 0 | 0 |
+| asset | deepseek (deepseek-flash) | 15 | 9 | 60.0% | 0/15 (0.0%) | pass | 6 | 0 | 0 | 0 |
 | carloan | deepseek (deepseek-flash) | 2 | 1 | 50.0% | 0/2 (0.0%) | pass | 0 | 1 | 0 | 0 |
 | clcw | deepseek (deepseek-flash) | 13 | 12 | 92.3% | 0/13 (0.0%) | pass | 0 | 0 | 1 | 0 |
 | clcw26 | deepseek (deepseek-flash) | 13 | 12 | 92.3% | 0/13 (0.0%) | pass | 0 | 0 | 1 | 0 |
@@ -961,8 +935,8 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | div | deepseek (deepseek-flash) | 22 | 22 | 100.0% | 0/22 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | eic | deepseek (deepseek-flash) | 13 | 13 | 100.0% | 0/13 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | f1040 | deepseek (deepseek-flash) | 58 | 52 | 89.7% | 1/58 (1.7%) | pass | 5 | 0 | 1 | 0 |
-| f1095a | deepseek (deepseek-flash) | 77 | 76 | 98.7% | 0/77 (0.0%) | pass | 0 | 1 | 0 | 0 |
-| f1095a | gpt (gpt-6-astra) | 77 | 75 | 97.4% | 0/77 (0.0%) | pass | 1 | 1 | 0 | 0 |
+| f1095a | deepseek (deepseek-flash) | 77 | 51 | 66.2% | 0/77 (0.0%) | pass | 12 | 0 | 14 | 0 |
+| f1095a | gpt (gpt-6-astra) | 77 | 50 | 64.9% | 0/77 (0.0%) | pass | 13 | 14 | 0 | 0 |
 | f2441 | deepseek (deepseek-flash) | 36 | 29 | 80.6% | 0/36 (0.0%) | pass | 2 | 3 | 2 | 0 |
 | f4562 | deepseek (deepseek-flash) | 15 | 10 | 66.7% | 0/15 (0.0%) | pass | 3 | 2 | 0 | 0 |
 | f4952 | deepseek (deepseek-flash) | 15 | 14 | 93.3% | 1/15 (6.7%) | pass | 0 | 1 | 0 | 0 |
@@ -974,8 +948,8 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f8889 | deepseek (deepseek-flash) | 19 | 12 | 63.2% | 0/19 (0.0%) | pass | 5 | 0 | 2 | 0 |
 | f8959 | deepseek (deepseek-flash) | 24 | 23 | 95.8% | 0/24 (0.0%) | pass | 0 | 0 | 1 | 0 |
 | f8960 | deepseek (deepseek-flash) | 25 | 23 | 92.0% | 0/25 (0.0%) | pass | 1 | 1 | 0 | 0 |
-| f8962 | deepseek (deepseek-flash) | 95 | 91 | 95.8% | 0/95 (0.0%) | pass | 0 | 2 | 2 | 0 |
-| f8962 | gpt (gpt-6-astra) | 95 | 23 | 24.2% | 0/95 (0.0%) | pass | 68 | 4 | 0 | 0 |
+| f8962 | deepseek (deepseek-flash) | 95 | 77 | 81.1% | 0/95 (0.0%) | pass | 1 | 2 | 15 | 0 |
+| f8962 | gpt (gpt-6-astra) | 95 | 26 | 27.4% | 65/95 (68.4%) | pending | 52 | 17 | 0 | 0 |
 | f8995 | deepseek (deepseek-flash) | 16 | 13 | 81.2% | 0/16 (0.0%) | pending | 1 | 1 | 1 | 0 |
 | f8995a | deepseek (deepseek-flash) | 14 | 12 | 85.7% | 0/14 (0.0%) | pending | 1 | 0 | 1 | 0 |
 | ftc | deepseek (deepseek-flash) | 12 | 11 | 91.7% | 0/12 (0.0%) | pass | 0 | 1 | 0 | 0 |
@@ -999,12 +973,12 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | s2 | deepseek (deepseek-flash) | 12 | 10 | 83.3% | 0/12 (0.0%) | pass | 2 | 0 | 0 | 0 |
 | s3 | deepseek (deepseek-flash) | 13 | 11 | 84.6% | 0/13 (0.0%) | pass | 1 | 0 | 1 | 0 |
 | s8812 | deepseek (deepseek-flash) | 50 | 48 | 96.0% | 0/50 (0.0%) | pass | 0 | 1 | 1 | 0 |
-| sa | deepseek (deepseek-flash) | 24 | 23 | 95.8% | 0/24 (0.0%) | pass | 0 | 1 | 0 | 0 |
+| sa | deepseek (deepseek-flash) | 23 | 22 | 95.7% | 0/24 (0.0%) | pass | 0 | 1 | 0 | 1 |
 | sales | deepseek (deepseek-flash) | 3 | 1 | 33.3% | 0/3 (0.0%) | pass | 0 | 2 | 0 | 0 |
 | sb | deepseek (deepseek-flash) | 6 | 4 | 66.7% | 0/6 (0.0%) | pending | 1 | 1 | 0 | 0 |
-| sc | deepseek (deepseek-flash) | 74 | 66 | 89.2% | 0/74 (0.0%) | pending | 2 | 2 | 4 | 1 |
+| sc | deepseek (deepseek-flash) | 75 | 72 | 96.0% | 0/75 (0.0%) | pass | 3 | 0 | 0 | 0 |
 | scope | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pass | 0 | 0 | 2 | 0 |
-| scveh | deepseek (deepseek-flash) | 26 | 19 | 73.1% | 0/26 (0.0%) | pending | 0 | 3 | 4 | 0 |
+| scveh | deepseek (deepseek-flash) | 26 | 22 | 84.6% | 0/26 (0.0%) | pending | 1 | 3 | 0 | 0 |
 | sd | deepseek (deepseek-flash) | 46 | 45 | 97.8% | 0/46 (0.0%) | pass | 1 | 0 | 0 | 0 |
 | sdtw | deepseek (deepseek-flash) | 47 | 46 | 97.9% | 0/47 (0.0%) | pass | 0 | 1 | 0 | 0 |
 | se | deepseek (deepseek-flash) | 15 | 10 | 66.7% | 0/15 (0.0%) | pending | 0 | 5 | 0 | 0 |
@@ -1015,9 +989,10 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | tipjob | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 4 | 22.2% | 0/18 (0.0%) | pass | 0 | 13 | 1 | 0 |
 | w2 | deepseek (deepseek-flash) | 17 | 17 | 100.0% | 0/17 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| **all** | | 1494 | 1254 | 83.9% | | | 116 | 82 | 42 | 1 |
+| **all** | | 1494 | 1198 | 80.2% | | | 130 | 105 | 61 | 1 |
 
 Pending f8606 [deepseek]: 1 open, unclassified or interface-gap rulings.
+Pending f8962 [gpt]: model-error noise above 10%.
 Pending f8995 [deepseek]: 2 open, unclassified or interface-gap rulings.
 Pending f8995a [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending ira [deepseek]: 5 open, unclassified or interface-gap rulings.
@@ -1025,7 +1000,6 @@ Pending mq [deepseek]: 2 open, unclassified or interface-gap rulings.
 Pending oi8z [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending qbi [deepseek]: model-error noise above 10%.
 Pending sb [deepseek]: 1 open, unclassified or interface-gap rulings.
-Pending sc [deepseek]: 1 missing expected lines.
 Pending scveh [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending se [deepseek]: 5 open, unclassified or interface-gap rulings.
 Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
@@ -1034,15 +1008,42 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 
 | form | second family | line | second family's verdict | second family's reason |
 | --- | --- | --- | --- | --- |
-| asset | deepseek | 25 | MISMATCH | IRS line 25 says 'Enter on line 25 your total special depreciation allowance for all qualified listed property'; the restatement instead takes the line 14 amount, which is for non-listed property. |
-| asset | deepseek | 26(h) | MISMATCH | IRS line 26(h) says for property used more than 50% in a qualified business use and placed in service after 1986, 'figure column (h) by following the instructions for line 19, column (g)'; the restatement adds line 19(g)/line 17 amounts, which are for non-listed property, instead of computing from the listed property's own basis after line 26(i) and line 25. |
-| asset | deepseek | 26(i) | MISMATCH | IRS line 6 says 'Do not include any listed property on line 6,' and line 26 column (i) is the elected section 179 cost for listed property; the restatement takes line 6(c). |
+| asset | deepseek | (c) | MISMATCH | IRS line 26/27 uses qualified business use: "Use line 26 to figure depreciation for property used more than 50% in a qualified business use. Use line 27 ... 50% or less in a qualified business use." The refusal gate asset.listed_low instead tests the business/investment-use percentage. |
+| asset | deepseek | (d) | MISMATCH | The IRS assigns qualified improvement property to 15-year property in the line 19 classification instructions ("Qualified improvement property ... placed in service by you after December 31, 2017"), but the restatement only points to Appendix B Tables B-1/B-2, which do not list QIP. |
+| asset | deepseek | 14 | MISMATCH | IRS says to figure the allowance by subtracting from the business/investment cost "any credits and deductions allocable to the property"; the special-allowance helpers use only cost less the section 179 election. |
+| asset | deepseek | 19(c) | MISMATCH | IRS says after multiplying cost by business/investment use, "subtract any credits and deductions allocable to the property." The helper only subtracts section 179 and the special allowance, omitting other required credits and deductions. |
+| asset | deepseek | 25 | MISMATCH | IRS says "Enter on line 25 your total special depreciation allowance for all qualified listed property." The restatement copies line 14, which the program itself limits to non-listed property. |
+| asset | deepseek | 26(i) | MISMATCH | IRS says "Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26." Line 26(i) is the listed property election, not the line 6(c) amount. |
 | f1040 | deepseek | 16 | MISMATCH | The restatement also requires the Qualified Dividends and Capital Gain Tax Worksheet to apply, but the IRS says to use the Schedule D Tax Worksheet if 'You have to file Form 4952 and you have an amount on line 4g, even if you don’t need to file Schedule D.' |
 | f1040 | deepseek | 1z | MISMATCH | IRS line 1z says 'Add lines 1a through 1h', but the restatement adds only line 1a and line 1e, omitting lines 1b through 1d and 1f through 1h. |
 | f1040 | deepseek | 27c | MISMATCH | IRS says 'Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box'; the restatement deliberately omits the filer's own choice not to claim the EIC. |
 | f1040 | deepseek | 28 (box) | MISMATCH | IRS line 28 says 'If you do not want to claim the ACTC, check here'; the restatement hard-codes the box to false, so it cannot reflect a taxpayer's election not to claim the ACTC. |
 | f1040 | deepseek | 29 | MISMATCH | The eligibility test uses only expenses paid and dependent status, but Form 8863 instructions state, for example, 'You cannot claim an education credit ... if ... Your filing status is married filing separately' and impose other eligibility limits. |
-| f1095a | gpt | b_used | MISMATCH | For multiple forms, this adopts a whole-form flag that cannot implement the IRS selection 'for that month' when coverage overlaps only partly. It also inherits the omission of the marriage instruction to 'add together the amounts from column B of the Forms 1095-A for each month before the first full month of marriage.' |
+| f1095a | deepseek | in_a_apr | MISMATCH | IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed. |
+| f1095a | deepseek | in_a_aug | MISMATCH | IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed. |
+| f1095a | deepseek | in_a_dec | MISMATCH | IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed. |
+| f1095a | deepseek | in_a_feb | MISMATCH | IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed. |
+| f1095a | deepseek | in_a_jan | MISMATCH | IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed. |
+| f1095a | deepseek | in_a_jul | MISMATCH | IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed. |
+| f1095a | deepseek | in_a_jun | MISMATCH | IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed. |
+| f1095a | deepseek | in_a_mar | MISMATCH | IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed. |
+| f1095a | deepseek | in_a_may | MISMATCH | IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed. |
+| f1095a | deepseek | in_a_nov | MISMATCH | IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed. |
+| f1095a | deepseek | in_a_oct | MISMATCH | IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed. |
+| f1095a | deepseek | in_a_sep | MISMATCH | IRS text says enter -0- if the enrollment premiums for the month were not paid by the due date of the return (unless an exception applies); the restatement zeros only if no premiums at all were paid, so a partial underpayment would not be zeroed. |
+| f1095a | gpt | b_used | MISMATCH | The whole-form Boolean cannot represent counting a form only in some months of overlapping coverage. The IRS applies its multiple-form rules to forms 'showing coverage in a particular month,' and also provides a marriage exception to counting only one form. |
+| f1095a | gpt | in_a_apr | MISMATCH | The rule 'zero only if no premiums were paid' excludes insufficient partial payments. The IRS says, 'For other months where the monthly premiums were not fully paid, enter a -0- for that month.' |
+| f1095a | gpt | in_a_aug | MISMATCH | The rule 'zero only if no premiums were paid' excludes insufficient partial payments. The IRS says, 'For other months where the monthly premiums were not fully paid, enter a -0- for that month.' |
+| f1095a | gpt | in_a_dec | MISMATCH | The rule 'zero only if no premiums were paid' excludes insufficient partial payments. The IRS says, 'For other months where the monthly premiums were not fully paid, enter a -0- for that month.' |
+| f1095a | gpt | in_a_feb | MISMATCH | The rule 'zero only if no premiums were paid' excludes insufficient partial payments. The IRS says, 'For other months where the monthly premiums were not fully paid, enter a -0- for that month.' |
+| f1095a | gpt | in_a_jan | MISMATCH | The rule 'zero only if no premiums were paid' excludes insufficient partial payments. The IRS says, 'For other months where the monthly premiums were not fully paid, enter a -0- for that month.' |
+| f1095a | gpt | in_a_jul | MISMATCH | The rule 'zero only if no premiums were paid' excludes insufficient partial payments. The IRS says, 'For other months where the monthly premiums were not fully paid, enter a -0- for that month.' |
+| f1095a | gpt | in_a_jun | MISMATCH | The rule 'zero only if no premiums were paid' excludes insufficient partial payments. The IRS says, 'For other months where the monthly premiums were not fully paid, enter a -0- for that month.' |
+| f1095a | gpt | in_a_mar | MISMATCH | The rule 'zero only if no premiums were paid' excludes insufficient partial payments. The IRS says, 'For other months where the monthly premiums were not fully paid, enter a -0- for that month.' |
+| f1095a | gpt | in_a_may | MISMATCH | The rule 'zero only if no premiums were paid' excludes insufficient partial payments. The IRS says, 'For other months where the monthly premiums were not fully paid, enter a -0- for that month.' |
+| f1095a | gpt | in_a_nov | MISMATCH | The rule 'zero only if no premiums were paid' excludes insufficient partial payments. The IRS says, 'For other months where the monthly premiums were not fully paid, enter a -0- for that month.' |
+| f1095a | gpt | in_a_oct | MISMATCH | The rule 'zero only if no premiums were paid' excludes insufficient partial payments. The IRS says, 'For other months where the monthly premiums were not fully paid, enter a -0- for that month.' |
+| f1095a | gpt | in_a_sep | MISMATCH | The rule 'zero only if no premiums were paid' excludes insufficient partial payments. The IRS says, 'For other months where the monthly premiums were not fully paid, enter a -0- for that month.' |
 | f2441 | deepseek | 12 | MISMATCH | The IRS line says 'If you were self-employed or a partner, include amounts you received under a dependent care assistance program from your sole proprietorship or partnership'; the restatement sums only W-2 box 10 benefits and has no refusal for that case. |
 | f2441 | deepseek | 22 | MISMATCH | The IRS line asks whether any amount on line 12 or 13 is from a sole proprietorship or partnership and enters that amount if yes; the restatement always enters $0. |
 | f4562 | deepseek | 25 | MISMATCH | The helper sums asset.bonus_2025 for listed property, but that asset helper uses line 14, which is expressly for property '(other than listed property)'; line 25 is the special allowance for qualified listed property used more than 50% in a qualified business use. |
@@ -1061,74 +1062,59 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | f8889 | deepseek | 17a | MISMATCH | The IRS exceptions are distributions made after the account beneficiary 'Dies, Becomes disabled or Turns age 65'; the restatement lists only disabled or age 65. |
 | f8889 | deepseek | 4 | MISMATCH | The IRS line says 'Enter the amount you and your employer contributed to your Archer MSAs for 2025 from Form 8853, lines 1 and 2' and to include spouse's Archer MSA contributions in family-coverage cases; the restatement always enters zero. |
 | f8960 | deepseek | 9b | MISMATCH | IRS line 9b includes state, local, and foreign income taxes and foreign real property taxes; the restatement is limited to state and local income and property taxes and only notes an exclusion for foreign credits. |
-| f8962 | gpt | 11(a) | MISMATCH | The sum matches, but the reporting gate omits the instruction for married filing separately without Exception 2 to “skip columns (a) through (e), and complete only column (f).” |
-| f8962 | gpt | 11(b) | MISMATCH | The reporting gate omits the instruction for married filing separately without Exception 2 to “skip columns (a) through (e), and complete only column (f).” |
-| f8962 | gpt | 11(c) | MISMATCH | The income-only applicable-taxpayer helper can populate this column for married filing separately without Exception 2, despite the instruction to “skip columns (a) through (e).” |
-| f8962 | gpt | 11(d) | MISMATCH | The subtraction matches, but the income-only applicability helper can populate this column despite the married-filing-separately instruction to “skip columns (a) through (e).” |
-| f8962 | gpt | 11(e) | MISMATCH | The minimum calculation matches, but the income-only applicability helper can allow credit despite the married-filing-separately instruction to “skip columns (a) through (e).” |
-| f8962 | gpt | 12(a) | UNCLEAR | The January premium sum matches the column instructions, but page 16 also says to skip columns (a)–(e) if the alternative marriage calculation was not elected, conflicting with the ordinary monthly calculation instructions. |
-| f8962 | gpt | 12(b) | UNCLEAR | The supported January SLCSP calculation matches, but page 16's instruction to skip columns (a)–(e) without a marriage election conflicts with the ordinary monthly calculation instructions. |
-| f8962 | gpt | 12(c) | UNCLEAR | Page 17 directs taxpayers who did not complete Part V to enter line 8b, while page 16 directs those without that election to skip this column. |
-| f8962 | gpt | 12(d) | UNCLEAR | The January subtraction matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 12(e) | UNCLEAR | The January minimum calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 13(a) | UNCLEAR | The February premium sum matches, but page 16's instruction to skip columns (a)–(e) without a marriage election conflicts with the ordinary monthly calculation instructions. |
-| f8962 | gpt | 13(b) | UNCLEAR | The supported February SLCSP calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 13(c) | UNCLEAR | Page 17 directs taxpayers who did not complete Part V to enter line 8b, while page 16 directs those without that election to skip this column. |
-| f8962 | gpt | 13(d) | UNCLEAR | The February subtraction matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 13(e) | UNCLEAR | The February minimum calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 14(a) | UNCLEAR | The March premium sum matches, but page 16's instruction to skip columns (a)–(e) without a marriage election conflicts with the ordinary monthly calculation instructions. |
-| f8962 | gpt | 14(b) | UNCLEAR | The supported March SLCSP calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 14(c) | UNCLEAR | Page 17 directs taxpayers who did not complete Part V to enter line 8b, while page 16 directs those without that election to skip this column. |
-| f8962 | gpt | 14(d) | UNCLEAR | The March subtraction matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 14(e) | UNCLEAR | The March minimum calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 15(a) | UNCLEAR | The April premium sum matches, but page 16's instruction to skip columns (a)–(e) without a marriage election conflicts with the ordinary monthly calculation instructions. |
-| f8962 | gpt | 15(b) | UNCLEAR | The supported April SLCSP calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 15(c) | UNCLEAR | Page 17 directs taxpayers who did not complete Part V to enter line 8b, while page 16 directs those without that election to skip this column. |
-| f8962 | gpt | 15(d) | UNCLEAR | The April subtraction matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 15(e) | UNCLEAR | The April minimum calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 16(a) | UNCLEAR | The May premium sum matches, but page 16's instruction to skip columns (a)–(e) without a marriage election conflicts with the ordinary monthly calculation instructions. |
-| f8962 | gpt | 16(b) | UNCLEAR | The supported May SLCSP calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 16(c) | UNCLEAR | Page 17 directs taxpayers who did not complete Part V to enter line 8b, while page 16 directs those without that election to skip this column. |
-| f8962 | gpt | 16(d) | UNCLEAR | The May subtraction matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 16(e) | UNCLEAR | The May minimum calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 17(a) | UNCLEAR | The June premium sum matches, but page 16's instruction to skip columns (a)–(e) without a marriage election conflicts with the ordinary monthly calculation instructions. |
-| f8962 | gpt | 17(b) | UNCLEAR | The supported June SLCSP calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 17(c) | UNCLEAR | Page 17 directs taxpayers who did not complete Part V to enter line 8b, while page 16 directs those without that election to skip this column. |
-| f8962 | gpt | 17(d) | UNCLEAR | The June subtraction matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 17(e) | UNCLEAR | The June minimum calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 18(a) | UNCLEAR | The July premium sum matches, but page 16's instruction to skip columns (a)–(e) without a marriage election conflicts with the ordinary monthly calculation instructions. |
-| f8962 | gpt | 18(b) | UNCLEAR | The supported July SLCSP calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 18(c) | UNCLEAR | Page 17 directs taxpayers who did not complete Part V to enter line 8b, while page 16 directs those without that election to skip this column. |
-| f8962 | gpt | 18(d) | UNCLEAR | The July subtraction matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 18(e) | UNCLEAR | The July minimum calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 19(a) | UNCLEAR | The August premium sum matches, but page 16's instruction to skip columns (a)–(e) without a marriage election conflicts with the ordinary monthly calculation instructions. |
-| f8962 | gpt | 19(b) | UNCLEAR | The supported August SLCSP calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 19(c) | UNCLEAR | Page 17 directs taxpayers who did not complete Part V to enter line 8b, while page 16 directs those without that election to skip this column. |
-| f8962 | gpt | 19(d) | UNCLEAR | The August subtraction matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 19(e) | UNCLEAR | The August minimum calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 20(a) | UNCLEAR | The September premium sum matches, but page 16's instruction to skip columns (a)–(e) without a marriage election conflicts with the ordinary monthly calculation instructions. |
-| f8962 | gpt | 20(b) | UNCLEAR | The supported September SLCSP calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 20(c) | UNCLEAR | Page 17 directs taxpayers who did not complete Part V to enter line 8b, while page 16 directs those without that election to skip this column. |
-| f8962 | gpt | 20(d) | UNCLEAR | The September subtraction matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 20(e) | UNCLEAR | The September minimum calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 21(a) | UNCLEAR | The October premium sum matches, but page 16's instruction to skip columns (a)–(e) without a marriage election conflicts with the ordinary monthly calculation instructions. |
-| f8962 | gpt | 21(b) | UNCLEAR | The supported October SLCSP calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 21(c) | UNCLEAR | Page 17 directs taxpayers who did not complete Part V to enter line 8b, while page 16 directs those without that election to skip this column. |
-| f8962 | gpt | 21(d) | UNCLEAR | The October subtraction matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 21(e) | UNCLEAR | The October minimum calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 22(a) | UNCLEAR | The November premium sum matches, but page 16's instruction to skip columns (a)–(e) without a marriage election conflicts with the ordinary monthly calculation instructions. |
-| f8962 | gpt | 22(b) | UNCLEAR | The supported November SLCSP calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 22(c) | UNCLEAR | Page 17 directs taxpayers who did not complete Part V to enter line 8b, while page 16 directs those without that election to skip this column. |
-| f8962 | gpt | 22(d) | UNCLEAR | The November subtraction matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 22(e) | UNCLEAR | The November minimum calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 23(a) | UNCLEAR | The December premium sum matches, but page 16's instruction to skip columns (a)–(e) without a marriage election conflicts with the ordinary monthly calculation instructions. |
-| f8962 | gpt | 23(b) | UNCLEAR | The supported December SLCSP calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 23(c) | UNCLEAR | Page 17 directs taxpayers who did not complete Part V to enter line 8b, while page 16 directs those without that election to skip this column. |
-| f8962 | gpt | 23(d) | UNCLEAR | The December subtraction matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 23(e) | UNCLEAR | The December minimum calculation matches, but the supplied instructions conflict about completing this column without a marriage election. |
-| f8962 | gpt | 7 | MISMATCH | The applicable-taxpayer helper tests income but omits other eligibility requirements. The instructions require that “no one can claim you as a dependent” and generally that married taxpayers “must file a joint return.” |
-| f8962 | gpt | 8a | MISMATCH | The multiplication and rounding match, but the applicability gate omits the requirement that “no one can claim you as a dependent” and the general joint-return requirement. |
-| f8962 | gpt | 8b | MISMATCH | Dividing by 12 and rounding match, but the applicability gate omits the requirement that “no one can claim you as a dependent” and the general joint-return requirement. |
+| f8962 | deepseek | 29 | MISMATCH | IRS line 29 says 'If line 28 is blank, enter the amount from line 27'; the restatement only says enter the smaller of line 27 or line 28 and omits the blank-line-28 case. |
+| f8962 | gpt | 11(a) | MISMATCH | The reporting condition includes married-filing-separately taxpayers without the exception. The instructions say they must 'skip columns (a) through (e), and complete only column (f).' |
+| f8962 | gpt | 11(c) | MISMATCH | The applicable-taxpayer helper tests income but omits the filing-status restriction. For married-filing-separately taxpayers without the exception, the instructions require 'skip columns (a) through (e).' |
+| f8962 | gpt | 11(d) | MISMATCH | The subtraction is correct, but the income-only eligibility helper permits entries where the instructions require married-filing-separately taxpayers without the exception to 'skip columns (a) through (e).' |
+| f8962 | gpt | 11(e) | MISMATCH | The minimum calculation is correct, but the eligibility helper permits credit for excluded married-filing-separately taxpayers. The instructions say 'you cannot take the PTC.' |
+| f8962 | gpt | 12(a) | UNCLEAR | The January premium sum matches the column instruction, but page 16 also says to skip columns (a)–(e) if the alternative marriage calculation was not elected, conflicting with the form and subsequent instructions. |
+| f8962 | gpt | 12(c) | UNCLEAR | Page 17 directs using line 8b without Part V, while page 16 directs skipping columns (a)–(e) without the alternative marriage election. |
+| f8962 | gpt | 12(d) | UNCLEAR | The subtraction matches, but the supplied instructions conflict on whether columns (a)–(e) are completed without a marriage election. |
+| f8962 | gpt | 12(e) | UNCLEAR | The minimum matches, but the supplied instructions conflict on whether columns (a)–(e) are completed without a marriage election. |
+| f8962 | gpt | 13(a) | UNCLEAR | The February premium sum matches, but page 16's direction to skip columns (a)–(e) without a marriage election conflicts with the form and column instructions. |
+| f8962 | gpt | 13(c) | UNCLEAR | Page 17 directs using line 8b without Part V, while page 16 directs skipping columns (a)–(e) without the alternative marriage election. |
+| f8962 | gpt | 13(d) | UNCLEAR | The subtraction matches, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 13(e) | UNCLEAR | The minimum matches, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 14(a) | UNCLEAR | The March premium sum matches, but page 16's direction to skip columns (a)–(e) without a marriage election conflicts with the form and column instructions. |
+| f8962 | gpt | 14(c) | UNCLEAR | Page 17 directs using line 8b without Part V, while page 16 directs skipping columns (a)–(e) without the alternative marriage election. |
+| f8962 | gpt | 14(d) | UNCLEAR | The subtraction matches, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 14(e) | UNCLEAR | The minimum matches, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 15(a) | UNCLEAR | The April premium sum matches, but page 16's direction to skip columns (a)–(e) without a marriage election conflicts with the form and column instructions. |
+| f8962 | gpt | 15(c) | UNCLEAR | Page 17 directs using line 8b without Part V, while page 16 directs skipping columns (a)–(e) without the alternative marriage election. |
+| f8962 | gpt | 15(d) | UNCLEAR | The subtraction matches, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 15(e) | UNCLEAR | The minimum matches, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 16(a) | UNCLEAR | The May premium sum matches, but page 16's direction to skip columns (a)–(e) without a marriage election conflicts with the form and column instructions. |
+| f8962 | gpt | 16(c) | UNCLEAR | Page 17 directs using line 8b without Part V, while page 16 directs skipping columns (a)–(e) without the alternative marriage election. |
+| f8962 | gpt | 16(d) | UNCLEAR | The subtraction matches, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 16(e) | UNCLEAR | The minimum matches, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 17(a) | UNCLEAR | The June premium sum matches, but page 16's direction to skip columns (a)–(e) without a marriage election conflicts with the form and column instructions. |
+| f8962 | gpt | 17(c) | UNCLEAR | Page 17 directs using line 8b without Part V, while page 16 directs skipping columns (a)–(e) without the alternative marriage election. |
+| f8962 | gpt | 17(d) | UNCLEAR | The subtraction matches, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 17(e) | UNCLEAR | The minimum matches, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 18(a) | UNCLEAR | The July premium sum matches, but page 16's direction to skip columns (a)–(e) without a marriage election conflicts with the form and column instructions. |
+| f8962 | gpt | 18(c) | UNCLEAR | Page 17 directs using line 8b without Part V, while page 16 directs skipping columns (a)–(e) without the alternative marriage election. |
+| f8962 | gpt | 18(d) | UNCLEAR | The subtraction matches, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 18(e) | UNCLEAR | The minimum matches, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 19(a) | UNCLEAR | The August premium sum matches, but page 16's direction to skip columns (a)–(e) without a marriage election conflicts with the form and column instructions. |
+| f8962 | gpt | 19(c) | UNCLEAR | Page 17 directs using line 8b without Part V, while page 16 directs skipping columns (a)–(e) without the alternative marriage election. |
+| f8962 | gpt | 19(d) | UNCLEAR | The subtraction matches, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 19(e) | UNCLEAR | The minimum matches, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 20(a) | UNCLEAR | The September premium sum matches, but page 16's direction to skip columns (a)–(e) without a marriage election conflicts with the form and column instructions. |
+| f8962 | gpt | 20(c) | UNCLEAR | Page 17 directs using line 8b without Part V, while page 16 directs skipping columns (a)–(e) without the alternative marriage election. |
+| f8962 | gpt | 20(d) | UNCLEAR | The subtraction matches, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 20(e) | UNCLEAR | The minimum matches, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 21(a) | UNCLEAR | The October premium sum matches, but page 16's direction to skip columns (a)–(e) without a marriage election conflicts with the form and column instructions. |
+| f8962 | gpt | 21(c) | UNCLEAR | Page 17 directs using line 8b without Part V, while page 16 directs skipping columns (a)–(e) without the alternative marriage election. |
+| f8962 | gpt | 21(d) | UNCLEAR | The subtraction matches, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 21(e) | UNCLEAR | The minimum matches, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 22(a) | UNCLEAR | The November premium sum matches, but page 16's direction to skip columns (a)–(e) without a marriage election conflicts with the form and column instructions. |
+| f8962 | gpt | 22(c) | UNCLEAR | Page 17 directs using line 8b without Part V, while page 16 directs skipping columns (a)–(e) without the alternative marriage election. |
+| f8962 | gpt | 22(d) | UNCLEAR | The subtraction matches, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 22(e) | UNCLEAR | The minimum matches, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 23(a) | UNCLEAR | The December premium sum matches, but page 16's direction to skip columns (a)–(e) without a marriage election conflicts with the form and column instructions. |
+| f8962 | gpt | 23(c) | UNCLEAR | Page 17 directs using line 8b without Part V, while page 16 directs skipping columns (a)–(e) without the alternative marriage election. |
+| f8962 | gpt | 23(d) | UNCLEAR | The subtraction matches, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 23(e) | UNCLEAR | The minimum matches, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
 | f8995 | deepseek | 11 | MISMATCH | IRS line 11 instructions compute 'Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b' and do not provide a zero floor; the restatement adds an 'If zero or less, enter -0-' condition. |
 | f8995a | deepseek | 33 | MISMATCH | The restatement adds an 'if zero or less, enter -0-' floor, but the IRS instruction is only 'Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b'; no zero floor is stated for line 33. |
 | g28 | deepseek | 2 | MISMATCH | IRS line 2 requires the positive total of section 1202 exclusions from Form 8949 Part II code Q at 50%, 2/3, or 1/3; the restatement enters $0 from a distribution helper and does not compute those amounts, and its refusal covers only section 1202 distributions, not Code Q exclusions generally. |
@@ -1146,8 +1132,10 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | s2 | deepseek | 1z | MISMATCH | The IRS says 'Add lines 1a through 1y,' but the restatement enters only the amount from line 1a. |
 | s3 | deepseek | 14 | MISMATCH | IRS line 14 says "Add lines 13a through 13z," but the restatement accepts a supplied subtotal instead of adding those lines. |
 | sb | deepseek | 7a | MISMATCH | The restatement covers only Question 1; the IRS line also has Line 7a—Question 2, which asks whether you are required to file FinCEN Form 114. |
-| sc | deepseek | 9 (sc.f7206_line9) | MISMATCH | IRS line 9 includes 'Schedule 1..., line 16, self-employed SEP, SIMPLE, and qualified plans'; the restatement uses only the SEP or SIMPLE deduction. |
-| sc | deepseek | F | MISMATCH | Line F asks only for the accounting method, including cash, accrual, other, and method changes via Form 3115; section 263A capitalization is a Part II/Part III matter, not a line F question. |
+| sc | deepseek | 32 | MISMATCH | The IRS line 32 instructions include an exception for certain nonrecourse financing borrowed in connection with holding real property; the restatement says to answer no for any such nonrecourse loan without mentioning that exception. |
+| sc | deepseek | 5 (sc.f7206_line5) | MISMATCH | The IRS line 5 requires the total of net profits from Schedule C, Schedule F, and Schedule K-1, plus other income allocable to profitable businesses; the helper adds only confirmed Schedule C entries. |
+| sc | deepseek | 9 (sc.f7206_line9) | MISMATCH | The IRS line 9 says to enter the amount from Schedule 1 line 16 attributable to the same trade or business; the restatement instead multiplies that deduction by line 4 divided by line 5. |
+| scveh | deepseek | (b) | MISMATCH | IRS column (b) says "Date placed in service. Enter the date the property was placed in service"; the restatement asks only for the year. |
 | sd | deepseek | 20 | MISMATCH | IRS line 17 says: 'No. Skip lines 18 through 21, and go to line 22.' The restatement computes line 20 even when line 17 is No; it should be skipped. |
 | sli | deepseek | 6 | MISMATCH | The IRS line says "No. Skip lines 6 and 7, enter -0- on line 8, and go to line 9"; the restatement subtracts line 5 from line 4 without that condition, so line 6 would be negative when line 4 is not more than line 5. |
 
@@ -1157,8 +1145,20 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | --- | --- | --- | --- | --- | --- |
 | carloan | deepseek | 22(ii) | MISMATCH | MISMATCH | The IRS text says 'enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F),' but the restatement computes only the QPVLI part of Schedule C interest and omits other elsewhere-deducted QPVLI such as Schedule E or Schedule F. |
 | dependent | deepseek | 2(d) | MISMATCH | MISMATCH | The IRS instruction for column (d) says 'If you completed Part III, don't include in column (d) any benefits shown on line 28,' but the helper includes 'expenses paid with dependent care benefits' and the line enters that helper amount without excluding line 28 benefits. |
-| f1095a | deepseek | b_counted | MISMATCH | MISMATCH | The rule would count two same-state forms with partially overlapping months, but IRS says 'Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.' It also omits the December-marriage exception. |
-| f1095a | gpt | b_counted | MISMATCH | MISMATCH | The IRS requires selecting column B 'for that month' and says 'Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form'; a whole-form coverage-containment test counts both forms when their coverage overlaps only partly. It also omits the marriage exception requiring taxpayers to 'add together the amounts from column B of the Forms 1095-A for each month before t… |
+| f1095a | gpt | b_counted | MISMATCH | MISMATCH | A whole-form choice cannot enforce 'Enter the amount from column B of only one Form 1095-A' for partially overlapping same-state policies. It also omits the marriage exception requiring taxpayers to 'add together the amounts from column B of the Forms 1095-A for each month before the first full month of marriage.' |
+| f1095a | gpt | in_b_apr | MISMATCH | MISMATCH | The unconditional unpaid-premium zero omits exceptions. The IRS requires the SLCSP premium despite incomplete payment when, for example, 'The monthly premium payment threshold has been met and a qualified health plan provides coverage.' |
+| f1095a | gpt | in_b_aug | MISMATCH | MISMATCH | The unconditional unpaid-premium zero omits exceptions. The IRS requires the SLCSP premium despite incomplete payment when, for example, 'The monthly premium payment threshold has been met and a qualified health plan provides coverage.' |
+| f1095a | gpt | in_b_dec | MISMATCH | MISMATCH | The unconditional unpaid-premium zero omits exceptions. The IRS requires the SLCSP premium despite incomplete payment when, for example, 'The monthly premium payment threshold has been met and a qualified health plan provides coverage.' |
+| f1095a | gpt | in_b_feb | MISMATCH | MISMATCH | The unconditional unpaid-premium zero omits exceptions. The IRS requires the SLCSP premium despite incomplete payment when, for example, 'The monthly premium payment threshold has been met and a qualified health plan provides coverage.' |
+| f1095a | gpt | in_b_jan | MISMATCH | MISMATCH | The unconditional unpaid-premium zero omits exceptions. The IRS requires the SLCSP premium despite incomplete payment when, for example, 'The monthly premium payment threshold has been met and a qualified health plan provides coverage.' |
+| f1095a | gpt | in_b_jul | MISMATCH | MISMATCH | The unconditional unpaid-premium zero omits exceptions. The IRS requires the SLCSP premium despite incomplete payment when, for example, 'The monthly premium payment threshold has been met and a qualified health plan provides coverage.' |
+| f1095a | gpt | in_b_jun | MISMATCH | MISMATCH | The unconditional unpaid-premium zero omits exceptions. The IRS requires the SLCSP premium despite incomplete payment when, for example, 'The monthly premium payment threshold has been met and a qualified health plan provides coverage.' |
+| f1095a | gpt | in_b_mar | MISMATCH | MISMATCH | The unconditional unpaid-premium zero omits exceptions. The IRS requires the SLCSP premium despite incomplete payment when, for example, 'The monthly premium payment threshold has been met and a qualified health plan provides coverage.' |
+| f1095a | gpt | in_b_may | MISMATCH | MISMATCH | The unconditional unpaid-premium zero omits exceptions. The IRS requires the SLCSP premium despite incomplete payment when, for example, 'The monthly premium payment threshold has been met and a qualified health plan provides coverage.' |
+| f1095a | gpt | in_b_nov | MISMATCH | MISMATCH | The unconditional unpaid-premium zero omits exceptions. The IRS requires the SLCSP premium despite incomplete payment when, for example, 'The monthly premium payment threshold has been met and a qualified health plan provides coverage.' |
+| f1095a | gpt | in_b_oct | MISMATCH | MISMATCH | The unconditional unpaid-premium zero omits exceptions. The IRS requires the SLCSP premium despite incomplete payment when, for example, 'The monthly premium payment threshold has been met and a qualified health plan provides coverage.' |
+| f1095a | gpt | in_b_sep | MISMATCH | MISMATCH | The unconditional unpaid-premium zero omits exceptions. The IRS requires the SLCSP premium despite incomplete payment when, for example, 'The monthly premium payment threshold has been met and a qualified health plan provides coverage.' |
+| f1095a | gpt | mo_b | MISMATCH | MISMATCH | The unconditional zero for unpaid premiums omits exceptions. The IRS requires reporting the SLCSP premium despite premiums not being fully paid when, for example, 'It is the first month of a grace period for the enrollees.' |
 | f2441 | deepseek | 18 | MISMATCH | MISMATCH | The helper person.dc_earned_b removes line 1e, but the IRS says only that 'earned income doesn’t include any dependent care benefits shown on line 12'; line 1e is not line 12. |
 | f2441 | deepseek | 19 | MISMATCH | MISMATCH | The spouse-earned-income helper for line 19 uses the same line-18/19 definition that removes line 1e, while the IRS excludes only dependent care benefits 'shown on line 12'. |
 | f2441 | deepseek | CLW 2 | MISMATCH | MISMATCH | The IRS Credit Limit Worksheet line 2 is the amount from 'Schedule 3 (Form 1040), line 1 (foreign tax credit) and line 6l (Form 8978, line 14)'; the restatement enters only s3 line 1 and omits line 6l. |
@@ -1171,12 +1171,25 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | f8863 | deepseek | 5 | MISMATCH | MISMATCH | IRS line 5 lists $20,000 for MFJ and $10,000 only for single, head of household, or qualifying surviving spouse; the restatement adds MFS $10,000. |
 | f8880 | deepseek | (CLW 2) | MISMATCH | MISMATCH | The IRS says 'Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l'; the restatement adds only s3 lines 1, 2, and 3, omitting 6d and 6l. |
 | f8960 | deepseek | 5a | MISMATCH | MISMATCH | IRS line 5a instructions say to combine Form 1040 or 1040-SR line 7a with Schedule 1 (Form 1040), line 4; the restatement takes only Form 1040 line 7a. |
-| f8962 | deepseek | 1 | MISMATCH | MISMATCH | IRS line 1 is tax family size, and the instructions say 'you or your spouse is not included in the tax family size calculation' if someone can claim you as a dependent; the restatement counts all persons on the return plus dependents. |
-| f8962 | deepseek | 24 | MISMATCH | MISMATCH | The IRS applicable-taxpayer test also requires that 'no one can claim you as a dependent for 2025' and, if married at year end, that you 'must file a joint return'; the restatement's applicable helper tests only line 5 at least 100 or the Marketplace estimate exception. |
-| f8962 | gpt | 1 | MISMATCH | MISMATCH | The count does not exclude a filer or spouse claimable as a dependent. The instructions say that such a person “is not included in the tax family size calculation.” |
-| f8962 | gpt | 24 | MISMATCH | MISMATCH | The applicable-taxpayer helper omits dependency and marital-status requirements and can allow a positive credit for married filing separately without Exception 2. For that case, the instructions explicitly say “enter -0- on line 24.” |
-| f8962 | gpt | 28 | UNCLEAR | UNCLEAR | The Table 5 amounts, thresholds, and blank reporting at 400 or more match. However, the instructions refer self-employed health-insurance-deduction claimants to a Pub. 974 calculation that is not supplied, and those cases are not explicitly excluded. |
-| f8962 | gpt | 2b | MISMATCH | MISMATCH | The dependent helper omits the Form 8814 adjustment. The instructions require including “the lesser of Form 8814, line 4 or line 5” along with specified tax-exempt interest and nontaxable social security benefits when the stated threshold applies. |
+| f8962 | deepseek | 1 | MISMATCH | MISMATCH | IRS line 1 excludes you or your spouse from tax family size if someone can claim you or your spouse as a dependent; the restatement just adds the person count plus claimed dependents. |
+| f8962 | deepseek | 24 | MISMATCH | MISMATCH | IRS line 24 must be -0- when you are not an applicable taxpayer, including married filing separately without an exception; the applicable helper checks only income or the Marketplace estimate, omitting the joint-return and dependency requirements. |
+| f8962 | gpt | 1 | MISMATCH | MISMATCH | The count does not exclude a filer or spouse claimable as a dependent. The instructions say such a person 'is not included in the tax family size calculation.' |
+| f8962 | gpt | 11(b) | UNCLEAR | MISMATCH | The reporting condition includes married-filing-separately taxpayers without the exception. The instructions say they must 'skip columns (a) through (e), and complete only column (f).' |
+| f8962 | gpt | 12(b) | UNCLEAR | UNCLEAR | The January SLCSP calculation matches the column instruction within the exclusions, but page 16's instruction to skip columns (a)–(e) without a marriage election conflicts with the other directions. |
+| f8962 | gpt | 13(b) | UNCLEAR | UNCLEAR | The February SLCSP calculation matches within the exclusions, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 14(b) | UNCLEAR | UNCLEAR | The March SLCSP calculation matches within the exclusions, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 15(b) | UNCLEAR | UNCLEAR | The April SLCSP calculation matches within the exclusions, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 16(b) | UNCLEAR | UNCLEAR | The May SLCSP calculation matches within the exclusions, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 17(b) | UNCLEAR | UNCLEAR | The June SLCSP calculation matches within the exclusions, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 18(b) | UNCLEAR | UNCLEAR | The July SLCSP calculation matches within the exclusions, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 19(b) | UNCLEAR | UNCLEAR | The August SLCSP calculation matches within the exclusions, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 20(b) | UNCLEAR | UNCLEAR | The September SLCSP calculation matches within the exclusions, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 21(b) | UNCLEAR | UNCLEAR | The October SLCSP calculation matches within the exclusions, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 22(b) | UNCLEAR | UNCLEAR | The November SLCSP calculation matches within the exclusions, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 23(b) | UNCLEAR | UNCLEAR | The December SLCSP calculation matches within the exclusions, but the supplied instructions conflict on completing columns (a)–(e) without a marriage election. |
+| f8962 | gpt | 24 | MISMATCH | MISMATCH | The applicable-taxpayer helper omits dependency and married-filing-separately restrictions, allowing a positive credit in unsupported eligibility cases. The IRS requires that 'no one can claim you as a dependent' and generally that married taxpayers 'must file a joint return.' |
+| f8962 | gpt | 28 | UNCLEAR | UNCLEAR | The thresholds, filing-status amounts, and blank-line condition match Table 5. However, the supplied text directs self-employed health insurance deduction claimants to a Pub. 974 calculation that is not provided, and no exclusion for that case is stated. |
+| f8962 | gpt | 2b | MISMATCH | MISMATCH | The helper omits the Form 8814 adjustment. The instructions require including 'the tax-exempt interest from Form 8814, line 1b; the lesser of Form 8814, line 4 or line 5; and any nontaxable social security benefits your child received' when the stated threshold is met. |
 | f8995 | deepseek | 12 | MISMATCH | MISMATCH | IRS line 12 instructions say if you're not required to file Schedule D, your net capital gain is the amount on Form 1040 line 7a; the restatement uses only the smaller of Schedule D lines 15 and 16. |
 | ftc | deepseek | regular_tax | MISMATCH | MISMATCH | IRS line 20 requires Form 1040 line 16 plus Schedule 2 line 1z 'less any tax included on line 16 from Form 4972' (and possible Form 8978 adjustment); the restatement only adds the two lines. |
 | g28 | deepseek | 1 | MISMATCH | MISMATCH | IRS line 1 asks for "the total of all collectibles gain or (loss) from items you reported on Form 8949, Part II"; the restatement instead enters $0 from the distribution scope helper, and no refusal names Form 8949 Part II collectibles as excluded. |
@@ -1207,15 +1220,13 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | s179 | deepseek | 13 | UNCLEAR | MISMATCH | The line 5 instructions say: "If line 5 is zero... enter the carryover of any disallowed deduction from 2024 ... on line 13." The restatement leaves line 10 out when line 5 is zero and then computes line 13 from lines 9 and 10 only, so it drops that carryover. |
 | s1a | deepseek | 36b | MISMATCH | MISMATCH | IRS line 36b applies only 'If you are married filing jointly'; the restatement checks only that the spouse was born before January 2, 1961 and has a valid SSN. |
 | s8812 | deepseek | 21 | UNCLEAR | MISMATCH | IRS line 21 calls for the Additional Medicare Tax and RRTA Tax Worksheet amount; that worksheet line 16 says 'Add lines 6, 7, 11, and 15,' but the restatement adds only lines 6 and 7, omitting the Tier 1 RRTA amounts on lines 11 and 15. |
-| sa | deepseek | 2 | MISMATCH | MISMATCH | The IRS line says 'Enter amount from Form 1040 or 1040-SR, line 11b'; the restatement uses a helper that floors line 11b at zero, changing the amount when AGI is negative. |
+| sa | deepseek | 2 | MISMATCH | MISMATCH | IRS line 2 says 'Enter amount from Form 1040 or 1040-SR, line 11b'; the restatement instead uses an AGI floored at zero, which changes the amount if line 11b is negative. |
 | sales | deepseek | (e) | MISMATCH | MISMATCH | The restatement's 'Basis reported to IRS' gate is true only for classifications A or D, but the IRS form also treats boxes G and J as 'reported on Form(s) 1099-DA showing basis was reported to the IRS'; for those rows column (e) must use the reported basis, not the records basis. |
 | sales | deepseek | (g) | MISMATCH | MISMATCH | IRS column (g) says 'Enter in this column any necessary adjustments to gain (or loss)' and, for multiple codes, 'enter the net adjustment in column (g)'; the restatement only adds B basis correction and W wash-sale adjustment, omitting other required adjustment codes. |
 | sb | deepseek | 4 | UNCLEAR | UNCLEAR | The provided IRS text contains no line 4 instruction or statement that line 4 is line 2 minus line 3, so the arithmetic cannot be verified from the text given. |
-| sc | deepseek | 4 (sc.f7206_line4) | MISMATCH | MISMATCH | IRS line 4 says 'Enter your net profit* and any other earned income** from the trade or business'; the restatement uses only net profit, zero for a loss. |
-| sc | deepseek | 5 (sc.f7206_line5) | MISMATCH | MISMATCH | IRS line 5 requires 'the total of all net profits from Schedule C..., Schedule F..., or Schedule K-1..., plus any other income'; the restatement sums only Schedule C net profits. |
-| scveh | deepseek | (b) | MISMATCH | MISMATCH | IRS says 'Column (b)—Date placed in service. Enter the date the property was placed in service'; the restatement asks only for the year. |
-| scveh | deepseek | 20a | MISMATCH | MISMATCH | IRS says 'But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount'; the restatement omits the inclusion amount. |
-| scveh | deepseek | 43 | MISMATCH | MISMATCH | IRS line asks 'When did you place your vehicle in service for business purposes? (month/day/year)'; the restatement collects only the year. |
+| scveh | deepseek | 20a | MISMATCH | MISMATCH | IRS says if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount; the restatement only takes the business portion of lease payments and has no inclusion-amount adjustment or refusal. |
+| scveh | deepseek | 43 | MISMATCH | MISMATCH | IRS line 43 asks "When did you place your vehicle in service for business purposes? (month/day/year)"; the restatement asks only for the year, omitting month/day. |
+| scveh | deepseek | 7 | MISMATCH | MISMATCH | The IRS text limits the deduction for passenger automobiles; the restatement uses the passenger-automobile limit table helper for every 2025 vehicle, even when the vehicle is not a passenger automobile. |
 | sdtw | deepseek | 1 | MISMATCH | MISMATCH | IRS line 1 says to enter line 3 of the Foreign Earned Income Tax Worksheet instead when filing Form 2555; the restatement always uses Form 1040 line 15. |
 | se | deepseek | 2 | MISMATCH | MISMATCH | IRS line 2 includes "Schedule K-1 (Form 1065), box 14, code A" and other income per instructions; restatement uses only this person Schedule C results. |
 | se | deepseek | 3 | MISMATCH | MISMATCH | IRS line 3 says "Combine lines 1a, 1b, and 2"; restatement enters only the amount from line 2. |

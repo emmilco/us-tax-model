@@ -25,6 +25,20 @@
    "context": "fa97ab9d907d2dfc68fa7f04dbf351f76f38f99c2b817598f907a37025aa5fd5"
   },
   {
+   "printed": "(c)",
+   "restated": "Divide helper \"The business use percentage, as cents\" by helper \"One hundred cents (100%)\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper \"Cost or other basis\" by the result.",
+   "model": "IRS line 26/27 uses qualified business use: \"Use line 26 to figure depreciation for property used more than 50% in a qualified business use. Use line 27 ... 50% or less in a qualified business use.\" The refusal gate asset.listed_low instead tests the business/investment-use percentage.",
+   "ruling": "Ruling: representation; the listed-property questions now state the qualified business use limits (BUG-0315), so the percentage asked is the one the 50% test uses; any remaining exclusions are the BUG-0307 gap.",
+   "context": "e1bfa3045be372f69e5350b0407104ac85aac4cc40d2cbd4ca610766fe7eba6c"
+  },
+  {
+   "printed": "(d)",
+   "restated": "Find the entry in GDS recovery period by asset class (Pub. 946, Appendix B, Tables B-1 and B-2) for asset_class column (a).",
+   "model": "The IRS assigns qualified improvement property to 15-year property in the line 19 classification instructions (\"Qualified improvement property ... placed in service by you after December 31, 2017\"), but the restatement only points to Appendix B Tables B-1/B-2, which do not list QIP.",
+   "ruling": "Ruling: representation; cqip, qualified improvement property placed in service after 2017, is one of the asset class answers and maps to 15-year straight line (Pub. 946 Table 4-1).",
+   "context": "e1bfa3045be372f69e5350b0407104ac85aac4cc40d2cbd4ca610766fe7eba6c"
+  },
+  {
    "printed": "14",
    "restated": "Choose — [helper \"Special depreciation allowance for this class of property\" = 'full' → helper \"The allowance when it is claimed: 100% if acquired after January 19, 2025, otherwise 40%\"] [helper \"Special depreciation allowance for this class of property\" = 'forty' → helper \"40% special allowance\"] [helper \"Special depreciation allowance for this class of property\" = 'none' → helper \"Zero\"]",
    "model": "The IRS also provides a 50% allowance for qualified reuse and recycling property and limits the 40% rate to property acquired after September 27, 2017; the restatement applies 40% to any property not acquired after January 19, 2025.",
@@ -32,11 +46,25 @@
    "context": "1d792bef21c02f77bb109f5db9a4960fc2c1612d2849bb469bd71625b8e9715c"
   },
   {
+   "printed": "14",
+   "restated": "Choose — [helper \"Special depreciation allowance for this class of property\" = 'full' → helper \"The allowance when it is claimed: 100% if acquired after January 19, 2025; 40% if acquired after September 27, 2017 and before January 20, 2025\"] [helper \"Special depreciation allowance for this class of property\" = 'forty' → helper \"40% special allowance\"] [helper \"Special depreciation allowance for this class of property\" = 'none' → helper \"Zero\"]",
+   "model": "IRS says to figure the allowance by subtracting from the business/investment cost \"any credits and deductions allocable to the property\"; the special-allowance helpers use only cost less the section 179 election.",
+   "ruling": "Ruling: scope; asset.screen refuses property whose basis was adjusted for anything other than depreciation, so on a computed return there are no other credits or deductions allocable to it.",
+   "context": "e1bfa3045be372f69e5350b0407104ac85aac4cc40d2cbd4ca610766fe7eba6c"
+  },
+  {
    "printed": "19(c)",
    "restated": "Enter the amount from helper \"Basis for MACRS depreciation (after section 179 and the special allowance)\".",
    "model": "IRS line 19(c) says to subtract 'any credits and deductions allocable to the property'; the restatement subtracts only section 179 and the special allowance.",
    "ruling": "Ruling: scope — asset.screen refuses an asset whose basis was adjusted for anything other than depreciation (i4562 pp. 11–12), which covers the credits and deductions allocable to the property that column (c) subtracts. The MACRS basis subtracts section 179 and the special allowance, the two adjustments in this slice.",
    "context": "1d792bef21c02f77bb109f5db9a4960fc2c1612d2849bb469bd71625b8e9715c"
+  },
+  {
+   "printed": "19(c)",
+   "restated": "Enter the amount from helper \"Basis for MACRS depreciation (after section 179 and the special allowance)\".",
+   "model": "IRS says after multiplying cost by business/investment use, \"subtract any credits and deductions allocable to the property.\" The helper only subtracts section 179 and the special allowance, omitting other required credits and deductions.",
+   "ruling": "Ruling: scope; asset.screen refuses property whose basis was adjusted for anything other than depreciation, so on a computed return there are no other credits or deductions allocable to it.",
+   "context": "e1bfa3045be372f69e5350b0407104ac85aac4cc40d2cbd4ca610766fe7eba6c"
   },
   {
    "printed": "25",
@@ -60,6 +88,13 @@
    "context": "f7853019cac1504acce66c1cce52a0d338c753ca90fef571243279035ad08afb"
   },
   {
+   "printed": "25",
+   "restated": "Enter the amount from line 14.",
+   "model": "IRS says \"Enter on line 25 your total special depreciation allowance for all qualified listed property.\" The restatement copies line 14, which the program itself limits to non-listed property.",
+   "ruling": "Ruling: representation; restatement accepted. The per-asset allowance appears on line 25 for listed property and line 14 otherwise, figured by the same instructions.",
+   "context": "e1bfa3045be372f69e5350b0407104ac85aac4cc40d2cbd4ca610766fe7eba6c"
+  },
+  {
    "printed": "26(h)",
    "restated": "Add helper \"MACRS on 2025 property\" and helper \"MACRS on property placed in service before 2025\".",
    "model": "IRS line 26(h) says for property used more than 50% in a qualified business use and placed in service after 1986, 'figure column (h) by following the instructions for line 19, column (g)'; the restatement adds line 19(g)/line 17 amounts, which are for non-listed property, instead of computing from the listed property's own basis after line 26(i) and line 25.",
@@ -79,6 +114,13 @@
    "model": "IRS line 6 says 'Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26'; line 26(i) is not the line 6(c) amount.",
    "ruling": "Ruling: representation — i4562 p. 5, Line 6, and p. 16, Column (i). asset.f26i copies asset.s179, the per-asset elected section 179 cost; the printed line 6(c) is the non-listed-property column, so \"from line 6(c)\" is loose wording. A listed property's elected cost is the amount the 26(i) column asks for.",
    "context": "1d792bef21c02f77bb109f5db9a4960fc2c1612d2849bb469bd71625b8e9715c"
+  },
+  {
+   "printed": "26(i)",
+   "restated": "Enter the amount from line 6(c).",
+   "model": "IRS says \"Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26.\" Line 26(i) is the listed property election, not the line 6(c) amount.",
+   "ruling": "Ruling: representation; restatement accepted. The per-asset section 179 election appears in column (i) for listed property and on line 6 otherwise.",
+   "context": "e1bfa3045be372f69e5350b0407104ac85aac4cc40d2cbd4ca610766fe7eba6c"
   },
   {
    "printed": "26(i)",

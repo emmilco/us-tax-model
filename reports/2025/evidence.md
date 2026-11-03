@@ -1,6 +1,6 @@
 # Evidence coverage per line
 
-**Scoreboard.** Share of computed lines with at least one outside-family assertion: 554 of 1924 (28.8%). H (human source reading): 0, B (human worked values): 0, second-family M: 435, E: 220.
+**Scoreboard.** Share of computed lines with at least one outside-family assertion: 554 of 1925 (28.8%). H (human source reading): 0, B (human worked values): 0, second-family M: 435, E: 220.
 
 A computed line is one whose atom is not `input`, `param` or `copy`. An outside-family assertion is a signed human source reading (H), a class B fixture (human worked values), a class M fixture whose recorded model is not a Claude model (second-family M), or an engine assertion (E) under the rule below. The sub-counts overlap: a line with several kinds counts once in the share. H checks the encoded rule against IRS text; B and M check worked values. Second-family transcription and render readings are reported separately in second_family.md and do not yet enter this scoreboard. Class A, Claude-family M, C and R do not move it.
 
@@ -22,10 +22,11 @@ Engine ids with no line of their own (never an E assertion): f1040.tax_before_cr
 | asset.class | — | — | — | — | — | — | — |
 | asset.period | — | — | — | 4 | — | — | — |
 | asset.outside | — | — | — | — | — | — | — |
+| asset.qip_early | — | — | — | — | — | — | — |
 | asset.screen | — | — | — | — | — | — | — |
 | asset.screened | — | — | — | — | — | — | — |
 | asset.placed | — | — | — | — | — | — | — |
-| asset.cost | — | — | — | — | — | — | 3 |
+| asset.cost | — | — | — | — | — | — | 4 |
 | asset.pct | — | — | — | — | — | — | — |
 | asset.cent | — | — | — | — | — | — | — |
 | asset.hundred | — | — | — | — | — | — | — |
@@ -66,7 +67,7 @@ Engine ids with no line of their own (never an E assertion): f1040.tax_before_cr
 | asset.rate_mq | — | — | — | — | — | — | — |
 | asset.macrs_hy | — | — | — | — | — | — | — |
 | asset.macrs_mq | — | — | — | — | — | — | — |
-| asset.macrs2025 | — | — | — | 3 | — | — | 14 |
+| asset.macrs2025 | — | — | — | 3 | — | — | 15 |
 | asset.mqbase | — | — | — | — | — | — | — |
 | asset.mq_q4_2025 | — | — | — | — | — | — | — |
 | asset.prior_conv | — | — | — | — | — | — | — |
@@ -89,7 +90,7 @@ Engine ids with no line of their own (never an E assertion): f1040.tax_before_cr
 | asset.dep_prior | — | — | — | — | — | — | — |
 | asset.dep_listed | — | — | — | 2 (classm.asset.1, classm.asset.4) | — | — | 2 (stage14.asset.listed_prior, stage14.asset.listed_forty) |
 
-Unasserted lines: asset.zero, asset.outside, asset.screened, asset.cent, asset.hundred, asset.pct_c, asset.pct_bad, asset.half, asset.over_half, asset.listed_low, asset.is2025, asset.on_19, asset.on_17, asset.on_26_2025, asset.year, asset.last, asset.done, asset.qconv, asset.s179_bad, asset.bonus_mixed, asset.rate40, asset.bonus_fullcase, asset.ub, asset.hy, asset.rate_hy, asset.rate_mq, asset.macrs_hy, asset.macrs_mq, asset.mqbase, asset.mq_q4_2025, asset.rate_prior, asset.macrs_prior_live, asset.dep_2025, asset.bonus_2025, asset.s179_2025, asset.mq_q4, asset.mq_total, asset.cost179, asset.cost179_2025, asset.is_section179, asset.cost179_real, asset.dep_prior
+Unasserted lines: asset.zero, asset.outside, asset.qip_early, asset.screened, asset.cent, asset.hundred, asset.pct_c, asset.pct_bad, asset.half, asset.over_half, asset.listed_low, asset.is2025, asset.on_19, asset.on_17, asset.on_26_2025, asset.year, asset.last, asset.done, asset.qconv, asset.s179_bad, asset.bonus_mixed, asset.rate40, asset.bonus_fullcase, asset.ub, asset.hy, asset.rate_hy, asset.rate_mq, asset.macrs_hy, asset.macrs_mq, asset.mqbase, asset.mq_q4_2025, asset.rate_prior, asset.macrs_prior_live, asset.dep_2025, asset.bonus_2025, asset.s179_2025, asset.mq_q4, asset.mq_total, asset.cost179, asset.cost179_2025, asset.is_section179, asset.cost179_real, asset.dep_prior
 
 ## Qualified passenger vehicle loan interest (Schedule 1-A, line 22) — one entry per loan
 
@@ -2670,7 +2671,7 @@ Unasserted lines: sb.zero
 | sc.line10 | — | — | — | — | — | — | — |
 | sc.line11 | — | — | — | — | — | — | — |
 | sc.line12 | — | — | — | 4 | — | — | — |
-| sc.line13 | — | — | — | 4 | — | — | 17 |
+| sc.line13 | — | — | — | 4 | — | — | 18 |
 | sc.line14 | — | — | — | — | — | — | — |
 | sc.line15 | — | — | — | — | — | — | — |
 | sc.line16a | — | — | — | — | — | — | — |
@@ -3404,5 +3405,5 @@ Unasserted lines: below_boundary, table_tax, worksheet_tax, tax
 
 Unasserted lines: single.row1.product, single.row1.tax, single.row2.product, single.row2.tax, single.row3.product, single.row3.tax, single.row4.product, single.row4.tax, single.row5.product, single.row5.tax, single.result, mfj.row1.product, mfj.row1.tax, mfj.row2.product, mfj.row2.tax, mfj.row3.product, mfj.row3.tax, mfj.row4.product, mfj.row4.tax, mfj.row5.product, mfj.row5.tax, mfj.result, mfs.row1.product, mfs.row1.tax, mfs.row2.product, mfs.row2.tax, mfs.row3.product, mfs.row3.tax, mfs.row4.product, mfs.row4.tax, mfs.row5.product, mfs.row5.tax, mfs.result, hoh.row1.product, hoh.row1.tax, hoh.row2.product, hoh.row2.tax, hoh.row3.product, hoh.row3.tax, hoh.row4.product, hoh.row4.tax, hoh.row5.product, hoh.row5.tax, hoh.result, tax
 
-Unasserted computed lines across all documents: 1122. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
+Unasserted computed lines across all documents: 1123. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
 Asserted keys not matching a line id: dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line27, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line29, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28_zero, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line30, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line27, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line29, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28_zero, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line30, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line3, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.positive, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4a, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.owes, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4c, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line5b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line6, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line7, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line8d, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line9, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line10, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line11, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line12, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line13, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax

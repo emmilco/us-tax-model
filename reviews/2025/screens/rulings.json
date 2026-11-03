@@ -1739,12 +1739,52 @@
    "reason": "WIDE accepted as over-refusal: the question tests i8962 p. 12 condition 1 but not condition 2 (the received Form 1095-A does not accurately represent the tax family, or the other family's form includes a member of this one). A filer whose separately issued form is accurate needs no allocation and is refused; refusing is the safe direction, and the alternative would put the condition-2 judgement on the filer. The UNCLEAR is not a defect: the parenthetical example \"a former spouse\" and the divorce-or-separation limb state the year-end tax family the first limb asks about, so the filer whose spouse was covered during the marriage and divorced in 2025 answers yes and is refused."
   },
   "unruled:f8962.other": {
-   "prompt_sha": "bd2a4535619b24d685caf9723a6e74a087e7d80d3c6b24bef92e04c2e8408139",
-   "reason": "WIDE and UNCLEAR accepted as over-refusal. The two Marketplace-determination carve-outs (an accurate report that led the Marketplace to find an employer offer unaffordable or a family member ineligible for Medicaid/CHIP) are fact-intensive and deliberately omitted; a filer who qualifies answers yes and is refused, which cannot understate the credit. The unaffordable individual coverage HRA, partial-month MEC eligibility, the undefined affordability measure and a COBRA offer not enrolled in all err toward a yes answer and a refusal; the last is clarified by the question's \"actually enrolled in (including COBRA or retiree coverage)\" limb. No NARROW finding."
+   "prompt_sha": "737f3b6ef871b68054a232911e7e20ede1ede0e8d333292c2b69aa57ceae1539",
+   "reason": "The WIDE findings are accepted over-refusals of the whole-MEC screen; the UNCLEAR mid-month and limited-scope cases also lead to refusal, which is safe.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "Answering Yes refuses the credit; no wrong amount is computed."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "Answering Yes refuses the credit; no wrong amount is computed."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "Answering Yes refuses the credit; no wrong amount is computed."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "class": "accepted (minor UNCLEAR, leans WIDE)",
+     "evidence": "Answering Yes refuses the credit; no wrong amount is computed."
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "accepted (minor UNCLEAR, leans WIDE)",
+     "evidence": "Answering Yes refuses the credit; no wrong amount is computed."
+    }
+   ]
   },
   "unruled:f8962.premium_adjust": {
-   "prompt_sha": "403ddc38ee389a532427046a4d726ffd2f6356adbd635233df6336f077904a44",
-   "reason": "The NARROW unpaid-premium finding is not a gap: f8962.other already asks whether any part of a month's premium was not paid by the return due date (or a Form 1095-A shows zero in column A for a month whose premium was paid) and refuses the return, so no unadjusted column A computes. The WIDE mid-month limb is accepted over-refusal: \"coverage\" is read in the Form 1095-A context, but a dependent's employer, Medicaid or other non-Marketplace coverage starting mid-month can produce a yes; refusing is safe. The UNCLEAR refund-year reading also errs toward a yes and a refusal; a refund for a 2024 month can be read into the question. T-164 records the two wording narrowings (\"Marketplace coverage\", \"for a 2025 month\") for the next f8962 review refresh."
+   "prompt_sha": "bb6e0341169f183a0ca67c45d9b8b1955def122905e4a2835c0a927a53eb3248",
+   "reason": "The NARROW finding is real and recorded as BUG-0327/T-180: an unpaid share of a month's premium by the due date is not asked.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "defect",
+     "evidence": "i8962 p. 14, no monthly credit for a month whose premiums were not paid by the due date; BUG-0327."
+    }
+   ]
   },
   "unruled:sa.dependent": {
    "prompt_sha": "ed663816b735dbfc49af3fa0ce3e076713185f92fdb0104a368707b0d0425394",

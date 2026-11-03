@@ -266,6 +266,13 @@ def entry_base(bug, head_text):
     return f"{out}^" if out else "HEAD"
 
 
+def line_ids_at(rev):
+    """Line ids declared in the year's forms at revision `rev`."""
+    out = subprocess.run(["git", "grep", "-h", "-o", "-E", r"- id: [A-Za-z0-9_.]+", rev, "--", f"forms/{Y}"],
+                         capture_output=True, text=True, check=False).stdout
+    return {line.split("id: ", 1)[1] for line in out.splitlines() if "id: " in line}
+
+
 def changed_logs(base):
     changed = subprocess.run(["git", "diff", "--name-only", base, "--",
                               f"reviews/{Y}/transcription", f"reviews/{Y}/render"],
@@ -287,6 +294,7 @@ def check(docs, ids):
     problems = []
     head_text = subprocess.run(["git", "show", "HEAD:BUG_INVENTORY.md"], capture_output=True, text=True, check=False).stdout
     logged = {}
+    existed = {}
     for bug, number, title, fields in bug_entries():
         if number < REQUIRED_FROM or "Fix" not in fields:
             continue
@@ -307,11 +315,17 @@ def check(docs, ids):
         unknown = checked - set(ids)
         if unknown:
             problems.append(f"{bug}: Siblings checked names unknown line(s): {', '.join(sorted(unknown))}")
+        base = entry_base(bug, head_text)
         missing = siblings - checked
+        if base != "HEAD":
+            # A committed entry cannot be edited (the inventory is append-only), so a sibling
+            # line added after it was written is not counted against it.
+            if base not in existed:
+                existed[base] = line_ids_at(base[:-1])
+            missing &= existed[base]
         if missing:
             problems.append(f"{bug}: Siblings checked omits {len(missing)} generated sibling(s): "
                             f"{', '.join(sorted(missing)[:8])}{' ...' if len(missing) > 8 else ''}")
-        base = entry_base(bug, head_text)
         if base not in logged:
             logged[base] = changed_logs(base)
         forms = {target.split(".")[0] for target in siblings}

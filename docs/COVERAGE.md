@@ -545,7 +545,7 @@ The data holds **191 refusal gates**: 153 tax situations the tool does not prepa
   - *Refused at:* `scveh.bonus_full`, `scveh.bonus_forty`
 - **`asset.screened`**: Is any business property outside the depreciation the tool covers (real property, the alternative depreciation system, amortization, a disposition or exchange, or another screened item)?
   - *The data asks or tests:* This property is outside this tool (`test`)
-  - *Not covered:* Form 4562 property outside this tool (Pub. 946 Appendix B class, disposition, exchange, real property, reuse and recycling property, an acquisition before September 28, 2017, ADS, other methods, basis adjustment, amortization and the other items of the screen). This property is outside the depreciation this tool covers.
+  - *Not covered:* Form 4562 property outside this tool (Pub. 946 Appendix B class, qualified improvement property placed in service before 2018, disposition, exchange, real property, reuse and recycling property, an acquisition before September 28, 2017, ADS, other methods, basis adjustment, amortization, a short tax year and the other items of the screen). This property is outside the depreciation this tool covers.
     *Source:* [i4562] pp. 8-12, Part III, and Pub. 946 Appendix B
   - *Refused at:* `asset.cost`
 - **`asset.listed_low`**: Is any listed property used 50% or less for business?

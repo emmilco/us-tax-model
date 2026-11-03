@@ -7,7 +7,7 @@ Second transcription of `Form 8283 — groups of similar noncash property` by an
 | date | 2026-11-02 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | e975264346c4279690bba0b97ec8b49798bf1e8e5deb84438864f853926c3f69 |
+| prompt sha256 | c157b548ff4d9ae0b9719d439577fc650131d4aebf4a0c139d7d60749aeec565 |
 | prompt policy | source-only-computation-v2 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
@@ -48,20 +48,12 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 ## Raw second transcription
 
 ```yaml
-```yaml
 lines:
   - id: gift.allowed
     printed: "(helper)"
-    label: "Amount of your deduction for this noncash contribution (item or group of similar items), before applying any income limits that could result in a carryover, after required reductions (i8283, Who Must File; Fair Market Value, Reductions to contribution)"
+    label: "Deduction for this item or group of similar items carried to the return (Form 8283, Section A; amount of your deduction before applying any income limits)"
     type: NonNegDollars
     expr: {op: copy, from: gift.deduction}
     refuses: [gift.special]
-    note: "The IRS pages do not define a figure called 'allowed'. Form 8283 instructions say 'do not use Form 8283 to figure your charitable contribution deduction'. They measure 'amount of your deduction' before income limits and after the required reductions. The Schedule A instructions allow clothing and household items only if they are in good used condition or better, and require a contemporaneous written acknowledgment for gifts of $250 or more. The input gift.deduction already leaves out the items those rules disallow and already includes the required reductions, so I read gift.allowed as that amount for the group. Cases needing Section B (an appraisal, more than $5,000 other than publicly traded securities, partial interests, restricted use, vehicles, inventory, intellectual property, K-1 amounts, and the over-$500 exception for clothing not in good used condition) are refused through gift.special, not computed. gift.public_securities does not change the amount: publicly traded securities go in Section A whatever their value, and gift.special already leaves them out of its over-$5,000 test. So it is not read here. Income limits and carryovers belong to Schedule A and Pub. 526, not this line."
-```
-
-There is one line, `gift.allowed`, and it copies `gift.deduction`. When `gift.special` is yes, it stops instead of computing.
-
-- **What "allowed" means:** the IRS pages don't define a figure by that name. I read it as the group's deduction before any income limits. The line's `note:` explains this reading.
-- **`gift.public_securities` isn't used:** it doesn't change the amount. Publicly traded securities are reported in Section A whatever their value, and `gift.special` already leaves them out of its over-$5,000 test.
-- **No helper lines:** I didn't add a check for the $500 filing threshold, because no other line needs it.
+    note: "The pages do not fully determine what 'allowed' means. The Form 8283 instructions say not to use Form 8283 to figure the deduction. They say that the 'amount of your deduction' is figured before income limits and after the required reductions to the contribution, and gift.deduction already gives that amount. So this result is that amount for an item or group that Section A covers. Income limits and carryovers are outside this slice (sa.charity_limited). Section B items need a qualified appraisal, and so do partial interests, restricted use property, vehicles, K-1 contributions, and single clothing or household items over $500 not in good used condition; for these the tool refuses through gift.special. Publicly traded securities are reported in Section A even when the deduction is over $5,000, and gift.special already leaves them out of its over-$5,000 test. So gift.public_securities does not change the amount, and this line does not read it."
 ```
