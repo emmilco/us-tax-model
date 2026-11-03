@@ -1,0 +1,17 @@
+VERDICT: EQUIVALENT
+
+**Where the lookups are read.** `eic.line1_table0..3` are read only by `eic.line1_table`, and that line is read only by `eic.line2`. `eic.line2` reaches it only when `eic.line1_in_table` is true, meaning `eic.line1 >= 100` cents. When `line1_in_table` is false, `eic.line2` takes `eic.zero` and never evaluates the lookups.
+
+**The two keys when the lookup is read.**
+- **Not self-employed:** both `eic.line1` and `eic.earned_for_limit` are `eic.earned_income`, so the keys are identical.
+- **Self-employed:** `eic.line1` is `eic.wsb_6 = max(0, eic.wsb_4b - 0)`, and `eic.earned_for_limit` is `eic.wsb_4b`. The lookup is only read when `eic.line1 >= 100`. That forces `eic.wsb_4b = eic.wsb_6 >= 100`, since the floor at zero is inactive there. The keys are again identical.
+
+**Incomplete values.**
+- Both lines choose on the same `eic.self_employed`, so they take the same branch.
+- In the self-employed branch, `eic.wsb_6` is incomplete exactly when `eic.wsb_4b` is. `subtract_floor0` passes through the first refusal, else the first unknown, and the `eic.zero` operand is a complete parameter. So the status and kind of any incomplete value match.
+- If `eic.line1` is incomplete, `eic.line1_in_table` is incomplete too. `eic.line2` then ends there with that value, and the lookups are never evaluated.
+- If `eic.line1` is complete and at least 100, `eic.earned_for_limit` is complete with the same amount. The lookup therefore gets the same key. The status key and the `eic.ssn_count` selection in `eic.line1_table` are unchanged.
+
+**The earlier "fixture gap" note.** The only way the keys differ is when `eic.wsb_4b` is negative. In that case `eic.line1 = 0` and `eic.earned_for_limit` is negative. Then `eic.line1` is below `eic.table_start`, so `eic.line2` is `eic.zero` and the lookup is not read. A case with the keys in different table bands cannot reach a printed line. The difference shows up only in the unprinted helpers `eic.line1_table0..3` and `eic.line1_table`.
+
+The mutant survives because it is equivalent for every printed value (`eic.line1`, `eic.line2`, and the rest), not because of a fixture gap. It should be classed as an equivalent mutant.
