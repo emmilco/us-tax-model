@@ -9364,7 +9364,7 @@
         "f1040"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Completeness finding PENDING-1: stage19.blind.e3 (wages $62,000, a 22-year-old student daughter who lived with the filer all year) filed as qss with all five qualifying surviving spouse tests answered Yes. Checked by hand against i1040gi: standard deduction for qss $31,500 (line 12e); taxable income $30,500 (line 15); tax from the Tax Table, married filing jointly column, $3,186 (line 16); credit for other dependents $500 (line 19); unchanged education credit $2,000, so line 24 is $686.",
+      "evidence_note": "Completeness finding PENDING-1: stage19.blind.e3 (wages $62,000, a 22-year-old student daughter who lived with the filer all year) filed as qss with all five qualifying surviving spouse tests answered Yes. Checked by hand against i1040gi: standard deduction for qss $31,500 (line 12e); taxable income $30,500 (line 15); tax from the Tax Table, married filing jointly column, $3,186 (line 16); credit for other dependents $500 (line 19); unchanged education credit $2,000, so line 24 is $686. F1 pass context repair: dependent[daughter].edu_tin_issued is supplied as true, read from the case's answer that the student has a TIN (inferred: the case does not say whether it was issued or applied for); no expected value changed.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "$dependent": [
@@ -9394,6 +9394,7 @@
         "dependent[daughter].edu_a2025": 0,
         "dependent[daughter].edu_a2026": 0,
         "dependent[daughter].edu_ein": true,
+        "dependent[daughter].edu_tin_issued": true,
         "dependent[daughter].edu_inst": 720000,
         "dependent[daughter].edu_line23": false,
         "dependent[daughter].edu_line24": true,

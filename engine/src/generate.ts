@@ -730,7 +730,8 @@ const EDU_AMOUNTS = ["_inst", "_mat", "_a2025", "_a2026", "_refunds"];
  * students (the credit claimed for 4 earlier years, no institution EIN, the first 4 years completed, or not
  * half-time), with expenses, course materials, tax-free assistance and refunds. Every other entry answers No with
  * zero amounts. Your line 7 answers agree with your other birth-date answers. The screens (a Form 8862 claim or ban,
- * an academic period whose assistance exceeds its expenses) are No. */
+ * an academic period whose assistance exceeds its expenses) are No, and a dependent student's TIN was issued by the
+ * due date. */
 function putEdu(inputs: Inputs): void {
   const next = derivedStream(inputs, "edu");
   const between = (lo: number, hi: number) => lo + Math.floor(next() * (hi - lo + 1));
@@ -740,6 +741,7 @@ function putEdu(inputs: Inputs): void {
     for (const k of EDU_ANSWERS) inputs[`${E}.edu${k}`] = false;
     for (const k of EDU_AMOUNTS) inputs[`${E}.edu${k}`] = 0;
   }
+  for (const E of deps) inputs[`${E}.edu_tin_issued`] = true;
   // Born before January 2, 2008 (sav_born), 2007 and 2002, and before January 2, 2001 (born_before_2001), in order.
   for (const P of persons) {
     const old = inputs[`${P}.born_before_2001`] === true || inputs[`${P}.age65`] === true;

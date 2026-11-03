@@ -14,13 +14,13 @@ Measured, below 0.5% of returns, and not in the table:
 - Foreign earned income exclusion (Form 2555): 0.3%
 - Alternative minimum tax: 0.1%
 
-Not named in the table: 146 of the 154 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
+Not named in the table: 148 of the 156 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
 
 The estimate puts coverage at 78.4% of returns (`reports/2025/filer_coverage.json`). It does not count the unmeasured situations, so the true figure is lower.
 
 ## Every refusal
 
-The data holds **192 refusal gates**: 154 tax situations the tool does not prepare, grouped by topic below, and 38 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
+The data holds **194 refusal gates**: 156 tax situations the tool does not prepare, grouped by topic below, and 38 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
 
 - [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (30)
 - [Household and dependents](#household-and-dependents) (13)
@@ -37,7 +37,7 @@ The data holds **192 refusal gates**: 154 tax situations the tool does not prepa
 - [Tips, overtime, car loans and seniors](#tips-overtime-car-loans-and-seniors) (6)
 - [Earned income credit](#earned-income-credit) (1)
 - [Child and dependent care](#child-and-dependent-care) (9)
-- [Education credits](#education-credits) (3)
+- [Education credits](#education-credits) (5)
 - [Home energy credits](#home-energy-credits) (7)
 - [Premium tax credit](#premium-tax-credit) (7)
 - [Entry checks](#entry-checks) (38)
@@ -918,6 +918,16 @@ The data holds **192 refusal gates**: 154 tax situations the tool does not prepa
   - *Not covered:* Adjusted Qualified Education Expenses Worksheet for more than one academic period. The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period.
     *Source:* [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025."
   - *Refused at:* `person.edu_line27`, `person.edu_line28`, `person.edu_line29`, `person.edu_line30`, `person.edu_line31`
+- **`person.edu_llc_tin_refused`**: For you or your spouse as a lifetime learning credit student: was your ITIN only applied for, not issued, by the due date of the return?
+  - *The data asks or tests:* A lifetime learning credit student whose ITIN was only applied for by the due date of the return (`test`)
+  - *Not covered:* Lifetime learning credit for a student whose ITIN or ATIN was only applied for. The lifetime learning credit requires the student to have been issued a TIN by the due date of the return (including extensions); an ITIN or ATIN only applied for by then counts as issued for the American opportunity credit only. This tool does not prepare the return without the lifetime learning credit for this student.
+    *Source:* [i8863] p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)."; p970 p. 11, "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return."
+  - *Refused at:* `person.edu_line31`
+- **`dependent.edu_llc_tin_refused`**: For a dependent who is a lifetime learning credit student: was the ITIN or ATIN only applied for, not issued, by the due date of the return?
+  - *The data asks or tests:* A lifetime learning credit student whose ITIN or ATIN was only applied for by the due date of the return (`test`)
+  - *Not covered:* Lifetime learning credit for a student whose ITIN or ATIN was only applied for. The lifetime learning credit requires the student to have been issued a TIN by the due date of the return (including extensions); an ITIN or ATIN only applied for by then counts as issued for the American opportunity credit only. This tool does not prepare the return without the lifetime learning credit for this student.
+    *Source:* [i8863] p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)."; p970 p. 11, "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return."
+  - *Refused at:* `dependent.edu_line31`
 - **`dependent.edu_over_refused`**: For a dependent student: did tax-free assistance and refunds exceed one academic period's own expenses?
   - *The data asks or tests:* Adjustments that exceed one academic period's expenses (`test`)
   - *Not covered:* Adjusted Qualified Education Expenses Worksheet for more than one academic period. The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period.

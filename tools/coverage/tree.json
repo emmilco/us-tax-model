@@ -222,6 +222,8 @@
 
   {"gate": "f8863.ban_refused", "topic": "education", "kind": "situation", "question": "Are you claiming the American opportunity credit after an earlier denial (Form 8862), or within a ban period?"},
   {"gate": "person.edu_over_refused", "topic": "education", "kind": "situation", "question": "For you or your spouse as a student: did tax-free assistance and refunds exceed one academic period's own expenses?"},
+  {"gate": "person.edu_llc_tin_refused", "topic": "education", "kind": "situation", "question": "For you or your spouse as a lifetime learning credit student: was your ITIN only applied for, not issued, by the due date of the return?"},
+  {"gate": "dependent.edu_llc_tin_refused", "topic": "education", "kind": "situation", "question": "For a dependent who is a lifetime learning credit student: was the ITIN or ATIN only applied for, not issued, by the due date of the return?"},
   {"gate": "dependent.edu_over_refused", "topic": "education", "kind": "situation", "question": "For a dependent student: did tax-free assistance and refunds exceed one academic period's own expenses?"},
 
   {"gate": "f5695.line7a", "topic": "energy", "kind": "situation", "question": "Did you install qualified fuel cell property?"},

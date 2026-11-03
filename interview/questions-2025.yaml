@@ -1055,6 +1055,10 @@ bank:
     order: 21
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
       do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.edu_tin_issued
+    order: 21
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
   - input: dependent.edu_over
     order: 31
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;

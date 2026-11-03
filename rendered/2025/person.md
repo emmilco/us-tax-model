@@ -1689,6 +1689,13 @@
 - Expr: `{"all":[{"eq":["person.edu_student",{"const":true}],"op":"test"},{"eq":["person.edu_aoc",{"const":false}],"op":"test"}],"op":"test"}`
 - Cite: [i8863] p. 4, Tip, "If the requirements above aren’t met for any student, you cannot claim the American opportunity credit for that student. You may be able to claim the lifetime learning credit for part or all of that student’s qualified education expenses instead if certain requirements are met." (2025; sha256 195cfd5e)
 
+## (gate) — `person.edu_llc_tin_refused`
+
+- **Authored helper label:** A lifetime learning credit student whose ITIN was only applied for by the due date of the return
+- **Encoded (Bool):** helper "A lifetime learning credit student: an eligible student who is not an American opportunity credit student" = true and helper "Do you have an SSN or ITIN issued on or before the due date of your return?" = false
+- Expr: `{"all":[{"eq":["person.edu_llc",{"const":true}],"op":"test"},{"eq":["person.tin",{"const":false}],"op":"test"}],"op":"test"}`
+- Cite: [i8863] p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)." (2025; sha256 195cfd5e)
+
 ## 27 — `person.edu_line27`
 
 - **Authored helper label:** Adjusted qualified education expenses. Don't enter more than $4,000
@@ -1729,10 +1736,11 @@
 
 - **Authored helper label:** Adjusted qualified education expenses for the lifetime learning credit
 - **Encoded (NonNegDollars):** Choose — [helper "A lifetime learning credit student: an eligible student who is not an American opportunity credit student" = true → "ws4_llc" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "A lifetime learning credit student: an eligible student who is not an American opportunity credit student" = false → line zero]
+- **Refusal:** when person.edu_llc_tin_refused is true, cannot complete Lifetime learning credit for a student whose ITIN or ATIN was only applied for. The lifetime learning credit requires the student to have been issued a TIN by the due date of the return (including extensions); an ITIN or ATIN only applied for by then counts as issued for the American opportunity credit only. This tool does not prepare the return without the lifetime learning credit for this student. Cite: [i8863] p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions)."; p970 p. 11, "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return." (2025; sha256 195cfd5e)
 - **Refusal:** when person.edu_over_refused is true, cannot complete Adjusted Qualified Education Expenses Worksheet for more than one academic period. The worksheet is completed for each academic period, and an academic period whose tax-free educational assistance and refunds exceed its own expenses cannot be netted against another period's expenses. Figure the worksheet period by period. Cite: [i8863] p. 9, Adjusted Qualified Education Expenses Worksheet, "Complete a separate worksheet for each student for each academic period beginning or treated as beginning (see below) in 2025 for which you paid (or are treated as having paid) qualified education expenses in 2025." (2025; sha256 195cfd5e)
 - **Shown on the values sheet only when:** A lifetime learning credit student: an eligible student who is not an American opportunity credit student (`person.edu_llc`)
 - Expr: `{"alternatives":[{"guard":{"eq":["person.edu_llc",{"const":true}],"op":"test"},"then":{"bind":{"adj":"person.edu_adj","inst":"person.edu_inst","mat":"person.edu_mat"},"def":"aqee","line":"ws4_llc"}},{"guard":{"eq":["person.edu_llc",{"const":false}],"op":"test"},"then":"person.zero"}],"op":"choose"}`
-- Cite: [f8863] p. 2, Part III, line 31, "Adjusted qualified education expenses (see instructions). Include the total of all amounts from all Parts III, line 31, on Part II, line 10" (2025; sha256 a251a1cf)
+- Cite: [f8863] p. 2, Part III, line 31, "Adjusted qualified education expenses (see instructions). Include the total of all amounts from all Parts III, line 31, on Part II, line 10"; i8863 p. 9, Line 31 (2025; sha256 a251a1cf)
 
 ## (helper) — `person.edu_born_2007`
 
