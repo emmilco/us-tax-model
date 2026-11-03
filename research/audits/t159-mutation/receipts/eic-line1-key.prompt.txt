@@ -1,0 +1,31 @@
+You are reviewing a claimed mutation equivalence in a formal model of the 2025 IRS EIC Worksheet A (Form 1040 instructions). Decide whether the claim is correct. Answer with a verdict line "VERDICT: EQUIVALENT", "VERDICT: NOT EQUIVALENT" or "VERDICT: UNSURE", then your reasoning, and if not equivalent, a concrete input (values of the lines named) where the printed results differ.
+
+Evaluation semantics (from the project spec):
+- choose: alternatives are visited in order; each guard is a test. A guard that is unknown or a refusal ends the choose with that value. A true guard ends the choose with the value of its then; alternatives not taken are not evaluated by this line. (Every line may still be evaluated separately as a reporting target, but only lines printed on a form are compared as results; lines marked printed "(helper)" are not printed.)
+- subtract_floor0: max(0, from - take); an incomplete operand gives the first refusal, else the first unknown.
+- table_lookup: looks up key (and status) in the EIC Table; evaluates key then status.
+- test ge: compares; incomplete operand propagates.
+- Lines have no refusal gates unless listed.
+
+The lines (JSON expressions):
+eic.zero (type NonNegDollars, printed (helper), refusal gates []): {"op":"param","ref":"sales.zero"}
+eic.earned_income (type Dollars, printed (Step 5, 5), refusal gates []): {"of":["eic.step5_line3","eic.step5_line4"],"op":"sum"}
+eic.self_employed (type Bool, printed (helper), refusal gates []): {"gt":["eic.sc_count",{"const":0,"type":"Count"}],"op":"test"}
+eic.wsb_4b (type Dollars, printed 4b, refusal gates []): {"of":["eic.earned_income","eic.wsb_se"],"op":"sum"}
+eic.wsb_6 (type NonNegDollars, printed 6, refusal gates []): {"from":"eic.wsb_4b","op":"subtract_floor0","take":"eic.zero"}
+eic.earned_for_limit (type Dollars, printed (helper), refusal gates []): {"alternatives":[{"guard":{"eq":["eic.self_employed",{"const":false}],"op":"test"},"then":"eic.earned_income"},{"guard":{"eq":["eic.self_employed",{"const":true}],"op":"test"},"then":"eic.wsb_4b"}],"op":"choose"}
+eic.line1 (type Dollars, printed 1, refusal gates []): {"alternatives":[{"guard":{"eq":["eic.self_employed",{"const":false}],"op":"test"},"then":"eic.earned_income"},{"guard":{"eq":["eic.self_employed",{"const":true}],"op":"test"},"then":"eic.wsb_6"}],"op":"choose"}
+eic.line1_in_table (type Bool, printed (helper), refusal gates []): {"ge":["eic.line1",{"param":"eic.table_start"}],"op":"test"}
+eic.line1_table0 (type NonNegDollars, printed (helper), refusal gates []): {"key":"eic.line1","op":"table_lookup","status":"f1040.status","table":"eic_0"}
+eic.line1_table1 (type NonNegDollars, printed (helper), refusal gates []): {"key":"eic.line1","op":"table_lookup","status":"f1040.status","table":"eic_1"}
+eic.line1_table2 (type NonNegDollars, printed (helper), refusal gates []): {"key":"eic.line1","op":"table_lookup","status":"f1040.status","table":"eic_2"}
+eic.line1_table3 (type NonNegDollars, printed (helper), refusal gates []): {"key":"eic.line1","op":"table_lookup","status":"f1040.status","table":"eic_3"}
+eic.line1_table (type NonNegDollars, printed (helper), refusal gates []): {"alternatives":[{"guard":{"all":[{"ge":["eic.ssn_count",{"const":0,"type":"Count"}],"op":"test"},{"lt":["eic.ssn_count",{"const":1,"type":"Count"}],"op":"test"}],"op":"test"},"then":"eic.line1_table0"},{"guard":{"all":[{"ge":["eic.ssn_count",{"const":1,"type":"Count"}],"op":"test"},{"lt":["eic.ssn_count",{"const":2,"type":"Count"}],"op":"test"}],"op":"test"},"then":"eic.line1_table1"},{"guard":{"all":[{"ge":["eic.ssn_count",{"const":2,"type":"Count"}],"op":"test"},{"lt":["eic.ssn_count",{"const":3,"type":"Count"}],"op":"test"}],"op":"test"},"then":"eic.line1_table2"},{"guard":{"ge":["eic.ssn_count",{"const":3,"type":"Count"}],"op":"test"},"then":"eic.line1_table3"}],"op":"choose"}
+eic.line2 (type NonNegDollars, printed 2, refusal gates []): {"alternatives":[{"guard":{"eq":["eic.line1_in_table",{"const":true}],"op":"test"},"then":"eic.line1_table"},{"guard":{"eq":["eic.line1_in_table",{"const":false}],"op":"test"},"then":"eic.zero"}],"op":"choose"}
+parameter eic.table_start = 100 cents; parameter sales.zero = 0
+
+The mutation: in each of eic.line1_table0..3 the table_lookup key "eic.line1" is replaced by "eic.earned_for_limit". All fixtures still pass (the mutant survives).
+
+The claim: the mutant is equivalent for every printed value. Reason given: each lookup line is read only by eic.line1_table, which only eic.line2 reads, and only in the alternative taken when eic.line1 >= eic.table_start ($1.00, a positive amount). eic.line1 and eic.earned_for_limit choose on eic.self_employed between eic.earned_income (not self-employed) and eic.wsb_6 or eic.wsb_4b (self-employed); eic.wsb_6 is eic.wsb_4b floored at zero. So wherever the lookup is read, eic.line1 is positive and complete, the branch is complete, and the two keys are the same amount. Only the helpers' own unprinted values can differ.
+
+A previous note in the project recorded these survivors as "genuine fixture gaps: the EIC table lookup by line 1 versus earned_for_limit is not exercised where the two keys fall in different table bands". Check whether such a case can reach a printed line.

@@ -46,18 +46,32 @@ function lineType(data: CanonicalData, doc: FormDoc, id: string): string | undef
   return doc.lines.find((l) => l.id === id)?.type;
 }
 
-type OperandSite = { ref: string; kind: string; path: (string | number)[]; wantType: string | undefined };
-// Table keys, choose branches and test operands are measured but not yet mutated: replacing
-// them selects another branch that agrees on the fixture corpus, and the full set produces
-// hundreds of unexplained survivors that need fixtures or equivalence rules first (T-159).
+type OperandSite = { ref: string; kind: string; path: (string | number)[]; wantType: string | undefined; tier: number };
+// Every operand position is a site: keyed_lookup keys, rate_lookup and table_lookup key and status
+// included. Sites of tier 2 and above (choose branch values, string operands of test expressions)
+// are mutated up to the tier named by MUTATE_TIER (default 0).
+const SITE_TIER = Number(process.env.MUTATE_TIER ?? 0) || 0;
+
+/** String line references inside a test expression, with their paths, through nested tests. */
+function testSites(test: any, path: (string | number)[], out: OperandSite[], typeOf: (ref: unknown) => string | undefined): void {
+  if (test === null || typeof test !== "object") return;
+  for (const key of ["eq", "ne", "lt", "le", "gt", "ge"]) {
+    const pair = test[key];
+    if (Array.isArray(pair)) pair.forEach((ref: unknown, i: number) => {
+      if (typeof ref === "string") out.push({ ref, kind: "test", path: [...path, key, i], wantType: typeOf(ref), tier: 3 });
+    });
+  }
+  for (const key of ["all", "any"]) if (Array.isArray(test[key])) test[key].forEach((t: unknown, i: number) => testSites(t, [...path, key, i], out, typeOf));
+  if (test.not) testSites(test.not, [...path, "not"], out, typeOf);
+}
 
 /** Every string line reference in an expression position the mutator can replace. */
 function collectOperandSites(expr: any, lineType: string, doc: FormDoc): OperandSite[] {
   const sites: OperandSite[] = [];
   const typeOf = (ref: unknown): string | undefined =>
     typeof ref === "string" ? doc.lines.find((l) => l.id === ref)?.type : undefined;
-  const push = (ref: unknown, kind: string, path: (string | number)[], wantType: string | undefined) => {
-    if (typeof ref === "string") sites.push({ ref, kind, path, wantType });
+  const push = (ref: unknown, kind: string, path: (string | number)[], wantType: string | undefined, tier = 0) => {
+    if (typeof ref === "string") sites.push({ ref, kind, path, wantType, tier });
   };
   switch (expr?.op) {
     case "sum": case "smaller_of": case "larger_of":
@@ -93,6 +107,19 @@ function collectOperandSites(expr: any, lineType: string, doc: FormDoc): Operand
     case "rate_lookup":
       push(expr.key, "key", ["key"], typeOf(expr.key));
       push(expr.status, "status", ["status"], typeOf(expr.status));
+      break;
+    case "table_lookup": case "bracket_schedule":
+      push(expr.key, "key", ["key"], typeOf(expr.key));
+      push(expr.status, "status", ["status"], typeOf(expr.status));
+      break;
+    case "choose":
+      (expr.alternatives ?? []).forEach((alt: any, i: number) => {
+        push(alt.then, `then${i}`, ["alternatives", i, "then"], lineType, 2);
+        testSites(alt.guard, ["alternatives", i, "guard"], sites, typeOf);
+      });
+      break;
+    case "test":
+      testSites(expr, [], sites, typeOf);
       break;
     case "copy":
       if (typeof expr.from === "string") push(expr.from, "from", ["from"], lineType);
@@ -160,9 +187,9 @@ export function mutations(data: CanonicalData): Mutation[] {
       }
       // Operand replacement: replace one referenced same-document line with the
       // nearest earlier same-typed line that the expression does not already use.
-      const sites = collectOperandSites(expr, line.type, doc);
-      const refs = new Set(sites.map((s) => s.ref));
-      for (const site of sites) {
+      const allSites = collectOperandSites(expr, line.type, doc);
+      const refs = new Set(allSites.map((s) => s.ref));
+      for (const site of allSites.filter((s) => s.tier <= SITE_TIER)) {
         const ref = site.ref;
         if (!ref.startsWith(doc.id + ".")) continue; // same-document only
         const wantType = site.wantType ?? line.type;
@@ -177,7 +204,9 @@ export function mutations(data: CanonicalData): Mutation[] {
           || (site.kind === "status" && expr.op === "rate_lookup");
         const id = existing
           ? `operand.${where}.${ref.split(".").pop()}`
-          : `operand.${where}.${ref.split(".").pop()}.${site.kind}`;
+          : site.kind === "test"
+            ? `operand.${where}.${ref.split(".").pop()}.${site.path.map((p) => (p === "alternatives" ? "alt" : p)).join(".")}`
+            : `operand.${where}.${ref.split(".").pop()}.${site.kind}`;
         out.push({
           id,
           kind: "replace an operand",
@@ -551,11 +580,208 @@ function carriedZero(data: CanonicalData, mutation: Mutation): string | undefine
   return `Gated zero carried earlier: ${x} is an ungated zero and ${y} the same zero behind refusal gates (${[...new Set(gateWhens(ny))].join(", ")}); ${carrier}, read first, reaches ${y} through ungated arithmetic, so whenever ${y} refuses or is unknown ${carrier} already is, and is returned first, and otherwise both operands are zero.`;
 }
 
+// Guard facts: what a choose alternative's guard, known true, establishes. For each line compared with
+// a constant (or a numeric parameter) it records an exact value or an interval, but only through a
+// comparison whose result implies the line is complete: a count with a lower bound can make gt, ge and ne
+// true, and lt, le and eq false, while it is still unknown (the evaluator's lower-bound rule). A guard
+// eq(F, true) or eq(F, false) on an ungated test line F adds what F's own test, true or false, says.
+type Bound = { eq?: string; not?: string[]; lo?: number; hi?: number; loStrict?: boolean; hiStrict?: boolean };
+type GuardFacts = { data: CanonicalData; same: Set<string>; known: Map<string, Bound> };
+
+const NEGATE: Record<string, string> = { eq: "ne", ne: "eq", lt: "ge", le: "gt", gt: "le", ge: "lt" };
+
+// A comparison of a line with a constant or a scalar parameter, normalized to the line first.
+function comparison(data: CanonicalData, t: unknown): { key: string; line: string; v: unknown; count: boolean } | undefined {
+  const flip: Record<string, string> = { eq: "eq", ne: "ne", lt: "gt", le: "ge", gt: "lt", ge: "le" };
+  const constOf = (x: unknown): { v: unknown; count: boolean } | undefined => {
+    if (x === null || typeof x !== "object") return undefined;
+    if ("const" in x) return { v: (x as { const: unknown }).const, count: (x as { type?: string }).type === "Count" };
+    const ref = (x as { param?: string }).param;
+    const pv = ref === undefined ? undefined : data.params.values[ref];
+    return pv && typeof pv.value === "number" ? { v: pv.value, count: pv.type === "Count" } : undefined;
+  };
+  for (const key of Object.keys(flip)) {
+    const pair = (t as Record<string, unknown>)[key];
+    if (!Array.isArray(pair)) continue;
+    const k1 = constOf(pair[1]), k0 = constOf(pair[0]);
+    if (typeof pair[0] === "string" && k1) return { key, line: pair[0], ...k1 };
+    if (typeof pair[1] === "string" && k0) return { key: flip[key]!, line: pair[1], ...k0 };
+  }
+  return undefined;
+}
+
+function addComparison(facts: GuardFacts, key: string, line: string, v: unknown, count: boolean, truth: boolean): void {
+  const k = truth ? key : NEGATE[key]!;
+  const complete = !count || (truth ? ["eq", "lt", "le"].includes(key) : ["gt", "ge", "ne"].includes(key));
+  if (!complete) return;
+  const f = facts.known.get(line) ?? {};
+  if (k === "eq") f.eq = stableStringify(v);
+  else if (k === "ne") f.not = [...(f.not ?? []), stableStringify(v)];
+  else if (typeof v === "number") {
+    if (k === "lt" || k === "le") { if (f.hi === undefined || v < f.hi) { f.hi = v; f.hiStrict = k === "lt"; } }
+    else if (f.lo === undefined || v > f.lo) { f.lo = v; f.loStrict = k === "gt"; }
+  } else return;
+  facts.known.set(line, f);
+}
+
+function addTest(facts: GuardFacts, t: unknown, truth: boolean, depth: number): void {
+  if (depth > 6) return;
+  const all = (t as { all?: unknown[] }).all;
+  if (truth && Array.isArray(all)) { all.forEach((c) => addTest(facts, c, true, depth + 1)); return; }
+  if (truth) facts.same.add(stableStringify(t));
+  const cmp = comparison(facts.data, t);
+  if (!cmp) return;
+  addComparison(facts, cmp.key, cmp.line, cmp.v, cmp.count, truth);
+  const flag = findLine(facts.data, cmp.line);
+  if (flag && !(flag.refuses ?? []).length && flag.expr.op === "test" && (cmp.key === "eq" || cmp.key === "ne") && typeof cmp.v === "boolean") {
+    addTest(facts, flag.expr, (cmp.key === "eq") === cmp.v, depth + 1);
+  }
+}
+
+function guardFacts(data: CanonicalData, g: unknown): GuardFacts {
+  const facts: GuardFacts = { data, same: new Set(), known: new Map() };
+  addTest(facts, g, true, 0);
+  return facts;
+}
+
+// The value test t must have wherever the facts hold, or undefined when they do not settle it. A settled
+// value is one the evaluator returns: every line it depends on is known from the facts, and an all-test
+// (any-test) is false (true) only at a conjunct settled so after earlier ones all settled the other way.
+function decides(t: unknown, facts: GuardFacts, depth = 0): boolean | undefined {
+  if (depth > 8) return undefined;
+  if (facts.same.has(stableStringify(t))) return true;
+  const o = t as { all?: unknown[]; any?: unknown[]; not?: unknown };
+  if (Array.isArray(o.all) || Array.isArray(o.any)) {
+    const isAll = Array.isArray(o.all);
+    for (const x of (o.all ?? o.any)!) {
+      const v = decides(x, facts, depth + 1);
+      if (v === undefined) return undefined;
+      if (v !== isAll) return !isAll;
+    }
+    return isAll;
+  }
+  if (o.not !== undefined) { const v = decides(o.not, facts, depth + 1); return v === undefined ? undefined : !v; }
+  const cmp = comparison(facts.data, t);
+  if (!cmp) return undefined;
+  const v = cmp.v;
+  const f = facts.known.get(cmp.line);
+  if (!f) {
+    const flag = findLine(facts.data, cmp.line);
+    if (flag && !(flag.refuses ?? []).length && flag.expr.op === "test" && typeof v === "boolean" && (cmp.key === "eq" || cmp.key === "ne")) {
+      const fv = decides(flag.expr, facts, depth + 1);
+      return fv === undefined ? undefined : (cmp.key === "eq") === (fv === v);
+    }
+    return undefined;
+  }
+  if (f.eq !== undefined) {
+    const x = JSON.parse(f.eq) as unknown;
+    if (cmp.key === "eq") return stableStringify(x) === stableStringify(v);
+    if (cmp.key === "ne") return stableStringify(x) !== stableStringify(v);
+    if (typeof x !== "number" || typeof v !== "number") return undefined;
+    return cmp.key === "lt" ? x < v : cmp.key === "le" ? x <= v : cmp.key === "gt" ? x > v : x >= v;
+  }
+  if (f.not?.includes(stableStringify(v)) && (cmp.key === "eq" || cmp.key === "ne")) return cmp.key === "ne";
+  if (typeof v !== "number") return undefined;
+  const below = (n: number) => f.hi !== undefined && (f.hi < n || (f.hi === n && !!f.hiStrict));
+  const belowEq = (n: number) => f.hi !== undefined && f.hi <= n;
+  const above = (n: number) => f.lo !== undefined && (f.lo > n || (f.lo === n && !!f.loStrict));
+  const aboveEq = (n: number) => f.lo !== undefined && f.lo >= n;
+  switch (cmp.key) {
+    case "lt": return below(v) ? true : aboveEq(v) ? false : undefined;
+    case "le": return belowEq(v) ? true : above(v) ? false : undefined;
+    case "gt": return above(v) ? true : belowEq(v) ? false : undefined;
+    case "ge": return aboveEq(v) ? true : below(v) ? false : undefined;
+    case "eq": return below(v) || above(v) ? false : undefined;
+    case "ne": return below(v) || above(v) ? true : undefined;
+  }
+  return undefined;
+}
+
+const ZERO_OPS = new Set(["sum", "subtract", "subtract_floor0", "round", "smaller_of", "larger_of"]);
+
+// The value a line has wherever the facts hold, as a normal form. Lines whose refusal gates are all among
+// the mutated line's own gates (already evaluated false when its expression is reached) count as ungated.
+// A choose the facts settle is replaced by its taken branch; a copy by its source; a non-negative line the
+// facts bound at zero, a zero parameter, and arithmetic of zeros (and a rate or count of a zero amount by
+// a parameter) are the zero; anything else is its copy-chain normal form.
+function underGuard(data: CanonicalData, id: string, facts: GuardFacts, known: Set<string>, depth = 0): string {
+  const ZERO = "ZERO";
+  const l = findLine(data, id);
+  const plain = (): string => {
+    const n = normalizeChain(data, id, known) as { parameter?: unknown };
+    return n.parameter === 0 ? ZERO : stableStringify(n);
+  };
+  if (!l || depth > 10 || !(l.refuses ?? []).every((r) => known.has(r.when))) return plain();
+  const f = facts.known.get(id);
+  if (f && (l.type === "NonNegDollars" || l.type === "Count") && (f.eq === "0" || (f.hi === 0 && !f.hiStrict))) return ZERO;
+  const e = l.expr as Record<string, unknown>;
+  if (e.op === "choose") {
+    for (const alt of e.alternatives as { guard: unknown; then: unknown }[]) {
+      const v = decides(alt.guard, facts);
+      if (v === undefined) break;
+      if (v) return typeof alt.then === "string" ? underGuard(data, alt.then, facts, known, depth + 1) : plain();
+    }
+    return plain();
+  }
+  if (e.op === "copy" && typeof e.from === "string") return underGuard(data, e.from, facts, known, depth + 1);
+  if (e.op === "param") return plain();
+  const sub = (x: unknown): string | undefined => typeof x === "string" ? underGuard(data, x, facts, known, depth + 1) : undefined;
+  const fixed = (x: unknown): boolean => x !== null && typeof x === "object" && ("param" in x || "const" in x);
+  if (ZERO_OPS.has(e.op as string)) {
+    const ops = e.op === "sum" || e.op === "smaller_of" || e.op === "larger_of" ? (e.of as unknown[]) : e.op === "round" ? [e.of] : [e.from, e.take];
+    if (ops.every((x) => fixed(x) ? (x as { const?: unknown }).const === 0 || data.params.values[(x as { param: string }).param]?.value === 0 : sub(x) === ZERO)) return ZERO;
+  }
+  if (e.op === "multiply_rate" || e.op === "multiply_count") {
+    const other = e.op === "multiply_rate" ? e.rate : e.count;
+    const otherFixed = fixed(other) || (typeof other === "string" && (normalizeChain(data, other, known) as { parameter?: unknown }).parameter !== undefined);
+    if (sub(e.amount) === ZERO && otherFixed) return ZERO;
+  }
+  return plain();
+}
+
+// Branch value settled by its guard: a choose alternative's value X is replaced by Y, and where that
+// alternative's guard holds (so its earlier guards are false and every line the guard compares is
+// complete), X and Y reduce to the same value under the facts the guard gives, so the mutated line's
+// value is unchanged at every input.
+function settledBranch(data: CanonicalData, mutation: Mutation): string | undefined {
+  const pair = replacedPair(mutation); if (!pair || !independentOperands(data, mutation, pair)) return undefined;
+  const m = /\.then(\d+)$/.exec(mutation.id); if (!m) return undefined;
+  const line = findLine(data, lineOf(mutation));
+  if (line?.expr.op !== "choose") return undefined;
+  const alt = (line.expr.alternatives as { guard: unknown; then: unknown }[])[Number(m[1])];
+  if (!alt || alt.then !== pair[0]) return undefined;
+  const facts = guardFacts(data, alt.guard);
+  const known = new Set((line.refuses ?? []).filter((r) => !r.when_known).map((r) => r.when));
+  const a = underGuard(data, pair[0], facts, known), b = underGuard(data, pair[1], facts, known);
+  if (a !== b) return undefined;
+  return `Branch settled by its guard: where ${lineOf(mutation)} takes alternative ${m[1]} (guard ${stableStringify(alt.guard)}), the lines that guard compares are complete and fix the choices that ${pair[0]} and ${pair[1]} make, and both reduce to ${a === "ZERO" ? "the zero" : "the same value"} (through settled choices, copies${a === "ZERO" ? " and arithmetic of zeros" : ""}, with refusal gates only among the line's own, already false), so the mutated line is unchanged at every input.`;
+}
+
+// Unreachable alternative: the mutated line is a helper, and every printed line reads it only through
+// choices whose guards make some ungated test line F true (path dominance, as for a guarded figure);
+// F true settles the replaced alternative's guard false, so wherever a printed value depends on the
+// helper that alternative is not taken, and its value is never read there.
+function unreachableAlternative(data: CanonicalData, mutation: Mutation): string | undefined {
+  const pair = replacedPair(mutation); if (!pair) return undefined;
+  const m = /\.then(\d+)$/.exec(mutation.id); if (!m) return undefined;
+  const id = lineOf(mutation), line = findLine(data, id), doc = docOfLine(data, id);
+  if (!line || !doc || line.expr.op !== "choose" || !isHelper(data, id)) return undefined;
+  const alt = (line.expr.alternatives as { guard: unknown; then: unknown }[])[Number(m[1])];
+  if (!alt || alt.then !== pair[0]) return undefined;
+  for (const f of doc.lines) {
+    if (f.type !== "Bool" || f.expr.op !== "test" || (f.refuses ?? []).length) continue;
+    if (decides(alt.guard, guardFacts(data, { op: "test", eq: [f.id, { const: true }] })) !== false) continue;
+    if (!dominatedBy(data, id, f.id)) continue;
+    return `Unreachable alternative: ${id} is a helper that every printed line reads only through choices whose guards make ${f.id} true, and ${f.id} true makes the guard of alternative ${m[1]} (${stableStringify(alt.guard)}) false; so wherever a printed value depends on ${id} that alternative is not taken, and replacing its value changes no printed value.`;
+  }
+  return undefined;
+}
+
 // The structural rules, checked against the current data for every survivor: the first that accepts
 // it gives the reason.
 export function structuralReason(data: CanonicalData, mutation: Mutation): string | undefined {
   return aliasEquivalence(data, mutation) ?? sharedGateEquivalence(data, mutation) ?? floorMinusMin(data, mutation)
-    ?? carriedZero(data, mutation) ?? guardedFigure(data, mutation) ?? unreadParameter(data, mutation) ?? unreadTable(data, mutation);
+    ?? carriedZero(data, mutation) ?? settledBranch(data, mutation) ?? unreachableAlternative(data, mutation) ?? guardedFigure(data, mutation) ?? unreadParameter(data, mutation) ?? unreadTable(data, mutation);
 }
 
 // Equivalences that need an argument about evaluation order or reachability. Each is
@@ -683,6 +909,10 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
         && floor.expr.op === "subtract_floor0" && floor.expr.from === "line3" && floor.expr.take === "zero"
         && zero.expr.op === "param" && zero.expr.ref === "sales.zero" && [pos, floor, zero, rate].every((l) => !(l.refuses ?? []).length);
     }, "se"),
+  "operand.eic.eic.line1_table0.line1.key": line1KeyInTable("eic.line1_table0"),
+  "operand.eic.eic.line1_table1.line1.key": line1KeyInTable("eic.line1_table1"),
+  "operand.eic.eic.line1_table2.line1.key": line1KeyInTable("eic.line1_table2"),
+  "operand.eic.eic.line1_table3.line1.key": line1KeyInTable("eic.line1_table3"),
   "operand.qdcg.qdcg.line8.line7": minNesting("qdcg.line8", "qdcg.line5", "qdcg.line7", "qdcg.line1", "qdcg.line6"),
   "operand.scveh.scveh.l5.k5": vehicle2019("scveh.l5", "scveh.l5 looks up the vehicle's year-5 limit; the mutant looks up year 4.",
     (d) => vehicleLimit(d, "scveh.l5", "scveh.k5") && vehicleLimit(d, "scveh.l4", "scveh.k4")),
@@ -700,6 +930,34 @@ export function equivalenceReason(data: CanonicalData, mutation: Mutation): stri
   const conditional = EQUIVALENT_IF[mutation.id];
   if (conditional?.holds(data)) return conditional.reason + " (structural conditions re-checked this run.)";
   return structuralReason(data, mutation);
+}
+
+// EIC Worksheet A line 2 looks up line 1 in the EIC Table only when line 1 is at least the table's
+// first amount (a positive parameter). Line 1 and earned_for_limit choose on the same self-employment
+// test between the same earned income and, for a self-employed filer, Worksheet B line 6 (line 4b
+// floored at zero) or line 4b itself; at a positive line 1 those agree. A lookup keyed on
+// earned_for_limit is therefore read only where the two keys are equal and complete.
+function line1KeyInTable(lookup: string) {
+  return {
+    reason: `${lookup} is read only by eic.line1_table, which only eic.line2 reads, and only in the alternative taken when eic.line1 is at least eic.table_start (a positive amount). eic.line1 and eic.earned_for_limit choose on eic.self_employed between eic.earned_income (not self-employed) and eic.wsb_6 or eic.wsb_4b (self-employed), and eic.wsb_6 is eic.wsb_4b floored at zero; so wherever the lookup is read, eic.line1 is positive and complete, eic.self_employed and the branch taken are complete, and the two keys are the same amount. The lookup lines and eic.line1_table are helpers: only their own, unprinted values can differ, where eic.line2 does not read them.`,
+    holds: (d: CanonicalData): boolean => {
+      const lk = exprOf(d, lookup), table = exprOf(d, "eic.line1_table"), inTable = exprOf(d, "eic.line1_in_table");
+      if (lk?.op !== "table_lookup" || lk.key !== "eic.line1" || table?.op !== "choose") return false;
+      if (!isHelper(d, lookup) || !isHelper(d, "eic.line1_table")) return false;
+      if (!(table.alternatives as { then: unknown }[]).some((a) => a.then === lookup)) return false;
+      if (stableStringify(allReaders(d, lookup)) !== stableStringify(["eic.line1_table"])) return false;
+      if (stableStringify(allReaders(d, "eic.line1_table")) !== stableStringify(["eic.line2"])) return false;
+      if (!bindsBranches(d, "eic.line2", "eic.line1_in_table", "eic.zero", "eic.line1_table")) return false;
+      const start = (inTable?.ge as unknown[] | undefined)?.[1] as { param?: string } | undefined;
+      const sv = start?.param === undefined ? undefined : d.params.values[start.param]?.value;
+      if (inTable?.op !== "test" || (inTable.ge as unknown[])[0] !== "eic.line1" || typeof sv !== "number" || sv <= 0) return false;
+      const w6 = exprOf(d, "eic.wsb_6");
+      if (w6?.op !== "subtract_floor0" || w6.from !== "eic.wsb_4b" || w6.take !== "eic.zero" || !zeroBehindGates(d, "eic.zero")) return false;
+      return bindsBranches(d, "eic.line1", "eic.self_employed", "eic.earned_income", "eic.wsb_6")
+        && bindsBranches(d, "eic.earned_for_limit", "eic.self_employed", "eic.earned_income", "eic.wsb_4b")
+        && ungated(d, lookup, "eic.line1_table", "eic.line2", "eic.line1_in_table", "eic.line1", "eic.earned_for_limit", "eic.wsb_6", "eic.zero");
+    },
+  };
 }
 
 // scveh.lN looks up the auto_limit table on the vehicle's placed year and the year-N parameter line.
