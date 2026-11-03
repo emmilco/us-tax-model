@@ -4,22 +4,22 @@ Second transcription of `Form 8283 — groups of similar noncash property` by an
 
 | field | value |
 | --- | --- |
-| date | 2026-10-30 |
+| date | 2026-11-02 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 69bf344cf2eb55e31d11f81768e7dec41f757996aaae74587346b1032c975a2f |
+| prompt sha256 | e975264346c4279690bba0b97ec8b49798bf1e8e5deb84438864f853926c3f69 |
 | prompt policy | source-only-computation-v2 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
 | complete input context | pass |
-| required input context sha256 | ff096ba9e6dee4a9f73d729331f8e6f82b8954b1042ab1e942ef4e1e05ad27ef |
+| required input context sha256 | 90a99afbb2bb2eee557a8dac8e9aabed9557fb2fdf632677899c0784721c1150 |
 | type validation policy | project-expression-types-v3 |
 | model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 4b41963405bbce880647ac9dc9dbdfcc9507404cb92dc7cb300a4c5c877321a2 |
+| subject sha256 | d18c9a40a0ed9b904c7e11e305b8490c9c6ae4e1d7b18063db0f998e97b0822a |
 | printed lines compared | 1 |
 | agree / disagree / missing | 1 / 0 / 0 |
 | extra printed lines in second | none |
@@ -29,6 +29,7 @@ Second transcription of `Form 8283 — groups of similar noncash property` by an
 | document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
 | --- | --- | --- | --- | --- | --- | --- |
 | i8283 | December 2025; printed date 2026-01-30 | 1, 2, 3 | cited pages | cd582a9f231564c755d552a21d937b33e24df8b9fe65f4f823b7c9eca9dfe1ad | 1, 2, 3 | 53a4b54ff613d5c600c1af7ba5bf9024418fe89441ae8d629a955bd59aa6e3c7 |
+| i1040sca | 2025; printed date 2025-12-08 | 11 | pages named by another document's citation | 18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b | 11 | 5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c |
 | f8283 | December 2025; created 2025-07-01 | 1, 2 | whole document | d33f4c2762c7366b560ae700f7c403b698b6567187a94eb4f7943b3ab6c20219 | - | 2a4ef5ee41c489f0de7f68915540d45a11937f39759f0c9ffb0f326461ee9320 |
 
 ## Lines
@@ -50,11 +51,10 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 lines:
   - id: gift.allowed
     printed: "(helper)"
-    label: "Deduction allowed for this item or group of similar noncash property before income limits"
+    label: "Deduction allowed for this item or group of similar items before income limits, after required valuation and basis reductions"
     type: NonNegDollars
-    expr:
-      op: copy
-      from: gift.deduction
+    expr: {op: copy, from: gift.deduction}
+    cite: "i8283 (Rev. December 2025), Purpose of Form; Who Must File; Section A and Section B; Fair Market Value (Reductions to contribution)"
     refuses: [gift.special]
-    note: "Form 8283 does not determine income-limit reductions. This returns gift.deduction, the claimed deduction after required valuation or basis reductions and before income limits. If the group needs an appraisal or other special treatment (gift.special), the line refuses."
+    note: "Form 8283 does not itself figure the charitable contribution deduction. This helper treats the supplied deduction before income limits, after required reductions, as the allowed amount; groups needing an appraisal or other special treatment are refused."
 ```

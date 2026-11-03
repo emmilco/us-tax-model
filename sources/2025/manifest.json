@@ -1940,6 +1940,23 @@
       "revision_locator": "PDF page 1, printed heading; PDF metadata CreationDate"
     },
     {
+      "id": "p502",
+      "url": "https://www.irs.gov/pub/irs-pdf/p502.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-pdf/p502.pdf",
+      "fetched_at": "2026-11-03T02:30:29.371374+00:00",
+      "file": "p502.pdf",
+      "sha256": "11801353ab959ee04dcadc1f799b6c0b87e1879680fe6f8511af3fa113690d25",
+      "revision": null,
+      "revision_status": "Pending inspection of archived document; not cleared for encoding",
+      "text_file": "p502.txt",
+      "text_sha256": "a85451b60db3f8c4d2be78bf08975f2ba8bd5c56093a86b24e5ae4ed5051d40b",
+      "cols_file": "p502.cols.txt",
+      "cols_sha256": "71bbda10a232ac104b7a59173c2901b409cd010f035f28e9bb615cab6db21c08",
+      "pages_file": "p502.pages.json",
+      "pages_sha256": "d0a06859277d437c05b954b39040b719034c3693b244a94f4c2f123299cbab8f",
+      "extract_tool_version": "0.10"
+    },
+    {
       "id": "p503",
       "url": "https://www.irs.gov/pub/irs-pdf/p503.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-pdf/p503.pdf",

@@ -1,3 +1,18 @@
+# Owner decisions and parallel work — 2026-11-02
+
+**Owner decisions (2026-11-02), on the T-169 owner questions:**
+1. Schedule A line 12: state the good-used-condition and $250 acknowledgment rules in the `gift.deduction` question (done on this branch), not a gate.
+2. `person.blind`: state the partial-blindness test and the certified eye-doctor statement, as wording, at the next `person` change (after the F1 cloud branch lands).
+3. The self-employed health insurance double count on Schedule A line 1 (proposed by the T-169 session as PENDING-4; the `sa.line1` question has no reduction for Schedule 1 line 17 or Form 8962): wording first, a cited refusal if wording is not enough; not a computed split. Apply when integrating `claude/A-backlog`, which rewrites `sa.line1`.
+4. Pub. 502 is archived as `sources/2025/p502` (2025 edition).
+
+**Parallel work in flight (branches to integrate; each is re-tested locally before `main`):**
+- `claude/ruling-audit-1`: done. Two confirmed findings with one cause: an asset past its GDS period is never screened, so ADS property and listed property used 50% or less complete with $0 depreciation (reproduced locally for ADS). Fix after the asset work below lands; it is the new top of queue 1.
+- `claude/f1-dependent` (routine), `claude/t159-mutation` (routine): running.
+- `claude/A-backlog`: three pasted sessions share this branch: T-169 (partly done, report in `research/audits/B-backlog/`), T-164 so far, and T-170 so far; T-172, T-174, T-165, T-166 pending. Integrate by row; rerun the reviews of each changed form locally.
+
+---
+
 # Session handoff — 2026-11-02; T-161 fixed, next is T-159
 
 **State:** T-161/BUG-0292 is fixed (BUG-0313): `person.x_other` asks about an earlier-year HSA excess whether or not a 2025 Form 8889 exists, and the refusal names Part VII. No expression changed; lines 42 to 46 stay refused. person and f5329 reviews, f5329 completeness (first run) and the screen review are rerun and ruled. See the latest commit for the suite result.

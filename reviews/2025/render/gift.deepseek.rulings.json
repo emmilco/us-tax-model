@@ -1,0 +1,21 @@
+{
+ "kind": "render",
+ "form": "gift",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "allowed",
+   "restated": "Enter the amount from helper \"Deduction before income limits for this item or group of similar items across all donees, after required valuation/basis reductions\".",
+   "model": "Its Section B refusal inherits that overbroad classification; the IRS excepts vehicles, intellectual property, inventory, and certain other securities reportable in Section A, not just publicly traded securities.",
+   "ruling": "Ruling: scope; accepted over-refusal. f8283 Section B covers \"Donated Property Over $5,000 (Except Publicly Traded Securities, Vehicles, Intellectual Property or Inventory Reportable in Section A)\". The project sends every over-$5,000 group except publicly traded securities to the Section B refusal, so a vehicle, intellectual property, inventory or certain other securities over $5,000 are refused rather than computed. That refuses returns the tool could support; it never computes a wrong amount.",
+   "context": "9bee6ea9ebce90e936420e9fe48cb68b4dbf2e5bca9ffcd0b3fbbae41ac3e42e"
+  },
+  {
+   "printed": "section_b",
+   "restated": "helper \"Is this group publicly traded securities?\" = false and helper \"Deduction before income limits for this item or group of similar items across all donees, after required valuation/basis reductions\" > $5,000",
+   "model": "The IRS Section B exclusion is broader: 'Donated Property Over $5,000 (Except Publicly Traded Securities, Vehicles, Intellectual Property or Inventory Reportable in Section A),' and Section A also includes certain other securities even over $5,000. The helper excludes only publicly traded securities.",
+   "ruling": "Ruling: scope; accepted over-refusal. f8283 Section B covers \"Donated Property Over $5,000 (Except Publicly Traded Securities, Vehicles, Intellectual Property or Inventory Reportable in Section A)\". The project sends every over-$5,000 group except publicly traded securities to the Section B refusal, so a vehicle, intellectual property, inventory or certain other securities over $5,000 are refused rather than computed. That refuses returns the tool could support; it never computes a wrong amount.",
+   "context": "9bee6ea9ebce90e936420e9fe48cb68b4dbf2e5bca9ffcd0b3fbbae41ac3e42e"
+  }
+ ]
+}

@@ -4,11 +4,12 @@
  "failures": [],
  "family": "claude",
  "form": "gift",
+ "invalid_lines": [],
  "lines": [],
- "log_sha256_at_triage": "558c5ba57b7fbc8bdbd9e6ce1157b9296b2d5b644a573507de99774bcde0cab4",
+ "log_sha256_at_triage": "c1893603f88b315c001a19428266b77d5c0ae3a5490ee127be42f99f4f589a92",
  "policy": "executable-triage-v2",
- "response_sha256": "5e2f0845fb1aad9ca348dea46cd877a1b9e07a9ba0d23a011990c520647d7838",
+ "response_sha256": "41d1e2e3ff691b304ac939928a2a661ac8ca7b26998aec40507348617492e352",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "no candidate lines",
- "subject_sha256": "4b41963405bbce880647ac9dc9dbdfcc9507404cb92dc7cb300a4c5c877321a2"
+ "subject_sha256": "d18c9a40a0ed9b904c7e11e305b8490c9c6ae4e1d7b18063db0f998e97b0822a"
 }

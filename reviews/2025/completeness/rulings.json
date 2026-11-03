@@ -563,6 +563,11 @@
    "evidence": "i5329 p. 8, Line 47. A withdrawn 2025 excess is refused (stage21.refuse.hsa_excess_withdrawn).",
    "prompt_sha": "676994e56575a6a038e501c3b6d5f468d52de0a50c14f8bb1c3cc5b3fcf37cf3",
    "gate": "f8889.unsupported"
+  },
+  "unruled:gift#1": {
+   "class": "presentation",
+   "evidence": "i8283 p. 3. The reduction is asked for in the amount; the attached statement is filing information the filer prepares.",
+   "prompt_sha": "d942ba2e0b07852d0bc1ac5dea474c6c5e087ac911f17a377591fb4e28ae66f1"
   }
  },
  "baseline": {
@@ -584,7 +589,6 @@
   "stale:f8995a": "86ce0a903667413c",
   "stale:ftc": "269edc66a7f596b0",
   "stale:g28": "0a1e35e73f1d28b2",
-  "stale:gift": "fcd3987b7a83c19d",
   "stale:interest": "97f205f37a88494d",
   "stale:ira": "2ae2bbd35ba14464",
   "stale:mq": "a99b6b462733fb77",
@@ -721,12 +725,6 @@
    "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
    "prompt_sha": "a7448cb422975c88cfe324c72d030bb37110aaf00632e81d9586e7fd6dcec7ab",
    "subject": "082653d67734a4688978f75513608c09a87715ac5a890ba431d08a6994953ae0"
-  },
-  "stale:gift": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "29864e5ef5aa678d36dd5a0df77dca04286da2a3f94f9a947c23f9311e7da7bc",
-   "subject": "5d7a7394b63fc3e3bf07e18cab7532cbb102add944f78b3bf83c4ce4560d5273"
   },
   "stale:interest": {
    "policy": "never-reviewed-completeness-debt-v1",

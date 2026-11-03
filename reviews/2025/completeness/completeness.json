@@ -1809,6 +1809,44 @@
   "model": "claude-opus-5-5"
  },
  {
+  "form": "gift",
+  "prompt_sha": "d942ba2e0b07852d0bc1ac5dea474c6c5e087ac911f17a377591fb4e28ae66f1",
+  "claims": [
+   {
+    "item": "gift.deduction",
+    "sentences": [
+     {
+      "quote": "Attach a statement to your tax return showing how you figured the reduction.",
+      "page": "i8283 p. 3"
+     }
+    ],
+    "quote": "Attach a statement to your tax return showing how you figured the reduction.",
+    "page": "i8283 p. 3",
+    "why_uncovered": "The gift.deduction question has the filer enter the amount after any required reductions for ordinary income or capital gain property. That covers the amount in substance. But no line, question or refusal requires or produces the statement showing how the reduction was figured, and nothing asks whether a reduction was made.",
+    "closest_item": "gift.deduction",
+    "effect": "presentation"
+   }
+  ],
+  "used": [
+   {
+    "doc": "i1040sca",
+    "pages": [
+     11
+    ]
+   },
+   {
+    "doc": "i8283",
+    "pages": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "cost": 0.115456,
+  "model": "claude-opus-5-5"
+ },
+ {
   "form": "household",
   "prompt_sha": "f049d8a43b1b266557445897a04b2bb295d9292493c4c82133a188e54cc6b151",
   "claims": [

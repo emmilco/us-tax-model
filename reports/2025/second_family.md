@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 155 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 8.7% (430/4927 second-family lines judged; pending reviews are provisional); 79 eligible, 75 pending; raw agreement 77.8% (diagnostic only); current independence yield 283 line(s); both families disputed 720
+Summary: 155 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 8.7% (430/4927 second-family lines judged; pending reviews are provisional); 79 eligible, 75 pending; raw agreement 77.7% (diagnostic only); current independence yield 285 line(s); both families disputed 720
 
 Written by `tools/transcription/compare_families.py` on 2026-11-02 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -980,7 +980,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f8995a | deepseek (deepseek-flash) | 14 | 12 | 85.7% | 0/14 (0.0%) | pending | 1 | 0 | 1 | 0 |
 | ftc | deepseek (deepseek-flash) | 12 | 11 | 91.7% | 0/12 (0.0%) | pass | 0 | 1 | 0 | 0 |
 | g28 | deepseek (deepseek-flash) | 7 | 2 | 28.6% | 0/7 (0.0%) | pass | 1 | 4 | 0 | 0 |
-| gift | deepseek (deepseek-flash) | 5 | 5 | 100.0% | 0/5 (0.0%) | pass | 0 | 0 | 0 | 0 |
+| gift | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pass | 2 | 0 | 0 | 0 |
 | household | deepseek (deepseek-flash) | 46 | 44 | 95.7% | 0/46 (0.0%) | pass | 0 | 1 | 1 | 0 |
 | interest | deepseek (deepseek-flash) | 2 | 2 | 100.0% | 0/2 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | ira | deepseek (deepseek-flash) | 21 | 13 | 61.9% | 0/21 (0.0%) | pending | 2 | 4 | 2 | 0 |
@@ -1015,7 +1015,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | tipjob | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 4 | 22.2% | 0/18 (0.0%) | pass | 0 | 13 | 1 | 0 |
 | w2 | deepseek (deepseek-flash) | 17 | 17 | 100.0% | 0/17 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| **all** | | 1494 | 1256 | 84.1% | | | 114 | 82 | 42 | 1 |
+| **all** | | 1494 | 1254 | 83.9% | | | 116 | 82 | 42 | 1 |
 
 Pending f8606 [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending f8995 [deepseek]: 2 open, unclassified or interface-gap rulings.
@@ -1132,6 +1132,8 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | f8995 | deepseek | 11 | MISMATCH | IRS line 11 instructions compute 'Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b' and do not provide a zero floor; the restatement adds an 'If zero or less, enter -0-' condition. |
 | f8995a | deepseek | 33 | MISMATCH | The restatement adds an 'if zero or less, enter -0-' floor, but the IRS instruction is only 'Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b'; no zero floor is stated for line 33. |
 | g28 | deepseek | 2 | MISMATCH | IRS line 2 requires the positive total of section 1202 exclusions from Form 8949 Part II code Q at 50%, 2/3, or 1/3; the restatement enters $0 from a distribution helper and does not compute those amounts, and its refusal covers only section 1202 distributions, not Code Q exclusions generally. |
+| gift | deepseek | allowed | MISMATCH | Its Section B refusal inherits that overbroad classification; the IRS excepts vehicles, intellectual property, inventory, and certain other securities reportable in Section A, not just publicly traded securities. |
+| gift | deepseek | section_b | MISMATCH | The IRS Section B exclusion is broader: 'Donated Property Over $5,000 (Except Publicly Traded Securities, Vehicles, Intellectual Property or Inventory Reportable in Section A),' and Section A also includes certain other securities even over $5,000. The helper excludes only publicly traded securities. |
 | ira | deepseek | 1b | MISMATCH | The IRS line is 'If married filing jointly, was your spouse covered by a retirement plan?'; the restatement adds a contribution condition and does not condition the line on married filing jointly. |
 | ira | deepseek | 8 | MISMATCH | The IRS line includes 'Nontaxable combat pay' in the total; the restatement adds only W-2 box 1 wages and Schedule 1 line 2a. |
 | oi8z | deepseek | 8z (amount) | MISMATCH | The line is NonNegDollars, but the IRS line 8z examples include a 'Loss on certain corrective distributions of excess deferrals'; a loss cannot be entered as a nonnegative amount to include in income. |
