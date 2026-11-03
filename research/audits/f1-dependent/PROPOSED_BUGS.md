@@ -168,3 +168,29 @@ was written on branch `claude/f1-dependent`; commits are named in REPORT.md.
   home as paid by you (the household question already carried this sentence, T-115). Wording only.
 - **Fix lines:** `dependent.months`, `dependent.divorced_rule`, `dependent.parent_home_paid`
 - **Tags:** source-definition-debt; wording; fixed
+
+## PENDING-10 — The care-expense question omits household services, provider transportation, agency fees and the volunteer-work rule (open)
+
+- **Caught by:** dependent completeness review (Claude), claim dependent#1, on the F1 branch, 2026-11-03.
+- **Source:** i2441 p. 2, "These include amounts paid for household services and care of the qualifying person while you
+  worked or looked for work." and "However, they don't include the services of a chauffeur, bartender, or gardener.";
+  p503 p. 6, "you aren't considered to be working if you do unpaid volunteer work or work for a nominal salary"; p503
+  pp. 7-8 (transportation by a care provider, agency fees and deposits, forfeited deposits, a housekeeper's meals and
+  lodging).
+- **Symptom:** `dependent.dc_paid` asks for expenses "for this person's care" and excludes "food, lodging", so a filer
+  can leave out household services or a housekeeper's meals and lodging (understating line 2(d) and the credit) or
+  count volunteer work as work. Not reproduced on a return; source and question inspection.
+- **Disposition:** wording debt on the same input as BUG-0284; a later dependent/f2441 pass. The completeness ruling
+  `unruled:dependent#1` names this placeholder, so `check_completeness.py` fails until the id is filed.
+- **Tags:** source-definition-debt; dependent; explicitly-deferred
+
+## PENDING-11 — Residual support-definition details in the support question (open)
+
+- **Caught by:** dependent completeness review (Claude), claim dependent#2, on the F1 branch, 2026-11-03.
+- **Source:** p501 p. 20 (one social security check to both spouses; need-based payments not used for support; fair
+  rental value includes furniture, appliances, heat and utilities); p501 p. 21 (dividing fair rental value when you
+  provide part of the lodging); p501 p. 22 (alimony and separate maintenance are not support of a dependent).
+- **Symptom:** after the F1 rewording (PENDING-5) `dependent.supported` still omits these five rules; a filer can
+  misallocate support in these cases. Source and question inspection only.
+- **Disposition:** residual of BUG-0282; a later dependent pass. Named by completeness ruling `unruled:dependent#2`.
+- **Tags:** source-definition-debt; dependent; explicitly-deferred
