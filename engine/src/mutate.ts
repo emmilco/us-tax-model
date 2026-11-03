@@ -580,11 +580,125 @@ function carriedZero(data: CanonicalData, mutation: Mutation): string | undefine
   return `Gated zero carried earlier: ${x} is an ungated zero and ${y} the same zero behind refusal gates (${[...new Set(gateWhens(ny))].join(", ")}); ${carrier}, read first, reaches ${y} through ungated arithmetic, so whenever ${y} refuses or is unknown ${carrier} already is, and is returned first, and otherwise both operands are zero.`;
 }
 
+// What a test, known true, says about the lines it compares with constants: an exact constant or a
+// numeric interval for each. A line counts as known only through a comparison that is true only when
+// the line is complete (eq, lt, le; or any comparison with a non-count constant), since a count with a
+// lower bound can make gt, ge and ne true while it is still unknown.
+type GuardFacts = { same: Set<string>; known: Map<string, { eq?: string; lo?: number; hi?: number; loStrict?: boolean; hiStrict?: boolean }> };
+
+function guardFacts(g: unknown): GuardFacts {
+  const facts: GuardFacts = { same: new Set(), known: new Map() };
+  const conjuncts: unknown[] = [];
+  const flatten = (t: unknown): void => { const a = (t as { all?: unknown[] }).all; if (Array.isArray(a)) a.forEach(flatten); else conjuncts.push(t); };
+  flatten(g);
+  for (const c of conjuncts) {
+    facts.same.add(stableStringify(c));
+    const cmp = comparison(c);
+    if (!cmp) continue;
+    const { key, line, k } = cmp;
+    const isCount = (k as { type?: string }).type === "Count";
+    if (!(key === "eq" || key === "lt" || key === "le" || !isCount)) continue;
+    const f = facts.known.get(line) ?? {};
+    const v = (k as { const: unknown }).const;
+    if (key === "eq") f.eq = stableStringify(v);
+    else if (typeof v === "number" && key !== "ne") {
+      if (key === "lt" || key === "le") { if (f.hi === undefined || v < f.hi) { f.hi = v; f.hiStrict = key === "lt"; } }
+      else if (f.lo === undefined || v > f.lo) { f.lo = v; f.loStrict = key === "gt"; }
+    }
+    facts.known.set(line, f);
+  }
+  return facts;
+}
+
+// A comparison of a line with a constant, in either written order (normalized to line first).
+function comparison(t: unknown): { key: string; line: string; k: unknown } | undefined {
+  const flip: Record<string, string> = { eq: "eq", ne: "ne", lt: "gt", le: "ge", gt: "lt", ge: "le" };
+  for (const key of Object.keys(flip)) {
+    const pair = (t as Record<string, unknown>)[key];
+    if (!Array.isArray(pair)) continue;
+    const isK = (x: unknown) => x !== null && typeof x === "object" && "const" in x;
+    if (typeof pair[0] === "string" && isK(pair[1])) return { key, line: pair[0], k: pair[1] };
+    if (typeof pair[1] === "string" && isK(pair[0])) return { key: flip[key]!, line: pair[1], k: pair[0] };
+  }
+  return undefined;
+}
+
+// The value test t must have wherever guard facts hold, or undefined when the facts do not settle it.
+// Every line t reads must be known from the facts, so t is evaluated complete.
+function decides(t: unknown, facts: GuardFacts): boolean | undefined {
+  if (facts.same.has(stableStringify(t))) return true;
+  const o = t as { all?: unknown[]; any?: unknown[]; not?: unknown };
+  if (Array.isArray(o.all) || Array.isArray(o.any)) {
+    const vs = (o.all ?? o.any)!.map((x) => decides(x, facts));
+    if (vs.some((v) => v === undefined)) return undefined;
+    return o.all ? vs.every(Boolean) : vs.some(Boolean);
+  }
+  if (o.not !== undefined) { const v = decides(o.not, facts); return v === undefined ? undefined : !v; }
+  const cmp = comparison(t);
+  if (!cmp) return undefined;
+  const f = facts.known.get(cmp.line);
+  if (!f) return undefined;
+  const v = (cmp.k as { const: unknown }).const;
+  if (f.eq !== undefined) {
+    const x = JSON.parse(f.eq) as unknown;
+    if (cmp.key === "eq") return stableStringify(x) === stableStringify(v);
+    if (cmp.key === "ne") return stableStringify(x) !== stableStringify(v);
+    if (typeof x !== "number" || typeof v !== "number") return undefined;
+    return cmp.key === "lt" ? x < v : cmp.key === "le" ? x <= v : cmp.key === "gt" ? x > v : x >= v;
+  }
+  if (typeof v !== "number") return undefined;
+  const below = (n: number) => f.hi !== undefined && (f.hi < n || (f.hi === n && !!f.hiStrict)); // every value < n
+  const belowEq = (n: number) => f.hi !== undefined && f.hi <= n; // every value <= n
+  const above = (n: number) => f.lo !== undefined && (f.lo > n || (f.lo === n && !!f.loStrict)); // every value > n
+  const aboveEq = (n: number) => f.lo !== undefined && f.lo >= n; // every value >= n
+  switch (cmp.key) {
+    case "lt": return below(v) ? true : aboveEq(v) ? false : undefined;
+    case "le": return belowEq(v) ? true : above(v) ? false : undefined;
+    case "gt": return above(v) ? true : belowEq(v) ? false : undefined;
+    case "ge": return aboveEq(v) ? true : below(v) ? false : undefined;
+    case "eq": return below(v) || above(v) ? false : undefined;
+    case "ne": return below(v) || above(v) ? true : undefined;
+  }
+  return undefined;
+}
+
+// The value a line has wherever guard facts hold, as a copy-chain normal form: an ungated choose whose
+// guards the facts settle (each earlier guard false, one true) is replaced by its taken branch.
+function underGuard(data: CanonicalData, id: string, facts: GuardFacts, known: Set<string>, depth = 0): string {
+  const l = findLine(data, id);
+  if (l && depth < 6 && !(l.refuses ?? []).length && l.expr.op === "choose") {
+    for (const alt of l.expr.alternatives as { guard: unknown; then: unknown }[]) {
+      const v = decides(alt.guard, facts);
+      if (v === undefined) break;
+      if (v) { if (typeof alt.then === "string") return underGuard(data, alt.then, facts, known, depth + 1); break; }
+    }
+  }
+  if (l && depth < 6 && !(l.refuses ?? []).length && l.expr.op === "copy" && typeof l.expr.from === "string") return underGuard(data, l.expr.from, facts, known, depth + 1);
+  return stableStringify(normalizeChain(data, id, known));
+}
+
+// Branch value settled by its guard: a choose alternative's value X is replaced by Y, and where that
+// alternative's guard holds (so its earlier guards are false and every line the guard compares is
+// complete), X and Y reduce to the same value: an ungated choose among them takes, on the facts the
+// guard gives, a branch that is the other (through copies), so the mutated line's value is unchanged.
+function settledBranch(data: CanonicalData, mutation: Mutation): string | undefined {
+  const pair = replacedPair(mutation); if (!pair || !independentOperands(data, mutation, pair)) return undefined;
+  const m = /\.then(\d+)$/.exec(mutation.id); if (!m) return undefined;
+  const line = findLine(data, lineOf(mutation));
+  if (line?.expr.op !== "choose") return undefined;
+  const alt = (line.expr.alternatives as { guard: unknown; then: unknown }[])[Number(m[1])];
+  if (!alt || alt.then !== pair[0]) return undefined;
+  const facts = guardFacts(alt.guard);
+  const known = new Set((line.refuses ?? []).filter((r) => !r.when_known).map((r) => r.when));
+  if (underGuard(data, pair[0], facts, known) !== underGuard(data, pair[1], facts, known)) return undefined;
+  return `Branch settled by its guard: where ${lineOf(mutation)} takes alternative ${m[1]} (guard ${stableStringify(alt.guard)}), the guard's comparisons are complete and fix the choices ${pair[0]} and ${pair[1]} make, and both reduce to the same value, so the mutated line is unchanged at every input.`;
+}
+
 // The structural rules, checked against the current data for every survivor: the first that accepts
 // it gives the reason.
 export function structuralReason(data: CanonicalData, mutation: Mutation): string | undefined {
   return aliasEquivalence(data, mutation) ?? sharedGateEquivalence(data, mutation) ?? floorMinusMin(data, mutation)
-    ?? carriedZero(data, mutation) ?? guardedFigure(data, mutation) ?? unreadParameter(data, mutation) ?? unreadTable(data, mutation);
+    ?? carriedZero(data, mutation) ?? settledBranch(data, mutation) ?? guardedFigure(data, mutation) ?? unreadParameter(data, mutation) ?? unreadTable(data, mutation);
 }
 
 // Equivalences that need an argument about evaluation order or reachability. Each is
