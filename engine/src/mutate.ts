@@ -46,18 +46,32 @@ function lineType(data: CanonicalData, doc: FormDoc, id: string): string | undef
   return doc.lines.find((l) => l.id === id)?.type;
 }
 
-type OperandSite = { ref: string; kind: string; path: (string | number)[]; wantType: string | undefined };
-// Table keys, choose branches and test operands are measured but not yet mutated: replacing
-// them selects another branch that agrees on the fixture corpus, and the full set produces
-// hundreds of unexplained survivors that need fixtures or equivalence rules first (T-159).
+type OperandSite = { ref: string; kind: string; path: (string | number)[]; wantType: string | undefined; tier: number };
+// Every operand position is a site: keyed_lookup keys, rate_lookup and table_lookup key and status
+// included. Sites of tier 2 and above (choose branch values, string operands of test expressions)
+// are mutated up to the tier named by MUTATE_TIER (default 0).
+const SITE_TIER = Number(process.env.MUTATE_TIER ?? 0) || 0;
+
+/** String line references inside a test expression, with their paths, through nested tests. */
+function testSites(test: any, path: (string | number)[], out: OperandSite[], typeOf: (ref: unknown) => string | undefined): void {
+  if (test === null || typeof test !== "object") return;
+  for (const key of ["eq", "ne", "lt", "le", "gt", "ge"]) {
+    const pair = test[key];
+    if (Array.isArray(pair)) pair.forEach((ref: unknown, i: number) => {
+      if (typeof ref === "string") out.push({ ref, kind: "test", path: [...path, key, i], wantType: typeOf(ref), tier: 3 });
+    });
+  }
+  for (const key of ["all", "any"]) if (Array.isArray(test[key])) test[key].forEach((t: unknown, i: number) => testSites(t, [...path, key, i], out, typeOf));
+  if (test.not) testSites(test.not, [...path, "not"], out, typeOf);
+}
 
 /** Every string line reference in an expression position the mutator can replace. */
 function collectOperandSites(expr: any, lineType: string, doc: FormDoc): OperandSite[] {
   const sites: OperandSite[] = [];
   const typeOf = (ref: unknown): string | undefined =>
     typeof ref === "string" ? doc.lines.find((l) => l.id === ref)?.type : undefined;
-  const push = (ref: unknown, kind: string, path: (string | number)[], wantType: string | undefined) => {
-    if (typeof ref === "string") sites.push({ ref, kind, path, wantType });
+  const push = (ref: unknown, kind: string, path: (string | number)[], wantType: string | undefined, tier = 0) => {
+    if (typeof ref === "string") sites.push({ ref, kind, path, wantType, tier });
   };
   switch (expr?.op) {
     case "sum": case "smaller_of": case "larger_of":
@@ -93,6 +107,19 @@ function collectOperandSites(expr: any, lineType: string, doc: FormDoc): Operand
     case "rate_lookup":
       push(expr.key, "key", ["key"], typeOf(expr.key));
       push(expr.status, "status", ["status"], typeOf(expr.status));
+      break;
+    case "table_lookup": case "bracket_schedule":
+      push(expr.key, "key", ["key"], typeOf(expr.key));
+      push(expr.status, "status", ["status"], typeOf(expr.status));
+      break;
+    case "choose":
+      (expr.alternatives ?? []).forEach((alt: any, i: number) => {
+        push(alt.then, `then${i}`, ["alternatives", i, "then"], lineType, 2);
+        testSites(alt.guard, ["alternatives", i, "guard"], sites, typeOf);
+      });
+      break;
+    case "test":
+      testSites(expr, [], sites, typeOf);
       break;
     case "copy":
       if (typeof expr.from === "string") push(expr.from, "from", ["from"], lineType);
@@ -160,9 +187,9 @@ export function mutations(data: CanonicalData): Mutation[] {
       }
       // Operand replacement: replace one referenced same-document line with the
       // nearest earlier same-typed line that the expression does not already use.
-      const sites = collectOperandSites(expr, line.type, doc);
-      const refs = new Set(sites.map((s) => s.ref));
-      for (const site of sites) {
+      const allSites = collectOperandSites(expr, line.type, doc);
+      const refs = new Set(allSites.map((s) => s.ref));
+      for (const site of allSites.filter((s) => s.tier <= SITE_TIER)) {
         const ref = site.ref;
         if (!ref.startsWith(doc.id + ".")) continue; // same-document only
         const wantType = site.wantType ?? line.type;
@@ -177,7 +204,9 @@ export function mutations(data: CanonicalData): Mutation[] {
           || (site.kind === "status" && expr.op === "rate_lookup");
         const id = existing
           ? `operand.${where}.${ref.split(".").pop()}`
-          : `operand.${where}.${ref.split(".").pop()}.${site.kind}`;
+          : site.kind === "test"
+            ? `operand.${where}.${ref.split(".").pop()}.${site.path.map((p) => (p === "alternatives" ? "alt" : p)).join(".")}`
+            : `operand.${where}.${ref.split(".").pop()}.${site.kind}`;
         out.push({
           id,
           kind: "replace an operand",
@@ -683,6 +712,10 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
         && floor.expr.op === "subtract_floor0" && floor.expr.from === "line3" && floor.expr.take === "zero"
         && zero.expr.op === "param" && zero.expr.ref === "sales.zero" && [pos, floor, zero, rate].every((l) => !(l.refuses ?? []).length);
     }, "se"),
+  "operand.eic.eic.line1_table0.line1.key": line1KeyInTable("eic.line1_table0"),
+  "operand.eic.eic.line1_table1.line1.key": line1KeyInTable("eic.line1_table1"),
+  "operand.eic.eic.line1_table2.line1.key": line1KeyInTable("eic.line1_table2"),
+  "operand.eic.eic.line1_table3.line1.key": line1KeyInTable("eic.line1_table3"),
   "operand.qdcg.qdcg.line8.line7": minNesting("qdcg.line8", "qdcg.line5", "qdcg.line7", "qdcg.line1", "qdcg.line6"),
   "operand.scveh.scveh.l5.k5": vehicle2019("scveh.l5", "scveh.l5 looks up the vehicle's year-5 limit; the mutant looks up year 4.",
     (d) => vehicleLimit(d, "scveh.l5", "scveh.k5") && vehicleLimit(d, "scveh.l4", "scveh.k4")),
@@ -700,6 +733,33 @@ export function equivalenceReason(data: CanonicalData, mutation: Mutation): stri
   const conditional = EQUIVALENT_IF[mutation.id];
   if (conditional?.holds(data)) return conditional.reason + " (structural conditions re-checked this run.)";
   return structuralReason(data, mutation);
+}
+
+// EIC Worksheet A line 2 looks up line 1 in the EIC Table only when line 1 is at least the table's
+// first amount (a positive parameter). Line 1 and earned_for_limit choose on the same self-employment
+// test between the same earned income and, for a self-employed filer, Worksheet B line 6 (line 4b
+// floored at zero) or line 4b itself; at a positive line 1 those agree. A lookup keyed on
+// earned_for_limit is therefore read only where the two keys are equal and complete.
+function line1KeyInTable(lookup: string) {
+  return {
+    reason: `${lookup} is read only by eic.line1_table, which only eic.line2 reads, and only in the alternative taken when eic.line1 is at least eic.table_start (a positive amount). eic.line1 and eic.earned_for_limit choose on eic.self_employed between eic.earned_income (not self-employed) and eic.wsb_6 or eic.wsb_4b (self-employed), and eic.wsb_6 is eic.wsb_4b floored at zero; so wherever the lookup is read, eic.line1 is positive and complete, eic.self_employed and the branch taken are complete, and the two keys are the same amount.`,
+    holds: (d: CanonicalData): boolean => {
+      const lk = exprOf(d, lookup), table = exprOf(d, "eic.line1_table"), inTable = exprOf(d, "eic.line1_in_table");
+      if (lk?.op !== "table_lookup" || lk.key !== "eic.line1" || table?.op !== "choose") return false;
+      if (!(table.alternatives as { then: unknown }[]).some((a) => a.then === lookup)) return false;
+      if (stableStringify(allReaders(d, lookup)) !== stableStringify(["eic.line1_table"])) return false;
+      if (stableStringify(allReaders(d, "eic.line1_table")) !== stableStringify(["eic.line2"])) return false;
+      if (!bindsBranches(d, "eic.line2", "eic.line1_in_table", "eic.zero", "eic.line1_table")) return false;
+      const start = (inTable?.ge as unknown[] | undefined)?.[1] as { param?: string } | undefined;
+      const sv = start?.param === undefined ? undefined : d.params.values[start.param]?.value;
+      if (inTable?.op !== "test" || (inTable.ge as unknown[])[0] !== "eic.line1" || typeof sv !== "number" || sv <= 0) return false;
+      const w6 = exprOf(d, "eic.wsb_6");
+      if (w6?.op !== "subtract_floor0" || w6.from !== "eic.wsb_4b" || w6.take !== "eic.zero" || !zeroBehindGates(d, "eic.zero")) return false;
+      return bindsBranches(d, "eic.line1", "eic.self_employed", "eic.earned_income", "eic.wsb_6")
+        && bindsBranches(d, "eic.earned_for_limit", "eic.self_employed", "eic.earned_income", "eic.wsb_4b")
+        && ungated(d, lookup, "eic.line1_table", "eic.line2", "eic.line1_in_table", "eic.line1", "eic.earned_for_limit", "eic.wsb_6", "eic.zero");
+    },
+  };
 }
 
 // scveh.lN looks up the auto_limit table on the vehicle's placed year and the year-N parameter line.
