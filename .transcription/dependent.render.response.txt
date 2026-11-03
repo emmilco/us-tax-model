@@ -1,0 +1,36 @@
+```yaml
+lines:
+  - key: "2(d)"
+    status: MISMATCH
+    reason: "The helper includes expenses paid with dependent care benefits and leaves the subtraction to Form 2441. The IRS instructions say to leave them out of this column: \"If you completed Part III, don't include in column (d) any benefits shown on line 28\" (Form 2441, line 30: \"Don't include in column (d) any benefits shown on line 28 above\")."
+  - key: "2(c)"
+    status: MATCH
+    reason: "This matches \"Check the box in column (c) if the qualifying person listed in column (a) was over age 12 at the time the care was provided and was disabled.\" Age 14 or older at year end means over 12 all year. For age 13 at year end, the program asks about care given at 13 or older while disabled."
+  - key: "23"
+    status: MISMATCH
+    reason: "The question matches line 23, but the line is gated on the eligible-student helper. That helper accepts a Form 1098-T request only \"after February 2, 2026\". The IRS text says \"After January 31, 2026, but before you file the return, you or the student must request\", so a request on February 1 or 2 wrongly fails."
+  - key: "24"
+    status: MISMATCH
+    reason: "The question matches line 24 and its instructions, including the first-3-months-of-2026 rule. The line is reached only through the same eligible-student gate, which uses \"after February 2, 2026\" where the IRS says \"After January 31, 2026\" for the Form 1098-T request exception."
+  - key: "25"
+    status: MISMATCH
+    reason: "The question matches line 25 and its instructions, including disregarding proficiency-exam credit. The line is reached only through the eligible-student gate, whose Form 1098-T exception date differs from the IRS \"After January 31, 2026\"."
+  - key: "26"
+    status: MISMATCH
+    reason: "The question matches line 26 (\"convicted, before the end of 2025, of a federal or state felony for possession or distribution of a controlled substance\"). The line is reached only through the eligible-student gate, whose Form 1098-T exception date differs from the IRS \"After January 31, 2026\"."
+  - key: "27"
+    status: MISMATCH
+    reason: "The amount is right: worksheet line 4 (expenses paid to the institution plus course materials, less lines 2a+2b+2c, not below zero), capped at $4,000, with periods that cannot be netted refused. The student gate differs from the IRS Form 1098-T exception, \"After January 31, 2026\" versus the program's \"after February 2, 2026\", which changes who gets the line."
+  - key: "28"
+    status: MISMATCH
+    reason: "The computation matches \"Subtract $2,000 from line 27. If zero or less, enter -0-.\" The line is gated by the AOC student test, which relies on the eligible-student helper's Form 1098-T date (\"after February 2, 2026\" versus the IRS \"After January 31, 2026\")."
+  - key: "29"
+    status: MISMATCH
+    reason: "The computation matches \"Multiply line 28 by 25% (0.25).\" The line is gated through the eligible-student helper, whose Form 1098-T request window differs from the IRS \"After January 31, 2026\"."
+  - key: "30"
+    status: MISMATCH
+    reason: "The computation matches \"If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29.\" The line is gated through the eligible-student helper, whose Form 1098-T request window differs from the IRS \"After January 31, 2026\"."
+  - key: "31"
+    status: MISMATCH
+    reason: "The amount is right: LLC adjusted expenses are tuition, fees and required institution-paid materials less lines 2a+2b+2c, not below zero, for a student not completing lines 27–30, with the TIN case refused. The eligible-student gate's Form 1098-T exception says \"after February 2, 2026\" where the IRS says \"After January 31, 2026\"."
+```

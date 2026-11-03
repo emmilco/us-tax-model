@@ -1,0 +1,99 @@
+```yaml
+lines:
+  - key: "rrta"
+    status: MATCH
+    reason: "The IRS text says line 11 covers tier 1 RRTA and that excess tier 2 RRTA tax is claimed on Form 843. RRTA amounts are reported in W-2 box 14 or on Form CT-2. This screen correctly identifies the railroad cases the program refuses."
+  - key: "employers"
+    status: MATCH
+    reason: "Counts W-2 entries for the person, to test 'more than one employer for 2025'. This assumes one W-2 per employer. The IRS text does not address one employer issuing several W-2s."
+  - key: "overcount"
+    status: MATCH
+    reason: "Counts employers that withheld more than $10,918.20. This matches 'if any one employer withheld more than $10,918.20, you can't claim the excess on your return.'"
+  - key: "over"
+    status: MATCH
+    reason: "True when at least one employer over-withheld. This triggers the Form 843 refusal, as the line 11 instructions require."
+  - key: "wages"
+    status: MATCH
+    reason: "Adds W-2 boxes 3 and 7 (social security wages and tips) over the person's W-2s. This gives the total wages tested against $176,100, figured separately for each spouse."
+  - key: "withheld"
+    status: MATCH
+    reason: "Adds W-2 box 4 (social security tax withheld) over the person's W-2s. This is the amount compared with $10,918.20."
+  - key: "eligible"
+    status: MATCH
+    reason: "Matches 'had more than one employer for 2025 and total wages of more than $176,100.'"
+  - key: "excess"
+    status: MATCH
+    reason: "Matches the IRS credit for 'the amount withheld in excess of $10,918.20,' floored at zero."
+  - key: "zero"
+    status: MATCH
+    reason: "A constant zero used when the person is not eligible for the credit."
+  - key: "credit"
+    status: MATCH
+    reason: "Gives the excess when eligible and zero otherwise, figured per person. It refuses the RRTA cases and the case where one employer over-withheld, which the IRS text sends to the employer or Form 843."
+  - key: "(screen) (person.se_screen)"
+    status: MATCH
+    reason: "Lists the Schedule SE items outside a Schedule C-only computation. These are church employee income, clergy and Forms 4361/4029, K-1 box 14 code A and other SE income, Schedule F and CRP payments, optional methods, chapter 11, community income, exempt income under agreements or foreign-government employment, and lines 8b/8c (Forms 4137/8919). This is consistent with the Schedule SE form and instructions."
+  - key: "(screen) (person.plan_screen)"
+    status: MATCH
+    reason: "Pub. 560 chapter 5 applies only to one defined contribution plan and not to SARSEPs. Its rate table covers whole percentages up to 25%, and elective deferrals and Roth contributions change steps 9–20. This screen excludes those cases and the higher SECURE 2.0 section 117 SIMPLE limits."
+  - key: "Step 1"
+    status: MATCH
+    reason: "Pub. 560 Step 1 is 'net profit from Schedule C, line 31'. Schedule F and K-1 income are refused by the self-employment screen. Plans with more than one Schedule C are refused, consistent with 'only the earned income from that business is considered.'"
+  - key: "Step 2"
+    status: MATCH
+    reason: "Step 2 is 'your deduction for self-employment tax from Schedule 1, line 15', which Schedule SE line 13 feeds."
+  - key: "Step 3"
+    status: MATCH
+    reason: "Step 3 is 'Subtract step 2 from step 1'. The zero floor only stops a negative contribution base and does not change any allowable deduction."
+  - key: "Step 5"
+    status: MATCH
+    reason: "Uses rate ÷ (rate + 1), rounded to 6 decimals, which reproduces the Rate Table/Rate Worksheet value (e.g., 10% → 0.090909, 25% → 0.200000). It then multiplies step 3 by that rate, as in steps 4–5."
+  - key: "Step 6"
+    status: MATCH
+    reason: "Matches 'Multiply $350,000 by your plan contribution rate (not the reduced rate).'"
+  - key: "Step 7"
+    status: MATCH
+    reason: "Matches 'Enter the smaller of step 5 or step 6.'"
+  - key: "Step 8"
+    status: MATCH
+    reason: "Matches the contribution dollar limit of $70,000."
+  - key: "Step 21"
+    status: MATCH
+    reason: "With no elective deferrals (SARSEP and other deferrals are screened out), the worksheet says 'skip steps 9 through 20 and enter the smaller of step 7 or step 8 on step 21.'"
+  - key: "(screen) (person.sav_able)"
+    status: MATCH
+    reason: "Form 8880 line 1 includes ABLE contributions by the designated beneficiary. Line 4 includes ABLE distributions received after 2022 and before the due date, including extensions."
+  - key: "(screen) (person.sav_excess)"
+    status: MATCH
+    reason: "Screens for excess elective deferrals above the $23,500 limit plus catch-up. This bears on Form 8880 lines 2 and 4 and is consistent with the W-2 instructions."
+  - key: "(screen) (person.ira_excess)"
+    status: MATCH
+    reason: "Screens for excess traditional/Roth IRA contributions not withdrawn by the due date, for recharacterizations, and for prior-year excess remaining. It uses the $7,000/$8,000 and compensation limits, consistent with Pub. 590-A and Form 5329."
+  - key: "23"
+    status: MATCH
+    reason: "Matches Form 8863 line 23, 'Has the American opportunity credit been claimed for this student for any 4 prior tax years?'"
+  - key: "24"
+    status: MATCH
+    reason: "Matches line 24: half-time enrollment for at least one academic period that began, or is treated as beginning, in 2025, in a credential program. It is asked only after line 23 is answered No."
+  - key: "25"
+    status: MATCH
+    reason: "Matches line 25 and its instructions: the first 4 years as determined by the institution, excluding credit awarded solely for proficiency exams."
+  - key: "26"
+    status: MATCH
+    reason: "Matches line 26 on a felony drug conviction before the end of 2025."
+  - key: "27"
+    status: MATCH
+    reason: "The smaller of the worksheet line 4 amount ((institution expenses + course materials) − adjustments, floored at zero) or $4,000. This matches 'Don't enter more than $4,000' and the AOC definition of qualified expenses. Per-period netting is refused."
+  - key: "28"
+    status: MATCH
+    reason: "Matches 'Subtract $2,000 from line 27. If zero or less, enter -0-.'"
+  - key: "29"
+    status: MATCH
+    reason: "Matches 'Multiply line 28 by 25% (0.25).'"
+  - key: "30"
+    status: MATCH
+    reason: "Matches 'If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29.'"
+  - key: "31"
+    status: MATCH
+    reason: "For a non-AOC eligible student, it uses institution-required expenses less adjustments, floored at zero. This matches the LLC qualified-expense definition and the worksheet. The ITIN-applied and per-period cases are refused."
+```
