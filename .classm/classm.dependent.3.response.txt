@@ -1,0 +1,9 @@
+```yaml
+lines:
+  - printed: "dependent[dep_c].dc_line2d"
+    value: "4070.00"
+    work: "Sibling, age 11, lived with you 12 months, did not provide over half of own support, not filing a joint return, so a qualifying child. MFJ makes them a dependent (Step 2). Qualifying person under age 13 per i2441; enter qualified expenses paid in 2025 of $4,070."
+  - printed: "dependent[dep_c].dc_line2c"
+    value: "no"
+    work: "Column (c) is checked only if the person was over age 12 and disabled. Age 11 when care was provided and able to care for self, so not checked."
+```

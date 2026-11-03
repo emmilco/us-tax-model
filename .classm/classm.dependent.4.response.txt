@@ -1,0 +1,9 @@
+```yaml
+lines:
+  - printed: "dependent[dep_c].dc_line2d"
+    value: "2590.00"
+    work: "Qualifying child (child, age 7, lived 12 months, no own support, no joint return), dependent on MFJ return, under 13: qualified expenses paid in 2025 = $2,590.00"
+  - printed: "dependent[dep_c].dc_line2c"
+    value: "no"
+    work: "Under age 13 when the care was provided and not disabled, so not over age 12 and disabled; box not checked"
+```

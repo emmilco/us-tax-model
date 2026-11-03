@@ -1,0 +1,9 @@
+```yaml
+lines:
+  - printed: "dependent[dep_a].dc_line2d"
+    value: "1480.00"
+    work: "dep_a is your qualifying child and dependent: sibling, age 4, lived with you 12 months, did not provide over half of own support, no joint return; U.S. citizen, unmarried, and you can't be claimed. Under 13 when cared for, so a qualifying person. Expenses incurred and paid in 2025 = $1,480.00"
+  - printed: "dependent[dep_a].dc_line2c"
+    value: "no"
+    work: "Column (c) is checked only if the person was over age 12 and disabled; dep_a was age 4 and able to care for self"
+```
