@@ -8935,7 +8935,7 @@
         "household"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Completeness-experiment finding D3 (BUG-0213): stage9.eic.one_child.line5 with the child presumed kidnapped by someone who isn't a family member. i1040gi p. 21, Kidnapped child: \"you may be able to take the child into account in determining your eligibility for head of household ... the child tax credit, the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC).\" Those conditions are not encoded, so the residency tests refuse.",
+      "evidence_note": "Completeness-experiment finding D3 (BUG-0213): stage9.eic.one_child.line5 with the child presumed kidnapped by someone who isn't a family member. i1040gi p. 21, Kidnapped child: \"you may be able to take the child into account in determining your eligibility for head of household ... the child tax credit, the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC).\" Those conditions are not encoded, so the residency tests refuse. The child lived with you 4 months of 2025 and not in the United States for more than half of 2025, without counting the time missing; a child who meets the residency tests on actual time is computed (stage8 f1.kidnapped.returned_11).",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -9044,7 +9044,7 @@
         "dependent[child].spouse_relative": false,
         "dependent[child].qr_all_year": true,
         "dependent[child].absence_no_return": false,
-        "dependent[child].months": 12,
+        "dependent[child].months": 4,
         "dependent[child].self_support": false,
         "dependent[child].joint_return": false,
         "dependent[child].citizen": true,
@@ -9069,7 +9069,7 @@
         "household.community_property": false,
         "household.spouse_died_2025": false,
         "household.cp_married": false,
-        "dependent[child].us_half": true,
+        "dependent[child].us_half": false,
         "interest[bank_a].amount": 500000,
         "interest[bank_a].penalty": 0,
         "dependent[child].eic_ssn": true,
@@ -9120,9 +9120,9 @@
       "expect": {
         "f1040.line27a": {
           "kind": "refusal",
-          "gate": "dependent[child].kidnapped",
+          "gate": "dependent[child].kidnap_eic",
           "form": "Kidnapped child (Pub. 501; Pub. 596 for the EIC)",
-          "remedy": "A child presumed kidnapped by someone who isn't a family member may count as living with you under rules this tool does not apply.",
+          "remedy": "A child presumed kidnapped by someone who isn't a family member, who did not live with you in the United States for more than half of 2025 without counting the time missing, may count as living with you under rules this tool does not apply.",
           "cite": {
             "doc": "i1040gi",
             "locator": "p. 21, Kidnapped child, \"For details, see Pub. 501 (Pub. 596 for the EIC)\"",
@@ -9133,9 +9133,9 @@
         },
         "f1040.line16": {
           "kind": "refusal",
-          "gate": "dependent[child].kidnapped",
+          "gate": "dependent[child].kidnap_residency",
           "form": "Kidnapped child (Pub. 501; Pub. 596 for the EIC)",
-          "remedy": "A child presumed kidnapped by someone who isn't a family member may count as living with you under rules this tool does not apply.",
+          "remedy": "A child presumed kidnapped by someone who isn't a family member, who lived with you for fewer than 7 months of 2025 without counting the time missing, may count as living with you under rules this tool does not apply.",
           "cite": {
             "doc": "i1040gi",
             "locator": "p. 21, Kidnapped child, \"For details, see Pub. 501 (Pub. 596 for the EIC)\"",

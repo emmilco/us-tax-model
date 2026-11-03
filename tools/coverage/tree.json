@@ -82,7 +82,8 @@
   {"gate": "dependent.other_claimant", "topic": "household", "kind": "situation", "question": "Could a person you would claim also be the qualifying child of someone else (the tie-breaker rules)?", "stop": "Qualifying child of more than one person (tie-breaker rules)"},
   {"gate": "dependent.multiple_support", "topic": "household", "kind": "situation", "question": "Is anyone supported under a multiple support arrangement?"},
   {"gate": "dependent.married", "topic": "household", "kind": "situation", "question": "Is a person you would claim married, or on a 2025 joint return?", "stop": "A married dependent (Married person rules)"},
-  {"gate": "dependent.kidnapped", "topic": "household", "kind": "situation", "question": "Was a child presumed kidnapped during 2025 by someone outside the family?"},
+  {"gate": "dependent.kidnap_residency", "topic": "household", "kind": "situation", "question": "Did a child presumed kidnapped by someone outside the family live with you for fewer than 7 months of 2025, not counting the time missing?"},
+  {"gate": "dependent.kidnap_eic", "topic": "household", "kind": "situation", "question": "For the EIC, did a child presumed kidnapped by someone outside the family live with you in the United States for half of 2025 or less, not counting the time missing?"},
   {"gate": "dependent.qr_kidnapped", "topic": "household", "kind": "situation", "question": "Was a child under 19 whom you would claim as a qualifying relative presumed kidnapped during 2025 by someone outside the family?"},
   {"gate": "dependent.income_exception", "topic": "household", "kind": "situation", "question": "Does a permanently and totally disabled relative have gross income of $5,200 or more (the sheltered workshop exception)?"},
 

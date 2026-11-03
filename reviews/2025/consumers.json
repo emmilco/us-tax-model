@@ -1,16 +1,10 @@
 {
  "rulings": {
-  "consumer:dependent.kidnapped@i1040gi:p17": {
+  "consumer:dependent.us_half@i1040gi:p21": {
    "verdict": "same",
-   "question_phrase": "presumed by law enforcement authorities to have been kidnapped by someone who isn't a family member",
-   "source_phrase": "Who lived with you for more than half of 2025 (p. 17), with p. 21, Kidnapped child, \"presumed by law enforcement authorities to have been kidnapped by someone who isn't a family member\"",
-   "reason": "The screen names the p. 21 exception to the p. 17 residency test in the source's own words; the line refuses rather than applying Pub. 501."
-  },
-  "consumer:dependent.kidnapped@i1040gi:p41": {
-   "verdict": "same",
-   "question_phrase": "presumed by law enforcement authorities to have been kidnapped by someone who isn't a family member",
-   "source_phrase": "Who lived with you in the United States for more than half of 2025 (p. 41), with the EIC pointer to Kidnapped child (p. 43) and Pub. 596",
-   "reason": "The EIC residency test takes the same kidnapped-child exception (p. 21 names the EIC); the line refuses."
+   "question_phrase": "live with you in the United States (the 50 states and the District of Columbia) for more than half of 2025; time a child presumed kidnapped was missing because of the kidnapping does not",
+   "source_phrase": "Kidnapped child, \"the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC).\"",
+   "reason": "The gate dependent.kidnap_eic reads the EIC residency answer on actual time, which the question states by excluding the time missing; a No is the case in which the p. 21 kidnapped-child treatment would be needed, and the gate refuses it."
   },
   "consumer:dependent.disabled@i1040gi:p19": {
    "verdict": "same",

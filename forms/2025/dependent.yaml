@@ -77,7 +77,9 @@ form:
       expr:
         op: input
         source: Months this person lived with you in 2025, counting temporary absences for school, vacation, business,
-          medical care, military service or detention in a juvenile facility as time lived with you (0–12); enter 7 if
+          medical care, military service or detention in a juvenile facility as time lived with you, and counting a newborn's
+          required hospital stay following birth as time lived with you (0–12), but not counting time a child presumed
+          kidnapped was missing because of the kidnapping; enter 7 if
           the person lived with you for more than half of 2025 but fewer than 7 full months. For a person born, died, adopted
           or placed with you in 2025 who meets the other conditions to be your qualifying child, enter 12 if your home
           was their home for more than half the time they were alive or with you, and 0 otherwise; for any other person
@@ -86,7 +88,7 @@ form:
           the adoption or placement, and 0 otherwise
       cite:
         doc: i1040gi
-        locator: p. 17, Step 1, "Who lived with you for more than half of 2025"; p. 21, Exception to time lived with you ("the person is considered to have lived with you for more than half of 2025 if your home was this person's home for more than half the time the person was alive in 2025"; "Any other person is considered to have lived with you for all of 2025 if the person was born or died in 2025 and your home was this person's home for the entire time the person was alive in 2025")
+        locator: p. 17, Step 1, "Who lived with you for more than half of 2025"; p501 p. 13, Death or birth of child, "The same is true if the child lived with you more than half the year except for any required hospital stay following birth."; p501 p. 13, Kidnapped child, "You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true."; p. 21, Exception to time lived with you ("the person is considered to have lived with you for more than half of 2025 if your home was this person's home for more than half the time the person was alive in 2025"; "Any other person is considered to have lived with you for all of 2025 if the person was born or died in 2025 and your home was this person's home for the entire time the person was alive in 2025")
     - id: dependent.self_support
       printed: (helper)
       type: Bool
@@ -205,15 +207,16 @@ form:
     - id: dependent.kidnapped
       printed: (helper)
       type: Bool
-      label: A child presumed kidnapped, at any time in 2025, by someone who isn't a member of your family or the child's family?
+      label: A child kidnapped by someone who isn't a member of your family or the child's family, presumed kidnapped by law enforcement, and missing because of it at some time in 2025?
       expr:
         op: input
-        source: Is this person a child who, at any time during 2025, was presumed by law enforcement authorities to have
-          been kidnapped by someone who isn't a member of your family or the child's family (even if the child has since
-          been returned)?
+        source: Is this person a child who was kidnapped by someone who isn't a member of your family or the child's family,
+          whom law enforcement authorities presume to have been kidnapped, and who was missing because of the kidnapping at
+          some time during 2025 (a kidnapping in 2025, or an earlier kidnapping before the child's return)? Answer yes even
+          if law enforcement first presumed the kidnapping after 2025, or the child has since been returned.
       cite:
         doc: i1040gi
-        locator: p. 21, Kidnapped child, "If your child is presumed by law enforcement authorities to have been kidnapped by someone who isn’t a family member, you may be able to take the child into account"; p501 p. 13, Kidnapped child, "1. The child is presumed by law enforcement authorities to have been kidnapped by someone who isn’t a member of your family or the child’s family." and "3. In the year of the child’s return, the child lived with you for more than half the part of the year following the date of the child’s return."; p501 p. 18, Kidnapped child, "You can treat a child as your qualifying relative even if the child has been kidnapped"
+        locator: p. 21, Kidnapped child, "If your child is presumed by law enforcement authorities to have been kidnapped by someone who isn’t a family member, you may be able to take the child into account"; p501 p. 13, Kidnapped child, "1. The child is presumed by law enforcement authorities to have been kidnapped by someone who isn’t a member of your family or the child’s family.", "2. In the year the kidnapping occurred, the child lived with you for more than half of the part of the year before the date of the kidnapping." and "3. In the year of the child’s return, the child lived with you for more than half the part of the year following the date of the child’s return."; p501 p. 13, "This treatment applies for all years until the earlier of"; p501 p. 18, Kidnapped child, "You can treat a child as your qualifying relative even if the child has been kidnapped"
     - id: dependent.other_claimant
       printed: (helper)
       type: Bool
@@ -432,7 +435,8 @@ form:
         source: Did this person live with you in the United States (the 50 states and the District of Columbia) for more
           than half of 2025? If you were on extended active military duty outside the United States, your main home is
           considered to be in the United States during that duty. Temporary absences for school, vacation, business, medical care, military service or
-          juvenile detention count as time lived with you. A child born or who died in 2025 counts if your home was
+          juvenile detention count as time lived with you; time a child presumed kidnapped was missing because of the
+          kidnapping does not. A child born or who died in 2025 counts if your home was
           the child's home for more than half the time the child was alive, and a child you adopted, who was lawfully
           placed with you for legal adoption, or who was placed with you as an eligible foster child in 2025 counts if
           your main home was the child's main home for more than half the time since the adoption or placement.
@@ -506,12 +510,31 @@ form:
         doc: i1040gi
         locator: p. 17, Step 1, "Who lived with you for more than half of 2025"
       refuses:
-        - when: dependent.kidnapped
+        - when: dependent.kidnap_residency
           form: Kidnapped child (Pub. 501; Pub. 596 for the EIC)
-          remedy: A child presumed kidnapped by someone who isn't a family member may count as living with you under rules this tool does not apply.
+          remedy: A child presumed kidnapped by someone who isn't a family member, who lived with you for fewer than 7 months of 2025 without counting the time missing, may count as living with you under rules this tool does not apply.
           cite:
             doc: i1040gi
             locator: p. 21, Kidnapped child, "For details, see Pub. 501 (Pub. 596 for the EIC)"
+    - id: dependent.kidnap_residency
+      printed: (gate)
+      type: Bool
+      label: A child presumed kidnapped who lived with you for fewer than 7 months of 2025, not counting the time missing
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - dependent.kidnapped
+              - const: true
+          - op: test
+            lt:
+              - dependent.months
+              - const: 7
+                type: Count
+      cite:
+        doc: p501
+        locator: p. 13, Kidnapped child, "You can treat your child as meeting the residency test even if the child has been kidnapped, but the following statements must be true." (a child who lived with you for more than half of 2025 meets the residency test without this treatment)
     - id: dependent.qualifying_child
       printed: (helper)
       type: Bool
@@ -1215,9 +1238,9 @@ form:
         locator: p. 41, Step 3, "A qualifying child for the EIC is your..." (relationship AND age AND not filing a joint
           return AND lived with you in the United States for more than half of 2025)
       refuses:
-        - when: dependent.kidnapped
+        - when: dependent.kidnap_eic
           form: Kidnapped child (Pub. 501; Pub. 596 for the EIC)
-          remedy: A child presumed kidnapped by someone who isn't a family member may count as living with you under rules this tool does not apply.
+          remedy: A child presumed kidnapped by someone who isn't a family member, who did not live with you in the United States for more than half of 2025 without counting the time missing, may count as living with you under rules this tool does not apply.
           cite:
             doc: i1040gi
             locator: p. 21, Kidnapped child, "For details, see Pub. 501 (Pub. 596 for the EIC)"
@@ -1233,6 +1256,28 @@ form:
           cite:
             doc: i1040gi
             locator: p. 44, Married child
+    - id: dependent.kidnap_eic
+      printed: (gate)
+      type: Bool
+      label: A child presumed kidnapped who meets the EIC relationship test but did not live with you in the United States for more than half of 2025, not counting the time missing
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - dependent.kidnapped
+              - const: true
+          - op: test
+            eq:
+              - dependent.qc_relationship
+              - const: true
+          - op: test
+            eq:
+              - dependent.us_half
+              - const: false
+      cite:
+        doc: i1040gi
+        locator: p. 21, Kidnapped child, "the credit for other dependents, and the earned income credit (EIC). For details, see Pub. 501 (Pub. 596 for the EIC)." (a child who lived with you in the United States for more than half of 2025 meets the residency test without this treatment)
     - id: dependent.eic_ssn_child
       printed: (helper)
       type: Bool

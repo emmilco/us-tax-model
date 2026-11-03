@@ -14,16 +14,16 @@ Measured, below 0.5% of returns, and not in the table:
 - Foreign earned income exclusion (Form 2555): 0.3%
 - Alternative minimum tax: 0.1%
 
-Not named in the table: 145 of the 153 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
+Not named in the table: 146 of the 154 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
 
 The estimate puts coverage at 78.4% of returns (`reports/2025/filer_coverage.json`). It does not count the unmeasured situations, so the true figure is lower.
 
 ## Every refusal
 
-The data holds **191 refusal gates**: 153 tax situations the tool does not prepare, grouped by topic below, and 38 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
+The data holds **192 refusal gates**: 154 tax situations the tool does not prepare, grouped by topic below, and 38 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
 
 - [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (30)
-- [Household and dependents](#household-and-dependents) (12)
+- [Household and dependents](#household-and-dependents) (13)
 - [Interest and dividends](#interest-and-dividends) (4)
 - [Sales and capital gains](#sales-and-capital-gains) (5)
 - [Retirement distributions](#retirement-distributions) (7)
@@ -350,11 +350,16 @@ The data holds **191 refusal gates**: 153 tax situations the tool does not prepa
   - *Not covered:* Married child (EIC). A married child is a qualifying child for the EIC only under the dependency rules, which are outside this tool for a married person.
     *Source:* [i1040gi] p. 44, Married child
   - *Refused at:* `dependent.qualifying_child`, `dependent.qualifying_relative`, `dependent.eic_child`
-- **`dependent.kidnapped`**: Was a child presumed kidnapped during 2025 by someone outside the family?
-  - *The data asks or tests:* A child presumed kidnapped, at any time in 2025, by someone who isn't a member of your family or the child's family? (`input`)
-  - *Not covered:* Kidnapped child (Pub. 501; Pub. 596 for the EIC). A child presumed kidnapped by someone who isn't a family member may count as living with you under rules this tool does not apply.
+- **`dependent.kidnap_residency`**: Did a child presumed kidnapped by someone outside the family live with you for fewer than 7 months of 2025, not counting the time missing?
+  - *The data asks or tests:* A child presumed kidnapped who lived with you for fewer than 7 months of 2025, not counting the time missing (`test`)
+  - *Not covered:* Kidnapped child (Pub. 501; Pub. 596 for the EIC). A child presumed kidnapped by someone who isn't a family member, who lived with you for fewer than 7 months of 2025 without counting the time missing, may count as living with you under rules this tool does not apply.
     *Source:* [i1040gi] p. 21, Kidnapped child, "For details, see Pub. 501 (Pub. 596 for the EIC)"
-  - *Refused at:* `dependent.lived_half`, `dependent.eic_child`
+  - *Refused at:* `dependent.lived_half`
+- **`dependent.kidnap_eic`**: For the EIC, did a child presumed kidnapped by someone outside the family live with you in the United States for half of 2025 or less, not counting the time missing?
+  - *The data asks or tests:* A child presumed kidnapped who meets the EIC relationship test but did not live with you in the United States for more than half of 2025, not counting the time missing (`test`)
+  - *Not covered:* Kidnapped child (Pub. 501; Pub. 596 for the EIC). A child presumed kidnapped by someone who isn't a family member, who did not live with you in the United States for more than half of 2025 without counting the time missing, may count as living with you under rules this tool does not apply.
+    *Source:* [i1040gi] p. 21, Kidnapped child, "For details, see Pub. 501 (Pub. 596 for the EIC)"
+  - *Refused at:* `dependent.eic_child`
 - **`dependent.qr_kidnapped`**: Was a child under 19 whom you would claim as a qualifying relative presumed kidnapped during 2025 by someone outside the family?
   - *The data asks or tests:* A child aged 18 or under at the end of 2025 presumed kidnapped by someone who isn't a family member (`test`)
   - *Not covered:* Kidnapped child (Pub. 501). A child presumed kidnapped by someone who isn't a family member may be your qualifying relative under part-year rules this tool does not apply.
