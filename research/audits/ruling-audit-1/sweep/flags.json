@@ -1,0 +1,1631 @@
+[
+{
+"case": "stage14.json#stage14.veh.heavy_prior",
+"input": "s8812.combat_pay",
+"to": true,
+"gates": [
+"s8812.combat_pay"
+],
+"line24": 1911483
+},
+{
+"case": "stage13.json#stage13.seniors_phaseout",
+"input": "s8812.combat_pay",
+"to": true,
+"gates": [
+"s8812.combat_pay"
+],
+"line24": 2487400
+},
+{
+"case": "stage8.json#t091.spouse_relative.joint.no",
+"input": "s8812.combat_pay",
+"to": true,
+"gates": [
+"s8812.combat_pay"
+],
+"line24": 1014600
+},
+{
+"case": "stage12.json#stage12.ot.phaseout",
+"input": "s8812.combat_pay",
+"to": true,
+"gates": [
+"s8812.combat_pay"
+],
+"line24": 2404700
+},
+{
+"case": "stage4.json#stage4.sdtw.lower_bracket",
+"input": "s8812.combat_pay",
+"to": true,
+"gates": [
+"s8812.combat_pay"
+],
+"line24": 1657000
+},
+{
+"case": "stage16.json#stage16.refund.f1",
+"input": "s8812.combat_pay",
+"to": true,
+"gates": [
+"s8812.combat_pay"
+],
+"line24": 387500
+},
+{
+"case": "stage20.json#stage20.blind.r6",
+"input": "s8812.combat_pay",
+"to": true,
+"gates": [
+"s8812.combat_pay"
+],
+"line24": 351500
+},
+{
+"case": "stage21.json#stage21.mut.sav_partial_rollover",
+"input": "s8812.combat_pay",
+"to": true,
+"gates": [
+"s8812.combat_pay"
+],
+"line24": 85300
+},
+{
+"case": "stage19.json#stage19.blind.e4",
+"input": "s8812.combat_pay",
+"to": true,
+"gates": [
+"s8812.combat_pay"
+],
+"line24": 0
+},
+{
+"case": "stage9.json#stage9.eic.three_children.20000",
+"input": "s8812.combat_pay",
+"to": true,
+"gates": [
+"s8812.combat_pay"
+],
+"line24": 0
+},
+{
+"case": "stage18.json#stage18.married_in_2025_single",
+"input": "s8812.combat_pay",
+"to": true,
+"gates": [
+"s8812.combat_pay"
+],
+"line24": 267500
+},
+{
+"case": "stage14.json#stage14.asset.qip_elected",
+"input": "s8812.puerto_rico",
+"to": true,
+"gates": [
+"s8812.puerto_rico"
+],
+"line24": 731471
+},
+{
+"case": "stage4.json#stage4.base",
+"input": "s8812.puerto_rico",
+"to": true,
+"gates": [
+"s8812.puerto_rico"
+],
+"line24": 1345500
+},
+{
+"case": "stage15.json#stage15.f8880-2.b11",
+"input": "s8812.puerto_rico",
+"to": true,
+"gates": [
+"s8812.puerto_rico"
+],
+"line24": 116500
+},
+{
+"case": "stage20.json#stage20.blind.r10",
+"input": "s8812.puerto_rico",
+"to": true,
+"gates": [
+"s8812.puerto_rico"
+],
+"line24": 5858075
+},
+{
+"case": "stage12.json#stage12.combined.all_four",
+"input": "s8812.puerto_rico",
+"to": true,
+"gates": [
+"s8812.puerto_rico"
+],
+"line24": 1470900
+},
+{
+"case": "stage13.json#stage13.hsa_one_spouse_family",
+"input": "s8812.puerto_rico",
+"to": true,
+"gates": [
+"s8812.puerto_rico"
+],
+"line24": 792000
+},
+{
+"case": "stage8.json#stage8.hoh.parent.died_lived_part_year",
+"input": "s8812.puerto_rico",
+"to": true,
+"gates": [
+"s8812.puerto_rico"
+],
+"line24": 1387800
+},
+{
+"case": "stage16.json#stage16.small.s6",
+"input": "s8812.puerto_rico",
+"to": true,
+"gates": [
+"s8812.puerto_rico"
+],
+"line24": 82800
+},
+{
+"case": "stage18.json#stage18.mut.below_100_no_advance",
+"input": "s8812.puerto_rico",
+"to": true,
+"gates": [
+"s8812.puerto_rico"
+],
+"line24": 0
+},
+{
+"case": "stage9.json#stage9.eic.one_child.line5",
+"input": "s8812.puerto_rico",
+"to": true,
+"gates": [
+"s8812.puerto_rico"
+],
+"line24": 0
+},
+{
+"case": "stage19.json#stage19.blind.e2",
+"input": "s8812.puerto_rico",
+"to": true,
+"gates": [
+"s8812.puerto_rico"
+],
+"line24": 1848042
+},
+{
+"case": "stage21.json#stage21.pending1.qss_valid_computes",
+"input": "s8812.puerto_rico",
+"to": true,
+"gates": [
+"s8812.puerto_rico"
+],
+"line24": 68600
+},
+{
+"case": "stage12.json#stage12.senior.phaseout_zero",
+"input": "eic.died_2025",
+"to": true,
+"gates": [
+"eic.died_2025"
+],
+"line24": 3058700
+},
+{
+"case": "stage16.json#stage16.mut.ira_joint_full_edge",
+"input": "eic.died_2025",
+"to": true,
+"gates": [
+"eic.died_2025"
+],
+"line24": 1002000
+},
+{
+"case": "stage13.json#stage13.hsa_married_self_only_55",
+"input": "eic.died_2025",
+"to": true,
+"gates": [
+"eic.died_2025"
+],
+"line24": 831000
+},
+{
+"case": "stage9.json#stage9.eic.no_child.qc_of_another",
+"input": "eic.died_2025",
+"to": true,
+"gates": [
+"eic.died_2025"
+],
+"line24": 0
+},
+{
+"case": "stage8.json#stage8.refuse.s8812.combat_pay",
+"input": "eic.died_2025",
+"to": true,
+"gates": [
+"eic.died_2025"
+],
+"line24": 0
+},
+{
+"case": "stage18.json#stage18.mut.family_of_20",
+"input": "eic.died_2025",
+"to": true,
+"gates": [
+"eic.died_2025"
+],
+"line24": 193400
+},
+{
+"case": "stage15.json#stage15.f8880-2.b4",
+"input": "eic.died_2025",
+"to": true,
+"gates": [
+"eic.died_2025"
+],
+"line24": 0
+},
+{
+"case": "stage14.json#stage14.eic.wsb_line5_stop_27c",
+"input": "eic.died_2025",
+"to": true,
+"gates": [
+"eic.died_2025"
+],
+"line24": 314820
+},
+{
+"case": "stage21.json#stage21.t067.smw_hidden_ira",
+"input": "eic.died_2025",
+"to": true,
+"gates": [
+"eic.died_2025"
+],
+"line24": 2584853
+},
+{
+"case": "stage19.json#stage19.example.llc_phaseout",
+"input": "eic.died_2025",
+"to": true,
+"gates": [
+"eic.died_2025"
+],
+"line24": 1706400
+},
+{
+"case": "stage11.json#stage11.educator.capped",
+"input": "eic.died_2025",
+"to": true,
+"gates": [
+"eic.died_2025"
+],
+"line24": 263900
+},
+{
+"case": "stage20.json#stage20.blind.r3",
+"input": "eic.died_2025",
+"to": true,
+"gates": [
+"eic.died_2025"
+],
+"line24": 0
+},
+{
+"case": "stage19.json#stage19.blind.e2",
+"input": "f2441.employer_care",
+"to": true,
+"gates": [
+"f2441.employer_care_l16"
+],
+"line24": 1848042
+},
+{
+"case": "stage20.json#stage20.blind.r7",
+"input": "f2441.employer_care",
+"to": true,
+"gates": [
+"f2441.employer_care_l16"
+],
+"line24": 1014600
+},
+{
+"case": "stage12.json#stage12.ot.phaseout",
+"input": "s1.uc_unsupported",
+"to": true,
+"gates": [
+"s1.uc_unsupported"
+],
+"line24": 2404700
+},
+{
+"case": "stage18.json#stage18.blind.p6",
+"input": "s1.uc_unsupported",
+"to": true,
+"gates": [
+"s1.uc_unsupported"
+],
+"line24": 409600
+},
+{
+"case": "stage15.json#stage15.f2441.s3",
+"input": "s1.uc_unsupported",
+"to": true,
+"gates": [
+"s1.uc_unsupported"
+],
+"line24": 0
+},
+{
+"case": "stage13.json#stage13.senior_spouse_no_ssn",
+"input": "s1.uc_unsupported",
+"to": true,
+"gates": [
+"s1.uc_unsupported"
+],
+"line24": 784200
+},
+{
+"case": "stage19.json#stage19.mut.dc_box10_spouse_only",
+"input": "s1.uc_unsupported",
+"to": true,
+"gates": [
+"s1.uc_unsupported"
+],
+"line24": 0
+},
+{
+"case": "stage16.json#stage16.mut.ira_kbh_none_edge",
+"input": "s1.uc_unsupported",
+"to": true,
+"gates": [
+"s1.uc_unsupported"
+],
+"line24": 0
+},
+{
+"case": "stage21.json#stage21.pending.eic_death_pub596_refused",
+"input": "s1.uc_unsupported",
+"to": true,
+"gates": [
+"s1.uc_unsupported"
+],
+"line24": 0
+},
+{
+"case": "stage14.json#stage14.sch1a.tips_with_sc",
+"input": "s1.uc_unsupported",
+"to": true,
+"gates": [
+"s1.uc_unsupported"
+],
+"line24": 286548
+},
+{
+"case": "stage9.json#stage9.eic.wsb_not_reached",
+"input": "s1.uc_unsupported",
+"to": true,
+"gates": [
+"s1.uc_unsupported"
+],
+"line24": 54600
+},
+{
+"case": "stage20.json#stage20.blind.r7",
+"input": "s1.uc_unsupported",
+"to": true,
+"gates": [
+"s1.uc_unsupported"
+],
+"line24": 1014600
+},
+{
+"case": "stage12.json#stage12.mfj.tips_overtime",
+"input": "s1.uc_unsupported",
+"to": true,
+"gates": [
+"s1.uc_unsupported"
+],
+"line24": 4008100
+},
+{
+"case": "stage18.json#stage18.blind.p20",
+"input": "s1.uc_unsupported",
+"to": true,
+"gates": [
+"s1.uc_unsupported"
+],
+"line24": 0
+},
+{
+"case": "stage21.json#stage21.t067.smw_hidden_ira",
+"input": "person[taxpayer].died_before_65",
+"to": true,
+"gates": [
+"s1a.senior_decedent"
+],
+"line24": 2584853
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "person[taxpayer].died_before_65",
+"to": true,
+"gates": [
+"s1a.senior_decedent"
+],
+"line24": 1744605
+},
+{
+"case": "stage19.json#stage19.blind.e9",
+"input": "dependent[daughter].multiple_support",
+"to": true,
+"gates": [
+"dependent[daughter].multiple_support"
+],
+"line24": 0
+},
+{
+"case": "stage15.json#stage15.f5695-3.g2",
+"input": "dependent[c].multiple_support",
+"to": true,
+"gates": [
+"dependent[c].multiple_support"
+],
+"line24": 0
+},
+{
+"case": "stage18.json#stage18.mut.family_of_20",
+"input": "dependent[k7].multiple_support",
+"to": true,
+"gates": [
+"dependent[k7].multiple_support"
+],
+"line24": 193400
+},
+{
+"case": "stage16.json#stage16.other.o10",
+"input": "dependent[a].multiple_support",
+"to": true,
+"gates": [
+"dependent[a].multiple_support"
+],
+"line24": 0
+},
+{
+"case": "stage9.json#stage9.eic.three_children.20000",
+"input": "dependent[c1].multiple_support",
+"to": true,
+"gates": [
+"dependent[c1].multiple_support"
+],
+"line24": 0
+},
+{
+"case": "stage4.json#stage4.niit.hoh.100000",
+"input": "dependent[child].multiple_support",
+"to": true,
+"gates": [
+"dependent[child].multiple_support"
+],
+"line24": 3371600
+},
+{
+"case": "stage14.json#stage14.actc.wsb",
+"input": "dependent[child].multiple_support",
+"to": true,
+"gates": [
+"dependent[child].multiple_support"
+],
+"line24": 141296
+},
+{
+"case": "stage13.json#stage13.odc_spouse_no_tin",
+"input": "dependent[child].multiple_support",
+"to": true,
+"gates": [
+"dependent[child].multiple_support"
+],
+"line24": 1014600
+},
+{
+"case": "stage19.json#stage19.blind.e4",
+"input": "dependent[daughter].multiple_support",
+"to": true,
+"gates": [
+"dependent[daughter].multiple_support"
+],
+"line24": 0
+},
+{
+"case": "stage8.json#stage8.single.dependent.students_and_age17",
+"input": "dependent[student23].multiple_support",
+"to": true,
+"gates": [
+"dependent[student23].multiple_support"
+],
+"line24": 1636700
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "ssb.pub915",
+"to": true,
+"gates": [
+"ssb.pub915"
+],
+"line24": 1744605
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "ssb.lump_sum",
+"to": true,
+"gates": [
+"ssb.lump_sum"
+],
+"line24": 1744605
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "ssb.terror_disability",
+"to": true,
+"gates": [
+"ssb.terror_disability"
+],
+"line24": 1744605
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "person[taxpayer].se_screen",
+"to": true,
+"gates": [
+"person[taxpayer].se_screened"
+],
+"line24": 1744605
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "person[spouse].se_screen",
+"to": true,
+"gates": [
+"person[spouse].se_screened"
+],
+"line24": 1744605
+},
+{
+"case": "stage21.json#stage21.t067.smw_hidden_ira",
+"input": "person[taxpayer].se_screen",
+"to": true,
+"gates": [
+"person[taxpayer].se_screened"
+],
+"line24": 2584853
+},
+{
+"case": "stage21.json#stage21.t067.smw_hidden_ira",
+"input": "person[spouse].se_screen",
+"to": true,
+"gates": [
+"person[spouse].se_screened"
+],
+"line24": 2584853
+},
+{
+"case": "stage21.json#stage21.t067.smw_hidden_ira",
+"input": "person[taxpayer].plan_screen",
+"to": true,
+"gates": [
+"person[taxpayer].plan_screened"
+],
+"line24": 2584853
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "person[spouse].plan_screen",
+"to": true,
+"gates": [
+"person[spouse].plan_screened"
+],
+"line24": 1744605
+},
+{
+"case": "stage21.json#stage21.t067.smw_hidden_ira",
+"input": "person[spouse].plan_screen",
+"to": true,
+"gates": [
+"person[spouse].plan_screened"
+],
+"line24": 2584853
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "person[taxpayer].plan_screen",
+"to": true,
+"gates": [
+"person[taxpayer].plan_screened"
+],
+"line24": 1744605
+},
+{
+"case": "stage19.json#stage19.example.jack_kay",
+"input": "f2441.student_disabled",
+"to": true,
+"gates": [
+"f2441.student_disabled"
+],
+"line24": 214600
+},
+{
+"case": "stage21.json#stage21.blind.e7",
+"input": "f2441.student_disabled",
+"to": true,
+"gates": [
+"f2441.student_disabled"
+],
+"line24": 1018600
+},
+{
+"case": "stage18.json#stage18.blind.p20",
+"input": "f2441.student_disabled",
+"to": true,
+"gates": [
+"f2441.student_disabled"
+],
+"line24": 0
+},
+{
+"case": "stage20.json#stage20.blind.r7",
+"input": "f2441.student_disabled",
+"to": true,
+"gates": [
+"f2441.student_disabled"
+],
+"line24": 1014600
+},
+{
+"case": "stage19.json#stage19.example.aoc_phaseout",
+"input": "f2441.student_disabled",
+"to": true,
+"gates": [
+"f2441.student_disabled"
+],
+"line24": 1807300
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "f2441.student_disabled",
+"to": true,
+"gates": [
+"f2441.student_disabled"
+],
+"line24": 1744605
+},
+{
+"case": "stage18.json#stage18.mut.family_of_20",
+"input": "f2441.student_disabled",
+"to": true,
+"gates": [
+"f2441.student_disabled"
+],
+"line24": 193400
+},
+{
+"case": "stage19.json#stage19.example.jack_kay",
+"input": "f2441.spouse_died",
+"to": true,
+"gates": [
+"f2441.spouse_died_gate"
+],
+"line24": 214600
+},
+{
+"case": "stage20.json#stage20.blind.r7",
+"input": "f2441.spouse_died",
+"to": true,
+"gates": [
+"f2441.spouse_died_gate"
+],
+"line24": 1014600
+},
+{
+"case": "stage18.json#stage18.blind.p10",
+"input": "f2441.spouse_died",
+"to": true,
+"gates": [
+"f2441.spouse_died_gate"
+],
+"line24": 598200
+},
+{
+"case": "stage21.json#stage21.blind.e9",
+"input": "f2441.spouse_died",
+"to": true,
+"gates": [
+"f2441.spouse_died_gate"
+],
+"line24": 744600
+},
+{
+"case": "stage18.json#stage18.mut.family_of_20",
+"input": "f2441.spouse_died",
+"to": true,
+"gates": [
+"f2441.spouse_died_gate"
+],
+"line24": 193400
+},
+{
+"case": "stage21.json#stage21.t067.smw_hidden_ira",
+"input": "f2441.spouse_died",
+"to": true,
+"gates": [
+"f2441.spouse_died_gate"
+],
+"line24": 2584853
+},
+{
+"case": "stage19.json#stage19.example.llc_phaseout",
+"input": "f2441.prior_year",
+"to": true,
+"gates": [
+"f2441.prior_year"
+],
+"line24": 1706400
+},
+{
+"case": "stage21.json#stage21.t067.smw_hidden_ira",
+"input": "f2441.prior_year",
+"to": true,
+"gates": [
+"f2441.prior_year"
+],
+"line24": 2584853
+},
+{
+"case": "stage18.json#stage18.blind.p20",
+"input": "f2441.prior_year",
+"to": true,
+"gates": [
+"f2441.prior_year"
+],
+"line24": 0
+},
+{
+"case": "stage20.json#stage20.blind.r7",
+"input": "f2441.prior_year",
+"to": true,
+"gates": [
+"f2441.prior_year"
+],
+"line24": 1014600
+},
+{
+"case": "stage19.json#stage19.blind.e4",
+"input": "f2441.prior_year",
+"to": true,
+"gates": [
+"f2441.prior_year"
+],
+"line24": 0
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "f2441.prior_year",
+"to": true,
+"gates": [
+"f2441.prior_year"
+],
+"line24": 1744605
+},
+{
+"case": "stage18.json#stage18.mut.family_of_20",
+"input": "f2441.prior_year",
+"to": true,
+"gates": [
+"f2441.prior_year"
+],
+"line24": 193400
+},
+{
+"case": "stage19.json#stage19.example.aoc_phaseout",
+"input": "f2441.prior_year",
+"to": true,
+"gates": [
+"f2441.prior_year"
+],
+"line24": 1807300
+},
+{
+"case": "stage21.json#stage21.t067.smw_hidden_ira",
+"input": "dcprov[prov_a].related",
+"to": true,
+"gates": [
+"f2441.provider_ineligible"
+],
+"line24": 2584853
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "dcprov[prov_a].related",
+"to": true,
+"gates": [
+"f2441.provider_ineligible"
+],
+"line24": 1744605
+},
+{
+"case": "stage21.json#stage21.blind.e7",
+"input": "f2441.plans_differ",
+"to": true,
+"gates": [
+"f2441.plans_differ"
+],
+"line24": 1018600
+},
+{
+"case": "stage18.json#stage18.mut.family_of_20",
+"input": "f2441.plans_differ",
+"to": true,
+"gates": [
+"f2441.plans_differ"
+],
+"line24": 193400
+},
+{
+"case": "stage19.json#stage19.blind.e2",
+"input": "f2441.plans_differ",
+"to": true,
+"gates": [
+"f2441.plans_differ"
+],
+"line24": 1848042
+},
+{
+"case": "stage20.json#stage20.blind.r7",
+"input": "f2441.plans_differ",
+"to": true,
+"gates": [
+"f2441.plans_differ"
+],
+"line24": 1014600
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "f2441.plans_differ",
+"to": true,
+"gates": [
+"f2441.plans_differ"
+],
+"line24": 1744605
+},
+{
+"case": "stage18.json#stage18.blind.p10",
+"input": "f2441.plans_differ",
+"to": true,
+"gates": [
+"f2441.plans_differ"
+],
+"line24": 598200
+},
+{
+"case": "stage19.json#stage19.example.bruce_toni",
+"input": "f2441.plans_differ",
+"to": true,
+"gates": [
+"f2441.plans_differ"
+],
+"line24": 374600
+},
+{
+"case": "stage21.json#stage21.t067.smw_hidden_ira",
+"input": "f2441.plans_differ",
+"to": true,
+"gates": [
+"f2441.plans_differ"
+],
+"line24": 2584853
+},
+{
+"case": "stage19.json#stage19.blind.e7",
+"input": "f5695.business_use",
+"to": true,
+"gates": [
+"f5695.business_use"
+],
+"line24": 0
+},
+{
+"case": "stage20.json#stage20.blind.r1",
+"input": "f5695.business_use",
+"to": true,
+"gates": [
+"f5695.business_use"
+],
+"line24": 471500
+},
+{
+"case": "stage21.json#stage21.blind.e4",
+"input": "f5695.business_use",
+"to": true,
+"gates": [
+"f5695.business_use"
+],
+"line24": 825500
+},
+{
+"case": "stage18.json#stage18.mut.sequential_policies_one_state",
+"input": "f5695.business_use",
+"to": true,
+"gates": [
+"f5695.business_use"
+],
+"line24": 243500
+},
+{
+"case": "stage19.json#stage19.example.bill.ex2",
+"input": "f5695.business_use",
+"to": true,
+"gates": [
+"f5695.business_use"
+],
+"line24": 258500
+},
+{
+"case": "stage20.json#stage20.niit_adjustment_below_threshold",
+"input": "f5695.business_use",
+"to": true,
+"gates": [
+"f5695.business_use"
+],
+"line24": 471500
+},
+{
+"case": "stage21.json#stage21.example.teacher_education",
+"input": "f5695.business_use",
+"to": true,
+"gates": [
+"f5695.business_use"
+],
+"line24": 393500
+},
+{
+"case": "stage18.json#stage18.married_in_2025_single",
+"input": "f5695.business_use",
+"to": true,
+"gates": [
+"f5695.business_use"
+],
+"line24": 267500
+},
+{
+"case": "stage21.json#stage21.blind.e2",
+"input": "f5695.construction_later",
+"to": true,
+"gates": [
+"f5695.construction_later"
+],
+"line24": 664500
+},
+{
+"case": "stage20.json#stage20.blind.r4",
+"input": "f5695.construction_later",
+"to": true,
+"gates": [
+"f5695.construction_later"
+],
+"line24": 12600
+},
+{
+"case": "stage15.json#stage15.f5695-2.e7",
+"input": "f5695.construction_later",
+"to": true,
+"gates": [
+"f5695.construction_later"
+],
+"line24": 725500
+},
+{
+"case": "stage18.json#stage18.mut.sequential_policies_one_state",
+"input": "f5695.construction_later",
+"to": true,
+"gates": [
+"f5695.construction_later"
+],
+"line24": 243500
+},
+{
+"case": "stage19.json#stage19.blind.e7",
+"input": "f5695.construction_later",
+"to": true,
+"gates": [
+"f5695.construction_later"
+],
+"line24": 0
+},
+{
+"case": "stage21.json#stage21.blind.e8",
+"input": "f5695.construction_later",
+"to": true,
+"gates": [
+"f5695.construction_later"
+],
+"line24": 1015500
+},
+{
+"case": "stage20.json#stage20.line21_at_both_bounds",
+"input": "f5695.construction_later",
+"to": true,
+"gates": [
+"f5695.construction_later"
+],
+"line24": 42800
+},
+{
+"case": "stage15.json#stage15.regress.f5695.qmid_doors_no_doors",
+"input": "f5695.construction_later",
+"to": true,
+"gates": [
+"f5695.construction_later"
+],
+"line24": 455500
+},
+{
+"case": "stage18.json#stage18.mut.unclaimed_relative",
+"input": "f5695.construction_later",
+"to": true,
+"gates": [
+"f5695.construction_later"
+],
+"line24": 136500
+},
+{
+"case": "stage19.json#stage19.blind.e10",
+"input": "f5695.construction_later",
+"to": true,
+"gates": [
+"f5695.construction_later"
+],
+"line24": 1017936
+},
+{
+"case": "stage20.json#stage20.line21_small_loss",
+"input": "f5695.line7a",
+"to": true,
+"gates": [
+"f5695.line7a"
+],
+"line24": 519500
+},
+{
+"case": "stage18.json#stage18.blind.p18",
+"input": "f5695.line7a",
+"to": true,
+"gates": [
+"f5695.line7a"
+],
+"line24": 509900
+},
+{
+"case": "stage21.json#stage21.blind.e10",
+"input": "f5695.line7a",
+"to": true,
+"gates": [
+"f5695.line7a"
+],
+"line24": 565360
+},
+{
+"case": "stage15.json#stage15.regress.f5695.qmid_doors_no_doors",
+"input": "f5695.line7a",
+"to": true,
+"gates": [
+"f5695.line7a"
+],
+"line24": 455500
+},
+{
+"case": "stage19.json#stage19.blind.e7",
+"input": "f5695.line7a",
+"to": true,
+"gates": [
+"f5695.line7a"
+],
+"line24": 0
+},
+{
+"case": "stage20.json#stage20.blind.r10",
+"input": "f5695.line7a",
+"to": true,
+"gates": [
+"f5695.line7a"
+],
+"line24": 5858075
+},
+{
+"case": "stage18.json#stage18.mut.sequential_policies_one_state",
+"input": "f5695.line7a",
+"to": true,
+"gates": [
+"f5695.line7a"
+],
+"line24": 243500
+},
+{
+"case": "stage15.json#stage15.regress.f5695.insulation_audit_caps",
+"input": "f5695.line7a",
+"to": true,
+"gates": [
+"f5695.line7a"
+],
+"line24": 1005500
+},
+{
+"case": "stage19.json#stage19.blind.e5",
+"input": "f5695.line7a",
+"to": true,
+"gates": [
+"f5695.line7a"
+],
+"line24": 0
+},
+{
+"case": "stage18.json#stage18.blind.p16",
+"input": "f5695.joint_occupancy",
+"to": true,
+"gates": [
+"f5695.joint_occupancy"
+],
+"line24": 175700
+},
+{
+"case": "stage19.json#stage19.example.jane.include_all",
+"input": "f5695.joint_occupancy",
+"to": true,
+"gates": [
+"f5695.joint_occupancy"
+],
+"line24": 0
+},
+{
+"case": "stage21.json#stage21.t067.smw_hidden_ira",
+"input": "f5695.joint_occupancy",
+"to": true,
+"gates": [
+"f5695.joint_occupancy"
+],
+"line24": 2584853
+},
+{
+"case": "stage20.json#stage20.line21_small_loss",
+"input": "f5695.joint_occupancy",
+"to": true,
+"gates": [
+"f5695.joint_occupancy"
+],
+"line24": 519500
+},
+{
+"case": "stage18.json#stage18.blind.p15",
+"input": "f5695.joint_occupancy",
+"to": true,
+"gates": [
+"f5695.joint_occupancy"
+],
+"line24": 136500
+},
+{
+"case": "stage19.json#stage19.example.jane.include_3500",
+"input": "f5695.joint_occupancy",
+"to": true,
+"gates": [
+"f5695.joint_occupancy"
+],
+"line24": 0
+},
+{
+"case": "stage21.json#stage21.blind.e6",
+"input": "f5695.joint_occupancy",
+"to": true,
+"gates": [
+"f5695.joint_occupancy"
+],
+"line24": 366750
+},
+{
+"case": "stage20.json#stage20.blind.r2",
+"input": "f5695.joint_occupancy",
+"to": true,
+"gates": [
+"f5695.joint_occupancy"
+],
+"line24": 839500
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "refund.box8",
+"to": true,
+"gates": [
+"refund.box8"
+],
+"line24": 1744605
+},
+{
+"case": "stage21.json#stage21.t067.smw_hidden_ira",
+"input": "refund.box8",
+"to": true,
+"gates": [
+"refund.box8"
+],
+"line24": 2584853
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "refund.not_2024",
+"to": true,
+"gates": [
+"refund.not_2024"
+],
+"line24": 1744605
+},
+{
+"case": "stage21.json#stage21.t067.smw_hidden_ira",
+"input": "refund.not_2024",
+"to": true,
+"gates": [
+"refund.not_2024"
+],
+"line24": 2584853
+},
+{
+"case": "stage16.json#stage16.refund.f2",
+"input": "refund.exc_tax",
+"to": true,
+"gates": [
+"refund.exc_tax"
+],
+"line24": 387500
+},
+{
+"case": "stage21.json#stage21.t067.smw_hidden_ira",
+"input": "refund.exc_tax",
+"to": true,
+"gates": [
+"refund.exc_tax"
+],
+"line24": 2584853
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "refund.exc_tax",
+"to": true,
+"gates": [
+"refund.exc_tax"
+],
+"line24": 1744605
+},
+{
+"case": "stage16.json#stage16.refund.f1",
+"input": "refund.exc_tax",
+"to": true,
+"gates": [
+"refund.exc_tax"
+],
+"line24": 387500
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "refund.exc_who",
+"to": true,
+"gates": [
+"refund.exc_who"
+],
+"line24": 1744605
+},
+{
+"case": "stage21.json#stage21.t067.smw_hidden_ira",
+"input": "refund.exc_who",
+"to": true,
+"gates": [
+"refund.exc_who"
+],
+"line24": 2584853
+},
+{
+"case": "stage16.json#stage16.refund.f2",
+"input": "refund.exc_who",
+"to": true,
+"gates": [
+"refund.exc_who"
+],
+"line24": 387500
+},
+{
+"case": "stage16.json#stage16.ira.i2",
+"input": "person[taxpayer].ira_basis_adjusted",
+"to": true,
+"gates": [
+"person[taxpayer].ira_basis_gate"
+],
+"line24": 1125500
+},
+{
+"case": "stage16.json#stage16.ira.i8",
+"input": "person[spouse].ira_basis_adjusted",
+"to": true,
+"gates": [
+"person[spouse].ira_basis_gate"
+],
+"line24": 1000200
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "s1.alimony_unsupported",
+"to": true,
+"gates": [
+"s1.alimony_unsupported"
+],
+"line24": 1744605
+},
+{
+"case": "stage21.json#stage21.t067.smw_hidden_ira",
+"input": "s1.alimony_unsupported",
+"to": true,
+"gates": [
+"s1.alimony_unsupported"
+],
+"line24": 2584853
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "s1.cod_unsupported",
+"to": true,
+"gates": [
+"s1.cod_unsupported"
+],
+"line24": 1744605
+},
+{
+"case": "stage21.json#stage21.t067.smw_hidden_ira",
+"input": "s1.cod_unsupported",
+"to": true,
+"gates": [
+"s1.cod_unsupported"
+],
+"line24": 2584853
+},
+{
+"case": "stage19.json#stage19.example.llc_phaseout",
+"input": "f8962.alloc",
+"to": true,
+"gates": [
+"f8962.alloc"
+],
+"line24": 1706400
+},
+{
+"case": "stage21.json#stage21.t067.smw_hidden_ira",
+"input": "f8962.alloc",
+"to": true,
+"gates": [
+"f8962.alloc"
+],
+"line24": 2584853
+},
+{
+"case": "stage19.json#stage19.example.bruce_toni",
+"input": "f8962.alloc",
+"to": true,
+"gates": [
+"f8962.alloc"
+],
+"line24": 374600
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "f8962.alloc",
+"to": true,
+"gates": [
+"f8962.alloc"
+],
+"line24": 1744605
+},
+{
+"case": "stage19.json#stage19.example.jane.include_1500",
+"input": "f8962.alloc",
+"to": true,
+"gates": [
+"f8962.alloc"
+],
+"line24": 0
+},
+{
+"case": "stage19.json#stage19.example.bill.ex3",
+"input": "f8962.alloc",
+"to": true,
+"gates": [
+"f8962.alloc"
+],
+"line24": 156500
+},
+{
+"case": "stage19.json#stage19.example.bill.ex1",
+"input": "f8962.alloc",
+"to": true,
+"gates": [
+"f8962.alloc"
+],
+"line24": 108500
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "f8962.married_in_2025",
+"to": true,
+"gates": [
+"f8962.marriage"
+],
+"line24": 1744605
+},
+{
+"case": "stage21.json#stage21.t067.smw_hidden_ira",
+"input": "f8962.married_in_2025",
+"to": true,
+"gates": [
+"f8962.marriage"
+],
+"line24": 2584853
+},
+{
+"case": "stage19.json#stage19.example.aoc_phaseout",
+"input": "f8962.married_in_2025",
+"to": true,
+"gates": [
+"f8962.marriage"
+],
+"line24": 1807300
+},
+{
+"case": "stage19.json#stage19.example.jane.include_3500",
+"input": "f8962.other",
+"to": true,
+"gates": [
+"f8962.other"
+],
+"line24": 0
+},
+{
+"case": "stage21.json#stage21.t067.smw_hidden_ira",
+"input": "f8962.other",
+"to": true,
+"gates": [
+"f8962.other"
+],
+"line24": 2584853
+},
+{
+"case": "stage19.json#stage19.example.bill.ex1",
+"input": "f8962.other",
+"to": true,
+"gates": [
+"f8962.other"
+],
+"line24": 108500
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "f8962.other",
+"to": true,
+"gates": [
+"f8962.other"
+],
+"line24": 1744605
+},
+{
+"case": "stage19.json#stage19.example.aoc_phaseout",
+"input": "f8962.other",
+"to": true,
+"gates": [
+"f8962.other"
+],
+"line24": 1807300
+},
+{
+"case": "stage19.json#stage19.example.pell.ex2",
+"input": "f8962.other",
+"to": true,
+"gates": [
+"f8962.other"
+],
+"line24": 307500
+},
+{
+"case": "stage19.json#stage19.example.pell.ex1",
+"input": "f8962.other",
+"to": true,
+"gates": [
+"f8962.other"
+],
+"line24": 457500
+},
+{
+"case": "stage19.json#stage19.example.jane.include_3500",
+"input": "f8962.premium_adjust",
+"to": true,
+"gates": [
+"f8962.premium_adjust"
+],
+"line24": 0
+},
+{
+"case": "stage21.json#stage21.t067.smw_hidden_ira",
+"input": "f8962.premium_adjust",
+"to": true,
+"gates": [
+"f8962.premium_adjust"
+],
+"line24": 2584853
+},
+{
+"case": "stage19.json#stage19.example.bill.ex2",
+"input": "f8962.premium_adjust",
+"to": true,
+"gates": [
+"f8962.premium_adjust"
+],
+"line24": 258500
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "f8962.premium_adjust",
+"to": true,
+"gates": [
+"f8962.premium_adjust"
+],
+"line24": 1744605
+},
+{
+"case": "stage19.json#stage19.example.jack_kay",
+"input": "f8962.premium_adjust",
+"to": true,
+"gates": [
+"f8962.premium_adjust"
+],
+"line24": 214600
+},
+{
+"case": "stage19.json#stage19.example.pell.ex2",
+"input": "f8962.premium_adjust",
+"to": true,
+"gates": [
+"f8962.premium_adjust"
+],
+"line24": 307500
+},
+{
+"case": "stage19.json#stage19.example.bruce_toni",
+"input": "f8962.premium_adjust",
+"to": true,
+"gates": [
+"f8962.premium_adjust"
+],
+"line24": 374600
+},
+{
+"case": "stage21.json#stage21.t067.smw_hidden_ira",
+"input": "clcw.spouse_screen",
+"to": true,
+"gates": [
+"clcw.spouse_screen"
+],
+"line24": 2584853
+},
+{
+"case": "stage21.json#stage21.f1.lower_bound_still_decides",
+"input": "clcw.spouse_screen",
+"to": true,
+"gates": [
+"clcw.spouse_screen"
+],
+"line24": 1744605
+}
+]
