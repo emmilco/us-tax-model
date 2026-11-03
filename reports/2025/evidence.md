@@ -77,7 +77,7 @@ Engine ids with no line of their own (never an E assertion): f1040.tax_before_cr
 | asset.ub_prior | — | — | — | — | — | — | 1 (stage14.asset.prior_179_bonus) |
 | asset.rate_prior | — | — | — | — | — | — | — |
 | asset.macrs_prior_live | — | — | — | — | — | — | — |
-| asset.macrs_prior | — | — | — | 2 (classm.asset.1, classm.asset.4) | — | — | 7 |
+| asset.macrs_prior | — | — | — | 2 (classm.asset.1, classm.asset.4) | — | — | 9 |
 | asset.dep_2025 | — | — | — | — | — | — | — |
 | asset.bonus_2025 | — | — | — | — | — | — | — |
 | asset.s179_2025 | — | — | — | — | — | — | — |

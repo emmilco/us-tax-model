@@ -20,6 +20,13 @@
   {
    "printed": "(c)",
    "restated": "Divide helper \"The business use percentage, as cents\" by helper \"One hundred cents (100%)\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper \"Cost or other basis\" by the result.",
+   "model": "IRS column (c) says to multiply cost by business-use percentage and then 'subtract any credits and deductions allocable to the property', including 'Section 179 expense deduction' and 'any special depreciation allowance'; the restatement stops after multiplying by the business-use percentage.",
+   "ruling": "Ruling: scope; asset.screen refuses property whose basis was adjusted for anything other than depreciation, so on a computed return the only reductions are section 179 and the special allowance, which the project subtracts at 19(c).",
+   "context": "d1c0518ed5c7af2569758ae9d739c80030cb9a9adc562d8fec4ec7c54247ab3f"
+  },
+  {
+   "printed": "(c)",
+   "restated": "Divide helper \"The business use percentage, as cents\" by helper \"One hundred cents (100%)\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper \"Cost or other basis\" by the result.",
    "model": "IRS line 19 column (c) says after multiplying cost by business use, 'subtract any credits and deductions allocable to the property' (including section 179 and the special allowance); the restatement stops after the multiplication.",
    "ruling": "Ruling: representation — the line is an intermediate in the project's basis computation. (a) the class input derives the form's 3/5/7-year classification through the Appendix B class; (b) the year plus the 2025 quarter gives the MACRS convention the form's month would give; (c) the pre-section-179 basis is shown under the column marker (c), and the form's column (c) after section 179 and the special allowance is item 19(c) (asset.col19c), which subtracts them. No printed tax amount differs. Lines 25 and 26(i) copy the per-asset allowance and elected cost, not the other lines' columns.",
    "context": "fa97ab9d907d2dfc68fa7f04dbf351f76f38f99c2b817598f907a37025aa5fd5"
@@ -76,6 +83,13 @@
   {
    "printed": "25",
    "restated": "Enter the amount from line 14.",
+   "model": "IRS line 25 says 'Enter on line 25 your total special depreciation allowance for all qualified listed property'; it is not the amount from line 14, which is the non-listed-property special allowance line.",
+   "ruling": "Ruling: representation; restatement accepted. The per-asset allowance appears on line 25 for listed property and line 14 otherwise, figured by the same instructions.",
+   "context": "d1c0518ed5c7af2569758ae9d739c80030cb9a9adc562d8fec4ec7c54247ab3f"
+  },
+  {
+   "printed": "25",
+   "restated": "Enter the amount from line 14.",
    "model": "IRS line 25 says 'Enter on line 25 your total special depreciation allowance for all qualified listed property'; it is not the line 14 amount, which the restatement reports only for property other than listed property.",
    "ruling": "Ruling: representation — i4562 p. 13, Line 25. asset.f25 copies asset.bonus, the per-asset special allowance; the printed line 14 is the non-listed-property line, so \"from line 14\" is loose wording, not the value. The line is shown only for listed property placed in service in 2025, and the Schedule C totals read the per-asset amount filtered by asset.listed.",
    "context": "1d792bef21c02f77bb109f5db9a4960fc2c1612d2849bb469bd71625b8e9715c"
@@ -107,6 +121,13 @@
    "model": "IRS line 6 says 'Do not include any listed property on line 6,' and line 26 column (i) is the elected section 179 cost for listed property; the restatement takes line 6(c).",
    "ruling": "Ruling: representation; restatement accepted. Line 14 and line 19 amounts are figured per asset and shown by listed status (asset.on_19, asset.on_26_2025); for listed property the same per-asset allowance, election and depreciation appear on lines 25, 26(i) and 26(h), figured by the line 19 instructions as i4562 p. 15, Column (h) directs. The objection reads the shared helper names as the other lines' columns.",
    "context": "f7853019cac1504acce66c1cce52a0d338c753ca90fef571243279035ad08afb"
+  },
+  {
+   "printed": "26(i)",
+   "restated": "Enter the amount from line 6(c).",
+   "model": "IRS line 6 says 'Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26'; copying line 6(c) is therefore wrong.",
+   "ruling": "Ruling: representation; restatement accepted. The per-asset section 179 election appears in column (i) for listed property and on line 6 otherwise.",
+   "context": "d1c0518ed5c7af2569758ae9d739c80030cb9a9adc562d8fec4ec7c54247ab3f"
   },
   {
    "printed": "26(i)",

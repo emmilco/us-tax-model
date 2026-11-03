@@ -1,14 +1,102 @@
 [
  {
   "form": "asset",
-  "prompt_sha": "a6abc11b29f315944388768b8f2631df185f66a3197db431fe6f8985667bbf28",
+  "prompt_sha": "7eeae33e17a905cf8e80390b06611d693c392ba2fb6936ba1a25dd9af75a610c",
   "claims": [
+   {
+    "item": "asset.screen",
+    "sentences": [
+     {
+      "quote": "The following types of property must be depreciated under ADS.",
+      "page": "i4562 p. 12"
+     },
+     {
+      "quote": "Imported property covered by an executive order of the President of the United States.",
+      "page": "i4562 p. 12"
+     },
+     {
+      "quote": "Property used predominantly in a farming business and placed in service during any tax year in which you made an election under section 263A(d)(3) to not have the uniform capitalization rules of section 263A apply.",
+      "page": "i4562 p. 12"
+     },
+     {
+      "quote": "Any nonresidential real property, residential rental property, or qualified improvement property held by an electing real property trade or business (as defined in section 163(j)(7)(B)).",
+      "page": "i4562 p. 12"
+     },
+     {
+      "quote": "Any property that has a recovery period of 10 years or more under section 168(c) that is held by an electing farming business (as defined in section 163(j)(7)(C)).",
+      "page": "i4562 p. 12"
+     },
+     {
+      "quote": "If you elect not to apply the uniform capitalization rules to any plant produced in your farming business, you must use ADS.",
+      "page": "p946 p. 35"
+     },
+     {
+      "quote": "You must use ADS for all property you place in service in any year the election is in effect.",
+      "page": "p946 p. 35"
+     },
+     {
+      "quote": "Any property required to be depreciated under the Alternative Depreciation System (ADS) (that is, not property for which you elected to use ADS);",
+      "page": "i4562 p. 7"
+     }
+    ],
+    "quote": "The following types of property must be depreciated under ADS. / Imported property covered by an executive order of the President of the United States. / Property used predominantly in a farming business and placed in service during any tax year in which you made an election under section 263A(d)(3) to not have the uniform capitalization rules of section 263A apply. / Any nonresidential real property, residential rental property, or qualified improvement property held by an electing real property trade or business (as defined in section 163(j)(7)(B)). / Any property that has a recovery period of 10 years or more under section 168(c) that is held by an electing farming business (as defined in section 163(j)(7)(C)). / If you elect not to apply the uniform capitalization rules to any plant produced in your farming business, you must use ADS. / You must use ADS for all property you place in service in any year the election is in effect. / Any property required to be depreciated under the Alternative Depreciation System (ADS) (that is, not property for which you elected to use ADS);",
+    "page": "i4562 p. 12; p946 p. 35; i4562 p. 7",
+    "why_uncovered": "The screen asks whether the filer depreciates the property under ADS. That is a question about what the filer does, not what the law requires. The screen also names some ADS triggers on its own: use mainly outside the United States, tax-exempt use property, and tax-exempt bond financed property. It leaves out four other required-ADS cases: imported property under an executive order, the section 263A(d)(3) election (which forces ADS on all property the farmer places in service that year, not just farm classes), qualified improvement property held by an electing real property trade or business (QIP is otherwise in scope), and 10-year-or-longer property held by an electing farming business. A filer in one of these cases who has been using GDS would answer no and get GDS rates plus a special allowance, but property required to use ADS gets no special allowance.",
+    "closest_item": "asset.screen",
+    "effect": "amount"
+   },
+   {
+    "item": "asset.basis",
+    "sentences": [
+     {
+      "quote": "From that result, subtract any credits and deductions allocable to the property.",
+      "page": "i4562 p. 11"
+     },
+     {
+      "quote": "The following are examples of some credits and deductions that reduce the basis for depreciation.",
+      "page": "i4562 p. 11"
+     },
+     {
+      "quote": "Deduction under section 179D for certain energy efficient commercial building property.",
+      "page": "i4562 p. 11"
+     },
+     {
+      "quote": "Credit for alternative fuel vehicle refueling property.",
+      "page": "i4562 p. 11"
+     },
+     {
+      "quote": "Any basis adjustment for investment credit property. See section 50(c).",
+      "page": "i4562 p. 11"
+     },
+     {
+      "quote": "Any basis adjustment for advanced manufacturing investment credit property. See section 48D(d)(5).",
+      "page": "i4562 p. 11"
+     },
+     {
+      "quote": "To figure the depreciable basis, subtract from the business/investment portion of the cost or other basis of the property any credits and deductions allocable to the property.",
+      "page": "i4562 p. 7"
+     }
+    ],
+    "quote": "From that result, subtract any credits and deductions allocable to the property. / The following are examples of some credits and deductions that reduce the basis for depreciation. / Deduction under section 179D for certain energy efficient commercial building property. / Credit for alternative fuel vehicle refueling property. / Any basis adjustment for investment credit property. See section 50(c). / Any basis adjustment for advanced manufacturing investment credit property. See section 48D(d)(5). / To figure the depreciable basis, subtract from the business/investment portion of the cost or other basis of the property any credits and deductions allocable to the property.",
+    "page": "i4562 p. 11; i4562 p. 7",
+    "why_uncovered": "asset.basis, asset.ub and asset.col19c subtract only the section 179 election and the special allowance. The cost question asks for what was paid and never mentions reducing it by credits or deductions. The screen item about a basis 'adjusted for anything other than depreciation (for example a casualty loss)' points to adjustments made after the property is placed in service. Since the tool itself subtracts section 179 and the special allowance without calling them adjustments, a filer would not read that item as covering upfront reductions. These include the disabled access credit, the removal-of-barriers deduction, the section 179D deduction, the childcare facilities credit, and section 50(c) or 48D investment credit adjustments. Missing them overstates the special allowance and the MACRS basis.",
+    "closest_item": "asset.basis",
+    "effect": "amount"
+   },
    {
     "item": "asset.class",
     "sentences": [
      {
-      "quote": "Appliances, carpets, furniture, etc., used in a rental real estate activity.",
-      "page": "i4562 p. 10"
+      "quote": "Enter the total depreciation you are claiming for the following types of property (except listed property and property subject to a section 168(f)(1) election).",
+      "page": "i4562 p. 8"
+     },
+     {
+      "quote": "1. Computer software. Use the straight line method over 36 months.",
+      "page": "i4562 p. 8"
+     },
+     {
+      "quote": "However, MACRS does not apply to films, videotapes, and sound recordings.",
+      "page": "i4562 p. 9"
      },
      {
       "quote": "Initial clearing and grading land improvements for gas utility property.",
@@ -19,15 +107,43 @@
       "page": "i4562 p. 10"
      },
      {
-      "quote": "Natural gas gathering and distribution lines placed in service after April 11, 2005.",
-      "page": "p946 p. 98"
+      "quote": "Excludes public utility initial clearing and grading land improvements as specified in Rev. Rul. 72-403, 1972-2 C.B. 102.",
+      "page": "p946 p. 99"
      }
     ],
-    "quote": "Appliances, carpets, furniture, etc., used in a rental real estate activity. / Initial clearing and grading land improvements for gas utility property. / Initial clearing and grading land improvements for electric utility transmission and distribution plants. / Natural gas gathering and distribution lines placed in service after April 11, 2005.",
-    "page": "i4562 p. 10; p946 p. 98",
-    "why_uncovered": "The asset class question only lets the filer choose an Appendix B class from Table B-1 or B-2, or option A, B, C, or qualified improvement property. These sentences assign classes by statute, overriding the tables: 5-year for appliances, carpets and furniture used in rental real estate; 15-year and 20-year for initial clearing and grading land improvements for utilities; 15-year for natural gas distribution lines. Nothing in the question offers these classifications. The table lookup would give a different class: 00.11 (7-year) for rental furniture, and 49.21 or Rev. Rul. 72-403 exclusions for the utility items. The screen covers only natural gas gathering lines, not distribution lines, and it does not cover the clearing and grading improvements or rental-activity furnishings.",
+    "quote": "Enter the total depreciation you are claiming for the following types of property (except listed property and property subject to a section 168(f)(1) election). / 1. Computer software. Use the straight line method over 36 months. / However, MACRS does not apply to films, videotapes, and sound recordings. / Initial clearing and grading land improvements for gas utility property. / Initial clearing and grading land improvements for electric utility transmission and distribution plants. / Excludes public utility initial clearing and grading land improvements as specified in Rev. Rul. 72-403, 1972-2 C.B. 102.",
+    "page": "i4562 p. 8; i4562 p. 9; i4562 p. 10; p946 p. 99",
+    "why_uncovered": "The class question offers only Table B-1/B-2 classes, option A (no class life, 7-year), option B, option C, and qualified improvement property. Nothing tells the filer that computer software is depreciated straight line over 36 months under section 167(f), or that films, videotapes and sound recordings are not MACRS property. The section 179 question even lists off-the-shelf software as qualifying, which invites software entries, and those would likely land in option A at 7 years. The screen's 'method other than the MACRS percentage tables' assumes the filer already knows this. Separately, public utility initial clearing and grading land improvements are left out of every asset class (15-year for gas utility, 20-year for electric utility), and the question gives no way to reach them.",
     "closest_item": "asset.class",
     "effect": "amount"
+   },
+   {
+    "item": "asset.pct",
+    "sentences": [
+     {
+      "quote": "For other listed property (such as computers placed in service before 2018 or video equipment), allocate the use based on the most appropriate unit of time the property is actually used (rather than merely being available for use).",
+      "page": "i4562 p. 14"
+     }
+    ],
+    "quote": "For other listed property (such as computers placed in service before 2018 or video equipment), allocate the use based on the most appropriate unit of time the property is actually used (rather than merely being available for use).",
+    "page": "i4562 p. 14",
+    "why_uncovered": "The percentage question covers only the part-year conversion rule for listed property. It doesn't say that listed property use must be measured by actual time used rather than time available. That rule sets both the basis percentage and the more-than-50% test that controls section 179, the special allowance, and the line 27 refusal.",
+    "closest_item": "asset.pct",
+    "effect": "amount"
+   },
+   {
+    "item": "asset.bonus_choice",
+    "sentences": [
+     {
+      "quote": "To make an election, attach a statement to your timely filed return (including extensions) indicating the class of property for which you are making the election and that, for such class, you are not to claim any special depreciation allowance.",
+      "page": "i4562 p. 7"
+     }
+    ],
+    "quote": "To make an election, attach a statement to your timely filed return (including extensions) indicating the class of property for which you are making the election and that, for such class, you are not to claim any special depreciation allowance.",
+    "page": "i4562 p. 7",
+    "why_uncovered": "The question accepts 'none' (elect out) for a class of property and computes a zero allowance. No line, output or refusal produces or asks about the required election statement for that class.",
+    "closest_item": "asset.bonus_choice",
+    "effect": "presentation"
    }
   ],
   "used": [
@@ -106,7 +222,7 @@
     ]
    }
   ],
-  "cost": 0.8612868,
+  "cost": 1.04936,
   "model": "claude-opus-5-5"
  },
  {

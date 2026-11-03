@@ -185,6 +185,8 @@
 
 - **Authored helper label:** The recovery period ended before 2025
 - **Encoded (Bool):** helper "Year of recovery in 2025" > helper "Last year of recovery for the recovery period"
+- **Refusal:** when asset.screened is true, cannot complete Form 4562 property outside this tool (Pub. 946 Appendix B class, qualified improvement property placed in service before 2018, disposition, exchange, real property, reuse and recycling property, an acquisition before September 28, 2017, ADS, other methods, basis adjustment, amortization, a short tax year and the other items of the screen). This property is outside the depreciation this tool covers. Cite: [i4562] pp. 8-12, Part III, and Pub. 946 Appendix B (2025; sha256 5c1c95b7)
+- **Refusal:** when asset.listed_low is true, cannot complete Listed property used 50% or less in a qualified business use (Form 4562 line 27), or a business use over 100%. Listed property used 50% or less for business is depreciated under ADS and is outside this tool. Cite: [i4562] p. 15, "used 50% or less in a qualified business use, depreciate the property using the straight line method over its ADS recovery period" (2025; sha256 5c1c95b7)
 - Expr: `{"gt":["asset.year","asset.last"],"op":"test"}`
 - Cite: [p946] p. 37, Using the MACRS Percentage Tables (For use in preparing 2025 returns; sha256 07fadfb2)
 

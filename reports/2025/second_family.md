@@ -1,8 +1,8 @@
 # Second-family review comparison — 2025
 
-Summary: 155 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 9.4% (464/4928 second-family lines judged; pending reviews are provisional); 80 eligible, 74 pending; raw agreement 76.8% (diagnostic only); current independence yield 288 line(s); both families disputed 729
+Summary: 155 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 9.4% (464/4928 second-family lines judged; pending reviews are provisional); 80 eligible, 74 pending; raw agreement 76.9% (diagnostic only); current independence yield 286 line(s); both families disputed 729
 
-Written by `tools/transcription/compare_families.py` on 2026-11-02 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
+Written by `tools/transcription/compare_families.py` on 2026-11-03 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
 - **Noise rule** (owner's decision 12, integrity plan item 1.3): second-family disputes ruled **model error**, divided by the lines that family judged, must be at most 10% for each form-kind run. Findings, representation differences, scope differences and ambiguities are not model noise. The threshold uses integer arithmetic; 1/10 passes and 1/9 does not. Rates for pending reviews are provisional: an unresolved objection has not yet been classified, and zero ruled model errors does not mean every objection was correct.
 - **Eligibility** also requires current subjects/sources, the named second-family model, no missing or invalid verdicts, and no open or unclassified ruling. Empty reviews earn no assertion. Optional-family results can remain pending without becoming evidence.
@@ -17,7 +17,7 @@ Written by `tools/transcription/compare_families.py` on 2026-11-02 from the revi
 | form | second family (model) | lines judged by both | both agree | raw agreement | noise / judged | eligibility | current yield | both disputed | Claude only | not judged by both |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | aqee | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| asset | deepseek (deepseek-flash) | 16 | 2 | 12.5% | 13/16 (81.2%) | pending | 0 | 14 | 0 | 0 |
+| asset | deepseek (deepseek-flash) | 16 | 1 | 6.2% | 13/16 (81.2%) | pending | 1 | 14 | 0 | 0 |
 | carloan | deepseek (deepseek-flash) | 2 | 0 | 0.0% | 2/2 (100.0%) | pending | 0 | 2 | 0 | 0 |
 | clcw | deepseek (deepseek-flash) | 13 | 13 | 100.0% | 0/13 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | clcw26 | deepseek (deepseek-flash) | 13 | 12 | 92.3% | 1/13 (7.7%) | pass | 1 | 0 | 0 | 0 |
@@ -80,7 +80,7 @@ Written by `tools/transcription/compare_families.py` on 2026-11-02 from the revi
 | tipjob | deepseek (deepseek-flash) | 3 | 2 | 66.7% | 0/3 (0.0%) | pending | 0 | 0 | 1 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 6 | 33.3% | 7/18 (38.9%) | pending | 4 | 6 | 2 | 0 |
 | w2 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 0 | 1 | 1 | 0 |
-| **all** | | 1307 | 490 | 37.5% | | | 155 | 618 | 44 | 0 |
+| **all** | | 1307 | 489 | 37.4% | | | 156 | 618 | 44 | 0 |
 
 Pending asset [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending carloan [deepseek]: model-error noise above 10%.
@@ -142,6 +142,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 
 | form | second family | line | second family's verdict | second family's reason |
 | --- | --- | --- | --- | --- |
+| asset | deepseek | asset.s179_2025 | DISAGREE | The per-asset section 179 amount is the current-year elected cost; the business income limitation and allocation are made on the business's Form 4562 line 12. |
 | clcw26 | deepseek | 3 | DISAGREE | (no reason given) |
 | eic | deepseek | eic.self_employed | DISAGREE | (no reason given) |
 | f1040 | deepseek | 19 | DISAGREE | (no reason given) |
@@ -302,18 +303,18 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 
 | form | second family | line | Claude | second family | second family's reason |
 | --- | --- | --- | --- | --- | --- |
-| asset | deepseek | (c) | DISAGREE | DISAGREE | (no reason given) |
-| asset | deepseek | 14 | DISAGREE | DISAGREE | (no reason given) |
-| asset | deepseek | 17 | DISAGREE | DISAGREE | (no reason given) |
-| asset | deepseek | 19(c) | DISAGREE | DISAGREE | (no reason given) |
-| asset | deepseek | 19(g) | DISAGREE | DISAGREE | (no reason given) |
+| asset | deepseek | (c) | DISAGREE | DISAGREE | Read as the business/investment basis before section 179 and special allowance reductions; the Form 4562 column (c) basis after those reductions is asset.col19c. |
+| asset | deepseek | 14 | DISAGREE | DISAGREE | Line 14 is used only for property not reported in Part V; listed property's allowance is on line 25. |
+| asset | deepseek | 17 | DISAGREE | DISAGREE | Line 17 only for non-listed MACRS property placed in service before 2025; listed property prior-year depreciation is on line 26(h). |
+| asset | deepseek | 19(c) | DISAGREE | DISAGREE | Line 19(c) is taken as the current-year basis after section 179 and special depreciation allowance, and is zero for property not placed in service in 2025 or reported in Part V. |
+| asset | deepseek | 19(g) | DISAGREE | DISAGREE | Line 19(g) only for non-listed property placed in service in 2025; listed property is on line 26(h). |
 | asset | deepseek | 25 | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | 26(h) | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | 26(i) | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | asset.bonus_2025 | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | asset.cost179 | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | asset.dep_2025 | DISAGREE | DISAGREE | (no reason given) |
-| asset | deepseek | asset.dep_prior | DISAGREE | DISAGREE | (no reason given) |
+| asset | deepseek | asset.dep_prior | DISAGREE | DISAGREE | The IRS text does not separately name a cumulative prior-depreciation figure. This helper is the current-year MACRS depreciation for property placed in service before 2025, the amount otherwise carried to line 17 or line 26(h). |
 | asset | deepseek | asset.mq_q4 | DISAGREE | DISAGREE | (no reason given) |
 | asset | deepseek | asset.mq_total | DISAGREE | DISAGREE | (no reason given) |
 | carloan | deepseek | 22(ii) | DISAGREE | DISAGREE | (no reason given) |
@@ -926,7 +927,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | form | second family (model) | lines judged by both | both agree | raw agreement | noise / judged | eligibility | current yield | both disputed | Claude only | not judged by both |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | aqee | deepseek (deepseek-flash) | 4 | 4 | 100.0% | 0/4 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| asset | deepseek (deepseek-flash) | 15 | 9 | 60.0% | 0/15 (0.0%) | pass | 6 | 0 | 0 | 0 |
+| asset | deepseek (deepseek-flash) | 15 | 11 | 73.3% | 0/15 (0.0%) | pass | 3 | 0 | 1 | 0 |
 | carloan | deepseek (deepseek-flash) | 2 | 1 | 50.0% | 0/2 (0.0%) | pass | 0 | 1 | 0 | 0 |
 | clcw | deepseek (deepseek-flash) | 13 | 12 | 92.3% | 0/13 (0.0%) | pass | 0 | 0 | 1 | 0 |
 | clcw26 | deepseek (deepseek-flash) | 13 | 12 | 92.3% | 0/13 (0.0%) | pass | 0 | 0 | 1 | 0 |
@@ -989,7 +990,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | tipjob | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 4 | 22.2% | 0/18 (0.0%) | pass | 0 | 13 | 1 | 0 |
 | w2 | deepseek (deepseek-flash) | 17 | 17 | 100.0% | 0/17 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| **all** | | 1494 | 1198 | 80.2% | | | 130 | 105 | 61 | 1 |
+| **all** | | 1494 | 1200 | 80.3% | | | 127 | 105 | 62 | 1 |
 
 Pending f8606 [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending f8962 [gpt]: model-error noise above 10%.
@@ -1008,12 +1009,9 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 
 | form | second family | line | second family's verdict | second family's reason |
 | --- | --- | --- | --- | --- |
-| asset | deepseek | (c) | MISMATCH | IRS line 26/27 uses qualified business use: "Use line 26 to figure depreciation for property used more than 50% in a qualified business use. Use line 27 ... 50% or less in a qualified business use." The refusal gate asset.listed_low instead tests the business/investment-use percentage. |
-| asset | deepseek | (d) | MISMATCH | The IRS assigns qualified improvement property to 15-year property in the line 19 classification instructions ("Qualified improvement property ... placed in service by you after December 31, 2017"), but the restatement only points to Appendix B Tables B-1/B-2, which do not list QIP. |
-| asset | deepseek | 14 | MISMATCH | IRS says to figure the allowance by subtracting from the business/investment cost "any credits and deductions allocable to the property"; the special-allowance helpers use only cost less the section 179 election. |
-| asset | deepseek | 19(c) | MISMATCH | IRS says after multiplying cost by business/investment use, "subtract any credits and deductions allocable to the property." The helper only subtracts section 179 and the special allowance, omitting other required credits and deductions. |
-| asset | deepseek | 25 | MISMATCH | IRS says "Enter on line 25 your total special depreciation allowance for all qualified listed property." The restatement copies line 14, which the program itself limits to non-listed property. |
-| asset | deepseek | 26(i) | MISMATCH | IRS says "Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26." Line 26(i) is the listed property election, not the line 6(c) amount. |
+| asset | deepseek | (c) | MISMATCH | IRS column (c) says to multiply cost by business-use percentage and then 'subtract any credits and deductions allocable to the property', including 'Section 179 expense deduction' and 'any special depreciation allowance'; the restatement stops after multiplying by the business-use percentage. |
+| asset | deepseek | 25 | MISMATCH | IRS line 25 says 'Enter on line 25 your total special depreciation allowance for all qualified listed property'; it is not the amount from line 14, which is the non-listed-property special allowance line. |
+| asset | deepseek | 26(i) | MISMATCH | IRS line 6 says 'Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26'; copying line 6(c) is therefore wrong. |
 | f1040 | deepseek | 16 | MISMATCH | The restatement also requires the Qualified Dividends and Capital Gain Tax Worksheet to apply, but the IRS says to use the Schedule D Tax Worksheet if 'You have to file Form 4952 and you have an amount on line 4g, even if you don’t need to file Schedule D.' |
 | f1040 | deepseek | 1z | MISMATCH | IRS line 1z says 'Add lines 1a through 1h', but the restatement adds only line 1a and line 1e, omitting lines 1b through 1d and 1f through 1h. |
 | f1040 | deepseek | 27c | MISMATCH | IRS says 'Check the box on line 27c if you do not want to claim the earned income credit or if you have been instructed to check the box'; the restatement deliberately omits the filer's own choice not to claim the EIC. |

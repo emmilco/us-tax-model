@@ -547,12 +547,14 @@ The data holds **191 refusal gates**: 153 tax situations the tool does not prepa
   - *The data asks or tests:* This property is outside this tool (`test`)
   - *Not covered:* Form 4562 property outside this tool (Pub. 946 Appendix B class, qualified improvement property placed in service before 2018, disposition, exchange, real property, reuse and recycling property, an acquisition before September 28, 2017, ADS, other methods, basis adjustment, amortization, a short tax year and the other items of the screen). This property is outside the depreciation this tool covers.
     *Source:* [i4562] pp. 8-12, Part III, and Pub. 946 Appendix B
-  - *Refused at:* `asset.cost`
+  - *Refused at:* `asset.cost`, `asset.done`
 - **`asset.listed_low`**: Is any listed property used 50% or less for business?
   - *The data asks or tests:* Listed property used 50% or less for business, or a percentage over 100 (`test`)
   - *Not covered:* Listed property used 50% or less in a qualified business use (Form 4562 line 27), or a business use over 100%. Listed property used 50% or less for business is depreciated under ADS and is outside this tool.
     *Source:* [i4562] p. 14, Lines 26 and 27; p. 15, Column (f), "used 50% or less ... straight line method over its ADS recovery period"
-  - *Refused at:* `asset.basis`
+  - *Not covered:* Listed property used 50% or less in a qualified business use (Form 4562 line 27), or a business use over 100%. Listed property used 50% or less for business is depreciated under ADS and is outside this tool.
+    *Source:* [i4562] p. 15, "used 50% or less in a qualified business use, depreciate the property using the straight line method over its ADS recovery period"
+  - *Refused at:* `asset.basis`, `asset.done`
 - **`asset.bonus_mixed`**: Did you make different special allowance choices within one class of property?
   - *The data asks or tests:* The special allowance choice differs within a class (`test`)
   - *Not covered:* Different special allowance elections within one class of property. An election that is not the same for the whole class is outside this tool.

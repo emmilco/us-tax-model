@@ -261,12 +261,6 @@
    "evidence": "i8283 p. 3. The reduction is asked for in the amount; the attached statement is filing information the filer prepares.",
    "prompt_sha": "d942ba2e0b07852d0bc1ac5dea474c6c5e087ac911f17a377591fb4e28ae66f1"
   },
-  "unruled:asset#1": {
-   "class": "real gap",
-   "evidence": "i4562 p. 10. Statutory recovery classes are not offered; one claim quote did not match the archive and is unverified. BUG-0326/T-183.",
-   "prompt_sha": "a6abc11b29f315944388768b8f2631df185f66a3197db431fe6f8985667bbf28",
-   "bug": "BUG-0326"
-  },
   "unruled:sc#1": {
    "class": "real gap",
    "evidence": "i1040sc p. 6; i1040sc p. 7. Line 9 is listed only as a computed line ('standard mileage rate or actual expenses, for each vehicle'). No listed question asks how many vehicles were used at  BUG-0326/T-183.",
@@ -423,6 +417,35 @@
    "evidence": "i8962 p. 16. A partial payment that avoided termination is not distinguished from an unpaid month. BUG-0327/T-180.",
    "prompt_sha": "b07da2f39312cf811cac6674cfbe9f0e2353edd7eb2ecfa3a54f9588dcee2a3a",
    "bug": "BUG-0327"
+  },
+  "unruled:asset#1": {
+   "class": "real gap",
+   "evidence": "i4562 p. 12; p946 p. 35; i4562 p. 7. The screen asks whether the filer depreciates the property under ADS. That is a question about what the filer does, not what the law requires. The screen also names some ADS trigge BUG-0326/T-183.",
+   "prompt_sha": "7eeae33e17a905cf8e80390b06611d693c392ba2fb6936ba1a25dd9af75a610c",
+   "bug": "BUG-0326"
+  },
+  "unruled:asset#2": {
+   "class": "real gap",
+   "evidence": "i4562 p. 11; i4562 p. 7. asset.basis, asset.ub and asset.col19c subtract only the section 179 election and the special allowance. The cost question asks for what was paid and never mentions reducing it by  BUG-0326/T-183.",
+   "prompt_sha": "7eeae33e17a905cf8e80390b06611d693c392ba2fb6936ba1a25dd9af75a610c",
+   "bug": "BUG-0326"
+  },
+  "unruled:asset#3": {
+   "class": "real gap",
+   "evidence": "i4562 p. 8; i4562 p. 9; i4562 p. 10; p946 p. 99. The class question offers only Table B-1/B-2 classes, option A (no class life, 7-year), option B, option C, and qualified improvement property. Nothing tells the filer that compute BUG-0326/T-183.",
+   "prompt_sha": "7eeae33e17a905cf8e80390b06611d693c392ba2fb6936ba1a25dd9af75a610c",
+   "bug": "BUG-0326"
+  },
+  "unruled:asset#4": {
+   "class": "real gap",
+   "evidence": "i4562 p. 14. The percentage question covers only the part-year conversion rule for listed property. It doesn't say that listed property use must be measured by actual time used rather than time BUG-0326/T-183.",
+   "prompt_sha": "7eeae33e17a905cf8e80390b06611d693c392ba2fb6936ba1a25dd9af75a610c",
+   "bug": "BUG-0326"
+  },
+  "unruled:asset#5": {
+   "class": "presentation",
+   "evidence": "i4562 p. 7. The election-out statement is filing information; the choice is asked.",
+   "prompt_sha": "7eeae33e17a905cf8e80390b06611d693c392ba2fb6936ba1a25dd9af75a610c"
   }
  },
  "baseline": {

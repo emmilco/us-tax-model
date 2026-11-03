@@ -4554,3 +4554,15 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Disposition:** T-180, with the column B work: ask or refuse, citing i8962 p. 14; check Pub. 974, which is archived.
 - **Validation:** one screen-review finding and one completeness claim, quotes matched; not reproduced by evaluation.
 - **Tags:** eligibility; premium-tax-credit; amount-affecting; explicitly-deferred
+
+## BUG-0328 — BUG-0325 is fixed: an asset past its GDS period is still screened
+
+- **Caught by:** BUG-0325, recorded open; this entry closes it because the inventory is append-only.
+- **Source:** i4562 p. 9, Line 17; p. 13, Column (g), "use the straight line method over the ADS recovery period"; p. 15, Column (f), "used 50% or less ... straight line method over its ADS recovery period"; p946 Table B-1.
+- **Symptom:** as recorded in BUG-0325.
+- **Fix:** the `asset.screened` and `asset.listed_low` refusals are also declared on `asset.done`, which every asset placed in service before 2025 reads to decide whether its recovery period has ended, so the screen, use percentage and listed questions are asked and a Yes refuses there. Accepted over-refusal: listed property used 50% or less whose ADS period has also ended owes no depreciation but is refused.
+- **Fix lines:** `asset.done`
+- **Siblings checked:** `asset.macrs_prior`, `asset.dep_prior`, `asset.cost`, `asset.basis`, `asset.screened`, `asset.listed_low`
+- **Regression predictions:** `stage14.asset.refuse_ads_past_gds` (office furniture placed in service in 2015 under ADS, screen Yes) and `stage14.asset.refuse_listed_low_past_gds` (listed property at 40% placed in service in 2015) both refuse at `asset.macrs_prior`, where the unfixed tree gave $0 with no refusal. Written from the source before the evaluator was run, from the cloud audit's witnesses.
+- **Validation:** fixtures 1,441/1,441; asset reviews rerun.
+- **Tags:** eligibility; amount-affecting; refusal-placement; fixed

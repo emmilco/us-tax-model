@@ -1,60 +1,70 @@
 {
  "bank": {
   "evaluation_failures": 0,
-  "fixtures": 1439,
+  "fixtures": 1441,
   "generated": 500,
   "partial_bases": 40,
-  "partial_records": 851,
+  "partial_records": 770,
   "return_states": {
-   "completed": 401,
-   "incomplete": 1047,
-   "refused": 1342
+   "completed": 412,
+   "incomplete": 1020,
+   "refused": 1279
   },
   "seed": 20261026
  },
  "errors": [
   {
-   "line": "asset.h_business_cost",
-   "message": "asset.asset.h_business_cost: part 'asset.pct' is not money"
+   "line": "asset.basis",
+   "message": "asset.asset.basis: part 'asset.pct' is not money"
   },
   {
-   "line": "asset.h_business_cost",
-   "message": "asset.asset.h_business_cost: whole operand is not money"
+   "line": "asset.basis",
+   "message": "asset.asset.basis: whole operand is not money"
   }
  ],
  "failures": [],
  "family": "deepseek",
  "form": "asset",
  "invalid_lines": [
-  "asset.h_business_cost",
-  "asset.cost179",
-  "asset.h_after179_current",
-  "asset.h_after179_prior",
-  "asset.h_basis_current",
-  "asset.h_basis_prior",
-  "asset.h_bonus_40",
-  "asset.h_bonus_100",
-  "asset.h_bonus_after",
-  "asset.h_dep_hy",
-  "asset.h_dep_mq",
-  "asset.h_current_macrs",
-  "asset.h_prior_macrs",
-  "asset.h_regular_current",
-  "asset.h_regular_prior",
-  "asset.h_listed_regular",
-  "asset.h_dep_2025_sum",
   "asset.basis",
+  "asset.h_bonus_basis",
+  "asset.h_bonus_40",
+  "asset.h_bonus_current",
+  "asset.h_bonus_choose",
+  "asset.bonus_2025",
+  "asset.h_after_bonus",
+  "asset.h_col19c_choose",
+  "asset.h_prior_basis1",
+  "asset.h_prior_basis",
+  "asset.h_prior_macrs_full",
+  "asset.h_prior_macrs_choose",
+  "asset.h_prior_macrs",
+  "asset.h_dep_prior_choose",
+  "asset.dep_prior",
+  "asset.h_current_macrs_hy",
+  "asset.h_current_macrs_mq",
+  "asset.h_current_macrs_choose",
+  "asset.h_current_macrs",
+  "asset.h_macrs2025_choose",
+  "asset.h_macrs_prior_choose",
+  "asset.h_listed_regular_choose",
+  "asset.h_listed_regular",
+  "asset.h_dep_listed_choose",
+  "asset.h_bonus_line14_choose",
+  "asset.h_f25_choose",
+  "asset.h_cost179_choose",
+  "asset.cost179",
+  "asset.h_mq_total_choose",
+  "asset.mq_total",
+  "asset.h_mq_q4_choose",
+  "asset.mq_q4",
+  "asset.dep_2025",
+  "asset.bonus",
+  "asset.f25",
   "asset.col19c",
   "asset.macrs2025",
   "asset.macrs_prior",
-  "asset.dep_listed",
-  "asset.dep_2025",
-  "asset.bonus_2025",
-  "asset.mq_q4",
-  "asset.mq_total",
-  "asset.dep_prior",
-  "asset.bonus",
-  "asset.f25"
+  "asset.dep_listed"
  ],
  "lines": [
   {
@@ -152,19 +162,19 @@
    "handle": "asset.dep_2025",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 1864,
+   "invalid": 1589,
    "kinds": {
-    "candidate-invalid": 1864
+    "candidate-invalid": 1589
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 240
+     "candidate-invalid": 250
     },
     "incomplete": {
-     "candidate-invalid": 541
+     "candidate-invalid": 475
     },
     "refused": {
-     "candidate-invalid": 1083
+     "candidate-invalid": 864
     }
    },
    "open_at_triage": true,
@@ -355,19 +365,19 @@
    "handle": "asset.bonus_2025",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 1864,
+   "invalid": 1589,
    "kinds": {
-    "candidate-invalid": 1864
+    "candidate-invalid": 1589
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 240
+     "candidate-invalid": 250
     },
     "incomplete": {
-     "candidate-invalid": 541
+     "candidate-invalid": 475
     },
     "refused": {
-     "candidate-invalid": 1083
+     "candidate-invalid": 864
     }
    },
    "open_at_triage": true,
@@ -465,6 +475,31 @@
   },
   {
    "absent": 0,
+   "agree": 1589,
+   "candidate": "asset.s179_2025",
+   "compared": 1589,
+   "completed_witnesses": [],
+   "differ": 0,
+   "handle": "asset.s179_2025",
+   "in_scope": 1589,
+   "in_scope_agree": 1589,
+   "invalid": 0,
+   "kinds": {},
+   "kinds_by_return": {},
+   "open_at_triage": true,
+   "project": "asset.s179_2025",
+   "shown_when": null,
+   "sources": {
+    "fixture": 165,
+    "generated": 150,
+    "partial": 1274
+   },
+   "status": "DISAGREE",
+   "triage": "agrees on sample",
+   "witnesses": []
+  },
+  {
+   "absent": 0,
    "agree": 0,
    "candidate": "asset.mq_q4",
    "compared": 0,
@@ -558,19 +593,19 @@
    "handle": "asset.mq_q4",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 1864,
+   "invalid": 1589,
    "kinds": {
-    "candidate-invalid": 1864
+    "candidate-invalid": 1589
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 240
+     "candidate-invalid": 250
     },
     "incomplete": {
-     "candidate-invalid": 541
+     "candidate-invalid": 475
     },
     "refused": {
-     "candidate-invalid": 1083
+     "candidate-invalid": 864
     }
    },
    "open_at_triage": true,
@@ -761,19 +796,19 @@
    "handle": "asset.mq_total",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 1864,
+   "invalid": 1589,
    "kinds": {
-    "candidate-invalid": 1864
+    "candidate-invalid": 1589
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 240
+     "candidate-invalid": 250
     },
     "incomplete": {
-     "candidate-invalid": 541
+     "candidate-invalid": 475
     },
     "refused": {
-     "candidate-invalid": 1083
+     "candidate-invalid": 864
     }
    },
    "open_at_triage": true,
@@ -964,19 +999,19 @@
    "handle": "asset.cost179",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 1864,
+   "invalid": 1589,
    "kinds": {
-    "candidate-invalid": 1864
+    "candidate-invalid": 1589
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 240
+     "candidate-invalid": 250
     },
     "incomplete": {
-     "candidate-invalid": 541
+     "candidate-invalid": 475
     },
     "refused": {
-     "candidate-invalid": 1083
+     "candidate-invalid": 864
     }
    },
    "open_at_triage": true,
@@ -1167,19 +1202,19 @@
    "handle": "asset.dep_prior",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 1864,
+   "invalid": 1589,
    "kinds": {
-    "candidate-invalid": 1864
+    "candidate-invalid": 1589
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 240
+     "candidate-invalid": 250
     },
     "incomplete": {
-     "candidate-invalid": 541
+     "candidate-invalid": 475
     },
     "refused": {
-     "candidate-invalid": 1083
+     "candidate-invalid": 864
     }
    },
    "open_at_triage": true,
@@ -1282,7 +1317,7 @@
    "compared": 0,
    "completed_witnesses": [
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "asset.asset.basis: part 'asset.pct' is not money",
      "instance": "person[taxpayer].sc[biz_a].asset[item_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1296,7 +1331,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "asset.asset.basis: part 'asset.pct' is not money",
      "instance": "person[taxpayer].sc[biz_a].asset[item_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1310,7 +1345,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "asset.asset.basis: part 'asset.pct' is not money",
      "instance": "person[taxpayer].sc[biz_a].asset[item_2]",
      "kind": "candidate-invalid",
      "project": {
@@ -1324,7 +1359,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "asset.asset.basis: part 'asset.pct' is not money",
      "instance": "person[taxpayer].sc[biz_a].asset[item_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1338,7 +1373,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "asset.asset.basis: part 'asset.pct' is not money",
      "instance": "person[taxpayer].sc[biz_a].asset[item_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1352,7 +1387,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "asset.asset.basis: part 'asset.pct' is not money",
      "instance": "person[taxpayer].sc[biz_a].asset[item_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1370,19 +1405,19 @@
    "handle": "(c)",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 1864,
+   "invalid": 1589,
    "kinds": {
-    "candidate-invalid": 1864
+    "candidate-invalid": 1589
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 240
+     "candidate-invalid": 250
     },
     "incomplete": {
-     "candidate-invalid": 541
+     "candidate-invalid": 475
     },
     "refused": {
-     "candidate-invalid": 1083
+     "candidate-invalid": 864
     }
    },
    "open_at_triage": true,
@@ -1393,7 +1428,7 @@
    "triage": "candidate invalid",
    "witnesses": [
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "asset.asset.basis: part 'asset.pct' is not money",
      "instance": "person[taxpayer].sc[biz_b].asset[item_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1407,7 +1442,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "asset.asset.basis: part 'asset.pct' is not money",
      "instance": "person[taxpayer].sc[biz_a].asset[item_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1421,7 +1456,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "asset.asset.basis: part 'asset.pct' is not money",
      "instance": "person[taxpayer].sc[biz_a].asset[item_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1435,7 +1470,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "asset.asset.basis: part 'asset.pct' is not money",
      "instance": "person[taxpayer].sc[biz_a].asset[item_2]",
      "kind": "candidate-invalid",
      "project": {
@@ -1449,7 +1484,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "asset.asset.basis: part 'asset.pct' is not money",
      "instance": "person[taxpayer].sc[biz_a].asset[item_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1463,7 +1498,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "asset.asset.basis: part 'asset.pct' is not money",
      "instance": "person[taxpayer].sc[biz_a].asset[item_2]",
      "kind": "candidate-invalid",
      "project": {
@@ -1571,19 +1606,19 @@
    "handle": "14",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 1864,
+   "invalid": 1589,
    "kinds": {
-    "candidate-invalid": 1864
+    "candidate-invalid": 1589
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 240
+     "candidate-invalid": 250
     },
     "incomplete": {
-     "candidate-invalid": 541
+     "candidate-invalid": 475
     },
     "refused": {
-     "candidate-invalid": 1083
+     "candidate-invalid": 864
     }
    },
    "open_at_triage": true,
@@ -1765,19 +1800,19 @@
    "handle": "25",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 1864,
+   "invalid": 1589,
    "kinds": {
-    "candidate-invalid": 1864
+    "candidate-invalid": 1589
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 240
+     "candidate-invalid": 250
     },
     "incomplete": {
-     "candidate-invalid": 541
+     "candidate-invalid": 475
     },
     "refused": {
-     "candidate-invalid": 1083
+     "candidate-invalid": 864
     }
    },
    "open_at_triage": true,
@@ -1870,364 +1905,28 @@
   },
   {
    "absent": 0,
-   "agree": 1783,
+   "agree": 1589,
    "candidate": "asset.f26i",
-   "compared": 1864,
+   "compared": 1589,
    "completed_witnesses": [],
-   "differ": 81,
+   "differ": 0,
    "handle": "26(i)",
-   "in_scope": 1862,
-   "in_scope_agree": 1783,
+   "in_scope": 1589,
+   "in_scope_agree": 1589,
    "invalid": 0,
-   "kinds": {
-    "candidate-refuses": 2,
-    "candidate-unknown": 79
-   },
-   "kinds_by_return": {
-    "incomplete": {
-     "candidate-unknown": 38
-    },
-    "refused": {
-     "candidate-refuses": 2,
-     "candidate-unknown": 41
-    }
-   },
+   "kinds": {},
+   "kinds_by_return": {},
    "open_at_triage": true,
    "project": "asset.f26i",
    "shown_when": "asset.on_26_2025",
    "sources": {
-    "fixture": 163,
+    "fixture": 165,
     "generated": 150,
-    "partial": 1551
+    "partial": 1274
    },
    "status": "DISAGREE",
-   "triage": "differs",
-   "witnesses": [
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "person[taxpayer].sc[desk].asset[cows].screen",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[desk].asset[cows].screen",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[desk].asset[cows]",
-     "kind": "candidate-refuses",
-     "project": {
-      "kind": "hidden"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[desk].asset[cows].s179",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "stage14.asset.refuse_reuse_recycling",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "person[taxpayer].sc[desk].asset[cows].screen",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[desk].asset[cows].screen",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[desk].asset[cows]",
-     "kind": "candidate-refuses",
-     "project": {
-      "kind": "hidden"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[desk].asset[cows].s179",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "stage14.asset.refuse_pre_2017",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sc[biz_b].asset[item_1].screen",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_b].asset[item_1].screen"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].asset[item_1].screen",
-       "value": {
-        "input": "person[taxpayer].sc[biz_b].asset[item_1].screen",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_b].asset[item_1].screen"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_b].asset[item_1]",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "hidden"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].asset[item_1].s179",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.f8889.2.deepseek",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_b].asset[item_1].screen"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sc[biz_b].asset[item_1].listed",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_b].asset[item_1].listed"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].asset[item_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].asset[item_1].h_is_listed",
-       "value": {
-        "input": "person[taxpayer].sc[biz_b].asset[item_1].listed",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_b].asset[item_1].listed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_b].asset[item_1]",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "hidden"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].asset[item_1].s179",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.f8889.2.deepseek",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_b].asset[item_1].listed"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sc[biz_a].asset[item_1].screen",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_a].asset[item_1].screen"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].asset[item_1].screen",
-       "value": {
-        "input": "person[taxpayer].sc[biz_a].asset[item_1].screen",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_a].asset[item_1].screen"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].asset[item_1]",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "hidden"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].asset[item_1].s179",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "incomplete",
-     "source": {
-      "base": "classm.f4952.1.deepseek",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_a].asset[item_1].screen"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sc[biz_a].asset[item_1].screen",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_a].asset[item_1].screen"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].asset[item_1].screen",
-       "value": {
-        "input": "person[taxpayer].sc[biz_a].asset[item_1].screen",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_a].asset[item_1].screen"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].asset[item_1]",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "hidden"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].asset[item_1].s179",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "incomplete",
-     "source": {
-      "base": "classm.sd.1.deepseek",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_a].asset[item_1].screen"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sc[biz_b].asset[item_1].screen",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_b].asset[item_1].screen"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].asset[item_1].screen",
-       "value": {
-        "input": "person[taxpayer].sc[biz_b].asset[item_1].screen",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_b].asset[item_1].screen"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_b].asset[item_1]",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "hidden"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].asset[item_1].s179",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.dependent.8.deepseek",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_b].asset[item_1].screen"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sc[biz_b].asset[item_1].listed",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_b].asset[item_1].listed"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].asset[item_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].asset[item_1].h_is_listed",
-       "value": {
-        "input": "person[taxpayer].sc[biz_b].asset[item_1].listed",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_b].asset[item_1].listed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_b].asset[item_1]",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "hidden"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].asset[item_1].s179",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.dependent.8.deepseek",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_b].asset[item_1].listed"
-     }
-    }
-   ]
+   "triage": "agrees on sample",
+   "witnesses": []
   },
   {
    "absent": 0,
@@ -2322,19 +2021,19 @@
    "handle": "19(c)",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 1864,
+   "invalid": 1589,
    "kinds": {
-    "candidate-invalid": 1864
+    "candidate-invalid": 1589
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 240
+     "candidate-invalid": 250
     },
     "incomplete": {
-     "candidate-invalid": 541
+     "candidate-invalid": 475
     },
     "refused": {
-     "candidate-invalid": 1083
+     "candidate-invalid": 864
     }
    },
    "open_at_triage": true,
@@ -2520,19 +2219,19 @@
    "handle": "19(g)",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 1864,
+   "invalid": 1589,
    "kinds": {
-    "candidate-invalid": 1864
+    "candidate-invalid": 1589
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 240
+     "candidate-invalid": 250
     },
     "incomplete": {
-     "candidate-invalid": 541
+     "candidate-invalid": 475
     },
     "refused": {
-     "candidate-invalid": 1083
+     "candidate-invalid": 864
     }
    },
    "open_at_triage": true,
@@ -2716,19 +2415,19 @@
    "handle": "17",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 1864,
+   "invalid": 1589,
    "kinds": {
-    "candidate-invalid": 1864
+    "candidate-invalid": 1589
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 240
+     "candidate-invalid": 250
     },
     "incomplete": {
-     "candidate-invalid": 541
+     "candidate-invalid": 475
     },
     "refused": {
-     "candidate-invalid": 1083
+     "candidate-invalid": 864
     }
    },
    "open_at_triage": true,
@@ -2909,19 +2608,19 @@
    "handle": "26(h)",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 1864,
+   "invalid": 1589,
    "kinds": {
-    "candidate-invalid": 1864
+    "candidate-invalid": 1589
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 240
+     "candidate-invalid": 250
     },
     "incomplete": {
-     "candidate-invalid": 541
+     "candidate-invalid": 475
     },
     "refused": {
-     "candidate-invalid": 1083
+     "candidate-invalid": 864
     }
    },
    "open_at_triage": true,
@@ -3013,10 +2712,10 @@
    ]
   }
  ],
- "log_sha256_at_triage": "b7a2aacc1164b7066c0d2dda8fef1b928f937cc01b17c228525c99535754e281",
+ "log_sha256_at_triage": "01ea9e5369815558859eef66ac5d69fa19ef823185c4fafcb5d977ffe5e93a18",
  "policy": "executable-triage-v2",
- "response_sha256": "03c79c8ca2fd330f4a2461b54d9098a2b7c32dff6c46fbf077f487533bd3e57e",
+ "response_sha256": "3d6756cd37fc52c0e38304094058927b93c6eb8c8893282242c2e78c8dd8ed4c",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "evaluated",
- "subject_sha256": "885639a0718f865e47c02a6977f6ac48d5b6df18b6a7b446823729d88f053675"
+ "subject_sha256": "d614d4d87b66cb4cd34e8dce8ac2569e3b7834748a6043d6487924f06650393e"
 }

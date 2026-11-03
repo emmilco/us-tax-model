@@ -417,6 +417,23 @@ form:
     cite:
       doc: p946
       locator: p. 37, Using the MACRS Percentage Tables
+    refuses:
+    - when: asset.screened
+      form: Form 4562 property outside this tool (Pub. 946 Appendix B class, qualified improvement property placed in
+        service before 2018, disposition, exchange, real property, reuse and recycling property, an acquisition before
+        September 28, 2017, ADS, other methods, basis adjustment, amortization, a short tax year and the other items of
+        the screen)
+      remedy: This property is outside the depreciation this tool covers.
+      cite:
+        doc: i4562
+        locator: pp. 8-12, Part III, and Pub. 946 Appendix B
+    - when: asset.listed_low
+      form: Listed property used 50% or less in a qualified business use (Form 4562 line 27), or a business use over 100%
+      remedy: Listed property used 50% or less for business is depreciated under ADS and is outside this tool.
+      cite:
+        doc: i4562
+        locator: p. 15, "used 50% or less in a qualified business use, depreciate the property using the straight line
+          method over its ADS recovery period"
   - id: asset.quarter
     printed: (helper)
     label: Quarter of 2025 in which the property was placed in service
