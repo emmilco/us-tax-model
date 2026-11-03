@@ -11,19 +11,23 @@ pages, a quote found in the document, or one printed line number of a form docum
 of the form's text beside three consecutive words of the label. The segments that do not are listed
 under "Locators to rewrite"; they fail the check only with `--strict`.
 
-- anchors: 3367
+- anchors: 3372
 - anchors ruled: 52
-- quotes: 2838
+- quotes: 2850
 - quotes ruled: 4
-- segments checked: 3599
-- findings without a ruling: 0
+- segments checked: 3606
+- findings without a ruling: 1
 - rulings no anchor uses: 0
 
-- computed lines: 1924
-- computed-line segments: 2213
+- computed lines: 1925
+- computed-line segments: 2214
 - computed-line segments with a quote and no page: 137
-- computed-line segments with pages: 1873
+- computed-line segments with pages: 1874
 - form-line locators: 203
 - form-line locators verified: 203
 - quotes without a page found: 137
 - locators to rewrite: 0
+
+## Findings
+
+- `forms/2025/asset.yaml:109` i4562 p. 8–12, quote “Property described in section 168(k)(9)(A) or 168(k)(9)(B)”: found on p. 7

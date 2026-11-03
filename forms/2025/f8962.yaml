@@ -146,10 +146,12 @@ form:
     type: Bool
     expr:
       op: input
-      source: 'Did either of these happen in 2025: coverage for anyone in your tax family began after the first day of a
-        month, other than coverage effective on the date of a birth, adoption, or placement for adoption or in foster
-        care, or on the effective date of a court order placing the individual with your family (those count from the
-        first day of the month); or were any Marketplace premiums for a month refunded in 2025?'
+      source: 'Did either of these happen: Marketplace coverage reported on a Form 1095-A (a qualified health plan) for
+        anyone in your tax family began after the first day of a 2025 month, other than coverage effective on the date of
+        a birth, adoption, or placement for adoption or in foster care, or on the effective date of a court order placing
+        the individual with your family (those count from the first day of the month); or were any premiums for a 2025
+        month of that Marketplace coverage refunded in 2025? A start date of other coverage (employer, Medicaid, or a
+        catastrophic, stand-alone dental or SHOP plan) does not count here.'
     cite:
       doc: i8962
       locator: p. 4, "Generally, if coverage in a qualified health plan began after the first day of the month, you are
@@ -158,7 +160,9 @@ form:
         adoption, or placement for adoption or in foster care, or on the effective date of a court order placing the
         individual with your family, the individual is treated as enrolled as of the first day of that month."; p. 4,
         "The enrollment premiums are the total amount of the premiums for the month, reduced by any premium amounts for
-        that month that were refunded in 2025"
+        that month that were refunded in 2025"; p. 5, "Catastrophic health plans and stand-alone dental plans purchased
+        through the Marketplace, and all plans purchased through the Small Business Health Options Program (SHOP), are not
+        qualified health plans for purposes of the PTC."
   - id: f8962.void_forms
     printed: (helper)
     label: Forms 1095-A entered that are marked VOID or replaced by a corrected form
