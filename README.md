@@ -278,8 +278,10 @@ arithmetic, and returns every value together with its derivation.
 The atoms are defined a second time, over the integers, in Lean 4
 ([`lean/TaxFormalization/`](lean/TaxFormalization/)), and their properties are proved there: a floored
 subtraction is never negative; rounding is idempotent and moves a value by less than one unit; a
-proration never exceeds the amount it prorates; and most atoms are proved monotone in most of their
-arguments (not yet all; the banded table lookup has no lemma yet). Lean also holds a second evaluator,
+proration never exceeds the amount it prorates; and each atom is proved monotone or antitone in each ordered
+argument, or shown by a proved counterexample to be neither (a cap, a number of places or a rounding unit,
+all constants of the data); the banded table lookup is proved monotone in its key for a table whose
+entries do not fall from band to band, as the Tax Table's do. Lean also holds a second evaluator,
 written independently over the same canonical JSON. It is total by construction: every evaluation spends
 from a step budget, so it always returns, and an exhausted budget comes back as an error, never as a
 number. Both evaluators run over every test case and over generated returns.

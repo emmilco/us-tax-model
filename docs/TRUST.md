@@ -64,11 +64,11 @@ open, the reading chosen is in `ambiguities/<year>.yaml`.
 
 ## 6. Lean
 
-`lean/TaxFormalization/` defines the arithmetic atoms over the integers (`Atoms.lean`; table lookup,
+`lean/TaxFormalization/` defines the arithmetic atoms over the integers (`Atoms.lean`, including the banded table lookup `tableBand`;
 tests and `choose` are defined in the evaluator, `Eval.lean`), proves properties from `spec/spec.md`
 section 6.3 (`Lemmas.lean`: non-negativity, rounding idempotence and bounds, proration bounds,
-monotonicity for most atom arguments, and correctness of the keyed and rate lookups; `table_lookup` has
-no lemma yet), and has a reference evaluator over the same canonical JSON as the TypeScript one. That
+the direction of each atom in each ordered argument, with proved counterexamples where it is neither,
+and correctness of the keyed, rate and banded table lookups), and has a reference evaluator over the same canonical JSON as the TypeScript one. That
 evaluator is total by construction: each call spends from a step budget, so it always returns, and an
 exhausted budget is an error value, never a number. `EvalProps.lean` states termination and
 determinism, but as its own docstring says, their force comes from the definition being accepted as

@@ -115,17 +115,19 @@ def columnIndex (table : Json) (status : String) : Option Nat :=
       | _ => false)
   | _ => none
 
-def bandTax (table : Json) (col : Nat) (cents : Int) : Option (Int × Int) :=
+/-- The bands of a Tax Table for one column, in order: (at least, less than, the column's
+amount). A band without both bounds and a list of amounts is left out. -/
+def tableBandRows (table : Json) (col : Nat) : List (Int × Int × Option Int) :=
   match objGet table "bands" with
   | some (.arr bands) =>
-    bands.findSome? (fun b =>
+    bands.toList.filterMap (fun b =>
       match numGet b "at_least", numGet b "less_than", objGet b "tax" with
-      | some lo, some hi, some (.arr taxes) =>
-        if lo ≤ cents ∧ cents < hi then
-          (taxes[col]?).bind (fun t => (t.getInt?).toOption.map (fun c => (lo, c)))
-        else none
+      | some lo, some hi, some (.arr taxes) => some (lo, hi, (taxes[col]?).bind (fun t => (t.getInt?).toOption))
       | _, _, _ => none)
-  | _ => none
+  | _ => []
+
+def bandTax (table : Json) (col : Nat) (cents : Int) : Option (Int × Int) :=
+  tableBand (tableBandRows table col) cents
 
 /-- The bands of a rate table for one column, in order: the upper bound ("but not
 over", none when open) and the rate. -/

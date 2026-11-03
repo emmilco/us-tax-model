@@ -543,4 +543,235 @@ theorem multiplyRateToUnit_mono_amount {a a' num den u : Int} (h : a ≤ a') (hn
   apply halfUpDiv_mono_num (Int.mul_le_mul_of_nonneg_right h hn)
   exact Int.mul_pos hd hu
 
+/-! ## Monotonicity in the whole and in the rate's denominator -/
+
+/-- Half-up division of an amount that is not negative does not grow as the divisor grows. -/
+theorem halfUpDiv_antitone_den {n d d' : Int} (hn : 0 ≤ n) (hd : 0 < d) (h : d ≤ d') :
+    halfUpDiv n d' ≤ halfUpDiv n d := by
+  unfold halfUpDiv
+  generalize hq : (2 * n + d') / (2 * d') = q
+  have hq1 : q * (2 * d') ≤ 2 * n + d' := by
+    rw [← hq]; exact Int.ediv_mul_le _ (by omega)
+  apply (Int.le_ediv_iff_mul_le (by omega)).mpr
+  by_cases hq0 : q ≤ 0
+  · have : q * (2 * d) ≤ 0 := Int.mul_nonpos_of_nonpos_of_nonneg hq0 (by omega)
+    omega
+  · have hk : 0 ≤ 2 * q - 1 := by omega
+    have hm := Int.mul_le_mul_of_nonneg_left h hk
+    have e1 : q * (2 * d') = (2 * q - 1) * d' + d' := by
+      rw [Int.sub_mul, Int.one_mul, Int.mul_comm 2 q, Int.mul_assoc]; omega
+    have e2 : q * (2 * d) = (2 * q - 1) * d + d := by
+      rw [Int.sub_mul, Int.one_mul, Int.mul_comm 2 q, Int.mul_assoc]; omega
+    omega
+
+/-- Half-up division of a negative amount by a positive divisor is not positive. -/
+theorem halfUpDiv_nonpos_of_neg {n d : Int} (hn : n < 0) (hd : 0 < d) : halfUpDiv n d ≤ 0 := by
+  unfold halfUpDiv
+  generalize hq : (2 * n + d) / (2 * d) = q
+  have hq1 : q * (2 * d) ≤ 2 * n + d := by
+    rw [← hq]; exact Int.ediv_mul_le _ (by omega)
+  by_cases hq0 : q ≤ 0
+  · exact hq0
+  · have : 1 * (2 * d) ≤ q * (2 * d) := Int.mul_le_mul_of_nonneg_right (by omega) (by omega)
+    omega
+
+/-- `multiply_rate` is antitone in the rate's denominator, for an amount and numerator that are
+not negative. -/
+theorem multiplyRateHalfUp_antitone_den {a num den den' : Int} (ha : 0 ≤ a) (hn : 0 ≤ num)
+    (hd : 0 < den) (h : den ≤ den') :
+    multiplyRateHalfUp a num den' ≤ multiplyRateHalfUp a num den := by
+  unfold multiplyRateHalfUp
+  exact halfUpDiv_antitone_den (Int.mul_nonneg ha hn) hd h
+
+/-- `multiply_rate` rounded to a unit is antitone in the rate's denominator, for an amount and
+numerator that are not negative. -/
+theorem multiplyRateToUnit_antitone_den {a num den den' u : Int} (ha : 0 ≤ a) (hn : 0 ≤ num)
+    (hd : 0 < den) (hu : 0 < u) (h : den ≤ den') :
+    multiplyRateToUnit a num den' u ≤ multiplyRateToUnit a num den u := by
+  unfold multiplyRateToUnit
+  apply Int.mul_le_mul_of_nonneg_right _ (by omega)
+  exact halfUpDiv_antitone_den (Int.mul_nonneg ha hn) (Int.mul_pos hd hu)
+    (Int.mul_le_mul_of_nonneg_right h (by omega))
+
+/-- `multiply_rate` rounded to a unit is monotone in the rate's numerator, for an amount that is
+not negative. -/
+theorem multiplyRateToUnit_mono_rate {a num num' den u : Int} (h : num ≤ num') (ha : 0 ≤ a)
+    (hd : 0 < den) (hu : 0 < u) :
+    multiplyRateToUnit a num den u ≤ multiplyRateToUnit a num' den u := by
+  unfold multiplyRateToUnit
+  apply Int.mul_le_mul_of_nonneg_right _ (by omega)
+  exact halfUpDiv_mono_num (Int.mul_le_mul_of_nonneg_left h ha) (Int.mul_pos hd hu)
+
+/-- The ratio of `prorate` does not grow as the whole grows (any part). -/
+theorem prorateRatio_antitone_whole {part whole whole' s : Int} (hs : 0 ≤ s) (hw : 0 < whole)
+    (h : whole ≤ whole') : prorateRatio part whole' s ≤ prorateRatio part whole s := by
+  unfold prorateRatio multiplyRateHalfUp
+  by_cases hp : 0 ≤ part * s
+  · have := halfUpDiv_antitone_den hp hw h
+    omega
+  · have := halfUpDiv_nonpos_of_neg (show part * s < 0 by omega) (show 0 < whole' by omega)
+    omega
+
+/-- `prorate` is antitone in the whole, for an amount that is not negative and a positive whole. -/
+theorem prorate_antitone_whole {a part whole whole' : Int} {places : Nat} (ha : 0 ≤ a)
+    (hw : 0 < whole) (h : whole ≤ whole') :
+    prorate a part whole' places ≤ prorate a part whole places := by
+  unfold prorate
+  exact multiplyRateHalfUp_mono_rate
+    (prorateRatio_antitone_whole (Int.le_of_lt (pow10_pos places)) hw h) ha (pow10_pos places)
+
+/-- Floor division of a value that is not negative does not grow as the divisor grows. -/
+theorem ediv_antitone_den {x w w' : Int} (hx : 0 ≤ x) (hw : 0 < w) (h : w ≤ w') :
+    x / w' ≤ x / w := by
+  apply (Int.le_ediv_iff_mul_le hw).mpr
+  have h1 : x / w' * w' ≤ x := Int.ediv_mul_le _ (by omega)
+  have h0 : 0 ≤ x / w' := Int.ediv_nonneg hx (by omega)
+  have h2 : x / w' * w ≤ x / w' * w' := Int.mul_le_mul_of_nonneg_left h h0
+  omega
+
+/-- `percent_floor` is antitone in the whole (for a cap that is not negative and a positive whole). -/
+theorem percentFloor_antitone_whole {part whole whole' cap : Int} (hc : 0 ≤ cap) (hw : 0 < whole)
+    (h : whole ≤ whole') : percentFloor part whole' cap ≤ percentFloor part whole cap := by
+  have hcw : cap * whole ≤ cap * whole' := Int.mul_le_mul_of_nonneg_left h hc
+  have hle := percentFloor_le (part := part) hc (show 0 < whole' by omega)
+  unfold percentFloor at *
+  by_cases h1 : 100 * part > cap * whole
+  · simp only [h1, if_true]; omega
+  · have h1' : ¬ (100 * part > cap * whole') := by omega
+    simp only [h1, h1', if_false]
+    by_cases hp : part ≤ 0
+    · simp only [hp, if_true]; omega
+    · simp only [hp, if_false]
+      exact ediv_antitone_den (by omega) hw h
+
+/-! ### table_lookup -/
+
+/-- A found entry is the entry of a band of the table that holds the key, with that lower bound. -/
+theorem tableBand_mem {bands : List (Int × Int × Option Int)} {key lo c : Int}
+    (h : tableBand bands key = some (lo, c)) :
+    ∃ hi, (lo, hi, some c) ∈ bands ∧ lo ≤ key ∧ key < hi := by
+  unfold tableBand at h
+  obtain ⟨⟨lo', hi', e⟩, hm, hf⟩ := List.exists_of_findSome?_eq_some h
+  by_cases hk : lo' ≤ key ∧ key < hi'
+  · simp only [hk, and_self, if_true] at hf
+    cases e with
+    | none => simp at hf
+    | some c' =>
+      simp at hf
+      obtain ⟨rfl, rfl⟩ := hf
+      exact ⟨hi', hm, hk.1, hk.2⟩
+  · simp [hk] at hf
+
+/-- No entry exactly when every band that holds the key has no entry in the column. -/
+theorem tableBand_eq_none {bands : List (Int × Int × Option Int)} {key : Int} :
+    tableBand bands key = none ↔ ∀ b ∈ bands, b.1 ≤ key → key < b.2.1 → b.2.2 = none := by
+  unfold tableBand
+  rw [List.findSome?_eq_none_iff]
+  constructor
+  · intro h b hb h1 h2
+    have := h b hb
+    simp only [h1, h2, and_self, if_true] at this
+    cases hb2 : b.2.2 with
+    | none => rfl
+    | some c => rw [hb2] at this; simp at this
+  · intro h b hb
+    by_cases hk : b.1 ≤ key ∧ key < b.2.1
+    · simp only [hk, and_self, if_true, h b hb hk.1 hk.2, Option.map_none]
+    · simp [hk]
+
+/-- A key held by a band with an entry has an entry. -/
+theorem tableBand_isSome {bands : List (Int × Int × Option Int)} {key lo hi c : Int}
+    (hm : (lo, hi, some c) ∈ bands) (h1 : lo ≤ key) (h2 : key < hi) :
+    (tableBand bands key).isSome := by
+  cases hb : tableBand bands key with
+  | some _ => rfl
+  | none =>
+    have := tableBand_eq_none.mp hb _ hm h1 h2
+    simp at this
+
+/-- With bands in increasing order that do not overlap, the entry of a band that holds the key is
+what the lookup returns. -/
+theorem tableBand_of_mem {bands : List (Int × Int × Option Int)} {key lo hi c : Int}
+    (hs : bands.Pairwise (fun b b' => b.2.1 ≤ b'.1)) (hm : (lo, hi, some c) ∈ bands)
+    (h1 : lo ≤ key) (h2 : key < hi) : tableBand bands key = some (lo, c) := by
+  induction bands with
+  | nil => simp at hm
+  | cons r rs ih =>
+    rw [List.pairwise_cons] at hs
+    unfold tableBand
+    rw [List.findSome?_cons]
+    rcases List.mem_cons.mp hm with he | he
+    · subst he; simp [h1, h2]
+    · have hr : r.2.1 ≤ lo := hs.1 _ he
+      have hn : ¬ (r.1 ≤ key ∧ key < r.2.1) := by omega
+      simp only [hn, if_false]
+      exact ih hs.2 he
+
+/-- With bands in increasing order that do not overlap and entries that do not decrease from band
+to band, the entry found does not decrease as the key rises: `table_lookup` is monotone in the key
+for a table that is monotone as printed. -/
+theorem tableBand_mono {bands : List (Int × Int × Option Int)} {k k' lo lo' c c' : Int}
+    (hs : bands.Pairwise (fun b b' => b.2.1 ≤ b'.1 ∧
+      ∀ x x', b.2.2 = some x → b'.2.2 = some x' → x ≤ x'))
+    (hk : k ≤ k') (h : tableBand bands k = some (lo, c)) (h' : tableBand bands k' = some (lo', c')) :
+    c ≤ c' := by
+  induction bands with
+  | nil => simp [tableBand] at h
+  | cons r rs ih =>
+    rw [List.pairwise_cons] at hs
+    obtain ⟨rlo, rhi, re⟩ := r
+    unfold tableBand at h h'
+    rw [List.findSome?_cons] at h h'
+    by_cases hr : rlo ≤ k ∧ k < rhi
+    · cases re with
+      | none =>
+        simp only [hr, and_self, if_true, Option.map_none] at h
+        obtain ⟨hi, hm, hlo, _⟩ := tableBand_mem (bands := rs) (key := k) h
+        have := (hs.1 _ hm).1
+        simp at this; omega
+      | some x =>
+        simp only [hr, and_self, if_true, Option.map_some] at h
+        simp at h
+        obtain ⟨rfl, rfl⟩ := h
+        by_cases hr' : rlo ≤ k' ∧ k' < rhi
+        · simp only [hr', and_self, if_true, Option.map_some] at h'
+          simp at h'
+          omega
+        · simp only [hr', if_false] at h'
+          obtain ⟨hi, hm, _, _⟩ := tableBand_mem (bands := rs) (key := k') h'
+          exact (hs.1 _ hm).2 _ _ rfl rfl
+    · simp only [hr, if_false] at h
+      obtain ⟨hi, hm, hlo, _⟩ := tableBand_mem (bands := rs) (key := k) h
+      have hb := (hs.1 _ hm).1
+      simp at hb
+      have hr' : ¬ (rlo ≤ k' ∧ k' < rhi) := by omega
+      simp only [hr', if_false] at h'
+      exact ih hs.2 h h'
+
+/-! ## Arguments in which an atom is neither monotone nor antitone -/
+
+/-- `percent_floor` is not monotone in the cap: a household income of 400.5% of the poverty line
+gives 401 with a cap of 400 and 400 with a cap of 401. -/
+theorem percentFloor_not_mono_cap :
+    percentFloor 4005 1000 401 < percentFloor 4005 1000 400 := by decide
+
+/-- Nor is it antitone in the cap: 200% gives 1 with a cap of 0 and 2 with a cap of 1. -/
+theorem percentFloor_cap_increase : percentFloor 2 1 0 < percentFloor 2 1 1 := by decide
+
+/-- `prorate` is neither monotone nor antitone in the number of places: $10 × 2/3 is $10.00 at no
+places and $7.00 at one; $10 × 1/3 is $0.00 at no places and $3.00 at one. -/
+theorem prorate_places_neither :
+    prorate 1000 2 3 1 < prorate 1000 2 3 0 ∧ prorate 1000 1 3 0 < prorate 1000 1 3 1 := by decide
+
+/-- `multiply_rate` rounded to a unit is neither monotone nor antitone in the unit: $1.50 is $2.00
+to the dollar, $1.50 to the $1.50 and $2.00 to the $2. -/
+theorem multiplyRateToUnit_unit_neither :
+    multiplyRateToUnit 150 1 1 150 < multiplyRateToUnit 150 1 1 100 ∧
+      multiplyRateToUnit 150 1 1 150 < multiplyRateToUnit 150 1 1 200 := by decide
+
+/-- `round` half-up is neither monotone nor antitone in the unit (the same values). -/
+theorem roundHalfUpToUnit_unit_neither :
+    roundHalfUpToUnit 150 150 < roundHalfUpToUnit 150 100 ∧
+      roundHalfUpToUnit 150 150 < roundHalfUpToUnit 150 200 := by decide
+
 end TaxFormalization

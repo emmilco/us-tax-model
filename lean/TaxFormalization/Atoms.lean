@@ -65,6 +65,13 @@ count); the build-time checker requires a table's key tuples to be distinct. -/
 def keyedLookup {V : Type} (rows : List (List String × V)) (keys : List String) : Option V :=
   (rows.find? (fun r => r.1 == keys)).map Prod.snd
 
+/-- The `table_lookup` atom over one column of a table: each band is (at least, less than,
+entry), the entry `none` when the column has no amount for the band. The result is the lower
+bound and entry of the first band, in order, that holds the key (at least ≤ key < less than) and
+has an entry, or none when there is none. -/
+def tableBand (bands : List (Int × Int × Option Int)) (key : Int) : Option (Int × Int) :=
+  bands.findSome? (fun b => if b.1 ≤ key ∧ key < b.2.1 then b.2.2.map (fun c => (b.1, c)) else none)
+
 /-- Whether a band whose upper bound ("but not over") is `hi` holds `key` once every
 earlier band has been passed over; `none` is an open upper end. -/
 def bandHolds (hi : Option Int) (key : Int) : Bool :=
