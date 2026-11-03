@@ -1,53 +1,5 @@
 {
  "rulings": {
-  "unruled:dependent#1": {
-   "class": "real gap",
-   "evidence": "p501 p. 21; p501 p. 20. The remaining support details are the existing BUG-0282 debt (T-107/T-108/T-109): medical insurance premiums and benefits, GI Bill, rent-free lodging, the home-for-the-aged lump sum, quarters allowances, a new spouse's support, the year support counts, tax-exempt income, savings and borrowed amounts, split social security and need-based payments. This review repeats that recorded debt; it is not newly introduced.",
-   "prompt_sha": "5934f439a7b02d1e82132ccf7ac3e6202d9b46458cb5c0f673dc18a666784fc9",
-   "bug": "BUG-0282"
-  },
-  "unruled:dependent#2": {
-   "class": "real gap",
-   "evidence": "p501 pp. 20\u201321. The self-support details (tax-exempt income, savings and borrowed amounts, an owned home at fair rental value, GI Bill amounts, the non-support items and household-expense division) are the existing BUG-0282/T-109 debt; the review repeats it.",
-   "prompt_sha": "5934f439a7b02d1e82132ccf7ac3e6202d9b46458cb5c0f673dc18a666784fc9",
-   "bug": "BUG-0282"
-  },
-  "unruled:dependent#3": {
-   "class": "real gap",
-   "evidence": "i1040gi p. 19; p501 p. 18. The non-taxpayer exception in dependent.other_claimant is the existing BUG-0283/T-153 debt; the review repeats it.",
-   "prompt_sha": "5934f439a7b02d1e82132ccf7ac3e6202d9b46458cb5c0f673dc18a666784fc9",
-   "bug": "BUG-0283"
-  },
-  "unruled:dependent#4": {
-   "class": "real gap",
-   "evidence": "p501 p. 13, \"Stillborn child. You can't claim a stillborn child as a dependent\" and the live-birth requirement. BUG-0300/T-167 records the gap; no question excludes a stillbirth.",
-   "prompt_sha": "5934f439a7b02d1e82132ccf7ac3e6202d9b46458cb5c0f673dc18a666784fc9",
-   "bug": "BUG-0300"
-  },
-  "unruled:dependent#5": {
-   "class": "covered",
-   "evidence": "p501 p. 13, \"The same is true if the child lived with you more than half the year except for any required hospital stay following birth.\" dependent.months counts temporary absences and the born/died convention, so a required hospital stay is a medical temporary absence and does not break the residency count. T-106 remains the owner-batched request to state the clause expressly.",
-   "prompt_sha": "5934f439a7b02d1e82132ccf7ac3e6202d9b46458cb5c0f673dc18a666784fc9",
-   "line": "dependent.months"
-  },
-  "unruled:dependent#6": {
-   "class": "real gap",
-   "evidence": "p501 p. 13. The co-op and school definition are missing from dependent.student; BUG-0301/T-168 records the gap.",
-   "prompt_sha": "5934f439a7b02d1e82132ccf7ac3e6202d9b46458cb5c0f673dc18a666784fc9",
-   "bug": "BUG-0301"
-  },
-  "unruled:dependent#7": {
-   "class": "real gap",
-   "evidence": "i2441 p. 2. The child-support and chauffeur/bartender/gardener exclusions and the daily/mixed-use allocation are the existing BUG-0284/T-154 debt; the review repeats it.",
-   "prompt_sha": "5934f439a7b02d1e82132ccf7ac3e6202d9b46458cb5c0f673dc18a666784fc9",
-   "bug": "BUG-0284"
-  },
-  "unruled:dependent#8": {
-   "class": "covered",
-   "evidence": "i8863 p. 3; i8863 p. 1. f8863.ban asks whether the AOC was denied or reduced after 2015 for reckless or intentional disregard, or is within the 2-year period, and f8863.ban_refused screens the credit paths; the ban is handled at the credit, not in the dependent student test.",
-   "prompt_sha": "5934f439a7b02d1e82132ccf7ac3e6202d9b46458cb5c0f673dc18a666784fc9",
-   "line": "f8863.ban_refused"
-  },
   "unruled:f2441#1": {
    "class": "real gap",
    "bug": "BUG-0284",
@@ -63,7 +15,7 @@
   "unruled:f2441#3": {
    "class": "out of scope",
    "gate": "sc.special",
-   "evidence": "Source: i2441 p. 5; p503 p. 10. sc.special explicitly refuses contributions on the self-employed owner\u2019s behalf to a dependent-care assistance program. Partnership benefits require Schedule K-1/E and are refused by scope.schedule1. Hence supported line 22 is zero and line 24 carries no Schedule C/E/F deduction, as the line 22 note states.",
+   "evidence": "Source: i2441 p. 5; p503 p. 10. sc.special explicitly refuses contributions on the self-employed owner’s behalf to a dependent-care assistance program. Partnership benefits require Schedule K-1/E and are refused by scope.schedule1. Hence supported line 22 is zero and line 24 carries no Schedule C/E/F deduction, as the line 22 note states.",
    "prompt_sha": "df5bcc830fb64dd8b7cea2329f195b90924f37667d98f004e484e888745685ed"
   },
   "unruled:f2441#4": {
@@ -98,7 +50,7 @@
   },
   "unruled:f1040#2": {
    "class": "out of scope",
-   "evidence": "Revalidated against the current prompt; the encoding and gates it names are unchanged. Source: i1040gi p. 24; i1040gi p. 25. The whole-return scope input explicitly names Form 1040 lines 1b\u20131d and 1f\u20131h, unreported wages/tips, adoption benefits and other earned income. s1.line8_other additionally names wages while incarcerated and the specified nonqualified/457 pensions; retirement.special screens pre-retirement disability pensions and corrective distributions. The reviewer missed these external scope inputs.",
+   "evidence": "Revalidated against the current prompt; the encoding and gates it names are unchanged. Source: i1040gi p. 24; i1040gi p. 25. The whole-return scope input explicitly names Form 1040 lines 1b–1d and 1f–1h, unreported wages/tips, adoption benefits and other earned income. s1.line8_other additionally names wages while incarcerated and the specified nonqualified/457 pensions; retirement.special screens pre-retirement disability pensions and corrective distributions. The reviewer missed these external scope inputs.",
    "prompt_sha": "69a773ffe02e41fd7dfc567e80251610e6f75491ba5b6c2060fee7c0232889be",
    "gate": "s1.line8_other"
   },
@@ -140,7 +92,7 @@
   },
   "unruled:f1040#9": {
    "class": "covered",
-   "evidence": "Revalidated against the current prompt; the encoding and gates it names are unchanged. Source: p501 p. 6. BUG-0280 adds the explicit divorce-to-file-unmarried-and-remarry warning to household.married (\"if you divorced solely to file as unmarried, intending at the time to remarry each other in the next tax year, and actually do so, you must file as married in both years\"), and BUG-0286 enforces consistency between household.married and f1040.status via household.filing_status_conflict. The f1040 completeness prompt did not include household.married\u2019s question text.",
+   "evidence": "Revalidated against the current prompt; the encoding and gates it names are unchanged. Source: p501 p. 6. BUG-0280 adds the explicit divorce-to-file-unmarried-and-remarry warning to household.married (\"if you divorced solely to file as unmarried, intending at the time to remarry each other in the next tax year, and actually do so, you must file as married in both years\"), and BUG-0286 enforces consistency between household.married and f1040.status via household.filing_status_conflict. The f1040 completeness prompt did not include household.married’s question text.",
    "prompt_sha": "69a773ffe02e41fd7dfc567e80251610e6f75491ba5b6c2060fee7c0232889be",
    "line": "household.married"
   },
@@ -162,75 +114,41 @@
    "prompt_sha": "69a773ffe02e41fd7dfc567e80251610e6f75491ba5b6c2060fee7c0232889be",
    "gate": "scope.ready"
   },
-  "unruled:household#1": {
-   "class": "covered",
-   "line": "dependent.parent_home_paid",
-   "evidence": "Source: p501 p. 9. The current dependent.parent_home_paid input explicitly includes paying the cost for the entire part of 2025 the parent was alive and states that a rest home or home for the elderly counts. dependent.hoh_test1 reads that answer, and household.test1_persons sums that result. This directly covers both p501 p. 9 sentences; the household-only encoding list omitted the dependent question.",
-   "prompt_sha": "f049d8a43b1b266557445897a04b2bb295d9292493c4c82133a188e54cc6b151"
-  },
-  "unruled:household#2": {
-   "class": "covered",
-   "line": "dependent.hoh_lived_half",
-   "evidence": "Source: i1040gi p. 15; p501 p. 9; p501 p. 10. dependent.months includes the qualifying-child part-year convention; dependent.hoh_lived_half additionally reads born_died/placed and part_year_home for other relatives, and dependent.hoh_test2 reads that result. Kidnapping is refused through dependent.kidnapped / qr_kidnapped, and a qualifying child of another person through dependent.other_claimant; multiple-support relatives are also refused.",
-   "prompt_sha": "f049d8a43b1b266557445897a04b2bb295d9292493c4c82133a188e54cc6b151"
-  },
-  "unruled:household#3": {
-   "class": "presentation",
-   "evidence": "Source: i1040gi p. 14. i1040gi p. 14 requires the unclaimed qualifying child name in the Form 1040 entry space. This product computes a values sheet and does not fill official PDFs; TASKS T-012 retains official-PDF filling as open scope. The claim concerns that unimplemented page-entry surface, not the HOH qualification calculation.",
-   "prompt_sha": "f049d8a43b1b266557445897a04b2bb295d9292493c4c82133a188e54cc6b151"
-  },
-  "unruled:household#4": {
-   "class": "presentation",
-   "evidence": "Source: i1040gi p. 15. i1040gi p. 15 requires the unclaimed qualifying child name in the Form 1040 entry space. As with claim 3, official-PDF filling remains T-012; no name-entry output is implemented or certified by the values sheet. This does not establish an error in the five-test QSS predicate.",
-   "prompt_sha": "f049d8a43b1b266557445897a04b2bb295d9292493c4c82133a188e54cc6b151"
-  },
-  "unruled:household#5": {
-   "class": "out of scope",
-   "gate": "household.credit_disallowed",
-   "evidence": "Source: i1040gi p. 39; i1040gi p. 43. Repeat of earlier rounds (r3 N1, r4 N1, r5 household#4): household.credit_disallowed asks whether EIC after 1996 or CTC/ACTC/ODC after 2015 was reduced or disallowed other than for a math or clerical error and refuses through eic.credit and s8812.line12. Omitting the prior-Form-8862 and childless-EIC carve-outs is a carried over-refusal, never a wrong amount on a completed return.",
-   "prompt_sha": "f049d8a43b1b266557445897a04b2bb295d9292493c4c82133a188e54cc6b151"
-  },
-  "unruled:household#6": {
-   "class": "out of scope",
-   "gate": "scope.other_income",
-   "evidence": "Source: i1040gi p. 13; i1040gi p. 14. scope.other_income explicitly asks about nonresident alien status of you or your spouse for any part of 2025; scope.ready refuses the return on that answer. The resident-election route described by i1040gi pp. 13\u201314 is outside this tool, not left unscreened by household.filing_status_conflict.",
-   "prompt_sha": "f049d8a43b1b266557445897a04b2bb295d9292493c4c82133a188e54cc6b151"
-  },
   "unruled:f8962#1": {
    "class": "covered",
    "line": "f1095a.uniform",
    "prompt_sha": "c62987e59ef0425c5fee0aea8adcd017bfaac670b2f4f8cc0dcb6b782422bfc8",
-   "evidence": "i8962 p. 14, \"If the correct applicable SLCSP premium is not the same for every month of 2025, check \u201cNo\u201d and continue to lines 12 through 23.\" The f1095a.uniform question asks whether both columns are the same every month and says \"Use the corrected column B if column B is blank, zero or wrong\"; the monthly in_b_* questions ask for \"the amount in column B, or the correct applicable SLCSP premium if column B is blank, zero or wrong (from the Marketplace's tool\u2026)\". A corrected column B that varies by month therefore makes uniform No, which is the line 10 route test. The completeness prompt does not include the foreign form's question text, only its refusals, which is why the reviewer could not see it."
+   "evidence": "i8962 p. 14, \"If the correct applicable SLCSP premium is not the same for every month of 2025, check “No” and continue to lines 12 through 23.\" The f1095a.uniform question asks whether both columns are the same every month and says \"Use the corrected column B if column B is blank, zero or wrong\"; the monthly in_b_* questions ask for \"the amount in column B, or the correct applicable SLCSP premium if column B is blank, zero or wrong (from the Marketplace's tool…)\". A corrected column B that varies by month therefore makes uniform No, which is the line 10 route test. The completeness prompt does not include the foreign form's question text, only its refusals, which is why the reviewer could not see it."
   },
   "unruled:f8962#2": {
    "class": "covered",
    "line": "f1095a.mo_b",
    "prompt_sha": "c62987e59ef0425c5fee0aea8adcd017bfaac670b2f4f8cc0dcb6b782422bfc8",
-   "evidence": "i8962 pp. 4\u20135 and p. 16: if no APTC was paid, column B may be wrong, blank or zero, and the filer must determine the correct applicable SLCSP premium. The f1095a.mo_b question asks for \"the monthly amount in Part III, column B (monthly SLCSP premium) \u2026 or the correct applicable SLCSP premium if column B is blank, zero or wrong (from the Marketplace's tool, for example HealthCare.gov/Tax-Tool)\"; f8962.line11b sums f1095a.line33b, which is built from that answer."
+   "evidence": "i8962 pp. 4–5 and p. 16: if no APTC was paid, column B may be wrong, blank or zero, and the filer must determine the correct applicable SLCSP premium. The f1095a.mo_b question asks for \"the monthly amount in Part III, column B (monthly SLCSP premium) … or the correct applicable SLCSP premium if column B is blank, zero or wrong (from the Marketplace's tool, for example HealthCare.gov/Tax-Tool)\"; f8962.line11b sums f1095a.line33b, which is built from that answer."
   },
   "unruled:f8962#3": {
    "class": "real gap",
    "bug": "BUG-0298",
    "prompt_sha": "c62987e59ef0425c5fee0aea8adcd017bfaac670b2f4f8cc0dcb6b782422bfc8",
-   "evidence": "i8962 p. 17 tells the filer to enter the correct applicable SLCSP premium in column (b) when the reported amount is missing or wrong, and the f1095a.in_b_<month> question does ask for \"the amount in column B, or the correct applicable SLCSP premium if column B is blank, zero or wrong (from the Marketplace's tool\u2026)\". But the same question ends with \"; zero if blank\", which contradicts that instruction for a covered month whose column B is blank: a filer following the trailing clause enters zero and understates column (b) and the PTC. The first clause covers the source's rule; the trailing convention does not. BUG-0298 records the wording defect and T-165 schedules the fix at the next f1095a change."
+   "evidence": "i8962 p. 17 tells the filer to enter the correct applicable SLCSP premium in column (b) when the reported amount is missing or wrong, and the f1095a.in_b_<month> question does ask for \"the amount in column B, or the correct applicable SLCSP premium if column B is blank, zero or wrong (from the Marketplace's tool…)\". But the same question ends with \"; zero if blank\", which contradicts that instruction for a covered month whose column B is blank: a filer following the trailing clause enters zero and understates column (b) and the PTC. The first clause covers the source's rule; the trailing convention does not. BUG-0298 records the wording defect and T-165 schedules the fix at the next f1095a change."
   },
   "unruled:f8962#4": {
    "class": "covered",
    "line": "sa.dependent",
    "prompt_sha": "c62987e59ef0425c5fee0aea8adcd017bfaac670b2f4f8cc0dcb6b782422bfc8",
-   "evidence": "i8962 p. 8: a filer or spouse who can be claimed as a dependent is not included in the tax family size. The return is refused for that filer: sa.dependent asks whether someone can claim the filer or spouse, and its refusal on sa.standardraw propagates to f1040.line12e and the whole return (i1040gi pp. 34\u201335). A witness with a Form 1095-A and sa.dependent true was checked on 2026-11-01: f1040.line24 is refused, so no return with a claimable filer or spouse computes line 1."
+   "evidence": "i8962 p. 8: a filer or spouse who can be claimed as a dependent is not included in the tax family size. The return is refused for that filer: sa.dependent asks whether someone can claim the filer or spouse, and its refusal on sa.standardraw propagates to f1040.line12e and the whole return (i1040gi pp. 34–35). A witness with a Form 1095-A and sa.dependent true was checked on 2026-11-01: f1040.line24 is refused, so no return with a claimable filer or spouse computes line 1."
   },
   "unruled:f8962#5": {
    "class": "covered",
    "line": "f8962.applicable",
    "prompt_sha": "c62987e59ef0425c5fee0aea8adcd017bfaac670b2f4f8cc0dcb6b782422bfc8",
-   "evidence": "Two limbs. A claimable filer is refused at the return level through sa.dependent (sa.standardraw \u2192 f1040.line12e; witness checked 2026-11-01). The below-100% exception already requires APTC: f8962.applicable is any(line 5 \u2265 100, all(f8962.aptc, f8962.estimate_100)), and f8962.aptc is f8962.aptc_total > 0, where aptc_total sums Form 1095-A line 33C; i8962 p. 9 requires \"APTC was paid for the coverage of 1 or more months during 2025.\" The estimate_100 question also now carries the intentional/reckless misreporting disqualifier (BUG-0296)."
+   "evidence": "Two limbs. A claimable filer is refused at the return level through sa.dependent (sa.standardraw → f1040.line12e; witness checked 2026-11-01). The below-100% exception already requires APTC: f8962.applicable is any(line 5 ≥ 100, all(f8962.aptc, f8962.estimate_100)), and f8962.aptc is f8962.aptc_total > 0, where aptc_total sums Form 1095-A line 33C; i8962 p. 9 requires \"APTC was paid for the coverage of 1 or more months during 2025.\" The estimate_100 question also now carries the intentional/reckless misreporting disqualifier (BUG-0296)."
   },
   "unruled:f1095a#1": {
    "class": "covered",
    "line": "f8962.other",
    "prompt_sha": "e506e96b6283ddcabc4e0500221a1e63ef20bbbb7f9071ad9b2d9fe40740d39c",
-   "evidence": "The unpaid-premium and not-lawfully-present cases the claim names are refused by f8962.other, whose question asks whether \"any part of a month's premium was not paid by the due date of your return \u2026 or a Form 1095-A shows zero in column A for a month whose premium you paid\" and whether \"someone enrolled \u2026 was not lawfully present\"; answering yes refuses the return (i8962 p. 4 and p. 6, cited by the gate). The tool does not compute the adjusted column A in those cases; it refuses them, which is what the completeness rule asks for."
+   "evidence": "The unpaid-premium and not-lawfully-present cases the claim names are refused by f8962.other, whose question asks whether \"any part of a month's premium was not paid by the due date of your return … or a Form 1095-A shows zero in column A for a month whose premium you paid\" and whether \"someone enrolled … was not lawfully present\"; answering yes refuses the return (i8962 p. 4 and p. 6, cited by the gate). The tool does not compute the adjusted column A in those cases; it refuses them, which is what the completeness rule asks for."
   },
   "unruled:f1095a#2": {
    "class": "covered",
@@ -563,6 +481,41 @@
    "evidence": "i5329 p. 8, Line 47. A withdrawn 2025 excess is refused (stage21.refuse.hsa_excess_withdrawn).",
    "prompt_sha": "676994e56575a6a038e501c3b6d5f468d52de0a50c14f8bb1c3cc5b3fcf37cf3",
    "gate": "f8889.unsupported"
+  },
+  "unruled:dependent#1": {
+   "class": "real gap",
+   "evidence": "i2441 p. 2, \"These include amounts paid for household services and care of the qualifying person while you worked or looked for work.\" and \"However, they don't include the services of a chauffeur, bartender, or gardener.\"; p503 p. 6, \"you aren't considered to be working if you do unpaid volunteer work or work for a nominal salary\"; p503 pp. 7-8 (provider transportation, agency fees and deposits, forfeited deposits, a housekeeper's meals and lodging). dependent.dc_paid asks for expenses 'for this person's care' and excludes 'food, lodging', so a filer can omit household services or a housekeeper's meals and lodging (understating line 2(d)) or count volunteer work as work. Wording debt on the same input as BUG-0284; proposed PENDING-10.",
+   "bug": "PENDING-10",
+   "prompt_sha": "7ca60a19aef52a39f88f4c6e8ed536f9fcef9880ebe7c286e67ac4d10956a3db"
+  },
+  "unruled:dependent#2": {
+   "class": "real gap",
+   "evidence": "p501 p. 20, \"If spouses each receive benefits that are paid by one check made out to both of them, half of the total paid is considered to be for the support of each spouse\" and \"payments based on the needs of the recipient won’t be considered as used entirely for that person’s support if it is shown that part of the payments weren’t used for that purpose\"; p501 p. 21, \"If you don’t provide the total lodging, the total fair rental value must be divided\"; p501 p. 20, \"Fair rental value includes a reasonable allowance for the use of furniture and appliances, and for heat and other utilities\"; p501 p. 22 (alimony is not support of a dependent). The F1 rewording of dependent.supported (BUG-0282 closure) covers the main total-support rules but not these five; residual definition debt, proposed PENDING-11.",
+   "bug": "PENDING-11",
+   "prompt_sha": "7ca60a19aef52a39f88f4c6e8ed536f9fcef9880ebe7c286e67ac4d10956a3db"
+  },
+  "unruled:dependent#3": {
+   "class": "out of scope",
+   "gate": "f8863.ban_refused",
+   "evidence": "i8863 p. 3, \"Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after ...\"; i8863 p. 1, Form 8862 may be required. f8863.ban asks about both for every student, and f8863.ban_refused refuses line 7. Executed: stage19.example.jack_kay (a dependent American opportunity credit student) with f8863.ban Yes refuses f8863.line7, line19 and Form 1040 line 29 at f8863.ban_refused. The review's encoding list for dependent omitted the f8863 gate.",
+   "prompt_sha": "7ca60a19aef52a39f88f4c6e8ed536f9fcef9880ebe7c286e67ac4d10956a3db"
+  },
+  "unruled:dependent#4": {
+   "class": "presentation",
+   "evidence": "i8863 p. 8, Line 22, \"The educational institution’s EIN must be provided on line 22(4) if the American opportunity credit is claimed for this student.\" The project asks only whether the EIN is available (dependent.edu_ein gates the American opportunity credit) and does not produce the line 22 name, address and Form 1098-T entries or extra pages; no amount depends on them.",
+   "prompt_sha": "7ca60a19aef52a39f88f4c6e8ed536f9fcef9880ebe7c286e67ac4d10956a3db"
+  },
+  "unruled:household#1": {
+   "class": "out of scope",
+   "gate": "dependent.kidnap_residency",
+   "evidence": "p501 pp. 9-10, head of household with a kidnapped qualifying child (\"In the year of the kidnapping, the child lived with you for more than half the part of the year before the kidnapping.\"). Head of household reads the qualifying person through dependent.hoh_lived_half, which reads dependent.lived_half; its refusal dependent.kidnap_residency refuses a child presumed kidnapped who lived with you fewer than 7 months without counting the time missing. Executed: stage21.d3.kidnapped_child_refused (head of household, 4 months) is refused at f1040.line16 by dependent[child].kidnap_residency; f1.kidnapped.returned_11 (11 months) computes, correctly, since the residency test is met on actual time. 'A person can’t qualify more than one taxpayer' is the qualifying-child tie-breaker, refused by dependent.qc_tiebreak.",
+   "prompt_sha": "84a610ed4046225828bdb31398a780d2cec580b945f898d3e544b8c50dc441c0"
+  },
+  "unruled:household#2": {
+   "class": "out of scope",
+   "gate": "scope.other_income",
+   "evidence": "i1040gi p. 13, \"Generally, a married couple can’t file a joint return if either spouse is a nonresident alien at any time during the year.\" scope.other_income asks about 'Any nonresident alien status (you or your spouse, for any part of 2025)' and refuses the return. Executed: stage19.example.jack_kay (married filing jointly) with scope.other_income Yes refuses f1040.line12e, line16 and line24 at scope.other_income.",
+   "prompt_sha": "84a610ed4046225828bdb31398a780d2cec580b945f898d3e544b8c50dc441c0"
   }
  },
  "baseline": {

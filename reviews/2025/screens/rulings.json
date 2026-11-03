@@ -153,7 +153,7 @@
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "f4952.alternative_allocation ('Elect an alternative allocation of Form 4952 line 4g to qualified dividends instead of capital gains first?') refuses f4952.line2, election, line5 and required \u2014 exactly the f4952 p. 4 'Elec.' choice."
+     "evidence": "f4952.alternative_allocation ('Elect an alternative allocation of Form 4952 line 4g to qualified dividends instead of capital gains first?') refuses f4952.line2, election, line5 and required — exactly the f4952 p. 4 'Elec.' choice."
     },
     {
      "n": 1,
@@ -1022,82 +1022,34 @@
    "adjudication": "reviews/2025/screens/adjudication/group3.md"
   },
   "unruled:dependent.divorced_rule": {
-   "prompt_sha": "696407ed2a4e27b745fa8ecdd5f8d1f2ab253afce63ce96c7ab9cb3c1f0d13b6",
-   "reason": "Round-1 PENDING-0-1 closed (the question now tells the custodial parent who signed the release to answer yes); the rewording adds only WIDE refusals; the third-party claimant is covered by dependent.other_claimant.",
+   "reason": "No defect: every finding is a filer answering Yes where the special rule does not apply, which refuses a return the tool would compute correctly (accepted WIDE). The question was reworded for T-110 only (the revocation timing), which the review did not dispute.",
+   "prompt_sha": "9adf644187e8637e84cafbea541d7886c7a01ffbff9d81e24b51dcf0a3aa3ac6",
    "findings": [
     {
      "n": 0,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i1040gi p. 20: A post-2008 decree without Form 8332 now draws a yes (from the BUG-0228 clause) and is refused; Step 1 would compute the child correctly for the custodial parent. Widening introduced by the fix; safe."
+     "evidence": "i1040gi p. 20, \"If the divorce decree or separation agreement went into effect after 2008, the noncustodial parent can't include pages from the decree or agreement instead of Form 8332.\" A custodial parent with only a post-2008 decree answers Yes and is refused; safe. Executed: f1.kidnapped.returned_11's return with the kidnapped answer No and 12 months: divorced_rule Yes refuses f1040.line16 and line19 at dependent[child].divorced_rule; No computes line 16 $638 and line 19 $638. The EIC is unaffected, as a release does not move the EIC."
     },
     {
      "n": 1,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i1040gi p. 20: Release exists but conditions 1-3 fail: yes refuses a case the tool computes. Safe (round 1)."
+     "evidence": "i1040gi p. 20, a pre-1985 decree applies only if \"the noncustodial parent provides at least $600 for support of the child during 2025\". A Yes without that support is refused; safe. Executed: f1.kidnapped.returned_11's return with the kidnapped answer No and 12 months: divorced_rule Yes refuses f1040.line16 and line19 at dependent[child].divorced_rule; No computes line 16 $638 and line 19 $638. The EIC is unaffected, as a release does not move the EIC."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "accepted WIDE",
-     "evidence": "i1040gi p. 20: Parents' status alone: a yes refuses (safe); a no is the correct answer and the tool computes the ordinary case."
+     "evidence": "p501 p. 22, \"The release can be for 1 year, for a number of specified years (for example, alternate years)\". A filer whose release does not cover 2025 and answers Yes is refused; a No is the correct answer and computes. Errs only toward Yes."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "accepted WIDE",
-     "evidence": "i1040gi p. 20: Release only for another year, or revoked: yes refuses (safe); no is correct (no release applies to 2025, ordinary Step 1). The revocation-copy attachment is a filing step, not a computed line."
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "i1040gi pp. 17, 20; forms/2025/dependent.yaml: Grandparent living with the child and the custodial parent: the child is the custodial parent's qualifying child, so dependent.other_claimant is yes and refuses dependent.qualifying_child (refuses: other_claimant, divorced_rule, married)."
+     "evidence": "i1040gi p. 20, \"A child will be treated as the qualifying child or qualifying relative of the child's noncustodial parent (defined later) if all of the following conditions apply.\" A divorced custodial parent with no release or decree who reads the rule as applying answers Yes and is refused; safe."
     }
-   ],
-   "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group4.md"
-  },
-  "unruled:dependent.kidnapped": {
-   "prompt_sha": "94406e81acc666c0f9032e6d053a3b06734f28a2822689c97d7a42bbb19c97f8",
-   "reason": "Round-1 wording defect closed (tense, 'a child', Pub. 501 phrase), but the new 'at any time during 2025' anchor drops a presumption made after 2025 for a 2025 kidnapping (PENDING-4-1, low); the qualifying-relative branch stays ungated by BUG-0234's choice (understatement only); the rest WIDE.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "NARROW",
-     "class": "defect",
-     "evidence": "p501 p. 13: PENDING-4-1. The rule ties the year to when the kidnapping occurred and sets no deadline for the presumption; the BUG-0234 wording ('at any time during 2025, was presumed') lets a filer whose 2025 kidnapping was presumed in early 2026 answer no truthfully. dependent.months then counts the absence, lived_half/eic_child can be false and the CTC/EIC/HOH are denied (understatement). Introduced by the rewording (the old present tense caught it)."
-    },
-    {
-     "n": 1,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "p501 p. 13: Child already meets the time-lived test: refused though computed correctly. Safe."
-    },
-    {
-     "n": 2,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "p501 p. 13: Statements 2 and 3 not met: refused; the ordinary months count would be right. Safe."
-    },
-    {
-     "n": 3,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "p501 p. 13: Treatment ended (age 18 / death in an earlier year): refused; ordinary count correct. Safe."
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "accepted WIDE",
-     "evidence": "i1040gi p. 21; p501 p. 13: An adult or a sibling reading 'a child' as covering them answers yes and is refused (safe); the reading that excludes them computes the ordinary test, which is correct for an adult past the age-18 cutoff and matches i1040gi's 'your child' for the qualifying-child test."
-    }
-   ],
-   "bugs": [
-    "PENDING-4-1"
-   ],
-   "adjudication": "reviews/2025/screens/adjudication/group4.md"
+   ]
   },
   "unruled:dependent.married": {
    "reason": "No defect: findings 0 and 1 are the WIDE findings accepted in rounds 1 and 4; the new UNCLEAR (a joint return not yet decided) repeats the source's own present tense, which the computing sibling dependent.joint_return asks identically, and no rewording can supply knowledge the filer lacks.",
@@ -1123,44 +1075,6 @@
     }
    ],
    "bugs": []
-  },
-  "unruled:dependent.other_claimant": {
-   "prompt_sha": "4690c3d384d62fd8c1f29cc7f7bd6bfedbc3af6a3d5ffd6bfae7aa051e99afb9",
-   "reason": "No round-1 defect; re-reviewed because its siblings changed. NARROW findings are covered by dependent.divorced_rule and dependent.married; the rest WIDE or the source's own wording.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "i1040gi p. 20; forms/2025/dependent.yaml: dependent.divorced_rule gates dependent.qualifying_child and now tells both the custodial parent who signed the release and the noncustodial parent using it to answer yes. EIC is unaffected by a release."
-    },
-    {
-     "n": 1,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "i1040gi p. 44; forms/2025/dependent.yaml: A child married at the end of 2025 answers yes to dependent.married, which gates dependent.eic_child (and qualifying_child, qualifying_relative)."
-    },
-    {
-     "n": 2,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "i1040gi p. 17: EIC branch refuses a child who fails the support test for the dependent rules. Safe."
-    },
-    {
-     "n": 3,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "i1040gi pp. 21, 44: Sole-parent tie-breaker: refusal of a correct computation. Safe."
-    },
-    {
-     "n": 4,
-     "kind": "UNCLEAR",
-     "class": "accepted WIDE",
-     "evidence": "i1040gi pp. 17, 21: The question repeats i1040gi p. 17 ('meets the conditions to be a qualifying child of any other person'); the literal reading answers yes and refuses. Round-1 ruling kept."
-    }
-   ],
-   "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group4.md"
   },
   "unruled:f5695.joint_occupancy": {
    "prompt_sha": "e722c6e7f46c753e83a07380a34d06b4d95c65f9bf55ac7c9c28721fa6100857",
@@ -1748,7 +1662,7 @@
   },
   "unruled:sa.dependent": {
    "prompt_sha": "ed663816b735dbfc49af3fa0ce3e076713185f92fdb0104a368707b0d0425394",
-   "reason": "No defect: the parenthetical is the Form 1040 dependent-question carve-out, not an EIC import. i1040gi pp. 18\u201319, Step 4/5: \"If the person who could claim you on their 2025 tax return is not required to file, and isn\u2019t filing a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid, check \u2018No.\u2019\" The reviewer's pages (34\u201335, 41\u201342) do not include pp. 18\u201319. The line 12a checkbox and the Standard Deduction Worksheet for Dependents use that answer, so a filer in the carve-out is not claimable for this purpose and the full standard deduction is right."
+   "reason": "No defect: the parenthetical is the Form 1040 dependent-question carve-out, not an EIC import. i1040gi pp. 18–19, Step 4/5: \"If the person who could claim you on their 2025 tax return is not required to file, and isn’t filing a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid, check ‘No.’\" The reviewer's pages (34–35, 41–42) do not include pp. 18–19. The line 12a checkbox and the Standard Deduction Worksheet for Dependents use that answer, so a filer in the carve-out is not claimable for this purpose and the full standard deduction is right."
   }
  },
  "baseline": {
