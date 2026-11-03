@@ -90,3 +90,4 @@ row or says why not.
 | T-171 | Long-term care covered person (BUG-0308): state who may be covered in `ltc.payments`; rerun the ltc reviews. | ltc completeness review, 2026-11-02 | next ltc or Form 7206 change | open |
 | T-172 | Schedule C rules (BUG-0309): the fifteen real-gap claims of the sc completeness review. | sc completeness review, 2026-11-02 | F4 Schedule C pass | open |
 | T-174 | Vehicle rules (BUG-0311): the eight real-gap claims of the scveh completeness review. | scveh completeness review, 2026-11-02 | F4 vehicle pass | open |
+| T-175 | Form 5329 Part I rules (BUG-0314): Roth amounts on Form 8606 line 25c, recapture amounts, earnings on a timely withdrawn IRA excess, and the exception conditions. | f5329 completeness review, 2026-11-02 | next f5329/person pass | open |

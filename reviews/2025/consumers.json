@@ -407,6 +407,12 @@
    "question_phrase": "Qualified improvement property placed in service after 2017",
    "source_phrase": "Special rules for qualified section 179 real property (pp. 2-3), \"Qualified improvement property as described in section 168(e)(6)\"",
    "reason": "The enum value names the same qualified improvement property the section 179 rule names; the election itself is read from line 6(c), not from this input."
+  },
+  "consumer:person.x_other@i5329:p5": {
+   "verdict": "same",
+   "question_phrase": "a taxable distribution ...; excess contributions ...; a required minimum distribution",
+   "source_phrase": "Line 4 (p. 5), \"you must multiply that amount by 25% instead of 10%\"",
+   "reason": "Line 4 reads the screen only through its Part refusal; the rate rule on p. 5 uses no word of the question, whose items concern other Parts."
   }
  },
  "baseline": {

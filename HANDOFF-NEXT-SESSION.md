@@ -1,3 +1,11 @@
+# Session handoff — 2026-11-02; T-161 fixed, next is T-159
+
+**State:** T-161/BUG-0292 is fixed (BUG-0313): `person.x_other` asks about an earlier-year HSA excess whether or not a 2025 Form 8889 exists, and the refusal names Part VII. No expression changed; lines 42 to 46 stay refused. person and f5329 reviews, f5329 completeness (first run) and the screen review are rerun and ruled. See the latest commit for the suite result.
+
+**Next:** T-159 (mutation table/guard/choose), the P2 rows, then the F1 dependent/education batch. Open deferred gaps: T-170, T-171, T-172, T-174, T-175. T-113's lifetime learning refusal is still not implemented.
+
+---
+
 # Session handoff — 2026-11-02; T-173 fixed, next is T-161
 
 **State:** T-173/BUG-0310 is fixed (BUG-0312): new input `scveh.lease_smr_before`, gate `scveh.lease_smr_bad`, refusal on `scveh.lease_business`, regression `stage14.veh.refuse_lease_smr_before`. scveh reviews, class M and completeness are rerun and ruled. See the latest commit for the suite result and where it sits.

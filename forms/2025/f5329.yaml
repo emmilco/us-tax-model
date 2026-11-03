@@ -138,12 +138,12 @@ form:
     cite:
       doc: f5329
       locator: p. 1, Part I, line 4, "Additional tax. Enter 10% (0.10) of line 3. Include this amount on Schedule 2 (Form
-        1040), line 8"
+        1040), line 8"; i5329 p. 5, Line 4, "you must multiply that amount by 25% instead of 10%"
     refuses:
     - when: person.x_other
-      form: Form 5329 Parts II, III, IV, V, VI, VIII or IX
+      form: Form 5329 Parts II, III, IV, V, VI, VIII or IX, or an earlier-year excess in Part VII
       remedy: Taxable Coverdell, qualified tuition program or ABLE distributions, excess contributions to IRAs from an earlier
-        year, excess Coverdell, Archer MSA or ABLE contributions, earlier-year HSA excess without Form 8889, and missed required
+        year, excess Coverdell, Archer MSA or ABLE contributions, earlier-year HSA excess, and missed required
         minimum distributions need Form 5329 parts this tool does not prepare.
       cite:
         doc: f5329
@@ -275,9 +275,9 @@ form:
         on December 31, 2025 (including 2025 contributions made in 2026)."
     refuses:
     - when: person.x_other
-      form: Form 5329 Parts II, III, IV, V, VI, VIII or IX
+      form: Form 5329 Parts II, III, IV, V, VI, VIII or IX, or an earlier-year excess in Part VII
       remedy: Taxable Coverdell, qualified tuition program or ABLE distributions, excess contributions to IRAs from an earlier
-        year, excess Coverdell, Archer MSA or ABLE contributions, earlier-year HSA excess without Form 8889, and missed required
+        year, excess Coverdell, Archer MSA or ABLE contributions, earlier-year HSA excess, and missed required
         minimum distributions need Form 5329 parts this tool does not prepare.
       cite:
         doc: f5329

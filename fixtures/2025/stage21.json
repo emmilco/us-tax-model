@@ -4624,8 +4624,8 @@
         "person[taxpayer].f5329[form].l4": {
           "kind": "refusal",
           "gate": "person[taxpayer].x_other",
-          "form": "Form 5329 Parts II, III, IV, V, VI, VIII or IX",
-          "remedy": "Taxable Coverdell, qualified tuition program or ABLE distributions, excess contributions to IRAs from an earlier year, excess Coverdell, Archer MSA or ABLE contributions, earlier-year HSA excess without Form 8889, and missed required minimum distributions need Form 5329 parts this tool does not prepare.",
+          "form": "Form 5329 Parts II, III, IV, V, VI, VIII or IX, or an earlier-year excess in Part VII",
+          "remedy": "Taxable Coverdell, qualified tuition program or ABLE distributions, excess contributions to IRAs from an earlier year, excess Coverdell, Archer MSA or ABLE contributions, earlier-year HSA excess, and missed required minimum distributions need Form 5329 parts this tool does not prepare.",
           "cite": {
             "doc": "f5329",
             "locator": "p. 1, Part II, \"Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account.\"",
@@ -4637,8 +4637,8 @@
         "person[taxpayer].f5329[form].l49": {
           "kind": "refusal",
           "gate": "person[taxpayer].x_other",
-          "form": "Form 5329 Parts II, III, IV, V, VI, VIII or IX",
-          "remedy": "Taxable Coverdell, qualified tuition program or ABLE distributions, excess contributions to IRAs from an earlier year, excess Coverdell, Archer MSA or ABLE contributions, earlier-year HSA excess without Form 8889, and missed required minimum distributions need Form 5329 parts this tool does not prepare.",
+          "form": "Form 5329 Parts II, III, IV, V, VI, VIII or IX, or an earlier-year excess in Part VII",
+          "remedy": "Taxable Coverdell, qualified tuition program or ABLE distributions, excess contributions to IRAs from an earlier year, excess Coverdell, Archer MSA or ABLE contributions, earlier-year HSA excess, and missed required minimum distributions need Form 5329 parts this tool does not prepare.",
           "cite": {
             "doc": "f5329",
             "locator": "p. 1, Part II, \"Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account.\"",
@@ -4650,8 +4650,8 @@
         "s2.line8": {
           "kind": "refusal",
           "gate": "person[taxpayer].x_other",
-          "form": "Form 5329 Parts II, III, IV, V, VI, VIII or IX",
-          "remedy": "Taxable Coverdell, qualified tuition program or ABLE distributions, excess contributions to IRAs from an earlier year, excess Coverdell, Archer MSA or ABLE contributions, earlier-year HSA excess without Form 8889, and missed required minimum distributions need Form 5329 parts this tool does not prepare.",
+          "form": "Form 5329 Parts II, III, IV, V, VI, VIII or IX, or an earlier-year excess in Part VII",
+          "remedy": "Taxable Coverdell, qualified tuition program or ABLE distributions, excess contributions to IRAs from an earlier year, excess Coverdell, Archer MSA or ABLE contributions, earlier-year HSA excess, and missed required minimum distributions need Form 5329 parts this tool does not prepare.",
           "cite": {
             "doc": "f5329",
             "locator": "p. 1, Part II, \"Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account.\"",

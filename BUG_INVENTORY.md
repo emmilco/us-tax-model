@@ -4388,3 +4388,24 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Regression predictions:** `stage14.veh.refuse_lease_smr_before` answers Yes and is refused at line 20a; `stage14.veh.leased_actual` answers No and keeps its amounts. Written from the source before the evaluator was run.
 - **Validation:** scveh reviews rerun under both families.
 - **Tags:** eligibility; amount-affecting; fixed
+
+## BUG-0313 — BUG-0292 is fixed: an earlier-year HSA excess is refused with or without a 2025 Form 8889
+
+- **Caught by:** BUG-0292, recorded open; this entry closes it because the inventory is append-only.
+- **Source:** f5329 p. 2, Part VII, line 42 "Enter the excess contributions from line 48 of your 2024 Form 5329"; i5329, Line 42, "only if the amount on line 49 of your 2024 Form 5329 is more than zero".
+- **Symptom:** as recorded in BUG-0292.
+- **Fix:** `person.x_other` names the earlier-year HSA excess whether or not a 2025 Form 8889 exists, and the `f5329.l4` remedy follows it. The question asks about the excess itself, including one the filer never reported, so it does not depend on a 2024 Form 5329 having been filed; this over-refuses an excess with no tax on 2024 line 49. No expression changed; lines 42 to 46 stay out of scope, as the form's note says of earlier-year excesses.
+- **Fix lines:** `person.x_other`, `f5329.l4`
+- **Siblings checked:** `f5329.l4`, `f5329.tax`, `f5329.l47`, `f5329.l48`, `f5329.l49`, `person.x_hsa_value`, `person.x_hsa_excess`, `f8889.line13`
+- **Regression predictions:** `stage21.refuse.x_other` already answers the screen Yes with a Form 8889 present and refuses at line 4; its recorded remedy follows the new wording.
+- **Validation:** person and f5329 reviews and the screen review rerun.
+- **Tags:** source-definition-debt; wording; fixed
+
+## BUG-0314 — Form 5329 Part I omits Roth, recapture, withdrawn-earnings and exception rules
+
+- **Caught by:** the f5329 completeness review, its first run, 2026-11-02.
+- **Source:** i5329 p. 1 (Roth distributions with an amount on Form 8606 line 25c; recapture amounts); p. 7 (earnings on a timely withdrawn IRA excess); p. 5 and p590b p. 28 (exception conditions).
+- **Symptom:** nothing asks about these amounts or tests the exception conditions beyond the entry's own answer, so an early-distribution amount or an excluded amount on line 2 can be wrong.
+- **Disposition:** T-175, with the next f5329/person pass: extend the questions or add refusals; rerun the reviews.
+- **Validation:** two completeness claims, their quotes matched against the archive; no fixture or numerical evidence claimed.
+- **Tags:** source-definition-debt; existing-form-pass; explicitly-deferred

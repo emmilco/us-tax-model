@@ -1,64 +1,47 @@
 {
  "bank": {
   "evaluation_failures": 0,
-  "fixtures": 1372,
+  "fixtures": 1437,
   "generated": 500,
   "partial_bases": 40,
   "partial_records": 0,
+  "return_states": {
+   "completed": 316,
+   "incomplete": 725,
+   "refused": 896
+  },
   "seed": 20261026
  },
  "errors": [],
  "failures": [],
  "family": "claude",
  "form": "f5329",
+ "invalid_lines": [],
  "lines": [
   {
    "absent": 0,
-   "agree": 2149,
+   "agree": 2225,
    "candidate": "f5329.must",
-   "compared": 2149,
-   "differ": 0,
+   "compared": 2228,
+   "completed_witnesses": [],
+   "differ": 3,
    "handle": "f5329.must",
-   "in_scope": 2092,
-   "in_scope_agree": 2092,
-   "kinds": {},
-   "kinds_by_return": {},
+   "in_scope": 2165,
+   "in_scope_agree": 2165,
+   "invalid": 0,
+   "kinds": {
+    "candidate-refuses": 3
+   },
+   "kinds_by_return": {
+    "refused": {
+     "candidate-refuses": 3
+    }
+   },
    "open_at_triage": true,
    "project": "f5329.must",
    "shown_when": null,
    "sources": {
-    "fixture": 1584,
-    "generated": 565
-   },
-   "status": "DISAGREE",
-   "triage": "agrees on sample",
-   "witnesses": []
-  },
-  {
-   "absent": 0,
-   "agree": 2144,
-   "candidate": "f5329.l2",
-   "compared": 2149,
-   "differ": 5,
-   "handle": "2",
-   "in_scope": 2148,
-   "in_scope_agree": 2143,
-   "kinds": {
-    "value": 5
-   },
-   "kinds_by_return": {
-    "completed": {
-     "value": 4
-    },
-    "refused": {
-     "value": 1
-    }
-   },
-   "open_at_triage": true,
-   "project": "f5329.l2",
-   "shown_when": "f5329.files",
-   "sources": {
-    "fixture": 1584,
+    "fixture": 1663,
     "generated": 565
    },
    "status": "DISAGREE",
@@ -66,12 +49,1494 @@
    "witnesses": [
     {
      "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].x_two23",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "person[taxpayer].x_two23",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_l2_all",
+       "value": {
+        "cents": 100000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage21.refuse.two23",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].x_limit_binds",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "person[taxpayer].x_limit_binds",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_l2_all",
+       "value": {
+        "cents": 150000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage21.refuse.limit_binds",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].x_other",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_l2_all",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_l1_s",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l48",
+       "value": {
+        "cents": 150000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage21.refuse.x_other",
+      "kind": "fixture"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 2138,
+   "candidate": "f5329.l1",
+   "compared": 2228,
+   "completed_witnesses": [
+    {
+     "candidate": {
+      "cents": 9200,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 9200,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 9200,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s2.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 9200,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 9200,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 9200,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s2.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 9200,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 9200,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 9200,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage21.t067.smw_hidden_ira",
+      "kind": "fixture"
+     }
+    }
+   ],
+   "differ": 90,
+   "handle": "1",
+   "in_scope": 2149,
+   "in_scope_agree": 2137,
+   "invalid": 0,
+   "kinds": {
+    "candidate-refuses": 2,
+    "candidate-shows-skipped": 10,
+    "project-refuses": 76,
+    "project-unknown": 2
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-shows-skipped": 3
+    },
+    "incomplete": {
+     "candidate-shows-skipped": 4,
+     "project-unknown": 1
+    },
+    "refused": {
+     "candidate-refuses": 2,
+     "candidate-shows-skipped": 3,
+     "project-refuses": 76,
+     "project-unknown": 1
+    }
+   },
+   "open_at_triage": true,
+   "project": "f5329.l1",
+   "shown_when": "f5329.files",
+   "sources": {
+    "fixture": 1663,
+    "generated": 565
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 9200,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 9200,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 9200,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s2.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8959.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8959.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 9200,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 9200,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 9200,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s2.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage11.refuse.hsa_months",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage11.refuse.hsa_screen",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].x_l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[spouse].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].x_l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.cleanup.refuse.retirement.special_first",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[second].x_l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[second].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[second].x_l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "ss.person.separation",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 300000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.example.tom_jones",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 758023,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 758023,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 758023,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.blind.e1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 300000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].x_l1",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[spouse].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].x_l1",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.blind.e9",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i5329",
+       "locator": "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\""
+      },
+      "form": "Form 5329 or Form 8915-F for this Form 1099-R",
+      "gate": "person[taxpayer].retirement[a].screen_refused",
+      "kind": "refusal",
+      "remedy": "A qualified disaster recovery distribution, a modified series of substantially equal payments, an annuity or modified endowment contract distribution, a repayment, a December 30-31 long-term care distribution, more than one exception, an exception covering only part of a code 2 distribution, or a code 4 or 7 that does not fit needs Form 5329 or Form 8915-F rules this tool does not apply."
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cite": {
+         "doc": "i5329",
+         "locator": "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\""
+        },
+        "form": "Form 5329 or Form 8915-F for this Form 1099-R",
+        "gate": "person[taxpayer].retirement[a].screen_refused",
+        "kind": "refusal",
+        "remedy": "A qualified disaster recovery distribution, a modified series of substantially equal payments, an annuity or modified endowment contract distribution, a repayment, a December 30-31 long-term care distribution, more than one exception, an exception covering only part of a code 2 distribution, or a code 4 or 7 that does not fit needs Form 5329 or Form 8915-F rules this tool does not apply."
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cite": {
+         "doc": "i5329",
+         "locator": "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\""
+        },
+        "form": "Form 5329 or Form 8915-F for this Form 1099-R",
+        "gate": "person[taxpayer].retirement[a].screen_refused",
+        "kind": "refusal",
+        "remedy": "A qualified disaster recovery distribution, a modified series of substantially equal payments, an annuity or modified endowment contract distribution, a repayment, a December 30-31 long-term care distribution, more than one exception, an exception covering only part of a code 2 distribution, or a code 4 or 7 that does not fit needs Form 5329 or Form 8915-F rules this tool does not apply."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage21.refuse.early_screen",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 300000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.mut.no05_medical_unasked",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 30, Rollovers, 'See Pub. 575 for more details on rollovers'"
+      },
+      "form": "Pub. 575 (rollover of a pension or annuity figured by the Simplified Method)",
+      "gate": "person[taxpayer].retirement[r1].annuity_rollover",
+      "kind": "refusal",
+      "remedy": "A rollover from a pension or annuity whose taxable part is figured with the Simplified Method is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 30, Rollovers, 'See Pub. 575 for more details on rollovers'"
+        },
+        "form": "Pub. 575 (rollover of a pension or annuity figured by the Simplified Method)",
+        "gate": "person[taxpayer].retirement[r1].annuity_rollover",
+        "kind": "refusal",
+        "remedy": "A rollover from a pension or annuity whose taxable part is figured with the Simplified Method is outside this tool."
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_l1",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 30, Rollovers, 'See Pub. 575 for more details on rollovers'"
+        },
+        "form": "Pub. 575 (rollover of a pension or annuity figured by the Simplified Method)",
+        "gate": "person[taxpayer].retirement[r1].annuity_rollover",
+        "kind": "refusal",
+        "remedy": "A rollover from a pension or annuity whose taxable part is figured with the Simplified Method is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 301,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 2145,
+   "candidate": "f5329.l2",
+   "compared": 2228,
+   "completed_witnesses": [],
+   "differ": 83,
+   "handle": "2",
+   "in_scope": 2149,
+   "in_scope_agree": 2143,
+   "invalid": 0,
+   "kinds": {
+    "candidate-refuses": 2,
+    "project-refuses": 75,
+    "project-unknown": 2,
+    "value": 4
+   },
+   "kinds_by_return": {
+    "incomplete": {
+     "project-unknown": 1,
+     "value": 4
+    },
+    "refused": {
+     "candidate-refuses": 2,
+     "project-refuses": 75,
+     "project-unknown": 1
+    }
+   },
+   "open_at_triage": true,
+   "project": "f5329.l2",
+   "shown_when": "f5329.files",
+   "sources": {
+    "fixture": 1663,
+    "generated": 565
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_capped_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limited_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_capped_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limited_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8959.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_capped_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limited_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8959.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_capped_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limited_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_capped_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limited_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage11.refuse.hsa_months",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_capped_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limited_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage11.refuse.hsa_screen",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[spouse].x_capped_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[spouse].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[spouse].x_limited_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.cleanup.refuse.retirement.special_first",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[second].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[second].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[second].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[second].x_capped_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[second].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[second].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[second].x_limited_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "ss.person.separation",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
       "cents": 1900000,
       "kind": "money"
      },
      "candidate_operands": [
       {
-       "ref": "person[taxpayer].x_l2_all",
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_capped_sum",
        "value": {
         "cents": 1900000,
         "kind": "money"
@@ -100,7 +1565,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "stage21.blind.e4",
       "kind": "fixture"
@@ -113,7 +1578,28 @@
      },
      "candidate_operands": [
       {
-       "ref": "person[taxpayer].x_l2_all",
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_capped_sum",
        "value": {
         "cents": 1220000,
         "kind": "money"
@@ -142,7 +1628,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "stage21.blind.e5",
       "kind": "fixture"
@@ -155,7 +1641,28 @@
      },
      "candidate_operands": [
       {
-       "ref": "person[taxpayer].x_l2_all",
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_capped_sum",
        "value": {
         "cents": 900000,
         "kind": "money"
@@ -184,7 +1691,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "stage21.blind.e6",
       "kind": "fixture"
@@ -197,7 +1704,28 @@
      },
      "candidate_operands": [
       {
-       "ref": "person[taxpayer].x_l2_all",
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_capped_sum",
        "value": {
         "cents": 150000,
         "kind": "money"
@@ -226,7 +1754,7 @@
        }
       }
      ],
-     "project_return": "completed",
+     "project_return": "incomplete",
      "source": {
       "id": "stage21.mut.e23_over_cap",
       "kind": "fixture"
@@ -234,20 +1762,75 @@
     },
     {
      "candidate": {
-      "cents": 150000,
-      "kind": "money"
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].x_two23",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
      },
      "candidate_operands": [
       {
-       "ref": "person[taxpayer].x_l2_all",
+       "ref": "person[taxpayer].x_two23",
        "value": {
-        "cents": 150000,
-        "kind": "money"
+        "kind": "bool",
+        "value": true
        }
       }
      ],
      "instance": "person[taxpayer].f5329[form]",
-     "kind": "value",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 100000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other_exc",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limited_sum",
+       "value": {
+        "cents": 100000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage21.refuse.two23",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].x_limit_binds",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-refuses",
      "project": {
       "cents": 100000,
       "kind": "money"
@@ -275,12 +1858,5193 @@
      }
     }
    ]
+  },
+  {
+   "absent": 0,
+   "agree": 2133,
+   "candidate": "f5329.l3",
+   "compared": 2228,
+   "completed_witnesses": [
+    {
+     "candidate": {
+      "cents": 9200,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 9200,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 9200,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s2.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 9200,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 9200,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 9200,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s2.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 9200,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 9200,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 9200,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage21.t067.smw_hidden_ira",
+      "kind": "fixture"
+     }
+    }
+   ],
+   "differ": 95,
+   "handle": "3",
+   "in_scope": 2147,
+   "in_scope_agree": 2131,
+   "invalid": 0,
+   "kinds": {
+    "candidate-refuses": 4,
+    "candidate-shows-skipped": 10,
+    "project-refuses": 75,
+    "project-unknown": 2,
+    "value": 4
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-shows-skipped": 3
+    },
+    "incomplete": {
+     "candidate-shows-skipped": 4,
+     "project-unknown": 1,
+     "value": 4
+    },
+    "refused": {
+     "candidate-refuses": 4,
+     "candidate-shows-skipped": 3,
+     "project-refuses": 75,
+     "project-unknown": 1
+    }
+   },
+   "open_at_triage": true,
+   "project": "f5329.l3",
+   "shown_when": "f5329.files",
+   "sources": {
+    "fixture": 1663,
+    "generated": 565
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 9200,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 9200,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 9200,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s2.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8959.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8959.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 9200,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 9200,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 9200,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s2.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage11.refuse.hsa_months",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage11.refuse.hsa_screen",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].f5329[form].l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[spouse].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].f5329[form].l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.cleanup.refuse.retirement.special_first",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[second].f5329[form].l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[second].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[second].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[second].f5329[form].l1",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[second].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "ss.person.separation",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 300000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.example.tom_jones",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 758023,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 758023,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 758023,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.blind.e1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 1900000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 1900000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "value",
+     "project": {
+      "cents": 520000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 1900000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 1380000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.blind.e4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 60000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 1280000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 1220000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "value",
+     "project": {
+      "cents": 180000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 1280000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 1100000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.blind.e5",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 900000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 900000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "value",
+     "project": {
+      "cents": 152500,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 900000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 747500,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.blind.e6",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 300000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].f5329[form].l1",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[spouse].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].f5329[form].l1",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.blind.e9",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 150000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 150000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "value",
+     "project": {
+      "cents": 200000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 100000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.mut.e23_over_cap",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].x_two23",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 500000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "person[taxpayer].x_two23",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 400000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 500000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 100000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage21.refuse.two23",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].x_limit_binds",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "person[taxpayer].x_limit_binds",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 200000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 100000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage21.refuse.limit_binds",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i5329",
+       "locator": "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\""
+      },
+      "form": "Form 5329 or Form 8915-F for this Form 1099-R",
+      "gate": "person[taxpayer].retirement[a].screen_refused",
+      "kind": "refusal",
+      "remedy": "A qualified disaster recovery distribution, a modified series of substantially equal payments, an annuity or modified endowment contract distribution, a repayment, a December 30-31 long-term care distribution, more than one exception, an exception covering only part of a code 2 distribution, or a code 4 or 7 that does not fit needs Form 5329 or Form 8915-F rules this tool does not apply."
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cite": {
+         "doc": "i5329",
+         "locator": "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\""
+        },
+        "form": "Form 5329 or Form 8915-F for this Form 1099-R",
+        "gate": "person[taxpayer].retirement[a].screen_refused",
+        "kind": "refusal",
+        "remedy": "A qualified disaster recovery distribution, a modified series of substantially equal payments, an annuity or modified endowment contract distribution, a repayment, a December 30-31 long-term care distribution, more than one exception, an exception covering only part of a code 2 distribution, or a code 4 or 7 that does not fit needs Form 5329 or Form 8915-F rules this tool does not apply."
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cite": {
+         "doc": "i5329",
+         "locator": "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\""
+        },
+        "form": "Form 5329 or Form 8915-F for this Form 1099-R",
+        "gate": "person[taxpayer].retirement[a].screen_refused",
+        "kind": "refusal",
+        "remedy": "A qualified disaster recovery distribution, a modified series of substantially equal payments, an annuity or modified endowment contract distribution, a repayment, a December 30-31 long-term care distribution, more than one exception, an exception covering only part of a code 2 distribution, or a code 4 or 7 that does not fit needs Form 5329 or Form 8915-F rules this tool does not apply."
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage21.refuse.early_screen",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 300000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cents": 300000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.mut.no05_medical_unasked",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 30, Rollovers, 'See Pub. 575 for more details on rollovers'"
+      },
+      "form": "Pub. 575 (rollover of a pension or annuity figured by the Simplified Method)",
+      "gate": "person[taxpayer].retirement[r1].annuity_rollover",
+      "kind": "refusal",
+      "remedy": "A rollover from a pension or annuity whose taxable part is figured with the Simplified Method is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 30, Rollovers, 'See Pub. 575 for more details on rollovers'"
+        },
+        "form": "Pub. 575 (rollover of a pension or annuity figured by the Simplified Method)",
+        "gate": "person[taxpayer].retirement[r1].annuity_rollover",
+        "kind": "refusal",
+        "remedy": "A rollover from a pension or annuity whose taxable part is figured with the Simplified Method is outside this tool."
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l1",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 30, Rollovers, 'See Pub. 575 for more details on rollovers'"
+        },
+        "form": "Pub. 575 (rollover of a pension or annuity figured by the Simplified Method)",
+        "gate": "person[taxpayer].retirement[r1].annuity_rollover",
+        "kind": "refusal",
+        "remedy": "A rollover from a pension or annuity whose taxable part is figured with the Simplified Method is outside this tool."
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l2",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 301,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 2134,
+   "candidate": "f5329.l4",
+   "compared": 2228,
+   "completed_witnesses": [
+    {
+     "candidate": {
+      "cents": 920,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_other",
+       "value": {
+        "cents": 920,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax10",
+       "value": {
+        "cents": 920,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s2.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 920,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_other",
+       "value": {
+        "cents": 920,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax10",
+       "value": {
+        "cents": 920,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s2.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 920,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_other",
+       "value": {
+        "cents": 920,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax10",
+       "value": {
+        "cents": 920,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage21.t067.smw_hidden_ira",
+      "kind": "fixture"
+     }
+    }
+   ],
+   "differ": 94,
+   "handle": "4",
+   "in_scope": 2146,
+   "in_scope_agree": 2130,
+   "invalid": 0,
+   "kinds": {
+    "candidate-refuses": 2,
+    "candidate-shows-skipped": 10,
+    "project-refuses": 76,
+    "project-unknown": 2,
+    "value": 4
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-shows-skipped": 3
+    },
+    "incomplete": {
+     "candidate-shows-skipped": 4,
+     "project-unknown": 1,
+     "value": 4
+    },
+    "refused": {
+     "candidate-refuses": 2,
+     "candidate-shows-skipped": 3,
+     "project-refuses": 76,
+     "project-unknown": 1
+    }
+   },
+   "open_at_triage": true,
+   "project": "f5329.l4",
+   "shown_when": "f5329.files",
+   "sources": {
+    "fixture": 1663,
+    "generated": 565
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax10",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 920,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_other",
+       "value": {
+        "cents": 920,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax10",
+       "value": {
+        "cents": 920,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s2.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax10",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8959.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax10",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8959.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 920,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_other",
+       "value": {
+        "cents": 920,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax10",
+       "value": {
+        "cents": 920,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s2.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax10",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax10",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage11.refuse.hsa_months",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax10",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage11.refuse.hsa_screen",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[spouse].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].tax10",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].tax25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.cleanup.refuse.retirement.special_first",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[second].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[second].f5329[form].h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[second].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[second].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[second].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[second].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[second].f5329[form].tax10",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[second].f5329[form].tax25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "ss.person.separation",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 30000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_other",
+       "value": {
+        "cents": 30000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax10",
+       "value": {
+        "cents": 30000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.example.tom_jones",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 75802,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_other",
+       "value": {
+        "cents": 75802,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax10",
+       "value": {
+        "cents": 75802,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.blind.e1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "value",
+     "project": {
+      "cents": 52000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax10",
+       "value": {
+        "cents": 52000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.blind.e4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 6000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_other",
+       "value": {
+        "cents": 6000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "value",
+     "project": {
+      "cents": 18000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax10",
+       "value": {
+        "cents": 18000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.blind.e5",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_other",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "value",
+     "project": {
+      "cents": 15250,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax10",
+       "value": {
+        "cents": 15250,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.blind.e6",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 30000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].h_tax_other",
+       "value": {
+        "cents": 30000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[spouse].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].tax10",
+       "value": {
+        "cents": 30000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].tax25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.blind.e9",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 15000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_other",
+       "value": {
+        "cents": 15000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "value",
+     "project": {
+      "cents": 20000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax10",
+       "value": {
+        "cents": 20000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.mut.e23_over_cap",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i5329",
+       "locator": "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\""
+      },
+      "form": "Form 5329 or Form 8915-F for this Form 1099-R",
+      "gate": "person[taxpayer].retirement[a].screen_refused",
+      "kind": "refusal",
+      "remedy": "A qualified disaster recovery distribution, a modified series of substantially equal payments, an annuity or modified endowment contract distribution, a repayment, a December 30-31 long-term care distribution, more than one exception, an exception covering only part of a code 2 distribution, or a code 4 or 7 that does not fit needs Form 5329 or Form 8915-F rules this tool does not apply."
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_other",
+       "value": {
+        "cite": {
+         "doc": "i5329",
+         "locator": "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\""
+        },
+        "form": "Form 5329 or Form 8915-F for this Form 1099-R",
+        "gate": "person[taxpayer].retirement[a].screen_refused",
+        "kind": "refusal",
+        "remedy": "A qualified disaster recovery distribution, a modified series of substantially equal payments, an annuity or modified endowment contract distribution, a repayment, a December 30-31 long-term care distribution, more than one exception, an exception covering only part of a code 2 distribution, or a code 4 or 7 that does not fit needs Form 5329 or Form 8915-F rules this tool does not apply."
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax10",
+       "value": {
+        "cite": {
+         "doc": "i5329",
+         "locator": "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\""
+        },
+        "form": "Form 5329 or Form 8915-F for this Form 1099-R",
+        "gate": "person[taxpayer].retirement[a].screen_refused",
+        "kind": "refusal",
+        "remedy": "A qualified disaster recovery distribution, a modified series of substantially equal payments, an annuity or modified endowment contract distribution, a repayment, a December 30-31 long-term care distribution, more than one exception, an exception covering only part of a code 2 distribution, or a code 4 or 7 that does not fit needs Form 5329 or Form 8915-F rules this tool does not apply."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage21.refuse.early_screen",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 30000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_other",
+       "value": {
+        "cents": 30000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax10",
+       "value": {
+        "cents": 30000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax25",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.mut.no05_medical_unasked",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 30, Rollovers, 'See Pub. 575 for more details on rollovers'"
+      },
+      "form": "Pub. 575 (rollover of a pension or annuity figured by the Simplified Method)",
+      "gate": "person[taxpayer].retirement[r1].annuity_rollover",
+      "kind": "refusal",
+      "remedy": "A rollover from a pension or annuity whose taxable part is figured with the Simplified Method is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_simple",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_tax_other",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 30, Rollovers, 'See Pub. 575 for more details on rollovers'"
+        },
+        "form": "Pub. 575 (rollover of a pension or annuity figured by the Simplified Method)",
+        "gate": "person[taxpayer].retirement[r1].annuity_rollover",
+        "kind": "refusal",
+        "remedy": "A rollover from a pension or annuity whose taxable part is figured with the Simplified Method is outside this tool."
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_two23",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].x_limit_binds",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].tax10",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 30, Rollovers, 'See Pub. 575 for more details on rollovers'"
+        },
+        "form": "Pub. 575 (rollover of a pension or annuity figured by the Simplified Method)",
+        "gate": "person[taxpayer].retirement[r1].annuity_rollover",
+        "kind": "refusal",
+        "remedy": "A rollover from a pension or annuity whose taxable part is figured with the Simplified Method is outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 301,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 2196,
+   "candidate": "f5329.l47",
+   "compared": 2228,
+   "completed_witnesses": [],
+   "differ": 32,
+   "handle": "47",
+   "in_scope": 2151,
+   "in_scope_agree": 2138,
+   "invalid": 0,
+   "kinds": {
+    "project-refuses": 19,
+    "project-unknown": 13
+   },
+   "kinds_by_return": {
+    "incomplete": {
+     "project-unknown": 13
+    },
+    "refused": {
+     "project-refuses": 19
+    }
+   },
+   "open_at_triage": true,
+   "project": "f5329.l47",
+   "shown_when": "f5329.files",
+   "sources": {
+    "fixture": 1663,
+    "generated": 565
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[sample].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[sample].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[sample].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[sample].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[sample].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[sample].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage10.ira.roth_code_unanswered",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[spouse].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage13.refuse.hsa_family_one_spouse",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[sample].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[sample].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[sample].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage16.hsa.partial.H05",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[sample].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[sample].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[sample].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage16.hsa.partial.H06",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[sample].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[sample].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[sample].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage16.hsa.partial.H07",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage21.refuse.wrong_kind",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage21.refuse.bad_code_screen_unasked",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 84,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[spouse].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 119,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[spouse].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].x_hsa_excess",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 121,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 2195,
+   "candidate": "f5329.l48",
+   "compared": 2228,
+   "completed_witnesses": [],
+   "differ": 33,
+   "handle": "48",
+   "in_scope": 2150,
+   "in_scope_agree": 2137,
+   "invalid": 0,
+   "kinds": {
+    "candidate-refuses": 1,
+    "project-refuses": 19,
+    "project-unknown": 13
+   },
+   "kinds_by_return": {
+    "incomplete": {
+     "project-unknown": 13
+    },
+    "refused": {
+     "candidate-refuses": 1,
+     "project-refuses": 19
+    }
+   },
+   "open_at_triage": true,
+   "project": "f5329.l48",
+   "shown_when": "f5329.files",
+   "sources": {
+    "fixture": 1663,
+    "generated": 565
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[sample].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[sample].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[sample].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[sample].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[sample].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[sample].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage10.ira.roth_code_unanswered",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[spouse].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage13.refuse.hsa_family_one_spouse",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[sample].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[sample].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[sample].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage16.hsa.partial.H05",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[sample].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[sample].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[sample].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage16.hsa.partial.H06",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[sample].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[sample].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[sample].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage16.hsa.partial.H07",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].x_other",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 150000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l47",
+       "value": {
+        "cents": 150000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage21.refuse.x_other",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage21.refuse.wrong_kind",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage21.refuse.bad_code_screen_unasked",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 84,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[spouse].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 119,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[spouse].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].f5329[form].l47",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 121,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 2196,
+   "candidate": "f5329.l49",
+   "compared": 2228,
+   "completed_witnesses": [],
+   "differ": 32,
+   "handle": "49",
+   "in_scope": 2150,
+   "in_scope_agree": 2137,
+   "invalid": 0,
+   "kinds": {
+    "project-refuses": 19,
+    "project-unknown": 13
+   },
+   "kinds_by_return": {
+    "incomplete": {
+     "project-unknown": 13
+    },
+    "refused": {
+     "project-refuses": 19
+    }
+   },
+   "open_at_triage": true,
+   "project": "f5329.l49",
+   "shown_when": "f5329.files",
+   "sources": {
+    "fixture": 1663,
+    "generated": 565
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[sample].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[sample].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[sample].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[sample].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[sample].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[sample].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage10.ira.roth_code_unanswered",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[spouse].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage13.refuse.hsa_family_one_spouse",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[sample].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[sample].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[sample].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage16.hsa.partial.H05",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[sample].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[sample].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[sample].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage16.hsa.partial.H06",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[sample].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[sample].f5329[form]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[sample].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[sample].f5329[form].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage16.hsa.partial.H07",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage21.refuse.wrong_kind",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage21.refuse.bad_code_screen_unasked",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].f5329[form].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 84,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[spouse].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 119,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].h_has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[spouse].f5329[form]",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].x_other",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].has_excess",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].f5329[form].zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 121,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    }
+   ]
   }
  ],
- "log_sha256_at_triage": "fb1489adf359c31bd6eb7913f85b49678534973c04ce26179babbd363f3b17c0",
+ "log_sha256_at_triage": "ba191be61773b28ce380d8ae48922f85b580536302f29bc99e1205289581b545",
  "policy": "executable-triage-v2",
- "response_sha256": "8071c025236972162af67327a34174c0cc9f912556beb169800bf67e42b0fbb9",
+ "response_sha256": "294bf7f8e32f3a43eb4e45723e19fe27d68d613a0987a82ac77c88d28ee7414b",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "evaluated",
- "subject_sha256": "77781f5dc775ee7143adcf4754a133764b92b837af5b2e3527d8c28f8aab08e7"
+ "subject_sha256": "55998c2a49302c0550175fd6494ebfc4a27dbb2592d5114fe2ca6b82e56129a4"
 }

@@ -1471,6 +1471,201 @@
   "model": "claude-opus-5-5"
  },
  {
+  "form": "f5329",
+  "prompt_sha": "676994e56575a6a038e501c3b6d5f468d52de0a50c14f8bb1c3cc5b3fcf37cf3",
+  "claims": [
+   {
+    "item": "f5329.l1",
+    "sentences": [
+     {
+      "quote": "You received a distribution from a Roth IRA and either the amount on line 25c of Form 8606, Nondeductible IRAs, is more than zero, or the distribution includes a recapture amount subject to the 10% additional tax, or it’s a qualified first-time homebuyer distribution (see Distributions from Roth IRAs, later).",
+      "page": "i5329 p. 1"
+     },
+     {
+      "quote": "If you rolled over part or all of a distribution from a qualified retirement plan, the part rolled over isn’t subject to the 10% additional tax on early distributions.",
+      "page": "i5329 p. 1"
+     },
+     {
+      "quote": "Also, if you hadn't reached age 59 1 / 2 at the time of the withdrawal, include the earnings as an early distribution on line 1 of Form 5329 for the year in which you report the earnings.",
+      "page": "i5329 p. 7"
+     },
+     {
+      "quote": "If you received a distribution to buy, build, or rebuild a first home and the purchase or construction was canceled or delayed, you could generally contribute the amount of the distribution to an IRA within 120 days of the distribution and not pay income tax or the 10% additional tax on early distributions.",
+      "page": "p590b p. 28"
+     }
+    ],
+    "quote": "You received a distribution from a Roth IRA and either the amount on line 25c of Form 8606, Nondeductible IRAs, is more than zero, or the distribution includes a recapture amount subject to the 10% additional tax, or it’s a qualified first-time homebuyer distribution (see Distributions from Roth IRAs, later). / If you rolled over part or all of a distribution from a qualified retirement plan, the part rolled over isn’t subject to the 10% additional tax on early distributions. / Also, if you hadn't reached age 59 1 / 2 at the time of the withdrawal, include the earnings as an early distribution on line 1 of Form 5329 for the year in which you report the earnings. / If you received a distribution to buy, build, or rebuild a first home and the purchase or construction was canceled or delayed, you could generally contribute the amount of the distribution to an IRA within 120 days of the distribution and not pay income tax or the 10% additional tax on early distributions.",
+    "page": "i5329 p. 1; i5329 p. 7; p590b p. 28",
+    "why_uncovered": "Line 1 cites only the form's caption, and no listed question or refusal addresses what goes into it. Nothing listed covers Roth amounts from Form 8606 line 25c or recapture amounts, rollover carve-outs, earnings on withdrawn IRA excess contributions, or the 120-day recontribution of a first-home distribution. The x_other refusal covers Parts other than I and VII, not these line 1 inputs.",
+    "closest_item": "f5329.l1",
+    "effect": "amount"
+   },
+   {
+    "item": "f5329.l2",
+    "sentences": [
+     {
+      "quote": "Qualified retirement plan distributions (doesn’t apply to IRAs) you received after separation from service when the separation from service occurs in or after the year you reach age 55 (age 50 for qualified public safety employees and private sector firefighters) or 25 years of service under the plan, whichever is earlier.",
+      "page": "i5329 p. 5"
+     },
+     {
+      "quote": "Distributions made as part of a series of substantially equal periodic payments (made at least annually) for your life (or life expectancy) or the joint lives (or joint life expectancies) of you and your designated beneficiary (if from an employer plan, payments must begin after separation from service).",
+      "page": "i5329 p. 5"
+     },
+     {
+      "quote": "You are considered disabled if you can furnish proof that you can’t do any substantial gainful activity because of your physical or mental condition.",
+      "page": "i5329 p. 5"
+     },
+     {
+      "quote": "A medical determination that your condition can be expected to result in death or to be of long, continued, and indefinite duration must be made.",
+      "page": "i5329 p. 5"
+     },
+     {
+      "quote": "Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year.",
+      "page": "i5329 p. 5"
+     },
+     {
+      "quote": "Qualified retirement plan distributions made to an alternate payee under a qualified domestic relations order (doesn’t apply to IRAs).",
+      "page": "i5329 p. 5"
+     },
+     {
+      "quote": "IRA distributions made for the purchase of a first home, up to $10,000.",
+      "page": "i5329 p. 5"
+     },
+     {
+      "quote": "Include on line 2 the amount you received when you were age 59 1 / 2 or older.",
+      "page": "i5329 p. 5"
+     },
+     {
+      "quote": "A qualified distribution from a retirement plan for the birth or adoption of a child is a distribution of up to $5,000 if made during the 1-year period beginning on the date your child was born or adopted.",
+      "page": "i5329 p. 5"
+     },
+     {
+      "quote": "Attach a statement that provides the name, age, and TIN of the child or eligible adoptee.",
+      "page": "i5329 p. 5"
+     },
+     {
+      "quote": "If the child died before you obtained a TIN, then write that the child died on the statement and include a copy of the child’s birth certificate, death certificate, or hospital records.",
+      "page": "i5329 p. 5"
+     },
+     {
+      "quote": "Distributions that are made on or after the date on which your physician has certified that you have a terminal illness or physical condition that can reasonably be expected to result in death in 84 months or less after the date of the certification.",
+      "page": "i5329 p. 5"
+     },
+     {
+      "quote": "The 10% additional tax on early distributions does not apply to an IRA distribution made pursuant to the rules of section 408(d)(4), which consists of a contribution for that year and any earnings allocable to the contribution, as long as the distribution is made on or before the due date (including extensions) of the income tax return.",
+      "page": "i5329 p. 5"
+     },
+     {
+      "quote": "Generally, you are a first-time homebuyer if you had no present interest in a main home during the 2-year period ending on the date of acquisition of the home which the distribution is being used to buy, build, or rebuild.",
+      "page": "p590b p. 28"
+     },
+     {
+      "quote": "If you are married, your spouse must also meet this no-ownership requirement.",
+      "page": "p590b p. 28"
+     },
+     {
+      "quote": "You were ordered or called to active duty for a period of more than 179 days or for an indefinite period because you are a member of a reserve component.",
+      "page": "p590b p. 28"
+     },
+     {
+      "quote": "The distribution was made no earlier than the date of the order or call to active duty and no later than the close of the active duty period.",
+      "page": "p590b p. 28"
+     },
+     {
+      "quote": "A qualified birth or adoption distribution must not exceed $5,000 per taxpayer.",
+      "page": "p590b p. 28"
+     },
+     {
+      "quote": "In addition, an eligible adoptee is any individual (other than the child of the taxpayer’s spouse) who has not reached age 18 or is physically or mentally incapable of self-support.",
+      "page": "p590b p. 28"
+     },
+     {
+      "quote": "An eligible distribution to a domestic abuse victim must not exceed the lesser of $10,300 for 2025 or 50% of the present value of the IRA.",
+      "page": "p590b p. 28"
+     },
+     {
+      "quote": "You are limited to taking one emergency personal expense distribution per calendar year and the amount that may be treated as an emergency personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000.",
+      "page": "p590b p. 28"
+     },
+     {
+      "quote": "You are also limited in taking emergency personal expense distributions in subsequent years as you may not take this type of distribution in the following 3 calendar years unless:",
+      "page": "p590b p. 28"
+     }
+    ],
+    "quote": "Qualified retirement plan distributions (doesn’t apply to IRAs) you received after separation from service when the separation from service occurs in or after the year you reach age 55 (age 50 for qualified public safety employees and private sector firefighters) or 25 years of service under the plan, whichever is earlier. / Distributions made as part of a series of substantially equal periodic payments (made at least annually) for your life (or life expectancy) or the joint lives (or joint life expectancies) of you and your designated beneficiary (if from an employer plan, payments must begin after separation from service). / You are considered disabled if you can furnish proof that you can’t do any substantial gainful activity because of your physical or mental condition. / A medical determination that your condition can be expected to result in death or to be of long, continued, and indefinite duration must be made. / Qualified retirement plan distributions up to the amount you paid for unreimbursed medical expenses during the year minus 7.5% of your adjusted gross income (AGI) for the year. / Qualified retirement plan distributions made to an alternate payee under a qualified domestic relations order (doesn’t apply to IRAs). / IRA distributions made for the purchase of a first home, up to $10,000. / Include on line 2 the amount you received when you were age 59 1 / 2 or older. / A qualified distribution from a retirement plan for the birth or adoption of a child is a distribution of up to $5,000 if made during the 1-year period beginning on the date your child was born or adopted. / Attach a statement that provides the name, age, and TIN of the child or eligible adoptee. / If the child died before you obtained a TIN, then write that the child died on the statement and include a copy of the child’s birth certificate, death certificate, or hospital records. / Distributions that are made on or after the date on which your physician has certified that you have a terminal illness or physical condition that can reasonably be expected to result in death in 84 months or less after the date of the certification. / The 10% additional tax on early distributions does not apply to an IRA distribution made pursuant to the rules of section 408(d)(4), which consists of a contribution for that year and any earnings allocable to the contribution, as long as the distribution is made on or before the due date (including extensions) of the income tax return. / Generally, you are a first-time homebuyer if you had no present interest in a main home during the 2-year period ending on the date of acquisition of the home which the distribution is being used to buy, build, or rebuild. / If you are married, your spouse must also meet this no-ownership requirement. / You were ordered or called to active duty for a period of more than 179 days or for an indefinite period because you are a member of a reserve component. / The distribution was made no earlier than the date of the order or call to active duty and no later than the close of the active duty period. / A qualified birth or adoption distribution must not exceed $5,000 per taxpayer. / In addition, an eligible adoptee is any individual (other than the child of the taxpayer’s spouse) who has not reached age 18 or is physically or mentally incapable of self-support. / An eligible distribution to a domestic abuse victim must not exceed the lesser of $10,300 for 2025 or 50% of the present value of the IRA. / You are limited to taking one emergency personal expense distribution per calendar year and the amount that may be treated as an emergency personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000. / You are also limited in taking emergency personal expense distributions in subsequent years as you may not take this type of distribution in the following 3 calendar years unless:",
+    "page": "i5329 p. 5; p590b p. 28",
+    "why_uncovered": "Line 2 cites only the instruction to enter the excludable amount and the exception number, and no listed question tests any exception's conditions. The x_limit_binds refusal applies only to a SIMPLE IRA distribution with a limited exception over its limit, and x_two23 addresses only more than one exception 23 distribution. No listed line or question implements the dollar and AGI limits outside that SIMPLE case, the eligibility definitions, the 3-year bar on repeat emergency distributions, or the required birth or adoption statement.",
+    "closest_item": "f5329.l2",
+    "effect": "amount"
+   },
+   {
+    "item": "f5329.must",
+    "sentences": [
+     {
+      "quote": "You received a distribution from a Roth IRA and either the amount on line 25c of Form 8606, Nondeductible IRAs, is more than zero, or the distribution includes a recapture amount subject to the 10% additional tax, or it’s a qualified first-time homebuyer distribution (see Distributions from Roth IRAs, later).",
+      "page": "i5329 p. 1"
+     }
+    ],
+    "quote": "You received a distribution from a Roth IRA and either the amount on line 25c of Form 8606, Nondeductible IRAs, is more than zero, or the distribution includes a recapture amount subject to the 10% additional tax, or it’s a qualified first-time homebuyer distribution (see Distributions from Roth IRAs, later).",
+    "page": "i5329 p. 1",
+    "why_uncovered": "The filing test is described as an exception claimed, a code S distribution, or HSA excess. A Roth distribution with a line 25c amount or recapture amount meets none of these unless an exception happens to be claimed, and no refusal addresses it. This filer must file Form 5329, and the code 1 relief cited by the helper does not apply.",
+    "closest_item": "f5329.must",
+    "effect": "presentation"
+   },
+   {
+    "item": "f5329.l47",
+    "sentences": [
+     {
+      "quote": "Enter the excess of your contributions (made by you or on your behalf) to your HSAs for 2025 from Form 8889, line 2 (unless withdrawn—discussed next), over your contribution limit (Form 8889, line 12).",
+      "page": "i5329 p. 8"
+     },
+     {
+      "quote": "You can withdraw some or all of the excess contributions for 2025 and they will be treated as not having been contributed if: • You make the withdrawal by the due date, including extensions, of your 2025 return; and • You withdraw any income earned on the withdrawn contributions and include the earnings in gross income for the year in which you receive the withdrawn contributions and earnings.",
+      "page": "i5329 p. 8"
+     },
+     {
+      "quote": "Include the withdrawn contributions and related earnings on Form 8889, lines 14a and 14b.",
+      "page": "i5329 p. 8"
+     },
+     {
+      "quote": "If you timely filed your return without withdrawing the excess contributions, you can still make the withdrawal no later than 6 months after the due date of your tax return, excluding extensions.",
+      "page": "i5329 p. 8"
+     }
+    ],
+    "quote": "Enter the excess of your contributions (made by you or on your behalf) to your HSAs for 2025 from Form 8889, line 2 (unless withdrawn—discussed next), over your contribution limit (Form 8889, line 12). / You can withdraw some or all of the excess contributions for 2025 and they will be treated as not having been contributed if: • You make the withdrawal by the due date, including extensions, of your 2025 return; and • You withdraw any income earned on the withdrawn contributions and include the earnings in gross income for the year in which you receive the withdrawn contributions and earnings. / Include the withdrawn contributions and related earnings on Form 8889, lines 14a and 14b. / If you timely filed your return without withdrawing the excess contributions, you can still make the withdrawal no later than 6 months after the due date of your tax return, excluding extensions.",
+    "page": "i5329 p. 8",
+    "why_uncovered": "Line 47 cites only the employer-excess sentence. No listed question or refusal handles a timely withdrawal of 2025 HSA excess contributions, the earnings requirement, the Form 8889 reporting, or the 6-month amended-return route. A withdrawn excess would remove the amount from line 47 and so eliminate the 6% tax on it.",
+    "closest_item": "f5329.l47",
+    "effect": "amount"
+   }
+  ],
+  "used": [
+   {
+    "doc": "i5329",
+    "pages": [
+     1
+    ]
+   },
+   {
+    "doc": "i5329",
+    "pages": [
+     5,
+     6,
+     7,
+     8
+    ]
+   },
+   {
+    "doc": "p590b",
+    "pages": [
+     28
+    ]
+   }
+  ],
+  "cost": 0.25743479999999996,
+  "model": "claude-opus-5-5"
+ },
+ {
   "form": "f8962",
   "prompt_sha": "c62987e59ef0425c5fee0aea8adcd017bfaac670b2f4f8cc0dcb6b782422bfc8",
   "claims": [

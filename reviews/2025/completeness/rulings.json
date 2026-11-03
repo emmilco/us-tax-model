@@ -539,6 +539,30 @@
    "class": "presentation",
    "evidence": "i1040sc p. 7; i4562 pp. 14, 16. Part IV and Part V routing and the attachment are filing information.",
    "prompt_sha": "2d941bd2245fcd3b3072dfaeba427e327df97c09f91e0c65ef503017447cc6d6"
+  },
+  "unruled:f5329#1": {
+   "class": "real gap",
+   "evidence": "i5329 pp. 1, 7; p590b p. 28. Roth and recapture amounts, rollover carve-outs, withdrawn-excess earnings and the 120-day recontribution are not asked. BUG-0314/T-175 records the gap.",
+   "prompt_sha": "676994e56575a6a038e501c3b6d5f468d52de0a50c14f8bb1c3cc5b3fcf37cf3",
+   "bug": "BUG-0314"
+  },
+  "unruled:f5329#2": {
+   "class": "real gap",
+   "evidence": "i5329 p. 5; p590b p. 28. The exception conditions are not tested beyond the entry's own answer. BUG-0314/T-175 records the gap.",
+   "prompt_sha": "676994e56575a6a038e501c3b6d5f468d52de0a50c14f8bb1c3cc5b3fcf37cf3",
+   "bug": "BUG-0314"
+  },
+  "unruled:f5329#3": {
+   "class": "real gap",
+   "evidence": "i5329 p. 1. A Roth distribution with a Form 8606 line 25c or recapture amount must file; the same missing amounts as #1. BUG-0314/T-175 records the gap.",
+   "prompt_sha": "676994e56575a6a038e501c3b6d5f468d52de0a50c14f8bb1c3cc5b3fcf37cf3",
+   "bug": "BUG-0314"
+  },
+  "unruled:f5329#4": {
+   "class": "out of scope",
+   "evidence": "i5329 p. 8, Line 47. A withdrawn 2025 excess is refused (stage21.refuse.hsa_excess_withdrawn).",
+   "prompt_sha": "676994e56575a6a038e501c3b6d5f468d52de0a50c14f8bb1c3cc5b3fcf37cf3",
+   "gate": "f8889.unsupported"
   }
  },
  "baseline": {
@@ -550,7 +574,6 @@
   "stale:div": "3deed82bc592ec40",
   "stale:eic": "f9839c7000d5c609",
   "stale:f4562": "3b54e59971843c84",
-  "stale:f5329": "ef503afdbb69d36d",
   "stale:f5695": "4fd3ec308474d4ff",
   "stale:f8606": "28d26176121f19b8",
   "stale:f8863": "89102319000cb31a",
@@ -638,12 +661,6 @@
    "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
    "prompt_sha": "31146660878e324631fa8dfa90dbaf2dcdeec3b797a806d2aed1627065e7fe96",
    "subject": "d5709c776ceee1353a203cd5bfb3088ae6a2e086b62c04a55ee2682ed577bb1d"
-  },
-  "stale:f5329": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "e7cfab169e0aa3383309fb6444977a0496aed59b702bafb6d77d73ee6757acd5",
-   "subject": "ce6b98362e8f4bb2a4bcfe17da677fd57c38671023b531f096212559b2606c17"
   },
   "stale:f5695": {
    "policy": "never-reviewed-completeness-debt-v1",

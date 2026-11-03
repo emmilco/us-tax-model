@@ -209,7 +209,7 @@ The data holds **191 refusal gates**: 153 tax situations the tool does not prepa
   - *Refused at:* `person.sav_line1`, `person.sav_prior_joint`, `person.sav_prior_other`
 - **`person.x_other`**: Do you have a taxable Coverdell, 529 or ABLE distribution, earlier-year excess contributions still in an account, or a required minimum distribution you missed?
   - *The data asks or tests:* Form 5329 parts this tool does not prepare (`input`)
-  - *Not covered:* Form 5329 Parts II, III, IV, V, VI, VIII or IX. Taxable Coverdell, qualified tuition program or ABLE distributions, excess contributions to IRAs from an earlier year, excess Coverdell, Archer MSA or ABLE contributions, earlier-year HSA excess without Form 8889, and missed required minimum distributions need Form 5329 parts this tool does not prepare.
+  - *Not covered:* Form 5329 Parts II, III, IV, V, VI, VIII or IX, or an earlier-year excess in Part VII. Taxable Coverdell, qualified tuition program or ABLE distributions, excess contributions to IRAs from an earlier year, excess Coverdell, Archer MSA or ABLE contributions, earlier-year HSA excess, and missed required minimum distributions need Form 5329 parts this tool does not prepare.
     *Source:* [f5329] p. 1, Part II, "Complete this part if you included an amount in income, on Schedule 1 (Form 1040), line 8z, from a Coverdell education savings account (ESA) or a qualified tuition program (QTP), or on Schedule 1 (Form 1040), line 8q, from an ABLE account."
   - *Refused at:* `f5329.l4`, `f5329.l49`
 - **`sb.fbar_required`**: Must you file an FBAR (FinCEN Form 114) for foreign accounts?
