@@ -143,7 +143,7 @@ const FIXED = new Set([
 interface Employer { box1: number; box2pct: number; box7: number; over: number; deferral: number }
 interface Sale { box: string; aggregate: boolean; code: string; special: boolean; aggregate_eligible: boolean; proceeds: number; reported_basis: number; correct_basis: number; wash_loss: number; invalid: boolean }
 interface Gift { deduction: number; public_securities: boolean; special: boolean }
-interface Dependent { relationship: string; age: number; younger: boolean; student: boolean; disabled: boolean; months: number; self_support: boolean; joint_return: boolean; citizen: boolean; canada_mexico: boolean; married: boolean; tin: boolean; work_ssn: boolean; gross_income: number; supported: boolean; kidnapped: boolean; other_claimant: boolean; divorced_rule: boolean; multiple_support: boolean; parent_home_paid: boolean; us_half: boolean; eic_ssn: boolean }
+interface Dependent { relationship: string; age: number; younger: boolean; student: boolean; disabled: boolean; months: number; self_support: boolean; joint_return: boolean; citizen: boolean; canada_mexico: boolean; married: boolean; tin: boolean; work_ssn: boolean; gross_income: number; supported: boolean; kidnapped: boolean; other_claimant: boolean; other_nontaxpayer: boolean; divorced_rule: boolean; multiple_support: boolean; parent_home_paid: boolean; us_half: boolean; eic_ssn: boolean }
 interface Household { taxpayer_tin: boolean; taxpayer_work_ssn: boolean; home_cost: boolean; unmarried: boolean; married: boolean }
 interface Distribution { account: string; code: string; box1: number; box5: number; rollover: number; special: boolean; annuity: boolean; cost: number; used_last_year: boolean; last_line4: number; joint_life: boolean; age: number; combined_age: number; months: number; recovered: number; savExcluded: boolean }
 
@@ -336,7 +336,7 @@ export function returnArbitrary(data: CanonicalData): fc.Arbitrary<Inputs> {
     months: fc.oneof({ weight: 4, arbitrary: fc.constant(12) }, { weight: 1, arbitrary: fc.integer({ min: 0, max: 12 }) }),
     self_support: rareTrue(5), joint_return: rareTrue(3), citizen: rareTrue(90), canada_mexico: rareTrue(20), married: rareTrue(3),
     tin: rareTrue(95), work_ssn: rareTrue(90), gross_income: rareMoney(1_000_000, 20), supported: rareTrue(90),
-    kidnapped: fc.constant(false), other_claimant: rareTrue(3), divorced_rule: rareTrue(3), multiple_support: rareTrue(2), parent_home_paid: rareTrue(30),
+    kidnapped: fc.constant(false), other_claimant: rareTrue(3), other_nontaxpayer: fc.constant(false), divorced_rule: rareTrue(3), multiple_support: rareTrue(2), parent_home_paid: rareTrue(30),
     us_half: rareTrue(85), eic_ssn: rareTrue(90),
   });
   const household = fc.record<Household>({

@@ -254,6 +254,16 @@ form:
       cite:
         doc: i1040gi
         locator: p. 17, Step 1, "If the child meets the conditions to be a qualifying child of any other person ... see Qualifying child of more than one person"
+    - id: dependent.other_nontaxpayer
+      printed: (helper)
+      type: Bool
+      label: Every other person this person is a qualifying child of is not a taxpayer?
+      expr:
+        op: input
+        source: 'If this person meets the conditions to be the qualifying child of another person: is every such other person not a taxpayer for 2025? A person is not a taxpayer if they are not required to file a 2025 U.S. income tax return and either do not file one or file only to get a refund of withheld income tax or estimated tax paid (claiming no earned income credit or other tax credit or deduction), or if they are not a U.S. citizen and have no U.S. gross income.'
+      cite:
+        doc: i1040gi
+        locator: p. 19, Step 4, "Who wasn’t a qualifying child (see Step 1) of any taxpayer for 2025. For this purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t file such a return or files only to get a refund of withheld income tax or estimated tax paid."; p501 p. 18, Example 2—return filed to claim refund, "Your friend files a return only to get a refund of the income tax withheld and doesn’t claim the earned income credit or any other tax credits or deductions."; p501 p. 18, Child in Canada or Mexico, "If the persons the child does live with aren’t U.S. citizens and have no U.S. gross income, those persons aren’t “taxpayers,” so the child isn’t the qualifying child of any other taxpayer."
     - id: dependent.divorced_rule
       printed: (helper)
       type: Bool
@@ -598,7 +608,7 @@ form:
         doc: i1040gi
         locator: p. 17, Step 1, "Do you have a child who meets the conditions to be your qualifying child?"
       refuses:
-        - when: dependent.other_claimant
+        - when: dependent.qc_tiebreak
           form: Qualifying child of more than one person (tie-breaker rules)
           remedy: This person may be the qualifying child of another person. The tie-breaker rules are outside this tool.
           cite:
@@ -1242,6 +1252,48 @@ form:
         doc: i1040gi
         locator: p. 14, Head of Household, Test 1, "You paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent"
       refuses: *claimed_no_tin
+    - id: dependent.qc_tiebreak
+      printed: (gate)
+      type: Bool
+      label: The qualifying child of another person who is also your qualifying child, or whose other person is a taxpayer
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - dependent.other_claimant
+              - const: true
+          - op: test
+            any:
+              - op: test
+                eq:
+                  - dependent.other_nontaxpayer
+                  - const: false
+              - op: test
+                all:
+                  - op: test
+                    eq:
+                      - dependent.qc_relationship
+                      - const: true
+                  - op: test
+                    eq:
+                      - dependent.qc_age
+                      - const: true
+                  - op: test
+                    eq:
+                      - dependent.self_support
+                      - const: false
+                  - op: test
+                    eq:
+                      - dependent.joint_return
+                      - const: false
+                  - op: test
+                    eq:
+                      - dependent.lived_half
+                      - const: true
+      cite:
+        doc: p501
+        locator: p. 15, Qualifying Child of More Than One Person, "Sometimes, a child meets the relationship, age, residency, support, and joint return tests to be a qualifying child of more than one person."; i1040gi p. 19, Step 4, "For this purpose, a person isn’t a taxpayer if the person isn’t required to file a U.S. income tax return and either doesn’t file such a return or files only to get a refund of withheld income tax or estimated tax paid."
     - id: dependent.eic_child
       printed: (helper)
       type: Bool
@@ -1276,7 +1328,7 @@ form:
           cite:
             doc: i1040gi
             locator: p. 21, Kidnapped child, "For details, see Pub. 501 (Pub. 596 for the EIC)"
-        - when: dependent.other_claimant
+        - when: dependent.eic_tiebreak
           form: Qualifying child of more than one person (EIC)
           remedy: The tie-breaker rules for a child who is the qualifying child of more than one person are outside this tool.
           cite:
@@ -1288,6 +1340,36 @@ form:
           cite:
             doc: i1040gi
             locator: p. 44, Married child
+    - id: dependent.eic_tiebreak
+      printed: (gate)
+      type: Bool
+      label: The qualifying child of another person who is also your qualifying child for the EIC
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - dependent.other_claimant
+              - const: true
+          - op: test
+            eq:
+              - dependent.qc_relationship
+              - const: true
+          - op: test
+            eq:
+              - dependent.qc_age
+              - const: true
+          - op: test
+            eq:
+              - dependent.joint_return
+              - const: false
+          - op: test
+            eq:
+              - dependent.us_half
+              - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 44, Qualifying child of more than one person, "Even if a child meets the conditions to be the qualifying child of more than one person, only one person can claim the child as a qualifying child for all of the following tax benefits"
     - id: dependent.kidnap_eic
       printed: (gate)
       type: Bool

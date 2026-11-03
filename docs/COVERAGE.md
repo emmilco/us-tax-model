@@ -14,16 +14,16 @@ Measured, below 0.5% of returns, and not in the table:
 - Foreign earned income exclusion (Form 2555): 0.3%
 - Alternative minimum tax: 0.1%
 
-Not named in the table: 148 of the 156 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
+Not named in the table: 149 of the 157 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
 
 The estimate puts coverage at 78.4% of returns (`reports/2025/filer_coverage.json`). It does not count the unmeasured situations, so the true figure is lower.
 
 ## Every refusal
 
-The data holds **194 refusal gates**: 156 tax situations the tool does not prepare, grouped by topic below, and 38 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
+The data holds **195 refusal gates**: 157 tax situations the tool does not prepare, grouped by topic below, and 38 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
 
 - [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (30)
-- [Household and dependents](#household-and-dependents) (13)
+- [Household and dependents](#household-and-dependents) (14)
 - [Interest and dividends](#interest-and-dividends) (4)
 - [Sales and capital gains](#sales-and-capital-gains) (5)
 - [Retirement distributions](#retirement-distributions) (7)
@@ -329,14 +329,17 @@ The data holds **194 refusal gates**: 156 tax situations the tool does not prepa
   - *Not covered:* Children of divorced or separated parents. The rule for children of divorced or separated parents is outside this tool.
     *Source:* [i1040gi] p. 20, Children of divorced or separated parents
   - *Refused at:* `dependent.qualifying_child`
-- **`dependent.other_claimant`**: Could a person you would claim also be the qualifying child of someone else (the tie-breaker rules)?
-  - *The data asks or tests:* Meets the conditions to be the qualifying child of another person? (`input`)
+- **`dependent.qc_tiebreak`**: Could your qualifying child also be the qualifying child of someone else (the tie-breaker rules), or could a person you would claim be the qualifying child of another taxpayer?
+  - *The data asks or tests:* The qualifying child of another person who is also your qualifying child, or whose other person is a taxpayer (`test`)
   - *Stops the return as:* Qualifying child of more than one person (tie-breaker rules)
   - *Not covered:* Qualifying child of more than one person (tie-breaker rules). This person may be the qualifying child of another person. The tie-breaker rules are outside this tool.
     *Source:* [i1040gi] p. 21, Qualifying child of more than one person
+  - *Refused at:* `dependent.qualifying_child`
+- **`dependent.eic_tiebreak`**: Could your qualifying child for the EIC also be the qualifying child of someone else (the EIC tie-breaker rules)?
+  - *The data asks or tests:* The qualifying child of another person who is also your qualifying child for the EIC (`test`)
   - *Not covered:* Qualifying child of more than one person (EIC). The tie-breaker rules for a child who is the qualifying child of more than one person are outside this tool.
     *Source:* [i1040gi] p. 44, Qualifying child of more than one person
-  - *Refused at:* `dependent.qualifying_child`, `dependent.eic_child`
+  - *Refused at:* `dependent.eic_child`
 - **`dependent.multiple_support`**: Is anyone supported under a multiple support arrangement?
   - *The data asks or tests:* Claimed under a multiple support agreement? (`input`)
   - *Not covered:* Multiple support agreements. A person claimed under a multiple support agreement is outside this tool.

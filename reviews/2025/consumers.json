@@ -18,6 +18,54 @@
    "source_phrase": "Birth or death of otherwise qualifying person, \"a person who was born or died in 2025\"",
    "reason": "A qualifying person for the dependent care credit must be a dependent or a person who could be one, which a stillborn child cannot be (p501 p. 13); the birth-or-death question means the same thing on this page."
   },
+  "consumer:dependent.self_support@i1040gi:p19": {
+   "verdict": "same",
+   "question_phrase": "provide over half of their own support for 2025",
+   "source_phrase": "Who wasn’t a qualifying child (see Step 1) of any taxpayer for 2025",
+   "reason": "dependent.qc_tiebreak reads the Step 1 support test to decide whether the person is your own qualifying child; p. 19 is cited for the meaning of taxpayer, not of support, and the Step 1 meaning is unchanged."
+  },
+  "consumer:dependent.other_claimant@i1040gi:p19": {
+   "verdict": "same",
+   "question_phrase": "meet the conditions to be the qualifying child of any other person for 2025, under the dependent rules or under the EIC rules",
+   "source_phrase": "Who wasn’t a qualifying child (see Step 1) of any taxpayer for 2025. For this purpose, a person isn’t a taxpayer if ...",
+   "reason": "The gate combines this answer with dependent.other_nontaxpayer to reach p. 19's 'qualifying child of any taxpayer'; the question is broader (it includes the EIC rules), so a broader Yes can only keep the refusal, never compute a qualifying relative the page excludes."
+  },
+  "consumer:dependent.other_claimant@p501:p15": {
+   "verdict": "same",
+   "question_phrase": "meet the conditions to be the qualifying child of any other person for 2025",
+   "source_phrase": "Sometimes, a child meets the relationship, age, residency, support, and joint return tests to be a qualifying child of more than one person.",
+   "reason": "The tie-breaker applies to a child who is the qualifying child of another person and of you; the question asks the first half and the gate tests the second from your own Step 1 answers."
+  },
+  "consumer:dependent.joint_return@i1040gi:p19": {
+   "verdict": "same",
+   "question_phrase": "Is a joint return being filed for 2025 that includes this person ... other than one filed only to claim a refund",
+   "source_phrase": "Who wasn’t a qualifying child (see Step 1) of any taxpayer for 2025",
+   "reason": "The gate reads the Step 1 joint return test to decide whether the person is your own qualifying child; p. 19 is cited for the meaning of taxpayer, and the Step 1 meaning is unchanged."
+  },
+  "consumer:dependent.joint_return@p501:p15": {
+   "verdict": "same",
+   "question_phrase": "Is a joint return being filed for 2025 that includes this person ... other than one filed only to claim a refund",
+   "source_phrase": "meets the relationship, age, residency, support, and joint return tests to be a qualifying child of more than one person",
+   "reason": "The joint return test named on p. 15 is the Step 1 test the question asks."
+  },
+  "consumer:dependent.other_nontaxpayer@p501:p15": {
+   "verdict": "same",
+   "question_phrase": "is every such other person not a taxpayer for 2025? A person is not a taxpayer if they are not required to file ...",
+   "source_phrase": "Sometimes, a child meets the relationship, age, residency, support, and joint return tests to be a qualifying child of more than one person.",
+   "reason": "The gate does not let this answer lift the tie-breaker refusal: when the person passes your own qualifying child tests the gate refuses whatever this answer is, and the answer matters only for a person who is not your qualifying child (the p. 19 test)."
+  },
+  "consumer:dependent.joint_return@i1040gi:p44": {
+   "verdict": "same",
+   "question_phrase": "Is a joint return being filed for 2025 that includes this person ... other than one filed only to claim a refund",
+   "source_phrase": "Even if a child meets the conditions to be the qualifying child of more than one person, only one person can claim the child",
+   "reason": "dependent.eic_tiebreak reads the EIC joint return condition (p. 41, Step 3) to decide whether the child is your EIC qualifying child; the meaning is the one dependent.eic_child already reads."
+  },
+  "consumer:dependent.other_claimant@i1040gi:p44": {
+   "verdict": "same",
+   "question_phrase": "meet the conditions to be the qualifying child of any other person for 2025, under the dependent rules or under the EIC rules (which have no support test)",
+   "source_phrase": "Even if a child meets the conditions to be the qualifying child of more than one person, only one person can claim the child",
+   "reason": "The EIC tie-breaker applies to a child who is the qualifying child of another person under the EIC rules and is yours; the question includes the EIC rules and the gate tests the rest from your EIC answers."
+  },
   "consumer:dependent.disabled@i1040gi:p19": {
    "verdict": "same",
    "question_phrase": "permanently and totally disabled at any time in 2025, that is, unable to engage in any substantial gainful activity",
@@ -483,7 +531,6 @@
   "consumer:dependent.married@i1040gi:p17": "68b73057bcc456cc",
   "consumer:dependent.married@i1040gi:p19": "68b73057bcc456cc",
   "consumer:dependent.married@i1040gi:p41": "68b73057bcc456cc",
-  "consumer:dependent.other_claimant@i1040gi:p41": "fc28e164328ab0dd",
   "consumer:dependent.part_year_home@p503:p3": "9ff456232364622d",
   "consumer:dependent.placed@p501:p9": "29d06457176ad4aa",
   "consumer:dependent.relationship@i1040gi:p14": "931570f8fa68a8c0",

@@ -541,6 +541,10 @@ bank:
     order: 2
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
       do not guess. Married filing separately and unsupported items are refused with citations.
+  - input: dependent.other_nontaxpayer
+    order: 2
+    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
+      do not guess. Married filing separately and unsupported items are refused with citations.
   - input: dependent.divorced_rule
     order: 2
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;

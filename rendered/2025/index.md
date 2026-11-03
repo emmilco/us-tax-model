@@ -10,7 +10,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | clcw.md | worksheet | 33 |
 | clcw26.md | worksheet | 19 |
 | dcprov.md | worksheet | 6 |
-| dependent.md | worksheet | 108 |
+| dependent.md | worksheet | 111 |
 | div.md | form | 22 |
 | eic.md | worksheet | 88 |
 | f1040.md | form | 65 |
