@@ -13415,7 +13415,7 @@
         "household"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "stage8.hoh.actc.three_children with dependent[b].kidnapped withheld. Before the fix household.test2_met was decided true from a lower bound of 2 and Form 1040 line 16 computed. Finding F1 extended to the where-test path: sum_over kept the known entries as a lower bound while another entry's where test awaited dependent.kidnapped, a refusal gate on dependent.lived_half and dependent.eic_child. The unanswered gate can become a refusal, so the counts, the tests decided from them and the return must stay unknown.",
+      "evidence_note": "stage8.hoh.actc.three_children with dependent[b].kidnapped withheld. Before the fix household.test2_met was decided true from a lower bound of 2 and Form 1040 line 16 computed. Finding F1 extended to the where-test path: sum_over kept the known entries as a lower bound while another entry's where test awaited dependent.kidnapped, a refusal gate on dependent.lived_half and dependent.eic_child. The unanswered gate can become a refusal, so the counts, the tests decided from them and the return must stay unknown. The withheld child lived with you 4 months: the kidnapped answer decides the refusal gate dependent.kidnap_residency only below 7 months, so the case keeps an unanswered gate on the where path.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -13546,7 +13546,7 @@
         "dependent[b].spouse_relative": false,
         "dependent[b].qr_all_year": true,
         "dependent[b].absence_no_return": false,
-        "dependent[b].months": 12,
+        "dependent[b].months": 4,
         "dependent[b].self_support": false,
         "dependent[b].joint_return": false,
         "dependent[b].citizen": true,
@@ -13668,7 +13668,7 @@
         "eic"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "stage9.eic.two_children.15000 with dependent[c2].kidnapped withheld. Before the fix eic.has_qc was decided true from a lower bound of 1 and Form 1040 line 16 computed. Finding F1 extended to the where-test path: sum_over kept the known entries as a lower bound while another entry's where test awaited dependent.kidnapped, a refusal gate on dependent.lived_half and dependent.eic_child. The unanswered gate can become a refusal, so the counts, the tests decided from them and the return must stay unknown.",
+      "evidence_note": "stage9.eic.two_children.15000 with dependent[c2].kidnapped withheld. Before the fix eic.has_qc was decided true from a lower bound of 1 and Form 1040 line 16 computed. Finding F1 extended to the where-test path: sum_over kept the known entries as a lower bound while another entry's where test awaited dependent.kidnapped, a refusal gate on dependent.lived_half and dependent.eic_child. The unanswered gate can become a refusal, so the counts, the tests decided from them and the return must stay unknown. The withheld child lived with you 4 months and not in the United States for more than half of 2025: the kidnapped answer decides the refusal gates dependent.kidnap_residency and dependent.kidnap_eic only then, so the case keeps an unanswered gate on the where path.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -13809,7 +13809,7 @@
         "dependent[c2].spouse_relative": false,
         "dependent[c2].qr_all_year": true,
         "dependent[c2].absence_no_return": false,
-        "dependent[c2].months": 12,
+        "dependent[c2].months": 4,
         "dependent[c2].self_support": false,
         "dependent[c2].joint_return": false,
         "dependent[c2].citizen": true,
@@ -13824,7 +13824,7 @@
         "dependent[c2].multiple_support": false,
         "dependent[c2].parent_home_paid": false,
         "dependent[c2].younger": true,
-        "dependent[c2].us_half": true,
+        "dependent[c2].us_half": false,
         "dependent[c1].eic_ssn": true,
         "dependent[c2].eic_ssn": true,
         "$retirement@person[taxpayer]": [],
