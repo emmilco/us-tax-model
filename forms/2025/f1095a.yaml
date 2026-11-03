@@ -194,7 +194,8 @@ form:
     expr:
       op: input
       source: 'January 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero only if
+        no one was enrolled in this policy that month (column A blank)'
     cite: *id003
   - id: f1095a.in_b_feb
     printed: (helper)
@@ -203,7 +204,8 @@ form:
     expr:
       op: input
       source: 'February 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero only if
+        no one was enrolled in this policy that month (column A blank)'
     cite: *id003
   - id: f1095a.in_b_mar
     printed: (helper)
@@ -212,7 +214,8 @@ form:
     expr:
       op: input
       source: 'March 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero only if
+        no one was enrolled in this policy that month (column A blank)'
     cite: *id003
   - id: f1095a.in_b_apr
     printed: (helper)
@@ -221,7 +224,8 @@ form:
     expr:
       op: input
       source: 'April 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero only if
+        no one was enrolled in this policy that month (column A blank)'
     cite: *id003
   - id: f1095a.in_b_may
     printed: (helper)
@@ -230,7 +234,8 @@ form:
     expr:
       op: input
       source: 'May 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero only if
+        no one was enrolled in this policy that month (column A blank)'
     cite: *id003
   - id: f1095a.in_b_jun
     printed: (helper)
@@ -239,7 +244,8 @@ form:
     expr:
       op: input
       source: 'June 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero only if
+        no one was enrolled in this policy that month (column A blank)'
     cite: *id003
   - id: f1095a.in_b_jul
     printed: (helper)
@@ -248,7 +254,8 @@ form:
     expr:
       op: input
       source: 'July 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero only if
+        no one was enrolled in this policy that month (column A blank)'
     cite: *id003
   - id: f1095a.in_b_aug
     printed: (helper)
@@ -257,7 +264,8 @@ form:
     expr:
       op: input
       source: 'August 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero only if
+        no one was enrolled in this policy that month (column A blank)'
     cite: *id003
   - id: f1095a.in_b_sep
     printed: (helper)
@@ -266,7 +274,8 @@ form:
     expr:
       op: input
       source: 'September 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero only if
+        no one was enrolled in this policy that month (column A blank)'
     cite: *id003
   - id: f1095a.in_b_oct
     printed: (helper)
@@ -275,7 +284,8 @@ form:
     expr:
       op: input
       source: 'October 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero only if
+        no one was enrolled in this policy that month (column A blank)'
     cite: *id003
   - id: f1095a.in_b_nov
     printed: (helper)
@@ -284,7 +294,8 @@ form:
     expr:
       op: input
       source: 'November 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero only if
+        no one was enrolled in this policy that month (column A blank)'
     cite: *id003
   - id: f1095a.in_b_dec
     printed: (helper)
@@ -293,7 +304,8 @@ form:
     expr:
       op: input
       source: 'December 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if blank'
+        if column B is blank, zero or wrong (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero only if
+        no one was enrolled in this policy that month (column A blank)'
     cite: *id003
   - id: f1095a.in_c_jan
     printed: (helper)
