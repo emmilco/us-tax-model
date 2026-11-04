@@ -43,11 +43,9 @@ decisions). No paid model call was made; the review tools under `tools/transcrip
 not run (commits use `--no-verify`, approved for this branch); `tools/citations.py --strict` reported 0 findings
 before each commit (it does not read the New York archive yet: C1, C8).
 
-**After Phase 2, same session:** the owner shared images of their 2025 IT-201 (identifiers cropped); the checklist
-answers were read from them and recorded as yes/no and zero/nonzero only, with nothing from the images stored. The
-map's rules reproduce every computed line of that return. The owner then answered A1, A3, A12 and A13 and accepted every
-suggestion in Parts B and C (recorded at the end of `docs/ny/DECISIONS.md`); spec 2.3 now records the branch's
-exception (C7).
+**After Phase 2, same session:** the owner answered the checklist (Part A; the answers are not recorded, the
+repository being public) and accepted every suggestion in Parts B and C (recorded at the end of
+`docs/ny/DECISIONS.md`); spec 2.3 now records the branch's exception (C7).
 
 **Next:** Phase 3 (a new section of the brief): the archive layout and
 tool coverage (C1, C8), the New York forms, parameters and tables (tax tables extracted from the web page), interview

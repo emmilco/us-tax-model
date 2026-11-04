@@ -69,7 +69,7 @@ The estimated tax penalty is not computed. The tool states that the IRS will fig
 - Filing, signing or transmitting a return, or producing electronic filing data.
 - Automating entry into any IRS system.
 - Any hosted service, account, telemetry, analytics or network call carrying return data.
-- State returns, until the federal coverage goal is met. New York is the first state intended thereafter (section 2.4). Exception (owner, 2026-11-04): the owner's own New York return (Form IT-201, full-year New York City resident) is built on branch `ny/2025-foundation` ahead of that goal, without changing the federal schedule or encoding (`docs/ny/2026-11-04_ny_cloud_brief.md`, `docs/ny/DECISIONS.md`).
+- State returns, until the federal coverage goal is met. New York is the first state intended thereafter (section 2.4). Exception (owner, 2026-11-04): a New York return (Form IT-201) is built on branch `ny/2025-foundation` ahead of that goal, without changing the federal schedule or encoding (`docs/ny/2026-11-04_ny_cloud_brief.md`, `docs/ny/DECISIONS.md`).
 - Importing broker files.
 - Filling official PDFs. Deferred until the PDF field structure has been inspected.
 - A language model anywhere in the runtime path.
