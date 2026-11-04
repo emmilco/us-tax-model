@@ -7,7 +7,7 @@ import { join, resolve } from "node:path";
 import { parse as parseYaml } from "yaml";
 import { Ajv2020 } from "ajv/dist/2020.js";
 import type { ValidateFunction } from "ajv";
-import { stableStringify } from "./util.js";
+import { isMarkedLine, stableStringify } from "./util.js";
 import { type InterviewData } from "./interview.js";
 import { checkInterview, checkSalesInterview } from "./interview-check.js";
 import { runChecks } from "./check.js";
@@ -241,7 +241,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     const asked = new Set([interview, salesInterview, stage4Interview, fullInterview].flatMap((i) => i.questions.map((q) => q.input)));
     for (const d of data.forms) if (d.collection?.implicit && asked.has(`$${d.id}`)) errors.push(`${d.id}: an implicit collection's entry is never asked, but an interview asks $${d.id}`);
     for (const d of data.forms) for (const l of d.lines) {
-      if (String(l.printed).startsWith("(") === false) continue; // printed lines are the form's own lines
+      if (!isMarkedLine(l)) continue; // numbered lines are the form's own lines; helper, column and worksheet-step lines are checked
       const unread = !read.has(l.id) && !targets.has(l.id);
       if (unread && !l.display) errors.push(`${d.id}.${l.id}: no line reads this ${l.expr.op} line and it is not an interview target; remove it or say why it is shown (display)`);
       if (!unread && l.display) errors.push(`${d.id}.${l.id}: marked display but read by another line or an interview target`);

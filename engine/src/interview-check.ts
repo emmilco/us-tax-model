@@ -10,12 +10,13 @@ import { interviewState, replay, type InterviewData } from "./interview.js";
 import type { CanonicalData, Inputs } from "./types.js";
 import { yearPath } from "./year.js";
 import { resolveInputs } from "./fixture-inputs.js";
+import { templateKey } from "./branches.js";
 
 export function checkInterview(data: CanonicalData, config: InterviewData, paths?: string[]): string[] {
   const errors: string[] = [];
   const fixtures = (JSON.parse(readFileSync(yearPath("fixtures", "stage2.json"),"utf8")) as {cases:{id:string;inputs:Inputs}[]}).cases.map(c=>({...c,inputs:resolveInputs(c.inputs,data.params,c.id)}));
   const domain = (key: string): unknown[] | undefined => {
-    const template = key.replace(/(?:[a-zA-Z0-9_]+\[[^\]]+\]\.)+/g, m => m.split(".").filter(Boolean).at(-1)!.split("[")[0]+".");
+    const template = templateKey(key);
     const line = data.forms.flatMap(d=>d.lines).find(l=>l.id===template);
     if (line?.type === "Bool") return [false,true];
     if (line?.type.startsWith("Enum(")) return data.params.enums[line.type.slice(5,-1)]!.values;

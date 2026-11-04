@@ -1,7 +1,15 @@
 /-
 The reference evaluator: reads the canonical JSON and evaluates the Stage 1
 slice with the same semantics as the TypeScript evaluator (integer cents,
-half-up multiply via the proved Atoms functions).
+half-up multiply). Each arithmetic atom is computed by the `Atoms.lean`
+function its lemmas are about: `sum` and `sum_over` by `sumList` (over the
+selected entries, for `sum_over`), `subtract` and `subtract_floor0` by
+`subtract` and `subtractFloor0`, `smaller_of` and `larger_of` by
+`smallerOfList` and `largerOfList`, `multiply_rate` by `multiplyRateHalfUp`
+or `multiplyRateToUnit`, `multiply_count` by `multiplyCount`, `prorate` by
+`prorate`, `percent_floor` by `percentFloor`, `round` by `roundByRule`, and
+`table_lookup`, `rate_lookup` and `keyed_lookup` by `tableBand`, `rateBand`
+and `keyedLookup`. Tests, `choose`, `copy` and `param` are defined here.
 
 The evaluator is a single function over an instruction dispatch, mirroring
 the TypeScript evaluator's frame handling for parameterized def instances.
@@ -417,7 +425,7 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
         | some (.arr entries) =>
           let field := (strGet expr "field").getD ""
           let isCount := strGet ((findLine doc field).getD Json.null) "type" == some "Count"
-          let mut total : Int := 0
+          let mut amounts : Array Int := #[]
           let mut missing : Option Json := none
           let mut gatePending := false
           let sorted := entries.qsort (fun a b => a.compress < b.compress)
@@ -438,7 +446,8 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
               if isUnknown v then
                 missing := missing <|> some v
                 gatePending := gatePending || isPending v
-              else total := total + (if isCount then numGet v "value" else moneyOf v).getD 0
+              else amounts := amounts.push ((if isCount then numGet v "value" else moneyOf v).getD 0)
+          let total := sumList amounts.toList
           match missing with
           -- An entry whose unknown traces back to a refusal gate awaiting its answer may become a
           -- refusal rather than a count: the known entries then bound nothing.
@@ -449,7 +458,7 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
       match objGet expr "of" with
       | some (.arr refs) =>
         -- All operands money, or all Counts (the checker allows nothing else).
-        let mut total : Int := 0
+        let mut amounts : Array Int := #[]
         let mut unk : Option Json := none
         let mut unkPending := false
         let mut wrong : Option Json := none
@@ -464,7 +473,7 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
               if kind.isSome && kind != some k then
                 if wrong.isNone then wrong := some (unknown "sum operands mix money and Counts")
               if kind.isNone then kind := some k
-              total := total + (if isMoney v then (moneyOf v).getD 0 else (numGet v "value").getD 0)
+              amounts := amounts.push (if isMoney v then (moneyOf v).getD 0 else (numGet v "value").getD 0)
             else if isUnknown v then
               if unk.isNone then unk := some v
               unkPending := unkPending || isPending v
@@ -474,7 +483,9 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
         match unk, wrong with
         | some u, _ => return markPending u unkPending
         | none, some w => return w
-        | none, none => return (if kind == some "count" then mkCount total else mkMoney total)
+        | none, none =>
+          let total := sumList amounts.toList
+          return (if kind == some "count" then mkCount total else mkMoney total)
       | _ => pure (unknown "sum has no operands")
     | "subtract" | "subtract_floor0" =>
       match strGet expr "from" with
@@ -484,8 +495,9 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
         let takeV ← eval ctx fuel frame (.operand takeJson)
         if let some x := incompleteOperand [fromV, takeV] then pure x
         else if isMoney fromV && isMoney takeV then
-          let d := (moneyOf fromV).getD 0 - (moneyOf takeV).getD 0
-          pure (mkMoney (if op == "subtract_floor0" then max 0 d else d))
+          let a := (moneyOf fromV).getD 0
+          let b := (moneyOf takeV).getD 0
+          pure (mkMoney (if op == "subtract_floor0" then subtractFloor0 a b else subtract a b))
         else pure (unknown "operands are not money")
       | none => pure (unknown "subtract has no minuend")
     | "smaller_of" | "larger_of" =>
@@ -507,8 +519,7 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
         match vals with
         | [] => pure (unknown "no operands")
         | x :: rest =>
-          let allFold := rest.foldl (fun acc y => if op == "smaller_of" then min acc y else max acc y) x
-          pure (mkMoney allFold)
+          pure (mkMoney (if op == "smaller_of" then smallerOfList x rest else largerOfList x rest))
       | _ => pure (unknown "no operands")
     | "multiply_count" =>
       match strGet expr "amount", strGet expr "count" with

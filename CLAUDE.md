@@ -2,8 +2,8 @@
 
 Current execution: read the top entry of `HANDOFF-NEXT-SESSION.md` first; it names the current handoff
 (in `handoffs/`). `handoffs/HANDOFF-HARDENING-1.md` holds the owner's standing decisions and operational
-facts. Older handoffs (`HANDOFF.md`, `HANDOFF-INTEGRITY.md`, `HANDOFF-STAGE-16.md` and the stage handoffs
-in `handoffs/`) are historical. `docs/2026-10-24_validation_policy.md` remains the controlling validation
+facts. Older handoffs (all of `handoffs/` except HARDENING-1, including `HANDOFF.md`, `HANDOFF-INTEGRITY.md`
+and `HANDOFF-STAGE-16.md`) are historical. `docs/2026-10-24_validation_policy.md` remains the controlling validation
 amendment: human packets and ruling samples are optional; proceed without waiting for them and preserve
 original verdicts. The required review family is Claude (`claude-opus-5-5`); `deepseek-flash` and
 `gpt-6-astra` are optional peer families (owner's model-authority ranking is in the validation policy:
@@ -19,6 +19,9 @@ advisory only).
     form's next real change; there is no global re-review unless a measured defect calls for it.
   - Rule repeat disagreements mechanically where the carry-over tool allows (T-218), and scope
     reviews to changed lines and their readers once that exists (T-219).
+  - DeepSeek transcription runs only on forms where its log is eligible for second-family credit
+    (`compare_families.py`) or for a change the owner flags; DeepSeek render and class M run as before
+    (owner decision 2026-11-04).
   - Mechanical agent work (applying rulings, bug-entry formatting, input ripple, bookkeeping)
     runs on Sonnet; judgment (adjudication, source reading, design) on Opus.
   - Every paid review call is logged in `.transcription/costs.jsonl` (`tools/transcription/costs.py`)

@@ -26,12 +26,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
+import taxyear  # noqa: E402
 from taxyear import Y  # noqa: E402
 PDF = ROOT / "sources" / Y / "i1040gi.pdf"
 MANIFEST = ROOT / "sources" / Y / "manifest.json"
 OUT = ROOT / "tables" / Y / "tax_table.yaml"
 
-FIRST_PAGE, LAST_PAGE = 68, 79  # PDF pages (1-based) of the Tax Table in the 2025 i1040gi; unverified for other years
+# PDF pages (1-based) of the Tax Table in each year's i1040gi.
+FIRST_PAGE, LAST_PAGE = taxyear.for_year({2025: (68, 79)}, "extract_tax_table.py: the Tax Table pages of i1040gi")
 TOOL_VERSION = "0.1"
 
 

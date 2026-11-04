@@ -29,9 +29,10 @@ def apply(form, rulings, kind="transcription", family=families.DEFAULT):
     parts = body.split("\n### ")
     applied = []
     stored = sidecar.load(kind, form, family)
-    context = sidecar.review_context(kind, text)
+    blocks = sidecar.pass_blocks(text)
     for i in range(1, len(parts)):
         title, _, content = parts[i].partition("\n")
+        context = sidecar.section_context(kind, text, content, blocks)
         printed = title.split(" — ")[0]
         if "Ruling: open" not in content:
             continue
@@ -49,6 +50,8 @@ def apply(form, rulings, kind="transcription", family=families.DEFAULT):
             found = sidecar.section_key(kind, title, content)
             if found is None:
                 raise SystemExit(f"{form}: cannot key the disagreement at {printed} for the sidecar")
+            if context is None:
+                raise SystemExit(f"{form}: the section at {printed} names a line-scoped pass the log does not hold")
             stored[found[0]] = {"ruling": ruling.rstrip(), "drop": bool(drop), "context": context}
             if drop:
                 ruling = ruling.rstrip() + " [dropped]"

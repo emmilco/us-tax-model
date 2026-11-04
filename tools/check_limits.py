@@ -23,7 +23,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 from taxyear import Y  # noqa: E402
-from citations import citations, form_files, segments  # noqa: E402
+from citations import citations, form_files, segments, split_sentences  # noqa: E402
 import baseline_check  # noqa: E402
 import archive_text  # noqa: E402
 
@@ -47,7 +47,8 @@ def cited_pages():
 
 
 def sentences(text):
-    return [s.strip() for s in re.split(r"(?<=[.!?])\s+", re.sub(r"\s+", " ", text)) if s.strip()]
+    """The page's sentences, whitespace collapsed; "Pub. 946" and the like do not end one."""
+    return [s.strip() for s in split_sentences(re.sub(r"\s+", " ", text)) if s.strip()]
 
 
 def findings():
@@ -103,6 +104,8 @@ def self_test():
     assert PHRASE.search("the total of the amounts on line 2 of all Form(s) 7206 can't be more than")
     assert not PHRASE.search("Enter the amount from line 3.")
     assert sentences("One. Two two.  Three?") == ["One.", "Two two.", "Three?"]
+    assert sentences("See Pub. 946 and Rev. Proc. 2024-40. A U.S. citizen, Form No. 15 p. 7. Is it? No. Stop.") == [
+        "See Pub. 946 and Rev. Proc. 2024-40.", "A U.S. citizen, Form No. 15 p. 7.", "Is it?", "No.", "Stop."]
     print("limits self-test: ok")
     return 0
 

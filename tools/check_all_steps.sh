@@ -61,6 +61,7 @@ step compile npm run compile --silent
 wave
 
 step build build_and_render "$@"
+step check_self_test "${node[@]}" check-self-test
 wave
 
 step fetch_sources python3 tools/fetch_sources.py "$@"
@@ -70,7 +71,7 @@ step check_extraction python3 tools/check_extraction.py "$@"
 step check_extraction_self_test python3 tools/check_extraction.py --self-test
 step check_macrs_tables python3 tools/check_macrs_tables.py "$@"
 step check_macrs_tables_self_test python3 tools/check_macrs_tables.py --self-test "$@"
-step check_ptc_tables python3 tools/extract_ptc_tables.py --check
+step check_ptc_tables python3 tools/extract_ptc_tables.py --check "$@"
 step check_auto_limits python3 tools/check_auto_limits.py "$@"
 step check_auto_limits_self_test python3 tools/check_auto_limits.py --self-test "$@"
 step check_bug_inventory python3 tools/check_bug_inventory.py
@@ -80,7 +81,7 @@ step pre_push_self_test bash tools/hooks/test_pre_push.sh
 step green_self_test bash tools/hooks/test_green.sh
 step consistency_checks node tools/test_consistency_checks.mjs
 step siblings_self_test python3 tools/siblings.py --self-test
-step siblings_check python3 tools/siblings.py --check
+step siblings_check python3 tools/siblings.py --check "$@"
 step adapter_contracts python3 tools/transcription/adapter_contracts.py "$@"
 step classm_skipped python3 tools/transcription/audit_skipped.py "$@"
 step compare_families python3 tools/transcription/compare_families.py "$@"
@@ -89,6 +90,8 @@ step check_table_logs python3 tools/transcription/check_table_logs.py "$@"
 step citations python3 tools/citations.py --strict "$@"
 step citations_self_test python3 tools/citations.py --self-test "$@"
 step year_diff_self_test python3 tools/year_diff.py --self-test "$@"
+step fixtures_year_self_test python3 tools/fixtures_year.py --self-test
+step engine_compare_tests python3 -I tools/engines/test_compare.py
 step coverage_tree_self_test python3 tools/coverage/tree.py --self-test "$@"
 # Source-coverage checks (T-084 to T-089) read the canonical data and rendered English the build writes.
 step instruction_cites python3 tools/check_instruction_cites.py "$@"
@@ -108,10 +111,10 @@ wave
 
 step conjecture "${node[@]}" conjecture "$@"
 step test_fixtures "${node[@]}" test-fixtures "$@"
-step refusal_reach "${node[0]}" tools/check_refusal_reach.mjs
+step refusal_reach "${node[0]}" tools/check_refusal_reach.mjs "$@"
 step test_integration "${node[@]}" test-integration "$@"
 step human_review python3 tools/human_review/test_review.py "$@"
-step classm_job_seeds "${node[0]}" tools/transcription/test_classm_jobs.mjs
+step classm_job_seeds "${node[0]}" tools/transcription/test_classm_jobs.mjs "$@"
 step coverage "${node[@]}" coverage "$@"
 # Every refusal gate placed in the decision tree, and docs/COVERAGE.md and the README block current.
 step coverage_tree python3 tools/coverage/tree.py --check "$@"

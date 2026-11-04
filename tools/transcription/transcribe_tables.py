@@ -29,6 +29,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
+import taxyear  # noqa: E402
 from taxyear import Y, YEAR_ARGS  # noqa: E402
 import archive_text  # noqa: E402
 sys.path.insert(0, str(ROOT / "tools" / "transcription"))
@@ -40,13 +41,17 @@ WORK = ROOT / ".transcription" / "tables"
 SYSTEM = ("You transcribe tables from IRS publications from the text given to you. "
           "You have no tools and no other sources. Output only the YAML requested.")
 
+# The Pub. 946 pages each job reads, per year's printing.
+PAGES = taxyear.for_year({2025: {"class_lives": list(range(99, 109)), "macrs_mq": [71, 72, 73]}},
+                         "transcribe_tables.py: the Pub. 946 pages of Tables A-1 to A-5 and B-1 and B-2")
+
 JOBS = {
     "class_lives": {
         "table": f"tables/{Y}/class_lives.yaml",
         "doc": "p946",
-        "pages": list(range(99, 109)),
+        "pages": PAGES["class_lives"],
         "ask": (
-            f"Below is the layout text (pdftotext -layout) of pages 99 to 108 of IRS Publication 946 ({Y}), "
+            f"Below is the layout text (pdftotext -layout) of pages {PAGES['class_lives'][0]} to {PAGES['class_lives'][-1]} of IRS Publication 946 ({Y}), "
             "Appendix B, Tables B-1 and B-2, Table of Class Lives and Recovery Periods. Transcribe every row that "
             "has an asset class number (such as 00.11 or 57.0). For each, give: asset_class (as printed), "
             "class_life (the number in the Class Life column, or null if none is printed for that class), "
@@ -61,9 +66,9 @@ JOBS = {
     "macrs_mq": {
         "table": f"tables/{Y}/macrs_gds.yaml",
         "doc": "p946",
-        "pages": [71, 72, 73],
+        "pages": PAGES["macrs_mq"],
         "ask": (
-            f"Below is the layout text of pages 71 to 73 of IRS Publication 946 ({Y}), Appendix A, Tables A-1 to A-5 "
+            f"Below is the layout text of pages {PAGES['macrs_mq'][0]} to {PAGES['macrs_mq'][-1]} of IRS Publication 946 ({Y}), Appendix A, Tables A-1 to A-5 "
             "(MACRS, 3- to 20-year property). Transcribe two columns exactly as printed: the 7-year column of Table A-3 "
             "(mid-quarter convention, placed in service in second quarter) and the 20-year column of Table A-2 "
             "(mid-quarter convention, placed in service in first quarter). For each, list every year and its rate as "

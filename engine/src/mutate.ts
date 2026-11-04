@@ -1706,6 +1706,11 @@ export async function runMutation(): Promise<number> {
   const fixtureFile = loadCases();
 
   // A mismatching baseline must never make every mutant look killed.
+  const baselineErrors = runChecks(baseline).errors;
+  if (baselineErrors.length > 0) {
+    // Every mutant would then be "killed by checker" and the score a vacuous 100% (T-225).
+    throw new Error(`mutation baseline has ${baselineErrors.length} check error(s); fix them first: ${baselineErrors.slice(0, 3).join("; ")}`);
+  }
   for (const c of fixtureFile.cases) {
     const result=evaluate(baseline,c.inputs,allTargets(baseline,c.inputs));
     for (const [key,expected] of Object.entries(c.expect ?? {})) {

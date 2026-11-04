@@ -31,6 +31,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 from taxyear import Y  # noqa: E402
 import archive_text  # noqa: E402
+import citations  # noqa: E402
 SOURCES = os.path.join(ROOT, "sources", Y)
 FORMS = os.path.join(ROOT, "forms", Y)
 LOGS = os.path.join(ROOT, "reviews", Y, "transcription")
@@ -93,17 +94,16 @@ def page_kinds(doc):
     return json.load(open(os.path.join(SOURCES, doc["pages_file"]), encoding="utf-8"))["pages"]
 
 
+PAGE_LIST = re.compile(r"\bpp?\.\s*" + citations.PAGES_RE)
+DOC_PAGES = re.compile(r"\b([a-z][a-z0-9-]*)\s+(pp?\.\s*" + citations.PAGES_RE + ")")
+
+
 def locator_pages(locator):
-    """Page numbers named in a locator such as 'pp. 34–35, line 12e' or 'p. 11, ...'."""
+    """Page numbers named anywhere in a locator ('pp. 34–35, line 12e', 'pp. 17 and 19, ...'),
+    read with the page-list grammar of tools/citations.py."""
     out = set()
-    for m in re.finditer(r"\bpp?\.\s*([0-9][0-9,\s–—-]*)", locator):
-        for part in re.split(r",\s*", m.group(1).strip()):
-            part = part.strip()
-            r = re.match(r"^(\d+)\s*[–—-]\s*(\d+)$", part)
-            if r:
-                out.update(range(int(r.group(1)), int(r.group(2)) + 1))
-            elif part.isdigit():
-                out.add(int(part))
+    for m in PAGE_LIST.finditer(locator):
+        out.update(citations.page_list(m.group(1)))
     return out
 
 
@@ -148,7 +148,7 @@ def secondary_pages(locator, mani, primary):
             out.setdefault(doc_id, set()).update(locator_pages(m.group(0)))
             return ""
         return m.group(0)
-    rest = re.sub(r"\b([a-z][a-z0-9]*)\s+(pp?\.\s*[0-9][0-9,\s\u2013\u2014-]*)", take, locator)
+    rest = DOC_PAGES.sub(take, locator)
     return out, rest
 
 
@@ -281,6 +281,17 @@ def exported_lines(form_doc):
             if line.get('shown_when'):
                 refs.add(line['shown_when'])
     return [l for l in helpers if l["id"] in refs]
+
+
+def line_keys(form_doc):
+    """[(log key, line id)] of the compared lines in log order: the exported lines by id, then
+    (for a form) the printed computed lines by marker."""
+    out = [(l["id"], l["id"]) for l in exported_lines(form_doc)]
+    if form_doc["id"] not in load_defs():
+        markers = marker_keys(form_doc["lines"])
+        out += [(markers[l["id"]], l["id"]) for l in form_doc["lines"]
+                if l["printed"] not in HELPER_PRINTED and l["expr"].get("op") != "input"]
+    return out
 
 
 def required_target_keys(form_doc):
@@ -555,7 +566,7 @@ def source_profile(doc, mani):
     return profile
 
 
-def catalog_selection(form_doc, excerpt, used, mani=None):
+def catalog_selection(form_doc, excerpt, used, mani=None, whole_text=True):
     """{document id: reason} for every other form, definition and collection the catalog lists.
 
     Chosen from the reviewed form's source only: the excerpt given to the model and the whole
@@ -567,12 +578,14 @@ def catalog_selection(form_doc, excerpt, used, mani=None):
       worksheet    that text names the IRS worksheet the other form's title names;
       named line   that text names a form line ("Form 1040, line 2b", "line 17 of Schedule 1")
                    that the other form feeds, by its IRS title or by its source's "enter ... on".
-    Refusal-gate inputs are listed for every form in the screening list instead."""
+    Refusal-gate inputs are listed for every form in the screening list instead. Without
+    `whole_text` (a line-scoped review), "that text" is the excerpt alone: the catalog is chosen
+    from the pages given."""
     mani = manifest() if mani is None else mani
     defs = load_defs()
     mine = {(u["doc"], p) for u in used for p in u["pages"]}
-    text = "\n".join([excerpt] + ["\n".join(doc_pages(mani[u["doc"]])) for u in used
-                                  if u["doc"] not in CATALOG_WHOLE_TEXT_EXCLUDED and u["doc"] in mani])
+    text = "\n".join([excerpt] + (["\n".join(doc_pages(mani[u["doc"]])) for u in used
+                                   if u["doc"] not in CATALOG_WHOLE_TEXT_EXCLUDED and u["doc"] in mani] if whole_text else []))
     names = named_forms(text, mani)
     lines_named = named_lines(text, mani)
     flat = " ".join(text.split()).lower()
@@ -672,14 +685,31 @@ the IRS text always shows. The data-model table above calls the field optional b
 always shown, not because it may be omitted where the text conditions a line."""
 
 
-def build_prompt(form_doc, excerpt, params, other_lines, param_types=None, collections=None):
+SCOPE_NOTE = """This is a line-scoped review: transcribe only the printed lines listed above and the result
+interfaces listed below, with any helper lines they need. The document's other printed lines are
+reviewed separately and are not to be transcribed here. Where the IRS text of a listed line uses one
+of them, reference it by the id shown:
+"""
+
+
+def build_prompt(form_doc, excerpt, params, other_lines, param_types=None, collections=None, scope=None):
+    """The transcription request. With `scope` (line ids), a line-scoped request: only those
+    printed lines and result interfaces are asked for, and every other printed computed line of
+    the document is listed by id, marker and type for reference."""
     lines = form_doc["lines"]
     inputs = [l for l in lines if l["expr"].get("op") == "input"]
     targets = [l for l in lines if l["printed"] not in HELPER_PRINTED and l["expr"].get("op") != "input"]
     keys = marker_keys(lines)
     shared = any(keys[l["id"]] != str(l["printed"]) for l in lines)
-    tgt = "\n".join(f"  - printed {keys[l['id']]!r} (id {l['id']}; type {l['type']}{sign_note(l['id'])})" for l in targets)
+    printed_row = lambda l: f"  - printed {keys[l['id']]!r} (id {l['id']}; type {l['type']}{sign_note(l['id'])})"
     exported = exported_lines(form_doc)
+    scope_block = ""
+    if scope is not None:
+        others = [l for l in targets if l["id"] not in scope]
+        targets = [l for l in targets if l["id"] in scope]
+        exported = [l for l in exported if l["id"] in scope]
+        scope_block = "\n" + SCOPE_NOTE + ("\n".join(printed_row(l) for l in others) if others else "  (none)") + "\n"
+    tgt = "\n".join(printed_row(l) for l in targets) if targets or scope is None else "  (none)"
     exp = "\n".join(f"  - id {l['id']} ({l['type']})" for l in exported)
     inp = "\n".join(f"  - {l['id']} (printed {keys[l['id']]!r}, type {l['type']}): {l['expr'].get('source','')}" for l in inputs)
     prm = "\n".join(f"  - {k} ({(param_types or {}).get(k, 'type supplied by the interface')}): {v}" for k, v in params.items())
@@ -711,7 +741,7 @@ Tax year: {form_doc['tax_year']}
 Transcribe these printed lines in this order, using each exact id shown (shared definitions
 may use bare ids such as line13; do not add a form prefix to those ids):
 {tgt}
-{SHARED_NOTE if shared else ''}
+{SHARED_NOTE if shared else ''}{scope_block}
 The following result interfaces are required by other forms. If one is already a printed line
 listed above, supply it once with that exact id and its printed marker. Otherwise supply a helper
 with this exact id (printed "(helper)"). These names are not instructions for how to compute them.
@@ -1142,11 +1172,20 @@ def gate_check(result, project_id, second_line, second_by_id):
     return result
 
 
-def compare(form_id, project_lines, second_lines):
+def compare(form_id, project_lines, second_lines, only=None):
+    """Compare every target line, or with `only` (line ids) those of a line-scoped review. In a
+    line-scoped review the reply defines only its own lines: the project's other computed lines
+    stand in for the rest when its types are checked (errors on them are not the reply's), and the
+    other printed lines it references compare as those printed lines."""
     defs = load_defs()
     if form_id in defs:
         second_lines = normalize_definition_ids(form_id, project_lines, second_lines)
-    type_errors = validate_model_types(form_id, second_lines)
+    if only is None:
+        type_errors = validate_model_types(form_id, second_lines)
+    else:
+        own = {l["id"] for l in second_lines}
+        support = [l for l in project_lines if l["id"] not in own and l["id"] not in only and l["expr"].get("op") != "input"]
+        type_errors = [e for e in validate_model_types(form_id, second_lines + support) if e["line"] is None or e["line"] in own]
     params_doc = project_yaml(os.path.join(ROOT, "params", f"{Y}.yaml"))
     parameter_rows = (params_doc.get("params") or params_doc)["values"]
     pvals = {k: v["value"] for k, v in parameter_rows.items()}
@@ -1155,10 +1194,20 @@ def compare(form_id, project_lines, second_lines):
     pkeys = marker_keys(project_lines)
     skeys = {**{i: pkeys[i] for i in inputs}, **marker_keys(second_lines)}
     a = Expander(form_id, project_lines, defs, inputs=inputs, params=pvals, keys=pkeys, param_types=ptypes)
-    b = Expander(form_id, second_lines, defs, inputs=inputs, params=pvals, keys=skeys, param_types=ptypes)
+    b_lines = second_lines
+    if only is not None and form_id not in defs:
+        own = {l["id"] for l in second_lines}
+        stubs = [{"id": l["id"], "printed": l["printed"], "type": l["type"], "expr": {"op": "input"}}
+                 for l in project_lines if l["id"] not in own and l["id"] not in only
+                 and l["printed"] not in HELPER_PRINTED and l["expr"].get("op") != "input"]
+        b_lines = second_lines + stubs
+        skeys.update({s["id"]: pkeys[s["id"]] for s in stubs})
+    b = Expander(form_id, b_lines, defs, inputs=inputs, params=pvals, keys=skeys, param_types=ptypes)
     results = ComparedLines(type_errors)
     second_by_id = {l["id"]: l for l in second_lines}
     for l in exported_lines({"id": form_id, "lines": project_lines}):
+        if only is not None and l["id"] not in only:
+            continue
         pa = canonical(a.expr(l["expr"]))
         s = second_by_id.get(l["id"])
         if s is None:
@@ -1175,6 +1224,8 @@ def compare(form_id, project_lines, second_lines):
     is_def = form_id in defs
     for l in project_lines:
         if l["printed"] in HELPER_PRINTED or l["expr"].get("op") == "input" or is_def:
+            continue
+        if only is not None and l["id"] not in only:
             continue
         s = second_by_printed.get(pkeys[l["id"]])
         pa = canonical(a.expr(l["expr"]))
@@ -1232,7 +1283,7 @@ TRANSCRIBE_SYSTEM = ("You transcribe IRS worksheets into a formal data model fro
 
 
 DEEPSEEK_URL = "https://api.deepseek.com/chat/completions"
-DEEPSEEK_KEYCHAIN = ("deepseek-api", "elliotmilco")   # macOS keychain service and account
+DEEPSEEK_KEYCHAIN = ("deepseek-api", os.environ.get("DEEPSEEK_KEYCHAIN_ACCOUNT") or "elliotmilco")   # macOS keychain service and account (DEEPSEEK_KEYCHAIN_ACCOUNT overrides the account)
 DEEPSEEK_MAX_TOKENS = 65536
 DEEPSEEK_RETRIES = 3
 
@@ -1576,25 +1627,26 @@ def extract_yaml(text):
     return doc
 
 
+
+
 # ---------- log ----------
 
-def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry_run=False, replay_receipt=None, catalog=None):
-    os.makedirs(LOGS, exist_ok=True)
+PASS_HEADING = "## Line-scoped reviews"
+LINE_PROMPT_POLICY = PROMPT_POLICY + "+lines-v1"
+
+
+def _review_rows(form_doc, model, prompt, used, results, extra, meta, interfaces, contract, replay_receipt=None,
+                 catalog=None, h="## ", scope=None, receipt=None):
+    """The record of one review: its field table, source pages, catalog, host type checks and
+    partial-input checks. `h` is the heading level of its parts; `scope` and `receipt` are recorded
+    for a line-scoped review."""
     fid = form_doc["id"]
-    family = families.family_of(model)
     counts = {k: sum(1 for r in results if r["status"] == k) for k in ("AGREE", "DISAGREE", "MISSING")}
     type_errors = getattr(results, "validation_errors", None)
     validation = "unrecorded" if type_errors is None else "fail" if type_errors else "pass"
-    second = extract_yaml(raw_text)["lines"]
-    interfaces = input_context.assess(form_doc, second, model_type_context(), prompt) if "lines" in form_doc else None
-    contract = input_contracts.assess(fid, Y, second, model_type_context(), prompt) if input_contracts.load(fid, Y) else None
-    if isinstance(results, ComparedLines):
-        results.contract_check = contract
-        results.interface_check = interfaces
-    out = [f"# Transcription agreement — {fid}", "",
-           f"Second transcription of `{form_doc['title']}` by an isolated model (spec 6.5), compared line by line with `forms/{Y}/{fid}.yaml`.", "",
-           "| field | value |", "| --- | --- |",
+    out = ["| field | value |", "| --- | --- |",
            f"| date | {datetime.date.today().isoformat()} |",
+           *([f"| review scope | lines {', '.join(scope)} |"] if scope is not None else []),
            *(["| review provenance | verified saved-response replay; no model call |",
               f"| parent review log sha256 | {replay_receipt['parent_sha256']} |",
               f"| original review date | {replay_receipt['original_date']} |",
@@ -1620,24 +1672,25 @@ def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry
            f"| output token budget | {meta.get('request_max_tokens') or 'transport default (65536 for DeepSeek)'} |",
            "| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |",
            f"| subject sha256 | {subjects.current('transcription', fid, Y)} |",
+           *([f"| receipt | {receipt} |"] if receipt else []),
            f"| printed lines compared | {len(results)} |",
            f"| agree / disagree / missing | {counts['AGREE']} / {counts['DISAGREE']} / {counts['MISSING']} |",
            f"| extra printed lines in second | {', '.join(extra) if extra else 'none'} |", "",
-           "## Source pages given to the model", "", "| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |", "| --- | --- | --- | --- | --- | --- | --- |"]
+           f"{h}Source pages given to the model", "", "| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |", "| --- | --- | --- | --- | --- | --- | --- |"]
     for u in used:
         out.append(f"| {u['doc']} | {u['revision']} | {', '.join(map(str, u['pages'])) or '-'} | {u['how']} | {u['text_sha256']} | {', '.join(map(str, u.get('cols_pages', []))) or '-'} | {u.get('cols_sha256', '-')} |")
     if catalog is not None:
-        out += ["", "## Other documents in the catalog", "",
+        out += ["", f"{h}Other documents in the catalog", "",
                 "Chosen from the source pages above (catalog_selection); refusal-gate inputs are in the screening list.", "",
                 "| reason | documents |", "| --- | --- |"]
         for reason in sorted(set(catalog.values())):
             out.append(f"| {reason} | {', '.join(sorted(k for k, v in catalog.items() if v == reason))} |")
     if type_errors:
-        out += ["", "## Host-side model expression type checks", "",
+        out += ["", f"{h}Host-side model expression type checks", "",
                 "The build's reference/type checker rejected these model expressions; none were executed."]
         out.extend("- " + error["message"].replace("\n", " ") for error in type_errors)
     if contract:
-        out += ["", "## Source-based partial-input checks", "",
+        out += ["", f"{h}Source-based partial-input checks", "",
                 "A fixed interpreter evaluates validated declarative IR on synthetic facts; no model-generated code or commands run. These checks earn no numeric evidence credit.",
                 "", "| case | target | expected | observed | result |", "| --- | --- | --- | --- | --- |"]
         for test in contract.get("cases", []):
@@ -1647,8 +1700,17 @@ def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry
                 out.append(f"| {test['id']} | {output['target']} | {expected} | {actual} | {'MATCH' if output['pass'] else 'MISMATCH'} |")
         for error in contract.get("errors", []):
             out += ["", "Not evaluated: " + error["message"].replace("\n", " ")]
-    out += ["", "## Lines", ""]
-    kept = rulings.kept("transcription", fid, family, context=rulings.review_context("transcription", "\n".join(out)))
+    return out, counts
+
+
+def pass_tag(pass_id):
+    return f"Reviewed in: pass {pass_id}"
+
+
+def _sections(results, kept, pass_id=None):
+    """The "### " section of each compared line; a line-scoped review tags each with its pass."""
+    out = []
+    tag = [pass_tag(pass_id)] if pass_id else []
     for r in results:
         out.append(f"### {r['printed']} — {r['label'][:90].rstrip()}")
         out.append(f"Status: **{r['status']}**")
@@ -1657,21 +1719,317 @@ def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry
             if r.get("note"):
                 out += ["", f"Second transcription's note: {r['note']}"]
             ruling = kept.get((r["printed"], r["project"], str(r["second"])), "Ruling: open")
-            out += ["", ruling, ""]
+            out += ["", ruling, *tag, ""]
         else:
-            out.append("")
-    gated = [r for r in results if r.get("gates")]
-    if gated:
-        out += ["## Refusal gates listed by the second transcription", "",
-                "Reported, not judged: the project often refuses before a worksheet is used, on the line that chooses it, which a per-line comparison cannot see.", "",
-                "| line | gates listed | not read by the project's line |", "| --- | --- | --- |"]
-        for r in gated:
-            out.append(f"| {r['printed']} | {', '.join(r['gates']['second'])} | {', '.join(r['gates']['not_in_project_line']) or '-'} |")
-        out.append("")
+            out += [*tag, ""]
+    return out
+
+
+GATES_HEADING = "## Refusal gates listed by the second transcription"
+
+
+def _gate_rows(results):
+    return [f"| {r['printed']} | {', '.join(r['gates']['second'])} | {', '.join(r['gates']['not_in_project_line']) or '-'} |"
+            for r in results if r.get("gates")]
+
+
+def _gates_section(rows):
+    if not rows:
+        return []
+    return [GATES_HEADING, "",
+            "Reported, not judged: the project often refuses before a worksheet is used, on the line that chooses it, which a per-line comparison cannot see.", "",
+            "| line | gates listed | not read by the project's line |", "| --- | --- | --- |", *rows, ""]
+
+
+def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry_run=False, replay_receipt=None, catalog=None):
+    os.makedirs(LOGS, exist_ok=True)
+    fid = form_doc["id"]
+    family = families.family_of(model)
+    second = extract_yaml(raw_text)["lines"]
+    interfaces = input_context.assess(form_doc, second, model_type_context(), prompt) if "lines" in form_doc else None
+    contract = input_contracts.assess(fid, Y, second, model_type_context(), prompt) if input_contracts.load(fid, Y) else None
+    if isinstance(results, ComparedLines):
+        results.contract_check = contract
+        results.interface_check = interfaces
+    rows, counts = _review_rows(form_doc, model, prompt, used, results, extra, meta, interfaces, contract, replay_receipt, catalog)
+    out = [f"# Transcription agreement — {fid}", "",
+           f"Second transcription of `{form_doc['title']}` by an isolated model (spec 6.5), compared line by line with `forms/{Y}/{fid}.yaml`.", "",
+           *rows]
+    out += ["", "## Lines", ""]
+    kept = rulings.kept("transcription", fid, family, context=rulings.review_context("transcription", "\n".join(out)))
+    out += _sections(results, kept)
+    out += _gates_section(_gate_rows(results))
+    out += subjects.table_for("transcription", fid, Y)
     out += ["## Raw second transcription", "", "```yaml", raw_text.strip(), "```", ""]
     path = rulings.log_path("transcription", fid, family)
     if not dry_run:
         open(path, "w", encoding="utf-8").write("\n".join(out))
+    return path, counts
+
+
+# ---------- line-scoped reviews ----------
+#
+# A line-scoped review asks only for some lines and merges its verdicts into the form's existing
+# log. The log's header stays the record of the review it describes (so the rulings bound to that
+# review's context keep their context); each line-scoped review adds a block under
+# "## Line-scoped reviews" with its own record (date, model, prompt and policy hashes, source
+# pages, catalog, checks, raw reply), and every section it judged carries "Reviewed in: pass <id>",
+# the first 12 hex digits of its prompt hash. A ruling on such a section is bound to that block's
+# context (rulings.section_context). The "## Line subjects" table is rewritten: every compared
+# line's subject is then current. A block no section names any longer is dropped.
+
+def scoped_lines(form_doc, names):
+    """The line ids a line-scoped review covers: every compared line that is named (by log key or
+    id), that reads a named line of the document (an input or helper included), or that reads a
+    named line of another document (directly or through its own lines); and the union of the
+    in-document lines those read. Raises on an unknown name."""
+    global ALL_LINES
+    ALL_LINES = ALL_LINES or load_all_lines()
+    keys = line_keys(form_doc)
+    by_key = dict(keys)
+    by_id = {l["id"]: l for l in form_doc["lines"]}
+    named, foreign = set(), set()
+    for n in names:
+        if n in by_key:
+            named.add(by_key[n])
+        elif n in by_id:
+            named.add(n)
+        elif n in ALL_LINES:
+            foreign.add(n)
+        else:
+            raise SystemExit(f"{form_doc['id']}: {n!r} is not a line id of any document nor a compared line of the form")
+    reaches = {i: subjects.reach(form_doc, i) for _, i in keys}
+    reads = lambda m: {s for j in m for s in subjects._strings({k: v for k, v in by_id[j].items() if k != "id"})}
+    scope = {i for i, (m, b) in reaches.items() if (m | b) & named or (foreign and reads(m) & foreign)}
+    return scope, members_of(form_doc, scope)
+
+
+def members_of(form_doc, ids):
+    """The lines of the document a set of compared lines expand: themselves, their helpers and inputs."""
+    return set().union(*(subjects.reach(form_doc, i)[0] for i in ids)) if ids else set()
+
+
+def git_text(rev, rel):
+    proc = subprocess.run(["git", "-C", ROOT, "show", f"{rev}:{rel}"], capture_output=True, text=True)
+    return proc.stdout if proc.returncode == 0 else None
+
+
+def recorded_line_subjects(kind, fid, text):
+    """(({key: subject}, rest), where found) of the version a log reviewed: its line-subject table,
+    or, for a log reviewed whole before tables existed, the version of the document (the working
+    tree or a committed revision) whose whole subject the log records; (None, None) if neither."""
+    rec = subjects.recorded(text)
+    if rec is not None:
+        return rec, "line-subject table"
+    m = re.search(r"^\| subject sha256 \| ([0-9a-f]{64}) \|$", text, flags=re.M)
+    if not m:
+        return None, None
+    file = subjects.path(kind, fid, Y)
+    keys = subjects.target_keys(kind, fid)
+    now = open(file, encoding="utf-8").read()
+    if subjects.of_text(kind, now) == m.group(1):
+        return subjects.line_subjects_of(kind, fid, now, keys), "working tree"
+    rel = os.path.relpath(file, ROOT)
+    revs = subprocess.run(["git", "-C", ROOT, "log", "--format=%H", "-n", "200", "--", rel],
+                          capture_output=True, text=True).stdout.split()
+    for rev in revs:
+        old = git_text(rev, rel)
+        if old is not None and subjects.of_text(kind, old) == m.group(1):
+            return subjects.line_subjects_of(kind, fid, old, keys), f"revision {rev[:12]}"
+    return None, None
+
+
+def plan_scope(kind, fid, log_text, names):
+    """(scope keys, reach ids or None, stale keys, keys no longer compared) for a line-scoped
+    review of a log, or exits with the reason a whole review is needed."""
+    rec, where = recorded_line_subjects(kind, fid, log_text)
+    if rec is None:
+        raise SystemExit(f"{fid}: the {kind} log records no line subjects and its subject matches no version of the "
+                         "document in the working tree or recent history; run the whole review")
+    rows, rest = rec
+    cur, cur_rest = subjects.current_line_subjects(kind, fid, Y)
+    if rest != cur_rest:
+        raise SystemExit(f"{fid}: the document changed outside every compared line since the {kind} log ({where}); run the whole review")
+    stale = [k for k in cur if rows.get(k) != cur[k]]
+    gone = sorted(set(rows) - set(cur))
+    keys = subjects.target_keys(kind, fid)
+    if names == ["auto"]:
+        scope_ids = {i for k, i in keys if k in stale}
+        reach = None
+    elif kind == "transcription":
+        scope_ids, reach = scoped_lines(load_form(fid), names)
+    else:
+        scope_ids, reach = names, None
+    scope_keys = [k for k, i in keys if i in scope_ids]
+    missing = [k for k in stale if k not in scope_keys]
+    if missing:
+        raise SystemExit(f"{fid}: these {kind} lines also changed since the log ({where}) and must be reviewed with it: "
+                         + ", ".join(missing) + "; add them or use --lines auto")
+    print(f"{fid}: line subjects from the {where}; stale: {', '.join(stale) or 'none'}"
+          + (f"; no longer compared: {', '.join(gone)}" if gone else ""))
+    return scope_keys, scope_ids, reach, stale, gone
+
+
+def _log_parts(text, raw_heading):
+    """(head, {key: section part}, section order, gate rows, {pass id: block}, raw tail) of a log."""
+    head, sep, rest = text.partition("\n## Lines\n")
+    if not sep:
+        raise ValueError("log has no Lines section")
+    at = rest.find("\n" + raw_heading + "\n")
+    if at < 0:
+        raise ValueError(f"log has no {raw_heading!r} section")
+    pre, raw = rest[:at], rest[at:]
+    ends = [i for i in (pre.find("\n" + h) for h in (GATES_HEADING, subjects.LINE_SUBJECTS + "\n", PASS_HEADING + "\n")) if i >= 0]
+    end = min(ends) if ends else len(pre)
+    body, extras = pre[:end], pre[end:]
+    sections, order = {}, []
+    for part in body.split("\n### ")[1:]:
+        key = part.partition("\n")[0].split(" — ")[0]
+        sections[key] = part
+        order.append(key)
+    gate_rows = {}
+    g = extras.find("\n" + GATES_HEADING)
+    if g >= 0:
+        for row in re.split(r"\n## ", extras[g + 1:], maxsplit=1)[0].splitlines():
+            if row.startswith("| ") and not row.startswith("| line |") and not row.startswith("| --- |"):
+                gate_rows[row[2:].split(" | ")[0]] = row
+    blocks = {}
+    p = extras.find("\n" + PASS_HEADING + "\n")
+    if p >= 0:
+        for part in extras[p:].split("\n#### Pass ")[1:]:
+            blocks[part.partition("\n")[0].strip()] = "#### Pass " + part.rstrip("\n")
+    return head, sections, order, gate_rows, blocks, raw
+
+
+TAG_RE = re.compile(r"^Reviewed in: pass ([0-9a-f]{12})$", re.M)
+PASS_INTRO = ("Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or "
+              "render_compare.py --lines). A section marked \"Reviewed in: pass <id>\" was judged in the pass of "
+              "that id below; every other section in the review recorded at the top of this log.")
+
+
+def merge_log(kind, fid, old, raw_heading, fresh, key_order, gone, block, pid, count_rows, gate_rows=None):
+    """The log `old` with the sections of `fresh` ({key: section part}) replacing or adding
+    those keys, the keys in `gone` dropped, sections in `key_order`, the pass `block` (lines,
+    or None) added, unreferenced blocks dropped, line subjects rewritten and the header's
+    count rows replaced by `count_rows(statuses)`. Rows of the header that a ruling context
+    reads are never changed."""
+    head, sections, order, gates, blocks, raw = _log_parts(old, raw_heading)
+    sections.update(fresh)
+    order = [k for k in key_order if k in sections and k not in gone]   # a line no longer compared is dropped
+    sections = {k: sections[k] for k in order}
+    if gate_rows is not None:
+        gates = {k: v for k, v in gates.items() if k not in fresh and k in sections}
+        gates.update(gate_rows)
+    if block is not None:
+        blocks[pid] = "\n".join(block).rstrip("\n")
+    used = {m for part in sections.values() for m in TAG_RE.findall(part.split("\n## ", 1)[0])}
+    blocks = {pid: b for pid, b in blocks.items() if pid in used}
+    statuses = [re.search(r"^Status: \*\*(\w+)\*\*", sections[k], re.M).group(1) for k in order]
+    replace = count_rows(statuses)
+    for name, value in replace.items():
+        head = re.sub(rf"^\| {re.escape(name)} \| .*? \|$", lambda _: f"| {name} | {value} |", head, count=1, flags=re.M)
+    head = re.sub(r"^\| line-scoped reviews \| .*? \|\n", "", head, flags=re.M)
+    if blocks:
+        dates = sorted(re.search(r"^\| date \| (.*?) \|$", b, re.M).group(1) for b in blocks.values())
+        head = re.sub(r"^(\| date \| .*? \|)$", lambda m: m.group(1) + f"\n| line-scoped reviews | {len(blocks)} (latest {dates[-1]}); see Line-scoped reviews |",
+                      head, count=1, flags=re.M)
+    lines_text = "".join("\n### " + sections[k] for k in order)
+    tail = []
+    if kind == "transcription":
+        tail += _gates_section([gates[k] for k in order if k in gates])
+    tail += subjects.table_for(kind, fid, Y)
+    if blocks:
+        tail += [PASS_HEADING, "", PASS_INTRO, ""]
+        for pid in sorted(blocks, key=lambda p: re.search(r"^\| date \| (.*?) \|$", blocks[p], re.M).group(1) + p):
+            tail += [blocks[pid], ""]
+    return head + "\n## Lines\n" + lines_text + "\n" + "\n".join(tail).rstrip("\n") + "\n" + raw
+
+
+def part_of(section_lines):
+    """A section as it appears between "\\n### " separators."""
+    return "\n".join(section_lines)[len("### "):]
+
+
+def scoped_main(a, form_doc, mani, params, values):
+    """--lines: review only some lines and merge the verdicts into the existing log."""
+    fid, family = a.form, families.family_of(a.model)
+    path = rulings.log_path("transcription", fid, family)
+    if not os.path.exists(path):
+        raise SystemExit(f"{fid}: no transcription log of the {family} family to merge into; run the whole review")
+    if input_contracts.load(fid, Y):
+        raise SystemExit(f"{fid}: a form with source partial-input cases is reviewed whole (its cases read every line)")
+    old = open(path, encoding="utf-8").read()
+    names = [n.strip() for n in a.lines.split(",") if n.strip()]
+    scope_keys, scope_ids, reach, stale, gone = plan_scope("transcription", fid, old, names)
+    if reach is None:
+        reach = members_of(form_doc, scope_ids)
+    key_order = [k for k, _ in line_keys(form_doc)]
+    if not scope_ids:
+        if not gone:
+            print(f"{fid}: " + ("every compared line is current; nothing to review" if names == ["auto"]
+                                else f"no compared line reads {', '.join(names)}; nothing to review"))
+            return
+        merged = merge_log("transcription", fid, old, "## Raw second transcription", {}, key_order, gone, None, None,
+                           _transcription_counts)
+        if not a.dry_run:
+            open(path, "w", encoding="utf-8").write(merged)
+        print(f"{fid}: dropped {', '.join(gone)}; no model call")
+        return
+    scoped_doc = {**form_doc, "lines": [l for l in form_doc["lines"] if l["id"] in reach]}
+    excerpt, used = excerpt_for(scoped_doc, mani)
+    selected = catalog_selection(form_doc, excerpt, used, mani, whole_text=False)
+    other = catalog_lines(fid, selected)
+    prompt = build_prompt(form_doc, excerpt, params, other, {k: v["type"] for k, v in values.items()},
+                          collection_notes(fid, selected), scope=scope_ids)
+    os.makedirs(RAW, exist_ok=True)
+    tag = hashlib.sha256(",".join(sorted(scope_keys)).encode()).hexdigest()[:12]
+    base = os.path.join(RAW, families.stem(fid, family) + ".lines-" + tag)
+    print(f"{fid}: line-scoped review of {len(scope_keys)} compared line(s): {', '.join(scope_keys)}")
+    print(f"{fid}: excerpt {len(excerpt):,} chars from " + "; ".join(f"{u['doc']} pages {u['pages']} ({u['how']})" for u in used))
+    print(f"catalog: {len(selected)} other documents: " + ", ".join(f"{k} ({v})" for k, v in sorted(selected.items())))
+    print(f"prompt {len(prompt):,} chars -> {os.path.relpath(base, ROOT)}{'.preview' if a.dry_run else ''}.prompt.txt")
+    if a.dry_run:
+        with open(base + ".preview.prompt.txt", "w", encoding="utf-8") as f:
+            f.write(prompt)
+        return
+    text, meta = review_response(prompt, a.model, base, LINE_PROMPT_POLICY, a.from_response, reasoning_effort=a.reasoning_effort,
+                                 max_output_tokens=a.max_output_tokens, kind="transcription", subject=fid)
+    second = extract_yaml(text)
+    results, extra = compare(fid, form_doc["lines"], second["lines"], only=scope_ids)
+    assessed = {**form_doc, "lines": [l for l in form_doc["lines"] if l["id"] in reach or l["expr"].get("op") == "input"]}
+    interfaces = input_context.assess(assessed, second["lines"], model_type_context(), prompt)
+    results.contract_check, results.interface_check = None, interfaces
+    path, counts = write_scoped(form_doc, a.model, prompt, used, results, extra, text, meta, selected, scope_keys, old,
+                                key_order, gone, os.path.relpath(base, ROOT), a.from_response)
+    print(f"{fid}: agree {counts['AGREE']}, disagree {counts['DISAGREE']}, missing {counts['MISSING']}, extra {len(extra)}; cost {meta.get('cost_usd')} -> {os.path.relpath(path, ROOT)}")
+    sys.exit(0 if counts["DISAGREE"] + counts["MISSING"] == 0 and not results.validation_errors and interfaces["state"] == "pass" else 3)
+
+
+def _transcription_counts(statuses):
+    return {"printed lines compared": len(statuses),
+            "agree / disagree / missing": " / ".join(str(statuses.count(s)) for s in ("AGREE", "DISAGREE", "MISSING"))}
+
+
+def write_scoped(form_doc, model, prompt, used, results, extra, raw_text, meta, catalog, scope_keys, old, key_order, gone,
+                 receipt, from_response=False):
+    """Merge a line-scoped review into the existing log; returns (path, counts of this pass)."""
+    fid = form_doc["id"]
+    family = families.family_of(model)
+    pid = hashlib.sha256(prompt.encode()).hexdigest()[:12]
+    rows, counts = _review_rows(form_doc, model, prompt, used, results, extra, meta, results.interface_check, None,
+                                catalog=catalog, h="##### ", scope=scope_keys, receipt=receipt)
+    if from_response:
+        rows.insert(3, "| request | saved response re-read (--from-response); no model call |")
+    block = [f"#### Pass {pid}", "", *rows, "", "##### Raw second transcription", "", "```yaml", raw_text.strip(), "```", ""]
+    kept = rulings.kept("transcription", fid, family, context=rulings.review_context("transcription", "\n".join(block)))
+    fresh = {}
+    for r in results:
+        fresh[r["printed"]] = part_of(_sections([r], kept, pid))
+    gate_rows = {r[2:].split(" | ")[0]: r for r in _gate_rows(results)}
+    merged = merge_log("transcription", fid, old, "## Raw second transcription", fresh, key_order, gone, block, pid,
+                       _transcription_counts, gate_rows)
+    path = rulings.log_path("transcription", fid, family)
+    open(path, "w", encoding="utf-8").write(merged)
     return path, counts
 
 
@@ -1683,13 +2041,17 @@ def main():
     ap.add_argument("--max-output-tokens", type=int, help="DeepSeek output budget, including reasoning (default 65536)")
     ap.add_argument("--dry-run", action="store_true", help="build the prompt and excerpt; call no model")
     ap.add_argument("--from-response", action="store_true", help="re-compare the saved response; call no model")
+    ap.add_argument("--lines", help="line-scoped review merged into the existing log: comma-separated line ids or log keys "
+                                    "(each with the compared lines that read it), or 'auto' for the lines whose subject changed")
     a = ap.parse_args()
     mani = manifest()
     form_doc = load_form(a.form)
-    excerpt, used = excerpt_for(form_doc, mani)
     params_doc = project_yaml(os.path.join(ROOT, "params", f"{Y}.yaml"))
     values = (params_doc.get("params") or params_doc)["values"]
     params = {k: v["value"] for k, v in values.items()}
+    if a.lines:
+        return scoped_main(a, form_doc, mani, params, values)
+    excerpt, used = excerpt_for(form_doc, mani)
     selected = catalog_selection(form_doc, excerpt, used, mani)
     other = catalog_lines(a.form, selected)
     prompt = build_prompt(form_doc, excerpt, params, other, {k: v["type"] for k, v in values.items()},

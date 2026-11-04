@@ -5,7 +5,7 @@
 // snapshot hash; and the tables satisfy their structural invariants.
 
 import { IMPLEMENTED, VOCABULARY } from "./atoms.js";
-import { stableStringify } from "./util.js";
+import { isHelperLine, stableStringify } from "./util.js";
 import type {
   CanonicalData,
   Expr,
@@ -17,9 +17,6 @@ import type {
   TestExpr,
   ValueType,
 } from "./types.js";
-
-// Markers of lines that are not lines of any form or worksheet; worksheet and column markers such as "(CLW 3)" are printed lines.
-const HELPER_MARKERS = new Set(["(helper)", "(gate)", "(computed helper)", "(question)", "(status)", "(screen)"]);
 
 type Ty =
   | { kind: "money"; nonneg: boolean }
@@ -86,7 +83,7 @@ export function runChecks(data: CanonicalData): { errors: string[]; stats: strin
       if (!line.shown_when) continue;
       const cond = doc.lines.find((l) => l.id === line.shown_when);
       if (!cond || cond.type !== "Bool") ctx.errors.push(`${line.id}: shown_when ${line.shown_when} is not a Bool line of ${doc.id}`);
-      if (HELPER_MARKERS.has(line.printed)) ctx.errors.push(`${line.id}: shown_when on a helper; only a printed line or worksheet line is shown or left out`);
+      if (isHelperLine(line)) ctx.errors.push(`${line.id}: shown_when on a helper; only a printed line or worksheet line is shown or left out`);
     }
     if (doc.collection) {
       checkCite(ctx, doc.collection.cite, `${doc.id} collection`);
@@ -137,6 +134,13 @@ export function runChecks(data: CanonicalData): { errors: string[]; stats: strin
       ctx.errors.push(`register ${entry.id}: entry is incomplete`);
     }
   }
+  ctx.errors.push(...registerLinkProblems(data));
+  for (const id of MONOTONE_TABLES) {
+    const table = data.tables.find((t) => t.id === id);
+    if (!table) { ctx.errors.push(`table ${id}: spec 6.3 claims tableBand_mono for it, but there is no such table`); continue; }
+    ctx.errors.push(...tableBandMonoProblems(table));
+  }
+  stats.push(`tableBand_mono condition checked for: ${[...MONOTONE_TABLES].join(", ")}`);
 
   const opHistogram = new Map<string, number>();
   let lineCount = 0;
@@ -1062,6 +1066,54 @@ function checkParams(ctx: Ctx): void {
     checkCite(ctx, en.cite, `enum ${name}`);
     if (new Set(en.values).size !== en.values.length) ctx.errors.push(`enum ${name}: duplicate values`);
   }
+}
+
+/**
+ * Banded tables for which spec 6.3 relies on `tableBand_mono` (Lemmas.lean): `table_lookup` over
+ * them does not decrease as the key rises. The earned income credit tables rise and then fall,
+ * so they are not listed.
+ */
+export const MONOTONE_TABLES: ReadonlySet<string> = new Set(["tax_table"]);
+
+/**
+ * Where a banded table fails the hypothesis of `tableBand_mono`: bands in increasing order that
+ * do not overlap (each band's `less_than` at most every later band's `at_least`), and in every
+ * column no entry below an entry of an earlier band. Contiguous bands with at_least < less_than
+ * are in increasing order, so the pairwise condition reduces to adjacent bands and, per column,
+ * to the largest earlier entry.
+ */
+export function tableBandMonoProblems(table: TableDoc): string[] {
+  const problems: string[] = [];
+  const bands = table.bands ?? [];
+  const width = Math.max(0, ...bands.map((b) => b.tax.length));
+  const highest: (number | undefined)[] = new Array(width).fill(undefined);
+  bands.forEach((b, i) => {
+    if (!(b.at_least < b.less_than)) problems.push(`table ${table.id}: band ${i} is empty or reversed (at least ${b.at_least}, less than ${b.less_than})`);
+    const next = bands[i + 1];
+    if (next && b.less_than > next.at_least) problems.push(`table ${table.id}: band ${i} overlaps band ${i + 1}`);
+    b.tax.forEach((v, c) => {
+      const before = highest[c];
+      if (before !== undefined && v < before) problems.push(`table ${table.id}: column ${table.columns?.[c]?.key ?? c} falls to ${v} at band ${i} (at least ${b.at_least}) after ${before}; tableBand_mono's condition fails`);
+      if (before === undefined || v > before) highest[c] = v;
+    });
+  });
+  return problems;
+}
+
+/**
+ * Register entries that no line links by `ambiguity:` must say why they stand unlinked (for
+ * example, superseded, or read only by a refusal); a linked entry must not carry that reason.
+ */
+export function registerLinkProblems(data: CanonicalData): string[] {
+  const linked = new Set<string>();
+  for (const doc of [...data.forms, ...data.defs]) for (const line of doc.lines) if (line.ambiguity) linked.add(line.ambiguity);
+  const problems: string[] = [];
+  for (const entry of data.register.entries) {
+    const reason = entry.unlinked?.trim();
+    if (!linked.has(entry.id) && !reason) problems.push(`register ${entry.id}: no line links this entry (ambiguity: ${entry.id}); link it from the line it governs, or state why it stands unlinked (unlinked:)`);
+    if (linked.has(entry.id) && entry.unlinked !== undefined) problems.push(`register ${entry.id}: a line links this entry, but it carries an unlinked reason`);
+  }
+  return problems;
 }
 
 function checkTable(ctx: Ctx, table: TableDoc): void {

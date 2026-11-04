@@ -355,11 +355,17 @@ def self_test(cases, year, work_root, n=20):
     return f"UsTaxes line cache self-test: {len(cached)} returns, {total} values identical with and without the cache"
 
 
+# The year's parameters (canonical/<year>/params.json), read by run_ustaxes.
+PARAMS = None
+
+
 def run_ustaxes(cases, year, work_root):
     """Every case through UsTaxes in one Node process. Returns the engine record for engines.json,
     or None when the clone or its runtime packages are missing."""
+    global PARAMS
     if not available(year):
         return None
+    PARAMS = json.loads((ROOT / "canonical" / str(year) / "params.json").read_text())["params"]["values"]
     version, commit = package_version()
     work = Path(work_root)
     work.mkdir(parents=True, exist_ok=True)
@@ -402,9 +408,11 @@ def run_features(case, vals):
         fs.add("ustaxes_amt")
     if (vals.get("f1040.l27a") or 0) > 0:
         fs.add("ustaxes_eic")
-    # UsTaxes' student loan interest phase-out (from $80,000, or $165,000 joint) and the 2025 worksheet's (to $100,000, or
-    # $200,000) differ for modified AGI between the two.
-    lo, hi = (165_000, 200_000) if inputs["f1040.status"] == "mfj" else (80_000, 100_000)
+    # UsTaxes' student loan interest phase-out (from $80,000, or $165,000 joint: its own figures) and the year's
+    # worksheet's (to the base plus the divisor, $100,000 or $200,000 for 2025) differ for modified AGI between the two.
+    joint = inputs["f1040.status"] == "mfj"
+    lo = 165_000 if joint else 80_000
+    hi = sum(PARAMS[f"sli.{k}_{'joint' if joint else 'other'}"]["value"] for k in ("base", "divisor")) // 100
     if "sli.l4" in vals and lo < (vals["sli.l4"] or 0) < hi:
         fs.add("ustaxes_sli_phaseout")
     if "hsa" in case["features"]:

@@ -33,16 +33,22 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
+import taxyear  # noqa: E402
 from taxyear import Y  # noqa: E402
 PDF = ROOT / "sources" / Y / "i1040gi.pdf"
 OUT_DIR = ROOT / "tables" / Y
-FIRST_PAGE, LAST_PAGE = 49, 60
+# Per year's i1040gi: the PDF pages (1-based) of the EIC Table, the right edges (points) of its
+# twenty numeric columns, the same on every table page, and where its rows end (the year's
+# highest earned income that can get the credit, in dollars).
+LAYOUT = {2025: {"pages": (49, 60), "end": 68700,
+                 "edges": [76, 109, 133, 157, 180, 204, 228, 251, 275, 301, 342, 375, 399, 423, 446, 470, 494, 517, 541, 567]}}
+_L = taxyear.for_year(LAYOUT, "extract_eic_table.py: the pages, column edges and last row of the EIC Table in i1040gi")
+FIRST_PAGE, LAST_PAGE = _L["pages"]
 TOOL_VERSION = "0.1"
-# Right edges (points) of the twenty numeric columns, the same on every table page.
-EDGES = [76, 109, 133, 157, 180, 204, 228, 251, 275, 301, 342, 375, 399, 423, 446, 470, 494, 517, 541, 567]
+EDGES = _L["edges"]
 EDGE_TOLERANCE = 4.0
 ROW_TOLERANCE = 3.0
-START, END, STEP = 1, 68700, 50
+START, END, STEP = 1, _L["end"], 50
 COUNTS = {"no": 0, "one": 1, "two": 2, "three": 3}
 
 

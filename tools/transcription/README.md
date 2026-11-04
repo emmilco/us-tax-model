@@ -54,7 +54,8 @@ every tool here (`transcribe.py`, `render_compare.py`, `classm.py`,
   `GET https://api.deepseek.com/models` (`deepseek-flash`, `deepseek-v4-pro` at
   the time of writing; check the pricing page before choosing). The API key is
   read at call time from the macOS keychain, service `deepseek-api`, account
-  `elliotmilco` (`security find-generic-password -s deepseek-api -a elliotmilco
+  `elliotmilco` unless the environment variable `DEEPSEEK_KEYCHAIN_ACCOUNT`
+  names another (`security find-generic-password -s deepseek-api -a elliotmilco
   -w`), held in memory for the request only, and never written to a file,
   printed, logged or exported to the environment (AISP Part II §5). A missing
   entry fails with a message naming it. `cost_usd` in the meta is `None` for
@@ -517,3 +518,29 @@ with hashes. The audit is an offline check-all step (BUG-0123).
 `classm.py --case-jobs 4` issues independent case requests concurrently; the default is1.
 `rerun_all.py` passes that option only to class M. Each case keeps its own prompt/response
 receipt and the final log retains case order. Concurrency does not repair model values.
+
+## Carrying rulings over (T-218)
+
+`carry.py --kind K --form F [--family X] [--from git:REV|LOG|RULINGS.json|ARCHIVE_DIR] [--dry-run]` rules an open
+section with an earlier ruling when the disagreement repeats exactly: same log, handle and status, the same content
+(both expression trees for transcription; the restated English for render; the case and both values for class M),
+and the line's transitive subject (the line, every line, document and table it reads, and the year parameters)
+unchanged since the earlier log's commit. It never carries a finding, defect, correction, interface gap or
+unclassified ruling, and it labels what it carries ("(carried over from <source>, review of <date>)"), so every
+carried ruling is auditable. `rerun_all.py` runs it after each review with open disagreements (`--no-carry` turns it
+off). Measured precision against hand rulings: 50 of 50 on the 2026-11-03 refresh round, 39 of 43 on the backlog
+round; it removes a small share of open handles (about 7%), because most repeats on an unchanged line come with a
+different model reply.
+
+## Line-scoped reviews (T-219)
+
+`transcribe.py --form F --lines <ids|auto>` and `render_compare.py --form F --lines <ids|auto>` review only the named
+lines (a compared line; any line of the form, meaning the compared lines that read it; a line of another form,
+meaning this form's lines reading it; or `auto`, the lines whose subject changed) and merge the result into the
+existing log of that family as a `#### Pass <prompt sha>` block under `## Line-scoped reviews`. The scoped prompt
+carries the target lines, every other printed computed line by id, marker and type, all inputs, the excerpt the
+targets and their helpers and inputs cite, and the source-derived catalog for those pages only. Each log records a
+`## Line subjects` table; `check_logs.py` names exactly the stale lines and suggests `--lines auto`. Owner decision
+2026-11-04: a log goes stale only for the lines whose subject changed (a line no compared line reaches does not stale
+it). Forms with partial-input banks (dependent, f8889) are reviewed whole. Merged logs earn no second-family credit
+until `compare_families.py` verifies each pass (T-226).

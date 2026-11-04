@@ -21,7 +21,14 @@ from taxyear import Y  # noqa: E402
 TAXPAYER = "person[taxpayer]"
 HSA = f"{TAXPAYER}.f8889[hsa]"
 
-WAGE_BASE = json.load(open(ROOT / "canonical" / Y / "params.json"))["params"]["values"]["ss.base"]["value"]  # Social Security wage base, cents
+PARAMS = json.load(open(ROOT / "canonical" / Y / "params.json"))["params"]["values"]
+WAGE_BASE = PARAMS["ss.base"]["value"]  # Social Security wage base, cents
+# The year's HSA contribution limits (Form 8889 line 3, self-only and family) and the age-55 addition,
+# the IRA contribution limit, and the prior year's standard deduction for a single filer (the
+# smallest deduction a prior-year return can show), all in cents.
+HSA_SELF_ONLY, HSA_FAMILY, HSA_ADDITIONAL = (PARAMS[k]["value"] for k in ("hsa.self_only", "hsa.family", "hsa.additional"))
+IRA_LIMIT = PARAMS["ira.limit"]["value"]
+PRIOR_STANDARD_SINGLE = PARAMS["refund.std_single"]["value"]
 SS_RATE = (62, 1000)
 MEDICARE_RATE = (145, 10000)
 ADDL_MEDICARE_RATE = (9, 1000)
@@ -233,7 +240,7 @@ def gen_case(rng, i):
     contrib = employer = hsa_deduction = 0
     if rng.random() < 0.15:
         family = rng.random() < 0.4; age55 = rng.random() < 0.2
-        limit = (855_000 if family else 430_000) + (100_000 if age55 else 0)
+        limit = (HSA_FAMILY if family else HSA_SELF_ONLY) + (HSA_ADDITIONAL if age55 else 0)
         employer = rng.randint(0, limit // 2) if rng.random() < 0.5 else 0
         contrib = rng.randint(0, limit - employer)
         hsa_deduction = min(contrib, limit - employer)
@@ -487,7 +494,7 @@ def add_carryovers(r, inputs, facts, features):
         if st + lt >= 0:
             st = -(lt + r.randint(1, 1_000_000))
         agi = r.randint(-1_000_000, 1_500_000) if r.random() < 0.25 else r.randint(1_500_001, 20_000_000)
-        deductions = r.randint(1_460_000, 3_000_000)
+        deductions = r.randint(PRIOR_STANDARD_SINGLE, 3_000_000)
         line21 = min(300_000, -(st + lt))
         inputs.update({"sd.carryover": True, "clcw.prior_11": agi, "clcw.prior_14": deductions, "clcw.prior_sd7": st,
                        "clcw.prior_sd15": lt, "clcw.prior_sd21": line21})
@@ -534,8 +541,8 @@ def add_form_features(r, inputs, facts, features, ages, wages, age):
     # refuses, so a return with benefits has no plan.
     trad = roth = 0; work_plan = False
     if r.random() < 0.35:
-        trad = r.randint(50_000, min(700_000, wages))
-        roth = r.randint(0, 700_000 - trad) if r.random() < 0.3 else 0
+        trad = r.randint(50_000, min(IRA_LIMIT, wages))
+        roth = r.randint(0, IRA_LIMIT - trad) if r.random() < 0.3 else 0
         work_plan = r.random() < 0.3 and not facts.get("ss_benefits")
         inputs.update({f"{TAXPAYER}.sav_trad": True, f"{TAXPAYER}.ira_trad": trad, f"{TAXPAYER}.sav_roth": roth,
                        f"{TAXPAYER}.ira_age50": age >= 50, f"{TAXPAYER}.ira_work_plan": work_plan})

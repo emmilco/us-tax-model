@@ -114,6 +114,30 @@ def norm(text):
     return re.sub(r"\s+", " ", text).lower().strip()
 
 
+# Abbreviations whose period does not end a sentence ("Pub. 946", "Rev. Proc. 2024-40", "U.S.
+# citizen"), and those that are abbreviations only before a number ("No. 15", "p. 7"; a bare
+# "No." answers a question). Matched without regard to case: some callers split normalized text.
+ABBREVIATIONS = {"pub", "pubs", "rev", "proc", "rul", "reg", "regs", "treas", "ch", "u.s", "e.g", "i.e", "vs"}
+NUMBERED_ABBREVIATIONS = {"no", "nos", "p", "pp", "fig", "sec", "secs"}
+_LAST_WORD = re.compile(r"(?:^|[\s(\[\"'“‘])([A-Za-z]+(?:\.[A-Za-z]+)*)\.$")
+
+
+def split_sentences(text, ends=".!?"):
+    """Text split after each sentence-ending mark in `ends` that whitespace follows, except a
+    period that ends an abbreviation. The pieces keep their text; joined with the whitespace
+    between them they give `text` back."""
+    pieces = re.split(rf"(?<=[{re.escape(ends)}])(\s+)(?=\S)", text)
+    out = [pieces[0]]
+    for gap, piece in zip(pieces[1::2], pieces[2::2]):
+        m = _LAST_WORD.search(out[-1])
+        word = m.group(1).lower() if m else ""
+        if word in ABBREVIATIONS or (word in NUMBERED_ABBREVIATIONS and piece[:1].isdigit()):
+            out[-1] += gap + piece
+        else:
+            out.append(piece)
+    return out
+
+
 def parts_of(quote):
     """The pieces of a quote that must each appear: `...` and `[...]` mark omissions."""
     pieces = (norm(p).strip(" ,.;:") for p in re.split(r"\.\s?\.\s?\.|…|\[[^\]]*\]", quote))

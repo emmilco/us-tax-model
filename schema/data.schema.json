@@ -1336,6 +1336,10 @@
         },
         "status": {
           "type": "string"
+        },
+        "unlinked": {
+          "type": "string",
+          "minLength": 1
         }
       }
     },

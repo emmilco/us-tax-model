@@ -236,6 +236,42 @@ theorem smallerOf_mono_right {a b b' : Int} (h : b ≤ b') : smallerOf a b ≤ s
 theorem largerOf_mono_right {a b b' : Int} (h : b ≤ b') : largerOf a b ≤ largerOf a b' := by
   unfold largerOf; omega
 
+/-- Two lists of amounts of the same length, each entry of the first at most the entry of the
+second in the same position. -/
+inductive PointwiseLe : List Int → List Int → Prop
+  | nil : PointwiseLe [] []
+  | cons {a b : Int} {xs ys : List Int} : a ≤ b → PointwiseLe xs ys → PointwiseLe (a :: xs) (b :: ys)
+
+/-- A list is pointwise at most itself, so raising one operand and keeping the others is a case
+of `PointwiseLe`. -/
+theorem PointwiseLe.refl : (xs : List Int) → PointwiseLe xs xs
+  | [] => .nil
+  | _ :: xs => .cons (Int.le_refl _) (PointwiseLe.refl xs)
+
+/-- `smaller_of` over any number of operands is monotone in each operand: with every operand at
+least as large as before, position by position, the result is at least as large. -/
+theorem smallerOfList_mono {x x' : Int} {xs ys : List Int} (hx : x ≤ x')
+    (h : PointwiseLe xs ys) : smallerOfList x xs ≤ smallerOfList x' ys := by
+  induction h generalizing x x' with
+  | nil => exact hx
+  | cons hab _ ih => exact ih (show smallerOf x _ ≤ smallerOf x' _ by unfold smallerOf; omega)
+
+/-- `larger_of` over any number of operands is monotone in each operand, in the same sense. -/
+theorem largerOfList_mono {x x' : Int} {xs ys : List Int} (hx : x ≤ x')
+    (h : PointwiseLe xs ys) : largerOfList x xs ≤ largerOfList x' ys := by
+  induction h generalizing x x' with
+  | nil => exact hx
+  | cons hab _ ih => exact ih (show largerOf x _ ≤ largerOf x' _ by unfold largerOf; omega)
+
+/-- `smaller_of` of operands that are not negative is not negative, for any number of operands. -/
+theorem smallerOfList_nonneg {x : Int} {xs : List Int} (hx : 0 ≤ x) (h : ∀ y ∈ xs, 0 ≤ y) :
+    0 ≤ smallerOfList x xs := by
+  induction xs generalizing x with
+  | nil => exact hx
+  | cons y ys ih =>
+    exact ih (smallerOf_nonneg hx (h y (List.mem_cons_self ..)))
+      (fun z hz => h z (List.mem_cons_of_mem _ hz))
+
 /-- `multiply_rate` is monotone in the rate's numerator for an amount that is not negative. -/
 theorem multiplyRateHalfUp_mono_rate {a num num' den : Int} (h : num ≤ num') (ha : 0 ≤ a)
     (hd : 0 < den) : multiplyRateHalfUp a num den ≤ multiplyRateHalfUp a num' den := by

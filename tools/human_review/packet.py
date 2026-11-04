@@ -170,7 +170,12 @@ esc = html.escape
 
 
 def reading_list():
-    return json.loads((HERE / "reading_list.json").read_text(encoding="utf-8"))
+    """The reading list; it names one year's lines and pages, and another year's packets need their own."""
+    data = json.loads((HERE / "reading_list.json").read_text(encoding="utf-8"))
+    if str(data.get("year")) != Y:
+        sys.exit(f"human review: tools/human_review/reading_list.json is the {data.get('year')} reading list "
+                 f"(its pages and quotes are that year's, as are steps.py's); tax year {Y} needs its own")
+    return data
 
 
 def item(n):

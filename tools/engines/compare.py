@@ -454,6 +454,28 @@ class UnroundedModel:
             return p, None
         return p, rel(xa, xb)
 
+    @staticmethod
+    def taken_guard(d, alts):
+        """The index of the alternative a choose derivation took, from its structured fields: the
+        evaluator tries the guards in order and lists each one not taken (guardsNotTaken) until one
+        holds. None when no guard held or one could not be decided (the value is then unknown or a
+        refusal), or when the guards listed are not the alternatives' own."""
+        gi = len(d.get("guardsNotTaken", []))
+        if gi >= len(alts) or d["value"].get("kind") in ("unknown", "refusal"):
+            return None
+        if [json.loads(g["guard"]) for g in d["guardsNotTaken"]] != [a["guard"] for a in alts[:gi]]:
+            return None
+        return gi
+
+    def taken_band(self, expr, ops):
+        """The band of its rate table (canonical tables/<id>.json) a rate_lookup derivation took: the
+        first whose upper edge is open or not below the project's key, as the evaluator chooses."""
+        table = self.tables.get(expr["table"])
+        key = next((o["value"] for o in ops if o["value"].get("kind") == "money"), None)
+        if table is None or key is None:
+            return None
+        return next((b for b in table.get("rate_bands", []) if b["not_over"] is None or key["cents"] <= b["not_over"]), None)
+
     def value(self, key):
         if key not in self.memo:
             self.memo[key] = None          # a cycle is not modelled
@@ -491,9 +513,8 @@ class UnroundedModel:
         if op == "test":
             return self.test(expr, it, k)[1]
         if op == "choose":
-            taken = next((json.loads(n[len("taken: "):]) for n in d["notes"] if n.startswith("taken: ")), None)
             alts = expr["alternatives"]
-            gi = next((i for i, a in enumerate(alts) if a["guard"] == taken), None)
+            gi = self.taken_guard(d, alts)
             if gi is None:
                 return None
             for alt in alts[:gi + 1]:
@@ -587,9 +608,10 @@ class UnroundedModel:
             return self.plain(val)
         if op == "rate_lookup":
             x = money[0]
-            m = re.match(r"band over (\S+) but not over (\S+)", d["notes"][0])
-            lo = None if m.group(1) == "-" else int(m.group(1))
-            hi = None if m.group(2) == "-" else int(m.group(2))
+            band = self.taken_band(expr, ops[gates:])
+            if band is None:
+                return None
+            lo, hi = band["over"], band["not_over"]
             if (lo is None or x - slack > lo) and (hi is None or x + slack <= hi):
                 return self.plain(val)
             return None
@@ -797,17 +819,40 @@ def project_line(values, line):
     return None, v["kind"]
 
 
-def table_deltas(values, schedules, alias, status):
-    """Every Tax Table lookup the project performed in this case: table value minus schedule value."""
-    deltas = []
-    for key, d in values.items():
-        if d.get("op") != "table_lookup" or d["value"]["kind"] != "money":
-            continue
-        amount = next((o["value"]["cents"] for o in d.get("operands", []) if o["value"].get("kind") == "money"), None)
-        if amount is None:
-            continue
-        deltas.append(d["value"]["cents"] - schedule_tax(schedules, alias, status, amount))
-    return deltas
+def limitation_reason(limitations, feats, line):
+    """The reason of the first engine limitation that covers the line for a case with these features."""
+    return next((l["reason"] for l in limitations if l["feature"] in feats and line in l["lines"]), None)
+
+
+def find_cause(investigations, engine, line, case_id, feats):
+    """The first investigation that explains a difference: the same engine and line, and the
+    same case or a feature of it."""
+    return next((inv for inv in investigations
+                 if inv["engine"] == engine and inv["line"] == line
+                 and (inv.get("case") == case_id or (inv.get("feature") and inv["feature"] in feats))), None)
+
+
+def identified_category(line, ev, pv, bound, unrounded, uses_table, predicted, midpoint, ptc, schedule_mode, eic):
+    """The category of an engine value ev against the project's pv when an identified cause or the
+    engine's precision accounts for it, else None (then the difference must be explained). `bound`
+    is the engine's float bound (0 for an engine of exact cents); `predicted()` the cents the
+    unrounded model allows and `eic()` the line 27a formula value, each computed only if reached;
+    `midpoint`, `ptc` and `schedule_mode` the recomputed lines of those readings."""
+    if ev == pv:
+        return "exact"
+    if unrounded and ev in (predicted() or ()):
+        return "unrounded"
+    if midpoint.get(line) is not None and midpoint[line] != pv and abs(ev - midpoint[line]) <= bound:
+        return "table-midpoint"
+    if ptc.get(line) is not None and ptc[line] != pv and abs(ev - ptc[line]) <= bound:
+        return "contribution-unrounded"
+    if not uses_table and line in TAX_LINES and schedule_mode[line] != pv and abs(ev - schedule_mode[line]) <= bound:
+        return "table-adjusted"
+    if not uses_table and line == "f1040.line27a" and (ef := eic()) is not None and abs(ev - ef) <= max(bound, 100):
+        return "table-adjusted"
+    if not unrounded and abs(ev - pv) <= bound:
+        return "float"
+    return None
 
 
 def main():
@@ -837,7 +882,7 @@ def main():
             # An engine that holds fractions of a cent is read through the model of its arithmetic,
             # built only when a difference needs it.
             unrounded = eng.get("precision") == "decimal2"
-            model = None
+            model = []
             # An engine that emulates the Tax Table at the band midpoint without rounding (UsTaxes) is read against the
             # project's lines recomputed by that method.
             midpoint = midpoint_mode_expectations(values, case, tables) if eng.get("tax_table") == "midpoint-unrounded" else {}
@@ -846,7 +891,7 @@ def main():
             ptc = ptc_unrounded_expectations(values) if eng.get("ptc_contribution") == "unrounded" and "marketplace" in feats else {}
             for line, ev in elines.items():
                 pv, kind = project_line(values, line)
-                reason = next((l["reason"] for l in eng["limitations"] if l["feature"] in feats and line in l["lines"]), None)
+                reason = limitation_reason(eng["limitations"], feats, line)
                 if reason:
                     stats[(ename, line)]["excluded"] += 1; excluded_reasons[(ename, line)][reason] += 1
                     if pv is not None and pv != 0:
@@ -862,28 +907,18 @@ def main():
                 if pv != 0:
                     summary[(ename, line)]["compared_nonzero"] += 1
                 diff = ev - pv
-                if diff == 0:
-                    stats[(ename, line)]["exact"] += 1; continue
-                if unrounded:
-                    if model is None:
-                        model = UnroundedModel(values, eng.get("unrounded", {}), eng.get("supplied", {}).get(cid, {}), elines,
-                                               canonical_lines, canonical_tables)
-                    if ev in (model.predicted(line) or ()):
-                        stats[(ename, line)]["unrounded"] += 1; continue
+
+                def predicted():
+                    if not model:
+                        model.append(UnroundedModel(values, eng.get("unrounded", {}), eng.get("supplied", {}).get(cid, {}), elines,
+                                                    canonical_lines, canonical_tables))
+                    return model[0].predicted(line)
                 bound = 0 if unrounded else float_bound_cents(eng.get("precision", "float64"), ev, eng.get("components", {}).get(line, 1))
-                if midpoint.get(line) is not None and midpoint[line] != pv and abs(ev - midpoint[line]) <= bound:
-                    stats[(ename, line)]["table-midpoint"] += 1; continue
-                if ptc.get(line) is not None and ptc[line] != pv and abs(ev - ptc[line]) <= bound:
-                    stats[(ename, line)]["contribution-unrounded"] += 1; continue
-                if not uses_table and line in TAX_LINES and schedule_mode[line] != pv and abs(ev - schedule_mode[line]) <= bound:
-                    stats[(ename, line)]["table-adjusted"] += 1; continue
-                if not uses_table and line == "f1040.line27a" and (ef := eic_formula(values, tables)) is not None and abs(ev - ef) <= max(bound, 100):
-                    stats[(ename, line)]["table-adjusted"] += 1; continue
-                if not unrounded and abs(diff) <= bound:
-                    stats[(ename, line)]["float"] += 1; continue
-                cause = next((inv for inv in investigations
-                              if inv["engine"] == ename and inv["line"] == line
-                              and (inv.get("case") == cid or (inv.get("feature") and inv["feature"] in feats))), None)
+                category = identified_category(line, ev, pv, bound, unrounded, uses_table, predicted, midpoint, ptc, schedule_mode,
+                                               lambda: eic_formula(values, tables))
+                if category:
+                    stats[(ename, line)][category] += 1; continue
+                cause = find_cause(investigations, ename, line, cid, feats)
                 rec = {"engine": ename, "case": cid, "line": line, "project": pv, "engine_value": ev, "diff": diff,
                        "features": case["features"]}
                 if cause:

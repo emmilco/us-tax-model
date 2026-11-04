@@ -19,6 +19,7 @@ to two decimals (`%6.2f`); nothing is rounded unless asked, so the engine's prec
 "decimal2": fractions of a cent carried through the arithmetic and rounded only when printed.
 """
 import glob
+import json
 import os
 import re
 import subprocess
@@ -83,11 +84,18 @@ def available(year):
 
 # The tax year the shipped programs are built for is part of their names and titles.
 YEAR_TAG = None
+# The year's parameters (canonical/<year>/params.json), for the amounts the adapter supplies.
+PARAMS = None
 
 
 def configure(year):
-    global YEAR_TAG
+    global YEAR_TAG, PARAMS
     YEAR_TAG = str(year)
+    PARAMS = json.loads((ROOT / "canonical" / str(year) / "params.json").read_text())["params"]["values"]
+
+
+def param(name):
+    return PARAMS[name]["value"]
 
 
 # ---------------------------------------------------------------------------------------------
@@ -294,7 +302,8 @@ def run_case(pkg, case, workdir):
         family = inputs.get(f"{HSA}.months_family", 0) == 12
         h_vals, _, _ = run_program(pkg, "taxsolve_HSA_f8889", "HSA_Form_8889/HSA_Form_8889_template.txt",
                                    {**IDENT, "L1:": "Family" if family else "Self-Only", "L2": money(inputs[f"{HSA}.line2"]),
-                                    "L3": money(855000 if family else 430000), "L7": money(100000 if inputs.get(f"{HSA}.age55") else 0),
+                                    "L3": money(param("hsa.family") if family else param("hsa.self_only")),
+                                    "L7": money(param("hsa.additional") if inputs.get(f"{HSA}.age55") else 0),
                                     "L9": money(inputs[f"{HSA}.line9"])},
                                    workdir, "f8889")
         hsa_l13 = h_vals["L13"]

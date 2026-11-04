@@ -33,7 +33,9 @@ re-extraction.
 Nothing is changed: the report points, a person decides.
 
 --adopt lists every line of the copied definitions that still names the from-year
-outside a citation (a year constant such as "y2025") on the worklist, and copies
+outside a citation (a year constant such as "y2025"), or names an id that bears a year
+(a year-specific question such as person.born_before_2001 or f2441.paid_2026), on the
+worklist, and copies
 the from-year's definitions (forms, tables, parameters, register,
 interview, and the citation rulings, marked "carried" for review) to the to-year
 with tax_year and the year in file names and in
@@ -83,7 +85,7 @@ def sentences(arch, doc, shift=0):
     d = arch.docs[doc]
     pages = arch.read(doc, "cols_file" if "cols_file" in d else "text_file").split("\f")
     for n, page in enumerate(pages, 1):
-        for s in re.split(r"(?<=[.!?:;])\s+(?=\S)", C.norm(page)):
+        for s in C.split_sentences(C.norm(page), ends=".!?:;"):
             printed = s.strip()
             s = year_shifted(printed, shift)
             if len(s) > 2:
@@ -455,6 +457,16 @@ the {r['data']} sentence beside its {r['other']} counterpart.</p>
 
 # ---------- adoption ----------
 
+YEAR_ID = re.compile(r"[A-Za-z_](?:19|20)\d\d(?!\d)")  # a year inside an id or constant: is2025, born_before_2001, y2019
+
+
+def year_literal(line, from_year):
+    """Whether a line of the copied definitions, outside a citation, names the from-year or an id
+    that bears a year: what may have to move with the year, for a person to decide."""
+    if re.search(r"\b(locator|quote):", line):
+        return False
+    return bool(re.search(rf"(?<!\d){from_year}(?!\d)", line) or YEAR_ID.search(line))
+
 def adopt(from_year, to_year):
     """Copy the from-year definitions to the to-year (refusing to overwrite), with the
     year replaced where it names the year, and relocate their pages."""
@@ -491,7 +503,7 @@ def adopt(from_year, to_year):
     for _, dst in pairs:
         for p in (sorted(dst.glob("*.yaml")) if dst.is_dir() else [dst]):
             for n, line in enumerate(p.read_text(encoding="utf-8").split("\n"), 1):
-                if re.search(rf"(?<!\d){f}(?!\d)", line) and not re.search(r"\b(locator|quote):", line):
+                if year_literal(line, f):
                     literals.append((str(p.relative_to(ROOT)), n, line.strip()))
     (ROOT / "reports" / t).mkdir(parents=True, exist_ok=True)
     (ROOT / "reports" / t / f"year_literals_from_{f}.json").write_text(json.dumps(literals, indent=1) + "\n")
@@ -578,6 +590,19 @@ def self_test(year):
     status = status or (1 if bad else 0)
     print("year-diff self-test: small amounts read only with their dollar sign: "
           + ("as expected" if not bad else f"WRONG for {bad}"))
+    # The adoption worklist names the from-year and ids that bear a year, outside citations.
+    lines = [("tax_year: 2025", True), ("- id: person.born_before_2001", True), ("when: f2441.paid_2026", True),
+             ("value: y2019", True), ("- id: f1040.line16", False), ("amount: 2001", False),
+             ('locator: "p. 3, born before January 2, 1961 (2025)"', False), ("- id: f2441.line2", False)]
+    bad = [line for line, want in lines if year_literal(line, "2025") != want]
+    status = status or (1 if bad else 0)
+    print("year-diff self-test: adoption literals (the year, ids bearing a year): " + ("as expected" if not bad else f"WRONG for {bad}"))
+    # An abbreviation's period does not end a sentence: the text is compared lower-cased.
+    split = C.split_sentences(C.norm("See Pub. 946 and Rev. Proc. 2024-40; a U.S. person, Form No. 15. Is it? No. Stop."),
+                              ends=".!?:;")
+    want = ["see pub. 946 and rev. proc. 2024-40;", "a u.s. person, form no. 15.", "is it?", "no.", "stop."]
+    status = status or (0 if split == want else 1)
+    print("year-diff self-test: sentences split past abbreviations: " + ("as expected" if split == want else f"WRONG {split}"))
     watermarked = {k: v for k, v in diff(lambda p: p, draft=True).items() if v}
     if watermarked:
         status = 1

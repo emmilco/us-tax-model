@@ -16,7 +16,8 @@ import { evaluate, evaluateAll } from "./eval.js";
 import type { EvalResult, Value } from "./eval.js";
 import { sampleReturns } from "./generate.js";
 import { loadInterview } from "./interview.js";
-import { branchKeys } from "./branches.js";
+import { branchKeys, templateKey } from "./branches.js";
+import { isHelperLine } from "./util.js";
 import { loadCases } from "./fixtures.js";
 import type { CanonicalData, Expr, FormDoc, Inputs, Line, Operand, TestExpr } from "./types.js";
 
@@ -42,7 +43,6 @@ interface Job {
   worked_scope?: "printed-irs-lines";
 }
 
-function isHelper(line: Line): boolean { return ["(helper)", "(gate)", "(computed helper)", "(question)", "(status)", "(screen)"].includes(line.printed); }
 
 /** Every operand string in an expression, with the def references and collection sums seen. */
 function walk(expr: Expr | TestExpr, out: { refs: Set<string>; defs: boolean; sums: { collection: string; field: string; where: Set<string> }[] }): void {
@@ -79,12 +79,8 @@ function roundInputs(inputs: Inputs, data: CanonicalData): Inputs {
   for (const [k, v] of Object.entries(inputs)) out[k] = typeof v === "number" && !k.startsWith("$") && !isCount(k, data) ? Math.round(v / 100) * 100 : v;
   return out;
 }
-/** The line id of a derivation key: `person[taxpayer].w2[emp_a].box1` is `w2.box1`. */
-function lineIdOf(key: string): string {
-  return key.replace(/(?:[a-zA-Z0-9_]+\[[^\]]+\]\.)+/g, (m) => m.split(".").filter(Boolean).at(-1)!.split("[")[0] + ".");
-}
 function isCount(key: string, data: CanonicalData): boolean {
-  const id = lineIdOf(key);
+  const id = templateKey(key);
   for (const doc of data.forms) { const l = doc.lines.find((x) => x.id === id); if (l) return l.type === "Count"; }
   return false;
 }
@@ -186,7 +182,7 @@ function buildJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r: EvalResu
   }
   if (entryLevel) return { id: `classm.${doc.id}.${n}`, doc: doc.id, inputs, status, given, own_inputs: [], collections, fill: [], project: {}, branches };
   // A printed line the form does not show on this return (its shown_when is false) is no form value.
-  const fill = doc.lines.filter((l) => !isHelper(l) && l.expr.op !== "input" && !defLines.includes(l) && !hiddenLine(l, r)).map((l) => ({ id: l.id, printed: l.printed, type: l.type, label: l.label }));
+  const fill = doc.lines.filter((l) => !isHelperLine(l) && l.expr.op !== "input" && !defLines.includes(l) && !hiddenLine(l, r)).map((l) => ({ id: l.id, printed: l.printed, type: l.type, label: l.label }));
   if (fill.length === 0) return null;
   const project: Record<string, Value> = {};
   for (const l of fill) { const v = val(l.id); if (!computed(v)) return null; project[l.id] = v!; }
@@ -213,7 +209,7 @@ function entriesOf(id: string, r: EvalResult): Map<string, Map<string, string>> 
 /** A helper of an entry that is unknown because a printed table has no row for this entry's facts (the
  * 2019-only automobile limits for a later vehicle, say): the case does not use it, as a STOP leaves later
  * lines underived. A printed line that depended on it would be unknown too, and its case is not chosen. */
-function unusedHelper(l: Line, v: Value): boolean { return isHelper(l) && v.kind === "unknown" && /^no row of /.test((v as { reason?: string }).reason ?? ""); }
+function unusedHelper(l: Line, v: Value): boolean { return isHelperLine(l) && v.kind === "unknown" && /^no row of /.test((v as { reason?: string }).reason ?? ""); }
 
 /** Lines of a collection worked by hand: every computed line except year constants. */
 function collectionFill(doc: FormDoc): Line[] { return doc.lines.filter((l) => l.expr.op !== "input" && l.expr.op !== "param"); }
@@ -223,7 +219,7 @@ function buildCollectionJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r
   // Keep the full dependency scan and candidate/branch rules. Only the requested
   // outputs change: an IRS form's printed values do not require guessing what
   // inactive implementation helpers or pre-division totals mean.
-  const printedOnly = collectionFill(doc).some(line => !isHelper(line));
+  const printedOnly = collectionFill(doc).some(line => !isHelperLine(line));
   const base = buildJob(data, { ...doc, lines: collectionFill(doc).concat(doc.lines.filter((l) => l.expr.op === "input")) }, inputs, r, n, branches, true);
   if (!base) return null;
   if (printedOnly) {
@@ -240,7 +236,7 @@ function buildCollectionJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r
       walk(line.expr as Expr, refs);
       for (const ref of refs.refs) visit(ref);
     };
-    for (const line of collectionFill(doc).filter(line => !isHelper(line))) visit(line.id);
+    for (const line of collectionFill(doc).filter(line => !isHelperLine(line))) visit(line.id);
     base.given = base.given.filter(given => needed.has(given.ref));
   }
   const entries: Record<string, EntryField[]> = {};
@@ -286,7 +282,7 @@ function buildCollectionJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r
     // The lines the evaluation reached for this entry: a test settled early leaves the rest
     // underived, as a STOP in the printed flow chart ends the hand-work.
     for (const l of collectionFill(doc)) {
-      if (printedOnly && isHelper(l)) continue;
+      if (printedOnly && isHelperLine(l)) continue;
       if (defIds.has(l.id)) continue;
       const key = fields.get(l.id); const v = key ? r.derivations.get(key)?.value : undefined;
       if (!key || !v) continue;
@@ -386,16 +382,16 @@ function liveInCollection(data: CanonicalData, doc: FormDoc, r: EvalResult): Set
   const read = staticallyRead(data);
   const stack: string[] = [];
   for (const [key, d] of r.derivations) {
-    const id = lineIdOf(key);
+    const id = templateKey(key);
     if (own.has(id)) { if (!read.has(id)) stack.push(key); continue; }
-    for (const o of d.operands) if (own.has(lineIdOf(o.ref))) stack.push(o.ref);
+    for (const o of d.operands) if (own.has(templateKey(o.ref))) stack.push(o.ref);
   }
   const live = new Set<string>();
   while (stack.length) {
     const key = stack.pop()!;
     if (live.has(key)) continue;
     live.add(key);
-    for (const o of r.derivations.get(key)?.operands ?? []) if (own.has(lineIdOf(o.ref))) stack.push(o.ref);
+    for (const o of r.derivations.get(key)?.operands ?? []) if (own.has(templateKey(o.ref))) stack.push(o.ref);
   }
   return live;
 }
@@ -422,7 +418,7 @@ function routeJob(data: CanonicalData, doc: FormDoc, job: Job, fullResult: EvalR
   // A definition's instance is reached through the lines that call it.
   const callers = job.kind === "def" ? defCallers(data, doc.id) : null;
   const roots = callers
-    ? [...evaluateAll(data, full).derivations.keys()].filter((k) => !k.includes("|inst:") && callers.has(lineIdOf(k)))
+    ? [...evaluateAll(data, full).derivations.keys()].filter((k) => !k.includes("|inst:") && callers.has(templateKey(k)))
     : job.fill.map((f) => f.id);
   const requested = answersRead(evaluate(data, full, roots), full);
   job.own_inputs = job.own_inputs.filter((o) => requested.has(o.id));
@@ -487,7 +483,7 @@ export function classmJobs(args: string[]): void {
   for (const doc of data.forms) {
     if (only && !only.includes(doc.id)) continue;
     const isCollection = !!doc.collection;
-    if (isCollection ? collectionFill(doc).length === 0 : !doc.lines.some((l) => !isHelper(l) && l.expr.op !== "input")) continue;
+    if (isCollection ? collectionFill(doc).length === 0 : !doc.lines.some((l) => !isHelperLine(l) && l.expr.op !== "input")) continue;
     const keys = docKeys(doc);
     // Candidate cases: the document's printed lines all computed; for a collection, at least one
     // entry, every entry's worked lines computed.
@@ -498,7 +494,7 @@ export function classmJobs(args: string[]): void {
         const filing = results[i]!.derivations.get(`${doc.id}.filing`)?.value;
         if (filing?.kind !== "bool" || !filing.value) return false;
       }
-      if (!isCollection) return doc.lines.filter((l) => !isHelper(l) && !hiddenLine(l, results[i]!)).every((l) => computed(results[i]!.derivations.get(l.id)?.value));
+      if (!isCollection) return doc.lines.filter((l) => !isHelperLine(l) && !hiddenLine(l, results[i]!)).every((l) => computed(results[i]!.derivations.get(l.id)?.value));
       const entries = entriesOf(doc.id, results[i]!);
       // Every value derived for an entry must be computed: a refusal anywhere in the entry (a
       // screen held on a constant line included) puts the case outside the hand-worked scope.
@@ -525,7 +521,7 @@ export function classmJobs(args: string[]): void {
     if (keys.length === 0 && candidates.length > 0) {
       const nonzero = (i: number): number => {
         const r = results[i]!; let count = 0;
-        const lines = isCollection ? collectionFill(doc) : doc.lines.filter((l) => !isHelper(l));
+        const lines = isCollection ? collectionFill(doc) : doc.lines.filter((l) => !isHelperLine(l));
         const keysOf = isCollection ? [...entriesOf(doc.id, r).values()].flatMap((f) => lines.map((l) => f.get(l.id) ?? "")) : lines.map((l) => l.id);
         for (const key of keysOf) { const v = r.derivations.get(key)?.value; if (v?.kind === "money" && v.cents !== 0) count++; }
         return count;

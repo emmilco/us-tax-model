@@ -113,7 +113,7 @@ These are the acceptance criteria for the formalization. Each is checkable by a 
 2. **Inspectable transcription.** Every encoded line can be rendered back as English in IRS worksheet phrasing, and the rendering is published beside the IRS text for line-against-line comparison.
 3. **A closed atom vocabulary.** Every computed line is one application of an atom from a fixed list (section 4.2), or a declared exception. The number of exceptions is published.
 4. **Proved atom properties.** The properties in section 6.3 are machine-checked over the integers.
-5. **Structural checks.** Every reference resolves; the line graph has no cycles; units type-check; guards are exhaustive and disjoint; every interview path ends in either a complete set of forms or a cited refusal.
+5. **Structural checks.** Every reference resolves; the line graph has no cycles; units type-check; guards are exhaustive and disjoint; every interview path ends in either a complete set of forms or a cited refusal (checked exhaustively over the Stage 2 finite answer domains, and on the fixture paths of later stages for reachability, termination and answer-order invariance; see 6.4).
 6. **Tests labelled by evidence class.** Every fixture states where its expected values came from (section 6.1). Official examples are all included, and are never the only evidence for a line.
 7. **Visible ambiguity.** Where the instructions are ambiguous, silent, or internally in tension, the reading chosen is recorded with its reason and shown to the user whenever it affects their return.
 8. **Year and revision pinning.** Every definition, parameter, example and source snapshot is pinned to a tax year and a document revision.
@@ -133,7 +133,7 @@ These are the acceptance criteria for the formalization. Each is checkable by a 
 | `Count` | Non-negative integer |
 | `Bool` | True or false |
 | `Enum` | A named finite set, such as filing status or Form 8949 box |
-| `Date` | Calendar date, for holding period only |
+| `Date` | Calendar date, for holding period only. Reserved: not in `schema/data.schema.json` and used by no line; a sale's holding period is answered as its short- or long-term box (`sales.box`) |
 
 Every value also has a completeness state: unknown, placeholder, or known. A return can be produced only when every reachable line is known.
 
@@ -366,7 +366,7 @@ prompts; any commentary-informed review must be labeled separately. Runtime rema
 
 Proved in Lean 4 over the integers, once, for the atoms:
 
-- `subtract_floor0`, `sum` of non-negatives, `smaller_of` of non-negatives and `multiply_rate` by a non-negative rate are non-negative.
+- `subtract_floor0`, `sum` of non-negatives, `smaller_of` of non-negatives (any number of operands) and `multiply_rate` by a non-negative rate are non-negative.
 - `round` matches its stated rule, is idempotent, and moves a value by less than one unit.
 - `multiply_count` of a non-negative amount by a count is non-negative, is monotone in each argument, and is repeated addition.
 - `prorate` of a non-negative amount is non-negative and never exceeds the amount, is monotone in the amount and in the part, and is antitone in the whole.
@@ -382,7 +382,7 @@ Proved in Lean 4 over the integers, once, for the atoms:
   | `sum_over` | the column | monotone | none | `sumOver_mono` |
   | `subtract`, `subtract_floor0` | `from` | monotone | none | `subtract_mono_from`, `subtractFloor0_mono_from` |
   | `subtract`, `subtract_floor0` | `take` | antitone | none | `subtract_antitone_take`, `subtractFloor0_antitone_take` |
-  | `smaller_of`, `larger_of` | each operand | monotone | proved for two operands; a longer list is folded by the two-operand rule | `smallerOf_mono_left`, `smallerOf_mono_right`, `largerOf_mono_left`, `largerOf_mono_right` |
+  | `smaller_of`, `larger_of` | each operand | monotone | none; any number of operands, raised position by position | `smallerOfList_mono`, `largerOfList_mono` (two operands: `smallerOf_mono_left`, `smallerOf_mono_right`, `largerOf_mono_left`, `largerOf_mono_right`) |
   | `multiply_rate` | `amount` | monotone | numerator not negative, denominator (and unit) positive | `multiplyRateHalfUp_mono_amount`, `multiplyRateToUnit_mono_amount` |
   | `multiply_rate` | the rate's numerator | monotone | amount not negative, denominator (and unit) positive | `multiplyRateHalfUp_mono_rate`, `multiplyRateToUnit_mono_rate` |
   | `multiply_rate` | the rate's denominator | antitone | amount and numerator not negative, denominator (and unit) positive | `multiplyRateHalfUp_antitone_den`, `multiplyRateToUnit_antitone_den` |
@@ -402,7 +402,8 @@ Proved in Lean 4 over the integers, once, for the atoms:
   | `rate_lookup` | `key` | the band reached is monotone | none | `rateBand_index_mono` |
 
   The condition of `tableBand_mono` is a property of the table, not of the atom. The earned income credit tables do not meet it (the credit rises to a maximum and then falls as income rises), and for them `table_lookup` is neither monotone nor antitone in the key. Whether the rate returned by `rate_lookup` rises or falls with the key likewise depends on the table, and no lemma states it. `keyed_lookup` matches its keys for equality only, and `choose`, `test` and `opaque` have no argument for which a direction is claimed. `bracket_schedule` is in the vocabulary but neither evaluator implements it and no line uses it; nothing is proved about it.
-- Evaluation of a well-formed, acyclic form terminates and is deterministic. The reference evaluator is total by a step budget (each recursive call spends one unit, so the recursion is structural) and runs in a pure state monad; an exhausted budget is reported as an error, never as a value.
+- Evaluation of a well-formed, acyclic form terminates and is deterministic. The reference evaluator is total by a step budget (each recursive call spends one unit, so the recursion is structural) and runs in a pure state monad; an exhausted budget is reported as an error, never as a value. The theorems of `EvalProps.lean` are facts about totality: their proofs are `rfl`, and their force comes from Lean accepting the definition as total. They say nothing about acyclicity; a cycle is met at evaluation time and gives an error value.
+- The reference evaluator computes each arithmetic atom with the `Atoms.lean` function the lemmas above are about: `sum` and `sum_over` with `sumList`, `subtract` and `subtract_floor0` with `subtract` and `subtractFloor0`, `smaller_of` and `larger_of` with `smallerOfList` and `largerOfList`, and `multiply_rate`, `multiply_count`, `prorate`, `percent_floor`, `round`, `table_lookup`, `rate_lookup` and `keyed_lookup` with `multiplyRateHalfUp` or `multiplyRateToUnit`, `multiplyCount`, `prorate`, `percentFloor`, `roundByRule`, `tableBand`, `rateBand` and `keyedLookup`. Tests and `choose` are defined in `Eval.lean` and have no lemmas. `sumOver` and its lemmas describe a sum over a filtered list; the evaluator sums the selected entries with `sumList`, deciding each entry's selection by evaluating the `where` test. The evaluator reads the canonical JSON untyped and defaults a missing field (`getD`); the build's schema validation rejects data with a missing required field before either evaluator reads it.
 
 Not pursued: a proof that the acyclicity and reference checker is sound. Both evaluators detect a cycle at evaluation time, so an unsound checker cannot produce a wrong value, only a late failure. Proof effort goes to properties over the data instead.
 
@@ -421,8 +422,8 @@ Not claimed: that the transcription matches the IRS text. No proof addresses tha
 
 ### 6.4 Interview checks
 
-- Every combination of enumerated and yes/no answers leads to a complete form set or a cited refusal.
-- The same answers always give the same return, regardless of the order in which they were given.
+- Every combination of enumerated and yes/no answers leads to a complete form set or a cited refusal. As implemented (`engine/src/interview-check.ts`) this is exhaustive over the Stage 2 finite answer domains only; Stage 3 and later paths are checked on the stage fixtures, and the generated returns of the property and mutation checks exercise more, but neither is exhaustive.
+- The same answers always give the same return, regardless of the order in which they were given (checked on the same paths).
 - No question is asked whose answer cannot affect a reachable line.
 
 ### 6.5 Independent construction
@@ -432,7 +433,7 @@ The checks that stand in for a human reader. Each produces its artifact at least
 - **Transcription agreement.** Each worksheet is transcribed into YAML a second time by a language model in an isolated context given the archived text, data schema and declared input/result interfaces, never the authored computations. Source-based synthetic partial-input facts may clarify the interface; reference answers, authored formulas and selected project guards stay out of the request. The two transcriptions are compared structurally, atom by atom and operand by operand. Separately recorded host checks may interpret schema/type-validated declarative IR on bounded synthetic cases using the fixed evaluator, without running model-generated code or commands. These finite contract checks earn no numeric evidence credit and do not certify whole-form correctness. A disagreement is adjudicated against the source and the adjudication is recorded. An undefined internal adapter is recorded as an interface gap. Explicitly classified implementation adapters have separate host-only engineering contracts and are excluded from blind source targets and source agreement/noise counts; their behavior and answers are not supplied as independent tax evidence. A document with no source-defined computed targets earns no source-review assertion.
 - **Render comparison.** The rendered English of each line is compared against the archived instruction text by an isolated model that has not seen the YAML, which reports any line whose rendering does not say what the text says.
 - **Model hand-work (class M).** Branch-covering inputs are worked on the archived worksheet by an isolated model, and the results become class M fixtures.
-- **Engine differential (class C).** Generated whole returns are run through independent engines maintained by other people and compared line for line where lines exist and total for total otherwise.
+- **Engine differential (class C).** Generated whole returns are run through independent engines maintained by other people and compared line for line where lines exist and total for total otherwise. Four are in use (`tools/engines/run_engines.py`): PolicyEngine-US, Tax-Calculator, OpenTaxSolver and UsTaxes; an engine that is not installed is left out visibly, never silently.
 - **Evaluator agreement.** The TypeScript and Lean evaluators, already required by 6.3.
 
 Every language-model invocation in this section runs under the AI Security and Isolation Protocol, with no access to the repository beyond the archived source and the schema, and no network. The model, the prompt, and the snapshot hash are recorded with each artifact.

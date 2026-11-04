@@ -27,6 +27,14 @@ def smallerOf (a b : Int) : Int := min a b
 /-- Maximum of two amounts. -/
 def largerOf (a b : Int) : Int := max a b
 
+/-- `smaller_of` over one or more operands: the first operand folded with `smallerOf` over the
+rest. -/
+def smallerOfList (x : Int) (rest : List Int) : Int := rest.foldl smallerOf x
+
+/-- `larger_of` over one or more operands: the first operand folded with `largerOf` over the
+rest. -/
+def largerOfList (x : Int) (rest : List Int) : Int := rest.foldl largerOf x
+
 /-- Half-up division toward +infinity: floor((2n + d) / (2d)) for d > 0.
     (Lean's integer division is floor division, so this is the intended rule.) -/
 def halfUpDiv (n d : Int) : Int := (2 * n + d) / (2 * d)

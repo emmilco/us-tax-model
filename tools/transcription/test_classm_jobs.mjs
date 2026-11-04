@@ -6,11 +6,13 @@ import { mkdtempSync, readFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
+// The year of the run (--year N, removed from process.argv on import) is passed to every engine command.
+import { YEAR_ARGS } from '../../engine/dist/year.js';
 
 const temp = mkdtempSync(join(tmpdir(), 'classm-seeds-'));
 try {
   const out = join(temp, 'jobs.json');
-  const proc = spawnSync(process.execPath, ['engine/dist/main.js', 'classm-jobs',
+  const proc = spawnSync(process.execPath, ['engine/dist/main.js', 'classm-jobs', ...YEAR_ARGS,
     '--docs', 'f2441', '--corpus', '1', '--include-fixtures', '--out', out],
   { encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 });
   assert.equal(proc.status, 0, proc.stderr);
@@ -28,7 +30,7 @@ try {
   assert.ok(jobs.every(j => j.inputs['sa.dependent'] === true || !('person[taxpayer].sav_claimed' in j.inputs)),
     'a case must not hold an answer the interview never asks');
   const hsaOut = join(temp, 'hsa-jobs.json');
-  const hsa = spawnSync(process.execPath, ['engine/dist/main.js', 'classm-jobs',
+  const hsa = spawnSync(process.execPath, ['engine/dist/main.js', 'classm-jobs', ...YEAR_ARGS,
     '--docs', 'f8889', '--corpus', '1', '--include-fixtures', '--out', hsaOut],
   { encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 });
   assert.equal(hsa.status, 0, hsa.stderr);
@@ -43,7 +45,7 @@ try {
   // Lines hidden by shown_when show no amount: the 28% Rate Gain Worksheet on a return that never
   // reaches it has nothing to fill, so no job compares its hidden lines.
   const g28Out = join(temp, 'g28-jobs.json');
-  const g28 = spawnSync(process.execPath, ['engine/dist/main.js', 'classm-jobs',
+  const g28 = spawnSync(process.execPath, ['engine/dist/main.js', 'classm-jobs', ...YEAR_ARGS,
     '--docs', 'g28', '--corpus', '300', '--include-fixtures', '--out', g28Out],
   { encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 });
   assert.equal(g28.status, 0, g28.stderr);
@@ -55,7 +57,7 @@ try {
   // total) or month by month; the generator fills both so every line computes, but the worker sees
   // only the route the entry takes, and the other route's totals are not requested.
   const f1095aOut = join(temp, 'f1095a-jobs.json');
-  const f1095a = spawnSync(process.execPath, ['engine/dist/main.js', 'classm-jobs',
+  const f1095a = spawnSync(process.execPath, ['engine/dist/main.js', 'classm-jobs', ...YEAR_ARGS,
     '--docs', 'f1095a', '--corpus', '300', '--include-fixtures', '--out', f1095aOut],
   { encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 });
   assert.equal(f1095a.status, 0, f1095a.stderr);

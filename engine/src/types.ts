@@ -142,6 +142,8 @@ export interface RegisterEntry {
   reason: string;
   cite: CiteFilled;
   status?: string;
+  /** Why no line links the entry by `ambiguity:` (superseded, or read only by a refusal). */
+  unlinked?: string;
 }
 
 export interface RegisterDoc {

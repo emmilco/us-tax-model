@@ -30,7 +30,7 @@ def forms_for(kind):
     return sorted({families.split_stem(f[:-3])[0] for f in os.listdir(d) if f.endswith(".md")})
 
 
-def run(kind, form, model, resume=False, reasoning_effort=None, max_output_tokens=None, case_jobs=1):
+def run(kind, form, model, resume=False, reasoning_effort=None, max_output_tokens=None, case_jobs=1, carry=True):
     script, flag = TOOLS[kind]
     cmd = [sys.executable, os.path.join(HERE, script), flag, form, *YEAR_ARGS] + (["--model", model] if model else [])
     if reasoning_effort:
@@ -47,8 +47,26 @@ def run(kind, form, model, resume=False, reasoning_effort=None, max_output_token
     if not reused:
         r = subprocess.run(cmd, capture_output=True, text=True, cwd=ROOT)
     last = (r.stdout.strip().splitlines() or [""])[-1]
+    if r.returncode == 3 and carry:
+        # T-218: carry earlier rulings over to repeat disagreements (same line, same content, line unchanged)
+        fam = families.family_of(model) if model else families.DEFAULT
+        ccmd = [sys.executable, os.path.join(HERE, "carry.py"), "--kind", kind, "--form", form]
+        if fam != families.DEFAULT:
+            ccmd += ["--family", fam]
+        c = subprocess.run(ccmd, capture_output=True, text=True, cwd=ROOT)
+        cl = (c.stdout.strip().splitlines() or [""])[-1]
+        last = f"{last} | carry: {cl}"
     return {"kind": kind, "form": form, "exit": r.returncode, "seconds": round(time.time() - t0), "reused": reused,
             "last": last, "stderr": r.stderr[-400:] if r.returncode not in (0, 3) else ""}
+
+
+def eligible(kind, form, family):
+    """A second family's log of this form currently qualifies for second-family credit (compare_families.py)."""
+    import compare_families
+    try:
+        return compare_families.compare(kind, form, family)["quality"]["state"] != "pending"
+    except Exception:
+        return False
 
 
 def main():
@@ -61,6 +79,7 @@ def main():
     ap.add_argument("--max-output-tokens", type=int)
     ap.add_argument("--case-jobs", type=int, default=1)
     ap.add_argument("--resume", action="store_true", help="reuse only responses whose recorded request exactly matches the current prompt/model/system/policy")
+    ap.add_argument("--no-carry", action="store_true", help="do not carry earlier rulings over to repeat disagreements (carry.py)")
     ap.add_argument("--summary", default=os.path.join(ROOT, ".transcription", "rerun_summary.json"))
     a = ap.parse_args()
     if a.jobs < 1:
@@ -68,18 +87,26 @@ def main():
     if set(a.kinds.split(",")) - set(TOOLS):
         ap.error("unknown review kind")
     jobs = []
+    fam = families.family_of(a.model) if a.model else families.DEFAULT
+    skipped = []
     for kind in a.kinds.split(","):
         for form in forms_for(kind):
             if a.forms and form not in a.forms.split(","):
                 continue
+            if kind == "transcription" and fam == "deepseek" and not a.forms and not eligible(kind, form, fam):
+                skipped.append(form)  # owner decision 2026-11-04: DeepSeek transcription only where it can earn credit
+                continue
             jobs.append((kind, form))
+    if skipped:
+        print(f"skipped {len(skipped)} DeepSeek transcription form(s) not eligible for second-family credit "
+              f"(name them with --forms to run anyway): {', '.join(skipped)}", flush=True)
     # classm.py rebuilds its own document's jobs under a lock. A redundant
     # all-document corpus here can exhaust the heap before any review starts.
     print(f"{len(jobs)} runs, {a.jobs} at a time", flush=True)
     results = []
     os.makedirs(os.path.dirname(a.summary), exist_ok=True)
     with ThreadPoolExecutor(max_workers=a.jobs) as ex:
-        pending = [ex.submit(run, kind, form, a.model, a.resume, a.reasoning_effort, a.max_output_tokens, a.case_jobs) for kind, form in jobs]
+        pending = [ex.submit(run, kind, form, a.model, a.resume, a.reasoning_effort, a.max_output_tokens, a.case_jobs, not a.no_carry) for kind, form in jobs]
         for future in as_completed(pending):
             res = future.result()
             results.append(res)

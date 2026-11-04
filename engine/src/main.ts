@@ -9,6 +9,7 @@
 //   node engine/dist/main.js conjecture            test the Tax Table conjecture
 //   node engine/dist/main.js properties            check the data-level properties over generated returns
 //   node engine/dist/main.js classm-jobs [--docs a,b] write the class M hand-work jobs (branch-covering cases)
+//   node engine/dist/main.js check-self-test       test check rules against constructed violations
 
 import { readFileSync } from "node:fs";
 import "./year.js";
@@ -27,6 +28,7 @@ import { classmJobs } from "./classm.js";
 
 import { integrationChecks } from "./integration.js";
 import { runChecks } from "./check.js";
+import { runCheckSelfTest } from "./check-selftest.js";
 import type { CanonicalData } from "./types.js";
 import { runInterview } from "./interview.js";
 
@@ -130,9 +132,11 @@ if (command === "review-stage5") {
   process.exit(runProperties());
 } else if (command === "classm-jobs") {
   classmJobs(process.argv.slice(3));
+} else if (command === "check-self-test") {
+  runCheckSelfTest();
 } else {
   console.error(
-    "usage: main.js [--year N] build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | conjecture | record-fixtures | test-fixtures | test-integration | coverage | properties | mutate | compare",
+    "usage: main.js [--year N] build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | conjecture | record-fixtures | test-fixtures | test-integration | coverage | properties | mutate | compare | check-self-test",
   );
   process.exit(2);
 }

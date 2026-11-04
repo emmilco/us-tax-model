@@ -42,3 +42,13 @@ def _resolve():
 YEAR = _resolve()
 Y = str(YEAR)
 YEAR_ARGS = ["--year", Y]
+
+
+def for_year(by_year, what):
+    """`by_year[YEAR]`: what a tool knows of one year's printing (page numbers, coordinates),
+    keyed by year. A year it has no entry for exits naming `what`, so the tool fails loudly
+    rather than reading another year's pages."""
+    if YEAR not in by_year:
+        sys.exit(f"{what}: known for {', '.join(str(y) for y in sorted(by_year))} only; "
+                 f"read the {Y} printing and add it before running for {Y}")
+    return by_year[YEAR]

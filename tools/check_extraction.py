@@ -274,7 +274,37 @@ def self_test():
                and pdfkit_skip_reason(True, "darwin", "/usr/bin/swift") is not None)
     print("extraction self-test, PDFKit skip rule: "
           + ("runs with Swift, required on macOS, skipped visibly elsewhere" if skip_ok else "WRONG"))
-    return 0 if ok and skip_ok else 1
+    gutter_ok = narrow_gutter_self_test()
+    return 0 if ok and skip_ok and gutter_ok else 1
+
+
+def narrow_gutter_self_test():
+    """Three prose columns 4 points apart (Pub. 946's glossary) read column by column; one
+    justified column, whose word spaces never line up, has no gutter."""
+    def column_lines(x0, n, words=6, step=28.0, spaces=()):
+        out = []
+        for i in range(n):
+            boxes, x = [], x0
+            for w in range(words):
+                width = step - 2 + (spaces[(i + w) % len(spaces)] if spaces else 0)
+                boxes.append((x, x + width)); x += width + 2
+            out.append(extract_text.Line(boxes[0][0], 100 + 12 * i, boxes[-1][1], 110 + 12 * i,
+                                         [f"c{x0:.0f}w{w}" for w in range(words)], 0, boxes))
+        return out
+    three = column_lines(40, 30) + column_lines(210, 30) + column_lines(380, 30)  # each 166 wide: 4-point gaps
+    # pdftotext may report a row of all three columns as one line; it is split at the gutters.
+    joined = [extract_text.Line(a.x0, a.y0, c.x1, a.y1, a.words + b.words + c.words, 0, a.boxes + b.boxes + c.boxes)
+              for a, b, c in zip(three[:30], three[30:60], three[60:])]
+    lines, guts = extract_text.analyze(612, joined)
+    order = extract_text.order(612, 800, lines, guts)
+    columns_ok = (len(guts) == 2 and all(g1 - g0 < extract_text.GUTTER_MIN_WIDTH for g0, g1 in guts)
+                  and [l.x0 for l in order] == [40] * 30 + [210] * 30 + [380] * 30)
+    one = column_lines(40, 40, words=18, step=28.0, spaces=(0, 3, 1, 5, 2, 4))
+    single_ok = extract_text.analyze(612, one)[1] == []
+    print("extraction self-test, narrow gutters: "
+          + ("three columns 4 points apart read by column; one justified column has none"
+             if columns_ok and single_ok else f"WRONG (three columns: gutters {guts}; one column ok: {single_ok})"))
+    return columns_ok and single_ok
 
 
 def main():

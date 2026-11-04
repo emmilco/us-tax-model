@@ -84,12 +84,28 @@ AS_EXTRACTED = ["tools/ocr_audit.py", "tools/check_extraction.py", "tools/extrac
                 "tools/extract_text.py", "tools/fetch_sources.py", "tools/archive_text.py"]
 # A line that opens or reads a file and names a text layer or the archive directory (not its
 # manifest, page classification, PDF or spreadsheets), or that names a .txt file under
-# sources/: a text layer read past this module. (A line scan: a layer path built in one
-# place and read in another escapes it.)
+# sources/: a text layer read past this module. The archive directory is ARCHIVE, SOURCES or
+# self.sources, or any name the file binds to a path through "sources" (SRC = ROOT /
+# "sources" / Y). (A line scan: a layer path built in one place and read in another escapes it.)
 OPENS = re.compile(r"read_text\(|\bopen\(")
 LAYER = re.compile(r"text_file|cols_file|\bARCHIVE\b|\bSOURCES\b|self\.sources\b")
 NOT_LAYER = re.compile(r"manifest|\.json|pages_file|\.pdf|\.xls")
 LAYER_PATH = re.compile(r"(?:[\"']sources[\"']|\bARCHIVE\b|\bSOURCES\b).*\.txt[\"']")
+BINDS_ARCHIVE = re.compile(r"^\s*((?:self\.)?[A-Za-z_]\w*)\s*=[^=].*[\"']sources[\"']")
+
+
+def direct_reads(name, text):
+    """(line number, line) of each line of a tool's source that reads an archived text layer
+    itself."""
+    bound = {m.group(1) for line in text.split("\n") if (m := BINDS_ARCHIVE.match(line))}
+    layer = re.compile(LAYER.pattern + "".join(rf"|(?<![\w.]){re.escape(b)}\b" for b in sorted(bound)))
+    out = []
+    for n, line in enumerate(text.split("\n"), 1):
+        if "archive_text." in line:
+            continue
+        if (OPENS.search(line) and layer.search(line) and not NOT_LAYER.search(line)) or LAYER_PATH.search(line):
+            out.append((n, line))
+    return out
 
 
 def self_test():
@@ -112,17 +128,24 @@ def self_test():
             ok = clean == want_clean
             status = status or (0 if ok else 1)
             print(f"archive-text self-test, {name}: {'as expected' if ok else 'WRONG: ' + repr(got[:120])}")
+    # The scan finds a read through a name bound to the archive directory, and passes a read
+    # through this module and a read of the manifest.
+    planted = ('SRC = ROOT / "sources" / "2025"\n'
+               'def pages(doc, layer="txt"):\n    return (SRC / f"{doc}.{layer}").read_text().split("\\f")\n'
+               'hhs = (SRC / "fr-2024-00796.txt").read_text()\n'
+               'm = json.loads((SRC / "manifest.json").read_text())\n'
+               'text = archive_text.read(SRC, entry)\n')
+    found = [n for n, _ in direct_reads("planted.py", planted)]
+    ok = found == [3, 4]
+    status = status or (0 if ok else 1)
+    print(f"archive-text self-test, a read through a name bound to sources/: {'found' if ok else f'WRONG, lines {found}'}")
     # No other tool opens an archived text layer itself.
     direct = []
     for path in sorted(ROOT.glob("tools/**/*.py")):
         name = str(path.relative_to(ROOT))
         if name in AS_EXTRACTED or "/test_" in name:
             continue
-        for n, line in enumerate(path.read_text(encoding="utf-8").split("\n"), 1):
-            if "archive_text." in line:
-                continue
-            if (OPENS.search(line) and LAYER.search(line) and not NOT_LAYER.search(line)) or LAYER_PATH.search(line):
-                direct.append(f"{name}:{n}: {line.strip()[:100]}")
+        direct += [f"{name}:{n}: {line.strip()[:100]}" for n, line in direct_reads(name, path.read_text(encoding="utf-8"))]
     for d in direct:
         print(f"  reads an archived text layer past tools/archive_text.py: {d}")
     print(f"archive-text self-test: {len(direct)} direct read(s) of an archived text layer")

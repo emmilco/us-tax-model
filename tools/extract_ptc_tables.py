@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
-"""Pin the Form 8962 tables from the archived 2025 instructions, and check them.
+"""Pin the Form 8962 tables from the year's archived instructions, and check them.
 
-Table 2 (Applicable Figure, i8962 p. 11) becomes `tables/2025/ptc_applicable_figure.yaml`, a keyed table
+Where the tables are printed is known for the years in LAYOUT (2025); another year fails, naming
+what to add, until its pages are read and added there.
+
+Table 2 (Applicable Figure, i8962 p. 11) becomes `tables/<year>/ptc_applicable_figure.yaml`, a keyed table
 of Form 8962 line 5 (0 to 401) to a Rate: the printed rows 150 to 399, "less than 150" for every line 5
 below 150, and the 0.0850 of the "400 or more" tip for 400 and 401 (line 5 is at most 401).
 
-Tables 1-1 to 1-3 (Federal Poverty Line, i8962 pp. 8 and 9) become `tables/2025/ptc_poverty_line.yaml`,
+Tables 1-1 to 1-3 (Federal Poverty Line, i8962 pp. 8 and 9) become `tables/<year>/ptc_poverty_line.yaml`,
 keyed by the table (Enum ptc_fpl_table) and family size: the printed sizes 1 to 8, and sizes 9 to 20
 by each table's footnote ("add $5,380 for each additional person", and so on).
 
@@ -15,7 +18,9 @@ every Table 2 row equals the derivation 0 at 150 or less, (p - 150) x 0.0004 to 
 increment is also printed in the HHS 2024 poverty guidelines (fr-2024-00796); the footnote extension
 reproduces the size-11 examples of the instructions.
 
-    python3 tools/extract_ptc_tables.py [--check]
+    python3 tools/extract_ptc_tables.py [--check] [--year N]
+
+The archived text is read through tools/archive_text.py.
 """
 import argparse
 import re
@@ -24,19 +29,31 @@ from fractions import Fraction
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SRC = ROOT / "sources" / "2025"
-OUT_FIG = ROOT / "tables" / "2025" / "ptc_applicable_figure.yaml"
-OUT_FPL = ROOT / "tables" / "2025" / "ptc_poverty_line.yaml"
+sys.path.insert(0, str(ROOT / "tools"))
+import taxyear  # noqa: E402
+from taxyear import Y  # noqa: E402
+import archive_text  # noqa: E402
+ARCHIVE = ROOT / "sources" / Y
+OUT_FIG = ROOT / "tables" / Y / "ptc_applicable_figure.yaml"
+OUT_FPL = ROOT / "tables" / Y / "ptc_poverty_line.yaml"
 CAP = 400
 MAX_SIZE = 20
+# Per year: the form-feed pages (0-based) of i8962 that print Table 2 and Tables 1-1 to 1-3, the
+# HHS poverty guidelines those tables reprint (an archived document and the guidelines' year),
+# and the sentence of the instructions that says which guidelines apply.
+LAYOUT = {
+    2025: {"table2": 10, "fpl": (7, 8), "hhs": "fr-2024-00796", "fpl_year": 2024,
+           "fpl_quote": "For 2025, the 2024 federal poverty lines are used for this purpose and are shown below."},
+}
+L = taxyear.for_year(LAYOUT, "extract_ptc_tables.py: where i8962 prints Tables 1-1 to 1-3 and 2, and the HHS guidelines they reprint")
 
 
-def pages(doc, layer="txt"):
-    return (SRC / f"{doc}.{layer}").read_text().split("\f")
+def pages(doc):
+    return archive_text.read(ARCHIVE, archive_text.manifest(ARCHIVE)[doc]).split("\f")
 
 
 def applicable_figures():
-    page = pages("i8962")[10]
+    page = pages("i8962")[L["table2"]]
     rows = {}
     for p, fig in re.findall(r"(?<![\d.])(\d{3})\s+(0\.\d{4})(?!\d)", page):
         rows[int(p)] = fig
@@ -62,7 +79,7 @@ def derived_figure(p):
 
 
 def poverty_lines():
-    text = pages("i8962")[7] + pages("i8962")[8]
+    text = "".join(pages("i8962")[p] for p in L["fpl"])
     tables = {}
     for key, start in (("contiguous", "Table 1-1."), ("alaska", "Table 1-2."), ("hawaii", "Table 1-3.")):
         i = text.find(start)
@@ -85,11 +102,11 @@ def poverty_lines():
 
 def write_fig(rows):
     lines = ["# Form 8962 Table 2, Applicable Figure (i8962 p. 11), keyed by Form 8962 line 5.",
-             "# Written by tools/extract_ptc_tables.py from sources/2025/i8962.txt; checked by its --check (check-all).",
+             f"# Written by tools/extract_ptc_tables.py from sources/{Y}/i8962.txt; checked by its --check (check-all).",
              "# Rows 150 to 399 as printed; below 150 the row 'less than 150' (and the tip, 150 or less); 400 and 401",
              "# the tip, 'If the amount on line 5 is 400 or more, your applicable figure is 0.0850' (line 5 is at most 401).",
              "table:", "  id: ptc_applicable_figure", "  kind: keyed",
-             '  title: "Applicable figure (Form 8962 instructions, Table 2)"', "  tax_year: 2025", "  cite:", "    doc: i8962",
+             '  title: "Applicable figure (Form 8962 instructions, Table 2)"', f"  tax_year: {Y}", "  cite:", "    doc: i8962",
              '    locator: "p. 11, Table 2. Applicable Figure"',
              '    quote: "If the amount on line 5 is 150 or less, your applicable figure is 0.0000."',
              "  keys:", "    - { name: percent, type: Count }", "  cell: Rate", "  rows:"]
@@ -100,14 +117,14 @@ def write_fig(rows):
 
 
 def write_fpl(tables):
-    lines = ["# Form 8962 Tables 1-1 to 1-3, Federal Poverty Line (i8962 pp. 8 and 9; the 2024 poverty lines, used for 2025),",
+    lines = [f"# Form 8962 Tables 1-1 to 1-3, Federal Poverty Line (i8962 pp. 8 and 9; the {L['fpl_year']} poverty lines, used for {Y}),",
              "# keyed by the table and the family size of Form 8962 line 1. Sizes 1 to 8 as printed; 9 to 20 by each table's",
              "# footnote. Written by tools/extract_ptc_tables.py; checked by its --check (check-all), including against the",
-             "# HHS 2024 poverty guidelines (sources/2025/fr-2024-00796).",
+             f"# HHS {L['fpl_year']} poverty guidelines (sources/{Y}/{L['hhs']}).",
              "table:", "  id: ptc_poverty_line", "  kind: keyed",
-             '  title: "Federal poverty line (Form 8962 instructions, Tables 1-1 to 1-3)"', "  tax_year: 2025", "  cite:", "    doc: i8962",
+             '  title: "Federal poverty line (Form 8962 instructions, Tables 1-1 to 1-3)"', f"  tax_year: {Y}", "  cite:", "    doc: i8962",
              '    locator: "p. 8, Line 4, Table 1-1. Federal Poverty Line for the 48 Contiguous States and the District of Columbia; p. 9, Table 1-2. Federal Poverty Line for Alaska; p. 9, Table 1-3. Federal Poverty Line for Hawaii"',
-             '    quote: "For 2025, the 2024 federal poverty lines are used for this purpose and are shown below."',
+             f'    quote: "{L["fpl_quote"]}"',
              "  keys:", "    - { name: table, type: Enum(ptc_fpl_table) }", "    - { name: size, type: Count }", "  cell: NonNegDollars", "  rows:"]
     for key, (amounts, inc, _) in tables.items():
         for size in range(1, MAX_SIZE + 1):
@@ -125,11 +142,11 @@ def main():
     if bad:
         raise SystemExit(f"Table 2 rows differ from the derivation: {bad[:10]}")
     tables = poverty_lines()
-    hhs = (SRC / "fr-2024-00796.txt").read_text()
+    hhs = "\f".join(pages(L["hhs"]))
     for key, (amounts, inc, example) in tables.items():
         for x in amounts + [inc]:
             if not re.search(r"(?<![\d,])" + re.escape(f"{x:,}") + r"(?![\d,])", hhs):
-                raise SystemExit(f"{key}: ${x:,} is not printed in the HHS 2024 poverty guidelines")
+                raise SystemExit(f"{key}: ${x:,} is not printed in the HHS {L['fpl_year']} poverty guidelines")
         if amounts[7] + 3 * inc != example:
             raise SystemExit(f"{key}: the footnote extension does not give the size-11 example")
         if any(amounts[s] != amounts[0] + s * inc for s in range(8)):

@@ -69,10 +69,13 @@ tests and `choose` are defined in the evaluator, `Eval.lean`), proves properties
 section 6.3 (`Lemmas.lean`: non-negativity, rounding idempotence and bounds, proration bounds,
 the direction of each atom in each ordered argument, with proved counterexamples where it is neither,
 and correctness of the keyed, rate and banded table lookups), and has a reference evaluator over the same canonical JSON as the TypeScript one. That
-evaluator is total by construction: each call spends from a step budget, so it always returns, and an
+evaluator computes each arithmetic atom with the `Atoms.lean` function the lemmas are about (the list is in spec
+section 6.3), so the lemmas are about the functions that run; nothing is proved about the dispatch that reads
+their operands. It reads the JSON untyped and defaults
+a missing field; the build's schema validation rejects data with a missing required field first. It is total by construction: each call spends from a step budget, so it always returns, and an
 exhausted budget is an error value, never a number. `EvalProps.lean` states termination and
 determinism, but as its own docstring says, their force comes from the definition being accepted as
-total, not from the proofs. Both evaluators run over every fixture and over 400 generated inputs;
+total, not from the proofs, and they say nothing about acyclicity (a cycle gives an error value at evaluation time). Both evaluators run over every fixture and over 400 generated inputs;
 `reports/2025/evaluator_agreement.md` reports 1,994 cases, 4,470,945 line values compared, 0
 differences. **Guarantees:** the proved atom properties hold, and two independently written evaluators
 of the same data compute the same values. **Does not guarantee:** that the TypeScript evaluator is

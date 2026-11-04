@@ -25,6 +25,9 @@ Copies fixtures/<from>/ to fixtures/<to>/ (refusing to overwrite) and re-derives
 
 Writes reports/<to>/fixtures_from_<from>.md.
 
+    fixtures_year.py --self-test     (in check-all) parameter-relative inputs resolve, and
+                                      one naming no dollar parameter is refused, as the engine does
+
     fixtures_year.py --from 2025 --to 2026 --plan
 
 writes the same report without carrying anything, for a year whose definitions do
@@ -69,15 +72,48 @@ def shift_year(key, value, shift):
     return f"y{int(m.group(1)) + shift}" if m else value
 
 
-def resolve(inputs, params):
+def resolve(inputs, params, where="fixture"):
+    """The inputs with each parameter-relative one ({"param", "status"?, "offset"}) replaced by
+    the parameter's value (for the status, if given) plus the offset, as engine/src/fixture-inputs.ts
+    resolves them; one that names no dollar amount, or whose offset is not a whole number of cents,
+    is refused (ValueError) as the engine refuses it."""
     out = {}
     for k, v in inputs.items():
-        if isinstance(v, dict) and "param" in v:
-            base = params[v["param"]]["value"]
-            out[k] = (base[v["status"]] if "status" in v else base) + v["offset"]
-        else:
+        if not (isinstance(v, dict) and isinstance(v.get("param"), str)):
             out[k] = v
+            continue
+        entry = (params.get(v["param"]) or {}).get("value")
+        base = entry if "status" not in v else entry.get(v["status"]) if isinstance(entry, dict) else None
+        offset = v.get("offset")
+        if not _cents(base) or not _cents(offset):
+            status = f"[{v['status']}]" if "status" in v else ""
+            raise ValueError(f"{where}: input {k} refers to {v['param']}{status}, which is not a dollar amount")
+        out[k] = base + offset
     return out
+
+
+def _cents(x):
+    return isinstance(x, int) and not isinstance(x, bool)
+
+
+def self_test():
+    params = {"a.amount": {"value": 1000}, "a.by_status": {"value": {"mfj": 2000, "single": 1000}},
+              "a.rate": {"value": {"num": 1, "den": 2}}}
+    good = resolve({"x": {"param": "a.amount", "offset": -1}, "y": {"param": "a.by_status", "status": "mfj", "offset": 5},
+                    "z": 7, "w": {"kind": "other"}}, params)
+    ok = good == {"x": 999, "y": 2005, "z": 7, "w": {"kind": "other"}}
+    refused = []
+    for bad in ({"param": "a.missing", "offset": 0}, {"param": "a.rate", "offset": 0}, {"param": "a.by_status", "offset": 0},
+                {"param": "a.by_status", "status": "hoh", "offset": 0}, {"param": "a.amount", "offset": 0.5},
+                {"param": "a.amount"}):
+        try:
+            resolve({"k": bad}, params, where="case t")
+            refused.append(False)
+        except ValueError as e:
+            refused.append(str(e).startswith("case t: input k refers to "))
+    print("fixtures-year self-test: parameter-relative inputs " + ("resolve, and those naming no dollar amount are refused"
+          if ok and all(refused) else f"WRONG (resolved {good}; refused {refused})"))
+    return 0 if ok and all(refused) else 1
 
 
 def comparable(value):
@@ -164,7 +200,7 @@ def main():
                 dropped.append((name, c["id"]))
                 continue
             c["inputs"] = {k: shift_year(k, v, t - f) for k, v in c["inputs"].items()}
-            c["resolved"] = resolve(c["inputs"], params)
+            c["resolved"] = resolve(c["inputs"], params, where=f"{name} {c['id']}")
             cases.append(c)
             all_cases.append(c)
         data["cases"] = cases
@@ -275,7 +311,7 @@ def plan(f, t, src):
             if str(c.get("evidence", "")).startswith("A"):
                 dropped.append((path.name, c["id"]))
                 continue
-            c["resolved"] = resolve(c["inputs"], params)
+            c["resolved"] = resolve(c["inputs"], params, where=f"{path.name} {c['id']}")
             c["file"] = path.name
             cases.append(c)
     results = evaluate(cases, f)
@@ -320,4 +356,6 @@ def plan(f, t, src):
 
 
 if __name__ == "__main__":
+    if "--self-test" in sys.argv:
+        sys.exit(self_test())
     main()

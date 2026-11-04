@@ -106,6 +106,29 @@ def review_context(kind, text):
                                      "case_prompts": cases}, sort_keys=True).encode()).hexdigest()
 
 
+PASS_TAG = re.compile(r"^Reviewed in: pass ([0-9a-f]{12})$", re.M)
+
+
+def pass_blocks(text):
+    """{pass id: record} of the line-scoped reviews a transcription or render log holds."""
+    _, sep, tail = text.partition("\n## Line-scoped reviews\n")
+    if not sep:
+        return {}
+    tail = tail.split("\n## Raw ", 1)[0]
+    return {part.partition("\n")[0].strip(): "#### Pass " + part for part in tail.split("\n#### Pass ")[1:]}
+
+
+def section_context(kind, text, content, blocks=None):
+    """The review context of one section of a log: that of the line-scoped review whose pass the
+    section names ("Reviewed in: pass <id>"), else that of the review recorded in the log's header.
+    A section naming a pass the log does not hold has no context (None)."""
+    tag = PASS_TAG.search(content.split("\n## ", 1)[0])
+    if not tag:
+        return review_context(kind, text)
+    blocks = pass_blocks(text) if blocks is None else blocks
+    return review_context(kind, blocks[tag.group(1)]) if tag.group(1) in blocks else None
+
+
 def kept(kind, form, family=families.DEFAULT, *, context):
     """Only reuse rulings explicitly made in this review context."""
     return {k: v["ruling"] + (DROPPED if v["drop"] else "") for k, v in load(kind, form, family).items()
@@ -143,8 +166,9 @@ def section_key(kind, title, content):
     return key, m.group(3).strip()
 
 
-def log_sections(kind, text):
-    """Every disagreement section of a log: [(key, ruling line)]."""
+def log_sections(kind, text, with_content=False):
+    """Every disagreement section of a log: [(key, ruling line)], or with `with_content`
+    [(key, ruling line, section content)]."""
     _, _, rest = text.partition("\n## Lines\n")
     body, _, _ = rest.partition("\n## Raw ")
     out = []
@@ -152,7 +176,7 @@ def log_sections(kind, text):
         title, _, content = part.partition("\n")
         found = section_key(kind, title, content)
         if found:
-            out.append(found)
+            out.append((*found, content) if with_content else found)
     return out
 
 
@@ -211,7 +235,8 @@ def check():
             side = load(kind, form, family)
             seen = set()
             stem = families.stem(form, family)
-            for key, line in log_sections(kind, text):
+            blocks = pass_blocks(text)
+            for key, line, content in log_sections(kind, text, with_content=True):
                 if line == OPEN:
                     continue
                 total += 1; seen.add(key)
@@ -221,7 +246,7 @@ def check():
                     problems.append(f"{kind}/{stem}: ruling on {key[:2]} is in the log but not in {stem}.rulings.json")
                 elif s["ruling"] != t or s["drop"] != drop:
                     problems.append(f"{kind}/{stem}: ruling on {key[:2]} differs between the log and {stem}.rulings.json")
-                elif s.get("context") and s["context"] != review_context(kind, text):
+                elif s.get("context") and s["context"] != section_context(kind, text, content, blocks):
                     problems.append(f"{kind}/{stem}: ruling on {key[:2]} belongs to a different review context")
             stale += sum(1 for k in side if k not in seen)
     for p in problems:

@@ -24,6 +24,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
+import taxyear  # noqa: E402
 from taxyear import Y  # noqa: E402
 from citations import segments  # noqa: E402
 import baseline_check  # noqa: E402
@@ -37,11 +38,15 @@ REPORT = ROOT / "reports" / Y / "instruction_cites.md"
 
 PRINTED = re.compile(r"^\d{1,2}[a-z]?$")
 # The general instructions cover Form 1040 and Schedules 1, 1-A, 2 and 3, each in its own page range (line numbers
-# restart in each part).
+# restart in each part); the ranges are the year's printing's, known for the years in PARTS.
 INSTRUCTIONS = {"f1040": "i1040gi", "f1040s1": "i1040gi", "f1040s1a": "i1040gi", "f1040s2": "i1040gi", "f1040s3": "i1040gi"}
-PARTS = {"f1040": (1, 87), "f1040s1": (88, 100), "f1040s1a": (101, 110), "f1040s2": (111, 114), "f1040s3": (115, 999)}
+PARTS = {2025: {"f1040": (1, 87), "f1040s1": (88, 100), "f1040s1a": (101, 110), "f1040s2": (111, 114), "f1040s3": (115, 999)}}
 HEADING = re.compile(r"^Lines? (\d{1,2}[a-z]?(?:(?:,| and| through|,? and| or|–|-)\s*\d{1,2}[a-z]?)*)\b")
 REFERENCE = re.compile(r"((?:Form|Schedule) [0-9A-Z]{1,4}(?:-[A-Z]+)?),?\s+(?:\(Form 1040\),?\s+)?lines? (\d{1,2}[a-z]?)")
+
+
+def i1040gi_parts():
+    return taxyear.for_year(PARTS, "check_instruction_cites.py: the page ranges of Form 1040 and Schedules 1 to 3 in i1040gi")
 
 
 def instruction_doc(face):
@@ -135,7 +140,7 @@ def findings(forms):
             if not idoc:
                 continue
             ins = docs.setdefault(idoc, Instructions(idoc))
-            part = PARTS.get(face, (1, 999)) if idoc == "i1040gi" else (1, 999)
+            part = i1040gi_parts().get(face, (1, 999)) if idoc == "i1040gi" else (1, 999)
             pages = ins.section_pages(number, part)
             if not pages:
                 continue

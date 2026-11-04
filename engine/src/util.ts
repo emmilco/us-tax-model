@@ -17,6 +17,25 @@ export function fmtRate(rate: { num: number; den: number }): string {
   return `${rate.num}/${rate.den}`;
 }
 
+/**
+ * Printed markers of authored lines that are not on the IRS page: helpers, gates,
+ * interview questions, statuses and screens.
+ */
+export const HELPER_MARKERS: ReadonlySet<string> = new Set(["(helper)", "(gate)", "(computed helper)", "(question)", "(status)", "(screen)"]);
+
+/** A line whose printed marker is one of HELPER_MARKERS. */
+export function isHelperLine(line: { printed: string }): boolean {
+  return HELPER_MARKERS.has(line.printed);
+}
+
+/**
+ * A line with any parenthesized printed marker: the helper markers, plus column markers such
+ * as `(c)` and worksheet-step markers such as `(CLW 1)`. None is a numbered line of the form.
+ */
+export function isMarkedLine(line: { printed: string }): boolean {
+  return String(line.printed).startsWith("(");
+}
+
 export function shortHash(hex: string): string {
   return hex.slice(0, 8);
 }

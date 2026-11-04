@@ -2,6 +2,7 @@
 """Summarize the paid-call cost ledger (.transcription/costs.jsonl, written by transcribe.call_model).
 
 Usage: costs.py [--by day,family,kind,form] [--since YYYY-MM-DD] [--ledger PATH] [--json]
+       costs.py --yield [--ledger PATH] [--out PATH]   (cost against rulings and bugs; see review_yield.py)
 
 Each group shows calls, failures, prompt characters, the reported cost (Claude) and the
 estimated cost (prices.json; reported cost where the transport reports one). A call whose
@@ -57,7 +58,13 @@ def main():
     ap.add_argument("--since", help="only calls on or after this UTC date")
     ap.add_argument("--ledger", default=os.path.join(transcribe.RAW, transcribe.LEDGER_NAME))
     ap.add_argument("--json", action="store_true")
+    ap.add_argument("--yield", dest="yield_report", action="store_true", help="print the review-yield report")
+    ap.add_argument("--out", help="with --yield: write the report here")
     a = ap.parse_args()
+    if a.yield_report:
+        import review_yield
+        review_yield.main(["--ledger", a.ledger] + (["--out", a.out] if a.out else []))
+        return
     by = [k.strip() for k in a.by.split(",") if k.strip()]
     unknown = [k for k in by if k not in KEYS]
     if unknown:

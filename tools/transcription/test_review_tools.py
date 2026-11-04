@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Offline regression tests for independence, noise accounting and response provenance."""
+import contextlib
 import json
 import io
+import re
 import sys
 import tempfile
 import subprocess
@@ -23,6 +25,7 @@ import audit_skipped as skipped
 import audit_transcription as transcription_audit
 import input_contracts as contracts
 import adapter_contracts as adapters
+import carry
 
 
 def log(statuses, rulings=None):
@@ -1565,6 +1568,372 @@ class SourceCatalog(unittest.TestCase):
             prompt = T.build_prompt(T.load_form("div"), "ARCHIVED SOURCE", {}, {})
         self.assertIn(T.SHOWN_WHEN_NOTE, prompt)
         self.assertIn("shown_when: <Bool line id of this document>", prompt)
+
+
+class _Files(carry.Snapshot):
+    """A snapshot held in memory: {relative path: text}."""
+
+    def __init__(self, files):
+        super().__init__("memory")
+        self.files = files
+
+    def read(self, rel):
+        return self.files.get(rel)
+
+    def forms(self):
+        return sorted(p.split("/")[-1][:-5] for p in self.files if p.startswith("forms/") and p.endswith(".yaml"))
+
+    def tables(self):
+        return {}
+
+
+def _form(fid, lines):
+    return yaml.safe_dump({"form": {"id": fid, "title": fid, "lines": lines}})
+
+
+class CarryOver(unittest.TestCase):
+    """carry.py rules a repeat disagreement from an earlier ruling only when it and the line are unchanged."""
+    LINES = [{"id": "x.a", "printed": "1", "type": "Dollars", "expr": {"op": "input"}, "cite": {"doc": "d", "locator": "p. 1"}},
+             {"id": "x.b", "printed": "2", "type": "Dollars", "expr": {"op": "copy", "from": "x.a"}},
+             {"id": "x.c", "printed": "3", "type": "Dollars", "expr": {"op": "copy", "from": "y.z"}}]
+    OTHER = [{"id": "y.z", "printed": "1", "type": "Dollars", "expr": {"op": "input"}}]
+
+    def files(self, lines=None, other=None):
+        return {f"forms/{rulings.Y}/x.yaml": _form("x", lines or self.LINES),
+                f"forms/{rulings.Y}/y.yaml": _form("y", other or self.OTHER), f"params/{rulings.Y}.yaml": "params: {}\n"}
+
+    def write(self, rows, prompt="P"):
+        args = ({"id": "x", "title": "Test form"}, "claude-opus-5-5")
+        return T.write_log(*args, prompt, [], rows, [], "lines: []", {})
+
+    def rows(self, second='{"op":"copy","from":"x.other"}'):
+        return [{"printed": "2", "label": "B", "status": "DISAGREE", "project": '{"from":"x.a","op":"copy"}', "second": second},
+                {"printed": "3", "label": "C", "status": "DISAGREE", "project": '{"from":"y.z","op":"copy"}', "second": '{"const":0}'}]
+
+    def run_carry(self, temp, source_text, current, source=None, dry_run=False):
+        with patch.object(carry, "source_log", return_value=(source_text, "old.md", source or _Files(self.files()))), \
+                patch.object(carry.subjects, "of_text", return_value="a" * 64):
+            return carry.carry("transcription", "x", origin="old.md", dry_run=dry_run, current=current)
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.patches = [patch.object(rulings, "REVIEWS", self.temp.name), patch.object(T, "LOGS", self.temp.name),
+                        patch.object(T.subjects, "current", return_value="a" * 64)]
+        for p in self.patches:
+            p.start()
+        Path(self.temp.name, "transcription").mkdir()
+        self.write(self.rows())
+        rule.apply("x", {"2": "model error; the reply copies an unrelated line", "3": "finding; line 3 reads the wrong input"})
+        self.source = Path(rulings.log_path("transcription", "x")).read_text()
+
+    def tearDown(self):
+        for p in self.patches:
+            p.stop()
+        self.temp.cleanup()
+
+    def test_repeat_disagreement_carries_with_its_source_and_class(self):
+        self.write(self.rows(), prompt="a changed prompt")  # new review context: both open again
+        text = Path(rulings.log_path("transcription", "x")).read_text()
+        self.assertEqual(text.count("Ruling: open"), 2)
+        ruled, stats, left = self.run_carry(self.temp.name, self.source, _Files(self.files()))
+        self.assertEqual(list(ruled), ["2"])
+        self.assertEqual(stats["carried"], 1)
+        self.assertEqual(left, [("3", "earlier ruling not carried: finding or defect")])
+        text = Path(rulings.log_path("transcription", "x")).read_text()
+        line = next(l for l in text.splitlines() if l.startswith("Ruling: model error"))
+        self.assertTrue(line.endswith("(carried over from old.md, review of " + carry.recorded(self.source, "date") + ")"))
+        self.assertEqual(C.ruling_category(line[len("Ruling: "):]), "model_error")
+        self.assertEqual(text.count("Ruling: open"), 1)  # the finding is re-judged
+        side = rulings.load("transcription", "x")
+        self.assertEqual({v["context"] for v in side.values() if v["ruling"] == line}, {rulings.review_context("transcription", text)})
+        self.assertEqual(rulings.check(), 0)
+
+    def test_dry_run_writes_nothing(self):
+        self.write(self.rows(), prompt="a changed prompt")
+        before = Path(rulings.log_path("transcription", "x")).read_text()
+        ruled, _, _ = self.run_carry(self.temp.name, self.source, _Files(self.files()), dry_run=True)
+        self.assertEqual(list(ruled), ["2"])
+        self.assertEqual(Path(rulings.log_path("transcription", "x")).read_text(), before)
+
+    def test_a_different_model_tree_does_not_carry(self):
+        self.write(self.rows(second='{"op":"copy","from":"x.something_else"}'), prompt="a changed prompt")
+        ruled, _, left = self.run_carry(self.temp.name, self.source, _Files(self.files()))
+        self.assertEqual(ruled, {})
+        self.assertIn(("2", "no earlier ruling on the same disagreement"), left)
+
+    def test_a_changed_line_or_a_line_it_reads_does_not_carry(self):
+        self.write(self.rows(), prompt="a changed prompt")
+        changed = [dict(l) for l in self.LINES]
+        changed[0] = {**changed[0], "type": "NonNegDollars"}  # x.a, read by line 2
+        ruled, _, left = self.run_carry(self.temp.name, self.source, _Files(self.files(lines=changed)))
+        self.assertEqual(ruled, {})
+        self.assertIn(("2", "the project line or what it reads changed"), left)
+
+    def test_a_citation_or_an_unread_line_does_not_block(self):
+        self.write(self.rows(), prompt="a changed prompt")
+        changed = [dict(l) for l in self.LINES]
+        changed[0] = {**changed[0], "cite": {"doc": "d", "locator": "p. 2"}}
+        changed[2] = {**changed[2], "type": "NonNegDollars"}  # x.c, not read by line 2
+        ruled, _, _ = self.run_carry(self.temp.name, self.source, _Files(self.files(lines=changed)))
+        self.assertEqual(list(ruled), ["2"])
+
+    def test_closure_follows_other_documents(self):
+        old, new = _Files(self.files()), _Files(self.files(other=[{**self.OTHER[0], "type": "NonNegDollars"}]))
+        self.assertNotEqual(carry.line_subject("transcription", old, "x", "3"), carry.line_subject("transcription", new, "x", "3"))
+        self.assertEqual(carry.line_subject("transcription", old, "x", "2"), carry.line_subject("transcription", new, "x", "2"))
+
+    def test_a_stale_log_carries_nothing(self):
+        self.write(self.rows(), prompt="a changed prompt")
+        with patch.object(carry.subjects, "of_text", return_value="b" * 64):
+            ruled, _, left = carry.plan("transcription", "x", origin="old.md", current=_Files(self.files()))
+        self.assertEqual(ruled, {})
+        self.assertEqual({w for _, w in left}, {"the log is stale; rerun first"})
+
+    def test_classes_that_are_re_judged(self):
+        self.assertEqual(carry.excluded("Ruling: finding; wrong line"), "finding or defect")
+        self.assertEqual(carry.excluded("Ruling: defect in the encoding"), "finding or defect")
+        self.assertEqual(carry.excluded("Ruling: project corrected after BUG-0001"), "finding or defect")
+        self.assertEqual(carry.excluded("Ruling: interface gap; no contract yet"), "unsettled class (interface gap)")
+        self.assertEqual(carry.excluded("Ruling: the model may be right"), "unsettled class (unclassified)")
+        self.assertEqual(carry.excluded("Ruling: open"), "open")
+        for settled in ("model error; x", "scope; x", "representation; x", "ambiguity (amb.x); x", "model error; x [dropped]"):
+            self.assertIsNone(carry.excluded("Ruling: " + settled), settled)
+
+    def test_carried_text_is_marked_once_and_keeps_the_drop(self):
+        once = carry.carried_text("Ruling: model error; x [dropped]", "a/b.md", "2026-11-01")
+        self.assertEqual(once, "Ruling: model error; x (carried over from a/b.md, review of 2026-11-01)")
+        self.assertEqual(carry.carried_text(once, "c.md", "2026-11-03"), once)
+        self.assertEqual(rulings.split_ruling(once + " [dropped]"), (once, True))
+
+    def test_handles_name_lines(self):
+        snap = _Files({f"forms/{rulings.Y}/x.yaml": _form("x", self.LINES + [
+            {"id": "x.d", "printed": "4", "type": "Dollars", "expr": {"op": "input"}},
+            {"id": "x.e", "printed": "4", "type": "Dollars", "expr": {"op": "input"}}])})
+        self.assertEqual(carry.find_line(snap, "x", "1")["id"], "x.a")
+        self.assertEqual(carry.find_line(snap, "x", "x.b")["id"], "x.b")
+        self.assertEqual(carry.find_line(snap, "x", "b")["id"], "x.b")
+        self.assertIsNone(carry.find_line(snap, "x", "4"))  # shared printed number
+        self.assertEqual(carry.find_line(snap, "x", "4 (x.e)")["id"], "x.e")
+        self.assertEqual(carry.find_line(snap, "x", "person[taxpayer].x[e1].c")["id"], "x.c")
+
+    def test_content_keys(self):
+        t = {"key": ("2", '{"b": 1, "a": 2}', '{"x": 1}'), "status": "DISAGREE", "case": None}
+        u = {"key": ("2", '{"a":2,"b":1}', '{"x":1}'), "status": "DISAGREE", "case": None}
+        self.assertEqual(carry.content("transcription", t), carry.content("transcription", u))
+        r1 = {"key": ("2", "Enter line 1.", "objection one"), "status": "MISMATCH"}
+        r2 = {"key": ("2", "Enter line 1.", "objection two"), "status": "MISMATCH"}
+        r3 = {"key": ("2", "Enter line 1.", "objection two"), "status": "UNCLEAR"}
+        self.assertEqual(carry.content("render", r1), carry.content("render", r2))
+        self.assertNotEqual(carry.content("render", r2), carry.content("render", r3))
+        m1 = {"key": ("classm.x.1", "2", "$1.00", "$2.00"), "status": "DISAGREE"}
+        m2 = {"key": ("classm.x.1", "2", "$1.00", "$3.00"), "status": "DISAGREE"}
+        self.assertNotEqual(carry.content("classm", m1), carry.content("classm", m2))
+
+class LocatorPages(unittest.TestCase):
+    """transcribe.py reads page lists with tools/citations.py's grammar."""
+    def test_pages_joined_by_and_are_all_read(self):
+        self.assertEqual(T.locator_pages("pp. 17 and 19, Steps 1 and 4"), {17, 19})
+        self.assertEqual(T.locator_pages("p. 12, Column (g); p946 pp. 71–73 and 77–79, Table A-2"), {12, 71, 72, 73, 77, 78, 79})
+
+    def test_a_hyphenated_document_id_names_its_own_pages(self):
+        mani = {"i5695": {}, "fs-2025-01": {}}
+        more, rest = T.secondary_pages('p. 1, Costs; fs-2025-01 p. 5, Energy Efficient', mani, "i5695")
+        self.assertEqual(more, {"fs-2025-01": {5}})
+        self.assertEqual(T.locator_pages(rest), {1})
+
+
+def synthetic_reply(lines):
+    return "lines:\n" + yaml.safe_dump([{k: l[k] for k in ("id", "printed", "type", "expr") if k in l}
+                                        for l in lines], sort_keys=False)
+
+
+class LineScopedReviews(unittest.TestCase):
+    """A line-scoped review reviews only some lines and merges into the existing log; no model call."""
+    FORM = "f8960"
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        for kind in ("transcription", "render"):
+            Path(self.temp.name, kind).mkdir()
+        for target, value in ((rulings, "REVIEWS"), (T, "LOGS"), (R, "LOGS"), (T, "RAW")):
+            p = patch.object(target, value, self.temp.name if value != "LOGS" else str(Path(self.temp.name, "transcription" if target is T else "render")))
+            p.start(); self.addCleanup(p.stop)
+        self.doc = T.load_form(self.FORM)
+        self.computed = [l for l in self.doc["lines"] if l["expr"].get("op") != "input"]
+
+    def base_log(self, change=None):
+        """A whole review of the form from a synthetic reply equal to the project's lines except `change`."""
+        reply = [dict(l, **(change or {}).get(l["id"], {})) for l in self.computed]
+        raw = synthetic_reply(reply)
+        results, extra = T.compare(self.FORM, self.doc["lines"], T.extract_yaml(raw)["lines"])
+        T.write_log(self.doc, "claude-opus-5-5", "BASE PROMPT", [], results, extra, raw, {"prompt_policy": T.PROMPT_POLICY})
+        return Path(rulings.log_path("transcription", self.FORM)).read_text()
+
+    def scoped(self, names, reply_lines, recorded=None):
+        """Run transcribe.py's --lines path with a synthetic saved reply."""
+        args = type("A", (), {"form": self.FORM, "model": "claude-opus-5-5", "lines": names, "dry_run": False,
+                              "from_response": False, "reasoning_effort": None, "max_output_tokens": None})()
+        params_doc = T.project_yaml(Path(T.ROOT) / "params" / f"{T.Y}.yaml")
+        values = (params_doc.get("params") or params_doc)["values"]
+        reply = (synthetic_reply(reply_lines), {"prompt_policy": T.LINE_PROMPT_POLICY, "model_reported": ["claude-opus-5-5"]})
+        with contextlib.ExitStack() as stack:
+            stack.enter_context(patch.object(T, "review_response", return_value=reply))
+            stack.enter_context(patch.object(T, "call_model", side_effect=AssertionError("offline")))
+            if recorded is not None:
+                stack.enter_context(patch.object(T, "recorded_line_subjects", return_value=(recorded, "test")))
+            stack.enter_context(contextlib.redirect_stdout(io.StringIO()))
+            try:
+                T.scoped_main(args, self.doc, T.manifest(), {k: v["value"] for k, v in values.items()}, values)
+            except SystemExit:
+                pass
+        return Path(rulings.log_path("transcription", self.FORM)).read_text()
+
+    def sections(self, text):
+        return dict((part.partition("\n")[0].split(" — ")[0], part)
+                    for part in text.partition("\n## Lines\n")[2].split("\n## ")[0].split("\n### ")[1:])
+
+    def test_reach_stops_at_printed_lines_and_records_their_type(self):
+        members, boundary = T.subjects.reach(self.doc, "f8960.line8")
+        self.assertIn("f8960.line1", boundary)
+        self.assertNotIn("f8960.line1", members)
+        text = Path(T.FORMS, self.FORM + ".yaml").read_text()
+        keys = T.line_keys(self.doc)
+        base, _ = T.subjects.line_subjects_of("transcription", self.FORM, text, keys)
+        moved = text.replace("from: f1040.line2b", "from: f1040.line2a", 1)
+        other, _ = T.subjects.line_subjects_of("transcription", self.FORM, moved, keys)
+        self.assertEqual([k for k in base if base[k] != other[k]], ["1"])
+        retyped = text.replace("      printed: \"1\"\n      type: Dollars", "      printed: \"1\"\n      type: NonNegDollars", 1)
+        self.assertNotEqual(retyped, text)
+        third, _ = T.subjects.line_subjects_of("transcription", self.FORM, retyped, keys)
+        self.assertEqual(sorted(k for k in base if base[k] != third[k]), ["1", "8"])
+
+    def test_scoped_prompt_lists_only_scoped_lines_and_no_project_computation(self):
+        scope, reach = T.scoped_lines(self.doc, ["f8960.line1"])
+        self.assertEqual(scope, {"f8960.line1", "f8960.line8"})
+        with patch.object(T, "collection_notes", return_value=""), patch.object(T, "screen_notes", return_value=""):
+            full = T.build_prompt(self.doc, "SOURCE", {}, {})
+            again = T.build_prompt(self.doc, "SOURCE", {}, {}, scope=None)
+            part = T.build_prompt(self.doc, "SOURCE", {}, {}, scope=scope)
+        self.assertEqual(full, again)
+        self.assertIn("printed '1' (id f8960.line1", part)
+        self.assertIn(T.SCOPE_NOTE, part)
+        listed = part.partition(T.SCOPE_NOTE)[2].partition("\n\n")[0]
+        self.assertIn("printed '17' (id f8960.line17", listed)
+        self.assertNotIn("f8960.line1;", listed)
+        for line in self.computed:   # no project expression or computed label enters the request
+            if line["id"] not in scope and line["printed"] in T.HELPER_PRINTED:
+                self.assertNotIn(line["id"], part)
+        self.assertNotIn("f1040.line2b", part.replace("SOURCE", ""))
+
+    def test_partial_review_merges_and_keeps_rulings_of_both_reviews(self):
+        old = self.base_log({"f8960.line2": {"expr": {"op": "copy", "from": "f1040.line3a"}}})
+        self.assertEqual(rule.apply(self.FORM, {"2": "representation; base-review ruling"}), ["2"])
+        old = Path(rulings.log_path("transcription", self.FORM)).read_text()
+        self.assertIn(T.subjects.LINE_SUBJECTS, old)
+        self.assertIsNone(T.subjects.log_state("transcription", self.FORM, T.Y, old))
+        rows, rest = T.subjects.recorded(old)
+        stale = dict(rows, **{"1": "0" * 64})   # as if line 1 changed since the base review
+        reply = [l for l in self.computed if l["id"] in ("f8960.line8",)] + \
+                [{"id": "f8960.line1", "printed": "1", "type": "Dollars", "expr": {"op": "copy", "from": "f1040.line2a"}}]
+        new = self.scoped("auto", reply, recorded=(stale, rest))
+        before, after = self.sections(old), self.sections(new)
+        self.assertEqual(set(before), set(after))
+        for key in before:
+            if key == "1":
+                self.assertIn("Status: **DISAGREE**", after[key])
+                self.assertRegex(after[key], r"Ruling: open\nReviewed in: pass [0-9a-f]{12}\n")
+            else:
+                self.assertEqual(before[key], after[key], key)
+        self.assertIn("Ruling: representation; base-review ruling", after["2"])
+        self.assertEqual(new.partition("\n## Lines\n")[0].count("| line-scoped reviews | 1 "), 1)
+        self.assertIn("| agree / disagree / missing | 23 / 2 / 0 |", new)
+        self.assertEqual(len(rulings.pass_blocks(new)), 1)
+        self.assertIsNone(T.subjects.log_state("transcription", self.FORM, T.Y, new))
+        with contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(rulings.check(), 0)
+        # A ruling on the pass's section is bound to the pass's own context.
+        self.assertEqual(rule.apply(self.FORM, {"1": "model error; line 1 is line 2b"}), ["1"])
+        new = Path(rulings.log_path("transcription", self.FORM)).read_text()
+        contexts = {k[0]: v["context"] for k, v in rulings.load("transcription", self.FORM).items()}
+        base_context = rulings.review_context("transcription", new)
+        self.assertEqual(contexts["2"], base_context)
+        self.assertEqual(contexts["1"], rulings.review_context("transcription", next(iter(rulings.pass_blocks(new).values()))))
+        self.assertNotEqual(contexts["1"], base_context)
+        with contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(rulings.check(), 0)
+        # The same request and disagreement again reuses that ruling; the replaced pass is not duplicated.
+        again = self.scoped("auto", reply, recorded=(stale, rest))
+        self.assertNotIn("Ruling: open", again)
+        self.assertEqual(len(rulings.pass_blocks(again)), 1)
+        # A wider pass (line 1 named explicitly brings line 8, its reader) replaces the narrower one.
+        wider = self.scoped("f8960.line1", reply)
+        blocks = rulings.pass_blocks(wider)
+        self.assertEqual(len(blocks), 1)
+        self.assertIn("| review scope | lines 1, 8 |", next(iter(blocks.values())))
+        self.assertIn("Ruling: open", self.sections(wider)["1"])   # a new request: the earlier ruling is not reused
+        # Every line of an earlier pass reviewed again by the whole review: no pass remains.
+        self.base_log()
+        self.assertEqual(rulings.pass_blocks(Path(rulings.log_path("transcription", self.FORM)).read_text()), {})
+
+    def test_per_line_staleness_names_exactly_the_lines_not_yet_reviewed(self):
+        old = self.base_log()
+        self.assertIsNone(T.subjects.log_state("transcription", self.FORM, T.Y, old))
+        tampered = re.sub(r"^\| 16 \| [0-9a-f]{64} \|$", "| 16 | " + "0" * 64 + " |", old, flags=re.M)
+        state = T.subjects.log_state("transcription", self.FORM, T.Y, tampered.replace(
+            re.search(r"^\| subject sha256 \| ([0-9a-f]{64}) \|$", old, re.M).group(1), "1" * 64))
+        self.assertIn("lines changed or not yet reviewed: 16;", state)
+        self.assertIn("--lines auto", state)
+        rest = re.sub(r"^\| \(rest of the document\) \| [0-9a-f]{64} \|$", "| (rest of the document) | " + "0" * 64 + " |", old, flags=re.M)
+        self.assertIn("outside every compared line", T.subjects.log_state("transcription", self.FORM, T.Y, rest.replace(
+            re.search(r"^\| subject sha256 \| ([0-9a-f]{64}) \|$", old, re.M).group(1), "1" * 64)))
+
+    def test_a_scope_missing_a_changed_line_is_refused(self):
+        old = self.base_log()
+        rows, rest = T.subjects.recorded(old)
+        with self.assertRaises(SystemExit) as raised, contextlib.redirect_stdout(io.StringIO()):
+            with patch.object(T, "recorded_line_subjects", return_value=((dict(rows, **{"16": "0" * 64}), rest), "test")):
+                T.plan_scope("transcription", self.FORM, old, ["f8960.line1"])
+        self.assertIn("16", str(raised.exception))
+
+    def test_legacy_log_finds_the_reviewed_version(self):
+        old = self.base_log()
+        legacy = old.partition("\n" + T.subjects.LINE_SUBJECTS + "\n")[0] + "\n## Raw second transcription\n" + old.partition("\n## Raw second transcription\n")[2]
+        (rec, where) = T.recorded_line_subjects("transcription", self.FORM, legacy)
+        self.assertEqual(where, "working tree")
+        self.assertEqual(rec, T.subjects.recorded(old))
+
+    def test_render_partial_review_merges(self):
+        judged = R.judged_lines(self.doc)
+        verdicts = {e["key"]: {"status": "MATCH", "reason": "says what the text says"} for e in judged}
+        verdicts["2"] = {"status": "MISMATCH", "reason": "base objection"}
+        R.write_log(self.doc, "claude-opus-5-5", "BASE", [], judged, verdicts, "raw", {})
+        self.assertEqual(rule.apply(self.FORM, {"2": "representation; base"}, "render"), ["2"])
+        old = Path(rulings.log_path("render", self.FORM)).read_text()
+        scope = R.render_scope(self.doc, ["f8960.line1"])
+        keys = [e["key"] for e in R.judged_lines(self.doc, scope)]
+        self.assertIn("1", keys)
+        reply = "lines:\n" + "".join(f'  - key: "{k}"\n    status: {"UNCLEAR" if k == "1" else "MATCH"}\n    reason: "pass reason"\n' for k in keys)
+        args = type("A", (), {"form": self.FORM, "model": "claude-opus-5-5", "lines": "f8960.line1", "dry_run": False,
+                              "from_response": False, "reasoning_effort": None, "max_output_tokens": None})()
+        with patch.object(R, "review_response", return_value=(reply, {"prompt_policy": R.LINE_PROMPT_POLICY})), \
+                contextlib.redirect_stdout(io.StringIO()):
+            try:
+                R.scoped_main(args, self.doc)
+            except SystemExit:
+                pass
+        new = Path(rulings.log_path("render", self.FORM)).read_text()
+        before, after = self.sections(old), self.sections(new)
+        self.assertEqual(set(before), set(after))
+        for key in before:
+            if key in keys:
+                self.assertRegex(after[key], r"Reviewed in: pass [0-9a-f]{12}\n")
+            else:
+                self.assertEqual(before[key], after[key], key)
+        self.assertIn("Status: **UNCLEAR**", after["1"])
+        self.assertIsNone(T.subjects.log_state("render", self.FORM, T.Y, new))
+        with contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(rulings.check(), 0)
 
 
 if __name__ == "__main__":

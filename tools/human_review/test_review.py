@@ -45,6 +45,11 @@ def sandbox(dest):
 
 
 if __name__ == "__main__" and "--in-sandbox" not in sys.argv:
+    sys.path.insert(0, str(ROOT / "tools"))
+    import taxyear  # noqa: E402  (removes --year from sys.argv)
+    if taxyear.Y != "2025":
+        sys.exit(f"human review tests: written for 2025 (the reading list's and steps.py's pages, the sandbox's "
+                 f"reports and forms); tax year {taxyear.Y} needs its own")
     if "--prepare-browser" in sys.argv:
         dest = Path(sys.argv[sys.argv.index("--prepare-browser") + 1])
         sandbox(dest)

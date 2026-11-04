@@ -72,7 +72,7 @@ owner decided, what is open, and what a fresh session needs to know.
 ## Facts a fresh session needs
 
 - **A new input ripples to five places**, all of which must answer it or check-all fails (missed three times):
-  every fixture (`fixtures/2025/*.json`, inserted as text: stage4, 15 and 16 do not round-trip `json.dumps`), the
+  every fixture (`fixtures/2025/*.json`; each round-trips `json.dumps(indent=2)`, with `ensure_ascii` as the file already uses: escaped in mutation, stage1, 4, 15, 16 and 21, literal elsewhere), the
   interview bank and profiles (`interview/*.yaml`), `engine/src/generate.ts` (as `fc.constant`, so the seeded sample does
   not shift), `tools/engines/generate_cases.py`, and the partial-input banks `tools/transcription/input_contracts/`.
 - **Ratchets ask to be emptied.** When a fix makes a baseline entry, a ruling or a listed exception obsolete, the

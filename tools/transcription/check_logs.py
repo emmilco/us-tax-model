@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Fail unless every form has a transcription-agreement log and a render-comparison log from
 every required model family (families.json), each with no open ruling, current source hashes, an
-unchanged subject (what the review judged: subjects.py), and rulings that agree with its sidecar.
+unchanged subject (what the review judged: subjects.py; per compared line for a transcription or
+render log whose form changed or that holds line-scoped reviews, subjects.log_state), and rulings
+that agree with its sidecar.
 An optional family's logs may be missing; those present are held to the same source and subject
 checks, and their open rulings are counted and printed without failing the run. A log whose family
 is in neither list fails. Counts are printed per kind and family. Runs offline in check-all; the logs
@@ -103,12 +105,9 @@ def check(kind, logs, optional_env, expected=None, family=families.DEFAULT, requ
             open_counts[fid] = text.count("Ruling: open")
             if required:
                 problems.append(f"{fid}: open ruling(s) in the {kind} log")
-        subject = re.search(r"^\| subject sha256 \| ([0-9a-f]{64}) \|$", text, flags=re.M)
-        if not subject:
-            problems.append(f"{fid}: the {kind} log records no subject hash (tools/transcription/subjects.py)")
-        elif subject.group(1) != subjects.current(kind, fid, Y):
-            what = {"transcription": "form", "render": "rendered English", "classm": "computation"}[kind]
-            problems.append(f"{fid}: the {kind} log reviewed an earlier {what} of {fid}; rerun the review")
+        stale = subjects.log_state(kind, fid, Y, text)
+        if stale:
+            problems.append(f"{fid}: {stale}")
         for row in re.findall(r"^\| (\S+) \| [^|]* \| [^|]* \| [^|]* \| ([0-9a-f]{64}) \|(?: [^|]* \| ([0-9a-f]{64}|-) \|)?$", text, flags=re.M):
             doc_id, sha, cols_sha = row
             if doc_id in docs and docs[doc_id]["text_sha256"] != sha:

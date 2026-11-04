@@ -3,6 +3,7 @@
 import { appendFileSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { loadCanonical, CANON_DIR } from "./canonical.js";
+import { templateKey } from "./branches.js";
 import { evaluate, validateInputs } from "./eval.js";
 import { renderValuesSheet, resultToJson } from "./output.js";
 import type { CanonicalData, CiteFilled, Inputs } from "./types.js";
@@ -20,7 +21,7 @@ export function loadInterview(profile = "social-security"): InterviewData {
 }
 export function questionTemplate(key: string): string {
   if (key.startsWith("$")) return key.split("@")[0]!;
-  return key.replace(/(?:[a-zA-Z0-9_]+\[[a-zA-Z0-9_-]+\]\.)*/g, m => m ? m.split(".").filter(Boolean).at(-1)!.split("[")[0] + "." : "");
+  return templateKey(key);
 }
 export function interviewState(data: CanonicalData, config: InterviewData, inputs: Inputs) {
   const result = evaluate(data, inputs, config.targets);

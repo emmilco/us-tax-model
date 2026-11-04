@@ -37,9 +37,14 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-TOOL_VERSION = "0.10"
+TOOL_VERSION = "0.11"
 GUTTER_MIN_WIDTH = 8.0     # points of near-empty horizontal space that count as a gutter
 GUTTER_COVER_SHARE = 0.08  # a gutter bin may be crossed by at most this share of body lines
+# A narrower gutter counts, on a page with no other, when almost nothing crosses it and it
+# makes the page columnar prose: Pub. 946's three-column pages (the Appendix B introduction,
+# the glossary) leave only about 4 points between their columns.
+NARROW_GUTTER_MIN_WIDTH = 3.0
+NARROW_GUTTER_COVER_SHARE = 0.02
 BODY_WORDS = 4             # a line with fewer words is a label, a number or a cell
 FOOTER_BAND = 0.94         # lines starting below this share of the page height are furniture
 TABLE_SHORT_SHARE = 0.5    # a page with more short lines than this is a table
@@ -102,10 +107,12 @@ def bbox_pages(pdf):
     return pages
 
 
-def gutters(width, lines):
+def gutters(width, lines, narrow=False):
     """Horizontal intervals almost no body word crosses, between covered regions. Coverage
     is counted from word boxes, so a line that poppler ran across two columns does not
-    hide the gutter between them; only a word set across it (a wide heading) does."""
+    hide the gutter between them; only a word set across it (a wide heading) does. With
+    `narrow`, a gap under GUTTER_MIN_WIDTH counts too where it holds a stretch nearly
+    nothing crosses (see analyze)."""
     body = [l for l in lines if len(l.words) >= BODY_WORDS]
     if len(body) < 4:
         return []
@@ -121,6 +128,7 @@ def gutters(width, lines):
     last = next((i for i in range(bins - 1, -1, -1) if covered[i]), None)
     if first is None:
         return []
+    clean = NARROW_GUTTER_COVER_SHARE * len(body)
     out, start = [], None
     for x in range(first, last + 1):
         if not covered[x] and start is None:
@@ -128,8 +136,24 @@ def gutters(width, lines):
         elif covered[x] and start is not None:
             if x - start >= GUTTER_MIN_WIDTH:
                 out.append((start, x))
+            elif narrow and (stretch := clean_stretch(cover, start, x, clean)):
+                out.append(stretch)
             start = None
     return out
+
+
+def clean_stretch(cover, start, end, clean):
+    """The longest stretch of bins in [start, end) that at most `clean` body lines cross, if it
+    is at least NARROW_GUTTER_MIN_WIDTH wide; else None."""
+    best, run = None, None
+    for x in range(start, end + 1):
+        if x < end and cover[x] <= clean:
+            run = x if run is None else run
+            continue
+        if run is not None and x - run >= NARROW_GUTTER_MIN_WIDTH and (best is None or x - run > best[1] - best[0]):
+            best = (run, x)
+        run = None
+    return best
 
 
 def split_at_gutters(lines, guts):
@@ -152,10 +176,18 @@ def split_at_gutters(lines, guts):
 
 
 def analyze(width, lines):
-    """The page's lines split at its gutters, and the gutters."""
-    guts = gutters(width, lines)
-    lines = split_at_gutters(lines, guts)
-    return lines, gutters(width, lines)
+    """The page's lines split at its gutters, and the gutters. A page with no gutter of the
+    usual width is read for narrow ones, which are kept only when they make it columnar prose."""
+    split = split_at_gutters(lines, gutters(width, lines))
+    guts = gutters(width, split)
+    if guts:
+        return split, guts
+    narrow = split_at_gutters(lines, gutters(width, lines, narrow=True))
+    narrow_guts = gutters(width, narrow, narrow=True)
+    if (narrow_guts and all(g1 - g0 < GUTTER_MIN_WIDTH for g0, g1 in narrow_guts)
+            and classify(narrow, narrow_guts) == "prose"):
+        return narrow, narrow_guts
+    return split, guts
 
 
 def place(line, guts):

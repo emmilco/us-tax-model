@@ -181,7 +181,6 @@ export function evidenceReport(): void {
   if (humanRun.status !== 0) throw new Error(`human reading validation failed: ${humanRun.stderr}`);
   const human = JSON.parse(humanRun.stdout) as HumanReadings;
   if (human.problems.length) throw new Error(`human reading validation failed:\n${human.problems.join("\n")}`);
-  const template = (key: string) => key.includes("[") ? key.replace(/(?:[a-zA-Z0-9_]+\[[^\]]+\]\.)+/g, m => m.split(".").filter(Boolean).at(-1)!.split("[")[0]+".") : key;
   interface Classes { A: Set<string>; B: Set<string>; C: Set<string>; M: Set<string>; R: Set<string> }
   const coverage = new Map<string, Classes>();
   // Class M fixtures whose recorded model is not a Claude model, per line.
@@ -234,12 +233,12 @@ export function evidenceReport(): void {
     const secondFamily = model !== undefined && !/^claude/i.test(model);
     for (const key of Object.keys(c.inputs ?? {})) {
       if (key.startsWith("$")) continue;
-      const id = template(key);
+      const id = templateKey(key);
       supplied.set(id, (supplied.get(id) ?? 0) + 1);
     }
     for (const key of Object.keys(c.expect ?? {})) {
       if (key.startsWith("$")) continue;
-      const id = template(key);
+      const id = templateKey(key);
       const bucket = coverage.get(id);
       if (!bucket) { unknownKeys.add(key); continue; }
       bucket[cls].add(c.id);
@@ -247,7 +246,7 @@ export function evidenceReport(): void {
     }
   }
   for (const [key, who] of differentialClassC()) {
-    const bucket = coverage.get(template(key));
+    const bucket = coverage.get(templateKey(key));
     if (bucket) for (const w of who) bucket.C.add(w);
   }
   // Engine differential: per line, the cell text and whether any engine asserts it.

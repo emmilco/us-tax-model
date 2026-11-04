@@ -129,7 +129,9 @@ to the cent. The adapter declares which program computes which project line and
 the amounts it supplies in place of a computation (`OTS_UNROUNDED`,
 `supplied_amounts`); a supplied line is reproduced only where the project's
 value is the amount supplied, and a case whose exact values take another
-branch, test or table band than the project's is not reproduced. There is no
+branch, test or table band than the project's is not reproduced (the branch and
+band the project took are read from the derivation's structure, its guards not
+taken and its key against the canonical rate table, not from its notes). There is no
 allowance in cents; the only latitude is at an exact value within 1/1000 cent
 of a half cent, where the engine's double (within 1/10,000 cent of the exact
 value at these amounts) can print either neighbour.
@@ -239,6 +241,7 @@ tools/engines/run.sh                  (ENGINE_CASES=1000 ENGINE_SEED=20260101 by
   run_engines.py     -> .engines/work/engines.json   each engine's lines, in cents
   compare.py         -> reports/2025/engine_differential.md and engine_differential.json (per engine and line:
                         cases compared, nonzero, excluded, unexplained; read by the evidence report) ; exit 1 on any unexplained difference
+test_compare.py                       (in check-all) unit tests of compare.py's matching and tolerance logic, on synthetic data
 ```
 
 Tax-Calculator runs with `exact_calculations=True`, so its phase-outs follow the printed $1,000 steps (Schedule 1-A lines 11, 19 and 28; Schedule 8812 line 10) rather than its smoothed default. Generated filers are 40, or 66 to 85 for the enhanced deduction for seniors; PolicyEngine-US is told they are not enrolled in Medicare, since medical expenses are all supplied.

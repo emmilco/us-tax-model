@@ -5747,3 +5747,48 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Disposition:** T-222, with each form's next pass.
 - **Validation:** completeness and screen rulings carry `BUG-0402`; not reproduced by evaluation.
 - **Tags:** source-definition-debt; low; explicitly-deferred
+
+## BUG-0403 — Pub. 946 three-column pages were read across the columns
+
+- **Caught by:** T-040.
+- **Source:** tools/extract_text.py gutters(): the column gutters on Pub. 946 pp. 98, 109 and 110 are about 4 points wide, under the 8-point minimum.
+- **Symptom:** those pages (and p550 pp. 110-111, p970 p. 72, i1099r p. 18) read across the columns, so the prose ran together.
+- **Tool change:** a page with no normal-width gutter is checked for narrow ones (at least 3 points, crossed by at most 2% of body lines), kept only when every gutter is narrow and the page then reads as prose; extractor version 0.11. The archived text is not regenerated: re-extracting p946, p550 and p970 would stale 83 review logs pinned to their text, so the improved extraction lands when those documents are next fetched, and the three p946 exceptions stay.
+- **Validation:** re-extraction of all 2024 to 2026 archives changes only the named pages; the HTML check on p946 goes from 17 to 14 failing pages; a synthetic self-test case fails with the fix disabled.
+- **Tags:** extraction; tool change
+
+## BUG-0404 — The Premium Tax Credit table extractor read the archive directly, unseen by the archive self-test
+
+- **Caught by:** T-152 audit (T-189).
+- **Source:** tools/extract_ptc_tables.py read sources/2025 through its own path constant; tools/archive_text.py's self-test only caught literal paths.
+- **Symptom:** a reader that bypassed the draft and revision handling of archive_text; latent, because i8962 is not a draft.
+- **Tool change:** the extractor reads through archive_text.read; the self-test also flags any name assigned to a path built through "sources".
+- **Validation:** the planted case and the old file are flagged; the rewritten tables are byte-identical.
+- **Tags:** tooling; archive; tool change
+
+## BUG-0405 — check-all with a year ran four steps on 2025 regardless
+
+- **Caught by:** T-152 audit (T-188).
+- **Source:** tools/check_all_steps.sh did not forward "$@" to check_ptc_tables, siblings_check, refusal_reach and classm_job_seeds; test_classm_jobs.mjs passed no year.
+- **Symptom:** a run for another year would have checked those four steps against 2025.
+- **Tool change:** "$@" forwarded and YEAR_ARGS passed; the year-specific extractors, PARTS and page tables now stop on a year other than 2025, and the engine adapters read their 2025 amounts from canonical params.
+- **Validation:** the steps run with --year 2025; the extractors exit 1 with --year 2026; the engine differential inputs and outputs are byte-identical before and after.
+- **Tags:** year-adoption; tool change
+
+## BUG-0406 — The limits-check sentence split stopped at abbreviations such as "U.S."
+
+- **Caught by:** T-152 audit (T-198).
+- **Source:** tools/check_limits.py and tools/year_diff.py split sentences on every period.
+- **Symptom:** the i1116 p. 25 Line 24 limit sentence was stored cut off at "allocated amount of U.S.".
+- **Tool change:** new citations.split_sentences does not end a sentence after Pub, Rev, Proc, Rul, Reg(s), Treas, Ch, U.S, e.g, i.e or vs, and after No, Nos, p, pp, Fig or Sec only before a number; both checks use it. The one moved key is remapped in reviews/2025/limits.json.
+- **Validation:** self-tests; check_limits 0 new, 0 stale.
+- **Tags:** source-coverage; tool change
+
+## BUG-0407 — Review excerpts dropped pages after "and" and misattributed hyphenated document ids
+
+- **Caught by:** T-195, the locator-equivalence sweep of the line-scoped review package, 2026-11-04.
+- **Source:** `tools/transcription/transcribe.py` `locator_pages` and `secondary_pages` used their own locator grammar instead of `tools/citations.py`'s.
+- **Symptom:** pages named after "and" ("pp. 17 and 19") were never sent to reviewers, and pages of documents with hyphenated ids (fs-2025-01, fr-2025-24154) were attributed to the citing document: Form 5695's reviews lacked fs-2025-01 pp. 5, 11, 12 and 16, retirement's lacked f1099r p. 9, and carloan's were sent i1040gi p. 23. Four transcription and nine render prompts change.
+- **Tool change:** both use `citations.PAGES_RE` and `citations.page_list`. The affected forms get the corrected pages at their next content change (prompt changes apply prospectively); `--from-response` replay of their saved receipts now refuses.
+- **Validation:** all-forms excerpt and prompt-hash diff; `LocatorPages` tests.
+- **Tags:** review-tools; excerpt; tool change

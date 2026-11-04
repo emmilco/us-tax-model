@@ -3,7 +3,8 @@
 
 A fix-sibling is another line or question that shares the changed rule but was not changed:
 a reader of the same input or gate (through helper lines), a predicate testing the same enum
-value, or a line or question whose citation anchors the same (document, page, heading). The
+value, a line or question whose citation anchors the same (document, page, heading), or, for
+a Form 8863 Part III line (person.edu* or dependent.edu*), its twin in the other student block. The
 2026-10-29 root-cause analysis (P3) found nine bugs where the reported instance was fixed and
 its siblings were not.
 
@@ -105,10 +106,27 @@ def leaves(docs, ids, target, seen=None):
     return out or {target}
 
 
+# Form 8863 Part III is written twice, for a filer or spouse (person.edu*) and for a dependent
+# (dependent.edu*), line for line; a change to one block is checked on its twin in the other.
+EDU_TWIN = re.compile(r"^(person|dependent)\.(edu(?:_\w+)?)$")
+
+
+def edu_twin(ids, target):
+    """The same Form 8863 Part III line in the other student block, if it has one."""
+    m = EDU_TWIN.match(target)
+    if not m:
+        return None
+    twin = f"{'dependent' if m.group(1) == 'person' else 'person'}.{m.group(2)}"
+    return twin if twin in ids else None
+
+
 def siblings_of(docs, ids, target, reader_map):
     found = set()
     for leaf in leaves(docs, ids, target):
         found |= reader_map.get(leaf, set())
+    twin = edu_twin(ids, target)
+    if twin:
+        found.add(twin)
     found.discard(target)
     return found
 
@@ -201,7 +219,7 @@ def report(docs, ids, targets, anchor_map, limit):
         for key in target_anchors:
             anchor_hits |= anchor_map.get(key, set())
         found["same anchor"] = anchor_hits - {target}
-        print_set("(a) lines that read it, through helpers", found["readers"], limit)
+        print_set("(a) lines that read it, through helpers (and its Form 8863 Part III twin)", found["readers"], limit)
         print_set("(c) predicates testing the same enum values", found["enum values"], limit)
         print_set("(b) lines and questions anchored on the same doc/page/heading", found["same anchor"], limit)
 
@@ -363,6 +381,9 @@ def self_test(docs, ids):
     eic = siblings_of(docs, ids, "sa.dependent", reader_map)
     assert "eic.step4" in eic, "sa.dependent should reach eic.step4"
     assert "sa.standard" in eic, "sa.dependent should reach sa.standard"
+    assert "dependent.edu_line31" in siblings_of(docs, ids, "person.edu_line31", reader_map), "person.edu_line31's twin"
+    assert "person.edu" in siblings_of(docs, ids, "dependent.edu", reader_map), "dependent.edu's twin"
+    assert edu_twin(ids, "person.educator_expenses") is None and edu_twin(ids, "person.edu_kid") is None, "no twin"
     assert any(q for q in anchor_index(docs).values() if any(x.startswith("question:") for x in q)), "question anchors"
     assert "household.community_property" in anchor_index(docs).get(
         ("i1040gi", (23,), "Community Property States"), set()), "f1040.line1a's community-property anchor"
