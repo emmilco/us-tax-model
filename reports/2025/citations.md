@@ -13,17 +13,17 @@ under "Locators to rewrite"; they fail the check only with `--strict`.
 
 - anchors: 3647
 - anchors ruled: 52
-- quotes: 3460
+- quotes: 3461
 - quotes ruled: 4
 - segments checked: 3999
 - findings without a ruling: 0
 - rulings no anchor uses: 0
 
 - computed lines: 1958
-- computed-line segments: 2305
-- computed-line segments with a quote and no page: 146
+- computed-line segments: 2306
+- computed-line segments with a quote and no page: 147
 - computed-line segments with pages: 1956
 - form-line locators: 203
 - form-line locators verified: 203
-- quotes without a page found: 146
+- quotes without a page found: 147
 - locators to rewrite: 0

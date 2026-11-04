@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 140 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 8.1% (338/4164 second-family lines judged; pending reviews are provisional); 64 eligible, 76 pending; raw agreement 80.7% (diagnostic only); current independence yield 162 line(s); both families disputed 578
+Summary: 138 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 7.5% (311/4127 second-family lines judged; pending reviews are provisional); 65 eligible, 73 pending; raw agreement 81.3% (diagnostic only); current independence yield 161 line(s); both families disputed 545
 
 Written by `tools/transcription/compare_families.py` on 2026-11-04 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -23,8 +23,6 @@ Written by `tools/transcription/compare_families.py` on 2026-11-04 from the revi
 | dcprov | deepseek (deepseek-flash) | 2 | 2 | 100.0% | 0/2 (0.0%) | pending | 0 | 0 | 0 | 0 |
 | dependent | deepseek (deepseek-flash) | 22 | 1 | 4.5% | 17/22 (77.3%) | pending | 2 | 17 | 2 | 0 |
 | div | deepseek (deepseek-flash) | 0 | 0 | n/a | 0/0 (n/a) | pending | 0 | 0 | 0 | 0 |
-| eic | deepseek (deepseek-flash) | 18 | 1 | 5.6% | 13/18 (72.2%) | pending | 1 | 16 | 0 | 1 |
-| eic | gpt (gpt-6-astra) | 19 | 2 | 10.5% | 14/19 (73.7%) | pending | 0 | 17 | 0 | 0 |
 | f1040 | deepseek (deepseek-flash) | 52 | 39 | 75.0% | 11/52 (21.2%) | pending | 8 | 5 | 0 | 0 |
 | f1095a | deepseek (deepseek-flash) | 29 | 1 | 3.4% | 15/29 (51.7%) | pending | 13 | 15 | 0 | 0 |
 | f2441 | deepseek (deepseek-flash) | 34 | 7 | 20.6% | 23/34 (67.6%) | pending | 19 | 7 | 1 | 3 |
@@ -68,7 +66,7 @@ Written by `tools/transcription/compare_families.py` on 2026-11-04 from the revi
 | tcw | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 1 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 0 | 0.0% | 7/18 (38.9%) | pending | 0 | 18 | 0 | 0 |
 | w2 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 0 | 1 | 1 | 0 |
-| **all** | | 909 | 293 | 32.2% | | | 93 | 500 | 23 | 4 |
+| **all** | | 872 | 290 | 33.3% | | | 92 | 467 | 23 | 3 |
 
 Pending aqee [deepseek]: no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending carloan [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
@@ -78,8 +76,6 @@ Pending dcprov [deepseek]: no passing current expression type validation: claude
 Pending dependent [deepseek]: model-error noise above 10%; no passing current source-based partial-input checks: deepseek.
 Excluded internal adapters for div: div.screen. Original logs/rulings are preserved; separate engineering checks earn no independent tax-evidence credit.
 Pending div [deepseek]: stale subject: claude, deepseek; no source-defined computed targets; internal adapter checks earn no tax-evidence credit; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
-Pending eic [deepseek]: 1 missing expected lines; model-error noise above 10%; current source targets not judged by claude: eic.zero; current source targets not judged by deepseek: eic.zero; no passing current expression type validation: deepseek; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
-Pending eic [gpt]: model-error noise above 10%; current source targets not judged by claude: eic.zero; current source targets not judged by gpt: eic.zero; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for gpt: required input/interface wording is missing or stale.
 Pending f1040 [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending f1095a [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending f2441 [deepseek]: 3 missing expected lines; model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
@@ -130,7 +126,6 @@ Pending w2 [deepseek]: stale subject: claude, deepseek; transcription predates u
 | clcw26 | deepseek | 3 | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.eic_child | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.eic_ssn_child | DISAGREE | (no reason given) |
-| eic | deepseek | eic.self_employed | DISAGREE | Uses the available Schedule C aggregate. No separate self-employment/Schedule SE screening input is in the closed interface. |
 | f1040 | deepseek | 19 | DISAGREE | (no reason given) |
 | f1040 | deepseek | 1a | DISAGREE | (no reason given) |
 | f1040 | deepseek | 25a | DISAGREE | (no reason given) |
@@ -244,39 +239,6 @@ Pending w2 [deepseek]: stale subject: claude, deepseek; transcription predates u
 | dependent | deepseek | dependent.hoh_test2 | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.odc_amount | DISAGREE | DISAGREE | (no reason given) |
 | dependent | deepseek | dependent.odc_person | DISAGREE | DISAGREE | (no reason given) |
-| eic | deepseek | (Step 5, 1) | DISAGREE | DISAGREE | The clergy/church-employee adjustment to line 1 is not supported by the closed input interface; line 1z is used directly. |
-| eic | deepseek | (Step 5, 2) | DISAGREE | DISAGREE | No Medicaid waiver payment amount is in the closed input interface; within the supplied scope this amount is zero. |
-| eic | deepseek | (Step 5, 3) | DISAGREE | DISAGREE | (no reason given) |
-| eic | deepseek | (Step 5, 4) | DISAGREE | DISAGREE | No nontaxable combat pay amount is in the closed input interface; within the supplied scope this amount is zero. |
-| eic | deepseek | (Step 5, 5) | DISAGREE | DISAGREE | (no reason given) |
-| eic | deepseek | 1 | DISAGREE | DISAGREE | (no reason given) |
-| eic | deepseek | 2 | DISAGREE | DISAGREE | (no reason given) |
-| eic | deepseek | 3 | DISAGREE | DISAGREE | (no reason given) |
-| eic | deepseek | 4b | DISAGREE | DISAGREE | (no reason given) |
-| eic | deepseek | 5 | DISAGREE | DISAGREE | (no reason given) |
-| eic | deepseek | 6 (eic.wsb_6) | DISAGREE | DISAGREE | Floored at zero. The IRS STOP for line 4b zero or less is carried into the credit eligibility gate. |
-| eic | deepseek | eic.check_27c | DISAGREE | DISAGREE | The voluntary election not to claim the EIC is not supplied by the closed interface; this records only the ineligible STOP cases. |
-| eic | deepseek | eic.clergy | DISAGREE | DISAGREE | No supplied input distinguishes clergy or church employees. Within the closed input interface this is set false rather than inventing an input. |
-| eic | deepseek | eic.credit | DISAGREE | DISAGREE | All STOP conditions are carried to this result as zero. Worksheet B is used when the available self-employment aggregate requires it. |
-| eic | deepseek | eic.eligible | DISAGREE | DISAGREE | The Step 2 investment-income branch for Form 4797 filers is not separately supported; investment income over the limit is treated as ineligible. Nonresident-alien status is not separately supplied. |
-| eic | deepseek | eic.separated_box | DISAGREE | DISAGREE | Uses the main-home input as the available reading of the requirement that the qualifying child lived in the United States for more than half of 2025. |
-| eic | gpt | (Step 5, 1) | DISAGREE | DISAGREE | (no reason given) |
-| eic | gpt | (Step 5, 2) | DISAGREE | DISAGREE | Medicaid waiver payments are excluded by the supplied scope screens. |
-| eic | gpt | (Step 5, 3) | DISAGREE | DISAGREE | (no reason given) |
-| eic | gpt | (Step 5, 4) | DISAGREE | DISAGREE | Combat pay is outside the supplied screening scope; no election or amount is invented. |
-| eic | gpt | (Step 5, 5) | DISAGREE | DISAGREE | (no reason given) |
-| eic | gpt | 1 | DISAGREE | DISAGREE | (no reason given) |
-| eic | gpt | 2 | DISAGREE | DISAGREE | The printed table starts at $1 and gives no row for smaller amounts. This transcription uses zero below that first row; no positive credit is inferred there. |
-| eic | gpt | 3 | DISAGREE | DISAGREE | (no reason given) |
-| eic | gpt | 4b | DISAGREE | DISAGREE | The published per-person eic_se interface supplies the applicable Part 1 or Part 2 amount. Statutory employees, farm and partnership income, clergy, church employee income, and other exempt or special self-employment cases are excluded by the supplied screens. |
-| eic | gpt | 5 | DISAGREE | DISAGREE | The hidden zero is a representation of a skipped blank, not a credit used in the minimum. |
-| eic | gpt | 6 (eic.line6) | DISAGREE | DISAGREE | (no reason given) |
-| eic | gpt | 6 (eic.wsb_6) | DISAGREE | DISAGREE | Zero represents the no-credit STOP before line 6; on the continuing branch the positive line 4b amount is preserved. |
-| eic | gpt | eic.check_27c | DISAGREE | DISAGREE | Only instructed checks within the screened scope are computed. A voluntary decision not to claim the credit cannot be determined from the closed input interface. A zero resulting only from the later AGI comparison does not itself instruct a check. |
-| eic | gpt | eic.clergy | DISAGREE | DISAGREE | Clergy and church employee cases are screened out; the supported case has no line 27b check. |
-| eic | gpt | eic.credit | DISAGREE | DISAGREE | The closed interface provides no election to decline the credit or have the IRS figure it. This computes the credit for a filer claiming it. |
-| eic | gpt | eic.eligible | DISAGREE | DISAGREE | True means the applicable eligibility flow reaches the credit lookup; the lookup may still produce zero. |
-| eic | gpt | eic.separated_box | DISAGREE | DISAGREE | The specific definition on page 44 limits this checkbox to married filers not filing jointly; the broader placement of the checkbox instruction in Step 3 question 6 is read in that context. |
 | f1040 | deepseek | 16 | DISAGREE | DISAGREE | (no reason given) |
 | f1040 | deepseek | 1e | DISAGREE | DISAGREE | (no reason given) |
 | f1040 | deepseek | 28 (box) | DISAGREE | DISAGREE | (no reason given) |
@@ -738,7 +700,7 @@ Pending w2 [deepseek]: stale subject: claude, deepseek; transcription predates u
 | dcprov | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | dependent | deepseek (deepseek-flash) | 11 | 10 | 90.9% | 0/11 (0.0%) | pass | 0 | 1 | 0 | 0 |
 | div | deepseek (deepseek-flash) | 22 | 20 | 90.9% | 1/22 (4.5%) | pass | 1 | 0 | 1 | 0 |
-| eic | deepseek (deepseek-flash) | 13 | 13 | 100.0% | 0/13 (0.0%) | pending | 0 | 0 | 0 | 0 |
+| eic | deepseek (deepseek-flash) | 13 | 13 | 100.0% | 0/13 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | f1040 | deepseek (deepseek-flash) | 58 | 52 | 89.7% | 1/58 (1.7%) | pass | 4 | 1 | 1 | 0 |
 | f1095a | deepseek (deepseek-flash) | 77 | 76 | 98.7% | 0/77 (0.0%) | pass | 0 | 1 | 0 | 0 |
 | f2441 | deepseek (deepseek-flash) | 36 | 28 | 77.8% | 0/36 (0.0%) | pass | 3 | 5 | 0 | 0 |
@@ -795,7 +757,6 @@ Pending w2 [deepseek]: stale subject: claude, deepseek; transcription predates u
 | **all** | | 1325 | 1158 | 87.4% | | | 66 | 74 | 27 | 1 |
 
 Pending asset [deepseek]: 1 missing expected lines.
-Pending eic [deepseek]: stale subject: claude, deepseek.
 Pending f8606 [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending f8995 [deepseek]: 2 open, unclassified or interface-gap rulings.
 Pending f8995a [deepseek]: 1 open, unclassified or interface-gap rulings.

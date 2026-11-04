@@ -61,25 +61,20 @@
   },
   "unruled:eic#1": {
    "class": "covered",
-   "evidence": "i1040gi pp. 40, 45. person.eic_ssn is asked for each person on the return (both spouses on a joint return; household.all_eic_ssn requires every person), and states that a 'Valid for Work Only With DHS Authorization' card is valid only while the authorization is valid.",
-   "prompt_sha": "e02785e754a2690289efb38368091bca3b484fe0bef18fde96eb172246ee1167",
-   "line": "person.eic_ssn"
+   "evidence": "i1040gi pp. 41, 45. eic.qc_count counts only dependents for whom dependent.eic_child is true, and dependent.eic_child tests dependent.us_half, which asks whether the child lived with you in the United States (the 50 states and the District of Columbia) for more than half of 2025.",
+   "prompt_sha": "c9d94d5fc236311a62b27ca369434b869293c7fd5c02f59175e926130f2d0433",
+   "line": "dependent.eic_child"
   },
   "unruled:eic#2": {
-   "class": "out of scope",
-   "evidence": "i1040gi p. 47. Notary public fees are refused by sc.statutory (sc.screened); Form 4029 and Form 4361 exemptions and other exempt self-employment income (an international social security agreement) are refused by person.se_screen (person.se_screened).",
-   "prompt_sha": "e02785e754a2690289efb38368091bca3b484fe0bef18fde96eb172246ee1167",
-   "gate": "sc.screened"
+   "class": "covered",
+   "evidence": "i1040gi pp. 40, 45. person.eic_ssn is asked for each person on the return (both spouses on a joint return; household.all_eic_ssn requires every person), and states that a 'Valid for Work Only With DHS Authorization' card is valid only while the authorization is valid.",
+   "prompt_sha": "c9d94d5fc236311a62b27ca369434b869293c7fd5c02f59175e926130f2d0433",
+   "line": "person.eic_ssn"
   },
   "unruled:eic#3": {
    "class": "presentation",
    "evidence": "i1040gi pp. 40-41. Schedule EIC and the Dependents-section and address-block checkboxes are filing information; the qualifying-child tests are asked.",
-   "prompt_sha": "e02785e754a2690289efb38368091bca3b484fe0bef18fde96eb172246ee1167"
-  },
-  "unruled:eic#4": {
-   "class": "presentation",
-   "evidence": "i1040gi p. 42. The address-block checkbox is filing information; eic.us_home asks the fact.",
-   "prompt_sha": "e02785e754a2690289efb38368091bca3b484fe0bef18fde96eb172246ee1167"
+   "prompt_sha": "c9d94d5fc236311a62b27ca369434b869293c7fd5c02f59175e926130f2d0433"
   },
   "unruled:f1040#1": {
    "class": "out of scope",

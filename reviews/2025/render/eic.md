@@ -5,6 +5,7 @@ The rendered English of every printed line of `Earned Income Credit (EIC)—Step
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
+| line-scoped reviews | 1 (latest 2026-11-04); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 370613152b7c99fd8018c5a96b2c295f1a57ca63a9b905b88b4a079f617dff8d |
@@ -95,7 +96,8 @@ Model: This follows 'Enter the amount from Form 1040 or 1040-SR, line 11b.' Bein
 ### 4 — Are the amounts on lines 3 and 1 the same?
 Status: **MATCH**
 
-Model: This follows 'Are the amounts on lines 3 and 1 the same?'
+Model: Worksheet A line 4 asks "Are the amounts on lines 3 and 1 the same?", and the restatement gives Yes exactly when line 3 = line 1. Showing the line only once line 3 is reached (credit reached and line 2 above zero) follows the STOP at line 2.
+Reviewed in: pass 3f5073141391
 
 ### 5 — Look up the amount on line 3 in the EIC Table to find the credit, using the column for you
 Status: **MATCH**
@@ -105,7 +107,8 @@ Model: Line 5 is the EIC Table credit for line 3, in the column for the number o
 ### 6 (eic.line6) — This is your earned income credit
 Status: **MATCH**
 
-Model: If line 4 is Yes, enter line 2. If No and line 5 is left blank, enter line 2. Otherwise 'enter the smaller amount' of lines 5 and 2.
+Model: Line 4 Yes "enter the amount from line 2 on line 6". Line 4 No goes to line 5: if line 3 is less than $10,620 ($17,730 MFJ) with no qualifying children with valid SSNs, or $23,350 ($30,470 MFJ) with 1 or more, line 6 is line 2; otherwise line 6 is "the smaller amount" of lines 5 and 2. The restatement and its helpers compute exactly this.
+Reviewed in: pass 3f5073141391
 
 ## Line subjects
 
@@ -123,10 +126,54 @@ What each compared line's verdict depends on within the document (tools/transcri
 | 1 | e488edd7b38e59ed81e35d55065cf740a6afe91343b63c1dadc8df9bb8ad5fbd |
 | 2 | 608bc7d3c751c626c585480308c6dcb16d0d2b3c983a1de1c0aecf204bb8d984 |
 | 3 | 2aef122521f1abecea444961128327c608507d9f41d4b27fa38fd0f89d743aa7 |
-| 4 | 7e2af1d5c114b3f5be650aa502486bc72419469d5419a3bdaaaae8c95d0396ea |
+| 4 | 47a44afd91260315b8856470036cbcb6fba246c007eb88cbc1ef95c59ba3184f |
 | 5 | 7d62d98cd6e6d51cc2018e531d1c664a3c85f2088111e14149962fc9f813aaa8 |
-| 6 (eic.line6) | 5152574387f2b02be0e34034d34cdeecc8f31244fc843b81dd4e9e0850fc4e7b |
+| 6 (eic.line6) | 019b0c211c0dd394f458a78746fe9f9c0e3e1ee7236d3226bfe44d71ef6e4177 |
 | (rest of the document) | 1bf540cbaae3925793d7602e3366ba0a498ad5392b6332deb6a94eb8274fead4 |
+
+## Line-scoped reviews
+
+Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
+
+#### Pass 3f5073141391
+
+| field | value |
+| --- | --- |
+| date | 2026-11-04 |
+| review scope | lines 4, 6 (eic.line6) |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | 3f50731413911711f0444ae81a09bf8e4b8ee9bab438b5dc14837355d8bf0251 |
+| prompt policy | render-source-comparison-v2+lines-v1 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| subject sha256 | 8df55c82b452a8f5965989769e3bc3af81cfaa36da63be7f1b14903a274fc8c7 |
+| receipt | .transcription/eic.render.lines-f7648c4b3b4d |
+| lines judged | 2 |
+| match / mismatch / unclear / missing | 2 / 0 / 0 / 0 |
+| verdicts for lines not in the form | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i1040gi | 2025; printed date 2026-02-25 | 40, 41, 42, 43, 44, 45, 46, 47 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 40, 41, 42, 43, 44, 45 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| f1040s8812 | 2025; created 2025-07-30 | 1, 2 | whole document | 9b38295071c42fe489ec8f93e117b31eda11355b5a95e3fe388eeee69601c8c9 | - | 3525d47f51cb713591081610a862cae77eff08a8aa7e2064a96b15cee4fd5cb9 |
+
+##### Raw response
+
+```yaml
+```yaml
+lines:
+  - key: "4"
+    status: MATCH
+    reason: "Worksheet A line 4 asks \"Are the amounts on lines 3 and 1 the same?\", and the restatement gives Yes exactly when line 3 = line 1. Showing the line only once line 3 is reached (credit reached and line 2 above zero) follows the STOP at line 2."
+  - key: "6 (eic.line6)"
+    status: MATCH
+    reason: "Line 4 Yes \"enter the amount from line 2 on line 6\". Line 4 No goes to line 5: if line 3 is less than $10,620 ($17,730 MFJ) with no qualifying children with valid SSNs, or $23,350 ($30,470 MFJ) with 1 or more, line 6 is line 2; otherwise line 6 is \"the smaller amount\" of lines 5 and 2. The restatement and its helpers compute exactly this."
+```
+```
 
 ## Raw response
 

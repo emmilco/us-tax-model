@@ -23,6 +23,8 @@ interface Mutation {
   kind: string;
   where: string;
   note?: string;
+  /** For an operand replacement, the line the mutant reads in place of the replaced operand. */
+  replacement?: string;
   apply: (data: CanonicalData) => void;
 }
 
@@ -49,8 +51,8 @@ function lineType(data: CanonicalData, doc: FormDoc, id: string): string | undef
 type OperandSite = { ref: string; kind: string; path: (string | number)[]; wantType: string | undefined; tier: number };
 // Every operand position is a site: keyed_lookup keys, rate_lookup and table_lookup key and status
 // included. Sites of tier 2 and above (choose branch values, string operands of test expressions)
-// are mutated up to the tier named by MUTATE_TIER (default 0).
-const SITE_TIER = Number(process.env.MUTATE_TIER ?? 0) || 0;
+// are mutated up to the tier named by MUTATE_TIER (default 3).
+const SITE_TIER = ((t) => (Number.isFinite(t) ? t : 3))(Number(process.env.MUTATE_TIER ?? 3));
 
 /** String line references inside a test expression, with their paths, through nested tests. */
 function testSites(test: any, path: (string | number)[], out: OperandSite[], typeOf: (ref: unknown) => string | undefined): void {
@@ -212,6 +214,7 @@ export function mutations(data: CanonicalData): Mutation[] {
           kind: "replace an operand",
           where,
           note: `${ref} -> ${candidate.id} (${candidate.type})`,
+          replacement: candidate.id,
           apply: (d) => {
             replaceAtPath(findLine(d, line.id)!.expr, site.path, candidate.id);
           },
@@ -1192,7 +1195,11 @@ export function structuralReason(data: CanonicalData, mutation: Mutation): strin
 // Equivalences that need an argument about evaluation order or reachability. Each is
 // accepted only while the structural facts it rests on hold in the current data; when
 // they lapse, the mutant is reported as unexplained again.
-const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalData) => boolean }> = {
+// A keyed conditional argument. `reads`, set on every pinned argument, is the line the argument says the
+// mutant reads: a mutant id names only the replaced operand, and the replacement is the nearest earlier
+// same-typed line, so a line inserted between them retargets the id while the premise digest is unchanged.
+type Conditional = { reason: string; holds: (data: CanonicalData) => boolean; reads?: string };
+const EQUIVALENT_IF: Record<string, Conditional> = {
   "param.eic.ws_threshold0.other.$1": thresholdAtPlateau("eic.ws_threshold0.other", ["eic_0"], 0),
   "param.eic.ws_threshold0.joint.$1": thresholdAtPlateau("eic.ws_threshold0.joint", ["eic_0"], 1),
   "param.eic.ws_threshold1.joint.$1": thresholdAtPlateau("eic.ws_threshold1.joint", ["eic_1", "eic_2", "eic_3"], 1),
@@ -1319,27 +1326,27 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
   "operand.eic.eic.line1_table2.line1.key": line1KeyInTable("eic.line1_table2"),
   "operand.eic.eic.line1_table3.line1.key": line1KeyInTable("eic.line1_table3"),
   "operand.f8889.f8889.subject.line16.then0": pinned("f8889.subject is read only by line17b_figured, which only line17b reads, and only in its has_taxable alternative; has_taxable is line16 more than $0 (sales.zero), so where subject is read line16 is complete and positive, which only line16's has_dist alternative gives (the other is f8889.zero, $0), and that alternative's value is line16_figured. Where has_taxable is not true, subject is not read.",
-    ["f8889.subject", "f8889.line17b_figured", "f8889.line17b", "f8889.has_taxable", "f8889.line16", "f8889.line16_figured", "f8889.has_dist", "f8889.zero", "param:sales.zero"], "9f3618649628f2ee"),
+    ["f8889.subject", "f8889.line17b_figured", "f8889.line17b", "f8889.has_taxable", "f8889.line16", "f8889.line16_figured", "f8889.has_dist", "f8889.zero", "param:sales.zero"], "9f3618649628f2ee", "f8889.line16_figured"),
   "operand.f8889.f8889.self_dec_year.zero.then1": pinned("self_dec_year's self_only alternative is read (through self_in_family, step4_total, step4 and line6_split) only by line6, and only where split is true; with use_last_month true (which self_in_family requires to read self_dec_year) and December coverage self-only, married_family's inner any-test is false (its first disjunct needs December family coverage, its second needs use_last_month false), so married_family, an all-test, is false even past an unknown married answer (spec 4.7.2) or is the same refusal on both routes, and split is false: line6 reads line5, not line6_split.",
-    ["f8889.self_dec_year", "f8889.self_in_family", "f8889.self_all", "f8889.step4_total", "f8889.step4", "f8889.line6_split", "f8889.line6", "f8889.split", "f8889.married_family", "f8889.use_last_month", "f8889.dec_coverage", "f8889.self_year", "f8889.zero"], "99917228415b46ec"),
+    ["f8889.self_dec_year", "f8889.self_in_family", "f8889.self_all", "f8889.step4_total", "f8889.step4", "f8889.line6_split", "f8889.line6", "f8889.split", "f8889.married_family", "f8889.use_last_month", "f8889.dec_coverage", "f8889.self_year", "f8889.zero"], "99917228415b46ec", "f8889.self_family_months"),
   "operand.f8889.f8889.self_in_family.self_dec_year.then0": pinned("self_in_family's use_last_month alternative: use_last_month true means December coverage is known and not none. With family coverage self_dec_year and self_all are both self_year (self_all takes self_year under use_last_month), the same memoized value; with self-only coverage step4_total reaches line6 only through line6_split, which line6 reads only where split is true, and married_family (so split) is then false or the same refusal on both routes, as for self_dec_year's zero alternative.",
-    ["f8889.self_dec_year", "f8889.self_in_family", "f8889.self_all", "f8889.step4_total", "f8889.step4", "f8889.line6_split", "f8889.line6", "f8889.split", "f8889.married_family", "f8889.use_last_month", "f8889.dec_coverage", "f8889.self_year", "f8889.zero"], "99917228415b46ec"),
+    ["f8889.self_dec_year", "f8889.self_in_family", "f8889.self_all", "f8889.step4_total", "f8889.step4", "f8889.line6_split", "f8889.line6", "f8889.split", "f8889.married_family", "f8889.use_last_month", "f8889.dec_coverage", "f8889.self_year", "f8889.zero"], "99917228415b46ec", "f8889.self_all"),
   "operand.person.person.edu_adj.zero.then1": pinned("edu_adj's edu_student-false alternative: edu_student is then known false (memoized). edu_over_refused is an all-test whose first conjunct, edu_student true, decides it false before edu_adj is read; lines 27 to 30 read edu_adj only in the alternative guarded by edu_aoc and line 31 only in the one guarded by edu_llc, both all-tests whose first conjunct is edu_student true, so both are false and those alternatives (and their bindings) are not evaluated (spec 4.7.3, 4.7.4). edu_adj is a helper.",
-    ["person.edu_adj", "person.edu_student", "person.edu_over_refused", "person.edu_aoc", "person.edu_llc", "person.edu_line27", "person.edu_line28", "person.edu_line29", "person.edu_line30", "person.edu_line31", "person.zero"], "0365cb37a26cdbc6"),
+    ["person.edu_adj", "person.edu_student", "person.edu_over_refused", "person.edu_aoc", "person.edu_llc", "person.edu_line27", "person.edu_line28", "person.edu_line29", "person.edu_line30", "person.edu_line31", "person.zero"], "0365cb37a26cdbc6", "person.ira_se"),
   "operand.dependent.dependent.edu_adj.zero.then1": pinned("dependent.edu_adj's edu_student-false alternative: as for person.edu_adj, edu_over_refused is decided false by its first conjunct, and lines 27 to 31 read edu_adj only in alternatives guarded by edu_aoc or edu_llc, all-tests whose first conjunct is edu_student true. edu_adj is a helper.",
-    ["dependent.edu_adj", "dependent.edu_student", "dependent.edu_over_refused", "dependent.edu_aoc", "dependent.edu_llc", "dependent.edu_line27", "dependent.edu_line28", "dependent.edu_line29", "dependent.edu_line30", "dependent.edu_line31", "dependent.zero"], "6ffdbb346213cdd6"),
+    ["dependent.edu_adj", "dependent.edu_student", "dependent.edu_over_refused", "dependent.edu_aoc", "dependent.edu_llc", "dependent.edu_line27", "dependent.edu_line28", "dependent.edu_line29", "dependent.edu_line30", "dependent.edu_line31", "dependent.zero"], "6ffdbb346213cdd6", "dependent.dc_line2d"),
   "operand.sa.sa.deduction.standard.then1": pinned("sa.deduction's itemizes-false alternative: an any-test is known false only when every disjunct was evaluated and false with no unknown remembered (spec 4.7.2), so mfs_spouse_itemizes is known false and the comparison of line 17 with sa.standard read standard as a known value; a known standard passed its gates and took its mfs_spouse_itemizes-false alternative, whose value is standardraw, the same memoized value.",
-    ["sa.standard", "sa.deduction", "sa.itemizes", "sa.standardraw", "sa.mfs_spouse_itemizes", "sa.extra_blind", "sa.elect_itemize"], "770a84bb7ca5b637"),
+    ["sa.standard", "sa.deduction", "sa.itemizes", "sa.standardraw", "sa.mfs_spouse_itemizes", "sa.extra_blind", "sa.elect_itemize"], "770a84bb7ca5b637", "sa.standardraw"),
   "operand.sa.sa.standard.zero.then0": pinned("sa.standard's mfs_spouse_itemizes-true alternative: standard is a helper read only by sa.itemizes and sa.deduction. In itemizes the mfs_spouse_itemizes disjunct is true and decides the any-test before its last disjunct, the only one that reads standard (an earlier unknown is outranked by the deciding true; an earlier refusal ends the test before standard is read); so itemizes is not false, and deduction reads standard only where itemizes is false.",
-    ["sa.standard", "sa.deduction", "sa.itemizes", "sa.standardraw", "sa.mfs_spouse_itemizes", "sa.extra_blind", "sa.elect_itemize"], "770a84bb7ca5b637"),
+    ["sa.standard", "sa.deduction", "sa.itemizes", "sa.standardraw", "sa.mfs_spouse_itemizes", "sa.extra_blind", "sa.elect_itemize"], "770a84bb7ca5b637", "sa.extra_blind"),
   "operand.sc.sc.qbi_se.zero.then1": pinned("sc.qbi_se's qbi_has-false alternative: qbi_has is profit_pos more than $0, so known false means profit_pos is a complete $0; then Form 7206 line 4 is $0, f7206_has is false, lines 7 and 9 are $0, lines 8, 10 and 13 are $0, and line 14 is $0 or (hi_uses true) the smaller of line 3 and $0, which is $0 when line 3 is complete and otherwise line 3's own refusal or unknown. qbi_se's only reader is qbi_ded, the sum of qbi_se, qbi_plan ($0 under the same qbi_has) and line 14: sum($0, $0, L14) and sum(L14, $0, L14) are the same value for L14 $0, the same refusal (it is the only refusing operand) or an unknown.",
-    ["sc.qbi_se", "sc.qbi_has", "sc.qbi_ded", "sc.qbi_plan", "sc.f7206_line14", "sc.f7206_min", "sc.f7206_line13", "sc.f7206_line10", "sc.f7206_line9", "sc.f7206_line8", "sc.f7206_line7", "sc.f7206_has", "sc.f7206_line4", "sc.profit_pos", "sc.f7206_line3", "param:sales.zero"], "7c26af53292d6ba0"),
+    ["sc.qbi_se", "sc.qbi_has", "sc.qbi_ded", "sc.qbi_plan", "sc.f7206_line14", "sc.f7206_min", "sc.f7206_line13", "sc.f7206_line10", "sc.f7206_line9", "sc.f7206_line8", "sc.f7206_line7", "sc.f7206_has", "sc.f7206_line4", "sc.profit_pos", "sc.f7206_line3", "param:sales.zero"], "7c26af53292d6ba0", "sc.f7206_line14"),
   "operand.sc.sc.ho_both.zero": pinned("sc.ho_both is a helper whose only reader is sc.ho_line5_lim, in its ho_no179-false alternative; ho_line5_lim is a helper whose only reader is sc.ho_line5, in its ho_unlimited-false alternative. A printed line therefore reads ho_both only after ho_unlimited and ho_no179 were found known false in the frame (spec 4.7.3, 4.7.6), and then ho_both's gate ho_both_limits, the all-test of those two being false, is true, so ho_both is its refusal at line entry and its expression, the only part the mutant changes, is not evaluated (4.7.1). With the gate false (ho_both or ho_line5_lim evaluated as a target) only those two helpers' own values differ.",
-    ["sc.ho_both", "sc.ho_both_limits", "sc.ho_line5_lim", "sc.ho_line5", "sc.ho_unlimited", "sc.ho_no179", "sc.ho_pre179_floor", "sc.zero"], "652b707f3dad34e6"),
+    ["sc.ho_both", "sc.ho_both_limits", "sc.ho_line5_lim", "sc.ho_line5", "sc.ho_unlimited", "sc.ho_no179", "sc.ho_pre179_floor", "sc.zero"], "652b707f3dad34e6", "sc.ho_pre179_floor"),
   "operand.eic.eic.credit.line6.then0": (() => {
     const lines = ["eic.credit", "eic.eligible", "eic.line6", "eic.after_line4", "eic.line4", "eic.line3", "eic.line1", "eic.line2", "eic.zero", "eic.line1_in_table", "eic.line1_table", "eic.line1_table0", "eic.line1_table1", "eic.line1_table2", "eic.line1_table3", "eic.line5", "eic.line3_table0", "eic.line3_table1", "eic.line3_table2", "eic.line3_table3", "eic.line5_blank", "eic.line5_threshold", "eic.threshold_other", "eic.threshold_joint", "eic.threshold0_other", "eic.threshold1_other", "eic.threshold0_joint", "eic.threshold1_joint", "eic.smaller", "eic.step1_income", "eic.step5_income", "eic.earned_for_limit", "eic.wsb_6", "eic.wsb_4b", "eic.earned_income", "param:eic.table_start"];
-    const p = pinned("eic.credit's eligible alternative reads line6, which is line2 when line4 (line3 equals line1) is true and after_line4 otherwise, so the mutant differs only where line4 is true. eligible true needs step1_income (AGI, which line3 copies, below the limit) and step5_income (earned_for_limit, whose branch value is line1's source, below the limit) complete and true, so line3 and line1 are complete there and line4 is a complete comparison. With line4 true, line5 looks up line3 in the same EIC table (by the same ssn_count choices and filing status) that line2 looks up line1 in, so where line1 is at least table_start line5 equals line2 and after_line4 (line2, or the smaller of line5 and line2) is line2; where line1 is below table_start line2 is $0 and line3, equal to line1, is below every line 5 threshold (all of which exceed table_start), so line5 is blank and after_line4 is line2.", lines, "02abad669a667830");
-    return { reason: p.reason, holds: (d: CanonicalData): boolean => {
+    const p = pinned("eic.credit's eligible alternative reads line6, which is line2 when line4 (line3 equals line1) is true and after_line4 otherwise, so the mutant differs only where line4 is true. eligible true needs step1_income (AGI, which line3 copies, below the limit) and step5_income (earned_for_limit, whose branch value is line1's source, below the limit) complete and true, so line3 and line1 are complete there and line4 is a complete comparison. With line4 true, line5 looks up line3 in the same EIC table (by the same ssn_count choices and filing status) that line2 looks up line1 in, so where line1 is at least table_start line5 equals line2 and after_line4 (line2, or the smaller of line5 and line2) is line2; where line1 is below table_start line2 is $0 and line3, equal to line1, is below every line 5 threshold (all of which exceed table_start), so line5 is blank and after_line4 is line2. eic.credit's refusal gate, household.eic_disallowed_claim (which reads eligible and line6 itself), is evaluated at line entry before the expression, the same on both routes (spec 4.7.1); only the expression's operand changes.", lines, "93b156b57daa7e37", "eic.after_line4");
+    return { reason: p.reason, reads: p.reads, holds: (d: CanonicalData): boolean => {
       const start = d.params.values["eic.table_start"]?.value;
       const th = ["eic.ws_threshold0.joint", "eic.ws_threshold1.joint", "eic.ws_threshold0.other", "eic.ws_threshold1.other"].map((k) => d.params.values[k]?.value);
       return p.holds(d) && typeof start === "number" && start > 0 && th.every((v) => typeof v === "number" && v > start);
@@ -1355,23 +1362,47 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
   "operand.scveh.scveh.d6.l6": vehicle2019("scveh.d6", "scveh.d6 is min(l6, t6); the mutant reads d5 = min(l5, t5) in place of l6, and min(min(l5, t5), t6) = min(l6, t6) when l5 = l6 and t5 >= t6.",
     (d) => vehicleYear(d, 5) && vehicleYear(d, 6)),
   "operand.dependent.dependent.dc_lived_half.part_year_home.any.1.all.2.eq.0": pinned("dc_lived_half is any[lived_half, all[qualifying_child false, born_died, part_year_home]]; the mutant reads hoh_lived_half, any[lived_half, all[qualifying_child false, any[born_died, placed], part_year_home]], in place of part_year_home. The replaced conjunct is reached only after lived_half was neither true nor a refusal (any-test) and the first two conjuncts were true or unknown, so lived_half, qualifying_child and born_died are memoized there (spec 4.7.6) and born_died is not false. With born_died true the inner any is true without reading placed, so hoh_lived_half is any[lived_half, P] where P is the base conjunct list's value; with born_died unknown the inner any is true or unknown (placed is an input with no gates, never a refusal). In every combination the mutant's inner all-test differs from the base's only by a true turned unknown, or a false turned unknown when lived_half is unknown, and the outer any-test, which already remembers lived_half's unknown in that case, gives the same value; a refusal of part_year_home is passed through in both.",
-    ["dependent.dc_lived_half", "dependent.hoh_lived_half", "dependent.lived_half", "dependent.qualifying_child", "dependent.born_died", "dependent.placed", "dependent.part_year_home"], "a35999293a0b2b9d"),
+    ["dependent.dc_lived_half", "dependent.hoh_lived_half", "dependent.lived_half", "dependent.qualifying_child", "dependent.born_died", "dependent.placed", "dependent.part_year_home"], "a35999293a0b2b9d", "dependent.hoh_lived_half"),
   "operand.f8962.f8962.filing.applicable.all.1.any.0.eq.0": pinned("filing is all[any, any[applicable, aptc]]; the mutant reads show_applicable, all[any, applicable], in place of applicable. The inner any-test is reached only when f8962.any is true or unknown. With any true, show_applicable is applicable's (memoized) value. f8962.any is forms > 0, and forms counts the Form 1095-A roster with a parameter field, so any is unknown only when that roster is unconfirmed; then aptc (aptc_total, a sum over the same roster) is unknown, never a refusal (spec 4.7.5: an unconfirmed roster evaluates nothing), and show_applicable differs from applicable only by a true turned unknown, which the outer all-test, already holding any's unknown, cannot see: both are unknown, or the same refusal of applicable.",
-    ["f8962.filing", "f8962.show_applicable", "f8962.applicable", "f8962.any", "f8962.forms", "f8962.aptc", "f8962.aptc_total", "f1095a.one", "param:sales.one"], "7e3b44fd38794cb6"),
+    ["f8962.filing", "f8962.show_applicable", "f8962.applicable", "f8962.any", "f8962.forms", "f8962.aptc", "f8962.aptc_total", "f1095a.one", "param:sales.one"], "7e3b44fd38794cb6", "f8962.show_applicable"),
   "operand.f2441.f2441.line13_earned.line20.all.3.gt.1": pinned("The fourth conjunct of line13_earned compares line 23 with line 20; the mutant compares it with line 24. Line 22 is f2441.zero (a $0 parameter), so line 24 is the smaller of (the smaller of line 20 and line 21) and $0, and line 23 is line 15 less $0. The fourth conjunct is reached only after line 20 < line 17 and line 20 < line 21 were each true or unknown. Line 20 is line 17, 18 and 19's smallest floored at zero, so line 20 complete means line 17 complete and the second conjunct complete: then line 20 < line 17 <= line 15 = line 23, so both comparisons are true when line 23 is complete, and both are line 23's own unknown or refusal otherwise (it is the left operand, and the right operand is complete in both when line 21 is). Line 21 unknown leaves the third conjunct unknown and line 24 unknown: the base comparison is true or line 23's incompleteness, the mutant's unknown or that refusal, so the test is the same. Line 20 unknown makes line 24 unknown, and both comparisons are line 23's refusal or unknown. A refusal of line 20 or line 21 ends the test at the second or third conjunct.",
-    ["f2441.line13_earned", "f2441.line24", "f2441.line24_20_21", "f2441.line22", "f2441.zero", "f2441.line20", "f2441.line20_all", "f2441.line20_17_18", "f2441.line17", "f2441.line15", "f2441.line23", "f2441.line21", "param:sales.zero"], "62b2d3dc080316ad"),
+    ["f2441.line13_earned", "f2441.line24", "f2441.line24_20_21", "f2441.line22", "f2441.zero", "f2441.line20", "f2441.line20_all", "f2441.line20_17_18", "f2441.line17", "f2441.line15", "f2441.line23", "f2441.line21", "param:sales.zero"], "62b2d3dc080316ad", "f2441.line24"),
   "operand.sdtw.sdtw.line4.zero.then1": pinned("sdtw.line4's filing4952-false alternative is sdtw.zero ($0); the mutant reads sdtw.line3, a copy of f4952.election through sd.investment_election. filing4952 is f4952.required, all[used, required_test]; it is known false only when used is false (so has_election, a disjunct of used, is false and election is f4952.zero) or required_test is false (an any-test whose first disjunct is election > 0, so election was evaluated complete and not above $0). Either way line3 is $0 wherever the alternative is taken; an unknown or refused guard ends the choose before either alternative (spec 4.7.3).",
-    ["sdtw.line4", "sdtw.line3", "sdtw.zero", "sd.filing4952", "sd.investment_election", "f4952.required", "f4952.used", "f4952.required_test", "f4952.election", "f4952.has_election", "f4952.zero", "param:sales.zero"], "1b58c2eeebf6c798"),
-  "operand.ssb.ssb.show16_18.mfs_together.all.1.any.0.eq.0": pinned("show16_18 is all[past7, any[mfs_together, past9]]; the mutant reads show10_15 (all[show8_9, past9], show8_9 being all[lines8_to_15, past7] and lines8_to_15 being mfs_together false) in place of mfs_together. With mfs_together true, line 8 is mfs_base with lived_apart false, that is ssb.zero, so line 9 (line 7 less line 8, floored) is line 7 and past9 is past7, true where the any-test is reached: both are true. With mfs_together false, show10_15 is past9 (past7 is already true), so the any-tests agree. mfs_together is unknown only when the status or lived_apart is unknown; then line 8 is unknown and line 9 is unknown or line 7's refusal (subtract evaluates both), so past9 is unknown or that refusal, which past7 has already returned: both any-tests are unknown.",
-    ["ssb.show16_18", "ssb.mfs_together", "ssb.show10_15", "ssb.show8_9", "ssb.lines8_to_15", "ssb.past7", "ssb.past9", "ssb.line9", "ssb.line8", "ssb.mfs_base", "ssb.line7", "ssb.zero", "ssb.lived_apart"], "47676839c241e06e"),
-  "operand.ssb.ssb.show16_18.past9.all.1.any.1.eq.0": pinned("show16_18 is all[past7, any[mfs_together, past9]]; the mutant reads show10_15, all[all[mfs_together false, past7], past9], in place of past9. The second disjunct is reached only when mfs_together was not true. With mfs_together false and past7 true (the outer test's first conjunct), show10_15 is past9. mfs_together is unknown only when the status or lived_apart is unknown; then line 8 is unknown, so past9 is unknown or line 7's refusal (already returned by past7): show10_15 is then unknown too, and both any-tests are unknown.",
-    ["ssb.show16_18", "ssb.mfs_together", "ssb.show10_15", "ssb.show8_9", "ssb.lines8_to_15", "ssb.past7", "ssb.past9", "ssb.line9", "ssb.line8", "ssb.mfs_base", "ssb.line7", "ssb.zero", "ssb.lived_apart"], "47676839c241e06e"),
+    ["sdtw.line4", "sdtw.line3", "sdtw.zero", "sd.filing4952", "sd.investment_election", "f4952.required", "f4952.used", "f4952.required_test", "f4952.election", "f4952.has_election", "f4952.zero", "param:sales.zero"], "1b58c2eeebf6c798", "sdtw.line3"),
+  "operand.ssb.ssb.show16_18.mfs_together.all.1.any.0.eq.0": pinned("show16_18 is all[past7, any[mfs_together, past9]]; the mutant reads show10_15 (all[show8_9, past9], show8_9 being all[lines8_to_15, past7] and lines8_to_15 being mfs_together false) in place of mfs_together. With mfs_together true, line 8 is mfs_base with lived_apart false, that is ssb.zero, so line 9 (line 7 less line 8, floored) is line 7 and past9 is past7, true where the any-test is reached: both are true. With mfs_together false, show10_15 is past9 (past7 is already true), so the any-tests agree. mfs_together is unknown only when the status or lived_apart is unknown; then line 8 is unknown and line 9 is unknown or line 7's refusal (subtract evaluates both), so past9 is unknown or that refusal, which past7 has already returned: both any-tests are unknown. With past7 unknown (line 7 unknown, the outer test continuing past it), line 9 is unknown or line 8's refusal, so past9 is unknown or that refusal; show8_9 is false (mfs_together true) or unknown, and show10_15 is false or past9's value. With mfs_together true the base any-test is true and the mutant's is past9's unknown (line 8 is then $0); otherwise both any-tests are past9's value. The outer test, holding past7's unknown, is unknown on both routes, or the same refusal.",
+    ["ssb.show16_18", "ssb.mfs_together", "ssb.show10_15", "ssb.show8_9", "ssb.lines8_to_15", "ssb.past7", "ssb.past9", "ssb.line9", "ssb.line8", "ssb.mfs_base", "ssb.line7", "ssb.zero", "ssb.lived_apart"], "47676839c241e06e", "ssb.show10_15"),
+  "operand.ssb.ssb.show16_18.past9.all.1.any.1.eq.0": pinned("show16_18 is all[past7, any[mfs_together, past9]]; the mutant reads show10_15, all[all[mfs_together false, past7], past9], in place of past9. The second disjunct is reached only when mfs_together was not true. With mfs_together false and past7 true (the outer test's first conjunct), show10_15 is past9. mfs_together is unknown only when the status or lived_apart is unknown; then line 8 is unknown, so past9 is unknown or line 7's refusal (already returned by past7): show10_15 is then unknown too, and both any-tests are unknown. With past7 unknown (line 7 unknown, the outer test continuing past it), past9 is unknown or line 8's refusal, and show10_15, all[show8_9 (unknown, since lines8_to_15 is true or unknown there and past7 is unknown), past9], is past9's value; the second disjuncts agree, and the outer test, holding past7's unknown, is unknown on both routes or the same refusal.",
+    ["ssb.show16_18", "ssb.mfs_together", "ssb.show10_15", "ssb.show8_9", "ssb.lines8_to_15", "ssb.past7", "ssb.past9", "ssb.line9", "ssb.line8", "ssb.mfs_base", "ssb.line7", "ssb.zero", "ssb.lived_apart"], "47676839c241e06e", "ssb.show10_15"),
   "operand.f8889.f8889.age55_unmarried.age55.all.0.eq.0": pinned("age55_unmarried is all[age55, married false]; the mutant reads age55_line3, all[age55, married_family false], in place of age55, and married_family is all[married, any[...]] over inputs (household.married, dec_coverage, last_month, months_family) and use_last_month, none with refusal gates, so married_family is never a refusal. With married false, married_family is false and age55_line3 is age55. With married true the second conjunct is false in both, and the mutant's first conjunct is age55's value or false. With married unknown, married_family is false or unknown, so age55_line3 is age55's value or unknown where age55 is true, and the second conjunct is unknown: both tests are unknown, or false where age55 is false.",
-    ["f8889.age55_unmarried", "f8889.age55_line3", "f8889.married_family", "f8889.age55", "household.married", "f8889.use_last_month", "f8889.dec_coverage", "f8889.months_family", "f8889.last_month"], "645f7f1e6c992c1e"),
+    ["f8889.age55_unmarried", "f8889.age55_line3", "f8889.married_family", "f8889.age55", "household.married", "f8889.use_last_month", "f8889.dec_coverage", "f8889.months_family", "f8889.last_month"], "645f7f1e6c992c1e", "f8889.age55_line3"),
   "operand.eic.eic.line1_in_table.line1.ge.0": (() => {
     const p = pinned("line1_in_table compares eic.line1 with eic.table_start; the mutant compares eic.earned_for_limit. Both choose on the same guards (self_employed false, then true) and take earned_income on the first; on the second line 1 takes wsb_6, which is wsb_4b floored at zero (subtract_floor0 from wsb_4b of eic.zero, no gates of its own), and earned_for_limit takes wsb_4b. An incomplete guard is the value of both (spec 4.7.3); an incomplete wsb_4b is wsb_6's value too. For a complete wsb_4b x, max(x, 0) >= start exactly when x >= start, because table_start is positive (checked).",
-      ["eic.line1_in_table", "eic.line1", "eic.earned_for_limit", "eic.self_employed", "eic.wsb_6", "eic.wsb_4b", "eic.earned_income", "eic.zero", "param:eic.table_start"], "6cffe7974afc02b2");
-    return { reason: p.reason, holds: (d: CanonicalData): boolean => {
+      ["eic.line1_in_table", "eic.line1", "eic.earned_for_limit", "eic.self_employed", "eic.wsb_6", "eic.wsb_4b", "eic.earned_income", "eic.zero", "param:eic.table_start"], "6cffe7974afc02b2", "eic.earned_for_limit");
+    return { reason: p.reason, reads: p.reads, holds: (d: CanonicalData): boolean => {
+      const start = d.params.values["eic.table_start"]?.value;
+      return p.holds(d) && typeof start === "number" && start > 0;
+    } };
+  })(),
+  "operand.eic.eic.show5.eligible.all.0.eq.0": pinned("show5 is all[eligible, line4 false, line5_blank false, line2 > 0]; the mutant reads show3, all[eligible, line2 > 0], in place of eligible. With eligible false or a refusal both tests end at their first conjunct with that value. With eligible true, step1_income (line 11b below eic.limit) and step5_income (earned_for_limit below eic.limit) are complete, so eic.limit, a choice on the filing status and then on ssn_count's bands, is complete: the status is supplied and ssn_count is not a refusal. Then line3 (a copy of line 11b) is complete; line1 takes earned_income, or wsb_6 (wsb_4b floored at zero), on the same self_employed guard as earned_for_limit, so it is complete; line4 is a complete comparison; line5_blank compares line3 with line5_threshold, a choice on the status and ssn_count's bands among parameters, so it is complete or unknown; line2 chooses on line1_in_table (complete) between eic.zero and a table lookup keyed on line1 and the status in a table chosen by ssn_count's bands, so it is complete or unknown. None of these lines has a refusal gate, so no conjunct refuses, and show3 is line2 > 0's value V. V false makes both tests false (the base reaches V after line4 and line5_blank, which cannot refuse); V true leaves both the same remaining conjuncts; V unknown makes both unknown unless line4 or line5_blank is false, which makes both false. With eligible unknown, the tests could differ only if line2 refused, and line2 can refuse only through ssn_count, which counts the dependents whose eic_ssn_child (and so eic_child) is true; a refusal there also refuses qc_count, has_qc and step34, which eligible reads, so eligible would be a refusal, not unknown.",
+    ["eic.show5", "eic.show3", "eic.eligible", "eic.step1_income", "eic.step5_income", "eic.limit", "eic.limit_other", "eic.limit_joint", "eic.earned_for_limit", "eic.self_employed", "eic.line4", "eic.line5_blank", "eic.line3", "eic.line1", "eic.wsb_6", "eic.zero", "eic.line2", "eic.line1_in_table", "eic.line1_table", "eic.line1_table0", "eic.line1_table1", "eic.line1_table2", "eic.line1_table3", "eic.line5_threshold", "eic.threshold_other", "eic.threshold_joint", "eic.threshold0_other", "eic.threshold1_other", "eic.threshold0_joint", "eic.threshold1_joint", "eic.ssn_count", "dependent.eic_ssn_child", "dependent.eic_child", "eic.qc_count", "eic.has_qc", "eic.step34"], "6610d4054db409bb", "eic.show3"),
+  "operand.dependent.dependent.dc_line2c.dc_incapable.all.1.eq.0": pinned("dc_line2c is all[dc_qp, dc_incapable, age test]; the mutant reads dc_disabled_qp, all[dc_incapable, dc_lived_half], in place of dc_incapable. The second conjunct is reached only when dc_qp is true or unknown (a refusal ends both tests). dc_qp true means its any-test found dc_child_all_year, dc_disabled_qp or dc_child true. dc_child_all_year and dc_child (through dc_age13) each need qc_dependent true, which needs qualifying_child true, an all-test whose last conjunct is lived_half true; lived_half is then a memoized true in the dependent's frame (spec 4.7.6), and dc_lived_half, an any-test whose first disjunct is lived_half true, is true. dc_disabled_qp true needs dc_lived_half true. So wherever dc_qp is true, dc_lived_half is true and dc_disabled_qp is dc_incapable's value (an input with no gates): the conjuncts agree. dc_qp is unknown only with an input it reads unanswered; there the mutant can be false or a refusal (through dc_lived_half) where the base is unknown, so the argument is over answered inputs: dc_qp is read by f2441.qp_count and f2441.paid_total for every dependent, and its inputs are asked on any return that reaches Form 2441.",
+    ["dependent.dc_line2c", "dependent.dc_incapable", "dependent.dc_disabled_qp", "dependent.dc_qp", "dependent.dc_lived_half", "dependent.dc_child_all_year", "dependent.dc_child", "dependent.dc_age13", "dependent.qc_dependent", "dependent.qualifying_child", "dependent.lived_half"], "a98e2f80b674a40f", "dependent.dc_disabled_qp"),
+  "operand.household.household.roster_ok.taxpayers.any.1.all.1.eq.0": (() => {
+    const p = pinned("roster_ok's second disjunct is all[status not mfj, taxpayers = 1, spouses = 0]; the mutant reads persons, the count of every person entry, in place of taxpayers, the count of entries whose role is taxpayer. The three counts sum the parameter person.one over the same $person roster, taxpayers and spouses with a where-test on person.role only, and none has gates; person_role has the two values taxpayer and spouse (checked), so with the roster confirmed and every role answered persons is taxpayers plus spouses. Where spouses is 0 the two counts are equal; otherwise the third conjunct is false and both tests are false (neither second conjunct can refuse). With the roster unconfirmed all three counts are unknown and both tests are unknown, or false at the status. Only with a role unanswered can taxpayers be unknown where persons is known, and the mutant then be more decided; the role is asked first for every person entry, and roster_ok gates Form 1040 line 1a through household.roster_bad, so the argument is over answered inputs.",
+      ["household.roster_ok", "household.taxpayers", "household.persons", "household.spouses", "person.role", "person.one", "enum:person_role"], "b04ad7c4181986d6", "household.persons");
+    return { reason: p.reason, reads: p.reads, holds: (d: CanonicalData): boolean => {
+      const roles = (d.params as { enums?: Record<string, { values?: unknown }> }).enums?.person_role?.values;
+      return p.holds(d) && stableStringify(roles) === stableStringify(["taxpayer", "spouse"]);
+    } };
+  })(),
+  "operand.eic.eic.step5_income.earned_for_limit.lt.0": pinned("step5_income compares earned_for_limit with eic.limit; the mutant compares wsb_4b, sum[earned_income, wsb_se]. earned_for_limit chooses on self_employed (sc_count > 0): earned_income when false, wsb_4b when true. With self_employed true the two are the same value. With it false sc_count is a complete 0 (a lower bound decides gt only true, spec 4.7.5), so each person's sc_count is a complete 0, has_sc is false and eic_se is person.zero ($0); wsb_se sums eic_se over the same roster with no where-test, so it is $0, and wsb_4b is earned_income's value (a sum returns its first operand's refusal at once, and an unknown plus $0 stays unknown). self_employed is never a refusal (its counts sum parameters over rosters, with no gates); it is unknown only with a $person or $sc roster unconfirmed, where the base is unknown and the mutant can be decided (earned_income's refusal), so the argument is over answered inputs: those rosters are asked on every return.",
+    ["eic.step5_income", "eic.earned_for_limit", "eic.wsb_4b", "eic.wsb_se", "eic.earned_income", "eic.self_employed", "eic.sc_count", "person.sc_count", "person.has_sc", "person.eic_se", "person.zero", "param:ss.zero"], "1fd48b911ad493db", "eic.wsb_4b"),
+  "operand.f2441.f2441.attrib_gate.line31.all.3.gt.0": pinned("attrib_gate's fourth conjunct compares line31 with $0; the mutant compares line3, a choose with no gates that is line31 when f2441.benefits is true and line3_expenses when it is false. The conjunct is reached only when has_1e (Form 1040 line 1e above $0) was true or unknown. Line 1e is f2441.zero ($0) when benefits is false, so has_1e true means benefits is a memoized true and line3 is line31's value: the comparisons agree. With benefits answered, has_1e is unknown only when it is true and line 26 is unknown, and line3 is again line31. With benefits unanswered line3 is unknown where line31 may be decided, so the argument is over answered inputs: benefits is read by Form 1040 line 1e, which line 1z sums, and is asked on every return.",
+    ["f2441.attrib_gate", "f2441.line3", "f2441.line31", "f2441.has_1e", "f1040.line1e", "f2441.benefits", "f2441.zero", "param:sales.zero"], "3ffd86c3d5aab30e", "f2441.line3"),
+  "operand.s8812.s8812.line18a.chart_eic.then0": (() => {
+    const p = pinned("line18a's taking_eic-true alternative is chart_eic; the mutant reads eiw_7_figured (eiw_3 less eiw_6). It is taken only when Form 1040 line 27a, a copy of eic.credit, is above $0, so eligible is true and line6 is above $0; line6 is line2 or the smaller of line5 and line2, so line2 is above $0, line1_in_table is true and line1 is at least table_start (positive, checked). eligible true makes step1_income and step5_income complete. Line 11b (line 9 less line 10) is complete; line 9 sums line 8, a copy of Schedule 1 line 10, which sums Schedule 1 line 3, and line 10 copies Schedule 1 line 26, which sums Schedule 1 line 15, so both are complete. earned_for_limit is complete, so earned_income (Step 5 line 1, line 1z behind scope.schedule1; less line 2, $0 behind scope.other_income; plus line 4, $0 behind s8812.combat_pay) is complete and those gates are false. Then eiw_1a is line 1z, eiw_1b $0 (the same combat-pay gate), eiw_2b Schedule 1 line 3, eiw_3 eiw_3sum floored at zero, eiw_4 $0 (scope.schedule1) and eiw_5 Schedule 1 line 15: eiw_7_figured is max(line 1z + S1 line 3, 0) less S1 line 15. S1 line 3 sums each person's sc_total and line 15 each person's se_line13. With self_employed false every Schedule C roster is empty, line 3 is $0 and each se_line13 is person.zero; chart_eic is earned_income, line 1z, and so is eiw_7_figured. With it true chart_eic is wsb_4b, line 1z plus the sum of each person's eic_se: person.zero for a person with no Schedule C (whose sc_total and se_line13 are $0), sc_total less se_line13 when files_se, and sc_total otherwise, where files_se false means Schedule SE line 4c is $0, so lines 6, the social security base, 10, 11, 12 and 13 of that person's Schedule SE are $0. So wsb_4b is line 1z + S1 line 3 less S1 line 15; line1 (wsb_6, wsb_4b floored) is above $0, so line 1z + S1 line 3 is above $0, no floor applies, and eiw_7_figured equals chart_eic. Where taking_eic is false or incomplete the alternative is not evaluated (spec 4.7.3). A Schedule C roster is empty when self_employed is false because self_employed tests sc_count > 0 and sc_count sums sc.one, a positive parameter (pinned).",
+      ["s8812.line18a", "s8812.chart_eic", "s8812.eiw_7_figured", "s8812.taking_eic", "f1040.line27a", "eic.credit", "eic.zero", "eic.line6", "eic.after_line4", "eic.smaller", "eic.line2", "eic.line1_in_table", "eic.line1", "eic.wsb_6", "eic.eligible", "eic.step1_income", "eic.step5_income", "eic.earned_for_limit", "eic.earned_income", "eic.step5_line1", "eic.step5_line2", "eic.step5_line3", "eic.step5_line4", "eic.wsb_4b", "eic.wsb_se", "eic.self_employed", "eic.sc_count", "s8812.eiw_3", "s8812.eiw_3sum", "s8812.eiw_1a", "s8812.eiw_1b", "s8812.eiw_2b", "s8812.eiw_6", "s8812.eiw_4", "s8812.eiw_5", "s8812.zero", "f1040.line11b", "f1040.line11a", "f1040.line9", "f1040.line8", "f1040.line10", "s1.line10", "s1.line26", "s1.line3", "s1.line15", "person.sc_total", "person.se_line13", "person.se_line4c", "person.files_se", "person.eic_se", "person.eic_se_has", "person.eic_part1", "person.has_sc", "person.sc_count", "person.zero", "def:se", "param:sales.zero", "param:ss.zero", "sc.one", "param:sc.one"], "7e18110c797169e6", "s8812.eiw_7_figured");
+    return { reason: p.reason, reads: p.reads, holds: (d: CanonicalData): boolean => {
       const start = d.params.values["eic.table_start"]?.value;
       return p.holds(d) && typeof start === "number" && start > 0;
     } };
@@ -1379,29 +1410,64 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
 };
 
 // A keyed argument pinned to the lines it reads: the digest of each named line's expression, refusal
-// gates, type, printed marker and display condition, and of the list of every line that reads it. The
+// gates, type, printed marker and display condition, and of the list of every line that reads it; a
+// `table:`, `param:`, `enum:` or `def:` premise digests that table, parameter, enum or whole def. The
 // argument holds only while none of those changed; any edit to a premise line, or a new reader of one,
 // makes the survivor unexplained again until the argument is re-made.
 export function premiseDigest(data: CanonicalData, lines: string[]): string {
   const facts = lines.map((id) => {
     if (id.startsWith("table:")) return { id, table: data.tables.find((t) => t.id === id.slice(6)) ?? null };
     if (id.startsWith("param:")) return { id, param: data.params.values[id.slice(6)] ?? null };
+    if (id.startsWith("enum:")) return { id, enum: (data.params as { enums?: Record<string, unknown> }).enums?.[id.slice(5)] ?? null };
+    if (id.startsWith("def:")) return { id, def: data.defs.find((x) => x.id === id.slice(4)) ?? null };
     const l = findLine(data, id);
     return l ? { id, expr: l.expr, refuses: l.refuses ?? [], type: l.type, printed: l.printed, shown_when: l.shown_when ?? null, readers: [...new Set(allReaders(data, id))].sort() } : { id, missing: true };
   });
   return createHash("sha256").update(stableStringify(facts)).digest("hex").slice(0, 16);
 }
 
-function pinned(reason: string, lines: string[], digest: string) {
-  return { reason: `${reason} (Premises pinned: ${lines.join(", ")}.)`, holds: (d: CanonicalData): boolean => premiseDigest(d, lines) === digest };
+function pinned(reason: string, lines: string[], digest: string, reads: string): Conditional & { reads: string } {
+  return { reason: `${reason} (Premises pinned: ${lines.join(", ")}; the mutant reads ${reads}.)`, reads, holds: (d: CanonicalData): boolean => premiseDigest(d, lines) === digest };
 }
 
 // Why a surviving mutant is equivalent, checked against the current data: the keyed conditional
 // argument when its structural conditions hold, else the first structural rule that accepts it.
 export function equivalenceReason(data: CanonicalData, mutation: Mutation): string | undefined {
   const conditional = EQUIVALENT_IF[mutation.id];
-  if (conditional?.holds(data)) return conditional.reason + " (structural conditions re-checked this run.)";
+  const sameTarget = conditional?.reads === undefined || conditional.reads === mutation.replacement;
+  if (conditional && sameTarget && conditional.holds(data)) return conditional.reason + " (structural conditions re-checked this run.)";
   return structuralReason(data, mutation);
+}
+
+// Self-test of the `reads` check: for each pinned argument whose mutant is generated and holds, insert an
+// unreferenced line of the replacement's type just before the mutated line (an expression reading no line,
+// so no premise digest moves), regenerate the mutants, and require that the same id now reads the
+// inserted line and no longer takes the pinned argument. Returns the problems found and the number tested.
+export function retargetSelfTest(baseline: CanonicalData, muts: Mutation[]): { problems: string[]; tested: number } {
+  const problems: string[] = [];
+  let tested = 0;
+  const byId = new Map(muts.map((m) => [m.id, m]));
+  for (const [id, c] of Object.entries(EQUIVALENT_IF)) {
+    if (c.reads === undefined) continue;
+    const m = byId.get(id);
+    if (!m) continue;
+    if (m.replacement !== c.reads) { problems.push(`${id}: the pinned argument names ${c.reads} but the mutant reads ${m.replacement ?? "no line"}`); continue; }
+    if (!c.holds(baseline)) continue;
+    const line = lineOf(m);
+    const clone = cloneData(baseline);
+    const doc = docOfLine(clone, line);
+    const target = findLine(clone, c.reads);
+    if (!doc || !target) { problems.push(`${id}: retargeting self-test could not find ${line} or ${c.reads}`); continue; }
+    const decoy = `${line}_retarget_decoy`;
+    doc.lines.splice(doc.lines.findIndex((l) => l.id === line), 0, { id: decoy, printed: "(helper)", type: target.type, expr: { op: "param", ref: "sales.zero" } } as unknown as Line);
+    const retargeted = mutations(clone).find((x) => x.id === id);
+    if (retargeted?.replacement !== decoy) { problems.push(`${id}: retargeting self-test did not retarget the mutant to ${decoy}`); continue; }
+    if (!c.holds(clone)) { problems.push(`${id}: retargeting self-test moved the premise digest, so it tests nothing`); continue; }
+    tested++;
+    if (equivalenceReason(clone, retargeted)?.startsWith(c.reason)) problems.push(`${id}: a mutant retargeted to ${decoy} still takes the pinned argument`);
+  }
+  if (tested === 0 && muts.some((m) => EQUIVALENT_IF[m.id]?.reads !== undefined)) problems.push("retargeting self-test exercised no pinned argument");
+  return { problems, tested };
 }
 
 // EIC Worksheet A line 2 looks up line 1 in the EIC Table only when line 1 is at least the table's
@@ -1784,6 +1850,7 @@ export async function runMutation(): Promise<number> {
     }
   }
   const muts = mutations(baseline);
+  const retarget = retargetSelfTest(baseline, muts);
   const survivors: Mutation[] = [];
   const classmOnly: { m: Mutation; case: string }[] = [];
   let killedByCheck = 0;
@@ -1850,6 +1917,12 @@ export async function runMutation(): Promise<number> {
     }
     report.push("");
   }
+  if (retarget.problems.length > 0) {
+    report.push("## Pinned-argument self-test");
+    report.push("");
+    for (const p of retarget.problems) report.push(`- PROBLEM: ${p}`);
+    report.push("");
+  }
   if (openDefect.length > 0 || openDefectProblems.length > 0) {
     report.push("## Surviving — explained by an open defect");
     report.push("");
@@ -1873,5 +1946,7 @@ export async function runMutation(): Promise<number> {
   console.log(`mutation: ${total} mutants, killed by checker ${killedByCheck}, by fixtures ${killedByFixtures} (${classmOnly.length} only by class M cases), surviving ${survivors.length} (${equivalentSurvivors.length} equivalent; score ${(score * 100).toFixed(1)}%, adjusted ${(adjusted * 100).toFixed(1)}%)`);
   console.log(`report: reports/${YEAR}/mutation.md`);
   for (const p of openDefectProblems) console.log(`mutation: ${p}`);
-  return unexplained.length === 0 && openDefectProblems.length === 0 ? 0 : 1;
+  console.log(`mutation: retargeting self-test: ${retarget.tested} pinned arguments retargeted and rejected, ${retarget.problems.length} problems`);
+  for (const p of retarget.problems) console.log(`mutation: ${p}`);
+  return unexplained.length === 0 && openDefectProblems.length === 0 && retarget.problems.length === 0 ? 0 : 1;
 }

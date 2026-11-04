@@ -25,7 +25,7 @@ whole, with the prompt limit raised to 700k characters. Cost $2.23; 2 more lows 
 - every BUG-0414 low is fixed (BUG-0415), and round 3's own lows are fixed too (BUG-0416);
 - T-232 is done with no schema change: source-predicted gate values on class A and synthetic regression cases, plus 10 new synthetic cases, kill 138 of the 145 display-condition mutants, and a new rule (conjunctPrefix) proves 5 more equivalent;
 - T-231 and T-196 were closed by cost decision;
-- T-159: tier-3 mutation is down to 12 unexplained survivors (adjusted 99.8%); T-181 moved to coverage expansion (owner, 2026-11-04);
+- T-159: tier-3 mutation is the default and fully explained (adjusted 100.0%; the step takes about 22 minutes); T-235's retarget self-test guards the pinned arguments; T-234 fixed the EIC Worksheet A line 4 display; T-181 moved to coverage expansion (owner, 2026-11-04);
 - the two rare sales lows (BUG-0417) and the findings of the sales reviews after them are fixed (BUG-0418); the last sales completeness review found nothing that isn't refused elsewhere.
 
 Paid calls this round: $36.85 (70 calls).

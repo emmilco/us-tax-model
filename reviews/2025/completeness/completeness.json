@@ -591,8 +591,30 @@
  },
  {
   "form": "eic",
-  "prompt_sha": "e02785e754a2690289efb38368091bca3b484fe0bef18fde96eb172246ee1167",
+  "prompt_sha": "c9d94d5fc236311a62b27ca369434b869293c7fd5c02f59175e926130f2d0433",
   "claims": [
+   {
+    "item": "eic.qc_count",
+    "sentences": [
+     {
+      "quote": "Who lived with you in the United States for more than half of 2025.",
+      "page": "i1040gi p. 41"
+     },
+     {
+      "quote": "You can’t take the credit for a child who didn’t live with you for more than half the year, even if you paid most of the child’s living expenses.",
+      "page": "i1040gi p. 41"
+     },
+     {
+      "quote": "The United States means the 50 states and the District of Columbia. It doesn’t include Puerto Rico or U.S. territories.",
+      "page": "i1040gi p. 45"
+     }
+    ],
+    "quote": "Who lived with you in the United States for more than half of 2025. / You can’t take the credit for a child who didn’t live with you for more than half the year, even if you paid most of the child’s living expenses. / The United States means the 50 states and the District of Columbia. It doesn’t include Puerto Rico or U.S. territories.",
+    "page": "i1040gi p. 41; i1040gi p. 45",
+    "why_uncovered": "eic.qc_count is a helper with no question and no refusal, and it cites only Step 3, question 1. The EIC qualifying-child test requires the child to live with the filer in the United States (50 states and DC) for more than half of 2025. The dependency qualifying-child test, which the count presumably reuses, has no such requirement. No item asks where the child lived or excludes a child whose shared home was outside the United States. The eic.us_home question covers only the filer's and spouse's main home in Step 4, which applies only to filers without a qualifying child.",
+    "closest_item": "eic.qc_count",
+    "effect": "amount"
+   },
    {
     "item": "eic.step1_ssn",
     "sentences": [
@@ -603,34 +625,16 @@
      {
       "quote": "However, if “Valid for Work Only With DHS Authorization” is printed on your social security card, your SSN is valid for EIC purposes only as long as the DHS authorization is still valid.",
       "page": "i1040gi p. 45"
-     },
-     {
-      "quote": "If you didn’t have an SSN issued on or before the due date of your 2025 return (including extensions), you can’t claim the EIC on your original or an amended 2025 return.",
-      "page": "i1040gi p. 45"
      }
     ],
-    "quote": "Do you, and your spouse if filing a joint return, have a social security number issued on or before the due date of your 2025 return (including extensions) that allows you to work and is valid for EIC purposes (explained later under Definitions and Special Rules)? / However, if “Valid for Work Only With DHS Authorization” is printed on your social security card, your SSN is valid for EIC purposes only as long as the DHS authorization is still valid. / If you didn’t have an SSN issued on or before the due date of your 2025 return (including extensions), you can’t claim the EIC on your original or an amended 2025 return.",
+    "quote": "Do you, and your spouse if filing a joint return, have a social security number issued on or before the due date of your 2025 return (including extensions) that allows you to work and is valid for EIC purposes (explained later under Definitions and Special Rules)? / However, if “Valid for Work Only With DHS Authorization” is printed on your social security card, your SSN is valid for EIC purposes only as long as the DHS authorization is still valid.",
     "page": "i1040gi p. 40; i1040gi p. 45",
-    "why_uncovered": "The encoded item is worded only as 'Do you have' a valid SSN. Its only cited definition is the 'Not Valid for Employment' rule. Nothing states that on a joint return the spouse's SSN must also meet the test. Nothing makes a card marked 'Valid for Work Only With DHS Authorization' valid only while the DHS authorization remains in effect. A filer with an expired authorization, or a joint filer whose spouse lacks a qualifying SSN, could pass this step when the credit should be denied.",
+    "why_uncovered": "The encoded Step 1, question 2 refers only to the filer ('Do you have a social security number'). It cites only the 'Not Valid for Employment' exception. Nothing requires the spouse on a joint return to have a valid SSN. Nothing tests whether a 'Valid for Work Only With DHS Authorization' SSN still has a valid DHS authorization.",
     "closest_item": "eic.step1_ssn",
     "effect": "eligibility"
    },
    {
-    "item": "eic.wsb_se",
-    "sentences": [
-     {
-      "quote": "Don’t include on these lines any statutory employee income, any net profit from services performed as a notary public, any amount exempt from self-employment tax as the result of the filing and approval of Form 4029 or Form 4361, or any other amounts exempt from self-employment tax.",
-      "page": "i1040gi p. 47"
-     }
-    ],
-    "quote": "Don’t include on these lines any statutory employee income, any net profit from services performed as a notary public, any amount exempt from self-employment tax as the result of the filing and approval of Form 4029 or Form 4361, or any other amounts exempt from self-employment tax.",
-    "page": "i1040gi p. 47",
-    "why_uncovered": "Statutory employees are refused, and clergy (Form 4361) are refused through scope.schedule1. No question or refusal removes notary public net profit from the Worksheet B self-employment amounts (lines 1e and 2c). The same is true of Form 4029 religious-sect exempt amounts and other amounts exempt from self-employment tax. This matters especially in Part 2, which takes Schedule C line 31 directly.",
-    "closest_item": "eic.wsb_se",
-    "effect": "amount"
-   },
-   {
-    "item": "eic.has_qc",
+    "item": "eic.credit",
     "sentences": [
      {
       "quote": "If you have at least one child who meets the conditions to be your qualifying child for purposes of claiming the EIC, complete and attach Schedule EIC, even if that child doesn’t have a valid SSN.",
@@ -641,32 +645,18 @@
       "page": "i1040gi p. 41"
      },
      {
-      "quote": "If the child is permanently and totally disabled, check the “Permanently and totally disabled” box on row (6) of the Dependents section on page 1 of Form 1040 or 1040-SR.",
+      "quote": "If the child lived with you in the United States for more than half of 2025, check both boxes (box (a) and box (b)) on row (5) of the Dependents section on page 1 of Form 1040 or 1040-SR.",
       "page": "i1040gi p. 41"
      },
      {
-      "quote": "If the child lived with you in the United States for more than half of 2025, check both boxes (box (a) and box (b)) on row (5) of the Dependents section on page 1 of Form 1040 or 1040-SR. Also, make sure to check the box to the right of the address block on page 1 of Form 1040 or 1040-SR.",
+      "quote": "Also, make sure to check the box to the right of the address block on page 1 of Form 1040 or 1040-SR.",
       "page": "i1040gi p. 41"
      }
     ],
-    "quote": "If you have at least one child who meets the conditions to be your qualifying child for purposes of claiming the EIC, complete and attach Schedule EIC, even if that child doesn’t have a valid SSN. / If the child is a full-time student, check the “Full-time student” box on row (6) of the Dependents section on page 1 of Form 1040 or 1040-SR / If the child is permanently and totally disabled, check the “Permanently and totally disabled” box on row (6) of the Dependents section on page 1 of Form 1040 or 1040-SR. / If the child lived with you in the United States for more than half of 2025, check both boxes (box (a) and box (b)) on row (5) of the Dependents section on page 1 of Form 1040 or 1040-SR. Also, make sure to check the box to the right of the address block on page 1 of Form 1040 or 1040-SR.",
+    "quote": "If you have at least one child who meets the conditions to be your qualifying child for purposes of claiming the EIC, complete and attach Schedule EIC, even if that child doesn’t have a valid SSN. / If the child is a full-time student, check the “Full-time student” box on row (6) of the Dependents section on page 1 of Form 1040 or 1040-SR / If the child lived with you in the United States for more than half of 2025, check both boxes (box (a) and box (b)) on row (5) of the Dependents section on page 1 of Form 1040 or 1040-SR. / Also, make sure to check the box to the right of the address block on page 1 of Form 1040 or 1040-SR.",
     "page": "i1040gi p. 40; i1040gi p. 41",
-    "why_uncovered": "The encoding has no line, question or refusal that produces Schedule EIC or sets the required checkboxes. Those are the Dependents-section rows (5) and (6) and the box to the right of the address block, required for a filer with an EIC qualifying child.",
-    "closest_item": "eic.has_qc",
-    "effect": "presentation"
-   },
-   {
-    "item": "eic.us_home",
-    "sentences": [
-     {
-      "quote": "If your main home (and spouse’s if filing a joint return) was in the United States for more than half of 2025, check the box to the right of the address block on page 1 of Form 1040 or 1040–SR.",
-      "page": "i1040gi p. 42"
-     }
-    ],
-    "quote": "If your main home (and spouse’s if filing a joint return) was in the United States for more than half of 2025, check the box to the right of the address block on page 1 of Form 1040 or 1040–SR.",
-    "page": "i1040gi p. 42",
-    "why_uncovered": "The question asks about the main home, but no encoded line records the required checkbox to the right of the address block for a filer without a qualifying child.",
-    "closest_item": "eic.us_home",
+    "why_uncovered": "No encoded item produces Schedule EIC or requires it to be attached. No item sets the Dependents-section boxes for full-time student, row (5) residency, or the main-home-in-US box beside the address block. eic.separated_box covers only the separated-spouse box.",
+    "closest_item": "eic.credit",
     "effect": "presentation"
    }
   ],
@@ -698,7 +688,7 @@
     ]
    }
   ],
-  "cost": 0.695044,
+  "cost": 0.683972,
   "model": "claude-opus-5-5"
  },
  {

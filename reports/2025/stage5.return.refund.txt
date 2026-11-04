@@ -375,9 +375,6 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Worksheet A line 3 is completed (the credit is reached and line 2 is more than zero)
       = false
       cite: [i1040gi] p. 46, Worksheet A, line 2, "If line 2 is zero, You can’t take the credit" (2025; printed date 2026-02-25; 482e9c48)
-  4   Are the amounts on lines 3 and 1 the same?
-      = true
-      cite: [i1040gi] p. 46, Worksheet A, line 4 (2025; printed date 2026-02-25; 482e9c48)
   (helper) Line 5 amount by whether you have a qualifying child with a valid SSN
       = $10,620
       cite: [i1040gi] p. 46, Worksheet A, line 5 (2025; printed date 2026-02-25; 482e9c48)

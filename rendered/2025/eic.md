@@ -468,8 +468,9 @@
 
 - **IRS:** Are the amounts on lines 3 and 1 the same?
 - **Encoded (Bool):** line 3 = line 1
+- **Shown on the values sheet only when:** Worksheet A line 3 is completed (the credit is reached and line 2 is more than zero) (`eic.show3`)
 - Expr: `{"eq":["eic.line3","eic.line1"],"op":"test"}`
-- Cite: [i1040gi] p. 46, Worksheet A, line 4 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 46, Worksheet A, line 4, "Are the amounts on lines 3 and 1 the same?"; line 2, "If line 2 is zero, You can’t take the credit." (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `eic.threshold_other`
 

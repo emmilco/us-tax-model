@@ -1220,6 +1220,7 @@ form:
         locator: p. 46, Worksheet A, line 3
     - id: eic.line4
       printed: "4"
+      shown_when: eic.show3
       type: Bool
       label: Are the amounts on lines 3 and 1 the same?
       expr:
@@ -1229,7 +1230,8 @@ form:
           - eic.line1
       cite:
         doc: i1040gi
-        locator: p. 46, Worksheet A, line 4
+        locator: 'p. 46, Worksheet A, line 4, "Are the amounts on lines 3 and 1 the same?"; line 2, "If line 2 is zero, You
+          can’t take the credit."'
     - id: eic.threshold_other
       printed: (helper)
       type: NonNegDollars

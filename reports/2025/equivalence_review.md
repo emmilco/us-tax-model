@@ -417,3 +417,138 @@ the other holds verdicts is evidence alongside the reading, not proof; the path-
 from spec 4.7.3 and tested by the probe and the bank, not proved; the interview-order claims for the two
 partial cases rest on the bank's `order` values and README line 51 ("asked in bank order, then by key"), not
 on driving the interview tool.
+
+## Second reading of the eight T-159 tier-3 arguments — Claude Opus 5.5 (second reader, 2026-11-04)
+
+Reviewer for every verdict below: **Claude Opus 5.5 (second reader, 2026-11-04)**. Subject: the eight
+`pinned` entries added to `EQUIVALENT_IF` in commit 0c43e49. The question for each is the one the
+2026-10-27 reading asked: can the mutant change any line's value (printed lines first; refusals compared
+whole, unknowns as one token, spec 4.7) on any input, answered or not, on any reachable route?
+
+### Method
+
+- **Mutant identity.** Each mutant's replacement operand was recomputed from `canonical/2025` with the
+  generator's rule (`mutations`, nearest earlier same-typed non-input line not already used). All eight
+  match the operand named in the reason text.
+- **Reading.** Each argument was read against the canonical expression and refusal list of every line it
+  names, and against `engine/src/eval.ts` (`evalLine` gate loop, `evalTest`, `incompleteOperand`,
+  `sum_over`, `choose`) and spec 4.7.1 to 4.7.6. The author's tier-3 notes were not read first; the only
+  notes found (`research/audits/mutation-t2/tier3-unexplained.md`) list the mutants without arguments.
+- **Exhaustive model check.** For each argument the base and mutant tests were written as a small model of
+  the evaluator's three-valued semantics (deciding value, first unknown remembered, refusal ends the test,
+  comparisons evaluate both sides and return the first refusal, else the first unknown; `smaller_of` stops
+  at the first refusal; `subtract_floor0` evaluates both) and compared over every combination of the
+  operand states: true, false, unknown and refusal for every gated line, true, false and unknown for
+  inputs without gates, and a small integer grid (negative, zero, positive and the $1.00 table start) for
+  the money lines. The operands were treated as independent, a superset of the reachable states. No
+  combination differs for any of the eight. (Scripts outside the repository; not run through the engine.)
+
+### Verdicts
+
+**8 entries: 6 sound, 2 sound with a stated caveat, 0 unsound.**
+
+| Mutant | Verdict | Reasoning |
+| --- | --- | --- |
+| `operand.dependent.dependent.dc_lived_half.part_year_home.any.1.all.2.eq.0` | sound | The replaced conjunct is reached with `lived_half` false or unknown and the first two conjuncts true or unknown. `born_died` true: `hoh_lived_half` is `any[lived_half, base conjunct list]`, which the outer any-test cannot tell apart. `born_died` unknown: the base conjunct is false only when `part_year_home` is false, and then `hoh_lived_half` is false too; otherwise both are unknown. `placed`, `born_died` and `part_year_home` are inputs with no refusal entries (pinned). All 576 state combinations agree. |
+| `operand.f8962.f8962.filing.applicable.all.1.any.0.eq.0` | sound | With `f8962.any` true, `show_applicable` is `applicable`. `any` is unknown only with the Form 1095-A roster unconfirmed (`forms` is an unfiltered `sum_over` of the ungated parameter `sales.one`); then `aptc_total` is unknown without evaluating anything (`eval.ts` `sum_over`, unconfirmed roster), so the base any-test is true, unknown or `applicable`'s refusal, the mutant's unknown or that refusal, and the outer all-test, already holding `any`'s unknown, is unknown or the same refusal on both sides. |
+| `operand.f2441.f2441.line13_earned.line20.all.3.gt.1` | sound | Checked as argued: a known line 20 needs known lines 17, 18 and 19, so line 15 and line 23 (line 15 less $0) are known and line 23 > line 17 > line 20 ≥ 0. With line 21 known, line 24 is min(line 20, line 21, $0) = $0 and both comparisons are true. With line 21 unknown, line 24 is unknown but conjunct 3 already left an unknown, so the test is unknown on both sides. With line 20 unknown, both comparisons are line 23's refusal or unknown. Line 24, line 24's helper and line 22 have no gates, and none reads `line13_earned` (it gates only line 25), so no cycle is introduced. |
+| `operand.sdtw.sdtw.line4.zero.then1` | sound | The `filing4952`-false alternative is taken only with `f4952.required` known false: either `used` is known false, so `has_election` is known false and `election` takes `f4952.zero`; or `required_test` is known false, so its first disjunct `election > $0` was evaluated known and false. In the second case `election` is $0 whether or not NonNegDollars holds, since `election` takes `election_checked` (line 4g) only where line 4g > $0. Line 3 copies `election` through two ungated copies. Printed line 4 is unchanged. |
+| `operand.ssb.ssb.show16_18.mfs_together.all.1.any.0.eq.0` | sound, with a caveat on the prose | Conclusion holds. Caveat: with `mfs_together` true the reason says "past9 is past7, true where the any-test is reached"; the any-test is also reached with `past7` unknown, where the base any-test is true and the mutant's is unknown. The outer all-test, holding `past7`'s unknown, is unknown on both sides, so no value changes. The `mfs_together`-unknown case is right: every route to that unknown (status unanswered, or status MFS with `lived_apart` unanswered) leaves line 8's `choose` stopped at an unknown guard, so `past9` is never false there. |
+| `operand.ssb.ssb.show16_18.past9.all.1.any.1.eq.0` | sound, with the same caveat | As above: "with mfs_together false and past7 true, show10_15 is past9" omits `past7` unknown, where `show10_15` is unknown in place of a true `past9`; the outer all-test is unknown on both sides. |
+| `operand.f8889.f8889.age55_unmarried.age55.all.0.eq.0` | sound | `married_family` reads only gateless inputs and the gateless `use_last_month`, so it is never a refusal. Married false: `age55_line3` is `age55`. Married true: both tests are false. Married unknown: both are false where `age55` is false, else unknown. All 27 combinations agree. |
+| `operand.eic.eic.line1_in_table.line1.ge.0` | sound | Line 1 and `earned_for_limit` are gateless `choose`s on the same memoized guards; an incomplete guard is both values. On the self-employed branch line 1 is Worksheet B line 6 = max(line 4b, $0), gateless, which passes an incomplete line 4b through unchanged (the $0 parameter is always known). For a known line 4b x, max(x, 0) ≥ s exactly when x ≥ s for s > 0; `holds` checks `eic.table_start` is a positive number ($1.00 on the current data). |
+
+**A caveat that applies to every `pinned` entry, not to these eight arguments.** The digest pins the
+premise lines' expressions, refusal lists, types, printed labels, display conditions and readers, but not
+which line the mutant reads. The mutant id names only the replaced operand; the replacement is the nearest
+earlier same-typed line in document order. A new same-typed line inserted between the replacement and the
+mutated line, reading none of the pinned lines, would change the mutant under the same id without moving
+the digest, and the entry would then vouch for a mutant it never argued. Proposed (not done here): have
+`holds` also recompute the replacement and compare it with the operand the reason names, or key the entry
+on the mutation's `note`.
+
+### Provenance (this reading)
+
+Inspected: `git show 0c43e49 -- engine/src/mutate.ts` (the eight entries); `engine/src/mutate.ts` lines
+69–260 (operand-site collection and the replacement rule) and 1385–1405 (`premiseDigest`, `pinned`,
+`equivalenceReason`); `engine/src/eval.ts` lines 150–308 (`evalLine`, gate loop, `evalOperand`,
+`incompleteOperand`), 383–413 (`sum_over`) and 656–700 (`evalTest`); spec 4.7; the canonical expression,
+refusal list, type, printed label and display condition of every line each reason names, printed from
+`canonical/2025/*.json`, plus the refusal entries reading `f2441.line13_earned` (only line 25) and the
+`f1095a` collection metadata. Run: the replacement recomputation (all eight match) and the exhaustive
+three-valued model check described above (0 differing combinations for each argument).
+
+Inferred (unverified): that each `holds` passes on the current data (the digests were not recomputed, since
+the engine was not run in this reading; the commit's tier-3 run is the evidence); that the model's
+semantics match `eval.ts` in every detail used (they were written from the code lines cited, not executed
+against it). `sales.zero` ($0), `sales.one` (1) and `eic.table_start` ($1.00) were read from
+`canonical/2025/params.json`. The model treats
+operands as independent, so it over-approximates reachability; that makes "no difference" stronger, not
+weaker, but a difference found that way would still have needed a reachability check.
+
+## Second reading of seven further arguments — Claude Opus 5.5 (second reader, 2026-11-04)
+
+Reviewer for every verdict below: **Claude Opus 5.5 (second reader, 2026-11-04)**. Subject: the uncommitted
+change to `engine/src/mutate.ts` (`git diff HEAD`), which adds six `pinned` entries and re-pins
+`operand.eic.eic.credit.line6.then0`. The question is the one the earlier sections asked: can the mutant
+change any line's value (refusals compared whole, unknowns as one token, spec 4.7) on any input on a
+reachable route? Four of the arguments limit themselves to answered inputs. For those, the question is
+also whether the interview really does ask the inputs in question.
+
+### Method
+
+- **Reading.** Each reason was checked against the canonical expression, refusal list and readers of every
+  line it names (printed from `canonical/2025/*.json` and `canonical/2025/se.json`, which were built after
+  the uncommitted `forms/2025/eic.yaml` edit). The semantics came from `engine/src/eval.ts` (`evalTest`,
+  including the lower-bound rule at 679–682) and spec 4.7.1–4.7.7. The author's notes were not read
+  first. Unlike the earlier reading of today, no exhaustive model check was run: each case split below was
+  done by hand.
+- **Answered-input claims.** These were checked against `engine/src/interview.ts` and
+  `interview/full-2025.yaml`. The questions are the unknown inputs among the derivations of the profile's
+  targets. The interview stops asking when every target is known or any target is refused. So "asked on
+  every return" can only mean: asked before the interview completes, on a return that the interview has
+  not already refused. For each such claim I checked that the base value being unknown keeps a target
+  unknown, so the interview goes on and asks the input. I also checked which refusal routes stop the
+  interview first.
+- **Mutant identity.** The replacement was not recomputed. Each entry now carries `reads`, and
+  `equivalenceReason` accepts the argument only when `mutation.replacement` equals it. This closes the
+  retargeting caveat raised in the previous section, provided `retargetSelfTest` runs.
+
+### Verdicts
+
+**7 entries: 2 sound, 5 sound with a caveat, 0 unsound. No counterexample was found on a route where the
+interview has asked the inputs the argument names.**
+
+| Mutant | Verdict | Reasoning |
+| --- | --- | --- |
+| `operand.eic.eic.show5.eligible.all.0.eq.0` | sound, with a caveat (a case missing from the reason, and premises not pinned) | The eligible-true case is right. Step 1 and Step 5 income being complete makes `eic.limit` complete, so the status is known and `ssn_count` decides its bands. That makes `line5_threshold` complete, and `line3`, `line1` and `line4` complete too. No line in the chain has a refusal gate, so `show3` is the value V of `line2 > 0`, and the case split on V holds. Caveat: the reason covers eligible false, eligible refused and eligible true, but **not eligible unknown**. In that case the mutant is all[S, A, B, C], where S = all[unknown, C]. When C is false, the mutant is false, and the base is also false provided neither A (`line4`) nor B (`line5_blank`) refuses. Neither can: `step5_income` and `step1_income` were reached without refusing, so `line1` and `line11b` are not refusals, and with the status unknown, `line5_threshold` is unknown. When C is true or unknown, the two tests are identical. The only case that could differ is C refusing, and C cannot refuse: `line2` can refuse only through `eic.ssn_count`, whose only gated operand is each dependent's `eic_child`, and an `eic_child` refusal also refuses `eic.qc_count`, then `has_qc`, then `step34`, and so eligible itself. That last step rests on `eic.ssn_count`, `dependent.eic_ssn_child`, `dependent.eic_child`, `eic.qc_count`, `eic.has_qc` and `eic.step34`. None of these is pinned. |
+| `operand.dependent.dependent.dc_line2c.dc_incapable.all.1.eq.0` | sound over answered inputs (the claim checks out) | With `dc_qp` true, every disjunct of `dc_qp` makes `lived_half` true in the dependent's frame: `dc_child_all_year` and `dc_child` through `qc_dependent`, then `qualifying_child`, whose last conjunct is `lived_half`. That makes `dc_lived_half` true and `dc_disabled_qp` equal to `dc_incapable`, an input with no gates. With `dc_qp` unknown, the two differ. For example, with `dc_incapable` true, `dc_lived_half` false and the age test true, the base is unknown and the mutant false. The reason says so. Interview check: `f2441.paid_total` is a money `sum_over` filtered on `dc_qp`, with no lower bound, and it reaches the targets. So with `f2441.care` true, an unknown `dc_qp` keeps a target unknown and the interview asks its inputs. `f2441.care` itself is read by `f2441.filing`, under the target `f2441.line1_box`. `dc_line2c` has no readers, so only its own value (printed 2(c)) could change. |
+| `operand.household.household.roster_ok.taxpayers.any.1.all.1.eq.0` | sound over answered inputs; in fact a little stronger | With the roster confirmed and every role answered, `persons` = `taxpayers` + `spouses` (enum checked by `holds`, and inputs are validated against the enum by `eval.ts` 731). An unconfirmed roster makes all three counts unknown. With a role unanswered, the base's second disjunct is decided only as false, and then the mutant's is false too. A known spouse entry means `spouses` has a lower bound of at least 1, and then `persons` is at least 2. A `taxpayers` lower bound of at least 2 means `persons` is at least 3. So whenever the base value of `roster_ok` is decided, the mutant agrees. They differ only when the base is unknown, and then `household.roster_bad` (the first gate of Form 1040 line 1a) is unknown, so the interview goes on and asks the role: every role is a `where` operand of `household.taxpayers`, which is read in both disjuncts. The `filer_under16` gate is the same on both routes. |
+| `operand.eic.eic.step5_income.earned_for_limit.lt.0` | sound over answered inputs (the claim checks out, except on refused returns) | `self_employed` known false needs a complete `sc_count` of 0, because the lower bound decides `gt` only as true. That makes each `has_sc` false and each `eic_se` equal to `ss.zero` ($0), so `wsb_4b` is `earned_income` exactly, refusal and unknown included. `self_employed` true makes the two the same line. `self_employed` cannot refuse: it counts `sc.one` with no gates. With `self_employed` unknown, the base is unknown and the mutant can be `earned_income`'s refusal, as the reason says. Interview: `s1.line3` sums each person's `sc_total`, which is under line 8 and so under AGI. An unconfirmed `$sc` roster therefore keeps the targets unknown, and `$sc` (order 11) is asked. The route that leaves `$sc` unasked is `scope.schedule1` true (order 0): it refuses Form 1040 line 8, and the interview stops. On that return, `step5_income` itself is unknown in the base and refused in the mutant. But its readers, `eligible` and `wsb_line5_stop`, have already refused at `below_top`, which reads the refused line 11b. So no other line changes. |
+| `operand.f2441.f2441.attrib_gate.line31.all.3.gt.0` | sound over answered inputs (the claim checks out) | `has_1e` known true needs Form 1040 line 1e to be a known amount above $0, and so a memoized `benefits` true. Then `line3`, a choose with no gates, is `line31`. `has_1e` unknown with `benefits` answered means `benefits` true and `line26` unknown, and `line3` is again `line31`. With `benefits` unanswered, the base can be decided (`line31 > $0` false) where the mutant is unknown, as the reason says. `benefits` is read by Form 1040 line 1e, then line 1z, then AGI, so it is asked before the interview can complete. |
+| `operand.s8812.s8812.line18a.chart_eic.then0` | sound, with a caveat (a premise not pinned) | Checked step by step. `taking_eic` true means `eic.credit` is a known amount above $0. Then the credit's gate is false, `eligible` is true, `line6` and so `line2` are above $0, and `line1` is at least the table start. `step5_income` complete means the gates `scope.schedule1`, `scope.other_income` and `s8812.combat_pay` are false, which zeroes `eiw_1b` and `eiw_4` and lifts `eiw_3`'s gate. `step1_income` complete makes line 11b, line 9, line 8, Schedule 1 line 10, line 3, line 10, Schedule 1 line 26 and line 15 complete. With `files_se` false, Schedule SE line 4c is $0, so line 6 is $0 and `ss_base` is min($0, line 9). That is $0 because `se_line13` is complete. Lines 10, 11, 12 and 13 are then $0. The per-person identity `eic_se` = `sc_total` − `se_line13` holds in all three branches, so `wsb_4b` = line 1z + Schedule 1 line 3 − Schedule 1 line 15, which is greater than $0, so the floor in `eiw_3` does not bind. Caveat: "with self_employed false every Schedule C roster is empty", and likewise "a person with no Schedule C has `sc_total` $0", hold only because `sc.one`, the `sum_over` field of `person.sc_count`, is a positive count (1 on the current data). Neither the line `sc.one` nor `param:sc.one` is pinned, and `holds` does not check it. If it were 0, `self_employed` would be false with Schedule C entries, and `chart_eic` (line 1z) would differ from `eiw_7_figured` by line 3 − line 15. Proposed: add `sc.one` and `param:sc.one` to the premises. |
+| `operand.eic.eic.credit.line6.then0` (re-pin) | sound | The core argument was checked as in the earlier rows: line 4 is complete under eligible true; line 5 and line 2 look up the same key in the same table by the same `ssn_count` bands and status; below the table start, `line5_blank` is true because `holds` checks that every threshold exceeds the table start. The added sentence is right. `household.eic_disallowed_claim` (all[`credit_disallowed`, `eligible`, `line6` > $0]) is `eic.credit`'s own gate, evaluated at line entry (4.7.1). It does not read `eic.credit`, so it is the same value on both routes, and the mutation changes only the expression. `eic.credit`'s refusal list is in its pinned digest. |
+
+**On the answered-inputs scope (all four such entries).** "Answered" is not a property the run checks. It
+holds on a return where the interview has gone on to completion. It need not hold on a return the
+interview refused first, or on a fixture that leaves inputs out. A future fixture of either kind could
+kill these mutants, and that would be correct behaviour, not a defect in the arguments. For
+`step5_income`, the one refused route found (`scope.schedule1`) changes only the helper's own value.
+
+### Provenance (this reading)
+
+Inspected: `git diff HEAD -- engine/src/mutate.ts` (the seven reasons, their premise lists, `reads`,
+`pinned` and `equivalenceReason`); the canonical expression, refusal gates, display condition and readers
+(by a static index built from `canonical/2025/*.json`) of every line named in the reasons and of
+`eic.ssn_count`, `dependent.eic_ssn_child`, `dependent.eic_child`, `eic.qc_count`, `eic.has_qc`,
+`eic.step34`, `household.eic_disallowed_claim`, `f1040.line8`, `f1040.line10`, `eic.wsb_line5_stop` and the
+`se` def; `params.json` values `sc.one` (1), `eic.table_start` (100 cents), `sales.zero` and `ss.zero` (0),
+and the `person_role` enum; `engine/src/eval.ts` `evalTest` (656–698) and the input check (731);
+`engine/src/interview.ts` `interviewState`; `interview/full-2025.yaml` targets; the order of the questions
+`$sc`, `s8812.combat_pay` and `scope.schedule1` in `interview/questions-2025.yaml`; spec 4.7.
+
+Inferred (unverified): that each `holds` passes and each `reads` matches on the current data (nothing was
+run); that the target paths found in the static reader index are taken dynamically on the returns
+described (I traced the guards by hand, not by running the interview); that the semantics I applied by
+hand match `eval.ts` beyond the lines cited. Not checked: the readers of `def` lines, which the static
+index does not see.
