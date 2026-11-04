@@ -37,3 +37,10 @@ export const YEAR_ARGS = ["--year", String(YEAR)];
 export function yearPath(top: string, ...rest: string[]): string {
   return join(ROOT, top, String(YEAR), ...rest);
 }
+
+// New York (owner decision C1, docs/ny/DECISIONS.md): the New York data sits in a tree of its own beside
+// the federal one, nyPath("forms") being forms/ny/<YEAR>/. Its documents (ids prefixed `ny_`) enter the
+// same canonical build, so a New York line can read a federal line; the federal files are unchanged.
+export function nyPath(top: string, ...rest: string[]): string {
+  return join(ROOT, top, "ny", String(YEAR), ...rest);
+}

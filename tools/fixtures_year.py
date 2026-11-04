@@ -50,9 +50,21 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 import year_diff  # noqa: E402
+import jurisdiction  # noqa: E402  (--jurisdiction ny, docs/ny/DECISIONS.md C1, C8)
+from jurisdiction import ypath  # noqa: E402
 
 YEAR_KEYS = ("placed", "placed_date")
 NODE = ["node", str(ROOT / "engine" / "dist" / "main.js")]
+
+
+def canonical_params(year):
+    """The canonical parameter values of a year: params.json, with the New York ones (params-ny.json,
+    decision C1) merged in when the build wrote them."""
+    d = ROOT / "canonical" / str(year)
+    values = json.loads((d / "params.json").read_text())["params"]["values"]
+    if (d / "params-ny.json").exists():
+        values = {**values, **json.loads((d / "params-ny.json").read_text())["params"]["values"]}
+    return values
 
 
 def template(key):
@@ -171,13 +183,13 @@ def main():
     ap.add_argument("--plan", action="store_true", help="report on the from-year's data only; write no fixtures (see above)")
     a = ap.parse_args()
     f, t = a.from_year, a.to_year
-    src, dst = ROOT / "fixtures" / str(f), ROOT / "fixtures" / str(t)
+    src, dst = ypath("fixtures", str(f)), ypath("fixtures", str(t))
     if a.plan:
         return plan(f, t, src)
     if dst.exists():
         sys.exit(f"refusing to overwrite fixtures/{t}/")
     build(t, f"--plan reports what would be re-recorded without the {t} build.")
-    params = json.loads((ROOT / "canonical" / str(t) / "params.json").read_text())["params"]["values"]
+    params = canonical_params(t)
 
     work_lines, work_params = worklist(f, t)
 
@@ -274,7 +286,7 @@ def main():
         out.append("Not run (--no-hand-work). Documents with a line on the worklist: " + ", ".join(docs) + ".")
     else:
         out += [f"- `{d}`: exit {code}; {last}" for d, code, last in hand]
-    report = ROOT / "reports" / str(t) / f"fixtures_from_{f}.md"
+    report = ypath("reports", str(t)) / f"fixtures_from_{f}.md"
     report.parent.mkdir(parents=True, exist_ok=True)
     report.write_text("\n".join(out) + "\n", encoding="utf-8")
     print(f"fixtures {f} -> {t}: {kept} kept, {rerecorded} re-recorded, {len(failed)} not evaluated, {len(dropped)} official examples dropped; "
@@ -298,10 +310,10 @@ def worklist(f, t, doc_only=None):
 def plan(f, t, src):
     """The --plan report: which carried cases rest on the to-year's worklist, by their
     derivations on the from-year's data."""
-    if not (ROOT / "forms" / str(t)).is_dir():
+    if not (ypath("forms", str(t))).is_dir():
         sys.exit(f"--plan reads the {t} definitions' citations: adopt first (tools/year_diff.py --from {f} --to {t} --adopt)")
     build(f, "")
-    params = json.loads((ROOT / "canonical" / str(f) / "params.json").read_text())["params"]["values"]
+    params = canonical_params(f)
     doc_only = set()
     work_lines, work_params = worklist(f, t, doc_only)
     dropped, cases = [], []
@@ -348,7 +360,7 @@ def plan(f, t, src):
     if failed:
         out += ["", f"## Cases the {f} data rejects ({len(failed)})", ""] + [f"- `{cid}`: {err}" for cid, err in failed]
     out += ["", "## Class M hand-work", "", "Not run in a plan."]
-    report = ROOT / "reports" / str(t) / f"fixtures_from_{f}.md"
+    report = ypath("reports", str(t)) / f"fixtures_from_{f}.md"
     report.parent.mkdir(parents=True, exist_ok=True)
     report.write_text("\n".join(out) + "\n", encoding="utf-8")
     print(f"fixtures {f} -> {t} (plan): {len(rest)} would be re-recorded, {len(kept)} kept unless a value changes, "

@@ -23,14 +23,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 from taxyear import Y  # noqa: E402
+from jurisdiction import ypath  # noqa: E402  (--jurisdiction ny, docs/ny/DECISIONS.md C1)
 from citations import citations, form_files, segments, split_sentences  # noqa: E402
 import baseline_check  # noqa: E402
 import archive_text  # noqa: E402
 
 CANONICAL = ROOT / "canonical" / Y
-SOURCES = ROOT / "sources" / Y
-RULINGS = ROOT / "reviews" / Y / "limits.json"
-REPORT = ROOT / "reports" / Y / "limits.md"
+SOURCES = ypath("sources", Y)
+RULINGS = ypath("reviews", Y, "limits.json")
+REPORT = ypath("reports", Y, "limits.md")
 PHRASE = re.compile(
     r"(can.t be more than|cannot be more than|can.t exceed|cannot exceed|is limited to|are limited to|"
     r"limited to (?:a maximum|one|the)|no more than|not more than|per calendar year|for all of (?:the|your)|"

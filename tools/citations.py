@@ -86,17 +86,19 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 from taxyear import Y  # noqa: E402
+import jurisdiction  # noqa: E402  (--jurisdiction ny: the New York tree, docs/ny/DECISIONS.md C1)
+from jurisdiction import ypath  # noqa: E402
 import archive_text  # noqa: E402
 from archive_text import DRAFT_COVER  # noqa: E402
 
-RULINGS = ROOT / "reviews" / Y / "citations.json"
-REPORT = ROOT / "reports" / Y / "citations.md"
-RULINGS_PAGE = ROOT / "reports" / Y / "citations.html"
-INPUT_QUOTES = ROOT / "reviews" / Y / "input_quotes.json"
-INPUT_QUOTES_REPORT = ROOT / "reports" / Y / "input_quotes.md"
+RULINGS = ypath("reviews", Y, "citations.json")
+REPORT = ypath("reports", Y, "citations.md")
+RULINGS_PAGE = ypath("reports", Y, "citations.html")
+INPUT_QUOTES = ypath("reviews", Y, "input_quotes.json")
+INPUT_QUOTES_REPORT = ypath("reports", Y, "input_quotes.md")
 
 PAGES_RE = r"(\d+(?:\s*[–—-]\s*\d+)?(?:(?:,\s*|\s+and\s+)\d+(?:\s*[–—-]\s*\d+)?)*)"
-SEGMENT_RE = re.compile(r"^(?:(?P<doc>[a-z][a-z0-9-]*)\s+)?(?P<pp>pp?\.)\s*" + PAGES_RE + r"(?P<rest>.*)$", re.S)
+SEGMENT_RE = re.compile(r"^(?:(?P<doc>[a-z][a-z0-9_-]*)\s+)?(?P<pp>pp?\.)\s*" + PAGES_RE + r"(?P<rest>.*)$", re.S)
 
 
 # ---------- text ----------
@@ -156,7 +158,7 @@ class Archive:
         return bool(d) and archive_text.has_cover(self.sources, d)
 
     def __init__(self, year=Y, sources=None):
-        self.sources = Path(sources) if sources else ROOT / "sources" / str(year)
+        self.sources = Path(sources) if sources else ypath("sources", year)
         self.docs = archive_text.manifest(self.sources)
         self.cache = {}
 
@@ -355,9 +357,9 @@ def _segment_end(text, start):
 
 def data_files(year=Y):
     y = str(year)
-    files = sorted(glob.glob(str(ROOT / "forms" / y / "*.yaml"))) + sorted(glob.glob(str(ROOT / "tables" / y / "*.yaml")))
-    files += [str(ROOT / "params" / f"{y}.yaml"), str(ROOT / "ambiguities" / f"{y}.yaml")]
-    files += sorted(f for f in glob.glob(str(ROOT / "interview" / "*.yaml")) if re.search(rf"(^|-){y}\.yaml$", os.path.basename(f)))
+    files = sorted(glob.glob(str(ypath("forms", y) / "*.yaml"))) + sorted(glob.glob(str(ypath("tables", y) / "*.yaml")))
+    files += [str(f) for f in (jurisdiction.params_file(y), jurisdiction.register_file(y)) if f.exists() or not jurisdiction.NY]
+    files += sorted(f for f in glob.glob(str(jurisdiction.interview_dir() / "*.yaml")) if re.search(rf"(^|-){y}\.yaml$", os.path.basename(f)))
     return files
 
 
@@ -380,7 +382,7 @@ def citations(path):
 
 
 def form_files(year=Y):
-    return sorted(glob.glob(str(ROOT / "forms" / str(year) / "*.yaml")))
+    return sorted(glob.glob(str(ypath("forms", year) / "*.yaml")))
 
 
 COMPUTED_EXEMPT = {"input", "param", "copy"}
@@ -775,7 +777,7 @@ def check(strict=False):
           f"{ccounts['form-line locators verified']} form-line locators verified, "
           f"{ccounts['form-line locators not placed']} not placed; {len(rewrite)} locator segment(s) to rewrite"
           + ("" if strict else " (reported only; --strict fails on them)"))
-    print(f"report: reports/{Y}/citations.md")
+    print(f"report: {REPORT.relative_to(ROOT)}")
     return 1 if findings or unused or (strict and rewrite) else 0
 
 
@@ -1186,7 +1188,7 @@ def relocate(from_year=None):
             for path, line, d, pages, anchor, unmoved_ok in unplaced]
     print("\n".join(out))
     if from_year is not None and str(from_year) != str(Y):
-        report = ROOT / "reports" / Y / f"relocation_from_{from_year}.md"
+        report = ypath("reports", Y, f"relocation_from_{from_year}.md")
         report.parent.mkdir(parents=True, exist_ok=True)
         report.write_text("\n".join([
             f"# Citation pages relocated from {from_year} to {Y}", "",

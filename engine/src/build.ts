@@ -11,7 +11,7 @@ import { isMarkedLine, stableStringify } from "./util.js";
 import { type InterviewData } from "./interview.js";
 import { checkInterview, checkSalesInterview } from "./interview-check.js";
 import { runChecks } from "./check.js";
-import { YEAR, yearPath } from "./year.js";
+import { YEAR, nyPath, yearPath } from "./year.js";
 import type {
   CanonicalData,
   CiteAuthored,
@@ -30,6 +30,17 @@ const TABLES_DIR = yearPath("tables");
 const PARAMS_PATH = join(ROOT, "params", `${YEAR}.yaml`);
 const REGISTER_PATH = join(ROOT, "ambiguities", `${YEAR}.yaml`);
 const OUT_DIR = yearPath("canonical");
+// The New York tree (decision C1): sources/ny/<year>/, forms/ny/<year>/, tables/ny/<year>/,
+// params/ny/<year>.yaml, ambiguities/ny/<year>.yaml. Each part is optional, so a tree without
+// New York data builds exactly as before. New York parameters, register entries, documents and
+// tables are named `ny.` / `ny_`; they are checked with the federal data in one canonical build
+// and written to files of their own (ny_*.json, tables/ny_*.json, params-ny.json,
+// register-ny.json), so every federal canonical file is byte-identical with or without them.
+const NY_MANIFEST_PATH = nyPath("sources", "manifest.json");
+const NY_FORMS_DIR = nyPath("forms");
+const NY_TABLES_DIR = nyPath("tables");
+const NY_PARAMS_PATH = join(ROOT, "params", "ny", `${YEAR}.yaml`);
+const NY_REGISTER_PATH = join(ROOT, "ambiguities", "ny", `${YEAR}.yaml`);
 
 interface BankQuestion { input: string; order: number; help: string; prompt?: string; cite?: CiteAuthored }
 interface QuestionBank { tax_year: number; frames: Record<string, string>; questions: BankQuestion[] }
@@ -51,6 +62,14 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   for (const entry of (JSON.parse(readFileSync(MANIFEST_PATH, "utf-8")).documents as ManifestEntry[])) {
     manifest.set(entry.id, entry);
   }
+  const nyManifestYear = existsSync(NY_MANIFEST_PATH) ? (JSON.parse(readFileSync(NY_MANIFEST_PATH, "utf-8")) as { tax_year: number }).tax_year : YEAR;
+  if (existsSync(NY_MANIFEST_PATH)) {
+    for (const entry of (JSON.parse(readFileSync(NY_MANIFEST_PATH, "utf-8")).documents as ManifestEntry[])) {
+      if (!entry.id.startsWith("ny_")) errors.push(`sources/ny/${YEAR}/manifest.json: document id '${entry.id}' must start with ny_`);
+      if (manifest.has(entry.id)) errors.push(`sources/ny/${YEAR}/manifest.json: document id '${entry.id}' is also a federal document`);
+      manifest.set(entry.id, entry);
+    }
+  }
 
   const fillCite = (cite: CiteAuthored | undefined, taxYear: number, where: string): CiteFilled => {
     const fallback: CiteFilled = { doc: "?", tax_year: taxYear, revision: "?", locator: "?", snapshot: "?" };
@@ -60,7 +79,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     }
     const source = manifest.get(cite.doc);
     if (!source) {
-      errors.push(`${where}: cite doc '${cite.doc}' not in sources/${YEAR}/manifest.json`);
+      errors.push(`${where}: cite doc '${cite.doc}' not in sources/${YEAR}/manifest.json or sources/ny/${YEAR}/manifest.json`);
       return { ...fallback, doc: cite.doc, locator: cite.locator };
     }
     if (!source.revision) {
@@ -103,6 +122,17 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     if (doc.kind === "def") defs.push(doc);
     else forms.push(doc);
   }
+  const federalDocIds = new Set([...forms, ...defs].map((d) => d.id));
+  if (existsSync(NY_FORMS_DIR)) {
+    for (const name of readdirSync(NY_FORMS_DIR).filter((f) => f.endsWith(".yaml")).sort()) {
+      const doc = loadFormOrDef(join(NY_FORMS_DIR, name));
+      if (!doc) continue;
+      if (!doc.id.startsWith("ny_")) errors.push(`forms/ny/${YEAR}/${name}: document id '${doc.id}' must start with ny_`);
+      if (federalDocIds.has(doc.id)) errors.push(`forms/ny/${YEAR}/${name}: document id '${doc.id}' is also a federal document`);
+      if (doc.kind === "def") defs.push(doc);
+      else forms.push(doc);
+    }
+  }
 
   // Parameters
   const paramsRaw = parseYaml(readFileSync(PARAMS_PATH, "utf-8")) as { params: ParamsDoc };
@@ -114,20 +144,52 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     en.cite = fillCite(en.cite as unknown as CiteAuthored, params.tax_year, `enum ${name}`);
   }
 
+  // New York parameters: a document of their own, every name prefixed `ny.`, merged into the
+  // checked data but written to params-ny.json.
+  let nyParams: ParamsDoc | null = null;
+  if (existsSync(NY_PARAMS_PATH)) {
+    nyParams = (parseYaml(readFileSync(NY_PARAMS_PATH, "utf-8")) as { params: ParamsDoc }).params;
+    nyParams.enums ??= {};
+    for (const [name, entry] of Object.entries(nyParams.values)) {
+      if (!name.startsWith("ny.")) errors.push(`params/ny/${YEAR}.yaml: parameter '${name}' must start with ny.`);
+      if (name in params.values) errors.push(`params/ny/${YEAR}.yaml: parameter '${name}' is also federal`);
+      entry.cite = fillCite(entry.cite as unknown as CiteAuthored, nyParams.tax_year, `param ${name}`);
+    }
+    for (const [name, en] of Object.entries(nyParams.enums)) {
+      if (!name.startsWith("ny_")) errors.push(`params/ny/${YEAR}.yaml: enum '${name}' must start with ny_`);
+      if (name in params.enums) errors.push(`params/ny/${YEAR}.yaml: enum '${name}' is also federal`);
+      en.cite = fillCite(en.cite as unknown as CiteAuthored, nyParams.tax_year, `enum ${name}`);
+    }
+  }
+
   // Tables
   const tables: TableDoc[] = [];
-  for (const name of readdirSync(TABLES_DIR).filter((f) => f.endsWith(".yaml")).sort()) {
-    const raw = parseYaml(readFileSync(join(TABLES_DIR, name), "utf-8")) as { table: TableDoc };
-    const table = raw.table;
-    table.cite = fillCite(table.cite as unknown as CiteAuthored, table.tax_year, `table ${table.id}`);
-    tables.push(table);
-  }
+  const loadTables = (dir: string, ny: boolean) => {
+    for (const name of readdirSync(dir).filter((f) => f.endsWith(".yaml")).sort()) {
+      const raw = parseYaml(readFileSync(join(dir, name), "utf-8")) as { table: TableDoc };
+      const table = raw.table;
+      if (ny && !table.id.startsWith("ny_")) errors.push(`tables/ny/${YEAR}/${name}: table id '${table.id}' must start with ny_`);
+      if (ny && tables.some((t) => t.id === table.id)) errors.push(`tables/ny/${YEAR}/${name}: table id '${table.id}' is also federal`);
+      table.cite = fillCite(table.cite as unknown as CiteAuthored, table.tax_year, `table ${table.id}`);
+      tables.push(table);
+    }
+  };
+  loadTables(TABLES_DIR, false);
+  if (existsSync(NY_TABLES_DIR)) loadTables(NY_TABLES_DIR, true);
 
   // Ambiguity register
   const registerRaw = parseYaml(readFileSync(REGISTER_PATH, "utf-8")) as { register: RegisterDoc };
   const register = registerRaw.register;
   for (const entry of register.entries) {
     entry.cite = fillCite(entry.cite as unknown as CiteAuthored, register.tax_year, `register ${entry.id}`);
+  }
+  let nyRegister: RegisterDoc | null = null;
+  if (existsSync(NY_REGISTER_PATH)) {
+    nyRegister = (parseYaml(readFileSync(NY_REGISTER_PATH, "utf-8")) as { register: RegisterDoc }).register;
+    for (const entry of nyRegister.entries) {
+      if (!entry.id.startsWith("amb.ny.")) errors.push(`ambiguities/ny/${YEAR}.yaml: entry '${entry.id}' must start with amb.ny.`);
+      entry.cite = fillCite(entry.cite as unknown as CiteAuthored, nyRegister.tax_year, `register ${entry.id}`);
+    }
   }
 
   // Interview: one question bank for the year, and profiles that name the inputs they ask.
@@ -184,9 +246,17 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     ["Stage 4 interview", stage4Interview.tax_year], ["full interview", fullInterview.tax_year],
     ...[...forms, ...defs].map((d): [string, number] => [d.id, d.tax_year]),
     ...tables.map((t): [string, number] => [`table ${t.id}`, t.tax_year]),
+    ...(existsSync(NY_MANIFEST_PATH) ? [["New York sources manifest", nyManifestYear] as [string, number]] : []),
+    ...(nyParams ? [["New York params", nyParams.tax_year] as [string, number]] : []),
+    ...(nyRegister ? [["New York ambiguity register", nyRegister.tax_year] as [string, number]] : []),
   ];
   for (const [what, year] of stated) if (year !== YEAR) errors.push(`${what}: tax_year ${year}, but the build is for ${YEAR}`);
-  const data: CanonicalData = { forms, defs, params, tables, register };
+  // The checked data: federal and New York together.
+  const data: CanonicalData = {
+    forms, defs, tables,
+    params: nyParams ? { tax_year: params.tax_year, enums: { ...params.enums, ...nyParams.enums }, values: { ...params.values, ...nyParams.values } } : params,
+    register: nyRegister ? { tax_year: register.tax_year, entries: [...register.entries, ...nyRegister.entries] } : register,
+  };
 
   // Schema validation on the canonical form.
   const schema = JSON.parse(readFileSync(SCHEMA_PATH, "utf-8")) as {
@@ -215,8 +285,10 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   for (const doc of forms) validate(formFileValidator, { form: doc }, `form ${doc.id}`);
   for (const doc of defs) validate(defFileValidator, { def: doc }, `def ${doc.id}`);
   validate(paramsValidator, { params }, "params");
+  if (nyParams) validate(paramsValidator, { params: nyParams }, "New York params");
   for (const table of tables) validate(tableValidator, { table }, `table ${table.id}`);
   validate(registerValidator, { register }, "register");
+  if (nyRegister) validate(registerValidator, { register: nyRegister }, "New York register");
 
   // Static checks (references, acyclicity, types, guards, citations).
   const checkResult = runChecks(data);
@@ -272,6 +344,8 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
       writeFileSync(join(OUT_DIR, "tables", `${table.id}.json`), stableStringify({ table }));
     }
     writeFileSync(join(OUT_DIR, "register.json"), stableStringify({ register }));
+    if (nyParams) writeFileSync(join(OUT_DIR, "params-ny.json"), stableStringify({ params: nyParams }));
+    if (nyRegister) writeFileSync(join(OUT_DIR, "register-ny.json"), stableStringify({ register: nyRegister }));
     stats.push(`canonical output written to canonical/${YEAR}/`);
   }
 
