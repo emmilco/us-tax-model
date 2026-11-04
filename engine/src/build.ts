@@ -44,7 +44,7 @@ const NY_REGISTER_PATH = join(ROOT, "ambiguities", "ny", `${YEAR}.yaml`);
 
 interface BankQuestion { input: string; order: number; help: string; prompt?: string; cite?: CiteAuthored }
 interface QuestionBank { tax_year: number; frames: Record<string, string>; questions: BankQuestion[] }
-interface InterviewProfile { tax_year: number; targets: string[]; initial: InterviewData["initial"]; cite: CiteAuthored; questions: string[] | "all"; questions_from?: string }
+interface InterviewProfile { tax_year: number; targets: string[]; initial: InterviewData["initial"]; cite: CiteAuthored; questions: string[] | "all"; questions_from?: string; targets_from?: string }
 
 interface ManifestEntry {
   id: string;
@@ -247,8 +247,13 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     const inputs = [...(before === "all" ? federalInputs : before), ...own];
     if (new Set(inputs).size !== inputs.length) errors.push(`${name}: duplicate questions`);
     for (const input of inputs) if (!bankByInput.has(input)) errors.push(`${name}: question ${input} is not in the question bank`);
+    // targets_from: a profile whose targets come first (the New York profile takes the federal full profile's, so a
+    // refused federal return refuses it too).
+    const targetsBefore = profile.targets_from
+      ? (parseYaml(readFileSync(join(ROOT, "interview", profile.targets_from), "utf8")) as { interview: InterviewProfile }).interview.targets
+      : [];
     return {
-      tax_year: profile.tax_year, targets: profile.targets, initial: profile.initial,
+      tax_year: profile.tax_year, targets: [...targetsBefore, ...profile.targets], initial: profile.initial,
       cite: fillCite(profile.cite, YEAR, name),
       questions: inputs.flatMap((input) => resolved.get(input) ?? []),
     };

@@ -1,5 +1,6 @@
 # The New York profile (decision C5): Form IT-201 for a full-year New York City resident. It asks every question of
-# the federal full profile (questions_from) the New York lines need, then the New York questions.
+# the federal full profile (questions_from) the New York lines need, then the New York questions. Its targets include
+# the federal full profile's (targets_from), so a refused federal return is a refused New York return too.
 interview:
   tax_year: 2025
   targets:
@@ -13,6 +14,7 @@ interview:
     locator: 'p. 3, New York State full-year residents: Who must file?, "You must file a New York State resident
       return if you meet any of the following conditions:"'
   questions_from: full-2025.yaml
+  targets_from: full-2025.yaml
   questions:
   - ny_it201.ask.state_resident
   - ny_it201.ask.city_resident

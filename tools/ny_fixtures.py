@@ -46,8 +46,10 @@ def base(file, case_id):
 
 BASES = {  # status: (file, case id, the W-2 whose wages are varied)
     "single": ("stage5.json", "stage5.return.owed", "person[taxpayer].w2[emp_a]"),
-    "mfj": ("stage8.json", "f2.t101.credit_disallowed_eic_zero", "person[taxpayer].w2[emp_a]"),
+    "mfj": ("stage15.json", "stage15.f5695.s2", None),
     "hoh": ("stage8.json", "stage8.hoh.parent.test1", None),
+    "qss": ("stage21.json", "stage21.pending1.qss_valid_computes", None),
+    "mfs": ("stage4.json", "stage4.standard.mfs", None),
 }
 
 
@@ -65,6 +67,7 @@ def federal(inputs):
             fed[k] = v["value"]
         elif v.get("kind") == "refusal":
             raise SystemExit(f"federal refusal at {k}: {v.get('gate')}")
+    fed["under17"] = sum(1 for k, v in vals.items() if k.endswith(".under_ctc_age") and k.startswith("dependent[") and v.get("value", {}).get("value") is True)
     fed["status"] = fed.pop("f1040.status", inputs.get("f1040.status"))
     return fed, vals
 
@@ -115,9 +118,20 @@ def money(c):
     return {"kind": "money", "cents": c}
 
 
-def make_case(cid, status, wages, ans=None, w2s=((0, 0),), line75=0, line79=0, prior_tax=0, note="", refuse=None, evidence=None, covers=None):
+def more_parents(inputs, n):
+    """Copy the base's qualifying-relative dependent (a parent) n - 1 times, to reach the household credit columns."""
+    keys = {k: v for k, v in inputs.items() if k.startswith("dependent[parent].")}
+    for i in range(2, n + 1):
+        for k, v in keys.items():
+            inputs[k.replace("dependent[parent]", f"dependent[parent{i}]")] = v
+    inputs["$dependent"] = ["parent"] + [f"parent{i}" for i in range(2, n + 1)]
+
+
+def make_case(cid, status, wages, ans=None, w2s=((0, 0),), line75=0, line79=0, prior_tax=0, note="", refuse=None, evidence=None, covers=None, parents=None):
     file, case_id, _ = BASES[status]
     inputs = base(file, case_id)
+    if parents:
+        more_parents(inputs, parents)
     if wages is not None:
         set_wages(inputs, wages)
     inputs.update(ny_inputs(ans or {}, list(w2s), line75, line79, prior_tax))
@@ -127,7 +141,7 @@ def make_case(cid, status, wages, ans=None, w2s=((0, 0),), line75=0, line79=0, p
         deps = sum(1 for k in inputs["$dependent"])  # every listed dependent of these bases is a claimed dependent
     ny = {"item_c": (ans or {}).get("item_c", False), "dependents": deps, "owes_use_tax": (ans or {}).get("owes_use_tax", False),
           "state_withheld": [s for s, _ in w2s], "city_withheld": [c for _, c in w2s], "line75": line75, "line79": line79,
-          "prior_year_tax": prior_tax, "prior_agi_high": (ans or {}).get("prior_agi_high", False)}
+          "prior_year_tax": prior_tax, "prior_agi_high": (ans or {}).get("prior_agi_high", False), "under17": fed.get("under17", 0)}
     case = {"id": f"ny.{cid}", "covers": covers or ["ny_it201"], "inputs": inputs}
     if refuse:
         gate, line = refuse
@@ -138,6 +152,37 @@ def make_case(cid, status, wages, ans=None, w2s=((0, 0),), line75=0, line79=0, p
         case["expect"] = {f"ny_it201.{line}": refusal(line, gate)}
         return case
     pred = ny_predict.predict(fed, ny)
+    if pred.get("refused") == "eic":
+        case["evidence"] = "synthetic regression (not class B)"
+        case["evidence_note"] = (f"Refusal predicted from the source: federal AGI {fed['f1040.line11a'] / 100:,.2f} is under the federal "
+                                 f"earned income credit's limit {fed['eic.limit'] / 100:,.2f} (or the credit is claimed), so lines 65 and 70 "
+                                 f"refuse (decision B9). {note}")
+        case["expect"] = {"ny_it201.line65": refusal("line65", "gate.eic"), "ny_it201.line70": refusal("line70", "gate.eic")}
+        return case
+    if pred.get("refused") == "child_credit":
+        case["evidence"] = evidence or "synthetic regression (not class B)"
+        case["evidence_note"] = (f"Predicted by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: "
+                                 f"{pred['_method']}). A dependent under 17: line 63 refuses (the Empire State child credit, Form IT-213), "
+                                 f"so lines 76 to 80 are not asserted. {note}")
+        case["expect"] = {f"ny_it201.{k}": money(pred[f"ny_it201.{k}"]) for k in ASSERT if f"ny_it201.{k}" in pred}
+        case["expect"]["ny_it201.line63"] = refusal("line63", "gate.child_credit")
+        return case
+    if pred.get("refused") == "it270":
+        case["evidence"] = evidence or "synthetic regression (not class B)"
+        case["evidence_note"] = (f"Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was "
+                                 f"evaluated (method for line 39: {pred['_method']}). A dependent on item H with federal AGI within $5,000 of "
+                                 f"the highest IT-270 threshold: line 70a refuses (decision B10), so lines 76 to 80 are not asserted. {note}")
+        case["expect"] = {f"ny_it201.{k}": money(pred[f"ny_it201.{k}"]) for k in ASSERT if f"ny_it201.{k}" in pred}
+        case["expect"]["ny_it201.line70a"] = refusal("line70a", "gate.it270")
+        return case
+    if pred.get("refused") == "stc_rr":
+        case["evidence"] = evidence or "synthetic regression (not class B)"
+        case["evidence_note"] = (f"Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was "
+                                 f"evaluated (method for line 39: {pred['_method']}). Income over $500,000: line 69a refuses (decision B7), "
+                                 f"so lines 76 to 80 are not asserted. {note}")
+        case["expect"] = {f"ny_it201.{k}": money(pred[f"ny_it201.{k}"]) for k in ASSERT if f"ny_it201.{k}" in pred}
+        case["expect"]["ny_it201.line69a"] = refusal("line69a", "gate.stc_rr_income")
+        return case
     if "refused" in pred:
         raise SystemExit(f"{cid}: the predictor refuses ({pred['refused']}); make it a refusal case")
     case["evidence"] = evidence or "synthetic regression (not class B)"
@@ -160,7 +205,7 @@ def wages_for_taxable(status, target_ti, extra=0):
     set_wages(inputs, probe)
     fed, _ = federal(inputs)
     deps = len(inputs.get("$dependent") or [])
-    pred = ny_predict.predict(fed, {"dependents": deps, "state_withheld": [], "city_withheld": []})
+    pred = ny_predict.predict({**fed, "f1040.line27a": 0, "eic.limit": 0}, {"dependents": deps, "state_withheld": [], "city_withheld": []})
     ti = pred["ny_it201.line38"]
     return max(probe + (target_ti * 100 - ti) + extra, 0)
 
@@ -255,6 +300,17 @@ def main():
                            refuse=("gate.line79_over", "line78"), note="line 79 more than the overpayment."))
     cases.append(make_case("refuse.child_credit", "hoh", wages_for_taxable("hoh", 40000), refuse=("gate.child_credit", "line63"),
                            note="a dependent under 17 (the Empire State child credit, Form IT-213).") if False else None)
+    for st, tis in (("qss", (30000, 70000, 140000, 200000)), ("mfs", (40000, 70000, 120000, 300000))):
+        for ti in tis:
+            cases.append(make_case(f"status.{st}.{ti}", st, wages_for_taxable(st, ti), note=f"Filing status {st} at taxable income ${ti:,}."
+                                   + (" The federal return refuses married filing separately at line 37 (s3.mfs); the New York lines asserted do not read it." if st == "mfs" else "")))
+    for n in range(1, 7):
+        cases.append(make_case(f"household.hoh.parents{n}", "hoh", wages_for_taxable("hoh", 13800), parents=n,
+                               note=f"Head of household with {n} qualifying-relative dependent(s) (parents, not qualifying children for the earned income credit): {n + 1} people for the household credit column."))
+    cases.append(make_case("refuse.hh_mfs", "mfs", wages_for_taxable("mfs", 15000), refuse=("gate.hh_state_mfs", "line40"),
+                           note="married filing separately with federal AGI within the household credit rows (table 3 needs the spouse's AGI)."))
+    cases.append(make_case("refuse.hh_over7", "hoh", wages_for_taxable("hoh", 13800), parents=7, refuse=("gate.hh_state_over7", "line40"),
+                           note="eight people (seven dependents) with federal AGI within the household credit rows (Note 3)."))
     cases = [c for c in cases if c]
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({"tax_year": 2025, "cases": cases}, indent=1) + "\n")

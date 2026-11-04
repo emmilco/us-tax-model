@@ -202,6 +202,11 @@ def predict(fed, ny):
     status; ny: the New York answers. Returns {line: value} with money in cents, or {"refused": gate}."""
     status = fed["status"]
     d = lambda k: F(fed.get(k, 0), 100)  # noqa: E731
+    # Lines 65 and 70 (p. 19, p. 20): "Did you claim the federal earned income credit ... or could you have claimed it
+    # based on your federal adjusted gross income?" Refused when the federal credit is more than zero or federal AGI is
+    # under the federal credit's income limit (decision B9, amb.ny.2025.eic_could_claim).
+    if fed.get("f1040.line27a", 0) > 0 or fed["f1040.line11a"] < fed["eic.limit"]:
+        return {"refused": "eic"}
     out = {}
     L = {}
     for n, k in [(1, "f1040.line1z"), (2, "f1040.line2b"), (3, "f1040.line3b"), (4, "s1.line1"), (5, "s1.line2a"), (6, "s1.line3"),
@@ -242,8 +247,27 @@ def predict(fed, ny):
     L[62] = L[61]
     stc_income = L[19] - L[9]
     L[69] = 0 if item_c or stc_income > 250000 else (125 if status in ("mfj", "qss") else 63)
+    # Line 63 (p. 19): "Do you have at least one qualifying child? (A qualifying child must be less than 17 years old on
+    # December 31st of the tax year.)" With one, Form IT-213 is needed: refused; lines 76 to 80 read it.
+    if ny.get("under17", 0) > 0:
+        out = {f"ny_it201.line{k}": v * 100 for k, v in L.items()}
+        out["refused"] = "child_credit"
+        out["_method"] = method
+        return out
+    # Line 70a (p. 21; IT-270-I p. 1): with a dependent on item H and federal AGI no more than $5,000 above the highest
+    # income threshold ($91,902 joint, $88,361 others), the NYC income tax elimination credit may apply: refused
+    # (decision B10); the lines that read it (76 to 80) are refused too.
+    if deps > 0 and L[19] <= (91902 if status in ("mfj", "qss") else 88361) + 5000:
+        out = {f"ny_it201.line{k}": v * 100 for k, v in L.items()}
+        out["refused"] = "it270"
+        out["_method"] = method
+        return out
     if not item_c and (stc_income > 500000 or L[47] > 500000):
-        return {"refused": "stc_rr"}
+        # Line 69a refuses (decision B7); the lines that read it (76 to 80) are refused too. The rest stands.
+        out = {f"ny_it201.line{k}": v * 100 for k, v in L.items()}
+        out["refused"] = "stc_rr"
+        out["_method"] = method
+        return out
     over, base = {"mfj": (21600, 37), "qss": (21600, 37), "single": (12000, 21), "mfs": (12000, 21), "hoh": (14400, 25)}[status]
     L["69a"] = 0 if item_c else (r_dollar(F(171, 100000) * L[47]) if L[47] <= over else base + r_dollar(F(228, 100000) * (L[47] - over)))
     L[72] = sum(r_dollar(F(w, 100)) for w in ny.get("state_withheld", []))
