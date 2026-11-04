@@ -1,0 +1,22 @@
+# New York City household credit table 4 (Filing status ① only, Single), transcribed from the web edition of IT-201-I (the PDF's columns are scattered; sources/ny/2025/README.md),
+# cell by cell as printed (docs/ny/DECISIONS.md Part D). Bands are the printed 'Over / but not over' rows of federal
+# adjusted gross income in cents: over X and not over Y is [X + 1 cent, Y + 1 cent). The first row, from "(see Note 2)",
+# includes zero and negative income ("Note 2 This amount could be 0 or a negative amount."): the line that reads
+# this table looks up federal AGI floored at zero. The last band, open above, is "No credit is allowed".
+# One column: the table is for filing status ① only; the line chooses it only for a single filer.
+table:
+  id: ny_hh_city_t4
+  kind: tax_table
+  title: "New York City household credit table 4 (Filing status ① only, Single)"
+  tax_year: 2025
+  cite:
+    doc: ny_it201i-html
+    locator: 'New York City household credit table 4—Filing status ① only (Single), "If your federal adjusted gross income (see Note 1) is:", "enter on Form IT-201, line 48:"'
+    quote: "No credit is allowed; do not make an entry on Form IT-201, line 48."
+  bounds: { at_least: 0, less_than: 100000000000000 }
+  columns:
+    - { key: amount, statuses: [single, mfj, mfs, hoh, qss] }
+  bands:
+    - { at_least: 0, less_than: 1000001, tax: [1500] }
+    - { at_least: 1000001, less_than: 1250001, tax: [1000] }
+    - { at_least: 1250001, less_than: 100000000000000, tax: [0] }
