@@ -268,8 +268,11 @@ Read from the web edition (the PDF's rows are flattened); columns: line 38 over,
 | ① ③ single, married filing separately | 0–8,500: 4%; 8,500–11,700: $340 + 4.5%; 11,700–13,900: 484 + 5.25%; 13,900–80,650: 600 + 5.5%; 80,650–215,400: 4,271 + 6%; 215,400–1,077,550: 12,356 + 6.85%; 1,077,550–5,000,000: 71,413 + 9.65%; 5,000,000–25,000,000: 449,929 + 10.3%; over 25,000,000: 2,509,929 + 10.9% |
 | ④ head of household | 0–12,800: 4%; 12,800–17,650: $512 + 4.5%; 17,650–20,900: 730 + 5.25%; 20,900–107,650: 901 + 5.5%; 107,650–269,300: 5,672 + 6%; 269,300–1,616,450: 15,371 + 6.85%; 1,616,450–5,000,000: 107,651 + 9.65%; 5,000,000–25,000,000: 434,163 + 10.3%; over 25,000,000: 2,494,163 + 10.9% |
 
-Each base can be checked against the band below it (for example 686 = 4% of 17,150), a cheap internal consistency check
-for Phase 3 (inferred). The schedule prints no rounding; the whole-dollar rule of section 2 applies to the line 39
+Internal consistency (computed in this session, exact arithmetic): every printed base equals the exact cumulative
+tax at the band's lower bound rounded to the dollar (for example 976 for 976.25 = 686 + 4.5% of 6,450). Rounding the
+exact cumulative amount, not the rounded base below, explains the one place where the two differ: head of household at
+$5,000,000, exact 434,163.35, printed 434,163 (from the printed 107,651 one would get 434,163.575). The City schedule's
+bases likewise (664.848 printed 665). So the printed bases are rounded figures to pin as printed, not to recompute. The schedule prints no rounding; the whole-dollar rule of section 2 applies to the line 39
 entry (D8). The `bracket_schedule` atom is in the vocabulary but implemented by neither evaluator (spec 6.3); the
 federal Tax Computation Worksheet is encoded with guarded rows of parameters instead, which fits here too.
 
@@ -309,6 +312,12 @@ $50,000"; "8 Divide line 7 by $50,000 and round the result to the fourth decimal
 | 13 (④) | 269,300 | 269,300 – 1,616,450 | 787 | 2,289 |
 | 14 (④) | 1,616,450 | 1,616,450 – 5,000,000 | 3,076 | 45,261 |
 | 15 (④) | 5,000,000 | over 5,000,000 | 48,337 | 32,500 |
+
+Consistency (computed in this session): within each group the next worksheet's Recapture Base equals this one's
+Recapture Base plus Incremental Benefit (333 + 807 = 1,140; 1,140 + 2,747 = 3,887; 3,887 + 60,350 = 64,237; 568 + 1,831
+= 2,399; 2,399 + 30,172 = 32,571; 787 + 2,289 = 3,076; 3,076 + 45,261 = 48,337), and Recapture Base plus Incremental
+Benefit equals the flat top-rate tax on the bracket's lower bound less the schedule tax there, rounded (for example
+6% of 161,550 = 9,693 less 8,553 = 1,140). The amounts are internally consistent.
 
 Each also requires NY AGI "not more than $25,000,000"; worksheets 6, 11 and 16 apply above that: "Multiply line 1 by
 10.9% (0.109)" (`ny_it201i p. 35`, Tax computation worksheet 6). The amounts were read from the web edition
