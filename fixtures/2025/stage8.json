@@ -1752,7 +1752,7 @@
         "s8812.few_children:false"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Synthetic: head of household, wages $5,000, three qualifying children. No tax; line 16a $6,600; line 16b $5,100; line 20 is 15% of $2,500, $375; withheld social security $310 plus Medicare $72.50 is $382.50 on line 25, which is larger than line 20, so line 26 is $382.50 and line 27 is the smaller of line 17 ($5,100) and line 26, $382.50. Predicted by the authoring session from the archived Schedule 8812; no independent human hand-work is claimed. Stage 9: the EIC applies; printed row $5,000-$5,050, three children, $2,261 (i1040gi p. 50); Part II-B line 25 ($382.50 before) falls to zero once line 24 carries the EIC, so line 26 is line 20 ($375) and the ACTC falls by $7.50; refund $882.50 - $7.50 + $2,261 = $3,136.",
+      "evidence_note": "Synthetic: head of household, wages $5,000, three qualifying children. No tax; line 16a $6,600; line 16b $5,100; line 20 is 15% of $2,500, $375; withheld social security $310 plus Medicare $72.50 is $382.50 on line 25, which is larger than line 20, so line 26 is $382.50 and line 27 is the smaller of line 17 ($5,100) and line 26, $382.50. Predicted by the authoring session from the archived Schedule 8812; no independent human hand-work is claimed. Stage 9: the EIC applies; printed row $5,000-$5,050, three children, $2,261 (i1040gi p. 50); Part II-B line 25 ($382.50 before) falls to zero once line 24 carries the EIC, so line 26 is line 20 ($375) and the ACTC falls by $7.50; refund $882.50 - $7.50 + $2,261 = $3,136. Shown state (T-232, predicted from the form before evaluating): line 16b is $5,100 and line 20 ($375) is less than line 17 ($5,100), so Part II-B is completed (f1040s8812 after line 20, \"On line 16b, is the amount $5,100 or more? ... Yes. If line 20 is equal to or more than line 17, skip Part II-B\").",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -2444,6 +2444,10 @@
           "cents": 226100
         },
         "s8812.taking_eic": {
+          "kind": "bool",
+          "value": true
+        },
+        "s8812.show_iib": {
           "kind": "bool",
           "value": true
         }
@@ -13472,7 +13476,7 @@
         "s8812.eiw_1b:refuse"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Synthetic refusal regression: nontaxable combat pay was received, so Earned Income Worksheet line 1b and Schedule 8812 line 18b refuse and line 18a follows. No independent human review is claimed.",
+      "evidence_note": "Synthetic refusal regression: nontaxable combat pay was received, so Earned Income Worksheet line 1b and Schedule 8812 line 18b refuse and line 18a follows. No independent human review is claimed. Shown state (T-232, predicted from the form before evaluating): line 16b is $1,700, less than $5,100, so Part II-B is skipped (f1040s8812 after line 20, \"On line 16b, is the amount $5,100 or more? No. ... skip Part II-B\"), before line 20's refusal is read.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -14120,6 +14124,10 @@
         "s8812.ss_withheld": {
           "kind": "money",
           "cents": 24800
+        },
+        "s8812.show_iib": {
+          "kind": "bool",
+          "value": false
         }
       }
     },

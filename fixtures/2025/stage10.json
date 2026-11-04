@@ -5649,7 +5649,7 @@
         "f1040.lines4-6"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Four joint-and-survivor annuities starting after 1997, $12,000 each for 12 months, first year: combined ages 100 with cost $41,000 (Table 2, 410), 115 with $36,000 (360), 135 with $26,000 (260), 150 with $21,000 (210); each line 4 $100.00 and line 9 $10,800, so line 5b $43,200 (p. 29).",
+      "evidence_note": "Stage 10, predicted by hand from the printed instructions before recording: Four joint-and-survivor annuities starting after 1997, $12,000 each for 12 months, first year: combined ages 100 with cost $41,000 (Table 2, 410), 115 with $36,000 (360), 135 with $26,000 (260), 150 with $21,000 (210); each line 4 $100.00 and line 9 $10,800, so line 5b $43,200 (p. 29). Shown state (T-232, predicted from the instructions before evaluating): the first annuity is a plan annuity (not an IRA) with $41,000 of cost and none recovered, so its Simplified Method Worksheet is completed (i1040gi p. 28, payments are fully taxable only if \"you didn't contribute to the cost ... or ... you got your entire cost back tax free before 2025\").",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[taxpayer].retirement[j1].code_screen": false,
@@ -5890,6 +5890,10 @@
         "person[taxpayer].retirement[j4].smw4": {
           "kind": "money",
           "cents": 10000
+        },
+        "person[taxpayer].retirement[j1].smw_shown": {
+          "kind": "bool",
+          "value": true
         }
       }
     },

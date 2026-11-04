@@ -1139,11 +1139,54 @@ function caseSplitBranch(data: CanonicalData, mutation: Mutation): string | unde
   return `Branch equal under a case split: where ${id} takes alternative ${m[1]} (guard ${stableStringify(alt.guard)})${path.length ? ` and its value can reach a printed line (guards ${path.map((g) => stableStringify(g)).join(", ")} on its one reader path)` : ""}, ${pair[0]} and ${pair[1]} have the same value${used.length ? ` in every case of ${used.join(", ")} (each value, and unanswered or refused, which the choices and comparisons that read it pass on unchanged)` : ""}, through settled choices, copies, comparisons of complete values and arithmetic of zeros, so ${path.length ? "no printed value changes" : "the mutated line is unchanged at every input"}.`;
 }
 
+// The conjuncts an all-test evaluates, in order: a conjunct `L == true`, with L a line of the same
+// document (no def parameters) that has no refusal gates and is itself an all-test, is replaced by L's
+// conjuncts, as is an inline all-test; anything else is one conjunct. An all-test returns the first
+// refusal or false it meets, else an unknown if any conjunct was unknown, else true; a nested all-test
+// returns the same thing to `== true`, which passes a refusal or unknown on, so the line and its
+// expansion have the same value (unknowns compare equal, as in outcome()). Undefined on a cycle.
+function conjunctsOf(data: CanonicalData, doc: FormDoc, expr: unknown, seen: Set<string>): string[] | undefined {
+  const e = expr as { op?: string; all?: unknown[]; eq?: unknown[] };
+  if (e?.op !== "test" || !Array.isArray(e.all)) return undefined;
+  const out: string[] = [];
+  for (const t of e.all) {
+    const c = t as { op?: string; all?: unknown[]; eq?: unknown[] };
+    const ref = c?.op === "test" && Array.isArray(c.eq) && typeof c.eq[0] === "string" && stableStringify(c.eq[1]) === stableStringify({ const: true }) ? c.eq[0] : undefined;
+    const inner = ref ? doc.lines.find((l) => l.id === ref) : undefined;
+    if (ref && seen.has(ref)) return undefined;
+    const expand = c?.op === "test" && Array.isArray(c.all) ? conjunctsOf(data, doc, c, seen)
+      : inner && !(inner.refuses ?? []).length && inner.expr.op === "test" && "all" in inner.expr ? conjunctsOf(data, doc, inner.expr, new Set([...seen, ref!])) : null;
+    if (expand === undefined) return undefined;
+    if (expand) out.push(...expand); else out.push(stableStringify(c));
+  }
+  return out;
+}
+
+// Conjunct prefix: an operand of an all-test's conjunct replaced by a line whose conjuncts, read where
+// the operand stood, repeat only conjuncts the test reads anyway and in the same first-read order. A
+// conjunct met again has the value it had the first time (true or unknown, or the test would have
+// stopped), so the all-test meets the same first refusal or false, or ends unknown or true, at every
+// input. Checked on the expanded conjuncts of the mutated line before and after the mutation.
+function conjunctPrefix(data: CanonicalData, mutation: Mutation): string | undefined {
+  const pair = replacedPair(mutation); if (!pair || !independentOperands(data, mutation, pair)) return undefined;
+  const id = lineOf(mutation), doc = docOfLine(data, id), line = findLine(data, id);
+  if (!doc || !line || (doc.parameters ?? []).length) return undefined;
+  const before = conjunctsOf(data, doc, line.expr, new Set([id]));
+  const mutated = cloneData(data); mutation.apply(mutated);
+  const mdoc = docOfLine(mutated, id), mline = findLine(mutated, id);
+  const after = mdoc && mline ? conjunctsOf(mutated, mdoc, mline.expr, new Set([id])) : undefined;
+  if (!before || !after || stableStringify(before) === stableStringify(after)) return undefined;
+  const firstRead = after.filter((c, i) => after.indexOf(c) === i);
+  if (stableStringify(firstRead) !== stableStringify(before)) return undefined;
+  return `Conjunct prefix: ${pair[1]} expands to conjuncts that ${id} reads anyway, in the same first-read order (${pair[0]} among them), so the all-test meets the same first refusal or false, or ends unknown or true, at every input.`;
+}
+
 // The structural rules, checked against the current data for every survivor: the first that accepts
 // it gives the reason.
 export function structuralReason(data: CanonicalData, mutation: Mutation): string | undefined {
   return aliasEquivalence(data, mutation) ?? sharedGateEquivalence(data, mutation) ?? floorMinusMin(data, mutation)
-    ?? carriedZero(data, mutation) ?? settledBranch(data, mutation) ?? unreachableAlternative(data, mutation) ?? caseSplitBranch(data, mutation) ?? guardedFigure(data, mutation) ?? unreadParameter(data, mutation) ?? unreadTable(data, mutation);
+    ?? carriedZero(data, mutation) ?? settledBranch(data, mutation) ?? unreachableAlternative(data, mutation) ?? caseSplitBranch(data, mutation) ?? guardedFigure(data, mutation) ?? unreadParameter(data, mutation) ?? unreadTable(data, mutation)
+    ?? conjunctPrefix(data, mutation);
 }
 
 // Equivalences that need an argument about evaluation order or reachability. Each is

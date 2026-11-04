@@ -23,13 +23,13 @@ whole, with the prompt limit raised to 700k characters. Cost $2.23; 2 more lows 
 
 **Round 3 (after the T-094 commit):**
 - every BUG-0414 low is fixed (BUG-0415), and round 3's own lows are fixed too (BUG-0416);
-- T-232's no-schema route ran: 21 of 145 display-condition mutants are killed by source-predicted gate values on class A cases;
+- T-232 is done with no schema change: source-predicted gate values on class A and synthetic regression cases, plus 10 new synthetic cases, kill 138 of the 145 display-condition mutants, and a new rule (conjunctPrefix) proves 5 more equivalent;
 - T-231 and T-196 were closed by cost decision;
 - the two rare sales lows (BUG-0417) and the findings of the sales reviews after them are fixed (BUG-0418); the last sales completeness review found nothing that isn't refused elsewhere.
 
 Paid calls this round: $36.85 (70 calls).
 
-**Next:** T-217 after 2026-11-06 15:49; the owner questions on T-232 and on transcription for wording-only changes; coverage expansion stays last.
+**Next:** T-217 after 2026-11-06 15:49; the owner question on transcription for wording-only changes; coverage expansion stays last.
 
 ---
 

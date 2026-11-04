@@ -37,10 +37,10 @@ Engine ids with no line of their own (never an E assertion): f1040.tax_before_cr
 | asset.over_half | — | — | — | — | — | — | — |
 | asset.listed_low | — | — | — | — | — | — | — |
 | asset.basis | — | — | — | 4 | — | — | 3 |
-| asset.is2025 | — | — | — | — | — | — | — |
-| asset.on_19 | — | — | — | — | — | — | — |
-| asset.on_17 | — | — | — | — | — | — | — |
-| asset.on_26_2025 | — | — | — | — | — | — | — |
+| asset.is2025 | — | — | — | — | — | — | 1 (stage14.mut.asset_2025_listed_unanswered) |
+| asset.on_19 | — | — | — | — | — | — | 1 (stage14.asset.listed_forty) |
+| asset.on_17 | — | — | — | — | — | — | 2 (stage14.asset.refuse_listed_low_past_gds, stage14.mut.asset_2025_listed_unanswered) |
+| asset.on_26_2025 | — | — | — | — | — | — | 1 (stage14.asset.listed_forty) |
 | asset.year | — | — | — | — | — | — | — |
 | asset.last | — | — | — | — | — | — | — |
 | asset.done | — | — | — | — | — | — | — |
@@ -91,7 +91,7 @@ Engine ids with no line of their own (never an E assertion): f1040.tax_before_cr
 | asset.dep_prior | — | — | — | — | — | — | — |
 | asset.dep_listed | — | — | — | 2 (classm.asset.1, classm.asset.3) | — | — | 2 (stage14.asset.listed_prior, stage14.asset.listed_forty) |
 
-Unasserted lines: asset.zero, asset.outside, asset.qip_early, asset.screened, asset.cent, asset.hundred, asset.pct_c, asset.pct_bad, asset.half, asset.over_half, asset.listed_low, asset.is2025, asset.on_19, asset.on_17, asset.on_26_2025, asset.year, asset.last, asset.done, asset.qconv, asset.s179_bad, asset.bonus_mixed, asset.rate40, asset.bonus_fullcase, asset.ub, asset.hy, asset.rate_hy, asset.rate_mq, asset.macrs_hy, asset.macrs_mq, asset.mqbase, asset.mq_q4_2025, asset.rate_prior, asset.macrs_prior_live, asset.dep_2025, asset.bonus_2025, asset.s179_2025, asset.mq_q4, asset.mq_total, asset.cost179, asset.cost179_2025, asset.is_section179, asset.cost179_real, asset.dep_prior
+Unasserted lines: asset.zero, asset.outside, asset.qip_early, asset.screened, asset.cent, asset.hundred, asset.pct_c, asset.pct_bad, asset.half, asset.over_half, asset.listed_low, asset.year, asset.last, asset.done, asset.qconv, asset.s179_bad, asset.bonus_mixed, asset.rate40, asset.bonus_fullcase, asset.ub, asset.hy, asset.rate_hy, asset.rate_mq, asset.macrs_hy, asset.macrs_mq, asset.mqbase, asset.mq_q4_2025, asset.rate_prior, asset.macrs_prior_live, asset.dep_2025, asset.bonus_2025, asset.s179_2025, asset.mq_q4, asset.mq_total, asset.cost179, asset.cost179_2025, asset.is_section179, asset.cost179_real, asset.dep_prior
 
 ## Qualified passenger vehicle loan interest (Schedule 1-A, line 22) — one entry per loan
 
@@ -145,21 +145,21 @@ Unasserted lines: carloan.zero, carloan.eligible, carloan.nonqualifying_debt, ca
 | clcw.prior_limit | — | — | — | — | — | — | — |
 | clcw.prior_limit_mfs | — | — | — | — | — | — | — |
 | clcw.prior_floor | — | — | — | — | — | — | — |
-| clcw.bad | — | — | — | — | — | — | 3 |
-| clcw.applies | — | — | — | — | — | — | 2 (stage20.line21_small_loss, stage20.line21_at_floor) |
-| clcw.show_st | — | — | — | — | — | — | — |
-| clcw.show_lt | — | — | — | — | — | — | — |
-| clcw.line1 | — | — | — | 6 | — | OpenTaxSolver: 238 compared (238 nonzero), 0 excluded | 12 |
-| clcw.line2 | — | — | — | 6 | — | OpenTaxSolver: 238 compared (238 nonzero), 0 excluded | 18 |
+| clcw.bad | — | — | — | — | — | — | 4 |
+| clcw.applies | — | — | — | — | — | — | 4 |
+| clcw.show_st | — | — | — | — | — | — | 2 (stage20.line21_at_floor, stage20.mut.line21_at_loss_negative_income) |
+| clcw.show_lt | — | — | — | — | — | — | 3 |
+| clcw.line1 | — | — | — | 6 | — | OpenTaxSolver: 238 compared (238 nonzero), 0 excluded | 13 |
+| clcw.line2 | — | — | — | 6 | — | OpenTaxSolver: 238 compared (238 nonzero), 0 excluded | 19 |
 | clcw.combined | — | — | — | — | — | — | — |
-| clcw.line3 | — | — | — | 6 | — | OpenTaxSolver: 238 compared (170 nonzero), 0 excluded | 11 |
-| clcw.line4 | — | — | — | 6 | — | OpenTaxSolver: 238 compared (170 nonzero), 0 excluded | 11 |
+| clcw.line3 | — | — | — | 6 | — | OpenTaxSolver: 238 compared (170 nonzero), 0 excluded | 12 |
+| clcw.line4 | — | — | — | 6 | — | OpenTaxSolver: 238 compared (170 nonzero), 0 excluded | 12 |
 | clcw.st_loss | — | — | — | — | — | — | — |
 | clcw.lt_loss | — | — | — | — | — | — | — |
-| clcw.line5 | — | — | — | 6 | — | OpenTaxSolver: 196 compared (196 nonzero), 0 excluded | 11 |
+| clcw.line5 | — | — | — | 6 | — | OpenTaxSolver: 196 compared (196 nonzero), 0 excluded | 12 |
 | clcw.line6 | — | — | — | 5 | — | OpenTaxSolver: 196 compared (85 nonzero), 0 excluded | 5 |
 | clcw.line7 | — | — | — | 5 | — | OpenTaxSolver: 196 compared (167 nonzero), 0 excluded | 7 |
-| clcw.line8 | — | — | — | 5 | — | OpenTaxSolver: 196 compared (187 nonzero), 0 excluded | 10 |
+| clcw.line8 | — | — | — | 5 | — | OpenTaxSolver: 196 compared (187 nonzero), 0 excluded | 11 |
 | clcw.line9 | — | — | — | 4 | — | OpenTaxSolver: 153 compared (153 nonzero), 0 excluded | 5 |
 | clcw.line10 | — | — | — | 4 | — | OpenTaxSolver below rule: 153 compared (42 nonzero), 0 excluded | 5 |
 | clcw.line11 | — | — | — | 4 | — | OpenTaxSolver below rule: 153 compared (31 nonzero), 0 excluded | 5 |
@@ -167,7 +167,7 @@ Unasserted lines: carloan.zero, carloan.eligible, carloan.nonqualifying_debt, ca
 | clcw.line13 | — | — | — | 4 | — | OpenTaxSolver: 153 compared (153 nonzero), 0 excluded | 6 |
 | clcw.figures_notice | — | — | — | — | — | — | — |
 
-Unasserted lines: clcw.zero, clcw.prior_16, clcw.prior_loss, clcw.prior_limit, clcw.prior_limit_mfs, clcw.prior_floor, clcw.show_st, clcw.show_lt, clcw.combined, clcw.st_loss, clcw.lt_loss, clcw.figures_notice
+Unasserted lines: clcw.zero, clcw.prior_16, clcw.prior_loss, clcw.prior_limit, clcw.prior_limit_mfs, clcw.prior_floor, clcw.combined, clcw.st_loss, clcw.lt_loss, clcw.figures_notice
 
 ## Capital loss carryover to 2026 (Capital Loss Carryover Worksheet applied to this return)
 
@@ -176,7 +176,7 @@ Unasserted lines: clcw.zero, clcw.prior_16, clcw.prior_loss, clcw.prior_limit, c
 | clcw26.zero | — | — | — | — | — | — | — |
 | clcw26.show | — | — | — | — | — | — | — |
 | clcw26.show_st | — | — | — | — | — | — | — |
-| clcw26.show_lt | — | — | — | — | — | — | — |
+| clcw26.show_lt | — | — | — | — | — | — | 1 (stage20.blind.r6) |
 | clcw26.line1 | — | — | — | 7 | — | — | 1 (stage20.mut.to2026_short_gain_long_loss) |
 | clcw26.line2 | — | — | — | 7 | — | — | 1 (stage20.mut.to2026_short_gain_long_loss) |
 | clcw26.combined | — | — | — | — | — | — | — |
@@ -193,7 +193,7 @@ Unasserted lines: clcw.zero, clcw.prior_16, clcw.prior_loss, clcw.prior_limit, c
 | clcw26.line13 | — | — | — | 4 | — | — | 12 |
 | clcw26.decedent_notice | — | — | — | — | — | — | — |
 
-Unasserted lines: clcw26.zero, clcw26.show, clcw26.show_st, clcw26.show_lt, clcw26.combined, clcw26.decedent_notice
+Unasserted lines: clcw26.zero, clcw26.show, clcw26.show_st, clcw26.combined, clcw26.decedent_notice
 
 ## Form 2441, Part I — persons or organizations who provided the care, one entry per care provider
 
@@ -279,13 +279,13 @@ Unasserted lines: dcprov.one
 | dependent.eic_tiebreak | — | — | — | — | — | — | — |
 | dependent.kidnap_eic | — | — | — | — | — | — | — |
 | dependent.eic_ssn_child | — | — | — | — | — | — | — |
-| dependent.dc_child_all_year | — | — | — | — | — | — | — |
+| dependent.dc_child_all_year | — | — | — | — | — | — | 1 (stage15.mut.f2441_care_after_13_only) |
 | dependent.dc_age13 | — | — | — | — | — | — | — |
 | dependent.dc_under13 | — | — | — | — | — | — | — |
-| dependent.dc_child | — | — | — | — | — | — | — |
+| dependent.dc_child | — | — | — | — | — | — | 1 (stage15.mut.f2441_care_after_13_only) |
 | dependent.dc_incapable | — | — | — | — | — | — | — |
 | dependent.dc_disabled_qp | — | — | — | — | — | — | — |
-| dependent.dc_qp | — | — | — | — | — | — | 3 |
+| dependent.dc_qp | — | — | — | — | — | — | 4 |
 | dependent.dc_count | — | — | — | — | — | — | — |
 | dependent.dc_paid | — | — | — | via dependent.dc_line2d: 4 | — | — | — |
 | dependent.dc_line2d | — | — | — | 8 | — | — | — |
@@ -307,24 +307,24 @@ Unasserted lines: dcprov.one
 | dependent.edu_over | — | — | — | — | — | — | — |
 | dependent.edu_over_refused | — | — | — | — | — | — | — |
 | dependent.edu_line23 | — | — | — | — | — | — | 4 |
-| dependent.edu_show24 | 1 (stage19.example.jack_kay) | — | — | — | — | — | — |
+| dependent.edu_show24 | 1 (stage19.example.jack_kay) | — | — | — | — | — | 3 |
 | dependent.edu_line24 | — | — | — | — | — | — | 3 |
-| dependent.edu_show25 | 1 (stage19.example.jack_kay) | — | — | — | — | — | — |
+| dependent.edu_show25 | 1 (stage19.example.jack_kay) | — | — | — | — | — | 2 (stage19.mut.classm_f5329_3_dependent_no_ein, stage19.mut.dependent_line24_no) |
 | dependent.edu_line25 | — | — | — | — | — | — | 3 |
-| dependent.edu_show26 | 1 (stage19.example.jack_kay) | — | — | — | — | — | — |
+| dependent.edu_show26 | 1 (stage19.example.jack_kay) | — | — | — | — | — | 2 (stage19.mut.classm_f5329_3_dependent_no_ein, stage19.mut.dependent_line24_no) |
 | dependent.edu_line26 | — | — | — | — | — | — | 2 (stage19.blind.e2, stage19.blind.e4) |
 | dependent.edu_ein | — | — | — | — | — | — | — |
-| dependent.edu_aoc | — | — | — | — | — | — | — |
-| dependent.edu_llc | — | — | — | — | — | — | — |
+| dependent.edu_aoc | — | — | — | — | — | — | 2 (stage19.mut.classm_f5329_3_dependent_no_ein, stage19.mut.dependent_line24_no) |
+| dependent.edu_llc | — | — | — | — | — | — | 2 (stage19.mut.classm_f5329_3_dependent_no_ein, stage19.mut.dependent_line24_no) |
 | dependent.edu_tin_issued | — | — | — | — | — | — | — |
 | dependent.edu_llc_tin_refused | — | — | — | — | — | — | — |
 | dependent.edu_line27 | 4 | — | — | — | — | — | 5 |
 | dependent.edu_line28 | — | — | — | — | — | — | 3 |
 | dependent.edu_line29 | — | — | — | — | — | — | 3 |
 | dependent.edu_line30 | 3 | — | — | — | — | — | 4 |
-| dependent.edu_line31 | — | — | — | — | — | — | 5 |
+| dependent.edu_line31 | — | — | — | — | — | — | 6 |
 
-Unasserted lines: dependent.hoh_lived_half, dependent.dc_lived_half, dependent.one, dependent.zero, dependent.kidnap_residency, dependent.ctc_per_child, dependent.odc_per_dependent, dependent.actc_per_child, dependent.hoh_test2_lived, dependent.qc_tiebreak, dependent.eic_tiebreak, dependent.kidnap_eic, dependent.eic_ssn_child, dependent.dc_child_all_year, dependent.dc_age13, dependent.dc_child, dependent.dc_disabled_qp, dependent.dc_count, dependent.ptc_magi_counted, dependent.edu_student, dependent.edu_adj_sum, dependent.edu_adj, dependent.edu_over_refused, dependent.edu_aoc, dependent.edu_llc, dependent.edu_llc_tin_refused
+Unasserted lines: dependent.hoh_lived_half, dependent.dc_lived_half, dependent.one, dependent.zero, dependent.kidnap_residency, dependent.ctc_per_child, dependent.odc_per_dependent, dependent.actc_per_child, dependent.hoh_test2_lived, dependent.qc_tiebreak, dependent.eic_tiebreak, dependent.kidnap_eic, dependent.eic_ssn_child, dependent.dc_age13, dependent.dc_disabled_qp, dependent.dc_count, dependent.ptc_magi_counted, dependent.edu_student, dependent.edu_adj_sum, dependent.edu_adj, dependent.edu_over_refused, dependent.edu_llc_tin_refused
 
 ## Form 1099-DIV — distribution components and scope screening
 
@@ -405,21 +405,21 @@ Unasserted lines: div.box1a, div.box1b, div.box2a, div.box5, div.section1202, di
 | eic.sc_count | — | — | — | — | — | — | — |
 | eic.self_employed | — | — | — | — | — | — | — |
 | eic.wsb_se | — | — | — | — | — | — | — |
-| eic.show_wsb4b | 1 (stage19.example.jane.include_all) | — | — | — | — | — | 1 (stage9.eic.wsb_not_reached) |
+| eic.show_wsb4b | 1 (stage19.example.jane.include_all) | — | — | — | — | — | 2 (stage14.sc.basic, stage9.eic.wsb_not_reached) |
 | eic.wsb_4b | — | — | — | 3 | — | — | 11 |
 | eic.show_wsb6 | — | — | — | — | — | — | 2 (stage14.eic.wsb_line5_stop_27c, stage9.eic.wsb_not_reached) |
 | eic.wsb_6 | — | — | — | 3 | — | — | 1 (stage14.eic.wsb_stop_27c) |
 | eic.earned_for_limit | — | — | — | — | — | — | — |
 | eic.step5_income | — | — | — | — | — | — | — |
 | eic.eligible | — | — | — | — | — | — | 22 |
-| eic.line1 | — | — | — | 10 | — | PE: 1700 compared (1699 nonzero), 0 excluded; TC: 1700 compared (1699 nonzero), 0 excluded | 14 |
+| eic.line1 | — | — | — | 10 | — | PE: 1700 compared (1699 nonzero), 0 excluded; TC: 1700 compared (1699 nonzero), 0 excluded | 15 |
 | eic.line1_in_table | — | — | — | — | — | — | — |
 | eic.line1_table0 | — | — | — | — | — | — | — |
 | eic.line1_table1 | — | — | — | — | — | — | — |
 | eic.line1_table2 | — | — | — | — | — | — | — |
 | eic.line1_table3 | — | — | — | — | — | — | — |
 | eic.line1_table | — | — | — | — | — | — | — |
-| eic.line2 | — | — | — | 10 | — | — | 28 |
+| eic.line2 | — | — | — | 10 | — | — | 29 |
 | eic.show3 | 1 (stage19.example.jack_kay) | — | — | — | — | — | 1 (stage9.eic.no_earned_income) |
 | eic.line3 | — | — | — | 6 | — | — | — |
 | eic.line4 | — | — | — | 6 | — | — | 8 |
@@ -435,7 +435,7 @@ Unasserted lines: div.box1a, div.box1b, div.box2a, div.box5, div.section1202, di
 | eic.line3_table1 | — | — | — | — | — | — | — |
 | eic.line3_table2 | — | — | — | — | — | — | — |
 | eic.line3_table3 | — | — | — | — | — | — | — |
-| eic.show5 | 1 (stage19.example.jane.include_all) | — | — | — | — | — | 1 (stage9.eic.line5_skipped) |
+| eic.show5 | 1 (stage19.example.jane.include_all) | — | — | — | — | — | 2 (stage9.eic.line5_skipped, stage9.eic.mut.classm_f8995a_2_line2_zero) |
 | eic.line5 | — | — | — | 2 (classm.eic.8.deepseek, classm.eic.8) | — | — | 7 |
 | eic.smaller | — | — | — | — | — | — | — |
 | eic.after_line4 | — | — | — | — | — | — | — |
@@ -780,7 +780,7 @@ Unasserted lines: f4952.used, f4952.bad_dividends, f4952.bad_election, f4952.ele
 | f5329.tax | — | — | — | — | — | — | — |
 | f5329.must | — | — | — | — | — | — | — |
 | f5329.one | — | — | — | — | — | — | — |
-| f5329.files | 1 (stage21.example.teacher_education) | — | — | — | — | — | 10 |
+| f5329.files | 1 (stage21.example.teacher_education) | — | — | — | — | — | 11 |
 
 Unasserted lines: f5329.l3_s, f5329.l3_other, f5329.rate10, f5329.rate25, f5329.tax10, f5329.tax25, f5329.l49_base, f5329.rate6, f5329.l49_tax, f5329.has_excess, f5329.zero, f5329.tax, f5329.must, f5329.one
 
@@ -958,10 +958,10 @@ Unasserted lines: f8606.dist
 | f8863.aoc_dep | — | — | — | — | — | — | — |
 | f8863.aoc_sum | — | — | — | — | — | — | — |
 | f8863.line1 | 4 | — | — | 8 | — | UsTaxes: 138 compared (109 nonzero), 74 excluded | 13 |
-| f8863.line2 | — | — | — | 8 | — | — | 10 |
-| f8863.line3 | 1 (stage19.example.aoc_phaseout) | — | — | 8 | — | — | 12 |
-| f8863.line4 | 1 (stage19.example.aoc_phaseout) | — | — | 7 | — | — | 11 |
-| f8863.show_after4 | — | — | — | — | — | — | — |
+| f8863.line2 | — | — | — | 8 | — | — | 11 |
+| f8863.line3 | 1 (stage19.example.aoc_phaseout) | — | — | 8 | — | — | 13 |
+| f8863.line4 | 1 (stage19.example.aoc_phaseout) | — | — | 7 | — | — | 12 |
+| f8863.show_after4 | — | — | — | — | — | — | 1 (stage19.mut.f8863_line4_zero) |
 | f8863.line5 | — | — | — | 6 | — | — | 10 |
 | f8863.ban | — | — | — | — | — | — | — |
 | f8863.ban_refused | — | — | — | — | — | — | — |
@@ -976,17 +976,17 @@ Unasserted lines: f8606.dist
 | f8863.llc_person | — | — | — | — | — | — | — |
 | f8863.llc_dep | — | — | — | — | — | — | — |
 | f8863.llc_sum | — | — | — | — | — | — | — |
-| f8863.line10 | 2 (stage19.example.bruce_toni, stage19.example.llc_phaseout) | — | — | 6 | — | — | 14 |
+| f8863.line10 | 2 (stage19.example.bruce_toni, stage19.example.llc_phaseout) | — | — | 6 | — | — | 15 |
 | f8863.llc_cap | — | — | — | — | — | — | — |
 | f8863.show_llc | 2 (stage19.example.jack_kay, stage19.example.llc_phaseout) | — | — | — | — | — | — |
-| f8863.line11 | 2 (stage19.example.bruce_toni, stage19.example.llc_phaseout) | — | — | 2 (classm.f8863.4.deepseek, classm.f8863.4) | — | — | 6 |
+| f8863.line11 | 2 (stage19.example.bruce_toni, stage19.example.llc_phaseout) | — | — | 2 (classm.f8863.4.deepseek, classm.f8863.4) | — | — | 7 |
 | f8863.llc_rate | — | — | — | — | — | — | — |
-| f8863.line12 | 2 (stage19.example.bruce_toni, stage19.example.llc_phaseout) | — | — | 2 (classm.f8863.4.deepseek, classm.f8863.4) | — | UsTaxes below rule: 132 compared (24 nonzero), 74 excluded | 4 |
+| f8863.line12 | 2 (stage19.example.bruce_toni, stage19.example.llc_phaseout) | — | — | 2 (classm.f8863.4.deepseek, classm.f8863.4) | — | UsTaxes below rule: 132 compared (24 nonzero), 74 excluded | 5 |
 | f8863.line13 | — | — | — | 2 (classm.f8863.4.deepseek, classm.f8863.4) | — | — | 4 |
 | f8863.line14 | 1 (stage19.example.llc_phaseout) | — | — | 2 (classm.f8863.4.deepseek, classm.f8863.4) | — | — | 5 |
 | f8863.line15 | 1 (stage19.example.llc_phaseout) | — | — | 2 (classm.f8863.4.deepseek, classm.f8863.4) | — | — | 4 |
 | f8863.line16 | — | — | — | 2 (classm.f8863.4.deepseek, classm.f8863.4) | — | — | 4 |
-| f8863.line18 | 2 (stage19.example.bruce_toni, stage19.example.llc_phaseout) | — | — | 6; via f8863.clw1: 3 | — | PE below rule: 1616 compared (28 nonzero), 34 excluded; UsTaxes below rule: 132 compared (16 nonzero), 74 excluded | 10 |
+| f8863.line18 | 2 (stage19.example.bruce_toni, stage19.example.llc_phaseout) | — | — | 6; via f8863.clw1: 3 | — | PE below rule: 1616 compared (28 nonzero), 34 excluded; UsTaxes below rule: 132 compared (16 nonzero), 74 excluded | 11 |
 | f8863.clw1 | — | — | — | 6 | — | — | 10 |
 | f8863.clw2 | — | — | — | 6 | — | — | 10 |
 | f8863.clw3 | — | — | — | 6 | — | — | 10 |
@@ -994,9 +994,9 @@ Unasserted lines: f8606.dist
 | f8863.clw5 | — | — | — | 6 | — | — | 11 |
 | f8863.clw6 | — | — | — | 6 | — | — | 10 |
 | f8863.clw7 | — | — | — | 6; via f8863.line19: 3 | — | E via f8863.line19 (PE, TC) | 10 |
-| f8863.line19 | 14 | — | — | 6 | — | PE: 1218 compared (83 nonzero), 418 excluded; TC: 839 compared (65 nonzero), 840 excluded; UsTaxes below rule: 89 compared (44 nonzero), 117 excluded | 14 |
+| f8863.line19 | 14 | — | — | 6 | — | PE: 1218 compared (83 nonzero), 418 excluded; TC: 839 compared (65 nonzero), 840 excluded; UsTaxes below rule: 89 compared (44 nonzero), 117 excluded | 15 |
 
-Unasserted lines: f8863.zero, f8863.aoc_person, f8863.aoc_dep, f8863.aoc_sum, f8863.show_after4, f8863.ban_refused, f8863.kid_needed, f8863.kid, f8863.refund_rate, f8863.line7_40, f8863.llc_person, f8863.llc_dep, f8863.llc_sum, f8863.llc_cap, f8863.llc_rate
+Unasserted lines: f8863.zero, f8863.aoc_person, f8863.aoc_dep, f8863.aoc_sum, f8863.ban_refused, f8863.kid_needed, f8863.kid, f8863.refund_rate, f8863.line7_40, f8863.llc_person, f8863.llc_dep, f8863.llc_sum, f8863.llc_cap, f8863.llc_rate
 
 ## Form 8880 — Credit for Qualified Retirement Savings Contributions (the saver's credit)
 
@@ -1263,8 +1263,8 @@ Unasserted lines: f8960.used, f8960.line16_figured, f8960.bad_allocation
 | f8962.aptc_total | — | — | — | via f8962.line11f: 7 | — | — | — |
 | f8962.estimate_100 | — | — | — | — | — | — | — |
 | f8962.applicable | — | — | — | — | — | — | 1 (stage18.mut.below_100_no_advance) |
-| f8962.show_applicable | — | — | — | — | — | — | — |
-| f8962.filing | — | — | — | — | — | — | — |
+| f8962.show_applicable | — | — | — | — | — | — | 1 (stage18.blind.p17) |
+| f8962.filing | — | — | — | — | — | — | 1 (stage18.blind.p8) |
 | f8962.alien_below | — | — | — | — | — | — | — |
 | f8962.alien_branch | — | — | — | — | — | — | — |
 | f8962.line7 | — | — | — | 11 | — | — | 19 |
@@ -1272,128 +1272,128 @@ Unasserted lines: f8960.used, f8960.line16_figured, f8960.bad_allocation
 | f8962.line8b | — | — | — | 11; via f8962.line12c: 1 (classm.f8962.2.deepseek); via f8962.line13c: 1 (classm.f8962.2.deepseek); via f8962.line14c: 1 (classm.f8962.2.deepseek); via f8962.line15c: 1 (classm.f8962.2.deepseek); via f8962.line16c: 1 (classm.f8962.2.deepseek); via f8962.line17c: 1 (classm.f8962.2.deepseek); via f8962.line18c: 1 (classm.f8962.2.deepseek); via f8962.line19c: 1 (classm.f8962.2.deepseek); via f8962.line20c: 1 (classm.f8962.2.deepseek); via f8962.line21c: 1 (classm.f8962.2.deepseek); via f8962.line22c: 2 (classm.f8962.2.deepseek, classm.f8962.4.deepseek); via f8962.line23c: 2 (classm.f8962.2.deepseek, classm.f8962.4.deepseek) | — | — | 19 |
 | f8962.line9 | — | — | — | 15 | — | — | — |
 | f8962.nonuniform | — | — | — | — | — | — | — |
-| f8962.line10 | — | — | — | 15 | — | — | 23 |
-| f8962.show_annual | 1 (stage4.official.medicare_example5) | — | — | — | — | — | — |
-| f8962.show_annual_calc | 1 (stage4.official.medicare_example5) | — | — | — | — | — | — |
+| f8962.line10 | — | — | — | 15 | — | — | 25 |
+| f8962.show_annual | 1 (stage4.official.medicare_example5) | — | — | — | — | — | 1 (stage18.blind.p14) |
+| f8962.show_annual_calc | 1 (stage4.official.medicare_example5) | — | — | — | — | — | 1 (stage18.blind.p8) |
 | f8962.line11a | — | — | — | 10 | — | — | 16 |
 | f8962.line11b | — | — | — | 10 | — | — | 16 |
 | f8962.line11c | — | — | — | 6 | — | — | 16 |
 | f8962.line11d | — | — | — | 6 | — | PE: 114 compared (60 nonzero), 18 excluded | 16 |
 | f8962.line11e | — | — | — | 6 | — | PE: 114 compared (60 nonzero), 18 excluded; UsTaxes below rule: 36 compared (11 nonzero), 73 excluded | 16 |
 | f8962.line11f | — | — | — | 10 | — | — | 17 |
-| f8962.show_jan | — | — | — | — | — | — | — |
-| f8962.show_jan_calc | — | — | — | — | — | — | — |
-| f8962.line12a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line12b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line12c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 2 (stage18.blind.p10, stage18.blind.p12) |
-| f8962.line12d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 2 (stage18.blind.p10, stage18.blind.p12) |
-| f8962.line12e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 2 (stage18.blind.p10, stage18.blind.p12) |
-| f8962.line12f | — | — | — | 3 | — | — | 2 (stage18.blind.p10, stage18.blind.p12) |
-| f8962.show_feb | — | — | — | — | — | — | — |
-| f8962.show_feb_calc | — | — | — | — | — | — | — |
-| f8962.line13a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line13b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line13c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 2 (stage18.blind.p10, stage18.blind.p12) |
-| f8962.line13d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 2 (stage18.blind.p10, stage18.blind.p12) |
-| f8962.line13e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 2 (stage18.blind.p10, stage18.blind.p12) |
-| f8962.line13f | — | — | — | 3 | — | — | 2 (stage18.blind.p10, stage18.blind.p12) |
-| f8962.show_mar | — | — | — | — | — | — | — |
-| f8962.show_mar_calc | — | — | — | — | — | — | — |
-| f8962.line14a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line14b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line14c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 2 (stage18.blind.p10, stage18.blind.p12) |
-| f8962.line14d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 2 (stage18.blind.p10, stage18.blind.p12) |
-| f8962.line14e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 2 (stage18.blind.p10, stage18.blind.p12) |
-| f8962.line14f | — | — | — | 3 | — | — | 2 (stage18.blind.p10, stage18.blind.p12) |
-| f8962.show_apr | — | — | — | — | — | — | — |
-| f8962.show_apr_calc | — | — | — | — | — | — | — |
-| f8962.line15a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line15b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line15c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line15d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line15e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line15f | — | — | — | 3 | — | — | 3 |
-| f8962.show_may | — | — | — | — | — | — | — |
-| f8962.show_may_calc | — | — | — | — | — | — | — |
-| f8962.line16a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line16b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line16c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line16d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line16e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line16f | — | — | — | 3 | — | — | 3 |
-| f8962.show_jun | — | — | — | — | — | — | — |
-| f8962.show_jun_calc | — | — | — | — | — | — | — |
-| f8962.line17a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line17b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line17c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line17d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line17e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line17f | — | — | — | 3 | — | — | 3 |
-| f8962.show_jul | — | — | — | — | — | — | — |
-| f8962.show_jul_calc | — | — | — | — | — | — | — |
-| f8962.line18a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line18b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 6 |
-| f8962.line18c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line18d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line18e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line18f | — | — | — | 3 | — | — | 3 |
-| f8962.show_aug | — | — | — | — | — | — | — |
-| f8962.show_aug_calc | — | — | — | — | — | — | — |
-| f8962.line19a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line19b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line19c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line19d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line19e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line19f | — | — | — | 3 | — | — | 3 |
-| f8962.show_sep | — | — | — | — | — | — | — |
-| f8962.show_sep_calc | — | — | — | — | — | — | — |
-| f8962.line20a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line20b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
-| f8962.line20c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line20d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line20e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line20f | — | — | — | 3 | — | — | 3 |
-| f8962.show_oct | — | — | — | — | — | — | — |
-| f8962.show_oct_calc | — | — | — | — | — | — | — |
-| f8962.line21a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
-| f8962.line21b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
-| f8962.line21c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line21d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line21e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
-| f8962.line21f | — | — | — | 3 | — | — | 3 |
-| f8962.show_nov | — | — | — | — | — | — | — |
-| f8962.show_nov_calc | — | — | — | — | — | — | — |
-| f8962.line22a | — | — | — | 4 | — | — | 4 |
-| f8962.line22b | — | — | — | 4 | — | — | 5 |
-| f8962.line22c | — | — | — | 4 | — | — | 3 |
-| f8962.line22d | — | — | — | 4 | — | — | 3 |
-| f8962.line22e | — | — | — | 4 | — | — | 3 |
-| f8962.line22f | — | — | — | 5 | — | — | 3 |
-| f8962.show_dec | — | — | — | — | — | — | — |
-| f8962.show_dec_calc | — | — | — | — | — | — | — |
-| f8962.line23a | — | — | — | 4 | — | — | 4 |
-| f8962.line23b | — | — | — | 4 | — | — | 5 |
-| f8962.line23c | — | — | — | 4 | — | — | 3 |
-| f8962.line23d | — | — | — | 4 | — | — | 3 |
-| f8962.line23e | — | — | — | 4 | — | — | 3 |
-| f8962.line23f | — | — | — | 5 | — | — | 3 |
+| f8962.show_jan | — | — | — | — | — | — | 5 |
+| f8962.show_jan_calc | — | — | — | — | — | — | 3 |
+| f8962.line12a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line12b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
+| f8962.line12c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
+| f8962.line12d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
+| f8962.line12e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
+| f8962.line12f | — | — | — | 3 | — | — | 3 |
+| f8962.show_feb | — | — | — | — | — | — | 4 |
+| f8962.show_feb_calc | — | — | — | — | — | — | 3 |
+| f8962.line13a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line13b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
+| f8962.line13c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
+| f8962.line13d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
+| f8962.line13e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
+| f8962.line13f | — | — | — | 3 | — | — | 3 |
+| f8962.show_mar | — | — | — | — | — | — | 4 |
+| f8962.show_mar_calc | — | — | — | — | — | — | 3 |
+| f8962.line14a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line14b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
+| f8962.line14c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
+| f8962.line14d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
+| f8962.line14e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 3 |
+| f8962.line14f | — | — | — | 3 | — | — | 3 |
+| f8962.show_apr | — | — | — | — | — | — | 5 |
+| f8962.show_apr_calc | — | — | — | — | — | — | 3 |
+| f8962.line15a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line15b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
+| f8962.line15c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line15d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line15e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line15f | — | — | — | 3 | — | — | 4 |
+| f8962.show_may | — | — | — | — | — | — | 4 |
+| f8962.show_may_calc | — | — | — | — | — | — | 3 |
+| f8962.line16a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line16b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
+| f8962.line16c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line16d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line16e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line16f | — | — | — | 3 | — | — | 4 |
+| f8962.show_jun | — | — | — | — | — | — | 3 |
+| f8962.show_jun_calc | — | — | — | — | — | — | 2 (stage18.mut.alternate_months_odd, stage18.mut.alternate_months_even) |
+| f8962.line17a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line17b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
+| f8962.line17c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line17d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line17e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
+| f8962.line17f | — | — | — | 3 | — | — | 4 |
+| f8962.show_jul | — | — | — | — | — | — | 3 |
+| f8962.show_jul_calc | — | — | — | — | — | — | 2 (stage18.mut.alternate_months_odd, stage18.mut.alternate_months_even) |
+| f8962.line18a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
+| f8962.line18b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 7 |
+| f8962.line18c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line18d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line18e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
+| f8962.line18f | — | — | — | 3 | — | — | 4 |
+| f8962.show_aug | — | — | — | — | — | — | 4 |
+| f8962.show_aug_calc | — | — | — | — | — | — | 3 |
+| f8962.line19a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
+| f8962.line19b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
+| f8962.line19c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line19d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line19e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line19f | — | — | — | 3 | — | — | 4 |
+| f8962.show_sep | — | — | — | — | — | — | 3 |
+| f8962.show_sep_calc | — | — | — | — | — | — | 2 (stage18.mut.alternate_months_odd, stage18.mut.alternate_months_even) |
+| f8962.line20a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
+| f8962.line20b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 6 |
+| f8962.line20c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line20d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line20e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line20f | — | — | — | 3 | — | — | 4 |
+| f8962.show_oct | — | — | — | — | — | — | 4 |
+| f8962.show_oct_calc | — | — | — | — | — | — | 3 |
+| f8962.line21a | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 5 |
+| f8962.line21b | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 6 |
+| f8962.line21c | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line21d | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line21e | — | — | — | 2 (classm.f8962.2.deepseek, classm.f8962.2) | — | — | 4 |
+| f8962.line21f | — | — | — | 3 | — | — | 4 |
+| f8962.show_nov | — | — | — | — | — | — | 4 |
+| f8962.show_nov_calc | — | — | — | — | — | — | 3 |
+| f8962.line22a | — | — | — | 4 | — | — | 6 |
+| f8962.line22b | — | — | — | 4 | — | — | 7 |
+| f8962.line22c | — | — | — | 4 | — | — | 4 |
+| f8962.line22d | — | — | — | 4 | — | — | 4 |
+| f8962.line22e | — | — | — | 4 | — | — | 4 |
+| f8962.line22f | — | — | — | 5 | — | — | 5 |
+| f8962.show_dec | — | — | — | — | — | — | 4 |
+| f8962.show_dec_calc | — | — | — | — | — | — | 3 |
+| f8962.line23a | — | — | — | 4 | — | — | 6 |
+| f8962.line23b | — | — | — | 4 | — | — | 7 |
+| f8962.line23c | — | — | — | 4 | — | — | 4 |
+| f8962.line23d | — | — | — | 4 | — | — | 4 |
+| f8962.line23e | — | — | — | 4 | — | — | 4 |
+| f8962.line23f | — | — | — | 5 | — | — | 5 |
 | f8962.monthly_e | — | — | — | — | — | — | — |
 | f8962.monthly_f | — | — | — | — | — | — | — |
 | f8962.allowed | — | — | — | — | — | — | — |
-| f8962.line24 | — | — | — | 13 | — | — | 34 |
-| f8962.line25 | — | — | — | 15 | — | UsTaxes below rule: 36 compared (26 nonzero), 73 excluded | 33 |
-| f8962.net | — | — | — | — | — | — | — |
-| f8962.line26 | — | — | — | 4 | — | PE below rule: 29 compared (18 nonzero), 103 excluded; UsTaxes below rule: 36 compared (6 nonzero), 73 excluded | 19 |
-| f8962.excess | — | — | — | — | — | — | — |
+| f8962.line24 | — | — | — | 13 | — | — | 36 |
+| f8962.line25 | — | — | — | 15 | — | UsTaxes below rule: 36 compared (26 nonzero), 73 excluded | 35 |
+| f8962.net | — | — | — | — | — | — | 5 |
+| f8962.line26 | — | — | — | 4 | — | PE below rule: 29 compared (18 nonzero), 103 excluded; UsTaxes below rule: 36 compared (6 nonzero), 73 excluded | 21 |
+| f8962.excess | — | — | — | — | — | — | 4 |
 | f8962.line27 | — | — | — | 9 | — | — | 5 |
 | f8962.repay_200 | — | — | — | — | — | — | — |
 | f8962.repay_300 | — | — | — | — | — | — | — |
 | f8962.repay_400 | — | — | — | — | — | — | — |
-| f8962.show_28 | — | — | — | — | — | — | — |
+| f8962.show_28 | — | — | — | — | — | — | 2 (stage18.blind.p4, stage18.blind.p10) |
 | f8962.line28 | — | — | — | 7 | — | — | 4 |
 | f8962.line29 | — | — | — | 9 | — | UsTaxes below rule: 36 compared (25 nonzero), 73 excluded | 5 |
 
-Unasserted lines: f8962.zero, f8962.forms, f8962.any, f8962.void_forms, f8962.void_form, f8962.two_counted, f8962.b_zero, f8962.ws1_1, f8962.ws1_2, f8962.ws1_4, f8962.income_total, f8962.show_applicable, f8962.filing, f8962.alien_branch, f8962.nonuniform, f8962.show_jan, f8962.show_jan_calc, f8962.show_feb, f8962.show_feb_calc, f8962.show_mar, f8962.show_mar_calc, f8962.show_apr, f8962.show_apr_calc, f8962.show_may, f8962.show_may_calc, f8962.show_jun, f8962.show_jun_calc, f8962.show_jul, f8962.show_jul_calc, f8962.show_aug, f8962.show_aug_calc, f8962.show_sep, f8962.show_sep_calc, f8962.show_oct, f8962.show_oct_calc, f8962.show_nov, f8962.show_nov_calc, f8962.show_dec, f8962.show_dec_calc, f8962.monthly_e, f8962.monthly_f, f8962.allowed, f8962.net, f8962.excess, f8962.repay_200, f8962.repay_300, f8962.repay_400, f8962.show_28
+Unasserted lines: f8962.zero, f8962.forms, f8962.any, f8962.void_forms, f8962.void_form, f8962.two_counted, f8962.b_zero, f8962.ws1_1, f8962.ws1_2, f8962.ws1_4, f8962.income_total, f8962.alien_branch, f8962.nonuniform, f8962.monthly_e, f8962.monthly_f, f8962.allowed, f8962.repay_200, f8962.repay_300, f8962.repay_400
 
 ## Form 8995 — Qualified Business Income Deduction Simplified Computation
 
@@ -1891,11 +1891,11 @@ Unasserted lines: otjob.one, otjob.zero
 | person.edu_over | — | — | — | — | — | — | — |
 | person.edu_over_refused | — | — | — | — | — | — | — |
 | person.edu_line23 | — | — | — | — | — | — | 9 |
-| person.edu_show24 | 1 (stage19.example.aoc_phaseout) | — | — | — | — | — | — |
+| person.edu_show24 | 1 (stage19.example.aoc_phaseout) | — | — | — | — | — | 1 (stage19.refuse.period_over_person) |
 | person.edu_line24 | — | — | — | — | — | — | 9 |
 | person.edu_show25 | 1 (stage19.example.aoc_phaseout) | — | — | — | — | — | — |
 | person.edu_line25 | — | — | — | — | — | — | 7 |
-| person.edu_show26 | 1 (stage19.example.aoc_phaseout) | — | — | — | — | — | — |
+| person.edu_show26 | 1 (stage19.example.aoc_phaseout) | — | — | — | — | — | 1 (stage19.refuse.period_over_dependent) |
 | person.edu_line26 | — | — | — | — | — | — | 6 |
 | person.edu_ein | — | — | — | — | — | — | — |
 | person.edu_aoc | — | — | — | — | — | — | — |
@@ -2088,7 +2088,7 @@ Unasserted lines: refund.zero, refund.has, refund.worksheet, refund.line5e_bad, 
 | retirement.bad_code | — | — | — | — | — | — | — |
 | retirement.rolled | — | — | — | — | — | — | — |
 | retirement.has_rollover | — | — | — | — | — | — | — |
-| retirement.smw_shown | — | — | — | — | — | — | 2 (stage21.t067.smw_hidden_ira, stage21.t067.smw_hidden_cost_recovered) |
+| retirement.smw_shown | — | — | — | — | — | — | 3 |
 | retirement.smw1 | — | — | — | 10 | — | — | — |
 | retirement.smw2 | — | — | — | 10 | — | — | — |
 | retirement.smw4_t1_360 | — | — | — | — | — | — | — |
@@ -2513,7 +2513,7 @@ Unasserted lines: s3.zero, s3.mfs
 | s8812.amt_ws4 | — | — | — | — | — | — | 24 |
 | s8812.amt_ws6 | — | — | — | — | — | — | — |
 | s8812.amt_ws7 | — | — | — | — | — | — | 1 (stage14.f8959.se_above_threshold) |
-| s8812.show_iib | — | — | — | — | — | — | 2 (stage8.hoh.child.ctc, stage8.hoh.actc.one_child.low_wages) |
+| s8812.show_iib | — | — | — | — | — | — | 4 |
 | s8812.line21 | — | — | — | 4; via s8812.clwb_7: 1 (classm.s8812.4.deepseek) | — | UsTaxes: 610 compared (610 nonzero), 177 excluded | 26 |
 | s8812.line22 | — | — | — | 4 | — | — | 26 |
 | s8812.line23 | — | — | — | 4 | — | UsTaxes: 610 compared (610 nonzero), 177 excluded | 26 |
@@ -2537,7 +2537,7 @@ Unasserted lines: s3.zero, s3.mfs
 | s8812.clwb_5 | — | — | — | 2 (classm.s8812.4.deepseek, classm.s8812.4) | — | — | 6 |
 | s8812.clwb_three | — | — | — | — | — | — | — |
 | s8812.clwb_5_covers | — | — | — | — | — | — | — |
-| s8812.clwb_to7 | — | — | — | — | — | — | 1 (stage21.t067.s8812_clwb_line6_blank) |
+| s8812.clwb_to7 | — | — | — | — | — | — | 4 |
 | s8812.clwb_7 | — | — | — | 2 (classm.s8812.4.deepseek, classm.s8812.4) | — | — | 1 (stage16.cleanup.mut.clwb_three_figured) |
 | s8812.clwb_8 | — | — | — | 2 (classm.s8812.4.deepseek, classm.s8812.4) | — | — | 1 (stage16.cleanup.mut.clwb_three_figured) |
 | s8812.clwb_9 | — | — | — | 2 (classm.s8812.4.deepseek, classm.s8812.4) | — | — | 1 (stage16.cleanup.mut.clwb_three_figured) |
@@ -3048,7 +3048,7 @@ Unasserted lines: scveh.zero, scveh.cent, scveh.bm_c, scveh.cm_c, scveh.om_c, sc
 | sd.line4 | — | — | — | 6 | — | — | 1 (sales.refuse.forms) |
 | sd.line5 | — | — | — | 6 | — | — | 1 (sales.refuse.forms) |
 | sd.line6_ws | — | — | — | — | — | — | 1 (stage20.refuse.other_forms_with_carryover) |
-| sd.line6 | — | — | — | 6 | — | OpenTaxSolver: 260 compared (187 nonzero), 0 excluded | 22 |
+| sd.line6 | — | — | — | 6 | — | OpenTaxSolver: 260 compared (187 nonzero), 0 excluded | 23 |
 | sd.line11 | — | — | — | 6 | — | — | 1 (sales.refuse.forms) |
 | sd.line12 | — | — | — | 6 | — | — | 1 (sales.refuse.forms) |
 | sd.line14_ws | — | — | — | — | — | — | 1 (stage20.refuse.other_forms_with_carryover) |
@@ -3441,5 +3441,5 @@ Unasserted lines: below_boundary, table_tax, worksheet_tax, tax
 
 Unasserted lines: single.row1.product, single.row1.tax, single.row2.product, single.row2.tax, single.row3.product, single.row3.tax, single.row4.product, single.row4.tax, single.row5.product, single.row5.tax, single.result, mfj.row1.product, mfj.row1.tax, mfj.row2.product, mfj.row2.tax, mfj.row3.product, mfj.row3.tax, mfj.row4.product, mfj.row4.tax, mfj.row5.product, mfj.row5.tax, mfj.result, mfs.row1.product, mfs.row1.tax, mfs.row2.product, mfs.row2.tax, mfs.row3.product, mfs.row3.tax, mfs.row4.product, mfs.row4.tax, mfs.row5.product, mfs.row5.tax, mfs.result, hoh.row1.product, hoh.row1.tax, hoh.row2.product, hoh.row2.tax, hoh.row3.product, hoh.row3.tax, hoh.row4.product, hoh.row4.tax, hoh.row5.product, hoh.row5.tax, hoh.result, tax
 
-Unasserted computed lines across all documents: 1203. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
+Unasserted computed lines across all documents: 1162. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
 Asserted keys not matching a line id: dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line27, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line29, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28_zero, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line30, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line27, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line29, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28_zero, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line30, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line3, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.positive, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4a, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.owes, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4c, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line5b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line6, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line7, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line8d, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line9, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line10, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line11, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line12, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line13, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax

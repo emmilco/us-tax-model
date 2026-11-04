@@ -2366,7 +2366,7 @@
         "f1095a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.retirement.5.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: one Form 1095-A with monthly amounts that differ by month; Form 8962 lines 12 through 23 take each month's Form 1095-A columns A and B into columns (a) and (b) (i8962). February (line 13): column A $403, column B $771; October (line 21) column B $333.",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.retirement.5.deepseek unchanged; expected values predicted by hand from the archived sources before running the evaluator: one Form 1095-A with monthly amounts that differ by month; Form 8962 lines 12 through 23 take each month's Form 1095-A columns A and B into columns (a) and (b) (i8962). February (line 13): column A $403, column B $771; October (line 21) column B $333. Shown state (T-232, predicted from the forms before evaluating): line 10 is No; wages of $369,062 for a tax family of one put line 5 far above 100, so the filer is an applicable taxpayer; coverage starts in February, so line 13 is used with its calculation columns (i8962 p. 17, \"If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank\").",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -2833,6 +2833,14 @@
         "f8962.line21b": {
           "kind": "money",
           "cents": 33300
+        },
+        "f8962.show_feb": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_feb_calc": {
+          "kind": "bool",
+          "value": true
         }
       }
     },
@@ -4164,7 +4172,7 @@
         "f1095a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.asset.3 unchanged; expected values predicted by hand from the archived sources before running the evaluator: one Form 1095-A with coverage from August; Form 8962 line 19 (August) column (a) is the Form 1095-A August column A amount, $275.",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.asset.3 unchanged; expected values predicted by hand from the archived sources before running the evaluator: one Form 1095-A with coverage from August; Form 8962 line 19 (August) column (a) is the Form 1095-A August column A amount, $275. Shown state (T-232, predicted from the forms before evaluating): line 10 is No; wages of $48,074 plus a Schedule C profit put household income above the poverty line for the tax family, so the filer is an applicable taxpayer; coverage starts in August, so line 19 is used with its calculation columns (i8962 p. 17, \"If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank\").",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -4798,6 +4806,14 @@
         "f8962.line19a": {
           "kind": "money",
           "cents": 27500
+        },
+        "f8962.show_aug": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_aug_calc": {
+          "kind": "bool",
+          "value": true
         }
       }
     },
@@ -9445,7 +9461,7 @@
         "s1a"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.carloan.2 unchanged; expected values predicted by hand from the archived sources before running the evaluator: head of household claiming qualified passenger vehicle loan interest (Part IV applies): Schedule 1-A line 26 'Enter $100,000 ($200,000 if married filing jointly)' is $100,000.",
+      "evidence_note": "Mutation fixture (choose branch values), inputs of classm.carloan.2 unchanged; expected values predicted by hand from the archived sources before running the evaluator: head of household claiming qualified passenger vehicle loan interest (Part IV applies): Schedule 1-A line 26 'Enter $100,000 ($200,000 if married filing jointly)' is $100,000. Shown state (T-232, predicted from the instructions before evaluating): $7,608 contributed to an HSA with family coverage for 9 months (limit 9/12 of $8,550, $6,412.50, no last-month rule) is an excess contribution, so Form 5329 Part VII is prepared for the taxpayer (i5329 p. 8, Line 47, excess contributions for 2025), with no early distribution.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -9905,6 +9921,10 @@
         "s1a.line26": {
           "kind": "money",
           "cents": 10000000
+        },
+        "person[taxpayer].f5329[form].files": {
+          "kind": "bool",
+          "value": true
         }
       }
     },
@@ -17743,7 +17763,7 @@
         "f8962"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Mutation fixture (choose branch values: the monthly Form 1095-A amounts), inputs of classm.f1095a.1.deepseek with only its second Form 1095-A (mkt_b, monthly amounts, column B counted) and its March, October, November and December amounts changed so that each differs from the month before; expected values predicted by hand from the archived i8962 (p. 16, Lines 12 Through 23: 'Column (a). Enter on lines 12 through 23, column (a), the amount of the monthly premiums reported on Form 1095-A, lines 21 through 32, column A, for the corresponding month' and 'Column (b). Enter on lines 12 through 23, column (b), the amount of the monthly applicable SLCSP premium reported on Form 1095-A, lines 21 through 32, column B, for the corresponding month') before running the evaluator: with one Form 1095-A, line 14 (March) is $500 in column (a) and $200 in column (b); line 21 (October) column (a) $1,200; line 22 (November) column (a) $1,100; line 23 (December) $1,300 in column (a) and $400 in column (b).",
+      "evidence_note": "Mutation fixture (choose branch values: the monthly Form 1095-A amounts), inputs of classm.f1095a.1.deepseek with only its second Form 1095-A (mkt_b, monthly amounts, column B counted) and its March, October, November and December amounts changed so that each differs from the month before; expected values predicted by hand from the archived i8962 (p. 16, Lines 12 Through 23: 'Column (a). Enter on lines 12 through 23, column (a), the amount of the monthly premiums reported on Form 1095-A, lines 21 through 32, column A, for the corresponding month' and 'Column (b). Enter on lines 12 through 23, column (b), the amount of the monthly applicable SLCSP premium reported on Form 1095-A, lines 21 through 32, column B, for the corresponding month') before running the evaluator: with one Form 1095-A, line 14 (March) is $500 in column (a) and $200 in column (b); line 21 (October) column (a) $1,200; line 22 (November) column (a) $1,100; line 23 (December) $1,300 in column (a) and $400 in column (b). Shown state (T-232, predicted from the forms before evaluating): line 10 is No (monthly amounts); the filer is an applicable taxpayer through the Marketplace-estimate exception with advance payments (i8962 p. 9); March and May have premiums, April none, so lines 14 and 16 are used with their calculation columns and line 15 is not (i8962 p. 17, \"If columns (a) and (b) of any of lines 12 through 23 are blank, leave column (c) of the corresponding line blank\").",
       "inputs": {
         "clcw.spouse_screen": false,
         "clcw.prior_11": 0,
@@ -18202,6 +18222,26 @@
         "f8962.line23b": {
           "kind": "money",
           "cents": 40000
+        },
+        "f8962.show_mar": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_mar_calc": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_apr": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.show_may": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8962.show_may_calc": {
+          "kind": "bool",
+          "value": true
         }
       }
     },
