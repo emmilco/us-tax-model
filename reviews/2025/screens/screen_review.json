@@ -4010,7 +4010,7 @@
  },
  {
   "screen": "sales.special",
-  "question": "Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property: generally, real property that you depreciated, such as a home you once rented out or used in part as a home office), or an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost?",
+  "question": "Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property: generally, real property for which depreciation was allowed or allowable (claimed, or that you could have claimed), such as a home you once rented out or used in part as a home office), or an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost; or does it dispose of an investment in a qualified opportunity fund (QOF), or is any of its gain deferred by an investment in a QOF?",
   "lines": [
    "sales.one"
   ],
@@ -4018,24 +4018,12 @@
   "findings": [
    {
     "kind": "WIDE",
-    "situation": "A filer sells S corporation stock or a trust interest held more than 1 year, and the entity owns depreciated real property (section 1250 property) but no collectibles.",
-    "irs_text": "Question: 'an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property'. i1040sd p. 12, Line 19: 'You reported a long-term capital gain from the sale or exchange of an interest in a partnership that owned section 1250 property.'",
-    "why": "The Line 19 look-through applies only to partnership interests. Gain on S corporation stock or a trust interest is ordinary capital gain that the tool computes, yet the question makes the filer answer YES."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer sells an interest in a partnership, S corporation or trust that holds collectibles, after owning the interest for 1 year or less.",
-    "irs_text": "Question: 'an interest in a partnership, S corporation or trust ... that holds collectibles'. i1040sd p. 11, Line 18: 'any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles.'",
-    "why": "The 28% worksheet reaches only gain on interests held more than 1 year. A short-term sale of such an interest needs no Line 18 entry, but the question has no holding-period limit."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer sells an interest in a partnership, S corporation or trust whose collectibles are worth less than their cost, so no part of the gain comes from collectibles appreciation.",
-    "irs_text": "Question: 'that holds collectibles or section 1250 property ... such as stock of an S corporation that owns art or gold worth more than its cost'. i1040sd p. 11: 'Include on the worksheet any gain (but not loss) ... attributable to unrealized appreciation of collectibles.'",
-    "why": "The main clause covers any interest in an entity that 'holds collectibles', whatever their value. The IRS text reaches only gain from unrealized appreciation, and the 'worth more than its cost' wording appears only in an example."
+    "situation": "A filer sells S corporation stock or a trust interest at a long-term gain, where the entity owns depreciated rental real estate but no collectibles.",
+    "irs_text": "i1040sd p.12, Line 19: \"You reported a long-term capital gain from the sale or exchange of an interest in a partnership that owned section 1250 property.\" Compare i1040sd p.11, Line 18: \"gain ... from the sale or exchange of an interest in a partnership, S corporation, or trust ... attributable to unrealized appreciation of collectibles.\"",
+    "why": "The question asks about \"an interest in a partnership, S corporation or trust (including S corporation stock) that holds ... section 1250 property,\" so this filer must answer YES. Under the IRS text, the section 1250 look-through applies only to partnership interests. The S corporation stock or trust interest sale is an ordinary capital gain, which the tool computes correctly."
    }
   ],
-  "prompt_sha": "152917a1d97217bd751b194ea613fe9e5b245b7931dea333e57efa600a657d7d",
+  "prompt_sha": "6b0eab8bead3c47add501283fc08f2136d10997c011d1c1e137300ee54538f83",
   "used": [
    {
     "doc": "i1040sd",
@@ -4050,7 +4038,7 @@
     "locators": [
      "p. 10, lines 1a and 8a",
      "pp. 11–12, lines 18 and 19",
-     "pp. 11–12, lines 18 and 19; p. 11, Line 19, \"section 1250 property (generally, real property that you depreciated)\"; p. 11, line 18, \"Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles.\"; p. 12, line 19, \"You reported a long-term capital gain from the sale or exchange of an interest in a partnership that owned section 1250 property\""
+     "pp. 11–12, lines 18 and 19; p. 11, Line 19, \"section 1250 property (generally, real property that you depreciated)\"; p. 12, \"Figure the smaller of (a) the depreciation allowed or allowable, or (b) the total gain for the sale.\"; p. 11, line 18, \"Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles.\"; p. 12, line 19, \"You reported a long-term capital gain from the sale or exchange of an interest in a partnership that owned section 1250 property\"; p. 10, Disposal of QOF Investment, \"If you disposed of any investment in a QOF during the tax year, check the box on page 1 of Schedule D and see the Instructions for Form 8949 for additional reporting requirements.\""
     ],
     "cols_pages": [
      11,
@@ -4096,7 +4084,7 @@
     "cols_sha256": "cc308c3ff7751456647bed9c2855d077dcbd0a55469b57f9e8cccb6f4927f232"
    }
   ],
-  "cost": 0.204676,
+  "cost": 0.21671200000000002,
   "model": "claude-opus-5-5"
  },
  {

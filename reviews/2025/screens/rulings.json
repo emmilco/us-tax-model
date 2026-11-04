@@ -1347,30 +1347,18 @@
    "adjudication": "reviews/2025/screens/adjudication/group7.md"
   },
   "unruled:sales.special": {
-   "prompt_sha": "152917a1d97217bd751b194ea613fe9e5b245b7931dea333e57efa600a657d7d",
-   "reason": "No defect. BUG-0408's wording ('real property that you depreciated, such as a home you once rented out or used in part as a home office') closed group 8's low and drew no finding; the three WIDE findings are accepted as in group 8.",
+   "prompt_sha": "6b0eab8bead3c47add501283fc08f2136d10997c011d1c1e137300ee54538f83",
+   "reason": "No defect. The allowed-or-allowable wording (BUG-0418) closed the NARROW finding of the previous rerun (a home whose depreciation was allowable but never claimed); the WIDE finding is accepted as in group 8.",
    "findings": [
     {
      "n": 0,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i1040sd p. 12, Line 19. S corporation or trust interests holding only section 1250 property are refused. Safe; as group 8 finding 0."
-    },
-    {
-     "n": 1,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "i1040sd p. 11, Line 18. A short-term sale of an interest in an entity holding collectibles is refused though no line 18 entry is needed. Safe."
-    },
-    {
-     "n": 2,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "i1040sd p. 11, Line 18. An entity interest whose collectibles have no appreciation is refused. Safe; as group 8 finding 1."
+     "evidence": "i1040sd p. 12, Line 19. An S corporation or trust interest whose entity holds only section 1250 property is refused though no line 19 look-through entry results. Safe; as group 8 finding 0."
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group9.md"
+   "adjudication": "reviews/2025/screens/adjudication/group12.md"
   },
   "unruled:sb.line8": {
    "prompt_sha": "bac1d7745a6c4e4b90d1449fbf5df780355eb8cbc0383a8e87dd907469971f1e",

@@ -25,11 +25,11 @@ whole, with the prompt limit raised to 700k characters. Cost $2.23; 2 more lows 
 - every BUG-0414 low is fixed (BUG-0415), and round 3's own lows are fixed too (BUG-0416);
 - T-232's no-schema route ran: 21 of 145 display-condition mutants are killed by source-predicted gate values on class A cases;
 - T-231 and T-196 were closed by cost decision;
-- two rare sales lows remain (BUG-0417, T-233); sales completeness keeps finding Pub. 550 detail, so lows are batched per the protocol.
+- the two rare sales lows (BUG-0417) and the findings of the sales reviews after them are fixed (BUG-0418); the last sales completeness review found nothing that isn't refused elsewhere.
 
-Paid calls this round: $24.90 (46 calls).
+Paid calls this round: $36.85 (70 calls).
 
-**Next:** T-233 and T-231 at each form's next pass; T-217 after 2026-11-06 15:49; T-196 if a reader changes; coverage expansion stays last.
+**Next:** T-217 after 2026-11-06 15:49; the owner questions on T-232 and on transcription for wording-only changes; coverage expansion stays last.
 
 ---
 

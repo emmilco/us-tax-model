@@ -50,7 +50,7 @@ Chosen from the source pages above (catalog_selection); refusal-gate inputs are 
 
 ### sales.one — Screen this transaction before any aggregation
 Status: **AGREE**
-Reviewed in: pass 7e9bbf084234
+Reviewed in: pass 82f67b365891
 
 ### (e) — Column (e): reported basis if covered; correct basis otherwise
 Status: **DISAGREE**
@@ -67,10 +67,10 @@ Second:
 {"alternatives": [{"guard": {"args": [{"args": [{"const": "A"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "D"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "G"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "J"}, {"input": "sales.box"}], "test": "ne"}], "test": "all"}, "then": {"input": "sales.correct_basis"}}, {"guard": {"args": [{"args": [{"const": "A"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "D"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "G"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "J"}, {"input": "sales.box"}], "test": "eq"}], "test": "any"}, "then": {"input": "sales.reported_basis"}}], "op": "choose"}
 ```
 
-Second transcription's note: For boxes A, D, G and J (including transactions aggregated on Schedule D line 1a or 8a, which require basis reported to the IRS) the reported basis is entered; for boxes B, C, E, F, H, I, K and L the correct basis is entered (the text for boxes B/E/H/K says to enter the correct basis, and boxes C/F/I/L have no broker report). A known mismatch between the reported basis and the correct basis on a box A/D/G/J transaction without code B is a consistency failure.
+Second transcription's note: For a sale reported in aggregate on Schedule D line 1a or 8a (Exception 1), only box A, D, G or J transactions qualify and no basis adjustment is needed, so the reported basis is used. That is the same rule as for the detail rows of those boxes.
 
 Ruling: scope; same reply and project as the round-2 ruling. f8949 p. 1, box G; i8949 p. 8, code B. The reply adds boxes G and J to the reported-basis boxes, but boxes G to L are refused at the transaction by sales.digital at sales.one. Scratch run of triage.mjs on the round-3 reply (.transcription/sales.lines-ceb969c79173) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 476 partial records; 1,762 comparisons per line): 1,755 agree; the 7 value differences are all on refused returns (boxes G and J). Project stands.
-Reviewed in: pass 7e9bbf084234
+Reviewed in: pass 82f67b365891
 
 ### (g) — Column (g): net adjustments
 Status: **DISAGREE**
@@ -84,13 +84,13 @@ Project:
 Second:
 
 ```json
-{"of": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "A"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "D"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "G"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "J"}, {"input": "sales.box"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "B"}, {"input": "sales.code"}], "test": "eq"}, {"args": [{"const": "BW"}, {"input": "sales.code"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"from": {"input": "sales.reported_basis"}, "op": "subtract", "take": {"input": "sales.correct_basis"}}}, {"guard": {"args": [{"args": [{"args": [{"const": "A"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "D"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "G"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "J"}, {"input": "sales.box"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "B"}, {"input": "sales.code"}], "test": "ne"}, {"args": [{"const": "BW"}, {"input": "sales.code"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "BW"}, {"input": "sales.code"}], "test": "ne"}, {"args": [{"const": "W"}, {"input": "sales.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "BW"}, {"input": "sales.code"}], "test": "eq"}, {"args": [{"const": "W"}, {"input": "sales.code"}], "test": "eq"}], "test": "any"}, "then": {"input": "sales.wash_loss"}}], "op": "choose"}], "op": "sum"}
+{"alternatives": [{"guard": {"args": [{"const": "aggregate"}, {"input": "sales.route"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "aggregate"}, {"input": "sales.route"}], "test": "ne"}, "then": {"of": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "A"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "D"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "G"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "J"}, {"input": "sales.box"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "B"}, {"input": "sales.code"}], "test": "eq"}, {"args": [{"const": "BW"}, {"input": "sales.code"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"from": {"input": "sales.reported_basis"}, "op": "subtract", "take": {"input": "sales.correct_basis"}}}, {"guard": {"args": [{"args": [{"args": [{"const": "A"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "D"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "G"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "J"}, {"input": "sales.box"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "B"}, {"input": "sales.code"}], "test": "ne"}, {"args": [{"const": "BW"}, {"input": "sales.code"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "BW"}, {"input": "sales.code"}], "test": "ne"}, {"args": [{"const": "W"}, {"input": "sales.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "BW"}, {"input": "sales.code"}], "test": "eq"}, {"args": [{"const": "W"}, {"input": "sales.code"}], "test": "eq"}], "test": "any"}, "then": {"input": "sales.wash_loss"}}], "op": "choose"}], "op": "sum"}}], "op": "choose"}
 ```
 
-Second transcription's note: Only codes B and W are computed; their adjustments are netted as the text directs for more than one code. Any other code (code other) and sales with collectibles, QSB stock, section 1250 property or such pass-through interests (sales.special) are refused rather than written as zero. Column (g) is left blank when no code applies; its value is then zero.
+Second transcription's note: Under Exception 1, a sale reported in aggregate on Schedule D has no adjustments, so it carries 0. If no code applies, columns (f) and (g) are left blank and the value is 0. Codes other than B and W, and the special situations (collectibles code C, QSB stock code Q, QOF codes Y and Z), have no amount input in this interface. They are refused rather than computed.
 
 Ruling: model error and scope; i8949 p. 10, code W, "enter the amount of the nondeductible loss as a positive number in column (g)", and p. 8, code B. Values are the project's (the code B correction on boxes A and D plus the wash-sale loss for W or BW); the boxes G and J and route conditions are the round-2 ruling's scope points. New evidence on the same reply: its wash-excess gate (h_wash_excess: code W and the wash-sale loss above correct basis less proceeds) refuses completed returns the project computes, because it measures the loss from the correct basis where column (e) on box A or D is the reported basis, and fires on a $0 wash-sale loss on a row with a gain; the project refuses only a positive wash-sale loss above the loss after any code B correction (sales.wash_bad; the sales.wash_loss question, "It cannot be more than the loss on this sale (column (e) less column (d), after any code B basis correction)"). Scratch run of triage.mjs on the round-3 reply (.transcription/sales.lines-ceb969c79173) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 476 partial records; 1,762 comparisons per line): 1,379 agree; on completed returns 42 candidate refusals, all h_wash_excess (e.g. classm.clcw26.2.deepseek s2, box A, code W, wash-sale loss $0.00, project $0.00); the rest are on refused or incomplete returns. The round-3 sales.wash_loss wording fix (the definition and "0 if no part of the loss is from a wash sale") does not cause it. Project stands.
-Reviewed in: pass 7e9bbf084234
+Reviewed in: pass 82f67b365891
 
 ### (h) — Column (h): proceeds less basis plus adjustments
 Status: **DISAGREE**
@@ -116,8 +116,7 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 
 | line | gates listed | not read by the project's line |
 | --- | --- | --- |
-| (e) | sales.h_basis_unflagged | sales.h_basis_unflagged |
-| (g) | sales.h_aggregate_conflict, sales.h_other_code, sales.h_wash_excess, sales.special | sales.h_aggregate_conflict, sales.h_other_code, sales.h_wash_excess, sales.special |
+| (g) | sales.h_code_other, sales.h_wash_over, sales.special | sales.h_code_other, sales.h_wash_over, sales.special |
 | (h) | sales.h_aggregate_bad, sales.h_code_other, sales.h_wash_excess, sales.special | sales.h_aggregate_bad, sales.h_code_other, sales.h_wash_excess, sales.special |
 
 ## Line subjects
@@ -126,9 +125,9 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 | line | subject sha256 |
 | --- | --- |
-| sales.one | 8d309a85773acad1d8f9f0453e3400fb80ca91c66e7944158af7d92d8570a680 |
-| (e) | b5aa5d9a4d36bf71ecf78f83633261dc52993ba401e88fb994c932bb3f2b9c4d |
-| (g) | b1541c54f3b892c126800524284890e3d6ec0599d13dac66cf78f8d9d2d7f0f7 |
+| sales.one | c67ee5ae0f460c919f0be5b8f038ae80dc4c6270406b728f0b3c91dc6a91dd8f |
+| (e) | d3d50baa9c23dc9bff0375818e7910228652d8a801caacb4acab98b18d6ea470 |
+| (g) | 77fa70f9061da2d07b975c536b2a72ef07fe97a96b305978b873e4ef59d32269 |
 | (h) | 2422451df8e177d55abe45d3f471d4c89063e2ddde31e6b78d028783cf6be82d |
 | (rest of the document) | bd65df118805874cff9360e29b8978e3a8b739647bd7439342d356bc47841505 |
 
@@ -147,7 +146,7 @@ The interfaces (id, printed marker, type, input question) of other documents' li
 
 Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
 
-#### Pass 7e9bbf084234
+#### Pass 82f67b365891
 
 | field | value |
 | --- | --- |
@@ -155,19 +154,19 @@ Lines reviewed again after a change, each pass by its own isolated request (tran
 | review scope | lines sales.one, (e), (g) |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 7e9bbf084234ed1962d2fbc197020bdfd9e63acded0a6aba4a565720c660e186 |
+| prompt sha256 | 82f67b365891364aa417b7fd4e8a4b577ea4bb726391d9f2e2b747f0daef7293 |
 | prompt policy | source-only-computation-v3+lines-v1 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
 | complete input context | pass |
-| required input context sha256 | 49e497583fd21cee47f88d789ecff463f1a9c57f1bf24ca2f81e8fd1f7211c78 |
+| required input context sha256 | 047e2ddce85a8f2dd998a938dc30003faa470ea2cc1d1ab2be73309c059f1242 |
 | type validation policy | project-expression-types-v3 |
 | model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 4be36125cb6b9bcb6108997ac32d18f6cbbfa3fd060bfc6879a56bd8af531746 |
+| subject sha256 | 10e81b0fbbbbf993304fc7fb28ca20036c90e081855ba9d3d71412ee85a9bc3c |
 | receipt | .transcription/sales.lines-efadd99d9686 |
 | printed lines compared | 3 |
 | agree / disagree / missing | 1 / 2 / 0 |
@@ -198,9 +197,9 @@ Chosen from the source pages above (catalog_selection); refusal-gate inputs are 
 ```yaml
 ```yaml
 lines:
-  - id: sales.h_basis_reported_box
+  - id: sales.h_basis_reported
     printed: "(helper)"
-    label: "Transaction reported on Part I with box A or box G checked, or on Part II with box D or box J checked (basis shown and reported to the IRS)"
+    label: "Box A, D, G or J: transaction reported on Form 1099-B or Form 1099-DA (or substitute statement) showing basis was reported to the IRS"
     type: Bool
     expr:
       op: test
@@ -209,84 +208,59 @@ lines:
         - {op: test, eq: [sales.box, {const: "D"}]}
         - {op: test, eq: [sales.box, {const: "G"}]}
         - {op: test, eq: [sales.box, {const: "J"}]}
-
   - id: sales.e
     printed: "(e)"
-    label: "Cost or other basis. For covered securities, enter the basis shown on Form 1099-B or Form 1099-DA (or substitute statement) in column (e). If this transaction is reported on Part I with box A or box G checked or on Part II with box D or box J checked, enter the basis shown on Form 1099-B or Form 1099-DA (or substitute statement) in column (e), even though that basis is incorrect. If reported with box B, E, H or K checked, enter the correct basis in column (e); for transactions not reported to you on Form 1099-B or Form 1099-DA, enter the correct basis."
+    label: "Cost or other basis. For covered securities, enter the basis shown on Form 1099-B or Form 1099-DA (or substitute statement) in column (e). If you checked Box A, D, G or J but the basis reported to the IRS was incorrect, enter in column (e) the basis as reported to the IRS. If the basis was not reported to the IRS (box B, E, H or K), enter the correct basis in column (e). If you did not receive a Form 1099-B or Form 1099-DA (box C, F, I or L), enter the correct basis."
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [sales.h_basis_reported_box, {const: true}]}
+        - guard: {op: test, eq: [sales.h_basis_reported, {const: true}]}
           then: sales.reported_basis
-        - guard: {op: test, eq: [sales.h_basis_reported_box, {const: false}]}
+        - guard: {op: test, eq: [sales.h_basis_reported, {const: false}]}
           then: sales.correct_basis
-    refuses:
-      - {when: sales.h_basis_unflagged, when_known: true}
-    note: "For boxes A, D, G and J (including transactions aggregated on Schedule D line 1a or 8a, which require basis reported to the IRS) the reported basis is entered; for boxes B, C, E, F, H, I, K and L the correct basis is entered (the text for boxes B/E/H/K says to enter the correct basis, and boxes C/F/I/L have no broker report). A known mismatch between the reported basis and the correct basis on a box A/D/G/J transaction without code B is a consistency failure."
-
+    note: "For a sale reported in aggregate on Schedule D line 1a or 8a (Exception 1), only box A, D, G or J transactions qualify and no basis adjustment is needed, so the reported basis is used. That is the same rule as for the detail rows of those boxes."
+  - id: sales.h_aggregate
+    printed: "(helper)"
+    label: "Transaction reported directly on Schedule D line 1a or 8a (Exception 1) rather than on Form 8949"
+    type: Bool
+    expr: {op: test, eq: [sales.route, {const: "aggregate"}]}
   - id: sales.h_code_b
     printed: "(helper)"
-    label: "Code B entered in column (f) (alone or with W)"
+    label: "Code B entered in column (f): basis shown on Form 1099-B or Form 1099-DA is incorrect"
     type: Bool
     expr:
       op: test
       any:
         - {op: test, eq: [sales.code, {const: "B"}]}
         - {op: test, eq: [sales.code, {const: "BW"}]}
-
   - id: sales.h_code_w
     printed: "(helper)"
-    label: "Code W entered in column (f) (alone or with B)"
+    label: "Code W entered in column (f): nondeductible loss from a wash sale"
     type: Bool
     expr:
       op: test
       any:
         - {op: test, eq: [sales.code, {const: "W"}]}
         - {op: test, eq: [sales.code, {const: "BW"}]}
-
-  - id: sales.h_basis_unflagged
+  - id: sales.h_code_other
     printed: "(helper)"
-    label: "Consistency check: the basis was reported to the IRS (box A, D, G or J), no code B is entered, but the correct basis differs from the reported basis"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [sales.h_basis_reported_box, {const: true}]}
-        - {op: test, eq: [sales.h_code_b, {const: false}]}
-        - {op: test, ne: [sales.reported_basis, sales.correct_basis]}
-
-  - id: sales.h_other_code
-    printed: "(helper)"
-    label: "An adjustment code other than B or W applies (for example C, E, H, L, M, N, O, P, Q, R, S, T, X, Y or Z)"
+    label: "A code other than B or W applies in column (f) (for example E, C, Q, Z or O)"
     type: Bool
     expr: {op: test, eq: [sales.code, {const: "other"}]}
-
-  - id: sales.h_aggregate_conflict
-    printed: "(helper)"
-    label: "Consistency check: the transaction is reported directly on Schedule D (Exception 1) but an adjustment code applies"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [sales.route, {const: "aggregate"}]}
-        - {op: test, ne: [sales.code, {const: "none"}]}
-
   - id: sales.h_zero
     printed: "(helper)"
-    label: "Zero"
+    label: "Enter -0-"
     type: NonNegDollars
     expr: {op: param, ref: sales.zero}
-
   - id: sales.h_basis_adj
     printed: "(helper)"
-    label: "Worksheet for Basis Adjustments in Column (g): line 1 (basis shown on Form 1099-B or 1099-DA) minus line 2 (correct basis); positive is line 4, negative is line 3 entered as a negative number"
+    label: "Worksheet for Basis Adjustments in Column (g), lines 3 and 4: line 1 (basis shown on Form 1099-B or Form 1099-DA) minus line 2 (correct basis). Positive if line 1 is larger, negative (in parentheses) if line 2 is larger."
     type: Dollars
     expr: {op: subtract, from: sales.reported_basis, take: sales.correct_basis}
-
-  - id: sales.h_b_amount
+  - id: sales.h_g_b
     printed: "(helper)"
-    label: "Code B adjustment in column (g): the worksheet amount for box A, D, G or J; -0- for box B, E, H or K (correct basis entered in column (e))"
+    label: "Code B adjustment. With box A, D, G or J, correct the incorrect basis by an adjustment in column (g). With box B, E, H or K, enter the correct basis in column (e) and enter -0- in column (g)."
     type: Dollars
     expr:
       op: choose
@@ -294,21 +268,20 @@ lines:
         - guard:
             op: test
             all:
+              - {op: test, eq: [sales.h_basis_reported, {const: true}]}
               - {op: test, eq: [sales.h_code_b, {const: true}]}
-              - {op: test, eq: [sales.h_basis_reported_box, {const: true}]}
           then: sales.h_basis_adj
         - guard:
             op: test
             not:
               op: test
               all:
+                - {op: test, eq: [sales.h_basis_reported, {const: true}]}
                 - {op: test, eq: [sales.h_code_b, {const: true}]}
-                - {op: test, eq: [sales.h_basis_reported_box, {const: true}]}
           then: sales.h_zero
-
-  - id: sales.h_w_amount
+  - id: sales.h_g_w
     printed: "(helper)"
-    label: "Code W adjustment in column (g): the amount of the nondeductible wash sale loss as a positive number (-0- if no part of the loss is from a wash sale)"
+    label: "Code W: enter the amount of the nondeductible wash sale loss as a positive number in column (g) (the correct amount if box 1g of Form 1099-B or box 1i of Form 1099-DA is incorrect; -0- if no part of the loss is from a wash sale)"
     type: NonNegDollars
     expr:
       op: choose
@@ -317,14 +290,12 @@ lines:
           then: sales.wash_loss
         - guard: {op: test, eq: [sales.h_code_w, {const: false}]}
           then: sales.h_zero
-
-  - id: sales.h_loss_after_b
+  - id: sales.h_loss
     printed: "(helper)"
-    label: "Loss on this sale after any code B basis correction: correct basis minus proceeds"
+    label: "Loss on the sale: correct basis minus proceeds (column (e) less column (d), after any code B basis correction)"
     type: Dollars
     expr: {op: subtract, from: sales.correct_basis, take: sales.proceeds}
-
-  - id: sales.h_wash_excess
+  - id: sales.h_wash_over
     printed: "(helper)"
     label: "Consistency check: the nondeductible wash sale loss entered is more than the loss on this sale"
     type: Bool
@@ -332,33 +303,44 @@ lines:
       op: test
       all:
         - {op: test, eq: [sales.h_code_w, {const: true}]}
-        - {op: test, gt: [sales.wash_loss, sales.h_loss_after_b]}
-
-  - id: sales.h_show_g
+        - {op: test, gt: [sales.wash_loss, sales.h_loss]}
+  - id: sales.h_g_detail
     printed: "(helper)"
-    label: "A code is entered in column (f), so column (g) is completed"
+    label: "More than one code: enter the net adjustment in column (g)"
+    type: Dollars
+    expr: {op: sum, of: [sales.h_g_b, sales.h_g_w]}
+  - id: sales.h_g_shown
+    printed: "(helper)"
+    label: "Column (g) completed: the transaction is reported on Form 8949 with a code in column (f)"
     type: Bool
-    expr: {op: test, ne: [sales.code, {const: "none"}]}
-
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [sales.h_aggregate, {const: false}]}
+        - {op: test, ne: [sales.code, {const: "none"}]}
   - id: sales.g
     printed: "(g)"
-    label: "Amount of adjustment. Enter in this column any necessary adjustments to gain (or loss). Enter negative amounts in parentheses. If more than one code is entered in column (f) on the same row, enter the net adjustment in column (g)."
+    label: "Amount of adjustment. Enter in this column any necessary adjustments to gain (or loss). Enter negative amounts in parentheses. Also, enter a code in column (f) to explain the adjustment."
     type: Dollars
-    expr: {op: sum, of: [sales.h_b_amount, sales.h_w_amount]}
-    shown_when: sales.h_show_g
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [sales.h_aggregate, {const: true}]}
+          then: sales.h_zero
+        - guard: {op: test, eq: [sales.h_aggregate, {const: false}]}
+          then: sales.h_g_detail
     refuses:
       - sales.special
-      - sales.h_other_code
-      - {when: sales.h_aggregate_conflict, when_known: true}
-      - {when: sales.h_wash_excess, when_known: true}
-    note: "Only codes B and W are computed; their adjustments are netted as the text directs for more than one code. Any other code (code other) and sales with collectibles, QSB stock, section 1250 property or such pass-through interests (sales.special) are refused rather than written as zero. Column (g) is left blank when no code applies; its value is then zero."
-
+      - sales.h_code_other
+      - {when: sales.h_wash_over, when_known: true}
+    shown_when: sales.h_g_shown
+    note: "Under Exception 1, a sale reported in aggregate on Schedule D has no adjustments, so it carries 0. If no code applies, columns (f) and (g) are left blank and the value is 0. Codes other than B and W, and the special situations (collectibles code C, QSB stock code Q, QOF codes Y and Z), have no amount input in this interface. They are refused rather than computed."
   - id: sales.one
     printed: "(helper)"
-    label: "One, for counting this transaction"
+    label: "One transaction (this entry)"
     type: Count
     expr: {op: param, ref: sales.one}
-    note: "The IRS pages do not define this interface; read as the per-transaction count of one (for counting the transactions entered), taken from the year parameter sales.one."
+    note: "The IRS pages do not define this interface. It is read as a per-entry count of 1, so other forms can count sales with sum_over. That is the only reading the supplied year parameter sales.one (Count, 1) supports."
 ```
 ```
 

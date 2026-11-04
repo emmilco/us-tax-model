@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 140 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 8.1% (338/4164 second-family lines judged; pending reviews are provisional); 64 eligible, 76 pending; raw agreement 80.7% (diagnostic only); current independence yield 162 line(s); both families disputed 577
+Summary: 140 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 8.1% (338/4164 second-family lines judged; pending reviews are provisional); 64 eligible, 76 pending; raw agreement 80.7% (diagnostic only); current independence yield 162 line(s); both families disputed 578
 
 Written by `tools/transcription/compare_families.py` on 2026-11-04 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -634,7 +634,7 @@ Pending w2 [deepseek]: stale subject: claude, deepseek; transcription predates u
 | sa | deepseek | sa.deduction | DISAGREE | DISAGREE | (no reason given) |
 | sa | deepseek | sa.itemizes | DISAGREE | DISAGREE | (no reason given) |
 | sales | deepseek | (e) | DISAGREE | DISAGREE | (no reason given) |
-| sales | deepseek | (g) | DISAGREE | DISAGREE | The tool does not compute column (g) for code other or for the special property classes screened by sales.special; the choose branch for other is unreachable because the line refuses first. |
+| sales | deepseek | (g) | DISAGREE | DISAGREE | The tool computes the code B basis adjustment and the code W wash-sale adjustment, including BW. Any other adjustment code is refused because its adjustment amount is not supplied. |
 | sd | deepseek | 10(d) | DISAGREE | DISAGREE | (no reason given) |
 | sd | deepseek | 10(e) | DISAGREE | DISAGREE | (no reason given) |
 | sd | deepseek | 10(g) | DISAGREE | DISAGREE | (no reason given) |
@@ -777,7 +777,7 @@ Pending w2 [deepseek]: stale subject: claude, deepseek; transcription predates u
 | s3 | deepseek (deepseek-flash) | 13 | 10 | 76.9% | 0/13 (0.0%) | pass | 2 | 1 | 0 | 0 |
 | s8812 | deepseek (deepseek-flash) | 50 | 48 | 96.0% | 0/50 (0.0%) | pass | 0 | 2 | 0 | 0 |
 | sa | deepseek (deepseek-flash) | 24 | 21 | 87.5% | 0/24 (0.0%) | pass | 1 | 1 | 1 | 0 |
-| sales | deepseek (deepseek-flash) | 3 | 1 | 33.3% | 0/3 (0.0%) | pass | 0 | 1 | 1 | 0 |
+| sales | deepseek (deepseek-flash) | 3 | 1 | 33.3% | 0/3 (0.0%) | pass | 0 | 2 | 0 | 0 |
 | sb | deepseek (deepseek-flash) | 6 | 4 | 66.7% | 0/6 (0.0%) | pending | 1 | 1 | 0 | 0 |
 | sc | deepseek (deepseek-flash) | 75 | 72 | 96.0% | 0/75 (0.0%) | pass | 3 | 0 | 0 | 0 |
 | scope | deepseek (deepseek-flash) | 5 | 2 | 40.0% | 1/5 (20.0%) | pending | 3 | 0 | 0 | 0 |
@@ -792,7 +792,7 @@ Pending w2 [deepseek]: stale subject: claude, deepseek; transcription predates u
 | tipjob | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 4 | 22.2% | 0/18 (0.0%) | pass | 5 | 8 | 1 | 0 |
 | w2 | deepseek (deepseek-flash) | 17 | 16 | 94.1% | 1/17 (5.9%) | pass | 1 | 0 | 0 | 0 |
-| **all** | | 1325 | 1158 | 87.4% | | | 66 | 73 | 28 | 1 |
+| **all** | | 1325 | 1158 | 87.4% | | | 66 | 74 | 27 | 1 |
 
 Pending asset [deepseek]: 1 missing expected lines.
 Pending eic [deepseek]: stale subject: claude, deepseek.
@@ -932,7 +932,8 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | s8812 | deepseek | 18a | UNCLEAR | MISMATCH | The Earned Income Chart says a filer with net earnings from self-employment who uses either optional method enters the Earned Income Worksheet amount 'even if you are also taking the EIC,' and its Worksheet B branch is for filers who 'completed Worksheet B.' The restatement instead always uses Worksheet B line 4b whenever its self-employed helper is true. |
 | s8812 | deepseek | 21 | UNCLEAR | MISMATCH | The Additional Medicare Tax and RRTA Tax Worksheet line 16 says 'Add lines 6, 7, 11, and 15' and enter on line 21. The restatement adds only worksheet lines 6 and 7, omitting Tier 1 RRTA lines 11 and 15, with no RRTA refusal. |
 | sa | deepseek | 1 | MISMATCH | MISMATCH | The restatement omits the eligible category in the IRS instructions: 'Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return.' |
-| sales | deepseek | (g) | MISMATCH | MISMATCH | The restatement adds only a code B basis correction and a code W wash-sale adjustment, but IRS column (g) says 'Enter in this column any necessary adjustments to gain (or loss)' and, for multiple codes, 'enter the net adjustment in column (g),' so it omits other adjustments such as code E selling expenses or option premiums. |
+| sales | deepseek | (e) | MISMATCH | MISMATCH | The program's 'Basis reported to IRS' gate is defined as classification A or D, not whether basis was reported to the IRS; so boxes G/J with basis reported would use the correct basis instead of the reported basis required by 'If the basis was reported to the IRS, enter the reported basis shown ... in column (e).' |
+| sales | deepseek | (g) | MISMATCH | MISMATCH | IRS column (g) says to 'Enter in this column any necessary adjustments to gain (or loss)' and, if more than one code applies, enter the net adjustment; the restatement adds only code B and code W adjustments, omitting other adjustments such as code E. |
 | sb | deepseek | 4 | UNCLEAR | UNCLEAR | The provided IRS text contains no line 4 instruction or statement that line 4 is line 2 minus line 3, so the arithmetic cannot be verified from the text given. |
 | scveh | deepseek | (b) | MISMATCH | MISMATCH | The IRS column (b) instruction says 'Enter the date the property was placed in service' and treats converted property as placed in service on the conversion date; the restatement asks only for the year. |
 | scveh | deepseek | 13 | MISMATCH | MISMATCH | The IRS line is 'Depreciation and section 179 expense deduction'; the restatement instead computes Form 4562 Part V column (e), 'Basis for depreciation (business/investment use only),' by multiplying column (d) by business-use percentage, omitting the depreciation rate and passenger automobile limits. |

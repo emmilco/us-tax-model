@@ -50,7 +50,7 @@ Chosen from the source pages above (catalog_selection); refusal-gate inputs are 
 
 ### sales.one — Screen this transaction before any aggregation
 Status: **AGREE**
-Reviewed in: pass 7e9bbf084234
+Reviewed in: pass 82f67b365891
 
 ### (e) — Column (e): reported basis if covered; correct basis otherwise
 Status: **DISAGREE**
@@ -68,7 +68,7 @@ Second:
 ```
 
 Ruling: scope; same reply and project as the round-2 ruling: the reply adds boxes G and J to the reported-basis boxes; boxes G to L are refused at the transaction by sales.digital at sales.one. Scratch run of triage.mjs on the round-3 reply (.transcription/sales.deepseek.lines-ceb969c79173) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 476 partial records; 1,762 comparisons per line): 1,755 agree; the 7 value differences are on refused returns. Project stands.
-Reviewed in: pass 7e9bbf084234
+Reviewed in: pass 82f67b365891
 
 ### (g) — Column (g): net adjustments
 Status: **DISAGREE**
@@ -82,13 +82,13 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "sales.code"}], "test": "eq"}, {"args": [{"const": "other"}, {"input": "sales.code"}], "test": "eq"}], "test": "any"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "B"}, {"input": "sales.code"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": "A"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "D"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "G"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "J"}, {"input": "sales.box"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "A"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "D"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "G"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "J"}, {"input": "sales.box"}], "test": "eq"}], "test": "any"}, "then": {"from": {"input": "sales.reported_basis"}, "op": "subtract", "take": {"input": "sales.correct_basis"}}}], "op": "choose"}}, {"guard": {"args": [{"const": "BW"}, {"input": "sales.code"}], "test": "eq"}, "then": {"of": [{"input": "sales.wash_loss"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "A"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "D"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "G"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "J"}, {"input": "sales.box"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "A"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "D"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "G"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "J"}, {"input": "sales.box"}], "test": "eq"}], "test": "any"}, "then": {"from": {"input": "sales.reported_basis"}, "op": "subtract", "take": {"input": "sales.correct_basis"}}}], "op": "choose"}], "op": "sum"}}, {"guard": {"args": [{"const": "W"}, {"input": "sales.code"}], "test": "eq"}, "then": {"input": "sales.wash_loss"}}], "op": "choose"}
+{"of": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "A"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "D"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "G"}, {"input": "sales.box"}], "test": "eq"}, {"args": [{"const": "J"}, {"input": "sales.box"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "B"}, {"input": "sales.code"}], "test": "eq"}, {"args": [{"const": "BW"}, {"input": "sales.code"}], "test": "eq"}], "test": "any"}], "test": "all"}, "then": {"from": {"input": "sales.correct_basis"}, "op": "subtract", "take": {"input": "sales.reported_basis"}}}, {"guard": {"args": [{"args": [{"args": [{"const": "A"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "D"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "G"}, {"input": "sales.box"}], "test": "ne"}, {"args": [{"const": "J"}, {"input": "sales.box"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "B"}, {"input": "sales.code"}], "test": "ne"}, {"args": [{"const": "BW"}, {"input": "sales.code"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "BW"}, {"input": "sales.code"}], "test": "ne"}, {"args": [{"const": "W"}, {"input": "sales.code"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"args": [{"const": "BW"}, {"input": "sales.code"}], "test": "eq"}, {"args": [{"const": "W"}, {"input": "sales.code"}], "test": "eq"}], "test": "any"}, "then": {"input": "sales.wash_loss"}}], "op": "choose"}], "op": "sum"}
 ```
 
-Second transcription's note: The tool does not compute column (g) for code other or for the special property classes screened by sales.special; the choose branch for other is unreachable because the line refuses first.
+Second transcription's note: The tool computes the code B basis adjustment and the code W wash-sale adjustment, including BW. Any other adjustment code is refused because its adjustment amount is not supplied.
 
-Ruling: representation and scope; i8949 p. 8, code B, and p. 10, code W. The reply chooses by code: zero for none or other (other is refused by sales.bad_code), the basis correction for B on boxes A, D, G and J, the wash-sale loss plus the correction for BW, the wash-sale loss for W; on boxes A and D this is the project's sum. Boxes G and J are refused by sales.digital. Project stands.
-Reviewed in: pass 7e9bbf084234
+Ruling: scope; i8949 p. 8, code B, and p. 10, code W. The reply computes the code B correction and the code W adjustment and refuses any other code, as the project does: codes other than B and W are refused at sales.one on sales.bad_code ("Only applicable B and W adjustments are supported"). On every transaction the tool completes, the values are the project's.
+Reviewed in: pass 82f67b365891
 
 ### (h) — Column (h): proceeds less basis plus adjustments
 Status: **AGREE**
@@ -100,7 +100,7 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 
 | line | gates listed | not read by the project's line |
 | --- | --- | --- |
-| (g) | sales.h_code_other, sales.special | sales.h_code_other, sales.special |
+| (g) | sales.code_other | sales.code_other |
 | (h) | sales.h_code_other | sales.h_code_other |
 
 ## Line subjects
@@ -109,9 +109,9 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 | line | subject sha256 |
 | --- | --- |
-| sales.one | 8d309a85773acad1d8f9f0453e3400fb80ca91c66e7944158af7d92d8570a680 |
-| (e) | b5aa5d9a4d36bf71ecf78f83633261dc52993ba401e88fb994c932bb3f2b9c4d |
-| (g) | b1541c54f3b892c126800524284890e3d6ec0599d13dac66cf78f8d9d2d7f0f7 |
+| sales.one | c67ee5ae0f460c919f0be5b8f038ae80dc4c6270406b728f0b3c91dc6a91dd8f |
+| (e) | d3d50baa9c23dc9bff0375818e7910228652d8a801caacb4acab98b18d6ea470 |
+| (g) | 77fa70f9061da2d07b975c536b2a72ef07fe97a96b305978b873e4ef59d32269 |
 | (h) | 2422451df8e177d55abe45d3f471d4c89063e2ddde31e6b78d028783cf6be82d |
 | (rest of the document) | bd65df118805874cff9360e29b8978e3a8b739647bd7439342d356bc47841505 |
 
@@ -130,7 +130,7 @@ The interfaces (id, printed marker, type, input question) of other documents' li
 
 Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
 
-#### Pass 7e9bbf084234
+#### Pass 82f67b365891
 
 | field | value |
 | --- | --- |
@@ -138,19 +138,19 @@ Lines reviewed again after a change, each pass by its own isolated request (tran
 | review scope | lines sales.one, (e), (g) |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 7e9bbf084234ed1962d2fbc197020bdfd9e63acded0a6aba4a565720c660e186 |
+| prompt sha256 | 82f67b365891364aa417b7fd4e8a4b577ea4bb726391d9f2e2b747f0daef7293 |
 | prompt policy | source-only-computation-v3+lines-v1 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
 | complete input context | pass |
-| required input context sha256 | 49e497583fd21cee47f88d789ecff463f1a9c57f1bf24ca2f81e8fd1f7211c78 |
+| required input context sha256 | 047e2ddce85a8f2dd998a938dc30003faa470ea2cc1d1ab2be73309c059f1242 |
 | type validation policy | project-expression-types-v3 |
 | model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 4be36125cb6b9bcb6108997ac32d18f6cbbfa3fd060bfc6879a56bd8af531746 |
+| subject sha256 | 10e81b0fbbbbf993304fc7fb28ca20036c90e081855ba9d3d71412ee85a9bc3c |
 | receipt | .transcription/sales.deepseek.lines-efadd99d9686 |
 | printed lines compared | 3 |
 | agree / disagree / missing | 1 / 2 / 0 |
@@ -189,45 +189,32 @@ lines:
       alternatives:
         - guard:
             op: test
-            eq: [sales.h_basis_reported, {const: true}]
+            eq: [sales.basis_reported, {const: true}]
           then: sales.reported_basis
         - guard:
             op: test
-            eq: [sales.h_basis_reported, {const: false}]
+            eq: [sales.basis_reported, {const: false}]
           then: sales.correct_basis
-    cite: "Form 8949 (2025), column (e); Instructions for Form 8949 (2025), Column (e)—Cost or Other Basis"
 
   - id: sales.g
     printed: "(g)"
     label: "Amount of adjustment"
     type: Dollars
     expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [sales.code, {const: "none"}]}
-          then: sales.h_zero_adj
-        - guard: {op: test, eq: [sales.code, {const: "B"}]}
-          then: sales.h_basis_adj
-        - guard: {op: test, eq: [sales.code, {const: "W"}]}
-          then: sales.wash_loss
-        - guard: {op: test, eq: [sales.code, {const: "BW"}]}
-          then: sales.h_bw_adj
-        - guard: {op: test, eq: [sales.code, {const: "other"}]}
-          then: sales.h_zero_adj
-    refuses: [sales.h_code_other, sales.special]
-    note: "The tool does not compute column (g) for code other or for the special property classes screened by sales.special; the choose branch for other is unreachable because the line refuses first."
-    cite: "Form 8949 (2025), column (g); Instructions for Form 8949 (2025), Column (g)—Amount of Adjustment"
+      op: sum
+      of: [sales.g_basis, sales.g_wash]
+    refuses: [sales.code_other]
+    note: "The tool computes the code B basis adjustment and the code W wash-sale adjustment, including BW. Any other adjustment code is refused because its adjustment amount is not supplied."
 
   - id: sales.one
     printed: "(helper)"
-    label: "One transaction"
+    label: "One sale transaction"
     type: Count
     expr: {op: param, ref: sales.one}
-    cite: "Form 8949 (2025), one row per transaction"
 
-  - id: sales.h_basis_reported
+  - id: sales.basis_reported
     printed: "(helper)"
-    label: "Basis was reported to the IRS on Form 1099-B or Form 1099-DA"
+    label: "Basis was reported to the IRS on the broker statement"
     type: Bool
     expr:
       op: test
@@ -236,48 +223,78 @@ lines:
         - {op: test, eq: [sales.box, {const: "D"}]}
         - {op: test, eq: [sales.box, {const: "G"}]}
         - {op: test, eq: [sales.box, {const: "J"}]}
-    cite: "Form 8949 (2025), boxes A, D, G and J; Instructions for Form 8949 (2025), Box A or Box G and Box D or Box J"
 
-  - id: sales.h_code_other
+  - id: sales.code_b
+    printed: "(helper)"
+    label: "Adjustment code is B or BW"
+    type: Bool
+    expr:
+      op: test
+      any:
+        - {op: test, eq: [sales.code, {const: "B"}]}
+        - {op: test, eq: [sales.code, {const: "BW"}]}
+
+  - id: sales.code_w
+    printed: "(helper)"
+    label: "Adjustment code is W or BW"
+    type: Bool
+    expr:
+      op: test
+      any:
+        - {op: test, eq: [sales.code, {const: "W"}]}
+        - {op: test, eq: [sales.code, {const: "BW"}]}
+
+  - id: sales.code_other
     printed: "(helper)"
     label: "Adjustment code is other"
     type: Bool
     expr: {op: test, eq: [sales.code, {const: "other"}]}
-    cite: "Instructions for Form 8949 (2025), Column (f)—Code"
 
-  - id: sales.h_zero_adj
+  - id: sales.g_zero
     printed: "(helper)"
     label: "Zero adjustment"
     type: NonNegDollars
     expr: {op: param, ref: sales.zero}
-    cite: "Instructions for Form 8949 (2025), Column (g)—Amount of Adjustment"
 
-  - id: sales.h_reported_minus_correct
+  - id: sales.g_basis_diff
     printed: "(helper)"
-    label: "Reported basis less correct basis"
+    label: "Correct basis minus reported basis"
     type: Dollars
-    expr: {op: subtract, from: sales.reported_basis, take: sales.correct_basis}
-    cite: "Instructions for Form 8949 (2025), Worksheet for Basis Adjustments in Column (g)"
+    expr: {op: subtract, from: sales.correct_basis, take: sales.reported_basis}
 
-  - id: sales.h_basis_adj
+  - id: sales.g_basis
     printed: "(helper)"
-    label: "Basis correction adjustment"
+    label: "Code B basis adjustment"
     type: Dollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [sales.h_basis_reported, {const: true}]}
-          then: sales.h_reported_minus_correct
-        - guard: {op: test, eq: [sales.h_basis_reported, {const: false}]}
-          then: sales.h_zero_adj
-    cite: "Instructions for Form 8949 (2025), Worksheet for Basis Adjustments in Column (g)"
+        - guard:
+            op: test
+            all:
+              - {op: test, eq: [sales.code_b, {const: true}]}
+              - {op: test, eq: [sales.basis_reported, {const: true}]}
+          then: sales.g_basis_diff
+        - guard:
+            op: test
+            not:
+              op: test
+              all:
+                - {op: test, eq: [sales.code_b, {const: true}]}
+                - {op: test, eq: [sales.basis_reported, {const: true}]}
+          then: sales.g_zero
 
-  - id: sales.h_bw_adj
+  - id: sales.g_wash
     printed: "(helper)"
-    label: "Combined basis and wash-sale adjustment"
-    type: Dollars
-    expr: {op: sum, of: [sales.h_basis_adj, sales.wash_loss]}
-    cite: "Instructions for Form 8949 (2025), Column (g)—Amount of Adjustment; Column (f)—Code"
+    label: "Code W wash-sale adjustment"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [sales.code_w, {const: true}]}
+          then: sales.wash_loss
+        - guard: {op: test, eq: [sales.code_w, {const: false}]}
+          then: sales.g_zero
 ```
 
 #### Pass f71b3c0cac42

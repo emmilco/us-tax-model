@@ -4808,13 +4808,17 @@
  },
  {
   "form": "sales",
-  "prompt_sha": "2b0ee0732654e2949325098aaec1cb11d71e5b0ee2aa03332690685462957ec0",
+  "prompt_sha": "c257e41caff8965b2327407a18b1ae9b36784449d1bcaf05f2a5cc728a705d15",
   "claims": [
    {
-    "item": "sales.one",
+    "item": "sales.route",
     "sentences": [
      {
       "quote": "However, if a trader previously made the mark-to-market election (explained below), each transaction is reported in Part II of Form 4797 instead of on Form 8949.",
+      "page": "i1040sd p. 5"
+     },
+     {
+      "quote": "A trader may make an election under section 475(f) to report all gains and losses from securities held in connection with a trading business as ordinary income (or loss), including those from securities held at the end of the year.",
       "page": "i1040sd p. 5"
      },
      {
@@ -4822,8 +4826,52 @@
       "page": "i1040sd p. 5"
      },
      {
-      "quote": "Securities held at the end of the year are “marked to market” by treating them as if they were sold for fair market value on the last business day of the year.",
+      "quote": "Securities that you hold for investment aren't marked to market.",
       "page": "i1040sd p. 5"
+     }
+    ],
+    "quote": "However, if a trader previously made the mark-to-market election (explained below), each transaction is reported in Part II of Form 4797 instead of on Form 8949. / A trader may make an election under section 475(f) to report all gains and losses from securities held in connection with a trading business as ordinary income (or loss), including those from securities held at the end of the year. / Starting with the year the election becomes effective, a trader reports all gains and losses from securities held in connection with the trading business, including securities held at the end of the year, in Part II of Form 4797. / Securities that you hold for investment aren't marked to market.",
+    "page": "i1040sd p. 5",
+    "why_uncovered": "The route question offers only Form 8949 or the Schedule D aggregate lines. No question asks whether the filer is a trader with a section 475(f) election in effect, and no refusal sends those trading-business securities to Form 4797. The encoding would treat ordinary mark-to-market gains and losses as capital.",
+    "closest_item": "sales.route",
+    "effect": "amount"
+   },
+   {
+    "item": "sales.proceeds",
+    "sentences": [
+     {
+      "quote": "If you sold property (other than publicly traded stocks or securities) at a gain and you will receive a payment in a tax year after the year of sale, you must generally report the sale on the installment method unless you elect not to.",
+      "page": "i1040sd p. 6"
+     },
+     {
+      "quote": "To elect out of the installment method, report the full amount of the gain on Form 8949 on a timely filed return (including extensions) for the year of the sale.",
+      "page": "i1040sd p. 6"
+     },
+     {
+      "quote": "If an option you purchased expired, enter the expiration date in column (c) and enter “EXPIRED” in column (d).",
+      "page": "i1040sd p. 6"
+     },
+     {
+      "quote": "If an option that was granted (written) expired, enter the expiration date in column (b) and enter “EXPIRED” in column (e).",
+      "page": "i1040sd p. 6"
+     }
+    ],
+    "quote": "If you sold property (other than publicly traded stocks or securities) at a gain and you will receive a payment in a tax year after the year of sale, you must generally report the sale on the installment method unless you elect not to. / To elect out of the installment method, report the full amount of the gain on Form 8949 on a timely filed return (including extensions) for the year of the sale. / If an option you purchased expired, enter the expiration date in column (c) and enter “EXPIRED” in column (d). / If an option that was granted (written) expired, enter the expiration date in column (b) and enter “EXPIRED” in column (e).",
+    "page": "i1040sd p. 6",
+    "why_uncovered": "Column (d) is always entered as the full proceeds. Nothing asks whether a sale of stock or securities that are not publicly traded has deferred payments, and nothing refuses the installment-method or Form 6252 case. The required 'EXPIRED' entries for expired options are not encoded either.",
+    "closest_item": "sales.proceeds",
+    "effect": "amount"
+   },
+   {
+    "item": "sales.special",
+    "sentences": [
+     {
+      "quote": "Report an ordinary loss from the sale, exchange, or worthlessness of small",
+      "page": "i1040sd p. 6"
+     },
+     {
+      "quote": "If the basis of your section 1244 stock has increased, through contributions to capital or otherwise, you must treat this increase as applying to stock that is not section 1244 stock when you figure an ordinary loss on its sale.",
+      "page": "p550 p. 81"
      },
      {
       "quote": "If you are an investor in SBIC stock, you can deduct as an ordinary loss, rather than a capital loss, a loss from the sale, trade, or worthlessness of that stock.",
@@ -4836,50 +4884,12 @@
      {
       "quote": "If you close a short sale of SBIC stock with other SBIC stock you bought only for that purpose, any loss you have on the sale is a capital loss.",
       "page": "p550 p. 81"
-     },
-     {
-      "quote": "If the basis of your section 1244 stock has increased, through contributions to capital or otherwise, you must treat this increase as applying to stock that is not section 1244 stock when you figure an ordinary loss on its sale.",
-      "page": "p550 p. 81"
-     },
-     {
-      "quote": "If you disposed of any investment in a QOF during the tax year, check the box on page 1 of Schedule D and see the Instructions for Form 8949 for additional reporting requirements. You must also complete Part III of Form 8997.",
-      "page": "i1040sd p. 10"
      }
     ],
-    "quote": "However, if a trader previously made the mark-to-market election (explained below), each transaction is reported in Part II of Form 4797 instead of on Form 8949. / Starting with the year the election becomes effective, a trader reports all gains and losses from securities held in connection with the trading business, including securities held at the end of the year, in Part II of Form 4797. / Securities held at the end of the year are “marked to market” by treating them as if they were sold for fair market value on the last business day of the year. / If you are an investor in SBIC stock, you can deduct as an ordinary loss, rather than a capital loss, a loss from the sale, trade, or worthlessness of that stock. / You report this type of ordinary loss on Form 4797, Part II, line 10. / If you close a short sale of SBIC stock with other SBIC stock you bought only for that purpose, any loss you have on the sale is a capital loss. / If the basis of your section 1244 stock has increased, through contributions to capital or otherwise, you must treat this increase as applying to stock that is not section 1244 stock when you figure an ordinary loss on its sale. / If you disposed of any investment in a QOF during the tax year, check the box on page 1 of Schedule D and see the Instructions for Form 8949 for additional reporting requirements. You must also complete Part III of Form 8997.",
-    "page": "i1040sd p. 5; p550 p. 81; i1040sd p. 10",
-    "why_uncovered": "The transaction screen refuses only digital assets, the sales.special categories, unsupported codes and failed aggregate routing. No question asks whether the filer is a trader with a section 475(f) mark-to-market election, whose sales go on Form 4797 rather than Form 8949. No question asks whether the stock sold is SBIC stock, whose losses are ordinary and go on Form 4797, or section 1244 stock, whose losses are ordinary up to a limit. On the detailed Form 8949 route, nothing asks about a disposition of a QOF investment, which requires the Schedule D checkbox and Form 8997. QOF is screened only in the aggregate-eligibility confirmation.",
-    "closest_item": "sales.one",
-    "effect": "amount"
-   },
-   {
-    "item": "sales.box",
-    "sentences": [
-     {
-      "quote": "If you are not in the business of writing options and an option you write on stocks, securities, commodities, or commodity futures is not exercised (or repurchased), the amount you receive is a short-term capital gain.",
-      "page": "p550 p. 88"
-     },
-     {
-      "quote": "If you have a loss because you did not exercise an option to buy or sell, you are considered to have sold or traded the option on the date it expired.",
-      "page": "p550 p. 88"
-     },
-     {
-      "quote": "Any capital gain or loss on a sale, exchange, or termination of a contract to sell property will be considered short term, regardless of how long you hold the contract.",
-      "page": "p550 p. 88"
-     },
-     {
-      "quote": "Your holding period for the new stock includes the period you held an equity interest in the mutual company.",
-      "page": "i1040sd p. 6"
-     },
-     {
-      "quote": "Your holding period for the new stock begins on the day after you received the stock.",
-      "page": "i1040sd p. 6"
-     }
-    ],
-    "quote": "If you are not in the business of writing options and an option you write on stocks, securities, commodities, or commodity futures is not exercised (or repurchased), the amount you receive is a short-term capital gain. / If you have a loss because you did not exercise an option to buy or sell, you are considered to have sold or traded the option on the date it expired. / Any capital gain or loss on a sale, exchange, or termination of a contract to sell property will be considered short term, regardless of how long you hold the contract. / Your holding period for the new stock includes the period you held an equity interest in the mutual company. / Your holding period for the new stock begins on the day after you received the stock.",
-    "page": "p550 p. 88; i1040sd p. 6",
-    "why_uncovered": "The classification question lists many holding-period rules but leaves several out. It omits that an unexercised written option's premium is always short-term. It omits that an expired purchased option is treated as sold on the expiration date. It omits that a securities futures contract to sell always produces short-term gain or loss. It also omits the holding-period rules for stock received in a demutualization, which differ depending on whether the exchange was a tax-free reorganization.",
-    "closest_item": "sales.box",
+    "quote": "Report an ordinary loss from the sale, exchange, or worthlessness of small / If the basis of your section 1244 stock has increased, through contributions to capital or otherwise, you must treat this increase as applying to stock that is not section 1244 stock when you figure an ordinary loss on its sale. / If you are an investor in SBIC stock, you can deduct as an ordinary loss, rather than a capital loss, a loss from the sale, trade, or worthlessness of that stock. / You report this type of ordinary loss on Form 4797, Part II, line 10. / If you close a short sale of SBIC stock with other SBIC stock you bought only for that purpose, any loss you have on the sale is a capital loss.",
+    "page": "i1040sd p. 6; p550 p. 81",
+    "why_uncovered": "The special-situations question lists collectibles, QSB stock, section 1250 property, pass-through interests and QOFs. It does not list section 1244 stock or small business investment company stock. A loss on such stock would be reported as a capital loss on Form 8949 instead of being treated as an ordinary loss.",
+    "closest_item": "sales.special",
     "effect": "amount"
    },
    {
@@ -4894,47 +4904,33 @@
       "page": "i8949 p. 5"
      },
      {
-      "quote": "Report the transaction on Form 8949 and complete the form’s Worksheet for Contingent Payment Debt Instrument Adjustment in Column (g) to figure the adjustment to enter in column (g) of Form 8949.",
-      "page": "i1040sd p. 5"
-     },
-     {
-      "quote": "Enter the smaller of line 3 or line 4, or, if lines 3 and 4 are the same, enter the amount from line 3. This is the amount of your gain that is ordinary income. Enter it as a negative amount (in parentheses) in Form 8949, column (g). Also, report it as interest income on your tax return.",
-      "page": "i8949 p. 11"
+      "quote": "If you received a Form 1099-B or Form 1099-DA (or substitute statement) reporting the sale of a taxable contingent payment debt instrument subject to the noncontingent bond method and the Ordinary box in box 2 on Form 1099-B or the Ordinary box in box 6 on Form 1099-DA is checked, an adjustment may be required.",
+      "page": "i8949 p. 5"
      }
     ],
-    "quote": "If you sell a taxable contingent payment debt instrument subject to the noncontingent bond method at a gain, your gain is ordinary income (interest income), even if you hold the debt instrument as a capital asset. / If you sell a taxable contingent payment debt instrument subject to the noncontingent bond method at a loss, your loss is an ordinary loss to the extent of your prior original issue discount (OID) inclusions on the debt instrument. / Report the transaction on Form 8949 and complete the form’s Worksheet for Contingent Payment Debt Instrument Adjustment in Column (g) to figure the adjustment to enter in column (g) of Form 8949. / Enter the smaller of line 3 or line 4, or, if lines 3 and 4 are the same, enter the amount from line 3. This is the amount of your gain that is ordinary income. Enter it as a negative amount (in parentheses) in Form 8949, column (g). Also, report it as interest income on your tax return.",
-    "page": "i8949 p. 5; i1040sd p. 5; i8949 p. 11",
-    "why_uncovered": "The Ordinary box on Form 1099-B is checked only in the aggregate-eligibility confirmation. For sales reported in detail, nothing asks whether the 1099-B Ordinary box is checked or whether accrued market discount is shown in box 1f. The code question offers only none/B/W/BW, and its 'other' choice is illustrated only by code E. As a result, a contingent payment debt instrument sale (code O) or a market discount bond sale (code D) can be reported entirely as capital gain without the ordinary-income adjustment.",
+    "quote": "If you sell a taxable contingent payment debt instrument subject to the noncontingent bond method at a gain, your gain is ordinary income (interest income), even if you hold the debt instrument as a capital asset. / If you sell a taxable contingent payment debt instrument subject to the noncontingent bond method at a loss, your loss is an ordinary loss to the extent of your prior original issue discount (OID) inclusions on the debt instrument. / If you received a Form 1099-B or Form 1099-DA (or substitute statement) reporting the sale of a taxable contingent payment debt instrument subject to the noncontingent bond method and the Ordinary box in box 2 on Form 1099-B or the Ordinary box in box 6 on Form 1099-DA is checked, an adjustment may be required.",
+    "page": "i8949 p. 5",
+    "why_uncovered": "The Ordinary box is checked only as an aggregate-route condition. On the Form 8949 route, nothing asks whether the security is a contingent payment debt instrument or whether the Ordinary box is checked. The code question's examples point only to code E, so a filer could choose 'none' and report ordinary income or loss as capital.",
     "closest_item": "sales.code",
     "effect": "amount"
    },
    {
-    "item": "sales.wash_loss",
+    "item": "sales.box",
     "sentences": [
      {
-      "quote": "The wash sale rules will generally apply to the sale of your residual interest in a REMIC if, during the period beginning 6 months before the sale of the interest and ending 6 months after that sale, you acquire any residual interest in any REMIC or any interest in a taxable mortgage pool that is comparable to a residual interest.",
+      "quote": "Gains or losses on section 1256 contracts open at the end of the year, or terminated during the year, are treated as 60% long-term and 40% short-term, regardless of how long the contracts were held.",
+      "page": "p550 p. 82"
+     },
+     {
+      "quote": "If the property is not or would not be a capital asset, the gain or loss is ordinary gain or loss.",
       "page": "p550 p. 88"
      }
     ],
-    "quote": "The wash sale rules will generally apply to the sale of your residual interest in a REMIC if, during the period beginning 6 months before the sale of the interest and ending 6 months after that sale, you acquire any residual interest in any REMIC or any interest in a taxable mortgage pool that is comparable to a residual interest.",
-    "page": "p550 p. 88",
-    "why_uncovered": "The wash-sale question defines the window only as 30 days before or after the sale. It does not tell the filer about the 6-month window for REMIC residual interests, or that comparable taxable mortgage pool interests count as replacements.",
-    "closest_item": "sales.wash_loss",
+    "quote": "Gains or losses on section 1256 contracts open at the end of the year, or terminated during the year, are treated as 60% long-term and 40% short-term, regardless of how long the contracts were held. / If the property is not or would not be a capital asset, the gain or loss is ordinary gain or loss.",
+    "page": "p550 p. 82; p550 p. 88",
+    "why_uncovered": "The classification question has no rule for section 1256 contracts, which require the 60/40 split on Form 6781. It also has no rule for options on property that is not a capital asset, whose gain or loss is ordinary. Nothing refuses either case, so these would be classified by actual holding period as capital gains or losses.",
+    "closest_item": "sales.box",
     "effect": "amount"
-   },
-   {
-    "item": "sales.correct_basis",
-    "sentences": [
-     {
-      "quote": "If you don't use the actual cost, attach an explanation of your basis.",
-      "page": "i8949 p. 6"
-     }
-    ],
-    "quote": "If you don't use the actual cost, attach an explanation of your basis.",
-    "page": "i8949 p. 6",
-    "why_uncovered": "The basis question collects a non-cost basis (gift, inheritance, trade, wash sale and so on), but nothing requires or produces the attached explanation of that basis.",
-    "closest_item": "sales.correct_basis",
-    "effect": "presentation"
    }
   ],
   "used": [
@@ -4992,7 +4988,7 @@
     ]
    }
   ],
-  "cost": 0.5767468,
+  "cost": 0.5867867999999999,
   "model": "claude-opus-5-5"
  },
  {
