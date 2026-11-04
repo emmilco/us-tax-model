@@ -1,13 +1,11 @@
 {
- "tool_version": "0.10",
+ "tool_version": "0.11",
  "pages": [
-  "single",
   "table",
   "table"
  ],
  "columns": [
   1,
-  1,
-  3
+  1
  ]
 }
