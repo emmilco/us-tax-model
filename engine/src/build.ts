@@ -354,7 +354,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   // The New York profile walks the New York fixtures' paths (fixtures/ny/<year>/), once they exist.
   if (nyInterview && errors.length === 0 && existsSync(nyPath("fixtures"))) {
     for (const f of readdirSync(nyPath("fixtures")).filter((n) => n.endsWith(".json")).sort()) {
-      errors.push(...checkSalesInterview(data, nyInterview, "ny", join(nyPath("fixtures"), f)).map((e) => `New York interview: ${e}`));
+      errors.push(...checkSalesInterview(data, nyInterview, "ny", join(nyPath("fixtures"), f), 600).map((e) => `New York interview: ${e}`));
     }
   }
   stats.push("interview: Stage 2 finite domains checked; Stage 3 fixture paths checked for reachability, termination and answer-order invariance (not exhaustive)");

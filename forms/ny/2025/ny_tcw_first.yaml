@@ -71,19 +71,31 @@ def:
       type: NonNegDollars
       expr: { op: subtract_floor0, from: "agi", take: { param: "ny.tcw.first.start" } }
       cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 1, "6. Enter the excess of line 1 over $107,650"' }
-    - id: line8_cents
-      printed: "7, 8"
-      label: "Divide line 6 by $50,000 and round the result to the fourth decimal place (line 7); multiply line 5 by line 7 (line 8)"
+    - id: hundred
+      printed: "(scale)"
+      label: "100"
+      type: Count
+      expr: { op: param, ref: "ny.hundred" }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 1, "8. Multiply line 5 by line 7"' }
+    - id: line8_scaled
+      printed: "(scale)"
+      label: "The amount times 100, so that the product with a ratio of four decimal places is exact"
       type: NonNegDollars
-      expr: { op: prorate, amount: "line5", part: "line6", whole: { param: "ny.tcw.phase" }, places: 4 }
+      expr: { op: multiply_count, amount: "line5", count: "hundred" }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 1, "8. Multiply line 5 by line 7"' }
+    - id: line8_exact
+      printed: "7, 8"
+      label: "The ratio rounded to the fourth decimal place, times the amount (times 100: exact)"
+      type: NonNegDollars
+      expr: { op: prorate, amount: "line8_scaled", part: "line6", whole: { param: "ny.tcw.phase" }, places: 4 }
       cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 1, "7. Divide line 6 by $50,000 and round the result to the fourth decimal place", "8. Multiply line 5 by line 7"' }
       ambiguity: amb.ny.2025.fourth_decimal
     - id: line8
       printed: "8"
       label: "Multiply line 5 by line 7 (whole dollars)"
       type: NonNegDollars
-      expr: { op: round, of: "line8_cents", unit: 100, rule: half_up }
-      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 1, "8. Multiply line 5 by line 7"' }
+      expr: { op: multiply_rate, amount: "line8_exact", rate: { param: "ny.hundredth" }, unit: 100 }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 1, "7. Divide line 6 by $50,000 and round the result to the fourth decimal place", "8. Multiply line 5 by line 7"' }
       ambiguity: amb.ny.2025.whole_dollars
     - id: line9_phased
       printed: "9"

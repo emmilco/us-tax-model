@@ -29,6 +29,12 @@ form:
       type: Bool
       expr: { op: test, gt: ["ny_it2.yonkers_withheld", { const: 0 }] }
       cite: { doc: ny_it201i, locator: 'p. 21, Lines 72, 73, and 74, "Enter on the appropriate line your total New York State, New York City, and Yonkers tax withheld from any of the following:"' }
+    - id: ny_it2.state_whole
+      printed: "17a (whole dollars)"
+      label: "NYS income tax withheld, in whole dollars"
+      type: NonNegDollars
+      expr: { op: round, of: "ny_it2.state_withheld", unit: 100, rule: half_up }
+      cite: { doc: ny_it2, locator: 'p. 2, Entering whole dollar amounts, "drop amounts below 50 cents and increase amounts from 50 to 99 cents to the next dollar"' }
     - id: ny_it2.city_withheld
       printed: "19"
       label: "Local income tax withheld (New York City)"
@@ -40,3 +46,9 @@ form:
           form: "Yonkers tax withheld (Form IT-201 line 74)"
           remedy: "Yonkers withholding means Yonkers tax may be owed, which is outside this tool."
           cite: { doc: ny_it201i, locator: 'p. 17, Line 55: Yonkers resident income tax surcharge, "If you were a resident of Yonkers, did you enter an amount that is more than 0 on line 46?"' }
+    - id: ny_it2.city_whole
+      printed: "19 (whole dollars)"
+      label: "Local income tax withheld (New York City), in whole dollars"
+      type: NonNegDollars
+      expr: { op: round, of: "ny_it2.city_withheld", unit: 100, rule: half_up }
+      cite: { doc: ny_it2, locator: 'p. 2, Entering whole dollar amounts, "drop amounts below 50 cents and increase amounts from 50 to 99 cents to the next dollar"' }
