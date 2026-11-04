@@ -39,4 +39,42 @@ Every change keeps federal results as they were; each step's commit says so with
 
 ## To run on the owner's machine
 
-(Completed at step 8.)
+1. `npm ci && npm run compile && node engine/dist/main.js build` (the build walks the New York interview over every
+   New York fixture as well as the federal paths; expect it to take longer).
+2. `node engine/dist/main.js test-fixtures` (federal, must stay 1637/1637) and `node engine/dist/main.js test-fixtures --ny`.
+3. Lean: `cd lean && lake build`, then `node engine/dist/main.js compare` and `node engine/dist/main.js compare --ny`
+   (the `lean/Main.lean` change that merges `params-ny.json` is untested; this environment could not install Lean).
+4. `tools/check_all.sh`. It was not run here: it needs data not in the repository and the macOS PDFKit reader. The
+   New York checks are not yet steps of it; add them (or run them by hand):
+   - `python3 tools/fetch_sources.py --jurisdiction ny` (archive verifies offline);
+   - `python3 tools/check_extraction.py --jurisdiction ny` (with PDFKit on macOS);
+   - `python3 tools/citations.py --strict --jurisdiction ny`;
+   - the five source-coverage checks with `--jurisdiction ny` (17 findings, all ruled in `reviews/ny/2025/`);
+   - `python3 tools/extract_ny_tax_table.py --check`;
+   - `python3 tools/ny_predict.py --self-test`;
+   - `node engine/dist/main.js mutate --ny`.
+5. The project's review tools (paid model calls; not run in the cloud by the brief) on the New York documents
+   `ny_it201`, `ny_it2`, `ny_rs`, `ny_city_rs`, `ny_tcw`, `ny_tcw_first`: transcription, render comparison, class M,
+   the completeness review and the screen review. The review tools read `sources/<year>/` and the federal input
+   contracts; they need the same `--jurisdiction ny` treatment (the source pages are in `sources/ny/2025/`), which
+   was not built here.
+6. `tools/year_diff.py` and `tools/fixtures_year.py` with `--jurisdiction ny` at the 2026 adoption (Phase 5).
+
+## Open items
+
+- **Recapture worksheet selection.** PolicyEngine-US selects the recapture of the tax table benefit by New York AGI
+  alone; IT-201-I's worksheets also test taxable income ("your taxable income (line 38) is $215,400 or less" for
+  worksheet 7). Where New York AGI is above a worksheet's taxable-income limit and taxable income is not, the two differ
+  by up to a few hundred dollars (`reports/ny/2025/engine_differential.md`, the cases at $215,400 and $161,550 of
+  taxable income). The encoding follows the printed instructions. Tax Law § 601(d) is not archived; reading it would
+  settle whether the instructions' conditions match the statute.
+- **Line 25** (`amb.ny.2025.line25`, decision B1): revisit with the 2026 instructions.
+- **Married filing separately**: the federal encoding refuses it (line 37), so the New York profile refuses it too;
+  the New York lines compute it (fixtures `ny.status.mfs.*`), the household credit tables 3 and 6 are refused.
+- **Household credit columns 3 to 7** are reachable only with two or more dependents who are not qualifying children
+  for the earned income credit (fixtures `ny.household.hoh.parents*`); with a qualifying child, the earned income
+  credit screen (decision B9) refuses first.
+- **Lows of the in-session review** (`research/audits/ny/2025-phase3-review.md`) are listed, not fixed.
+- **The federal W-2 entries and the New York W-2 records** are keyed alike by convention only; nothing checks that
+  every federal W-2 has a New York record (IT-2 requires one per W-2).
+- `forms/ny/2025/*.yaml` were generated from a script kept out of the repository; edit the YAML directly.
