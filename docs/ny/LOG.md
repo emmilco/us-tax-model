@@ -4,6 +4,42 @@ One entry per session on branch `ny/2025-foundation` (brief: `docs/ny/2026-11-04
 
 ---
 
+## 2026-11-04 — Phase 3, steps 1 to 8 (cloud session, continued)
+
+Session: https://claude.ai/code/session_01STA2Jxb5LuWnA1Q6LPZzfH
+
+**Repository hygiene first.** The repository is public: the owner's own checklist answers, recorded earlier in
+`docs/ny/DECISIONS.md` and this log, were removed from the files (commit 0301f3c). They remain in the branch's
+history (commits 4b4b161, df4895c, 640f150); removing them from history needs a rewrite and force push, which is the
+owner's decision.
+
+**Done** (commits "NY Phase 3.1" to "NY Phase 3.8"):
+1. The jurisdiction layout in the build (New York documents in the one canonical build, written to files of their
+   own) and in the Python tools (`tools/jurisdiction.py`, `--jurisdiction ny`).
+2. Parameters (`params/ny/2025.yaml`) and tables: the State and City Tax Tables extracted from the web page and
+   checked against the rate schedules (all 7,812 cells explained), the household credit tables.
+3. Form IT-201 (`forms/ny/2025/`), with the refusal screens of the decisions; the ambiguity register.
+4. The New York interview (`interview/ny/`), asked after the federal questions.
+5. 135 fixtures (`fixtures/ny/2025/it201.json`), every value predicted by `tools/ny_predict.py` from the archived
+   sources before the encoding ran; the two official tax-table examples as class A; every New York branch taken;
+   135/135 pass; the New York interview walked over every fixture at build.
+6. PolicyEngine-US differential: 442 line comparisons, every difference explained (the Tax Table, rounded printed
+   bases), two of them the open item on recapture worksheet selection. The Lean change is written but untested (no
+   toolchain here); OpenTaxSolver needs a manual download. Mutation: see the step commit.
+7. Three independent in-session reviews; every medium-or-higher finding ruled, the defects fixed with a fixture each
+   (`research/audits/ny/2025-phase3-review.md`).
+8. Values sheet, `PROJECT_INDEX.md`, `docs/ny/INTEGRATION.md`.
+
+**Federal unchanged** at every step: the federal canonical output byte-identical to the starting point; federal
+reports unchanged; the federal fixtures 1637/1637 (before the change; the evaluator is untouched).
+
+**Next:** Phase 4 on the owner's machine (`docs/ny/INTEGRATION.md`).
+
+**Cost:** this session's cost was not shown. Subagents: one Phase 2 verification and three Phase 3 reviews (logged in
+`research/costs/agent_runs.jsonl`). No paid review call.
+
+---
+
 ## 2026-11-04 — Phases 1 and 2 (cloud session)
 
 Session: https://claude.ai/code/session_01STA2Jxb5LuWnA1Q6LPZzfH

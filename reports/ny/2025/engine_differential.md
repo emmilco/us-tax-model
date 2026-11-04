@@ -1,6 +1,6 @@
 # New York engine differential: PolicyEngine-US
 
-PolicyEngine-US (version in tools/engines/requirements.txt) against the New York fixtures (`tools/engines/ny_policyengine.py`). 55 cases (single and married filing jointly, no dependents, New York lines asserted), PolicyEngine values rounded half-up to the dollar. Differences: 72.
+PolicyEngine-US (version in tools/engines/requirements.txt) against the New York fixtures (`tools/engines/ny_policyengine.py`). 56 cases (single and married filing jointly, no dependents, New York lines asserted), PolicyEngine values rounded half-up to the dollar. Differences: 69, of which unexplained: 0. Each difference names its cause.
 
 | Case | Line | Project | PolicyEngine | |
 | --- | --- | --- | --- | --- |
@@ -12,94 +12,94 @@ PolicyEngine-US (version in tools/engines/requirements.txt) against the New York
 | `ny.official.tax_table_38275` | line48 | 0 | 0 | agree |
 | `ny.official.tax_table_38275` | line69 | 125 | 125 | agree |
 | `ny.official.tax_table_38275` | line69a | 75 | 75 | agree |
-| `ny.table.single.0` | line33 | 43,200 | 43,200 | agree |
-| `ny.table.single.0` | line38 | 35,200 | 35,200 | agree |
-| `ny.table.single.0` | line39 | 1,773 | 1,771 | **differs** |
+| `ny.table.single.0` | line33 | 40,000 | 40,000 | agree |
+| `ny.table.single.0` | line38 | 32,000 | 32,000 | agree |
+| `ny.table.single.0` | line39 | 1,597 | 1,595 | table: PolicyEngine computes from the rate schedule; the return uses the 2025 New York State Tax Table (IT-201-I p. 12, Line 39) |
 | `ny.table.single.0` | line40 | 0 | 0 | agree |
-| `ny.table.single.0` | line47a | 1,248 | 1,248 | agree |
+| `ny.table.single.0` | line47a | 1,126 | 1,126 | agree |
 | `ny.table.single.0` | line48 | 0 | 0 | agree |
 | `ny.table.single.0` | line69 | 63 | 63 | agree |
-| `ny.table.single.0` | line69a | 74 | 73 | **differs** |
-| `ny.table.single.12` | line33 | 43,200 | 43,200 | agree |
-| `ny.table.single.12` | line38 | 35,200 | 35,200 | agree |
-| `ny.table.single.12` | line39 | 1,773 | 1,771 | **differs** |
+| `ny.table.single.0` | line69a | 67 | 66 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
+| `ny.table.single.12` | line33 | 40,000 | 40,000 | agree |
+| `ny.table.single.12` | line38 | 32,000 | 32,000 | agree |
+| `ny.table.single.12` | line39 | 1,597 | 1,595 | table: PolicyEngine computes from the rate schedule; the return uses the 2025 New York State Tax Table (IT-201-I p. 12, Line 39) |
 | `ny.table.single.12` | line40 | 0 | 0 | agree |
-| `ny.table.single.12` | line47a | 1,248 | 1,248 | agree |
+| `ny.table.single.12` | line47a | 1,126 | 1,126 | agree |
 | `ny.table.single.12` | line48 | 0 | 0 | agree |
 | `ny.table.single.12` | line69 | 63 | 63 | agree |
-| `ny.table.single.12` | line69a | 74 | 73 | **differs** |
-| `ny.table.single.13` | line33 | 43,200 | 43,200 | agree |
-| `ny.table.single.13` | line38 | 35,200 | 35,200 | agree |
-| `ny.table.single.13` | line39 | 1,773 | 1,771 | **differs** |
+| `ny.table.single.12` | line69a | 67 | 66 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
+| `ny.table.single.13` | line33 | 40,000 | 40,000 | agree |
+| `ny.table.single.13` | line38 | 32,000 | 32,000 | agree |
+| `ny.table.single.13` | line39 | 1,597 | 1,595 | table: PolicyEngine computes from the rate schedule; the return uses the 2025 New York State Tax Table (IT-201-I p. 12, Line 39) |
 | `ny.table.single.13` | line40 | 0 | 0 | agree |
-| `ny.table.single.13` | line47a | 1,248 | 1,248 | agree |
+| `ny.table.single.13` | line47a | 1,126 | 1,126 | agree |
 | `ny.table.single.13` | line48 | 0 | 0 | agree |
 | `ny.table.single.13` | line69 | 63 | 63 | agree |
-| `ny.table.single.13` | line69a | 74 | 73 | **differs** |
-| `ny.table.single.24999` | line33 | 43,200 | 43,200 | agree |
-| `ny.table.single.24999` | line38 | 35,200 | 35,200 | agree |
-| `ny.table.single.24999` | line39 | 1,773 | 1,771 | **differs** |
+| `ny.table.single.13` | line69a | 67 | 66 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
+| `ny.table.single.24999` | line33 | 40,000 | 40,000 | agree |
+| `ny.table.single.24999` | line38 | 32,000 | 32,000 | agree |
+| `ny.table.single.24999` | line39 | 1,597 | 1,595 | table: PolicyEngine computes from the rate schedule; the return uses the 2025 New York State Tax Table (IT-201-I p. 12, Line 39) |
 | `ny.table.single.24999` | line40 | 0 | 0 | agree |
-| `ny.table.single.24999` | line47a | 1,248 | 1,248 | agree |
+| `ny.table.single.24999` | line47a | 1,126 | 1,126 | agree |
 | `ny.table.single.24999` | line48 | 0 | 0 | agree |
 | `ny.table.single.24999` | line69 | 63 | 63 | agree |
-| `ny.table.single.24999` | line69a | 74 | 73 | **differs** |
-| `ny.table.single.25000` | line33 | 43,200 | 43,200 | agree |
-| `ny.table.single.25000` | line38 | 35,200 | 35,200 | agree |
-| `ny.table.single.25000` | line39 | 1,773 | 1,771 | **differs** |
+| `ny.table.single.24999` | line69a | 67 | 66 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
+| `ny.table.single.25000` | line33 | 40,000 | 40,000 | agree |
+| `ny.table.single.25000` | line38 | 32,000 | 32,000 | agree |
+| `ny.table.single.25000` | line39 | 1,597 | 1,595 | table: PolicyEngine computes from the rate schedule; the return uses the 2025 New York State Tax Table (IT-201-I p. 12, Line 39) |
 | `ny.table.single.25000` | line40 | 0 | 0 | agree |
-| `ny.table.single.25000` | line47a | 1,248 | 1,248 | agree |
+| `ny.table.single.25000` | line47a | 1,126 | 1,126 | agree |
 | `ny.table.single.25000` | line48 | 0 | 0 | agree |
 | `ny.table.single.25000` | line69 | 63 | 63 | agree |
-| `ny.table.single.25000` | line69a | 74 | 73 | **differs** |
+| `ny.table.single.25000` | line69a | 67 | 66 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
 | `ny.table.single.38275` | line33 | 46,275 | 46,275 | agree |
 | `ny.table.single.38275` | line38 | 38,275 | 38,275 | agree |
-| `ny.table.single.38275` | line39 | 1,941 | 1,940 | **differs** |
+| `ny.table.single.38275` | line39 | 1,941 | 1,940 | table: PolicyEngine computes from the rate schedule; the return uses the 2025 New York State Tax Table (IT-201-I p. 12, Line 39) |
 | `ny.table.single.38275` | line40 | 0 | 0 | agree |
 | `ny.table.single.38275` | line47a | 1,365 | 1,365 | agree |
 | `ny.table.single.38275` | line48 | 0 | 0 | agree |
 | `ny.table.single.38275` | line69 | 63 | 63 | agree |
-| `ny.table.single.38275` | line69a | 81 | 80 | **differs** |
+| `ny.table.single.38275` | line69a | 81 | 80 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
 | `ny.table.single.64999` | line33 | 72,999 | 72,999 | agree |
 | `ny.table.single.64999` | line38 | 64,999 | 64,999 | agree |
-| `ny.table.single.64999` | line39 | 3,409 | 3,410 | **differs** |
+| `ny.table.single.64999` | line39 | 3,409 | 3,410 | table: PolicyEngine computes from the rate schedule; the return uses the 2025 New York State Tax Table (IT-201-I p. 12, Line 39) |
 | `ny.table.single.64999` | line40 | 0 | 0 | agree |
-| `ny.table.single.64999` | line47a | 2,393 | 2,395 | **differs** |
+| `ny.table.single.64999` | line47a | 2,393 | 2,395 | table: PolicyEngine computes from the rate schedule; the return uses the New York City Tax Table (p. 13, Line 47a) |
 | `ny.table.single.64999` | line48 | 0 | 0 | agree |
 | `ny.table.single.64999` | line69 | 63 | 63 | agree |
-| `ny.table.single.64999` | line69a | 142 | 141 | **differs** |
+| `ny.table.single.64999` | line69a | 142 | 141 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
 | `ny.table.mfj.24999` | line33 | 41,049 | 41,049 | agree |
 | `ny.table.mfj.24999` | line38 | 24,999 | 24,999 | agree |
-| `ny.table.mfj.24999` | line39 | 1,048 | 1,050 | **differs** |
+| `ny.table.mfj.24999` | line39 | 1,048 | 1,050 | table: PolicyEngine computes from the rate schedule; the return uses the 2025 New York State Tax Table (IT-201-I p. 12, Line 39) |
 | `ny.table.mfj.24999` | line40 | 0 | 0 | agree |
-| `ny.table.mfj.24999` | line47a | 792 | 793 | **differs** |
+| `ny.table.mfj.24999` | line47a | 792 | 793 | table: PolicyEngine computes from the rate schedule; the return uses the New York City Tax Table (p. 13, Line 47a) |
 | `ny.table.mfj.24999` | line48 | 0 | 0 | agree |
 | `ny.table.mfj.24999` | line69 | 125 | 125 | agree |
 | `ny.table.mfj.24999` | line69a | 45 | 45 | agree |
 | `ny.table.mfj.25000` | line33 | 41,050 | 41,050 | agree |
 | `ny.table.mfj.25000` | line38 | 25,000 | 25,000 | agree |
-| `ny.table.mfj.25000` | line39 | 1,051 | 1,050 | **differs** |
+| `ny.table.mfj.25000` | line39 | 1,051 | 1,050 | table: PolicyEngine computes from the rate schedule; the return uses the 2025 New York State Tax Table (IT-201-I p. 12, Line 39) |
 | `ny.table.mfj.25000` | line40 | 0 | 0 | agree |
-| `ny.table.mfj.25000` | line47a | 794 | 793 | **differs** |
+| `ny.table.mfj.25000` | line47a | 794 | 793 | table: PolicyEngine computes from the rate schedule; the return uses the New York City Tax Table (p. 13, Line 47a) |
 | `ny.table.mfj.25000` | line48 | 0 | 0 | agree |
 | `ny.table.mfj.25000` | line69 | 125 | 125 | agree |
 | `ny.table.mfj.25000` | line69a | 45 | 45 | agree |
 | `ny.table.mfj.64999` | line33 | 81,049 | 81,049 | agree |
 | `ny.table.mfj.64999` | line38 | 64,999 | 64,999 | agree |
-| `ny.table.mfj.64999` | line39 | 3,241 | 3,242 | **differs** |
+| `ny.table.mfj.64999` | line39 | 3,241 | 3,242 | table: PolicyEngine computes from the rate schedule; the return uses the 2025 New York State Tax Table (IT-201-I p. 12, Line 39) |
 | `ny.table.mfj.64999` | line40 | 0 | 0 | agree |
-| `ny.table.mfj.64999` | line47a | 2,308 | 2,309 | **differs** |
+| `ny.table.mfj.64999` | line47a | 2,308 | 2,309 | table: PolicyEngine computes from the rate schedule; the return uses the New York City Tax Table (p. 13, Line 47a) |
 | `ny.table.mfj.64999` | line48 | 0 | 0 | agree |
 | `ny.table.mfj.64999` | line69 | 125 | 125 | agree |
 | `ny.table.mfj.64999` | line69a | 136 | 136 | agree |
 | `ny.schedule.single.65000` | line33 | 73,000 | 73,000 | agree |
 | `ny.schedule.single.65000` | line38 | 65,000 | 65,000 | agree |
-| `ny.schedule.single.65000` | line39 | 3,411 | 3,410 | **differs** |
+| `ny.schedule.single.65000` | line39 | 3,411 | 3,410 | rounded base: the printed schedule bases and recapture amounts are rounded running totals (premise map 4.3, 4.4); PolicyEngine computes them exactly |
 | `ny.schedule.single.65000` | line40 | 0 | 0 | agree |
-| `ny.schedule.single.65000` | line47a | 2,394 | 2,395 | **differs** |
+| `ny.schedule.single.65000` | line47a | 2,394 | 2,395 | rounded base: the printed schedule bases and recapture amounts are rounded running totals (premise map 4.3, 4.4); PolicyEngine computes them exactly |
 | `ny.schedule.single.65000` | line48 | 0 | 0 | agree |
 | `ny.schedule.single.65000` | line69 | 63 | 63 | agree |
-| `ny.schedule.single.65000` | line69a | 142 | 141 | **differs** |
+| `ny.schedule.single.65000` | line69a | 142 | 141 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
 | `ny.schedule.single.80650` | line33 | 88,650 | 88,650 | agree |
 | `ny.schedule.single.80650` | line38 | 80,650 | 80,650 | agree |
 | `ny.schedule.single.80650` | line39 | 4,271 | 4,271 | agree |
@@ -107,7 +107,7 @@ PolicyEngine-US (version in tools/engines/requirements.txt) against the New York
 | `ny.schedule.single.80650` | line47a | 3,001 | 3,001 | agree |
 | `ny.schedule.single.80650` | line48 | 0 | 0 | agree |
 | `ny.schedule.single.80650` | line69 | 63 | 63 | agree |
-| `ny.schedule.single.80650` | line69a | 178 | 177 | **differs** |
+| `ny.schedule.single.80650` | line69a | 178 | 177 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
 | `ny.schedule.single.80651` | line33 | 88,651 | 88,651 | agree |
 | `ny.schedule.single.80651` | line38 | 80,651 | 80,651 | agree |
 | `ny.schedule.single.80651` | line39 | 4,271 | 4,271 | agree |
@@ -115,7 +115,7 @@ PolicyEngine-US (version in tools/engines/requirements.txt) against the New York
 | `ny.schedule.single.80651` | line47a | 3,001 | 3,001 | agree |
 | `ny.schedule.single.80651` | line48 | 0 | 0 | agree |
 | `ny.schedule.single.80651` | line69 | 63 | 63 | agree |
-| `ny.schedule.single.80651` | line69a | 178 | 177 | **differs** |
+| `ny.schedule.single.80651` | line69a | 178 | 177 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
 | `ny.schedule.single.95000` | line33 | 103,000 | 103,000 | agree |
 | `ny.schedule.single.95000` | line38 | 95,000 | 95,000 | agree |
 | `ny.schedule.single.95000` | line39 | 5,132 | 5,132 | agree |
@@ -136,7 +136,7 @@ PolicyEngine-US (version in tools/engines/requirements.txt) against the New York
 | `ny.schedule.mfj.80650` | line38 | 80,650 | 80,650 | agree |
 | `ny.schedule.mfj.80650` | line39 | 4,103 | 4,103 | agree |
 | `ny.schedule.mfj.80650` | line40 | 0 | 0 | agree |
-| `ny.schedule.mfj.80650` | line47a | 2,906 | 2,907 | **differs** |
+| `ny.schedule.mfj.80650` | line47a | 2,906 | 2,907 | rounded base: the printed schedule bases and recapture amounts are rounded running totals (premise map 4.3, 4.4); PolicyEngine computes them exactly |
 | `ny.schedule.mfj.80650` | line48 | 0 | 0 | agree |
 | `ny.schedule.mfj.80650` | line69 | 125 | 125 | agree |
 | `ny.schedule.mfj.80650` | line69a | 172 | 172 | agree |
@@ -150,7 +150,7 @@ PolicyEngine-US (version in tools/engines/requirements.txt) against the New York
 | `ny.schedule.mfj.80651` | line69a | 172 | 172 | agree |
 | `ny.schedule.mfj.95000` | line33 | 111,050 | 111,050 | agree |
 | `ny.schedule.mfj.95000` | line38 | 95,000 | 95,000 | agree |
-| `ny.schedule.mfj.95000` | line39 | 4,916 | 4,915 | **differs** |
+| `ny.schedule.mfj.95000` | line39 | 4,916 | 4,915 | rounded base: the printed schedule bases and recapture amounts are rounded running totals (premise map 4.3, 4.4); PolicyEngine computes them exactly |
 | `ny.schedule.mfj.95000` | line40 | 0 | 0 | agree |
 | `ny.schedule.mfj.95000` | line47a | 3,458 | 3,458 | agree |
 | `ny.schedule.mfj.95000` | line48 | 0 | 0 | agree |
@@ -163,7 +163,7 @@ PolicyEngine-US (version in tools/engines/requirements.txt) against the New York
 | `ny.worksheet.single.100000` | line47a | 3,751 | 3,751 | agree |
 | `ny.worksheet.single.100000` | line48 | 0 | 0 | agree |
 | `ny.worksheet.single.100000` | line69 | 63 | 63 | agree |
-| `ny.worksheet.single.100000` | line69a | 222 | 221 | **differs** |
+| `ny.worksheet.single.100000` | line69a | 222 | 221 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
 | `ny.worksheet.single.120000` | line33 | 128,000 | 128,000 | agree |
 | `ny.worksheet.single.120000` | line38 | 120,000 | 120,000 | agree |
 | `ny.worksheet.single.120000` | line39 | 6,863 | 6,863 | agree |
@@ -179,7 +179,7 @@ PolicyEngine-US (version in tools/engines/requirements.txt) against the New York
 | `ny.worksheet.single.150000` | line47a | 5,689 | 5,689 | agree |
 | `ny.worksheet.single.150000` | line48 | 0 | 0 | agree |
 | `ny.worksheet.single.150000` | line69 | 63 | 63 | agree |
-| `ny.worksheet.single.150000` | line69a | 336 | 335 | **differs** |
+| `ny.worksheet.single.150000` | line69a | 336 | 335 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
 | `ny.worksheet.single.160000` | line33 | 168,000 | 168,000 | agree |
 | `ny.worksheet.single.160000` | line38 | 160,000 | 160,000 | agree |
 | `ny.worksheet.single.160000` | line39 | 9,600 | 9,600 | agree |
@@ -190,12 +190,12 @@ PolicyEngine-US (version in tools/engines/requirements.txt) against the New York
 | `ny.worksheet.single.160000` | line69a | 358 | 358 | agree |
 | `ny.worksheet.single.215400` | line33 | 223,400 | 223,400 | agree |
 | `ny.worksheet.single.215400` | line38 | 215,400 | 215,400 | agree |
-| `ny.worksheet.single.215400` | line39 | 12,924 | 13,217 | **differs** |
+| `ny.worksheet.single.215400` | line39 | 12,924 | 13,217 | worksheet selection: taxable income $215,400 is within worksheet 7's "taxable income (line 38) is $215,400 or less" while New York AGI is above it; PolicyEngine selects the recapture by New York AGI alone. The return follows the printed worksheet conditions (open item, docs/ny/INTEGRATION.md) |
 | `ny.worksheet.single.215400` | line40 | 0 | 0 | agree |
 | `ny.worksheet.single.215400` | line47a | 8,224 | 8,224 | agree |
 | `ny.worksheet.single.215400` | line48 | 0 | 0 | agree |
 | `ny.worksheet.single.215400` | line69 | 63 | 63 | agree |
-| `ny.worksheet.single.215400` | line69a | 485 | 484 | **differs** |
+| `ny.worksheet.single.215400` | line69a | 485 | 484 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
 | `ny.worksheet.single.215401` | line33 | 223,401 | 223,401 | agree |
 | `ny.worksheet.single.215401` | line38 | 215,401 | 215,401 | agree |
 | `ny.worksheet.single.215401` | line39 | 13,217 | 13,217 | agree |
@@ -203,15 +203,15 @@ PolicyEngine-US (version in tools/engines/requirements.txt) against the New York
 | `ny.worksheet.single.215401` | line47a | 8,224 | 8,224 | agree |
 | `ny.worksheet.single.215401` | line48 | 0 | 0 | agree |
 | `ny.worksheet.single.215401` | line69 | 63 | 63 | agree |
-| `ny.worksheet.single.215401` | line69a | 485 | 484 | **differs** |
+| `ny.worksheet.single.215401` | line69a | 485 | 484 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
 | `ny.worksheet.single.240000` | line33 | 248,000 | 248,000 | agree |
 | `ny.worksheet.single.240000` | line38 | 240,000 | 240,000 | agree |
 | `ny.worksheet.single.240000` | line39 | 15,803 | 15,803 | agree |
 | `ny.worksheet.single.240000` | line40 | 0 | 0 | agree |
-| `ny.worksheet.single.240000` | line47a | 9,177 | 9,178 | **differs** |
+| `ny.worksheet.single.240000` | line47a | 9,177 | 9,178 | rounded base: the printed schedule bases and recapture amounts are rounded running totals (premise map 4.3, 4.4); PolicyEngine computes them exactly |
 | `ny.worksheet.single.240000` | line48 | 0 | 0 | agree |
 | `ny.worksheet.single.240000` | line69 | 63 | 63 | agree |
-| `ny.worksheet.single.240000` | line69a | 541 | 540 | **differs** |
+| `ny.worksheet.single.240000` | line69a | 541 | 540 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
 | `ny.worksheet.single.300000` | line33 | 308,000 | 308,000 | agree |
 | `ny.worksheet.single.300000` | line38 | 300,000 | 300,000 | agree |
 | `ny.worksheet.single.300000` | line39 | 20,550 | 20,550 | agree |
@@ -219,7 +219,7 @@ PolicyEngine-US (version in tools/engines/requirements.txt) against the New York
 | `ny.worksheet.single.300000` | line47a | 11,503 | 11,503 | agree |
 | `ny.worksheet.single.300000` | line48 | 0 | 0 | agree |
 | `ny.worksheet.single.300000` | line69 | 0 | 0 | agree |
-| `ny.worksheet.single.300000` | line69a | 678 | 677 | **differs** |
+| `ny.worksheet.single.300000` | line69a | 678 | 677 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
 | `ny.worksheet.single.1077551` | line33 | 1,085,551 | 1,085,551 | agree |
 | `ny.worksheet.single.1077551` | line38 | 1,077,551 | 1,077,551 | agree |
 | `ny.worksheet.single.1077551` | line39 | 78,640 | 78,640 | agree |
@@ -236,7 +236,7 @@ PolicyEngine-US (version in tools/engines/requirements.txt) against the New York
 | `ny.worksheet.single.1200000` | line69 | 0 | 0 | agree |
 | `ny.worksheet.single.5000001` | line33 | 5,008,001 | 5,008,001 | agree |
 | `ny.worksheet.single.5000001` | line38 | 5,000,001 | 5,000,001 | agree |
-| `ny.worksheet.single.5000001` | line39 | 487,700 | 487,701 | **differs** |
+| `ny.worksheet.single.5000001` | line39 | 487,700 | 487,701 | rounded base: the printed schedule bases and recapture amounts are rounded running totals (premise map 4.3, 4.4); PolicyEngine computes them exactly |
 | `ny.worksheet.single.5000001` | line40 | 0 | 0 | agree |
 | `ny.worksheet.single.5000001` | line47a | 193,675 | 193,675 | agree |
 | `ny.worksheet.single.5000001` | line48 | 0 | 0 | agree |
@@ -250,15 +250,15 @@ PolicyEngine-US (version in tools/engines/requirements.txt) against the New York
 | `ny.worksheet.single.26000000` | line69 | 0 | 0 | agree |
 | `ny.worksheet.mfj.100000` | line33 | 116,050 | 116,050 | agree |
 | `ny.worksheet.mfj.100000` | line38 | 100,000 | 100,000 | agree |
-| `ny.worksheet.mfj.100000` | line39 | 5,224 | 5,223 | **differs** |
+| `ny.worksheet.mfj.100000` | line39 | 5,224 | 5,223 | rounded base: the printed schedule bases and recapture amounts are rounded running totals (premise map 4.3, 4.4); PolicyEngine computes them exactly |
 | `ny.worksheet.mfj.100000` | line40 | 0 | 0 | agree |
-| `ny.worksheet.mfj.100000` | line47a | 3,652 | 3,651 | **differs** |
+| `ny.worksheet.mfj.100000` | line47a | 3,652 | 3,651 | rounded base: the printed schedule bases and recapture amounts are rounded running totals (premise map 4.3, 4.4); PolicyEngine computes them exactly |
 | `ny.worksheet.mfj.100000` | line48 | 0 | 0 | agree |
 | `ny.worksheet.mfj.100000` | line69 | 125 | 125 | agree |
 | `ny.worksheet.mfj.100000` | line69a | 216 | 216 | agree |
 | `ny.worksheet.mfj.140000` | line33 | 156,050 | 156,050 | agree |
 | `ny.worksheet.mfj.140000` | line38 | 140,000 | 140,000 | agree |
-| `ny.worksheet.mfj.140000` | line39 | 7,689 | 7,690 | **differs** |
+| `ny.worksheet.mfj.140000` | line39 | 7,689 | 7,690 | rounded base: the printed schedule bases and recapture amounts are rounded running totals (premise map 4.3, 4.4); PolicyEngine computes them exactly |
 | `ny.worksheet.mfj.140000` | line40 | 0 | 0 | agree |
 | `ny.worksheet.mfj.140000` | line47a | 5,202 | 5,202 | agree |
 | `ny.worksheet.mfj.140000` | line48 | 0 | 0 | agree |
@@ -266,7 +266,7 @@ PolicyEngine-US (version in tools/engines/requirements.txt) against the New York
 | `ny.worksheet.mfj.140000` | line69a | 307 | 307 | agree |
 | `ny.worksheet.mfj.161550` | line33 | 177,600 | 177,600 | agree |
 | `ny.worksheet.mfj.161550` | line38 | 161,550 | 161,550 | agree |
-| `ny.worksheet.mfj.161550` | line39 | 8,885 | 9,145 | **differs** |
+| `ny.worksheet.mfj.161550` | line39 | 8,885 | 9,145 | worksheet selection: taxable income $161,550 is within worksheet 1's "taxable income (line 38) is $161,550 or less" while New York AGI is above it; PolicyEngine selects the recapture by New York AGI alone. The return follows the printed worksheet conditions (open item, docs/ny/INTEGRATION.md) |
 | `ny.worksheet.mfj.161550` | line40 | 0 | 0 | agree |
 | `ny.worksheet.mfj.161550` | line47a | 6,037 | 6,037 | agree |
 | `ny.worksheet.mfj.161550` | line48 | 0 | 0 | agree |
@@ -284,7 +284,7 @@ PolicyEngine-US (version in tools/engines/requirements.txt) against the New York
 | `ny.worksheet.mfj.200000` | line38 | 200,000 | 200,000 | agree |
 | `ny.worksheet.mfj.200000` | line39 | 12,000 | 12,000 | agree |
 | `ny.worksheet.mfj.200000` | line40 | 0 | 0 | agree |
-| `ny.worksheet.mfj.200000` | line47a | 7,528 | 7,527 | **differs** |
+| `ny.worksheet.mfj.200000` | line47a | 7,528 | 7,527 | rounded base: the printed schedule bases and recapture amounts are rounded running totals (premise map 4.3, 4.4); PolicyEngine computes them exactly |
 | `ny.worksheet.mfj.200000` | line48 | 0 | 0 | agree |
 | `ny.worksheet.mfj.200000` | line69 | 125 | 125 | agree |
 | `ny.worksheet.mfj.200000` | line69a | 444 | 444 | agree |
@@ -300,13 +300,13 @@ PolicyEngine-US (version in tools/engines/requirements.txt) against the New York
 | `ny.worksheet.mfj.400000` | line38 | 400,000 | 400,000 | agree |
 | `ny.worksheet.mfj.400000` | line39 | 27,400 | 27,400 | agree |
 | `ny.worksheet.mfj.400000` | line40 | 0 | 0 | agree |
-| `ny.worksheet.mfj.400000` | line47a | 15,280 | 15,279 | **differs** |
+| `ny.worksheet.mfj.400000` | line47a | 15,280 | 15,279 | rounded base: the printed schedule bases and recapture amounts are rounded running totals (premise map 4.3, 4.4); PolicyEngine computes them exactly |
 | `ny.worksheet.mfj.400000` | line48 | 0 | 0 | agree |
 | `ny.worksheet.mfj.400000` | line69 | 0 | 0 | agree |
 | `ny.worksheet.mfj.400000` | line69a | 900 | 900 | agree |
 | `ny.worksheet.mfj.2155351` | line33 | 2,171,401 | 2,171,401 | agree |
 | `ny.worksheet.mfj.2155351` | line38 | 2,155,351 | 2,155,351 | agree |
-| `ny.worksheet.mfj.2155351` | line39 | 167,013 | 167,015 | **differs** |
+| `ny.worksheet.mfj.2155351` | line39 | 167,013 | 167,015 | rounded base: the printed schedule bases and recapture amounts are rounded running totals (premise map 4.3, 4.4); PolicyEngine computes them exactly |
 | `ny.worksheet.mfj.2155351` | line40 | 0 | 0 | agree |
 | `ny.worksheet.mfj.2155351` | line47a | 83,317 | 83,317 | agree |
 | `ny.worksheet.mfj.2155351` | line48 | 0 | 0 | agree |
@@ -315,89 +315,81 @@ PolicyEngine-US (version in tools/engines/requirements.txt) against the New York
 | `ny.worksheet.mfj.5000001` | line38 | 5,000,001 | 5,000,001 | agree |
 | `ny.worksheet.mfj.5000001` | line39 | 492,933 | 492,933 | agree |
 | `ny.worksheet.mfj.5000001` | line40 | 0 | 0 | agree |
-| `ny.worksheet.mfj.5000001` | line47a | 193,576 | 193,575 | **differs** |
+| `ny.worksheet.mfj.5000001` | line47a | 193,576 | 193,575 | rounded base: the printed schedule bases and recapture amounts are rounded running totals (premise map 4.3, 4.4); PolicyEngine computes them exactly |
 | `ny.worksheet.mfj.5000001` | line48 | 0 | 0 | agree |
 | `ny.worksheet.mfj.5000001` | line69 | 0 | 0 | agree |
-| `ny.household.single.2000` | line33 | 43,200 | 43,200 | agree |
-| `ny.household.single.2000` | line38 | 35,200 | 35,200 | agree |
-| `ny.household.single.2000` | line39 | 1,773 | 1,771 | **differs** |
+| `ny.household.single.2000` | line33 | 40,000 | 40,000 | agree |
+| `ny.household.single.2000` | line38 | 32,000 | 32,000 | agree |
+| `ny.household.single.2000` | line39 | 1,597 | 1,595 | table: PolicyEngine computes from the rate schedule; the return uses the 2025 New York State Tax Table (IT-201-I p. 12, Line 39) |
 | `ny.household.single.2000` | line40 | 0 | 0 | agree |
-| `ny.household.single.2000` | line47a | 1,248 | 1,248 | agree |
+| `ny.household.single.2000` | line47a | 1,126 | 1,126 | agree |
 | `ny.household.single.2000` | line48 | 0 | 0 | agree |
 | `ny.household.single.2000` | line69 | 63 | 63 | agree |
-| `ny.household.single.2000` | line69a | 74 | 73 | **differs** |
-| `ny.household.single.4000` | line33 | 43,200 | 43,200 | agree |
-| `ny.household.single.4000` | line38 | 35,200 | 35,200 | agree |
-| `ny.household.single.4000` | line39 | 1,773 | 1,771 | **differs** |
+| `ny.household.single.2000` | line69a | 67 | 66 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
+| `ny.household.single.4000` | line33 | 40,000 | 40,000 | agree |
+| `ny.household.single.4000` | line38 | 32,000 | 32,000 | agree |
+| `ny.household.single.4000` | line39 | 1,597 | 1,595 | table: PolicyEngine computes from the rate schedule; the return uses the 2025 New York State Tax Table (IT-201-I p. 12, Line 39) |
 | `ny.household.single.4000` | line40 | 0 | 0 | agree |
-| `ny.household.single.4000` | line47a | 1,248 | 1,248 | agree |
+| `ny.household.single.4000` | line47a | 1,126 | 1,126 | agree |
 | `ny.household.single.4000` | line48 | 0 | 0 | agree |
 | `ny.household.single.4000` | line69 | 63 | 63 | agree |
-| `ny.household.single.4000` | line69a | 74 | 73 | **differs** |
-| `ny.household.single.12000` | line33 | 43,200 | 43,200 | agree |
-| `ny.household.single.12000` | line38 | 35,200 | 35,200 | agree |
-| `ny.household.single.12000` | line39 | 1,773 | 1,771 | **differs** |
+| `ny.household.single.4000` | line69a | 67 | 66 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
+| `ny.household.single.12000` | line33 | 40,000 | 40,000 | agree |
+| `ny.household.single.12000` | line38 | 32,000 | 32,000 | agree |
+| `ny.household.single.12000` | line39 | 1,597 | 1,595 | table: PolicyEngine computes from the rate schedule; the return uses the 2025 New York State Tax Table (IT-201-I p. 12, Line 39) |
 | `ny.household.single.12000` | line40 | 0 | 0 | agree |
-| `ny.household.single.12000` | line47a | 1,248 | 1,248 | agree |
+| `ny.household.single.12000` | line47a | 1,126 | 1,126 | agree |
 | `ny.household.single.12000` | line48 | 0 | 0 | agree |
 | `ny.household.single.12000` | line69 | 63 | 63 | agree |
-| `ny.household.single.12000` | line69a | 74 | 73 | **differs** |
-| `ny.household.single.19000` | line33 | 43,200 | 43,200 | agree |
-| `ny.household.single.19000` | line38 | 35,200 | 35,200 | agree |
-| `ny.household.single.19000` | line39 | 1,773 | 1,771 | **differs** |
+| `ny.household.single.12000` | line69a | 67 | 66 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
+| `ny.household.single.19000` | line33 | 40,000 | 40,000 | agree |
+| `ny.household.single.19000` | line38 | 32,000 | 32,000 | agree |
+| `ny.household.single.19000` | line39 | 1,597 | 1,595 | table: PolicyEngine computes from the rate schedule; the return uses the 2025 New York State Tax Table (IT-201-I p. 12, Line 39) |
 | `ny.household.single.19000` | line40 | 0 | 0 | agree |
-| `ny.household.single.19000` | line47a | 1,248 | 1,248 | agree |
+| `ny.household.single.19000` | line47a | 1,126 | 1,126 | agree |
 | `ny.household.single.19000` | line48 | 0 | 0 | agree |
 | `ny.household.single.19000` | line69 | 63 | 63 | agree |
-| `ny.household.single.19000` | line69a | 74 | 73 | **differs** |
-| `ny.household.single.21000` | line33 | 43,200 | 43,200 | agree |
-| `ny.household.single.21000` | line38 | 35,200 | 35,200 | agree |
-| `ny.household.single.21000` | line39 | 1,773 | 1,771 | **differs** |
+| `ny.household.single.19000` | line69a | 67 | 66 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
+| `ny.household.single.21000` | line33 | 40,000 | 40,000 | agree |
+| `ny.household.single.21000` | line38 | 32,000 | 32,000 | agree |
+| `ny.household.single.21000` | line39 | 1,597 | 1,595 | table: PolicyEngine computes from the rate schedule; the return uses the 2025 New York State Tax Table (IT-201-I p. 12, Line 39) |
 | `ny.household.single.21000` | line40 | 0 | 0 | agree |
-| `ny.household.single.21000` | line47a | 1,248 | 1,248 | agree |
+| `ny.household.single.21000` | line47a | 1,126 | 1,126 | agree |
 | `ny.household.single.21000` | line48 | 0 | 0 | agree |
 | `ny.household.single.21000` | line69 | 63 | 63 | agree |
-| `ny.household.single.21000` | line69a | 74 | 73 | **differs** |
+| `ny.household.single.21000` | line69a | 67 | 66 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
 | `ny.household.mfj.12000` | line33 | 28,050 | 28,050 | agree |
 | `ny.household.mfj.12000` | line38 | 12,000 | 12,000 | agree |
-| `ny.household.mfj.12000` | line39 | 481 | 480 | **differs** |
+| `ny.household.mfj.12000` | line39 | 481 | 480 | table: PolicyEngine computes from the rate schedule; the return uses the 2025 New York State Tax Table (IT-201-I p. 12, Line 39) |
 | `ny.household.mfj.12000` | line40 | 25 | 25 | agree |
-| `ny.household.mfj.12000` | line47a | 370 | 369 | **differs** |
+| `ny.household.mfj.12000` | line47a | 370 | 369 | table: PolicyEngine computes from the rate schedule; the return uses the New York City Tax Table (p. 13, Line 47a) |
 | `ny.household.mfj.12000` | line48 | 0 | 0 | agree |
 | `ny.household.mfj.12000` | line69 | 125 | 125 | agree |
 | `ny.household.mfj.12000` | line69a | 21 | 21 | agree |
 | `ny.household.mfj.16000` | line33 | 32,050 | 32,050 | agree |
 | `ny.household.mfj.16000` | line38 | 16,000 | 16,000 | agree |
-| `ny.household.mfj.16000` | line39 | 641 | 640 | **differs** |
+| `ny.household.mfj.16000` | line39 | 641 | 640 | table: PolicyEngine computes from the rate schedule; the return uses the 2025 New York State Tax Table (IT-201-I p. 12, Line 39) |
 | `ny.household.mfj.16000` | line40 | 0 | 0 | agree |
-| `ny.household.mfj.16000` | line47a | 493 | 492 | **differs** |
+| `ny.household.mfj.16000` | line47a | 493 | 492 | table: PolicyEngine computes from the rate schedule; the return uses the New York City Tax Table (p. 13, Line 47a) |
 | `ny.household.mfj.16000` | line48 | 0 | 0 | agree |
 | `ny.household.mfj.16000` | line69 | 125 | 125 | agree |
 | `ny.household.mfj.16000` | line69a | 27 | 27 | agree |
-| `ny.item_c.single` | line33 | 43,200 | 43,200 | agree |
-| `ny.item_c.single` | line38 | 40,100 | 35,200 | **differs** |
-| `ny.item_c.single` | line39 | 2,042 | 1,771 | **differs** |
-| `ny.item_c.single` | line40 | 0 | 0 | agree |
-| `ny.item_c.single` | line47a | 1,436 | 1,248 | **differs** |
-| `ny.item_c.single` | line48 | 0 | 0 | agree |
-| `ny.item_c.single` | line69 | 0 | 63 | **differs** |
-| `ny.item_c.single` | line69a | 0 | 73 | **differs** |
-| `ny.use_tax.single.8000` | line33 | 43,200 | 43,200 | agree |
-| `ny.use_tax.single.8000` | line38 | 35,200 | 35,200 | agree |
-| `ny.use_tax.single.8000` | line39 | 1,773 | 1,771 | **differs** |
+| `ny.use_tax.single.8000` | line33 | 40,000 | 40,000 | agree |
+| `ny.use_tax.single.8000` | line38 | 32,000 | 32,000 | agree |
+| `ny.use_tax.single.8000` | line39 | 1,597 | 1,595 | table: PolicyEngine computes from the rate schedule; the return uses the 2025 New York State Tax Table (IT-201-I p. 12, Line 39) |
 | `ny.use_tax.single.8000` | line40 | 0 | 0 | agree |
-| `ny.use_tax.single.8000` | line47a | 1,248 | 1,248 | agree |
+| `ny.use_tax.single.8000` | line47a | 1,126 | 1,126 | agree |
 | `ny.use_tax.single.8000` | line48 | 0 | 0 | agree |
 | `ny.use_tax.single.8000` | line69 | 63 | 63 | agree |
-| `ny.use_tax.single.8000` | line69a | 74 | 73 | **differs** |
+| `ny.use_tax.single.8000` | line69a | 67 | 66 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
 | `ny.use_tax.single.40000` | line33 | 48,000 | 48,000 | agree |
 | `ny.use_tax.single.40000` | line38 | 40,000 | 40,000 | agree |
-| `ny.use_tax.single.40000` | line39 | 2,037 | 2,035 | **differs** |
+| `ny.use_tax.single.40000` | line39 | 2,037 | 2,035 | table: PolicyEngine computes from the rate schedule; the return uses the 2025 New York State Tax Table (IT-201-I p. 12, Line 39) |
 | `ny.use_tax.single.40000` | line40 | 0 | 0 | agree |
-| `ny.use_tax.single.40000` | line47a | 1,432 | 1,431 | **differs** |
+| `ny.use_tax.single.40000` | line47a | 1,432 | 1,431 | table: PolicyEngine computes from the rate schedule; the return uses the New York City Tax Table (p. 13, Line 47a) |
 | `ny.use_tax.single.40000` | line48 | 0 | 0 | agree |
 | `ny.use_tax.single.40000` | line69 | 63 | 63 | agree |
-| `ny.use_tax.single.40000` | line69a | 85 | 84 | **differs** |
+| `ny.use_tax.single.40000` | line69a | 85 | 84 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
 | `ny.use_tax.single.180000` | line33 | 188,000 | 188,000 | agree |
 | `ny.use_tax.single.180000` | line38 | 180,000 | 180,000 | agree |
 | `ny.use_tax.single.180000` | line39 | 10,800 | 10,800 | agree |
@@ -416,7 +408,7 @@ PolicyEngine-US (version in tools/engines/requirements.txt) against the New York
 | `ny.use_tax.single.260000` | line69a | 586 | 586 | agree |
 | `ny.payments.refund` | line33 | 78,000 | 78,000 | agree |
 | `ny.payments.refund` | line38 | 70,000 | 70,000 | agree |
-| `ny.payments.refund` | line39 | 3,686 | 3,685 | **differs** |
+| `ny.payments.refund` | line39 | 3,686 | 3,685 | rounded base: the printed schedule bases and recapture amounts are rounded running totals (premise map 4.3, 4.4); PolicyEngine computes them exactly |
 | `ny.payments.refund` | line40 | 0 | 0 | agree |
 | `ny.payments.refund` | line47a | 2,588 | 2,588 | agree |
 | `ny.payments.refund` | line48 | 0 | 0 | agree |
@@ -429,7 +421,7 @@ PolicyEngine-US (version in tools/engines/requirements.txt) against the New York
 | `ny.payments.owe_safe` | line47a | 5,689 | 5,689 | agree |
 | `ny.payments.owe_safe` | line48 | 0 | 0 | agree |
 | `ny.payments.owe_safe` | line69 | 63 | 63 | agree |
-| `ny.payments.owe_safe` | line69a | 336 | 335 | **differs** |
+| `ny.payments.owe_safe` | line69a | 336 | 335 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
 | `ny.payments.owe_safe_110` | line33 | 158,000 | 158,000 | agree |
 | `ny.payments.owe_safe_110` | line38 | 150,000 | 150,000 | agree |
 | `ny.payments.owe_safe_110` | line39 | 9,000 | 9,000 | agree |
@@ -437,4 +429,20 @@ PolicyEngine-US (version in tools/engines/requirements.txt) against the New York
 | `ny.payments.owe_safe_110` | line47a | 5,689 | 5,689 | agree |
 | `ny.payments.owe_safe_110` | line48 | 0 | 0 | agree |
 | `ny.payments.owe_safe_110` | line69 | 63 | 63 | agree |
-| `ny.payments.owe_safe_110` | line69a | 336 | 335 | **differs** |
+| `ny.payments.owe_safe_110` | line69a | 336 | 335 | rounded base: the printed rate-reduction base ($21, $37, $25) is 0.171% of the bracket amount rounded (20.52, 36.94, 24.62); PolicyEngine uses the exact amount |
+| `ny.review.it2_whole_dollars` | line33 | 78,000 | 78,000 | agree |
+| `ny.review.it2_whole_dollars` | line38 | 70,000 | 70,000 | agree |
+| `ny.review.it2_whole_dollars` | line39 | 3,686 | 3,685 | rounded base: the printed schedule bases and recapture amounts are rounded running totals (premise map 4.3, 4.4); PolicyEngine computes them exactly |
+| `ny.review.it2_whole_dollars` | line40 | 0 | 0 | agree |
+| `ny.review.it2_whole_dollars` | line47a | 2,588 | 2,588 | agree |
+| `ny.review.it2_whole_dollars` | line48 | 0 | 0 | agree |
+| `ny.review.it2_whole_dollars` | line69 | 63 | 63 | agree |
+| `ny.review.it2_whole_dollars` | line69a | 153 | 153 | agree |
+| `ny.review.worksheet_single_rounding` | line33 | 162,820 | 162,820 | agree |
+| `ny.review.worksheet_single_rounding` | line38 | 146,770 | 146,770 | agree |
+| `ny.review.worksheet_single_rounding` | line39 | 8,072 | 8,073 | rounded base: the printed schedule bases and recapture amounts are rounded running totals (premise map 4.3, 4.4); PolicyEngine computes them exactly |
+| `ny.review.worksheet_single_rounding` | line40 | 0 | 0 | agree |
+| `ny.review.worksheet_single_rounding` | line47a | 5,464 | 5,464 | agree |
+| `ny.review.worksheet_single_rounding` | line48 | 0 | 0 | agree |
+| `ny.review.worksheet_single_rounding` | line69 | 125 | 125 | agree |
+| `ny.review.worksheet_single_rounding` | line69a | 322 | 322 | agree |
