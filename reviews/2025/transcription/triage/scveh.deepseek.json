@@ -1,18 +1,22 @@
 {
  "bank": {
   "evaluation_failures": 0,
-  "fixtures": 1495,
+  "fixtures": 1565,
   "generated": 500,
   "partial_bases": 40,
-  "partial_records": 0,
+  "partial_records": 1224,
   "return_states": {
-   "completed": 332,
-   "incomplete": 753,
-   "refused": 910
+   "completed": 558,
+   "incomplete": 1098,
+   "refused": 1633
   },
   "seed": 20261026
  },
  "errors": [
+  {
+   "line": "scveh.cost179",
+   "message": "malformed expression (project schema): data/alternatives/0/then must be string, data/alternatives/0/then must have required property 'def', data/alternatives/0/then must have required property 'bind'"
+  },
   {
    "line": "scveh.bus_cost",
    "message": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money"
@@ -22,12 +26,20 @@
    "message": "scveh.scveh.bus_cost: whole operand is not money"
   },
   {
-   "line": "scveh.h_operating_business",
-   "message": "scveh.scveh.h_operating_business: part 'scveh.miles_business' is not money"
+   "line": "scveh.line9w",
+   "message": "scveh.scveh.line9w: part 'scveh.miles_business' is not money"
   },
   {
-   "line": "scveh.h_operating_business",
-   "message": "scveh.scveh.h_operating_business: whole operand is not money"
+   "line": "scveh.line9w",
+   "message": "scveh.scveh.line9w: whole operand is not money"
+  },
+  {
+   "line": "scveh.h_actual_operating",
+   "message": "scveh.scveh.h_actual_operating: part 'scveh.miles_business' is not money"
+  },
+  {
+   "line": "scveh.h_actual_operating",
+   "message": "scveh.scveh.h_actual_operating: whole operand is not money"
   },
   {
    "line": "scveh.h_lease_business",
@@ -38,44 +50,48 @@
    "message": "scveh.scveh.h_lease_business: whole operand is not money"
   },
   {
-   "line": "scveh.h_adjusted_max_passenger",
-   "message": "scveh.scveh.h_adjusted_max_passenger: part 'scveh.miles_business' is not money"
+   "line": "scveh.cost179",
+   "message": "scveh.scveh.cost179: instance def 'undefined' does not exist"
   },
   {
-   "line": "scveh.h_adjusted_max_passenger",
-   "message": "scveh.scveh.h_adjusted_max_passenger: whole operand is not money"
+   "line": "scveh.cost179",
+   "message": "scveh.scveh.cost179: declared NonNegDollars but the expression does not prove non-negativity"
   }
  ],
  "failures": [],
  "family": "deepseek",
  "form": "scveh",
  "invalid_lines": [
+  "scveh.cost179",
   "scveh.bus_cost",
-  "scveh.h_operating_business",
-  "scveh.h_lease_business",
-  "scveh.h_adjusted_max_passenger",
-  "scveh.line20a",
-  "scveh.line7",
   "scveh.line9w",
+  "scveh.h_actual_operating",
+  "scveh.h_lease_business",
+  "scveh.line20a",
   "scveh.line11",
   "scveh.line15",
-  "scveh.line16",
-  "scveh.bonus_allowed",
   "scveh.line17",
   "scveh.line18",
-  "scveh.line19",
   "scveh.line20",
-  "scveh.h_actual_line9",
-  "scveh.h_min_179",
-  "scveh.h_bonus_forty",
+  "scveh.h_actual_total",
+  "scveh.h_s179_elected_capped",
+  "scveh.h_s179_this_year",
+  "scveh.h_bonus_forty_amount",
+  "scveh.h_bonus_raw",
+  "scveh.h_macrs_mq",
+  "scveh.h_macrs_hy",
+  "scveh.h_macrs_prior",
+  "scveh.h_mq_total_2025",
   "scveh.bonus",
   "scveh.macrs",
-  "scveh.mq_q4",
   "scveh.mq_total",
-  "scveh.cost179",
+  "scveh.mq_q4",
   "scveh.line9",
   "scveh.line10",
   "scveh.line14",
+  "scveh.line16",
+  "scveh.bonus_allowed",
+  "scveh.line19",
   "scveh.s179_2025"
  ],
  "lines": [
@@ -88,34 +104,6 @@
     {
      "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
       "cents": 0,
@@ -168,25 +156,53 @@
       "id": "classm.sd.1.deepseek",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.u1250.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
     }
    ],
    "differ": 0,
    "handle": "scveh.bonus",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 321,
+   "invalid": 2501,
    "kinds": {
-    "candidate-invalid": 321
+    "candidate-invalid": 2501
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 114
+     "candidate-invalid": 439
     },
     "incomplete": {
-     "candidate-invalid": 4
+     "candidate-invalid": 498
     },
     "refused": {
-     "candidate-invalid": 203
+     "candidate-invalid": 1564
     }
    },
    "open_at_triage": true,
@@ -262,7 +278,7 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.1.deepseek",
+      "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
     },
@@ -276,7 +292,7 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.2.deepseek",
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     }
@@ -291,34 +307,6 @@
     {
      "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
       "cents": 0,
@@ -371,25 +359,53 @@
       "id": "classm.sd.1.deepseek",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.u1250.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
     }
    ],
    "differ": 0,
    "handle": "scveh.macrs",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 321,
+   "invalid": 2501,
    "kinds": {
-    "candidate-invalid": 321
+    "candidate-invalid": 2501
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 114
+     "candidate-invalid": 439
     },
     "incomplete": {
-     "candidate-invalid": 4
+     "candidate-invalid": 498
     },
     "refused": {
-     "candidate-invalid": 203
+     "candidate-invalid": 1564
     }
    },
    "open_at_triage": true,
@@ -465,7 +481,7 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.1.deepseek",
+      "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
     },
@@ -479,7 +495,7 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.2.deepseek",
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     }
@@ -494,34 +510,6 @@
     {
      "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
       "cents": 0,
@@ -574,25 +562,53 @@
       "id": "classm.sd.1.deepseek",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.u1250.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
     }
    ],
    "differ": 0,
    "handle": "scveh.s179_2025",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 321,
+   "invalid": 2501,
    "kinds": {
-    "candidate-invalid": 321
+    "candidate-invalid": 2501
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 114
+     "candidate-invalid": 439
     },
     "incomplete": {
-     "candidate-invalid": 4
+     "candidate-invalid": 498
     },
     "refused": {
-     "candidate-invalid": 203
+     "candidate-invalid": 1564
     }
    },
    "open_at_triage": true,
@@ -668,7 +684,7 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.1.deepseek",
+      "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
     },
@@ -682,7 +698,7 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.2.deepseek",
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     }
@@ -697,34 +713,6 @@
     {
      "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
       "cents": 0,
@@ -777,25 +765,53 @@
       "id": "classm.sd.1.deepseek",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.u1250.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
     }
    ],
    "differ": 0,
    "handle": "scveh.mq_q4",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 321,
+   "invalid": 2501,
    "kinds": {
-    "candidate-invalid": 321
+    "candidate-invalid": 2501
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 114
+     "candidate-invalid": 439
     },
     "incomplete": {
-     "candidate-invalid": 4
+     "candidate-invalid": 498
     },
     "refused": {
-     "candidate-invalid": 203
+     "candidate-invalid": 1564
     }
    },
    "open_at_triage": true,
@@ -871,7 +887,7 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.1.deepseek",
+      "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
     },
@@ -885,7 +901,7 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.2.deepseek",
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     }
@@ -900,34 +916,6 @@
     {
      "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
       "cents": 0,
@@ -980,25 +968,53 @@
       "id": "classm.sd.1.deepseek",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.u1250.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
     }
    ],
    "differ": 0,
    "handle": "scveh.mq_total",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 321,
+   "invalid": 2501,
    "kinds": {
-    "candidate-invalid": 321
+    "candidate-invalid": 2501
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 114
+     "candidate-invalid": 439
     },
     "incomplete": {
-     "candidate-invalid": 4
+     "candidate-invalid": 498
     },
     "refused": {
-     "candidate-invalid": 203
+     "candidate-invalid": 1564
     }
    },
    "open_at_triage": true,
@@ -1074,70 +1090,6 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    }
-   ]
-  },
-  {
-   "absent": 0,
-   "agree": 0,
-   "candidate": "scveh.cost179",
-   "compared": 0,
-   "completed_witnesses": [
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
       "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
@@ -1155,9 +1107,45 @@
       "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 0,
+   "candidate": "scveh.cost179",
+   "compared": 0,
+   "completed_witnesses": [
+    {
+     "candidate_error": "malformed expression (project schema): data/alternatives/0/then must be string, data/alternatives/0/then must have required property 'def', data/alternatives/0/then must have required property 'bind'",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.2.deepseek",
+      "kind": "fixture"
+     }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "malformed expression (project schema): data/alternatives/0/then must be string, data/alternatives/0/then must have required property 'def', data/alternatives/0/then must have required property 'bind'",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8960.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "malformed expression (project schema): data/alternatives/0/then must be string, data/alternatives/0/then must have required property 'def', data/alternatives/0/then must have required property 'bind'",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1171,7 +1159,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "malformed expression (project schema): data/alternatives/0/then must be string, data/alternatives/0/then must have required property 'def', data/alternatives/0/then must have required property 'bind'",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1183,25 +1171,53 @@
       "id": "classm.sd.1.deepseek",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate_error": "malformed expression (project schema): data/alternatives/0/then must be string, data/alternatives/0/then must have required property 'def', data/alternatives/0/then must have required property 'bind'",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.u1250.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "malformed expression (project schema): data/alternatives/0/then must be string, data/alternatives/0/then must have required property 'def', data/alternatives/0/then must have required property 'bind'",
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
     }
    ],
    "differ": 0,
    "handle": "scveh.cost179",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 321,
+   "invalid": 2501,
    "kinds": {
-    "candidate-invalid": 321
+    "candidate-invalid": 2501
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 114
+     "candidate-invalid": 439
     },
     "incomplete": {
-     "candidate-invalid": 4
+     "candidate-invalid": 498
     },
     "refused": {
-     "candidate-invalid": 203
+     "candidate-invalid": 1564
     }
    },
    "open_at_triage": true,
@@ -1212,7 +1228,7 @@
    "triage": "candidate invalid",
    "witnesses": [
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "malformed expression (project schema): data/alternatives/0/then must be string, data/alternatives/0/then must have required property 'def', data/alternatives/0/then must have required property 'bind'",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1226,7 +1242,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "malformed expression (project schema): data/alternatives/0/then must be string, data/alternatives/0/then must have required property 'def', data/alternatives/0/then must have required property 'bind'",
      "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1240,7 +1256,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "malformed expression (project schema): data/alternatives/0/then must be string, data/alternatives/0/then must have required property 'def', data/alternatives/0/then must have required property 'bind'",
      "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
@@ -1254,7 +1270,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "malformed expression (project schema): data/alternatives/0/then must be string, data/alternatives/0/then must have required property 'def', data/alternatives/0/then must have required property 'bind'",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1268,21 +1284,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "malformed expression (project schema): data/alternatives/0/then must be string, data/alternatives/0/then must have required property 'def', data/alternatives/0/then must have required property 'bind'",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -1292,6 +1294,20 @@
      "project_return": "completed",
      "source": {
       "id": "classm.f4952.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "malformed expression (project schema): data/alternatives/0/then must be string, data/alternatives/0/then must have required property 'def', data/alternatives/0/then must have required property 'bind'",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     }
@@ -1308,35 +1324,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 16400,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 2044000,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
+      "cents": 1355270,
       "kind": "money"
      },
      "project_return": "completed",
@@ -1386,25 +1374,53 @@
       "id": "classm.sd.1.deepseek",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 16400,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.u1250.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 580250,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
     }
    ],
    "differ": 0,
    "handle": "9 (scveh.line9)",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 321,
+   "invalid": 2501,
    "kinds": {
-    "candidate-invalid": 321
+    "candidate-invalid": 2501
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 114
+     "candidate-invalid": 439
     },
     "incomplete": {
-     "candidate-invalid": 4
+     "candidate-invalid": 498
     },
     "refused": {
-     "candidate-invalid": 203
+     "candidate-invalid": 1564
     }
    },
    "open_at_triage": true,
@@ -1475,12 +1491,12 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 16400,
+      "cents": 1355270,
       "kind": "money"
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.1.deepseek",
+      "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
     },
@@ -1489,12 +1505,12 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 2044000,
+      "cents": 16400,
       "kind": "money"
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.2.deepseek",
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     }
@@ -1509,34 +1525,6 @@
     {
      "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
       "cents": 0,
@@ -1589,25 +1577,53 @@
       "id": "classm.sd.1.deepseek",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.u1250.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
     }
    ],
    "differ": 0,
    "handle": "20a",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 321,
+   "invalid": 2501,
    "kinds": {
-    "candidate-invalid": 321
+    "candidate-invalid": 2501
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 114
+     "candidate-invalid": 439
     },
     "incomplete": {
-     "candidate-invalid": 4
+     "candidate-invalid": 498
     },
     "refused": {
-     "candidate-invalid": 203
+     "candidate-invalid": 1564
     }
    },
    "open_at_triage": true,
@@ -1683,7 +1699,7 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.1.deepseek",
+      "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
     },
@@ -1697,7 +1713,7 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.2.deepseek",
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     }
@@ -1714,36 +1730,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 256515,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 3029148,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "completed",
      "source": {
@@ -1792,30 +1779,57 @@
       "id": "classm.sd.1.deepseek",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate_error": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 256515,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.u1250.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money",
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
     }
    ],
    "differ": 0,
    "handle": "13",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 321,
+   "invalid": 2501,
    "kinds": {
-    "candidate-invalid": 321
+    "candidate-invalid": 2501
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 114
+     "candidate-invalid": 439
     },
     "incomplete": {
-     "candidate-invalid": 4
+     "candidate-invalid": 498
     },
     "refused": {
-     "candidate-invalid": 203
+     "candidate-invalid": 1564
     }
    },
    "open_at_triage": true,
    "project": "scveh.bus_cost",
-   "shown_when": null,
+   "shown_when": "scveh.is_actual_owned",
    "sources": {},
    "status": "DISAGREE",
    "triage": "candidate invalid",
@@ -1825,8 +1839,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 7370636,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -1853,8 +1866,7 @@
      "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -1867,12 +1879,24 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 5539046,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
       "id": "classm.f8889.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
     },
@@ -1886,21 +1910,7 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 3029148,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     }
@@ -1908,129 +1918,1239 @@
   },
   {
    "absent": 0,
-   "agree": 0,
+   "agree": 670,
    "candidate": "scveh.line7",
-   "compared": 0,
+   "compared": 2501,
    "completed_witnesses": [
     {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 576000,
-      "kind": "money"
+     "candidate": {
+      "input": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].screen"
      },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
+       "value": {
+        "input": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].screen"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "input": "person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.1.deepseek",
+      "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
+     "candidate": {
+      "input": "person[taxpayer].sc[biz_b].scveh[car_1].employee_use",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_1].employee_use"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].employee_use",
+       "value": {
+        "input": "person[taxpayer].sc[biz_b].scveh[car_1].employee_use",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_1].employee_use"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-unknown",
      "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[taxpayer].sc[biz_b].scveh[car_1].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].screen"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
+       "value": {
+        "input": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].screen"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "input": "person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8962.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[spouse].sc[biz_a].scveh[car_1].employee_use",
+      "kind": "unknown",
+      "reason": "no input supplied for person[spouse].sc[biz_a].scveh[car_1].employee_use"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].employee_use",
+       "value": {
+        "input": "person[spouse].sc[biz_a].scveh[car_1].employee_use",
+        "kind": "unknown",
+        "reason": "no input supplied for person[spouse].sc[biz_a].scveh[car_1].employee_use"
+       }
+      }
+     ],
+     "instance": "person[spouse].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].lim_prior",
+       "value": {
+        "cents": 1170000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f1040.6.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
       "cents": 1980000,
       "kind": "money"
      },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2024"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2024"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior",
+       "value": {
+        "cents": 1980000,
+        "kind": "money"
+       }
+      }
+     ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.2.deepseek",
+      "id": "classm.s8812.3.deepseek",
       "kind": "fixture"
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "candidate-invalid",
+     "candidate": {
+      "input": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].employee_use"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+       "value": {
+        "input": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].employee_use"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-unknown",
      "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior",
+       "value": {
+        "cents": 646000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8863.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].employee_use"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+       "value": {
+        "input": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].employee_use"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior",
+       "value": {
+        "cents": 1170000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.eic.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 7000000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[haul].scveh[suv].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[haul].scveh[suv].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[haul].scveh[suv].passenger",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[haul].scveh[suv].passenger",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[haul].scveh[suv].passenger",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[haul].scveh[suv].passenger",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[haul].scveh[suv].h_no_passenger_limit",
+       "value": {
+        "cents": 7000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[haul].scveh[suv]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[haul].scveh[suv].is2025",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[haul].scveh[suv].lim_2025",
+       "value": {
+        "cents": 2020000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage14.veh.suv_179",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
       "cents": 2020000,
       "kind": "money"
      },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[rides].scveh[car].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[rides].scveh[car].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[rides].scveh[car].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[rides].scveh[car].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[rides].scveh[car].h_has_bonus",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[rides].scveh[car].h_auto_limit_with_bonus",
+       "value": {
+        "cents": 2020000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[rides].scveh[car]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[rides].scveh[car].is2025",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[taxpayer].sc[rides].scveh[car].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.2.deepseek",
+      "id": "stage14.veh.leased_actual",
       "kind": "fixture"
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 576000,
+     "candidate": {
+      "cents": 6000000,
       "kind": "money"
      },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[r].scveh[truck].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[r].scveh[truck].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[r].scveh[truck].passenger",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[r].scveh[truck].passenger",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[r].scveh[truck].passenger",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[r].scveh[truck].passenger",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[r].scveh[truck].h_no_passenger_limit",
+       "value": {
+        "cents": 6000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[r].scveh[truck]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[r].scveh[truck].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[r].scveh[truck].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[r].scveh[truck].lim_prior",
+       "value": {
+        "cents": 1170000,
+        "kind": "money"
+       }
+      }
+     ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f8960.1.deepseek",
+      "id": "stage14.veh.heavy_prior",
       "kind": "fixture"
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 576000,
+     "candidate": {
+      "cents": 6000000,
       "kind": "money"
      },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[r].scveh[truck].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[r].scveh[truck].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[r].scveh[truck].passenger",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[r].scveh[truck].passenger",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[r].scveh[truck].passenger",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[r].scveh[truck].passenger",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[r].scveh[truck].h_no_passenger_limit",
+       "value": {
+        "cents": 6000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[r].scveh[truck]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[r].scveh[truck].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[r].scveh[truck].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[r].scveh[truck].lim_prior",
+       "value": {
+        "cents": 576000,
+        "kind": "money"
+       }
+      }
+     ],
      "project_return": "completed",
      "source": {
-      "id": "classm.g28.1.deepseek",
+      "id": "stage14.veh.heavy_2019",
       "kind": "fixture"
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 576000,
+     "candidate": {
+      "cents": 1170000,
       "kind": "money"
      },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2023"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2023"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior",
+       "value": {
+        "cents": 1170000,
+        "kind": "money"
+       }
+      }
+     ],
      "project_return": "completed",
      "source": {
-      "id": "classm.sd.1.deepseek",
-      "kind": "fixture"
+      "index": 20,
+      "kind": "generated",
+      "seed": 20261026
      }
     }
    ],
-   "differ": 0,
+   "differ": 1831,
    "handle": "7",
-   "in_scope": 0,
-   "in_scope_agree": 0,
-   "invalid": 321,
+   "in_scope": 2384,
+   "in_scope_agree": 669,
+   "invalid": 0,
    "kinds": {
-    "candidate-invalid": 321
+    "candidate-refuses": 23,
+    "candidate-shows-skipped": 885,
+    "candidate-unknown": 723,
+    "project-refuses": 93,
+    "project-unknown": 107
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 114
+     "candidate-shows-skipped": 119,
+     "candidate-unknown": 158
     },
     "incomplete": {
-     "candidate-invalid": 4
+     "candidate-refuses": 6,
+     "candidate-shows-skipped": 54,
+     "candidate-unknown": 181,
+     "project-unknown": 67
     },
     "refused": {
-     "candidate-invalid": 203
+     "candidate-refuses": 17,
+     "candidate-shows-skipped": 712,
+     "candidate-unknown": 384,
+     "project-refuses": 93,
+     "project-unknown": 40
     }
    },
    "open_at_triage": true,
    "project": "scveh.line7",
-   "shown_when": null,
-   "sources": {},
+   "shown_when": "scveh.on_auto_limits",
+   "sources": {
+    "fixture": 184,
+    "generated": 156,
+    "partial": 2161
+   },
    "status": "DISAGREE",
-   "triage": "candidate invalid",
+   "triage": "differs",
    "witnesses": [
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate": {
+      "input": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].employee_use"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+       "value": {
+        "input": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].employee_use"
+       }
+      }
+     ],
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
+     "kind": "candidate-unknown",
      "project": {
-      "cents": 1980000,
-      "kind": "money"
+      "kind": "hidden"
      },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior",
+       "value": {
+        "cents": 1980000,
+        "kind": "money"
+       }
+      }
+     ],
      "project_return": "refused",
      "source": {
       "id": "classm.f8889.2.deepseek",
@@ -2038,27 +3158,124 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 646000,
-      "kind": "money"
-     },
-     "project_return": "refused",
-     "source": {
-      "id": "classm.f8889.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
-     "kind": "candidate-invalid",
-     "project": {
+     "candidate": {
       "cents": 1220000,
       "kind": "money"
      },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].h_has_bonus",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].is2025",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].lim_2025",
+       "value": {
+        "cents": 1220000,
+        "kind": "money"
+       }
+      }
+     ],
      "project_return": "refused",
      "source": {
       "id": "classm.f8889.2.deepseek",
@@ -2066,13 +3283,70 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 576000,
-      "kind": "money"
+     "candidate": {
+      "input": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].employee_use"
      },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+       "value": {
+        "input": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].employee_use"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior",
+       "value": {
+        "cents": 576000,
+        "kind": "money"
+       }
+      }
+     ],
      "project_return": "refused",
      "source": {
       "id": "classm.f8889.5.deepseek",
@@ -2080,31 +3354,2553 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 576000,
-      "kind": "money"
+     "candidate": {
+      "input": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].screen"
      },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
+       "value": {
+        "input": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].screen"
+       }
+      }
+     ],
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
+     "kind": "candidate-unknown",
      "project": {
-      "cents": 1980000,
-      "kind": "money"
+      "kind": "hidden"
      },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "input": "person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
      "project_return": "completed",
      "source": {
       "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 2020000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].h_has_bonus",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].h_auto_limit_with_bonus",
+       "value": {
+        "cents": 2020000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[spouse].sc[biz_a].scveh[car_1]",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+      },
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+      "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+      "kind": "refusal",
+      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.g28.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 1170000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_2].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_2].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_2].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_2].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2023"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_2].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_2].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2023"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_2].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[spouse].sc[biz_a].scveh[car_2]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_2].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_2].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_2].lim_prior",
+       "value": {
+        "cents": 1170000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.g28.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sc[biz_b].scveh[car_1].employee_use",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_1].employee_use"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].employee_use",
+       "value": {
+        "input": "person[taxpayer].sc[biz_b].scveh[car_1].employee_use",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_1].employee_use"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[taxpayer].sc[biz_b].scveh[car_1].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].employee_use"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+       "value": {
+        "input": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].employee_use"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior",
+       "value": {
+        "cents": 1980000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sc[biz_a].scveh[car_2].employee_use",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_2].employee_use"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].employee_use",
+       "value": {
+        "input": "person[taxpayer].sc[biz_a].scveh[car_2].employee_use",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_2].employee_use"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].is2025",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[taxpayer].sc[biz_a].scveh[car_2].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 7893700,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].passenger",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].passenger",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].passenger",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].passenger",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].h_no_passenger_limit",
+       "value": {
+        "cents": 7893700,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].is2025",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].lim_2025",
+       "value": {
+        "cents": 2020000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 1980000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2024"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2024"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior",
+       "value": {
+        "cents": 1980000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s8812.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 2020000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].h_has_bonus",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].h_auto_limit_with_bonus",
+       "value": {
+        "cents": 2020000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[spouse].sc[biz_a].scveh[car_1]",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+      },
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+      "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+      "kind": "refusal",
+      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.g28.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 1170000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_2].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_2].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_2].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_2].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2023"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_2].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_2].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2023"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_2].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[spouse].sc[biz_a].scveh[car_2]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_2].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_2].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_2].lim_prior",
+       "value": {
+        "cents": 1170000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.g28.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 1289300,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].h_no_passenger_limit",
+       "value": {
+        "cents": 1289300,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior",
+       "value": {
+        "cents": 576000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.s179.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].employee_use"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+       "value": {
+        "input": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].employee_use"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+      },
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+      "gate": "person[taxpayer].sc[biz_a].scveh[car_1].low_use",
+      "kind": "refusal",
+      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[taxpayer].sc[biz_a].scveh[car_1].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "mutation.t2.qss_s1a_tips_ot_car",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[spouse].sc[biz_a].scveh[car_1].employee_use",
+      "kind": "unknown",
+      "reason": "no input supplied for person[spouse].sc[biz_a].scveh[car_1].employee_use"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].employee_use",
+       "value": {
+        "input": "person[spouse].sc[biz_a].scveh[car_1].employee_use",
+        "kind": "unknown",
+        "reason": "no input supplied for person[spouse].sc[biz_a].scveh[car_1].employee_use"
+       }
+      }
+     ],
+     "instance": "person[spouse].sc[biz_a].scveh[car_1]",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+      },
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+      "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+      "kind": "refusal",
+      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "person[spouse].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "mutation.t2.f8880.simple_line2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 2020000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].h_has_bonus",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].h_auto_limit_with_bonus",
+       "value": {
+        "cents": 2020000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+      },
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+      "gate": "person[taxpayer].sc[biz_a].scveh[car_1].low_use",
+      "kind": "refusal",
+      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[taxpayer].sc[biz_a].scveh[car_1].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage12.car.mixed_sc_interest_prorated",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 2020000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[rides].scveh[car].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[rides].scveh[car].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[rides].scveh[car].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[rides].scveh[car].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[rides].scveh[car].h_has_bonus",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[rides].scveh[car].h_auto_limit_with_bonus",
+       "value": {
+        "cents": 2020000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[rides].scveh[car]",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+      },
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+      "gate": "person[taxpayer].sc[rides].scveh[car].low_use",
+      "kind": "refusal",
+      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[rides].scveh[car].is2025",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[taxpayer].sc[rides].scveh[car].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage14.veh.refuse_low_use",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].sc[r].scveh[car].screen",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[r].scveh[car].screen",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[r].scveh[car]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 2020000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[r].scveh[car].is2025",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[r].scveh[car].lim_2025",
+       "value": {
+        "cents": 2020000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage14.veh.refuse_screen",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].sc[r].scveh[car].screen",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[r].scveh[car].screen",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[r].scveh[car]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 2020000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[r].scveh[car].is2025",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[r].scveh[car].lim_2025",
+       "value": {
+        "cents": 2020000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage14.veh.refuse_pre_2017",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].sc[rides].scveh[car].employee_use",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[rides].scveh[car].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[rides].scveh[car].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[rides].scveh[car]",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[rides].scveh[car].is2025",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[taxpayer].sc[rides].scveh[car].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage14.veh.refuse_employee_use_lease",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 646000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2022"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2022"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].lim_prior",
+       "value": {
+        "cents": 646000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].sc[biz_b].scveh[car_1].method"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 646000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2022"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2022"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].lim_prior",
+       "value": {
+        "cents": 646000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].sc[biz_b].scveh[car_1].owned"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 646000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2022"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2022"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].sc[biz_b].scveh[car_1].miles_business",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_1].miles_business"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
+       "value": {
+        "input": "person[taxpayer].sc[biz_b].scveh[car_1].miles_business",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_1].miles_business"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].sc[biz_b].scveh[car_1].miles_business"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 646000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2022"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2022"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].sc[biz_b].scveh[car_1].miles_commuting",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_1].miles_commuting"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
+       "value": {
+        "input": "person[taxpayer].sc[biz_b].scveh[car_1].miles_commuting",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_1].miles_commuting"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].sc[biz_b].scveh[car_1].miles_commuting"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 646000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2022"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2022"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].sc[biz_b].scveh[car_1].miles_other",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_1].miles_other"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
+       "value": {
+        "input": "person[taxpayer].sc[biz_b].scveh[car_1].miles_other",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_1].miles_other"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].sc[biz_b].scveh[car_1].miles_other"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 1220000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].screen",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].employee_use",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].h_has_bonus",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].passenger",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].placed",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      },
+      {
+       "ref": "\"y2025\"",
+       "value": {
+        "kind": "enum",
+        "value": "y2025"
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].is2025",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].lim_2025",
+       "value": {
+        "cents": 1220000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.2.deepseek",
+      "kind": "partial",
+      "withheld": "person[taxpayer].sc[biz_b].scveh[car_2].owned"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].sc[r].scveh[car].screen",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[r].scveh[car].screen",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[r].scveh[car]",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[r].scveh[car].is2025",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[r].scveh[car].lim_2025",
+       "value": {
+        "cents": 2020000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "stage14.veh.refuse_screen",
+      "kind": "partial",
+      "withheld": "person[taxpayer].sc[r].scveh[car].method"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].sc[r].scveh[car].screen",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[r].scveh[car].screen",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[r].scveh[car]",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[r].scveh[car].is2025",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[r].scveh[car].lim_2025",
+       "value": {
+        "cents": 2020000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "stage14.veh.refuse_screen",
+      "kind": "partial",
+      "withheld": "person[taxpayer].sc[r].scveh[car].owned"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "person[taxpayer].sc[r].scveh[car].screen",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "person[taxpayer].sc[r].scveh[car].screen",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "person[taxpayer].sc[r].scveh[car]",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 2020000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "person[taxpayer].sc[r].scveh[car].is2025",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "person[taxpayer].sc[r].scveh[car].lim_2025",
+       "value": {
+        "cents": 2020000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "stage14.veh.refuse_screen",
+      "kind": "partial",
+      "withheld": "person[taxpayer].sc[r].scveh[car].placed_date"
      }
     }
    ]
@@ -2116,26 +5912,11 @@
    "compared": 0,
    "completed_witnesses": [
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 295505,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 1829910,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "completed",
      "source": {
@@ -2144,21 +5925,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 1870566,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -2172,7 +5939,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -2186,7 +5953,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -2198,41 +5965,67 @@
       "id": "classm.sd.1.deepseek",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 295505,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.u1250.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
     }
    ],
    "differ": 0,
    "handle": "9 (scveh.line9w)",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 321,
+   "invalid": 2501,
    "kinds": {
-    "candidate-invalid": 321
+    "candidate-invalid": 2501
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 114
+     "candidate-invalid": 439
     },
     "incomplete": {
-     "candidate-invalid": 4
+     "candidate-invalid": 498
     },
     "refused": {
-     "candidate-invalid": 203
+     "candidate-invalid": 1564
     }
    },
    "open_at_triage": true,
    "project": "scveh.line9w",
-   "shown_when": null,
+   "shown_when": "scveh.on_auto_limits",
    "sources": {},
    "status": "DISAGREE",
    "triage": "candidate invalid",
    "witnesses": [
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 1834575,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -2241,7 +6034,7 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
      "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -2255,12 +6048,11 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
      "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 1064022,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -2269,12 +6061,11 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 469666,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -2283,7 +6074,20 @@
      }
     },
     {
-     "candidate_error": "invalid candidate declaration",
+     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -2292,21 +6096,7 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 1829910,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     }
@@ -2323,36 +6113,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "completed",
      "source": {
@@ -2401,30 +6162,57 @@
       "id": "classm.sd.1.deepseek",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.u1250.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
     }
    ],
    "differ": 0,
    "handle": "10",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 321,
+   "invalid": 2501,
    "kinds": {
-    "candidate-invalid": 321
+    "candidate-invalid": 2501
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 114
+     "candidate-invalid": 439
     },
     "incomplete": {
-     "candidate-invalid": 4
+     "candidate-invalid": 498
     },
     "refused": {
-     "candidate-invalid": 203
+     "candidate-invalid": 1564
     }
    },
    "open_at_triage": true,
    "project": "scveh.line10",
-   "shown_when": null,
+   "shown_when": "scveh.is_actual_owned",
    "sources": {},
    "status": "DISAGREE",
    "triage": "candidate invalid",
@@ -2434,8 +6222,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -2462,8 +6249,7 @@
      "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -2476,8 +6262,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -2490,12 +6275,11 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.1.deepseek",
+      "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
     },
@@ -2509,7 +6293,7 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.2.deepseek",
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     }
@@ -2526,36 +6310,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 295505,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 1829910,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 1870566,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "completed",
      "source": {
@@ -2604,30 +6359,57 @@
       "id": "classm.sd.1.deepseek",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 295505,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.u1250.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
     }
    ],
    "differ": 0,
    "handle": "11",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 321,
+   "invalid": 2501,
    "kinds": {
-    "candidate-invalid": 321
+    "candidate-invalid": 2501
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 114
+     "candidate-invalid": 439
     },
     "incomplete": {
-     "candidate-invalid": 4
+     "candidate-invalid": 498
     },
     "refused": {
-     "candidate-invalid": 203
+     "candidate-invalid": 1564
     }
    },
    "open_at_triage": true,
    "project": "scveh.line11",
-   "shown_when": null,
+   "shown_when": "scveh.on_auto_limits",
    "sources": {},
    "status": "DISAGREE",
    "triage": "candidate invalid",
@@ -2637,8 +6419,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 1834575,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -2665,8 +6446,7 @@
      "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 1064022,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -2679,12 +6459,24 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 469666,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
       "id": "classm.f8889.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
     },
@@ -2698,21 +6490,7 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 1829910,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     }
@@ -2729,36 +6507,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "completed",
      "source": {
@@ -2807,30 +6556,57 @@
       "id": "classm.sd.1.deepseek",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.u1250.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
     }
    ],
    "differ": 0,
    "handle": "14",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 321,
+   "invalid": 2501,
    "kinds": {
-    "candidate-invalid": 321
+    "candidate-invalid": 2501
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 114
+     "candidate-invalid": 439
     },
     "incomplete": {
-     "candidate-invalid": 4
+     "candidate-invalid": 498
     },
     "refused": {
-     "candidate-invalid": 203
+     "candidate-invalid": 1564
     }
    },
    "open_at_triage": true,
    "project": "scveh.line14",
-   "shown_when": null,
+   "shown_when": "scveh.is_actual_owned",
    "sources": {},
    "status": "DISAGREE",
    "triage": "candidate invalid",
@@ -2840,8 +6616,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -2868,8 +6643,7 @@
      "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -2882,8 +6656,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -2896,12 +6669,11 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.1.deepseek",
+      "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
     },
@@ -2915,7 +6687,7 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.2.deepseek",
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     }
@@ -2932,36 +6704,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 256515,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 3029148,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "completed",
      "source": {
@@ -3010,30 +6753,57 @@
       "id": "classm.sd.1.deepseek",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 256515,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.u1250.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
     }
    ],
    "differ": 0,
    "handle": "15",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 321,
+   "invalid": 2501,
    "kinds": {
-    "candidate-invalid": 321
+    "candidate-invalid": 2501
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 114
+     "candidate-invalid": 439
     },
     "incomplete": {
-     "candidate-invalid": 4
+     "candidate-invalid": 498
     },
     "refused": {
-     "candidate-invalid": 203
+     "candidate-invalid": 1564
     }
    },
    "open_at_triage": true,
    "project": "scveh.line15",
-   "shown_when": null,
+   "shown_when": "scveh.is_actual_owned",
    "sources": {},
    "status": "DISAGREE",
    "triage": "candidate invalid",
@@ -3043,8 +6813,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 7370636,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -3071,8 +6840,7 @@
      "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -3085,12 +6853,24 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 5539046,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
       "id": "classm.f8889.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
     },
@@ -3104,21 +6884,7 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 3029148,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     }
@@ -3135,36 +6901,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "completed",
      "source": {
@@ -3213,30 +6950,57 @@
       "id": "classm.sd.1.deepseek",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.u1250.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
     }
    ],
    "differ": 0,
    "handle": "16",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 321,
+   "invalid": 2501,
    "kinds": {
-    "candidate-invalid": 321
+    "candidate-invalid": 2501
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 114
+     "candidate-invalid": 439
     },
     "incomplete": {
-     "candidate-invalid": 4
+     "candidate-invalid": 498
     },
     "refused": {
-     "candidate-invalid": 203
+     "candidate-invalid": 1564
     }
    },
    "open_at_triage": true,
    "project": "scveh.line16",
-   "shown_when": null,
+   "shown_when": "scveh.is_actual_owned",
    "sources": {},
    "status": "DISAGREE",
    "triage": "candidate invalid",
@@ -3246,8 +7010,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -3274,8 +7037,7 @@
      "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -3288,8 +7050,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -3302,12 +7063,11 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.1.deepseek",
+      "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
     },
@@ -3321,7 +7081,7 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.2.deepseek",
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     }
@@ -3338,36 +7098,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "completed",
      "source": {
@@ -3416,30 +7147,57 @@
       "id": "classm.sd.1.deepseek",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.u1250.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
     }
    ],
    "differ": 0,
    "handle": "25",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 321,
+   "invalid": 2501,
    "kinds": {
-    "candidate-invalid": 321
+    "candidate-invalid": 2501
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 114
+     "candidate-invalid": 439
     },
     "incomplete": {
-     "candidate-invalid": 4
+     "candidate-invalid": 498
     },
     "refused": {
-     "candidate-invalid": 203
+     "candidate-invalid": 1564
     }
    },
    "open_at_triage": true,
    "project": "scveh.bonus_allowed",
-   "shown_when": null,
+   "shown_when": "scveh.on_auto_limits",
    "sources": {},
    "status": "DISAGREE",
    "triage": "candidate invalid",
@@ -3449,8 +7207,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -3477,8 +7234,7 @@
      "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -3491,8 +7247,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -3505,12 +7260,11 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.1.deepseek",
+      "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
     },
@@ -3524,7 +7278,7 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.2.deepseek",
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     }
@@ -3541,36 +7295,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 295505,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 1829910,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 1870566,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "completed",
      "source": {
@@ -3619,30 +7344,57 @@
       "id": "classm.sd.1.deepseek",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 295505,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.u1250.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
     }
    ],
    "differ": 0,
    "handle": "17",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 321,
+   "invalid": 2501,
    "kinds": {
-    "candidate-invalid": 321
+    "candidate-invalid": 2501
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 114
+     "candidate-invalid": 439
     },
     "incomplete": {
-     "candidate-invalid": 4
+     "candidate-invalid": 498
     },
     "refused": {
-     "candidate-invalid": 203
+     "candidate-invalid": 1564
     }
    },
    "open_at_triage": true,
    "project": "scveh.line17",
-   "shown_when": null,
+   "shown_when": "scveh.on_auto_limits",
    "sources": {},
    "status": "DISAGREE",
    "triage": "candidate invalid",
@@ -3652,8 +7404,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 1834575,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -3680,8 +7431,7 @@
      "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 1064022,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -3694,12 +7444,24 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 469666,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
       "id": "classm.f8889.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
     },
@@ -3713,21 +7475,7 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 1829910,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     }
@@ -3744,36 +7492,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 256515,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 3029148,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "completed",
      "source": {
@@ -3822,30 +7541,57 @@
       "id": "classm.sd.1.deepseek",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 256515,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.u1250.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
     }
    ],
    "differ": 0,
    "handle": "18",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 321,
+   "invalid": 2501,
    "kinds": {
-    "candidate-invalid": 321
+    "candidate-invalid": 2501
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 114
+     "candidate-invalid": 439
     },
     "incomplete": {
-     "candidate-invalid": 4
+     "candidate-invalid": 498
     },
     "refused": {
-     "candidate-invalid": 203
+     "candidate-invalid": 1564
     }
    },
    "open_at_triage": true,
    "project": "scveh.line18",
-   "shown_when": null,
+   "shown_when": "scveh.is_actual_owned",
    "sources": {},
    "status": "DISAGREE",
    "triage": "candidate invalid",
@@ -3855,8 +7601,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 7370636,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -3883,8 +7628,7 @@
      "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -3897,12 +7641,24 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 5539046,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
       "id": "classm.f8889.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
     },
@@ -3916,21 +7672,7 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 3029148,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     }
@@ -3947,36 +7689,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 1151076,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "completed",
      "source": {
@@ -4025,30 +7738,57 @@
       "id": "classm.sd.1.deepseek",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.u1250.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
     }
    ],
    "differ": 0,
    "handle": "19",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 321,
+   "invalid": 2501,
    "kinds": {
-    "candidate-invalid": 321
+    "candidate-invalid": 2501
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 114
+     "candidate-invalid": 439
     },
     "incomplete": {
-     "candidate-invalid": 4
+     "candidate-invalid": 498
     },
     "refused": {
-     "candidate-invalid": 203
+     "candidate-invalid": 1564
     }
    },
    "open_at_triage": true,
    "project": "scveh.line19",
-   "shown_when": null,
+   "shown_when": "scveh.is_actual_owned",
    "sources": {},
    "status": "DISAGREE",
    "triage": "candidate invalid",
@@ -4058,8 +7798,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 2358604,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -4086,8 +7825,7 @@
      "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -4100,12 +7838,24 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 235963,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
       "id": "classm.f8889.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
     },
@@ -4119,21 +7869,7 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 1151076,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     }
@@ -4150,36 +7886,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 1151076,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "completed",
      "source": {
@@ -4228,30 +7935,57 @@
       "id": "classm.sd.1.deepseek",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.u1250.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
     }
    ],
    "differ": 0,
    "handle": "20",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 321,
+   "invalid": 2501,
    "kinds": {
-    "candidate-invalid": 321
+    "candidate-invalid": 2501
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 114
+     "candidate-invalid": 439
     },
     "incomplete": {
-     "candidate-invalid": 4
+     "candidate-invalid": 498
     },
     "refused": {
-     "candidate-invalid": 203
+     "candidate-invalid": 1564
     }
    },
    "open_at_triage": true,
    "project": "scveh.line20",
-   "shown_when": null,
+   "shown_when": "scveh.on_auto_limits",
    "sources": {},
    "status": "DISAGREE",
    "triage": "candidate invalid",
@@ -4261,8 +7995,7 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 1834575,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -4289,8 +8022,7 @@
      "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 0,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
@@ -4303,12 +8035,24 @@
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
-      "cents": 235963,
-      "kind": "money"
+      "kind": "hidden"
      },
      "project_return": "refused",
      "source": {
       "id": "classm.f8889.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
     },
@@ -4322,31 +8066,17 @@
      },
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.1.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate_error": "invalid candidate declaration",
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-invalid",
-     "project": {
-      "cents": 1151076,
-      "kind": "money"
-     },
-     "project_return": "completed",
-     "source": {
-      "id": "classm.f4952.2.deepseek",
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     }
    ]
   }
  ],
- "log_sha256_at_triage": "b6e4d74a1e2c14dce7533a0e3a6e0ef8d31c833271c52c36f71a1ccc484e9ffe",
+ "log_sha256_at_triage": "e1324280a3ec333ac19adfc6eaae7bbbe46c01700af1bbb0080e1e593b7bdb65",
  "policy": "executable-triage-v2",
- "response_sha256": "d221c344f0406be02efb2bff8f82297aa4fc7c736e9eb7cfddae3c4f6b774f19",
+ "response_sha256": "b349d22e69af9cb0f2e2fea45669474031f32866b6644a10fe0c9a2cf2b2e470",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "evaluated",
- "subject_sha256": "55812896d927256ba9c411debba4b3892548772c0dbf99c208b83ba573413953"
+ "subject_sha256": "7c9c68d06a7816fe0aa0609dd888de0a8606da885e8a28bebd8ea4d71ead01a6"
 }

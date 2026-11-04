@@ -30,6 +30,24 @@ form:
     cite:
       doc: f8863
       locator: p. 1, Part II, line 10, "If zero, skip lines 11 through 17, enter -0- on line 18, and go to line 19"
+  - id: f8863.claimed_count
+    printed: (helper)
+    label: Number of the people on the return (you, and your spouse if filing jointly) claimed as a dependent on another
+      person's 2025 tax return
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.one
+      where:
+        op: test
+        eq:
+        - person.sav_claimed
+        - const: true
+    cite:
+      doc: i8863
+      locator: p. 3, Who cannot claim a credit, "1. You’re claimed as a dependent on another person’s tax return, such as
+        your parent’s return."
   - id: f8863.eligible
     printed: (helper)
     label: 'An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as
@@ -44,8 +62,9 @@ form:
         - const: true
       - op: test
         eq:
-        - sli.claimed
-        - const: false
+        - f8863.claimed_count
+        - const: 0
+          type: Count
     cite:
       doc: i8863
       locator: p. 3, Who cannot claim a credit, "1. You’re claimed as a dependent on another person’s tax return, such as

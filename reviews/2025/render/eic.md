@@ -7,12 +7,12 @@ The rendered English of every printed line of `Earned Income Credit (EIC)—Step
 | date | 2026-11-03 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 6f60d6760b0b35275e5b510005c22501a51e1f7c9aac958d54135a62e81e9806 |
+| prompt sha256 | 370613152b7c99fd8018c5a96b2c295f1a57ca63a9b905b88b4a079f617dff8d |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
-| subject sha256 | 74089858814873d7db95b715ae8040c7df79e052dd8eab625c4a9802a0513ea4 |
+| subject sha256 | 57b1f38f909b2b26c9c29820110d1388c2294aac821d4cde0011e0e1db5225fc |
 | lines judged | 13 |
 | match / mismatch / unclear / missing | 13 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |
@@ -21,7 +21,7 @@ The rendered English of every printed line of `Earned Income Credit (EIC)—Step
 
 | document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
 | --- | --- | --- | --- | --- | --- | --- |
-| i1040gi | 2025; printed date 2026-02-25 | 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 93, 95, 117 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 40, 41, 42, 43, 44, 45, 93, 95, 117 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| i1040gi | 2025; printed date 2026-02-25 | 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 93, 94, 95, 117 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 40, 41, 42, 43, 44, 45, 93, 95, 117 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
 | f1040 | 2025; created 2025-09-05 | 1, 2 | whole document | ac32f00aed489e0722d0b409c0eb12915801d66f3a2fab05bc8391af61426383 | - | 72926cc2b256a68592e6cf0f2aa384ef8371eec968a0c8c62e050edf5bfea76a |
 | i1040s8812 | 2025; printed date 2026-01-23 | 8 | cited pages | fd50a5266cc20aa5a31de0535658793f75c7abbb12fd83b65dc5b21c6ede2765 | - | e6ba91f54df679c9c19c23169c369f14bff012ba2fe110c3973bde59676c1d45 |
 | f1040s8812 | 2025; created 2025-07-30 | 1, 2 | whole document | 9b38295071c42fe489ec8f93e117b31eda11355b5a95e3fe388eeee69601c8c9 | - | 3525d47f51cb713591081610a862cae77eff08a8aa7e2064a96b15cee4fd5cb9 |
@@ -32,78 +32,80 @@ The rendered English of every printed line of `Earned Income Credit (EIC)—Step
 | iw2w3 | 2025; printed date 2025-02-19 | 18 | cited pages | 27ad850a44d58d9186afcccb33b8a32f4747911e2b1b3138de515f44d4de33f3 | 18 | 3876738db222e8abe6103f29d8a8654a3139b9896f97e325d50e80b87ed5b26a |
 | f7206 | 2025; created 2025-10-02 | 1 | whole document | 1f54af11e092a24258ac71f29d2bcfeeda1d6100ca332357d4569eea889e1dbb | - | e3b265efad583dd859c584d4e7e8a17d7b6e927878922ab5f020e2ff79a18d87 |
 | i4562 | 2025 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
-| p946 | For use in preparing 2025 returns | 17, 18, 19, 34, 37, 39, 41, 59, 61, 62, 63, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 17, 18, 19, 34, 37, 39, 41, 63 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
+| p946 | For use in preparing 2025 returns | 17, 18, 19, 31, 32, 34, 37, 39, 41, 59, 61, 62, 63, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 17, 18, 19, 31, 32, 34, 37, 39, 41, 63 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
 | i7206 | 2025 | 1, 2 | whole document | 88aebffe01e22b57dadeb703483459075718cb0b2514fe8f00185975cfbeef3a | 1, 2 | 5bfa308e7e4634d4a0162d76b4af6a4182b8539a390109360875303222231cfe |
 | f4562 | 2025; created 2025-10-09 | 1, 2, 3 | whole document | 71e2ace527072aaa7293e77897bb4ab8e473fa9c47b6b1ccb977fdc58a93bc2d | - | a1330c49d931e7ecdc867aef2d9e01390fc7b4d7e9321943a21ed0f8e883ed18 |
 | n-25-05 | Notice 2025-5 | 1, 2, 3, 4, 5 | whole document | 394f6b5ffb7c30e745322f0f20d9137608b1e2429fc4c76b06dedd690d4fb6e3 | - | 349e2797f87c588214722bcd22b7ec317c86c90a255ec8496941ac0c09909a8d |
 | p560 | For use in preparing 2025 returns | 7, 8, 9, 10, 11, 14, 15, 16, 17, 38, 39, 40 | cited pages | 38bbfa2efb2894e2527d66cd3478f33c6ceae4b777f78674c22bec16db9809aa | 7, 8, 9, 10, 11, 14, 15, 16, 17, 38, 40 | 7ef279c8f34addc2ff13420e35fab4a092bf8027f53907c28a5f46d2c21da737 |
+| p575 | None | 35 | pages named by another document's citation | 4d6ee3802a2906a4633dcfc104aa33bb3d9ddedebddc9eadbd0393cfdb61e07b | 35 | 3962801dde168fda9f4ee239245d9746b12e2d60bf358b25186ae4a57aa5b837 |
+| p538 | None | 17 | pages named by another document's citation | 4186d7aaa8f711c9a524b87fac1e3df05640b6d66130093b2469480acb06ef6c | 17 | f500211df18a4aafd843e48bbad4b9102c598cf5ccc0fae96c7814a4bef0ae00 |
 
 ## Lines
 
 ### (Step 5, 1) — Enter the amount from Form 1040 or 1040-SR, line 1z
 Status: **MATCH**
 
-Model: Step 5 line 1 reads "Enter the amount from Form 1040 or 1040-SR, line 1z". The clergy and church-employee adjustments that change this line are excluded by the scope.schedule1 refusal.
+Model: Step 5 worksheet line 1 says 'Enter the amount from Form 1040 or 1040-SR, line 1z'. The clergy and church-employee adjustments are excluded by the Schedule 1 refusal, which names them.
 
 ### (Step 5, 2) — Medicaid waiver payments excluded from income on Schedule 1, line 8s, unless chosen as ear
 Status: **MATCH**
 
-Model: Line 2 takes Medicaid waiver payments excluded on Schedule 1, line 8s, or -0-. The program enters $0 and refuses whenever Medicaid waiver payments are present (scope.other_income, and the 8s exclusion under scope.schedule1), so $0 is correct within scope.
+Model: Line 2 is the Medicaid waiver payments excluded on Schedule 1, line 8s. Entering $0 is correct when no such payments exist, and the refusal covers filers who have them.
 
 ### (Step 5, 3) — Subtract line 2 from line 1
 Status: **MATCH**
 
-Model: The program computes "Subtract line 2 from line 1" as written.
+Model: This follows 'Subtract line 2 from line 1.'
 
 ### (Step 5, 4) — Nontaxable combat pay you elect to include in earned income; zero in this tool
 Status: **MATCH**
 
-Model: Line 4 is elected nontaxable combat pay. The program enters $0 and refuses any filer who has nontaxable combat pay, so the line is correct within scope.
+Model: Line 4 is elected nontaxable combat pay. $0 is correct without combat pay, and the refusal excludes filers who have it.
 
 ### (Step 5, 5) — Add lines 3 and 4. This is your earned income
 Status: **MATCH**
 
-Model: The program computes "Add lines 3 and 4. This is your earned income" as written.
+Model: This follows 'Add lines 3 and 4. This is your earned income.'
 
 ### 4b — Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned income
 Status: **MATCH**
 
-Model: Worksheet B line 4b combines lines 1e, 2c, 3 and 4a. The program adds Step 5 earned income (4a) to the Part 1/Part 2 self-employment amounts (Schedule SE line 3 less line 13, or Schedule C net profit when SE is not filed). Line 3, statutory employee income, and the other excluded items (farm, K-1, church employee, optional methods) are refused.
+Model: Worksheet B line 4b reads 'Combine lines 1e, 2c, 3, and 4a.' Here line 4a is Step 5 earned income and the helper supplies 1e (Schedule SE line 3 less line 13) or 2c (Schedule C net profit) for both spouses. Line 3, statutory employee income, is excluded by the Schedule C screen.
 
 ### 6 (eic.wsb_6) — Worksheet B, line 6. Enter your total earned income from Part 4, line 4b (zero if line 4b
 Status: **MATCH**
 
-Model: Worksheet B line 6 says "Enter your total earned income from Part 4, line 4b." The -0- floor only matters when 4b is zero or less, and there the worksheet says STOP and the line is not reached. In every reached case the value is line 4b.
+Model: Worksheet B line 6 says 'Enter your total earned income from Part 4, line 4b.' The floor at zero has no effect because the credit cannot be reached when line 4b is zero or less.
 
 ### 1 — Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line 6
 Status: **MATCH**
 
-Model: Worksheet A line 1 is "your earned income from Step 5" (Step 5 line 5) for filers who answered No to Step 5 question 2. For self-employed filers the program uses Worksheet B line 6 instead. That is sound because Worksheet B lines 6–11 repeat Worksheet A lines 1–6 with the same table and thresholds. Self-employment from sources other than Schedule C, and clergy and statutory employees, are refused, so counting Schedules C correctly answers question 2.
+Model: Worksheet A line 1 is earned income from Step 5 for filers who answered No to Step 5, question 2. Self-employed filers instead use Worksheet B line 6, whose lines 7–11 have the same wording as Worksheet A lines 2–6. Treating Schedule C filers as self-employed is right within scope, because other self-employment types are refused.
 
 ### 2 — Look up the amount on line 1 in the EIC Table to find the credit, using the column for you
 Status: **MATCH**
 
-Model: Line 2 looks up line 1 in the EIC Table, using the column for filing status (MFS uses the single/HOH/QSS column per the ★ note) and the number of qualifying children with valid SSNs (3 means three or more). The table starts at $1, so an amount below $1 gets no credit.
+Model: This looks up line 1 in the EIC Table using the filing-status column and the number of qualifying children with valid SSNs. The table begins at $1, so $0 below that amount is consistent.
 
 ### 3 — Enter the amount from Form 1040 or 1040-SR, line 11b
 Status: **MATCH**
 
-Model: Line 3 reads "Enter the amount from Form 1040 or 1040-SR, line 11b." It is reported only when line 2 is not zero, which matches the STOP instruction.
+Model: This follows 'Enter the amount from Form 1040 or 1040-SR, line 11b.' Being reached only when line 2 is more than zero matches the STOP when line 2 is zero.
 
 ### 4 — Are the amounts on lines 3 and 1 the same?
 Status: **MATCH**
 
-Model: The program tests "Are the amounts on lines 3 and 1 the same?" as written.
+Model: This follows 'Are the amounts on lines 3 and 1 the same?'
 
 ### 5 — Look up the amount on line 3 in the EIC Table to find the credit, using the column for you
 Status: **MATCH**
 
-Model: Line 5 looks up line 3 in the EIC Table using the column for the number of qualifying children with valid SSNs. It is reported only when line 4 is No and line 3 is not below the blank-line thresholds: $10,620 ($17,730 MFJ) with no children, $23,350 ($30,470 MFJ) with one or more. These thresholds match the IRS text.
+Model: Line 5 is the EIC Table credit for line 3, in the column for the number of qualifying children with valid SSNs. It is completed only when line 3 is not less than $10,620 ($17,730 MFJ) with no children, or $23,350 ($30,470 MFJ) with 1 or more children; the helper thresholds use these same amounts.
 
 ### 6 (eic.line6) — This is your earned income credit
 Status: **MATCH**
 
-Model: Line 6 is line 2 when line 4 is Yes. When line 4 is No, it is line 2 if line 5 is left blank, and otherwise "the smaller amount" of lines 5 and 2. The program follows each case as written.
+Model: If line 4 is Yes, enter line 2. If No and line 5 is left blank, enter line 2. Otherwise 'enter the smaller amount' of lines 5 and 2.
 
 ## Raw response
 
@@ -112,42 +114,42 @@ Model: Line 6 is line 2 when line 4 is Yes. When line 4 is No, it is line 2 if l
 lines:
   - key: "(Step 5, 1)"
     status: MATCH
-    reason: "Step 5 line 1 reads \"Enter the amount from Form 1040 or 1040-SR, line 1z\". The clergy and church-employee adjustments that change this line are excluded by the scope.schedule1 refusal."
+    reason: "Step 5 worksheet line 1 says 'Enter the amount from Form 1040 or 1040-SR, line 1z'. The clergy and church-employee adjustments are excluded by the Schedule 1 refusal, which names them."
   - key: "(Step 5, 2)"
     status: MATCH
-    reason: "Line 2 takes Medicaid waiver payments excluded on Schedule 1, line 8s, or -0-. The program enters $0 and refuses whenever Medicaid waiver payments are present (scope.other_income, and the 8s exclusion under scope.schedule1), so $0 is correct within scope."
+    reason: "Line 2 is the Medicaid waiver payments excluded on Schedule 1, line 8s. Entering $0 is correct when no such payments exist, and the refusal covers filers who have them."
   - key: "(Step 5, 3)"
     status: MATCH
-    reason: "The program computes \"Subtract line 2 from line 1\" as written."
+    reason: "This follows 'Subtract line 2 from line 1.'"
   - key: "(Step 5, 4)"
     status: MATCH
-    reason: "Line 4 is elected nontaxable combat pay. The program enters $0 and refuses any filer who has nontaxable combat pay, so the line is correct within scope."
+    reason: "Line 4 is elected nontaxable combat pay. $0 is correct without combat pay, and the refusal excludes filers who have it."
   - key: "(Step 5, 5)"
     status: MATCH
-    reason: "The program computes \"Add lines 3 and 4. This is your earned income\" as written."
+    reason: "This follows 'Add lines 3 and 4. This is your earned income.'"
   - key: "4b"
     status: MATCH
-    reason: "Worksheet B line 4b combines lines 1e, 2c, 3 and 4a. The program adds Step 5 earned income (4a) to the Part 1/Part 2 self-employment amounts (Schedule SE line 3 less line 13, or Schedule C net profit when SE is not filed). Line 3, statutory employee income, and the other excluded items (farm, K-1, church employee, optional methods) are refused."
+    reason: "Worksheet B line 4b reads 'Combine lines 1e, 2c, 3, and 4a.' Here line 4a is Step 5 earned income and the helper supplies 1e (Schedule SE line 3 less line 13) or 2c (Schedule C net profit) for both spouses. Line 3, statutory employee income, is excluded by the Schedule C screen."
   - key: "6 (eic.wsb_6)"
     status: MATCH
-    reason: "Worksheet B line 6 says \"Enter your total earned income from Part 4, line 4b.\" The -0- floor only matters when 4b is zero or less, and there the worksheet says STOP and the line is not reached. In every reached case the value is line 4b."
+    reason: "Worksheet B line 6 says 'Enter your total earned income from Part 4, line 4b.' The floor at zero has no effect because the credit cannot be reached when line 4b is zero or less."
   - key: "1"
     status: MATCH
-    reason: "Worksheet A line 1 is \"your earned income from Step 5\" (Step 5 line 5) for filers who answered No to Step 5 question 2. For self-employed filers the program uses Worksheet B line 6 instead. That is sound because Worksheet B lines 6–11 repeat Worksheet A lines 1–6 with the same table and thresholds. Self-employment from sources other than Schedule C, and clergy and statutory employees, are refused, so counting Schedules C correctly answers question 2."
+    reason: "Worksheet A line 1 is earned income from Step 5 for filers who answered No to Step 5, question 2. Self-employed filers instead use Worksheet B line 6, whose lines 7–11 have the same wording as Worksheet A lines 2–6. Treating Schedule C filers as self-employed is right within scope, because other self-employment types are refused."
   - key: "2"
     status: MATCH
-    reason: "Line 2 looks up line 1 in the EIC Table, using the column for filing status (MFS uses the single/HOH/QSS column per the ★ note) and the number of qualifying children with valid SSNs (3 means three or more). The table starts at $1, so an amount below $1 gets no credit."
+    reason: "This looks up line 1 in the EIC Table using the filing-status column and the number of qualifying children with valid SSNs. The table begins at $1, so $0 below that amount is consistent."
   - key: "3"
     status: MATCH
-    reason: "Line 3 reads \"Enter the amount from Form 1040 or 1040-SR, line 11b.\" It is reported only when line 2 is not zero, which matches the STOP instruction."
+    reason: "This follows 'Enter the amount from Form 1040 or 1040-SR, line 11b.' Being reached only when line 2 is more than zero matches the STOP when line 2 is zero."
   - key: "4"
     status: MATCH
-    reason: "The program tests \"Are the amounts on lines 3 and 1 the same?\" as written."
+    reason: "This follows 'Are the amounts on lines 3 and 1 the same?'"
   - key: "5"
     status: MATCH
-    reason: "Line 5 looks up line 3 in the EIC Table using the column for the number of qualifying children with valid SSNs. It is reported only when line 4 is No and line 3 is not below the blank-line thresholds: $10,620 ($17,730 MFJ) with no children, $23,350 ($30,470 MFJ) with one or more. These thresholds match the IRS text."
+    reason: "Line 5 is the EIC Table credit for line 3, in the column for the number of qualifying children with valid SSNs. It is completed only when line 3 is not less than $10,620 ($17,730 MFJ) with no children, or $23,350 ($30,470 MFJ) with 1 or more children; the helper thresholds use these same amounts."
   - key: "6 (eic.line6)"
     status: MATCH
-    reason: "Line 6 is line 2 when line 4 is Yes. When line 4 is No, it is line 2 if line 5 is left blank, and otherwise \"the smaller amount\" of lines 5 and 2. The program follows each case as written."
+    reason: "If line 4 is Yes, enter line 2. If No and line 5 is left blank, enter line 2. Otherwise 'enter the smaller amount' of lines 5 and 2."
 ```
 ```

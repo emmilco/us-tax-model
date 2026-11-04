@@ -65,6 +65,13 @@
     "retirement.smw8"
    ],
    "reason": "The lifetime exclusion is limited to cost by Simplified Method Worksheet lines 7 and 8 (line 7 is cost less the amount recovered tax free after 1986, line 8 the smaller of line 5 or line 7); retirement.recovered asks a survivor of a retiree to include the retiree's recovery, so the limit covers both annuitants."
+  },
+  "limit:p575:p35:1499b8a9": {
+   "enforced_by": [
+    "retirement.special",
+    "scope.other_income"
+   ],
+   "reason": "The $22,000 per-disaster limit across plans is never reached: retirement.special asks for \"a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one (Form 8915-F)\" and refuses the distribution on yes, and scope.other_income asks for \"the 2025 part of a qualified disaster recovery distribution you received in 2023 or 2024, or a 2025 repayment of one (Form 8915-F)\" and refuses the return on yes."
   }
  },
  "baseline": {

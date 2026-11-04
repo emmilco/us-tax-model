@@ -134,10 +134,18 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["ssb.lived_apart",{"const":true}],"op":"test"},"then":"ssb.base_single"},{"guard":{"eq":["ssb.lived_apart",{"const":false}],"op":"test"},"then":"ssb.zero"}],"op":"choose"}`
 - Cite: [i1040gi] p. 32, line 8 (2025; printed date 2026-02-25; sha256 482e9c48)
 
+## (helper) — `ssb.lines8_to_15`
+
+- **Authored helper label:** Lines 8 through 15 are completed (not married filing separately with your spouse living with you at any time in 2025)
+- **Encoded (Bool):** helper "Married filing separately and lived with your spouse at any time in 2025" = false
+- Expr: `{"eq":["ssb.mfs_together",{"const":false}],"op":"test"}`
+- Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 8, "Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16" (2025; printed date 2026-02-25; sha256 482e9c48)
+
 ## 8 — `ssb.line8`
 
 - **IRS:** $32,000 if married filing jointly; $25,000 if single, head of household, qualifying surviving spouse, or married filing separately and living apart all year
 - **Encoded (NonNegDollars):** Choose — [f1040 line Filing Status = 'single' → helper "Line 8 amount, $25,000"] [f1040 line Filing Status = 'mfj' → helper "Line 8 amount, $32,000"] [f1040 line Filing Status = 'mfs' → helper "Line 8 for married filing separately: $25,000 if you lived apart all year (otherwise lines 8 to 15 are skipped)"] [f1040 line Filing Status = 'hoh' → helper "Line 8 amount, $25,000"] [f1040 line Filing Status = 'qss' → helper "Line 8 amount, $25,000"]
+- **Shown on the values sheet only when:** Lines 8 through 15 are completed (not married filing separately with your spouse living with you at any time in 2025) (`ssb.lines8_to_15`)
 - Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"ssb.base_single"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"ssb.base_joint"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"ssb.mfs_base"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"ssb.base_single"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"ssb.base_single"}],"op":"choose"}`
 - Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 8 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -145,6 +153,7 @@
 
 - **IRS:** Is the amount on line 8 less than the amount on line 7? If yes, subtract line 8 from line 7 (if no, none of the benefits are taxable)
 - **Encoded (NonNegDollars):** Subtract line 8 from line 7. If zero or less, enter -0-.
+- **Shown on the values sheet only when:** Lines 8 through 15 are completed (not married filing separately with your spouse living with you at any time in 2025) (`ssb.lines8_to_15`)
 - Expr: `{"from":"ssb.line7","op":"subtract_floor0","take":"ssb.line8"}`
 - Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 9 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -173,6 +182,7 @@
 
 - **IRS:** Enter $12,000 if married filing jointly; $9,000 if single, head of household, qualifying surviving spouse, or married filing separately and living apart all year
 - **Encoded (NonNegDollars):** Choose — [f1040 line Filing Status = 'single' → helper "Line 10 amount, $9,000"] [f1040 line Filing Status = 'mfj' → helper "Line 10 amount, $12,000"] [f1040 line Filing Status = 'mfs' → helper "Line 10 for married filing separately: $9,000 if you lived apart all year"] [f1040 line Filing Status = 'hoh' → helper "Line 10 amount, $9,000"] [f1040 line Filing Status = 'qss' → helper "Line 10 amount, $9,000"]
+- **Shown on the values sheet only when:** Lines 8 through 15 are completed (not married filing separately with your spouse living with you at any time in 2025) (`ssb.lines8_to_15`)
 - Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"ssb.adjust_single"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"ssb.adjust_joint"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"ssb.mfs_adjust"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"ssb.adjust_single"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"ssb.adjust_single"}],"op":"choose"}`
 - Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 10 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -180,6 +190,7 @@
 
 - **IRS:** Subtract line 10 from line 9. If zero or less, enter -0-
 - **Encoded (NonNegDollars):** Subtract line 10 from line 9. If zero or less, enter -0-.
+- **Shown on the values sheet only when:** Lines 8 through 15 are completed (not married filing separately with your spouse living with you at any time in 2025) (`ssb.lines8_to_15`)
 - Expr: `{"from":"ssb.line9","op":"subtract_floor0","take":"ssb.line10"}`
 - Cite: [i1040gi] p. 32, line 11 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -187,6 +198,7 @@
 
 - **IRS:** Enter the smaller of line 9 or line 10
 - **Encoded (NonNegDollars):** Enter the smaller of line 9 or line 10.
+- **Shown on the values sheet only when:** Lines 8 through 15 are completed (not married filing separately with your spouse living with you at any time in 2025) (`ssb.lines8_to_15`)
 - Expr: `{"of":["ssb.line9","ssb.line10"],"op":"smaller_of"}`
 - Cite: [i1040gi] p. 32, line 12 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -194,6 +206,7 @@
 
 - **IRS:** Enter one-half of line 12
 - **Encoded (NonNegDollars):** Multiply line 12 by 1/2 (ssb.half).
+- **Shown on the values sheet only when:** Lines 8 through 15 are completed (not married filing separately with your spouse living with you at any time in 2025) (`ssb.lines8_to_15`)
 - Expr: `{"amount":"ssb.line12","op":"multiply_rate","rate":{"param":"ssb.half"}}`
 - Cite: [i1040gi] p. 32, line 13 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -201,6 +214,7 @@
 
 - **IRS:** Enter the smaller of line 2 or line 13
 - **Encoded (NonNegDollars):** Enter the smaller of line 2 or line 13.
+- **Shown on the values sheet only when:** Lines 8 through 15 are completed (not married filing separately with your spouse living with you at any time in 2025) (`ssb.lines8_to_15`)
 - Expr: `{"of":["ssb.line2","ssb.line13"],"op":"smaller_of"}`
 - Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 14 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -208,6 +222,7 @@
 
 - **IRS:** Multiply line 11 by 85% (0.85). If line 11 is zero, enter -0-
 - **Encoded (NonNegDollars):** Multiply line 11 by 85% (0.85) (ssb.rate85).
+- **Shown on the values sheet only when:** Lines 8 through 15 are completed (not married filing separately with your spouse living with you at any time in 2025) (`ssb.lines8_to_15`)
 - Expr: `{"amount":"ssb.line11","op":"multiply_rate","rate":{"param":"ssb.rate85"}}`
 - Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 15 (2025; printed date 2026-02-25; sha256 482e9c48)
 

@@ -9,6 +9,13 @@
    "model": "IRS line 17 says: 'No. Skip lines 18 through 21, and go to line 22.' The restatement computes line 20 even when line 17 is No; it should be skipped.",
    "ruling": "Ruling: representation; f1040sd p. 2, line 17: \"Are lines 15 and 16 both gains? Yes. Go to line 18. No. Skip lines 18 through 21, and go to line 22.\" The model reads the restated line 20 as computed when line 17 is No. Line 20 is a Boolean flow predicate: the documented convention (forms/2025/sd.yaml form note, \"Boolean flow predicates are shown even when their printed line is skipped\"; adjudication README, owner's decision of 2026-10-26, \"Boolean flow predicates are shown ... so the rule does not apply to them\") exempts it from the skipped-line rule, and on the line-17-No path no amount reads it (the tax worksheet choice goes by line 22, which the project computes). The English states the printed question (\"Are lines 18 and 19 both zero or blank and you are not filing Form 4952?\") over lines 18 and 19, which are $0 when line 17 is No, and the Form 4952 helper. Project stands.",
    "context": "82b0501cc78c4de7cdd25cf96ebd3019ee9f7aab9994d7e79c70f43c19463fda"
+  },
+  {
+   "printed": "20",
+   "restated": "helper \"Line 18. 28% Rate Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)\" = $0 and helper \"Line 19. Unrecaptured Section 1250 Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)\" = $0 and helper \"Are you filing Form 4952?\" = false",
+   "model": "The form says if line 17 is No, skip lines 18 through 21 and go to line 22; the restatement evaluates line 20 from zeroed lines 18 and 19 without requiring line 17 to be Yes.",
+   "ruling": "Ruling: representation; f1040sd p. 2, line 17: \"No. Skip lines 18 through 21, and go to line 22\". Line 20 (and line 22) are Boolean flow predicates, evaluated on every path by the documented convention (forms/2025/sd.yaml form note); the path the filer follows, and which lines show, is decided by line 17 and line 16 upstream, so the answer on a skipped path is never read. Same reading as the earlier rounds.",
+   "context": "10ee910aeddb04b6d707b367861d9906c375c0347037187195d841065b61133c"
   }
  ]
 }

@@ -5,6 +5,13 @@
  "rulings": [
   {
    "printed": "4a",
+   "restated": "Add f1040 line 2b and f1040 line 3b.",
+   "model": "IRS line 4a includes ordinary dividends \"except Alaska Permanent Fund dividends\"; adding f1040 line 3b without that exclusion would include them.",
+   "ruling": "Ruling: model error; the model says the restatement (Form 1040 line 2b plus line 3b, BUG-0391) includes Alaska Permanent Fund dividends. f4952 p. 3, Line 4a: \"ordinary dividends (except Alaska Permanent Fund dividends)\". Form 1040 line 3b is Schedule B line 6 (Form 1099-DIV ordinary dividends); Alaska Permanent Fund dividends are entered on Schedule 1 line 8g (s1.yaml; p525 p. 31, \"report it as income on Schedule 1\") and never reach line 3b. Same point as the earlier rulings on the Schedule B restatement.",
+   "context": "339d090be4ce3ebb3e8f65ff6983fb1d16b1408fe0e8e880db927d6507ccfce0"
+  },
+  {
+   "printed": "4a",
    "restated": "Add sb line 2 and sb line 6.",
    "model": "IRS line 4a includes ordinary dividends but 'except Alaska Permanent Fund dividends'; the restatement adds Schedule B ordinary dividends without that exception, so it can overstate line 4a.",
    "ruling": "Ruling: model error; the model says the restatement adds Schedule B ordinary dividends without the Alaska Permanent Fund exception. f4952 p. 3, Line 4a: \"ordinary dividends (except Alaska Permanent Fund dividends)\". Schedule B line 6 copies sb.ordinary_dividends, \"Total ordinary dividends, Form 1099-DIV box 1a\"; Alaska Permanent Fund dividends are not Form 1099-DIV dividends and are reported on Schedule 1 line 8g (s1.yaml, p525 p. 31, \"report it as income on Schedule 1\"), so they never reach line 4a. The model assumed they are in Schedule B line 6.",

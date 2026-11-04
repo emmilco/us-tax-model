@@ -181,7 +181,7 @@ def main():
         text = resp_file.read_text(encoding="utf-8")
         meta = json.loads((WORK / f"{a.job}.meta.json").read_text())
     else:
-        text, meta = call_model(prompt, a.model, system=SYSTEM)
+        text, meta = call_model(prompt, a.model, system=SYSTEM, kind="tables", subject=a.job)
         resp_file.write_text(text, encoding="utf-8")
         (WORK / f"{a.job}.meta.json").write_text(json.dumps(meta, indent=1))
     theirs = yaml.safe_load(extract_yaml(text))

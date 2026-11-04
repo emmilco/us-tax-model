@@ -18,6 +18,13 @@
    "context": "1e647a16495198dafd67b5fdc7aa5541ee300b6baecd665a24a633720e7fceeb"
   },
   {
+   "printed": "1",
+   "restated": "Enter the amount from ftc helper \"Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign tax\".",
+   "model": "The referenced ftc.credit uses ftc.regular_tax, which the program defines as Form 1040 line 16 plus Schedule 2 line 1z; the IRS says regular tax is that total 'less any tax included on line 16 from Form 4972.'",
+   "ruling": "Ruling: scope; i1116 p. 25, Line 20 subtracts \"any tax included on line 16 from Form 4972\", but Form 4972 is refused for the whole return by scope.other_line16 (its question names Form 4972), so no Form 4972 tax is ever on line 16 and ftc.regular_tax (Form 1040 line 16 plus Schedule 2 line 1z) is the source's regular tax on every computed return. The earlier Stage 18 finding on line 1z is fixed (line 1z is now added).",
+   "context": "db7357c3cbae5df10c15ed5efc49d3b8c50f178e9891d1202c0b165992ed80da"
+  },
+  {
    "printed": "14",
    "restated": "Input — Total other payments or refundable credits (supplied subtotal; preparation outside Stage 2)",
    "model": "IRS line 14 says \"Add lines 13a through 13z,\" but the restatement accepts a supplied subtotal instead of adding those lines.",
@@ -44,6 +51,20 @@
    "model": "The IRS line says 'Add lines 13a through 13z'; the restatement instead takes a supplied subtotal and does not add lines 13a-13z, omitting the line's computation.",
    "ruling": "Ruling: scope/input boundary; f1040s3 (2025) p.1 line14 totals lines13a–13z. This slice explicitly requests that already-prepared subtotal as an input, with preparation of its component credits outside Stage2. No independent computation or worked-value evidence for that subtotal is claimed. The objection correctly identifies the unimplemented preparation; it is an acknowledged input boundary, not model noise.",
    "context": "d56adaf2361f80629d271d4ce465a188e52863b8e7511f5e690dca569ca8344b"
+  },
+  {
+   "printed": "14",
+   "restated": "Input — Total other payments or refundable credits (supplied subtotal; preparation outside Stage 2)",
+   "model": "The IRS says 'Add lines 13a through 13z'; the program instead accepts a supplied total without adding those lines.",
+   "ruling": "Ruling: scope; f1040s3 p. 1, line 14, \"Add lines 13a through 13z\". Line 14 is a supplied subtotal, an acknowledged input boundary (the component credits are prepared outside the tool). Same ruling as the earlier rounds.",
+   "context": "db7357c3cbae5df10c15ed5efc49d3b8c50f178e9891d1202c0b165992ed80da"
+  },
+  {
+   "printed": "3",
+   "restated": "Choose — [f8863 helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = true → f8863 line 19] [f8863 helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The gate treats expenses paid plus not being claimed as a dependent as sufficient to claim the credit, but the IRS also says 'You cannot claim an education credit ... if ... Your filing status is married filing separately' and if MAGI is at or above the threshold; those disqualifiers are omitted.",
+   "ruling": "Ruling: scope; married filing separately is refused for the whole return by s3.mfs through scope.ready (i8863 p. 3), and the MAGI phaseout is applied in f8863 lines 3 to 8; the f8863.eligible gate is not the whole Form 8863 computation. Same reading as the earlier rounds.",
+   "context": "db7357c3cbae5df10c15ed5efc49d3b8c50f178e9891d1202c0b165992ed80da"
   }
  ]
 }

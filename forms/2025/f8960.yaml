@@ -95,14 +95,15 @@ form:
         locator: Form 8960 (2025), Parts I–III, individual lines 1–17
     - id: f8960.line1
       printed: "1"
-      type: NonNegDollars
-      label: Amount from sb.line2
+      type: Dollars
+      label: Taxable interest (Form 1040 line 2b)
       expr:
         op: copy
-        from: sb.line2
+        from: f1040.line2b
       cite:
-        doc: f8960
-        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        doc: i8960
+        locator: p. 7, Line 1—Taxable Interest, "Enter the amount of taxable interest received. Include the following amount
+          from your return. • Form 1040 or 1040-SR, line 2b."
       refuses:
         - when: f8960.unsupported
           form: Form 8960 additional adjustments
@@ -121,13 +122,14 @@ form:
     - id: f8960.line2
       printed: "2"
       type: NonNegDollars
-      label: Amount from sb.line6
+      label: Ordinary dividends (Form 1040 line 3b)
       expr:
         op: copy
-        from: sb.line6
+        from: f1040.line3b
       cite:
-        doc: f8960
-        locator: Form 8960 (2025), Parts I–III, individual lines 1–17
+        doc: i8960
+        locator: p. 7, Line 2—Ordinary Dividends, "Enter the amount of ordinary dividends received. Include the following
+          amount from your return. • Form 1040 or 1040-SR, line 3b."
     - id: f8960.line3
       printed: "3"
       type: NonNegDollars
@@ -552,8 +554,25 @@ form:
       cite:
         doc: f8960
         locator: p. 1, Part III, line 15, "Subtract line 14 from line 13. If zero or less, enter -0-"
-    - id: f8960.line16
-      printed: "16"
+    - id: f8960.used
+      printed: (helper)
+      type: Bool
+      label: Form 8960 is filed (modified AGI, which is AGI on any return this tool completes, is more than the threshold
+        on line 14)
+      expr:
+        op: test
+        gt:
+          - sa.agi
+          - f8960.line14
+      cite:
+        doc: i8960
+        locator: 'p. 1, Who Must File, "Attach Form 8960 to your return if your modified adjusted gross income (MAGI) is
+          greater than the applicable threshold amount"; p. 22, Line 13—Modified Adjusted Gross Income (MAGI), "If you didn’t
+          exclude any amounts from your gross income under section 911 and you don’t own an interest in a CFC or PFIC, your
+          MAGI is your AGI as reported on Form 1040 or 1040-SR" (the section 911 exclusion and the CFC and PFIC inclusions
+          are refused on every return by s1.line8_other, sa.excluded_income and scope.other_line16)'
+    - id: f8960.line16_figured
+      printed: (helper)
       type: NonNegDollars
       label: Smaller of f8960.line12, f8960.line15
       expr:
@@ -561,6 +580,29 @@ form:
         of:
           - f8960.line12
           - f8960.line15
+      cite:
+        doc: f8960
+        locator: p. 1, Part III, line 16, "Enter the smaller of line 12 or line 15"
+    - id: f8960.line16
+      printed: "16"
+      type: NonNegDollars
+      label: Smaller of f8960.line12, f8960.line15 (zero when modified AGI is not more than the threshold, so that line 15
+        is zero)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f8960.used
+                - const: true
+            then: f8960.line16_figured
+          - guard:
+              op: test
+              eq:
+                - f8960.used
+                - const: false
+            then: f8960.zero
       cite:
         doc: f8960
         locator: p. 1, Part III, line 16, "Enter the smaller of line 12 or line 15"

@@ -1,6 +1,15 @@
 {
  "rulings": {
-  "section:scveh.bus_cost": "Not applicable: the line is line 13 of Pub. 946's Depreciation Worksheet for Passenger Automobiles (business/investment cost), which it cites on pp. 61-62; the Line 13 section of i1040sc p. 7 is Schedule C line 13 (depreciation), a different line, cited on p. 7 by the Schedule C line 13 total in sc.yaml."
+  "section:scveh.bus_cost": "Not applicable: the line is line 13 of Pub. 946's Depreciation Worksheet for Passenger Automobiles (business/investment cost), which it cites on pp. 61-62; the Line 13 section of i1040sc p. 7 is Schedule C line 13 (depreciation), a different line, cited on p. 7 by the Schedule C line 13 total in sc.yaml.",
+  "section:scveh.line9w": "Not applicable: the line is line 9 of Pub. 946's Depreciation Worksheet for Passenger Automobiles (adjusted maximum depreciation deduction), which it cites on pp. 61-62; the Line 9 section of i1040sc p. 6 is Schedule C line 9 (car and truck expenses), a different line, cited on p. 6 by the Schedule C line 9 lines in scveh.yaml.",
+  "section:scveh.line10": "Not applicable: the line is line 10 of Pub. 946's Depreciation Worksheet for Passenger Automobiles (section 179 deduction claimed this year), which it cites on pp. 61-62; the Line 10 section of i1040sc p. 7 is Schedule C line 10 (commissions and fees), a different line.",
+  "section:scveh.line11": "Not applicable: the line is line 11 of Pub. 946's Depreciation Worksheet for Passenger Automobiles (line 9 less line 10), which it cites on pp. 61-62; the Line 11 section of i1040sc p. 7 is Schedule C line 11 (contract labor), a different line.",
+  "section:scveh.line14": "Not applicable: the line is line 14 of Pub. 946's Depreciation Worksheet for Passenger Automobiles (section 179 deduction claimed in the year the car was placed in service), which it cites on pp. 61-62; the Line 14 section of i1040sc p. 7 is Schedule C line 14 (employee benefit programs), a different line.",
+  "section:scveh.line15": "Not applicable: the line is line 15 of Pub. 946's Depreciation Worksheet for Passenger Automobiles (tentative basis for depreciation), which it cites on pp. 61-62; the Line 15 section of i1040sc p. 8 is Schedule C line 15 (insurance), a different line.",
+  "section:scveh.line17": "Not applicable: the line is line 17 of Pub. 946's Depreciation Worksheet for Passenger Automobiles (limit on the MACRS depreciation), which it cites on pp. 61-62; the Line 17 section of i1040sc p. 8 is Schedule C line 17 (legal and professional services), a different line.",
+  "section:scveh.line18": "Not applicable: the line is line 18 of Pub. 946's Depreciation Worksheet for Passenger Automobiles (basis for depreciation), which it cites on pp. 61-62; the Line 18 section of i1040sc p. 8 is Schedule C line 18 (office expense), a different line.",
+  "section:scveh.line19": "Not applicable: the line is line 19 of Pub. 946's Depreciation Worksheet for Passenger Automobiles (tentative MACRS depreciation deduction), which it cites on pp. 61-62; the Line 19 section of i1040sc p. 8 is Schedule C line 19 (pension and profit-sharing plans), a different line.",
+  "section:scveh.bonus_allowed": "Not applicable: the line is Form 4562 line 25 (special depreciation allowance for qualified listed property), figured as line 16 of Pub. 946's Depreciation Worksheet for Passenger Automobiles limited to line 11, which it cites on pp. 61-62; the Line 25 section of i1040sc p. 10 is Schedule C line 25 (utilities), a different line."
  },
  "baseline": {
   "section:f1040.line10": "fcfe7f73f535b5a0",
@@ -59,10 +68,8 @@
   "section:f8959.line23": "2346e683d45a32d6",
   "section:f8959.line24": "8ba45683f819f454",
   "section:f8959.line8": "ff9245cc390c3be9",
-  "section:f8960.line1": "b9ecda711f6ce47f",
   "section:f8960.line14": "0f0c28f32ca3a45f",
   "section:f8960.line17": "3999ed145ceef902",
-  "section:f8960.line2": "209084de6caf40a9",
   "section:f8960.line3": "596e8f71feb5ff83",
   "section:f8960.line4a": "95240d9f4f7d6dbc",
   "section:f8960.line4b": "018e8dd27c770c13",

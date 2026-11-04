@@ -38,18 +38,24 @@ form:
         any residential clean energy credit carryforward from 2024"
   - id: f5695.part2_any
     printed: (helper)
-    label: Any energy efficient home improvement costs paid in 2025
+    label: Any energy efficient home improvement costs for 2025 (counted when the original installation is completed)
     type: Bool
     expr:
       op: input
-      source: Did you pay in 2025 for insulation or air sealing, exterior doors, exterior windows or skylights, central air
-        conditioners, natural gas, propane or oil water heaters, furnaces or hot water boilers, electric or natural gas
+      source: Did you have 2025 costs for insulation or air sealing, exterior doors, exterior windows or skylights, central
+        air conditioners, natural gas, propane or oil water heaters, furnaces or hot water boilers, electric or natural gas
         heat pumps or heat pump water heaters, biomass stoves or boilers, panelboards, subpanelboards, branch circuits or
-        feeders, or a home energy audit, for a home in the United States?
+        feeders, or a home energy audit, for a home in the United States? A cost of an item counts in 2025 when its original
+        installation is completed in 2025 (for a cost connected with the reconstruction of your home, when your original
+        use of the reconstructed home begins), whenever you paid it; an item installed after 2025 does not qualify.
     cite:
       doc: i5695
       locator: p. 2, Energy Efficient Home Improvement Credit (Part II), "You may be able to take a credit equal to 30% of
-        the sum of"; p. 1, Reminders, "A 30% credit, up to a maximum of $1,200, may be allowed for"
+        the sum of"; p. 1, Reminders, "A 30% credit, up to a maximum of $1,200, may be allowed for"; p. 1, Costs, "For
+        purposes of both credits, costs are treated as being paid when the original installation of the item is completed,
+        or, in the case of costs connected with the reconstruction of your home, when your original use of the reconstructed
+        home begins"; p. 1, Termination of credits, "You can’t claim energy efficient home improvement credits for expenditures
+        or property placed in service after December 31, 2025"
   - id: f5695.business_use
     printed: (helper)
     label: Is any item whose cost is entered on Form 5695 used less than 80% for nonbusiness purposes?
@@ -86,14 +92,21 @@ form:
     expr:
       op: input
       source: Qualified solar electric property costs you paid for a home in the United States (it need not be your main
-        home), including labor (net of subsidies and rebates; see help; zero if none)
+        home), including labor (net of subsidies and rebates; see help; zero if none). Solar roofing tiles and solar roofing
+        shingles qualify; structural components such as a roof's decking or rafters, which serve only a roofing or structural
+        function, do not. Costs allocable to a swimming pool, hot tub or any other energy storage medium that has a function
+        other than storage do not qualify
     cite:
       doc: i5695
       locator: p. 4, Line 1, "Enter the amounts you paid for qualified solar electric property"; p. 2, Qualified solar
         electric property costs, "The home doesn't have to be your main home"; p. 2, Caution, "If you received a subsidy
         from a public utility for the purchase or installation of an energy conservation product and that subsidy wasn't
         included in your gross income, you must reduce your cost for the product by the amount of that subsidy before you
-        figure your credit"; p. 2, Association or cooperative costs, "you are treated as having paid your proportionate
+        figure your credit"; p. 2, Qualified solar electric property costs, "These solar roofing tiles and solar roofing
+        shingles can qualify for the credit. This is in contrast to structural components such as a roof's decking or rafters
+        that serve only a roofing or structural function and thus do not qualify for the credit"; p. 2, Caution, "Costs allocable
+        to a swimming pool, hot tub, or any other energy storage medium that has a function other than the function of such
+        storage don’t qualify for the residential clean energy credit"; p. 2, Association or cooperative costs, "you are treated as having paid your proportionate
         share of any costs of such association or corporation"; fs-2025-01 p. 16, Residential Clean Energy Property Credit
         - General questions, "Rebates generally represent a reduction in the purchase price or cost of property, so the tax
         credit amount must be reduced by the amount of the rebate", "Generally, a taxpayer is not required to reduce the
@@ -110,12 +123,15 @@ form:
       source: Qualified solar water heating property costs you paid for a home in the United States (it need not be your
         main home; at least half of the energy it uses to heat water must come from the sun, and it must be certified by
         the Solar Rating Certification Corporation or a comparable entity endorsed by your state), including labor (net of
-        subsidies and rebates; see help; zero if none)
+        subsidies and rebates; see help; zero if none). Costs allocable to a swimming pool, hot tub or any other energy storage
+        medium that has a function other than storage do not qualify
     cite:
       doc: i5695
       locator: p. 4, Line 2, "Enter the amounts you paid for qualified solar water heating property"; p. 2, Qualified solar
         water heating property costs, "if at least half of the energy used by the solar water heating property for such
-        purpose is derived from the sun"
+        purpose is derived from the sun"; p. 2, Caution, "Costs allocable to a swimming pool, hot tub, or any other energy storage
+        medium that has a function other than the function of such storage don’t qualify for the residential clean energy
+        credit"
   - id: f5695.line3
     printed: "3"
     label: Qualified small wind energy property costs
@@ -123,11 +139,13 @@ form:
     expr:
       op: input
       source: Qualified small wind energy property costs you paid for a home in the United States (it need not be your main
-        home), including labor (net of subsidies and rebates; see help; zero if none)
+        home), including labor (net of subsidies and rebates; see help; zero if none). Costs allocable to a swimming pool, hot tub or any other energy storage medium that has a function
+        other than storage do not qualify
     cite:
       doc: i5695
       locator: p. 4, Line 3, "Enter the amounts you paid for qualified small wind energy property"; pp. 2-3, Qualified
-        small wind energy property costs, "property that uses a wind turbine to generate electricity"
+        small wind energy property costs, "property that uses a wind turbine to generate electricity"; p. 2, Caution, "Costs allocable to a swimming pool, hot tub, or any other energy storage medium that has a function
+        other than the function of such storage don’t qualify for the residential clean energy credit"
   - id: f5695.line4
     printed: "4"
     label: Qualified geothermal heat pump property costs
@@ -136,12 +154,14 @@ form:
       op: input
       source: Qualified geothermal heat pump property costs you paid for a home in the United States (it need not be your
         main home; it must meet the Energy Star requirements in effect at the time of purchase), including labor (net of
-        subsidies and rebates; see help; zero if none)
+        subsidies and rebates; see help; zero if none). Costs allocable to a swimming pool, hot tub or any other energy storage medium that has a function
+        other than storage do not qualify
     cite:
       doc: i5695
       locator: p. 4, Line 4, "Enter the amounts you paid for qualified geothermal heat pump property"; p. 2, Qualified
         geothermal heat pump property costs, "must meet the requirements of the Energy Star program that are in effect at
-        the time of purchase"
+        the time of purchase"; p. 2, Caution, "Costs allocable to a swimming pool, hot tub, or any other energy storage medium that has a function
+        other than the function of such storage don’t qualify for the residential clean energy credit"
   - id: f5695.line5a
     printed: 5a
     label: Qualified battery storage technology. Does the qualified battery storage technology have a capacity of at least 3
@@ -165,10 +185,12 @@ form:
     expr:
       op: input
       source: Qualified battery storage technology costs you paid (capacity of at least 3 kilowatt hours), including labor
-        (net of subsidies and rebates; see help)
+        (net of subsidies and rebates; see help). Costs allocable to a swimming pool, hot tub or any other energy storage medium that has a function
+        other than storage do not qualify
     cite:
       doc: i5695
-      locator: p. 4, Lines 5a and 5b, "enter the amounts you paid for qualified battery storage technology on line 5b"
+      locator: p. 4, Lines 5a and 5b, "enter the amounts you paid for qualified battery storage technology on line 5b"; p. 2, Caution, "Costs allocable to a swimming pool, hot tub, or any other energy storage medium that has a function
+        other than the function of such storage don’t qualify for the residential clean energy credit"
   - id: f5695.line5b
     printed: 5b
     label: If you checked the Yes box, enter the qualified battery technology costs
@@ -460,13 +482,16 @@ form:
     expr:
       op: input
       source: Are qualified energy efficiency improvements (insulation or air sealing, exterior doors, exterior windows or
-        skylights) installed in or on your main home located in the United States, a home you owned during 2025? (Answer
-        No if you have none.)
+        skylights) installed in or on your main home located in the United States, a home you owned during 2025? You can
+        claim this credit for only one main home; if you had more than one main home in 2025 (for example, you moved),
+        answer, and enter the Part II costs, for one of them only. (Answer No if you have none.)
     cite:
       doc: i5695
       locator: p. 5, Lines 17a Through 17e, "Line 17a. To qualify for the credit, any qualified energy efficiency
         improvements must have been for your main home located in the United States"; p. 3, Section A—Qualified Energy
-        Efficiency Improvements, "installed on or in your main home that you owned during 2025 located in the United States"
+        Efficiency Improvements, "installed on or in your main home that you owned during 2025 located in the United States";
+        p. 5, Line 17d, "You can only claim the energy efficient home improvement credit on one main home"; p. 1, Main home,
+        "You may only have one main home at a time"
   - id: f5695.line17b
     printed: 17b
     label: Are you the original user of the qualified energy efficiency improvements?
@@ -1650,13 +1675,20 @@ form:
       op: input
       source: Did you incur costs in 2025 for a home energy audit that included an inspection of your main home located in
         the United States (owned or rented) and a written report prepared by a Qualified Home Energy Auditor, or under the
-        supervision of one, certified by a Qualified Certification Program at the time of the audit? (Answer No if you had
-        none.)
+        supervision of one, certified by a Qualified Certification Program at the time of the audit? The written report must
+        identify the most significant and cost-effective energy efficiency improvements for the home, with an estimate of the
+        energy and cost savings of each, and must include the auditor's name and employer identification number (EIN) or
+        other taxpayer identifying number, an attestation that the auditor is certified by a Qualified Certification Program,
+        and the name of that program. (Answer No if you had none, or if the report lacks any of these.)
     cite:
       doc: i5695
-      locator: p. 7, Lines 26a Through 26c, "Line 26a. To qualify for the credit, a home energy audit must have included an
+      locator: 'p. 7, Lines 26a Through 26c, "Line 26a. To qualify for the credit, a home energy audit must have included an
         inspection of your main home located in the United States and a written report prepared by a Qualified Home Energy
-        Auditor"
+        Auditor"; p. 3, Home energy audits, "Identifies the most significant and cost-effective energy efficiency improvements
+        for the home, including an estimate of the energy and cost savings for each improvement" and "The written report must
+        include the following: 1. The Qualified Home Energy Auditor’s name and employer identification number (EIN) or other
+        type of relevant taxpayer identifying number (TIN); 2. An attestation that the Qualified Home Energy Auditor is certified
+        by a Qualified Certification Program; and 3. The name of the Qualified Certification Program"'
   - id: f5695.line26b
     printed: 26b
     label: Enter the cost of the home energy audits

@@ -850,19 +850,21 @@ register:
         9; Pub. 525 p. 24 adds a nonresident alien. The exceptions say when the worksheet may not be used; they do not say
         whether they matter when no worksheet is needed because you did not itemize for 2024 or deducted sales taxes.'
       readings:
-      - Ask items 1 and 5 (a refund for another year, a last 2024 estimated payment made in 2025) and Form 1099-G box 8 of
-        every refund, and the rest (items 3, 4, 6, 7, 8, 9 and a 2024 Form 1040-NR) only when the worksheet would be used;
+      - Ask items 1 and 5 (a refund for another year; 2024 state or local income tax paid in 2025, such as a last 2024
+        estimated payment made in 2025, or paid before 2024, such as a 2024 estimated payment made in December 2023) and Form
+        1099-G box 8 of every refund, and the rest (items 3, 4, 6, 7, 8, 9 and a 2024 Form 1040-NR) only when the worksheet would be used;
         refuse on Yes. Item 2 (refunds of other taxes) is asked of every return with the other recoveries.
       - Ask every exception of every refund, before the itemizing questions.
       chosen: The first (refund.box8 and refund.not_2024 on refund.taxable; refund.exc_tax and refund.exc_who on refund.line1;
         refund.other on Schedule 1 line 1).
       reason: The TIP is stated for "the year you paid the tax", which is 2024 only when the refund is for 2024 and was paid
         then, so items 1 and 5 can make a refund taxable even when you did not itemize for 2024, and a part of the refund for
-        a 2025 payment changes the 2025 deduction for taxes (Pub. 525 p. 24, Example 28). Items 3, 4, 6, 7, 8 and 9 and the
+        a 2025 payment changes the 2025 deduction for taxes (Pub. 525 p. 24, Example 28). A 2024 refund of tax paid before 2024 is a recovery for the year in which the tax was
+        paid (Pub. 525 p. 24, Recovery for 2 or more years), so it is asked with item 5 and refused by refund.not_2024. Items 3, 4, 6, 7, 8 and 9 and the
         nonresident rule change only how much of a refund of a deducted tax is included; when no income tax was deducted
         for 2024, none is (Pub. 525 p. 24, Deductions not itemized). Box 8 sends a taxable refund to Schedule C or F whatever
-        the itemizing. A recovery deducted on an earlier Form 8960 is refused by the existing screen f8960.refund, asked of
-        every return.
+        the itemizing. A recovery deducted on an earlier Form 8960 is refused by f8960.refund when Form 8960 is filed
+        (modified AGI above the threshold); below the threshold it changes no amount.
       cite:
         doc: i1040gi
         locator: 'pp. 88–89, Line 1, "Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and

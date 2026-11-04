@@ -36,6 +36,13 @@
    "context": "8b691fd6362cc604a63bc0bfdec4e1c13269abfba75635efa19f783356f7e34d"
   },
   {
+   "printed": "5a",
+   "restated": "Enter the amount from f1040 line 7a.",
+   "model": "The instructions say to combine 'Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4'. The restatement uses only line 7a, and no refusal covers every Schedule 1 line 4 gain or loss (for example a Form 4797 section 1244 stock loss).",
+   "ruling": "Ruling: scope; same as the earlier ruling (restatement and model note unchanged). i8960 p. 9, Line 5a: \"combining ... Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4.\" Schedule 1 line 4 (Form 4797, a Form 4684 gain) is refused by scope.schedule1 (\"sales of business property (Form 4797)\"), so on every computed return line 5a is Form 1040 line 7a.",
+   "context": "d8d8f62c33a46cd59d48170126feeb59a84a4fb650ad5ea261082400e010b180"
+  },
+  {
    "printed": "5b",
    "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
    "model": "Net Gains and Losses Worksheet line 2(h) says 'Enter the amount reported on line 2(i) of this worksheet from your prior tax year return calculations', and it applies unconditionally. The carryforward_adj refusal fires only when line 15 > $0. When modified AGI is at or below the threshold and a prior-year 2(i) amount exists, the program enters 0 on line 5b instead of that amount.",

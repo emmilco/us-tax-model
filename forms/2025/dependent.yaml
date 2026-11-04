@@ -1549,7 +1549,7 @@ form:
     - id: dependent.dc_count
       printed: (helper)
       type: Count
-      label: One qualifying person
+      label: One, for every entry (counted as a qualifying person only where dependent.dc_qp holds)
       expr:
         op: param
         ref: dependent.one

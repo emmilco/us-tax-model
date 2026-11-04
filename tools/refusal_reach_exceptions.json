@@ -1,1 +1,3 @@
-{}
+{
+  "stage9.s8812.not_taking_eic.combat_pay": "T-101 (s8812.combat_pay depends on Schedule 8812 Part II-A being completed). Single, one child, wages $120,000: the tax is more than the $2,200 on line 12, so line 14 takes all of it and line 16a is $0 (\"If zero, stop here; you cannot take the additional child tax credit\"), at any answer to the Schedule 1-A questions this partial fixture leaves out. Line 27 is then $0 and the return does not depend on the combat pay. The fixture's assertion on s8812.line18a, a line hidden after that stop, still holds as a computed value; the return-level refusal for combat pay is covered by stage8.refuse.s8812.combat_pay."
+}

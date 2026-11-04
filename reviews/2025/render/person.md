@@ -7,14 +7,14 @@ The rendered English of every printed line of `Each person on the return — per
 | date | 2026-11-03 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 929eeb37e1a6cc755e0816359f0fe448a6091ed476a63d5d66535ca42a3c00d9 |
+| prompt sha256 | 4a463469695f692171c99d1fd3b66d05d02ba647f45a2516554a2df009b4d850 |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
-| subject sha256 | c927de2428de32871e2eeb307ea6392a30346e6e85f95eb56d3337ca6fa918e7 |
+| subject sha256 | a13414b8df766c51657a30dcdf2b8cf3025ca895a0c16c5d5818b1a26c3ad8b3 |
 | lines judged | 32 |
-| match / mismatch / unclear / missing | 32 / 0 / 0 / 0 |
+| match / mismatch / unclear / missing | 27 / 5 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -48,7 +48,7 @@ The rendered English of every printed line of `Each person on the return — per
 | f5329 | 2025 | 1, 2, 3 | whole document | 53ac10ecce39dbd1cc0a3b88c04e351c2a61f3ad35d145d5d847f30f47a1b945 | - | c65e0cd9d9ad8e8a04899ec87a11393ad5a3e281543eb6720b72357811f8f51d |
 | f1040sc | 2025; created 2025-04-03 | 1, 2 | whole document | ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022 | - | 44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376 |
 | i4562 | 2025 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
-| p946 | For use in preparing 2025 returns | 17, 18, 19, 34, 37, 39, 41, 59, 61, 62, 63, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 17, 18, 19, 34, 37, 39, 41, 63 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
+| p946 | For use in preparing 2025 returns | 17, 18, 19, 31, 32, 34, 37, 39, 41, 59, 61, 62, 63, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 17, 18, 19, 31, 32, 34, 37, 39, 41, 63 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
 | f4562 | 2025; created 2025-10-09 | 1, 2, 3 | whole document | 71e2ace527072aaa7293e77897bb4ab8e473fa9c47b6b1ccb977fdc58a93bc2d | - | a1330c49d931e7ecdc867aef2d9e01390fc7b4d7e9321943a21ed0f8e883ed18 |
 | n-25-05 | Notice 2025-5 | 1, 2, 3, 4, 5 | whole document | 394f6b5ffb7c30e745322f0f20d9137608b1e2429fc4c76b06dedd690d4fb6e3 | - | 349e2797f87c588214722bcd22b7ec317c86c90a255ec8496941ac0c09909a8d |
 | p501 | 2025 returns; PDF created 2026-02-04 | 23 | pages named by another document's citation | 6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b | 23 | 2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671 |
@@ -62,82 +62,82 @@ The rendered English of every printed line of `Each person on the return — per
 ### rrta — Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or d
 Status: **MATCH**
 
-Model: Screens for railroad retirement (RRTA) compensation, which W-2 box 14 or Form CT-2 reports. The refusal on the credit line covers the tier 1 RRTA path and sends excess tier 2 tax to Form 843, as the Schedule 3 line 11 instructions direct.
+Model: The Schedule 3 line 11 instructions cover 'tier 1 railroad retirement (RRTA) tax' and send excess tier 2 tax to Form 843. RRTA compensation is reported in W-2 box 14 (W-2 instructions), and Form CT-2 is named for employee representatives (Form 8959 instructions). The screening question and its refusal match this text.
 
 ### employers — Total w2.one for this person
 Status: **MATCH**
 
-Model: Counts the person's Forms W-2 to test the instruction's condition 'had more than one employer for 2025'. The count is per person, consistent with 'Figure this amount separately for you and your spouse.'
+Model: Counts this person's Forms W-2 to test 'had more than one employer for 2025'. The count is kept per person, as in 'Figure this amount separately for you and your spouse.'
 
 ### overcount — Number of employers that withheld more than the limit
 Status: **MATCH**
 
-Model: Counts the W-2s on which one employer withheld more than $10,918.20. This supports the instruction 'if any one employer withheld more than $10,918.20, you can't claim the excess on your return.'
+Model: Counts this person's Forms W-2 whose withholding exceeds $10,918.20. This tests 'if any one employer withheld more than $10,918.20.'
 
 ### over — Any employer withheld more than the limit
 Status: **MATCH**
 
-Model: True when any employer over-withheld. The credit line's refusal then directs the filer to the employer adjustment or to Form 843, as the instructions say.
+Model: True when any single employer withheld more than $10,918.20, which is the case where 'you can't claim the excess on your return.'
 
 ### wages — Total w2.wages for this person
 Status: **MATCH**
 
-Model: Adds social security wages (W-2 box 3) and tips (box 7) across the person's W-2s to test 'total wages of more than $176,100.'
+Model: Adds W-2 boxes 3 and 7 for the 'total wages of more than $176,100' test. $176,100 is the social security wage base that applies to boxes 3 and 7 together.
 
 ### withheld — Total w2.box4 for this person
 Status: **MATCH**
 
-Model: Adds social security tax withheld (W-2 box 4) across the person's W-2s, the amount compared against $10,918.20.
+Model: Adds W-2 box 4 (social security tax withheld) across this person's employers.
 
 ### eligible — More than one employer and total social security wages over $176,100
 Status: **MATCH**
 
-Model: Requires more than one employer and total wages over $176,100, as in 'had more than one employer for 2025 and total wages of more than $176,100.'
+Model: Matches 'had more than one employer for 2025 and total wages of more than $176,100.'
 
 ### excess — Withholding above $10,918.20, if any
 Status: **MATCH**
 
-Model: Withholding minus $10,918.20, not below zero, matches 'a credit on this line for the amount withheld in excess of $10,918.20.'
+Model: Matches 'You can take a credit on this line for the amount withheld in excess of $10,918.20', with a floor of zero.
 
 ### zero — No excess credit
 Status: **MATCH**
 
-Model: This is a constant zero used when the person does not qualify for the credit.
+Model: A constant zero, used when the person is not eligible for the credit.
 
 ### credit — Excess social security tax withheld, figured separately for this person
 Status: **MATCH**
 
-Model: The credit is the excess when the person qualifies and zero otherwise. The refusals for RRTA and for a single employer's over-withholding match the instructions' exclusions (Form 843, employer adjustment).
+Model: Gives the excess when the person is eligible and zero otherwise. The refusals cover the RRTA/tier 2 case (Form 843) and the single-employer overcollection ('The employer should adjust the tax ... file a claim for refund using Form 843').
 
 ### (screen) (person.se_screen) — Does any of these apply to this person's self-employment?
 Status: **MATCH**
 
-Model: Screens out the Schedule SE items the program does not handle: church income, clergy, Forms 4361/4029, K-1 income, farm income, optional methods, chapter 11, community income, exempt income, and Forms 4137/8919. The Schedule SE instructions describe each of these items.
+Model: The screen lists the Schedule SE items this tool does not handle: church employee income, clergy and Forms 4361/4029, K-1 box 14 code A, other self-employment income, farm income/CRP, optional methods, chapter 11, community income, exempt income, and Forms 4137/8919. The Schedule SE instructions describe each of these.
 
 ### (screen) (person.plan_screen) — Does any of these apply to this person's retirement contributions?
 Status: **MATCH**
 
-Model: Screens out the cases Pub. 560 chapter 5 excludes from the rate table and the deduction worksheet. These are SARSEPs, rates that are not whole percentages, more than one plan, elective deferrals and excess contributions.
+Model: Pub. 560 chapter 5 says the worksheets apply only to 'only one defined contribution plan', with 'don't use this worksheet for SARSEPs', and that the rate table needs a whole-percentage rate. The screen also covers the SECURE 2.0 section 117 higher SIMPLE limits and excess contributions. These narrow the cases the program handles.
 
 ### Step 1 — Net profit from Schedule C, line 31
 Status: **MATCH**
 
-Model: Step 1 is 'net profit from Schedule C (Form 1040), line 31'. Schedule F and K-1 income are refused. A plan with more than one Schedule C is refused through the plan screen.
+Model: Uses 'net profit from Schedule C (Form 1040), line 31' for this person. Schedule F, K-1 and the line 1b reduction are refused through the self-employment screen.
 
 ### Step 2 — Deduction for self-employment tax from Schedule 1, line 15
 Status: **MATCH**
 
-Model: Step 2 is 'Enter your deduction for self-employment tax from Schedule 1 (Form 1040), line 15', which is Schedule SE line 13.
+Model: Uses this person's Schedule SE line 13, which is the amount carried to Schedule 1 line 15 ('deduction for self-employment tax from Schedule 1 (Form 1040), line 15').
 
 ### Step 3 — Net earnings from self-employment. Subtract step 2 from step 1
 Status: **MATCH**
 
-Model: Step 3 is 'Subtract step 2 from step 1'. The zero floor added by the program does not change the resulting deduction.
+Model: Matches 'Subtract step 2 from step 1'. The zero floor changes the value only when there is a loss, and no SEP deduction arises in that case.
 
 ### Step 5 — Multiply step 3 by step 4 (the plan rate divided by the plan rate plus 1, to six decimal p
 Status: **MATCH**
 
-Model: The program combines Step 4 (rate ÷ (rate + 1), as in the Rate Table, e.g. 10% → 0.090909) with Step 5 ('Multiply step 3 by step 4'). Its 6-decimal rounding reproduces the table values.
+Model: Uses the Rate Worksheet formula, line 1 ÷ (line 1 + 1), rounded to 6 decimals. This reproduces the Rate Table values (for example 10% gives 0.090909 and 25% gives 0.200000). The result is then multiplied by Step 3, as in 'Multiply step 3 by step 4.'
 
 ### Step 6 — Multiply $350,000 by your plan contribution rate (not the reduced rate)
 Status: **MATCH**
@@ -152,72 +152,92 @@ Model: Matches 'Enter the smaller of step 5 or step 6.'
 ### Step 8 — Contribution dollar limit
 Status: **MATCH**
 
-Model: Matches the contribution dollar limit of $70,000.
+Model: Matches the 'Contribution dollar limit ... $70,000.'
 
 ### Step 21 — Maximum deductible contribution (the smaller of step 7 or step 8; no elective deferrals)
 Status: **MATCH**
 
-Model: With no elective deferrals (screened out), the worksheet says 'skip steps 9 through 20 and enter the smaller of step 7 or step 8 on step 21.'
+Model: Matches 'Otherwise, skip steps 9 through 20 and enter the smaller of step 7 or step 8 on step 21.' Elective deferrals are excluded by the plan screen.
 
 ### (screen) (person.sav_able) — As the designated beneficiary of an ABLE account, did you contribute to it for 2025, or di
 Status: **MATCH**
 
-Model: Covers ABLE contributions by the designated beneficiary (Form 8880 line 1). It also covers ABLE distributions received after 2022 and before the due date (Form 8880 line 4).
+Model: Covers the Form 8880 line 1 ABLE contributions by the designated beneficiary and the line 4 distributions 'received after 2022 and before the due date (including extensions).'
 
 ### (screen) (person.sav_excess) — Were your elective deferrals and designated Roth contributions for 2025 more than the limi
 Status: **MATCH**
 
-Model: Screens for excess elective deferrals. This uses the 2025 limit of $23,500 for deferrals and designated Roth contributions stated in the W-2 instructions.
+Model: Asks about excess elective deferrals and designated Roth contributions (W-2 box 12) above the limit. The W-2 instructions give the 2025 limit of $23,500 plus allowed catch-up.
 
 ### (screen) (person.ira_excess) — Were your 2025 IRA contributions more than allowed, recharacterized, or did an earlier exc
 Status: **MATCH**
 
-Model: Screens for the cases in Pub. 590-A and Form 5329: contributions over the smaller of $7,000/$8,000 or taxable compensation that were not withdrawn by the due date. It also covers recharacterizations and prior-year excess remaining at year end.
+Model: Pub. 590-A defines an excess as contributions above the smaller of $7,000 ($8,000 if 50 or older) or taxable compensation, not withdrawn by the due date. The screen also covers recharacterizations and prior-year excesses still in the IRA, which Pub. 590-A and the Form 8606 instructions discuss.
 
 ### 23 — Has the American opportunity credit been claimed for this student for any 4 prior tax year
 Status: **MATCH**
 
-Model: Restates Form 8863 line 23, 'Has the American opportunity credit been claimed for this student for any 4 prior tax years?', counting claims by anyone, as in the instructions.
+Model: Matches line 23, 'Has the American opportunity credit been claimed for this student for any 4 prior tax years?', and the instructions' 'by you or anyone else.'
 
 ### 24 — Was the student enrolled at least half-time for at least one academic period that began or
 Status: **MATCH**
 
-Model: Restates line 24: half-time enrollment for an academic period beginning (or treated as beginning) in 2025, in a program leading to a recognized credential. It includes the first-3-months-of-2026 prepaid rule.
+Model: Matches line 24 and the requirement for at least half-time enrollment in a credential program for an academic period beginning in 2025 or treated as beginning then (first 3 months of 2026 if paid in 2025).
 
 ### 25 — Did the student complete the first 4 years of postsecondary education before 2025?
 Status: **MATCH**
 
-Model: Restates line 25 and student requirement 1, including 'as determined by the eligible educational institution' and excluding proficiency-exam credit.
+Model: Matches line 25 and the instruction 'as determined by the eligible educational institution ... don't include academic credit awarded solely because of ... proficiency examinations.'
 
 ### 26 — Was the student convicted, before the end of 2025, of a felony for possession or distribut
 Status: **MATCH**
 
-Model: Restates line 26: a federal or state felony conviction for possessing or distributing a controlled substance before the end of 2025.
+Model: Matches line 26: 'convicted, before the end of 2025, of a felony for possession or distribution of a controlled substance' (federal or state).
 
 ### 27 — Adjusted qualified education expenses. Don't enter more than $4,000
-Status: **MATCH**
+Status: **MISMATCH**
 
-Model: Computes worksheet line 4 for the AOC: expenses plus course materials, minus adjustments 2a+2b+2c, not below zero, capped by 'Don't enter more than $4,000.' A period whose adjustments exceed its own expenses is refused, so the aggregate equals the per-period result. The gate requires TINs and the EIN, as the AOC requirements say.
+Restated: Choose — [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = true → "line27" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = false → line zero]
+
+Model: The arithmetic matches: the smaller of the worksheet line 4 amount (expenses plus course materials less line 3, floored at zero) or $4,000. The eligibility gate does not match. It accepts a requested Form 1098-T only for requests made 'after February 2, 2026', but the IRS text says 'After January 31, 2026, but before you file the return, you or the student must request that the educational institution furnish a Form 1098-T.'
+
+Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, "After January 31, 2026, but before you file the return"; p970 p. 2, "After February 2, 2026 (January 31 falls on a Saturday)"; the register chooses Pub. 970. The reviewer now accepts the TIN gate (the T-113 point is no longer raised) and the arithmetic. render MISMATCH. Project stands.
 
 ### 28 — Subtract $2,000 from line 27. If zero or less, enter -0-
-Status: **MATCH**
+Status: **MISMATCH**
 
-Model: Matches 'Subtract $2,000 from line 27. If zero or less, enter -0-.'
+Restated: Choose — [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = true → "line28" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = false → line zero]
+
+Model: Correctly computes 'Subtract $2,000 from line 27. If zero or less, enter -0-'. The student gate uses 'after February 2, 2026' for a requested Form 1098-T, while the IRS text says 'After January 31, 2026.'
+
+Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, "After January 31, 2026, but before you file the return"; p970 p. 2, "After February 2, 2026 (January 31 falls on a Saturday)"; the register chooses Pub. 970. The reviewer now accepts the TIN gate (the T-113 point is no longer raised) and the arithmetic. render MISMATCH. Project stands.
 
 ### 29 — Multiply line 28 by 25% (0.25)
-Status: **MATCH**
+Status: **MISMATCH**
 
-Model: Matches 'Multiply line 28 by 25% (0.25).'
+Restated: Choose — [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = true → "line29" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = false → line zero]
+
+Model: Correctly computes 'Multiply line 28 by 25% (0.25)'. The student gate uses 'after February 2, 2026' for a requested Form 1098-T, while the IRS text says 'After January 31, 2026.'
+
+Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, "After January 31, 2026, but before you file the return"; p970 p. 2, "After February 2, 2026 (January 31 falls on a Saturday)"; the register chooses Pub. 970. The reviewer now accepts the TIN gate (the T-113 point is no longer raised) and the arithmetic. render MISMATCH. Project stands.
 
 ### 30 — American opportunity credit for this student. If line 28 is zero, enter the amount from li
-Status: **MATCH**
+Status: **MISMATCH**
 
-Model: Matches 'If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29.'
+Restated: Choose — [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = true → "line30" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "An American opportunity credit student: lines 23 to 26 allow it, the filers have TINs, and the institution's EIN is available" = false → line zero]
+
+Model: Correctly computes 'If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29'. The student gate uses 'after February 2, 2026' for a requested Form 1098-T, while the IRS text says 'After January 31, 2026.'
+
+Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, "After January 31, 2026, but before you file the return"; p970 p. 2, "After February 2, 2026 (January 31 falls on a Saturday)"; the register chooses Pub. 970. The reviewer now accepts the TIN gate (the T-113 point is no longer raised) and the arithmetic. render MISMATCH. Project stands.
 
 ### 31 — Adjusted qualified education expenses for the lifetime learning credit
-Status: **MATCH**
+Status: **MISMATCH**
 
-Model: Used for eligible students who do not get the AOC. It computes expenses required to be paid to the institution minus adjustments, not below zero, per the lifetime learning credit definition of qualified expenses. Students with an ITIN or ATIN only applied for are refused, consistent with 'Students must have been issued a TIN by the due date.'
+Restated: Choose — [helper "A lifetime learning credit student: an eligible student who is not an American opportunity credit student" = true → "ws4_llc" of Form 8863, Part III lines 27 to 31 with the Adjusted Qualified Education Expenses Worksheet, one per student with adj = helper "Adjusted Qualified Education Expenses Worksheet, line 3 for an eligible student: add lines 2a, 2b and 2c", inst = helper "Qualified education expenses required to be paid to the institution", and mat = helper "Other course materials (American opportunity credit only)"] [helper "A lifetime learning credit student: an eligible student who is not an American opportunity credit student" = false → line zero]
+
+Model: The worksheet uses only expenses required to be paid to the institution less line 3, as the lifetime learning credit requires, and the TIN refusal is a valid narrowing. The student gate uses 'after February 2, 2026' for a requested Form 1098-T, while the IRS text says 'After January 31, 2026.'
+
+Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, "After January 31, 2026, but before you file the return"; p970 p. 2, "After February 2, 2026 (January 31 falls on a Saturday)"; the register chooses Pub. 970. The reviewer now accepts the TIN gate (the T-113 point is no longer raised) and the arithmetic. render MISMATCH. Project stands.
 
 ## Raw response
 
@@ -226,52 +246,52 @@ Model: Used for eligible students who do not get the AOC. It computes expenses r
 lines:
   - key: "rrta"
     status: MATCH
-    reason: "Screens for railroad retirement (RRTA) compensation, which W-2 box 14 or Form CT-2 reports. The refusal on the credit line covers the tier 1 RRTA path and sends excess tier 2 tax to Form 843, as the Schedule 3 line 11 instructions direct."
+    reason: "The Schedule 3 line 11 instructions cover 'tier 1 railroad retirement (RRTA) tax' and send excess tier 2 tax to Form 843. RRTA compensation is reported in W-2 box 14 (W-2 instructions), and Form CT-2 is named for employee representatives (Form 8959 instructions). The screening question and its refusal match this text."
   - key: "employers"
     status: MATCH
-    reason: "Counts the person's Forms W-2 to test the instruction's condition 'had more than one employer for 2025'. The count is per person, consistent with 'Figure this amount separately for you and your spouse.'"
+    reason: "Counts this person's Forms W-2 to test 'had more than one employer for 2025'. The count is kept per person, as in 'Figure this amount separately for you and your spouse.'"
   - key: "overcount"
     status: MATCH
-    reason: "Counts the W-2s on which one employer withheld more than $10,918.20. This supports the instruction 'if any one employer withheld more than $10,918.20, you can't claim the excess on your return.'"
+    reason: "Counts this person's Forms W-2 whose withholding exceeds $10,918.20. This tests 'if any one employer withheld more than $10,918.20.'"
   - key: "over"
     status: MATCH
-    reason: "True when any employer over-withheld. The credit line's refusal then directs the filer to the employer adjustment or to Form 843, as the instructions say."
+    reason: "True when any single employer withheld more than $10,918.20, which is the case where 'you can't claim the excess on your return.'"
   - key: "wages"
     status: MATCH
-    reason: "Adds social security wages (W-2 box 3) and tips (box 7) across the person's W-2s to test 'total wages of more than $176,100.'"
+    reason: "Adds W-2 boxes 3 and 7 for the 'total wages of more than $176,100' test. $176,100 is the social security wage base that applies to boxes 3 and 7 together."
   - key: "withheld"
     status: MATCH
-    reason: "Adds social security tax withheld (W-2 box 4) across the person's W-2s, the amount compared against $10,918.20."
+    reason: "Adds W-2 box 4 (social security tax withheld) across this person's employers."
   - key: "eligible"
     status: MATCH
-    reason: "Requires more than one employer and total wages over $176,100, as in 'had more than one employer for 2025 and total wages of more than $176,100.'"
+    reason: "Matches 'had more than one employer for 2025 and total wages of more than $176,100.'"
   - key: "excess"
     status: MATCH
-    reason: "Withholding minus $10,918.20, not below zero, matches 'a credit on this line for the amount withheld in excess of $10,918.20.'"
+    reason: "Matches 'You can take a credit on this line for the amount withheld in excess of $10,918.20', with a floor of zero."
   - key: "zero"
     status: MATCH
-    reason: "This is a constant zero used when the person does not qualify for the credit."
+    reason: "A constant zero, used when the person is not eligible for the credit."
   - key: "credit"
     status: MATCH
-    reason: "The credit is the excess when the person qualifies and zero otherwise. The refusals for RRTA and for a single employer's over-withholding match the instructions' exclusions (Form 843, employer adjustment)."
+    reason: "Gives the excess when the person is eligible and zero otherwise. The refusals cover the RRTA/tier 2 case (Form 843) and the single-employer overcollection ('The employer should adjust the tax ... file a claim for refund using Form 843')."
   - key: "(screen) (person.se_screen)"
     status: MATCH
-    reason: "Screens out the Schedule SE items the program does not handle: church income, clergy, Forms 4361/4029, K-1 income, farm income, optional methods, chapter 11, community income, exempt income, and Forms 4137/8919. The Schedule SE instructions describe each of these items."
+    reason: "The screen lists the Schedule SE items this tool does not handle: church employee income, clergy and Forms 4361/4029, K-1 box 14 code A, other self-employment income, farm income/CRP, optional methods, chapter 11, community income, exempt income, and Forms 4137/8919. The Schedule SE instructions describe each of these."
   - key: "(screen) (person.plan_screen)"
     status: MATCH
-    reason: "Screens out the cases Pub. 560 chapter 5 excludes from the rate table and the deduction worksheet. These are SARSEPs, rates that are not whole percentages, more than one plan, elective deferrals and excess contributions."
+    reason: "Pub. 560 chapter 5 says the worksheets apply only to 'only one defined contribution plan', with 'don't use this worksheet for SARSEPs', and that the rate table needs a whole-percentage rate. The screen also covers the SECURE 2.0 section 117 higher SIMPLE limits and excess contributions. These narrow the cases the program handles."
   - key: "Step 1"
     status: MATCH
-    reason: "Step 1 is 'net profit from Schedule C (Form 1040), line 31'. Schedule F and K-1 income are refused. A plan with more than one Schedule C is refused through the plan screen."
+    reason: "Uses 'net profit from Schedule C (Form 1040), line 31' for this person. Schedule F, K-1 and the line 1b reduction are refused through the self-employment screen."
   - key: "Step 2"
     status: MATCH
-    reason: "Step 2 is 'Enter your deduction for self-employment tax from Schedule 1 (Form 1040), line 15', which is Schedule SE line 13."
+    reason: "Uses this person's Schedule SE line 13, which is the amount carried to Schedule 1 line 15 ('deduction for self-employment tax from Schedule 1 (Form 1040), line 15')."
   - key: "Step 3"
     status: MATCH
-    reason: "Step 3 is 'Subtract step 2 from step 1'. The zero floor added by the program does not change the resulting deduction."
+    reason: "Matches 'Subtract step 2 from step 1'. The zero floor changes the value only when there is a loss, and no SEP deduction arises in that case."
   - key: "Step 5"
     status: MATCH
-    reason: "The program combines Step 4 (rate ÷ (rate + 1), as in the Rate Table, e.g. 10% → 0.090909) with Step 5 ('Multiply step 3 by step 4'). Its 6-decimal rounding reproduces the table values."
+    reason: "Uses the Rate Worksheet formula, line 1 ÷ (line 1 + 1), rounded to 6 decimals. This reproduces the Rate Table values (for example 10% gives 0.090909 and 25% gives 0.200000). The result is then multiplied by Step 3, as in 'Multiply step 3 by step 4.'"
   - key: "Step 6"
     status: MATCH
     reason: "Matches 'Multiply $350,000 by your plan contribution rate (not the reduced rate).'"
@@ -280,45 +300,45 @@ lines:
     reason: "Matches 'Enter the smaller of step 5 or step 6.'"
   - key: "Step 8"
     status: MATCH
-    reason: "Matches the contribution dollar limit of $70,000."
+    reason: "Matches the 'Contribution dollar limit ... $70,000.'"
   - key: "Step 21"
     status: MATCH
-    reason: "With no elective deferrals (screened out), the worksheet says 'skip steps 9 through 20 and enter the smaller of step 7 or step 8 on step 21.'"
+    reason: "Matches 'Otherwise, skip steps 9 through 20 and enter the smaller of step 7 or step 8 on step 21.' Elective deferrals are excluded by the plan screen."
   - key: "(screen) (person.sav_able)"
     status: MATCH
-    reason: "Covers ABLE contributions by the designated beneficiary (Form 8880 line 1). It also covers ABLE distributions received after 2022 and before the due date (Form 8880 line 4)."
+    reason: "Covers the Form 8880 line 1 ABLE contributions by the designated beneficiary and the line 4 distributions 'received after 2022 and before the due date (including extensions).'"
   - key: "(screen) (person.sav_excess)"
     status: MATCH
-    reason: "Screens for excess elective deferrals. This uses the 2025 limit of $23,500 for deferrals and designated Roth contributions stated in the W-2 instructions."
+    reason: "Asks about excess elective deferrals and designated Roth contributions (W-2 box 12) above the limit. The W-2 instructions give the 2025 limit of $23,500 plus allowed catch-up."
   - key: "(screen) (person.ira_excess)"
     status: MATCH
-    reason: "Screens for the cases in Pub. 590-A and Form 5329: contributions over the smaller of $7,000/$8,000 or taxable compensation that were not withdrawn by the due date. It also covers recharacterizations and prior-year excess remaining at year end."
+    reason: "Pub. 590-A defines an excess as contributions above the smaller of $7,000 ($8,000 if 50 or older) or taxable compensation, not withdrawn by the due date. The screen also covers recharacterizations and prior-year excesses still in the IRA, which Pub. 590-A and the Form 8606 instructions discuss."
   - key: "23"
     status: MATCH
-    reason: "Restates Form 8863 line 23, 'Has the American opportunity credit been claimed for this student for any 4 prior tax years?', counting claims by anyone, as in the instructions."
+    reason: "Matches line 23, 'Has the American opportunity credit been claimed for this student for any 4 prior tax years?', and the instructions' 'by you or anyone else.'"
   - key: "24"
     status: MATCH
-    reason: "Restates line 24: half-time enrollment for an academic period beginning (or treated as beginning) in 2025, in a program leading to a recognized credential. It includes the first-3-months-of-2026 prepaid rule."
+    reason: "Matches line 24 and the requirement for at least half-time enrollment in a credential program for an academic period beginning in 2025 or treated as beginning then (first 3 months of 2026 if paid in 2025)."
   - key: "25"
     status: MATCH
-    reason: "Restates line 25 and student requirement 1, including 'as determined by the eligible educational institution' and excluding proficiency-exam credit."
+    reason: "Matches line 25 and the instruction 'as determined by the eligible educational institution ... don't include academic credit awarded solely because of ... proficiency examinations.'"
   - key: "26"
     status: MATCH
-    reason: "Restates line 26: a federal or state felony conviction for possessing or distributing a controlled substance before the end of 2025."
+    reason: "Matches line 26: 'convicted, before the end of 2025, of a felony for possession or distribution of a controlled substance' (federal or state)."
   - key: "27"
-    status: MATCH
-    reason: "Computes worksheet line 4 for the AOC: expenses plus course materials, minus adjustments 2a+2b+2c, not below zero, capped by 'Don't enter more than $4,000.' A period whose adjustments exceed its own expenses is refused, so the aggregate equals the per-period result. The gate requires TINs and the EIN, as the AOC requirements say."
+    status: MISMATCH
+    reason: "The arithmetic matches: the smaller of the worksheet line 4 amount (expenses plus course materials less line 3, floored at zero) or $4,000. The eligibility gate does not match. It accepts a requested Form 1098-T only for requests made 'after February 2, 2026', but the IRS text says 'After January 31, 2026, but before you file the return, you or the student must request that the educational institution furnish a Form 1098-T.'"
   - key: "28"
-    status: MATCH
-    reason: "Matches 'Subtract $2,000 from line 27. If zero or less, enter -0-.'"
+    status: MISMATCH
+    reason: "Correctly computes 'Subtract $2,000 from line 27. If zero or less, enter -0-'. The student gate uses 'after February 2, 2026' for a requested Form 1098-T, while the IRS text says 'After January 31, 2026.'"
   - key: "29"
-    status: MATCH
-    reason: "Matches 'Multiply line 28 by 25% (0.25).'"
+    status: MISMATCH
+    reason: "Correctly computes 'Multiply line 28 by 25% (0.25)'. The student gate uses 'after February 2, 2026' for a requested Form 1098-T, while the IRS text says 'After January 31, 2026.'"
   - key: "30"
-    status: MATCH
-    reason: "Matches 'If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29.'"
+    status: MISMATCH
+    reason: "Correctly computes 'If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29'. The student gate uses 'after February 2, 2026' for a requested Form 1098-T, while the IRS text says 'After January 31, 2026.'"
   - key: "31"
-    status: MATCH
-    reason: "Used for eligible students who do not get the AOC. It computes expenses required to be paid to the institution minus adjustments, not below zero, per the lifetime learning credit definition of qualified expenses. Students with an ITIN or ATIN only applied for are refused, consistent with 'Students must have been issued a TIN by the due date.'"
+    status: MISMATCH
+    reason: "The worksheet uses only expenses required to be paid to the institution less line 3, as the lifetime learning credit requires, and the TIN refusal is a valid narrowing. The student gate uses 'after February 2, 2026' for a requested Form 1098-T, while the IRS text says 'After January 31, 2026.'"
 ```
 ```

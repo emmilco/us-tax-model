@@ -132,7 +132,7 @@ def run_one(screen, gated, lines, mani, model, dry, from_response):
     if from_response:
         text = open(base + ".response.txt", encoding="utf-8").read(); meta = {}
     else:
-        text, meta = call_model(prompt, model, system=SYSTEM)
+        text, meta = call_model(prompt, model, system=SYSTEM, kind="screen", subject=screen)
         open(base + ".response.txt", "w", encoding="utf-8").write(text)
     blocks = re.findall(r"```(?:yaml)?\s*\n(.*?)```", text, re.S)
     doc = yaml.safe_load(blocks[-1] if blocks else text) or {}

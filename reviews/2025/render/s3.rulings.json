@@ -18,6 +18,13 @@
   {
    "printed": "1",
    "restated": "Enter the amount from ftc helper \"Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign tax\".",
+   "model": "The election takes the smaller of total foreign tax or regular tax, and regular tax follows the line 20 instructions: 'Form 1040 ... line 16, and Schedule 2 (Form 1040), Part I, line 1z, less any tax included on line 16 from Form 4972.' The ftc.regular_tax helper adds f1040 line 16 and s2 line 1z but never subtracts Form 4972 tax, and no refusal excludes that case.",
+   "ruling": "Ruling: scope; i1116 p. 25, Line 20 subtracts \"any tax included on line 16 from Form 4972\", but Form 4972 is refused for the whole return by scope.other_line16 (its question names Form 4972), so no Form 4972 tax is ever on line 16 and ftc.regular_tax (Form 1040 line 16 plus Schedule 2 line 1z) is the source's regular tax on every computed return. The earlier Stage 18 finding on line 1z is fixed (line 1z is now added).",
+   "context": "ad250503ad2a7557eefdefd91f9d1b4041daf3459ca0c5e04c4b5350653cd79d"
+  },
+  {
+   "printed": "1",
+   "restated": "Enter the amount from ftc helper \"Credit is the smaller of creditable foreign tax and regular income tax; zero if no foreign tax\".",
    "model": "The form says only \"Foreign tax credit. Attach Form 1116 if required\", and the Line 1 instructions are not in the pages given. Nothing provided supports capping the credit at Form 1040 line 16, or the $300/$600 limit and other election conditions that trigger the Form 1116 refusal.",
    "ruling": "Ruling: representation; project retained. The helper is the election to claim the credit without Form 1116 (i1116 pp. 1–2, the election to claim the foreign tax credit without filing Form 1116: the credit is the smaller of the total foreign tax and the regular tax when all foreign income is passive, reported on payee statements and within the $300/$600 limit); every failed condition refuses through `ftc.needs1116`. The ftc worksheet has its own render log. No change to the data."
   },

@@ -7,21 +7,21 @@ The rendered English of every printed line of `Earned Income Credit (EIC)—Step
 | date | 2026-11-03 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 6f60d6760b0b35275e5b510005c22501a51e1f7c9aac958d54135a62e81e9806 |
+| prompt sha256 | 370613152b7c99fd8018c5a96b2c295f1a57ca63a9b905b88b4a079f617dff8d |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
-| subject sha256 | 74089858814873d7db95b715ae8040c7df79e052dd8eab625c4a9802a0513ea4 |
+| subject sha256 | 57b1f38f909b2b26c9c29820110d1388c2294aac821d4cde0011e0e1db5225fc |
 | lines judged | 13 |
-| match / mismatch / unclear / missing | 12 / 1 / 0 / 0 |
+| match / mismatch / unclear / missing | 13 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
 
 | document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
 | --- | --- | --- | --- | --- | --- | --- |
-| i1040gi | 2025; printed date 2026-02-25 | 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 93, 95, 117 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 40, 41, 42, 43, 44, 45, 93, 95, 117 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| i1040gi | 2025; printed date 2026-02-25 | 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 93, 94, 95, 117 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 40, 41, 42, 43, 44, 45, 93, 95, 117 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
 | f1040 | 2025; created 2025-09-05 | 1, 2 | whole document | ac32f00aed489e0722d0b409c0eb12915801d66f3a2fab05bc8391af61426383 | - | 72926cc2b256a68592e6cf0f2aa384ef8371eec968a0c8c62e050edf5bfea76a |
 | i1040s8812 | 2025; printed date 2026-01-23 | 8 | cited pages | fd50a5266cc20aa5a31de0535658793f75c7abbb12fd83b65dc5b21c6ede2765 | - | e6ba91f54df679c9c19c23169c369f14bff012ba2fe110c3973bde59676c1d45 |
 | f1040s8812 | 2025; created 2025-07-30 | 1, 2 | whole document | 9b38295071c42fe489ec8f93e117b31eda11355b5a95e3fe388eeee69601c8c9 | - | 3525d47f51cb713591081610a862cae77eff08a8aa7e2064a96b15cee4fd5cb9 |
@@ -32,82 +32,80 @@ The rendered English of every printed line of `Earned Income Credit (EIC)—Step
 | iw2w3 | 2025; printed date 2025-02-19 | 18 | cited pages | 27ad850a44d58d9186afcccb33b8a32f4747911e2b1b3138de515f44d4de33f3 | 18 | 3876738db222e8abe6103f29d8a8654a3139b9896f97e325d50e80b87ed5b26a |
 | f7206 | 2025; created 2025-10-02 | 1 | whole document | 1f54af11e092a24258ac71f29d2bcfeeda1d6100ca332357d4569eea889e1dbb | - | e3b265efad583dd859c584d4e7e8a17d7b6e927878922ab5f020e2ff79a18d87 |
 | i4562 | 2025 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
-| p946 | For use in preparing 2025 returns | 17, 18, 19, 34, 37, 39, 41, 59, 61, 62, 63, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 17, 18, 19, 34, 37, 39, 41, 63 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
+| p946 | For use in preparing 2025 returns | 17, 18, 19, 31, 32, 34, 37, 39, 41, 59, 61, 62, 63, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 17, 18, 19, 31, 32, 34, 37, 39, 41, 63 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
 | i7206 | 2025 | 1, 2 | whole document | 88aebffe01e22b57dadeb703483459075718cb0b2514fe8f00185975cfbeef3a | 1, 2 | 5bfa308e7e4634d4a0162d76b4af6a4182b8539a390109360875303222231cfe |
 | f4562 | 2025; created 2025-10-09 | 1, 2, 3 | whole document | 71e2ace527072aaa7293e77897bb4ab8e473fa9c47b6b1ccb977fdc58a93bc2d | - | a1330c49d931e7ecdc867aef2d9e01390fc7b4d7e9321943a21ed0f8e883ed18 |
 | n-25-05 | Notice 2025-5 | 1, 2, 3, 4, 5 | whole document | 394f6b5ffb7c30e745322f0f20d9137608b1e2429fc4c76b06dedd690d4fb6e3 | - | 349e2797f87c588214722bcd22b7ec317c86c90a255ec8496941ac0c09909a8d |
 | p560 | For use in preparing 2025 returns | 7, 8, 9, 10, 11, 14, 15, 16, 17, 38, 39, 40 | cited pages | 38bbfa2efb2894e2527d66cd3478f33c6ceae4b777f78674c22bec16db9809aa | 7, 8, 9, 10, 11, 14, 15, 16, 17, 38, 40 | 7ef279c8f34addc2ff13420e35fab4a092bf8027f53907c28a5f46d2c21da737 |
+| p575 | None | 35 | pages named by another document's citation | 4d6ee3802a2906a4633dcfc104aa33bb3d9ddedebddc9eadbd0393cfdb61e07b | 35 | 3962801dde168fda9f4ee239245d9746b12e2d60bf358b25186ae4a57aa5b837 |
+| p538 | None | 17 | pages named by another document's citation | 4186d7aaa8f711c9a524b87fac1e3df05640b6d66130093b2469480acb06ef6c | 17 | f500211df18a4aafd843e48bbad4b9102c598cf5ccc0fae96c7814a4bef0ae00 |
 
 ## Lines
 
 ### (Step 5, 1) — Enter the amount from Form 1040 or 1040-SR, line 1z
 Status: **MATCH**
 
-Model: IRS line 1 says to enter Form 1040 line 1z; the refusal excludes clergy, church employee, and statutory employee cases that would require special adjustments.
+Model: The IRS worksheet line 1 says to enter the amount from Form 1040 line 1z, and the refusal excludes the clergy, church-employee, and statutory-employee cases where the IRS adjusts that amount.
 
 ### (Step 5, 2) — Medicaid waiver payments excluded from income on Schedule 1, line 8s, unless chosen as ear
 Status: **MATCH**
 
-Model: IRS line 2 is the Medicaid waiver payments excluded unless included; with those payments refused, the supported cases use zero.
+Model: The IRS line 2 is the excluded Medicaid waiver payment amount; with any Medicaid waiver payments refused, the supported value is $0.
 
 ### (Step 5, 3) — Subtract line 2 from line 1
 Status: **MATCH**
 
-Model: IRS line 3 is line 1 minus line 2.
+Model: IRS line 3 says to subtract line 2 from line 1, and the restatement does that.
 
 ### (Step 5, 4) — Nontaxable combat pay you elect to include in earned income; zero in this tool
 Status: **MATCH**
 
-Model: IRS line 4 is nontaxable combat pay only if elected; combat pay cases are refused, so zero is correct in supported cases.
+Model: IRS line 4 is elective nontaxable combat pay; with combat pay refused, the supported value is $0.
 
 ### (Step 5, 5) — Add lines 3 and 4. This is your earned income
 Status: **MATCH**
 
-Model: IRS line 5 adds lines 3 and 4.
+Model: IRS line 5 says to add lines 3 and 4, and the restatement does that.
 
 ### 4b — Worksheet B, line 4b. Combine lines 1e, 2c, 3, and 4a. This is your total earned income
 Status: **MATCH**
 
-Model: Worksheet B line 4b combines lines 1e, 2c, 3, and 4a; Step 5 line 5 is line 4a, and statutory-employee line 3 cases are refused, so adding line 5 and the 1e/2c helper matches within supported cases.
+Model: Worksheet B line 4b combines lines 1e, 2c, 3, and 4a; statutory-employee line 3 is excluded by the form refusal, so using Step 5 line 5 plus the 1e/2c helper matches within supported cases.
 
 ### 6 (eic.wsb_6) — Worksheet B, line 6. Enter your total earned income from Part 4, line 4b (zero if line 4b
 Status: **MATCH**
 
-Model: Worksheet B line 6 enters line 4b; subtracting zero and flooring at zero does not change it for reached cases because line 4b must be positive to continue.
+Model: Worksheet B line 6 is total earned income from line 4b; once the credit is reached line 4b is positive, so subtracting the $0 helper with a zero floor has no effect.
 
 ### 1 — Enter your earned income from Step 5 (Worksheet A, line 1), or Worksheet B, line 6
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: Choose — [helper "Step 5, question 2: self-employed (Worksheet B)" = false → column (Step 5, 5)] [helper "Step 5, question 2: self-employed (Worksheet B)" = true → line 6 (eic.wsb_6)]
-
-Model: Worksheet A line 1 says 'Enter your earned income from Step 5,' and the worksheet may be used only if Step 5 question 2 is No. The restatement instead sends self-employed cases to Worksheet B line 6, which is not Worksheet A line 1.
-
-Ruling: representation; i1040gi p. 46, Worksheet A: "Use this worksheet only if you answered “No” to Step 5, question 2. Otherwise, use Worksheet B." and line 1: "Enter your earned income from Step 5."; p. 48, Worksheet B, line 6: "Enter your total earned income from Part 4, line 4b.", and Worksheet B lines 7 to 11 repeat Worksheet A lines 2 to 6. The project carries both worksheets on one set of printed lines: line 1 is Step 5, line 5 when Step 5, question 2 is No (Worksheet A) and Worksheet B line 6 when it is Yes. For a Worksheet A filer the line is the source's line 1; a Worksheet B filer never uses Worksheet A, and the value shown is that filer's Worksheet B line 6. The model read the merged line as Worksheet A alone. Same ruling as the prior one on this restatement (sidecar `reviews/2025/render/eic.deepseek.rulings.json`); the previous reviewer judged it MATCH. Project stands.
+Model: Worksheet A line 1 enters earned income from Step 5; within the Worksheet A gate, Step 5 question 2 is No, so the restatement uses Step 5 line 5.
 
 ### 2 — Look up the amount on line 1 in the EIC Table to find the credit, using the column for you
 Status: **MATCH**
 
-Model: Worksheet A line 2 looks up line 1 in the EIC Table using the qualifying-child column; below the first table amount the credit is zero.
+Model: Worksheet A line 2 looks up line 1 in the EIC Table; below the table's first $1 the credit is zero, which is the No amount helper.
 
 ### 3 — Enter the amount from Form 1040 or 1040-SR, line 11b
 Status: **MATCH**
 
-Model: Worksheet A line 3 is Form 1040 line 11b.
+Model: Worksheet A line 3 is the amount from Form 1040 line 11b.
 
 ### 4 — Are the amounts on lines 3 and 1 the same?
 Status: **MATCH**
 
-Model: Worksheet A line 4 asks whether lines 3 and 1 are the same.
+Model: Worksheet A line 4 asks whether lines 3 and 1 are the same, which the restatement expresses as line3 = line1.
 
 ### 5 — Look up the amount on line 3 in the EIC Table to find the credit, using the column for you
 Status: **MATCH**
 
-Model: When line 5 is not left blank, Worksheet A line 5 looks up line 3 in the EIC Table using the filing-status and qualifying-child column.
+Model: When line 5 is not left blank, Worksheet A line 5 is the EIC Table credit for line 3 in the column for the number of qualifying children with valid SSNs.
 
 ### 6 (eic.line6) — This is your earned income credit
 Status: **MATCH**
 
-Model: Worksheet A line 6 is line 2 if line 4 is Yes, or if line 5 is blank; otherwise it is the smaller of lines 5 and 2.
+Model: Worksheet A line 6 is line 2 if line 4 is Yes; if line 4 is No, it is line 2 when line 5 is blank and otherwise the smaller of lines 5 and 2.
 
 ## Raw response
 
@@ -115,41 +113,41 @@ Model: Worksheet A line 6 is line 2 if line 4 is Yes, or if line 5 is blank; oth
 lines:
   - key: "(Step 5, 1)"
     status: MATCH
-    reason: "IRS line 1 says to enter Form 1040 line 1z; the refusal excludes clergy, church employee, and statutory employee cases that would require special adjustments."
+    reason: "The IRS worksheet line 1 says to enter the amount from Form 1040 line 1z, and the refusal excludes the clergy, church-employee, and statutory-employee cases where the IRS adjusts that amount."
   - key: "(Step 5, 2)"
     status: MATCH
-    reason: "IRS line 2 is the Medicaid waiver payments excluded unless included; with those payments refused, the supported cases use zero."
+    reason: "The IRS line 2 is the excluded Medicaid waiver payment amount; with any Medicaid waiver payments refused, the supported value is $0."
   - key: "(Step 5, 3)"
     status: MATCH
-    reason: "IRS line 3 is line 1 minus line 2."
+    reason: "IRS line 3 says to subtract line 2 from line 1, and the restatement does that."
   - key: "(Step 5, 4)"
     status: MATCH
-    reason: "IRS line 4 is nontaxable combat pay only if elected; combat pay cases are refused, so zero is correct in supported cases."
+    reason: "IRS line 4 is elective nontaxable combat pay; with combat pay refused, the supported value is $0."
   - key: "(Step 5, 5)"
     status: MATCH
-    reason: "IRS line 5 adds lines 3 and 4."
+    reason: "IRS line 5 says to add lines 3 and 4, and the restatement does that."
   - key: "4b"
     status: MATCH
-    reason: "Worksheet B line 4b combines lines 1e, 2c, 3, and 4a; Step 5 line 5 is line 4a, and statutory-employee line 3 cases are refused, so adding line 5 and the 1e/2c helper matches within supported cases."
+    reason: "Worksheet B line 4b combines lines 1e, 2c, 3, and 4a; statutory-employee line 3 is excluded by the form refusal, so using Step 5 line 5 plus the 1e/2c helper matches within supported cases."
   - key: "6 (eic.wsb_6)"
     status: MATCH
-    reason: "Worksheet B line 6 enters line 4b; subtracting zero and flooring at zero does not change it for reached cases because line 4b must be positive to continue."
+    reason: "Worksheet B line 6 is total earned income from line 4b; once the credit is reached line 4b is positive, so subtracting the $0 helper with a zero floor has no effect."
   - key: "1"
-    status: MISMATCH
-    reason: "Worksheet A line 1 says 'Enter your earned income from Step 5,' and the worksheet may be used only if Step 5 question 2 is No. The restatement instead sends self-employed cases to Worksheet B line 6, which is not Worksheet A line 1."
+    status: MATCH
+    reason: "Worksheet A line 1 enters earned income from Step 5; within the Worksheet A gate, Step 5 question 2 is No, so the restatement uses Step 5 line 5."
   - key: "2"
     status: MATCH
-    reason: "Worksheet A line 2 looks up line 1 in the EIC Table using the qualifying-child column; below the first table amount the credit is zero."
+    reason: "Worksheet A line 2 looks up line 1 in the EIC Table; below the table's first $1 the credit is zero, which is the No amount helper."
   - key: "3"
     status: MATCH
-    reason: "Worksheet A line 3 is Form 1040 line 11b."
+    reason: "Worksheet A line 3 is the amount from Form 1040 line 11b."
   - key: "4"
     status: MATCH
-    reason: "Worksheet A line 4 asks whether lines 3 and 1 are the same."
+    reason: "Worksheet A line 4 asks whether lines 3 and 1 are the same, which the restatement expresses as line3 = line1."
   - key: "5"
     status: MATCH
-    reason: "When line 5 is not left blank, Worksheet A line 5 looks up line 3 in the EIC Table using the filing-status and qualifying-child column."
+    reason: "When line 5 is not left blank, Worksheet A line 5 is the EIC Table credit for line 3 in the column for the number of qualifying children with valid SSNs."
   - key: "6 (eic.line6)"
     status: MATCH
-    reason: "Worksheet A line 6 is line 2 if line 4 is Yes, or if line 5 is blank; otherwise it is the smaller of lines 5 and 2."
+    reason: "Worksheet A line 6 is line 2 if line 4 is Yes; if line 4 is No, it is line 2 when line 5 is blank and otherwise the smaller of lines 5 and 2."
 ```

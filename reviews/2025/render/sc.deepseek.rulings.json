@@ -4,6 +4,20 @@
  "family": "deepseek",
  "rulings": [
   {
+   "printed": "13 (sc.line13)",
+   "restated": "Add helper \"Depreciation other than the section 179 deduction (Form 4562 lines 14, 17, 19 and 21)\" and line 12 (sc.s179_allowed).",
+   "model": "IRS line 13 is depreciation and the section 179 expense deduction; Form 4562 line 22 includes lines 14 through 17, lines 19 and 20(g), and line 21, while the restatement's helper lists only lines 14, 17, 19 and 21.",
+   "ruling": "Ruling: scope; the model says the helper lists Form 4562 lines 14, 17, 19 and 21 where line 22 also adds lines 15, 16 and 20. Those lines are refused before they can be nonzero: line 20 (ADS) and line 15 (property under a section 168(f)(1) election, a method other than the MACRS tables) by asset.screen (\"you must depreciate it under ADS ... or you elected ADS ... or you depreciate it by a method other than the MACRS percentage tables\"), and line 16 (ACRS and other depreciation) by the same screen (\"it was placed in service before 2005\", \"you amortize it\"); vehicles on ADS are refused by scveh.low_use. Line 12 (section 179) is added separately. i4562 p. 13, Line 22.",
+   "context": "8210dbcc31e6f41a7e27c922a2f71218cf5bc6b95409135bf63b40fbcb4cde19"
+  },
+  {
+   "printed": "24a",
+   "restated": "Input — Lodging and transportation for overnight business travel away from your tax home, and incidental expenses of that travel (fees and tips to porters, baggage carriers, bellhops, hotel maids, stewards and others on ships, and hotel servants in foreign countries; not laundry, lodging taxes or telephone calls), either at their actual cost or, for a travel day on which you paid or incurred no meal expenses and did not use the standard meal allowance, at $5 for that day (not meals and not entertainment; on a day you use the standard meal allowance, incidental expenses are part of that allowance); not expenses of employment away from home for a period of more than 1 year; not travel expenses for your spouse, your dependent or any other person unless that person is your employee, the travel is for a bona fide business purpose and the expenses would otherwise be deductible by that person; and not a convention, seminar or similar meeting held outside the North American area unless it is directly related to your business and it is as reasonable to hold it outside the North American area as within it; zero if none",
+   "model": "IRS instructions say incidental expenses do not include 'laundry, cleaning and pressing of clothing, lodging taxes, or the costs of telegrams or telephone calls'; the restatement omits cleaning and pressing and telegrams.",
+   "ruling": "Ruling: finding (low); the model says the question's incidental-expense exclusions omit \"cleaning and pressing of clothing\" and \"telegrams\". p463 p. 7, Incidental expenses: \"Incidental expenses don’t include expenses for laundry, cleaning and pressing of clothing, lodging taxes, costs of telegrams or telephone calls\"; the question names only \"laundry, lodging taxes or telephone calls\". Small effect (laundry and dry cleaning are deductible travel expenses, p463 Table 1-1); see `.transcription/proposed/rf/sc.findings.md`, Low.",
+   "context": "8210dbcc31e6f41a7e27c922a2f71218cf5bc6b95409135bf63b40fbcb4cde19"
+  },
+  {
    "printed": "32",
    "restated": "Input — Is all your investment in this business at risk (box 32a)? Answer no if any of these is invested in it: a nonrecourse loan used to finance the business, buy property used in it, or buy the business, that is not secured by your own property other than property used in the business and that you are not personally responsible to repay; cash, property or borrowed money protected against loss by a guarantee, stop-loss agreement or similar arrangement (casualty and tort-liability insurance do not count); money borrowed for use in the business from someone who has an interest in it other than as a creditor, or from a person related (under section 465(b)(3)(C)) to someone other than you who has such an interest",
    "model": "IRS instructions state 'there is an exception for certain nonrecourse financing borrowed by you in connection with holding real property'; the restatement treats any such nonrecourse loan as not at risk and omits that exception.",
@@ -27,6 +41,13 @@
   {
    "printed": "4 (sc.f7206_line4)",
    "restated": "Enter the amount from helper \"Net profit of this business (zero for a loss)\".",
+   "model": "IRS Form 7206 line 4 says 'Enter your net profit* and any other earned income** from the trade or business under which the insurance plan is established'; the restatement uses only net profit of this business.",
+   "ruling": "Ruling: scope; same as the earlier ruling (restatement and objection unchanged). f7206 line 4 footnote: \"Earned income includes net earnings and gains from the sale, transfer, or licensing of property you created\"; the tool admits no such income outside Schedule C (Form 4797 and other income refused, sd.other_forms, scope.yaml; Schedule F and K-1 profits refused by person.x_other).",
+   "context": "8210dbcc31e6f41a7e27c922a2f71218cf5bc6b95409135bf63b40fbcb4cde19"
+  },
+  {
+   "printed": "4 (sc.f7206_line4)",
+   "restated": "Enter the amount from helper \"Net profit of this business (zero for a loss)\".",
    "model": "IRS line 4 says 'Enter your net profit* and any other earned income** from the trade or business'; the restatement uses only a zero-for-loss net profit helper and omits other earned income.",
    "ruling": "Ruling: scope; f7206 line 4 footnote, \"Earned income includes net earnings and gains from the sale, transfer, or licensing of property you created. However, it doesn't include capital gain income\". The only earned income from the business the tool admits is its Schedule C net profit; Form 4797 and other income are refused (sd.other_forms, scope.yaml).",
    "context": "c05ebec9cbe7680cab2ca4f37c4338a13f4df523327414779bf99c142ab007da"
@@ -37,6 +58,13 @@
    "model": "IRS line 4 says 'Enter your net profit* and any other earned income** from the trade or business'; the restatement uses only net profit, zero for a loss.",
    "ruling": "Ruling: scope; f7206 line 4 footnote: \"Earned income includes net earnings and gains from the sale, transfer, or licensing of property you created. However, it doesn't include capital gain income.\" The tool admits no such income outside Schedule C: Form 4797 and other income are refused (sd.other_forms, scope.yaml), and Schedule F and K-1 profits are refused by the self-employment screen (person.x_other).",
    "context": "4c25d28949ee3bae493f9488370dcb6a674c86a8f9ab83d8c671e3cc61681574"
+  },
+  {
+   "printed": "5 (sc.f7206_line5)",
+   "restated": "Enter the amount from person helper \"Total of all net profits of this person's businesses (losses not included)\".",
+   "model": "IRS Form 7206 line 5 includes 'plus any other income allocable to the profitable businesses'; the restatement only totals net profits and excludes losses.",
+   "ruling": "Ruling: scope; same as the earlier ruling. Schedule F and K-1 profits are refused by the self-employment screen (person.x_other) and other earned income outside Schedule C is refused (sd.other_forms, scope.yaml), so the total of net profits of the profitable businesses is the line 5 amount.",
+   "context": "8210dbcc31e6f41a7e27c922a2f71218cf5bc6b95409135bf63b40fbcb4cde19"
   },
   {
    "printed": "5 (sc.f7206_line5)",

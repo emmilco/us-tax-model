@@ -263,8 +263,23 @@ form:
     cite:
       doc: i1040gi
       locator: p. 32, line 8
+  - id: ssb.lines8_to_15
+    printed: (helper)
+    label: Lines 8 through 15 are completed (not married filing separately with your spouse living with you at any time
+      in 2025)
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - ssb.mfs_together
+      - const: false
+    cite:
+      doc: i1040gi
+      locator: p. 32, Social Security Benefits Worksheet, line 8, "Married filing separately and you lived with your spouse
+        at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16"
   - id: ssb.line8
     printed: '8'
+    shown_when: ssb.lines8_to_15
     label: $32,000 if married filing jointly; $25,000 if single, head of household, qualifying surviving spouse,
       or married filing separately and living apart all year
     type: NonNegDollars
@@ -306,6 +321,7 @@ form:
       locator: p. 32, Social Security Benefits Worksheet, line 8
   - id: ssb.line9
     printed: '9'
+    shown_when: ssb.lines8_to_15
     label: Is the amount on line 8 less than the amount on line 7? If yes, subtract line 8 from line 7 (if no, none
       of the benefits are taxable)
     type: NonNegDollars
@@ -360,6 +376,7 @@ form:
       locator: p. 32, line 10
   - id: ssb.line10
     printed: '10'
+    shown_when: ssb.lines8_to_15
     label: Enter $12,000 if married filing jointly; $9,000 if single, head of household, qualifying surviving spouse,
       or married filing separately and living apart all year
     type: NonNegDollars
@@ -401,6 +418,7 @@ form:
       locator: p. 32, Social Security Benefits Worksheet, line 10
   - id: ssb.line11
     printed: '11'
+    shown_when: ssb.lines8_to_15
     label: Subtract line 10 from line 9. If zero or less, enter -0-
     type: NonNegDollars
     expr:
@@ -412,6 +430,7 @@ form:
       locator: p. 32, line 11
   - id: ssb.line12
     printed: '12'
+    shown_when: ssb.lines8_to_15
     label: Enter the smaller of line 9 or line 10
     type: NonNegDollars
     expr:
@@ -424,6 +443,7 @@ form:
       locator: p. 32, line 12
   - id: ssb.line13
     printed: '13'
+    shown_when: ssb.lines8_to_15
     label: Enter one-half of line 12
     type: NonNegDollars
     expr:
@@ -436,6 +456,7 @@ form:
       locator: p. 32, line 13
   - id: ssb.line14
     printed: '14'
+    shown_when: ssb.lines8_to_15
     label: Enter the smaller of line 2 or line 13
     type: NonNegDollars
     expr:
@@ -448,6 +469,7 @@ form:
       locator: p. 32, Social Security Benefits Worksheet, line 14
   - id: ssb.line15
     printed: '15'
+    shown_when: ssb.lines8_to_15
     label: Multiply line 11 by 85% (0.85). If line 11 is zero, enter -0-
     type: NonNegDollars
     expr:

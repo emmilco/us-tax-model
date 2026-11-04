@@ -7,15 +7,15 @@ The rendered English of every printed line of `Form 7206, line 2 — qualified l
 | date | 2026-11-03 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 0a51f41f1998b0894db66094f29f41374b76073dc0ae97f8467b0af64660a45e |
+| prompt sha256 | 90c2366ed9d8f50b8d7956c2cacca1960f933a6afec172997f23ad21b6de8b48 |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
-| subject sha256 | fc82dc24c2a922c439a73bcedac40d3a03522d6a921a9ff0bfa927cc2e1939b4 |
+| subject sha256 | 31030eb15df3d3d20594a29784d29e841d2d7017e0ac853955e00efddac388ba |
 | lines judged | 2 |
 | match / mismatch / unclear / missing | 2 / 0 / 0 / 0 |
-| verdicts for lines not in the form | ltc.age |
+| verdicts for lines not in the form | none |
 
 ## Source pages given to the model
 
@@ -29,12 +29,12 @@ The rendered English of every printed line of `Form 7206, line 2 — qualified l
 ### 2(a) — Total payments made for that person during the year
 Status: **MATCH**
 
-Model: IRS line 2(a) calls for total payments made for that person, and the instructions allow qualified long-term care premiums paid for that person while excluding months of eligibility for a subsidized long-term care plan.
+Model: It restates the premiums paid for the covered person under a qualified long-term care contract, including the IRS exclusions for employer-subsidized coverage and the eligible-person limits.
 
 ### 2(b) — The amount for that person's age
 Status: **MATCH**
 
-Model: IRS line 2(b) provides the age-based qualified long-term care premium limits and directs use of the person’s age at the end of the tax year; the restatement points to that table using the age helper.
+Model: It uses the person’s age at the end of 2025 to select the IRS limit for that age; the age helper brackets match the form’s age ranges and amounts.
 
 ## Raw response
 
@@ -42,11 +42,8 @@ Model: IRS line 2(b) provides the age-based qualified long-term care premium lim
 lines:
   - key: "2(a)"
     status: MATCH
-    reason: "IRS line 2(a) calls for total payments made for that person, and the instructions allow qualified long-term care premiums paid for that person while excluding months of eligibility for a subsidized long-term care plan."
+    reason: "It restates the premiums paid for the covered person under a qualified long-term care contract, including the IRS exclusions for employer-subsidized coverage and the eligible-person limits."
   - key: "2(b)"
     status: MATCH
-    reason: "IRS line 2(b) provides the age-based qualified long-term care premium limits and directs use of the person’s age at the end of the tax year; the restatement points to that table using the age helper."
-  - key: "ltc.age"
-    status: MATCH
-    reason: "The IRS text uses the person’s age at the end of the tax year and lists the same age brackets for the qualified long-term care premium limits."
+    reason: "It uses the person’s age at the end of 2025 to select the IRS limit for that age; the age helper brackets match the form’s age ranges and amounts."
 ```

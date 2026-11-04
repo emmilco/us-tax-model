@@ -5,10 +5,24 @@
  "rulings": [
   {
    "printed": "(e)",
+   "restated": "Choose — [helper \"Basis reported to IRS\" = true → helper \"Basis shown on broker report\"] [helper \"Basis reported to IRS\" = false → helper \"Correct adjusted basis from records (for inherited property shown on a Schedule A (Form 8971) as increasing the estate tax, starting from no more than its final estate tax value)\"]",
+   "model": "The helper treats only boxes A and D as basis-reported, but the form note says for box A or box G with incorrect reported basis, enter the basis as reported in column (e), and the instructions likewise say box D or box J; G/J would wrongly use the correct-basis branch.",
+   "ruling": "Ruling: scope; f8949 p. 1, box G; i8949 p. 8, code B. The model is right that boxes G and J take the reported basis, but boxes G to L are refused at the transaction by sales.digital at sales.one (checked this round: sales.refuse.digital.G refuses Form 1040 lines 7a and 16 on sales[a].digital), so the correct-basis branch is never used for them. Same point as the earlier rounds. Project stands on the English.",
+   "context": "cf9ab01e6f7cae1b41ff3f0a234d076e2783160e4ee8e14dd7a6bfa2e83bd0a6"
+  },
+  {
+   "printed": "(e)",
    "restated": "Choose — [helper \"Basis reported to IRS\" = true → helper \"Basis shown on broker report\"] [helper \"Basis reported to IRS\" = false → helper \"Correct adjusted basis from records\"]",
    "model": "The restatement's 'Basis reported to IRS' gate is true only for classifications A or D, but the IRS form also treats boxes G and J as 'reported on Form(s) 1099-DA showing basis was reported to the IRS'; for those rows column (e) must use the reported basis, not the records basis.",
    "ruling": "Ruling: scope; f8949 p. 1, box G: \"Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\"; i8949 p. 8, code B. Boxes G to L are refused at the transaction: sales.one refuses when sales.digital (\"Form 8949 digital asset boxes G–L\"), and the refusal reaches every Schedule D total and Form 1040 line 7a (checked: sales.refuse.digital.G gives sd.line15, f1040.line7a and f1040.line16 refused on sales.digital, while the row's own column (e) shows $2,000.00 and reaches no Schedule D line). Within boxes A to F the gate reads as the instructions do. The gate must widen to G and J if digital assets come into scope. Project stands on the English.",
    "context": "9b43e79c4bfb09f4d39ad5c2d32acbcc705214faf4e7e317f51933b0d55f06b4"
+  },
+  {
+   "printed": "(g)",
+   "restated": "Add helper \"Basis correction in column (g)\" and helper \"Wash-sale adjustment in column (g)\".",
+   "model": "Because the basis-reported gate omits box G and box J, no code B adjustment is made for those reported-basis transactions; the IRS code B instruction says for box A or box G (and box D or box J) enter the reported basis in column (e) and 'Correct the error by entering an adjustment in column (g).'",
+   "ruling": "Ruling: scope; i8949 p. 8, code B: \"Correct the error by entering an adjustment in column (g)\". As column (e): boxes G and J are refused with every digital-asset box, so the A/D condition is the whole supported case. Same point as the earlier rounds. Project stands on the English.",
+   "context": "cf9ab01e6f7cae1b41ff3f0a234d076e2783160e4ee8e14dd7a6bfa2e83bd0a6"
   },
   {
    "printed": "(g)",

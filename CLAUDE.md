@@ -11,7 +11,15 @@ original verdicts. The required review family is Claude (`claude-opus-5-5`); `de
 and `gpt-6.1-sol` interchangeable; Gemini 3, GPT-6 Luna/Terra, Claude Sonnet/Haiku mechanical or
 advisory only).
 
-- **Inference cost.** Paid model calls (the `claude -p` transcription, render and class M
-  reviews in `tools/transcription/`, and any like them) are part of the work. Do not weigh
-  their cost, ask before running them, or hold work back to save it, unless the owner says
-  otherwise.
+- **Inference cost (owner decision 2026-11-03).** Use inference only where it adds evidence.
+  Paid review calls (transcription, render, class M, completeness, screen) and agents are
+  weighed against what they can find; screen and completeness reviews have the best yield.
+  - Review what changed: rerun a form's reviews when its content changes, and adjudicate only
+    forms whose content changed. A review-prompt or tool change applies prospectively, at each
+    form's next real change; there is no global re-review unless a measured defect calls for it.
+  - Rule repeat disagreements mechanically where the carry-over tool allows (T-218), and scope
+    reviews to changed lines and their readers once that exists (T-219).
+  - Mechanical agent work (applying rulings, bug-entry formatting, input ripple, bookkeeping)
+    runs on Sonnet; judgment (adjudication, source reading, design) on Opus.
+  - Every paid review call is logged in `.transcription/costs.jsonl` (`tools/transcription/costs.py`)
+    and every agent run in `research/costs/agent_runs.jsonl`.

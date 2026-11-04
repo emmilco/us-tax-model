@@ -25,7 +25,7 @@ entered on a gain sale is accepted. The brief's check: the BUG-0231 gloss matche
 "attributable to unrealized appreciation of collectibles"). It is not narrower than the source, and an over-reading can
 only refuse.
 
-## Backlog round
+## Backlog round (superseded subject)
 
 Fresh reviews of 2026-11-03 of the subject after the income package: PENDING-5 adds `sales.wash_over` and the entry-error
 gate `sales.wash_bad`, refusing at `sales.w` when a code W loss is larger than the loss after the code B correction (owner's
@@ -51,3 +51,15 @@ equal to the wash amount is accepted (sales.adjust.A.W.equal_loss, (h) $0.00) an
 candidate-unknown is on a completed return now (29 before). O1 (a wash loss on a gain sale) is closed by `sales.wash_bad`.
 Findings: none.
 
+## Refresh round
+
+Fresh reviews of 2026-11-03 under prompt policy source-only-computation-v3 (claude-opus-5-5 and deepseek-flash), after the refresh-round fixes (BUG-0395: holding periods, correct proceeds, the Form 8971 limit on sales.correct_basis, sales.special "directly or through another entity"). Triage: `../triage/sales[.deepseek].json`, written by triage.py this round (executable-triage-v2: 1,565 fixtures, 500 generated returns seed 20261026, partial records from 40 bases). Triage applies only the project's shown_when, so a reply's own shown_when was compared by reading. Full ruling text: `.transcription/proposed/rf/{transcription,render}.sales[.deepseek].json`.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| both | transcription | (e) | scope | 7 values, all box G/J on refused returns | f8949 box G; i8949 p. 8 | sales.digital refuses G-L (sales.refuse.digital.G checked). |
+| claude | transcription | (g) | representation and scope | no value differs; refused/incomplete only | i8949 pp. 8, 10 | Same net adjustment. |
+| deepseek | transcription | (g) | scope | sales.wash_bad, refused/incomplete only | i8949 p. 10 | As bklg. |
+| both | render | (e), (g) | scope | sales.digital, sales.bad_code checked | i8949 pp. 6-11 | Digital boxes and other codes refused. |
+
+Fix check: the new sales.correct_basis wording matches i8949 p. 6 ("first use an amount that is equal to or less than the final estate tax value"). Findings: none.

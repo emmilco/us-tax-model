@@ -410,7 +410,8 @@ def main():
         with open(base + ".preview.prompt.txt", "w", encoding="utf-8") as f:
             f.write(prompt)
         return
-    text, meta = review_response(prompt, a.model, base, PROMPT_POLICY, a.from_response, SYSTEM, a.reasoning_effort, a.max_output_tokens)
+    text, meta = review_response(prompt, a.model, base, PROMPT_POLICY, a.from_response, SYSTEM, a.reasoning_effort, a.max_output_tokens,
+                                 "render", a.form)
     verdicts = extract(text)
     judged = judged_lines(form_doc)
     # A verdict keyed by a line's label or full id instead of its key is still that line's.

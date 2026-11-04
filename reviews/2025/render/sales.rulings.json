@@ -4,6 +4,13 @@
  "rulings": [
   {
    "printed": "(e)",
+   "restated": "Choose — [helper \"Basis reported to IRS\" = true → helper \"Basis shown on broker report\"] [helper \"Basis reported to IRS\" = false → helper \"Correct adjusted basis from records (for inherited property shown on a Schedule A (Form 8971) as increasing the estate tax, starting from no more than its final estate tax value)\"]",
+   "model": "The program uses the broker-reported basis only for boxes A and D. For digital-asset boxes G and J it enters the correct basis instead, but the IRS says \"If this transaction is reported on Part I with box A or box G checked ... or on Part II with box D or box J checked ... enter the basis shown on Form 1099-B or Form 1099-DA ... in column (e), even though that basis is incorrect.\"",
+   "ruling": "Ruling: scope; f8949 p. 1, box G: \"Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\"; i8949 p. 8, code B. The model is right that the instructions treat boxes G and J like A and D, but boxes G to L are refused at the transaction: sales.one refuses when sales.digital (\"Form 8949 digital asset boxes G–L\"), and the refusal reaches every Schedule D total and Form 1040 (checked this round: sales.refuse.digital.G refuses Form 1040 lines 7a and 16 on sales[a].digital). Same point as the bklg ruling. The restatement's new Form 8971 wording (BUG-0395) matches i8949 p. 6: \"first use an amount that is equal to or less than the final estate tax value listed in Part II, column (h)\". Project stands on the English.",
+   "context": "387893c7a2bb2fd851eb30cc815b356dc2c88d2376dddc0daca3fdb09c4f2bf9"
+  },
+  {
+   "printed": "(e)",
    "restated": "Choose — [helper \"Basis reported to IRS\" = true → helper \"Basis shown on broker report\"] [helper \"Basis reported to IRS\" = false → helper \"Correct adjusted basis from records\"]",
    "model": "Helper \"Basis reported to IRS\" is true only for boxes A and D, so boxes G and J fall back to the correct basis. The IRS text says \"If this transaction is reported on Part I with box A or box G checked ... or on Part II with box D or box J checked ... enter the basis shown on Form 1099-B or Form 1099-DA (or substitute statement) in column (e), even though that basis is incorrect.\"",
    "ruling": "Ruling: scope; project retained. Boxes G–L (digital assets reported on Form 1099-DA; f8949 p. 1: \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\") are refused at the transaction: `sales.one` refuses when `sales.digital` is true, the refusal propagates through `sd.count` to `sd.screen`, and every Schedule D total refuses on `sd.screen` before any box filter runs. Within the supported boxes A–F the filter reads as the line does. The filters must widen to boxes G–L when digital assets come into scope (recorded in the transcription rulings). No change to the data."
@@ -33,6 +40,13 @@
    "restated": "Add helper \"Basis correction in column (g)\" and helper \"Wash-sale adjustment in column (g)\".",
    "model": "The basis-correction adjustment is limited to boxes A and D, so a box G or J transaction with code B gets $0, where the IRS says to \"Correct the error by entering an adjustment in column (g)\" from the Worksheet for Basis Adjustments. The sign of the adjustment (reported minus correct) and the W amount (\"enter the correct amount of the nondeductible loss as a positive number\") match. However, a code entered as \"other\" adds no amount and no refusal is listed, although the IRS says to \"enter the net adjustment in column (g)\" for all codes.",
    "ruling": "Ruling: refusal located elsewhere; project retained. Boxes G and J are refused with every digital-asset box (see column (e)), so the basis correction's A/D condition is the whole supported case; a code entered as 'other' is refused by sales.bad_code at sales.one ('Only applicable B and W adjustments are supported'), and that refusal reaches every Schedule D total (checked: code other gives sd.line15 refused on sales.bad_code). The row's own column (g) is still figured and reaches no Schedule D line. No change to the data."
+  },
+  {
+   "printed": "(g)",
+   "restated": "Add helper \"Basis correction in column (g)\" and helper \"Wash-sale adjustment in column (g)\".",
+   "model": "The code B adjustment applies only to boxes A and D, so a box G or J transaction with an incorrect basis gets no column (g) correction, although the IRS says for box A, G, D or J to \"Correct the error by entering an adjustment in column (g).\" Also, choosing \"other\" for an additional code gives $0 with no refusal, although the IRS requires the adjustment for codes such as E, H, L and Q (for example \"enter the amount of the nondeductible loss as a positive number in column (g)\").",
+   "ruling": "Ruling: scope; i8949 p. 8, code B; i8949 pp. 7–11, columns (f) and (g). Boxes G and J are refused with every digital-asset box (see column (e)), so the A/D condition of the basis correction is the whole supported case; codes other than B and W are refused at sales.one on sales.bad_code (\"Only applicable B and W adjustments are supported\"; checked this round: sales.refuse.code refuses Form 1040 lines 7a and 16 on sales[a].bad_code), so \"other\" never gives a printed $0 on a completed return. Same point as the bklg ruling. Project stands on the English.",
+   "context": "387893c7a2bb2fd851eb30cc815b356dc2c88d2376dddc0daca3fdb09c4f2bf9"
   },
   {
    "printed": "(g)",

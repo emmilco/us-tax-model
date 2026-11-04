@@ -221,7 +221,7 @@ def compare(kind, form, family):
                         or record.get("partial_context") != "included" or record.get("partial_result") != "pass"]
             if untested:
                 q["blockers"].append("no passing current source-based partial-input checks: " + ", ".join(untested))
-    if kind == "transcription" and b["policy"] != "source-only-computation-v2":
+    if kind == "transcription" and b["policy"] not in transcribe.INDEPENDENT_PROMPT_POLICIES:
         q["blockers"].append("transcription predates the prompt-independence policy")
     q["blockers"].extend(model_blockers(kind, family, b))
     with open(os.path.join(ROOT, "sources", Y, "manifest.json"), encoding="utf-8") as f:

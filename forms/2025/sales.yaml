@@ -14,16 +14,20 @@ form:
   lines:
     - id: sales.box
       printed: (helper)
-      label: "Classification from records: A/B/C short-term, D/E/F long-term; G–L
-        digital assets"
+      label: "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets. Property you inherited is long-term however long you held it. To count the holding period, begin on the day after you acquired the property and include the day you sold it. If your basis in property you received as a gift is the donor's adjusted basis, your holding period began on the day the donor's did. A block acquired on different dates is entered as separate transactions for its short-term and long-term parts."
       type: Enum(sales_box)
       expr:
         op: input
-        source: "Classification from records: A/B/C short-term, D/E/F long-term; G–L
-          digital assets"
+        source: "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets. Property you inherited is long-term however long you held it. To count the holding period, begin on the day after you acquired the property and include the day you sold it. If your basis in property you received as a gift is the donor's adjusted basis, your holding period began on the day the donor's did. A block acquired on different dates is entered as separate transactions for its short-term and long-term parts."
       cite:
         doc: i8949
-        locator: pp. 2–5, holding period and checkbox classifications
+        locator: pp. 2–5, holding period and checkbox classifications; p. 2, "To figure the holding period, begin counting
+          on the day after you received the property and include the day you disposed of it." and "Generally, if you
+          disposed of property that you acquired by inheritance, report the disposition as a long-term gain (or loss)
+          regardless of how long you held the property."; p. 6, "However, you must still report the short-term gain (or
+          loss) on the sale on Part I and the long-term gain (or loss) on Part II."; p550 p. 82, Property received as a
+          gift, "If you receive a gift of property and your basis is determined by the donor's adjusted basis, your holding
+          period is considered to have started on the same day the donor's holding period started."
     - id: sales.route
       printed: (helper)
       label: Report this transaction in detail on Form 8949 or directly in Schedule D
@@ -48,11 +52,11 @@ form:
         locator: pp. 7–11, columns (e) through (h), codes B and W
     - id: sales.special
       printed: (helper)
-      label: 'Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property, such as stock of an S corporation that owns art or gold worth more than its cost?'
+      label: 'Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost?'
       type: Bool
       expr:
         op: input
-        source: 'Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property, such as stock of an S corporation that owns art or gold worth more than its cost?'
+        source: 'Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost?'
       cite:
         doc: i1040sd
         locator: pp. 11–12, lines 18 and 19; p. 11, line 18, "Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles."; p. 12,
@@ -74,14 +78,17 @@ form:
         locator: p. 10, lines 1a and 8a
     - id: sales.proceeds
       printed: (helper)
-      label: "Column (d): proceeds per broker report, or net proceeds if no report"
+      label: "Column (d): proceeds per broker report (or the correct proceeds if you received more than the report shows),
+        or net proceeds if no report"
       type: NonNegDollars
       expr:
         op: input
-        source: "Column (d): proceeds per broker report, or net proceeds if no report"
+        source: "Column (d): proceeds per broker report (or the correct proceeds if you received more than the report
+          shows), or net proceeds if no report"
       cite:
         doc: i8949
-        locator: p. 6, column (d)
+        locator: p. 6, column (d); p. 6, "If the proceeds you received were more than shown on Form 1099-B, Form 1099-DA,
+          or Form 1099-S (or substitute statement), enter the correct proceeds in column (d)."
     - id: sales.reported_basis
       printed: (helper)
       label: Basis shown on broker report
@@ -94,14 +101,19 @@ form:
         locator: pp. 7–11, columns (e) through (h), codes B and W
     - id: sales.correct_basis
       printed: (helper)
-      label: Correct adjusted basis from records
+      label: Correct adjusted basis from records (for inherited property shown on a Schedule A (Form 8971) as increasing
+        the estate tax, starting from no more than its final estate tax value)
       type: NonNegDollars
       expr:
         op: input
-        source: Correct adjusted basis from records
+        source: Correct adjusted basis from records. For property you inherited, if a Schedule A (Form 8971) you received
+          shows in Part II, column (f), that the property increased the estate tax liability, start from an initial basis
+          equal to or less than the final estate tax value in Part II, column (h), then adjust it.
       cite:
         doc: i8949
-        locator: pp. 7–11, columns (e) through (h), codes B and W
+        locator: pp. 7–11, columns (e) through (h), codes B and W; p. 6, Schedule A (Form 8971)—Consistent basis
+          reporting, "In this case, first use an amount that is equal to or less than the final estate tax value listed in
+          Part II, column (h), of the Schedule A (Form 8971). This amount is your initial basis in the property."
     - id: sales.wash_loss
       printed: (helper)
       label: Correct nondeductible wash-sale loss; positive cents, including losses
@@ -286,8 +298,8 @@ form:
             locator: Parts I and II, boxes G–L
         - when: sales.special
           form: Schedule D special gains worksheets
-          remedy: Direct sales of collectibles, section 1202 stock and section 1250
-            property are unsupported.
+          remedy: Sales of collectibles, section 1202 stock or section 1250 property, and sales of an interest in a
+            partnership, S corporation or trust that holds collectibles or section 1250 property, are unsupported.
           cite:
             doc: i1040sd
             locator: pp. 11–12, lines 18 and 19

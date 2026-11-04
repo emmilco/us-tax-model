@@ -28,10 +28,20 @@ form:
       source: 'The asset class of this property: find the property in Pub. 946 Appendix B, Table B-1, and the activity it
         is used in in Table B-2 (use the Table B-2 class when the property is specifically listed there under your activity);
         or choose A (personal property with no class life), B (qualified technological equipment), C (property used in research
-        and experimentation), or qualified improvement property'
+        and experimentation), or qualified improvement property (an improvement you made to an interior part of a building
+        that is nonresidential real property, that is section 1250 property, and that you placed in service after 2017 and
+        after the date the building was first placed in service by anyone; it does not include an improvement attributable
+        to the enlargement of the building, any elevator or escalator, or the internal structural framework of the building,
+        nor an improvement to residential rental property: such an improvement is real property, not qualified improvement
+        property)'
     cite:
       doc: p946
-      locator: p. 98, Appendix B, How To Use the Tables; i4562 p. 10, Determining the classification
+      locator: p. 98, Appendix B, How To Use the Tables; i4562 p. 10, Determining the classification; p946 p. 31, Qualified
+        improvement property, "Generally, this is any improvement to an interior part of a building that is nonresidential
+        real property, and the improvement is section 1250 property, is made by you, and is placed in service by you after
+        2017 and after the date the building was first placed in service by any person", "However, a qualified improvement
+        does not include any improvement for which the expenditure is attributable to any of the following" and "The enlargement
+        of the building. • Any elevator or escalator. • The internal structural framework of the building"
   - id: asset.period
     printed: (d)
     label: Recovery period under GDS for the asset class
@@ -85,7 +95,8 @@ form:
     expr:
       op: input
       source: 'Does any of these apply to this property: you disposed of it or converted it to personal use in 2025; you acquired
-        it in a like-kind exchange or an involuntary conversion, from a related person, or by gift or inheritance; it is real
+        it in a like-kind exchange or an involuntary conversion, with a trade-in (you traded in other property as part of
+        its price), from a related person, or by gift or inheritance; it is real
         property (a building or a structural component, other than qualified improvement property) or land; it is a car, truck
         or other vehicle (enter vehicles separately); you must depreciate it under ADS (for example, it is imported property
         covered by an executive order of the President of the United States; it is used predominantly in a farming business
@@ -143,7 +154,10 @@ form:
         Column (f)—Method; p. 14,
         Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
         include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
-        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year
+        tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year; p946 p. 17, Trade-in of
+        other property, "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section 179
+        deduction includes only the cash you paid"; i4562 p. 14, "If you acquired the property through a trade-in, special
+        rules apply for determining the basis, recovery period, depreciation method, and convention"
   - id: asset.screened
     printed: (gate)
     label: This property is outside this tool
@@ -172,10 +186,16 @@ form:
     type: Enum(placed_year)
     expr:
       op: input
-      source: The year you placed this property in service in the business (2005 to 2025)
+      source: The year you placed this property in service in the business (2005 to 2025). Property is placed in service
+        when it is ready and available for a specific use, even if you have not yet used it; property you converted from
+        personal use to use in the business is placed in service on the date of the conversion
     cite:
       doc: i4562
-      locator: p. 11, Column (b)—Month and year placed in service; p946 p. 39, Using the MACRS Percentage Tables, the example of the third recovery year
+      locator: p. 11, Column (b)—Month and year placed in service; p946 p. 39, Using the MACRS Percentage Tables, the example of the third recovery year;
+        p946 p. 32, "The placed in service date for your property is the date the property is ready and available for a specific
+        use. It is therefore not necessarily the date it is first used." and "If you converted property held for personal use
+        to use in a trade or business or for the production of income, treat the property as being placed in service on the
+        conversion date"
   - id: asset.cost
     printed: (helper)
     label: Cost or other basis
@@ -507,23 +527,24 @@ form:
         of your business that is tangible personal property or off-the-shelf computer software, or other tangible property
         (not a building or its structural components) used as an integral part of manufacturing, production or extraction
         or of furnishing transportation, communications, electricity, gas, water or sewage disposal services (or as a research
-        or bulk storage facility used with those activities), or qualified improvement property you elect to treat as section
-        179 property. Enter zero for land and land improvements (such as swimming pools, paved parking areas, wharves, docks,
+        or bulk storage facility used with those activities), a storage facility (other than a building or its structural
+        components) used in connection with distributing petroleum or any primary product of petroleum, or qualified improvement
+        property you elect to treat as section 179 property. Enter zero for land and land improvements (such as swimming pools, paved parking areas, wharves, docks,
         bridges and fences), property held for investment, and property you purchased and lease to others, unless you manufactured
         or produced it, or the lease term is less than 50% of its class life and for the first 12 months after the transfer
         to the lessee your deductions for it as trade or business expenses (other than rents and reimbursed amounts) are more
         than 15% of its rental income. Also enter zero for property used by a tax-exempt organization (unless used in connection
         with the production of income subject to the tax on unrelated trade or business income) and property used by a governmental
-        unit or a foreign person or entity (unless used under a lease with a term of less than 6 months). If you paid for it
-        with cash and a trade-in, the elected cost cannot be more than the cash you paid.'
+        unit or a foreign person or entity (unless used under a lease with a term of less than 6 months).'
     cite:
       doc: i4562
       locator: p. 5, Line 6, Column (c)—Elected cost; pp. 2-3, Section 179 property, "Section 179 property is property
-        that you acquire by purchase for use in the active conduct of your trade or business", "Property held for investment
+        that you acquire by purchase for use in the active conduct of your trade or business", "Storage facilities (except
+        buildings and their structural components) used in connection with distributing petroleum or any primary product of
+        petroleum", "Property held for investment
         (section 212 property)" and "for taxpayers other than a corporation, this election does not apply to any section 179
         property you purchased and leased to others unless"; p946 p. 17, "Land and land improvements do not qualify as section
-        179 property", "you cannot elect the section 179 deduction for the following property" and "If you buy qualifying
-        property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid"
+        179 property" and "you cannot elect the section 179 deduction for the following property"
   - id: asset.not179
     printed: (helper)
     label: This property is not section 179 property

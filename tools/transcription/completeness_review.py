@@ -241,7 +241,7 @@ def run_one(form, mani, model, dry, from_response, forms=None):
     if from_response:
         text = open(base + ".response.txt", encoding="utf-8").read(); meta = {}
     else:
-        text, meta = call_model(prompt, model, system=SYSTEM)
+        text, meta = call_model(prompt, model, system=SYSTEM, kind="completeness", subject=form["id"])
         open(base + ".response.txt", "w", encoding="utf-8").write(text)
     claims = parse(text)
     rec = {"form": form["id"], "prompt_sha": sha, "claims": claims or [], "used": used,

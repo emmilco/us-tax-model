@@ -2,46 +2,53 @@
 lines:
   - id: person.employers
     printed: "employers"
-    label: "Number of employers (Forms W-2) for this person in 2025 (Schedule 3, line 11: more than one employer)"
+    label: "Number of employers (Forms W-2) for 2025"
     type: Count
     expr: {op: sum_over, collection: w2, field: w2.one}
+    note: "Schedule 3 line 11 applies if you 'had more than one employer for 2025'. Each Form W-2 entry is counted as one employer."
   - id: person.overcount
     printed: "overcount"
-    label: "Number of employers that each withheld more than $10,918.20 of social security tax"
+    label: "Number of employers that withheld more than $10,918.20 of social security tax"
     type: Count
-    expr:
-      op: sum_over
-      collection: w2
-      field: w2.one
-      where: {op: test, eq: [w2.over, {const: true}]}
+    expr: {op: sum_over, collection: w2, field: w2.one, where: {op: test, gt: [w2.box4, {param: ss.limit}]}}
   - id: person.over
     printed: "over"
-    label: "If any one employer withheld more than $10,918.20, you can't claim the excess on your return"
+    label: "Any one employer withheld more than $10,918.20 (you can't claim the excess on your return)"
     type: Bool
     expr: {op: test, gt: [person.overcount, {const: 0, type: Count}]}
+  - id: person.h_box3
+    printed: "(helper)"
+    label: "Total of Forms W-2, box 3"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: w2, field: w2.box3}
+  - id: person.h_box7
+    printed: "(helper)"
+    label: "Total of Forms W-2, box 7"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: w2, field: w2.box7}
   - id: person.wages
     printed: "wages"
-    label: "Total wages (social security wages and tips, Forms W-2 boxes 3 and 7)"
+    label: "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2)"
     type: NonNegDollars
-    expr: {op: sum_over, collection: w2, field: w2.wages}
+    expr: {op: sum, of: [person.h_box3, person.h_box7]}
   - id: person.withheld
     printed: "withheld"
-    label: "Social security tax withheld (total of Forms W-2, box 4)"
+    label: "Total social security tax withheld (Forms W-2, box 4)"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.box4}
   - id: person.eligible
     printed: "eligible"
-    label: "More than one employer for 2025 and total wages of more than $176,100, and no one employer withheld more than $10,918.20"
+    label: "More than one employer, and no one employer withheld more than $10,918.20"
     type: Bool
     expr:
       op: test
       all:
-        - {op: test, gt: [person.employers, {const: 1, type: Count}]}
-        - {op: test, gt: [person.wages, {param: ss.base}]}
+        - {op: test, ge: [person.employers, {const: 2, type: Count}]}
         - {op: test, eq: [person.over, {const: false}]}
+    note: "The text says excess tax 'may have been withheld' when total wages are more than $176,100. Wages over the base are not used as a separate test. Without such wages, the excess over $10,918.20 computed on the next line is zero."
   - id: person.excess
     printed: "excess"
-    label: "Amount withheld in excess of $10,918.20"
+    label: "Social security tax withheld in excess of $10,918.20"
     type: NonNegDollars
     expr: {op: subtract_floor0, from: person.withheld, take: {param: ss.limit}}
   - id: person.zero
@@ -51,189 +58,66 @@ lines:
     expr: {op: param, ref: ss.zero}
   - id: person.credit
     printed: "credit"
-    label: "Excess social security tax withheld (Schedule 3, line 11), figured separately for you and your spouse"
+    label: "Excess social security tax withheld (figured separately for you and your spouse)"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [person.eligible, {const: true}]}
-          then: person.excess
-        - guard: {op: test, eq: [person.eligible, {const: false}]}
-          then: person.zero
+        - {guard: {op: test, eq: [person.eligible, {const: true}]}, then: person.excess}
+        - {guard: {op: test, eq: [person.eligible, {const: false}]}, then: person.zero}
     refuses: [person.rrta]
-    note: "Tier 1 RRTA tax is outside the tool (person.rrta refuses); only social security tax on Forms W-2 is counted."
 
-  # ---------- Schedule C and Schedule SE totals ----------
-  - id: person.one
+  - id: person.h_is_sep
     printed: "(helper)"
-    label: "One (this person)"
-    type: Count
-    expr: {op: param, ref: person.one}
-  - id: person.sc_count
-    printed: "(helper)"
-    label: "Number of Schedules C for this person"
-    type: Count
-    expr: {op: sum_over, collection: sc, field: sc.one}
-  - id: person.ho_count
-    printed: "(helper)"
-    label: "Number of this person's Schedules C claiming business use of the home"
-    type: Count
-    expr:
-      op: sum_over
-      collection: sc
-      field: sc.one
-      where: {op: test, eq: [sc.ho_uses, {const: true}]}
-  - id: person.sc_1a
-    printed: "(helper)"
-    label: "Number of this person's businesses with qualified tips or overtime for Schedule 1-A"
-    type: Count
-    expr:
-      op: sum_over
-      collection: sc
-      field: sc.one
-      where: {op: test, eq: [sc.tips_ot, {const: true}]}
-  - id: person.sc_total
-    printed: "(helper)"
-    label: "Net profit or (loss) from Schedule C, line 31 (all of this person's businesses; Schedule SE, line 2)"
-    type: Dollars
-    expr: {op: sum_over, collection: sc, field: sc.result}
-    note: "Read as the total of each business's final line 31 amount (sc.result, after the at-risk limit)."
-  - id: person.positive_profits
-    printed: "(helper)"
-    label: "Total of all net profits from Schedule C, line 31; don't include any net losses (Form 7206, line 5)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: sc, field: sc.profit_pos}
-  - id: person.sehi
-    printed: "(helper)"
-    label: "Self-employed health insurance deduction (Form 7206, line 14, all businesses)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: sc, field: sc.f7206_line14}
-  - id: person.qbi
-    printed: "(helper)"
-    label: "Qualified business income or (loss) (Form 8995, line 1(c), this person's businesses)"
-    type: Dollars
-    expr: {op: sum_over, collection: sc, field: sc.qbi}
-  - id: person.mq_q4
-    printed: "(helper)"
-    label: "Depreciable bases of MACRS property placed in service during the last 3 months of the tax year"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: sc, field: sc.mq_q4}
-  - id: person.mq_total
-    printed: "(helper)"
-    label: "Total depreciable bases of MACRS property placed in service during the tax year"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: sc, field: sc.mq_total}
-  - id: person.cost179
-    printed: "(helper)"
-    label: "Total cost of section 179 property placed in service (Form 4562, line 2)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: sc, field: sc.cost179}
-  - id: person.s179_nonlisted
-    printed: "(helper)"
-    label: "Elected cost of section 179 property other than listed property (Form 4562, line 6, column (c))"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: sc, field: sc.f6}
-  - id: person.s179_listed
-    printed: "(helper)"
-    label: "Listed property elected under section 179 (Form 4562, line 7, from Part V, line 29)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: sc, field: sc.f29}
-  - id: person.income179
-    printed: "(helper)"
-    label: "Business income for the section 179 limit (Form 4562, line 11), from this person's Schedules C"
-    type: Dollars
-    expr: {op: sum_over, collection: sc, field: sc.line31_pre179}
-    note: "Read as each business's line 31 figured before the section 179 deduction; any wage component of line 11 is left to the return-level s179.income."
-  - id: person.se_line6
-    printed: "(helper)"
-    label: "Schedule SE, line 6"
-    type: NonNegDollars
-    expr:
-      op: copy
-      from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line6}
-    refuses: [person.se_screen, person.rrta]
-  - id: person.se_line12
-    printed: "(helper)"
-    label: "Self-employment tax (Schedule SE, line 12)"
-    type: NonNegDollars
-    expr:
-      op: copy
-      from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line12}
-    refuses: [person.se_screen, person.rrta]
-  - id: person.se_line13
-    printed: "(helper)"
-    label: "Deduction for one-half of self-employment tax (Schedule SE, line 13)"
-    type: NonNegDollars
-    expr:
-      op: copy
-      from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line13}
-    refuses: [person.se_screen, person.rrta]
-  - id: person.h_se3
-    printed: "(helper)"
-    label: "Schedule SE, line 3"
-    type: Dollars
-    expr:
-      op: copy
-      from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line3}
-    refuses: [person.se_screen, person.rrta]
-  - id: person.h_se4a
-    printed: "(helper)"
-    label: "Schedule SE, line 4a"
-    type: Dollars
-    expr:
-      op: copy
-      from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line4a}
-    refuses: [person.se_screen, person.rrta]
-  - id: person.eic_se
-    printed: "(helper)"
-    label: "EIC Worksheet B, line 1e: Schedule SE line 3 (line 1c) minus Schedule SE line 13 (line 1d)"
-    type: Dollars
-    expr: {op: subtract, from: person.h_se3, take: person.se_line13}
-    note: "Optional methods (line 4b) and church income (5a) are screened out, so line 1b is zero."
-
-  # ---------- SEP (Pub. 560 Deduction Worksheet for Self-Employed) ----------
+    label: "Contributed for yourself to a SEP IRA"
+    type: Bool
+    expr: {op: test, eq: [person.plan, {const: "sep"}]}
   - id: person.sep_s1
     printed: "Step 1"
     label: "Enter your net profit from Schedule C (Form 1040), line 31"
     type: Dollars
     expr: {op: copy, from: person.sc_total}
+    shown_when: person.h_is_sep
   - id: person.sep_s2
     printed: "Step 2"
     label: "Enter your deduction for self-employment tax from Schedule 1 (Form 1040), line 15"
     type: NonNegDollars
     expr: {op: copy, from: person.se_line13}
+    shown_when: person.h_is_sep
   - id: person.sep_s3
     printed: "Step 3"
     label: "Net earnings from self-employment. Subtract step 2 from step 1"
     type: NonNegDollars
     expr: {op: subtract_floor0, from: person.sep_s1, take: person.sep_s2}
-    note: "The worksheet does not say what to do with a negative result; read as zero (no SEP deduction on a loss), as the declared type requires."
-  - id: person.h_one_cent
+    shown_when: person.h_is_sep
+    note: "The worksheet gives no floor for a loss. A negative result is held as zero, since no SEP deduction can arise from it."
+  - id: person.h_cent
     printed: "(helper)"
     label: "One cent"
     type: NonNegDollars
     expr: {op: param, ref: sc.one_cent}
-  - id: person.h_hundred_cents
+  - id: person.h_hundred
     printed: "(helper)"
     label: "One hundred cents"
     type: NonNegDollars
     expr: {op: param, ref: sc.hundred_cents}
-  - id: person.h_rate_cents
+  - id: person.h_rate_c
     printed: "(helper)"
-    label: "Plan contribution rate (whole percent) expressed as cents"
+    label: "Plan contribution rate expressed as cents (rate × 1 cent)"
     type: NonNegDollars
-    expr: {op: multiply_count, amount: person.h_one_cent, count: person.sep_rate}
+    expr: {op: multiply_count, amount: person.h_cent, count: person.sep_rate}
   - id: person.h_rate_plus
     printed: "(helper)"
-    label: "Rate plus 100 (Rate Worksheet line 2, scaled by 100)"
+    label: "Plan contribution rate plus 100% (in cents)"
     type: NonNegDollars
-    expr: {op: sum, of: [person.h_hundred_cents, person.h_rate_cents]}
+    expr: {op: sum, of: [person.h_rate_c, person.h_hundred]}
   - id: person.sep_s5
     printed: "Step 5"
     label: "Multiply step 3 by step 4 (rate from the Rate Table for Self-Employed)"
     type: NonNegDollars
-    expr: {op: prorate, amount: person.sep_s3, part: person.h_rate_cents, whole: person.h_rate_plus, places: 6}
-    note: "Step 4 (Rate Table column B, rate/(1+rate) to six decimals) is folded into this line as a prorate with six places."
+    expr: {op: prorate, amount: person.sep_s3, part: person.h_rate_c, whole: person.h_rate_plus, places: 6}
+    shown_when: person.h_is_sep
+    note: "No table of Column B rates is supplied. The table rate equals rate ÷ (1 + rate) rounded to six decimal places (for example 10% gives 0.090909 and 25% gives 0.200000). This line reproduces it with prorate at 6 places. Non-whole rates are screened by person.plan_screen."
   - id: person.h_comp_limit
     printed: "(helper)"
     label: "$350,000 compensation limit"
@@ -243,130 +127,134 @@ lines:
     printed: "Step 6"
     label: "Multiply $350,000 by your plan contribution rate (not the reduced rate)"
     type: NonNegDollars
-    expr: {op: prorate, amount: person.h_comp_limit, part: person.h_rate_cents, whole: person.h_hundred_cents, places: 6}
+    expr: {op: prorate, amount: person.h_comp_limit, part: person.h_rate_c, whole: person.h_hundred, places: 2}
+    shown_when: person.h_is_sep
   - id: person.sep_s7
     printed: "Step 7"
     label: "Enter the smaller of step 5 or step 6"
     type: NonNegDollars
     expr: {op: smaller_of, of: [person.sep_s5, person.sep_s6]}
+    shown_when: person.h_is_sep
   - id: person.sep_s8
     printed: "Step 8"
-    label: "Contribution dollar limit ($70,000)"
+    label: "Contribution dollar limit"
     type: NonNegDollars
     expr: {op: param, ref: ret.sep_dollar_limit}
+    shown_when: person.h_is_sep
   - id: person.sep_s21
     printed: "Step 21"
-    label: "This is your maximum deductible contribution (no elective deferrals: the smaller of step 7 or step 8)"
+    label: "Maximum deductible contribution (no elective deferrals: enter the smaller of step 7 or step 8)"
     type: NonNegDollars
     expr: {op: smaller_of, of: [person.sep_s7, person.sep_s8]}
+    shown_when: person.h_is_sep
+    note: "Steps 9-20 apply only to elective deferrals to the self-employed plan. Those are screened by person.plan_screen (SARSEP and other deferrals), so step 21 is the smaller of step 7 or step 8."
   - id: person.h_sep_ded
     printed: "(helper)"
-    label: "Enter your actual contribution, not to exceed your maximum deductible contribution"
+    label: "Actual SEP contribution, not to exceed the maximum deductible contribution"
     type: NonNegDollars
     expr: {op: smaller_of, of: [person.sep_contrib, person.sep_s21]}
 
-  # ---------- SIMPLE IRA (Pub. 560 ch. 3) ----------
-  - id: person.h_simple_comp
+  - id: person.h_aqee_adj
     printed: "(helper)"
-    label: "Compensation for SIMPLE: net earnings from self-employment (Schedule SE line 4) before SIMPLE contributions"
-    type: Dollars
-    expr: {op: copy, from: person.h_se4a}
-  - id: person.h_simple_comp0
-    printed: "(helper)"
-    label: "SIMPLE compensation, not less than zero"
+    label: "Total adjustments (tax-free educational assistance 2025 and 2026, and refunds)"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.h_simple_comp, take: {const: 0}}
-  - id: person.h_simple_base
+    expr: {op: sum, of: [person.edu_a2025, person.edu_a2026, person.edu_refunds]}
+  - id: person.h_edu_aoc
     printed: "(helper)"
-    label: "Salary reduction contribution limit ($16,500 for 2025)"
-    type: NonNegDollars
-    expr: {op: param, ref: ret.simple_limit}
-  - id: person.h_catchup
+    label: "Lines 27-30 apply (American opportunity credit for this student)"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [person.edu, {const: true}]}
+        - {op: test, eq: [person.edu_1098t, {const: true}]}
+        - {op: test, eq: [person.edu_line23, {const: false}]}
+        - {op: test, eq: [person.edu_line24, {const: true}]}
+        - {op: test, eq: [person.edu_line25, {const: false}]}
+        - {op: test, eq: [person.edu_line26, {const: false}]}
+        - {op: test, eq: [person.edu_ein, {const: true}]}
+        - {op: test, eq: [person.tin, {const: true}]}
+  - id: person.h_edu_llc
     printed: "(helper)"
-    label: "Catch-up contribution limit for SIMPLE IRA plans by age"
-    type: NonNegDollars
-    expr: {op: keyed_lookup, table: simple_catchup, keys: [person.simple_age]}
-  - id: person.h_simple_cap
-    printed: "(helper)"
-    label: "Salary reduction limit plus catch-up limit"
-    type: NonNegDollars
-    expr: {op: sum, of: [person.h_simple_base, person.h_catchup]}
-  - id: person.h_simple_d1
-    printed: "(helper)"
-    label: "Salary reduction contributions, not more than the limit plus catch-up"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.simple_deferral, person.h_simple_cap]}
-  - id: person.h_simple_d
-    printed: "(helper)"
-    label: "Salary reduction contributions, not more than compensation"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.h_simple_d1, person.h_simple_comp0]}
-    note: "min(deferral, limit + catch-up, compensation) equals the Pub. 560 two-part rule (catch-up limited to compensation over non-catch-up deferrals)."
-  - id: person.h_match_max0
-    printed: "(helper)"
-    label: "3% of compensation"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: person.h_simple_comp0, rate: {param: ret.match_rate}}
-  - id: person.h_match_max
-    printed: "(helper)"
-    label: "Match dollar-for-dollar up to 3% of compensation"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.h_match_max0, person.h_simple_d]}
-  - id: person.h_comp_capped
-    printed: "(helper)"
-    label: "Compensation taken into account, not more than $350,000"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.h_simple_comp0, person.h_comp_limit]}
-  - id: person.h_nonel_max
-    printed: "(helper)"
-    label: "Nonelective contributions of 2% of compensation"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: person.h_comp_capped, rate: {param: ret.nonelective_rate}}
-  - id: person.h_emp_max
-    printed: "(helper)"
-    label: "Maximum employer contribution under the plan's formula"
+    label: "Line 31 applies (lifetime learning credit for this student)"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [person.edu, {const: true}]}
+        - {op: test, eq: [person.edu_1098t, {const: true}]}
+        - {op: test, eq: [person.tin, {const: true}]}
+        - {op: test, not: {op: test, eq: [person.h_edu_aoc, {const: true}]}}
+  - id: person.edu_line27
+    printed: "27"
+    label: "Adjusted qualified education expenses. Don't enter more than $4,000"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [person.simple_kind, {const: "match"}]}
-          then: person.h_match_max
-        - guard: {op: test, eq: [person.simple_kind, {const: "nonelective"}]}
-          then: person.h_nonel_max
-  - id: person.h_emp
-    printed: "(helper)"
-    label: "Employer contributions made for yourself, not more than the formula amount"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.simple_employer, person.h_emp_max]}
-  - id: person.h_simple_ded
-    printed: "(helper)"
-    label: "SIMPLE contributions for yourself (salary reduction plus employer contributions)"
-    type: NonNegDollars
-    expr: {op: sum, of: [person.h_simple_d, person.h_emp]}
-  - id: person.s16
-    printed: "(helper)"
-    label: "Self-employed SEP, SIMPLE, and qualified plans (Schedule 1, line 16), this person"
+        - {guard: {op: test, eq: [person.h_edu_aoc, {const: true}]}, then: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.h_aqee_adj}, line: line27}}
+        - {guard: {op: test, eq: [person.h_edu_aoc, {const: false}]}, then: person.zero}
+    refuses: [person.edu_over]
+    shown_when: person.h_edu_aoc
+  - id: person.edu_line28
+    printed: "28"
+    label: "Subtract $2,000 from line 27. If zero or less, enter -0-"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [person.plan, {const: "none"}]}
-          then: person.zero
-        - guard: {op: test, eq: [person.plan, {const: "sep"}]}
-          then: person.h_sep_ded
-        - guard: {op: test, eq: [person.plan, {const: "simple"}]}
-          then: person.h_simple_ded
-    refuses: [person.plan_screen]
+        - {guard: {op: test, eq: [person.h_edu_aoc, {const: true}]}, then: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.h_aqee_adj}, line: line28}}
+        - {guard: {op: test, eq: [person.h_edu_aoc, {const: false}]}, then: person.zero}
+    refuses: [person.edu_over]
+    shown_when: person.h_edu_aoc
+  - id: person.edu_line29
+    printed: "29"
+    label: "Multiply line 28 by 25% (0.25)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - {guard: {op: test, eq: [person.h_edu_aoc, {const: true}]}, then: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.h_aqee_adj}, line: line29}}
+        - {guard: {op: test, eq: [person.h_edu_aoc, {const: false}]}, then: person.zero}
+    refuses: [person.edu_over]
+    shown_when: person.h_edu_aoc
+  - id: person.edu_line30
+    printed: "30"
+    label: "If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - {guard: {op: test, eq: [person.h_edu_aoc, {const: true}]}, then: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.h_aqee_adj}, line: line30}}
+        - {guard: {op: test, eq: [person.h_edu_aoc, {const: false}]}, then: person.zero}
+    refuses: [person.edu_over]
+    shown_when: person.h_edu_aoc
+  - id: person.edu_line31
+    printed: "31"
+    label: "Lifetime learning credit: adjusted qualified education expenses"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - {guard: {op: test, eq: [person.h_edu_llc, {const: true}]}, then: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.h_aqee_adj}, line: ws4_llc}}
+        - {guard: {op: test, eq: [person.h_edu_llc, {const: false}]}, then: person.zero}
+    refuses: [person.edu_over]
+    shown_when: person.h_edu_llc
+    note: "Course materials not required to be paid to the institution count for the AOC only. The LLC amount is taken from the shared worksheet's LLC result (ws4_llc)."
 
-  # ---------- Educator expenses ----------
+  - id: person.one
+    printed: "(helper)"
+    label: "One"
+    type: Count
+    expr: {op: param, ref: person.one}
   - id: person.h_educator_max
     printed: "(helper)"
-    label: "Up to $300 of qualified expenses"
+    label: "$300 educator expense limit"
     type: NonNegDollars
     expr: {op: param, ref: s1.educator_max}
   - id: person.h_educator_capped
     printed: "(helper)"
-    label: "Qualified educator expenses, not more than $300"
+    label: "Qualified educator expenses, up to $300"
     type: NonNegDollars
     expr: {op: smaller_of, of: [person.educator_expenses, person.h_educator_max]}
   - id: person.educator_deduction
@@ -376,12 +264,9 @@ lines:
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [person.eligible_educator, {const: true}]}
-          then: person.h_educator_capped
-        - guard: {op: test, eq: [person.eligible_educator, {const: false}]}
-          then: person.zero
+        - {guard: {op: test, eq: [person.eligible_educator, {const: true}]}, then: person.h_educator_capped}
+        - {guard: {op: test, eq: [person.eligible_educator, {const: false}]}, then: person.zero}
 
-  # ---------- HSA (Form 8889) aggregates ----------
   - id: person.hsa_forms
     printed: "(helper)"
     label: "Number of Forms 8889 for this person"
@@ -389,32 +274,34 @@ lines:
     expr: {op: sum_over, collection: f8889, field: f8889.one}
   - id: person.hsa_split
     printed: "(helper)"
-    label: "Number of this person's Forms 8889 dividing the family limit between spouses (line 6 instructions)"
+    label: "Forms 8889 on which the family limit is divided between spouses with separate HSAs (line 6 rules)"
     type: Count
-    expr:
-      op: sum_over
-      collection: f8889
-      field: f8889.one
-      where: {op: test, eq: [f8889.split, {const: true}]}
+    expr: {op: sum_over, collection: f8889, field: f8889.one, where: {op: test, eq: [f8889.split, {const: true}]}}
+    note: "The interface name is not defined by the IRS text. It is read as a count of this person's Forms 8889 where the line 6 spousal division applies."
   - id: person.hsa_agreed
     printed: "(helper)"
-    label: "Number of this person's Forms 8889 using an agreed (unequal) allocation"
+    label: "Forms 8889 dividing the family limit by an agreed (not equal) allocation"
     type: Count
     expr:
       op: sum_over
       collection: f8889
       field: f8889.one
-      where: {op: test, eq: [f8889.allocation, {const: "agreed"}]}
+      where:
+        op: test
+        all:
+          - {op: test, eq: [f8889.split, {const: true}]}
+          - {op: test, eq: [f8889.allocation, {const: "agreed"}]}
+    note: "Read as a count of divided Forms 8889 using an agreed allocation, so the household can check both spouses agree. This reading is not stated in the IRS text."
   - id: person.hsa_step1
     printed: "(helper)"
-    label: "Line 6 Step 1 refigured family contribution limit"
+    label: "Refigured family contribution limit (line 6 Step 1) on divided Forms 8889"
     type: NonNegDollars
-    expr: {op: sum_over, collection: f8889, field: f8889.step1}
+    expr: {op: sum_over, collection: f8889, field: f8889.step1, where: {op: test, eq: [f8889.split, {const: true}]}}
   - id: person.hsa_share
     printed: "(helper)"
-    label: "This person's allocated share of the family limit (line 6 Step 2)"
+    label: "Part of the family limit allocated to this person (line 6 Step 2) on divided Forms 8889"
     type: NonNegDollars
-    expr: {op: sum_over, collection: f8889, field: f8889.share}
+    expr: {op: sum_over, collection: f8889, field: f8889.share, where: {op: test, eq: [f8889.split, {const: true}]}}
   - id: person.hsa_deduction
     printed: "(helper)"
     label: "HSA deduction (Form 8889, line 13)"
@@ -431,35 +318,33 @@ lines:
     type: NonNegDollars
     expr: {op: sum_over, collection: f8889, field: f8889.line17b}
 
-  # ---------- Tips and overtime ----------
   - id: person.tip_employers
     printed: "(helper)"
-    label: "Number of employers on the Qualified Tips From More Than One Employer Worksheet"
+    label: "Number of employers from which qualified tips were received"
     type: Count
     expr: {op: sum_over, collection: tipjob, field: tipjob.one}
   - id: person.tip_total
     printed: "(helper)"
-    label: "Add lines 1A through 1E, column (d) (Schedule 1-A, line 4c)"
+    label: "Qualified Tips From More Than One Employer Worksheet, line 2 (total of column (d))"
     type: NonNegDollars
     expr: {op: sum_over, collection: tipjob, field: tipjob.col_d}
   - id: person.tip_reported
     printed: "(helper)"
-    label: "Qualified tips reported by employers on Form W-2 or reported by you to employers (column (b))"
+    label: "Qualified tips reported by employers on Form W-2 or reported to employers on Forms 4070 (column (b))"
     type: NonNegDollars
     expr: {op: sum_over, collection: tipjob, field: tipjob.amount}
-    note: "Open: 'reported' could mean column (b) or column (c, Form 4137). Column (b) chosen; Form 4137 tips are screened out."
+    note: "Read as the total of column (b), used on line 4a when there is one employer. The IRS text does not name this interface."
   - id: person.ot_employers
     printed: "(helper)"
-    label: "Number of employers on the Qualified Overtime Compensation From More Than One Employer Worksheet"
+    label: "Number of employers paying qualified overtime compensation"
     type: Count
     expr: {op: sum_over, collection: otjob, field: otjob.one}
   - id: person.ot_total
     printed: "(helper)"
-    label: "Add the amounts from lines 1A through 1E, column (b) (Schedule 1-A, line 14a)"
+    label: "Qualified Overtime Compensation From More Than One Employer Worksheet, line 2"
     type: NonNegDollars
     expr: {op: sum_over, collection: otjob, field: otjob.col_b}
 
-  # ---------- Form W-2 totals ----------
   - id: person.box1
     printed: "(helper)"
     label: "Total amount from Form(s) W-2, box 1"
@@ -470,6 +355,59 @@ lines:
     label: "Federal income tax withheld from Form(s) W-2, box 2"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.box2}
+
+  - id: person.ira_amount_a
+    printed: "(helper)"
+    label: "IRA distributions (Form 1040, line 4a), this person"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: retirement, field: retirement.amount_a, where: {op: test, ne: [retirement.account, {const: "plan"}]}}
+  - id: person.ira_taxable
+    printed: "(helper)"
+    label: "IRA distributions taxable amount (Form 1040, line 4b), this person"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: retirement, field: retirement.taxable, where: {op: test, ne: [retirement.account, {const: "plan"}]}}
+  - id: person.ira_rollovers
+    printed: "(helper)"
+    label: "IRA distributions with a rollover (line 4c, box 1)"
+    type: Count
+    expr:
+      op: sum_over
+      collection: retirement
+      field: retirement.one
+      where:
+        op: test
+        all:
+          - {op: test, ne: [retirement.account, {const: "plan"}]}
+          - {op: test, eq: [retirement.has_rollover, {const: true}]}
+  - id: person.plan_amount_a
+    printed: "(helper)"
+    label: "Pensions and annuities (Form 1040, line 5a), this person"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: retirement, field: retirement.amount_a, where: {op: test, eq: [retirement.account, {const: "plan"}]}}
+  - id: person.plan_taxable
+    printed: "(helper)"
+    label: "Pensions and annuities taxable amount (Form 1040, line 5b), this person"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: retirement, field: retirement.taxable, where: {op: test, eq: [retirement.account, {const: "plan"}]}}
+  - id: person.plan_rollovers
+    printed: "(helper)"
+    label: "Pension and annuity distributions with a rollover (line 5c, box 1)"
+    type: Count
+    expr:
+      op: sum_over
+      collection: retirement
+      field: retirement.one
+      where:
+        op: test
+        all:
+          - {op: test, eq: [retirement.account, {const: "plan"}]}
+          - {op: test, eq: [retirement.has_rollover, {const: true}]}
+  - id: person.sav_dist
+    printed: "(helper)"
+    label: "Form 8880 line 4 distributions received in 2025 (this person)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: retirement, field: retirement.sav_amount}
+
   - id: person.medicare5
     printed: "(helper)"
     label: "Medicare wages and tips from Form W-2, box 5 (total)"
@@ -480,111 +418,228 @@ lines:
     label: "Medicare tax withheld from Form W-2, box 6 (total)"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.box6}
+
+  - id: person.sc_count
+    printed: "(helper)"
+    label: "Number of Schedules C for this person"
+    type: Count
+    expr: {op: sum_over, collection: sc, field: sc.one}
+  - id: person.ho_count
+    printed: "(helper)"
+    label: "Number of businesses claiming business use of the home"
+    type: Count
+    expr: {op: sum_over, collection: sc, field: sc.one, where: {op: test, eq: [sc.ho_uses, {const: true}]}}
+  - id: person.mq_q4
+    printed: "(helper)"
+    label: "Depreciable bases of MACRS property placed in service in the last 3 months"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: sc, field: sc.mq_q4}
+  - id: person.mq_total
+    printed: "(helper)"
+    label: "Depreciable bases of MACRS property placed in service during the year"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: sc, field: sc.mq_total}
+  - id: person.cost179
+    printed: "(helper)"
+    label: "Total cost of section 179 property placed in service (Form 4562, line 2)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: sc, field: sc.cost179}
+  - id: person.s179_nonlisted
+    printed: "(helper)"
+    label: "Elected cost of section 179 property (Form 4562, line 6)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: sc, field: sc.s179_elected}
+    note: "The catalog offers no Schedule C-level split between line 6 (property other than listed) and line 7 (listed property from Part V). A person-level line may read only its own child collection, so asset and vehicle entries cannot be summed here. The only Schedule C aggregate, sc.s179_elected, is used. This is a limitation."
+  - id: person.s179_listed
+    printed: "(helper)"
+    label: "Listed property elected cost (Form 4562, line 7)"
+    type: NonNegDollars
+    expr: {op: param, ref: ss.zero}
+    note: "LIMITATION: no Schedule C-level aggregate of the section 179 election on listed property (Part V) is in the catalog, and nested vehicle entries cannot be read from a person entry. The listed amount is counted within person.s179_nonlisted (sc.s179_elected). This line holds zero to avoid counting it twice. A published Schedule C aggregate is needed to separate it."
+  - id: person.income179
+    printed: "(helper)"
+    label: "Business income from the active conduct of trade or business, figured without the section 179 deduction (Form 4562, line 11)"
+    type: Dollars
+    expr: {op: sum_over, collection: sc, field: sc.line31_pre179}
+    note: "Read as this person's Schedule C net profit or loss before the section 179 deduction. Wages, which line 11 also counts, are left to the return-level line."
+  - id: person.sc_total
+    printed: "(helper)"
+    label: "Net profit or (loss) from Schedule C, line 31 (all this person's businesses)"
+    type: Dollars
+    expr: {op: sum_over, collection: sc, field: sc.line31}
+
+  - id: person.se_line6
+    printed: "(helper)"
+    label: "Schedule SE, line 6"
+    type: NonNegDollars
+    expr: {op: copy, from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line6}}
+    refuses: [person.se_screen, person.rrta]
+  - id: person.se_line12
+    printed: "(helper)"
+    label: "Self-employment tax (Schedule SE, line 12)"
+    type: NonNegDollars
+    expr: {op: copy, from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line12}}
+    refuses: [person.se_screen, person.rrta]
+  - id: person.se_line13
+    printed: "(helper)"
+    label: "Deduction for one-half of self-employment tax (Schedule SE, line 13)"
+    type: NonNegDollars
+    expr: {op: copy, from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line13}}
+    refuses: [person.se_screen, person.rrta]
+  - id: person.h_se3
+    printed: "(helper)"
+    label: "Schedule SE, line 3"
+    type: Dollars
+    expr: {op: copy, from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line3}}
+    refuses: [person.se_screen, person.rrta]
+  - id: person.h_se4a
+    printed: "(helper)"
+    label: "Schedule SE, line 4a"
+    type: Dollars
+    expr: {op: copy, from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line4a}}
+    refuses: [person.se_screen, person.rrta]
+
+  - id: person.h_simple_comp
+    printed: "(helper)"
+    label: "SIMPLE compensation: net earnings from self-employment (Schedule SE line 4), before SIMPLE contributions"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: person.h_se4a, take: {const: 0}}
+    note: "Pub. 560 says 'line 4 of Schedule SE'. Optional methods (line 4b) are screened, so line 4a is used, held as zero if negative."
+  - id: person.h_simple_base
+    printed: "(helper)"
+    label: "SIMPLE salary reduction limit ($16,500)"
+    type: NonNegDollars
+    expr: {op: param, ref: ret.simple_limit}
+  - id: person.h_catchup
+    printed: "(helper)"
+    label: "SIMPLE catch-up contribution limit for this age"
+    type: NonNegDollars
+    expr: {op: keyed_lookup, table: simple_catchup, keys: [person.simple_age]}
+  - id: person.h_simple_deflimit
+    printed: "(helper)"
+    label: "Salary reduction limit plus catch-up limit"
+    type: NonNegDollars
+    expr: {op: sum, of: [person.h_simple_base, person.h_catchup]}
+  - id: person.h_def1
+    printed: "(helper)"
+    label: "Salary reduction contributions up to the limit"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.simple_deferral, person.h_simple_deflimit]}
+  - id: person.h_def_allowed
+    printed: "(helper)"
+    label: "Salary reduction contributions, not more than compensation"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.h_def1, person.h_simple_comp]}
+  - id: person.h_match_cap
+    printed: "(helper)"
+    label: "3% of compensation"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: person.h_simple_comp, rate: {param: ret.match_rate}}
+  - id: person.h_match_max
+    printed: "(helper)"
+    label: "Matching contribution: dollar-for-dollar up to 3% of compensation"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.h_def_allowed, person.h_match_cap]}
+  - id: person.h_ne_comp
+    printed: "(helper)"
+    label: "Compensation taken into account (up to $350,000)"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.h_simple_comp, person.h_comp_limit]}
+  - id: person.h_ne_max
+    printed: "(helper)"
+    label: "2% nonelective contribution"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: person.h_ne_comp, rate: {param: ret.nonelective_rate}}
+  - id: person.h_er_max
+    printed: "(helper)"
+    label: "Maximum employer contribution under the plan formula"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - {guard: {op: test, eq: [person.simple_kind, {const: "match"}]}, then: person.h_match_max}
+        - {guard: {op: test, eq: [person.simple_kind, {const: "nonelective"}]}, then: person.h_ne_max}
+  - id: person.h_er_allowed
+    printed: "(helper)"
+    label: "Employer contributions for yourself, up to the maximum"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.simple_employer, person.h_er_max]}
+  - id: person.h_simple_ded
+    printed: "(helper)"
+    label: "SIMPLE contributions for yourself"
+    type: NonNegDollars
+    expr: {op: sum, of: [person.h_def_allowed, person.h_er_allowed]}
+    note: "Pub. 560 ch. 3 limits are applied as follows. Salary reduction is capped at $16,500 plus the catch-up for the person's age, and not above compensation. The match is dollar-for-dollar up to 3% of compensation. The nonelective contribution is 2% of compensation up to $350,000. Contributions above the deductible maximum are screened by person.plan_screen."
+  - id: person.s16
+    printed: "(helper)"
+    label: "Self-employed SEP and SIMPLE contributions for yourself (Schedule 1, line 16), this person"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - {guard: {op: test, eq: [person.plan, {const: "none"}]}, then: person.zero}
+        - {guard: {op: test, eq: [person.plan, {const: "sep"}]}, then: person.h_sep_ded}
+        - {guard: {op: test, eq: [person.plan, {const: "simple"}]}, then: person.h_simple_ded}
+    refuses: [person.plan_screen]
+
+  - id: person.positive_profits
+    printed: "(helper)"
+    label: "Total of all net profits from Schedule C, line 31 (no net losses) (Form 7206, line 5)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: sc, field: sc.profit_pos}
+  - id: person.sehi
+    printed: "(helper)"
+    label: "Self-employed health insurance deduction (Form 7206, line 14)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: sc, field: sc.f7206_line14}
+  - id: person.qbi
+    printed: "(helper)"
+    label: "Qualified business income or (loss) (Form 8995, line 1(c)), this person's businesses"
+    type: Dollars
+    expr: {op: sum_over, collection: sc, field: sc.qbi}
+  - id: person.eic_se
+    printed: "(helper)"
+    label: "EIC Worksheet B line 1e: Schedule SE line 3 (plus line 4b and 5a) minus line 13"
+    type: Dollars
+    expr: {op: subtract, from: person.h_se3, take: person.se_line13}
+    note: "Lines 4b (optional methods) and 5a (church employee income) are screened by person.se_screen, so 1c equals Schedule SE line 3."
+  - id: person.sc_1a
+    printed: "(helper)"
+    label: "Businesses whose income includes qualified tips or overtime for Schedule 1-A"
+    type: Count
+    expr: {op: sum_over, collection: sc, field: sc.one, where: {op: test, eq: [sc.tips_ot, {const: true}]}}
+
   - id: person.dc_benefits
     printed: "(helper)"
-    label: "Dependent care benefits (Form W-2, box 10, excluding amounts reported as wages in box 1)"
+    label: "Dependent care benefits received (Form 2441, line 12), this person"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.dc_benefits}
-  - id: person.h_box10_count
+  - id: person.h_box10_n
     printed: "(helper)"
     label: "Number of Forms W-2 with an amount in box 10"
     type: Count
-    expr:
-      op: sum_over
-      collection: w2
-      field: w2.one
-      where: {op: test, eq: [w2.has_box10, {const: true}]}
+    expr: {op: sum_over, collection: w2, field: w2.one, where: {op: test, gt: [w2.box10, {const: 0}]}}
   - id: person.dc_has_box10
     printed: "(helper)"
     label: "Any Form W-2 shows dependent care benefits in box 10"
     type: Bool
-    expr: {op: test, gt: [person.h_box10_count, {const: 0, type: Count}]}
+    expr: {op: test, gt: [person.h_box10_n, {const: 0, type: Count}]}
   - id: person.dc_earned
     printed: "(helper)"
-    label: "Earned income for Form 2441 (line 4 or 5): Form W-2 box 1 wages plus Schedule SE line 3 minus Schedule 1 line 15"
+    label: "Earned income for Form 2441 lines 4/5: Form W-2 wages plus Schedule SE line 3 minus Schedule 1 line 15"
     type: Dollars
     expr: {op: sum, of: [person.box1, person.eic_se]}
-    note: "Form 1040 line 1z for this person is read as the box 1 total (other earned income is screened out)."
+    note: "Line 1z items other than 1a (Form W-2 box 1) are screened (scope.other_income), apart from 1e. Line 1e is a return-level amount from Form 2441 line 26 and cannot be attributed to one person, so it is not included. A self-employment loss reduces earned income, as the instructions require."
   - id: person.dc_earned_b
     printed: "(helper)"
-    label: "Earned income for Form 2441 lines 18 and 19 (does not include dependent care benefits shown on line 12)"
+    label: "Earned income for Form 2441 lines 18/19 (not including dependent care benefits shown on line 12)"
     type: Dollars
     expr: {op: copy, from: person.dc_earned}
-    note: "Line 12 benefits are not in box 1, so earned income needs no further reduction; read as equal to dc_earned."
+    note: "Line 12 excludes box 10 amounts already reported as wages in box 1, and the excluded benefits are not in box 1. So the line 18/19 earned income equals the credit earned income here."
 
-  # ---------- Form 1099-R aggregates ----------
-  - id: person.ira_amount_a
-    printed: "(helper)"
-    label: "IRA distributions (Form 1040, line 4a)"
-    type: NonNegDollars
-    expr:
-      op: sum_over
-      collection: retirement
-      field: retirement.amount_a
-      where: {op: test, eq: [retirement.is_ira, {const: true}]}
-  - id: person.ira_taxable
-    printed: "(helper)"
-    label: "IRA distributions, taxable amount (Form 1040, line 4b)"
-    type: NonNegDollars
-    expr:
-      op: sum_over
-      collection: retirement
-      field: retirement.taxable
-      where: {op: test, eq: [retirement.is_ira, {const: true}]}
-  - id: person.ira_rollovers
-    printed: "(helper)"
-    label: "Number of IRA distributions rolled over (line 4c, box 1)"
-    type: Count
-    expr:
-      op: sum_over
-      collection: retirement
-      field: retirement.one
-      where:
-        op: test
-        all:
-          - {op: test, eq: [retirement.is_ira, {const: true}]}
-          - {op: test, eq: [retirement.has_rollover, {const: true}]}
-  - id: person.plan_amount_a
-    printed: "(helper)"
-    label: "Pensions and annuities (Form 1040, line 5a)"
-    type: NonNegDollars
-    expr:
-      op: sum_over
-      collection: retirement
-      field: retirement.amount_a
-      where: {op: test, eq: [retirement.is_ira, {const: false}]}
-  - id: person.plan_taxable
-    printed: "(helper)"
-    label: "Pensions and annuities, taxable amount (Form 1040, line 5b)"
-    type: NonNegDollars
-    expr:
-      op: sum_over
-      collection: retirement
-      field: retirement.taxable
-      where: {op: test, eq: [retirement.is_ira, {const: false}]}
-  - id: person.plan_rollovers
-    printed: "(helper)"
-    label: "Number of pension or annuity distributions rolled over (line 5c, box 1)"
-    type: Count
-    expr:
-      op: sum_over
-      collection: retirement
-      field: retirement.one
-      where:
-        op: test
-        all:
-          - {op: test, eq: [retirement.is_ira, {const: false}]}
-          - {op: test, eq: [retirement.has_rollover, {const: true}]}
-  - id: person.sav_dist
-    printed: "(helper)"
-    label: "2025 distributions counted on Form 8880, line 4"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: retirement.sav_amount}
-
-  # ---------- Form 8880 ----------
   - id: person.sav_ineligible
     printed: "(helper)"
-    label: "The person who made the contribution was born after January 1, 2008, is claimed as a dependent, or was a student"
+    label: "Born after January 1, 2008, claimed as a dependent, or a student"
     type: Bool
     expr:
       op: test
@@ -592,42 +647,47 @@ lines:
         - {op: test, eq: [person.sav_born, {const: false}]}
         - {op: test, eq: [person.sav_claimed, {const: true}]}
         - {op: test, eq: [person.sav_student, {const: true}]}
-  - id: person.sav_line1
+  - id: person.h_sav_trad
     printed: "(helper)"
-    label: "Traditional and Roth IRA contributions for 2025 (Form 8880, line 1)"
-    type: NonNegDollars
-    expr: {op: sum, of: [person.ira_trad, person.sav_roth]}
-    refuses: [person.sav_able]
-  - id: person.h_w2_sav
-    printed: "(helper)"
-    label: "Elective deferrals shown in box 12 of Forms W-2"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: w2, field: w2.sav_deferral}
-  - id: person.h_simple_def_counted
-    printed: "(helper)"
-    label: "Self-employed SIMPLE salary reduction contributions (elective deferrals)"
+    label: "Traditional IRA contributions for 2025"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [person.plan, {const: "simple"}]}
-          then: person.simple_deferral
-        - guard: {op: test, ne: [person.plan, {const: "simple"}]}
-          then: person.zero
+        - {guard: {op: test, eq: [person.sav_trad, {const: true}]}, then: person.ira_trad}
+        - {guard: {op: test, eq: [person.sav_trad, {const: false}]}, then: person.zero}
+  - id: person.sav_line1
+    printed: "(helper)"
+    label: "Form 8880 line 1: traditional and Roth IRA contributions for 2025 (no rollovers)"
+    type: NonNegDollars
+    expr: {op: sum, of: [person.h_sav_trad, person.sav_roth]}
+    refuses: [person.sav_able]
+  - id: person.h_sav_w2
+    printed: "(helper)"
+    label: "Elective deferrals shown on Forms W-2, box 12"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: w2, field: w2.sav_deferral}
+  - id: person.h_sav_simple
+    printed: "(helper)"
+    label: "SIMPLE salary reduction contributions as a self-employed person"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - {guard: {op: test, eq: [person.plan, {const: "simple"}]}, then: person.simple_deferral}
+        - {guard: {op: test, ne: [person.plan, {const: "simple"}]}, then: person.zero}
   - id: person.sav_line2
     printed: "(helper)"
-    label: "Elective deferrals, voluntary employee contributions, and 501(c)(18)(D) contributions (Form 8880, line 2)"
+    label: "Form 8880 line 2: elective deferrals, voluntary employee contributions and 501(c)(18)(D) contributions"
     type: NonNegDollars
-    expr: {op: sum, of: [person.h_w2_sav, person.sav_voluntary, person.h_simple_def_counted]}
+    expr: {op: sum, of: [person.h_sav_w2, person.sav_voluntary, person.h_sav_simple]}
     refuses: [person.sav_excess]
 
-  # ---------- IRA Deduction Worksheet ----------
   - id: person.ira_contrib
     printed: "(helper)"
-    label: "Traditional IRA contributions for 2025 (worksheet line 11)"
+    label: "Traditional IRA contributions for 2025 (IRA Deduction Worksheet line 11)"
     type: NonNegDollars
     expr: {op: copy, from: person.ira_trad}
-    refuses: [person.ira_excess]
   - id: person.ira_cov
     printed: "(helper)"
     label: "Covered by a retirement plan at work or through self-employment (SEP or SIMPLE)"
@@ -637,9 +697,9 @@ lines:
       any:
         - {op: test, eq: [person.ira_work_plan, {const: true}]}
         - {op: test, ne: [person.plan, {const: "none"}]}
-  - id: person.h_line2_param
+  - id: person.h_line2_cov
     printed: "(helper)"
-    label: "Worksheet line 2 amount for your filing status"
+    label: "IRA worksheet line 2 amount for a covered person by filing status"
     type: NonNegDollars
     expr: {op: param, ref: ira.line2}
   - id: person.h_line2_nc
@@ -654,50 +714,36 @@ lines:
     expr:
       op: choose
       alternatives:
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [f1040.status, {const: "mfj"}]}
-              - {op: test, eq: [person.ira_cov, {const: false}]}
-          then: person.h_line2_nc
-        - guard:
-            op: test
-            not:
-              op: test
-              all:
-                - {op: test, eq: [f1040.status, {const: "mfj"}]}
-                - {op: test, eq: [person.ira_cov, {const: false}]}
-          then: person.h_line2_param
-    note: "Married filing separately and lived apart all year ($89,000) has no separate parameter; the status-keyed amount is used. The MFS lived-apart case is not distinguished here."
+        - {guard: {op: test, eq: [person.ira_cov, {const: true}]}, then: person.h_line2_cov}
+        - {guard: {op: test, eq: [person.ira_cov, {const: false}]}, then: person.h_line2_nc}
+    note: "$246,000 applies to a person not covered only on a joint return where the other spouse is covered. Return-level gates (ira.lines2to6, ira.cov_gate) decide where lines 2-6 are used. The $89,000 amount for married filing separately and lived apart is not available from the keyed parameter, whose MFS value is $10,000. That case must be screened at return level."
   - id: person.ira_line6
     printed: "(helper)"
-    label: "Subtract line 5 from line 2 (zero if line 5 is not less than line 2: none deductible)"
+    label: "IRA Deduction Worksheet line 6: subtract line 5 from line 2 (zero if line 5 is not less)"
     type: NonNegDollars
     expr: {op: subtract_floor0, from: person.ira_line2, take: ira.line5}
-  - id: person.h_ira_lim7000
+  - id: person.h_lim
     printed: "(helper)"
-    label: "$7,000 if under age 50"
+    label: "$7,000"
     type: NonNegDollars
     expr: {op: param, ref: ira.limit}
-  - id: person.h_ira_lim8000
+  - id: person.h_lim50
     printed: "(helper)"
-    label: "$8,000 if age 50 or older"
+    label: "$8,000"
     type: NonNegDollars
     expr: {op: param, ref: ira.limit_50}
   - id: person.h_ira_limit
     printed: "(helper)"
-    label: "Applicable contribution limit by age"
+    label: "$7,000 if under age 50; $8,000 if age 50 or older at the end of 2025"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [person.ira_age50, {const: true}]}
-          then: person.h_ira_lim8000
-        - guard: {op: test, eq: [person.ira_age50, {const: false}]}
-          then: person.h_ira_lim7000
-  - id: person.h_ira_joint
+        - {guard: {op: test, eq: [person.ira_age50, {const: true}]}, then: person.h_lim50}
+        - {guard: {op: test, eq: [person.ira_age50, {const: false}]}, then: person.h_lim}
+  - id: person.h_joint_cov
     printed: "(helper)"
-    label: "Married filing jointly or qualifying surviving spouse, column of a covered person"
+    label: "Married filing jointly or QSS, in the column of a covered person"
     type: Bool
     expr:
       op: test
@@ -707,109 +753,75 @@ lines:
             - {op: test, eq: [f1040.status, {const: "mfj"}]}
             - {op: test, eq: [f1040.status, {const: "qss"}]}
         - {op: test, eq: [person.ira_cov, {const: true}]}
-  - id: person.h_ira_thr_narrow
-    printed: "(helper)"
-    label: "$10,000"
-    type: NonNegDollars
-    expr: {op: param, ref: ira.full_narrow}
-  - id: person.h_ira_thr_joint
+  - id: person.h_full_joint
     printed: "(helper)"
     label: "$20,000"
     type: NonNegDollars
     expr: {op: param, ref: ira.full_joint}
-  - id: person.h_ira_thr
+  - id: person.h_full_narrow
+    printed: "(helper)"
+    label: "$10,000"
+    type: NonNegDollars
+    expr: {op: param, ref: ira.full_narrow}
+  - id: person.h_full
     printed: "(helper)"
     label: "Line 6 amount at or above which the full limit applies"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [person.h_ira_joint, {const: true}]}
-          then: person.h_ira_thr_joint
-        - guard: {op: test, eq: [person.h_ira_joint, {const: false}]}
-          then: person.h_ira_thr_narrow
-  - id: person.h_ira_full
+        - {guard: {op: test, eq: [person.h_joint_cov, {const: true}]}, then: person.h_full_joint}
+        - {guard: {op: test, eq: [person.h_joint_cov, {const: false}]}, then: person.h_full_narrow}
+  - id: person.h_p70
     printed: "(helper)"
-    label: "Line 6 result is the threshold or more"
-    type: Bool
-    expr: {op: test, ge: [person.ira_line6, person.h_ira_thr]}
-  - id: person.h_ira_m70
-    printed: "(helper)"
-    label: "Line 6 multiplied by 70%"
+    label: "Line 6 × 70%"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: person.ira_line6, rate: {param: ira.rate_70}}
-  - id: person.h_ira_m80
+  - id: person.h_p80
     printed: "(helper)"
-    label: "Line 6 multiplied by 80%"
+    label: "Line 6 × 80%"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: person.ira_line6, rate: {param: ira.rate_80}}
-  - id: person.h_ira_m35
+  - id: person.h_p35
     printed: "(helper)"
-    label: "Line 6 multiplied by 35%"
+    label: "Line 6 × 35%"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: person.ira_line6, rate: {param: ira.rate_35}}
-  - id: person.h_ira_m40
+  - id: person.h_p40
     printed: "(helper)"
-    label: "Line 6 multiplied by 40%"
+    label: "Line 6 × 40%"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: person.ira_line6, rate: {param: ira.rate_40}}
-  - id: person.h_ira_mult
+  - id: person.h_prod
     printed: "(helper)"
-    label: "Multiply line 6 by the percentage that applies to you"
+    label: "Line 6 multiplied by the applicable percentage"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [person.h_ira_joint, {const: true}]}
-              - {op: test, eq: [person.ira_age50, {const: true}]}
-          then: person.h_ira_m40
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [person.h_ira_joint, {const: true}]}
-              - {op: test, eq: [person.ira_age50, {const: false}]}
-          then: person.h_ira_m35
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [person.h_ira_joint, {const: false}]}
-              - {op: test, eq: [person.ira_age50, {const: true}]}
-          then: person.h_ira_m80
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [person.h_ira_joint, {const: false}]}
-              - {op: test, eq: [person.ira_age50, {const: false}]}
-          then: person.h_ira_m70
-  - id: person.h_ira_r
+        - guard: {op: test, all: [{op: test, eq: [person.h_joint_cov, {const: true}]}, {op: test, eq: [person.ira_age50, {const: false}]}]}
+          then: person.h_p35
+        - guard: {op: test, all: [{op: test, eq: [person.h_joint_cov, {const: true}]}, {op: test, eq: [person.ira_age50, {const: true}]}]}
+          then: person.h_p40
+        - guard: {op: test, all: [{op: test, eq: [person.h_joint_cov, {const: false}]}, {op: test, eq: [person.ira_age50, {const: false}]}]}
+          then: person.h_p70
+        - guard: {op: test, all: [{op: test, eq: [person.h_joint_cov, {const: false}]}, {op: test, eq: [person.ira_age50, {const: true}]}]}
+          then: person.h_p80
+  - id: person.h_prod_r
     printed: "(helper)"
     label: "If the result isn't a multiple of $10, increase it to the next multiple of $10"
     type: NonNegDollars
-    expr: {op: round, of: person.h_ira_mult, unit: 1000, rule: up}
+    expr: {op: round, of: person.h_prod, unit: 1000, rule: up}
   - id: person.h_ira_min
     printed: "(helper)"
     label: "$200"
     type: NonNegDollars
     expr: {op: param, ref: ira.min}
-  - id: person.h_ira_r200
+  - id: person.h_prod_min
     printed: "(helper)"
     label: "If the result is less than $200, enter $200"
     type: NonNegDollars
-    expr: {op: larger_of, of: [person.h_ira_r, person.h_ira_min]}
-  - id: person.h_ira_partial
-    printed: "(helper)"
-    label: "Line 7 when line 6 is less than the threshold (zero if line 6 answer is No)"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, le: [person.ira_line6, {const: 0}]}
-          then: person.zero
-        - guard: {op: test, gt: [person.ira_line6, {const: 0}]}
-          then: person.h_ira_r200
+    expr: {op: larger_of, of: [person.h_prod_r, person.h_ira_min]}
   - id: person.ira_line7
     printed: "(helper)"
     label: "IRA Deduction Worksheet line 7 (this person's column)"
@@ -819,53 +831,43 @@ lines:
       alternatives:
         - guard: {op: test, eq: [ira.anyone_covered, {const: false}]}
           then: person.h_ira_limit
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [ira.anyone_covered, {const: true}]}
-              - {op: test, eq: [person.h_ira_full, {const: true}]}
+        - guard: {op: test, all: [{op: test, eq: [ira.anyone_covered, {const: true}]}, {op: test, eq: [person.ira_line6, {const: 0}]}]}
+          then: person.zero
+        - guard: {op: test, all: [{op: test, eq: [ira.anyone_covered, {const: true}]}, {op: test, gt: [person.ira_line6, {const: 0}]}, {op: test, ge: [person.ira_line6, person.h_full]}]}
           then: person.h_ira_limit
-        - guard:
-            op: test
-            all:
-              - {op: test, eq: [ira.anyone_covered, {const: true}]}
-              - {op: test, eq: [person.h_ira_full, {const: false}]}
-          then: person.h_ira_partial
-  - id: person.h_ira_s12a
+        - guard: {op: test, all: [{op: test, eq: [ira.anyone_covered, {const: true}]}, {op: test, gt: [person.ira_line6, {const: 0}]}, {op: test, lt: [person.ira_line6, person.h_full]}]}
+          then: person.h_prod_min
+    note: "Line 6 'No' (line 5 not less than line 2) means 'None of your IRA contributions are deductible' (STOP). That case gives zero, not the $200 minimum."
+  - id: person.h_lim_contrib
     printed: "(helper)"
-    label: "Smaller of line 7 or line 10"
+    label: "Smaller of the contribution limit or traditional IRA contributions"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [person.ira_line7, ira.line10]}
+    expr: {op: smaller_of, of: [person.h_ira_limit, person.ira_trad]}
   - id: person.ira_deduction
     printed: "(helper)"
-    label: "Line 12: the smallest of line 7, 10, or 11. This is the most you can deduct"
+    label: "IRA Deduction Worksheet line 12: smallest of line 7, 10, or 11"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [person.h_ira_s12a, person.ira_contrib]}
+    expr: {op: smaller_of, of: [person.h_line7_11, ira.line10]}
     refuses: [person.ira_excess]
-  - id: person.h_ira_10_11
+  - id: person.h_line7_11
     printed: "(helper)"
-    label: "Smaller of worksheet line 10 or line 11"
+    label: "Smaller of line 7 or line 11"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [ira.line10, person.ira_contrib]}
+    expr: {op: smaller_of, of: [person.ira_line7, person.ira_trad]}
+  - id: person.h_10_11
+    printed: "(helper)"
+    label: "Smaller of IRA worksheet line 10 or line 11"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [ira.line10, person.ira_trad]}
   - id: person.ira_nondeductible
     printed: "(helper)"
     label: "Form 8606 line 1: smaller of worksheet line 10 or 11, minus line 12"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.h_ira_10_11, take: person.ira_deduction}
-  - id: person.ira_8606_line2
-    printed: "(helper)"
-    label: "Enter your total basis in traditional IRAs (Form 8606, line 2)"
-    type: NonNegDollars
-    expr: {op: copy, from: person.ira_basis}
-    refuses: [person.ira_basis_adjusted]
-  - id: person.h_8606_line3
-    printed: "(helper)"
-    label: "Add lines 1 and 2 (Form 8606, line 3)"
-    type: NonNegDollars
-    expr: {op: sum, of: [person.ira_nondeductible, person.ira_8606_line2]}
+    expr: {op: subtract_floor0, from: person.h_10_11, take: person.ira_deduction}
+    refuses: [person.ira_excess]
   - id: person.ira_files_8606
     printed: "(helper)"
-    label: "Must file Form 8606: nondeductible contributions for 2025, or distributions with basis more than zero"
+    label: "Form 8606 required (nondeductible contributions, or traditional IRA distributions with basis)"
     type: Bool
     expr:
       op: test
@@ -874,49 +876,47 @@ lines:
         - op: test
           all:
             - {op: test, eq: [person.ira_dist, {const: true}]}
-            - {op: test, gt: [person.ira_8606_line2, {const: 0}]}
+            - {op: test, gt: [person.ira_basis, {const: 0}]}
+  - id: person.ira_8606_line2
+    printed: "(helper)"
+    label: "Form 8606 line 2: total basis in traditional IRAs"
+    type: NonNegDollars
+    expr: {op: copy, from: person.ira_basis}
+    refuses: [person.ira_basis_adjusted]
   - id: person.ira_dist_gate
     printed: "(helper)"
-    label: "Distribution or conversion in 2025 with traditional IRA basis (Form 8606 lines 4 through 13 apply)"
+    label: "Form 8606 filed and a traditional IRA distribution or Roth conversion in 2025 (lines 4-13 needed)"
     type: Bool
     expr:
       op: test
       all:
+        - {op: test, eq: [person.ira_files_8606, {const: true}]}
         - {op: test, eq: [person.ira_dist, {const: true}]}
-        - {op: test, gt: [person.h_8606_line3, {const: 0}]}
   - id: person.ira_8606_line14
     printed: "(helper)"
-    label: "No distribution: enter the amount from line 3 on line 14 (total basis in traditional IRAs)"
+    label: "Form 8606 line 14 (no distribution: enter the amount from line 3, lines 1 + 2)"
     type: NonNegDollars
-    expr: {op: copy, from: person.h_8606_line3}
+    expr: {op: sum, of: [person.ira_nondeductible, person.ira_8606_line2]}
     refuses: [person.ira_dist_gate]
-  - id: person.h_ira_se1
-    printed: "(helper)"
-    label: "Net earnings from self-employment minus Schedule 1 line 15"
-    type: Dollars
-    expr: {op: subtract, from: person.sc_total, take: person.se_line13}
-  - id: person.ira_se
-    printed: "(helper)"
-    label: "Worksheet line 9: self-employed earned income minus Schedule 1 lines 15 and 16; if zero or less, enter -0-"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.h_ira_se1, take: person.s16}
   - id: person.ira_ssb
     printed: "(helper)"
-    label: "This person's wages for the IRA Deduction Worksheet, line 8 (Form W-2 box 1)"
+    label: "IRA deduction for the Social Security Benefits Worksheet (no one covered by a plan)"
     type: NonNegDollars
-    expr: {op: copy, from: person.box1}
-    note: "The pages do not determine what 'ira_ssb' denotes; read as this person's line 8 wages (box 1). If it is meant for a Pub. 915/590-A interaction, that case is screened by ssb.pub915."
+    expr: {op: smaller_of, of: [person.h_lim_contrib, ira.line10]}
+    note: "Not named by the IRS text. When IRA contributions are made and anyone is covered by a plan, the line 6a/6b instructions require Pub. 590-A (ssb.pub915 screen). Otherwise the deduction is the smallest of the limit, earned income (line 10) and contributions, independent of AGI. That is the reading used."
+  - id: person.ira_se
+    printed: "(helper)"
+    label: "IRA worksheet line 9 component: net earnings from self-employment minus Schedule 1 lines 15 and 16 (if zero or less, -0-)"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: person.eic_se, take: person.s16}
 
-  # ---------- Form 8863 (this person as student) ----------
   - id: person.edu_kid
     printed: "(helper)"
-    label: "Line 7 conditions: under 18, or 18 or full-time student 19-23 with earned income under half of support; a parent alive; not filing jointly"
+    label: "Form 8863 line 7 conditions: under 24 conditions met, a parent alive, and not filing jointly"
     type: Bool
     expr:
       op: test
       all:
-        - {op: test, eq: [person.edu_parent, {const: true}]}
-        - {op: test, ne: [f1040.status, {const: "mfj"}]}
         - op: test
           any:
             - {op: test, eq: [person.sav_born, {const: false}]}
@@ -931,178 +931,56 @@ lines:
                 - {op: test, eq: [person.edu_born_2002, {const: false}]}
                 - {op: test, eq: [person.edu_fulltime, {const: true}]}
                 - {op: test, eq: [person.edu_half_support, {const: true}]}
-    note: "Age bands from birth dates: sav_born false = under 18; sav_born true and edu_born_2007 false = 18; edu_born_2007 true and edu_born_2002 false = 19 to 23."
-  - id: person.h_edu_adj
-    printed: "(helper)"
-    label: "Total adjustments (Adjusted Qualified Education Expenses Worksheet line 3)"
-    type: NonNegDollars
-    expr: {op: sum, of: [person.edu_a2025, person.edu_a2026, person.edu_refunds]}
-  - id: person.h_edu_any
-    printed: "(helper)"
-    label: "Qualified expenses paid, Form 1098-T requirement met, student TIN issued by the due date"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [person.edu, {const: true}]}
-        - {op: test, eq: [person.edu_1098t, {const: true}]}
-        - {op: test, eq: [person.tin, {const: true}]}
-  - id: person.h_edu_aoc
-    printed: "(helper)"
-    label: "Lines 23-26 lead to lines 27 through 30, and the institution's EIN is provided"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [person.h_edu_any, {const: true}]}
-        - {op: test, eq: [person.edu_line23, {const: false}]}
-        - {op: test, eq: [person.edu_line24, {const: true}]}
-        - {op: test, eq: [person.edu_line25, {const: false}]}
-        - {op: test, eq: [person.edu_line26, {const: false}]}
-        - {op: test, eq: [person.edu_ein, {const: true}]}
-  - id: person.h_edu_llc
-    printed: "(helper)"
-    label: "Go to line 31 for this student"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [person.h_edu_any, {const: true}]}
-        - {op: test, eq: [person.h_edu_aoc, {const: false}]}
-  - id: person.h_aqee27
-    printed: "(helper)"
-    label: "Adjusted qualified education expenses, not more than $4,000"
-    type: NonNegDollars
-    expr:
-      op: copy
-      from: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.h_edu_adj}, line: line27}
-  - id: person.h_aqee28
-    printed: "(helper)"
-    label: "Subtract $2,000 from line 27"
-    type: NonNegDollars
-    expr:
-      op: copy
-      from: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.h_edu_adj}, line: line28}
-  - id: person.h_aqee29
-    printed: "(helper)"
-    label: "Multiply line 28 by 25%"
-    type: NonNegDollars
-    expr:
-      op: copy
-      from: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.h_edu_adj}, line: line29}
-  - id: person.h_aqee30
-    printed: "(helper)"
-    label: "Line 30 amount"
-    type: NonNegDollars
-    expr:
-      op: copy
-      from: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.h_edu_adj}, line: line30}
-  - id: person.h_aqee31
-    printed: "(helper)"
-    label: "Adjusted qualified education expenses for the lifetime learning credit"
-    type: NonNegDollars
-    expr:
-      op: copy
-      from: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.h_edu_adj}, line: ws4_llc}
-  - id: person.edu_line27
-    printed: "27"
-    label: "Adjusted qualified education expenses (see instructions). Don't enter more than $4,000"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [person.h_edu_aoc, {const: true}]}
-          then: person.h_aqee27
-        - guard: {op: test, eq: [person.h_edu_aoc, {const: false}]}
-          then: person.zero
-    refuses: [person.edu_over]
-  - id: person.edu_line28
-    printed: "28"
-    label: "Subtract $2,000 from line 27. If zero or less, enter -0-"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [person.h_edu_aoc, {const: true}]}
-          then: person.h_aqee28
-        - guard: {op: test, eq: [person.h_edu_aoc, {const: false}]}
-          then: person.zero
-    refuses: [person.edu_over]
-  - id: person.edu_line29
-    printed: "29"
-    label: "Multiply line 28 by 25% (0.25)"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [person.h_edu_aoc, {const: true}]}
-          then: person.h_aqee29
-        - guard: {op: test, eq: [person.h_edu_aoc, {const: false}]}
-          then: person.zero
-    refuses: [person.edu_over]
-  - id: person.edu_line30
-    printed: "30"
-    label: "If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [person.h_edu_aoc, {const: true}]}
-          then: person.h_aqee30
-        - guard: {op: test, eq: [person.h_edu_aoc, {const: false}]}
-          then: person.zero
-    refuses: [person.edu_over]
-  - id: person.edu_line31
-    printed: "31"
-    label: "Adjusted qualified education expenses (lifetime learning credit)"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - guard: {op: test, eq: [person.h_edu_llc, {const: true}]}
-          then: person.h_aqee31
-        - guard: {op: test, eq: [person.h_edu_llc, {const: false}]}
-          then: person.zero
-    refuses: [person.edu_over]
-    note: "No 1098-T, no student TIN or no expenses gives no credit (zero). A missing EIN moves the student from the AOC to line 31."
+        - {op: test, eq: [person.edu_parent, {const: true}]}
+        - {op: test, ne: [f1040.status, {const: "mfj"}]}
+    note: "Ages at the end of 2025 are read from the birth-date questions. Born after Jan 1, 2008 means under 18. Born before Jan 2, 2008 but not before Jan 2, 2007 means age 18. Born before Jan 2, 2007 but not before Jan 2, 2002 means over 18 and under 24. This uses the rule that a person reaches an age on the day before the birthday."
 
-  # ---------- Form 5329 Part I and VII (this person) ----------
   - id: person.x_l1
     printed: "(helper)"
-    label: "Early distributions includible in income (Form 5329, line 1)"
+    label: "Form 5329 line 1: early distributions includible in income"
     type: NonNegDollars
     expr: {op: sum_over, collection: retirement, field: retirement.l1}
-  - id: person.x_c05
+  - id: person.h_l2_raw
     printed: "(helper)"
-    label: "Distributions claimed under exception 05 (unreimbursed medical expenses)"
+    label: "Early distributions covered by an exception, before per-person limits"
     type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: retirement.l2_e05}
+    expr: {op: sum_over, collection: retirement, field: retirement.l2}
   - id: person.h_e09
     printed: "(helper)"
-    label: "Distributions claimed under exception 09 (first home)"
+    label: "First home (09) amounts"
     type: NonNegDollars
     expr: {op: sum_over, collection: retirement, field: retirement.l2_e09}
-  - id: person.h_cap09_base
+  - id: person.h_e19
+    printed: "(helper)"
+    label: "Birth or adoption (19) amounts"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: retirement, field: retirement.l2_e19}
+  - id: person.h_e22
+    printed: "(helper)"
+    label: "Domestic abuse (22) amounts"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: retirement, field: retirement.l2_e22}
+  - id: person.h_e23
+    printed: "(helper)"
+    label: "Emergency personal expense (23) amounts"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: retirement, field: retirement.l2_e23}
+  - id: person.h_cap_first
     printed: "(helper)"
     label: "$10,000 first-home limit"
     type: NonNegDollars
     expr: {op: param, ref: f5329.cap_first_home}
   - id: person.h_cap09
     printed: "(helper)"
-    label: "First-home limit reduced by prior qualified first-time homebuyer distributions"
+    label: "$10,000 reduced by prior first-home distributions"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.h_cap09_base, take: person.x_prior09}
+    expr: {op: subtract_floor0, from: person.h_cap_first, take: person.x_prior09}
   - id: person.h_e09c
     printed: "(helper)"
-    label: "Exception 09 amount, not more than the remaining $10,000"
+    label: "First home exception, limited"
     type: NonNegDollars
     expr: {op: smaller_of, of: [person.h_e09, person.h_cap09]}
-  - id: person.h_e19
-    printed: "(helper)"
-    label: "Distributions claimed under exception 19 (birth or adoption)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: retirement.l2_e19}
-  - id: person.h_cap19_each
+  - id: person.h_cap_birth
     printed: "(helper)"
     label: "$5,000 per birth or adoption"
     type: NonNegDollars
@@ -1111,145 +989,126 @@ lines:
     printed: "(helper)"
     label: "$5,000 times the number of births or adoptions"
     type: NonNegDollars
-    expr: {op: multiply_count, amount: person.h_cap19_each, count: person.x_births}
+    expr: {op: multiply_count, amount: person.h_cap_birth, count: person.x_births}
   - id: person.h_e19c
     printed: "(helper)"
-    label: "Exception 19 amount, not more than the limit"
+    label: "Birth or adoption exception, limited"
     type: NonNegDollars
     expr: {op: smaller_of, of: [person.h_e19, person.h_cap19]}
-  - id: person.h_e22
-    printed: "(helper)"
-    label: "Distributions claimed under exception 22 (domestic abuse)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: retirement.l2_e22}
-  - id: person.h_cap22
+  - id: person.h_cap_abuse
     printed: "(helper)"
     label: "$10,300 domestic abuse limit"
     type: NonNegDollars
     expr: {op: param, ref: f5329.cap_abuse}
   - id: person.h_e22c
     printed: "(helper)"
-    label: "Exception 22 amount, not more than $10,300"
+    label: "Domestic abuse exception, limited"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [person.h_e22, person.h_cap22]}
-  - id: person.h_e23
-    printed: "(helper)"
-    label: "Distributions claimed under exception 23 (emergency personal expense)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: retirement.l2_e23}
-  - id: person.h_cap23
+    expr: {op: smaller_of, of: [person.h_e22, person.h_cap_abuse]}
+  - id: person.h_cap_emerg
     printed: "(helper)"
     label: "$1,000 emergency expense limit"
     type: NonNegDollars
     expr: {op: param, ref: f5329.cap_emergency}
   - id: person.h_e23c
     printed: "(helper)"
-    label: "Exception 23 amount, not more than $1,000"
+    label: "Emergency expense exception, limited"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [person.h_e23, person.h_cap23]}
-  - id: person.h_n23
+    expr: {op: smaller_of, of: [person.h_e23, person.h_cap_emerg]}
+  - id: person.h_limited_raw
     printed: "(helper)"
-    label: "Number of emergency personal expense distributions in 2025"
-    type: Count
-    expr:
-      op: sum_over
-      collection: retirement
-      field: retirement.one
-      where: {op: test, eq: [retirement.exception, {const: "e23"}]}
-  - id: person.x_two23
-    printed: "(helper)"
-    label: "More than one emergency personal expense distribution in the calendar year (limited to one per year)"
-    type: Bool
-    expr: {op: test, gt: [person.h_n23, {const: 1, type: Count}]}
-  - id: person.h_raw_limited
-    printed: "(helper)"
-    label: "Exceptions 09, 19, 22 and 23 before the dollar limits"
+    label: "Limited-exception amounts before limits"
     type: NonNegDollars
     expr: {op: sum, of: [person.h_e09, person.h_e19, person.h_e22, person.h_e23]}
   - id: person.x_limited_sum
     printed: "(helper)"
-    label: "Exceptions 09, 19, 22 and 23 after the per-person dollar limits"
+    label: "Limited-exception amounts after per-person limits"
     type: NonNegDollars
     expr: {op: sum, of: [person.h_e09c, person.h_e19c, person.h_e22c, person.h_e23c]}
-    refuses: [person.x_two23]
-  - id: person.x_limit_binds
-    printed: "(helper)"
-    label: "A per-person dollar limit reduces the excluded amount"
-    type: Bool
-    expr: {op: test, gt: [person.h_raw_limited, person.x_limited_sum]}
   - id: person.x_other_exc
     printed: "(helper)"
-    label: "Early distributions not subject to the additional tax under exceptions without a per-person dollar limit"
+    label: "Exception amounts not subject to a per-person dollar limit"
     type: NonNegDollars
-    expr:
-      op: sum_over
-      collection: retirement
-      field: retirement.l2
-      where:
-        op: test
-        not:
-          op: test
-          any:
-            - {op: test, eq: [retirement.exception, {const: "e09"}]}
-            - {op: test, eq: [retirement.exception, {const: "e19"}]}
-            - {op: test, eq: [retirement.exception, {const: "e22"}]}
-            - {op: test, eq: [retirement.exception, {const: "e23"}]}
-    note: "Exception 05 is counted here; its AGI limit is checked at return level (s2.e05_over)."
+    expr: {op: subtract_floor0, from: person.h_l2_raw, take: person.h_limited_raw}
   - id: person.x_l2_all
     printed: "(helper)"
-    label: "Early distributions included on line 1 that are not subject to the additional tax (Form 5329, line 2)"
+    label: "Form 5329 line 2: early distributions not subject to the additional tax"
     type: NonNegDollars
     expr: {op: sum, of: [person.x_other_exc, person.x_limited_sum]}
+  - id: person.x_limit_binds
+    printed: "(helper)"
+    label: "A per-person dollar limit reduces an exception amount"
+    type: Bool
+    expr: {op: test, gt: [person.h_limited_raw, person.x_limited_sum]}
   - id: person.x_l1_s
     printed: "(helper)"
-    label: "Early distributions from a SIMPLE IRA within 2 years of first participation (code S)"
+    label: "Line 1 amounts from a SIMPLE IRA within the first 2 years (code S)"
     type: NonNegDollars
     expr: {op: sum_over, collection: retirement, field: retirement.l1_s}
   - id: person.x_l2_s
     printed: "(helper)"
-    label: "Of those SIMPLE distributions, the part not subject to the additional tax"
+    label: "Line 2 exception amounts on code S distributions"
     type: NonNegDollars
     expr: {op: sum_over, collection: retirement, field: retirement.l2_s}
+  - id: person.h_s_split
+    printed: "(helper)"
+    label: "A dollar limit reduces exceptions while code S distributions have exceptions (allocation between 10% and 25% undetermined)"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [person.x_limit_binds, {const: true}]}
+        - {op: test, gt: [person.x_l2_s, {const: 0}]}
   - id: person.h_l3
     printed: "(helper)"
-    label: "Amount subject to additional tax. Subtract line 2 from line 1 (Form 5329, line 3)"
+    label: "Form 5329 line 3: subtract line 2 from line 1"
     type: NonNegDollars
     expr: {op: subtract_floor0, from: person.x_l1, take: person.x_l2_all}
-  - id: person.h_l3_s0
-    printed: "(helper)"
-    label: "SIMPLE part of line 3 before the overall cap"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.x_l1_s, take: person.x_l2_s}
   - id: person.h_l3_s
     printed: "(helper)"
-    label: "Part of line 3 that was a distribution from a SIMPLE IRA (25%)"
+    label: "Part of line 3 from a SIMPLE IRA within 2 years"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [person.h_l3_s0, person.h_l3]}
+    expr: {op: subtract_floor0, from: person.x_l1_s, take: person.x_l2_s}
   - id: person.h_l3_other
     printed: "(helper)"
-    label: "Rest of line 3 (10%)"
+    label: "Rest of line 3"
     type: NonNegDollars
     expr: {op: subtract_floor0, from: person.h_l3, take: person.h_l3_s}
+  - id: person.h_tax10
+    printed: "(helper)"
+    label: "10% of line 3 (other than SIMPLE within 2 years)"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: person.h_l3_other, rate: {param: f5329.early_rate}}
   - id: person.h_tax25
     printed: "(helper)"
     label: "25% of the SIMPLE IRA amount"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: person.h_l3_s, rate: {param: f5329.simple_rate}}
-  - id: person.h_tax10
+  - id: person.x_hsa_excess
     printed: "(helper)"
-    label: "10% (0.10) of the rest of line 3"
+    label: "Form 5329 line 47/48: excess contributions to HSAs for 2025"
     type: NonNegDollars
-    expr: {op: multiply_rate, amount: person.h_l3_other, rate: {param: f5329.early_rate}}
+    expr: {op: sum_over, collection: f8889, field: f8889.excess_amt}
+    note: "Prior-year excess (lines 42-46) is screened by person.x_other, so line 48 equals line 47."
+  - id: person.h_l48
+    printed: "(helper)"
+    label: "Smaller of line 48 or the value of your HSAs on December 31, 2025"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.x_hsa_excess, person.x_hsa_value]}
+  - id: person.h_l49
+    printed: "(helper)"
+    label: "Form 5329 line 49: 6% additional tax"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: person.h_l48, rate: {param: f5329.excess_rate}}
   - id: person.x_tax
     printed: "(helper)"
-    label: "Additional tax on early distributions (Form 5329, line 4)"
+    label: "Form 5329 additional taxes (lines 4 and 49) included on Schedule 2, line 8"
     type: NonNegDollars
-    expr: {op: sum, of: [person.h_tax25, person.h_tax10]}
-    refuses: [person.x_other]
-    note: "Where a dollar limit binds and SIMPLE (25%) distributions are present, the instructions do not say which pool loses the exclusion; the SIMPLE-specific exclusion is applied as entered."
-  - id: person.x_must
+    expr: {op: sum, of: [person.h_tax10, person.h_tax25, person.h_l49]}
+    refuses: [person.x_other, person.h_s_split]
+  - id: person.h_must_ret
     printed: "(helper)"
-    label: "Number of early distributions that require Form 5329 (an exception claimed, or code other than 1)"
+    label: "Early distributions needing Form 5329 (exception claimed, or not code 1)"
     type: Count
     expr:
       op: sum_over
@@ -1263,10 +1122,30 @@ lines:
             any:
               - {op: test, eq: [retirement.has_exception, {const: true}]}
               - {op: test, ne: [retirement.code, {const: "early_1"}]}
-  - id: person.x_hsa_excess
+  - id: person.h_must_hsa
     printed: "(helper)"
-    label: "Excess HSA contributions for 2025, including excess employer contributions (Form 5329, line 47)"
+    label: "Forms 8889 with excess HSA contributions"
+    type: Count
+    expr: {op: sum_over, collection: f8889, field: f8889.one, where: {op: test, eq: [f8889.excess, {const: true}]}}
+  - id: person.x_must
+    printed: "(helper)"
+    label: "Reasons Form 5329 must be filed (zero if the 10% tax can be reported directly on Schedule 2, line 8)"
+    type: Count
+    expr: {op: sum, of: [person.h_must_ret, person.h_must_hsa]}
+    note: "Form 5329 need not be filed when code 1 is shown on all Forms 1099-R and the tax is owed on the full amount. It must be filed for an exception or an excess HSA contribution."
+  - id: person.x_c05
+    printed: "(helper)"
+    label: "Medical expense (05) exception amounts claimed"
     type: NonNegDollars
-    expr: {op: sum_over, collection: f8889, field: f8889.excess_amt}
-    refuses: [person.x_other]
+    expr: {op: sum_over, collection: retirement, field: retirement.l2_e05}
+  - id: person.h_e23_n
+    printed: "(helper)"
+    label: "Number of emergency personal expense distributions"
+    type: Count
+    expr: {op: sum_over, collection: retirement, field: retirement.one, where: {op: test, eq: [retirement.is_e23, {const: true}]}}
+  - id: person.x_two23
+    printed: "(helper)"
+    label: "More than one emergency personal expense distribution in 2025 (limited to one per calendar year)"
+    type: Bool
+    expr: {op: test, gt: [person.h_e23_n, {const: 1, type: Count}]}
 ```

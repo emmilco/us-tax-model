@@ -539,7 +539,7 @@
 
 ## (helper) — `dependent.dc_count`
 
-- **Authored helper label:** One qualifying person
+- **Authored helper label:** One, for every entry (counted as a qualifying person only where dependent.dc_qp holds)
 - **Encoded (Count):** Enter 1 (dependent.one).
 - Expr: `{"op":"param","ref":"dependent.one"}`
 - Cite: [i2441] p. 3, Line 2, "Complete columns (a) through (d) for each qualifying person"; p. 3, Column (b), "You must enter the qualifying person's SSN" (a qualifying person is a dependent, and a dependent without an SSN, ITIN or ATIN is refused where the person is counted as a dependent) (2025; sha256 86f0669e)

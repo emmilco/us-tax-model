@@ -70,6 +70,28 @@ and reaches neither transport nor the keychain.
 python3 tools/transcription/transport_check.py [--model deepseek-flash]   # one tiny call; prints model and usage
 ```
 
+### Cost ledger
+
+Every call that reaches a transport (`call_model`, used by transcription,
+render, class M, completeness, screen, table and transport checks) appends one
+JSON line to `.transcription/costs.jsonl`, success or failure: timestamp,
+tool, kind, subject (form, job or screen), model requested and reported,
+transport, prompt and system characters, the usage fields as reported,
+`cost_usd` as reported, `estimated_cost_usd` with its `price_basis`, duration
+and outcome. Each line is one `write()` on an `O_APPEND` descriptor, so
+concurrent reviews do not interleave lines. Receipts are overwritten at each
+rerun; the ledger is not. It enters no prompt, receipt or meta.
+
+The estimate uses `prices.json`: Claude's reported cost; DeepSeek's peak or
+off-peak rate by the call's UTC hour (Chinese public holidays are not
+modelled); GPT-6 Astra at the API list price, which is an equivalent rather
+than a bill when codex runs under a ChatGPT plan. Each price names the page it
+was read from; a model without a cited price is left unpriced.
+
+```
+python3 tools/transcription/costs.py [--by day,family,kind,form] [--since 2026-11-01] [--json]
+```
+
 ## Model families
 
 The owner's selected second-family model is `deepseek-flash` (correction 2026-10-23), and
@@ -233,11 +255,40 @@ that other forms read (for example `qbi.deduction`, `ftc.credit`, the
 per-person W-2 totals) and the result lines of the shared definitions
 (`tax_on_amount.tax`, `tcw.tax`) are listed in the prompt by id and compared
 by id after full expansion, since no printed line exposes their logic. The
-prompt also lists the collections with their entry fields, enumerations,
-year parameters and every other form's ids, printed markers and types.
-Computed labels and expressions are omitted from every catalog, including
-exported helpers and collection fields (`source-only-computation-v2`). Input
-questions and refusal-screen interfaces remain explicit shared assumptions.
+prompt also lists enumerations, year parameters, every refusal-gate input of
+every form (the screening list, with each gate's form, printed marker, type
+and question) and a catalog of other forms' and collections' ids, printed
+markers and types. Computed labels and expressions are omitted from every
+catalog, including exported helpers and collection fields. Input questions and
+refusal-screen interfaces remain explicit shared assumptions.
+
+The catalog is a subset chosen from the IRS source alone
+(`catalog_selection` in transcribe.py; `source-only-computation-v3`). Another
+form or collection is listed, whole, when:
+
+- it is a shared definition (`tax_on_amount`, `tcw`, `se`, `aqee`): always;
+- its own source pages (the pages its own review is given) share a page with
+  the reviewed form's excerpt;
+- the excerpt, or the whole archived document it is cut from, names an IRS
+  form or schedule the other form belongs to ("Form 8962", "Schedule B"); a
+  form belongs to the IRS forms whose documents it cites (fNNNN, or the form
+  of its iNNNN instructions if it cites no form document);
+- that text names the IRS worksheet the other form's title names ("Qualified
+  Dividends and Capital Gain Tax Worksheet");
+- that text names a form line ("Form 1040 or 1040-SR, line 2b", "line 17 of
+  Schedule 1") the other form feeds: by its IRS title ("...Worksheet A—Line
+  27a") or by an "enter ... on" sentence in its source pages or its own form
+  documents.
+
+The general Form 1040 instructions (`i1040gi`) count only by their excerpt
+pages, since their whole text names every form. Nothing in the selection reads
+the reviewed form's expressions, refusal lists or visibility conditions, so the
+catalog does not show which foreign lines the project reads. The log's "Other
+documents in the catalog" table records what was listed and why. Where the
+project reads a line the rule does not reach, the required-interface check
+(`input_context.assess`) reports it missing and the review cannot qualify;
+the remedy is a source citation that reaches the naming page, not a
+hand-picked catalog entry.
 The input interface is closed: a reviewer must encode the supported slice
 using those inputs and document excluded cases. Shared IR conventions explain
 parameter selection and result propagation after an IRS STOP without supplying

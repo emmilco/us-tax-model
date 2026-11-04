@@ -61,10 +61,24 @@
    "context": "c5d32ef54a7054781c0615a3d7747434f2008210f01c2e5c0d5c5fb828d7b47d"
   },
   {
+   "printed": "(b)",
+   "restated": "Input — The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in service earlier is outside this tool)",
+   "model": "The program records only a year. Form 4562 column (b) instructions say \"Enter the date the property was placed in service.\" The low-use refusal properly excludes vehicles reported on line 27.",
+   "ruling": "Ruling: representation; same as the earlier ruling. The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; no value depends on the month or day except through the quarter, asked separately.",
+   "context": "33e428133077416cb394847bd6dcb894f78612b1132d951f4f348a530353efb0"
+  },
+  {
    "printed": "(d)",
    "restated": "Input — The vehicle's cost (including sales tax) or other basis, not reduced by any section 179 deduction or depreciation",
    "model": "The restatement matches \"actual cost (including sales tax) or other basis (unadjusted for prior years' depreciation)\", but it leaves out the rule for converted vehicles: \"If you converted the property from personal use to business/investment use, your basis for depreciation is the smaller of the property's adjusted basis or its fair market value on the date of conversion.\" The screen does not exclude conversions.",
    "ruling": "Ruling: fixed; restatement now matches. The cost question now says that for a vehicle converted from personal use the basis is the smaller of its adjusted basis or its fair market value on the date of conversion (i4562, Column (d)), as the property question already did."
+  },
+  {
+   "printed": "(i)",
+   "restated": "Input — The amount of this vehicle's cost you elect to expense under section 179 (zero if none)",
+   "model": "The program prints the raw election. It is not limited to the passenger automobile cap and is not set to zero for a vehicle placed in service before 2025. Column (i) is the amount elected \"(subject to the limits for passenger automobiles)\". Section 179 applies only to property \"placed in service during the tax year\".",
+   "ruling": "Ruling: finding (low); the model says the printed column (i) is the raw election, not limited for a passenger automobile and not zero for an earlier vehicle. i4562 p. 16, Column (i): \"Enter the amount you elect to expense for section 179 property used more than 50% in a qualified business use (subject to the limits for passenger automobiles)\"; p946 worksheet line 10, \"(not more than line 9)\". The deduction is capped (scveh.line10 is the smaller of the election and line 9, and scveh.s179_2025 reads line 10), but the column (i) input is displayed as answered, so a passenger automobile whose election exceeds line 9 shows more in column (i) than it deducts; scveh.s179_bad refuses only an election above the business cost or the SUV limit. No tax amount differs. The earlier-vehicle part is not reachable: the election is read only for a 2025 vehicle (fixture stage14.veh.heavy_2019 completes without it). See `.transcription/proposed/rf/scveh.findings.md`, Low.",
+   "context": "33e428133077416cb394847bd6dcb894f78612b1132d951f4f348a530353efb0"
   },
   {
    "printed": "10",
@@ -261,6 +275,13 @@
    "ruling": "Ruling: representation; project retained. The automobile worksheet lines are figured for every vehicle but read only for a passenger automobile: the vehicle's special allowance (scveh.bonus_v) takes line 25 only when scveh.passenger is true and line 16 otherwise, and column (h) takes line 20 only through scveh.macrs_pass, the passenger-automobile route. A vehicle that is not a passenger automobile is not limited."
   },
   {
+   "printed": "25",
+   "restated": "Enter the smaller of line 16 or line 11.",
+   "model": "The program prints line 25 only for passenger automobiles under the limits. A listed-property vehicle outside the limits, such as a heavier SUV, with a special allowance gets no line 25. Line 25 says \"Enter on line 25 your total special depreciation allowance for all qualified listed property\", and listed property includes \"SUVs\".",
+   "ruling": "Ruling: representation; same as the earlier ruling (restatement and objection unchanged). The vehicle's special allowance (scveh.bonus_v) takes line 25 only for a passenger automobile under the limits and line 16 otherwise; a vehicle that is not a passenger automobile is not limited.",
+   "context": "33e428133077416cb394847bd6dcb894f78612b1132d951f4f348a530353efb0"
+  },
+  {
    "printed": "43",
    "restated": "Input — The year you first placed this vehicle in service for business purposes (for example 2023)",
    "model": "Schedule C line 43 asks for a full date: \"When did you place your vehicle in service for business purposes? (month/day/year)\". The restatement collects only the year (a Count), so the printed entry would lack the month and day.",
@@ -311,6 +332,13 @@
    "restated": "Input — The year you first placed this vehicle in service for business purposes (for example 2023)",
    "model": "The form asks for the full date the vehicle was placed in service: \"When did you place your vehicle in service for business purposes? (month/day/year)\". The restatement asks only for the year.",
    "ruling": "Ruling: representation; restatement accepted. The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; the filer writes the full date on Schedule C line 43 and Form 4562 from their own records. No value depends on the month or day except through the quarter, which is asked separately."
+  },
+  {
+   "printed": "43",
+   "restated": "Input — The year you first placed this vehicle in service for business purposes (for example 2023)",
+   "model": "The program asks only for the year (for example 2023). Schedule C line 43 asks for a full date: \"When did you place your vehicle in service for business purposes? (month/day/year)\".",
+   "ruling": "Ruling: representation; same as the earlier ruling (restatement and objection unchanged). The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; the filer writes the full date on Schedule C line 43 from their own records.",
+   "context": "33e428133077416cb394847bd6dcb894f78612b1132d951f4f348a530353efb0"
   },
   {
    "printed": "43",

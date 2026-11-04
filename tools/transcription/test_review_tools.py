@@ -639,7 +639,7 @@ class CompleteInputContext(unittest.TestCase):
 
     def test_late_scope_exception_survives_refusal_catalog(self):
         question = "Outside scope? " + "Public screening detail. " * 14 + "Except the specifically included timing case."
-        gate = {"id": "fake.gate", "expr": {"op": "input", "source": question}}
+        gate = {"id": "fake.gate", "printed": "(screen)", "type": "Bool", "expr": {"op": "input", "source": question}}
         target = {"id": "fake.result", "expr": {"op": "copy", "from": "fake.amount"}, "refuses": [{"when": "fake.gate"}]}
         with patch.object(T, "load_all_lines", return_value={"fake.gate": ("fake", gate), "fake.result": ("fake", target)}):
             self.assertIn(question, T.screen_notes())
@@ -1445,6 +1445,126 @@ class ResponseProvenance(unittest.TestCase):
             T.main()
         self.assertTrue(Path(self.base + ".preview.prompt.txt").exists())
         self.assertEqual(before, {suffix: Path(self.base + suffix).read_bytes() for suffix in before})
+
+
+class CostLedger(unittest.TestCase):
+    META = {"model_reported": ["deepseek-flash"], "usage": {"prompt_tokens": 1000, "completion_tokens": 100,
+            "prompt_cache_hit_tokens": 200, "prompt_cache_miss_tokens": 800}, "cost_usd": None, "transport": "deepseek"}
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.ledger = Path(self.temp.name, T.LEDGER_NAME)
+
+    def tearDown(self):
+        self.temp.cleanup()
+
+    def rows(self):
+        return [json.loads(line) for line in self.ledger.read_text().splitlines()]
+
+    def test_success_and_failure_each_append_one_line_without_touching_meta(self):
+        meta = json.loads(json.dumps(self.META))
+        with patch.object(T, "RAW", self.temp.name), patch.object(families, "selected_model", return_value="deepseek-flash"), \
+                patch.object(T, "_call_deepseek", return_value=("lines: []", meta)):
+            text, got = T.call_model("PUBLIC", "deepseek-flash", kind="render", subject="f8962")
+        self.assertEqual((text, got), ("lines: []", self.META))
+        with patch.object(T, "RAW", self.temp.name), patch.object(families, "selected_model", return_value="deepseek-flash"), \
+                patch.object(T, "_call_deepseek", side_effect=RuntimeError("deepseek HTTP 500")):
+            with self.assertRaisesRegex(RuntimeError, "HTTP 500"):
+                T.call_model("PUBLIC", "deepseek-flash", kind="render", subject="f8962")
+        ok, failed = self.rows()
+        self.assertEqual((ok["kind"], ok["subject"], ok["model_requested"], ok["transport"], ok["prompt_chars"], ok["outcome"]),
+                         ("render", "f8962", "deepseek-flash", "deepseek", 6, "ok"))
+        self.assertEqual(ok["usage"], self.META["usage"])
+        self.assertIsNone(ok["cost_usd"])
+        self.assertIsInstance(ok["estimated_cost_usd"], float)
+        self.assertTrue(failed["outcome"].startswith("error: RuntimeError"))
+
+    def test_rejected_options_make_no_ledger_line(self):
+        with patch.object(T, "RAW", self.temp.name), patch.object(T, "_call_claude", side_effect=AssertionError("no network")):
+            with self.assertRaises(ValueError):
+                T.call_model("PUBLIC", "claude-test", reasoning_effort="max")
+        self.assertFalse(self.ledger.exists())
+
+    def test_receipt_is_unchanged_by_the_ledger(self):
+        base = str(Path(self.temp.name, "x"))
+        with patch.object(T, "RAW", self.temp.name), patch.object(families, "selected_model", return_value="deepseek-flash"), \
+                patch.object(T, "_call_deepseek", return_value=("lines: []", json.loads(json.dumps(self.META)))):
+            T.review_response("PROMPT", "deepseek-flash", base, T.PROMPT_POLICY, system="SYSTEM", kind="transcription", subject="x")
+        saved = json.loads(Path(base + ".meta.json").read_text())
+        self.assertEqual(set(saved) - set(self.META), {"prompt_sha256", "system_sha256", "prompt_policy", "model_requested",
+                                                       "reasoning_effort", "request_max_tokens"})
+        self.assertEqual(self.rows()[0]["subject"], "x")
+
+    def test_deepseek_estimate_follows_peak_hours(self):
+        import datetime
+        prices = {"models": {"m": {"basis": "deepseek", "source": "S", "off_peak_factor": 0.5, "peak_hours_utc": [[1, 4]],
+                                   "per_million_usd": {"input_cache_hit": 1.0, "input_cache_miss": 2.0, "output": 4.0}}}}
+        usage = {"prompt_cache_hit_tokens": 1_000_000, "prompt_cache_miss_tokens": 1_000_000, "completion_tokens": 1_000_000}
+        monday_peak = datetime.datetime(2026, 11, 2, 2, tzinfo=datetime.timezone.utc)
+        saturday = datetime.datetime(2026, 11, 7, 2, tzinfo=datetime.timezone.utc)
+        self.assertEqual(T.estimate_cost("m", usage, None, monday_peak, prices)[0], 7.0)
+        self.assertEqual(T.estimate_cost("m", usage, None, saturday, prices)[0], 3.5)
+        self.assertEqual(T.estimate_cost("unpriced", usage, None, saturday, prices), (None, "no price entry"))
+
+    def test_price_table_cites_every_filled_price(self):
+        for model, entry in T.load_prices()["models"].items():
+            with self.subTest(model=model):
+                self.assertTrue(entry.get("source", "").startswith("https://"))
+
+    def test_concurrent_writers_keep_whole_lines(self):
+        import multiprocessing
+        ctx = multiprocessing.get_context("fork")
+        procs = [ctx.Process(target=_ledger_writer, args=(self.temp.name, n)) for n in range(4)]
+        for p in procs:
+            p.start()
+        for p in procs:
+            p.join()
+        rows = self.rows()
+        self.assertEqual(len(rows), 4 * 50)
+        self.assertEqual({r["subject"] for r in rows}, {f"w{n}" for n in range(4)})
+
+
+def _ledger_writer(raw, n):
+    import datetime
+    T.RAW = raw
+    for _ in range(50):
+        T.record_cost(datetime.datetime.now(datetime.timezone.utc), 0.1, "claude-x", "claude-print", "P" * 5000, "S",
+                      {"usage": {}, "cost_usd": 0.01}, "ok", "transcription", f"w{n}")
+
+
+class SourceCatalog(unittest.TestCase):
+    def test_selection_ignores_the_reviewed_forms_encoding(self):
+        mani = T.manifest()
+        form = T.load_form("f8960")
+        excerpt, used = T.excerpt_for(form, mani)
+        before = T.catalog_selection(form, excerpt, used, mani)
+        altered = json.loads(json.dumps(form))
+        for line in altered["lines"]:
+            line["expr"] = {"op": "copy", "from": "mq.total"}
+            line["refuses"] = ["sc.unsupported"]
+            line["shown_when"] = "ftc.credit"
+        self.assertEqual(T.catalog_selection(altered, excerpt, used, mani), before)
+
+    def test_named_line_of_a_worksheet_title_and_of_an_enter_on_sentence(self):
+        mani = T.manifest()
+        self.assertIn(("1040", "27a"), T.source_profile(T.load_form("eic"), mani)["fed"])
+        self.assertIn(("1040", "2b"), T.source_profile(T.load_form("sb"), mani)["fed"])
+        self.assertIn(("1040", "2b"), T.named_lines("Include • Form 1040 or 1040-SR, line 2b.", mani))
+        self.assertIn(("1040s1", "17"), T.named_lines("enter it on line 17 of Schedule 1", mani))
+
+    def test_screening_list_carries_each_gates_interface(self):
+        lines = T.load_all_lines()
+        gate = next(r["when"] for _, l in lines.values() for r in (l.get("refuses") or [])
+                    if lines.get(r["when"], (0, {"expr": {}}))[1]["expr"].get("op") == "input")
+        doc_id, line = lines[gate]
+        self.assertIn(T.reference_note({"id": doc_id}, line), T.screen_notes())
+
+    def test_shown_when_is_requested_where_the_source_conditions_a_line(self):
+        with patch.object(T, "exported_lines", return_value=[]), patch.object(T, "collection_notes", return_value=""), \
+                patch.object(T, "screen_notes", return_value=""):
+            prompt = T.build_prompt(T.load_form("div"), "ARCHIVED SOURCE", {}, {})
+        self.assertIn(T.SHOWN_WHEN_NOTE, prompt)
+        self.assertIn("shown_when: <Bool line id of this document>", prompt)
 
 
 if __name__ == "__main__":

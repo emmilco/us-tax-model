@@ -410,7 +410,12 @@ form:
             - const: true
       cite:
         doc: i1040gi
-        locator: p. 18, Step 3, question 4
+        locator: 'p. 101, Schedule 1-A, Part II, "You have a valid social security number (SSN)"; p. 104, Valid SSN for No
+          Tax on Tips, "A valid SSN for purposes of the deduction for qualified tips is one that is valid for employment and
+          that is issued by the Social Security Administration (SSA) before the due date of your 2025 return (including extensions)";
+          p. 108, Valid SSN, "A valid SSN for purposes of the deduction for qualified overtime compensation is one that is valid
+          for employment"; p. 110, Valid SSN, "A valid SSN for purposes of the enhanced deduction for seniors is one that is
+          valid for employment"'
     - id: household.taxpayer_work_ssn
       printed: (helper)
       label: Do you have an SSN valid for employment issued before the due date of your return?
@@ -423,7 +428,12 @@ form:
           type: Count
       cite:
         doc: i1040gi
-        locator: p. 18, Step 3, question 4
+        locator: 'p. 101, Schedule 1-A, Part II, "You have a valid social security number (SSN)"; p. 104, Valid SSN for No
+          Tax on Tips, "A valid SSN for purposes of the deduction for qualified tips is one that is valid for employment and
+          that is issued by the Social Security Administration (SSA) before the due date of your 2025 return (including extensions)";
+          p. 108, Valid SSN, "A valid SSN for purposes of the deduction for qualified overtime compensation is one that is valid
+          for employment"; p. 110, Valid SSN, "A valid SSN for purposes of the enhanced deduction for seniors is one that is
+          valid for employment"'
     - id: household.home_cost
       printed: (helper)
       type: Bool

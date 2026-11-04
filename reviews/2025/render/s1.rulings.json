@@ -17,6 +17,13 @@
   {
    "printed": "10",
    "restated": "Add line 1, line 2a, line 3, line 7, and line 9.",
+   "model": "IRS text: 'Combine lines 1 through 7 and 9.' The program adds only lines 1, 2a, 3, 7 and 9. It omits lines 4 (Form 4797/4684), 5 (Schedule E) and 6 (Schedule F), and no refusal given here names them.",
+   "ruling": "Ruling: scope; f1040s1 line 10, \"Combine lines 1 through 7 and 9\". Lines 4 to 6 are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them: its text names \"sales of business property (Form 4797)\", \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\" (checked on the current forms/2025/scope.yaml); within scope they are zero, as the line's citation says. Lines 1, 2a, 3, 7 and 9 are figured. Same ruling as the earlier rounds; the income package changed only the wording of the alimony and unemployment screens, which does not touch this line. Re-checked on the current scope.yaml this round (the refresh fixes changed only scope.other_income, BUG-0393). Project stands on the English.",
+   "context": "1a36c96797a330d8187791c493b2f2627952bed5f20989de145db14f97e97418"
+  },
+  {
+   "printed": "10",
+   "restated": "Add line 1, line 2a, line 3, line 7, and line 9.",
    "model": "IRS: 'Combine lines 1 through 7 and 9.' The restatement adds only lines 1, 2a, 3, 7 and 9, omitting lines 4, 5 and 6. No refusal shown in the text names other gains, Schedule E or Schedule F income.",
    "ruling": "Ruling: scope; f1040s1 line 10, \"Combine lines 1 through 7 and 9\". Lines 4 to 6 are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them: its text names \"sales of business property (Form 4797)\", \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\" (checked on the current forms/2025/scope.yaml); within scope they are zero, as the line's citation says. Lines 1, 2a, 3, 7 and 9 are figured. Same ruling as the earlier rounds; the income package changed only the wording of the alimony and unemployment screens, which does not touch this line. Project stands.",
    "context": "bd21a530a91afdc613995c3652d220d11e36ae8deeaa9e57e258925be89ff6bd"
@@ -159,6 +166,13 @@
   {
    "printed": "25",
    "restated": "Enter the amount from line 24a.",
+   "model": "IRS text: 'Total other adjustments. Add lines 24a through 24z.' The program uses line 24a only. Lines 24d–24i, 24k and 24z are omitted with no refusal naming them; 24b, 24c and 24j depend on line 8 items that are refused.",
+   "ruling": "Ruling: scope; f1040s1 line 25, \"Add lines 24a through 24z\". Lines 24b to 24z are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (it lists jury duty pay given to the employer, line 24a, among the items asked separately); within scope they are zero, as the line's citation says. Line 24a is figured (decision D3). Same ruling as the earlier rounds; unchanged by the backlog packages. Re-checked on the current scope.yaml this round (the refresh fixes changed only scope.other_income, BUG-0393). Project stands on the English.",
+   "context": "1a36c96797a330d8187791c493b2f2627952bed5f20989de145db14f97e97418"
+  },
+  {
+   "printed": "25",
+   "restated": "Enter the amount from line 24a.",
    "model": "IRS: 'Total other adjustments. Add lines 24a through 24z.' The restatement takes line 24a only. No refusal shown in the text covers lines 24b through 24z.",
    "ruling": "Ruling: scope; f1040s1 line 25, \"Add lines 24a through 24z\". Lines 24b to 24z are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (it lists jury duty pay given to the employer, line 24a, among the items asked separately); within scope they are zero, as the line's citation says. Line 24a is figured (decision D3). Same ruling as the earlier rounds; unchanged by the backlog packages. Project stands.",
    "context": "bd21a530a91afdc613995c3652d220d11e36ae8deeaa9e57e258925be89ff6bd"
@@ -212,6 +226,13 @@
    "restated": "Add line 11, line 13, line 15, line 16, line 17, and line 21.",
    "model": "The form says 'Add lines 11 through 23 and 25.' The restatement adds only lines 11, 13, 15, 16, 17 and 21. It omits lines 12, 14, 18, 19a, 20, 23 and 25, and no refusal names those excluded cases.",
    "ruling": "Ruling: refusal located elsewhere; project retained. Lines 12, 14, 18, 19a, 20, 23 and 24a to 24z (so line 25) are refused by scope.schedule1 ('Any income or adjustment requiring Schedule 1 other than ... educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction and student loan interest'), which refuses Form 1040 line 10, the line this one is entered on (checked: scope.schedule1 true gives f1040.line10 refused); within scope they are zero, as the line's citation says."
+  },
+  {
+   "printed": "26",
+   "restated": "Add line 11, line 13, line 15, line 16, line 17, line 18, line 19a, line 20, line 21, and line 25.",
+   "model": "IRS text: 'Add lines 11 through 23 and 25.' The program omits line 12 (Form 2106 expenses) and line 14 (moving expenses, Form 3903) with no refusal naming them. Line 23 is covered by the Archer MSA refusal.",
+   "ruling": "Ruling: scope; f1040s1 line 26, \"Add lines 11 through 23 and 25\". Lines 12, 14 and 23 are named in scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (\"or an adjustment on Schedule 1 line 12, 14 or 23?\", checked on the current scope.yaml); within scope they are zero, as the line's citation says. Line 22 is reserved; every other line is added. Same ruling as the earlier rounds. Re-checked on the current scope.yaml this round (the refresh fixes changed only scope.other_income, BUG-0393). Project stands on the English.",
+   "context": "1a36c96797a330d8187791c493b2f2627952bed5f20989de145db14f97e97418"
   },
   {
    "printed": "26",

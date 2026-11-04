@@ -461,7 +461,8 @@ def main():
             with open(base + ".preview.prompt.txt", "w", encoding="utf-8") as f:
                 f.write(prompt)
             return job['id'], None, None
-        text, meta = review_response(prompt, a.model, base, PROMPT_POLICY, a.from_response, SYSTEM, a.reasoning_effort, a.max_output_tokens)
+        text, meta = review_response(prompt, a.model, base, PROMPT_POLICY, a.from_response, SYSTEM, a.reasoning_effort, a.max_output_tokens,
+                                     "classm", job["id"])
         return job['id'], {"verdicts": extract(text), "raw": text, "prompt_sha": sha, "used": used}, meta
     if a.case_jobs == 1:
         worked = map(work, jobs)

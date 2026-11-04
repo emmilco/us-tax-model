@@ -440,7 +440,7 @@
    "model": "$3,988.46",
    "ruling": "Ruling: model error; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct, owner's ruling); the model multiplied by the exact fraction, a difference of a cent.",
    "drop": true,
-   "context": "97547ef7eb82e2ac3aafd85d1266cae09b58420a728147b9977170880365d35d"
+   "context": "82bf01be6bf384444b2127ed0dfcdf057e69a66235d32e236b30a1da2cae0e3f"
   },
   {
    "case": "classm.scveh.1",
@@ -457,7 +457,7 @@
    "model": "$3,988.46",
    "ruling": "Ruling: model error; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct, owner's ruling); the model multiplied by the exact fraction, a difference of a cent.",
    "drop": true,
-   "context": "97547ef7eb82e2ac3aafd85d1266cae09b58420a728147b9977170880365d35d"
+   "context": "82bf01be6bf384444b2127ed0dfcdf057e69a66235d32e236b30a1da2cae0e3f"
   },
   {
    "case": "classm.scveh.1",
@@ -474,7 +474,7 @@
    "model": "$3,988.46",
    "ruling": "Ruling: model error; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct, owner's ruling); the model multiplied by the exact fraction, a difference of a cent.",
    "drop": true,
-   "context": "97547ef7eb82e2ac3aafd85d1266cae09b58420a728147b9977170880365d35d"
+   "context": "82bf01be6bf384444b2127ed0dfcdf057e69a66235d32e236b30a1da2cae0e3f"
   },
   {
    "case": "classm.scveh.1",
@@ -763,7 +763,7 @@
    "model": "$62,561.37",
    "ruling": "Ruling: model error; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct, owner's ruling); the model multiplied by the exact fraction, a difference of a cent.",
    "drop": true,
-   "context": "97547ef7eb82e2ac3aafd85d1266cae09b58420a728147b9977170880365d35d"
+   "context": "82bf01be6bf384444b2127ed0dfcdf057e69a66235d32e236b30a1da2cae0e3f"
   },
   {
    "case": "classm.scveh.2",
@@ -837,7 +837,7 @@
    "model": "$62,561.37",
    "ruling": "Ruling: model error; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct, owner's ruling); the model multiplied by the exact fraction, a difference of a cent.",
    "drop": true,
-   "context": "97547ef7eb82e2ac3aafd85d1266cae09b58420a728147b9977170880365d35d"
+   "context": "82bf01be6bf384444b2127ed0dfcdf057e69a66235d32e236b30a1da2cae0e3f"
   },
   {
    "case": "classm.scveh.2",
@@ -863,7 +863,7 @@
    "model": "$62,561.37",
    "ruling": "Ruling: model error; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct, owner's ruling); the model multiplied by the exact fraction, a difference of a cent.",
    "drop": true,
-   "context": "97547ef7eb82e2ac3aafd85d1266cae09b58420a728147b9977170880365d35d"
+   "context": "82bf01be6bf384444b2127ed0dfcdf057e69a66235d32e236b30a1da2cae0e3f"
   },
   {
    "case": "classm.scveh.2",
@@ -1285,7 +1285,7 @@
    "model": "$6,697.99",
    "ruling": "Ruling: model error; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct, owner's ruling); the model multiplied by the exact fraction, a difference of a cent.",
    "drop": true,
-   "context": "97547ef7eb82e2ac3aafd85d1266cae09b58420a728147b9977170880365d35d"
+   "context": "82bf01be6bf384444b2127ed0dfcdf057e69a66235d32e236b30a1da2cae0e3f"
   },
   {
    "case": "classm.scveh.2",
@@ -1613,9 +1613,9 @@
    "printed": "person[taxpayer].sc[biz_a].scveh[car_1].bus_cost",
    "project": "$4,575.15",
    "model": "$4,575.14",
-   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct); the model multiplied by the exact fraction, a difference of a cent.",
+   "ruling": "Ruling: model error; project retained. A one-cent difference from the business-use percentage: the model multiplies by the exact mileage fraction, while the project rounds the percentage to six places, the reading recorded as amb.2025.vehicle_business_pct (p946 pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 13). Same class as the backlog-round rulings of this log.",
    "drop": true,
-   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+   "context": "82bf01be6bf384444b2127ed0dfcdf057e69a66235d32e236b30a1da2cae0e3f"
   },
   {
    "case": "classm.scveh.3",
@@ -1702,9 +1702,9 @@
    "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line15",
    "project": "$4,575.15",
    "model": "$4,575.14",
-   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct); the model multiplied by the exact fraction, a difference of a cent.",
+   "ruling": "Ruling: model error; project retained. A one-cent difference from the business-use percentage: the model multiplies by the exact mileage fraction, while the project rounds the percentage to six places, the reading recorded as amb.2025.vehicle_business_pct (p946 pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 13). Same class as the backlog-round rulings of this log.",
    "drop": true,
-   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+   "context": "82bf01be6bf384444b2127ed0dfcdf057e69a66235d32e236b30a1da2cae0e3f"
   },
   {
    "case": "classm.scveh.3",
@@ -1719,9 +1719,9 @@
    "printed": "person[taxpayer].sc[biz_a].scveh[car_1].line18",
    "project": "$4,575.15",
    "model": "$4,575.14",
-   "ruling": "Ruling: owner's ruling; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct); the model multiplied by the exact fraction, a difference of a cent.",
+   "ruling": "Ruling: model error; project retained. A one-cent difference from the business-use percentage: the model multiplies by the exact mileage fraction, while the project rounds the percentage to six places, the reading recorded as amb.2025.vehicle_business_pct (p946 pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 13). Same class as the backlog-round rulings of this log.",
    "drop": true,
-   "context": "8eef7785dbf39b10e347821ec15d3e4759a58b21d390d789383608e3b6bad160"
+   "context": "82bf01be6bf384444b2127ed0dfcdf057e69a66235d32e236b30a1da2cae0e3f"
   },
   {
    "case": "classm.scveh.3",
@@ -2390,7 +2390,7 @@
    "model": "$21,535.85",
    "ruling": "Ruling: model error; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct, owner's ruling); the model multiplied by the exact fraction, a difference of a cent.",
    "drop": true,
-   "context": "97547ef7eb82e2ac3aafd85d1266cae09b58420a728147b9977170880365d35d"
+   "context": "82bf01be6bf384444b2127ed0dfcdf057e69a66235d32e236b30a1da2cae0e3f"
   },
   {
    "case": "classm.scveh.4",
@@ -2441,7 +2441,7 @@
    "model": "$21,535.85",
    "ruling": "Ruling: model error; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct, owner's ruling); the model multiplied by the exact fraction, a difference of a cent.",
    "drop": true,
-   "context": "97547ef7eb82e2ac3aafd85d1266cae09b58420a728147b9977170880365d35d"
+   "context": "82bf01be6bf384444b2127ed0dfcdf057e69a66235d32e236b30a1da2cae0e3f"
   },
   {
    "case": "classm.scveh.4",
@@ -2476,7 +2476,7 @@
    "model": "$21,535.85",
    "ruling": "Ruling: model error; project retained. The business-use percentage is business miles over total miles rounded half-up to six places (amb.2025.vehicle_business_pct, owner's ruling); the model multiplied by the exact fraction, a difference of a cent.",
    "drop": true,
-   "context": "97547ef7eb82e2ac3aafd85d1266cae09b58420a728147b9977170880365d35d"
+   "context": "82bf01be6bf384444b2127ed0dfcdf057e69a66235d32e236b30a1da2cae0e3f"
   },
   {
    "case": "classm.scveh.4",

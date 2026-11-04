@@ -4,11 +4,16 @@
 
 | field | value |
 | --- | --- |
-| date | 2026-10-22 |
+| date | 2026-11-03 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| subject sha256 | 76343b958fae5bd72b0706831047544a4469ee252cbb389fb430cdfffe568769 |
+| prompt policy | worked-values-request-bound-v2 |
+| system sha256 | 18ff9cfe094eedd0548bba02012b0ebf2a58d0606e834e3633432585b4192cb7 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| subject sha256 | 83c9e2ecf55d424847f47f84f524fb02eb52b8a67390436a142cfb1fd395b341 |
 | cases | 5 |
+| worked target scope | printed IRS lines |
 
 ## Source pages given to the model
 
@@ -18,7 +23,7 @@
 
 ## Lines
 
-### case classm.ssb.1 — prompt sha256 3bf924239dbd8fdbab5fb8d4595f94c1f0da91bdff968f770da99195588a0be7; branches: ssb.pub915:false, ssb.lump_sum:false, ssb.terror_disability:false, ssb.lived_apart:false, ssb.has_benefits:false, ssb.line7:positive, ssb.mfs_base#1, ssb.line8#3, ssb.line9:positive, ssb.mfs_adjust#1, ssb.line10#3, ssb.line11:floor, ssb.line12:left, ssb.line14:left, ssb.mfs_together:false, ssb.line16#1, ssb.line18_figured:left, ssb.line18#1
+### case classm.ssb.1 — prompt sha256 fb4fb82c966fb579e5e75bf513b6eea7e233d6ae0c7b558bf9ebee64951179ef; branches: ssb.pub915:false, ssb.lump_sum:false, ssb.terror_disability:false, ssb.has_benefits:false, ssb.line7:positive, ssb.lines8_to_15:true, ssb.line8#3, ssb.line9:positive, ssb.line10#3, ssb.line11:floor, ssb.line12:left, ssb.line14:left, ssb.mfs_together:false, ssb.line16#1, ssb.line18_figured:left, ssb.line18#1
 
 ### classm.ssb.1 — 1 — Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099
 Status: **AGREE**
@@ -45,12 +50,12 @@ Status: **AGREE**
 
 Value: $32,936.00
 
-### classm.ssb.1 — 6 — Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 
+### classm.ssb.1 — 6 — Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and
 Status: **AGREE**
 
 Value: $0.00
 
-### classm.ssb.1 — 7 — Is the amount on line 6 less than the amount on line 5? If yes, subtract line 6 
+### classm.ssb.1 — 7 — Is the amount on line 6 less than the amount on line 5? If yes, subtract line 6
 Status: **AGREE**
 
 Value: $32,936.00
@@ -60,7 +65,7 @@ Status: **AGREE**
 
 Value: $25,000.00
 
-### classm.ssb.1 — 9 — Is the amount on line 8 less than the amount on line 7? If yes, subtract line 8 
+### classm.ssb.1 — 9 — Is the amount on line 8 less than the amount on line 7? If yes, subtract line 8
 Status: **AGREE**
 
 Value: $7,936.00
@@ -110,7 +115,7 @@ Status: **AGREE**
 
 Value: $0.00
 
-### case classm.ssb.2 — prompt sha256 86874609f532e9d688b180df9e4573370d56ba2db5dce08c24d3ef248ffb9bb4; branches: ssb.pub915:false, ssb.lump_sum:false, ssb.terror_disability:false, ssb.lived_apart:false, ssb.has_benefits:true, ssb.line7:positive, ssb.mfs_base#1, ssb.line8#2, ssb.line9:positive, ssb.mfs_adjust#1, ssb.line10#2, ssb.line11:positive, ssb.line12:right, ssb.line14:right, ssb.mfs_together:true, ssb.line16#0, ssb.line18_figured:right, ssb.line18#0
+### case classm.ssb.2 — prompt sha256 a73434e6d91a1c22a10ff68c265559c4a66675d99a60703053797aa6c14d0664; branches: ssb.pub915:false, ssb.lump_sum:false, ssb.terror_disability:false, ssb.lived_apart:false, ssb.has_benefits:true, ssb.line7:positive, ssb.mfs_base#1, ssb.lines8_to_15:false, ssb.line8#2, ssb.line9:positive, ssb.mfs_adjust#1, ssb.line10#2, ssb.line11:positive, ssb.line12:right, ssb.line14:right, ssb.mfs_together:true, ssb.line16#0, ssb.line18_figured:right, ssb.line18#0
 
 ### classm.ssb.2 — 1 — Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099
 Status: **AGREE**
@@ -125,7 +130,7 @@ Value: $23,110.00
 ### classm.ssb.2 — 3 — Combine the amounts from Form 1040 or 1040-SR, lines 1z, 2b, 3b, 4b, 5b, 7a, and
 Status: **AGREE**
 
-Value: $176,699.00
+Value: $116,775.00
 
 ### classm.ssb.2 — 4 — Enter the amount, if any, from Form 1040 or 1040-SR, line 2a
 Status: **AGREE**
@@ -135,94 +140,22 @@ Value: $0.00
 ### classm.ssb.2 — 5 — Combine lines 2, 3, and 4
 Status: **AGREE**
 
-Value: $199,809.00
+Value: $139,885.00
 
-### classm.ssb.2 — 6 — Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 
+### classm.ssb.2 — 6 — Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and
 Status: **AGREE**
 
 Value: $0.00
 
-### classm.ssb.2 — 7 — Is the amount on line 6 less than the amount on line 5? If yes, subtract line 6 
+### classm.ssb.2 — 7 — Is the amount on line 6 less than the amount on line 5? If yes, subtract line 6
 Status: **AGREE**
 
-Value: $199,809.00
-
-### classm.ssb.2 — 8 — $32,000 if married filing jointly; $25,000 if single, head of household, qualify
-Status: **SKIPPED**
-
-Model: blank
-Work: Married filing separately and lived with spouse during 2025: skip lines 8-15
-
-No numeric assertion or class M credit: the model left this line blank.
-
-
-### classm.ssb.2 — 9 — Is the amount on line 8 less than the amount on line 7? If yes, subtract line 8 
-Status: **SKIPPED**
-
-Model: blank
-Work: Skipped (MFS, lived with spouse)
-
-No numeric assertion or class M credit: the model left this line blank.
-
-
-### classm.ssb.2 — 10 — Enter $12,000 if married filing jointly; $9,000 if single, head of household, qu
-Status: **SKIPPED**
-
-Model: blank
-Work: Skipped (MFS, lived with spouse)
-
-No numeric assertion or class M credit: the model left this line blank.
-
-
-### classm.ssb.2 — 11 — Subtract line 10 from line 9. If zero or less, enter -0-
-Status: **SKIPPED**
-
-Model: blank
-Work: Skipped (MFS, lived with spouse)
-
-No numeric assertion or class M credit: the model left this line blank.
-
-
-### classm.ssb.2 — 12 — Enter the smaller of line 9 or line 10
-Status: **SKIPPED**
-
-Model: blank
-Work: Skipped (MFS, lived with spouse)
-
-No numeric assertion or class M credit: the model left this line blank.
-
-
-### classm.ssb.2 — 13 — Enter one-half of line 12
-Status: **SKIPPED**
-
-Model: blank
-Work: Skipped (MFS, lived with spouse)
-
-No numeric assertion or class M credit: the model left this line blank.
-
-
-### classm.ssb.2 — 14 — Enter the smaller of line 2 or line 13
-Status: **SKIPPED**
-
-Model: blank
-Work: Skipped (MFS, lived with spouse)
-
-No numeric assertion or class M credit: the model left this line blank.
-
-
-### classm.ssb.2 — 15 — Multiply line 11 by 85% (0.85). If line 11 is zero, enter -0-
-Status: **SKIPPED**
-
-Model: blank
-Work: Skipped (MFS, lived with spouse)
-
-No numeric assertion or class M credit: the model left this line blank.
-
+Value: $139,885.00
 
 ### classm.ssb.2 — 16 — Add lines 14 and 15
 Status: **AGREE**
 
-Value: $169,837.65
+Value: $118,902.25
 
 ### classm.ssb.2 — 17 — Multiply line 1 by 85% (0.85)
 Status: **AGREE**
@@ -234,7 +167,7 @@ Status: **AGREE**
 
 Value: $39,287.00
 
-### case classm.ssb.3 — prompt sha256 47072ae1b66c43a8682229b638b022908191f2af4f48bdcb9ddc863b9b105ec1; branches: ssb.pub915:false, ssb.lump_sum:false, ssb.terror_disability:false, ssb.lived_apart:true, ssb.has_benefits:false, ssb.line7:floor, ssb.mfs_base#0, ssb.line8#0, ssb.line9:floor, ssb.mfs_adjust#0, ssb.line10#0, ssb.line11:floor, ssb.line12:left, ssb.line14:left, ssb.mfs_together:false, ssb.line16#1, ssb.line18_figured:left, ssb.line18#1
+### case classm.ssb.3 — prompt sha256 665fcb8a6819197f23a8f1a9fb2bf5570b7261d15e49c3e6ad6cb4f2a4c6c8ad; branches: ssb.pub915:false, ssb.lump_sum:false, ssb.terror_disability:false, ssb.has_benefits:false, ssb.line7:positive, ssb.lines8_to_15:true, ssb.line8#0, ssb.line9:floor, ssb.line10#0, ssb.line11:floor, ssb.line12:left, ssb.line14:left, ssb.mfs_together:false, ssb.line16#1, ssb.line18_figured:left, ssb.line18#1
 
 ### classm.ssb.3 — 1 — Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099
 Status: **AGREE**
@@ -249,7 +182,7 @@ Value: $0.00
 ### classm.ssb.3 — 3 — Combine the amounts from Form 1040 or 1040-SR, lines 1z, 2b, 3b, 4b, 5b, 7a, and
 Status: **AGREE**
 
-Value: $0.00
+Value: $14,269.00
 
 ### classm.ssb.3 — 4 — Enter the amount, if any, from Form 1040 or 1040-SR, line 2a
 Status: **AGREE**
@@ -259,122 +192,104 @@ Value: $0.00
 ### classm.ssb.3 — 5 — Combine lines 2, 3, and 4
 Status: **AGREE**
 
-Value: $0.00
+Value: $14,269.00
 
-### classm.ssb.3 — 6 — Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 
+### classm.ssb.3 — 6 — Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and
 Status: **AGREE**
 
 Value: $0.00
 
-### classm.ssb.3 — 7 — Is the amount on line 6 less than the amount on line 5? If yes, subtract line 6 
-Status: **SKIPPED**
+### classm.ssb.3 — 7 — Is the amount on line 6 less than the amount on line 5? If yes, subtract line 6
+Status: **AGREE**
 
-Model: blank
-Work: Line 6 (0.00) is not less than line 5 (0.00): No, so STOP. No benefits are taxable; enter -0- on 1040 line 6b
-
-No numeric assertion or class M credit: the model left this line blank.
-
+Value: $14,269.00
 
 ### classm.ssb.3 — 8 — $32,000 if married filing jointly; $25,000 if single, head of household, qualify
+Status: **AGREE**
+
+Value: $25,000.00
+
+### classm.ssb.3 — 9 — Is the amount on line 8 less than the amount on line 7? If yes, subtract line 8
 Status: **SKIPPED**
 
 Model: blank
-Work: Not reached; the worksheet stopped at line 7
+Work: Line 8 (25000.00) is not less than line 7 (14269.00), so no; STOP; none taxable; enter -0- on 1040 line 6b
 
 No numeric assertion or class M credit: the model left this line blank.
-
-
-### classm.ssb.3 — 9 — Is the amount on line 8 less than the amount on line 7? If yes, subtract line 8 
-Status: **SKIPPED**
-
-Model: blank
-Work: Not reached; the worksheet stopped at line 7
-
-No numeric assertion or class M credit: the model left this line blank.
-
 
 ### classm.ssb.3 — 10 — Enter $12,000 if married filing jointly; $9,000 if single, head of household, qu
 Status: **SKIPPED**
 
 Model: blank
-Work: Not reached; the worksheet stopped at line 7
+Work: Skipped; worksheet stopped at line 9
 
 No numeric assertion or class M credit: the model left this line blank.
-
 
 ### classm.ssb.3 — 11 — Subtract line 10 from line 9. If zero or less, enter -0-
 Status: **SKIPPED**
 
 Model: blank
-Work: Not reached; the worksheet stopped at line 7
+Work: Skipped; worksheet stopped at line 9
 
 No numeric assertion or class M credit: the model left this line blank.
-
 
 ### classm.ssb.3 — 12 — Enter the smaller of line 9 or line 10
 Status: **SKIPPED**
 
 Model: blank
-Work: Not reached; the worksheet stopped at line 7
+Work: Skipped; worksheet stopped at line 9
 
 No numeric assertion or class M credit: the model left this line blank.
-
 
 ### classm.ssb.3 — 13 — Enter one-half of line 12
 Status: **SKIPPED**
 
 Model: blank
-Work: Not reached; the worksheet stopped at line 7
+Work: Skipped; worksheet stopped at line 9
 
 No numeric assertion or class M credit: the model left this line blank.
-
 
 ### classm.ssb.3 — 14 — Enter the smaller of line 2 or line 13
 Status: **SKIPPED**
 
 Model: blank
-Work: Not reached; the worksheet stopped at line 7
+Work: Skipped; worksheet stopped at line 9
 
 No numeric assertion or class M credit: the model left this line blank.
-
 
 ### classm.ssb.3 — 15 — Multiply line 11 by 85% (0.85). If line 11 is zero, enter -0-
 Status: **SKIPPED**
 
 Model: blank
-Work: Not reached; the worksheet stopped at line 7
+Work: Skipped; worksheet stopped at line 9
 
 No numeric assertion or class M credit: the model left this line blank.
-
 
 ### classm.ssb.3 — 16 — Add lines 14 and 15
 Status: **SKIPPED**
 
 Model: blank
-Work: Not reached; the worksheet stopped at line 7
+Work: Skipped; worksheet stopped at line 9
 
 No numeric assertion or class M credit: the model left this line blank.
-
 
 ### classm.ssb.3 — 17 — Multiply line 1 by 85% (0.85)
 Status: **SKIPPED**
 
 Model: blank
-Work: Not reached; the worksheet stopped at line 7
+Work: Skipped; worksheet stopped at line 9
 
 No numeric assertion or class M credit: the model left this line blank.
-
 
 ### classm.ssb.3 — 18 — Taxable social security benefits. Enter the smaller of line 16 or line 17
 Status: **SKIPPED**
 
 Model: blank
-Work: Not reached; the worksheet stopped at line 7 (1040 line 6b = -0-)
+Work: Skipped; worksheet stopped at line 9 (1040 line 6b gets -0-)
 
 No numeric assertion or class M credit: the model left this line blank.
 
-
-### case classm.ssb.4 — prompt sha256 c7043c79e2a96ac39d87adc31a387d6e5e7c0ced6829795415eefe7de57ca6dc; branches: ssb.pub915:false, ssb.lump_sum:false, ssb.terror_disability:false, ssb.lived_apart:false, ssb.has_benefits:false, ssb.line7:floor, ssb.mfs_base#1, ssb.line8#1, ssb.line9:floor, ssb.mfs_adjust#1, ssb.line10#1, ssb.line11:floor, ssb.line12:left, ssb.line14:left, ssb.mfs_together:false, ssb.line16#1, ssb.line18_figured:left, ssb.line18#1
+### case classm.ssb.4 — prompt sha256 52faf555de1cf8de49ed429dc4b869e7f8e4ea403a5a2f8a66ceaa3c32fb7641; branches: ssb.pub915:false, ssb.lump_sum:false, ssb.terror_disability:false, ssb.has_benefits:false, ssb.line7:floor, ssb.lines8_to_15:true, ssb.line8#4, ssb.line9:floor, ssb.line10#4, ssb.line11:floor, ssb.line12:left, ssb.line14:left, ssb.mfs_together:false, ssb.line16#1, ssb.line18_figured:left, ssb.line18#1
 
 ### classm.ssb.4 — 1 — Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099
 Status: **AGREE**
@@ -389,7 +304,7 @@ Value: $0.00
 ### classm.ssb.4 — 3 — Combine the amounts from Form 1040 or 1040-SR, lines 1z, 2b, 3b, 4b, 5b, 7a, and
 Status: **AGREE**
 
-Value: $-103,568.92
+Value: $-144,709.34
 
 ### classm.ssb.4 — 4 — Enter the amount, if any, from Form 1040 or 1040-SR, line 2a
 Status: **AGREE**
@@ -399,122 +314,107 @@ Value: $0.00
 ### classm.ssb.4 — 5 — Combine lines 2, 3, and 4
 Status: **AGREE**
 
-Value: $-103,568.92
+Value: $-144,709.34
 
-### classm.ssb.4 — 6 — Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 
+### classm.ssb.4 — 6 — Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and
 Status: **AGREE**
 
 Value: $0.00
 
-### classm.ssb.4 — 7 — Is the amount on line 6 less than the amount on line 5? If yes, subtract line 6 
+### classm.ssb.4 — 7 — Is the amount on line 6 less than the amount on line 5? If yes, subtract line 6
 Status: **SKIPPED**
 
 Model: blank
-Work: Line 6 (0.00) is not less than line 5 (-103568.92); answer No, STOP; enter 0 on Form 1040 line 6b
+Work: Line 6 (0.00) is not less than line 5 (-144709.34), so the answer is No. STOP: none of the benefits are taxable.
 
 No numeric assertion or class M credit: the model left this line blank.
-
 
 ### classm.ssb.4 — 8 — $32,000 if married filing jointly; $25,000 if single, head of household, qualify
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: worksheet stopped at line 7
+Work: Skipped because the worksheet stopped at line 7
 
 No numeric assertion or class M credit: the model left this line blank.
 
-
-### classm.ssb.4 — 9 — Is the amount on line 8 less than the amount on line 7? If yes, subtract line 8 
+### classm.ssb.4 — 9 — Is the amount on line 8 less than the amount on line 7? If yes, subtract line 8
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: worksheet stopped at line 7
+Work: Skipped because the worksheet stopped at line 7
 
 No numeric assertion or class M credit: the model left this line blank.
-
 
 ### classm.ssb.4 — 10 — Enter $12,000 if married filing jointly; $9,000 if single, head of household, qu
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: worksheet stopped at line 7
+Work: Skipped because the worksheet stopped at line 7
 
 No numeric assertion or class M credit: the model left this line blank.
-
 
 ### classm.ssb.4 — 11 — Subtract line 10 from line 9. If zero or less, enter -0-
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: worksheet stopped at line 7
+Work: Skipped because the worksheet stopped at line 7
 
 No numeric assertion or class M credit: the model left this line blank.
-
 
 ### classm.ssb.4 — 12 — Enter the smaller of line 9 or line 10
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: worksheet stopped at line 7
+Work: Skipped because the worksheet stopped at line 7
 
 No numeric assertion or class M credit: the model left this line blank.
-
 
 ### classm.ssb.4 — 13 — Enter one-half of line 12
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: worksheet stopped at line 7
+Work: Skipped because the worksheet stopped at line 7
 
 No numeric assertion or class M credit: the model left this line blank.
-
 
 ### classm.ssb.4 — 14 — Enter the smaller of line 2 or line 13
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: worksheet stopped at line 7
+Work: Skipped because the worksheet stopped at line 7
 
 No numeric assertion or class M credit: the model left this line blank.
-
 
 ### classm.ssb.4 — 15 — Multiply line 11 by 85% (0.85). If line 11 is zero, enter -0-
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: worksheet stopped at line 7
+Work: Skipped because the worksheet stopped at line 7
 
 No numeric assertion or class M credit: the model left this line blank.
-
 
 ### classm.ssb.4 — 16 — Add lines 14 and 15
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: worksheet stopped at line 7
+Work: Skipped because the worksheet stopped at line 7
 
 No numeric assertion or class M credit: the model left this line blank.
-
 
 ### classm.ssb.4 — 17 — Multiply line 1 by 85% (0.85)
 Status: **SKIPPED**
 
 Model: blank
-Work: Skipped: worksheet stopped at line 7
+Work: Skipped because the worksheet stopped at line 7
 
 No numeric assertion or class M credit: the model left this line blank.
-
 
 ### classm.ssb.4 — 18 — Taxable social security benefits. Enter the smaller of line 16 or line 17
-Status: **SKIPPED**
+Status: **AGREE**
 
-Model: blank
-Work: Skipped: worksheet stopped at line 7; no benefits taxable, Form 1040 line 6b = 0
+Value: $0.00
 
-No numeric assertion or class M credit: the model left this line blank.
-
-
-### case classm.ssb.5 — prompt sha256 8ccccc835d139a5df5bb6c1facf461f62937668101d3c7db0f46625614cd33f9; branches: ssb.pub915:false, ssb.lump_sum:false, ssb.terror_disability:false, ssb.lived_apart:true, ssb.has_benefits:false, ssb.line7:positive, ssb.mfs_base#0, ssb.line8#4, ssb.line9:positive, ssb.mfs_adjust#0, ssb.line10#4, ssb.line11:positive, ssb.line12:right, ssb.line14:left, ssb.mfs_together:false, ssb.line16#1, ssb.line18_figured:right, ssb.line18#1
+### case classm.ssb.5 — prompt sha256 9cf2f905a17e3cfb8b38d26baf0211dc71c2a879191043234dc5be7e9f4e956a; branches: ssb.pub915:false, ssb.lump_sum:false, ssb.terror_disability:false, ssb.has_benefits:false, ssb.line7:positive, ssb.lines8_to_15:true, ssb.line8#1, ssb.line9:floor, ssb.line10#1, ssb.line11:floor, ssb.line12:left, ssb.line14:left, ssb.mfs_together:false, ssb.line16#1, ssb.line18_figured:left, ssb.line18#1
 
 ### classm.ssb.5 — 1 — Enter the total amount from box 5 of all your Forms SSA-1099 and RRB-1099
 Status: **AGREE**
@@ -529,7 +429,7 @@ Value: $0.00
 ### classm.ssb.5 — 3 — Combine the amounts from Form 1040 or 1040-SR, lines 1z, 2b, 3b, 4b, 5b, 7a, and
 Status: **AGREE**
 
-Value: $244,885.00
+Value: $6,574.00
 
 ### classm.ssb.5 — 4 — Enter the amount, if any, from Form 1040 or 1040-SR, line 2a
 Status: **AGREE**
@@ -539,88 +439,119 @@ Value: $0.00
 ### classm.ssb.5 — 5 — Combine lines 2, 3, and 4
 Status: **AGREE**
 
-Value: $244,885.00
+Value: $6,574.00
 
-### classm.ssb.5 — 6 — Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 
+### classm.ssb.5 — 6 — Enter the total of the amounts from Schedule 1, lines 11 through 20, and 23 and
 Status: **AGREE**
 
-Value: $0.00
+Value: $712.50
 
-### classm.ssb.5 — 7 — Is the amount on line 6 less than the amount on line 5? If yes, subtract line 6 
+### classm.ssb.5 — 7 — Is the amount on line 6 less than the amount on line 5? If yes, subtract line 6
 Status: **AGREE**
 
-Value: $244,885.00
+Value: $5,861.50
 
 ### classm.ssb.5 — 8 — $32,000 if married filing jointly; $25,000 if single, head of household, qualify
 Status: **AGREE**
 
-Value: $25,000.00
+Value: $32,000.00
 
-### classm.ssb.5 — 9 — Is the amount on line 8 less than the amount on line 7? If yes, subtract line 8 
-Status: **AGREE**
+### classm.ssb.5 — 9 — Is the amount on line 8 less than the amount on line 7? If yes, subtract line 8
+Status: **SKIPPED**
 
-Value: $219,885.00
+Model: blank
+Work: 32000.00 not less than 5861.50: STOP, none taxable; enter -0- on 1040 line 6b
+
+No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.ssb.5 — 10 — Enter $12,000 if married filing jointly; $9,000 if single, head of household, qu
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $9,000.00
+Model: blank
+Work: Skipped, STOP at line 9
+
+No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.ssb.5 — 11 — Subtract line 10 from line 9. If zero or less, enter -0-
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $210,885.00
+Model: blank
+Work: Skipped, STOP at line 9
+
+No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.ssb.5 — 12 — Enter the smaller of line 9 or line 10
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $9,000.00
+Model: blank
+Work: Skipped, STOP at line 9
+
+No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.ssb.5 — 13 — Enter one-half of line 12
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $4,500.00
+Model: blank
+Work: Skipped, STOP at line 9
+
+No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.ssb.5 — 14 — Enter the smaller of line 2 or line 13
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Skipped, STOP at line 9
+
+No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.ssb.5 — 15 — Multiply line 11 by 85% (0.85). If line 11 is zero, enter -0-
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $179,252.25
+Model: blank
+Work: Skipped, STOP at line 9
+
+No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.ssb.5 — 16 — Add lines 14 and 15
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $179,252.25
+Model: blank
+Work: Skipped, STOP at line 9
+
+No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.ssb.5 — 17 — Multiply line 1 by 85% (0.85)
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Skipped, STOP at line 9
+
+No numeric assertion or class M credit: the model left this line blank.
 
 ### classm.ssb.5 — 18 — Taxable social security benefits. Enter the smaller of line 16 or line 17
-Status: **AGREE**
+Status: **SKIPPED**
 
-Value: $0.00
+Model: blank
+Work: Skipped, STOP at line 9; Form 1040 line 6b gets -0-
+
+No numeric assertion or class M credit: the model left this line blank.
 
 ## Raw responses
 
 ### classm.ssb.1
 
 ```yaml
+```yaml
 lines:
   - printed: "1"
     value: "0.00"
-    work: "Total of box 5 on all Forms SSA-1099 and RRB-1099 = 0.00"
+    work: "Total of box 5 of all Forms SSA-1099 and RRB-1099 = 0.00"
   - printed: "2"
     value: "0.00"
     work: "0.00 x 0.50 = 0.00"
   - printed: "3"
     value: "32936.00"
-    work: "32936.00 + 0 + 0 + 0 + 0 + 0 + 0 = 32936.00"
+    work: "1z 32936.00 + 2b 0 + 3b 0 + 4b 0 + 5b 0 + 7a 0 + 8 0 = 32936.00"
   - printed: "4"
     value: "0.00"
     work: "Form 1040 line 2a = 0.00"
@@ -629,31 +560,31 @@ lines:
     work: "0.00 + 32936.00 + 0.00 = 32936.00"
   - printed: "6"
     value: "0.00"
-    work: "Schedule 1 lines 11 through 20, 23 and 25 add up to 0.00"
+    work: "Sch 1 lines 11-20, 23, 25 all 0 (IRA deduction 0) = 0.00"
   - printed: "7"
     value: "32936.00"
-    work: "0.00 < 32936.00, so yes: 32936.00 - 0.00 = 32936.00"
+    work: "Line 6 (0) is less than line 5, so 32936.00 - 0.00 = 32936.00"
   - printed: "8"
     value: "25000.00"
-    work: "Head of household: enter 25,000"
+    work: "Head of household, so enter $25,000"
   - printed: "9"
     value: "7936.00"
-    work: "25000.00 < 32936.00, so yes: 32936.00 - 25000.00 = 7936.00"
+    work: "Line 8 (25000) is less than line 7, so 32936.00 - 25000.00 = 7936.00"
   - printed: "10"
     value: "9000.00"
-    work: "Head of household: enter 9,000"
+    work: "Head of household, so enter $9,000"
   - printed: "11"
     value: "0.00"
-    work: "7936.00 - 9000.00 is less than zero, so enter -0-"
+    work: "7936.00 - 9000.00 < 0, so enter -0-"
   - printed: "12"
     value: "7936.00"
-    work: "Smaller of 7936.00 or 9000.00 = 7936.00"
+    work: "smaller of 7936.00 or 9000.00"
   - printed: "13"
     value: "3968.00"
     work: "7936.00 / 2 = 3968.00"
   - printed: "14"
     value: "0.00"
-    work: "Smaller of 0.00 or 3968.00 = 0.00"
+    work: "smaller of line 2 (0.00) or line 13 (3968.00)"
   - printed: "15"
     value: "0.00"
     work: "Line 11 is zero, so enter -0-"
@@ -665,67 +596,46 @@ lines:
     work: "0.00 x 0.85 = 0.00"
   - printed: "18"
     value: "0.00"
-    work: "Smaller of 0.00 or 0.00 = 0.00"
+    work: "smaller of line 16 (0.00) or line 17 (0.00)"
+```
 ```
 
 ### classm.ssb.2
 
 ```yaml
+```yaml
 lines:
   - printed: "1"
     value: "46220.00"
-    work: "Total of box 5 on all Forms SSA-1099 and RRB-1099 = 46,220.00"
+    work: "Total of box 5 of all Forms SSA-1099/RRB-1099 = 46,220.00"
   - printed: "2"
     value: "23110.00"
-    work: "46,220.00 x 0.50 = 23,110.00"
+    work: "46,220.00 × 0.50 = 23,110.00"
   - printed: "3"
-    value: "176699.00"
-    work: "14,441 + 44,289 + 31,263 + 26,782 + 59,924 + 0 + 0 = 176,699.00"
+    value: "116775.00"
+    work: "14,441 + 44,289 + 31,263 + 26,782 + 0 + 0 + 0 = 116,775.00"
   - printed: "4"
     value: "0.00"
     work: "Form 1040 line 2a = 0.00"
   - printed: "5"
-    value: "199809.00"
-    work: "23,110.00 + 176,699.00 + 0.00 = 199,809.00"
+    value: "139885.00"
+    work: "23,110 + 116,775 + 0 = 139,885.00"
   - printed: "6"
     value: "0.00"
-    work: "Schedule 1 lines 11-20, 23 and 25 total 0.00"
+    work: "Schedule 1 lines 11–20, 23, 25 all 0 = 0.00"
   - printed: "7"
-    value: "199809.00"
-    work: "Line 6 (0) is less than line 5, so 199,809.00 - 0.00 = 199,809.00"
-  - printed: "8"
-    value: "blank"
-    work: "Married filing separately and lived with spouse during 2025: skip lines 8-15"
-  - printed: "9"
-    value: "blank"
-    work: "Skipped (MFS, lived with spouse)"
-  - printed: "10"
-    value: "blank"
-    work: "Skipped (MFS, lived with spouse)"
-  - printed: "11"
-    value: "blank"
-    work: "Skipped (MFS, lived with spouse)"
-  - printed: "12"
-    value: "blank"
-    work: "Skipped (MFS, lived with spouse)"
-  - printed: "13"
-    value: "blank"
-    work: "Skipped (MFS, lived with spouse)"
-  - printed: "14"
-    value: "blank"
-    work: "Skipped (MFS, lived with spouse)"
-  - printed: "15"
-    value: "blank"
-    work: "Skipped (MFS, lived with spouse)"
+    value: "139885.00"
+    work: "Line 6 (0) is less than line 5, so yes: 139,885 − 0 = 139,885.00"
   - printed: "16"
-    value: "169837.65"
-    work: "MFS and lived with spouse: line 7 x 0.85 = 199,809.00 x 0.85 = 169,837.65"
+    value: "118902.25"
+    work: "Married filing separately and lived with spouse during 2025, so skip lines 8–15: 139,885 × 0.85 = 118,902.25"
   - printed: "17"
     value: "39287.00"
-    work: "46,220.00 x 0.85 = 39,287.00"
+    work: "46,220 × 0.85 = 39,287.00"
   - printed: "18"
     value: "39287.00"
-    work: "Smaller of line 16 (169,837.65) or line 17 (39,287.00) = 39,287.00"
+    work: "Smaller of line 16 (118,902.25) or line 17 (39,287.00) = 39,287.00"
+```
 ```
 
 ### classm.ssb.3
@@ -735,58 +645,58 @@ lines:
 lines:
   - printed: "1"
     value: "0.00"
-    work: "Total of box 5 on all SSA-1099/RRB-1099 forms = 0.00"
+    work: "Total of box 5 of all SSA-1099/RRB-1099 = 0.00"
   - printed: "2"
     value: "0.00"
     work: "0.00 x 0.50 = 0.00"
   - printed: "3"
-    value: "0.00"
-    work: "1z 0 + 2b 0 + 3b 0 + 4b 0 + 5b 0 + 7a 0 + 8 0 = 0.00"
+    value: "14269.00"
+    work: "13937.00 + 332.00 + 0 + 0 + 0 + 0 + 0 = 14269.00"
   - printed: "4"
     value: "0.00"
     work: "Form 1040 line 2a = 0.00"
   - printed: "5"
-    value: "0.00"
-    work: "0.00 + 0.00 + 0.00 = 0.00"
+    value: "14269.00"
+    work: "0.00 + 14269.00 + 0.00 = 14269.00"
   - printed: "6"
     value: "0.00"
-    work: "Schedule 1 lines 11-20, 23, 25 total = 0.00"
+    work: "Schedule 1 lines 11-20, 23, 25 all 0.00"
   - printed: "7"
-    value: "blank"
-    work: "Line 6 (0.00) is not less than line 5 (0.00): No, so STOP. No benefits are taxable; enter -0- on 1040 line 6b"
+    value: "14269.00"
+    work: "Line 6 (0.00) < line 5 (14269.00), so yes; 14269.00 - 0.00 = 14269.00"
   - printed: "8"
-    value: "blank"
-    work: "Not reached; the worksheet stopped at line 7"
+    value: "25000.00"
+    work: "Single, so enter $25,000"
   - printed: "9"
-    value: "blank"
-    work: "Not reached; the worksheet stopped at line 7"
+    value: ""
+    work: "Line 8 (25000.00) is not less than line 7 (14269.00), so no; STOP; none taxable; enter -0- on 1040 line 6b"
   - printed: "10"
-    value: "blank"
-    work: "Not reached; the worksheet stopped at line 7"
+    value: ""
+    work: "Skipped; worksheet stopped at line 9"
   - printed: "11"
-    value: "blank"
-    work: "Not reached; the worksheet stopped at line 7"
+    value: ""
+    work: "Skipped; worksheet stopped at line 9"
   - printed: "12"
-    value: "blank"
-    work: "Not reached; the worksheet stopped at line 7"
+    value: ""
+    work: "Skipped; worksheet stopped at line 9"
   - printed: "13"
-    value: "blank"
-    work: "Not reached; the worksheet stopped at line 7"
+    value: ""
+    work: "Skipped; worksheet stopped at line 9"
   - printed: "14"
-    value: "blank"
-    work: "Not reached; the worksheet stopped at line 7"
+    value: ""
+    work: "Skipped; worksheet stopped at line 9"
   - printed: "15"
-    value: "blank"
-    work: "Not reached; the worksheet stopped at line 7"
+    value: ""
+    work: "Skipped; worksheet stopped at line 9"
   - printed: "16"
-    value: "blank"
-    work: "Not reached; the worksheet stopped at line 7"
+    value: ""
+    work: "Skipped; worksheet stopped at line 9"
   - printed: "17"
-    value: "blank"
-    work: "Not reached; the worksheet stopped at line 7"
+    value: ""
+    work: "Skipped; worksheet stopped at line 9"
   - printed: "18"
-    value: "blank"
-    work: "Not reached; the worksheet stopped at line 7 (1040 line 6b = -0-)"
+    value: ""
+    work: "Skipped; worksheet stopped at line 9 (1040 line 6b gets -0-)"
 ```
 ```
 
@@ -797,117 +707,119 @@ lines:
 lines:
   - printed: "1"
     value: "0.00"
-    work: "Total box 5 of Forms SSA-1099/RRB-1099 = 0.00"
+    work: "Total of box 5 of all SSA-1099/RRB-1099 = 0.00"
   - printed: "2"
     value: "0.00"
     work: "0.00 x 0.50 = 0.00"
   - printed: "3"
-    value: "-103568.92"
-    work: "6574.00 + 0 + 0 + 0 + 0 + 0 + (-110142.92) = -103568.92"
+    value: "-144709.34"
+    work: "0 + 0 + 50000.00 + 0 + 0 + 0 + (-194709.34) = -144709.34"
   - printed: "4"
     value: "0.00"
     work: "Form 1040 line 2a = 0.00"
   - printed: "5"
-    value: "-103568.92"
-    work: "0.00 + (-103568.92) + 0.00 = -103568.92"
+    value: "-144709.34"
+    work: "0.00 + (-144709.34) + 0.00 = -144709.34"
   - printed: "6"
     value: "0.00"
-    work: "Schedule 1 lines 11-20, 23, 25 (IRA deductions 0) total = 0.00"
+    work: "Schedule 1 lines 11-20, 23, 25 total 0.00"
   - printed: "7"
     value: "blank"
-    work: "Line 6 (0.00) is not less than line 5 (-103568.92); answer No, STOP; enter 0 on Form 1040 line 6b"
+    work: "Line 6 (0.00) is not less than line 5 (-144709.34), so the answer is No. STOP: none of the benefits are taxable."
   - printed: "8"
     value: "blank"
-    work: "Skipped: worksheet stopped at line 7"
+    work: "Skipped because the worksheet stopped at line 7"
   - printed: "9"
     value: "blank"
-    work: "Skipped: worksheet stopped at line 7"
+    work: "Skipped because the worksheet stopped at line 7"
   - printed: "10"
     value: "blank"
-    work: "Skipped: worksheet stopped at line 7"
+    work: "Skipped because the worksheet stopped at line 7"
   - printed: "11"
     value: "blank"
-    work: "Skipped: worksheet stopped at line 7"
+    work: "Skipped because the worksheet stopped at line 7"
   - printed: "12"
     value: "blank"
-    work: "Skipped: worksheet stopped at line 7"
+    work: "Skipped because the worksheet stopped at line 7"
   - printed: "13"
     value: "blank"
-    work: "Skipped: worksheet stopped at line 7"
+    work: "Skipped because the worksheet stopped at line 7"
   - printed: "14"
     value: "blank"
-    work: "Skipped: worksheet stopped at line 7"
+    work: "Skipped because the worksheet stopped at line 7"
   - printed: "15"
     value: "blank"
-    work: "Skipped: worksheet stopped at line 7"
+    work: "Skipped because the worksheet stopped at line 7"
   - printed: "16"
     value: "blank"
-    work: "Skipped: worksheet stopped at line 7"
+    work: "Skipped because the worksheet stopped at line 7"
   - printed: "17"
     value: "blank"
-    work: "Skipped: worksheet stopped at line 7"
+    work: "Skipped because the worksheet stopped at line 7"
   - printed: "18"
-    value: "blank"
-    work: "Skipped: worksheet stopped at line 7; no benefits taxable, Form 1040 line 6b = 0"
+    value: "0.00"
+    work: "The line 7 STOP says to enter -0- on Form 1040 line 6b, so taxable benefits = 0.00"
 ```
 ```
 
 ### classm.ssb.5
 
 ```yaml
+```yaml
 lines:
   - printed: "1"
     value: "0.00"
-    work: "Total of box 5 from all Forms SSA-1099 and RRB-1099 = 0.00"
+    work: "Total of box 5 of all Forms SSA-1099 and RRB-1099 = 0.00"
   - printed: "2"
     value: "0.00"
     work: "0.00 x 0.50 = 0.00"
   - printed: "3"
-    value: "244885.00"
-    work: "0 + 0 + 237588.00 + 0 + 0 + 7297.00 + 0 = 244885.00"
+    value: "6574.00"
+    work: "6574.00 + 0 + 0 + 0 + 0 + 0 + 0 = 6574.00"
   - printed: "4"
     value: "0.00"
     work: "Form 1040 line 2a = 0.00"
   - printed: "5"
-    value: "244885.00"
-    work: "0.00 + 244885.00 + 0.00 = 244885.00"
+    value: "6574.00"
+    work: "0.00 + 6574.00 + 0.00 = 6574.00"
   - printed: "6"
-    value: "0.00"
-    work: "Schedule 1 lines 11-20, 23, 25 total = 0.00"
+    value: "712.50"
+    work: "Sch 1 lines 11-20, 23, 25: 0 + 712.50 (line 13) + 0s, IRA deduction 0 = 712.50"
   - printed: "7"
-    value: "244885.00"
-    work: "Line 6 (0) < line 5, so yes: 244885.00 - 0.00 = 244885.00"
+    value: "5861.50"
+    work: "712.50 < 6574.00, yes: 6574.00 - 712.50 = 5861.50"
   - printed: "8"
-    value: "25000.00"
-    work: "Qualifying surviving spouse = 25000.00"
+    value: "32000.00"
+    work: "Married filing jointly = 32000.00"
   - printed: "9"
-    value: "219885.00"
-    work: "Line 8 < line 7, so yes: 244885.00 - 25000.00 = 219885.00"
+    value: "blank"
+    work: "32000.00 not less than 5861.50: STOP, none taxable; enter -0- on 1040 line 6b"
   - printed: "10"
-    value: "9000.00"
-    work: "Qualifying surviving spouse = 9000.00"
+    value: "blank"
+    work: "Skipped, STOP at line 9"
   - printed: "11"
-    value: "210885.00"
-    work: "219885.00 - 9000.00 = 210885.00"
+    value: "blank"
+    work: "Skipped, STOP at line 9"
   - printed: "12"
-    value: "9000.00"
-    work: "Smaller of 219885.00 or 9000.00 = 9000.00"
+    value: "blank"
+    work: "Skipped, STOP at line 9"
   - printed: "13"
-    value: "4500.00"
-    work: "9000.00 / 2 = 4500.00"
+    value: "blank"
+    work: "Skipped, STOP at line 9"
   - printed: "14"
-    value: "0.00"
-    work: "Smaller of line 2 (0.00) or line 13 (4500.00) = 0.00"
+    value: "blank"
+    work: "Skipped, STOP at line 9"
   - printed: "15"
-    value: "179252.25"
-    work: "210885.00 x 0.85 = 179252.25"
+    value: "blank"
+    work: "Skipped, STOP at line 9"
   - printed: "16"
-    value: "179252.25"
-    work: "0.00 + 179252.25 = 179252.25"
+    value: "blank"
+    work: "Skipped, STOP at line 9"
   - printed: "17"
-    value: "0.00"
-    work: "0.00 x 0.85 = 0.00"
+    value: "blank"
+    work: "Skipped, STOP at line 9"
   - printed: "18"
-    value: "0.00"
-    work: "Smaller of 179252.25 or 0.00 = 0.00"
+    value: "blank"
+    work: "Skipped, STOP at line 9; Form 1040 line 6b gets -0-"
+```
 ```

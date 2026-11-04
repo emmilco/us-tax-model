@@ -7,14 +7,14 @@ The rendered English of every printed line of `Schedule D — securities sales a
 | date | 2026-11-03 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | a758b810b693e2608a599c15804503782b03af0cd1f05e3ac8227d715236ef1b |
+| prompt sha256 | d8a1bade7e8895260afb189920619c7b281ba3f35ca05706a6924a7e0636eac5 |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
-| subject sha256 | 8d3da910fc9bc545882f7f1186041dd9584fd5eeef0ac9633678e36aa1567a72 |
+| subject sha256 | eeaf337d5fa7492478be5ffa58f4ffcda447017332dba311b038e96279119959 |
 | lines judged | 46 |
-| match / mismatch / unclear / missing | 46 / 0 / 0 / 0 |
+| match / mismatch / unclear / missing | 45 / 1 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -30,7 +30,7 @@ The rendered English of every printed line of `Schedule D — securities sales a
 | f8949 | 2025; created 2025-05-05 | 1, 2 | whole document | f191f96ca2847b4c59875d5e1169f784a79b4d57f1f12d0196bd9bc2e7838e9d | - | cc308c3ff7751456647bed9c2855d077dcbd0a55469b57f9e8cccb6f4927f232 |
 | i1040sb | TY2025; printed April 23, 2025 | 1, 2, 3 | whole document | 2bf62267574473b36fd9a69b6e0837ef74d72ac7d5dcbf1d26e7047d099f1e05 | 1, 2, 3 | 0d38b25d416cb650ef264faf8c1f118dfa4666f3949fbba7120f8c04d4e6914e |
 | f8995 | 2025; created 2025-09-12 | 1 | whole document | 49922587df3bd093e24470f5b42d0e3382ef8f5210b3cedccb02ccb864f2f65a | - | 8e2e78d7610e1d45e93c10c8b03f9026d46a1166678c6ed93f852569c382f346 |
-| p550 | 2025 returns; printed date 2026-03-05 | 86 | pages named by another document's citation | e40622e028486d7eb31a6da342ba2ba3c8b2f7ea9d341d9f47a1d33407d5aa26 | 86 | 7629580e9cb35aa5f67e5d7c035b45850164eb1fe458f8acaa2781578ad0bf51 |
+| p550 | 2025 returns; printed date 2026-03-05 | 82, 86 | pages named by another document's citation | e40622e028486d7eb31a6da342ba2ba3c8b2f7ea9d341d9f47a1d33407d5aa26 | 82, 86 | 7629580e9cb35aa5f67e5d7c035b45850164eb1fe458f8acaa2781578ad0bf51 |
 | i8995 | 2025; printed date 2026-01-26 | 3, 4 | pages named by another document's citation | 96284eaad2fe5ec324de9fd4335cea9ea3260e66ff1d8b1725c1cff7fbe1ddc2 | 3, 4 | 6671a64ba0011f89e03eb5985954073dcd984b3f346495182916b0ecaa42ec1a |
 
 ## Lines
@@ -38,232 +38,236 @@ The rendered English of every printed line of `Schedule D — securities sales a
 ### 1a(d) — Line 1a, column (d) totals
 Status: **MATCH**
 
-Model: Schedule D line 1a aggregates short-term Box A transactions using column (d) proceeds when reported in aggregate; the refusal excludes screened or unsupported cases.
+Model: Restatement correctly totals column (d) proceeds for the short-term basis-reported aggregate route, with digital and unsupported cases excluded by refusal.
 
 ### 1a(e) — Line 1a, column (e) totals
 Status: **MATCH**
 
-Model: Column (e) uses the reported basis for Box A basis-reported transactions, as required for line 1a.
+Model: Restatement correctly totals column (e) basis for the short-term basis-reported aggregate route.
 
 ### 1a(g) — Line 1a, column (g) totals
 Status: **MATCH**
 
-Model: Line 1a is limited to no-adjustment aggregate transactions, and the aggregate-route checks make column (g) zero in supported cases.
+Model: For supported aggregate short-term basis-reported transactions there are no adjustments, so the column (g) total is zero.
 
 ### 1a(h) — Line 1a, column (h) totals
 Status: **MATCH**
 
-Model: Column (h) is proceeds less basis plus adjustments; sales.h computes that same column (h) amount.
+Model: Restatement correctly totals column (h) gain or loss as proceeds less basis plus adjustments.
 
 ### 1b(d) — Line 1b, column (d) totals
 Status: **MATCH**
 
-Model: Schedule D line 1b totals Box A detail-reporting transactions, and column (d) is proceeds.
+Model: Restatement correctly totals column (d) proceeds for short-term basis-reported detail transactions reported on Form 8949.
 
 ### 1b(e) — Line 1b, column (e) totals
 Status: **MATCH**
 
-Model: Column (e) uses the reported basis for Box A transactions, matching the Form 8949 column (e) requirement.
+Model: Restatement correctly totals column (e) basis for short-term basis-reported detail transactions.
 
 ### 1b(g) — Line 1b, column (g) totals
 Status: **MATCH**
 
-Model: Column (g) is the Form 8949 adjustment, and sales.g adds the supported basis and wash-sale adjustments.
+Model: Restatement correctly totals supported column (g) adjustments for short-term basis-reported detail transactions.
 
 ### 1b(h) — Line 1b, column (h) totals
 Status: **MATCH**
 
-Model: Column (h) subtracts column (e) from column (d) and combines column (g), matching sales.h.
+Model: Restatement correctly totals column (h) gain or loss for short-term basis-reported detail transactions.
 
 ### 2(d) — Line 2, column (d) totals
 Status: **MATCH**
 
-Model: Line 2 totals Box B detail-reporting transactions; digital Box H is excluded by refusal, and column (d) is proceeds.
+Model: Restatement correctly totals column (d) proceeds for short-term transactions with basis not reported to the IRS.
 
 ### 2(e) — Line 2, column (e) totals
 Status: **MATCH**
 
-Model: For Box B, basis was not reported, so column (e) uses the correct basis from records.
+Model: Restatement correctly totals column (e) basis for short-term transactions with basis not reported to the IRS.
 
 ### 2(g) — Line 2, column (g) totals
 Status: **MATCH**
 
-Model: Column (g) is the Form 8949 adjustment for Box B detail transactions, using supported adjustments.
+Model: Restatement correctly totals supported column (g) adjustments for short-term transactions with basis not reported.
 
 ### 2(h) — Line 2, column (h) totals
 Status: **MATCH**
 
-Model: Column (h) is proceeds less basis plus adjustments, matching sales.h.
+Model: Restatement correctly totals column (h) gain or loss for short-term transactions with basis not reported.
 
 ### 3(d) — Line 3, column (d) totals
 Status: **MATCH**
 
-Model: Line 3 totals Box C detail-reporting transactions; digital Box I is excluded by refusal, and column (d) is proceeds.
+Model: Restatement correctly totals column (d) proceeds for short-term transactions not reported on Form 1099-B or Form 1099-DA.
 
 ### 3(e) — Line 3, column (e) totals
 Status: **MATCH**
 
-Model: For Box C, no broker basis report applies, so column (e) uses the correct basis from records.
+Model: Restatement correctly totals column (e) basis for short-term transactions not reported on Form 1099-B or Form 1099-DA.
 
 ### 3(g) — Line 3, column (g) totals
 Status: **MATCH**
 
-Model: Column (g) is the Form 8949 adjustment for Box C detail transactions, using supported adjustments.
+Model: Restatement correctly totals supported column (g) adjustments for short-term transactions not reported on Form 1099-B or Form 1099-DA.
 
 ### 3(h) — Line 3, column (h) totals
 Status: **MATCH**
 
-Model: Column (h) is proceeds less basis plus adjustments, matching sales.h.
+Model: Restatement correctly totals column (h) gain or loss for short-term transactions not reported on Form 1099-B or Form 1099-DA.
 
 ### 8a(d) — Line 8a, column (d) totals
 Status: **MATCH**
 
-Model: Schedule D line 8a aggregates long-term Box D transactions using column (d) proceeds when reported in aggregate; the refusal excludes unsupported cases.
+Model: Restatement correctly totals column (d) proceeds for the long-term basis-reported aggregate route.
 
 ### 8a(e) — Line 8a, column (e) totals
 Status: **MATCH**
 
-Model: Column (e) uses the reported basis for Box D basis-reported transactions, as required for line 8a.
+Model: Restatement correctly totals column (e) basis for the long-term basis-reported aggregate route.
 
 ### 8a(g) — Line 8a, column (g) totals
 Status: **MATCH**
 
-Model: Line 8a is limited to no-adjustment aggregate transactions, and the aggregate-route checks make column (g) zero in supported cases.
+Model: For supported aggregate long-term basis-reported transactions there are no adjustments, so the column (g) total is zero.
 
 ### 8a(h) — Line 8a, column (h) totals
 Status: **MATCH**
 
-Model: Column (h) is proceeds less basis plus adjustments; sales.h computes that same column (h) amount.
+Model: Restatement correctly totals column (h) gain or loss for the long-term basis-reported aggregate route.
 
 ### 8b(d) — Line 8b, column (d) totals
 Status: **MATCH**
 
-Model: Schedule D line 8b totals Box D detail-reporting transactions, and column (d) is proceeds.
+Model: Restatement correctly totals column (d) proceeds for long-term basis-reported detail transactions reported on Form 8949.
 
 ### 8b(e) — Line 8b, column (e) totals
 Status: **MATCH**
 
-Model: Column (e) uses the reported basis for Box D transactions, matching the Form 8949 column (e) requirement.
+Model: Restatement correctly totals column (e) basis for long-term basis-reported detail transactions.
 
 ### 8b(g) — Line 8b, column (g) totals
 Status: **MATCH**
 
-Model: Column (g) is the Form 8949 adjustment, and sales.g adds the supported basis and wash-sale adjustments.
+Model: Restatement correctly totals supported column (g) adjustments for long-term basis-reported detail transactions.
 
 ### 8b(h) — Line 8b, column (h) totals
 Status: **MATCH**
 
-Model: Column (h) subtracts column (e) from column (d) and combines column (g), matching sales.h.
+Model: Restatement correctly totals column (h) gain or loss for long-term basis-reported detail transactions.
 
 ### 9(d) — Line 9, column (d) totals
 Status: **MATCH**
 
-Model: Line 9 totals Box E detail-reporting transactions; digital Box K is excluded by refusal, and column (d) is proceeds.
+Model: Restatement correctly totals column (d) proceeds for long-term transactions with basis not reported to the IRS.
 
 ### 9(e) — Line 9, column (e) totals
 Status: **MATCH**
 
-Model: For Box E, basis was not reported, so column (e) uses the correct basis from records.
+Model: Restatement correctly totals column (e) basis for long-term transactions with basis not reported to the IRS.
 
 ### 9(g) — Line 9, column (g) totals
 Status: **MATCH**
 
-Model: Column (g) is the Form 8949 adjustment for Box E detail transactions, using supported adjustments.
+Model: Restatement correctly totals supported column (g) adjustments for long-term transactions with basis not reported.
 
 ### 9(h) — Line 9, column (h) totals
 Status: **MATCH**
 
-Model: Column (h) is proceeds less basis plus adjustments, matching sales.h.
+Model: Restatement correctly totals column (h) gain or loss for long-term transactions with basis not reported.
 
 ### 10(d) — Line 10, column (d) totals
 Status: **MATCH**
 
-Model: Line 10 totals Box F detail-reporting transactions; digital Box L is excluded by refusal, and column (d) is proceeds.
+Model: Restatement correctly totals column (d) proceeds for long-term transactions not reported on Form 1099-B or Form 1099-DA.
 
 ### 10(e) — Line 10, column (e) totals
 Status: **MATCH**
 
-Model: For Box F, no broker basis report applies, so column (e) uses the correct basis from records.
+Model: Restatement correctly totals column (e) basis for long-term transactions not reported on Form 1099-B or Form 1099-DA.
 
 ### 10(g) — Line 10, column (g) totals
 Status: **MATCH**
 
-Model: Column (g) is the Form 8949 adjustment for Box F detail transactions, using supported adjustments.
+Model: Restatement correctly totals supported column (g) adjustments for long-term transactions not reported on Form 1099-B or Form 1099-DA.
 
 ### 10(h) — Line 10, column (h) totals
 Status: **MATCH**
 
-Model: Column (h) is proceeds less basis plus adjustments, matching sales.h.
+Model: Restatement correctly totals column (h) gain or loss for long-term transactions not reported on Form 1099-B or Form 1099-DA.
 
 ### 4 — Line 4: zero only after unsupported source/carryover screening
 Status: **MATCH**
 
-Model: Line 4 is zero when no other source forms apply; the refusal excludes Forms 6252, 4684, 6781, and 8824.
+Model: Line 4 is zero when no other-source form gains apply, and the refusal excludes those forms when present.
 
 ### 5 — Line 5: zero only after unsupported source/carryover screening
 Status: **MATCH**
 
-Model: Line 5 is zero when no Schedule K-1 partnership, S corporation, estate, or trust gains or losses apply; the refusal excludes them.
+Model: Line 5 is zero when no Schedule K-1 or other-source gains apply, with those cases refused.
 
 ### 6 — Short-term capital loss carryover, from line 8 of the Capital Loss Carryover Worksheet (a
 Status: **MATCH**
 
-Model: Line 6 uses the Capital Loss Carryover Worksheet line 8 amount as a short-term loss when applicable, and otherwise zero.
+Model: Line 6 correctly uses the Capital Loss Carryover Worksheet line 8 as a negative loss when the 2024 line 21 loss condition is met, otherwise zero.
 
 ### 11 — Line 11: zero only after unsupported source/carryover screening
 Status: **MATCH**
 
-Model: Line 11 is zero when no other source forms apply; the refusal excludes Forms 4797, 2439, 6252, 4684, 6781, and 8824.
+Model: Line 11 is zero when no other-source long-term gains apply, with those forms refused.
 
 ### 12 — Line 12: zero only after unsupported source/carryover screening
 Status: **MATCH**
 
-Model: Line 12 is zero when no Schedule K-1 long-term gains or losses apply; the refusal excludes those sources.
+Model: Line 12 is zero when no Schedule K-1 or other-source long-term gains apply, with those cases refused.
 
 ### 14 — Long-term capital loss carryover, from line 13 of the Capital Loss Carryover Worksheet (a
 Status: **MATCH**
 
-Model: Line 14 uses the Capital Loss Carryover Worksheet line 13 amount as a long-term loss when applicable, and otherwise zero.
+Model: Line 14 correctly uses the Capital Loss Carryover Worksheet line 13 as a negative loss when the 2024 line 21 loss condition is met, otherwise zero.
 
 ### 13 — Capital gain distributions
 Status: **MATCH**
 
-Model: Line 13 is the Form 1099-DIV box 2a capital gain distribution; unsupported distribution cases are refused.
+Model: Line 13 correctly uses the capital gain distributions amount, with distribution scope checks refusing unsupported special cases.
 
 ### 7 — Combine the amounts for Schedule D line 7
 Status: **MATCH**
 
-Model: Line 7 combines the Part I column (h) amounts and lines 4 through 6, matching the form instruction to combine lines 1a through 6 in column (h).
+Model: Line 7 correctly combines lines 1a through 6 in column (h).
 
 ### 15 — Combine the amounts for Schedule D line 15
 Status: **MATCH**
 
-Model: Line 15 combines the Part II column (h) amounts and lines 11 through 14, matching the form instruction to combine lines 8a through 14 in column (h).
+Model: Line 15 correctly combines lines 8a through 14 in column (h).
 
 ### 16 — Combine the amounts for Schedule D line 16
 Status: **MATCH**
 
-Model: Line 16 combines lines 7 and 15, as the form directs.
+Model: Line 16 correctly combines lines 7 and 15.
 
 ### 17 — Are lines 15 and 16 both gains?
 Status: **MATCH**
 
-Model: Line 17 is true only when both lines 15 and 16 are gains, matching 'Are lines 15 and 16 both gains?'
+Model: Line 17 correctly tests whether lines 15 and 16 are both positive gains.
 
 ### 20 — Are lines 18 and 19 zero and are you not filing Form 4952?
-Status: **MATCH**
+Status: **MISMATCH**
 
-Model: Line 20 checks that lines 18 and 19 are zero or blank and that Form 4952 is not being filed.
+Restated: helper "Line 18. 28% Rate Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)" = $0 and helper "Line 19. Unrecaptured Section 1250 Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)" = $0 and helper "Are you filing Form 4952?" = false
+
+Model: The form says if line 17 is No, skip lines 18 through 21 and go to line 22; the restatement evaluates line 20 from zeroed lines 18 and 19 without requiring line 17 to be Yes.
+
+Ruling: representation; f1040sd p. 2, line 17: "No. Skip lines 18 through 21, and go to line 22". Line 20 (and line 22) are Boolean flow predicates, evaluated on every path by the documented convention (forms/2025/sd.yaml form note); the path the filer follows, and which lines show, is decided by line 17 and line 16 upstream, so the answer on a skipped path is never read. Same reading as the earlier rounds.
 
 ### 21 — Deductible loss, signed; zero when line 21 is skipped
 Status: **MATCH**
 
-Model: Line 21 limits a line 16 loss to the annual capital loss limit, using the signed larger-of computation that matches the smaller positive loss.
+Model: Line 21 correctly applies the smaller positive loss limit by taking the larger of the signed line 16 loss and the signed annual limit, entering the result as a loss.
 
 ### 22 — Do you have qualified dividends?
 Status: **MATCH**
 
-Model: Line 22 is true when qualified dividends on Form 1040 line 3a are greater than zero.
+Model: Line 22 correctly tests whether Form 1040 line 3a qualified dividends are greater than zero.
 
 ## Raw response
 
@@ -271,140 +275,140 @@ Model: Line 22 is true when qualified dividends on Form 1040 line 3a are greater
 lines:
   - key: "1a(d)"
     status: MATCH
-    reason: "Schedule D line 1a aggregates short-term Box A transactions using column (d) proceeds when reported in aggregate; the refusal excludes screened or unsupported cases."
+    reason: 'Restatement correctly totals column (d) proceeds for the short-term basis-reported aggregate route, with digital and unsupported cases excluded by refusal.'
   - key: "1a(e)"
     status: MATCH
-    reason: "Column (e) uses the reported basis for Box A basis-reported transactions, as required for line 1a."
+    reason: 'Restatement correctly totals column (e) basis for the short-term basis-reported aggregate route.'
   - key: "1a(g)"
     status: MATCH
-    reason: "Line 1a is limited to no-adjustment aggregate transactions, and the aggregate-route checks make column (g) zero in supported cases."
+    reason: 'For supported aggregate short-term basis-reported transactions there are no adjustments, so the column (g) total is zero.'
   - key: "1a(h)"
     status: MATCH
-    reason: "Column (h) is proceeds less basis plus adjustments; sales.h computes that same column (h) amount."
+    reason: 'Restatement correctly totals column (h) gain or loss as proceeds less basis plus adjustments.'
   - key: "1b(d)"
     status: MATCH
-    reason: "Schedule D line 1b totals Box A detail-reporting transactions, and column (d) is proceeds."
+    reason: 'Restatement correctly totals column (d) proceeds for short-term basis-reported detail transactions reported on Form 8949.'
   - key: "1b(e)"
     status: MATCH
-    reason: "Column (e) uses the reported basis for Box A transactions, matching the Form 8949 column (e) requirement."
+    reason: 'Restatement correctly totals column (e) basis for short-term basis-reported detail transactions.'
   - key: "1b(g)"
     status: MATCH
-    reason: "Column (g) is the Form 8949 adjustment, and sales.g adds the supported basis and wash-sale adjustments."
+    reason: 'Restatement correctly totals supported column (g) adjustments for short-term basis-reported detail transactions.'
   - key: "1b(h)"
     status: MATCH
-    reason: "Column (h) subtracts column (e) from column (d) and combines column (g), matching sales.h."
+    reason: 'Restatement correctly totals column (h) gain or loss for short-term basis-reported detail transactions.'
   - key: "2(d)"
     status: MATCH
-    reason: "Line 2 totals Box B detail-reporting transactions; digital Box H is excluded by refusal, and column (d) is proceeds."
+    reason: 'Restatement correctly totals column (d) proceeds for short-term transactions with basis not reported to the IRS.'
   - key: "2(e)"
     status: MATCH
-    reason: "For Box B, basis was not reported, so column (e) uses the correct basis from records."
+    reason: 'Restatement correctly totals column (e) basis for short-term transactions with basis not reported to the IRS.'
   - key: "2(g)"
     status: MATCH
-    reason: "Column (g) is the Form 8949 adjustment for Box B detail transactions, using supported adjustments."
+    reason: 'Restatement correctly totals supported column (g) adjustments for short-term transactions with basis not reported.'
   - key: "2(h)"
     status: MATCH
-    reason: "Column (h) is proceeds less basis plus adjustments, matching sales.h."
+    reason: 'Restatement correctly totals column (h) gain or loss for short-term transactions with basis not reported.'
   - key: "3(d)"
     status: MATCH
-    reason: "Line 3 totals Box C detail-reporting transactions; digital Box I is excluded by refusal, and column (d) is proceeds."
+    reason: 'Restatement correctly totals column (d) proceeds for short-term transactions not reported on Form 1099-B or Form 1099-DA.'
   - key: "3(e)"
     status: MATCH
-    reason: "For Box C, no broker basis report applies, so column (e) uses the correct basis from records."
+    reason: 'Restatement correctly totals column (e) basis for short-term transactions not reported on Form 1099-B or Form 1099-DA.'
   - key: "3(g)"
     status: MATCH
-    reason: "Column (g) is the Form 8949 adjustment for Box C detail transactions, using supported adjustments."
+    reason: 'Restatement correctly totals supported column (g) adjustments for short-term transactions not reported on Form 1099-B or Form 1099-DA.'
   - key: "3(h)"
     status: MATCH
-    reason: "Column (h) is proceeds less basis plus adjustments, matching sales.h."
+    reason: 'Restatement correctly totals column (h) gain or loss for short-term transactions not reported on Form 1099-B or Form 1099-DA.'
   - key: "8a(d)"
     status: MATCH
-    reason: "Schedule D line 8a aggregates long-term Box D transactions using column (d) proceeds when reported in aggregate; the refusal excludes unsupported cases."
+    reason: 'Restatement correctly totals column (d) proceeds for the long-term basis-reported aggregate route.'
   - key: "8a(e)"
     status: MATCH
-    reason: "Column (e) uses the reported basis for Box D basis-reported transactions, as required for line 8a."
+    reason: 'Restatement correctly totals column (e) basis for the long-term basis-reported aggregate route.'
   - key: "8a(g)"
     status: MATCH
-    reason: "Line 8a is limited to no-adjustment aggregate transactions, and the aggregate-route checks make column (g) zero in supported cases."
+    reason: 'For supported aggregate long-term basis-reported transactions there are no adjustments, so the column (g) total is zero.'
   - key: "8a(h)"
     status: MATCH
-    reason: "Column (h) is proceeds less basis plus adjustments; sales.h computes that same column (h) amount."
+    reason: 'Restatement correctly totals column (h) gain or loss for the long-term basis-reported aggregate route.'
   - key: "8b(d)"
     status: MATCH
-    reason: "Schedule D line 8b totals Box D detail-reporting transactions, and column (d) is proceeds."
+    reason: 'Restatement correctly totals column (d) proceeds for long-term basis-reported detail transactions reported on Form 8949.'
   - key: "8b(e)"
     status: MATCH
-    reason: "Column (e) uses the reported basis for Box D transactions, matching the Form 8949 column (e) requirement."
+    reason: 'Restatement correctly totals column (e) basis for long-term basis-reported detail transactions.'
   - key: "8b(g)"
     status: MATCH
-    reason: "Column (g) is the Form 8949 adjustment, and sales.g adds the supported basis and wash-sale adjustments."
+    reason: 'Restatement correctly totals supported column (g) adjustments for long-term basis-reported detail transactions.'
   - key: "8b(h)"
     status: MATCH
-    reason: "Column (h) subtracts column (e) from column (d) and combines column (g), matching sales.h."
+    reason: 'Restatement correctly totals column (h) gain or loss for long-term basis-reported detail transactions.'
   - key: "9(d)"
     status: MATCH
-    reason: "Line 9 totals Box E detail-reporting transactions; digital Box K is excluded by refusal, and column (d) is proceeds."
+    reason: 'Restatement correctly totals column (d) proceeds for long-term transactions with basis not reported to the IRS.'
   - key: "9(e)"
     status: MATCH
-    reason: "For Box E, basis was not reported, so column (e) uses the correct basis from records."
+    reason: 'Restatement correctly totals column (e) basis for long-term transactions with basis not reported to the IRS.'
   - key: "9(g)"
     status: MATCH
-    reason: "Column (g) is the Form 8949 adjustment for Box E detail transactions, using supported adjustments."
+    reason: 'Restatement correctly totals supported column (g) adjustments for long-term transactions with basis not reported.'
   - key: "9(h)"
     status: MATCH
-    reason: "Column (h) is proceeds less basis plus adjustments, matching sales.h."
+    reason: 'Restatement correctly totals column (h) gain or loss for long-term transactions with basis not reported.'
   - key: "10(d)"
     status: MATCH
-    reason: "Line 10 totals Box F detail-reporting transactions; digital Box L is excluded by refusal, and column (d) is proceeds."
+    reason: 'Restatement correctly totals column (d) proceeds for long-term transactions not reported on Form 1099-B or Form 1099-DA.'
   - key: "10(e)"
     status: MATCH
-    reason: "For Box F, no broker basis report applies, so column (e) uses the correct basis from records."
+    reason: 'Restatement correctly totals column (e) basis for long-term transactions not reported on Form 1099-B or Form 1099-DA.'
   - key: "10(g)"
     status: MATCH
-    reason: "Column (g) is the Form 8949 adjustment for Box F detail transactions, using supported adjustments."
+    reason: 'Restatement correctly totals supported column (g) adjustments for long-term transactions not reported on Form 1099-B or Form 1099-DA.'
   - key: "10(h)"
     status: MATCH
-    reason: "Column (h) is proceeds less basis plus adjustments, matching sales.h."
+    reason: 'Restatement correctly totals column (h) gain or loss for long-term transactions not reported on Form 1099-B or Form 1099-DA.'
   - key: "4"
     status: MATCH
-    reason: "Line 4 is zero when no other source forms apply; the refusal excludes Forms 6252, 4684, 6781, and 8824."
+    reason: 'Line 4 is zero when no other-source form gains apply, and the refusal excludes those forms when present.'
   - key: "5"
     status: MATCH
-    reason: "Line 5 is zero when no Schedule K-1 partnership, S corporation, estate, or trust gains or losses apply; the refusal excludes them."
+    reason: 'Line 5 is zero when no Schedule K-1 or other-source gains apply, with those cases refused.'
   - key: "6"
     status: MATCH
-    reason: "Line 6 uses the Capital Loss Carryover Worksheet line 8 amount as a short-term loss when applicable, and otherwise zero."
+    reason: 'Line 6 correctly uses the Capital Loss Carryover Worksheet line 8 as a negative loss when the 2024 line 21 loss condition is met, otherwise zero.'
   - key: "11"
     status: MATCH
-    reason: "Line 11 is zero when no other source forms apply; the refusal excludes Forms 4797, 2439, 6252, 4684, 6781, and 8824."
+    reason: 'Line 11 is zero when no other-source long-term gains apply, with those forms refused.'
   - key: "12"
     status: MATCH
-    reason: "Line 12 is zero when no Schedule K-1 long-term gains or losses apply; the refusal excludes those sources."
+    reason: 'Line 12 is zero when no Schedule K-1 or other-source long-term gains apply, with those cases refused.'
   - key: "14"
     status: MATCH
-    reason: "Line 14 uses the Capital Loss Carryover Worksheet line 13 amount as a long-term loss when applicable, and otherwise zero."
+    reason: 'Line 14 correctly uses the Capital Loss Carryover Worksheet line 13 as a negative loss when the 2024 line 21 loss condition is met, otherwise zero.'
   - key: "13"
     status: MATCH
-    reason: "Line 13 is the Form 1099-DIV box 2a capital gain distribution; unsupported distribution cases are refused."
+    reason: 'Line 13 correctly uses the capital gain distributions amount, with distribution scope checks refusing unsupported special cases.'
   - key: "7"
     status: MATCH
-    reason: "Line 7 combines the Part I column (h) amounts and lines 4 through 6, matching the form instruction to combine lines 1a through 6 in column (h)."
+    reason: 'Line 7 correctly combines lines 1a through 6 in column (h).'
   - key: "15"
     status: MATCH
-    reason: "Line 15 combines the Part II column (h) amounts and lines 11 through 14, matching the form instruction to combine lines 8a through 14 in column (h)."
+    reason: 'Line 15 correctly combines lines 8a through 14 in column (h).'
   - key: "16"
     status: MATCH
-    reason: "Line 16 combines lines 7 and 15, as the form directs."
+    reason: 'Line 16 correctly combines lines 7 and 15.'
   - key: "17"
     status: MATCH
-    reason: "Line 17 is true only when both lines 15 and 16 are gains, matching 'Are lines 15 and 16 both gains?'"
+    reason: 'Line 17 correctly tests whether lines 15 and 16 are both positive gains.'
   - key: "20"
-    status: MATCH
-    reason: "Line 20 checks that lines 18 and 19 are zero or blank and that Form 4952 is not being filed."
+    status: MISMATCH
+    reason: 'The form says if line 17 is No, skip lines 18 through 21 and go to line 22; the restatement evaluates line 20 from zeroed lines 18 and 19 without requiring line 17 to be Yes.'
   - key: "21"
     status: MATCH
-    reason: "Line 21 limits a line 16 loss to the annual capital loss limit, using the signed larger-of computation that matches the smaller positive loss."
+    reason: 'Line 21 correctly applies the smaller positive loss limit by taking the larger of the signed line 16 loss and the signed annual limit, entering the result as a loss.'
   - key: "22"
     status: MATCH
-    reason: "Line 22 is true when qualified dividends on Form 1040 line 3a are greater than zero."
+    reason: 'Line 22 correctly tests whether Form 1040 line 3a qualified dividends are greater than zero.'
 ```

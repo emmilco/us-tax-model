@@ -76,6 +76,13 @@
   {
    "printed": "(SMW 10)",
    "restated": "Add column (SMW 6) and column (SMW 8).",
+   "model": "Line 10 says 'Was your annuity starting date before 1987? Yes. STOP Do not complete the rest of this worksheet'; the restatement always adds lines 6 and 8.",
+   "ruling": "Ruling: scope; i1040gi p. 29, Simplified Method Worksheet, line 5: \"If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8. Otherwise, go to line 6\", and line 10's before-1987 STOP. A starting date before 1987 is before November 19, 1996, which retirement.special refuses for an annuity with after-tax cost, and retirement.annuity asks for a starting date after November 18, 1996. So the post-1986 path of line 10 is the only one reached. Re-checked against the current forms/2025/retirement.yaml this round: BUG-0393 added the qualified disaster recovery distribution (Form 8915-F) to retirement.special and reworded retirement.rollover and retirement.exception; retirement.special still names \"a death benefit exclusion\" and \"a pension or annuity in which you have after-tax cost whose annuity starting date ... was before November 19, 1996\", and the worksheet expressions are unchanged. Same model reading as earlier rounds. Project stands on the English.",
+   "context": "e5ecfbb69c2000f64a9f2e81f9abb72f2cbc3b04fc1ba2175dd7b069426d2c7f"
+  },
+  {
+   "printed": "(SMW 10)",
+   "restated": "Add column (SMW 6) and column (SMW 8).",
    "model": "The IRS line 10 asks 'Was your annuity starting date before 1987?' and says 'Yes. STOP Do not complete the rest of this worksheet'; the restatement unconditionally adds lines 6 and 8.",
    "ruling": "Ruling: scope; i1040gi p. 29, Simplified Method Worksheet, line 10: \"Was your annuity starting date before 1987? Yes. STOP Do not complete the rest of this worksheet. No. Add lines 6 and 8.\" retirement.special refuses \"a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996\" (so every annuity starting before 1987), and retirement.annuity, which routes an entry to the worksheet, asks for \"an annuity starting date after November 18, 1996\", so the question is answered No on every entry that reaches the worksheet and its No branch is the project's sum; the skipped-line rule is not engaged. Same as the archived rulings. Project stands.",
    "context": "0e54c2c07f0632182f8b3c21d197248bb3a4b8a4c703c3db8f831c090ab8c0e1"
@@ -121,6 +128,13 @@
    "model": "Line 11 follows only after a No answer to the line 10 before-1987 question; the restatement would compute it even when the IRS says 'STOP Do not complete the rest of this worksheet'.",
    "ruling": "Ruling: scope; i1040gi p. 29, Simplified Method Worksheet: line 5: \"If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8\"; line 10: \"Was your annuity starting date before 1987? Yes. STOP Do not complete the rest of this worksheet.\" retirement.special refuses every annuity with after-tax cost whose starting date was before November 19, 1996 (so every pre-1987 annuity), and the worksheet is shown only under retirement.smw_shown, so the before-1987 branch and STOP are never reached. The new hiding condition retirement.smw_shown was checked by evaluating cases (IRA with the pension answers unasked, cost recovered, fully taxable, cost left): it hides the worksheet exactly where i1040gi pp. 28-30 skip it. Same model reading as earlier rounds. Project stands on the English.",
    "context": "a5df70537ddc01518738820cf0510d7a854abef31d0ee02552b6d7ad210f0efa"
+  },
+  {
+   "printed": "(SMW 11)",
+   "restated": "Subtract column (SMW 10) from column (SMW 2).",
+   "model": "Line 11 is part of the 'Do not complete the rest of this worksheet' branch for a pre-1987 annuity starting date, but the restatement always subtracts line 10 from line 2.",
+   "ruling": "Ruling: scope; i1040gi p. 29, Simplified Method Worksheet, line 5: \"If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8. Otherwise, go to line 6\", and line 10's before-1987 STOP. A starting date before 1987 is before November 19, 1996, which retirement.special refuses for an annuity with after-tax cost, and retirement.annuity asks for a starting date after November 18, 1996. So the post-1986 path of line 11 is the only one reached. Re-checked against the current forms/2025/retirement.yaml this round: BUG-0393 added the qualified disaster recovery distribution (Form 8915-F) to retirement.special and reworded retirement.rollover and retirement.exception; retirement.special still names \"a death benefit exclusion\" and \"a pension or annuity in which you have after-tax cost whose annuity starting date ... was before November 19, 1996\", and the worksheet expressions are unchanged. Same model reading as earlier rounds. Project stands on the English.",
+   "context": "e5ecfbb69c2000f64a9f2e81f9abb72f2cbc3b04fc1ba2175dd7b069426d2c7f"
   },
   {
    "printed": "(SMW 11)",
@@ -212,6 +226,13 @@
    "model": "Table 1 has separate columns for annuity starting dates before November 19, 1996 and after November 18, 1996; the restatement uses only the after-November 18, 1996 numbers, so it miscomputes a before-November 19, 1996 annuity.",
    "ruling": "Ruling: scope; i1040gi p. 29, Simplified Method Worksheet, Table 1 for Line 3, which has \"before November 19, 1996\" (300, 260, 240, 170, 120) and \"after November 18, 1996\" (360, 310, 260, 210, 160) columns. retirement.special still refuses \"a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996\", and retirement.annuity requires a starting date after November 18, 1996, so only the after-November-18-1996 column is reached. Re-checked against the current forms/2025/retirement.yaml: the income package (PENDING-4) narrowed other items of retirement.special and added survivor wording to the worksheet questions. The item relied on here is unchanged, and so are the worksheet expressions. Same model reading as earlier rounds. Project stands on the English.",
    "context": "c0ac85551406a88b76144d01001d0ad3ea4d897fef89a95b0edb44dbf0ef6129"
+  },
+  {
+   "printed": "(SMW 4)",
+   "restated": "Choose — [helper \"Did you complete this worksheet for this annuity last year?\" = true → helper \"Line 4 of last year's Simplified Method Worksheet\"] [helper \"Did you complete this worksheet for this annuity last year?\" = false → helper \"Line 2 divided by the number on line 3 (Table 2 for a joint and survivor annuity starting after 1997, Table 1 otherwise)\"]",
+   "model": "Table 1 has separate numbers for an annuity starting date before November 19, 1996 (300/260/240/170/120) and after November 18, 1996 (360/310/260/210/160); the restatement uses only the after-November-18-1996 numbers.",
+   "ruling": "Ruling: scope; i1040gi p. 29, Simplified Method Worksheet, Table 1 for Line 3, which has \"before November 19, 1996\" (300, 260, 240, 170, 120) and \"after November 18, 1996\" (360, 310, 260, 210, 160) columns. retirement.special still refuses \"a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996\", and retirement.annuity requires a starting date after November 18, 1996, so only the after-November-18-1996 column is reached. Re-checked against the current forms/2025/retirement.yaml this round: BUG-0393 added the qualified disaster recovery distribution (Form 8915-F) to retirement.special and reworded retirement.rollover and retirement.exception; retirement.special still names \"a death benefit exclusion\" and \"a pension or annuity in which you have after-tax cost whose annuity starting date ... was before November 19, 1996\", and the worksheet expressions are unchanged. Same model reading as earlier rounds. Project stands on the English.",
+   "context": "e5ecfbb69c2000f64a9f2e81f9abb72f2cbc3b04fc1ba2175dd7b069426d2c7f"
   },
   {
    "printed": "(SMW 4)",
@@ -326,6 +347,13 @@
    "context": "864cc5908973e6bfaa3a163cde92833fe75028941b40dcbc532c50c823728fdd"
   },
   {
+   "printed": "(SMW 6)",
+   "restated": "Enter the amount from helper \"Amount recovered tax free in years after 1986 (line 10 of last year's worksheet)\".",
+   "model": "The worksheet says 'If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8'; the restatement always computes line 6.",
+   "ruling": "Ruling: scope; i1040gi p. 29, Simplified Method Worksheet, line 5: \"If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8. Otherwise, go to line 6\", and line 10's before-1987 STOP. A starting date before 1987 is before November 19, 1996, which retirement.special refuses for an annuity with after-tax cost, and retirement.annuity asks for a starting date after November 18, 1996. So the post-1986 path of line 6 is the only one reached. Re-checked against the current forms/2025/retirement.yaml this round: BUG-0393 added the qualified disaster recovery distribution (Form 8915-F) to retirement.special and reworded retirement.rollover and retirement.exception; retirement.special still names \"a death benefit exclusion\" and \"a pension or annuity in which you have after-tax cost whose annuity starting date ... was before November 19, 1996\", and the worksheet expressions are unchanged. Same model reading as earlier rounds. Project stands on the English.",
+   "context": "e5ecfbb69c2000f64a9f2e81f9abb72f2cbc3b04fc1ba2175dd7b069426d2c7f"
+  },
+  {
    "printed": "(SMW 7)",
    "restated": "Subtract column (SMW 6) from column (SMW 2).",
    "model": "IRS line 5 says 'If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8'; the restatement always subtracts line 6 from line 2.",
@@ -366,6 +394,20 @@
    "model": "The gate limits the line to the second Simplified Method condition (annuity starting date after November 18, 1996, with the age/guaranteed-payment tests), but the IRS text says you must use the Simplified Method if either that condition or 'your annuity starting date was after July 1, 1986, and you used this method last year'; the restatement omits the latter condition.",
    "ruling": "Ruling: scope; i1040gi p. 30, Simplified Method: \"You must use the Simplified Method if either of the following applies. 1. Your annuity starting date was after July 1, 1986, and you used this method last year to figure the taxable part. 2. Your annuity starting date was after November 18, 1996, and both of the following apply.\" The model says the hiding condition (retirement.annuity, condition 2) omits condition 1. Condition 1 alone reaches only an annuity starting from July 2, 1986 to November 18, 1996 (a later start that met the method last year met condition 2 on its starting date, which does not change); retirement.special refuses \"a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)\" and is read by retirement.taxable, so every condition-1-only annuity is refused (screen retirement.special). The English of the line and of its condition is right for every entry the tool computes. Not raised by the model, and ruled separately: the same condition shows the worksheet on IRA entries (F5) and on annuities whose cost was recovered before 2025 (F6). Project stands on the English.",
    "context": "864cc5908973e6bfaa3a163cde92833fe75028941b40dcbc532c50c823728fdd"
+  },
+  {
+   "printed": "(SMW 7)",
+   "restated": "Subtract column (SMW 6) from column (SMW 2).",
+   "model": "The worksheet says 'If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8'; the restatement always subtracts line 6 from line 2.",
+   "ruling": "Ruling: scope; i1040gi p. 29, Simplified Method Worksheet, line 5: \"If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8. Otherwise, go to line 6\", and line 10's before-1987 STOP. A starting date before 1987 is before November 19, 1996, which retirement.special refuses for an annuity with after-tax cost, and retirement.annuity asks for a starting date after November 18, 1996. So the post-1986 path of line 7 is the only one reached. Re-checked against the current forms/2025/retirement.yaml this round: BUG-0393 added the qualified disaster recovery distribution (Form 8915-F) to retirement.special and reworded retirement.rollover and retirement.exception; retirement.special still names \"a death benefit exclusion\" and \"a pension or annuity in which you have after-tax cost whose annuity starting date ... was before November 19, 1996\", and the worksheet expressions are unchanged. Same model reading as earlier rounds. Project stands on the English.",
+   "context": "e5ecfbb69c2000f64a9f2e81f9abb72f2cbc3b04fc1ba2175dd7b069426d2c7f"
+  },
+  {
+   "printed": "(SMW 8)",
+   "restated": "Enter the smaller of column (SMW 5) or column (SMW 7).",
+   "model": "For a pre-1987 annuity starting date the worksheet says to enter the line 5 amount on line 8, not the smaller of line 5 or line 7 as the restatement does.",
+   "ruling": "Ruling: scope; i1040gi p. 29, Simplified Method Worksheet, line 5: \"If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8. Otherwise, go to line 6\", and line 10's before-1987 STOP. A starting date before 1987 is before November 19, 1996, which retirement.special refuses for an annuity with after-tax cost, and retirement.annuity asks for a starting date after November 18, 1996. So the post-1986 path of line 8 is the only one reached. Re-checked against the current forms/2025/retirement.yaml this round: BUG-0393 added the qualified disaster recovery distribution (Form 8915-F) to retirement.special and reworded retirement.rollover and retirement.exception; retirement.special still names \"a death benefit exclusion\" and \"a pension or annuity in which you have after-tax cost whose annuity starting date ... was before November 19, 1996\", and the worksheet expressions are unchanged. Same model reading as earlier rounds. Project stands on the English.",
+   "context": "e5ecfbb69c2000f64a9f2e81f9abb72f2cbc3b04fc1ba2175dd7b069426d2c7f"
   },
   {
    "printed": "(SMW 8)",

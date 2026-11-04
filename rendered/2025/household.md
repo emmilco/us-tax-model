@@ -158,14 +158,14 @@
 - **Authored helper label:** Your entry, if the answer is yes
 - **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Whose entry is this, yours or your spouse's?" = 'taxpayer' and helper "Do you have an SSN valid for employment issued before the due date of your return?" = true, within the current person when parent-bound. An unanswered roster is unknown.
 - Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"all":[{"eq":["person.role",{"const":"taxpayer"}],"op":"test"},{"eq":["person.work_ssn",{"const":true}],"op":"test"}],"op":"test"}}`
-- Cite: [i1040gi] p. 18, Step 3, question 4 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "You have a valid social security number (SSN)"; p. 104, Valid SSN for No Tax on Tips, "A valid SSN for purposes of the deduction for qualified tips is one that is valid for employment and that is issued by the Social Security Administration (SSA) before the due date of your 2025 return (including extensions)"; p. 108, Valid SSN, "A valid SSN for purposes of the deduction for qualified overtime compensation is one that is valid for employment"; p. 110, Valid SSN, "A valid SSN for purposes of the enhanced deduction for seniors is one that is valid for employment" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `household.taxpayer_work_ssn`
 
 - **Authored helper label:** Do you have an SSN valid for employment issued before the due date of your return?
 - **Encoded (Bool):** helper "Your entry, if the answer is yes" > 0 (a count)
 - Expr: `{"gt":["household.taxpayer_work_ssn_count",{"const":0,"type":"Count"}],"op":"test"}`
-- Cite: [i1040gi] p. 18, Step 3, question 4 (2025; printed date 2026-02-25; sha256 482e9c48)
+- Cite: [i1040gi] p. 101, Schedule 1-A, Part II, "You have a valid social security number (SSN)"; p. 104, Valid SSN for No Tax on Tips, "A valid SSN for purposes of the deduction for qualified tips is one that is valid for employment and that is issued by the Social Security Administration (SSA) before the due date of your 2025 return (including extensions)"; p. 108, Valid SSN, "A valid SSN for purposes of the deduction for qualified overtime compensation is one that is valid for employment"; p. 110, Valid SSN, "A valid SSN for purposes of the enhanced deduction for seniors is one that is valid for employment" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `household.home_cost`
 

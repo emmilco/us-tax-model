@@ -659,6 +659,192 @@
    "question_phrase": "Does this Form 1095-A show coverage in all 12 months of 2025, with the same amount in column A ... every month and the same amount in column B ... every month?",
    "source_phrase": "i1095a p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\" (read by f1095a.line33a)",
    "reason": "Line 33 is the total of the monthly amounts; the answer only picks whether that total is 12 times the one monthly amount or the sum of twelve entries, which agree when the question's condition holds."
+  },
+  "consumer:asset.class@i4562:p11": {
+   "verdict": "same",
+   "question_phrase": "or qualified improvement property (an improvement you made to an interior part of a building that is nonresidential real property, that is section 1250 property, and that you placed in service after 2017",
+   "source_phrase": "i4562 p. 11, Column (d)—Recovery period, \"Determine the recovery period from the following table\" (read by asset.period)",
+   "reason": "asset.period looks up the recovery period by the class the question asks; the added definition only narrows the qualified improvement property choice to p946 p. 31's terms, and the class letters and Table B-1/B-2 classes are unchanged."
+  },
+  "consumer:asset.class@p946:p99": {
+   "verdict": "same",
+   "question_phrase": "or qualified improvement property (an improvement you made to an interior part of a building that is nonresidential real property, that is section 1250 property, and that you placed in service after 2017",
+   "source_phrase": "p946 p. 99, Table B-1 or B-2, \"Table of Class Lives and Recovery Periods\" (read by asset.period)",
+   "reason": "asset.period looks up the GDS recovery period in Tables B-1 and B-2 by the asset class the question asks for from those tables; the added definition only narrows the qualified improvement property choice to p946 p. 31's terms."
+  },
+  "consumer:asset.class@p946:p100": {
+   "verdict": "same",
+   "question_phrase": "or qualified improvement property (an improvement you made to an interior part of a building that is nonresidential real property, that is section 1250 property, and that you placed in service after 2017",
+   "source_phrase": "p946 p. 100, Table B-1 or B-2, \"Table of Class Lives and Recovery Periods\" (read by asset.period)",
+   "reason": "asset.period looks up the GDS recovery period in Tables B-1 and B-2 by the asset class the question asks for from those tables; the added definition only narrows the qualified improvement property choice to p946 p. 31's terms."
+  },
+  "consumer:asset.class@p946:p101": {
+   "verdict": "same",
+   "question_phrase": "or qualified improvement property (an improvement you made to an interior part of a building that is nonresidential real property, that is section 1250 property, and that you placed in service after 2017",
+   "source_phrase": "p946 p. 101, Table B-1 or B-2, \"Table of Class Lives and Recovery Periods\" (read by asset.period)",
+   "reason": "asset.period looks up the GDS recovery period in Tables B-1 and B-2 by the asset class the question asks for from those tables; the added definition only narrows the qualified improvement property choice to p946 p. 31's terms."
+  },
+  "consumer:asset.class@p946:p102": {
+   "verdict": "same",
+   "question_phrase": "or qualified improvement property (an improvement you made to an interior part of a building that is nonresidential real property, that is section 1250 property, and that you placed in service after 2017",
+   "source_phrase": "p946 p. 102, Table B-1 or B-2, \"Table of Class Lives and Recovery Periods\" (read by asset.period)",
+   "reason": "asset.period looks up the GDS recovery period in Tables B-1 and B-2 by the asset class the question asks for from those tables; the added definition only narrows the qualified improvement property choice to p946 p. 31's terms."
+  },
+  "consumer:asset.class@p946:p103": {
+   "verdict": "same",
+   "question_phrase": "or qualified improvement property (an improvement you made to an interior part of a building that is nonresidential real property, that is section 1250 property, and that you placed in service after 2017",
+   "source_phrase": "p946 p. 103, Table B-1 or B-2, \"Table of Class Lives and Recovery Periods\" (read by asset.period)",
+   "reason": "asset.period looks up the GDS recovery period in Tables B-1 and B-2 by the asset class the question asks for from those tables; the added definition only narrows the qualified improvement property choice to p946 p. 31's terms."
+  },
+  "consumer:asset.class@p946:p104": {
+   "verdict": "same",
+   "question_phrase": "or qualified improvement property (an improvement you made to an interior part of a building that is nonresidential real property, that is section 1250 property, and that you placed in service after 2017",
+   "source_phrase": "p946 p. 104, Table B-1 or B-2, \"Table of Class Lives and Recovery Periods\" (read by asset.period)",
+   "reason": "asset.period looks up the GDS recovery period in Tables B-1 and B-2 by the asset class the question asks for from those tables; the added definition only narrows the qualified improvement property choice to p946 p. 31's terms."
+  },
+  "consumer:asset.class@p946:p105": {
+   "verdict": "same",
+   "question_phrase": "or qualified improvement property (an improvement you made to an interior part of a building that is nonresidential real property, that is section 1250 property, and that you placed in service after 2017",
+   "source_phrase": "p946 p. 105, Table B-1 or B-2, \"Table of Class Lives and Recovery Periods\" (read by asset.period)",
+   "reason": "asset.period looks up the GDS recovery period in Tables B-1 and B-2 by the asset class the question asks for from those tables; the added definition only narrows the qualified improvement property choice to p946 p. 31's terms."
+  },
+  "consumer:asset.class@p946:p106": {
+   "verdict": "same",
+   "question_phrase": "or qualified improvement property (an improvement you made to an interior part of a building that is nonresidential real property, that is section 1250 property, and that you placed in service after 2017",
+   "source_phrase": "p946 p. 106, Table B-1 or B-2, \"Table of Class Lives and Recovery Periods\" (read by asset.period)",
+   "reason": "asset.period looks up the GDS recovery period in Tables B-1 and B-2 by the asset class the question asks for from those tables; the added definition only narrows the qualified improvement property choice to p946 p. 31's terms."
+  },
+  "consumer:asset.class@p946:p107": {
+   "verdict": "same",
+   "question_phrase": "or qualified improvement property (an improvement you made to an interior part of a building that is nonresidential real property, that is section 1250 property, and that you placed in service after 2017",
+   "source_phrase": "p946 p. 107, Table B-1 or B-2, \"Table of Class Lives and Recovery Periods\" (read by asset.period)",
+   "reason": "asset.period looks up the GDS recovery period in Tables B-1 and B-2 by the asset class the question asks for from those tables; the added definition only narrows the qualified improvement property choice to p946 p. 31's terms."
+  },
+  "consumer:asset.class@p946:p108": {
+   "verdict": "same",
+   "question_phrase": "or qualified improvement property (an improvement you made to an interior part of a building that is nonresidential real property, that is section 1250 property, and that you placed in service after 2017",
+   "source_phrase": "p946 p. 108, Table B-1 or B-2, \"Table of Class Lives and Recovery Periods\" (read by asset.period)",
+   "reason": "asset.period looks up the GDS recovery period in Tables B-1 and B-2 by the asset class the question asks for from those tables; the added definition only narrows the qualified improvement property choice to p946 p. 31's terms."
+  },
+  "consumer:asset.placed@i4562:p9": {
+   "verdict": "same",
+   "question_phrase": "The year you placed this property in service in the business (2005 to 2025). Property is placed in service when it is ready and available for a specific use",
+   "source_phrase": "Lines 19a Through 19j, \"Use lines 19a through 19j only for assets placed in service during the tax year beginning in 2025\" (read by asset.is2025)",
+   "reason": "Page 9 uses placed in service in the sense p946 p. 32 defines, which the question now states; asset.is2025 tests the year it asks."
+  },
+  "consumer:asset.placed@p946:p37": {
+   "verdict": "same",
+   "question_phrase": "The year you placed this property in service in the business (2005 to 2025). Property is placed in service when it is ready and available for a specific use",
+   "source_phrase": "p946 p. 37, Using the MACRS Percentage Tables, \"Date placed in service\" (read by asset.year)",
+   "reason": "The recovery year is counted from the placed-in-service date in the sense p946 p. 32 defines, which the question now states."
+  },
+  "consumer:f5695.part2_any@i5695:p7": {
+   "verdict": "same",
+   "question_phrase": "Did you have 2025 costs for insulation or air sealing, ... or a home energy audit, for a home in the United States? A cost of an item counts in 2025 when its original installation is completed in 2025",
+   "source_phrase": "Line 32a. Joint occupants of a home who are claiming the energy efficient home improvement credit must check the box on line 32a",
+   "reason": "Claiming the energy efficient home improvement credit is having 2025 Part II costs, counted when installation is completed (p. 1, Costs), as the question asks; joint occupancy is read from f5695.joint_occupancy and refused on line 30."
+  },
+  "consumer:f8960.refund@i8960:p7": {
+   "verdict": "same",
+   "question_phrase": "Any recovery or refund in 2025 of an amount deducted on an earlier Form 8960 ..., even if none of it is taxable on Form 1040?",
+   "source_phrase": "i8960 p. 7, Line 1—Taxable Interest; pp. 14-15, Deduction recoveries, \"A recovery or refund of a previously deducted item increases NII in the year of the recovery\" and \"regardless of the application of the tax benefit rule\"",
+   "reason": "Page 7 sets no recovery condition of its own; line 1 reads the input only to refuse on yes under the pp. 14-15 deduction-recovery rule, which the question states, including recoveries not taxable on Form 1040."
+  },
+  "consumer:person.role@i1040gi:p101": {
+   "verdict": "same",
+   "question_phrase": "Whose entry is this, yours (the taxpayer) or your spouse's?",
+   "source_phrase": "i1040gi p. 101, Schedule 1-A, Part II, \"You have a valid social security number (SSN)\"",
+   "reason": "household.taxpayer_work_ssn_count reads the role only to select the taxpayer's own entry, the \"you\" of the page; the valid-SSN test itself is read from person.work_ssn."
+  },
+  "consumer:person.role@i1040gi:p104": {
+   "verdict": "same",
+   "question_phrase": "Whose entry is this, yours (the taxpayer) or your spouse's?",
+   "source_phrase": "i1040gi p. 104, Valid SSN for No Tax on Tips, \"A valid SSN for purposes of the deduction for qualified tips is one that is valid for employment\"",
+   "reason": "household.taxpayer_work_ssn_count reads the role only to select the taxpayer's own entry, the \"you\" of the page; the valid-SSN test itself is read from person.work_ssn."
+  },
+  "consumer:person.role@i1040gi:p108": {
+   "verdict": "same",
+   "question_phrase": "Whose entry is this, yours (the taxpayer) or your spouse's?",
+   "source_phrase": "i1040gi p. 108, Valid SSN, \"A valid SSN for purposes of the deduction for qualified overtime compensation is one that is valid for employment\"",
+   "reason": "household.taxpayer_work_ssn_count reads the role only to select the taxpayer's own entry, the \"you\" of the page; the valid-SSN test itself is read from person.work_ssn."
+  },
+  "consumer:person.sav_claimed@i8863:p3": {
+   "verdict": "same",
+   "question_phrase": "Are you claimed as a dependent on someone else's 2025 tax return?",
+   "source_phrase": "Who cannot claim a credit, \"1. You’re claimed as a dependent on another person’s tax return, such as your parent’s return.\"",
+   "reason": "Both test whether the person is claimed as a dependent on another person's return; f8863.claimed_count asks it of each person on the return (you, and your spouse if filing jointly)."
+  },
+  "consumer:sales.box@i8949:p7": {
+   "verdict": "same",
+   "question_phrase": "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets",
+   "source_phrase": "i8949 p. 7, columns (e) through (h), codes B and W (read by sales.covered)",
+   "reason": "sales.covered reads boxes A and D, whose letters and meaning are unchanged; the added text governs only the holding period, which divides short-term from long-term and not basis reporting."
+  },
+  "consumer:sales.box@i8949:p8": {
+   "verdict": "same",
+   "question_phrase": "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets",
+   "source_phrase": "i8949 p. 8, columns (e) through (h), codes B and W (read by sales.covered)",
+   "reason": "sales.covered reads boxes A and D, whose letters and meaning are unchanged; the added text governs only the holding period, which divides short-term from long-term and not basis reporting."
+  },
+  "consumer:sales.box@i8949:p9": {
+   "verdict": "same",
+   "question_phrase": "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets",
+   "source_phrase": "i8949 p. 9, columns (e) through (h), codes B and W (read by sales.covered)",
+   "reason": "sales.covered reads boxes A and D, whose letters and meaning are unchanged; the added text governs only the holding period, which divides short-term from long-term and not basis reporting."
+  },
+  "consumer:sales.box@i8949:p10": {
+   "verdict": "same",
+   "question_phrase": "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets",
+   "source_phrase": "i8949 p. 10, columns (e) through (h), codes B and W (read by sales.covered)",
+   "reason": "sales.covered reads boxes A and D, whose letters and meaning are unchanged; the added text governs only the holding period, which divides short-term from long-term and not basis reporting."
+  },
+  "consumer:sales.box@i8949:p11": {
+   "verdict": "same",
+   "question_phrase": "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets",
+   "source_phrase": "i8949 p. 11, columns (e) through (h), codes B and W (read by sales.covered)",
+   "reason": "sales.covered reads boxes A and D, whose letters and meaning are unchanged; the added text governs only the holding period, which divides short-term from long-term and not basis reporting."
+  },
+  "consumer:sales.box@f8949:p1": {
+   "verdict": "same",
+   "question_phrase": "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets",
+   "source_phrase": "Part I, \"(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\" ... \"(I) Short-term digital asset transactions not reported to you on Form 1099-DA or Form 1099-B\" (read by sales.digital)",
+   "reason": "The box letters are Form 8949's own and are unchanged; the added text governs only the holding period, which selects Part I against Part II as the page does."
+  },
+  "consumer:sales.box@f8949:p2": {
+   "verdict": "same",
+   "question_phrase": "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets",
+   "source_phrase": "Part II, \"(J) Long-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\" ... \"(L) Long-term digital asset transactions not reported to you on Form 1099-DA or Form 1099-B\" (read by sales.digital)",
+   "reason": "The box letters are Form 8949's own and are unchanged; the added text governs only the holding period, which selects Part I against Part II as the page does."
+  },
+  "consumer:sales.box@f1040sd:p1": {
+   "verdict": "same",
+   "question_phrase": "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets",
+   "source_phrase": "Part I, line 1a, \"Totals for all short-term transactions reported on Form 1099-B or Form 1099-DA for which basis was reported to the IRS and for which you have no adjustments\" (read by sd.line1a.d)",
+   "reason": "Box A is short-term with basis reported, as line 1a needs; the added holding-period rules (i8949 p. 2, p550 p. 82) state how short-term is counted and leave the letters unchanged."
+  },
+  "consumer:scope.other_income@i1040gi:p40": {
+   "verdict": "same",
+   "question_phrase": "Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages ... including ... Medicaid waiver payments (whether or not in Form W-2 box 1)",
+   "source_phrase": "Step 1, question 4, \"Were you or your spouse a nonresident alien for any part of 2025?\" (read by eic.step1_resident)",
+   "reason": "The question still asks nonresident alien status for any part of 2025 and the line refuses on yes; the added qualified disaster recovery distribution item only widens the screen."
+  },
+  "consumer:scope.other_income@i1040gi:p42": {
+   "verdict": "same",
+   "question_phrase": "Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages ... including ... Medicaid waiver payments (whether or not in Form W-2 box 1)",
+   "source_phrase": "Step 5, worksheet line 2, Medicaid waiver payments excluded from income on Schedule 1, line 8s (read by eic.step5_line2)",
+   "reason": "The question still asks Medicaid waiver payments whether or not in box 1 and the line refuses on yes, figuring zero; the added qualified disaster recovery distribution item only widens the screen."
+  },
+  "consumer:scveh.passenger@p946:p61": {
+   "verdict": "same",
+   "question_phrase": "Is this a passenger automobile subject to the depreciation limits: a 4-wheeled vehicle made mainly for public roads rated at 6,000 pounds unloaded gross vehicle weight or less",
+   "source_phrase": "p946 p. 61, Depreciation Worksheet for Passenger Automobiles (read by scveh.on_auto_limits)",
+   "reason": "The worksheet's limit lines apply to passenger automobiles in the sense i4562 pp. 14-15 and Pub. 946 define, which the question states; the ambulance, hearse and for-hire exceptions are refused by scveh.screen."
+  },
+  "consumer:scveh.passenger@p946:p62": {
+   "verdict": "same",
+   "question_phrase": "Is this a passenger automobile subject to the depreciation limits: a 4-wheeled vehicle made mainly for public roads rated at 6,000 pounds unloaded gross vehicle weight or less",
+   "source_phrase": "p946 p. 62, Depreciation Worksheet for Passenger Automobiles (read by scveh.on_auto_limits)",
+   "reason": "The worksheet's limit lines apply to passenger automobiles in the sense i4562 pp. 14-15 and Pub. 946 define, which the question states; the ambulance, hearse and for-hire exceptions are refused by scveh.screen."
   }
  },
  "baseline": {
@@ -866,7 +1052,6 @@
   "consumer:person.role@f1040:p1": "0503308dce0b9740",
   "consumer:person.role@f8880:p2": "0503308dce0b9740",
   "consumer:person.role@i1040gi:p110": "0503308dce0b9740",
-  "consumer:person.role@i1040gi:p18": "0503308dce0b9740",
   "consumer:person.role@i1040gi:p35": "0503308dce0b9740",
   "consumer:person.role@i1040gi:p97": "0503308dce0b9740",
   "consumer:person.role@i1040gi:p98": "0503308dce0b9740",
@@ -1055,7 +1240,6 @@
   "consumer:sd.carryover@i8960:p9": "0d3b60e012fc24ac",
   "consumer:sd.carryover@p550:p102": "0d3b60e012fc24ac",
   "consumer:sd.other_forms@f1040sd:p1": "c7623108d3bf3a83",
-  "consumer:sli.claimed@i8863:p3": "cb21a2996c96caf2",
   "consumer:ssb.pub915@i1040gi:p32": "b3f14810aa7532f1",
   "consumer:ssb.terror_disability@i1040gi:p32": "2ddd770c99b2f82d",
   "consumer:status@i1040gi:p2025": "2cd6c364db9fc7a1",

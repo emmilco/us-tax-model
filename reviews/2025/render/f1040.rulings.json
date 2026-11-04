@@ -227,6 +227,13 @@
   {
    "printed": "29",
    "restated": "Choose — [f8863 helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = true → f8863 line 8] [f8863 helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = false → f8863 helper \"Zero\"]",
+   "model": "The eligibility gate checks only that expenses were paid and that no one on the return is claimed as a dependent. The i8863 text says you cannot claim the credit if 'Your filing status is married filing separately', and the text given does not show whether f8863 line 8 is zero or refused for a separate return.",
+   "ruling": "Ruling: scope — scope.ready refuses s3.mfs (married filing separately) for the whole return (i1040gi p. 14; i8863 p. 3). f8863.line3 through line8 perform the MAGI limit and phaseout. The narrow f8863.eligible helper does not purport to decide every restriction; the missing Form 8863 restatements are a review-context limitation. (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)",
+   "context": "1489bde202f3fb936a0b97ba44cd43c03e668b5f2e1439dddf75dbf21acd1301"
+  },
+  {
+   "printed": "29",
+   "restated": "Choose — [f8863 helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = true → f8863 line 8] [f8863 helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = false → f8863 helper \"Zero\"]",
    "model": "The eligibility gate tests only that expenses were paid and that no one claims the filer as a dependent. The instructions also say 'You cannot claim an education credit... if... 2. Your filing status is married filing separately,' and the gate does not exclude MFS.",
    "ruling": "Ruling: scope; the model says the gate does not exclude married filing separately. i8863 p. 3, Who cannot claim a credit: \"2. Your filing status is married filing separately\". A married filing separately return is refused for the whole return (s3.mfs, read by scope.yaml and f2441.yaml; i1040gi p. 14, Married Filing Separately), so f8863.eligible never meets such a filer; the restatement of line 29 need not repeat it. Same reading as the Stage 19 adjudication of line 29.",
    "context": "a041f34b15c92976bcabb7019060368c3a16b2f8bfe5b963429102ae14bda7cf"
@@ -323,6 +330,13 @@
    "restated": "Enter the amount from sd helper \"Capital gain or limited capital loss for Form 1040 line 7a\".",
    "model": "The Schedule D form text for lines 16 and 21 is not provided. It also cannot be confirmed that sd line 16 covers the Exception 1 case, where capital gain distributions are reported on line 7a without Schedule D.",
    "ruling": "Ruling: representation; project retained. Schedule D says so on its own lines: line 16 'Combine lines 7 and 15' carries a gain to Form 1040 line 7a (through line 17's 'If line 16 is a gain, enter the amount from line 16 on Form 1040 line 7a'), and line 21 'If line 16 is a loss, enter here and on Form 1040, 1040-SR, or 1040-NR, line 7a, the smaller of' the loss or the limit (f1040sd); the Schedule D render log judges those lines."
+  },
+  {
+   "printed": "Dependents (separated spouses)",
+   "restated": "Enter the amount from eic helper \"A married filer filing separately or as head of household who passes Step 3, questions 4 and 5, and answers No to question 6 (the special rule for separated spouses)\".",
+   "model": "The form box applies when 'your filing status is MFS or HOH and you lived apart from your spouse for the last 6 months of 2025, or you are legally separated...'. The special rule adds only 'If you meet these requirements, make sure you check the box'. The restatement also requires passing EIC Steps 1–2 and not being a qualifying child of another person, so it can leave the box unchecked when the IRS text checks it.",
+   "ruling": "Ruling: ambiguity; amb.2025.separated_spouses_box (owner's decision, 2026-10-26). The model compares the restatement with the printed box wording, which has no EIC conditions. The only instructions for the box are the earned income credit's: i1040gi p. 41, Step 3, question 6, \"No. Check the box in the Dependents section that discusses the special rule for separated spouses on page 1 of Form 1040 or 1040-SR\", and p. 44, Special rule for separated spouses, \"If you meet these requirements, make sure you check the box in the Dependents section\". The register records both readings (checked only under the EIC special rule, or whenever the printed condition holds) and the first is chosen; the rendered English states the chosen reading (eic.separated_box) accurately. (Carried over in the refresh round: the same objection, and the screens it relies on are unchanged.)",
+   "context": "1489bde202f3fb936a0b97ba44cd43c03e668b5f2e1439dddf75dbf21acd1301"
   },
   {
    "printed": "Dependents (separated spouses)",

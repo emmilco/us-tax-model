@@ -13,8 +13,15 @@
    "printed": "13",
    "project": "{\"ref\": \"f1040.line11b\"}",
    "second": "{\"ref\": \"f1040.line11a\"}",
-   "ruling": "Ruling: scope; i8960 p. 22, Line 13: \"If you didn't exclude any amounts from your gross income under section 911 and you don't own an interest in a CFC or PFIC, your MAGI is your AGI as reported on Form 1040 or 1040-SR.\" Form 1040 line 11b copies line 11a, so the candidate's line 11a is the same AGI; section 911 and CFC/PFIC cases are refused by f8960.unsupported. The differences are project-refuses on the cited f8960.refund screen, project-unknown with it withheld and candidate-refuses on upstream screens reached on partial records, all on refused or incomplete returns. No value difference. Triage executable-triage-v2 (`reviews/2025/transcription/triage/f8960.json`; 1,495 fixtures, 500 generated returns seed 20261026, 133 partial records from 40 bases; 2,128 comparisons): 2,075 agree; differences 4 candidate-refuses, 15 project-refuses, 34 project-unknown; on completed returns no difference. Project stands.",
-   "context": "32b050af8bbfbc88eab692774904517c9ebb1e802ae5d29bb8b62f4b6023a36d"
+   "ruling": "Ruling: scope; same as the backlog-round ruling (line, candidate and evidence unchanged). i8960 p. 22, Line 13: \"If you didn't exclude any amounts from your gross income under section 911 and you don't own an interest in a CFC or PFIC, your MAGI is your AGI as reported on Form 1040 or 1040-SR.\" Line 11b copies line 11a. Triage executable-triage-v2 (`../triage/f8960.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 121 partial records): 2,128 of 2,186 agree; no value difference; the differences are the project's cited f8960.refund screen and its withholding.",
+   "context": "db75d8063a5cdb51b556a75fd536f1bf04d1147ab06fe95a6b4c9aa3f2b71d81"
+  },
+  {
+   "printed": "16",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"ref\": \"f1040.line11b\"}, {\"line\": \"14\"}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"line\": \"14\"}, {\"ref\": \"f1040.line11b\"}], \"test\": \"lt\"}, \"then\": {\"of\": [{\"line\": \"12\"}, {\"line\": \"15\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
+   "second": "{\"of\": [{\"line\": \"12\"}, {\"line\": \"15\"}], \"op\": \"smaller_of\"}",
+   "ruling": "Ruling: model error; i8960 p. 1, \"Attach Form 8960 to your return if your modified adjusted gross income (MAGI) is greater than the applicable threshold amount\"; f8960 p. 1, line 16, \"Enter the smaller of line 12 or line 15\". The candidate's smaller of lines 12 and 15 is the project's amount on every return (with MAGI, which is AGI in scope, not above line 14, line 15 is $0 and both give $0; no value difference). It figures line 12 on every return, so it asks or refuses on the Form 8960 screens (f8960.unsupported, f8960.refund, f8960.allocated_taxes) of filers who do not file the form, answers the source does not need; the project gates line 12 on the new f8960.used (BUG-0401). Triage executable-triage-v2 (`../triage/f8960.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 121 partial records): 908 of 2,186 agree; on completed returns 202 candidate-unknown, 16 candidate-refuses, no value. No error introduced by BUG-0401: f8960.used compares sa.agi (Form 1040 line 11b) with line 14, the same comparison line 15 makes from line 13.",
+   "context": "db75d8063a5cdb51b556a75fd536f1bf04d1147ab06fe95a6b4c9aa3f2b71d81"
   },
   {
    "printed": "2",

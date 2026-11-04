@@ -57,8 +57,7 @@ Fix check: the Form 8615 gloss matches i1040gi p. 36 conditions 1 to 5 ("didn't 
 of your support" as "earned income of not more than half your support"; "at least age 19 but under age 24" as "19 to 23");
 the clergy wording is p. 43 verbatim. Both widen refusing screens. No error introduced. Findings: none.
 
-## Backlog round
-
+## Backlog round (superseded subject)
 Subject after person-dep PENDING-5: `scope.schedule1` says "a church or qualified church-controlled organization" and cites i1040sse p. 1. The three transcription logs (claude, deepseek, gpt) and the Claude render log have no open section; the deepseek render model was given Form 1040, i1040gi pp. 14, 36, 43 and i1040sse.
 
 Triage: `../triage/<stem>.json`, executable-triage-v2, rerun today with `tools/transcription/triage.py` (1,495 fixtures, 500 generated returns seed 20261026, partial records per form); every completed-return difference was enumerated with the witness cap lifted in a scratch run (`/tmp/adj-bklg-person-scope-household/`), and the printed amounts a helper could reach were checked where the ruling says so. `fixtures/2025/classm*.json` were rewritten by a concurrent class M run at 15:14 while this round was adjudicated; witnesses on `classm.*` cases may not rebuild identically from the current files. Full ruling text: `.transcription/proposed/bklg/<kind>.<stem>.json`.
@@ -72,3 +71,19 @@ Triage: `../triage/<stem>.json`, executable-triage-v2, rerun today with `tools/t
 | deepseek | render | ready | interface gap | render UNCLEAR | i1040gi p. 14. scope.ready is the whole-return readiness gate (the constant true carrying the scope refusals,  |  |
 
 Counts: deepseek render scope 1, interface gap 4. Fix check: the church wording matches i1040sse p. 1. Errors introduced: none. Findings: none.
+
+## Refresh round
+
+Subject after the refresh-round fixes BUG-0391 to BUG-0401 (for these forms: BUG-0392 `person.sav_claimed` asked whenever education expenses are paid; BUG-0394 `person.educator_expenses` exclusions; BUG-0398 `household.taxpayer_work_ssn` cites and the `dependent.dc_count` label; BUG-0393 `scope.other_income` disaster distributions), transcription prompt `source-only-computation-v3`. Fresh replies of claude-opus-5-5 and deepseek-flash. Rulings in `.transcription/proposed/rf/` (`transcription.<stem>.json`, `render.<stem>.json`); prior rulings reused where the line, the disagreement and the evidence are the same, re-checked against `.transcription/archive/before-catalog-refresh-2026-11-03/`.
+
+Triage: `../triage/<stem>.json`, executable-triage-v2, rerun today with `tools/transcription/triage.py` (1,565 fixtures, 500 generated returns seed 20261026, partial records per form); every completed-return difference was enumerated with the witness cap lifted in a scratch run (`/tmp/adj-rf-pers/full/`), and witnesses were traced with `--explain` where a ruling names one.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| deepseek | render | schedule1 | interface gap | render MISMATCH | The reviewer says the pages given cite only Form 1040 lines 8 and 10 from Schedule 1, so it cannot verify the listed items; the deciding tex | The prior scope ruling on the listed clergy, church and statutory-employee items stands (i1040sse p. 1; the question names them, so the filer answers Yes and is refused). Project stands. |
+| deepseek | render | credits | interface gap | render MISMATCH | f1040s3 p. 1 (Part I lines 1 to 8, line 3 from Form 8863; Part II line 9, Form 8962). | The pages given lack Schedule 3 and the listed credits' instructions: a coverage gap of the review. As the prior ruling. Project stands. |
+| deepseek | render | other_income | interface gap | render MISMATCH | f1040 (2025) lines 1b to 1h; p575 p. 35, "you can include $6,000 in your income in 2023, 2024, and 2025". | The pages given cover Form 1040 and the p575 disaster-distribution excerpt only; the other listed items are not decided there: a coverage gap. Checked the refresh change (BUG-0393): the clause names the 2025 part of a qu |
+| deepseek | render | other_line16 | interface gap | render MISMATCH | f1040 (2025) line 16. | The reviewer confirms the Form 8615 conditions; the pages given lack the other listed items (Form 8814, Form 4972, section 962, Form 8621, Form 8978, education credit recapture): a coverage gap. As the prior ruling. Proj |
+| deepseek | render | ready | interface gap | render MISMATCH | The MFS refusal matches i1040gi p. 14, Married Filing Separately; the other screens are filer-answered declarations whose items are cited on | As the prior ruling. Project stands. |
+
+Counts: deepseek render interface gap 5 (5). Errors introduced: none (BUG-0393's `scope.other_income` clause, a qualified disaster recovery distribution received in 2023 or 2024 or a 2025 repayment, leaves a 2025 distribution to `retirement.special`). Reclassified: deepseek `schedule1` (scope to interface gap: the reviewer now objects only that the pages lack Schedule 1). The transcription logs have no open section. Findings: none.

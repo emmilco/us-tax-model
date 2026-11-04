@@ -25,6 +25,13 @@
    "context": "b3b0f3dd71ad778746623915db1d209124a1405932e0a10075c683897afbedaa"
   },
   {
+   "printed": "5a",
+   "restated": "Enter the amount from f1040 line 7a.",
+   "model": "IRS says to combine 'Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4,' but the restatement uses only f1040 line 7a and omits Schedule 1 line 4.",
+   "ruling": "Ruling: scope; same as the earlier ruling. i8960 p. 9, Line 5a, \"Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4\"; Schedule 1 line 4 is refused by scope.schedule1, so line 5a is Form 1040 line 7a on every computed return.",
+   "context": "53b1c6ffce44947a492970f04a444e52a7dde83e885f5693d629239ad7050c12"
+  },
+  {
    "printed": "5b",
    "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
    "model": "The carryforward refusal is gated by f8960.carryforward_adj, which requires line 15 over $0; IRS says 'Starting in 2014, capital loss carryforwards must be adjusted if any sum of all capital gain or loss amounts excluded from NII on lines 5b and 5c was a net loss' with no MAGI-over-threshold condition.",
@@ -44,6 +51,13 @@
    "model": "IRS line 9b instructions say to include 'state, local, and foreign income taxes' and 'state, local, and foreign real property taxes'; the restatement's helper is limited to state/local income and property taxes and omits foreign income and foreign real property taxes not credited.",
    "ruling": "Ruling: scope; the model says the helper omits foreign income and foreign real property taxes. i8960 p. 17, Line 9b: \"Include state, local, and foreign income taxes you paid for the tax year that are attributable to NII. Include also state, local, and foreign real property taxes\". A deduction for foreign taxes is refused on Schedule A (sa.unsupported, \"a foreign tax or generation-skipping tax deduction\"), so within scope the deducted taxes allocable to net investment income are the state and local taxes, which is what the f8960.bad_allocation cap holds. Same ruling as the earlier rounds.",
    "context": "ca160e4930b9fcc82437f568d27cf24b53c8b6e7b8f984f8726dab3d3ab367ab"
+  },
+  {
+   "printed": "9b",
+   "restated": "Choose — [sa helper \"Itemize if elected, required, or itemized total exceeds standard\" = true → helper \"Deductible state/local income and property taxes reasonably allocated to net investment income; exclude foreign taxes for which a credit is claimed\"] [sa helper \"Itemize if elected, required, or itemized total exceeds standard\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "IRS says to include 'state, local, and foreign income taxes' and 'state, local, and foreign real property taxes,' but the restatement mentions only state/local income and property taxes and an exclusion for foreign taxes claimed as a credit.",
+   "ruling": "Ruling: scope; same as the earlier ruling. i8960 p. 17, Line 9b, \"Include state, local, and foreign income taxes ... Include also state, local, and foreign real property taxes\". A deduction for foreign taxes is refused on Schedule A (sa.unsupported, \"a foreign tax or generation-skipping tax deduction\"), so within scope the deducted taxes allocable to NII are state and local taxes.",
+   "context": "53b1c6ffce44947a492970f04a444e52a7dde83e885f5693d629239ad7050c12"
   }
  ]
 }

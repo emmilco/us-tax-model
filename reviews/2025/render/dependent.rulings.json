@@ -140,6 +140,13 @@
   {
    "printed": "2(d)",
    "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
+   "model": "The program's helper includes expenses paid with dependent care benefits and assumes Form 2441 subtracts them later. The column (d) instructions exclude them at this line: \"If you completed Part III, don't include in column (d) any benefits shown on line 28\" (also line 30: \"Don't include in column (d) any benefits shown on line 28 above\").",
+   "ruling": "Ruling: ambiguity; amb.2025.dc_line30 (owner's decision, Stage 15 decision 6): column (d) shows each person's expenses including those paid with dependent care benefits and line 30 subtracts line 28 from the total; Form 2441 line 30 and i2441 p. 3, Column (d), \"don't include in column (d) any benefits shown on line 28\", give no rule for dividing line 28 among persons. The reviewer reads the rejected reading. As the prior ruling. Project stands.",
+   "context": "df3d6d7e0004abf5c031ae899c4d0cdc33e4349b1446e92a00c0e33f43883a09"
+  },
+  {
+   "printed": "2(d)",
+   "restated": "Enter the amount from helper \"Qualified expenses incurred and paid in 2025 for this person's care\".",
    "model": "The restatement includes expenses paid with dependent care benefits and relies on Form 2441 to subtract them later. The column (d) instructions say \"If you completed Part III, don't include in column (d) any benefits shown on line 28\", and Part III line 30 repeats \"Don't include in column (d) any benefits shown on line 28 above.\"",
    "ruling": "Ruling: ambiguity; amb.2025.dc_line30 (owner ruling, Stage 15 decision 6, T-048). Form 2441 line 30: \"Complete line 2 on page 1 of this form. Don't include in column (d) any benefits shown on line 28 above. Then, add the amounts in column (d) and enter the total here\"; i2441 p. 3, Column (d): \"If you completed Part III, don't include in column (d) any benefits shown on line 28\"; the instructions give no rule for dividing line 28 among persons. The model reads the register's rejected reading (column (d) net of benefits). The chosen reading shows each person's expenses including those paid with dependent care benefits and subtracts line 28 once at line 30. dependent.dc_paid and dependent.dc_line2d are identical in HEAD and the working tree, f2441.yaml is unchanged, and no hunk of the rendered subject's diff (rendered/2025/dependent.md, HEAD to now) touches a dc_* section; the BUG-0267 correction (hoh_test2_lived, hoh_absence, hoh_test2) does not reach this line. As ruled since fix round 2 and in the T-091 round. Project stands.",
    "context": "69d419c8acd2d92af28ab51d2daf2b69a74004a6c41ed95b4e8901a52377ab51"

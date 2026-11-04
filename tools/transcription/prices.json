@@ -1,0 +1,35 @@
+{
+ "about": "Prices for estimated_cost_usd in the cost ledger (.transcription/costs.jsonl), USD per million tokens. Fill a price only from a cited source; leave it null with a note otherwise. Read by transcribe.estimate_cost; costs.py reports the ledger.",
+ "families": {
+  "claude": {
+   "basis": "reported",
+   "source": "claude -p total_cost_usd (modelUsage costBasis 'list'); no table price needed"
+  }
+ },
+ "models": {
+  "deepseek-flash": {
+   "basis": "deepseek",
+   "source": "https://api-docs.deepseek.com/quick_start/pricing, read 2026-11-03 (deepseek-flash peak column; no effective date on the page)",
+   "per_million_usd": {"input_cache_hit": 0.006, "input_cache_miss": 0.3, "output": 1.2},
+   "off_peak_factor": 0.5,
+   "peak_hours_utc": [[1, 4], [6, 10]],
+   "note": "Peak 01:00-04:00 and 06:00-10:00 UTC Monday to Friday; off-peak is half. Chinese public holidays (all off-peak) are not modelled, so a holiday call is overestimated. completion_tokens (which include reasoning tokens in DeepSeek's usage) are priced as output; the page does not state reasoning-token billing."
+  },
+  "deepseek-v4-pro": {
+   "basis": "deepseek",
+   "source": "https://api-docs.deepseek.com/quick_start/pricing, read 2026-11-03 (deepseek-v4-pro peak column)",
+   "per_million_usd": {"input_cache_hit": 0.044, "input_cache_miss": 1.32, "output": 3.96},
+   "off_peak_factor": 0.5,
+   "peak_hours_utc": [[1, 4], [6, 10]],
+   "note": "As for deepseek-flash."
+  },
+  "gpt-6-astra": {
+   "basis": "openai",
+   "source": "https://developers.openai.com/api/docs/pricing, read 2026-11-03 (Standard, short context <= 272K input tokens)",
+   "per_million_usd": {"input": 10.0, "cached_input": 1.0, "output": 50.0},
+   "long_context_above_input_tokens": 272000,
+   "long_context_per_million_usd": {"input": 20.0, "cached_input": 2.0, "output": 75.0},
+   "note": "API list-price equivalent: codex exec may run under a ChatGPT plan rather than API billing; long-context rates from the same page apply above 272K input tokens."
+  }
+ }
+}

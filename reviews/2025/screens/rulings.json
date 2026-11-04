@@ -140,36 +140,44 @@
    "adjudication": "reviews/2025/screens/adjudication/group7.md"
   },
   "unruled:f4952.unsupported": {
-   "prompt_sha": "ae22c537b6cf59c6f85e5f35d01cecb60bcd5cad4609c21952602903adb53055",
-   "reason": "No defect. Three WIDE (passive, tax-exempt-related interest and nondeductible fees refused though not Form 4952 amounts); the at-risk UNCLEAR is low. credits-misc PENDING-6 limits the screen to returns that use Form 4952 and does not narrow it within them.",
+   "prompt_sha": "7407e686484f4a1ca06e68c405a344f9c7200f744fdb18b350f049d227371b3f",
+   "reason": "Low only. The two NARROW findings are a definition gap in f4952.line1 (investment interest is not defined), BUG-0402; the rest WIDE or minor UNCLEAR leaning WIDE.",
    "findings": [
     {
      "n": 0,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "f4952 p. 3, Line 1: interest allocable to a passive activity is not investment interest; 'any interest expense attributable to ... passive activities' refuses it. Safe; as group 4 finding 1."
+     "kind": "NARROW",
+     "class": "low",
+     "evidence": "f4952 p. 3, Allocation of Interest Expense. f4952.line1 asks only for 'Investment interest paid or accrued in 2025' and does not say to allocate a mixed-use loan by the use of its proceeds. Low; BUG-0402 (with finding 1)."
     },
     {
      "n": 1,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "f4952 p. 3, Line 1: section 265 interest is not investment interest; refused. Safe; as group 4 finding 1."
+     "kind": "NARROW",
+     "class": "low",
+     "evidence": "f4952 p. 3, Line 1. Capitalized (section 263A) and section 264 interest are not excluded in f4952.line1 or the screen. Rare. Low; BUG-0402."
     },
     {
      "n": 2,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "f4952 p. 4, Line 5: miscellaneous itemized investment fees are not line 5 amounts; the catch-all refuses them. Safe."
+     "evidence": "f4952 p. 4, Line 5: nondeductible K-1 portfolio expenses draw Yes though line 5 is zero. Safe; as group 7 finding 2."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
-     "class": "accepted (minor UNCLEAR)",
-     "evidence": "f4952 p. 4, Form 6198: 'attributable to an activity for which you aren't at risk'. The question's 'attributable to ... at-risk limitations' is loose; a filer with such interest most likely answers Yes, and an activity with at-risk limits is also a Schedule C/E/K-1 matter refused by scope screens in most cases. Low, listed in the findings file."
+     "class": "accepted (minor UNCLEAR, leans WIDE)",
+     "evidence": "f4952 p. 4, Line 5. Advisory fees or passive depreciation: Yes is a refusal only; No is correct."
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "class": "accepted (minor UNCLEAR, leans WIDE)",
+     "evidence": "f4952 pp. 3-4. Capital gain distributions, carryovers and annuities: a Yes refuses only; none of them changes lines 2, 5, the election or the filing test."
     }
    ],
-   "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group7.md"
+   "bugs": [
+    "BUG-0402"
+   ],
+   "adjudication": "reviews/2025/screens/adjudication/group8.md"
   },
   "unruled:f5695.construction_later": {
    "prompt_sha": "9f2201cabd96d1ba08d13ee63c9a19dabd0f1300ea374f3d0ccf2d17b288e63f",
@@ -238,30 +246,36 @@
    "adjudication": "reviews/2025/screens/adjudication/group0.md"
   },
   "unruled:f8960.refund": {
-   "prompt_sha": "2b2ad4bac3803d147f00af08db278e1b2b6bc2f267fa0b9477e4491f0d3cf276",
-   "reason": "No defect: the section 1411 NOL case is screened by f8960.unsupported on the same lines; the rest is WIDE or leans WIDE.",
+   "prompt_sha": "0e7a4ecf0e1434fb45ef1190dbea7194fa16b9b94e5d0e5b76e53f2dda176e92",
+   "reason": "No defect; as group 7 (rechecked): the section 1411 NOL case is screened by f8960.unsupported; the rest WIDE or leans WIDE.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "f8960.unsupported names 'a section 1411 net operating loss' and refuses all eleven lines including f8960.line7; the i8960 p. 15 worksheet caution ('This rule doesn't apply if you incurred an NOL in such year, and a portion of such NOL constitutes a section 1411 NOL') presupposes such an NOL. Same ruling as T-008."
+     "evidence": "i8960 p. 15. f8960.unsupported names 'a section 1411 net operating loss' and gates the same lines, line 7 among them. As group 7 finding 0."
     },
     {
      "n": 1,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "Recovery of a deduction that did not reduce section 1411 liability (i8960 p. 15): line 7 is zero, which the tool computes; refusal safe."
+     "evidence": "i8960 p. 15: a below-threshold year's recovery puts nothing on line 7, which the No path computes. Refusal only."
     },
     {
      "n": 2,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "i8960 p. 15, tax-benefit rule: line 7 is zero, which the tool computes. As group 7 finding 1."
+    },
+    {
+     "n": 3,
      "kind": "UNCLEAR",
      "class": "accepted (minor UNCLEAR, leans WIDE)",
-     "evidence": "The question conditions on 'an amount deducted on an earlier Form 8960'; a filer who did deduct reads YES. The other reading refuses a filer with nothing to recover (WIDE)."
+     "evidence": "i8960 pp. 15, 18. As group 7 finding 2: a filer who deducted on Form 8960 reads Yes; the other reading refuses only."
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group2.md"
+   "adjudication": "reviews/2025/screens/adjudication/group8.md"
   },
   "unruled:person.rrta": {
    "prompt_sha": "7b79f915033acf606bf7a5b420ea3fa9e855343fb776f1f0714fbcbc28646f84",
@@ -576,36 +590,30 @@
    "adjudication": "reviews/2025/screens/adjudication/group0.md"
   },
   "unruled:s8812.puerto_rico": {
-   "prompt_sha": "37ff6107cc80670835fc1e687252c35e60d2c42f399fc9d74e3ac0d0e89e019f",
-   "reason": "No defect: Puerto Rico withholding of a non-resident is caught by f8959.unsupported (derived refusal of line 21, verified by eval); residency-term doubts can only under-claim the ACTC.",
+   "prompt_sha": "221fe600ca058eb08ced490fee435167e15d53a11913c0829583757f0b77b4fe",
+   "reason": "No defect; as group 7 (rechecked): WIDE accepted; the residency-term doubt can only lower the credit.",
    "findings": [
     {
      "n": 0,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "A Form 499R-2/W-2PR holder answers yes to f8959.unsupported ('Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)'), which refuses f8959.line19 -> s8812.amt_ws4 -> s8812.line21 -> clwb_7 and Part II-B. Eval of fixtures stage4.base with f8959.unsupported=true: s8812.amt_ws4 = refusal (gate f8959.unsupported)."
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "f1040s8812 p. 2. A resident who stops at line 12, 16a or 16b is refused though line 27 is zero. Safe; as group 7 finding 1."
     },
     {
      "n": 1,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "Resident refused where Part II-B cannot change the result (f1040s8812 p. 2). Safe."
+     "evidence": "i1040s8812 p. 5, CLW B line 6. A resident whose line 5 is not less than line 1 is refused though line 11 is zero. Safe."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "out of scope / presentation",
-     "evidence": "The screen uses the form's own term ('If you are a bona fide resident of Puerto Rico, go to line 21'). A wrong no can only lower the credit: line 26 is 'the larger of line 20 or line 25' and CLW B line 11 is zero off the Puerto Rico path, so no overclaim results."
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
-     "class": "out of scope / presentation",
-     "evidence": "Same: IRS term of art, same direction argument."
+     "evidence": "f1040s8812 p. 2. The question uses the form's term; a wrong No can only lower the credit (line 26 is the larger of lines 20 and 25; CLW B line 11 is zero off the Puerto Rico path). As group 7 findings 2 and 3."
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group0.md"
+   "adjudication": "reviews/2025/screens/adjudication/group8.md"
   },
   "unruled:sa.charity_limited": {
    "prompt_sha": "a6fdc61edefeab935a2c622f9221de0c9c35bfdb9b67afb1ddb48c18f1aa9925",
@@ -900,36 +908,30 @@
    "adjudication": "reviews/2025/screens/adjudication/group2.md"
   },
   "unruled:scope.other_income": {
-   "prompt_sha": "3c8efe1e26d1dab7146bf987a5dd261dac9e337701648d1bc5fa65a4093a20b8",
-   "reason": "Every NARROW/UNCLEAR item has its own screen on scope.ready or f1040.line8 (scope.schedule1, scope.schedule1a, scope.other_line16, scope.credits); Schedule C losses are supported; WIDE accepted.",
+   "prompt_sha": "297e835b9efdbe5534095c68dc425a1179ba199230a442782e93c6191462fdbc",
+   "reason": "No defect: each NARROW or UNCLEAR item has its own refusal on scope.ready, s1.line9 or the EIC.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "scope.schedule1 (gates f1040.line8 and scope.ready) names 'a net operating loss deduction' and 'farm income (Schedule F)'; Schedule C income or loss is computed by the tool."
+     "evidence": "i1040gi p. 40. scope.other_line16 asks about 'filing Form 8814 (even with no tax)' and gates scope.ready."
     },
     {
      "n": 1,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "Nontaxable receipts swept in by 'other income'. Safe."
+     "kind": "NARROW",
+     "class": "covered",
+     "evidence": "i1040gi p. 40. The Form 2555 exclusion is refused by s1.line8_other (line 8d) and sa.excluded_income (Form 2555), which refuses eic.step1_foreign."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "Schedule 1 adjustments: scope.schedule1; Schedule 1-A: scope.schedule1a ('asked separately'); Form 4972: scope.other_line16 and retirement.special; adoption credit: scope.credits. scope.ready refuses on scope.schedule1, scope.credits, scope.other_line16 (forms/2025/scope.yaml)."
-    },
-    {
-     "n": 3,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "scope.schedule1 names 'sales of business property (Form 4797)'; sd.other_forms names Form 4797 on the Schedule D lines."
+     "evidence": "f1040 line 8. A net operating loss deduction is named in scope.schedule1 and s1.line8_other (8a), both refusing."
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group3.md"
+   "adjudication": "reviews/2025/screens/adjudication/group8.md"
   },
   "unruled:sd.other_forms": {
    "prompt_sha": "3a076e4e32be22b5d339d4801cf0dcc8e4584a6b436f1d7e867c3febae7565a5",
@@ -1059,48 +1061,56 @@
    "adjudication": "reviews/2025/screens/adjudication/group7.md"
   },
   "unruled:f8960.unsupported": {
-   "prompt_sha": "5c2a9208afa5b07fee3da216de9c78264465c2e0be27d8d0d60a506869a68b48",
-   "reason": "No defect. PENDING-4-3 (section 404(k) dividends) closed by credits-misc PENDING-3, a widening. The NARROW findings are covered by siblings as in group 4: f8960.refund (recoveries), scope.other_line16 (Form 8814), oi8z kind other refused at entry (line 8z substitute payments), sa.unsupported (casualty); a Form 1041 K-1 is refused by scope.schedule1.",
+   "prompt_sha": "0b9694ff236e5853c4d2a986c9037aa34de1c8e523dadd140a6f041ea07b5879",
+   "reason": "No medium. Findings 0, 1 and 4 covered by siblings as in group 7; finding 2 partly covered, with the life insurance surrender gain low (BUG-0402); finding 3 low (BUG-0402); WIDE accepted.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "i8960 p. 14. f8960.refund ('Any recovery or refund in 2025 of an amount deducted on an earlier Form 8960 ... even if none of it is taxable') gates the same 11 lines, line 7 among them. As group 4 finding 0."
+     "evidence": "i8960 p. 14. f8960.refund asks about any recovery or refund of an amount deducted on an earlier Form 8960 (naming a state income tax refund) and gates the same lines. As group 7 finding 0."
     },
     {
      "n": 1,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "i8960 p. 13. scope.other_line16 asks 'filing Form 8814 (even with no tax)' and gates scope.ready, refusing the return."
+     "evidence": "i8960 p. 13. Form 8814: scope.other_line16 ('filing Form 8814 (even with no tax)') refuses the return; substitute and notional principal contract payments are line 8z kinds refused by oi8z and s1.line8_other. As group 7 findings 1 and 2."
     },
     {
      "n": 2,
      "kind": "NARROW",
-     "class": "covered",
-     "evidence": "i8960 p. 13. Substitute payments and notional principal contract payments are Schedule 1 line 8z items; oi8z computes only RTAA and kickbacks and refuses every other kind at the entry, and s1.line8_other refuses other line 8 items. As group 4 finding 1."
+     "class": "low",
+     "evidence": "i8960 p. 13. A casualty loss is refused by sa.unsupported and an annuity contract by this question's 'any annuity' (and retirement.special, nonqualified annuity). Open: a gain on surrendering a life insurance contract is not named. Rare. Low; BUG-0402."
     },
     {
      "n": 3,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "i8960 p. 13. sa.unsupported asks 'Any casualty or theft loss' and refuses. As group 4 finding 2."
+     "kind": "UNCLEAR",
+     "class": "low",
+     "evidence": "i8960 p. 9, Line 5b. A capital loss carryforward adjustment for earlier excluded line 5b/5c losses reads as a current event. Rare (those dispositions are refused in the year they occur). Low; BUG-0402."
     },
     {
      "n": 4,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "i8960 p. 7: qualified-plan annuities are excluded from line 3 but 'any annuity' draws Yes. Safe; as group 4 finding 8."
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "i8960 pp. 13, 22. A Schedule K-1 (Form 1041) is refused by scope.schedule1 ('estates or trusts ... Schedule K-1'). As group 7 finding 5."
     },
     {
      "n": 5,
-     "kind": "UNCLEAR",
-     "class": "covered",
-     "evidence": "i8960 pp. 13, 22. A Schedule K-1 (Form 1041) beneficiary answers Yes to scope.schedule1 ('estates or trusts (Schedule E or a Schedule K-1)'), which gates scope.ready. As group 4 finding 6."
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "i8960 p. 7: qualified-plan annuities draw Yes though line 3 is zero. Safe; as group 7 finding 4."
+    },
+    {
+     "n": 6,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "i8960 pp. 7, 22: Form 8815 draws Yes though line 1 and MAGI are right. Safe."
     }
    ],
-   "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group7.md"
+   "bugs": [
+    "BUG-0402"
+   ],
+   "adjudication": "reviews/2025/screens/adjudication/group8.md"
   },
   "unruled:gift.special": {
    "prompt_sha": "a40a89440fcaba8f0412c905e779e991bb8c89710284c4d22c6aecea8f97ab28",
@@ -1179,44 +1189,38 @@
    "adjudication": "reviews/2025/screens/adjudication/group7.md"
   },
   "unruled:retirement.special": {
-   "prompt_sha": "c8319e39ccc6c649f4d50bbe82118c793aa2f58bc18bbc757ded6c5937ea9d19",
-   "reason": "Rerun after BUG-0354's review correction (a survivor answers for the retiree's annuity starting date; keeping the property and rolling over cash instead is named). No finding touches the corrected items, and the wording matches i1040gi p. 30 and p575 p. 23; the fix introduced no error. Defect: a qualified disaster recovery distribution is not asked (BUG-0380, T-210, already recorded). BUG-0381 (late rollover under a waiver) was not raised this run and stays recorded. No new finding of medium or higher.",
+   "prompt_sha": "3c0a31e28cf89b2ad907ad6688914533ce9c96a0719218fc96534ace868ce722",
+   "reason": "No medium. BUG-0393's additions (qualified disaster recovery distribution and repayment) introduced no error. Finding 1 (a disaster-canceled home-purchase recontribution) is low, BUG-0402, the same point as completeness scope#1; finding 2 is a model error.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "i1040gi p. 27, Exception 2. retirement.bad_code refuses a roth_ira account with any code other than qualified_roth_Q (so J, and T whether or not a 2020-or-earlier contribution was made) and gates retirement.rolled, retirement.taxable and retirement.amount_a, the lines this screen gates. As the previous run's finding 0."
+     "evidence": "i1040gi p. 27, Exception 2. retirement.bad_code refuses a roth_ira account with any code other than qualified_roth_Q and gates the same lines. As group 7 finding 0."
     },
     {
      "n": 1,
      "kind": "NARROW",
-     "class": "covered",
-     "evidence": "i1040gi p. 27, Exception 2, items 3 and 4. The conversion, recharacterization or returned contribution is itself a Form 1099-R entry, and that entry answers Yes to this question. A separate ordinary traditional IRA distribution in the same year changes in taxable amount only through IRA basis (Form 8606 Part I), and the question asks about 'nondeductible contributions to any traditional IRA', which a filer with basis answers Yes for every IRA distribution. Without basis the separate distribution is fully taxable either way, as the tool computes. New this run; no wrong amount found."
+     "class": "low",
+     "evidence": "p575 p. 35: 'Also report recontributions of qualified distributions for home purchases and construction that were canceled because of qualified disasters on Form 8915-F'. Not named. Rare. Low; BUG-0402."
     },
     {
      "n": 2,
-     "kind": "NARROW",
-     "class": "defect",
-     "evidence": "p575 p. 34: 'If you received a qualified disaster recovery distribution ... However, the distribution is included in income ratably over 3 years unless you elect to report the entire amount in the year of distribution.' Repeats the previous run's finding 1: retirement.early_screen names it only for codes 1 and S, and this question does not; a code 7, 2 or 4 distribution is taxed in full on line 4b or 5b. Recorded as BUG-0380 (T-210)."
+     "kind": "UNCLEAR",
+     "class": "model error",
+     "evidence": "i1040gi p. 30, Rollovers. Box 5 is subtracted: retirement.plan_excluded is box 5 plus the amount rolled over; the General Rule item refuses annuities whose cost is not recovered by the Simplified Method."
     },
     {
      "n": 3,
      "kind": "UNCLEAR",
      "class": "accepted WIDE",
-     "evidence": "i1040gi p. 27, Exception 2(1): 'nondeductible contributions to any of your traditional IRAs'. The question also says 'any', so a pension filer with basis in an IRA may answer Yes; over-reading for a non-IRA distribution refuses only. As the previous run's finding 4."
-    },
-    {
-     "n": 4,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "i1040gi p. 27, Exception 1, Roth IRA to another Roth IRA. A Roth IRA distribution other than code Q is refused by retirement.bad_code whatever this answer, so the only case the wording adds is a code Q distribution rolled over to a Roth IRA, which the Yes refuses although line 4b would be $0. Refusal only, no wrong amount."
+     "evidence": "i1040gi p. 27, Exception 2(1). As group 7 finding 3: a pension filer with IRA basis may answer Yes; refusal only."
     }
    ],
    "bugs": [
-    "BUG-0380"
+    "BUG-0402"
    ],
-   "adjudication": "reviews/2025/screens/adjudication/group7.md"
+   "adjudication": "reviews/2025/screens/adjudication/group8.md"
   },
   "unruled:s1.alimony_unsupported": {
    "prompt_sha": "94fb0d5ea859724e5140c196c2d633d657e425a3ab14423081386376fc384bec",
@@ -1329,30 +1333,32 @@
    "adjudication": "reviews/2025/screens/adjudication/group7.md"
   },
   "unruled:sales.special": {
-   "prompt_sha": "e4bd9677acf05666121862515450fa03e4d096ef085992dfa3e1ce39844ee13a",
-   "reason": "No defect. Two WIDE (accepted, as group 4 findings 2 and 3); PENDING-4-10 closed by income PENDING-6, which names entity-held collectibles and widens only. The tiered-partnership UNCLEAR is low (look-through amounts come on the partnership's statement).",
+   "prompt_sha": "e0254b88df0c80613dea35815cc5ab1f3a1a7ea73740694baaef0464a72a0069",
+   "reason": "No medium. WIDE accepted as group 7; the UNCLEAR on a home with past depreciation is low (BUG-0402).",
    "findings": [
     {
      "n": 0,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i1040sd pp. 11-12: line 19 looks through only partnerships for section 1250 property; S corporation or trust interests holding only 1250 property are refused. Safe; as group 4 finding 2."
+     "evidence": "i1040sd p. 12, Line 19. S corporation or trust interests holding only section 1250 property are refused. Safe; as group 7 finding 0."
     },
     {
      "n": 1,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i1040sd p. 11: an entity interest holding collectibles sold at a loss or held 1 year or less is refused. Safe; as group 4 finding 3."
+     "evidence": "i1040sd p. 11, Line 18. An entity interest whose collectibles have no appreciation, or sold at a loss, is refused. Safe; as group 7 finding 1."
     },
     {
      "n": 2,
      "kind": "UNCLEAR",
-     "class": "accepted (minor UNCLEAR)",
-     "evidence": "i1040sd p. 11, Regulations section 1.1(h)-1: 'holds' could be read as direct ownership, so a partnership interest holding collectibles only through a lower-tier partnership may answer No and its 28% gain taxed at 15 or 20%. The upper-tier partnership reports the look-through amounts to the seller, and a partnership interest is rarely sold as a securities transaction. Low, listed in the findings file."
+     "class": "low",
+     "evidence": "i1040sd p. 11, Line 19: 'generally, real property that you depreciated'. 'Depreciable real property' may be read to leave out a home with a past home office or former rental, so unrecaptured section 1250 gain is missed. Low; BUG-0402: say 'real property for which depreciation was allowed or allowable'."
     }
    ],
-   "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group7.md"
+   "bugs": [
+    "BUG-0402"
+   ],
+   "adjudication": "reviews/2025/screens/adjudication/group8.md"
   },
   "unruled:sb.line8": {
    "prompt_sha": "bac1d7745a6c4e4b90d1449fbf5df780355eb8cbc0383a8e87dd907469971f1e",

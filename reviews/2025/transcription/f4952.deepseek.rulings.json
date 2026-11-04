@@ -49,8 +49,8 @@
    "printed": "4d",
    "project": "{\"from\": {\"ref\": \"sd.line16\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
    "second": "{\"from\": {\"of\": [{\"ref\": \"sd.line15\"}, {\"ref\": \"sd.line16\"}], \"op\": \"smaller_of\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}",
-   "ruling": "Ruling: model error; f4952 p.3 Line4d defines net gain as total gains over total losses and expressly includes capital gain distributions and loss carryovers. Line4e separately limits net capital gain. The returned min(ScheduleD15,ScheduleD16) incorrectly excludes positive net short-term gains from line4d. With $1000 short-term gain and $500 long-term gain, line4d is $1500; the returned $500 is the separate net-capital-gain quantity. No raw or numeric model answer is replaced.",
-   "context": "0dacbcbf7e835d6d81779de8d6d537ab0bada18ce0b2bf87b5987ec2050a784b"
+   "ruling": "Ruling: model error; f4952 p. 3, Line 4d: \"Net gain from the disposition of property held for investment is the excess, if any, of your total gains over your total losses from the disposition of property held for investment\", and Line 4e: \"Net capital gain ... is the excess, if any, of your net long-term capital gain over your net short-term capital loss\". The candidate floors the smaller of Schedule D lines 15 and 16, which is the line 4e quantity: it drops net short-term gain from line 4d (a return with a short-term gain and a smaller long-term gain gets less than the total net gain). Triage executable-triage-v2 (`../triage/f4952.deepseek.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 194 partial records): 1,955 of 2,259 agree; on completed returns 39 value (project the floored line 16, candidate smaller), 20 candidate-unknown and 10 candidate-refuses from the reply's screens on returns not using the form.",
+   "context": "c46b5067f946c6c0b87b16f68fab5e085f9f3ea6e004f42a1761e62297be720f"
   },
   {
    "printed": "4e",
@@ -86,6 +86,13 @@
    "second": "{\"expression\": {\"of\": [{\"line\": \"4g\"}, {\"from\": {\"line\": \"4c\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}, {\"from\": {\"line\": \"4f\"}, \"op\": \"subtract_floor0\", \"take\": {\"const\": 0}}], \"op\": \"sum\"}, \"invalid_model_types\": [{\"line\": \"f4952.line4h\", \"message\": \"model changed a published result type\"}]}",
    "ruling": "Ruling: model error; The reply has one validation error: f4952.line4h \"model changed a published result type\" (triage `../triage/f4952.deepseek.json` invalid_lines 4h, 6, 7 and 8; 2,205 records candidate-invalid, 359 on completed returns). This ruling adjudicates the declaration, not the tax reading, and the line was not executed. By reading: the candidate adds line 4g to floored lines 4c and 4f. Line 4c is not negative on a return the project completes (f4952.bad_dividends refuses line 4b above line 4a) and line 4f is line 4d less the smaller of line 4d and another amount, so the floors change nothing; the raw line 4g equals the project's validated f4952.election when it is within the p. 4 limit, \"don’t enter more than the sum of lines 4b and 4e\".",
    "context": "a137b15d195a361b25e2ffc7337a4c85651ecdc8762fdba7e97165215ea2bf80"
+  },
+  {
+   "printed": "4h",
+   "project": "{\"of\": [{\"line\": \"4c\"}, {\"line\": \"4f\"}, {\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"4g\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}, \"then\": {\"line\": \"4g\"}}], \"op\": \"choose\"}], \"op\": \"sum\"}",
+   "second": "{\"of\": [{\"line\": \"4c\"}, {\"line\": \"4f\"}, {\"line\": \"4g\"}], \"op\": \"sum\"}",
+   "ruling": "Ruling: model error; f4952 p. 1, line 4h, \"Add lines 4c, 4f, and 4g\". The expression itself adds the same lines as the project (line 4g raw equals the validated election on completed returns); its 39 completed value differences are inherited from the candidate's line 4d (see that ruling), and its refusals and unknowns are the screen pattern on returns not using the form. Triage executable-triage-v2 (`../triage/f4952.deepseek.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 194 partial records): 1,939 of 2,259 agree; on completed returns 39 value, 20 candidate-unknown, 10 candidate-refuses.",
+   "context": "c46b5067f946c6c0b87b16f68fab5e085f9f3ea6e004f42a1761e62297be720f"
   },
   {
    "printed": "4h",
@@ -138,6 +145,13 @@
   },
   {
    "printed": "8",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"args\": [{\"line\": \"1\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"line\": \"4g\"}, {\"const\": 0}], \"test\": \"le\"}, {\"args\": [{\"const\": true}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"all\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}, \"then\": {\"of\": [{\"line\": \"3\"}, {\"line\": \"6\"}], \"op\": \"smaller_of\"}}], \"op\": \"choose\"}",
+   "second": "{\"of\": [{\"line\": \"3\"}, {\"line\": \"6\"}], \"op\": \"smaller_of\"}",
+   "ruling": "Ruling: model error; f4952 p. 1, line 8, \"Enter the smaller of line 3 or line 6\". The candidate's smaller of lines 3 and 6 is the project's amount on every return using the form; its 10 completed value differences come through line 6 from the candidate's line 4d (net capital gain in place of net gain) and its refusals and unknowns are the screen pattern on returns not using the form. Triage executable-triage-v2 (`../triage/f4952.deepseek.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 194 partial records): 2,011 of 2,259 agree; on completed returns 10 value, 20 candidate-unknown, 10 candidate-refuses.",
+   "context": "c46b5067f946c6c0b87b16f68fab5e085f9f3ea6e004f42a1761e62297be720f"
+  },
+  {
+   "printed": "8",
    "project": "{\"of\": [{\"line\": \"3\"}, {\"line\": \"6\"}], \"op\": \"smaller_of\"}",
    "second": "{\"expression\": {\"of\": [{\"line\": \"3\"}, {\"line\": \"6\"}], \"op\": \"smaller_of\"}, \"invalid_model_types\": [{\"line\": \"f4952.line4h\", \"message\": \"model changed a published result type\"}, {\"line\": \"f4952.line4h\", \"message\": \"f4952.f4952.line4h: declared NonNegDollars but the expression does not prove non-negativity\"}, {\"line\": \"f4952.h_taxable_interest\", \"message\": \"f4952.f4952.h_taxable_interest: declared NonNegDollars but the expression does not prove non-negativity\"}, {\"line\": \"f4952.h_net_cap_gain\", \"message\": \"f4952.f4952.h_net_cap_gain: declared NonNegDollars but the expression does not prove non-negativity\"}]}",
    "ruling": "Ruling: model error; expression validation rejects this result or its model-defined dependencies (f4952.h_net_cap_gain, f4952.h_taxable_interest, f4952.line4h). The raw IR is retained, not repaired or executed. This ruling concerns unresolved/retyped/nonnegative expression contracts only; it does not certify the candidate tax interpretation.",
@@ -156,6 +170,13 @@
    "second": "{\"expression\": {\"of\": [{\"line\": \"4e\"}, {\"line\": \"4g\"}], \"op\": \"smaller_of\"}, \"invalid_model_types\": [{\"line\": \"f4952.h_net_cap_gain\", \"message\": \"f4952.f4952.h_net_cap_gain: declared NonNegDollars but the expression does not prove non-negativity\"}]}",
    "ruling": "Ruling: interface gap; the reply explicitly interprets this opaque result id as the net-capital-gain share attributed to line4g, while the project export means the full line4g amount. f4952 p.4 discusses both quantities. The blind interface names only an id/type, so the target meaning is underdetermined; clarify the source-defined quantity rather than call this clean model-only tax noise. The candidate also fails expression checks and remains rejected.",
    "context": "11f1618ccebbff695a2e772d39c1ef541b19017960f944ed648dd76ebb0fec98"
+  },
+  {
+   "printed": "f4952.required",
+   "project": "{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": false}, {\"input\": \"f4952.carryover\"}], \"test\": \"ne\"}], \"test\": \"any\"}, {\"args\": [{\"const\": 0}, {\"line\": \"3\"}], \"test\": \"lt\"}], \"test\": \"all\"}, {\"args\": [{\"const\": 0}, {\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"4g\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}, \"then\": {\"line\": \"4g\"}}], \"op\": \"choose\"}], \"test\": \"lt\"}], \"test\": \"any\"}, {\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}, {\"args\": [{\"const\": 0}, {\"line\": \"1\"}], \"test\": \"lt\"}, {\"args\": [{\"const\": 0}, {\"line\": \"4g\"}], \"test\": \"lt\"}], \"test\": \"any\"}], \"test\": \"all\"}",
+   "second": "{\"args\": [{\"args\": [{\"const\": true}, {\"input\": \"f4952.carryover\"}], \"test\": \"eq\"}, {\"args\": [{\"line\": \"4c\"}, {\"line\": \"1\"}], \"test\": \"le\"}, {\"args\": [{\"const\": 0}, {\"line\": \"5\"}], \"test\": \"lt\"}], \"test\": \"any\"}",
+   "ruling": "Ruling: model error; same reading as the backlog-round ruling. f4952 p. 3, Who Must File, \"you must file Form 4952 to claim a deduction for your investment interest expense. Exception. ...\", and p. 4, Line 4g, \"To make the election, enter on line 4g\". The candidate is true whenever line 4c is not more than line 1, line 5 is positive or a carryforward is answered Yes, with no test that there is interest to claim (so a filer with $0 interest and $0 investment income must file) and no election trigger. Triage executable-triage-v2 (`../triage/f4952.deepseek.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 194 partial records): 828 of 2,259 agree; on completed returns 136 value, 20 candidate-unknown, 10 candidate-refuses. The unknowns and refusals are the screen pattern (f4952.unsupported read on returns not using the form).",
+   "context": "c46b5067f946c6c0b87b16f68fab5e085f9f3ea6e004f42a1761e62297be720f"
   },
   {
    "printed": "f4952.required",

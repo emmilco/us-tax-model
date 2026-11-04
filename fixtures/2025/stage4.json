@@ -11682,6 +11682,207 @@
       }
     },
     {
+      "id": "stage4.f4952.line4a_taxable_interest_and_dividends",
+      "covers": [
+        "f4952.line4a"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "BUG-0388, predicted by hand from the source before the evaluator was run: f4952 p. 3, Line 4a, \"Gross income from property held for investment includes income, unless derived in the ordinary course of a trade or business, from interest, ordinary dividends\"; Form 1040 line 2b is taxable interest (Schedule B line 4, after excludable savings bond interest) and line 3b ordinary dividends. Taxable interest $2,000, ordinary dividends $1,500 (qualified $500), investment interest $4,000, no carryforward, no sales, no election. Predicted: line 4a $3,500 (= Form 1040 lines 2b $2,000 + 3b $1,500), line 4b $500, line 4c $3,000, line 4h $3,000, line 6 $3,000, line 3 $4,000, line 7 $1,000, line 8 $3,000; the form is required because line 4c does not exceed line 1 (f4952 p. 3, Exception).",
+      "inputs": {
+        "person[taxpayer].x_other": false,
+        "f8863.paid": false,
+        "div.box2b": 0,
+        "div.box2c": 0,
+        "div.box2d": 0,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "f1040.status": "single",
+        "f1040.line3a": 50000,
+        "f4952.line1": 400000,
+        "f4952.carryover": false,
+        "f4952.unsupported": false,
+        "f4952.alternative_allocation": false,
+        "f4952.line4g": 0,
+        "f8959.unsupported": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 0,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "qbi.dividends": 0,
+        "qbi.unsupported": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "sa.unsupported": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.spouse_extra": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "sb.unsupported": false,
+        "sb.ordinary_dividends": 150000,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "scope.schedule1": false,
+        "scope.credits": false,
+        "scope.other_income": false,
+        "scope.other_line16": false,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "$sales": [],
+        "$interest": [
+          "bank"
+        ],
+        "interest[bank].amount": 200000,
+        "interest[bank].penalty": 0,
+        "$gift": [],
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
+        "person[taxpayer].rrta": false,
+        "$w2@person[taxpayer]": [
+          "a"
+        ],
+        "person[taxpayer].w2[a].box3": 0,
+        "person[taxpayer].w2[a].box4": 0,
+        "person[taxpayer].w2[a].box7": 0,
+        "person[taxpayer].w2[a].box5": 20000000,
+        "person[taxpayer].w2[a].box6": 290000,
+        "person[taxpayer].w2[a].box1": 10000000,
+        "$dependent": [],
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "household.married": false,
+        "household.credit_disallowed": false,
+        "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false,
+        "$retirement@person[taxpayer]": [],
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
+        "person[taxpayer].educator_expenses": 0,
+        "sli.interest": 0,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[a].box12_any": false,
+        "f2441.employer_care": false,
+        "s1.cod_any": false,
+        "f1040.line25b": 0,
+        "f1040.line25c_other": 0,
+        "f1040.line26": 0,
+        "f1040.line35a": 0,
+        "f1040.line36": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false,
+        "s179.line10": 0,
+        "$f1095a": []
+      },
+      "expect": {
+        "f1040.line2b": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f1040.line3b": {
+          "kind": "money",
+          "cents": 150000
+        },
+        "f4952.line4a": {
+          "kind": "money",
+          "cents": 350000
+        },
+        "f4952.line4b": {
+          "kind": "money",
+          "cents": 50000
+        },
+        "f4952.line4c": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f4952.line4h": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f4952.line6": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f4952.line3": {
+          "kind": "money",
+          "cents": 400000
+        },
+        "f4952.line7": {
+          "kind": "money",
+          "cents": 100000
+        },
+        "f4952.line8": {
+          "kind": "money",
+          "cents": 300000
+        },
+        "f4952.required": {
+          "kind": "bool",
+          "value": true
+        }
+      }
+    },
+    {
       "id": "stage4.refuse.4952.unsupported",
       "covers": [
         "f4952.unsupported"
@@ -12493,6 +12694,7 @@
         "f8960.unsupported"
       ],
       "evidence": "synthetic refusal regression",
+      "evidence_note": "T-101: Form W-2 box 1 raised from $100,000 to $250,000 (single), so Form 1040 line 11b is above the $200,000 threshold on Form 8960 line 14. Predicted from i8960 p. 1, Who Must File, \"Attach Form 8960 to your return if your modified adjusted gross income (MAGI) is greater than the applicable threshold amount\": Form 8960 is filed, so line 16 reads lines 12 and 15 and the refusal reaches line 17 as before. With box 1 at $100,000 the form is not filed and line 17 is $0 (stage5.return.refund_f8960_* cover that case). Written before the evaluator was run on these inputs.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -12574,7 +12776,7 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000,
+        "person[taxpayer].w2[a].box1": 25000000,
         "$dependent": [],
         "person[taxpayer].tin": true,
         "person[taxpayer].work_ssn": true,
@@ -12795,6 +12997,7 @@
         "f8960.refund"
       ],
       "evidence": "synthetic refusal regression",
+      "evidence_note": "T-101: Form W-2 box 1 raised from $100,000 to $250,000 (single), so Form 1040 line 11b is above the $200,000 threshold on Form 8960 line 14. Predicted from i8960 p. 1, Who Must File, \"Attach Form 8960 to your return if your modified adjusted gross income (MAGI) is greater than the applicable threshold amount\": Form 8960 is filed, so line 16 reads lines 12 and 15 and the refusal reaches line 17 as before. With box 1 at $100,000 the form is not filed and line 17 is $0 (stage5.return.refund_f8960_* cover that case). Written before the evaluator was run on these inputs.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -12876,7 +13079,7 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000,
+        "person[taxpayer].w2[a].box1": 25000000,
         "$dependent": [],
         "person[taxpayer].tin": true,
         "person[taxpayer].work_ssn": true,
@@ -19067,6 +19270,7 @@
         "f8960.bad_allocation"
       ],
       "evidence": "synthetic refusal regression",
+      "evidence_note": "T-101: Form W-2 box 1 raised from $100,000 to $250,000 (single), so Form 1040 line 11b is above the $200,000 threshold on Form 8960 line 14. Predicted from i8960 p. 1, Who Must File, \"Attach Form 8960 to your return if your modified adjusted gross income (MAGI) is greater than the applicable threshold amount\": Form 8960 is filed, so line 16 reads lines 12 and 15 and the refusal reaches line 17 as before. With box 1 at $100,000 the form is not filed and line 17 is $0 (stage5.return.refund_f8960_* cover that case). Written before the evaluator was run on these inputs.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -19148,7 +19352,7 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000,
+        "person[taxpayer].w2[a].box1": 25000000,
         "$dependent": [],
         "person[taxpayer].tin": true,
         "person[taxpayer].work_ssn": true,
@@ -19676,6 +19880,7 @@
         "f8960.unsupported"
       ],
       "evidence": "synthetic refusal regression",
+      "evidence_note": "T-101: Form W-2 box 1 raised from $100,000 to $250,000 (single), so Form 1040 line 11b is above the $200,000 threshold on Form 8960 line 14. Predicted from i8960 p. 1, Who Must File, \"Attach Form 8960 to your return if your modified adjusted gross income (MAGI) is greater than the applicable threshold amount\": Form 8960 is filed, so line 16 reads lines 12 and 15 and the refusal reaches line 17 as before. With box 1 at $100,000 the form is not filed and line 17 is $0 (stage5.return.refund_f8960_* cover that case). Written before the evaluator was run on these inputs.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -19757,7 +19962,7 @@
         "person[taxpayer].w2[a].box7": 0,
         "person[taxpayer].w2[a].box5": 20000000,
         "person[taxpayer].w2[a].box6": 290000,
-        "person[taxpayer].w2[a].box1": 10000000,
+        "person[taxpayer].w2[a].box1": 25000000,
         "$dependent": [],
         "person[taxpayer].tin": true,
         "person[taxpayer].work_ssn": true,

@@ -20,6 +20,13 @@
   {
    "printed": "(b)",
    "restated": "Input — The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in service earlier is outside this tool)",
+   "model": "IRS column (b) says \"Date placed in service\" and instructs entering the date, not just the year.",
+   "ruling": "Ruling: representation; same as the earlier ruling. No value depends on the month or day except through the quarter, asked separately.",
+   "context": "b4e14dc4dd83ad0c6e1fe02e9eb53caadd6de330c91fe99d9b3a624416f305eb"
+  },
+  {
+   "printed": "(b)",
+   "restated": "Input — The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in service earlier is outside this tool)",
    "model": "IRS column (b) says \"Date placed in service. Enter the date the property was placed in service\"; the restatement asks only for the year.",
    "ruling": "Ruling: representation; restatement accepted. The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; the filer writes the full date on the form from their own records.",
    "context": "9cf77a8b2fc649ccb86911bce6b85ebe8d60ceaf65a95c6a907be7e5689f615b"
@@ -44,6 +51,13 @@
    "model": "For a 2019 vehicle, the IRS says 'If the recovery period for an automobile ended before your tax year beginning in 2025, enter your unrecovered basis, if any, in column (h)' and permits deductions after the recovery period; the restatement returns zero for a 2019 vehicle.",
    "ruling": "Ruling: representation; restatement accepted. Line 19 is a line of the automobile worksheet, which is not used after the recovery period; a 2019 vehicle's deduction is its unrecovered basis, limited and prorated (scveh.post, read by scveh.macrs_pass for column (h); Pub. 946 p. 61, Deductions After the Recovery Period), as stage14.veh.2019_cheap_mq3 asserts (BUG-0059).",
    "context": "5506eb798c3a6f707b769e989b5eb088b509a7825a8d69f7a0fcf65723baed56"
+  },
+  {
+   "printed": "20a",
+   "restated": "Choose — [helper \"Leased and on actual expenses\" = true → helper \"The business portion of the lease payments\"] [helper \"Leased and on actual expenses\" = false → helper \"Zero\"]",
+   "model": "IRS line 20a says to enter the business portion of rental cost but also that \"if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount\"; the restatement omits that reduction.",
+   "ruling": "Ruling: scope; same as the earlier ruling (restatement and objection unchanged). An inclusion amount for leased property is refused for the business through sc.special (\"an inclusion amount for leased property\"), so the business portion of the lease payments is the line 20a amount for every vehicle that reaches it.",
+   "context": "b4e14dc4dd83ad0c6e1fe02e9eb53caadd6de330c91fe99d9b3a624416f305eb"
   },
   {
    "printed": "20a",
@@ -86,6 +100,13 @@
    "model": "IRS line 43 asks \"When did you place your vehicle in service for business purposes? (month/day/year)\"; the restatement asks only for the year, omitting month/day.",
    "ruling": "Ruling: representation; restatement accepted. The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; the filer writes the full date on the form from their own records.",
    "context": "9cf77a8b2fc649ccb86911bce6b85ebe8d60ceaf65a95c6a907be7e5689f615b"
+  },
+  {
+   "printed": "43",
+   "restated": "Input — The year you first placed this vehicle in service for business purposes (for example 2023)",
+   "model": "IRS line 43 asks \"When did you place your vehicle in service for business purposes? (month/day/year)\"; the restatement asks only for the year.",
+   "ruling": "Ruling: representation; same as the earlier ruling. The tool needs the year (and, for 2025 property, the quarter); the filer writes the full date on Schedule C line 43 from their own records.",
+   "context": "b4e14dc4dd83ad0c6e1fe02e9eb53caadd6de330c91fe99d9b3a624416f305eb"
   },
   {
    "printed": "43",

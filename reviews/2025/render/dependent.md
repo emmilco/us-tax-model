@@ -12,7 +12,7 @@ The rendered English of every printed line of `Dependents — qualifying child a
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
-| subject sha256 | 8e784224725c12b257072fa416b632e27043a8ed79889dde07d7c199a08a40dd |
+| subject sha256 | 243fbb1b83ecccf2a804d8ec1c79327e2f9a46c72283072f586ae626bb94d95f |
 | lines judged | 11 |
 | match / mismatch / unclear / missing | 10 / 1 / 0 / 0 |
 | verdicts for lines not in the form | none |
@@ -41,59 +41,59 @@ Status: **MISMATCH**
 
 Restated: Enter the amount from helper "Qualified expenses incurred and paid in 2025 for this person's care".
 
-Model: The restatement includes expenses paid with dependent care benefits and says Form 2441 subtracts the excluded benefits later. The IRS instructions keep those benefits out of column (d) itself: "If you completed Part III, don't include in column (d) any benefits shown on line 28" (Form 2441, line 30 says the same: "Don't include in column (d) any benefits shown on line 28 above").
+Model: The program's helper includes expenses paid with dependent care benefits and assumes Form 2441 subtracts them later. The column (d) instructions exclude them at this line: "If you completed Part III, don't include in column (d) any benefits shown on line 28" (also line 30: "Don't include in column (d) any benefits shown on line 28 above").
 
-Ruling: ambiguity; amb.2025.dc_line30 (owner ruling, Stage 15 decision 6, T-048). i2441 p. 3, Column (d): "If you completed Part III, don't include in column (d) any benefits shown on line 28"; Form 2441 line 30, "Don't include in column (d) any benefits shown on line 28 above. Then, add the amounts in column (d) and enter the total here"; the instructions give no rule for dividing line 28 among persons. The model reads the register's rejected reading (column (d) net of benefits). This round's dependent.dc_paid wording (T-184 household services, housekeeper meals and lodging, transportation, fees, volunteer work; T-123 the value of employer-furnished care left out, "paid by your employer to a provider you chose") does not change how benefits are treated, and dependent.dc_line2d is unchanged. As ruled since fix round 2. Project stands.
+Ruling: ambiguity; amb.2025.dc_line30 (owner's decision, Stage 15 decision 6): column (d) shows each person's expenses including those paid with dependent care benefits and line 30 subtracts line 28 from the total; Form 2441 line 30 and i2441 p. 3, Column (d), "don't include in column (d) any benefits shown on line 28", give no rule for dividing line 28 among persons. The reviewer reads the rejected reading. As the prior ruling. Project stands.
 
 ### 2(c) — Check here if the qualifying person was over age 12 and was disabled
 Status: **MATCH**
 
-Model: The box is checked for a qualifying person who "was over age 12 at the time the care was provided and was disabled." The restatement gets this from age at year end (14 or older, or 13 with care given while 13 or older) plus the not-able-to-care-for-self test.
+Model: The column (c) instructions say "Check the box ... if the qualifying person ... was over age 12 at the time the care was provided and was disabled." The restatement requires a qualifying person unable to care for themselves who was 14 or older at year end, or 13 at year end with care given while 13 or older and disabled, which is the same test.
 
 ### 23 — Has the American opportunity credit been claimed for this student for any 4 prior tax year
 Status: **MATCH**
 
-Model: Restates Form 8863 line 23 and its instructions: whether the American opportunity credit has been claimed for this student for any 4 tax years before 2025.
+Model: Matches line 23: "Has the American opportunity credit been claimed for this student for any 4 prior tax years?" The restatement adds "by you or anyone else", which follows the instruction text.
 
 ### 24 — Was the student enrolled at least half-time for at least one academic period that began or
 Status: **MATCH**
 
-Model: Restates line 24: enrolled at least half-time for an academic period beginning in 2025, or treated as beginning then, in a program leading to a postsecondary credential. This includes the rule for periods in the first 3 months of 2026 paid for in 2025.
+Model: Matches line 24 and its instructions: at least half-time for an academic period that began, or is treated as having begun, in 2025 (including the first 3 months of 2026 if paid in 2025), in a program leading to a postsecondary credential. It is shown only when line 23 was "No".
 
 ### 25 — Did the student complete the first 4 years of postsecondary education before 2025?
 Status: **MATCH**
 
-Model: Restates line 25 and its instructions: first 4 years completed before 2025 as determined by the institution, disregarding credit awarded solely for proficiency examinations.
+Model: Matches line 25 and its instructions: first 4 years completed before 2025, as shown by 4 years of academic credit, disregarding credit awarded solely for proficiency examinations. It is reached only when line 24 was "Yes".
 
 ### 26 — Was the student convicted, before the end of 2025, of a felony for possession or distribut
 Status: **MATCH**
 
-Model: Restates line 26 and its instructions: convicted before the end of 2025 of a federal or state felony for possession or distribution of a controlled substance.
+Model: Matches line 26 and its instructions: convicted, before the end of 2025, of a federal or state felony for possession or distribution of a controlled substance. It is reached only when line 25 was "No".
 
 ### 27 — Adjusted qualified education expenses. Don't enter more than $4,000
 Status: **MATCH**
 
-Model: Worksheet line 4 for the American opportunity credit: tuition, fees and course materials less the adjustments on lines 2a, 2b and 2c, floored at zero, then capped at $4,000 ("Don't enter more than $4,000"). The line is reported only when lines 23 to 26 permit and the TIN and EIN requirements are met. The case of netting across academic periods is refused.
+Model: Line 27 is adjusted qualified education expenses, capped at $4,000. The restatement uses worksheet line 1 (tuition, fees and course materials) less lines 2a, 2b and 2c, floored at zero, and limits it to AOC-eligible students as the instructions require. The refusal names the period-by-period case it does not handle.
 
 ### 28 — Subtract $2,000 from line 27. If zero or less, enter -0-
 Status: **MATCH**
 
-Model: "Subtract $2,000 from line 27. If zero or less, enter -0-."
+Model: Matches "Subtract $2,000 from line 27. If zero or less, enter -0-."
 
 ### 29 — Multiply line 28 by 25% (0.25)
 Status: **MATCH**
 
-Model: "Multiply line 28 by 25% (0.25)."
+Model: Matches "Multiply line 28 by 25% (0.25)."
 
 ### 30 — American opportunity credit for this student. If line 28 is zero, enter the amount from li
 Status: **MATCH**
 
-Model: "If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29."
+Model: Matches "If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29."
 
 ### 31 — Adjusted qualified education expenses for the lifetime learning credit
 Status: **MATCH**
 
-Model: For the lifetime learning credit, qualified expenses cover only books, supplies and equipment required to be paid to the institution. The restatement accordingly uses expenses required to be paid to the institution less the adjustments, floored at zero, for a student not using lines 27 to 30. Students whose TIN was only applied for, and the academic-period netting case, are refused.
+Model: Line 31 is the student's adjusted qualified education expenses for the lifetime learning credit. Those expenses are amounts required to be paid to the institution, less worksheet line 3, floored at zero. The line is completed only when the student is not taking the AOC ("If you complete lines 27 through 30 for this student, don't complete line 31"), and the refusals name the excluded cases.
 
 ## Raw response
 
@@ -102,36 +102,36 @@ Model: For the lifetime learning credit, qualified expenses cover only books, su
 lines:
   - key: "2(d)"
     status: MISMATCH
-    reason: "The restatement includes expenses paid with dependent care benefits and says Form 2441 subtracts the excluded benefits later. The IRS instructions keep those benefits out of column (d) itself: \"If you completed Part III, don't include in column (d) any benefits shown on line 28\" (Form 2441, line 30 says the same: \"Don't include in column (d) any benefits shown on line 28 above\")."
+    reason: "The program's helper includes expenses paid with dependent care benefits and assumes Form 2441 subtracts them later. The column (d) instructions exclude them at this line: \"If you completed Part III, don't include in column (d) any benefits shown on line 28\" (also line 30: \"Don't include in column (d) any benefits shown on line 28 above\")."
   - key: "2(c)"
     status: MATCH
-    reason: "The box is checked for a qualifying person who \"was over age 12 at the time the care was provided and was disabled.\" The restatement gets this from age at year end (14 or older, or 13 with care given while 13 or older) plus the not-able-to-care-for-self test."
+    reason: "The column (c) instructions say \"Check the box ... if the qualifying person ... was over age 12 at the time the care was provided and was disabled.\" The restatement requires a qualifying person unable to care for themselves who was 14 or older at year end, or 13 at year end with care given while 13 or older and disabled, which is the same test."
   - key: "23"
     status: MATCH
-    reason: "Restates Form 8863 line 23 and its instructions: whether the American opportunity credit has been claimed for this student for any 4 tax years before 2025."
+    reason: "Matches line 23: \"Has the American opportunity credit been claimed for this student for any 4 prior tax years?\" The restatement adds \"by you or anyone else\", which follows the instruction text."
   - key: "24"
     status: MATCH
-    reason: "Restates line 24: enrolled at least half-time for an academic period beginning in 2025, or treated as beginning then, in a program leading to a postsecondary credential. This includes the rule for periods in the first 3 months of 2026 paid for in 2025."
+    reason: "Matches line 24 and its instructions: at least half-time for an academic period that began, or is treated as having begun, in 2025 (including the first 3 months of 2026 if paid in 2025), in a program leading to a postsecondary credential. It is shown only when line 23 was \"No\"."
   - key: "25"
     status: MATCH
-    reason: "Restates line 25 and its instructions: first 4 years completed before 2025 as determined by the institution, disregarding credit awarded solely for proficiency examinations."
+    reason: "Matches line 25 and its instructions: first 4 years completed before 2025, as shown by 4 years of academic credit, disregarding credit awarded solely for proficiency examinations. It is reached only when line 24 was \"Yes\"."
   - key: "26"
     status: MATCH
-    reason: "Restates line 26 and its instructions: convicted before the end of 2025 of a federal or state felony for possession or distribution of a controlled substance."
+    reason: "Matches line 26 and its instructions: convicted, before the end of 2025, of a federal or state felony for possession or distribution of a controlled substance. It is reached only when line 25 was \"No\"."
   - key: "27"
     status: MATCH
-    reason: "Worksheet line 4 for the American opportunity credit: tuition, fees and course materials less the adjustments on lines 2a, 2b and 2c, floored at zero, then capped at $4,000 (\"Don't enter more than $4,000\"). The line is reported only when lines 23 to 26 permit and the TIN and EIN requirements are met. The case of netting across academic periods is refused."
+    reason: "Line 27 is adjusted qualified education expenses, capped at $4,000. The restatement uses worksheet line 1 (tuition, fees and course materials) less lines 2a, 2b and 2c, floored at zero, and limits it to AOC-eligible students as the instructions require. The refusal names the period-by-period case it does not handle."
   - key: "28"
     status: MATCH
-    reason: "\"Subtract $2,000 from line 27. If zero or less, enter -0-.\""
+    reason: "Matches \"Subtract $2,000 from line 27. If zero or less, enter -0-.\""
   - key: "29"
     status: MATCH
-    reason: "\"Multiply line 28 by 25% (0.25).\""
+    reason: "Matches \"Multiply line 28 by 25% (0.25).\""
   - key: "30"
     status: MATCH
-    reason: "\"If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29.\""
+    reason: "Matches \"If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29.\""
   - key: "31"
     status: MATCH
-    reason: "For the lifetime learning credit, qualified expenses cover only books, supplies and equipment required to be paid to the institution. The restatement accordingly uses expenses required to be paid to the institution less the adjustments, floored at zero, for a student not using lines 27 to 30. Students whose TIN was only applied for, and the academic-period netting case, are refused."
+    reason: "Line 31 is the student's adjusted qualified education expenses for the lifetime learning credit. Those expenses are amounts required to be paid to the institution, less worksheet line 3, floored at zero. The line is completed only when the student is not taking the AOC (\"If you complete lines 27 through 30 for this student, don't complete line 31\"), and the refusals name the excluded cases."
 ```
 ```

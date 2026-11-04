@@ -387,6 +387,25 @@ form:
     cite:
       doc: i1040sc
       locator: p. 7, Line 9, "Show depreciation on line 13 and rent or lease payments on line 20a"
+  - id: scveh.on_auto_limits
+    printed: (helper)
+    label: Owned, on actual expenses and subject to the limits for passenger automobiles (the worksheet's limit lines
+      apply)
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - scveh.is_actual_owned
+        - const: true
+      - op: test
+        eq:
+        - scveh.passenger
+        - const: true
+    cite:
+      doc: p946
+      locator: pp. 61-62, Depreciation Worksheet for Passenger Automobiles
   - id: scveh.is_actual_leased
     printed: (helper)
     label: Leased and on actual expenses
@@ -526,7 +545,13 @@ form:
         or a like-kind exchange; you must depreciate it under ADS (for example, it is used predominantly outside the United
         States), or you elected ADS, the straight line method or the 150% declining balance method for it; you reduced its
         basis because of a casualty; your 2025 tax year, or any tax year since you placed it in service, is shorter than 12
-        months; you are regularly engaged in the business of leasing passenger automobiles; you cannot prove its business
+        months; you are regularly engaged in the business of leasing passenger automobiles; you are not a corporation and you
+        purchased it and lease it to others, unless you manufactured or produced it, or the lease term (including options to
+        renew) is less than 50% of its class life and for the first 12 months after the transfer to the lessee your business
+        deductions for it (other than rents and reimbursed amounts) are more than 15% of its rental income; it is used by a
+        tax-exempt organization, unless used in connection with the production of income subject to the tax on unrelated
+        trade or business income; it is used by a governmental unit or a foreign person or entity, unless used under a lease
+        with a term of less than 6 months; you cannot prove its business
         use with adequate records or with sufficient evidence to support your own statements; you claim a special depreciation
         allowance for it in 2025 and its original use did not begin with you (original use is the first use to which the vehicle
         is put, whether or not by you, so a vehicle someone else used before you acquired it is used property, and so is a
@@ -565,7 +590,12 @@ form:
         short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
         percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
         p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
-        your business/investment use with adequate records or with sufficient evidence to support your own statements"
+        your business/investment use with adequate records or with sufficient evidence to support your own statements"; p946
+        p. 17, What Property Does Not Qualify?, "Even if the requirements explained earlier under What Property Qualifies? are
+        met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
+        taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
+        to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
+        the tax year"
     ambiguity: amb.2025.auto_later_year_basis
   - id: scveh.screened
     printed: (gate)
@@ -681,6 +711,7 @@ form:
         purpose trucks"
   - id: scveh.bus_cost
     printed: '13'
+    shown_when: scveh.is_actual_owned
     label: Business/investment cost (cost times business use)
     type: NonNegDollars
     expr:
@@ -872,6 +903,7 @@ form:
       locator: p. 59, Maximum Depreciation Deduction, Passenger Automobiles (table)
   - id: scveh.line7
     printed: '7'
+    shown_when: scveh.on_auto_limits
     label: Maximum depreciation deduction for this year from the appropriate table
     type: NonNegDollars
     expr:
@@ -894,6 +926,7 @@ form:
       locator: pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 7
   - id: scveh.line9w
     printed: '9'
+    shown_when: scveh.on_auto_limits
     label: Adjusted maximum depreciation deduction (line 7 times the business/investment-use percentage)
     type: NonNegDollars
     expr:
@@ -925,6 +958,7 @@ form:
         locator: p. 16, Column (i)
   - id: scveh.line10
     printed: '10'
+    shown_when: scveh.is_actual_owned
     label: Section 179 deduction claimed this year (not more than line 9 for a passenger automobile)
     type: NonNegDollars
     expr:
@@ -983,6 +1017,7 @@ form:
       locator: pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 10, "(not more than line 9)"
   - id: scveh.line11
     printed: '11'
+    shown_when: scveh.on_auto_limits
     label: Subtract line 10 from line 9
     type: NonNegDollars
     expr:
@@ -1004,6 +1039,7 @@ form:
       locator: pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 14
   - id: scveh.line14
     printed: '14'
+    shown_when: scveh.is_actual_owned
     label: Section 179 deduction claimed in the year you placed the car in service
     type: NonNegDollars
     expr:
@@ -1026,6 +1062,7 @@ form:
       locator: pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 14
   - id: scveh.line15
     printed: '15'
+    shown_when: scveh.is_actual_owned
     label: Tentative basis for depreciation (line 13 less line 14)
     type: NonNegDollars
     expr:
@@ -1122,6 +1159,7 @@ form:
       locator: pp. 5-7, Line 14
   - id: scveh.line16
     printed: '16'
+    shown_when: scveh.is_actual_owned
     label: Special depreciation allowance
     type: NonNegDollars
     expr:
@@ -1145,6 +1183,7 @@ form:
         placed the car in service"
   - id: scveh.bonus_allowed
     printed: '25'
+    shown_when: scveh.on_auto_limits
     label: Special depreciation allowance allowed (not more than line 11)
     type: NonNegDollars
     expr:
@@ -1159,6 +1198,7 @@ form:
         on line 11"
   - id: scveh.line17
     printed: '17'
+    shown_when: scveh.on_auto_limits
     label: Limit on the MACRS depreciation (line 11 less line 16)
     type: NonNegDollars
     expr:
@@ -1170,6 +1210,7 @@ form:
       locator: pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 17
   - id: scveh.line18
     printed: '18'
+    shown_when: scveh.is_actual_owned
     label: Basis for depreciation (line 15 less line 16)
     type: NonNegDollars
     expr:
@@ -1308,6 +1349,7 @@ form:
       locator: pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 19
   - id: scveh.line19
     printed: '19'
+    shown_when: scveh.is_actual_owned
     label: Tentative MACRS depreciation deduction (line 18 times line 6)
     type: NonNegDollars
     expr:
@@ -1375,6 +1417,7 @@ form:
       locator: p. 11, Column (e)—Convention
   - id: scveh.line20
     printed: '20'
+    shown_when: scveh.on_auto_limits
     label: MACRS depreciation deduction (the lesser of line 17 or line 19)
     type: NonNegDollars
     expr:

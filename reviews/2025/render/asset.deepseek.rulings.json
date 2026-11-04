@@ -111,6 +111,13 @@
   {
    "printed": "25",
    "restated": "Enter the amount from line 14.",
+   "model": "IRS line 25 says 'Enter on line 25 your total special depreciation allowance for all qualified listed property'; line 14 is not the listed-property special allowance total, so copying line 14 uses a different operand.",
+   "ruling": "Ruling: representation; same as the earlier rulings. asset.f25 copies asset.bonus, the per-asset special allowance, and is shown only for listed property placed in service in 2025 (asset.on_26_2025); \"from line 14\" names the shared per-asset amount, not the non-listed total (i4562 p. 14, Line 25).",
+   "context": "1022025251c7545fbf2d300b6e4abcdc4afaba27da273b9dfb92f8ebeb775334"
+  },
+  {
+   "printed": "25",
+   "restated": "Enter the amount from line 14.",
    "model": "IRS line 25 says 'Enter on line 25 your total special depreciation allowance for all qualified listed property'; the restatement instead takes the line 14 amount, which is for non-listed property.",
    "ruling": "Ruling: representation; restatement accepted. Line 14 and line 19 amounts are figured per asset and shown by listed status (asset.on_19, asset.on_26_2025); for listed property the same per-asset allowance, election and depreciation appear on lines 25, 26(i) and 26(h), figured by the line 19 instructions as i4562 p. 15, Column (h) directs. The objection reads the shared helper names as the other lines' columns.",
    "context": "f7853019cac1504acce66c1cce52a0d338c753ca90fef571243279035ad08afb"
@@ -156,6 +163,13 @@
    "model": "IRS says \"Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26.\" Line 26(i) is the listed property election, not the line 6(c) amount.",
    "ruling": "Ruling: representation; restatement accepted. The per-asset section 179 election appears in column (i) for listed property and on line 6 otherwise.",
    "context": "e1bfa3045be372f69e5350b0407104ac85aac4cc40d2cbd4ca610766fe7eba6c"
+  },
+  {
+   "printed": "26(i)",
+   "restated": "Enter the amount from line 6(c).",
+   "model": "IRS says 'Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26.'; line 6(c) is not the listed-property elected section 179 cost.",
+   "ruling": "Ruling: representation; same as the earlier rulings. asset.f26i copies asset.s179, the per-asset elected section 179 cost, shown only for listed property (i4562 p. 5, Line 6, \"Enter the elected section 179 cost of listed property in column (i) of line 26\").",
+   "context": "1022025251c7545fbf2d300b6e4abcdc4afaba27da273b9dfb92f8ebeb775334"
   },
   {
    "printed": "26(i)",

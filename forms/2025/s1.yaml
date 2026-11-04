@@ -488,7 +488,12 @@ form:
       op: input
       source: Alimony or separate maintenance you received in 2025 under a divorce or separation agreement entered into on
         or before December 31, 2018 (cash payments only, so do not include child support, noncash property settlements, your own part of community
-        income, or payments to keep up or the use of the payer's property, or payments made after the agreement was changed
+        income, or payments to keep up or the use of the payer's property, or payments your divorce or separation instrument
+        designates as not alimony (it states that the payments aren't deductible as alimony by the payer and are excludable
+        from your income), or payments made while you and the payer were members of the same household if you were legally
+        separated under a decree of divorce or separate maintenance (a home you formerly shared is one household, even if you
+        physically separate yourselves in the home, unless one of you was preparing to leave and left no later than 1 month
+        after the payment), or payments made after the agreement was changed
         after 2018 in a way that expressly applies the post-2018 rules, that is, a change that states that the post-2018
         alimony rules apply, or that alimony isn't deductible by the payer or isn't included in your income); zero if none
     cite:
@@ -498,7 +503,15 @@ form:
         to expressly provide that alimony received isn't included in your income"; p504
         p. 16, Certain Rules for Instruments Executed or Modified After 2018, "if the modification expressly states that
         the alimony isn’t deductible to the payer or includible in the income of the recipient", and Example 2, "the modification
-        expressly provided that the post-2018 alimony rules apply"
+        expressly provided that the post-2018 alimony rules apply";
+        p504 p. 14, "The instrument doesn’t designate the payment as not alimony", Payments designated as not alimony, "You
+        do this by including a provision in your divorce or separation instrument that states the payments aren’t deductible
+        as alimony by you and are excludable from your spouse’s income", and Spouses can’t be members of the same household,
+        "Payments to your spouse while you’re members of the same household aren’t alimony if you’re legally separated under
+        a decree of divorce or separate maintenance" and "A home you formerly shared is considered one household, even if
+        you physically separate yourselves in the home"; p504 p. 15, "You aren’t treated as members of the same household
+        if one of you is preparing to leave the household and does leave no later than 1 month after the date of the
+        payment"
   - id: s1.alimony_paid
     printed: (helper)
     label: Alimony or separate maintenance paid in 2025 under an agreement entered into on or before December 31, 2018
@@ -507,7 +520,12 @@ form:
       op: input
       source: Alimony or separate maintenance you paid in 2025 to or for a spouse or former spouse under a divorce or separation
         agreement entered into on or before December 31, 2018 (cash payments only, so do not include child support, noncash property settlements, your spouse's part of community
-        income, or payments to keep up or the use of your property, or payments made after the agreement was changed after
+        income, or payments to keep up or the use of your property, or payments your divorce or separation instrument
+        designates as not alimony (it states that the payments aren't deductible as alimony by you and are excludable from
+        your spouse's income), or payments made while you and your spouse were members of the same household if you were
+        legally separated under a decree of divorce or separate maintenance (a home you formerly shared is one household,
+        even if you physically separate yourselves in the home, unless one of you was preparing to leave and left no later
+        than 1 month after the payment), or payments made after the agreement was changed after
         2018 in a way that expressly applies the post-2018 rules, that is, a change that states that the post-2018 alimony rules apply,
         or that alimony isn't deductible by you or isn't included in the recipient's income); zero if none
     cite:
@@ -516,7 +534,15 @@ form:
         agreement entered into on or before December 31, 2018, you may be able to take this deduction"; p504
         p. 16, Certain Rules for Instruments Executed or Modified After 2018, "if the modification expressly states that
         the alimony isn’t deductible to the payer or includible in the income of the recipient", and Example 2, "the modification
-        expressly provided that the post-2018 alimony rules apply"
+        expressly provided that the post-2018 alimony rules apply";
+        p504 p. 14, "The instrument doesn’t designate the payment as not alimony", Payments designated as not alimony, "You
+        do this by including a provision in your divorce or separation instrument that states the payments aren’t deductible
+        as alimony by you and are excludable from your spouse’s income", and Spouses can’t be members of the same household,
+        "Payments to your spouse while you’re members of the same household aren’t alimony if you’re legally separated under
+        a decree of divorce or separate maintenance" and "A home you formerly shared is considered one household, even if
+        you physically separate yourselves in the home"; p504 p. 15, "You aren’t treated as members of the same household
+        if one of you is preparing to leave the household and does leave no later than 1 month after the date of the
+        payment"
   - id: s1.alimony_unsupported
     printed: (gate)
     label: 'Does any of these apply to alimony you received or paid: payments under more than one divorce or separation agreement,

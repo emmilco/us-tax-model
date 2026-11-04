@@ -805,41 +805,47 @@
  },
  {
   "screen": "f4952.unsupported",
-  "question": "Any interest expense attributable to royalties, a business, passive activities, tax-exempt income or at-risk limitations; any deductible investment expense other than interest (for example depreciation or depletion on assets that produce investment income, or investment expenses on a Schedule K-1); or any other investment income or expense beyond interest, dividends and securities sales?",
+  "question": "Is any of the interest you count as investment interest paid or accrued in 2025 (line 1), or any of your 2024 carryforward, attributable to royalties, a trade or business, a passive activity, tax-exempt income, or an activity for which you aren't at risk (Form 6198); do you have any deductible investment expense other than interest (for example depreciation or depletion on assets that produce investment income, or investment expenses on a Schedule K-1); or any other investment income or expense beyond interest, dividends and securities sales?",
   "lines": [
    "f4952.line2",
    "f4952.election_checked",
    "f4952.line5",
    "f4952.required_test"
   ],
-  "verdict": "WIDE",
+  "verdict": "NARROW",
   "findings": [
    {
-    "kind": "WIDE",
-    "situation": "A filer pays mortgage interest on a rental property, or interest on a loan used to buy a passive partnership interest. That interest is not investment interest at all, so the tool computes the Form 4952 lines correctly by leaving it out, yet the question makes the filer answer YES.",
-    "irs_text": "f4952 p. 3, Line 1: \"Investment interest expense doesn't include any of the following. ... Interest expense that is properly allocable to a passive activity.\"",
-    "why": "The question asks about \"Any interest expense attributable to ... passive activities.\" That sweeps in interest that Form 4952 excludes from lines 1 through 3, so filers whose 4952 lines the tool computes correctly are refused."
+    "kind": "NARROW",
+    "situation": "A filer has a loan whose proceeds went partly to personal use, such as a margin loan used partly to buy a car, and counts all of its interest as investment interest; nothing in the question makes them answer YES.",
+    "irs_text": "f4952 p. 3, Allocation of Interest Expense: \"If you paid or accrued interest on a loan and used the loan proceeds for more than one purpose, you may have to allocate the interest... different rules apply to investment interest, personal interest...\"",
+    "why": "The question asks only whether interest is attributable to royalties, a business, a passive activity, tax-exempt income or an at-risk activity, so mixed personal use goes unasked. The tool then puts unallocated interest into lines 2 and 3 and the filing test, even though the refusal itself says to allocate the interest."
+   },
+   {
+    "kind": "NARROW",
+    "situation": "A filer counts capitalized interest (section 263A) or section 264 interest on debt tied to life insurance or annuity contracts as investment interest, including in a 2024 carryforward, and truthfully answers NO.",
+    "irs_text": "f4952 p. 3, Line 1: \"Investment interest expense doesn't include ... Any interest expense that is capitalized ... Interest expense, disallowed under section 264, on indebtedness with respect to life insurance, endowment, or annuity contracts...\"",
+    "why": "The question's list of exclusions leaves out these two. A filer relying on the phrase \"interest you count as investment interest\" gets no prompt, and the tool keeps the interest in line 3 and in the required-filing test."
    },
    {
     "kind": "WIDE",
-    "situation": "A filer borrowed money to buy tax-exempt municipal bonds. That interest is disallowed under section 265 and never enters Form 4952, but the question makes the filer answer YES.",
-    "irs_text": "f4952 p. 3, Line 1: \"Investment interest expense doesn't include ... Interest expense related to tax-exempt interest income under section 265.\"",
-    "why": "The question names \"interest expense attributable to ... tax-exempt income.\" Such interest belongs on no Form 4952 line, so the tool's computation is correct and the refusal is unnecessary."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer pays investment advisory or custodial fees on a brokerage account. These are nondeductible miscellaneous itemized deductions, so line 5 is correctly zero, but the catch-all clause makes the filer answer YES.",
-    "irs_text": "f4952 p. 4, Line 5: \"Don't include any miscellaneous itemized deductions, which aren't allowed deductions in tax years beginning after December 31, 2017, and before January 1, 2026.\"",
-    "why": "The final clause, \"any other investment income or expense beyond interest, dividends and securities sales,\" is not limited to deductible expenses. A filer with nondeductible investment fees would answer YES even though the tool's zero on line 5 is correct."
+    "situation": "A filer whose Schedule K-1 reports portfolio investment expenses (section 212 expenses that are nondeductible miscellaneous itemized deductions in 2025) answers YES because of the K-1 example, although line 5 is correctly zero.",
+    "irs_text": "f4952 p. 4, Line 5: \"Include investment expenses ... reported to you on Schedule K-1 ... but only if you are allowed a deduction on your return for the expense ... Don't include any miscellaneous itemized deductions, which aren't allowed deductions in tax years beginning after December 31, 2017, and before January 1, 2026.\"",
+    "why": "The question's example \"investment expenses on a Schedule K-1\" brings in K-1 expenses that are not allowed deductions, so the tool's zero for line 5 would have been right."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer is unsure whether their interest is \"attributable to ... at-risk limitations.\" The IRS test is whether the interest relates to an activity for which the filer is not at risk, which the filer may not recognize from this wording.",
-    "irs_text": "f4952 p. 4, Form 6198: \"If any of your deductible investment interest expense is attributable to an activity for which you aren't at risk, you must also use Form 6198.\"",
-    "why": "Interest cannot be attributable to a limitation. A filer could read the phrase as asking whether they have ever been subject to at-risk rules, or as asking about an at-risk activity, and could answer either way."
+    "situation": "A filer who pays investment advisory fees, or has depreciation on a passive rental, cannot tell whether that is a \"deductible investment expense other than interest\".",
+    "irs_text": "f4952 p. 4, Line 5: \"Investment expenses don't include any deductions used in determining your income or loss from a passive activity. Don't include any miscellaneous itemized deductions...\"",
+    "why": "The question does not say that passive-activity deductions and nondeductible miscellaneous expenses are excluded. A filer could answer YES, which is wide, or NO, which is correct."
+   },
+   {
+    "kind": "UNCLEAR",
+    "situation": "A filer with mutual fund capital gain distributions, capital loss carryovers or annuity income cannot tell whether these are \"other investment income or expense beyond interest, dividends and securities sales\".",
+    "irs_text": "f4952 p. 3, Line 4d: \"When figuring this amount, include capital gain distributions from mutual funds and capital loss carryovers.\"; Line 4a: \"...from interest, ordinary dividends ..., annuities, and royalties.\"",
+    "why": "Capital gain distributions and carryovers are not literally securities sales, and annuities are not named. Some filers would answer YES even though none of these change lines 2, 5, the election or the filing test."
    }
   ],
-  "prompt_sha": "ae22c537b6cf59c6f85e5f35d01cecb60bcd5cad4609c21952602903adb53055",
+  "prompt_sha": "7407e686484f4a1ca06e68c405a344f9c7200f744fdb18b350f049d227371b3f",
   "used": [
    {
     "doc": "f4952",
@@ -854,7 +860,8 @@
     "how": "whole document",
     "locators": [
      "p. 1, Part I, line 2, \"Disallowed investment interest expense from 2024 Form 4952, line 7\"",
-     "pp. 1, 3–4, Investment Interest Expense Deduction"
+     "pp. 1, 3–4, Investment Interest Expense Deduction",
+     "pp. 1, 3–4, Investment Interest Expense Deduction; p. 4, Line 8, \"if any part of the interest expense is attributable to royalties, enter that part on Schedule E (Form 1040)\" and \"If any of your deductible investment interest expense is attributable to an activity for which you aren’t at risk, you must also use Form 6198\""
     ],
     "cols_pages": [
      3,
@@ -863,7 +870,7 @@
     "cols_sha256": "c98eb27a83a89faecfdd0cd6597e8063fbd86a14ba1606f3e96c1c5f016d2b5c"
    }
   ],
-  "cost": 0.111504,
+  "cost": 0.121332,
   "model": "claude-opus-5-5"
  },
  {
@@ -1260,24 +1267,30 @@
   "findings": [
    {
     "kind": "NARROW",
-    "situation": "A filer recovers in 2025 an amount deducted in an earlier NOL year and included in computing a section 1411 NOL, but filed no Form 8960 for that year because MAGI was below the threshold.",
-    "irs_text": "i8960 (2025) p. 15, Line 7 Deduction Recoveries Worksheet, line 1 caution on the below-threshold exclusion: 'This rule doesn't apply if you incurred an NOL in such year, and a portion of such NOL constitutes a section 1411 NOL.' Also: 'Calculation of recoveries when the deduction is taken into account in computing your section 1411 NOL.'",
-    "why": "The amount was never 'deducted on an earlier Form 8960', so the filer can truthfully answer NO. The worksheet can still require a line 7 recovery, which the tool would treat as zero."
+    "situation": "A filer had a prior-year net operating loss, part of which was a section 1411 NOL, and did not file Form 8960 that year because MAGI was below the threshold; that filer now receives a 2025 refund of a deduction that went into the section 1411 NOL.",
+    "irs_text": "i8960 p. 15, Deduction Recoveries Worksheet line 1: \"Don't include recoveries of items if the amount relates to a deduction taken in a tax year beginning after 2012, and you weren't subject to the NIIT solely because your MAGI was below the applicable threshold. This rule doesn't apply if you incurred an NOL in such year, and a portion of such NOL constitutes a section 1411 NOL.\" Lines 14–16 then compute the line 7 amount from the section 1411 NOL.",
+    "why": "The question asks only about amounts 'deducted on an earlier Form 8960.' This filer filed no Form 8960 that year, so the truthful answer is NO. The recovery still increases line 7 through the section 1411 NOL computation, and the tool does not compute that."
    },
    {
     "kind": "WIDE",
-    "situation": "A filer recovers an amount deducted on an earlier Form 8960, but the deduction did not reduce section 1411 liability, such as when MAGI was below the threshold that year and no section 1411 NOL arose, so the line 7 recovery is zero.",
-    "irs_text": "Question: 'Any recovery or refund in 2025 of an amount deducted on an earlier Form 8960'. i8960 (2025) p. 15: 'properly allocable deductions aren't reduced in the year of the recovery if the amount deducted in the prior year didn't reduce the amount of section 1411 liability.'",
-    "why": "The word 'Any' makes this filer answer YES and be refused. The tool's zero on line 7 is correct for this filer, and the taxable part of the refund is already reflected in AGI if it computes Schedule 1 line 1."
+    "situation": "A filer filed a prior-year Form 8960 that showed no NIIT because MAGI was below the threshold, and receives a 2025 state income tax refund of an amount deducted on that form's line 9b.",
+    "irs_text": "Question: \"Any recovery or refund in 2025 of an amount deducted on an earlier Form 8960 ...\"; i8960 p. 15 worksheet line 1: \"Don't include recoveries of items if the amount relates to a deduction taken in a tax year beginning after 2012, and you weren't subject to the NIIT solely because your MAGI was below the applicable threshold.\"",
+    "why": "The wording makes this filer answer YES, which refuses the lines. The IRS text puts nothing on line 7 for this recovery, and any taxable refund already flows into AGI and line 13, so the tool's computation would be correct."
+   },
+   {
+    "kind": "WIDE",
+    "situation": "A filer's prior-year deduction on Form 8960 did not reduce that year's NIIT, for example because line 16 was limited by line 15 rather than by NII, and the filer receives a 2025 refund of that deduction.",
+    "irs_text": "i8960 p. 15: \"properly allocable deductions aren't reduced in the year of the recovery if the amount deducted in the prior year didn't reduce the amount of section 1411 liability\"; worksheet lines 9–13 yield zero when the recalculated NIIT equals the NIIT reported.",
+    "why": "The question makes this filer answer YES for any recovery of an amount deducted on an earlier Form 8960. Under the tax-benefit exception the line 7 recovery is zero, which the tool's NO path already gives."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer receives a state, local or foreign income tax refund in 2025 but did not deduct that tax on an earlier Form 8960, or does not know whether any of it was allocated to line 9b.",
-    "irs_text": "Question: 'an amount deducted on an earlier Form 8960 (for example a state or local income tax refund, or a refund of foreign income tax), even if none of it is taxable on Form 1040'. i8960 (2025) p. 15, worksheet line 4: 'Enter the percentage of the deduction allocated to NII in the prior year.'",
-    "why": "The example can be read as saying any such refund counts, or as counting it only if the tax was deducted on a prior Form 8960. A filer who took no line 9b deduction has no recovery to report, yet could reasonably answer YES."
+    "situation": "A filer deducted state income tax on a prior Schedule A and filed a prior Form 8960, but does not know whether, or how much of, the tax was allocated to NII on line 9b.",
+    "irs_text": "i8960 p. 18: \"You can determine the portion of your state, local, and foreign income taxes ... allocable to NII using any reasonable method\"; i8960 p. 15 worksheet line 4: \"Enter the percentage of the deduction allocated to NII in the prior year.\"",
+    "why": "\"An amount deducted on an earlier Form 8960\" can be read as any amount deducted on the return in a year a Form 8960 was filed. It can also be read as only the portion entered on Form 8960 line 9b. Filers with the same facts could therefore answer differently."
    }
   ],
-  "prompt_sha": "2b2ad4bac3803d147f00af08db278e1b2b6bc2f267fa0b9477e4491f0d3cf276",
+  "prompt_sha": "0e7a4ecf0e1434fb45ef1190dbea7194fa16b9b94e5d0e5b76e53f2dda176e92",
   "used": [
    {
     "doc": "f8960",
@@ -1298,6 +1311,7 @@
     "revision": "2025; printed date 2026-02-04",
     "text_sha256": "fcae098ebc1ad79343de101a66765d3b3597f664dc744de3a7588be123c900a1",
     "pages": [
+     7,
      9,
      13,
      14,
@@ -1309,10 +1323,12 @@
     "locators": [
      "p. 13, Line 7—Other Modifications to Investment Income, \"Note: Early withdrawal penalty (Schedule 1 (Form 1040), line 18) is reported on Form 8960, line 10\"; p. 18, Line 10—Additional Modifications, \"On line 10, report additional deductions or modifications to NII that aren't otherwise reflected on lines 1–9\" (the other line 10 modifications are refused by f8960.unsupported)",
      "p. 22, line 13; absent section 911/CFC/PFIC adjustments MAGI equals AGI",
+     "p. 7, Line 1—Taxable Interest, \"Enter the amount of taxable interest received. Include the following amount from your return. • Form 1040 or 1040-SR, line 2b.\"",
      "p. 9, \"capital loss carryforwards must be adjusted\"",
      "pp. 14–15, deduction recoveries; compare state/local income tax refund worksheet"
     ],
     "cols_pages": [
+     7,
      9,
      13,
      18
@@ -1332,7 +1348,7 @@
     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
    }
   ],
-  "cost": 0.20972800000000003,
+  "cost": 0.221752,
   "model": "claude-opus-5-5"
  },
  {
@@ -1355,42 +1371,48 @@
   "findings": [
    {
     "kind": "NARROW",
-    "situation": "The filer received a taxable 2025 refund of state income tax (Schedule 1, line 1) that was deducted on a prior-year Form 8960, line 9b, so the recovery must be added back on line 7.",
-    "irs_text": "i8960 p. 14: \"Deduction recoveries. A recovery or refund of a previously deducted item increases NII in the year of the recovery.\"; p. 13 lists \"Recoveries of deductions taken on a prior year's Form 8960\" as a line 7 item",
-    "why": "The question names no refunds or recoveries, so this filer truthfully answers NO. The tool then sets line 7 to zero and understates NII."
+    "situation": "In a prior year the filer deducted state income tax on Form 8960 line 9b and received a refund of it this year (Schedule 1 line 1), but has no other listed item, so a truthful NO zeroes line 7 and the recovery is left out.",
+    "irs_text": "i8960 p. 14: \"A recovery or refund of a previously deducted item increases NII in the year of the recovery... if a taxpayer receives a refund of state income taxes from a prior year, such a refund would be included\"; p. 13 lists \"Recoveries of deductions taken on a prior year's Form 8960\" under line 7.",
+    "why": "The question names no recoveries or refunds. A filer would not see an ordinary state tax refund as \"another net investment income adjustment,\" especially since the question itself treats state and local tax as supported."
    },
    {
     "kind": "NARROW",
-    "situation": "A parent elects Form 8814 to report a child's interest and dividends, which must be included on Form 8960, line 7.",
-    "irs_text": "i8960 p. 13: \"Parents electing to include their child's dividends and capital gain distributions in their income by filing Form 8814 must include on Form 8960, line 7, the amount on Form 8814, line 12\"",
-    "why": "Nothing in the question points to Form 8814 or a child's investment income. Only the catch-all \"another net investment income adjustment\" could reach it, and a filer would not recognize it there."
+    "situation": "The filer reports a child's interest and dividends through a Form 8814 election, or receives substitute dividend payments on Form 1099-MISC or notional principal contract payments reported on Schedule 1 line 8z, and answers NO because none of these is annuity, rental, royalty, business or pass-through income.",
+    "irs_text": "i8960 p. 13, Line 7: \"Other items of NII ... reported on Schedule 1 (Form 1040), line 8z... 1. Amounts reported on Form 8814... line 12... 2. Substitute interest and dividend payments... 3. Net positive periodic payments received from a notional principal contract.\"",
+    "why": "These items are NII that belongs on line 7, which the tool sets to zero. The question's list does not mention them, and the catch-all phrase gives a filer no hint that they count."
    },
    {
     "kind": "NARROW",
-    "situation": "The filer has substitute interest or dividend payments (Form 1099-MISC) or net periodic payments on a notional principal contract reported on Schedule 1, line 8z.",
-    "irs_text": "i8960 p. 13: \"Other items of NII ... not otherwise included on Form 8960 reported on Schedule 1 (Form 1040), line 8z ... 2. Substitute interest and dividend payments ... 3. Net positive periodic payments received from a notional principal contract\"",
-    "why": "These items are not annuity, rental, royalty, business, or pass-through income, so the filer answers NO. The tool then omits them from line 7."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "The filer has a casualty or theft loss on Schedule A, line 15, from investment property, which is a negative line 7 modification.",
-    "irs_text": "i8960 p. 13: \"Casualty and theft losses reported on Schedule A (Form 1040), Itemized Deductions, line 15 (enter as a negative amount)\"",
-    "why": "The question mentions only line 5b and 5c disposition adjustments. A casualty loss is not obviously a \"disposition adjustment,\" so the filer would answer NO and the tool would ignore the loss."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "The filer receives only annuity payments from a 401(k), 403(b), IRA, or similar plan, which are excluded from line 3, so the tool's zero is correct.",
-    "irs_text": "Question: \"Any annuity ... income\"; i8960 p. 7: \"Enter the gross income from all annuities, except annuities paid from the following. • Section 401 ... • Section 408—individual retirement accounts (IRAs) or annuities\"",
-    "why": "The question says \"any annuity\" without limiting it to nonqualified annuities (Form 1099-R code D). A retiree with only exempt plan annuities answers YES and is refused, even though the tool computes line 3 correctly."
+    "situation": "The filer has a taxable gain from surrendering a life insurance or annuity contract, or a casualty or theft loss on Schedule A line 15, and answers NO because there was no annuity income, business sale, partnership sale or S corporation sale.",
+    "irs_text": "i8960 p. 13, Line 7: \"Gains and losses from the disposition of property not included on line 5a ... 1. Gain or loss from the disposition of an annuity or life insurance contract ...; and 2. Casualty and theft losses reported on Schedule A (Form 1040)... line 15 (enter as a negative amount).\"",
+    "why": "The question's disposition example points only to lines 5b and 5c, while these line 7 disposition items are not named. Line 7 is computed as zero, so the tool misstates NII."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "The filer is a beneficiary who receives a Schedule K-1 (Form 1041) with box 14, code H, which adjusts line 7 and possibly MAGI on line 13.",
-    "irs_text": "i8960 p. 13: \"Distributions from estates and trusts. Enter the amount from box 14, code H, of Schedule K-1 (Form 1041)\"; p. 22 item 6: \"Increase or decrease AGI ... by the amount reported to you in box 14, code H\"",
-    "why": "A filer could read \"pass-through income\" as covering only partnerships and S corporations, not estates or trusts, and answer NO."
+    "situation": "Excluded losses on lines 5b or 5c in earlier years require this year's capital loss carryforward to be adjusted, but this year the filer has no NUA, business-property or partnership disposition.",
+    "irs_text": "i8960 p. 9, Line 5b: \"Adjustments to your capital loss carryforwards for items of excluded loss... capital loss carryforwards must be adjusted if any sum of all capital gain or loss amounts excluded from NII on lines 5b and 5c was a net loss.\"",
+    "why": "\"A disposition adjustment\" with examples of current sales reads as a current-year event. A filer whose only 5b item is a carryforward adjustment from prior-year excluded losses could reasonably answer NO."
+   },
+   {
+    "kind": "UNCLEAR",
+    "situation": "A beneficiary receives a Schedule K-1 (Form 1041) from an estate or trust with a box 14 code H amount, which requires entries on line 7 and line 13.",
+    "irs_text": "i8960 p. 13: \"Distributions from estates and trusts. Enter the amount from box 14, code H, of Schedule K-1 (Form 1041)\"; p. 22: \"Increase or decrease AGI ... by the amount reported to you in box 14, code H.\"",
+    "why": "\"Pass-through income\" may or may not be read to include estate or trust distributions. A beneficiary of a simple trust paying out interest could reasonably answer NO."
+   },
+   {
+    "kind": "WIDE",
+    "situation": "The filer's only annuity is paid from an IRA, a 401(k), a 403(b) or a pension plan, which Form 8960 line 3 excludes, yet the question makes the filer answer YES.",
+    "irs_text": "Question: \"Any annuity, rental, royalty, business or pass-through income\"; i8960 p. 7, Line 3: \"Enter the gross income from all annuities, except annuities paid from ... Section 401 ... Section 403(a) ... Section 403(b) ... Section 408 ... Section 408A ... Section 457(b).\"",
+    "why": "For annuities from qualified plans and IRAs, line 3 is correctly zero and the tool computes the return correctly. \"Any annuity ... income\" still sends these filers, a common group, to a refusal."
+   },
+   {
+    "kind": "WIDE",
+    "situation": "The filer excludes savings bond interest on Form 8815 and has no other listed item.",
+    "irs_text": "Question: \"excluded savings bond interest (Form 8815)\"; i8960 p. 7, Line 1: \"Enter the amount of taxable interest received. Include the following amount from your return. • Form 1040 or 1040-SR, line 2b\"; p. 22: \"If you didn't exclude any amounts from your gross income under section 911 and you don't own an interest in a CFC or PFIC, your MAGI is your AGI.\"",
+    "why": "Form 1040 line 2b is already net of the Form 8815 exclusion, and MAGI equals AGI here. The tool's line 1 and line 13 are therefore correct, but the question forces a YES."
    }
   ],
-  "prompt_sha": "5c2a9208afa5b07fee3da216de9c78264465c2e0be27d8d0d60a506869a68b48",
+  "prompt_sha": "0b9694ff236e5853c4d2a986c9037aa34de1c8e523dadd140a6f041ea07b5879",
   "used": [
    {
     "doc": "f8960",
@@ -1424,6 +1446,7 @@
     "locators": [
      "p. 13, Line 7—Other Modifications to Investment Income, \"Note: Early withdrawal penalty (Schedule 1 (Form 1040), line 18) is reported on Form 8960, line 10\"; p. 18, Line 10—Additional Modifications, \"On line 10, report additional deductions or modifications to NII that aren't otherwise reflected on lines 1–9\" (the other line 10 modifications are refused by f8960.unsupported)",
      "p. 22, line 13; absent section 911/CFC/PFIC adjustments MAGI equals AGI",
+     "p. 7, Line 1—Taxable Interest, \"Enter the amount of taxable interest received. Include the following amount from your return. • Form 1040 or 1040-SR, line 2b.\"",
      "p. 9, \"capital loss carryforwards must be adjusted\"",
      "pp. 14–15, deduction recoveries; compare state/local income tax refund worksheet"
     ],
@@ -1470,7 +1493,7 @@
     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
    }
   ],
-  "cost": 0.305052,
+  "cost": 0.330312,
   "model": "claude-opus-5-5"
  },
  {
@@ -2656,7 +2679,7 @@
  },
  {
   "screen": "retirement.special",
-  "question": "Does this distribution involve any of these: a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025; a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972; a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree's joint and survivor annuity is not one of these); a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead; a rollover of a distribution under a qualified domestic relations order; a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree's annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?",
+  "question": "Does this distribution involve any of these: a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025; a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972; a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree's joint and survivor annuity is not one of these); a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead; a rollover of a distribution under a qualified domestic relations order; a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one (Form 8915-F); a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree's annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?",
   "lines": [
    "retirement.rolled",
    "retirement.taxable",
@@ -2666,36 +2689,30 @@
   "findings": [
    {
     "kind": "NARROW",
-    "situation": "A filer takes a nonqualified Roth IRA distribution (for example, code J, or code T without a Roth contribution or conversion for 2020 or earlier) that involves no conversion, recharacterization or rollover, so the filer truthfully answers NO.",
-    "irs_text": "i1040gi p. 27, Exception 2: \"2. You received a distribution from a Roth IRA. But if either (a) or (b) below applies, enter -0- on line 4b ... a. Distribution code T ... and you made a contribution (including a conversion) to a Roth IRA for 2020 or an earlier year. b. Distribution code Q\"",
-    "why": "Any Roth IRA distribution other than these cases needs Form 8606 to figure line 4b. The question names only conversions and recharacterizations, and the tool's IRA rule zeroes only qualified Roth distributions and otherwise taxes the part not rolled over, ignoring Roth basis."
+    "situation": "A filer takes a nonqualified distribution from a Roth IRA (for example, code J, an early distribution of contributions). The filer had no conversion or recharacterization and no returned contribution, so the filer answers NO. The tool then treats the whole part not rolled over as taxable.",
+    "irs_text": "i1040gi p. 27, Exception 2: \"If any of the following apply, enter the total distribution on line 4a and see Form 8606 ... 2. You received a distribution from a Roth IRA. But if either (a) or (b) below applies, enter -0- on line 4b\"",
+    "why": "Every Roth IRA distribution other than code Q, or code T with a contribution for 2020 or earlier, needs Form 8606 to recover basis. The question mentions Form 8606 only for conversions and recharacterizations and never asks about a plain Roth IRA distribution. The tool's IRA branch zeroes only qualified Roth distributions."
    },
    {
     "kind": "NARROW",
-    "situation": "A filer converted a different traditional IRA amount to a Roth IRA in 2025, recharacterized a contribution, or had a 2024 or 2025 contribution returned, and also takes a separate ordinary traditional IRA distribution. The filer answers NO because this distribution is not the conversion or the return.",
-    "irs_text": "i1040gi p. 27, Exception 2: \"If any of the following apply, enter the total distribution on line 4a and see Form 8606 ... 3. You converted part or all of a traditional IRA or traditional SIMPLE IRA to a Roth IRA in 2025. 4. You had a 2024 or 2025 IRA contribution returned to you ...\"",
-    "why": "Exception 2 applies to every IRA distribution in a year with these events, not only to the event itself. The question asks whether \"this distribution involve[s]\" them, which invites NO."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A filer receives a qualified disaster recovery distribution, whose taxable amount is spread over 3 years on Form 8915-F. Nothing in the question asks about it.",
-    "irs_text": "p575 p. 34: \"If you received a qualified disaster recovery distribution, it is taxable ... (Use Form 8915-F to figure the taxable portion of the distribution.) However, the distribution is included in income ratably over 3 years unless you elect to report the entire amount in the year of distribution.\"",
-    "why": "The refusal names Form 8915-F, but the question never mentions disaster distributions. A filer answers NO, and the tool reports the full amount as taxable on line 4b or 5b."
+    "situation": "A filer took a 401(k) or other plan distribution to buy or build a main home. The purchase was canceled because of a qualified disaster, and the filer recontributed the money. This is neither a qualified disaster recovery distribution nor a repayment of one, so the filer answers NO.",
+    "irs_text": "p575 p. 35: \"Also report recontributions of qualified distributions for home purchases and construction that were canceled because of qualified disasters on Form 8915-F, as applicable.\"",
+    "why": "The question names only a qualified disaster recovery distribution or a repayment of one. The tool's rollover input covers only an IRA first-home recontribution within 120 days, so this recontribution is either ignored or wrongly entered as a rollover."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer receiving a 401(k) or pension distribution (not from an IRA) who has nondeductible contributions in a traditional IRA may read \"involve\" as covering their IRA basis and answer YES.",
-    "irs_text": "i1040gi p. 27, Exception 2: \"1. You received a distribution from an IRA (other than a Roth IRA) and you made nondeductible contributions to any of your traditional IRAs\"",
-    "why": "IRA basis matters only for distributions from a non-Roth IRA. The question does not tie \"nondeductible contributions to any traditional IRA\" to an IRA distribution, so pension filers the tool handles may be refused."
+    "situation": "A filer receives a nonperiodic (non-annuity) distribution from an employer plan that includes after-tax contributions (box 5), possibly partly rolled over. The filer cannot tell whether the after-tax-cost item applies.",
+    "irs_text": "i1040gi p. 30, Rollovers: \"Enter on line 5a the distribution from Form 1099-R, box 1. From this amount, subtract any contributions (usually shown in box 5) that were taxable to you when made. From that result, subtract the amount of the rollover.\"",
+    "why": "The question's item \"for which the Simplified Method does not apply (the General Rule)\" can be read as covering any non-annuity payment with cost, which is YES. It can also be read as covering only annuities under the General Rule, which is NO. The tool's pension branch describes only the Simplified Method for annuities and does not subtract box 5."
    },
    {
-    "kind": "WIDE",
-    "situation": "A filer fully rolls over a Roth IRA distribution to another Roth IRA within 60 days and must answer YES to \"a rollover to a Roth IRA,\" although the tool computes this case.",
-    "irs_text": "i1040gi p. 27, Exception 1: \"Enter the total distribution on line 4a if you rolled over part or all of the distribution from one: • Roth IRA to another Roth IRA ... If the total distribution was rolled over, enter -0- on line 4b.\"",
-    "why": "The question's \"a rollover to a Roth IRA or designated Roth account\" is aimed at taxable rollovers into Roth accounts from non-Roth plans. As worded, it also catches a Roth-to-Roth rollover, which is Exception 1 and which the tool computes (rolled amount on 4a, zero on 4b)."
+    "kind": "UNCLEAR",
+    "situation": "A filer has nondeductible basis in a traditional IRA but is reporting a distribution from an employer plan or from a Roth IRA rollover. The filer may answer YES because the question asks about \"nondeductible contributions to any traditional IRA.\"",
+    "irs_text": "i1040gi p. 27, Exception 2(1): \"You received a distribution from an IRA (other than a Roth IRA) and you made nondeductible contributions to any of your traditional IRAs\"",
+    "why": "The IRS condition applies only when the distribution itself comes from a non-Roth IRA. The question's \"involve ... nondeductible contributions to any traditional IRA\" can be read as asking whether the filer has such basis at all, which would refuse pension distributions the tool computes correctly."
    }
   ],
-  "prompt_sha": "c8319e39ccc6c649f4d50bbe82118c793aa2f58bc18bbc757ded6c5937ea9d19",
+  "prompt_sha": "3c0a31e28cf89b2ad907ad6688914533ce9c96a0719218fc96534ace868ce722",
   "used": [
    {
     "doc": "i1040gi",
@@ -2714,7 +2731,7 @@
      "p. 30, Rollovers, 'See Pub. 575 for more details on rollovers'",
      "pp. 27-30, lines 4a and 5a",
      "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method",
-     "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method; f1099r Box 7 codes; p. 28, \"For details on military disability pensions, see Pub. 525.\"; p. 30, \"If you are the beneficiary of an employee who died, see Pub. 575. If there is more than one beneficiary, see Pub. 575 or Pub. 721 to figure each beneficiary’s taxable amount.\" and \"See Pub. 575 for more details on rollovers, including special rules that apply to rollovers from designated Roth accounts, partial rollovers of property, and distributions under qualified domestic relations orders.\"; p. 30, Age (or Combined Ages) at Annuity Starting Date, \"If you are the survivor of a retiree, use the retiree’s age on their annuity starting date\"; Survivors of retirees, \"Benefits paid to you as a survivor under a joint and survivor annuity must be included in your gross income\", \"If the retiree was reporting the annuity under the Simplified Method, the part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting date\" and \"If you receive guaranteed payments as the decedent’s beneficiary under a life annuity contract\"; Rollovers of property, \"To roll over an eligible rollover distribution of property, you must either roll over the actual property distributed or sell it and roll over the proceeds\", \"You can’t keep the distributed property and roll over cash or other property.\" and \"If you roll over only part of the proceeds, you are taxed on the part you keep\"",
+     "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method; f1099r Box 7 codes; p. 28, \"For details on military disability pensions, see Pub. 525.\"; p. 30, \"If you are the beneficiary of an employee who died, see Pub. 575. If there is more than one beneficiary, see Pub. 575 or Pub. 721 to figure each beneficiary’s taxable amount.\" and \"See Pub. 575 for more details on rollovers, including special rules that apply to rollovers from designated Roth accounts, partial rollovers of property, and distributions under qualified domestic relations orders.\"; p. 30, Age (or Combined Ages) at Annuity Starting Date, \"If you are the survivor of a retiree, use the retiree’s age on their annuity starting date\"; Survivors of retirees, \"Benefits paid to you as a survivor under a joint and survivor annuity must be included in your gross income\", \"If the retiree was reporting the annuity under the Simplified Method, the part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting date\" and \"If you receive guaranteed payments as the decedent’s beneficiary under a life annuity contract\"; Rollovers of property, \"To roll over an eligible rollover distribution of property, you must either roll over the actual property distributed or sell it and roll over the proceeds\", \"You can’t keep the distributed property and roll over cash or other property.\" and \"If you roll over only part of the proceeds, you are taxed on the part you keep\"; \"If you received a qualified disaster recovery distribution, it is taxable but isn’t subject to the 10% additional tax on early distributions\" and \"the distribution is included in income ratably over 3 years unless you elect to report the entire amount in the year of distribution\"; \"Use Form 8915-F to report qualified disaster recovery distributions and repayments.\"",
      "pp. 27-30, lines 4b and 5b"
     ],
     "cols_pages": [
@@ -2746,18 +2763,20 @@
     "text_sha256": "4d6ee3802a2906a4633dcfc104aa33bb3d9ddedebddc9eadbd0393cfdb61e07b",
     "pages": [
      23,
-     34
+     34,
+     35
     ],
     "how": "pages named by another document's citation",
     "locators": [],
     "cols_pages": [
      23,
-     34
+     34,
+     35
     ],
     "cols_sha256": "3962801dde168fda9f4ee239245d9746b12e2d60bf358b25186ae4a57aa5b837"
    }
   ],
-  "cost": 0.203876,
+  "cost": 0.233624,
   "model": "claude-opus-5-5"
  },
  {
@@ -3338,34 +3357,28 @@
    "s8812.line27",
    "s8812.clwb_11"
   ],
-  "verdict": "NARROW",
+  "verdict": "WIDE",
   "findings": [
    {
-    "kind": "NARROW",
-    "situation": "A filer with three or more qualifying children who was not a bona fide resident of Puerto Rico in 2025 but had social security or Medicare tax withheld on Puerto Rico Form 499R-2/W-2PR, for example from Puerto Rico wages, truthfully answers NO.",
-    "irs_text": "i1040s8812 p. 5, Credit Limit Worksheet B, line 7: \"Social security tax withheld from Form(s) W-2, box 4, and Puerto Rico Form(s) 499R-2/W-2PR, box 21\" and \"Medicare tax withheld from Form(s) W-2, box 6, and Puerto Rico Form(s) 499R-2/W-2PR, box 23\"",
-    "why": "Worksheet line 7 counts Puerto Rico withholding without conditioning it on bona fide residency, but the question asks only about residency, so this filer is not refused. The excerpt does not show the tool's line 7 inputs; if it reads only Form W-2 boxes 4 and 6, clwb_11 and the amount carried to line 27 can be understated."
+    "kind": "WIDE",
+    "situation": "A bona fide resident of Puerto Rico who stops at line 12, 16a or 16b has an additional child tax credit of zero, which the tool computes, yet the question makes them answer YES and the tool refuses.",
+    "irs_text": "f1040s8812 p. 1, line 12: \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\"; p. 2, line 16b: \"If zero, stop here; you cannot claim the additional child tax credit\"; question: \"Were you a bona fide resident of Puerto Rico in 2025?\"",
+    "why": "The Puerto Rico branch matters only after line 20 when the filer has not stopped earlier. The question asks only about residency, so it refuses Puerto Rico residents whose line 27 is a zero the tool already computes correctly."
    },
    {
     "kind": "WIDE",
-    "situation": "A bona fide resident of Puerto Rico must answer YES and is refused even when Part II-B or worksheet lines 7 through 10 cannot change the result, such as when line 20 is equal to or more than line 17, worksheet line 5 is equal to or more than line 1, or line 16a or 16b is zero.",
-    "irs_text": "Question: \"Were you a bona fide resident of Puerto Rico in 2025?\" f1040s8812 p. 2: \"Yes. If line 20 is equal to or more than line 17, skip Part II-B and enter the amount from line 17 on line 27\"; \"If zero, stop here; you cannot take the additional child tax credit.\" i1040s8812 p. 5, line 6: \"If you are a bona fide resident of Puerto Rico and line 5 above is less than line 1 above, go to line 7. Otherwise, leave lines 7 through 10 blank, enter -0- on line 11\"",
-    "why": "The IRS text sends a Puerto Rico resident through the special path only when the earned-income amount falls short of the credit limit. In these other cases the computed lines give the correct result (with fewer than three children, line 26 is at least line 20, so line 27 still equals line 17), yet the question refuses them."
+    "situation": "A bona fide resident of Puerto Rico whose Credit Limit Worksheet B line 5 is equal to or more than line 1 gets -0- on line 11, which the tool computes, but must answer YES and is refused.",
+    "irs_text": "i1040s8812 p. 5, CLW B line 6: \"No. If you are a bona fide resident of Puerto Rico and line 5 above is less than line 1 above, go to line 7. Otherwise, leave lines 7 through 10 blank, enter -0- on line 11\"; question: \"Were you a bona fide resident of Puerto Rico in 2025?\"",
+    "why": "The IRS text sends a Puerto Rico resident to line 7 only when line 5 is less than line 1. Otherwise line 11 is zero, as the tool computes, but the residency-only question still triggers the refusal."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer who lived in Puerto Rico for only part of 2025, or who moved there or away during the year, could reasonably answer either YES or NO.",
-    "irs_text": "f1040s8812 p. 2: \"If you are a bona fide resident of Puerto Rico, go to line 21\"; i1040s8812 p. 5, line 6: \"If you are a bona fide resident of Puerto Rico and line 5 above is less than line 1 above, go to line 7\"",
-    "why": "The question's \"in 2025\" does not say whether part of the year is enough, and the quoted IRS text states no period of residence. A truthful part-year resident could therefore answer NO and receive the non-Puerto Rico computation, or answer YES and be refused."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer who lives or works in Puerto Rico may not know whether they meet the legal standard for being a \"bona fide resident,\" and the question gives no definition or test.",
+    "situation": "A filer who lived in Puerto Rico for only part of 2025, or who uses \"resident\" in its everyday sense, may not know whether they meet the statutory bona fide residence tests.",
     "irs_text": "f1040s8812 p. 2: \"If you are a bona fide resident of Puerto Rico, go to line 21\"",
-    "why": "The question repeats the IRS term of art, and neither it nor the quoted IRS text explains the term. A filer could reasonably equate it with simply living in Puerto Rico or read it as a stricter status, leading to different answers on the same facts."
+    "why": "\"Bona fide resident\" is a technical status with presence, tax-home and closer-connection tests and year-of-move rules. The question gives no definition or pointer, so a part-year or recently moved filer could reasonably answer either way."
    }
   ],
-  "prompt_sha": "37ff6107cc80670835fc1e687252c35e60d2c42f399fc9d74e3ac0d0e89e019f",
+  "prompt_sha": "221fe600ca058eb08ced490fee435167e15d53a11913c0829583757f0b77b4fe",
   "used": [
    {
     "doc": "f1040s8812",
@@ -3399,7 +3412,7 @@
     "cols_sha256": "e6ba91f54df679c9c19c23169c369f14bff012ba2fe110c3973bde59676c1d45"
    }
   ],
-  "cost": 0.10949600000000001,
+  "cost": 0.088128,
   "model": "claude-opus-5-5"
  },
  {
@@ -3979,7 +3992,7 @@
  },
  {
   "screen": "sales.special",
-  "question": "Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property, such as stock of an S corporation that owns art or gold worth more than its cost?",
+  "question": "Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost?",
   "lines": [
    "sales.one"
   ],
@@ -3987,24 +4000,24 @@
   "findings": [
    {
     "kind": "WIDE",
-    "situation": "A filer sells long-term stock of an S corporation, or an interest in a trust, whose only special asset is depreciated real estate (section 1250 property) and no collectibles, so the question's wording makes the filer answer YES, but no unrecaptured section 1250 gain arises and the sale is an ordinary capital gain the tool computes.",
-    "irs_text": "Question: \"an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property\"; i1040sd p. 12, Line 19: \"You reported a long-term capital gain from the sale or exchange of an interest in a partnership that owned section 1250 property.\"",
-    "why": "Line 19 looks through only to partnership interests for section 1250 property. The collectibles look-through on Line 18 reaches S corporations and trusts, but the 1250 look-through does not. The question extends the 1250 trigger to S corporation stock and trust interests."
+    "situation": "A filer sells long-term S corporation stock (or a trust interest) where the corporation or trust owns depreciated real estate but no collectibles; the wording makes them answer YES, although no unrecaptured section 1250 gain arises and the tool computes the sale correctly as an ordinary long-term capital gain.",
+    "irs_text": "Question: \"an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property\". i1040sd p. 12, Line 19: \"You reported a long-term capital gain from the sale or exchange of an interest in a partnership that owned section 1250 property.\"",
+    "why": "The Line 19 look-through for section 1250 property applies only to partnership interests. Line 18 extends look-through to S corporations and trusts only for collectibles, so S corporation stock or a trust interest backed only by section 1250 property needs no special worksheet."
    },
    {
     "kind": "WIDE",
-    "situation": "A filer sells an interest in a partnership, S corporation, or trust that holds collectibles, but sells at a loss, or held the interest 1 year or less, so the question's wording makes the filer answer YES although no 28% look-through gain arises and the tool computes the sale correctly.",
-    "irs_text": "Question: \"an interest in a partnership, S corporation or trust ... that holds collectibles\"; i1040sd p. 11, Line 18: \"Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles.\"",
-    "why": "The IRS look-through applies only to long-term gain attributable to unrealized appreciation. The question's main clause triggers on mere holding. Its 'worth more than its cost' example does not limit that clause."
+    "situation": "A filer sells a long-term partnership, S corporation, or trust interest whose underlying collectibles have no unrealized appreciation, or sells the interest at a loss; the wording ('holds collectibles') makes them answer YES even though nothing enters the 28% worksheet.",
+    "irs_text": "i1040sd p. 11, Line 18: \"Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles.\"",
+    "why": "Only gain attributable to unrealized appreciation is a 28% rate gain. The question's operative test is whether the entity merely holds collectibles; the appreciation condition appears only in an example."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer whose partnership interest holds collectibles or section 1250 property only through a lower-tier partnership may read 'holds' as direct ownership and answer NO.",
-    "irs_text": "i1040sd p. 11, Line 18: \"attributable to unrealized appreciation of collectibles. For details, see Regulations section 1.1(h)-1.\"",
-    "why": "The look-through under the cited regulation reaches assets held indirectly through tiered entities. The question's word 'holds' can reasonably be read as direct ownership only."
+    "situation": "A filer sells their main home or another personal-use property for which they previously claimed depreciation (for example, a home office or a former rental) and may not regard it as 'depreciable real property', so they answer NO.",
+    "irs_text": "i1040sd p. 11, Line 19: \"You sold or otherwise disposed of section 1250 property (generally, real property that you depreciated) held more than 1 year.\"",
+    "why": "The IRS test turns on whether depreciation was taken (allowed or allowable). A filer could read 'depreciable real property' as describing only investment or business real estate rather than a mostly personal home with past depreciation."
    }
   ],
-  "prompt_sha": "e4bd9677acf05666121862515450fa03e4d096ef085992dfa3e1ce39844ee13a",
+  "prompt_sha": "e0254b88df0c80613dea35815cc5ab1f3a1a7ea73740694baaef0464a72a0069",
   "used": [
    {
     "doc": "i1040sd",
@@ -4065,7 +4078,7 @@
     "cols_sha256": "cc308c3ff7751456647bed9c2855d077dcbd0a55469b57f9e8cccb6f4927f232"
    }
   ],
-  "cost": 0.21496800000000002,
+  "cost": 0.211116,
   "model": "claude-opus-5-5"
  },
  {
@@ -4506,7 +4519,7 @@
  },
  {
   "screen": "scope.other_income",
-  "question": "Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), adoption benefits, dependent care benefits other than those shown in box 10 of a Form W-2 (or a grace-period amount from such a plan), other earned income (Form 1040 lines 1b to 1d and 1f to 1h), or income or loss from a passive activity (including gain on selling an interest in one)?",
+  "question": "Any nonresident alien status (you or your spouse, for any part of 2025) or other income or return treatment outside wages, interest, dividends, supported securities sales, Form 1099-R distributions and social security benefits, including wages or tips not on a Form W-2, Medicaid waiver payments (whether or not in Form W-2 box 1), adoption benefits, dependent care benefits other than those shown in box 10 of a Form W-2 (or a grace-period amount from such a plan), other earned income (Form 1040 lines 1b to 1d and 1f to 1h), income or loss from a passive activity (including gain on selling an interest in one), or the 2025 part of a qualified disaster recovery distribution you received in 2023 or 2024, or a 2025 repayment of one (Form 8915-F)?",
   "lines": [
    "eic.step1_resident",
    "eic.step5_line2",
@@ -4517,30 +4530,24 @@
   "findings": [
    {
     "kind": "NARROW",
-    "situation": "A filer has a non-passive loss that flows through Schedule 1, such as a sole-proprietor business or farm loss or a net operating loss carryover, but no other out-of-scope income.",
-    "irs_text": "f1040 (2025) p. 1, line 8: 'Additional income from Schedule 1, line 10'",
-    "why": "The question names 'income or loss' only for passive activities and otherwise says 'other income', so a filer with only a non-passive loss could truthfully answer NO, and line 8 would be zero. The supplied text does not include Schedule 1, so the point that line 8 can carry these losses rests on general knowledge of that schedule."
+    "situation": "A parent elects Form 8814 to report a child's interest and dividends on their own return. The question excludes 'interest, dividends' without saying 'your own', so the parent can truthfully answer NO. The child's income then never reaches Schedule 1 (and so line 8), line 16's 8814 tax, or the EIC passive/8814 test.",
+    "irs_text": "i1040gi p. 40, EIC Step 2 q4: 'You are filing Form 8814 (relating to election to report child's interest and dividends on your return)'; f1040 line 16: 'Tax (see instructions). Check if any from Form(s): 1 8814'",
+    "why": "The question exempts interest and dividends in general, so it reads the child's interest and dividends as supported income. The tool does not compute the Form 8814 amounts that feed line 8 (via Schedule 1) and line 16."
    },
    {
-    "kind": "WIDE",
-    "situation": "A filer whose only other receipts are non-taxable amounts that do not belong on Schedule 1, such as gifts, child support or life insurance proceeds, must answer YES under the literal wording, although zero on line 8 is correct.",
-    "irs_text": "Question: 'other income or return treatment outside wages, interest, dividends...'; f1040 (2025) p. 1, line 8: 'Additional income from Schedule 1, line 10'",
-    "why": "The question does not limit 'other income' to amounts reportable on the return, so these receipts literally fall within it. The tool would be refused for a filer whose line 8 it computes correctly. That these receipts stay off Schedule 1 rests on general tax knowledge, because the supplied text does not address them."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer with no unusual income has an item on another line the screen cites, such as a Schedule 1 adjustment, a Schedule 1-A deduction, Form 4972 tax treatment, or an adoption credit for expenses paid without employer benefits, and cannot tell whether it is 'return treatment'.",
-    "irs_text": "f1040 (2025) p. 1, line 10: 'Adjustments to income from Schedule 1, line 26'; p. 2, line 13b: 'Additional deductions from Schedule 1-A, line 38'; p. 2, line 16: 'Check if any from Form(s)'; p. 2, line 30: 'Refundable adoption credit from Form 8839, line 13'",
-    "why": "'Return treatment' is undefined and its examples are nearly all income items, so a filer could read it as covering these lines or as limited to income. The refusal for `scope.ready` cites these lines, but the supplied text does not show whether other screens handle them."
+    "kind": "NARROW",
+    "situation": "A U.S. citizen abroad has only W-2 wages and claims the foreign earned income exclusion on Form 2555. This filer can truthfully answer NO because all of their income is 'wages'. The tool then leaves the negative Schedule 1 exclusion out of line 8 and allows the EIC.",
+    "irs_text": "i1040gi p. 40, EIC Step 1 q3: 'Are you filing Form 2555 (relating to foreign earned income)? ... Yes. STOP You can't take the credit.'; f1040 line 8: 'Additional income from Schedule 1, line 10'",
+    "why": "The question names income types, not exclusions. Wages are expressly carved out, and nothing in the wording points the filer to the Form 2555 exclusion that changes line 8 and the EIC."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer who sold property, such as business property reported on Form 4797, cannot tell whether the sale counts as a 'supported securities sale' or as other income.",
-    "irs_text": "i1040gi (2025) p. 40, Step 2, question 3: 'Are you filing Form 4797 (relating to sales of business property)?'; f1040 (2025) p. 1, line 8: 'Additional income from Schedule 1, line 10'",
-    "why": "The question does not say which sales are supported, so the filer cannot tell which sales are excluded from the screen. A filer who treats such a sale as a supported sale could answer NO even if the gain belongs in line 8, which the tool would then leave at zero."
+    "situation": "A filer has only wages this year but carries a net operating loss forward from an earlier year. They could read 'other income or return treatment' as covering only income received in 2025 and answer NO.",
+    "irs_text": "f1040 (2025) line 8: 'Additional income from Schedule 1, line 10'",
+    "why": "'Return treatment' is undefined. A carryforward loss reported on Schedule 1 is neither income received in 2025 nor any of the listed examples, so a filer could reasonably answer either way."
    }
   ],
-  "prompt_sha": "3c8efe1e26d1dab7146bf987a5dd261dac9e337701648d1bc5fa65a4093a20b8",
+  "prompt_sha": "297e835b9efdbe5534095c68dc425a1179ba199230a442782e93c6191462fdbc",
   "used": [
    {
     "doc": "f1040",
@@ -4554,6 +4561,7 @@
     "locators": [
      "Form 1040 (2025), line 8",
      "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
+     "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31; \"if you received a $18,000 qualified disaster recovery distribution in 2023, you can include $6,000 in your income in 2023, 2024, and 2025\"",
      "Form 1040 (2025), the lines the screens cover: line 8, \"Additional income from Schedule 1, line 10\", line 10, \"Adjustments to income from Schedule 1, line 26\", line 13b, \"Additional deductions from Schedule 1-A, line 38\", line 16, \"Tax (see instructions). Check if any from Form(s)\", line 19, \"Child tax credit or credit for other dependents from Schedule 8812\", line 20, \"Amount from Schedule 3, line 8\", line 27a, \"Earned income credit (EIC)\", line 28, \"Additional child tax credit (ACTC) from Schedule 8812\", line 29, \"American opportunity credit from Form 8863, line 8\", line 30, \"Refundable adoption credit from Form 8839, line 13\", line 31, \"Amount from Schedule 3, line 15\""
     ],
     "cols_pages": [],
@@ -4583,9 +4591,23 @@
      44
     ],
     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+   },
+   {
+    "doc": "p575",
+    "revision": null,
+    "text_sha256": "4d6ee3802a2906a4633dcfc104aa33bb3d9ddedebddc9eadbd0393cfdb61e07b",
+    "pages": [
+     35
+    ],
+    "how": "pages named by another document's citation",
+    "locators": [],
+    "cols_pages": [
+     35
+    ],
+    "cols_sha256": "3962801dde168fda9f4ee239245d9746b12e2d60bf358b25186ae4a57aa5b837"
    }
   ],
-  "cost": 0.214612,
+  "cost": 0.223288,
   "model": "claude-opus-5-5"
  },
  {

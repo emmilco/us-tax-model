@@ -1,333 +1,69 @@
 {
- "baseline": {
-  "stale:f8889": "018f5d48a1d27eeb",
-  "stale:sb": "0f0a684b10c9f479",
-  "stale:aqee": "d15582a45b6b1039",
-  "stale:carloan": "44531dc4ccfd9e43",
-  "stale:interest": "97f205f37a88494d",
-  "stale:f8863": "89102319000cb31a",
-  "stale:f8995a": "86ce0a903667413c",
-  "stale:tax_on_amount": "c72ec94877503867",
-  "stale:tipjob": "c840977b8b9629f7",
-  "stale:otjob": "cd3314ea0e1ad44f",
-  "stale:f8995": "c6f2f32ab2d5ab70",
-  "stale:se": "6b1cfbae347682c0",
-  "stale:s3": "cac21688557f2f64",
-  "stale:oi8z": "a2c769cd8e33535e",
-  "stale:f4562": "3b54e59971843c84",
-  "stale:clcw26": "e3c46be5e85a7726",
-  "stale:s2": "7eecf3a5d4be4472",
-  "stale:w2": "aef29c773db0970e",
-  "stale:f8606": "28d26176121f19b8",
-  "stale:s179": "9f52e471fb1a984b",
-  "stale:qbi": "3d4b8e9fffc24418",
-  "stale:sli": "05e0cd85adaedb89",
-  "stale:ssb": "790b403a8f0a743a",
-  "stale:dcprov": "fd8b358c3c3132e0",
-  "stale:s1a": "c556f9599c4daa11",
-  "stale:f8959": "e9f1f8ad4bf41b47",
-  "stale:g28": "0a1e35e73f1d28b2",
-  "stale:u1250": "06908376dca570ad",
-  "stale:ira": "2ae2bbd35ba14464",
-  "stale:sdtw": "dd17643c30dd8c36",
-  "stale:ftc": "269edc66a7f596b0",
-  "stale:clcw": "885c3876f926cc8b",
-  "stale:qdcg": "7fe831bd6833e058"
- },
- "deferred_debt": {
-  "stale:retirement": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "e10c290a961e18d06ef49fee768ec5558dd3811ec1bde3313acc9488200b8c21",
-   "subject": "8d9ff22138f195c526dcc9cae36c55d7748ba44d62d7be8585601b93e2d9eaaf"
-  },
-  "stale:f8889": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "1e318b024a6b9f3582ed11ccb84c6731820f86f43127abde226bf9dd31a23728",
-   "subject": "1ee4a3552392b36c6d91ad3b3ea3a922932fc54a2aa9898122ad2bceb17b31b6"
-  },
-  "stale:sb": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "98bc8a3bdf9134feeac952bdec3f0c098586da6fe2d02a016ce00378f0331cbc",
-   "subject": "d336019d470d04ac1d849a8db385601a691a29435c82da8bc275fc084c467afc"
-  },
-  "stale:aqee": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "cbab5d9655bb26b179c75db3a1e436e5a28f04dcb8ab116245722ee9a7fb9a2c",
-   "subject": "e1676b4e9d71293231dcf3a78f2f1f55d41c1b4a68df5dd1604fe28cbd923497"
-  },
-  "stale:scope": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "e8cda63ac4214585f3ea5cca8b864f679ee8ee3bca51e5955aaf57bf69cc0e53",
-   "subject": "bc942e638beea6bc00cbb6f97afb3e017e8639f73cf2ccf58d100975a98a837e"
-  },
-  "stale:sales": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "dfec6f191ccdb7c472bde3de3c7e7cf952e8af900473cfd5106ff3db0f146340",
-   "subject": "309a2bd91db29f8a0b6c937a513872b6e317714d74c64de2f187122542ef42b6"
-  },
-  "stale:carloan": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "d8eba5673b1595aec617354440b58e665727ce467ba8cddfce356537f1a16d9b",
-   "subject": "2b77d7fe9dc023fc39e90c3ee17c58858899231079776a343f204fe3dc2fa6cf"
-  },
-  "stale:sd": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "1ef520cbf467c0b633d585b7c5dd88d289054d0bc2c415c7acdfe2e94ef37b07",
-   "subject": "d5375ecd1b5b15410667a2b05789ca2255e7cba35cd3084d824d9faee193db3b"
-  },
-  "stale:interest": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "3698a29d022c5700037a061e89ece7c03bd41082e89b209c5e8e418b9c594ac2",
-   "subject": "50b3ba1e3cc24a748653d1ce35b01834f3ddacd8cb7ee558e4bba77d7024913c"
-  },
-  "stale:f8863": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "452d0a070339ce4ff05ca26ea10bad26eb65d4eb50febc979390f30e6fdcefce",
-   "subject": "c368bfe8d77902c37498b0d8267816068b100857380c10175b3473cb97004b4a"
-  },
-  "stale:f8995a": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "7e1ea337d3d467db20217bf22243e469563c0b16cbed673588c22cfc828c26fd",
-   "subject": "3b55464a70fbd3ada29599a522c39948a4e88a47b70ade345f88ccad3ec4da74"
-  },
-  "stale:f8960": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "71f335551119f8db016e9c62867aa396a3eba0363963338ceb3550b72fd6d082",
-   "subject": "4718a9069af15f189a8005e917dc0c31ac22aad92eb8bbeb75b490844f2b0026"
-  },
-  "stale:tax_on_amount": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "908e6e0cddc535e0d91a6827d0fbf3469f2a2b317a7ca488085dcc8eb6becc1a",
-   "subject": "44f37d619985e18426a1a9c917cedfce415d2eb4caa76ddd875fe6b15f9c8e80"
-  },
-  "stale:tipjob": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "2b2589b7cd9fac3024a9e44983534027bb40277907d7e889a9b27f92c4dd7bec",
-   "subject": "60308d25142ae554a0b475ada1f85f107f50cc354d5c56da0034910d9ee68f37"
-  },
-  "stale:otjob": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "595d9a1d8640eca2fff9afda126e6c772c6d2d2309777486420eefc25cb045fe",
-   "subject": "13099cb18e590390d667d0889742dfa731772d9344248295460e8fe79d39e60b"
-  },
-  "stale:f8995": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "980c7f0acff0fcf5abb23e4d2e0c2da184ba62b471278766d80cfe4f04bc5057",
-   "subject": "1e3bc93845f4bb36d2bfe71357b0dd5d8f666d87cf393d52b0c074e6567d8190"
-  },
-  "stale:se": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "ff46db44e5af24fd9f5c2af25c5b70f3cab775418b8c4127f1ce430310e750d5",
-   "subject": "873825716153f4292c76080ec91873c6e7a50a97742f32cf64de99993d8e749f"
-  },
-  "stale:s3": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "2824fbd6b39aeddcd11452ff6df323d61d3b4856e72a95e0ad4885bd959da756",
-   "subject": "39f902028f3a51e274fa1226cfd9261219c42bd428a182c1a3a11bee7b2a820f"
-  },
-  "stale:oi8z": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "4649152ebd40281aa45ef5cef7a90526c61172e904e024ba40bd51d46c145444",
-   "subject": "8b5d4eaa6661b5d79fcabd4546841313afd5d10f0b99c9f982502b72779833a3"
-  },
-  "stale:f4562": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "31146660878e324631fa8dfa90dbaf2dcdeec3b797a806d2aed1627065e7fe96",
-   "subject": "d5709c776ceee1353a203cd5bfb3088ae6a2e086b62c04a55ee2682ed577bb1d"
-  },
-  "stale:div": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "63e22ad9661a5da2622072ec8f9aa46bc5de6b566c282a2dacbcb971fddd6fcb",
-   "subject": "8e20c9561fc90326ee5cdaf071933d17b843e6638fee99f0032309b7ad5054c5"
-  },
-  "stale:clcw26": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "e57d6ebc1abbece766ce9cc89127f121a44a7d6a6bd787524d2b61db8659a40a",
-   "subject": "b8025c14e6a405c0d019d2a00a2c9be75e4c0edf4be171a109333d0909586993"
-  },
-  "stale:s2": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "d4c7f0c5900d87672ede06a0510b84bf136d3b3e4247fb9cc57a627e4ee89881",
-   "subject": "30936e9d2cc0984aa82f5fd975cde5aeff2b2567ab77bc0623df5cf593095405"
-  },
-  "stale:f5695": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "8e0581ed2af44d8033efaa21d985c84a0018abc7d495a4a0e3da8e5300d49a57",
-   "subject": "08878dbc5b301b7157fec017a5d40004f747eeb7c9063a32ee58acb7a4a63389"
-  },
-  "stale:s1": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "541bde281f5095b942e3de635e3c045b455ffd98507f48ef9d514b41b30d81de",
-   "subject": "fdf27bafb65082a7491855d9d9428ae907ab464af42dbfb967f35ecaa71584d9"
-  },
-  "stale:w2": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "e34e1af4900cf642b14afc9d692997152b4ce3225126cd0aaaff8bc1df26ce8a",
-   "subject": "3c4064add6455b9003b0b94680cd8d10933ee2007c8f6962c37deded978b31db"
-  },
-  "stale:f8606": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "07d861ddac40b7945ea50eb3dccccaa873ffa415cf96a89c9273757d51975c13",
-   "subject": "f581e4b2dc617c12d755df4b9f1729c5445bfc85f736d676cac09008c1ecbba6"
-  },
-  "stale:eic": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "e3852f2ad7c425b4df32e7a4f813f0ef457e1c93e7af9aeae11b22d2826de8fc",
-   "subject": "5b19bbaae43996e7ec01e58fb753bd56e1fbf172b7ef2cf72f99052425442714"
-  },
-  "stale:s179": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "db18d81ab3b050538cbb7e791fa71873fedad148b9b671b8e6a8da9a10ab309f",
-   "subject": "3f15893cc721bcb69ee42f8912cfb91a8af4b37434a78a3dbdfdaf94b1a44e13"
-  },
-  "stale:qbi": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "8548e5ba04e96da47141d126c625276025df693645af7cf5e5e998824a3b3544",
-   "subject": "86a3b78f11a44bcde7c50d48c0142935796b2742a911c53adb4ceaa723236b00"
-  },
-  "stale:sli": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "7534749314ad445b8c7737782fec07900c253df1b580dddd44ae00239423add7",
-   "subject": "d9ed930f1586ac3efa671e208ebd011b30f50d518747ebe72bec90e26b473f5c"
-  },
-  "stale:ssb": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "127dab535dd5e27ed5315a117eb36d44b03bb5becf3e015950904f2ed5a82c04",
-   "subject": "b4a2a693cddec785241bb1c59c7b53ebbacb6b7852bec1680d7aff21c39ce59f"
-  },
-  "stale:dcprov": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "f4e0c2b71a87108cbb381512626ebfb8523c2aef280b0ecbe005ef57ee6af8f5",
-   "subject": "e25556ee83fb2d6b730e73b7541f6f7810f5d30262509574011a763968807dde"
-  },
-  "stale:mq": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "98223e513fa16f810312e7bf07ee92963aaeb11372169e8f9ddc3aff5febd447",
-   "subject": "403835840635e42488b1e5ddda6229cae7d2d0950b31e44ccf24e37b67d5b84b"
-  },
-  "stale:s1a": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "53f3b5e56611bac04d86c18cac5023a7ab65e452a380ced9e6b41a1ceb5b98a2",
-   "subject": "e6bbf6f17948b918e515b8f063d85202ff413af522d57bd17c6a31b25373a9d3"
-  },
-  "stale:f8959": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "7bc7a9bb2dc1c13230f67e9ce6e6e46063aeee5ae8c89c69db963fff4c476077",
-   "subject": "bfe667b1e71c9682808fe340aeb0032119a35baf6eb75e271266f6c05f4e437f"
-  },
-  "stale:g28": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "a7448cb422975c88cfe324c72d030bb37110aaf00632e81d9586e7fd6dcec7ab",
-   "subject": "082653d67734a4688978f75513608c09a87715ac5a890ba431d08a6994953ae0"
-  },
-  "stale:u1250": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "edf084eb6fbd4879869addfe1b8ce0766e4e3c1cf313a0e85f2072d3998fbaf2",
-   "subject": "e3c9855126d3e2a0cfeb8274bdd374e52ae837bfeda03af828ecca27b52b41b7"
-  },
-  "stale:s8812": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "1e2fd74187cb738fe8bce790973f08098be2d9546887d015935a8b3def0eadc4",
-   "subject": "4f6d0e0fab27253334f46405d658edff38e1b08a9ea40eb37789da731dda11c4"
-  },
-  "stale:ira": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "1a46e4f426103b6f0d76b641b6ba08dc761e4cfe7c19f5d3e89e6f91226895ec",
-   "subject": "6dee12143b5b18ee850c5724655fb5a2e486647a32617fa78f17a5276b6717f0"
-  },
-  "stale:sdtw": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "f0bd1ae8834e388949d4c78bc273804681762eab10e997cdda8cffceb3cd04a7",
-   "subject": "cb8f191246fcdd7a7b0252f78fd229283d1a32427073eed27fe8da2b9180f712"
-  },
-  "stale:ftc": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "bdfe6ea1b3a4ed084793bbf15e335055d166255cd900d89c83dd53f4e8df0aeb",
-   "subject": "866dd6095a299391334c6e74c5e55644441172efa37c481657ef7ef19e22e56a"
-  },
-  "stale:refund": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "4536793a1c87ac0a15d8894aa59cca1b2a834cea00496149f1c9416281f96543",
-   "subject": "bc17e93c8535949c2f3cad4ba007d7d9027c3dd1f7949996522d6288073b9c22"
-  },
-  "stale:clcw": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "26483ab58fa7331b5282874ba9d01579c97ca766cc5117a07201fd6d3befe7e2",
-   "subject": "b346c14f262cbc2bedfed3510fe80c58147139faeb4c1791cb324812f4e962a1"
-  },
-  "stale:qdcg": {
-   "policy": "never-reviewed-completeness-debt-v1",
-   "origin_commit": "f44bae4801bc36934cfc361bf2d9f8c52884a8bf",
-   "prompt_sha": "c5fc8bd017d21238158733bb0bf4d3093627860277ca3dbcddea3f8b99591867",
-   "subject": "7dc994ca2a0044f489f93d38d74a145f31df465da1cb8c5e503ea0f88a68fb9f"
-  }
- },
+ "baseline": {},
+ "deferred_debt": {},
  "rulings": {
+  "unruled:aqee#1": {
+   "class": "covered",
+   "evidence": "i8863 pp. 4, 9. aqee.inst is bound from dependent.edu_inst / person.edu_inst, which state payment in 2025 by anyone, periods beginning in 2025 or January to March 2026, amounts actually paid rather than Form 1098-T box 1, no 2024 or 2026 payments, and the personal-expense and sports/hobby/noncredit exclusions with the degree and job-skills exceptions.",
+   "prompt_sha": "063521ea1ebf8bd512df0d941aebcde3c07bcbd7f2fac0bfa28445325c27fc43",
+   "line": "dependent.edu_inst"
+  },
+  "unruled:aqee#2": {
+   "class": "covered",
+   "evidence": "i8863 p. 4. aqee.mat is bound from dependent.edu_mat / person.edu_mat: 'paid for in 2025' and 'the same exclusions as for the expenses paid to the institution' (which exclude 2024 and 2026 payments and personal expenses).",
+   "prompt_sha": "063521ea1ebf8bd512df0d941aebcde3c07bcbd7f2fac0bfa28445325c27fc43",
+   "line": "dependent.edu_mat"
+  },
+  "unruled:aqee#3": {
+   "class": "covered",
+   "evidence": "i8863 pp. 4, 9. The def computes both paths, but the caller chooses: dependent.edu_line30 takes line30 only when dependent.edu_aoc, and dependent.edu_line31 takes ws4_llc only when dependent.edu_llc (an eligible student who is not an American opportunity credit student); the same holds for person.edu_line30/31.",
+   "prompt_sha": "063521ea1ebf8bd512df0d941aebcde3c07bcbd7f2fac0bfa28445325c27fc43",
+   "line": "dependent.edu_line31"
+  },
+  "unruled:asset#1": {
+   "class": "real gap",
+   "evidence": "i4562 p. 10; p946 pp. 33-34. Rental real estate is Schedule E, refused by scope.schedule1 (asset entries belong to a Schedule C business). Open: asset.class does not say that an addition or improvement to personal property takes the original property's class, with its recovery period starting at the later placed-in-service date. Low; BUG-0402.",
+   "prompt_sha": "0277b66fec2086b3769307a000f3d46a264788e38499caff212cc461cc4e03c8",
+   "bug": "BUG-0402"
+  },
+  "unruled:carloan#1": {
+   "class": "presentation",
+   "evidence": "i1040gi pp. 109-110. The VIN on Schedule 1-A line 22, the substitute VIN and the statement for more than two VINs are filing information; the loan and vehicle tests are asked (carloan.requirements, carloan.vehicle).",
+   "prompt_sha": "51ebf755642e18b28fcca8be9bb2e46966d8457d1638d4908cf0079bfe170a1a"
+  },
+  "unruled:clcw#1": {
+   "class": "out of scope",
+   "evidence": "i1040sd p. 10; p550 p. 102. Canceled debt excluded from income (Form 982) is refused by s1.cod_unsupported, so no attribute reduction of the carryovers arises. As sd#1 of the backlog round.",
+   "prompt_sha": "dcf68a3989092c0f89002dbfcb48c7fe2210784448cbaa4a60bd0e9c1d046404",
+   "gate": "s1.cod_unsupported"
+  },
+  "unruled:clcw26#1": {
+   "class": "out of scope",
+   "evidence": "i1040sd p. 10; p550 p. 103. Excluded canceled debt is refused by s1.cod_unsupported. Which spouse had a joint-return loss matters only on a 2026 separate return; the 2025 worksheet's carryover is the joint figure, and a 2025 separate return is refused (s3.mfs).",
+   "prompt_sha": "087fd55baade690c819ec99e6d9938d307c667dbbfeaeb17c00e3b8ddf849320",
+   "gate": "s1.cod_unsupported"
+  },
+  "unruled:dcprov#1": {
+   "class": "presentation",
+   "evidence": "i2441 pp. 2-3. dcprov is a collection with any number of providers; the box above line 1, the statement for providers beyond three and 'none' in column (a) are filing information.",
+   "prompt_sha": "c493eb53bacc6172ce5bf33c562a913414d377215351ee5fb6e95d0eff499d89"
+  },
+  "unruled:dcprov#2": {
+   "class": "covered",
+   "evidence": "i2441 p. 2. dependent.dc_paid excludes 'care at a dependent care center that does not meet all applicable state and local regulations'.",
+   "prompt_sha": "c493eb53bacc6172ce5bf33c562a913414d377215351ee5fb6e95d0eff499d89",
+   "line": "dependent.dc_paid"
+  },
   "unruled:dependent#1": {
    "class": "out of scope",
-   "evidence": "i8863 p. 3, p. 1. f8863.ban asks about a post-2015 denial or reduction needing Form 8862 and about the 2-year and 10-year bans; f8863.ban_refused refuses an American opportunity credit when it is Yes.",
-   "prompt_sha": "c3b60e265d8298e6e1ec400d8abff24f9a9a810b4e4cf08d04fbc2eb9b995f60",
+   "evidence": "i8863 pp. 1, 3. As dependent#1 of the backlog round (rechecked): f8863.ban asks about a post-2015 denial or reduction needing Form 8862 and the 2-year and 10-year bans; f8863.ban_refused refuses the American opportunity credit when it is Yes.",
+   "prompt_sha": "2bbc1eff25ab815f87ca50e6d8f4947a051e367c4e7edebc6a84a81685dc1d31",
    "gate": "f8863.ban_refused"
   },
   "unruled:dependent#2": {
-   "class": "covered",
-   "evidence": "i8863 p. 1 says after January 31, 2026; p970 p. 2 says after February 2, 2026 (January 31 falls on a Saturday). The encoding follows Pub. 970 by the recorded reading amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29); not a gap.",
-   "prompt_sha": "c3b60e265d8298e6e1ec400d8abff24f9a9a810b4e4cf08d04fbc2eb9b995f60",
-   "line": "dependent.edu_1098t"
-  },
-  "unruled:dependent#3": {
    "class": "presentation",
-   "evidence": "i1040gi p. 17. The more-than-four-dependents checkbox and statement are filing information; every dependent is entered and counted.",
-   "prompt_sha": "c3b60e265d8298e6e1ec400d8abff24f9a9a810b4e4cf08d04fbc2eb9b995f60"
-  },
-  "unruled:dependent#4": {
-   "class": "presentation",
-   "evidence": "i1040gi p. 20; p501 p. 15. Attaching a copy of the revocation is filing information; the revocation's effect is asked in dependent.divorced_rule.",
-   "prompt_sha": "c3b60e265d8298e6e1ec400d8abff24f9a9a810b4e4cf08d04fbc2eb9b995f60"
+   "evidence": "i1040gi pp. 17-18. As dependent#3 of the backlog round: the Dependents-section boxes and the more-than-four statement are filing information; every dependent is entered and counted.",
+   "prompt_sha": "2bbc1eff25ab815f87ca50e6d8f4947a051e367c4e7edebc6a84a81685dc1d31"
   },
   "unruled:eic#1": {
    "class": "covered",
@@ -353,81 +89,75 @@
   },
   "unruled:f1040#1": {
    "class": "out of scope",
-   "evidence": "i1040gi pp. 14, 23. Married filing separately is refused (s3.mfs), so community property wage splitting does not arise; a chapter 11 estate allocation is other return treatment refused by scope.other_income (and sc.special/person.se_screen for business income).",
-   "prompt_sha": "4ec9f467cbfc33b2fbd5d3b0a0f69bc55a43f10f65ec66553eab930f8ce0f227",
-   "gate": "scope.other_income"
+   "evidence": "i1040gi pp. 23-24. s1.line8_other names wages earned while incarcerated (8u) and a nonqualified deferred compensation or nongovernmental 457 pension (8t) and refuses at s1.line9. As f1040#1 of the backlog round (rechecked): a chapter 11 estate is refused by scope.other_income and person.se_screen; married filing separately by s3.mfs.",
+   "prompt_sha": "739165c05cf477067d16a6293a5a4ca5418eb61263c927c17bc52d2ed4ef9fb4",
+   "gate": "s1.line8_other"
   },
   "unruled:f1040#2": {
    "class": "out of scope",
-   "evidence": "i1040gi pp. 24-25. scope.other_income names wages or tips not on a Form W-2, adoption benefits and other earned income (Form 1040 lines 1b to 1d and 1f to 1h); s1.line8_other covers the remaining line 8 items.",
-   "prompt_sha": "4ec9f467cbfc33b2fbd5d3b0a0f69bc55a43f10f65ec66553eab930f8ce0f227",
+   "evidence": "i1040gi pp. 24-25. As f1040#2 of the backlog round (rechecked): scope.other_income names wages or tips not on a Form W-2, adoption benefits and other earned income (Form 1040 lines 1b to 1d and 1f to 1h); unreported and allocated tips are also refused by f8959.unsupported.",
+   "prompt_sha": "739165c05cf477067d16a6293a5a4ca5418eb61263c927c17bc52d2ed4ef9fb4",
    "gate": "scope.other_income"
   },
   "unruled:f1040#3": {
    "class": "out of scope",
-   "evidence": "i1040gi pp. 27-28. retirement.special names nondeductible IRA contributions, conversions and recharacterizations, returned contributions, QCDs and HSA funding distributions; retirement.bad_code refuses Roth IRA codes other than Q. Rollovers are computed; the line 4c boxes and statements are filing information.",
-   "prompt_sha": "4ec9f467cbfc33b2fbd5d3b0a0f69bc55a43f10f65ec66553eab930f8ce0f227",
+   "evidence": "i1040gi pp. 27-28. As f1040#3 of the backlog round (rechecked): retirement.special names nondeductible IRA contributions, conversions and recharacterizations, returned contributions, QCDs and HSA funding distributions; retirement.bad_code refuses Roth IRA codes other than Q. Rollovers are computed; the line 4c boxes and statement are filing information.",
+   "prompt_sha": "739165c05cf477067d16a6293a5a4ca5418eb61263c927c17bc52d2ed4ef9fb4",
    "gate": "retirement.special"
   },
   "unruled:f1040#4": {
    "class": "out of scope",
-   "evidence": "i1040gi pp. 28, 30-31. retirement.special names the retired public safety officer premium exclusion, a pension partly excludable for terrorist-attack disability, and the Civil Service alternative annuity option (Pub. 721).",
-   "prompt_sha": "4ec9f467cbfc33b2fbd5d3b0a0f69bc55a43f10f65ec66553eab930f8ce0f227",
+   "evidence": "i1040gi pp. 28-31. As f1040#4 of the backlog round (rechecked): retirement.special names the retired public safety officer exclusion, the death benefit exclusion, terrorist-attack disability, pre-retirement-age disability pensions, corrective distributions and the Civil Service alternative annuity; box 5 contributions are subtracted (retirement.plan_excluded).",
+   "prompt_sha": "739165c05cf477067d16a6293a5a4ca5418eb61263c927c17bc52d2ed4ef9fb4",
    "gate": "retirement.special"
   },
   "unruled:f1040#5": {
    "class": "out of scope",
-   "evidence": "i1040gi p. 31. ssb.pub915 refuses repayments above benefits, Forms 2555, 4563 and 8815, excluded adoption benefits and Puerto Rico income; ssb.terror_disability asks about terrorist-attack disability payments.",
-   "prompt_sha": "4ec9f467cbfc33b2fbd5d3b0a0f69bc55a43f10f65ec66553eab930f8ce0f227",
+   "evidence": "i1040gi p. 31. As f1040#5 of the backlog round (rechecked): ssb.pub915 refuses repayments above benefits, Forms 2555, 4563 and 8815, excluded adoption benefits and Puerto Rico income; ssb.terror_disability asks about terrorist-attack disability payments.",
+   "prompt_sha": "739165c05cf477067d16a6293a5a4ca5418eb61263c927c17bc52d2ed4ef9fb4",
    "gate": "ssb.pub915"
   },
   "unruled:f1040#6": {
    "class": "out of scope",
-   "evidence": "i1040gi p. 33. sb.unsupported asks about any nominee income and refuses at Schedule B line 6, which Form 1040 line 3b always reads. The line 7b checkbox is filing information.",
-   "prompt_sha": "4ec9f467cbfc33b2fbd5d3b0a0f69bc55a43f10f65ec66553eab930f8ce0f227",
+   "evidence": "i1040gi p. 33. As f1040#6 of the backlog round (rechecked): sb.unsupported asks about any nominee income and refuses; the nominee statement and the line 7b box are filing information.",
+   "prompt_sha": "739165c05cf477067d16a6293a5a4ca5418eb61263c927c17bc52d2ed4ef9fb4",
    "gate": "sb.unsupported"
   },
   "unruled:f1040#7": {
    "class": "out of scope",
-   "evidence": "i1040gi pp. 14, 33-34. Married filing separately is refused (s3.mfs), so the spouse-itemizes and separate-return spouse-box rules do not arise; person.blind now states the partial-blindness test and certified statement (BUG-0347); sa.unsupported refuses a disaster loss added to the standard deduction.",
-   "prompt_sha": "4ec9f467cbfc33b2fbd5d3b0a0f69bc55a43f10f65ec66553eab930f8ce0f227",
+   "evidence": "i1040gi pp. 14, 33-34. As f1040#7 of the backlog round (rechecked): married filing separately is refused (s3.mfs), so the spouse-itemizes and spouse-box rules do not arise; a spouse is entered only on a joint return; sa.unsupported refuses a disaster loss added to the standard deduction.",
+   "prompt_sha": "739165c05cf477067d16a6293a5a4ca5418eb61263c927c17bc52d2ed4ef9fb4",
    "gate": "s3.mfs"
   },
   "unruled:f1040#8": {
    "class": "covered",
-   "evidence": "i1040gi p. 39. Married filing separately is refused; line 26 is the supplied total of the filer's own estimated payments. The former spouse's SSN is filing information.",
-   "prompt_sha": "4ec9f467cbfc33b2fbd5d3b0a0f69bc55a43f10f65ec66553eab930f8ce0f227",
+   "evidence": "i1040gi p. 39. As f1040#8 of the backlog round: married filing separately is refused; line 26 is the supplied total of the filer's own payments; the former spouse's SSN is filing information.",
+   "prompt_sha": "739165c05cf477067d16a6293a5a4ca5418eb61263c927c17bc52d2ed4ef9fb4",
    "line": "f1040.line26"
   },
   "unruled:f1040#9": {
-   "class": "out of scope",
-   "evidence": "i1040gi pp. 25, 43. s8812.combat_pay asks about nontaxable combat pay (W-2 box 12 code Q) and refuses it for the EIC (eic.yaml Step 5 line 4) and Form 2441.",
-   "prompt_sha": "4ec9f467cbfc33b2fbd5d3b0a0f69bc55a43f10f65ec66553eab930f8ce0f227",
-   "gate": "s8812.combat_pay"
+   "class": "covered",
+   "evidence": "p501 p. 6. household.married states the rule: 'if you divorced solely to file as unmarried, intending at the time to remarry each other in the next tax year, and actually do so, you must file as married in both years.'",
+   "prompt_sha": "739165c05cf477067d16a6293a5a4ca5418eb61263c927c17bc52d2ed4ef9fb4",
+   "line": "household.married"
   },
   "unruled:f1095a#1": {
    "class": "out of scope",
-   "evidence": "i8962 pp. 15, 17. f8962.married_in_2025 asks about a 2025 marriage with coverage before the first full month of marriage; f8962.marriage refuses it on a joint return (f8962.line24).",
-   "prompt_sha": "c348d4b49ee122ffd47b4cd9250b3b48b4ffc60b0f5ed219c2526105bd89ea9b",
+   "evidence": "i8962 pp. 15, 17. As f1095a#1 of the backlog round (rechecked): f8962.married_in_2025 asks about a 2025 marriage with coverage before the first full month of marriage (a December marriage always has such coverage); f8962.marriage refuses lines 24 and 25.",
+   "prompt_sha": "40b6bfd585ffbda45649cdc0760577fb6fe566881fe91fb7535d26779ef740c7",
    "gate": "f8962.marriage"
   },
   "unruled:f1095a#2": {
    "class": "out of scope",
-   "evidence": "i8962 p. 16. f8962.other asks whether someone enrolled was not lawfully present and refuses it; a policy shared with another tax family (Part IV allocation) is refused by f8962.alloc.",
-   "prompt_sha": "c348d4b49ee122ffd47b4cd9250b3b48b4ffc60b0f5ed219c2526105bd89ea9b",
-   "gate": "f8962.other"
+   "evidence": "i8962 pp. 16-17; p974 p. 27. As f1095a#3/#4 of the backlog round (rechecked): f8962.alloc refuses any policy shared with another tax family, so no Part IV allocation arises; an enrolled individual in no tax family is refused by f8962.other.",
+   "prompt_sha": "40b6bfd585ffbda45649cdc0760577fb6fe566881fe91fb7535d26779ef740c7",
+   "gate": "f8962.alloc"
   },
   "unruled:f1095a#3": {
    "class": "out of scope",
-   "evidence": "i8962 p. 16. f8962.alloc asks whether any policy covered someone outside the tax family, or about a divorce or separation with a shared policy, and refuses it, so no Part IV allocation of column B is needed.",
-   "prompt_sha": "c348d4b49ee122ffd47b4cd9250b3b48b4ffc60b0f5ed219c2526105bd89ea9b",
-   "gate": "f8962.alloc"
-  },
-  "unruled:f1095a#4": {
-   "class": "out of scope",
-   "evidence": "i8962 p. 17; p974 p. 27. f8962.alloc refuses any shared policy (including one whose Form 1095-A went to someone else); an enrolled individual in no tax family is refused by f8962.other ('no tax family').",
-   "prompt_sha": "c348d4b49ee122ffd47b4cd9250b3b48b4ffc60b0f5ed219c2526105bd89ea9b",
-   "gate": "f8962.alloc"
+   "evidence": "i8962 p. 16. As f1095a#2 of the backlog round (rechecked): f8962.other asks whether someone enrolled was not lawfully present and refuses lines 24 and 25.",
+   "prompt_sha": "40b6bfd585ffbda45649cdc0760577fb6fe566881fe91fb7535d26779ef740c7",
+   "gate": "f8962.other"
   },
   "unruled:f2441#1": {
    "class": "covered",
@@ -440,6 +170,78 @@
    "evidence": "i2441 p. 3; p503 p. 3. A dependent without an SSN, ITIN or ATIN, including a child born and died without an SSN, is refused by dependent.claimed_no_tin; column (c) and the attachment are filing information.",
    "prompt_sha": "ea8e5836659298cdd1e7564a82c64b686955e46c269c5db399372664718c3d71",
    "gate": "dependent.claimed_no_tin"
+  },
+  "unruled:f4562#1": {
+   "class": "covered",
+   "evidence": "i4562 p. 5. f4562.line12 copies the return's Part I (s179): line 5 with the married-filing-separately 50% share and its refusal (s179.line5), the 2024 carryover (s179.line10) and the line 11 business income limit (s179.line11); a trade-in is refused by asset.screen and scveh.screen; asset.s179 requires use in the active conduct of the business.",
+   "prompt_sha": "9afaef214a68d24f65ef14e2aa93dbbfbb39331676a2fc9757ac823f776f56e9",
+   "line": "s179.line12"
+  },
+  "unruled:f4562#10": {
+   "class": "out of scope",
+   "evidence": "i4562 pp. 14-15. asset.screen refuses listed property whose qualified business use is 50% or less after leaving out investment use, 5% owner and related-person leasing or compensation uses (the quoted exclusions); asset.pct handles conversion months; commuting miles and the section 280F limits are applied in scveh.",
+   "prompt_sha": "9afaef214a68d24f65ef14e2aa93dbbfbb39331676a2fc9757ac823f776f56e9",
+   "gate": "asset.screened"
+  },
+  "unruled:f4562#11": {
+   "class": "out of scope",
+   "evidence": "i4562 pp. 13-15. Line 27 is refused: listed property used 50% or less (asset.listed_low) gates asset.basis.",
+   "prompt_sha": "9afaef214a68d24f65ef14e2aa93dbbfbb39331676a2fc9757ac823f776f56e9",
+   "gate": "asset.listed_low"
+  },
+  "unruled:f4562#12": {
+   "class": "covered",
+   "evidence": "i4562 pp. 5, 13. Line 29 feeds Part I as s179.line7 (person.s179_listed); a section 179 election on property used 50% or less is refused by asset.after179 (asset.s179_bad) and listed property at 50% or less by asset.listed_low.",
+   "prompt_sha": "9afaef214a68d24f65ef14e2aa93dbbfbb39331676a2fc9757ac823f776f56e9",
+   "line": "s179.line7"
+  },
+  "unruled:f4562#2": {
+   "class": "covered",
+   "evidence": "i4562 p. 9. Depreciation is figured on asset.after179 (basis less section 179) after the special allowance; software is refused by asset.screen unless its whole business cost is deducted in 2025 through section 179 and the special allowance; the percentage tables never exceed basis.",
+   "prompt_sha": "9afaef214a68d24f65ef14e2aa93dbbfbb39331676a2fc9757ac823f776f56e9",
+   "line": "asset.after179"
+  },
+  "unruled:f4562#3": {
+   "class": "real gap",
+   "evidence": "i4562 p. 9. asset.screen refuses an asset 'you disposed of' in 2025, but does not name the disposition of a portion of an asset, so the basis and reserve reduction for a partial disposition is unasked. Low; BUG-0402.",
+   "prompt_sha": "9afaef214a68d24f65ef14e2aa93dbbfbb39331676a2fc9757ac823f776f56e9",
+   "bug": "BUG-0402"
+  },
+  "unruled:f4562#4": {
+   "class": "out of scope",
+   "evidence": "i4562 pp. 9, 11-12. asset.screen refuses like-kind exchanges and involuntary conversions, basis reductions other than section 179 and the special allowance, ADS, straight line and 150% elections, dispositions and short tax years; business use is asset.pct (converted property by months); the mid-quarter test is the mq form.",
+   "prompt_sha": "9afaef214a68d24f65ef14e2aa93dbbfbb39331676a2fc9757ac823f776f56e9",
+   "gate": "asset.screened"
+  },
+  "unruled:f4562#5": {
+   "class": "out of scope",
+   "evidence": "i4562 p. 10. Agricultural asset classes (01.x) map to 'outside' in class_lives (asset.outside, part of asset.screened), and farm income (Schedule F) is refused by scope.schedule1.",
+   "prompt_sha": "9afaef214a68d24f65ef14e2aa93dbbfbb39331676a2fc9757ac823f776f56e9",
+   "gate": "asset.screened"
+  },
+  "unruled:f4562#6": {
+   "class": "out of scope",
+   "evidence": "i4562 p. 11. Smart electric meters and grid systems are named in asset.screen; trees and vines bearing fruits or nuts are farm property (agricultural classes outside; Schedule F refused by scope.schedule1).",
+   "prompt_sha": "9afaef214a68d24f65ef14e2aa93dbbfbb39331676a2fc9757ac823f776f56e9",
+   "gate": "asset.screened"
+  },
+  "unruled:f4562#7": {
+   "class": "out of scope",
+   "evidence": "i4562 p. 12. Farming-business property is outside (agricultural classes 01.x, Schedule F refused by scope.schedule1), and a 150% declining balance election is refused by asset.screen.",
+   "prompt_sha": "9afaef214a68d24f65ef14e2aa93dbbfbb39331676a2fc9757ac823f776f56e9",
+   "gate": "asset.screened"
+  },
+  "unruled:f4562#8": {
+   "class": "out of scope",
+   "evidence": "i4562 pp. 11-13. asset.screen refuses property that must be depreciated under ADS (with examples) and an ADS election, and residential rental and nonresidential real property (real property is refused); Part III Section C is not reached.",
+   "prompt_sha": "9afaef214a68d24f65ef14e2aa93dbbfbb39331676a2fc9757ac823f776f56e9",
+   "gate": "asset.screened"
+  },
+  "unruled:f4562#9": {
+   "class": "out of scope",
+   "evidence": "i4562 pp. 13-14. Listed property used 50% or less is refused (asset.listed_low gates asset.basis); aircraft are refused by asset.screen; vehicles are scveh entries, whose first-year limits include the special allowance (auto_limit tables).",
+   "prompt_sha": "9afaef214a68d24f65ef14e2aa93dbbfbb39331676a2fc9757ac823f776f56e9",
+   "gate": "asset.listed_low"
   },
   "unruled:f5329#1": {
    "class": "real gap",
@@ -465,67 +267,101 @@
    "gate": "f8889.unsupported"
   },
   "unruled:f5695#1": {
-   "class": "covered",
-   "evidence": "i5695 p. 1. The help of f5695.line1 to line4 and battery_cost (interview/questions-2025.yaml) says 'A cost counts in 2025 when the original installation is completed'; f5695.construction_later refuses constructed or reconstructed homes whose original use did not begin in 2025.",
-   "prompt_sha": "a0990183d3d1d4ccaf43a6060b1f8b182c608ac784b7b56b2ec4d83bddcf1b69",
-   "line": "f5695.line1"
-  },
-  "unruled:f5695#7": {
    "class": "presentation",
-   "evidence": "i5695 p. 4. Addresses are filing information (form note: addresses are not values).",
-   "prompt_sha": "a0990183d3d1d4ccaf43a6060b1f8b182c608ac784b7b56b2ec4d83bddcf1b69"
-  },
-  "unruled:f5695#8": {
-   "class": "presentation",
-   "evidence": "i5695 p. 6. The line 21c address is filing information.",
-   "prompt_sha": "a0990183d3d1d4ccaf43a6060b1f8b182c608ac784b7b56b2ec4d83bddcf1b69"
-  },
-  "unruled:f5695#9": {
-   "class": "presentation",
-   "evidence": "i5695 p. 6. The line 25b enabled-property code is filing information; f5695.line25a asks the eligibility.",
-   "prompt_sha": "a0990183d3d1d4ccaf43a6060b1f8b182c608ac784b7b56b2ec4d83bddcf1b69"
+   "evidence": "i5695 p. 4. The Part I home address and the statement of additional addresses is filing information (as f5695#7 to #15 of the backlog round).",
+   "prompt_sha": "4eef114fac69b3e03625213d2b7c9f91c812a3ff6bd192c6a89792f6eba05317"
   },
   "unruled:f5695#10": {
    "class": "presentation",
-   "evidence": "i5695 p. 6. The QMID statement is filing information; f5695.doors_no_qmid refuses a door without a QMID.",
-   "prompt_sha": "a0990183d3d1d4ccaf43a6060b1f8b182c608ac784b7b56b2ec4d83bddcf1b69"
+   "evidence": "i5695 p. 7. The line 29b, 29d and 29f QMID statements; items without a QMID are refused is filing information (as f5695#7 to #15 of the backlog round).",
+   "prompt_sha": "4eef114fac69b3e03625213d2b7c9f91c812a3ff6bd192c6a89792f6eba05317"
   },
-  "unruled:f5695#11": {
+  "unruled:f5695#2": {
    "class": "presentation",
-   "evidence": "i5695 p. 6. The QMID statement is filing information; f5695.windows_no_qmid refuses an item without a QMID.",
-   "prompt_sha": "a0990183d3d1d4ccaf43a6060b1f8b182c608ac784b7b56b2ec4d83bddcf1b69"
+   "evidence": "i5695 p. 5. The line 17d main-home address is filing information (as f5695#7 to #15 of the backlog round).",
+   "prompt_sha": "4eef114fac69b3e03625213d2b7c9f91c812a3ff6bd192c6a89792f6eba05317"
   },
-  "unruled:f5695#12": {
+  "unruled:f5695#3": {
    "class": "presentation",
-   "evidence": "i5695 p. 6. The QMID statement is filing information; f5695.ac_no_qmid refuses an item without a QMID.",
-   "prompt_sha": "a0990183d3d1d4ccaf43a6060b1f8b182c608ac784b7b56b2ec4d83bddcf1b69"
+   "evidence": "i5695 p. 6. The line 21c addresses is filing information (as f5695#7 to #15 of the backlog round).",
+   "prompt_sha": "4eef114fac69b3e03625213d2b7c9f91c812a3ff6bd192c6a89792f6eba05317"
   },
-  "unruled:f5695#13": {
+  "unruled:f5695#4": {
    "class": "presentation",
-   "evidence": "i5695 p. 6. The QMID statement is filing information; items without a QMID are refused.",
-   "prompt_sha": "a0990183d3d1d4ccaf43a6060b1f8b182c608ac784b7b56b2ec4d83bddcf1b69"
+   "evidence": "i5695 p. 6. The line 25b enabled-property code; f5695.line25a asks the eligibility is filing information (as f5695#7 to #15 of the backlog round).",
+   "prompt_sha": "4eef114fac69b3e03625213d2b7c9f91c812a3ff6bd192c6a89792f6eba05317"
   },
-  "unruled:f5695#14": {
+  "unruled:f5695#5": {
    "class": "presentation",
-   "evidence": "i5695 p. 6. The QMID statement is filing information; items without a QMID are refused.",
-   "prompt_sha": "a0990183d3d1d4ccaf43a6060b1f8b182c608ac784b7b56b2ec4d83bddcf1b69"
+   "evidence": "i5695 p. 6. The line 19e QMID statement; f5695.doors_no_qmid refuses an item without a QMID is filing information (as f5695#7 to #15 of the backlog round).",
+   "prompt_sha": "4eef114fac69b3e03625213d2b7c9f91c812a3ff6bd192c6a89792f6eba05317"
   },
-  "unruled:f5695#15": {
+  "unruled:f5695#6": {
    "class": "presentation",
-   "evidence": "i5695 p. 7. The QMID statements are filing information; items without a QMID are refused.",
-   "prompt_sha": "a0990183d3d1d4ccaf43a6060b1f8b182c608ac784b7b56b2ec4d83bddcf1b69"
+   "evidence": "i5695 p. 6. The line 20b QMID statement; f5695.windows_no_qmid refuses an item without a QMID is filing information (as f5695#7 to #15 of the backlog round).",
+   "prompt_sha": "4eef114fac69b3e03625213d2b7c9f91c812a3ff6bd192c6a89792f6eba05317"
   },
-  "unruled:f8960#1": {
+  "unruled:f5695#7": {
+   "class": "presentation",
+   "evidence": "i5695 p. 6. The line 22b QMID statement; items without a QMID are refused is filing information (as f5695#7 to #15 of the backlog round).",
+   "prompt_sha": "4eef114fac69b3e03625213d2b7c9f91c812a3ff6bd192c6a89792f6eba05317"
+  },
+  "unruled:f5695#8": {
+   "class": "presentation",
+   "evidence": "i5695 p. 6. The line 23b QMID statement; items without a QMID are refused is filing information (as f5695#7 to #15 of the backlog round).",
+   "prompt_sha": "4eef114fac69b3e03625213d2b7c9f91c812a3ff6bd192c6a89792f6eba05317"
+  },
+  "unruled:f5695#9": {
+   "class": "presentation",
+   "evidence": "i5695 p. 6. The line 24b QMID statement; items without a QMID are refused is filing information (as f5695#7 to #15 of the backlog round).",
+   "prompt_sha": "4eef114fac69b3e03625213d2b7c9f91c812a3ff6bd192c6a89792f6eba05317"
+  },
+  "unruled:f8606#1": {
+   "class": "real gap",
+   "evidence": "i8606 pp. 2, 9. Covered except one rule: person.ira_trad excludes contributions withdrawn with earnings and employer SEP/SIMPLE contributions; recharacterizations and excess contributions are refused by person.ira_excess. Open: no question adds a repayment of a qualified reservist distribution to line 1. Low; BUG-0402.",
+   "prompt_sha": "4577beeee94bb219a321472015091b77259f2c6c5f24363531f5ccdbab1db850",
+   "bug": "BUG-0402"
+  },
+  "unruled:f8606#2": {
    "class": "out of scope",
-   "evidence": "i8960 p. 13. sa.unsupported refuses any casualty or theft loss, so no Schedule A line 15 loss reaches line 7; the annuity-contract part is refused by f8960.unsupported.",
-   "prompt_sha": "1ae188aeb08d267af1cdf5c71f074db09cc9ff04ea731daf4bde27faa834bc9a",
-   "gate": "sa.unsupported"
+   "evidence": "i8606 p. 2. A traditional IRA distribution with basis from any year (including an inherited IRA) answers 'nondeductible contributions to any traditional IRA' in retirement.special, which refuses it; a Roth IRA distribution other than code Q is refused by retirement.bad_code. So no nontaxable part is left uncomputed.",
+   "prompt_sha": "4577beeee94bb219a321472015091b77259f2c6c5f24363531f5ccdbab1db850",
+   "gate": "retirement.special"
   },
-  "unruled:f8960#2": {
-   "class": "out of scope",
-   "evidence": "i8960 p. 7. scope.other_income refuses any nonresident alien status of you or your spouse for any part of 2025, so no section 6013(g) or 6013(h) election arises.",
-   "prompt_sha": "1ae188aeb08d267af1cdf5c71f074db09cc9ff04ea731daf4bde27faa834bc9a",
-   "gate": "scope.other_income"
+  "unruled:f8863#1": {
+   "class": "covered",
+   "evidence": "i8863 pp. 1, 3, 8. dependent.edu_aoc (and person.edu_aoc) require household.all_tin and the institution's EIN (dependent.edu_ein); dependent.edu_student requires the student's TIN by the due date (dependent.tin; person.tin says issued by the due date). The filer-TIN reading is recorded as amb.2025.edu_filer_tin.",
+   "prompt_sha": "8f54531a0797a04d8342880daf8ed18760e235f5aecd8c20eed8eb5f9e871347",
+   "line": "dependent.edu_aoc"
+  },
+  "unruled:f8863#2": {
+   "class": "covered",
+   "evidence": "i8863 p. 1. dependent.edu_student requires dependent.edu_1098t (person.edu_1098t for the filers), which asks whether a Form 1098-T was received and states the exceptions (not required, or requested after February 2, 2026; amb.2025.edu_1098t_date).",
+   "prompt_sha": "8f54531a0797a04d8342880daf8ed18760e235f5aecd8c20eed8eb5f9e871347",
+   "line": "dependent.edu_1098t"
+  },
+  "unruled:f8889#1": {
+   "class": "real gap",
+   "evidence": "i8889 p. 4. f8889.line2 counts contributions made by April 15, 2026; a combat-zone or contingency-operation filer may contribute later, and nothing asks about it. Rare; understates line 2. Low; BUG-0402.",
+   "prompt_sha": "cb1c06117f5c4621e01c3d8d884af18fec8171795cfc771eb0318c784080a399",
+   "bug": "BUG-0402"
+  },
+  "unruled:f8889#2": {
+   "class": "real gap",
+   "evidence": "i8889 p. 3. f8889.rollover asks only the 60-day test; it does not say one rollover per 12 months into an HSA of the same account beneficiary. Rare. Low; BUG-0402.",
+   "prompt_sha": "cb1c06117f5c4621e01c3d8d884af18fec8171795cfc771eb0318c784080a399",
+   "bug": "BUG-0402"
+  },
+  "unruled:f8889#3": {
+   "class": "presentation",
+   "evidence": "i8889 p. 4. The line 1 self-only/family checkbox is filing information; the coverage facts are asked (f8889.months_family, f8889.dec_coverage) and the limits use them.",
+   "prompt_sha": "cb1c06117f5c4621e01c3d8d884af18fec8171795cfc771eb0318c784080a399"
+  },
+  "unruled:f8959#1": {
+   "class": "covered",
+   "evidence": "i8959 pp. 1-3. Line 8 sums person.se_line6, which is NonNegDollars per person (Schedule SE line 4c is floored at zero), so one spouse's loss never offsets the other's income.",
+   "prompt_sha": "ac57b6bad300a0e2f9e0768d0e69834e0a86cbc8e28873cd3d61ecab0fee39dd",
+   "line": "person.se_line6"
   },
   "unruled:f8962#1": {
    "class": "out of scope",
@@ -557,6 +393,24 @@
    "prompt_sha": "12c0b4219fd8e3edd9503bbc37369c131315b1a6b87589093806920fe23ccacc",
    "line": "f1095a.uniform"
   },
+  "unruled:f8995#1": {
+   "class": "covered",
+   "evidence": "i8995 p. 3. qbi.dividends asks for box 5 dividends 'after confirming holding-period and related-payment requirements'.",
+   "prompt_sha": "aa03956bd87e1259ebb0d82e2756ce288dde705166bdebb106bd07e218f2f073",
+   "line": "qbi.dividends"
+  },
+  "unruled:ftc#1": {
+   "class": "out of scope",
+   "evidence": "i1116 p. 2. A foreign tax deduction on Schedule A is refused by sa.unsupported ('a foreign tax ... deduction'), so the credit and a deduction cannot both be taken.",
+   "prompt_sha": "ad553a980325cdf1f883ddbe5bf3d57df03ac0d8954d01f4265aa4a37df7bf27",
+   "gate": "sa.unsupported"
+  },
+  "unruled:g28#1": {
+   "class": "out of scope",
+   "evidence": "i1040sd p. 11. sales.special asks about the sale of 'an interest in a partnership, S corporation or trust ... that holds collectibles' and refuses it.",
+   "prompt_sha": "20587dfcab08f3abe492f03087d1def40a1a5020c14264277bb877e1f8c526ec",
+   "gate": "sales.special"
+  },
   "unruled:gift#1": {
    "class": "presentation",
    "evidence": "i8283 pp. 1, 3: the attached statement of how a reduction was figured, and which form not to use, are filing instructions; no amount the tool computes depends on them.",
@@ -568,16 +422,64 @@
    "prompt_sha": "f1e2a1ceca4ea6862bdc4fc227aa85290f337f15e226394b691535680fe6d270"
   },
   "unruled:household#1": {
-   "class": "out of scope",
-   "gate": "dependent.kidnap_residency",
-   "evidence": "p501 pp. 9-10, head of household with a kidnapped qualifying child (\"In the year of the kidnapping, the child lived with you for more than half the part of the year before the kidnapping.\"). Repeats the earlier ruling (rechecked): head of household reads the qualifying person through dependent.lived_half, which refuses on dependent.kidnap_residency (a child presumed kidnapped who lived with you fewer than 7 months, not counting the time missing; fixture stage21.d3.kidnapped_child_refused). A kidnapped child who lived with you 7 months or more meets the residency test on actual time. 'A person can't qualify more than one taxpayer' is the qualifying-child tie-breaker, refused by dependent.qc_tiebreak.",
-   "prompt_sha": "9ad3f7a10098da8aaaa051b5bf56b8295686be179a02e529c7e8c87e0a2702ca"
+   "class": "covered",
+   "evidence": "p501 p. 9. Test 1 reads dependent.parent_home_paid, which asks about the parent's main home (a rest home counts) for all of 2025 or the part the parent was alive.",
+   "prompt_sha": "ecc9815ebc825938d50146399a761038ac59efe1f4b0ea343bb40b4dcb325073",
+   "line": "dependent.parent_home_paid"
   },
   "unruled:household#2": {
    "class": "out of scope",
-   "gate": "scope.other_income",
-   "evidence": "i1040gi p. 13, \"Generally, a married couple can't file a joint return if either spouse is a nonresident alien at any time during the year.\" Repeats the earlier ruling (rechecked): scope.other_income asks about 'nonresident alien status (you or your spouse, for any part of 2025)' and refuses the return, so neither the joint-return bar nor the election to be treated as residents arises.",
-   "prompt_sha": "9ad3f7a10098da8aaaa051b5bf56b8295686be179a02e529c7e8c87e0a2702ca"
+   "evidence": "p501 pp. 9-10. As household#1 of the backlog round (rechecked): dependent.kidnapped is asked and dependent.kidnap_residency refuses the residency of a kidnapped child, so head of household is not decided on it.",
+   "prompt_sha": "ecc9815ebc825938d50146399a761038ac59efe1f4b0ea343bb40b4dcb325073",
+   "gate": "dependent.kidnap_residency"
+  },
+  "unruled:household#3": {
+   "class": "out of scope",
+   "evidence": "p501 p. 10; i1040gi p. 44. dependent.other_claimant asks whether the child is the qualifying child of another person, and dependent.qc_tiebreak refuses the tie-breaker case, so head of household is not allowed on a child another taxpayer can use.",
+   "prompt_sha": "ecc9815ebc825938d50146399a761038ac59efe1f4b0ea343bb40b4dcb325073",
+   "gate": "dependent.qc_tiebreak"
+  },
+  "unruled:interest#1": {
+   "class": "out of scope",
+   "evidence": "i1040sb pp. 1-2. sb.unsupported names accrued market discount and a contingent payment debt instrument and refuses; tax-exempt interest is asked (f1040.tax_exempt_interest, net of premium) with exempt-interest dividends (div.box12); private activity bond interest is an AMT matter (s2.amt, div.amt).",
+   "prompt_sha": "6187786b7022f22c96ffff2382098b21b79ec963186c70e0325ed848b96134c4",
+   "gate": "sb.unsupported"
+  },
+  "unruled:ira#1": {
+   "class": "out of scope",
+   "evidence": "i1040gi p. 96. Married filing separately is refused for the whole return (s3.mfs), so the deemed-covered and lived-apart rules do not arise.",
+   "prompt_sha": "6af17e42a9db6aeffc2ca7c051daf834d5232cf2c3b6961f7d9fc9aa42075180",
+   "gate": "s3.mfs"
+  },
+  "unruled:ira#2": {
+   "class": "out of scope",
+   "evidence": "i1040gi p. 96. A Form 8815 exclusion is refused by sb.unsupported ('a savings bond interest exclusion'); excluded employer-provided adoption benefits are refused by scope.other_income ('adoption benefits').",
+   "prompt_sha": "6af17e42a9db6aeffc2ca7c051daf834d5232cf2c3b6961f7d9fc9aa42075180",
+   "gate": "sb.unsupported"
+  },
+  "unruled:ira#3": {
+   "class": "out of scope",
+   "evidence": "i1040gi p. 95; p590a p. 35. person.ira_excess asks about contributions above $7,000/$8,000 or compensation, and person.ira_excess_gate refuses person.ira_line11.",
+   "prompt_sha": "6af17e42a9db6aeffc2ca7c051daf834d5232cf2c3b6961f7d9fc9aa42075180",
+   "gate": "person.ira_excess_gate"
+  },
+  "unruled:ira#4": {
+   "class": "covered",
+   "evidence": "i1040gi p. 95. person.ira_trad excludes rollover contributions and separately billed trustees' fees.",
+   "prompt_sha": "6af17e42a9db6aeffc2ca7c051daf834d5232cf2c3b6961f7d9fc9aa42075180",
+   "line": "person.ira_trad"
+  },
+  "unruled:ltc#1": {
+   "class": "out of scope",
+   "evidence": "i7206 pp. 1-2. sc.hi_screen refuses a retired public safety officer who paid premiums from retirement distributions and a more-than-2% S corporation shareholder; partnerships are not Schedule C (scope.schedule1). ltc.payments states the qualified contract requirements.",
+   "prompt_sha": "a6e3287a027310c31c7e0165b4b23f6febadbebe20a2f9dac8da7d18ce328cd8",
+   "gate": "sc.hi_screened"
+  },
+  "unruled:ltc#2": {
+   "class": "out of scope",
+   "evidence": "i7206 p. 2. sc.hi_screen refuses 'anyone ... covered by qualified long-term care insurance entered for more than one business on this return'.",
+   "prompt_sha": "a6e3287a027310c31c7e0165b4b23f6febadbebe20a2f9dac8da7d18ce328cd8",
+   "gate": "sc.hi_screened"
   },
   "unruled:mq#1": {
    "class": "covered",
@@ -591,46 +493,162 @@
    "prompt_sha": "16e826d4340e5bf0aabefa9e79c52db7822540c20c7c1c7b9ebbb633f4bae602",
    "line": "asset.mqbase"
   },
+  "unruled:otjob#1": {
+   "class": "real gap",
+   "evidence": "i1040gi p. 106. otjob.statement does not say to leave out amounts that are qualified tips or weekend and holiday premiums in workweeks of 40 hours or fewer. Low; BUG-0402.",
+   "prompt_sha": "5ff6d952bc1ffe8c8c1bde257634afa6323e1cf06cacd0d77d4fc10b89e20e25",
+   "bug": "BUG-0402"
+  },
+  "unruled:qbi#1": {
+   "class": "wrong",
+   "evidence": "i8995 pp. 2-3. Wrong: Schedule C QBI is computed (f8995.line2 sums person.qbi = sc.qbi, line 31 less sc.qbi_ded: the self-employment tax deduction, SEP/SIMPLE and Form 7206 amounts). The former-employee presumption is refused by sc.special ('services you provide to a business that employed you within the last 3 years').",
+   "prompt_sha": "96a84dae94184520e563d4478c125c9ad12cbb9e58b7b0877947dab58818c3b7"
+  },
+  "unruled:qbi#2": {
+   "class": "covered",
+   "evidence": "i8995 pp. 4-5. f8995.line4 floors at zero and f8995.line16 reports lines 2 and 3 combined when less than zero.",
+   "prompt_sha": "96a84dae94184520e563d4478c125c9ad12cbb9e58b7b0877947dab58818c3b7",
+   "line": "f8995.line16"
+  },
+  "unruled:qdcg#1": {
+   "class": "out of scope",
+   "evidence": "i1040gi p. 38. The Form 2555 exclusion is refused (s1.line8_other names line 8d; sa.excluded_income asks Form 2555), so the Foreign Earned Income Tax Worksheet footnote never applies; qdcg.line1's label repeats the form's text.",
+   "prompt_sha": "f0a53fde068139962ab0c4e721899081ef7616dde40598a93f213287b4c4f5d0",
+   "gate": "s1.line8_other"
+  },
+  "unruled:qdcg#2": {
+   "class": "out of scope",
+   "evidence": "i1040gi p. 38. As qdcg#1 for the Form 2555 footnote; the line 7b checkbox is filing information.",
+   "prompt_sha": "f0a53fde068139962ab0c4e721899081ef7616dde40598a93f213287b4c4f5d0",
+   "gate": "s1.line8_other"
+  },
   "unruled:refund#1": {
    "class": "out of scope",
    "evidence": "i1040gi p. 89; p525 p. 24. A recovery of another earlier-year deduction (real estate taxes, sales taxes) is a line 8z item of kind recovery, refused by oi8z.recovery.",
    "prompt_sha": "818f7d059360703e44ef0024c9778edd601a1d73704d3d9210ae4c639be5a5c0",
    "gate": "oi8z.recovery"
   },
-  "unruled:retirement#3": {
+  "unruled:retirement#1": {
    "class": "out of scope",
-   "evidence": "i1040gi p. 27; i5329 p. 1; p575 p. 34: a required minimum distribution not received in full is asked by person.x_other (\"a required minimum distribution from an IRA or plan that you did not receive in full by its deadline\"), which refuses the Form 5329 lines.",
-   "gate": "person.x_other",
-   "prompt_sha": "cf562fb5e2c2588ffbec969004c35f70931385ea4934df2b073dd4af29496590"
+   "evidence": "i1040gi p. 27; i5329 p. 1; p575 p. 34. As retirement#3 of the backlog round (rechecked): person.x_other names a required minimum distribution not received in full and refuses Form 5329 lines 4 and 49.",
+   "prompt_sha": "da670c5b54832683802832df6b3b1d8ba55e7c43809c83405e704aa3d9b53caa",
+   "gate": "person.x_other"
+  },
+  "unruled:retirement#2": {
+   "class": "presentation",
+   "evidence": "i1040gi p. 27. As retirement#2 of the backlog round: the statement for a rollover into a qualified plan or made in 2026 is an attachment; the amount is unaffected.",
+   "prompt_sha": "da670c5b54832683802832df6b3b1d8ba55e7c43809c83405e704aa3d9b53caa"
+  },
+  "unruled:retirement#3": {
+   "class": "real gap",
+   "evidence": "p575 p. 23. retirement.rollover does not say that only an eligible rollover distribution (not a required minimum distribution) can be rolled over. Low; BUG-0402.",
+   "prompt_sha": "da670c5b54832683802832df6b3b1d8ba55e7c43809c83405e704aa3d9b53caa",
+   "bug": "BUG-0402"
+  },
+  "unruled:retirement#4": {
+   "class": "real gap",
+   "evidence": "p590b p. 28; i5329 p. 5. BUG-0393 stated the conditions of exceptions 01 to 04 only; retirement.exception still names 09 (first home), the reservist exception and 19 (birth or adoption) without the 2-year no-ownership test (spouse included), the reservist call-up and plan-source conditions, or the eligible-adoptee definition. The $10,000 and $5,000 caps are applied. Low; BUG-0402. The statement is filing information.",
+   "prompt_sha": "da670c5b54832683802832df6b3b1d8ba55e7c43809c83405e704aa3d9b53caa",
+   "bug": "BUG-0402"
+  },
+  "unruled:s1#1": {
+   "class": "covered",
+   "evidence": "i1040gi p. 93. person.eligible_educator states the 900-hour test; person.educator_expenses excludes home schooling and nonathletic health or PE supplies and states the reductions (Form 8815, QTP and Coverdell, unreported reimbursements) (BUG-0394).",
+   "prompt_sha": "6b2336343b2e20aff5117261764413a140d03cc7c20b8ccda639c7ee53a1a578",
+   "line": "person.educator_expenses"
+  },
+  "unruled:s1#2": {
+   "class": "covered",
+   "evidence": "i1040gi pp. 98-99. Married filing separately is refused (s3.mfs); sli.claimed asks the dependency bar; sli.interest excludes interest paid from tax-free QTP earnings; sli.line1 refuses the Pub. 970 exception (sa.excluded_income). The loan definition is sli#1.",
+   "prompt_sha": "6b2336343b2e20aff5117261764413a140d03cc7c20b8ccda639c7ee53a1a578",
+   "line": "sli.line1"
+  },
+  "unruled:s1#3": {
+   "class": "out of scope",
+   "evidence": "i1040gi p. 96. The line 20 checkbox is for married filing separately, which is refused (s3.mfs).",
+   "prompt_sha": "6b2336343b2e20aff5117261764413a140d03cc7c20b8ccda639c7ee53a1a578",
+   "gate": "s3.mfs"
+  },
+  "unruled:s1#4": {
+   "class": "real gap",
+   "evidence": "p504 p. 14. s1.alimony_received and s1.alimony_paid do not exclude payments between spouses filing a joint return with each other. Rare. Low; BUG-0402.",
+   "prompt_sha": "6b2336343b2e20aff5117261764413a140d03cc7c20b8ccda639c7ee53a1a578",
+   "bug": "BUG-0402"
+  },
+  "unruled:s1#5": {
+   "class": "presentation",
+   "evidence": "p504 p. 14. Attaching the designating instrument is filing information; s1.alimony_received excludes payments the instrument designates as not alimony.",
+   "prompt_sha": "6b2336343b2e20aff5117261764413a140d03cc7c20b8ccda639c7ee53a1a578"
+  },
+  "unruled:s179#1": {
+   "class": "covered",
+   "evidence": "i4562 p. 5; p946 p. 17. s179.line2 sums the business cost of section 179 property (asset.cost179 from asset.basis); asset.s179 excludes land and improvements, investment property, leased property (with the lessor exceptions), and tax-exempt, governmental and foreign-person use; use outside the United States, trade-ins and like-kind exchanges are refused by asset.screen.",
+   "prompt_sha": "1ca63238063e8174c66ded5fa5fdbde926671f1b5cb9d062bd1de0375e50dc23",
+   "line": "asset.s179"
+  },
+  "unruled:s179#2": {
+   "class": "covered",
+   "evidence": "p946 p. 18. Vehicles are scveh entries: scveh.suv and scveh.suv_cap apply the $31,300 limit, and scveh.s179_bad refuses an election above it.",
+   "prompt_sha": "1ca63238063e8174c66ded5fa5fdbde926671f1b5cb9d062bd1de0375e50dc23",
+   "line": "scveh.suv_cap"
+  },
+  "unruled:s179#3": {
+   "class": "out of scope",
+   "evidence": "p946 pp. 18-19. A joint return that replaces separate returns after the due date is an amended-return matter; the tool prepares the original return, and a separate return with a section 179 election is refused (s179.line5).",
+   "prompt_sha": "1ca63238063e8174c66ded5fa5fdbde926671f1b5cb9d062bd1de0375e50dc23"
+  },
+  "unruled:s179#4": {
+   "class": "out of scope",
+   "evidence": "p946 p. 19; i4562 p. 5. A business without material participation is refused (sc.passive feeds sc.screened); section 1231 gains (Form 4797) are refused by scope.schedule1 and an NOL deduction by s1.line8_other; working-capital interest is omitted, which can only lower line 11.",
+   "prompt_sha": "1ca63238063e8174c66ded5fa5fdbde926671f1b5cb9d062bd1de0375e50dc23",
+   "gate": "sc.screened"
+  },
+  "unruled:s179#5": {
+   "class": "real gap",
+   "evidence": "i4562 p. 5. The first point is wrong: s179.show10 hides line 10 on the values sheet only; the value is computed either way (spec, shown_when), so the 2024 carryover reaches line 13. Open: the s179.line10 question does not exclude carryover attributable to qualified section 179 real property. Low; BUG-0402.",
+   "prompt_sha": "1ca63238063e8174c66ded5fa5fdbde926671f1b5cb9d062bd1de0375e50dc23",
+   "bug": "BUG-0402"
+  },
+  "unruled:s1a#1": {
+   "class": "covered",
+   "evidence": "i1040gi p. 109. s1a.carloan routes to the carloan entries: carloan.requirements (originated after 2024, first lien, not related, personal use) and carloan.vehicle (new, on-road, under 14,000 pounds, U.S. assembly); carloan.kind covers an inherited loan; carloan.mixed and refi_* limit negative equity, insurance and refinancing.",
+   "prompt_sha": "90d4c438c935bd253c92aafadbf7bc6d911883be76435c7e971d407e8c96a9a8",
+   "line": "carloan.eligible"
+  },
+  "unruled:s2#1": {
+   "class": "out of scope",
+   "evidence": "i1040gi p. 112; i1040sse p. 2. person.se_screen names an approved Form 4029, an international social security agreement, community income on a separate return, a chapter 11 case and a U.S. citizen employed by a foreign government; notary fees are refused by sc.statutory.",
+   "prompt_sha": "8dadfe475b22d43406d536a742bcd2ac2d4a9dd508878490d6ac20abc1056ffe",
+   "gate": "person.se_screened"
+  },
+  "unruled:s3#1": {
+   "class": "real gap",
+   "evidence": "i1040gi p. 117. s3.line10 does not say to leave out a payment fee. Low; BUG-0402. Form 2350 is for filers abroad (Form 2555), which is refused.",
+   "prompt_sha": "5df44714178d6ac3a29259a1f8b2fd06722a64f64a3de3bfe29586072a3b4e8a",
+   "bug": "BUG-0402"
   },
   "unruled:s8812#1": {
    "class": "out of scope",
-   "evidence": "i1040gi p. 18; i1040s8812 pp. 1-2. A filer someone can claim as a dependent is refused for the whole return (sa.dependent); a child born and died without an SSN is refused by dependent.claimed_no_tin; dependent.relationship counts an adopted or placed child as a son or daughter.",
-   "prompt_sha": "87b660bd5b0a30fbbd7160e81d2a6c8b3686c552d34797a8739a9e70c4861fd7",
+   "evidence": "i1040gi p. 18; i1040s8812 p. 1. As s8812#1 of the backlog round (rechecked): a filer who can be claimed is refused for the whole return (sa.dependent); dependent.married asks the married-child test; a child born and died without an SSN is refused by dependent.claimed_no_tin; the adopted-child citizen exception is stated in dependent.citizen.",
+   "prompt_sha": "e1ff4af6f8a0ef4447763a53eec288345608891f2b1fe1b8ec11d634bcc3f312",
    "gate": "sa.dependent"
   },
   "unruled:s8812#2": {
    "class": "covered",
-   "evidence": "i1040gi p. 19; i1040s8812 p. 2. dependent.odc_person requires dependent.claimed, which applies the qualifying-relative tests (dependent.qr_dependent, not a qualifying child, gross income, support, household member) and sa.dependent; dependent.citizen states the adopted-child exception.",
-   "prompt_sha": "87b660bd5b0a30fbbd7160e81d2a6c8b3686c552d34797a8739a9e70c4861fd7",
+   "evidence": "i1040gi p. 19; i1040s8812 p. 2. As s8812#2 of the backlog round: dependent.odc_person requires dependent.claimed, which applies the qualifying-relative tests and sa.dependent.",
+   "prompt_sha": "e1ff4af6f8a0ef4447763a53eec288345608891f2b1fe1b8ec11d634bcc3f312",
    "line": "dependent.odc_person"
   },
   "unruled:s8812#3": {
    "class": "out of scope",
-   "evidence": "i1040s8812 p. 3. An optional method is refused by person.se_screen; income excluded under a treaty is a Schedule 1 line 8 exclusion refused by s1.line8_other.",
-   "prompt_sha": "87b660bd5b0a30fbbd7160e81d2a6c8b3686c552d34797a8739a9e70c4861fd7",
+   "evidence": "i1040s8812 p. 3. As s8812#3 of the backlog round: an optional method is refused by person.se_screen; treaty-excluded income is a Schedule 1 line 8 exclusion refused by s1.line8_other.",
+   "prompt_sha": "e1ff4af6f8a0ef4447763a53eec288345608891f2b1fe1b8ec11d634bcc3f312",
    "gate": "person.se_screened"
   },
   "unruled:s8812#4": {
    "class": "out of scope",
-   "evidence": "i1040s8812 p. 8. Statutory employee and notary income are refused (sc.screened) and other exempt self-employment income by person.se_screen; section 1256 contracts are refused by sd.other_forms.",
-   "prompt_sha": "87b660bd5b0a30fbbd7160e81d2a6c8b3686c552d34797a8739a9e70c4861fd7",
-   "gate": "person.se_screened"
-  },
-  "unruled:s8812#5": {
-   "class": "out of scope",
-   "evidence": "i1040s8812 p. 8. Married filing separately is refused (s3.mfs) and registered domestic partners elsewhere, so community wages do not arise.",
-   "prompt_sha": "87b660bd5b0a30fbbd7160e81d2a6c8b3686c552d34797a8739a9e70c4861fd7",
+   "evidence": "i1040s8812 p. 8. As s8812#5 of the backlog round: married filing separately is refused (s3.mfs) and community income on a separate return by person.se_screen, so community wages do not arise.",
+   "prompt_sha": "e1ff4af6f8a0ef4447763a53eec288345608891f2b1fe1b8ec11d634bcc3f312",
    "gate": "s3.mfs"
   },
   "unruled:sa#1": {
@@ -651,193 +669,198 @@
    "prompt_sha": "ebf61cdde66d79e8dea65240e46a0d1db7f219b762dd57d67e3e3671c8b16c32",
    "line": "gift.deduction"
   },
-  "unruled:sales#4": {
+  "unruled:sales#1": {
+   "class": "real gap",
+   "evidence": "i8949 pp. 2, 5; p550 pp. 82, 86. sales.box states the general count, inherited property, carryover-basis gifts and split blocks (BUG-0395); it does not state the other tacking and forced-term rules (wash-sale replacement stock, stock dividends and rights, options, nonbusiness bad debts, NAV money market funds, short sales). Section 1256 contracts are refused by sd.other_forms. Low; BUG-0402.",
+   "prompt_sha": "9d459984b492a1ce5c6825fa6cb8b81ac20a0815cde8753c9594f6d7e0a322d9",
+   "bug": "BUG-0402"
+  },
+  "unruled:sales#2": {
+   "class": "real gap",
+   "evidence": "p550 p. 86; i8949 pp. 6-7. sales.correct_basis does not name the wash-sale, short-sale dividend, compensatory option and nondividend-distribution basis adjustments. Low; BUG-0402. The explanation statement is filing information.",
+   "prompt_sha": "9d459984b492a1ce5c6825fa6cb8b81ac20a0815cde8753c9594f6d7e0a322d9",
+   "bug": "BUG-0402"
+  },
+  "unruled:sb#1": {
    "class": "presentation",
-   "evidence": "i1040sd p. 10. The Schedule D QOF box and Form 8997 Part III are filing information; a QOF deferral or inclusion code (Z, Y) is 'other' in sales.code and refused by sales.bad_code.",
-   "prompt_sha": "161be5a945308b9c09b743a7b06f645c6cd366bb96feb77baf2ed29aa7191ba8"
+   "evidence": "i1040sb pp. 2-3. The line 7a answer is a yes/no on the form; no amount depends on it, and the question already asks about financial interest or signature authority without any FBAR exception.",
+   "prompt_sha": "32955922f455df75581cd15d151a76520a7da3875fd5e9405909fac3c24eb841"
   },
   "unruled:sc#1": {
-   "class": "covered",
-   "evidence": "i1040sc p. 6. scveh.smr_ok asks the first-year, whole-lease and five-vehicle rules; scveh.lease_smr_before refuses actual expenses on a leased vehicle after the standard rate; depreciation and lease payments are taken only on actual expenses (scveh.is_actual_owned, scveh.is_actual_leased).",
-   "prompt_sha": "95441a88ff34c96aebc2fd55c76d8e0a9dce46ddef50cf6107bc26e7de0d2839",
-   "line": "scveh.smr_ok"
+   "class": "out of scope",
+   "evidence": "i1040sc pp. 4-5, 14-15. sc.passive (material participation and not a rental) feeds sc.screened, which refuses sc.line1 when No; a section 461(l) excess business loss is refused by s1.line8_other (8p).",
+   "prompt_sha": "27b6c044d5dfb64b84da32682d7957f4e486bfeb91bba5d92ae80eb25f9e8729",
+   "gate": "sc.screened"
   },
   "unruled:sc#2": {
-   "class": "out of scope",
-   "evidence": "i1040sc p. 6. A biofuel (Form 6478) or biodiesel/SAF (Form 8864) credit claimed is refused by scope.credits, so no inclusion arises.",
-   "prompt_sha": "95441a88ff34c96aebc2fd55c76d8e0a9dce46ddef50cf6107bc26e7de0d2839",
-   "gate": "scope.credits"
+   "class": "covered",
+   "evidence": "i1040sc p. 6. As sc#1 of the backlog round: scveh.smr_ok asks the first-year, whole-lease and five-vehicle rules; scveh.lease_smr_bad refuses actual expenses on a leased vehicle after the standard rate.",
+   "prompt_sha": "27b6c044d5dfb64b84da32682d7957f4e486bfeb91bba5d92ae80eb25f9e8729",
+   "line": "scveh.smr_ok"
   },
   "unruled:sc#3": {
    "class": "out of scope",
-   "evidence": "i1040sc p. 13. A home is real property, refused by asset.screen, and nothing else puts depreciation of the home on line 13 (BUG-0373 premise check).",
-   "prompt_sha": "95441a88ff34c96aebc2fd55c76d8e0a9dce46ddef50cf6107bc26e7de0d2839",
+   "evidence": "i1040sc p. 13. As sc#3 of the backlog round: a home is real property, refused by asset.screen, so no home depreciation reaches line 13.",
+   "prompt_sha": "27b6c044d5dfb64b84da32682d7957f4e486bfeb91bba5d92ae80eb25f9e8729",
    "gate": "asset.screened"
   },
   "unruled:sc#4": {
-   "class": "presentation",
-   "evidence": "i1040sc p. 5. The Form 1099-NEC difference statement is filing information; installment-method income is now refused by sc.special.",
-   "prompt_sha": "95441a88ff34c96aebc2fd55c76d8e0a9dce46ddef50cf6107bc26e7de0d2839"
+   "class": "covered",
+   "evidence": "i7206 p. 2. ltc.payments excludes months the person was eligible for a long-term care plan subsidized by an employer.",
+   "prompt_sha": "27b6c044d5dfb64b84da32682d7957f4e486bfeb91bba5d92ae80eb25f9e8729",
+   "line": "ltc.payments"
   },
   "unruled:sc#5": {
    "class": "presentation",
-   "evidence": "i1040sc p. 8. Excess mortgage interest is deducted (on line 16b rather than 16a); the line placement and statement are filing information.",
-   "prompt_sha": "95441a88ff34c96aebc2fd55c76d8e0a9dce46ddef50cf6107bc26e7de0d2839"
+   "evidence": "i1040sc p. 5. As sc#4 of the backlog round: the Form 1099-NEC difference statement is filing information.",
+   "prompt_sha": "27b6c044d5dfb64b84da32682d7957f4e486bfeb91bba5d92ae80eb25f9e8729"
   },
   "unruled:sc#6": {
    "class": "presentation",
-   "evidence": "i1040sc p. 5. Header lines H and I are filing information.",
-   "prompt_sha": "95441a88ff34c96aebc2fd55c76d8e0a9dce46ddef50cf6107bc26e7de0d2839"
+   "evidence": "i1040sc p. 8. As sc#5 of the backlog round: the statement and margin notation for interest above Form 1098 are filing information.",
+   "prompt_sha": "27b6c044d5dfb64b84da32682d7957f4e486bfeb91bba5d92ae80eb25f9e8729"
+  },
+  "unruled:sc#7": {
+   "class": "presentation",
+   "evidence": "i1040sc p. 8. The line 16b statement and margin notation are filing information; the interest is entered.",
+   "prompt_sha": "27b6c044d5dfb64b84da32682d7957f4e486bfeb91bba5d92ae80eb25f9e8729"
   },
   "unruled:scope#1": {
-   "class": "out of scope",
-   "evidence": "i1040sse p. 1. person.se_screen names an approved Form 4361 or Form 4029 and refuses Schedule SE for that person.",
-   "prompt_sha": "8fe0bed2ee9d91be9b552e3d35c2dff172980f6d304513130fda81125c678936",
-   "gate": "person.se_screened"
+   "class": "real gap",
+   "evidence": "p575 p. 35. A qualified disaster recovery distribution received in 2025 is refused by retirement.special (BUG-0393). Open: the recontribution of a home-purchase or construction distribution canceled because of a qualified disaster (Form 8915-F) is not named; the same point is screen finding retirement.special 1. Low; BUG-0402.",
+   "prompt_sha": "b246eee0df84e699db2e0e01676f089239f55769be235388a72e05f7a73061a8",
+   "bug": "BUG-0402"
   },
   "unruled:scope#2": {
-   "class": "covered",
-   "evidence": "i1040gi p. 36. f1040.gate.sdtw routes to the Schedule D Tax Worksheet when Schedule D lines 18 or 19 are above zero with gains, or Form 4952 line 4g is used.",
-   "prompt_sha": "8fe0bed2ee9d91be9b552e3d35c2dff172980f6d304513130fda81125c678936",
-   "line": "f1040.gate.sdtw"
+   "class": "real gap",
+   "evidence": "i1040gi p. 36. The Schedule D Tax Worksheet is routed by f1040.gate.sdtw (as scope#2 of the backlog round). Open: Schedule J income averaging for fishing income on Schedule C is not offered; it is an election that can only lower tax. Low; BUG-0402.",
+   "prompt_sha": "b246eee0df84e699db2e0e01676f089239f55769be235388a72e05f7a73061a8",
+   "bug": "BUG-0402"
+  },
+  "unruled:scope#3": {
+   "class": "out of scope",
+   "evidence": "i1040sse p. 1. As scope#1 of the backlog round: person.se_screen names an approved Form 4029 and refuses Schedule SE.",
+   "prompt_sha": "b246eee0df84e699db2e0e01676f089239f55769be235388a72e05f7a73061a8",
+   "gate": "person.se_screened"
+  },
+  "unruled:scope#4": {
+   "class": "out of scope",
+   "evidence": "i1040gi p. 43. household.credit_disallowed asks about an earlier EIC reduction or disallowance and the disallowance periods; household.eic_disallowed_claim refuses eic.credit.",
+   "prompt_sha": "b246eee0df84e699db2e0e01676f089239f55769be235388a72e05f7a73061a8",
+   "gate": "household.eic_disallowed_claim"
   },
   "unruled:scveh#1": {
-   "class": "out of scope",
-   "evidence": "i1040sc p. 8; p946 p. 59. sc.special refuses an inclusion amount for leased property.",
-   "prompt_sha": "77808c785e3e72066733fde11e2bfc05ca3781475d8f8409ce6105be5aae6cba",
-   "gate": "sc.screened"
+   "class": "real gap",
+   "evidence": "i1040sc p. 8; p946 p. 59; i4562 p. 14. The lease inclusion amount is refused by sc.special (as scveh#1 of the backlog round). Open: a leased vehicle converted to or from personal use in 2025 is not refused (scveh.screened gates only scveh.cost), so its business share uses full-year miles and payments. Low; BUG-0402.",
+   "prompt_sha": "8c884f8a8e3cd9a11825f4714bc22649925d6f14811e7bebb0120e6979aed90b",
+   "bug": "BUG-0402"
   },
   "unruled:scveh#2": {
    "class": "out of scope",
-   "evidence": "i1040sc p. 6; p538 p. 17. A small business taxpayer is exempt from the uniform capitalization rules; one that is not is refused by sc.method_other (sc.screened) (BUG-0372).",
-   "prompt_sha": "77808c785e3e72066733fde11e2bfc05ca3781475d8f8409ce6105be5aae6cba",
+   "evidence": "i1040sc p. 6. As scveh#2 of the backlog round: a small business taxpayer is exempt from the uniform capitalization rules; one that is not is refused by sc.method_other (sc.screened).",
+   "prompt_sha": "8c884f8a8e3cd9a11825f4714bc22649925d6f14811e7bebb0120e6979aed90b",
    "gate": "sc.screened"
   },
   "unruled:scveh#3": {
-   "class": "presentation",
-   "evidence": "i1040sc p. 7; i4562 p. 16. Routing the vehicle information between Part IV and Form 4562 Part V and the remaining yes/no answers are filing information.",
-   "prompt_sha": "77808c785e3e72066733fde11e2bfc05ca3781475d8f8409ce6105be5aae6cba"
+   "class": "real gap",
+   "evidence": "i1040sc p. 15. Same point as scveh#1: commuting miles for a leased or standard-mileage vehicle converted in 2025 are not limited to the business period, and they enter total miles (scveh.total_c). Low; BUG-0402.",
+   "prompt_sha": "8c884f8a8e3cd9a11825f4714bc22649925d6f14811e7bebb0120e6979aed90b",
+   "bug": "BUG-0402"
   },
   "unruled:sd#1": {
    "class": "out of scope",
-   "evidence": "i1040sd p. 10. clcw.spouse_screen refuses a carryover from a 2024 joint return when 2025 is not a joint return with the same spouse; canceled debt excluded from income is refused by s1.cod_unsupported.",
-   "prompt_sha": "9c6bf5e31e8f4cb92022284147768468c9b45bc99e28b3a2322c36b52d2fe7b7",
+   "evidence": "i1040sd p. 10. As sd#1 of the backlog round (rechecked): a 2025 separate return is refused (s3.mfs), clcw.spouse_screen refuses a carryover from a 2024 joint return without the same spouse, and excluded canceled debt is refused by s1.cod_unsupported.",
+   "prompt_sha": "3d0ee66bdda303e65184fdd4a2339a5e637e3627184592db49fdc9147ed5f5d2",
    "gate": "clcw.spouse_screen"
   },
   "unruled:sd#2": {
    "class": "presentation",
-   "evidence": "i1040sd p. 10. As sales#4: the QOF box and Form 8997 Part III are filing information; QOF codes are refused by sales.bad_code.",
-   "prompt_sha": "9c6bf5e31e8f4cb92022284147768468c9b45bc99e28b3a2322c36b52d2fe7b7"
+   "evidence": "i1040sd p. 10. As sd#2 of the backlog round: the QOF box and Form 8997 Part III are filing information; QOF codes are refused by sales.bad_code.",
+   "prompt_sha": "3d0ee66bdda303e65184fdd4a2339a5e637e3627184592db49fdc9147ed5f5d2"
   },
-  "unruled:asset#1": {
-   "class": "real gap",
-   "evidence": "Open: placed in service is not defined (i4562 p. 11; p946 p. 32); low, T-211.",
-   "prompt_sha": "17c42bff8ffa01ddc20e8ffe72ed992db76e959eddd3dbe9a6523f95b93393b2",
-   "bug": "BUG-0386"
-  },
-  "unruled:asset#2": {
-   "class": "real gap",
-   "evidence": "Open: qualified improvement property has no definition or exclusions (p946 p. 31); medium, T-211.",
-   "prompt_sha": "17c42bff8ffa01ddc20e8ffe72ed992db76e959eddd3dbe9a6523f95b93393b2",
-   "bug": "BUG-0383"
-  },
-  "unruled:f5695#2": {
-   "class": "real gap",
-   "evidence": "Open: Part II costs are not tied to the original installation in 2025 (i5695 p. 1); medium, T-211.",
-   "prompt_sha": "a0990183d3d1d4ccaf43a6060b1f8b182c608ac784b7b56b2ec4d83bddcf1b69",
-   "bug": "BUG-0384"
-  },
-  "unruled:f5695#3": {
-   "class": "real gap",
-   "evidence": "Open: structural roof components are not excluded (i5695 p. 2); low, T-211.",
-   "prompt_sha": "a0990183d3d1d4ccaf43a6060b1f8b182c608ac784b7b56b2ec4d83bddcf1b69",
-   "bug": "BUG-0386"
-  },
-  "unruled:f5695#4": {
-   "class": "real gap",
-   "evidence": "Open: dual-function storage media are not excluded (i5695 p. 2); low, T-211.",
-   "prompt_sha": "a0990183d3d1d4ccaf43a6060b1f8b182c608ac784b7b56b2ec4d83bddcf1b69",
-   "bug": "BUG-0386"
-  },
-  "unruled:f5695#5": {
-   "class": "real gap",
-   "evidence": "Open: the audit report contents are not required (i5695 p. 3); low, T-211.",
-   "prompt_sha": "a0990183d3d1d4ccaf43a6060b1f8b182c608ac784b7b56b2ec4d83bddcf1b69",
-   "bug": "BUG-0386"
-  },
-  "unruled:f5695#6": {
-   "class": "real gap",
-   "evidence": "Open: one main home only for the improvement credit is not stated (i5695 p. 5); low, T-211.",
-   "prompt_sha": "a0990183d3d1d4ccaf43a6060b1f8b182c608ac784b7b56b2ec4d83bddcf1b69",
-   "bug": "BUG-0386"
-  },
-  "unruled:ltc#1": {
-   "class": "real gap",
-   "evidence": "Open: the qualified long-term care contract requirements are not stated (i7206 pp. 1-2); low, T-211.",
-   "prompt_sha": "df1a1644a9bb9027ec99c85de7cf0a153ab804be85e2bd4ec63cc7b8ee6a298d",
-   "bug": "BUG-0386"
-  },
-  "unruled:retirement#1": {
-   "class": "real gap",
-   "evidence": "Open: waived or extended late rollovers (i5329 p. 2; p575 p. 23); T-210.",
-   "bug": "BUG-0381",
-   "prompt_sha": "cf562fb5e2c2588ffbec969004c35f70931385ea4934df2b073dd4af29496590"
-  },
-  "unruled:retirement#2": {
-   "class": "presentation",
-   "evidence": "i1040gi p. 27: the statement for a rollover into a qualified plan or made in 2026 is an attachment; the amount entered is unaffected.",
-   "prompt_sha": "cf562fb5e2c2588ffbec969004c35f70931385ea4934df2b073dd4af29496590"
-  },
-  "unruled:s1#1": {
-   "class": "real gap",
-   "evidence": "Open: educator expense exclusions (home schooling, nonathletic supplies; i1040gi p. 93); low, T-211.",
-   "prompt_sha": "737ff862728672ae505345e3420b40ea02591718a876117ede7c44f6d3842b4c",
-   "bug": "BUG-0386"
-  },
-  "unruled:s1#2": {
-   "class": "real gap",
-   "evidence": "Open: the not-alimony designation and the same-household rule (p504 p. 14); T-210.",
-   "prompt_sha": "737ff862728672ae505345e3420b40ea02591718a876117ede7c44f6d3842b4c",
-   "bug": "BUG-0382"
-  },
-  "unruled:sales#1": {
-   "class": "real gap",
-   "evidence": "Open: holding-period rules, inherited property first (i8949 pp. 2, 5-6; p550 p. 86); medium, T-211.",
-   "prompt_sha": "161be5a945308b9c09b743a7b06f645c6cd366bb96feb77baf2ed29aa7191ba8",
-   "bug": "BUG-0385"
-  },
-  "unruled:sales#2": {
-   "class": "real gap",
-   "evidence": "Open: correct proceeds above the broker figure (i8949 p. 6); low, T-211.",
-   "prompt_sha": "161be5a945308b9c09b743a7b06f645c6cd366bb96feb77baf2ed29aa7191ba8",
-   "bug": "BUG-0386"
-  },
-  "unruled:sales#3": {
-   "class": "real gap",
-   "evidence": "Open: inherited basis limited by Form 8971 (i8949 p. 6); low, T-211.",
-   "prompt_sha": "161be5a945308b9c09b743a7b06f645c6cd366bb96feb77baf2ed29aa7191ba8",
-   "bug": "BUG-0386"
-  },
-  "unruled:household#3": {
-   "class": "presentation",
-   "evidence": "i1040gi p. 14, \"If the child isn't claimed as your dependent, enter the child's name in the entry space below qualifying surviving spouse.\" The name in the filing-status entry space is filing information; head of household eligibility is asked (household.hoh_eligible) and changes no amount.",
-   "prompt_sha": "9ad3f7a10098da8aaaa051b5bf56b8295686be179a02e529c7e8c87e0a2702ca"
-  },
-  "unruled:household#4": {
-   "class": "presentation",
-   "evidence": "i1040gi p. 15, \"If the child isn't claimed as your dependent, enter the child's name in the entry space.\" Filing information; the qualifying surviving spouse tests are asked (household.qss_eligible) and the name changes no amount.",
-   "prompt_sha": "9ad3f7a10098da8aaaa051b5bf56b8295686be179a02e529c7e8c87e0a2702ca"
-  },
-  "unruled:household#5": {
+  "unruled:sdtw#1": {
    "class": "out of scope",
-   "gate": "s3.mfs",
-   "evidence": "i1040gi p. 14, Married Filing Separately, \"Enter your spouse's name in the entry space ...\". A married filing separately return is refused for the whole return by s3.mfs (scope.ready), so the spouse's name, SSN or 'NRA' entry for that status never arises; it would in any case be filing information.",
-   "prompt_sha": "9ad3f7a10098da8aaaa051b5bf56b8295686be179a02e529c7e8c87e0a2702ca"
+   "evidence": "i1040sd p. 16. A smaller amount on the line 4e dotted line is an alternative allocation, refused by f4952.alternative_allocation ('Only the default capital-gain-first allocation is supported').",
+   "prompt_sha": "ec73a843c8276a218d9314bc361af9ca16413281580648ff84348ba2f053b7ab",
+   "gate": "f4952.alternative_allocation"
   },
-  "unruled:retirement#4": {
-   "class": "presentation",
-   "evidence": "i5329 p. 5: the statement naming the child or eligible adoptee is an attachment; the exception code is asked by retirement.exception.",
-   "prompt_sha": "cf562fb5e2c2588ffbec969004c35f70931385ea4934df2b073dd4af29496590"
+  "unruled:se#1": {
+   "class": "out of scope",
+   "evidence": "i1040sse p. 2. person.se_screen names self-employment income 'earned as a U.S. citizen employed by a foreign government' and refuses Schedule SE.",
+   "prompt_sha": "59a082d58632329dc60fe301dd4f18a9bb4c11fecce3f9476c03219e515e03f7",
+   "gate": "person.se_screened"
+  },
+  "unruled:se#2": {
+   "class": "out of scope",
+   "evidence": "i1040sse p. 2. person.se_screen names a chapter 11 bankruptcy case and community income on a separate return; a separate return is also refused (s3.mfs).",
+   "prompt_sha": "59a082d58632329dc60fe301dd4f18a9bb4c11fecce3f9476c03219e515e03f7",
+   "gate": "person.se_screened"
+  },
+  "unruled:se#3": {
+   "class": "out of scope",
+   "evidence": "i1040sse p. 2. person.se_screen names an approved Form 4029 and self-employment income exempt under an international social security agreement.",
+   "prompt_sha": "59a082d58632329dc60fe301dd4f18a9bb4c11fecce3f9476c03219e515e03f7",
+   "gate": "person.se_screened"
+  },
+  "unruled:sli#1": {
+   "class": "real gap",
+   "evidence": "i1040gi pp. 98-99. sli.interest uses 'qualified student loans' without the definition (whose expenses, eligible student, related-person lender, mixed-use proceeds, qualified employer plan loans). Low; BUG-0402.",
+   "prompt_sha": "5c5eb60e30832e9d92cd3adf9628571540731f6e76465c87d81dc29c00b53bed",
+   "bug": "BUG-0402"
+  },
+  "unruled:ssb#1": {
+   "class": "out of scope",
+   "evidence": "i1040gi pp. 31-32. The line 6d checkbox is for married filing separately, which is refused (s3.mfs).",
+   "prompt_sha": "af2df1e76e8a890ea441ba07c72efd73bd3023b441b9054facb81ac0cd072a34",
+   "gate": "s3.mfs"
+  },
+  "unruled:tax_on_amount#1": {
+   "class": "covered",
+   "evidence": "i1040gi p. 68. The tax_table columns map qss to the joint column ('This column must also be used by a qualifying surviving spouse').",
+   "prompt_sha": "cf77a506618119c7060955f974db3e5c859eda544dab84470a3eb02147401b81",
+   "line": "table_tax"
+  },
+  "unruled:tipjob#1": {
+   "class": "real gap",
+   "evidence": "i1040gi p. 102. tipjob.qualified does not exclude prostitution and pornographic activity outright. Low; BUG-0402.",
+   "prompt_sha": "fb8ec3c464f1cb16bfcc48cf8ce302334389bc536c80087c1059fca3b2bb2251",
+   "bug": "BUG-0402"
+  },
+  "unruled:u1250#1": {
+   "class": "out of scope",
+   "evidence": "i1040sd p. 13. sales.special asks about the sale of an interest in a partnership that holds section 1250 property and refuses it.",
+   "prompt_sha": "313191113f6325cff70c91880d89610af9dec27f607cf11c1943b7358c3458af",
+   "gate": "sales.special"
+  },
+  "unruled:u1250#2": {
+   "class": "out of scope",
+   "evidence": "i1040sd p. 13. A sale of depreciated real property (for example a converted vacation home) is refused by sales.special ('depreciable real property (section 1250 property)'); installment sales are refused by sd.other_forms (Form 6252).",
+   "prompt_sha": "313191113f6325cff70c91880d89610af9dec27f607cf11c1943b7358c3458af",
+   "gate": "sales.special"
+  },
+  "unruled:w2#1": {
+   "class": "out of scope",
+   "evidence": "i1040gi p. 117. person.rrta asks about railroad retirement compensation or taxes (W-2 box 14) and refuses person.credit, the excess social security credit.",
+   "prompt_sha": "f53ceb571a792b779ef1dd0aec8caf6bfc13317b4dabb840e44577f3e1005302",
+   "gate": "person.rrta"
+  },
+  "unruled:w2#2": {
+   "class": "real gap",
+   "evidence": "iw2w3 p. 17. w2.box2 does not say that box 2 of a Form W-2AS, W-2CM, W-2GU or W-2VI is territorial income tax, not federal withholding. Rare. Low; BUG-0402.",
+   "prompt_sha": "f53ceb571a792b779ef1dd0aec8caf6bfc13317b4dabb840e44577f3e1005302",
+   "bug": "BUG-0402"
+  },
+  "unruled:w2#3": {
+   "class": "out of scope",
+   "evidence": "i8959 p. 1. f8959.unsupported names 'Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)' and refuses Form 8959.",
+   "prompt_sha": "f53ceb571a792b779ef1dd0aec8caf6bfc13317b4dabb840e44577f3e1005302",
+   "gate": "f8959.unsupported"
+  },
+  "unruled:w2#4": {
+   "class": "out of scope",
+   "evidence": "i2441 p. 5. s8812.combat_pay asks about nontaxable combat pay and refuses Form 2441 lines 4, 5, 18 and 19.",
+   "prompt_sha": "f53ceb571a792b779ef1dd0aec8caf6bfc13317b4dabb840e44577f3e1005302",
+   "gate": "s8812.combat_pay"
   }
  }
 }

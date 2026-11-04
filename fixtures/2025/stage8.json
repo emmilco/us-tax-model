@@ -6896,7 +6896,7 @@
         "dependent.qr_dependent:sa.dependent"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Synthetic: single, wages $120,000, one child age 10, but the filer can be claimed as a dependent by someone else, so the child is not the filer’s dependent (Step 2 question 4 and Step 4 question 5) and no credit arises. Predicted by the authoring session from i1040gi pp. 18-19; no independent human hand-work is claimed.",
+      "evidence_note": "Synthetic: single, wages $120,000, one child age 10, but the filer can be claimed as a dependent by someone else, so the child is not the filer’s dependent (Step 2 question 4 and Step 4 question 5) and no credit arises. Predicted by the authoring session from i1040gi pp. 18-19; no independent human hand-work is claimed. T-101 (s8812.combat_pay narrowing): no qualifying child or other dependent, so Schedule 8812 line 12 is $0. Predicted from Schedule 8812 line 12, \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\": line 27 and Form 1040 line 28 are $0; the return is still refused at line 24 by sa.dependent. Expectation updated after the fixture run on the changed tree reported the change; the value follows from the line 12 stop as stated.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -7166,17 +7166,8 @@
           }
         },
         "f1040.line28": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "A return for a dependent or dual-status alien",
-          "remedy": "A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "pp. 34–35, line 12e and Standard Deduction Chart",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 0
         },
         "f1040.line34": {
           "kind": "refusal",
@@ -7329,17 +7320,8 @@
           "value": true
         },
         "s8812.from_part_iia": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "A return for a dependent or dual-status alien",
-          "remedy": "A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "pp. 34–35, line 12e and Standard Deduction Chart",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 0
         },
         "s8812.from_part_iib": {
           "kind": "refusal",
@@ -7467,17 +7449,8 @@
           "cents": 1762500
         },
         "s8812.line27": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "A return for a dependent or dual-status alien",
-          "remedy": "A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "pp. 34–35, line 12e and Standard Deduction Chart",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 0
         },
         "s8812.line2a": {
           "kind": "money",
@@ -7520,17 +7493,8 @@
           "cents": 0
         },
         "s8812.part_iib_result": {
-          "kind": "refusal",
-          "gate": "sa.dependent",
-          "form": "A return for a dependent or dual-status alien",
-          "remedy": "A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized.",
-          "cite": {
-            "doc": "i1040gi",
-            "locator": "pp. 34–35, line 12e and Standard Deduction Chart",
-            "revision": "2025; printed date 2026-02-25",
-            "snapshot": "482e9c487c608f1bbeaceef35bc3c0933e8b35443cfff447e4279d590468364a",
-            "tax_year": 2025
-          }
+          "kind": "money",
+          "cents": 0
         },
         "s8812.ss_withheld": {
           "kind": "money",

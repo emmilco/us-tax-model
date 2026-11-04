@@ -11,11 +11,25 @@
    "context": "c9e490fe070734b59fab26b3b99b0acef73659e813676a911a5d7dc44630714f"
   },
   {
+   "printed": "ctc_ssn",
+   "restated": "helper \"You, or your spouse if filing jointly, have an SSN valid for employment\" = true and helper \"Number of people on the return with an SSN valid for employment or an SSN or ITIN\" = helper \"Number of people on the return (you, and your spouse if filing jointly)\"",
+   "model": "The IRS says 'To claim the child tax credit, you must have a valid SSN, which means it must be valid for employment' and 'If your qualifying child didn’t have an SSN valid for employment... you can’t claim the child tax credit for that child'; the restatement allows SSN or ITIN for each other person and does not check the qualifying children.",
+   "ruling": "Ruling: model error; i1040gi p. 7, \"If you are filing a joint return, only one spouse is required to have a valid SSN in order to be eligible for the CTC and ACTC. The other spouse must have either an SSN or ITIN\" (amb.2025.ctc_spouse_itin_application). The helper is the filer-side test; the qualifying child's SSN valid for employment is tested per child in dependent.ctc_child, which the reviewer reads as missing here. Project stands.",
+   "context": "1d0ffbd7e13b3cc8d0f91942e13336a011fbb6cbf9168ea885eeb4a990e2015d"
+  },
+  {
    "printed": "filer_under16",
    "restated": "helper \"Number of people on the return under age 16 at the end of 2025\" > 0 (a count)",
    "model": "The IRS text provided does not make being under age 16 a filing-status or return-eligibility rule; the only mention is the Self-Select PIN restriction.",
    "ruling": "Ruling: ambiguity; amb.2025.filer_under_16 (owner's decision, 2026-10-22), reading 2 chosen: refuse a return on which you, or your spouse if filing jointly, were under 16, as an entry check. The refusal cites the one sentence the text has about age 16 (i1040gi p. 66, Self-Select PIN) and names the register entry; it does not claim the text forbids the return, which is the model's point.",
    "context": "6b19c0fbf412ccec99a942f2268a4ddf3b15752d8e380a03687e43f73c3b818d"
+  },
+  {
+   "printed": "filing_status_conflict",
+   "restated": "(f1040 line Filing Status = 'single' and helper \"Were you married at the end of 2025?\" = true or f1040 line Filing Status = 'mfj' and helper \"Were you married at the end of 2025?\" = false and helper \"Did your spouse die in 2025?\" = false)",
+   "model": "It omits MFS: the IRS says 'Check the “Married filing separately” box... if you are married at the end of 2025 and file a separate return,' so MFS with married false and no 2025 spouse death is also a conflict.",
+   "ruling": "Ruling: scope; i1040gi p. 14, Married Filing Separately. MFS is refused for the whole return by s3.mfs on scope.ready; the gate covers the single and joint contradictions (BUG-0286). As the prior ruling. Project stands.",
+   "context": "1d0ffbd7e13b3cc8d0f91942e13336a011fbb6cbf9168ea885eeb4a990e2015d"
   },
   {
    "printed": "filing_status_conflict",
@@ -30,6 +44,20 @@
    "model": "IRS Pub. 501 says 'If you were considered married for part of the year and lived in a community property state ... special rules may apply.' The restatement requires married at the end of 2025, so it misses part-year married HOH filers in a community property state.",
    "ruling": "Ruling: scope — The cited part-year community-property situation is now separately refused by household.cp_marriage_ended on f1040.line1a (BUG-0278); household.hoh_community_property continues to cover the married HOH case. The eight stage21.household regression fixtures exercise both gates and their negative controls. The review interpreted this one gate as the entire return screen.",
    "context": "4d9fb380c42e126f5361b7c009d75b52da7e88c1caed11cde2a5260e71ae7609"
+  },
+  {
+   "printed": "hoh_community_property",
+   "restated": "f1040 line Filing Status = 'hoh' and helper \"Were you married at the end of 2025?\" = true and helper \"Did you live in a community property state at any time in 2025?\" = true",
+   "model": "The IRS says 'If you were considered married for part of the year and lived in a community property state... special rules may apply'; this helper requires married at the end of 2025, missing part-year married HOH filers.",
+   "ruling": "Ruling: scope; i1040gi p. 23. The part-year community-property case is refused separately by household.cp_marriage_ended on f1040.line1a (BUG-0278); this gate covers the married HOH case. As the prior ruling. Project stands.",
+   "context": "1d0ffbd7e13b3cc8d0f91942e13336a011fbb6cbf9168ea885eeb4a990e2015d"
+  },
+  {
+   "printed": "home_cost",
+   "restated": "Input — Did you pay over half the cost of keeping up your home for 2025? Cost of keeping up a home includes expenses such as rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities, and food eaten in the home. It does not include the cost of clothing, education, medical treatment, vacations, life insurance, or transportation, or the value of your services or those of a member of your household. Amounts paid out of funds received in the name of a person who lives in the home, such as their Social Security, count as paid by that person, not you. TANF or similar payments you received and used for the home count as paid by you.",
+   "model": "The IRS note says TANF used 'to support another person' is considered support you provided for that person, and amounts in a child's or qualifying person's name are considered paid by the child; the restatement instead treats TANF used for the home as paid by you and refers to any person living in the home.",
+   "ruling": "Ruling: model error; p501 p. 9, Keeping Up a Home, Note: \"if you received Temporary Assistance to Needy Families (TANF) payments or other similar payments and used the payment to support another person, those payments are considered support you provided ... Amounts paid out of funds received in the child's or qualifying person's name, such as Social Security, are considered paid by the child, not you. If the total amount you paid is more than the amount others paid, you meet the requirement\". The note sits in the cost-of-keeping-up-a-home test, so TANF used for the home counts as paid by you, as the question says (BUG-0258); funds in any other household member's name are paid by that member, not by you, so \"a person who lives in the home\" changes no answer to \"over half\". Project stands.",
+   "context": "1d0ffbd7e13b3cc8d0f91942e13336a011fbb6cbf9168ea885eeb4a990e2015d"
   },
   {
    "printed": "hsa_share_sum",
@@ -86,6 +114,13 @@
    "model": "IRS Pub. 501 says 'You may be eligible to file as a qualifying surviving spouse even if the child who qualifies you for this filing status has been kidnapped.' The restatement instead says to answer No for a kidnapped child.",
    "ruling": "Ruling: scope — p501 p. 11 allows the kidnapped-child exception, which the owner explicitly kept outside this tool (BUG-0273). The question names that exclusion and f1040.line12e refuses through household.qss_fails with the kidnapped-child remedy. BUG-0276 limits this instruction to kidnapping that kept the child away during 2025; the exclusion is not a claim that the IRS forbids QSS.",
    "context": "4d9fb380c42e126f5361b7c009d75b52da7e88c1caed11cde2a5260e71ae7609"
+  },
+  {
+   "printed": "qss_eligible",
+   "restated": "Input — Do all five of these tests apply to you? 1. Your spouse died in 2023 or 2024 and you didn't remarry before the end of 2025 (if your spouse died in 2025, answer No). 2. You have a child or stepchild (not a foster child) whom you can claim as a dependent, or could claim as a dependent except that, for 2025, the child had gross income of $5,200 or more, the child filed a joint return, or you could be claimed as a dependent on someone else's return; an adopted child, including a child lawfully placed with you for legal adoption, is always your own child. 3. This child lived in your home for all of 2025, counting temporary absences by you or the child for special circumstances, such as school, vacation, business, medical care, military service or detention in a juvenile facility, as time lived in the home, but only an absence from which it was reasonable to assume the absent person would return and during which you kept up the home; a child born or who died in 2025, or adopted or lawfully placed with you for legal adoption in 2025, lived with you all year if your home was the child's home for the entire time the child was alive, or since the adoption or placement; if the child did not live with you all of 2025 because the child was presumed by law enforcement authorities to have been kidnapped by someone who isn't a member of your family or the child's family, answer No (the kidnapped-child rule of Pub. 501 is outside this tool). 4. You paid over half the cost of keeping up your home (rent, mortgage interest, real estate taxes, insurance on the home, repairs, utilities and food eaten in the home; not clothing, education, medical treatment, vacations, life insurance, transportation, or the value of your own or a household member’s services; amounts paid from a household member’s own funds, such as Social Security, count as paid by them; TANF or similar payments you received and used for the home count as paid by you). 5. You could have filed a joint return with your spouse the year your spouse died, even if you didn't actually do so.",
+   "model": "It tells the filer to answer No if the child was presumed kidnapped, but Pub. 501 says 'You may be eligible to file as a qualifying surviving spouse even if the child... has been kidnapped'; it also repeats the TANF home-cost statement.",
+   "ruling": "Ruling: scope; p501 p. 11, Kidnapped child (outside the tool, BUG-0273; the No reaches household.qss_fails with the remedy at f1040.line12e). The repeated TANF statement is ruled on home_cost (p501 p. 9 Note). As the prior ruling. Project stands.",
+   "context": "1d0ffbd7e13b3cc8d0f91942e13336a011fbb6cbf9168ea885eeb4a990e2015d"
   },
   {
    "printed": "qss_eligible",
@@ -214,6 +249,13 @@
    "context": "d53813fef5e0ccff5a17eee17dd74e82c422f5853adf99e3e40269ba7e253d9a"
   },
   {
+   "printed": "test2_absence_persons",
+   "restated": "Add dependent.one over every confirmed dependent entry for which helper \"A Test 2 person only by counting an absence head of household does not count\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The same omission exists for non-dependent Test 2 persons: the IRS Test 2 can turn on a qualifying child who isn’t your dependent, but the restatement counts only dependent entries.",
+   "ruling": "Ruling: representation; i1040gi p. 14, Test 2; p501 p. 9 (BUG-0267). As test2_persons and the prior ruling: dependent.hoh_absence does not require dependent.claimed where Test 2 allows an unclaimed qualifying child. Project stands.",
+   "context": "1d0ffbd7e13b3cc8d0f91942e13336a011fbb6cbf9168ea885eeb4a990e2015d"
+  },
+  {
    "printed": "test2_met",
    "restated": "helper \"Did you pay over half the cost of keeping up your home for 2025?\" = true and helper \"Number of persons who qualify you under Test 2\" > 0 (a count)",
    "model": "It depends on a Test 2 count that omits non-dependent qualifying children; the IRS Test 2 includes 'Your unmarried qualifying child who isn’t your dependent.'",
@@ -240,6 +282,13 @@
    "model": "The restatement counts only confirmed dependent entries, but IRS Test 2 expressly includes 'Your unmarried qualifying child who isn’t your dependent' and other qualifying children who are not dependents.",
    "ruling": "Ruling: model error; the model read \"every confirmed dependent entry\" as every person who is your dependent. It is the renderer's wording for every entry of the dependent collection (every person listed, as the round-1 ruling on the same text found), and the helper dependent.hoh_test2 it sums has a second branch for \"Your unmarried qualifying child who isn't your dependent\" (i1040gi p. 14, Test 2, item 2): qualifying_child, not married, lived with you more than half the year, with no dependency condition. Items 3 and 4 (a married child not your dependent only because you can be claimed, and the custodial parent's released child) are refused through dependent.married and dependent.divorced_rule.",
    "context": "55b35b4588335d4d9a70be93ca26c04b5b019e766b44060c41ed50a8c47870c1"
+  },
+  {
+   "printed": "test2_persons",
+   "restated": "Add dependent.one over every confirmed dependent entry for which helper \"A Test 2 person who lived with you more than half the year, or of the part of the year a relative was alive, counting only absences head of household counts (the home-cost condition of Test 2 is tested on the household form)\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "IRS Test 2 includes 'Your unmarried qualifying child who isn’t your dependent,' a married qualifying child who isn’t your dependent, and certain divorced/separated-parent children; counting only dependent entries misses those non-dependent Test 2 persons.",
+   "ruling": "Ruling: representation; i1040gi p. 14, Test 2, items 2 to 4 (qualifying children who are not your dependent). The dependent collection holds every person evaluated for Test 2, and dependent.hoh_test2 counts a qualifying child not claimed as a dependent (its derivation reads dependent.qualifying_child beside dependent.claimed), so the non-dependent Test 2 persons the reviewer names are counted. Project stands.",
+   "context": "1d0ffbd7e13b3cc8d0f91942e13336a011fbb6cbf9168ea885eeb4a990e2015d"
   },
   {
    "printed": "test2_persons",

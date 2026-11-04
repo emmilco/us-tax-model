@@ -37,7 +37,11 @@ LOGS = os.path.join(ROOT, "reviews", Y, "transcription")
 RAW = os.path.join(ROOT, ".transcription")
 WHOLE_DOC_MAX_PAGES = 6
 HELPER_PRINTED = {"(helper)", "(gate)", "(computed helper)"}
-PROMPT_POLICY = "source-only-computation-v2"
+PROMPT_POLICY = "source-only-computation-v3"
+# Prompt policies under which no project-written computation is shown and the other-form catalog
+# does not depend on the reviewed form's encoding: v2 listed every other form, v3 a source-chosen
+# subset (catalog_selection) and asks for shown_when wherever the IRS text conditions a line.
+INDEPENDENT_PROMPT_POLICIES = frozenset({"source-only-computation-v2", PROMPT_POLICY})
 PROJECT_YAML_LOADER = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
 
 
@@ -68,12 +72,18 @@ def manifest():
     return {d["id"]: d for d in docs}
 
 
+_PAGES = {}
+
+
 def doc_pages(doc, key="text_file"):
-    text = archive_text.read(SOURCES, doc, key)
-    pages = text.split("\f")
-    if pages and not pages[-1].strip():
-        pages = pages[:-1]
-    return pages
+    memo = (SOURCES, doc["id"], key, doc.get(key), doc.get("text_sha256"), doc.get("cols_sha256"))
+    if memo not in _PAGES:
+        text = archive_text.read(SOURCES, doc, key)
+        pages = text.split("\f")
+        if pages and not pages[-1].strip():
+            pages = pages[:-1]
+        _PAGES[memo] = pages
+    return list(_PAGES[memo])
 
 
 def page_kinds(doc):
@@ -162,28 +172,10 @@ def excerpt_for(form_doc, mani):
     """The cited pages of every cited document, with what was used and why. A locator
     that names pages of another archived document gives those pages too, and so do
     the citations of the year parameters the form references."""
-    cites, extra = {}, {}
-    for line in form_doc["lines"] + [{"cite": c} for c in param_cites(form_doc)]:
-      for c in [line["cite"]] + [r["cite"] for r in line.get("refuses", [])]:
-        more, rest = secondary_pages(c["locator"], mani, c["doc"])
-        cites.setdefault(c["doc"], set()).add(rest)
-        for doc_id, pages in more.items():
-            extra.setdefault(doc_id, set()).update(pages)
     excerpt, used = [], []
-    for doc_id in list(cites) + [d for d in extra if d not in cites]:
-        locators = cites.get(doc_id, set())
+    for doc_id, chosen, how, locators in excerpt_pages(form_doc, mani):
         doc = mani[doc_id]
         pages = doc_pages(doc)
-        if len(pages) <= WHOLE_DOC_MAX_PAGES:
-            chosen = set(range(1, len(pages) + 1)); how = "whole document"
-        else:
-            chosen = set(extra.get(doc_id, set()))
-            for loc in locators:
-                chosen |= locator_pages(loc)
-                if not locator_pages(loc):
-                    chosen |= heading_pages(pages, loc)
-            how = "cited pages" if locators else "pages named by another document's citation"
-        chosen = sorted(p for p in chosen if 1 <= p <= len(pages))
         # A page classified as columnar prose is given in reading order (tools/extract_text.py);
         # worksheets, tables and single-column pages keep the layout text.
         kinds = page_kinds(doc)
@@ -198,6 +190,32 @@ def excerpt_for(form_doc, mani):
             else:
                 excerpt.append(f"===== {doc_id} ({doc.get('revision','')}) page {p} of {len(pages)}, as laid out =====\n{pages[p - 1]}")
     return "\n\n".join(excerpt), used
+
+
+def excerpt_pages(form_doc, mani):
+    """[(doc id, chosen pages, how, locators)] in excerpt order, the page choice of excerpt_for."""
+    cites, extra = {}, {}
+    for line in form_doc["lines"] + [{"cite": c} for c in param_cites(form_doc)]:
+      for c in [line["cite"]] + [r["cite"] for r in line.get("refuses", [])]:
+        more, rest = secondary_pages(c["locator"], mani, c["doc"])
+        cites.setdefault(c["doc"], set()).add(rest)
+        for doc_id, pages in more.items():
+            extra.setdefault(doc_id, set()).update(pages)
+    out = []
+    for doc_id in list(cites) + [d for d in extra if d not in cites]:
+        locators = cites.get(doc_id, set())
+        pages = doc_pages(mani[doc_id])
+        if len(pages) <= WHOLE_DOC_MAX_PAGES:
+            chosen = set(range(1, len(pages) + 1)); how = "whole document"
+        else:
+            chosen = set(extra.get(doc_id, set()))
+            for loc in locators:
+                chosen |= locator_pages(loc)
+                if not locator_pages(loc):
+                    chosen |= heading_pages(pages, loc)
+            how = "cited pages" if locators else "pages named by another document's citation"
+        out.append((doc_id, sorted(p for p in chosen if 1 <= p <= len(pages)), how, locators))
+    return out
 
 
 # ---------- exported lines ----------
@@ -341,11 +359,14 @@ beyond these atoms; a line that needs more than one atom is written as several l
 being helper lines (printed: "(helper)") with ids of your own choosing."""
 
 
-def collection_notes(reviewed=None):
-    """Published collection interfaces; own computed fields are not supplied facts."""
+def collection_notes(reviewed=None, selected=None):
+    """Published collection interfaces; own computed fields are not supplied facts. With
+    `selected`, only the reviewed collection and the selected others (catalog_selection)."""
     out = []
     for f in sorted(os.listdir(FORMS)):
         if not f.endswith(".yaml"):
+            continue
+        if selected is not None and f[:-5] != reviewed and f[:-5] not in selected:
             continue
         d = project_yaml(os.path.join(FORMS, f))
         doc = d.get("form")
@@ -432,15 +453,160 @@ def reference_note(doc, line):
 
 
 def screen_notes():
-    """Every Bool input that some line names as a refusal gate, with the question it asks."""
+    """Every Bool input that some line of any form names as a refusal gate, with its interface
+    and the question it asks. The list is the same for every reviewed form."""
     lines = load_all_lines()
     gates = {r["when"] for _, l in lines.values() for r in (l.get("refuses") or [])}
+    docs = {}
     out = []
     for g in sorted(gates):
         hit = lines.get(g)
         if hit and hit[1]["expr"].get("op") == "input":
-            out.append(f"  - {g}: {' '.join(hit[1]['expr'].get('source', '').split())}")
+            doc = docs.setdefault(hit[0], {"id": hit[0]})
+            out.append(f"  - {reference_note(doc, hit[1])}")
     return "\n".join(out)
+
+
+# ---------- other-form catalog ----------
+#
+# The catalog of other forms' lines is a subset chosen from the IRS source alone: what the
+# excerpt given to the model shows or names, compared with each other form's own source
+# pages, IRS documents and IRS title. Nothing here reads the reviewed form's expressions,
+# refusal lists or visibility conditions.
+
+CATALOG_WHOLE_TEXT_EXCLUDED = frozenset({"i1040gi"})
+CATALOG_ID = r"(\d{3,4}(?:-[A-Z]{1,3})?|W-2|[1-3](?:-A)?|8812|SE|[A-E])"
+CATALOG_NAME = re.compile(r"\b(Form|Schedule)s?\s+" + CATALOG_ID + r"\b")
+CATALOG_LINE = re.compile(r"\b(Form|Schedule)\s+" + CATALOG_ID +
+                          r"(?:\s+or\s+1040-SR)?(?:\s*\(Form\s+1040(?:\s+or\s+1040-SR)?\))?,?\s+lines?\s+(\d+[a-z]?)\b")
+CATALOG_LINE_OF = re.compile(r"\blines?\s+(\d+[a-z]?)\s+of\s+(?:your\s+)?(Form|Schedule)\s+" + CATALOG_ID + r"\b")
+CATALOG_PRODUCER = re.compile(r"\b(?:enter|include|report|carry)\w*\b[^.;]{0,100}\b(?:on|to)\s+$", re.I)
+CATALOG_TITLE_LINE = re.compile(r"(?:\b(Form|Schedule)\s+" + CATALOG_ID + r",\s*)?\bLines?\s+(\d+[a-z]?)(?:\s+and\s+(\d+[a-z]?))?")
+
+
+def doc_family(doc_id):
+    """The IRS form an archived document belongs to: f8962 and i8962 are both 8962; the
+    general Form 1040 instructions (i1040gi) and publications belong to no single form."""
+    doc_id = re.sub(r"-html$", "", doc_id)
+    if doc_id == "i1040gi":
+        return doc_id
+    if doc_id[:1] in ("f", "i") and (doc_id[1:2].isdigit() or doc_id[1:2] == "w"):
+        return doc_id[1:]
+    return doc_id
+
+
+def named_family(kind, number, mani):
+    """The family a printed name such as "Schedule 1" or "Form 8962" refers to, if archived."""
+    key = number.lower().replace("-", "")
+    doc = ("f" + key) if kind == "Form" else ("f1040s" + key)
+    return doc_family(doc) if doc in mani or ("i" + doc[1:]) in mani else None
+
+
+def named_forms(text, mani):
+    return {f for kind, n in CATALOG_NAME.findall(text) if (f := named_family(kind, n, mani))}
+
+
+def named_lines(text, mani, producers_only=False):
+    """(family, printed line) pairs a text names, as in "Form 1040 or 1040-SR, line 2b" or "line 17
+    of Schedule 1"; with producers_only, only those it says to enter an amount on."""
+    flat = " ".join(text.split())
+    out = set()
+    for m in CATALOG_LINE.finditer(flat):
+        if producers_only and not CATALOG_PRODUCER.search(flat[max(0, m.start() - 120):m.start()]):
+            continue
+        if (f := named_family(m.group(1), m.group(2), mani)):
+            out.add((f, m.group(3)))
+    if not producers_only:
+        for m in CATALOG_LINE_OF.finditer(flat):
+            if (f := named_family(m.group(2), m.group(3), mani)):
+                out.add((f, m.group(1)))
+    return out
+
+
+_PROFILES = {}
+
+
+def source_profile(doc, mani):
+    """What the IRS source says of one other form: its source pages (the pages its own review
+    would be given), the IRS forms it belongs to, the worksheet its IRS title names, and the
+    form lines it feeds (from its title, "...Worksheet—Line 16", and from "enter ... on" text in
+    its source pages and its own form documents)."""
+    memo = (FORMS, SOURCES, doc["id"])
+    if memo in _PROFILES:
+        return _PROFILES[memo]
+    pages = excerpt_pages(doc, mani)
+    cited = {l["cite"]["doc"] for l in doc["lines"]}
+    if (doc.get("collection") or {}).get("cite"):
+        cited.add(doc["collection"]["cite"]["doc"])
+    forms = {d for d in cited if d.startswith("f") and d in mani}
+    families = {doc_family(d) for d in (forms or cited)}
+    own_forms = {"f" + f for f in families if ("f" + f) in mani}
+    text = [doc_pages(mani[d])[p - 1] for d, chosen, _, _ in pages for p in chosen]
+    text += [page for d in sorted(own_forms) for page in doc_pages(mani[d])]
+    head, _, tail = doc["title"].partition("—")
+    worksheet = " ".join(head.split()).lower() if "Worksheet" in head else None
+    fed = named_lines("\n".join(text), mani, producers_only=True)
+    for kind, number, first, second in CATALOG_TITLE_LINE.findall(tail):
+        family = named_family(kind, number, mani) if kind else "1040"
+        fed |= {(family, n) for n in (first, second) if n}
+    profile = {"pages": {(d, p) for d, chosen, _, _ in pages for p in chosen},
+               "families": families, "worksheet": worksheet, "fed": fed}
+    _PROFILES[memo] = profile
+    return profile
+
+
+def catalog_selection(form_doc, excerpt, used, mani=None):
+    """{document id: reason} for every other form, definition and collection the catalog lists.
+
+    Chosen from the reviewed form's source only: the excerpt given to the model and the whole
+    text of the archived documents it is cut from (except the general Form 1040 instructions,
+    which name every form of the return):
+      definition   a shared definition, always listed;
+      shared page  the other form's own source pages include a page of this excerpt;
+      named form   that text names an IRS form or schedule the other form belongs to;
+      worksheet    that text names the IRS worksheet the other form's title names;
+      named line   that text names a form line ("Form 1040, line 2b", "line 17 of Schedule 1")
+                   that the other form feeds, by its IRS title or by its source's "enter ... on".
+    Refusal-gate inputs are listed for every form in the screening list instead."""
+    mani = manifest() if mani is None else mani
+    defs = load_defs()
+    mine = {(u["doc"], p) for u in used for p in u["pages"]}
+    text = "\n".join([excerpt] + ["\n".join(doc_pages(mani[u["doc"]])) for u in used
+                                  if u["doc"] not in CATALOG_WHOLE_TEXT_EXCLUDED and u["doc"] in mani])
+    names = named_forms(text, mani)
+    lines_named = named_lines(text, mani)
+    flat = " ".join(text.split()).lower()
+    out = {}
+    for f in sorted(os.listdir(FORMS)):
+        if not f.endswith(".yaml") or f[:-5] == form_doc["id"]:
+            continue
+        doc = load_form(f[:-5])
+        if doc["id"] in defs:
+            out[doc["id"]] = "definition"
+            continue
+        p = source_profile(doc, mani)
+        if p["pages"] & mine:
+            out[doc["id"]] = "shared page"
+        elif p["families"] & names:
+            out[doc["id"]] = "named form"
+        elif p["worksheet"] and p["worksheet"] in flat:
+            out[doc["id"]] = "worksheet"
+        elif p["fed"] & lines_named:
+            out[doc["id"]] = "named line"
+    return out
+
+
+def catalog_lines(reviewed, selected):
+    """The other-form catalog entries ({line id: note}) of the selected non-collection forms."""
+    other = {}
+    for f in sorted(os.listdir(FORMS)):
+        if f.endswith(".yaml") and f[:-5] != reviewed and f[:-5] in selected:
+            d = load_form(f[:-5])
+            if d.get("collection"):
+                continue   # listed with the collections instead
+            for l in d["lines"]:
+                other[l["id"]] = reference_note(d, l)
+    return other
 
 
 INPUT_CONTEXT_POLICY = input_context.POLICY
@@ -499,7 +665,14 @@ reference it from other lines by that id.
 """
 
 
-def build_prompt(form_doc, excerpt, params, other_lines, param_types=None):
+SHOWN_WHEN_NOTE = """`shown_when` is required on every printed line whose display the IRS text makes conditional
+(the form or worksheet shows the line, or an amount on it, for some returns or entries only): give the
+Bool line of this document that is true exactly when the line is shown. Leave it out only on a line
+the IRS text always shows. The data-model table above calls the field optional because most lines are
+always shown, not because it may be omitted where the text conditions a line."""
+
+
+def build_prompt(form_doc, excerpt, params, other_lines, param_types=None, collections=None):
     lines = form_doc["lines"]
     inputs = [l for l in lines if l["expr"].get("op") == "input"]
     targets = [l for l in lines if l["printed"] not in HELPER_PRINTED and l["expr"].get("op") != "input"]
@@ -584,7 +757,7 @@ Enumerations and their only permitted values (compare with {{const: "value"}}):
 Keyed collections (Form W-2s, payers, sales, gifts): a total over entries is written
 {{op: sum_over, collection: <id>, field: <entry field id>, where: <test over entry fields>}}; a nested
 collection is summed within each parent entry, and the parent's per-entry totals summed again:
-{collection_notes(form_doc['id'])}
+{collection_notes(form_doc['id']) if collections is None else collections}
 
 The computed fields of the document under review are not supplied facts. Define every computed
 helper of this document that you reference in your own reply, even if a familiar name occurs
@@ -597,8 +770,12 @@ Screening inputs (answered yes, the tool refuses the lines that list them under 
 {screen_notes()}
 
 Lines on other forms you may reference by id (only where the IRS text says the value comes from
-there). The catalog gives ids, printed markers and types, not their project-written computations:
-{oth}
+there). The catalog gives ids, printed markers and types, not their project-written computations.
+It lists the other forms and collections whose own IRS pages share a page with the text below or
+that this text or the IRS documents it comes from name (as a form or schedule, a worksheet, or a
+line that form feeds), and every shared definition. The selection is made from the IRS documents
+alone, not from this project's encoding, so a listed line is not a hint that it is needed:
+{oth if oth else '  (none)'}
 
 {contract_block}# Output
 
@@ -616,11 +793,14 @@ lines:
     type: <Dollars | NonNegDollars | Rate | Count | Bool | Enum(name)>
     expr: <one atom>
     refuses: [<screening input id>, ...]   # optional
+    shown_when: <Bool line id of this document>   # required where the IRS text makes the line's display conditional
   - ...
 
 plus any helper lines you need (printed: "(helper)", ids "{form_doc['id']}.h_<name>"). No prose before
 or after the YAML. Where the IRS text leaves a point genuinely open, choose a reading and add a
 `note:` field on that line saying what was open and what you chose.
+
+{SHOWN_WHEN_NOTE}
 
 # IRS text (archived snapshots; page markers show document, revision and page)
 
@@ -1061,21 +1241,121 @@ class MissingCredential(RuntimeError):
     """The keychain holds no API key for the hosted transport."""
 
 
-def call_model(prompt, model, timeout=900, system=TRANSCRIBE_SYSTEM, reasoning_effort=None, max_output_tokens=None):
+LEDGER_NAME = "costs.jsonl"
+PRICES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "prices.json")
+TOOL_KINDS = {"transcribe.py": "transcription", "render_compare.py": "render", "classm.py": "classm",
+              "completeness_review.py": "completeness", "screen_review.py": "screen",
+              "transcribe_tables.py": "tables", "transport_check.py": "transport-check"}
+
+
+def call_model(prompt, model, timeout=900, system=TRANSCRIBE_SYSTEM, reasoning_effort=None, max_output_tokens=None,
+               kind=None, subject=None):
     """One fixed-prompt call; returns (text, meta). The transport follows the model name:
     `claude*` runs `claude -p` in print mode with no tools; `deepseek*` posts to DeepSeek's
     hosted OpenAI-compatible endpoint; `gpt*` runs `codex exec` in an empty read-only scratch
-    directory. meta carries model_reported (a list), usage and cost_usd."""
+    directory. meta carries model_reported (a list), usage and cost_usd.
+
+    Every call that reaches a transport appends one line to the cost ledger
+    (.transcription/costs.jsonl), success or failure; the ledger never enters a prompt,
+    a receipt or meta. kind and subject name the review (transcription, render, classm,
+    completeness, screen) and its form; kind defaults from the calling script."""
+    import time
     families.require_selected_model(model)
     if not model.startswith("deepseek") and (reasoning_effort is not None or max_output_tokens is not None):
         raise ValueError("reasoning/output-budget options are supported only by the DeepSeek transport")
     if model.startswith("claude"):
-        return _call_claude(prompt, model, timeout, system)
-    if model.startswith("deepseek"):
-        return _call_deepseek(prompt, model, timeout, system, reasoning_effort, max_output_tokens)
-    if model.startswith("gpt"):
-        return _call_codex(prompt, model, timeout, system)
-    raise ValueError(f"no transport for model {model!r}: a model name begins with 'claude', 'deepseek' or 'gpt'")
+        transport, call = "claude-print", lambda: _call_claude(prompt, model, timeout, system)
+    elif model.startswith("deepseek"):
+        transport, call = "deepseek", lambda: _call_deepseek(prompt, model, timeout, system, reasoning_effort, max_output_tokens)
+    elif model.startswith("gpt"):
+        transport, call = "codex-exec", lambda: _call_codex(prompt, model, timeout, system)
+    else:
+        raise ValueError(f"no transport for model {model!r}: a model name begins with 'claude', 'deepseek' or 'gpt'")
+    started, clock = datetime.datetime.now(datetime.timezone.utc), time.monotonic()
+    meta, outcome = None, "ok"
+    try:
+        text, meta = call()
+        if meta.get("finish_reason") == "length":
+            outcome = "output-budget-exhausted"
+        return text, meta
+    except BaseException as ex:
+        outcome = f"error: {type(ex).__name__}: {str(ex)[:200]}"
+        raise
+    finally:
+        try:
+            record_cost(started, time.monotonic() - clock, model, transport, prompt, system, meta, outcome, kind, subject)
+        except Exception as ex:  # the ledger must never lose or alter a review result
+            print(f"warning: cost ledger not written: {type(ex).__name__}: {ex}", file=sys.stderr)
+
+
+def load_prices():
+    with open(PRICES, encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _deepseek_peak(when, rule):
+    """Whether a UTC time falls in DeepSeek's peak hours (weekday hour windows; holidays not modelled)."""
+    return when.weekday() < 5 and any(start <= when.hour < end for start, end in rule["peak_hours_utc"])
+
+
+def estimate_cost(model, usage, reported_cost, when, prices=None):
+    """(estimated_cost_usd, price_basis) from the reported usage and prices.json; None where the
+    table has no cited price for the model."""
+    prices = load_prices() if prices is None else prices
+    entry = prices.get("models", {}).get(model) or prices.get("families", {}).get(families.family_of(model))
+    if entry is None:
+        return None, "no price entry"
+    basis = entry.get("basis")
+    if basis == "reported":
+        return reported_cost, "reported by the transport (" + entry.get("source", "") + ")"
+    rates = entry.get("per_million_usd")
+    if not rates or any(v is None for v in rates.values()):
+        return None, "price not confirmed: " + entry.get("note", "")
+    if not usage:
+        return None, "no usage reported (a failed call may still have been billed)"
+    if basis == "deepseek":
+        hit = usage.get("prompt_cache_hit_tokens", 0) or 0
+        miss = usage.get("prompt_cache_miss_tokens", (usage.get("prompt_tokens", 0) or 0) - hit) or 0
+        out = usage.get("completion_tokens", 0) or 0
+        peak = _deepseek_peak(when, entry)
+        scale = 1 if peak else entry.get("off_peak_factor", 1)
+        cost = (hit * rates["input_cache_hit"] + miss * rates["input_cache_miss"] + out * rates["output"]) * scale / 1e6
+        return round(cost, 6), f"{entry['source']} ({'peak' if peak else 'off-peak'} rate)"
+    if basis == "openai":
+        total = usage.get("input_tokens", 0) or 0
+        cached = usage.get("cached_input_tokens", 0) or 0
+        out = usage.get("output_tokens", 0) or 0
+        long = total > entry.get("long_context_above_input_tokens", float("inf"))
+        rates = entry["long_context_per_million_usd"] if long else rates
+        cost = ((total - cached) * rates["input"] + cached * rates["cached_input"] + out * rates["output"]) / 1e6
+        return round(cost, 6), f"{entry['source']} ({'long' if long else 'short'} context; API list-price equivalent)"
+    return None, f"unknown price basis {basis!r}"
+
+
+def record_cost(started, seconds, model, transport, prompt, system, meta, outcome, kind=None, subject=None):
+    """Append one JSON line to RAW/costs.jsonl: one write() on an O_APPEND descriptor, so lines from
+    concurrent processes do not interleave."""
+    tool = os.path.basename(sys.argv[0]) if sys.argv and sys.argv[0] else "-"
+    meta = meta or {}
+    usage = meta.get("usage") or {}
+    try:
+        estimated, basis = estimate_cost(model, usage, meta.get("cost_usd"), started)
+    except (OSError, ValueError, KeyError, TypeError) as ex:
+        estimated, basis = None, f"price table unreadable: {type(ex).__name__}"
+    record = {"timestamp": started.isoformat(timespec="seconds"), "tool": tool,
+              "kind": kind or TOOL_KINDS.get(tool, "unknown"), "subject": subject,
+              "model_requested": model, "model_reported": meta.get("model_reported"),
+              "transport": meta.get("transport", transport), "prompt_chars": len(prompt), "system_chars": len(system),
+              "usage": usage, "cost_usd": meta.get("cost_usd"),
+              "estimated_cost_usd": estimated, "price_basis": basis,
+              "duration_s": round(seconds, 3), "outcome": outcome}
+    line = (json.dumps(record, ensure_ascii=False, sort_keys=True) + "\n").encode("utf-8")
+    os.makedirs(RAW, exist_ok=True)
+    fd = os.open(os.path.join(RAW, LEDGER_NAME), os.O_WRONLY | os.O_APPEND | os.O_CREAT, 0o644)
+    try:
+        os.write(fd, line)
+    finally:
+        os.close(fd)
 
 
 def _call_claude(prompt, model, timeout, system):
@@ -1237,7 +1517,8 @@ def _call_deepseek(prompt, model, timeout, system, reasoning_effort=None, max_ou
     return choices[0]["message"]["content"], meta
 
 
-def review_response(prompt, model, base, policy, from_response=False, system=TRANSCRIBE_SYSTEM, reasoning_effort=None, max_output_tokens=None):
+def review_response(prompt, model, base, policy, from_response=False, system=TRANSCRIBE_SYSTEM, reasoning_effort=None, max_output_tokens=None,
+                    kind=None, subject=None):
     """Bind a raw response to its actual request; a dry run never overwrites this receipt."""
     receipt = {"prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest(),
                "system_sha256": hashlib.sha256(system.encode()).hexdigest(),
@@ -1261,7 +1542,8 @@ def review_response(prompt, model, base, policy, from_response=False, system=TRA
             raise ValueError("saved response exhausted its output budget; run a fresh review with a larger --max-output-tokens")
         return text, meta
     budget_scale = max(1, ((max_output_tokens or DEEPSEEK_MAX_TOKENS) + DEEPSEEK_MAX_TOKENS - 1) // DEEPSEEK_MAX_TOKENS)
-    text, meta = call_model(prompt, model, timeout=900 * budget_scale, system=system, reasoning_effort=reasoning_effort, max_output_tokens=max_output_tokens)
+    text, meta = call_model(prompt, model, timeout=900 * budget_scale, system=system, reasoning_effort=reasoning_effort,
+                            max_output_tokens=max_output_tokens, kind=kind, subject=subject or os.path.basename(base))
     meta = {**meta, **receipt}
     for suffix, value in ((".prompt.txt", prompt), (".response.txt", text),
                           (".meta.json", json.dumps(meta, ensure_ascii=False))):
@@ -1296,7 +1578,7 @@ def extract_yaml(text):
 
 # ---------- log ----------
 
-def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry_run=False, replay_receipt=None):
+def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry_run=False, replay_receipt=None, catalog=None):
     os.makedirs(LOGS, exist_ok=True)
     fid = form_doc["id"]
     family = families.family_of(model)
@@ -1344,6 +1626,12 @@ def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry
            "## Source pages given to the model", "", "| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |", "| --- | --- | --- | --- | --- | --- | --- |"]
     for u in used:
         out.append(f"| {u['doc']} | {u['revision']} | {', '.join(map(str, u['pages'])) or '-'} | {u['how']} | {u['text_sha256']} | {', '.join(map(str, u.get('cols_pages', []))) or '-'} | {u.get('cols_sha256', '-')} |")
+    if catalog is not None:
+        out += ["", "## Other documents in the catalog", "",
+                "Chosen from the source pages above (catalog_selection); refusal-gate inputs are in the screening list.", "",
+                "| reason | documents |", "| --- | --- |"]
+        for reason in sorted(set(catalog.values())):
+            out.append(f"| {reason} | {', '.join(sorted(k for k, v in catalog.items() if v == reason))} |")
     if type_errors:
         out += ["", "## Host-side model expression type checks", "",
                 "The build's reference/type checker rejected these model expressions; none were executed."]
@@ -1402,15 +1690,10 @@ def main():
     params_doc = project_yaml(os.path.join(ROOT, "params", f"{Y}.yaml"))
     values = (params_doc.get("params") or params_doc)["values"]
     params = {k: v["value"] for k, v in values.items()}
-    other = {}
-    for f in sorted(os.listdir(FORMS)):
-        if f.endswith(".yaml") and f[:-5] != a.form:
-            d = load_form(f[:-5])
-            if d.get("collection"):
-                continue   # listed with the collections instead
-            for l in d["lines"]:
-                other[l["id"]] = reference_note(d, l)
-    prompt = build_prompt(form_doc, excerpt, params, other, {k: v["type"] for k, v in values.items()})
+    selected = catalog_selection(form_doc, excerpt, used, mani)
+    other = catalog_lines(a.form, selected)
+    prompt = build_prompt(form_doc, excerpt, params, other, {k: v["type"] for k, v in values.items()},
+                          collection_notes(a.form, selected))
     source_targets = exported_lines(form_doc) + [line for line in form_doc["lines"]
         if line["printed"] not in HELPER_PRINTED and line["expr"].get("op") != "input"]
     if not source_targets and adapter_contracts.excluded_ids(a.form, Y):
@@ -1419,12 +1702,14 @@ def main():
     os.makedirs(RAW, exist_ok=True)
     base = os.path.join(RAW, families.stem(a.form, families.family_of(a.model)))
     print(f"{a.form}: excerpt {len(excerpt):,} chars from " + "; ".join(f"{u['doc']} pages {u['pages']} ({u['how']})" for u in used))
+    print(f"catalog: {len(selected)} other documents: " + ", ".join(f"{k} ({v})" for k, v in sorted(selected.items())))
     print(f"prompt {len(prompt):,} chars -> {os.path.relpath(base, ROOT)}{'.preview' if a.dry_run else ''}.prompt.txt")
     if a.dry_run:
         with open(base + ".preview.prompt.txt", "w", encoding="utf-8") as f:
             f.write(prompt)
         return
-    text, meta = review_response(prompt, a.model, base, PROMPT_POLICY, a.from_response, reasoning_effort=a.reasoning_effort, max_output_tokens=a.max_output_tokens)
+    text, meta = review_response(prompt, a.model, base, PROMPT_POLICY, a.from_response, reasoning_effort=a.reasoning_effort,
+                                 max_output_tokens=a.max_output_tokens, kind="transcription", subject=a.form)
     replay_receipt = None
     if a.from_response:
         import audit_transcription
@@ -1434,7 +1719,7 @@ def main():
             prompt, text, meta, subjects.current('transcription', a.form, Y))
     second = extract_yaml(text)
     results, extra = compare(a.form, form_doc["lines"], second["lines"])
-    path, counts = write_log(form_doc, a.model, prompt, used, results, extra, text, meta, replay_receipt=replay_receipt)
+    path, counts = write_log(form_doc, a.model, prompt, used, results, extra, text, meta, replay_receipt=replay_receipt, catalog=selected)
     print(f"{a.form}: agree {counts['AGREE']}, disagree {counts['DISAGREE']}, missing {counts['MISSING']}, extra {len(extra)}; cost {meta.get('cost_usd')} -> {os.path.relpath(path, ROOT)}")
     contract_ok = not results.contract_check or (results.contract_check["state"] == "pass" and results.contract_check["request_context"] == "included")
     interfaces_ok = bool(results.interface_check and results.interface_check["state"] == "pass")

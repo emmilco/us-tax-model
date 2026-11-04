@@ -1,0 +1,444 @@
+{
+ "aqee": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 0,
+  "collections": []
+ },
+ "asset": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 1,
+  "collections": []
+ },
+ "carloan": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 1,
+  "collections": []
+ },
+ "clcw": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 1,
+  "collections": []
+ },
+ "clcw26": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 8,
+  "collections": []
+ },
+ "dcprov": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 0,
+  "collections": []
+ },
+ "dependent": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 6,
+  "collections": []
+ },
+ "eic": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 24,
+  "collections": [
+   "dependent",
+   "person"
+  ]
+ },
+ "f1040": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 59,
+  "collections": [
+   "person"
+  ]
+ },
+ "f1095a": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 1,
+  "collections": []
+ },
+ "f2441": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 22,
+  "collections": [
+   "dcprov",
+   "dependent",
+   "person"
+  ]
+ },
+ "f4562": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 14,
+  "collections": []
+ },
+ "f4952": {
+  "misses": [
+   "sb:sb.line2",
+   "sb:sb.line6"
+  ],
+  "assess_missing": [
+   "sb:sb.line2",
+   "sb:sb.line6"
+  ],
+  "refs": 5,
+  "collections": []
+ },
+ "f5329": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 12,
+  "collections": []
+ },
+ "f5695": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 12,
+  "collections": []
+ },
+ "f8606": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 4,
+  "collections": []
+ },
+ "f8863": {
+  "misses": [
+   "sli:sli.claimed"
+  ],
+  "assess_missing": [
+   "sli:sli.claimed"
+  ],
+  "refs": 15,
+  "collections": [
+   "dependent",
+   "person"
+  ]
+ },
+ "f8880": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 15,
+  "collections": [
+   "person"
+  ]
+ },
+ "f8889": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 7,
+  "collections": []
+ },
+ "f8959": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 3,
+  "collections": [
+   "person"
+  ]
+ },
+ "f8960": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 9,
+  "collections": []
+ },
+ "f8962": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 53,
+  "collections": [
+   "dependent",
+   "f1095a"
+  ]
+ },
+ "f8995": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 6,
+  "collections": [
+   "person"
+  ]
+ },
+ "f8995a": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 4,
+  "collections": []
+ },
+ "ftc": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 2,
+  "collections": []
+ },
+ "g28": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 6,
+  "collections": []
+ },
+ "gift": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 0,
+  "collections": []
+ },
+ "household": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 17,
+  "collections": [
+   "dependent",
+   "person"
+  ]
+ },
+ "interest": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 0,
+  "collections": []
+ },
+ "ira": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 28,
+  "collections": [
+   "person"
+  ]
+ },
+ "ltc": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 0,
+  "collections": []
+ },
+ "mq": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 2,
+  "collections": [
+   "person"
+  ]
+ },
+ "oi8z": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 0,
+  "collections": []
+ },
+ "otjob": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 0,
+  "collections": []
+ },
+ "person": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 79,
+  "collections": [
+   "f5329",
+   "f8606",
+   "f8889",
+   "otjob",
+   "retirement",
+   "sc",
+   "tipjob",
+   "w2"
+  ]
+ },
+ "qbi": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 8,
+  "collections": []
+ },
+ "qdcg": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 6,
+  "collections": []
+ },
+ "refund": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 0,
+  "collections": []
+ },
+ "retirement": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 0,
+  "collections": []
+ },
+ "s1": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 15,
+  "collections": [
+   "interest",
+   "oi8z",
+   "person"
+  ]
+ },
+ "s179": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 7,
+  "collections": [
+   "person"
+  ]
+ },
+ "s1a": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 19,
+  "collections": [
+   "carloan",
+   "person"
+  ]
+ },
+ "s2": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 10,
+  "collections": [
+   "person"
+  ]
+ },
+ "s3": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 15,
+  "collections": [
+   "person"
+  ]
+ },
+ "s8812": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 33,
+  "collections": [
+   "dependent",
+   "person"
+  ]
+ },
+ "sa": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 11,
+  "collections": [
+   "gift",
+   "person"
+  ]
+ },
+ "sales": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 0,
+  "collections": []
+ },
+ "sb": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 1,
+  "collections": [
+   "interest"
+  ]
+ },
+ "sc": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 28,
+  "collections": [
+   "asset",
+   "ltc",
+   "scveh"
+  ]
+ },
+ "scope": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 1,
+  "collections": []
+ },
+ "scveh": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 1,
+  "collections": []
+ },
+ "sd": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 15,
+  "collections": [
+   "sales"
+  ]
+ },
+ "sdtw": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 10,
+  "collections": []
+ },
+ "se": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 0,
+  "collections": []
+ },
+ "sli": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 12,
+  "collections": []
+ },
+ "ssb": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 19,
+  "collections": [
+   "person"
+  ]
+ },
+ "tax_on_amount": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 0,
+  "collections": []
+ },
+ "tcw": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 0,
+  "collections": []
+ },
+ "tipjob": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 1,
+  "collections": []
+ },
+ "u1250": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 10,
+  "collections": []
+ },
+ "w2": {
+  "misses": [],
+  "assess_missing": [],
+  "refs": 0,
+  "collections": []
+ }
+}

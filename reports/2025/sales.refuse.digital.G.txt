@@ -158,7 +158,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: Interpretation amb.2025.filer_under_16: The second. The refusal cites the one sentence the text has about age 16 and names the register entry; it does not claim the text forbids the return. The owner's decision of 2026-10-22 (integrity plan decision 10). A return for a child under 16 is one the tool's slice does not model well (Form 8615 is refused through scope.other_line16 only when the filer knows to answer it); the refusal makes the age an explicit entry rather than a silent assumption. (i1040gi, p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025")
   (helper) Qualified educator expenses you paid in 2025
       = $0
-      cite: [i1040gi] p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts' (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts'; p. 93, 'Qualified expenses don’t include expenses for home schooling or for nonathletic supplies for courses in health or physical education.' (2025; printed date 2026-02-25; 482e9c48)
   (helper) Any qualified educator expenses for this person
       = false
       cite: [i1040gi] p. 93, Schedule 1, line 11 (2025; printed date 2026-02-25; 482e9c48)
@@ -386,9 +386,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040gi] p. 34, Line 12e, Exception 2 (2025; printed date 2026-02-25; 482e9c48)
 
 == Form 8949 and Schedule D — manually classified securities transactions — sales[a] ==
-  (helper) Classification from records: A/B/C short-term, D/E/F long-term; G–L digital assets
+  (helper) Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets. Property you inherited is long-term however long you held it. To count the holding period, begin on the day after you acquired the property and include the day you sold it. If your basis in property you received as a gift is the donor's adjusted basis, your holding period began on the day the donor's did. A block acquired on different dates is entered as separate transactions for its short-term and long-term parts.
       = G
-      cite: [i8949] pp. 2–5, holding period and checkbox classifications (2025; printed date 2026-01-20; f077991c)
+      cite: [i8949] pp. 2–5, holding period and checkbox classifications; p. 2, "To figure the holding period, begin counting on the day after you received the property and include the day you disposed of it." and "Generally, if you disposed of property that you acquired by inheritance, report the disposition as a long-term gain (or loss) regardless of how long you held the property."; p. 6, "However, you must still report the short-term gain (or loss) on the sale on Part I and the long-term gain (or loss) on Part II."; p550 p. 82, Property received as a gift, "If you receive a gift of property and your basis is determined by the donor's adjusted basis, your holding period is considered to have started on the same day the donor's holding period started." (2025; printed date 2026-01-20; f077991c)
   (helper) Digital asset box G–L
       = true
       cite: [f8949] p. 1, Part I, "(G) Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS", "(H) Short-term transactions reported on Form(s) 1099-DA showing basis was not reported to the IRS", "(I) Short-term digital asset transactions not reported to you on Form 1099-DA or Form 1099-B"; p. 2, Part II, "(J) Long-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS", "(K) Long-term transactions reported on Form(s) 1099-DA showing basis was not reported to the IRS", "(L) Long-term digital asset transactions not reported to you on Form 1099-DA or Form 1099-B" (2025; created 2025-05-05; 27451389)

@@ -17,7 +17,7 @@ DeepSeek family only. Full ruling text is in the log and its sidecar.
 
 Findings: none. Project lines unchanged.
 
-## Fix round 2
+## Fix round 2 (superseded subject)
 
 The subject after BUG-0249 reworded `ssb.terror_disability`: "for the September 11 attacks, any injury eligible for coverage
 by the September 11 Victim Compensation Fund, whether or not you made a claim". No ssb expression changed. Both families
@@ -40,3 +40,18 @@ incurred as a direct result of the attack"). It is not wider than the source and
 before. Findings: none. Observation: without benefits the project's worksheet lines 2 to 17 show as awaiting the
 Pub. 915 screens, which the interview does not ask. No amount is shown, line 18 is $0, and nothing is printed on Form
 1040 from them.
+
+## Refresh round
+
+Fresh reviews of 2026-11-03 under prompt policy source-only-computation-v3 (claude-opus-5-5 and deepseek-flash), after the refresh-round fixes (BUG-0399: lines 8 to 15 hidden for married filing separately living together, ssb.lines8_to_15). Triage: `../triage/ssb[.deepseek].json`, written by triage.py this round (executable-triage-v2: 1,565 fixtures, 500 generated returns seed 20261026, partial records from 40 bases). Triage applies only the project's shown_when, so a reply's own shown_when was compared by reading. Full ruling text: `.transcription/proposed/rf/{transcription,render}.ssb[.deepseek].json`.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| both | transcription | 6 | ambiguity (+ scope) | no completed difference | amb.2025.ira_ssb_copy; i1040gi p. 32 | Line 20 read literally. |
+| claude | transcription | 7, 9, 11 to 16 | representation and scope | lump-sum partials, refused returns | i1040gi p. 32, STOPs | Reply hides after the STOPs; project shows $0. |
+| claude | transcription | 8, 10 | model error and scope | MFS-together, refused | i1040gi p. 32, line 8 | $25,000 / $9,000 on a skipped line. |
+| claude | transcription | 17 | model error and finding (SSB-L1, low) | pub915 needed with $0 benefits; stage10.ss.none shows line 17 $17,000 and line 10 $9,000 after the line 9 STOP | i1040gi p. 32, lines 7, 9 | Project shows lines after a STOP. |
+| both | transcription | 18 | model error (+ scope) | completed candidate-unknown, $0 benefits | i1040gi p. 31 | No zero-benefit guard. |
+| deepseek | transcription | ssb.has_benefits | representation | agree on sample | i1040gi p. 31 | Same test. |
+
+Fix check: BUG-0399 is correct for married filing separately living together. Findings: SSB-L1 (low, display) in `.transcription/proposed/rf/ssb.findings.md`.

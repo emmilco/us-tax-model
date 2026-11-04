@@ -292,7 +292,7 @@ employee who died" can be read by a survivor of a retiree, a case p. 30 computes
 (PROPERTY-ROLLOVER, low): "a rollover of property other than cash" covers whole in-kind rollovers, where p. 30 names only
 "partial rollovers of property".
 
-## Backlog round
+## Backlog round (superseded subject)
 
 The subject after the income package (PENDING-4, now in BUG-0351 to BUG-0357) narrowed `retirement.special`. It now
 refuses the beneficiary of an employee who died before retiring, guaranteed payments under a life annuity contract and
@@ -331,3 +331,26 @@ retiree's tax-free amount, as p575 p. 34 requires. Findings (`.transcription/pro
 medium or higher. Low: L1 (SURVIVOR-PRE-1996-DATE), the pre-November-19-1996 item does not say a survivor answers for
 the retiree's starting date. L2 (PROPERTY-SUBSTITUTE-CASH), the item does not name keeping the property and rolling
 over cash (p575 p. 23).
+
+## Refresh round
+
+Fresh reviews of 2026-11-03 under prompt policy source-only-computation-v3 (claude-opus-5-5 and deepseek-flash), after the refresh-round fixes (BUG-0393: wording of retirement.special, retirement.rollover, retirement.exception and scope.other_income). Triage: `../triage/retirement[.deepseek].json`, written by triage.py this round (executable-triage-v2: 1,565 fixtures, 500 generated returns seed 20261026, partial records from 40 bases). Triage applies only the project's shown_when, so a reply's own shown_when was compared by reading. Full ruling text: `.transcription/proposed/rf/{transcription,render}.retirement[.deepseek].json`.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| both | transcription | retirement.is_ira | representation | agree on sample | i1040gi p. 26 | Same test. |
+| claude | transcription | retirement.has_rollover | model error and scope | completed values classm.f1040.3 r2 (+ twin, partials): code G, box 1 $0 | i1040gi pp. 27, 30 | Direct rollover is a rollover whatever the amount (fix-round-2 disagreement recurs). |
+| deepseek | transcription | retirement.has_rollover | scope | project gates on refused/incomplete returns | i1040gi p. 30 | Same predicate. |
+| both | transcription | retirement.taxable | model error and scope | generated 395 r2 (project $0.00, reply $22,738.41) | i1040gi p. 28 | No branch for cost recovered. |
+| claude | transcription | retirement.amount_a | model error and scope | generated 314 r2 (plan annuity, cost $0; $46,209.90 on 5a) | i1040gi p. 28 | Fully taxable: no line 5a entry. |
+| deepseek | transcription | retirement.amount_a | model error and scope | 53 completed values (classm.s2.3.deepseek r1, classm.f5329.2.deepseek r1, classm.ira.2 r2 checked) | i1040gi pp. 26, 28 | Box 1 copied to 4a/5a on fully taxable entries. |
+| both | transcription | retirement.sav_amount | model error and scope | 6 completed candidate-unknown (partials) | f8880 p. 2, line 4 | Questions asked of every entry. |
+| claude | transcription | retirement.l1, retirement.l2 | ambiguity, model error and scope | generated 175 r1, 348 r1 (code 2) values; early_screen unknowns | amb.2025.f5329_line1_codes; i5329 pp. 3, 5 | Register's second reading; screen on every entry. |
+| deepseek | transcription | retirement.l1, retirement.l2 | model error and scope | no values; early_screen unknowns | i5329 pp. 3, 5 | Screen on every entry. |
+| both | transcription | retirement.l2_e05/e09/e19/e22/e23, retirement.is_e23 | model error | 22 completed candidate-unknown on retirement.exception (claude is_e23: 1, classm.ira.2) | i5329 p. 5 | Exception tested before the code. |
+| both | transcription | retirement.l1_s, retirement.l2_s | scope | refused/incomplete only | i5329 p. 5, line 4 | Same share. |
+| both | transcription | (SMW 1), (SMW 2), (SMW 5) to (SMW 11) | model error | by reading; triage counts are artifacts | i1040gi pp. 28-30 | Claude: worksheet shown for a plan annuity with no cost left; DeepSeek: shown_when on retirement.annuity alone. |
+| both | transcription | (SMW 4) | model error | completed candidate-unknown on used_last_year | i1040gi p. 29 | No shown_when. |
+| both | render | (SMW 2), (SMW 4), (SMW 6) to (SMW 8), (SMW 10), (SMW 11) | scope | retirement.special and retirement.annuity text checked | i1040gi pp. 29-30 | Death benefit exclusion and pre-November 19, 1996 dates refused. |
+
+Fix check: the BUG-0393 rewordings change no expression and the items the render rulings rely on are unchanged. Findings: none.

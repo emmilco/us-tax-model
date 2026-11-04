@@ -52,22 +52,33 @@ form:
       locator: Instructions for Recipient, Box 5
   - id: retirement.rollover
     printed: (helper)
-    label: Amount you rolled over within 60 days to a qualified plan or IRA (not a Roth account)
+    label: Amount you rolled over to a qualified plan or IRA (not a Roth account) within 60 days, or later under a waiver
+      or frozen-deposit extension, or recontributed to an IRA within 120 days after a first-home purchase was canceled or delayed
     type: NonNegDollars
     expr:
       op: input
       source: Amount of this distribution you rolled over within 60 days to a qualified plan or an IRA other than
-        a Roth IRA (for a direct rollover, code G, the whole distribution is treated as rolled over)
+        a Roth IRA (for a direct rollover, code G, the whole distribution is treated as rolled over). Also count an amount
+        rolled over after the 60 days if the 60-day requirement was waived (you qualify for an automatic waiver, you
+        self-certify that you meet the requirements of a waiver, or you received a private letter ruling granting a waiver)
+        or the period was extended because the amount was a frozen deposit, and an IRA distribution to buy, build or rebuild
+        a first home that you contributed back to a traditional IRA within 120 days of the distribution because the purchase
+        or construction was canceled or delayed.
     cite:
       doc: i1040gi
-      locator: p. 27, Exception 1 (IRA rollovers); p. 30, Rollovers
+      locator: p. 27, Exception 1 (IRA rollovers); p. 30, Rollovers; p575 p. 23, Ways to get a waiver of the 60-day rollover
+        requirement, "There are three ways to obtain a waiver of the 60-day requirement." and Frozen deposits, "The 60-day
+        rollover period is extended by the period for which the amount is a frozen deposit"; p590b p. 28, "the purchase or
+        construction was canceled or delayed, you could generally contribute the amount of the distribution to an IRA within
+        120 days of the distribution and not pay income tax or the 10% additional tax on early distributions. This
+        contribution is treated as a rollover contribution to the IRA."
   - id: retirement.special
     printed: (helper)
     label: 'Does this distribution involve any of these: a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess
       deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible
       contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025;
       a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972;
-      a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree''s joint and survivor annuity is not one of these); a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead; a rollover of a distribution under a qualified domestic relations order; a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree''s annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?'
+      a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree''s joint and survivor annuity is not one of these); a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead; a rollover of a distribution under a qualified domestic relations order; a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one (Form 8915-F); a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree''s annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?'
     type: Bool
     expr:
       op: input
@@ -75,7 +86,7 @@ form:
         deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible
         contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025;
         a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972;
-        a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree''s joint and survivor annuity is not one of these); a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead; a rollover of a distribution under a qualified domestic relations order;
+        a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree''s joint and survivor annuity is not one of these); a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead; a rollover of a distribution under a qualified domestic relations order; a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one (Form 8915-F);
         a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree''s annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?'
     cite:
       doc: i1040gi
@@ -92,7 +103,11 @@ form:
         guaranteed payments as the decedent’s beneficiary under a life annuity contract"; p575 p. 23, Rollovers of property,
         "To roll over an eligible rollover distribution of property, you must either roll over the actual property distributed
         or sell it and roll over the proceeds", "You can’t keep the distributed property and roll over cash or other property."
-        and "If you roll over only part of the proceeds, you are taxed on the part you keep"'
+        and "If you roll over only part of the proceeds, you are taxed on the part you keep"; p575 p. 34, "If you received
+        a qualified disaster recovery distribution, it is taxable but isn’t subject to the 10% additional tax on early
+        distributions" and "the distribution is included in income ratably over 3 years unless you elect to report the
+        entire amount in the year of distribution"; p575 p. 35, "Use Form 8915-F to report qualified disaster recovery
+        distributions and repayments."'
   - id: retirement.annuity
     printed: (helper)
     label: Is this a pension or annuity from a qualified plan, section 403(b) plan or tax-sheltered annuity, paid
@@ -1327,11 +1342,25 @@ form:
       source: Which exception to the 10% additional tax applies to this distribution? Enter the number from the table in the
         Form 5329 instructions (for example 02 substantially equal periodic payments, 03 disability, 05 medical expenses, 08
         higher education expenses, 09 first home, 12 incorrectly coded as early, 19 birth or adoption, 20 terminal illness),
-        or none.
+        or none. An exception applies only if its conditions are met, for example 01, a qualified retirement plan distribution
+        (not an IRA) received after you separated from service in or after the year you reached age 55 (age 50 for qualified
+        public safety employees and private sector firefighters) or after 25 years of service under the plan, whichever is
+        earlier; 02, payments made at least annually for your life (or life expectancy) or the joint lives (or joint life
+        expectancies) of you and your designated beneficiary, which from an employer plan must begin after separation from
+        service; 03, total and permanent disability, if you can furnish proof that you can't do any substantial gainful
+        activity because of your physical or mental condition and a medical determination has been made that the condition
+        can be expected to result in death or to be of long, continued, and indefinite duration; 04, a distribution due to
+        death (not from a modified endowment contract).
     cite:
       doc: i5329
       locator: p. 5, Line 2, "Enter on line 2 the amount that you can exclude.", "In the space provided, enter the applicable
-        exception number (01–23). If more than one exception applies, enter 99."
+        exception number (01–23). If more than one exception applies, enter 99.", "Qualified retirement plan distributions
+        (doesn’t apply to IRAs) you received after separation from service when the separation from service occurs in or
+        after the year you reach age 55 (age 50 for qualified public safety employees and private sector firefighters) or
+        25 years of service under the plan, whichever is earlier.", "(if from an employer plan, payments must begin after
+        separation from service)", "You are considered disabled if you can furnish proof that you can’t do any substantial
+        gainful activity because of your physical or mental condition." and "Distributions due to death (doesn’t apply to
+        modified endowment contracts)."
   - id: retirement.has_exception
     printed: (helper)
     label: An exception applies

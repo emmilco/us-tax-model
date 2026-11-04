@@ -125,6 +125,13 @@
   {
    "printed": "Step 3",
    "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
+   "model": "The IRS text says 'Net earnings from self-employment. Subtract step 2 from step 1'; it has no zero-or-less floor, while the restatement adds one.",
+   "ruling": "Ruling: ambiguity; amb.2025.sep_loss_floor (BUG-0181). p560 p. 39, \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" prints no floor; person.sep_s3 floors Step 3 at zero and its English says so, the register's chosen reading. As the prior ruling. Project stands.",
+   "context": "6c07ed438381c1ad324761dd895dd27244a41fab33394fe0f17f33bb83a97984"
+  },
+  {
+   "printed": "Step 3",
+   "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
    "model": "The IRS worksheet says only 'Net earnings from self-employment. Subtract step 2 from step 1'; it does not say 'If zero or less, enter -0-,' so the added zero floor changes a negative Step 3.",
    "ruling": "Ruling: ambiguity; amb.2025.sep_loss_floor (BUG-0181, the disposition of the round-4 finding BUG-0180). p560 p. 39, Deduction Worksheet for Self-Employed: \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" prints no floor. The model read the page and the English correctly: person.sep_s3 floors Step 3 at zero and the English says so (\"If zero or less, enter -0-\"). The register records both readings and chooses the floor (\"A maximum deductible contribution below zero has no meaning\"; where both readings complete the return no Form 1040 or Schedule 1 amount differs, only the printed worksheet steps), naming person.sep_s3 in its chosen reading. Unchanged since round 1; fix round 3 changed only the person.tin wording (BUG-0256), which does not touch person.sep_s3 or its English, and the reply repeats the same reading. Project stands.",
    "context": "2d24d31b75b8d7cfa8b2ddbdc6c92b63d4610d9b7ec9838c193cbd8c02c59730"

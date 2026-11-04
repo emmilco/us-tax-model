@@ -7,12 +7,12 @@ The rendered English of every printed line of `Form 7206, line 2 — qualified l
 | date | 2026-11-03 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 0a51f41f1998b0894db66094f29f41374b76073dc0ae97f8467b0af64660a45e |
+| prompt sha256 | 90c2366ed9d8f50b8d7956c2cacca1960f933a6afec172997f23ad21b6de8b48 |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
-| subject sha256 | fc82dc24c2a922c439a73bcedac40d3a03522d6a921a9ff0bfa927cc2e1939b4 |
+| subject sha256 | 31030eb15df3d3d20594a29784d29e841d2d7017e0ac853955e00efddac388ba |
 | lines judged | 2 |
 | match / mismatch / unclear / missing | 2 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |
@@ -29,12 +29,12 @@ The rendered English of every printed line of `Form 7206, line 2 — qualified l
 ### 2(a) — Total payments made for that person during the year
 Status: **MATCH**
 
-Model: Line 2(a) asks for 'Total payments made for that person during the year' under a qualified long-term care contract, and its note excludes months eligible for an employer-subsidized long-term care plan (yours, your spouse's, or that of your dependent's or under-27 child's employer). The restatement adds the covered-person rule (you, spouse, dependents, child under 27) and the one-form-per-business rule, which agree with the form and instructions. The cap on the total across all Forms 7206 per person applies across forms, not to this line.
+Model: This matches line 2(a), 'Total payments made for that person during the year,' for a qualified long-term care insurance contract. It carries the line 2 note excluding months of eligibility for a subsidized long-term care plan, the persons who may be covered (you, spouse, dependents, child under 27), and the instructions' definition of a qualified contract.
 
 ### 2(b) — The amount for that person's age
 Status: **MATCH**
 
-Model: Line 2(b) says to use 'the person's age at the end of the tax year' with the bands 40 or younger, 41 to 50, 51 to 60, 61 to 70, and 71 or older, which the age helper's enum reproduces. The program's lookup table values are not shown, so they could not be checked against the printed $480/$900/$1,800/$4,810/$6,020.
+Model: This matches line 2(b): the amount by the person's age at the end of the tax year is $480 (40 or younger), $900 (41–50), $1,800 (51–60), $4,810 (61–70) or $6,020 (71 or older). The age helper's five ranges match these brackets. The instructions also cap each person's total on line 2 across all Forms 7206 at that limit, but this applies to the line 2 entry, not to the 2(b) amount.
 
 ## Raw response
 
@@ -43,9 +43,9 @@ Model: Line 2(b) says to use 'the person's age at the end of the tax year' with 
 lines:
   - key: "2(a)"
     status: MATCH
-    reason: "Line 2(a) asks for 'Total payments made for that person during the year' under a qualified long-term care contract, and its note excludes months eligible for an employer-subsidized long-term care plan (yours, your spouse's, or that of your dependent's or under-27 child's employer). The restatement adds the covered-person rule (you, spouse, dependents, child under 27) and the one-form-per-business rule, which agree with the form and instructions. The cap on the total across all Forms 7206 per person applies across forms, not to this line."
+    reason: "This matches line 2(a), 'Total payments made for that person during the year,' for a qualified long-term care insurance contract. It carries the line 2 note excluding months of eligibility for a subsidized long-term care plan, the persons who may be covered (you, spouse, dependents, child under 27), and the instructions' definition of a qualified contract."
   - key: "2(b)"
     status: MATCH
-    reason: "Line 2(b) says to use 'the person's age at the end of the tax year' with the bands 40 or younger, 41 to 50, 51 to 60, 61 to 70, and 71 or older, which the age helper's enum reproduces. The program's lookup table values are not shown, so they could not be checked against the printed $480/$900/$1,800/$4,810/$6,020."
+    reason: "This matches line 2(b): the amount by the person's age at the end of the tax year is $480 (40 or younger), $900 (41–50), $1,800 (51–60), $4,810 (61–70) or $6,020 (71 or older). The age helper's five ranges match these brackets. The instructions also cap each person's total on line 2 across all Forms 7206 at that limit, but this applies to the line 2 entry, not to the 2(b) amount."
 ```
 ```
