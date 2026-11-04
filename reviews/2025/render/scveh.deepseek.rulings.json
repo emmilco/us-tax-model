@@ -27,6 +27,13 @@
   {
    "printed": "(b)",
    "restated": "Input — The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in service earlier is outside this tool)",
+   "model": "IRS column (b) says 'Date placed in service. Enter the date the property was placed in service'; the restatement asks only for the year, omitting the date and the conversion-date rule.",
+   "ruling": "Ruling: representation; restatement accepted. i4562 p. 14, Column (b), \"Enter the date the property was placed in service\": the tool needs the year (and the quarter, asked separately, for 2025 property); the filer writes the date from their records.",
+   "context": "81b74c32cf7b55bda77a1d552f549139c6eadfbf6c3c572524ef2821b44fd162"
+  },
+  {
+   "printed": "(b)",
+   "restated": "Input — The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in service earlier is outside this tool)",
    "model": "IRS says 'Column (b)—Date placed in service. Enter the date the property was placed in service'; the restatement asks only for the year.",
    "ruling": "Ruling: representation; restatement accepted. The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; the filer writes the full date on the form from their own records. No value depends on the month or day except through the quarter, asked separately.",
    "context": "666a951d2c298d4fe1840fea772d3fb97120ab013823d2e09e183799e840eaa6"
@@ -44,6 +51,13 @@
    "model": "IRS says 'But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount'; the restatement omits the inclusion amount.",
    "ruling": "Ruling: refusal located elsewhere; restatement accepted. sc.special refuses \"an inclusion amount for leased property\" for the business, read for every Schedule C, so the business portion of the lease payments is the line 20a amount on a computed return.",
    "context": "666a951d2c298d4fe1840fea772d3fb97120ab013823d2e09e183799e840eaa6"
+  },
+  {
+   "printed": "20a",
+   "restated": "Choose — [helper \"Leased and on actual expenses\" = true → helper \"The business portion of the lease payments\"] [helper \"Leased and on actual expenses\" = false → helper \"Zero\"]",
+   "model": "IRS says 'if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount'; the restatement uses only the business portion of lease payments and omits the inclusion amount.",
+   "ruling": "Ruling: scope; refusal located elsewhere, restatement accepted. i1040sc line 20a, \"if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount\": sc.special refuses \"an inclusion amount for leased property\" for the business, read for every Schedule C (the wording is unchanged by this package; checked in forms/2025/sc.yaml).",
+   "context": "81b74c32cf7b55bda77a1d552f549139c6eadfbf6c3c572524ef2821b44fd162"
   },
   {
    "printed": "20a",
@@ -78,7 +92,7 @@
    "restated": "Input — The year you first placed this vehicle in service for business purposes (for example 2023)",
    "model": "IRS line 43 asks 'When did you place your vehicle in service for business purposes? (month/day/year)'; the restatement asks only for the year, omitting month and day.",
    "ruling": "Ruling: representation; restatement accepted. The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; the filer writes the full date on the form from their own records. No value depends on the month or day except through the quarter, asked separately.",
-   "context": "062fe51d11c052b605e0fcc5602f5848224140a09312a63031bbc358540c8b1a"
+   "context": "81b74c32cf7b55bda77a1d552f549139c6eadfbf6c3c572524ef2821b44fd162"
   },
   {
    "printed": "43",

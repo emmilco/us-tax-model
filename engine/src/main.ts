@@ -16,7 +16,7 @@ import { runBuild } from "./build.js";
 import { renderAll } from "./render.js";
 import { loadCanonical } from "./canonical.js";
 import { allTargets, evaluate } from "./eval.js";
-import { renderValuesSheet, renderValuesHtml, resultToJson } from "./output.js";
+import { renderValuesSheet, renderValuesHtml, resultToJson, standingNotices } from "./output.js";
 import { runConjecture, runEicConjecture } from "./conjecture.js";
 import { coverageReport, evidenceReport, recordFixtures, testFixtures, reviewStage2, reviewStage3, reviewStage4, reviewStage5 } from "./fixtures.js";
 import { differential } from "./differential.js";
@@ -79,16 +79,16 @@ if (command === "review-stage5") {
   }
   if (json && html) throw new Error("select either --json or --html");
   if (batchPath) {
-    // Batch mode: a JSON array of { id, inputs }; emits { cases: { id: <eval json> } }, or
+    // Batch mode: a JSON array of { id, inputs }; emits { notices, cases: { id: <eval json> } }, or
     // { error } for a case whose inputs the data rejects (the others are still evaluated).
     const data = loadCanonical();
     const cases = JSON.parse(readFileSync(batchPath, "utf-8")) as { id: string; inputs: Record<string, number | boolean | string> }[];
     // Written one case at a time: the whole document is larger than the longest string V8
     // allows. Written without process.exit so a large payload is not truncated on a pipe.
-    process.stdout.write('{"cases":{');
+    process.stdout.write(`{"notices":${JSON.stringify(standingNotices())},"cases":{`);
     cases.forEach((c, i) => {
       let out: string;
-      try { out = resultToJson(evaluate(data, c.inputs, targetsOverride ?? allTargets(data, c.inputs))); }
+      try { out = resultToJson(evaluate(data, c.inputs, targetsOverride ?? allTargets(data, c.inputs)), false); }
       catch (e) { out = JSON.stringify({ error: (e as Error).message }); }
       process.stdout.write(`${i ? "," : ""}${JSON.stringify(c.id)}:${out}`);
     });

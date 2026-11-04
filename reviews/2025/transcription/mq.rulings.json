@@ -1,0 +1,13 @@
+{
+ "kind": "transcription",
+ "form": "mq",
+ "rulings": [
+  {
+   "printed": "mq.applies",
+   "project": "{\"args\": [{\"amount\": {\"collection\": \"person\", \"field\": \"person.mq_total\", \"op\": \"sum_over\", \"where\": null}, \"count\": {\"param\": \"sc.count2\"}, \"op\": \"multiply_count\"}, {\"amount\": {\"collection\": \"person\", \"field\": \"person.mq_q4\", \"op\": \"sum_over\", \"where\": null}, \"count\": {\"param\": \"sc.count5\"}, \"op\": \"multiply_count\"}], \"test\": \"lt\"}",
+   "second": "{\"args\": [{\"const\": 41, \"type\": \"Count\"}, {\"cap\": 40, \"op\": \"percent_floor\", \"part\": {\"collection\": \"person\", \"field\": \"person.mq_q4\", \"op\": \"sum_over\", \"where\": null}, \"whole\": {\"of\": [{\"const\": 1}, {\"collection\": \"person\", \"field\": \"person.mq_total\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"larger_of\"}}], \"test\": \"le\"}",
+   "ruling": "Ruling: representation; p946 p. 34, Which Convention Applies?, Mid-quarter convention: the convention applies if \"the total depreciable bases of MACRS property you placed in service during the last 3 months of the tax year (...) are more than 40% of the total depreciable bases of all MACRS property you placed in service during the entire year\". The project tests 2 x total < 5 x fourth-quarter bases; the reply's percent_floor(fourth-quarter, larger of the constant 1 and the total, cap 40) returns 41 exactly when 100 x fourth-quarter > 40 x the whole (engine percent_floor), the same strict test, and with no basis both give false. executable-triage-v2 (`reviews/2025/transcription/triage/mq.json`; 1,495 fixtures, 500 generated returns seed 20261026, 0 partial records; 1,995 comparisons): 1,995 of 1,995 agree; differences none; on returns the full interview completes: none. No difference on any compared record. The package change to this form only links amb.2025.mq_joint; the expression is unchanged.",
+   "context": "66c08b6c6e601128148671b5e3669fd76b905811abcc7728192f25946a84b442"
+  }
+ ]
+}

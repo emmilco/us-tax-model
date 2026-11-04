@@ -11,6 +11,13 @@
   {
    "printed": "1",
    "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
+   "model": "The IRS line is \"Enter the total of all collectibles gain or (loss) from items you reported on Form 8949, Part II\", but the program always enters $0. Its refusals cover only distribution issues, so none excludes Form 8949 Part II collectibles transactions.",
+   "ruling": "Ruling: scope; i1040sd p. 11, line 1. Refusal located elsewhere; project retained. Form 8949 Part II collectibles: sales.special refuses them per sale; constructed on classm.g28.2 (node engine/dist/main.js eval): sales[s1].special true refuses sd.line17, g28.line7, u1250.line18 and f1040.line7a. The income package widened the question to collectibles held through a partnership, S corporation or trust (PENDING-6). In scope line 1 is $0.00. The div refusals are not the only screens; the model saw only this line's own refusals. Same ruling as Stage 20.",
+   "context": "dd726293ea8c650fc25a7f2a0819e2de7de2d6ee37ee0615826371945bd4c339"
+  },
+  {
+   "printed": "1",
+   "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
    "model": "The IRS line says \"Enter the total of all collectibles gain or (loss) from items you reported on Form 8949, Part II\", but the restatement always enters $0. None of the refusals names Form 8949 collectibles sales as out of scope; they only cover section 1202, AMT, section 897/liquidation/basis, and inconsistent 1099-DIV amounts.",
    "ruling": "Ruling: scope; i1040sd p. 11, 28% Rate Gain Worksheet, line 1: \"Enter the total of all collectibles gain or (loss) from items you reported on Form 8949, Part II\". Collectibles on Form 8949 Part II are refused at the sale by sales.special (\"Does this sale involve collectibles ..., qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?\"), through sales.one, before any Schedule D total (checked: sales[s2].special true on classm.g28.2 gives sd.line7, g28.line7, u1250.line18 and f1040.line7a refused). Line 1 is $0.00 only behind that refusal. The refusal sits on Schedule D and the sale, not on this line's derivation, so the rendered English the reviewer saw did not name it. The line is shown only when Schedule D line 17 is Yes (BUG-0183), which the reviewer did not contest. No change to the data.",
    "context": "dd726293ea8c650fc25a7f2a0819e2de7de2d6ee37ee0615826371945bd4c339"
@@ -36,6 +43,13 @@
   {
    "printed": "3",
    "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
+   "model": "The IRS line is \"the total of all collectibles gain or (loss) from Form 4684, line 4 ...; Form 6252; Form 6781, Part II; and Form 8824\", but the program enters $0. No refusal names any of these forms as outside scope.",
+   "ruling": "Ruling: scope; i1040sd p. 11, line 3. Refusal located elsewhere; project retained. Forms 4684, 6252, 6781 and 8824: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\") refuses them; constructed on classm.g28.2 (node engine/dist/main.js eval): sd.other_forms true refuses sd.line17, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a. In scope line 3 is $0.00. Same ruling as Stage 20.",
+   "context": "dd726293ea8c650fc25a7f2a0819e2de7de2d6ee37ee0615826371945bd4c339"
+  },
+  {
+   "printed": "3",
+   "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
    "model": "The IRS line requires collectibles gain or (loss) \"from Form 4684, line 4 (but only if Form 4684, line 15, is more than zero); Form 6252; Form 6781, Part II; and Form 8824.\" The program enters $0, and no refusal names those forms as outside scope.",
    "ruling": "Ruling: refusal located elsewhere; project retained. Forms 4684, 6252, 6781 and 8824 are refused by sd.other_forms ('Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?'), which refuses Schedule D and through it line 6 and line 7 of this worksheet and Form 1040 line 7a (checked: sd.other_forms true gives g28.line7 and f1040.line7a refused). No change to the data."
   },
@@ -51,6 +65,13 @@
    "restated": "Enter the amount from div helper \"Collectibles (28%) gain, box 2d\".",
    "model": "IRS line 4 asks for collectibles gain reported on 'Form 1099-DIV, box 2d; Form 2439, box 1d; and Schedule K-1 from a partnership, S corporation, estate, or trust'. The program uses only box 2d, and no refusal names the omitted sources.",
    "ruling": "Ruling: scope; project retained. Form 2439 box 1d and Schedule K-1 amounts are refused before this worksheet is used: `sd.count` refuses on `sd.other_forms` (\"Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or Schedule K-1?\") and on `sd.carryover` (\"Is there a capital loss carryover from the prior year?\"), and that refusal reaches Form 1040 line 7a through Schedule D lines 7, 15 and 16, so no return with those items is prepared. Line 4 is Form 1099-DIV box 2d alone within the slice. No change to the data."
+  },
+  {
+   "printed": "4",
+   "restated": "Enter the amount from div helper \"Collectibles (28%) gain, box 2d\".",
+   "model": "The IRS line is the total collectibles gain reported on \"Form 1099-DIV, box 2d; Form 2439, box 1d; and Schedule K-1 from a partnership, S corporation, estate, or trust\", but the program uses only box 2d. Form 2439 box 1d and K-1 amounts are omitted with no refusal.",
+   "ruling": "Ruling: scope; i1040sd p. 11, line 4. Refusal located elsewhere; project retained. Form 2439 box 1d and Schedule K-1 collectibles gain: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\") refuses them; constructed on classm.g28.2 (node engine/dist/main.js eval): sd.other_forms true refuses sd.line17, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a. In scope line 4 is Form 1099-DIV box 2d alone. Same ruling as Stage 20.",
+   "context": "dd726293ea8c650fc25a7f2a0819e2de7de2d6ee37ee0615826371945bd4c339"
   },
   {
    "printed": "4",
@@ -76,6 +97,13 @@
    "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
    "model": "The IRS line says \"Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D.\" The program enters $0, and no refusal excludes filers with a carryover or a K-1 code D amount.",
    "ruling": "Ruling: refusal located elsewhere; project retained. A long-term capital loss carryover (Schedule D line 14) is refused by sd.carryover ('Is there a capital loss carried into 2025 from any earlier year?'), and a Schedule K-1 (Form 1041) box 11 code D amount by sd.other_forms ('capital gains or losses on a Schedule K-1') and scope.schedule1 ('estates or trusts (Schedule E or a Schedule K-1)'); both refuse line 7 of this worksheet and Form 1040 line 7a (checked: sd.carryover true gives g28.line7 refused). A carryover must be entered here as a loss when carryovers come into scope. No change to the data."
+  },
+  {
+   "printed": "5",
+   "restated": "Enter the amount from sd line 14.",
+   "model": "The IRS line is \"Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D\", but the program uses only Schedule D line 14. It drops the Form 1041 K-1 code D carryover and has no refusal for it.",
+   "ruling": "Ruling: scope; i1040sd p. 11, line 5, printed \"( )\". Refusal located elsewhere; project retained. The Schedule K-1 (Form 1041) box 11 code D carryover is a capital loss on a Schedule K-1: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\") refuses them; constructed on classm.g28.2 (node engine/dist/main.js eval): sd.other_forms true refuses sd.line17, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a. The project's line 5 is Schedule D line 14 held negative, the page's entry; the model raises the K-1 omission, not the sign (T-140). Same ruling as Stage 20.",
+   "context": "dd726293ea8c650fc25a7f2a0819e2de7de2d6ee37ee0615826371945bd4c339"
   },
   {
    "printed": "5",

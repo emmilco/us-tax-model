@@ -1,50 +1,3792 @@
 {
  "bank": {
   "evaluation_failures": 0,
-  "fixtures": 1159,
+  "fixtures": 1495,
   "generated": 500,
   "partial_bases": 40,
   "partial_records": 0,
+  "return_states": {
+   "completed": 332,
+   "incomplete": 753,
+   "refused": 910
+  },
   "seed": 20261026
  },
  "errors": [],
  "failures": [],
  "family": "claude",
  "form": "g28",
+ "invalid_lines": [],
  "lines": [
   {
    "absent": 0,
-   "agree": 1539,
-   "candidate": "g28.line6",
-   "compared": 1659,
-   "differ": 120,
-   "handle": "6",
-   "in_scope": 1584,
-   "in_scope_agree": 1464,
+   "agree": 1836,
+   "candidate": "g28.line1",
+   "compared": 1995,
+   "completed_witnesses": [],
+   "differ": 159,
+   "handle": "1",
+   "in_scope": 1882,
+   "in_scope_agree": 1836,
+   "invalid": 0,
    "kinds": {
-    "candidate-shows-skipped": 120
+    "project-refuses": 113,
+    "project-unknown": 46
+   },
+   "kinds_by_return": {
+    "incomplete": {
+     "project-unknown": 33
+    },
+    "refused": {
+     "project-refuses": 113,
+     "project-unknown": 13
+    }
+   },
+   "open_at_triage": true,
+   "project": "g28.line1",
+   "shown_when": "g28.reached",
+   "sources": {
+    "fixture": 1495,
+    "generated": 500
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cite": {
+         "doc": "f1099div",
+         "locator": "Instructions for Recipient, boxes 1\u201316"
+        },
+        "form": "Form 1099-DIV special distribution treatment",
+        "gate": "div.unsupported",
+        "kind": "refusal",
+        "remedy": "Prepare the required section 897/liquidation treatment or reconcile return-of-capital basis and any excess gain."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "input": "div.box2c",
+        "kind": "unknown",
+        "reason": "no input supplied for div.box2c"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cite": {
+         "doc": "f1099div",
+         "locator": "Instructions for Recipient, boxes 1a, 1b and 5"
+        },
+        "form": "Form 1099-DIV dividend components",
+        "gate": "div.bad_components",
+        "kind": "refusal",
+        "remedy": "Correct the supplied totals: qualified dividends and section 199A dividends are portions of ordinary dividends."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.carloan.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cite": {
+         "doc": "f1099div",
+         "locator": "Instructions for Recipient, boxes 1a, 1b and 5"
+        },
+        "form": "Form 1099-DIV dividend components",
+        "gate": "div.bad_components",
+        "kind": "refusal",
+        "remedy": "Correct the supplied totals: qualified dividends and section 199A dividends are portions of ordinary dividends."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dcprov.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cite": {
+         "doc": "f1099div",
+         "locator": "Instructions for Recipient, boxes 1a, 1b and 5"
+        },
+        "form": "Form 1099-DIV dividend components",
+        "gate": "div.bad_components",
+        "kind": "refusal",
+        "remedy": "Correct the supplied totals: qualified dividends and section 199A dividends are portions of ordinary dividends."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8606.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cite": {
+         "doc": "f1099div",
+         "locator": "Instructions for Recipient, boxes 1a, 1b and 5"
+        },
+        "form": "Form 1099-DIV dividend components",
+        "gate": "div.bad_components",
+        "kind": "refusal",
+        "remedy": "Correct the supplied totals: qualified dividends and section 199A dividends are portions of ordinary dividends."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8959.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "input": "div.box2c",
+        "kind": "unknown",
+        "reason": "no input supplied for div.box2c"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "input": "div.box2c",
+        "kind": "unknown",
+        "reason": "no input supplied for div.box2c"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "mutation.t2.single_no_edu_no_spouse_col",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "input": "div.box2c",
+        "kind": "unknown",
+        "reason": "no input supplied for div.box2c"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.cleanup.refuse.f1040_line16",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "input": "div.box2c",
+        "kind": "unknown",
+        "reason": "no input supplied for div.box2c"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.cleanup.refuse.scope_credits",
+      "kind": "fixture"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 1836,
+   "candidate": "g28.line2",
+   "compared": 1995,
+   "completed_witnesses": [],
+   "differ": 159,
+   "handle": "2",
+   "in_scope": 1882,
+   "in_scope_agree": 1836,
+   "invalid": 0,
+   "kinds": {
+    "project-refuses": 113,
+    "project-unknown": 46
+   },
+   "kinds_by_return": {
+    "incomplete": {
+     "project-unknown": 33
+    },
+    "refused": {
+     "project-refuses": 113,
+     "project-unknown": 13
+    }
+   },
+   "open_at_triage": true,
+   "project": "g28.line2",
+   "shown_when": "g28.reached",
+   "sources": {
+    "fixture": 1495,
+    "generated": 500
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cite": {
+         "doc": "f1099div",
+         "locator": "Instructions for Recipient, boxes 1\u201316"
+        },
+        "form": "Form 1099-DIV special distribution treatment",
+        "gate": "div.unsupported",
+        "kind": "refusal",
+        "remedy": "Prepare the required section 897/liquidation treatment or reconcile return-of-capital basis and any excess gain."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "input": "div.box2c",
+        "kind": "unknown",
+        "reason": "no input supplied for div.box2c"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cite": {
+         "doc": "f1099div",
+         "locator": "Instructions for Recipient, boxes 1a, 1b and 5"
+        },
+        "form": "Form 1099-DIV dividend components",
+        "gate": "div.bad_components",
+        "kind": "refusal",
+        "remedy": "Correct the supplied totals: qualified dividends and section 199A dividends are portions of ordinary dividends."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.carloan.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cite": {
+         "doc": "f1099div",
+         "locator": "Instructions for Recipient, boxes 1a, 1b and 5"
+        },
+        "form": "Form 1099-DIV dividend components",
+        "gate": "div.bad_components",
+        "kind": "refusal",
+        "remedy": "Correct the supplied totals: qualified dividends and section 199A dividends are portions of ordinary dividends."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dcprov.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cite": {
+         "doc": "f1099div",
+         "locator": "Instructions for Recipient, boxes 1a, 1b and 5"
+        },
+        "form": "Form 1099-DIV dividend components",
+        "gate": "div.bad_components",
+        "kind": "refusal",
+        "remedy": "Correct the supplied totals: qualified dividends and section 199A dividends are portions of ordinary dividends."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8606.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cite": {
+         "doc": "f1099div",
+         "locator": "Instructions for Recipient, boxes 1a, 1b and 5"
+        },
+        "form": "Form 1099-DIV dividend components",
+        "gate": "div.bad_components",
+        "kind": "refusal",
+        "remedy": "Correct the supplied totals: qualified dividends and section 199A dividends are portions of ordinary dividends."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8959.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "input": "div.box2c",
+        "kind": "unknown",
+        "reason": "no input supplied for div.box2c"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.f8889.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "input": "div.box2c",
+        "kind": "unknown",
+        "reason": "no input supplied for div.box2c"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "mutation.t2.single_no_edu_no_spouse_col",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "input": "div.box2c",
+        "kind": "unknown",
+        "reason": "no input supplied for div.box2c"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.cleanup.refuse.f1040_line16",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "input": "div.box2c",
+        "kind": "unknown",
+        "reason": "no input supplied for div.box2c"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.cleanup.refuse.scope_credits",
+      "kind": "fixture"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 1894,
+   "candidate": "g28.line3",
+   "compared": 1995,
+   "completed_witnesses": [],
+   "differ": 101,
+   "handle": "3",
+   "in_scope": 1882,
+   "in_scope_agree": 1876,
+   "invalid": 0,
+   "kinds": {
+    "project-refuses": 95,
+    "project-unknown": 6
+   },
+   "kinds_by_return": {
+    "incomplete": {
+     "project-unknown": 5
+    },
+    "refused": {
+     "project-refuses": 95,
+     "project-unknown": 1
+    }
+   },
+   "open_at_triage": true,
+   "project": "g28.line3",
+   "shown_when": "g28.reached",
+   "sources": {
+    "fixture": 1495,
+    "generated": 500
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cite": {
+         "doc": "f1099div",
+         "locator": "Instructions for Recipient, boxes 1\u201316"
+        },
+        "form": "Form 1099-DIV special distribution treatment",
+        "gate": "div.unsupported",
+        "kind": "refusal",
+        "remedy": "Prepare the required section 897/liquidation treatment or reconcile return-of-capital basis and any excess gain."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.carloan.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cite": {
+         "doc": "f1099div",
+         "locator": "Instructions for Recipient, boxes 1a, 1b and 5"
+        },
+        "form": "Form 1099-DIV dividend components",
+        "gate": "div.bad_components",
+        "kind": "refusal",
+        "remedy": "Correct the supplied totals: qualified dividends and section 199A dividends are portions of ordinary dividends."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dcprov.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cite": {
+         "doc": "f1099div",
+         "locator": "Instructions for Recipient, boxes 1a, 1b and 5"
+        },
+        "form": "Form 1099-DIV dividend components",
+        "gate": "div.bad_components",
+        "kind": "refusal",
+        "remedy": "Correct the supplied totals: qualified dividends and section 199A dividends are portions of ordinary dividends."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8606.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cite": {
+         "doc": "f1099div",
+         "locator": "Instructions for Recipient, boxes 1a, 1b and 5"
+        },
+        "form": "Form 1099-DIV dividend components",
+        "gate": "div.bad_components",
+        "kind": "refusal",
+        "remedy": "Correct the supplied totals: qualified dividends and section 199A dividends are portions of ordinary dividends."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.refund.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cite": {
+         "doc": "f1099div",
+         "locator": "Instructions for Recipient, boxes 1a, 1b and 5"
+        },
+        "form": "Form 1099-DIV dividend components",
+        "gate": "div.bad_components",
+        "kind": "refusal",
+        "remedy": "Correct the supplied totals: qualified dividends and section 199A dividends are portions of ordinary dividends."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.scveh.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "input": "div.box2c",
+        "kind": "unknown",
+        "reason": "no input supplied for div.box2c"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.cleanup.f8959_line16_se_refused",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.f1.special_withheld",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.f1.special_null",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.f1.aggregate_eligible_withheld",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "#sales.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.screen",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.f1.aggregate_eligible_null",
+      "kind": "fixture"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 1884,
+   "candidate": "g28.line5",
+   "compared": 1995,
+   "completed_witnesses": [
+    {
+     "candidate": {
+      "cents": -937600,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": -937600,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": -937600,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -937600,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": -937600,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": -937600,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -937600,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": -937600,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": -937600,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "mutation.t2.no_senior_part5",
+      "kind": "fixture"
+     }
+    }
+   ],
+   "differ": 111,
+   "handle": "5",
+   "in_scope": 1882,
+   "in_scope_agree": 1860,
+   "invalid": 0,
+   "kinds": {
+    "candidate-shows-skipped": 17,
+    "project-refuses": 89,
+    "project-unknown": 5
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-shows-skipped": 25
+     "candidate-shows-skipped": 3
     },
     "incomplete": {
-     "candidate-shows-skipped": 17
+     "candidate-shows-skipped": 4,
+     "project-unknown": 4
     },
     "refused": {
-     "candidate-shows-skipped": 78
+     "candidate-shows-skipped": 10,
+     "project-refuses": 89,
+     "project-unknown": 1
+    }
+   },
+   "open_at_triage": true,
+   "project": "g28.line5",
+   "shown_when": "g28.reached",
+   "sources": {
+    "fixture": 1495,
+    "generated": 500
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -2865900,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": -2865900,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": -2865900,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sd.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -937600,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": -937600,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": -937600,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -221600,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": -221600,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": -221600,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dcprov.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8606.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.refund.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.scveh.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -2865900,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": -2865900,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": -2865900,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sd.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -937600,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": -937600,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": -937600,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -221600,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": -221600,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": -221600,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.cleanup.f8959_line16_se_refused",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.f1.special_withheld",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.f1.special_null",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.f1.aggregate_eligible_withheld",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line14",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.f1.aggregate_eligible_null",
+      "kind": "fixture"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 1863,
+   "candidate": "g28.line4",
+   "compared": 1995,
+   "completed_witnesses": [
+    {
+     "candidate": {
+      "cents": 193000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 193000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 193000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.tcw.5",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 1,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 1,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 1,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "index": 179,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 20711,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 20711,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 20711,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "index": 199,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 147837,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 147837,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 147837,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "index": 287,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 5772,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 5772,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 5772,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "index": 363,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    }
+   ],
+   "differ": 132,
+   "handle": "4",
+   "in_scope": 1882,
+   "in_scope_agree": 1845,
+   "invalid": 0,
+   "kinds": {
+    "candidate-shows-skipped": 32,
+    "project-refuses": 95,
+    "project-unknown": 5
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-shows-skipped": 5
+    },
+    "incomplete": {
+     "candidate-shows-skipped": 1,
+     "project-unknown": 5
+    },
+    "refused": {
+     "candidate-shows-skipped": 26,
+     "project-refuses": 95
+    }
+   },
+   "open_at_triage": true,
+   "project": "g28.line4",
+   "shown_when": "g28.reached",
+   "sources": {
+    "fixture": 1495,
+    "generated": 500
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 725800,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 725800,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 725800,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.retirement.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 147000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 147000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 147000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.retirement.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 332900,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 332900,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 332900,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.carloan.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.carloan.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dcprov.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8606.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 1610700,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 1610700,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 1610700,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.oi8z.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.refund.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 725800,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 725800,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 725800,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.retirement.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 147000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 147000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 147000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.retirement.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.scveh.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.f1.special_withheld",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.f1.special_null",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.f1.aggregate_eligible_withheld",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.other_forms",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "div.box2d",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage21.f1.aggregate_eligible_null",
+      "kind": "fixture"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 1814,
+   "candidate": "g28.line6",
+   "compared": 1995,
+   "completed_witnesses": [
+    {
+     "candidate": {
+      "cents": -2462600,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -2462600,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -2462600,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -2462600,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -1070100,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -1070100,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -1070100,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -1070100,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw26.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -200400,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -200400,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -200400,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -200400,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.s3.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -3353100,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -3353100,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -3353100,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -3353100,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8962.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -6260600,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -6260600,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -6260600,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -6260600,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8962.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -6334400,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -6334400,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -6334400,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -6334400,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.2.deepseek",
+      "kind": "fixture"
+     }
+    }
+   ],
+   "differ": 181,
+   "handle": "6",
+   "in_scope": 1881,
+   "in_scope_agree": 1737,
+   "invalid": 0,
+   "kinds": {
+    "candidate-refuses": 1,
+    "candidate-shows-skipped": 143,
+    "project-refuses": 36,
+    "project-unknown": 1
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-shows-skipped": 34
+    },
+    "incomplete": {
+     "candidate-shows-skipped": 22
+    },
+    "refused": {
+     "candidate-refuses": 1,
+     "candidate-shows-skipped": 87,
+     "project-refuses": 36,
+     "project-unknown": 1
     }
    },
    "open_at_triage": true,
    "project": "g28.line6",
    "shown_when": "g28.reached",
    "sources": {
-    "fixture": 1159,
+    "fixture": 1495,
     "generated": 500
    },
    "status": "DISAGREE",
    "triage": "differs",
    "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "g28.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
     {
      "candidate": {
       "cents": -793400,
@@ -149,7 +3891,7 @@
        }
       }
      ],
-     "project_return": "refused",
+     "project_return": "completed",
      "source": {
       "id": "classm.clcw.2.deepseek",
       "kind": "fixture"
@@ -267,14 +4009,14 @@
     },
     {
      "candidate": {
-      "cents": -2723700,
+      "cents": -200400,
       "kind": "money"
      },
      "candidate_operands": [
       {
        "ref": "sd.line7",
        "value": {
-        "cents": -2723700,
+        "cents": -200400,
         "kind": "money"
        }
       },
@@ -288,7 +4030,7 @@
       {
        "ref": "sd.line7",
        "value": {
-        "cents": -2723700,
+        "cents": -200400,
         "kind": "money"
        }
       }
@@ -302,62 +4044,7 @@
       {
        "ref": "sd.line7",
        "value": {
-        "cents": -2723700,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "sd.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.f8880.4",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": -165700,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "sd.line7",
-       "value": {
-        "cents": -165700,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "sd.line7",
-       "value": {
-        "cents": -165700,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "g28",
-     "kind": "candidate-shows-skipped",
-     "project": {
-      "kind": "hidden"
-     },
-     "project_operands": [
-      {
-       "ref": "sd.line7",
-       "value": {
-        "cents": -165700,
+        "cents": -200400,
         "kind": "money"
        }
       },
@@ -371,16 +4058,1309 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.ltc.1",
+      "id": "classm.s3.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": -3353100,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -3353100,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -3353100,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": -3353100,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f8962.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "g28.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dcprov.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "g28.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8606.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "g28.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.refund.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": 3821000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": 3821000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "g28.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": 3821000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.scveh.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "g28.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.se.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "g28.h_zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-unknown",
+     "project": {
+      "kind": "unknown"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.cleanup.f8959_line16_se_refused",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i8949",
+       "locator": "p. 10, code W, \"enter the amount of the nondeductible loss as a positive number in column (g)\""
+      },
+      "form": "Form 8949, column (g), code W",
+      "gate": "sales[a].wash_bad",
+      "kind": "refusal",
+      "remedy": "The nondeductible wash-sale loss entered is more than the loss on this sale (column (e) less column (d), after any code B correction). Check the amount against your Form 1099-B and your records."
+     },
+     "candidate_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cite": {
+         "doc": "i8949",
+         "locator": "p. 10, code W, \"enter the amount of the nondeductible loss as a positive number in column (g)\""
+        },
+        "form": "Form 8949, column (g), code W",
+        "gate": "sales[a].wash_bad",
+        "kind": "refusal",
+        "remedy": "The nondeductible wash-sale loss entered is more than the loss on this sale (column (e) less column (d), after any code B correction). Check the amount against your Form 1099-B and your records."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "sd.line7",
+       "value": {
+        "cite": {
+         "doc": "i8949",
+         "locator": "p. 10, code W, \"enter the amount of the nondeductible loss as a positive number in column (g)\""
+        },
+        "form": "Form 8949, column (g), code W",
+        "gate": "sales[a].wash_bad",
+        "kind": "refusal",
+        "remedy": "The nondeductible wash-sale loss entered is more than the loss on this sale (column (e) less column (d), after any code B correction). Check the amount against your Form 1099-B and your records."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "sales.refuse.wash_over_loss",
+      "kind": "fixture"
+     }
+    }
+   ]
+  },
+  {
+   "absent": 0,
+   "agree": 1945,
+   "candidate": "g28.line7",
+   "compared": 1995,
+   "completed_witnesses": [
+    {
+     "candidate": {
+      "cents": 193000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "g28.h_sum",
+       "value": {
+        "cents": 193000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "g28.combined",
+       "value": {
+        "cents": 193000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.tcw.5",
+      "kind": "fixture"
+     }
+    }
+   ],
+   "differ": 50,
+   "handle": "7",
+   "in_scope": 1881,
+   "in_scope_agree": 1868,
+   "invalid": 0,
+   "kinds": {
+    "candidate-refuses": 1,
+    "candidate-shows-skipped": 13,
+    "project-refuses": 36
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-shows-skipped": 1
+    },
+    "refused": {
+     "candidate-refuses": 1,
+     "candidate-shows-skipped": 12,
+     "project-refuses": 36
+    }
+   },
+   "open_at_triage": true,
+   "project": "g28.line7",
+   "shown_when": "g28.reached",
+   "sources": {
+    "fixture": 1495,
+    "generated": 500
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "g28.h_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "g28.combined",
+       "value": {
+        "cite": {
+         "doc": "f1099div",
+         "locator": "Instructions for Recipient, boxes 1\u201316"
+        },
+        "form": "Form 1099-DIV special distribution treatment",
+        "gate": "div.unsupported",
+        "kind": "refusal",
+        "remedy": "Prepare the required section 897/liquidation treatment or reconcile return-of-capital basis and any excess gain."
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 725800,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "g28.h_sum",
+       "value": {
+        "cents": 725800,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "g28.combined",
+       "value": {
+        "cents": 725800,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.retirement.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 147000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "g28.h_sum",
+       "value": {
+        "cents": 147000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "g28.combined",
+       "value": {
+        "cents": 147000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.retirement.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 332900,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "g28.h_sum",
+       "value": {
+        "cents": 332900,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "g28.combined",
+       "value": {
+        "cents": 332900,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.carloan.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "g28.h_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "g28.combined",
+       "value": {
+        "cite": {
+         "doc": "f1099div",
+         "locator": "Instructions for Recipient, boxes 1a, 1b and 5"
+        },
+        "form": "Form 1099-DIV dividend components",
+        "gate": "div.bad_components",
+        "kind": "refusal",
+        "remedy": "Correct the supplied totals: qualified dividends and section 199A dividends are portions of ordinary dividends."
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dcprov.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "g28.h_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "g28.combined",
+       "value": {
+        "cite": {
+         "doc": "f1099div",
+         "locator": "Instructions for Recipient, boxes 1a, 1b and 5"
+        },
+        "form": "Form 1099-DIV dividend components",
+        "gate": "div.bad_components",
+        "kind": "refusal",
+        "remedy": "Correct the supplied totals: qualified dividends and section 199A dividends are portions of ordinary dividends."
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8606.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "g28.h_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "g28.combined",
+       "value": {
+        "cite": {
+         "doc": "f1099div",
+         "locator": "Instructions for Recipient, boxes 1a, 1b and 5"
+        },
+        "form": "Form 1099-DIV dividend components",
+        "gate": "div.bad_components",
+        "kind": "refusal",
+        "remedy": "Correct the supplied totals: qualified dividends and section 199A dividends are portions of ordinary dividends."
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.refund.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 725800,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "g28.h_sum",
+       "value": {
+        "cents": 725800,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "g28.combined",
+       "value": {
+        "cents": 725800,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.retirement.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 147000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "g28.h_sum",
+       "value": {
+        "cents": 147000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "g28.combined",
+       "value": {
+        "cents": 147000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.retirement.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "g28.h_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "g28.combined",
+       "value": {
+        "cite": {
+         "doc": "f1099div",
+         "locator": "Instructions for Recipient, boxes 1a, 1b and 5"
+        },
+        "form": "Form 1099-DIV dividend components",
+        "gate": "div.bad_components",
+        "kind": "refusal",
+        "remedy": "Correct the supplied totals: qualified dividends and section 199A dividends are portions of ordinary dividends."
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.scveh.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "g28.h_sum",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "project-refuses",
+     "project": {
+      "kind": "refusal"
+     },
+     "project_operands": [
+      {
+       "ref": "g28.combined",
+       "value": {
+        "cite": {
+         "doc": "i1040sd",
+         "locator": "p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax"
+        },
+        "form": "Form 8949 code Q / Form 6251",
+        "gate": "div.section1202",
+        "kind": "refusal",
+        "remedy": "Section 1202 distributions require exclusion analysis and may require AMT. Code Q and Form 6251 remain outside scope."
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.se.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 193000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "g28.h_sum",
+       "value": {
+        "cents": 193000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-shows-skipped",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "g28.combined",
+       "value": {
+        "cents": 193000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.tcw.5",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i8949",
+       "locator": "p. 10, code W, \"enter the amount of the nondeductible loss as a positive number in column (g)\""
+      },
+      "form": "Form 8949, column (g), code W",
+      "gate": "sales[a].wash_bad",
+      "kind": "refusal",
+      "remedy": "The nondeductible wash-sale loss entered is more than the loss on this sale (column (e) less column (d), after any code B correction). Check the amount against your Form 1099-B and your records."
+     },
+     "candidate_operands": [
+      {
+       "ref": "g28.h_sum",
+       "value": {
+        "cite": {
+         "doc": "i8949",
+         "locator": "p. 10, code W, \"enter the amount of the nondeductible loss as a positive number in column (g)\""
+        },
+        "form": "Form 8949, column (g), code W",
+        "gate": "sales[a].wash_bad",
+        "kind": "refusal",
+        "remedy": "The nondeductible wash-sale loss entered is more than the loss on this sale (column (e) less column (d), after any code B correction). Check the amount against your Form 1099-B and your records."
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "g28",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "hidden"
+     },
+     "project_operands": [
+      {
+       "ref": "g28.combined",
+       "value": {
+        "cite": {
+         "doc": "i8949",
+         "locator": "p. 10, code W, \"enter the amount of the nondeductible loss as a positive number in column (g)\""
+        },
+        "form": "Form 8949, column (g), code W",
+        "gate": "sales[a].wash_bad",
+        "kind": "refusal",
+        "remedy": "The nondeductible wash-sale loss entered is more than the loss on this sale (column (e) less column (d), after any code B correction). Check the amount against your Form 1099-B and your records."
+       }
+      },
+      {
+       "ref": "sd.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "sales.refuse.wash_over_loss",
       "kind": "fixture"
      }
     }
    ]
   }
  ],
- "log_sha256_at_triage": "63dfe69f36e7b5a1d602644f6c8d75c1b97070744b37989d08a9a9cc107e1da3",
+ "log_sha256_at_triage": "aca96110005cf64c2f88a2b7b34b7d7971a82ef86ce3e996bd98f026b8b868f9",
  "policy": "executable-triage-v2",
- "response_sha256": "6ba8a38458750975b3d89f13ceb6f8b17cfc58ea1a1a09a9217cf293ad7706a0",
+ "response_sha256": "2da1bc0f960e4b88987f0a1132df8fbd527aed4b4713a37838ec69423b9ba730",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "evaluated",
  "subject_sha256": "bd7523ec2d028e8f80f4e30e1aa12b994a12c67c1de38dea565dcfdc641e443f"

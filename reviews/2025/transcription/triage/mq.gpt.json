@@ -1,0 +1,52 @@
+{
+ "bank": {
+  "evaluation_failures": 0,
+  "fixtures": 1495,
+  "generated": 500,
+  "partial_bases": 40,
+  "partial_records": 0,
+  "return_states": {
+   "completed": 323,
+   "incomplete": 755,
+   "refused": 917
+  },
+  "seed": 20261026
+ },
+ "errors": [],
+ "failures": [],
+ "family": "gpt",
+ "form": "mq",
+ "invalid_lines": [],
+ "lines": [
+  {
+   "absent": 0,
+   "agree": 1995,
+   "candidate": "mq.applies",
+   "compared": 1995,
+   "completed_witnesses": [],
+   "differ": 0,
+   "handle": "mq.applies",
+   "in_scope": 1969,
+   "in_scope_agree": 1969,
+   "invalid": 0,
+   "kinds": {},
+   "kinds_by_return": {},
+   "open_at_triage": true,
+   "project": "mq.applies",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1495,
+    "generated": 500
+   },
+   "status": "DISAGREE",
+   "triage": "agrees on sample",
+   "witnesses": []
+  }
+ ],
+ "log_sha256_at_triage": "39d16e28840dbac3a03fd94d36d2c6d2d19ed772a9dd48b736987c8ff1aa32d8",
+ "policy": "executable-triage-v2",
+ "response_sha256": "89f5843bd3e3006f097f94fa7b0ad11c21c1a77be5c3891caefad5f6be252fa4",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "evaluated",
+ "subject_sha256": "076c50a4031857c718e8a7a9b9429bb8766193a78a28d6be71ccd45e5ce73442"
+}

@@ -1,0 +1,52 @@
+
+## f5695.joint_occupancy — Did you occupy any home for which you enter Part II costs jointly with someone other than your spouse on a joint return (whether or not the other occupant claims the credit)?
+
+(a) lines that read it, through helpers (2)
+  f5695.line30
+  f5695.line32a
+
+(c) predicates testing the same enum values (1)
+  f5695.line32a = True
+
+(b) lines and questions anchored on the same doc/page/heading (7)
+  f5695.line21a
+  f5695.line30
+  f5695.qmid_ac
+  f5695.qmid_enabling
+  f5695.qmid_furnace
+  f5695.qmid_hp
+  f5695.qmid_wh
+
+## f5695.line32 — Energy efficient home improvement credit. Enter the smaller of line 30 or line 31. Also include this amount on Schedule 3 (Form 1040), line 5b
+
+(a) lines that read it, through helpers (3)
+  f5695.line32a
+  f5695.line32b
+  s3.line5b
+
+(c) predicates testing the same enum values (0)
+
+(b) lines and questions anchored on the same doc/page/heading (0)
+
+## f5695.line32a — If the special rule for joint occupants applies, check here and attach a statement
+
+(a) lines that read it, through helpers (4)
+  f5695.line30
+  f5695.line32
+  f5695.line32b
+  s3.line5b
+
+(c) predicates testing the same enum values (0)
+
+(b) lines and questions anchored on the same doc/page/heading (2)
+  f5695.condo
+  f5695.line32b
+
+## f5695.eehi_credit — The smaller of line 30 or line 31
+
+(a) lines that read it, through helpers (1)
+  f5695.line32
+
+(c) predicates testing the same enum values (0)
+
+(b) lines and questions anchored on the same doc/page/heading (0)

@@ -1,0 +1,11 @@
+{
+ "note": "Proposed wording updates to the `question` field of tools/coverage/tree.json gate entries (not edited by this package; tree.py --check passes without them, since no gate was added or removed). After applying, run python3 tools/coverage/tree.py to regenerate docs/COVERAGE.md and the README table.",
+ "gates": {
+  "f5695.joint_occupancy": "Did you share any home for which you claim Part II costs (your main home, or a second or rented home with a heat pump, water heater or other Section B property) with someone other than your joint-return spouse?",
+  "f8960.unsupported": "append to the existing list: section 404(k) ESOP dividends paid directly to you",
+  "gift.section_b": "Is a group of similar noncash gifts, other than publicly traded securities (listed on an exchange with daily quotations, regularly traded over the counter, or mutual funds quoted daily), over $5,000?",
+  "refund.not_2024": "Is a state or local refund for a year other than 2024, or did you pay some of your 2024 state income tax in 2025 or before 2024?",
+  "f4952.unsupported": "With investment interest or a 2024 carryforward, is the interest tied to royalties, a business, passive activities or tax-exempt income, or do you have other investment expenses?",
+  "f4952.alternative_allocation": "With Form 4952 in use, do you want the election to apply to qualified dividends before capital gains?"
+ }
+}

@@ -45,6 +45,26 @@
     "dependent.dc_paid"
    ],
    "reason": "The weekly example is the same allocation; dependent.dc_paid asks for expenses only for the days of work or looking for work."
+  },
+  "limit:p946:p31:ab4e4b9b": {
+   "enforced_by": [
+    "asset.screen",
+    "scveh.screen"
+   ],
+   "reason": "The used-property items of both screens state that reconditioned or rebuilt property you acquired is used property unless the cost of its used parts is not more than 20% of its total cost; a Yes refuses (the special allowance on used property is refused, owner decision A1)."
+  },
+  "limit:i8283:p9:ab5bbab4": {
+   "enforced_by": [
+    "gift.special"
+   ],
+   "reason": "Every donated vehicle is refused by gift.special (it names vehicles), whatever its claimed value, so the more-than-$5,000 vehicle rule and its Form 1098-C attachment are never reached by a computed return."
+  },
+  "limit:p575:p12:7e883646": {
+   "enforced_by": [
+    "retirement.smw7",
+    "retirement.smw8"
+   ],
+   "reason": "The lifetime exclusion is limited to cost by Simplified Method Worksheet lines 7 and 8 (line 7 is cost less the amount recovered tax free after 1986, line 8 the smaller of line 5 or line 7); retirement.recovered asks a survivor of a retiree to include the retiree's recovery, so the limit covers both annuitants."
   }
  },
  "baseline": {

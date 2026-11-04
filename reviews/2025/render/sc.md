@@ -4,17 +4,17 @@ The rendered English of every printed line of `Schedule C (Form 1040) — Profit
 
 | field | value |
 | --- | --- |
-| date | 2026-11-02 |
+| date | 2026-11-03 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 1d7e621a44804fcea43ee58ff7a316722c34db1099d5fc6dc4131572a0c8af92 |
+| prompt sha256 | ee875dadc6308766f4d3efe9bf4985526192ef445453bffd14f40e8172f02df5 |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
-| subject sha256 | 1caf63ecf1df51371cd1ed04a3ea4a406f416bc5e52dd0ae74445cad9c7fcb01 |
+| subject sha256 | 20943341f7390ac694fdb843c313730d5f7ff04a35f9de4ed0fe9ae173076d0b |
 | lines judged | 75 |
-| match / mismatch / unclear / missing | 75 / 0 / 0 / 0 |
+| match / mismatch / unclear / missing | 73 / 1 / 1 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -35,6 +35,8 @@ The rendered English of every printed line of `Schedule C (Form 1040) — Profit
 | n-25-05 | Notice 2025-5 | 1, 2, 3, 4, 5 | whole document | 394f6b5ffb7c30e745322f0f20d9137608b1e2429fc4c76b06dedd690d4fb6e3 | - | 349e2797f87c588214722bcd22b7ec317c86c90a255ec8496941ac0c09909a8d |
 | iw2w3 | 2025; printed date 2025-02-19 | 18 | cited pages | 27ad850a44d58d9186afcccb33b8a32f4747911e2b1b3138de515f44d4de33f3 | 18 | 3876738db222e8abe6103f29d8a8654a3139b9896f97e325d50e80b87ed5b26a |
 | p560 | For use in preparing 2025 returns | 7, 8, 9, 10, 11, 14, 15, 16, 17, 38, 39, 40 | cited pages | 38bbfa2efb2894e2527d66cd3478f33c6ceae4b777f78674c22bec16db9809aa | 7, 8, 9, 10, 11, 14, 15, 16, 17, 38, 40 | 7ef279c8f34addc2ff13420e35fab4a092bf8027f53907c28a5f46d2c21da737 |
+| p538 | None | 17 | pages named by another document's citation | 4186d7aaa8f711c9a524b87fac1e3df05640b6d66130093b2469480acb06ef6c | 17 | f500211df18a4aafd843e48bbad4b9102c598cf5ccc0fae96c7814a4bef0ae00 |
+| p463 | For use in preparing 2025 returns | 12 | pages named by another document's citation | 153efad2a94bcccadf643b0f28f913d74b7d70b727f73eca540a2ce4d32bbfda | 12 | a0b14576fdb49a7ba3e7a90092c1b8f6b8ba33889c8c35da5629156346581326 |
 | f8995 | 2025; created 2025-09-12 | 1 | whole document | 49922587df3bd093e24470f5b42d0e3382ef8f5210b3cedccb02ccb864f2f65a | - | 8e2e78d7610e1d45e93c10c8b03f9026d46a1166678c6ed93f852569c382f346 |
 
 ## Lines
@@ -42,377 +44,385 @@ The rendered English of every printed line of `Schedule C (Form 1040) — Profit
 ### (screen) (sc.statutory) — Is this business income you received as a statutory employee (the "Statutory employee" box
 Status: **MATCH**
 
-Model: The line 1 instructions treat statutory employee income (Form W-2, box 13) separately, and notary fees are excluded from Schedule SE. The screen identifies both cases and sends them to the sc.screened refusal.
+Model: Screens statutory employee income (the W-2 box 13 'Statutory employee' box) and notary fees, which the line 1 and line 31 instructions treat differently. The refusal names this exclusion.
 
 ### G — Did you "materially participate" in the operation of this business during 2025, and is the
 Status: **MATCH**
 
-Model: Follows the line G instruction: check Yes if the activity is not a rental activity and you meet any of the seven material participation tests or the oil and gas exception applies. The quoted tests 1-3 match the text, and 'No' is refused through sc.screened.
+Model: Restates line G: not a rental activity and meets any of the seven material participation tests, or the oil and gas working interest exception applies. Answering No triggers the refusal.
 
 ### (screen) (sc.spouse_owned) — Do you own this business together with your spouse (as a qualified joint venture, as commu
 Status: **MATCH**
 
-Model: Covers businesses owned with a spouse: a qualified joint venture, community property, or a partnership. These are excluded by refusal.
+Model: Screens qualified joint venture, community property and partnership ownership, which the 'Business Owned and Operated by Spouses' instructions handle separately. The refusal names this.
 
 ### F — Do you use an accounting method other than cash or accrual, or did you change your account
 Status: **MATCH**
 
-Model: Screens for an 'Other' method, a change of method (Form 3115 or a section 481(a) adjustment), section 460 long-term contracts, and failing small business taxpayer status. That status requires gross receipts of $31 million or less and not being a tax shelter under section 448(d)(3). All of these are refused.
+Model: Screens other accounting methods, a change of method (Form 3115 or section 481(a)), uniform capitalization above the $31 million small business taxpayer test, tax shelters and section 460 long-term contracts. These match the line F, Part II and Part III instructions, and the refusal names them.
 
 ### (screen) (sc.special) — For this business, do you have any of these: depletion (line 12); the energy efficient com
 Status: **MATCH**
 
-Model: Each item listed (depletion, Form 7205, employment credits, Form 8990, recapture or inclusion amounts, chapter 11, Form 8873, the Notice 2014-7 Medicaid exclusion, and the rest) is a special case the instructions name. All are refused through sc.screened.
+Model: Each listed item (depletion, Form 7205, employment credits, Form 8990, recapture and inclusion amounts, chapter 11, Form 8873, installment method, Medicaid waiver, CCF, Form 2441, PAL, etc.) appears in the instructions. Screening them out is a narrowing that the refusal names.
 
 ### 1 (sc.line1) — Gross receipts or sales
 Status: **MATCH**
 
-Model: Gross receipts include amounts properly shown on Forms 1099-NEC and other Forms 1099. Seller-imposed sales tax collected from buyers is included, per the line 23 text 'you must also include the amount collected in gross receipts or sales on line 1'. Prizes and awards are left for line 6.
+Model: Gross receipts include amounts properly shown on Forms 1099-NEC. Seller-imposed sales tax collected from buyers is included, per the line 23 instruction 'you must also include the amount collected in gross receipts or sales on line 1'. NIL income that is not self-employment income goes on Schedule E.
 
 ### 2 (sc.line2) — Returns and allowances
 Status: **MATCH**
 
-Model: The instructions say 'Report your sales returns and allowances as a positive number on line 2', defining them as refunds and price reductions.
+Model: Returns and allowances are entered as a positive number, as the line 2 instructions say.
 
 ### 3 (sc.line3) — Subtract line 2 from line 1
 Status: **MATCH**
 
-Model: Form: 'Subtract line 2 from line 1.'
+Model: 'Subtract line 2 from line 1.'
 
 ### 4 (sc.line4) — Cost of goods sold (from line 42)
 Status: **MATCH**
 
-Model: Form: 'Cost of goods sold (from line 42).'
+Model: 'Cost of goods sold (from line 42).'
 
 ### 5 (sc.line5) — Gross profit. Subtract line 4 from line 3
 Status: **MATCH**
 
-Model: Form: 'Gross profit. Subtract line 4 from line 3.'
+Model: 'Gross profit. Subtract line 4 from line 3.'
 
 ### 6 — Other income, including federal and state gasoline or fuel tax credit or refund
 Status: **MATCH**
 
-Model: Lists line 6 items from the instructions, including the retained sales tax the line 23 instructions place on line 6. The list is open-ended ('such as'), and recapture and section 481(a) items are refused elsewhere.
+Model: The list (scrap sales, recovered bad debts, interest, fuel tax refunds and credits, prizes, 1099-PATR, retained sales tax) follows the line 6 and line 23 instructions. Section 481(a) items and recapture are screened elsewhere.
 
 ### 7 (sc.line7) — Gross income. Add lines 5 and 6
 Status: **MATCH**
 
-Model: Form: 'Gross income. Add lines 5 and 6.'
+Model: 'Gross income. Add lines 5 and 6.'
 
 ### 8 (sc.line8) — Advertising
 Status: **MATCH**
 
-Model: This is the advertising expense input.
+Model: Advertising expenses are entered directly.
 
 ### 9 (sc.line9) — Car and truck expenses
 Status: **MATCH**
 
-Model: Sums per-vehicle amounts. Standard rate: business miles × 0.70 plus parking fees and tolls. Actual expenses: the business portion of operating expenses, with depreciation and lease payments kept on lines 13 and 20a. Ineligible standard-rate cases are refused.
+Model: Standard rate: business miles × 0.70 plus parking fees and tolls. Actual: the business portion of operating expenses, with depreciation and lease payments excluded and shown on lines 13 and 20a. A refusal covers the cases where the standard mileage rate is unavailable.
 
 ### 10 (sc.line10) — Commissions and fees
 Status: **MATCH**
 
-Model: Instruction: 'Do not include commissions or fees that are capitalized or deducted elsewhere on your return.'
+Model: 'Do not include commissions or fees that are capitalized or deducted elsewhere.'
 
 ### 11 — Contract labor
 Status: **MATCH**
 
-Model: Covers contract labor paid to non-employees, excluding amounts 'includible on line 17, 21, 26, or 37'.
+Model: Contract labor excludes amounts 'includible on line 17, 21, 26, or 37'.
 
 ### 12 (sc.line12) — Depletion
 Status: **MATCH**
 
-Model: Depletion is refused by the special screen, so zero is correct within the supported cases.
+Model: Depletion is set to zero, and depletion is screened out by sc.special with a refusal.
 
 ### 13 (sc.line13) — Depreciation and section 179 expense deduction (not included in Part III)
 Status: **MATCH**
 
-Model: Equals Form 4562 line 22 for the supported cases: line 12 (the allowed section 179 amount) plus lines 14, 17, 19(g) and 21 (line 28, column (h)). Lines 15, 16 and 20 are excluded by the asset refusals.
+Model: Uses Form 4562 lines 14, 17, 19 and line 21 (listed property line 28) plus this business's section 179 deduction. That matches the line 22 total, with lines 15, 16 and 20 (other methods and ADS) screened out.
 
 ### 14 (sc.line14) — Employee benefit programs (other than on line 19)
 Status: **MATCH**
 
-Model: Covers employee benefit programs not part of line 19 plans. Contributions for yourself are excluded, and the Form 8941 reduction and Form 2441 self-contributions are refused.
+Model: Employee benefit programs other than pension plans, excluding contributions for yourself. The Form 8941 reduction is screened.
 
 ### 15 — Insurance (other than health)
 Status: **MATCH**
 
-Model: Business insurance premiums, excluding a self-insurance reserve and lost-earnings policies, as the instructions state.
+Model: Business insurance, excluding a self-insurance reserve and lost-earnings policies, as the line 15 instructions say.
 
 ### 16a — Interest: mortgage (paid to banks, etc.)
 Status: **MATCH**
 
-Model: Mortgage interest on business real property paid to financial institutions reporting on Form 1098, excluding capitalized interest. With the simplified method, home mortgage interest goes to Schedule A, not Schedule C.
+Model: Mortgage interest reported on Form 1098 for business real property, excluding capitalized interest. Home mortgage interest goes to Schedule A under the simplified method, per the line 30 instructions.
 
 ### 16b — Interest: other
 Status: **MATCH**
 
-Model: Covers mortgage interest without a Form 1098 to you, your share when another person received the Form 1098, and only the 2025 portion of prepaid interest. Vehicle loan interest deducted on Schedule 1-A is excluded, all as instructed.
+Model: Covers mortgage interest without a Form 1098, your share when the other person received the 1098, only the 2025 portion of prepaid interest, and excludes interest deducted on Schedule 1-A. All of these follow the line 16 instructions.
 
 ### 17 — Legal and professional services
 Status: **MATCH**
 
-Model: Accountant and attorney fees directly related to operating the business, including tax advice and business tax form preparation.
+Model: Legal and professional fees directly related to operating the business, including tax advice and preparation of business tax forms.
 
 ### 18 — Office expense
 Status: **MATCH**
 
-Model: Instruction: 'expenses for office supplies and postage.'
+Model: 'Include on this line your expenses for office supplies and postage.'
 
 ### 19 — Pension and profit-sharing plans
 Status: **MATCH**
 
-Model: Contributions for employees to pension, profit-sharing or annuity plans including SEP, SIMPLE and SARSEP. Your own contributions go on Schedule 1, line 16.
+Model: Plan contributions for employees go on line 19. Contributions for yourself go on Schedule 1, line 16, as the line 19 instructions say.
 
 ### 20a — Rent or lease: vehicles, machinery, and equipment
 Status: **MATCH**
 
-Model: The business portion of rent for vehicles, machinery and equipment. The leased-vehicle inclusion amount is refused by the special screen.
+Model: Uses the business portion of rent for vehicles, machinery and equipment. Leased vehicles count only under actual expenses ('Do not deduct ... rent or lease payments' under the standard rate). The inclusion amount is screened.
 
 ### 20b — Rent or lease: other business property
 Status: **MATCH**
 
-Model: Instruction: 'amounts paid to rent or lease other property, such as office space.'
+Model: 'Amounts paid to rent or lease other property, such as office space.'
 
 ### 21 — Repairs and maintenance
 Status: **MATCH**
 
-Model: Covers incidental repairs that don't add value or prolong life. Own labor and restorations are excluded, as instructed.
+Model: Incidental repairs only. Excludes your own labor and restorations or replacements, which must be capitalized.
 
 ### 22 — Supplies (not included in Part III)
 Status: **MATCH**
 
-Model: Materials and supplies actually consumed and used, or incidental supplies purchased when no inventories or records of use are kept.
+Model: Materials and supplies actually consumed, or incidental supplies purchased when no records are kept. Books and instruments used up within a year are included; longer-lived items are depreciated.
 
 ### 23 — Taxes and licenses
-Status: **MATCH**
+Status: **MISMATCH**
 
-Model: Tracks the deductible and nondeductible tax lists in the line 23 instructions. The Form 8846 reduction is refused by the special screen.
+Restated: Input — Business taxes and licenses: sales tax imposed on you as the seller, real estate and personal property taxes on business assets, licenses and regulatory fees paid each year (not licenses you must amortize, such as some liquor licenses), the employer share of social security and Medicare taxes, federal unemployment tax, federal highway use tax, state unemployment contributions (not income or self-employment tax, not taxes on property you bought, and not real estate taxes on your home, which with the simplified method for business use of the home you can deduct only on Schedule A); zero if none
+
+Model: The IRS list includes 'Contributions to a state unemployment insurance fund, or paid family and medical leave program disability benefit fund if they are considered taxes under state law'. The restatement keeps only 'state unemployment contributions' and omits paid family and medical leave fund contributions.
+
+Ruling: finding (low; pre-existing, not introduced by the package); i1040sc p. 9, Line 23, "Contributions to a state unemployment insurance fund, or paid family and medical leave program disability benefit fund if they are considered taxes under state law". The question names state unemployment contributions only, so a filer may leave out paid family and medical leave fund contributions (an understated deduction). The package changed only the license wording ("not licenses you must amortize"), which matches p. 9. See bklg/sc.findings.md.
 
 ### 24a — Travel
 Status: **MATCH**
 
-Model: Applies the instructions' limits: overnight lodging and transportation away from the tax home, excluding meals and entertainment. Also excluded are employment away from home of more than 1 year, nonemployee companions, and foreign conventions.
+Model: Lodging, transportation and incidentals, either actual or $5 a day on no-meal days, excluding the standard meal allowance days. Includes the 1-year employment limit, the companion travel rule and the North American area convention rule. Luxury water travel is screened.
 
 ### 24b — Deductible meals
-Status: **MATCH**
+Status: **UNCLEAR**
 
-Model: Takes 50% of meals generally and 80% of meals under the DOT hours of service limits. Meals treated as wages or reported on Form 1099-NEC are deducted in full. The other fully deductible categories rely on the text's reference to 'other exceptions' in Pub. 15, which the given text does not spell out.
+Restated: Add helper "50% of the meals subject to the 50% limit", helper "80% of the meals under the hours of service limits", and helper "Meals and incidentals not subject to the 50% limit, deducted in full".
+
+Model: The 50% and 80% DOT parts and the employee-wage and 1099-NEC full-deduction exceptions match the instructions. The added 100% categories (client-reimbursed meals, employee recreation, food for the public, meals sold) come from 'chapter 5 of Pub. 15 ... other exceptions', which was not provided.
+
+Ruling: ambiguity (amb.2025.meals_full_exceptions); i1040sc p. 10, Line 24b, "See chapter 5 of Pub. 15, Employer's Tax Guide, for details and other exceptions". The added full-deduction categories are the register's recorded reading of those exceptions; the review pages did not include Pub. 15.
 
 ### 25 — Utilities
 Status: **MATCH**
 
-Model: Business utilities only, excluding the base rate of the first home phone line.
+Model: Business-only utilities, excluding the base rate of the first residential phone line.
 
 ### 26 — Wages (less employment credits)
 Status: **MATCH**
 
-Model: Wages to employees, excluding amounts paid to yourself, wages deducted elsewhere, and fringe-benefit costs claimed elsewhere. The employment credit reductions are refused by the special screen.
+Model: Wages excluding amounts paid to yourself and fringe-benefit depreciation claimed elsewhere. The employment credit reductions are screened.
 
 ### 27a — Energy efficient commercial buildings deduction (attach Form 7205)
 Status: **MATCH**
 
-Model: The Form 7205 deduction is refused by the special screen, so zero is correct within the supported cases.
+Model: Set to zero, and the Form 7205 deduction is screened with a refusal.
 
 ### 48 — Total other expenses
 Status: **MATCH**
 
-Model: Part V: 'List below business expenses not included on lines 8-27a, or line 30.'
+Model: Part V: 'business expenses not included on lines 8-27a, or line 30'.
 
 ### 27b — Other expenses (from line 48)
 Status: **MATCH**
 
-Model: Form: 'Other expenses (from line 48).'
+Model: 'Other expenses (from line 48).'
 
 ### 28 — Total expenses before expenses for business use of home. Add lines 8 through 27b
 Status: **MATCH**
 
-Model: Form: 'Add lines 8 through 27b.'
+Model: 'Add lines 8 through 27b.'
 
 ### 29 — Tentative profit or (loss). Subtract line 28 from line 7
 Status: **MATCH**
 
-Model: Form: 'Subtract line 28 from line 7.'
+Model: 'Subtract line 28 from line 7.'
 
 ### (screen) (sc.ho_uses) — Do you claim a deduction for business use of your home for this business?
 Status: **MATCH**
 
-Model: Asks about qualifying business use of the home (regular and exclusive use, or inventory and sample storage). Daycare is refused by the next screen.
+Model: Qualifying use is regular and exclusive business use, or regular storage of inventory or product samples. Daycare is screened separately.
 
 ### (screen) (sc.ho_other) — Does any of these apply to your business use of your home for this business?
 Status: **MATCH**
 
-Model: Screens for the cases the simplified method instructions treat specially: Form 8829, multiple homes, daycare, shared space, part-year use or area changes, income from other locations, Form 8949 or 4797 gains and losses, and the timely-filed original return requirement.
+Model: Screens Form 8829, multiple homes, daycare, shared use, part-year use or area changes, other places of business, related 4797/8949 gains or losses, and a return that is not timely and original. All are special cases in the line 30 instructions, and the refusal names them.
 
 ### 30(b) — The part of your home used for business (square feet)
 Status: **MATCH**
 
-Model: Square footage used regularly and exclusively for the full year. Multiple businesses sharing the 300-square-foot cap and the other special cases are refused.
+Model: Square footage used for business throughout the year. The multiple-business 300 square foot allocation and the special cases are refused.
 
 ### 30(a) — Total square footage of your home
 Status: **MATCH**
 
-Model: Form: 'Enter the total square footage of (a) your home.'
+Model: Total square footage of the home, an informational entry for simplified method filers.
 
 ### 3a — Maximum allowable amount (per square foot)
 Status: **MATCH**
 
-Model: Worksheet line 3a: 'Maximum allowable amount . . . $5'.
+Model: Worksheet line 3a is printed as $5.
 
 ### 4 (sc.ho_line4) — Multiply line 2 by line 3c
 Status: **MATCH**
 
-Model: Multiplies line 2 (square feet, capped at 300) by line 3c. Line 3c equals $5 because line 3b is 1.0 once daycare is refused.
+Model: Line 2 (the smaller of square feet used or 300) times line 3c. Line 3c equals line 3a because line 3b is 1.0 when daycare is screened out.
 
 ### 1 (sc.ho_line1) — Gross income limitation (Schedule C, line 29)
 Status: **MATCH**
 
-Model: Worksheet line 1, line A: 'Enter the amount from Schedule C, line 29.' Lines B and D (gains and losses) and other business locations are refused.
+Model: Gross income limitation line A is Schedule C line 29. Lines B and D (gains and losses on 8949/4797) and income from other locations are screened, so line E equals line 29.
 
 ### 5 (sc.ho_line5) — Allowable expenses using the simplified method. Enter the smaller of line 1 or line 4
 Status: **MATCH**
 
-Model: Gives the smaller of line 1 or line 4, floored at zero, whenever the section 179 interaction cannot change the result. The case where both income limits bind (Pub. 946, two different taxable income limits) is refused.
+Model: Gives the smaller of line 1 or line 4, floored at zero, in every case the program computes. The case where the section 179 business income limit and this limit interact is refused, citing the Pub. 946 two-income-limit procedure.
 
 ### 30 — Expenses for business use of your home
 Status: **MATCH**
 
-Model: Instruction: 'Include the amount from line 5 of the Simplified Method Worksheet on line 30', and zero when no home deduction is claimed.
+Model: 'Include the amount from line 5 of the Simplified Method Worksheet on line 30.' Zero when no home office is claimed.
 
 ### 31 — Net profit or (loss). Subtract line 30 from line 29
 Status: **MATCH**
 
-Model: Form: 'Subtract line 30 from line 29.' Passive-loss cases are refused by the line G screen and at-risk limits by the line 32 refusal.
+Model: 'Subtract line 30 from line 29.' Passive activities and prior-year PAL are screened; at-risk losses are refused through Form 6198.
 
 ### 32 — If you have a loss, is all your investment in this business at risk (box 32a)?
 Status: **MATCH**
 
-Model: Restates the box 32b examples: nonrecourse loans, guaranteed or stop-loss protected amounts (excluding casualty and tort insurance), and loans from interested or related persons.
+Model: Box 32b covers nonrecourse loans, guaranteed or stop-loss amounts (excluding casualty and tort insurance), and amounts borrowed from interested or related persons, as the line 32 instructions say.
 
 ### 33 — Method used to value closing inventory: other than cost or lower of cost or market, or a c
 Status: **MATCH**
 
-Model: Combines line 33 (cost, lower of cost or market, or other) with line 34 (any change between opening and closing inventory). Other methods and changes are refused.
+Model: Cost or lower of cost or market are supported. Other methods and line 34 changes are refused.
 
 ### 35 — Inventory at beginning of year
 Status: **MATCH**
 
-Model: Form: 'Inventory at beginning of year.' Different-from-last-year cases are refused by the line F and line 33 screens.
+Model: Beginning inventory equals last year's closing inventory. Method changes are screened.
 
 ### 36 — Purchases less cost of items withdrawn for personal use
 Status: **MATCH**
 
-Model: Form: 'Purchases less cost of items withdrawn for personal use.'
+Model: 'Purchases less cost of items withdrawn for personal use.'
 
 ### 37 — Cost of labor
 Status: **MATCH**
 
-Model: Form: 'Cost of labor. Do not include any amounts paid to yourself.'
+Model: 'Cost of labor. Do not include any amounts paid to yourself.'
 
 ### 38 — Materials and supplies
 Status: **MATCH**
 
-Model: Form: 'Materials and supplies.'
+Model: Materials and supplies (line 38).
 
 ### 39 — Other costs
 Status: **MATCH**
 
-Model: Form: 'Other costs.'
+Model: Other costs (line 39).
 
 ### 40 — Add lines 35 through 39
 Status: **MATCH**
 
-Model: Form: 'Add lines 35 through 39.'
+Model: 'Add lines 35 through 39.'
 
 ### 41 — Inventory at end of year
 Status: **MATCH**
 
-Model: Form: 'Inventory at end of year.'
+Model: Inventory at end of year.
 
 ### 42 — Cost of goods sold. Subtract line 41 from line 40
 Status: **MATCH**
 
-Model: Form: 'Subtract line 41 from line 40.'
+Model: 'Subtract line 41 from line 40.'
 
 ### 12 (sc.s179_allowed) — Section 179 expense deduction for this business
 Status: **MATCH**
 
-Model: Uses this business's elected amounts when the limits leave Form 4562 line 12 equal to line 8, otherwise the whole line 12 for a single Schedule C. Allocating a limited deduction among several businesses (line 12 instructions) is refused.
+Model: Uses this business's elected amount when Form 4562 line 12 equals the elected total. Otherwise uses line 12 for a single Schedule C. Allocating a limited deduction among several businesses ('you may allocate your allowable section 179 expense deduction among them') is refused.
 
 ### (screen) (sc.hi_uses) — Health insurance established under this business
 Status: **MATCH**
 
-Model: Applies the instructions' conditions: the plan is established under the business, the policy is in the business's or your name, and personal services are a material income-producing factor.
+Model: The plan must be established under the business, with the policy in your name or the business's name, and personal services must be a material income-producing factor.
 
 ### (screen) (sc.hi_screen) — Does any of these apply to this health insurance?
 Status: **MATCH**
 
-Model: Refuses the cases the instructions route elsewhere or treat specially: Marketplace with the premium tax credit (Pub. 974), Form 2555, S corporations, optional methods, retired public safety officers, and long-term care insurance spread across businesses.
+Model: Screens the Pub. 974 Marketplace/PTC case, Form 2555, S corporation shareholders, optional methods, retired public safety officers, and long-term care across plans. These are the special cases in the 7206 instructions, and the refusal names them.
 
 ### 1 (sc.f7206_line1) — Health insurance payments (other than long-term care)
 Status: **MATCH**
 
-Model: Follows Form 7206 line 1. It covers coverage for you, your spouse, dependents and a child under 27, including voluntary Medicare premiums. Subsidized-plan months and long-term care insurance are excluded; retirement plan amounts are refused.
+Model: Follows Form 7206 line 1: medical, dental and vision coverage, voluntary Medicare premiums, and children under 27. Excludes subsidized-plan months (QSEHRA counts as subsidized) and long-term care.
 
 ### 2 (sc.f7206_line2) — Qualified long-term care insurance (the smaller of payments or the age limit, for each per
 Status: **MATCH**
 
-Model: Line 2: 'enter for each person covered the smaller of (a) or (b)', with (b) set by age at year end. The total of the per-person amounts is entered.
+Model: For each covered person, the smaller of (a) payments or (b) the age limit, then totaled, as line 2 says.
 
 ### 3 (sc.f7206_line3) — Add lines 1 and 2
 Status: **MATCH**
 
-Model: Form: 'Add lines 1 and 2.'
+Model: 'Add lines 1 and 2.'
 
 ### 4 (sc.f7206_line4) — Net profit from the trade or business under which the insurance plan is established
 Status: **MATCH**
 
-Model: Net profit from the business under which the plan is established. Losses enter zero; optional methods and S corporations are refused.
+Model: Net profit from the business under which the plan is established, using the Schedule C line 31 result and zero for a loss.
 
 ### 5 (sc.f7206_line5) — Total of all net profits from Schedule C, line 31
 Status: **MATCH**
 
-Model: Total of all net profits, with 'Don't include any net losses.' Schedule F and K-1 income is refused through the Schedule SE screen used downstream.
+Model: 'Total of all net profits ... Don't include any net losses.' Schedule F and K-1 income are screened through the SE screen.
 
 ### 7 (sc.f7206_line7) — Multiply Schedule 1 (Form 1040), line 15, deductible part of self-employment tax, by the p
 Status: **MATCH**
 
-Model: Multiplies Schedule 1, line 15 (Schedule SE line 13) by line 4 ÷ line 5. The 6-decimal rounding of the ratio is not addressed by the text.
+Model: Deductible part of SE tax (Schedule SE line 13 = Schedule 1 line 15) multiplied by line 4 ÷ line 5, which is line 6. The program uses this person's own SE deduction.
 
 ### 8 (sc.f7206_line8) — Subtract line 7 from line 4
 Status: **MATCH**
 
-Model: Form: 'Subtract line 7 from line 4.'
+Model: 'Subtract line 7 from line 4.'
 
 ### 9 (sc.f7206_line9) — Schedule 1, line 16, attributable to the same trade or business
 Status: **MATCH**
 
-Model: Needs the Schedule 1, line 16 amount 'attributable to the same trade or business'. A plan with more than one Schedule C is refused, so the profit-share allocation gives the whole amount whenever there is a profit.
+Model: Schedule 1 line 16 attributable to this business. Plans covering more than one Schedule C are refused, so the share is the whole deduction.
 
 ### 10 (sc.f7206_line10) — Subtract line 9 from line 8
 Status: **MATCH**
 
-Model: Form: 'Subtract line 9 from line 8.'
+Model: 'Subtract line 9 from line 8.'
 
 ### 13 (sc.f7206_line13) — Subtract line 12 from line 10
 Status: **MATCH**
 
-Model: 'Subtract line 12 from line 10 or 11.' Form 2555 (line 12) and S corporations (line 11) are refused, so line 13 equals line 10.
+Model: Line 10 less line 12. Form 2555 is screened, so line 12 is zero.
 
 ### 14 (sc.f7206_line14) — Self-employed health insurance deduction
 Status: **MATCH**
 
-Model: Form: 'Enter the smaller of line 3 or line 13.' Zero when there is no plan.
+Model: 'Enter the smaller of line 3 or line 13.'
 
 ### 1(c) — Qualified business income or (loss) of this business
 Status: **MATCH**
 
-Model: Form 8995 QBI for this business is net profit or loss less the attributable deductible SE tax, retirement contributions and SE health insurance, as the Form 8995 instructions require. Statutory employee and former-employee cases are refused.
+Model: Per the Form 8995 instructions, QBI from the Schedule C result is reduced by attributable items: 'deductible part of self-employment tax, self-employment health insurance deduction, and contributions to qualified retirement plans'.
 
 ### (screen) (sc.tips_ot) — Tips or overtime in this business to be deducted on Schedule 1-A
 Status: **MATCH**
 
-Model: The Schedule C instructions say qualified tips and overtime are deducted on Schedule 1-A, not on Schedule C. This input only identifies them.
+Model: Flags qualified tips and overtime deducted on Schedule 1-A, which the What's New section says are claimed there and not on Schedule C.
 
 ## Raw response
 
@@ -421,228 +431,228 @@ Model: The Schedule C instructions say qualified tips and overtime are deducted 
 lines:
   - key: "(screen) (sc.statutory)"
     status: MATCH
-    reason: "The line 1 instructions treat statutory employee income (Form W-2, box 13) separately, and notary fees are excluded from Schedule SE. The screen identifies both cases and sends them to the sc.screened refusal."
+    reason: "Screens statutory employee income (the W-2 box 13 'Statutory employee' box) and notary fees, which the line 1 and line 31 instructions treat differently. The refusal names this exclusion."
   - key: "G"
     status: MATCH
-    reason: "Follows the line G instruction: check Yes if the activity is not a rental activity and you meet any of the seven material participation tests or the oil and gas exception applies. The quoted tests 1-3 match the text, and 'No' is refused through sc.screened."
+    reason: "Restates line G: not a rental activity and meets any of the seven material participation tests, or the oil and gas working interest exception applies. Answering No triggers the refusal."
   - key: "(screen) (sc.spouse_owned)"
     status: MATCH
-    reason: "Covers businesses owned with a spouse: a qualified joint venture, community property, or a partnership. These are excluded by refusal."
+    reason: "Screens qualified joint venture, community property and partnership ownership, which the 'Business Owned and Operated by Spouses' instructions handle separately. The refusal names this."
   - key: "F"
     status: MATCH
-    reason: "Screens for an 'Other' method, a change of method (Form 3115 or a section 481(a) adjustment), section 460 long-term contracts, and failing small business taxpayer status. That status requires gross receipts of $31 million or less and not being a tax shelter under section 448(d)(3). All of these are refused."
+    reason: "Screens other accounting methods, a change of method (Form 3115 or section 481(a)), uniform capitalization above the $31 million small business taxpayer test, tax shelters and section 460 long-term contracts. These match the line F, Part II and Part III instructions, and the refusal names them."
   - key: "(screen) (sc.special)"
     status: MATCH
-    reason: "Each item listed (depletion, Form 7205, employment credits, Form 8990, recapture or inclusion amounts, chapter 11, Form 8873, the Notice 2014-7 Medicaid exclusion, and the rest) is a special case the instructions name. All are refused through sc.screened."
+    reason: "Each listed item (depletion, Form 7205, employment credits, Form 8990, recapture and inclusion amounts, chapter 11, Form 8873, installment method, Medicaid waiver, CCF, Form 2441, PAL, etc.) appears in the instructions. Screening them out is a narrowing that the refusal names."
   - key: "1 (sc.line1)"
     status: MATCH
-    reason: "Gross receipts include amounts properly shown on Forms 1099-NEC and other Forms 1099. Seller-imposed sales tax collected from buyers is included, per the line 23 text 'you must also include the amount collected in gross receipts or sales on line 1'. Prizes and awards are left for line 6."
+    reason: "Gross receipts include amounts properly shown on Forms 1099-NEC. Seller-imposed sales tax collected from buyers is included, per the line 23 instruction 'you must also include the amount collected in gross receipts or sales on line 1'. NIL income that is not self-employment income goes on Schedule E."
   - key: "2 (sc.line2)"
     status: MATCH
-    reason: "The instructions say 'Report your sales returns and allowances as a positive number on line 2', defining them as refunds and price reductions."
+    reason: "Returns and allowances are entered as a positive number, as the line 2 instructions say."
   - key: "3 (sc.line3)"
     status: MATCH
-    reason: "Form: 'Subtract line 2 from line 1.'"
+    reason: "'Subtract line 2 from line 1.'"
   - key: "4 (sc.line4)"
     status: MATCH
-    reason: "Form: 'Cost of goods sold (from line 42).'"
+    reason: "'Cost of goods sold (from line 42).'"
   - key: "5 (sc.line5)"
     status: MATCH
-    reason: "Form: 'Gross profit. Subtract line 4 from line 3.'"
+    reason: "'Gross profit. Subtract line 4 from line 3.'"
   - key: "6"
     status: MATCH
-    reason: "Lists line 6 items from the instructions, including the retained sales tax the line 23 instructions place on line 6. The list is open-ended ('such as'), and recapture and section 481(a) items are refused elsewhere."
+    reason: "The list (scrap sales, recovered bad debts, interest, fuel tax refunds and credits, prizes, 1099-PATR, retained sales tax) follows the line 6 and line 23 instructions. Section 481(a) items and recapture are screened elsewhere."
   - key: "7 (sc.line7)"
     status: MATCH
-    reason: "Form: 'Gross income. Add lines 5 and 6.'"
+    reason: "'Gross income. Add lines 5 and 6.'"
   - key: "8 (sc.line8)"
     status: MATCH
-    reason: "This is the advertising expense input."
+    reason: "Advertising expenses are entered directly."
   - key: "9 (sc.line9)"
     status: MATCH
-    reason: "Sums per-vehicle amounts. Standard rate: business miles × 0.70 plus parking fees and tolls. Actual expenses: the business portion of operating expenses, with depreciation and lease payments kept on lines 13 and 20a. Ineligible standard-rate cases are refused."
+    reason: "Standard rate: business miles × 0.70 plus parking fees and tolls. Actual: the business portion of operating expenses, with depreciation and lease payments excluded and shown on lines 13 and 20a. A refusal covers the cases where the standard mileage rate is unavailable."
   - key: "10 (sc.line10)"
     status: MATCH
-    reason: "Instruction: 'Do not include commissions or fees that are capitalized or deducted elsewhere on your return.'"
+    reason: "'Do not include commissions or fees that are capitalized or deducted elsewhere.'"
   - key: "11"
     status: MATCH
-    reason: "Covers contract labor paid to non-employees, excluding amounts 'includible on line 17, 21, 26, or 37'."
+    reason: "Contract labor excludes amounts 'includible on line 17, 21, 26, or 37'."
   - key: "12 (sc.line12)"
     status: MATCH
-    reason: "Depletion is refused by the special screen, so zero is correct within the supported cases."
+    reason: "Depletion is set to zero, and depletion is screened out by sc.special with a refusal."
   - key: "13 (sc.line13)"
     status: MATCH
-    reason: "Equals Form 4562 line 22 for the supported cases: line 12 (the allowed section 179 amount) plus lines 14, 17, 19(g) and 21 (line 28, column (h)). Lines 15, 16 and 20 are excluded by the asset refusals."
+    reason: "Uses Form 4562 lines 14, 17, 19 and line 21 (listed property line 28) plus this business's section 179 deduction. That matches the line 22 total, with lines 15, 16 and 20 (other methods and ADS) screened out."
   - key: "14 (sc.line14)"
     status: MATCH
-    reason: "Covers employee benefit programs not part of line 19 plans. Contributions for yourself are excluded, and the Form 8941 reduction and Form 2441 self-contributions are refused."
+    reason: "Employee benefit programs other than pension plans, excluding contributions for yourself. The Form 8941 reduction is screened."
   - key: "15"
     status: MATCH
-    reason: "Business insurance premiums, excluding a self-insurance reserve and lost-earnings policies, as the instructions state."
+    reason: "Business insurance, excluding a self-insurance reserve and lost-earnings policies, as the line 15 instructions say."
   - key: "16a"
     status: MATCH
-    reason: "Mortgage interest on business real property paid to financial institutions reporting on Form 1098, excluding capitalized interest. With the simplified method, home mortgage interest goes to Schedule A, not Schedule C."
+    reason: "Mortgage interest reported on Form 1098 for business real property, excluding capitalized interest. Home mortgage interest goes to Schedule A under the simplified method, per the line 30 instructions."
   - key: "16b"
     status: MATCH
-    reason: "Covers mortgage interest without a Form 1098 to you, your share when another person received the Form 1098, and only the 2025 portion of prepaid interest. Vehicle loan interest deducted on Schedule 1-A is excluded, all as instructed."
+    reason: "Covers mortgage interest without a Form 1098, your share when the other person received the 1098, only the 2025 portion of prepaid interest, and excludes interest deducted on Schedule 1-A. All of these follow the line 16 instructions."
   - key: "17"
     status: MATCH
-    reason: "Accountant and attorney fees directly related to operating the business, including tax advice and business tax form preparation."
+    reason: "Legal and professional fees directly related to operating the business, including tax advice and preparation of business tax forms."
   - key: "18"
     status: MATCH
-    reason: "Instruction: 'expenses for office supplies and postage.'"
+    reason: "'Include on this line your expenses for office supplies and postage.'"
   - key: "19"
     status: MATCH
-    reason: "Contributions for employees to pension, profit-sharing or annuity plans including SEP, SIMPLE and SARSEP. Your own contributions go on Schedule 1, line 16."
+    reason: "Plan contributions for employees go on line 19. Contributions for yourself go on Schedule 1, line 16, as the line 19 instructions say."
   - key: "20a"
     status: MATCH
-    reason: "The business portion of rent for vehicles, machinery and equipment. The leased-vehicle inclusion amount is refused by the special screen."
+    reason: "Uses the business portion of rent for vehicles, machinery and equipment. Leased vehicles count only under actual expenses ('Do not deduct ... rent or lease payments' under the standard rate). The inclusion amount is screened."
   - key: "20b"
     status: MATCH
-    reason: "Instruction: 'amounts paid to rent or lease other property, such as office space.'"
+    reason: "'Amounts paid to rent or lease other property, such as office space.'"
   - key: "21"
     status: MATCH
-    reason: "Covers incidental repairs that don't add value or prolong life. Own labor and restorations are excluded, as instructed."
+    reason: "Incidental repairs only. Excludes your own labor and restorations or replacements, which must be capitalized."
   - key: "22"
     status: MATCH
-    reason: "Materials and supplies actually consumed and used, or incidental supplies purchased when no inventories or records of use are kept."
+    reason: "Materials and supplies actually consumed, or incidental supplies purchased when no records are kept. Books and instruments used up within a year are included; longer-lived items are depreciated."
   - key: "23"
-    status: MATCH
-    reason: "Tracks the deductible and nondeductible tax lists in the line 23 instructions. The Form 8846 reduction is refused by the special screen."
+    status: MISMATCH
+    reason: "The IRS list includes 'Contributions to a state unemployment insurance fund, or paid family and medical leave program disability benefit fund if they are considered taxes under state law'. The restatement keeps only 'state unemployment contributions' and omits paid family and medical leave fund contributions."
   - key: "24a"
     status: MATCH
-    reason: "Applies the instructions' limits: overnight lodging and transportation away from the tax home, excluding meals and entertainment. Also excluded are employment away from home of more than 1 year, nonemployee companions, and foreign conventions."
+    reason: "Lodging, transportation and incidentals, either actual or $5 a day on no-meal days, excluding the standard meal allowance days. Includes the 1-year employment limit, the companion travel rule and the North American area convention rule. Luxury water travel is screened."
   - key: "24b"
-    status: MATCH
-    reason: "Takes 50% of meals generally and 80% of meals under the DOT hours of service limits. Meals treated as wages or reported on Form 1099-NEC are deducted in full. The other fully deductible categories rely on the text's reference to 'other exceptions' in Pub. 15, which the given text does not spell out."
+    status: UNCLEAR
+    reason: "The 50% and 80% DOT parts and the employee-wage and 1099-NEC full-deduction exceptions match the instructions. The added 100% categories (client-reimbursed meals, employee recreation, food for the public, meals sold) come from 'chapter 5 of Pub. 15 ... other exceptions', which was not provided."
   - key: "25"
     status: MATCH
-    reason: "Business utilities only, excluding the base rate of the first home phone line."
+    reason: "Business-only utilities, excluding the base rate of the first residential phone line."
   - key: "26"
     status: MATCH
-    reason: "Wages to employees, excluding amounts paid to yourself, wages deducted elsewhere, and fringe-benefit costs claimed elsewhere. The employment credit reductions are refused by the special screen."
+    reason: "Wages excluding amounts paid to yourself and fringe-benefit depreciation claimed elsewhere. The employment credit reductions are screened."
   - key: "27a"
     status: MATCH
-    reason: "The Form 7205 deduction is refused by the special screen, so zero is correct within the supported cases."
+    reason: "Set to zero, and the Form 7205 deduction is screened with a refusal."
   - key: "48"
     status: MATCH
-    reason: "Part V: 'List below business expenses not included on lines 8-27a, or line 30.'"
+    reason: "Part V: 'business expenses not included on lines 8-27a, or line 30'."
   - key: "27b"
     status: MATCH
-    reason: "Form: 'Other expenses (from line 48).'"
+    reason: "'Other expenses (from line 48).'"
   - key: "28"
     status: MATCH
-    reason: "Form: 'Add lines 8 through 27b.'"
+    reason: "'Add lines 8 through 27b.'"
   - key: "29"
     status: MATCH
-    reason: "Form: 'Subtract line 28 from line 7.'"
+    reason: "'Subtract line 28 from line 7.'"
   - key: "(screen) (sc.ho_uses)"
     status: MATCH
-    reason: "Asks about qualifying business use of the home (regular and exclusive use, or inventory and sample storage). Daycare is refused by the next screen."
+    reason: "Qualifying use is regular and exclusive business use, or regular storage of inventory or product samples. Daycare is screened separately."
   - key: "(screen) (sc.ho_other)"
     status: MATCH
-    reason: "Screens for the cases the simplified method instructions treat specially: Form 8829, multiple homes, daycare, shared space, part-year use or area changes, income from other locations, Form 8949 or 4797 gains and losses, and the timely-filed original return requirement."
+    reason: "Screens Form 8829, multiple homes, daycare, shared use, part-year use or area changes, other places of business, related 4797/8949 gains or losses, and a return that is not timely and original. All are special cases in the line 30 instructions, and the refusal names them."
   - key: "30(b)"
     status: MATCH
-    reason: "Square footage used regularly and exclusively for the full year. Multiple businesses sharing the 300-square-foot cap and the other special cases are refused."
+    reason: "Square footage used for business throughout the year. The multiple-business 300 square foot allocation and the special cases are refused."
   - key: "30(a)"
     status: MATCH
-    reason: "Form: 'Enter the total square footage of (a) your home.'"
+    reason: "Total square footage of the home, an informational entry for simplified method filers."
   - key: "3a"
     status: MATCH
-    reason: "Worksheet line 3a: 'Maximum allowable amount . . . $5'."
+    reason: "Worksheet line 3a is printed as $5."
   - key: "4 (sc.ho_line4)"
     status: MATCH
-    reason: "Multiplies line 2 (square feet, capped at 300) by line 3c. Line 3c equals $5 because line 3b is 1.0 once daycare is refused."
+    reason: "Line 2 (the smaller of square feet used or 300) times line 3c. Line 3c equals line 3a because line 3b is 1.0 when daycare is screened out."
   - key: "1 (sc.ho_line1)"
     status: MATCH
-    reason: "Worksheet line 1, line A: 'Enter the amount from Schedule C, line 29.' Lines B and D (gains and losses) and other business locations are refused."
+    reason: "Gross income limitation line A is Schedule C line 29. Lines B and D (gains and losses on 8949/4797) and income from other locations are screened, so line E equals line 29."
   - key: "5 (sc.ho_line5)"
     status: MATCH
-    reason: "Gives the smaller of line 1 or line 4, floored at zero, whenever the section 179 interaction cannot change the result. The case where both income limits bind (Pub. 946, two different taxable income limits) is refused."
+    reason: "Gives the smaller of line 1 or line 4, floored at zero, in every case the program computes. The case where the section 179 business income limit and this limit interact is refused, citing the Pub. 946 two-income-limit procedure."
   - key: "30"
     status: MATCH
-    reason: "Instruction: 'Include the amount from line 5 of the Simplified Method Worksheet on line 30', and zero when no home deduction is claimed."
+    reason: "'Include the amount from line 5 of the Simplified Method Worksheet on line 30.' Zero when no home office is claimed."
   - key: "31"
     status: MATCH
-    reason: "Form: 'Subtract line 30 from line 29.' Passive-loss cases are refused by the line G screen and at-risk limits by the line 32 refusal."
+    reason: "'Subtract line 30 from line 29.' Passive activities and prior-year PAL are screened; at-risk losses are refused through Form 6198."
   - key: "32"
     status: MATCH
-    reason: "Restates the box 32b examples: nonrecourse loans, guaranteed or stop-loss protected amounts (excluding casualty and tort insurance), and loans from interested or related persons."
+    reason: "Box 32b covers nonrecourse loans, guaranteed or stop-loss amounts (excluding casualty and tort insurance), and amounts borrowed from interested or related persons, as the line 32 instructions say."
   - key: "33"
     status: MATCH
-    reason: "Combines line 33 (cost, lower of cost or market, or other) with line 34 (any change between opening and closing inventory). Other methods and changes are refused."
+    reason: "Cost or lower of cost or market are supported. Other methods and line 34 changes are refused."
   - key: "35"
     status: MATCH
-    reason: "Form: 'Inventory at beginning of year.' Different-from-last-year cases are refused by the line F and line 33 screens."
+    reason: "Beginning inventory equals last year's closing inventory. Method changes are screened."
   - key: "36"
     status: MATCH
-    reason: "Form: 'Purchases less cost of items withdrawn for personal use.'"
+    reason: "'Purchases less cost of items withdrawn for personal use.'"
   - key: "37"
     status: MATCH
-    reason: "Form: 'Cost of labor. Do not include any amounts paid to yourself.'"
+    reason: "'Cost of labor. Do not include any amounts paid to yourself.'"
   - key: "38"
     status: MATCH
-    reason: "Form: 'Materials and supplies.'"
+    reason: "Materials and supplies (line 38)."
   - key: "39"
     status: MATCH
-    reason: "Form: 'Other costs.'"
+    reason: "Other costs (line 39)."
   - key: "40"
     status: MATCH
-    reason: "Form: 'Add lines 35 through 39.'"
+    reason: "'Add lines 35 through 39.'"
   - key: "41"
     status: MATCH
-    reason: "Form: 'Inventory at end of year.'"
+    reason: "Inventory at end of year."
   - key: "42"
     status: MATCH
-    reason: "Form: 'Subtract line 41 from line 40.'"
+    reason: "'Subtract line 41 from line 40.'"
   - key: "12 (sc.s179_allowed)"
     status: MATCH
-    reason: "Uses this business's elected amounts when the limits leave Form 4562 line 12 equal to line 8, otherwise the whole line 12 for a single Schedule C. Allocating a limited deduction among several businesses (line 12 instructions) is refused."
+    reason: "Uses this business's elected amount when Form 4562 line 12 equals the elected total. Otherwise uses line 12 for a single Schedule C. Allocating a limited deduction among several businesses ('you may allocate your allowable section 179 expense deduction among them') is refused."
   - key: "(screen) (sc.hi_uses)"
     status: MATCH
-    reason: "Applies the instructions' conditions: the plan is established under the business, the policy is in the business's or your name, and personal services are a material income-producing factor."
+    reason: "The plan must be established under the business, with the policy in your name or the business's name, and personal services must be a material income-producing factor."
   - key: "(screen) (sc.hi_screen)"
     status: MATCH
-    reason: "Refuses the cases the instructions route elsewhere or treat specially: Marketplace with the premium tax credit (Pub. 974), Form 2555, S corporations, optional methods, retired public safety officers, and long-term care insurance spread across businesses."
+    reason: "Screens the Pub. 974 Marketplace/PTC case, Form 2555, S corporation shareholders, optional methods, retired public safety officers, and long-term care across plans. These are the special cases in the 7206 instructions, and the refusal names them."
   - key: "1 (sc.f7206_line1)"
     status: MATCH
-    reason: "Follows Form 7206 line 1. It covers coverage for you, your spouse, dependents and a child under 27, including voluntary Medicare premiums. Subsidized-plan months and long-term care insurance are excluded; retirement plan amounts are refused."
+    reason: "Follows Form 7206 line 1: medical, dental and vision coverage, voluntary Medicare premiums, and children under 27. Excludes subsidized-plan months (QSEHRA counts as subsidized) and long-term care."
   - key: "2 (sc.f7206_line2)"
     status: MATCH
-    reason: "Line 2: 'enter for each person covered the smaller of (a) or (b)', with (b) set by age at year end. The total of the per-person amounts is entered."
+    reason: "For each covered person, the smaller of (a) payments or (b) the age limit, then totaled, as line 2 says."
   - key: "3 (sc.f7206_line3)"
     status: MATCH
-    reason: "Form: 'Add lines 1 and 2.'"
+    reason: "'Add lines 1 and 2.'"
   - key: "4 (sc.f7206_line4)"
     status: MATCH
-    reason: "Net profit from the business under which the plan is established. Losses enter zero; optional methods and S corporations are refused."
+    reason: "Net profit from the business under which the plan is established, using the Schedule C line 31 result and zero for a loss."
   - key: "5 (sc.f7206_line5)"
     status: MATCH
-    reason: "Total of all net profits, with 'Don't include any net losses.' Schedule F and K-1 income is refused through the Schedule SE screen used downstream."
+    reason: "'Total of all net profits ... Don't include any net losses.' Schedule F and K-1 income are screened through the SE screen."
   - key: "7 (sc.f7206_line7)"
     status: MATCH
-    reason: "Multiplies Schedule 1, line 15 (Schedule SE line 13) by line 4 ÷ line 5. The 6-decimal rounding of the ratio is not addressed by the text."
+    reason: "Deductible part of SE tax (Schedule SE line 13 = Schedule 1 line 15) multiplied by line 4 ÷ line 5, which is line 6. The program uses this person's own SE deduction."
   - key: "8 (sc.f7206_line8)"
     status: MATCH
-    reason: "Form: 'Subtract line 7 from line 4.'"
+    reason: "'Subtract line 7 from line 4.'"
   - key: "9 (sc.f7206_line9)"
     status: MATCH
-    reason: "Needs the Schedule 1, line 16 amount 'attributable to the same trade or business'. A plan with more than one Schedule C is refused, so the profit-share allocation gives the whole amount whenever there is a profit."
+    reason: "Schedule 1 line 16 attributable to this business. Plans covering more than one Schedule C are refused, so the share is the whole deduction."
   - key: "10 (sc.f7206_line10)"
     status: MATCH
-    reason: "Form: 'Subtract line 9 from line 8.'"
+    reason: "'Subtract line 9 from line 8.'"
   - key: "13 (sc.f7206_line13)"
     status: MATCH
-    reason: "'Subtract line 12 from line 10 or 11.' Form 2555 (line 12) and S corporations (line 11) are refused, so line 13 equals line 10."
+    reason: "Line 10 less line 12. Form 2555 is screened, so line 12 is zero."
   - key: "14 (sc.f7206_line14)"
     status: MATCH
-    reason: "Form: 'Enter the smaller of line 3 or line 13.' Zero when there is no plan."
+    reason: "'Enter the smaller of line 3 or line 13.'"
   - key: "1(c)"
     status: MATCH
-    reason: "Form 8995 QBI for this business is net profit or loss less the attributable deductible SE tax, retirement contributions and SE health insurance, as the Form 8995 instructions require. Statutory employee and former-employee cases are refused."
+    reason: "Per the Form 8995 instructions, QBI from the Schedule C result is reduced by attributable items: 'deductible part of self-employment tax, self-employment health insurance deduction, and contributions to qualified retirement plans'."
   - key: "(screen) (sc.tips_ot)"
     status: MATCH
-    reason: "The Schedule C instructions say qualified tips and overtime are deducted on Schedule 1-A, not on Schedule C. This input only identifies them."
+    reason: "Flags qualified tips and overtime deducted on Schedule 1-A, which the What's New section says are claimed there and not on Schedule C."
 ```
 ```

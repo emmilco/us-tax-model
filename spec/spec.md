@@ -44,19 +44,23 @@ Development targets the tax year 2025 final forms and instructions. Tax year 202
 
 ### 2.2 Refused with a cited explanation
 
-The tool detects each of these from an interview answer or an input box and stops, naming the form it cannot prepare and the instruction that requires it. It never proceeds silently.
+This section is the current refusal list, not the proof of concept's: the stages of 2.4 have since computed much of what the proof of concept refused (Schedule 1 and Schedule 1-A items, the capital loss carryover, qualified business income from Schedule C, dependent credits and the other credits listed there).
 
-- Foreign tax above the limit for the simple path, or any other condition requiring Form 1116. **Deferred, not dropped: Form 1116 must be returned to after the proof of concept.**
-- Qualified business income other than section 199A dividends.
-- A capital loss carryover from the prior year.
-- Digital asset transactions (Form 8949 boxes G to L).
-- Form 8949 adjustments beyond: none, basis correction (code B), and wash sale (code W). Other codes are refused.
-- Collectibles, section 1202 stock and section 1250 property sold directly.
-- Form 6251, Schedule 1 income or adjustments, Schedule 1-A deductions.
-- Schedule A items outside the lines computed: casualty and theft losses, non-cash gifts requiring an appraisal (Form 8283 Section B), charitable contributions limited by income or carried over, an investment interest carryover from a prior year, mortgage interest not reported on Form 1098 or subject to the debt limits, and the election to deduct sales tax in place of income tax.
-- Credits for dependents and any other credit not listed in 2.1.
-- Any condition in Schedule B requiring treatment not covered (nominee income, original issue discount, bond premium, seller-financed mortgage interest, savings bond exclusion).
+The tool detects each refused situation from an interview answer or an input box and stops, naming the form it cannot prepare and the instruction that requires it. It never proceeds silently.
+
+The authoritative list is the data: every `refuses:` entry in `forms/<year>/*.yaml`, each with its gate, the form named, the remedy and the citation. `docs/COVERAGE.md`, generated from that data, lists every refusal gate by topic, and `check-all` fails when it and the data disagree. `reports/<year>/filer_coverage.md` estimates the share of returns each measured situation affects and names the gates it cannot measure. The main refused situations are:
+
+- Schedule E: rental and royalty income, partnerships, S corporations, estates and trusts.
+- Schedule 1 items other than those computed (2.4), among them Form 4797, the net operating loss deduction, the foreign earned income exclusion, farm income (Schedule F) and the line 8 kinds not asked about.
+- A filer or spouse who can be claimed as another person's dependent.
 - Married filing separately.
+- Credits other than those computed (2.4), and the other Schedule 2 taxes, among them the alternative minimum tax (Form 6251).
+- Foreign tax above the limit for the simple path, or any other condition requiring Form 1116. **Deferred, not dropped.**
+- Qualified business income other than section 199A dividends and the Schedule C businesses entered, and the deduction above the Form 8995 threshold for business income.
+- Digital asset transactions (Form 8949 boxes G to L), Form 8949 adjustment codes other than B and W, and collectibles, section 1202 stock and section 1250 property sold directly.
+- Schedule A items outside the lines computed: casualty and theft losses, non-cash gifts requiring an appraisal (Form 8283 Section B), charitable contributions limited by income or carried over, mortgage interest not reported on Form 1098 or subject to the debt or use limits, and the election to deduct sales tax in place of income tax.
+- Schedule B treatment not covered (nominee income, original issue discount, bond premium, seller-financed mortgage interest, the savings bond exclusion).
+- Within each computed form, the sub-cases its screens name (for example the year-of-marriage and allocation parts of Form 8962, or a capital loss carryover from a joint return with someone other than the present spouse).
 
 The estimated tax penalty is not computed. The tool states that the IRS will figure it and cites the instruction.
 
@@ -469,7 +473,7 @@ Expected values are never written as formulas of the parameters: an expectation 
 - Any ambiguity entry that affected the return is shown with the reading chosen.
 - "I don't know" is an allowed answer. It leads to help naming the document box that holds the answer, or stops. It never becomes a default.
 - Amounts are exact cents. A return-wide whole-dollar rounding setting, with its instruction shown, is deferred and not implemented; the output states this, and the deferral is tracked in the ambiguity register (`amb.2025.multiplication_subcent`, `amb.2025.sales_rounding`). The only rounding performed is by the `round` atom where a cited instruction says so.
-- Standing notices, at first run and on every output: this is not tax or legal advice; the user is responsible for the return; the tool implements published IRS forms and instructions, which are not the law itself; it is not affiliated with or endorsed by the IRS; and the list of what it covers and does not cover.
+- Standing notices, on every output (the values sheet, its HTML form, every interview response and every `eval --json` or `eval --batch` result), so the first output of any run carries them; the tool keeps no state between runs and has no separate first-run screen: this is not tax or legal advice; the user is responsible for the return; the tool implements published IRS forms and instructions, which are not the law itself; it is not affiliated with or endorsed by the IRS; and the list of what it covers and does not cover.
 
 ## 9. Operating constraints
 
@@ -509,8 +513,7 @@ Scope items not yet taken up. Work items of every kind, including these, are tra
 - Form 1116, deferred by decision.
 - Filling official PDFs.
 - Married filing separately.
-- Credits for dependents, which a Head of Household filer will commonly need; first item of the coverage goal (2.4).
-- The household architecture test: whether the atom vocabulary expresses the qualifying-child and head-of-household predicates without `opaque` escapes.
+- The remaining items of the coverage goal (2.4) and the refusals of 2.2.
 - New York state return, after the federal coverage goal.
 - A count of official single-line answers in the IRS volunteer test (Form 6744) that touch the slice.
 - The questions for a lawyer listed in `../research/04_legal_liability.md`.

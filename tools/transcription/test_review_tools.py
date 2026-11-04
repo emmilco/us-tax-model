@@ -911,6 +911,8 @@ class InternalAdapterContracts(unittest.TestCase):
             if change=='gain-portion':
                 target['expr']={'op':'copy','from':'f4952.line4e'}
             else:
+                target=next(l for d in context['forms'] if d['id']=='f4952' for l in d['lines']
+                            if any(r.get('when')=='f4952.bad_election' for r in l.get('refuses',[])))
                 target['refuses']=[r for r in target['refuses'] if r['when']!='f4952.bad_election']
             with self.subTest(change=change):
                 self.assertEqual(adapters.assess('f4952',T.Y,context)['state'],'fail')

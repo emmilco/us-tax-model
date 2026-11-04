@@ -700,38 +700,33 @@
   "question": "Elect an alternative allocation of Form 4952 line 4g to qualified dividends instead of capital gains first?",
   "lines": [
    "f4952.line2",
-   "f4952.election",
+   "f4952.election_checked",
    "f4952.line5",
-   "f4952.required"
+   "f4952.required_test"
   ],
   "verdict": "NARROW",
   "findings": [
    {
     "kind": "NARROW",
-    "situation": "A filer has deductible investment expenses other than interest, such as depreciation or depletion on investment assets or an allowed expense reported on a Schedule K-1, and uses the default allocation or makes no line 4g election, so answers NO.",
-    "irs_text": "f4952 (2025) p. 4, Line 5: 'Investment expenses are your allowed deductions, other than interest expense, directly connected with the production of investment income. For example, depreciation or depletion allowed on assets that produce investment income is an investment expense.'",
-    "why": "The question asks only about how line 4g is allocated, so it does not prompt a YES for these expenses. The tool sets line 5 to zero, which overstates net investment income on line 6 and can overstate the deduction on line 8."
+    "situation": "A filer has deductible investment expenses other than interest, such as depreciation or depletion on investment assets or expenses reported on a partnership or S corporation K-1, and does not elect any alternative 4g allocation. They truthfully answer NO, and the tool sets line 5 to zero.",
+    "irs_text": "f4952 p. 4, Line 5: \"Investment expenses are your allowed deductions, other than interest expense, directly connected with the production of investment income. For example, depreciation or depletion allowed on assets that produce investment income is an investment expense. Include investment expenses incurred directly by you or reported to you on Schedule K-1 from a partnership, or by an S corporation...\"",
+    "why": "The question asks only about the line 4g allocation election and never mentions other investment expenses. A NO answer therefore lets line 5 default to zero, which overstates net investment income and the line 8 deduction."
    },
    {
     "kind": "NARROW",
-    "situation": "A filer whose interest and non-qualified ordinary dividends exceed investment interest, with no carryover and no election, has other deductible investment expenses and truthfully answers NO.",
-    "irs_text": "f4952 (2025) p. 3, Who Must File: 'You don't have to file Form 4952 if all of the following apply... You don't have any other deductible investment expenses.'",
-    "why": "The question does not ask about other investment expenses, and the tool treats them as zero. It can therefore treat the filing exception as met and conclude that Form 4952 is not required when the IRS text requires it."
+    "situation": "A filer with other deductible investment expenses answers NO, and the filing-exception helper may treat them as exempt from filing even though the exception requires having no such expenses.",
+    "irs_text": "f4952 p. 3, Who Must File, Exception: \"You don't have any other deductible investment expenses.\"",
+    "why": "The tool assumes line 5 is zero, so the required_test exception can fire when the IRS text says it cannot. The screen's wording never draws out these expenses."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer makes an ordinary line 4g election of qualified dividends, either with no net capital gain on line 4e or with the intent to include dividends in investment income, without entering 'Elec.' next to line 4e.",
-    "irs_text": "f4952 (2025) p. 3, Line 4g: 'you can elect to include part or all of these amounts in investment income'; p. 4, Note: 'you can treat less of the amount on line 4e as attributable to line 4g and more to line 4b... enter on the dotted line next to line 4e \"Elec.\"'",
-    "why": "'Elect an alternative allocation of Form 4952 line 4g to qualified dividends' could be read as asking about any election of qualified dividends on line 4g, which would draw a YES on a default-allocation case. It never identifies the specific 'Elec.' entry next to line 4e that the IRS text describes."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer wants to treat only part of the line 4g amount as coming from qualified dividends rather than capital gain, keeping some of line 4e attributed to line 4g.",
-    "irs_text": "f4952 (2025) p. 4, Note: 'you can treat less of the amount on line 4e as attributable to line 4g and more to line 4b... (don't enter less than the excess of line 4g over line 4b)'",
-    "why": "'To qualified dividends instead of capital gains first' can be read as describing only a full switch to a dividends-first ordering. A filer making a partial shift, which the tool does not compute, could therefore answer NO."
+    "situation": "A filer who elects on line 4g to include qualified dividends in investment income, often with no line 4e net capital gain, may read the question as asking whether they are electing to treat qualified dividends as investment income, and answer YES.",
+    "irs_text": "f4952 p. 3, Line 4g: \"you can elect to include part or all of these amounts in investment income\"; p. 4 Note: \"you can treat less of the amount on line 4e as attributable to line 4g and more to line 4b... enter on the dotted line next to line 4e 'Elec.'\"",
+    "question": "Elect an alternative allocation of Form 4952 line 4g to qualified dividends instead of capital gains first?",
+    "why": "The wording \"allocation of line 4g to qualified dividends\" can be read as the ordinary line 4g election, which the tool computes, rather than the separate \"Elec.\" election on line 4e. Under that reading the filer answers YES and the tool refuses lines it handles correctly."
    }
   ],
-  "prompt_sha": "d2906e1f85a83cca764bb827b5c2e8055e499fc03a7999ad3532820ee7176e2a",
+  "prompt_sha": "a8fc568fe0c6fb138c73c911990fb8c3ac4a62f0a6f6b1cf1d5be50e6af99327",
   "used": [
    {
     "doc": "f4952",
@@ -755,7 +750,7 @@
     "cols_sha256": "c98eb27a83a89faecfdd0cd6597e8063fbd86a14ba1606f3e96c1c5f016d2b5c"
    }
   ],
-  "cost": 0.10351199999999999,
+  "cost": 0.085372,
   "model": "claude-opus-5-5"
  },
  {
@@ -813,32 +808,38 @@
   "question": "Any interest expense attributable to royalties, a business, passive activities, tax-exempt income or at-risk limitations; any deductible investment expense other than interest (for example depreciation or depletion on assets that produce investment income, or investment expenses on a Schedule K-1); or any other investment income or expense beyond interest, dividends and securities sales?",
   "lines": [
    "f4952.line2",
-   "f4952.election",
+   "f4952.election_checked",
    "f4952.line5",
-   "f4952.required"
+   "f4952.required_test"
   ],
-  "verdict": "NARROW",
+  "verdict": "WIDE",
   "findings": [
    {
-    "kind": "NARROW",
-    "situation": "A filer making a line 4g election wants to treat less of line 4e and more of line 4b as attributable to line 4g (for example, because they file Form 1116), but nothing in the question asks about this non-default allocation, so they truthfully answer NO.",
-    "irs_text": "\"However, you can treat less of the amount on line 4e as attributable to line 4g and more to line 4b. You may want to do this if you are filing Form 1116... enter on the dotted line next to line 4e 'Elec.'\" (f4952 2025, p. 4, line 4g Note)",
-    "why": "The helper computes only a default-allocation election by carrying over the line 4g amount, and it does not produce the 'Elec.' entry or the smaller line 4e amount used to figure tax. The question covers interest attribution, other expenses and other income, but not this allocation choice."
+    "kind": "WIDE",
+    "situation": "A filer pays mortgage interest on a rental property, or interest on a loan used to buy a passive partnership interest. That interest is not investment interest at all, so the tool computes the Form 4952 lines correctly by leaving it out, yet the question makes the filer answer YES.",
+    "irs_text": "f4952 p. 3, Line 1: \"Investment interest expense doesn't include any of the following. ... Interest expense that is properly allocable to a passive activity.\"",
+    "why": "The question asks about \"Any interest expense attributable to ... passive activities.\" That sweeps in interest that Form 4952 excludes from lines 1 through 3, so filers whose 4952 lines the tool computes correctly are refused."
    },
    {
     "kind": "WIDE",
-    "situation": "A filer has passive rental mortgage interest, ordinary business loan interest or interest tied to tax-exempt income, none of which is investment interest, and otherwise has only a supported securities-margin situation.",
-    "irs_text": "Question: \"Any interest expense attributable to royalties, a business, passive activities, tax-exempt income...\" IRS: \"Investment interest expense doesn't include... Interest expense that is properly allocable to a passive activity... Interest expense related to tax-exempt interest income under section 265.\" (f4952 2025, p. 3, line 1)",
-    "why": "The wording says 'any interest expense' rather than investment interest, so these filers must answer YES. That interest stays out of Form 4952 for passive and tax-exempt items, and ordinary business loan interest is not allocable to property held for investment, so the tool's lines remain correct without it."
+    "situation": "A filer borrowed money to buy tax-exempt municipal bonds. That interest is disallowed under section 265 and never enters Form 4952, but the question makes the filer answer YES.",
+    "irs_text": "f4952 p. 3, Line 1: \"Investment interest expense doesn't include ... Interest expense related to tax-exempt interest income under section 265.\"",
+    "why": "The question names \"interest expense attributable to ... tax-exempt income.\" Such interest belongs on no Form 4952 line, so the tool's computation is correct and the refusal is unnecessary."
+   },
+   {
+    "kind": "WIDE",
+    "situation": "A filer pays investment advisory or custodial fees on a brokerage account. These are nondeductible miscellaneous itemized deductions, so line 5 is correctly zero, but the catch-all clause makes the filer answer YES.",
+    "irs_text": "f4952 p. 4, Line 5: \"Don't include any miscellaneous itemized deductions, which aren't allowed deductions in tax years beginning after December 31, 2017, and before January 1, 2026.\"",
+    "why": "The final clause, \"any other investment income or expense beyond interest, dividends and securities sales,\" is not limited to deductible expenses. A filer with nondeductible investment fees would answer YES even though the tool's zero on line 5 is correct."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer has mutual fund capital gain distributions or a capital loss carryover and no other unusual items, and must decide whether these go beyond 'interest, dividends and securities sales'.",
-    "irs_text": "\"When figuring this amount, include capital gain distributions from mutual funds and capital loss carryovers.\" (f4952 2025, p. 3, line 4d)",
-    "why": "A capital gain distribution can be read as a dividend or as other income because no security was sold, and a carryover can be read as part of securities sales or as a separate item. Filers in the same situation could therefore truthfully answer differently."
+    "situation": "A filer is unsure whether their interest is \"attributable to ... at-risk limitations.\" The IRS test is whether the interest relates to an activity for which the filer is not at risk, which the filer may not recognize from this wording.",
+    "irs_text": "f4952 p. 4, Form 6198: \"If any of your deductible investment interest expense is attributable to an activity for which you aren't at risk, you must also use Form 6198.\"",
+    "why": "Interest cannot be attributable to a limitation. A filer could read the phrase as asking whether they have ever been subject to at-risk rules, or as asking about an at-risk activity, and could answer either way."
    }
   ],
-  "prompt_sha": "c95cb30a016c21176ca9d015c1a0aac516e4686fbc0d2b69b95b48186a790862",
+  "prompt_sha": "ae22c537b6cf59c6f85e5f35d01cecb60bcd5cad4609c21952602903adb53055",
   "used": [
    {
     "doc": "f4952",
@@ -862,7 +863,7 @@
     "cols_sha256": "c98eb27a83a89faecfdd0cd6597e8063fbd86a14ba1606f3e96c1c5f016d2b5c"
    }
   ],
-  "cost": 0.12756399999999998,
+  "cost": 0.111504,
   "model": "claude-opus-5-5"
  },
  {
@@ -994,7 +995,7 @@
  },
  {
   "screen": "f5695.joint_occupancy",
-  "question": "Did you occupy the home jointly with someone other than your spouse on a joint return (whether or not the other occupant files Form 5695, and whether you paid for the same items or for different ones)? (Answer No if you and a neighbor only shared the cost of property benefiting each of your own main homes, and enter only the part of the cost you paid.)",
+  "question": "Did you occupy any home for which you enter Part II costs jointly with someone other than your spouse on a joint return (whether or not the other occupant files Form 5695, and whether you paid for the same items or for different ones)? This means your main home and also any other home where you installed qualified energy property, such as a heat pump, water heater, furnace or central air conditioner at a second home or a home you rent; answer Yes if you shared any one of them. (Answer No if you and a neighbor only shared the cost of property benefiting each of your own main homes, and enter only the part of the cost you paid.)",
   "lines": [
    "f5695.line30"
   ],
@@ -1002,30 +1003,18 @@
   "findings": [
    {
     "kind": "WIDE",
-    "situation": "A filer shares the home with a roommate, relative, or child who paid for no energy items, so 'Did you occupy the home jointly with someone other than your spouse' requires YES even though the filer's allocation fraction is 1 and the tool's line 30 is correct.",
-    "irs_text": "i5695 (2025) p. 3: 'The numerator is the amount you paid and the denominator is the total amount paid by you and all other occupants.'",
-    "why": "The question turns on co-occupancy alone, and its parenthetical 'whether or not the other occupant files Form 5695' reinforces that breadth. If the other occupant paid nothing, the fraction leaves the ordinary limits unchanged, so the refusal is unnecessary."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "Joint occupants each paid for energy items, but their aggregate credit is within every applicable limit, so the question requires YES even though the tool's line 30 is correct on the filer's own amounts.",
-    "irs_text": "i5695 (2025) p. 3: 'If the aggregate credit that would be allowed to all occupants for any item of property exceeds the credit limit below, then you must figure your allocable share of the credit from each property.'",
-    "why": "The IRS requires allocation only when an aggregate limit is exceeded, while the question refuses every joint occupant 'whether you paid for the same items or for different ones.' Below the limits, the filer enters the amounts paid and the normal computation applies."
+    "situation": "A filer shares a home with a non-spouse co-occupant, enters only the amounts the filer paid, and the combined credit of all occupants stays under every item limit, the $1,200 line 28 limit and the $2,000 line 29h limit, so line 30 computed from the filer's own amounts is correct and no line 32a statement is needed; the question still makes this filer answer Yes.",
+    "irs_text": "i5695 (2025) p. 3, Joint occupancy: \"To figure the credit, enter the amounts you paid for the items ... If the aggregate credit that would be allowed to all occupants for any item of property exceeds the credit limit below, then you must figure your allocable share\"; question: \"Did you occupy any home for which you enter Part II costs jointly with someone other than your spouse ... answer Yes if you shared any one of them.\"",
+    "why": "Allocation and the line 32a statement are required only when the occupants' combined credit exceeds a limit. Below the limits, each occupant simply enters what they paid, which the tool computes. The question asks Yes for every case of joint occupancy, so it refuses cases the tool would get right."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer has energy property at more than one home, such as a heat pump at a second residence shared with a sibling and improvements at a main home occupied alone, and cannot tell which home 'the home' means.",
-    "irs_text": "f5695 (2025) p. 3, line 21c: 'Enter the complete address of each home where you installed qualified energy property.' i5695 (2025) p. 3: 'If you occupied your home jointly with someone, each occupant must complete their own Form 5695.'",
-    "why": "Section B property need not be at the main home, but 'the home' could be read as the main home only. A filer reading it that way could answer NO despite needing allocation for property at the shared home."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer shared the home only before 2025, or only for part of 2025 before or after the relevant property was paid for or installed, and the question does not say when the joint occupancy must have occurred.",
-    "irs_text": "i5695 (2025) p. 3: 'If you occupied your home jointly with someone, each occupant must complete their own Form 5695.' i5695 (2025) p. 1: 'A home is where you lived in 2025.'",
-    "why": "'Did you occupy' has no time frame, so it could cover any past co-occupancy, any time in 2025, or only the time the property was paid for or installed. Filers in the same situation could therefore truthfully give different answers."
+    "situation": "A filer shares a home with a roommate or relative who paid for some Part II items, but the filer does not think of themselves as having entered costs 'jointly' with that person.",
+    "irs_text": "i5695 (2025) p. 3: \"If you occupied your home jointly with someone, each occupant must complete their own Form 5695.\"",
+    "why": "In \"occupy any home for which you enter Part II costs jointly with someone,\" the word \"jointly\" can attach either to occupying the home or to entering the costs. If a filer reads it as shared payment of the same costs, a filer whose co-occupant paid for separate items could answer No. The parenthetical points the other way, but the main clause stays ambiguous."
    }
   ],
-  "prompt_sha": "e722c6e7f46c753e83a07380a34d06b4d95c65f9bf55ac7c9c28721fa6100857",
+  "prompt_sha": "1d0d8eed6b67b1b0e7771fc9c589472fe7c8c544d0eb611e70a5edf367d341d4",
   "used": [
    {
     "doc": "i5695",
@@ -1034,21 +1023,23 @@
     "pages": [
      1,
      3,
-     5
+     5,
+     6
     ],
     "how": "cited pages",
     "locators": [
      "p. 1, Costs, \"The energy efficient home improvement credit (Part II) is only available for existing homes\"",
      "p. 1, Costs, \"only that portion of the costs that is allocable to the nonbusiness use can be used to determine either credit\"",
      "p. 3, Joint occupancy, \"If the aggregate credit that would be allowed to all occupants for any item of property exceeds the credit limit below, then you must figure your allocable share of the credit from each property\"",
-     "p. 3, Joint occupancy, \"If you occupied your home jointly with someone, each occupant must complete their own Form 5695\" and \"If the aggregate credit that would be allowed to all occupants for any item of property exceeds the credit limit below, then you must figure your allocable share of the credit from each property\"; p. 3, Joint ownership of qualified property, \"You figure your credit on the part of the cost you paid\"",
+     "p. 3, Joint occupancy, \"If you occupied your home jointly with someone, each occupant must complete their own Form 5695\" and \"If the aggregate credit that would be allowed to all occupants for any item of property exceeds the credit limit below, then you must figure your allocable share of the credit from each property\"; p. 3, Joint ownership of qualified property, \"You figure your credit on the part of the cost you paid\"; p. 3, Section B—Residential Energy Property Expenditures, \"installed on or in connection with a home that you used during 2025\"; p. 6, Lines 21a Through 21c, \"Enter the full address of each home where you installed qualified energy property\"",
      "p. 3, Married taxpayers with more than one home, \"Complete lines 17a through 30 of a separate Form 5695 for each main home\"",
      "p. 5, Lines 17a Through 17e, \"If the qualified improvements for which you are seeking to claim the credit are related to the construction of a new home, check the ... Yes ... box. If you check the ... Yes ... box, skip lines 18a through 20d\""
     ],
     "cols_pages": [
      1,
      3,
-     5
+     5,
+     6
     ],
     "cols_sha256": "8133d56a88c69a6cda8b1858e9dc5e4794a506b4314057c66e59dac863edeb53"
    },
@@ -1070,7 +1061,7 @@
     "cols_sha256": "652cc58075d848859a281cdad3e2bba9d640b7b05907a9e09bd386347fcd3edc"
    }
   ],
-  "cost": 0.158044,
+  "cost": 0.1666,
   "model": "claude-opus-5-5"
  },
  {
@@ -1346,7 +1337,7 @@
  },
  {
   "screen": "f8960.unsupported",
-  "question": "Any annuity, rental, royalty, business or pass-through income; a CFC or PFIC holding; a section 911 exclusion; a disposition adjustment (Form 8960 line 5b or 5c, for example gain on employer securities attributable to net unrealized appreciation (NUA) from a qualified plan, or the sale of property held in a trade or business or of an interest in a partnership or S corporation); a section 1411 net operating loss; excluded savings bond interest (Form 8815); a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment?",
+  "question": "Any annuity, rental, royalty, business or pass-through income; a CFC or PFIC holding; a section 911 exclusion; a disposition adjustment (Form 8960 line 5b or 5c, for example gain on employer securities attributable to net unrealized appreciation (NUA) from a qualified plan, or the sale of property held in a trade or business or of an interest in a partnership or S corporation); a section 1411 net operating loss; section 404(k) dividends on employer securities held in an employee stock ownership plan (ESOP) and paid directly to you (Form 1099-DIV box 1a); excluded savings bond interest (Form 8815); a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment?",
   "lines": [
    "f8960.line1",
    "f8960.line3",
@@ -1364,60 +1355,42 @@
   "findings": [
    {
     "kind": "NARROW",
-    "situation": "A filer receives a taxable state income tax refund or other recovery of an amount deducted on a prior-year Form 8960, so line 7 needs a positive amount that the tool sets to zero.",
-    "irs_text": "\"A recovery or refund of a previously deducted item increases NII in the year of the recovery.\" (i8960 2025, p. 14; see also the Line 7 worksheet, p. 15)",
-    "why": "Only the vague catch-all \"another net investment income adjustment\" reaches this, and a filer would likely see a refund as ordinary income rather than an adjustment. A common situation like this could truthfully draw a NO."
+    "situation": "The filer received a taxable 2025 refund of state income tax (Schedule 1, line 1) that was deducted on a prior-year Form 8960, line 9b, so the recovery must be added back on line 7.",
+    "irs_text": "i8960 p. 14: \"Deduction recoveries. A recovery or refund of a previously deducted item increases NII in the year of the recovery.\"; p. 13 lists \"Recoveries of deductions taken on a prior year's Form 8960\" as a line 7 item",
+    "why": "The question names no refunds or recoveries, so this filer truthfully answers NO. The tool then sets line 7 to zero and understates NII."
    },
    {
     "kind": "NARROW",
-    "situation": "A filer has other NII not reported on the Schedule B or capital gain lines, such as a Form 8814 amount, substitute interest or dividend payments, or net notional principal contract payments, and the tool leaves line 7 at zero.",
-    "irs_text": "\"Other items of NII (or properly allocable deductions) not otherwise included on Form 8960 reported on Schedule 1 (Form 1040), line 8z\", listing Form 8814, substitute payments, and NPC payments (i8960 2025, p. 13)",
-    "why": "None of these is named, and they are income items, which a filer would not naturally call an adjustment. They also do not fit the listed annuity, rental, royalty, business, or pass-through categories."
+    "situation": "A parent elects Form 8814 to report a child's interest and dividends, which must be included on Form 8960, line 7.",
+    "irs_text": "i8960 p. 13: \"Parents electing to include their child's dividends and capital gain distributions in their income by filing Form 8814 must include on Form 8960, line 7, the amount on Form 8814, line 12\"",
+    "why": "Nothing in the question points to Form 8814 or a child's investment income. Only the catch-all \"another net investment income adjustment\" could reach it, and a filer would not recognize it there."
    },
    {
     "kind": "NARROW",
-    "situation": "A filer has a gain or loss from disposing of a life insurance contract, or a casualty or theft loss on Schedule A, line 15, which belongs on line 7 but is treated as zero.",
-    "irs_text": "\"Gain or loss from the disposition of an annuity or life insurance contract\" and \"Casualty and theft losses reported on Schedule A (Form 1040), Itemized Deductions, line 15 (enter as a negative amount)\" (i8960 2025, p. 13)",
-    "why": "The question's disposition wording points to lines 5b and 5c, while these items go on line 7. Neither one is an investment expense or an obvious adjustment, so a filer could answer NO."
+    "situation": "The filer has substitute interest or dividend payments (Form 1099-MISC) or net periodic payments on a notional principal contract reported on Schedule 1, line 8z.",
+    "irs_text": "i8960 p. 13: \"Other items of NII ... not otherwise included on Form 8960 reported on Schedule 1 (Form 1040), line 8z ... 2. Substitute interest and dividend payments ... 3. Net positive periodic payments received from a notional principal contract\"",
+    "why": "These items are not annuity, rental, royalty, business, or pass-through income, so the filer answers NO. The tool then omits them from line 7."
    },
    {
     "kind": "NARROW",
-    "situation": "A filer has section 404(k) dividends or self-charged interest included on line 1 or 2, which require a negative line 7 modification the tool does not make.",
-    "irs_text": "\"Section 404(k) dividends reported on line 2 (enter as a negative amount)\" and \"Interest income reported on line 1 received from certain nonpassive activities (entered as a negative amount)\" (i8960 2025, p. 13)",
-    "why": "A filer who sees these as ordinary dividends or interest has no named prompt to answer YES. The tool would then overstate NII."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A filer made no qualifying disposition this year but must adjust a capital loss carryforward for previously excluded capital losses, an amount that belongs on line 5b.",
-    "irs_text": "\"Adjustments to your capital loss carryforwards for items of excluded loss\" (i8960 2025, p. 9, Line 5b); \"capital loss carryforwards must be adjusted if any sum of all capital gain or loss amounts excluded from NII on lines 5b and 5c was a net loss\" (p. 9)",
-    "why": "The question's examples are all current-year sales or gains, so a filer with only a carryforward from an earlier year could read \"disposition adjustment\" as not applying."
+    "situation": "The filer has a casualty or theft loss on Schedule A, line 15, from investment property, which is a negative line 7 modification.",
+    "irs_text": "i8960 p. 13: \"Casualty and theft losses reported on Schedule A (Form 1040), Itemized Deductions, line 15 (enter as a negative amount)\"",
+    "why": "The question mentions only line 5b and 5c disposition adjustments. A casualty loss is not obviously a \"disposition adjustment,\" so the filer would answer NO and the tool would ignore the loss."
    },
    {
     "kind": "WIDE",
-    "situation": "A filer whose only potentially relevant item is an early withdrawal penalty on Schedule 1, line 18 could answer YES because it is a deductible expense tied to interest income, although the tool computes it on line 10.",
-    "irs_text": "Question: \"a deductible investment expense other than investment interest or state and local tax\". IRS: \"Early withdrawal penalty (Schedule 1 (Form 1040), line 18) is reported on Form 8960, line 10.\" (i8960 2025, p. 13)",
-    "why": "The question carves out only investment interest and state and local tax, not this penalty, and the penalty is also a line 10 modification that could fit \"another net investment income adjustment\". The filer could be refused for an item the tool handles."
+    "situation": "The filer receives only annuity payments from a 401(k), 403(b), IRA, or similar plan, which are excluded from line 3, so the tool's zero is correct.",
+    "irs_text": "Question: \"Any annuity ... income\"; i8960 p. 7: \"Enter the gross income from all annuities, except annuities paid from the following. • Section 401 ... • Section 408—individual retirement accounts (IRAs) or annuities\"",
+    "why": "The question says \"any annuity\" without limiting it to nonqualified annuities (Form 1099-R code D). A retiree with only exempt plan annuities answers YES and is refused, even though the tool computes line 3 correctly."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A beneficiary with a Schedule K-1 (Form 1041), box 14, code H adjustment may not know whether an estate or trust distribution counts as \"pass-through income\", though it affects lines 7 and 13.",
-    "irs_text": "\"Enter the amount from box 14, code H, of Schedule K-1 (Form 1041)\" and \"enter it on Form 8960, line 7, and increase your MAGI on Form 8960, line 13\" (i8960 2025, p. 13)",
-    "why": "\"Pass-through income\" can be read to include estates and trusts or to mean only partnerships and S corporations. Estate and trust distributions are not named anywhere in the question."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer who owns a CFC or PFIC only indirectly could read \"a CFC or PFIC holding\" as limited to shares held directly and answer NO, although line 13 may need an adjustment.",
-    "irs_text": "\"If you own, directly or indirectly, stock in a CFC or PFIC\" (i8960 2025, p. 22)",
-    "why": "The IRS text expressly reaches indirect ownership, while \"holding\" does not say whether it does. The tool would then use AGI as MAGI without the required modification."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer who receives pension or other annuity payments from a qualified plan could answer YES to \"any annuity\" even if the payments are excluded from NII as qualified plan distributions, leaving line 3 correctly at zero.",
-    "irs_text": "Question: \"Any annuity, rental, royalty, business or pass-through income\". IRS: \"Annuities (see instructions)\" (f8960 2025, line 3); a qualified plan distribution \"within the meaning of section 1411(c)(5)\" \"isn't included in NII\" (i8960 2025, p. 9, stated for NUA)",
-    "why": "\"Any annuity\" can be read as all annuity payments or only those that count as NII. The Line 3 instructions are not in the supplied text, and the p. 9 language addresses NUA specifically, so this exclusion cannot be fully confirmed here."
+    "situation": "The filer is a beneficiary who receives a Schedule K-1 (Form 1041) with box 14, code H, which adjusts line 7 and possibly MAGI on line 13.",
+    "irs_text": "i8960 p. 13: \"Distributions from estates and trusts. Enter the amount from box 14, code H, of Schedule K-1 (Form 1041)\"; p. 22 item 6: \"Increase or decrease AGI ... by the amount reported to you in box 14, code H\"",
+    "why": "A filer could read \"pass-through income\" as covering only partnerships and S corporations, not estates or trusts, and answer NO."
    }
   ],
-  "prompt_sha": "cea788a24d679f22dae96ea1819f80af9866c9785284051596434dc5b8e33321",
+  "prompt_sha": "5c2a9208afa5b07fee3da216de9c78264465c2e0be27d8d0d60a506869a68b48",
   "used": [
    {
     "doc": "f8960",
@@ -1429,7 +1402,7 @@
     "how": "whole document",
     "locators": [
      "Form 8960 (2025), Parts I–III, individual lines 1–17",
-     "Form 8960 (2025), Parts I–III, individual lines 1–17; line 5b, \"Any gain attributable to NUA (within the meaning of section 402(e)(4)) that you realize on a disposition of employer securities held by a qualified plan is a distribution within the meaning of section 1411(c)(5) and isn’t included in NII.\""
+     "Form 8960 (2025), Parts I–III, individual lines 1–17; line 5b, \"Any gain attributable to NUA (within the meaning of section 402(e)(4)) that you realize on a disposition of employer securities held by a qualified plan is a distribution within the meaning of section 1411(c)(5) and isn’t included in NII.\"; Line 2—Ordinary Dividends, \"If line 2 includes dividends from employer securities held in an employee stock ownership plan (ESOP) that are deductible under section 404(k) or Alaska Permanent Fund Dividends, include those amounts as negative modifications on line 7\"; Line 7—Other Modifications to Investment Income, \"Section 404(k) dividends reported on line 2 (enter as a negative amount)\"; Box 1a, \"Include reinvested dividends and section 404(k) dividends paid directly from the corporation\""
     ],
     "cols_pages": [],
     "cols_sha256": "35521c3ad7dfcd341a9de35529db4ea02c74bde6b9659da0d9388cfa46f9e4cb"
@@ -1439,6 +1412,7 @@
     "revision": "2025; printed date 2026-02-04",
     "text_sha256": "fcae098ebc1ad79343de101a66765d3b3597f664dc744de3a7588be123c900a1",
     "pages": [
+     7,
      9,
      13,
      14,
@@ -1454,11 +1428,34 @@
      "pp. 14–15, deduction recoveries; compare state/local income tax refund worksheet"
     ],
     "cols_pages": [
+     7,
      9,
      13,
      18
     ],
     "cols_sha256": "d6dc1f475c511790abb02d6d6cfff554a59b40c0da1c56eb2f26af4e3cb7fa51"
+   },
+   {
+    "doc": "i1099div",
+    "revision": "January 2024 (continuous-use instructions)",
+    "text_sha256": "c0f334a4f8c8032dfce868bbfad5bf4cba1d48c9f2226d42d736b69ae784bcf3",
+    "pages": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "how": "whole document",
+    "locators": [],
+    "cols_pages": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "cols_sha256": "d9599f4871f4d473ff9c582e205b5e9385bd865210e9c2af4c4aede3a33af4f3"
    },
    {
     "doc": "i1040gi",
@@ -1473,7 +1470,7 @@
     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
    }
   ],
-  "cost": 0.248616,
+  "cost": 0.305052,
   "model": "claude-opus-5-5"
  },
  {
@@ -1487,18 +1484,12 @@
   "findings": [
    {
     "kind": "WIDE",
-    "situation": "A single Marketplace policy covered the filer's tax family and another tax family, but the Marketplace issued each tax family its own Form 1095-A, and the filer's form lists exactly the members of the filer's tax family, so no allocation is required and lines 24 and 25 come straight from the filer's own Form 1095-A.",
-    "irs_text": "i8962 p. 12, Allocating policy amounts: allocate only if \"1. The policy covered at least one individual in your tax family and at least one individual in another tax family; and 2. Either: a. You received a Form 1095-A for the policy that does not accurately represent the members of your tax family who were enrolled in the policy ... or b. The other tax family received a Form 1095-A for the policy that includes a member of your tax family.\"",
-    "why": "The question asks \"Did any Marketplace policy ... cover someone in your tax family and also someone who is not in it\", which tests only condition 1. A filer whose accurate, separately issued Form 1095-A meets neither 2a nor 2b must still answer YES and is refused, even though the tool computes these lines correctly."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer covered with a spouse during months of marriage, divorced later in 2025, and whose shared coverage ended before the divorce date may not know whether to count the former spouse as \"in your tax family\" or whether the policy was held \"while\" divorcing.",
-    "irs_text": "i8962 p. 18, Allocation Situation 1: \"For 1 or more months of marriage, you and your former spouse were enrolled in the same qualified health plan ... You will allocate ... for coverage under the plan during the months you were married.\"",
-    "why": "A filer could read \"someone who is not in it\" as asking about family membership at the time of coverage, when the spouse was family, and read \"divorced ... while enrolled in a policy with your former spouse\" as requiring enrollment on the divorce date. Under that reading the filer answers NO although Situation 1 requires an allocation."
+    "situation": "The filer's policy also covered someone who is in no tax family for 2025, such as an adult child the filer expected to claim but who is claimed by no one and files no return; that person is 'not in' the filer's tax family, so the question forces YES.",
+    "irs_text": "i8962 p. 12: allocate only if 'The policy covered at least one individual in your tax family and at least one individual in another tax family'; i8962 p. 17: 'If you indicated to the Marketplace at enrollment that you would claim an individual in your tax family for the year of coverage but the individual is not included in any tax family for the year of coverage, you must report any APTC paid for that individual's coverage. Follow the rules under Column (f), earlier, to report this APTC.'",
+    "why": "The question asks about 'someone who is not in it [your tax family],' not someone in another tax family. No Part IV allocation applies here, and the full Form 1095-A APTC belongs on line 25, which the NO path already computes. The question nonetheless sends this filer to a refusal."
    }
   ],
-  "prompt_sha": "f0aa042df98b02175949c7c13f350e47f49cf5fdbaf29c83f8e6270a24235cb1",
+  "prompt_sha": "7eef3317d75872c42107f48507ce87bc36f5eff362184ee22958b3c838094c9c",
   "used": [
    {
     "doc": "i8962",
@@ -1521,7 +1512,7 @@
      "p. 12, Allocating policy amounts, \"The policy covered at least one individual in your tax family and at least one individual in another tax family\"",
      "p. 12, Allocating policy amounts, \"The policy covered at least one individual in your tax family and at least one individual in another tax family\" and \"The other tax family received a Form 1095-A for the policy that includes a member of your tax family\"; p. 12, example, \"your ex-spouse enrolled a child whom you are claiming as a dependent\"",
      "p. 13, Table 4, \"Was anyone in your tax family enrolled in a qualified health plan before your first full month of marriage?\"",
-     "p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"",
+     "p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"; \"may report your applicable SLCSP premium as -0-\", \"In either case, you must determine your correct applicable SLCSP premium.\"",
      "p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\"",
      "p. 4, \"Generally, if coverage in a qualified health plan began after the first day of the month, you are not allowed a monthly credit amount for the coverage for that month.\"; p. 4, \"The enrollment premiums are the total amount of the premiums for the month, reduced by any premium amounts for that month that were refunded in 2025\"",
      "p. 5, \"An individual in your tax family who is eligible for MEC (except coverage in the individual market) for a month is not in your coverage family for that month.\"; p. 6, \"Individuals who are not lawfully present in the United States are not eligible for the PTC for their coverage in a qualified health plan through a Marketplace.\"",
@@ -1555,9 +1546,23 @@
     ],
     "cols_pages": [],
     "cols_sha256": "7cc6e936bae7166ff84f462fdf8dfb599a5c7cc6db6fb470b434a0bbe85875c5"
+   },
+   {
+    "doc": "p974",
+    "revision": "2025",
+    "text_sha256": "a43961ede46b83c55843cfa2a9222fbcfb48d4a2e932f17d4fddb7b3d6ecf846",
+    "pages": [
+     6
+    ],
+    "how": "pages named by another document's citation",
+    "locators": [],
+    "cols_pages": [
+     6
+    ],
+    "cols_sha256": "5dc498e662bd08d45e2bd3bb4fc91637ffb6046ab787720aa23dde422f7a026d"
    }
   ],
-  "cost": 0.24376799999999998,
+  "cost": 0.258916,
   "model": "claude-opus-5-5"
  },
  {
@@ -1571,36 +1576,36 @@
   "findings": [
    {
     "kind": "WIDE",
-    "situation": "A filer was offered employer coverage that meets the 9.02% affordability test and minimum value, gave the Marketplace accurate information about the offer, and the Marketplace determined the filer eligible for APTC.",
+    "situation": "A tax family member who is not enrolled in any Marketplace policy (for example, a dependent child on CHIP or a parent's spouse-free employer plan) is eligible for other MEC, while the enrolled members are not.",
+    "irs_text": "i8962 p. 4: \"If an individual in your tax family is not enrolled in a qualified health plan, or is enrolled in a qualified health plan but is eligible for MEC ..., that individual is not part of your coverage family.\" Question: \"for any month, anyone in your tax family was eligible for minimum essential coverage other than coverage in the individual market\"",
+    "why": "MEC eligibility matters only for enrolled individuals. A non-enrolled member is already outside the coverage family, so the Form 1095-A amounts and the tool's computation are correct. The question still reaches 'anyone in your tax family' and forces a YES."
+   },
+   {
+    "kind": "WIDE",
+    "situation": "An enrolled member's actual 2025 income made them Medicaid- or CHIP-eligible, but the Marketplace, given accurate information, determined them ineligible for Medicaid/CHIP and eligible for APTC.",
+    "irs_text": "i8962 p. 6: \"if a Marketplace made a determination that you or a family member was ineligible for Medicaid or CHIP and was eligible for APTC ... the individual is treated as not eligible for Medicaid or CHIP for purposes of the PTC ... even if your actual 2025 income suggests that the individual may have been eligible\"",
+    "why": "The question lists Medicaid and CHIP eligibility without this Marketplace-determination exception, so a truthful filer answers YES. The individual is treated as not eligible, and the tool's computation is correct."
+   },
+   {
+    "kind": "WIDE",
+    "situation": "An employer offer meets the 9.02% affordability test and provides minimum value, but the filer gave the Marketplace accurate information about it and the Marketplace determined the filer eligible for APTC.",
     "irs_text": "i8962 p. 5: \"employer-sponsored coverage is not considered affordable if, when you or a family member enrolled in a qualified health plan, you gave accurate information about the availability of employer coverage to the Marketplace, and the Marketplace determined that you were eligible for APTC\"",
-    "why": "The question tells this filer to answer YES (\"employer-sponsored coverage that was offered and was affordable and provided minimum value\") and states no Marketplace-determination exception. Under the IRS text the person is not eligible for MEC, so the tool's normal computation is correct."
+    "why": "The question defines affordability only by the 9.02% test, so the filer answers YES. Under this rule the offer is treated as unaffordable, so there is no MEC eligibility and the tool computes correctly."
    },
    {
     "kind": "WIDE",
-    "situation": "A family member's actual 2025 income met Medicaid or CHIP criteria, but the Marketplace, given accurate information, determined the person ineligible for Medicaid or CHIP and eligible for APTC at enrollment.",
-    "irs_text": "i8962 p. 6: \"the individual is treated as not eligible for Medicaid or CHIP for purposes of the PTC for the duration of the period of coverage under the qualified health plan ... even if your actual 2025 income suggests that the individual may have been eligible\"",
-    "why": "The question asks whether anyone \"was eligible for ... Medicaid, the Children's Health Insurance Program (CHIP)\" and carves out only the intentional or reckless misinformation case. A filer who meets the criteria would answer YES, although the IRS treats the person as not eligible and the tool computes correctly."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer was offered an individual coverage HRA, opted out of reimbursements, and the HRA was unaffordable.",
-    "irs_text": "i8962 p. 3: \"If you or a family member could have been covered by an individual coverage HRA for 2025, but you opted out of receiving reimbursements under the individual coverage HRA, you may be allowed a PTC ... if the individual coverage HRA is considered unaffordable.\"",
-    "why": "The question asks whether the filer was \"offered or covered by ... an individual coverage HRA,\" so a bare unaffordable offer that was declined forces YES. The IRS text leaves the PTC unaffected in that case, so the normal computation is correct."
+    "situation": "The filer was offered an individual coverage HRA, opted out of reimbursements, and the HRA is unaffordable.",
+    "irs_text": "i8962 p. 3: \"If you or a family member could have been covered by an individual coverage HRA for 2025, but you opted out of receiving reimbursements ..., you may be allowed a PTC ... if the individual coverage HRA is considered unaffordable.\"",
+    "why": "The question asks whether anyone was 'offered or covered by' an individual coverage HRA, so a mere offer forces YES. When the filer opted out and the HRA is unaffordable, the ordinary PTC computation applies unchanged."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A family member became eligible for Medicare, Medicaid, or employer coverage partway through a month, for example on the 15th.",
+    "situation": "An enrolled individual was eligible for other MEC for only part of a month, for example Medicare beginning mid-month.",
     "irs_text": "i8962 p. 3: \"An individual is generally considered eligible for MEC for the month only if they were eligible for every day of the month\"",
-    "why": "\"For any month, anyone in your tax family was eligible\" can be read as eligibility on any day of a month, which would force YES. Under the IRS rule a partial month does not count, so the tool computes that month correctly."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A family member was eligible only for a limited-benefit government program, such as limited-scope Medicaid, that is not minimum essential coverage.",
-    "irs_text": "i8962 p. 5: \"MEC includes: • Most coverage through government-sponsored programs (including Medicaid coverage, ...)\"",
-    "why": "The question lists \"Medicaid\" without qualification, so a filer could answer YES for a program the IRS text implies may not be MEC. A filer could also read the list as limited to MEC-level coverage and answer NO."
+    "why": "'For any month, anyone ... was eligible' can be read as eligibility at any point during a month, which would yield YES. Under the IRS rule that month is not a MEC month, and the tool would compute it correctly."
    }
   ],
-  "prompt_sha": "737f3b6ef871b68054a232911e7e20ede1ede0e8d333292c2b69aa57ceae1539",
+  "prompt_sha": "a09f6853e4be1852addf35ef2ab9a35450a3c3ae3cfaa6a03dedcad2c619c401",
   "used": [
    {
     "doc": "i8962",
@@ -1624,7 +1629,7 @@
     "locators": [
      "p. 12, Allocating policy amounts, \"The policy covered at least one individual in your tax family and at least one individual in another tax family\"",
      "p. 13, Table 4, \"Was anyone in your tax family enrolled in a qualified health plan before your first full month of marriage?\"",
-     "p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"",
+     "p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"; \"may report your applicable SLCSP premium as -0-\", \"In either case, you must determine your correct applicable SLCSP premium.\"",
      "p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\"",
      "p. 4, \"Generally, if coverage in a qualified health plan began after the first day of the month, you are not allowed a monthly credit amount for the coverage for that month.\"; p. 4, \"The enrollment premiums are the total amount of the premiums for the month, reduced by any premium amounts for that month that were refunded in 2025\"",
      "p. 5, \"An individual in your tax family who is eligible for MEC (except coverage in the individual market) for a month is not in your coverage family for that month.\"; p. 5, \"Most coverage through government-sponsored programs (including Medicaid coverage, Medicare Part A or C, the Children’s Health Insurance Program (CHIP), certain benefits for veterans and their families, TRICARE, and health coverage for Peace Corps volunteers);\"; p. 5, \"Other health coverage the Department of Health and Human Services designates as MEC.\"; p. 5, \"In addition, if you or your family member enrolls in employer-sponsored coverage for a month, you or your family member is considered eligible for employer-sponsored coverage for that month, even if the coverage does not satisfy the affordability and minimum value standards.\"; p. 5, \"The coverage offered by your employer is generally considered affordable for you if your share of the annual cost for self-only coverage, which is sometimes referred to as the “employee required contribution,” is not more than 9.02% of your household income.\"; p. 5, \"coverage if your share of the annual cost for coverage for yourself and the other members of your tax family allowed to enroll in the coverage is not more than 9.02% of your household income.\"; p. 5, \"If your employer coverage is affordable for you but not affordable for your other family members, you may be able to take the PTC for your other family members if they enroll in a Marketplace qualified health plan.\"; p. 6, \"Also, if you leave your employment and are offered post-employment coverage such as COBRA or retiree coverage, you are not considered eligible for that post-employment coverage unless you actually enroll in the coverage.\"; p. 6, \"Individuals who are incarcerated (other than pending disposition of charges, for example, awaiting trial) are not eligible for coverage in a qualified health plan through a Marketplace.\"; p. 6, \"You or the family member may be treated as eligible for Medicaid, CHIP, or the similar program, and not eligible for the PTC, if the Marketplace determination is later found to be based on incorrect information that was given with an intentional or reckless disregard for the facts.\"; p. 6, \"While coverage purchased in the individual market outside the Marketplace is MEC, eligibility for this type of coverage does not prevent you from being eligible for the PTC for Marketplace coverage.\"; p. 6, \"Individuals who are not lawfully present in the United States are not eligible for the PTC for their coverage in a qualified health plan through a Marketplace.\"; p. 3, \"If you were covered under an individual coverage HRA for 2025, you are not allowed a PTC for your 2025 Marketplace health insurance.\"; p. 1, \"If the QSEHRA is affordable for a month, no PTC is allowed for the month.\"; p. 4, Enrollment premiums, \"You are generally not allowed a monthly credit amount for the month if any part of that month\"; p. 3, \"if you became eligible for APTC because of a successful eligibility appeal and you retroactively enrolled in the plan, then the portion of the enrollment premium for which you are responsible must be paid on or before the 120th day following the date of the appeals decision\"; p. 4, \"due date of your tax return (not including extensions)\"",
@@ -1661,9 +1666,23 @@
     ],
     "cols_pages": [],
     "cols_sha256": "7cc6e936bae7166ff84f462fdf8dfb599a5c7cc6db6fb470b434a0bbe85875c5"
+   },
+   {
+    "doc": "p974",
+    "revision": "2025",
+    "text_sha256": "a43961ede46b83c55843cfa2a9222fbcfb48d4a2e932f17d4fddb7b3d6ecf846",
+    "pages": [
+     6
+    ],
+    "how": "pages named by another document's citation",
+    "locators": [],
+    "cols_pages": [
+     6
+    ],
+    "cols_sha256": "5dc498e662bd08d45e2bd3bb4fc91637ffb6046ab787720aa23dde422f7a026d"
    }
   ],
-  "cost": 0.29621600000000003,
+  "cost": 0.309312,
   "model": "claude-opus-5-5"
  },
  {
@@ -1677,12 +1696,18 @@
   "findings": [
    {
     "kind": "NARROW",
-    "situation": "A filer's coverage began on the first of the month and no premiums were refunded, but part of their share of a month's enrollment premium was still unpaid by the unextended due date of the return. They answer NO, and the tool uses Form 1095-A column A unchanged.",
-    "irs_text": "i8962 (2025) p. 4: \"You are generally not allowed a monthly credit amount for the month if any part of that month's enrollment premium for which you are responsible has not been paid by the due date of your tax return (not including extensions)... the amount of the enrollment premiums for the month you use to compute your monthly credit amount must be reduced by any portion of the premium that is unpaid as of the unextended due date\"",
-    "why": "The question asks only about mid-month start dates and refunded premiums. An unpaid premium is a third required change to the enrollment premium (or a loss of the monthly credit) that the tool does not make, and nothing in the wording prompts a YES."
+    "situation": "The filer's share of a 2025 month's enrollment premium was still unpaid at the unextended due date. Either the month is disallowed entirely, or the premium is allowed but must be reduced by the unpaid portion. The filer truthfully answers NO because coverage began on the first of the month and nothing was refunded.",
+    "irs_text": "i8962 p. 4: \"You are generally not allowed a monthly credit amount for the month if any part of that month's enrollment premium for which you are responsible has not been paid by the due date of your tax return (not including extensions)... the amount of the enrollment premiums for the month you use to compute your monthly credit amount must be reduced by any portion of the premium that is unpaid as of the unextended due date\"",
+    "why": "This is a third adjustment to Form 1095-A column A that the same enrollment-premiums rule requires. The question asks only about mid-month starts and refunds, so the tool would take column A as reported and overstate line 24."
+   },
+   {
+    "kind": "UNCLEAR",
+    "situation": "A premium for a 2025 month was refunded in 2025, and the Marketplace's Form 1095-A column A already shows the reduced amount.",
+    "irs_text": "i8962 p. 4: \"The enrollment premiums are the total amount of the premiums for the month, reduced by any premium amounts for that month that were refunded in 2025... Form 1095-A, Part III, column A, reports the enrollment premiums.\"",
+    "why": "The question says \"were any premiums ... refunded in 2025?\" and sends every refund to YES. The IRS text says column A reports enrollment premiums, which are already net of refunds. A filer can't tell whether a refund that is already reflected counts, and if it does the tool would compute correctly while being refused."
    }
   ],
-  "prompt_sha": "bb6e0341169f183a0ca67c45d9b8b1955def122905e4a2835c0a927a53eb3248",
+  "prompt_sha": "8e18e829674951190de5b1867a764cb45a9413a066c5cfac79b4a35f2059926b",
   "used": [
    {
     "doc": "i8962",
@@ -1704,7 +1729,7 @@
     "locators": [
      "p. 12, Allocating policy amounts, \"The policy covered at least one individual in your tax family and at least one individual in another tax family\"",
      "p. 13, Table 4, \"Was anyone in your tax family enrolled in a qualified health plan before your first full month of marriage?\"",
-     "p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"",
+     "p. 15, Column (b), \"Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form.\"; \"may report your applicable SLCSP premium as -0-\", \"In either case, you must determine your correct applicable SLCSP premium.\"",
      "p. 2, \"Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962.\"",
      "p. 4, \"Generally, if coverage in a qualified health plan began after the first day of the month, you are not allowed a monthly credit amount for the coverage for that month.\"; p. 4, \"The enrollment premiums are the total amount of the premiums for the month, reduced by any premium amounts for that month that were refunded in 2025\"",
      "p. 4, \"Generally, if coverage in a qualified health plan began after the first day of the month, you are not allowed a monthly credit amount for the coverage for that month.\"; p. 4, \"if an individual in your tax family enrolled in a qualified health plan in 2025 and the enrollment was effective on the date of the individual’s birth, adoption, or placement for adoption or in foster care, or on the effective date of a court order placing the individual with your family, the individual is treated as enrolled as of the first day of that month.\"; p. 4, \"The enrollment premiums are the total amount of the premiums for the month, reduced by any premium amounts for that month that were refunded in 2025\"; p. 5, \"Catastrophic health plans and stand-alone dental plans purchased through the Marketplace, and all plans purchased through the Small Business Health Options Program (SHOP), are not qualified health plans for purposes of the PTC.\"",
@@ -1739,51 +1764,47 @@
     ],
     "cols_pages": [],
     "cols_sha256": "7cc6e936bae7166ff84f462fdf8dfb599a5c7cc6db6fb470b434a0bbe85875c5"
+   },
+   {
+    "doc": "p974",
+    "revision": "2025",
+    "text_sha256": "a43961ede46b83c55843cfa2a9222fbcfb48d4a2e932f17d4fddb7b3d6ecf846",
+    "pages": [
+     6
+    ],
+    "how": "pages named by another document's citation",
+    "locators": [],
+    "cols_pages": [
+     6
+    ],
+    "cols_sha256": "5dc498e662bd08d45e2bd3bb4fc91637ffb6046ab787720aa23dde422f7a026d"
    }
   ],
-  "cost": 0.237504,
+  "cost": 0.25696,
   "model": "claude-opus-5-5"
  },
  {
   "screen": "gift.special",
-  "question": "Does this group need an appraisal or other special treatment: a deduction over $5,000 (before any income limit), or property worth more than $5,000, for one item or for similar items (items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land or buildings) given to all donees together (other than publicly traded securities), a noncash contribution reaching you through a Schedule K-1, vehicles, pass-through entity interests, intellectual property, inventory, conservation or partial interests, property with restrictions on its use, or a clothing or household item over $500 not in good used condition?",
+  "question": "Does this group need an appraisal or other special treatment: a deduction over $5,000 (before any income limit), or property worth more than $5,000, for one item or for similar items (items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land or buildings) given to all donees together (other than publicly traded securities: listed on a recognized stock exchange whose quotations are published daily, regularly traded on a national or regional over-the-counter market, or mutual fund shares quoted daily in a national newspaper), a noncash contribution reaching you through a Schedule K-1, vehicles, pass-through entity interests, intellectual property, inventory, conservation or partial interests, property with restrictions on its use, or a clothing or household item over $500 not in good used condition?",
   "lines": [
    "gift.allowed"
   ],
-  "verdict": "NARROW",
+  "verdict": "WIDE",
   "findings": [
    {
-    "kind": "NARROW",
-    "situation": "A filer gives over $5,000 of stock that trades publicly, such as on an over-the-counter market, but is not regularly traded or has no published quotations, and answers NO because of the publicly traded securities exception.",
-    "irs_text": "i8283 p. 3, Section A: 'Securities regularly traded in national or regional over-the-counter markets for which published quotations are available'; 'Section B. Include in Section B only items (or groups of similar items) for which you claimed a deduction of more than $5,000.'",
-    "why": "The undefined phrase 'publicly traded securities' is broader than the listed Section A criteria, so a truthful filer could answer NO. The tool would then compute a gift that may belong in Section B and require a qualified appraisal."
+    "kind": "WIDE",
+    "situation": "A filer gives property worth more than $5,000 whose deduction, after the required ordinary-income or basis reduction, is $5,000 or less. An example is a short-term-held item with FMV $8,000 and basis $3,000. The filer must answer YES because of the 'property worth more than $5,000' clause, yet the item belongs in Section A and the tool's helper already applies the reduction.",
+    "irs_text": "i8283 p.3: \"Include in Section B only items (or groups of similar items) for which you claimed a deduction of more than $5,000.\" i8283 p.1: \"Make any required reductions to the amount of the contributions before you determine if you must file Form 8283.\"",
+    "why": "Which section applies depends on the deduction after reductions, not on FMV. Asking about property 'worth' more than $5,000 refuses Section A gifts the tool computes correctly. The p.3 sentence about property 'valued in excess of $5,000' sits inside the Section B instructions and does not override the deduction test."
    },
    {
     "kind": "WIDE",
-    "situation": "A filer gives a partial interest or restricted-use property with a deduction over $500 but not over $5,000, which must answer YES because the question sets no dollar threshold for these items.",
-    "irs_text": "Question: 'conservation or partial interests, property with restrictions on its use'. i8283 p. 3: 'You must also file Form 8283, Section B, if conditions were placed on the use of the property or you gave less than an entire interest in a property and the contribution was for more than $5,000.'",
-    "why": "The Section B rule for these gifts applies only above $5,000, and Section A otherwise covers items with a deduction of $5,000 or less. The question nevertheless refuses them at any amount, even though the tool could enter the deduction amount."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer gives a vehicle with a gross-proceeds deduction and a contemporaneous written acknowledgment, intellectual property, or inventory, all of which must answer YES even though these items are reportable in Section A.",
-    "irs_text": "Question: 'vehicles, ... intellectual property, inventory'. i8283 p. 3, Section A: 'The following items even if the claimed value was more than $5,000 per item', including 'A vehicle ... if your deduction for the vehicle is limited to the gross proceeds from its sale and you obtained a contemporaneous written acknowledgment, f. Intellectual property (as defined later), or g. Inventory'.",
-    "why": "These items stay in Section A at any value, and the computed line takes a deduction already figured after required reductions. The question sends them to refusal without regard to that treatment."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer gives over $5,000 of nonpublic securities that meet the regulation's special Section A rule, which must answer YES because the question excepts only publicly traded securities.",
-    "irs_text": "i8283 p. 3, Section A: 'Certain other securities even though the securities do not meet any of the criteria described in paragraphs 2.a through 2.c above (for more information, see Regulations section 1.170A-13(c)(7)(xi)(B))'.",
-    "why": "These securities are reportable in Section A even above $5,000, but they are not publicly traded under the listed criteria. The question's exception therefore does not reach them."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "A filer gives over $5,000 of mutual fund shares and could reasonably read 'publicly traded securities' either to include or to exclude them.",
-    "irs_text": "i8283 p. 3, Section A: 'Securities that are shares of a mutual fund for which quotations are published on a daily basis in a newspaper of general circulation throughout the United States'.",
-    "why": "Mutual fund shares are often bought from and redeemed through the fund rather than traded on a market, so a filer could think the exception does not apply. The IRS text places qualifying shares in Section A, but the question does not say so."
+    "situation": "A filer donates a vehicle with a deduction of $5,000 or less. Or the vehicle's deduction is limited to the gross proceeds of its sale and the filer has a contemporaneous written acknowledgment. The bare word 'vehicles' makes this filer answer YES, although the IRS places it in Section A as an ordinary amount-from-deduction line.",
+    "irs_text": "i8283 p.3, Section A item 2.e: \"A vehicle (including a car, boat, or airplane) if your deduction for the vehicle is limited to the gross proceeds from its sale and you obtained a contemporaneous written acknowledgment\"; i8283 p.9: \"Do not include donated vehicles reportable in Section A in Section B.\"",
+    "why": "Only vehicles claimed above $5,000 and not limited to gross proceeds need Section B and the attached Form 1098-C. Listing every vehicle refuses Section A vehicle gifts whose deduction the helper already holds."
    }
   ],
-  "prompt_sha": "5c320260136696dcb1146b2c3e0902e334074cbfa69df5319d00bb16b3a4ff9d",
+  "prompt_sha": "a40a89440fcaba8f0412c905e779e991bb8c89710284c4d22c6aecea8f97ab28",
   "used": [
    {
     "doc": "i8283",
@@ -1792,22 +1813,24 @@
     "pages": [
      1,
      2,
-     3
+     3,
+     9
     ],
     "how": "cited pages",
     "locators": [
      "pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A",
-     "pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A; p. 3, Similar Items of Property, \"Similar items of property are items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land, or buildings.\""
+     "pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A; p. 3, Similar Items of Property, \"Similar items of property are items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land, or buildings.\"; p. 9, Securities, \"A security is generally considered to be publicly traded if the security is (a) listed on a recognized stock exchange whose quotations are published daily\""
     ],
     "cols_pages": [
      1,
      2,
-     3
+     3,
+     9
     ],
     "cols_sha256": "53a4b54ff613d5c600c1af7ba5bf9024418fe89441ae8d629a955bd59aa6e3c7"
    }
   ],
-  "cost": 0.14327600000000001,
+  "cost": 0.118112,
   "model": "claude-opus-5-5"
  },
  {
@@ -2557,38 +2580,20 @@
  },
  {
   "screen": "refund.not_2024",
-  "question": "Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you pay any of your 2024 state or local income tax in 2025 (for example a last estimated payment in January 2025, a payment with an extension, or a balance due)?",
+  "question": "Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you pay any of your 2024 state or local income tax in 2025 (for example a last estimated payment in January 2025, a payment with an extension, or a balance due) or before 2024 (for example a 2024 estimated payment made in December 2023)?",
   "lines": [
    "refund.taxable"
   ],
-  "verdict": "NARROW",
+  "verdict": "WIDE",
   "findings": [
    {
-    "kind": "NARROW",
-    "situation": "An itemizer's 2024 state refund is partly for 2024 estimated tax paid early, in December 2023, so the filer truthfully answers NO because the refund is for 2024 and nothing was paid in 2025.",
-    "irs_text": "p525 p. 24: \"If you receive a refund or other recovery that is for amounts you paid in 2 or more separate years, you must allocate, on a pro rata basis, the recovered amount between the years in which you paid it.\" i1040gi p. 88: \"If the refund was for a tax you paid in 2024...\"",
-    "why": "The question only asks about 2024 tax paid in 2025, so it misses 2024 tax paid before 2024. The worksheet then treats the whole refund as a recovery of tax paid in 2024, without the required allocation."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A filer is affected by another listed Worksheet exception, such as owing 2024 AMT, being claimable as a dependent in 2024, or having a refund from a joint state return while not filing a joint federal return, but truthfully answers NO because the refund is for 2024 and nothing was paid in 2025.",
-    "irs_text": "i1040gi pp. 88-89: \"See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies\"; for example, \"6. You owed alternative minimum tax in 2024\" and \"8. You could be claimed as a dependent by someone else in 2024.\"",
-    "why": "The wording addresses only exception items 1 and 5, and no other refusal is listed here. Unless a screen not shown handles items 2, 3, 4, 6, 7, 8 and 9, the tool would use the worksheet where the instructions prohibit it."
-   },
-   {
     "kind": "WIDE",
-    "situation": "A filer who took the standard deduction or deducted general sales taxes in both 2024 and the refund's tax year answers YES because the refund is for another year or a January 2025 payment was made, although the taxable refund is zero, as the tool computes.",
-    "irs_text": "Question: \"Is any of these refunds for a tax year other than 2024 ... or did you pay any of your 2024 state or local income tax in 2025\". i1040gi p. 88: \"None of your refund is taxable if, in the year you paid the tax, you either (a) didn't itemize deductions, or (b) elected to deduct state and local general sales taxes instead of state and local income taxes.\"",
-    "why": "The question is not limited to filers who deducted state or local income tax in the relevant year. It therefore refuses filers whose taxable refund is zero, the result the tool computes on its non-itemizer path."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "An itemizer gets a 2024 refund from one state but paid a 2024 balance due or extension payment in 2025 only to a different state or a locality, so the question requires YES although the refund is not for amounts paid in two years.",
-    "irs_text": "Question: \"did you pay any of your 2024 state or local income tax in 2025 (for example ... a payment with an extension, or a balance due)\". p525 p. 24: \"If you receive a refund or other recovery that is for amounts you paid in 2 or more separate years, you must allocate...\" i1040gi p. 89, item 5, is limited to \"your last payment of 2024 estimated state or local income tax in 2025.\"",
-    "why": "The question does not tie the 2025 payment to the tax being refunded, and this balance-due or extension payment falls outside both item 5 and the allocation rule. The worksheet is therefore available and the tool can compute the line, assuming no other exception applies."
+    "situation": "A filer took the standard deduction for 2024 (or deducted general sales taxes), received a 2024 state income tax refund in 2025, and made the last 2024 estimated payment in January 2025; the wording makes this filer answer YES, so the tool refuses, but the tool's non-itemizer branch already computes the correct zero.",
+    "irs_text": "i1040gi p. 88, Line 1: \"None of your refund is taxable if, in the year you paid the tax, you either (a) didn't itemize deductions, or (b) elected to deduct state and local general sales taxes instead of state and local income taxes\"; p525 p. 24, Deductions not itemized: \"If you didn't itemize deductions for the year for which you received the recovery ... don't include any of the recovery amount in your income.\"",
+    "why": "The question asks \"did you pay any of your 2024 state or local income tax in 2025\" without first checking whether the filer itemized income taxes for 2024. The Pub. 525 exception and the pro rata allocation only change line 1 when the 2024 tax was deducted. The part of the refund paid in 2024 is non-taxable here, and the part paid in 2025 is not a recovery, so line 1 is correctly zero."
    }
   ],
-  "prompt_sha": "46e2e9b74315e5423c0de00f98b5e9b9fcbb5e9002d6c5139b737eeed2465d01",
+  "prompt_sha": "1d15eac04091fb53d3d83a099504d26b116f26c7b7aac20ca8b834fa2d9ede29",
   "used": [
    {
     "doc": "i1040gi",
@@ -2646,12 +2651,12 @@
     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
    }
   ],
-  "cost": 0.18540800000000002,
+  "cost": 0.14432,
   "model": "claude-opus-5-5"
  },
  {
   "screen": "retirement.special",
-  "question": "Does this distribution involve any of these: a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025; a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972; a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died, or that is shared among more than one beneficiary; a rollover of property other than cash, or of a distribution under a qualified domestic relations order; a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?",
+  "question": "Does this distribution involve any of these: a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025; a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972; a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree's joint and survivor annuity is not one of these); a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead; a rollover of a distribution under a qualified domestic relations order; a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree's annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?",
   "lines": [
    "retirement.rolled",
    "retirement.taxable",
@@ -2661,24 +2666,36 @@
   "findings": [
    {
     "kind": "NARROW",
-    "situation": "A filer receives a Roth IRA distribution that is not code Q and not a code T distribution meeting the pre-2021 contribution test, such as a nonqualified code J distribution, with no conversion or recharacterization involved.",
-    "irs_text": "i1040gi p. 27, Exception 2: \"You received a distribution from a Roth IRA. But if either (a) or (b) below applies, enter -0- on line 4b; you don't have to see Form 8606 or its instructions.\"",
-    "why": "The question's Form 8606 items cover traditional IRA nondeductible contributions, conversions, recharacterizations and returned contributions, but not an ordinary nonqualified Roth IRA distribution, so the filer can truthfully answer NO. The tool then uses the part not rolled over as the taxable amount and skips the Form 8606 figuring the instructions require."
+    "situation": "A filer takes a nonqualified Roth IRA distribution (for example, code J, or code T without a Roth contribution or conversion for 2020 or earlier) that involves no conversion, recharacterization or rollover, so the filer truthfully answers NO.",
+    "irs_text": "i1040gi p. 27, Exception 2: \"2. You received a distribution from a Roth IRA. But if either (a) or (b) below applies, enter -0- on line 4b ... a. Distribution code T ... and you made a contribution (including a conversion) to a Roth IRA for 2020 or an earlier year. b. Distribution code Q\"",
+    "why": "Any Roth IRA distribution other than these cases needs Form 8606 to figure line 4b. The question names only conversions and recharacterizations, and the tool's IRA rule zeroes only qualified Roth distributions and otherwise taxes the part not rolled over, ignoring Roth basis."
+   },
+   {
+    "kind": "NARROW",
+    "situation": "A filer converted a different traditional IRA amount to a Roth IRA in 2025, recharacterized a contribution, or had a 2024 or 2025 contribution returned, and also takes a separate ordinary traditional IRA distribution. The filer answers NO because this distribution is not the conversion or the return.",
+    "irs_text": "i1040gi p. 27, Exception 2: \"If any of the following apply, enter the total distribution on line 4a and see Form 8606 ... 3. You converted part or all of a traditional IRA or traditional SIMPLE IRA to a Roth IRA in 2025. 4. You had a 2024 or 2025 IRA contribution returned to you ...\"",
+    "why": "Exception 2 applies to every IRA distribution in a year with these events, not only to the event itself. The question asks whether \"this distribution involve[s]\" them, which invites NO."
+   },
+   {
+    "kind": "NARROW",
+    "situation": "A filer receives a qualified disaster recovery distribution, whose taxable amount is spread over 3 years on Form 8915-F. Nothing in the question asks about it.",
+    "irs_text": "p575 p. 34: \"If you received a qualified disaster recovery distribution, it is taxable ... (Use Form 8915-F to figure the taxable portion of the distribution.) However, the distribution is included in income ratably over 3 years unless you elect to report the entire amount in the year of distribution.\"",
+    "why": "The refusal names Form 8915-F, but the question never mentions disaster distributions. A filer answers NO, and the tool reports the full amount as taxable on line 4b or 5b."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer's IRA distribution is separate from a 2025 conversion, recharacterization or returned contribution, or the filer's nondeductible contributions were made in earlier years to a different traditional IRA.",
-    "irs_text": "i1040gi p. 27, Exception 2: \"You received a distribution from an IRA (other than a Roth IRA) and you made nondeductible contributions to any of your traditional IRAs for 2025 or an earlier year\"; \"You converted part or all of a traditional IRA or traditional SIMPLE IRA to a Roth IRA in 2025.\"",
-    "why": "Exception 2 turns on the filer's IRA history, but the question asks whether \"this distribution\" involves these items, so a filer could reasonably answer NO for a separate distribution. The broad wording could also lead a filer to answer YES for a qualified Roth IRA or pension distribution merely because they have nondeductible traditional IRA contributions."
+    "situation": "A filer receiving a 401(k) or pension distribution (not from an IRA) who has nondeductible contributions in a traditional IRA may read \"involve\" as covering their IRA basis and answer YES.",
+    "irs_text": "i1040gi p. 27, Exception 2: \"1. You received a distribution from an IRA (other than a Roth IRA) and you made nondeductible contributions to any of your traditional IRAs\"",
+    "why": "IRA basis matters only for distributions from a non-Roth IRA. The question does not tie \"nondeductible contributions to any traditional IRA\" to an IRA distribution, so pension filers the tool handles may be refused."
    },
    {
-    "kind": "UNCLEAR",
-    "situation": "A filer takes a nonperiodic or lump-sum distribution from an employer plan with after-tax contributions in box 5, and may have rolled over part of it.",
-    "irs_text": "i1040gi p. 30, Rollovers: \"From this amount, subtract any contributions (usually shown in box 5) that were taxable to you when made. From that result, subtract the amount of the rollover.\"",
-    "why": "The question reaches after-tax cost only for \"a pension or annuity\" where the Simplified Method does not apply, and its parenthetical \"(the General Rule)\" suggests annuity payments rather than a one-time distribution. A filer could reasonably answer either way, although the tool's computation addresses after-tax cost only through the Simplified Method for an annuity."
+    "kind": "WIDE",
+    "situation": "A filer fully rolls over a Roth IRA distribution to another Roth IRA within 60 days and must answer YES to \"a rollover to a Roth IRA,\" although the tool computes this case.",
+    "irs_text": "i1040gi p. 27, Exception 1: \"Enter the total distribution on line 4a if you rolled over part or all of the distribution from one: • Roth IRA to another Roth IRA ... If the total distribution was rolled over, enter -0- on line 4b.\"",
+    "why": "The question's \"a rollover to a Roth IRA or designated Roth account\" is aimed at taxable rollovers into Roth accounts from non-Roth plans. As worded, it also catches a Roth-to-Roth rollover, which is Exception 1 and which the tool computes (rolled amount on 4a, zero on 4b)."
    }
   ],
-  "prompt_sha": "a04d0663d49f935c448d4f12481de7adcedc5286c81e67549d933889aa9ad0d7",
+  "prompt_sha": "c8319e39ccc6c649f4d50bbe82118c793aa2f58bc18bbc757ded6c5937ea9d19",
   "used": [
    {
     "doc": "i1040gi",
@@ -2697,7 +2714,7 @@
      "p. 30, Rollovers, 'See Pub. 575 for more details on rollovers'",
      "pp. 27-30, lines 4a and 5a",
      "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method",
-     "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method; f1099r Box 7 codes; p. 28, \"For details on military disability pensions, see Pub. 525.\"; p. 30, \"If you are the beneficiary of an employee who died, see Pub. 575. If there is more than one beneficiary, see Pub. 575 or Pub. 721 to figure each beneficiary’s taxable amount.\" and \"See Pub. 575 for more details on rollovers, including special rules that apply to rollovers from designated Roth accounts, partial rollovers of property, and distributions under qualified domestic relations orders.\"",
+     "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method; f1099r Box 7 codes; p. 28, \"For details on military disability pensions, see Pub. 525.\"; p. 30, \"If you are the beneficiary of an employee who died, see Pub. 575. If there is more than one beneficiary, see Pub. 575 or Pub. 721 to figure each beneficiary’s taxable amount.\" and \"See Pub. 575 for more details on rollovers, including special rules that apply to rollovers from designated Roth accounts, partial rollovers of property, and distributions under qualified domestic relations orders.\"; p. 30, Age (or Combined Ages) at Annuity Starting Date, \"If you are the survivor of a retiree, use the retiree’s age on their annuity starting date\"; Survivors of retirees, \"Benefits paid to you as a survivor under a joint and survivor annuity must be included in your gross income\", \"If the retiree was reporting the annuity under the Simplified Method, the part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting date\" and \"If you receive guaranteed payments as the decedent’s beneficiary under a life annuity contract\"; Rollovers of property, \"To roll over an eligible rollover distribution of property, you must either roll over the actual property distributed or sell it and roll over the proceeds\", \"You can’t keep the distributed property and roll over cash or other property.\" and \"If you roll over only part of the proceeds, you are taxed on the part you keep\"",
      "pp. 27-30, lines 4b and 5b"
     ],
     "cols_pages": [
@@ -2722,14 +2739,30 @@
      5
     ],
     "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
+   },
+   {
+    "doc": "p575",
+    "revision": null,
+    "text_sha256": "4d6ee3802a2906a4633dcfc104aa33bb3d9ddedebddc9eadbd0393cfdb61e07b",
+    "pages": [
+     23,
+     34
+    ],
+    "how": "pages named by another document's citation",
+    "locators": [],
+    "cols_pages": [
+     23,
+     34
+    ],
+    "cols_sha256": "3962801dde168fda9f4ee239245d9746b12e2d60bf358b25186ae4a57aa5b837"
    }
   ],
-  "cost": 0.18697999999999998,
+  "cost": 0.203876,
   "model": "claude-opus-5-5"
  },
  {
   "screen": "s1.alimony_unsupported",
-  "question": "Does any of these apply to alimony you received or paid: payments under more than one divorce or separation agreement, or paid to more than one person; a recapture of alimony (payments that decreased or ended during the first 3 calendar years, Pub. 504 Worksheet 1); or payments of which part is not alimony: child support (including payments that fell short of the total of child support and alimony required, and an amount the instrument reduces on a contingency relating to a child, such as reaching a certain age, or at a time associated with one), or payments for a home either of you owns (mortgage, real estate taxes, insurance, repairs; Pub. 504 Table 4)?",
+  "question": "Does any of these apply to alimony you received or paid: payments under more than one divorce or separation agreement, or paid to more than one person; a recapture of alimony (payments that decreased or ended during the first 3 calendar years, Pub. 504 Worksheet 1); or payments of which part is not alimony: child support (including payments that fell short of the total of child support and alimony required, and an amount the instrument reduces on a contingency relating to a child, such as reaching a certain age, or at a time associated with one), payments for a home either of you owns (mortgage, real estate taxes, insurance, repairs; Pub. 504 Table 4), or payments of which any part must continue, in cash or property, for any period after the recipient spouse's death (even if the instrument does not say so, for example under state law), or payments for which a payment due after the death is a substitute?",
   "lines": [
    "s1.alimony_refused",
    "s1.paid_refused"
@@ -2738,60 +2771,42 @@
   "findings": [
    {
     "kind": "NARROW",
-    "situation": "A payer's fixed annual payment is partly not alimony because that part must continue, or be replaced by a substitute payment, after the recipient's death, as when a $10,000 trust payment after death makes $10,000 of a $30,000 annual payment not alimony.",
-    "irs_text": "p504 p. 15: 'If any part of payments you make must continue to be made for any period after your spouse's death, that part of your payments isn't alimony'; 'Of each of the $30,000 annual payments, $10,000 isn't alimony.'",
-    "why": "The question's list of non-alimony parts names only child support and home payments, so this filer truthfully answers NO. The tool then carries the $30,000 a filer would naturally enter, with no prompt to reduce it."
+    "situation": "A payer pays the former spouse an amount that is the spouse's share of community income. The filer could answer NO because the question lists only child support, home payments and death-contingent payments as the non-alimony parts.",
+    "irs_text": "Alimony doesn't include: • Child support, • Noncash property settlements, • Payments that are your spouse's part of community income, as explained later under Community Property, • Payments to keep up the payer's property, or • Use of the payer's property. (p504 p. 13, Payments not alimony)",
+    "why": "The question's list of non-alimony parts leaves out community income, so the tool would deduct or include that amount as alimony on line 19a or 2a."
    },
    {
     "kind": "NARROW",
-    "situation": "Amounts under an instrument include a noncash property settlement or the recipient's own share of community income.",
-    "irs_text": "p504 p. 13: 'Alimony doesn't include: Child support, Noncash property settlements, Payments that are your spouse's part of community income'",
-    "why": "The colon after 'payments of which part is not alimony' introduces what reads as a closed list that omits these two categories. A filer can answer NO, and the tool may treat these amounts as alimony."
+    "situation": "A filer makes or receives noncash property transfers, or provides the use of the payer's property other than a home, under the instrument. The filer could answer NO because the question mentions property only for payments that continue after death.",
+    "irs_text": "Alimony doesn't include: ... • Noncash property settlements, ... • Payments to keep up the payer's property, or • Use of the payer's property. (p504 p. 13, Payments not alimony)",
+    "why": "The question names home costs (Table 4) but not noncash settlements or upkeep and use of other payer property, so a filer could enter these as alimony with no screen catching them."
    },
    {
     "kind": "NARROW",
-    "situation": "A pre-2019 agreement was changed after 2018 to expressly provide that the alimony is not included in the recipient's income or deductible by the payer, possibly affecting only part of 2025.",
-    "irs_text": "i1040gi p. 89, Line 2a: 'unless that agreement was changed after December 31, 2018, to expressly provide that alimony received isn't included in your income'; p504 p. 16, Example 2: 'The alimony payments made in June 2025 through December 2025 are neither includible in the recipient's income nor deductible from the payer's income.'",
-    "why": "The question does not ask about modified agreements, and the helper label as quoted covers any agreement entered into on or before December 31, 2018. This filer answers NO, and the tool can include or deduct amounts that the modification excludes."
+    "situation": "Payments are made under a decree of divorce or separate maintenance while the spouses are still members of the same household.",
+    "irs_text": "Exception. If you aren't legally separated under a decree of divorce or separate maintenance, a payment under a written separation agreement, support decree, or other court order may qualify as alimony even if you're members of the same household when the payment is made. (p504 p. 15)",
+    "why": "Under a decree, payments made while sharing a household aren't alimony. The question never mentions living together, so the filer answers NO and the tool counts the payments."
    },
    {
     "kind": "WIDE",
-    "situation": "A payer makes mortgage or real estate tax payments on a home owned only by the recipient, and those payments fully qualify as alimony.",
-    "irs_text": "Question: 'payments for a home either of you owns (mortgage, real estate taxes, insurance, repairs; Pub. 504 Table 4)'. p504 p. 13, Example 2: 'you must pay the real estate taxes and mortgage payments on a home owned by your spouse. If they otherwise qualify, you can deduct the payments as alimony'",
-    "why": "The wording lists a home owned by either person as a non-alimony item, so this filer answers YES. Yet the full amount is alimony and the tool computes it correctly."
+    "situation": "Under a pre-2019 instrument, a payer pays the mortgage, real estate taxes and insurance on a home owned only by the recipient spouse.",
+    "irs_text": "Under your 2018 separation agreement, you must pay the real estate taxes and mortgage payments on a home owned by your spouse. If they otherwise qualify, you can deduct the payments as alimony on your return, and your spouse must report them as alimony received. (p504 p. 13, Payments to a third party, Example 2)",
+    "why": "The question says 'payments for a home either of you owns (mortgage, real estate taxes, insurance, repairs ...)', so this filer must answer YES. But these payments are fully alimony and the tool would compute them correctly."
    },
    {
     "kind": "WIDE",
-    "situation": "Alimony decreased or ended during the first 3 calendar years, but no recapture applies for 2025 because the decrease is too small, is excluded (such as death or remarriage), or does not produce a third-year recapture in 2025.",
-    "irs_text": "Question: 'a recapture of alimony (payments that decreased or ended during the first 3 calendar years, Pub. 504 Worksheet 1)'. p504 p. 16: 'You are subject to the recapture rule in the third year if the alimony you pay in the third year decreases by more than $15,000 from the second year or the alimony you pay in the second and third years decreases significantly'; 'Payments that decrease because of the death of either spouse or the remarriage'",
-    "why": "The parenthetical presents any decrease or ending as a recapture, so a filer with no 2025 recapture can answer YES. The tool computes that filer's ordinary alimony correctly."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "The listed facts, such as child support or a second agreement, involve an instrument executed after 2018, whose payments are outside the helper amounts.",
-    "irs_text": "Question: 'Does any of these apply to alimony you received or paid'. p504 p. 12: 'Amounts paid as alimony or separate maintenance payments under a divorce or separation instrument executed after 2018 won't be deductible by the payer. Such amounts also won't be includible in the income of the recipient.'",
-    "why": "The question is not limited to pre-2019 agreements, so this filer answers YES. The post-2018 payments have no effect on these lines, and the tool correctly leaves them out because its helpers cover only agreements entered into on or before December 31, 2018."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "An instrument separately fixes child support and alimony, the filer pays the full total, and only the alimony amount is entered.",
-    "irs_text": "Question: 'payments of which part is not alimony: child support'. p504 p. 13: 'If you pay the full amount of $4,200 ($2,400 + $1,800) during the year, you can deduct $1,800 as alimony and your former spouse must report $1,800 as alimony received'",
-    "why": "A filer can read this arrangement as child support within the payments and answer YES. Entering the separately stated $1,800 would nonetheless compute correctly, and the question's specific shortfall and contingency examples imply no such calculation is needed here."
+    "situation": "Alimony decreased or ended within the first 3 calendar years in a way that triggers no recapture.",
+    "irs_text": "You are subject to the recapture rule in the third year if the alimony you pay in the third year decreases by more than $15,000 from the second year or ... decreases significantly ... When you figure a decrease in alimony, don't include ... Payments made under a temporary support order ... Payments that decrease because of the death of either spouse or the remarriage of the spouse ... (p504 p. 16)",
+    "why": "The question defines recapture with the parenthetical '(payments that decreased or ended during the first 3 calendar years ...)'. That makes filers answer YES for small decreases, decreases due to death or remarriage, temporary-order changes, or a decrease in year 2, even though no recapture amount arises and the tool computes correctly."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A payer pays expenses for a home owned jointly by both spouses or former spouses.",
-    "irs_text": "p504 p. 13: 'If your divorce or separation instrument states that you must pay expenses for a home owned by you and your spouse or former spouse, some of your payments may be alimony. See Table 4.'",
-    "why": "'A home either of you owns' can mean a home owned by one person or can include one owned by both. The Table 4 citation points toward joint ownership, but a filer may not be able to tell that from the question."
-   },
-   {
-    "kind": "UNCLEAR",
-    "situation": "An alimony reduction occurs near, but not clearly within, the periods presumed to be associated with a child-related contingency.",
-    "irs_text": "Question: 'at a time associated with one'. p504 pp. 15-16: 'not more than 6 months before or after the date the child will reach 18, 21, or local age of majority'; 'In all other situations, reductions in payments aren't treated as clearly associated with the happening of a contingency relating to your child.'",
-    "why": "The loose phrase 'associated with' omits the IRS test of 'clearly associated' and its specific time windows. A filer could answer either way when a reduction merely falls around a child's milestone."
+    "situation": "A filer's pre-2019 agreement was modified in 2025 to expressly apply the post-2018 rules, so only the payments before the modification count.",
+    "irs_text": "The alimony payments made in January 2025 through May 2025 are includible in the recipient's income and deductible from the payer's income. The alimony payments made in June 2025 through December 2025 are neither includible ... nor deductible ... (p504 p. 16, Example 2)",
+    "why": "Neither the question nor the helper wording ('under an agreement entered into on or before December 31, 2018') mentions a later modification. A filer could read the helper as covering all payments under that original agreement and enter the full year's payments."
    }
   ],
-  "prompt_sha": "d10d9608daaab6c73cd67c3f84cc80c3fb58650d1ed7b05186c9c04fa3411514",
+  "prompt_sha": "94fb0d5ea859724e5140c196c2d633d657e425a3ab14423081386376fc384bec",
   "used": [
    {
     "doc": "p504",
@@ -2806,7 +2821,7 @@
     "how": "cited pages",
     "locators": [
      "p. 12, Alimony, \"Enter your total payments on line 19a\"",
-     "p. 12, Alimony, \"If you paid alimony to more than one person, enter the SSN or ITIN of one of the recipients\"; p. 13, Underpayment, \"the payments apply first to child support and then to alimony\"; p. 16, Recapture of Alimony, \"If your alimony payments decrease or end during the first 3 calendar years, you may be subject to the recapture rule\"; p. 13, \"Alimony doesn’t include\" child support, noncash property settlements, community income, payments to keep up or use of the payer’s property; p. 15, \"On the happening of a contingency relating to your child\"; p. 13, \"If you owned the home jointly with your spouse, see Table 4\"",
+     "p. 12, Alimony, \"If you paid alimony to more than one person, enter the SSN or ITIN of one of the recipients\"; p. 13, Underpayment, \"the payments apply first to child support and then to alimony\"; p. 16, Recapture of Alimony, \"If your alimony payments decrease or end during the first 3 calendar years, you may be subject to the recapture rule\"; p. 13, \"Alimony doesn’t include\" child support, noncash property settlements, community income, payments to keep up or use of the payer’s property; p. 15, \"On the happening of a contingency relating to your child\"; p. 13, \"If you owned the home jointly with your spouse, see Table 4\"; p. 15, Liability for payments after death of recipient spouse, \"If any part of payments you make must continue to be made for any period after your spouse’s death, that part of your payments isn’t alimony\" and \"If you must make any payments in cash or property after your spouse’s death as a substitute for continuing otherwise qualifying payments before the death, the otherwise qualifying payments aren’t alimony\"",
      "p. 12, Alimony; p. 13, Underpayment; p. 16, Recapture of Alimony"
     ],
     "cols_pages": [
@@ -2834,7 +2849,7 @@
     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
    }
   ],
-  "cost": 0.173152,
+  "cost": 0.14446,
   "model": "claude-opus-5-5"
  },
  {
@@ -2988,7 +3003,7 @@
  },
  {
   "screen": "s1.uc_unsupported",
-  "question": "Did you, in 2025 or any earlier year, make contributions to a governmental unemployment compensation program (including amounts withheld from your wages for it; not counting employer-paid tax, paid family leave or disability insurance contributions), or repay in 2025 any unemployment compensation you included in income in an earlier year?",
+  "question": "Did you, in 2025 or any earlier year, make contributions to a governmental unemployment compensation program (including amounts withheld from your wages for it, and payments you made yourself, such as for coverage you elected as a self-employed person; not counting tax an employer paid on your wages, paid family leave or disability insurance contributions), or repay in 2025 any unemployment compensation you included in income in an earlier year?",
   "lines": [
    "s1.line7_figured"
   ],
@@ -2996,24 +3011,30 @@
   "findings": [
    {
     "kind": "WIDE",
-    "situation": "A filer who received no unemployment compensation in 2025 but had state unemployment contributions withheld from wages in 2025 or an earlier year must answer YES, even though line 7 is correctly zero.",
-    "irs_text": "Question: 'Did you, in 2025 or any earlier year, make contributions to a governmental unemployment compensation program (including amounts withheld from your wages for it...'; i1040gi (2025) p. 89, line 7 Caution: 'reduce the amount you report on line 7 by those contributions.'",
-    "why": "The question is not limited to filers who received unemployment compensation in 2025, so it can refuse a filer with no line 7 amount to reduce. The tool's computation yields the correct zero for this filer."
+    "situation": "A filer repaid $3,000 or less in 2025 of unemployment compensation included in income in an earlier year. Line 7 is unaffected in that case, so the tool computes it correctly, but the question makes the filer answer YES.",
+    "irs_text": "i1040gi p. 89, Line 7: 'If, in 2025, you repaid more than $3,000 of unemployment compensation that you included in gross income in an earlier year, see Repayments in Pub. 525 for details on how to report the payment.'",
+    "why": "The IRS text sends only repayments over $3,000 of earlier-year income anywhere else. The question asks about 'any unemployment compensation you included in income in an earlier year' with no threshold, so it also catches the small repayments that need nothing on line 7."
    },
    {
     "kind": "WIDE",
-    "situation": "A filer who repaid $3,000 or less in 2025 of unemployment compensation included in income in an earlier year must answer YES, although the line 7 text calls for no adjustment for that repayment.",
-    "irs_text": "Question: 'or repay in 2025 any unemployment compensation you included in income in an earlier year'; i1040gi (2025) p. 89, line 7: 'If, in 2025, you repaid more than $3,000 of unemployment compensation that you included in gross income in an earlier year, see Repayments in Pub. 525.'",
-    "why": "The question uses 'any' while the cited text addresses only repayments over $3,000 and does not reduce line 7 for smaller ones. On this text, the tool computes line 7 correctly for a smaller repayment, although the supplied text does not address treatment elsewhere on the return."
+    "situation": "A filer withheld employee unemployment contributions in 2025 or an earlier year, for example in a state that withholds them from wages, but received no unemployment compensation in 2025. Line 7 is then simply zero, and the tool computes that correctly.",
+    "irs_text": "i1040gi p. 89, Line 7 Caution: 'If you made contributions to a governmental unemployment compensation program and you aren't itemizing deductions, reduce the amount you report on line 7 by those contributions.'",
+    "why": "The reduction applies only against unemployment compensation reported on line 7. The question asks about contributions in '2025 or any earlier year' whether or not any compensation was received in 2025, so many ordinary wage earners who withhold these contributions must answer YES."
+   },
+   {
+    "kind": "WIDE",
+    "situation": "A filer contributed in earlier years and already recovered all of those contributions against unemployment compensation in earlier years. The 2025 compensation is therefore fully reportable, and the tool computes it correctly.",
+    "irs_text": "i1040gi p. 89, Line 7 Caution: 'reduce the amount you report on line 7 by those contributions'",
+    "why": "Contributions already used to reduce earlier years' compensation do not reduce 2025's amount again. The question's 'or any earlier year' still requires a YES."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A self-employed filer who personally pays contributions for elective coverage under a state unemployment program could read those payments as either the filer's own contributions or excluded employer-paid tax.",
-    "irs_text": "i1040gi (2025) p. 89, line 7 Caution: 'If you made contributions to a governmental unemployment compensation program and you aren't itemizing deductions, reduce the amount you report on line 7 by those contributions.'",
-    "why": "The exclusion for 'employer-paid tax' does not say how it applies when the filer is both employer and covered worker. A NO answer would make the tool skip the reduction the IRS text requires."
+    "situation": "A filer sees a paystub withholding labeled with a state code, such as 'SUI', 'UI/WF/SWF', or a combined unemployment-and-disability deduction, and cannot tell which part is an unemployment contribution and which is excluded disability or family leave insurance.",
+    "irs_text": "i1040gi p. 89, Line 7 Caution: 'contributions to a governmental unemployment compensation program'; TIP: 'contributions to a governmental paid family leave program, you will now include the full amount'",
+    "why": "The question includes unemployment contributions but excludes 'paid family leave or disability insurance contributions'. Paystubs often combine or abbreviate these, so a filer could reasonably answer either way."
    }
   ],
-  "prompt_sha": "c4aa7b67287a0e3cb3abc8ce954a4da03a724eaf15ab3cf0548a8ce43efeef35",
+  "prompt_sha": "00f07e8ef59c0b8466873733eda16fa442ae9ac9276f0a5ab885251b89ba80e5",
   "used": [
    {
     "doc": "i1040gi",
@@ -3034,7 +3055,7 @@
     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
    }
   ],
-  "cost": 0.076232,
+  "cost": 0.072568,
   "model": "claude-opus-5-5"
  },
  {
@@ -3958,44 +3979,32 @@
  },
  {
   "screen": "sales.special",
-  "question": "Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?",
+  "question": "Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property, such as stock of an S corporation that owns art or gold worth more than its cost?",
   "lines": [
    "sales.one"
   ],
-  "verdict": "NARROW",
+  "verdict": "WIDE",
   "findings": [
    {
-    "kind": "NARROW",
-    "situation": "A filer sells a former rental or other real property held more than 1 year on which depreciation was taken, but which had been converted to personal use and was no longer depreciable when sold.",
-    "irs_text": "You sold or otherwise disposed of section 1250 property (generally, real property that you depreciated) held more than 1 year. (i1040sd 2025, p. 11, line 19)",
-    "why": "The question says \"depreciable real property,\" which a filer can truthfully take to describe the property's current status and answer NO. The IRS trigger turns on past depreciation, so the tool would omit the unrecaptured section 1250 gain."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A filer receives a current-year installment payment on section 1250 property sold in an earlier year and reports the gain on the installment method.",
-    "irs_text": "You received installment payments for section 1250 property held more than 1 year for which you are reporting gain on the installment method. (i1040sd 2025, p. 11, line 19)",
-    "why": "The question asks about \"this sale,\" so a filer whose sale occurred in an earlier year, or who is reporting only a payment, can truthfully answer NO. The tool would not compute the unrecaptured section 1250 gain included in that payment."
+    "kind": "WIDE",
+    "situation": "A filer sells long-term stock of an S corporation, or an interest in a trust, whose only special asset is depreciated real estate (section 1250 property) and no collectibles, so the question's wording makes the filer answer YES, but no unrecaptured section 1250 gain arises and the sale is an ordinary capital gain the tool computes.",
+    "irs_text": "Question: \"an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property\"; i1040sd p. 12, Line 19: \"You reported a long-term capital gain from the sale or exchange of an interest in a partnership that owned section 1250 property.\"",
+    "why": "Line 19 looks through only to partnership interests for section 1250 property. The collectibles look-through on Line 18 reaches S corporations and trusts, but the 1250 look-through does not. The question extends the 1250 trigger to S corporation stock and trust interests."
    },
    {
     "kind": "WIDE",
-    "situation": "A filer sells S corporation stock or a trust interest at a long-term gain, and the entity holds section 1250 property but no collectibles.",
-    "irs_text": "Question: \"an interest in a partnership, S corporation or trust holding such property.\" IRS: \"You reported a long-term capital gain from the sale or exchange of an interest in a partnership that owned section 1250 property. (i1040sd 2025, p. 12, line 19)\"",
-    "why": "The question applies the look-through for section 1250 property to S corporations and trusts, but the line 19 sale-of-interest trigger names only partnerships. The filer must answer YES even though this text does not require the worksheet for the sale."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer sells collectibles or section 1250 property held 1 year or less, which does not produce the long-term amounts covered by the line 18 and line 19 worksheets.",
-    "irs_text": "Question: \"Does this sale involve collectibles ... depreciable real property (section 1250 property)\" with no holding period. IRS: \"A collectibles gain or (loss) is any long-term gain or deductible long-term loss\" and \"section 1250 property ... held more than 1 year. (i1040sd 2025, p. 11, lines 18 and 19)\"",
-    "why": "The wording requires YES regardless of holding period, while the cited worksheets reach only property held more than 1 year. The tool's column (h) amount would be unaffected, although a short-term collectibles sale still needs code C, which has a -0- adjustment, and cannot be aggregated on line 1a."
+    "situation": "A filer sells an interest in a partnership, S corporation, or trust that holds collectibles, but sells at a loss, or held the interest 1 year or less, so the question's wording makes the filer answer YES although no 28% look-through gain arises and the tool computes the sale correctly.",
+    "irs_text": "Question: \"an interest in a partnership, S corporation or trust ... that holds collectibles\"; i1040sd p. 11, Line 18: \"Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles.\"",
+    "why": "The IRS look-through applies only to long-term gain attributable to unrealized appreciation. The question's main clause triggers on mere holding. Its 'worth more than its cost' example does not limit that clause."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer sells a long-term interest in a partnership or S corporation holding appreciated collectibles and reads \"such property\" as referring only to the immediately preceding depreciable real property.",
-    "irs_text": "Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles. (i1040sd 2025, p. 11, line 18)",
-    "why": "\"Such property\" follows directly after \"depreciable real property (section 1250 property),\" so it can be read as limited to that item or as covering every listed category. The narrower reading gives NO and omits the 28% rate gain."
+    "situation": "A filer whose partnership interest holds collectibles or section 1250 property only through a lower-tier partnership may read 'holds' as direct ownership and answer NO.",
+    "irs_text": "i1040sd p. 11, Line 18: \"attributable to unrealized appreciation of collectibles. For details, see Regulations section 1.1(h)-1.\"",
+    "why": "The look-through under the cited regulation reaches assets held indirectly through tiered entities. The question's word 'holds' can reasonably be read as direct ownership only."
    }
   ],
-  "prompt_sha": "b5ecf467534bc23cb3bdde3386c8d9911c962230355d4b187f277e913deeb55d",
+  "prompt_sha": "e4bd9677acf05666121862515450fa03e4d096ef085992dfa3e1ce39844ee13a",
   "used": [
    {
     "doc": "i1040sd",
@@ -4010,7 +4019,7 @@
     "locators": [
      "p. 10, lines 1a and 8a",
      "pp. 11–12, lines 18 and 19",
-     "pp. 11–12, lines 18 and 19; p. 11, line 18, \"Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles.\""
+     "pp. 11–12, lines 18 and 19; p. 11, line 18, \"Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles.\"; p. 12, line 19, \"You reported a long-term capital gain from the sale or exchange of an interest in a partnership that owned section 1250 property\""
     ],
     "cols_pages": [
      11,
@@ -4056,7 +4065,7 @@
     "cols_sha256": "cc308c3ff7751456647bed9c2855d077dcbd0a55469b57f9e8cccb6f4927f232"
    }
   ],
-  "cost": 0.25066,
+  "cost": 0.21496800000000002,
   "model": "claude-opus-5-5"
  },
  {
@@ -4591,36 +4600,36 @@
   "findings": [
    {
     "kind": "NARROW",
-    "situation": "A filer has income or loss from a passive activity that is not reported on Schedule E, such as a Schedule C business in which they did not materially participate, and files no Form 8814.",
-    "irs_text": "'You have income or loss from a passive activity.' Yes. 'Use Worksheet 1 in Pub. 596 to see if you can take the credit.' (i1040gi 2025, p. 40, Step 2, question 4)",
-    "why": "This question names only Form 8814 from Step 2, question 4, and the companion Schedule 1 screen expressly carves out Schedule C income and asks only about Schedule E, K-1 and similar items. The filer can truthfully answer NO to both, so the tool passes eic.step2_other without Worksheet 1."
+    "situation": "A filer had a section 965(i) triggering event without a transfer agreement and owes the triggered deferred net 965 tax on line 16. The question never names this tax, so the filer can truthfully answer NO by checking its list.",
+    "irs_text": "Triggering event under section 965(i). If you had a triggering event under section 965(i) during the year and did not enter into a transfer agreement, check box 3 and enter the amount of the triggered deferred net 965 tax liability and enter \"965INC\" (i1040gi p. 36)",
+    "why": "The question lists Forms 8814, 4972, 8615, 8621 and 8978, the section 962 election and education credit recapture, but leaves out the 965INC tax. A filer reads the list as the meaning of \"additional line 16 tax\" and answers NO, so line 16 omits the tax."
    },
    {
     "kind": "NARROW",
-    "situation": "A filer with fishing income on Schedule C could lower their tax by choosing Schedule J income averaging, but is not yet filing Schedule J and owes no additional tax.",
-    "irs_text": "'Schedule J. If you had income from farming or fishing, your tax may be less if you choose to figure it using income averaging on Schedule J.' (i1040gi 2025, p. 36)",
-    "why": "The question does not name Schedule J, and income averaging is a different way to figure the tax rather than an obvious 'additional' tax or filing. The filer can answer NO, and the tool then computes line 16 without offering this method."
+    "situation": "A filer who claimed the foreign earned income exclusion, housing exclusion or housing deduction on Form 2555 must figure line 16 with the Foreign Earned Income Tax Worksheet. Nothing in the question applies to them, so they answer NO.",
+    "irs_text": "If you claimed the foreign earned income exclusion, housing exclusion, or housing deduction on Form 2555, you must figure your tax using the Foreign Earned Income Tax Worksheet. (i1040gi p. 36)",
+    "why": "The computed line 16 chooses only between the Schedule D Tax Worksheet and the other tax methods, with no Foreign Earned Income Tax Worksheet. The question asks only about added taxes and forms, not about a required alternative method, so a Form 2555 filer gets the wrong tax unless another screen catches them."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer had a section 965(i) triggering event and did not enter into a transfer agreement, so a deferred net 965 tax liability belongs on line 16.",
-    "irs_text": "'Triggering event under section 965(i). If you had a triggering event under section 965(i) during the year and did not enter into a transfer agreement, check box 3 and enter the amount of the triggered deferred net 965 tax liability' (i1040gi 2025, p. 36)",
-    "why": "The opening words 'Any additional Form 1040 line 16 tax' literally cover this amount, but the detailed list and the refusal message omit it. A filer could read the list as the full meaning of 'additional' and answer NO, leaving the liability out of line 16."
+    "situation": "A filer with farming or fishing income who chooses Schedule J income averaging cannot tell whether that counts as an \"additional Form 1040 line 16 tax or filing\".",
+    "irs_text": "Schedule J. If you had income from farming or fishing, your tax may be less if you choose to figure it using income averaging on Schedule J. (i1040gi p. 36)",
+    "why": "Schedule J is an alternative way to figure the line 16 tax, not an added tax, and the question's list does not mention it. One filer may answer YES and be refused; another may answer NO, and the tool then ignores the election."
    },
    {
     "kind": "WIDE",
-    "situation": "A filer files Form 8621 only for information or for a non-section 1291 reason and has no tax on line 16e, so no Form 8621 amount belongs on line 16.",
-    "irs_text": "Question: 'including filing Form 8814 (even with no tax), Form 4972, Form 8615 ... Form 8621'. IRS: 'Any tax from Form 8621, line 16e, relating to a section 1291 fund.' (i1040gi 2025, p. 34)",
-    "why": "The wording makes filing Form 8621 itself a YES, but the line 16 text reaches only tax from line 16e. Line 16 can be computed correctly for this filer unless another screen applies, yet the question refuses it."
+    "situation": "A filer who files Form 8621 only as an information return, or only to report QEF or mark-to-market income, owes no section 1291 tax, yet must answer YES because the question names Form 8621 without qualification.",
+    "irs_text": "Question: \"...a section 962 election, Form 8621, a Form 8978 amount...\"; IRS: \"Any tax from Form 8621, line 16e, relating to a section 1291 fund. (i1040gi p. 34)\"",
+    "why": "Only the Form 8621, line 16e tax from a section 1291 fund goes on line 16. Filing Form 8621 for any other reason leaves line 16 unchanged, so the tool could compute these returns but refuses them."
    },
    {
     "kind": "WIDE",
-    "situation": "A filer born on January 1 of 2008, 2007 or 2002 meets the question's age wording by actual age on December 31, 2025, but is treated as one year older and so does not need Form 8615.",
-    "irs_text": "Question: 'under 18 at the end of 2025, or 18 with earned income of not more than half your support, or a full-time student 19 to 23'. IRS: 'A child born on January 1, 2008, is considered to be age 18 at the end of 2025; a child born on January 1, 2007, is considered to be age 19 at the end of 2025; and a child born on January 1, 2002, is considered to be age 24 at the end of 2025.' (i1040gi 2025, p. 36)",
-    "why": "The question omits the January 1 birthday rule, so these filers can answer YES based on actual age even when they fail the IRS age test as applied. Examples are a 2008-born filer whose earned income exceeds half of support and a 2002-born full-time student."
+    "situation": "A filer with a negative Form 8978, line 14 amount must answer YES to \"a Form 8978 amount\", even though a negative amount does not go on line 16.",
+    "irs_text": "Question: \"a Form 8978 amount\"; IRS: \"If the amount on Form 8978, line 14, is negative, see the instructions for Schedule 3, line 6l. (i1040gi pp. 34, 36)\"",
+    "why": "Only a positive Form 8978, line 14 liability is a line 16 tax, but the wording covers any amount. Line 16 itself would be computed correctly in this case."
    }
   ],
-  "prompt_sha": "fa3680b1daaef0d69192e911fc167e421b6a4fdfee3338e551ca9c954903547e",
+  "prompt_sha": "d72d5427e19cde4dee9951b1a2aa40b6275451c79ed67df4526eca4177bfcff7",
   "used": [
    {
     "doc": "f1040",
@@ -4665,12 +4674,12 @@
     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
    }
   ],
-  "cost": 0.203392,
+  "cost": 0.180636,
   "model": "claude-opus-5-5"
  },
  {
   "screen": "scope.schedule1",
-  "question": "Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately (business income or loss from Schedule C; a taxable state or local income tax refund; alimony under an agreement made before 2019; unemployment compensation; the line 8 items asked one by one; educator expenses; the HSA deduction; the deductible part of self-employment tax; self-employed SEP and SIMPLE contributions; the self-employed health insurance deduction; the penalty on early withdrawal of savings; the IRA deduction; student loan interest; jury duty pay you gave your employer), including statutory-employee wages or income as a minister, a member of a religious order who has not taken a vow of poverty, or a Christian Science practitioner; church employee income (wages from a church that elected exemption from social security and Medicare taxes); other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan); a refund or other recovery of an amount you deducted or took a credit for in an earlier year, other than a state or local income tax refund (for example a refund of general sales tax, real estate tax or personal property tax, a refund of mortgage interest in box 4 of Form 1098, a reimbursement of medical expenses, or a payment on a bad debt you deducted); sales of business property (Form 4797); a net operating loss deduction; rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); an exclusion of Medicaid waiver payments (Schedule 1 line 8s); or an adjustment on Schedule 1 line 12, 14 or 23? (Schedule 1-A deductions are asked separately.)",
+  "question": "Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately (business income or loss from Schedule C; a taxable state or local income tax refund; alimony under an agreement made before 2019; unemployment compensation; the line 8 items asked one by one; educator expenses; the HSA deduction; the deductible part of self-employment tax; self-employed SEP and SIMPLE contributions; the self-employed health insurance deduction; the penalty on early withdrawal of savings; the IRA deduction; student loan interest; jury duty pay you gave your employer), including statutory-employee wages or income as a minister, a member of a religious order who has not taken a vow of poverty, or a Christian Science practitioner; church employee income (wages from a church or qualified church-controlled organization that elected exemption from social security and Medicare taxes); other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan); a refund or other recovery of an amount you deducted or took a credit for in an earlier year, other than a state or local income tax refund (for example a refund of general sales tax, real estate tax or personal property tax, a refund of mortgage interest in box 4 of Form 1098, a reimbursement of medical expenses, or a payment on a bad debt you deducted); sales of business property (Form 4797); a net operating loss deduction; rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); an exclusion of Medicaid waiver payments (Schedule 1 line 8s); or an adjustment on Schedule 1 line 12, 14 or 23? (Schedule 1-A deductions are asked separately.)",
   "lines": [
    "eic.step2_other",
    "eic.step5_line1",
@@ -4688,60 +4697,30 @@
   "findings": [
    {
     "kind": "NARROW",
-    "situation": "A filer has income or loss from a Schedule C business in which they did not materially participate, so it is a passive activity, and they have no Schedule E, K-1, or farm income.",
-    "irs_text": "'You have income or loss from a passive activity.' Yes. 'Use Worksheet 1 in Pub. 596' (i1040gi 2025, p. 40, Step 2, question 4)",
-    "why": "The question never mentions passive activities and expressly excludes Schedule C business income, so this filer truthfully answers NO. The tool then skips the Pub. 596 Worksheet 1 test that the line requires."
+    "situation": "A filer owns a Schedule C business in which they do not materially participate, so its income or loss is passive-activity income or loss, and they have no Schedule E or K-1.",
+    "irs_text": "i1040gi p. 40, EIC Step 2, question 4: \"Do any of the following apply for 2025? ... • You have income or loss from a passive activity. Yes. Use Worksheet 1 in Pub. 596\"",
+    "why": "The question carves out Schedule C business income as asked separately and lists passive income only through Schedule E or K-1 sources, so this filer answers NO. The tool then sets eic.step2_other to false and skips the Pub. 596 Worksheet 1 test the IRS text requires."
    },
    {
     "kind": "NARROW",
-    "situation": "A self-employed filer received qualified tips in a Schedule C business and answers NO because Schedule C income and Schedule 1-A deductions are carved out of the question.",
-    "irs_text": "'Line 5. Include the qualified tips you and/or your spouse received in the course of a trade or business' (i1040gi 2025, p. 104)",
-    "why": "The wording excludes Schedule C and says Schedule 1-A deductions are 'asked separately', yet a NO here sets the line 5 amount to $0. Unless another screen, not shown here, catches this case, the deduction is silently lost."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A filer has qualified overtime included in Form 1099-NEC box 1 or Form 1099-MISC box 3, reports it on Schedule C, and answers NO because Schedule C income and Schedule 1-A deductions are carved out of the question.",
-    "irs_text": "'Enter on Line 14b only the qualified overtime compensation amount that is included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3.' (i1040gi 2025, p. 108)",
-    "why": "Nothing in the question points this filer to YES, and a NO sets line 14b to $0. Unless another screen, not shown here, catches this case, the deduction is silently lost."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "An options or commodities dealer has gain or loss from section 1256 contracts in the normal course of dealing or trading, reported without any item the question lists.",
-    "irs_text": "'Options and commodities dealers must add any gain or subtract any loss (in the normal course of dealing in or trading section 1256 contracts) from section 1256 contracts or related property' (i1040s8812 2025, p. 8, Earned Income Worksheet, line 2b)",
-    "why": "The question does not mention dealers or section 1256 contracts, so this filer can truthfully answer NO. The Earned Income Worksheet amount would then omit this adjustment."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A minister has only W-2 wages, is not filing Schedule SE because of an approved Form 4361 exemption, and must answer YES because of the phrase 'income as a minister'.",
-    "irs_text": "'Check the box on line 27b if you are (1) a minister... and (2) filing Schedule SE' (i1040gi 2025, p. 43); 'Are you filing Schedule SE because you were a member of the clergy' (i1040gi 2025, p. 42, Step 5, questions 1 and 2)",
-    "why": "The question 'income as a minister' applies regardless of Schedule SE, but the clergy steps in these lines apply only to a filer who is filing it. Without Schedule SE, the Step 5 worksheet starts from line 1z, as the tool computes."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer has church employee income below $108.28 and so does not file Schedule SE, but the question has no minimum amount and requires YES.",
-    "irs_text": "'Are you filing Schedule SE because you were a member of the clergy or you had church employee income of $108.28 or more?' (i1040gi 2025, p. 42, Step 5, question 1)",
-    "why": "The question 'church employee income (wages from a church that elected exemption...)' has no threshold. Below the threshold no Schedule SE is filed, so the church-employee adjustment does not arise and the wages stay in line 1z as the tool computes."
-   },
-   {
-    "kind": "WIDE",
-    "situation": "A filer rents out personal property as a trade or business and reports it on Schedule C, which the tool computes, but must answer YES because of the phrase 'rental of personal property'.",
-    "irs_text": "'You are reporting income from the rental of personal property not used in a trade or business.' (i1040gi 2025, p. 40, Step 2, question 4)",
-    "why": "The question drops the IRS qualifier 'not used in a trade or business', so it reaches rental activity that the EIC test does not name. This also conflicts with the question's own carve-out for Schedule C business income."
+    "situation": "A sole proprietor receives qualified tips, or qualified overtime reported on Form 1099-NEC box 1 or 1099-MISC box 3, in a business reported on Schedule C.",
+    "irs_text": "i1040gi p. 104, Schedule 1-A, line 5: \"Include the qualified tips you and/or your spouse received in the course of a trade or business\"; p. 108, line 14b: \"Enter on Line 14b only the qualified overtime compensation amount that is included in Form 1099-NEC, box 1, or Form 1099-MISC, box 3\"",
+    "why": "The question excludes Schedule C business income because it is asked separately, so a filer whose only trade-or-business income is on Schedule C answers NO. The tool then enters $0 on s1a.line5_calc and s1a.line14b_calc, unless the separate Schedule 1-A question catches these amounts."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "An employee of a church-controlled organization, such as a school or hospital, that elected exemption from social security and Medicare taxes cannot tell whether their wages count as 'wages from a church'.",
-    "irs_text": "'you had church employee income of $108.28 or more' (i1040gi 2025, p. 42, Step 5, question 1)",
-    "why": "The IRS text uses the broad term 'church employee income', while the question's parenthetical speaks only of 'wages from a church'. A filer employed by a separate church-controlled entity could reasonably answer either way."
+    "situation": "A filer has passive farm rental income reported on Form 4835 (rent paid in crop shares, with no material participation).",
+    "irs_text": "i1040sse p. 4: \"Income from farm rentals (including rentals paid in crop shares) if, as landlord, you didn't materially participate ... Report this income on Form 4835\"; i1040gi p. 40: \"You are filing Schedule E ... You have income or loss from a passive activity\"",
+    "why": "The question names \"farm income (Schedule F)\" and \"rental real estate ... (Schedule E or a Schedule K-1)\" but not Form 4835. A filer could reasonably decide that crop-share farm rent is neither and answer NO, which skips the EIC Step 2 question 4 test."
    },
    {
-    "kind": "UNCLEAR",
-    "situation": "A clergy member or church employee paid only on Form W-2 may think their income does not require Schedule 1, because the question opens with 'Any income or adjustment requiring Schedule 1'.",
-    "irs_text": "'If you are filing Schedule SE and the amount on line 2 of that schedule includes an amount that was also reported on Form 1040 or 1040-SR, line 1z' (i1040gi 2025, p. 43, Clergy)",
-    "why": "This income is reported on line 1z and Schedule SE, not as Schedule 1 income, yet the question lists it under items 'requiring Schedule 1'. A filer could read the opening as limiting the list and answer NO, or follow the word 'including' and answer YES."
+    "kind": "WIDE",
+    "situation": "A filer received church employee wages of less than $108.28 and does not file Schedule SE.",
+    "irs_text": "Question: \"church employee income (wages from a church or qualified church-controlled organization that elected exemption from social security and Medicare taxes)\"; i1040gi p. 42, EIC Step 5, question 1: \"Are you filing Schedule SE because ... you had church employee income of $108.28 or more?\"; i1040sse p. 1: \"You must file Schedule SE if ... You had church employee income of $108.28 or more\"",
+    "why": "The question has no threshold, so this filer answers YES and is refused. Below $108.28 no Schedule SE is filed and no Step 5 adjustment applies, so using Form 1040 line 1z as the tool does is correct."
    }
   ],
-  "prompt_sha": "a378653f24c5685e5ad5cad0495bb352319f7499f8b1d714245d66dd38faaaeb",
+  "prompt_sha": "69d7819f64565efc89b2fe023c5785752ddec0df82a60b3da857af164bbb5cd4",
   "used": [
    {
     "doc": "f1040",
@@ -4756,7 +4735,7 @@
      "Form 1040 (2025), line 10",
      "Form 1040 (2025), line 8",
      "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31",
-     "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31; Clergy, \"The following instructions apply to ministers, members of religious orders who have not taken a vow of poverty, and Christian Science practitioners.\"",
+     "Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31; Clergy, \"The following instructions apply to ministers, members of religious orders who have not taken a vow of poverty, and Christian Science practitioners.\"; Employees of Churches and Church Organizations, \"Church employee income is wages you received as an employee (other than as a minister, member of a religious order, or Christian Science practitioner) of a church or qualified church-controlled organization that has a certificate in effect electing an exemption from employer social security and Medicare taxes.\"",
      "Form 1040 (2025), the lines the screens cover: line 8, \"Additional income from Schedule 1, line 10\", line 10, \"Adjustments to income from Schedule 1, line 26\", line 13b, \"Additional deductions from Schedule 1-A, line 38\", line 16, \"Tax (see instructions). Check if any from Form(s)\", line 19, \"Child tax credit or credit for other dependents from Schedule 8812\", line 20, \"Amount from Schedule 3, line 8\", line 27a, \"Earned income credit (EIC)\", line 28, \"Additional child tax credit (ACTC) from Schedule 8812\", line 29, \"American opportunity credit from Form 8863, line 8\", line 30, \"Refundable adoption credit from Form 8839, line 13\", line 31, \"Amount from Schedule 3, line 15\""
     ],
     "cols_pages": [],
@@ -4816,9 +4795,31 @@
     ],
     "cols_pages": [],
     "cols_sha256": "e6ba91f54df679c9c19c23169c369f14bff012ba2fe110c3973bde59676c1d45"
+   },
+   {
+    "doc": "i1040sse",
+    "revision": "2025",
+    "text_sha256": "bd4768e77e9087e707701447574c3fd8b1b6ac8deca77fcf2e1bce4c50b7db28",
+    "pages": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "how": "whole document",
+    "locators": [],
+    "cols_pages": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "cols_sha256": "6cb68f929e214450ea7ffa33648d5602e2431f38e91c7a6c83dfbee0ab23f08c"
    }
   ],
-  "cost": 0.348344,
+  "cost": 0.3772,
   "model": "claude-opus-5-5"
  },
  {

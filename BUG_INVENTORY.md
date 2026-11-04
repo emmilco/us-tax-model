@@ -4799,3 +4799,810 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Validation:** `lake build` with no `sorry`, and `#print axioms` showing only `propext`/`Quot.sound`;
   compare; test-fixtures.
 - **Tags:** claim-accuracy; spec; lean; fixed
+
+## BUG-0341 — The register entry `amb.2025.dc_born_died_half_year` records a reading the encoding no longer uses
+
+- **Caught by:** T-095 premise check, 2026-11-03. Each unlinked register entry was compared with the lines it names.
+- **Source:** p503 p. 3, Birth or death of otherwise qualifying person: "a person who was born or died in 2025 is treated as having lived with you for more than half of 2025 if your home was the person's home more than half the time they were alive in 2025".
+- **Symptom:** the entry's `chosen` says "The second, as encoded (no question is added); it can only leave out a qualifying person". That second reading is "The dependent tests' answer stands, so such a person may not be counted". But since BUG-0157, `dependent.dc_disabled_qp` reads `dependent.dc_lived_half`. That line counts a person other than a qualifying child who was born or died in 2025, through `dependent.born_died` and `dependent.part_year_home`. This is the first reading, and the line cites p503 p. 3. The register therefore misstates the reading applied (spec 3, requirement 7). No values sheet shows the entry, because no line links it.
+- **Resolution:** not made, because this package may not change a recorded choice or an owner verdict. Proposed: the owner retires the entry as superseded by BUG-0157 (the source rule is now encoded, so no ambiguity remains), or restates `chosen` as the first reading and links it from `dependent.dc_lived_half`.
+- **Resolution lines:** `ambiguities/2025.yaml` (`amb.2025.dc_born_died_half_year`); optionally `dependent.dc_lived_half`.
+- **Related entries checked:**
+  - The 11 other unlinked entries, each against its named lines. This was checked at the level of label, op and `places`, not by evaluating the lines; on that check their `chosen` text matches the encoding: `eic.line1_in_table`, `dependent.eic_ssn`, `scveh.screen`, `scveh.unrecovered`, `mq.q4` and `mq.total`, `scveh.bus_cost` (places 6), `person.sep_s5`, the `sc.f7206_line7`/`_line9` pair with their `_pos` helpers, and `sc.qbi_se`/`qbi_plan`/`qbi_ded`.
+  - `dependent.hoh_lived_half` (the head of household twin; BUG-0153), which has no register entry.
+- **Regression predictions:** none; no value changes. `stage15.f2441.parent_died_part_year` (BUG-0157's regression) already exercises the first reading.
+- **Validation:** source and YAML inspection (`forms/2025/dependent.yaml:388-418`, `:1492-1509`; BUG_INVENTORY BUG-0157).
+- **Tags:** register-drift; documentation; owner-decision-needed
+
+## BUG-0342 — Form 2441 lines 18 to 20 left all of line 1e out of earned income, though only line 12 benefits are excluded (T-121)
+
+- **Caught by:** hard1 f2441 L3 (T-092 split, 2026-10-31), T-121; premise checked in the person-dep pass.
+- **Source:** i2441 p. 5, Line 18, "however, for purposes of lines 18 and 19, earned income doesn’t include any dependent care benefits shown on line 12"; p. 5, Line 13, "Enter on line 13 the amount you carried forward and used in 2025 during the grace period"; p. 5, Line 15, "Add the amounts on lines 12 and 13 and subtract from that total the amount on line 14"; p. 4, Lines 4 and 5, earned income includes "The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z".
+- **Symptom:** `person.dc_earned_b` (lines 18 and 19) is W-2 box 1 plus self-employment earnings, without any of line 1e. Line 1e (line 26) is the taxable part of line 15, which pools line 12 and the line 13 grace-period carryover; the part that comes from line 13 is not "shown on line 12", so the instructions do not exclude it. The instructions give no rule for splitting line 26 between line 12 and line 13, and line 26 depends on line 18 through lines 20 and 25, so the line 18 the instructions intend is not determined. Witness (evaluated before the fix): head of household, wages $3,000, box 10 $4,000, line 13 $500, expenses $4,500: line 18 $3,000, line 25 $3,000, line 26 and Form 1040 line 1e $1,500, completed. Up to $500 of line 26 can be line 13's, which would raise line 18 and line 25 and lower line 26.
+- **Fix:** new gate `f2441.line13_earned` (line 13 above zero, line 20 less than both line 17 and line 21, and line 23 more than line 20, which is line 26 above zero); `f2441.line25` refuses on it, and line 26, line 28 and Form 1040 line 1e follow. Only this case can change an amount: with line 20 equal to line 17, or not less than line 21, more earned income cannot change line 25. The gate reads only lines upstream of line 25, so it adds no cycle. The `person.dc_earned_b` label names the reading and the refusal.
+- **Fix lines:** `f2441.line13_earned`, `f2441.line25`, `person.dc_earned_b` (label)
+- **Siblings checked:** `f2441.line18`, `f2441.line19`, `f2441.spouse_earned_b`, `f2441.line13`, `person.dc_earned`, `person.dc_1e`, `f2441.attrib_gate` (lines 4 and 5 keep line 1e, as i2441 p. 4 directs). Generated at integration (the packages were integrated together) and covered by this round's reruns and adjudication of their forms' reviews: `f2441.line25`.
+- **Regression predictions:** written from i2441 p. 5 before the evaluator was run, all met. `f2.t121.line13_earned_refused` (the witness): lines 15 and 17 $4,500, line 18 and line 20 $3,000, line 21 $5,000, line 23 $4,500, gate true, line 25 and line 26 refused. `f2.t121.line13_earned_not_limiting` (wages $45,000, box 10 $5,000, line 13 $500, expenses $6,000): line 17 $5,500, line 20 $5,500, gate false, line 25 $5,000, line 26 and line 1e $500, line 1z $45,500, line 28 $5,000, line 29 $0. `f2.t121.line13_line21_binds` (wages $5,200): line 18 $5,200 below line 17 $5,500 but line 20 not below line 21 $5,000, gate false, line 25 $5,000, line 26 $500.
+- **Validation:** fixtures in `fixtures/2025/stage8.json`; witness evaluated before and after. Accepted over-refusal: when line 19 (the spouse) is the limiting line and the line 13 carryover is the taxpayer's, more earned income for line 18 cannot change line 20, but the case is still refused. A second family reading (GPT-6 Astra) was not run; the prompt is in `receipts/t121_astra.prompt.txt`.
+- **Tags:** amount-affecting; source-silent; refusal-added; existing-form-pass; fixed
+
+## BUG-0343 — The line 16 questions did not tell the filer to leave out the value of employer-furnished care (T-123)
+
+- **Caught by:** hard1 f2441 L2 (T-092 split, 2026-10-31), T-123.
+- **Source:** i2441 p. 5, Line 16, "Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s)"; p. 3, Columns (a) and (b), "If you were covered by your employer's dependent care plan and your employer furnished the care (either at your workplace or by hiring a care provider), enter your employer's name in column (a)"; BUG-0262 (the archived sources do not say whether that value is a qualified expense incurred).
+- **Symptom:** with employer-furnished care, `f2441.employer_care_l16` refuses when line 16 is less than line 15, and otherwise line 16 holds the expenses without the value of the employer's care. With line 16 at least line 15 that reading cannot change an amount (line 17 is line 15 under either reading). But nothing told the filer to leave the value out of `f2441.paid_2026` or `dependent.dc_paid`; a filer who entered it could lift line 16 to line 15, escape the refusal and have benefits excluded under the other reading. `dependent.dc_paid` also said "paid by your employer to the provider", which overlaps care the employer furnishes by hiring a provider.
+- **Fix:** `f2441.paid_2026` and `dependent.dc_paid` say not to include the value of care your employer furnished itself (at your workplace or through a care provider it hired); `dependent.dc_paid` now says "paid by your employer to a provider you chose", the wording `f2441.employer_care` uses. Proposed register entry (the integrator owns `ambiguities/2025.yaml`): `amb.2025.dc_employer_care_value`, text at issue i2441 p. 5 Line 16 and p. 3 Columns (a) and (b); readings (1) the value of employer-furnished care is not an expense incurred for line 16, (2) it is; chosen (1) when line 16 is at least line 15 (no amount differs) and refused otherwise (`f2441.employer_care_l16`, BUG-0262); link it from `f2441.line16` and `f2441.paid_2026`.
+- **Fix lines:** `f2441.paid_2026`, `dependent.dc_paid`
+- **Siblings checked:** `f2441.employer_care`, `f2441.employer_care_gate` (line 30 refusal), `f2441.employer_care_l16`, `f2441.line16`, `f2441.line17`, `dcprov.paid`. Generated at integration (the packages were integrated together) and covered by this round's reruns and adjudication of their forms' reviews: `dependent.dc_line2d`.
+- **Regression predictions:** wording only; no value changes. Existing `stage21.t073.employer_care_nothing_paid_refused` and `stage21.t073.employer_care_paid_equals_benefits` still pass (run).
+- **Validation:** source and question inspection.
+- **Tags:** source-silent; wording; existing-form-pass; fixed (ambiguity entry pending integrator)
+
+## BUG-0344 — `person.ira_excess` omitted "including extensions" from the withdrawal deadline (T-119)
+
+- **Caught by:** fixr4 person L1 (T-092 split), T-119.
+- **Source:** p590a p. 35, Tax on Excess Contributions, "In general, if the excess contributions for a year aren’t withdrawn by the date your return for the year is due (including extensions), you are subject to a 6% tax".
+- **Symptom:** the screen asked whether the excess "was not withdrawn with its earnings by the due date of your return"; a filer on extension who withdrew in June 2026 could answer Yes and be refused.
+- **Fix:** "(including extensions)" added; the p. 35 sentence added to the locator.
+- **Fix lines:** `person.ira_excess`
+- **Siblings checked:** `person.ira_excess_gate` (already cites the extension rule), `person.x_other`, `ira.special`, `f8889.line14b` (printed form label, not changed).
+- **Regression predictions:** wording only; no value changes.
+- **Validation:** source inspection; strict citation check passes.
+- **Tags:** wording; over-refusal; fixed
+
+## BUG-0345 — `person.itin_applied`'s label lacked the renewal and its help said it counts for the credit for other dependents only (T-120)
+
+- **Caught by:** fixr4 person L2 (T-092 split), T-120.
+- **Source:** i1040gi p. 19, Step 5, question 1, "(Answer 'Yes' if you are applying for an ITIN on or before the return due date (including extensions).)"; p970 p. 11, "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as issued on or before the due date of the return."
+- **Symptom:** the question asks about an application or a renewal, but the label said only "applied for an ITIN"; the interview help said the answer "counts for the credit for other dependents only", though `person.edu_student` reads it for the American opportunity credit (and the T-113 gate refuses the lifetime learning credit on it).
+- **Fix:** the label names the renewal; the help says the answer counts for the credit for other dependents (not the child tax credit, `amb.2025.ctc_spouse_itin_application`) and for this person as an American opportunity credit student, and that the lifetime learning credit is refused.
+- **Fix lines:** `person.itin_applied` (label), `interview/questions-2025.yaml` (help)
+- **Siblings checked:** `household.tin_count`, `household.id_count`, `person.edu_student`, `person.edu_llc_tin_refused`, `person.tin`.
+- **Regression predictions:** wording only.
+- **Validation:** inspection.
+- **Tags:** wording; presentation; fixed
+
+## BUG-0346 — Church employee income glossed without qualified church-controlled organizations (T-127)
+
+- **Caught by:** screens group4 BUG-0345-11 (T-092 split), T-127.
+- **Source:** i1040sse p. 1, Employees of Churches and Church Organizations, "Church employee income is wages you received as an employee (other than as a minister, member of a religious order, or Christian Science practitioner) of a church or qualified church-controlled organization that has a certificate in effect electing an exemption from employer social security and Medicare taxes."
+- **Symptom:** `scope.schedule1` and `person.se_screen` said "wages from a church that elected exemption"; an employee of an electing church school or hospital could answer No and complete a return that should be refused.
+- **Fix:** both say "a church or qualified church-controlled organization"; the i1040sse sentence is added to both locators.
+- **Fix lines:** `scope.schedule1` (label and question), `person.se_screen`
+- **Siblings checked:** `f8959.unsupported`/its screen (says "any church employee income", no gloss), `eic.clergy`, se (yaml file) lines 4c and 5a (notes only), person (yaml file) Worksheet B note. Generated at integration (the packages were integrated together) and covered by this round's reruns and adjudication of their forms' reviews: `eic.step2_other`, `eic.step5_line1`, `f1040.line10`, `f1040.line8`, `person.se_screened`, `s1a.line14b_calc`, `s1a.line5_calc`, `s8812.eiw_3`, `s8812.eiw_4`, `scope.ready`, `ssb.line6`.
+- **Regression predictions:** wording only; no value changes.
+- **Validation:** inspection; the `scope.schedule1` screen review is stale and must be rerun (`check_screens.py`).
+- **Tags:** wording; under-refusal; fixed
+
+## BUG-0347 — BUG-0320 is fixed: `person.blind` states the partial-blindness test and the certified statement (T-177)
+
+- **Caught by:** BUG-0320, recorded open; this entry closes it because the inventory is append-only. Owner decision 2026-11-02: wording.
+- **Source:** i1040gi p. 33, Blindness, "If you weren’t totally blind as of December 31, 2025, you must get a statement certified by your eye doctor (ophthalmologist or optometrist) that:", "You can't see better than 20/200 in your better eye with glasses or contact lenses, or", "Your field of vision is 20 degrees or less.", the not-likely-to-improve alternative and "You must keep the statement for your records."; p. 33, Line 12d, "were blind at the end of 2025".
+- **Symptom:** as recorded in BUG-0320.
+- **Fix:** the label and question ask whether you were blind at the end of 2025, totally or with the certified statement, and say to keep it; the cite moves from the generic Schedule A locator to i1040gi p. 33.
+- **Fix lines:** `person.blind`
+- **Siblings checked:** `sa.boxes_blind`, `sa.extra_blind`, `sa.spouse_extra` (refused), `refund.you_blind` (2024 worksheet question, form the refund form, not owned: it asks "Were you blind at the end of 2024?" without the definition; recorded, not changed).
+- **Regression predictions:** wording only.
+- **Validation:** inspection. `check_consumers.py` now reports `person.blind@i1040gi:p34` and `p35` (read by `sa.boxes_blind`) as changed and `p33` as stale: proposed verdicts in `consumers_proposed.json`.
+- **Tags:** source-definition-debt; standard-deduction; wording; fixed
+- **Review correction (backlog round, before commit):** the person adjudication found that the reworded question left out p501 p. 23's contact-lens rule (vision correctable beyond the limits only by contact lenses worn briefly because of pain, infection or ulcers qualifies); the question now says to answer yes in that case, citing p501 p. 23.
+
+## BUG-0348 — BUG-0338 is fixed: the care-expense question states household services, housekeeper meals and lodging, provider transportation, agency fees and the volunteer-work rule (T-184)
+
+- **Caught by:** BUG-0338, recorded open; this entry closes it because the inventory is append-only.
+- **Source:** i2441 p. 1, "These include amounts paid for household services and care of the qualifying person while you worked or looked for work."; p. 2, Household services, the cook/maid/babysitter/housekeeper/cleaning person sentence and "they don't include the services of a chauffeur, bartender, or gardener"; p503 p. 6, Volunteer work; p503 p. 7, Transportation and Fees and deposits; p503 p. 8, Meals and lodging provided for housekeeper.
+- **Symptom:** as recorded in BUG-0338.
+- **Fix:** `dependent.dc_paid` states the household-services rule with its examples and exclusions, the housekeeper's meals and extra lodging (excepted from the food-and-lodging exclusion), the care provider's transportation (not other transportation or the provider's travel to your home), agency fees, deposits and application fees (not a forfeited deposit), and that unpaid volunteer work or work for a nominal salary is not work.
+- **Fix lines:** `dependent.dc_paid`
+- **Siblings checked:** `dependent.dc_line2d`, `f2441.paid_2026`, `f2441.line16`, `dcprov.paid`, `dcprov.household`; the limits baseline entries for `dependent.dc_paid` (`limit:p503:p6:463a57ef`, `limit:p503:p6:ea477d7e`) still hold (check_limits (py file) 0 new).
+- **Regression predictions:** wording only; no value changes.
+- **Validation:** inspection; strict citation check passes.
+- **Tags:** source-definition-debt; dependent; wording; fixed
+
+## BUG-0349 — BUG-0339 is fixed: the support question states the five residual rules (T-185)
+
+- **Caught by:** BUG-0339, recorded open; this entry closes it because the inventory is append-only.
+- **Source:** p501 p. 20, Lodging, "Fair rental value includes a reasonable allowance for the use of furniture and appliances, and for heat and other utilities that are provided."; p. 21, "If you don’t provide the total lodging, the total fair rental value must be divided depending on how much of the total lodging you provide."; p. 20, "However, payments based on the needs of the recipient won’t be considered as used entirely for that person’s support if it is shown that part of the payments weren’t used for that purpose."; p. 20, Social security benefits, the one-check sentence; p. 22, Alimony, "Payments to a spouse that are alimony or separate maintenance payments, or similar payments from an estate or trust, aren’t treated as a payment for the support of a dependent."
+- **Symptom:** as recorded in BUG-0339.
+- **Fix:** `dependent.supported` states all five rules.
+- **Fix lines:** `dependent.supported`
+- **Siblings checked:** `dependent.self_support` (the qualifying-child test; it already counts the person's own home and state support; the one-check and alimony rules bear on the qualifying-relative support split, so it is unchanged), `dependent.multiple_support`, `dependent.divorced_rule`. Generated at integration (the packages were integrated together) and covered by this round's reruns and adjudication of their forms' reviews: `dependent.qualifying_relative`.
+- **Regression predictions:** wording only.
+- **Validation:** inspection; strict citation check passes.
+- **Tags:** source-definition-debt; dependent; wording; fixed
+
+## BUG-0350 — An earlier credit disallowance refuses the whole return when no credit is claimed (T-101, `household.credit_disallowed`) — fix proposed as a patch, not applied
+
+- **Caught by:** T-101 (coverage tree build, 2026-10-31); premise checked in the person-dep pass.
+- **Source:** i1040s8812 p. 2, "you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies"; i1040gi p. 43, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error".
+- **Symptom:** `s8812.line12` and the EIC credit line refuse on `household.credit_disallowed` alone. Witness (evaluated): `stage5.return.owed` (single, no dependents, EIC Steps not passed) with the answer Yes refuses Form 1040 lines 19, 24, 27a and 37; with the gate narrowed it completes with line 24 $18,500, line 27a $0, line 37 $1,500, the values it records with the answer No.
+- **Fix (proposed):** gates `household.ctc_disallowed_claim` (the answer Yes and Schedule 8812 line 8 more than line 11, that is line 12 above zero, read without line 12 to avoid a cycle) and `household.eic_disallowed_claim` (the answer Yes and `eic.eligible`), used by the existing refusals in `s8812.yaml` and `eic.yaml`. The refusal sites are in forms this package does not own, so the change is `t101_credit_disallowed.patch` (household, s8812, eic, `tools/coverage/tree.json`, two audit fixtures and one new regression); apply after `coverage_tree_line13.patch`.
+- **Fix lines:** `household.ctc_disallowed_claim`, `household.eic_disallowed_claim`, `s8812.line12`, `eic.credit` (proposed)
+- **Siblings checked:** `household.credit_disallowed` (input, unchanged), `f8863.ban_refused` (the education-credit ban, a separate input), `s8812.line8`, `s8812.line11`, `eic.eligible`.
+- **Regression predictions:** `f2.t101.credit_disallowed_no_credit_claimed` completes with stage5.return.owed's 45 values; `audit.s8812.credit_disallowed` keeps its Schedule 8812 refusals under the new gate id and its line 27a becomes $0 (EIC not eligible there); `audit.eic.credit_disallowed` keeps its refusals under the new ids. Tested in a scratch copy of this worktree with the patch applied: 1,443/1,445 before the two audit fixtures were updated (only those two, gate ids and the line 27a narrowing), all three pass after.
+- **Validation:** scratch-copy evaluation; `tree.py --check` accepts the placements (only the generated outputs are then out of date). Not run with the patch: the other per-check scripts.
+- **Accepted over-refusal that remains:** the question pools the EIC and the child tax credits, so a filer whose only disallowance was the EIC is still refused on Schedule 8812 when claiming the child tax credit (and the reverse).
+- **Tags:** over-refusal; whole-return-screen; T-101; proposed
+- **Review correction (backlog round, before commit):** the eic adjudication found `household.eic_disallowed_claim` still refused a return whose Worksheet A line 6 is $0 (witness `classm.ssb.4`: EIC $0, Form 1040 line 34 $920, yet lines 27a to 37 refused). The gate now also requires `eic.line6` above zero; regression `f2.t101.credit_disallowed_eic_zero`, predicted from i1040gi p. 43 before evaluation (same values as the No answer), passes. Residual accepted over-refusal (low): the child tax credit gate refuses when line 12 is positive although lines 14 and 27 come to $0; tightening it on lines 14 or 27 would read lines downstream of the refused line 12.
+
+## BUG-0351 — Alimony screen omits the part of payments that must continue after the recipient's death
+
+- **Caught by:** T-124 (T-092 split; screens group4 BUG-0354-8).
+- **Source:** p504 p. 15, Liability for payments after death of recipient spouse, "If any part of payments you make must
+  continue to be made for any period after your spouse’s death, that part of your payments isn’t alimony" and "If you
+  must make any payments in cash or property after your spouse’s death as a substitute for continuing otherwise
+  qualifying payments before the death, the otherwise qualifying payments aren’t alimony".
+- **Symptom:** `s1.alimony_unsupported` listed child support and payments for a home as non-alimony parts, but not a
+  part that must continue after the recipient's death (or that a post-death payment substitutes for). A filer with such
+  a part answered No and entered the whole payment, so Schedule 1 line 2a (or 19a) included an amount that isn't
+  alimony. Source and question inspection; not reproduced on a return.
+- **Fix:** the screen adds payments of which any part must continue, in cash or property, after the recipient spouse's
+  death (even if the instrument does not say so, for example under state law), and payments for which a payment due
+  after the death is a substitute. Wording of an existing screen whose Yes already refuses at `s1.alimony_refused` and
+  `s1.paid_refused`; the refusal texts are unchanged.
+- **Fix lines:** `s1.alimony_unsupported`
+- **Siblings checked:** `s1.alimony_refused`, `s1.paid_refused`, `s1.alimony_received`, `s1.alimony_paid`,
+  `s1.line2a`, `s1.line19a`, `s1.line19b_notice`.
+- **Regression predictions:** no evaluated value changes; no fixture added (the new item is a new item of a screen whose
+  Yes already refuses; stage16 alimony refusal fixtures cover the refusal).
+- **Validation:** source inspection; fixtures 1,442 of 1,447 (the 5 failures are the T-131 class M cases, BUG-0355).
+- **Tags:** source-definition-debt; wording; existing-form-pass; fixed
+
+## BUG-0352 — Unemployment screen's "employer-paid tax" carve-out could exclude a self-employed filer's own payments
+
+- **Caught by:** T-125 (T-092 split; screens group4 BUG-0354-9, introduced by the BUG-0245 rewording).
+- **Source:** i1040gi p. 89, Line 7, "If you made contributions to a governmental unemployment compensation program and
+  you aren't itemizing deductions, reduce the amount you report on line 7 by those contributions."
+- **Symptom:** `s1.uc_unsupported` said "not counting employer-paid tax"; a self-employed filer who paid for elective
+  state coverage could read their own payment as employer-paid and answer No, so line 7 was computed unreduced instead
+  of refused. Question inspection; not reproduced.
+- **Fix:** the question counts "payments you made yourself, such as for coverage you elected as a self-employed person"
+  and excludes only "tax an employer paid on your wages". Wording only; the refusal is unchanged.
+- **Fix lines:** `s1.uc_unsupported`
+- **Siblings checked:** `s1.line7_figured`, `s1.has_uc`, `s1.uc_paid`, `s1.uc_repaid`.
+- **Regression predictions:** none (wording only).
+- **Validation:** source inspection.
+- **Tags:** wording; existing-form-pass; fixed
+
+## BUG-0353 — Alimony questions name only one form of a post-2018 change that applies the new rules
+
+- **Caught by:** T-126 (T-092 split; fixr3 s1 Low).
+- **Source:** p504 p. 16, Certain Rules for Instruments Executed or Modified After 2018, "if the modification expressly
+  states that the alimony isn’t deductible to the payer or includible in the income of the recipient", and Example 2, "the
+  modification expressly provided that the post-2018 alimony rules apply"; i1040gi p. 89, Line 2a.
+- **Symptom:** `s1.alimony`, `s1.alimony_received` and `s1.alimony_paid` described a change "that expressly provides that
+  alimony received isn't included in income"; a change that only adopts the post-2018 rules, or only denies the payer's
+  deduction, could be answered as not changed, and its later payments counted as income or deducted. Question inspection.
+- **Fix:** the three questions name a change after 2018 that expressly applies the post-2018 rules: one stating that the
+  post-2018 alimony rules apply, or that alimony isn't deductible by the payer or isn't included in the recipient's
+  income. Locators add the p504 p. 16 quotations. Wording only.
+- **Fix lines:** `s1.alimony`, `s1.alimony_received`, `s1.alimony_paid`
+- **Siblings checked:** `s1.alimony_unsupported`, `s1.line2a`, `s1.line19a`, the register entry for the alimony screen (its "chosen". Generated at integration (the packages were integrated together) and covered by this round's reruns and adjudication of their forms' reviews: `s1.alimony_refused`, `s1.paid_refused`.
+  text says "a change that expressly excludes them"; proposed wording follow-up for the register's owner, not edited).
+- **Regression predictions:** none (wording only).
+- **Validation:** source inspection; `citations.py --strict` 0 findings.
+- **Tags:** wording; existing-form-pass; fixed
+
+## BUG-0354 — Retirement screen over-refused survivors of retirees and full in-kind rollovers of property
+
+- **Caught by:** T-128 and T-129 (T-092 split; fixr2 retirement F1 and F2).
+- **Source:** i1040gi p. 30, Age (or Combined Ages) at Annuity Starting Date, "If you are the survivor of a retiree, use
+  the retiree’s age on their annuity starting date" and "If you are the beneficiary of an employee who died, see Pub.
+  575"; p. 30, Rollovers, "special rules that apply to ... partial rollovers of property"; p575 p. 34, Survivors of
+  retirees, "If the retiree was reporting the annuity under the Simplified Method, the part of each payment that is tax
+  free is the same as the tax-free amount figured by the retiree at the annuity starting date", and "If you receive
+  guaranteed payments as the decedent’s beneficiary under a life annuity contract"; p575 p. 23, Rollovers of property, "you
+  must either roll over the actual property distributed or sell it and roll over the proceeds" and "If you roll over only
+  part of the proceeds, you are taxed on the part you keep"; p575 p. 12, Exclusion limited to cost.
+- **Symptom:** `retirement.special` refused "an annuity you receive as the beneficiary of an employee who died", which a
+  survivor under a retiree's joint and survivor annuity answers Yes, though i1040gi computes it on the worksheet with
+  the retiree's age; and "a rollover of property other than cash", which refuses a rollover of all of the same property,
+  computed by the ordinary line 5a/5b subtraction. Over-refusals; no wrong amount.
+- **Fix:** `retirement.special` now refuses the beneficiary of an employee who died before retiring, guaranteed payments
+  as a retiree's beneficiary under a life annuity contract, and an annuity shared among more than one beneficiary, and
+  says a survivor annuity under a retiree's joint and survivor annuity is not one of these; and refuses a property
+  rollover only when the property was sold and the proceeds rolled over, or only part of the property was rolled over.
+  The worksheet questions tell a survivor of a retiree to answer for the retiree's annuity: `retirement.annuity`
+  (starting date and the retiree's age), `retirement.cost` (the retiree's cost), `retirement.used_last_year` and
+  `retirement.last_line4` (the retiree's worksheet), `retirement.joint_life` and `retirement.combined_age` (the retiree's
+  and the survivor's lives and ages), `retirement.recovered` (including the retiree's recovery). No expression changed.
+  Pub. 575 (2025) is archived as `sources/2025/p575` for these citations.
+- **Fix lines:** `retirement.special`, `retirement.annuity`, `retirement.cost`, `retirement.used_last_year`,
+  `retirement.last_line4`, `retirement.joint_life`, `retirement.combined_age`, `retirement.recovered`
+- **Siblings checked:** `retirement.rolled`, `retirement.taxable`, `retirement.amount_a`, `retirement.age` (already. Generated at integration (the packages were integrated together) and covered by this round's reruns and adjudication of their forms' reviews: `retirement.annuity_rollover`, `retirement.annuity_with_cost`, `retirement.plan_taxable`, `retirement.show_a`, `retirement.smw2`, `retirement.smw4`.
+  stated the survivor's age rule), `retirement.annuity_rollover` (still refuses any rollover of a Simplified Method
+  annuity), `retirement.rollover`, `retirement.smw4` to `smw11`, `retirement.plan_taxable`, `retirement.show_a`.
+- **Regression predictions:** written from the sources before the evaluator ran; both matched.
+  `stage10.smw.survivor_of_retiree`: retiree's annuity from January 1, 2018, joint lives at 65 and 65, cost $31,000, last
+  year's line 4 $100, $8,400 recovered by the retiree; survivor receives $600 a month for 12 months (code 4). Lines 4
+  $100, 5 $1,200, 10 $9,600, 11 $21,400; Form 1040 line 5a $7,200, line 5b $6,000.
+  `stage10.plan.property_rollover_full`: $20,000 of nonemployer stock, code 7, all of it rolled over in kind. Line 5a
+  $20,000, line 5b $0, line 5c box 1 checked, line 4c unchecked. An independent GPT-6 Astra reading of both predictions
+  agreed (`research/audits/income/receipts/astra_t128_t129.*`).
+- **Validation:** fixtures (both new cases pass); `citations.py --strict` 0 findings; consumer and limit verdicts proposed
+  (`consumers_proposed.json`).
+- **Tags:** over-refusal; wording; existing-form-pass; fixed
+- **Review correction (backlog round, before commit):** the retirement adjudication found the narrowed screen no longer refused a survivor whose retiree's annuity started before November 19, 1996 (the item did not say to answer for the retiree's starting date, while the worksheet questions now do); the item now says so (i1040gi p. 30). It also names keeping the property and rolling over cash or other property instead (p575 p. 23).
+
+## BUG-0355 — `sales.wash_loss` accepted a code W amount larger than the loss
+
+- **Caught by:** T-131 (T-092 split; fixr2 sales O1; class M classm.s3.2, where $449 was added to a gain). Owner's
+  decision 2026-11-01: refuse as an entry error.
+- **Source:** i8949 p. 10, code W, "You have a nondeductible loss from a wash sale" and "enter the amount of the
+  nondeductible loss as a positive number in column (g)"; p550 p. 86, Wash Sales, "A wash sale occurs when you sell or
+  trade stock or securities at a loss".
+- **Symptom:** with code W, column (g) took the entered wash-sale loss whatever the loss on the sale, so an amount larger
+  than the loss (or any amount on a gain) raised column (h) above zero, adding a gain. Not re-run on the old tree: by
+  the arithmetic of `sales.h`, proceeds $1,000, basis $1,200 and wash $449 give column (h) +$249; the class M case
+  classm.s3.2 recorded the gain form of it (a $449 wash amount on a sale at a gain).
+- **Fix:** new helper `sales.wash_over` (columns (d) less (e), plus the code B correction, plus the entered wash-sale
+  loss) and gate `sales.wash_bad` (code W, wash-sale loss above zero and `sales.wash_over` above zero), refusing at
+  `sales.w` as an entry error; `sales.wash_loss` states the limit. The gate is placed in `tools/coverage/tree.json`
+  (sales, entry). `engine/src/generate.ts` keeps a valid generated sale's wash-sale loss within the loss (invalid entries
+  keep the raw amount, so the gate is exercised); this consumes no extra randomness.
+- **Fix lines:** `sales.wash_loss`, `sales.wash_over`, `sales.wash_bad`, `sales.w`
+- **Siblings checked:** `sales.has_w`, `sales.b`, `sales.e`, `sales.g`, `sales.h`, `sales.bad_code` (box C/F code B),. Generated at integration (the packages were integrated together) and covered by this round's reruns and adjudication of their forms' reviews: `sales.w`, `sales.wash_bad`, `sales.wash_over`.
+  `sales.bad_aggregate` (aggregate route has no codes), `tools/engines/generate_cases.py` (already draws wash within the
+  loss), `engine/src/generate.ts`.
+- **Regression predictions:** written before the evaluator ran; all three matched. `sales.refuse.wash_over_loss`
+  (proceeds $1,000, basis $1,200, wash $449) refuses at `sales[a].w` and Form 1040 line 7a with gate
+  `sales[a].wash_bad`; `sales.adjust.A.W.equal_loss` (wash $200 equal to the loss) gives column (g) $200, column (h) $0,
+  line 7a $0; `sales.adjust.D.BW.wash_within_corrected_loss` (box D, BW, proceeds $6,000, reported basis $7,000, correct
+  basis $8,000, wash $1,500) gives column (g) $500, column (h) -$500, line 7a -$500 (the B correction counts toward the
+  loss).
+- **Regressions introduced (open until the class M reruns):** five recorded class M cases carry generated wash-sale
+  amounts larger than the loss and now refuse: `classm.s3.2`, `classm.s3.2.deepseek`, `classm.qdcg.3`, `classm.tcw.14`,
+  `classm.sa.2`. They need class M reruns of s3 (Claude and DeepSeek), qdcg, tcw and sa, which rebuild jobs from the
+  corrected generator; sales class M is stale anyway.
+- **Validation:** fixtures 1,442/1,447 (the five above); refusal reach 0 exceptions; coverage tree 196 gates placed;
+  integration 806 passed.
+- **Tags:** amount-affecting; entry-error gate; existing-form-pass; fixed (class M reruns pending)
+
+## BUG-0356 — `sales.special` did not name collectibles held through an entity
+
+- **Caught by:** T-130 (T-092 split; screens group4 BUG-0354-10).
+- **Source:** i1040sd p. 11, line 18, "Include on the worksheet any gain (but not loss) from the sale or exchange of an
+  interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation
+  of collectibles"; p. 12, line 19, "You reported a long-term capital gain from the sale or exchange of an interest in a
+  partnership that owned section 1250 property".
+- **Symptom:** "an interest in a partnership, S corporation or trust holding such property" could be read as section
+  1250 property only, so stock of an S corporation holding appreciated collectibles was answered No and its 28% gain
+  taxed at 15 or 20%. Question inspection.
+- **Fix:** the question names "an interest in a partnership, S corporation or trust (including S corporation stock) that
+  holds collectibles or section 1250 property, such as stock of an S corporation that owns art or gold worth more than its
+  cost"; the locator adds the p. 12 quotation. Wording only.
+- **Fix lines:** `sales.special`
+- **Siblings checked:** `sales.one` (refuses on Yes), `sales.aggregate_eligible` ("no collectibles"), `g28.line1` and `g28.line4`,
+  `sd.other_forms` (K-1 capital gains already refused).
+- **Regression predictions:** none (wording; `sales.refuse.special` covers the refusal).
+- **Validation:** source inspection. The refusal remedy still says "Direct sales of collectibles, section 1202 stock and
+  section 1250 property are unsupported"; left unchanged because stage3 fixtures quote it 35 times (low, for the next sales
+  change).
+- **Tags:** wording; existing-form-pass; fixed
+
+## BUG-0357 — `sd.filed` cited doc f1040sd for an i1040gi quotation
+
+- **Caught by:** T-141 (TASKS verification, from T-076 (4)).
+- **Source:** i1040gi p. 31, Line 7a.
+- **Symptom:** the citation named doc f1040sd with an "i1040gi p. 31" locator; the cited document was wrong.
+- **Fix:** doc i1040gi, locator "p. 31, Line 7a, ..." with the same three quotations (checked on p. 31).
+- **Fix lines:** `sd.filed`
+- **Siblings checked:** no further check needed (citation only). Generated at integration (the packages were integrated together) and covered by this round's reruns and adjudication of their forms' reviews: `f1040.gate.qdcg_applies`, `qdcg.schedule_d_filed`.
+- **Regression predictions:** none.
+- **Validation:** `citations.py --strict` 0 findings.
+- **Tags:** citation; fixed
+
+## BUG-0358 — The Part II joint-occupancy question asked about "the home" only
+
+- **Caught by:** the standing screen review, group4 finding 2 (BUG-0361-2, UNCLEAR, low); T-132.
+- **Source:** i5695 p. 3, Section B—Residential Energy Property Expenditures, "installed on or in connection with a
+  home that you used during 2025"; p. 3, Joint occupancy, "If you occupied your home jointly with someone, each occupant
+  must complete their own Form 5695"; p. 6, Lines 21a Through 21c, "Enter the full address of each home where you
+  installed qualified energy property".
+- **Symptom:** `f5695.joint_occupancy` asked "Did you occupy the home jointly...". A filer who lives alone in the main
+  home and has a heat pump at a second home shared with a sibling could read "the home" as the main home and answer No.
+  Line 30 then took the full $2,000 heat pump limit where only the allocable share applies (credit overstated).
+- **Fix:** the question and its label ask about any home for which Part II costs are entered. They say this includes
+  any other home where qualified energy property is installed (a second home or a home you rent) and that sharing any
+  one of them is a Yes. The cite adds the two quotes above. The wording follows `f5695.line21a`, which already says the
+  home "may be a second home or a home you rent". Wording only.
+- **Fix lines:** `f5695.joint_occupancy`
+- **Siblings checked:** `f5695.line30`, `f5695.line32a`, `f5695.line21a`, `f5695.qmid_ac`, `f5695.qmid_enabling`,
+  `f5695.qmid_furnace`, `f5695.qmid_hp`, `f5695.qmid_wh` (generated by `siblings.py`. The qmid questions share the
+  p. 3 and p. 6 anchors and ask nothing about which home.)
+- **Regression predictions:** no evaluated value changes. Refusal on Yes is unchanged (`f5695.line30`, gate
+  `f5695.joint_occupancy`).
+- **Validation:** fixtures 1,446/1,446 (see REPORT.md). The integrator reruns the f5695 screen review
+  (`check_screens.py` marks `f5695.joint_occupancy` stale) and the f5695 render review.
+- **Tags:** question-wording; amount-affecting; caught-by-screen-review; fixed
+
+## BUG-0359 — Form 5695 lines 32 and 32a read the Part II screens on a return with no Part II
+
+- **Caught by:** T-081 (3), recorded as T-145.
+- **Source:** Form 5695 (2025), line 32; i5695 p. 7, Lines 32a and 32b, "Joint occupants of a home who are claiming the
+  energy efficient home improvement credit must check the box on line 32a".
+- **Symptom:** with `f5695.part2_any` No, the return was right, because `s3.line5b` already guarded its read of line
+  32. But printed line 32 read line 30, whose refusals read `f5695.business_use`, `f5695.joint_occupancy` and the other
+  Part II screens, and line 32a read `f5695.joint_occupancy` directly. Line 32b already had the guard. **Evaluated** on
+  `stage15.f8880.s1` (no Part II, Part II screens unanswered): line 32 was UNKNOWN (no input for
+  `f5695.business_use`) and line 32a was UNKNOWN (no input for `f5695.joint_occupancy`). Partial-input triage therefore
+  counted unknowns that the form does not need.
+- **Fix:** new helper `f5695.eehi_credit` (the smaller of lines 30 and 31). Line 32 becomes a choose on
+  `f5695.part2_any`: Yes gives the helper, No gives zero. Line 32a tests `f5695.part2_any` and
+  `f5695.joint_occupancy` together, as line 32b does.
+- **Fix lines:** `f5695.line32`, `f5695.line32a`, `f5695.eehi_credit`, `f5695.zero` (locator only)
+- **Siblings checked:** `f5695.line32b`, `f5695.condo`, `f5695.line30`, `s3.line5b`. Generated at integration (the packages were integrated together) and covered by this round's reruns and adjudication of their forms' reviews: `f5695.line11`, `f5695.line18b`, `f5695.line19h`, `f5695.line20d`, `f5695.line22d`, `f5695.line23d`, `f5695.line24d`, `f5695.line25e`, `f5695.line26c`, `f5695.line29h`, `f5695.line32`, `f5695.line32a`, `f5695.line5b`.
+- **Regression predictions:** `stage15.f5695.no_part2` (stage15.f8880.s1 inputs) predicts `f5695.line32` $0,
+  `f5695.line32a` false and `s3.line5b` $0 from the form (Part II not completed, no credit claimed, box unchecked).
+  It was written before the evaluator was run and matched. No existing fixture changed value.
+- **Validation:** fixtures 1,446/1,446. The integrator reruns the f5695 transcription, render and class M reviews
+  (line 32's expression changed).
+- **Tags:** triage-unknowns; existing-form-pass; fixed
+
+## BUG-0360 — The Net Investment Income Tax screen did not name section 404(k) ESOP dividends
+
+- **Caught by:** the standing screen review, group4 finding 3 (BUG-0361-3, NARROW, low); T-133.
+- **Source:** i8960 p. 7, Line 2—Ordinary Dividends, "If line 2 includes dividends from employer securities held in an
+  employee stock ownership plan (ESOP) that are deductible under section 404(k) ... include those amounts as negative
+  modifications on line 7"; i8960 p. 13, Line 7—Other Modifications to Investment Income, "Section 404(k) dividends
+  reported on line 2 (enter as a negative amount)"; i1099div p. 4, Box 1a, "Include reinvested dividends and section
+  404(k) dividends paid directly from the corporation".
+- **Symptom:** section 404(k) dividends paid directly to a participant are in Form 1099-DIV box 1a and so on Form 8960
+  line 2. No screen named them; only the catch-all "another net investment income adjustment" covered them. A filer who
+  did not know they were an adjustment answered No, and the tax was overstated by 3.8% of the dividends.
+- **Fix:** `f8960.unsupported` names "section 404(k) dividends on employer securities held in an employee stock
+  ownership plan (ESOP) and paid directly to you (Form 1099-DIV box 1a)". The cite adds the three quotes. Wording only:
+  the existing refusal on Yes is unchanged.
+- **Fix lines:** `f8960.unsupported`
+- **Siblings checked:** `f8960.line1`, `f8960.line3`, `f8960.line4a`, `f8960.line4b`, `f8960.line5b`, `f8960.line5c`,. Generated at integration (the packages were integrated together) and covered by this round's reruns and adjudication of their forms' reviews: `f8960.line10`, `f8960.line13`, `f8960.line6`, `f8960.line7`, `f8960.line9c`.
+  `f8960.line6`, `f8960.line7`, `f8960.line9c`, `f8960.line10`, `f8960.line13`
+- **Regression predictions:** no evaluated value changes (a new item in a screen that already refuses on Yes).
+- **Validation:** fixtures 1,446/1,446. `check_consumers.py` now reports `consumer:f8960.unsupported@i8960:p13` stale (the
+  question cites that page itself); remove it (consumers_proposed.json). The integrator reruns the f8960 screen review.
+- **Tags:** scope-screen-narrower-than-line; amount-affecting; caught-by-screen-review; fixed
+
+## BUG-0361 — "Publicly traded securities" was undefined in the noncash gift questions
+
+- **Caught by:** the standing screen review, group4 finding 0 on `gift.special` (BUG-0361-5, NARROW, low); T-136.
+- **Source:** i8283 p. 9, Securities, "A security is generally considered to be publicly traded if the security is (a)
+  listed on a recognized stock exchange whose quotations are published daily; (b) regularly traded on a national or
+  regional over-the-counter market; or (c) quoted daily in a national newspaper of general circulation in the case of
+  mutual fund shares", and "Nonpublicly traded securities may include, but are not limited to, privately held stock".
+- **Symptom:** take a $12,000 gift of stock that has a ticker symbol but is not regularly traded. The filer could
+  answer No to `gift.special` (the publicly traded exception) and Yes to `gift.public_securities`, which had no
+  definition. Then `gift.section_b` was false and `gift.allowed` passed $12,000 with no Section B and no qualified
+  appraisal.
+- **Fix:** `gift.public_securities` states the three-part p. 9 definition. It tells the filer to answer No for
+  privately held stock, LLC or partnership interests, and stock that has a ticker but is not regularly traded.
+  `gift.special` restates the definition in its exception. Both cites add the p. 9 quote. Wording only.
+- **Fix lines:** `gift.public_securities`, `gift.special`
+- **Siblings checked:** `gift.section_b`, `gift.allowed`, `gift.deduction`
+- **Regression predictions:** no evaluated value changes.
+- **Validation:** fixtures 1,446/1,446. Citing i8283 p. 9 brings two items onto the checks' worklists. The first is
+  the vehicle sentence there (`limit:i8283:p9:ab5bbab4`, proposed as enforced by `gift.special` in
+  limits_proposed.json). The second is the baseline consumer pair `consumer:gift.public_securities@f8283:p1`, proposed
+  "same" in consumers_proposed.json. The integrator reruns the gift screen review and the gift render review.
+- **Tags:** source-definition-debt; amount-affecting; caught-by-screen-review; fixed
+- **Review correction (backlog round, before commit):** the gift adjudication found the new wording narrower than i8283 p. 9 ("counts only if", and "a ticker symbol but is not regularly traded" would send a listed but thinly traded stock to the Section B refusal); it now says "is generally publicly traded if" and limits the No case to stock neither listed nor regularly traded over the counter. Over-refusal only; no value could change.
+
+## BUG-0362 — The 2024 refund screen did not ask about 2024 tax paid before 2024
+
+- **Caught by:** the standing screen review, group4 finding 0 on `refund.not_2024` (BUG-0361-7, NARROW, very low);
+  T-137. A residual of BUG-0230.
+- **Source:** p525 p. 24, Recovery for 2 or more years, "If you receive a refund or other recovery that is for amounts
+  you paid in 2 or more separate years, you must allocate, on a pro rata basis, the recovered amount between the years in
+  which you paid it" (already cited by the question).
+- **Symptom:** take a 2024 estimated payment made in December 2023, which was deductible on the 2023 return. The filer
+  answered No, and the worksheet treated the whole 2024 refund as a recovery of tax paid in 2024.
+- **Fix:** the question and label add "or before 2024 (for example a 2024 estimated payment made in December 2023)".
+  The `refund.taxable` refusal text adds "or before 2024". The four `stage16` fixtures that record that remedy text
+  follow the new wording. No expression changed.
+- **Fix lines:** `refund.not_2024`, `refund.taxable` (refusal text)
+- **Siblings checked:** `refund.box8`, `refund.exc_tax`, `refund.exc_who`, `refund.received`. Generated at integration (the packages were integrated together) and covered by this round's reruns and adjudication of their forms' reviews: `refund.taxable`.
+- **Regression predictions:** no evaluated value changes. The 4 recorded `refund.not_2024` refusals in
+  `fixtures/2025/stage16.json` keep their gate, and only the remedy text changes.
+- **Validation:** fixtures 1,446/1,446. A GPT-6 Astra second reading (receipts/) agreed for mixed 2023 and 2024
+  payments. It noted that a refund wholly of 2023-paid tax is not a multi-year allocation. That case is still not a
+  plain 2024 recovery: the TIP turns on "the year you paid the tax". So the refusal stays, as an accepted over-refusal at
+  worst. The integrator reruns the refund screen review. `amb.2025.refund_exceptions` names items 1 and 5 only; its
+  text could note the pre-2024 case (not edited here).
+- **Tags:** scope-screen-narrower-than-line; amount-affecting; caught-by-screen-review; fixed
+
+## BUG-0363 — Form 4952's screens refused whole returns that do not use Form 4952
+
+- **Caught by:** the coverage tree build (`tools/coverage/tree.py`), T-101 (the f4952 part).
+- **Source:** f4952 p. 3, Who Must File, "you must file Form 4952 to claim a deduction for your investment interest
+  expense" and "Exception. You don’t have to file Form 4952 if all of the following apply"; p. 4, Line 4g, "To make the
+  election, enter on line 4g the amount you elect to include in investment income"; p. 4, Note, "you can treat less of
+  the amount on line 4e as attributable to line 4g".
+- **Symptom:** **Evaluated** on `stage5.return.refund` (standard deduction, Form 4952 line 1 $0, no carryforward, line 4g
+  $0). With `f4952.unsupported` Yes, Form 1040 lines 12e and 24 to 37 were REFUSED; `f4952.alternative_allocation` Yes did
+  the same. The refusals sat on `f4952.line2`, `f4952.election`, `f4952.line5` and `f4952.required`, and those lines were
+  read on every return: through `sa.line9` (Schedule A is figured for the standard-or-itemized comparison),
+  `sd.filing4952` and `sd.investment_election`. `f4952.unsupported` asks about any business, royalty or passive
+  interest. So a Schedule C filer with business loan interest and no investment interest would truthfully answer Yes
+  and be refused.
+- **Fix:**
+  - New helper `f4952.used`: line 4g above zero (new helper `f4952.has_election`), a 2024 carryforward, or line 1 above
+    zero.
+  - `f4952.line8` is a choose on `f4952.used` (new helper `f4952.deduction` holds the smaller of lines 3 and 6).
+  - `f4952.required` is `f4952.used` and `f4952.required_test`, the former expression with its refusals.
+  - `f4952.election` is a choose on `f4952.has_election` (new helper `f4952.election_checked` holds the former copy of
+    line 4g with its three refusals).
+
+  No gate id, input or refusal declaration changed, so `tree.py --check` still places every gate. With no investment
+  interest, no carryforward and no election, the screens are not reached and lines 8, 4g (as elected) and the filing
+  test are zero or false.
+- **Fix lines:** `f4952.used`, `f4952.has_election`, `f4952.election`, `f4952.election_checked`, `f4952.line8`,
+  `f4952.deduction`, `f4952.required`, `f4952.required_test`
+- **Siblings checked:** `f4952.alternative_allocation`, `f4952.bad_dividends`, `f4952.bad_election`,
+  `f4952.election_limit`, `f4952.exception`, `f4952.line1`, `f4952.line2`, `f4952.line3`, `f4952.line4a`,
+  `f4952.line4b`, `f4952.line4c`, `f4952.line4d`, `f4952.line4e`, `f4952.line4f`, `f4952.line4g`, `f4952.line4h`,
+  `f4952.line5`, `f4952.line6`, `f4952.line7`, `f4952.unsupported`, `f4952.zero`, `sa.line9`, `sd.filing4952`,
+  `sd.investment_election`
+- **Regression predictions:** written from the source before the evaluator was run; all matched.
+  - New `stage4.f4952.unused_unsupported` and `stage4.f4952.unused_alternative_allocation` (stage4.base with one screen
+    Yes): every stage4.base value unchanged, `f4952.line8` $0, `f4952.election` $0, `f4952.required` false.
+  - New `stage5.return.refund_f4952_screens_unused` (both screens Yes): every Form 1040 value of stage5.return.refund
+    unchanged, `f4952.line8` $0.
+  - Existing fixtures changed: `stage4.refuse.4952.unsupported`, `.alternative_allocation` and `.bad_dividends` had line
+    1 $0, so they tested the over-refusal. They now carry $1,000 of investment interest and still refuse with the same
+    gates. In those two cases and in `.unsupported_with_carryover` (line 4g $0), `f4952.election` is now $0 instead of
+    REFUSED, because the election helper is screened only when an election is entered. The refusal stays on lines 2, 5
+    and 8.
+  - `bad_dividends` with no Form 4952 is still refused on the return by `div.bad_components`.
+- **Validation:** fixtures 1,446/1,446; adapter contracts pass (f4952: 19 cases); refusal reach 323 checked, 0
+  exceptions. A GPT-6 Astra second reading agreed (receipts/). The integrator reruns the f4952 transcription, render
+  and class M reviews and the f4952 screen reviews (`check_screens.py` lists both screens' rulings as stale).
+- **Tags:** over-refusal; scope-screen-wider-than-use; existing-form-pass; fixed
+
+## BUG-0364 — A covered month with zero in column (b) completed with the month's credit lost (owner decision C1)
+
+- **Caught by:** the C-backlog reproduction of BUG-0298 (T-165), carried to T-180 by owner decision C1, 2026-11-02.
+- **Source:** p974 p. 6, "To qualify for a monthly credit amount, at least one individual in your tax family must be enrolled in a qualified health plan on the first day of that month.", "The applicable SLCSP premium is the second lowest cost silver plan premium offered through the Marketplace where you reside that applies to your coverage family", "may report your applicable SLCSP premium as -0-", "In either case, you must determine your correct applicable SLCSP premium."; i8962 p. 16, Column (b), "Enter on lines 12 through 23, column (b), the amount of the monthly applicable SLCSP premium reported on Form 1095-A, lines 21 through 32, column B, for the corresponding month"; i8962 p. 17, "credit amount because your enrollment premiums for the month were unpaid, enter -0- on the appropriate line on Form 8962, column (b)".
+- **Symptom:** a month with enrollment premiums in column (a) and zero in column (b) completed with no credit for that month. C-backlog witness: one Form 1095-A, January to June, column A $500, B $450, C $300; March column B entered as 0 gave line 24 $1,485 against $1,782. Pub. 974 (archived) was searched for a legitimate covered month with column A above zero and column B zero. The only one in Pub. 974 and i8962 is a month whose premiums were unpaid (i8962 p. 17), and `f8962.other` already refuses it. Every other case where column B is zero is refused by its own gate: other coverage (an empty coverage family), allocation, the year of marriage, QSEHRA, and a person who is not lawfully present. The other zero is the "-0-" that a Marketplace reports when no APTC was paid, and the filer must replace it with the correct premium.
+- **Fix:** new helper `f8962.b_zero`: an applicable taxpayer (`f8962.show_applicable`) with any month of lines 12 to 23 where column (a) is above 0 and column (b) is 0. The uniform route is covered because its monthly lines carry `mo_a`/`mo_b`. The helper is folded into the existing computed gate `f8962.two_counted` (any of the old test or `b_zero`), so the coverage tree's gate placement does not change. The gate's label, the line 24/25 refusal remedy and the refusal cite name the zero column (b) case, and the form note lists it.
+- **Fix lines:** `f8962.b_zero`, `f8962.two_counted`, `f8962.line24`, `f8962.line25`
+- **Siblings checked:** `f8962.same_state_counted`, `f1095a.b_counted`, `f1095a.b_used`, `f1095a.b_jan` to `f1095a.b_dec`, `f1095a.in_b_jan` to `f1095a.in_b_dec`, `f1095a.mo_b`, `f8962.line11a`, `f8962.line11b`, `f8962.line12a` to `f8962.line23b`, `f8962.other`; also generated, covered by the rerun reviews of their forms: `f1095a.a_jan` to `f1095a.a_dec`, `f1095a.in_a_jan` to `f1095a.in_a_dec`, `f1095a.mo_a`, `f1095a.c_total`, `f8962.aptc_total`. Generated at integration (the packages were integrated together) and covered by this round's reruns and adjudication of their forms' reviews: `f8962.line24`, `f8962.line25`, `f8962.line9`, `f8962.two_counted`.
+- **Regression predictions:** written before evaluation. `stage18.refuse.b_zero_monthly` (the `stage18.blind.p10` inputs with March column B 0) refuses at `f8962.line24` and `f8962.line25` with gate `f8962.two_counted`. `stage18.refuse.b_zero_uniform` (the `stage18.blind.p1` inputs with `mo_b` 0, line 11 route) refuses the same way. Both matched, and `s3.line9` also refuses. `stage18.refuse.two_counted_same_state` keeps its gate and lines. Only its recorded remedy and cite text were updated to the new wording. No other fixture changed. Fixtures 1,444/1,444.
+- **Validation:** source inspection of Pub. 974 and i8962. A GPT-6 Astra second reading (receipts/c1_astra_*.txt) found no legitimate case described. It noted that the text does not prove no such case exists. Any case it missed would be refused, not miscomputed.
+- **Tags:** premium-tax-credit; amount-affecting; refusal; fixed
+
+## BUG-0365 — BUG-0321 is settled: Schedule A line 1 takes Marketplace premiums less the credit allowed, not less the advance payments
+
+- **Caught by:** T-180 (BUG-0321's open question on a net premium tax credit), reading Pub. 502.
+- **Source:** p502 p. 12, Premium Tax Credit, "You can’t include in medical expenses the amount of health insurance premiums paid by or through the premium tax credit", "You also can’t include in medical expenses any amount of advance payments of the premium tax credit made that you did not have to pay back", "However, any amount of advance payments of the premium tax credit that you did have to pay back can be included in medical expenses", Example 1, "You are treated as paying $5,100 ($8,700 less the allowed premium tax credit of $3,600)"; i8962 p. 2, "You cannot deduct the portion of your health insurance premium on your tax return that is paid for by the PTC or APTC (after you determine how much of any excess APTC you must repay)"; i1040sca p. 2, "fill out Form 8962 before filling out Schedule A, line 1".
+- **Symptom:** the BUG-0321 wording told the filer to "leave out premiums paid by advance payments of the premium tax credit". That is right only when the credit allowed equals the advance payments. On Pub. 502's own examples it gave $4,500 where the rule gives $5,100 when excess advance payments are repaid (Example 1), and $4,500 where the rule gives $3,800 when a net credit is claimed (Example 2). Line 1 is a supplied amount, so the error passes into line 4 whenever medical expenses exceed 7.5% of AGI. Not reproduced by evaluation, because the defect is in the wording.
+- **Fix:** wording only (owner decision 2026-11-02: not a computed split). For Marketplace coverage, `sa.line1` now takes the total premiums (including the part paid by advance payments), minus the credit allowed on Form 8962 line 24, minus any excess advance payments not repaid because of the repayment limit (line 27 minus line 29). Advance payments that are repaid count as premiums paid. Checked against both Pub. 502 examples (8,700 − 3,600 − 0 = 5,100; 8,700 − 4,900 = 3,800) and against a capped-repayment case. The self-employed health insurance with premium tax credit case stays refused by `sc.hi_screen` (Pub. 974 iterative method).
+- **Fix lines:** `sa.line1`
+- **Siblings checked:** `sa.line4`, `sa.agi_floor`, `f8962.line24`, `f8962.line27`, `f8962.line29`, `s1.line17`, `sc.hi_screen`
+- **Regression predictions:** wording only. No expression changed and no fixture value moves.
+- **Validation:** source inspection; arithmetic on the two Pub. 502 examples.
+- **Tags:** source-definition-debt; wording; schedule-a; premium-tax-credit; cross-form; fixed
+
+## BUG-0366 — BUG-0327 is closed: three of its four parts were already refused; the corrected-SLCSP situations are stated
+
+- **Caught by:** BUG-0327, recorded open (T-180). This entry closes it because the inventory is append-only.
+- **Source:** i8962 p. 14, "If the correct applicable SLCSP premium is not the same for every month of 2025, check “No”"; p. 15, "Examples of changes in circumstances that may affect your applicable SLCSP premium include the following", "You moved during 2025", "If any of the above apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected".
+- **Symptom (premise check):** The `f8962.other` question already asks whether "someone enrolled in a Marketplace policy was not lawfully present" and whether "any part of a month's premium was not paid by the due date of your return", and it refuses both. So the not-lawfully-present part, the unpaid-share part and the partial-payment part of BUG-0327 are refused, not missed. A partial payment that kept coverage in force is refused, an over-refusal already accepted in the `f8962.other` ruling. What remained was the list of situations that make column B wrong. The questions said only "blank, wrong, or zero".
+- **Fix:** wording only. The `f1095a.uniform` question now says to answer no if the correct column B is not the same every month. It lists the i8962 p. 15 changes in circumstances, and the no-APTC case, that make column B wrong for the months affected. The twelve `f1095a.in_b_<month>` questions and `f1095a.mo_b` add "for example after a move or a change in your tax or coverage family that you did not report to the Marketplace". The shared cites (`f1095a.months`/`f1095a.uniform`; the column B lines) add the p. 14 and p. 15 sentences. BUG-0364 catches a zero that remains.
+- **Fix lines:** `f1095a.uniform`, `f1095a.in_b_jan` through `f1095a.in_b_dec`, `f1095a.mo_b`
+- **Siblings checked:** `f1095a.months`, `f1095a.b_jan` to `f1095a.b_dec` (share the column B cite), `f1095a.b_counted`, `f8962.line10`, `f8962.nonuniform`, `f8962.show_annual`, `f8962.other`; also generated, covered by the rerun reviews of their forms: `f1095a.line33a`, `f1095a.line33b`, `f1095a.line33c`, `f1095a.yr_b_monthly`, `f1095a.yr_b_uniform`. Generated at integration (the packages were integrated together) and covered by this round's reruns and adjudication of their forms' reviews: `f1095a.a_apr`, `f1095a.a_aug`, `f1095a.a_dec`, `f1095a.a_feb`, `f1095a.a_jan`, `f1095a.a_jul`, `f1095a.a_jun`, `f1095a.a_mar`, `f1095a.a_may`, `f1095a.a_nov`, `f1095a.a_oct`, `f1095a.a_sep`, `f1095a.b_apr`, `f1095a.b_aug`, `f1095a.b_feb`, `f1095a.b_jul`, `f1095a.b_jun`, `f1095a.b_mar`, `f1095a.b_may`, `f1095a.b_nov`, `f1095a.b_oct`, `f1095a.b_sep`.
+- **Regression predictions:** wording only. No expression changed and fixtures pass unchanged.
+- **Validation:** source and implementation inspection.
+- **Tags:** source-definition-debt; wording; premium-tax-credit; fixed
+
+## BUG-0367 — BUG-0326, Schedule A part: whose medical expenses count and the line 5a to 5c rules are stated
+
+- **Caught by:** BUG-0326 (the sa completeness claims sa#1 to sa#4), recorded open (T-183). This entry closes its Schedule A part. The sc, scveh and asset parts stay open.
+- **Source:** i1040sca p. 2, "You can include medical and dental bills you paid in 2025 for anyone who was one of the following either when the services were provided or when you paid for them", "Your child whom you don't claim as a dependent because of the rules for children of divorced or separated parents", "Any person you could have claimed as a dependent on your return except that person received $5,200 or more of gross income or filed a joint return", "You can't deduct any premiums attributable to this individual unless", "However, if you had family coverage when you added this individual to your policy and your premiums didn't increase", "If you received a reimbursement in 2025 for prior year medical or dental expenses, don't reduce your 2025 expenses by this amount", "(cafeteria plan) unless the premiums are included in box 1 of your Form(s) W-2"; p. 3, Line 5a (withholding deducted elsewhere, estimated payments, "Don't include penalties or interest.", the mandatory disability, unemployment and family leave fund contributions, refunds not reducing, the state-tax-credit safe harbor); p. 6, Line 5b (business use, uniform general-purpose levies, foreign taxes, service charges, improvement assessments and the maintenance exception, escrow, tax charged to the buyer, refunds and rebates); p. 6, Line 5c ("based on value alone and were imposed on a yearly basis", the car-fee example); p. 7, "Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025".
+- **Symptom:** as recorded in BUG-0326 for Schedule A.
+- **Fix:** wording only.
+  - `sa.line1` names whose expenses count and leaves out premiums for a nondependent on the policy (except with family coverage whose premiums did not increase). It also leaves out amounts paid by a cafeteria plan unless included in W-2 box 1, and says a 2025 reimbursement of an earlier year's expenses does not reduce 2025 expenses.
+  - `sa.line5a` states the payments that count, excludes penalties and interest, and includes the mandatory fund contributions. It says refunds do not reduce the amount, and it states the state-tax-credit safe harbor.
+  - `sa.line5b` states the business-use, uniform-levy and general-purpose tests. It also states the foreign tax, service charge and improvement exclusions (and the maintenance exception), the escrow rule, tax charged to the buyer, and the refund rules.
+  - `sa.line5c` states the value-only yearly test, the car-fee example and the paid/assessed rule.
+  - The person who can be claimed by someone else (the third i1040sca list item) is not stated, because `sa.dependent` refuses the whole return.
+- **Fix lines:** `sa.line1`, `sa.line5a`, `sa.line5b`, `sa.line5c`
+- **Siblings checked:** `sa.line4`, `sa.line5d`, `sa.agi_floor`, `sa.dependent`, `sa.unsupported` (sales-tax election and foreign taxes), `sa.line11` (charitable gifts reduced by a state tax credit), `ltc.payments`
+- **Regression predictions:** wording only. No expression changed and no fixture value moves.
+- **Validation:** source inspection; every added quote is checked by `citations.py --strict`.
+- **Tags:** source-definition-debt; wording; schedule-a; fixed
+
+## BUG-0368 — BUG-0308 is fixed: the long-term care question states who may be covered
+
+- **Caught by:** BUG-0308, recorded open (T-171). This entry closes it.
+- **Source:** i7206 p. 1, "You may be able to deduct the amount you paid for health insurance, which includes medical, dental, and vision insurance and qualified long-term care insurance for yourself, your spouse, and your dependents.", "The health insurance can cover your child who was under age 27 at the end of 2025, even if the child wasn’t your dependent.", "A child includes your son, daughter, stepchild, adopted child, or foster child."
+- **Symptom:** as recorded in BUG-0308.
+- **Fix:** wording only. `ltc.payments` says the person must be the filer, the spouse, a dependent, or a child (son, daughter, stepchild, adopted or foster child) under age 27 at the end of 2025, and to enter zero for anyone else. The cite adds the three i7206 p. 1 sentences. The health insurance questions `sc.hi_uses` and `sc.f7206_line1` already name the same people.
+- **Fix lines:** `ltc.payments`
+- **Siblings checked:** `ltc.amount`, `ltc.limit`, `sc.hi_uses`, `sc.f7206_line1`, `sc.hi_screen` (the retired public safety officer and multiple-business ltc claims are refused there)
+- **Regression predictions:** wording only. No expression changed.
+- **Validation:** source inspection.
+- **Tags:** source-definition-debt; wording; fixed
+
+## BUG-0369 — BUG-0314, premise check: most Form 5329 Part I items are already refused; two remain, in a form this package does not own (open)
+
+- **Caught by:** the T-175 premise check, 2026-11-03.
+- **Source:** i5329 p. 1 and p. 3, Line 1; p. 5, Line 2 (the exception conditions); p590b p. 28, "If you received a distribution to buy, build, or rebuild a first home and the purchase or construction was canceled or delayed".
+- **Symptom (premise check, inspected in `forms/2025/retirement.yaml`):**
+  - Already refused:
+    - a Roth IRA distribution other than code Q, so any Form 8606 line 25c or recapture amount (`retirement.bad_code`);
+    - a modified series of substantially equal periodic payments (`retirement.early_screen`);
+    - a returned 2024 or 2025 IRA contribution, with its earnings (`retirement.special`).
+  - Already computed: the rolled-over part is taken out of the taxable amount (`retirement.rolled`, `retirement.l1`).
+  - Open:
+    - the recontribution within 120 days of a first-home distribution whose purchase was canceled or delayed;
+    - the exception conditions. `retirement.exception` names the exceptions but does not state their conditions, for example separation from service in or after the year the person reached 55 (plans only), the disability proof, and the series that must begin after separation from an employer plan.
+- **Disposition:** needs `retirement.rollover` and `retirement.exception` (form `retirement`), outside this package's forms. Proposed wording is in REPORT.md (T-175). `f5329` lines only copy `person.x_*`, which sum `retirement.*`.
+- **Validation:** implementation inspection.
+- **Tags:** source-definition-debt; explicitly-deferred
+
+## BUG-0370 — Form 4562 line 2 counted land improvements and excepted property as section 179 property (T-182)
+
+- **Caught by:** owner question 3 of the A-backlog session (2026-11-02; owner decision A3: an engineering defect) and sc completeness claim 8 (BUG-0326); confirmed by evaluation in this package.
+- **Source:** p946 p. 17, "Land and land improvements do not qualify as section 179 property" and "Even if the requirements explained earlier under What Property Qualifies? are met, you cannot elect the section 179 deduction for the following property" (noncorporate lessors, use outside the United States, tax-exempt organizations, governmental units and foreign persons); i4562 p. 2, "Property held for investment (section 212 property)"; p. 3, "for taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased to others unless"; p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during the tax year".
+- **Symptom:** `asset.is_section179` was true for every class other than qualified improvement property, so the business cost of any asset placed in service in 2025 and used more than 50% in the business went into Form 4562 line 2. Evaluated on the old tree: furniture of $2,000,000 fully elected, a paved parking area (class 00.3) of $2,400,000 and a $400,000 carryover gave line 2 $4,400,000, line 5 $2,100,000, line 12 $2,100,000, line 13 $300,000 and Schedule C line 13 $2,220,000. The source gives line 2 $2,000,000, line 12 $2,400,000 and Schedule C line 13 $2,520,000. The tax changes only when line 2 exceeds $4,000,000. Then line 11 (the smaller of business income or line 5) can cut a carryover or the deduction, or the election is refused as above line 5. At that income Form 1040 line 24 is refused anyway for Form 8995-A, but Schedule C line 13 and the printed Form 4562 lines 2, 4, 5 and 11 to 13 were wrong. Nothing stopped a section 179 election on such property either. The `asset.s179` question only told the filer to enter zero.
+- **Fix:** new input `asset.not179`: a land improvement, investment property, property a noncorporate lessor purchased and leases to others (unless the two exceptions apply), or property used by a tax-exempt organization, a governmental unit or a foreign person or entity (with the source's exceptions). `asset.is_section179` requires it to be No. `asset.s179_bad` adds it, so an election above zero on such property refuses at `asset.after179`; the refusal form and remedy name it. `asset.s179` adds the tax-exempt, governmental and foreign-user items to its zero list. The question is read only for a 2025 asset used more than 50% in the business, or one with an election. It is not asked for qualified improvement property with no election (evaluated).
+- **Fix lines:** `asset.not179`, `asset.is_section179`, `asset.s179_bad`, `asset.after179`, `asset.s179`
+- **Siblings checked:** `asset.after179`, `asset.f26i`, `asset.is_section179`, `asset.period`, `asset.qip_early`, `asset.s179_2025`, `asset.s179_bad` (generated by `tools/siblings (py file); the package also checked `scveh.cost179_o` and the sc totals, see T-205)
+  - `asset.cost179_real`, `asset.cost179_2025`, `asset.cost179`, `sc.cost179_a`, `sc.cost179`, `person.cost179`, `s179.line2`, `s179.line4`, `s179.line5`, `s179.line11`, `s179.line12`, `s179.over_limit`, `asset.f26i`, `asset.on_19`, `sc.f6`, `s179.line6`.
+  - `scveh.cost179_o` and `scveh.s179_elect` are not changed. A vehicle used by a governmental unit or leased to others by a noncorporate lessor is still counted on line 2. That is rare for a car-and-truck entry, and a regular business of leasing passenger automobiles is screened. Recorded as a new-row proposal.
+  - The trade-in rule (p946 p. 17, "its cost for purposes of the section 179 deduction includes only the cash you paid") is stated in `asset.s179` but not applied to line 2, which uses the whole business cost. Also a new-row proposal.
+  - Lodging property, named in the parent's brief, is not in the 2025 list (p946 p. 17). It was not added.
+- **Regression predictions:**
+  - `stage14.s179.land_improvement` (the witness above, with `not179` Yes on the parking area): line 2 $2,000,000; line 4 $0; line 5 $2,500,000; line 9 $2,000,000; line 11 $2,500,000; line 12 $2,400,000; line 13 $0; Schedule C line 13 $2,520,000 ($2,400,000 plus 5.00% of $2,400,000 from Pub. 946 Table A-1, 15-year, year 1). Matched.
+  - `stage14.asset.refuse_s179_not179` (the $3,000 computer of `stage14.asset.hy_5yr`, fully elected, `not179` Yes): refuses at `asset.after179` with gate `asset.s179_bad`. Matched.
+  - `stage14.asset.refuse_s179_over` and `stage14.asset.refuse_s179_half` quote the refusal and follow its new wording.
+- **Validation:** fixtures 1,446/1,446; evaluator witness before and after; GPT-6 Astra second reading (receipt `research/audits/asset-veh-sc/receipts/gpt-6-astra.168k9_line2.*`) also excludes all three kinds of property from line 2 and the threshold under sections 179(d)(1), 50(b) and 179(d)(5).
+- **Tags:** amount-affecting (printed lines; tax above $4,000,000); eligibility; new-input; existing-form-pass; fixed
+
+## BUG-0371 — Owner decisions A1, A2 and A4: used property and section 168(k)(9) property for the special allowance; employee-used vehicles (T-178)
+
+- **Caught by:** A-backlog owner questions 1, 2 and 4 (2026-11-02); owner decisions A1, A2, A4.
+- **Source:**
+  - i4562 p. 6, "Qualified property can be either new property or certain used property".
+  - p946 p. 31, "Original use means the first use to which the property is put, whether or not by you", and "Property containing used parts will not be treated as reconditioned or rebuilt if the cost of the used parts is not more than 20% of the total cost of the property".
+  - i4562 p. 7, Exceptions, "Property described in section 168(k)(9)(A) or 168(k)(9)(B)". The plain description restates IRC 168(k)(9) and 163(j)(7)(A)(iv), (j)(9), which are not archived.
+  - i4562 p. 14, Column (c), "Treat vehicles used by employees as being used 100% for business/investment purposes if the value of personal use is included in the employees’ gross income, or the employees reimburse the employer for the personal use".
+- **Symptom:**
+  - A1: nothing asked whether 2025 property claiming the special allowance was used property, for assets or for vehicles (`scveh.bonus_choice` had the same defect).
+  - A2: the asset screen named section 168(k)(9)(A)/(B) by number only, and vehicles were not asked about it at all.
+  - A4: "your employees use it" sat in `scveh.screen`, which only `scveh.cost` reads. A leased vehicle on actual expenses, or the operating expenses of an owned one, was figured from the filer's miles with employees' personal use (premise from the A-backlog evaluation, rechecked by reading the dependency: `scveh.screen` → `scveh.screened` → `scveh.cost` only).
+- **Fix:**
+  - `asset.screen` and `scveh.screen` add two items, each conditional on claiming a special depreciation allowance in 2025: original use did not begin with you (with the definition and the reconditioned-property 20% rule); and section 168(k)(9)(A)/(B) property, described in plain words. The asset screen's earlier unconditional 168(k)(9) item is replaced by the conditional one.
+  - New input `scveh.employee_use` (do your employees use this vehicle for personal purposes) and gate `scveh.employee_bad`, refused on `scveh.operating_business`, which every actual-expense vehicle reads, owned or leased. The employee item is removed from `scveh.screen`. New gate placed in `tools/coverage/tree.json` (196 gates placed).
+- **Fix lines:** `asset.screen`, `scveh.screen`, `scveh.employee_use`, `scveh.employee_bad`, `scveh.operating_business`
+- **Siblings checked:** `asset.bonus_choice`, `asset.bonus`, `asset.bonus_fullcase`, `scveh.bonus_choice`, `scveh.claims_bonus`, `scveh.bonus_2025`, `scveh.cost`, `scveh.screened`, `scveh.line9`, `scveh.line9_actual`, `scveh.lease_business`, `scveh.line20a`, `scveh.smr_amount` (the standard rate path does not read the employee question; the owner decision named operating expenses and leases), `scveh.over_half`, `asset.pct` (vehicles use miles; the 100% rule is a vehicle rule).
+- **Regression predictions:**
+  - `stage14.veh.refuse_employee_use_lease`: the leased vehicle of `stage14.veh.refuse_lease_smr_before`, without the earlier standard rate, with `employee_use` Yes, refuses at line 9 with gate `scveh.employee_bad`. Matched; line 20a still evaluates ($3,000), but Schedule C line 9 and Form 1040 line 24 refuse.
+  - `stage14.veh.refuse_employee_use_owned` (the same vehicle, owned): the same refusal. Matched.
+  - The screen items are wording on screens whose Yes already refuses; no fixture.
+- **Validation:** fixtures 1,446/1,446; GPT-6 Astra second reading of the 168(k)(9) restatement (it found the floor plan vehicle definition and the 163(j)(1)(C) reference missing from the first draft; both added).
+- **Tags:** eligibility; owner-decision; new-input; existing-form-pass; fixed
+
+## BUG-0372 — Pub. 538 archived; the small business capitalization exemption settled (T-179; closes the T-174 claim 11 remainder and scveh completeness claim 2 of BUG-0326)
+
+- **Caught by:** BUG-0311 claim 11 and BUG-0326 (scveh, capitalized vehicle costs); owner decision A5.
+- **Source:** p538 (Rev. January 2022, the current edition, archived as `sources/2025/p538`) p. 17, Uniform Capitalization Rules, "The uniform capitalization rules do not apply to the following" and "A small business taxpayer that meets the gross receipts test under section 448(c) and that is not a tax shelter"; i1040sc p. 6, "A small business taxpayer (defined later under Part III) is not required to capitalize certain expenses to inventory or other property"; p. 15, the $31 million test.
+- **Symptom:** i1040sc's "certain expenses" left open whether a small business taxpayer still had to capitalize some vehicle costs.
+- **Fix:** none to an expression. Pub. 538 exempts a small business taxpayer from the uniform capitalization rules altogether, so "certain expenses" leaves nothing for one. `sc.method_other` already refuses a business that is not a small business taxpayer (gross receipts over $31 million, or a tax shelter). Its locator now cites p538 p. 17. The creative-property exception only widens the exemption for freelance artists, authors and photographers; any of them above $31 million is refused (accepted over-refusal).
+- **Fix lines:** `sc.method_other` (citation only)
+- **Siblings checked:** `sc.screened`, `sc.line1`, `scveh.line9`, `scveh.line20a`, `sc.inventory_other`, `sc.line35` to `sc.line42`.
+- **Regression predictions:** none; no evaluated value changes.
+- **Validation:** source reading; `fetch_sources.py` verifies 157 documents offline; `check_extraction.py` 122 PDFs, 0 failing.
+- **Tags:** source-archive; owner-decision; closed-on-premise
+
+## BUG-0373 — BUG-0326, Schedule C, vehicle and asset parts: the questions state or refuse the rules (T-183, except Schedule A)
+
+- **Caught by:** BUG-0326, recorded open; this entry closes its sc, scveh and asset claims because the inventory is append-only. The Schedule A claims belong to another package.
+- **Source:**
+  - i1040sc:
+    - p. 6: NIL income, "However, report royalties and other NIL income that is not self-employment income on Schedule E instead"; Installment sales.
+    - p. 9: Line 22, "You can also deduct the cost of books, professional instruments, equipment, etc., if you normally use them within a year"; Line 23, "But some licenses, such as liquor licenses, may have to be amortized"; Line 24a, the $5-a-day incidental expense method, and "Other rules apply to luxury water travel".
+  - p463 p. 12, Luxury Water Travel.
+  - i1040gi p. 94, "A qualified small employer health reimbursement arrangement (QSEHRA) is considered to be a subsidized health plan maintained by an employer".
+  - i4562:
+    - p. 8, "Computer software. Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound recordings".
+    - p. 10, the utility clearing and grading land improvements; p. 11, the credits and deductions that reduce the basis for depreciation; p. 12, the property that must be depreciated under ADS.
+    - p. 14, "allocate the use based on the most appropriate unit of time the property is actually used".
+  - p946 p. 17, section 179 excepted property (BUG-0370).
+- **Symptom:** as recorded in BUG-0326.
+- **Premise checks:**
+  - sc claim 0 (line 9) holds no gap. `scveh.smr_ok` asks the first-year, whole-lease and five-vehicle rules, and `scveh.lease_smr_before` the leased-vehicle rule. Depreciation, section 179 and the special allowance are guarded by `scveh.is_actual_owned`, and line 20a is zero on the standard rate (inspected; `stage14.veh.standard` completes with line 31 equal to receipts less line 9). The Part IV statement is presentation.
+  - sc claim 6 (home depreciation with the simplified method) holds no gap. A home is real property, which `asset.screen` refuses, and nothing else feeds line 13 from the home.
+  - sc claim 7 (section 179 limits): fixed by BUG-0370. The like-kind exchange is screened, the SUV cap is `scveh.s179_bad`, and the trade-in limit is stated (line 2 remainder: new-row proposal).
+  - scveh claim 2 is BUG-0372.
+- **Fix:**
+  - `asset.screen`:
+    - replaces "you depreciate it under ADS" with the required-ADS cases (executive-order imports, the 263A(d)(3) election, QIP of an electing real property trade or business, 10-year or longer property of an electing farming business) or an ADS election;
+    - adds films, videotapes and sound recordings; computer software unless placed in service in 2025 and fully deducted through section 179 and the special allowance; utility clearing and grading land improvements; and basis reduced by a credit or deduction (the p. 11 list).
+  - `asset.pct` states the time-used rule for listed property.
+  - `sc.special` replaces "installment sales of timeshares or residential lots" with any income reported under the installment method (including those sales), and adds licenses or other costs you must amortize, and luxury water travel.
+  - Wording: `sc.line1` (NIL income that is not self-employment income goes on Schedule E); `sc.line22` (books and instruments used within a year; not longer-lived items); `sc.line23` (not licenses you must amortize); `sc.line24a` (incidental expenses, actual or $5 a day on a day with no meal expenses and no standard meal allowance); `sc.f7206_line1` (QSEHRA eligibility counts as an employer-subsidized plan).
+- **Fix lines:** `asset.screen`, `asset.pct`, `sc.special`, `sc.line1`, `sc.line22`, `sc.line23`, `sc.line24a`, `sc.f7206_line1`
+- **Siblings checked:** `asset.screened`, `asset.cost`, `asset.done`, `asset.class`, `asset.basis`, `asset.listed`, `asset.listed_low`, `sc.screened`, `sc.line28`, `sc.meals_50`, `sc.line24b`, `sc.hi_screen`, `sc.hi_screened`, `sc.f7206_line3`, `scveh.over_half`.
+- **Regression predictions:** no evaluated value changes and no fixture added. Each new refusal is an item of a screen whose Yes already refuses (`stage14.refuse.special`, the asset screen fixtures).
+- **Validation:** fixtures 1,446/1,446; `citations.py --strict` 0 findings.
+- **Tags:** source-definition-debt; wording; existing-form-pass; fixed
+
+## BUG-0374 — Class M jobs for single documents gave incoming values that only validation helpers read, and were not marked printed-only
+
+- **Caught by:** T-139 (from T-066; owner's decision 2026-10-29), premise check on the current tree, 2026-11-03.
+- **Source:** BUG-0143 (the same defect, fixed for collection documents only): an incoming-value catalog should hold what the printed calculation reads, not what implementation validation reads.
+- **Symptom:** `buildJob` (engine/src/classm.ts) listed as authoritative givens every foreign line that any line of the document reads, helpers included, and set no `worked_scope`, so the request did not say that only printed lines are wanted and the log did not record the scope. Measured on the full job set (2,000 generated returns plus non-M fixtures, seed 7): see REPORT.md, T-139, for the documents and givens withheld.
+- **Tool change:** `buildJob` keeps a given only if the printed lines requested read it through the document's own lines (`requestClosure`, the same rule `buildCollectionJob` applies to printed-only collections), and marks the job `worked_scope: "printed-irs-lines"`. `tools/transcription/classm.py` states the printed-only sentence in the single-document request as it already did in the entry request (one shared constant, byte-identical for collections). No old receipt is relabeled: a document migrates when its class M review is next rerun.
+- **Changed form lines:** none (tool change: `engine/src/classm.ts` `buildJob`, `requestClosure`; `tools/transcription/classm.py` `build_prompt`, `PRINTED_ONLY`).
+- **Related tools checked:** `buildCollectionJob` printed-only filter (unchanged; same rule), `buildDefJob` (definitions give only their parameters), `classm.py` `write_outputs` (the "worked target scope" row now appears for single documents).
+- **Regression predictions:** `tools/transcription/test_classm_jobs.mjs`: every Form 2441 job is `printed-irs-lines`.
+- **Validation:** job generation before and after on the full corpus (REPORT.md); test_classm_jobs.mjs; no model call.
+- **Tags:** review-tool; worked-context-feedback; class-m; fixed
+
+## BUG-0375 — Class M requests showed workers answers the route never reads, and the generated cases held answers the interview never asks
+
+- **Caught by:** T-142 (Stage 18 O2, from T-079 (2)) and T-147 (Stage 19, from T-081 (5)); premise checked 2026-11-03.
+- **Source:** the interview asks exactly the inputs the evaluation from its targets reads (`engine/src/interview.ts`, `interviewState`: "missing reachable inputs determine the questions").
+- **Symptom:** (1) the generator answers both routes of a Form 1095-A so every line computes under `evaluateAll`, and the class M entry request listed all of them: a uniform entry showed `mo_a`, `mo_b`, `c_total` and all 36 monthly amounts, and the job asked for the month-by-month totals `yr_a_monthly`, `yr_b_monthly`, `yr_c_monthly` that only the untaken alternative of lines 33a to 33c reads; a month-by-month entry showed `mo_a`, `mo_b` and `c_total`, which after whole-dollar rounding need not agree with its months (O2), and models copied them. (2) The class M fixtures carry every generated answer, including answers the interview cannot give because nothing on the return's route reads them: `classm.f5695.2` holds `person[taxpayer].sav_claimed` true with `sa.dependent` false (`person.sav_ineligible` tests `sa.dependent` first and stops), `classm.f5695.8` and `classm.s3.3` hold `person[taxpayer].sav_excess` true with no Form W-2 box 12 deferrals (`person.sav_excess_gate` tests `person.sav_w2 > 0` first). Evaluated: none of the three answers is read from the interview's targets or the cases' expectations.
+- **Tool change:** `routeJob` in `engine/src/classm.ts`, applied to every chosen job: an unprinted collection's helpers are requested only when some route reads them (`liveInCollection`); the answers shown are those the requested lines read (`answersRead` over a lazy evaluation from the requested lines); the fixture inputs keep rosters, the filing status and the answers read from the full interview's targets or by the requested lines. The requested values must be identical on the restricted answers (checked with `evaluateAll`); otherwise the job keeps every answer and the problem is printed. A job's branches are those the restricted answers take. The generator itself is unchanged: both routes stay answered there because evaluateAll-based tools (class M candidate filters, mutation, triage) need every line computed. The three named cases and their DeepSeek twins drop the unread answer (fixtures/2025/classm.json, classm.deepseek.json).
+- **Changed form lines:** none (tool and fixture change).
+- **Related tools checked:** every other class M case on the tree carries generator answers off its route (the same two saver's credit answers alone appear in 11 more Claude and 3 more DeepSeek cases, counted by input values); they are fixed when each document's class M review is regenerated. `buildDefJob` (definition jobs reach their instance through the calling lines, `defCallers`).
+- **Regression predictions:** for the six edited cases, no expected value changes (the dropped answers are not read; prediction from the short-circuit order of `person.sav_ineligible` and `person.sav_excess_gate`, f8880 p. 2 "Who Can Take This Credit" and iw2w3 p. 20 box 12). test_classm_jobs.mjs: no Form 1095-A entry shows the other route's answers or requests the other route's totals; no Form 2441 case holds `sav_claimed` without `sa.dependent` Yes.
+- **Validation:** test-fixtures; job generation before and after on the full corpus (REPORT.md); test_classm_jobs.mjs.
+- **Tags:** review-tool; generator; class-m; unasked-answers; fixed
+
+## BUG-0376 — Mutation report did not say which kills only class M cases made
+
+- **Caught by:** T-144 (Stage 19: person, f2441 and ira kills lost on a class M rerun; from T-081 (6)).
+- **Source:** none (tooling).
+- **Symptom:** `outcome` in `engine/src/mutate.ts` stopped at the first case that killed a mutant, in file order, so the report could not tell a kill that depends on a class M case (which a class M rerun regenerates) from one a stage fixture also makes. `classm.py` already warns that replaced cases may carry kills, but not which.
+- **Tool change:** reporting only: non-M cases are tried first; a mutant no other case kills but a class M case does is still killed, counted under "Killed by fixtures", and listed in a new report section "Killed only by class M cases" with the first class M case that kills it; the console line gives the count. No equivalence rule, mutant or score definition changed.
+- **Changed form lines:** none (`engine/src/mutate.ts` `outcome`, `runMutation` report).
+- **Related tools checked:** `mutantShare`/`outcomesOf` (workers pass the outcome strings through unchanged); `classm.py` `write_outputs` replacement warning (unchanged; it now has a report to consult).
+- **Regression predictions:** the score and survivor set are unchanged (the kill/survive decision is the same set of cases); only attribution is added.
+- **Validation:** a sample of the mutant list through `mutantShare` (REPORT.md); the full count is the parent's check-all mutate step.
+- **Tags:** mutation; reporting; class-m; fixed
+
+## BUG-0377 — The review interface did not say that the Schedule D carryover lines hold a negative amount
+
+- **Caught by:** T-140 (Stage 20 adjudication, T-076 (3)).
+- **Source:** f1040sd p. 1, lines 6 and 14 printed "( )"; i1040sd p. 11, 28% Rate Gain Worksheet line 5 "( )"; p. 13, Unrecaptured Section 1250 Gain Worksheet line 16 "( )".
+- **Symptom:** the transcription prompt publishes only id, printed marker and type (`reference_note` and the requested-line list in tools/transcription/transcribe.py), so a candidate holding `sd.line6`, `sd.line14`, `g28.line5` or `u1250.line16` positive is a sign convention gap, not a reading error, yet triage reports value differences on every line that combines them.
+- **Tool change:** `NEGATIVE_INTERFACES` and `sign_note` in transcribe.py add "a loss carryover printed in parentheses, held as a negative amount" to those four lines, both where they are requested and where another form's catalog lists them.
+- **Changed form lines:** none (tool change).
+- **Related tools checked:** the other signed Dollars lines whose labels say "negative" (`clcw.prior_11`, `clcw26` line 15 input, the worksheet helpers `sd.line6_ws`, `sd.line14_ws`) are not printed parenthesised interfaces read by another form's transcription; not changed.
+- **Regression predictions:** the required-interface check (`input_context.assess`) of the saved g28 and u1250 transcription requests now reports `sd:sd.line14` missing (verified: g28 Claude and DeepSeek went from pass to fail; u1250 was already failing on `scope.schedule1` / `sales.special`). No other saved request lists these four lines as foreign interfaces.
+- **Validation:** test_review_tools.py, test_input_context.py; the audit above. The integrator reruns sd, g28 and u1250 transcription.
+- **Tags:** review-tool; interface; sign-convention; fixed
+
+## BUG-0378 — Eleven Stage 18 to 21 fixtures carried a stray W-2 box 10 with Form 2441 benefits answered No
+
+- **Caught by:** T-146 (Stage 19, from T-081 (4)); 11 cases found on the current tree (the task lists 11).
+- **Source:** the generator's screen rule (engine/src/generate.ts `SCREENS`: box 10 is asked only after `f2441.benefits` Yes); `w2.box10` input text, "zero if the box is blank"; the cases' fact sheets state no dependent care benefits.
+- **Symptom:** `stage18.blind.p6`, `p10`, `p20`, `stage18.refuse.year_of_marriage`, `stage18.mut.family_of_20`, `stage18.refuse.family_over_20`, `stage19.blind.e2`, `e4`, `stage20.blind.r7`, `stage21.blind.e7`, `stage21.refuse.e05_joint` held `person[taxpayer].w2[e0].box10` = $1,000 with `f2441.benefits` false.
+- **Tool change:** the eleven values set to 0 by a line-local text edit (formatting kept).
+- **Changed form lines:** none (fixtures).
+- **Related tools checked:** every fixture file for a nonzero box 10 or box10_wages without `f2441.benefits` Yes: none remain.
+- **Regression predictions:** no expected value changes. None of the cases asserts a Form 2441, line 1e or box 10 line; with benefits No, Part III is not reached and line 1e is zero, so the line 1e attribution helpers that read box 10 do not affect any asserted line (i2441 p. 5, Line 12, "Amounts you received as an employee should be shown in box 10 of your Form(s) W-2").
+- **Validation:** test-fixtures.
+- **Tags:** fixtures; stray-input; fixed
+
+## BUG-0379 — Generated returns left three dependent answers unanswered
+
+- **Caught by:** T-148 (Stage 21, from T-081 (7)); premise re-checked 2026-11-03.
+- **Source:** dependent.yaml, `dependent.hoh_lived_half` and `dependent.dc_lived_half` read `dependent.born_died` and `dependent.placed` (then `dependent.part_year_home`) for a person who is not a qualifying child and lived with you half the year or less.
+- **Symptom:** on the seeded sample (1,000 returns, seed 7), 4 returns reached `dependent[].born_died`, `placed` and `part_year_home` unanswered (20, 4 and 4 derivations). `f1040.line24` and `f1040.line37` were not unknown on any of the 1,000 (in two the unknown was masked, two refused elsewhere), so the task's "line 24 is unknown" premise no longer holds as stated; the unanswered inputs do.
+- **Tool change:** `buildInputs` (engine/src/generate.ts) answers `born_died` and `placed` No for every dependent, after every draw, so neither the random stream nor the derived streams move. `part_year_home` is then never reached.
+- **Changed form lines:** none (generator).
+- **Related tools checked:** the same probe over all reached unknown inputs for `f1040.line24` and `f1040.line37` on 1,000 returns: none remain after the change.
+- **Regression predictions:** no generated return reaches a dependent answer unanswered; other generated values are unchanged (keys added last).
+- **Validation:** the probe (REPORT.md).
+- **Tags:** generator; unanswered-input; fixed
+
+## BUG-0380 — Qualified disaster recovery distributions outside codes 1 and S are not screened
+
+- **Caught by:** the `retirement.special` screen review, backlog round, 2026-11-03 (`.transcription/proposed/bklg/screens.findings.md`, PENDING-7-1).
+- **Source:** p575 p. 35, "the distribution is included in income ratably over 3 years unless you elect to report the entire amount in the year of distribution"; "Use Form 8915-F to report qualified disaster recovery distributions and repayments."
+- **Symptom:** `retirement.early_screen` names the distribution, but `retirement.screen_refused` reads it only for codes 1 and S, and `retirement.special` does not name it; a code 7, 2 or 4 qualified disaster recovery distribution is taxed in full on line 4b/5b (witness from the review: $18,000 against $6,000), and a repayment is unasked.
+- **Disposition:** T-210: add the distribution and its repayment to `retirement.special` (wording; the refusal already names Form 8915-F); check whether `scope.other_income` catches the 2025 portion of a 2023 or 2024 distribution.
+- **Validation:** screen-review finding with quotes matched; not reproduced by evaluation.
+- **Tags:** screen-gap; amount-affecting; pre-existing; explicitly-deferred
+
+## BUG-0381 — `retirement.rollover` excludes rollovers made late under a waiver or extension
+
+- **Caught by:** the `retirement.special` screen review, backlog round, 2026-11-03 (PENDING-7-2).
+- **Source:** p575 p. 23, "There are three ways to obtain a waiver of the 60-day requirement"; "The 60-day rollover period is extended by the period for which the amount is a frozen deposit".
+- **Symptom:** the input asks for the amount "rolled over within 60 days", so a valid waived or extended rollover is entered as $0 and taxed.
+- **Disposition:** T-210: wording in `retirement.rollover`; the computation is unchanged.
+- **Validation:** screen-review finding with quotes matched; not reproduced by evaluation.
+- **Tags:** source-definition-debt; amount-affecting; pre-existing; explicitly-deferred
+
+## BUG-0382 — Payments while legally separated spouses share a household are counted as alimony
+
+- **Caught by:** the `s1.alimony_unsupported` screen review, backlog round, 2026-11-03 (PENDING-7-3).
+- **Source:** p504 p. 14, "Payments to your spouse while you're members of the same household aren't alimony if you're legally separated under a decree of divorce or separate maintenance."
+- **Symptom:** neither `s1.alimony_unsupported` nor the amount questions mention the household, so such payments are deducted or included. The same list's "doesn't designate the payment as not alimony" is also unstated.
+- **Disposition:** T-210: add the item to `s1.alimony_unsupported` and the designation rule to `s1.alimony_received`/`s1.alimony_paid`.
+- **Validation:** screen-review finding with quotes matched; not reproduced by evaluation.
+- **Tags:** screen-gap; amount-affecting; pre-existing; explicitly-deferred
+
+## BUG-0383 — Qualified improvement property is offered as a class without its definition
+
+- **Caught by:** the asset completeness review, backlog round, 2026-11-03 (`.transcription/proposed/bklg/completeness.findings.md`, M1).
+- **Source:** p946 p. 31, "Generally, this is any improvement to an interior part of a building that is nonresidential real property ... placed in service by you after 2017 and after the date the building was first placed in service by any person"; "The enlargement of the building. • Any elevator or escalator. • The internal structural framework of the building."
+- **Symptom:** `asset.class` offers "qualified improvement property" with no definition, so an elevator, an enlargement, structural framework or an improvement to residential rental property can take 15 years, the special allowance and section 179 instead of being refused as real property.
+- **Disposition:** T-211: state the definition and exclusions in `asset.class`, cite p946 p. 31.
+- **Validation:** completeness claim with quotes matched; not reproduced by evaluation.
+- **Tags:** source-definition-debt; amount-affecting; pre-existing; explicitly-deferred
+
+## BUG-0384 — Form 5695 Part II costs are not tied to installation in 2025
+
+- **Caught by:** the f5695 completeness review, backlog round, 2026-11-03 (M2).
+- **Source:** i5695 (archived), the Part II requirement that the property be placed in service (installed) in 2025; the credit ends after 2025 (see the findings file for the quotes).
+- **Symptom:** an item paid for in 2025 but installed in 2026 can be entered and credited.
+- **Disposition:** T-211: state the installation requirement in the Part II cost questions.
+- **Validation:** completeness claim with quotes matched; not reproduced by evaluation.
+- **Tags:** source-definition-debt; amount-affecting; pre-existing; explicitly-deferred
+
+## BUG-0385 — The short-term or long-term box is taken from records with no holding-period rules
+
+- **Caught by:** the sales completeness review, backlog round, 2026-11-03 (M5).
+- **Source:** i8949 and i1040sd holding-period rules (inherited property is long-term; the holding period of gifts and other carryover-basis property); quotes in the findings file.
+- **Symptom:** a filer who sold inherited property within a year of the death can enter it as short term, taxing it at ordinary rates.
+- **Disposition:** T-211: state the holding-period rules, inherited property first, in the box question.
+- **Validation:** completeness claim with quotes matched; not reproduced by evaluation.
+- **Tags:** source-definition-debt; amount-affecting; pre-existing; explicitly-deferred
+
+## BUG-0386 — Low completeness and adjudication findings of the backlog round
+
+- **Caught by:** the completeness, screen and transcription adjudications of the backlog round, 2026-11-03 (`.transcription/proposed/bklg/*.findings.md`, Low sections).
+- **Symptom:** wording gaps that rarely change an amount: asset#1 (placed in service undefined), f5695#3 to #6 (structural roof parts, dual-function storage, the audit report's contents, one main home only), ltc#1 (qualified contract requirements), retirement#1 (covered by BUG-0381), s1#1 (educator expenses exclusions), sales#2 (correct proceeds above the broker figure), sales#3 (inherited basis limited by Form 8971); `household.taxpayer_work_ssn` cites the child tax credit's "you, or your spouse" sentence though it is the taxpayer's own answer; `dependent.dc_count` is labelled "One qualifying person" but is 1 for every entry; the `sales.special` "holds" reading and `f4952.unsupported` at-risk wording. From the asset, sc and scveh adjudication: `asset.s179` leaves petroleum storage facilities out of its section 179 property list (i4562 p. 2); `sc.line23` leaves out paid family and medical leave fund contributions (i1040sc p. 9); scveh worksheet lines show amounts for standard-mileage vehicles (display only).
+- **Disposition:** T-211, batched with each form's next pass.
+- **Tags:** source-definition-debt; low; explicitly-deferred
+
+## BUG-0387 — Social Security Benefits Worksheet shows amounts on skipped lines 9, 11 and 15 (married filing separately, lived together)
+
+- **Caught by:** T-159 tier 2 mutation analysis (survivor `operand.ssb.ssb.line16.line16_together.then0` is equivalent only because of this; found while writing `mutation.t2.ssb.mfs_together_skip`).
+- **Source:** i1040gi p. 32, Social Security Benefits Worksheet, line 8: "Married filing separately and you lived with your spouse at any time in 2025, skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16."
+- **Symptom:** stage10.ss.mfs_together (MFS, lived together, line 7 $20,000): line 8 $0, line 9 $20,000, line 10 $0, line 11 $20,000, line 12 $0, line 13 $0, line 14 $0, line 15 $17,000, line 16 $17,000. Lines 9, 11 and 15 are skipped by the instruction but print amounts. Line 16 and line 18 (and Form 1040 line 6b) are right: line 16 takes `ssb.line16_together`.
+- **Proposed fix:** for `ssb.mfs_together`, show lines 8 to 15 as blank: either `shown_when` on lines 8 to 15 (not mfs_together), or a choose to $0 on lines 9, 11 and 15. Owner of `forms/2025/ssb.yaml` to choose.
+- **Proposed fix lines:** ssb.line9, ssb.line11, ssb.line15 (and possibly 8, 10, 12 to 14 for display).
+- **Siblings to check:** none beyond the worksheet.
+- **Regression predictions:** stage10.ss.mfs_together: lines 9, 11 and 15 blank ($0, or hidden); line 16 $17,000; line 18 $17,000; Form 1040 line 6b $17,000 (unchanged). After the fix, `operand.ssb.ssb.line16.line16_together.then0` becomes killable (line 15 is then $0) and the case-split acceptance lapses on its own.
+- **Validation:** observed by running the evaluator on the corpus case. The source reading has not had a second review.
+- **Tags:** display, ssb, low.
+
+## BUG-0388 — Form 4952 line 4a reads Schedule B lines its source does not reach
+
+- **Caught by:** the review-catalog omission check, 2026-11-03 (source-derived transcription catalog).
+- **Source:** f4952 pp. 1, 3–4 (the whole form, cited by `f4952.line4a`) names no Schedule B line; the nearby text names "Form 1040 or 1040-SR, line 3a". f1040sb line 4: "Subtract line 3 from line 2. Enter the result here and on Form 1040 or 1040-SR, line 2b".
+- **Symptom:** `f4952.line4a` = `sb.line2` + `sb.line6`. Under the source-chosen catalog, Schedule B is not listed in f4952's prompt, so the required-interface check fails. Separately, Schedule B line 2 is interest before the excludable savings bond interest of line 3 (Form 8815). Whether that interest belongs in line 4a is a source question not settled here.
+- **Proposed fix:** proposed. Either cite the page that supports reading Schedule B (so the excerpt reaches it), or read `f1040.line2b`/`f1040.line3b` if the source supports line 4 rather than line 2.
+- **Proposed fix lines:** f4952.line4a (not owned by this package).
+- **Siblings to check:** f8960 lines 1 and 2 also read `sb.line2`/`sb.line6`, while i8960 names "Form 1040 or 1040-SR, line 2b" and "line 3b". The catalog reaches Schedule B there through the whole i8960 text, but the same line 2 versus line 4 question applies.
+- **Regression predictions:** none until a reading is chosen.
+- **Validation:** omission.json; `input_context.assess` on the dry-run prompt.
+- **Tags:** review-tool; interface; catalog; open
+
+## BUG-0389 — Form 8863 reads the student loan worksheet's dependency question
+
+- **Caught by:** the review-catalog omission check, 2026-11-03.
+- **Source:** i8863 p. 3, "Who cannot claim a credit", "1. You're claimed as a dependent on another person's tax return"; the question `sli.claimed` sits on the Student Loan Interest Deduction Worksheet (i1040gi p. 98), which no Form 8863 source names.
+- **Symptom:** `f8863.eligible` reads `sli.claimed`. Under the source-chosen catalog, sli is not listed in f8863's prompt, so the required-interface check fails.
+- **Proposed fix:** proposed. Ask the "claimed as a dependent" question where both credits' sources reach it (a return-level or person-level question), or cite the shared question's home from f8863.
+- **Proposed fix lines:** f8863.eligible (not owned by this package).
+- **Siblings to check:** none else found by the omission check.
+- **Regression predictions:** no value change if the question is moved with the same wording.
+- **Validation:** omission.json.
+- **Tags:** review-tool; interface; catalog; open
+
+## BUG-0390 — Transcription catalog listed every form; T-163 visibility wording
+
+- **Caught by:** owner decision 2026-11-03 (catalog of about 450k characters; codex limit 1,048,576) and T-163.
+- **Source:** none (tooling).
+- **Symptom:** every transcription prompt carried every other form's lines and every collection (363k to 395k characters). The prompt called `shown_when` optional, and all three families omitted it on f8962.
+- **Tool change:** `catalog_selection` (a source-chosen subset; REPORT.md); screening entries carry the full interface note; `SHOWN_WHEN_NOTE` plus a template row; `PROMPT_POLICY` is now `source-only-computation-v3`.
+- **Changed form lines:** none (tool change).
+- **Related tools checked:** render, class M, completeness and screen prompts are unchanged; the excerpt is byte-identical on all 61 forms.
+- **Regression predictions:** the total characters of all prompts fall from 32.5M to 21.8M; person falls from 1,045,076 to 1,022,531; f4952 and f8863 fail complete input context (PENDING-1, PENDING-2).
+- **Validation:** test_review_tools.py, test_input_context.py, audit_transcription (identical), check_logs.
+- **Tags:** review-tool; catalog; prompt-policy; fixed

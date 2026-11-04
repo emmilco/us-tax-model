@@ -662,7 +662,9 @@ bank:
       do not guess. Married filing separately and unsupported items are refused with citations.
   - input: person.itin_applied
     order: 3
-    help: Answer true or false. An application by the due date counts for the credit for other dependents only.
+    help: Answer true or false. An application (or a renewal application) by the due date counts for the credit for other
+      dependents, but not for the child tax credit, and for this person as a student for the American opportunity credit;
+      the lifetime learning credit for a student whose ITIN was only applied for is refused.
   - input: person.work_ssn
     order: 2
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
@@ -1724,6 +1726,9 @@ bank:
   - input: scveh.operating
     order: 12
     help: Money is integer cents.
+  - input: scveh.employee_use
+    order: 12
+    help: Answer true or false.
   - input: scveh.lease
     order: 12
     help: Money is integer cents.
@@ -1790,6 +1795,9 @@ bank:
   - input: asset.s179
     order: 12
     help: Money is integer cents.
+  - input: asset.not179
+    order: 12
+    help: Answer true or false.
   - input: asset.after_jan19
     order: 12
     help: Answer true or false.

@@ -3,7 +3,7 @@
 Method: `README.md` in this directory. Earlier rulings were made in the logs' sidecars (archived in
 `.transcription/archive/before-fix-round2-2026-10-30/`), and no summary was kept for them.
 
-## Fix round 2
+## Fix round 2 (superseded subject)
 
 The subject after BUG-0231 widened the `sales.special` question to cover shares of an exchange-traded fund or trust that
 holds gold, silver, platinum or other metals. No sales expression changed. Both families were reviewed. Triage is
@@ -24,3 +24,30 @@ engine's Count lower-bound shortcut, and the return completes as if the answer w
 entered on a gain sale is accepted. The brief's check: the BUG-0231 gloss matches i1040sd p. 11 ("metals"; a trust
 "attributable to unrealized appreciation of collectibles"). It is not narrower than the source, and an over-reading can
 only refuse.
+
+## Backlog round
+
+Fresh reviews of 2026-11-03 of the subject after the income package: PENDING-5 adds `sales.wash_over` and the entry-error
+gate `sales.wash_bad`, refusing at `sales.w` when a code W loss is larger than the loss after the code B correction (owner's
+decision 2026-11-01); PENDING-6 rewords `sales.special` (an interest in a partnership, S corporation or trust, including S
+corporation stock, that holds collectibles or section 1250 property). Triage: `../triage/sales[.deepseek].json`, written
+by triage.py this round (executable-triage-v2: 1,495 fixtures, 500 generated returns seed 20261026, 510 partial records
+from 40 bases; 1,837 comparisons); every witness re-read from an uncapped scratch re-run, same counts. Class M log
+(`../../classm/sales.md`, classm.sales.1, 9 lines): all agree, including a code W loss of $45 within a $24,250 loss.
+Full ruling text: `.transcription/proposed/bklg/{transcription,render}.sales[.deepseek].json`.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | (e) | model error and scope | 1,423 agree; 44 completed candidate-refuses, all h_basis_bad (correct basis on a box A/D entry without code B: never asked; checked on classm.f1040.2 with it withheld) | i8949 p. 8, code B | A consistency check on an unasked answer; G/J refused by `sales.digital`. |
+| claude | transcription | (g) | representation | 1,831 agree; 6 project-unknown on partials withholding box, proceeds or correct basis; none completed | i8949 p. 10, code W | The reply's h_wash_bad is the project's new gate within the interview. |
+| deepseek | transcription | (e) | scope | 7 values, all box G/J on refused returns; 2 unknowns on a refused partial | f8949 p. 1, box G | G/J refused by `sales.digital`. |
+| deepseek | transcription | (g) | scope | 3 project-refuses on `sales.wash_bad` (sales.refuse.wash_over_loss, generated 256, 310), refused by the reply at (h) | i8949 p. 10, code W | Same limit, one line later. |
+| claude | render | (e), (g) | scope | MISMATCH; fixtures sales.refuse.digital.G and sales.refuse.code pass | f8949 p. 1; i8949 pp. 7-11 | Boxes G-L and codes other than B/W refused at `sales.one`. |
+
+Package check: `sales.wash_over` equals column (h), so `sales.wash_bad` refuses exactly when (h) would exceed zero; a loss
+equal to the wash amount is accepted (sales.adjust.A.W.equal_loss, (h) $0.00) and the code B correction counts
+(sales.adjust.D.BW.wash_within_corrected_loss, (h) −$500.00), both evaluated. It refuses no allowable entry. The
+`sales.special` wording matches i1040sd pp. 11-12 and can only refuse. The fix-round-2 finding F1 is fixed (BUG-0257): no
+candidate-unknown is on a completed return now (29 before). O1 (a wash loss on a gain sale) is closed by `sales.wash_bad`.
+Findings: none.
+

@@ -249,7 +249,7 @@ form:
         locator: Schedule 8812 (2025), line 12
       note: A line 8 not more than line 11 gives zero here, and zero on every line that reads it, which is the printed "Stop here".
       refuses:
-        - when: household.credit_disallowed
+        - when: household.ctc_disallowed_claim
           form: Form 8862 and the CTC, ACTC and ODC disallowance period (Form 8862 may be required)
           remedy: Your EIC, child tax credit, additional child tax credit or credit for other dependents for an earlier year was
             reduced or disallowed, or you are in a disallowance period; Form 8862 and the disallowance period are outside this

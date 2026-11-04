@@ -44,7 +44,11 @@ form:
     cite: &id001
       doc: i8962
       locator: p. 14, Line 10, "Check “Yes” and continue to line 11 if all of the following apply for each qualified health
-        plan", "Full-year coverage with no changes on Form 1095-A, Part III, column A or B."
+        plan", "Full-year coverage with no changes on Form 1095-A, Part III, column A or B.", "If the correct applicable SLCSP
+        premium is not the same for every month of 2025, check “No”"; p. 15, "Examples of changes in circumstances that may
+        affect your applicable SLCSP premium include the following", "You moved during 2025", "If any of the above apply
+        and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong
+        applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected"
   - id: f1095a.uniform
     printed: (gate)
     label: Does this Form 1095-A show coverage in all 12 months of 2025, with the same amount in column A every month and
@@ -52,9 +56,16 @@ form:
     type: Bool
     expr:
       op: input
-      source: Does this Form 1095-A show coverage in all 12 months of 2025, with the same amount in column A (monthly enrollment
+      source: 'Does this Form 1095-A show coverage in all 12 months of 2025, with the same amount in column A (monthly enrollment
         premiums) every month and the same amount in column B (monthly SLCSP premium) every month? Use the corrected column
-        B if column B is blank, zero or wrong.
+        B if column B is blank, zero or wrong, and answer no if the correct amount is not the same every month. Column B can
+        be blank, zero or wrong if no advance payments of the premium tax credit were made. It is wrong for the months
+        affected if, during 2025, any of these happened and you did not tell the Marketplace: you enrolled someone newly
+        added to your tax family (for example a newborn); someone in your tax family was enrolled for only part of the year;
+        someone in your coverage family became eligible, or stopped being eligible, for employer coverage or other minimum
+        essential coverage; you include someone in your tax family whom you did not tell the Marketplace you would include,
+        or leave out someone you said you would include; an enrolled person died; or you moved. Get the correct amount from
+        the Marketplace''s tool, for example HealthCare.gov/Tax-Tool.'
     cite: *id001
   - id: f1095a.mo_a
     printed: (helper)
@@ -77,13 +88,17 @@ form:
     expr:
       op: input
       source: 'The monthly amount in Part III, column B (monthly SLCSP premium), the same in every month: the amount in column
-        B, or the correct applicable SLCSP premium if column B is blank, wrong, or zero although the premiums were paid by the due date
-        of your return (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if the premiums were not
+        B, or the correct applicable SLCSP premium if column B is blank, wrong (for example after a move or a change in your
+        tax or coverage family that you did not report to the Marketplace), or zero although the premiums were paid by the
+        due date of your return (from the Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if the premiums were not
         paid by the due date of your return (not including extensions)'
     cite: &id003
       doc: i8962
-      locator: p. 14, "you must determine the correct applicable SLCSP premium for every month."; p974 p. 27, Applicable SLCSP
-        premium tools, "Only the Marketplaces are able to provide applicable SLCSP premiums."; i1095a p. 3, Column B
+      locator: p. 14, "you must determine the correct applicable SLCSP premium for every month."; p. 15, "If any of the above
+        apply and you did not notify the Marketplace or if you have reason to believe the Marketplace reported the wrong
+        applicable SLCSP premium, determine the correct applicable SLCSP premium for the months affected", "You moved during
+        2025"; p974 p. 27, Applicable SLCSP premium tools, "Only the Marketplaces are able to provide applicable SLCSP
+        premiums."; i1095a p. 3, Column B
   - id: f1095a.c_total
     printed: (helper)
     label: Line 33, column C (annual advance payment of premium tax credit)
@@ -222,7 +237,8 @@ form:
     expr:
       op: input
       source: 'January 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        if column B is blank, wrong (for example after a move or a change in your tax or coverage family that you did not
+        report to the Marketplace), or zero for a month whose premiums were paid by the due date of your return (from the
         Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
         (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
@@ -233,7 +249,8 @@ form:
     expr:
       op: input
       source: 'February 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        if column B is blank, wrong (for example after a move or a change in your tax or coverage family that you did not
+        report to the Marketplace), or zero for a month whose premiums were paid by the due date of your return (from the
         Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
         (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
@@ -244,7 +261,8 @@ form:
     expr:
       op: input
       source: 'March 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        if column B is blank, wrong (for example after a move or a change in your tax or coverage family that you did not
+        report to the Marketplace), or zero for a month whose premiums were paid by the due date of your return (from the
         Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
         (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
@@ -255,7 +273,8 @@ form:
     expr:
       op: input
       source: 'April 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        if column B is blank, wrong (for example after a move or a change in your tax or coverage family that you did not
+        report to the Marketplace), or zero for a month whose premiums were paid by the due date of your return (from the
         Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
         (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
@@ -266,7 +285,8 @@ form:
     expr:
       op: input
       source: 'May 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        if column B is blank, wrong (for example after a move or a change in your tax or coverage family that you did not
+        report to the Marketplace), or zero for a month whose premiums were paid by the due date of your return (from the
         Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
         (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
@@ -277,7 +297,8 @@ form:
     expr:
       op: input
       source: 'June 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        if column B is blank, wrong (for example after a move or a change in your tax or coverage family that you did not
+        report to the Marketplace), or zero for a month whose premiums were paid by the due date of your return (from the
         Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
         (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
@@ -288,7 +309,8 @@ form:
     expr:
       op: input
       source: 'July 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        if column B is blank, wrong (for example after a move or a change in your tax or coverage family that you did not
+        report to the Marketplace), or zero for a month whose premiums were paid by the due date of your return (from the
         Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
         (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
@@ -299,7 +321,8 @@ form:
     expr:
       op: input
       source: 'August 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        if column B is blank, wrong (for example after a move or a change in your tax or coverage family that you did not
+        report to the Marketplace), or zero for a month whose premiums were paid by the due date of your return (from the
         Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
         (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
@@ -310,7 +333,8 @@ form:
     expr:
       op: input
       source: 'September 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        if column B is blank, wrong (for example after a move or a change in your tax or coverage family that you did not
+        report to the Marketplace), or zero for a month whose premiums were paid by the due date of your return (from the
         Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
         (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
@@ -321,7 +345,8 @@ form:
     expr:
       op: input
       source: 'October 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        if column B is blank, wrong (for example after a move or a change in your tax or coverage family that you did not
+        report to the Marketplace), or zero for a month whose premiums were paid by the due date of your return (from the
         Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
         (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
@@ -332,7 +357,8 @@ form:
     expr:
       op: input
       source: 'November 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        if column B is blank, wrong (for example after a move or a change in your tax or coverage family that you did not
+        report to the Marketplace), or zero for a month whose premiums were paid by the due date of your return (from the
         Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
         (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003
@@ -343,7 +369,8 @@ form:
     expr:
       op: input
       source: 'December 2025, column B (monthly SLCSP premium): the amount in column B, or the correct applicable SLCSP premium
-        if column B is blank, wrong, or zero for a month whose premiums were paid by the due date of your return (from the
+        if column B is blank, wrong (for example after a move or a change in your tax or coverage family that you did not
+        report to the Marketplace), or zero for a month whose premiums were paid by the due date of your return (from the
         Marketplace''s tool, for example HealthCare.gov/Tax-Tool); zero if no one was enrolled in this policy that month
         (column A blank) or if that month''s premiums were not paid by the due date of your return (not including extensions)'
     cite: *id003

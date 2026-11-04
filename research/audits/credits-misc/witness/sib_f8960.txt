@@ -1,0 +1,20 @@
+
+## f8960.unsupported — Any annuity, rental, royalty, business or pass-through income; a CFC or PFIC holding; a section 911 exclusion; a disposition adjustment (Form 8960 line 5b or 5c, for example gain on employer securities attributable to net unrealized appreciation (NUA) from a qualified plan, or the sale of property held in a trade or business or of an interest in a partnership or S corporation); a section 1411 net operating loss; section 404(k) dividends on employer securities held in an employee stock ownership plan (ESOP) and paid directly to you (Form 1099-DIV box 1a); excluded savings bond interest (Form 8815); a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment?
+
+(a) lines that read it, through helpers (11)
+  f8960.line1
+  f8960.line10
+  f8960.line13
+  f8960.line3
+  f8960.line4a
+  f8960.line4b
+  f8960.line5b
+  f8960.line5c
+  f8960.line6
+  f8960.line7
+  f8960.line9c
+
+(c) predicates testing the same enum values (0)
+
+(b) lines and questions anchored on the same doc/page/heading (1)
+  f8960.line10

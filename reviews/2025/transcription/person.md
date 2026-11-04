@@ -7,21 +7,21 @@ Second transcription of `Each person on the return — per-person facts and tota
 | date | 2026-11-03 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 142d8ce74f57054cbc6432d4ce96453104cf3a118cb38b869dfb50066178b9d5 |
+| prompt sha256 | b32afc24066f15532e659f8df4890a279d7e9920d00daafdc8d2af9eb4f49e6c |
 | prompt policy | source-only-computation-v2 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
 | complete input context | pass |
-| required input context sha256 | 617785a62c6ffde77bc8fb68e2771a7490b7e70f4a2db3d14339977095aab95f |
+| required input context sha256 | dd63f1d565c96b3f1382d5c034a2c7eb1f137473f2d43c30409dcbaf7bb10cdb |
 | type validation policy | project-expression-types-v3 |
 | model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 23a2c0c44f1a05df257bacd3810606e6948a1655a974a44fedb6e5debc3e96c2 |
+| subject sha256 | 7c1982142570d77b86602ee931236dfad956df58ff01c7515117175c08e52cfa |
 | printed lines compared | 99 |
-| agree / disagree / missing | 53 / 46 / 0 |
+| agree / disagree / missing | 55 / 44 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -30,7 +30,7 @@ Second transcription of `Each person on the return — per-person facts and tota
 | --- | --- | --- | --- | --- | --- | --- |
 | f1040 | 2025; created 2025-09-05 | 1, 2 | whole document | ac32f00aed489e0722d0b409c0eb12915801d66f3a2fab05bc8391af61426383 | - | 72926cc2b256a68592e6cf0f2aa384ef8371eec968a0c8c62e050edf5bfea76a |
 | f1040sa | 2025; created 2025-11-20 | 1 | whole document | 225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd | - | bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe |
-| i1040gi | 2025; printed date 2026-02-25 | 17, 18, 19, 26, 27, 28, 29, 30, 31, 32, 40, 41, 44, 45, 47, 66, 93, 95, 96, 97, 98, 104, 108, 110, 117 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 17, 18, 19, 26, 27, 28, 30, 31, 40, 41, 44, 45, 66, 93, 95, 96, 98, 104, 110, 117 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| i1040gi | 2025; printed date 2026-02-25 | 17, 18, 19, 26, 27, 28, 29, 30, 31, 32, 33, 40, 41, 44, 45, 47, 66, 93, 95, 96, 97, 98, 104, 108, 110, 117 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 17, 18, 19, 26, 27, 28, 30, 31, 33, 40, 41, 44, 45, 66, 93, 95, 96, 98, 104, 110, 117 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
 | i8889 | 2025 | 3, 4, 7 | cited pages | bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c | 3, 4, 7 | 533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7 |
 | f8889 | 2025; created 2025-03-28 | 1 | whole document | f1ae3589453f3dd1d5277a79409bd7d0bf4772715fa8bd11d58126e6f387c0cf | - | 85ba6183eb2c35cf7b6d63eb6fd515be7234f5f938da39d7d000a6a7f2359d4e |
 | iw2w3 | 2025; printed date 2025-02-19 | 12, 13, 18, 20 | cited pages | 27ad850a44d58d9186afcccb33b8a32f4747911e2b1b3138de515f44d4de33f3 | 12, 13, 18, 20 | 3876738db222e8abe6103f29d8a8654a3139b9896f97e325d50e80b87ed5b26a |
@@ -54,6 +54,7 @@ Second transcription of `Each person on the return — per-person facts and tota
 | f1040s2 | 2025; created 2025-05-08 | 1, 2 | whole document | 29e3a05ca4dca4b5316833984170cff8815045c2e3957d048cb713ad90cb728f | - | 129b2541cce9743c9bde3a48fdfcc2512767d88b7cbbbe562d7989b117232d62 |
 | f5329 | 2025 | 1, 2, 3 | whole document | 53ac10ecce39dbd1cc0a3b88c04e351c2a61f3ad35d145d5d847f30f47a1b945 | - | c65e0cd9d9ad8e8a04899ec87a11393ad5a3e281543eb6720b72357811f8f51d |
 | i4562 | 2025 | 4, 11 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 11 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
+| p501 | 2025 returns; PDF created 2026-02-04 | 23 | pages named by another document's citation | 6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b | 23 | 2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671 |
 | p503 | For use in preparing 2025 returns | 3, 11 | pages named by another document's citation | a1ff9e2c3120455f6049fc50f0af8c5b8160302c198162dede66b2c8a5640607 | 3, 11 | 44d87f0ddfd4f953ea02cf5cc31e203e754c88aa74627dac5a551f46c6bf65b9 |
 | i8959 | 2025; printed date 2025-08-07 | 1, 2, 3, 4 | whole document | 0ec9603864196115a05c89675c3cf1ea20ce0384fb59e2195b2dbd8c65d3e85d | 1, 2, 3, 4 | 926d666edb486650f74da8863ef35ce5a9fe82c240719196138fdc8d40bf40df |
 | p970 | 2025 | 11 | pages named by another document's citation | a5c80030374da420bbaf3118a8a42fe79092e8529663d02ef601b6ae06657e00 | 11 | f6622ed07641c7d4e2a217fb9d9b1fecb7ab16f08dbc758f1a0963e1fe677e0a |
@@ -78,7 +79,7 @@ Second:
 {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.eligible_educator"}], "test": "eq"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": true}, {"input": "person.eligible_educator"}], "test": "eq"}, "then": {"of": [{"input": "person.educator_expenses"}, {"param": "s1.educator_max"}], "op": "smaller_of"}}], "op": "choose"}
 ```
 
-Ruling: model error; i1040gi p. 93, Line 11, "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025.". The reply asks person.eligible_educator of filers with no educator expenses entered; the project skips it when the expense is zero. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 3,161 of 4,960 agree; 1,773 candidate-unknown, 26 project-unknown; on returns the full interview completes: 96 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 96 candidate-unknown person.eligible_educator (for example classm.s179.2). Project stands.
+Ruling: model error; i1040gi p. 93, Line 11, "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025.". The reply asks person.eligible_educator of filers with no educator expenses entered; the project skips it when the expense is zero. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. Reply unchanged since the previous round; ruling re-checked against this record. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 3,266 of 5,127 agree; 1,835 candidate-unknown, 26 project-unknown; on returns the full interview completes: 101 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 102 against the record's 101, the class M fixtures having been rewritten by a concurrent run): 102 candidate-unknown person.eligible_educator (for example classm.asset.1, person[spouse]). Project stands.
 
 ### person.hsa_forms — Number of Forms 8889 entered for this person
 Status: **AGREE**
@@ -101,7 +102,7 @@ Second:
 {"collection": "f8889", "field": "f8889.one", "op": "sum_over", "where": {"args": [{"const": "agreed"}, {"ref": "f8889.allocation"}], "test": "eq"}}
 ```
 
-Ruling: representation; i8889 p. 7, Line 6. The project's helper is read only under the married-family split of line 6 and is zero otherwise; the reply omits that gate (spot-checked: classm.s3.3.deepseek taxpayer, project split false and $0, candidate $712.50), so the amount differs on a helper no return reads outside the split. No printed Form 8889 line was compared here. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 4,666 of 4,960 agree; 253 value, 41 candidate-unknown; on returns the full interview completes: none. No completed-return difference. Project stands.
+Ruling: model error; i8889 p. 7, Line 6, "Spouses who have separate HSAs and had family coverage under an HDHP at any time during 2025, use the following rules". The project's helper is read only under the married-family split of line 6 and is zero otherwise; the reply omits that gate, so it gives an allocation amount outside the split (no printed line reads it there) and, on one completed return, asks the Form 8889 allocation answer of a person the rule does not reach. Reclassified from representation: the same reply now needs an answer the source does not need on a completed return. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 4,830 of 5,127 agree; 253 value, 44 candidate-unknown; on returns the full interview completes: 1 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 2 against the record's 1, the class M fixtures having been rewritten by a concurrent run): 2 candidate-unknown person.allocation (for example classm.asset.1, person[taxpayer]). Project stands.
 
 ### person.hsa_step1 — This persons Step 1 limit under the spouse rule of line 6
 Status: **DISAGREE**
@@ -118,7 +119,7 @@ Second:
 {"collection": "f8889", "field": "f8889.step1", "op": "sum_over", "where": null}
 ```
 
-Ruling: representation; i8889 p. 7, Line 6. The project's helper is read only under the married-family split of line 6 and is zero otherwise; the reply omits that gate (spot-checked: classm.s3.3.deepseek taxpayer, project split false and $0, candidate $712.50), so the amount differs on a helper no return reads outside the split. No printed Form 8889 line was compared here. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 4,636 of 4,960 agree; 321 value, 3 candidate-unknown; on returns the full interview completes: 23 value. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 23 value (for example classm.s3.3.deepseek). Project stands.
+Ruling: representation; i8889 p. 7, Line 6. The project's helper is read only under the married-family split of line 6 and is zero otherwise; the reply omits that gate (spot-checked: classm.s3.3.deepseek taxpayer, project split false and $0, candidate $712.50), so the amount differs on a helper no return reads outside the split. No printed Form 8889 line was compared here. Reply unchanged since the previous round; ruling re-checked against this record. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 4,860 of 5,127 agree; 262 value, 5 candidate-unknown; on returns the full interview completes: 23 value. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 23 value (for example classm.s3.3.deepseek, person[taxpayer]). Project stands.
 
 ### person.hsa_share — This persons part of the Step 1 limit under the spouse rule of line 6
 Status: **DISAGREE**
@@ -135,7 +136,7 @@ Second:
 {"collection": "f8889", "field": "f8889.share", "op": "sum_over", "where": null}
 ```
 
-Ruling: representation; i8889 p. 7, Line 6. The project's helper is read only under the married-family split of line 6 and is zero otherwise; the reply omits that gate (spot-checked: classm.s3.3.deepseek taxpayer, project split false and $0, candidate $712.50), so the amount differs on a helper no return reads outside the split. No printed Form 8889 line was compared here. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 4,324 of 4,960 agree; 310 value, 296 candidate-unknown, 30 candidate-refuses; on returns the full interview completes: 23 value. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 23 value (for example classm.s3.3.deepseek). Project stands.
+Ruling: representation; i8889 p. 7, Line 6. The project's helper is read only under the married-family split of line 6 and is zero otherwise; the reply omits that gate (spot-checked: classm.s3.3.deepseek taxpayer, project split false and $0, candidate $712.50), so the amount differs on a helper no return reads outside the split. No printed Form 8889 line was compared here. Reply unchanged since the previous round; ruling re-checked against this record. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 4,547 of 5,127 agree; 299 candidate-unknown, 251 value, 30 candidate-refuses; on returns the full interview completes: 23 value, 1 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 25 against the record's 24, the class M fixtures having been rewritten by a concurrent run): 23 value (for example classm.s3.3.deepseek, person[taxpayer]); 2 candidate-unknown person.allocation (for example classm.asset.1, person[taxpayer]). Project stands.
 
 ### person.hsa_deduction — Form 8889 line 13 for this person
 Status: **AGREE**
@@ -210,42 +211,10 @@ Status: **AGREE**
 Status: **AGREE**
 
 ### person.s179_nonlisted — Section 179 elected, other than listed property, this person
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "sc", "field": "sc.f6", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"collection": "sc", "field": "sc.s179_elected", "op": "sum_over", "where": null}
-```
-
-Second transcription's note: The catalog has no Schedule C field that splits the elected cost between listed (line 7) and nonlisted (line 6) property. The total elected cost (sc.s179_elected) is reported here. This interface is not fully determined.
-
-Ruling: model error; i4562 p. 5, Line 7, "Enter the amount that you elected to expense for listed property (defined earlier) on line 29 here.". The reply puts every section 179 amount in the non-listed total and none in the listed total (spot-checked: classm.eic.3.deepseek, a listed asset with $10,918 elected: project listed $10,918 and non-listed $0, candidate $0 and $10,918); the totals agree, but listed property belongs on line 7 through line 29. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 4,852 of 4,960 agree; 97 candidate-refuses, 11 value; on returns the full interview completes: 6 value. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 6 value (for example classm.eic.3.deepseek). Project stands.
+Status: **AGREE**
 
 ### person.s179_listed — Section 179 elected on listed property, this person
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"collection": "sc", "field": "sc.f29", "op": "sum_over", "where": null}
-```
-
-Second:
-
-```json
-{"line": "zero"}
-```
-
-Second transcription's note: Not determinable from the catalog: no per-business listed-property section 179 field exists. The elected cost is all carried on person.s179_nonlisted, so this line is zero to avoid counting it twice. This is a limitation, not an IRS rule.
-
-Ruling: model error; i4562 p. 5, Line 7, "Enter the amount that you elected to expense for listed property (defined earlier) on line 29 here.". The reply's listed section 179 total is the constant zero (see person.s179_nonlisted); the project sums the listed assets' and vehicles' 2025 section 179 amounts. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 4,830 of 4,960 agree; 97 project-refuses, 22 project-unknown, 11 value; on returns the full interview completes: 6 value. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 6 value (for example classm.eic.3.deepseek). Project stands.
+Status: **AGREE**
 
 ### person.income179 — Business net profit or loss without section 179, this person
 Status: **AGREE**
@@ -268,7 +237,7 @@ Second:
 {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: model error; i1040sse p. 1, Who Must File Schedule SE, "You must file Schedule SE if:". The reply reads its own self-employment screen (person.se_screen) for every person, including persons with no Schedule C, and refuses on it where the project computes zero or the amount. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 3,202 of 4,960 agree; 1,660 candidate-unknown, 98 candidate-refuses; on returns the full interview completes: 13 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 13 candidate-unknown person.se_screen (for example stage14.joint.spouse_wages); 3 candidate-refuses at se_screen (for example classm.f5695.2.deepseek). Project stands.
+Ruling: model error; i1040sse p. 1, Who Must File Schedule SE, "You must file Schedule SE if:". The reply reads its own self-employment screen (person.se_screen) for every person, including persons with no Schedule C, and refuses on it where the project computes zero or the amount. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. The reply now sums sc.line31 where the project (and the previous reply) read sc.result; the two are equal except on a Schedule C loss limited by the cited at-risk screen (see person.sc_total), so this changes no computed amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 3,202 of 5,127 agree; 1,700 candidate-unknown, 224 candidate-refuses, 1 project-refuses; on returns the full interview completes: 16 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 20 against the record's 19, the class M fixtures having been rewritten by a concurrent run): 17 candidate-unknown person.se_screen (for example classm.asset.1, person[spouse]); 3 candidate-refuses (for example classm.f5695.2.deepseek, person[taxpayer]). Project stands.
 
 ### person.se_line12 — Schedule SE line 12 (self-employment tax) for this person
 Status: **DISAGREE**
@@ -285,7 +254,7 @@ Second:
 {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}
 ```
 
-Ruling: model error; i1040sse p. 1, Who Must File Schedule SE, "You must file Schedule SE if:". The reply reads its own self-employment screen (person.se_screen) for every person, including persons with no Schedule C, and refuses on it where the project computes zero or the amount. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 3,202 of 4,960 agree; 1,660 candidate-unknown, 98 candidate-refuses; on returns the full interview completes: 13 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 13 candidate-unknown person.se_screen (for example stage14.joint.spouse_wages); 3 candidate-refuses at se_screen (for example classm.f5695.2.deepseek). Project stands.
+Ruling: model error; i1040sse p. 1, Who Must File Schedule SE, "You must file Schedule SE if:". The reply reads its own self-employment screen (person.se_screen) for every person, including persons with no Schedule C, and refuses on it where the project computes zero or the amount. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. The reply now sums sc.line31 where the project (and the previous reply) read sc.result; the two are equal except on a Schedule C loss limited by the cited at-risk screen (see person.sc_total), so this changes no computed amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 3,202 of 5,127 agree; 1,700 candidate-unknown, 224 candidate-refuses, 1 project-refuses; on returns the full interview completes: 16 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 20 against the record's 19, the class M fixtures having been rewritten by a concurrent run): 17 candidate-unknown person.se_screen (for example classm.asset.1, person[spouse]); 3 candidate-refuses (for example classm.f5695.2.deepseek, person[taxpayer]). Project stands.
 
 ### person.se_line13 — Schedule SE line 13 (deduction for one-half of self-employment tax) for this person
 Status: **DISAGREE**
@@ -302,7 +271,7 @@ Second:
 {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}
 ```
 
-Ruling: model error; i1040sse p. 1, Who Must File Schedule SE, "You must file Schedule SE if:". The reply reads its own self-employment screen (person.se_screen) for every person, including persons with no Schedule C, and refuses on it where the project computes zero or the amount. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 3,202 of 4,960 agree; 1,660 candidate-unknown, 98 candidate-refuses; on returns the full interview completes: 13 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 13 candidate-unknown person.se_screen (for example stage14.joint.spouse_wages); 3 candidate-refuses at se_screen (for example classm.f5695.2.deepseek). Project stands.
+Ruling: model error; i1040sse p. 1, Who Must File Schedule SE, "You must file Schedule SE if:". The reply reads its own self-employment screen (person.se_screen) for every person, including persons with no Schedule C, and refuses on it where the project computes zero or the amount. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. The reply now sums sc.line31 where the project (and the previous reply) read sc.result; the two are equal except on a Schedule C loss limited by the cited at-risk screen (see person.sc_total), so this changes no computed amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 3,202 of 5,127 agree; 1,700 candidate-unknown, 224 candidate-refuses, 1 project-refuses; on returns the full interview completes: 16 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 20 against the record's 19, the class M fixtures having been rewritten by a concurrent run): 17 candidate-unknown person.se_screen (for example classm.asset.1, person[spouse]); 3 candidate-refuses (for example classm.f5695.2.deepseek, person[taxpayer]). Project stands.
 
 ### person.s16 — Schedule 1 line 16 for this person
 Status: **DISAGREE**
@@ -316,10 +285,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.sep_contrib"}, {"line": "Step 21"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"of": [{"input": "person.simple_deferral"}, {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"of": [{"keys": [{"input": "person.simple_age"}], "op": "keyed_lookup", "table": "simple_catchup"}, {"param": "ret.simple_limit"}], "op": "sum"}], "op": "smaller_of"}], "op": "smaller_of"}, {"of": [{"input": "person.simple_employer"}, {"alternatives": [{"guard": {"args": [{"const": "match"}, {"input": "person.simple_kind"}], "test": "eq"}, "then": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "ret.match_rate"}}, {"of": [{"input": "person.simple_deferral"}, {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"of": [{"keys": [{"input": "person.simple_age"}], "op": "keyed_lookup", "table": "simple_catchup"}, {"param": "ret.simple_limit"}], "op": "sum"}], "op": "smaller_of"}], "op": "smaller_of"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "nonelective"}, {"input": "person.simple_kind"}], "test": "eq"}, "then": {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"param": "ret.comp_limit"}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "ret.nonelective_rate"}}}], "op": "choose"}], "op": "smaller_of"}], "op": "sum"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.sep_contrib"}, {"line": "Step 21"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"of": [{"input": "person.simple_employer"}, {"alternatives": [{"guard": {"args": [{"const": "match"}, {"input": "person.simple_kind"}], "test": "eq"}, "then": {"of": [{"amount": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "ret.match_rate"}}, {"of": [{"of": [{"input": "person.simple_deferral"}, {"of": [{"keys": [{"input": "person.simple_age"}], "op": "keyed_lookup", "table": "simple_catchup"}, {"param": "ret.simple_limit"}], "op": "sum"}], "op": "smaller_of"}, {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}], "op": "smaller_of"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "nonelective"}, {"input": "person.simple_kind"}], "test": "eq"}, "then": {"amount": {"of": [{"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}, {"param": "ret.comp_limit"}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "ret.nonelective_rate"}}}], "op": "choose"}], "op": "smaller_of"}, {"of": [{"of": [{"input": "person.simple_deferral"}, {"of": [{"keys": [{"input": "person.simple_age"}], "op": "keyed_lookup", "table": "simple_catchup"}, {"param": "ret.simple_limit"}], "op": "sum"}], "op": "smaller_of"}, {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}], "op": "smaller_of"}], "op": "sum"}}], "op": "choose"}
 ```
 
-Ruling: model error; p560 p. 39, "Enter your actual contribution, not to exceed your maximum deductible contribution, on Schedule 1 (Form 1040), line 16". The reply asks the plan screen and the plan answers of persons who have no Schedule C (and so no self-employed plan the project computes). The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 2,899 of 4,960 agree; 1,863 candidate-unknown, 109 candidate-refuses, 89 project-refuses; on returns the full interview completes: 119 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 89 candidate-unknown person.plan_screen (for example classm.s179.2); 9 candidate-unknown person.se_screen (for example generated); 9 candidate-unknown person.plan (for example generated); 3 candidate-refuses at se_screen (for example classm.f5695.2.deepseek); 2 candidate-unknown person.sep_rate (for example generated); 2 candidate-unknown person.sep_contrib (for example generated); 2 candidate-unknown person.simple_deferral (for example generated); 2 candidate-unknown person.simple_age (for example generated); 2 candidate-unknown person.simple_kind (for example generated); 2 candidate-unknown person.simple_employer (for example generated). Project stands.
+Ruling: model error; p560 p. 39, "Enter your actual contribution, not to exceed your maximum deductible contribution, on Schedule 1 (Form 1040), line 16". The reply asks the plan screen and the plan answers of persons who have no Schedule C (and so no self-employed plan the project computes). The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. New this round: 117 completed-return value differences, all on class M fixtures of the deepseek family that answer person.plan for a person with no Schedule C (spot-checked: classm.clcw26.2.deepseek and classm.s3.4.deepseek, plan simple, no Schedule C entry: project $0, candidate $5,199 and $8,925). The project reads person.plan only with a Schedule C, so the interview never asks these answers; the reply computes a self-employed deduction without self-employment income, against p560 p. 39 ("net profit from line 31, Schedule C"). executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 2,871 of 5,127 agree; 1,896 candidate-unknown, 215 value, 118 project-refuses, 25 candidate-refuses, 2 project-unknown; on returns the full interview completes: 117 value, 115 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 233 against the record's 232, the class M fixtures having been rewritten by a concurrent run): 117 value (for example classm.clcw26.2.deepseek, person[taxpayer]); 95 candidate-unknown person.plan_screen (for example classm.asset.1, person[spouse]); 9 candidate-unknown person.plan (for example classm.s2.3.deepseek without plan, person[taxpayer]); 2 candidate-unknown person.se_screen (for example classm.s2.3.deepseek without se_screen, person[spouse]); 2 candidate-unknown person.sep_rate (for example classm.s2.3.deepseek without sep_rate, person[spouse]); 2 candidate-unknown person.sep_contrib (for example classm.s2.3.deepseek without sep_contrib, person[spouse]); 2 candidate-unknown person.simple_deferral (for example classm.s3.4.deepseek without simple_deferral, person[taxpayer]); 2 candidate-unknown person.simple_age (for example classm.s3.4.deepseek without simple_age, person[taxpayer]); 2 candidate-unknown person.simple_employer (for example classm.s3.4.deepseek without simple_employer, person[taxpayer]). Project stands.
 
 ### person.positive_profits — Total of all net profits of this person's businesses (losses not included)
 Status: **AGREE**
@@ -345,9 +314,9 @@ Second:
 {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}
 ```
 
-Second transcription's note: Line 4b (optional methods) is screened out, so it is zero. When no Schedule SE is required, Part 2 (Schedule C line 31) gives the same amount, because line 3 equals line 2 and line 13 is zero.
+Second transcription's note: Optional methods (line 4b) and church income (5a) are screened out, so line 1b is zero.
 
-Ruling: model error; i1040sse p. 1, Who Must File Schedule SE, "You must file Schedule SE if:". The reply reads its own self-employment screen (person.se_screen) for every person, including persons with no Schedule C, and refuses on it where the project computes zero or the amount. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 3,202 of 4,960 agree; 1,660 candidate-unknown, 98 candidate-refuses; on returns the full interview completes: 13 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 13 candidate-unknown person.se_screen (for example stage14.joint.spouse_wages); 3 candidate-refuses at se_screen (for example classm.f5695.2.deepseek). Project stands.
+Ruling: model error; i1040sse p. 1, Who Must File Schedule SE, "You must file Schedule SE if:". The reply reads its own self-employment screen (person.se_screen) for every person, including persons with no Schedule C, and refuses on it where the project computes zero or the amount. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. The reply now sums sc.line31 where the project (and the previous reply) read sc.result; the two are equal except on a Schedule C loss limited by the cited at-risk screen (see person.sc_total), so this changes no computed amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 3,200 of 5,127 agree; 1,700 candidate-unknown, 226 candidate-refuses, 1 project-refuses; on returns the full interview completes: 16 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 20 against the record's 19, the class M fixtures having been rewritten by a concurrent run): 17 candidate-unknown person.se_screen (for example classm.asset.1, person[spouse]); 3 candidate-refuses (for example classm.f5695.2.deepseek, person[taxpayer]). Project stands.
 
 ### person.sc_1a — This person's Schedules C with Schedule 1-A tips or overtime
 Status: **AGREE**
@@ -370,7 +339,7 @@ Second:
 {"args": [{"const": 0, "type": "Count"}, {"collection": "w2", "field": "w2.one", "op": "sum_over", "where": {"args": [{"const": 0}, {"ref": "w2.box10"}], "test": "lt"}}], "test": "lt"}
 ```
 
-Ruling: representation; i2441 p. 4, Part III, Form W-2 box 10. Triage found no difference: executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 4,960 of 4,960 agree; the same answer is read through a differently keyed reference. Project stands.
+Ruling: representation; i2441 p. 4, Part III, Form W-2 box 10. Triage found no difference: Reply unchanged since the previous round; ruling re-checked against this record. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 5,127 of 5,127 agree; none; on returns the full interview completes: none. No difference. Project stands.
 
 ### person.dc_earned — This person's earned income for Form 2441 lines 4 and 5: Form W-2 box 1, the person's shar
 Status: **DISAGREE**
@@ -387,11 +356,11 @@ Second:
 {"of": [{"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}, {"collection": "w2", "field": "w2.box1", "op": "sum_over", "where": null}], "op": "sum"}
 ```
 
-Second transcription's note: Line 1z includes the household-level line 1e taxable benefits, which are not per person. This uses the person's Form W-2 box 1. Deemed student or disabled income is outside this line.
+Second transcription's note: Form 1040 line 1z for this person is read as the box 1 total (other earned income is screened out).
 
-Ruling: model error; i2441 p. 4, Lines 4 and 5, "Earned income for figuring the credit generally includes the following amounts.". The reply reads person.se_screen for every person to figure earned income. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 3,221 of 4,960 agree; 1,629 candidate-unknown, 96 candidate-refuses, 12 project-refuses, 2 value; on returns the full interview completes: 13 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 13 candidate-unknown person.se_screen (for example stage14.joint.spouse_wages); 3 candidate-refuses at se_screen (for example classm.f5695.2.deepseek). Project stands.
+Ruling: model error; i2441 p. 4, Lines 4 and 5, "Earned income for figuring the credit generally includes the following amounts.". The reply reads person.se_screen for every person to figure earned income. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. The reply now sums sc.line31 where the project (and the previous reply) read sc.result; the two are equal except on a Schedule C loss limited by the cited at-risk screen (see person.sc_total), so this changes no computed amount. The two value differences (classm.carloan.1, generated 198) are on refused returns, where the reply's line 31 reading meets a refused Schedule C. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 3,219 of 5,127 agree; 1,668 candidate-unknown, 223 candidate-refuses, 15 project-refuses, 2 value; on returns the full interview completes: 16 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 20 against the record's 19, the class M fixtures having been rewritten by a concurrent run): 17 candidate-unknown person.se_screen (for example classm.asset.1, person[spouse]); 3 candidate-refuses (for example classm.f5695.2.deepseek, person[taxpayer]). Project stands.
 
-### person.dc_earned_b — This person's earned income for Form 2441 lines 18 and 19: as for lines 4 and 5, without t
+### person.dc_earned_b — This person's earned income for Form 2441 lines 18 and 19: as for lines 4 and 5, without l
 Status: **DISAGREE**
 
 Project:
@@ -406,9 +375,9 @@ Second:
 {"of": [{"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}, {"collection": "w2", "field": "w2.box1", "op": "sum_over", "where": null}], "op": "sum"}
 ```
 
-Second transcription's note: Line 12 excludes box 10 amounts that are included in box 1. The person's earned income built from box 1 therefore contains no line 12 benefits, so it is the same as dc_earned.
+Second transcription's note: Line 12 benefits are not in box 1, so earned income needs no further reduction; read as equal to dc_earned.
 
-Ruling: model error; i2441 p. 5, Line 18, "for purposes of lines 18 and 19, earned income doesn’t include any dependent care benefits shown on line 12". As person.dc_earned. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 3,220 of 4,960 agree; 1,642 candidate-unknown, 98 candidate-refuses; on returns the full interview completes: 13 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 13 candidate-unknown person.se_screen (for example stage14.joint.spouse_wages); 3 candidate-refuses at se_screen (for example classm.f5695.2.deepseek). Project stands.
+Ruling: model error; i2441 p. 5, Line 18, "for purposes of lines 18 and 19, earned income doesn’t include any dependent care benefits shown on line 12". As person.dc_earned. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. The reply now sums sc.line31 where the project (and the previous reply) read sc.result; the two are equal except on a Schedule C loss limited by the cited at-risk screen (see person.sc_total), so this changes no computed amount. The person-dep change to this line (PENDING-1, T-121) is its label only; the sum (W-2 box 1 plus net self-employment earnings, without line 1e) is unchanged and equals the reply's, and the new f2441.line13_earned refusal sits on Form 2441 line 25, not here. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 3,218 of 5,127 agree; 1,682 candidate-unknown, 226 candidate-refuses, 1 project-refuses; on returns the full interview completes: 16 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 20 against the record's 19, the class M fixtures having been rewritten by a concurrent run): 17 candidate-unknown person.se_screen (for example classm.asset.1, person[spouse]); 3 candidate-refuses (for example classm.f5695.2.deepseek, person[taxpayer]). Project stands.
 
 ### person.sav_ineligible — Born after January 1, 2008, claimed as a dependent on someone else's 2025 return, or a stu
 Status: **DISAGREE**
@@ -425,7 +394,7 @@ Second:
 {"args": [{"args": [{"const": false}, {"input": "person.sav_born"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.sav_claimed"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.sav_student"}], "test": "eq"}], "test": "any"}
 ```
 
-Ruling: ambiguity; amb.2025.savers_ineligible_column (owner decision). The reply reads person.sav_claimed where the project reads sa.dependent for the filer, the recorded reading (spot-checked: classm.f5695.2.deepseek, sav_claimed yes and sa.dependent no). The value differences follow from that recorded reading; the other differences are partial records withholding sav_claimed. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 4,775 of 4,960 agree; 137 value, 46 candidate-unknown, 2 project-unknown; on returns the full interview completes: 12 candidate-unknown, 2 value. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 12 candidate-unknown person.sav_claimed (for example generated); 2 value (for example classm.f5695.2.deepseek). Project stands.
+Ruling: ambiguity; amb.2025.savers_ineligible_column (owner decision). The reply reads person.sav_claimed where the project reads sa.dependent for the filer, the recorded reading (spot-checked: classm.f5695.2.deepseek, sav_claimed yes and sa.dependent no). The value differences follow from that recorded reading; the other differences are partial records withholding sav_claimed. Reply unchanged since the previous round; ruling re-checked against this record. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 4,817 of 5,127 agree; 258 value, 48 candidate-unknown, 4 project-unknown; on returns the full interview completes: 14 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 14 candidate-unknown person.sav_claimed (for example classm.f5695.2.deepseek, person[taxpayer]). Project stands.
 
 ### person.sav_line1 — Form 8880 line 1 for this person (traditional IRA contributions for 2025, deductible or no
 Status: **DISAGREE**
@@ -442,7 +411,7 @@ Second:
 {"of": [{"input": "person.ira_trad"}, {"input": "person.sav_roth"}], "op": "sum"}
 ```
 
-Ruling: model error; f8880 p. 1, line 1 (traditional and Roth IRA contributions). The reply asks person.ira_trad of persons the project does not ask it of (no IRA contribution entered). The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 3,320 of 4,960 agree; 1,602 candidate-unknown, 37 project-unknown, 1 project-refuses; on returns the full interview completes: 103 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 103 candidate-unknown person.ira_trad (for example classm.f8995.2). Project stands.
+Ruling: model error; f8880 p. 1, line 1 (traditional and Roth IRA contributions). The reply asks person.ira_trad of persons the project does not ask it of (no IRA contribution entered). The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. Reply unchanged since the previous round; ruling re-checked against this record. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 3,405 of 5,127 agree; 1,686 candidate-unknown, 35 project-unknown, 1 project-refuses; on returns the full interview completes: 108 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 109 against the record's 108, the class M fixtures having been rewritten by a concurrent run): 109 candidate-unknown person.ira_trad (for example classm.asset.1, person[spouse]). Project stands.
 
 ### person.sav_line2 — Form 8880 line 2 for this person (box 12 deferrals, voluntary contributions and own SIMPLE
 Status: **DISAGREE**
@@ -459,7 +428,7 @@ Second:
 {"of": [{"input": "person.sav_voluntary"}, {"alternatives": [{"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"input": "person.simple_deferral"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "ne"}, "then": {"line": "zero"}}], "op": "choose"}, {"collection": "w2", "field": "w2.sav_deferral", "op": "sum_over", "where": null}], "op": "sum"}
 ```
 
-Ruling: ambiguity; amb.2025.ira_covered (owner decision); f8880 p. 1, line 2, "Elective deferrals to a 401(k) or other qualified employer plan". The reply counts a self-employed person's SEP or SIMPLE answer (person.plan) without a Schedule C, which the recorded reading reads only with one; the value differences follow from that reading, as ruled in the previous round on the same 120 completed records. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 3,178 of 4,960 agree; 1,481 candidate-unknown, 208 value, 78 candidate-refuses, 14 project-refuses, 1 project-unknown; on returns the full interview completes: 120 value, 26 candidate-unknown, 4 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 120 value (for example classm.clcw26.2.deepseek); 13 candidate-unknown person.plan (for example stage14.joint.spouse_wages); 11 candidate-unknown person.sav_excess (for example generated); 4 candidate-refuses at sav_excess (for example classm.s3.3.deepseek); 2 candidate-unknown person.simple_deferral (for example generated). Project stands.
+Ruling: ambiguity; amb.2025.ira_covered (owner decision); f8880 p. 1, line 2, "Elective deferrals to a 401(k) or other qualified employer plan". The reply counts a self-employed person's SEP or SIMPLE answer (person.plan) without a Schedule C, which the recorded reading reads only with one; the value differences follow from that reading, as ruled in the previous round on the same 120 completed records. Reply unchanged since the previous round; ruling re-checked against this record. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 3,363 of 5,127 agree; 1,530 candidate-unknown, 206 value, 15 project-refuses, 12 candidate-refuses, 1 project-unknown; on returns the full interview completes: 118 value, 34 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 153 against the record's 152, the class M fixtures having been rewritten by a concurrent run): 118 value (for example classm.clcw26.2.deepseek, person[taxpayer]); 17 candidate-unknown person.sav_excess (for example classm.s3.3.deepseek, person[taxpayer]); 16 candidate-unknown person.plan (for example classm.asset.1, person[spouse]); 2 candidate-unknown person.simple_deferral (for example classm.s3.4.deepseek without simple_deferral, person[taxpayer]). Project stands.
 
 ### person.ira_contrib — This person's traditional IRA contributions for 2025 (zero if the traditional IRA question
 Status: **DISAGREE**
@@ -476,7 +445,7 @@ Second:
 {"input": "person.ira_trad"}
 ```
 
-Ruling: model error; i1040gi p. 95, Line 20, "If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction.". The reply asks person.ira_excess and person.ira_trad of persons the project does not ask them of. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 3,093 of 4,960 agree; 1,834 candidate-unknown, 32 project-unknown, 1 candidate-refuses; on returns the full interview completes: 115 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 103 candidate-unknown person.ira_excess (for example classm.f8995.2); 12 candidate-unknown person.ira_trad (for example generated). Project stands.
+Ruling: model error; i1040gi p. 95, Line 20, "If you made contributions to a traditional IRA for 2025, you may be able to take an IRA deduction.". The reply asks person.ira_excess and person.ira_trad of persons the project does not ask them of. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. Reply unchanged since the previous round; ruling re-checked against this record. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 3,167 of 5,127 agree; 1,928 candidate-unknown, 31 project-unknown, 1 candidate-refuses; on returns the full interview completes: 120 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 121 against the record's 120, the class M fixtures having been rewritten by a concurrent run): 109 candidate-unknown person.ira_excess (for example classm.asset.1, person[spouse]); 12 candidate-unknown person.ira_trad (for example classm.u1250.1.deepseek without ira_trad, person[taxpayer]). Project stands.
 
 ### person.ira_cov — Covered by a retirement plan (worksheet line 1a or 1b for this person)
 Status: **DISAGREE**
@@ -493,7 +462,7 @@ Second:
 {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}
 ```
 
-Ruling: ambiguity; amb.2025.ira_covered (owner decision). The reply treats person.plan (a SEP or SIMPLE answer) as coverage without a Schedule C (spot-checked: classm.f8889.1.deepseek spouse, ira_work_plan no, plan sep and the project's ira_se_plan no: project not covered, candidate covered); the recorded reading reads person.plan only with a Schedule C. The value differences follow from that reading. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 4,297 of 4,960 agree; 600 value, 51 candidate-unknown, 12 project-unknown; on returns the full interview completes: 310 value, 9 candidate-unknown, 5 project-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 310 value (for example classm.f8889.1.deepseek); 9 candidate-unknown person.plan (for example generated); 5 project-unknown person.ira_work_plan (for example stage21.f1.lower_bound_still_decides). Project stands.
+Ruling: ambiguity; amb.2025.ira_covered (owner decision). The reply treats person.plan (a SEP or SIMPLE answer) as coverage without a Schedule C (spot-checked: classm.f8889.1.deepseek spouse, ira_work_plan no, plan sep and the project's ira_se_plan no: project not covered, candidate covered); the recorded reading reads person.plan only with a Schedule C. The value differences follow from that reading. Reply unchanged since the previous round; ruling re-checked against this record. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 4,461 of 5,127 agree; 601 value, 53 candidate-unknown, 12 project-unknown; on returns the full interview completes: 308 value, 9 candidate-unknown, 5 project-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 308 value (for example classm.f8889.1.deepseek, person[spouse]); 9 candidate-unknown person.plan (for example classm.s2.3.deepseek without plan, person[taxpayer]); 5 project-unknown person.ira_work_plan (for example stage21.f1.lower_bound_still_decides, person[spouse]). Project stands.
 
 ### person.ira_line2 — Worksheet line 2 for this person's column
 Status: **DISAGREE**
@@ -507,12 +476,12 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}
 ```
 
-Second transcription's note: Two points are not modeled. Married filing separately and lived apart all year should give $89,000; the mfs parameter gives $10,000. A married-filing-separately person who is not covered but whose spouse is covered is treated as covered by the IRS but not here.
+Second transcription's note: Married filing separately and lived apart all year ($89,000) has no separate parameter; the status-keyed amount is used. The MFS lived-apart case is not distinguished here.
 
-Ruling: ambiguity; amb.2025.ira_covered (owner decision); i1040gi p. 97, line 1, "skip lines 2 through 6". Every value difference is the coverage reading of person.ira_cov carried into the line 2 limit ($89,000, $146,000 or $246,000) or into a person whose lines 2 to 6 are skipped (spot-checked: classm.f8889.1.deepseek spouse, classm.f4952.1.deepseek and classm.s2.3.deepseek); the differences are $157,000 or $100,000 (the gaps between the limits) or an amount against zero. None reaches the deduction: person.ira_deduction has no completed-return value difference. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 2,119 of 4,960 agree; 1,580 value, 1,255 candidate-unknown, 6 project-unknown; on returns the full interview completes: 586 value, 88 candidate-unknown, 2 project-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 586 value (for example classm.f8889.1.deepseek); 79 candidate-unknown person.ira_work_plan (for example classm.f8995.3); 9 candidate-unknown person.plan (for example generated); 2 project-unknown person.ira_work_plan (for example stage21.f1.lower_bound_still_decides). Project stands.
+Ruling: ambiguity; amb.2025.ira_covered (owner decision); i1040gi p. 97, line 1, "skip lines 2 through 6". Every value difference is the coverage reading of person.ira_cov carried into the line 2 limit ($89,000, $146,000 or $246,000) or into a person whose lines 2 to 6 are skipped (spot-checked: classm.f8889.1.deepseek spouse, classm.f4952.1.deepseek and classm.s2.3.deepseek); the differences are $157,000 or $100,000 (the gaps between the limits) or an amount against zero. None reaches the deduction: person.ira_deduction has no completed-return value difference. Reply changed (the work-plan test is now applied before the plan reading); the mechanism and the owner reading are the same, and person.ira_deduction still has no completed-return value difference. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 4,880 of 5,127 agree; 170 value, 66 candidate-unknown, 6 project-unknown, 5 candidate-refuses; on returns the full interview completes: 129 value, 2 candidate-unknown, 2 project-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 129 value (for example classm.f8889.1.deepseek, person[spouse]); 2 project-unknown person.ira_work_plan (for example stage21.f1.lower_bound_still_decides, person[spouse]); 2 candidate-unknown person.plan (for example classm.s2.3.deepseek without plan, person[taxpayer]). Project stands.
 
 ### person.ira_line6 — Worksheet line 6 for this person's column: is line 5 less than line 2? If yes, subtract li
 Status: **DISAGREE**
@@ -526,10 +495,10 @@ Project:
 Second:
 
 ```json
-{"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}
+{"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}
 ```
 
-Ruling: ambiguity; amb.2025.ira_covered (owner decision); i1040gi p. 97, line 1, "skip lines 2 through 6". Every value difference is the coverage reading of person.ira_cov carried into the line 2 limit ($89,000, $146,000 or $246,000) or into a person whose lines 2 to 6 are skipped (spot-checked: classm.f8889.1.deepseek spouse, classm.f4952.1.deepseek and classm.s2.3.deepseek); the differences are $157,000 or $100,000 (the gaps between the limits) or an amount against zero. None reaches the deduction: person.ira_deduction has no completed-return value difference. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 2,466 of 4,960 agree; 1,195 candidate-unknown, 1,154 value, 94 project-refuses, 36 project-unknown, 15 candidate-refuses; on returns the full interview completes: 526 value, 165 candidate-unknown, 3 candidate-refuses, 2 project-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 526 value (for example classm.f8889.1.deepseek); 79 candidate-unknown person.ira_work_plan (for example classm.f8995.3); 21 candidate-unknown person.eligible_educator (for example stage14.sep.basic); 14 candidate-unknown person.plan_screen (for example generated); 11 candidate-unknown person.se_screen (for example generated); 11 candidate-unknown person.plan (for example generated); 5 candidate-unknown person.ira_trad (for example generated); 5 candidate-unknown person.ira_excess (for example generated); 5 candidate-unknown person.ira_age50 (for example generated); 3 candidate-refuses at se_screen (for example classm.f5695.2.deepseek); 3 candidate-unknown person.sep_rate (for example generated); 3 candidate-unknown person.sep_contrib (for example generated); 2 project-unknown person.ira_work_plan (for example stage21.f1.lower_bound_still_decides); 2 candidate-unknown person.simple_deferral (for example generated); 2 candidate-unknown person.simple_age (for example generated); 2 candidate-unknown person.simple_kind (for example generated); 2 candidate-unknown person.simple_employer (for example generated). Project stands.
+Ruling: ambiguity; amb.2025.ira_covered (owner decision); i1040gi p. 97, line 1, "skip lines 2 through 6". Every value difference is the coverage reading of person.ira_cov carried into the line 2 limit ($89,000, $146,000 or $246,000) or into a person whose lines 2 to 6 are skipped (spot-checked: classm.f8889.1.deepseek spouse, classm.f4952.1.deepseek and classm.s2.3.deepseek); the differences are $157,000 or $100,000 (the gaps between the limits) or an amount against zero. None reaches the deduction: person.ira_deduction has no completed-return value difference. Reply changed (the work-plan test is now applied before the plan reading); the mechanism and the owner reading are the same, and person.ira_deduction still has no completed-return value difference. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 3,562 of 5,127 agree; 1,190 candidate-unknown, 283 value, 42 project-refuses, 34 project-unknown, 16 candidate-refuses; on returns the full interview completes: 217 value, 156 candidate-unknown, 3 candidate-refuses, 2 project-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 379 against the record's 378, the class M fixtures having been rewritten by a concurrent run): 217 value (for example classm.f8889.1.deepseek, person[spouse]); 94 candidate-unknown person.eligible_educator (for example classm.s179.2, person[taxpayer]); 14 candidate-unknown person.plan_screen (for example classm.u1250.1.deepseek without plan_screen, person[taxpayer]); 11 candidate-unknown person.se_screen (for example classm.s2.3.deepseek without se_screen, person[spouse]); 11 candidate-unknown person.plan (for example classm.s2.3.deepseek without plan, person[spouse]); 5 candidate-unknown person.ira_trad (for example classm.s2.3.deepseek without ira_trad, person[spouse]); 5 candidate-unknown person.ira_excess (for example classm.s2.3.deepseek without ira_excess, person[spouse]); 5 candidate-unknown person.ira_age50 (for example classm.s2.3.deepseek without ira_age50, person[spouse]); 3 candidate-refuses (for example classm.f5695.2.deepseek, person[taxpayer]); 3 candidate-unknown person.sep_rate (for example classm.s2.3.deepseek without sep_rate, person[spouse]); 3 candidate-unknown person.sep_contrib (for example classm.s2.3.deepseek without sep_contrib, person[spouse]); 2 project-unknown person.ira_work_plan (for example stage21.f1.lower_bound_still_decides, person[spouse]); 2 candidate-unknown person.simple_deferral (for example classm.s3.4.deepseek without simple_deferral, person[taxpayer]); 2 candidate-unknown person.simple_age (for example classm.s3.4.deepseek without simple_age, person[taxpayer]); 2 candidate-unknown person.simple_employer (for example classm.s3.4.deepseek without simple_employer, person[taxpayer]). Project stands.
 
 ### person.ira_line7 — Worksheet line 7 for this person's column
 Status: **DISAGREE**
@@ -543,12 +512,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"const": 0}, {"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}], "test": "lt"}], "test": "all"}, {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "eq"}], "test": "all"}, "then": {"line": "zero"}}, {"guard": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"const": 0}, {"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}], "test": "lt"}], "test": "all"}, {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "lt"}, {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"of": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_35"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_40"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_70"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_80"}}}], "op": "choose"}, "op": "round", "rule": "up", "unit": 1000}, {"param": "ira.min"}], "op": "larger_of"}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"const": 0}, {"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}], "test": "lt"}], "test": "all"}, {"args": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "le"}], "test": "all"}, {"args": [{"args": [{"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, {"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}, {"const": 0, "type": "Count"}], "test": "le"}], "test": "any"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit_50"}}], "op": "choose"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}], "test": "lt"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"const": 0}], "test": "le"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "lt"}, "then": {"of": [{"of": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_35"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_40"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_70"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_80"}}}], "op": "choose"}, "op": "round", "rule": "up", "unit": 1000}, {"param": "ira.min"}], "op": "larger_of"}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"args": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "le"}, {"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}], "test": "all"}, {"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}, {"const": 0, "type": "Count"}], "test": "le"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit_50"}}], "op": "choose"}}], "op": "choose"}
 ```
 
-Second transcription's note: When line 5 is not less than line 2 the worksheet stops ('None of your IRA contributions are deductible'). Line 7 is then zero.
-
-Ruling: representation; i1040gi p. 97, line 1, "skip lines 2 through 6". The value differences (project $0, candidate $7,000 on classm.ira.2 and stage21.f1.lower_bound_still_decides) are on persons with no traditional IRA contribution, where the reply fills its limit and the project zero; no deduction reads it there (person.ira_deduction has no completed-return value difference). The unknowns are partial records withholding ira_work_plan (project) or answers the reply asks of non-contributors. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 4,564 of 4,960 agree; 270 project-refuses, 66 candidate-unknown, 53 project-unknown, 6 value, 1 candidate-refuses; on returns the full interview completes: 16 candidate-unknown, 15 project-unknown, 4 value. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 15 project-unknown person.ira_work_plan (for example stage21.f1.lower_bound_still_decides); 9 candidate-unknown person.ira_excess (for example classm.se.2); 7 candidate-unknown person.ira_trad (for example generated); 4 value (for example classm.ira.2). Project stands.
+Ruling: representation; i1040gi p. 97, line 1, "skip lines 2 through 6". The value differences (project $0, candidate $7,000 on classm.ira.2 and stage21.f1.lower_bound_still_decides) are on persons with no traditional IRA contribution, where the reply fills its limit and the project zero; no deduction reads it there (person.ira_deduction has no completed-return value difference). The unknowns are partial records withholding ira_work_plan (project) or answers the reply asks of non-contributors. Reply changed in form only; same witnesses. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 4,788 of 5,127 agree; 216 project-refuses, 68 candidate-unknown, 47 project-unknown, 7 value, 1 candidate-refuses; on returns the full interview completes: 16 candidate-unknown, 15 project-unknown, 4 value. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 15 project-unknown person.ira_work_plan (for example stage21.f1.lower_bound_still_decides, person[spouse]); 9 candidate-unknown person.ira_excess (for example classm.se.2, person[spouse]); 7 candidate-unknown person.ira_trad (for example classm.s2.3.deepseek without ira_trad, person[spouse]); 4 value (for example classm.ira.2, person[spouse]). Project stands.
 
 ### person.ira_deduction — This person's IRA deduction (worksheet line 12; zero with no traditional IRA contributions
 Status: **DISAGREE**
@@ -562,10 +529,10 @@ Project:
 Second:
 
 ```json
-{"of": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"const": 0}, {"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}], "test": "lt"}], "test": "all"}, {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "eq"}], "test": "all"}, "then": {"line": "zero"}}, {"guard": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"const": 0}, {"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}], "test": "lt"}], "test": "all"}, {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "lt"}, {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"of": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_35"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_40"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_70"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_80"}}}], "op": "choose"}, "op": "round", "rule": "up", "unit": 1000}, {"param": "ira.min"}], "op": "larger_of"}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"const": 0}, {"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}], "test": "lt"}], "test": "all"}, {"args": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "le"}], "test": "all"}, {"args": [{"args": [{"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, {"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}, {"const": 0, "type": "Count"}], "test": "le"}], "test": "any"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit_50"}}], "op": "choose"}}], "op": "choose"}, {"of": [{"input": "person.ira_trad"}, {"ref": "ira.line10"}], "op": "smaller_of"}], "op": "smaller_of"}
+{"of": [{"input": "person.ira_trad"}, {"of": [{"alternatives": [{"guard": {"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}], "test": "lt"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"const": 0}], "test": "le"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "lt"}, "then": {"of": [{"of": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_35"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_40"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_70"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_80"}}}], "op": "choose"}, "op": "round", "rule": "up", "unit": 1000}, {"param": "ira.min"}], "op": "larger_of"}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"args": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "le"}, {"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}], "test": "all"}, {"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}, {"const": 0, "type": "Count"}], "test": "le"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit_50"}}], "op": "choose"}}], "op": "choose"}, {"ref": "ira.line10"}], "op": "smaller_of"}], "op": "smaller_of"}
 ```
 
-Ruling: model error; i1040gi p. 98, line 12, "enter the smallest of line 7a, 10, or 11a". The reply asks IRA, basis, distribution, plan and self-employment answers of persons the project does not ask them of (no contribution, distribution or Schedule C), and refuses on its self-employment screen. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 2,561 of 4,960 agree; 2,081 candidate-unknown, 278 candidate-refuses, 29 project-unknown, 11 project-refuses; on returns the full interview completes: 181 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 105 candidate-unknown person.ira_excess (for example classm.f8995.2); 14 candidate-unknown person.plan_screen (for example generated); 14 candidate-unknown person.ira_trad (for example generated); 12 candidate-unknown person.ira_age50 (for example generated); 11 candidate-unknown person.se_screen (for example generated); 11 candidate-unknown person.plan (for example generated); 3 candidate-refuses at se_screen (for example classm.f5695.2.deepseek); 3 candidate-unknown person.sep_rate (for example generated); 3 candidate-unknown person.sep_contrib (for example generated); 2 candidate-unknown person.simple_deferral (for example generated); 2 candidate-unknown person.simple_age (for example generated); 2 candidate-unknown person.simple_kind (for example generated); 2 candidate-unknown person.simple_employer (for example generated). Project stands.
+Ruling: model error; i1040gi p. 98, line 12, "enter the smallest of line 7a, 10, or 11a". The reply asks IRA, basis, distribution, plan and self-employment answers of persons the project does not ask them of (no contribution, distribution or Schedule C), and refuses on its self-employment screen. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. Reply restructured (the IRA limit is folded into one expression); the same unneeded answers are asked and no completed-return amount differs. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 2,397 of 5,127 agree; 2,117 candidate-unknown, 576 candidate-refuses, 26 project-unknown, 11 project-refuses; on returns the full interview completes: 184 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 188 against the record's 187, the class M fixtures having been rewritten by a concurrent run): 111 candidate-unknown person.ira_excess (for example classm.asset.1, person[spouse]); 14 candidate-unknown person.plan_screen (for example classm.u1250.1.deepseek without plan_screen, person[taxpayer]); 14 candidate-unknown person.ira_trad (for example classm.u1250.1.deepseek without ira_trad, person[taxpayer]); 12 candidate-unknown person.ira_age50 (for example classm.u1250.1.deepseek without ira_age50, person[taxpayer]); 11 candidate-unknown person.se_screen (for example classm.s2.3.deepseek without se_screen, person[spouse]); 11 candidate-unknown person.plan (for example classm.s2.3.deepseek without plan, person[spouse]); 3 candidate-refuses (for example classm.f5695.2.deepseek, person[taxpayer]); 3 candidate-unknown person.sep_rate (for example classm.s2.3.deepseek without sep_rate, person[spouse]); 3 candidate-unknown person.sep_contrib (for example classm.s2.3.deepseek without sep_contrib, person[spouse]); 2 candidate-unknown person.simple_deferral (for example classm.s3.4.deepseek without simple_deferral, person[taxpayer]); 2 candidate-unknown person.simple_age (for example classm.s3.4.deepseek without simple_age, person[taxpayer]); 2 candidate-unknown person.simple_employer (for example classm.s3.4.deepseek without simple_employer, person[taxpayer]). Project stands.
 
 ### person.ira_nondeductible — This person's nondeductible traditional IRA contributions for 2025 (Form 8606 line 1)
 Status: **DISAGREE**
@@ -579,10 +546,10 @@ Project:
 Second:
 
 ```json
-{"from": {"of": [{"input": "person.ira_trad"}, {"ref": "ira.line10"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"of": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"const": 0}, {"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}], "test": "lt"}], "test": "all"}, {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "eq"}], "test": "all"}, "then": {"line": "zero"}}, {"guard": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"const": 0}, {"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}], "test": "lt"}], "test": "all"}, {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "lt"}, {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"of": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_35"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_40"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_70"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_80"}}}], "op": "choose"}, "op": "round", "rule": "up", "unit": 1000}, {"param": "ira.min"}], "op": "larger_of"}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"const": 0}, {"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}], "test": "lt"}], "test": "all"}, {"args": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "le"}], "test": "all"}, {"args": [{"args": [{"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, {"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}, {"const": 0, "type": "Count"}], "test": "le"}], "test": "any"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit_50"}}], "op": "choose"}}], "op": "choose"}, {"of": [{"input": "person.ira_trad"}, {"ref": "ira.line10"}], "op": "smaller_of"}], "op": "smaller_of"}}
+{"from": {"of": [{"input": "person.ira_trad"}, {"ref": "ira.line10"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.ira_trad"}, {"of": [{"alternatives": [{"guard": {"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}], "test": "lt"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"const": 0}], "test": "le"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "lt"}, "then": {"of": [{"of": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_35"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_40"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_70"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_80"}}}], "op": "choose"}, "op": "round", "rule": "up", "unit": 1000}, {"param": "ira.min"}], "op": "larger_of"}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"args": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "le"}, {"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}], "test": "all"}, {"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}, {"const": 0, "type": "Count"}], "test": "le"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit_50"}}], "op": "choose"}}], "op": "choose"}, {"ref": "ira.line10"}], "op": "smaller_of"}], "op": "smaller_of"}}
 ```
 
-Ruling: model error; i8606 p. 2, Who Must File, "You made nondeductible contributions to a traditional IRA for 2025". The reply asks IRA, basis, distribution, plan and self-employment answers of persons the project does not ask them of (no contribution, distribution or Schedule C), and refuses on its self-employment screen. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 2,560 of 4,960 agree; 2,043 candidate-unknown, 318 candidate-refuses, 29 project-unknown, 10 project-refuses; on returns the full interview completes: 181 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 102 candidate-unknown person.ira_excess (for example classm.f8995.2); 14 candidate-unknown person.se_screen (for example stage5.return.owed); 14 candidate-unknown person.plan_screen (for example generated); 14 candidate-unknown person.ira_trad (for example generated); 12 candidate-unknown person.ira_age50 (for example generated); 11 candidate-unknown person.plan (for example generated); 3 candidate-refuses at se_screen (for example classm.f5695.2.deepseek); 3 candidate-unknown person.sep_rate (for example generated); 3 candidate-unknown person.sep_contrib (for example generated); 2 candidate-unknown person.simple_deferral (for example generated); 2 candidate-unknown person.simple_age (for example generated); 2 candidate-unknown person.simple_kind (for example generated); 2 candidate-unknown person.simple_employer (for example generated). Project stands.
+Ruling: model error; i8606 p. 2, Who Must File, "You made nondeductible contributions to a traditional IRA for 2025". The reply asks IRA, basis, distribution, plan and self-employment answers of persons the project does not ask them of (no contribution, distribution or Schedule C), and refuses on its self-employment screen. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. Reply restructured (the IRA limit is folded into one expression); the same unneeded answers are asked and no completed-return amount differs. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 2,397 of 5,127 agree; 2,118 candidate-unknown, 576 candidate-refuses, 26 project-unknown, 10 project-refuses; on returns the full interview completes: 184 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 188 against the record's 187, the class M fixtures having been rewritten by a concurrent run): 105 candidate-unknown person.ira_excess (for example classm.asset.1, person[spouse]); 17 candidate-unknown person.se_screen (for example classm.eic.1, person[taxpayer]); 14 candidate-unknown person.plan_screen (for example classm.u1250.1.deepseek without plan_screen, person[taxpayer]); 14 candidate-unknown person.ira_trad (for example classm.u1250.1.deepseek without ira_trad, person[taxpayer]); 12 candidate-unknown person.ira_age50 (for example classm.u1250.1.deepseek without ira_age50, person[taxpayer]); 11 candidate-unknown person.plan (for example classm.s2.3.deepseek without plan, person[spouse]); 3 candidate-refuses (for example classm.f5695.2.deepseek, person[taxpayer]); 3 candidate-unknown person.sep_rate (for example classm.s2.3.deepseek without sep_rate, person[spouse]); 3 candidate-unknown person.sep_contrib (for example classm.s2.3.deepseek without sep_contrib, person[spouse]); 2 candidate-unknown person.simple_deferral (for example classm.s3.4.deepseek without simple_deferral, person[taxpayer]); 2 candidate-unknown person.simple_age (for example classm.s3.4.deepseek without simple_age, person[taxpayer]); 2 candidate-unknown person.simple_employer (for example classm.s3.4.deepseek without simple_employer, person[taxpayer]). Project stands.
 
 ### person.ira_files_8606 — This person files Form 8606 for nondeductible contributions to a traditional IRA for 2025
 Status: **DISAGREE**
@@ -596,10 +563,10 @@ Project:
 Second:
 
 ```json
-{"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_dist"}], "test": "eq"}, {"args": [{"const": 0}, {"input": "person.ira_basis"}], "test": "lt"}], "test": "all"}, {"args": [{"const": 0}, {"from": {"of": [{"input": "person.ira_trad"}, {"ref": "ira.line10"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"of": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"const": 0}, {"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}], "test": "lt"}], "test": "all"}, {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "eq"}], "test": "all"}, "then": {"line": "zero"}}, {"guard": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"const": 0}, {"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}], "test": "lt"}], "test": "all"}, {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "lt"}, {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"of": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_35"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_40"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_70"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_80"}}}], "op": "choose"}, "op": "round", "rule": "up", "unit": 1000}, {"param": "ira.min"}], "op": "larger_of"}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"const": 0}, {"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}], "test": "lt"}], "test": "all"}, {"args": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "le"}], "test": "all"}, {"args": [{"args": [{"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, {"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}, {"const": 0, "type": "Count"}], "test": "le"}], "test": "any"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit_50"}}], "op": "choose"}}], "op": "choose"}, {"of": [{"input": "person.ira_trad"}, {"ref": "ira.line10"}], "op": "smaller_of"}], "op": "smaller_of"}}], "test": "lt"}], "test": "any"}
+{"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_dist"}], "test": "eq"}, {"args": [{"const": 0}, {"input": "person.ira_basis"}], "test": "lt"}], "test": "all"}, {"args": [{"const": 0}, {"from": {"of": [{"input": "person.ira_trad"}, {"ref": "ira.line10"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.ira_trad"}, {"of": [{"alternatives": [{"guard": {"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}], "test": "lt"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"const": 0}], "test": "le"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "lt"}, "then": {"of": [{"of": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_35"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_40"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_70"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_80"}}}], "op": "choose"}, "op": "round", "rule": "up", "unit": 1000}, {"param": "ira.min"}], "op": "larger_of"}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"args": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "le"}, {"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}], "test": "all"}, {"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}, {"const": 0, "type": "Count"}], "test": "le"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit_50"}}], "op": "choose"}}], "op": "choose"}, {"ref": "ira.line10"}], "op": "smaller_of"}], "op": "smaller_of"}}], "test": "lt"}], "test": "any"}
 ```
 
-Ruling: model error; i8606 p. 2, Who Must File, "You made nondeductible contributions to a traditional IRA for 2025". The reply asks IRA, basis, distribution, plan and self-employment answers of persons the project does not ask them of (no contribution, distribution or Schedule C), and refuses on its self-employment screen. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 2,560 of 4,960 agree; 2,043 candidate-unknown, 318 candidate-refuses, 29 project-unknown, 10 project-refuses; on returns the full interview completes: 181 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 102 candidate-unknown person.ira_excess (for example classm.f8995.2); 14 candidate-unknown person.se_screen (for example stage5.return.owed); 14 candidate-unknown person.plan_screen (for example generated); 14 candidate-unknown person.ira_trad (for example generated); 12 candidate-unknown person.ira_age50 (for example generated); 11 candidate-unknown person.plan (for example generated); 3 candidate-refuses at se_screen (for example classm.f5695.2.deepseek); 3 candidate-unknown person.sep_rate (for example generated); 3 candidate-unknown person.sep_contrib (for example generated); 2 candidate-unknown person.simple_deferral (for example generated); 2 candidate-unknown person.simple_age (for example generated); 2 candidate-unknown person.simple_kind (for example generated); 2 candidate-unknown person.simple_employer (for example generated). Project stands.
+Ruling: model error; i8606 p. 2, Who Must File, "You made nondeductible contributions to a traditional IRA for 2025". The reply asks IRA, basis, distribution, plan and self-employment answers of persons the project does not ask them of (no contribution, distribution or Schedule C), and refuses on its self-employment screen. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. Reply restructured (the IRA limit is folded into one expression); the same unneeded answers are asked and no completed-return amount differs. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 2,397 of 5,127 agree; 2,118 candidate-unknown, 576 candidate-refuses, 26 project-unknown, 10 project-refuses; on returns the full interview completes: 184 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 188 against the record's 187, the class M fixtures having been rewritten by a concurrent run): 105 candidate-unknown person.ira_excess (for example classm.asset.1, person[spouse]); 17 candidate-unknown person.se_screen (for example classm.eic.1, person[taxpayer]); 14 candidate-unknown person.plan_screen (for example classm.u1250.1.deepseek without plan_screen, person[taxpayer]); 14 candidate-unknown person.ira_trad (for example classm.u1250.1.deepseek without ira_trad, person[taxpayer]); 12 candidate-unknown person.ira_age50 (for example classm.u1250.1.deepseek without ira_age50, person[taxpayer]); 11 candidate-unknown person.plan (for example classm.s2.3.deepseek without plan, person[spouse]); 3 candidate-refuses (for example classm.f5695.2.deepseek, person[taxpayer]); 3 candidate-unknown person.sep_rate (for example classm.s2.3.deepseek without sep_rate, person[spouse]); 3 candidate-unknown person.sep_contrib (for example classm.s2.3.deepseek without sep_contrib, person[spouse]); 2 candidate-unknown person.simple_deferral (for example classm.s3.4.deepseek without simple_deferral, person[taxpayer]); 2 candidate-unknown person.simple_age (for example classm.s3.4.deepseek without simple_age, person[taxpayer]); 2 candidate-unknown person.simple_employer (for example classm.s3.4.deepseek without simple_employer, person[taxpayer]). Project stands.
 
 ### person.ira_8606_line2 — Form 8606 line 2 for this person (asked only when the person files Form 8606)
 Status: **DISAGREE**
@@ -616,7 +583,7 @@ Second:
 {"input": "person.ira_basis"}
 ```
 
-Ruling: model error; i8606 p. 9, Line 2, "Generally, if this is the first year you are required to file Form 8606, enter -0-". The reply asks IRA, basis, distribution, plan and self-employment answers of persons the project does not ask them of (no contribution, distribution or Schedule C), and refuses on its self-employment screen. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 3,084 of 4,960 agree; 1,832 candidate-unknown, 32 project-unknown, 12 project-refuses; on returns the full interview completes: 115 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 103 candidate-unknown person.ira_basis_adjusted (for example classm.f8995.2); 12 candidate-unknown person.ira_basis (for example generated). Project stands.
+Ruling: model error; i8606 p. 9, Line 2, "Generally, if this is the first year you are required to file Form 8606, enter -0-". The reply asks IRA, basis, distribution, plan and self-employment answers of persons the project does not ask them of (no contribution, distribution or Schedule C), and refuses on its self-employment screen. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. Reply unchanged since the previous round; ruling re-checked against this record. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 3,158 of 5,127 agree; 1,926 candidate-unknown, 31 project-unknown, 12 project-refuses; on returns the full interview completes: 120 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 121 against the record's 120, the class M fixtures having been rewritten by a concurrent run): 109 candidate-unknown person.ira_basis_adjusted (for example classm.asset.1, person[spouse]); 12 candidate-unknown person.ira_basis (for example classm.u1250.1.deepseek without ira_basis, person[taxpayer]). Project stands.
 
 ### person.ira_dist_gate — Nondeductible contributions for 2025 with a 2025 traditional IRA distribution or Roth conv
 Status: **DISAGREE**
@@ -630,10 +597,10 @@ Project:
 Second:
 
 ```json
-{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_dist"}], "test": "eq"}, {"args": [{"const": 0}, {"input": "person.ira_basis"}], "test": "lt"}], "test": "all"}, {"args": [{"const": 0}, {"from": {"of": [{"input": "person.ira_trad"}, {"ref": "ira.line10"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"of": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"const": 0}, {"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}], "test": "lt"}], "test": "all"}, {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "eq"}], "test": "all"}, "then": {"line": "zero"}}, {"guard": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"const": 0}, {"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}], "test": "lt"}], "test": "all"}, {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "lt"}, {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"of": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_35"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_40"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_70"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_80"}}}], "op": "choose"}, "op": "round", "rule": "up", "unit": 1000}, {"param": "ira.min"}], "op": "larger_of"}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"const": 0}, {"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}], "test": "lt"}], "test": "all"}, {"args": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "le"}], "test": "all"}, {"args": [{"args": [{"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, {"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}, {"const": 0, "type": "Count"}], "test": "le"}], "test": "any"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit_50"}}], "op": "choose"}}], "op": "choose"}, {"of": [{"input": "person.ira_trad"}, {"ref": "ira.line10"}], "op": "smaller_of"}], "op": "smaller_of"}}], "test": "lt"}], "test": "any"}, {"args": [{"const": true}, {"input": "person.ira_dist"}], "test": "eq"}], "test": "all"}
+{"args": [{"args": [{"const": true}, {"input": "person.ira_dist"}], "test": "eq"}, {"args": [{"const": 0}, {"of": [{"input": "person.ira_basis"}, {"from": {"of": [{"input": "person.ira_trad"}, {"ref": "ira.line10"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.ira_trad"}, {"of": [{"alternatives": [{"guard": {"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}], "test": "lt"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"const": 0}], "test": "le"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "lt"}, "then": {"of": [{"of": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_35"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_40"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_70"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_80"}}}], "op": "choose"}, "op": "round", "rule": "up", "unit": 1000}, {"param": "ira.min"}], "op": "larger_of"}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"args": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "le"}, {"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}], "test": "all"}, {"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}, {"const": 0, "type": "Count"}], "test": "le"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit_50"}}], "op": "choose"}}], "op": "choose"}, {"ref": "ira.line10"}], "op": "smaller_of"}], "op": "smaller_of"}}], "op": "sum"}], "test": "lt"}], "test": "all"}
 ```
 
-Ruling: model error; i8606 p. 2, Who Must File. The reply asks IRA, basis, distribution, plan and self-employment answers of persons the project does not ask them of (no contribution, distribution or Schedule C), and refuses on its self-employment screen. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 3,175 of 4,960 agree; 1,732 candidate-unknown, 41 candidate-refuses, 12 project-refuses; on returns the full interview completes: 91 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 91 candidate-unknown person.ira_dist (for example classm.f8995.2). Project stands.
+Ruling: model error; i8606 p. 2, Who Must File. The reply asks IRA, basis, distribution, plan and self-employment answers of persons the project does not ask them of (no contribution, distribution or Schedule C), and refuses on its self-employment screen. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. Reply restructured (the IRA limit is folded into one expression); the same unneeded answers are asked and no completed-return amount differs. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 3,244 of 5,127 agree; 1,828 candidate-unknown, 43 candidate-refuses, 12 project-refuses; on returns the full interview completes: 96 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 97 against the record's 96, the class M fixtures having been rewritten by a concurrent run): 97 candidate-unknown person.ira_dist (for example classm.asset.1, person[spouse]). Project stands.
 
 ### person.ira_8606_line14 — Form 8606 line 14 for this person (total basis in traditional IRAs for 2025 and earlier ye
 Status: **DISAGREE**
@@ -647,12 +614,10 @@ Project:
 Second:
 
 ```json
-{"of": [{"input": "person.ira_basis"}, {"from": {"of": [{"input": "person.ira_trad"}, {"ref": "ira.line10"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"of": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"const": 0}, {"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}], "test": "lt"}], "test": "all"}, {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "eq"}], "test": "all"}, "then": {"line": "zero"}}, {"guard": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"const": 0}, {"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}], "test": "lt"}], "test": "all"}, {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "lt"}, {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"of": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_35"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_40"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_70"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_80"}}}], "op": "choose"}, "op": "round", "rule": "up", "unit": 1000}, {"param": "ira.min"}], "op": "larger_of"}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"const": 0}, {"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}], "test": "lt"}], "test": "all"}, {"args": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "le"}], "test": "all"}, {"args": [{"args": [{"collection": "person", "field": "person.ira_contrib", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, {"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}, {"const": 0, "type": "Count"}], "test": "le"}], "test": "any"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit_50"}}], "op": "choose"}}], "op": "choose"}, {"of": [{"input": "person.ira_trad"}, {"ref": "ira.line10"}], "op": "smaller_of"}], "op": "smaller_of"}}], "op": "sum"}
+{"of": [{"input": "person.ira_basis"}, {"from": {"of": [{"input": "person.ira_trad"}, {"ref": "ira.line10"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.ira_trad"}, {"of": [{"alternatives": [{"guard": {"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}, {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}], "test": "lt"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, {"const": 0}], "test": "le"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": 0}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "lt"}, "then": {"of": [{"of": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_35"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_40"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_70"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}, "op": "multiply_rate", "rate": {"param": "ira.rate_80"}}}], "op": "choose"}, "op": "round", "rule": "up", "unit": 1000}, {"param": "ira.min"}], "op": "larger_of"}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"args": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"param": "ira.full_joint"}}, {"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}], "test": "any"}, "then": {"param": "ira.full_narrow"}}], "op": "choose"}, {"from": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, "then": {"param": "ira.line2_not_covered"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "any"}, "then": {"param": "ira.line2"}}], "op": "choose"}, "op": "subtract_floor0", "take": {"ref": "ira.line5"}}], "test": "le"}, {"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}], "test": "lt"}], "test": "all"}, {"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "sc", "field": "sc.one", "op": "sum_over", "where": null}], "test": "lt"}, {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.ira_work_plan"}], "test": "eq"}], "test": "any"}}, {"const": 0, "type": "Count"}], "test": "le"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit_50"}}], "op": "choose"}}], "op": "choose"}, {"ref": "ira.line10"}], "op": "smaller_of"}], "op": "smaller_of"}}], "op": "sum"}
 ```
 
-Second transcription's note: Lines 4 through 13 (a distribution or conversion with basis) are not computed, so that case refuses.
-
-Ruling: model error; i8606 p. 2, Who Must File. The reply asks IRA, basis, distribution, plan and self-employment answers of persons the project does not ask them of (no contribution, distribution or Schedule C), and refuses on its self-employment screen. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 2,503 of 4,960 agree; 2,099 candidate-unknown, 318 candidate-refuses, 29 project-unknown, 11 project-refuses; on returns the full interview completes: 205 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 91 candidate-unknown person.ira_dist (for example classm.f8995.2); 14 candidate-unknown person.plan_screen (for example generated); 14 candidate-unknown person.ira_trad (for example generated); 14 candidate-unknown person.ira_excess (for example generated); 12 candidate-unknown person.ira_age50 (for example generated); 12 candidate-unknown person.ira_basis (for example generated); 12 candidate-unknown person.ira_basis_adjusted (for example generated); 11 candidate-unknown person.se_screen (for example generated); 11 candidate-unknown person.plan (for example generated); 3 candidate-refuses at se_screen (for example classm.f5695.2.deepseek); 3 candidate-unknown person.sep_rate (for example generated); 3 candidate-unknown person.sep_contrib (for example generated); 2 candidate-unknown person.simple_deferral (for example generated); 2 candidate-unknown person.simple_age (for example generated); 2 candidate-unknown person.simple_kind (for example generated); 2 candidate-unknown person.simple_employer (for example generated). Project stands.
+Ruling: model error; i8606 p. 2, Who Must File. The reply asks IRA, basis, distribution, plan and self-employment answers of persons the project does not ask them of (no contribution, distribution or Schedule C), and refuses on its self-employment screen. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. Reply restructured (the IRA limit is folded into one expression); the same unneeded answers are asked and no completed-return amount differs. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 2,346 of 5,127 agree; 2,168 candidate-unknown, 576 candidate-refuses, 26 project-unknown, 11 project-refuses; on returns the full interview completes: 208 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 212 against the record's 211, the class M fixtures having been rewritten by a concurrent run): 97 candidate-unknown person.ira_dist (for example classm.asset.1, person[spouse]); 14 candidate-unknown person.plan_screen (for example classm.u1250.1.deepseek without plan_screen, person[taxpayer]); 14 candidate-unknown person.ira_trad (for example classm.u1250.1.deepseek without ira_trad, person[taxpayer]); 14 candidate-unknown person.ira_excess (for example classm.u1250.1.deepseek without ira_excess, person[taxpayer]); 12 candidate-unknown person.ira_age50 (for example classm.u1250.1.deepseek without ira_age50, person[taxpayer]); 12 candidate-unknown person.ira_basis (for example classm.u1250.1.deepseek without ira_basis, person[taxpayer]); 12 candidate-unknown person.ira_basis_adjusted (for example classm.u1250.1.deepseek without ira_basis_adjusted, person[taxpayer]); 11 candidate-unknown person.se_screen (for example classm.s2.3.deepseek without se_screen, person[spouse]); 11 candidate-unknown person.plan (for example classm.s2.3.deepseek without plan, person[spouse]); 3 candidate-refuses (for example classm.f5695.2.deepseek, person[taxpayer]); 3 candidate-unknown person.sep_rate (for example classm.s2.3.deepseek without sep_rate, person[spouse]); 3 candidate-unknown person.sep_contrib (for example classm.s2.3.deepseek without sep_contrib, person[spouse]); 2 candidate-unknown person.simple_deferral (for example classm.s3.4.deepseek without simple_deferral, person[taxpayer]); 2 candidate-unknown person.simple_age (for example classm.s3.4.deepseek without simple_age, person[taxpayer]); 2 candidate-unknown person.simple_employer (for example classm.s3.4.deepseek without simple_employer, person[taxpayer]). Project stands.
 
 ### person.ira_ssb — This person's IRA deduction as the Social Security Benefits Worksheet reads it (zero with
 Status: **DISAGREE**
@@ -666,12 +631,12 @@ Project:
 Second:
 
 ```json
-{"of": [{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit"}}, {"guard": {"args": [{"const": true}, {"input": "person.ira_age50"}], "test": "eq"}, "then": {"param": "ira.limit_50"}}], "op": "choose"}, {"of": [{"input": "person.ira_trad"}, {"ref": "ira.line10"}], "op": "smaller_of"}], "op": "smaller_of"}
+{"collection": "w2", "field": "w2.box1", "op": "sum_over", "where": null}
 ```
 
-Second transcription's note: The interface name does not fix its meaning. The ssb.pub915 screen excludes IRA contributors who are covered by a plan. So this is read as the deduction with no AGI phase-out: the smaller of the contribution limit, line 10 or line 11.
+Second transcription's note: The pages do not determine what 'ira_ssb' denotes; read as this person's line 8 wages (box 1). If it is meant for a Pub. 915/590-A interaction, that case is screened by ssb.pub915.
 
-Ruling: model error; i1040gi p. 98, line 12, "enter the smallest of line 7a, 10, or 11a". The reply asks IRA, basis, distribution, plan and self-employment answers of persons the project does not ask them of (no contribution, distribution or Schedule C), and refuses on its self-employment screen. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 2,565 of 4,960 agree; 2,078 candidate-unknown, 278 candidate-refuses, 29 project-unknown, 10 project-refuses; on returns the full interview completes: 177 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 103 candidate-unknown person.ira_excess (for example classm.f8995.2); 14 candidate-unknown person.plan_screen (for example generated); 12 candidate-unknown person.ira_trad (for example generated); 12 candidate-unknown person.ira_age50 (for example generated); 11 candidate-unknown person.se_screen (for example generated); 11 candidate-unknown person.plan (for example generated); 3 candidate-refuses at se_screen (for example classm.f5695.2.deepseek); 3 candidate-unknown person.sep_rate (for example generated); 3 candidate-unknown person.sep_contrib (for example generated); 2 candidate-unknown person.simple_deferral (for example generated); 2 candidate-unknown person.simple_age (for example generated); 2 candidate-unknown person.simple_kind (for example generated); 2 candidate-unknown person.simple_employer (for example generated). Project stands.
+Ruling: model error; i1040gi p. 98, line 12, "enter the smallest of line 7a, 10, or 11a". The reply asks IRA, basis, distribution, plan and self-employment answers of persons the project does not ask them of (no contribution, distribution or Schedule C), and refuses on its self-employment screen. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. Reply restructured (the IRA limit is folded into one expression); the same unneeded answers are asked and no completed-return amount differs. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 2,397 of 5,127 agree; 2,118 candidate-unknown, 576 candidate-refuses, 26 project-unknown, 10 project-refuses; on returns the full interview completes: 184 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 188 against the record's 187, the class M fixtures having been rewritten by a concurrent run): 111 candidate-unknown person.ira_excess (for example classm.asset.1, person[spouse]); 14 candidate-unknown person.plan_screen (for example classm.u1250.1.deepseek without plan_screen, person[taxpayer]); 14 candidate-unknown person.ira_trad (for example classm.u1250.1.deepseek without ira_trad, person[taxpayer]); 12 candidate-unknown person.ira_age50 (for example classm.u1250.1.deepseek without ira_age50, person[taxpayer]); 11 candidate-unknown person.se_screen (for example classm.s2.3.deepseek without se_screen, person[spouse]); 11 candidate-unknown person.plan (for example classm.s2.3.deepseek without plan, person[spouse]); 3 candidate-refuses (for example classm.f5695.2.deepseek, person[taxpayer]); 3 candidate-unknown person.sep_rate (for example classm.s2.3.deepseek without sep_rate, person[spouse]); 3 candidate-unknown person.sep_contrib (for example classm.s2.3.deepseek without sep_contrib, person[spouse]); 2 candidate-unknown person.simple_deferral (for example classm.s3.4.deepseek without simple_deferral, person[taxpayer]); 2 candidate-unknown person.simple_age (for example classm.s3.4.deepseek without simple_age, person[taxpayer]); 2 candidate-unknown person.simple_employer (for example classm.s3.4.deepseek without simple_employer, person[taxpayer]). Project stands.
 
 ### person.ira_se — This person's part of worksheet line 9 (zero without a Schedule C)
 Status: **DISAGREE**
@@ -685,10 +650,10 @@ Project:
 Second:
 
 ```json
-{"from": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.sep_contrib"}, {"line": "Step 21"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"of": [{"input": "person.simple_deferral"}, {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"of": [{"keys": [{"input": "person.simple_age"}], "op": "keyed_lookup", "table": "simple_catchup"}, {"param": "ret.simple_limit"}], "op": "sum"}], "op": "smaller_of"}], "op": "smaller_of"}, {"of": [{"input": "person.simple_employer"}, {"alternatives": [{"guard": {"args": [{"const": "match"}, {"input": "person.simple_kind"}], "test": "eq"}, "then": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "ret.match_rate"}}, {"of": [{"input": "person.simple_deferral"}, {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"of": [{"keys": [{"input": "person.simple_age"}], "op": "keyed_lookup", "table": "simple_catchup"}, {"param": "ret.simple_limit"}], "op": "sum"}], "op": "smaller_of"}], "op": "smaller_of"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "nonelective"}, {"input": "person.simple_kind"}], "test": "eq"}, "then": {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"param": "ret.comp_limit"}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "ret.nonelective_rate"}}}], "op": "choose"}], "op": "smaller_of"}], "op": "sum"}}], "op": "choose"}}
+{"from": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract", "take": {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "none"}, {"input": "person.plan"}], "test": "eq"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"input": "person.sep_contrib"}, {"line": "Step 21"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "simple"}, {"input": "person.plan"}], "test": "eq"}, "then": {"of": [{"of": [{"input": "person.simple_employer"}, {"alternatives": [{"guard": {"args": [{"const": "match"}, {"input": "person.simple_kind"}], "test": "eq"}, "then": {"of": [{"amount": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "ret.match_rate"}}, {"of": [{"of": [{"input": "person.simple_deferral"}, {"of": [{"keys": [{"input": "person.simple_age"}], "op": "keyed_lookup", "table": "simple_catchup"}, {"param": "ret.simple_limit"}], "op": "sum"}], "op": "smaller_of"}, {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}], "op": "smaller_of"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": "nonelective"}, {"input": "person.simple_kind"}], "test": "eq"}, "then": {"amount": {"of": [{"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}, {"param": "ret.comp_limit"}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "ret.nonelective_rate"}}}], "op": "choose"}], "op": "smaller_of"}, {"of": [{"of": [{"input": "person.simple_deferral"}, {"of": [{"keys": [{"input": "person.simple_age"}], "op": "keyed_lookup", "table": "simple_catchup"}, {"param": "ret.simple_limit"}], "op": "sum"}], "op": "smaller_of"}, {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}], "op": "smaller_of"}], "op": "sum"}}], "op": "choose"}}
 ```
 
-Ruling: model error; i1040gi p. 98, line 9, "Enter the earned income you (and your spouse if filing jointly) received as a self-employed individual or a partner". The reply asks IRA, basis, distribution, plan and self-employment answers of persons the project does not ask them of (no contribution, distribution or Schedule C), and refuses on its self-employment screen. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 2,924 of 4,960 agree; 1,835 candidate-unknown, 113 candidate-refuses, 88 project-refuses; on returns the full interview completes: 119 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 85 candidate-unknown person.plan_screen (for example classm.s179.2); 13 candidate-unknown person.se_screen (for example stage14.joint.spouse_wages); 9 candidate-unknown person.plan (for example generated); 3 candidate-refuses at se_screen (for example classm.f5695.2.deepseek); 2 candidate-unknown person.sep_rate (for example generated); 2 candidate-unknown person.sep_contrib (for example generated); 2 candidate-unknown person.simple_deferral (for example generated); 2 candidate-unknown person.simple_age (for example generated); 2 candidate-unknown person.simple_kind (for example generated); 2 candidate-unknown person.simple_employer (for example generated). Project stands.
+Ruling: model error; i1040gi p. 98, line 9, "Enter the earned income you (and your spouse if filing jointly) received as a self-employed individual or a partner". The reply asks IRA, basis, distribution, plan and self-employment answers of persons the project does not ask them of (no contribution, distribution or Schedule C), and refuses on its self-employment screen. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. The reply now sums sc.line31 where the project (and the previous reply) read sc.result; the two are equal except on a Schedule C loss limited by the cited at-risk screen (see person.sc_total), so this changes no computed amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 2,964 of 5,127 agree; 1,885 candidate-unknown, 243 candidate-refuses, 35 project-refuses; on returns the full interview completes: 122 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 126 against the record's 125, the class M fixtures having been rewritten by a concurrent run): 87 candidate-unknown person.plan_screen (for example classm.asset.1, person[taxpayer]); 17 candidate-unknown person.se_screen (for example classm.asset.1, person[spouse]); 9 candidate-unknown person.plan (for example classm.s2.3.deepseek without plan, person[taxpayer]); 3 candidate-refuses (for example classm.f5695.2.deepseek, person[taxpayer]); 2 candidate-unknown person.sep_rate (for example classm.s2.3.deepseek without sep_rate, person[spouse]); 2 candidate-unknown person.sep_contrib (for example classm.s2.3.deepseek without sep_contrib, person[spouse]); 2 candidate-unknown person.simple_deferral (for example classm.s3.4.deepseek without simple_deferral, person[taxpayer]); 2 candidate-unknown person.simple_age (for example classm.s3.4.deepseek without simple_age, person[taxpayer]); 2 candidate-unknown person.simple_employer (for example classm.s3.4.deepseek without simple_employer, person[taxpayer]). Project stands.
 
 ### person.edu_kid — Line 7 conditions 1 and 2 for you: under 18; or 18 with earned income less than half of yo
 Status: **DISAGREE**
@@ -705,15 +670,29 @@ Second:
 {"args": [{"args": [{"args": [{"args": [{"const": false}, {"input": "person.edu_born_2002"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_born_2007"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_fulltime"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_half_support"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": false}, {"input": "person.edu_born_2007"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_half_support"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.sav_born"}], "test": "eq"}], "test": "all"}, {"args": [{"const": false}, {"input": "person.sav_born"}], "test": "eq"}], "test": "any"}, {"args": [{"const": true}, {"input": "person.edu_parent"}], "test": "eq"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}
 ```
 
-Second transcription's note: 'Under 18' is read from person.sav_born (born before January 2, 2008 means 18 or older). Ages 19 and 24 use the edu_born inputs.
+Second transcription's note: Age bands from birth dates: sav_born false = under 18; sav_born true and edu_born_2007 false = 18; edu_born_2007 true and edu_born_2002 false = 19 to 23.
 
-Ruling: representation; i8863 p. 6, Line 7, "If you were under age 24 at the end of 2025 and the conditions listed below apply to you, you cannot claim any part of the American opportunity credit as a refundable credit". The project tests the Form 8863 conditions on this line; the reply leaves them to the form and asks the birth-date answers of every person, so it is unknown where the project gives no on a person with no education credit; no credit is read on the witnesses. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 3,200 of 4,960 agree; 1,541 candidate-unknown, 123 value, 96 project-refuses; on returns the full interview completes: 156 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 144 candidate-unknown person.edu_born_2007 (for example classm.f4952.1.deepseek); 9 candidate-unknown person.sav_born (for example stage16.cleanup.mut.clwb_three_figured); 2 candidate-unknown person.edu_born_2002 (for example generated); 1 candidate-unknown person.edu_fulltime (for example generated). Project stands.
+Ruling: representation; i8863 p. 6, Line 7, "If you were under age 24 at the end of 2025 and the conditions listed below apply to you, you cannot claim any part of the American opportunity credit as a refundable credit". The project tests the Form 8863 conditions on this line; the reply leaves them to the form and asks the birth-date answers of every person, so it is unknown where the project gives no on a person with no education credit; no credit is read on the witnesses. Reply unchanged since the previous round; ruling re-checked against this record. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 3,293 of 5,127 agree; 1,620 candidate-unknown, 122 value, 92 project-refuses; on returns the full interview completes: 161 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 162 against the record's 161, the class M fixtures having been rewritten by a concurrent run): 150 candidate-unknown person.edu_born_2007 (for example classm.f4952.1.deepseek, person[taxpayer]); 10 candidate-unknown person.sav_born (for example classm.eic.1, person[taxpayer]); 1 candidate-unknown person.edu_fulltime (for example classm.s3.4.deepseek without edu_fulltime, person[taxpayer]); 1 candidate-unknown person.edu_born_2002 (for example classm.f1040.5.deepseek without edu_born_2002, person[taxpayer]). Project stands.
 
 ### person.x_l1 — Form 5329 line 1 for this person: early distributions includible in income
 Status: **AGREE**
 
 ### person.x_l2_all — Exception amounts before the per-person limits
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": null}
+```
+
+Second:
+
+```json
+{"of": [{"of": [{"of": [{"amount": {"param": "f5329.cap_birth"}, "count": {"input": "person.x_births"}, "op": "multiply_count"}, {"collection": "retirement", "field": "retirement.l2_e19", "op": "sum_over", "where": null}], "op": "smaller_of"}, {"of": [{"from": {"param": "f5329.cap_first_home"}, "op": "subtract_floor0", "take": {"input": "person.x_prior09"}}, {"collection": "retirement", "field": "retirement.l2_e09", "op": "sum_over", "where": null}], "op": "smaller_of"}, {"of": [{"collection": "retirement", "field": "retirement.l2_e22", "op": "sum_over", "where": null}, {"param": "f5329.cap_abuse"}], "op": "smaller_of"}, {"of": [{"collection": "retirement", "field": "retirement.l2_e23", "op": "sum_over", "where": null}, {"param": "f5329.cap_emergency"}], "op": "smaller_of"}], "op": "sum"}, {"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"args": [{"const": "e09"}, {"ref": "retirement.exception"}], "test": "ne"}, {"args": [{"const": "e19"}, {"ref": "retirement.exception"}], "test": "ne"}, {"args": [{"const": "e22"}, {"ref": "retirement.exception"}], "test": "ne"}, {"args": [{"const": "e23"}, {"ref": "retirement.exception"}], "test": "ne"}], "test": "all"}}], "op": "sum"}
+```
+
+Ruling: model error; i5329 p. 5, Line 2, "Enter on line 2 the amount that you can exclude". The project sums each 1099-R entry's line 2 amount; the reply rebuilds line 2 from the exception caps and asks person.x_births and person.x_prior09 of every person, including persons with no early distribution (300 completed-return unknowns), and it leaves the exception 05 limit out (stage21.blind.e4, incomplete). Answers the source does not need. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 2,369 of 5,127 agree; 2,757 candidate-unknown, 1 value; on returns the full interview completes: 300 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 301 against the record's 300, the class M fixtures having been rewritten by a concurrent run): 292 candidate-unknown person.x_prior09 (for example classm.f4952.1.deepseek, person[taxpayer]); 9 candidate-unknown person.x_births (for example classm.s2.3.deepseek without x_births, person[taxpayer]). Project stands.
 
 ### person.x_l1_s — Line 1 amounts from code S distributions
 Status: **AGREE**
@@ -733,10 +712,12 @@ Project:
 Second:
 
 ```json
-{"of": [{"alternatives": [{"guard": {"args": [{"collection": "f8889", "field": "f8889.excess_amt", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": 0}, {"collection": "f8889", "field": "f8889.excess_amt", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"of": [{"input": "person.x_hsa_value"}, {"collection": "f8889", "field": "f8889.excess_amt", "op": "sum_over", "where": null}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "f5329.excess_rate"}}}], "op": "choose"}, {"amount": {"from": {"from": {"collection": "retirement", "field": "retirement.l1", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"of": [{"of": [{"of": [{"amount": {"param": "f5329.cap_birth"}, "count": {"input": "person.x_births"}, "op": "multiply_count"}, {"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"const": "e19"}, {"ref": "retirement.exception"}], "test": "eq"}}], "op": "smaller_of"}, {"of": [{"from": {"param": "f5329.cap_first_home"}, "op": "subtract_floor0", "take": {"input": "person.x_prior09"}}, {"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"const": "e09"}, {"ref": "retirement.exception"}], "test": "eq"}}], "op": "smaller_of"}, {"of": [{"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"const": "e22"}, {"ref": "retirement.exception"}], "test": "eq"}}, {"param": "f5329.cap_abuse"}], "op": "smaller_of"}, {"of": [{"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"const": "e23"}, {"ref": "retirement.exception"}], "test": "eq"}}, {"param": "f5329.cap_emergency"}], "op": "smaller_of"}], "op": "sum"}, {"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"args": [{"const": "e09"}, {"ref": "retirement.exception"}], "test": "ne"}, {"args": [{"const": "e19"}, {"ref": "retirement.exception"}], "test": "ne"}, {"args": [{"const": "e22"}, {"ref": "retirement.exception"}], "test": "ne"}, {"args": [{"const": "e23"}, {"ref": "retirement.exception"}], "test": "ne"}], "test": "all"}}], "op": "sum"}}, "op": "subtract_floor0", "take": {"from": {"collection": "retirement", "field": "retirement.l1_s", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"collection": "retirement", "field": "retirement.l2_s", "op": "sum_over", "where": null}}}, "op": "multiply_rate", "rate": {"param": "f5329.early_rate"}}, {"amount": {"from": {"collection": "retirement", "field": "retirement.l1_s", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"collection": "retirement", "field": "retirement.l2_s", "op": "sum_over", "where": null}}, "op": "multiply_rate", "rate": {"param": "f5329.simple_rate"}}], "op": "sum"}
+{"of": [{"amount": {"of": [{"from": {"collection": "retirement", "field": "retirement.l1", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"of": [{"of": [{"of": [{"amount": {"param": "f5329.cap_birth"}, "count": {"input": "person.x_births"}, "op": "multiply_count"}, {"collection": "retirement", "field": "retirement.l2_e19", "op": "sum_over", "where": null}], "op": "smaller_of"}, {"of": [{"from": {"param": "f5329.cap_first_home"}, "op": "subtract_floor0", "take": {"input": "person.x_prior09"}}, {"collection": "retirement", "field": "retirement.l2_e09", "op": "sum_over", "where": null}], "op": "smaller_of"}, {"of": [{"collection": "retirement", "field": "retirement.l2_e22", "op": "sum_over", "where": null}, {"param": "f5329.cap_abuse"}], "op": "smaller_of"}, {"of": [{"collection": "retirement", "field": "retirement.l2_e23", "op": "sum_over", "where": null}, {"param": "f5329.cap_emergency"}], "op": "smaller_of"}], "op": "sum"}, {"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"args": [{"const": "e09"}, {"ref": "retirement.exception"}], "test": "ne"}, {"args": [{"const": "e19"}, {"ref": "retirement.exception"}], "test": "ne"}, {"args": [{"const": "e22"}, {"ref": "retirement.exception"}], "test": "ne"}, {"args": [{"const": "e23"}, {"ref": "retirement.exception"}], "test": "ne"}], "test": "all"}}], "op": "sum"}}, {"from": {"collection": "retirement", "field": "retirement.l1_s", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"collection": "retirement", "field": "retirement.l2_s", "op": "sum_over", "where": null}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "f5329.simple_rate"}}, {"amount": {"from": {"from": {"collection": "retirement", "field": "retirement.l1", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"of": [{"of": [{"of": [{"amount": {"param": "f5329.cap_birth"}, "count": {"input": "person.x_births"}, "op": "multiply_count"}, {"collection": "retirement", "field": "retirement.l2_e19", "op": "sum_over", "where": null}], "op": "smaller_of"}, {"of": [{"from": {"param": "f5329.cap_first_home"}, "op": "subtract_floor0", "take": {"input": "person.x_prior09"}}, {"collection": "retirement", "field": "retirement.l2_e09", "op": "sum_over", "where": null}], "op": "smaller_of"}, {"of": [{"collection": "retirement", "field": "retirement.l2_e22", "op": "sum_over", "where": null}, {"param": "f5329.cap_abuse"}], "op": "smaller_of"}, {"of": [{"collection": "retirement", "field": "retirement.l2_e23", "op": "sum_over", "where": null}, {"param": "f5329.cap_emergency"}], "op": "smaller_of"}], "op": "sum"}, {"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"args": [{"const": "e09"}, {"ref": "retirement.exception"}], "test": "ne"}, {"args": [{"const": "e19"}, {"ref": "retirement.exception"}], "test": "ne"}, {"args": [{"const": "e22"}, {"ref": "retirement.exception"}], "test": "ne"}, {"args": [{"const": "e23"}, {"ref": "retirement.exception"}], "test": "ne"}], "test": "all"}}], "op": "sum"}}, "op": "subtract_floor0", "take": {"of": [{"from": {"collection": "retirement", "field": "retirement.l1", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"of": [{"of": [{"of": [{"amount": {"param": "f5329.cap_birth"}, "count": {"input": "person.x_births"}, "op": "multiply_count"}, {"collection": "retirement", "field": "retirement.l2_e19", "op": "sum_over", "where": null}], "op": "smaller_of"}, {"of": [{"from": {"param": "f5329.cap_first_home"}, "op": "subtract_floor0", "take": {"input": "person.x_prior09"}}, {"collection": "retirement", "field": "retirement.l2_e09", "op": "sum_over", "where": null}], "op": "smaller_of"}, {"of": [{"collection": "retirement", "field": "retirement.l2_e22", "op": "sum_over", "where": null}, {"param": "f5329.cap_abuse"}], "op": "smaller_of"}, {"of": [{"collection": "retirement", "field": "retirement.l2_e23", "op": "sum_over", "where": null}, {"param": "f5329.cap_emergency"}], "op": "smaller_of"}], "op": "sum"}, {"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"args": [{"const": "e09"}, {"ref": "retirement.exception"}], "test": "ne"}, {"args": [{"const": "e19"}, {"ref": "retirement.exception"}], "test": "ne"}, {"args": [{"const": "e22"}, {"ref": "retirement.exception"}], "test": "ne"}, {"args": [{"const": "e23"}, {"ref": "retirement.exception"}], "test": "ne"}], "test": "all"}}], "op": "sum"}}, {"from": {"collection": "retirement", "field": "retirement.l1_s", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"collection": "retirement", "field": "retirement.l2_s", "op": "sum_over", "where": null}}], "op": "smaller_of"}}, "op": "multiply_rate", "rate": {"param": "f5329.early_rate"}}], "op": "sum"}
 ```
 
-Ruling: model error; i5329 p. 5, Line 2, "Enter on line 2 the amount that you can exclude". The reply asks person.x_prior09 and the other exception answers of every person, including persons with no early distribution, which the project does not ask. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 2,437 of 4,960 agree; 2,517 candidate-unknown, 6 project-refuses; on returns the full interview completes: 289 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 276 candidate-unknown person.x_prior09 (for example classm.f4952.1.deepseek); 9 candidate-unknown person.x_births (for example generated); 4 candidate-unknown person.exception (for example classm.ira.2). Project stands.
+Second transcription's note: Where a dollar limit binds and SIMPLE (25%) distributions are present, the instructions do not say which pool loses the exclusion; the SIMPLE-specific exclusion is applied as entered.
+
+Ruling: model error; i5329 p. 5, Line 2, "Enter on line 2 the amount that you can exclude". The reply asks person.x_prior09 and the other exception answers of every person, including persons with no early distribution, which the project does not ask. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. Reply restructured; same objection. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 2,515 of 5,127 agree; 2,607 candidate-unknown, 5 project-refuses; on returns the full interview completes: 300 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 301 against the record's 300, the class M fixtures having been rewritten by a concurrent run): 292 candidate-unknown person.x_prior09 (for example classm.f4952.1.deepseek, person[taxpayer]); 9 candidate-unknown person.x_births (for example classm.s2.3.deepseek without x_births, person[taxpayer]). Project stands.
 
 ### person.x_must — One if this person must file Form 5329
 Status: **DISAGREE**
@@ -750,12 +731,10 @@ Project:
 Second:
 
 ```json
-{"collection": "retirement", "field": "retirement.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "early_1"}, {"ref": "retirement.code"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "ne"}], "test": "all"}], "test": "any"}}
+{"collection": "retirement", "field": "retirement.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "none"}, {"input": "retirement.exception"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "early_1"}, {"ref": "retirement.code"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"const": "early_1"}, {"input": "retirement.code"}], "test": "eq"}, {"args": [{"const": "simple_S"}, {"input": "retirement.code"}], "test": "eq"}], "test": "any"}], "test": "all"}}
 ```
 
-Second transcription's note: Form 5329 is also required for excess HSA contributions (x_hsa_excess > 0). A Bool cannot be added into this Count, so that reason must be combined where the filing requirement is decided.
-
-Ruling: model error; i5329 p. 1, Who Must File, "You must file Form 5329 if any of the following apply." with "The contributions for 2025 to your traditional IRAs, Roth IRAs, Coverdell ESAs, Archer MSAs, HSAs, or ABLE accounts exceed your maximum contribution limit". The reply's must-file count omits the HSA excess part (spot-checked: classm.f8889.1.deepseek spouse, Form 5329 line 48 $1,632: project 1, candidate 0), which the page lists among the reasons to file; the one reverse case (generated 259) was not separately explained. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 4,579 of 4,960 agree; 285 value, 94 project-refuses, 2 project-unknown; on returns the full interview completes: 20 value. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 20 value (for example classm.f8889.1.deepseek). Project stands; the generated 259 witness is listed for a second look.
+Ruling: model error; i5329 p. 1, Who Must File, "You must file Form 5329 if any of the following apply." with "The contributions for 2025 to your traditional IRAs, Roth IRAs, Coverdell ESAs, Archer MSAs, HSAs, or ABLE accounts exceed your maximum contribution limit". The reply's must-file count omits the HSA excess part (spot-checked: classm.f8889.1.deepseek spouse, Form 5329 line 48 $1,632: project 1, candidate 0), which the page lists among the reasons to file; the one reverse case (generated 259) was not separately explained. Reply changed (now counts code 1 and code S entries that have no exception), still without the HSA excess of Form 5329 Part VII; same 20 completed records. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 4,742 of 5,127 agree; 287 value, 94 project-refuses, 4 project-unknown; on returns the full interview completes: 20 value. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 20 value (for example classm.f8889.1.deepseek, person[spouse]). Project stands.
 
 ### person.x_c05 — Exception 05 limited to the medical expenses above 7.5% of AGI (Schedule A line 4)
 Status: **DISAGREE**
@@ -769,10 +748,10 @@ Project:
 Second:
 
 ```json
-{"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"const": "e05"}, {"ref": "retirement.exception"}], "test": "eq"}}
+{"collection": "retirement", "field": "retirement.l2_e05", "op": "sum_over", "where": null}
 ```
 
-Ruling: representation; i5329 p. 5, Line 2, "Enter on line 2 the amount that you can exclude". The only completed-return differences are 4 candidate-unknown exception answers on fixtures whose exception does not need them (classm.ira.2, classm.tcw.15, classm.tcw.5); the other differences are on refused or partial records. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 4,825 of 4,960 agree; 134 candidate-unknown, 1 value; on returns the full interview completes: 4 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 4 candidate-unknown person.exception (for example classm.ira.2). Project stands.
+Ruling: model error; i5329 p. 5, Line 2, exception 05, distributions "to the extent you have deductible medical expenses that exceed 7.5% of your adjusted gross income". The reply sums the exception 05 amounts without that limit: stage21.blind.e6 $9,000 against the project's $7,475 (an incomplete record). Reclassified from representation: the reply changed and now drops the limit. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 5,126 of 5,127 agree; 1 value; on returns the full interview completes: none. No completed-return difference. Project stands.
 
 ### person.x_two23 — Exception 23 claimed on more than one distribution
 Status: **DISAGREE**
@@ -789,7 +768,7 @@ Second:
 {"args": [{"const": 1, "type": "Count"}, {"collection": "retirement", "field": "retirement.one", "op": "sum_over", "where": {"args": [{"const": "e23"}, {"ref": "retirement.exception"}], "test": "eq"}}], "test": "lt"}
 ```
 
-Ruling: representation; i5329 p. 5, Line 2, "Enter on line 2 the amount that you can exclude". The only completed-return differences are 4 candidate-unknown exception answers on fixtures whose exception does not need them (classm.ira.2, classm.tcw.15, classm.tcw.5); the other differences are on refused or partial records. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 4,826 of 4,960 agree; 134 candidate-unknown; on returns the full interview completes: 4 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 4 candidate-unknown person.exception (for example classm.ira.2). Project stands.
+Ruling: model error; p590b p. 28, exception 23, one emergency distribution a year; i5329 p. 5, Line 2, exception number asked of a distribution included on line 1. The reply counts entries whose exception is e23 without first testing that the distribution is an early one (code 1 or S) with an exception, so it reads retirement.exception of distributions the interview never asks it of (code G direct rollovers and other non-early codes). It gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 1,939 partial records; 4,906 comparisons): 4,738 of 4,906 agree; 168 candidate-unknown; on returns the full interview completes: 13 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run `/tmp/adj-fx/`, recorded triage file untouched): 13 candidate-unknown retirement.exception (for example classm.aqee.1.deepseek, person[taxpayer], code direct_rollover_G). Project stands.
 
 ### person.x_limited_sum — Exceptions 05, 09, 19, 22 and 23 within their limits
 Status: **DISAGREE**
@@ -803,10 +782,10 @@ Project:
 Second:
 
 ```json
-{"of": [{"of": [{"amount": {"param": "f5329.cap_birth"}, "count": {"input": "person.x_births"}, "op": "multiply_count"}, {"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"const": "e19"}, {"ref": "retirement.exception"}], "test": "eq"}}], "op": "smaller_of"}, {"of": [{"from": {"param": "f5329.cap_first_home"}, "op": "subtract_floor0", "take": {"input": "person.x_prior09"}}, {"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"const": "e09"}, {"ref": "retirement.exception"}], "test": "eq"}}], "op": "smaller_of"}, {"of": [{"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"const": "e22"}, {"ref": "retirement.exception"}], "test": "eq"}}, {"param": "f5329.cap_abuse"}], "op": "smaller_of"}, {"of": [{"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"const": "e23"}, {"ref": "retirement.exception"}], "test": "eq"}}, {"param": "f5329.cap_emergency"}], "op": "smaller_of"}], "op": "sum"}
+{"of": [{"of": [{"amount": {"param": "f5329.cap_birth"}, "count": {"input": "person.x_births"}, "op": "multiply_count"}, {"collection": "retirement", "field": "retirement.l2_e19", "op": "sum_over", "where": null}], "op": "smaller_of"}, {"of": [{"from": {"param": "f5329.cap_first_home"}, "op": "subtract_floor0", "take": {"input": "person.x_prior09"}}, {"collection": "retirement", "field": "retirement.l2_e09", "op": "sum_over", "where": null}], "op": "smaller_of"}, {"of": [{"collection": "retirement", "field": "retirement.l2_e22", "op": "sum_over", "where": null}, {"param": "f5329.cap_abuse"}], "op": "smaller_of"}, {"of": [{"collection": "retirement", "field": "retirement.l2_e23", "op": "sum_over", "where": null}, {"param": "f5329.cap_emergency"}], "op": "smaller_of"}], "op": "sum"}
 ```
 
-Ruling: model error; i5329 p. 5, Line 2, "Enter on line 2 the amount that you can exclude". The reply asks person.x_prior09 and the other exception answers of every person, including persons with no early distribution, which the project does not ask. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 2,311 of 4,960 agree; 2,649 candidate-unknown; on returns the full interview completes: 289 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 276 candidate-unknown person.x_prior09 (for example classm.f4952.1.deepseek); 9 candidate-unknown person.x_births (for example generated); 4 candidate-unknown person.exception (for example classm.ira.2). Project stands.
+Ruling: model error; i5329 p. 5, Line 2 (exceptions 09, 19, 22 and 23 and their limits); p590b p. 27. The reply adds the exception 09, 19, 22 and 23 amounts without their caps ($10,000 first home less earlier years, $5,000 per birth or adoption, the abuse and emergency caps) and leaves exception 05 out: stage21.blind.e4 $19,000 against $13,800, stage21.mut.e23_over_cap $1,500 against $1,000 (incomplete or refused records only). executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 5,118 of 5,127 agree; 9 value; on returns the full interview completes: none. No completed-return difference. Project stands.
 
 ### person.x_other_exc — Exceptions without a fixed limit
 Status: **DISAGREE**
@@ -823,9 +802,9 @@ Second:
 {"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"args": [{"const": "e09"}, {"ref": "retirement.exception"}], "test": "ne"}, {"args": [{"const": "e19"}, {"ref": "retirement.exception"}], "test": "ne"}, {"args": [{"const": "e22"}, {"ref": "retirement.exception"}], "test": "ne"}, {"args": [{"const": "e23"}, {"ref": "retirement.exception"}], "test": "ne"}], "test": "all"}}
 ```
 
-Second transcription's note: Exception 05 (medical, 7.5% of AGI) is limited at return level (s2.e05_over). Its amount is included here unlimited.
+Second transcription's note: Exception 05 is counted here; its AGI limit is checked at return level (s2.e05_over).
 
-Ruling: representation; i5329 p. 5, Line 2, "Enter on line 2 the amount that you can exclude". The only completed-return differences are 4 candidate-unknown exception answers on fixtures whose exception does not need them (classm.ira.2, classm.tcw.15, classm.tcw.5); the other differences are on refused or partial records. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 4,821 of 4,960 agree; 134 candidate-unknown, 5 value; on returns the full interview completes: 4 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 4 candidate-unknown person.exception (for example classm.ira.2). Project stands.
+Ruling: model error; i5329 p. 5, Line 2, exception 05. The reply leaves exception 05 in the unlimited remainder: stage21.blind.e6 $9,000 against $0 and stage21.blind.e7 (incomplete or refused records only). Reclassified from representation: the reply changed. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 5,122 of 5,127 agree; 5 value; on returns the full interview completes: none. No completed-return difference. Project stands.
 
 ### person.x_limit_binds — A limited exception over its limit on a person with a code S distribution
 Status: **DISAGREE**
@@ -839,10 +818,10 @@ Project:
 Second:
 
 ```json
-{"args": [{"of": [{"of": [{"amount": {"param": "f5329.cap_birth"}, "count": {"input": "person.x_births"}, "op": "multiply_count"}, {"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"const": "e19"}, {"ref": "retirement.exception"}], "test": "eq"}}], "op": "smaller_of"}, {"of": [{"from": {"param": "f5329.cap_first_home"}, "op": "subtract_floor0", "take": {"input": "person.x_prior09"}}, {"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"const": "e09"}, {"ref": "retirement.exception"}], "test": "eq"}}], "op": "smaller_of"}, {"of": [{"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"const": "e22"}, {"ref": "retirement.exception"}], "test": "eq"}}, {"param": "f5329.cap_abuse"}], "op": "smaller_of"}, {"of": [{"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"const": "e23"}, {"ref": "retirement.exception"}], "test": "eq"}}, {"param": "f5329.cap_emergency"}], "op": "smaller_of"}], "op": "sum"}, {"of": [{"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"const": "e09"}, {"ref": "retirement.exception"}], "test": "eq"}}, {"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"const": "e19"}, {"ref": "retirement.exception"}], "test": "eq"}}, {"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"const": "e22"}, {"ref": "retirement.exception"}], "test": "eq"}}, {"collection": "retirement", "field": "retirement.l2", "op": "sum_over", "where": {"args": [{"const": "e23"}, {"ref": "retirement.exception"}], "test": "eq"}}], "op": "sum"}], "test": "lt"}
+{"args": [{"of": [{"of": [{"amount": {"param": "f5329.cap_birth"}, "count": {"input": "person.x_births"}, "op": "multiply_count"}, {"collection": "retirement", "field": "retirement.l2_e19", "op": "sum_over", "where": null}], "op": "smaller_of"}, {"of": [{"from": {"param": "f5329.cap_first_home"}, "op": "subtract_floor0", "take": {"input": "person.x_prior09"}}, {"collection": "retirement", "field": "retirement.l2_e09", "op": "sum_over", "where": null}], "op": "smaller_of"}, {"of": [{"collection": "retirement", "field": "retirement.l2_e22", "op": "sum_over", "where": null}, {"param": "f5329.cap_abuse"}], "op": "smaller_of"}, {"of": [{"collection": "retirement", "field": "retirement.l2_e23", "op": "sum_over", "where": null}, {"param": "f5329.cap_emergency"}], "op": "smaller_of"}], "op": "sum"}, {"of": [{"collection": "retirement", "field": "retirement.l2_e09", "op": "sum_over", "where": null}, {"collection": "retirement", "field": "retirement.l2_e19", "op": "sum_over", "where": null}, {"collection": "retirement", "field": "retirement.l2_e22", "op": "sum_over", "where": null}, {"collection": "retirement", "field": "retirement.l2_e23", "op": "sum_over", "where": null}], "op": "sum"}], "test": "lt"}
 ```
 
-Ruling: model error; i5329 p. 5, Line 2, "Enter on line 2 the amount that you can exclude". The reply asks person.x_prior09 and the other exception answers of every person, including persons with no early distribution, which the project does not ask. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 2,310 of 4,960 agree; 2,648 candidate-unknown, 1 project-refuses, 1 value; on returns the full interview completes: 289 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 276 candidate-unknown person.x_prior09 (for example classm.f4952.1.deepseek); 9 candidate-unknown person.x_births (for example generated); 4 candidate-unknown person.exception (for example classm.ira.2). Project stands.
+Ruling: model error; i5329 p. 5, Line 2, "Enter on line 2 the amount that you can exclude". The reply asks person.x_prior09 and the other exception answers of every person, including persons with no early distribution, which the project does not ask. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. Reply restructured; same objection. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 2,368 of 5,127 agree; 2,757 candidate-unknown, 1 project-refuses, 1 value; on returns the full interview completes: 300 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 301 against the record's 300, the class M fixtures having been rewritten by a concurrent run): 292 candidate-unknown person.x_prior09 (for example classm.f4952.1.deepseek, person[taxpayer]); 9 candidate-unknown person.x_births (for example classm.s2.3.deepseek without x_births, person[taxpayer]). Project stands.
 
 ### person.x_hsa_excess — This person's 2025 HSA excess contributions (Form 8889)
 Status: **AGREE**
@@ -877,7 +856,7 @@ Second:
 {"args": [{"args": [{"const": false}, {"line": "over"}], "test": "eq"}, {"args": [{"const": 1, "type": "Count"}, {"line": "employers"}], "test": "lt"}, {"args": [{"param": "ss.base"}, {"line": "wages"}], "test": "lt"}], "test": "all"}
 ```
 
-Ruling: representation; i1040gi p. 117, Line 11, "But if any one employer withheld more than $10,918". All differences are on refused or partial records; no completed return differs. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 4,952 of 4,960 agree; 7 value, 1 project-unknown; on returns the full interview completes: none. No completed-return difference. Project stands.
+Ruling: model error; i1040gi p. 117, Line 11, "If you had more than one employer and total wages of more than $176,100, too much social security tax may have been withheld". The reply drops the total-wages condition (its note argues that withholding above $10,918.20 with no employer over the limit implies wages over the base, which holds only when each employer withheld 6.2%). The 308 completed-return differences are this helper on persons with two employers and wages under the base, where the printed credit is $0 either way (a scratch pair evaluation of person.credit in both graphs: 2 differences, none completed: ss.base.exact $0 against $0.01, generated 206 $0 against $183.87, both on box 4 above 6.2% of box 3). The reply gives a credit the source denies on such W-2s. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 3,881 of 5,127 agree; 1,245 value, 1 project-unknown; on returns the full interview completes: 308 value. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 308 value (for example classm.f8889.1.deepseek, person[spouse]). Project stands.
 
 ### excess — Withholding above $10,918.20, if any
 Status: **AGREE**
@@ -906,7 +885,7 @@ Second:
 {"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.result", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}
 ```
 
-Ruling: model error; p560 p. 39, Step 2, "Enter your deduction for self-employment tax from Schedule 1 (Form 1040), line 15". The reply reads its own self-employment screen (person.se_screen) for every person, including persons with no Schedule C, and refuses on it where the project computes zero or the amount. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 3,202 of 4,960 agree; 1,660 candidate-unknown, 98 candidate-refuses; on returns the full interview completes: 13 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 13 candidate-unknown person.se_screen (for example stage14.joint.spouse_wages); 3 candidate-refuses at se_screen (for example classm.f5695.2.deepseek). Project stands.
+Ruling: model error; p560 p. 39, Step 2, "Enter your deduction for self-employment tax from Schedule 1 (Form 1040), line 15". The reply reads its own self-employment screen (person.se_screen) for every person, including persons with no Schedule C, and refuses on it where the project computes zero or the amount. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. The reply now sums sc.line31 where the project (and the previous reply) read sc.result; the two are equal except on a Schedule C loss limited by the cited at-risk screen (see person.sc_total), so this changes no computed amount. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 3,202 of 5,127 agree; 1,700 candidate-unknown, 224 candidate-refuses, 1 project-refuses; on returns the full interview completes: 16 candidate-unknown, 3 candidate-refuses. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 20 against the record's 19, the class M fixtures having been rewritten by a concurrent run): 17 candidate-unknown person.se_screen (for example classm.asset.1, person[spouse]); 3 candidate-refuses (for example classm.f5695.2.deepseek, person[taxpayer]). Project stands.
 
 ### Step 3 — Net earnings from self-employment. Subtract step 2 from step 1
 Status: **AGREE**
@@ -915,21 +894,7 @@ Status: **AGREE**
 Status: **AGREE**
 
 ### Step 6 — Multiply $350,000 by your plan contribution rate (not the reduced rate)
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"amount": {"param": "ret.comp_limit"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "person.sep_rate"}, "op": "multiply_count"}, "places": 6, "whole": {"param": "sc.hundred_cents"}}
-```
-
-Second:
-
-```json
-{"amount": {"param": "ret.comp_limit"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "person.sep_rate"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}
-```
-
-Ruling: model error; p560 p. 39, Deduction Worksheet for Self-Employed. The only completed-return differences are partial records withholding person.plan_screen, which the reply reads and this step does not need on the project's interview. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 4,907 of 4,960 agree; 33 candidate-unknown, 20 candidate-refuses; on returns the full interview completes: 12 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 12 candidate-unknown person.plan_screen (for example generated). Project stands.
+Status: **AGREE**
 
 ### Step 7 — Enter the smaller of step 5 or step 6
 Status: **AGREE**
@@ -952,10 +917,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": false}, {"line": "23"}], "test": "eq"}, {"args": [{"const": false}, {"line": "25"}], "test": "eq"}, {"args": [{"const": false}, {"line": "26"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "eq"}, {"args": [{"const": true}, {"line": "24"}], "test": "eq"}], "test": "all"}, "then": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}}, {"guard": {"args": [{"args": [{"const": false}, {"line": "23"}], "test": "ne"}, {"args": [{"const": false}, {"line": "25"}], "test": "ne"}, {"args": [{"const": false}, {"line": "26"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "ne"}, {"args": [{"const": true}, {"line": "24"}], "test": "ne"}], "test": "any"}, "then": {"line": "zero"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.edu"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "eq"}], "test": "all"}, {"args": [{"const": false}, {"line": "23"}], "test": "eq"}, {"args": [{"const": false}, {"line": "25"}], "test": "eq"}, {"args": [{"const": false}, {"line": "26"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "eq"}, {"args": [{"const": true}, {"line": "24"}], "test": "eq"}], "test": "all"}, "then": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.edu"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "ne"}], "test": "any"}, {"args": [{"const": false}, {"line": "23"}], "test": "ne"}, {"args": [{"const": false}, {"line": "25"}], "test": "ne"}, {"args": [{"const": false}, {"line": "26"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "ne"}, {"args": [{"const": true}, {"line": "24"}], "test": "ne"}], "test": "any"}, "then": {"line": "zero"}}], "op": "choose"}
 ```
 
-Ruling: model error; f8863 p. 2, line 27; p970 p. 11. The reply has the education lines read person.edu_over for every person (no f8863.paid gate), so it is unknown on returns with no education credit where the project hides the line (180 completed records, for example classm.f4952.1.deepseek); and it requires an issued TIN for the American opportunity credit, against p970 p. 11, "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return." (owner decision T-113 keeps that deeming): f1.t113.person_aoc_itin_applied (stage19.example.aoc_phaseout with the ITIN applied for) gives line 27 $0.00 where the project gives $4,000.00. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 2,600 of 4,960 agree; 2,359 candidate-unknown, 1 value; on returns the full interview completes: 180 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 180 candidate-unknown person.edu_over (for example classm.f4952.1.deepseek). Project stands.
+Ruling: model error; f8863 p. 2, line 27; p970 p. 11. The reply has the education lines read person.edu_over for every person (no f8863.paid gate), so it is unknown on returns with no education credit where the project hides the line (180 completed records, for example classm.f4952.1.deepseek); and it requires an issued TIN for the American opportunity credit, against p970 p. 11, "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return." (owner decision T-113 keeps that deeming): f1.t113.person_aoc_itin_applied (stage19.example.aoc_phaseout with the ITIN applied for) gives line 27 $0.00 where the project gives $4,000.00. Reply unchanged since the previous round; ruling re-checked against this record. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 2,658 of 5,127 agree; 2,468 candidate-unknown, 1 value; on returns the full interview completes: 191 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 192 against the record's 191, the class M fixtures having been rewritten by a concurrent run): 192 candidate-unknown person.edu_over (for example classm.f4952.1.deepseek, person[taxpayer]). Project stands.
 
 ### 28 — Subtract $2,000 from line 27. If zero or less, enter -0-
 Status: **DISAGREE**
@@ -969,10 +934,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": false}, {"line": "23"}], "test": "eq"}, {"args": [{"const": false}, {"line": "25"}], "test": "eq"}, {"args": [{"const": false}, {"line": "26"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "eq"}, {"args": [{"const": true}, {"line": "24"}], "test": "eq"}], "test": "all"}, "then": {"from": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"param": "aoc.full_band"}}}, {"guard": {"args": [{"args": [{"const": false}, {"line": "23"}], "test": "ne"}, {"args": [{"const": false}, {"line": "25"}], "test": "ne"}, {"args": [{"const": false}, {"line": "26"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "ne"}, {"args": [{"const": true}, {"line": "24"}], "test": "ne"}], "test": "any"}, "then": {"line": "zero"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.edu"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "eq"}], "test": "all"}, {"args": [{"const": false}, {"line": "23"}], "test": "eq"}, {"args": [{"const": false}, {"line": "25"}], "test": "eq"}, {"args": [{"const": false}, {"line": "26"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "eq"}, {"args": [{"const": true}, {"line": "24"}], "test": "eq"}], "test": "all"}, "then": {"from": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"param": "aoc.full_band"}}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.edu"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "ne"}], "test": "any"}, {"args": [{"const": false}, {"line": "23"}], "test": "ne"}, {"args": [{"const": false}, {"line": "25"}], "test": "ne"}, {"args": [{"const": false}, {"line": "26"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "ne"}, {"args": [{"const": true}, {"line": "24"}], "test": "ne"}], "test": "any"}, "then": {"line": "zero"}}], "op": "choose"}
 ```
 
-Ruling: model error; f8863 p. 2, line 28; p970 p. 11. The reply has the education lines read person.edu_over for every person (no f8863.paid gate), so it is unknown on returns with no education credit where the project hides the line (180 completed records, for example classm.f4952.1.deepseek); and it requires an issued TIN for the American opportunity credit, against p970 p. 11, "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return." (owner decision T-113 keeps that deeming): f1.t113.person_aoc_itin_applied (stage19.example.aoc_phaseout with the ITIN applied for) gives line 27 $0.00 where the project gives $4,000.00. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 2,600 of 4,960 agree; 2,359 candidate-unknown, 1 value; on returns the full interview completes: 180 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 180 candidate-unknown person.edu_over (for example classm.f4952.1.deepseek). Project stands.
+Ruling: model error; f8863 p. 2, line 28; p970 p. 11. The reply has the education lines read person.edu_over for every person (no f8863.paid gate), so it is unknown on returns with no education credit where the project hides the line (180 completed records, for example classm.f4952.1.deepseek); and it requires an issued TIN for the American opportunity credit, against p970 p. 11, "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return." (owner decision T-113 keeps that deeming): f1.t113.person_aoc_itin_applied (stage19.example.aoc_phaseout with the ITIN applied for) gives line 27 $0.00 where the project gives $4,000.00. Reply unchanged since the previous round; ruling re-checked against this record. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 2,658 of 5,127 agree; 2,468 candidate-unknown, 1 value; on returns the full interview completes: 191 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 192 against the record's 191, the class M fixtures having been rewritten by a concurrent run): 192 candidate-unknown person.edu_over (for example classm.f4952.1.deepseek, person[taxpayer]). Project stands.
 
 ### 29 — Multiply line 28 by 25% (0.25)
 Status: **DISAGREE**
@@ -986,10 +951,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": false}, {"line": "23"}], "test": "eq"}, {"args": [{"const": false}, {"line": "25"}], "test": "eq"}, {"args": [{"const": false}, {"line": "26"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "eq"}, {"args": [{"const": true}, {"line": "24"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"param": "aoc.full_band"}}, "op": "multiply_rate", "rate": {"param": "aoc.second_rate"}}}, {"guard": {"args": [{"args": [{"const": false}, {"line": "23"}], "test": "ne"}, {"args": [{"const": false}, {"line": "25"}], "test": "ne"}, {"args": [{"const": false}, {"line": "26"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "ne"}, {"args": [{"const": true}, {"line": "24"}], "test": "ne"}], "test": "any"}, "then": {"line": "zero"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.edu"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "eq"}], "test": "all"}, {"args": [{"const": false}, {"line": "23"}], "test": "eq"}, {"args": [{"const": false}, {"line": "25"}], "test": "eq"}, {"args": [{"const": false}, {"line": "26"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "eq"}, {"args": [{"const": true}, {"line": "24"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"param": "aoc.full_band"}}, "op": "multiply_rate", "rate": {"param": "aoc.second_rate"}}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.edu"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "ne"}], "test": "any"}, {"args": [{"const": false}, {"line": "23"}], "test": "ne"}, {"args": [{"const": false}, {"line": "25"}], "test": "ne"}, {"args": [{"const": false}, {"line": "26"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "ne"}, {"args": [{"const": true}, {"line": "24"}], "test": "ne"}], "test": "any"}, "then": {"line": "zero"}}], "op": "choose"}
 ```
 
-Ruling: model error; f8863 p. 2, line 29; p970 p. 11. The reply has the education lines read person.edu_over for every person (no f8863.paid gate), so it is unknown on returns with no education credit where the project hides the line (180 completed records, for example classm.f4952.1.deepseek); and it requires an issued TIN for the American opportunity credit, against p970 p. 11, "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return." (owner decision T-113 keeps that deeming): f1.t113.person_aoc_itin_applied (stage19.example.aoc_phaseout with the ITIN applied for) gives line 27 $0.00 where the project gives $4,000.00. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 2,600 of 4,960 agree; 2,359 candidate-unknown, 1 value; on returns the full interview completes: 180 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 180 candidate-unknown person.edu_over (for example classm.f4952.1.deepseek). Project stands.
+Ruling: model error; f8863 p. 2, line 29; p970 p. 11. The reply has the education lines read person.edu_over for every person (no f8863.paid gate), so it is unknown on returns with no education credit where the project hides the line (180 completed records, for example classm.f4952.1.deepseek); and it requires an issued TIN for the American opportunity credit, against p970 p. 11, "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return." (owner decision T-113 keeps that deeming): f1.t113.person_aoc_itin_applied (stage19.example.aoc_phaseout with the ITIN applied for) gives line 27 $0.00 where the project gives $4,000.00. Reply unchanged since the previous round; ruling re-checked against this record. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 2,658 of 5,127 agree; 2,468 candidate-unknown, 1 value; on returns the full interview completes: 191 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 192 against the record's 191, the class M fixtures having been rewritten by a concurrent run): 192 candidate-unknown person.edu_over (for example classm.f4952.1.deepseek, person[taxpayer]). Project stands.
 
 ### 30 — American opportunity credit for this student. If line 28 is zero, enter the amount from li
 Status: **DISAGREE**
@@ -1003,10 +968,10 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": false}, {"line": "23"}], "test": "eq"}, {"args": [{"const": false}, {"line": "25"}], "test": "eq"}, {"args": [{"const": false}, {"line": "26"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "eq"}, {"args": [{"const": true}, {"line": "24"}], "test": "eq"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"const": 0}, {"from": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"param": "aoc.full_band"}}], "test": "eq"}, "then": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": 0}, {"from": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"param": "aoc.full_band"}}], "test": "ne"}, "then": {"of": [{"amount": {"from": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"param": "aoc.full_band"}}, "op": "multiply_rate", "rate": {"param": "aoc.second_rate"}}, {"param": "aoc.full_band"}], "op": "sum"}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"const": false}, {"line": "23"}], "test": "ne"}, {"args": [{"const": false}, {"line": "25"}], "test": "ne"}, {"args": [{"const": false}, {"line": "26"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "ne"}, {"args": [{"const": true}, {"line": "24"}], "test": "ne"}], "test": "any"}, "then": {"line": "zero"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.edu"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "eq"}], "test": "all"}, {"args": [{"const": false}, {"line": "23"}], "test": "eq"}, {"args": [{"const": false}, {"line": "25"}], "test": "eq"}, {"args": [{"const": false}, {"line": "26"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "eq"}, {"args": [{"const": true}, {"line": "24"}], "test": "eq"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"const": 0}, {"from": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"param": "aoc.full_band"}}], "test": "eq"}, "then": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}}, {"guard": {"args": [{"const": 0}, {"from": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"param": "aoc.full_band"}}], "test": "ne"}, "then": {"of": [{"amount": {"from": {"of": [{"from": {"of": [{"input": "person.edu_inst"}, {"input": "person.edu_mat"}], "op": "sum"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}, {"param": "aoc.expense_cap"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"param": "aoc.full_band"}}, "op": "multiply_rate", "rate": {"param": "aoc.second_rate"}}, {"param": "aoc.full_band"}], "op": "sum"}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.edu"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "ne"}], "test": "any"}, {"args": [{"const": false}, {"line": "23"}], "test": "ne"}, {"args": [{"const": false}, {"line": "25"}], "test": "ne"}, {"args": [{"const": false}, {"line": "26"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "ne"}, {"args": [{"const": true}, {"line": "24"}], "test": "ne"}], "test": "any"}, "then": {"line": "zero"}}], "op": "choose"}
 ```
 
-Ruling: model error; f8863 p. 2, line 30; p970 p. 11. The reply has the education lines read person.edu_over for every person (no f8863.paid gate), so it is unknown on returns with no education credit where the project hides the line (180 completed records, for example classm.f4952.1.deepseek); and it requires an issued TIN for the American opportunity credit, against p970 p. 11, "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return." (owner decision T-113 keeps that deeming): f1.t113.person_aoc_itin_applied (stage19.example.aoc_phaseout with the ITIN applied for) gives line 27 $0.00 where the project gives $4,000.00. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 2,600 of 4,960 agree; 2,359 candidate-unknown, 1 value; on returns the full interview completes: 180 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 180 candidate-unknown person.edu_over (for example classm.f4952.1.deepseek). Project stands.
+Ruling: model error; f8863 p. 2, line 30; p970 p. 11. The reply has the education lines read person.edu_over for every person (no f8863.paid gate), so it is unknown on returns with no education credit where the project hides the line (180 completed records, for example classm.f4952.1.deepseek); and it requires an issued TIN for the American opportunity credit, against p970 p. 11, "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return." (owner decision T-113 keeps that deeming): f1.t113.person_aoc_itin_applied (stage19.example.aoc_phaseout with the ITIN applied for) gives line 27 $0.00 where the project gives $4,000.00. Reply unchanged since the previous round; ruling re-checked against this record. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 2,658 of 5,127 agree; 2,468 candidate-unknown, 1 value; on returns the full interview completes: 191 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 192 against the record's 191, the class M fixtures having been rewritten by a concurrent run): 192 candidate-unknown person.edu_over (for example classm.f4952.1.deepseek, person[taxpayer]). Project stands.
 
 ### 31 — Adjusted qualified education expenses for the lifetime learning credit
 Status: **DISAGREE**
@@ -1020,12 +985,12 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": false}, {"line": "23"}], "test": "ne"}, {"args": [{"const": false}, {"line": "25"}], "test": "ne"}, {"args": [{"const": false}, {"line": "26"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "ne"}, {"args": [{"const": true}, {"line": "24"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "person.edu"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "eq"}], "test": "all"}, "then": {"from": {"input": "person.edu_inst"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}}, {"guard": {"args": [{"args": [{"args": [{"const": false}, {"line": "23"}], "test": "eq"}, {"args": [{"const": false}, {"line": "25"}], "test": "eq"}, {"args": [{"const": false}, {"line": "26"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "eq"}, {"args": [{"const": true}, {"line": "24"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "person.edu"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "ne"}], "test": "any"}, "then": {"line": "zero"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": true}, {"input": "person.edu"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"const": true}, {"input": "person.edu"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "ne"}], "test": "any"}, {"args": [{"const": false}, {"line": "23"}], "test": "ne"}, {"args": [{"const": false}, {"line": "25"}], "test": "ne"}, {"args": [{"const": false}, {"line": "26"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "ne"}, {"args": [{"const": true}, {"line": "24"}], "test": "ne"}], "test": "any"}], "test": "all"}, "then": {"from": {"input": "person.edu_inst"}, "op": "subtract_floor0", "take": {"of": [{"input": "person.edu_a2025"}, {"input": "person.edu_a2026"}, {"input": "person.edu_refunds"}], "op": "sum"}}}, {"guard": {"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "person.edu"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "eq"}], "test": "all"}, {"args": [{"const": false}, {"line": "23"}], "test": "eq"}, {"args": [{"const": false}, {"line": "25"}], "test": "eq"}, {"args": [{"const": false}, {"line": "26"}], "test": "eq"}, {"args": [{"const": true}, {"input": "person.edu_ein"}], "test": "eq"}, {"args": [{"const": true}, {"line": "24"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "person.edu"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.edu_1098t"}], "test": "ne"}, {"args": [{"const": true}, {"input": "person.tin"}], "test": "ne"}], "test": "any"}], "test": "any"}, "then": {"line": "zero"}}], "op": "choose"}
 ```
 
-Second transcription's note: Line 31 is the Adjusted Qualified Education Expenses Worksheet line 4 figured for the lifetime learning credit (aqee ws4_llc).
+Second transcription's note: No 1098-T, no student TIN or no expenses gives no credit (zero). A missing EIN moves the student from the AOC to line 31.
 
-Ruling: model error; f8863 p. 2, line 31; i8863 p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).". The reply has the education lines read person.edu_over for every person (no f8863.paid gate), so it is unknown on returns with no education credit where the project hides the line (180 completed records, for example classm.f4952.1.deepseek); and it requires an issued TIN for the American opportunity credit, against p970 p. 11, "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return." (owner decision T-113 keeps that deeming): f1.t113.person_aoc_itin_applied (stage19.example.aoc_phaseout with the ITIN applied for) gives line 27 $0.00 where the project gives $4,000.00. Off completed returns: f1.t113.person_llc_itin_applied (a lifetime learning credit student whose ITIN was only applied for) is refused by the project at person.edu_llc_tin_refused, as the owner decided (T-113), and the reply computes $0.00 by excluding the student (scope: a cited refusal); stage19.refuse.period_over_person is refused by the reply on its own edu_over declaration where the project hides the line. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,446 fixtures, 500 generated returns seed 20261026, 2,135 partial records; 4,960 comparisons): 2,598 of 4,960 agree; 2,360 candidate-unknown, 1 candidate-refuses, 1 project-refuses; on returns the full interview completes: 180 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 180 candidate-unknown person.edu_over (for example classm.f4952.1.deepseek). Project stands.
+Ruling: model error; f8863 p. 2, line 31; i8863 p. 3, Who cannot claim a credit, "5. The student has not been issued a TIN by the due date of his or her 2025 return (including extensions).". The reply has the education lines read person.edu_over for every person (no f8863.paid gate), so it is unknown on returns with no education credit where the project hides the line (180 completed records, for example classm.f4952.1.deepseek); and it requires an issued TIN for the American opportunity credit, against p970 p. 11, "If an ATIN or ITIN is applied for on or before the due date of a 2025 return (including extensions) and the IRS issues an ATIN or ITIN as a result of the application, the IRS will consider the ATIN or ITIN as is- sued on or before the due date of the return." (owner decision T-113 keeps that deeming): f1.t113.person_aoc_itin_applied (stage19.example.aoc_phaseout with the ITIN applied for) gives line 27 $0.00 where the project gives $4,000.00. Off completed returns: f1.t113.person_llc_itin_applied (a lifetime learning credit student whose ITIN was only applied for) is refused by the project at person.edu_llc_tin_refused, as the owner decided (T-113), and the reply computes $0.00 by excluding the student (scope: a cited refusal); stage19.refuse.period_over_person is refused by the reply on its own edu_over declaration where the project hides the line. Reply unchanged since the previous round; ruling re-checked against this record. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,495 fixtures, 500 generated returns seed 20261026, 2,118 partial records; 5,127 comparisons): 2,656 of 5,127 agree; 2,469 candidate-unknown, 1 candidate-refuses, 1 project-refuses; on returns the full interview completes: 191 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 192 against the record's 191, the class M fixtures having been rewritten by a concurrent run): 192 candidate-unknown person.edu_over (for example classm.f4952.1.deepseek, person[taxpayer]). Project stands.
 
 ## Refusal gates listed by the second transcription
 
@@ -1045,20 +1010,22 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | person.ira_contrib | person.ira_excess | person.ira_excess |
 | person.ira_deduction | person.ira_excess | person.ira_excess |
 | person.ira_nondeductible | person.ira_excess | person.ira_excess |
-| person.ira_files_8606 | person.ira_excess | person.ira_excess |
+| person.ira_files_8606 | person.ira_basis_adjusted, person.ira_excess | person.ira_basis_adjusted, person.ira_excess |
 | person.ira_8606_line2 | person.ira_basis_adjusted | person.ira_basis_adjusted |
-| person.ira_dist_gate | person.ira_excess | person.ira_excess |
+| person.ira_dist_gate | person.ira_basis_adjusted, person.ira_excess | person.ira_basis_adjusted, person.ira_excess |
 | person.ira_8606_line14 | person.ira_basis_adjusted, person.ira_dist_gate, person.ira_excess | person.ira_basis_adjusted, person.ira_dist_gate, person.ira_excess |
-| person.ira_ssb | person.ira_excess | person.ira_excess |
 | person.ira_se | person.plan_screen, person.rrta, person.se_screen | person.plan_screen, person.rrta, person.se_screen |
-| person.x_tax | person.x_other | - |
+| person.x_l2_all | person.x_two23 | person.x_two23 |
+| person.x_tax | person.x_other, person.x_two23 | - |
+| person.x_limited_sum | person.x_two23 | person.x_two23 |
+| person.x_limit_binds | person.x_two23 | person.x_two23 |
+| person.x_hsa_excess | person.x_other | person.x_other |
 | credit | person.rrta | - |
 | Step 2 | person.rrta, person.se_screen | person.rrta, person.se_screen |
 | Step 3 | person.rrta, person.se_screen | person.rrta, person.se_screen |
-| Step 5 | person.plan_screen, person.rrta, person.se_screen | person.plan_screen, person.rrta, person.se_screen |
-| Step 6 | person.plan_screen | person.plan_screen |
-| Step 7 | person.plan_screen, person.rrta, person.se_screen | person.plan_screen, person.rrta, person.se_screen |
-| Step 21 | person.plan_screen, person.rrta, person.se_screen | person.plan_screen, person.rrta, person.se_screen |
+| Step 5 | person.rrta, person.se_screen | person.rrta, person.se_screen |
+| Step 7 | person.rrta, person.se_screen | person.rrta, person.se_screen |
+| Step 21 | person.rrta, person.se_screen | person.rrta, person.se_screen |
 | 27 | person.edu_over | person.edu_over |
 | 28 | person.edu_over | person.edu_over |
 | 29 | person.edu_over | person.edu_over |
@@ -1072,42 +1039,36 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 lines:
   - id: person.employers
     printed: "employers"
-    label: "Number of employers (Forms W-2) for this person — excess social security tax: if you had more than one employer for 2025"
+    label: "Number of employers (Forms W-2) for this person in 2025 (Schedule 3, line 11: more than one employer)"
     type: Count
     expr: {op: sum_over, collection: w2, field: w2.one}
-    note: "The instructions say 'more than one employer'. Each Form W-2 entry is counted as one employer. Two Forms W-2 from the same employer would be counted twice."
-
   - id: person.overcount
     printed: "overcount"
-    label: "Number of employers that withheld more than $10,918.20"
+    label: "Number of employers that each withheld more than $10,918.20 of social security tax"
     type: Count
     expr:
       op: sum_over
       collection: w2
       field: w2.one
       where: {op: test, eq: [w2.over, {const: true}]}
-
   - id: person.over
     printed: "over"
-    label: "Any one employer withheld more than $10,918.20 (you can't claim the excess on your return; the employer should adjust it)"
+    label: "If any one employer withheld more than $10,918.20, you can't claim the excess on your return"
     type: Bool
     expr: {op: test, gt: [person.overcount, {const: 0, type: Count}]}
-
   - id: person.wages
     printed: "wages"
-    label: "Total social security wages and tips (Forms W-2, boxes 3 and 7)"
+    label: "Total wages (social security wages and tips, Forms W-2 boxes 3 and 7)"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.wages}
-
   - id: person.withheld
     printed: "withheld"
-    label: "Total social security tax withheld (Forms W-2, box 4)"
+    label: "Social security tax withheld (total of Forms W-2, box 4)"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.box4}
-
   - id: person.eligible
     printed: "eligible"
-    label: "More than one employer, total wages of more than $176,100, and no one employer withheld more than $10,918.20"
+    label: "More than one employer for 2025 and total wages of more than $176,100, and no one employer withheld more than $10,918.20"
     type: Bool
     expr:
       op: test
@@ -1115,19 +1076,16 @@ lines:
         - {op: test, gt: [person.employers, {const: 1, type: Count}]}
         - {op: test, gt: [person.wages, {param: ss.base}]}
         - {op: test, eq: [person.over, {const: false}]}
-
   - id: person.excess
     printed: "excess"
     label: "Amount withheld in excess of $10,918.20"
     type: NonNegDollars
     expr: {op: subtract_floor0, from: person.withheld, take: {param: ss.limit}}
-
   - id: person.zero
     printed: "zero"
     label: "Zero"
     type: NonNegDollars
     expr: {op: param, ref: ss.zero}
-
   - id: person.credit
     printed: "credit"
     label: "Excess social security tax withheld (Schedule 3, line 11), figured separately for you and your spouse"
@@ -1135,481 +1093,484 @@ lines:
     expr:
       op: choose
       alternatives:
-        - {guard: {op: test, eq: [person.eligible, {const: true}]}, then: person.excess}
-        - {guard: {op: test, eq: [person.eligible, {const: false}]}, then: person.zero}
+        - guard: {op: test, eq: [person.eligible, {const: true}]}
+          then: person.excess
+        - guard: {op: test, eq: [person.eligible, {const: false}]}
+          then: person.zero
     refuses: [person.rrta]
+    note: "Tier 1 RRTA tax is outside the tool (person.rrta refuses); only social security tax on Forms W-2 is counted."
 
-  # ---- Schedule C / Schedule SE totals used by the SEP worksheet ----
+  # ---------- Schedule C and Schedule SE totals ----------
+  - id: person.one
+    printed: "(helper)"
+    label: "One (this person)"
+    type: Count
+    expr: {op: param, ref: person.one}
   - id: person.sc_count
     printed: "(helper)"
     label: "Number of Schedules C for this person"
     type: Count
     expr: {op: sum_over, collection: sc, field: sc.one}
-
+  - id: person.ho_count
+    printed: "(helper)"
+    label: "Number of this person's Schedules C claiming business use of the home"
+    type: Count
+    expr:
+      op: sum_over
+      collection: sc
+      field: sc.one
+      where: {op: test, eq: [sc.ho_uses, {const: true}]}
+  - id: person.sc_1a
+    printed: "(helper)"
+    label: "Number of this person's businesses with qualified tips or overtime for Schedule 1-A"
+    type: Count
+    expr:
+      op: sum_over
+      collection: sc
+      field: sc.one
+      where: {op: test, eq: [sc.tips_ot, {const: true}]}
   - id: person.sc_total
     printed: "(helper)"
-    label: "Net profit or (loss) from Schedule C, line 31 (all businesses combined; Schedule SE line 2)"
+    label: "Net profit or (loss) from Schedule C, line 31 (all of this person's businesses; Schedule SE, line 2)"
     type: Dollars
     expr: {op: sum_over, collection: sc, field: sc.result}
-    note: "Schedule C line 31 is the amount after the at-risk rules. This line uses sc.result, the per-business result after the loss allowance."
-
+    note: "Read as the total of each business's final line 31 amount (sc.result, after the at-risk limit)."
+  - id: person.positive_profits
+    printed: "(helper)"
+    label: "Total of all net profits from Schedule C, line 31; don't include any net losses (Form 7206, line 5)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: sc, field: sc.profit_pos}
+  - id: person.sehi
+    printed: "(helper)"
+    label: "Self-employed health insurance deduction (Form 7206, line 14, all businesses)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: sc, field: sc.f7206_line14}
+  - id: person.qbi
+    printed: "(helper)"
+    label: "Qualified business income or (loss) (Form 8995, line 1(c), this person's businesses)"
+    type: Dollars
+    expr: {op: sum_over, collection: sc, field: sc.qbi}
+  - id: person.mq_q4
+    printed: "(helper)"
+    label: "Depreciable bases of MACRS property placed in service during the last 3 months of the tax year"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: sc, field: sc.mq_q4}
+  - id: person.mq_total
+    printed: "(helper)"
+    label: "Total depreciable bases of MACRS property placed in service during the tax year"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: sc, field: sc.mq_total}
+  - id: person.cost179
+    printed: "(helper)"
+    label: "Total cost of section 179 property placed in service (Form 4562, line 2)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: sc, field: sc.cost179}
+  - id: person.s179_nonlisted
+    printed: "(helper)"
+    label: "Elected cost of section 179 property other than listed property (Form 4562, line 6, column (c))"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: sc, field: sc.f6}
+  - id: person.s179_listed
+    printed: "(helper)"
+    label: "Listed property elected under section 179 (Form 4562, line 7, from Part V, line 29)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: sc, field: sc.f29}
+  - id: person.income179
+    printed: "(helper)"
+    label: "Business income for the section 179 limit (Form 4562, line 11), from this person's Schedules C"
+    type: Dollars
+    expr: {op: sum_over, collection: sc, field: sc.line31_pre179}
+    note: "Read as each business's line 31 figured before the section 179 deduction; any wage component of line 11 is left to the return-level s179.income."
   - id: person.se_line6
     printed: "(helper)"
     label: "Schedule SE, line 6"
     type: NonNegDollars
-    expr: {op: copy, from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line6}}
+    expr:
+      op: copy
+      from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line6}
     refuses: [person.se_screen, person.rrta]
-
   - id: person.se_line12
     printed: "(helper)"
     label: "Self-employment tax (Schedule SE, line 12)"
     type: NonNegDollars
-    expr: {op: copy, from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line12}}
+    expr:
+      op: copy
+      from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line12}
     refuses: [person.se_screen, person.rrta]
-
   - id: person.se_line13
     printed: "(helper)"
     label: "Deduction for one-half of self-employment tax (Schedule SE, line 13)"
     type: NonNegDollars
-    expr: {op: copy, from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line13}}
+    expr:
+      op: copy
+      from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line13}
     refuses: [person.se_screen, person.rrta]
-
-  - id: person.h_se_line3
+  - id: person.h_se3
     printed: "(helper)"
     label: "Schedule SE, line 3"
     type: Dollars
-    expr: {op: copy, from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line3}}
+    expr:
+      op: copy
+      from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line3}
     refuses: [person.se_screen, person.rrta]
-
-  - id: person.h_se_line4c
+  - id: person.h_se4a
     printed: "(helper)"
-    label: "Schedule SE, line 4c (net earnings from self-employment, line 4)"
-    type: NonNegDollars
-    expr: {op: copy, from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line4c}}
+    label: "Schedule SE, line 4a"
+    type: Dollars
+    expr:
+      op: copy
+      from: {def: se, bind: {line2: person.sc_total, line8a: person.wages}, line: line4a}
     refuses: [person.se_screen, person.rrta]
+  - id: person.eic_se
+    printed: "(helper)"
+    label: "EIC Worksheet B, line 1e: Schedule SE line 3 (line 1c) minus Schedule SE line 13 (line 1d)"
+    type: Dollars
+    expr: {op: subtract, from: person.h_se3, take: person.se_line13}
+    note: "Optional methods (line 4b) and church income (5a) are screened out, so line 1b is zero."
 
-  # ---- Deduction Worksheet for Self-Employed (Pub. 560, chapter 5) ----
+  # ---------- SEP (Pub. 560 Deduction Worksheet for Self-Employed) ----------
   - id: person.sep_s1
     printed: "Step 1"
     label: "Enter your net profit from Schedule C (Form 1040), line 31"
     type: Dollars
     expr: {op: copy, from: person.sc_total}
-
   - id: person.sep_s2
     printed: "Step 2"
     label: "Enter your deduction for self-employment tax from Schedule 1 (Form 1040), line 15"
     type: NonNegDollars
     expr: {op: copy, from: person.se_line13}
-
   - id: person.sep_s3
     printed: "Step 3"
     label: "Net earnings from self-employment. Subtract step 2 from step 1"
     type: NonNegDollars
     expr: {op: subtract_floor0, from: person.sep_s1, take: person.sep_s2}
-    note: "The worksheet prints no zero floor. The required type is NonNegDollars, so a negative result is entered as zero. A loss leaves no deductible contribution in either case."
-
-  - id: person.h_cent
+    note: "The worksheet does not say what to do with a negative result; read as zero (no SEP deduction on a loss), as the declared type requires."
+  - id: person.h_one_cent
     printed: "(helper)"
     label: "One cent"
     type: NonNegDollars
     expr: {op: param, ref: sc.one_cent}
-
-  - id: person.h_hundred
+  - id: person.h_hundred_cents
     printed: "(helper)"
     label: "One hundred cents"
     type: NonNegDollars
     expr: {op: param, ref: sc.hundred_cents}
-
-  - id: person.h_sep_rate_c
+  - id: person.h_rate_cents
     printed: "(helper)"
     label: "Plan contribution rate (whole percent) expressed as cents"
     type: NonNegDollars
-    expr: {op: multiply_count, amount: person.h_cent, count: person.sep_rate}
-
-  - id: person.h_sep_den
+    expr: {op: multiply_count, amount: person.h_one_cent, count: person.sep_rate}
+  - id: person.h_rate_plus
     printed: "(helper)"
-    label: "Rate plus 100 (Rate Worksheet for Self-Employed line 2, in hundredths)"
+    label: "Rate plus 100 (Rate Worksheet line 2, scaled by 100)"
     type: NonNegDollars
-    expr: {op: sum, of: [person.h_sep_rate_c, person.h_hundred]}
-
+    expr: {op: sum, of: [person.h_hundred_cents, person.h_rate_cents]}
   - id: person.sep_s5
     printed: "Step 5"
-    label: "Multiply step 3 by step 4 (your rate from the Rate Table for Self-Employed)"
+    label: "Multiply step 3 by step 4 (rate from the Rate Table for Self-Employed)"
     type: NonNegDollars
-    expr: {op: prorate, amount: person.sep_s3, part: person.h_sep_rate_c, whole: person.h_sep_den, places: 6}
-    note: "Step 4 (the rate) is not a requested line. The Rate Table gives rate ÷ (1 + rate) to 6 decimal places (for example 10% gives 0.090909). Here it is figured as rate% ÷ (100 + rate%), rounded to 6 places."
-    refuses: [person.plan_screen]
-
+    expr: {op: prorate, amount: person.sep_s3, part: person.h_rate_cents, whole: person.h_rate_plus, places: 6}
+    note: "Step 4 (Rate Table column B, rate/(1+rate) to six decimals) is folded into this line as a prorate with six places."
   - id: person.h_comp_limit
     printed: "(helper)"
-    label: "$350,000 annual compensation limit"
+    label: "$350,000 compensation limit"
     type: NonNegDollars
     expr: {op: param, ref: ret.comp_limit}
-
   - id: person.sep_s6
     printed: "Step 6"
     label: "Multiply $350,000 by your plan contribution rate (not the reduced rate)"
     type: NonNegDollars
-    expr: {op: prorate, amount: person.h_comp_limit, part: person.h_sep_rate_c, whole: person.h_hundred, places: 2}
-    refuses: [person.plan_screen]
-
+    expr: {op: prorate, amount: person.h_comp_limit, part: person.h_rate_cents, whole: person.h_hundred_cents, places: 6}
   - id: person.sep_s7
     printed: "Step 7"
     label: "Enter the smaller of step 5 or step 6"
     type: NonNegDollars
     expr: {op: smaller_of, of: [person.sep_s5, person.sep_s6]}
-
   - id: person.sep_s8
     printed: "Step 8"
     label: "Contribution dollar limit ($70,000)"
     type: NonNegDollars
     expr: {op: param, ref: ret.sep_dollar_limit}
-
   - id: person.sep_s21
     printed: "Step 21"
     label: "This is your maximum deductible contribution (no elective deferrals: the smaller of step 7 or step 8)"
     type: NonNegDollars
     expr: {op: smaller_of, of: [person.sep_s7, person.sep_s8]}
-    note: "SARSEPs (elective deferrals) are screened out, so steps 9 through 20 are skipped and the smaller of step 7 or step 8 is entered on step 21."
-    refuses: [person.plan_screen]
-
   - id: person.h_sep_ded
     printed: "(helper)"
-    label: "SEP deduction: your actual contribution, not to exceed your maximum deductible contribution"
+    label: "Enter your actual contribution, not to exceed your maximum deductible contribution"
     type: NonNegDollars
     expr: {op: smaller_of, of: [person.sep_contrib, person.sep_s21]}
 
-  # ---- SIMPLE IRA (Pub. 560, chapter 3) ----
+  # ---------- SIMPLE IRA (Pub. 560 ch. 3) ----------
+  - id: person.h_simple_comp
+    printed: "(helper)"
+    label: "Compensation for SIMPLE: net earnings from self-employment (Schedule SE line 4) before SIMPLE contributions"
+    type: Dollars
+    expr: {op: copy, from: person.h_se4a}
+  - id: person.h_simple_comp0
+    printed: "(helper)"
+    label: "SIMPLE compensation, not less than zero"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: person.h_simple_comp, take: {const: 0}}
   - id: person.h_simple_base
     printed: "(helper)"
-    label: "SIMPLE salary reduction limit ($16,500)"
+    label: "Salary reduction contribution limit ($16,500 for 2025)"
     type: NonNegDollars
     expr: {op: param, ref: ret.simple_limit}
-
-  - id: person.h_simple_catchup
+  - id: person.h_catchup
     printed: "(helper)"
-    label: "SIMPLE catch-up contribution limit for your age"
+    label: "Catch-up contribution limit for SIMPLE IRA plans by age"
     type: NonNegDollars
     expr: {op: keyed_lookup, table: simple_catchup, keys: [person.simple_age]}
-
   - id: person.h_simple_cap
     printed: "(helper)"
     label: "Salary reduction limit plus catch-up limit"
     type: NonNegDollars
-    expr: {op: sum, of: [person.h_simple_base, person.h_simple_catchup]}
-
-  - id: person.h_simple_cap2
+    expr: {op: sum, of: [person.h_simple_base, person.h_catchup]}
+  - id: person.h_simple_d1
     printed: "(helper)"
-    label: "Salary reduction limit, not more than compensation (Schedule SE line 4 before SIMPLE contributions)"
+    label: "Salary reduction contributions, not more than the limit plus catch-up"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [person.h_simple_cap, person.h_se_line4c]}
-    note: "Pub. 560 says compensation is Schedule SE line 4 before subtracting SIMPLE contributions. Line 4c is used here. The catch-up is limited to compensation over the non-catch-up deferrals, approximated as total deferrals not over compensation."
-
-  - id: person.h_simple_def_ok
+    expr: {op: smaller_of, of: [person.simple_deferral, person.h_simple_cap]}
+  - id: person.h_simple_d
     printed: "(helper)"
-    label: "Allowed salary reduction contributions"
+    label: "Salary reduction contributions, not more than compensation"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [person.simple_deferral, person.h_simple_cap2]}
-
-  - id: person.h_simple_match_max
+    expr: {op: smaller_of, of: [person.h_simple_d1, person.h_simple_comp0]}
+    note: "min(deferral, limit + catch-up, compensation) equals the Pub. 560 two-part rule (catch-up limited to compensation over non-catch-up deferrals)."
+  - id: person.h_match_max0
     printed: "(helper)"
     label: "3% of compensation"
     type: NonNegDollars
-    expr: {op: multiply_rate, amount: person.h_se_line4c, rate: {param: ret.match_rate}}
-
-  - id: person.h_simple_match_lim
+    expr: {op: multiply_rate, amount: person.h_simple_comp0, rate: {param: ret.match_rate}}
+  - id: person.h_match_max
     printed: "(helper)"
-    label: "Matching contribution: dollar for dollar up to 3% of compensation"
+    label: "Match dollar-for-dollar up to 3% of compensation"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [person.h_simple_def_ok, person.h_simple_match_max]}
-
-  - id: person.h_simple_comp_lim
+    expr: {op: smaller_of, of: [person.h_match_max0, person.h_simple_d]}
+  - id: person.h_comp_capped
     printed: "(helper)"
-    label: "Compensation taken into account (not more than $350,000)"
+    label: "Compensation taken into account, not more than $350,000"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [person.h_se_line4c, person.h_comp_limit]}
-
-  - id: person.h_simple_ne_max
+    expr: {op: smaller_of, of: [person.h_simple_comp0, person.h_comp_limit]}
+  - id: person.h_nonel_max
     printed: "(helper)"
-    label: "2% nonelective contribution"
+    label: "Nonelective contributions of 2% of compensation"
     type: NonNegDollars
-    expr: {op: multiply_rate, amount: person.h_simple_comp_lim, rate: {param: ret.nonelective_rate}}
-
-  - id: person.h_simple_er_max
+    expr: {op: multiply_rate, amount: person.h_comp_capped, rate: {param: ret.nonelective_rate}}
+  - id: person.h_emp_max
     printed: "(helper)"
     label: "Maximum employer contribution under the plan's formula"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - {guard: {op: test, eq: [person.simple_kind, {const: "match"}]}, then: person.h_simple_match_lim}
-        - {guard: {op: test, eq: [person.simple_kind, {const: "nonelective"}]}, then: person.h_simple_ne_max}
-
-  - id: person.h_simple_er_ok
+        - guard: {op: test, eq: [person.simple_kind, {const: "match"}]}
+          then: person.h_match_max
+        - guard: {op: test, eq: [person.simple_kind, {const: "nonelective"}]}
+          then: person.h_nonel_max
+  - id: person.h_emp
     printed: "(helper)"
-    label: "Allowed employer contribution for yourself"
+    label: "Employer contributions made for yourself, not more than the formula amount"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [person.simple_employer, person.h_simple_er_max]}
-
+    expr: {op: smaller_of, of: [person.simple_employer, person.h_emp_max]}
   - id: person.h_simple_ded
     printed: "(helper)"
-    label: "SIMPLE IRA deduction for yourself"
+    label: "SIMPLE contributions for yourself (salary reduction plus employer contributions)"
     type: NonNegDollars
-    expr: {op: sum, of: [person.h_simple_def_ok, person.h_simple_er_ok]}
-
+    expr: {op: sum, of: [person.h_simple_d, person.h_emp]}
   - id: person.s16
     printed: "(helper)"
-    label: "Self-employed SEP and SIMPLE plans (Schedule 1, line 16), this person"
+    label: "Self-employed SEP, SIMPLE, and qualified plans (Schedule 1, line 16), this person"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - {guard: {op: test, eq: [person.plan, {const: "none"}]}, then: person.zero}
-        - {guard: {op: test, eq: [person.plan, {const: "sep"}]}, then: person.h_sep_ded}
-        - {guard: {op: test, eq: [person.plan, {const: "simple"}]}, then: person.h_simple_ded}
-    refuses: [person.plan_screen, person.se_screen]
+        - guard: {op: test, eq: [person.plan, {const: "none"}]}
+          then: person.zero
+        - guard: {op: test, eq: [person.plan, {const: "sep"}]}
+          then: person.h_sep_ded
+        - guard: {op: test, eq: [person.plan, {const: "simple"}]}
+          then: person.h_simple_ded
+    refuses: [person.plan_screen]
 
-  # ---- Form 8863, Part III, per student (this person) ----
-  - id: person.h_edu_adj
-    printed: "(helper)"
-    label: "Adjustments: tax-free educational assistance (2025 and 2026) and refunds"
-    type: NonNegDollars
-    expr: {op: sum, of: [person.edu_a2025, person.edu_a2026, person.edu_refunds]}
-
-  - id: person.h_edu_aoc
-    printed: "(helper)"
-    label: "American opportunity credit applies to this student (lines 23–26, Form 1098-T, EIN, TIN)"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [person.edu, {const: true}]}
-        - {op: test, eq: [person.edu_1098t, {const: true}]}
-        - {op: test, eq: [person.edu_line23, {const: false}]}
-        - {op: test, eq: [person.edu_line24, {const: true}]}
-        - {op: test, eq: [person.edu_line25, {const: false}]}
-        - {op: test, eq: [person.edu_line26, {const: false}]}
-        - {op: test, eq: [person.edu_ein, {const: true}]}
-        - {op: test, eq: [person.tin, {const: true}]}
-
-  - id: person.h_edu_llc
-    printed: "(helper)"
-    label: "Lifetime learning credit applies to this student"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [person.edu, {const: true}]}
-        - {op: test, eq: [person.edu_1098t, {const: true}]}
-        - {op: test, eq: [person.tin, {const: true}]}
-        - {op: test, eq: [person.h_edu_aoc, {const: false}]}
-
-  - id: person.edu_line27
-    printed: "27"
-    label: "Adjusted qualified education expenses. Don't enter more than $4,000"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - {guard: {op: test, eq: [person.h_edu_aoc, {const: true}]}, then: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.h_edu_adj}, line: line27}}
-        - {guard: {op: test, eq: [person.h_edu_aoc, {const: false}]}, then: person.zero}
-    refuses: [person.edu_over]
-
-  - id: person.edu_line28
-    printed: "28"
-    label: "Subtract $2,000 from line 27. If zero or less, enter -0-"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - {guard: {op: test, eq: [person.h_edu_aoc, {const: true}]}, then: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.h_edu_adj}, line: line28}}
-        - {guard: {op: test, eq: [person.h_edu_aoc, {const: false}]}, then: person.zero}
-    refuses: [person.edu_over]
-
-  - id: person.edu_line29
-    printed: "29"
-    label: "Multiply line 28 by 25% (0.25)"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - {guard: {op: test, eq: [person.h_edu_aoc, {const: true}]}, then: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.h_edu_adj}, line: line29}}
-        - {guard: {op: test, eq: [person.h_edu_aoc, {const: false}]}, then: person.zero}
-    refuses: [person.edu_over]
-
-  - id: person.edu_line30
-    printed: "30"
-    label: "If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - {guard: {op: test, eq: [person.h_edu_aoc, {const: true}]}, then: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.h_edu_adj}, line: line30}}
-        - {guard: {op: test, eq: [person.h_edu_aoc, {const: false}]}, then: person.zero}
-    refuses: [person.edu_over]
-
-  - id: person.edu_line31
-    printed: "31"
-    label: "Lifetime learning credit: adjusted qualified education expenses"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - {guard: {op: test, eq: [person.h_edu_llc, {const: true}]}, then: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.h_edu_adj}, line: ws4_llc}}
-        - {guard: {op: test, eq: [person.h_edu_llc, {const: false}]}, then: person.zero}
-    note: "Line 31 is the Adjusted Qualified Education Expenses Worksheet line 4 figured for the lifetime learning credit (aqee ws4_llc)."
-    refuses: [person.edu_over]
-
-  # ---- Result interfaces ----
-  - id: person.one
-    printed: "(helper)"
-    label: "One"
-    type: Count
-    expr: {op: param, ref: person.one}
-
+  # ---------- Educator expenses ----------
   - id: person.h_educator_max
     printed: "(helper)"
-    label: "$300 educator expense limit"
+    label: "Up to $300 of qualified expenses"
     type: NonNegDollars
     expr: {op: param, ref: s1.educator_max}
-
   - id: person.h_educator_capped
     printed: "(helper)"
-    label: "Qualified educator expenses, up to $300"
+    label: "Qualified educator expenses, not more than $300"
     type: NonNegDollars
     expr: {op: smaller_of, of: [person.educator_expenses, person.h_educator_max]}
-
   - id: person.educator_deduction
     printed: "(helper)"
-    label: "Educator expenses (Schedule 1, line 11), this person: up to $300 if an eligible educator"
+    label: "Educator expenses (Schedule 1, line 11), this person's share"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - {guard: {op: test, eq: [person.eligible_educator, {const: true}]}, then: person.h_educator_capped}
-        - {guard: {op: test, eq: [person.eligible_educator, {const: false}]}, then: person.zero}
+        - guard: {op: test, eq: [person.eligible_educator, {const: true}]}
+          then: person.h_educator_capped
+        - guard: {op: test, eq: [person.eligible_educator, {const: false}]}
+          then: person.zero
 
+  # ---------- HSA (Form 8889) aggregates ----------
   - id: person.hsa_forms
     printed: "(helper)"
     label: "Number of Forms 8889 for this person"
     type: Count
     expr: {op: sum_over, collection: f8889, field: f8889.one}
-
   - id: person.hsa_split
     printed: "(helper)"
-    label: "Forms 8889 using the spousal family-coverage allocation (line 6)"
+    label: "Number of this person's Forms 8889 dividing the family limit between spouses (line 6 instructions)"
     type: Count
     expr:
       op: sum_over
       collection: f8889
       field: f8889.one
       where: {op: test, eq: [f8889.split, {const: true}]}
-
   - id: person.hsa_agreed
     printed: "(helper)"
-    label: "Forms 8889 dividing the family limit by an agreed allocation"
+    label: "Number of this person's Forms 8889 using an agreed (unequal) allocation"
     type: Count
     expr:
       op: sum_over
       collection: f8889
       field: f8889.one
       where: {op: test, eq: [f8889.allocation, {const: "agreed"}]}
-
   - id: person.hsa_step1
     printed: "(helper)"
     label: "Line 6 Step 1 refigured family contribution limit"
     type: NonNegDollars
     expr: {op: sum_over, collection: f8889, field: f8889.step1}
-
   - id: person.hsa_share
     printed: "(helper)"
-    label: "Your allocated share of the family contribution limit"
+    label: "This person's allocated share of the family limit (line 6 Step 2)"
     type: NonNegDollars
     expr: {op: sum_over, collection: f8889, field: f8889.share}
-
   - id: person.hsa_deduction
     printed: "(helper)"
     label: "HSA deduction (Form 8889, line 13)"
     type: NonNegDollars
     expr: {op: sum_over, collection: f8889, field: f8889.line13}
-
   - id: person.hsa_taxable
     printed: "(helper)"
     label: "Taxable HSA distributions (Form 8889, line 16)"
     type: NonNegDollars
     expr: {op: sum_over, collection: f8889, field: f8889.line16}
-
   - id: person.hsa_addtax
     printed: "(helper)"
     label: "Additional 20% tax (Form 8889, line 17b)"
     type: NonNegDollars
     expr: {op: sum_over, collection: f8889, field: f8889.line17b}
 
+  # ---------- Tips and overtime ----------
   - id: person.tip_employers
     printed: "(helper)"
-    label: "Employers on the Qualified Tips From More Than One Employer Worksheet"
+    label: "Number of employers on the Qualified Tips From More Than One Employer Worksheet"
     type: Count
     expr: {op: sum_over, collection: tipjob, field: tipjob.one}
-
   - id: person.tip_total
     printed: "(helper)"
-    label: "Qualified tips, total of column (d)"
+    label: "Add lines 1A through 1E, column (d) (Schedule 1-A, line 4c)"
     type: NonNegDollars
     expr: {op: sum_over, collection: tipjob, field: tipjob.col_d}
-
   - id: person.tip_reported
     printed: "(helper)"
-    label: "Qualified tips reported by employers or to employers, total of column (b)"
+    label: "Qualified tips reported by employers on Form W-2 or reported by you to employers (column (b))"
     type: NonNegDollars
     expr: {op: sum_over, collection: tipjob, field: tipjob.amount}
-
+    note: "Open: 'reported' could mean column (b) or column (c, Form 4137). Column (b) chosen; Form 4137 tips are screened out."
   - id: person.ot_employers
     printed: "(helper)"
-    label: "Employers on the Qualified Overtime Compensation From More Than One Employer Worksheet"
+    label: "Number of employers on the Qualified Overtime Compensation From More Than One Employer Worksheet"
     type: Count
     expr: {op: sum_over, collection: otjob, field: otjob.one}
-
   - id: person.ot_total
     printed: "(helper)"
-    label: "Qualified overtime compensation, total of column (b)"
+    label: "Add the amounts from lines 1A through 1E, column (b) (Schedule 1-A, line 14a)"
     type: NonNegDollars
     expr: {op: sum_over, collection: otjob, field: otjob.col_b}
 
+  # ---------- Form W-2 totals ----------
   - id: person.box1
     printed: "(helper)"
-    label: "Total of Forms W-2, box 1"
+    label: "Total amount from Form(s) W-2, box 1"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.box1}
-
   - id: person.box2
     printed: "(helper)"
-    label: "Total of Forms W-2, box 2"
+    label: "Federal income tax withheld from Form(s) W-2, box 2"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.box2}
+  - id: person.medicare5
+    printed: "(helper)"
+    label: "Medicare wages and tips from Form W-2, box 5 (total)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: w2, field: w2.box5}
+  - id: person.medicare6
+    printed: "(helper)"
+    label: "Medicare tax withheld from Form W-2, box 6 (total)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: w2, field: w2.box6}
+  - id: person.dc_benefits
+    printed: "(helper)"
+    label: "Dependent care benefits (Form W-2, box 10, excluding amounts reported as wages in box 1)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: w2, field: w2.dc_benefits}
+  - id: person.h_box10_count
+    printed: "(helper)"
+    label: "Number of Forms W-2 with an amount in box 10"
+    type: Count
+    expr:
+      op: sum_over
+      collection: w2
+      field: w2.one
+      where: {op: test, eq: [w2.has_box10, {const: true}]}
+  - id: person.dc_has_box10
+    printed: "(helper)"
+    label: "Any Form W-2 shows dependent care benefits in box 10"
+    type: Bool
+    expr: {op: test, gt: [person.h_box10_count, {const: 0, type: Count}]}
+  - id: person.dc_earned
+    printed: "(helper)"
+    label: "Earned income for Form 2441 (line 4 or 5): Form W-2 box 1 wages plus Schedule SE line 3 minus Schedule 1 line 15"
+    type: Dollars
+    expr: {op: sum, of: [person.box1, person.eic_se]}
+    note: "Form 1040 line 1z for this person is read as the box 1 total (other earned income is screened out)."
+  - id: person.dc_earned_b
+    printed: "(helper)"
+    label: "Earned income for Form 2441 lines 18 and 19 (does not include dependent care benefits shown on line 12)"
+    type: Dollars
+    expr: {op: copy, from: person.dc_earned}
+    note: "Line 12 benefits are not in box 1, so earned income needs no further reduction; read as equal to dc_earned."
 
+  # ---------- Form 1099-R aggregates ----------
   - id: person.ira_amount_a
     printed: "(helper)"
-    label: "IRA distributions (line 4a amounts)"
+    label: "IRA distributions (Form 1040, line 4a)"
     type: NonNegDollars
     expr:
       op: sum_over
       collection: retirement
       field: retirement.amount_a
       where: {op: test, eq: [retirement.is_ira, {const: true}]}
-
   - id: person.ira_taxable
     printed: "(helper)"
-    label: "IRA distributions, taxable amount (line 4b)"
+    label: "IRA distributions, taxable amount (Form 1040, line 4b)"
     type: NonNegDollars
     expr:
       op: sum_over
       collection: retirement
       field: retirement.taxable
       where: {op: test, eq: [retirement.is_ira, {const: true}]}
-
   - id: person.ira_rollovers
     printed: "(helper)"
-    label: "IRA distributions with a rollover (line 4c box 1)"
+    label: "Number of IRA distributions rolled over (line 4c, box 1)"
     type: Count
     expr:
       op: sum_over
@@ -1620,30 +1581,27 @@ lines:
         all:
           - {op: test, eq: [retirement.is_ira, {const: true}]}
           - {op: test, eq: [retirement.has_rollover, {const: true}]}
-
   - id: person.plan_amount_a
     printed: "(helper)"
-    label: "Pensions and annuities (line 5a amounts)"
+    label: "Pensions and annuities (Form 1040, line 5a)"
     type: NonNegDollars
     expr:
       op: sum_over
       collection: retirement
       field: retirement.amount_a
       where: {op: test, eq: [retirement.is_ira, {const: false}]}
-
   - id: person.plan_taxable
     printed: "(helper)"
-    label: "Pensions and annuities, taxable amount (line 5b)"
+    label: "Pensions and annuities, taxable amount (Form 1040, line 5b)"
     type: NonNegDollars
     expr:
       op: sum_over
       collection: retirement
       field: retirement.taxable
       where: {op: test, eq: [retirement.is_ira, {const: false}]}
-
   - id: person.plan_rollovers
     printed: "(helper)"
-    label: "Pension distributions with a rollover (line 5c box 1)"
+    label: "Number of pension or annuity distributions rolled over (line 5c, box 1)"
     type: Count
     expr:
       op: sum_over
@@ -1654,148 +1612,16 @@ lines:
         all:
           - {op: test, eq: [retirement.is_ira, {const: false}]}
           - {op: test, eq: [retirement.has_rollover, {const: true}]}
-
   - id: person.sav_dist
     printed: "(helper)"
-    label: "Form 8880 line 4: 2025 distributions from IRAs and plans counted for this person"
+    label: "2025 distributions counted on Form 8880, line 4"
     type: NonNegDollars
     expr: {op: sum_over, collection: retirement, field: retirement.sav_amount}
 
-  - id: person.medicare5
-    printed: "(helper)"
-    label: "Medicare wages and tips (Forms W-2, box 5)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: w2, field: w2.box5}
-
-  - id: person.medicare6
-    printed: "(helper)"
-    label: "Medicare tax withheld (Forms W-2, box 6)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: w2, field: w2.box6}
-
-  - id: person.ho_count
-    printed: "(helper)"
-    label: "Schedules C claiming business use of home"
-    type: Count
-    expr:
-      op: sum_over
-      collection: sc
-      field: sc.one
-      where: {op: test, eq: [sc.ho_uses, {const: true}]}
-
-  - id: person.mq_q4
-    printed: "(helper)"
-    label: "Depreciable bases of property placed in service in the last 3 months (mid-quarter test)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: sc, field: sc.mq_q4}
-
-  - id: person.mq_total
-    printed: "(helper)"
-    label: "Depreciable bases of property placed in service during the year (mid-quarter test)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: sc, field: sc.mq_total}
-
-  - id: person.cost179
-    printed: "(helper)"
-    label: "Total cost of section 179 property placed in service (Form 4562, line 2)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: sc, field: sc.cost179}
-
-  - id: person.s179_nonlisted
-    printed: "(helper)"
-    label: "Section 179 elected cost (Form 4562, line 6)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: sc, field: sc.s179_elected}
-    note: "The catalog has no Schedule C field that splits the elected cost between listed (line 7) and nonlisted (line 6) property. The total elected cost (sc.s179_elected) is reported here. This interface is not fully determined."
-
-  - id: person.s179_listed
-    printed: "(helper)"
-    label: "Section 179 elected cost of listed property (Form 4562, line 7)"
-    type: NonNegDollars
-    expr: {op: copy, from: person.zero}
-    note: "Not determinable from the catalog: no per-business listed-property section 179 field exists. The elected cost is all carried on person.s179_nonlisted, so this line is zero to avoid counting it twice. This is a limitation, not an IRS rule."
-
-  - id: person.income179
-    printed: "(helper)"
-    label: "Business income limitation (Form 4562, line 11), this person's Schedule C income before the section 179 deduction"
-    type: Dollars
-    expr: {op: sum_over, collection: sc, field: sc.line31_pre179}
-    note: "The Form 4562 line 11 instructions are not in the supplied text. This uses Schedule C net income before section 179. Wages, which the full rule may count, are not added."
-
-  - id: person.positive_profits
-    printed: "(helper)"
-    label: "Form 7206 line 5: total of all net profits (don't include net losses)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: sc, field: sc.profit_pos}
-
-  - id: person.sehi
-    printed: "(helper)"
-    label: "Self-employed health insurance deduction (Form 7206, line 14)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: sc, field: sc.f7206_line14}
-
-  - id: person.qbi
-    printed: "(helper)"
-    label: "Qualified business income or (loss) (Form 8995, line 1(c))"
-    type: Dollars
-    expr: {op: sum_over, collection: sc, field: sc.qbi}
-
-  - id: person.eic_se
-    printed: "(helper)"
-    label: "EIC Worksheet B line 1e: Schedule SE line 3 (plus 4b) minus Schedule SE line 13"
-    type: Dollars
-    expr: {op: subtract, from: person.h_se_line3, take: person.se_line13}
-    note: "Line 4b (optional methods) is screened out, so it is zero. When no Schedule SE is required, Part 2 (Schedule C line 31) gives the same amount, because line 3 equals line 2 and line 13 is zero."
-
-  - id: person.sc_1a
-    printed: "(helper)"
-    label: "Schedules C with qualified tips or overtime for Schedule 1-A"
-    type: Count
-    expr:
-      op: sum_over
-      collection: sc
-      field: sc.one
-      where: {op: test, eq: [sc.tips_ot, {const: true}]}
-
-  - id: person.dc_benefits
-    printed: "(helper)"
-    label: "Dependent care benefits (Form 2441, line 12 contribution)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: w2, field: w2.dc_benefits}
-
-  - id: person.h_box10_count
-    printed: "(helper)"
-    label: "Forms W-2 with an amount in box 10"
-    type: Count
-    expr:
-      op: sum_over
-      collection: w2
-      field: w2.one
-      where: {op: test, eq: [w2.has_box10, {const: true}]}
-
-  - id: person.dc_has_box10
-    printed: "(helper)"
-    label: "Any Form W-2 box 10 dependent care benefits"
-    type: Bool
-    expr: {op: test, gt: [person.h_box10_count, {const: 0, type: Count}]}
-
-  - id: person.dc_earned
-    printed: "(helper)"
-    label: "Earned income for Form 2441 lines 4/5: wages plus Schedule SE line 3 minus Schedule 1 line 15"
-    type: Dollars
-    expr: {op: sum, of: [person.box1, person.eic_se]}
-    note: "Line 1z includes the household-level line 1e taxable benefits, which are not per person. This uses the person's Form W-2 box 1. Deemed student or disabled income is outside this line."
-
-  - id: person.dc_earned_b
-    printed: "(helper)"
-    label: "Earned income for Form 2441 lines 18/19 (excluding dependent care benefits shown on line 12)"
-    type: Dollars
-    expr: {op: copy, from: person.dc_earned}
-    note: "Line 12 excludes box 10 amounts that are included in box 1. The person's earned income built from box 1 therefore contains no line 12 benefits, so it is the same as dc_earned."
-
+  # ---------- Form 8880 ----------
   - id: person.sav_ineligible
     printed: "(helper)"
-    label: "Born after January 1, 2008, claimed as a dependent, or a student"
+    label: "The person who made the contribution was born after January 1, 2008, is claimed as a dependent, or was a student"
     type: Bool
     expr:
       op: test
@@ -1803,235 +1629,280 @@ lines:
         - {op: test, eq: [person.sav_born, {const: false}]}
         - {op: test, eq: [person.sav_claimed, {const: true}]}
         - {op: test, eq: [person.sav_student, {const: true}]}
-
   - id: person.sav_line1
     printed: "(helper)"
-    label: "Form 8880 line 1: traditional and Roth IRA contributions for 2025"
+    label: "Traditional and Roth IRA contributions for 2025 (Form 8880, line 1)"
     type: NonNegDollars
     expr: {op: sum, of: [person.ira_trad, person.sav_roth]}
     refuses: [person.sav_able]
-
   - id: person.h_w2_sav
     printed: "(helper)"
-    label: "Elective deferrals on Forms W-2, box 12"
+    label: "Elective deferrals shown in box 12 of Forms W-2"
     type: NonNegDollars
     expr: {op: sum_over, collection: w2, field: w2.sav_deferral}
-
-  - id: person.h_sav_simple
+  - id: person.h_simple_def_counted
     printed: "(helper)"
     label: "Self-employed SIMPLE salary reduction contributions (elective deferrals)"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - {guard: {op: test, eq: [person.plan, {const: "simple"}]}, then: person.simple_deferral}
-        - {guard: {op: test, ne: [person.plan, {const: "simple"}]}, then: person.zero}
-
+        - guard: {op: test, eq: [person.plan, {const: "simple"}]}
+          then: person.simple_deferral
+        - guard: {op: test, ne: [person.plan, {const: "simple"}]}
+          then: person.zero
   - id: person.sav_line2
     printed: "(helper)"
-    label: "Form 8880 line 2: elective deferrals, voluntary employee contributions and 501(c)(18)(D) contributions"
+    label: "Elective deferrals, voluntary employee contributions, and 501(c)(18)(D) contributions (Form 8880, line 2)"
     type: NonNegDollars
-    expr: {op: sum, of: [person.h_w2_sav, person.sav_voluntary, person.h_sav_simple]}
+    expr: {op: sum, of: [person.h_w2_sav, person.sav_voluntary, person.h_simple_def_counted]}
     refuses: [person.sav_excess]
 
-  # ---- IRA Deduction Worksheet (this person's column) ----
+  # ---------- IRA Deduction Worksheet ----------
   - id: person.ira_contrib
     printed: "(helper)"
     label: "Traditional IRA contributions for 2025 (worksheet line 11)"
     type: NonNegDollars
     expr: {op: copy, from: person.ira_trad}
     refuses: [person.ira_excess]
-
   - id: person.ira_cov
     printed: "(helper)"
-    label: "Line 1a/1b: covered by a retirement plan (at work or a SEP/SIMPLE through self-employment)"
+    label: "Covered by a retirement plan at work or through self-employment (SEP or SIMPLE)"
     type: Bool
     expr:
       op: test
       any:
         - {op: test, eq: [person.ira_work_plan, {const: true}]}
         - {op: test, ne: [person.plan, {const: "none"}]}
-
-  - id: person.h_ira_l2_cov
+  - id: person.h_line2_param
     printed: "(helper)"
-    label: "Line 2 amount for a covered person by filing status"
+    label: "Worksheet line 2 amount for your filing status"
     type: NonNegDollars
     expr: {op: param, ref: ira.line2}
-
-  - id: person.h_ira_l2_nc
+  - id: person.h_line2_nc
     printed: "(helper)"
-    label: "Line 2 amount for the person not covered ($246,000)"
+    label: "$246,000 for the person who wasn't covered by a plan"
     type: NonNegDollars
     expr: {op: param, ref: ira.line2_not_covered}
-
   - id: person.ira_line2
     printed: "(helper)"
-    label: "IRA Deduction Worksheet line 2 (this column)"
+    label: "IRA Deduction Worksheet line 2 (this person's column)"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - {guard: {op: test, eq: [person.ira_cov, {const: true}]}, then: person.h_ira_l2_cov}
-        - {guard: {op: test, eq: [person.ira_cov, {const: false}]}, then: person.h_ira_l2_nc}
-    note: "Two points are not modeled. Married filing separately and lived apart all year should give $89,000; the mfs parameter gives $10,000. A married-filing-separately person who is not covered but whose spouse is covered is treated as covered by the IRS but not here."
-
+        - guard:
+            op: test
+            all:
+              - {op: test, eq: [f1040.status, {const: "mfj"}]}
+              - {op: test, eq: [person.ira_cov, {const: false}]}
+          then: person.h_line2_nc
+        - guard:
+            op: test
+            not:
+              op: test
+              all:
+                - {op: test, eq: [f1040.status, {const: "mfj"}]}
+                - {op: test, eq: [person.ira_cov, {const: false}]}
+          then: person.h_line2_param
+    note: "Married filing separately and lived apart all year ($89,000) has no separate parameter; the status-keyed amount is used. The MFS lived-apart case is not distinguished here."
   - id: person.ira_line6
     printed: "(helper)"
-    label: "Line 6: subtract line 5 from line 2 (zero if line 5 is not less than line 2)"
+    label: "Subtract line 5 from line 2 (zero if line 5 is not less than line 2: none deductible)"
     type: NonNegDollars
     expr: {op: subtract_floor0, from: person.ira_line2, take: ira.line5}
-
-  - id: person.h_ira_lim7
+  - id: person.h_ira_lim7000
     printed: "(helper)"
-    label: "$7,000"
+    label: "$7,000 if under age 50"
     type: NonNegDollars
     expr: {op: param, ref: ira.limit}
-
-  - id: person.h_ira_lim8
+  - id: person.h_ira_lim8000
     printed: "(helper)"
-    label: "$8,000"
+    label: "$8,000 if age 50 or older"
     type: NonNegDollars
     expr: {op: param, ref: ira.limit_50}
-
   - id: person.h_ira_limit
     printed: "(helper)"
-    label: "$7,000 if under age 50; $8,000 if age 50 or older"
+    label: "Applicable contribution limit by age"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - {guard: {op: test, eq: [person.ira_age50, {const: true}]}, then: person.h_ira_lim8}
-        - {guard: {op: test, eq: [person.ira_age50, {const: false}]}, then: person.h_ira_lim7}
-
-  - id: person.h_ira_joint_cov
+        - guard: {op: test, eq: [person.ira_age50, {const: true}]}
+          then: person.h_ira_lim8000
+        - guard: {op: test, eq: [person.ira_age50, {const: false}]}
+          then: person.h_ira_lim7000
+  - id: person.h_ira_joint
     printed: "(helper)"
-    label: "MFJ or QSS column of a covered person"
+    label: "Married filing jointly or qualifying surviving spouse, column of a covered person"
     type: Bool
     expr:
       op: test
       all:
-        - {op: test, eq: [ira.joint_type, {const: true}]}
+        - op: test
+          any:
+            - {op: test, eq: [f1040.status, {const: "mfj"}]}
+            - {op: test, eq: [f1040.status, {const: "qss"}]}
         - {op: test, eq: [person.ira_cov, {const: true}]}
-
-  - id: person.h_ira_full_narrow
+  - id: person.h_ira_thr_narrow
     printed: "(helper)"
     label: "$10,000"
     type: NonNegDollars
     expr: {op: param, ref: ira.full_narrow}
-
-  - id: person.h_ira_full_joint
+  - id: person.h_ira_thr_joint
     printed: "(helper)"
     label: "$20,000"
     type: NonNegDollars
     expr: {op: param, ref: ira.full_joint}
-
-  - id: person.h_ira_full
+  - id: person.h_ira_thr
     printed: "(helper)"
     label: "Line 6 amount at or above which the full limit applies"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - {guard: {op: test, eq: [person.h_ira_joint_cov, {const: true}]}, then: person.h_ira_full_joint}
-        - {guard: {op: test, eq: [person.h_ira_joint_cov, {const: false}]}, then: person.h_ira_full_narrow}
-
-  - id: person.h_ira_p70
+        - guard: {op: test, eq: [person.h_ira_joint, {const: true}]}
+          then: person.h_ira_thr_joint
+        - guard: {op: test, eq: [person.h_ira_joint, {const: false}]}
+          then: person.h_ira_thr_narrow
+  - id: person.h_ira_full
     printed: "(helper)"
-    label: "Line 6 × 70%"
+    label: "Line 6 result is the threshold or more"
+    type: Bool
+    expr: {op: test, ge: [person.ira_line6, person.h_ira_thr]}
+  - id: person.h_ira_m70
+    printed: "(helper)"
+    label: "Line 6 multiplied by 70%"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: person.ira_line6, rate: {param: ira.rate_70}}
-
-  - id: person.h_ira_p80
+  - id: person.h_ira_m80
     printed: "(helper)"
-    label: "Line 6 × 80%"
+    label: "Line 6 multiplied by 80%"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: person.ira_line6, rate: {param: ira.rate_80}}
-
-  - id: person.h_ira_p35
+  - id: person.h_ira_m35
     printed: "(helper)"
-    label: "Line 6 × 35%"
+    label: "Line 6 multiplied by 35%"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: person.ira_line6, rate: {param: ira.rate_35}}
-
-  - id: person.h_ira_p40
+  - id: person.h_ira_m40
     printed: "(helper)"
-    label: "Line 6 × 40%"
+    label: "Line 6 multiplied by 40%"
     type: NonNegDollars
     expr: {op: multiply_rate, amount: person.ira_line6, rate: {param: ira.rate_40}}
-
-  - id: person.h_ira_prod
+  - id: person.h_ira_mult
     printed: "(helper)"
-    label: "Line 6 multiplied by the applicable percentage"
+    label: "Multiply line 6 by the percentage that applies to you"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, all: [{op: test, eq: [person.h_ira_joint_cov, {const: true}]}, {op: test, eq: [person.ira_age50, {const: true}]}]}
-          then: person.h_ira_p40
-        - guard: {op: test, all: [{op: test, eq: [person.h_ira_joint_cov, {const: true}]}, {op: test, eq: [person.ira_age50, {const: false}]}]}
-          then: person.h_ira_p35
-        - guard: {op: test, all: [{op: test, eq: [person.h_ira_joint_cov, {const: false}]}, {op: test, eq: [person.ira_age50, {const: true}]}]}
-          then: person.h_ira_p80
-        - guard: {op: test, all: [{op: test, eq: [person.h_ira_joint_cov, {const: false}]}, {op: test, eq: [person.ira_age50, {const: false}]}]}
-          then: person.h_ira_p70
-
-  - id: person.h_ira_round
+        - guard:
+            op: test
+            all:
+              - {op: test, eq: [person.h_ira_joint, {const: true}]}
+              - {op: test, eq: [person.ira_age50, {const: true}]}
+          then: person.h_ira_m40
+        - guard:
+            op: test
+            all:
+              - {op: test, eq: [person.h_ira_joint, {const: true}]}
+              - {op: test, eq: [person.ira_age50, {const: false}]}
+          then: person.h_ira_m35
+        - guard:
+            op: test
+            all:
+              - {op: test, eq: [person.h_ira_joint, {const: false}]}
+              - {op: test, eq: [person.ira_age50, {const: true}]}
+          then: person.h_ira_m80
+        - guard:
+            op: test
+            all:
+              - {op: test, eq: [person.h_ira_joint, {const: false}]}
+              - {op: test, eq: [person.ira_age50, {const: false}]}
+          then: person.h_ira_m70
+  - id: person.h_ira_r
     printed: "(helper)"
     label: "If the result isn't a multiple of $10, increase it to the next multiple of $10"
     type: NonNegDollars
-    expr: {op: round, of: person.h_ira_prod, unit: 1000, rule: up}
-
+    expr: {op: round, of: person.h_ira_mult, unit: 1000, rule: up}
   - id: person.h_ira_min
     printed: "(helper)"
     label: "$200"
     type: NonNegDollars
     expr: {op: param, ref: ira.min}
-
-  - id: person.h_ira_reduced
+  - id: person.h_ira_r200
     printed: "(helper)"
-    label: "If the result is $200 or more, enter the result; if less than $200, enter $200"
+    label: "If the result is less than $200, enter $200"
     type: NonNegDollars
-    expr: {op: larger_of, of: [person.h_ira_round, person.h_ira_min]}
-
-  - id: person.ira_line7
+    expr: {op: larger_of, of: [person.h_ira_r, person.h_ira_min]}
+  - id: person.h_ira_partial
     printed: "(helper)"
-    label: "IRA Deduction Worksheet line 7 (this column)"
+    label: "Line 7 when line 6 is less than the threshold (zero if line 6 answer is No)"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [ira.lines2to6, {const: false}]}
-          then: person.h_ira_limit
-        - guard: {op: test, all: [{op: test, eq: [ira.lines2to6, {const: true}]}, {op: test, eq: [person.ira_line6, {const: 0}]}]}
+        - guard: {op: test, le: [person.ira_line6, {const: 0}]}
           then: person.zero
-        - guard: {op: test, all: [{op: test, eq: [ira.lines2to6, {const: true}]}, {op: test, ge: [person.ira_line6, person.h_ira_full]}]}
-          then: person.h_ira_limit
-        - guard: {op: test, all: [{op: test, eq: [ira.lines2to6, {const: true}]}, {op: test, gt: [person.ira_line6, {const: 0}]}, {op: test, lt: [person.ira_line6, person.h_ira_full]}]}
-          then: person.h_ira_reduced
-    note: "When line 5 is not less than line 2 the worksheet stops ('None of your IRA contributions are deductible'). Line 7 is then zero."
-
-  - id: person.h_ira_l10_11
+        - guard: {op: test, gt: [person.ira_line6, {const: 0}]}
+          then: person.h_ira_r200
+  - id: person.ira_line7
     printed: "(helper)"
-    label: "Smaller of line 10 or line 11"
+    label: "IRA Deduction Worksheet line 7 (this person's column)"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [ira.line10, person.ira_trad]}
-
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [ira.anyone_covered, {const: false}]}
+          then: person.h_ira_limit
+        - guard:
+            op: test
+            all:
+              - {op: test, eq: [ira.anyone_covered, {const: true}]}
+              - {op: test, eq: [person.h_ira_full, {const: true}]}
+          then: person.h_ira_limit
+        - guard:
+            op: test
+            all:
+              - {op: test, eq: [ira.anyone_covered, {const: true}]}
+              - {op: test, eq: [person.h_ira_full, {const: false}]}
+          then: person.h_ira_partial
+  - id: person.h_ira_s12a
+    printed: "(helper)"
+    label: "Smaller of line 7 or line 10"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.ira_line7, ira.line10]}
   - id: person.ira_deduction
     printed: "(helper)"
-    label: "Line 12: the smallest of line 7, line 10 or line 11. This is the most you can deduct"
+    label: "Line 12: the smallest of line 7, 10, or 11. This is the most you can deduct"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [person.ira_line7, person.h_ira_l10_11]}
+    expr: {op: smaller_of, of: [person.h_ira_s12a, person.ira_contrib]}
     refuses: [person.ira_excess]
-
+  - id: person.h_ira_10_11
+    printed: "(helper)"
+    label: "Smaller of worksheet line 10 or line 11"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [ira.line10, person.ira_contrib]}
   - id: person.ira_nondeductible
     printed: "(helper)"
-    label: "Form 8606 line 1: smaller of worksheet line 10 or line 11, minus line 12"
+    label: "Form 8606 line 1: smaller of worksheet line 10 or 11, minus line 12"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.h_ira_l10_11, take: person.ira_deduction}
-
+    expr: {op: subtract_floor0, from: person.h_ira_10_11, take: person.ira_deduction}
+  - id: person.ira_8606_line2
+    printed: "(helper)"
+    label: "Enter your total basis in traditional IRAs (Form 8606, line 2)"
+    type: NonNegDollars
+    expr: {op: copy, from: person.ira_basis}
+    refuses: [person.ira_basis_adjusted]
+  - id: person.h_8606_line3
+    printed: "(helper)"
+    label: "Add lines 1 and 2 (Form 8606, line 3)"
+    type: NonNegDollars
+    expr: {op: sum, of: [person.ira_nondeductible, person.ira_8606_line2]}
   - id: person.ira_files_8606
     printed: "(helper)"
-    label: "Must file Form 8606: nondeductible contributions, or a traditional IRA distribution with basis over zero"
+    label: "Must file Form 8606: nondeductible contributions for 2025, or distributions with basis more than zero"
     type: Bool
     expr:
       op: test
@@ -2040,61 +1911,49 @@ lines:
         - op: test
           all:
             - {op: test, eq: [person.ira_dist, {const: true}]}
-            - {op: test, gt: [person.ira_basis, {const: 0}]}
-
-  - id: person.ira_8606_line2
-    printed: "(helper)"
-    label: "Form 8606 line 2: your total basis in traditional IRAs"
-    type: NonNegDollars
-    expr: {op: copy, from: person.ira_basis}
-    refuses: [person.ira_basis_adjusted]
-
+            - {op: test, gt: [person.ira_8606_line2, {const: 0}]}
   - id: person.ira_dist_gate
     printed: "(helper)"
-    label: "Form 8606 line 3 question answered Yes (lines 4 through 13 required)"
+    label: "Distribution or conversion in 2025 with traditional IRA basis (Form 8606 lines 4 through 13 apply)"
     type: Bool
     expr:
       op: test
       all:
         - {op: test, eq: [person.ira_dist, {const: true}]}
-        - {op: test, eq: [person.ira_files_8606, {const: true}]}
-
+        - {op: test, gt: [person.h_8606_line3, {const: 0}]}
   - id: person.ira_8606_line14
     printed: "(helper)"
-    label: "Form 8606 line 14 (no distribution: the amount from line 3, lines 1 plus 2)"
+    label: "No distribution: enter the amount from line 3 on line 14 (total basis in traditional IRAs)"
     type: NonNegDollars
-    expr: {op: sum, of: [person.ira_nondeductible, person.ira_8606_line2]}
-    note: "Lines 4 through 13 (a distribution or conversion with basis) are not computed, so that case refuses."
+    expr: {op: copy, from: person.h_8606_line3}
     refuses: [person.ira_dist_gate]
-
-  - id: person.ira_ssb
+  - id: person.h_ira_se1
     printed: "(helper)"
-    label: "IRA deduction where no one is covered by a plan (used with the Social Security Benefits Worksheet)"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.h_ira_limit, person.h_ira_l10_11]}
-    note: "The interface name does not fix its meaning. The ssb.pub915 screen excludes IRA contributors who are covered by a plan. So this is read as the deduction with no AGI phase-out: the smaller of the contribution limit, line 10 or line 11."
-    refuses: [person.ira_excess]
-
-  - id: person.h_ira_se_a
-    printed: "(helper)"
-    label: "Net profit minus the Schedule 1 line 15 deduction"
+    label: "Net earnings from self-employment minus Schedule 1 line 15"
     type: Dollars
     expr: {op: subtract, from: person.sc_total, take: person.se_line13}
-
   - id: person.ira_se
     printed: "(helper)"
-    label: "IRA worksheet line 9: self-employment earned income minus Schedule 1 lines 15 and 16; if zero or less, -0-"
+    label: "Worksheet line 9: self-employed earned income minus Schedule 1 lines 15 and 16; if zero or less, enter -0-"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.h_ira_se_a, take: person.s16}
+    expr: {op: subtract_floor0, from: person.h_ira_se1, take: person.s16}
+  - id: person.ira_ssb
+    printed: "(helper)"
+    label: "This person's wages for the IRA Deduction Worksheet, line 8 (Form W-2 box 1)"
+    type: NonNegDollars
+    expr: {op: copy, from: person.box1}
+    note: "The pages do not determine what 'ira_ssb' denotes; read as this person's line 8 wages (box 1). If it is meant for a Pub. 915/590-A interaction, that case is screened by ssb.pub915."
 
-  # ---- Form 8863 line 7 conditions ----
+  # ---------- Form 8863 (this person as student) ----------
   - id: person.edu_kid
     printed: "(helper)"
-    label: "Form 8863 line 7 box conditions: under 18, or 18 or full-time student 19–23 with earned income less than half of support; a parent alive; not a joint return"
+    label: "Line 7 conditions: under 18, or 18 or full-time student 19-23 with earned income under half of support; a parent alive; not filing jointly"
     type: Bool
     expr:
       op: test
       all:
+        - {op: test, eq: [person.edu_parent, {const: true}]}
+        - {op: test, ne: [f1040.status, {const: "mfj"}]}
         - op: test
           any:
             - {op: test, eq: [person.sav_born, {const: false}]}
@@ -2109,271 +1968,325 @@ lines:
                 - {op: test, eq: [person.edu_born_2002, {const: false}]}
                 - {op: test, eq: [person.edu_fulltime, {const: true}]}
                 - {op: test, eq: [person.edu_half_support, {const: true}]}
-        - {op: test, eq: [person.edu_parent, {const: true}]}
-        - {op: test, ne: [f1040.status, {const: "mfj"}]}
-    note: "'Under 18' is read from person.sav_born (born before January 2, 2008 means 18 or older). Ages 19 and 24 use the edu_born inputs."
-
-  # ---- Form 5329 Part I and Part VII ----
-  - id: person.x_l1
+    note: "Age bands from birth dates: sav_born false = under 18; sav_born true and edu_born_2007 false = 18; edu_born_2007 true and edu_born_2002 false = 19 to 23."
+  - id: person.h_edu_adj
     printed: "(helper)"
-    label: "Form 5329 line 1: early distributions includible in income"
+    label: "Total adjustments (Adjusted Qualified Education Expenses Worksheet line 3)"
     type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: retirement.l1}
-
-  - id: person.x_l2_all
+    expr: {op: sum, of: [person.edu_a2025, person.edu_a2026, person.edu_refunds]}
+  - id: person.h_edu_any
     printed: "(helper)"
-    label: "Exception amounts before the per-person dollar limits"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: retirement.l2}
-
-  - id: person.x_l1_s
-    printed: "(helper)"
-    label: "Part of line 1 from SIMPLE IRAs within 2 years (code S)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: retirement.l1_s}
-
-  - id: person.x_l2_s
-    printed: "(helper)"
-    label: "Part of line 2 for code S distributions"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: retirement, field: retirement.l2_s}
-
-  - id: person.x_c05
-    printed: "(helper)"
-    label: "Exception 05 (medical expenses) amounts"
-    type: NonNegDollars
-    expr:
-      op: sum_over
-      collection: retirement
-      field: retirement.l2
-      where: {op: test, eq: [retirement.exception, {const: "e05"}]}
-
-  - id: person.h_e23_count
-    printed: "(helper)"
-    label: "Distributions claiming exception 23"
-    type: Count
-    expr:
-      op: sum_over
-      collection: retirement
-      field: retirement.one
-      where: {op: test, eq: [retirement.exception, {const: "e23"}]}
-
-  - id: person.x_two23
-    printed: "(helper)"
-    label: "More than one emergency personal expense distribution (limited to one per calendar year)"
+    label: "Qualified expenses paid, Form 1098-T requirement met, student TIN issued by the due date"
     type: Bool
-    expr: {op: test, gt: [person.h_e23_count, {const: 1, type: Count}]}
-
-  - id: person.h_e09_raw
-    printed: "(helper)"
-    label: "Exception 09 (first home) amounts"
-    type: NonNegDollars
     expr:
-      op: sum_over
-      collection: retirement
-      field: retirement.l2
-      where: {op: test, eq: [retirement.exception, {const: "e09"}]}
-
-  - id: person.h_cap_home
+      op: test
+      all:
+        - {op: test, eq: [person.edu, {const: true}]}
+        - {op: test, eq: [person.edu_1098t, {const: true}]}
+        - {op: test, eq: [person.tin, {const: true}]}
+  - id: person.h_edu_aoc
     printed: "(helper)"
-    label: "$10,000 first-home limit"
-    type: NonNegDollars
-    expr: {op: param, ref: f5329.cap_first_home}
-
-  - id: person.h_cap_home_left
-    printed: "(helper)"
-    label: "$10,000 reduced by all prior qualified first-time homebuyer distributions"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.h_cap_home, take: person.x_prior09}
-
-  - id: person.h_e09
-    printed: "(helper)"
-    label: "Exception 09, limited"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.h_e09_raw, person.h_cap_home_left]}
-
-  - id: person.h_e19_raw
-    printed: "(helper)"
-    label: "Exception 19 (birth or adoption) amounts"
-    type: NonNegDollars
-    expr:
-      op: sum_over
-      collection: retirement
-      field: retirement.l2
-      where: {op: test, eq: [retirement.exception, {const: "e19"}]}
-
-  - id: person.h_cap_birth1
-    printed: "(helper)"
-    label: "$5,000 per birth or adoption"
-    type: NonNegDollars
-    expr: {op: param, ref: f5329.cap_birth}
-
-  - id: person.h_cap_birth
-    printed: "(helper)"
-    label: "$5,000 times the number of births or adoptions"
-    type: NonNegDollars
-    expr: {op: multiply_count, amount: person.h_cap_birth1, count: person.x_births}
-
-  - id: person.h_e19
-    printed: "(helper)"
-    label: "Exception 19, limited"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.h_e19_raw, person.h_cap_birth]}
-
-  - id: person.h_e22_raw
-    printed: "(helper)"
-    label: "Exception 22 (domestic abuse) amounts"
-    type: NonNegDollars
-    expr:
-      op: sum_over
-      collection: retirement
-      field: retirement.l2
-      where: {op: test, eq: [retirement.exception, {const: "e22"}]}
-
-  - id: person.h_cap_abuse
-    printed: "(helper)"
-    label: "$10,300 domestic abuse limit"
-    type: NonNegDollars
-    expr: {op: param, ref: f5329.cap_abuse}
-
-  - id: person.h_e22
-    printed: "(helper)"
-    label: "Exception 22, limited"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.h_e22_raw, person.h_cap_abuse]}
-
-  - id: person.h_e23_raw
-    printed: "(helper)"
-    label: "Exception 23 (emergency expense) amounts"
-    type: NonNegDollars
-    expr:
-      op: sum_over
-      collection: retirement
-      field: retirement.l2
-      where: {op: test, eq: [retirement.exception, {const: "e23"}]}
-
-  - id: person.h_cap_emergency
-    printed: "(helper)"
-    label: "$1,000 emergency expense limit"
-    type: NonNegDollars
-    expr: {op: param, ref: f5329.cap_emergency}
-
-  - id: person.h_e23
-    printed: "(helper)"
-    label: "Exception 23, limited"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.h_e23_raw, person.h_cap_emergency]}
-
-  - id: person.h_limited_raw
-    printed: "(helper)"
-    label: "Exceptions 09, 19, 22 and 23 before their limits"
-    type: NonNegDollars
-    expr: {op: sum, of: [person.h_e09_raw, person.h_e19_raw, person.h_e22_raw, person.h_e23_raw]}
-
-  - id: person.x_limited_sum
-    printed: "(helper)"
-    label: "Exceptions 09, 19, 22 and 23 after their per-person limits"
-    type: NonNegDollars
-    expr: {op: sum, of: [person.h_e09, person.h_e19, person.h_e22, person.h_e23]}
-
-  - id: person.x_other_exc
-    printed: "(helper)"
-    label: "Other exception amounts (not subject to a per-person dollar limit here)"
-    type: NonNegDollars
-    expr:
-      op: sum_over
-      collection: retirement
-      field: retirement.l2
-      where:
-        op: test
-        all:
-          - {op: test, ne: [retirement.exception, {const: "e09"}]}
-          - {op: test, ne: [retirement.exception, {const: "e19"}]}
-          - {op: test, ne: [retirement.exception, {const: "e22"}]}
-          - {op: test, ne: [retirement.exception, {const: "e23"}]}
-    note: "Exception 05 (medical, 7.5% of AGI) is limited at return level (s2.e05_over). Its amount is included here unlimited."
-
-  - id: person.x_limit_binds
-    printed: "(helper)"
-    label: "A per-person exception limit reduces line 2"
+    label: "Lines 23-26 lead to lines 27 through 30, and the institution's EIN is provided"
     type: Bool
-    expr: {op: test, gt: [person.h_limited_raw, person.x_limited_sum]}
-
-  - id: person.h_l2
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [person.h_edu_any, {const: true}]}
+        - {op: test, eq: [person.edu_line23, {const: false}]}
+        - {op: test, eq: [person.edu_line24, {const: true}]}
+        - {op: test, eq: [person.edu_line25, {const: false}]}
+        - {op: test, eq: [person.edu_line26, {const: false}]}
+        - {op: test, eq: [person.edu_ein, {const: true}]}
+  - id: person.h_edu_llc
     printed: "(helper)"
-    label: "Form 5329 line 2: early distributions not subject to the additional tax"
+    label: "Go to line 31 for this student"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [person.h_edu_any, {const: true}]}
+        - {op: test, eq: [person.h_edu_aoc, {const: false}]}
+  - id: person.h_aqee27
+    printed: "(helper)"
+    label: "Adjusted qualified education expenses, not more than $4,000"
     type: NonNegDollars
-    expr: {op: sum, of: [person.x_other_exc, person.x_limited_sum]}
-
-  - id: person.h_l3
+    expr:
+      op: copy
+      from: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.h_edu_adj}, line: line27}
+  - id: person.h_aqee28
     printed: "(helper)"
-    label: "Form 5329 line 3: subtract line 2 from line 1"
+    label: "Subtract $2,000 from line 27"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.x_l1, take: person.h_l2}
-
-  - id: person.h_l3_s
+    expr:
+      op: copy
+      from: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.h_edu_adj}, line: line28}
+  - id: person.h_aqee29
     printed: "(helper)"
-    label: "Part of line 3 from SIMPLE IRAs within 2 years"
+    label: "Multiply line 28 by 25%"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.x_l1_s, take: person.x_l2_s}
-
-  - id: person.h_l3_other
+    expr:
+      op: copy
+      from: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.h_edu_adj}, line: line29}
+  - id: person.h_aqee30
     printed: "(helper)"
-    label: "Rest of line 3 (10% part)"
+    label: "Line 30 amount"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: person.h_l3, take: person.h_l3_s}
-
-  - id: person.h_tax10
+    expr:
+      op: copy
+      from: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.h_edu_adj}, line: line30}
+  - id: person.h_aqee31
     printed: "(helper)"
-    label: "10% of line 3 (other than code S)"
+    label: "Adjusted qualified education expenses for the lifetime learning credit"
     type: NonNegDollars
-    expr: {op: multiply_rate, amount: person.h_l3_other, rate: {param: f5329.early_rate}}
-
-  - id: person.h_tax25
-    printed: "(helper)"
-    label: "25% of the SIMPLE IRA (code S) amount"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: person.h_l3_s, rate: {param: f5329.simple_rate}}
-
-  - id: person.x_hsa_excess
-    printed: "(helper)"
-    label: "Form 5329 line 47: excess HSA contributions for 2025 (you and employer)"
-    type: NonNegDollars
-    expr: {op: sum_over, collection: f8889, field: f8889.excess_amt}
-
-  - id: person.h_hsa_smaller
-    printed: "(helper)"
-    label: "Smaller of line 48 or the value of your HSAs on December 31, 2025"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [person.x_hsa_excess, person.x_hsa_value]}
-
-  - id: person.h_hsa49_fig
-    printed: "(helper)"
-    label: "6% of the smaller amount"
-    type: NonNegDollars
-    expr: {op: multiply_rate, amount: person.h_hsa_smaller, rate: {param: f5329.excess_rate}}
-
-  - id: person.h_hsa49
-    printed: "(helper)"
-    label: "Form 5329 line 49: additional tax on excess HSA contributions"
+    expr:
+      op: copy
+      from: {def: aqee, bind: {inst: person.edu_inst, mat: person.edu_mat, adj: person.h_edu_adj}, line: ws4_llc}
+  - id: person.edu_line27
+    printed: "27"
+    label: "Adjusted qualified education expenses (see instructions). Don't enter more than $4,000"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - {guard: {op: test, gt: [person.x_hsa_excess, {const: 0}]}, then: person.h_hsa49_fig}
-        - {guard: {op: test, eq: [person.x_hsa_excess, {const: 0}]}, then: person.zero}
-    note: "Line 46 (prior-year excess) is screened by person.x_other, so line 48 equals line 47. The HSA value is asked only when there is an excess."
+        - guard: {op: test, eq: [person.h_edu_aoc, {const: true}]}
+          then: person.h_aqee27
+        - guard: {op: test, eq: [person.h_edu_aoc, {const: false}]}
+          then: person.zero
+    refuses: [person.edu_over]
+  - id: person.edu_line28
+    printed: "28"
+    label: "Subtract $2,000 from line 27. If zero or less, enter -0-"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.h_edu_aoc, {const: true}]}
+          then: person.h_aqee28
+        - guard: {op: test, eq: [person.h_edu_aoc, {const: false}]}
+          then: person.zero
+    refuses: [person.edu_over]
+  - id: person.edu_line29
+    printed: "29"
+    label: "Multiply line 28 by 25% (0.25)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.h_edu_aoc, {const: true}]}
+          then: person.h_aqee29
+        - guard: {op: test, eq: [person.h_edu_aoc, {const: false}]}
+          then: person.zero
+    refuses: [person.edu_over]
+  - id: person.edu_line30
+    printed: "30"
+    label: "If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.h_edu_aoc, {const: true}]}
+          then: person.h_aqee30
+        - guard: {op: test, eq: [person.h_edu_aoc, {const: false}]}
+          then: person.zero
+    refuses: [person.edu_over]
+  - id: person.edu_line31
+    printed: "31"
+    label: "Adjusted qualified education expenses (lifetime learning credit)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.h_edu_llc, {const: true}]}
+          then: person.h_aqee31
+        - guard: {op: test, eq: [person.h_edu_llc, {const: false}]}
+          then: person.zero
+    refuses: [person.edu_over]
+    note: "No 1098-T, no student TIN or no expenses gives no credit (zero). A missing EIN moves the student from the AOC to line 31."
 
+  # ---------- Form 5329 Part I and VII (this person) ----------
+  - id: person.x_l1
+    printed: "(helper)"
+    label: "Early distributions includible in income (Form 5329, line 1)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: retirement, field: retirement.l1}
+  - id: person.x_c05
+    printed: "(helper)"
+    label: "Distributions claimed under exception 05 (unreimbursed medical expenses)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: retirement, field: retirement.l2_e05}
+  - id: person.h_e09
+    printed: "(helper)"
+    label: "Distributions claimed under exception 09 (first home)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: retirement, field: retirement.l2_e09}
+  - id: person.h_cap09_base
+    printed: "(helper)"
+    label: "$10,000 first-home limit"
+    type: NonNegDollars
+    expr: {op: param, ref: f5329.cap_first_home}
+  - id: person.h_cap09
+    printed: "(helper)"
+    label: "First-home limit reduced by prior qualified first-time homebuyer distributions"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: person.h_cap09_base, take: person.x_prior09}
+  - id: person.h_e09c
+    printed: "(helper)"
+    label: "Exception 09 amount, not more than the remaining $10,000"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.h_e09, person.h_cap09]}
+  - id: person.h_e19
+    printed: "(helper)"
+    label: "Distributions claimed under exception 19 (birth or adoption)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: retirement, field: retirement.l2_e19}
+  - id: person.h_cap19_each
+    printed: "(helper)"
+    label: "$5,000 per birth or adoption"
+    type: NonNegDollars
+    expr: {op: param, ref: f5329.cap_birth}
+  - id: person.h_cap19
+    printed: "(helper)"
+    label: "$5,000 times the number of births or adoptions"
+    type: NonNegDollars
+    expr: {op: multiply_count, amount: person.h_cap19_each, count: person.x_births}
+  - id: person.h_e19c
+    printed: "(helper)"
+    label: "Exception 19 amount, not more than the limit"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.h_e19, person.h_cap19]}
+  - id: person.h_e22
+    printed: "(helper)"
+    label: "Distributions claimed under exception 22 (domestic abuse)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: retirement, field: retirement.l2_e22}
+  - id: person.h_cap22
+    printed: "(helper)"
+    label: "$10,300 domestic abuse limit"
+    type: NonNegDollars
+    expr: {op: param, ref: f5329.cap_abuse}
+  - id: person.h_e22c
+    printed: "(helper)"
+    label: "Exception 22 amount, not more than $10,300"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.h_e22, person.h_cap22]}
+  - id: person.h_e23
+    printed: "(helper)"
+    label: "Distributions claimed under exception 23 (emergency personal expense)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: retirement, field: retirement.l2_e23}
+  - id: person.h_cap23
+    printed: "(helper)"
+    label: "$1,000 emergency expense limit"
+    type: NonNegDollars
+    expr: {op: param, ref: f5329.cap_emergency}
+  - id: person.h_e23c
+    printed: "(helper)"
+    label: "Exception 23 amount, not more than $1,000"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.h_e23, person.h_cap23]}
+  - id: person.h_n23
+    printed: "(helper)"
+    label: "Number of emergency personal expense distributions in 2025"
+    type: Count
+    expr:
+      op: sum_over
+      collection: retirement
+      field: retirement.one
+      where: {op: test, eq: [retirement.exception, {const: "e23"}]}
+  - id: person.x_two23
+    printed: "(helper)"
+    label: "More than one emergency personal expense distribution in the calendar year (limited to one per year)"
+    type: Bool
+    expr: {op: test, gt: [person.h_n23, {const: 1, type: Count}]}
+  - id: person.h_raw_limited
+    printed: "(helper)"
+    label: "Exceptions 09, 19, 22 and 23 before the dollar limits"
+    type: NonNegDollars
+    expr: {op: sum, of: [person.h_e09, person.h_e19, person.h_e22, person.h_e23]}
+  - id: person.x_limited_sum
+    printed: "(helper)"
+    label: "Exceptions 09, 19, 22 and 23 after the per-person dollar limits"
+    type: NonNegDollars
+    expr: {op: sum, of: [person.h_e09c, person.h_e19c, person.h_e22c, person.h_e23c]}
+    refuses: [person.x_two23]
+  - id: person.x_limit_binds
+    printed: "(helper)"
+    label: "A per-person dollar limit reduces the excluded amount"
+    type: Bool
+    expr: {op: test, gt: [person.h_raw_limited, person.x_limited_sum]}
+  - id: person.x_other_exc
+    printed: "(helper)"
+    label: "Early distributions not subject to the additional tax under exceptions without a per-person dollar limit"
+    type: NonNegDollars
+    expr:
+      op: sum_over
+      collection: retirement
+      field: retirement.l2
+      where:
+        op: test
+        not:
+          op: test
+          any:
+            - {op: test, eq: [retirement.exception, {const: "e09"}]}
+            - {op: test, eq: [retirement.exception, {const: "e19"}]}
+            - {op: test, eq: [retirement.exception, {const: "e22"}]}
+            - {op: test, eq: [retirement.exception, {const: "e23"}]}
+    note: "Exception 05 is counted here; its AGI limit is checked at return level (s2.e05_over)."
+  - id: person.x_l2_all
+    printed: "(helper)"
+    label: "Early distributions included on line 1 that are not subject to the additional tax (Form 5329, line 2)"
+    type: NonNegDollars
+    expr: {op: sum, of: [person.x_other_exc, person.x_limited_sum]}
+  - id: person.x_l1_s
+    printed: "(helper)"
+    label: "Early distributions from a SIMPLE IRA within 2 years of first participation (code S)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: retirement, field: retirement.l1_s}
+  - id: person.x_l2_s
+    printed: "(helper)"
+    label: "Of those SIMPLE distributions, the part not subject to the additional tax"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: retirement, field: retirement.l2_s}
+  - id: person.h_l3
+    printed: "(helper)"
+    label: "Amount subject to additional tax. Subtract line 2 from line 1 (Form 5329, line 3)"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: person.x_l1, take: person.x_l2_all}
+  - id: person.h_l3_s0
+    printed: "(helper)"
+    label: "SIMPLE part of line 3 before the overall cap"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: person.x_l1_s, take: person.x_l2_s}
+  - id: person.h_l3_s
+    printed: "(helper)"
+    label: "Part of line 3 that was a distribution from a SIMPLE IRA (25%)"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.h_l3_s0, person.h_l3]}
+  - id: person.h_l3_other
+    printed: "(helper)"
+    label: "Rest of line 3 (10%)"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: person.h_l3, take: person.h_l3_s}
+  - id: person.h_tax25
+    printed: "(helper)"
+    label: "25% of the SIMPLE IRA amount"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: person.h_l3_s, rate: {param: f5329.simple_rate}}
+  - id: person.h_tax10
+    printed: "(helper)"
+    label: "10% (0.10) of the rest of line 3"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: person.h_l3_other, rate: {param: f5329.early_rate}}
   - id: person.x_tax
     printed: "(helper)"
-    label: "Form 5329 additional taxes for this person (line 4 plus line 49), to Schedule 2 line 8"
+    label: "Additional tax on early distributions (Form 5329, line 4)"
     type: NonNegDollars
-    expr: {op: sum, of: [person.h_tax10, person.h_tax25, person.h_hsa49]}
+    expr: {op: sum, of: [person.h_tax25, person.h_tax10]}
     refuses: [person.x_other]
-
+    note: "Where a dollar limit binds and SIMPLE (25%) distributions are present, the instructions do not say which pool loses the exclusion; the SIMPLE-specific exclusion is applied as entered."
   - id: person.x_must
     printed: "(helper)"
-    label: "Distributions requiring Form 5329 (an exception claimed, or a code other than 1)"
+    label: "Number of early distributions that require Form 5329 (an exception claimed, or code other than 1)"
     type: Count
     expr:
       op: sum_over
@@ -2381,12 +2294,17 @@ lines:
       field: retirement.one
       where:
         op: test
-        any:
-          - {op: test, eq: [retirement.has_exception, {const: true}]}
+        all:
+          - {op: test, eq: [retirement.early, {const: true}]}
           - op: test
-            all:
-              - {op: test, eq: [retirement.early, {const: true}]}
+            any:
+              - {op: test, eq: [retirement.has_exception, {const: true}]}
               - {op: test, ne: [retirement.code, {const: "early_1"}]}
-    note: "Form 5329 is also required for excess HSA contributions (x_hsa_excess > 0). A Bool cannot be added into this Count, so that reason must be combined where the filing requirement is decided."
+  - id: person.x_hsa_excess
+    printed: "(helper)"
+    label: "Excess HSA contributions for 2025, including excess employer contributions (Form 5329, line 47)"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: f8889, field: f8889.excess_amt}
+    refuses: [person.x_other]
 ```
 ```

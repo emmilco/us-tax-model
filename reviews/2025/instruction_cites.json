@@ -1,5 +1,7 @@
 {
- "rulings": {},
+ "rulings": {
+  "section:scveh.bus_cost": "Not applicable: the line is line 13 of Pub. 946's Depreciation Worksheet for Passenger Automobiles (business/investment cost), which it cites on pp. 61-62; the Line 13 section of i1040sc p. 7 is Schedule C line 13 (depreciation), a different line, cited on p. 7 by the Schedule C line 13 total in sc.yaml."
+ },
  "baseline": {
   "section:f1040.line10": "fcfe7f73f535b5a0",
   "section:f1040.line13a": "113c74c9a09944ba",
@@ -136,7 +138,6 @@
   "section:sc.line31": "83787f334073f189",
   "section:sc.s179_allowed": "58c48199606ef47c",
   "section:scveh.bonus_allowed": "ff26c1f3968652e7",
-  "section:scveh.bus_cost": "9e04b5e40040642f",
   "section:scveh.line10": "bc0bc8a2fc7e513e",
   "section:scveh.line11": "ce47d802ba2e800d",
   "section:scveh.line14": "1ea5532d43e7b126",

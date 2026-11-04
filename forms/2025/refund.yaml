@@ -63,13 +63,13 @@ form:
   - id: refund.not_2024
     printed: (gate)
     label: Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you pay any of your 2024
-      state or local income tax in 2025?
+      state or local income tax in 2025 or before 2024?
     type: Bool
     expr:
       op: input
       source: Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you pay any of your 2024
         state or local income tax in 2025 (for example a last estimated payment in January 2025, a payment with an extension,
-        or a balance due)?
+        or a balance due) or before 2024 (for example a 2024 estimated payment made in December 2023)?
     cite:
       doc: i1040gi
       locator: p. 89, Line 1, "1. You received a refund in 2025 that is for a tax year other than 2024" and "5. You made
@@ -883,7 +883,7 @@ form:
     - when: refund.not_2024
       form: Pub. 525, Itemized Deduction Recoveries (Worksheet 2)
       remedy: A refund for a tax year other than 2024, or a refund when any of your 2024 state or local income tax was paid
-        in 2025 (a last estimated payment, a payment with an extension, or a balance due), is figured with Pub. 525 (and may reduce your 2025 deduction for taxes); that is outside this tool.
+        in 2025 (a last estimated payment, a payment with an extension, or a balance due) or before 2024, is figured with Pub. 525 (and may reduce your 2025 deduction for taxes); that is outside this tool.
       cite:
         doc: i1040gi
         locator: pp. 88–89, Line 1, "Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and

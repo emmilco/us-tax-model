@@ -7,12 +7,12 @@ The rendered English of every printed line of `Dependents — qualifying child a
 | date | 2026-11-03 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | df21c568e8d5c57cb2c7887f7d2d4e23395b454aeb0ba9440a3ef4bee0528302 |
+| prompt sha256 | d1e47a534101abdad58ea11f747e18dc9bd802952467abc2cd1d462eb6bbcfc6 |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
-| subject sha256 | 706efc8a5332c5032595790a67e04e77c307862645257157501ba570f6869f8b |
+| subject sha256 | 8e784224725c12b257072fa416b632e27043a8ed79889dde07d7c199a08a40dd |
 | lines judged | 11 |
 | match / mismatch / unclear / missing | 10 / 1 / 0 / 0 |
 | verdicts for lines not in the form | none |
@@ -23,7 +23,7 @@ The rendered English of every printed line of `Dependents — qualifying child a
 | --- | --- | --- | --- | --- | --- | --- |
 | i1040gi | 2025; printed date 2026-02-25 | 10, 14, 15, 17, 18, 19, 20, 21, 22, 41, 43, 44, 45, 46 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 14, 15, 17, 18, 19, 20, 21, 22, 41, 43, 44, 45 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
 | p501 | 2025 returns; PDF created 2026-02-04 | 9, 13, 15, 18, 19, 20, 21, 22 | cited pages | 6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b | 13, 15, 18, 19, 20, 21, 22 | 2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671 |
-| p503 | For use in preparing 2025 returns | 3, 6, 8, 10 | cited pages | a1ff9e2c3120455f6049fc50f0af8c5b8160302c198162dede66b2c8a5640607 | 3, 6, 8, 10 | 44d87f0ddfd4f953ea02cf5cc31e203e754c88aa74627dac5a551f46c6bf65b9 |
+| p503 | For use in preparing 2025 returns | 3, 6, 7, 8, 10 | cited pages | a1ff9e2c3120455f6049fc50f0af8c5b8160302c198162dede66b2c8a5640607 | 3, 6, 7, 8, 10 | 44d87f0ddfd4f953ea02cf5cc31e203e754c88aa74627dac5a551f46c6bf65b9 |
 | f1040s8812 | 2025; created 2025-07-30 | 1, 2 | whole document | 9b38295071c42fe489ec8f93e117b31eda11355b5a95e3fe388eeee69601c8c9 | - | 3525d47f51cb713591081610a862cae77eff08a8aa7e2064a96b15cee4fd5cb9 |
 | i2441 | 2025 | 1, 2, 3, 4 | cited pages | 361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e | 1, 2, 3, 4 | 3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee |
 | f2441 | 2025; created 2025-03-18 | 1, 2 | whole document | f39ca34d11c156e1ac55f4e2b5f16ef03c919773245cd7e50836e4c1555339c7 | - | 0e24fa891992674b84736c78565752c4a7d6f411fca4e24e5bb1307f239f60d6 |
@@ -41,59 +41,59 @@ Status: **MISMATCH**
 
 Restated: Enter the amount from helper "Qualified expenses incurred and paid in 2025 for this person's care".
 
-Model: The helper includes expenses paid with dependent care benefits, but the Form 2441 column (d) instruction says "If you completed Part III, don't include in column (d) any benefits shown on line 28."
+Model: IRS instructions for column (d) say 'If you completed Part III, don't include in column (d) any benefits shown on line 28,' but the helper includes expenses paid with dependent care benefits and this line does not remove them.
 
-Ruling: ambiguity (amb.2025.dc_line30, owner decision, Stage 15 decision 6); each person's column (d) is kept before excluding the dependent care benefits and line 30 subtracts line 28 from the total, since the instructions give no rule for dividing line 28 among the qualifying persons.
+Ruling: ambiguity; amb.2025.dc_line30 (owner ruling, Stage 15 decision 6, T-048). i2441 p. 3, Column (d): "If you completed Part III, don't include in column (d) any benefits shown on line 28"; Form 2441 line 30, "Don't include in column (d) any benefits shown on line 28 above. Then, add the amounts in column (d) and enter the total here"; the instructions give no rule for dividing line 28 among persons. The model reads the register's rejected reading (column (d) net of benefits). This round's dependent.dc_paid wording (T-184 household services, housekeeper meals and lodging, transportation, fees, volunteer work; T-123 the value of employer-furnished care left out, "paid by your employer to a provider you chose") does not change how benefits are treated, and dependent.dc_line2d is unchanged. As ruled since fix round 2. Project stands.
 
 ### 2(c) — Check here if the qualifying person was over age 12 and was disabled
 Status: **MATCH**
 
-Model: Matches the Form 2441 column (c) checkbox condition: the qualifying person was over age 12 when care was provided and was disabled, with the age-13 case using the care-time disabled test.
+Model: IRS Form 2441 column (c) checks a qualifying person over age 12 at the time of care who was disabled; the restatement uses the same qualifying-person, age-at-care and disability conditions.
 
 ### 23 — Has the American opportunity credit been claimed for this student for any 4 prior tax year
 Status: **MATCH**
 
-Model: Matches Form 8863 line 23 and its instruction: yes only if the American opportunity credit was claimed for this student for any 4 tax years before 2025.
+Model: IRS Form 8863 line 23 asks whether the American opportunity credit was claimed for this student for any 4 prior tax years, and the restatement mirrors that with the same stop condition.
 
 ### 24 — Was the student enrolled at least half-time for at least one academic period that began or
 Status: **MATCH**
 
-Model: Matches line 24 and its instruction, including treating an academic period beginning in the first 3 months of 2026 as beginning in 2025 when paid in 2025.
+Model: IRS Form 8863 line 24 asks about at least half-time enrollment for an academic period beginning in 2025 or the first 3 months of 2026 when paid in 2025; the restatement matches.
 
 ### 25 — Did the student complete the first 4 years of postsecondary education before 2025?
 Status: **MATCH**
 
-Model: Matches line 25 and its instruction: completion of the first 4 years of postsecondary education before 2025, disregarding credit awarded solely for proficiency examinations.
+Model: IRS Form 8863 line 25 and its instructions ask whether the student completed the first 4 years before 2025, disregarding proficiency-exam credit; the restatement matches.
 
 ### 26 — Was the student convicted, before the end of 2025, of a felony for possession or distribut
 Status: **MATCH**
 
-Model: Matches line 26 and its instruction: a federal or state felony conviction for possession or distribution of a controlled substance before the end of 2025.
+Model: IRS Form 8863 line 26 asks about a federal or state felony drug conviction before the end of 2025; the restatement matches.
 
 ### 27 — Adjusted qualified education expenses. Don't enter more than $4,000
 Status: **MATCH**
 
-Model: Matches Form 8863 line 27 and the Adjusted Qualified Education Expenses Worksheet, including the $4,000 cap.
+Model: The restatement uses Form 8863 line 27 and the Adjusted Qualified Education Expenses Worksheet, with total qualified expenses reduced by adjustments and capped at $4,000.
 
 ### 28 — Subtract $2,000 from line 27. If zero or less, enter -0-
 Status: **MATCH**
 
-Model: Matches Form 8863 line 28: subtract $2,000 from line 27, with zero or less entered as -0-.
+Model: Form 8863 line 28 subtracts $2,000 from line 27 and floors at zero; the referenced worksheet line does the same.
 
 ### 29 — Multiply line 28 by 25% (0.25)
 Status: **MATCH**
 
-Model: Matches Form 8863 line 29: multiply line 28 by 25% (0.25).
+Model: Form 8863 line 29 multiplies line 28 by 25%; the referenced worksheet line does the same.
 
 ### 30 — American opportunity credit for this student. If line 28 is zero, enter the amount from li
 Status: **MATCH**
 
-Model: Matches Form 8863 line 30: if line 28 is zero use line 27; otherwise add $2,000 to line 29.
+Model: Form 8863 line 30 uses line 27 when line 28 is zero and otherwise adds $2,000 to line 29; the referenced worksheet line does the same.
 
 ### 31 — Adjusted qualified education expenses for the lifetime learning credit
 Status: **MATCH**
 
-Model: Matches Form 8863 line 31 for a lifetime learning credit student: adjusted qualified education expenses from the worksheet, with the TIN refusal naming the excluded ITIN/ATIN-only case.
+Model: For a lifetime learning credit student, the restatement returns Adjusted Qualified Education Expenses Worksheet line 4 using only institution-required expenses less adjustments, which matches Form 8863 line 31.
 
 ## Raw response
 
@@ -101,35 +101,35 @@ Model: Matches Form 8863 line 31 for a lifetime learning credit student: adjuste
 lines:
   - key: "2(d)"
     status: MISMATCH
-    reason: "The helper includes expenses paid with dependent care benefits, but the Form 2441 column (d) instruction says \"If you completed Part III, don't include in column (d) any benefits shown on line 28.\""
+    reason: "IRS instructions for column (d) say 'If you completed Part III, don't include in column (d) any benefits shown on line 28,' but the helper includes expenses paid with dependent care benefits and this line does not remove them."
   - key: "2(c)"
     status: MATCH
-    reason: "Matches the Form 2441 column (c) checkbox condition: the qualifying person was over age 12 when care was provided and was disabled, with the age-13 case using the care-time disabled test."
+    reason: "IRS Form 2441 column (c) checks a qualifying person over age 12 at the time of care who was disabled; the restatement uses the same qualifying-person, age-at-care and disability conditions."
   - key: "23"
     status: MATCH
-    reason: "Matches Form 8863 line 23 and its instruction: yes only if the American opportunity credit was claimed for this student for any 4 tax years before 2025."
+    reason: "IRS Form 8863 line 23 asks whether the American opportunity credit was claimed for this student for any 4 prior tax years, and the restatement mirrors that with the same stop condition."
   - key: "24"
     status: MATCH
-    reason: "Matches line 24 and its instruction, including treating an academic period beginning in the first 3 months of 2026 as beginning in 2025 when paid in 2025."
+    reason: "IRS Form 8863 line 24 asks about at least half-time enrollment for an academic period beginning in 2025 or the first 3 months of 2026 when paid in 2025; the restatement matches."
   - key: "25"
     status: MATCH
-    reason: "Matches line 25 and its instruction: completion of the first 4 years of postsecondary education before 2025, disregarding credit awarded solely for proficiency examinations."
+    reason: "IRS Form 8863 line 25 and its instructions ask whether the student completed the first 4 years before 2025, disregarding proficiency-exam credit; the restatement matches."
   - key: "26"
     status: MATCH
-    reason: "Matches line 26 and its instruction: a federal or state felony conviction for possession or distribution of a controlled substance before the end of 2025."
+    reason: "IRS Form 8863 line 26 asks about a federal or state felony drug conviction before the end of 2025; the restatement matches."
   - key: "27"
     status: MATCH
-    reason: "Matches Form 8863 line 27 and the Adjusted Qualified Education Expenses Worksheet, including the $4,000 cap."
+    reason: "The restatement uses Form 8863 line 27 and the Adjusted Qualified Education Expenses Worksheet, with total qualified expenses reduced by adjustments and capped at $4,000."
   - key: "28"
     status: MATCH
-    reason: "Matches Form 8863 line 28: subtract $2,000 from line 27, with zero or less entered as -0-."
+    reason: "Form 8863 line 28 subtracts $2,000 from line 27 and floors at zero; the referenced worksheet line does the same."
   - key: "29"
     status: MATCH
-    reason: "Matches Form 8863 line 29: multiply line 28 by 25% (0.25)."
+    reason: "Form 8863 line 29 multiplies line 28 by 25%; the referenced worksheet line does the same."
   - key: "30"
     status: MATCH
-    reason: "Matches Form 8863 line 30: if line 28 is zero use line 27; otherwise add $2,000 to line 29."
+    reason: "Form 8863 line 30 uses line 27 when line 28 is zero and otherwise adds $2,000 to line 29; the referenced worksheet line does the same."
   - key: "31"
     status: MATCH
-    reason: "Matches Form 8863 line 31 for a lifetime learning credit student: adjusted qualified education expenses from the worksheet, with the TIN refusal naming the excluded ITIN/ATIN-only case."
+    reason: "For a lifetime learning credit student, the restatement returns Adjusted Qualified Education Expenses Worksheet line 4 using only institution-required expenses less adjustments, which matches Form 8863 line 31."
 ```

@@ -586,7 +586,7 @@ function carriedZero(data: CanonicalData, mutation: Mutation): string | undefine
 // true, and lt, le and eq false, while it is still unknown (the evaluator's lower-bound rule). A guard
 // eq(F, true) or eq(F, false) on an ungated test line F adds what F's own test, true or false, says.
 type Bound = { eq?: string; not?: string[]; lo?: number; hi?: number; loStrict?: boolean; hiStrict?: boolean };
-type GuardFacts = { data: CanonicalData; same: Set<string>; known: Map<string, Bound> };
+type GuardFacts = { data: CanonicalData; same: Set<string>; known: Map<string, Bound>; rel?: Set<string> };
 
 const NEGATE: Record<string, string> = { eq: "ne", ne: "eq", lt: "ge", le: "gt", gt: "le", ge: "lt" };
 
@@ -628,13 +628,44 @@ function addTest(facts: GuardFacts, t: unknown, truth: boolean, depth: number): 
   if (depth > 6) return;
   const all = (t as { all?: unknown[] }).all;
   if (truth && Array.isArray(all)) { all.forEach((c) => addTest(facts, c, true, depth + 1)); return; }
+  const any = (t as { any?: unknown[] }).any;
+  if (!truth && Array.isArray(any)) { any.forEach((c) => addTest(facts, c, false, depth + 1)); return; }
   if (truth) facts.same.add(stableStringify(t));
   const cmp = comparison(facts.data, t);
-  if (!cmp) return;
+  if (!cmp) { addRelation(facts, t, truth); return; }
   addComparison(facts, cmp.key, cmp.line, cmp.v, cmp.count, truth);
-  const flag = findLine(facts.data, cmp.line);
-  if (flag && !(flag.refuses ?? []).length && flag.expr.op === "test" && (cmp.key === "eq" || cmp.key === "ne") && typeof cmp.v === "boolean") {
-    addTest(facts, flag.expr, (cmp.key === "eq") === cmp.v, depth + 1);
+  // A Bool line with a settled value: follow copies to the test line it reads. A line's value is its
+  // expression's only when its refusal gates were all false (4.7.1), so gates do not stop this.
+  let flag = findLine(facts.data, cmp.line);
+  for (let i = 0; i < 8 && flag?.expr.op === "copy" && typeof flag.expr.from === "string"; i++) flag = findLine(facts.data, flag.expr.from);
+  if (flag && flag.expr.op === "test" && (cmp.key === "eq" || cmp.key === "ne") && typeof cmp.v === "boolean") {
+    // eq(F, v) true, or ne(F, v) false, means F is v; the other two mean F is not v.
+    addTest(facts, flag.expr, ((cmp.key === "eq") === truth) === cmp.v, depth + 1);
+  }
+}
+
+// A settled comparison of two lines, neither a count (so no lower bound can settle it early): both lines
+// are complete, and their order is recorded as "le|a|b" (a <= b) or "lt|a|b" (a < b).
+function addRelation(facts: GuardFacts, t: unknown, truth: boolean): void {
+  const o = t as Record<string, unknown>;
+  for (const key of ["eq", "ne"]) {
+    const pair = o[key];
+    if (!Array.isArray(pair) || typeof pair[0] !== "string" || typeof pair[1] !== "string" || (key === "eq") !== truth) continue;
+    if ([pair[0], pair[1]].some((x) => { const ty = findLine(facts.data, x)?.type; return !ty || ty === "Count"; })) return;
+    facts.rel ??= new Set();
+    facts.rel.add(`eq|${pair[0]}|${pair[1]}`);
+    return;
+  }
+  for (const key of ["lt", "le", "gt", "ge"]) {
+    const pair = o[key];
+    if (!Array.isArray(pair) || typeof pair[0] !== "string" || typeof pair[1] !== "string") continue;
+    if ([pair[0], pair[1]].some((x) => { const ty = findLine(facts.data, x)?.type; return !ty || ty === "Count"; })) return;
+    const k = truth ? key : NEGATE[key]!;
+    const [a, b] = k === "lt" || k === "le" ? [pair[0], pair[1]] : [pair[1], pair[0]];
+    facts.rel ??= new Set();
+    facts.rel.add(`le|${a}|${b}`);
+    if (k === "lt" || k === "gt") facts.rel.add(`lt|${a}|${b}`);
+    return;
   }
 }
 
@@ -777,11 +808,342 @@ function unreachableAlternative(data: CanonicalData, mutation: Mutation): string
   return undefined;
 }
 
+// Case split. An abstract value of a line, under the facts of a path and an assignment of some split
+// lines: a complete known value (its normal form: cents, a Boolean or an enum value), the line's own
+// value not reduced further (the same value on both routes, complete or not), or exactly the
+// incomplete value (an unknown or a refusal) of split line s.
+type Abs = { k: "known"; v: string } | { k: "line"; v: string } | { k: "inc"; s: string };
+const INC = "\u0000incomplete";
+type SplitEnv = { facts: GuardFacts; known: Set<string>; split: Map<string, unknown>; memo?: Map<string, Abs> };
+const kn = (v: unknown): Abs => ({ k: "known", v: JSON.stringify(v) });
+
+// A parameter's value when it is complete whatever the inputs: a scalar or a rate, not a value keyed by
+// filing status (which reads f1040.status).
+function fixedParam(data: CanonicalData, ref: string | undefined): unknown {
+  const pv = ref === undefined ? undefined : data.params.values[ref]?.value;
+  if (pv === undefined || pv === null) return undefined;
+  if (typeof pv === "object" && !("num" in pv && "den" in pv)) return undefined;
+  return pv;
+}
+
+function absOperand(data: CanonicalData, x: unknown, env: SplitEnv, depth: number): Abs | undefined {
+  if (typeof x === "string") return absLine(data, x, env, depth);
+  if (x === null || typeof x !== "object") return undefined;
+  if ("const" in x) return kn((x as { const: unknown }).const);
+  const pv = fixedParam(data, (x as { param?: string }).param);
+  return pv === undefined ? undefined : kn(pv);
+}
+
+// A test's value under the environment (spec 4.7.2): true, false, the split line's incomplete value, or
+// undefined when the environment does not settle it. An incomplete conjunct settles an all-test (any-test)
+// only when every later conjunct is settled and does not decide, since a refusal ends the test at once and
+// an unknown lets a later deciding conjunct win. A comparison evaluates both sides, so an incomplete side
+// is its value only when the other side is complete or the same incomplete value. Split lines are Bool or
+// enum lines, whose incomplete values carry no count lower bound (4.7.5).
+function absTest(data: CanonicalData, t: unknown, env: SplitEnv, depth: number): boolean | { inc: string } | undefined {
+  if (depth > 60) return undefined;
+  if (env.facts.same.has(stableStringify(t))) return true;
+  const o = t as { all?: unknown[]; any?: unknown[]; not?: unknown } & Record<string, unknown>;
+  if (Array.isArray(o.all) || Array.isArray(o.any)) {
+    const isAll = Array.isArray(o.all);
+    let inc: { inc: string } | undefined;
+    // A conjunct not settled but reading only lines that can never refuse is a value or an unknown, and
+    // a later deciding conjunct wins over either (4.7.2).
+    let soft = false;
+    for (const x of (o.all ?? o.any)!) {
+      const v = absTest(data, x, env, depth + 1);
+      if (v === undefined) {
+        if (operandRefs(data, x).every((r) => neverRefuses(data, r) && !env.split.has(r))) { soft = true; continue; }
+        return undefined;
+      }
+      if (typeof v === "object") { if (inc && inc.inc !== v.inc) return undefined; inc = v; continue; }
+      if (v !== isAll) return inc ? undefined : !isAll;
+    }
+    return soft ? undefined : inc ?? isAll;
+  }
+  if (o.not !== undefined) { const v = absTest(data, o.not, env, depth + 1); return typeof v === "boolean" ? !v : v; }
+  for (const key of ["eq", "ne", "lt", "le", "gt", "ge"]) {
+    const pair = o[key];
+    if (!Array.isArray(pair)) continue;
+    const a = absOperand(data, pair[0], env, depth + 1), b = absOperand(data, pair[1], env, depth + 1);
+    if (a?.k === "inc" || b?.k === "inc") {
+      const s = a?.k === "inc" ? a.s : (b as { s: string }).s;
+      const fits = (x: Abs | undefined): boolean => x?.k === "known" || (x?.k === "inc" && x.s === s);
+      return fits(a) && fits(b) ? { inc: s } : undefined;
+    }
+    if (a?.k === "known" && b?.k === "known") {
+      const x = JSON.parse(a.v) as unknown, y = JSON.parse(b.v) as unknown;
+      if (key === "eq") return a.v === b.v;
+      if (key === "ne") return a.v !== b.v;
+      if (typeof x !== "number" || typeof y !== "number") return undefined;
+      return key === "lt" ? x < y : key === "le" ? x <= y : key === "gt" ? x > y : x >= y;
+    }
+    break;
+  }
+  return decides(t, env.facts);
+}
+
+// Whether a line's value can never be a refusal: it has no refusal gates, and it is an input, a parameter,
+// or an atom (a sum over a collection included, with its filter) reading only such lines.
+const neverRefusesMemo = new WeakMap<CanonicalData, Map<string, boolean>>();
+function neverRefuses(data: CanonicalData, id: string, depth = 0): boolean {
+  let memo = neverRefusesMemo.get(data);
+  if (!memo) { memo = new Map(); neverRefusesMemo.set(data, memo); }
+  const hit = memo.get(id);
+  if (hit !== undefined) return hit;
+  const l = findLine(data, id);
+  let v = false;
+  if (l && depth < 30 && !(l.refuses ?? []).length) {
+    const e = l.expr as Record<string, unknown>;
+    if (e.op === "input" || e.op === "param") v = true;
+    else if (e.op !== "copy" || typeof e.from === "string") {
+      const isDefCall = JSON.stringify(e).includes('"def"');
+      v = !isDefCall && operandRefs(data, e).every((r) => neverRefuses(data, r, depth + 1));
+    }
+  }
+  memo.set(id, v);
+  return v;
+}
+
+function absLine(data: CanonicalData, id: string, env: SplitEnv, depth: number): Abs {
+  const hit = env.memo?.get(id);
+  if (hit) return hit;
+  const v = absLineRaw(data, id, env, depth);
+  if (depth <= 60) env.memo?.set(id, v);
+  return v;
+}
+
+function absLineRaw(data: CanonicalData, id: string, env: SplitEnv, depth: number): Abs {
+  if (env.split.has(id)) {
+    const v = env.split.get(id);
+    return v === INC ? { k: "inc", s: id } : kn(v);
+  }
+  const n = normalizeChain(data, id, env.known) as { parameter?: unknown };
+  const fixed = n.parameter !== undefined && (typeof n.parameter !== "object" || (n.parameter !== null && "num" in n.parameter));
+  const opaque: Abs = fixed ? kn(n.parameter) : { k: "line", v: stableStringify(n) };
+  const l = findLine(data, id);
+  if (!l || depth > 60) return opaque;
+  const f = env.facts.known.get(id);
+  if (f?.eq !== undefined) return kn(JSON.parse(f.eq));
+  if (f && (l.type === "NonNegDollars" || l.type === "Count") && f.hi === 0 && !f.hiStrict) return kn(0);
+  for (const r of l.refuses ?? []) {
+    if (env.known.has(r.when)) continue;
+    if (r.when_known) return opaque;
+    const g = absLine(data, r.when, env, depth + 1);
+    if (g.k === "known" && g.v === "false") continue;
+    return g.k === "inc" ? g : opaque;
+  }
+  // A line that is never negative and, by a settled comparison, not more than a complete zero is zero.
+  if (["NonNegDollars", "Count"].includes(l.type)) {
+    for (const r of env.facts.rel ?? []) {
+      if (!r.startsWith(`le|${id}|`)) continue;
+      const z = absLine(data, r.slice(4 + id.length), env, depth + 1);
+      if (z.k === "known" && z.v === "0") return kn(0);
+    }
+  }
+  // An equality settled by a comparison of two complete lines: the line is its partner's value.
+  const partner = [...(env.facts.rel ?? [])].find((r) => r.startsWith(`eq|${id}|`));
+  if (partner) return absLine(data, partner.slice(4 + id.length), env, depth + 1);
+  const e = l.expr as Record<string, unknown>;
+  // An atom's value is a function of its operands' values (and of its fixed fields), read in a fixed
+  // order: the same atom applied to the same abstract values is the same value, refusals and unknowns
+  // included (spec 4.7.2 to 4.7.4).
+  const atom = (vals: (Abs | undefined)[]): Abs => vals.some((v) => v === undefined) ? opaque
+    : { k: "line", v: "atom:" + createHash("sha256").update(stableStringify({ shape: Object.fromEntries(Object.entries(e).filter(([k]) => !["of", "from", "take", "amount", "rate", "count", "key", "status", "keys", "cite", "alternatives"].includes(k))), vals })).digest("hex").slice(0, 32) };
+  // A test or guard not settled: the test itself, with the abstract values of the lines it reads.
+  const testForm = (t: unknown): Abs | undefined => {
+    const refs = operandRefs(data, t);
+    const vals = refs.map((r) => absLine(data, r, env, depth + 1));
+    return { k: "line", v: stableStringify({ t, vals }) };
+  };
+  if (e.op === "choose") {
+    const parts: (Abs | undefined)[] = [];
+    for (const alt of e.alternatives as { guard: unknown; then: unknown }[]) {
+      const g = absTest(data, alt.guard, env, depth + 1);
+      if (typeof g === "object") return parts.length ? atom([...parts, { k: "inc", s: g.inc }]) : { k: "inc", s: g.inc };
+      if (g === false) continue;
+      const then = typeof alt.then === "string" ? absLine(data, alt.then, env, depth + 1) : undefined;
+      if (g === true) return parts.length ? atom([...parts, then]) : then ?? opaque;
+      parts.push(testForm(alt.guard), then);
+    }
+    return parts.length ? atom(parts) : opaque;
+  }
+  if (e.op === "copy") return typeof e.from === "string" ? absLine(data, e.from, env, depth + 1) : opaque;
+  if (e.op === "test") {
+    const v = absTest(data, e, env, depth + 1);
+    return v === undefined ? atom([testForm(e)]) : typeof v === "object" ? { k: "inc", s: v.inc } : kn(v);
+  }
+  // A sum over a collection whose roster the facts show to be empty: a count, in the same document, of a
+  // positive constant per entry with no filter is complete and not more than zero, so the roster was
+  // confirmed and has no entries, and every sum over it is zero (4.7.5).
+  if (e.op === "sum_over") {
+    const home = docOfLine(data, id)?.id;
+    for (const [other, b] of env.facts.known) {
+      if (!(b.eq === "0\n" || b.eq === "0" || (b.hi !== undefined && b.hi <= 0))) continue;
+      const ol = findLine(data, other);
+      const oe = ol?.expr as Record<string, unknown> | undefined;
+      if (!ol || oe?.op !== "sum_over" || oe.where || oe.collection !== e.collection || docOfLine(data, other)?.id !== home || (ol.refuses ?? []).length) continue;
+      const per = typeof oe.field === "string" ? normalizeChain(data, oe.field) as { parameter?: unknown } : undefined;
+      if (typeof per?.parameter === "number" && per.parameter > 0) return kn(0);
+    }
+  }
+  if (e.op === "table_lookup" || e.op === "bracket_schedule" || e.op === "rate_lookup") return atom([absOperand(data, e.key, env, depth + 1), e.status === undefined ? kn(null) : absOperand(data, e.status, env, depth + 1)]);
+  if (e.op === "keyed_lookup") return atom(((e.keys ?? []) as unknown[]).map((x) => absOperand(data, x, env, depth + 1)));
+  const ops = ZERO_OPS.has(e.op as string) ? (e.op === "sum" || e.op === "smaller_of" || e.op === "larger_of" ? (e.of as unknown[]) : e.op === "round" ? [e.of] : [e.from, e.take])
+    : e.op === "multiply_rate" ? [e.amount, e.rate] : e.op === "multiply_count" ? [e.amount, e.count] : undefined;
+  if (!ops) return opaque;
+  const vals = ops.map((x) => absOperand(data, x, env, depth + 1));
+  const inc = vals.find((v) => v?.k === "inc") as { s: string } | undefined;
+  if (inc && vals.every((v) => v?.k === "known" || (v?.k === "inc" && v.s === inc.s))) return { k: "inc", s: inc.s };
+  // A subtraction of the same two values, in the same order, as an incomplete split comparison: both
+  // evaluate both operands and return the first refusal, else the first unknown (4.7.2, 4.7.4), so the
+  // subtraction is that incomplete value.
+  if ((e.op === "subtract" || e.op === "subtract_floor0") && vals.length === 2) {
+    for (const [s, v] of env.split) {
+      if (v !== INC) continue;
+      const sl = findLine(data, s);
+      if (!sl || (sl.refuses ?? []).length || sl.expr.op !== "test") continue;
+      const se = sl.expr as Record<string, unknown>;
+      const pair = ["eq", "ne", "lt", "le", "gt", "ge"].map((k) => se[k]).find(Array.isArray) as unknown[] | undefined;
+      if (!pair || typeof pair[0] !== "string" || typeof pair[1] !== "string") continue;
+      if ([pair[0], pair[1]].some((x) => (findLine(data, x)?.type ?? "Count") === "Count")) continue;
+      const sa = absOperand(data, pair[0], env, depth + 1), sb = absOperand(data, pair[1], env, depth + 1);
+      if (stableStringify([sa, sb]) === stableStringify(vals)) return { k: "inc", s };
+    }
+  }
+  // Atoms of complete amounts (cents) are computed: sums, differences, floors at zero and smaller/larger.
+  const nums = vals.map((v) => v?.k === "known" ? JSON.parse(v.v) as unknown : undefined);
+  if (nums.length && nums.every((n) => typeof n === "number")) {
+    const ns = nums as number[];
+    if (e.op === "sum") return kn(ns.reduce((a, b) => a + b, 0));
+    if (e.op === "smaller_of") return kn(Math.min(...ns));
+    if (e.op === "larger_of") return kn(Math.max(...ns));
+    if (e.op === "subtract") return kn(ns[0]! - ns[1]!);
+    if (e.op === "subtract_floor0") return kn(Math.max(0, ns[0]! - ns[1]!));
+  }
+  // The smaller (larger) of two lines whose order a settled comparison fixed, both complete, is the
+  // first (second) of the ordered pair.
+  if ((e.op === "smaller_of" || e.op === "larger_of") && ops.length === 2 && typeof ops[0] === "string" && typeof ops[1] === "string") {
+    const [p, q] = ops as [string, string];
+    const le = (a: string, b: string): boolean => !!env.facts.rel?.has(`le|${a}|${b}`);
+    if (le(p, q)) return absLine(data, e.op === "smaller_of" ? p : q, env, depth + 1);
+    if (le(q, p)) return absLine(data, e.op === "smaller_of" ? q : p, env, depth + 1);
+  }
+  // The smaller or larger of equal values is that value.
+  if ((e.op === "smaller_of" || e.op === "larger_of") && vals.length > 0 && vals.every((v) => v !== undefined && stableStringify(v) === stableStringify(vals[0]))) return vals[0]!;
+  const zero = (v: Abs | undefined): boolean => v?.k === "known" && v.v === "0";
+  if (ZERO_OPS.has(e.op as string) ? vals.every(zero) : zero(vals[0]) && vals[1]?.k === "known") return kn(0);
+  // A from-line not more than the take-line (both complete, by a settled comparison) floors to zero.
+  if (e.op === "subtract_floor0" && typeof e.from === "string" && typeof e.take === "string" && env.facts.rel?.has(`le|${e.from}|${e.take}`)) return kn(0);
+  // Arithmetic with complete zeros is its one other operand: a sum of it and zeros, it less a zero, and
+  // (for a line that is never negative) it less a zero floored at zero. The zeros are complete, so an
+  // incomplete operand is the result on both routes.
+  const rest = ops.filter((_, i) => !zero(vals[i]));
+  const only = rest.length === 1 && typeof rest[0] === "string" ? rest[0] : undefined;
+  const nonNeg = (x: string): boolean => ["NonNegDollars", "Count"].includes(findLine(data, x)?.type ?? "");
+  if (only && (e.op === "sum" || ((e.op === "subtract" || (e.op === "subtract_floor0" && nonNeg(only))) && e.from === only))) return absLine(data, only, env, depth + 1);
+  // Otherwise the atom applied to its operands' abstract values: the same atom of the same values, read in
+  // the same order, is the same value, refusals and unknowns included (spec 4.7.4).
+  if (vals.some((v) => v === undefined)) return opaque;
+  const shape = Object.fromEntries(Object.entries(e).filter(([k]) => !["of", "from", "take", "amount", "rate", "count", "cite"].includes(k)));
+  return { k: "line", v: "atom:" + createHash("sha256").update(stableStringify({ shape, vals })).digest("hex").slice(0, 32) };
+}
+
+// The facts with split line s set to v: a test line's own test, true or false, adds what it establishes.
+function factsWith(data: CanonicalData, facts: GuardFacts, s: string, v: unknown): GuardFacts {
+  const l = findLine(data, s);
+  if (typeof v !== "boolean" || l?.expr.op !== "test") return facts;
+  const next: GuardFacts = { data, same: new Set(facts.same), known: new Map([...facts.known].map(([k, b]): [string, Bound] => [k, b.not ? { ...b, not: [...b.not] } : { ...b }])), rel: new Set(facts.rel ?? []) };
+  addTest(next, l.expr, v, 0);
+  return next;
+}
+
+// The guards that hold wherever a helper's value reaches a printed line: while the line has exactly one
+// reader, in its own document, which takes it only as the value of one alternative, that alternative's
+// guard, and then its reader's.
+function pathGuards(data: CanonicalData, id: string, depth = 0): unknown[] {
+  if (depth > 8 || !isHelper(data, id)) return [];
+  const steps = readerSteps(data, id);
+  if (steps.length !== 1) return [];
+  const s = steps[0]!;
+  if (!s.fact || !s.fact.length || s.doc.id !== docOfLine(data, id)?.id) return [];
+  if (s.fact.length === 1) return [s.fact[0], ...pathGuards(data, s.reader.id, depth + 1)];
+  // Several alternatives that each test one enum line against a value: the line is complete and has
+  // none of the other values.
+  const eqs = s.fact.map((g) => comparison(data, g));
+  const enumLine = eqs[0]?.line, ty = enumLine ? findLine(data, enumLine)?.type ?? "" : "";
+  if (!enumLine || !ty.startsWith("Enum(") || !eqs.every((c) => c?.key === "eq" && c.line === enumLine && typeof c.v === "string")) return [];
+  const taken = new Set(eqs.map((c) => c!.v as string));
+  const others = (data.params.enums[ty.slice(5, -1)]?.values ?? []).filter((v) => !taken.has(v));
+  if (!others.length) return [];
+  return [{ op: "test", all: others.map((v) => ({ op: "test", ne: [enumLine, { const: v }] })) }, ...pathGuards(data, s.reader.id, depth + 1)];
+}
+
+// Split candidates: Bool and enum lines compared in the guards of chooses reachable from the operands.
+function splitCandidates(data: CanonicalData, roots: string[]): string[] {
+  const out: string[] = [];
+  const seen = new Set<string>();
+  const walk = (id: string, depth: number): void => {
+    if (depth > 8 || seen.has(id)) return;
+    seen.add(id);
+    const l = findLine(data, id);
+    if (!l) return;
+    const e = l.expr as Record<string, unknown>;
+    const tests = e.op === "choose" ? (e.alternatives as { guard: unknown }[]).map((a) => a.guard) : e.op === "test" ? [e] : [];
+    for (const t of tests) for (const r of operandRefs(data, t)) {
+      const ty = findLine(data, r)?.type ?? "";
+      if ((ty === "Bool" || ty.startsWith("Enum(")) && !out.includes(r)) out.push(r);
+    }
+    for (const r of operandRefs(data, e)) walk(r, depth + 1);
+  };
+  roots.forEach((r) => walk(r, 0));
+  return out.slice(0, 12);
+}
+
+// Branch value equal under a case split: a choose alternative's value X is replaced by Y. Under the facts
+// that hold where the alternative is taken (its guard, and for a helper the guards on its one reader path
+// to a printed line), X and Y are evaluated abstractly; where that does not settle them, a Bool or enum line
+// S that their choices test is split into each of its values and "incomplete" (S's own unknown or refusal,
+// which a choose guard, a comparison against complete values and a gate pass on unchanged), up to three
+// splits deep. The mutant is equivalent when X and Y have the same abstract value in every case.
+function caseSplitBranch(data: CanonicalData, mutation: Mutation): string | undefined {
+  const pair = replacedPair(mutation); if (!pair || !independentOperands(data, mutation, pair)) return undefined;
+  const m = /\.then(\d+)$/.exec(mutation.id); if (!m) return undefined;
+  const id = lineOf(mutation), line = findLine(data, id);
+  if (line?.expr.op !== "choose") return undefined;
+  const alt = (line.expr.alternatives as { guard: unknown; then: unknown }[])[Number(m[1])];
+  if (!alt || alt.then !== pair[0]) return undefined;
+  const path = pathGuards(data, id);
+  const facts = guardFacts(data, { op: "test", all: [alt.guard, ...path] });
+  const known = new Set((line.refuses ?? []).filter((r) => !r.when_known).map((r) => r.when));
+  const candidates = splitCandidates(data, pair);
+  const domain = (s: string): unknown[] => {
+    const t = findLine(data, s)!.type;
+    return t === "Bool" ? [true, false, INC] : [...(data.params.enums[t.slice(5, -1)]?.values ?? []), INC];
+  };
+  const used: string[] = [];
+  let cases = 0;
+  const prove = (f: GuardFacts, split: Map<string, unknown>, left: number): boolean => {
+    if (++cases > 2000) return false;
+    const env: SplitEnv = { facts: f, known, split, memo: new Map() };
+    const a = absLine(data, pair[0], env, 0), b = absLine(data, pair[1], env, 0);
+    if (a.k === b.k && (a.k === "inc" ? a.s === (b as { s: string }).s : a.v === (b as { v: string }).v)) return true;
+    if (left === 0) return false;
+    for (const s of candidates) {
+      if (split.has(s) || absLine(data, s, env, 0).k !== "line") continue;
+      if (domain(s).every((v) => prove(factsWith(data, f, s, v), new Map([...split, [s, v]]), left - 1))) { if (!used.includes(s)) used.push(s); return true; }
+    }
+    return false;
+  };
+  if (!prove(facts, new Map(), 3)) return undefined;
+  return `Branch equal under a case split: where ${id} takes alternative ${m[1]} (guard ${stableStringify(alt.guard)})${path.length ? ` and its value can reach a printed line (guards ${path.map((g) => stableStringify(g)).join(", ")} on its one reader path)` : ""}, ${pair[0]} and ${pair[1]} have the same value${used.length ? ` in every case of ${used.join(", ")} (each value, and unanswered or refused, which the choices and comparisons that read it pass on unchanged)` : ""}, through settled choices, copies, comparisons of complete values and arithmetic of zeros, so ${path.length ? "no printed value changes" : "the mutated line is unchanged at every input"}.`;
+}
+
 // The structural rules, checked against the current data for every survivor: the first that accepts
 // it gives the reason.
 export function structuralReason(data: CanonicalData, mutation: Mutation): string | undefined {
   return aliasEquivalence(data, mutation) ?? sharedGateEquivalence(data, mutation) ?? floorMinusMin(data, mutation)
-    ?? carriedZero(data, mutation) ?? settledBranch(data, mutation) ?? unreachableAlternative(data, mutation) ?? guardedFigure(data, mutation) ?? unreadParameter(data, mutation) ?? unreadTable(data, mutation);
+    ?? carriedZero(data, mutation) ?? settledBranch(data, mutation) ?? unreachableAlternative(data, mutation) ?? caseSplitBranch(data, mutation) ?? guardedFigure(data, mutation) ?? unreadParameter(data, mutation) ?? unreadTable(data, mutation);
 }
 
 // Equivalences that need an argument about evaluation order or reachability. Each is
@@ -913,6 +1275,33 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
   "operand.eic.eic.line1_table1.line1.key": line1KeyInTable("eic.line1_table1"),
   "operand.eic.eic.line1_table2.line1.key": line1KeyInTable("eic.line1_table2"),
   "operand.eic.eic.line1_table3.line1.key": line1KeyInTable("eic.line1_table3"),
+  "operand.f8889.f8889.subject.line16.then0": pinned("f8889.subject is read only by line17b_figured, which only line17b reads, and only in its has_taxable alternative; has_taxable is line16 more than $0 (sales.zero), so where subject is read line16 is complete and positive, which only line16's has_dist alternative gives (the other is f8889.zero, $0), and that alternative's value is line16_figured. Where has_taxable is not true, subject is not read.",
+    ["f8889.subject", "f8889.line17b_figured", "f8889.line17b", "f8889.has_taxable", "f8889.line16", "f8889.line16_figured", "f8889.has_dist", "f8889.zero", "param:sales.zero"], "9f3618649628f2ee"),
+  "operand.f8889.f8889.self_dec_year.zero.then1": pinned("self_dec_year's self_only alternative is read (through self_in_family, step4_total, step4 and line6_split) only by line6, and only where split is true; with use_last_month true (which self_in_family requires to read self_dec_year) and December coverage self-only, married_family's inner any-test is false (its first disjunct needs December family coverage, its second needs use_last_month false), so married_family, an all-test, is false even past an unknown married answer (spec 4.7.2) or is the same refusal on both routes, and split is false: line6 reads line5, not line6_split.",
+    ["f8889.self_dec_year", "f8889.self_in_family", "f8889.self_all", "f8889.step4_total", "f8889.step4", "f8889.line6_split", "f8889.line6", "f8889.split", "f8889.married_family", "f8889.use_last_month", "f8889.dec_coverage", "f8889.self_year", "f8889.zero"], "99917228415b46ec"),
+  "operand.f8889.f8889.self_in_family.self_dec_year.then0": pinned("self_in_family's use_last_month alternative: use_last_month true means December coverage is known and not none. With family coverage self_dec_year and self_all are both self_year (self_all takes self_year under use_last_month), the same memoized value; with self-only coverage step4_total reaches line6 only through line6_split, which line6 reads only where split is true, and married_family (so split) is then false or the same refusal on both routes, as for self_dec_year's zero alternative.",
+    ["f8889.self_dec_year", "f8889.self_in_family", "f8889.self_all", "f8889.step4_total", "f8889.step4", "f8889.line6_split", "f8889.line6", "f8889.split", "f8889.married_family", "f8889.use_last_month", "f8889.dec_coverage", "f8889.self_year", "f8889.zero"], "99917228415b46ec"),
+  "operand.person.person.edu_adj.zero.then1": pinned("edu_adj's edu_student-false alternative: edu_student is then known false (memoized). edu_over_refused is an all-test whose first conjunct, edu_student true, decides it false before edu_adj is read; lines 27 to 30 read edu_adj only in the alternative guarded by edu_aoc and line 31 only in the one guarded by edu_llc, both all-tests whose first conjunct is edu_student true, so both are false and those alternatives (and their bindings) are not evaluated (spec 4.7.3, 4.7.4). edu_adj is a helper.",
+    ["person.edu_adj", "person.edu_student", "person.edu_over_refused", "person.edu_aoc", "person.edu_llc", "person.edu_line27", "person.edu_line28", "person.edu_line29", "person.edu_line30", "person.edu_line31", "person.zero"], "0365cb37a26cdbc6"),
+  "operand.dependent.dependent.edu_adj.zero.then1": pinned("dependent.edu_adj's edu_student-false alternative: as for person.edu_adj, edu_over_refused is decided false by its first conjunct, and lines 27 to 31 read edu_adj only in alternatives guarded by edu_aoc or edu_llc, all-tests whose first conjunct is edu_student true. edu_adj is a helper.",
+    ["dependent.edu_adj", "dependent.edu_student", "dependent.edu_over_refused", "dependent.edu_aoc", "dependent.edu_llc", "dependent.edu_line27", "dependent.edu_line28", "dependent.edu_line29", "dependent.edu_line30", "dependent.edu_line31", "dependent.zero"], "6ffdbb346213cdd6"),
+  "operand.sa.sa.deduction.standard.then1": pinned("sa.deduction's itemizes-false alternative: an any-test is known false only when every disjunct was evaluated and false with no unknown remembered (spec 4.7.2), so mfs_spouse_itemizes is known false and the comparison of line 17 with sa.standard read standard as a known value; a known standard passed its gates and took its mfs_spouse_itemizes-false alternative, whose value is standardraw, the same memoized value.",
+    ["sa.standard", "sa.deduction", "sa.itemizes", "sa.standardraw", "sa.mfs_spouse_itemizes", "sa.extra_blind", "sa.elect_itemize"], "770a84bb7ca5b637"),
+  "operand.sa.sa.standard.zero.then0": pinned("sa.standard's mfs_spouse_itemizes-true alternative: standard is a helper read only by sa.itemizes and sa.deduction. In itemizes the mfs_spouse_itemizes disjunct is true and decides the any-test before its last disjunct, the only one that reads standard (an earlier unknown is outranked by the deciding true; an earlier refusal ends the test before standard is read); so itemizes is not false, and deduction reads standard only where itemizes is false.",
+    ["sa.standard", "sa.deduction", "sa.itemizes", "sa.standardraw", "sa.mfs_spouse_itemizes", "sa.extra_blind", "sa.elect_itemize"], "770a84bb7ca5b637"),
+  "operand.sc.sc.qbi_se.zero.then1": pinned("sc.qbi_se's qbi_has-false alternative: qbi_has is profit_pos more than $0, so known false means profit_pos is a complete $0; then Form 7206 line 4 is $0, f7206_has is false, lines 7 and 9 are $0, lines 8, 10 and 13 are $0, and line 14 is $0 or (hi_uses true) the smaller of line 3 and $0, which is $0 when line 3 is complete and otherwise line 3's own refusal or unknown. qbi_se's only reader is qbi_ded, the sum of qbi_se, qbi_plan ($0 under the same qbi_has) and line 14: sum($0, $0, L14) and sum(L14, $0, L14) are the same value for L14 $0, the same refusal (it is the only refusing operand) or an unknown.",
+    ["sc.qbi_se", "sc.qbi_has", "sc.qbi_ded", "sc.qbi_plan", "sc.f7206_line14", "sc.f7206_min", "sc.f7206_line13", "sc.f7206_line10", "sc.f7206_line9", "sc.f7206_line8", "sc.f7206_line7", "sc.f7206_has", "sc.f7206_line4", "sc.profit_pos", "sc.f7206_line3", "param:sales.zero"], "7c26af53292d6ba0"),
+  "operand.sc.sc.ho_both.zero": pinned("sc.ho_both is a helper whose only reader is sc.ho_line5_lim, in its ho_no179-false alternative; ho_line5_lim is a helper whose only reader is sc.ho_line5, in its ho_unlimited-false alternative. A printed line therefore reads ho_both only after ho_unlimited and ho_no179 were found known false in the frame (spec 4.7.3, 4.7.6), and then ho_both's gate ho_both_limits, the all-test of those two being false, is true, so ho_both is its refusal at line entry and its expression, the only part the mutant changes, is not evaluated (4.7.1). With the gate false (ho_both or ho_line5_lim evaluated as a target) only those two helpers' own values differ.",
+    ["sc.ho_both", "sc.ho_both_limits", "sc.ho_line5_lim", "sc.ho_line5", "sc.ho_unlimited", "sc.ho_no179", "sc.ho_pre179_floor", "sc.zero"], "652b707f3dad34e6"),
+  "operand.eic.eic.credit.line6.then0": (() => {
+    const lines = ["eic.credit", "eic.eligible", "eic.line6", "eic.after_line4", "eic.line4", "eic.line3", "eic.line1", "eic.line2", "eic.zero", "eic.line1_in_table", "eic.line1_table", "eic.line1_table0", "eic.line1_table1", "eic.line1_table2", "eic.line1_table3", "eic.line5", "eic.line3_table0", "eic.line3_table1", "eic.line3_table2", "eic.line3_table3", "eic.line5_blank", "eic.line5_threshold", "eic.threshold_other", "eic.threshold_joint", "eic.threshold0_other", "eic.threshold1_other", "eic.threshold0_joint", "eic.threshold1_joint", "eic.smaller", "eic.step1_income", "eic.step5_income", "eic.earned_for_limit", "eic.wsb_6", "eic.wsb_4b", "eic.earned_income", "param:eic.table_start"];
+    const p = pinned("eic.credit's eligible alternative reads line6, which is line2 when line4 (line3 equals line1) is true and after_line4 otherwise, so the mutant differs only where line4 is true. eligible true needs step1_income (AGI, which line3 copies, below the limit) and step5_income (earned_for_limit, whose branch value is line1's source, below the limit) complete and true, so line3 and line1 are complete there and line4 is a complete comparison. With line4 true, line5 looks up line3 in the same EIC table (by the same ssn_count choices and filing status) that line2 looks up line1 in, so where line1 is at least table_start line5 equals line2 and after_line4 (line2, or the smaller of line5 and line2) is line2; where line1 is below table_start line2 is $0 and line3, equal to line1, is below every line 5 threshold (all of which exceed table_start), so line5 is blank and after_line4 is line2.", lines, "02abad669a667830");
+    return { reason: p.reason, holds: (d: CanonicalData): boolean => {
+      const start = d.params.values["eic.table_start"]?.value;
+      const th = ["eic.ws_threshold0.joint", "eic.ws_threshold1.joint", "eic.ws_threshold0.other", "eic.ws_threshold1.other"].map((k) => d.params.values[k]?.value);
+      return p.holds(d) && typeof start === "number" && start > 0 && th.every((v) => typeof v === "number" && v > start);
+    } };
+  })(),
   "operand.qdcg.qdcg.line8.line7": minNesting("qdcg.line8", "qdcg.line5", "qdcg.line7", "qdcg.line1", "qdcg.line6"),
   "operand.scveh.scveh.l5.k5": vehicle2019("scveh.l5", "scveh.l5 looks up the vehicle's year-5 limit; the mutant looks up year 4.",
     (d) => vehicleLimit(d, "scveh.l5", "scveh.k5") && vehicleLimit(d, "scveh.l4", "scveh.k4")),
@@ -923,6 +1312,24 @@ const EQUIVALENT_IF: Record<string, { reason: string; holds: (data: CanonicalDat
   "operand.scveh.scveh.d6.l6": vehicle2019("scveh.d6", "scveh.d6 is min(l6, t6); the mutant reads d5 = min(l5, t5) in place of l6, and min(min(l5, t5), t6) = min(l6, t6) when l5 = l6 and t5 >= t6.",
     (d) => vehicleYear(d, 5) && vehicleYear(d, 6)),
 };
+
+// A keyed argument pinned to the lines it reads: the digest of each named line's expression, refusal
+// gates, type, printed marker and display condition, and of the list of every line that reads it. The
+// argument holds only while none of those changed; any edit to a premise line, or a new reader of one,
+// makes the survivor unexplained again until the argument is re-made.
+export function premiseDigest(data: CanonicalData, lines: string[]): string {
+  const facts = lines.map((id) => {
+    if (id.startsWith("table:")) return { id, table: data.tables.find((t) => t.id === id.slice(6)) ?? null };
+    if (id.startsWith("param:")) return { id, param: data.params.values[id.slice(6)] ?? null };
+    const l = findLine(data, id);
+    return l ? { id, expr: l.expr, refuses: l.refuses ?? [], type: l.type, printed: l.printed, shown_when: l.shown_when ?? null, readers: [...new Set(allReaders(data, id))].sort() } : { id, missing: true };
+  });
+  return createHash("sha256").update(stableStringify(facts)).digest("hex").slice(0, 16);
+}
+
+function pinned(reason: string, lines: string[], digest: string) {
+  return { reason: `${reason} (Premises pinned: ${lines.join(", ")}.)`, holds: (d: CanonicalData): boolean => premiseDigest(d, lines) === digest };
+}
 
 // Why a surviving mutant is equivalent, checked against the current data: the keyed conditional
 // argument when its structural conditions hold, else the first structural rule that accepts it.
@@ -1225,21 +1632,27 @@ const normal = (v: { kind: string; cents?: number; value?: unknown; num?: number
   v.kind === "refusal" ? stableStringify(v) : v.kind === "unknown" ? "unknown" : v.kind === "money" ? `money:${v.cents}`
     : v.kind === "rate" ? `rate:${v.num}/${v.den}` : `${v.kind}:${JSON.stringify(v.value)}`;
 
-type Outcome = "check" | "fixtures" | "survives";
+// `classm:<case>`: killed, but only by class M cases (the first named). A class M rerun regenerates
+// those cases, so the kill can be lost unless a stage fixture keeps the case.
+type Outcome = "check" | "fixtures" | `classm:${string}` | "survives";
 
 // What happens to one mutant: the checker rejects it, a fixture value changes, or it survives.
+// Cases other than class M are tried first, so a kill is attributed to class M only when no other case makes it.
 function outcome(baseline: CanonicalData, cases: ReturnType<typeof loadCases>["cases"], m: Mutation): Outcome {
   const data = cloneData(baseline);
   m.apply(data);
   if (runChecks(data).errors.length > 0) return "check";
-  for (const c of cases) {
+  const kills = (c: (typeof cases)[number]): boolean => {
     const result = evaluate(data, c.inputs, allTargets(data, c.inputs));
     for (const [key, expected] of Object.entries(c.expect ?? {})) {
       const der = result.derivations.get(key);
-      if (!der || normal(der.value) !== normal(expected)) return "fixtures";
+      if (!der || normal(der.value) !== normal(expected)) return true;
     }
-  }
-  return "survives";
+    return false;
+  };
+  if (cases.some((c) => c.evidence !== "M" && kills(c))) return "fixtures";
+  const classm = cases.find((c) => c.evidence === "M" && kills(c));
+  return classm ? `classm:${classm.id}` : "survives";
 }
 
 function mutantsDigest(muts: Mutation[]): string {
@@ -1302,6 +1715,7 @@ export async function runMutation(): Promise<number> {
   }
   const muts = mutations(baseline);
   const survivors: Mutation[] = [];
+  const classmOnly: { m: Mutation; case: string }[] = [];
   let killedByCheck = 0;
   let killedByFixtures = 0;
 
@@ -1309,6 +1723,7 @@ export async function runMutation(): Promise<number> {
   muts.forEach((m, i) => {
     if (outcomes[i] === "check") killedByCheck++;
     else if (outcomes[i] === "fixtures") killedByFixtures++;
+    else if (outcomes[i]!.startsWith("classm:")) { killedByFixtures++; classmOnly.push({ m, case: outcomes[i]!.slice("classm:".length) }); }
     else survivors.push(m);
   });
 
@@ -1341,11 +1756,22 @@ export async function runMutation(): Promise<number> {
   report.push("| --- | --- |");
   report.push(`| Mutants | ${total} |`);
   report.push(`| Killed by the checker | ${killedByCheck} |`);
-  report.push(`| Killed by fixtures | ${killedByFixtures} |`);
+  report.push(`| Killed by fixtures | ${killedByFixtures} (${classmOnly.length} only by class M cases) |`);
   report.push(`| Surviving | ${survivors.length} (${equivalentSurvivors.length} provably equivalent) |`);
   report.push(`| Mutation score (raw) | ${(score * 100).toFixed(1)}% |`);
   report.push(`| Mutation score (equivalent mutants excluded) | ${(adjusted * 100).toFixed(1)}% |`);
   report.push("");
+  if (classmOnly.length > 0) {
+    report.push("## Killed only by class M cases");
+    report.push("");
+    report.push("A class M rerun regenerates its cases, so these kills can be lost. Before replacing a case named here,");
+    report.push("keep it (or a stage fixture with the same facts and source-predicted values) among the stage fixtures.");
+    report.push("");
+    report.push("| Mutant | Kind | Location | First class M case killing it |");
+    report.push("| --- | --- | --- | --- |");
+    for (const { m, case: id } of classmOnly) report.push(`| ${m.id} | ${m.kind} | ${m.where} | ${id} |`);
+    report.push("");
+  }
   if (equivalentSurvivors.length > 0) {
     report.push("## Surviving — classified equivalent");
     report.push("");
@@ -1374,7 +1800,7 @@ export async function runMutation(): Promise<number> {
   const outDir = yearPath("reports");
   mkdirSync(outDir, { recursive: true });
   writeFileSync(join(outDir, "mutation.md"), report.join("\n"));
-  console.log(`mutation: ${total} mutants, killed by checker ${killedByCheck}, by fixtures ${killedByFixtures}, surviving ${survivors.length} (${equivalentSurvivors.length} equivalent; score ${(score * 100).toFixed(1)}%, adjusted ${(adjusted * 100).toFixed(1)}%)`);
+  console.log(`mutation: ${total} mutants, killed by checker ${killedByCheck}, by fixtures ${killedByFixtures} (${classmOnly.length} only by class M cases), surviving ${survivors.length} (${equivalentSurvivors.length} equivalent; score ${(score * 100).toFixed(1)}%, adjusted ${(adjusted * 100).toFixed(1)}%)`);
   console.log(`report: reports/${YEAR}/mutation.md`);
   for (const p of openDefectProblems) console.log(`mutation: ${p}`);
   return unexplained.length === 0 && openDefectProblems.length === 0 ? 0 : 1;

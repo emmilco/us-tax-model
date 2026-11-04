@@ -4,23 +4,24 @@ Second transcription of `Mid-quarter convention test for property placed in serv
 
 | field | value |
 | --- | --- |
-| date | 2026-10-25 |
+| date | 2026-11-03 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 5c25ab081eb597a4d768001c50076f3e338d4b19d0e6e24e7df6077a9bfddde3 |
+| prompt sha256 | e67dda52503f308269033e4883ef713d2091d915482b0dc6e3cd445a3f5e63d6 |
 | prompt policy | source-only-computation-v2 |
 | comparison policy | checked-expression-types-v2 |
-| input context policy | complete-input-context-v1 |
+| input context policy | required-review-interfaces-v2 |
 | complete input context | pass |
-| type validation policy | project-expression-types-v1 |
+| required input context sha256 | 701c77584bb3315c9633ab00c7c024cbc2fafce6c82e60815070312746c57459 |
+| type validation policy | project-expression-types-v3 |
 | model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 7a635868298039249c562405cd29bd2de3cef651b51f0bf258cd0dd44a40e55b |
+| subject sha256 | 076c50a4031857c718e8a7a9b9429bb8766193a78a28d6be71ccd45e5ce73442 |
 | printed lines compared | 1 |
-| agree / disagree / missing | 1 / 0 / 0 |
+| agree / disagree / missing | 0 / 1 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -32,46 +33,49 @@ Second transcription of `Mid-quarter convention test for property placed in serv
 ## Lines
 
 ### mq.applies — The mid-quarter convention applies: the October to December bases are more than 40% of all
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"args": [{"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}], "test": "lt"}
+```
+
+Second:
+
+```json
+{"args": [{"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}, {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}], "test": "lt"}
+```
+
+Ruling: model error; p946 p. 34, Which Convention Applies?, Mid-quarter convention: the convention applies if "the total depreciable bases of MACRS property you placed in service during the last 3 months of the tax year (...) are more than 40% of the total depreciable bases of all MACRS property you placed in service during the entire year". executable-triage-v2 (`reviews/2025/transcription/triage/mq.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 0 partial records; 1,995 comparisons): 1,995 of 1,995 agree; differences none; on returns the full interview completes: none. No difference on the sample, but the reply multiplies the total by the parameter sc.bonus_rate_40 (40%) with multiply_rate, which rounds the product to cents before the strict comparison. Counterexample (as ruled before on the same expression): total $1,000.02 and fourth quarter $400.01; exactly 40% is $400.008, so the source test is true (5 x 40,001 > 2 x 100,002), while the rounded $400.01 is not less than $400.01. Project stands.
 
 ## Raw second transcription
 
 ```yaml
 lines:
-  - id: mq.h_count5
+  - id: mq.h_q4_basis
     printed: "(helper)"
-    label: "Count of five"
-    type: Count
-    expr: {op: param, ref: sc.count5}
-  - id: mq.h_count2
-    printed: "(helper)"
-    label: "Count of two"
-    type: Count
-    expr: {op: param, ref: sc.count2}
-  - id: mq.h_q4_total
-    printed: "(helper)"
-    label: "Total depreciable bases placed in service during the last 3 months of 2025"
+    label: "Total depreciable bases of MACRS property placed in service during the last 3 months of the tax year"
     type: NonNegDollars
     expr: {op: sum_over, collection: person, field: person.mq_q4}
-  - id: mq.h_total_bases
+    cite: "Pub. 946 (2025), p. 34, Which Convention Applies? (mid-quarter convention)"
+  - id: mq.h_total_basis
     printed: "(helper)"
-    label: "Total depreciable bases of all MACRS property placed in service during 2025"
+    label: "Total depreciable bases of all MACRS property placed in service during the entire year"
     type: NonNegDollars
     expr: {op: sum_over, collection: person, field: person.mq_total}
-  - id: mq.h_q4_times5
+    cite: "Pub. 946 (2025), p. 34, Which Convention Applies? (mid-quarter convention)"
+  - id: mq.h_threshold
     printed: "(helper)"
-    label: "Five times the last-3-month depreciable bases"
+    label: "40% of the total depreciable bases of all MACRS property placed in service during the entire year"
     type: NonNegDollars
-    expr: {op: multiply_count, amount: mq.h_q4_total, count: mq.h_count5}
-  - id: mq.h_total_times2
-    printed: "(helper)"
-    label: "Two times the total depreciable bases"
-    type: NonNegDollars
-    expr: {op: multiply_count, amount: mq.h_total_bases, count: mq.h_count2}
+    expr: {op: multiply_rate, amount: mq.h_total_basis, rate: {param: sc.bonus_rate_40}}
+    cite: "Pub. 946 (2025), p. 34, Which Convention Applies? (mid-quarter convention)"
+    note: "The only 40% Rate in the supplied parameter catalog is sc.bonus_rate_40; its value is 40/100 and it is used here for the 40% mid-quarter threshold."
   - id: mq.applies
     printed: "(helper)"
     label: "Mid-quarter convention applies"
     type: Bool
-    expr: {op: test, gt: [mq.h_q4_times5, mq.h_total_times2]}
-    note: "The supplied interface has no printed lines. I derived the result from the existing person-level mq_q4 and mq_total totals. The test is that last-3-month bases exceed 40% of total bases, written as 5 times last-3-month bases greater than 2 times total bases to avoid rounding."
+    expr: {op: test, gt: [mq.h_q4_basis, mq.h_threshold]}
+    cite: "Pub. 946 (2025), p. 34, Which Convention Applies? (mid-quarter convention)"
 ```

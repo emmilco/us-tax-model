@@ -171,8 +171,8 @@ form:
               - sd.line14
               - const: 0
       cite:
-        doc: f1040sd
-        locator: i1040gi p. 31, Line 7a, "If you sold a capital asset, such as a stock, bond, or digital asset, you
+        doc: i1040gi
+        locator: p. 31, Line 7a, "If you sold a capital asset, such as a stock, bond, or digital asset, you
           must complete and attach Form 8949 and Schedule D", "None of the Form(s) 1099-DIV (or substitute statements)
           have an amount in box 2b (unrecaptured section 1250 gain), box 2c (section 1202 gain), or box 2d
           (collectibles (28%) gain)", "You have no capital losses"

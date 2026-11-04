@@ -4,18 +4,18 @@ The rendered English of every printed line of `Form 7206, line 2 — qualified l
 
 | field | value |
 | --- | --- |
-| date | 2026-11-02 |
+| date | 2026-11-03 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 98dcb5fd5496a0a0beb16828b8347396bf996e433a913272a3345e25a6c83de1 |
+| prompt sha256 | 0a51f41f1998b0894db66094f29f41374b76073dc0ae97f8467b0af64660a45e |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
-| subject sha256 | d3da815e06eeea1e381805a795dd0c772122a188eb854cd37cc6f033559b5d2c |
+| subject sha256 | fc82dc24c2a922c439a73bcedac40d3a03522d6a921a9ff0bfa927cc2e1939b4 |
 | lines judged | 2 |
 | match / mismatch / unclear / missing | 2 / 0 / 0 / 0 |
-| verdicts for lines not in the form | none |
+| verdicts for lines not in the form | ltc.age |
 
 ## Source pages given to the model
 
@@ -29,12 +29,12 @@ The rendered English of every printed line of `Form 7206, line 2 — qualified l
 ### 2(a) — Total payments made for that person during the year
 Status: **MATCH**
 
-Model: The restatement captures line 2(a)’s total payments for the covered person and correctly excludes months of eligibility for an employer-subsidized long-term care insurance plan.
+Model: IRS line 2(a) calls for total payments made for that person, and the instructions allow qualified long-term care premiums paid for that person while excluding months of eligibility for a subsidized long-term care plan.
 
 ### 2(b) — The amount for that person's age
 Status: **MATCH**
 
-Model: The IRS line 2(b) amount is determined from the covered person’s age at the end of 2025 using the listed age bands, which is what the restatement directs.
+Model: IRS line 2(b) provides the age-based qualified long-term care premium limits and directs use of the person’s age at the end of the tax year; the restatement points to that table using the age helper.
 
 ## Raw response
 
@@ -42,8 +42,11 @@ Model: The IRS line 2(b) amount is determined from the covered person’s age at
 lines:
   - key: "2(a)"
     status: MATCH
-    reason: "The restatement captures line 2(a)’s total payments for the covered person and correctly excludes months of eligibility for an employer-subsidized long-term care insurance plan."
+    reason: "IRS line 2(a) calls for total payments made for that person, and the instructions allow qualified long-term care premiums paid for that person while excluding months of eligibility for a subsidized long-term care plan."
   - key: "2(b)"
     status: MATCH
-    reason: "The IRS line 2(b) amount is determined from the covered person’s age at the end of 2025 using the listed age bands, which is what the restatement directs."
+    reason: "IRS line 2(b) provides the age-based qualified long-term care premium limits and directs use of the person’s age at the end of the tax year; the restatement points to that table using the age helper."
+  - key: "ltc.age"
+    status: MATCH
+    reason: "The IRS text uses the person’s age at the end of the tax year and lists the same age brackets for the qualified long-term care premium limits."
 ```

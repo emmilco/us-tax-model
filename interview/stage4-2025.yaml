@@ -332,6 +332,7 @@ interview:
   - scveh.parking
   - scveh.smr_ok
   - scveh.operating
+  - scveh.employee_use
   - scveh.lease
   - scveh.lease_smr_before
   - scveh.placed
@@ -354,6 +355,7 @@ interview:
   - asset.listed
   - asset.quarter
   - asset.s179
+  - asset.not179
   - asset.after_jan19
   - asset.bonus_choice
   - asset.bonus_same

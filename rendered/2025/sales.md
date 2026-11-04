@@ -27,10 +27,10 @@
 
 ## (helper) — `sales.special`
 
-- **Authored helper label:** Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?
-- **Encoded (Bool):** Input — Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?
-- Expr: `{"op":"input","source":"Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?"}`
-- Cite: [i1040sd] pp. 11–12, lines 18 and 19; p. 11, line 18, "Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles." (2025; printed date 2025-12-11; sha256 650643a6)
+- **Authored helper label:** Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property, such as stock of an S corporation that owns art or gold worth more than its cost?
+- **Encoded (Bool):** Input — Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property, such as stock of an S corporation that owns art or gold worth more than its cost?
+- Expr: `{"op":"input","source":"Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property, such as stock of an S corporation that owns art or gold worth more than its cost?"}`
+- Cite: [i1040sd] pp. 11–12, lines 18 and 19; p. 11, line 18, "Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles."; p. 12, line 19, "You reported a long-term capital gain from the sale or exchange of an interest in a partnership that owned section 1250 property" (2025; printed date 2025-12-11; sha256 650643a6)
 
 ## (helper) — `sales.aggregate_eligible`
 
@@ -62,9 +62,9 @@
 
 ## (helper) — `sales.wash_loss`
 
-- **Authored helper label:** Correct nondeductible wash-sale loss; positive cents, including losses not reported by broker
-- **Encoded (NonNegDollars):** Input — Correct nondeductible wash-sale loss; positive cents, including losses not reported by broker
-- Expr: `{"op":"input","source":"Correct nondeductible wash-sale loss; positive cents, including losses not reported by broker"}`
+- **Authored helper label:** Correct nondeductible wash-sale loss; positive cents, including losses not reported by broker; not more than the loss on this sale
+- **Encoded (NonNegDollars):** Input — Correct nondeductible wash-sale loss; positive cents, including losses not reported by broker. It cannot be more than the loss on this sale (column (e) less column (d), after any code B basis correction).
+- Expr: `{"op":"input","source":"Correct nondeductible wash-sale loss; positive cents, including losses not reported by broker. It cannot be more than the loss on this sale (column (e) less column (d), after any code B basis correction)."}`
 - Cite: [i8949] p. 10, code W; a lower corrected loss requires an explanation statement (2025; printed date 2026-01-20; sha256 f077991c)
 
 ## (helper) — `sales.covered`
@@ -155,10 +155,25 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["sales.adjust_b",{"const":true}],"op":"test"},"then":"sales.b_difference"},{"guard":{"eq":["sales.adjust_b",{"const":false}],"op":"test"},"then":"sales.zero"}],"op":"choose"}`
 - Cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c)
 
+## (helper) — `sales.wash_over`
+
+- **Authored helper label:** Gain or loss before the wash-sale adjustment, plus the entered wash-sale loss
+- **Encoded (Dollars):** Add helper "Proceeds less column (e)", helper "Basis correction in column (g)", and helper "Correct nondeductible wash-sale loss; positive cents, including losses not reported by broker; not more than the loss on this sale".
+- Expr: `{"of":["sales.before_adjustment","sales.b","sales.wash_loss"],"op":"sum"}`
+- Cite: [i8949] p. 10, code W, "You have a nondeductible loss from a wash sale" and "enter the amount of the nondeductible loss as a positive number in column (g)" (2025; printed date 2026-01-20; sha256 f077991c)
+
+## (gate) — `sales.wash_bad`
+
+- **Authored helper label:** Code W with a wash-sale loss larger than the loss figured from columns (d), (e) and the code B adjustment
+- **Encoded (Bool):** helper "Wash-sale code W applies" = true and helper "Correct nondeductible wash-sale loss; positive cents, including losses not reported by broker; not more than the loss on this sale" > $0 (sales.zero) and helper "Gain or loss before the wash-sale adjustment, plus the entered wash-sale loss" > $0 (sales.zero)
+- Expr: `{"all":[{"eq":["sales.has_w",{"const":true}],"op":"test"},{"gt":["sales.wash_loss",{"param":"sales.zero"}],"op":"test"},{"gt":["sales.wash_over",{"param":"sales.zero"}],"op":"test"}],"op":"test"}`
+- Cite: [i8949] p. 10, code W, "You have a nondeductible loss from a wash sale" and "enter the amount of the nondeductible loss as a positive number in column (g)"; p550 p. 86, Wash Sales, "A wash sale occurs when you sell or trade stock or securities at a loss" (2025; printed date 2026-01-20; sha256 f077991c)
+
 ## (helper) — `sales.w`
 
 - **Authored helper label:** Wash-sale adjustment in column (g)
-- **Encoded (NonNegDollars):** Choose — [helper "Wash-sale code W applies" = true → helper "Correct nondeductible wash-sale loss; positive cents, including losses not reported by broker"] [helper "Wash-sale code W applies" = false → helper "No adjustment"]
+- **Encoded (NonNegDollars):** Choose — [helper "Wash-sale code W applies" = true → helper "Correct nondeductible wash-sale loss; positive cents, including losses not reported by broker; not more than the loss on this sale"] [helper "Wash-sale code W applies" = false → helper "No adjustment"]
+- **Refusal:** when sales.wash_bad is true, cannot complete Form 8949, column (g), code W. The nondeductible wash-sale loss entered is more than the loss on this sale (column (e) less column (d), after any code B correction). Check the amount against your Form 1099-B and your records. Cite: [i8949] p. 10, code W, "enter the amount of the nondeductible loss as a positive number in column (g)" (2025; printed date 2026-01-20; sha256 f077991c)
 - Expr: `{"alternatives":[{"guard":{"eq":["sales.has_w",{"const":true}],"op":"test"},"then":"sales.wash_loss"},{"guard":{"eq":["sales.has_w",{"const":false}],"op":"test"},"then":"sales.zero"}],"op":"choose"}`
 - Cite: [i8949] pp. 7–11, columns (e) through (h), codes B and W (2025; printed date 2026-01-20; sha256 f077991c)
 

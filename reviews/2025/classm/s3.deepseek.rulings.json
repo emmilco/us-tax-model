@@ -1,0 +1,87 @@
+{
+ "kind": "classm",
+ "form": "s3",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "case": "classm.s3.3",
+   "printed": "1",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; reply-format error, not a tax reading. The DeepSeek reply for classm.s3.3 keys every line by its label text (printed: \"Foreign tax credit\") instead of the printed number requested (\"1\"), so the parser matched no line and the log shows MISSING. The value it gives, $0.00, is the project's $0.00, and its work (\"No foreign tax\", \"Form 2441 line 11 = 0.00\", \"No Form 1095-A; Form 8962 line 26 = 0.00\", the zero sums on lines 8 and 15) agrees with the return (f1040s3 lines 1 to 15, i1040gi p. 117). Nothing to drop: classm.s3.3.deepseek in fixtures/2025/classm.deepseek.json records no expectation for the case. The other three DeepSeek cases and all four Claude cases agree on every line.",
+   "context": "2810739665152cbae39dd523bf7ea7fce284540907961860039d29c442c16935"
+  },
+  {
+   "case": "classm.s3.3",
+   "printed": "11",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; reply-format error, not a tax reading. The DeepSeek reply for classm.s3.3 keys every line by its label text (printed: \"Excess social security and tier 1 RRTA tax withheld\") instead of the printed number requested (\"11\"), so the parser matched no line and the log shows MISSING. The value it gives, $0.00, is the project's $0.00, and its work (\"No foreign tax\", \"Form 2441 line 11 = 0.00\", \"No Form 1095-A; Form 8962 line 26 = 0.00\", the zero sums on lines 8 and 15) agrees with the return (f1040s3 lines 1 to 15, i1040gi p. 117). Nothing to drop: classm.s3.3.deepseek in fixtures/2025/classm.deepseek.json records no expectation for the case. The other three DeepSeek cases and all four Claude cases agree on every line.",
+   "context": "2810739665152cbae39dd523bf7ea7fce284540907961860039d29c442c16935"
+  },
+  {
+   "case": "classm.s3.3",
+   "printed": "15",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; reply-format error, not a tax reading. The DeepSeek reply for classm.s3.3 keys every line by its label text (printed: \"Add lines 9 through 12 and 14. Enter here and on Form 1040, line 31\") instead of the printed number requested (\"15\"), so the parser matched no line and the log shows MISSING. The value it gives, $0.00, is the project's $0.00, and its work (\"No foreign tax\", \"Form 2441 line 11 = 0.00\", \"No Form 1095-A; Form 8962 line 26 = 0.00\", the zero sums on lines 8 and 15) agrees with the return (f1040s3 lines 1 to 15, i1040gi p. 117). Nothing to drop: classm.s3.3.deepseek in fixtures/2025/classm.deepseek.json records no expectation for the case. The other three DeepSeek cases and all four Claude cases agree on every line.",
+   "context": "2810739665152cbae39dd523bf7ea7fce284540907961860039d29c442c16935"
+  },
+  {
+   "case": "classm.s3.3",
+   "printed": "2",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; reply-format error, not a tax reading. The DeepSeek reply for classm.s3.3 keys every line by its label text (printed: \"Credit for child and dependent care expenses from Form 2441, line 11. Attach Form 2441\") instead of the printed number requested (\"2\"), so the parser matched no line and the log shows MISSING. The value it gives, $0.00, is the project's $0.00, and its work (\"No foreign tax\", \"Form 2441 line 11 = 0.00\", \"No Form 1095-A; Form 8962 line 26 = 0.00\", the zero sums on lines 8 and 15) agrees with the return (f1040s3 lines 1 to 15, i1040gi p. 117). Nothing to drop: classm.s3.3.deepseek in fixtures/2025/classm.deepseek.json records no expectation for the case. The other three DeepSeek cases and all four Claude cases agree on every line.",
+   "context": "2810739665152cbae39dd523bf7ea7fce284540907961860039d29c442c16935"
+  },
+  {
+   "case": "classm.s3.3",
+   "printed": "3",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; reply-format error, not a tax reading. The DeepSeek reply for classm.s3.3 keys every line by its label text (printed: \"Education credits from Form 8863, line 19\") instead of the printed number requested (\"3\"), so the parser matched no line and the log shows MISSING. The value it gives, $0.00, is the project's $0.00, and its work (\"No foreign tax\", \"Form 2441 line 11 = 0.00\", \"No Form 1095-A; Form 8962 line 26 = 0.00\", the zero sums on lines 8 and 15) agrees with the return (f1040s3 lines 1 to 15, i1040gi p. 117). Nothing to drop: classm.s3.3.deepseek in fixtures/2025/classm.deepseek.json records no expectation for the case. The other three DeepSeek cases and all four Claude cases agree on every line.",
+   "context": "2810739665152cbae39dd523bf7ea7fce284540907961860039d29c442c16935"
+  },
+  {
+   "case": "classm.s3.3",
+   "printed": "4",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; reply-format error, not a tax reading. The DeepSeek reply for classm.s3.3 keys every line by its label text (printed: \"Retirement savings contributions credit. Attach Form 8880\") instead of the printed number requested (\"4\"), so the parser matched no line and the log shows MISSING. The value it gives, $0.00, is the project's $0.00, and its work (\"No foreign tax\", \"Form 2441 line 11 = 0.00\", \"No Form 1095-A; Form 8962 line 26 = 0.00\", the zero sums on lines 8 and 15) agrees with the return (f1040s3 lines 1 to 15, i1040gi p. 117). Nothing to drop: classm.s3.3.deepseek in fixtures/2025/classm.deepseek.json records no expectation for the case. The other three DeepSeek cases and all four Claude cases agree on every line.",
+   "context": "2810739665152cbae39dd523bf7ea7fce284540907961860039d29c442c16935"
+  },
+  {
+   "case": "classm.s3.3",
+   "printed": "5a",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; reply-format error, not a tax reading. The DeepSeek reply for classm.s3.3 keys every line by its label text (printed: \"Residential clean energy credit from Form 5695, line 15\") instead of the printed number requested (\"5a\"), so the parser matched no line and the log shows MISSING. The value it gives, $0.00, is the project's $0.00, and its work (\"No foreign tax\", \"Form 2441 line 11 = 0.00\", \"No Form 1095-A; Form 8962 line 26 = 0.00\", the zero sums on lines 8 and 15) agrees with the return (f1040s3 lines 1 to 15, i1040gi p. 117). Nothing to drop: classm.s3.3.deepseek in fixtures/2025/classm.deepseek.json records no expectation for the case. The other three DeepSeek cases and all four Claude cases agree on every line.",
+   "context": "2810739665152cbae39dd523bf7ea7fce284540907961860039d29c442c16935"
+  },
+  {
+   "case": "classm.s3.3",
+   "printed": "5b",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; reply-format error, not a tax reading. The DeepSeek reply for classm.s3.3 keys every line by its label text (printed: \"Energy efficient home improvement credit from Form 5695, line 32\") instead of the printed number requested (\"5b\"), so the parser matched no line and the log shows MISSING. The value it gives, $0.00, is the project's $0.00, and its work (\"No foreign tax\", \"Form 2441 line 11 = 0.00\", \"No Form 1095-A; Form 8962 line 26 = 0.00\", the zero sums on lines 8 and 15) agrees with the return (f1040s3 lines 1 to 15, i1040gi p. 117). Nothing to drop: classm.s3.3.deepseek in fixtures/2025/classm.deepseek.json records no expectation for the case. The other three DeepSeek cases and all four Claude cases agree on every line.",
+   "context": "2810739665152cbae39dd523bf7ea7fce284540907961860039d29c442c16935"
+  },
+  {
+   "case": "classm.s3.3",
+   "printed": "8",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; reply-format error, not a tax reading. The DeepSeek reply for classm.s3.3 keys every line by its label text (printed: \"Add lines 1 through 4, 5a, 5b, and 7. Enter here and on Form 1040, line 20\") instead of the printed number requested (\"8\"), so the parser matched no line and the log shows MISSING. The value it gives, $0.00, is the project's $0.00, and its work (\"No foreign tax\", \"Form 2441 line 11 = 0.00\", \"No Form 1095-A; Form 8962 line 26 = 0.00\", the zero sums on lines 8 and 15) agrees with the return (f1040s3 lines 1 to 15, i1040gi p. 117). Nothing to drop: classm.s3.3.deepseek in fixtures/2025/classm.deepseek.json records no expectation for the case. The other three DeepSeek cases and all four Claude cases agree on every line.",
+   "context": "2810739665152cbae39dd523bf7ea7fce284540907961860039d29c442c16935"
+  },
+  {
+   "case": "classm.s3.3",
+   "printed": "9",
+   "project": "$0.00",
+   "model": "no answer",
+   "ruling": "Ruling: model error; reply-format error, not a tax reading. The DeepSeek reply for classm.s3.3 keys every line by its label text (printed: \"Net premium tax credit. Attach Form 8962\") instead of the printed number requested (\"9\"), so the parser matched no line and the log shows MISSING. The value it gives, $0.00, is the project's $0.00, and its work (\"No foreign tax\", \"Form 2441 line 11 = 0.00\", \"No Form 1095-A; Form 8962 line 26 = 0.00\", the zero sums on lines 8 and 15) agrees with the return (f1040s3 lines 1 to 15, i1040gi p. 117). Nothing to drop: classm.s3.3.deepseek in fixtures/2025/classm.deepseek.json records no expectation for the case. The other three DeepSeek cases and all four Claude cases agree on every line.",
+   "context": "2810739665152cbae39dd523bf7ea7fce284540907961860039d29c442c16935"
+  }
+ ]
+}

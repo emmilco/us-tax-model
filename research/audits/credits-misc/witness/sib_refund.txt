@@ -1,0 +1,14 @@
+
+## refund.not_2024 — Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you pay any of your 2024 state or local income tax in 2025 or before 2024?
+
+(a) lines that read it, through helpers (1)
+  refund.taxable
+
+(c) predicates testing the same enum values (0)
+
+(b) lines and questions anchored on the same doc/page/heading (5)
+  refund.box8
+  refund.exc_tax
+  refund.exc_who
+  refund.received
+  refund.taxable

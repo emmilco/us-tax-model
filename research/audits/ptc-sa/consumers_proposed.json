@@ -1,0 +1,23 @@
+{
+ "note": "Proposed verdicts for reviews/2025/consumers.json (not edited by this package). The three f1095a.uniform pairs were in the baseline and came due because the package rewrote the f1095a.uniform question (BUG-0327 wording). Remove their baseline entries when the rulings are applied.",
+ "rulings": {
+  "consumer:f1095a.uniform@i8962:p16": {
+   "verdict": "same",
+   "question_phrase": "Does this Form 1095-A show coverage in all 12 months of 2025, with the same amount in column A (monthly enrollment premiums) every month and the same amount in column B (monthly SLCSP premium) every month? Use the corrected column B ...",
+   "source_phrase": "i8962 p. 16, Column (a), the monthly enrollment premiums entered on lines 12 through 23 (read by f1095a.a_jan to f1095a.a_dec)",
+   "reason": "The reading lines use the answer only to choose between the one monthly column A amount (mo_a) and the twelve monthly amounts; when column A is the same every month the two routes give the same column (a) entry, which is what p. 16 asks for."
+  },
+  "consumer:f1095a.uniform@p974:p27": {
+   "verdict": "same",
+   "question_phrase": "... the same amount in column B (monthly SLCSP premium) every month? Use the corrected column B if column B is blank, zero or wrong, and answer no if the correct amount is not the same every month ... Get the correct amount from the Marketplace's tool",
+   "source_phrase": "p974 p. 27, Applicable SLCSP premium tools, \"Only the Marketplaces are able to provide applicable SLCSP premiums.\" (read by f1095a.b_jan to f1095a.b_dec)",
+   "reason": "The question is about the corrected applicable SLCSP premium, which the page says comes from the Marketplace's tool; the reading lines take that same corrected amount, monthly or uniform."
+  },
+  "consumer:f1095a.uniform@i1095a:p2": {
+   "verdict": "same",
+   "question_phrase": "Does this Form 1095-A show coverage in all 12 months of 2025, with the same amount in column A ... every month and the same amount in column B ... every month?",
+   "source_phrase": "i1095a p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\" (read by f1095a.line33a)",
+   "reason": "Line 33 is the total of the monthly amounts; the answer only picks whether that total is 12 times the one monthly amount or the sum of twelve entries, which agree when the question's condition holds."
+  }
+ }
+}

@@ -16,6 +16,13 @@
    "context": "2f7cce7ef8035fb803c7e1a42afb25d170624562d0408610b4cdbfd623e534f2"
   },
   {
+   "printed": "1",
+   "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
+   "model": "The program always enters $0, and no refusal excludes the case it ignores. IRS: \"If you have a section 1250 property in Part III of Form 4797 for which you made an entry in Part I of Form 4797 (but not on Form 6252), enter the smaller of line 22 or line 24 of Form 4797 for that property\"; the div refusals cover only 1099-DIV issues, not Form 4797 sales.",
+   "ruling": "Ruling: scope; i1040sd p. 13, lines 1 to 9: \"If you aren’t reporting a gain on Form 4797, line 7, skip lines 1 through 9 and go to line 10\". Refusal located elsewhere; project retained. Form 4797 property: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\") refuses them; constructed on classm.g28.2 (node engine/dist/main.js eval): sd.other_forms true refuses sd.line17, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a. In scope line 1 is $0.00. Same ruling as Stage 20.",
+   "context": "2f7cce7ef8035fb803c7e1a42afb25d170624562d0408610b4cdbfd623e534f2"
+  },
+  {
    "printed": "10",
    "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
    "model": "IRS line 10 enters gain 'from the sale or exchange of an interest in a partnership attributable to unrecaptured section 1250 gain'; the program enters $0. No listed refusal excludes sales of partnership interests.",
@@ -29,10 +36,24 @@
    "context": "2f7cce7ef8035fb803c7e1a42afb25d170624562d0408610b4cdbfd623e534f2"
   },
   {
+   "printed": "10",
+   "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
+   "model": "The program always enters $0, and no refusal excludes partnership-interest sales. IRS: \"Enter the amount of any gain from the sale or exchange of an interest in a partnership attributable to unrecaptured section 1250 gain.\"",
+   "ruling": "Ruling: scope; i1040sd p. 13, line 10. Refusal located elsewhere; project retained. Sales of an interest in a partnership: sales.special refuses them per sale; constructed on classm.g28.2 (node engine/dist/main.js eval): sales[s1].special true refuses sd.line17, g28.line7, u1250.line18 and f1040.line7a; the question now names \"an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property\" (PENDING-6). In scope line 10 is $0.00. Same ruling as Stage 20.",
+   "context": "2f7cce7ef8035fb803c7e1a42afb25d170624562d0408610b4cdbfd623e534f2"
+  },
+  {
    "printed": "11",
    "restated": "Enter the amount from div helper \"Unrecaptured section 1250 gain, box 2b\".",
    "model": "IRS line 11 totals unrecaptured section 1250 gain 'on a Schedule K-1, Form 1099-DIV, or Form 2439 ... or in connection with a Form 1099-R'; the program uses only 1099-DIV box 2b. No listed refusal excludes Form 2439, estate or trust K-1, or Form 1099-R amounts.",
    "ruling": "Ruling: scope; project retained. Form 4797, Form 6252, Schedule K-1, Form 2439 and Form 1099-R sources and prior-year carryovers are refused before this worksheet is used: `sd.count` refuses on `sd.other_forms` (\"Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or Schedule K-1?\") and on `sd.carryover` (\"Is there a capital loss carryover from the prior year?\"), and that refusal reaches Form 1040 line 7a through Schedule D lines 7, 15 and 16, so no return with those items is prepared. Lines 1–10, 12 and 16 are therefore zero, line 11 is Form 1099-DIV box 2b alone, and line 17 combines a non-negative line 14, a line 15 carried as a negative number (i1040sd p. 13, line 15: \"Enter the (loss), if any, from Schedule D, line 7. If Schedule D, line 7, is zero or a gain, enter -0-\") and a zero line 16, so \"Combine lines 14 through 16. If the result is a (loss), enter it as a positive amount. If the result is zero or a gain, enter -0-\" is the floored negation encoded. A positive carryover on line 16 must be subtracted when carryovers come into scope (recorded in the transcription rulings). No change to the data."
+  },
+  {
+   "printed": "11",
+   "restated": "Enter the amount from div helper \"Unrecaptured section 1250 gain, box 2b\".",
+   "model": "The restatement uses only Form 1099-DIV box 2b. IRS: \"Enter the total of any amounts reported to you as 'unrecaptured section 1250 gain' on a Schedule K-1, Form 1099-DIV, or Form 2439 from an estate, a trust, a real estate investment trust, or a mutual fund ... or in connection with a Form 1099-R\". The other sources are left out and no refusal excludes them.",
+   "ruling": "Ruling: scope; i1040sd p. 13, line 11; f1099div box 2b. Refusal located elsewhere; project retained. Schedule K-1 and Form 2439 amounts: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\") refuses them; constructed on classm.g28.2 (node engine/dist/main.js eval): sd.other_forms true refuses sd.line17, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a; amounts in connection with a Form 1099-R arise from a lump-sum distribution, which retirement.special still refuses after the income package's narrowing (\"a lump-sum distribution you may report on Form 4972\"; the narrowing touched only beneficiary annuities and property rollovers, PENDING-4). In scope line 11 is box 2b alone. Same ruling as Stage 20.",
+   "context": "2f7cce7ef8035fb803c7e1a42afb25d170624562d0408610b4cdbfd623e534f2"
   },
   {
    "printed": "11",
@@ -55,6 +76,13 @@
    "context": "2f7cce7ef8035fb803c7e1a42afb25d170624562d0408610b4cdbfd623e534f2"
   },
   {
+   "printed": "12",
+   "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
+   "model": "The program always enters $0, and no refusal excludes these dispositions. IRS: \"Enter the total of any unrecaptured section 1250 gain from sales (including installment sales) or other dispositions of section 1250 property held more than 1 year for which you didn't make an entry in Part I of Form 4797.\"",
+   "ruling": "Ruling: scope; i1040sd p. 13, line 12. Refusal located elsewhere; project retained. Section 1250 property sold directly (\"depreciable real property (section 1250 property)\" in sales.special) and installment sales or Form 4797 dispositions (sd.other_forms): sales.special refuses them per sale; constructed on classm.g28.2 (node engine/dist/main.js eval): sales[s1].special true refuses sd.line17, g28.line7, u1250.line18 and f1040.line7a. In scope line 12 is $0.00. Same ruling as Stage 20.",
+   "context": "2f7cce7ef8035fb803c7e1a42afb25d170624562d0408610b4cdbfd623e534f2"
+  },
+  {
    "printed": "14",
    "restated": "Add g28 line 1, g28 line 2, g28 line 3, and g28 line 4.",
    "model": "Adding 28% Rate Gain Worksheet lines 1 through 4 matches the total, but the restatement types line 14 as non-negative. Worksheet lines 1 and 3 are \"the total of all collectibles gain or (loss)\", so the IRS line 14 total can be a loss.",
@@ -62,10 +90,24 @@
    "context": "2f7cce7ef8035fb803c7e1a42afb25d170624562d0408610b4cdbfd623e534f2"
   },
   {
+   "printed": "14",
+   "restated": "Add g28 line 1, g28 line 2, g28 line 3, and g28 line 4.",
+   "model": "IRS says \"enter the total of lines 1 through 4 of the 28% Rate Gain Worksheet\", and lines 1 and 3 can be a collectibles \"(loss)\". The line is typed NonNegDollars, so a negative total cannot be represented. The \"Otherwise, enter -0-\" condition is equivalent, since lines 1 through 4 would be zero in that case.",
+   "ruling": "Ruling: representation; i1040sd p. 13, line 14, \"enter the total of lines 1 through 4 of the 28% Rate Gain Worksheet\". In scope g28 lines 1 to 3 are $0.00 (div.screen, behind sales.special and sd.other_forms) and line 4 is Form 1099-DIV box 2d, non-negative, so the total is never negative on a reachable return and NonNegDollars holds. The model agrees the \"Otherwise, enter -0-\" branch is equivalent. Same ruling as Stage 20.",
+   "context": "2f7cce7ef8035fb803c7e1a42afb25d170624562d0408610b4cdbfd623e534f2"
+  },
+  {
    "printed": "16",
    "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
    "model": "IRS line 16 says 'Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D'. The program enters $0, and no refusal excludes filers with carryovers, so a filer who has only distributions but carries over a loss gets a wrong line 16.",
    "ruling": "Ruling: scope; project retained. Form 4797, Form 6252, Schedule K-1, Form 2439 and Form 1099-R sources and prior-year carryovers are refused before this worksheet is used: `sd.count` refuses on `sd.other_forms` (\"Are there gains/losses from Forms 4797, 2439, 6252, 4684, 6781, 8824 or Schedule K-1?\") and on `sd.carryover` (\"Is there a capital loss carryover from the prior year?\"), and that refusal reaches Form 1040 line 7a through Schedule D lines 7, 15 and 16, so no return with those items is prepared. Lines 1–10, 12 and 16 are therefore zero, line 11 is Form 1099-DIV box 2b alone, and line 17 combines a non-negative line 14, a line 15 carried as a negative number (i1040sd p. 13, line 15: \"Enter the (loss), if any, from Schedule D, line 7. If Schedule D, line 7, is zero or a gain, enter -0-\") and a zero line 16, so \"Combine lines 14 through 16. If the result is a (loss), enter it as a positive amount. If the result is zero or a gain, enter -0-\" is the floored negation encoded. A positive carryover on line 16 must be subtracted when carryovers come into scope (recorded in the transcription rulings). No change to the data."
+  },
+  {
+   "printed": "16",
+   "restated": "Enter the amount from sd line 14.",
+   "model": "The restatement uses only Schedule D line 14. IRS: \"Enter your long-term capital loss carryovers from Schedule D, line 14; and Schedule K-1 (Form 1041), box 11, code D\". The K-1 (Form 1041) carryover is left out and no refusal excludes it.",
+   "ruling": "Ruling: scope; i1040sd p. 13, line 16, printed \"( )\". Refusal located elsewhere; project retained. The Schedule K-1 (Form 1041) box 11 code D carryover is a capital loss on a Schedule K-1: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\") refuses them; constructed on classm.g28.2 (node engine/dist/main.js eval): sd.other_forms true refuses sd.line17, g28.line7, u1250.line16, u1250.line18 and f1040.line7a. The project's line 16 is Schedule D line 14 held negative, the page's entry; the model raises the K-1 omission, not the sign (T-140). Same ruling as Stage 20.",
+   "context": "2f7cce7ef8035fb803c7e1a42afb25d170624562d0408610b4cdbfd623e534f2"
   },
   {
    "printed": "16",
@@ -114,6 +156,13 @@
    "context": "2f7cce7ef8035fb803c7e1a42afb25d170624562d0408610b4cdbfd623e534f2"
   },
   {
+   "printed": "4",
+   "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
+   "model": "The program always enters $0, and no refusal excludes installment sales. IRS: \"Enter the total unrecaptured section 1250 gain included on line 26 or line 37 of Form(s) 6252 from installment sales of trade or business property held more than 1 year.\"",
+   "ruling": "Ruling: scope; i1040sd p. 13, line 4. Refusal located elsewhere; project retained. Form 6252 installment sales: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\") refuses them; constructed on classm.g28.2 (node engine/dist/main.js eval): sd.other_forms true refuses sd.line17, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a. In scope line 4 is $0.00. Same ruling as Stage 20.",
+   "context": "2f7cce7ef8035fb803c7e1a42afb25d170624562d0408610b4cdbfd623e534f2"
+  },
+  {
    "printed": "5",
    "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
    "model": "IRS line 5 enters amounts 'reported to you on a Schedule K-1 from a partnership or an S corporation as unrecaptured section 1250 gain'; the program enters $0. No listed refusal excludes partnership or S corporation K-1s.",
@@ -124,6 +173,13 @@
    "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
    "model": "The line is forced to $0, and no refusal excludes K-1 amounts. The IRS text says \"Enter the total of any amounts reported to you on a Schedule K-1 from a partnership or an S corporation as 'unrecaptured section 1250 gain'.\"",
    "ruling": "Ruling: scope; i1040sd p. 13, Unrecaptured Section 1250 Gain Worksheet, line 5: \"Enter the total of any amounts reported to you on a Schedule K-1 from a partnership or an S corporation as “unrecaptured section 1250 gain”\". Schedule K-1 amounts are refused by sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? ...\") and by scope.schedule1 (\"... sales of business property (Form 4797); ... partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1) ...\") (checked: sd.other_forms true on classm.g28.2 gives sd.line7, sd.line14, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a refused). The refusal sits on Schedule D and the sale, not on this line's derivation, so the rendered English the reviewer saw did not name it. The line is shown only when Schedule D line 17 is Yes (BUG-0183), which the reviewer did not contest. No change to the data.",
+   "context": "2f7cce7ef8035fb803c7e1a42afb25d170624562d0408610b4cdbfd623e534f2"
+  },
+  {
+   "printed": "5",
+   "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
+   "model": "The program always enters $0, and no refusal excludes K-1 amounts. IRS: \"Enter the total of any amounts reported to you on a Schedule K-1 from a partnership or an S corporation as 'unrecaptured section 1250 gain'.\"",
+   "ruling": "Ruling: scope; i1040sd p. 13, line 5. Refusal located elsewhere; project retained. Schedule K-1 unrecaptured section 1250 gain (also refused by scope.schedule1): sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\") refuses them; constructed on classm.g28.2 (node engine/dist/main.js eval): sd.other_forms true refuses sd.line17, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a. In scope line 5 is $0.00. Same ruling as Stage 20.",
    "context": "2f7cce7ef8035fb803c7e1a42afb25d170624562d0408610b4cdbfd623e534f2"
   },
   {
@@ -163,6 +219,13 @@
    "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
    "model": "The line is forced to $0 instead of \"Enter the amount, if any, from Form 4797, line 8\". No refusal excludes Form 4797.",
    "ruling": "Ruling: scope; i1040sd p. 13, Unrecaptured Section 1250 Gain Worksheet, line 8: \"Enter the amount, if any, from Form 4797, line 8\". Form 4797 is refused by sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? ...\") and by scope.schedule1 (\"... sales of business property (Form 4797); ... partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1) ...\") (checked: sd.other_forms true on classm.g28.2 gives sd.line7, sd.line14, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a refused); with no Form 4797 line 7 gain the page says to skip lines 1 through 9 (i1040sd p. 13: \"If you aren’t reporting a gain on Form 4797, line 7, skip lines 1 through 9 and go to line 10.\"), and a zero on a skipped line is permitted. The refusal sits on Schedule D and the sale, not on this line's derivation, so the rendered English the reviewer saw did not name it. The line is shown only when Schedule D line 17 is Yes (BUG-0183), which the reviewer did not contest. No change to the data.",
+   "context": "2f7cce7ef8035fb803c7e1a42afb25d170624562d0408610b4cdbfd623e534f2"
+  },
+  {
+   "printed": "8",
+   "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
+   "model": "The program always enters $0, and no refusal excludes Form 4797. IRS: \"Enter the amount, if any, from Form 4797, line 8.\"",
+   "ruling": "Ruling: scope; the same. Refusal located elsewhere; project retained. Form 4797 line 8 amounts: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\") refuses them; constructed on classm.g28.2 (node engine/dist/main.js eval): sd.other_forms true refuses sd.line17, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a. In scope line 8 is $0.00. Same ruling as Stage 20.",
    "context": "2f7cce7ef8035fb803c7e1a42afb25d170624562d0408610b4cdbfd623e534f2"
   },
   {

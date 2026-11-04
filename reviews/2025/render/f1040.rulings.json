@@ -71,6 +71,13 @@
   {
    "printed": "1a",
    "restated": "Add person.box1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "The restatement adds every W-2 box 1 amount with no exclusion. The instructions remove two kinds: 'If you earned wages while you were an inmate in a penal institution... Do not report these wages on line 1a' and pension from a nonqualified deferred compensation or nongovernmental 457 plan reported in box 1, which 'is reported on Schedule 1, line 8t.' No refusal covers either case.",
+   "ruling": "Ruling: scope; the model says line 1a keeps two kinds of box 1 wages off the line (i1040gi pp. 23-24). Wages earned while an inmate (Schedule 1 line 8u) and a pension from a nonqualified deferred compensation or nongovernmental section 457 plan (line 8t) are both named in the s1.line8_other screen, which refuses Schedule 1, so line 1a never completes for those filers. Same reading as the earlier rounds.",
+   "context": "8bf19ad64c3e9ee47144145905f7b9345b7aef724523c2f16e45741f7abae33e"
+  },
+  {
+   "printed": "1a",
+   "restated": "Add person.box1 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.",
    "model": "The sum of W-2 box 1 matches 'Enter the total amount from Form(s) W-2, box 1', including a spouse's amount on a joint return. However, the IRS also says inmate wages and nonqualified or section 457 pensions in box 1 do not go on line 1a, and a married-filing-separately filer in a community property state must follow state law; the material shown does not reveal whether a screen handles these cases.",
    "ruling": "Ruling: scope; the model asks whether the cases i1040gi keeps off line 1a are screened. i1040gi p. 23, \"If you earned wages while you were an inmate in a penal institution, report these amounts on Schedule 1, line 8u. Do not report these wages on line 1a\". The nonqualified deferred compensation and section 457 pension sentence is on p. 24. Both are behind s1.line8_other, whose question names \"a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (8t); wages earned while incarcerated (8u)\", and Schedule 1 refuses on it. Married filing separately is refused for the whole return (s3.mfs). A married head of household filer in a community property state is refused by household.hoh_community_property. A registered domestic partner who lived in a community property state and does not file jointly is refused at line 1a itself (household.rdp_community_property, i1040gi p. 23, \"A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income\"). Within scope, box 1 holds none of these amounts. Same reading as the round-2 ruling of this line.",
    "context": "c95f5c394958abe4c7136dee37a4c7edc82896a723fcf892637bdbbd4223adf0"
@@ -237,6 +244,13 @@
    "model": "The gate tests only expenses paid and dependent status, but the IRS says you cannot claim the credit if 'Your filing status is married filing separately.' The program's Form 8863 line restatements are missing, so the text does not show whether lines 2 through 8 yield zero or refuse for that status.",
    "ruling": "Ruling: scope — scope.ready refuses s3.mfs for the whole return (i1040gi p. 14). f8863.line3 through line8 perform the income limit/phaseout. The narrow f8863.eligible helper does not purport to decide every restriction; the missing dependent restatements are a review-context limitation.",
    "context": "392795f9530c446fd88f9849fac96e36c9e282435dcb64bb7a307d17a103d941"
+  },
+  {
+   "printed": "29",
+   "restated": "Choose — [f8863 helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = true → f8863 line 8] [f8863 helper \"An education credit can be claimed on this return: expenses paid, and neither you nor your spouse is claimed as a dependent\" = false → f8863 helper \"Zero\"]",
+   "model": "The gate tests only that expenses were paid and no dependency claim, while the IRS text says 'You cannot claim an education credit... if... Your filing status is married filing separately'. Form 8863 line 2 gives no amount for married filing separately, and its internal handling is not shown, so whether line 8 is zero for married filing separately cannot be told from the text given.",
+   "ruling": "Ruling: scope; married filing separately is refused for the whole return by s3.mfs through scope.ready (i1040gi p. 14; i8863 p. 3, Who cannot claim a credit), so f8863.eligible never meets such a filer; f8863.line3 to line8 apply the income limit. Same reading as the earlier rounds.",
+   "context": "8bf19ad64c3e9ee47144145905f7b9345b7aef724523c2f16e45741f7abae33e"
   },
   {
    "printed": "2b",

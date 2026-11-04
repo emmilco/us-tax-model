@@ -87,15 +87,41 @@ form:
       source: 'Does any of these apply to this property: you disposed of it or converted it to personal use in 2025; you acquired
         it in a like-kind exchange or an involuntary conversion, from a related person, or by gift or inheritance; it is real
         property (a building or a structural component, other than qualified improvement property) or land; it is a car, truck
-        or other vehicle (enter vehicles separately); you depreciate it under ADS, under an elected straight line or 150%
-        declining balance method, or by a method other than the MACRS percentage tables; its basis was adjusted for anything
-        other than depreciation (for example a casualty loss); it is in a general asset account; you amortize it; it is used
+        or other vehicle (enter vehicles separately); you must depreciate it under ADS (for example, it is imported property
+        covered by an executive order of the President of the United States; it is used predominantly in a farming business
+        and placed in service in a tax year in which you made an election under section 263A(d)(3) not to have the uniform
+        capitalization rules apply; it is qualified improvement property held by an electing real property trade or business;
+        or it has a recovery period of 10 years or more and is held by an electing farming business), or you elected ADS, the
+        straight line method or the 150% declining balance method for it, or you depreciate it by a method other than the MACRS
+        percentage tables; it is a film, videotape or sound recording; it is computer software, unless you placed it in service
+        in 2025 and deduct all of its business cost in 2025 through section 179 and the special depreciation allowance; it
+        is an initial clearing and grading land improvement for gas utility property or for electric utility transmission and
+        distribution plants; its basis was adjusted for anything other than depreciation (for example a casualty loss), or is
+        reduced by a credit or deduction other than the section 179 deduction and the special depreciation allowance (for
+        example the section 179D deduction for energy efficient commercial building property, the deduction for removal of
+        barriers to the disabled and the elderly, the disabled access credit, the enhanced oil recovery credit, the credit
+        for alternative fuel vehicle refueling property, the credit for employer-provided childcare facilities and services,
+        or a basis adjustment for investment credit property or advanced manufacturing investment credit property); it is
+        in a general asset account; you amortize it; it is used
         predominantly outside the United States, or is tax-exempt use or tax-exempt bond financed property; it was placed
         in service before 2005; its business use percentage has changed since you placed it in service; it is qualified
         reuse and recycling property (machinery or equipment used exclusively to collect, distribute or recycle reuse and
         recyclable materials, section 168(m)); you acquired it before September 28, 2017; it is property with a long
-        production period, an aircraft, or qualified production property; it is property described in section 168(k)(9)(A)
-        or 168(k)(9)(B); it is qualified rent-to-own property (section 168(i)(14)), energy property specified in section
+        production period, an aircraft, or qualified production property; you claim a special depreciation allowance for
+        it in 2025 and its original use did not begin with you (original use is the first use to which the property is put,
+        whether or not by you, so property someone else used before you acquired it is used property, and so is reconditioned
+        or rebuilt property you acquired unless the cost of its used parts is not more than 20% of its total cost); you claim a special
+        depreciation allowance for it in 2025 and it is property described in section 168(k)(9)(A) or 168(k)(9)(B), that is,
+        property primarily used in a trade or business of furnishing or selling electrical energy, water or sewage disposal
+        services, gas or steam through a local distribution system, or transportation of gas or steam by pipeline,
+        whose rates are established or approved by a State or political subdivision, an agency or instrumentality of
+        the United States, a public service or public utility commission or similar body of a State or political
+        subdivision, or the governing or ratemaking body of an electric cooperative, or property used in a trade or
+        business that has had
+        floor plan financing indebtedness (a loan used to buy motor vehicles, boats, farm machinery or equipment, or
+        trailers or campers held for sale or lease, and secured by them) whose interest was taken into account under
+        section 163(j)(1)(C) in figuring the business interest expense limit; it is qualified rent-to-own property
+        (section 168(i)(14)), energy property specified in section
         168(e)(3)(B)(vi), a motorsports entertainment complex (section 168(i)(15)), a natural gas gathering line (section
         168(i)(17)), qualified smart electric meter or qualified smart electric grid system property, or electric transmission
         property specified in section 168(e)(3)(E)(v); your 2025 tax year, or any tax year since you placed it in service,
@@ -107,7 +133,14 @@ form:
     cite:
       doc: i4562
       locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 7, Exceptions, "Property described in section
-        168(k)(9)(A) or 168(k)(9)(B)"; pp. 10-11, Column (a)—Classification of property and Column (f)—Method; p. 14,
+        168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
+        p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
+        first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
+        Use the straight line method over 36 months"; p. 9, "However, MACRS does not apply to films, videotapes, and sound
+        recordings"; p. 10, "Initial clearing and grading land improvements for gas utility property"; p. 11, Column (c),
+        "The following are examples of some credits and deductions that reduce the basis for depreciation"; p. 12, "The
+        following types of property must be depreciated under ADS"; pp. 10-11, Column (a)—Classification of property and
+        Column (f)—Method; p. 14,
         Lines 26 and 27, "Generally, a qualified business use is any use in your trade or business. However, it does not
         include any of the following"; p946 p. 37, Rules Covering the Use of the Tables, "You cannot use the percentage
         tables for a short tax year", and p. 46, Property Placed in Service Before a Short Tax Year
@@ -171,12 +204,15 @@ form:
     expr:
       op: input
       source: 'The percentage of this property''s use that is for this business (a whole number from 1 to 100). For listed
-        property you converted from personal use to business use during 2025, figure the percentage only for the months
-        you used it in the business, multiply it by the number of those months and divide by 12.'
+        property, measure the use by the time the property is actually used (rather than merely being available for use),
+        in the most appropriate unit of time. For listed property you converted from personal use to business use during
+        2025, figure the percentage only for the months you used it in the business, multiply it by the number of those months
+        and divide by 12.'
     cite:
       doc: i4562
       locator: p. 11, Column (c)—Basis for depreciation, "multiply the cost or other basis of the property by the percentage
-        of business/investment use"; p. 14, Column (c)—Business/investment use percentage, "If during the tax year you
+        of business/investment use"; p. 14, Column (c)—Business/investment use percentage, "allocate the use based on the
+        most appropriate unit of time the property is actually used (rather than merely being available for use)" and "If during the tax year you
         convert property used solely for personal purposes to business/investment use (or vice versa), figure the percentage
         of business/investment use only for the number of months you use the property in your business or for the production
         of income"
@@ -305,8 +341,9 @@ form:
       remedy: Listed property used 50% or less for business is depreciated under ADS and is outside this tool.
       cite:
         doc: i4562
-        locator: p. 14, Lines 26 and 27; p. 15, Column (f), "used 50% or less ... straight line method over its ADS recovery
-          period"
+        locator: p. 14, Lines 26 and 27; p. 15, Column (f)—Recovery period, "For property placed in service after 1986 and
+          used 50% or less in a qualified business use, depreciate the property using the straight line method over its ADS
+          recovery period"
   - id: asset.is2025
     printed: (helper)
     label: Placed in service in 2025
@@ -475,19 +512,44 @@ form:
         bridges and fences), property held for investment, and property you purchased and lease to others, unless you manufactured
         or produced it, or the lease term is less than 50% of its class life and for the first 12 months after the transfer
         to the lessee your deductions for it as trade or business expenses (other than rents and reimbursed amounts) are more
-        than 15% of its rental income. If you paid for it with cash and a trade-in, the elected cost cannot be more than the
-        cash you paid.'
+        than 15% of its rental income. Also enter zero for property used by a tax-exempt organization (unless used in connection
+        with the production of income subject to the tax on unrelated trade or business income) and property used by a governmental
+        unit or a foreign person or entity (unless used under a lease with a term of less than 6 months). If you paid for it
+        with cash and a trade-in, the elected cost cannot be more than the cash you paid.'
     cite:
       doc: i4562
       locator: p. 5, Line 6, Column (c)—Elected cost; pp. 2-3, Section 179 property, "Section 179 property is property
         that you acquire by purchase for use in the active conduct of your trade or business", "Property held for investment
         (section 212 property)" and "for taxpayers other than a corporation, this election does not apply to any section 179
         property you purchased and leased to others unless"; p946 p. 17, "Land and land improvements do not qualify as section
-        179 property" and "If you buy qualifying property with cash and a trade-in, its cost for purposes of the section
-        179 deduction includes only the cash you paid"
+        179 property", "you cannot elect the section 179 deduction for the following property" and "If you buy qualifying
+        property with cash and a trade-in, its cost for purposes of the section 179 deduction includes only the cash you paid"
+  - id: asset.not179
+    printed: (helper)
+    label: This property is not section 179 property
+    type: Bool
+    expr:
+      op: input
+      source: 'Is this property one that does not qualify for the section 179 deduction: a land improvement (such as a swimming
+        pool, paved parking area, wharf, dock, bridge or fence); property held for investment; property you purchased and
+        lease to others, unless you manufactured or produced it, or the lease term (including options to renew) is less than
+        50% of its class life and for the first 12 months after the transfer to the lessee your business deductions for it
+        (other than rents and reimbursed amounts) are more than 15% of its rental income; property used by a tax-exempt organization,
+        unless used in connection with the production of income subject to the tax on unrelated trade or business income;
+        or property used by a governmental unit or a foreign person or entity, unless used under a lease with a term of less
+        than 6 months?'
+    cite:
+      doc: p946
+      locator: p. 17, What Property Does Not Qualify?, "Land and land improvements do not qualify as section 179 property",
+        "Even if the requirements explained earlier under What Property Qualifies? are met, you cannot elect the section 179
+        deduction for the following property" and Leased property; i4562 p. 2, "Property held for investment (section 212
+        property)"; i4562 p. 3, "for taxpayers other than a corporation, this election does not apply to any section 179
+        property you purchased and leased to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179
+        property you placed in service during the tax year"
   - id: asset.s179_bad
     printed: (gate)
-    label: The section 179 election is more than the business cost, or the property is not used more than 50% in the business
+    label: The section 179 election is more than the business cost, the property is not used more than 50% in the business,
+      or it is not section 179 property
     type: Bool
     expr:
       op: test
@@ -506,10 +568,15 @@ form:
           eq:
           - asset.over_half
           - const: false
+        - op: test
+          eq:
+          - asset.not179
+          - const: true
     cite:
       doc: i4562
       locator: p. 3, Part I, "placed in service during the tax year and used predominantly (more than 50%) in your trade or
-        business"; p. 5, Line 6, Column (c)
+        business"; p. 5, Line 6, Column (c); p946 p. 17, "Land and land improvements do not qualify as section 179 property"
+        and "you cannot elect the section 179 deduction for the following property"
   - id: asset.after179
     printed: (helper)
     label: Basis less the section 179 election
@@ -524,11 +591,13 @@ form:
         of the property any credits and deductions allocable to the property ... Section 179 expense deduction"
     refuses:
     - when: asset.s179_bad
-      form: Section 179 election above the business cost, or on property used 50% or less in the business
-      remedy: A section 179 election must not exceed the business cost and needs more than 50% business use.
+      form: Section 179 election above the business cost, on property used 50% or less in the business, or on property that
+        is not section 179 property
+      remedy: A section 179 election must not exceed the business cost, needs more than 50% business use, and is allowed
+        only for section 179 property.
       cite:
         doc: i4562
-        locator: p. 3, Part I; p. 5, Line 6, Column (c)
+        locator: p. 3, Part I; p. 5, Line 6, Column (c); p946 p. 17, What Property Does Not Qualify?
   - id: asset.after_jan19
     printed: (helper)
     label: Acquired after January 19, 2025
@@ -1125,23 +1194,31 @@ form:
         you are making the election"
   - id: asset.is_section179
     printed: (helper)
-    label: This property is section 179 property (qualified improvement property only when you elect to expense it)
+    label: This property is section 179 property (qualified improvement property only when you elect to expense it; not
+      a land improvement or excepted property)
     type: Bool
     expr:
       op: test
-      any:
+      all:
       - op: test
-        ne:
-        - asset.class
-        - const: cqip
+        any:
+        - op: test
+          ne:
+          - asset.class
+          - const: cqip
+        - op: test
+          gt:
+          - asset.s179
+          - asset.zero
       - op: test
-        gt:
-        - asset.s179
-        - asset.zero
+        eq:
+        - asset.not179
+        - const: false
     cite:
       doc: i4562
       locator: pp. 2-3, Special rules for qualified section 179 real property, "You can elect to treat certain qualified real
-        property placed in service during the tax year as section 179 property"
+        property placed in service during the tax year as section 179 property"; p946 p. 17, "Land and land improvements
+        do not qualify as section 179 property" and "you cannot elect the section 179 deduction for the following property"
   - id: asset.cost179_real
     printed: (helper)
     label: The business cost, when this property is section 179 property

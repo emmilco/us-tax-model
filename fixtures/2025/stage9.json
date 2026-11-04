@@ -9333,7 +9333,7 @@
         "s8812:refuse"
       ],
       "evidence": "synthetic refusal regression",
-      "evidence_note": "Inputs are stage9.eic.one_child.line5 with the filer answering that an EIC, child tax credit, additional child tax credit or credit for other dependents for an earlier year was reduced or disallowed other than for a math or clerical error (or that a 2- or 10-year disallowance period applies): Form 8862 and the disallowance period are outside this tool (i1040gi p. 43, Form 8862, who must file), so the EIC line and Schedule 8812 line 12 are refused and Form 1040 lines 19, 27a and 37 follow. The refused values are the evaluator's.",
+      "evidence_note": "Inputs are stage9.eic.one_child.line5 with the filer answering that an EIC, child tax credit, additional child tax credit or credit for other dependents for an earlier year was reduced or disallowed other than for a math or clerical error (or that a 2- or 10-year disallowance period applies): Form 8862 and the disallowance period are outside this tool (i1040gi p. 43, Form 8862, who must file), so the EIC line and Schedule 8812 line 12 are refused and Form 1040 lines 19, 27a and 37 follow. The refused values are the evaluator's. T-101: the Form 8862 refusals now depend on the credit being figured (household.ctc_disallowed_claim: Schedule 8812 line 8 more than line 11; household.eic_disallowed_claim: EIC Steps 1 to 5 passed).",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -9518,7 +9518,7 @@
       "expect": {
         "eic.credit": {
           "kind": "refusal",
-          "gate": "household.credit_disallowed",
+          "gate": "household.eic_disallowed_claim",
           "form": "Form 8862 and the EIC disallowance period (Form 8862, who must file)",
           "remedy": "Your EIC, child tax credit, additional child tax credit or credit for other dependents for an earlier year was reduced or disallowed, or you are in a disallowance period; Form 8862 and the disallowance period are outside this tool.",
           "cite": {
@@ -9531,7 +9531,7 @@
         },
         "f1040.line27a": {
           "kind": "refusal",
-          "gate": "household.credit_disallowed",
+          "gate": "household.eic_disallowed_claim",
           "form": "Form 8862 and the EIC disallowance period (Form 8862, who must file)",
           "remedy": "Your EIC, child tax credit, additional child tax credit or credit for other dependents for an earlier year was reduced or disallowed, or you are in a disallowance period; Form 8862 and the disallowance period are outside this tool.",
           "cite": {
@@ -9544,7 +9544,7 @@
         },
         "s8812.line12": {
           "kind": "refusal",
-          "gate": "household.credit_disallowed",
+          "gate": "household.ctc_disallowed_claim",
           "form": "Form 8862 and the CTC, ACTC and ODC disallowance period (Form 8862 may be required)",
           "remedy": "Your EIC, child tax credit, additional child tax credit or credit for other dependents for an earlier year was reduced or disallowed, or you are in a disallowance period; Form 8862 and the disallowance period are outside this tool.",
           "cite": {
@@ -9557,7 +9557,7 @@
         },
         "f1040.line19": {
           "kind": "refusal",
-          "gate": "household.credit_disallowed",
+          "gate": "household.ctc_disallowed_claim",
           "form": "Form 8862 and the CTC, ACTC and ODC disallowance period (Form 8862 may be required)",
           "remedy": "Your EIC, child tax credit, additional child tax credit or credit for other dependents for an earlier year was reduced or disallowed, or you are in a disallowance period; Form 8862 and the disallowance period are outside this tool.",
           "cite": {
@@ -9570,7 +9570,7 @@
         },
         "f1040.line37": {
           "kind": "refusal",
-          "gate": "household.credit_disallowed",
+          "gate": "household.ctc_disallowed_claim",
           "form": "Form 8862 and the CTC, ACTC and ODC disallowance period (Form 8862 may be required)",
           "remedy": "Your EIC, child tax credit, additional child tax credit or credit for other dependents for an earlier year was reduced or disallowed, or you are in a disallowance period; Form 8862 and the disallowance period are outside this tool.",
           "cite": {

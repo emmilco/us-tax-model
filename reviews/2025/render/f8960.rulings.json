@@ -29,6 +29,13 @@
    "context": "c4f85c56d7ef5d80b020b878173f865283e4278c1f38b80b7aea599a80cf1ba9"
   },
   {
+   "printed": "5a",
+   "restated": "Enter the amount from f1040 line 7a.",
+   "model": "The instructions say to combine 'Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4'. The restatement uses only line 7a and has no refusal for Schedule 1 line 4 gains or losses. An example that could slip through is a Form 4797 ordinary loss on section 1244 stock.",
+   "ruling": "Ruling: scope; the model says the restatement takes only Form 1040 line 7a. i8960 p. 9, Line 5a: \"Calculate and enter the amount of net gain or loss from the disposition of property by combining the following amounts from your properly completed return. • Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4.\" Schedule 1 line 4 (Form 4797, and a Form 4684 gain entered there) is refused by scope.schedule1, which names \"sales of business property (Form 4797)\" and opens \"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately\"; so on every computed return Schedule 1 line 4 is zero and line 5a is Form 1040 line 7a. Other dispositions adjusted on lines 5b and 5c are refused by f8960.unsupported. The credits-misc package changed only that screen's list (section 404(k) dividends), not line 5a. Same reading as the earlier rounds.",
+   "context": "8b691fd6362cc604a63bc0bfdec4e1c13269abfba75635efa19f783356f7e34d"
+  },
+  {
    "printed": "5b",
    "restated": "Enter the amount from helper \"Year parameter sales.zero\".",
    "model": "Net Gains and Losses Worksheet line 2(h) says 'Enter the amount reported on line 2(i) of this worksheet from your prior tax year return calculations', and it applies unconditionally. The carryforward_adj refusal fires only when line 15 > $0. When modified AGI is at or below the threshold and a prior-year 2(i) amount exists, the program enters 0 on line 5b instead of that amount.",

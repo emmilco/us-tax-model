@@ -1,0 +1,17 @@
+{
+ "note": "Proposed verdicts for reviews/2025/consumers.json (not edited by this package). Also remove the stale baseline entry consumer:person.blind@i1040gi:p33 (person.blind now cites i1040gi p. 33 itself) and drop the baseline entries for p34 and p35 once these rulings are added.",
+ "rulings": {
+  "consumer:person.blind@i1040gi:p34": {
+   "verdict": "same",
+   "question_phrase": "Were you blind at the end of 2025? Answer yes if you were totally blind as of December 31, 2025. If you weren't totally blind, answer yes only if you have a statement certified by your eye doctor",
+   "source_phrase": "i1040gi p. 34, the exceptions (\"even if you were born before January 2, 1961, or were blind\") and the Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind (read by sa.boxes_blind)",
+   "reason": "The chart counts the blindness boxes of line 12d; the boxes are checked by the p. 33 definition of blind at the end of 2025, which the question now states in full. No other sense of blind is used on the page."
+  },
+  "consumer:person.blind@i1040gi:p35": {
+   "verdict": "same",
+   "question_phrase": "Were you blind at the end of 2025? Answer yes if you were totally blind as of December 31, 2025. If you weren't totally blind, answer yes only if you have a statement certified by your eye doctor",
+   "source_phrase": "i1040gi p. 35, the end of the chart and the Standard Deduction Worksheet for Dependents, \"You are blind\" and \"Spouse is blind\" (read by sa.boxes_blind)",
+   "reason": "The worksheet's boxes are the line 12d boxes, checked by the p. 33 definition the question states."
+  }
+ }
+}

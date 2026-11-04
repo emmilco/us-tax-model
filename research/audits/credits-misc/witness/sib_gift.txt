@@ -1,0 +1,27 @@
+
+## gift.public_securities — Is this group publicly traded securities (listed on a recognized stock exchange whose quotations are published daily, regularly traded on a national or regional over-the-counter market, or mutual fund shares quoted daily in a national newspaper of general circulation)?
+
+(a) lines that read it, through helpers (1)
+  gift.section_b
+
+(c) predicates testing the same enum values (1)
+  gift.section_b = False
+
+(b) lines and questions anchored on the same doc/page/heading (4)
+  gift.allowed
+  gift.deduction
+  gift.section_b
+  gift.special
+
+## gift.special — Does this group need an appraisal or other special treatment: a deduction over $5,000 (before any income limit), or property worth more than $5,000, for one item or for similar items (items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land or buildings) given to all donees together (other than publicly traded securities: listed on a recognized stock exchange whose quotations are published daily, regularly traded on a national or regional over-the-counter market, or mutual fund shares quoted daily in a national newspaper), a noncash contribution reaching you through a Schedule K-1, vehicles, pass-through entity interests, intellectual property, inventory, conservation or partial interests, property with restrictions on its use, or a clothing or household item over $500 not in good used condition?
+
+(a) lines that read it, through helpers (1)
+  gift.allowed
+
+(c) predicates testing the same enum values (0)
+
+(b) lines and questions anchored on the same doc/page/heading (4)
+  gift.allowed
+  gift.deduction
+  gift.public_securities
+  gift.section_b

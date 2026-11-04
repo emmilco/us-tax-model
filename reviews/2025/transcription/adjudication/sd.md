@@ -2,13 +2,52 @@
 
 Method: `README.md` in this directory.
 
+Backlog round (fresh replies of 2026-11-03, after the income and tooling packages): triage `../triage/sd.json` and
+`../triage/sd.deepseek.json` (executable-triage-v2, both evaluated; 1,495 fixtures, 500 generated returns, seed 20261026,
+120 partial records; 2,115 comparisons; DeepSeek invalid_lines `sd.line18`, `sd.line20`). Witnesses were listed with
+the cap lifted (scratch `/tmp/adj-bklg-income/full/`, same counts). The subject changed only by the `sd.filed` citation
+(doc i1040gi) and, through Form 8949, the new `sales.wash_bad` gate; the prompt now carries the T-140 note that lines 6
+and 14 hold the carryover negative. Pages given are unchanged (still not i1040sd p. 2). Full ruling text:
+`.transcription/proposed/bklg/transcription.sd[.deepseek].json`. Render sd had no open sections.
+
+## Backlog round
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | 6, 14 | scope | 2,057/2,115 agree; 18 project-refuses (`sd.other_forms`), 40 project-unknown; no value | f1040sd p. 1, lines 6, 14 "( )" | With the T-140 note the candidate holds the carryover negative, the same as the project. The 26 and 22 Stage 20 sign-flip differences are gone. |
+| claude | transcription | 20 | scope | 2,070/2,115; 44 project-refuses, 1 project-unknown; no value | f1040sd p. 2, line 20 | The same predicate over its own lines 18 and 19, which now agree. The 4 Stage 20 value differences (positive line 14 into g28.line5) are gone. |
+| claude | transcription | sd.filed | model error | 2,027/2,115; 4 value (classm.f8863.3 and .deepseek, refused; stage20.line21_at_both_bounds, stage20.mut.line21_below_limit, incomplete), 43 project-refuses, 41 project-unknown | i1040gi p. 31, Exception 1; i1040sd p. 10, "Otherwise, you don’t have any carryovers" | Files whenever the gate is Yes, even with lines 6 and 14 at $0. None of the 4 is on a completed return. |
+| claude | transcription | sd.investment_election | scope | 2,039/2,115; 65 candidate-refuses (all on refused returns), 9 project-refuses, 2 project-unknown | i1040sd p. 15, line 3 | Both give line 4g. |
+| claude | transcription | sd.to1040 | scope | 2,043/2,115; 71 project-refuses, 1 project-unknown | f1040sd p. 2, line 16 | The extra zero branch is equal. |
+| claude | transcription | sd.net_gain | representation | 2,043/2,115; only cited gates, 1 withheld div.box2c | i1040gi p. 38, line 3 | min(max(15, 0), max(16, 0)) = max(min(15, 16), 0). |
+| claude | transcription | 1a–10, columns (d)(e)(g)(h) (32 lines) | scope | 2,025 or 2,026 (1a(g), 8a(g): 1,960) of 2,115; 49–71 project-refuses, 40–84 project-unknown; no value | f1040sd p. 1, lines 1a–10 | Digital boxes G–L are refused by `sales.one` (T-003). No refusal is `sales.wash_bad`. |
+| deepseek | transcription | sd.net_gain | model error | 690/2,115; 89 value (candidate always larger; 32 on completed returns, e.g. classm.f1040.2 $1,237.00 against $50,930.00, classm.s8812.3.deepseek $71,995.00 against $156,839.00), 1,240 candidate-unknown | i1040gi p. 38, line 3, "the smaller of line 15 or line 16" | Takes line 16 alone and ignores line 15. |
+| deepseek | transcription | sd.line19 | model error | 808/2,115; 9 value, all line 17 No (completed: generated 162 $6,330.85, 188 $9,215.81), 1,240 candidate-unknown | f1040sd p. 2, line 17, "No. Skip lines 18 through 21" | No line 17 guard. |
+| deepseek | transcription | sd.line18, 20 | model error | not executed: `sd.sd.__type_gate_6` (`sales.special` in `refuses`) | host type check | Rules the declaration. Line 18's constant 0 misses the box 2d rule on i1040sd p. 2, which was not given. |
+| deepseek | transcription | sd.filed | model error | 148/2,115; 1,870 candidate-unknown, "cycle at sd.filed" (332 completed) | i1040gi p. 31, Exception 1 | Copies qdcg.schedule_d_filed, which copies sd.filed, so the line is circular. |
+| deepseek | transcription | sd.to1040, 21 | model error | 779/2,115; 1,240 candidate-unknown (134 completed), no value | f1040sd p. 2, lines 16, 21; i1040sd p. 10 | The expressions are algebraically the project's. The candidate's lines 6 and 14 declare `refuses: [clcw.spouse_screen]`, which needs the screen on every gate-No return (all 1,240 witnesses). |
+| deepseek | transcription | sd.investment_election | scope | 2,037/2,115; 74 project-refuses (43 `f4952.bad_election`; 1 `sales[s3].wash_bad`, generated 310), 4 project-unknown | i1040sd p. 15, line 3 | Copies the raw line 4g; the project's election carries the cited gates. |
+| deepseek | transcription | 4, 5, 11, 12 | representation | 2,115/2,115 agree | f1040sd p. 1 | 0 − 0 against 0. |
+| deepseek | transcription | 1a–10, columns (d)(e)(g)(h) (32 lines) | scope | 2,000 or 2,001 of 2,115; 70–71 project-refuses, 44 project-unknown; no value | f1040sd p. 1, lines 1a–10 | Digital boxes G–L are refused by `sales.one` (T-003). |
+
+T-140 check: with the sign note in the prompt, Claude's lines 6 and 14 hold the carryover negative and no sd line has
+a sign-convention value difference: lines 7 and 15 agree, and line 20's value differences are gone. DeepSeek's lines 6
+and 14 also agree by expression, but their `refuses: [clcw.spouse_screen]` declarations make every downstream DeepSeek
+line unknown on gate-No returns.
+
+Package check: the only sd.yaml change is the `sd.filed` citation; no sd value changed. The new `sales.wash_bad` gate
+appears once among the sd differences: a project refusal on generated 310, an invalid generated entry that the
+generator keeps raw on purpose. No error was introduced.
+
+Findings: none.
+
 Stage 20 (fresh replies of 2026-10-27 after the capital loss carryover): triage `../triage/sd.json` and
 `../triage/sd.deepseek.json` (executable-triage-v2, both evaluated; 1,159 fixtures, 500 generated returns, seed 20261026,
 120 partial records; 1,779 comparisons). The reviewers had f1040sd pp. 1–2, i1040sd pp. 10, 11, 12, 15 and i1040gi
 pp. 31, 38 (not i1040sd p. 2). Full ruling text: `.transcription/proposed/stage20/transcription.sd[.deepseek].json`
 and `render.sd.deepseek.json`. Render sd (Claude) had no open sections.
 
-## Stage 20
+## Stage 20 (superseded subject)
 
 | family | kind | line | class | evidence | deciding source | reason |
 | --- | --- | --- | --- | --- | --- | --- |

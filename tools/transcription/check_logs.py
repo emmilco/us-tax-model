@@ -63,6 +63,23 @@ def classm_forms():
     return out
 
 
+def transcription_forms():
+    """Forms the transcription review covers: transcribe.py makes no model call for a form with no
+    source-defined computed target whose adapter contract is checked separately, so none is expected."""
+    import transcribe
+    import adapter_contracts
+    out = []
+    for fid in forms:
+        doc = transcribe.load_form(fid)
+        targets = transcribe.exported_lines(doc) + [l for l in doc["lines"]
+            if l["printed"] not in transcribe.HELPER_PRINTED and l["expr"].get("op") != "input"]
+        if not targets and adapter_contracts.excluded_ids(fid, Y):
+            print(f"transcription: {fid} not expected: no source-defined computed target (adapter contract checked separately)")
+            continue
+        out.append(fid)
+    return out
+
+
 def check(kind, logs, optional_env, expected=None, family=families.DEFAULT, required=True):
     """One log per form of the family under `logs`; no open ruling; every source hash current;
     the subject it reviewed (subjects.py) unchanged. For an optional family a missing log is
@@ -170,7 +187,7 @@ def check_human():
     return bool(result["problems"])
 
 
-failed = check_kind("transcription")
+failed = check_kind("transcription", transcription_forms())
 failed = check_kind("render") or failed
 failed = check_kind("classm", classm_forms()) or failed
 failed = check_human() or failed

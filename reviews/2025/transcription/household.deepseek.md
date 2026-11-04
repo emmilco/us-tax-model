@@ -4,24 +4,24 @@ Second transcription of `Household facts for dependents and head of household` b
 
 | field | value |
 | --- | --- |
-| date | 2026-11-01 |
+| date | 2026-11-03 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | d7bcff0582d13284000fde1202a0a6c7ad68da9fa35f67cd386b49cb1e9911f5 |
+| prompt sha256 | fde7c34de787b3e097f1f957be15c7243b4bc3ac61d8d5a3cebb109b1cda6232 |
 | prompt policy | source-only-computation-v2 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
 | complete input context | pass |
-| required input context sha256 | 4d8eb628ca6285669d98d11acb5d12dc8d923da87657e86b584c7922cb8618bc |
+| required input context sha256 | 0d723ac2c5a742d73a07a9b465bf5a493205d180cb92f346a16ad01446d1ac3b |
 | type validation policy | project-expression-types-v3 |
-| model type validation | fail |
+| model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 5466d64fb38b72b9dac93e0afe2ba271ce519579f173651c0c7af2c1e2eeae23 |
-| printed lines compared | 17 |
-| agree / disagree / missing | 4 / 13 / 0 |
+| subject sha256 | 83f6ac4700c277df401354d9d0297fddd9023575ef445ec5fb06560f21cdecca |
+| printed lines compared | 19 |
+| agree / disagree / missing | 4 / 15 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -31,14 +31,8 @@ Second transcription of `Household facts for dependents and head of household` b
 | f1040 | 2025; created 2025-09-05 | 1, 2 | whole document | ac32f00aed489e0722d0b409c0eb12915801d66f3a2fab05bc8391af61426383 | - | 72926cc2b256a68592e6cf0f2aa384ef8371eec968a0c8c62e050edf5bfea76a |
 | i1040gi | 2025; printed date 2026-02-25 | 13, 14, 15, 17, 18, 19, 23, 39, 40, 41, 43, 44, 66 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 13, 14, 15, 17, 18, 19, 23, 39, 40, 41, 43, 44, 66 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
 | i8889 | 2025 | 4, 7 | cited pages | bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c | 4, 7 | 533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7 |
+| i1040s8812 | 2025; printed date 2026-01-23 | 2 | cited pages | fd50a5266cc20aa5a31de0535658793f75c7abbb12fd83b65dc5b21c6ede2765 | 2 | e6ba91f54df679c9c19c23169c369f14bff012ba2fe110c3973bde59676c1d45 |
 | p501 | 2025 returns; PDF created 2026-02-04 | 6, 8, 9, 11 | cited pages | 6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b | 6, 8, 11 | 2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671 |
-| i1040s8812 | 2025; printed date 2026-01-23 | 2 | pages named by another document's citation | fd50a5266cc20aa5a31de0535658793f75c7abbb12fd83b65dc5b21c6ede2765 | 2 | e6ba91f54df679c9c19c23169c369f14bff012ba2fe110c3973bde59676c1d45 |
-
-## Host-side model expression type checks
-
-The build's reference/type checker rejected these model expressions; none were executed.
-- malformed expression (project schema): data/gt/0 must be string, data/gt/0 must have required property 'const', data/gt/0 must NOT have additional properties
-- household.household.h_has_hoh_person: comparison operands have incompatible types
 
 ## Lines
 
@@ -54,10 +48,10 @@ Project:
 Second:
 
 ```json
-{"of": [{"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.lawful"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "household_member"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.qr_all_year"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.spouse_relative"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "in_law"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "parent"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "parent_relative"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"args": [{"args": [{"param": "qc.age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"param": "qc.student_age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.student"}], "test": "ne"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"input": "dependent.months"}, {"const": 6, "type": "Count"}], "test": "le"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "ne"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.supported"}], "test": "eq"}, {"args": [{"input": "dependent.gross_income"}, {"param": "qr.gross_income_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.canada_mexico"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "eq"}, {"args": [{"const": 6, "type": "Count"}, {"input": "dependent.months"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.canada_mexico"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "eq"}], "test": "all"}], "test": "any"}}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": null}], "op": "sum"}
+{"of": [{"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": null}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": null}], "op": "sum"}
 ```
 
-Ruling: model error — Form 1040 p. 1 has taxpayer and joint-return spouse entries separate from Dependents. This interface counts those filers; the candidate adds claimed dependents. Executable triage was unavailable for this entire reply because household.h_has_hoh_person fails schema and type validation (`triage/household.deepseek.json`, state invalid); this declaration is outside h_has_hoh_person's dependency closure and is ruled by reading against the source and interface. No sampled equivalence is claimed.
+Ruling: model error — Form 1040 p. 1 has taxpayer and joint-return spouse entries separate from Dependents. This interface counts those filers; the candidate adds claimed dependents. The reply now validates, so triage executed it (the previous round could not). executable-triage-v2 (`reviews/2025/transcription/triage/household.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 289 partial records; 2,284 comparisons): 1,298 of 2,284 agree; 805 value, 138 candidate-refuses, 43 candidate-unknown; on returns the full interview completes: 201 value. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 199 against the record's 201, the class M fixtures having been rewritten by a concurrent run): 199 value (for example classm.f8889.1.deepseek, household). Project stands.
 
 ### household.roster_bad — The people entered do not match the filing status
 Status: **DISAGREE**
@@ -71,12 +65,12 @@ Project:
 Second:
 
 ```json
-{"args": [{"const": 0, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.lawful"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "household_member"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.qr_all_year"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.spouse_relative"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "in_law"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "parent"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "parent_relative"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"args": [{"args": [{"param": "qc.age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"param": "qc.student_age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.student"}], "test": "ne"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"input": "dependent.months"}, {"const": 6, "type": "Count"}], "test": "le"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "ne"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.supported"}], "test": "eq"}, {"args": [{"input": "dependent.gross_income"}, {"param": "qr.gross_income_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.canada_mexico"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "eq"}, {"args": [{"const": 6, "type": "Count"}, {"input": "dependent.months"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.canada_mexico"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "eq"}], "test": "all"}], "test": "any"}, {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.lawful"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "household_member"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.qr_all_year"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.spouse_relative"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "in_law"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "parent"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "parent_relative"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"args": [{"args": [{"param": "qc.age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"param": "qc.student_age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.student"}], "test": "ne"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"input": "dependent.months"}, {"const": 6, "type": "Count"}], "test": "le"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "ne"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.supported"}], "test": "eq"}, {"args": [{"input": "dependent.gross_income"}, {"param": "qr.gross_income_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.canada_mexico"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "eq"}, {"args": [{"const": 6, "type": "Count"}, {"input": "dependent.months"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.canada_mexico"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "eq"}], "test": "all"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.tin"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.lawful"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "household_member"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.qr_all_year"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "dependent.spouse_relative"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "in_law"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "parent"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "parent_relative"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "eq"}, {"args": [{"const": 6, "type": "Count"}, {"input": "dependent.months"}], "test": "lt"}], "test": "all"}, {"args": [{"param": "qr.gross_income_limit"}, {"input": "dependent.gross_income"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.supported"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"args": [{"args": [{"param": "qc.age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"param": "qc.student_age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.student"}], "test": "ne"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"input": "dependent.months"}, {"const": 6, "type": "Count"}], "test": "le"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "ne"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "ne"}], "test": "any"}], "test": "all"}], "test": "any"}], "test": "all"}}], "test": "lt"}
+{"args": [{"const": 0, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.canada_mexico"}], "test": "ne"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.lawful"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "household_member"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.qr_all_year"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"input": "dependent.spouse_relative"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "in_law"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "parent"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "parent_relative"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "eq"}, {"args": [{"const": 6, "type": "Count"}, {"input": "dependent.months"}], "test": "lt"}], "test": "all"}, {"args": [{"param": "qr.gross_income_limit"}, {"input": "dependent.gross_income"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.supported"}], "test": "ne"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.canada_mexico"}], "test": "ne"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"args": [{"args": [{"param": "qc.age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"param": "qc.student_age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.student"}], "test": "ne"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"input": "dependent.months"}, {"const": 6, "type": "Count"}], "test": "le"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "ne"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "ne"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "ne"}], "test": "any"}], "test": "all"}}], "test": "lt"}
 ```
 
-Second transcription's note: The archived text does not define this aggregate; I read it as any claimed dependent who fails the qualifying-child/relative tests or is marked as lacking the required TIN.
+Second transcription's note: Reads roster_bad as true when any listed dependent fails the dependent tests (dependent.claimed is false).
 
-Ruling: model error — The interface tests whether taxpayer/spouse entries match Filing Status (Form 1040 p. 1), not whether dependents fail qualifying tests or lack TINs. The candidate substitutes a dependent-screening predicate and omits the filer-roster invariant. Executable triage was unavailable for this entire reply because household.h_has_hoh_person fails validation (`triage/household.deepseek.json`, state invalid); this line is outside h_has_hoh_person's closure and is ruled by reading. No sampled equivalence is claimed.
+Ruling: model error — The interface tests whether taxpayer/spouse entries match Filing Status (Form 1040 p. 1), not whether dependents fail qualifying tests or lack TINs. The candidate substitutes a dependent-screening predicate and omits the filer-roster invariant. The reply now validates, so triage executed it (the previous round could not). executable-triage-v2 (`reviews/2025/transcription/triage/household.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 289 partial records; 2,284 comparisons): 2,202 of 2,284 agree; 50 value, 23 candidate-unknown, 8 candidate-refuses, 1 project-refuses; on returns the full interview completes: none. No completed-return difference. Project stands.
 
 ### household.hsa_both — You and your spouse each have a Form 8889
 Status: **DISAGREE**
@@ -90,12 +84,12 @@ Project:
 Second:
 
 ```json
-{"args": [{"const": 2, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": 1, "type": "Count"}, {"collection": "f8889", "field": "f8889.one", "op": "sum_over", "where": null}], "test": "le"}}], "test": "le"}
+{"args": [{"const": 1, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": 0, "type": "Count"}, {"collection": "f8889", "field": "f8889.one", "op": "sum_over", "where": null}], "test": "lt"}}], "test": "lt"}
 ```
 
-Second transcription's note: Read as both person entries (taxpayer and spouse) having at least one HSA/Form 8889.
+Second transcription's note: Reads both spouses have HSAs as at least two person entries reporting an HSA form.
 
-Ruling: representation — i8889 p. 4 says to complete separate Forms 8889 if both spouses have HSAs. On a valid roster there are at most two persons, so >= 2 and == 2 persons with >= 1 vs > 0 Forms 8889 express the same condition. Executable triage was unavailable for this entire reply because household.h_has_hoh_person fails validation (`triage/household.deepseek.json`, state invalid); this line does not depend on h_has_hoh_person and is ruled by reading. No sampled equivalence is claimed.
+Ruling: representation; i8889 p. 4. Two or more persons with a Form 8889 against exactly two: the same on a valid roster (at most two persons). No difference. executable-triage-v2 (`reviews/2025/transcription/triage/household.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 289 partial records; 2,284 comparisons): 2,284 of 2,284 agree; none; on returns the full interview completes: none. No difference. Project stands.
 
 ### household.hsa_split_count — Number of Forms 8889 using the spouse rule of line 6
 Status: **AGREE**
@@ -121,10 +115,12 @@ Project:
 Second:
 
 ```json
-{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": false}, {"ref": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}], "test": "eq"}, {"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "person.eic_ssn"}], "test": "eq"}}], "test": "eq"}], "test": "all"}
+{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "eq"}, {"args": [{"const": 6, "type": "Count"}, {"input": "dependent.months"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"ref": "dependent.eic_ssn"}], "test": "ne"}], "test": "all"}}], "test": "eq"}, {"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.eic_ssn"}], "test": "ne"}}], "test": "eq"}], "test": "all"}
 ```
 
-Ruling: model error — i1040gi p. 40, Step 1, question 2 tests the filer and joint spouse SSNs, whereas qualifying-child SSNs are separately counted for the worksheet credit. The candidate requires every EIC child to have an SSN as part of this filer gate. Executable triage was unavailable for this entire reply because household.h_has_hoh_person fails validation (`triage/household.deepseek.json`, state invalid); this line is outside h_has_hoh_person's closure and is ruled by reading. No sampled equivalence is claimed.
+Second transcription's note: Reads the EIC SSN test as applying to all person entries and to dependent entries that are qualifying children.
+
+Ruling: model error — i1040gi p. 40, Step 1, question 2 tests the filer and joint spouse SSNs, whereas qualifying-child SSNs are separately counted for the worksheet credit. The candidate requires every EIC child to have an SSN as part of this filer gate. The reply now validates, so triage executed it (the previous round could not). executable-triage-v2 (`reviews/2025/transcription/triage/household.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 289 partial records; 2,284 comparisons): 1,988 of 2,284 agree; 138 candidate-refuses, 105 candidate-unknown, 53 value; on returns the full interview completes: 12 value. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 13 against the record's 12, the class M fixtures having been rewritten by a concurrent run): 12 value (for example classm.f8889.1.deepseek, household); 1 candidate-unknown dependent[dep_a].eic_ssn (for example classm.eic.1, household). Project stands.
 
 ### household.all_tin — You, and your spouse if filing jointly, have an SSN or ITIN, or have applied for an ITIN
 Status: **DISAGREE**
@@ -138,10 +134,10 @@ Project:
 Second:
 
 ```json
-{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.lawful"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "household_member"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.qr_all_year"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.spouse_relative"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "in_law"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "parent"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "parent_relative"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"args": [{"args": [{"param": "qc.age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"param": "qc.student_age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.student"}], "test": "ne"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"input": "dependent.months"}, {"const": 6, "type": "Count"}], "test": "le"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "ne"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.supported"}], "test": "eq"}, {"args": [{"input": "dependent.gross_income"}, {"param": "qr.gross_income_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.canada_mexico"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "eq"}, {"args": [{"const": 6, "type": "Count"}, {"input": "dependent.months"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.canada_mexico"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "eq"}], "test": "all"}], "test": "any"}, {"args": [{"const": false}, {"ref": "dependent.tin"}], "test": "eq"}], "test": "all"}}], "test": "eq"}, {"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": false}, {"ref": "person.tin"}], "test": "eq"}}], "test": "eq"}], "test": "all"}
+{"args": [{"const": 0, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.lawful"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "household_member"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.qr_all_year"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.spouse_relative"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "in_law"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "parent"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "parent_relative"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"args": [{"args": [{"param": "qc.age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"param": "qc.student_age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.student"}], "test": "ne"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"input": "dependent.months"}, {"const": 6, "type": "Count"}], "test": "le"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "ne"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.supported"}], "test": "eq"}, {"args": [{"input": "dependent.gross_income"}, {"param": "qr.gross_income_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.canada_mexico"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "eq"}, {"args": [{"const": 6, "type": "Count"}, {"input": "dependent.months"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.canada_mexico"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "eq"}], "test": "all"}], "test": "any"}, {"args": [{"const": true}, {"ref": "dependent.tin"}], "test": "ne"}], "test": "all"}}], "test": "eq"}
 ```
 
-Ruling: model error — i1040gi p. 19, Step 5, question 1 concerns you and your spouse if filing jointly. The candidate adds dependent TIN eligibility to a filer-only public interface. Executable triage was unavailable for this entire reply because household.h_has_hoh_person fails validation (`triage/household.deepseek.json`, state invalid); this line is outside h_has_hoh_person's closure and is ruled by reading. No sampled equivalence is claimed.
+Ruling: model error — i1040gi p. 19, Step 5, question 1 concerns you and your spouse if filing jointly. The candidate adds dependent TIN eligibility to a filer-only public interface. The reply now validates, so triage executed it (the previous round could not). executable-triage-v2 (`reviews/2025/transcription/triage/household.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 289 partial records; 2,284 comparisons): 2,139 of 2,284 agree; 138 candidate-refuses, 7 candidate-unknown; on returns the full interview completes: none. No completed-return difference. Project stands.
 
 ### household.ctc_ssn — Child tax credit identification: you, or your spouse if filing jointly, have an SSN valid
 Status: **DISAGREE**
@@ -155,12 +151,10 @@ Project:
 Second:
 
 ```json
-{"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "eq"}, {"args": [{"const": 6, "type": "Count"}, {"input": "dependent.months"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.canada_mexico"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": null}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": true}, {"ref": "person.tin"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}], "test": "any"}}], "test": "eq"}, {"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.tin"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.work_ssn"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "ctc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": false}, {"ref": "dependent.work_ssn"}], "test": "eq"}], "test": "all"}}], "test": "eq"}, {"args": [{"const": 1, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}}], "test": "le"}], "test": "all"}
+{"args": [{"const": 0, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "eq"}, {"args": [{"const": 6, "type": "Count"}, {"input": "dependent.months"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.canada_mexico"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": null}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": true}, {"ref": "person.tin"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}], "test": "any"}}], "test": "eq"}, {"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.tin"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.work_ssn"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "ctc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"ref": "dependent.work_ssn"}], "test": "ne"}], "test": "all"}}], "test": "eq"}
 ```
 
-Second transcription's note: Read as at least one filer with an SSN valid for employment (for a joint return, only one spouse needs it) and every child for whom the CTC is claimed having such an SSN; the other spouse's SSN/ITIN is covered by all_tin.
-
-Ruling: model error — i1040gi p. 17, Before you begin (and i1040s8812 p. 2) separates filer/spouse identification from the child SSN condition. The candidate folds the dependent-side CTC SSN condition into this filer-side interface and omits the other spouse's SSN/ITIN requirement on a joint return. Executable triage was unavailable for this entire reply because household.h_has_hoh_person fails validation (`triage/household.deepseek.json`, state invalid); this line is outside h_has_hoh_person's closure and is ruled by reading. No sampled equivalence is claimed.
+Ruling: model error — i1040gi p. 17, Before you begin (and i1040s8812 p. 2) separates filer/spouse identification from the child SSN condition. The candidate folds the dependent-side CTC SSN condition into this filer-side interface and omits the other spouse's SSN/ITIN requirement on a joint return. The reply now validates, so triage executed it (the previous round could not). executable-triage-v2 (`reviews/2025/transcription/triage/household.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 289 partial records; 2,284 comparisons): 1,693 of 2,284 agree; 460 candidate-unknown, 131 candidate-refuses; on returns the full interview completes: 111 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 109 against the record's 111, the class M fixtures having been rewritten by a concurrent run): 109 candidate-unknown (cycle) (for example classm.f4952.1.deepseek, household). Project stands.
 
 ### household.taxpayer_work_ssn — Do you have an SSN valid for employment issued before the due date of your return?
 Status: **DISAGREE**
@@ -174,10 +168,50 @@ Project:
 Second:
 
 ```json
-{"args": [{"const": 1, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": "taxpayer"}, {"ref": "person.role"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}], "test": "all"}}], "test": "le"}
+{"args": [{"const": 1, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.work_ssn"}], "test": "eq"}}], "test": "le"}
 ```
 
-Ruling: representation — i1040gi p. 18. Both expressions restrict the sum over person to person.role == "taxpayer" and person.work_ssn == true; the candidate compares the nonnegative integral count with >= 1 instead of > 0. Executable triage was unavailable for this entire reply because household.h_has_hoh_person fails validation (`triage/household.deepseek.json`, state invalid); this line does not depend on h_has_hoh_person and is ruled by reading. No sampled equivalence is claimed.
+Second transcription's note: Reads taxpayer_work_ssn as satisfied by any person entry with a work-valid SSN, because the CTC rule requires only one spouse on a joint return to have one.
+
+Ruling: model error; as the Claude family's reply: it counts either spouse for the taxpayer's own SSN answer, which s1a.line36a_senior reads for the taxpayer's line 36a (generated 49, 150 and 255, completed). Reclassified from representation: the reply changed. executable-triage-v2 (`reviews/2025/transcription/triage/household.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 289 partial records; 2,284 comparisons): 2,267 of 2,284 agree; 17 value; on returns the full interview completes: 3 value. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 3 value (for example generated 49, household). Project stands.
+
+### household.ctc_disallowed_claim — An earlier credit was reduced or disallowed (or a disallowance period applies) and Schedul
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"args": [{"args": [{"const": true}, {"input": "household.credit_disallowed"}], "test": "eq"}, {"args": [{"ref": "s8812.line11"}, {"ref": "s8812.line8"}], "test": "lt"}], "test": "all"}
+```
+
+Second:
+
+```json
+{"input": "household.credit_disallowed"}
+```
+
+Second transcription's note: The single credit-disallowance input covers both the CTC/ODC and EIC; copied to each requested result.
+
+Ruling: model error; i1040s8812 p. 2, "you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies" (Form 8862 is needed only to claim the credit). The candidate copies household.credit_disallowed, so the gate is true, and Schedule 8812 line 12 refuses, whenever the answer is Yes, also on a return that claims no child tax credit or credit for other dependents; and it needs the answer where the project does not (line 8 not above line 11). The completed-return value difference is f2.t101.credit_disallowed_no_credit_claimed (single, no dependents, answer Yes): project false, candidate true. The project-refuses differences are refused records on which Schedule 8812 line 8 or 11 itself refuses. This is the over-refusal the person-dep package removed (PENDING-9, T-101); its narrowing matches the source. executable-triage-v2 (`reviews/2025/transcription/triage/household.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 289 partial records; 2,284 comparisons): 2,262 of 2,284 agree; 14 candidate-unknown, 7 project-refuses, 1 value; on returns the full interview completes: 2 candidate-unknown, 1 value. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 2 candidate-unknown household.credit_disallowed (for example classm.f8962.3.deepseek without household.credit_disallowed, household); 1 value (for example f2.t101.credit_disallowed_no_credit_claimed, household). Project stands.
+
+### household.eic_disallowed_claim — An earlier credit was reduced or disallowed (or a disallowance period applies) and Steps 1
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"args": [{"args": [{"args": [{"args": [{"const": false}, {"ref": "scope.other_line16"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "scope.schedule1"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": "hoh"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"ref": "household.married"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"args": [{"const": false}, {"input": "eic.qc_of_another"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"const": true}, {"input": "eic.us_home"}], "test": "eq"}, {"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"args": [{"const": true}, {"ref": "person.born_after_1960"}], "test": "eq"}, {"args": [{"const": true}, {"ref": "person.born_before_2001"}], "test": "eq"}], "test": "all"}}], "test": "lt"}], "test": "all"}, {"args": [{"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}}, {"const": 0, "type": "Count"}], "test": "le"}], "test": "all"}, {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": "hoh"}, {"ref": "f1040.status"}], "test": "ne"}, {"args": [{"const": true}, {"ref": "household.married"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}], "test": "all"}, {"args": [{"const": false}, {"input": "eic.same_home"}], "test": "eq"}, {"args": [{"const": true}, {"input": "eic.legally_separated"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "eic.qc_of_another"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, {"args": [{"const": 0, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}}], "test": "lt"}], "test": "all"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.excluded_income"}], "test": "eq"}, {"args": [{"const": false}, {"ref": "scope.other_income"}], "test": "eq"}, {"args": [{"collection": "person", "field": "person.one", "op": "sum_over", "where": null}, {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"args": [{"const": true}, {"ref": "person.eic_ssn"}], "test": "eq"}}], "test": "eq"}, {"args": [{"of": [{"from": {"ref": "f1040.line7a"}, "op": "subtract_floor0", "take": {"const": 0}}, {"ref": "f1040.line2a"}, {"ref": "f1040.line2b"}, {"ref": "f1040.line3b"}], "op": "sum"}, {"param": "eic.investment_limit"}], "test": "le"}, {"args": [{"alternatives": [{"guard": {"args": [{"collection": "person", "field": "person.sc_count", "op": "sum_over", "where": null}, {"const": 0, "type": "Count"}], "test": "le"}, "then": {"ref": "eic.earned_income"}}, {"guard": {"args": [{"const": 0, "type": "Count"}, {"collection": "person", "field": "person.sc_count", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"ref": "eic.wsb_4b"}}], "op": "choose"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "hoh"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "single"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}], "test": "le"}, {"args": [{"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}, {"const": 1, "type": "Count"}], "test": "lt"}], "test": "all"}, "then": {"param": "eic.limit0.other"}}, {"guard": {"args": [{"args": [{"const": 1, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}], "test": "le"}, {"args": [{"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}, {"const": 2, "type": "Count"}], "test": "lt"}], "test": "all"}, "then": {"param": "eic.limit1.other"}}, {"guard": {"args": [{"args": [{"const": 2, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}], "test": "le"}, {"args": [{"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}, {"const": 3, "type": "Count"}], "test": "lt"}], "test": "all"}, "then": {"param": "eic.limit2.other"}}, {"guard": {"args": [{"const": 3, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}], "test": "le"}, "then": {"param": "eic.limit3.other"}}], "op": "choose"}}, {"guard": {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}], "test": "le"}, {"args": [{"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}, {"const": 1, "type": "Count"}], "test": "lt"}], "test": "all"}, "then": {"param": "eic.limit0.joint"}}, {"guard": {"args": [{"args": [{"const": 1, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}], "test": "le"}, {"args": [{"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}, {"const": 2, "type": "Count"}], "test": "lt"}], "test": "all"}, "then": {"param": "eic.limit1.joint"}}, {"guard": {"args": [{"args": [{"const": 2, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}], "test": "le"}, {"args": [{"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}, {"const": 3, "type": "Count"}], "test": "lt"}], "test": "all"}, "then": {"param": "eic.limit2.joint"}}, {"guard": {"args": [{"const": 3, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}], "test": "le"}, "then": {"param": "eic.limit3.joint"}}], "op": "choose"}}], "op": "choose"}], "test": "lt"}, {"args": [{"ref": "f1040.line11b"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "hoh"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "single"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}], "test": "le"}, {"args": [{"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}, {"const": 1, "type": "Count"}], "test": "lt"}], "test": "all"}, "then": {"param": "eic.limit0.other"}}, {"guard": {"args": [{"args": [{"const": 1, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}], "test": "le"}, {"args": [{"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}, {"const": 2, "type": "Count"}], "test": "lt"}], "test": "all"}, "then": {"param": "eic.limit1.other"}}, {"guard": {"args": [{"args": [{"const": 2, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}], "test": "le"}, {"args": [{"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}, {"const": 3, "type": "Count"}], "test": "lt"}], "test": "all"}, "then": {"param": "eic.limit2.other"}}, {"guard": {"args": [{"const": 3, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}], "test": "le"}, "then": {"param": "eic.limit3.other"}}], "op": "choose"}}, {"guard": {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": 0, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}], "test": "le"}, {"args": [{"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}, {"const": 1, "type": "Count"}], "test": "lt"}], "test": "all"}, "then": {"param": "eic.limit0.joint"}}, {"guard": {"args": [{"args": [{"const": 1, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}], "test": "le"}, {"args": [{"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}, {"const": 2, "type": "Count"}], "test": "lt"}], "test": "all"}, "then": {"param": "eic.limit1.joint"}}, {"guard": {"args": [{"args": [{"const": 2, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}], "test": "le"}, {"args": [{"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}, {"const": 3, "type": "Count"}], "test": "lt"}], "test": "all"}, "then": {"param": "eic.limit2.joint"}}, {"guard": {"args": [{"const": 3, "type": "Count"}, {"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.us_half"}], "test": "eq"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.eic_ssn"}], "test": "eq"}], "test": "all"}}], "test": "le"}, "then": {"param": "eic.limit3.joint"}}], "op": "choose"}}], "op": "choose"}], "test": "lt"}, {"args": [{"ref": "f1040.line11b"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "hoh"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": "single"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "any"}, "then": {"param": "eic.limit3.other"}}, {"guard": {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, "then": {"param": "eic.limit3.joint"}}], "op": "choose"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "household.credit_disallowed"}], "test": "eq"}, {"args": [{"const": 0}, {"ref": "eic.line6"}], "test": "lt"}], "test": "all"}
+```
+
+Second:
+
+```json
+{"input": "household.credit_disallowed"}
+```
+
+Second transcription's note: The single credit-disallowance input covers both the CTC/ODC and EIC; copied to each requested result.
+
+Ruling: model error; i1040gi p. 43, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed ..." (the form goes with a claim of the credit). The candidate copies household.credit_disallowed, so the earned income credit refuses on a Yes answer also when Steps 1 to 5 are not passed and no credit is claimed (f2.t101.credit_disallowed_no_credit_claimed, completed: project false, candidate true; audit.s8812.credit_disallowed, refused), and it needs the answer where eic.eligible is false. The project-refuses differences are refused records on which eic.eligible refuses. The package's narrowing (PENDING-9, T-101) matches the source. executable-triage-v2 (`reviews/2025/transcription/triage/household.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 289 partial records; 2,284 comparisons): 2,255 of 2,284 agree; 21 candidate-unknown, 6 project-refuses, 2 value; on returns the full interview completes: 2 candidate-unknown, 1 value. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 2 candidate-unknown household.credit_disallowed (for example classm.f8962.3.deepseek without household.credit_disallowed, household); 1 value (for example f2.t101.credit_disallowed_no_credit_claimed, household). Project stands.
 
 ### household.hoh_fails — Head of household checked without meeting its tests
 Status: **DISAGREE**
@@ -191,10 +225,10 @@ Project:
 Second:
 
 ```json
-{"expression": {"args": [{"args": [{"unknown": "{\"collection\": \"dependent\", \"field\": \"dependent.one\", \"op\": \"sum_over\", \"where\": {\"any\": [{\"eq\": [\"dependent.hoh_test1\", {\"const\": true}], \"op\": \"test\"}, {\"eq\": [\"dependent.hoh_test2\", {\"const\": true}], \"op\": \"test\"}], \"op\": \"test\"}}"}, {"const": 0, "type": "Count"}], "test": "le"}, {"args": [{"const": true}, {"input": "household.home_cost"}], "test": "ne"}, {"args": [{"const": true}, {"input": "household.unmarried"}], "test": "ne"}], "test": "any"}, "invalid_model_types": [{"line": "household.h_has_hoh_person", "message": "malformed expression (project schema): data/gt/0 must be string, data/gt/0 must have required property 'const', data/gt/0 must NOT have additional properties"}, {"line": "household.h_has_hoh_person", "message": "household.household.h_has_hoh_person: comparison operands have incompatible types"}]}
+{"args": [{"args": [{"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.lawful"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "household_member"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.qr_all_year"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.spouse_relative"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "in_law"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "parent"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "parent_relative"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"args": [{"args": [{"param": "qc.age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"param": "qc.student_age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.student"}], "test": "ne"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"input": "dependent.months"}, {"const": 6, "type": "Count"}], "test": "le"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "ne"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.supported"}], "test": "eq"}, {"args": [{"input": "dependent.gross_income"}, {"param": "qr.gross_income_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.canada_mexico"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "eq"}, {"args": [{"const": 6, "type": "Count"}, {"input": "dependent.months"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.canada_mexico"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "eq"}], "test": "all"}], "test": "any"}, {"args": [{"const": "parent"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.parent_home_paid"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "eq"}, {"args": [{"const": 6, "type": "Count"}, {"input": "dependent.months"}], "test": "lt"}], "test": "all"}, {"args": [{"const": false}, {"input": "dependent.married"}], "test": "eq"}, {"args": [{"const": 6, "type": "Count"}, {"input": "dependent.months"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.lawful"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "household_member"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.qr_all_year"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.spouse_relative"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "in_law"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "parent"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "parent_relative"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"args": [{"args": [{"param": "qc.age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"param": "qc.student_age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.student"}], "test": "ne"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"input": "dependent.months"}, {"const": 6, "type": "Count"}], "test": "le"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "ne"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.supported"}], "test": "eq"}, {"args": [{"input": "dependent.gross_income"}, {"param": "qr.gross_income_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.canada_mexico"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "eq"}, {"args": [{"const": 6, "type": "Count"}, {"input": "dependent.months"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.canada_mexico"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "eq"}], "test": "all"}], "test": "any"}, {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"param": "qc.age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"param": "qc.student_age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.student"}], "test": "ne"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"input": "dependent.months"}, {"const": 6, "type": "Count"}], "test": "le"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "ne"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "dependent.born_died"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.placed"}], "test": "eq"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.part_year_home"}], "test": "eq"}], "test": "all"}, {"args": [{"const": 6, "type": "Count"}, {"input": "dependent.months"}], "test": "lt"}], "test": "any"}, {"args": [{"const": "household_member"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.absence_no_return"}], "test": "eq"}], "test": "all"}], "test": "any"}}, {"const": 1, "type": "Count"}], "test": "lt"}, {"args": [{"const": true}, {"input": "household.home_cost"}], "test": "ne"}, {"args": [{"const": true}, {"input": "household.unmarried"}], "test": "ne"}], "test": "any"}
 ```
 
-Ruling: model error — Validation failure and merits: the candidate expression depends on helper household.h_has_hoh_person, which fails project schema and type validation (`triage/household.deepseek.json`, state invalid: "malformed expression (project schema): data/gt/0 must be string" and "comparison operands have incompatible types"). By reading, it also applies household.home_cost to Test 1 (i1040gi p. 14). This adjudicates the invalid dependency chain and the expression reading; no sampled equivalence is claimed.
+Ruling: model error; i1040gi p. 14, Head of household, "Check the 'Head of household' box only if ...". The reply drops the test that head of household was checked, so it is true for every non-HOH filer without a qualifying person (classm.f4952.2.deepseek, a joint return: true against false) and would refuse Form 1040 on it; it also applies household.home_cost to Test 1. The previous validation failure is gone. executable-triage-v2 (`reviews/2025/transcription/triage/household.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 289 partial records; 2,284 comparisons): 602 of 2,284 agree; 1,546 value, 68 candidate-refuses, 61 candidate-unknown, 5 project-refuses, 2 project-unknown; on returns the full interview completes: 236 value, 8 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 242 against the record's 244, the class M fixtures having been rewritten by a concurrent run): 234 value (for example classm.f4952.2.deepseek, household); 4 candidate-unknown household.home_cost (for example classm.s2.3.deepseek without household.home_cost, household); 3 candidate-unknown household.unmarried (for example classm.asset.1, household); 1 candidate-unknown dependent[dep_b].born_died (for example mutation.t2.f8962_months_asset3, household). Project stands.
 
 ### household.qss_fails — Qualifying surviving spouse checked without meeting its tests
 Status: **DISAGREE**
@@ -211,7 +245,7 @@ Second:
 {"args": [{"const": true}, {"input": "household.qss_eligible"}], "test": "ne"}
 ```
 
-Ruling: model error — i1040gi p. 15 Qualifying Surviving Spouse tests apply when QSS is selected. The candidate drops f1040.status == "qss" and reads household.qss_eligible unconditionally on every filing status. Executable triage was unavailable for this entire reply because household.h_has_hoh_person fails validation (`triage/household.deepseek.json`, state invalid); this line is outside h_has_hoh_person's closure and is ruled by reading. No sampled equivalence is claimed.
+Ruling: model error — i1040gi p. 15 Qualifying Surviving Spouse tests apply when QSS is selected. The candidate drops f1040.status == "qss" and reads household.qss_eligible unconditionally on every filing status. The reply now validates, so triage executed it (the previous round could not). It asks household.qss_eligible on every return (1,623 candidate-unknown, 195 completed). executable-triage-v2 (`reviews/2025/transcription/triage/household.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 289 partial records; 2,284 comparisons): 661 of 2,284 agree; 1,623 candidate-unknown; on returns the full interview completes: 195 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 196 against the record's 195, the class M fixtures having been rewritten by a concurrent run): 196 candidate-unknown household.qss_eligible (for example classm.f8889.1.deepseek, household). Project stands.
 
 ### household.widowed_2025 — Filing as single or head of household although your spouse died in 2025
 Status: **DISAGREE**
@@ -228,7 +262,7 @@ Second:
 {"input": "household.spouse_died_2025"}
 ```
 
-Ruling: model error — p501 p. 6 allows joint filing after a spouse dies in 2025. This owner-selected refusal gate (BUG-0277) applies only to single/HOH selections (status == "single" or status == "hoh"), as the published label specifies. The candidate copies household.spouse_died_2025 without the status guard. Executable triage was unavailable for this entire reply because household.h_has_hoh_person fails validation (`triage/household.deepseek.json`, state invalid); this line is outside h_has_hoh_person's closure and is ruled by reading. No sampled equivalence is claimed.
+Ruling: model error — p501 p. 6 allows joint filing after a spouse dies in 2025. This owner-selected refusal gate (BUG-0277) applies only to single/HOH selections (status == "single" or status == "hoh"), as the published label specifies. The candidate copies household.spouse_died_2025 without the status guard. The reply now validates, so triage executed it (the previous round could not). executable-triage-v2 (`reviews/2025/transcription/triage/household.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 289 partial records; 2,284 comparisons): 2,263 of 2,284 agree; 20 candidate-unknown, 1 value; on returns the full interview completes: 4 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 4 candidate-unknown household.spouse_died_2025 (for example classm.asset.1, household). Project stands.
 
 ### household.cp_marriage_ended — Not filing jointly, and married for part of 2025 while living in a community property stat
 Status: **DISAGREE**
@@ -242,10 +276,12 @@ Project:
 Second:
 
 ```json
-{"args": [{"args": [{"const": false}, {"input": "household.married"}], "test": "eq"}, {"args": [{"const": true}, {"input": "household.community_property"}], "test": "eq"}, {"args": [{"const": true}, {"input": "household.cp_married"}], "test": "eq"}], "test": "all"}
+{"input": "household.cp_married"}
 ```
 
-Ruling: model error — i1040gi p. 23 community-income scope is implemented by the conjunction of nonjoint status (f1040.status != "mfj"), community-state residence, married == false and cp_married == true (BUG-0278). The candidate omits the f1040.status != "mfj" guard. Executable triage was unavailable for this entire reply because household.h_has_hoh_person fails validation (`triage/household.deepseek.json`, state invalid); this line is outside h_has_hoh_person's closure and is ruled by reading. No sampled equivalence is claimed.
+Second transcription's note: Copies the conditional community-property marriage question, which is asked only when the taxpayer lived in a community property state, was not married at year end, and was not filing jointly.
+
+Ruling: model error; i1040gi p. 23, Community Property States (BUG-0278). The reply copies household.cp_married and drops the conditions the project applies (not married at year end, community property state, not a joint return), so it needs the answer where the interview does not ask it (12 completed-return unknowns) and refuses joint returns. executable-triage-v2 (`reviews/2025/transcription/triage/household.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 289 partial records; 2,284 comparisons): 2,233 of 2,284 agree; 49 candidate-unknown, 2 value; on returns the full interview completes: 12 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 13 against the record's 12, the class M fixtures having been rewritten by a concurrent run): 13 candidate-unknown household.cp_married (for example classm.asset.1, household). Project stands.
 
 ### household.rdp_community_property — Not filing jointly, living in a community property state, and a registered domestic partne
 Status: **DISAGREE**
@@ -262,7 +298,7 @@ Second:
 {"args": [{"args": [{"const": true}, {"input": "household.community_property"}], "test": "eq"}, {"args": [{"const": true}, {"input": "household.rdp"}], "test": "eq"}], "test": "all"}
 ```
 
-Ruling: model error — i1040gi p. 23 and p501 p. 6 scope the registered domestic partner community-property refusal by f1040.status != "mfj" and community_property == true. The candidate omits the f1040.status != "mfj" guard. Executable triage was unavailable for this entire reply because household.h_has_hoh_person fails validation (`triage/household.deepseek.json`, state invalid); this line is outside h_has_hoh_person's closure and is ruled by reading. No sampled equivalence is claimed.
+Ruling: model error — i1040gi p. 23 and p501 p. 6 scope the registered domestic partner community-property refusal by f1040.status != "mfj" and community_property == true. The candidate omits the f1040.status != "mfj" guard. The reply now validates, so triage executed it (the previous round could not). executable-triage-v2 (`reviews/2025/transcription/triage/household.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 289 partial records; 2,284 comparisons): 633 of 2,284 agree; 1,651 candidate-unknown; on returns the full interview completes: 219 candidate-unknown. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched; it counts 220 against the record's 219, the class M fixtures having been rewritten by a concurrent run): 220 candidate-unknown household.rdp (for example classm.f8889.1.deepseek, household). Project stands.
 
 ### household.filing_status_conflict — The filing status conflicts with the marriage facts entered
 Status: **DISAGREE**
@@ -276,348 +312,124 @@ Project:
 Second:
 
 ```json
-{"expression": {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "household.home_cost"}], "test": "eq"}, {"args": [{"const": true}, {"input": "household.unmarried"}], "test": "eq"}, {"args": [{"const": 0, "type": "Count"}, {"unknown": "{\"collection\": \"dependent\", \"field\": \"dependent.one\", \"op\": \"sum_over\", \"where\": {\"any\": [{\"eq\": [\"dependent.hoh_test1\", {\"const\": true}], \"op\": \"test\"}, {\"eq\": [\"dependent.hoh_test2\", {\"const\": true}], \"op\": \"test\"}], \"op\": \"test\"}}"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "household.married"}], "test": "eq"}, {"args": [{"const": true}, {"input": "household.qss_eligible"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "single"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"unknown": "{\"collection\": \"dependent\", \"field\": \"dependent.one\", \"op\": \"sum_over\", \"where\": {\"any\": [{\"eq\": [\"dependent.hoh_test1\", {\"const\": true}], \"op\": \"test\"}, {\"eq\": [\"dependent.hoh_test2\", {\"const\": true}], \"op\": \"test\"}], \"op\": \"test\"}}"}, {"const": 0, "type": "Count"}], "test": "le"}, {"args": [{"const": true}, {"input": "household.home_cost"}], "test": "ne"}, {"args": [{"const": true}, {"input": "household.unmarried"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "hoh"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": false}, {"input": "household.married"}], "test": "eq"}, {"args": [{"const": false}, {"input": "household.spouse_died_2025"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": false}, {"input": "household.married"}], "test": "eq"}, {"args": [{"const": false}, {"input": "household.spouse_died_2025"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "household.qss_eligible"}], "test": "ne"}], "test": "all"}], "test": "any"}, "invalid_model_types": [{"line": "household.h_has_hoh_person", "message": "malformed expression (project schema): data/gt/0 must be string, data/gt/0 must have required property 'const', data/gt/0 must NOT have additional properties"}, {"line": "household.h_has_hoh_person", "message": "household.household.h_has_hoh_person: comparison operands have incompatible types"}]}
+{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "household.married"}], "test": "ne"}, {"args": [{"const": true}, {"input": "household.spouse_died_2025"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"const": true}, {"input": "household.married"}], "test": "ne"}, {"args": [{"const": true}, {"input": "household.spouse_died_2025"}], "test": "ne"}], "test": "all"}, {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"const": true}, {"input": "household.married"}], "test": "eq"}, {"args": [{"const": true}, {"input": "household.spouse_died_2025"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "single"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"collection": "dependent", "field": "dependent.one", "op": "sum_over", "where": {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.lawful"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "household_member"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.qr_all_year"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.spouse_relative"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "in_law"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "parent"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "parent_relative"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"args": [{"args": [{"param": "qc.age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"param": "qc.student_age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.student"}], "test": "ne"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"input": "dependent.months"}, {"const": 6, "type": "Count"}], "test": "le"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "ne"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.supported"}], "test": "eq"}, {"args": [{"input": "dependent.gross_income"}, {"param": "qr.gross_income_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.canada_mexico"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "eq"}, {"args": [{"const": 6, "type": "Count"}, {"input": "dependent.months"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.canada_mexico"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "eq"}], "test": "all"}], "test": "any"}, {"args": [{"const": "parent"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.parent_home_paid"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "eq"}, {"args": [{"const": 6, "type": "Count"}, {"input": "dependent.months"}], "test": "lt"}], "test": "all"}, {"args": [{"const": false}, {"input": "dependent.married"}], "test": "eq"}, {"args": [{"const": 6, "type": "Count"}, {"input": "dependent.months"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.lawful"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "household_member"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.qr_all_year"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "mfj"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.spouse_relative"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "in_law"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "parent"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "parent_relative"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"args": [{"args": [{"param": "qc.age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"param": "qc.student_age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.student"}], "test": "ne"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"input": "dependent.months"}, {"const": 6, "type": "Count"}], "test": "le"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "ne"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.supported"}], "test": "eq"}, {"args": [{"input": "dependent.gross_income"}, {"param": "qr.gross_income_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.canada_mexico"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"args": [{"args": [{"args": [{"const": true}, {"input": "dependent.student"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.student_age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.younger"}], "test": "eq"}, {"args": [{"input": "dependent.age"}, {"param": "qc.age_limit"}], "test": "lt"}], "test": "all"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "eq"}], "test": "any"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "eq"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "eq"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "eq"}, {"args": [{"const": 6, "type": "Count"}, {"input": "dependent.months"}], "test": "lt"}], "test": "all"}, {"args": [{"args": [{"const": true}, {"input": "dependent.canada_mexico"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.citizen"}], "test": "eq"}], "test": "any"}, {"args": [{"const": false}, {"ref": "sa.dependent"}], "test": "eq"}], "test": "all"}], "test": "any"}, {"args": [{"args": [{"args": [{"args": [{"args": [{"args": [{"param": "qc.age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"param": "qc.student_age_limit"}, {"input": "dependent.age"}], "test": "le"}, {"args": [{"const": true}, {"input": "dependent.student"}], "test": "ne"}, {"args": [{"const": true}, {"input": "dependent.younger"}], "test": "ne"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.disabled"}], "test": "ne"}], "test": "all"}, {"args": [{"args": [{"const": "child"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}, {"args": [{"input": "dependent.months"}, {"const": 6, "type": "Count"}], "test": "le"}, {"args": [{"const": false}, {"input": "dependent.joint_return"}], "test": "ne"}, {"args": [{"const": false}, {"input": "dependent.self_support"}], "test": "ne"}], "test": "any"}, {"args": [{"args": [{"const": true}, {"input": "dependent.born_died"}], "test": "eq"}, {"args": [{"const": true}, {"input": "dependent.placed"}], "test": "eq"}], "test": "any"}, {"args": [{"const": true}, {"input": "dependent.part_year_home"}], "test": "eq"}], "test": "all"}, {"args": [{"const": 6, "type": "Count"}, {"input": "dependent.months"}], "test": "lt"}], "test": "any"}, {"args": [{"const": "household_member"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "other"}, {"input": "dependent.relationship"}], "test": "ne"}, {"args": [{"const": "sibling_descendant"}, {"input": "dependent.relationship"}], "test": "ne"}], "test": "all"}], "test": "any"}, {"args": [{"const": false}, {"input": "dependent.absence_no_return"}], "test": "eq"}], "test": "all"}], "test": "any"}}, {"const": 1, "type": "Count"}], "test": "lt"}, {"args": [{"const": true}, {"input": "household.home_cost"}], "test": "ne"}, {"args": [{"const": true}, {"input": "household.unmarried"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "hoh"}, {"ref": "f1040.status"}], "test": "eq"}], "test": "all"}, {"args": [{"args": [{"const": "qss"}, {"ref": "f1040.status"}], "test": "eq"}, {"args": [{"const": true}, {"input": "household.qss_eligible"}], "test": "ne"}], "test": "all"}], "test": "any"}
 ```
 
-Second transcription's note: The archived text does not define this aggregate; I read it as the selected filing status conflicting with the factual marital, HOH and QSS facts: single only when no HOH/QSS qualification and not married; MFJ/MFS only when married at year end or the spouse died in 2025; HOH and QSS only when their tests pass.
+Second transcription's note: Reads filing_status_conflict as selected status contradicting marital facts, HOH eligibility or QSS eligibility; it does not test whether a lower-tax status was available.
 
-Ruling: model error — Validation failure and merits: the candidate expression depends on helper household.h_has_hoh_person, which fails project schema and type validation (`triage/household.deepseek.json`, state invalid). By reading, it also conflates HOH/QSS qualification tests with the marriage/filing-status entry conflict gate (BUG-0286) and requires single filers to fail HOH/QSS tests. No sampled equivalence is claimed.
+Ruling: model error; i1040gi pp. 13-15. The reply folds its own head of household and qualifying surviving spouse tests into the marriage-entry gate, inheriting household.hoh_fails's errors: generated 381, a completed head of household return, is flagged (true against false). The previous validation failure is gone. executable-triage-v2 (`reviews/2025/transcription/triage/household.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 289 partial records; 2,284 comparisons): 1,993 of 2,284 agree; 218 value, 58 candidate-unknown, 15 candidate-refuses; on returns the full interview completes: 1 value. Every completed-return difference enumerated with the witness cap lifted (scratch run, recorded triage file untouched): 1 value (for example generated 381, household). Project stands.
 
 ## Raw second transcription
 
 ```yaml
 lines:
-  - id: household.h_filers_count
-    printed: "(helper)"
-    label: "Number of filer entries (taxpayer and spouse, if any)"
-    type: Count
-    expr:
-      op: sum_over
-      collection: person
-      field: person.one
-
-  - id: household.h_dependents_count
-    printed: "(helper)"
-    label: "Number of claimed dependents"
-    type: Count
-    expr:
-      op: sum_over
-      collection: dependent
-      field: dependent.one
-      where:
-        op: test
-        eq: ["dependent.claimed", {const: true}]
-
   - id: household.persons
     printed: "(helper)"
-    label: "Number of persons on the return (you, your spouse if filing jointly, and claimed dependents)"
+    label: "Number of persons on the return and dependents claimed"
     type: Count
-    expr:
-      op: sum
-      of: ["household.h_filers_count", "household.h_dependents_count"]
-
-  - id: household.h_bad_roster_count
-    printed: "(helper)"
-    label: "Claimed dependents who are not qualifying children or relatives or lack a required TIN"
-    type: Count
-    expr:
-      op: sum_over
-      collection: dependent
-      field: dependent.one
-      where:
-        op: test
-        all:
-          - op: test
-            eq: ["dependent.claimed", {const: true}]
-          - op: test
-            any:
-              - op: test
-                eq: ["dependent.claimed_no_tin", {const: true}]
-              - op: test
-                all:
-                  - op: test
-                    eq: ["dependent.qualifying_child", {const: false}]
-                  - op: test
-                    eq: ["dependent.qualifying_relative", {const: false}]
-
+    expr: {op: sum, of: [household.h_person_count, household.h_dependent_count]}
   - id: household.roster_bad
     printed: "(helper)"
-    label: "Dependent roster has a claimed dependent who is not a qualifying child or relative, or lacks a required TIN"
+    label: "Dependent roster contains a person who cannot be claimed"
     type: Bool
-    expr:
-      op: test
-      gt: ["household.h_bad_roster_count", {const: 0, type: Count}]
-    note: "The archived text does not define this aggregate; I read it as any claimed dependent who fails the qualifying-child/relative tests or is marked as lacking the required TIN."
-
-  - id: household.h_hsa_person_count
-    printed: "(helper)"
-    label: "Persons with at least one Form 8889/HSA"
-    type: Count
-    expr:
-      op: sum_over
-      collection: person
-      field: person.one
-      where:
-        op: test
-        ge: ["person.hsa_forms", {const: 1, type: Count}]
-
+    expr: {op: test, gt: [household.h_bad_roster_count, {const: 0, type: Count}]}
+    note: "Reads roster_bad as true when any listed dependent fails the dependent tests (dependent.claimed is false)."
   - id: household.hsa_both
     printed: "(helper)"
-    label: "Both spouses have HSAs"
+    label: "Both spouses have HSA forms"
     type: Bool
-    expr:
-      op: test
-      ge: ["household.h_hsa_person_count", {const: 2, type: Count}]
-    note: "Read as both person entries (taxpayer and spouse) having at least one HSA/Form 8889."
-
+    expr: {op: test, gt: [household.h_hsa_person_count, {const: 1, type: Count}]}
+    note: "Reads both spouses have HSAs as at least two person entries reporting an HSA form."
   - id: household.hsa_split_count
     printed: "(helper)"
-    label: "Total HSA split-count entries"
+    label: "Count of HSA family-limit shares allocated equally"
     type: Count
-    expr:
-      op: sum_over
-      collection: person
-      field: person.hsa_split
-
+    expr: {op: sum_over, collection: person, field: person.hsa_split}
   - id: household.hsa_agreed_count
     printed: "(helper)"
-    label: "Total HSA agreed-allocation entries"
+    label: "Count of HSA family-limit shares allocated by agreement"
     type: Count
-    expr:
-      op: sum_over
-      collection: person
-      field: person.hsa_agreed
-
+    expr: {op: sum_over, collection: person, field: person.hsa_agreed}
   - id: household.hsa_step1_sum
     printed: "(helper)"
-    label: "Total HSA Step 1 family contribution limits"
+    label: "Total HSA family contribution limit before allocation"
     type: NonNegDollars
-    expr:
-      op: sum_over
-      collection: person
-      field: person.hsa_step1
-
+    expr: {op: sum_over, collection: person, field: person.hsa_step1}
   - id: household.hsa_share_sum
     printed: "(helper)"
-    label: "Total HSA allocated shares"
+    label: "Total allocated HSA family contribution limit"
     type: NonNegDollars
-    expr:
-      op: sum_over
-      collection: person
-      field: person.hsa_share
-
-  - id: household.h_eic_person_bad
-    printed: "(helper)"
-    label: "Filers without a valid EIC SSN"
-    type: Count
-    expr:
-      op: sum_over
-      collection: person
-      field: person.one
-      where:
-        op: test
-        eq: ["person.eic_ssn", {const: false}]
-
-  - id: household.h_eic_dep_bad
-    printed: "(helper)"
-    label: "EIC children without a valid EIC SSN"
-    type: Count
-    expr:
-      op: sum_over
-      collection: dependent
-      field: dependent.one
-      where:
-        op: test
-        all:
-          - op: test
-            eq: ["dependent.eic_child", {const: true}]
-          - op: test
-            eq: ["dependent.eic_ssn", {const: false}]
-
+    expr: {op: sum_over, collection: person, field: person.hsa_share}
   - id: household.all_eic_ssn
     printed: "(helper)"
-    label: "Every person whose SSN is needed for the EIC has a valid EIC SSN"
+    label: "All persons on the return and qualifying children have EIC-valid SSNs"
     type: Bool
     expr:
       op: test
       all:
-        - op: test
-          eq: ["household.h_eic_person_bad", {const: 0, type: Count}]
-        - op: test
-          eq: ["household.h_eic_dep_bad", {const: 0, type: Count}]
-
-  - id: household.h_tin_person_bad
-    printed: "(helper)"
-    label: "Filers without an SSN, ITIN or ATIN issued on time"
-    type: Count
-    expr:
-      op: sum_over
-      collection: person
-      field: person.one
-      where:
-        op: test
-        eq: ["person.tin", {const: false}]
-
-  - id: household.h_tin_dep_bad
-    printed: "(helper)"
-    label: "Claimed dependents without an SSN, ITIN or ATIN issued on time"
-    type: Count
-    expr:
-      op: sum_over
-      collection: dependent
-      field: dependent.one
-      where:
-        op: test
-        all:
-          - op: test
-            eq: ["dependent.claimed", {const: true}]
-          - op: test
-            eq: ["dependent.tin", {const: false}]
-
+        - {op: test, eq: [household.h_eic_ssn_fail_person, {const: 0, type: Count}]}
+        - {op: test, eq: [household.h_eic_ssn_fail_dependent, {const: 0, type: Count}]}
+    note: "Reads the EIC SSN test as applying to all person entries and to dependent entries that are qualifying children."
   - id: household.all_tin
     printed: "(helper)"
-    label: "Every person and claimed dependent has an SSN, ITIN or ATIN issued on time"
+    label: "All claimed dependents have a TIN issued by the due date"
     type: Bool
-    expr:
-      op: test
-      all:
-        - op: test
-          eq: ["household.h_tin_person_bad", {const: 0, type: Count}]
-        - op: test
-          eq: ["household.h_tin_dep_bad", {const: 0, type: Count}]
-
-  - id: household.h_taxpayer_work_count
-    printed: "(helper)"
-    label: "Taxpayer entries with an SSN valid for employment"
-    type: Count
-    expr:
-      op: sum_over
-      collection: person
-      field: person.one
-      where:
-        op: test
-        all:
-          - op: test
-            eq: ["person.role", {const: "taxpayer"}]
-          - op: test
-            eq: ["person.work_ssn", {const: true}]
-
-  - id: household.taxpayer_work_ssn
-    printed: "(helper)"
-    label: "Taxpayer has an SSN valid for employment"
-    type: Bool
-    expr:
-      op: test
-      ge: ["household.h_taxpayer_work_count", {const: 1, type: Count}]
-
-  - id: household.h_ctc_filer_work
-    printed: "(helper)"
-    label: "Filers with an SSN valid for employment"
-    type: Count
-    expr:
-      op: sum_over
-      collection: person
-      field: person.one
-      where:
-        op: test
-        eq: ["person.work_ssn", {const: true}]
-
-  - id: household.h_ctc_child_bad
-    printed: "(helper)"
-    label: "CTC children without an SSN valid for employment"
-    type: Count
-    expr:
-      op: sum_over
-      collection: dependent
-      field: dependent.one
-      where:
-        op: test
-        all:
-          - op: test
-            eq: ["dependent.ctc_child", {const: true}]
-          - op: test
-            eq: ["dependent.work_ssn", {const: false}]
-
+    expr: {op: test, eq: [household.h_tin_fail_count, {const: 0, type: Count}]}
   - id: household.ctc_ssn
     printed: "(helper)"
-    label: "At least one filer has an SSN valid for employment and every CTC child has one"
+    label: "All CTC children have SSNs valid for employment"
     type: Bool
-    expr:
-      op: test
-      all:
-        - op: test
-          ge: ["household.h_ctc_filer_work", {const: 1, type: Count}]
-        - op: test
-          eq: ["household.h_ctc_child_bad", {const: 0, type: Count}]
-    note: "Read as at least one filer with an SSN valid for employment (for a joint return, only one spouse needs it) and every child for whom the CTC is claimed having such an SSN; the other spouse's SSN/ITIN is covered by all_tin."
-
-  - id: household.h_has_hoh_person
+    expr: {op: test, eq: [household.h_ctc_ssn_fail_count, {const: 0, type: Count}]}
+  - id: household.taxpayer_work_ssn
     printed: "(helper)"
-    label: "A person who satisfies the head of household qualifying-person test"
+    label: "At least one person on the return has an SSN valid for employment"
     type: Bool
-    expr:
-      op: test
-      gt:
-        - op: sum_over
-          collection: dependent
-          field: dependent.one
-          where:
-            op: test
-            any:
-              - op: test
-                eq: ["dependent.hoh_test1", {const: true}]
-              - op: test
-                eq: ["dependent.hoh_test2", {const: true}]
-        - {const: 0, type: Count}
-
+    expr: {op: test, ge: [household.h_work_ssn_count, {const: 1, type: Count}]}
+    note: "Reads taxpayer_work_ssn as satisfied by any person entry with a work-valid SSN, because the CTC rule requires only one spouse on a joint return to have one."
+  - id: household.ctc_disallowed_claim
+    printed: "(helper)"
+    label: "CTC, ACTC or ODC was disallowed or is in a disallowance period"
+    type: Bool
+    expr: {op: copy, from: household.credit_disallowed}
+    note: "The single credit-disallowance input covers both the CTC/ODC and EIC; copied to each requested result."
+  - id: household.eic_disallowed_claim
+    printed: "(helper)"
+    label: "EIC was disallowed or is in a disallowance period"
+    type: Bool
+    expr: {op: copy, from: household.credit_disallowed}
+    note: "The single credit-disallowance input covers both the CTC/ODC and EIC; copied to each requested result."
   - id: household.hoh_fails
     printed: "(helper)"
-    label: "Head of household tests fail"
+    label: "Head of household requirements are not met"
     type: Bool
     expr:
       op: test
       not:
         op: test
         all:
-          - op: test
-            eq: ["household.unmarried", {const: true}]
-          - op: test
-            eq: ["household.home_cost", {const: true}]
-          - op: test
-            eq: ["household.h_has_hoh_person", {const: true}]
-
+          - {op: test, eq: [household.unmarried, {const: true}]}
+          - {op: test, eq: [household.home_cost, {const: true}]}
+          - {op: test, ge: [household.h_hoh_person_count, {const: 1, type: Count}]}
   - id: household.qss_fails
     printed: "(helper)"
-    label: "Qualifying surviving spouse tests fail"
+    label: "Qualifying surviving spouse requirements are not met"
     type: Bool
     expr:
       op: test
       not:
         op: test
-        eq: ["household.qss_eligible", {const: true}]
-
+        eq: [household.qss_eligible, {const: true}]
   - id: household.widowed_2025
     printed: "(helper)"
     label: "Spouse died in 2025"
     type: Bool
-    expr:
-      op: copy
-      from: household.spouse_died_2025
-
+    expr: {op: copy, from: household.spouse_died_2025}
   - id: household.cp_marriage_ended
     printed: "(helper)"
-    label: "Lived in a community property state, were married during 2025, and were not married at the end of 2025"
+    label: "Married during 2025 in a community property state before divorce or legal separation"
     type: Bool
-    expr:
-      op: test
-      all:
-        - op: test
-          eq: ["household.community_property", {const: true}]
-        - op: test
-          eq: ["household.cp_married", {const: true}]
-        - op: test
-          eq: ["household.married", {const: false}]
-
+    expr: {op: copy, from: household.cp_married}
+    note: "Copies the conditional community-property marriage question, which is asked only when the taxpayer lived in a community property state, was not married at year end, and was not filing jointly."
   - id: household.rdp_community_property
     printed: "(helper)"
     label: "Registered domestic partner in a community property state"
@@ -625,57 +437,187 @@ lines:
     expr:
       op: test
       all:
-        - op: test
-          eq: ["household.rdp", {const: true}]
-        - op: test
-          eq: ["household.community_property", {const: true}]
-
+        - {op: test, eq: [household.rdp, {const: true}]}
+        - {op: test, eq: [household.community_property, {const: true}]}
   - id: household.filing_status_conflict
     printed: "(helper)"
-    label: "Selected filing status conflicts with the household facts"
+    label: "Selected filing status conflicts with household facts"
     type: Bool
     expr:
       op: test
       any:
         - op: test
           all:
-            - op: test
-              eq: ["f1040.status", {const: "single"}]
-            - op: test
-              any:
-                - op: test
-                  eq: ["household.married", {const: true}]
-                - op: test
-                  eq: ["household.hoh_fails", {const: false}]
-                - op: test
-                  eq: ["household.qss_fails", {const: false}]
+            - {op: test, eq: [household.h_status_hoh, {const: true}]}
+            - {op: test, eq: [household.hoh_fails, {const: true}]}
         - op: test
           all:
-            - op: test
-              eq: ["f1040.status", {const: "mfj"}]
-            - op: test
-              eq: ["household.married", {const: false}]
-            - op: test
-              eq: ["household.widowed_2025", {const: false}]
+            - {op: test, eq: [household.h_status_qss, {const: true}]}
+            - {op: test, eq: [household.qss_fails, {const: true}]}
         - op: test
           all:
-            - op: test
-              eq: ["f1040.status", {const: "mfs"}]
-            - op: test
-              eq: ["household.married", {const: false}]
-            - op: test
-              eq: ["household.widowed_2025", {const: false}]
+            - {op: test, eq: [household.h_status_single, {const: true}]}
+            - {op: test, eq: [household.h_married_or_widowed, {const: true}]}
         - op: test
           all:
-            - op: test
-              eq: ["f1040.status", {const: "hoh"}]
-            - op: test
-              eq: ["household.hoh_fails", {const: true}]
+            - {op: test, eq: [household.h_status_mfj, {const: true}]}
+            - {op: test, not: {op: test, eq: [household.h_married_or_widowed, {const: true}]}}
         - op: test
           all:
-            - op: test
-              eq: ["f1040.status", {const: "qss"}]
-            - op: test
-              eq: ["household.qss_fails", {const: true}]
-    note: "The archived text does not define this aggregate; I read it as the selected filing status conflicting with the factual marital, HOH and QSS facts: single only when no HOH/QSS qualification and not married; MFJ/MFS only when married at year end or the spouse died in 2025; HOH and QSS only when their tests pass."
+            - {op: test, eq: [household.h_status_mfs, {const: true}]}
+            - {op: test, not: {op: test, eq: [household.h_married_or_widowed, {const: true}]}}
+    note: "Reads filing_status_conflict as selected status contradicting marital facts, HOH eligibility or QSS eligibility; it does not test whether a lower-tax status was available."
+  - id: household.h_person_count
+    printed: "(helper)"
+    label: "Number of person entries on the return"
+    type: Count
+    expr: {op: sum_over, collection: person, field: person.one}
+  - id: household.h_dependent_count
+    printed: "(helper)"
+    label: "Number of dependent entries"
+    type: Count
+    expr: {op: sum_over, collection: dependent, field: dependent.one}
+  - id: household.h_bad_roster_count
+    printed: "(helper)"
+    label: "Dependent entries that cannot be claimed"
+    type: Count
+    expr:
+      op: sum_over
+      collection: dependent
+      field: dependent.one
+      where:
+        op: test
+        not:
+          op: test
+          eq: [dependent.claimed, {const: true}]
+  - id: household.h_hsa_person_count
+    printed: "(helper)"
+    label: "Person entries reporting an HSA form"
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.one
+      where:
+        op: test
+        gt: [person.hsa_forms, {const: 0, type: Count}]
+  - id: household.h_eic_ssn_fail_person
+    printed: "(helper)"
+    label: "Person entries lacking an EIC-valid SSN"
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.one
+      where:
+        op: test
+        not:
+          op: test
+          eq: [person.eic_ssn, {const: true}]
+  - id: household.h_eic_ssn_fail_dependent
+    printed: "(helper)"
+    label: "Qualifying children lacking an EIC-valid SSN"
+    type: Count
+    expr:
+      op: sum_over
+      collection: dependent
+      field: dependent.one
+      where:
+        op: test
+        all:
+          - {op: test, eq: [dependent.qualifying_child, {const: true}]}
+          - op: test
+            not:
+              op: test
+              eq: [dependent.eic_ssn, {const: true}]
+  - id: household.h_tin_fail_count
+    printed: "(helper)"
+    label: "Claimed dependents lacking a TIN"
+    type: Count
+    expr:
+      op: sum_over
+      collection: dependent
+      field: dependent.one
+      where:
+        op: test
+        all:
+          - {op: test, eq: [dependent.claimed, {const: true}]}
+          - op: test
+            not:
+              op: test
+              eq: [dependent.tin, {const: true}]
+  - id: household.h_ctc_ssn_fail_count
+    printed: "(helper)"
+    label: "CTC children lacking a work-valid SSN"
+    type: Count
+    expr:
+      op: sum_over
+      collection: dependent
+      field: dependent.one
+      where:
+        op: test
+        all:
+          - {op: test, eq: [dependent.ctc_child, {const: true}]}
+          - op: test
+            not:
+              op: test
+              eq: [dependent.work_ssn, {const: true}]
+  - id: household.h_work_ssn_count
+    printed: "(helper)"
+    label: "Person entries with a work-valid SSN"
+    type: Count
+    expr:
+      op: sum_over
+      collection: person
+      field: person.one
+      where:
+        op: test
+        eq: [person.work_ssn, {const: true}]
+  - id: household.h_hoh_person_count
+    printed: "(helper)"
+    label: "Dependents who qualify as the head-of-household person"
+    type: Count
+    expr:
+      op: sum_over
+      collection: dependent
+      field: dependent.one
+      where:
+        op: test
+        any:
+          - {op: test, eq: [dependent.hoh_test1, {const: true}]}
+          - {op: test, eq: [dependent.hoh_test2, {const: true}]}
+  - id: household.h_status_single
+    printed: "(helper)"
+    label: "Selected filing status is single"
+    type: Bool
+    expr: {op: test, eq: [f1040.status, {const: "single"}]}
+  - id: household.h_status_mfj
+    printed: "(helper)"
+    label: "Selected filing status is married filing jointly"
+    type: Bool
+    expr: {op: test, eq: [f1040.status, {const: "mfj"}]}
+  - id: household.h_status_mfs
+    printed: "(helper)"
+    label: "Selected filing status is married filing separately"
+    type: Bool
+    expr: {op: test, eq: [f1040.status, {const: "mfs"}]}
+  - id: household.h_status_hoh
+    printed: "(helper)"
+    label: "Selected filing status is head of household"
+    type: Bool
+    expr: {op: test, eq: [f1040.status, {const: "hoh"}]}
+  - id: household.h_status_qss
+    printed: "(helper)"
+    label: "Selected filing status is qualifying surviving spouse"
+    type: Bool
+    expr: {op: test, eq: [f1040.status, {const: "qss"}]}
+  - id: household.h_married_or_widowed
+    printed: "(helper)"
+    label: "Married at year end or spouse died in 2025"
+    type: Bool
+    expr:
+      op: test
+      any:
+        - {op: test, eq: [household.married, {const: true}]}
+        - {op: test, eq: [household.widowed_2025, {const: true}]}
 ```

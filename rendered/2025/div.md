@@ -133,6 +133,7 @@
 
 - **Authored helper label:** A gain component exceeds total capital gain distributions
 - **Encoded (Bool):** (helper "Unrecaptured section 1250 gain, box 2b" > sd helper "Capital gain distributions, generally Form 1099-DIV box 2a" or helper "Section 1202 gain, box 2c" > sd helper "Capital gain distributions, generally Form 1099-DIV box 2a" or helper "Collectibles (28%) gain, box 2d" > sd helper "Capital gain distributions, generally Form 1099-DIV box 2a" or helper "Total special capital-gain distribution components" > sd helper "Capital gain distributions, generally Form 1099-DIV box 2a")
+- Interpretation: amb.2025.div_gain_portions_disjoint
 - Expr: `{"any":[{"gt":["div.box2b","sd.distributions"],"op":"test"},{"gt":["div.box2c","sd.distributions"],"op":"test"},{"gt":["div.box2d","sd.distributions"],"op":"test"},{"gt":["div.special_total","sd.distributions"],"op":"test"}],"op":"test"}`
 - Cite: [f1099div] p. 5, Instructions for Recipient, boxes 2b to 2d, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain" (January 2024 (continuous-use form); sha256 4ea1de80)
 

@@ -763,7 +763,7 @@ Counts:
 Findings (transcription): none of medium or higher severity. Low L1 (for T-092) in
 `.transcription/proposed/t091/dependent.findings.md`.
 
-## T-091 round 2
+## T-091 round 2 (superseded subject)
 
 Subject after BUG-0267 (the correction of T-091 before commit): `dependent.hoh_test2_lived` (the former Test 2 expression),
 `dependent.hoh_test2` = `hoh_test2_lived` and not `absence_no_return`, `dependent.hoh_absence` = `hoh_test2_lived` and
@@ -840,3 +840,96 @@ Counts:
 | deepseek | class M | classm.dependent.8 — dependent[dep_b].dc_line2d | representation (drop) | same inputs as Claude | i2441 p. 3, Line 2 | Same as Claude. |
 
 Findings (transcription): none. `.transcription/proposed/t091r2/dependent.findings.md`.
+
+## Backlog round
+
+Subject after the person-dep and p4-docs packages (2026-11-03, uncommitted on main 3affaa5): `dependent.dc_paid` states the
+care-expense rules of T-184 and leaves out the value of employer-furnished care (T-123); `dependent.supported` states the
+five residual support rules (T-185); `dependent.eic_ssn` links `amb.2025.eic_valid_ssn`. No expression changed. Fresh replies
+of 2026-11-03 from claude-opus-5-5, deepseek-flash and gpt-6-astra (first gpt review of this form). Rulings:
+`.transcription/proposed/bklg/{transcription,render}.dependent[.deepseek|.gpt].json`; findings
+`.transcription/proposed/bklg/dependent.findings.md`. All three replies are valid and were triaged with the witness cap lifted
+(triage.py's triage() called directly; scratch `/tmp/adj-bklg-dep-f2441/triage/`; executable-triage-v2, 1,495 fixtures, 500
+generated returns seed 20261026, 2,946 partial records from 40 bases, 9,011 comparisons per line). The committed records in
+`../triage/` predate these replies and were not rewritten. Every completed-return value difference was traced to a cause:
+the Claude reply's household_member test without qr_all_year (claimed, odc), the missing f2441.care test (dc_qp, dc_count),
+and, for deepseek and gpt, married-no/joint-return-yes records the interview cannot produce, plus deepseek's exclusion of a
+non-citizen qualifying child from Test 2 (6 consistent records).
+
+No finding; no error introduced by either package (wording and links only; each new sentence checked against its quote).
+Low L1 (predates this round): the `dependent.dc_count` label "One qualifying person" for a per-entry constant, which two
+f2441 replies summed unfiltered.
+
+Counts:
+- Claude transcription: model error 13, scope 6.
+- Deepseek transcription: model error 15, scope 5, representation 1.
+- GPT transcription: model error 12, scope 8.
+- Render (Claude, deepseek, gpt): ambiguity 1 each.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | dependent.claimed | model error | 8,616/9,011 agree; completed returns: 21 candidate-unknown, 7 value, 2 candidate-refuses | i1040gi p. 19, Step 4; p501 p. 21 | household_member passes without qr_all_year (all 7 completed values); multiple-support refusal reaches qualifying children. |
+| claude | transcription | dependent.ctc_child | scope | 8,803/9,011 agree; completed returns: 14 candidate-unknown, 2 candidate-refuses | i1040gi p. 18, Step 3 | Project's Step 3 test; differences are refusals; 1 value on a refused return (classm.sc.2). |
+| claude | transcription | dependent.odc_person | model error | 8,700/9,011 agree; completed returns: 18 candidate-unknown, 7 value, 2 candidate-refuses | i1040gi p. 19, Step 5 | Inherits claimed (7 completed values). |
+| claude | transcription | dependent.ctc_amount | scope | 8,803/9,011 agree; completed returns: 14 candidate-unknown, 2 candidate-refuses | f1040s8812 line 5 | Inherits ctc_child. |
+| claude | transcription | dependent.odc_amount | model error | 8,700/9,011 agree; completed returns: 18 candidate-unknown, 7 value, 2 candidate-refuses | f1040s8812 line 7 | Inherits odc_person ($0.00 against $500.00, 7 completed). |
+| claude | transcription | dependent.actc_amount | scope | 8,803/9,011 agree; completed returns: 14 candidate-unknown, 2 candidate-refuses | f1040s8812 line 16b | Inherits ctc_child. |
+| claude | transcription | dependent.hoh_absence | scope | 8,855/9,011 agree; completed returns: 2 candidate-refuses, 1 candidate-unknown | i1040gi p. 14, Test 2; p501 p. 9 | Project's design; cited refusals and 1 partial record. |
+| claude | transcription | dependent.hoh_test2 | model error | 8,436/9,011 agree; completed returns: 42 project-unknown, 17 candidate-unknown, 2 candidate-refuses | i1040gi p. 14, Test 2; p501 p. 9, Death or birth | No part-year route; counts a non-returning absence (t091 regressions); no completed value. |
+| claude | transcription | dependent.hoh_test1 | scope | 8,807/9,011 agree; completed returns: none | i1040gi p. 14, Test 1 | Project's test; project refusals only. |
+| claude | transcription | dependent.dc_qp | model error | 5,679/9,011 agree; completed returns: 1,080 value, 56 candidate-unknown, 2 candidate-refuses | i2441 p. 1, Qualifying Person(s); p503 p. 3 | No f2441.care test (1,080 completed values); no death-year route. |
+| claude | transcription | dependent.dc_count | model error | 2,379/9,011 agree; completed returns: 2,447 value, 56 candidate-unknown, 2 candidate-refuses | i2441 p. 3, Line 2 | 1 or 0 by its dc_qp; inherits dc_qp. |
+| claude | transcription | dependent.ptc_magi_counted | scope | 8,357/9,011 agree; completed returns: 34 project-unknown, 2 candidate-refuses | i8962 p. 8, Line 2b | Representation of the project's line; partial records and its refusals. |
+| claude | transcription | 2(d) | model error | 7,343/9,011 agree; completed returns: 74 candidate-unknown, 2 candidate-refuses | i2441 p. 3, Column (d) | Inherits dc_qp (death-year value $4,000.00 against $0.00, incomplete). |
+| claude | transcription | 2(c) | model error | 7,865/9,011 agree; completed returns: 30 candidate-unknown, 4 candidate-shows-skipped, 2 candidate-refuses | i2441 p. 3, Column (c) | Inherits dc_qp: 4 completed boxes checked without care. |
+| claude | transcription | 27 | model error | 4,657/9,011 agree; completed returns: 1,294 candidate-unknown, 2 candidate-refuses | i8863 p. 3, item 5; p970 p. 11 | Requires an issued TIN for the AOC (f1.t113.dep_aoc_applied $4,000.00 against $0.00); edu_over asked of every entry. |
+| claude | transcription | 28 | model error | 4,657/9,011 agree; completed returns: 1,294 candidate-unknown, 2 candidate-refuses | i8863 p. 3, item 5; p970 p. 11 | As line 27. |
+| claude | transcription | 29 | model error | 4,657/9,011 agree; completed returns: 1,294 candidate-unknown, 2 candidate-refuses | i8863 p. 3, item 5; p970 p. 11 | As line 27. |
+| claude | transcription | 30 | model error | 4,657/9,011 agree; completed returns: 1,294 candidate-unknown, 2 candidate-refuses | i8863 p. 3, item 5; p970 p. 11 | As line 27. |
+| claude | transcription | 31 | model error | 4,652/9,011 agree; completed returns: 1,294 candidate-unknown, 2 candidate-refuses | i8863 p. 3, item 5; p970 p. 11; i8863 p. 9 | As line 27; 2 values on refused returns. |
+| deepseek | transcription | dependent.claimed | model error | 8,560/9,011 agree; completed returns: 61 candidate-unknown, 11 value, 2 candidate-refuses | i1040gi p. 19, Step 4; p501 p. 21 | sibling_descendant needs no household test; joint_return asked of unmarried persons; 11 completed values all married-no/joint-yes records. |
+| deepseek | transcription | dependent.ctc_child | scope | 8,826/9,011 agree; completed returns: 14 candidate-unknown, 2 candidate-refuses | i1040gi p. 18, Step 3 | Refusals only; 1 value on a refused return. |
+| deepseek | transcription | dependent.odc_person | model error | 8,574/9,011 agree; completed returns: 58 candidate-unknown, 11 value, 2 candidate-refuses | i1040gi p. 19, Step 5 | Inherits claimed. |
+| deepseek | transcription | dependent.ctc_amount | scope | 8,826/9,011 agree; completed returns: 14 candidate-unknown, 2 candidate-refuses | f1040s8812 line 5 | Inherits ctc_child. |
+| deepseek | transcription | dependent.odc_amount | model error | 8,574/9,011 agree; completed returns: 58 candidate-unknown, 11 value, 2 candidate-refuses | f1040s8812 line 7 | Inherits odc_person. |
+| deepseek | transcription | dependent.actc_amount | scope | 8,826/9,011 agree; completed returns: 14 candidate-unknown, 2 candidate-refuses | f1040s8812 line 16b | Inherits ctc_child. |
+| deepseek | transcription | dependent.hoh_absence | model error | 8,615/9,011 agree; completed returns: 10 candidate-unknown | i1040gi p. 14, Test 2; p501 p. 9 | absence_no_return copied for every entry (10 completed unknowns). |
+| deepseek | transcription | dependent.hoh_test2 | model error | 8,381/9,011 agree; completed returns: 41 candidate-unknown, 13 value, 3 project-unknown, 2 candidate-refuses | i1040gi p. 14, Test 2; p501 p. 9 | Drops a non-citizen unmarried qualifying child (6 completed values on consistent records); no part-year route. |
+| deepseek | transcription | dependent.hoh_test1 | model error | 8,671/9,011 agree; completed returns: 20 candidate-unknown, 2 candidate-refuses | i1040gi p. 14, Test 1 | Inherits claimed (joint_return asked). |
+| deepseek | transcription | dependent.eic_child | scope | 8,691/9,011 agree; completed returns: 4 project-unknown, 1 candidate-unknown | i1040gi pp. 20, 41 | divorced_rule refusals; partial records withholding kidnapped. |
+| deepseek | transcription | dependent.eic_ssn_child | scope | 8,693/9,011 agree; completed returns: 4 project-unknown, 1 candidate-unknown | i1040gi p. 46 | Inherits eic_child. |
+| deepseek | transcription | dependent.dc_qp | model error | 3,958/9,011 agree; completed returns: 1,938 value, 84 candidate-unknown, 2 candidate-refuses | i2441 p. 1, Qualifying Person(s) | No f2441.care test (1,938 completed values). |
+| deepseek | transcription | dependent.dc_count | model error | 3,922/9,011 agree; completed returns: 1,561 value, 84 candidate-unknown, 2 candidate-refuses | i2441 p. 3, Line 2 | Inherits dc_qp. |
+| deepseek | transcription | dependent.ptc_magi_counted | representation | 9,011/9,011 agree; completed returns: none | i8962 p. 8, Line 2b | No difference. |
+| deepseek | transcription | 2(d) | model error | 7,027/9,011 agree; completed returns: 114 candidate-unknown, 2 candidate-refuses | i2441 p. 3, Column (d) | Inherits dc_qp; 133 shows-skipped on refused returns. |
+| deepseek | transcription | 2(c) | model error | 7,869/9,011 agree; completed returns: 37 candidate-unknown | i2441 p. 3, Column (c) | No qualifying-person test; dc_incapable asked of every entry 13 or older. |
+| deepseek | transcription | 27 | model error | 4,878/9,011 agree; completed returns: 1,274 candidate-unknown, 1 candidate-shows-skipped | i8863 p. 3, item 5; p970 p. 11 | No claimed test (edu asked of every entry); issued TIN required; 1 completed shows-skipped. |
+| deepseek | transcription | 28 | model error | 4,878/9,011 agree; completed returns: 1,274 candidate-unknown, 1 candidate-shows-skipped | i8863 p. 3, item 5; p970 p. 11 | As line 27. |
+| deepseek | transcription | 29 | model error | 4,878/9,011 agree; completed returns: 1,274 candidate-unknown, 1 candidate-shows-skipped | i8863 p. 3, item 5; p970 p. 11 | As line 27. |
+| deepseek | transcription | 30 | model error | 4,878/9,011 agree; completed returns: 1,274 candidate-unknown, 1 candidate-shows-skipped | i8863 p. 3, item 5; p970 p. 11 | As line 27. |
+| deepseek | transcription | 31 | model error | 4,874/9,011 agree; completed returns: 1,274 candidate-unknown | i8863 p. 3, item 5; p970 p. 11 | As line 27. |
+| gpt | transcription | dependent.claimed | model error | 8,522/9,011 agree; completed returns: 83 candidate-unknown, 11 value, 2 candidate-refuses | i1040gi p. 19, Step 4; p501 pp. 18, 21 | joint_return required of everyone; kidnapped children refused; 11 completed values all married-no/joint-yes records. |
+| gpt | transcription | dependent.ctc_child | scope | 8,781/9,011 agree; completed returns: 28 candidate-unknown, 2 candidate-refuses | i1040gi p. 18, Step 3 | Refusals; 11 values on refused returns (no dependent TIN test, refused by the project). |
+| gpt | transcription | dependent.odc_person | model error | 8,583/9,011 agree; completed returns: 78 candidate-unknown, 11 value, 2 candidate-refuses | i1040gi p. 19, Step 5 | Inherits claimed. |
+| gpt | transcription | dependent.ctc_amount | scope | 8,781/9,011 agree; completed returns: 28 candidate-unknown, 2 candidate-refuses | f1040s8812 line 5 | Inherits ctc_child (refused returns only). |
+| gpt | transcription | dependent.odc_amount | model error | 8,583/9,011 agree; completed returns: 78 candidate-unknown, 11 value, 2 candidate-refuses | f1040s8812 line 7 | Inherits odc_person. |
+| gpt | transcription | dependent.actc_amount | scope | 8,781/9,011 agree; completed returns: 28 candidate-unknown, 2 candidate-refuses | f1040s8812 line 16b | Inherits ctc_child. |
+| gpt | transcription | dependent.hoh_absence | scope | 8,873/9,011 agree; completed returns: 2 candidate-refuses, 1 candidate-unknown | i1040gi p. 14, Test 2; p501 p. 9 | Project's design; refusals only. |
+| gpt | transcription | dependent.hoh_test2 | model error | 8,608/9,011 agree; completed returns: 67 candidate-unknown, 7 value, 2 candidate-refuses, 1 project-unknown | i1040gi p. 14, Test 2; p501 p. 9 | Inherits claimed (7 contradictory completed values); per-person absence refusal. |
+| gpt | transcription | dependent.hoh_test1 | model error | 8,674/9,011 agree; completed returns: 21 candidate-unknown, 2 candidate-refuses | i1040gi p. 14, Test 1 | Inherits claimed. |
+| gpt | transcription | dependent.eic_child | scope | 8,512/9,011 agree; completed returns: 6 candidate-unknown | i1040gi pp. 41, 43-45 | Refusals (divorced_rule, h_competing, kidnapping) only. |
+| gpt | transcription | dependent.eic_ssn_child | scope | 8,513/9,011 agree; completed returns: 6 candidate-unknown | i1040gi p. 46 | Inherits eic_child. |
+| gpt | transcription | dependent.dc_qp | model error | 5,626/9,011 agree; completed returns: 1,066 value, 69 candidate-unknown, 2 candidate-refuses | i2441 p. 1, Qualifying Person(s) | No f2441.care test (1,066 completed values). |
+| gpt | transcription | dependent.ptc_magi_counted | scope | 8,284/9,011 agree; completed returns: 36 project-unknown, 2 candidate-refuses | i8962 p. 8, Line 2b | Representation; refusals and partial records. |
+| gpt | transcription | 2(d) | model error | 7,096/9,011 agree; completed returns: 87 candidate-unknown, 2 candidate-refuses | i2441 p. 3, Column (d) | Inherits dc_qp. |
+| gpt | transcription | 2(c) | scope | 7,858/9,011 agree; completed returns: 12 candidate-unknown, 2 candidate-refuses | i2441 p. 3, Column (c) | No value; refusals from its claimed. |
+| gpt | transcription | 27 | model error | 8,744/9,011 agree; completed returns: 4 candidate-unknown, 2 candidate-refuses, 1 value | i8863 p. 3, item 5; p970 p. 11 | Issued TIN required for the AOC (classm.f8863.2, classm.aqee.1); completed value is a contradictory record. |
+| gpt | transcription | 28 | model error | 8,745/9,011 agree; completed returns: 4 candidate-unknown, 2 candidate-refuses | i8863 p. 3, item 5; p970 p. 11 | As line 27. |
+| gpt | transcription | 29 | model error | 8,745/9,011 agree; completed returns: 4 candidate-unknown, 2 candidate-refuses | i8863 p. 3, item 5; p970 p. 11 | As line 27. |
+| gpt | transcription | 30 | model error | 8,744/9,011 agree; completed returns: 4 candidate-unknown, 2 candidate-refuses, 1 value | i8863 p. 3, item 5; p970 p. 11 | As line 27. |
+| gpt | transcription | 31 | model error | 8,738/9,011 agree; completed returns: 4 candidate-unknown, 2 candidate-refuses | i8863 p. 3, item 5; p970 p. 11 | As line 27. |
+| claude | render | 2(d) | ambiguity | render MISMATCH | amb.2025.dc_line30; i2441 p. 3, Column (d) | Rejected reading (column (d) net of benefits); dc_paid wording changes do not touch it. |
+| deepseek | render | 2(d) | ambiguity | render MISMATCH | amb.2025.dc_line30; i2441 p. 3, Column (d) | Rejected reading (column (d) net of benefits); dc_paid wording changes do not touch it. |
+| gpt | render | 2(d) | ambiguity | render MISMATCH | amb.2025.dc_line30; i2441 p. 3, Column (d) | Rejected reading (column (d) net of benefits); dc_paid wording changes do not touch it. |
+
+Findings: none of medium or higher severity. `.transcription/proposed/bklg/dependent.findings.md`.

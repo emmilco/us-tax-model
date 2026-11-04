@@ -7,12 +7,30 @@ the fixture test compares).
 
 | Metric | Value |
 | --- | --- |
-| Mutants | 2798 |
-| Killed by the checker | 296 |
-| Killed by fixtures | 2375 |
+| Mutants | 2805 |
+| Killed by the checker | 298 |
+| Killed by fixtures | 2380 (10 only by class M cases) |
 | Surviving | 127 (127 provably equivalent) |
 | Mutation score (raw) | 95.5% |
 | Mutation score (equivalent mutants excluded) | 100.0% |
+
+## Killed only by class M cases
+
+A class M rerun regenerates its cases, so these kills can be lost. Before replacing a case named here,
+keep it (or a stage fixture with the same facts and source-predicted values) among the stage fixtures.
+
+| Mutant | Kind | Location | First class M case killing it |
+| --- | --- | --- | --- |
+| filter.f8880.f8880.line2a | remove collection filter | f8880.f8880.line2a | classm.f8880.2.deepseek |
+| boundary.person.person.ira_files_8606 | replace strict greater-than with inclusive | person.person.ira_files_8606 | classm.f8606.1 |
+| operand.s3.s3.line15.line9 | replace an operand | s3.s3.line15 | classm.s3.2.deepseek |
+| operand.sales.sales.wash_over.b | replace an operand | sales.sales.wash_over | classm.f1040.6.deepseek |
+| operand.scveh.scveh.line19_hy.rate_hy.rate | replace an operand | scveh.scveh.line19_hy | classm.sc.2 |
+| operand.sdtw.sdtw.line5.line3 | replace an operand | sdtw.sdtw.line5 | classm.f1040.2.deepseek |
+| minmax.sdtw.sdtw.line7 | swap smaller_of/larger_of | sdtw.sdtw.line7 | classm.f1040.2.deepseek |
+| operand.sdtw.sdtw.line13.line10 | replace an operand | sdtw.sdtw.line13 | classm.f1040.2.deepseek |
+| boundary.w2.w2.has_box10 | replace strict greater-than with inclusive | w2.w2.has_box10 | classm.f2441.2.deepseek |
+| boundary.w2.w2.box10_bad | replace strict greater-than with inclusive | w2.w2.box10_bad | classm.w2.1.deepseek |
 
 ## Surviving — classified equivalent
 
@@ -26,7 +44,6 @@ the fixture test compares).
 - `boundary.eic.eic.wsb_4b_positive` (replace strict greater-than with inclusive, eic.eic.wsb_4b_positive): The inclusive test differs only at Worksheet B line 4b = 0. wsb_4b_positive is read only by the line 5 stop, an all-test that requires self-employment before it and, after it, Step 5 question 3 to be No; for a self-employed filer question 3 compares line 4b with the EIC limit, so at line 4b = 0 it asks whether 0 < limit, which holds for every limit (all are positive). The stop is therefore false on both routes, and question 3 reads only lines the stop has already evaluated without refusal, so no refusal is newly reached. (structural conditions re-checked this run.)
 - `operand.f2441.f2441.line11.line10` (replace an operand, f2441.f2441.line11): Copy-chain identity: f2441.line10 and f2441.clw3 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f2441.f2441.line25.line24` (replace an operand, f2441.f2441.line25): Floor-minus-min identity: f2441.line25 is f2441.line24_20_21 less f2441.line24, floored at zero, and one of f2441.line24 and f2441.line22 is the ungated smaller of f2441.line24_20_21 and the other, so f2441.line24_20_21 less either, floored at zero, is the same at every input; f2441.line24_20_21 is read first on both routes and the other operand second, so the same refusal or unknown wins.
-- `refusal.f4952.f4952.required.1` (remove refusal, f4952.f4952.required): The removed refusal (the alternative-allocation gate, after the unsupported-items gate) is carried by f4952.election, the first operand f4952.required reads: election refuses on the same gates in the same order with the same records, and the any-test returns the first refusal it meets. With the gate No both routes evaluate the same expression; with it Yes both refuse on the same record (the unsupported-items gate first on both); with it unanswered, the unknown election is the first pending value on both, and line 3 reaches the same gate through line 2. (structural conditions re-checked this run.)
 - `operand.f5329.f5329.l49_base.l48` (replace an operand, f5329.f5329.l49_base): Copy-chain identity: f5329.l48 and f5329.l47 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f5695.f5695.line15.line14` (replace an operand, f5695.f5695.line15): Copy-chain identity: f5695.line14 and f5695.rce_ws3 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f5695.f5695.line16.line15` (replace an operand, f5695.f5695.line16): Floor-minus-min identity: f5695.line16 is f5695.line13 less f5695.line15, floored at zero, and one of f5695.line15 and f5695.line14 is the ungated smaller of f5695.line13 and the other, so f5695.line13 less either, floored at zero, is the same at every input; f5695.line13 is read first on both routes and the other operand second, so the same refusal or unknown wins.
@@ -40,7 +57,7 @@ the fixture test compares).
 - `operand.f5695.f5695.enabling_30.eehi_rate.rate` (replace an operand, f5695.f5695.enabling_30): Copy-chain identity: f5695.eehi_rate and f5695.rce_rate expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f5695.f5695.audit_30.eehi_rate.rate` (replace an operand, f5695.f5695.audit_30): Copy-chain identity: f5695.eehi_rate and f5695.rce_rate expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f5695.f5695.hp_30.eehi_rate.rate` (replace an operand, f5695.f5695.hp_30): Copy-chain identity: f5695.eehi_rate and f5695.rce_rate expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
-- `operand.f5695.f5695.line32.line31` (replace an operand, f5695.f5695.line32): Copy-chain identity: f5695.line31 and f5695.eehi_ws3 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
+- `operand.f5695.f5695.eehi_credit.line31` (replace an operand, f5695.f5695.eehi_credit): Copy-chain identity: f5695.line31 and f5695.eehi_ws3 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8863.f8863.clw3.clw1` (replace an operand, f8863.f8863.clw3): Copy-chain identity: f8863.clw1 and f8863.line18 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8959.f8959.line3.zero` (replace an operand, f8959.f8959.line3): Copy-chain identity: f8959.zero and f8959.line2 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.f8959.f8959.line23.zero` (replace an operand, f8959.f8959.line23): Copy-chain identity: f8959.zero and f8959.line14 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
@@ -103,6 +120,7 @@ the fixture test compares).
 - `operand.sa.sa.line13.zero` (replace an operand, sa.sa.line13): Copy-chain identity: sa.zero and sa.line8c expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.sa.sa.line15.zero` (replace an operand, sa.sa.line15): Copy-chain identity: sa.zero and sa.line13 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `boundary.sc.sc.ho_over` (replace strict greater-than with inclusive, sc.sc.ho_over): The home office test 'square feet more than the cap' made inclusive adds only square feet equal to the cap, where the rate times the square feet and the rate times the cap are the same amount. The test is read only by line 4. (structural conditions re-checked this run.)
+- `operand.sc.sc.ho_both.zero` (replace an operand, sc.sc.ho_both): sc.ho_both is a helper whose only reader is sc.ho_line5_lim, in its ho_no179-false alternative; ho_line5_lim is a helper whose only reader is sc.ho_line5, in its ho_unlimited-false alternative. A printed line therefore reads ho_both only after ho_unlimited and ho_no179 were found known false in the frame (spec 4.7.3, 4.7.6), and then ho_both's gate ho_both_limits, the all-test of those two being false, is true, so ho_both is its refusal at line entry and its expression, the only part the mutant changes, is not evaluated (4.7.1). With the gate false (ho_both or ho_line5_lim evaluated as a target) only those two helpers' own values differ. (Premises pinned: sc.ho_both, sc.ho_both_limits, sc.ho_line5_lim, sc.ho_line5, sc.ho_unlimited, sc.ho_no179, sc.ho_pre179_floor, sc.zero.) (structural conditions re-checked this run.)
 - `operand.sc.sc.f7206_min.f7206_line13` (replace an operand, sc.sc.f7206_min): Copy-chain identity: sc.f7206_line13 and sc.f7206_line10 expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.scveh.scveh.bonus_forty.line15` (replace an operand, scveh.scveh.bonus_forty): Copy-chain identity: scveh.line15 and scveh.bonus_full expand to the same value, including remaining refusal gates. Identical gates already checked by the containing line are redundant within its expression.
 - `operand.scveh.scveh.line17.line16` (replace an operand, scveh.scveh.line17): Floor-minus-min identity: scveh.line17 is scveh.line11 less scveh.line16, floored at zero, and one of scveh.line16 and scveh.bonus_allowed is the ungated smaller of scveh.line11 and the other, so scveh.line11 less either, floored at zero, is the same at every input; scveh.line11 is read first on both routes and the other operand second, so the same refusal or unknown wins.

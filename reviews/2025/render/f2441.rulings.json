@@ -62,6 +62,13 @@
    "ruling": "Ruling: scope/representation; i2441 (2025) p. 4 Lines 4 and 5 requires spouses to figure earned income separately; f1040 (2025) p. 1 line 1a takes W-2 box 1 and line 1z adds 1a-1h. scope.other_income excludes 1b-1d/1f-1h and is enforced at scope.ready/f1040.line8; statutory-employee/clergy cases are excluded by scope.schedule1, sc.statutory and person.se_screened. Thus the supported wage total is W-2 box 1 plus taxable dependent-care benefits (1e), allocated per the existing owner ruling amb.2025.dc_line1e_attribution (Stage 15 decision 6). person.dc_earned adds each person's wage share, that attribution and net SE earnings; dc_earned_b omits the benefits as i2441 p. 5 Line 18 requires. The excerpt's missing Form 1040 page is a real context limitation, supplied in this adjudication; it is not model noise or a claim of support for the excluded cases."
   },
   {
+   "printed": "18",
+   "restated": "Add person.dc_earned_b over every confirmed person entry for which helper \"Whose entry is this, yours or your spouse's?\" = 'taxpayer', within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Uses W-2 box 1 plus self-employment earnings only. Lines 18–19 earned income is 'determined in the same way as earned income for figuring the credit', which starts from 'Form 1040... line 1z'. Lines 1b–1d and 1f–1h are omitted with no refusal.",
+   "ruling": "Ruling: scope; the model says person.dc_earned_b omits the other line 1z parts. The amounts the model names are refused on every return the tool computes: Form 1040 lines 1b to 1d and 1f to 1h by scope.other_income (f1040.line8, scope.ready), statutory-employee income by sc.statutory (sc.line1), Schedule SE items outside the tool by person.se_screened; on the remaining returns line 1z is lines 1a and 1e. i2441 p. 4, Lines 4 and 5, earned income starts from \"The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z\". Same ruling as the hardening round; this round changes only the person.dc_earned_b label (T-121), not an expression of person.dc_earned or dc_earned_b. i2441 p. 5, Line 18: \"for purposes of lines 18 and 19, earned income doesn't include any dependent care benefits shown on line 12\"; the case where part of line 1e is line 13's and could change line 25 is refused by the new f2441.line13_earned. Project stands.",
+   "context": "f93759f4535956bc49b6000766a5bec4db03494b720fbbe67ce8e45a0b1dbf19"
+  },
+  {
    "printed": "19",
    "restated": "Choose — [helper \"Married filing jointly\" = true → helper \"Your spouse's earned income for line 19\"] [helper \"Married filing jointly\" = false → line 18]",
    "model": "The branching follows the line text, and married filing separately is refused at lines 11 and 26. But the spouse's earned income uses the same per-person total, which leaves out the line 1z parts other than W-2 box 1 (lines 1b, 1c, 1d, 1g, 1h).",
@@ -87,6 +94,13 @@
    "model": "The structure (spouse's earned income if filing jointly, otherwise line 18) and the refusals are right. However, the spouse's amount uses person.dc_earned_b, which omits the other Form 1040 line 1z components that the instructions for lines 4 and 5 include.",
    "ruling": "Ruling: scope; the model accepts the structure and refusals but says the spouse's person.dc_earned_b omits the other line 1z components. The amounts the model names are refused on every return the tool computes: Form 1040 lines 1b to 1d and 1f to 1h (household employee wages, tips not on a W-2, Medicaid waiver payments, adoption benefits, Form 8919 wages, other earned income) by scope.other_income (refused at f1040.line8 and scope.ready), statutory-employee and notary income by sc.statutory (sc.screened at sc.line1), and Schedule SE items outside the tool by person.se_screened. On the remaining returns line 1z is lines 1a and 1e, and person.dc_earned_b takes box 1 wages and net self-employment earnings without the line 12 benefits. i2441 p. 4, Lines 4 and 5, earned income starts from \"The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z\" and adds statutory-employee Schedule C line 1 and net self-employment earnings; p. 5, Line 18, \"Earned income ... is determined in the same way as earned income for figuring the credit ... however, for purposes of lines 18 and 19, earned income doesn't include any dependent care benefits shown on line 12\". Same ruling as the earlier rounds.",
    "context": "538b21441332d29f7f64d59eb883c7e99dd6395100e3e93e54408bfd88605b70"
+  },
+  {
+   "printed": "19",
+   "restated": "Choose — [helper \"Married filing jointly\" = true → helper \"Your spouse's earned income for line 19\"] [helper \"Married filing jointly\" = false → line 18]",
+   "model": "The structure is right: spouse's earned income if filing jointly, otherwise line 18. But the spouse's amount uses the same composite, which omits parts of 'Form 1040... line 1z' (lines 1b–1d, 1f–1h) with no refusal.",
+   "ruling": "Ruling: scope; as line 18 for the spouse. The amounts the model names are refused on every return the tool computes: Form 1040 lines 1b to 1d and 1f to 1h by scope.other_income (f1040.line8, scope.ready), statutory-employee income by sc.statutory (sc.line1), Schedule SE items outside the tool by person.se_screened; on the remaining returns line 1z is lines 1a and 1e. i2441 p. 4, Lines 4 and 5, earned income starts from \"The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z\". Same ruling as the hardening round; this round changes only the person.dc_earned_b label (T-121), not an expression of person.dc_earned or dc_earned_b. Project stands.",
+   "context": "f93759f4535956bc49b6000766a5bec4db03494b720fbbe67ce8e45a0b1dbf19"
   },
   {
    "printed": "19",
@@ -126,6 +140,13 @@
    "model": "Earned income here is W-2 box 1 plus the line 1e share plus Worksheet B. The instructions instead start from 'The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z', which also includes lines 1b, 1c, 1d, 1f, 1g and 1h. Those amounts are omitted and no refusal covers them.",
    "ruling": "Ruling: scope; the model says person.dc_earned omits Form 1040 lines 1b, 1c, 1d, 1f, 1g and 1h with no refusal. The amounts the model names are refused on every return the tool computes: Form 1040 lines 1b to 1d and 1f to 1h (household employee wages, tips not on a W-2, Medicaid waiver payments, adoption benefits, Form 8919 wages, other earned income) by scope.other_income (refused at f1040.line8 and scope.ready), statutory-employee and notary income by sc.statutory (sc.screened at sc.line1), and Schedule SE items outside the tool by person.se_screened. On the remaining returns line 1z is lines 1a and 1e, which person.dc_earned adds per person (amb.2025.dc_line1e_attribution) with net self-employment earnings. i2441 p. 4, Lines 4 and 5, earned income starts from \"The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z\" and adds statutory-employee Schedule C line 1 and net self-employment earnings; p. 5, Line 18, \"Earned income ... is determined in the same way as earned income for figuring the credit ... however, for purposes of lines 18 and 19, earned income doesn't include any dependent care benefits shown on line 12\". Same ruling as the earlier rounds.",
    "context": "538b21441332d29f7f64d59eb883c7e99dd6395100e3e93e54408bfd88605b70"
+  },
+  {
+   "printed": "4",
+   "restated": "Add person.dc_earned over every confirmed person entry for which helper \"Whose entry is this, yours or your spouse's?\" = 'taxpayer', within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Earned income is built only from W-2 box 1, the person's share of line 1e and self-employment earnings. The instructions say earned income includes 'The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z', which also covers lines 1b–1d and 1f–1h (household wages, unreported tips, Medicaid waiver payments, adoption benefits, Form 8919 wages, other earned income). No refusal names these omitted amounts.",
+   "ruling": "Ruling: scope; the model says person.dc_earned omits Form 1040 lines 1b to 1d and 1f to 1h with no refusal. The amounts the model names are refused on every return the tool computes: Form 1040 lines 1b to 1d and 1f to 1h by scope.other_income (f1040.line8, scope.ready), statutory-employee income by sc.statutory (sc.line1), Schedule SE items outside the tool by person.se_screened; on the remaining returns line 1z is lines 1a and 1e. i2441 p. 4, Lines 4 and 5, earned income starts from \"The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z\". Same ruling as the hardening round; this round changes only the person.dc_earned_b label (T-121), not an expression of person.dc_earned or dc_earned_b. Project stands.",
+   "context": "f93759f4535956bc49b6000766a5bec4db03494b720fbbe67ce8e45a0b1dbf19"
   },
   {
    "printed": "4",
@@ -184,6 +205,13 @@
   {
    "printed": "5",
    "restated": "Choose — [helper \"Married filing jointly\" = true → helper \"Your spouse's earned income for line 5\"] [helper \"Married filing jointly\" = false → line 4]",
+   "model": "The structure is right: spouse's earned income if filing jointly, otherwise line 4. But the spouse's amount uses the same box 1 + line 1e + self-employment composite, which leaves out parts of 'Form 1040... line 1z' (lines 1b–1d, 1f–1h). No refusal covers them.",
+   "ruling": "Ruling: scope; the model accepts the structure and says the spouse's amount omits the same line 1z parts. The amounts the model names are refused on every return the tool computes: Form 1040 lines 1b to 1d and 1f to 1h by scope.other_income (f1040.line8, scope.ready), statutory-employee income by sc.statutory (sc.line1), Schedule SE items outside the tool by person.se_screened; on the remaining returns line 1z is lines 1a and 1e. i2441 p. 4, Lines 4 and 5, earned income starts from \"The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z\". Same ruling as the hardening round; this round changes only the person.dc_earned_b label (T-121), not an expression of person.dc_earned or dc_earned_b. Project stands.",
+   "context": "f93759f4535956bc49b6000766a5bec4db03494b720fbbe67ce8e45a0b1dbf19"
+  },
+  {
+   "printed": "5",
+   "restated": "Choose — [helper \"Married filing jointly\" = true → helper \"Your spouse's earned income for line 5\"] [helper \"Married filing jointly\" = false → line 4]",
    "model": "The structure is right: spouse's earned income if married filing jointly, otherwise line 4, with refusals for deemed income and a spouse who died. But the spouse's earned income is built the same way as line 4, so the same line 1z question leaves it unjudgeable.",
    "ruling": "Ruling: scope/representation; i2441 (2025) p. 4 Lines 4 and 5 requires spouses to figure earned income separately; f1040 (2025) p. 1 line 1a takes W-2 box 1 and line 1z adds 1a-1h. scope.other_income excludes 1b-1d/1f-1h and is enforced at scope.ready/f1040.line8; statutory-employee/clergy cases are excluded by scope.schedule1, sc.statutory and person.se_screened. Thus the supported wage total is W-2 box 1 plus taxable dependent-care benefits (1e), allocated per the existing owner ruling amb.2025.dc_line1e_attribution (Stage 15 decision 6). person.dc_earned adds each person's wage share, that attribution and net SE earnings; dc_earned_b omits the benefits as i2441 p. 5 Line 18 requires. The excerpt's missing Form 1040 page is a real context limitation, supplied in this adjudication; it is not model noise or a claim of support for the excluded cases.",
    "context": "209823876d34ea39a3a4b20db99c3a3a550056f0afba8b5cf1043f71f3334925"
@@ -194,6 +222,13 @@
    "model": "Only Schedule 3 line 1 is entered. The worksheet says 'Enter the amount from Schedule 3 (Form 1040), line 1 (foreign tax credit) and line 6l (Form 8978, line 14)'. Line 6l is omitted and no refusal covers it.",
    "ruling": "Ruling: scope; the model says Schedule 3 line 6l (Form 8978, line 14) is omitted with no refusal. i2441 p. 5, Line 10 Credit Limit Worksheet, line 2: \"Enter the amount from Schedule 3 (Form 1040), line 1 (foreign tax credit) and line 6l (Form 8978, line 14)\". scope.credits asks about Form 8978 adjustments and refuses at s3.line8, and scope.other_line16 screens Form 8978 at f1040.line16, so on every computed return line 6l is zero and worksheet line 2 is Schedule 3 line 1. Same ruling as the earlier rounds.",
    "context": "538b21441332d29f7f64d59eb883c7e99dd6395100e3e93e54408bfd88605b70"
+  },
+  {
+   "printed": "CLW 2",
+   "restated": "Enter the amount from s3 line 1.",
+   "model": "Takes only Schedule 3 line 1. The worksheet says 'Enter the amount from Schedule 3 (Form 1040), line 1 (foreign tax credit) and line 6l (Form 8978, line 14)'. Line 6l is omitted and no refusal covers it.",
+   "ruling": "Ruling: scope; i2441 p. 5, Credit Limit Worksheet, line 2, \"Enter the amount from Schedule 3 (Form 1040), line 1 (foreign tax credit) and line 6l (Form 8978, line 14)\". scope.credits refuses Form 8978 adjustments (s3.line8) and scope.other_line16 screens Form 8978 at f1040.line16, so line 6l is zero on every computed return. Same ruling as the hardening round. Project stands.",
+   "context": "f93759f4535956bc49b6000766a5bec4db03494b720fbbe67ce8e45a0b1dbf19"
   },
   {
    "printed": "CLW 2",

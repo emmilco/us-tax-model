@@ -53,6 +53,13 @@
    "context": "c58590f21e43a3c761c7f8d4bb6d5e6912577c373f8e0590718007a4a580a902"
   },
   {
+   "printed": "28",
+   "restated": "Choose — [line 5 ≥ 0 (a count) and line 5 < 200 (a count) → helper \"Table 5 limitation, line 5 below 200\"] [line 5 ≥ 200 (a count) and line 5 < 300 (a count) → helper \"Table 5 limitation, line 5 below 300\"] [line 5 ≥ 300 (a count) and line 5 < 400 (a count) → helper \"Table 5 limitation, line 5 below 400\"] [line 5 ≥ 400 (a count) → line 27]",
+   "model": "The IRS line 28 instructions say that if you are self-employed and claiming the self-employed health insurance deduction, see Pub. 974 for the amount to enter; the restatement only uses the Table 5 limitation and has no adjustment or refusal for that case.",
+   "ruling": "Ruling: scope — i8962 p. 18, Line 28, \"If you are self-employed and are claiming the self-employed health insurance deduction, see Self-Employed Health Insurance Deduction and PTC in Pub. 974 for the amount to enter on line 28.\". A return claiming the self-employed health insurance deduction with the premium tax credit is refused: sc.hi_screen (forms/2025/sc.yaml) asks whether \"the insurance was obtained through the Marketplace and advance payments of the premium tax credit were made or you are claiming the premium tax credit\" and refuses sc.f7206_line1 and the return, so the Pub. 974 line 28 amount cannot arise on a computed return. The restatement is faithful to the project's Table 5 line; the omission the model names is handled by that screen, not by line 28.",
+   "context": "5a06e2586f0d2ae87c147e69365baffbcede9944c7a0f3c1053620734246d5f9"
+  },
+  {
    "printed": "29",
    "restated": "Enter the smaller of line 27 or line 28.",
    "model": "IRS line 29 says 'If line 28 is blank, enter the amount from line 27'; the restatement only says enter the smaller of line 27 or line 28 and omits the blank-line-28 case.",

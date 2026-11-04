@@ -4,22 +4,22 @@ Second transcription of `Form 7206, line 2 — qualified long-term care insuranc
 
 | field | value |
 | --- | --- |
-| date | 2026-11-02 |
+| date | 2026-11-03 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 7f20b1f058536fef47681530ccd97e2351404ce06fa95e6041fced2169c293a5 |
+| prompt sha256 | 2aa712660a430672a4efd9fbbac18cf9ac90382d91c1ee0e177bbffd52b5e085 |
 | prompt policy | source-only-computation-v2 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
 | complete input context | pass |
-| required input context sha256 | 1133623277ebbee04df833cd34e52da1ce46437b30608d9ec5bf7daf3ab3bf59 |
+| required input context sha256 | d553f55e1a3970c2da6b37ad2150455ba12209e5f62fc7960ed1849ea290ffc2 |
 | type validation policy | project-expression-types-v3 |
 | model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 82179fa79df561ead41677aec2bae4c74cce769404aabd860a16977fb583e4d2 |
+| subject sha256 | f9e39ed9d2c2b0ba17935aef482627ac3080e485ca6dce354c788868c2b8e59e |
 | printed lines compared | 2 |
 | agree / disagree / missing | 2 / 0 / 0 |
 | extra printed lines in second | none |
@@ -45,17 +45,20 @@ Status: **AGREE**
 lines:
   - id: ltc.limit
     printed: "2(b)"
-    label: "The amount shown below. Use the person’s age at the end of the tax year."
+    label: "The amount shown below. Use the person’s age at the end of the tax year. $480— if that person is age 40 or younger; $900— if age 41 to 50; $1,800— if age 51 to 60; $4,810— if age 61 to 70; $6,020— if age 71 or older"
     type: NonNegDollars
     expr:
       op: keyed_lookup
       table: ltc_limit
-      keys: [ltc.age]
+      keys:
+        - ltc.age
   - id: ltc.amount
     printed: "(helper)"
-    label: "For coverage under a qualified long-term care insurance contract, enter for each person covered the smaller of (a) or (b)."
+    label: "Qualified long-term care insurance amount for this person (smaller of line 2(a) or line 2(b))"
     type: NonNegDollars
     expr:
       op: smaller_of
-      of: [ltc.payments, ltc.limit]
+      of:
+        - ltc.payments
+        - ltc.limit
 ```

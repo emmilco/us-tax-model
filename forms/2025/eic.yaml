@@ -1058,6 +1058,7 @@ form:
       cite:
         doc: i1040gi
         locator: p. 49, EIC Table, first row "At least 1" (see the ambiguity register, amb.2025.eic_below_table)
+      ambiguity: amb.2025.eic_below_table
     - id: eic.line1_table0
       printed: (helper)
       type: NonNegDollars
@@ -1600,7 +1601,7 @@ form:
         locator: pp. 40–46, each "STOP You can't take the credit"; Worksheet A, line 6, "Enter this amount on Form 1040 or
           1040-SR, line 27a"
       refuses:
-        - when: household.credit_disallowed
+        - when: household.eic_disallowed_claim
           form: Form 8862 and the EIC disallowance period (Form 8862, who must file)
           remedy: Your EIC, child tax credit, additional child tax credit or credit for other dependents for an earlier year was
             reduced or disallowed, or you are in a disallowance period; Form 8862 and the disallowance period are outside this

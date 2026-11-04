@@ -41,14 +41,14 @@
 ## (helper) — `sd.filing4952`
 
 - **Authored helper label:** Are you filing Form 4952?
-- **Encoded (Bool):** Enter the amount from f4952 helper "File for an election, or to claim interest (including a 2024 carryforward) when the exception does not apply".
+- **Encoded (Bool):** Enter the amount from f4952 helper "Form 4952 is used and must be filed (for an election, or to claim interest when the exception does not apply)".
 - Expr: `{"from":"f4952.required","op":"copy"}`
 - Cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; sha256 90564c8b)
 
 ## (helper) — `sd.investment_election`
 
 - **Authored helper label:** Form 4952 line 4g (supplied subtotal; Form 4952 deferred to Stage 4)
-- **Encoded (NonNegDollars):** Enter the amount from f4952 helper "Validated default-allocation election".
+- **Encoded (NonNegDollars):** Enter the amount from f4952 helper "The validated line 4g election when an amount is entered on line 4g; zero otherwise".
 - Expr: `{"from":"f4952.election","op":"copy"}`
 - Cite: [i1040sd] p. 15, Schedule D Tax Worksheet, applicability (2025; printed date 2025-12-11; sha256 650643a6)
 
@@ -73,7 +73,7 @@
 - **Authored helper label:** Schedule D required for entered sales, special distribution gains or a capital loss carryover
 - **Encoded (Bool):** (helper "Count screened transactions" > 0 (a count) or helper "Line 18. 28% Rate Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)" > $0 or helper "Line 19. Unrecaptured Section 1250 Gain Worksheet result, or zero when line 17 is No (lines 18 through 21 skipped)" > $0 or line 6 < $0 or line 14 < $0)
 - Expr: `{"any":[{"gt":["sd.count",{"const":0,"type":"Count"}],"op":"test"},{"gt":["sd.line18",{"const":0}],"op":"test"},{"gt":["sd.line19",{"const":0}],"op":"test"},{"lt":["sd.line6",{"const":0}],"op":"test"},{"lt":["sd.line14",{"const":0}],"op":"test"}],"op":"test"}`
-- Cite: [f1040sd] i1040gi p. 31, Line 7a, "If you sold a capital asset, such as a stock, bond, or digital asset, you must complete and attach Form 8949 and Schedule D", "None of the Form(s) 1099-DIV (or substitute statements) have an amount in box 2b (unrecaptured section 1250 gain), box 2c (section 1202 gain), or box 2d (collectibles (28%) gain)", "You have no capital losses" (2025; created 2025-10-06; sha256 90564c8b)
+- Cite: [i1040gi] p. 31, Line 7a, "If you sold a capital asset, such as a stock, bond, or digital asset, you must complete and attach Form 8949 and Schedule D", "None of the Form(s) 1099-DIV (or substitute statements) have an amount in box 2b (unrecaptured section 1250 gain), box 2c (section 1202 gain), or box 2d (collectibles (28%) gain)", "You have no capital losses" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sd.zero`
 

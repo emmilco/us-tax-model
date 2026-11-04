@@ -6,6 +6,13 @@
   {
    "printed": "32",
    "restated": "Input — Is all your investment in this business at risk (box 32a)? Answer no if any of these is invested in it: a nonrecourse loan used to finance the business, buy property used in it, or buy the business, that is not secured by your own property other than property used in the business and that you are not personally responsible to repay; cash, property or borrowed money protected against loss by a guarantee, stop-loss agreement or similar arrangement (casualty and tort-liability insurance do not count); money borrowed for use in the business from someone who has an interest in it other than as a creditor, or from a person related (under section 465(b)(3)(C)) to someone other than you who has such an interest",
+   "model": "IRS instructions state 'there is an exception for certain nonrecourse financing borrowed by you in connection with holding real property'; the restatement treats any such nonrecourse loan as not at risk and omits that exception.",
+   "ruling": "Ruling: scope; accepted over-refusal. A filer whose only nonrecourse financing is qualified real property financing answers no and is refused through sc.not_at_risk, though that financing is at risk; a refusal, never a wrong amount.",
+   "context": "c05ebec9cbe7680cab2ca4f37c4338a13f4df523327414779bf99c142ab007da"
+  },
+  {
+   "printed": "32",
+   "restated": "Input — Is all your investment in this business at risk (box 32a)? Answer no if any of these is invested in it: a nonrecourse loan used to finance the business, buy property used in it, or buy the business, that is not secured by your own property other than property used in the business and that you are not personally responsible to repay; cash, property or borrowed money protected against loss by a guarantee, stop-loss agreement or similar arrangement (casualty and tort-liability insurance do not count); money borrowed for use in the business from someone who has an interest in it other than as a creditor, or from a person related (under section 465(b)(3)(C)) to someone other than you who has such an interest",
    "model": "The IRS line 32 instructions include an exception for certain nonrecourse financing borrowed in connection with holding real property; the restatement says to answer no for any such nonrecourse loan without mentioning that exception.",
    "ruling": "Ruling: scope; accepted over-refusal. A filer whose only nonrecourse financing is qualified real property financing answers no and is refused through sc.not_at_risk, though that financing is at risk; a refusal, never a wrong amount.",
    "context": "6d6176476fc8561220fef03d134bb0276d0978d9eb8e73b2523780953c8d05c0"
@@ -20,9 +27,23 @@
   {
    "printed": "4 (sc.f7206_line4)",
    "restated": "Enter the amount from helper \"Net profit of this business (zero for a loss)\".",
+   "model": "IRS line 4 says 'Enter your net profit* and any other earned income** from the trade or business'; the restatement uses only a zero-for-loss net profit helper and omits other earned income.",
+   "ruling": "Ruling: scope; f7206 line 4 footnote, \"Earned income includes net earnings and gains from the sale, transfer, or licensing of property you created. However, it doesn't include capital gain income\". The only earned income from the business the tool admits is its Schedule C net profit; Form 4797 and other income are refused (sd.other_forms, scope.yaml).",
+   "context": "c05ebec9cbe7680cab2ca4f37c4338a13f4df523327414779bf99c142ab007da"
+  },
+  {
+   "printed": "4 (sc.f7206_line4)",
+   "restated": "Enter the amount from helper \"Net profit of this business (zero for a loss)\".",
    "model": "IRS line 4 says 'Enter your net profit* and any other earned income** from the trade or business'; the restatement uses only net profit, zero for a loss.",
    "ruling": "Ruling: scope; f7206 line 4 footnote: \"Earned income includes net earnings and gains from the sale, transfer, or licensing of property you created. However, it doesn't include capital gain income.\" The tool admits no such income outside Schedule C: Form 4797 and other income are refused (sd.other_forms, scope.yaml), and Schedule F and K-1 profits are refused by the self-employment screen (person.x_other).",
    "context": "4c25d28949ee3bae493f9488370dcb6a674c86a8f9ab83d8c671e3cc61681574"
+  },
+  {
+   "printed": "5 (sc.f7206_line5)",
+   "restated": "Enter the amount from person helper \"Total of all net profits of this person's businesses (losses not included)\".",
+   "model": "IRS line 5 requires 'all net profits' from Schedule C, Schedule F, or K-1 code A plus other allocable income; the restatement sums only Schedule C net profits.",
+   "ruling": "Ruling: scope; Schedule F and K-1 profits are refused by the self-employment screen (person.x_other) and other earned income outside Schedule C is refused (sd.other_forms, scope.yaml), so the sum of Schedule C net profits is the line on every computed return.",
+   "context": "c05ebec9cbe7680cab2ca4f37c4338a13f4df523327414779bf99c142ab007da"
   },
   {
    "printed": "5 (sc.f7206_line5)",
@@ -44,6 +65,13 @@
    "model": "IRS line 9 includes 'Schedule 1..., line 16, self-employed SEP, SIMPLE, and qualified plans'; the restatement uses only the SEP or SIMPLE deduction.",
    "ruling": "Ruling: scope; person.plan_screen refuses contributions \"to a qualified plan (such as a solo 401(k))\", so line 16 on a computed return holds only the SEP or SIMPLE deduction.",
    "context": "4c25d28949ee3bae493f9488370dcb6a674c86a8f9ab83d8c671e3cc61681574"
+  },
+  {
+   "printed": "9 (sc.f7206_line9)",
+   "restated": "Choose — [helper \"Line 4 is more than zero\" = true → helper \"This person's SEP or SIMPLE deduction times line 4 divided by line 5\"] [helper \"Line 4 is more than zero\" = false → helper \"Zero\"]",
+   "model": "IRS line 9 says 'Enter the amount ... from Schedule 1, line 16 ... attributable to the same trade or business'; the restatement instead prorates that amount by line 4 divided by line 5.",
+   "ruling": "Ruling: ambiguity (amb.2025.f7206_plan_attribution, now linked on sc.f7206_line9); the line 16 deduction is attributed in proportion to net profit, the recorded reading.",
+   "context": "c05ebec9cbe7680cab2ca4f37c4338a13f4df523327414779bf99c142ab007da"
   },
   {
    "printed": "9 (sc.f7206_line9)",

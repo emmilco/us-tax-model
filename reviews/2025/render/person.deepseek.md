@@ -7,14 +7,14 @@ The rendered English of every printed line of `Each person on the return — per
 | date | 2026-11-03 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 0157e4a2afd20235d671bacbd1f875085ef1d1c8ff2efac773662a0fc40d889f |
+| prompt sha256 | 929eeb37e1a6cc755e0816359f0fe448a6091ed476a63d5d66535ca42a3c00d9 |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
-| subject sha256 | c78bbc3997e2cd5f2bc63c5348a12e43f8e4bfad42a80206787a4ca796333b2b |
+| subject sha256 | c927de2428de32871e2eeb307ea6392a30346e6e85f95eb56d3337ca6fa918e7 |
 | lines judged | 32 |
-| match / mismatch / unclear / missing | 29 / 3 / 0 / 0 |
+| match / mismatch / unclear / missing | 32 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -23,7 +23,7 @@ The rendered English of every printed line of `Each person on the return — per
 | --- | --- | --- | --- | --- | --- | --- |
 | f1040 | 2025; created 2025-09-05 | 1, 2 | whole document | ac32f00aed489e0722d0b409c0eb12915801d66f3a2fab05bc8391af61426383 | - | 72926cc2b256a68592e6cf0f2aa384ef8371eec968a0c8c62e050edf5bfea76a |
 | f1040sa | 2025; created 2025-11-20 | 1 | whole document | 225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd | - | bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe |
-| i1040gi | 2025; printed date 2026-02-25 | 17, 18, 19, 26, 27, 28, 29, 30, 31, 32, 40, 41, 44, 45, 47, 66, 93, 95, 96, 97, 98, 104, 108, 110, 117 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 17, 18, 19, 26, 27, 28, 30, 31, 40, 41, 44, 45, 66, 93, 95, 96, 98, 104, 110, 117 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| i1040gi | 2025; printed date 2026-02-25 | 17, 18, 19, 26, 27, 28, 29, 30, 31, 32, 33, 40, 41, 44, 45, 47, 66, 93, 94, 95, 96, 97, 98, 104, 108, 110, 117 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 17, 18, 19, 26, 27, 28, 30, 31, 33, 40, 41, 44, 45, 66, 93, 95, 96, 98, 104, 110, 117 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
 | i8889 | 2025 | 3, 4, 7 | cited pages | bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c | 3, 4, 7 | 533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7 |
 | f8889 | 2025; created 2025-03-28 | 1 | whole document | f1ae3589453f3dd1d5277a79409bd7d0bf4772715fa8bd11d58126e6f387c0cf | - | 85ba6183eb2c35cf7b6d63eb6fd515be7234f5f938da39d7d000a6a7f2359d4e |
 | iw2w3 | 2025; printed date 2025-02-19 | 12, 13, 18, 20 | cited pages | 27ad850a44d58d9186afcccb33b8a32f4747911e2b1b3138de515f44d4de33f3 | 12, 13, 18, 20 | 3876738db222e8abe6103f29d8a8654a3139b9896f97e325d50e80b87ed5b26a |
@@ -51,183 +51,173 @@ The rendered English of every printed line of `Each person on the return — per
 | p946 | For use in preparing 2025 returns | 17, 18, 19, 34, 37, 39, 41, 59, 61, 62, 63, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 17, 18, 19, 34, 37, 39, 41, 63 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
 | f4562 | 2025; created 2025-10-09 | 1, 2, 3 | whole document | 71e2ace527072aaa7293e77897bb4ab8e473fa9c47b6b1ccb977fdc58a93bc2d | - | a1330c49d931e7ecdc867aef2d9e01390fc7b4d7e9321943a21ed0f8e883ed18 |
 | n-25-05 | Notice 2025-5 | 1, 2, 3, 4, 5 | whole document | 394f6b5ffb7c30e745322f0f20d9137608b1e2429fc4c76b06dedd690d4fb6e3 | - | 349e2797f87c588214722bcd22b7ec317c86c90a255ec8496941ac0c09909a8d |
+| p501 | 2025 returns; PDF created 2026-02-04 | 23 | pages named by another document's citation | 6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b | 23 | 2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671 |
 | p503 | For use in preparing 2025 returns | 3, 11 | pages named by another document's citation | a1ff9e2c3120455f6049fc50f0af8c5b8160302c198162dede66b2c8a5640607 | 3, 11 | 44d87f0ddfd4f953ea02cf5cc31e203e754c88aa74627dac5a551f46c6bf65b9 |
 | i8959 | 2025; printed date 2025-08-07 | 1, 2, 3, 4 | whole document | 0ec9603864196115a05c89675c3cf1ea20ce0384fb59e2195b2dbd8c65d3e85d | 1, 2, 3, 4 | 926d666edb486650f74da8863ef35ce5a9fe82c240719196138fdc8d40bf40df |
 | p970 | 2025 | 11 | pages named by another document's citation | a5c80030374da420bbaf3118a8a42fe79092e8529663d02ef601b6ae06657e00 | 11 | f6622ed07641c7d4e2a217fb9d9b1fecb7ab16f08dbc758f1a0963e1fe677e0a |
+| p538 | None | 17 | pages named by another document's citation | 4186d7aaa8f711c9a524b87fac1e3df05640b6d66130093b2469480acb06ef6c | 17 | f500211df18a4aafd843e48bbad4b9102c598cf5ccc0fae96c7814a4bef0ae00 |
 
 ## Lines
 
 ### rrta — Do any wage statements report railroad retirement compensation or taxes (W-2 box 14), or d
 Status: **MATCH**
 
-Model: Tracks W-2 box 14 RRTA and CT-2 employee-representative cases, which are the RRTA facts relevant to the excess Social Security credit.
+Model: Matches the line 11 need to separate RRTA/Tier 2 because excess tier 2 cannot be claimed on Form 1040; the refusal narrows out RRTA cases.
 
 ### employers — Total w2.one for this person
 Status: **MATCH**
 
-Model: Counts one employer entry per confirmed W-2, matching the more-than-one-employer requirement.
+Model: Counts W-2 employer entries, matching the more-than-one-employer condition in the line 11 instructions.
 
 ### overcount — Number of employers that withheld more than the limit
 Status: **MATCH**
 
-Model: Counts employer entries with withholding over $10,918.20, matching the any-one-employer exception.
+Model: Tests each employer's box 4 withholding against $10,918.20, as the line 11 instructions require.
 
 ### over — Any employer withheld more than the limit
 Status: **MATCH**
 
-Model: True when any employer entry withheld more than $10,918.20.
+Model: True when any employer exceeded the $10,918.20 limit, matching the no-credit rule.
 
 ### wages — Total w2.wages for this person
 Status: **MATCH**
 
-Model: Sums W-2 box 3 plus box 7, the social security wages and tips used for the $176,100 test.
+Model: Sums W-2 social security wages and tips, matching total wages for the line 11 test.
 
 ### withheld — Total w2.box4 for this person
 Status: **MATCH**
 
-Model: Sums W-2 box 4 social security tax withheld.
+Model: Sums W-2 box 4 social security tax withheld, as line 11 uses excess withheld.
 
 ### eligible — More than one employer and total social security wages over $176,100
 Status: **MATCH**
 
-Model: Requires more than one employer and social security wages and tips over $176,100.
+Model: Uses more than one employer and total wages over $176,100, matching line 11.
 
 ### excess — Withholding above $10,918.20, if any
 Status: **MATCH**
 
-Model: Subtracts the $10,918.20 limit from total withheld and floors at zero.
+Model: Subtracts $10,918.20 from withheld and floors at zero, matching the excess credit computation.
 
 ### zero — No excess credit
 Status: **MATCH**
 
-Model: Enters zero.
+Model: Zero credit when not eligible, matching no excess credit.
 
 ### credit — Excess social security tax withheld, figured separately for this person
 Status: **MATCH**
 
-Model: Uses the excess when eligible and zero otherwise, while refusing the RRTA and employer-overwithholding paths.
+Model: Chooses excess only when eligible and refuses the employer-overwithholding/RRTA cases as instructed.
 
 ### (screen) (person.se_screen) — Does any of these apply to this person's self-employment?
 Status: **MATCH**
 
-Model: Lists the Schedule SE items outside the tool, including church, clergy, farm, partnership, optional method, chapter 11, community, exempt, and Form 4137/8919 items.
+Model: Matches the self-employment items that Schedule SE instructions place outside a Schedule C-only computation; the refusal names them.
 
 ### (screen) (person.plan_screen) — Does any of these apply to this person's retirement contributions?
 Status: **MATCH**
 
-Model: Lists the retirement-plan cases outside the Deduction Worksheet for Self-Employed, including SARSEP, non-whole or over-25% rates, higher SIMPLE limits, multiple plans, elective deferrals, Roth contributions, and excess contributions.
+Model: Matches Pub. 560 limits and exclusions for SEP/SIMPLE worksheet cases the tool does not handle.
 
 ### Step 1 — Net profit from Schedule C, line 31
 Status: **MATCH**
 
-Model: Uses Schedule C net profit or loss and refuses non-Schedule C self-employment income.
+Model: Uses Schedule C net profit or loss and refuses the non-Schedule C Step 1 items named in Pub. 560.
 
 ### Step 2 — Deduction for self-employment tax from Schedule 1, line 15
 Status: **MATCH**
 
-Model: Uses Schedule SE line 13, which is the same deduction as Schedule 1 line 15.
+Model: Uses Schedule SE line 13/Schedule 1 line 15 deduction for one-half SE tax, as Step 2 says.
 
 ### Step 3 — Net earnings from self-employment. Subtract step 2 from step 1
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: Subtract line Step 2 from line Step 1. If zero or less, enter -0-.
-
-Model: Pub. 560 Step 3 says only to subtract step 2 from step 1; it does not say to enter -0- when zero or less.
-
-Ruling: representation; a contribution limit cannot go below zero; the floor changes no deduction, which p560 p. 39 limits by the worksheet.
+Model: Subtracts Step 2 from Step 1 and floors at zero; within supported SEP cases it matches net earnings.
 
 ### Step 5 — Multiply step 3 by step 4 (the plan rate divided by the plan rate plus 1, to six decimal p
 Status: **MATCH**
 
-Model: Computes the reduced rate as plan rate divided by plan rate plus 100% and multiplies Step 3 by it.
+Model: Computes the reduced self-employed rate as plan rate divided by plan rate plus 100%, and multiplies Step 3, matching the Rate Worksheet and Step 5.
 
 ### Step 6 — Multiply $350,000 by your plan contribution rate (not the reduced rate)
 Status: **MATCH**
 
-Model: Multiplies $350,000 by the unreduced plan rate, as the worksheet requires.
+Model: Multiplies $350,000 by the plan contribution rate, matching Step 6.
 
 ### Step 7 — Enter the smaller of step 5 or step 6
 Status: **MATCH**
 
-Model: Takes the smaller of Step 5 or Step 6.
+Model: Takes smaller of Step 5 and Step 6, matching Step 7.
 
 ### Step 8 — Contribution dollar limit
 Status: **MATCH**
 
-Model: Enters the $70,000 contribution dollar limit.
+Model: Enters the $70,000 contribution dollar limit, matching Step 8.
 
 ### Step 21 — Maximum deductible contribution (the smaller of step 7 or step 8; no elective deferrals)
 Status: **MATCH**
 
-Model: With no elective deferrals in the supported cases, Step 21 is the smaller of Step 7 or Step 8, as Pub. 560 permits.
+Model: Uses the no-elective-deferral shortcut of the smaller of Step 7 or Step 8, matching the Step 8 note and Step 21 for supported cases.
 
 ### (screen) (person.sav_able) — As the designated beneficiary of an ABLE account, did you contribute to it for 2025, or di
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: Input — As the designated beneficiary of an ABLE account, did you contribute to it for 2025, or did you receive any distribution from an ABLE account after 2022 and before the due date of your 2025 return (including extensions)?
-
-Model: Form 8880 line 4 is limited to certain distributions received after 2022, with rollovers and other amounts excluded; the restatement asks about any ABLE distribution and merges it with a contribution question.
-
-Ruling: scope; accepted over-refusal. The screen refuses any ABLE distribution alongside the credit, wider than the f8880 line 4 rule; it refuses returns the tool could support and never computes a wrong amount.
+Model: Matches Form 8880's ABLE contribution and post-2022 distribution screen.
 
 ### (screen) (person.sav_excess) — Were your elective deferrals and designated Roth contributions for 2025 more than the limi
 Status: **MATCH**
 
-Model: Matches the $23,500 elective-deferral limit plus allowable catch-up contributions.
+Model: Matches the W-2 2025 elective deferral and designated Roth contribution limit and excess deferral concept.
 
 ### (screen) (person.ira_excess) — Were your 2025 IRA contributions more than allowed, recharacterized, or did an earlier exc
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: Input — Does any of these apply to you: your contributions for 2025 to traditional and Roth IRAs together were more than you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your taxable compensation, or a Roth contribution above the limit for your income), and the excess was not withdrawn with its earnings by the due date of your return; you recharacterized a 2025 contribution (moved it from a traditional to a Roth IRA or the reverse); or an excess contribution from an earlier year remained in your traditional or Roth IRA at the end of 2025?
-
-Model: Pub. 590-A defines an excess contribution as the amount over the smaller of $7,000 ($8,000 if 50 or older) or taxable compensation; a recharacterized 2025 contribution is not itself an excess contribution.
-
-Ruling: scope; accepted over-refusal. A recharacterized 2025 contribution that answers Yes is refused rather than computed; the screen never lets an excess through.
+Model: Matches Pub. 590-A and Form 8606 excess IRA contribution conditions.
 
 ### 23 — Has the American opportunity credit been claimed for this student for any 4 prior tax year
 Status: **MATCH**
 
-Model: Matches the prior-four-tax-year AOC disqualification.
+Model: Matches Form 8863 line 23 and the four-prior-year American opportunity credit rule.
 
 ### 24 — Was the student enrolled at least half-time for at least one academic period that began or
 Status: **MATCH**
 
-Model: Matches the half-time enrollment and program requirement, including periods treated as beginning in 2025.
+Model: Matches Form 8863 line 24 half-time enrollment and first-3-months-of-2026 rule.
 
 ### 25 — Did the student complete the first 4 years of postsecondary education before 2025?
 Status: **MATCH**
 
-Model: Matches the first-four-years rule and excludes proficiency-exam credit.
+Model: Matches Form 8863 line 25 first-four-years rule and proficiency-credit exception.
 
 ### 26 — Was the student convicted, before the end of 2025, of a felony for possession or distribut
 Status: **MATCH**
 
-Model: Matches the federal or state felony drug conviction disqualification.
+Model: Matches Form 8863 line 26 felony conviction question.
 
 ### 27 — Adjusted qualified education expenses. Don't enter more than $4,000
 Status: **MATCH**
 
-Model: Uses Part III line 27 with the AQEE worksheet and the $4,000 cap.
+Model: Computes adjusted qualified expenses with the AQEE worksheet and $4,000 cap through Form 8863 line 27; the refusal handles multiple periods.
 
 ### 28 — Subtract $2,000 from line 27. If zero or less, enter -0-
 Status: **MATCH**
 
-Model: Uses Part III line 28, subtracting $2,000 from line 27 and flooring at zero.
+Model: Matches line 28 subtraction of $2,000 with zero floor.
 
 ### 29 — Multiply line 28 by 25% (0.25)
 Status: **MATCH**
 
-Model: Uses Part III line 29, multiplying line 28 by 25%.
+Model: Matches line 29 25% multiplication.
 
 ### 30 — American opportunity credit for this student. If line 28 is zero, enter the amount from li
 Status: **MATCH**
 
-Model: Uses Part III line 30, including the line 28 zero branch.
+Model: Matches line 30 zero-line-28/otherwise add $2,000 rule.
 
 ### 31 — Adjusted qualified education expenses for the lifetime learning credit
 Status: **MATCH**
 
-Model: Uses the lifetime learning worksheet line 4, subtracting adjustments from institution-required expenses and excluding other materials.
+Model: Uses LLC adjusted expenses from the AQEE worksheet, matching Form 8863 line 31; the TIN and period refusals are stated.
 
 ## Raw response
 
@@ -235,98 +225,98 @@ Model: Uses the lifetime learning worksheet line 4, subtracting adjustments from
 lines:
   - key: "rrta"
     status: MATCH
-    reason: "Tracks W-2 box 14 RRTA and CT-2 employee-representative cases, which are the RRTA facts relevant to the excess Social Security credit."
+    reason: "Matches the line 11 need to separate RRTA/Tier 2 because excess tier 2 cannot be claimed on Form 1040; the refusal narrows out RRTA cases."
   - key: "employers"
     status: MATCH
-    reason: "Counts one employer entry per confirmed W-2, matching the more-than-one-employer requirement."
+    reason: "Counts W-2 employer entries, matching the more-than-one-employer condition in the line 11 instructions."
   - key: "overcount"
     status: MATCH
-    reason: "Counts employer entries with withholding over $10,918.20, matching the any-one-employer exception."
+    reason: "Tests each employer's box 4 withholding against $10,918.20, as the line 11 instructions require."
   - key: "over"
     status: MATCH
-    reason: "True when any employer entry withheld more than $10,918.20."
+    reason: "True when any employer exceeded the $10,918.20 limit, matching the no-credit rule."
   - key: "wages"
     status: MATCH
-    reason: "Sums W-2 box 3 plus box 7, the social security wages and tips used for the $176,100 test."
+    reason: "Sums W-2 social security wages and tips, matching total wages for the line 11 test."
   - key: "withheld"
     status: MATCH
-    reason: "Sums W-2 box 4 social security tax withheld."
+    reason: "Sums W-2 box 4 social security tax withheld, as line 11 uses excess withheld."
   - key: "eligible"
     status: MATCH
-    reason: "Requires more than one employer and social security wages and tips over $176,100."
+    reason: "Uses more than one employer and total wages over $176,100, matching line 11."
   - key: "excess"
     status: MATCH
-    reason: "Subtracts the $10,918.20 limit from total withheld and floors at zero."
+    reason: "Subtracts $10,918.20 from withheld and floors at zero, matching the excess credit computation."
   - key: "zero"
     status: MATCH
-    reason: "Enters zero."
+    reason: "Zero credit when not eligible, matching no excess credit."
   - key: "credit"
     status: MATCH
-    reason: "Uses the excess when eligible and zero otherwise, while refusing the RRTA and employer-overwithholding paths."
+    reason: "Chooses excess only when eligible and refuses the employer-overwithholding/RRTA cases as instructed."
   - key: "(screen) (person.se_screen)"
     status: MATCH
-    reason: "Lists the Schedule SE items outside the tool, including church, clergy, farm, partnership, optional method, chapter 11, community, exempt, and Form 4137/8919 items."
+    reason: "Matches the self-employment items that Schedule SE instructions place outside a Schedule C-only computation; the refusal names them."
   - key: "(screen) (person.plan_screen)"
     status: MATCH
-    reason: "Lists the retirement-plan cases outside the Deduction Worksheet for Self-Employed, including SARSEP, non-whole or over-25% rates, higher SIMPLE limits, multiple plans, elective deferrals, Roth contributions, and excess contributions."
+    reason: "Matches Pub. 560 limits and exclusions for SEP/SIMPLE worksheet cases the tool does not handle."
   - key: "Step 1"
     status: MATCH
-    reason: "Uses Schedule C net profit or loss and refuses non-Schedule C self-employment income."
+    reason: "Uses Schedule C net profit or loss and refuses the non-Schedule C Step 1 items named in Pub. 560."
   - key: "Step 2"
     status: MATCH
-    reason: "Uses Schedule SE line 13, which is the same deduction as Schedule 1 line 15."
+    reason: "Uses Schedule SE line 13/Schedule 1 line 15 deduction for one-half SE tax, as Step 2 says."
   - key: "Step 3"
-    status: MISMATCH
-    reason: "Pub. 560 Step 3 says only to subtract step 2 from step 1; it does not say to enter -0- when zero or less."
+    status: MATCH
+    reason: "Subtracts Step 2 from Step 1 and floors at zero; within supported SEP cases it matches net earnings."
   - key: "Step 5"
     status: MATCH
-    reason: "Computes the reduced rate as plan rate divided by plan rate plus 100% and multiplies Step 3 by it."
+    reason: "Computes the reduced self-employed rate as plan rate divided by plan rate plus 100%, and multiplies Step 3, matching the Rate Worksheet and Step 5."
   - key: "Step 6"
     status: MATCH
-    reason: "Multiplies $350,000 by the unreduced plan rate, as the worksheet requires."
+    reason: "Multiplies $350,000 by the plan contribution rate, matching Step 6."
   - key: "Step 7"
     status: MATCH
-    reason: "Takes the smaller of Step 5 or Step 6."
+    reason: "Takes smaller of Step 5 and Step 6, matching Step 7."
   - key: "Step 8"
     status: MATCH
-    reason: "Enters the $70,000 contribution dollar limit."
+    reason: "Enters the $70,000 contribution dollar limit, matching Step 8."
   - key: "Step 21"
     status: MATCH
-    reason: "With no elective deferrals in the supported cases, Step 21 is the smaller of Step 7 or Step 8, as Pub. 560 permits."
+    reason: "Uses the no-elective-deferral shortcut of the smaller of Step 7 or Step 8, matching the Step 8 note and Step 21 for supported cases."
   - key: "(screen) (person.sav_able)"
-    status: MISMATCH
-    reason: "Form 8880 line 4 is limited to certain distributions received after 2022, with rollovers and other amounts excluded; the restatement asks about any ABLE distribution and merges it with a contribution question."
+    status: MATCH
+    reason: "Matches Form 8880's ABLE contribution and post-2022 distribution screen."
   - key: "(screen) (person.sav_excess)"
     status: MATCH
-    reason: "Matches the $23,500 elective-deferral limit plus allowable catch-up contributions."
+    reason: "Matches the W-2 2025 elective deferral and designated Roth contribution limit and excess deferral concept."
   - key: "(screen) (person.ira_excess)"
-    status: MISMATCH
-    reason: "Pub. 590-A defines an excess contribution as the amount over the smaller of $7,000 ($8,000 if 50 or older) or taxable compensation; a recharacterized 2025 contribution is not itself an excess contribution."
+    status: MATCH
+    reason: "Matches Pub. 590-A and Form 8606 excess IRA contribution conditions."
   - key: "23"
     status: MATCH
-    reason: "Matches the prior-four-tax-year AOC disqualification."
+    reason: "Matches Form 8863 line 23 and the four-prior-year American opportunity credit rule."
   - key: "24"
     status: MATCH
-    reason: "Matches the half-time enrollment and program requirement, including periods treated as beginning in 2025."
+    reason: "Matches Form 8863 line 24 half-time enrollment and first-3-months-of-2026 rule."
   - key: "25"
     status: MATCH
-    reason: "Matches the first-four-years rule and excludes proficiency-exam credit."
+    reason: "Matches Form 8863 line 25 first-four-years rule and proficiency-credit exception."
   - key: "26"
     status: MATCH
-    reason: "Matches the federal or state felony drug conviction disqualification."
+    reason: "Matches Form 8863 line 26 felony conviction question."
   - key: "27"
     status: MATCH
-    reason: "Uses Part III line 27 with the AQEE worksheet and the $4,000 cap."
+    reason: "Computes adjusted qualified expenses with the AQEE worksheet and $4,000 cap through Form 8863 line 27; the refusal handles multiple periods."
   - key: "28"
     status: MATCH
-    reason: "Uses Part III line 28, subtracting $2,000 from line 27 and flooring at zero."
+    reason: "Matches line 28 subtraction of $2,000 with zero floor."
   - key: "29"
     status: MATCH
-    reason: "Uses Part III line 29, multiplying line 28 by 25%."
+    reason: "Matches line 29 25% multiplication."
   - key: "30"
     status: MATCH
-    reason: "Uses Part III line 30, including the line 28 zero branch."
+    reason: "Matches line 30 zero-line-28/otherwise add $2,000 rule."
   - key: "31"
     status: MATCH
-    reason: "Uses the lifetime learning worksheet line 4, subtracting adjustments from institution-required expenses and excluding other materials."
+    reason: "Uses LLC adjusted expenses from the AQEE worksheet, matching Form 8863 line 31; the TIN and period refusals are stated."
 ```

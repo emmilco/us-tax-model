@@ -150,12 +150,6 @@
    "source_phrase": "Line 32a. Joint occupants of a home who are claiming the energy efficient home improvement credit must check the box on line 32a",
    "reason": "Joint occupants are those who occupied the home jointly (p. 3, which excludes married individuals filing a joint return), as the question asks; the claiming-the-credit condition is the line's, and joint occupancy is refused on line 30."
   },
-  "consumer:f8960.unsupported@i8960:p13": {
-   "verdict": "same",
-   "question_phrase": "a section 1411 net operating loss ... a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment",
-   "source_phrase": "Note: Early withdrawal penalty (Schedule 1 (Form 1040), line 18) is reported on Form 8960, line 10",
-   "reason": "Line 10 copies only the early withdrawal penalty the note names; every other line 7 or line 10 modification on the page, including traders' Schedule C items (business income), is within the question's catch-all and refused."
-  },
   "consumer:f8960.unsupported@i8960:p18": {
    "verdict": "same",
    "question_phrase": "a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment",
@@ -363,7 +357,7 @@
   "consumer:f1040.status@i1040gi:p13": {
    "verdict": "same",
    "question_phrase": "Form 1040, Filing Status checkboxes",
-   "source_phrase": "You were widowed before January 1, 2025, and didn\u2019t remarry before the end of 2025",
+   "source_phrase": "You were widowed before January 1, 2025, and didn’t remarry before the end of 2025",
    "reason": "The consumer household.widowed_2025 uses status only to select the single/HOH boxes for a scope refusal, and independently reads household.spouse_died_2025 for the death-year fact. The isolated model response inferred that status must itself establish widowhood; the actual conjunction does not use it that way (BUG-0277)."
   },
   "consumer:f1040.status@p501:p6": {
@@ -375,7 +369,7 @@
   "consumer:household.spouse_died_2025@i1040gi:p13": {
    "verdict": "same",
    "question_phrase": "Did your spouse die in 2025? (Asked when your filing status is single or head of household.)",
-   "source_phrase": "Your spouse died in 2025 and you didn\u2019t remarry in 2025.",
+   "source_phrase": "Your spouse died in 2025 and you didn’t remarry in 2025.",
    "reason": "The input supplies the death-year fact, not eligibility to file jointly. household.widowed_2025 combines it with a single/HOH status guard and refuses the owner-selected death-year situation (BUG-0277); it never treats this answer alone as establishing the quoted joint-return rule. The isolated model response conflated that scope screen with a joint-return eligibility predicate."
   },
   "consumer:household.married@i1040gi:p23": {
@@ -394,12 +388,12 @@
    "verdict": "same",
    "question_phrase": "Were you married at the end of 2025 (including married but considered unmarried for head of household status)?",
    "source_phrase": "If, at the end of 2025, you were unmarried and age 55 or older",
-   "reason": "The year-end unmarried chart condition is the negation of the question\u2019s year-end marriage answer; age is tested separately. The isolated model draft also returned same."
+   "reason": "The year-end unmarried chart condition is the negation of the question’s year-end marriage answer; age is tested separately. The isolated model draft also returned same."
   },
   "consumer:household.married@i1040gi:p13": {
    "verdict": "same",
    "question_phrase": "Were you married at the end of 2025 (including married but considered unmarried for head of household status)?",
-   "source_phrase": "You were married at the end of 2025, even if you didn\u2019t live with your spouse at the end of 2025.",
+   "source_phrase": "You were married at the end of 2025, even if you didn’t live with your spouse at the end of 2025.",
    "reason": "Both use the same year-end marital-status test with the same treatment of living apart, legal separation and interlocutory decrees, while the death-year joint-filing route on p. 13 is explicitly left by the question to household.spouse_died_2025, which household.filing_status_conflict reads alongside household.married."
   },
   "consumer:f8962.premium_adjust@i8962:p17": {
@@ -417,7 +411,7 @@
   "consumer:f8962.alloc@i8962:p18": {
    "verdict": "same",
    "question_phrase": "a Marketplace policy covered someone in your tax family and also someone not in it, or a divorce or legal separation during 2025 with coverage shared with the former spouse",
-   "source_phrase": "i8962 p. 18, Part IV\u2014Allocation of Policy Amounts: see Line 1 and Line 9 to determine whether you need to complete Part IV",
+   "source_phrase": "i8962 p. 18, Part IV—Allocation of Policy Amounts: see Line 1 and Line 9 to determine whether you need to complete Part IV",
    "reason": "The p. 18 reference is to Part IV allocation, the same rule the input asks about; the input's question already covers a shared policy and a divorce or separation in 2025, and the line refuses rather than allocating."
   },
   "consumer:f8962.other@i8962:p18": {
@@ -605,6 +599,66 @@
    "question_phrase": "the same in every month",
    "source_phrase": "Column B (p. 3), the monthly applicable SLCSP premium reported for each month",
    "reason": "The uniform question asks whether the monthly column B amounts printed are equal; the p. 3 rule says what column B reports for each month, the same column the question reads."
+  },
+  "consumer:asset.not179@i4562:p5": {
+   "verdict": "same",
+   "question_phrase": "Is this property one that does not qualify for the section 179 deduction: a land improvement ...; property held for investment; property you purchased and lease to others, unless ...; property used by a tax-exempt organization ...; or property used by a governmental unit or a foreign person or entity",
+   "source_phrase": "i4562 p. 5, Line 6, Column (c)—Elected cost (read by asset.s179_bad)",
+   "reason": "Line 6 column (c) is the elected cost of section 179 property; the question asks whether the property is outside section 179 property as p946 p. 17 and i4562 pp. 2-3 define it, which is the sense in which the gate refuses an election on it."
+  },
+  "consumer:asset.class@p946:p17": {
+   "verdict": "same",
+   "question_phrase": "or choose A (personal property with no class life), B (qualified technological equipment), C (property used in research and experimentation), or qualified improvement property",
+   "source_phrase": "p946 p. 17, \"Land and land improvements do not qualify as section 179 property\" (read by asset.is_section179)",
+   "reason": "asset.is_section179 reads the class only to tell qualified improvement property (section 179 property only when elected) from other classes; the land-improvement rule of p. 17 is answered by asset.not179, not by the class."
+  },
+  "consumer:gift.public_securities@f8283:p1": {
+   "verdict": "same",
+   "question_phrase": "A security counts only if it is (a) listed on a recognized stock exchange whose quotations are published daily, (b) regularly traded on a national or regional over-the-counter market, or (c) mutual fund shares quoted daily in a national newspaper of general circulation",
+   "source_phrase": "Also list publicly traded securities and certain other property even if the deduction is more than $5,000",
+   "reason": "Form 8283 p. 1 uses publicly traded securities in the sense its instructions define on i8283 p. 9, which the question now states; gift.section_b reads it for exactly that Section A exception."
+  },
+  "consumer:retirement.annuity@i1040gi:p29": {
+   "verdict": "same",
+   "question_phrase": "Is this a pension or annuity from a qualified plan, section 403(b) plan or tax-sheltered annuity, paid in periodic payments in which you have after-tax cost ... with an annuity starting date after November 18, 1996, and on that date you were under age 75 or had fewer than 5 years of guaranteed payments? ... If you are the survivor of a retiree, answer for the retiree's annuity",
+   "source_phrase": "i1040gi p. 29, Simplified Method Worksheet, line 9 (read by retirement.plan_taxable)",
+   "reason": "The worksheet page is the computation the question's Simplified Method conditions select (p. 30, conditions 1 and 2), and p. 30 tells a survivor of a retiree to use the retiree's annuity starting date and age, which the added sentence states."
+  },
+  "consumer:retirement.annuity@i1040gi:p27": {
+   "verdict": "same",
+   "question_phrase": "Is this a pension or annuity ... in which you have after-tax cost ... (This is when the Simplified Method applies.)",
+   "source_phrase": "i1040gi p. 27, line 4b, \"If the distribution from your IRA is fully taxable, enter the total distribution on line 4b; don't make an entry on line 4a\" (read by retirement.show_a)",
+   "reason": "retirement.show_a reads the input only to route a partly taxable plan annuity to line 5a as well as 5b; p. 27's rule turns on whether the distribution is fully taxable, which an annuity with after-tax cost figured by the Simplified Method is not, for a retiree or a survivor of one."
+  },
+  "consumer:person.blind@i1040gi:p34": {
+   "verdict": "same",
+   "question_phrase": "Were you blind at the end of 2025? Answer yes if you were totally blind as of December 31, 2025. If you weren't totally blind, answer yes only if you have a statement certified by your eye doctor",
+   "source_phrase": "i1040gi p. 34, the exceptions (\"even if you were born before January 2, 1961, or were blind\") and the Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were Blind (read by sa.boxes_blind)",
+   "reason": "The chart counts the blindness boxes of line 12d; the boxes are checked by the p. 33 definition of blind at the end of 2025, which the question now states in full. No other sense of blind is used on the page."
+  },
+  "consumer:person.blind@i1040gi:p35": {
+   "verdict": "same",
+   "question_phrase": "Were you blind at the end of 2025? Answer yes if you were totally blind as of December 31, 2025. If you weren't totally blind, answer yes only if you have a statement certified by your eye doctor",
+   "source_phrase": "i1040gi p. 35, the end of the chart and the Standard Deduction Worksheet for Dependents, \"You are blind\" and \"Spouse is blind\" (read by sa.boxes_blind)",
+   "reason": "The worksheet's boxes are the line 12d boxes, checked by the p. 33 definition the question states."
+  },
+  "consumer:f1095a.uniform@i8962:p16": {
+   "verdict": "same",
+   "question_phrase": "Does this Form 1095-A show coverage in all 12 months of 2025, with the same amount in column A (monthly enrollment premiums) every month and the same amount in column B (monthly SLCSP premium) every month? Use the corrected column B ...",
+   "source_phrase": "i8962 p. 16, Column (a), the monthly enrollment premiums entered on lines 12 through 23 (read by f1095a.a_jan to f1095a.a_dec)",
+   "reason": "The reading lines use the answer only to choose between the one monthly column A amount (mo_a) and the twelve monthly amounts; when column A is the same every month the two routes give the same column (a) entry, which is what p. 16 asks for."
+  },
+  "consumer:f1095a.uniform@p974:p27": {
+   "verdict": "same",
+   "question_phrase": "... the same amount in column B (monthly SLCSP premium) every month? Use the corrected column B if column B is blank, zero or wrong, and answer no if the correct amount is not the same every month ... Get the correct amount from the Marketplace's tool",
+   "source_phrase": "p974 p. 27, Applicable SLCSP premium tools, \"Only the Marketplaces are able to provide applicable SLCSP premiums.\" (read by f1095a.b_jan to f1095a.b_dec)",
+   "reason": "The question is about the corrected applicable SLCSP premium, which the page says comes from the Marketplace's tool; the reading lines take that same corrected amount, monthly or uniform."
+  },
+  "consumer:f1095a.uniform@i1095a:p2": {
+   "verdict": "same",
+   "question_phrase": "Does this Form 1095-A show coverage in all 12 months of 2025, with the same amount in column A ... every month and the same amount in column B ... every month?",
+   "source_phrase": "i1095a p. 2, \"Total the amounts on lines 21 through 32 and enter on line 33.\" (read by f1095a.line33a)",
+   "reason": "Line 33 is the total of the monthly amounts; the answer only picks whether that total is 12 times the one monthly amount or the sum of twelve entries, which agree when the question's condition holds."
   }
  },
  "baseline": {
@@ -729,9 +783,6 @@
   "consumer:f1040.status@i8962:p13": "7ceddc1f603ff630",
   "consumer:f1040.status@p550:p103": "7ceddc1f603ff630",
   "consumer:f1095a.b_counted@i8962:p15": "887c8dc75a294404",
-  "consumer:f1095a.uniform@i1095a:p2": "b899897cc0f57876",
-  "consumer:f1095a.uniform@i8962:p16": "b899897cc0f57876",
-  "consumer:f1095a.uniform@p974:p27": "b899897cc0f57876",
   "consumer:f2441.benefits@i1040gi:p24": "2e06b7a0104b56fd",
   "consumer:f2441.care@i2441:p3": "a46fcf4dfd98f49d",
   "consumer:f2441.spouse_died@i2441:p4": "3ae35d4f272c7694",
@@ -765,20 +816,12 @@
   "consumer:f8960.refund@i8960:p13": "6ef273fd17e65888",
   "consumer:f8960.refund@i8960:p18": "6ef273fd17e65888",
   "consumer:f8960.refund@i8960:p22": "6ef273fd17e65888",
-  "consumer:f8960.unsupported@i8960:p13": "0fec98678e304caf",
   "consumer:f8960.unsupported@i8960:p18": "0fec98678e304caf",
   "consumer:f8960.unsupported@i8960:p22": "0fec98678e304caf",
   "consumer:f8962.alloc@f8962:p1": "ae439ec9ecd27ba7",
   "consumer:f8962.estimate_100@i8962:p6": "06865695842f24e7",
   "consumer:f8962.other@f8962:p1": "9a775f88e4a06179",
   "consumer:f8962.same_state_counted@i8962:p15": "a44c389f389cf908",
-  "consumer:gift.public_securities@f8283:p1": "2cfd044f6103bec7",
-  "consumer:household.credit_disallowed@i1040gi:p40": "37c69cb901db03e8",
-  "consumer:household.credit_disallowed@i1040gi:p41": "37c69cb901db03e8",
-  "consumer:household.credit_disallowed@i1040gi:p42": "37c69cb901db03e8",
-  "consumer:household.credit_disallowed@i1040gi:p44": "37c69cb901db03e8",
-  "consumer:household.credit_disallowed@i1040gi:p45": "37c69cb901db03e8",
-  "consumer:household.credit_disallowed@i1040gi:p46": "37c69cb901db03e8",
   "consumer:ira.deduct_less@p590a:p16": "e2536c3a062ef3cc",
   "consumer:oi8z.kind@i1040gi:p93": "37117cd33fe493d6",
   "consumer:otjob.flsa@i1040gi:p107": "8df0c4bc77003105",
@@ -788,9 +831,6 @@
   "consumer:person.age65@i1040gi:p33": "7fd2c64c4fd4e80a",
   "consumer:person.age65@i1040gi:p34": "7fd2c64c4fd4e80a",
   "consumer:person.age65@i1040gi:p35": "7fd2c64c4fd4e80a",
-  "consumer:person.blind@i1040gi:p33": "0d250780adf8a2c2",
-  "consumer:person.blind@i1040gi:p34": "0d250780adf8a2c2",
-  "consumer:person.blind@i1040gi:p35": "0d250780adf8a2c2",
   "consumer:person.died_before_65@i1040gi:p33": "a3ac05903529a6e1",
   "consumer:person.died_before_65@i1040gi:p34": "a3ac05903529a6e1",
   "consumer:person.died_before_65@i1040gi:p35": "a3ac05903529a6e1",
@@ -856,8 +896,6 @@
   "consumer:retirement.account@f1099r:p7": "41f2bcd10ee6987f",
   "consumer:retirement.account@f1099r:p9": "41f2bcd10ee6987f",
   "consumer:retirement.account@i1040gi:p27": "41f2bcd10ee6987f",
-  "consumer:retirement.annuity@i1040gi:p27": "282e1c37fa9a272a",
-  "consumer:retirement.annuity@i1040gi:p29": "282e1c37fa9a272a",
   "consumer:retirement.code@f1099r:p5": "7fcc0a57df11fa9a",
   "consumer:retirement.code@f1099r:p7": "7fcc0a57df11fa9a",
   "consumer:retirement.code@f1099r:p9": "7fcc0a57df11fa9a",

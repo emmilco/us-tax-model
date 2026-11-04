@@ -1,0 +1,9 @@
+{
+  "note": "Proposed ruling for reviews/2025/limits.json (package asset-veh-sc; not applied, the brief forbids editing that file). p946 p. 31 is newly cited for its definition of original use.",
+  "rulings": {
+    "limit:p946:p31:ab4e4b9b": {
+      "enforced_by": ["asset.screen", "scveh.screen"],
+      "reason": "The used-property items of both screens state that reconditioned or rebuilt property you acquired is used property unless the cost of its used parts is not more than 20% of its total cost; a Yes refuses (the special allowance on used property is refused, owner decision A1)."
+    }
+  }
+}

@@ -6,6 +6,13 @@
   {
    "printed": "10",
    "restated": "Add line 1, line 2a, line 3, line 7, and line 9.",
+   "model": "IRS line 10 says 'Combine lines 1 through 7 and 9'; the restatement adds only 1, 2a, 3, 7, and 9, omitting lines 4, 5, and 6.",
+   "ruling": "Ruling: scope; f1040s1 line 10, \"Combine lines 1 through 7 and 9\". Lines 4 to 6 are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them: its text names \"sales of business property (Form 4797)\", \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\" (checked on the current forms/2025/scope.yaml); within scope they are zero, as the line's citation says. Lines 1, 2a, 3, 7 and 9 are figured. Same ruling as the earlier rounds; the income package changed only the wording of the alimony and unemployment screens, which does not touch this line. Project stands.",
+   "context": "a68a476d11ff7b92b2e1bcd7e0574b59d5cc7744dda6a505cd2ed51581579a69"
+  },
+  {
+   "printed": "10",
+   "restated": "Add line 1, line 2a, line 3, line 7, and line 9.",
    "model": "IRS line 10 says 'Combine lines 1 through 7 and 9'; the restatement adds only lines 1, 2a, 3, 7, and 9, omitting lines 4, 5, and 6.",
    "ruling": "Ruling: scope; f1040s1 line 10, \"Combine lines 1 through 7 and 9\". Lines 4 to 6 are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them: it names \"sales of business property (Form 4797)\", \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\", and a Form 4684 gain falls under its opening clause; within scope they are zero, as the line's citation says. Lines 1, 2a, 3, 7 and 9 are figured. Same ruling as the earlier rounds; unchanged by fix round 3.",
    "context": "592f4736288df2d3c768037385399136ae34f1ea628b3dbe8946ec70574d23a1"
@@ -62,9 +69,23 @@
   {
    "printed": "25",
    "restated": "Enter the amount from line 24a.",
+   "model": "IRS line 25 says 'Total other adjustments. Add lines 24a through 24z'; the restatement enters only line 24a and omits the other 24b-24z adjustments.",
+   "ruling": "Ruling: scope; f1040s1 line 25, \"Add lines 24a through 24z\". Lines 24b to 24z are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (it lists jury duty pay given to the employer, line 24a, among the items asked separately); within scope they are zero, as the line's citation says. Line 24a is figured (decision D3). Same ruling as the earlier rounds; unchanged by the backlog packages. Project stands.",
+   "context": "a68a476d11ff7b92b2e1bcd7e0574b59d5cc7744dda6a505cd2ed51581579a69"
+  },
+  {
+   "printed": "25",
+   "restated": "Enter the amount from line 24a.",
    "model": "IRS line 25 says 'Total other adjustments. Add lines 24a through 24z'; the restatement enters only line 24a.",
    "ruling": "Ruling: scope; f1040s1 line 25, \"Add lines 24a through 24z\". Lines 24b to 24z are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (it lists jury duty pay given to the employer, line 24a, among the items asked separately); within scope they are zero, as the line's citation says. Line 24a is figured (decision D3). Same ruling as the earlier rounds; unchanged by fix round 3.",
    "context": "592f4736288df2d3c768037385399136ae34f1ea628b3dbe8946ec70574d23a1"
+  },
+  {
+   "printed": "26",
+   "restated": "Add line 11, line 13, line 15, line 16, line 17, line 18, line 19a, line 20, line 21, and line 25.",
+   "model": "IRS line 26 says 'Add lines 11 through 23 and 25'; the restatement omits lines 12, 14, and 23 from the sum.",
+   "ruling": "Ruling: scope; f1040s1 line 26, \"Add lines 11 through 23 and 25\". Lines 12, 14 and 23 are named in scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (\"or an adjustment on Schedule 1 line 12, 14 or 23?\", checked on the current scope.yaml); within scope they are zero, as the line's citation says. Line 22 is reserved; every other line is added. Same ruling as the earlier rounds. Project stands.",
+   "context": "a68a476d11ff7b92b2e1bcd7e0574b59d5cc7744dda6a505cd2ed51581579a69"
   },
   {
    "printed": "26",

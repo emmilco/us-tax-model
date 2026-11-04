@@ -67,7 +67,7 @@ form:
       deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible
       contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025;
       a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972;
-      a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died, or that is shared among more than one beneficiary; a rollover of property other than cash, or of a distribution under a qualified domestic relations order; a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?'
+      a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree''s joint and survivor annuity is not one of these); a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead; a rollover of a distribution under a qualified domestic relations order; a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree''s annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?'
     type: Bool
     expr:
       op: input
@@ -75,8 +75,8 @@ form:
         deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible
         contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025;
         a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972;
-        a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died, or that is shared among more than one beneficiary; a rollover of property other than cash, or of a distribution under a qualified domestic relations order;
-        a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?'
+        a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree''s joint and survivor annuity is not one of these); a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead; a rollover of a distribution under a qualified domestic relations order;
+        a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree''s annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?'
     cite:
       doc: i1040gi
       locator: 'pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public
@@ -84,7 +84,15 @@ form:
         525."; p. 30, "If you are the beneficiary of an employee who died, see Pub. 575. If there is more than one beneficiary,
         see Pub. 575 or Pub. 721 to figure each beneficiary’s taxable amount." and "See Pub. 575 for more details on rollovers,
         including special rules that apply to rollovers from designated Roth accounts, partial rollovers of property, and
-        distributions under qualified domestic relations orders."'
+        distributions under qualified domestic relations orders."; p. 30, Age (or Combined Ages) at Annuity Starting Date,
+        "If you are the survivor of a retiree, use the retiree’s age on their annuity starting date"; p575 p. 34, Survivors
+        of retirees, "Benefits paid to you as a survivor under a joint and survivor annuity must be included in your gross
+        income", "If the retiree was reporting the annuity under the Simplified Method, the part of each payment that is
+        tax free is the same as the tax-free amount figured by the retiree at the annuity starting date" and "If you receive
+        guaranteed payments as the decedent’s beneficiary under a life annuity contract"; p575 p. 23, Rollovers of property,
+        "To roll over an eligible rollover distribution of property, you must either roll over the actual property distributed
+        or sell it and roll over the proceeds", "You can’t keep the distributed property and roll over cash or other property."
+        and "If you roll over only part of the proceeds, you are taxed on the part you keep"'
   - id: retirement.annuity
     printed: (helper)
     label: Is this a pension or annuity from a qualified plan, section 403(b) plan or tax-sheltered annuity, paid
@@ -97,10 +105,14 @@ form:
       source: Is this a pension or annuity from a qualified plan, section 403(b) plan or tax-sheltered annuity,
         paid in periodic payments in which you have after-tax cost (box 9b or your records), with an annuity starting
         date after November 18, 1996, and on that date you were under age 75 or had fewer than 5 years of guaranteed
-        payments? (This is when the Simplified Method applies.)
+        payments? (This is when the Simplified Method applies. If you are the survivor of a retiree, answer for the retiree's
+        annuity, with its starting date and the retiree's age on that date.)
     cite:
       doc: i1040gi
-      locator: p. 30, Simplified Method, conditions 1 and 2; p. 28, Partially Taxable Pensions and Annuities
+      locator: p. 30, Simplified Method, conditions 1 and 2; p. 28, Partially Taxable Pensions and Annuities;
+        p575 p. 34, Survivors of retirees, "If the retiree was reporting the annuity under the Simplified Method, the
+        part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting
+        date"
   - id: retirement.cost
     printed: (helper)
     label: Your cost in the plan at the annuity starting date (Simplified Method Worksheet, line 2)
@@ -108,30 +120,42 @@ form:
     expr:
       op: input
       source: Your cost (net investment, after-tax contributions) in the plan at the annuity starting date; it may
-        be shown in Form 1099-R box 9b
+        be shown in Form 1099-R box 9b (if you are the survivor of a retiree, the retiree's cost at the retiree's annuity
+        starting date)
     cite:
       doc: i1040gi
-      locator: p. 29, Simplified Method Worksheet, line 2; p. 30, Cost
+      locator: p. 29, Simplified Method Worksheet, line 2; p. 30, Cost;
+        p575 p. 34, Survivors of retirees, "If the retiree was reporting the annuity under the Simplified Method, the
+        part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting
+        date"
   - id: retirement.used_last_year
     printed: (helper)
     label: Did you complete this worksheet for this annuity last year?
     type: Bool
     expr:
       op: input
-      source: Did you complete the Simplified Method Worksheet for this annuity last year?
+      source: Did you complete the Simplified Method Worksheet for this annuity last year? (If you are the survivor
+        of a retiree, answer Yes if you or the retiree completed it for this annuity last year.)
     cite:
       doc: i1040gi
-      locator: p. 29, Simplified Method Worksheet, note under line 2
+      locator: p. 29, Simplified Method Worksheet, note under line 2;
+        p575 p. 34, Survivors of retirees, "If the retiree was reporting the annuity under the Simplified Method, the
+        part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting
+        date"
   - id: retirement.last_line4
     printed: (helper)
     label: Line 4 of last year's Simplified Method Worksheet
     type: NonNegDollars
     expr:
       op: input
-      source: The amount on line 4 of last year's Simplified Method Worksheet for this annuity
+      source: The amount on line 4 of last year's Simplified Method Worksheet for this annuity (yours, or the retiree's
+        if you are the survivor of a retiree)
     cite:
       doc: i1040gi
-      locator: p. 29, Simplified Method Worksheet, note under line 2
+      locator: p. 29, Simplified Method Worksheet, note under line 2;
+        p575 p. 34, Survivors of retirees, "If the retiree was reporting the annuity under the Simplified Method, the
+        part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting
+        date"
   - id: retirement.joint_life
     printed: (helper)
     label: Annuity starting date after 1997 and payments for your life and that of your beneficiary?
@@ -139,10 +163,14 @@ form:
     expr:
       op: input
       source: Was the annuity starting date after 1997, with payments for your life and that of your beneficiary
-        (Table 2)?
+        (Table 2)? (If you are the survivor of a retiree, answer for the retiree's annuity, that is, whether its starting date
+        was after 1997, with payments for the retiree's life and yours.)
     cite:
       doc: i1040gi
-      locator: p. 29, Simplified Method Worksheet, line 3 and Table 2
+      locator: p. 29, Simplified Method Worksheet, line 3 and Table 2;
+        p575 p. 34, Survivors of retirees, "If the retiree was reporting the annuity under the Simplified Method, the
+        part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting
+        date"
   - id: retirement.age
     printed: (helper)
     label: Age at the annuity starting date
@@ -160,10 +188,14 @@ form:
     type: Count
     expr:
       op: input
-      source: Your combined ages (yours and your beneficiary's) at the annuity starting date
+      source: Your combined ages (yours and your beneficiary's) at the annuity starting date (if you are the survivor
+        of a retiree, the retiree's age and yours on the retiree's annuity starting date)
     cite:
       doc: i1040gi
-      locator: p. 29, Table 2; p. 30, Age (or Combined Ages) at Annuity Starting Date
+      locator: p. 29, Table 2; p. 30, Age (or Combined Ages) at Annuity Starting Date;
+        p575 p. 34, Survivors of retirees, "If the retiree was reporting the annuity under the Simplified Method, the
+        part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting
+        date"
   - id: retirement.months
     printed: (helper)
     label: Number of months for which this year's payments were made
@@ -181,10 +213,15 @@ form:
     expr:
       op: input
       source: Amount, if any, recovered tax free in years after 1986 (if you completed this worksheet last year,
-        line 10 of last year's worksheet)
+        line 10 of last year's worksheet; if you are the survivor of a retiree, include the amount the retiree recovered
+        tax free)
     cite:
       doc: i1040gi
-      locator: p. 29, Simplified Method Worksheet, line 6
+      locator: p. 29, Simplified Method Worksheet, line 6;
+        p575 p. 34, Survivors of retirees, "If the retiree was reporting the annuity under the Simplified Method, the
+        part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting
+        date"; p575 p. 12, Exclusion limited to cost,
+        "the total amount of annuity income that you can exclude over the years as a recovery of the cost can’t exceed your total cost"
   - id: retirement.zero
     printed: (helper)
     label: No amount

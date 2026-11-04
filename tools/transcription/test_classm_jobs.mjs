@@ -22,6 +22,11 @@ try {
   assert.ok(jobs.some(j => j.inputs['f2441.line13'] > 0 && j.inputs['f2441.line14'] > 0),
     'carry-in and forfeiture must be exercised together');
   console.log(`classm seeds: ${jobs.length} active jobs; positive benefits and carry/forfeiture covered`);
+  // A single document is worked on its printed lines only, and a case holds only the answers the
+  // interview asks: the saver's credit dependent question is asked only if someone can claim you.
+  assert.ok(jobs.every(j => j.worked_scope === 'printed-irs-lines'), 'single documents request printed IRS lines only');
+  assert.ok(jobs.every(j => j.inputs['sa.dependent'] === true || !('person[taxpayer].sav_claimed' in j.inputs)),
+    'a case must not hold an answer the interview never asks');
   const hsaOut = join(temp, 'hsa-jobs.json');
   const hsa = spawnSync(process.execPath, ['engine/dist/main.js', 'classm-jobs',
     '--docs', 'f8889', '--corpus', '1', '--include-fixtures', '--out', hsaOut],
@@ -46,6 +51,28 @@ try {
   assert.ok(g28Jobs.length > 0, 'a reached 28% Rate Gain Worksheet must still be worked');
   assert.ok(g28Jobs.every(job => !job.branches.includes('g28.reached:false')), 'hidden worksheet lines must not be filled or written into class M expectations');
   console.log(`classm shown_when: ${g28Jobs.length} g28 jobs, none on an unreached worksheet`);
+  // A Form 1095-A is answered either as uniform (one monthly column A and B and the line 33 column C
+  // total) or month by month; the generator fills both so every line computes, but the worker sees
+  // only the route the entry takes, and the other route's totals are not requested.
+  const f1095aOut = join(temp, 'f1095a-jobs.json');
+  const f1095a = spawnSync(process.execPath, ['engine/dist/main.js', 'classm-jobs',
+    '--docs', 'f1095a', '--corpus', '300', '--include-fixtures', '--out', f1095aOut],
+  { encoding: 'utf8', maxBuffer: 8 * 1024 * 1024 });
+  assert.equal(f1095a.status, 0, f1095a.stderr);
+  const f1095aJobs = JSON.parse(readFileSync(f1095aOut, 'utf8')).jobs;
+  assert.ok(f1095aJobs.length > 0, 'a Form 1095-A must still be worked');
+  let entries = 0;
+  for (const job of f1095aJobs) for (const [entry, fields] of Object.entries(job.entries)) {
+    const uniform = fields.find(f => f.field === 'f1095a.uniform')?.value.value;
+    const shown = new Set(fields.map(f => f.field.slice('f1095a.'.length)));
+    const filled = job.fill.filter(l => l.entry === entry).map(l => l.id.slice(entry.length + 1));
+    const other = uniform ? ['in_a_jan', 'in_b_jan', 'in_c_jan'] : ['mo_a', 'mo_b', 'c_total'];
+    assert.ok(other.every(k => !shown.has(k)), `${job.id} ${entry}: the other route's answers are shown`);
+    assert.ok(filled.every(k => !k.startsWith('yr_') || k.endsWith(uniform ? '_uniform' : '_monthly')), `${job.id} ${entry}: the other route's total is requested`);
+    entries++;
+  }
+  assert.ok(entries > 0);
+  console.log(`classm route: ${f1095aJobs.length} f1095a job(s), ${entries} entries shown only their own route`);
 } finally {
   rmSync(temp, { recursive: true, force: true });
 }

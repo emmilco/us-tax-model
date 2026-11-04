@@ -1,0 +1,6 @@
+{"covers": ["f4952.unsupported", "f4952.alternative_allocation", "f4952.used"],
+ "evidence": "synthetic regression (not class B)",
+ "evidence_note": "T-101. stage5.return.refund (standard deduction, no investment interest, no 2024 carryforward, no line 4g) with both Form 4952 screens answered Yes. Before the change Form 1040 lines 12e and 24 to 37 were refused (f4952.unsupported). Predicted from f4952 p. 3, Who Must File: Form 4952 is not used, so neither screen is reached and every Form 1040 value of stage5.return.refund is unchanged; Form 4952 line 8 is $0. Written before the evaluator was run.",
+ "set": {"f4952.unsupported": true, "f4952.alternative_allocation": true},
+ "expect_from_base": true,
+ "expect": {"f4952.line8": {"kind": "money", "cents": 0}}}

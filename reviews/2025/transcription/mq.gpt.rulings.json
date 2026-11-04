@@ -1,0 +1,14 @@
+{
+ "kind": "transcription",
+ "form": "mq",
+ "family": "gpt",
+ "rulings": [
+  {
+   "printed": "mq.applies",
+   "project": "{\"args\": [{\"amount\": {\"collection\": \"person\", \"field\": \"person.mq_total\", \"op\": \"sum_over\", \"where\": null}, \"count\": {\"param\": \"sc.count2\"}, \"op\": \"multiply_count\"}, {\"amount\": {\"collection\": \"person\", \"field\": \"person.mq_q4\", \"op\": \"sum_over\", \"where\": null}, \"count\": {\"param\": \"sc.count5\"}, \"op\": \"multiply_count\"}], \"test\": \"lt\"}",
+   "second": "{\"args\": [{\"of\": [{\"collection\": \"person\", \"field\": \"person.mq_total\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.mq_total\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}, {\"of\": [{\"collection\": \"person\", \"field\": \"person.mq_q4\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.mq_q4\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.mq_q4\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.mq_q4\", \"op\": \"sum_over\", \"where\": null}, {\"collection\": \"person\", \"field\": \"person.mq_q4\", \"op\": \"sum_over\", \"where\": null}], \"op\": \"sum\"}], \"test\": \"lt\"}",
+   "ruling": "Ruling: representation; p946 p. 34, Which Convention Applies?, Mid-quarter convention: the convention applies if \"the total depreciable bases of MACRS property you placed in service during the last 3 months of the tax year (...) are more than 40% of the total depreciable bases of all MACRS property you placed in service during the entire year\". The reply compares total + total with five times the fourth-quarter sum, that is 2 x total < 5 x fourth quarter, the project's test written as sums. executable-triage-v2 (`reviews/2025/transcription/triage/mq.gpt.json`; 1,495 fixtures, 500 generated returns seed 20261026, 0 partial records; 1,995 comparisons): 1,995 of 1,995 agree; differences none; on returns the full interview completes: none. No difference on any compared record.",
+   "context": "42695fec68e82ab6227deb8bfa57547243074b53cccacb8920b56b524c6f450c"
+  }
+ ]
+}

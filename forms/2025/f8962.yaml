@@ -6,8 +6,8 @@ form:
   note: Prepared when there is a Form 1095-A. Parts IV and V (allocation, year of marriage), other minimum essential coverage
     and the coverage-family rules that go with it, coverage of someone not lawfully present, a VOID or replaced Form 1095-A,
     coverage that began after the first day of a month, a refunded premium, QSEHRA and individual coverage HRAs, unpaid
-    premiums and advance payments for someone in no tax family are refused; married filing separately is refused for the
-    whole return.
+    premiums, advance payments for someone in no tax family, and a covered month with zero in column (b) are refused;
+    married filing separately is refused for the whole return.
   lines:
   - id: f8962.zero
     printed: (helper)
@@ -208,24 +208,175 @@ form:
         reconcile any APTC on Form 8962."
   - id: f8962.two_counted
     printed: (gate)
-    label: Column B counted on two Forms 1095-A from the same state for the same month
+    label: Column B counted on two Forms 1095-A from the same state for the same month, or a covered month with zero in
+      column (b)
     type: Bool
     expr:
       op: test
-      all:
+      any:
       - op: test
-        gt:
-        - f8962.forms
-        - const: 1
-          type: Count
+        all:
+        - op: test
+          gt:
+          - f8962.forms
+          - const: 1
+            type: Count
+        - op: test
+          eq:
+          - f8962.same_state_counted
+          - const: true
       - op: test
         eq:
-        - f8962.same_state_counted
+        - f8962.b_zero
         - const: true
     cite:
       doc: i8962
       locator: p. 15, Column (b), "Enter the amount from column B of only one Form 1095-A—do not add the amounts from each
         form."
+  - id: f8962.b_zero
+    printed: (helper)
+    label: 'A month of lines 12 to 23 with enrollment premiums in column (a) and zero in column (b), for an applicable
+      taxpayer'
+    type: Bool
+    expr:
+      op: test
+      all:
+      - op: test
+        eq:
+        - f8962.show_applicable
+        - const: true
+      - op: test
+        any:
+        - op: test
+          all:
+          - op: test
+            gt:
+            - f8962.line12a
+            - const: 0
+          - op: test
+            eq:
+            - f8962.line12b
+            - const: 0
+        - op: test
+          all:
+          - op: test
+            gt:
+            - f8962.line13a
+            - const: 0
+          - op: test
+            eq:
+            - f8962.line13b
+            - const: 0
+        - op: test
+          all:
+          - op: test
+            gt:
+            - f8962.line14a
+            - const: 0
+          - op: test
+            eq:
+            - f8962.line14b
+            - const: 0
+        - op: test
+          all:
+          - op: test
+            gt:
+            - f8962.line15a
+            - const: 0
+          - op: test
+            eq:
+            - f8962.line15b
+            - const: 0
+        - op: test
+          all:
+          - op: test
+            gt:
+            - f8962.line16a
+            - const: 0
+          - op: test
+            eq:
+            - f8962.line16b
+            - const: 0
+        - op: test
+          all:
+          - op: test
+            gt:
+            - f8962.line17a
+            - const: 0
+          - op: test
+            eq:
+            - f8962.line17b
+            - const: 0
+        - op: test
+          all:
+          - op: test
+            gt:
+            - f8962.line18a
+            - const: 0
+          - op: test
+            eq:
+            - f8962.line18b
+            - const: 0
+        - op: test
+          all:
+          - op: test
+            gt:
+            - f8962.line19a
+            - const: 0
+          - op: test
+            eq:
+            - f8962.line19b
+            - const: 0
+        - op: test
+          all:
+          - op: test
+            gt:
+            - f8962.line20a
+            - const: 0
+          - op: test
+            eq:
+            - f8962.line20b
+            - const: 0
+        - op: test
+          all:
+          - op: test
+            gt:
+            - f8962.line21a
+            - const: 0
+          - op: test
+            eq:
+            - f8962.line21b
+            - const: 0
+        - op: test
+          all:
+          - op: test
+            gt:
+            - f8962.line22a
+            - const: 0
+          - op: test
+            eq:
+            - f8962.line22b
+            - const: 0
+        - op: test
+          all:
+          - op: test
+            gt:
+            - f8962.line23a
+            - const: 0
+          - op: test
+            eq:
+            - f8962.line23b
+            - const: 0
+    cite:
+      doc: p974
+      locator: p. 6, "To qualify for a monthly credit amount, at least one individual in your tax family must be enrolled
+        in a qualified health plan on the first day of that month.", "The applicable SLCSP premium is the second lowest cost
+        silver plan premium offered through the Marketplace where you reside that applies to your coverage family",
+        "may report your applicable SLCSP premium as -0-", "In either case, you must determine your correct applicable SLCSP
+        premium."; i8962 p. 16, Column (b), "Enter on lines 12 through 23, column (b), the amount of the monthly applicable
+        SLCSP premium reported on Form 1095-A, lines 21 through 32, column B, for the corresponding month"; i8962 p. 17, "credit
+        amount because your enrollment premiums for the month were unpaid, enter -0- on the appropriate line on Form 8962,
+        column (b)"
   - id: f8962.same_state_counted
     printed: (gate)
     label: Did you count column B on two Forms 1095-A from the same state that show coverage in the same month?
@@ -2445,11 +2596,14 @@ form:
     - when: f8962.two_counted
       form: Form 8962, line 11 or 12 to 23, column (b)
       remedy: For a month that several counted Forms 1095-A from one state cover, enter column B from only one of them. Forms
-        that share only some of their months need month-by-month choices this tool does not take.
+        that share only some of their months need month-by-month choices this tool does not take. A month with enrollment
+        premiums in column A also needs its applicable SLCSP premium in column B; if Form 1095-A leaves it blank or shows
+        zero, enter the correct applicable SLCSP premium from the Marketplace's tool (for example HealthCare.gov/Tax-Tool).
       cite:
         doc: i8962
         locator: p. 15, Column (b), "Enter the amount from column B of only one Form 1095-A—do not add the amounts from each
-          form."
+          form."; p974 p. 6, "may report your applicable SLCSP premium as -0-", "In either case, you must determine your
+          correct applicable SLCSP premium."
   - id: f8962.line25
     printed: '25'
     label: Advance payment of PTC

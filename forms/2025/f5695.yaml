@@ -20,7 +20,7 @@ form:
       ref: sales.zero
     cite:
       doc: f5695
-      locator: Form 5695 (2025), lines 5b, 11, 18b to 20d, 22d to 26c and 29h
+      locator: Form 5695 (2025), lines 5b, 11, 18b to 20d, 22d to 26c, 29h and 32
   - id: f5695.part1_any
     printed: (helper)
     label: Any residential clean energy property paid for in 2025, or a carryforward from 2024
@@ -1954,21 +1954,25 @@ form:
       locator: Form 5695 (2025), lines 21b and 29h, "Skip lines 22 through 25 and line 29"
   - id: f5695.joint_occupancy
     printed: (helper)
-    label: Did you occupy the home jointly with someone other than your spouse on a joint return (whether or not the other
-      occupant claims the credit)?
+    label: Did you occupy any home for which you enter Part II costs jointly with someone other than your spouse on a joint
+      return (whether or not the other occupant claims the credit)?
     type: Bool
     expr:
       op: input
-      source: Did you occupy the home jointly with someone other than your spouse on a joint return (whether or not the other
-        occupant files Form 5695, and whether you paid for the same items or for different ones)? (Answer No if you and a
-        neighbor only shared the cost of property benefiting each of your own main homes, and enter only the part of the cost
-        you paid.)
+      source: Did you occupy any home for which you enter Part II costs jointly with someone other than your spouse on a
+        joint return (whether or not the other occupant files Form 5695, and whether you paid for the same items or for
+        different ones)? This means your main home and also any other home where you installed qualified energy property,
+        such as a heat pump, water heater, furnace or central air conditioner at a second home or a home you rent; answer Yes
+        if you shared any one of them. (Answer No if you and a neighbor only shared the cost of property benefiting each of
+        your own main homes, and enter only the part of the cost you paid.)
     cite:
       doc: i5695
       locator: p. 3, Joint occupancy, "If you occupied your home jointly with someone, each occupant must complete their own
         Form 5695" and "If the aggregate credit that would be allowed to all occupants for any item of property exceeds the
         credit limit below, then you must figure your allocable share of the credit from each property"; p. 3, Joint
-        ownership of qualified property, "You figure your credit on the part of the cost you paid"
+        ownership of qualified property, "You figure your credit on the part of the cost you paid"; p. 3, Section
+        B—Residential Energy Property Expenditures, "installed on or in connection with a home that you used during 2025";
+        p. 6, Lines 21a Through 21c, "Enter the full address of each home where you installed qualified energy property"
   - id: f5695.separate_homes
     printed: (helper)
     label: Did you and your spouse own and live apart in separate main homes?
@@ -2110,10 +2114,9 @@ form:
     cite:
       doc: i5695
       locator: p. 7, Line 31, "Complete the worksheet below to figure the amount to enter on line 31"
-  - id: f5695.line32
-    printed: "32"
-    label: Energy efficient home improvement credit. Enter the smaller of line 30 or line 31. Also include this amount on
-      Schedule 3 (Form 1040), line 5b
+  - id: f5695.eehi_credit
+    printed: (helper)
+    label: The smaller of line 30 or line 31
     type: NonNegDollars
     expr:
       op: smaller_of
@@ -2122,16 +2125,45 @@ form:
       - f5695.line31
     cite:
       doc: f5695
-      locator: Form 5695 (2025), line 32
+      locator: Form 5695 (2025), line 32, "Enter the smaller of line 30 or line 31"
+  - id: f5695.line32
+    printed: "32"
+    label: Energy efficient home improvement credit. Enter the smaller of line 30 or line 31. Also include this amount on
+      Schedule 3 (Form 1040), line 5b
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - f5695.part2_any
+          - const: true
+        then: f5695.eehi_credit
+      - guard:
+          op: test
+          eq:
+          - f5695.part2_any
+          - const: false
+        then: f5695.zero
+    cite:
+      doc: f5695
+      locator: Form 5695 (2025), line 32 (zero when Part II is not completed)
   - id: f5695.line32a
     printed: 32a
     label: If the special rule for joint occupants applies, check here and attach a statement
     type: Bool
     expr:
       op: test
-      eq:
-      - f5695.joint_occupancy
-      - const: true
+      all:
+      - op: test
+        eq:
+        - f5695.part2_any
+        - const: true
+      - op: test
+        eq:
+        - f5695.joint_occupancy
+        - const: true
     cite:
       doc: i5695
       locator: p. 7, Lines 32a and 32b, "Line 32a. Joint occupants of a home who are claiming the energy efficient home

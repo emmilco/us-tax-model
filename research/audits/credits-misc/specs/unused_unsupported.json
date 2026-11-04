@@ -1,0 +1,6 @@
+{"covers": ["f4952.unsupported", "f4952.used"],
+ "evidence": "synthetic regression (not class B)",
+ "evidence_note": "T-101. stage4.base with f4952.unsupported Yes and no investment interest, no 2024 carryforward and no line 4g election. Predicted from f4952 p. 3, Who Must File, \"you must file Form 4952 to claim a deduction for your investment interest expense\": the form is not used, so its screen is not reached; Form 4952 line 8 and the election are $0, the form is not required, and every stage4.base value is unchanged. Written before the evaluator was run.",
+ "set": {"f4952.unsupported": true},
+ "expect_from_base": true,
+ "expect": {"f4952.line8": {"kind": "money", "cents": 0}, "f4952.election": {"kind": "money", "cents": 0}, "f4952.required": {"kind": "bool", "value": false}}}

@@ -93,15 +93,23 @@ export function renderValuesSheet(data: CanonicalData, result: EvalResult, targe
     if (der.operands.length) lines.push(`  ${key}: ${der.op}(${der.operands.map(o => `${o.ref} = ${fmtValue(o.value)}`).join("; ")})`);
   }
   for (const note of new Set([...result.derivations.values()].flatMap(d=>d.notes.filter(n=>n.startsWith("Interpretation "))))) lines.push(note);
-  lines.push("Scope: Form 1040 lines 1a–37 with the schedules and forms this tool implements and their refusal screens. Unsupported paths are refused with citations. No filing or transmission.");
-  lines.push(`Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/${YEAR}.yaml).`);
-  lines.push("Estimated tax penalty: not computed; the IRS will figure it (see i1040gi, line 38).");
-  lines.push("This is a computation of published IRS forms and instructions; it is not tax or legal advice. Published instructions are not the law itself.");
-  lines.push("The user is responsible for the return. Not affiliated with or endorsed by the IRS.");
+  lines.push(...standingNotices());
   return lines.join("\n");
 }
 
-export function resultToJson(result: EvalResult): string {
+/** Spec 8's standing notices, closing every output: the values sheet, its HTML form and every JSON result. */
+export function standingNotices(): string[] {
+  return [
+    "Scope: Form 1040 lines 1a–37 with the schedules and forms this tool implements and their refusal screens. Unsupported paths are refused with citations. No filing or transmission.",
+    `Rounding: amounts are exact cents; the return-wide whole-dollar rounding setting is deferred (see ambiguities/${YEAR}.yaml).`,
+    "Estimated tax penalty: not computed; the IRS will figure it (see i1040gi, line 38).",
+    "This is a computation of published IRS forms and instructions; it is not tax or legal advice. Published instructions are not the law itself.",
+    "The user is responsible for the return. Not affiliated with or endorsed by the IRS.",
+  ];
+}
+
+/** A result as JSON, `{ notices, values }`. A batch states the notices once at its top level, so its cases omit them. */
+export function resultToJson(result: EvalResult, withNotices = true): string {
   const values: Record<string, unknown> = {};
   for (const [key, der] of [...result.derivations.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1))) {
     values[key] = {
@@ -113,7 +121,7 @@ export function resultToJson(result: EvalResult): string {
       notes: der.notes,
     };
   }
-  return JSON.stringify({ values }, null, 2);
+  return JSON.stringify(withNotices ? { notices: standingNotices(), values } : { values }, null, 2);
 }
 
 export function renderValuesHtml(data: CanonicalData, result: EvalResult, targetDocs: string[]): string {

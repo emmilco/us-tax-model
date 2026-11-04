@@ -16,6 +16,13 @@
    "context": "d3cfe36f3daba0792a62019b916380e20aa4e7e4e1d374414569561379cf26fc"
   },
   {
+   "printed": "1",
+   "restated": "Enter the amount from f1040 line 15.",
+   "model": "The restatement always uses Form 1040 line 15 and has no refusal for Form 2555 filers. The IRS text adds: \"However, if you are filing Form 2555 (relating to foreign earned income), enter the amount from line 3 of the Foreign Earned Income Tax Worksheet.\"",
+   "ruling": "Ruling: scope; project retained. The Foreign Earned Income Tax Worksheet applies only to a filer who claims the foreign earned income or housing exclusion or the housing deduction on Form 2555 (i1040gi p. 36, Line 16), reported on Schedule 1 line 8d, which s1.line8_other refuses. Same reading as the earlier rounds.",
+   "context": "97ccf403ca0387d831287109794584169787711f6d3eca4eab5957290c028483"
+  },
+  {
    "printed": "2",
    "restated": "Enter the amount from f1040 line 3a.",
    "model": "The restatement matches \"Enter the amount from Form 1040 or 1040-SR, line 3a.\" However, the asterisk sends Form 2555 filers to a footnote in the Foreign Earned Income Tax Worksheet, and that footnote is not in the text given, so the Form 2555 case cannot be judged.",

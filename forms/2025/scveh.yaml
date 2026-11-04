@@ -287,6 +287,32 @@ form:
       doc: i1040sc
       locator: p. 7, Line 9, If you deduct actual expenses, "Include on line 9 the business portion of expenses for gasoline,
         oil, repairs, insurance, license plates, etc."
+  - id: scveh.employee_use
+    printed: (screen)
+    label: Your employees use this vehicle for personal purposes
+    type: Bool
+    expr:
+      op: input
+      source: Do any of your employees use this vehicle for their own personal purposes (including commuting)? Answer No if
+        your employees drive it only for your business. A vehicle your employees use is treated as used 100% for business
+        if the value of their personal use is included in their gross income or they reimburse you for it.
+    cite:
+      doc: i4562
+      locator: p. 14, Column (c)—Business/investment use percentage, "Treat vehicles used by employees as being used 100%
+        for business/investment purposes if the value of personal use is included in the employees’ gross income, or the
+        employees reimburse the employer for the personal use"
+  - id: scveh.employee_bad
+    printed: (gate)
+    label: Actual expenses for a vehicle your employees use for personal purposes
+    type: Bool
+    expr:
+      op: test
+      eq:
+      - scveh.employee_use
+      - const: true
+    cite:
+      doc: i4562
+      locator: p. 14, Column (c)—Business/investment use percentage
   - id: scveh.operating_business
     printed: (helper)
     label: The business portion of the operating expenses
@@ -300,6 +326,15 @@ form:
     cite:
       doc: i1040sc
       locator: p. 7, Line 9, "the business portion of expenses"
+    refuses:
+    - when: scveh.employee_bad
+      form: Actual expenses for a vehicle your employees use for personal purposes (the 100% business use treatment)
+      remedy: The business use of a vehicle your employees use for personal purposes is not figured from your miles; it is
+        outside this tool.
+      cite:
+        doc: i4562
+        locator: p. 14, Column (c)—Business/investment use percentage, "Treat vehicles used by employees as being used 100%
+          for business/investment purposes"
   - id: scveh.line9_actual
     printed: (helper)
     label: Business portion of the operating expenses plus parking fees and tolls
@@ -484,15 +519,30 @@ form:
       source: 'Does any of these apply to this vehicle: you placed it in service before 2019; you claimed a special depreciation
         allowance for it in an earlier year; you used the standard mileage rate for it in an earlier year; you disposed of
         it in 2025; you acquired it in a trade-in or from a related person; you placed it in service in 2025 but acquired it before September 28, 2017; its business use was 50% or less in any earlier
-        year; it is an electric vehicle placed in service before 2007; you reduced its basis by a clean-fuel deduction or a vehicle credit; you converted it from personal use to business use during 2025; or you use it in your business of transporting persons or property for hire, or it is an ambulance
+        year; it is an electric vehicle placed in service before 2007; you reduced its basis by a clean-fuel deduction
+        or a vehicle credit; you converted it from personal use to business use during 2025; or you use it in your
+        business of transporting persons or property for hire, or it is an ambulance
         or hearse; you converted it from business use to personal use during 2025; you acquired it in an involuntary conversion
         or a like-kind exchange; you must depreciate it under ADS (for example, it is used predominantly outside the United
         States), or you elected ADS, the straight line method or the 150% declining balance method for it; you reduced its
         basis because of a casualty; your 2025 tax year, or any tax year since you placed it in service, is shorter than 12
         months; you are regularly engaged in the business of leasing passenger automobiles; you cannot prove its business
-        use with adequate records or with sufficient evidence to support your own statements; your employees use it (it is
-        then treated as used 100% for business if the value of their personal use is included in their income or they reimburse
-        you for it); or its qualified business use is 50% or less once you leave out uses that are not qualified business
+        use with adequate records or with sufficient evidence to support your own statements; you claim a special depreciation
+        allowance for it in 2025 and its original use did not begin with you (original use is the first use to which the vehicle
+        is put, whether or not by you, so a vehicle someone else used before you acquired it is used property, and so is a
+        reconditioned or rebuilt vehicle you acquired unless the cost of its used parts is not more than 20% of its total
+        cost); you claim
+        a special depreciation allowance for it in 2025 and it is property described in section 168(k)(9)(A) or 168(k)(9)(B),
+        that is, property primarily used in a trade or business of furnishing or selling electrical energy, water or sewage
+        disposal services, gas or steam through a local distribution system, or transportation of gas or steam by pipeline,
+        whose rates are established or approved by a State or political subdivision, an agency or instrumentality of
+        the United States, a public service or public utility commission or similar body of a State or political
+        subdivision, or the governing or ratemaking body of an electric cooperative, or property used in a trade or
+        business that
+        has had floor plan financing indebtedness (a loan used to buy motor vehicles, boats, farm machinery or
+        equipment, or trailers or campers held for sale or lease, and secured by them) whose interest was taken into
+        account under section 163(j)(1)(C) in figuring the business interest expense limit; or its qualified business
+        use is 50% or less once you leave out uses that are not qualified business
         use (investment use; leasing it to a 5% owner or related person, or using it as compensation for services of a 5%
         owner or related person, unless for the lease the value is reported as income to that person; using it as compensation
         for services of anyone else unless an amount is included in that person''s income for the use and any required income
@@ -503,17 +553,20 @@ form:
         property used solely for personal purposes to business/investment use"); p946 p. 63, Deductions for Passenger Automobiles
         Acquired in a Trade-In; p. 5, Line 14, Certain qualified property acquired after September 27, 2017, and before January 20, 2025;
         p. 7, Exceptions, "Property converted from business or income-producing use to personal use in the same tax year it
-        is acquired"; p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
+        is acquired" and "Property described in section 168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates
+        IRC section 168(k)(9), which is not archived); p. 6, "Qualified property can be either new property or certain used
+        property"; p946 p. 31, "Original use means the first use to which the property is put, whether or not by you";
+        p. 9, Line 17, "the carryover basis of property you acquire in a like-kind exchange or involuntary conversion";
         p. 11, Column (f)—Method, elections of the straight line and 150% declining balance methods; p. 12, Lines 20a Through 20e, "The following
         types of property must be depreciated under ADS"; p. 14, Lines 26 and 27, "Generally, a qualified business use is any
-        use in your trade or business. However, it does not include any of the following", and Column (c), "Treat vehicles
-        used by employees as being used 100% for business/investment purposes"; p. 15, "The business use requirement and the
+        use in your trade or business. However, it does not include any of the following"; p. 15, "The business use requirement and the
         limits for passenger automobiles generally do not apply to passenger automobiles leased or held by anyone regularly
         engaged in the business of leasing passenger automobiles"; p946 p. 37, "You cannot use the percentage tables for a
         short tax year" and "If you reduce the basis of your property because of a casualty, you cannot continue to use the
         percentage tables"; p946 p. 60, "If you have a short tax year, you must reduce the maximum deduction amount"; p946
         p. 63, "You cannot take any depreciation or section 179 deduction for the use of listed property unless you can prove
         your business/investment use with adequate records or with sufficient evidence to support your own statements"
+    ambiguity: amb.2025.auto_later_year_basis
   - id: scveh.screened
     printed: (gate)
     label: This vehicle's depreciation is outside this tool
@@ -640,6 +693,7 @@ form:
       doc: p946
       locator: pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 13, "Multiply line 12 by line 8. This is
         your business/investment cost"
+    ambiguity: amb.2025.vehicle_business_pct
   - id: scveh.s179_elect
     printed: (i)
     label: Elected section 179 cost
@@ -1764,6 +1818,7 @@ form:
       doc: p946
       locator: pp. 61–63, Deductions After the Recovery Period, "At the end of 2024, you had an unrecovered basis of $14,565 ($31,500
         − $16,935)" (amb.2025.auto_unrecovered_basis)
+    ambiguity: amb.2025.auto_unrecovered_basis
   - id: scveh.post_amount
     printed: (helper)
     label: The lesser of the limit or the unrecovered basis

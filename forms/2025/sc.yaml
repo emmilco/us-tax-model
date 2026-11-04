@@ -93,16 +93,17 @@ form:
       doc: i1040sc
       locator: p. 4, Line F, "Special rules apply to long-term contracts (see section 460 for details)"; p. 6, Part II,
         Capitalizing costs; p. 15, Part III, Small business taxpayer, "and (b) are not a tax shelter (as defined in section
-        448(d)(3))"
+        448(d)(3))"; p538 p. 17, Uniform Capitalization Rules, "The uniform capitalization rules do not apply to the following"
+        and "A small business taxpayer that meets the gross receipts test under section 448(c) and that is not a tax shelter"
   - id: sc.special
     printed: (screen)
     label: 'For this business, do you have any of these: depletion (line 12); the energy efficient commercial buildings deduction
       (Form 7205); wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994); business
       interest limited by Form 8990; recapture of depreciation or section 179 on listed property, recapture of section 179
       on other property no longer used more than 50% in the business, or an inclusion amount for leased property; a chapter
-      11 bankruptcy case; extraterritorial income (Form 8873); installment sales of timeshares
-      or residential lots; nontaxable Medicaid waiver payments (Notice 2014-7); research or experimental expenditures you
-      elect to capitalize; a capital construction fund; contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III); qualified sound recording production costs you elect to deduct under section 181; prior year unallowed passive activity losses from this activity; services you provide to a business that employed you within the last 3 years, substantially the same as the services you provided as its employee; Form 1099-PATR amounts in this business''s income that the cooperative did not report to you as qualified items of income; an activity that is not a business (for example a sporadic activity, a not-for-profit activity or a hobby); or a domestic LLC of which you are the sole member that elected to be treated as a corporation?'
+      11 bankruptcy case; extraterritorial income (Form 8873); income you report under the installment method (including installment sales
+      of timeshares or residential lots); nontaxable Medicaid waiver payments (Notice 2014-7); research or experimental expenditures you
+      elect to capitalize; a capital construction fund; contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III); qualified sound recording production costs you elect to deduct under section 181; prior year unallowed passive activity losses from this activity; services you provide to a business that employed you within the last 3 years, substantially the same as the services you provided as its employee; Form 1099-PATR amounts in this business''s income that the cooperative did not report to you as qualified items of income; an activity that is not a business (for example a sporadic activity, a not-for-profit activity or a hobby); licenses or other costs you must amortize (for example, some liquor licenses); travel by ocean liner, cruise ship or other luxury water transportation; or a domestic LLC of which you are the sole member that elected to be treated as a corporation?'
     type: Bool
     expr:
       op: input
@@ -110,16 +111,19 @@ form:
         deduction (Form 7205); wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994);
         business interest limited by Form 8990; recapture of depreciation or section 179 on listed property, recapture of
         section 179 on other property no longer used more than 50% in the business, or an inclusion amount for leased property;
-        a chapter 11 bankruptcy case; extraterritorial income (Form 8873); installment sales of
-        timeshares or residential lots; nontaxable Medicaid waiver payments (Notice 2014-7); research or experimental expenditures
-        you elect to capitalize; a capital construction fund; contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III); qualified sound recording production costs you elect to deduct under section 181; prior year unallowed passive activity losses from this activity; services you provide to a business that employed you within the last 3 years, substantially the same as the services you provided as its employee; Form 1099-PATR amounts in this business''s income that the cooperative did not report to you as qualified items of income; an activity that is not a business (for example a sporadic activity, a not-for-profit activity or a hobby); or a domestic LLC of which you are the sole member that elected to be treated as a corporation?'
+        a chapter 11 bankruptcy case; extraterritorial income (Form 8873); income you report under the installment method (including
+        installment sales of timeshares or residential lots); nontaxable Medicaid waiver payments (Notice 2014-7); research or experimental expenditures
+        you elect to capitalize; a capital construction fund; contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III); qualified sound recording production costs you elect to deduct under section 181; prior year unallowed passive activity losses from this activity; services you provide to a business that employed you within the last 3 years, substantially the same as the services you provided as its employee; Form 1099-PATR amounts in this business''s income that the cooperative did not report to you as qualified items of income; an activity that is not a business (for example a sporadic activity, a not-for-profit activity or a hobby); licenses or other costs you must amortize (for example, some liquor licenses); travel by ocean liner, cruise ship or other luxury water transportation; or a domestic LLC of which you are the sole member that elected to be treated as a corporation?'
     cite:
       doc: i1040sc
       locator: p. 1, What's New (research and experimental expenditures); p. 3, Capital Construction Fund; p. 5, Part I; p.
         6, Medicaid waiver payments and Installment sales; p. 6, Line 6; p. 7, Lines 12 and 14 (including 'If you made contributions on your behalf as a self-employed person to a dependent care assistance program, complete Form 2441, Parts I and III'); p. 8, Lines 16a and 16b; p. 9, Line 23;
         p. 10, Lines 26 and 27a; p. 1, Qualified sound recording productions; p. 2, "a sporadic activity, a not-for-profit
         activity, or a hobby does not qualify as a business" and "unless you have elected to treat the domestic LLC as a corporation";
-        p. 6, Line 6, recapture; p. 14, Line 31, "prior year unallowed passive activity losses"; i4562 p. 4, "If the section
+        p. 6, Line 6, recapture; p. 14, Line 31, "prior year unallowed passive activity losses"; p. 6, Installment sales,
+        "If you use the installment method, attach a statement to your return"; p. 9, Line 23, "But some licenses, such as
+        liquor licenses, may have to be amortized"; p. 9, Line 24a, "Other rules apply to luxury water travel"; p463 p. 12,
+        Luxury Water Travel, "there is a daily limit on the amount you can deduct"; i4562 p. 4, "If the section
         179 property is not used predominantly (more than 50%) in your trade or business at any time before the end of the
         property’s recovery period"; i8995 p. 2, "there is a presumption that you’re providing services as an employee for
         purposes of section 199A for the 3-year period after ceasing to be an employee", and p. 3, Determining if information
@@ -163,12 +167,14 @@ form:
       source: Gross receipts or sales of this business for 2025, including amounts properly shown on Forms 1099-NEC and any
         other gross receipts of this business reported to you on a Form 1099 (such as Form 1099-K), and state and local sales
         tax imposed on you as the seller that you collected from buyers; not the other business income asked about separately,
-        such as prizes and awards (zero if none)
+        such as prizes and awards, and not royalties or other name, image and likeness (NIL) income that is not self-employment
+        income, which is reported on Schedule E (zero if none)
     cite:
       doc: i1040sc
       locator: p. 5, Line 1, "Enter gross receipts from your trade or business. Be sure to check any Forms 1099 you received";
         p. 9, Line 23, "If you collected this tax from the buyer, you must also include the amount collected in gross receipts
-        or sales on line 1"
+        or sales on line 1"; p. 6, Name, image, likeness (NIL) income, "However, report royalties and other NIL income that
+        is not self-employment income on Schedule E instead"
     refuses:
     - when: sc.screened
       form: Schedule C items outside this tool
@@ -437,10 +443,13 @@ form:
     expr:
       op: input
       source: Materials and supplies actually consumed and used in the business during 2025 (or incidental supplies purchased
-        during 2025 if you keep no inventory or records of use); zero if none
+        during 2025 if you keep no inventory or records of use), and books, professional instruments, equipment and similar
+        items you normally use up within a year; not items whose usefulness extends substantially beyond a year, which you
+        generally depreciate; zero if none
     cite:
       doc: i1040sc
-      locator: p. 8, Line 22
+      locator: p. 8, Line 22; p. 9, "You can also deduct the cost of books, professional instruments, equipment, etc., if
+        you normally use them within a year"
   - id: sc.line23
     printed: '23'
     label: Taxes and licenses
@@ -448,7 +457,8 @@ form:
     expr:
       op: input
       source: 'Business taxes and licenses: sales tax imposed on you as the seller, real estate and personal property taxes
-        on business assets, licenses and regulatory fees, the employer share of social security and Medicare taxes, federal
+        on business assets, licenses and regulatory fees paid each year (not licenses you must amortize, such as some liquor
+        licenses), the employer share of social security and Medicare taxes, federal
         unemployment tax, federal highway use tax, state unemployment contributions (not income or self-employment tax, not
         taxes on property you bought, and not real estate taxes on your home, which with the simplified method for business
         use of the home you can deduct only on Schedule A); zero if none'
@@ -462,7 +472,12 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: Lodging and transportation for overnight business travel away from your tax home (not meals and not entertainment);
+      source: Lodging and transportation for overnight business travel away from your tax home, and incidental expenses
+        of that travel (fees and tips to porters, baggage carriers, bellhops, hotel maids, stewards and others on ships, and
+        hotel servants in foreign countries; not laundry, lodging taxes or telephone calls), either at their actual cost
+        or, for a travel day on which you paid or incurred no meal expenses and did not use the standard meal allowance, at
+        $5 for that day (not meals and not entertainment; on a day you use the standard meal allowance, incidental expenses
+        are part of that allowance);
         not expenses of employment away from home for a period of more than 1 year; not travel expenses for your spouse, your
         dependent or any other person unless that person is your employee, the travel is for a bona fide business purpose
         and the expenses would otherwise be deductible by that person; and not a convention, seminar or similar meeting held
@@ -470,9 +485,12 @@ form:
         outside the North American area as within it; zero if none
     cite:
       doc: i1040sc
-      locator: p. 9, Line 24a, "You can’t deduct expenses paid or incurred in connection with employment away from home if
+      locator: p. 9, Line 24a, "you can use an optional method for deducting incidental expenses only if you did not pay
+        or incur meal expenses on a day you were traveling away from your tax home", "The amount of the deduction is $5 a
+        day" and "You cannot use this method on any day that you use the standard meal allowance", "You can’t deduct expenses paid or incurred in connection with employment away from home if
         that period of employment exceeds 1 year", "you cannot deduct travel expenses for your spouse, your dependent, or
-        any other individual unless" and "held outside the North American area unless"
+        any other individual unless" and "held outside the North American area unless"; p. 9, Line 24b, "you can use the standard
+        meal allowance for your daily meals and incidental expenses"
   - id: sc.meals_50
     printed: (helper)
     label: Business meals subject to the 50% limit, at their full cost
@@ -1839,11 +1857,13 @@ form:
       source: The total you paid in 2025 for health insurance coverage (medical, dental and vision; including Medicare premiums
         you paid voluntarily) established under this business for you, your spouse and your dependents, and your child under
         age 27 at the end of 2025; but not amounts for any month you were eligible to participate in a health plan subsidized
-        by your employer or your spouse's employer (or the employer of your dependent or of your child under age 27), and
-        not long-term care insurance
+        by your employer or your spouse's employer (or the employer of your dependent or of your child under age 27), counting
+        eligibility for a qualified small employer health reimbursement arrangement (QSEHRA) as such a plan, and not long-term
+        care insurance
     cite:
       doc: f7206
-      locator: Form 7206 (2025), line 1; i7206 pp. 1–2
+      locator: Form 7206 (2025), line 1; i7206 pp. 1–2; i1040gi p. 94, "A qualified small employer health reimbursement
+        arrangement (QSEHRA) is considered to be a subsidized health plan maintained by an employer"
     refuses:
     - when: sc.hi_screened
       form: Self-employed health insurance with the premium tax credit (Pub. 974), Form 2555, an S corporation, an optional
@@ -1922,6 +1942,7 @@ form:
       locator: p. 1, "Divide line 4 by line 5" (line 6), "Multiply Schedule 1 (Form 1040), line 15, deductible part of
         self-employment tax, by the percentage on line 6" (line 7, amb.2025.f7206_line15_person,
         amb.2025.f7206_ratio_places)
+    ambiguity: amb.2025.f7206_ratio_places
   - id: sc.f7206_line7
     printed: '7'
     label: Multiply Schedule 1 (Form 1040), line 15, deductible part of self-employment tax, by the percentage on line 6
@@ -1944,6 +1965,7 @@ form:
     cite:
       doc: f7206
       locator: Form 7206 (2025), line 7
+    ambiguity: amb.2025.f7206_line15_person
   - id: sc.f7206_line8
     printed: '8'
     label: Subtract line 7 from line 4
@@ -1970,6 +1992,7 @@ form:
       locator: p. 1, "Enter the amount, if any, from Schedule 1 (Form 1040), line 16, self-employed SEP, SIMPLE, and
         qualified plans, attributable to the same trade or business in which the insurance plan is established" (line
         9, amb.2025.f7206_plan_attribution)
+    ambiguity: amb.2025.f7206_ratio_places
   - id: sc.f7206_line9
     printed: '9'
     label: Schedule 1, line 16, attributable to the same trade or business
@@ -1992,6 +2015,7 @@ form:
     cite:
       doc: f7206
       locator: Form 7206 (2025), line 9
+    ambiguity: amb.2025.f7206_plan_attribution
   - id: sc.f7206_line10
     printed: '10'
     label: Subtract line 9 from line 8
@@ -2097,6 +2121,7 @@ form:
     cite:
       doc: i8995
       locator: p. 2, Determining Your Qualified Business Income (amb.2025.qbi_attribution)
+    ambiguity: amb.2025.qbi_attribution
   - id: sc.qbi_plan_pos
     printed: (helper)
     label: This person's SEP or SIMPLE deduction attributable to this business (by share of net profits)
@@ -2132,6 +2157,7 @@ form:
     cite:
       doc: i8995
       locator: p. 2, Determining Your Qualified Business Income (amb.2025.qbi_attribution)
+    ambiguity: amb.2025.qbi_attribution
   - id: sc.qbi_ded
     printed: (helper)
     label: 'Deductions attributable to this business: self-employment tax, retirement plan and health insurance (Form 7206

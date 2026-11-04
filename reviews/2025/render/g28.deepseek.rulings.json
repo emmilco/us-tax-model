@@ -11,6 +11,13 @@
    "context": "74d6cdc5f0a7da889e69551aa8ee0d9578950c75b763d1df15e60877cccd54d4"
   },
   {
+   "printed": "1",
+   "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
+   "model": "IRS line 1 says 'Enter the total of all collectibles gain or (loss) from items you reported on Form 8949, Part II'; the restatement uses a $0 div helper with NonNegDollars, omitting that gain/loss.",
+   "ruling": "Ruling: scope; i1040sd p. 11, line 1. Refusal located elsewhere; project retained. Form 8949 Part II collectibles: sales.special refuses them per sale; constructed on classm.g28.2 (node engine/dist/main.js eval): sales[s1].special true refuses sd.line17, g28.line7, u1250.line18 and f1040.line7a. The income package widened the question to collectibles held through a partnership, S corporation or trust (PENDING-6). In scope line 1 is $0.00. The div refusals are not the only screens; the model saw only this line's own refusals. Same ruling as Stage 20.",
+   "context": "74d6cdc5f0a7da889e69551aa8ee0d9578950c75b763d1df15e60877cccd54d4"
+  },
+  {
    "printed": "2",
    "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
    "model": "IRS line 2 requires the positive total of section 1202 exclusions from Form 8949 Part II code Q at 50%, 2/3, or 1/3; the restatement enters $0 from a distribution helper and does not compute those amounts, and its refusal covers only section 1202 distributions, not Code Q exclusions generally.",
@@ -25,10 +32,31 @@
    "context": "74d6cdc5f0a7da889e69551aa8ee0d9578950c75b763d1df15e60877cccd54d4"
   },
   {
+   "printed": "3",
+   "restated": "Enter the amount from div helper \"Zero only after distribution scope checks\".",
+   "model": "IRS line 3 says 'Enter the total of all collectibles gain or (loss) from Form 4684, line 4 (but only if Form 4684, line 15, is more than zero); Form 6252; Form 6781, Part II; and Form 8824'; the restatement is a $0 div helper and omits those sources and losses.",
+   "ruling": "Ruling: scope; i1040sd p. 11, line 3. Refusal located elsewhere; project retained. Forms 4684, 6252, 6781 and 8824: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\") refuses them; constructed on classm.g28.2 (node engine/dist/main.js eval): sd.other_forms true refuses sd.line17, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a. In scope line 3 is $0.00. Same ruling as Stage 20.",
+   "context": "74d6cdc5f0a7da889e69551aa8ee0d9578950c75b763d1df15e60877cccd54d4"
+  },
+  {
    "printed": "4",
    "restated": "Enter the amount from div helper \"Collectibles (28%) gain, box 2d\".",
    "model": "IRS line 4 is \"the total of any collectibles gain reported to you on: Form 1099-DIV, box 2d; Form 2439, box 1d; and Schedule K-1\"; the restatement uses only Form 1099-DIV box 2d and omits the other two sources without a refusal.",
    "ruling": "Ruling: scope; i1040sd p. 11, 28% Rate Gain Worksheet, line 4: \"Enter the total of any collectibles gain reported to you on: • Form 1099-DIV, box 2d; • Form 2439, box 1d; and • Schedule K-1 from a partnership, S corporation, estate, or trust.\" Form 2439 and Schedule K-1 amounts are refused by sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1? ...\") (checked: sd.other_forms true on classm.g28.2 gives sd.line7, sd.line14, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a refused); within scope line 4 is Form 1099-DIV box 2d alone, as i1040sd p. 2 directs: \"If there is an amount in box 2d, include that amount on line 4 of the 28% Rate Gain Worksheet in these instructions if you complete line 18 of Schedule D.\" The refusal sits on Schedule D and the sale, not on this line's derivation, so the rendered English the reviewer saw did not name it. The line is shown only when Schedule D line 17 is Yes (BUG-0183), which the reviewer did not contest. No change to the data.",
+   "context": "74d6cdc5f0a7da889e69551aa8ee0d9578950c75b763d1df15e60877cccd54d4"
+  },
+  {
+   "printed": "4",
+   "restated": "Enter the amount from div helper \"Collectibles (28%) gain, box 2d\".",
+   "model": "IRS line 4 says 'Enter the total of any collectibles gain reported to you on: Form 1099-DIV, box 2d; Form 2439, box 1d; and Schedule K-1 from a partnership, S corporation, estate, or trust'; the restatement only uses Form 1099-DIV box 2d.",
+   "ruling": "Ruling: scope; i1040sd p. 11, line 4. Refusal located elsewhere; project retained. Form 2439 box 1d and Schedule K-1 collectibles gain: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\") refuses them; constructed on classm.g28.2 (node engine/dist/main.js eval): sd.other_forms true refuses sd.line17, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a. In scope line 4 is Form 1099-DIV box 2d alone. Same ruling as Stage 20.",
+   "context": "74d6cdc5f0a7da889e69551aa8ee0d9578950c75b763d1df15e60877cccd54d4"
+  },
+  {
+   "printed": "5",
+   "restated": "Enter the amount from sd line 14.",
+   "model": "IRS line 5 also includes 'Schedule K-1 (Form 1041), box 11, code D'; the restatement only takes Schedule D line 14.",
+   "ruling": "Ruling: scope; i1040sd p. 11, line 5, printed \"( )\". Refusal located elsewhere; project retained. The Schedule K-1 (Form 1041) box 11 code D carryover is a capital loss on a Schedule K-1: sd.other_forms (\"Are there gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?\") refuses them; constructed on classm.g28.2 (node engine/dist/main.js eval): sd.other_forms true refuses sd.line17, g28.line5, g28.line7, u1250.line16, u1250.line18 and f1040.line7a. The project's line 5 is Schedule D line 14 held negative, the page's entry; the model raises the K-1 omission, not the sign (T-140). Same ruling as Stage 20.",
    "context": "74d6cdc5f0a7da889e69551aa8ee0d9578950c75b763d1df15e60877cccd54d4"
   },
   {

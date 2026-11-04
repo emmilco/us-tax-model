@@ -25,7 +25,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## refusal_outranks_unknown
 
-- Cases with a refused operand somewhere: 320; cases with a line that has both a refused and an unknown operand (the order this property guards): 235.
+- Cases with a refused operand somewhere: 320; cases with a line that has both a refused and an unknown operand (the order this property guards): 225.
 
 ## tax_monotone
 
@@ -41,7 +41,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## Branch coverage of the generated corpus
 
-2536 of 2888 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
+2560 of 2916 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
 
 - asset.outside:true
 - asset.qip_early:true
@@ -49,6 +49,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - asset.screened:true
 - asset.pct_bad:true
 - asset.listed_low:true
+- asset.not179:true
 - asset.s179_bad:true
 - asset.bonus_same:false
 - asset.bonus_mixed:true
@@ -59,14 +60,10 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - dcprov.see_statement:true
 - dependent.kidnapped:true
 - dependent.other_nontaxpayer:true
-- dependent.born_died:false
 - dependent.born_died:true
-- dependent.placed:false
 - dependent.placed:true
 - dependent.part_year_home:false
 - dependent.part_year_home:true
-- dependent.hoh_lived_half:false
-- dependent.dc_lived_half:false
 - dependent.kidnap_residency:true
 - dependent.spouse_relative:true
 - dependent.lawful:false
@@ -114,6 +111,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f2441.line21:left
 - f2441.line24_20_21:right
 - f2441.line24:right
+- f2441.line13_earned:true
 - f2441.line25:positive
 - f2441.line29:floor
 - f2441.line31:left
@@ -165,6 +163,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - f8962.premium_adjust:true
 - f8962.void_form:true
 - f8962.two_counted:true
+- f8962.b_zero:true
 - f8962.same_state_counted:true
 - f8962.big_family:true
 - f8962.alien_below:true
@@ -176,6 +175,8 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - household.community_property:true
 - household.hoh_community_property:true
 - household.credit_disallowed:true
+- household.ctc_disallowed_claim:true
+- household.eic_disallowed_claim:true
 - household.hoh_absence:true
 - household.qss_eligible:false
 - household.qss_fails:true
@@ -239,11 +240,12 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - person.ira_ssb#0
 - person.edu_over:true
 - person.edu_over_refused:true
-- person.edu_line25:true
 - person.edu_line26:true
 - person.edu_llc_tin_refused:true
 - person.edu_kid:true
 - person.x_cap09:floor
+- person.x_c05#0
+- person.x_has05:true
 - person.x_c05_min:right
 - person.x_has09:true
 - person.x_c09_min:right
@@ -375,6 +377,8 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - scveh.no_miles:true
 - scveh.smr_ok:false
 - scveh.smr_bad:true
+- scveh.employee_use:true
+- scveh.employee_bad:true
 - scveh.lease_smr_before:true
 - scveh.lease_smr_bad:true
 - scveh.screen:true

@@ -1546,6 +1546,346 @@
           }
         }
       }
+    },
+    {
+      "id": "stage5.return.refund_f4952_screens_unused",
+      "covers": [
+        "f4952.unsupported",
+        "f4952.alternative_allocation",
+        "f4952.used"
+      ],
+      "evidence": "synthetic regression (not class B)",
+      "evidence_note": "T-101. stage5.return.refund (standard deduction, no investment interest, no 2024 carryforward, no line 4g) with both Form 4952 screens answered Yes. Before the change Form 1040 lines 12e and 24 to 37 were refused (f4952.unsupported). Predicted from f4952 p. 3, Who Must File: Form 4952 is not used, so neither screen is reached and every Form 1040 value of stage5.return.refund is unchanged; Form 4952 line 8 is $0. Written before the evaluator was run.",
+      "inputs": {
+        "person[taxpayer].x_other": false,
+        "f8863.paid": false,
+        "f1040.status": "single",
+        "$person": [
+          "taxpayer"
+        ],
+        "person[taxpayer].role": "taxpayer",
+        "$f8889@person[taxpayer]": [],
+        "person[taxpayer].rrta": false,
+        "$interest": [],
+        "$sales": [],
+        "$gift": [],
+        "sb.ordinary_dividends": 0,
+        "sb.unsupported": false,
+        "sb.line7a": false,
+        "sb.fbar_required": false,
+        "sb.form8938": false,
+        "sb.line8": false,
+        "f1040.line3a": 0,
+        "div.box2b": 0,
+        "div.box2c": 0,
+        "div.box2d": 0,
+        "div.box2e": 0,
+        "div.box2f": 0,
+        "div.box3": 0,
+        "div.box9": 0,
+        "div.box10": 0,
+        "div.box13": 0,
+        "div.basis_reconciled": true,
+        "sd.other_forms": false,
+        "sd.carryover": false,
+        "sd.distributions": 0,
+        "qbi.dividends": 0,
+        "qbi.unsupported": false,
+        "f4952.line1": 0,
+        "f4952.line4g": 0,
+        "f4952.carryover": false,
+        "f4952.unsupported": true,
+        "f4952.alternative_allocation": true,
+        "f8959.unsupported": false,
+        "f8960.unsupported": false,
+        "f8960.refund": false,
+        "f8960.allocated_taxes": 0,
+        "ftc.taxes": 0,
+        "ftc.all_passive": true,
+        "ftc.statements": true,
+        "ftc.eligible": true,
+        "ftc.elect": true,
+        "s3.line10": 0,
+        "s3.line12": 0,
+        "s3.line14": 0,
+        "sa.unsupported": false,
+        "sa.charity_limited": false,
+        "sa.excluded_income": false,
+        "sa.dependent": false,
+        "sa.spouse_extra": false,
+        "person[taxpayer].age65": false,
+        "person[taxpayer].blind": false,
+        "sa.spouse_itemizes": false,
+        "sa.elect_itemize": false,
+        "sa.line1": 0,
+        "sa.line5a": 0,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.line8a": 0,
+        "sa.line11": 0,
+        "scope.schedule1": false,
+        "scope.credits": false,
+        "scope.other_income": false,
+        "scope.other_line16": false,
+        "s2.amt": false,
+        "s2.other": false,
+        "f1040.line25b": 0,
+        "f1040.line25c_other": 0,
+        "f1040.line26": 200000,
+        "f1040.line35a": 173300,
+        "f1040.line36": 0,
+        "$w2@person[taxpayer]": [
+          "emp_a"
+        ],
+        "person[taxpayer].w2[emp_a].box1": 13000000,
+        "person[taxpayer].w2[emp_a].box2": 2000000,
+        "person[taxpayer].w2[emp_a].box3": 13000000,
+        "person[taxpayer].w2[emp_a].box4": 806000,
+        "person[taxpayer].w2[emp_a].box5": 13000000,
+        "person[taxpayer].w2[emp_a].box6": 188500,
+        "person[taxpayer].w2[emp_a].box7": 0,
+        "$dependent": [],
+        "person[taxpayer].tin": true,
+        "person[taxpayer].work_ssn": true,
+        "person[taxpayer].eic_ssn": true,
+        "person[taxpayer].under16": false,
+        "household.home_cost": false,
+        "household.unmarried": true,
+        "household.married": false,
+        "household.credit_disallowed": false,
+        "household.community_property": false,
+        "household.spouse_died_2025": false,
+        "household.cp_married": false,
+        "s8812.combat_pay": false,
+        "s8812.puerto_rico": false,
+        "$retirement@person[taxpayer]": [],
+        "ssb.benefits": 0,
+        "s1.uc_paid": 0,
+        "s1.alimony": false,
+        "s1.cod_amount": 0,
+        "refund.received": 0,
+        "s1.line8_other": false,
+        "s1.gambling_winnings": 0,
+        "s1.line8g": 0,
+        "s1.line8h": 0,
+        "s1.line8i": 0,
+        "s1.line8j": 0,
+        "s1.line8r": 0,
+        "$oi8z": [],
+        "s1.jury_to_employer": 0,
+        "person[taxpayer].educator_expenses": 0,
+        "sli.interest": 0,
+        "s1a.tips": false,
+        "s1a.overtime": false,
+        "s1a.carloan": false,
+        "$sc@person[taxpayer]": [],
+        "qbi.carryforward": 0,
+        "s179.line10": 0,
+        "f5695.part1_any": false,
+        "f5695.part2_any": false,
+        "f2441.care": false,
+        "f2441.benefits": false,
+        "person[taxpayer].sav_born": true,
+        "person[taxpayer].sav_student": false,
+        "person[taxpayer].sav_claimed": false,
+        "person[taxpayer].sav_trad": false,
+        "person[taxpayer].sav_able": false,
+        "person[taxpayer].sav_roth": 0,
+        "person[taxpayer].sav_excess": false,
+        "person[taxpayer].sav_voluntary": 0,
+        "person[taxpayer].sav_prior_joint": 0,
+        "person[taxpayer].sav_prior_other": 0,
+        "person[taxpayer].w2[emp_a].box12_any": false,
+        "f2441.employer_care": false,
+        "s1.cod_any": false,
+        "$f1095a": []
+      },
+      "expect": {
+        "f1040.line1a": {
+          "kind": "money",
+          "cents": 13000000
+        },
+        "f1040.line1z": {
+          "kind": "money",
+          "cents": 13000000
+        },
+        "f1040.line2b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line3a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line3b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line7a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line9": {
+          "kind": "money",
+          "cents": 13000000
+        },
+        "f1040.line10": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line11a": {
+          "kind": "money",
+          "cents": 13000000
+        },
+        "f1040.line11b": {
+          "kind": "money",
+          "cents": 13000000
+        },
+        "f1040.line12e": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line13a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line13b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line14": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "f1040.line15": {
+          "kind": "money",
+          "cents": 11425000
+        },
+        "f1040.line16": {
+          "kind": "money",
+          "cents": 2026700
+        },
+        "f1040.line17": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line18": {
+          "kind": "money",
+          "cents": 2026700
+        },
+        "f1040.line19": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line20": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line21": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line22": {
+          "kind": "money",
+          "cents": 2026700
+        },
+        "f1040.line23": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line24": {
+          "kind": "money",
+          "cents": 2026700
+        },
+        "f1040.line25a": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "f1040.line25b": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line25c": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line25d": {
+          "kind": "money",
+          "cents": 2000000
+        },
+        "f1040.line26": {
+          "kind": "money",
+          "cents": 200000
+        },
+        "f1040.line27a": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line28": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line29": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line30": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line31": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line32": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line33": {
+          "kind": "money",
+          "cents": 2200000
+        },
+        "f1040.line34": {
+          "kind": "money",
+          "cents": 173300
+        },
+        "f1040.line35a": {
+          "kind": "money",
+          "cents": 173300
+        },
+        "f1040.line36": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f1040.line37": {
+          "kind": "money",
+          "cents": 0
+        },
+        "s3.line8": {
+          "kind": "money",
+          "cents": 0
+        },
+        "sa.deduction": {
+          "kind": "money",
+          "cents": 1575000
+        },
+        "sa.itemizes": {
+          "kind": "bool",
+          "value": false
+        },
+        "qbi.deduction": {
+          "kind": "money",
+          "cents": 0
+        },
+        "f4952.line8": {
+          "kind": "money",
+          "cents": 0
+        }
+      }
     }
   ]
 }

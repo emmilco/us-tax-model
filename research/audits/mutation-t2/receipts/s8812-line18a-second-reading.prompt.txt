@@ -1,0 +1,84 @@
+You are reviewing equivalence claims for a mutation-testing tool on a tax-form evaluator. Give an independent reading; do not assume the claims are right.
+
+EVALUATOR RULES (spec 4.7, verbatim summary):
+- Values: known (money in cents, bool, enum, count), refusal (gate+record), or unknown. All unknowns compare equal; refusals compare whole.
+- 4.7.1 A line's refusal gates are read in order before its expression: a true gate makes the line that refusal; an unknown or refused gate makes the line that gate's value; all false -> the expression.
+- 4.7.2 all/any: conjuncts in order; a refusal ends the test with it; an unknown is remembered and evaluation continues; a deciding conjunct (false for all, true for any) ends with that value even after an earlier unknown; at the end, the remembered unknown if any, else true(all)/false(any). Comparisons evaluate both operands then return the first refusal, else first unknown, else compare (a Count unknown with a lower bound can decide gt/ge early).
+- 4.7.3 choose: guards in order; an incomplete guard is the line's value; a true guard -> that alternative's value; alternatives not taken are not evaluated.
+- 4.7.4 subtract/subtract_floor0/multiply_rate/comparisons evaluate all operands then the first refusal, else first unknown; sum/smaller_of/larger_of stop at the first refusal, else first unknown.
+- 4.7.5 sum_over: unconfirmed roster -> unknown; empty roster -> 0.
+- Values are memoized per frame: a line has one value per return.
+- Every line is evaluated, but only lines whose printed marker is not "(helper)" are observed. A mutant is equivalent when no printed line can differ at ANY input, including unanswered inputs (unknown) and refusals.
+
+MUTANT FORM: in line L's choose, alternative i's value X is replaced by line Y ("L alt i: X -> Y").
+
+LINE DEFINITIONS (id [printed marker] type expression refuses=[gates]; for choose, numbered alternatives "guard -> then"):
+s8812.line18a [18a] Dollars refuses=[]
+   0: {"eq": ["s8812.taking_eic", {true}], "op": "test"} -> s8812.chart_eic
+   1: {"eq": ["s8812.taking_eic", {false}], "op": "test"} -> s8812.eiw_7
+s8812.taking_eic [(helper)] Bool {"gt": ["f1040.line27a", {"param": "sales.zero"}], "op": "test"} refuses=[]
+s8812.chart_eic [(helper)] Dollars refuses=[]
+   0: {"eq": ["eic.self_employed", {true}], "op": "test"} -> eic.wsb_4b
+   1: {"eq": ["eic.self_employed", {false}], "op": "test"} -> eic.earned_income
+s8812.eiw_7 [(helper)] Dollars refuses=[]
+   0: {"eq": ["s8812.eiw_3_positive", {false}], "op": "test"} -> s8812.zero
+   1: {"eq": ["s8812.eiw_3_positive", {true}], "op": "test"} -> s8812.eiw_7_figured
+s8812.eiw_3_positive [(helper)] Bool {"gt": ["s8812.eiw_3sum", {"param": "sales.zero"}], "op": "test"} refuses=[]
+s8812.eiw_7_figured [(helper)] Dollars {"from": "s8812.eiw_3", "op": "subtract", "take": "s8812.eiw_6"} refuses=[]
+s8812.eiw_3 [(helper)] NonNegDollars {"from": "s8812.eiw_3sum", "op": "subtract_floor0", "take": "s8812.zero"} refuses=['scope.schedule1']
+s8812.eiw_3sum [(helper)] Dollars {"of": ["s8812.eiw_1a", "s8812.eiw_1b", "s8812.eiw_2b"], "op": "sum"} refuses=[]
+s8812.eiw_1a [(helper)] NonNegDollars {"from": "f1040.line1z", "op": "copy"} refuses=[]
+s8812.eiw_1b [(helper)] NonNegDollars {"from": "s8812.zero", "op": "copy"} refuses=['s8812.combat_pay']
+s8812.eiw_2b [(helper)] Dollars {"from": "s1.line3", "op": "copy"} refuses=[]
+s8812.eiw_6 [(helper)] NonNegDollars {"of": ["s8812.eiw_4", "s8812.eiw_5"], "op": "sum"} refuses=[]
+s8812.eiw_4 [(helper)] NonNegDollars {"from": "s8812.zero", "op": "copy"} refuses=['scope.schedule1']
+s8812.eiw_5 [(helper)] NonNegDollars {"from": "s1.line15", "op": "copy"} refuses=[]
+s8812.zero [(helper)] NonNegDollars {"op": "param", "ref": "sales.zero"} refuses=[]
+f1040.line27a [27a] NonNegDollars {"from": "eic.credit", "op": "copy"} refuses=[]
+eic.credit [(helper)] NonNegDollars refuses=['household.credit_disallowed']
+   0: {"eq": ["eic.eligible", {true}], "op": "test"} -> eic.line6
+   1: {"eq": ["eic.eligible", {false}], "op": "test"} -> eic.zero
+eic.eligible [(helper)] Bool {"all": [{"eq": ["eic.below_top", {true}], "op": "test"}, {"eq": ["eic.step1_income", {true}], "op": "test"}, {"eq": ["eic.step1_ssn", {true}], "op": "test"}, {"eq": ["eic.step1_foreign", {true}], "op": "test"}, {"eq": ["eic.step1_resident", {true}], "op": "test"}, {"eq": ["eic.step2_income", {true} refuses=[]
+eic.line6 [6] NonNegDollars refuses=[]
+   0: {"eq": ["eic.line4", {true}], "op": "test"} -> eic.line2
+   1: {"eq": ["eic.line4", {false}], "op": "test"} -> eic.after_line4
+eic.line2 [2] NonNegDollars refuses=[]
+   0: {"eq": ["eic.line1_in_table", {true}], "op": "test"} -> eic.line1_table
+   1: {"eq": ["eic.line1_in_table", {false}], "op": "test"} -> eic.zero
+eic.line1 [1] Dollars refuses=[]
+   0: {"eq": ["eic.self_employed", {false}], "op": "test"} -> eic.earned_income
+   1: {"eq": ["eic.self_employed", {true}], "op": "test"} -> eic.wsb_6
+eic.wsb_6 [6] NonNegDollars {"from": "eic.wsb_4b", "op": "subtract_floor0", "take": "eic.zero"} refuses=[]
+eic.wsb_4b [4b] Dollars {"of": ["eic.earned_income", "eic.wsb_se"], "op": "sum"} refuses=[]
+eic.wsb_se [(helper)] Dollars {"collection": "person", "field": "person.eic_se", "op": "sum_over"} refuses=[]
+eic.earned_income [(Step 5, 5)] Dollars {"of": ["eic.step5_line3", "eic.step5_line4"], "op": "sum"} refuses=[]
+eic.step5_line1 [(Step 5, 1)] NonNegDollars {"from": "f1040.line1z", "op": "copy"} refuses=['scope.schedule1']
+eic.step5_line2 [(Step 5, 2)] NonNegDollars {"from": "eic.zero", "op": "copy"} refuses=['scope.other_income']
+eic.step5_line3 [(Step 5, 3)] Dollars {"from": "eic.step5_line1", "op": "subtract", "take": "eic.step5_line2"} refuses=[]
+eic.step5_line4 [(Step 5, 4)] NonNegDollars {"from": "eic.zero", "op": "copy"} refuses=['s8812.combat_pay']
+eic.self_employed [(helper)] Bool {"gt": ["eic.sc_count", {0, "type": "Count"}], "op": "test"} refuses=[]
+eic.sc_count [(helper)] Count {"collection": "person", "field": "person.sc_count", "op": "sum_over"} refuses=[]
+person.eic_se [(helper)] Dollars refuses=[]
+   0: {"eq": ["person.has_sc", {true}], "op": "test"} -> person.eic_se_has
+   1: {"eq": ["person.has_sc", {false}], "op": "test"} -> person.zero
+person.eic_se_has [(helper)] Dollars refuses=[]
+   0: {"eq": ["person.files_se", {true}], "op": "test"} -> person.eic_part1
+   1: {"eq": ["person.files_se", {false}], "op": "test"} -> person.sc_total
+person.eic_part1 [(helper)] Dollars {"from": "person.sc_total", "op": "subtract", "take": "person.se_line13"} refuses=[]
+person.sc_total [(helper)] Dollars {"collection": "sc", "field": "sc.result", "op": "sum_over"} refuses=[]
+person.files_se [(helper)] Bool {"gt": ["person.se_line4c", {"param": "sales.zero"}], "op": "test"} refuses=[]
+person.has_sc [(helper)] Bool {"gt": ["person.sc_count", {0, "type": "Count"}], "op": "test"} refuses=[]
+person.sc_count [(helper)] Count {"collection": "sc", "field": "sc.one", "op": "sum_over"} refuses=[]
+person.se_line13 [(helper)] NonNegDollars refuses=['person.se_rrta']
+   0: {"eq": ["person.has_sc", {true}], "op": "test"} -> {"bind": {"line2": "person.se_line2", "line8a": "person.wages"}, "def": "se", "line": "line13"}
+   1: {"eq": ["person.has_sc", {false}], "op": "test"} -> person.zero
+s1.line3 [3] Dollars {"collection": "person", "field": "person.sc_total", "op": "sum_over"} refuses=['s1.ebl']
+s1.line15 [15] NonNegDollars {"collection": "person", "field": "person.se_line13", "op": "sum_over"} refuses=[]
+eic.step1_income [(helper)] Bool {"lt": ["f1040.line11b", "eic.limit"], "op": "test"} refuses=[]
+eic.step5_income [(helper)] Bool {"lt": ["eic.earned_for_limit", "eic.limit"], "op": "test"} refuses=[]
+eic.earned_for_limit [(helper)] Dollars refuses=[]
+   0: {"eq": ["eic.self_employed", {false}], "op": "test"} -> eic.earned_income
+   1: {"eq": ["eic.self_employed", {true}], "op": "test"} -> eic.wsb_4b
+eic.below_top [(helper)] Bool {"lt": ["f1040.line11b", "eic.top_limit"], "op": "test"} refuses=[]
+
+CLAIM C11. s8812.line18a alt0 (taking_eic = true): chart_eic -> eiw_7_figured. Claim: taking_eic true means Form 1040 line 27a is known and positive, so the EIC computation is complete (eligible true, credit positive); then eiw_7_figured = max(0, line1z + 0 + s1.line3) - (0 + s1.line15) equals chart_eic (earned_income = line1z when not self-employed, where no Schedule C entries exist so s1.line3 and s1.line15 are 0; wsb_4b = earned_income + sum over persons of (sc_total - se_line13 when files_se, else sc_total) when self-employed, which equals line1z + s1.line3 - s1.line15 because se_line13 is 0 when Schedule SE is not filed), and every gate on the eiw lines (scope.schedule1, s8812.combat_pay) is one that the complete EIC path already found false. Is this EQUIVALENT? If not, give a concrete input (including unanswered inputs or refusals) where printed s8812.line18a or a printed reader differs. State any premise you cannot check from the definitions.

@@ -49,5 +49,6 @@
 
 - **Authored helper label:** The mid-quarter convention applies: the October to December bases are more than 40% of all 2025 bases
 - **Encoded (Bool):** helper "Five times the October to December bases" > helper "Two times all 2025 bases"
+- Interpretation: amb.2025.mq_joint
 - Expr: `{"gt":["mq.q4x5","mq.totalx2"],"op":"test"}`
 - Cite: [p946] p. 34, Which Convention Applies?, Mid-quarter convention, "are more than 40% of the total depreciable bases of all MACRS property you placed in service during the entire year" (For use in preparing 2025 returns; sha256 07fadfb2)

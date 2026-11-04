@@ -260,6 +260,7 @@ form:
         locator: p. 5, Instructions for Recipient, boxes 2b to 2d, "Box 2b. Shows the portion of the amount in box 2a
           that is unrecaptured section 1250 gain", "Box 2c. Shows the portion of the amount in box 2a that is section
           1202 gain", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain"
+      ambiguity: amb.2025.div_gain_portions_disjoint
     - id: div.screen
       printed: (helper)
       type: NonNegDollars

@@ -1,46 +1,54 @@
 {
  "bank": {
   "evaluation_failures": 0,
-  "fixtures": 1382,
+  "fixtures": 1495,
   "generated": 500,
   "partial_bases": 40,
-  "partial_records": 142,
+  "partial_records": 133,
+  "return_states": {
+   "completed": 344,
+   "incomplete": 821,
+   "refused": 963
+  },
   "seed": 20261026
  },
  "errors": [],
  "failures": [],
  "family": "claude",
  "form": "f8960",
+ "invalid_lines": [],
  "lines": [
   {
    "absent": 0,
-   "agree": 1780,
+   "agree": 1855,
    "candidate": "f8960.line1",
-   "compared": 2024,
-   "differ": 244,
+   "compared": 2128,
+   "completed_witnesses": [],
+   "differ": 273,
    "handle": "1",
-   "in_scope": 1923,
-   "in_scope_agree": 1714,
+   "in_scope": 2024,
+   "in_scope_agree": 1790,
+   "invalid": 0,
    "kinds": {
-    "project-refuses": 35,
-    "project-unknown": 209
+    "project-refuses": 39,
+    "project-unknown": 234
    },
    "kinds_by_return": {
     "incomplete": {
-     "project-unknown": 149
+     "project-unknown": 150
     },
     "refused": {
-     "project-refuses": 35,
-     "project-unknown": 60
+     "project-refuses": 39,
+     "project-unknown": 84
     }
    },
    "open_at_triage": true,
    "project": "f8960.line1",
    "shown_when": null,
    "sources": {
-    "fixture": 1382,
+    "fixture": 1495,
     "generated": 500,
-    "partial": 142
+    "partial": 133
    },
    "status": "DISAGREE",
    "triage": "differs",
@@ -267,6 +275,226 @@
     },
     {
      "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.line2b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8960.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.unsupported"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "input": "f8960.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.unsupported"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.asset.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.line2b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8960.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.unsupported"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "input": "f8960.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.unsupported"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.asset.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.line2b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8960.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.unsupported"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "input": "f8960.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.unsupported"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.asset.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 12100,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.line2b",
+       "value": {
+        "cents": 12100,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8960.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.unsupported"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "input": "f8960.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.unsupported"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f4952.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f1040.line2b",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f8960.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.unsupported"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "input": "f8960.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.unsupported"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f4952.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
       "cents": 2792800,
       "kind": "money"
      },
@@ -316,7 +544,7 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.f5695.7",
+      "id": "classm.f5695.8",
       "kind": "fixture"
      }
     },
@@ -413,229 +641,9 @@
        }
       }
      ],
-     "project_return": "incomplete",
+     "project_return": "refused",
      "source": {
-      "id": "table.band.first",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f1040.line2b",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "f8960",
-     "kind": "project-unknown",
-     "project": {
-      "input": "f8960.unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for f8960.unsupported"
-     },
-     "project_operands": [
-      {
-       "ref": "f8960.unsupported",
-       "value": {
-        "input": "f8960.unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for f8960.unsupported"
-       }
-      }
-     ],
-     "project_return": "incomplete",
-     "source": {
-      "id": "table.band.mid",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f1040.line2b",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "f8960",
-     "kind": "project-unknown",
-     "project": {
-      "input": "f8960.unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for f8960.unsupported"
-     },
-     "project_operands": [
-      {
-       "ref": "f8960.unsupported",
-       "value": {
-        "input": "f8960.unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for f8960.unsupported"
-       }
-      }
-     ],
-     "project_return": "incomplete",
-     "source": {
-      "id": "table.band.last",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f1040.line2b",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "f8960",
-     "kind": "project-unknown",
-     "project": {
-      "input": "f8960.unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for f8960.unsupported"
-     },
-     "project_operands": [
-      {
-       "ref": "f8960.unsupported",
-       "value": {
-        "input": "f8960.unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for f8960.unsupported"
-       }
-      }
-     ],
-     "project_return": "incomplete",
-     "source": {
-      "id": "switch.below",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f1040.line2b",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "f8960",
-     "kind": "project-unknown",
-     "project": {
-      "input": "f8960.unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for f8960.unsupported"
-     },
-     "project_operands": [
-      {
-       "ref": "f8960.unsupported",
-       "value": {
-        "input": "f8960.unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for f8960.unsupported"
-       }
-      }
-     ],
-     "project_return": "incomplete",
-     "source": {
-      "id": "switch.exact",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f1040.line2b",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "f8960",
-     "kind": "project-unknown",
-     "project": {
-      "input": "f8960.unsupported",
-      "kind": "unknown",
-      "reason": "no input supplied for f8960.unsupported"
-     },
-     "project_operands": [
-      {
-       "ref": "f8960.unsupported",
-       "value": {
-        "input": "f8960.unsupported",
-        "kind": "unknown",
-        "reason": "no input supplied for f8960.unsupported"
-       }
-      }
-     ],
-     "project_return": "incomplete",
-     "source": {
-      "id": "tcw.single.b1",
+      "id": "classm.sales.1",
       "kind": "fixture"
      }
     }
@@ -643,58 +651,527 @@
   },
   {
    "absent": 0,
-   "agree": 2024,
+   "agree": 1915,
    "candidate": "f8960.line2",
-   "compared": 2024,
-   "differ": 0,
+   "compared": 2128,
+   "completed_witnesses": [],
+   "differ": 213,
    "handle": "2",
-   "in_scope": 1958,
-   "in_scope_agree": 1958,
-   "kinds": {},
-   "kinds_by_return": {},
+   "in_scope": 2046,
+   "in_scope_agree": 1850,
+   "invalid": 0,
+   "kinds": {
+    "candidate-refuses": 17,
+    "candidate-unknown": 196
+   },
+   "kinds_by_return": {
+    "incomplete": {
+     "candidate-unknown": 125
+    },
+    "refused": {
+     "candidate-refuses": 17,
+     "candidate-unknown": 71
+    }
+   },
    "open_at_triage": true,
    "project": "f8960.line2",
    "shown_when": null,
    "sources": {
-    "fixture": 1382,
+    "fixture": 1495,
     "generated": 500,
-    "partial": 142
+    "partial": 133
    },
    "status": "DISAGREE",
-   "triage": "agrees on sample",
-   "witnesses": []
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "input": "f8960.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "input": "f8960.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.unsupported"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.asset.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8960.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "input": "f8960.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.unsupported"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 2327500,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 2327500,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.asset.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8960.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "input": "f8960.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.unsupported"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.asset.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8960.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "input": "f8960.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.unsupported"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f4952.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8960.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "input": "f8960.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.unsupported"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f4952.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8960.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "input": "f8960.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.unsupported"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 14401900,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 14401900,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sales.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "f8960.unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.w2.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "f8960.unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage4.refuse.8960.unsupported",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "f8960.unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage4.refuse.8960.unsupported.simultaneous",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "f8960.unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 18,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 18,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 17,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "f8960.unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 4032228,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 4032228,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 32,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "f8960.unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 8056520,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sb.line6",
+       "value": {
+        "cents": 8056520,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 119,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    }
+   ]
   },
   {
    "absent": 0,
-   "agree": 1974,
+   "agree": 2075,
    "candidate": "f8960.line13",
-   "compared": 2024,
-   "differ": 50,
+   "compared": 2128,
+   "completed_witnesses": [],
+   "differ": 53,
    "handle": "13",
-   "in_scope": 1628,
-   "in_scope_agree": 1591,
+   "in_scope": 1709,
+   "in_scope_agree": 1675,
+   "invalid": 0,
    "kinds": {
-    "candidate-refuses": 2,
-    "project-refuses": 11,
-    "project-unknown": 37
+    "candidate-refuses": 4,
+    "project-refuses": 15,
+    "project-unknown": 34
    },
    "kinds_by_return": {
     "incomplete": {
-     "project-unknown": 26
+     "project-unknown": 25
     },
     "refused": {
-     "candidate-refuses": 2,
-     "project-refuses": 11,
-     "project-unknown": 11
+     "candidate-refuses": 4,
+     "project-refuses": 15,
+     "project-unknown": 9
     }
    },
    "open_at_triage": true,
    "project": "f8960.line13",
    "shown_when": null,
    "sources": {
-    "fixture": 1382,
+    "fixture": 1495,
     "generated": 500,
-    "partial": 142
+    "partial": 133
    },
    "status": "DISAGREE",
    "triage": "differs",
@@ -915,7 +1392,7 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.f5695.7",
+      "id": "classm.f5695.8",
       "kind": "fixture"
      }
     },
@@ -1408,13 +1885,13 @@
     {
      "candidate": {
       "cite": {
-       "doc": "f8949",
-       "locator": "Parts I and II, boxes G\u2013L"
+       "doc": "i1040gi",
+       "locator": "p. 27, Exception 2; f1099r Box 7"
       },
-      "form": "Form 8949 digital asset boxes G\u2013L",
-      "gate": "sales[s1].digital",
+      "form": "Form 8606 or another Form 1099-R code",
+      "gate": "person[taxpayer].retirement[r1].bad_code",
       "kind": "refusal",
-      "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part."
+      "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside this tool."
      },
      "candidate_operands": [
       {
@@ -1428,13 +1905,13 @@
        "ref": "f1040.line11a",
        "value": {
         "cite": {
-         "doc": "f8949",
-         "locator": "Parts I and II, boxes G\u2013L"
+         "doc": "i1040gi",
+         "locator": "p. 27, Exception 2; f1099r Box 7"
         },
-        "form": "Form 8949 digital asset boxes G\u2013L",
-        "gate": "sales[s1].digital",
+        "form": "Form 8606 or another Form 1099-R code",
+        "gate": "person[taxpayer].retirement[r1].bad_code",
         "kind": "refusal",
-        "remedy": "Digital asset transactions are outside this tool; prepare the applicable digital-asset part."
+        "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside this tool."
        }
       }
      ],
@@ -1464,7 +1941,135 @@
      ],
      "project_return": "refused",
      "source": {
-      "base": "classm.asset.2",
+      "base": "classm.dependent.3.deepseek",
+      "kind": "partial",
+      "withheld": "f8960.refund"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "f1040",
+       "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19\u201320 and 27\u201331"
+      },
+      "form": "Form 1040 additional income/return forms",
+      "gate": "scope.other_income",
+      "kind": "refusal",
+      "remedy": "Prepare the required unsupported income or return treatment."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line11a",
+       "value": {
+        "cite": {
+         "doc": "f1040",
+         "locator": "Form 1040 (2025), lines 8, 10, 13b, 16, 19\u201320 and 27\u201331"
+        },
+        "form": "Form 1040 additional income/return forms",
+        "gate": "scope.other_income",
+        "kind": "refusal",
+        "remedy": "Prepare the required unsupported income or return treatment."
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-refuses",
+     "project": {
+      "input": "f8960.refund",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.refund"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "input": "f8960.refund",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.refund"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.carloan.2",
+      "kind": "partial",
+      "withheld": "f8960.refund"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+      },
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+      "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+      "kind": "refusal",
+      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line11a",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-refuses",
+     "project": {
+      "input": "f8960.refund",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.refund"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "input": "f8960.refund",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.refund"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.g28.2",
       "kind": "partial",
       "withheld": "f8960.refund"
      }
@@ -1472,10 +2077,10 @@
    ]
   }
  ],
- "log_sha256_at_triage": "523d2b02ac1157cde4b73d7c191ae763b8852e268cd9673227b3581928af01f8",
+ "log_sha256_at_triage": "f6e05830e6b63b94cc39f6cc912d2fcf8e225dd883c6ed8d09b2424a1274b231",
  "policy": "executable-triage-v2",
- "response_sha256": "9ad47082d3e1b0f5f9995aa1f86dc3416d23ea439c40e82b9b23c04fb543c0a7",
+ "response_sha256": "94d94e85a93bbccb926dc4942f9e8e8d7072fa0f288d1596a3b5236bbf97670d",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "evaluated",
- "subject_sha256": "64ddf585ea01339c5d12aa6661762bd30ac4f072b890d85ad6a0bdcfcf814fc2"
+ "subject_sha256": "080b064512d9d27af88991c9a79785f926cada7217056e8d948b095fa8b5f758"
 }

@@ -593,6 +593,13 @@
   {
    "printed": "24",
    "restated": "Choose — [helper \"You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)\" = false → helper \"Year parameter sales.zero\"] [helper \"You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)\" = true → helper \"The PTC allowed: line 11, column (e), or lines 12 through 23, column (e), added\"]",
+   "model": "The applicable-taxpayer test uses only line 5 and the Marketplace estimate, so a married-filing-separately filer gets a computed PTC. The IRS says 'If you are not an applicable taxpayer because you are using filing status married filing separately and Exception 2, earlier, does not apply to you ... enter -0- on line 24.'",
+   "ruling": "Ruling: scope — i8962 p. 16, \"If you are not an applicable taxpayer because you are using filing status married filing separately and Exception 2, earlier, does not apply to you, you cannot take the PTC. You must repay some or all of the APTC entered on line 11, column (f). To complete the rest of the form, skip lines 12 through 23, enter -0- on line 24\". No married filing separately return is completed: gate s3.mfs (forms/2025/s3.yaml, f1040.status mfs) refuses through scope.ready, Exception 2 included, as earlier rounds ruled. The applicable-taxpayer helper therefore never meets a married filing separately filer, and the restatement is faithful to the project line.",
+   "context": "605c9d03324a19b6b1f76c023ce1501b8b77a4e053993eafa7a7b5b8ba255235"
+  },
+  {
+   "printed": "24",
+   "restated": "Choose — [helper \"You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)\" = false → helper \"Year parameter sales.zero\"] [helper \"You are an applicable taxpayer (line 5 at least 100, or the Marketplace estimate exception)\" = true → helper \"The PTC allowed: line 11, column (e), or lines 12 through 23, column (e), added\"]",
    "model": "The applicable-taxpayer test uses only line 5 and the Marketplace-estimate exception, with no married-filing-separately check, and no refusal covers it. The form says 'You cannot take the PTC if your filing status is married filing separately unless you qualify for an exception', and the instructions say such a filer must 'enter -0- on line 24'.",
    "ruling": "Ruling: scope — married filing separately is refused for the whole return by s3.mfs, and Part V (the alternative calculation for year of marriage) by f8962.marriage; the applicable helper's income and Marketplace-estimate limbs are the only reachable ones. The render review does not show the return-wide refusal.",
    "context": "e92c8ca156cb5338c4a5f4ef0c19bccf26587e095995faf6ba49d3ca2729a7ec"
@@ -631,6 +638,20 @@
    "model": "The Table 5 amounts by line 5 band and filing status match, including single $375/$975/$1,625 and others $750/$1,950/$3,250. However, 'If you are self-employed and are claiming the self-employed health insurance deduction, see ... Pub. 974 for the amount to enter on line 28', and that computation is neither given nor refused.",
    "ruling": "Ruling: scope — the self-employed health insurance deduction and the PTC must be figured together under Pub. 974; a return claiming that deduction is refused by sc.hi_screened (sc.hi_screen asks whether the deduction is outside this tool, including a claim with the premium tax credit), which refuses sc.f7206_line1 and the return. scope.schedule1 does not cover the deduction: its question asks about items other than the ones the tool asks about separately and names the self-employed health insurance deduction in that excluded list. The line 28 amount cannot arise on a computed return.",
    "context": "e92c8ca156cb5338c4a5f4ef0c19bccf26587e095995faf6ba49d3ca2729a7ec"
+  },
+  {
+   "printed": "28",
+   "restated": "Choose — [line 5 ≥ 0 (a count) and line 5 < 200 (a count) → helper \"Table 5 limitation, line 5 below 200\"] [line 5 ≥ 200 (a count) and line 5 < 300 (a count) → helper \"Table 5 limitation, line 5 below 300\"] [line 5 ≥ 300 (a count) and line 5 < 400 (a count) → helper \"Table 5 limitation, line 5 below 400\"] [line 5 ≥ 400 (a count) → line 27]",
+   "model": "The Table 5 amounts match by filing status, but nothing covers 'If you are self-employed and are claiming the self-employed health insurance deduction, see Self-Employed Health Insurance Deduction and PTC in Pub. 974 for the amount to enter on line 28.'",
+   "ruling": "Ruling: scope — i8962 p. 18, Line 28, \"If you are self-employed and are claiming the self-employed health insurance deduction, see Self-Employed Health Insurance Deduction and PTC in Pub. 974 for the amount to enter on line 28.\". A return claiming the self-employed health insurance deduction with the premium tax credit is refused: sc.hi_screen (forms/2025/sc.yaml) asks whether \"the insurance was obtained through the Marketplace and advance payments of the premium tax credit were made or you are claiming the premium tax credit\" and refuses sc.f7206_line1 and the return, so the Pub. 974 line 28 amount cannot arise on a computed return. The restatement is faithful to the project's Table 5 line; the omission the model names is handled by that screen, not by line 28.",
+   "context": "605c9d03324a19b6b1f76c023ce1501b8b77a4e053993eafa7a7b5b8ba255235"
+  },
+  {
+   "printed": "2b",
+   "restated": "Add dependent.ptc_magi_counted over every confirmed dependent entry for which helper \"Your dependent\" = true, within the current person when parent-bound. An unanswered roster is unknown.",
+   "model": "Dependents required to file are summed, but the restatement omits the Form 8814 rule: 'If you are filing Form 8814 ... and the amount on Form 8814, line 4, is more than $1,350, you must include on line 1 of Worksheet 1-2 the sum of the tax-exempt interest from Form 8814, line 1b; the lesser of Form 8814, line 4 or line 5; and any nontaxable social security benefits your child received.'",
+   "ruling": "Ruling: scope — i8962 p. 8, \"If you are filing Form 8814 and the amount on Form 8814, line 4, is more than $1,350, you must enter certain amounts from that form on Worksheet 1-2.\" Form 8814 is outside this tool: scope.other_line16 (forms/2025/scope.yaml) asks about \"Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax)\" and refuses the return, so the Worksheet 1-2 Form 8814 amounts cannot reach a computed return. The restatement is faithful to the project line.",
+   "context": "605c9d03324a19b6b1f76c023ce1501b8b77a4e053993eafa7a7b5b8ba255235"
   },
   {
    "printed": "2b",

@@ -14,33 +14,33 @@ Measured, below 0.5% of returns, and not in the table:
 - Foreign earned income exclusion (Form 2555): 0.3%
 - Alternative minimum tax: 0.1%
 
-Not named in the table: 149 of the 157 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
+Not named in the table: 152 of the 160 situations the tool refuses. Most are rare, and most are not measured; the coverage estimate has an IRS count for only a handful of situations, so the table's choice of unmeasured ones is a judgment.
 
 The estimate puts coverage at 78.4% of returns (`reports/2025/filer_coverage.json`). It does not count the unmeasured situations, so the true figure is lower.
 
 ## Every refusal
 
-The data holds **195 refusal gates**: 157 tax situations the tool does not prepare, grouped by topic below, and 38 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
+The data holds **199 refusal gates**: 160 tax situations the tool does not prepare, grouped by topic below, and 39 entry checks, refusals that fire when the figures entered contradict each other or an entry cannot stand under the instructions as given. Entry checks are not limits on coverage; they are listed at the end.
 
-- [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (30)
-- [Household and dependents](#household-and-dependents) (14)
+- [Filing status, residency, wages, accounts and other taxes](#filing-status-residency-wages-accounts-and-other-taxes) (29)
+- [Household and dependents](#household-and-dependents) (15)
 - [Interest and dividends](#interest-and-dividends) (4)
 - [Sales and capital gains](#sales-and-capital-gains) (5)
 - [Retirement distributions](#retirement-distributions) (7)
 - [Social Security](#social-security) (3)
-- [Self-employment](#self-employment) (25)
+- [Self-employment](#self-employment) (26)
 - [State and local tax refunds](#state-and-local-tax-refunds) (4)
 - [Other income and alimony](#other-income-and-alimony) (8)
 - [IRA contributions](#ira-contributions) (12)
 - [Health savings accounts](#health-savings-accounts) (3)
 - [Itemized deductions](#itemized-deductions) (7)
 - [Tips, overtime, car loans and seniors](#tips-overtime-car-loans-and-seniors) (6)
-- [Earned income credit](#earned-income-credit) (1)
-- [Child and dependent care](#child-and-dependent-care) (9)
+- [Earned income credit](#earned-income-credit) (2)
+- [Child and dependent care](#child-and-dependent-care) (10)
 - [Education credits](#education-credits) (5)
 - [Home energy credits](#home-energy-credits) (7)
 - [Premium tax credit](#premium-tax-credit) (7)
-- [Entry checks](#entry-checks) (38)
+- [Entry checks](#entry-checks) (39)
 
 ### Filing status, residency, wages, accounts and other taxes
 
@@ -118,19 +118,11 @@ The data holds **195 refusal gates**: 157 tax situations the tool does not prepa
   - *Not covered:* Credit Limit Worksheet B, line 6, for bona fide residents of Puerto Rico. The Puerto Rico path through Credit Limit Worksheet B is outside this tool.
     *Source:* [i1040s8812] p. 5, Credit Limit Worksheet B, line 6, "If you are a bona fide resident of Puerto Rico and line 5 above is less than line 1 above, go to line 7"
   - *Refused at:* `s8812.line27`, `s8812.clwb_11`
-- **`household.credit_disallowed`**: Was an earned income credit, child tax credit or credit for other dependents reduced or disallowed before, or are you in a disallowance period (Form 8862)?
-  - *The data asks or tests:* Was your EIC for a year after 1996, or your child tax credit, additional child tax credit or credit for other dependents for a year after 2015, reduced or disallowed other than for a math or clerical error, or are you in a 2- or 10-year disallowance period? (`input`)
-  - *Stops the return as:* Form 8862 and the disallowance periods for the EIC and the child tax credits
-  - *Not covered:* Form 8862 and the EIC disallowance period (Form 8862, who must file). Your EIC, child tax credit, additional child tax credit or credit for other dependents for an earlier year was reduced or disallowed, or you are in a disallowance period; Form 8862 and the disallowance period are outside this tool.
-    *Source:* [i1040gi] p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" and "don’t file Form 8862 or take the credit for the ... 2 years after the most recent tax year for which there was a final determination that your EIC claim was due to reckless or intentional disregard of the EIC rules ... 10 years after the most recent tax year for which there was a final determination that your EIC claim was due to fraud"
-  - *Not covered:* Form 8862 and the CTC, ACTC and ODC disallowance period (Form 8862 may be required). Your EIC, child tax credit, additional child tax credit or credit for other dependents for an earlier year was reduced or disallowed, or you are in a disallowance period; Form 8862 and the disallowance period are outside this tool.
-    *Source:* [i1040s8812] p. 2, Form 8862 may be required, "If your CTC, ACTC, or ODC for a year after 2015 was denied or reduced for any reason other than a math or clerical error, you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies" and "you will not be allowed to claim any of these credits for 2 years even if you are otherwise eligible to do so. If it is determined that your error was due to fraud, you will not be allowed to claim any of these credits for 10 years"
-  - *Refused at:* `eic.credit`, `s8812.line12`
 
 *Income, wages and accounts*
 
 - **`scope.schedule1`**: Do you have rental or royalty income, a partnership, S corporation, estate or trust (Schedule E or a K-1), farm income, sales of business property (Form 4797), a net operating loss, or another Schedule 1 item the tool does not ask about?
-  - *The data asks or tests:* Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately (business income or loss from Schedule C; a taxable state or local income tax refund; alimony under an agreement made before 2019; unemployment compensation; the line 8 items asked one by one; educator expenses; the HSA deduction; the deductible part of self-employment tax; self-employed SEP and SIMPLE contributions; the self-employed health insurance deduction; the penalty on early withdrawal of savings; the IRA deduction; student loan interest; jury duty pay you gave your employer), including statutory-employee wages or income as a minister, a member of a religious order who has not taken a vow of poverty, or a Christian Science practitioner; church employee income (wages from a church that elected exemption from social security and Medicare taxes); other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan); a refund or other recovery of an amount you deducted or took a credit for in an earlier year, other than a state or local income tax refund (for example a refund of general sales tax, real estate tax or personal property tax, a refund of mortgage interest in box 4 of Form 1098, a reimbursement of medical expenses, or a payment on a bad debt you deducted); sales of business property (Form 4797); a net operating loss deduction; rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); an exclusion of Medicaid waiver payments (Schedule 1 line 8s); or an adjustment on Schedule 1 line 12, 14 or 23? (Schedule 1-A deductions are asked separately.) (`input`)
+  - *The data asks or tests:* Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately (business income or loss from Schedule C; a taxable state or local income tax refund; alimony under an agreement made before 2019; unemployment compensation; the line 8 items asked one by one; educator expenses; the HSA deduction; the deductible part of self-employment tax; self-employed SEP and SIMPLE contributions; the self-employed health insurance deduction; the penalty on early withdrawal of savings; the IRA deduction; student loan interest; jury duty pay you gave your employer), including statutory-employee wages or income as a minister, a member of a religious order who has not taken a vow of poverty, or a Christian Science practitioner; church employee income (wages from a church or qualified church-controlled organization that elected exemption from social security and Medicare taxes); other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan); a refund or other recovery of an amount you deducted or took a credit for in an earlier year, other than a state or local income tax refund (for example a refund of general sales tax, real estate tax or personal property tax, a refund of mortgage interest in box 4 of Form 1098, a reimbursement of medical expenses, or a payment on a bad debt you deducted); sales of business property (Form 4797); a net operating loss deduction; rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); an exclusion of Medicaid waiver payments (Schedule 1 line 8s); or an adjustment on Schedule 1 line 12, 14 or 23? (Schedule 1-A deductions are asked separately.) (`input`)
   - *Stops the return as:* Schedule 1 items outside the tool, among them Schedules E and F, Form 4797 and the net operating loss
   - *Not covered:* Pub. 596, Worksheet 1 (EIC, Step 2, question 4). Schedule E, rental of personal property and passive activity income are outside this tool.
     *Source:* [i1040gi] p. 40, Step 2, question 4, "Yes. Use Worksheet 1 ... in Pub. 596"
@@ -282,7 +274,7 @@ The data holds **195 refusal gates**: 157 tax situations the tool does not prepa
   - *Refused at:* `f1040.line30`, `f5695.rce_ws2`, `f5695.eehi_ws2`, `f8863.clw5`, `s3.line8`, `s8812.clw_a2`, `s8812.clw_a4`, `scope.ready`
   - *Share of returns (coverage estimate):* Other nonrefundable credits (general business, adoption, clean vehicle and others), 0.9%
 - **`f8960.unsupported`**: Do you have net investment income or adjustments the tool does not take for the Net Investment Income Tax: annuities, rentals, royalties, a business or pass-through, CFC or PFIC holdings, a section 1411 net operating loss, excluded savings bond interest, or another Form 8960 adjustment?
-  - *The data asks or tests:* Any annuity, rental, royalty, business or pass-through income; a CFC or PFIC holding; a section 911 exclusion; a disposition adjustment (Form 8960 line 5b or 5c, for example gain on employer securities attributable to net unrealized appreciation (NUA) from a qualified plan, or the sale of property held in a trade or business or of an interest in a partnership or S corporation); a section 1411 net operating loss; excluded savings bond interest (Form 8815); a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment? (`input`)
+  - *The data asks or tests:* Any annuity, rental, royalty, business or pass-through income; a CFC or PFIC holding; a section 911 exclusion; a disposition adjustment (Form 8960 line 5b or 5c, for example gain on employer securities attributable to net unrealized appreciation (NUA) from a qualified plan, or the sale of property held in a trade or business or of an interest in a partnership or S corporation); a section 1411 net operating loss; section 404(k) dividends on employer securities held in an employee stock ownership plan (ESOP) and paid directly to you (Form 1099-DIV box 1a); excluded savings bond interest (Form 8815); a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment? (`input`)
   - *Not covered:* Form 8960 additional adjustments. The required investment-income or MAGI modifications are outside this supported slice.
     *Source:* [f8960] Form 8960 (2025), Parts I–III, individual lines 1–17
   - *Refused at:* `f8960.line1`, `f8960.line3`, `f8960.line4a`, `f8960.line4b`, `f8960.line5b`, `f8960.line5c`, `f8960.line6`, `f8960.line7`, `f8960.line9c`, `f8960.line10`, `f8960.line13`
@@ -304,6 +296,11 @@ The data holds **195 refusal gates**: 157 tax situations the tool does not prepa
   - *Not covered:* Community income on a married head of household return in a community property state (Form 8958; Pub. 555). A married person filing as head of household who lived in a community property state may have to report community income under state law; Form 8958 and the community property rules of Pub. 555 are outside this tool.
     *Source:* [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555"
   - *Refused at:* `household.hoh_eligible`
+- **`household.ctc_disallowed_claim`**: Claiming the child tax credit or credit for other dependents after an earlier credit was reduced or disallowed, or in a disallowance period (Form 8862)?
+  - *The data asks or tests:* An earlier credit was reduced or disallowed (or a disallowance period applies) and Schedule 8812 line 8 is more than line 11 (a child tax credit or credit for other dependents is figured) (`test`)
+  - *Not covered:* Form 8862 and the CTC, ACTC and ODC disallowance period (Form 8862 may be required). Your EIC, child tax credit, additional child tax credit or credit for other dependents for an earlier year was reduced or disallowed, or you are in a disallowance period; Form 8862 and the disallowance period are outside this tool.
+    *Source:* [i1040s8812] p. 2, Form 8862 may be required, "If your CTC, ACTC, or ODC for a year after 2015 was denied or reduced for any reason other than a math or clerical error, you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies" and "you will not be allowed to claim any of these credits for 2 years even if you are otherwise eligible to do so. If it is determined that your error was due to fraud, you will not be allowed to claim any of these credits for 10 years"
+  - *Refused at:* `s8812.line12`
 - **`household.widowed_2025`**: Are you filing as single or head of household although your spouse died in 2025?
   - *The data asks or tests:* Filing as single or head of household although your spouse died in 2025 (`test`)
   - *Not covered:* Filing status after a spouse's death in 2025. Your spouse died in 2025, so you are considered married for the whole year for filing status; file a joint return with your deceased spouse (married filing jointly), or a separate return, which this tool does not support.
@@ -405,7 +402,7 @@ The data holds **195 refusal gates**: 157 tax situations the tool does not prepa
     *Source:* [f8949] Parts I and II, boxes G–L
   - *Refused at:* `sales.one`
 - **`sales.special`**: Did you sell collectibles, qualified small business stock (section 1202), or depreciable real property?
-  - *The data asks or tests:* Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property? (`input`)
+  - *The data asks or tests:* Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property, such as stock of an S corporation that owns art or gold worth more than its cost? (`input`)
   - *Not covered:* Schedule D special gains worksheets. Direct sales of collectibles, section 1202 stock and section 1250 property are unsupported.
     *Source:* [i1040sd] pp. 11–12, lines 18 and 19
   - *Refused at:* `sales.one`
@@ -428,7 +425,7 @@ The data holds **195 refusal gates**: 157 tax situations the tool does not prepa
 ### Retirement distributions
 
 - **`retirement.special`**: Does a retirement distribution involve a special case: a disability pension, a corrective distribution, a qualified charitable distribution, a conversion or Roth rollover, a lump sum (Form 4972), a nonqualified annuity, a plan loan offset, Form RRB-1099-R, or the General Rule?
-  - *The data asks or tests:* Does this distribution involve any of these: a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025; a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972; a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died, or that is shared among more than one beneficiary; a rollover of property other than cash, or of a distribution under a qualified domestic relations order; a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)? (`input`)
+  - *The data asks or tests:* Does this distribution involve any of these: a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025; a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972; a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree's joint and survivor annuity is not one of these); a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead; a rollover of a distribution under a qualified domestic relations order; a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree's annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)? (`input`)
   - *Not covered:* Form 1099-R special cases (Forms 5329, 8606, 4972, 8915-F, Pub. 575 or 939). This distribution needs a form or rule outside this tool.
     *Source:* [i1040gi] pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method
   - *Refused at:* `retirement.rolled`, `retirement.taxable`, `retirement.amount_a`
@@ -559,7 +556,7 @@ The data holds **195 refusal gates**: 157 tax situations the tool does not prepa
 - **`asset.listed_low`**: Is any listed property used 50% or less for business?
   - *The data asks or tests:* Listed property used 50% or less for business, or a percentage over 100 (`test`)
   - *Not covered:* Listed property used 50% or less in a qualified business use (Form 4562 line 27), or a business use over 100%. Listed property used 50% or less for business is depreciated under ADS and is outside this tool.
-    *Source:* [i4562] p. 14, Lines 26 and 27; p. 15, Column (f), "used 50% or less ... straight line method over its ADS recovery period"
+    *Source:* [i4562] p. 14, Lines 26 and 27; p. 15, Column (f)—Recovery period, "For property placed in service after 1986 and used 50% or less in a qualified business use, depreciate the property using the straight line method over its ADS recovery period"
   - *Not covered:* Listed property used 50% or less in a qualified business use (Form 4562 line 27), or a business use over 100%. Listed property used 50% or less for business is depreciated under ADS and is outside this tool.
     *Source:* [i4562] p. 15, "used 50% or less in a qualified business use, depreciate the property using the straight line method over its ADS recovery period"
   - *Refused at:* `asset.basis`, `asset.done`
@@ -588,6 +585,11 @@ The data holds **195 refusal gates**: 157 tax situations the tool does not prepa
   - *Not covered:* Actual expenses on a leased vehicle after using the standard mileage rate for it in an earlier year. You can't use actual expenses for this leased vehicle; use the standard mileage rate for the rest of the lease.
     *Source:* [i1040sc] p. 6, Line 9
   - *Refused at:* `scveh.lease_business`
+- **`scveh.employee_bad`**: Do your employees use a business vehicle on actual expenses for personal purposes?
+  - *The data asks or tests:* Actual expenses for a vehicle your employees use for personal purposes (`test`)
+  - *Not covered:* Actual expenses for a vehicle your employees use for personal purposes (the 100% business use treatment). The business use of a vehicle your employees use for personal purposes is not figured from your miles; it is outside this tool.
+    *Source:* [i4562] p. 14, Column (c)—Business/investment use percentage, "Treat vehicles used by employees as being used 100% for business/investment purposes"
+  - *Refused at:* `scveh.operating_business`
 
 *Self-employment tax, retirement plans and the QBI deduction*
 
@@ -646,15 +648,15 @@ The data holds **195 refusal gates**: 157 tax situations the tool does not prepa
     *Source:* [i1040gi] pp. 88–89, Line 1, "Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies", items 8 and 9; p525 p. 24, Itemized Deduction Recoveries, "if you’re a nonresident alien"
   - *Refused at:* `refund.line1`
 - **`refund.not_2024`**: Is a state or local refund for a year other than 2024, or did you pay some of your 2024 state income tax in 2025?
-  - *The data asks or tests:* Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you pay any of your 2024 state or local income tax in 2025? (`input`)
-  - *Not covered:* Pub. 525, Itemized Deduction Recoveries (Worksheet 2). A refund for a tax year other than 2024, or a refund when any of your 2024 state or local income tax was paid in 2025 (a last estimated payment, a payment with an extension, or a balance due), is figured with Pub. 525 (and may reduce your 2025 deduction for taxes); that is outside this tool.
+  - *The data asks or tests:* Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you pay any of your 2024 state or local income tax in 2025 or before 2024? (`input`)
+  - *Not covered:* Pub. 525, Itemized Deduction Recoveries (Worksheet 2). A refund for a tax year other than 2024, or a refund when any of your 2024 state or local income tax was paid in 2025 (a last estimated payment, a payment with an extension, or a balance due) or before 2024, is figured with Pub. 525 (and may reduce your 2025 deduction for taxes); that is outside this tool.
     *Source:* [i1040gi] pp. 88–89, Line 1, "Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet in these instructions if any of the following applies", items 1 and 5; p525 p. 24, Recovery for 2 or more years, "you must allocate, on a pro rata basis, the recovered amount between the years in which you paid it"
   - *Refused at:* `refund.taxable`
 
 ### Other income and alimony
 
 - **`s1.alimony_unsupported`**: Is alimony paid under more than one agreement or to more than one person, subject to recapture, or partly child support?
-  - *The data asks or tests:* Does any of these apply to alimony you received or paid: payments under more than one divorce or separation agreement, or paid to more than one person; a recapture of alimony; or payments of which part is not alimony (child support, including an amount reduced on a contingency relating to a child; or payments for a home either of you owns)? (`input`)
+  - *The data asks or tests:* Does any of these apply to alimony you received or paid: payments under more than one divorce or separation agreement, or paid to more than one person; a recapture of alimony; or payments of which part is not alimony (child support, including an amount reduced on a contingency relating to a child; payments for a home either of you owns; or a part that must continue after the recipient's death)? (`input`)
   - *Not covered:* Alimony under more than one agreement, recapture of alimony, or payments partly child support (Pub. 504). Alimony from more than one divorce or separation agreement or paid to more than one person, the recapture of alimony (Pub. 504 Worksheet 1), and payments of which part is child support are outside this tool.
     *Source:* [p504] p. 12, Alimony; p. 13, Underpayment; p. 16, Recapture of Alimony
   - *Refused at:* `s1.alimony_refused`, `s1.paid_refused`
@@ -674,7 +676,7 @@ The data holds **195 refusal gates**: 157 tax situations the tool does not prepa
     *Source:* [i1040gi] pp. 91–92, Lines 8a Through 8z
   - *Refused at:* `s1.line9`
 - **`s1.uc_unsupported`**: Did you contribute to a governmental unemployment program, or repay unemployment benefits taxed in an earlier year?
-  - *The data asks or tests:* Did you, in 2025 or any earlier year, make contributions to a governmental unemployment compensation program (including amounts withheld from your wages for it; not counting employer-paid tax, paid family leave or disability insurance contributions), or repay in 2025 any unemployment compensation you included in income in an earlier year? (`input`)
+  - *The data asks or tests:* Did you, in 2025 or any earlier year, make contributions to a governmental unemployment compensation program (including amounts withheld from your wages for it, and payments you made yourself, such as for coverage you elected as a self-employed person; not counting tax an employer paid on your wages, paid family leave or disability insurance contributions), or repay in 2025 any unemployment compensation you included in income in an earlier year? (`input`)
   - *Not covered:* Unemployment compensation contributions or earlier-year repayments (Form 1099-G instructions, Pub. 525). Reducing unemployment compensation by program contributions, or repayments of amounts included in an earlier year, is outside this tool.
     *Source:* [i1040gi] p. 89, Schedule 1, line 7, Caution and the last paragraph
   - *Refused at:* `s1.line7_figured`
@@ -790,7 +792,7 @@ The data holds **195 refusal gates**: 157 tax situations the tool does not prepa
     *Source:* [f1040sa] Schedule A (2025), lines 1–18
   - *Refused at:* `sa.line6`, `sa.line8b`, `sa.line8c`, `sa.line13`, `sa.line15`, `sa.line16`, `sa.line12`, `sa.line17`
 - **`gift.special`**: Does a noncash gift need an appraisal or special treatment (over $5,000, a vehicle, intellectual property, inventory and similar)?
-  - *The data asks or tests:* Does this group need an appraisal or other special treatment: a deduction over $5,000 (before any income limit), or property worth more than $5,000, for one item or for similar items (items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land or buildings) given to all donees together (other than publicly traded securities), a noncash contribution reaching you through a Schedule K-1, vehicles, pass-through entity interests, intellectual property, inventory, conservation or partial interests, property with restrictions on its use, or a clothing or household item over $500 not in good used condition? (`input`)
+  - *The data asks or tests:* Does this group need an appraisal or other special treatment: a deduction over $5,000 (before any income limit), or property worth more than $5,000, for one item or for similar items (items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land or buildings) given to all donees together (other than publicly traded securities: listed on a recognized stock exchange whose quotations are published daily, regularly traded on a national or regional over-the-counter market, or mutual fund shares quoted daily in a national newspaper), a noncash contribution reaching you through a Schedule K-1, vehicles, pass-through entity interests, intellectual property, inventory, conservation or partial interests, property with restrictions on its use, or a clothing or household item over $500 not in good used condition? (`input`)
   - *Not covered:* Form 8283 special treatment. This contribution requires unsupported appraisal or special-property treatment.
     *Source:* [i8283] pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A
   - *Refused at:* `gift.allowed`
@@ -803,12 +805,12 @@ The data holds **195 refusal gates**: 157 tax situations the tool does not prepa
   - *The data asks or tests:* Any interest expense attributable to royalties, a business, passive activities, tax-exempt income or at-risk limitations; any deductible investment expense other than interest (for example depreciation or depletion on assets that produce investment income, or investment expenses on a Schedule K-1); or any other investment income or expense beyond interest, dividends and securities sales? (`input`)
   - *Not covered:* Form 4952 / Form 6198 / Schedule E. Allocate the interest and prepare the applicable unsupported schedule or at-risk computation.
     *Source:* [f4952] pp. 1, 3–4, Investment Interest Expense Deduction
-  - *Refused at:* `f4952.line2`, `f4952.election`, `f4952.line5`, `f4952.required`
+  - *Refused at:* `f4952.line2`, `f4952.election_checked`, `f4952.line5`, `f4952.required_test`
 - **`f4952.alternative_allocation`**: Do you want the Form 4952 election to apply to qualified dividends before capital gains?
   - *The data asks or tests:* Elect an alternative allocation of Form 4952 line 4g to qualified dividends instead of capital gains first? (`input`)
   - *Not covered:* Form 4952 alternative allocation. Only the default capital-gain-first allocation is supported; alternative allocation and Form 1116 coordination are outside scope.
     *Source:* [f4952] pp. 1, 3–4, Investment Interest Expense Deduction
-  - *Refused at:* `f4952.line2`, `f4952.election`, `f4952.line5`, `f4952.required`
+  - *Refused at:* `f4952.line2`, `f4952.election_checked`, `f4952.line5`, `f4952.required_test`
 - **`sa.mfs_spouse_extra`**: On a married filing separately return, are you checking age or blindness boxes for your spouse?
   - *The data asks or tests:* Married filing separately and claiming age or blindness boxes for your spouse (`test`)
   - *Not covered:* Standard Deduction Chart spouse boxes on a separate return. Checking age or blindness boxes for your spouse on a married filing separately return is outside this tool.
@@ -862,6 +864,11 @@ The data holds **195 refusal gates**: 157 tax situations the tool does not prepa
   - *Not covered:* EIC age test after a death in 2025 (Pub. 596). When your spouse died in 2025 or the return is for someone who died in 2025, the EIC age test is answered under Pub. 596, which this tool does not apply.
     *Source:* [i1040gi] p. 42, Step 4, question 2, "spouse died in 2025 or if you are preparing a return for someone who died in 2025, see Pub. 596 before you answer."
   - *Refused at:* `eic.age_range`
+- **`household.eic_disallowed_claim`**: Claiming the earned income credit after an earlier credit was reduced or disallowed, or in a disallowance period (Form 8862)?
+  - *The data asks or tests:* An earlier credit was reduced or disallowed (or a disallowance period applies) and Steps 1 to 5 of the earned income credit are passed with a credit above zero (Worksheet A line 6) (`test`)
+  - *Not covered:* Form 8862 and the EIC disallowance period (Form 8862, who must file). Your EIC, child tax credit, additional child tax credit or credit for other dependents for an earlier year was reduced or disallowed, or you are in a disallowance period; Form 8862 and the disallowance period are outside this tool.
+    *Source:* [i1040gi] p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" and "don’t file Form 8862 or take the credit for the ... 2 years after the most recent tax year for which there was a final determination that your EIC claim was due to reckless or intentional disregard of the EIC rules ... 10 years after the most recent tax year for which there was a final determination that your EIC claim was due to fraud"
+  - *Refused at:* `eic.credit`
 
 ### Child and dependent care
 
@@ -910,6 +917,11 @@ The data holds **195 refusal gates**: 157 tax situations the tool does not prepa
   - *Not covered:* Taxable dependent care benefits of both spouses (Form 2441, lines 4 and 5). When Form 1040 line 1e is more than zero on a joint return, is not from the Forms W-2 of one spouse alone, and a credit remains, the split of line 1e between the spouses' earned income is not settled by the instructions and is outside this tool.
     *Source:* [i2441] p. 4, Lines 4 and 5, "If filing jointly, figure your and your spouse's earned income separately"
   - *Refused at:* `f2441.line4`, `f2441.line5`
+- **`f2441.line13_earned`**: Did you use a grace-period amount carried over from 2024, with taxable benefits and your earned income limiting the exclusion?
+  - *The data asks or tests:* Line 13 is above zero, line 20 is less than both line 17 and line 21, and line 23 is more than line 20 (so line 26 is above zero) (`test`)
+  - *Not covered:* Form 2441, lines 18 to 20, with a grace-period amount on line 13 and taxable benefits. You used a grace-period amount carried over from 2024 (line 13), part of your benefits is taxable, and your earned income is what limits your excluded benefits. For lines 18 and 19 the instructions leave out of earned income only the benefits shown on line 12; they do not say how much of the taxable benefits on line 26 comes from line 13 rather than line 12, and that decides lines 18 to 20 and how much is excluded. This tool does not figure that case.
+    *Source:* [i2441] p. 5, Line 18, "however, for purposes of lines 18 and 19, earned income doesn’t include any dependent care benefits shown on line 12"; p. 5, Line 13, "Enter on line 13 the amount you carried forward and used in 2025 during the grace period"
+  - *Refused at:* `f2441.line25`
 
 ### Education credits
 
@@ -957,7 +969,7 @@ The data holds **195 refusal gates**: 157 tax situations the tool does not prepa
     *Source:* [i5695] p. 1, Costs, "costs connected with the construction of a home are treated as being paid when your original use of the constructed home begins"
   - *Refused at:* `f5695.line6a`
 - **`f5695.joint_occupancy`**: Did you occupy the home jointly with someone other than your joint-return spouse?
-  - *The data asks or tests:* Did you occupy the home jointly with someone other than your spouse on a joint return (whether or not the other occupant claims the credit)? (`input`)
+  - *The data asks or tests:* Did you occupy any home for which you enter Part II costs jointly with someone other than your spouse on a joint return (whether or not the other occupant claims the credit)? (`input`)
   - *Not covered:* Form 5695 Part II for joint occupants (line 32a). Allocating the credit limits among joint occupants by the amounts each paid, with the statement line 32a requires, is outside this tool.
     *Source:* [i5695] p. 3, Joint occupancy, "If the aggregate credit that would be allowed to all occupants for any item of property exceeds the credit limit below, then you must figure your allocable share of the credit from each property"
   - *Refused at:* `f5695.line30`
@@ -1080,6 +1092,11 @@ These refuse a return when entered figures contradict each other, or when an ent
   - *Not covered:* Form 8949. Use the detail route; this transaction does not qualify for Schedule D lines 1a/8a.
     *Source:* [i1040sd] p. 10, lines 1a and 8a
   - *Refused at:* `sales.one`
+- **`sales.wash_bad`**
+  - *The data asks or tests:* Code W with a wash-sale loss larger than the loss figured from columns (d), (e) and the code B adjustment (`test`)
+  - *Not covered:* Form 8949, column (g), code W. The nondeductible wash-sale loss entered is more than the loss on this sale (column (e) less column (d), after any code B correction). Check the amount against your Form 1099-B and your records.
+    *Source:* [i8949] p. 10, code W, "enter the amount of the nondeductible loss as a positive number in column (g)"
+  - *Refused at:* `sales.w`
 - **`sd.screen`**
   - *The data asks or tests:* Transaction screening dependency (`test`)
   - *Not covered:* Schedule D. Resolve transaction screening before calculating totals.
@@ -1112,9 +1129,9 @@ These refuse a return when entered figures contradict each other, or when an ent
 #### Self-employment
 
 - **`asset.s179_bad`**
-  - *The data asks or tests:* The section 179 election is more than the business cost, or the property is not used more than 50% in the business (`test`)
-  - *Not covered:* Section 179 election above the business cost, or on property used 50% or less in the business. A section 179 election must not exceed the business cost and needs more than 50% business use.
-    *Source:* [i4562] p. 3, Part I; p. 5, Line 6, Column (c)
+  - *The data asks or tests:* The section 179 election is more than the business cost, the property is not used more than 50% in the business, or it is not section 179 property (`test`)
+  - *Not covered:* Section 179 election above the business cost, on property used 50% or less in the business, or on property that is not section 179 property. A section 179 election must not exceed the business cost, needs more than 50% business use, and is allowed only for section 179 property.
+    *Source:* [i4562] p. 3, Part I; p. 5, Line 6, Column (c); p946 p. 17, What Property Does Not Qualify?
   - *Refused at:* `asset.after179`
 - **`scveh.s179_bad`**
   - *The data asks or tests:* The section 179 election is more than the business cost, or than the SUV limit (`test`)
@@ -1192,7 +1209,7 @@ These refuse a return when entered figures contradict each other, or when an ent
   - *The data asks or tests:* Election exceeds lines 4b plus 4e (`test`)
   - *Not covered:* Form 4952. Enter no more than the sum of lines 4b and 4e on line 4g.
     *Source:* [f4952] pp. 1, 3–4, Investment Interest Expense Deduction
-  - *Refused at:* `f4952.election`
+  - *Refused at:* `f4952.election_checked`
 
 #### Child and dependent care
 
@@ -1243,7 +1260,7 @@ These refuse a return when entered figures contradict each other, or when an ent
 #### Premium tax credit
 
 - **`f8962.two_counted`**
-  - *The data asks or tests:* Column B counted on two Forms 1095-A from the same state for the same month (`test`)
-  - *Not covered:* Form 8962, line 11 or 12 to 23, column (b). For a month that several counted Forms 1095-A from one state cover, enter column B from only one of them. Forms that share only some of their months need month-by-month choices this tool does not take.
-    *Source:* [i8962] p. 15, Column (b), "Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form."
+  - *The data asks or tests:* Column B counted on two Forms 1095-A from the same state for the same month, or a covered month with zero in column (b) (`test`)
+  - *Not covered:* Form 8962, line 11 or 12 to 23, column (b). For a month that several counted Forms 1095-A from one state cover, enter column B from only one of them. Forms that share only some of their months need month-by-month choices this tool does not take. A month with enrollment premiums in column A also needs its applicable SLCSP premium in column B; if Form 1095-A leaves it blank or shows zero, enter the correct applicable SLCSP premium from the Marketplace's tool (for example HealthCare.gov/Tax-Tool).
+    *Source:* [i8962] p. 15, Column (b), "Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form."; p974 p. 6, "may report your applicable SLCSP premium as -0-", "In either case, you must determine your correct applicable SLCSP premium."
   - *Refused at:* `f8962.line24`, `f8962.line25`

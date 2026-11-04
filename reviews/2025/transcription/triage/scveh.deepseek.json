@@ -1,22 +1,18 @@
 {
  "bank": {
   "evaluation_failures": 0,
-  "fixtures": 1439,
+  "fixtures": 1495,
   "generated": 500,
   "partial_bases": 40,
-  "partial_records": 1289,
+  "partial_records": 0,
   "return_states": {
-   "completed": 555,
-   "incomplete": 1048,
-   "refused": 1625
+   "completed": 332,
+   "incomplete": 753,
+   "refused": 910
   },
   "seed": 20261026
  },
  "errors": [
-  {
-   "line": "scveh.rate",
-   "message": "model changed a published result type"
-  },
   {
    "line": "scveh.bus_cost",
    "message": "scveh.scveh.bus_cost: part 'scveh.miles_business' is not money"
@@ -26,40 +22,41 @@
    "message": "scveh.scveh.bus_cost: whole operand is not money"
   },
   {
-   "line": "scveh.line9w",
-   "message": "scveh.scveh.line9w: part 'scveh.miles_business' is not money"
+   "line": "scveh.h_operating_business",
+   "message": "scveh.scveh.h_operating_business: part 'scveh.miles_business' is not money"
   },
   {
-   "line": "scveh.line9w",
-   "message": "scveh.scveh.line9w: whole operand is not money"
+   "line": "scveh.h_operating_business",
+   "message": "scveh.scveh.h_operating_business: whole operand is not money"
   },
   {
-   "line": "scveh.operating_business",
-   "message": "scveh.scveh.operating_business: part 'scveh.miles_business' is not money"
+   "line": "scveh.h_lease_business",
+   "message": "scveh.scveh.h_lease_business: part 'scveh.miles_business' is not money"
   },
   {
-   "line": "scveh.operating_business",
-   "message": "scveh.scveh.operating_business: whole operand is not money"
+   "line": "scveh.h_lease_business",
+   "message": "scveh.scveh.h_lease_business: whole operand is not money"
   },
   {
-   "line": "scveh.lease_actual",
-   "message": "scveh.scveh.lease_actual: part 'scveh.miles_business' is not money"
+   "line": "scveh.h_adjusted_max_passenger",
+   "message": "scveh.scveh.h_adjusted_max_passenger: part 'scveh.miles_business' is not money"
   },
   {
-   "line": "scveh.lease_actual",
-   "message": "scveh.scveh.lease_actual: whole operand is not money"
+   "line": "scveh.h_adjusted_max_passenger",
+   "message": "scveh.scveh.h_adjusted_max_passenger: whole operand is not money"
   }
  ],
  "failures": [],
  "family": "deepseek",
  "form": "scveh",
  "invalid_lines": [
-  "scveh.rate",
   "scveh.bus_cost",
-  "scveh.line9w",
-  "scveh.operating_business",
-  "scveh.lease_actual",
+  "scveh.h_operating_business",
+  "scveh.h_lease_business",
+  "scveh.h_adjusted_max_passenger",
   "scveh.line20a",
+  "scveh.line7",
+  "scveh.line9w",
   "scveh.line11",
   "scveh.line15",
   "scveh.line16",
@@ -68,14 +65,14 @@
   "scveh.line18",
   "scveh.line19",
   "scveh.line20",
+  "scveh.h_actual_line9",
+  "scveh.h_min_179",
+  "scveh.h_bonus_forty",
   "scveh.bonus",
   "scveh.macrs",
   "scveh.mq_q4",
   "scveh.mq_total",
   "scveh.cost179",
-  "scveh.actual_total",
-  "scveh.s179_current",
-  "scveh.bonus_forty",
   "scveh.line9",
   "scveh.line10",
   "scveh.line14",
@@ -177,19 +174,19 @@
    "handle": "scveh.bonus",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2551,
+   "invalid": 321,
    "kinds": {
-    "candidate-invalid": 2551
+    "candidate-invalid": 321
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 584
+     "candidate-invalid": 114
     },
     "incomplete": {
-     "candidate-invalid": 553
+     "candidate-invalid": 4
     },
     "refused": {
-     "candidate-invalid": 1414
+     "candidate-invalid": 203
     }
    },
    "open_at_triage": true,
@@ -380,19 +377,19 @@
    "handle": "scveh.macrs",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2551,
+   "invalid": 321,
    "kinds": {
-    "candidate-invalid": 2551
+    "candidate-invalid": 321
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 584
+     "candidate-invalid": 114
     },
     "incomplete": {
-     "candidate-invalid": 553
+     "candidate-invalid": 4
     },
     "refused": {
-     "candidate-invalid": 1414
+     "candidate-invalid": 203
     }
    },
    "open_at_triage": true,
@@ -583,19 +580,19 @@
    "handle": "scveh.s179_2025",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2551,
+   "invalid": 321,
    "kinds": {
-    "candidate-invalid": 2551
+    "candidate-invalid": 321
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 584
+     "candidate-invalid": 114
     },
     "incomplete": {
-     "candidate-invalid": 553
+     "candidate-invalid": 4
     },
     "refused": {
-     "candidate-invalid": 1414
+     "candidate-invalid": 203
     }
    },
    "open_at_triage": true,
@@ -786,19 +783,19 @@
    "handle": "scveh.mq_q4",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2551,
+   "invalid": 321,
    "kinds": {
-    "candidate-invalid": 2551
+    "candidate-invalid": 321
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 584
+     "candidate-invalid": 114
     },
     "incomplete": {
-     "candidate-invalid": 553
+     "candidate-invalid": 4
     },
     "refused": {
-     "candidate-invalid": 1414
+     "candidate-invalid": 203
     }
    },
    "open_at_triage": true,
@@ -989,19 +986,19 @@
    "handle": "scveh.mq_total",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2551,
+   "invalid": 321,
    "kinds": {
-    "candidate-invalid": 2551
+    "candidate-invalid": 321
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 584
+     "candidate-invalid": 114
     },
     "incomplete": {
-     "candidate-invalid": 553
+     "candidate-invalid": 4
     },
     "refused": {
-     "candidate-invalid": 1414
+     "candidate-invalid": 203
     }
    },
    "open_at_triage": true,
@@ -1192,19 +1189,19 @@
    "handle": "scveh.cost179",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2551,
+   "invalid": 321,
    "kinds": {
-    "candidate-invalid": 2551
+    "candidate-invalid": 321
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 584
+     "candidate-invalid": 114
     },
     "incomplete": {
-     "candidate-invalid": 553
+     "candidate-invalid": 4
     },
     "refused": {
-     "candidate-invalid": 1414
+     "candidate-invalid": 203
     }
    },
    "open_at_triage": true,
@@ -1395,19 +1392,19 @@
    "handle": "9 (scveh.line9)",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2551,
+   "invalid": 321,
    "kinds": {
-    "candidate-invalid": 2551
+    "candidate-invalid": 321
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 584
+     "candidate-invalid": 114
     },
     "incomplete": {
-     "candidate-invalid": 553
+     "candidate-invalid": 4
     },
     "refused": {
-     "candidate-invalid": 1414
+     "candidate-invalid": 203
     }
    },
    "open_at_triage": true,
@@ -1598,19 +1595,19 @@
    "handle": "20a",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2551,
+   "invalid": 321,
    "kinds": {
-    "candidate-invalid": 2551
+    "candidate-invalid": 321
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 584
+     "candidate-invalid": 114
     },
     "incomplete": {
-     "candidate-invalid": 553
+     "candidate-invalid": 4
     },
     "refused": {
-     "candidate-invalid": 1414
+     "candidate-invalid": 203
     }
    },
    "open_at_triage": true,
@@ -1801,19 +1798,19 @@
    "handle": "13",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2551,
+   "invalid": 321,
    "kinds": {
-    "candidate-invalid": 2551
+    "candidate-invalid": 321
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 584
+     "candidate-invalid": 114
     },
     "incomplete": {
-     "candidate-invalid": 553
+     "candidate-invalid": 4
     },
     "refused": {
-     "candidate-invalid": 1414
+     "candidate-invalid": 203
     }
    },
    "open_at_triage": true,
@@ -1911,74 +1908,32 @@
   },
   {
    "absent": 0,
-   "agree": 1618,
+   "agree": 0,
    "candidate": "scveh.line7",
-   "compared": 2551,
+   "compared": 0,
    "completed_witnesses": [
     {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].cost",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "value",
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
      "project": {
-      "cents": 2020000,
+      "cents": 576000,
       "kind": "money"
      },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].is2025",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].lim_2025",
-       "value": {
-        "cents": 2020000,
-        "kind": "money"
-       }
-      }
-     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 1980000,
+      "kind": "money"
+     },
      "project_return": "completed",
      "source": {
       "id": "classm.f4952.2.deepseek",
@@ -1986,2280 +1941,96 @@
      }
     },
     {
-     "candidate": {
-      "cents": 7453700,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].cost",
-       "value": {
-        "cents": 7453700,
-        "kind": "money"
-       }
-      }
-     ],
+     "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i4562",
-       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-      },
-      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-      "gate": "person[taxpayer].sc[biz_a].scveh[car_2].low_use",
-      "kind": "refusal",
-      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].is2025",
-       "value": {
-        "cite": {
-         "doc": "i4562",
-         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-        },
-        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-        "gate": "person[taxpayer].sc[biz_a].scveh[car_2].low_use",
-        "kind": "refusal",
-        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.eic.3.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].cost",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "value",
+     "kind": "candidate-invalid",
      "project": {
       "cents": 2020000,
       "kind": "money"
      },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].is2025",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].lim_2025",
-       "value": {
-        "cents": 2020000,
-        "kind": "money"
-       }
-      }
-     ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.2",
+      "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
     },
     {
-     "candidate": {
-      "cents": 576000,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 6
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 6
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].line7_limited",
-       "value": {
-        "cents": 576000,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[spouse].sc[biz_a].scveh[car_1]",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i4562",
-       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-      },
-      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-      "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
-      "kind": "refusal",
-      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "cite": {
-         "doc": "i4562",
-         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-        },
-        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-        "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
-        "kind": "refusal",
-        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.ira.2",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 1170000,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 3
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 3
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].line7_limited",
-       "value": {
-        "cents": 1170000,
-        "kind": "money"
-       }
-      }
-     ],
+     "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i4562",
-       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-      },
-      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-      "gate": "person[taxpayer].sc[biz_a].scveh[car_1].low_use",
-      "kind": "refusal",
-      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "cite": {
-         "doc": "i4562",
-         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-        },
-        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-        "gate": "person[taxpayer].sc[biz_a].scveh[car_1].low_use",
-        "kind": "refusal",
-        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.ltc.1",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 1697800,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].cost",
-       "value": {
-        "cents": 1697800,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[spouse].sc[biz_a].scveh[car_1]",
-     "kind": "value",
+     "kind": "candidate-invalid",
      "project": {
       "cents": 576000,
       "kind": "money"
      },
-     "project_operands": [
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].lim_prior",
-       "value": {
-        "cents": 576000,
-        "kind": "money"
-       }
-      }
-     ],
      "project_return": "completed",
      "source": {
-      "id": "classm.se.2",
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     },
     {
-     "candidate": {
-      "cents": 576000,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 6
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 6
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].line7_limited",
-       "value": {
-        "cents": 576000,
-        "kind": "money"
-       }
-      }
-     ],
+     "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i4562",
-       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-      },
-      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-      "gate": "person[taxpayer].sc[biz_a].scveh[car_1].low_use",
-      "kind": "refusal",
-      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "cite": {
-         "doc": "i4562",
-         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-        },
-        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-        "gate": "person[taxpayer].sc[biz_a].scveh[car_1].low_use",
-        "kind": "refusal",
-        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.se.2",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 1170000,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].year",
-       "value": {
-        "kind": "count",
-        "value": 3
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].year",
-       "value": {
-        "kind": "count",
-        "value": 3
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].line7_limited",
-       "value": {
-        "cents": 1170000,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i4562",
-       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-      },
-      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-      "gate": "person[taxpayer].sc[biz_a].scveh[car_2].low_use",
-      "kind": "refusal",
-      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].is2025",
-       "value": {
-        "cite": {
-         "doc": "i4562",
-         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-        },
-        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-        "gate": "person[taxpayer].sc[biz_a].scveh[car_2].low_use",
-        "kind": "refusal",
-        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.sli.4",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 1170000,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].year",
-       "value": {
-        "kind": "count",
-        "value": 3
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].year",
-       "value": {
-        "kind": "count",
-        "value": 3
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].line7_limited",
-       "value": {
-        "cents": 1170000,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i4562",
-       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-      },
-      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-      "gate": "person[taxpayer].sc[biz_a].scveh[car_2].low_use",
-      "kind": "refusal",
-      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].is2025",
-       "value": {
-        "cite": {
-         "doc": "i4562",
-         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-        },
-        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-        "gate": "person[taxpayer].sc[biz_a].scveh[car_2].low_use",
-        "kind": "refusal",
-        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.ssb.4",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 7000000,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[haul].scveh[suv].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[haul].scveh[suv].passenger",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[haul].scveh[suv].cost",
-       "value": {
-        "cents": 7000000,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[haul].scveh[suv]",
-     "kind": "value",
-     "project": {
-      "cents": 2020000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[haul].scveh[suv].is2025",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[haul].scveh[suv].lim_2025",
-       "value": {
-        "cents": 2020000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "stage14.veh.suv_179",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 6000000,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[r].scveh[truck].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[r].scveh[truck].passenger",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[r].scveh[truck].cost",
-       "value": {
-        "cents": 6000000,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[r].scveh[truck]",
-     "kind": "value",
-     "project": {
-      "cents": 1170000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[r].scveh[truck].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[r].scveh[truck].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[r].scveh[truck].lim_prior",
-       "value": {
-        "cents": 1170000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "stage14.veh.heavy_prior",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 6000000,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[r].scveh[truck].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[r].scveh[truck].passenger",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[r].scveh[truck].cost",
-       "value": {
-        "cents": 6000000,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[r].scveh[truck]",
-     "kind": "value",
+     "kind": "candidate-invalid",
      "project": {
       "cents": 576000,
       "kind": "money"
      },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[r].scveh[truck].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[r].scveh[truck].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[r].scveh[truck].lim_prior",
-       "value": {
-        "cents": 576000,
-        "kind": "money"
-       }
-      }
-     ],
      "project_return": "completed",
      "source": {
-      "id": "stage14.veh.heavy_2019",
+      "id": "classm.g28.1.deepseek",
       "kind": "fixture"
      }
     },
     {
-     "candidate": {
-      "cents": 1980000,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 2
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 2
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].line7_limited",
-       "value": {
-        "cents": 1980000,
-        "kind": "money"
-       }
-      }
-     ],
+     "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "project-unknown",
-     "project": {
-      "input": "person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "input": "person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "base": "classm.f4952.2",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 1980000,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 2
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 2
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].line7_limited",
-       "value": {
-        "cents": 1980000,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "project-unknown",
-     "project": {
-      "input": "person[taxpayer].sc[biz_a].scveh[car_1].miles_other",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].miles_other"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "input": "person[taxpayer].sc[biz_a].scveh[car_1].miles_other",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].miles_other"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "base": "classm.f4952.2",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_a].scveh[car_1].miles_other"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].screen"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "input": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].screen"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 1980000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior",
-       "value": {
-        "cents": 1980000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "base": "classm.f4952.2",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_a].scveh[car_1].screen"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].passenger"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "input": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].passenger"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 1980000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior",
-       "value": {
-        "cents": 1980000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "base": "classm.f4952.2",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_a].scveh[car_1].passenger"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].cost",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "project-unknown",
-     "project": {
-      "input": "person[taxpayer].sc[biz_a].scveh[car_2].placed",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_2].placed"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].is2025",
-       "value": {
-        "input": "person[taxpayer].sc[biz_a].scveh[car_2].placed",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_2].placed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "base": "classm.f4952.2",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_a].scveh[car_2].placed"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sc[biz_a].scveh[car_2].screen",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_2].screen"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].screen",
-       "value": {
-        "input": "person[taxpayer].sc[biz_a].scveh[car_2].screen",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_2].screen"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 2020000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].is2025",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].lim_2025",
-       "value": {
-        "cents": 2020000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "base": "classm.f4952.2",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_a].scveh[car_2].screen"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sc[biz_a].scveh[car_2].cost",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_2].cost"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].cost",
-       "value": {
-        "input": "person[taxpayer].sc[biz_a].scveh[car_2].cost",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_2].cost"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 2020000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].is2025",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].lim_2025",
-       "value": {
-        "cents": 2020000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "base": "classm.f4952.2",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_a].scveh[car_2].cost"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_2].passenger"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-       "value": {
-        "input": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_2].passenger"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 2020000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].is2025",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].lim_2025",
-       "value": {
-        "cents": 2020000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "base": "classm.f4952.2",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_a].scveh[car_2].passenger"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].cost",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "project-unknown",
-     "project": {
-      "input": "person[taxpayer].sc[biz_a].scveh[car_2].bonus_choice",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_2].bonus_choice"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].is2025",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].lim_2025",
-       "value": {
-        "input": "person[taxpayer].sc[biz_a].scveh[car_2].bonus_choice",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_2].bonus_choice"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "base": "classm.f4952.2",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_a].scveh[car_2].bonus_choice"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 576000,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 7
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 7
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].line7_limited",
-       "value": {
-        "cents": 576000,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "project-unknown",
-     "project": {
-      "input": "person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "input": "person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "base": "classm.scveh.1",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 576000,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 7
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 7
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].line7_limited",
-       "value": {
-        "cents": 576000,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "project-unknown",
-     "project": {
-      "input": "person[taxpayer].sc[biz_a].scveh[car_1].miles_other",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].miles_other"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "input": "person[taxpayer].sc[biz_a].scveh[car_1].miles_other",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].miles_other"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "base": "classm.scveh.1",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_a].scveh[car_1].miles_other"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].screen"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "input": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].screen"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-unknown",
+     "kind": "candidate-invalid",
      "project": {
       "cents": 576000,
       "kind": "money"
      },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior",
-       "value": {
-        "cents": 576000,
-        "kind": "money"
-       }
-      }
-     ],
      "project_return": "completed",
      "source": {
-      "base": "classm.scveh.1",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_a].scveh[car_1].screen"
+      "id": "classm.sd.1.deepseek",
+      "kind": "fixture"
      }
     }
    ],
-   "differ": 933,
+   "differ": 0,
    "handle": "7",
-   "in_scope": 2327,
-   "in_scope_agree": 1618,
-   "invalid": 0,
+   "in_scope": 0,
+   "in_scope_agree": 0,
+   "invalid": 321,
    "kinds": {
-    "candidate-refuses": 2,
-    "candidate-unknown": 120,
-    "project-refuses": 222,
-    "project-unknown": 188,
-    "value": 401
+    "candidate-invalid": 321
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-unknown": 15,
-     "project-refuses": 41,
-     "project-unknown": 12,
-     "value": 69
+     "candidate-invalid": 114
     },
     "incomplete": {
-     "candidate-unknown": 40,
-     "project-refuses": 37,
-     "project-unknown": 85,
-     "value": 58
+     "candidate-invalid": 4
     },
     "refused": {
-     "candidate-refuses": 2,
-     "candidate-unknown": 65,
-     "project-refuses": 144,
-     "project-unknown": 91,
-     "value": 274
+     "candidate-invalid": 203
     }
    },
    "open_at_triage": true,
    "project": "scveh.line7",
    "shown_when": null,
-   "sources": {
-    "fixture": 155,
-    "generated": 156,
-    "partial": 2240
-   },
+   "sources": {},
    "status": "DISAGREE",
-   "triage": "differs",
+   "triage": "candidate invalid",
    "witnesses": [
     {
-     "candidate": {
-      "cents": 7954900,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].cost",
-       "value": {
-        "cents": 7954900,
-        "kind": "money"
-       }
-      }
-     ],
+     "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "value",
+     "kind": "candidate-invalid",
      "project": {
       "cents": 1980000,
       "kind": "money"
      },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior",
-       "value": {
-        "cents": 1980000,
-        "kind": "money"
-       }
-      }
-     ],
      "project_return": "refused",
      "source": {
       "id": "classm.f8889.2.deepseek",
@@ -4267,83 +2038,41 @@
      }
     },
     {
-     "candidate": {
-      "cents": 6793100,
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 646000,
       "kind": "money"
      },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].cost",
-       "value": {
-        "cents": 6793100,
-        "kind": "money"
-       }
-      }
-     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 1220000,
+      "kind": "money"
+     },
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "value",
+     "kind": "candidate-invalid",
      "project": {
       "cents": 576000,
       "kind": "money"
      },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior",
-       "value": {
-        "cents": 576000,
-        "kind": "money"
-       }
-      }
-     ],
      "project_return": "refused",
      "source": {
       "id": "classm.f8889.5.deepseek",
@@ -4351,2084 +2080,31 @@
      }
     },
     {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].cost",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "value",
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
      "project": {
-      "cents": 2020000,
+      "cents": 576000,
       "kind": "money"
      },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].is2025",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].lim_2025",
-       "value": {
-        "cents": 2020000,
-        "kind": "money"
-       }
-      }
-     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate_error": "invalid candidate declaration",
+     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
+     "kind": "candidate-invalid",
+     "project": {
+      "cents": 1980000,
+      "kind": "money"
+     },
      "project_return": "completed",
      "source": {
       "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 2020000,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].bonus_choice",
-       "value": {
-        "kind": "enum",
-        "value": "forty"
-       }
-      },
-      {
-       "ref": "\"none\"",
-       "value": {
-        "kind": "enum",
-        "value": "none"
-       }
-      },
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      }
-     ],
-     "instance": "person[spouse].sc[biz_a].scveh[car_1]",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i4562",
-       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-      },
-      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-      "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
-      "kind": "refusal",
-      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "person[spouse].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "cite": {
-         "doc": "i4562",
-         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-        },
-        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-        "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
-        "kind": "refusal",
-        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.g28.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 646000,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 4
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 4
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].line7_limited",
-       "value": {
-        "cents": 646000,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i4562",
-       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-      },
-      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-      "gate": "person[taxpayer].sc[biz_b].scveh[car_1].low_use",
-      "kind": "refusal",
-      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
-       "value": {
-        "cite": {
-         "doc": "i4562",
-         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-        },
-        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-        "gate": "person[taxpayer].sc[biz_b].scveh[car_1].low_use",
-        "kind": "refusal",
-        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.clcw.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 1980000,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].year",
-       "value": {
-        "kind": "count",
-        "value": 2
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].year",
-       "value": {
-        "kind": "count",
-        "value": 2
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].line7_limited",
-       "value": {
-        "cents": 1980000,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i4562",
-       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-      },
-      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-      "gate": "person[taxpayer].sc[biz_a].scveh[car_2].low_use",
-      "kind": "refusal",
-      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].is2025",
-       "value": {
-        "cite": {
-         "doc": "i4562",
-         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-        },
-        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-        "gate": "person[taxpayer].sc[biz_a].scveh[car_2].low_use",
-        "kind": "refusal",
-        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.clcw.4.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 2708800,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].cost",
-       "value": {
-        "cents": 2708800,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
-     "kind": "value",
-     "project": {
-      "cents": 1980000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].lim_prior",
-       "value": {
-        "cents": 1980000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.clcw.4.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 7893700,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].passenger",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].cost",
-       "value": {
-        "cents": 7893700,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
-     "kind": "value",
-     "project": {
-      "cents": 2020000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].is2025",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].lim_2025",
-       "value": {
-        "cents": 2020000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.clcw.4.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 698200,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].cost",
-       "value": {
-        "cents": 698200,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "value",
-     "project": {
-      "cents": 646000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior",
-       "value": {
-        "cents": 646000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.eic.2.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 7453700,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].passenger",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].cost",
-       "value": {
-        "cents": 7453700,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i4562",
-       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-      },
-      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-      "gate": "person[taxpayer].sc[biz_a].scveh[car_2].low_use",
-      "kind": "refusal",
-      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_2].is2025",
-       "value": {
-        "cite": {
-         "doc": "i4562",
-         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-        },
-        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-        "gate": "person[taxpayer].sc[biz_a].scveh[car_2].low_use",
-        "kind": "refusal",
-        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.eic.3.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 576000,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 7
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 7
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].line7_limited",
-       "value": {
-        "cents": 576000,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i4562",
-       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-      },
-      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-      "gate": "person[taxpayer].sc[biz_b].scveh[car_1].low_use",
-      "kind": "refusal",
-      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
-       "value": {
-        "cite": {
-         "doc": "i4562",
-         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-        },
-        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-        "gate": "person[taxpayer].sc[biz_b].scveh[car_1].low_use",
-        "kind": "refusal",
-        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.asset.4",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 646000,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 4
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 4
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].line7_limited",
-       "value": {
-        "cents": 646000,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i4562",
-       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-      },
-      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-      "gate": "person[taxpayer].sc[biz_b].scveh[car_1].low_use",
-      "kind": "refusal",
-      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
-       "value": {
-        "cite": {
-         "doc": "i4562",
-         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
-        },
-        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
-        "gate": "person[taxpayer].sc[biz_b].scveh[car_1].low_use",
-        "kind": "refusal",
-        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.carloan.3",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "person[taxpayer].sc[r].scveh[car].screen",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[r].scveh[car].screen",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[r].scveh[car]",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 2020000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[r].scveh[car].is2025",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[r].scveh[car].lim_2025",
-       "value": {
-        "cents": 2020000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "stage14.veh.refuse_screen",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "person[taxpayer].sc[r].scveh[car].screen",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[r].scveh[car].screen",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[r].scveh[car]",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 2020000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[r].scveh[car].is2025",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[r].scveh[car].lim_2025",
-       "value": {
-        "cents": 2020000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "stage14.veh.refuse_pre_2017",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 7954900,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].cost",
-       "value": {
-        "cents": 7954900,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "project-unknown",
-     "project": {
-      "input": "person[taxpayer].sc[biz_a].scveh[car_1].miles_business",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].miles_business"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "input": "person[taxpayer].sc[biz_a].scveh[car_1].miles_business",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].miles_business"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.f8889.2.deepseek",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_a].scveh[car_1].miles_business"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 7954900,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].cost",
-       "value": {
-        "cents": 7954900,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "project-unknown",
-     "project": {
-      "input": "person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "input": "person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.f8889.2.deepseek",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_a].scveh[car_1].miles_commuting"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 7954900,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].cost",
-       "value": {
-        "cents": 7954900,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "project-unknown",
-     "project": {
-      "input": "person[taxpayer].sc[biz_a].scveh[car_1].miles_other",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].miles_other"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "input": "person[taxpayer].sc[biz_a].scveh[car_1].miles_other",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].miles_other"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.f8889.2.deepseek",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_a].scveh[car_1].miles_other"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 7954900,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].cost",
-       "value": {
-        "cents": 7954900,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "project-unknown",
-     "project": {
-      "input": "person[taxpayer].sc[biz_a].scveh[car_1].placed",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].placed"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "input": "person[taxpayer].sc[biz_a].scveh[car_1].placed",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].placed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.f8889.2.deepseek",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_a].scveh[car_1].placed"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].screen"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "input": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].screen"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 1980000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior",
-       "value": {
-        "cents": 1980000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.f8889.2.deepseek",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_a].scveh[car_1].screen"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sc[biz_a].scveh[car_1].cost",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].cost"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].cost",
-       "value": {
-        "input": "person[taxpayer].sc[biz_a].scveh[car_1].cost",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].cost"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 1980000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior",
-       "value": {
-        "cents": 1980000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.f8889.2.deepseek",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_a].scveh[car_1].cost"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].passenger"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-       "value": {
-        "input": "person[taxpayer].sc[biz_a].scveh[car_1].passenger",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_1].passenger"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 1980000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_a].scveh[car_1].lim_prior",
-       "value": {
-        "cents": 1980000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.f8889.2.deepseek",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_a].scveh[car_1].passenger"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 646000,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 4
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 4
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].line7_limited",
-       "value": {
-        "cents": 646000,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
-     "kind": "project-unknown",
-     "project": {
-      "input": "person[taxpayer].sc[biz_b].scveh[car_1].miles_business",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_1].miles_business"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
-       "value": {
-        "input": "person[taxpayer].sc[biz_b].scveh[car_1].miles_business",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_1].miles_business"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.f8889.2.deepseek",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_b].scveh[car_1].miles_business"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 646000,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 4
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].year",
-       "value": {
-        "kind": "count",
-        "value": 4
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].line7_limited",
-       "value": {
-        "cents": 646000,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
-     "kind": "project-unknown",
-     "project": {
-      "input": "person[taxpayer].sc[biz_b].scveh[car_1].miles_commuting",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_1].miles_commuting"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
-       "value": {
-        "input": "person[taxpayer].sc[biz_b].scveh[car_1].miles_commuting",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_1].miles_commuting"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.f8889.2.deepseek",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_b].scveh[car_1].miles_commuting"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sc[biz_b].scveh[car_1].screen",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_1].screen"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].screen",
-       "value": {
-        "input": "person[taxpayer].sc[biz_b].scveh[car_1].screen",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_1].screen"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 646000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].lim_prior",
-       "value": {
-        "cents": 646000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.f8889.2.deepseek",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_b].scveh[car_1].screen"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_1].passenger"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].screen",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-       "value": {
-        "input": "person[taxpayer].sc[biz_b].scveh[car_1].passenger",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_1].passenger"
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 646000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].is2025",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_1].lim_prior",
-       "value": {
-        "cents": 646000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.f8889.2.deepseek",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_b].scveh[car_1].passenger"
-     }
-    },
-    {
-     "candidate": {
-      "input": "person[taxpayer].sc[biz_b].scveh[car_2].screen",
-      "kind": "unknown",
-      "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_2].screen"
-     },
-     "candidate_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].screen",
-       "value": {
-        "input": "person[taxpayer].sc[biz_b].scveh[car_2].screen",
-        "kind": "unknown",
-        "reason": "no input supplied for person[taxpayer].sc[biz_b].scveh[car_2].screen"
-       }
-      }
-     ],
-     "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 1220000,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].is2025",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "person[taxpayer].sc[biz_b].scveh[car_2].lim_2025",
-       "value": {
-        "cents": 1220000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.f8889.2.deepseek",
-      "kind": "partial",
-      "withheld": "person[taxpayer].sc[biz_b].scveh[car_2].screen"
      }
     }
    ]
@@ -6440,7 +2116,7 @@
    "compared": 0,
    "completed_witnesses": [
     {
-     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
+     "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -6454,7 +2130,7 @@
      }
     },
     {
-     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
+     "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -6468,7 +2144,7 @@
      }
     },
     {
-     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
+     "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
@@ -6482,7 +2158,7 @@
      }
     },
     {
-     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
+     "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -6496,7 +2172,7 @@
      }
     },
     {
-     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
+     "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -6510,7 +2186,7 @@
      }
     },
     {
-     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
+     "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -6528,19 +2204,19 @@
    "handle": "9 (scveh.line9w)",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2551,
+   "invalid": 321,
    "kinds": {
-    "candidate-invalid": 2551
+    "candidate-invalid": 321
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 584
+     "candidate-invalid": 114
     },
     "incomplete": {
-     "candidate-invalid": 553
+     "candidate-invalid": 4
     },
     "refused": {
-     "candidate-invalid": 1414
+     "candidate-invalid": 203
     }
    },
    "open_at_triage": true,
@@ -6551,7 +2227,7 @@
    "triage": "candidate invalid",
    "witnesses": [
     {
-     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
+     "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -6565,7 +2241,7 @@
      }
     },
     {
-     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
+     "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_b].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -6579,7 +2255,7 @@
      }
     },
     {
-     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
+     "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_b].scveh[car_2]",
      "kind": "candidate-invalid",
      "project": {
@@ -6593,7 +2269,7 @@
      }
     },
     {
-     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
+     "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -6607,7 +2283,7 @@
      }
     },
     {
-     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
+     "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -6621,7 +2297,7 @@
      }
     },
     {
-     "candidate_error": "scveh.scveh.line9w: part 'scveh.miles_business' is not money",
+     "candidate_error": "invalid candidate declaration",
      "instance": "person[taxpayer].sc[biz_a].scveh[car_1]",
      "kind": "candidate-invalid",
      "project": {
@@ -6731,19 +2407,19 @@
    "handle": "10",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2551,
+   "invalid": 321,
    "kinds": {
-    "candidate-invalid": 2551
+    "candidate-invalid": 321
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 584
+     "candidate-invalid": 114
     },
     "incomplete": {
-     "candidate-invalid": 553
+     "candidate-invalid": 4
     },
     "refused": {
-     "candidate-invalid": 1414
+     "candidate-invalid": 203
     }
    },
    "open_at_triage": true,
@@ -6934,19 +2610,19 @@
    "handle": "11",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2551,
+   "invalid": 321,
    "kinds": {
-    "candidate-invalid": 2551
+    "candidate-invalid": 321
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 584
+     "candidate-invalid": 114
     },
     "incomplete": {
-     "candidate-invalid": 553
+     "candidate-invalid": 4
     },
     "refused": {
-     "candidate-invalid": 1414
+     "candidate-invalid": 203
     }
    },
    "open_at_triage": true,
@@ -7137,19 +2813,19 @@
    "handle": "14",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2551,
+   "invalid": 321,
    "kinds": {
-    "candidate-invalid": 2551
+    "candidate-invalid": 321
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 584
+     "candidate-invalid": 114
     },
     "incomplete": {
-     "candidate-invalid": 553
+     "candidate-invalid": 4
     },
     "refused": {
-     "candidate-invalid": 1414
+     "candidate-invalid": 203
     }
    },
    "open_at_triage": true,
@@ -7340,19 +3016,19 @@
    "handle": "15",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2551,
+   "invalid": 321,
    "kinds": {
-    "candidate-invalid": 2551
+    "candidate-invalid": 321
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 584
+     "candidate-invalid": 114
     },
     "incomplete": {
-     "candidate-invalid": 553
+     "candidate-invalid": 4
     },
     "refused": {
-     "candidate-invalid": 1414
+     "candidate-invalid": 203
     }
    },
    "open_at_triage": true,
@@ -7543,19 +3219,19 @@
    "handle": "16",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2551,
+   "invalid": 321,
    "kinds": {
-    "candidate-invalid": 2551
+    "candidate-invalid": 321
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 584
+     "candidate-invalid": 114
     },
     "incomplete": {
-     "candidate-invalid": 553
+     "candidate-invalid": 4
     },
     "refused": {
-     "candidate-invalid": 1414
+     "candidate-invalid": 203
     }
    },
    "open_at_triage": true,
@@ -7746,19 +3422,19 @@
    "handle": "25",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2551,
+   "invalid": 321,
    "kinds": {
-    "candidate-invalid": 2551
+    "candidate-invalid": 321
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 584
+     "candidate-invalid": 114
     },
     "incomplete": {
-     "candidate-invalid": 553
+     "candidate-invalid": 4
     },
     "refused": {
-     "candidate-invalid": 1414
+     "candidate-invalid": 203
     }
    },
    "open_at_triage": true,
@@ -7949,19 +3625,19 @@
    "handle": "17",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2551,
+   "invalid": 321,
    "kinds": {
-    "candidate-invalid": 2551
+    "candidate-invalid": 321
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 584
+     "candidate-invalid": 114
     },
     "incomplete": {
-     "candidate-invalid": 553
+     "candidate-invalid": 4
     },
     "refused": {
-     "candidate-invalid": 1414
+     "candidate-invalid": 203
     }
    },
    "open_at_triage": true,
@@ -8152,19 +3828,19 @@
    "handle": "18",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2551,
+   "invalid": 321,
    "kinds": {
-    "candidate-invalid": 2551
+    "candidate-invalid": 321
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 584
+     "candidate-invalid": 114
     },
     "incomplete": {
-     "candidate-invalid": 553
+     "candidate-invalid": 4
     },
     "refused": {
-     "candidate-invalid": 1414
+     "candidate-invalid": 203
     }
    },
    "open_at_triage": true,
@@ -8355,19 +4031,19 @@
    "handle": "19",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2551,
+   "invalid": 321,
    "kinds": {
-    "candidate-invalid": 2551
+    "candidate-invalid": 321
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 584
+     "candidate-invalid": 114
     },
     "incomplete": {
-     "candidate-invalid": 553
+     "candidate-invalid": 4
     },
     "refused": {
-     "candidate-invalid": 1414
+     "candidate-invalid": 203
     }
    },
    "open_at_triage": true,
@@ -8558,19 +4234,19 @@
    "handle": "20",
    "in_scope": 0,
    "in_scope_agree": 0,
-   "invalid": 2551,
+   "invalid": 321,
    "kinds": {
-    "candidate-invalid": 2551
+    "candidate-invalid": 321
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-invalid": 584
+     "candidate-invalid": 114
     },
     "incomplete": {
-     "candidate-invalid": 553
+     "candidate-invalid": 4
     },
     "refused": {
-     "candidate-invalid": 1414
+     "candidate-invalid": 203
     }
    },
    "open_at_triage": true,
@@ -8667,10 +4343,10 @@
    ]
   }
  ],
- "log_sha256_at_triage": "263102e441b16284336e4fe54defc6877c8bd2d4e800a6b3a24730c9476647d0",
+ "log_sha256_at_triage": "b6e4d74a1e2c14dce7533a0e3a6e0ef8d31c833271c52c36f71a1ccc484e9ffe",
  "policy": "executable-triage-v2",
- "response_sha256": "d6475d03a11fc69b70a1d0c84cb2b2a3f01683ad26703b61038e515f5ce85fd9",
+ "response_sha256": "d221c344f0406be02efb2bff8f82297aa4fc7c736e9eb7cfddae3c4f6b774f19",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "evaluated",
- "subject_sha256": "21ed42ae791e3370832f9db89dc59af7b9c11eac73013dc57226b7d810990087"
+ "subject_sha256": "55812896d927256ba9c411debba4b3892548772c0dbf99c208b83ba573413953"
 }

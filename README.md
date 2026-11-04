@@ -179,7 +179,7 @@ the instruction that requires it.
 | **Credits** | ✓ The child tax credit, the earned income credit, and the child and dependent care, education, saver's, home energy and premium tax credits | ✗ Other credits, such as the adoption, clean vehicle, elderly or disabled, or business credits: 0.9% of returns |
 | **Foreign** | ✓ Foreign tax on investment income, within the small-amount election | ✗ Foreign accounts or assets that require an FBAR or Form 8938: not measured |
 
-Rare exceptions within the left-hand column are left to the interview, which stops with a citation if one applies. [`docs/COVERAGE.md`](docs/COVERAGE.md) lists all 157 situations the tool refuses, and says exactly what this table leaves out.
+Rare exceptions within the left-hand column are left to the interview, which stops with a citation if one applies. [`docs/COVERAGE.md`](docs/COVERAGE.md) lists all 160 situations the tool refuses, and says exactly what this table leaves out.
 <!-- coverage-tree:end -->
 
 ### Exact arithmetic
@@ -455,9 +455,12 @@ coverage is done), and a lawyer's review of the project's legal position.
 
 ## Running it
 
-The full check suite currently runs only on macOS: one extraction check reads the archived PDFs with
-Apple's PDFKit through Swift. Prerequisites: Node and npm; Lean 4 through elan (version pinned in
-`lean/lean-toolchain`); Poppler's `pdftotext`; Python 3 with PyYAML; and the Swift toolchain. Setup needs
+The full check suite has been run only on macOS. One extraction check reads the archived PDFs with
+Apple's PDFKit through Swift; on another platform without Swift that leg is skipped visibly and its
+check is not claimed, and on macOS a missing Swift is an error. The background runner
+(`tools/check_all_bg.sh`) copies the tree with APFS clones and needs macOS. Prerequisites: Node and npm;
+Lean 4 through elan (version pinned in `lean/lean-toolchain`); Poppler's `pdftotext`; Python 3 with
+PyYAML; and, on macOS, the Swift toolchain. Setup needs
 the network: `npm install` fetches packages, elan fetches the Lean toolchain, and the outside engines
 are installed with `tools/engines/setup.sh` (OpenTaxSolver must be downloaded by hand; the script says
 how). After that, the suite runs offline. Without the engines, the engine step is skipped visibly and
@@ -478,7 +481,8 @@ rest, including evaluating a return straight from a file of inputs.
 
 ## Standing notices
 
-Shown on every interview response and every values sheet:
+Shown on every interview response, every values sheet and every `eval --json` or `eval --batch`
+result (a `notices` list, once per batch):
 
 - This is not tax or legal advice.
 - You are responsible for your return.

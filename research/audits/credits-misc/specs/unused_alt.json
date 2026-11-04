@@ -1,0 +1,6 @@
+{"covers": ["f4952.alternative_allocation", "f4952.used"],
+ "evidence": "synthetic regression (not class B)",
+ "evidence_note": "T-101. stage4.base with f4952.alternative_allocation Yes and no investment interest, no 2024 carryforward and no line 4g election. Predicted from f4952 p. 4, Line 4g (the alternative allocation attributes the line 4g amount; \"To make the election, enter on line 4g the amount\") and p. 3, Who Must File: with nothing on line 4g and no interest the form is not used, so its screen is not reached; Form 4952 line 8 and the election are $0, the form is not required, and every stage4.base value is unchanged. Written before the evaluator was run.",
+ "set": {"f4952.alternative_allocation": true},
+ "expect_from_base": true,
+ "expect": {"f4952.line8": {"kind": "money", "cents": 0}, "f4952.election": {"kind": "money", "cents": 0}, "f4952.required": {"kind": "bool", "value": false}}}

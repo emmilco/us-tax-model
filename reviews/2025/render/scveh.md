@@ -4,17 +4,17 @@ The rendered English of every printed line of `Schedule C line 9 and Part IV, an
 
 | field | value |
 | --- | --- |
-| date | 2026-11-02 |
+| date | 2026-11-03 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | fe34c4b233013cc042789fb8528ac1c2bd327970af236c69a005818cb52d6747 |
+| prompt sha256 | 5c0d417a5a58db0e2b9ff7dc19e55e4354f168bf31163527aaf3ad087472cd47 |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
-| subject sha256 | 955488a7d83ff65edf3ea34b04b9179e1d61c3f9f351dc6d2a4a729697caca93 |
-| lines judged | 26 |
-| match / mismatch / unclear / missing | 23 / 3 / 0 / 0 |
+| subject sha256 | e4a476216010971db277688a7525749a0ff50e66d84fa94b8e75f6de593ef333 |
+| lines judged | 27 |
+| match / mismatch / unclear / missing | 23 / 4 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -25,7 +25,7 @@ The rendered English of every printed line of `Schedule C line 9 and Part IV, an
 | f1040sc | 2025; created 2025-04-03 | 1, 2 | whole document | ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022 | - | 44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376 |
 | i4562 | 2025 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
 | n-25-05 | Notice 2025-5 | 1, 2, 3, 4, 5 | whole document | 394f6b5ffb7c30e745322f0f20d9137608b1e2429fc4c76b06dedd690d4fb6e3 | - | 349e2797f87c588214722bcd22b7ec317c86c90a255ec8496941ac0c09909a8d |
-| p946 | For use in preparing 2025 returns | 17, 34, 37, 39, 41, 59, 60, 61, 62, 63, 71, 72, 73, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 17, 34, 37, 39, 41, 63 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
+| p946 | For use in preparing 2025 returns | 17, 31, 34, 37, 39, 41, 59, 60, 61, 62, 63, 71, 72, 73, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 17, 31, 34, 37, 39, 41, 63 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
 
 ## Lines
 
@@ -34,142 +34,151 @@ Status: **MISMATCH**
 
 Restated: Input — The year you first placed this vehicle in service for business purposes (for example 2023)
 
-Model: The restatement collects only the year (a Count). The form asks for a full date: "When did you place your vehicle in service for business purposes? (month/day/year)".
+Model: Schedule C line 43 asks for a full date: "When did you place your vehicle in service for business purposes? (month/day/year)". The restatement collects only the year (a Count), so the printed entry would lack the month and day.
 
-Ruling: representation; restatement accepted. The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; the filer writes the full date on the form from their own records.
+Ruling: representation; restatement accepted. The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; the filer writes the full date on the form from their own records. No value depends on the month or day except through the quarter, asked separately.
 
 ### 44a — Business miles
 Status: **MATCH**
 
-Model: Business miles for 2025, excluding commuting, as line 44a asks.
+Model: Line 44a asks, of the total miles driven during 2025, for the miles used for "Business". The restatement's business (non-commuting) miles for 2025 matches.
 
 ### 44b — Commuting miles
 Status: **MATCH**
 
-Model: Commuting miles, defined by reference to the line 44b instructions ("travel between your home and a work location"), which include the conversion-period rule.
+Model: Line 44b asks for commuting miles. The instructions define commuting as "travel between your home and a work location", which the restatement follows.
 
 ### 44c — Other miles
 Status: **MATCH**
 
-Model: Other (personal) miles, matching "c Other".
+Model: Line 44c asks for "Other" miles. The restatement's other (personal) 2025 miles matches.
 
 ### (screen) (scveh.smr_ok) — May you use the standard mileage rate for this vehicle?
 Status: **MATCH**
 
-Model: Matches the line 9 conditions. An owned vehicle must have used the standard rate "for the first year you placed the vehicle in service". A leased vehicle must use it "for the entire lease period". Actual expenses are required if "you used five or more vehicles simultaneously".
+Model: The line 9 instructions allow the standard mileage rate only if you "Owned the vehicle and used the standard mileage rate for the first year" or "Leased the vehicle and are using the standard mileage rate for the entire lease period". They require actual expenses "if you used five or more vehicles simultaneously". The question covers all three conditions.
+
+### (screen) (scveh.employee_use) — Your employees use this vehicle for personal purposes
+Status: **MATCH**
+
+Model: The column (c) instructions treat employee-used vehicles "as being used 100% for business/investment purposes if the value of personal use is included in the employees' gross income, or the employees reimburse the employer". The question states this rule correctly.
 
 ### 9 (scveh.line9) — Car and truck expenses for this vehicle
 Status: **MATCH**
 
-Model: Standard: "Multiply the number of business miles driven by 0.70 ... Add to this amount your parking fees and tolls". Actual: "the business portion of expenses for gasoline, oil, repairs, insurance, license plates, etc.", with business parking and tolls added. Depreciation and lease payments go elsewhere.
+Model: Standard method: business miles × 0.70 plus parking fees and tolls, as in "Multiply the number of business miles driven by 0.70 ... Add to this amount your parking fees and tolls". Actual method: the business portion of gasoline, oil, repairs, insurance, license plates, etc.; parking and tolls are wholly business expenses. The mileage-ratio business share matches Form 4562 column (c).
 
 ### (screen) (scveh.lease_smr_before) — The standard mileage rate was used for this leased vehicle before
 Status: **MATCH**
 
-Model: Implements "You can't use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle". The related refusal enforces this.
+Model: This supports the rule "You can't use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle". The rule is enforced by the lease_smr_bad refusal.
 
 ### 20a — Rent or lease of this vehicle (business portion)
 Status: **MISMATCH**
 
 Restated: Choose — [helper "Leased and on actual expenses" = true → helper "The business portion of the lease payments"] [helper "Leased and on actual expenses" = false → helper "Zero"]
 
-Model: The restatement enters the business portion of the lease payments and nothing else. No inclusion-amount reduction is made, and no refusal excludes leases where one applies. The line 20a instructions say "if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount".
+Model: The restatement enters the full business portion of the lease payments and has no refusal for long leases. The instructions add: "But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount."
 
-Ruling: refusal located elsewhere; restatement accepted. sc.special refuses "an inclusion amount for leased property" for the business, read for every Schedule C (checked by evaluation in the A-backlog session: sc.special answered Yes refuses at sc.line1).
+Ruling: scope; refusal located elsewhere, restatement accepted. i1040sc line 20a, "if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount": sc.special refuses "an inclusion amount for leased property" for the business, read for every Schedule C (the wording is unchanged by this package; checked in forms/2025/sc.yaml).
 
 ### (b) — Year placed in service
-Status: **MATCH**
+Status: **MISMATCH**
 
-Model: Collects the year placed in service, limited to 2019–2025. A refusal excludes vehicles used 50% or less, which per the instructions go on "line 27 ... for property used 50% or less in a qualified business use" under ADS.
+Restated: Input — The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in service earlier is outside this tool)
+
+Model: Form 4562 column (b) says "Enter the date the property was placed in service". The restatement collects only the year (2019–2025), so the printed entry is not the date. The low-use refusal for line 27 property is otherwise correct.
+
+Ruling: representation; restatement accepted. i4562 p. 14, Column (b), "Enter the date the property was placed in service": the tool needs the year (and the quarter, asked separately, for 2025 property); the filer writes the date from their records.
 
 ### (screen) (scveh.screen) — Does any of these apply to this vehicle?
 Status: **MATCH**
 
-Model: This is an exclusion screen. Each item is a case the program declines, and each is consistent with the texts given (trade-ins, short years, casualty basis adjustments, credits, ADS, qualified business use, record requirements, employee use, conversions).
+Model: The listed items track exclusions and special rules in the text: trade-ins, ADS, listed property used 50% or less, 168(k)(9) property, casualty basis reductions that end use of the tables, short tax years, the lessor exception, and the records requirement. Routing these vehicles out of the tool is a valid narrowing.
 
 ### (d) — Cost or other basis
 Status: **MATCH**
 
-Model: Matches column (d): "actual cost (including sales tax) or other basis", and for a converted vehicle the "smaller of the property's adjusted basis or its fair market value on the date of conversion". Basis reduction for vehicle credits is excluded by the screen refusal; pre-2019 vehicles are refused.
+Model: This matches "actual cost (including sales tax) or other basis (unadjusted for prior years' depreciation)" and, for converted property, "the smaller of the property's adjusted basis or its fair market value on the date of conversion". Credit reductions and the other excluded cases are refused.
 
 ### 13 — Business/investment cost (cost times business use)
 Status: **MATCH**
 
-Model: Worksheet line 13: "Multiply line 12 by line 8". The business percentage is business miles divided by total miles, per column (c): "dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles".
+Model: Worksheet line 13 says "Multiply line 12 by line 8": cost or other basis times the business-use percentage. Column (c) defines that percentage as business miles divided by total miles.
 
 ### (i) — Elected section 179 cost
 Status: **MATCH**
 
-Model: Column (i): "Enter the amount you elect to expense for section 179 property used more than 50% in a qualified business use". Low use and amounts over cost or the SUV limit are refused.
+Model: Column (i) is "the amount you elect to expense for section 179 property". The over-business-cost and $31,300 SUV limits are enforced by the s179_bad refusal, and the passenger-automobile cap is applied on line 10.
 
 ### (screen) (scveh.bonus_same) — Is the choice the same for all 5-year property placed in service in 2025?
 Status: **MATCH**
 
-Model: The election out applies "for any class of property ... for all such property in such class placed in service during the tax year". Mixed elections within the class are refused.
+Model: The text says the election out applies "for any class of property ... for all such property in such class placed in service during the tax year". Asking whether the choice is uniform across the 5-year class, and refusing mixed choices, is a valid narrowing.
 
 ### 7 — Maximum depreciation deduction for this year from the appropriate table
 Status: **MISMATCH**
 
 Restated: Choose — [helper "Placed in service in 2025" = true → helper "Limit for a 2025 vehicle"] [helper "Placed in service in 2025" = false → helper "Limit for the vehicle's 2025 year of recovery"]
 
-Model: The passenger-automobile limit table is applied to every vehicle, including those flagged as not subject to the limits (scveh.passenger = false, e.g. SUVs over 6,000 lbs). The text says "For any passenger automobile ... cannot exceed the applicable limit" and lists vehicles that "are not considered passenger automobiles". Table values used otherwise match (2025: $20,200 with allowance, $12,200 without).
+Model: The restatement always uses the passenger-automobile table, including for vehicles the program treats as not subject to the limits (passenger = false). The text says "For any passenger automobile ... cannot exceed the applicable limit", and heavier vehicles are not passenger automobiles. Because of this, lines 11, 17, 20 and 25 also cap non-passenger vehicles. For passenger automobiles, the values are correct: $20,200 with the special allowance or $12,200 without for a 2025 vehicle, and the year-of-recovery entry for earlier vehicles.
 
-Ruling: representation; restatement accepted. The worksheet line is figured for every vehicle but read only for a passenger automobile (scveh.bonus_v, scveh.macrs_pass); checked by evaluation on stage14.veh.suv_179 with passenger answered both ways: the allowance is $20,200 and $70,000.
+Ruling: representation; restatement accepted. The worksheet line is figured for every vehicle but read only for a passenger automobile (scveh.bonus_v, scveh.macrs_pass); a vehicle that is not a passenger automobile takes lines 16 and 19 directly (scveh.bonus_o, scveh.macrs_heavy), checked earlier by evaluation on stage14.veh.suv_179 with passenger answered both ways.
 
 ### 9 (scveh.line9w) — Adjusted maximum depreciation deduction (line 7 times the business/investment-use percenta
 Status: **MATCH**
 
-Model: Worksheet line 9: "Multiply line 7 by line 8", using the mileage-based business percentage.
+Model: Worksheet line 9 says "Multiply line 7 by line 8". The restatement multiplies line 7 by the business-use percentage (business miles over total miles).
 
 ### 10 — Section 179 deduction claimed this year (not more than line 9 for a passenger automobile)
 Status: **MATCH**
 
-Model: Worksheet line 10: "Section 179 deduction claimed this year (not more than line 9). Enter -0- if this is not the year you placed the car in service." For a passenger automobile the cap at line 9 is applied.
+Model: Worksheet line 10 is "Section 179 deduction claimed this year (not more than line 9). Enter -0- if this is not the year you placed the car in service." The restatement applies the line 9 cap to passenger automobiles.
 
 ### 11 — Subtract line 10 from line 9
 Status: **MATCH**
 
-Model: Worksheet line 11: "Subtract line 10 from line 9."
+Model: Worksheet line 11 says "Subtract line 10 from line 9".
 
 ### 14 — Section 179 deduction claimed in the year you placed the car in service
 Status: **MATCH**
 
-Model: Worksheet line 14: "Section 179 deduction claimed in the year you placed the car in service". For a 2025 vehicle that is line 10; for earlier years it is the prior claim.
+Model: Worksheet line 14 is the "Section 179 deduction claimed in the year you placed the car in service". For a 2025 vehicle that is this year's deduction (line 10); for earlier vehicles it is the input amount.
 
 ### 15 — Tentative basis for depreciation (line 13 less line 14)
 Status: **MATCH**
 
-Model: Worksheet line 15: "Subtract line 14 from line 13."
+Model: Worksheet line 15 says "Subtract line 14 from line 13".
 
 ### 16 — Special depreciation allowance
 Status: **MATCH**
 
-Model: Worksheet line 16: "Multiply line 15 by the applicable percentage ... Enter -0- if this is not the year you placed the car in service ... or you elected not to claim". Percentages: 100% if acquired after January 19, 2025, 40% if elected; 40% if acquired before January 20, 2025.
+Model: Worksheet line 16 is line 15 times the applicable percentage, or -0- if not the year placed in service or the allowance is elected out. The percentages match: 100% if acquired after January 19, 2025 (40% if elected), and 40% if acquired after September 27, 2017 and before January 20, 2025.
 
 ### 25 — Special depreciation allowance allowed (not more than line 11)
 Status: **MATCH**
 
-Model: The special allowance on Form 4562 line 25 is limited to line 11 ("Your depreciation deduction (including your special depreciation allowance) is limited to the amount on line 11"). The smaller of line 16 or line 11 gives that result.
+Model: Per the worksheet note, the special allowance is "limited to the amount on line 11", so the lesser of line 16 and line 11 is the per-vehicle Form 4562 line 25 amount for a passenger automobile.
 
 ### 17 — Limit on the MACRS depreciation (line 11 less line 16)
 Status: **MATCH**
 
-Model: Worksheet line 17: "Subtract line 16 from line 11."
+Model: Worksheet line 17 says "Subtract line 16 from line 11".
 
 ### 18 — Basis for depreciation (line 15 less line 16)
 Status: **MATCH**
 
-Model: Worksheet line 18: "Subtract line 16 from line 15."
+Model: Worksheet line 18 says "Subtract line 16 from line 15".
 
 ### 19 — Tentative MACRS depreciation deduction (line 18 times line 6)
 Status: **MATCH**
 
-Model: Worksheet line 19: "Multiply line 18 by line 6", using 5-year rates from Tables A-1 to A-5. The convention follows the 40% fourth-quarter test on bases after section 179 and before the special allowance. A 2019 vehicle in year 7 has no table rate, so zero follows from the tables.
+Model: Worksheet line 19 says "Multiply line 18 by line 6", using the table rate. The rate convention is half-year, or mid-quarter when fourth-quarter bases exceed 40% of the year's bases; 5×Q4 > 2×total is the same test. Bases are after section 179 and before the special allowance. A 2019 vehicle has no 2025 rate, so the result is zero.
 
 ### 20 — MACRS depreciation deduction (the lesser of line 17 or line 19)
 Status: **MATCH**
 
-Model: Worksheet line 20: "Enter the lesser of line 17 or line 19."
+Model: Worksheet line 20 says "Enter the lesser of line 17 or line 19".
 
 ## Raw response
 
@@ -178,81 +187,84 @@ Model: Worksheet line 20: "Enter the lesser of line 17 or line 19."
 lines:
   - key: "43"
     status: MISMATCH
-    reason: "The restatement collects only the year (a Count). The form asks for a full date: \"When did you place your vehicle in service for business purposes? (month/day/year)\"."
+    reason: "Schedule C line 43 asks for a full date: \"When did you place your vehicle in service for business purposes? (month/day/year)\". The restatement collects only the year (a Count), so the printed entry would lack the month and day."
   - key: "44a"
     status: MATCH
-    reason: "Business miles for 2025, excluding commuting, as line 44a asks."
+    reason: "Line 44a asks, of the total miles driven during 2025, for the miles used for \"Business\". The restatement's business (non-commuting) miles for 2025 matches."
   - key: "44b"
     status: MATCH
-    reason: "Commuting miles, defined by reference to the line 44b instructions (\"travel between your home and a work location\"), which include the conversion-period rule."
+    reason: "Line 44b asks for commuting miles. The instructions define commuting as \"travel between your home and a work location\", which the restatement follows."
   - key: "44c"
     status: MATCH
-    reason: "Other (personal) miles, matching \"c Other\"."
+    reason: "Line 44c asks for \"Other\" miles. The restatement's other (personal) 2025 miles matches."
   - key: "(screen) (scveh.smr_ok)"
     status: MATCH
-    reason: "Matches the line 9 conditions. An owned vehicle must have used the standard rate \"for the first year you placed the vehicle in service\". A leased vehicle must use it \"for the entire lease period\". Actual expenses are required if \"you used five or more vehicles simultaneously\"."
+    reason: "The line 9 instructions allow the standard mileage rate only if you \"Owned the vehicle and used the standard mileage rate for the first year\" or \"Leased the vehicle and are using the standard mileage rate for the entire lease period\". They require actual expenses \"if you used five or more vehicles simultaneously\". The question covers all three conditions."
+  - key: "(screen) (scveh.employee_use)"
+    status: MATCH
+    reason: "The column (c) instructions treat employee-used vehicles \"as being used 100% for business/investment purposes if the value of personal use is included in the employees' gross income, or the employees reimburse the employer\". The question states this rule correctly."
   - key: "9 (scveh.line9)"
     status: MATCH
-    reason: "Standard: \"Multiply the number of business miles driven by 0.70 ... Add to this amount your parking fees and tolls\". Actual: \"the business portion of expenses for gasoline, oil, repairs, insurance, license plates, etc.\", with business parking and tolls added. Depreciation and lease payments go elsewhere."
+    reason: "Standard method: business miles × 0.70 plus parking fees and tolls, as in \"Multiply the number of business miles driven by 0.70 ... Add to this amount your parking fees and tolls\". Actual method: the business portion of gasoline, oil, repairs, insurance, license plates, etc.; parking and tolls are wholly business expenses. The mileage-ratio business share matches Form 4562 column (c)."
   - key: "(screen) (scveh.lease_smr_before)"
     status: MATCH
-    reason: "Implements \"You can't use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle\". The related refusal enforces this."
+    reason: "This supports the rule \"You can't use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle\". The rule is enforced by the lease_smr_bad refusal."
   - key: "20a"
     status: MISMATCH
-    reason: "The restatement enters the business portion of the lease payments and nothing else. No inclusion-amount reduction is made, and no refusal excludes leases where one applies. The line 20a instructions say \"if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount\"."
+    reason: "The restatement enters the full business portion of the lease payments and has no refusal for long leases. The instructions add: \"But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount.\""
   - key: "(b)"
-    status: MATCH
-    reason: "Collects the year placed in service, limited to 2019–2025. A refusal excludes vehicles used 50% or less, which per the instructions go on \"line 27 ... for property used 50% or less in a qualified business use\" under ADS."
+    status: MISMATCH
+    reason: "Form 4562 column (b) says \"Enter the date the property was placed in service\". The restatement collects only the year (2019–2025), so the printed entry is not the date. The low-use refusal for line 27 property is otherwise correct."
   - key: "(screen) (scveh.screen)"
     status: MATCH
-    reason: "This is an exclusion screen. Each item is a case the program declines, and each is consistent with the texts given (trade-ins, short years, casualty basis adjustments, credits, ADS, qualified business use, record requirements, employee use, conversions)."
+    reason: "The listed items track exclusions and special rules in the text: trade-ins, ADS, listed property used 50% or less, 168(k)(9) property, casualty basis reductions that end use of the tables, short tax years, the lessor exception, and the records requirement. Routing these vehicles out of the tool is a valid narrowing."
   - key: "(d)"
     status: MATCH
-    reason: "Matches column (d): \"actual cost (including sales tax) or other basis\", and for a converted vehicle the \"smaller of the property's adjusted basis or its fair market value on the date of conversion\". Basis reduction for vehicle credits is excluded by the screen refusal; pre-2019 vehicles are refused."
+    reason: "This matches \"actual cost (including sales tax) or other basis (unadjusted for prior years' depreciation)\" and, for converted property, \"the smaller of the property's adjusted basis or its fair market value on the date of conversion\". Credit reductions and the other excluded cases are refused."
   - key: "13"
     status: MATCH
-    reason: "Worksheet line 13: \"Multiply line 12 by line 8\". The business percentage is business miles divided by total miles, per column (c): \"dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles\"."
+    reason: "Worksheet line 13 says \"Multiply line 12 by line 8\": cost or other basis times the business-use percentage. Column (c) defines that percentage as business miles divided by total miles."
   - key: "(i)"
     status: MATCH
-    reason: "Column (i): \"Enter the amount you elect to expense for section 179 property used more than 50% in a qualified business use\". Low use and amounts over cost or the SUV limit are refused."
+    reason: "Column (i) is \"the amount you elect to expense for section 179 property\". The over-business-cost and $31,300 SUV limits are enforced by the s179_bad refusal, and the passenger-automobile cap is applied on line 10."
   - key: "(screen) (scveh.bonus_same)"
     status: MATCH
-    reason: "The election out applies \"for any class of property ... for all such property in such class placed in service during the tax year\". Mixed elections within the class are refused."
+    reason: "The text says the election out applies \"for any class of property ... for all such property in such class placed in service during the tax year\". Asking whether the choice is uniform across the 5-year class, and refusing mixed choices, is a valid narrowing."
   - key: "7"
     status: MISMATCH
-    reason: "The passenger-automobile limit table is applied to every vehicle, including those flagged as not subject to the limits (scveh.passenger = false, e.g. SUVs over 6,000 lbs). The text says \"For any passenger automobile ... cannot exceed the applicable limit\" and lists vehicles that \"are not considered passenger automobiles\". Table values used otherwise match (2025: $20,200 with allowance, $12,200 without)."
+    reason: "The restatement always uses the passenger-automobile table, including for vehicles the program treats as not subject to the limits (passenger = false). The text says \"For any passenger automobile ... cannot exceed the applicable limit\", and heavier vehicles are not passenger automobiles. Because of this, lines 11, 17, 20 and 25 also cap non-passenger vehicles. For passenger automobiles, the values are correct: $20,200 with the special allowance or $12,200 without for a 2025 vehicle, and the year-of-recovery entry for earlier vehicles."
   - key: "9 (scveh.line9w)"
     status: MATCH
-    reason: "Worksheet line 9: \"Multiply line 7 by line 8\", using the mileage-based business percentage."
+    reason: "Worksheet line 9 says \"Multiply line 7 by line 8\". The restatement multiplies line 7 by the business-use percentage (business miles over total miles)."
   - key: "10"
     status: MATCH
-    reason: "Worksheet line 10: \"Section 179 deduction claimed this year (not more than line 9). Enter -0- if this is not the year you placed the car in service.\" For a passenger automobile the cap at line 9 is applied."
+    reason: "Worksheet line 10 is \"Section 179 deduction claimed this year (not more than line 9). Enter -0- if this is not the year you placed the car in service.\" The restatement applies the line 9 cap to passenger automobiles."
   - key: "11"
     status: MATCH
-    reason: "Worksheet line 11: \"Subtract line 10 from line 9.\""
+    reason: "Worksheet line 11 says \"Subtract line 10 from line 9\"."
   - key: "14"
     status: MATCH
-    reason: "Worksheet line 14: \"Section 179 deduction claimed in the year you placed the car in service\". For a 2025 vehicle that is line 10; for earlier years it is the prior claim."
+    reason: "Worksheet line 14 is the \"Section 179 deduction claimed in the year you placed the car in service\". For a 2025 vehicle that is this year's deduction (line 10); for earlier vehicles it is the input amount."
   - key: "15"
     status: MATCH
-    reason: "Worksheet line 15: \"Subtract line 14 from line 13.\""
+    reason: "Worksheet line 15 says \"Subtract line 14 from line 13\"."
   - key: "16"
     status: MATCH
-    reason: "Worksheet line 16: \"Multiply line 15 by the applicable percentage ... Enter -0- if this is not the year you placed the car in service ... or you elected not to claim\". Percentages: 100% if acquired after January 19, 2025, 40% if elected; 40% if acquired before January 20, 2025."
+    reason: "Worksheet line 16 is line 15 times the applicable percentage, or -0- if not the year placed in service or the allowance is elected out. The percentages match: 100% if acquired after January 19, 2025 (40% if elected), and 40% if acquired after September 27, 2017 and before January 20, 2025."
   - key: "25"
     status: MATCH
-    reason: "The special allowance on Form 4562 line 25 is limited to line 11 (\"Your depreciation deduction (including your special depreciation allowance) is limited to the amount on line 11\"). The smaller of line 16 or line 11 gives that result."
+    reason: "Per the worksheet note, the special allowance is \"limited to the amount on line 11\", so the lesser of line 16 and line 11 is the per-vehicle Form 4562 line 25 amount for a passenger automobile."
   - key: "17"
     status: MATCH
-    reason: "Worksheet line 17: \"Subtract line 16 from line 11.\""
+    reason: "Worksheet line 17 says \"Subtract line 16 from line 11\"."
   - key: "18"
     status: MATCH
-    reason: "Worksheet line 18: \"Subtract line 16 from line 15.\""
+    reason: "Worksheet line 18 says \"Subtract line 16 from line 15\"."
   - key: "19"
     status: MATCH
-    reason: "Worksheet line 19: \"Multiply line 18 by line 6\", using 5-year rates from Tables A-1 to A-5. The convention follows the 40% fourth-quarter test on bases after section 179 and before the special allowance. A 2019 vehicle in year 7 has no table rate, so zero follows from the tables."
+    reason: "Worksheet line 19 says \"Multiply line 18 by line 6\", using the table rate. The rate convention is half-year, or mid-quarter when fourth-quarter bases exceed 40% of the year's bases; 5×Q4 > 2×total is the same test. Bases are after section 179 and before the special allowance. A 2019 vehicle has no 2025 rate, so the result is zero."
   - key: "20"
     status: MATCH
-    reason: "Worksheet line 20: \"Enter the lesser of line 17 or line 19.\""
+    reason: "Worksheet line 20 says \"Enter the lesser of line 17 or line 19\"."
 ```
 ```

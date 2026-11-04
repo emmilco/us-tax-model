@@ -272,7 +272,7 @@ function putBusinesses(data: CanonicalData, inputs: Inputs, P: string, list: Bus
       Object.assign(inputs, {
         [`${V}.method`]: method, [`${V}.owned`]: v.owned, [`${V}.placed_date`]: v.year, [`${V}.miles_business`]: v.business,
         [`${V}.miles_commuting`]: v.commuting, [`${V}.miles_other`]: v.other, [`${V}.parking`]: v.parking, [`${V}.smr_ok`]: true, [`${V}.lease_smr_before`]: false,
-        [`${V}.operating`]: v.operating, [`${V}.lease`]: v.lease, [`${V}.placed`]: `y${v.year}`, [`${V}.screen`]: false,
+        [`${V}.operating`]: v.operating, [`${V}.employee_use`]: false, [`${V}.lease`]: v.lease, [`${V}.placed`]: `y${v.year}`, [`${V}.screen`]: false,
         [`${V}.cost`]: v.cost, [`${V}.passenger`]: v.passenger, [`${V}.suv`]: false, [`${V}.s179_elect`]: s179,
         [`${V}.after_jan19`]: v.afterJan19, [`${V}.bonus_choice`]: v.year === YEAR ? v.bonus : "none", [`${V}.bonus_same`]: true,
         [`${V}.prior_179`]: v.year === YEAR ? 0 : Math.min(v.prior179, v.cost), [`${V}.quarter`]: v.quarter, [`${V}.prior_conv`]: v.priorConv,
@@ -286,7 +286,7 @@ function putBusinesses(data: CanonicalData, inputs: Inputs, P: string, list: Bus
       Object.assign(inputs, {
         [`${A}.class`]: classes[a.cls % Math.max(1, classes.length)], [`${A}.screen`]: false, [`${A}.placed`]: `y${a.year}`,
         [`${A}.cost`]: a.cost, [`${A}.pct`]: a.listed ? Math.max(a.pct, 51) : a.pct, [`${A}.listed`]: a.listed, [`${A}.quarter`]: a.quarter,
-        [`${A}.s179`]: now && a.pct > 50 ? Math.min(a.s179, businessCost) : 0, [`${A}.after_jan19`]: a.afterJan19,
+        [`${A}.s179`]: now && a.pct > 50 ? Math.min(a.s179, businessCost) : 0, [`${A}.not179`]: false, [`${A}.after_jan19`]: a.afterJan19,
         [`${A}.bonus_choice`]: a.bonus, [`${A}.bonus_same`]: true, [`${A}.prior_conv`]: a.priorConv,
         [`${A}.prior_179`]: now ? 0 : Math.min(a.prior179, businessCost), [`${A}.prior_bonus`]: now ? 0 : Math.min(a.priorBonus, Math.max(0, businessCost - Math.min(a.prior179, businessCost))),
       });
@@ -554,14 +554,18 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   inputs["$sales"] = sales.map((_, i) => `s${i + 1}`);
   sales.forEach((sale, i) => {
     // The aggregate route needs a basis-reported box (A or D), no code and
-    // eligibility; code B needs a basis-reported box. Invalid entries keep
+    // eligibility; code B needs a basis-reported box; a wash-sale loss cannot
+    // be more than the loss on the sale (sales.wash_bad). Invalid entries keep
     // whatever came out so the gates are exercised too.
     const basisReported = sale.box === "A" || sale.box === "D";
     let code = sale.code;
     if (!sale.invalid && code.includes("B") && !basisReported) code = code === "B" ? "none" : "W";
     const route = sale.aggregate && (sale.invalid || (basisReported && code === "none" && sale.aggregate_eligible)) ? "aggregate" : "detail";
+    const basis = basisReported && !code.includes("B") ? sale.reported_basis : sale.correct_basis;
+    const loss = Math.max(0, basis - sale.proceeds);
+    const wash = code.includes("W") ? (sale.invalid ? sale.wash_loss : Math.min(sale.wash_loss, loss)) : 0;
     const entry = { box: sale.box, route, code, special: sale.invalid && sale.special, aggregate_eligible: sale.aggregate_eligible,
-      proceeds: sale.proceeds, reported_basis: sale.reported_basis, correct_basis: sale.correct_basis, wash_loss: code.includes("W") ? sale.wash_loss : 0 };
+      proceeds: sale.proceeds, reported_basis: sale.reported_basis, correct_basis: sale.correct_basis, wash_loss: wash };
     for (const [k, v] of Object.entries(entry)) inputs[`sales[s${i + 1}].${k}`] = v;
   });
 
@@ -717,6 +721,10 @@ function buildInputs(data: CanonicalData, s: Spec): Inputs {
   putPtc(inputs);
   putEdu(inputs);
   putEarly(inputs);
+  // No dependent was born, died, adopted or placed in 2025. Set last, so neither the random stream nor the derived
+  // streams (which hash the answers given before them) see them. They are read for a person who is not a qualifying
+  // child and lived with you half the year or less (the household and dependent care tests).
+  for (const k of (inputs["$dependent"] as string[] | undefined) ?? []) Object.assign(inputs, { [`dependent[${k}].born_died`]: false, [`dependent[${k}].placed`]: false });
   return inputs;
 }
 

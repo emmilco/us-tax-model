@@ -2085,6 +2085,23 @@
       "revision_locator": "Cover, \"(Rev. December 2020)\""
     },
     {
+      "id": "p538",
+      "url": "https://www.irs.gov/pub/irs-pdf/p538.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-pdf/p538.pdf",
+      "fetched_at": "2026-11-03T19:01:23.378913+00:00",
+      "file": "p538.pdf",
+      "sha256": "e2aa318b8ccaa755a0094833ebf1d0c60c59604931c1af6a4432db43309fc2f0",
+      "revision": null,
+      "revision_status": "Pending inspection of archived document; not cleared for encoding",
+      "text_file": "p538.txt",
+      "text_sha256": "4186d7aaa8f711c9a524b87fac1e3df05640b6d66130093b2469480acb06ef6c",
+      "cols_file": "p538.cols.txt",
+      "cols_sha256": "f500211df18a4aafd843e48bbad4b9102c598cf5ccc0fae96c7814a4bef0ae00",
+      "pages_file": "p538.pages.json",
+      "pages_sha256": "939e6847b1f32681dec5f19c502b44c8829174b2f59ecc6c687c9e60c2e9d3be",
+      "extract_tool_version": "0.10"
+    },
+    {
       "id": "p550",
       "url": "https://www.irs.gov/pub/irs-pdf/p550.pdf",
       "resolved_url": "https://www.irs.gov/pub/irs-pdf/p550.pdf",
@@ -2136,6 +2153,23 @@
       "cols_sha256": "123292e5ff33ecc1aefc310cf0933907e6ff3c07de80c7a3d60a5d76514b4e57",
       "pages_file": "p561.pages.json",
       "pages_sha256": "aa5a2efc23d99a10f94211f7ba8f6b5e590e2962d3c68fa2599aa48e395b4879",
+      "extract_tool_version": "0.10"
+    },
+    {
+      "id": "p575",
+      "url": "https://www.irs.gov/pub/irs-pdf/p575.pdf",
+      "resolved_url": "https://www.irs.gov/pub/irs-pdf/p575.pdf",
+      "fetched_at": "2026-11-03T19:04:44.841089+00:00",
+      "file": "p575.pdf",
+      "sha256": "30bd37ccfcb1fe2e191abadbb38ce7cf7fcbb638e3065335436dd6025a35caa5",
+      "revision": null,
+      "revision_status": "Pending inspection of archived document; not cleared for encoding",
+      "text_file": "p575.txt",
+      "text_sha256": "4d6ee3802a2906a4633dcfc104aa33bb3d9ddedebddc9eadbd0393cfdb61e07b",
+      "cols_file": "p575.cols.txt",
+      "cols_sha256": "3962801dde168fda9f4ee239245d9746b12e2d60bf358b25186ae4a57aa5b837",
+      "pages_file": "p575.pages.json",
+      "pages_sha256": "bcd567245354f22c28b7e26e925e4cd4052344e5cbb736e326be3e397ced01df",
       "extract_tool_version": "0.10"
     },
     {

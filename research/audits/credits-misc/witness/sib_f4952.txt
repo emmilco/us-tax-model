@@ -1,0 +1,191 @@
+
+## f4952.used — Form 4952 is used (an election on line 4g, investment interest paid or accrued in 2025, or a carryforward from 2024)
+
+(a) lines that read it, through helpers (3)
+  f4952.exception
+  f4952.line2
+  f4952.line3
+
+(c) predicates testing the same enum values (3)
+  f4952.line8 = False
+  f4952.line8 = True
+  f4952.required = True
+
+(b) lines and questions anchored on the same doc/page/heading (1)
+  f4952.required
+
+## f4952.has_election — An amount is entered on line 4g
+
+(a) lines that read it, through helpers (2)
+  f4952.bad_election
+  f4952.election_checked
+
+(c) predicates testing the same enum values (3)
+  f4952.election = False
+  f4952.election = True
+  f4952.used = True
+
+(b) lines and questions anchored on the same doc/page/heading (1)
+  f4952.election
+
+## f4952.election — The validated line 4g election when an amount is entered on line 4g; zero otherwise
+
+(a) lines that read it, through helpers (3)
+  f4952.line4h
+  f4952.required_test
+  sd.investment_election
+
+(c) predicates testing the same enum values (1)
+  f4952.required_test = 0
+
+(b) lines and questions anchored on the same doc/page/heading (1)
+  f4952.has_election
+
+## f4952.election_checked — Validated default-allocation election
+
+(a) lines that read it, through helpers (5)
+  f4952.bad_election
+  f4952.has_election
+  f4952.line2
+  f4952.line5
+  f4952.required_test
+
+(c) predicates testing the same enum values (0)
+
+(b) lines and questions anchored on the same doc/page/heading (24)
+  f4952.alternative_allocation
+  f4952.bad_dividends
+  f4952.bad_election
+  f4952.deduction
+  f4952.election_limit
+  f4952.exception
+  f4952.line1
+  f4952.line2
+  f4952.line3
+  f4952.line4a
+  f4952.line4b
+  f4952.line4c
+  f4952.line4d
+  f4952.line4e
+  f4952.line4f
+  f4952.line4g
+  f4952.line4h
+  f4952.line5
+  f4952.line6
+  f4952.line7
+  f4952.line8
+  f4952.required_test
+  f4952.unsupported
+  f4952.zero
+
+## f4952.line8 — Investment interest deduction: smaller of lines 3 and 6 (zero when Form 4952 is not used)
+
+(a) lines that read it, through helpers (1)
+  sa.line9
+
+(c) predicates testing the same enum values (0)
+
+(b) lines and questions anchored on the same doc/page/heading (24)
+  f4952.alternative_allocation
+  f4952.bad_dividends
+  f4952.bad_election
+  f4952.deduction
+  f4952.election_checked
+  f4952.election_limit
+  f4952.exception
+  f4952.line1
+  f4952.line2
+  f4952.line3
+  f4952.line4a
+  f4952.line4b
+  f4952.line4c
+  f4952.line4d
+  f4952.line4e
+  f4952.line4f
+  f4952.line4g
+  f4952.line4h
+  f4952.line5
+  f4952.line6
+  f4952.line7
+  f4952.required_test
+  f4952.unsupported
+  f4952.zero
+
+## f4952.deduction — Smaller of lines 3 and 6
+
+(a) lines that read it, through helpers (1)
+  f4952.line8
+
+(c) predicates testing the same enum values (0)
+
+(b) lines and questions anchored on the same doc/page/heading (24)
+  f4952.alternative_allocation
+  f4952.bad_dividends
+  f4952.bad_election
+  f4952.election_checked
+  f4952.election_limit
+  f4952.exception
+  f4952.line1
+  f4952.line2
+  f4952.line3
+  f4952.line4a
+  f4952.line4b
+  f4952.line4c
+  f4952.line4d
+  f4952.line4e
+  f4952.line4f
+  f4952.line4g
+  f4952.line4h
+  f4952.line5
+  f4952.line6
+  f4952.line7
+  f4952.line8
+  f4952.required_test
+  f4952.unsupported
+  f4952.zero
+
+## f4952.required — Form 4952 is used and must be filed (for an election, or to claim interest when the exception does not apply)
+
+(a) lines that read it, through helpers (1)
+  sd.filing4952
+
+(c) predicates testing the same enum values (0)
+
+(b) lines and questions anchored on the same doc/page/heading (1)
+  f4952.used
+
+## f4952.required_test — File for an election, or to claim interest (including a 2024 carryforward) when the exception does not apply
+
+(a) lines that read it, through helpers (3)
+  f4952.election_checked
+  f4952.line2
+  f4952.line5
+
+(c) predicates testing the same enum values (1)
+  f4952.required = True
+
+(b) lines and questions anchored on the same doc/page/heading (24)
+  f4952.alternative_allocation
+  f4952.bad_dividends
+  f4952.bad_election
+  f4952.deduction
+  f4952.election_checked
+  f4952.election_limit
+  f4952.exception
+  f4952.line1
+  f4952.line2
+  f4952.line3
+  f4952.line4a
+  f4952.line4b
+  f4952.line4c
+  f4952.line4d
+  f4952.line4e
+  f4952.line4f
+  f4952.line4g
+  f4952.line4h
+  f4952.line5
+  f4952.line6
+  f4952.line7
+  f4952.line8
+  f4952.unsupported
+  f4952.zero

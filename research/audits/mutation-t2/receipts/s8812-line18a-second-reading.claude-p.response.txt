@@ -1,0 +1,47 @@
+# C11: NOT EQUIVALENT
+
+The claim's arithmetic holds only under a premise the definitions don't support: that `se_line13` is 0 whenever `files_se` is false. The mutant also reads two lines, `s1.line3` and `s1.line15`, that the original's branch never reads. The proof that the EIC path already checked their gates fails because `f1040.line11b` is not defined here.
+
+## What the mutant changes
+
+When `taking_eic` is true, line 18a becomes `eiw_7_figured` instead of `chart_eic`. If `taking_eic` is true, then `eic.credit` is known and positive. That means `household.credit_disallowed` is false, `eic.eligible` is true, and `eic.line6` is known and positive.
+
+- **Original, self-employed:** `chart_eic = wsb_4b = line1z + Σ_persons eic_se`. Here `eic_se` is `sc_total − se_line13` if `files_se`, otherwise `sc_total`. `se_line13` is read only for persons with `files_se` true.
+- **Mutant:** `eiw_7_figured = max(0, line1z + 0 + Σ sc_total) − (0 + Σ_all persons se_line13)`. This reads `se_line13`, including its gate `person.se_rrta`, for every person. It also reads `s1.line3`, with gate `s1.ebl`, which the original branch never touches.
+
+## Counterexample 1 (no undefined lines needed): church employee income
+
+This depends only on the `se` definition behaving like the real Schedule SE.
+
+Inputs:
+- One person with one Schedule C. `sc.result` = −$500, so `sc_count` = 1, `has_sc` and `self_employed` are true, and `sc_total` = −$500.
+- `f1040.line1z` = $15,000, which includes $5,000 of church employee W-2 wages.
+- No other SE income, so Schedule SE line 4c = $0. The real SE instructions say to enter −0− when line 4c is under $400 and you have church employee income, then continue.
+- So `person.files_se` = gt(0, 0) = false.
+- SE tax on church income = 5000 × 0.9235 × 0.153 ≈ $706.45, so `se_line13` ≈ $353.22. Therefore `s1.line15` ≈ $353.22.
+- All gates are false. A qualifying child is present, so the EIC at roughly $14.5k is positive and `taking_eic` is true.
+
+Results:
+- **Original** 18a = `wsb_4b` = 15,000 − 500 = **$14,500**
+- **Mutant** 18a = max(0, 14,500) − 353.22 = **$14,146.78**
+
+Line 18a is printed, so it differs. Any printed reader of 18a, not shown here, would also differ. This case uses `s1.line15` and `s1.line3` as known values, so it does not depend on how AGI reads them.
+
+## Counterexamples 2 and 3: extra gates
+
+These hold if `f1040.line11b` does not strictly read `s1.line3` and `s1.line15`.
+
+- **Unanswered or true `person.se_rrta`, no Schedule C anywhere.** `self_employed` is false, so the original 18a = `earned_income` = `line1z`, which is known. In the mutant, the `se_rrta` gate on `se_line13` makes `s1.line15` unknown or refused, so `eiw_6` and line 18a become unknown or refused. The EIC path never reads `se_line13` when `has_sc` is false (it uses `person.zero`).
+- **`s1.ebl` = true.** `s1.line3` is refused, so in the mutant `eiw_3sum` and `eiw_3` refuse, and line 18a is refused (`s1.ebl`). The original 18a stays known.
+
+Both of these fail only if `line11b` (AGI) propagates `s1.line3` and `s1.line15`. That is plausible through Schedule 1 lines 10 and 26, but it is not in the given definitions.
+
+## Premises I cannot check from the definitions
+
+1. **The `se` definition (line13 vs. line4c).** Counterexample 1 needs line13 > 0 while line4c ≤ 0, as with church employee income or optional-method edge cases. This is the claim's "se_line13 = 0 when SE is not filed" premise, and real Schedule SE contradicts it.
+2. **`f1040.line11b`.** This determines whether counterexamples 2 and 3 survive.
+3. **`eic.eligible` (truncated), `eic.line4`, `eic.after_line4`, `eic.line1_table`.** The claim says a positive credit forces `chart_eic` and `wsb_4b` to be known. That holds only if `line6`'s taken branch, or a `step5_income` conjunct, actually reads `line1`, `wsb_4b`, or `earned_income`. If `after_line4` uses only AGI, `chart_eic` could be unknown or refused while the credit is positive.
+4. **`line1_table(0) = 0`.** The `max(0, ·)` floor in `eiw_3` is harmless only if a negative `wsb_4b` forces a zero credit. That happens via `wsb_6` floored to 0, but only if the table gives 0 at an input of 0.
+5. **`sc.one` = 1 for every entry and `sales.zero` = 0.** These are needed for "sc_count = 0 ⇒ all sc rosters are empty ⇒ s1.line3 = 0" in the non-self-employed case.
+
+**Verdict:** Not equivalent. Counterexample 1 distinguishes the mutant with known values and every gate false.

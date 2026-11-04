@@ -1,14 +1,14 @@
 {
  "bank": {
   "evaluation_failures": 0,
-  "fixtures": 1439,
+  "fixtures": 1495,
   "generated": 500,
   "partial_bases": 40,
-  "partial_records": 548,
+  "partial_records": 526,
   "return_states": {
-   "completed": 376,
-   "incomplete": 1043,
-   "refused": 1068
+   "completed": 389,
+   "incomplete": 1077,
+   "refused": 1055
   },
   "seed": 20261026
  },
@@ -20,9 +20,9 @@
  "lines": [
   {
    "absent": 0,
-   "agree": 2429,
+   "agree": 2427,
    "candidate": "sa.age65",
-   "compared": 2487,
+   "compared": 2521,
    "completed_witnesses": [
     {
      "candidate": {
@@ -31,7 +31,7 @@
      },
      "candidate_operands": [
       {
-       "ref": "sa.h_tp_age",
+       "ref": "sa.h_tp_boxes",
        "value": {
         "kind": "count",
         "value": 0
@@ -59,7 +59,7 @@
        }
       },
       {
-       "ref": "sa.h_sp_age",
+       "ref": "sa.h_sp_boxes",
        "value": {
         "kind": "count",
         "value": 1
@@ -108,7 +108,7 @@
      },
      "candidate_operands": [
       {
-       "ref": "sa.h_tp_age",
+       "ref": "sa.h_tp_boxes",
        "value": {
         "kind": "count",
         "value": 0
@@ -136,7 +136,7 @@
        }
       },
       {
-       "ref": "sa.h_sp_age",
+       "ref": "sa.h_sp_boxes",
        "value": {
         "kind": "count",
         "value": 1
@@ -185,7 +185,7 @@
      },
      "candidate_operands": [
       {
-       "ref": "sa.h_tp_age",
+       "ref": "sa.h_tp_boxes",
        "value": {
         "kind": "count",
         "value": 0
@@ -213,84 +213,7 @@
        }
       },
       {
-       "ref": "sa.h_sp_age",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      }
-     ],
-     "instance": "sa",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "sa.age65_count",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.asset.3",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "sa.h_tp_age",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      },
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "mfj"
-       }
-      },
-      {
-       "ref": "\"mfj\"",
-       "value": {
-        "kind": "enum",
-        "value": "mfj"
-       }
-      },
-      {
-       "ref": "sa.h_sp_age",
+       "ref": "sa.h_sp_boxes",
        "value": {
         "kind": "count",
         "value": 1
@@ -339,7 +262,7 @@
      },
      "candidate_operands": [
       {
-       "ref": "sa.h_tp_age",
+       "ref": "sa.h_tp_boxes",
        "value": {
         "kind": "count",
         "value": 0
@@ -367,7 +290,7 @@
        }
       },
       {
-       "ref": "sa.h_sp_age",
+       "ref": "sa.h_sp_boxes",
        "value": {
         "kind": "count",
         "value": 1
@@ -405,7 +328,7 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f8962.5",
+      "id": "classm.tcw.16",
       "kind": "fixture"
      }
     },
@@ -416,7 +339,7 @@
      },
      "candidate_operands": [
       {
-       "ref": "sa.h_tp_age",
+       "ref": "sa.h_tp_boxes",
        "value": {
         "kind": "count",
         "value": 0
@@ -444,7 +367,84 @@
        }
       },
       {
-       "ref": "sa.h_sp_age",
+       "ref": "sa.h_sp_boxes",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "sa.age65_count",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "mutation.t2.f8962_months_asset3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.h_tp_boxes",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      },
+      {
+       "ref": "sa.h_sp_boxes",
        "value": {
         "kind": "count",
         "value": 1
@@ -488,32 +488,34 @@
      }
     }
    ],
-   "differ": 58,
+   "differ": 94,
    "handle": "sa.age65",
-   "in_scope": 2487,
-   "in_scope_agree": 2429,
+   "in_scope": 2521,
+   "in_scope_agree": 2427,
    "invalid": 0,
    "kinds": {
-    "value": 58
+    "candidate-unknown": 17,
+    "value": 77
    },
    "kinds_by_return": {
     "completed": {
-     "value": 21
+     "value": 17
     },
     "incomplete": {
-     "value": 21
+     "value": 11
     },
     "refused": {
-     "value": 16
+     "candidate-unknown": 17,
+     "value": 49
     }
    },
    "open_at_triage": true,
    "project": "sa.age65",
    "shown_when": null,
    "sources": {
-    "fixture": 1439,
+    "fixture": 1495,
     "generated": 500,
-    "partial": 548
+    "partial": 526
    },
    "status": "DISAGREE",
    "triage": "differs",
@@ -525,35 +527,7 @@
      },
      "candidate_operands": [
       {
-       "ref": "sa.h_tp_age",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      },
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "mfj"
-       }
-      },
-      {
-       "ref": "\"mfj\"",
-       "value": {
-        "kind": "enum",
-        "value": "mfj"
-       }
-      },
-      {
-       "ref": "sa.h_sp_age",
+       "ref": "sa.h_tp_boxes",
        "value": {
         "kind": "count",
         "value": 1
@@ -591,7 +565,7 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.dependent.5.deepseek",
+      "id": "classm.clcw.4.deepseek",
       "kind": "fixture"
      }
     },
@@ -602,7 +576,105 @@
      },
      "candidate_operands": [
       {
-       "ref": "sa.h_tp_age",
+       "ref": "sa.h_tp_boxes",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "sa.age65_count",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.h_tp_boxes",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "sa.age65_count",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.dependent.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.h_tp_boxes",
        "value": {
         "kind": "count",
         "value": 0
@@ -630,7 +702,7 @@
        }
       },
       {
-       "ref": "sa.h_sp_age",
+       "ref": "sa.h_sp_boxes",
        "value": {
         "kind": "count",
         "value": 1
@@ -679,7 +751,56 @@
      },
      "candidate_operands": [
       {
-       "ref": "sa.h_tp_age",
+       "ref": "sa.h_tp_boxes",
+       "value": {
+        "kind": "count",
+        "value": 1
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "sa.age65_count",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.eic.7.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.h_tp_boxes",
        "value": {
         "kind": "count",
         "value": 0
@@ -707,7 +828,7 @@
        }
       },
       {
-       "ref": "sa.h_sp_age",
+       "ref": "sa.h_sp_boxes",
        "value": {
         "kind": "count",
         "value": 1
@@ -751,15 +872,19 @@
     },
     {
      "candidate": {
-      "kind": "bool",
-      "value": true
+      "input": "person[taxpayer].blind",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for person[taxpayer].blind"
      },
      "candidate_operands": [
       {
-       "ref": "sa.h_tp_age",
+       "ref": "sa.h_tp_boxes",
        "value": {
-        "kind": "count",
-        "value": 0
+        "input": "person[taxpayer].blind",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].blind"
        }
       },
       {
@@ -773,7 +898,7 @@
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
-        "value": "mfj"
+        "value": "mfs"
        }
       },
       {
@@ -782,101 +907,10 @@
         "kind": "enum",
         "value": "mfj"
        }
-      },
-      {
-       "ref": "sa.h_sp_age",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
       }
      ],
      "instance": "sa",
-     "kind": "value",
-     "project": {
-      "kind": "bool",
-      "value": false
-     },
-     "project_operands": [
-      {
-       "ref": "sa.age65_count",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.asset.3",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "kind": "bool",
-      "value": true
-     },
-     "candidate_operands": [
-      {
-       "ref": "sa.h_tp_age",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      },
-      {
-       "ref": "f1040.status",
-       "value": {
-        "kind": "enum",
-        "value": "mfj"
-       }
-      },
-      {
-       "ref": "\"mfj\"",
-       "value": {
-        "kind": "enum",
-        "value": "mfj"
-       }
-      },
-      {
-       "ref": "sa.h_sp_age",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
-      }
-     ],
-     "instance": "sa",
-     "kind": "value",
+     "kind": "candidate-unknown",
      "project": {
       "kind": "bool",
       "value": false
@@ -899,21 +933,25 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.otjob.1",
+      "id": "classm.asset.4",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "kind": "bool",
-      "value": true
+      "input": "person[taxpayer].blind",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for person[taxpayer].blind"
      },
      "candidate_operands": [
       {
-       "ref": "sa.h_tp_age",
+       "ref": "sa.h_tp_boxes",
        "value": {
-        "kind": "count",
-        "value": 0
+        "input": "person[taxpayer].blind",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].blind"
        }
       },
       {
@@ -927,7 +965,7 @@
        "ref": "f1040.status",
        "value": {
         "kind": "enum",
-        "value": "mfj"
+        "value": "mfs"
        }
       },
       {
@@ -936,24 +974,10 @@
         "kind": "enum",
         "value": "mfj"
        }
-      },
-      {
-       "ref": "sa.h_sp_age",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "0",
-       "value": {
-        "kind": "count",
-        "value": 0
-       }
       }
      ],
      "instance": "sa",
-     "kind": "value",
+     "kind": "candidate-unknown",
      "project": {
       "kind": "bool",
       "value": false
@@ -976,40 +1000,296 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.s1a.1",
+      "id": "classm.sa.3",
       "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].blind",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for person[taxpayer].blind"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.h_tp_boxes",
+       "value": {
+        "input": "person[taxpayer].blind",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].blind"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "sa.age65_count",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sa.4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].blind",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for person[taxpayer].blind"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.h_tp_boxes",
+       "value": {
+        "input": "person[taxpayer].blind",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].blind"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "sa.age65_count",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.cleanup.refuse.rrta_medicare",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].blind",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for person[taxpayer].blind"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.h_tp_boxes",
+       "value": {
+        "input": "person[taxpayer].blind",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].blind"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "single"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "sa.age65_count",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.cleanup.refuse.f8889.screen_no_amounts",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "person[taxpayer].blind",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for person[taxpayer].blind"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.h_tp_boxes",
+       "value": {
+        "input": "person[taxpayer].blind",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[taxpayer].blind"
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "f1040.status",
+       "value": {
+        "kind": "enum",
+        "value": "mfs"
+       }
+      },
+      {
+       "ref": "\"mfj\"",
+       "value": {
+        "kind": "enum",
+        "value": "mfj"
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "sa.age65_count",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      },
+      {
+       "ref": "0",
+       "value": {
+        "kind": "count",
+        "value": 0
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.asset.4",
+      "kind": "partial",
+      "withheld": "sa.unsupported"
      }
     }
    ]
   },
   {
    "absent": 0,
-   "agree": 1451,
+   "agree": 1392,
    "candidate": "sa.itemizes",
-   "compared": 2487,
+   "compared": 2521,
    "completed_witnesses": [
     {
      "candidate": {
-      "input": "sa.gambling_losses",
-      "kind": "unknown",
-      "reason": "no input supplied for sa.gambling_losses"
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "sa.spouse_extra",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
      },
      "candidate_operands": [
-      {
-       "ref": "sa.line17",
-       "value": {
-        "input": "sa.gambling_losses",
-        "kind": "unknown",
-        "reason": "no input supplied for sa.gambling_losses"
-       }
-      },
-      {
-       "ref": "sa.h_std",
-       "value": {
-        "cents": 3150000,
-        "kind": "money"
-       }
-      },
       {
        "ref": "sa.elect_itemize",
        "value": {
@@ -1022,6 +1302,146 @@
        "value": {
         "kind": "bool",
         "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 5202383,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sa.h_std",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "sa.spouse_extra",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 5202383,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "sa.spouse_itemizes",
+      "kind": "unknown",
+      "reason": "no input supplied for sa.spouse_itemizes"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "input": "sa.spouse_itemizes",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.spouse_itemizes"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "input": "sa.gambling_losses",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.gambling_losses"
+       }
+      },
+      {
+       "ref": "sa.h_std",
+       "value": {
+        "input": "sa.spouse_itemizes",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.spouse_itemizes"
        }
       }
      ],
@@ -1063,46 +1483,31 @@
       {
        "ref": "sa.line17",
        "value": {
-        "cents": 8167100,
+        "cents": 5619100,
         "kind": "money"
        }
       },
       {
        "ref": "sa.standard",
        "value": {
-        "cents": 3150000,
+        "cents": 2362500,
         "kind": "money"
        }
       }
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f8995.2",
+      "id": "classm.s3.1.deepseek",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "input": "sa.gambling_losses",
+      "input": "sa.spouse_itemizes",
       "kind": "unknown",
-      "reason": "no input supplied for sa.gambling_losses"
+      "reason": "no input supplied for sa.spouse_itemizes"
      },
      "candidate_operands": [
-      {
-       "ref": "sa.line17",
-       "value": {
-        "input": "sa.gambling_losses",
-        "kind": "unknown",
-        "reason": "no input supplied for sa.gambling_losses"
-       }
-      },
-      {
-       "ref": "sa.h_std",
-       "value": {
-        "cents": 1575000,
-        "kind": "money"
-       }
-      },
       {
        "ref": "sa.elect_itemize",
        "value": {
@@ -1115,6 +1520,37 @@
        "value": {
         "kind": "bool",
         "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "input": "sa.spouse_itemizes",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.spouse_itemizes"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "input": "sa.gambling_losses",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.gambling_losses"
+       }
+      },
+      {
+       "ref": "sa.h_std",
+       "value": {
+        "input": "sa.spouse_itemizes",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.spouse_itemizes"
        }
       }
      ],
@@ -1156,7 +1592,7 @@
       {
        "ref": "sa.line17",
        "value": {
-        "cents": 6858427,
+        "cents": 8455300,
         "kind": "money"
        }
       },
@@ -1170,17 +1606,46 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f8995.3",
+      "id": "classm.s3.2.deepseek",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "input": "sa.gambling_losses",
+      "input": "sa.spouse_itemizes",
       "kind": "unknown",
-      "reason": "no input supplied for sa.gambling_losses"
+      "reason": "no input supplied for sa.spouse_itemizes"
      },
      "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "input": "sa.spouse_itemizes",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.spouse_itemizes"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
       {
        "ref": "sa.line17",
        "value": {
@@ -1192,115 +1657,9 @@
       {
        "ref": "sa.h_std",
        "value": {
-        "cents": 3150000,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "sa.elect_itemize",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "sa",
-     "kind": "candidate-unknown",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "sa.elect_itemize",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "sa.mfs_spouse_itemizes",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "sa.line17",
-       "value": {
-        "cents": 5915800,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "sa.standard",
-       "value": {
-        "cents": 3150000,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.ltc.1",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "sa.gambling_losses",
-      "kind": "unknown",
-      "reason": "no input supplied for sa.gambling_losses"
-     },
-     "candidate_operands": [
-      {
-       "ref": "sa.line17",
-       "value": {
-        "input": "sa.gambling_losses",
+        "input": "sa.spouse_itemizes",
         "kind": "unknown",
-        "reason": "no input supplied for sa.gambling_losses"
-       }
-      },
-      {
-       "ref": "sa.h_std",
-       "value": {
-        "cents": 1575000,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "sa.elect_itemize",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
+        "reason": "no input supplied for sa.spouse_itemizes"
        }
       }
      ],
@@ -1342,7 +1701,7 @@
       {
        "ref": "sa.line17",
        "value": {
-        "cents": 0,
+        "cents": 787400,
         "kind": "money"
        }
       },
@@ -1356,32 +1715,17 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.s179.2",
+      "id": "classm.s3.3.deepseek",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "input": "sa.gambling_losses",
+      "input": "sa.spouse_itemizes",
       "kind": "unknown",
-      "reason": "no input supplied for sa.gambling_losses"
+      "reason": "no input supplied for sa.spouse_itemizes"
      },
      "candidate_operands": [
-      {
-       "ref": "sa.line17",
-       "value": {
-        "input": "sa.gambling_losses",
-        "kind": "unknown",
-        "reason": "no input supplied for sa.gambling_losses"
-       }
-      },
-      {
-       "ref": "sa.h_std",
-       "value": {
-        "cents": 1575000,
-        "kind": "money"
-       }
-      },
       {
        "ref": "sa.elect_itemize",
        "value": {
@@ -1394,6 +1738,37 @@
        "value": {
         "kind": "bool",
         "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "input": "sa.spouse_itemizes",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.spouse_itemizes"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "input": "sa.gambling_losses",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.gambling_losses"
+       }
+      },
+      {
+       "ref": "sa.h_std",
+       "value": {
+        "input": "sa.spouse_itemizes",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.spouse_itemizes"
        }
       }
      ],
@@ -1435,7 +1810,7 @@
       {
        "ref": "sa.line17",
        "value": {
-        "cents": 4160147,
+        "cents": 2753100,
         "kind": "money"
        }
       },
@@ -1449,32 +1824,16 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.sc.4",
+      "id": "classm.s3.4.deepseek",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "input": "sa.gambling_losses",
-      "kind": "unknown",
-      "reason": "no input supplied for sa.gambling_losses"
+      "kind": "bool",
+      "value": true
      },
      "candidate_operands": [
-      {
-       "ref": "sa.line17",
-       "value": {
-        "input": "sa.gambling_losses",
-        "kind": "unknown",
-        "reason": "no input supplied for sa.gambling_losses"
-       }
-      },
-      {
-       "ref": "sa.h_std",
-       "value": {
-        "cents": 3150000,
-        "kind": "money"
-       }
-      },
       {
        "ref": "sa.elect_itemize",
        "value": {
@@ -1487,6 +1846,129 @@
        "value": {
         "kind": "bool",
         "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 787400,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.8.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "sa.spouse_itemizes",
+      "kind": "unknown",
+      "reason": "no input supplied for sa.spouse_itemizes"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "input": "sa.spouse_itemizes",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.spouse_itemizes"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "input": "sa.gambling_losses",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.gambling_losses"
+       }
+      },
+      {
+       "ref": "sa.h_std",
+       "value": {
+        "input": "sa.spouse_itemizes",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.spouse_itemizes"
        }
       }
      ],
@@ -1528,7 +2010,7 @@
       {
        "ref": "sa.line17",
        "value": {
-        "cents": 8167100,
+        "cents": 7247400,
         "kind": "money"
        }
       },
@@ -1542,40 +2024,563 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.se.2",
+      "id": "classm.asset.1",
       "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "sa.spouse_itemizes",
+      "kind": "unknown",
+      "reason": "no input supplied for sa.spouse_itemizes"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "input": "sa.spouse_itemizes",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.spouse_itemizes"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "input": "sa.gambling_losses",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.gambling_losses"
+       }
+      },
+      {
+       "ref": "sa.h_std",
+       "value": {
+        "input": "sa.spouse_itemizes",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.spouse_itemizes"
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "candidate-unknown",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 5619100,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 2362500,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "sa.spouse_extra",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 5202383,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sa.h_std",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "sa.spouse_extra",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 5202383,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "sa.spouse_extra",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 5202383,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sa.h_std",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "sa.spouse_extra",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": true
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 5202383,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "mutation.t2.no_senior_part5",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 787400,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f5695.8.deepseek",
+      "kind": "partial",
+      "withheld": "sa.spouse_extra"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 787400,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f5695.8.deepseek",
+      "kind": "partial",
+      "withheld": "sa.gambling_losses"
      }
     }
    ],
-   "differ": 1036,
+   "differ": 1129,
    "handle": "sa.itemizes",
-   "in_scope": 1808,
-   "in_scope_agree": 818,
+   "in_scope": 1893,
+   "in_scope_agree": 796,
    "invalid": 0,
    "kinds": {
-    "candidate-refuses": 46,
-    "candidate-unknown": 990
+    "candidate-refuses": 23,
+    "candidate-unknown": 1082,
+    "project-refuses": 9,
+    "project-unknown": 11,
+    "value": 4
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-unknown": 118
+     "candidate-refuses": 3,
+     "candidate-unknown": 170,
+     "value": 3
     },
     "incomplete": {
-     "candidate-refuses": 11,
-     "candidate-unknown": 694
+     "candidate-refuses": 7,
+     "candidate-unknown": 712,
+     "project-unknown": 11
     },
     "refused": {
-     "candidate-refuses": 35,
-     "candidate-unknown": 178
+     "candidate-refuses": 13,
+     "candidate-unknown": 200,
+     "project-refuses": 9,
+     "value": 1
     }
    },
    "open_at_triage": true,
    "project": "sa.itemizes",
    "shown_when": null,
    "sources": {
-    "fixture": 1439,
+    "fixture": 1495,
     "generated": 500,
-    "partial": 548
+    "partial": 526
    },
    "status": "DISAGREE",
    "triage": "differs",
@@ -1587,6 +2592,34 @@
       "reason": "no input supplied for sa.gambling_losses"
      },
      "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
       {
        "ref": "sa.line17",
        "value": {
@@ -1600,20 +2633,6 @@
        "value": {
         "cents": 2362500,
         "kind": "money"
-       }
-      },
-      {
-       "ref": "sa.elect_itemize",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
        }
       }
      ],
@@ -1681,6 +2700,34 @@
      },
      "candidate_operands": [
       {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
        "ref": "sa.line17",
        "value": {
         "input": "sa.gambling_losses",
@@ -1693,20 +2740,6 @@
        "value": {
         "cents": 3150000,
         "kind": "money"
-       }
-      },
-      {
-       "ref": "sa.elect_itemize",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
        }
       }
      ],
@@ -1774,6 +2807,34 @@
      },
      "candidate_operands": [
       {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
        "ref": "sa.line17",
        "value": {
         "input": "sa.gambling_losses",
@@ -1786,20 +2847,6 @@
        "value": {
         "cents": 2362500,
         "kind": "money"
-       }
-      },
-      {
-       "ref": "sa.elect_itemize",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
        }
       }
      ],
@@ -1867,6 +2914,34 @@
      },
      "candidate_operands": [
       {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
        "ref": "sa.line17",
        "value": {
         "input": "sa.gambling_losses",
@@ -1879,20 +2954,6 @@
        "value": {
         "cents": 2362500,
         "kind": "money"
-       }
-      },
-      {
-       "ref": "sa.elect_itemize",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
        }
       }
      ],
@@ -1960,6 +3021,34 @@
      },
      "candidate_operands": [
       {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
        "ref": "sa.line17",
        "value": {
         "input": "sa.gambling_losses",
@@ -1972,20 +3061,6 @@
        "value": {
         "cents": 2362500,
         "kind": "money"
-       }
-      },
-      {
-       "ref": "sa.elect_itemize",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
        }
       }
      ],
@@ -2053,6 +3128,34 @@
      },
      "candidate_operands": [
       {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
        "ref": "sa.line17",
        "value": {
         "input": "sa.gambling_losses",
@@ -2065,20 +3168,6 @@
        "value": {
         "cents": 2362500,
         "kind": "money"
-       }
-      },
-      {
-       "ref": "sa.elect_itemize",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
        }
       }
      ],
@@ -2148,9 +3237,37 @@
      },
      "candidate_operands": [
       {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
        "ref": "sa.line17",
        "value": {
-        "cents": 2220400,
+        "cents": 5202383,
         "kind": "money"
        }
       },
@@ -2160,192 +3277,6 @@
         "cite": null,
         "form": "model-declared refusal",
         "gate": "sa.spouse_extra",
-        "kind": "refusal",
-        "remedy": "Outside candidate scope"
-       }
-      }
-     ],
-     "instance": "sa",
-     "kind": "candidate-refuses",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "sa.elect_itemize",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.clcw26.3.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": {
-       "doc": "p560",
-       "locator": "pp. 11, 39, chapter 2, Excess contributions; chapter 5"
-      },
-      "form": "SEP contributions above the maximum deductible contribution",
-      "gate": "person[taxpayer].sep_excess",
-      "kind": "refusal",
-      "remedy": "Excess SEP contributions are outside this tool."
-     },
-     "candidate_operands": [
-      {
-       "ref": "sa.line17",
-       "value": {
-        "cite": {
-         "doc": "p560",
-         "locator": "pp. 11, 39, chapter 2, Excess contributions; chapter 5"
-        },
-        "form": "SEP contributions above the maximum deductible contribution",
-        "gate": "person[taxpayer].sep_excess",
-        "kind": "refusal",
-        "remedy": "Excess SEP contributions are outside this tool."
-       }
-      },
-      {
-       "ref": "sa.h_std",
-       "value": {
-        "cents": 2362500,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "sa",
-     "kind": "candidate-refuses",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "sa.elect_itemize",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.asset.2",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": {
-       "doc": "f4952",
-       "locator": "pp. 1, 3\u20134, Investment Interest Expense Deduction"
-      },
-      "form": "Form 4952 / Form 6198 / Schedule E",
-      "gate": "f4952.unsupported",
-      "kind": "refusal",
-      "remedy": "Allocate the interest and prepare the applicable unsupported schedule or at-risk computation."
-     },
-     "candidate_operands": [
-      {
-       "ref": "sa.line17",
-       "value": {
-        "cite": {
-         "doc": "f4952",
-         "locator": "pp. 1, 3\u20134, Investment Interest Expense Deduction"
-        },
-        "form": "Form 4952 / Form 6198 / Schedule E",
-        "gate": "f4952.unsupported",
-        "kind": "refusal",
-        "remedy": "Allocate the interest and prepare the applicable unsupported schedule or at-risk computation."
-       }
-      },
-      {
-       "ref": "sa.h_std",
-       "value": {
-        "cents": 1575000,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "sa",
-     "kind": "candidate-refuses",
-     "project": {
-      "kind": "bool",
-      "value": true
-     },
-     "project_operands": [
-      {
-       "ref": "sa.elect_itemize",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "id": "classm.carloan.1",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": {
-       "doc": "i1040sb",
-       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
-      },
-      "form": "Schedule B special treatment / Form 8815",
-      "gate": "sb.unsupported",
-      "kind": "refusal",
-      "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
-     },
-     "candidate_operands": [
-      {
-       "ref": "sa.line17",
-       "value": {
-        "cite": {
-         "doc": "i1040sb",
-         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
-        },
-        "form": "Schedule B special treatment / Form 8815",
-        "gate": "sb.unsupported",
-        "kind": "refusal",
-        "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
-       }
-      },
-      {
-       "ref": "sa.h_std",
-       "value": {
-        "cite": null,
-        "form": "model-declared refusal",
-        "gate": "sa.dependent",
         "kind": "refusal",
         "remedy": "Outside candidate scope"
        }
@@ -2376,6 +3307,61 @@
        "ref": "sa.mfs_spouse_itemizes",
        "value": {
         "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 5202383,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
         "value": true
        }
       },
@@ -2387,9 +3373,183 @@
        }
       }
      ],
+     "instance": "sa",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 787400,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.8.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 92, Line 8z, \"For more details, see Miscellaneous Income in Pub. 525\""
+      },
+      "form": "Pub. 525, Miscellaneous Income (Schedule 1, line 8z)",
+      "gate": "oi8z[item_a].figured",
+      "kind": "refusal",
+      "remedy": "Line 8z items other than RTAA payments and kickbacks are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "input": "sa.elect_itemize",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.elect_itemize"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "input": "sa.spouse_itemizes",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.spouse_itemizes"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 92, Line 8z, \"For more details, see Miscellaneous Income in Pub. 525\""
+        },
+        "form": "Pub. 525, Miscellaneous Income (Schedule 1, line 8z)",
+        "gate": "oi8z[item_a].figured",
+        "kind": "refusal",
+        "remedy": "Line 8z items other than RTAA payments and kickbacks are outside this tool."
+       }
+      },
+      {
+       "ref": "sa.h_std",
+       "value": {
+        "input": "sa.dependent",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.dependent"
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "candidate-refuses",
+     "project": {
+      "input": "sa.elect_itemize",
+      "kind": "unknown",
+      "reason": "no input supplied for sa.elect_itemize"
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "input": "sa.elect_itemize",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.elect_itemize"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "input": "sa.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.unsupported"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "input": "sa.dependent",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.dependent"
+       }
+      }
+     ],
      "project_return": "refused",
      "source": {
-      "id": "classm.s1.3",
+      "id": "classm.asset.3",
       "kind": "fixture"
      }
     },
@@ -2403,9 +3563,151 @@
      },
      "candidate_operands": [
       {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
        "ref": "sa.line17",
        "value": {
-        "cents": 2220400,
+        "input": "clcw.prior_sd7",
+        "kind": "unknown",
+        "reason": "no input supplied for clcw.prior_sd7"
+       }
+      },
+      {
+       "ref": "sa.h_std",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "sa.spouse_extra",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "candidate-refuses",
+     "project": {
+      "input": "clcw.prior_sd7",
+      "kind": "unknown",
+      "reason": "no input supplied for clcw.prior_sd7"
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "input": "clcw.prior_sd7",
+        "kind": "unknown",
+        "reason": "no input supplied for clcw.prior_sd7"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.carloan.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "sa.spouse_extra",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 5202383,
         "kind": "money"
        }
       },
@@ -2431,7 +3733,7 @@
        "ref": "sa.elect_itemize",
        "value": {
         "kind": "bool",
-        "value": true
+        "value": false
        }
       },
       {
@@ -2440,11 +3742,39 @@
         "kind": "bool",
         "value": true
        }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 5202383,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
       }
      ],
-     "project_return": "refused",
+     "project_return": "completed",
      "source": {
-      "id": "classm.s179.3",
+      "id": "classm.clcw.2",
       "kind": "fixture"
      }
     },
@@ -2458,9 +3788,37 @@
      },
      "candidate_operands": [
       {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
        "ref": "sa.line17",
        "value": {
-        "cents": 2220400,
+        "cents": 5202383,
         "kind": "money"
        }
       },
@@ -2486,6 +3844,187 @@
        "ref": "sa.elect_itemize",
        "value": {
         "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 5202383,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "mutation.t2.no_senior_part5",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "sa.spouse_extra",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "input": "sa.gambling_losses",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.gambling_losses"
+       }
+      },
+      {
+       "ref": "sa.h_std",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "sa.spouse_extra",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "candidate-refuses",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1775000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "stage12.single.spouse_boxes_answer",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
         "value": true
        }
       },
@@ -2497,33 +4036,1473 @@
        }
       }
      ],
+     "instance": "sa",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 31, Lines 6a and 6b, Exception"
+      },
+      "form": "Pub. 915 or Pub. 590-A worksheet",
+      "gate": "ssb.pub915",
+      "kind": "refusal",
+      "remedy": "The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet in the publication."
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 31, Lines 6a and 6b, Exception"
+        },
+        "form": "Pub. 915 or Pub. 590-A worksheet",
+        "gate": "ssb.pub915",
+        "kind": "refusal",
+        "remedy": "The Social Security Benefits Worksheet in the Form 1040 instructions does not apply; use the worksheet in the publication."
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
      "project_return": "refused",
      "source": {
-      "id": "classm.clcw26.3",
-      "kind": "fixture"
+      "index": 17,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "f1040sa",
+       "locator": "Schedule A (2025), lines 1\u201318"
+      },
+      "form": "Schedule A charitable limitation / carryover",
+      "gate": "sa.charity_limited",
+      "kind": "refusal",
+      "remedy": "Income-limited and carried-over charitable deductions are outside scope."
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cite": {
+         "doc": "f1040sa",
+         "locator": "Schedule A (2025), lines 1\u201318"
+        },
+        "form": "Schedule A charitable limitation / carryover",
+        "gate": "sa.charity_limited",
+        "kind": "refusal",
+        "remedy": "Income-limited and carried-over charitable deductions are outside scope."
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 2362500,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 26,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "f1040sa",
+       "locator": "Schedule A (2025), lines 1\u201318"
+      },
+      "form": "Schedule A charitable limitation / carryover",
+      "gate": "sa.charity_limited",
+      "kind": "refusal",
+      "remedy": "Income-limited and carried-over charitable deductions are outside scope."
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cite": {
+         "doc": "f1040sa",
+         "locator": "Schedule A (2025), lines 1\u201318"
+        },
+        "form": "Schedule A charitable limitation / carryover",
+        "gate": "sa.charity_limited",
+        "kind": "refusal",
+        "remedy": "Income-limited and carried-over charitable deductions are outside scope."
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "pp. 34\u201335, line 12e and Standard Deduction Chart"
+        },
+        "form": "Standard Deduction Worksheet for Dependents / dual-status rules",
+        "gate": "sa.dependent",
+        "kind": "refusal",
+        "remedy": "Dependent and dual-status standard deductions are outside this resident nondependent slice."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 46,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "Form 8938",
+      "gate": "sb.form8938",
+      "kind": "refusal",
+      "remedy": "Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938."
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "Form 8938",
+        "gate": "sb.form8938",
+        "kind": "refusal",
+        "remedy": "Prepare the required foreign financial asset disclosure; this tool does not prepare Form 8938."
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "pp. 34\u201335, line 12e and Standard Deduction Chart"
+        },
+        "form": "Standard Deduction Worksheet for Dependents / dual-status rules",
+        "gate": "sa.dependent",
+        "kind": "refusal",
+        "remedy": "Dependent and dual-status standard deductions are outside this resident nondependent slice."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 48,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "Schedule B special treatment / Form 8815",
+      "gate": "sb.unsupported",
+      "kind": "refusal",
+      "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "Schedule B special treatment / Form 8815",
+        "gate": "sb.unsupported",
+        "kind": "refusal",
+        "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 275,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 27, Exception 2; f1099r Box 7"
+      },
+      "form": "Form 8606 or another Form 1099-R code",
+      "gate": "person[taxpayer].retirement[r1].bad_code",
+      "kind": "refusal",
+      "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 27, Exception 2; f1099r Box 7"
+        },
+        "form": "Form 8606 or another Form 1099-R code",
+        "gate": "person[taxpayer].retirement[r1].bad_code",
+        "kind": "refusal",
+        "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside this tool."
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 2362500,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 307,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 2045432,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 2362500,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 351,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "project-unknown",
+     "project": {
+      "input": "sa.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for sa.unsupported"
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "input": "sa.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.unsupported"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f5695.8.deepseek",
+      "kind": "partial",
+      "withheld": "sa.unsupported"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "project-unknown",
+     "project": {
+      "input": "sa.charity_limited",
+      "kind": "unknown",
+      "reason": "no input supplied for sa.charity_limited"
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "input": "sa.charity_limited",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.charity_limited"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f5695.8.deepseek",
+      "kind": "partial",
+      "withheld": "sa.charity_limited"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "project-unknown",
+     "project": {
+      "input": "sa.excluded_income",
+      "kind": "unknown",
+      "reason": "no input supplied for sa.excluded_income"
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "input": "sa.excluded_income",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.excluded_income"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f5695.8.deepseek",
+      "kind": "partial",
+      "withheld": "sa.excluded_income"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "project-unknown",
+     "project": {
+      "input": "sa.dependent",
+      "kind": "unknown",
+      "reason": "no input supplied for sa.dependent"
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 787400,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "input": "sa.dependent",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.dependent"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f5695.8.deepseek",
+      "kind": "partial",
+      "withheld": "sa.dependent"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 787400,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f5695.8.deepseek",
+      "kind": "partial",
+      "withheld": "sa.spouse_extra"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "input": "sa.elect_itemize",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.elect_itemize"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "project-unknown",
+     "project": {
+      "input": "sa.elect_itemize",
+      "kind": "unknown",
+      "reason": "no input supplied for sa.elect_itemize"
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "input": "sa.elect_itemize",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.elect_itemize"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 787400,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f5695.8.deepseek",
+      "kind": "partial",
+      "withheld": "sa.elect_itemize"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "project-unknown",
+     "project": {
+      "input": "sa.line1",
+      "kind": "unknown",
+      "reason": "no input supplied for sa.line1"
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "input": "sa.line1",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.line1"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f5695.8.deepseek",
+      "kind": "partial",
+      "withheld": "sa.line1"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": true
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "value",
+     "project": {
+      "kind": "bool",
+      "value": false
+     },
+     "project_operands": [
+      {
+       "ref": "sa.elect_itemize",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.mfs_spouse_itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 787400,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f5695.8.deepseek",
+      "kind": "partial",
+      "withheld": "sa.gambling_losses"
      }
     }
    ]
   },
   {
    "absent": 0,
-   "agree": 1449,
+   "agree": 1388,
    "candidate": "sa.deduction",
-   "compared": 2487,
+   "compared": 2521,
    "completed_witnesses": [
     {
      "candidate": {
-      "input": "sa.gambling_losses",
-      "kind": "unknown",
-      "reason": "no input supplied for sa.gambling_losses"
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "sa.spouse_extra",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
      },
      "candidate_operands": [
       {
        "ref": "sa.itemizes",
        "value": {
-        "input": "sa.gambling_losses",
-        "kind": "unknown",
-        "reason": "no input supplied for sa.gambling_losses"
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "sa.spouse_extra",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
        }
       },
       {
@@ -2535,9 +5514,9 @@
       }
      ],
      "instance": "sa",
-     "kind": "candidate-unknown",
+     "kind": "candidate-refuses",
      "project": {
-      "cents": 8167100,
+      "cents": 5202383,
       "kind": "money"
      },
      "project_operands": [
@@ -2565,30 +5544,30 @@
       {
        "ref": "sa.line17",
        "value": {
-        "cents": 8167100,
+        "cents": 5202383,
         "kind": "money"
        }
       }
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f8995.2",
+      "id": "classm.clcw.2.deepseek",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "input": "sa.gambling_losses",
+      "input": "sa.spouse_itemizes",
       "kind": "unknown",
-      "reason": "no input supplied for sa.gambling_losses"
+      "reason": "no input supplied for sa.spouse_itemizes"
      },
      "candidate_operands": [
       {
        "ref": "sa.itemizes",
        "value": {
-        "input": "sa.gambling_losses",
+        "input": "sa.spouse_itemizes",
         "kind": "unknown",
-        "reason": "no input supplied for sa.gambling_losses"
+        "reason": "no input supplied for sa.spouse_itemizes"
        }
       },
       {
@@ -2602,7 +5581,7 @@
      "instance": "sa",
      "kind": "candidate-unknown",
      "project": {
-      "cents": 6858427,
+      "cents": 5619100,
       "kind": "money"
      },
      "project_operands": [
@@ -2630,30 +5609,30 @@
       {
        "ref": "sa.line17",
        "value": {
-        "cents": 6858427,
+        "cents": 5619100,
         "kind": "money"
        }
       }
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f8995.3",
+      "id": "classm.s3.1.deepseek",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "input": "sa.gambling_losses",
+      "input": "sa.spouse_itemizes",
       "kind": "unknown",
-      "reason": "no input supplied for sa.gambling_losses"
+      "reason": "no input supplied for sa.spouse_itemizes"
      },
      "candidate_operands": [
       {
        "ref": "sa.itemizes",
        "value": {
-        "input": "sa.gambling_losses",
+        "input": "sa.spouse_itemizes",
         "kind": "unknown",
-        "reason": "no input supplied for sa.gambling_losses"
+        "reason": "no input supplied for sa.spouse_itemizes"
        }
       },
       {
@@ -2667,7 +5646,7 @@
      "instance": "sa",
      "kind": "candidate-unknown",
      "project": {
-      "cents": 5915800,
+      "cents": 8455300,
       "kind": "money"
      },
      "project_operands": [
@@ -2695,30 +5674,30 @@
       {
        "ref": "sa.line17",
        "value": {
-        "cents": 5915800,
+        "cents": 8455300,
         "kind": "money"
        }
       }
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.ltc.1",
+      "id": "classm.s3.2.deepseek",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "input": "sa.gambling_losses",
+      "input": "sa.spouse_itemizes",
       "kind": "unknown",
-      "reason": "no input supplied for sa.gambling_losses"
+      "reason": "no input supplied for sa.spouse_itemizes"
      },
      "candidate_operands": [
       {
        "ref": "sa.itemizes",
        "value": {
-        "input": "sa.gambling_losses",
+        "input": "sa.spouse_itemizes",
         "kind": "unknown",
-        "reason": "no input supplied for sa.gambling_losses"
+        "reason": "no input supplied for sa.spouse_itemizes"
        }
       },
       {
@@ -2781,23 +5760,23 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.s179.2",
+      "id": "classm.s3.3.deepseek",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "input": "sa.gambling_losses",
+      "input": "sa.spouse_itemizes",
       "kind": "unknown",
-      "reason": "no input supplied for sa.gambling_losses"
+      "reason": "no input supplied for sa.spouse_itemizes"
      },
      "candidate_operands": [
       {
        "ref": "sa.itemizes",
        "value": {
-        "input": "sa.gambling_losses",
+        "input": "sa.spouse_itemizes",
         "kind": "unknown",
-        "reason": "no input supplied for sa.gambling_losses"
+        "reason": "no input supplied for sa.spouse_itemizes"
        }
       },
       {
@@ -2811,7 +5790,7 @@
      "instance": "sa",
      "kind": "candidate-unknown",
      "project": {
-      "cents": 4160147,
+      "cents": 2753100,
       "kind": "money"
      },
      "project_operands": [
@@ -2839,30 +5818,114 @@
       {
        "ref": "sa.line17",
        "value": {
-        "cents": 4160147,
+        "cents": 2753100,
         "kind": "money"
        }
       }
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.sc.4",
+      "id": "classm.s3.4.deepseek",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "input": "sa.gambling_losses",
-      "kind": "unknown",
-      "reason": "no input supplied for sa.gambling_losses"
+      "cents": 787400,
+      "kind": "money"
      },
      "candidate_operands": [
       {
        "ref": "sa.itemizes",
        "value": {
-        "input": "sa.gambling_losses",
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 787400,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "value",
+     "project": {
+      "cents": 1575000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sa.dependent",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.8.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "sa.spouse_itemizes",
+      "kind": "unknown",
+      "reason": "no input supplied for sa.spouse_itemizes"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "input": "sa.spouse_itemizes",
         "kind": "unknown",
-        "reason": "no input supplied for sa.gambling_losses"
+        "reason": "no input supplied for sa.spouse_itemizes"
        }
       },
       {
@@ -2876,7 +5939,7 @@
      "instance": "sa",
      "kind": "candidate-unknown",
      "project": {
-      "cents": 8167100,
+      "cents": 7247400,
       "kind": "money"
      },
      "project_operands": [
@@ -2904,47 +5967,343 @@
       {
        "ref": "sa.line17",
        "value": {
-        "cents": 8167100,
+        "cents": 7247400,
         "kind": "money"
        }
       }
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.se.2",
+      "id": "classm.asset.1",
       "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "sa.spouse_itemizes",
+      "kind": "unknown",
+      "reason": "no input supplied for sa.spouse_itemizes"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "input": "sa.spouse_itemizes",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.spouse_itemizes"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 5619100,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sa.dependent",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 5619100,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.1",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "sa.spouse_extra",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "sa.spouse_extra",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 5202383,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sa.dependent",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 5202383,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "sa.spouse_extra",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "sa.spouse_extra",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 5202383,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sa.dependent",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 5202383,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "mutation.t2.no_senior_part5",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 787400,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 787400,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "value",
+     "project": {
+      "cents": 1575000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sa.dependent",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f5695.8.deepseek",
+      "kind": "partial",
+      "withheld": "sa.spouse_extra"
      }
     }
    ],
-   "differ": 1038,
+   "differ": 1133,
    "handle": "sa.deduction",
-   "in_scope": 1808,
-   "in_scope_agree": 811,
+   "in_scope": 1879,
+   "in_scope_agree": 778,
    "invalid": 0,
    "kinds": {
-    "candidate-refuses": 41,
-    "candidate-unknown": 997
+    "candidate-refuses": 30,
+    "candidate-unknown": 1096,
+    "project-refuses": 2,
+    "project-unknown": 2,
+    "value": 3
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-unknown": 118
+     "candidate-refuses": 3,
+     "candidate-unknown": 171,
+     "value": 2
     },
     "incomplete": {
-     "candidate-refuses": 11,
-     "candidate-unknown": 700
+     "candidate-refuses": 7,
+     "candidate-unknown": 718,
+     "project-unknown": 2
     },
     "refused": {
-     "candidate-refuses": 30,
-     "candidate-unknown": 179
+     "candidate-refuses": 20,
+     "candidate-unknown": 207,
+     "project-refuses": 2,
+     "value": 1
     }
    },
    "open_at_triage": true,
    "project": "sa.deduction",
    "shown_when": null,
    "sources": {
-    "fixture": 1439,
+    "fixture": 1495,
     "generated": 500,
-    "partial": 548
+    "partial": 526
    },
    "status": "DISAGREE",
    "triage": "differs",
@@ -3453,7 +6812,7 @@
      "instance": "sa",
      "kind": "candidate-refuses",
      "project": {
-      "cents": 2220400,
+      "cents": 5202383,
       "kind": "money"
      },
      "project_operands": [
@@ -3481,14 +6840,154 @@
       {
        "ref": "sa.line17",
        "value": {
-        "cents": 2220400,
+        "cents": 5202383,
         "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.clcw.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 787400,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 787400,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "value",
+     "project": {
+      "cents": 1575000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sa.dependent",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f5695.8.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 92, Line 8z, \"For more details, see Miscellaneous Income in Pub. 525\""
+      },
+      "form": "Pub. 525, Miscellaneous Income (Schedule 1, line 8z)",
+      "gate": "oi8z[item_a].figured",
+      "kind": "refusal",
+      "remedy": "Line 8z items other than RTAA payments and kickbacks are outside this tool."
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 92, Line 8z, \"For more details, see Miscellaneous Income in Pub. 525\""
+        },
+        "form": "Pub. 525, Miscellaneous Income (Schedule 1, line 8z)",
+        "gate": "oi8z[item_a].figured",
+        "kind": "refusal",
+        "remedy": "Line 8z items other than RTAA payments and kickbacks are outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "candidate-refuses",
+     "project": {
+      "input": "sa.dependent",
+      "kind": "unknown",
+      "reason": "no input supplied for sa.dependent"
+     },
+     "project_operands": [
+      {
+       "ref": "sa.dependent",
+       "value": {
+        "input": "sa.dependent",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.dependent"
        }
       }
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.clcw26.3.deepseek",
+      "id": "classm.asset.3",
       "kind": "fixture"
      }
     },
@@ -3522,8 +7021,9 @@
      "instance": "sa",
      "kind": "candidate-refuses",
      "project": {
-      "cents": 2220400,
-      "kind": "money"
+      "input": "clcw.prior_sd7",
+      "kind": "unknown",
+      "reason": "no input supplied for clcw.prior_sd7"
      },
      "project_operands": [
       {
@@ -3536,8 +7036,9 @@
       {
        "ref": "sa.itemizes",
        "value": {
-        "kind": "bool",
-        "value": true
+        "input": "clcw.prior_sd7",
+        "kind": "unknown",
+        "reason": "no input supplied for clcw.prior_sd7"
        }
       },
       {
@@ -3546,18 +7047,11 @@
         "kind": "bool",
         "value": true
        }
-      },
-      {
-       "ref": "sa.line17",
-       "value": {
-        "cents": 2220400,
-        "kind": "money"
-       }
       }
      ],
-     "project_return": "refused",
+     "project_return": "incomplete",
      "source": {
-      "id": "classm.s179.3",
+      "id": "classm.carloan.3",
       "kind": "fixture"
      }
     },
@@ -3591,7 +7085,7 @@
      "instance": "sa",
      "kind": "candidate-refuses",
      "project": {
-      "cents": 2220400,
+      "cents": 5202383,
       "kind": "money"
      },
      "project_operands": [
@@ -3619,14 +7113,83 @@
       {
        "ref": "sa.line17",
        "value": {
-        "cents": 2220400,
+        "cents": 5202383,
         "kind": "money"
        }
       }
      ],
-     "project_return": "refused",
+     "project_return": "completed",
      "source": {
-      "id": "classm.clcw26.3",
+      "id": "classm.clcw.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "sa.spouse_extra",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "sa.spouse_extra",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 5202383,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sa.dependent",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 5202383,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "mutation.t2.no_senior_part5",
       "kind": "fixture"
      }
     },
@@ -3715,27 +7278,16 @@
     },
     {
      "candidate": {
-      "cite": {
-       "doc": "f4952",
-       "locator": "pp. 1, 3\u20134, Investment Interest Expense Deduction"
-      },
-      "form": "Form 4952 / Form 6198 / Schedule E",
-      "gate": "f4952.unsupported",
-      "kind": "refusal",
-      "remedy": "Allocate the interest and prepare the applicable unsupported schedule or at-risk computation."
+      "input": "sa.gambling_losses",
+      "kind": "unknown",
+      "reason": "no input supplied for sa.gambling_losses"
      },
      "candidate_operands": [
       {
        "ref": "sa.itemizes",
        "value": {
-        "cite": {
-         "doc": "f4952",
-         "locator": "pp. 1, 3\u20134, Investment Interest Expense Deduction"
-        },
-        "form": "Form 4952 / Form 6198 / Schedule E",
-        "gate": "f4952.unsupported",
-        "kind": "refusal",
-        "remedy": "Allocate the interest and prepare the applicable unsupported schedule or at-risk computation."
+        "kind": "bool",
+        "value": true
        }
       },
       {
@@ -3744,54 +7296,54 @@
         "kind": "bool",
         "value": true
        }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "input": "sa.gambling_losses",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.gambling_losses"
+       }
       }
      ],
      "instance": "sa",
-     "kind": "candidate-refuses",
+     "kind": "project-refuses",
      "project": {
-      "input": "sa.dependent",
-      "kind": "unknown",
-      "reason": "no input supplied for sa.dependent"
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "pp. 34\u201335, line 12e and Standard Deduction Chart"
+      },
+      "form": "A return for a dependent or dual-status alien",
+      "gate": "sa.dependent",
+      "kind": "refusal",
+      "remedy": "A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized."
      },
      "project_operands": [
       {
        "ref": "sa.dependent",
        "value": {
-        "input": "sa.dependent",
-        "kind": "unknown",
-        "reason": "no input supplied for sa.dependent"
+        "kind": "bool",
+        "value": true
        }
       }
      ],
      "project_return": "refused",
      "source": {
-      "id": "stage16.cleanup.refuse.f4952_unsupported",
+      "id": "stage4.refuse.dependent_itemizes",
       "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "cite": {
-       "doc": "i8889",
-       "locator": "Parts II and III; lines 4, 10 and 13"
-      },
-      "form": "Form 8889 Part III, Form 8853, or other HSA situations",
-      "gate": "person[taxpayer].f8889[hsa].unsupported",
-      "kind": "refusal",
-      "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool."
+      "cents": 2045432,
+      "kind": "money"
      },
      "candidate_operands": [
       {
        "ref": "sa.itemizes",
        "value": {
-        "cite": {
-         "doc": "i8889",
-         "locator": "Parts II and III; lines 4, 10 and 13"
-        },
-        "form": "Form 8889 Part III, Form 8853, or other HSA situations",
-        "gate": "person[taxpayer].f8889[hsa].unsupported",
-        "kind": "refusal",
-        "remedy": "Qualified HSA funding distributions, Archer MSAs, prior-year excess contributions, testing-period failures, inherited HSAs, deemed distributions, withdrawals of excess contributions and repaid mistaken distributions are outside this tool."
+        "kind": "bool",
+        "value": true
        }
       },
       {
@@ -3800,10 +7352,158 @@
         "kind": "bool",
         "value": true
        }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 2045432,
+        "kind": "money"
+       }
       }
      ],
      "instance": "sa",
-     "kind": "candidate-refuses",
+     "kind": "value",
+     "project": {
+      "cents": 2362500,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sa.dependent",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 2362500,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 351,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 695218,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 695218,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "pp. 34\u201335, line 12e and Standard Deduction Chart"
+      },
+      "form": "A return for a dependent or dual-status alien",
+      "gate": "sa.dependent",
+      "kind": "refusal",
+      "remedy": "A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside this resident nondependent slice, whether the deduction is standard or itemized."
+     },
+     "project_operands": [
+      {
+       "ref": "sa.dependent",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 365,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 787400,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 787400,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "project-unknown",
      "project": {
       "input": "sa.dependent",
       "kind": "unknown",
@@ -3819,19 +7519,171 @@
        }
       }
      ],
-     "project_return": "refused",
+     "project_return": "incomplete",
      "source": {
-      "id": "stage16.cleanup.refuse.f8889.screen_no_amounts",
-      "kind": "fixture"
+      "base": "classm.f5695.8.deepseek",
+      "kind": "partial",
+      "withheld": "sa.dependent"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 787400,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 787400,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "value",
+     "project": {
+      "cents": 1575000,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "sa.dependent",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.standard",
+       "value": {
+        "cents": 1575000,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f5695.8.deepseek",
+      "kind": "partial",
+      "withheld": "sa.spouse_extra"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 787400,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "sa.line17",
+       "value": {
+        "cents": 787400,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "sa",
+     "kind": "project-unknown",
+     "project": {
+      "input": "sa.elect_itemize",
+      "kind": "unknown",
+      "reason": "no input supplied for sa.elect_itemize"
+     },
+     "project_operands": [
+      {
+       "ref": "sa.dependent",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "sa.itemizes",
+       "value": {
+        "input": "sa.elect_itemize",
+        "kind": "unknown",
+        "reason": "no input supplied for sa.elect_itemize"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f5695.8.deepseek",
+      "kind": "partial",
+      "withheld": "sa.elect_itemize"
      }
     }
    ]
   },
   {
    "absent": 0,
-   "agree": 1111,
+   "agree": 1035,
    "candidate": "sa.line16",
-   "compared": 2487,
+   "compared": 2521,
    "completed_witnesses": [
     {
      "candidate": {
@@ -3929,7 +7781,7 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f8995.2",
+      "id": "classm.s3.1.deepseek",
       "kind": "fixture"
      }
     },
@@ -4029,7 +7881,7 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f8995.3",
+      "id": "classm.s3.2.deepseek",
       "kind": "fixture"
      }
     },
@@ -4129,7 +7981,7 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.ltc.1",
+      "id": "classm.s3.3.deepseek",
       "kind": "fixture"
      }
     },
@@ -4229,7 +8081,7 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.s179.2",
+      "id": "classm.s3.4.deepseek",
       "kind": "fixture"
      }
     },
@@ -4329,7 +8181,7 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.sc.4",
+      "id": "classm.asset.1",
       "kind": "fixture"
      }
     },
@@ -4429,42 +8281,42 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.se.2",
+      "id": "classm.f4952.1",
       "kind": "fixture"
      }
     }
    ],
-   "differ": 1376,
+   "differ": 1486,
    "handle": "16",
-   "in_scope": 2397,
-   "in_scope_agree": 1079,
+   "in_scope": 2416,
+   "in_scope_agree": 988,
    "invalid": 0,
    "kinds": {
-    "candidate-unknown": 1265,
+    "candidate-unknown": 1386,
     "project-refuses": 58,
-    "project-unknown": 53
+    "project-unknown": 42
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-unknown": 102
+     "candidate-unknown": 144
     },
     "incomplete": {
-     "candidate-unknown": 792,
-     "project-unknown": 40
+     "candidate-unknown": 838,
+     "project-unknown": 32
     },
     "refused": {
-     "candidate-unknown": 371,
+     "candidate-unknown": 404,
      "project-refuses": 58,
-     "project-unknown": 13
+     "project-unknown": 10
     }
    },
    "open_at_triage": true,
    "project": "sa.line16",
    "shown_when": null,
    "sources": {
-    "fixture": 1439,
+    "fixture": 1495,
     "generated": 500,
-    "partial": 548
+    "partial": 526
    },
    "status": "DISAGREE",
    "triage": "differs",
@@ -5196,7 +9048,7 @@
      ],
      "project_return": "refused",
      "source": {
-      "id": "classm.dependent.8.deepseek",
+      "id": "classm.dependent.1.deepseek",
       "kind": "fixture"
      }
     },
@@ -5849,10 +9701,10 @@
    ]
   }
  ],
- "log_sha256_at_triage": "b64c29fd10e81075918de440d06da873a4ff8d0c45dc96a5f6b6a727e33ce5e3",
+ "log_sha256_at_triage": "0089e109eeb3ee458e72b0cd6a68cbef4b6e01e2e6d65dc5f27052cc8516c992",
  "policy": "executable-triage-v2",
- "response_sha256": "c32ea769117b8d7acfbf3533a5ff2bef96e373b3358d4c6d40d5c8cba7469f00",
+ "response_sha256": "bacb5dede358ca1616386436ff1f3f66e0f9eca4f183f13c86fb57db7547f9db",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "evaluated",
- "subject_sha256": "2b65b38ab5b3b60fe9ee7aea0c8532c37fcc95869af6ec9a1e0705376cd919ec"
+ "subject_sha256": "db1543ebd2f331ad735d7efc1b1ec2f167dca06d6045bc946d2835324faaefa0"
 }

@@ -1,0 +1,49 @@
+Reading additional input from stdin...
+OpenAI Codex v0.166.0
+--------
+workdir: /private/var/folders/kw/rp67pf8d5ng588lqp7d_gb240000gn/T/tmp.P0bbEpiiB2
+model: gpt-6-astra
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: none
+reasoning summaries: none
+session id: 01a1a2e3-6f6e-7ea0-853d-ed98bb0bb362
+--------
+user
+You are checking a tax-software rule against IRS text. Answer from the quoted text only; say where the text does not decide.
+
+Setting. A program prepares Form 8962 (premium tax credit) for tax year 2025, Parts I to III only. Before computing, it REFUSES (declines to prepare) any return where any of these applies: a policy shared with another tax family or a divorce/separation with a shared policy (Part IV allocation); a 2025 marriage with coverage before the first full month of marriage (Part V); anyone in the tax family eligible for other minimum essential coverage for any month (Medicare, Medicaid, CHIP, TRICARE, affordable employer coverage, employer coverage actually enrolled in, etc.); someone enrolled not lawfully present; a QSEHRA or individual coverage HRA; any part of a month's premium not paid by the due date of the return; advance payments for someone in no tax family; incarceration; coverage that began after the first day of a month; a premium refunded in 2025; a VOID or replaced Form 1095-A; married filing separately; a filer who can be claimed as a dependent.
+
+Proposed new refusal. For an applicable taxpayer, refuse when any month of Form 8962 lines 12-23 has column (a) (enrollment premiums) above zero and column (b) (applicable SLCSP premium) equal to zero (or line 11 column (a) above zero with column (b) zero). The premise is that, once the situations above are refused, no legitimate 2025 month has enrollment premiums but a zero applicable SLCSP premium, so a zero is an entry error (typically copying a blank or -0- column B from a Form 1095-A when no APTC was paid).
+
+Quoted text (Pub. 974 (2025), p. 6): "To qualify for a monthly credit amount, at least one individual in your tax family must be enrolled in a qualified health plan on the first day of that month." "Your credit amount for each month is the lesser of: The enrollment premiums ... for the month for one or more qualified health plans in which you or any individual in your tax family enrolled, or The amount of the monthly applicable SLCSP premium (described later) less your monthly contribution amount." "Applicable SLCSP premium. The applicable SLCSP premium is the second lowest cost silver plan premium offered through the Marketplace where you reside that applies to your coverage family (described earlier). ... Column B of Form 1095-A, Part III, generally reports the applicable SLCSP premium. If no APTC was paid for your coverage, in column B of Form 1095-A, Part III, may be wrong or blank or may report your applicable SLCSP premium as -0-. Also, if you had a change in circumstances during 2025 that you did not report to the Marketplace, the SLCSP premium reported in column B of Form 1095-A, Part III, may be wrong. ... In either case, you must determine your correct applicable SLCSP premium."
+
+Pub. 974 (2025), p. 27: "If you did not request financial assistance (APTC) and the Marketplace has an applicable SLCSP premium tool ..., the Marketplace will not report an applicable SLCSP premium (Part III, column B, will report -0- or be blank). ... If you take the PTC on your tax return, you will need to determine the SLCSP premium that applies to your coverage family for each month of coverage."
+
+Instructions for Form 8962 (2025), pp. 16-17, Column (b): "Enter on lines 12 through 23, column (b), the amount of the monthly applicable SLCSP premium reported on Form 1095-A, lines 21 through 32, column B, for the corresponding month. If you have more than one Form 1095-A showing coverage in a particular month, use the following rules ... Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form. ... If a -0- appears on Form 1095-A, on any of lines 21 through 32, column A, because your enrollment premiums were not paid for one or more months and the amount of the premium paid for the month is not sufficient to avoid termination of the coverage ..., then you are not entitled to a monthly credit amount for that month. If not allowed a monthly credit amount because your enrollment premiums for the month were unpaid, enter -0- on the appropriate line on Form 8962, column (b). However, if your enrollment premiums for the month were paid by the due date of your return, not including extensions, enter your applicable SLCSP premium for the month ..., even if your Form 1095-A shows -0- as the enrollment premium for the month."
+
+Instructions for Form 8962 (2025), p. 5: "An individual in your tax family who is eligible for MEC (except coverage in the individual market) for a month is not in your coverage family for that month."
+
+Questions.
+1. Within a return that none of the listed refusals catches, is there any situation the quoted text describes in which a month correctly has column (a) above zero and column (b) zero? Name it and quote the words, or say none is described.
+2. Is there a situation the quoted text does not address that you believe could legitimately produce it? Mark it clearly as outside the quoted text.
+3. Would the proposed refusal ever refuse a return the program would otherwise compute correctly? Answer yes or no with a reason.
+Keep the answer under 400 words.
+codex
+1. **None is described.** The quoted instructions explicitly require column (b) to be zero when “your enrollment premiums for the month were unpaid.” Your existing refusals exclude that situation. A blank or zero on **Form 1095-A** when no APTC was paid does not establish a correct zero on **Form 8962**: “you must determine your correct applicable SLCSP premium.”
+
+2. **Outside the quoted text:** I cannot identify a concrete legitimate situation with confidence from these excerpts. They do not expressly establish that an applicable SLCSP premium must always be strictly positive whenever enrollment premiums are positive after your exclusions. That missing guarantee is not itself evidence that a legitimate zero exists.
+
+3. **The quoted text does not decide the requested universal yes-or-no answer.** It describes no otherwise correctly computable return that the proposed refusal would reject, but it also does not prove that none can exist. Answering an unconditional “no” would turn the absence of a described exception into a guarantee of completeness; answering “yes” would require establishing an exception.
+
+The excerpts support requiring the filer to **determine the correct benchmark** when Form 1095-A reports a blank or zero. They do not, by themselves, establish your stronger premise that every resulting zero must be an entry error.
+tokens used
+4,385
+1. **None is described.** The quoted instructions explicitly require column (b) to be zero when “your enrollment premiums for the month were unpaid.” Your existing refusals exclude that situation. A blank or zero on **Form 1095-A** when no APTC was paid does not establish a correct zero on **Form 8962**: “you must determine your correct applicable SLCSP premium.”
+
+2. **Outside the quoted text:** I cannot identify a concrete legitimate situation with confidence from these excerpts. They do not expressly establish that an applicable SLCSP premium must always be strictly positive whenever enrollment premiums are positive after your exclusions. That missing guarantee is not itself evidence that a legitimate zero exists.
+
+3. **The quoted text does not decide the requested universal yes-or-no answer.** It describes no otherwise correctly computable return that the proposed refusal would reject, but it also does not prove that none can exist. Answering an unconditional “no” would turn the absence of a described exception into a guarantee of completeness; answering “yes” would require establishing an exception.
+
+The excerpts support requiring the filer to **determine the correct benchmark** when Form 1095-A reports a blank or zero. They do not, by themselves, establish your stronger premise that every resulting zero must be an entry error.

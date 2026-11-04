@@ -1,0 +1,6 @@
+{"covers": ["f5695.line32", "f5695.line32a"],
+ "evidence": "synthetic regression (not class B)",
+ "evidence_note": "T-145. stage15.f8880.s1 has no Part II (f5695.part2_any No) and leaves the Part II screens, including f5695.joint_occupancy, unanswered. Predicted from Form 5695 (2025): Part II is not completed, so line 32 (the Part II credit) is $0 and the line 32a box, for \"Joint occupants of a home who are claiming the energy efficient home improvement credit\" (i5695 p. 7), is unchecked; Schedule 3 line 5b stays $0. Before the change line 32 was unknown (f5695.business_use) and line 32a unknown (f5695.joint_occupancy). Written before the evaluator was run.",
+ "set": {},
+ "expect_from_base": false,
+ "expect": {"f5695.line32": {"kind": "money", "cents": 0}, "f5695.line32a": {"kind": "bool", "value": false}, "s3.line5b": {"kind": "money", "cents": 0}}}

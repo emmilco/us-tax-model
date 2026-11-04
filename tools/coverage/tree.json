@@ -40,7 +40,6 @@
   {"gate": "household.rdp_community_property", "topic": "everyone", "part": "status", "kind": "situation", "question": "Not filing jointly, living in a community property state, and a registered domestic partner in California, Nevada or Washington?"},
   {"gate": "sa.excluded_income", "topic": "everyone", "part": "status", "kind": "situation", "question": "Are you excluding foreign earned income (Form 2555), American Samoa income (Form 4563) or Puerto Rico income?", "stop": "Form 2555, Form 4563 or excluded Puerto Rico income"},
   {"gate": "s8812.puerto_rico", "topic": "everyone", "part": "status", "kind": "situation", "question": "Were you a bona fide resident of Puerto Rico?", "stop": "Schedule 8812 Part II-B and Credit Limit Worksheet B for bona fide residents of Puerto Rico"},
-  {"gate": "household.credit_disallowed", "topic": "everyone", "part": "status", "kind": "situation", "question": "Was an earned income credit, child tax credit or credit for other dependents reduced or disallowed before, or are you in a disallowance period (Form 8862)?", "stop": "Form 8862 and the disallowance periods for the EIC and the child tax credits"},
 
   {"gate": "scope.schedule1", "topic": "everyone", "part": "income", "kind": "situation", "question": "Do you have rental or royalty income, a partnership, S corporation, estate or trust (Schedule E or a K-1), farm income, sales of business property (Form 4797), a net operating loss, or another Schedule 1 item the tool does not ask about?", "stop": "Schedule 1 items outside the tool, among them Schedules E and F, Form 4797 and the net operating loss"},
   {"gate": "qbi.unsupported", "topic": "everyone", "part": "income", "kind": "situation", "question": "Do you have qualified business income beyond your Schedule C businesses and section 199A dividends (a partnership, publicly traded partnership, REIT carryforward or cooperative)?"},
@@ -73,6 +72,7 @@
   {"gate": "household.hoh_fails", "topic": "household", "kind": "entry"},
   {"gate": "household.qss_fails", "topic": "household", "kind": "entry"},
   {"gate": "household.hoh_community_property", "topic": "household", "kind": "situation", "question": "Are you married, filing as head of household, and living in a community property state?"},
+  {"gate": "household.ctc_disallowed_claim", "topic": "household", "kind": "situation", "question": "Claiming the child tax credit or credit for other dependents after an earlier credit was reduced or disallowed, or in a disallowance period (Form 8862)?"},
   {"gate": "household.filing_status_conflict", "topic": "household", "kind": "entry"},
   {"gate": "household.widowed_2025", "topic": "household", "kind": "situation", "question": "Are you filing as single or head of household although your spouse died in 2025?"},
   {"gate": "household.cp_marriage_ended", "topic": "household", "kind": "situation", "question": "Not filing jointly and not married at the end of 2025, were you married during 2025 while living in a community property state?"},
@@ -101,6 +101,7 @@
   {"gate": "sd.other_forms", "topic": "sales", "kind": "situation", "question": "Do you have gains or losses from Forms 4797, 2439, 6252, 4684, 6781 or 8824, or capital gains or losses on a Schedule K-1?"},
   {"gate": "clcw.spouse_screen", "topic": "sales", "kind": "situation", "question": "Is your capital loss carryover from a 2024 joint return with someone else, or from two separate 2024 returns now combined on a joint return?"},
   {"gate": "sales.bad_aggregate", "topic": "sales", "kind": "entry"},
+  {"gate": "sales.wash_bad", "topic": "sales", "kind": "entry"},
   {"gate": "sd.screen", "topic": "sales", "kind": "entry"},
   {"gate": "clcw.bad", "topic": "sales", "kind": "entry"},
 
@@ -144,6 +145,7 @@
   {"gate": "scveh.no_miles", "topic": "self_employment", "part": "property", "kind": "entry"},
   {"gate": "scveh.smr_bad", "topic": "self_employment", "part": "property", "kind": "entry"},
   {"gate": "scveh.lease_smr_bad", "topic": "self_employment", "part": "property", "kind": "situation", "question": "Did you use the standard mileage rate in an earlier year for a leased vehicle on which you now deduct actual expenses?"},
+  {"gate": "scveh.employee_bad", "topic": "self_employment", "part": "property", "kind": "situation", "question": "Do your employees use a business vehicle on actual expenses for personal purposes?"},
   {"gate": "s179.over_limit", "topic": "self_employment", "part": "property", "kind": "entry"},
 
   {"gate": "person.se_screened", "topic": "self_employment", "part": "se_tax", "kind": "situation", "question": "Do you have self-employment tax items beyond Schedule C, such as church or clergy income, partnership or farm self-employment income, or an optional method?", "stop": "Self-employment tax items outside Schedule C (church employee income, clergy, partnership or farm self-employment income, optional methods and others)"},
@@ -209,6 +211,7 @@
   {"gate": "s1a.spouse_senior_decedent", "topic": "schedule_1a", "kind": "situation", "question": "Did a spouse born in 1960 die in 2025 before turning 65?"},
 
   {"gate": "eic.died_2025", "topic": "eic", "kind": "situation", "question": "For the earned income credit: did your spouse die in 2025, or is this return for someone who died in 2025?"},
+  {"gate": "household.eic_disallowed_claim", "topic": "eic", "kind": "situation", "question": "Claiming the earned income credit after an earlier credit was reduced or disallowed, or in a disallowance period (Form 8862)?"},
 
   {"gate": "f2441.student_disabled", "topic": "dependent_care", "kind": "situation", "question": "For the child and dependent care credit: were you or your spouse a full-time student, or unable to care for yourself?"},
   {"gate": "f2441.nondependent_gate", "topic": "dependent_care", "kind": "situation", "question": "Did you pay for the care of a qualifying person who is not your dependent?"},
@@ -219,6 +222,7 @@
   {"gate": "f2441.employer_care_l16", "topic": "dependent_care", "kind": "situation", "question": "Did your employer furnish care, with the expenses you entered less than your benefits?"},
   {"gate": "f2441.spouse_died_gate", "topic": "dependent_care", "kind": "situation", "question": "On a joint return claiming the dependent care credit, did your spouse die in 2025?"},
   {"gate": "f2441.attrib_gate", "topic": "dependent_care", "kind": "situation", "question": "On a joint return, are taxable dependent care benefits not all from one spouse's Forms W-2, with a credit remaining?"},
+  {"gate": "f2441.line13_earned", "topic": "dependent_care", "kind": "situation", "question": "Did you use a grace-period amount carried over from 2024, with taxable benefits and your earned income limiting the exclusion?"},
   {"gate": "f2441.line14_bad", "topic": "dependent_care", "kind": "entry"},
 
   {"gate": "f8863.ban_refused", "topic": "education", "kind": "situation", "question": "Are you claiming the American opportunity credit after an earlier denial (Form 8862), or within a ban period?"},

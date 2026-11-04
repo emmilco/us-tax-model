@@ -4,7 +4,7 @@ The rendered English of every printed line of `Form 1099-DIV — distribution co
 
 | field | value |
 | --- | --- |
-| date | 2026-10-27 |
+| date | 2026-11-03 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 1778c4ca6275720af58f1a3ee8f80e2626e709f958faccda1dc7f7ab98a04116 |
@@ -12,9 +12,9 @@ The rendered English of every printed line of `Form 1099-DIV — distribution co
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
-| subject sha256 | 6598a6f635c04edcaa5692a3c853bed1c4368436c016d206cc3fc39b49b95c23 |
+| subject sha256 | bb04e5c4028849b3e76ebf138151c7dd3ffde5befd99506428206e6b1b32cf77 |
 | lines judged | 22 |
-| match / mismatch / unclear / missing | 22 / 0 / 0 / 0 |
+| match / mismatch / unclear / missing | 21 / 0 / 1 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -32,183 +32,185 @@ The rendered English of every printed line of `Form 1099-DIV — distribution co
 ### box2b — Unrecaptured section 1250 gain, box 2b
 Status: **MATCH**
 
-Model: The form prints box 2b as 'Unrecap. Sec. 1250 gain', and the instructions say it 'Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain.' Taking it as a filer input matches.
+Model: Direct input of box 2b, "Unrecap. Sec. 1250 gain", described as "the portion of the amount in box 2a that is unrecaptured section 1250 gain".
 
 ### box2c — Section 1202 gain, box 2c
 Status: **MATCH**
 
-Model: The form prints box 2c as 'Section 1202 gain', which the instructions call the 'portion of the amount in box 2a that is section 1202 gain.' Taking it as a filer input matches.
+Model: Direct input of box 2c, "Section 1202 gain".
 
 ### box2d — Collectibles (28%) gain, box 2d
 Status: **MATCH**
 
-Model: The form prints box 2d as 'Collectibles (28%) gain', which the instructions call the 'portion of the amount in box 2a that is 28% rate gain.' Taking it as a filer input matches.
+Model: Direct input of box 2d, "Collectibles (28%) gain".
 
 ### box2e — Section 897 ordinary dividends, box 2e
 Status: **MATCH**
 
-Model: The form prints box 2e as 'Section 897 ordinary dividends'. Taking it as a filer input matches.
+Model: Direct input of box 2e, "Section 897 ordinary dividends".
 
 ### box2f — Section 897 capital gain, box 2f
 Status: **MATCH**
 
-Model: The form prints box 2f as 'Section 897 capital gain'. Taking it as a filer input matches.
+Model: Direct input of box 2f, "Section 897 capital gain".
 
 ### box3 — Nondividend distributions/return of capital, box 3
 Status: **MATCH**
 
-Model: The form prints box 3 as 'Nondividend distributions', and the instructions say it 'Shows a return of capital.' Taking it as a filer input matches.
+Model: Direct input of box 3, "Nondividend distributions", which "Shows a return of capital".
 
 ### box9 — Cash liquidation distributions, box 9
 Status: **MATCH**
 
-Model: The form prints box 9 as 'Cash liquidation distributions'. Taking it as a filer input matches.
+Model: Direct input of box 9, "Cash liquidation distributions".
 
 ### box10 — Noncash liquidation distributions, box 10
 Status: **MATCH**
 
-Model: The form prints box 10 as 'Noncash liquidation distributions'. Taking it as a filer input matches.
+Model: Direct input of box 10, "Noncash liquidation distributions".
 
 ### box12 — Exempt-interest dividends, box 12
 Status: **MATCH**
 
-Model: The form prints box 12 as 'Exempt-interest dividends'. The note that box 13 is already included matches the instruction for box 13: 'This amount is included in box 12.'
+Model: Direct input of box 12, "Exempt-interest dividends". The note that box 13 is already included agrees with the box 13 instruction: "This amount is included in box 12."
 
 ### box13 — Specified private activity bond interest dividends, box 13
 Status: **MATCH**
 
-Model: The form prints box 13 as 'Specified private activity bond interest dividends', which the instructions describe as 'exempt-interest dividends subject to the alternative minimum tax.' Taking it as a filer input matches.
+Model: Direct input of box 13, which "Shows exempt-interest dividends subject to the alternative minimum tax".
 
 ### basis_reconciled — For box 3, have basis reductions been applied to records with no distribution exceeding ba
 Status: **MATCH**
 
-Model: This is a screening input, which the IRS text supports. Box 3 instructions say the distribution 'reduces your basis and is not taxable' up to basis, and that 'Any amount received in excess of your basis is taxable to you as capital gain.' The question asks the filer to confirm that case does not arise.
+Model: This yes/no input screens the box 3 rule: the distribution "reduces your basis and is not taxable", and any excess over basis "is taxable to you as capital gain". The program refuses the cases it does not handle.
 
 ### box1a — Amount from sb.ordinary_dividends
 Status: **MATCH**
 
-Model: The Schedule B instructions say ordinary dividends 'should be shown in box 1a of your Forms 1099-DIV', and the form prints box 1a as 'Total ordinary dividends'. Carrying that input over matches.
+Model: Box 1a "Total ordinary dividends" is the amount the Schedule B instructions say "should be shown in box 1a of your Forms 1099-DIV".
 
 ### box1b — Amount from f1040.line3a
 Status: **MATCH**
 
-Model: The form prints box 1b as 'Qualified dividends', the portion of box 1a 'that may be eligible for reduced capital gains rates'. Form 1040 line 3a is 'Qualified dividends'. Using that amount for the box 1b portion check is consistent with the text.
+Model: Box 1b is "Qualified dividends", the same name as Form 1040 line 3a. The box 1b instruction says "See the Instructions for Form 1040 for how to determine this amount and where to report."
 
 ### box2a — Amount from sd.distributions
 Status: **MATCH**
 
-Model: The form prints box 2a as 'Total capital gain distr.' Carrying the Schedule D capital gain distributions input, described as generally box 2a, matches.
+Model: Box 2a "Total capital gain distr." is taken from the Schedule D capital gain distributions input, which is labeled as generally box 2a.
 
 ### box5 — Amount from qbi.dividends
 Status: **MATCH**
 
-Model: The form prints box 5 as 'Section 199A dividends', the portion of box 1a that may be eligible for the qualified business income deduction. The Form 8995 instructions add the holding-period and payment-obligation conditions, which the qbi helper's label reflects.
+Model: Box 5 "Section 199A dividends" is the portion of box 1a "that may be eligible for the 20% qualified business income deduction". The Form 8995 instructions require holding "for more than 45 days" and say the amount "is reported to you on Form 1099-DIV, line 5".
 
 ### section1202 — Section 1202 distribution present
 Status: **MATCH**
 
-Model: A box 2c amount above $0 triggers the section 1202 exclusion process: the Schedule D instructions require Form 8949 code 'Q' and, for the alternative minimum tax, Form 6251 line 13. The gate correctly flags this out-of-scope case.
+Model: Box 2c gain "may be subject to an exclusion". The Schedule D instructions require Form 8949 code "Q" and, for AMT, "enter 7% of your allowable exclusion ... on line 13 of Form 6251". The refusal names both.
 
 ### amt — Specified private activity bond dividends present
 Status: **MATCH**
 
-Model: Box 13 'Shows exempt-interest dividends subject to the alternative minimum tax... See the Instructions for Form 6251.' Flagging any amount above $0 for Form 6251 matches.
+Model: Box 13 "Shows exempt-interest dividends subject to the alternative minimum tax ... See the Instructions for Form 6251". The program refuses when the amount is above $0.
 
 ### unsupported — Unsupported section 897, liquidation or unreconciled basis/excess distribution
 Status: **MATCH**
 
-Model: The gate flags any amount in boxes 2e, 2f, 9 or 10, or a box 3 amount whose basis has not been reconciled. The IRS text describes special treatment for each: section 897 character, liquidation distributions, and return of capital that reduces basis with any excess 'taxable to you as capital gain'. The refusal names these exclusions, so this is a legitimate narrowing.
+Model: The program refuses boxes 2e/2f (section 897 treatment), boxes 9/10 (liquidation distributions), and box 3 when basis is unreconciled ("Any amount received in excess of your basis is taxable to you as capital gain"). This is a narrowing, and the refusal names it.
 
 ### bad_special — A gain component exceeds total capital gain distributions
-Status: **MATCH**
+Status: **UNCLEAR**
 
-Model: The instructions describe each of boxes 2b, 2c and 2d as 'the portion of the amount in box 2a', so none may exceed box 2a. They name distinct categories (unrecaptured section 1250 gain, section 1202 gain, collectibles gain), so the check that their total does not exceed box 2a is consistent.
+Restated: (helper "Unrecaptured section 1250 gain, box 2b" > sd helper "Capital gain distributions, generally Form 1099-DIV box 2a" or helper "Section 1202 gain, box 2c" > sd helper "Capital gain distributions, generally Form 1099-DIV box 2a" or helper "Collectibles (28%) gain, box 2d" > sd helper "Capital gain distributions, generally Form 1099-DIV box 2a" or helper "Total special capital-gain distribution components" > sd helper "Capital gain distributions, generally Form 1099-DIV box 2a")
+
+Model: The text supports each check on its own, since boxes 2b, 2c and 2d are each "the portion of the amount in box 2a". The text never says these portions are disjoint, so it does not establish that their sum cannot exceed box 2a.
+
+Ruling: ambiguity; amb.2025.div_gain_portions_disjoint (linked to div.bad_special by the p4-docs package). f1099div p. 5, Instructions for Recipient: "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain". The model accepts each single-box test and objects only that the text does not say the portions are disjoint, so the sum test is not established. That is the register's text at issue; the register chooses the first reading (the portions are disjoint, so their sum cannot exceed box 2a) because each box is a different kind of property (section 1250 real property, section 1202 small business stock, collectibles). Why the line is new to the open list: the restatement and the cited text are unchanged; the previous reviewer judged it MATCH. Project stands.
 
 ### screen — Zero only after distribution scope checks
 Status: **MATCH**
 
-Model: This line enters $0 only after the scope checks pass. Each refusal matches an IRS rule: box 2c goes to Form 8949 code Q and Form 6251; box 13 is subject to the alternative minimum tax; boxes 2e, 2f, 9 and 10 and excess box 3 amounts need special treatment; and boxes 2b–2d, 1b and 5 are portions of other boxes.
+Model: The line enters $0 after the scope refusals, and each refusal names the excluded treatment or the correction needed.
 
 ### bad_components — Qualified or section 199A dividends exceed ordinary dividends
 Status: **MATCH**
 
-Model: Box 1b 'Shows the portion of the amount in box 1a', and box 5 'Shows the portion of the amount in box 1a'. Flagging qualified dividends or section 199A dividends that exceed box 1a matches.
+Model: Box 1b "Shows the portion of the amount in box 1a" and box 5 "Shows the portion of the amount in box 1a". So neither amount may exceed ordinary dividends.
 
 ### special_total — Total special capital-gain distribution components
 Status: **MATCH**
 
-Model: This adds boxes 2b, 2c and 2d, the separately described portions of box 2a, so the bad_special check can compare the total with box 2a. That is consistent with the text.
+Model: This is the sum of boxes 2b, 2c and 2d, used only for the consistency check against box 2a.
 
 ## Raw response
 
 ```yaml
-```yaml
 lines:
   - key: "box2b"
     status: MATCH
-    reason: "The form prints box 2b as 'Unrecap. Sec. 1250 gain', and the instructions say it 'Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain.' Taking it as a filer input matches."
+    reason: "Direct input of box 2b, \"Unrecap. Sec. 1250 gain\", described as \"the portion of the amount in box 2a that is unrecaptured section 1250 gain\"."
   - key: "box2c"
     status: MATCH
-    reason: "The form prints box 2c as 'Section 1202 gain', which the instructions call the 'portion of the amount in box 2a that is section 1202 gain.' Taking it as a filer input matches."
+    reason: "Direct input of box 2c, \"Section 1202 gain\"."
   - key: "box2d"
     status: MATCH
-    reason: "The form prints box 2d as 'Collectibles (28%) gain', which the instructions call the 'portion of the amount in box 2a that is 28% rate gain.' Taking it as a filer input matches."
+    reason: "Direct input of box 2d, \"Collectibles (28%) gain\"."
   - key: "box2e"
     status: MATCH
-    reason: "The form prints box 2e as 'Section 897 ordinary dividends'. Taking it as a filer input matches."
+    reason: "Direct input of box 2e, \"Section 897 ordinary dividends\"."
   - key: "box2f"
     status: MATCH
-    reason: "The form prints box 2f as 'Section 897 capital gain'. Taking it as a filer input matches."
+    reason: "Direct input of box 2f, \"Section 897 capital gain\"."
   - key: "box3"
     status: MATCH
-    reason: "The form prints box 3 as 'Nondividend distributions', and the instructions say it 'Shows a return of capital.' Taking it as a filer input matches."
+    reason: "Direct input of box 3, \"Nondividend distributions\", which \"Shows a return of capital\"."
   - key: "box9"
     status: MATCH
-    reason: "The form prints box 9 as 'Cash liquidation distributions'. Taking it as a filer input matches."
+    reason: "Direct input of box 9, \"Cash liquidation distributions\"."
   - key: "box10"
     status: MATCH
-    reason: "The form prints box 10 as 'Noncash liquidation distributions'. Taking it as a filer input matches."
+    reason: "Direct input of box 10, \"Noncash liquidation distributions\"."
   - key: "box12"
     status: MATCH
-    reason: "The form prints box 12 as 'Exempt-interest dividends'. The note that box 13 is already included matches the instruction for box 13: 'This amount is included in box 12.'"
+    reason: "Direct input of box 12, \"Exempt-interest dividends\". The note that box 13 is already included agrees with the box 13 instruction: \"This amount is included in box 12.\""
   - key: "box13"
     status: MATCH
-    reason: "The form prints box 13 as 'Specified private activity bond interest dividends', which the instructions describe as 'exempt-interest dividends subject to the alternative minimum tax.' Taking it as a filer input matches."
+    reason: "Direct input of box 13, which \"Shows exempt-interest dividends subject to the alternative minimum tax\"."
   - key: "basis_reconciled"
     status: MATCH
-    reason: "This is a screening input, which the IRS text supports. Box 3 instructions say the distribution 'reduces your basis and is not taxable' up to basis, and that 'Any amount received in excess of your basis is taxable to you as capital gain.' The question asks the filer to confirm that case does not arise."
+    reason: "This yes/no input screens the box 3 rule: the distribution \"reduces your basis and is not taxable\", and any excess over basis \"is taxable to you as capital gain\". The program refuses the cases it does not handle."
   - key: "box1a"
     status: MATCH
-    reason: "The Schedule B instructions say ordinary dividends 'should be shown in box 1a of your Forms 1099-DIV', and the form prints box 1a as 'Total ordinary dividends'. Carrying that input over matches."
+    reason: "Box 1a \"Total ordinary dividends\" is the amount the Schedule B instructions say \"should be shown in box 1a of your Forms 1099-DIV\"."
   - key: "box1b"
     status: MATCH
-    reason: "The form prints box 1b as 'Qualified dividends', the portion of box 1a 'that may be eligible for reduced capital gains rates'. Form 1040 line 3a is 'Qualified dividends'. Using that amount for the box 1b portion check is consistent with the text."
+    reason: "Box 1b is \"Qualified dividends\", the same name as Form 1040 line 3a. The box 1b instruction says \"See the Instructions for Form 1040 for how to determine this amount and where to report.\""
   - key: "box2a"
     status: MATCH
-    reason: "The form prints box 2a as 'Total capital gain distr.' Carrying the Schedule D capital gain distributions input, described as generally box 2a, matches."
+    reason: "Box 2a \"Total capital gain distr.\" is taken from the Schedule D capital gain distributions input, which is labeled as generally box 2a."
   - key: "box5"
     status: MATCH
-    reason: "The form prints box 5 as 'Section 199A dividends', the portion of box 1a that may be eligible for the qualified business income deduction. The Form 8995 instructions add the holding-period and payment-obligation conditions, which the qbi helper's label reflects."
+    reason: "Box 5 \"Section 199A dividends\" is the portion of box 1a \"that may be eligible for the 20% qualified business income deduction\". The Form 8995 instructions require holding \"for more than 45 days\" and say the amount \"is reported to you on Form 1099-DIV, line 5\"."
   - key: "section1202"
     status: MATCH
-    reason: "A box 2c amount above $0 triggers the section 1202 exclusion process: the Schedule D instructions require Form 8949 code 'Q' and, for the alternative minimum tax, Form 6251 line 13. The gate correctly flags this out-of-scope case."
+    reason: "Box 2c gain \"may be subject to an exclusion\". The Schedule D instructions require Form 8949 code \"Q\" and, for AMT, \"enter 7% of your allowable exclusion ... on line 13 of Form 6251\". The refusal names both."
   - key: "amt"
     status: MATCH
-    reason: "Box 13 'Shows exempt-interest dividends subject to the alternative minimum tax... See the Instructions for Form 6251.' Flagging any amount above $0 for Form 6251 matches."
+    reason: "Box 13 \"Shows exempt-interest dividends subject to the alternative minimum tax ... See the Instructions for Form 6251\". The program refuses when the amount is above $0."
   - key: "unsupported"
     status: MATCH
-    reason: "The gate flags any amount in boxes 2e, 2f, 9 or 10, or a box 3 amount whose basis has not been reconciled. The IRS text describes special treatment for each: section 897 character, liquidation distributions, and return of capital that reduces basis with any excess 'taxable to you as capital gain'. The refusal names these exclusions, so this is a legitimate narrowing."
+    reason: "The program refuses boxes 2e/2f (section 897 treatment), boxes 9/10 (liquidation distributions), and box 3 when basis is unreconciled (\"Any amount received in excess of your basis is taxable to you as capital gain\"). This is a narrowing, and the refusal names it."
   - key: "bad_special"
-    status: MATCH
-    reason: "The instructions describe each of boxes 2b, 2c and 2d as 'the portion of the amount in box 2a', so none may exceed box 2a. They name distinct categories (unrecaptured section 1250 gain, section 1202 gain, collectibles gain), so the check that their total does not exceed box 2a is consistent."
+    status: UNCLEAR
+    reason: "The text supports each check on its own, since boxes 2b, 2c and 2d are each \"the portion of the amount in box 2a\". The text never says these portions are disjoint, so it does not establish that their sum cannot exceed box 2a."
   - key: "screen"
     status: MATCH
-    reason: "This line enters $0 only after the scope checks pass. Each refusal matches an IRS rule: box 2c goes to Form 8949 code Q and Form 6251; box 13 is subject to the alternative minimum tax; boxes 2e, 2f, 9 and 10 and excess box 3 amounts need special treatment; and boxes 2b–2d, 1b and 5 are portions of other boxes."
+    reason: "The line enters $0 after the scope refusals, and each refusal names the excluded treatment or the correction needed."
   - key: "bad_components"
     status: MATCH
-    reason: "Box 1b 'Shows the portion of the amount in box 1a', and box 5 'Shows the portion of the amount in box 1a'. Flagging qualified dividends or section 199A dividends that exceed box 1a matches."
+    reason: "Box 1b \"Shows the portion of the amount in box 1a\" and box 5 \"Shows the portion of the amount in box 1a\". So neither amount may exceed ordinary dividends."
   - key: "special_total"
     status: MATCH
-    reason: "This adds boxes 2b, 2c and 2d, the separately described portions of box 2a, so the bad_special check can compare the total with box 2a. That is consistent with the text."
-```
+    reason: "This is the sum of boxes 2b, 2c and 2d, used only for the consistency check against box 2a."
 ```

@@ -109,10 +109,24 @@
    "context": "7a157c97682457e376bc058594d39b430bf20bf394ac663ca62e123e6aec07b3"
   },
   {
+   "printed": "23",
+   "restated": "Input — Business taxes and licenses: sales tax imposed on you as the seller, real estate and personal property taxes on business assets, licenses and regulatory fees paid each year (not licenses you must amortize, such as some liquor licenses), the employer share of social security and Medicare taxes, federal unemployment tax, federal highway use tax, state unemployment contributions (not income or self-employment tax, not taxes on property you bought, and not real estate taxes on your home, which with the simplified method for business use of the home you can deduct only on Schedule A); zero if none",
+   "model": "The IRS list includes 'Contributions to a state unemployment insurance fund, or paid family and medical leave program disability benefit fund if they are considered taxes under state law'. The restatement keeps only 'state unemployment contributions' and omits paid family and medical leave fund contributions.",
+   "ruling": "Ruling: finding (low; pre-existing, not introduced by the package); i1040sc p. 9, Line 23, \"Contributions to a state unemployment insurance fund, or paid family and medical leave program disability benefit fund if they are considered taxes under state law\". The question names state unemployment contributions only, so a filer may leave out paid family and medical leave fund contributions (an understated deduction). The package changed only the license wording (\"not licenses you must amortize\"), which matches p. 9. See bklg/sc.findings.md.",
+   "context": "2d23ee9369b1835a72d131382592deee3745abf60c266fdaadf15073d91f20cf"
+  },
+  {
    "printed": "24b",
    "restated": "Add helper \"50% of the meals subject to the 50% limit\" and helper \"80% of the meals under the hours of service limits\".",
    "model": "Only the 50% and 80% categories are provided. The instructions also say 'you can fully deduct meals and incidentals furnished or reimbursed to an employee if you properly treat the expense as wages', and likewise for amounts reported on Form 1099-NEC. These 100% meals have no place, and no refusal names them.",
    "ruling": "Ruling: scope gap recorded; restatement accepted for the meals it asks. Meals fully deductible (treated as wages, or reported on Form 1099-NEC; i1040sc p. 10) have no input; a filer who entered them at 50% would understate the deduction. Left for the owner as TASKS.md T-042 (a 100% input or a refusal)."
+  },
+  {
+   "printed": "24b",
+   "restated": "Add helper \"50% of the meals subject to the 50% limit\", helper \"80% of the meals under the hours of service limits\", and helper \"Meals and incidentals not subject to the 50% limit, deducted in full\".",
+   "model": "The 50% and 80% DOT parts and the employee-wage and 1099-NEC full-deduction exceptions match the instructions. The added 100% categories (client-reimbursed meals, employee recreation, food for the public, meals sold) come from 'chapter 5 of Pub. 15 ... other exceptions', which was not provided.",
+   "ruling": "Ruling: ambiguity (amb.2025.meals_full_exceptions); i1040sc p. 10, Line 24b, \"See chapter 5 of Pub. 15, Employer's Tax Guide, for details and other exceptions\". The added full-deduction categories are the register's recorded reading of those exceptions; the review pages did not include Pub. 15.",
+   "context": "2d23ee9369b1835a72d131382592deee3745abf60c266fdaadf15073d91f20cf"
   },
   {
    "printed": "24b",

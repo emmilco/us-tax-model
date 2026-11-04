@@ -17,6 +17,13 @@
   {
    "printed": "10",
    "restated": "Add line 1, line 2a, line 3, line 7, and line 9.",
+   "model": "IRS: 'Combine lines 1 through 7 and 9.' The restatement adds only lines 1, 2a, 3, 7 and 9, omitting lines 4, 5 and 6. No refusal shown in the text names other gains, Schedule E or Schedule F income.",
+   "ruling": "Ruling: scope; f1040s1 line 10, \"Combine lines 1 through 7 and 9\". Lines 4 to 6 are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them: its text names \"sales of business property (Form 4797)\", \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\" (checked on the current forms/2025/scope.yaml); within scope they are zero, as the line's citation says. Lines 1, 2a, 3, 7 and 9 are figured. Same ruling as the earlier rounds; the income package changed only the wording of the alimony and unemployment screens, which does not touch this line. Project stands.",
+   "context": "bd21a530a91afdc613995c3652d220d11e36ae8deeaa9e57e258925be89ff6bd"
+  },
+  {
+   "printed": "10",
+   "restated": "Add line 1, line 2a, line 3, line 7, and line 9.",
    "model": "The IRS line says 'Combine lines 1 through 7 and 9,' but the restatement omits lines 4, 5 and 6. No refusal given here excludes Form 4797 or 4684 gains, Schedule E income or Schedule F income.",
    "ruling": "Ruling: scope; f1040s1 line 10, \"Combine lines 1 through 7 and 9\". Lines 4 to 6 are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them: it names \"sales of business property (Form 4797)\", \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\", and a Form 4684 gain falls under its opening clause; within scope they are zero, as the line's citation says. Lines 1, 2a, 3, 7 and 9 are figured. Same ruling as the earlier rounds; the fix round changed only the clergy wording of that screen (BUG-0233), which does not touch these lines.",
    "context": "318573643a0fbeae2d1ffc8d824795dfedef4e7266716fb7a9b2e5dbbe2b817d"
@@ -105,6 +112,13 @@
    "context": "f1ebfbe1b2e4dfdc0f93874886ba18fc588976bbf8725412d115be2bdc995a23"
   },
   {
+   "printed": "20",
+   "restated": "Enter the amount from ira helper \"The total of lines 12a and 12b for Schedule 1, line 20\".",
+   "model": "The worksheet line 2 helper always uses $10,000 for MFS, but the IRS says 'married filing separately and you lived apart from your spouse for all of 2025, enter $89,000'. Also, for MFS, 'If you weren't covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart', and person.ira_cov ignores the spouse's coverage. No refusal shown covers either case.",
+   "ruling": "Ruling: scope; i1040gi p. 97, IRA Deduction Worksheet line 2: \"Single, head of household, or married filing separately and you lived apart from your spouse for all of 2025, enter $89,000 ... Married filing separately and you lived with your spouse at any time in 2025, enter $10,000\"; p. 96: \"Married persons filing separately. If you weren't covered by a retirement plan but your spouse was, you are considered covered by a plan unless you lived apart from your spouse for all of 2025.\" Both rules the model names are for married filing separately only, and a married filing separately return is refused at the return level (scope.ready refuses when s3.mfs: \"The rules for a married filing separately return ... are outside this tool. Married filing jointly is supported.\", i1040gi p. 14; checked on the current scope.yaml). On a joint return the worksheet's own spouse rule ($246,000 for the person not covered) is applied (person.ira_not_covered_joint). Line 20 copies the worksheet total; unchanged by the backlog packages. Same ruling as fix round 3. Project stands.",
+   "context": "bd21a530a91afdc613995c3652d220d11e36ae8deeaa9e57e258925be89ff6bd"
+  },
+  {
    "printed": "21",
    "restated": "Enter the amount from sli helper \"Student loan interest deduction (Schedule 1, line 21)\".",
    "model": "The form says only \"Student loan interest deduction.\" The line 21 instructions and the Student Loan Interest Deduction Worksheet (including its line 9 and its eligibility conditions) are not in the pages given, so the computed amount cannot be checked.",
@@ -141,6 +155,13 @@
    "model": "Worksheet line 3 says 'the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25,' but the restatement omits lines 12, 14 and 23 and gives no refusal for them. Those amounts would change the modified AGI used for the phaseout.",
    "ruling": "Ruling: scope; i1040gi p. 99, Student Loan Interest Deduction Worksheet, line 3 (\"the total of the amounts from Schedule 1, lines 11 through 20, and 23 and 25\"). Lines 12, 14 and 23 are named in scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (\"or an adjustment on Schedule 1 line 12, 14 or 23?\"), so within scope they are zero and worksheet line 3 is the sum of the lines figured. The worksheet itself is judged in the render log of `sli`. Unchanged by the fix round.",
    "context": "318573643a0fbeae2d1ffc8d824795dfedef4e7266716fb7a9b2e5dbbe2b817d"
+  },
+  {
+   "printed": "25",
+   "restated": "Enter the amount from line 24a.",
+   "model": "IRS: 'Total other adjustments. Add lines 24a through 24z.' The restatement takes line 24a only. No refusal shown in the text covers lines 24b through 24z.",
+   "ruling": "Ruling: scope; f1040s1 line 25, \"Add lines 24a through 24z\". Lines 24b to 24z are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (it lists jury duty pay given to the employer, line 24a, among the items asked separately); within scope they are zero, as the line's citation says. Line 24a is figured (decision D3). Same ruling as the earlier rounds; unchanged by the backlog packages. Project stands.",
+   "context": "bd21a530a91afdc613995c3652d220d11e36ae8deeaa9e57e258925be89ff6bd"
   },
   {
    "printed": "25",
@@ -191,6 +212,13 @@
    "restated": "Add line 11, line 13, line 15, line 16, line 17, and line 21.",
    "model": "The form says 'Add lines 11 through 23 and 25.' The restatement adds only lines 11, 13, 15, 16, 17 and 21. It omits lines 12, 14, 18, 19a, 20, 23 and 25, and no refusal names those excluded cases.",
    "ruling": "Ruling: refusal located elsewhere; project retained. Lines 12, 14, 18, 19a, 20, 23 and 24a to 24z (so line 25) are refused by scope.schedule1 ('Any income or adjustment requiring Schedule 1 other than ... educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction and student loan interest'), which refuses Form 1040 line 10, the line this one is entered on (checked: scope.schedule1 true gives f1040.line10 refused); within scope they are zero, as the line's citation says."
+  },
+  {
+   "printed": "26",
+   "restated": "Add line 11, line 13, line 15, line 16, line 17, line 18, line 19a, line 20, line 21, and line 25.",
+   "model": "IRS: 'Add lines 11 through 23 and 25.' The restatement omits lines 12, 14 and 23 (reservist/performing artist expenses, Armed Forces moving expenses, Archer MSA deduction). No refusal shown in the text covers them.",
+   "ruling": "Ruling: scope; f1040s1 line 26, \"Add lines 11 through 23 and 25\". Lines 12, 14 and 23 are named in scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (\"or an adjustment on Schedule 1 line 12, 14 or 23?\", checked on the current scope.yaml); within scope they are zero, as the line's citation says. Line 22 is reserved; every other line is added. Same ruling as the earlier rounds. Project stands.",
+   "context": "bd21a530a91afdc613995c3652d220d11e36ae8deeaa9e57e258925be89ff6bd"
   },
   {
    "printed": "26",

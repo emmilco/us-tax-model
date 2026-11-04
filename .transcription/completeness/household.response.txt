@@ -1,6 +1,6 @@
 ```yaml
 claims:
-  - item: "household.hoh_eligible"
+  - item: "household.test2_persons"
     sentences:
       - quote: "You may be eligible to file as head of household even if the child who is your qualifying person has been kidnapped. You can claim head of household filing status if all the following statements are true."
         page: "p501 p. 9"
@@ -14,7 +14,7 @@ claims:
         page: "p501 p. 10"
       - quote: "A person can’t qualify more than one taxpayer to use the head of household filing status for the year."
         page: "p501 p. 10"
-    why_uncovered: "The head of household items cover temporary absences only as a refusal (hoh_absence). Test 2 is computed from persons who lived with the filer for more than half the year. No question or refusal deals with the kidnapped-child rule for head of household; the qualifying surviving spouse question excludes that rule only for QSS. Nothing checks that a qualifying person has not already qualified another taxpayer for head of household."
+    why_uncovered: "The kidnapped-child rule is handled only for qualifying surviving spouse, where the question tells the filer to answer No. For head of household, no question, helper or refusal covers a kidnapped qualifying person. The only head of household time-lived refusal (hoh_absence) is about ordinary temporary absences. Nothing in the encoding enforces that one person can qualify only one taxpayer for head of household."
     effect: "eligibility"
   - item: "household.filing_status_conflict"
     sentences:
@@ -22,8 +22,26 @@ claims:
         page: "i1040gi p. 13"
       - quote: "To make either choice for 2025, you and your spouse must file a joint return and attach a statement, signed by both spouses, to your return."
         page: "i1040gi p. 14"
-      - quote: "If your spouse is a nonresident alien, your spouse must have either an SSN or an ITIN if: • You file a joint return, or • Your spouse is filing a separate return."
-        page: "i1040gi p. 13"
-    why_uncovered: "The marriage and filing-status checks ask about marriage, death, divorce and community property. They do not ask whether either spouse was a nonresident alien during 2025 on a joint return, or whether the election to be treated as residents was made. The nonresident alien fact appears only inside the head of household 'considered unmarried' question. The EIC nonresident refusal applies only to the EIC and does not block an otherwise improper joint filing status."
-    effect: "amount"
+      - quote: "If you and your spouse are making either of these choices to be treated as U.S. residents for 2025, check the box in the Filing Status section and enter the name of the nonresident spouse or dual-status spouse(s) (whichever applies to you) in the entry space."
+        page: "i1040gi p. 14"
+    why_uncovered: "The marriage questions ask about marital status, death, divorce and community property. None asks whether either spouse on a joint return was a nonresident alien during 2025, or whether the election to be treated as residents was made. The nonresident-alien refusal listed elsewhere applies only to the EIC, not to whether a joint return is allowed."
+    effect: "eligibility"
+  - item: "household.hoh_eligible"
+    sentences:
+      - quote: "If the child isn’t claimed as your dependent, enter the child’s name in the entry space below qualifying surviving spouse."
+        page: "i1040gi p. 14"
+    why_uncovered: "No line or question records the name of a non-dependent qualifying child who qualifies the filer for head of household."
+    effect: "presentation"
+  - item: "household.qss_eligible"
+    sentences:
+      - quote: "If the child isn’t claimed as your dependent, enter the child’s name in the entry space."
+        page: "i1040gi p. 15"
+    why_uncovered: "The qualifying surviving spouse question covers eligibility but does not capture the name of a non-dependent qualifying child for the filing status entry space."
+    effect: "presentation"
+  - item: "household.roster_ok"
+    sentences:
+      - quote: "Enter your spouse’s name in the entry space. Be sure to enter your spouse’s SSN or ITIN in the space for spouse’s SSN on Form 1040 or 1040-SR. If your spouse doesn’t have and isn’t required to have an SSN or ITIN, enter “NRA” in the entry space."
+        page: "i1040gi p. 14"
+    why_uncovered: "The roster allows a spouse entry only when filing jointly. So a married filing separately return has no place to record the spouse's name and SSN/ITIN, or the 'NRA' entry."
+    effect: "presentation"
 ```

@@ -1,0 +1,60 @@
+Reading additional input from stdin...
+OpenAI Codex v0.166.0
+--------
+workdir: /private/var/folders/kw/rp67pf8d5ng588lqp7d_gb240000gn/T/tmp.NFT75gd8RV
+model: gpt-6-astra
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: none
+reasoning summaries: none
+session id: 01a1a2e3-071b-7b30-a78f-96cbad0a764a
+--------
+user
+You are giving an independent second reading on two US federal tax questions for tax year 2025. Answer from your own knowledge of the Internal Revenue Code and IRS publications; say plainly where you are unsure. Keep the answer under 400 words.
+
+Question 1. A tax tool's question restates IRC section 168(k)(9)(A) and (B) (property excluded from the special depreciation allowance) in plain language as follows:
+"property primarily used in a trade or business of furnishing or selling electrical energy, water or sewage disposal services, gas or steam through a local distribution system, or transportation of gas or steam by pipeline, whose rates are established or approved by a government, a public service or public utility commission or a similar body, or the governing or ratemaking body of an electric cooperative, or property used in a trade or business that has had floor plan financing indebtedness (a loan used to buy motor vehicles held for sale or lease and secured by them) whose interest was taken into account in figuring the business interest expense limit".
+Is this an accurate restatement of 168(k)(9)(A) and (B) as in effect for 2025 (including any change by P.L. 119-21)? Name any inaccuracy or omission that could change who answers Yes.
+
+Question 2. Form 4562 line 2 is "Total cost of section 179 property placed in service". Pub. 946 (2025) p. 17 says: "Land and land improvements do not qualify as section 179 property." and "Even if the requirements explained earlier under What Property Qualifies? are met, you cannot elect the section 179 deduction for the following property. - Certain property you lease to others (if you are a noncorporate lessor). - Property used predominantly outside the United States, except property described in section 168(g)(4) of the Internal Revenue Code. - Property used by certain tax-exempt organizations, except property used in connection with the production of income subject to the tax on unrelated trade or business income. - Property used by governmental units or foreign persons or entities, except property used under a lease with a term of less than 6 months."
+Should the cost of (a) a land improvement, (b) property a noncorporate lessor purchased and leases to others (not meeting the two exceptions), and (c) property used by a governmental unit be included in Form 4562 line 2 (and so in the $4,000,000 threshold reduction of section 179(b)(2))? Answer (a), (b), (c) separately with the statutory reason (section 179(d)(1) and its reference to section 50(b), and section 179(d)(5)).
+codex
+I’ll check the statutory text and 2025 IRS instructions, particularly the distinction between property excluded from section 179 and property for which an election is barred.
+web search: 
+web search: 26 USC 168 k 9 2025 floor plan financing 119-21 ...
+web search: 
+web search: site.uscode.house.gov 163 "trailers" "2025" ...
+web search: 
+web search: https://www.law.cornell.edu/uscode/text/26/163
+web search: 
+web search: 'Such term shall also' in https://www.law.cornell.edu/uscode/text/26/163
+codex
+**1. Substantially accurate, but incomplete in ways that could change a Yes answer.**
+
+- “Motor vehicles” needs its special §163(j)(9)(C) definition: qualifying road vehicles, **boats, and farm machinery or equipment**. P.L. 119-21 §70303 added trailers and campers designed for temporary recreational, camping, or seasonal living and designed to be towed by or affixed to a motor vehicle, effective for taxable years beginning after December 31, 2024. Omitting these categories could produce incorrect No answers. [§163](https://www.law.cornell.edu/uscode/text/26/163)
+- “A government” is broader than the specified ratemaking authorities: a State or political subdivision, a U.S. agency or instrumentality, the specified State/local commissions or similar bodies, or an electric cooperative’s governing/ratemaking body. Foreign governmental approval alone does not satisfy that wording. [§163(j)(7)(A)(iv)](https://www.law.cornell.edu/uscode/text/26/163)
+- “Interest was taken into account” should specify **under §163(j)(1)(C)**—the floor-plan-interest addition to the deduction limit. Merely having or deducting inventory-financing interest is insufficient. The distinction between “primarily used” in (A) and “used” in (B) is correctly preserved. [§168(k)(9)](https://uscode.house.gov/us/usc/119-118/t26/s168/)
+
+**2. My reading is no for all three, subject to the qualifications below.**
+
+**(a) Land improvement: No**, assuming an ordinary nonqualifying land improvement, such as general paving or landscaping. It fails §179(d)(1)’s qualifying-property definition, ordinarily because it is neither §1245 property nor elected qualified real property. Classification matters: something colloquially called a land improvement could qualify if it actually satisfies those statutory categories. [§179(d)(1)](https://uscode.house.gov/us/usc/119-121/t26/s179/)
+
+**(b) Disqualified noncorporate-lessor property: No.** Section 179(d)(5) says **“This section shall not apply”** to that property unless an exception applies. Although it calls the asset “section 179 property,” its exclusion reaches the entire section, including §179(b)(2), not merely the deduction election. This is my statutory reading; the line-2 instructions do not expressly resolve this particular distinction. [§179(d)(5)](https://uscode.house.gov/us/usc/119-121/t26/s179/)
+
+**(c) Government-used property: No**, unless an applicable exception—particularly a lease shorter than six months—applies. Section 179(d)(1) expressly excludes property described in §50(b), except paragraph (2); governmental use falls under §50(b)(4). Thus, absent an exception, it is excluded from the definition itself and from line 2 and the phaseout calculation. [§50(b)](https://www.law.cornell.edu/uscode/text/26/50)
+tokens used
+28,757
+**1. Substantially accurate, but incomplete in ways that could change a Yes answer.**
+
+- “Motor vehicles” needs its special §163(j)(9)(C) definition: qualifying road vehicles, **boats, and farm machinery or equipment**. P.L. 119-21 §70303 added trailers and campers designed for temporary recreational, camping, or seasonal living and designed to be towed by or affixed to a motor vehicle, effective for taxable years beginning after December 31, 2024. Omitting these categories could produce incorrect No answers. [§163](https://www.law.cornell.edu/uscode/text/26/163)
+- “A government” is broader than the specified ratemaking authorities: a State or political subdivision, a U.S. agency or instrumentality, the specified State/local commissions or similar bodies, or an electric cooperative’s governing/ratemaking body. Foreign governmental approval alone does not satisfy that wording. [§163(j)(7)(A)(iv)](https://www.law.cornell.edu/uscode/text/26/163)
+- “Interest was taken into account” should specify **under §163(j)(1)(C)**—the floor-plan-interest addition to the deduction limit. Merely having or deducting inventory-financing interest is insufficient. The distinction between “primarily used” in (A) and “used” in (B) is correctly preserved. [§168(k)(9)](https://uscode.house.gov/us/usc/119-118/t26/s168/)
+
+**2. My reading is no for all three, subject to the qualifications below.**
+
+**(a) Land improvement: No**, assuming an ordinary nonqualifying land improvement, such as general paving or landscaping. It fails §179(d)(1)’s qualifying-property definition, ordinarily because it is neither §1245 property nor elected qualified real property. Classification matters: something colloquially called a land improvement could qualify if it actually satisfies those statutory categories. [§179(d)(1)](https://uscode.house.gov/us/usc/119-121/t26/s179/)
+
+**(b) Disqualified noncorporate-lessor property: No.** Section 179(d)(5) says **“This section shall not apply”** to that property unless an exception applies. Although it calls the asset “section 179 property,” its exclusion reaches the entire section, including §179(b)(2), not merely the deduction election. This is my statutory reading; the line-2 instructions do not expressly resolve this particular distinction. [§179(d)(5)](https://uscode.house.gov/us/usc/119-121/t26/s179/)
+
+**(c) Government-used property: No**, unless an applicable exception—particularly a lease shorter than six months—applies. Section 179(d)(1) expressly excludes property described in §50(b), except paragraph (2); governmental use falls under §50(b)(4). Thus, absent an exception, it is excluded from the definition itself and from line 2 and the phaseout calculation. [§50(b)](https://www.law.cornell.edu/uscode/text/26/50)

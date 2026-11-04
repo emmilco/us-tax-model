@@ -45,6 +45,10 @@ STATUS_WORDS = {"single": "Single", "mfj": "Married filing jointly", "mfs": "Mar
                 "hoh": "Head of household", "qss": "Qualifying surviving spouse"}
 
 
+PRINTED_ONLY = ("Only printed IRS output lines are requested. Work any intermediate steps you need from the source, "
+                "but do not report unrequested implementation helpers.")
+
+
 RATE_ENUM_NOTE = """ A Rate line takes a percentage exactly as the table prints it (for example 17.49%); an
 Enum(name) line takes one of that enumeration's values, written as the value itself (for example y5 or hy)."""
 
@@ -141,7 +145,7 @@ IRS text (where two lines share a number, followed by a name in parentheses: ans
 handle, exactly as given), with its value type: a money line takes a dollar amount; a Bool line takes yes or no; a
 Count line takes a whole number. A line the instructions tell you to skip, or that is blank, is
 written as blank.
-
+{(chr(10) + PRINTED_ONLY + chr(10)) if job.get('worked_scope') == 'printed-irs-lines' else ''}
 {fill}
 
 # Output
@@ -203,7 +207,7 @@ Filing status: {STATUS_WORDS.get(job['status'], job['status'])}
 
 {what}
 
-{('Only printed IRS output lines are requested. Work any intermediate steps you need from the source, but do not report unrequested implementation helpers.' if job.get('worked_scope') == 'printed-irs-lines' else '')}
+{PRINTED_ONLY if job.get('worked_scope') == 'printed-irs-lines' else ''}
 
 # Amounts given
 

@@ -1,0 +1,147 @@
+# Independent review of C1–C10
+
+## Ground rules I applied
+
+- **Lines marked "(gate)" are observed.** Only "(helper)" is unobserved, so `person.edu_over_refused` counts as a printed line.
+- **I can only see the listed definitions.** "Only reader" premises are checked against this list and nothing more. Several expressions are cut off, and many referenced lines are not defined here, including `share_raw`, `f7206_min`, `eic.eligible` and `person.age65`.
+
+---
+
+## C1: EQUIVALENT (given premises)
+
+- `has_taxable` true means `line16` is known and greater than `sales.zero`. That requires:
+  - the `unsupported` gate is false (otherwise `line16` is a refusal, and so is `gt`), and
+  - `line16`'s choose took a real branch.
+- The `has_dist=false` branch gives `zero`, which is not greater than `sales.zero`. So `line16` must equal `line16_figured`, and the mutant `subject` has the identical value.
+- If `has_taxable` is not true, `line17b_figured` is never read.
+- **Premises:**
+  - `sales.zero` = 0 and `f8889.zero` = 0. If `sales.zero` were negative, the zero branch could pass.
+  - No reader of `subject` exists besides `line17b_figured`.
+
+## C2: EQUIVALENT (given premises)
+
+- With `use_last_month` true and `dec_coverage` = self_only, the inner `any` of `married_family` comes out false:
+  - Disjunct 1 is `all[true, false]`, which is false.
+  - Disjunct 2's first conjunct (`use_last_month == false`) is false. That decides it before the `months_fa…` comparison.
+- So `married_family` is false, or it is a refusal from `household.married` that is identical in both versions. Then `split` is false or that same refusal, and `line6` never reads `line6_split`.
+- **Premises I cannot check:**
+  - `married_family` is truncated. The `any` may have more disjuncts, and the outer `all` may have more conjuncts.
+  - Nothing other than `self_in_family`, `step4_total`, `step4` and `line6_split` reads these lines.
+
+## C3: EQUIVALENT (given premises), but the claim's justification is incomplete
+
+- This mutation fires whenever `use_last_month` is true, not only when `dec_coverage` = self_only.
+- `use_last_month` true requires `dec_coverage` known and not `none`. That leaves two cases:
+  - **family:** the original reads `self_dec_year`, which is `self_year`. The mutant reads `self_all`, which is also `self_year` because `use_last_month` is true. Same memoized value.
+  - **self_only:** masked exactly as in C2.
+- **Premises:**
+  - The enum has only family, self_only and none. With a fourth value, `self_dec_year` would have no true guard, and that behaviour is unspecified.
+  - The same truncation caveat as C2 applies.
+
+## C4: NOT ESTABLISHED; likely NOT EQUIVALENT
+
+The handling of incomplete values is correct:
+
+| `share` | `self_year` | Result |
+|---|---|---|
+| refused | anything | `sum` stops at `share` first in both versions |
+| unknown | refused | both give `self_year`'s refusal |
+| any other incomplete combination | | both give the same unknown |
+
+The known case rests on an unsupported premise:
+
+- With both known, the baseline `step4_total` is 0 and the mutant's is `floor0(share − self_year)`.
+- The claim needs `share ≤ step1 ≤ self_year`. Nothing given defines `share_raw` or the `allocation_bad` condition, and nothing ties `step1` (`step1_line3 − line4`) to `self_year` (`self_amount × 12`).
+- On the real form, line 3 under the last-month rule is the family limit, which can exceed a self-only annual amount. So the premise looks false.
+- **Witness** (if share > self_year):
+  - Inputs: `household.married` = true, `hsa_both` = true, `use_last_month` true, `dec_coverage` = family, `share` = 4000, `self_year` = 3000.
+  - Baseline: `step4_total` = 0, so `line6` = 4000.
+  - Mutant: `step4_total` = 1000, so `line6` = 4000 + 1000 × `hsa.twelfth` ≈ 4083.
+
+## C5: EQUIVALENT for the listed lines (given premises)
+
+- The mutation only fires when `edu_student` is known false. If `edu_student` is unknown or refused, the guard is incomplete and `edu_adj` takes that value in both versions.
+- With `edu_student` known false:
+  - `edu_over_refused` is observed ("(gate)"). Its first conjunct is false and decides before `edu_adj` is read.
+  - `edu_aoc` and `edu_llc` are false through their first conjunct, so lines 27 and 31 take the `zero` alternative and never evaluate the `bind`.
+- **Premises I cannot check:**
+  - Lines 28–30 are not given, so they cannot be checked.
+  - The gate `person.edu_llc_tin_refused` is undefined.
+  - Any roster aggregation over `edu_adj` is unknown.
+  - `dependent.edu_adj` is not given at all.
+
+## C6: EQUIVALENT
+
+- `itemizes` known false means:
+  - every disjunct was evaluated,
+  - no unknown was remembered, and
+  - no refusal occurred.
+- So `mfs_spouse_itemizes` is known false, and `standard` is known (`gt` passes along any incomplete operand).
+- A known `standard` means both of its gates were false and it took the branch whose value is `standardraw`. The two values are the same.
+
+## C7: EQUIVALENT (given premises)
+
+- In `itemizes`, with `mfs_spouse_itemizes` true, the second disjunct decides true whatever the first disjunct is:
+  - If the first is true, it decides on its own.
+  - If the first is unknown, it is remembered, and the deciding true still ends the test.
+  - If the first is a refusal, that ends the test before `standard` is read.
+- The "cannot refuse" premise is therefore unnecessary.
+- `deduction` takes `line17`, and its alternative 1 is never evaluated.
+- **Premise:** no other reader of `sa.standard` exists. A Form 1040 line 12 that reads it directly is plausible.
+
+## C8: NOT ESTABLISHED; likely NOT EQUIVALENT
+
+- The original computes `sum(0, 0, L14)` and the mutant computes `sum(L14, 0, L14)`. These are equal only when `L14` = 0 or `L14` is incomplete.
+- The claim needs "`profit_pos` = 0 implies lines 7–13 are 0, implies `L14` = 0". `f7206_min` and `line10` are not given, so this cannot be checked.
+- Form 7206 also counts S-corporation wages of a more-than-2% shareholder as earned income, so `L14` can be positive with zero Schedule C profit.
+- **Witness:** `profit_pos` = 0, `hi_uses` true, `f7206_line14` = 500. Baseline `qbi_ded` = 500; mutant = 1000.
+- This is observable only if some printed line reads `qbi_ded`, and none is listed.
+
+## C9: NOT EQUIVALENT (subject to premises about `eligible` and readers of `credit`)
+
+The claim only handles `line4` being known. It misses the case where `line4` is incomplete:
+
+- **Inputs:** `eic.line1` is a refusal R (for example `earned_income` refused), `eic.line3` is unknown (`f1040.line11b` unanswered), `eligible` = true, and `household.credit_disallowed` = false.
+- **Baseline:** `line4 = eq(line3, line1)` evaluates both operands and returns the first refusal, R. Then `line6` = R and `credit` = R.
+- **Mutant:** `line5_blank = lt(unknown, threshold)` is unknown, so `after_line4` is unknown and `credit` is unknown. Unknown is not R.
+
+Two more weak points:
+
+- The known-case argument for `line1 < table_start` needs `line5_threshold ≥ table_start`, which is an unchecked parameter. If that fails and `ssn_count` is unknown:
+  - the mutant gives `smaller(unknown, 0)`, which is unknown,
+  - the baseline gives `line2` = 0.
+- The argument assumes `line3_table1–3` use the same tables as `line1_table1–3`; only table 0 is shown.
+
+Things I cannot check:
+
+- If `eligible` itself reads `line1`, it would be refused and the witness would not reach alternative 0.
+- `credit` is a helper, so observing the difference needs a printed reader, and none is listed.
+
+## C10: EQUIVALENT only under unchecked premises
+
+The argument holds if:
+
+1. Exactly one roster entry has role taxpayer. Otherwise `age65` and `work_ssn` could be true on different taxpayer entries, `senior_count` could be 0, and the mutant would print `line35_calc` where the baseline prints 0.
+2. `person.age65` and `person.work_ssn` cannot refuse.
+   - A spouse entry's refused `age65` is skipped by the taxpayer-filtered counts, because `role == taxpayer` is false and decides first.
+   - It is still read by `senior_count`.
+   - If `sum_over` propagates refusals, `part5` and therefore `line35` become refusals, while the mutant's `line35_calc` may be known.
+   - The `sum_over` refusal semantics are not given.
+3. An unknown entry still yields a lower bound of 1 whatever the entry order. Section 4.7.5 does not describe how lower bounds accumulate.
+
+---
+
+## Summary
+
+| Claim | Verdict |
+|---|---|
+| C1 | Equivalent (premises: `sales.zero` = 0, no other readers) |
+| C2 | Equivalent (premises: truncated `married_family`, readers) |
+| C3 | Equivalent, but via the family case as well as self_only (premise: enum has 3 values) |
+| C4 | Not established; counterexample if `share > self_year` |
+| C5 | Equivalent for listed lines; lines 28–30, `edu_llc_tin_refused` and `dependent.*` unchecked |
+| C6 | Equivalent |
+| C7 | Equivalent (premise: no other reader of `sa.standard`) |
+| C8 | Not established; counterexample if `f7206_line14 > 0` with zero profit |
+| C9 | **Not equivalent**: `line1` refused and `line3` unknown gives refusal vs unknown (if `eligible` can be true there) |
+| C10 | Equivalent only if there is a single taxpayer entry, person inputs cannot refuse, and the lower-bound semantics hold |

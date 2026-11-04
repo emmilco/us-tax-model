@@ -1,0 +1,158 @@
+You are reviewing equivalence claims for a mutation-testing tool on a tax-form evaluator. Give an independent reading; do not assume the claims are right.
+
+EVALUATOR RULES (spec 4.7, verbatim summary):
+- Values: known (money in cents, bool, enum, count), refusal (gate+record), or unknown. All unknowns compare equal; refusals compare whole.
+- 4.7.1 A line's refusal gates are read in order before its expression: a true gate makes the line that refusal; an unknown or refused gate makes the line that gate's value; all false -> the expression.
+- 4.7.2 all/any: conjuncts in order; a refusal ends the test with it; an unknown is remembered and evaluation continues; a deciding conjunct (false for all, true for any) ends with that value even after an earlier unknown; at the end, the remembered unknown if any, else true(all)/false(any). Comparisons evaluate both operands then return the first refusal, else first unknown, else compare (a Count unknown with a lower bound can decide gt/ge early).
+- 4.7.3 choose: guards in order; an incomplete guard is the line's value; a true guard -> that alternative's value; alternatives not taken are not evaluated.
+- 4.7.4 subtract/subtract_floor0/multiply_rate/comparisons evaluate all operands then the first refusal, else first unknown; sum/smaller_of/larger_of stop at the first refusal, else first unknown.
+- 4.7.5 sum_over: unconfirmed roster -> unknown; empty roster -> 0.
+- Values are memoized per frame: a line has one value per return.
+- Every line is evaluated, but only lines whose printed marker is not "(helper)" are observed. A mutant is equivalent when no printed line can differ at ANY input, including unanswered inputs (unknown) and refusals.
+
+MUTANT FORM: in line L's choose, alternative i's value X is replaced by line Y ("L alt i: X -> Y").
+
+LINE DEFINITIONS (id [printed marker] type expression refuses=[gates]; for choose, numbered alternatives "guard -> then"):
+f8889.subject [(helper)] NonNegDollars refuses=[]
+   0: {"eq": ["f8889.line17a", {false}], "op": "test"} -> f8889.line16
+   1: {"eq": ["f8889.line17a", {true}], "op": "test"} -> f8889.subject_excepted
+f8889.line16 [16] NonNegDollars refuses=['f8889.unsupported']
+   0: {"eq": ["f8889.has_dist", {true}], "op": "test"} -> f8889.line16_figured
+   1: {"eq": ["f8889.has_dist", {false}], "op": "test"} -> f8889.zero
+f8889.line16_figured [(helper)] NonNegDollars {"from": "f8889.line14c", "op": "subtract_floor0", "take": "f8889.line15"} refuses=[]
+f8889.has_taxable [(helper)] Bool {"gt": ["f8889.line16", {"param": "sales.zero"}], "op": "test"} refuses=[]
+f8889.line17b [17b] NonNegDollars refuses=[]
+   0: {"eq": ["f8889.has_taxable", {true}], "op": "test"} -> f8889.line17b_figured
+   1: {"eq": ["f8889.has_taxable", {false}], "op": "test"} -> f8889.zero
+f8889.line17b_figured [(helper)] NonNegDollars {"amount": "f8889.subject", "op": "multiply_rate", "rate": {"param": "hsa.additional_rate"}} refuses=[]
+f8889.has_dist [(helper)] Bool {"gt": ["f8889.line14a", {"param": "sales.zero"}], "op": "test"} refuses=[]
+f8889.self_dec_year [(helper)] NonNegDollars refuses=[]
+   0: {"eq": ["f8889.dec_coverage", {"family"}], "op": "test"} -> f8889.self_year
+   1: {"eq": ["f8889.dec_coverage", {"self_only"}], "op": "test"} -> f8889.zero
+   2: {"eq": ["f8889.dec_coverage", {"none"}], "op": "test"} -> f8889.zero
+f8889.self_in_family [(helper)] NonNegDollars refuses=[]
+   0: {"eq": ["f8889.use_last_month", {true}], "op": "test"} -> f8889.self_dec_year
+   1: {"eq": ["f8889.use_last_month", {false}], "op": "test"} -> f8889.self_family_months
+f8889.self_all [(helper)] NonNegDollars refuses=[]
+   0: {"eq": ["f8889.use_last_month", {true}], "op": "test"} -> f8889.self_year
+   1: {"eq": ["f8889.use_last_month", {false}], "op": "test"} -> f8889.self_counted
+f8889.self_year [(helper)] NonNegDollars {"amount": "f8889.self_amount", "count": "f8889.twelve", "op": "multiply_count"} refuses=[]
+f8889.share [(helper)] NonNegDollars {"from": "f8889.share_raw", "op": "copy"} refuses=['f8889.allocation_bad']
+f8889.step1 [(helper)] NonNegDollars {"from": "f8889.step1_line3", "op": "subtract_floor0", "take": "f8889.line4"} refuses=[]
+f8889.step4_total [(helper)] NonNegDollars {"from": "f8889.self_all", "op": "subtract_floor0", "take": "f8889.self_in_family"} refuses=[]
+f8889.step4 [(helper)] NonNegDollars {"amount": "f8889.step4_total", "op": "multiply_rate", "rate": {"param": "hsa.twelfth"}} refuses=[]
+f8889.line6_split [(helper)] NonNegDollars {"of": ["f8889.share", "f8889.step4"], "op": "sum"} refuses=[]
+f8889.line6 [6] NonNegDollars refuses=[]
+   0: {"eq": ["f8889.split", {true}], "op": "test"} -> f8889.line6_split
+   1: {"eq": ["f8889.split", {false}], "op": "test"} -> f8889.line5
+f8889.split [(helper)] Bool {"all": [{"eq": ["f8889.married_family", {true}], "op": "test"}, {"eq": ["household.hsa_both", {true}], "op": "test"}], "op": "test"} refuses=[]
+f8889.married_family [(helper)] Bool {"all": [{"eq": ["household.married", {true}], "op": "test"}, {"any": [{"all": [{"eq": ["f8889.use_last_month", {true}], "op": "test"}, {"eq": ["f8889.dec_coverage", {"family"}], "op": "test"}], "op": "test"}, {"all": [{"eq": ["f8889.use_last_month", {false}], "op": "test"}, {"gt": ["f8889.months_fa refuses=[]
+f8889.use_last_month [(helper)] Bool {"all": [{"ne": ["f8889.dec_coverage", {"none"}], "op": "test"}, {"eq": ["f8889.last_month", {true}], "op": "test"}], "op": "test"} refuses=[]
+person.edu_adj [(helper)] NonNegDollars refuses=[]
+   0: {"eq": ["person.edu_student", {true}], "op": "test"} -> person.edu_adj_sum
+   1: {"eq": ["person.edu_student", {false}], "op": "test"} -> person.zero
+person.edu_student [(helper)] Bool {"all": [{"eq": ["f8863.paid", {true}], "op": "test"}, {"eq": ["person.edu", {true}], "op": "test"}, {"any": [{"eq": ["person.tin", {true}], "op": "test"}, {"eq": ["person.itin_applied", {true}], "op": "test"}], "op": "test"}, {"eq": ["person.edu_1098t", {true}], "op": "test"}], "op": "test"} refuses=[]
+person.edu_over_refused [(gate)] Bool {"all": [{"eq": ["person.edu_student", {true}], "op": "test"}, {"gt": ["person.edu_adj", {0}], "op": "test"}, {"eq": ["person.edu_over", {true}], "op": "test"}], "op": "test"} refuses=[]
+person.edu_aoc [(helper)] Bool {"all": [{"eq": ["person.edu_student", {true}], "op": "test"}, {"eq": ["person.edu_line23", {false}], "op": "test"}, {"eq": ["person.edu_line24", {true}], "op": "test"}, {"eq": ["person.edu_line25", {false}], "op": "test"}, {"eq": ["person.edu_line26", {false}], "op": "test"}, {"eq": ["household.all refuses=[]
+person.edu_llc [(helper)] Bool {"all": [{"eq": ["person.edu_student", {true}], "op": "test"}, {"eq": ["person.edu_aoc", {false}], "op": "test"}], "op": "test"} refuses=[]
+person.edu_line27 [27] NonNegDollars refuses=['person.edu_over_refused']
+   0: {"eq": ["person.edu_aoc", {true}], "op": "test"} -> {"bind": {"adj": "person.edu_adj", "inst": "person.edu_inst", "mat": "person.edu_mat"}, "def": "aqee
+   1: {"eq": ["person.edu_aoc", {false}], "op": "test"} -> person.zero
+person.edu_line31 [31] NonNegDollars refuses=['person.edu_llc_tin_refused', 'person.edu_over_refused']
+   0: {"eq": ["person.edu_llc", {true}], "op": "test"} -> {"bind": {"adj": "person.edu_adj", "inst": "person.edu_inst", "mat": "person.edu_mat"}, "def": "aqee
+   1: {"eq": ["person.edu_llc", {false}], "op": "test"} -> person.zero
+sa.deduction [(helper)] NonNegDollars refuses=['sa.dependent']
+   0: {"eq": ["sa.itemizes", {true}], "op": "test"} -> sa.line17
+   1: {"eq": ["sa.itemizes", {false}], "op": "test"} -> sa.standard
+sa.standard [(helper)] NonNegDollars refuses=['sa.dependent', 'sa.mfs_spouse_extra']
+   0: {"eq": ["sa.mfs_spouse_itemizes", {true}], "op": "test"} -> sa.zero
+   1: {"eq": ["sa.mfs_spouse_itemizes", {false}], "op": "test"} -> sa.standardraw
+sa.standardraw [(helper)] NonNegDollars {"of": ["sa.standardbase", "sa.extra_age65", "sa.extra_blind"], "op": "sum"} refuses=[]
+sa.itemizes [(helper)] Bool {"any": [{"eq": ["sa.elect_itemize", {true}], "op": "test"}, {"eq": ["sa.mfs_spouse_itemizes", {true}], "op": "test"}, {"gt": ["sa.line17", "sa.standard"], "op": "test"}], "op": "test"} refuses=[]
+sa.extra_blind [(helper)] NonNegDollars {"amount": "sa.extra", "count": "sa.boxes_blind", "op": "multiply_count"} refuses=[]
+sc.qbi_se [(helper)] NonNegDollars refuses=[]
+   0: {"eq": ["sc.qbi_has", {true}], "op": "test"} -> sc.qbi_se_pos
+   1: {"eq": ["sc.qbi_has", {false}], "op": "test"} -> sc.zero
+sc.qbi_has [(helper)] Bool {"gt": ["sc.profit_pos", "sc.zero"], "op": "test"} refuses=[]
+sc.qbi_ded [(helper)] NonNegDollars {"of": ["sc.qbi_se", "sc.qbi_plan", "sc.f7206_line14"], "op": "sum"} refuses=[]
+sc.qbi_plan [(helper)] NonNegDollars refuses=[]
+   0: {"eq": ["sc.qbi_has", {true}], "op": "test"} -> sc.qbi_plan_pos
+   1: {"eq": ["sc.qbi_has", {false}], "op": "test"} -> sc.zero
+sc.f7206_line14 [14] NonNegDollars refuses=[]
+   0: {"eq": ["sc.hi_uses", {true}], "op": "test"} -> sc.f7206_min
+   1: {"eq": ["sc.hi_uses", {false}], "op": "test"} -> sc.zero
+sc.f7206_line13 [13] NonNegDollars {"from": "sc.f7206_line10", "op": "copy"} refuses=[]
+eic.credit [(helper)] NonNegDollars refuses=['household.credit_disallowed']
+   0: {"eq": ["eic.eligible", {true}], "op": "test"} -> eic.line6
+   1: {"eq": ["eic.eligible", {false}], "op": "test"} -> eic.zero
+eic.line6 [6] NonNegDollars refuses=[]
+   0: {"eq": ["eic.line4", {true}], "op": "test"} -> eic.line2
+   1: {"eq": ["eic.line4", {false}], "op": "test"} -> eic.after_line4
+eic.after_line4 [(helper)] NonNegDollars refuses=[]
+   0: {"eq": ["eic.line5_blank", {true}], "op": "test"} -> eic.line2
+   1: {"eq": ["eic.line5_blank", {false}], "op": "test"} -> eic.smaller
+eic.line4 [4] Bool {"eq": ["eic.line3", "eic.line1"], "op": "test"} refuses=[]
+eic.line5 [5] NonNegDollars refuses=[]
+   0: {"all": [{"ge": ["eic.ssn_count", {0, "type": "Count"}], "op": "test"}, {"lt": ["eic.ssn_count", {1, "type": "Count"}], "op": "test"}], "op": "test"} -> eic.line3_table0
+   1: {"all": [{"ge": ["eic.ssn_count", {1, "type": "Count"}], "op": "test"}, {"lt": ["eic.ssn_count", {2, "type": "Count"}], "op": "test"}], "op": "test"} -> eic.line3_table1
+   2: {"all": [{"ge": ["eic.ssn_count", {2, "type": "Count"}], "op": "test"}, {"lt": ["eic.ssn_count", {3, "type": "Count"}], "op": "test"}], "op": "test"} -> eic.line3_table2
+   3: {"ge": ["eic.ssn_count", {3, "type": "Count"}], "op": "test"} -> eic.line3_table3
+eic.line5_blank [(helper)] Bool {"lt": ["eic.line3", "eic.line5_threshold"], "op": "test"} refuses=[]
+eic.smaller [(helper)] NonNegDollars {"of": ["eic.line5", "eic.line2"], "op": "smaller_of"} refuses=[]
+eic.line2 [2] NonNegDollars refuses=[]
+   0: {"eq": ["eic.line1_in_table", {true}], "op": "test"} -> eic.line1_table
+   1: {"eq": ["eic.line1_in_table", {false}], "op": "test"} -> eic.zero
+eic.line1_in_table [(helper)] Bool {"ge": ["eic.line1", {"param": "eic.table_start"}], "op": "test"} refuses=[]
+eic.line1_table [(helper)] NonNegDollars refuses=[]
+   0: {"all": [{"ge": ["eic.ssn_count", {0, "type": "Count"}], "op": "test"}, {"lt": ["eic.ssn_count", {1, "type": "Count"}], "op": "test"}], "op": "test"} -> eic.line1_table0
+   1: {"all": [{"ge": ["eic.ssn_count", {1, "type": "Count"}], "op": "test"}, {"lt": ["eic.ssn_count", {2, "type": "Count"}], "op": "test"}], "op": "test"} -> eic.line1_table1
+   2: {"all": [{"ge": ["eic.ssn_count", {2, "type": "Count"}], "op": "test"}, {"lt": ["eic.ssn_count", {3, "type": "Count"}], "op": "test"}], "op": "test"} -> eic.line1_table2
+   3: {"ge": ["eic.ssn_count", {3, "type": "Count"}], "op": "test"} -> eic.line1_table3
+eic.line1_table0 [(helper)] NonNegDollars {"key": "eic.line1", "op": "table_lookup", "status": "f1040.status", "table": "eic_0"} refuses=[]
+eic.line3_table0 [(helper)] NonNegDollars {"key": "eic.line3", "op": "table_lookup", "status": "f1040.status", "table": "eic_0"} refuses=[]
+eic.line3 [3] Dollars {"from": "f1040.line11b", "op": "copy"} refuses=[]
+eic.line1 [1] Dollars refuses=[]
+   0: {"eq": ["eic.self_employed", {false}], "op": "test"} -> eic.earned_income
+   1: {"eq": ["eic.self_employed", {true}], "op": "test"} -> eic.wsb_6
+s1a.line36a_senior [(helper)] NonNegDollars refuses=['s1a.senior_decedent']
+   0: {"eq": ["household.taxpayer_work_ssn", {false}], "op": "test"} -> s1a.zero
+   1: {"eq": ["household.taxpayer_work_ssn", {true}], "op": "test"} -> s1a.line35
+s1a.line35 [35] NonNegDollars refuses=[]
+   0: {"eq": ["s1a.part5", {false}], "op": "test"} -> s1a.zero
+   1: {"eq": ["s1a.part5", {true}], "op": "test"} -> s1a.line35_calc
+s1a.part5 [(helper)] Bool {"all": [{"eq": ["s1a.senior_any", {true}], "op": "test"}, {"ne": ["f1040.status", {"mfs"}], "op": "test"}], "op": "test"} refuses=[]
+s1a.senior_any [(helper)] Bool {"gt": ["s1a.senior_count", {0, "type": "Count"}], "op": "test"} refuses=[]
+s1a.senior_count [(helper)] Count {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"all": [{"eq": ["person.age65", {true}], "op": "test"}, {"eq": ["person.work_ssn", {true}], "op": "test"}], "op": "test"}} refuses=[]
+sa.age65 [(helper)] Bool {"gt": ["sa.age65_count", {0, "type": "Count"}], "op": "test"} refuses=[]
+sa.age65_count [(helper)] Count {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"all": [{"eq": ["person.role", {"taxpayer"}], "op": "test"}, {"eq": ["person.age65", {true}], "op": "test"}], "op": "test"}} refuses=[]
+household.taxpayer_work_ssn [(helper)] Bool {"gt": ["household.taxpayer_work_ssn_count", {0, "type": "Count"}], "op": "test"} refuses=[]
+household.taxpayer_work_ssn_count [(helper)] Count {"collection": "person", "field": "person.one", "op": "sum_over", "where": {"all": [{"eq": ["person.role", {"taxpayer"}], "op": "test"}, {"eq": ["person.work_ssn", {true}], "op": "test"}], "op": "test"}} refuses=[]
+s1a.line36a [36a] NonNegDollars refuses=[]
+   0: {"eq": ["sa.age65", {false}], "op": "test"} -> s1a.zero
+   1: {"eq": ["sa.age65", {true}], "op": "test"} -> s1a.line36a_claim
+s1a.line36a_claim [(helper)] NonNegDollars refuses=[]
+   0: {"eq": ["f1040.status", {"single"}], "op": "test"} -> s1a.line36a_senior
+   1: {"eq": ["f1040.status", {"mfj"}], "op": "test"} -> s1a.line36a_senior
+   2: {"eq": ["f1040.status", {"mfs"}], "op": "test"} -> s1a.zero
+   3: {"eq": ["f1040.status", {"hoh"}], "op": "test"} -> s1a.line36a_senior
+   4: {"eq": ["f1040.status", {"qss"}], "op": "test"} -> s1a.line36a_senior
+
+CLAIMS (for each, answer EQUIVALENT or NOT EQUIVALENT; if NOT, give a concrete input situation, including unanswered inputs or refusals, where a printed line differs; note any premise you cannot check from the definitions given, e.g. a reader not listed):
+
+C1. f8889.subject alt0 (has_dist? see def): line16 -> line16_figured. Claim: subject's only reader is line17b_figured, read only via line17b's has_taxable branch; has_taxable = line16 > 0; when has_taxable is true line16 is known > 0, which only comes from line16's has_dist=true branch, whose value is line16_figured.
+
+C2. f8889.self_dec_year alt1: zero -> self_family_months; C3. f8889.self_in_family alt0: self_dec_year -> self_all. Claim: both only change step4_total when use_last_month is true and dec_coverage = self_only; step4_total reaches print only through line6_split, read by line6 only when split is true; split needs married_family, whose inner any is false when use_last_month is true and dec_coverage = self_only, so married_family is false (all[unknown,false] = false) or the same refusal in both versions.
+
+C4. f8889.self_all alt0: self_year -> share. Claim: only matters when split is true and use_last_month true, which needs dec_coverage = family; then baseline step4_total = floor0(self_year - self_dec_year) = 0 and mutant floor0(share - self_year) = 0 because share <= step1 <= self_year; if share is incomplete, line6_split evaluates share first so it is the same value in both.
+
+C5. person.edu_adj alt1 (guard edu_student = false): zero -> ira_se. Claim: every reader reads edu_adj only where edu_student is true (edu_over_refused is all[edu_student==true, ...] whose first conjunct decides false; edu_line27..31 read it only in branches guarded by edu_aoc/edu_llc, all-tests starting with edu_student==true). Same structure for dependent.edu_adj (zero -> dc_line2d).
+
+C6. sa.deduction alt1 (itemizes = false): standard -> standardraw. Claim: itemizes known false means every disjunct of the any was evaluated false, including mfs_spouse_itemizes==true false and gt(line17, standard) with standard known; standard known means its gates were false and its choose took the mfs_spouse_itemizes=false branch, whose value is standardraw.
+
+C7. sa.standard alt0 (mfs_spouse_itemizes = true): zero -> extra_blind. Claim: readers are sa.itemizes and sa.deduction; in itemizes the second disjunct (mfs_spouse_itemizes==true) is true and decides before the third, the only one reading standard, and the first disjunct (elect_itemize, an ungated input) cannot refuse; deduction reads standard only when itemizes is false, impossible here; standard is a helper.
+
+C8. sc.qbi_se alt1 (qbi_has = false): zero -> f7206_line14. Claim: qbi_has false means profit_pos is known 0, so f7206 lines 7-13 are 0; qbi_ded = sum(qbi_se, qbi_plan, f7206_line14) with qbi_plan 0; original sum(0,0,L14), mutant sum(L14,0,L14): equal for L14 = 0, the same refusal, or unknown.
+
+C9. eic.credit alt0 (eligible = true): line6 -> after_line4. Claim: line6 = line2 when line4 (line3 == line1) is true, else after_line4; when line4 is true, after_line4 is line2 (line5 blank) or smaller(line5, line2) where line5 looks up line3 = line1 in the same EIC tables line2 uses, so line5 = line2 when line1 is at least table_start; when line1 is below table_start (line2 = 0), line3 = line1 is below every line 5 threshold so line 5 is blank and after_line4 = line2.
+
+C10. s1a.line36a_senior alt1 (household.taxpayer_work_ssn = true): line35 -> line35_calc. Claim: line36a_senior is read only through line36a_claim (status not mfs) and line36a (sa.age65 true). sa.age65 true means the taxpayer entry has age65 true; with taxpayer_work_ssn true, the taxpayer entry passes senior_count's filter, so senior_count is at least 1 (its other entries read only ungated inputs, so it cannot refuse; an unknown entry leaves a lower bound of 1), senior_any is true, part5 is true, and line35 = line35_calc.

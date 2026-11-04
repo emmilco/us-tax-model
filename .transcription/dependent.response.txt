@@ -14,12 +14,11 @@ lines:
 
   - id: dependent.h_one_cent
     printed: "(helper)"
-    label: "One cent (flag value)"
+    label: "One cent (flag amount used to count a qualifying person)"
     type: NonNegDollars
     expr: {op: param, ref: sc.one_cent}
 
-  # ---------- Step 1: qualifying child ----------
-  - id: dependent.h_rel_qc
+  - id: dependent.h_qc_rel
     printed: "(helper)"
     label: "Son, daughter, stepchild, foster child, brother, sister, stepbrother, stepsister, half brother, half sister, or a descendant of any of them"
     type: Bool
@@ -30,9 +29,9 @@ lines:
         - {op: test, eq: [dependent.relationship, {const: "sibling"}]}
         - {op: test, eq: [dependent.relationship, {const: "sibling_descendant"}]}
 
-  - id: dependent.h_age_qc
+  - id: dependent.h_age_test
     printed: "(helper)"
-    label: "Under age 19 and younger than you (or spouse if filing jointly); or under age 24, a full-time student, and younger; or any age and permanently and totally disabled"
+    label: "Under age 19 at the end of 2025 and younger than you (or your spouse if filing jointly), or under age 24, a full-time student and younger than you (or your spouse), or any age and permanently and totally disabled"
     type: Bool
     expr:
       op: test
@@ -48,78 +47,43 @@ lines:
             - {op: test, eq: [dependent.younger, {const: true}]}
         - {op: test, eq: [dependent.disabled, {const: true}]}
 
-  - id: dependent.h_qc_core
+  - id: dependent.h_lived_half
     printed: "(helper)"
-    label: "Meets the conditions to be your qualifying child (relationship, age, support, joint return and residency tests)"
+    label: "Lived with you for more than half of 2025 (see Exception to time lived with you, and Kidnapped child)"
     type: Bool
     expr:
       op: test
-      all:
-        - {op: test, eq: [dependent.h_rel_qc, {const: true}]}
-        - {op: test, eq: [dependent.h_age_qc, {const: true}]}
-        - {op: test, eq: [dependent.self_support, {const: false}]}
-        - {op: test, eq: [dependent.joint_return, {const: false}]}
-        - {op: test, ge: [dependent.months, {const: 7, type: Count}]}
-    note: "The months input already applies the exceptions to time lived with you (temporary absences, birth, death, adoption or placement), so residency is months of 7 or more."
-
-  - id: dependent.h_tiebreak
-    printed: "(helper)"
-    label: "Qualifying child of more than one person (tiebreaker rules apply)"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [dependent.h_qc_core, {const: true}]}
-        - {op: test, eq: [dependent.other_claimant, {const: true}]}
-        - {op: test, eq: [dependent.other_nontaxpayer, {const: false}]}
-    note: "The tiebreaker rules depend on parentage, time lived with each person and AGI, which are not in the interface. The tool refuses when another taxpayer could also treat the child as a qualifying child. If every such other person is not a taxpayer, it treats the child as yours."
-
-  - id: dependent.h_kidnap_issue
-    printed: "(helper)"
-    label: "Kidnapped child who fails the time-lived-with-you test as counted"
-    type: Bool
-    expr:
-      op: test
-      all:
+      any:
+        - {op: test, gt: [dependent.months, {const: 6, type: Count}]}
         - {op: test, eq: [dependent.kidnapped, {const: true}]}
-        - {op: test, lt: [dependent.months, {const: 7, type: Count}]}
-    note: "The kidnapped-child rule (Pub. 501) needs facts about the years of the kidnapping and the return, which are not supplied. The tool refuses only when that rule would matter."
+    note: "Open: the kidnapped-child rule (Pub. 501) has conditions about time lived with you before the kidnapping and after the return, and those facts aren't collected. Chosen reading: a child answered as kidnapped is treated as meeting the residency test. Births, deaths and placements are already reflected in the months input."
 
-  - id: dependent.h_citizen_cm
+  - id: dependent.h_qc_nojr
     printed: "(helper)"
-    label: "U.S. citizen, U.S. national, U.S. resident alien, or a resident of Canada or Mexico"
-    type: Bool
-    expr:
-      op: test
-      any:
-        - {op: test, eq: [dependent.citizen, {const: true}]}
-        - {op: test, eq: [dependent.canada_mexico, {const: true}]}
-
-  - id: dependent.h_filer_ok
-    printed: "(helper)"
-    label: "Filing a joint return, or you could not be claimed as a dependent on someone else's 2025 return"
-    type: Bool
-    expr:
-      op: test
-      any:
-        - {op: test, eq: [f1040.status, {const: "mfj"}]}
-        - {op: test, eq: [sa.dependent, {const: false}]}
-
-  - id: dependent.h_claimed_qc
-    printed: "(helper)"
-    label: "You can claim this qualifying child as a dependent (Step 2)"
+    label: "Meets the qualifying child relationship, age, residency and support tests (before the joint return test)"
     type: Bool
     expr:
       op: test
       all:
-        - {op: test, eq: [dependent.h_qc_core, {const: true}]}
-        - {op: test, eq: [dependent.h_citizen_cm, {const: true}]}
-        - {op: test, eq: [dependent.h_filer_ok, {const: true}]}
+        - {op: test, eq: [dependent.h_qc_rel, {const: true}]}
+        - {op: test, eq: [dependent.h_age_test, {const: true}]}
+        - {op: test, eq: [dependent.h_lived_half, {const: true}]}
+        - {op: test, eq: [dependent.self_support, {const: false}]}
 
-  # ---------- Step 4: qualifying relative ----------
-  - id: dependent.h_rel_direct
+  - id: dependent.h_qc
     printed: "(helper)"
-    label: "Related to you (or, on a joint return, to your spouse) in a way that need not live with you all year"
+    label: "Qualifying child (Step 1): also isn't filing a joint return for 2025 (or files only to claim a refund)"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [dependent.h_qc_nojr, {const: true}]}
+        - {op: test, eq: [dependent.joint_return, {const: false}]}
+    note: "Open: when the child is also the qualifying child of another person, the tiebreaker rules apply, and the facts they need (parentage, AGI, the other person's claim) aren't collected. Chosen reading: the filer is treated as the person who can claim the child."
+
+  - id: dependent.h_qr_direct
+    printed: "(helper)"
+    label: "Relative who doesn't have to live with you (child, sibling, parent or ancestor, aunt or uncle, step-parent or in-law)"
     type: Bool
     expr:
       op: test
@@ -129,23 +93,40 @@ lines:
         - {op: test, eq: [dependent.relationship, {const: "parent"}]}
         - {op: test, eq: [dependent.relationship, {const: "parent_relative"}]}
         - {op: test, eq: [dependent.relationship, {const: "in_law"}]}
+
+  - id: dependent.h_qr_spouse
+    printed: "(helper)"
+    label: "Joint return: the person is related to your spouse"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [f1040.status, {const: "mfj"}]}
+        - {op: test, eq: [dependent.spouse_relative, {const: true}]}
+
+  - id: dependent.h_qr_household
+    printed: "(helper)"
+    label: "Any other person (other than your spouse) who lived with you all year as a member of your household if your relationship didn't violate local law"
+    type: Bool
+    expr:
+      op: test
+      any:
+        - {op: test, eq: [dependent.relationship, {const: "household_member"}]}
         - op: test
           all:
-            - {op: test, eq: [f1040.status, {const: "mfj"}]}
-            - {op: test, eq: [dependent.spouse_relative, {const: true}]}
+            - {op: test, eq: [dependent.qr_all_year, {const: true}]}
+            - {op: test, eq: [dependent.lawful, {const: true}]}
 
-  - id: dependent.h_rel_qr
+  - id: dependent.h_qr_member
     printed: "(helper)"
     label: "Member of household or relationship test"
     type: Bool
     expr:
       op: test
       any:
-        - {op: test, eq: [dependent.h_rel_direct, {const: true}]}
-        - op: test
-          all:
-            - {op: test, eq: [dependent.qr_all_year, {const: true}]}
-            - {op: test, eq: [dependent.lawful, {const: true}]}
+        - {op: test, eq: [dependent.h_qr_direct, {const: true}]}
+        - {op: test, eq: [dependent.h_qr_spouse, {const: true}]}
+        - {op: test, eq: [dependent.h_qr_household, {const: true}]}
 
   - id: dependent.h_not_qc_any
     printed: "(helper)"
@@ -154,246 +135,136 @@ lines:
     expr:
       op: test
       all:
-        - {op: test, eq: [dependent.h_qc_core, {const: false}]}
+        - {op: test, eq: [dependent.h_qc, {const: false}]}
         - op: test
           any:
             - {op: test, eq: [dependent.other_claimant, {const: false}]}
             - {op: test, eq: [dependent.other_nontaxpayer, {const: true}]}
-    note: "The other_claimant input also covers the EIC rules, which have no support test. The tool uses it as given."
 
-  - id: dependent.h_gi_ok
+  - id: dependent.h_qr_nogi
     printed: "(helper)"
-    label: "Had gross income of less than $5,200 in 2025"
-    type: Bool
-    expr: {op: test, lt: [dependent.gross_income, {param: qr.gross_income_limit}]}
-    note: "The sheltered-workshop exception to the gross income test is not computed. Gross income is taken as entered."
-
-  - id: dependent.h_claimed_qr
-    printed: "(helper)"
-    label: "You can claim this qualifying relative as a dependent (Step 4)"
+    label: "Qualifying relative tests other than gross income (relationship or household, not a qualifying child, support)"
     type: Bool
     expr:
       op: test
       all:
-        - {op: test, eq: [dependent.h_rel_qr, {const: true}]}
+        - {op: test, eq: [dependent.h_qr_member, {const: true}]}
         - {op: test, eq: [dependent.h_not_qc_any, {const: true}]}
-        - {op: test, eq: [dependent.h_gi_ok, {const: true}]}
         - {op: test, eq: [dependent.supported, {const: true}]}
-        - {op: test, eq: [dependent.h_citizen_cm, {const: true}]}
-        - {op: test, eq: [dependent.h_filer_ok, {const: true}]}
 
-  - id: dependent.claimed
+  - id: dependent.h_qr
     printed: "(helper)"
-    label: "You can claim this person as a dependent"
+    label: "Qualifying relative (Step 4): also had gross income of less than $5,200 in 2025"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [dependent.h_qr_nogi, {const: true}]}
+        - {op: test, lt: [dependent.gross_income, {param: qr.gross_income_limit}]}
+
+  - id: dependent.h_citizen_test
+    printed: "(helper)"
+    label: "U.S. citizen, U.S. national, U.S. resident alien, or a resident of Canada or Mexico"
     type: Bool
     expr:
       op: test
       any:
-        - {op: test, eq: [dependent.h_claimed_qc, {const: true}]}
-        - {op: test, eq: [dependent.h_claimed_qr, {const: true}]}
-    refuses: [dependent.married, dependent.divorced_rule, dependent.multiple_support, dependent.h_tiebreak, dependent.h_kidnap_issue]
+        - {op: test, eq: [dependent.citizen, {const: true}]}
+        - {op: test, eq: [dependent.canada_mexico, {const: true}]}
 
-  # ---------- Steps 3 and 5: CTC / ODC ----------
+  - id: dependent.h_can_claim
+    printed: "(helper)"
+    label: "Filing a joint return, or you couldn't be claimed as a dependent on someone else's 2025 return"
+    type: Bool
+    expr:
+      op: test
+      any:
+        - {op: test, eq: [f1040.status, {const: "mfj"}]}
+        - {op: test, eq: [sa.dependent, {const: false}]}
+
+  - id: dependent.claimed
+    printed: "(helper)"
+    label: "You can claim this person as a dependent (Steps 1, 2 and 4)"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - op: test
+          any:
+            - {op: test, eq: [dependent.h_qc, {const: true}]}
+            - {op: test, eq: [dependent.h_qr, {const: true}]}
+        - {op: test, eq: [dependent.h_citizen_test, {const: true}]}
+        - {op: test, eq: [dependent.h_can_claim, {const: true}]}
+    refuses: [dependent.married, dependent.divorced_rule, dependent.multiple_support]
+
+  - id: dependent.h_under17
+    printed: "(helper)"
+    label: "Was the child under age 17 at the end of 2025?"
+    type: Bool
+    expr: {op: test, lt: [dependent.age, {param: ctc.age_limit}]}
+
   - id: dependent.ctc_child
     printed: "(helper)"
-    label: "Qualifying child for the child tax credit (Step 3)"
+    label: "Step 3: you can claim the child tax credit for this person"
     type: Bool
     expr:
       op: test
       all:
         - {op: test, eq: [dependent.claimed, {const: true}]}
-        - {op: test, eq: [dependent.h_claimed_qc, {const: true}]}
+        - {op: test, eq: [dependent.h_qc, {const: true}]}
         - {op: test, eq: [dependent.tin, {const: true}]}
         - {op: test, eq: [dependent.citizen, {const: true}]}
-        - {op: test, lt: [dependent.age, {param: ctc.age_limit}]}
-        - {op: test, eq: [household.ctc_ssn, {const: true}]}
+        - {op: test, eq: [dependent.h_under17, {const: true}]}
         - {op: test, eq: [dependent.work_ssn, {const: true}]}
+        - {op: test, eq: [household.ctc_ssn, {const: true}]}
+    note: "household.ctc_ssn is read as the Step 3 question 4 requirement that you (or your spouse if filing jointly) have an SSN valid for employment issued before the due date, with the other joint spouse holding an SSN or ITIN."
 
   - id: dependent.odc_person
     printed: "(helper)"
-    label: "Dependent who qualifies you for the credit for other dependents"
+    label: "Steps 3 and 5: you can claim the credit for other dependents for this person"
     type: Bool
     expr:
       op: test
       all:
         - {op: test, eq: [dependent.claimed, {const: true}]}
         - {op: test, eq: [dependent.ctc_child, {const: false}]}
-        - {op: test, eq: [household.all_tin, {const: true}]}
         - {op: test, eq: [dependent.tin, {const: true}]}
         - {op: test, eq: [dependent.citizen, {const: true}]}
+        - {op: test, eq: [household.all_tin, {const: true}]}
+    note: "household.all_tin is read as the Step 5 question 1 requirement that you and your spouse (if filing jointly) have an SSN or ITIN issued, or applied for, on or before the due date."
 
   - id: dependent.h_ctc_per
     printed: "(helper)"
-    label: "$2,200 per qualifying child (Schedule 8812, line 5)"
+    label: "$2,200 per qualifying child"
     type: NonNegDollars
     expr: {op: param, ref: ctc.per_child}
 
-  - id: dependent.ctc_amount
-    printed: "(helper)"
-    label: "Child tax credit amount for this child before phase-out"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - {guard: {op: test, eq: [dependent.ctc_child, {const: true}]}, then: dependent.h_ctc_per}
-        - {guard: {op: test, eq: [dependent.ctc_child, {const: false}]}, then: dependent.h_zero}
-
   - id: dependent.h_odc_per
     printed: "(helper)"
-    label: "$500 per other dependent (Schedule 8812, line 7)"
+    label: "$500 per other dependent"
     type: NonNegDollars
     expr: {op: param, ref: odc.per_dependent}
 
-  - id: dependent.odc_amount
-    printed: "(helper)"
-    label: "Credit for other dependents amount for this person before phase-out"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - {guard: {op: test, eq: [dependent.odc_person, {const: true}]}, then: dependent.h_odc_per}
-        - {guard: {op: test, eq: [dependent.odc_person, {const: false}]}, then: dependent.h_zero}
-
   - id: dependent.h_actc_per
     printed: "(helper)"
-    label: "$1,700 per qualifying child (Schedule 8812, line 16b)"
+    label: "$1,700 per qualifying child"
     type: NonNegDollars
     expr: {op: param, ref: actc.per_child}
 
-  - id: dependent.actc_amount
-    printed: "(helper)"
-    label: "Additional child tax credit amount for this child (line 16b)"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - {guard: {op: test, eq: [dependent.ctc_child, {const: true}]}, then: dependent.h_actc_per}
-        - {guard: {op: test, eq: [dependent.ctc_child, {const: false}]}, then: dependent.h_zero}
-
-  # ---------- Head of household ----------
-  - id: dependent.h_half
-    printed: "(helper)"
-    label: "Lived with you for more than half of 2025 (or of the part of the year alive or since adoption or placement)"
-    type: Bool
-    expr:
-      op: test
-      any:
-        - {op: test, ge: [dependent.months, {const: 7, type: Count}]}
-        - op: test
-          all:
-            - op: test
-              any:
-                - {op: test, eq: [dependent.born_died, {const: true}]}
-                - {op: test, eq: [dependent.placed, {const: true}]}
-            - {op: test, eq: [dependent.part_year_home, {const: true}]}
-
-  - id: dependent.hoh_test1
-    printed: "(helper)"
-    label: "Test 1: your parent whom you can claim as a dependent, whose main home for all of 2025 you paid over half the cost of keeping up"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [dependent.claimed, {const: true}]}
-        - {op: test, eq: [dependent.h_claimed_qr, {const: true}]}
-        - {op: test, eq: [dependent.relationship, {const: "parent"}]}
-        - {op: test, eq: [dependent.parent_home_paid, {const: true}]}
-
   - id: dependent.h_household_only
     printed: "(helper)"
-    label: "Your dependent only because the person lived with you for all of 2025"
+    label: "Person who is your dependent only because the person lived with you for all of 2025"
     type: Bool
     expr:
       op: test
       all:
-        - {op: test, eq: [dependent.h_claimed_qr, {const: true}]}
-        - {op: test, eq: [dependent.h_rel_direct, {const: false}]}
+        - {op: test, eq: [dependent.h_qc, {const: false}]}
+        - {op: test, eq: [dependent.h_qr_direct, {const: false}]}
+        - {op: test, eq: [dependent.h_qr_spouse, {const: false}]}
 
-  - id: dependent.hoh_test2
+  - id: dependent.h_under13
     printed: "(helper)"
-    label: "Test 2: a person who qualifies you for head of household and lived with you for more than half of the year"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [dependent.h_half, {const: true}]}
-        - op: test
-          any:
-            - op: test
-              all:
-                - {op: test, eq: [dependent.claimed, {const: true}]}
-                - {op: test, eq: [dependent.h_household_only, {const: false}]}
-            - op: test
-              all:
-                - {op: test, eq: [dependent.h_qc_core, {const: true}]}
-                - {op: test, eq: [dependent.claimed, {const: false}]}
-    note: "Items 3 and 4 (a married qualifying child, a child under the divorced-parent rule) and multiple support agreements are refused through the screening inputs. Paying over half the cost of keeping up the home is a household test and is not part of this per-person result."
-
-  - id: dependent.hoh_absence
-    printed: "(helper)"
-    label: "Person relied on for Test 2 whose time lived with you counts an absence from which return was not reasonably expected, or during which the home was not kept up"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [dependent.hoh_test2, {const: true}]}
-        - {op: test, eq: [dependent.absence_no_return, {const: true}]}
-
-  # ---------- EIC ----------
-  - id: dependent.h_eic_core
-    printed: "(helper)"
-    label: "Meets the qualifying child tests for the EIC (relationship, age, joint return, lived with you in the United States more than half of 2025)"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [dependent.h_rel_qc, {const: true}]}
-        - {op: test, eq: [dependent.h_age_qc, {const: true}]}
-        - {op: test, eq: [dependent.joint_return, {const: false}]}
-        - {op: test, eq: [dependent.us_half, {const: true}]}
-
-  - id: dependent.h_tiebreak_eic
-    printed: "(helper)"
-    label: "EIC qualifying child of more than one person"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [dependent.h_eic_core, {const: true}]}
-        - {op: test, eq: [dependent.other_claimant, {const: true}]}
-        - {op: test, eq: [dependent.other_nontaxpayer, {const: false}]}
-
-  - id: dependent.h_kidnap_eic
-    printed: "(helper)"
-    label: "Kidnapped child who fails the United States residency test as counted"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [dependent.kidnapped, {const: true}]}
-        - {op: test, eq: [dependent.us_half, {const: false}]}
-
-  - id: dependent.eic_child
-    printed: "(helper)"
-    label: "Qualifying child for the EIC"
-    type: Bool
-    expr: {op: test, eq: [dependent.h_eic_core, {const: true}]}
-    refuses: [dependent.married, dependent.h_tiebreak_eic, dependent.h_kidnap_eic]
-
-  - id: dependent.eic_ssn_child
-    printed: "(helper)"
-    label: "Qualifying child for the EIC who has a valid SSN"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [dependent.eic_child, {const: true}]}
-        - {op: test, eq: [dependent.eic_ssn, {const: true}]}
-
-  # ---------- Form 2441 ----------
-  - id: dependent.h_dc_under13
-    printed: "(helper)"
-    label: "Under age 13 for some part of 2025 when care was paid for"
+    label: "Under age 13 when the care was provided (a child who turned 13 during the year qualifies for the part of the year before)"
     type: Bool
     expr:
       op: test
@@ -406,7 +277,7 @@ lines:
 
   - id: dependent.dc_qp
     printed: "(helper)"
-    label: "Qualifying person for the child and dependent care credit"
+    label: "Qualifying person: a qualifying child under age 13 whom you can claim as a dependent, or a person not able to care for themselves who lived with you for more than half the year and is (or would be, except for gross income, a joint return, or your being claimable) your dependent"
     type: Bool
     expr:
       op: test
@@ -414,30 +285,17 @@ lines:
         - op: test
           all:
             - {op: test, eq: [dependent.claimed, {const: true}]}
-            - {op: test, eq: [dependent.h_claimed_qc, {const: true}]}
-            - {op: test, eq: [dependent.h_dc_under13, {const: true}]}
+            - {op: test, eq: [dependent.h_qc, {const: true}]}
+            - {op: test, eq: [dependent.h_under13, {const: true}]}
         - op: test
           all:
-            - {op: test, eq: [dependent.claimed, {const: true}]}
             - {op: test, eq: [dependent.dc_incapable, {const: true}]}
-            - {op: test, eq: [dependent.h_half, {const: true}]}
-    note: "A disabled person who would be your dependent except for gross income, a joint return, or your being claimable, and the custodial-parent rule, are handled by the Form 2441 gates and screening inputs. This result covers only persons you can claim."
-
-  - id: dependent.h_dc_flag
-    printed: "(helper)"
-    label: "One cent if a qualifying person, otherwise zero"
-    type: NonNegDollars
-    expr:
-      op: choose
-      alternatives:
-        - {guard: {op: test, eq: [dependent.dc_qp, {const: true}]}, then: dependent.h_one_cent}
-        - {guard: {op: test, eq: [dependent.dc_qp, {const: false}]}, then: dependent.h_zero}
-
-  - id: dependent.dc_count
-    printed: "(helper)"
-    label: "Number of qualifying persons this entry contributes (1 or 0)"
-    type: Count
-    expr: {op: percent_floor, part: dependent.h_dc_flag, whole: {param: sc.hundred_cents}, cap: 1}
+            - {op: test, gt: [dependent.months, {const: 6, type: Count}]}
+            - {op: test, eq: [dependent.h_citizen_test, {const: true}]}
+            - op: test
+              any:
+                - {op: test, eq: [dependent.h_qc_nojr, {const: true}]}
+                - {op: test, eq: [dependent.h_qr_nogi, {const: true}]}
 
   - id: dependent.dc_line2d
     printed: "2(d)"
@@ -458,107 +316,56 @@ lines:
       all:
         - {op: test, eq: [dependent.dc_qp, {const: true}]}
         - {op: test, eq: [dependent.dc_incapable, {const: true}]}
-        - {op: test, gt: [dependent.dc_paid, {const: 0}]}
         - op: test
           any:
-            - {op: test, ge: [dependent.age, {const: 14, type: Count}]}
+            - {op: test, gt: [dependent.age, {param: dc.child_age}]}
             - op: test
               all:
                 - {op: test, eq: [dependent.age, {param: dc.child_age}]}
                 - {op: test, eq: [dependent.dc_over12_care, {const: true}]}
-    note: "The box refers to the time the care was provided. A person 14 or older at the end of 2025 was over 12 throughout the year. For age 13, the over-12 care question decides. With no care expenses there is no care to report, so the box is left unchecked."
+    note: "Age at the end of 2025 of 12 or less means the person was never over 12 in 2025. Age 14 or more means they were over 12 all year. At age 13, the dc_over12_care answer decides."
 
-  # ---------- Form 8863 Part III ----------
+  - id: dependent.h_edu_adj
+    printed: "(helper)"
+    label: "Total adjustments: tax-free educational assistance received in 2025 and in 2026, and refunds (Adjusted Qualified Education Expenses Worksheet, line 3)"
+    type: NonNegDollars
+    expr: {op: sum, of: [dependent.edu_a2025, dependent.edu_a2026, dependent.edu_refunds]}
+
   - id: dependent.h_edu_base
     printed: "(helper)"
-    label: "Claimed dependent for whom qualified education expenses were paid"
+    label: "Education credit can be figured for this claimed dependent (expenses paid, Form 1098-T requirement met, student TIN issued by the due date)"
     type: Bool
     expr:
       op: test
       all:
         - {op: test, eq: [dependent.claimed, {const: true}]}
         - {op: test, eq: [dependent.edu, {const: true}]}
+        - {op: test, eq: [dependent.edu_1098t, {const: true}]}
+        - {op: test, eq: [dependent.edu_tin_issued, {const: true}]}
 
   - id: dependent.h_aoc
     printed: "(helper)"
-    label: "Student eligible for the American opportunity credit (lines 23-26 and the Form 1098-T, EIN and TIN requirements)"
+    label: "Lines 23 to 26 permit the American opportunity credit for this student, and the institution's EIN is provided"
     type: Bool
     expr:
       op: test
       all:
         - {op: test, eq: [dependent.h_edu_base, {const: true}]}
-        - {op: test, eq: [dependent.edu_1098t, {const: true}]}
         - {op: test, eq: [dependent.edu_line23, {const: false}]}
         - {op: test, eq: [dependent.edu_line24, {const: true}]}
         - {op: test, eq: [dependent.edu_line25, {const: false}]}
         - {op: test, eq: [dependent.edu_line26, {const: false}]}
         - {op: test, eq: [dependent.edu_ein, {const: true}]}
-        - {op: test, eq: [dependent.edu_tin_issued, {const: true}]}
 
   - id: dependent.h_llc
     printed: "(helper)"
-    label: "Student for whom the lifetime learning credit is figured (line 31)"
+    label: "Go to line 31 for this student (lifetime learning credit)"
     type: Bool
     expr:
       op: test
       all:
         - {op: test, eq: [dependent.h_edu_base, {const: true}]}
         - {op: test, eq: [dependent.h_aoc, {const: false}]}
-        - {op: test, eq: [dependent.edu_1098t, {const: true}]}
-        - {op: test, eq: [dependent.edu_tin_issued, {const: true}]}
-
-  - id: dependent.h_edu_over_issue
-    printed: "(helper)"
-    label: "Assistance and refunds exceed an academic period's expenses (per-period allocation needed)"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [dependent.edu, {const: true}]}
-        - {op: test, eq: [dependent.edu_over, {const: true}]}
-
-  - id: dependent.h_edu_adj
-    printed: "(helper)"
-    label: "AQEE Worksheet line 3: total adjustments (add lines 2a, 2b, and 2c)"
-    type: NonNegDollars
-    expr: {op: sum, of: [dependent.edu_a2025, dependent.edu_a2026, dependent.edu_refunds]}
-    refuses: [dependent.h_edu_over_issue]
-
-  - id: dependent.h_aoc_exp
-    printed: "(helper)"
-    label: "AQEE Worksheet line 1 (American opportunity credit): tuition, required fees and course materials"
-    type: NonNegDollars
-    expr: {op: sum, of: [dependent.edu_inst, dependent.edu_mat]}
-
-  - id: dependent.h_aoc_adj
-    printed: "(helper)"
-    label: "AQEE Worksheet line 4 (American opportunity credit). Subtract line 3 from line 1. If zero or less, enter -0-"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: dependent.h_aoc_exp, take: dependent.h_edu_adj}
-
-  - id: dependent.h_aoc_cap
-    printed: "(helper)"
-    label: "$4,000"
-    type: NonNegDollars
-    expr: {op: param, ref: aoc.expense_cap}
-
-  - id: dependent.h_aoc_capped
-    printed: "(helper)"
-    label: "Adjusted qualified education expenses, not more than $4,000"
-    type: NonNegDollars
-    expr: {op: smaller_of, of: [dependent.h_aoc_adj, dependent.h_aoc_cap]}
-
-  - id: dependent.h_llc_adj
-    printed: "(helper)"
-    label: "AQEE Worksheet line 4 (lifetime learning credit): expenses required to be paid to the institution less adjustments. If zero or less, enter -0-"
-    type: NonNegDollars
-    expr: {op: subtract_floor0, from: dependent.edu_inst, take: dependent.h_edu_adj}
-
-  - id: dependent.h_band
-    printed: "(helper)"
-    label: "$2,000"
-    type: NonNegDollars
-    expr: {op: param, ref: aoc.full_band}
 
   - id: dependent.edu_line27
     printed: "27"
@@ -567,65 +374,194 @@ lines:
     expr:
       op: choose
       alternatives:
-        - {guard: {op: test, eq: [dependent.h_aoc, {const: true}]}, then: dependent.h_aoc_capped}
-        - {guard: {op: test, eq: [dependent.h_aoc, {const: false}]}, then: dependent.h_zero}
+        - guard: {op: test, eq: [dependent.h_aoc, {const: true}]}
+          then: {def: aqee, bind: {inst: dependent.edu_inst, mat: dependent.edu_mat, adj: dependent.h_edu_adj}, line: line27}
+        - guard: {op: test, eq: [dependent.h_aoc, {const: false}]}
+          then: dependent.h_zero
+    refuses: [dependent.edu_over]
 
   - id: dependent.edu_line28
     printed: "28"
     label: "Subtract $2,000 from line 27. If zero or less, enter -0-"
     type: NonNegDollars
-    expr: {op: subtract_floor0, from: dependent.edu_line27, take: dependent.h_band}
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [dependent.h_aoc, {const: true}]}
+          then: {def: aqee, bind: {inst: dependent.edu_inst, mat: dependent.edu_mat, adj: dependent.h_edu_adj}, line: line28}
+        - guard: {op: test, eq: [dependent.h_aoc, {const: false}]}
+          then: dependent.h_zero
+    refuses: [dependent.edu_over]
 
   - id: dependent.edu_line29
     printed: "29"
     label: "Multiply line 28 by 25% (0.25)"
     type: NonNegDollars
-    expr: {op: multiply_rate, amount: dependent.edu_line28, rate: {param: aoc.second_rate}}
-
-  - id: dependent.h_line29_plus
-    printed: "(helper)"
-    label: "Add $2,000 to the amount on line 29"
-    type: NonNegDollars
-    expr: {op: sum, of: [dependent.edu_line29, dependent.h_band]}
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [dependent.h_aoc, {const: true}]}
+          then: {def: aqee, bind: {inst: dependent.edu_inst, mat: dependent.edu_mat, adj: dependent.h_edu_adj}, line: line29}
+        - guard: {op: test, eq: [dependent.h_aoc, {const: false}]}
+          then: dependent.h_zero
+    refuses: [dependent.edu_over]
 
   - id: dependent.edu_line30
     printed: "30"
-    label: "If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29 and enter the result"
+    label: "If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29 and enter the result. Skip line 31"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - {guard: {op: test, eq: [dependent.edu_line28, {const: 0}]}, then: dependent.edu_line27}
-        - {guard: {op: test, gt: [dependent.edu_line28, {const: 0}]}, then: dependent.h_line29_plus}
+        - guard: {op: test, eq: [dependent.h_aoc, {const: true}]}
+          then: {def: aqee, bind: {inst: dependent.edu_inst, mat: dependent.edu_mat, adj: dependent.h_edu_adj}, line: line30}
+        - guard: {op: test, eq: [dependent.h_aoc, {const: false}]}
+          then: dependent.h_zero
+    refuses: [dependent.edu_over]
 
   - id: dependent.edu_line31
     printed: "31"
-    label: "Adjusted qualified education expenses (see instructions)"
+    label: "Adjusted qualified education expenses (see instructions). Include the total of all amounts from all Parts III, line 31, on Part II, line 10"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - {guard: {op: test, eq: [dependent.h_llc, {const: true}]}, then: dependent.h_llc_adj}
-        - {guard: {op: test, eq: [dependent.h_llc, {const: false}]}, then: dependent.h_zero}
+        - guard: {op: test, eq: [dependent.h_llc, {const: true}]}
+          then: {def: aqee, bind: {inst: dependent.edu_inst, mat: dependent.edu_mat, adj: dependent.h_edu_adj}, line: ws4_llc}
+        - guard: {op: test, eq: [dependent.h_llc, {const: false}]}
+          then: dependent.h_zero
+    refuses: [dependent.edu_over]
+    note: "aqee.ws4_llc is read as worksheet line 4 for the lifetime learning credit: the expenses required to be paid to the institution, minus the adjustments, with a floor of zero."
 
-  # ---------- Form 8962 Worksheet 1-2 ----------
-  - id: dependent.h_ptc_counted
+  - id: dependent.ctc_amount
     printed: "(helper)"
-    label: "Dependent required to file an income tax return because their income meets the filing threshold"
+    label: "This person's share of Schedule 8812 line 5 (number of qualifying children x $2,200)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - {guard: {op: test, eq: [dependent.ctc_child, {const: true}]}, then: dependent.h_ctc_per}
+        - {guard: {op: test, eq: [dependent.ctc_child, {const: false}]}, then: dependent.h_zero}
+
+  - id: dependent.odc_amount
+    printed: "(helper)"
+    label: "This person's share of Schedule 8812 line 7 (number of other dependents x $500)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - {guard: {op: test, eq: [dependent.odc_person, {const: true}]}, then: dependent.h_odc_per}
+        - {guard: {op: test, eq: [dependent.odc_person, {const: false}]}, then: dependent.h_zero}
+
+  - id: dependent.actc_amount
+    printed: "(helper)"
+    label: "This person's share of Schedule 8812 line 16b (qualifying children x $1,700)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - {guard: {op: test, eq: [dependent.ctc_child, {const: true}]}, then: dependent.h_actc_per}
+        - {guard: {op: test, eq: [dependent.ctc_child, {const: false}]}, then: dependent.h_zero}
+
+  - id: dependent.hoh_test1
+    printed: "(helper)"
+    label: "Test 1: you paid over half the cost of keeping up a home that was the main home for all of 2025 of your parent whom you can claim as a dependent"
     type: Bool
     expr:
       op: test
       all:
+        - {op: test, eq: [dependent.relationship, {const: "parent"}]}
         - {op: test, eq: [dependent.claimed, {const: true}]}
-        - {op: test, eq: [dependent.ptc_files, {const: true}]}
+        - {op: test, eq: [dependent.parent_home_paid, {const: true}]}
+
+  - id: dependent.hoh_test2
+    printed: "(helper)"
+    label: "Test 2: this person lived with you for more than half of the year and is your dependent (not only because the person lived with you all year), or is your unmarried qualifying child who isn't your dependent"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [dependent.h_lived_half, {const: true}]}
+        - op: test
+          any:
+            - op: test
+              all:
+                - {op: test, eq: [dependent.claimed, {const: true}]}
+                - {op: test, eq: [dependent.h_household_only, {const: false}]}
+            - {op: test, eq: [dependent.h_qc, {const: true}]}
+    refuses: [dependent.married, dependent.divorced_rule, dependent.multiple_support]
+    note: "The exclusions for children of divorced or separated parents, multiple support agreements and married qualifying children are handled by the screening refusals."
+
+  - id: dependent.hoh_absence
+    printed: "(helper)"
+    label: "Test 2 is met for this person only by counting an absence from which return wasn't reasonably expected, or during which you didn't keep up the home"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [dependent.hoh_test2, {const: true}]}
+        - {op: test, eq: [dependent.absence_no_return, {const: true}]}
+
+  - id: dependent.eic_child
+    printed: "(helper)"
+    label: "Qualifying child for the EIC (relationship, age, not filing a joint return, lived with you in the United States for more than half of 2025)"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [dependent.h_qc_rel, {const: true}]}
+        - {op: test, eq: [dependent.h_age_test, {const: true}]}
+        - {op: test, eq: [dependent.joint_return, {const: false}]}
+        - {op: test, eq: [dependent.us_half, {const: true}]}
+    refuses: [dependent.married]
+    note: "Open: the tiebreaker for a child of more than one person can't be resolved from the inputs. Chosen reading: the filer is treated as able to claim the child."
+
+  - id: dependent.eic_ssn_child
+    printed: "(helper)"
+    label: "Qualifying child for the EIC who has a valid SSN"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [dependent.eic_child, {const: true}]}
+        - {op: test, eq: [dependent.eic_ssn, {const: true}]}
+
+  - id: dependent.h_dc_flag
+    printed: "(helper)"
+    label: "One cent if this person is a qualifying person for Form 2441, otherwise zero"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - {guard: {op: test, eq: [dependent.dc_qp, {const: true}]}, then: dependent.h_one_cent}
+        - {guard: {op: test, eq: [dependent.dc_qp, {const: false}]}, then: dependent.h_zero}
+
+  - id: dependent.dc_count
+    printed: "(helper)"
+    label: "Number of qualifying persons this entry contributes (1 or 0)"
+    type: Count
+    expr: {op: percent_floor, part: dependent.h_dc_flag, whole: {const: 100}, cap: 1}
+    note: "Open: the interface doesn't say whether dc_count is filtered. Chosen reading: it is 1 for a qualifying person and 0 otherwise. A choose can't return a Count, so this uses percent_floor of 1 cent over 100 cents, which gives 1, or 0 when the flag is 0."
 
   - id: dependent.ptc_magi_counted
     printed: "(helper)"
-    label: "This dependent's modified AGI included on Worksheet 1-2 (Form 8962, line 2b)"
+    label: "Worksheet 1-2: modified AGI of a dependent who is required to file an income tax return because their income meets the filing threshold"
     type: Dollars
     expr:
       op: choose
       alternatives:
-        - {guard: {op: test, eq: [dependent.h_ptc_counted, {const: true}]}, then: dependent.ptc_magi}
-        - {guard: {op: test, not: {op: test, eq: [dependent.h_ptc_counted, {const: true}]}}, then: dependent.h_zero}
+        - guard:
+            op: test
+            all:
+              - {op: test, eq: [dependent.claimed, {const: true}]}
+              - {op: test, eq: [dependent.ptc_files, {const: true}]}
+          then: dependent.ptc_magi
+        - guard:
+            op: test
+            not:
+              op: test
+              all:
+                - {op: test, eq: [dependent.claimed, {const: true}]}
+                - {op: test, eq: [dependent.ptc_files, {const: true}]}
+          then: dependent.h_zero
 ```

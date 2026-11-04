@@ -1,0 +1,11 @@
+{
+ "note": "Proposed changes to reviews/2025/consumers.json (not edited by this package). Add the ruling below. Remove the stale entry consumer:f8960.unsupported@i8960:p13 from both rulings and baseline: f8960.unsupported now cites i8960 p. 13 itself (T-133), so the pair is no longer a consumer pair. The gift.public_securities pair is a baseline entry whose input question changed (T-136), so it needs a ruling.",
+ "rulings": {
+  "consumer:gift.public_securities@f8283:p1": {
+   "verdict": "same",
+   "question_phrase": "A security counts only if it is (a) listed on a recognized stock exchange whose quotations are published daily, (b) regularly traded on a national or regional over-the-counter market, or (c) mutual fund shares quoted daily in a national newspaper of general circulation",
+   "source_phrase": "Also list publicly traded securities and certain other property even if the deduction is more than $5,000",
+   "reason": "Form 8283 p. 1 uses publicly traded securities in the sense its instructions define on i8283 p. 9, which the question now states; gift.section_b reads it for exactly that Section A exception."
+  }
+ }
+}

@@ -6,13 +6,16 @@
 // A keyed collection is worked once per entry: every computed line the
 // evaluation reached for each entry, from the entry's own inputs. A shared
 // definition is worked per instance (an amount and a filing status drawn from
-// the generated returns): its gate tests and its result.
+// the generated returns): its gate tests and its result. A single document requests its printed
+// lines only. Every job shows the worker, and its fixture keeps, only the answers the return's
+// route reads, as an interview would ask them (routeJob).
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { loadCanonical } from "./canonical.js";
-import { evaluateAll } from "./eval.js";
+import { evaluate, evaluateAll } from "./eval.js";
 import type { EvalResult, Value } from "./eval.js";
 import { sampleReturns } from "./generate.js";
+import { loadInterview } from "./interview.js";
 import { branchKeys } from "./branches.js";
 import { loadCases } from "./fixtures.js";
 import type { CanonicalData, Expr, FormDoc, Inputs, Line, Operand, TestExpr } from "./types.js";
@@ -76,8 +79,12 @@ function roundInputs(inputs: Inputs, data: CanonicalData): Inputs {
   for (const [k, v] of Object.entries(inputs)) out[k] = typeof v === "number" && !k.startsWith("$") && !isCount(k, data) ? Math.round(v / 100) * 100 : v;
   return out;
 }
+/** The line id of a derivation key: `person[taxpayer].w2[emp_a].box1` is `w2.box1`. */
+function lineIdOf(key: string): string {
+  return key.replace(/(?:[a-zA-Z0-9_]+\[[^\]]+\]\.)+/g, (m) => m.split(".").filter(Boolean).at(-1)!.split("[")[0] + ".");
+}
 function isCount(key: string, data: CanonicalData): boolean {
-  const id = key.replace(/(?:[a-zA-Z0-9_]+\[[^\]]+\]\.)+/g, (m) => m.split(".").filter(Boolean).at(-1)!.split("[")[0] + ".");
+  const id = lineIdOf(key);
   for (const doc of data.forms) { const l = doc.lines.find((x) => x.id === id); if (l) return l.type === "Count"; }
   return false;
 }
@@ -87,6 +94,31 @@ function hiddenLine(l: Line, r: EvalResult): boolean {
   if (!l.shown_when) return false;
   const cond = r.derivations.get(l.shown_when)?.value;
   return cond?.kind === "bool" && !cond.value;
+}
+
+/** The ids a set of requested lines reads, following the document's own lines through their
+ * expressions: the local lines visited and the foreign lines reached. Totals used only by
+ * validation helpers are outside it, so they do not feed the document back into its review. */
+function requestClosure(doc: FormDoc, requested: Line[]): Set<string> {
+  const seen = new Set<string>();
+  const visit = (id: string): void => {
+    if (seen.has(id)) return;
+    seen.add(id);
+    const line = doc.lines.find((l) => l.id === id);
+    if (!line) return;
+    const refs = { refs: new Set<string>(), defs: false, sums: [] as { collection: string; field: string; where: Set<string> }[] };
+    walk(line.expr as Expr, refs);
+    for (const ref of refs.refs) visit(ref);
+  };
+  for (const line of requested) visit(line.id);
+  return seen;
+}
+
+/** The supplied answers an evaluation read: the input keys it derived (an interview asks exactly these). */
+function answersRead(r: EvalResult, inputs: Inputs): Set<string> {
+  const out = new Set<string>();
+  for (const [key, d] of r.derivations) if (d.op === "input" && key in inputs) out.add(key);
+  return out;
 }
 
 function computed(v: Value | undefined): boolean { return !!v && (v.kind === "money" || v.kind === "bool" || v.kind === "count" || v.kind === "enum" || v.kind === "rate"); }
@@ -158,7 +190,11 @@ function buildJob(data: CanonicalData, doc: FormDoc, inputs: Inputs, r: EvalResu
   if (fill.length === 0) return null;
   const project: Record<string, Value> = {};
   for (const l of fill) { const v = val(l.id); if (!computed(v)) return null; project[l.id] = v!; }
-  return { id: `classm.${doc.id}.${n}`, doc: doc.id, inputs, status, given, own_inputs, collections, fill, project, branches };
+  // Printed lines only: the incoming values their calculation reads through the document's own
+  // lines, not those that only its validation helpers read.
+  const needed = requestClosure(doc, doc.lines.filter((l) => fill.some((f) => f.id === l.id)));
+  return { id: `classm.${doc.id}.${n}`, doc: doc.id, inputs, status, given: given.filter((g) => needed.has(g.ref)), own_inputs, collections, fill, project, branches,
+    worked_scope: "printed-irs-lines" };
 }
 
 /** The entries of collection `id` in a result: entry prefix -> field id -> derivation key. */
@@ -312,6 +348,116 @@ function buildDefJob(def: FormDoc, inputs: Inputs, r: EvalResult, inst: DefInsta
   return { id: `classm.${def.id}.${n}`, doc: def.id, kind: "def", inputs, status: (status as { value: string }).value, given, own_inputs: [], collections: {}, fill, project, branches };
 }
 
+/** The lines that call shared definition `def`: the roots that reach its instances. */
+function defCallers(data: CanonicalData, def: string): Set<string> {
+  const out = new Set<string>();
+  const calls = (e: unknown): boolean => {
+    if (Array.isArray(e)) return e.some(calls);
+    if (!e || typeof e !== "object") return false;
+    const o = e as Record<string, unknown>;
+    return o["def"] === def || Object.values(o).some(calls);
+  };
+  for (const doc of [...data.forms, ...data.defs]) for (const l of doc.lines) if (calls(l.expr)) out.add(l.id);
+  return out;
+}
+
+const readIds = new WeakMap<CanonicalData, Set<string>>();
+/** Every line id some line's expression reads (a collection field summed included). */
+function staticallyRead(data: CanonicalData): Set<string> {
+  if (!readIds.has(data)) {
+    const out = new Set<string>();
+    for (const d of [...data.forms, ...data.defs]) for (const l of d.lines) {
+      const o = { refs: new Set<string>(), defs: false, sums: [] as { collection: string; field: string; where: Set<string> }[] };
+      walk(l.expr as Expr, o);
+      for (const r of o.refs) out.add(r);
+      for (const s of o.sums) { out.add(s.field); for (const w of s.where) out.add(w); }
+    }
+    readIds.set(data, out);
+  }
+  return readIds.get(data)!;
+}
+
+/** The derivation keys of collection `doc` that some route reads: those another document's
+ * evaluated lines read, the lines nothing reads (its outputs), and what they read in turn.
+ * A helper only an untaken alternative reads (the month-by-month total of a uniform Form 1095-A)
+ * is outside it. */
+function liveInCollection(data: CanonicalData, doc: FormDoc, r: EvalResult): Set<string> {
+  const own = new Set(doc.lines.map((l) => l.id));
+  const read = staticallyRead(data);
+  const stack: string[] = [];
+  for (const [key, d] of r.derivations) {
+    const id = lineIdOf(key);
+    if (own.has(id)) { if (!read.has(id)) stack.push(key); continue; }
+    for (const o of d.operands) if (own.has(lineIdOf(o.ref))) stack.push(o.ref);
+  }
+  const live = new Set<string>();
+  while (stack.length) {
+    const key = stack.pop()!;
+    if (live.has(key)) continue;
+    live.add(key);
+    for (const o of r.derivations.get(key)?.operands ?? []) if (own.has(lineIdOf(o.ref))) stack.push(o.ref);
+  }
+  return live;
+}
+
+/** Restrict a built job to the route the return takes, as an interview would ask it.
+ * - Answers shown to the worker (the document's own inputs, an entry's input fields) are those the
+ *   requested lines read; the generator answers every route so every line computes, and a worker
+ *   shown the other route's answers copies them.
+ * - A helper of an unprinted collection that no route reads (liveInCollection: the month-by-month
+ *   totals of a uniform Form 1095-A) is not requested.
+ * - The fixture holds only the answers the interview asks on this return (its targets' route) or
+ *   the requested lines read, so it never carries an answer the interview cannot give.
+ * The values requested and the targets' values must be the same on the restricted answers; if not,
+ * the fixture keeps every answer and the problem is reported. Branches are those the restricted
+ * answers take. */
+function routeJob(data: CanonicalData, doc: FormDoc, job: Job, fullResult: EvalResult, targetsReach: EvalResult, targets: string[], problems: string[]): Job | null {
+  if (job.kind === "collection" && !job.worked_scope) {
+    const live = liveInCollection(data, doc, fullResult);
+    job.fill = job.fill.filter((f) => live.has(f.id));
+    if (job.fill.length === 0) return null;
+    job.project = Object.fromEntries(job.fill.map((f) => [f.id, job.project[f.id]!]));
+  }
+  const full = job.inputs;
+  // A definition's instance is reached through the lines that call it.
+  const callers = job.kind === "def" ? defCallers(data, doc.id) : null;
+  const roots = callers
+    ? [...evaluateAll(data, full).derivations.keys()].filter((k) => !k.includes("|inst:") && callers.has(lineIdOf(k)))
+    : job.fill.map((f) => f.id);
+  const requested = answersRead(evaluate(data, full, roots), full);
+  job.own_inputs = job.own_inputs.filter((o) => requested.has(o.id));
+  if (job.entries) {
+    const inputFields = new Set(doc.lines.filter((l) => l.expr.op === "input").map((l) => l.id));
+    for (const [entry, fields] of Object.entries(job.entries))
+      job.entries[entry] = fields.filter((f) => !inputFields.has(f.field) || requested.has(`${entry}.${f.field.slice(doc.id.length + 1)}`));
+  }
+  const asked = answersRead(targetsReach, full);
+  const pruned: Inputs = Object.fromEntries(Object.entries(full).filter(([k]) => k.startsWith("$") || k === "f1040.status" || asked.has(k) || requested.has(k)));
+  const r = evaluateAll(data, pruned);
+  const same = (a: Value | undefined, b: Value | undefined) => JSON.stringify(a) === JSON.stringify(b);
+  const changed = job.fill.filter((f) => !same(r.derivations.get(f.id)?.value, job.project[f.id]))
+    .concat(targets.filter((t) => !same(r.derivations.get(t)?.value, targetsReach.derivations.get(t)?.value)).map((t) => ({ id: t } as Job["fill"][number])));
+  if (changed.length > 0) {
+    problems.push(`${job.id}: restricting the answers to the interview's route changed ${changed.slice(0, 3).map((f) => f.id).join(", ")}; every answer kept`);
+    return job;
+  }
+  job.inputs = pruned;
+  const keys = new Set(docKeys(doc));
+  const taken = new Set<string>();
+  for (const d of r.derivations.values()) { const b = branchKeys(d); for (const k of [...b.sides, ...b.guards]) if (keys.has(k)) taken.add(k); }
+  if (job.kind === "def") {
+    // Instance branch keys are local to the definition, as the selection counts them.
+    const first = Object.keys(job.project)[0]!;
+    const prefix = first.slice(0, first.lastIndexOf("}.") + 1);
+    for (const [local, key] of instancesOf(doc, r).get(prefix) ?? new Map<string, string>()) {
+      const b = branchKeys(r.derivations.get(key)!);
+      for (const k of [...b.sides, ...b.guards]) { const lk = local + k.slice(k.search(/[:#][^:#]*$/)); if (keys.has(lk)) taken.add(lk); }
+    }
+  }
+  job.branches = [...keys].filter((k) => taken.has(k));
+  return job;
+}
+
 export function classmJobs(args: string[]): void {
   let only: string[] | null = null; let corpusSize = 2000; let out = join(ROOT, ".classm", "jobs.json");
   let includeFixtures = false;
@@ -332,6 +478,12 @@ export function classmJobs(args: string[]): void {
   const keysPerCase = results.map((r) => { const s = new Set<string>(); for (const d of r.derivations.values()) { const b = branchKeys(d); for (const k of [...b.sides, ...b.guards]) s.add(k); } return s; });
   const jobs: Job[] = [];
   const summary: string[] = [];
+  // The interview's targets, evaluated lazily, give the route a return takes: the answers it asks.
+  const targets = loadInterview("full").targets;
+  const reach = new Map<number, EvalResult>();
+  const targetsReach = (i: number): EvalResult => { if (!reach.has(i)) reach.set(i, evaluate(data, corpus[i]!, targets)); return reach.get(i)!; };
+  const problems: string[] = [];
+  const routedCover = (built: Job[]): number => new Set(built.flatMap((j) => j.branches)).size;
   for (const doc of data.forms) {
     if (only && !only.includes(doc.id)) continue;
     const isCollection = !!doc.collection;
@@ -397,12 +549,15 @@ export function classmJobs(args: string[]): void {
       }
     }
     let n = 0;
+    const built: Job[] = [];
     for (const i of chosen) {
       const branches = keys.filter((k) => keysPerCase[i]!.has(k));
-      const job = isCollection ? buildCollectionJob(data, doc, corpus[i]!, results[i]!, ++n, branches) : buildJob(data, doc, corpus[i]!, results[i]!, ++n, branches);
-      if (job) jobs.push(job); else n--;
+      const made = isCollection ? buildCollectionJob(data, doc, corpus[i]!, results[i]!, ++n, branches) : buildJob(data, doc, corpus[i]!, results[i]!, ++n, branches);
+      const job = made && routeJob(data, doc, made, results[i]!, targetsReach(i), targets, problems);
+      if (job) built.push(job); else n--;
     }
-    summary.push(`${doc.id}: ${n} case(s) cover ${covered.size}/${keys.length} branches (${keys.length - reachable.size} not reachable by a computed case)`);
+    jobs.push(...built);
+    summary.push(`${doc.id}: ${n} case(s) cover ${routedCover(built)}/${keys.length} branches on the interview's route (${covered.size} with every answer; ${keys.length - reachable.size} not reachable by a computed case)`);
   }
   // Shared definitions: instances (an amount and a filing status) drawn from the corpus, chosen to
   // take every reachable branch of the definition.
@@ -433,11 +588,14 @@ export function classmJobs(args: string[]): void {
       chosen.push(best); for (const k of best.keys) if (reachable.has(k)) covered.add(k);
     }
     let n = 0;
+    const built: Job[] = [];
     for (const x of chosen) {
-      const job = buildDefJob(def, corpus[x.caseIndex]!, results[x.caseIndex]!, x, ++n, keys.filter((k) => x.keys.has(k)));
-      if (job) jobs.push(job); else n--;
+      const made = buildDefJob(def, corpus[x.caseIndex]!, results[x.caseIndex]!, x, ++n, keys.filter((k) => x.keys.has(k)));
+      const job = made && routeJob(data, def, made, results[x.caseIndex]!, targetsReach(x.caseIndex), targets, problems);
+      if (job) built.push(job); else n--;
     }
-    summary.push(`${def.id}: ${n} instance(s) cover ${covered.size}/${keys.length} branches (${keys.length - reachable.size} not reachable by a computed instance)`);
+    jobs.push(...built);
+    summary.push(`${def.id}: ${n} instance(s) cover ${routedCover(built)}/${keys.length} branches on the interview's route (${covered.size} with every answer; ${keys.length - reachable.size} not reachable by a computed instance)`);
   }
   mkdirSync(join(out, ".."), { recursive: true });
   // With --docs, the other documents' jobs are kept as they are.
@@ -445,5 +603,6 @@ export function classmJobs(args: string[]): void {
   if (only && existsSync(out)) kept = (JSON.parse(readFileSync(out, "utf8")) as { jobs: Job[] }).jobs.filter((j) => !only!.includes(j.doc));
   writeFileSync(out, JSON.stringify({ seed: SEED, corpus: corpusSize, jobs: [...kept, ...jobs] }, null, 1));
   for (const s of summary) console.log(s);
+  for (const p of problems) console.error(`classm: ${p}`);
   console.log(`classm: ${jobs.length} jobs -> ${out}`);
 }

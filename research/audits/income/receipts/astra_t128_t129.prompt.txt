@@ -1,0 +1,38 @@
+You are checking two U.S. federal income tax computations for tax year 2025 against quoted IRS text only. Use only the text quoted below. Answer each question with the numbers and a one-sentence reason, then say whether the stated prediction is right.
+
+SOURCE TEXT
+
+[Form 1040 instructions 2025, p. 29, Simplified Method Worksheet—Lines 5a and 5b]
+1. Enter the total pension or annuity payments from Form 1099-R, box 1.
+2. Enter your cost in the plan at the annuity starting date. Note. If you completed this worksheet last year, skip line 3 and enter the amount from line 4 of last year's worksheet on line 4 below (even if the amount of your pension or annuity has changed). Otherwise, go to line 3.
+3. Enter the appropriate number from Table 1 below. But if your annuity starting date was after 1997 and the payments are for your life and that of your beneficiary, enter the appropriate number from Table 2 below.
+4. Divide line 2 by the number on line 3.
+5. Multiply line 4 by the number of months for which this year's payments were made.
+6. Enter the amount, if any, recovered tax free in years after 1986. If you completed this worksheet last year, enter the amount from line 10 of last year's worksheet.
+7. Subtract line 6 from line 2.
+8. Enter the smaller of line 5 or line 7.
+9. Taxable amount. Subtract line 8 from line 1. Enter the result, but not less than zero.
+10. Add lines 6 and 8. This is the amount you have recovered tax free through 2025.
+11. Balance of cost to be recovered. Subtract line 10 from line 2.
+Table 2 (combined ages at annuity starting date): 110 or under 410; 111-120 360; 121-130 310; 131-140 260; 141 or older 210.
+
+[Form 1040 instructions 2025, p. 30, Age (or Combined Ages) at Annuity Starting Date]
+If you are the retiree, use your age on the annuity starting date. If you are the survivor of a retiree, use the retiree's age on their annuity starting date. But if your annuity starting date was after 1997 and the payments are for your life and that of your beneficiary, use your combined ages on the annuity starting date. If you are the beneficiary of an employee who died, see Pub. 575.
+
+[Form 1040 instructions 2025, p. 30, Rollovers]
+Generally, a rollover is a tax-free distribution of cash or other assets from one retirement plan that is contributed to another plan within 60 days of receiving the distribution. ... Enter on line 5a the distribution from Form 1099-R, box 1. From this amount, subtract any contributions (usually shown in box 5) that were taxable to you when made. From that result, subtract the amount of the rollover. Enter the remaining amount on line 5b. ... See Pub. 575 for more details on rollovers, including special rules that apply to rollovers from designated Roth accounts, partial rollovers of property, and distributions under qualified domestic relations orders.
+
+[Pub. 575 (2025), p. 12, Exclusion limited to cost]
+If your annuity starting date is after 1986, the total amount of annuity income that you can exclude over the years as a recovery of the cost can't exceed your total cost.
+
+[Pub. 575 (2025), p. 23, Rollovers of property]
+To roll over an eligible rollover distribution of property, you must either roll over the actual property distributed or sell it and roll over the proceeds. You can't keep the distributed property and roll over cash or other property. If you sell the distributed property and roll over all the proceeds, no gain or loss is recognized on the sale. ... If you roll over only part of the proceeds, you are taxed on the part you keep.
+
+[Pub. 575 (2025), p. 34, Survivors of retirees]
+Benefits paid to you as a survivor under a joint and survivor annuity must be included in your gross income. Include them in income in the same way the retiree would have included them in gross income. ... If the retiree was reporting the annuity under the Simplified Method, the part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting date. This amount remains fixed even if the annuity payments are increased or decreased.
+
+QUESTIONS
+
+Q1. A retiree's qualified-plan joint and survivor annuity started January 1, 2018, payable for the joint lives of the retiree and spouse (both age 65 then). Cost $31,000. The retiree used the Simplified Method every year 2018-2024 (line 4 = $100.00) and recovered $8,400 tax free in 2018-2024. The retiree died at the end of 2024. In 2025 the surviving spouse receives $600 a month for 12 months (box 1 $7,200, box 5 $0). Figure the survivor's 2025 worksheet lines 4, 5, 6, 7, 8, 9, 10 and 11. Prediction: line 4 $100, line 5 $1,200, line 6 $8,400, line 7 $22,600, line 8 $1,200, line 9 $6,000, line 10 $9,600, line 11 $21,400. Is the prediction right, and in particular should line 6 include the $8,400 the retiree recovered?
+
+Q2. A qualified-plan distribution consists only of $20,000 of nonemployer stock (box 1 $20,000, box 5 $0). Within 60 days the recipient contributes all of that same stock to a traditional IRA; nothing is sold. Prediction: Form 1040 line 5a $20,000, line 5b $0. Is it right? Does anything in the quoted text treat this as a "partial rollover of property" needing special rules?

@@ -6,6 +6,13 @@
   {
    "printed": "5a",
    "restated": "Enter the amount from f1040 line 7a.",
+   "model": "IRS line 5a instructions require combining Form 1040 line 7a and Schedule 1 (Form 1040), line 4; the restatement uses only f1040 line 7a and omits Schedule 1 line 4.",
+   "ruling": "Ruling: scope; the model says the restatement omits Schedule 1 line 4. i8960 p. 9, Line 5a: \"Calculate and enter the amount of net gain or loss from the disposition of property by combining the following amounts from your properly completed return. • Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4.\" Schedule 1 line 4 (Form 4797, and a Form 4684 gain entered there) is refused by scope.schedule1, which names \"sales of business property (Form 4797)\" and opens \"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately\"; so on every computed return Schedule 1 line 4 is zero and line 5a is Form 1040 line 7a. Other dispositions adjusted on lines 5b and 5c are refused by f8960.unsupported. The credits-misc package changed only that screen's list (section 404(k) dividends), not line 5a. Same reading as the earlier rounds.",
+   "context": "74d7c64114f3df020259b73d292b31b4361effdf887221e193b4b4ed76e4c3ec"
+  },
+  {
+   "printed": "5a",
+   "restated": "Enter the amount from f1040 line 7a.",
    "model": "IRS line 5a instructions say to combine 'Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4'; the restatement uses only f1040 line 7a.",
    "ruling": "Ruling: scope; the model says the restatement uses only Form 1040 line 7a. i8960 p. 9, Line 5a: \"Calculate and enter the amount of net gain or loss from the disposition of property by combining the following amounts from your properly completed return. - Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4.\" Schedule 1 line 4 (Form 4797) is refused by scope.schedule1 (\"sales of business property (Form 4797)\"), so it is zero on every computed return and line 5a is Form 1040 line 7a, which after Stage 20 includes the capital loss carryover as limited on Schedule D line 21, the figure the Net Gains and Losses Worksheet line 1, column (A), takes (i8960 p. 10). Other dispositions are refused by f8960.unsupported (\"a disposition adjustment\"). Same reading as the earlier rounds.",
    "context": "ca160e4930b9fcc82437f568d27cf24b53c8b6e7b8f984f8726dab3d3ab367ab"

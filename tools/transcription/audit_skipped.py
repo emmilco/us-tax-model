@@ -34,7 +34,7 @@ def raw_cases(tail):
     return out
 
 
-def fixture_key(handle, case, doc):
+def fixture_key(handle, case, doc, label=None):
     """Resolve the recorded handle, rejecting ambiguous or unrecognized mappings."""
     if handle in case["expect"]:  # entry-level documents use full evaluator keys
         return handle
@@ -49,6 +49,10 @@ def fixture_key(handle, case, doc):
             return matches[0]
     candidates = [l["id"] for l in lines
                   if handle in (str(l["printed"]), f"{l['printed']} ({l['id']})")]
+    if len(candidates) > 1:  # a printed number shared by two worksheets: prefer the expected line, then the label
+        expected = [c for c in candidates if c in case["expect"]]
+        labelled = [l["id"] for l in lines if l["id"] in candidates and label and str(l.get("label", "")).startswith(label)]
+        candidates = expected or labelled or candidates
     if len(candidates) == 1:
         return candidates[0]
     raise ValueError(f"cannot map {case['id']} / {handle} to a declared line")
@@ -73,7 +77,7 @@ def reclassify(text, cases, doc):
             continue
         if cid not in cases:
             raise ValueError(f"{cid}: no matching fixture case")
-        key = fixture_key(handle, cases[cid], doc)
+        key = fixture_key(handle, cases[cid], doc, bits[2].strip())
         if key in cases[cid]["expect"]:
             cases[cid]["expect"].pop(key)
             removed.append((cid, key))

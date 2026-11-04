@@ -30,11 +30,16 @@ For every archived PDF, per page:
 
 Writes reports/<year>/extraction.md and exits 1 on any failure.
 
+PDFKit is Apple's, so check 2 needs macOS and Swift. Off macOS, with no `swift` on the
+PATH, check 2 is skipped: the report and the summary line say so, and its check is not
+claimed. On macOS a missing Swift is an error, not a skip.
+
     check_extraction.py [--no-pdfkit]
 """
 import argparse
 import json
 import re
+import shutil
 import subprocess
 import sys
 from collections import Counter
@@ -76,6 +81,18 @@ def pages_of(path):
     if pages and not pages[-1].strip():
         pages = pages[:-1]
     return pages
+
+
+def pdfkit_skip_reason(no_pdfkit, platform, swift):
+    """Why the PDFKit cross-reading is skipped, or None when it runs. On macOS Swift is required."""
+    if no_pdfkit:
+        return "--no-pdfkit given"
+    if swift:
+        return None
+    if platform == "darwin":
+        raise SystemExit("extraction: swift not found; on macOS the PDFKit cross-reading is required "
+                         "(install the Xcode command line tools, or pass --no-pdfkit to skip it visibly)")
+    return f"no swift on this platform ({platform}); PDFKit is macOS-only"
 
 
 def pdfkit_pages(pdf):
@@ -247,7 +264,17 @@ def self_test():
     ok = dict(only_pk) == {"lost": 1}
     print("extraction self-test, words broken at a soft hyphen: "
           + ("joined, and a word only PDFKit reads still found" if ok else f"WRONG, only PDFKit {dict(only_pk)}"))
-    return 0 if ok else 1
+    try:
+        pdfkit_skip_reason(False, "darwin", None)
+        mac_required = False
+    except SystemExit:
+        mac_required = True
+    skip_ok = (mac_required and pdfkit_skip_reason(False, "darwin", "/usr/bin/swift") is None
+               and pdfkit_skip_reason(False, "linux", None) is not None
+               and pdfkit_skip_reason(True, "darwin", "/usr/bin/swift") is not None)
+    print("extraction self-test, PDFKit skip rule: "
+          + ("runs with Swift, required on macOS, skipped visibly elsewhere" if skip_ok else "WRONG"))
+    return 0 if ok and skip_ok else 1
 
 
 def main():
@@ -257,6 +284,7 @@ def main():
     a = ap.parse_args()
     if a.self_test:
         sys.exit(self_test())
+    skip_pdfkit = pdfkit_skip_reason(a.no_pdfkit, sys.platform, shutil.which("swift"))
     docs = json.loads((ARCHIVE / "manifest.json").read_text())["documents"]
     html_docs = {d["id"][: -len("-html")]: d for d in docs if d["id"].endswith("-html")}
     body, fails, counts = [], Counter(), Counter()
@@ -266,7 +294,7 @@ def main():
         layout = pages_of(ARCHIVE / entry["text_file"])
         counts["pdf"] += 1
         fails["order"] += check_layout_vs_order(entry, layout, body)
-        if not a.no_pdfkit:
+        if not skip_pdfkit:
             counts["pdfkit"] += 1
             fails["pdfkit"] += check_pdfkit(entry, layout, body)
         if entry["id"] in html_docs:
@@ -280,12 +308,15 @@ def main():
              "what poppler lacks; the HTML snapshot is the IRS's own second publication of the instructions.", "",
              "| check | documents | failing |", "| --- | --- | --- |",
              f"| layout vs reading order | {counts['pdf']} | {fails['order']} |",
-             f"| PDFKit against poppler | {counts['pdfkit']} | {fails['pdfkit']} |",
+             (f"| PDFKit against poppler | skipped: {skip_pdfkit} | not checked |" if skip_pdfkit
+              else f"| PDFKit against poppler | {counts['pdfkit']} | {fails['pdfkit']} |"),
              f"| PDF vs HTML snapshot | {counts['html']} | {fails['html']} |",
              "", "## Per document", ""] + body + [""]
     REPORT.parent.mkdir(parents=True, exist_ok=True)
     REPORT.write_text("\n".join(lines), encoding="utf-8")
     print(f"extraction: {counts['pdf']} PDFs checked, {counts['html']} against HTML, {total} failing check(s)")
+    if skip_pdfkit:
+        print(f"extraction: SKIPPED the PDFKit cross-reading ({skip_pdfkit}); that check is not claimed")
     print(f"report: {REPORT.relative_to(ROOT)}")
     sys.exit(1 if total else 0)
 

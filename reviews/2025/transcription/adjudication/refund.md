@@ -4,6 +4,29 @@ Method: `README.md` in this directory. Triage record: `../triage/refund.deepseek
 (executable-triage-v1; 1,083 fixtures, 500 generated returns, seed 20261026, 295 partial records over
 17 bases). DeepSeek family only. Full ruling text is in the log and its sidecar.
 
+## Backlog round (2026-11-03)
+
+Fresh reviews of 2026-11-03 (claude-opus-5-5 and deepseek-flash) after the backlog packages; the change record of this form's package is `research/audits/credits-misc/PROPOSED_BUGS.md`. Triage: `../triage/<stem>.json`, executable-triage-v2 rerun 2026-11-03 for these stems (1,495 fixtures, 500 generated returns seed 20261026, 40 partial bases), with every completed-return witness enumerated by an uncapped scratch rerun where a ruling counts them. Full ruling text: `.transcription/proposed/bklg/{transcription,render}.refund[.<family>].json`. The refund change is PENDING-5: `refund.not_2024` and the `refund.taxable` remedy add tax paid "before 2024"; wording only, a screen that refuses on Yes. Every partial base of the bank has no refund, so their differences are on lines `s1.line1` never reads; the refund-return witnesses are the stage16 mutation and refusal fixtures named in the rulings. No value difference on any record. Class M: no open section.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| claude | transcription | refund.taxable | model error and scope | 2,552 of 2,635 agree; completed: 44 project-unknown | i1040gi p. 88, TIP; p. 90, lines 3 and 6 | Choice is the project's; differences inherited from lines 6 and 9, or on no-refund bases. |
+| claude | transcription | 6 | model error | 2,514 of 2,635 agree; completed: 44 candidate-unknown, 22 project-unknown | i1040gi p. 90, line 6 and footnote; p. 33 | Spouse boxes needed for every status (stage16.mut.refund_single_unasked). |
+| claude | transcription | 8 | model error | 2,554 of 2,635 agree; completed: 44 candidate-unknown | i1040gi p. 90, Note and line 8 | Own logic equal; inherited from line 6. |
+| claude | transcription | 9 | model error | 2,310 of 2,635 agree; completed: 176 candidate-unknown | i1040gi p. 90, lines 3 and 9 | Needs line 8 after the line 3 STOP (stage16.mut.refund_line3_stop); reclassified from "equivalent". |
+| claude | render | 1 | ambiguity and scope | MISMATCH | i1040gi pp. 89-90, Exception; line 1 | Exceptions 1 and 5 refused by refund.not_2024 on refund.taxable; cap is amb.2025.refund_cap_5d. |
+| claude | render | 6 | representation | UNCLEAR | i1040gi p. 90, line 6 | Per-box helpers sum to boxes times the amount; MFS condition in the questions. |
+| deepseek | transcription | refund.has | model error | 848 of 2,380 agree; completed: 254 candidate-unknown | i1040gi p. 88, Line 1 | Redefined as line 9 above zero. |
+| deepseek | transcription | refund.taxable | model error and scope | 2,216 of 2,380 agree; completed: 91 candidate-unknown | i1040gi p. 88, TIP; p. 90 | Inherited from lines 6 and 9; line5e_bad refusal is scope. |
+| deepseek | transcription | 1 | representation and scope | 2,263 of 2,380 agree; completed: 39 candidate-unknown, 13 project-unknown | i1040gi p. 90, line 1 | Same cap where the worksheet is used; gate placement on refused returns. |
+| deepseek | transcription | 2 | representation and scope | 2,310 of 2,380 agree; completed: 26 project-unknown, 13 candidate-unknown | i1040gi p. 90, line 2 | Same where used; line5e_bad refusal. |
+| deepseek | transcription | 4 | representation | 2,334 of 2,380 agree; completed: 13 candidate-unknown, 13 project-unknown | i1040gi p. 90, line 4 | Same where used; zero otherwise. |
+| deepseek | transcription | 6 | model error | 2,310 of 2,380 agree; completed: 26 candidate-unknown, 13 project-unknown | i1040gi p. 90, line 6 | As Claude line 6. |
+| deepseek | transcription | 8 | model error | 2,287 of 2,380 agree; completed: 39 candidate-unknown, 13 project-unknown | i1040gi p. 90, line 8 | Inherited from line 6. |
+| deepseek | transcription | 9 | model error | 2,122 of 2,380 agree; completed: 104 candidate-unknown, 26 project-unknown | i1040gi p. 90, line 3 | Needs line 8 after the STOP. |
+| deepseek | render | 1 | scope | MISMATCH | i1040gi p. 89, Exception | As Claude. |
+| deepseek | render | 6 | representation | MISMATCH | i1040gi p. 90, line 6 | As Claude. |
+
 ## Round 1 (superseded subject)
 
 | family | line | class | triage | deciding source | reason |
@@ -47,7 +70,7 @@ $0.00 on both sides). Class M log: no open section. Full ruling text:
 
 Findings: none. Errors introduced by the fixes: none found; both rewordings are wider than before (safe direction).
 
-## Fix round 5
+## Fix round 5 (superseded subject)
 
 The render logs (claude-opus-5-5 and deepseek-flash) were rerun on 2026-10-30 because the rendered English of `refund`
 changed through a shared line. The refund form and its transcription were not changed or rerun, so fix round 2's

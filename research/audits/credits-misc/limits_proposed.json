@@ -1,0 +1,9 @@
+{
+ "note": "Proposed ruling for reviews/2025/limits.json (not edited by this package). i8283 p. 9 became a cited page with T-136 (the Securities definition), which brought its vehicle sentence onto the limit worklist.",
+ "rulings": {
+  "limit:i8283:p9:ab5bbab4": {
+   "enforced_by": ["gift.special"],
+   "reason": "Every donated vehicle is refused by gift.special (it names vehicles), whatever its claimed value, so the more-than-$5,000 vehicle rule and its Form 1098-C attachment are never reached by a computed return."
+  }
+ }
+}

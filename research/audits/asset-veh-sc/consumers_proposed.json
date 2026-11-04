@@ -1,0 +1,17 @@
+{
+  "note": "Proposed verdicts for reviews/2025/consumers.json (package asset-veh-sc; not applied, the brief forbids editing that file).",
+  "rulings": {
+    "consumer:asset.not179@i4562:p5": {
+      "verdict": "same",
+      "question_phrase": "Is this property one that does not qualify for the section 179 deduction: a land improvement ...; property held for investment; property you purchased and lease to others, unless ...; property used by a tax-exempt organization ...; or property used by a governmental unit or a foreign person or entity",
+      "source_phrase": "i4562 p. 5, Line 6, Column (c)—Elected cost (read by asset.s179_bad)",
+      "reason": "Line 6 column (c) is the elected cost of section 179 property; the question asks whether the property is outside section 179 property as p946 p. 17 and i4562 pp. 2-3 define it, which is the sense in which the gate refuses an election on it."
+    },
+    "consumer:asset.class@p946:p17": {
+      "verdict": "same",
+      "question_phrase": "or choose A (personal property with no class life), B (qualified technological equipment), C (property used in research and experimentation), or qualified improvement property",
+      "source_phrase": "p946 p. 17, \"Land and land improvements do not qualify as section 179 property\" (read by asset.is_section179)",
+      "reason": "asset.is_section179 reads the class only to tell qualified improvement property (section 179 property only when elected) from other classes; the land-improvement rule of p. 17 is answered by asset.not179, not by the class."
+    }
+  }
+}

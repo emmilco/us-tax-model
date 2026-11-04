@@ -83,6 +83,12 @@ export function integrationChecks(): void {
     const missing={...inputs};delete missing["$w2@person[taxpayer]"];
     for(const k of Object.keys(missing))if(k.includes(".w2["))delete missing[k];
     assert.equal(evaluate(missing).values["f1040.line31"].value.kind,"unknown");
+    // Spec 8: the standing notices close every JSON result, once per batch.
+    const notice=(n:unknown)=>Array.isArray(n)&&n.some(s=>String(s).includes("not tax or legal advice"))&&n.some(s=>String(s).includes("responsible for the return"));
+    assert.ok(notice(evaluate(inputs).notices),"eval --json carries the standing notices");checks++;
+    const batchPath=join(dir,"batch.json");writeFileSync(batchPath,JSON.stringify([{id:"one",inputs}]));
+    const batch=cli(["eval","--batch",batchPath,"--target","f1040.line31"]);
+    assert.ok(notice(batch.notices)&&batch.cases.one.values&&!("notices" in batch.cases.one),"eval --batch carries the standing notices once");checks++;
     for(const bad of [-1,0.5,"100",Number.MAX_SAFE_INTEGER+1]) evaluate({...inputs,"person[taxpayer].w2[a].box4":bad},false);
     evaluate({...inputs,"$w2@person[taxpayer]":["a","a"]},false);
     evaluate({...inputs,"person[taxpayer].w2[ghost].box4":1},false);

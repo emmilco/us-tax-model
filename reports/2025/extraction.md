@@ -4,8 +4,8 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
 
 | check | documents | failing |
 | --- | --- | --- |
-| layout vs reading order | 121 | 0 |
-| PDFKit against poppler | 121 | 0 |
+| layout vs reading order | 123 | 0 |
+| PDFKit against poppler | 123 | 0 |
 | PDF vs HTML snapshot | 12 | 0 |
 
 ## Per document
@@ -237,12 +237,16 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 513 words poppler reads that PDFKit skips)
 - **p529** layout vs reading order: 18 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 8 words poppler reads that PDFKit skips)
+- **p538** layout vs reading order: 22 pages, identical characters (1 page(s) differ only in word spacing)
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 8 words poppler reads that PDFKit skips)
 - **p550** layout vs reading order: 117 pages, identical characters (1 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 4 words poppler reads that PDFKit skips)
 - **p560** layout vs reading order: 48 pages, identical characters (13 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 1059 words poppler reads that PDFKit skips; PDFKit blind on page(s) [42])
 - **p561** layout vs reading order: 16 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 9 words poppler reads that PDFKit skips)
+- **p575** layout vs reading order: 46 pages, identical characters (8 page(s) differ only in word spacing)
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 166 words poppler reads that PDFKit skips)
 - **p587** layout vs reading order: 35 pages, identical characters (1 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 120 words poppler reads that PDFKit skips)
 - **p590a** layout vs reading order: 62 pages, identical characters (8 page(s) differ only in word spacing)

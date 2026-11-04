@@ -189,6 +189,8 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) A gain component exceeds total capital gain distributions
       = false
       cite: [f1099div] p. 5, Instructions for Recipient, boxes 2b to 2d, "Box 2b. Shows the portion of the amount in box 2a that is unrecaptured section 1250 gain", "Box 2c. Shows the portion of the amount in box 2a that is section 1202 gain", "Box 2d. Shows the portion of the amount in box 2a that is 28% rate gain" (January 2024 (continuous-use form); 4ea1de80)
+      note: Interpretation amb.2025.div_gain_portions_disjoint: The first (div.bad_special tests div.special_total, boxes 2b plus 2c plus 2d, against box 2a). The issuer instructions define each box by a different kind of property: box 2b is unrecaptured section 1250 gain "from certain depreciable real property", box 2c section 1202 gain "from certain qualified small business stock", box 2d 28% rate gain "from sales or exchanges of collectibles"; and box 2a must "Include all amounts shown in boxes 2b, 2c, 2d, and 2f". No one gain comes from two of those kinds. Box 2f (section 897 gain from US real property interests) can share an amount with box 2b, and it is not in the sum. The reading can only refuse an entry, never change a computed amount, and any box 2c amount is refused in any case (div.section1202). Recorded under T-006.
+ (i1099div, p. 4, Box 2a, "Include all amounts shown in boxes 2b, 2c, 2d, and 2f"; Box 2b; Box 2c; Box 2d)
   (helper) Zero only after distribution scope checks
       = $0
       cite: [f1099div] Instructions for Recipient, boxes 1–16 (January 2024 (continuous-use form); 4ea1de80)
@@ -352,6 +354,8 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Line 1 is at least $1, the first amount the EIC Table lists
       = true
       cite: [i1040gi] p. 49, EIC Table, first row "At least 1" (see the ambiguity register, amb.2025.eic_below_table) (2025; printed date 2026-02-25; 482e9c48)
+      note: Interpretation amb.2025.eic_below_table: The credit on line 2 is zero. Every column of the table is zero at the far end and rises from $2 to $11 in the first row, so the credit is built up from earned income; with no row for less than $1 the table grants nothing there, and the worksheet's own instruction for a zero line 2 ends the computation. Rev. Proc. 2024-40 section 3.06(1) describes the credit as a percentage of earned income up to the earned income amount, which is zero at zero earned income.
+ (i1040gi, p. 46, Worksheet A, line 2; p. 49, EIC Table, first row)
   (helper) EIC Table credit for line 1, no qualifying children with valid SSNs
       = UNKNOWN (no band for 12000000 cents)
       cite: [i1040gi] pp. 49–60, EIC Table, column 0 (2025; printed date 2026-02-25; 482e9c48)
@@ -843,10 +847,12 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i2441] p. 5, Line 15, "Add the amounts on lines 12 and 13 and subtract from that total the amount on line 14. Enter the result on line 15" (2025; 86f0669e)
   (helper) Qualified care expenses incurred in 2025 not already counted in the per-person care amounts
       = UNKNOWN (no input supplied for f2441.paid_2026)
-      cite: [i2441] p. 5, Line 16, "Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s). It doesn't matter when the expenses were paid" (2025; 86f0669e)
+      cite: [i2441] p. 5, Line 16, "Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s). It doesn't matter when the expenses were paid"; p. 3, Columns (a) and (b), "If you were covered by your employer's dependent care plan and your employer furnished the care (either at your workplace or by hiring a care provider), enter your employer's name in column (a)" (2025; 86f0669e)
+      note: Interpretation amb.2025.dc_employer_care_value: The first when line 16 is at least line 15, where line 17 is line 15 under either reading and no amount differs; otherwise the return is refused (f2441.employer_care_l16). The questions tell the filer to leave the value out. Session reading under the owner's standing delegation (2026-11-03, T-123); a refusal covers the only case in which the readings give different amounts. (i2441, p. 5, Line 16; p. 3, Columns (a) and (b))
   16  Enter the total amount of qualified expenses incurred in 2025 for the care of the qualifying person(s)
       = UNKNOWN (collection roster not confirmed)
       cite: [i2441] p. 5, Line 16, "Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s). It doesn't matter when the expenses were paid" (2025; 86f0669e)
+      note: Interpretation amb.2025.dc_employer_care_value: The first when line 16 is at least line 15, where line 17 is line 15 under either reading and no amount differs; otherwise the return is refused (f2441.employer_care_l16). The questions tell the filer to leave the value out. Session reading under the owner's standing delegation (2026-11-03, T-123); a refusal covers the only case in which the readings give different amounts. (i2441, p. 5, Line 16; p. 3, Columns (a) and (b))
   17  Enter the smaller of line 15 or 16
       = UNKNOWN (no input supplied for f2441.line14)
       cite: [f2441] Form 2441 (2025), line 17 (2025; created 2025-03-18; 6c3c2d19)
@@ -905,8 +911,11 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   24  Deductible benefits. Enter the smallest of line 20, 21, or 22. Also, include this amount on the appropriate line(s) of your return
       = UNKNOWN (no input supplied for f2441.line14)
       cite: [f2441] Form 2441 (2025), line 24 (2025; created 2025-03-18; 6c3c2d19)
+  (gate) Line 13 is above zero, line 20 is less than both line 17 and line 21, and line 23 is more than line 20 (so line 26 is above zero)
+      = UNKNOWN (no input supplied for f2441.line13)
+      cite: [i2441] p. 5, Line 18, "however, for purposes of lines 18 and 19, earned income doesn’t include any dependent care benefits shown on line 12"; p. 5, Line 13, "Enter on line 13 the amount you carried forward and used in 2025 during the grace period" (2025; 86f0669e)
   25  Excluded benefits. If you checked "No" on line 22, enter the smaller of line 20 or line 21. Otherwise, subtract line 24 from the smaller of line 20 or line 21. If zero or less, enter -0-
-      = UNKNOWN (no input supplied for f2441.line14)
+      = UNKNOWN (no input supplied for f2441.line13)
       cite: [f2441] Form 2441 (2025), line 25 (2025; created 2025-03-18; 6c3c2d19)
   26  Taxable benefits. Subtract line 25 from line 23. If zero or less, enter -0-. Also, enter this amount on Form 1040, 1040-SR, or 1040-NR, line 1e
       = UNKNOWN (no input supplied for f2441.line14)
@@ -953,6 +962,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Zero amount
       = $0
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+  (helper) Form 4952 is used (an election on line 4g, investment interest paid or accrued in 2025, or a carryforward from 2024)
+      = false
+      cite: [f4952] p. 3, Who Must File, "you must file Form 4952 to claim a deduction for your investment interest expense"; p. 4, "To make the election, enter on line 4g the amount you elect to include in investment income" (2025; created 2025-05-28; 5113c166)
   2   Disallowed investment interest expense from 2024 Form 4952, line 7
       = $0
       cite: [f4952] p. 1, Part I, line 2, "Disallowed investment interest expense from 2024 Form 4952, line 7" (2025; created 2025-05-28; 5113c166)
@@ -987,6 +999,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Validated default-allocation election
       = $0
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+  (helper) An amount is entered on line 4g
+      = false
+      cite: [f4952] p. 4, Line 4g, "To make the election, enter on line 4g the amount you elect to include in investment income" (2025; created 2025-05-28; 5113c166)
+  (helper) The validated line 4g election when an amount is entered on line 4g; zero otherwise
+      = $0
+      cite: [f4952] p. 4, Line 4g, "To make the election, enter on line 4g the amount you elect to include in investment income" (2025; created 2025-05-28; 5113c166)
+      note: taken: {"eq":["f4952.has_election",{"const":false}],"op":"test"}
   4h  Add lines 4c, 4f and 4g
       = $1,700
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
@@ -999,20 +1018,27 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   7   Interest carryforward to 2026: line 3 less line 6; floor at zero
       = $0
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
-  8   Investment interest deduction: smaller of lines 3 and 6
+  (helper) Smaller of lines 3 and 6
       = $0
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+  8   Investment interest deduction: smaller of lines 3 and 6 (zero when Form 4952 is not used)
+      = $0
+      cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+      note: taken: {"eq":["f4952.used",{"const":false}],"op":"test"}
   (helper) Filing exception: interest and ordinary dividends less qualified dividends exceed investment interest, with no other deductible expenses or carryover
       = true
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
   (helper) File for an election, or to claim interest (including a 2024 carryforward) when the exception does not apply
       = false
       cite: [f4952] pp. 1, 3–4, Investment Interest Expense Deduction (2025; created 2025-05-28; 5113c166)
+  (helper) Form 4952 is used and must be filed (for an election, or to claim interest when the exception does not apply)
+      = false
+      cite: [f4952] p. 3, Who Must File, "you must file Form 4952 to claim a deduction for your investment interest expense" and "Exception. You don’t have to file Form 4952 if all of the following apply" (2025; created 2025-05-28; 5113c166)
 
 == Form 5695 — Residential Energy Credits (Parts I and II) ==
   (helper) Year parameter sales.zero
       = $0
-      cite: [f5695] Form 5695 (2025), lines 5b, 11, 18b to 20d, 22d to 26c and 29h (2025; created 2025-03-20; e2ac6a5c)
+      cite: [f5695] Form 5695 (2025), lines 5b, 11, 18b to 20d, 22d to 26c, 29h and 32 (2025; created 2025-03-20; e2ac6a5c)
   (helper) Any residential clean energy property paid for in 2025, or a carryforward from 2024
       = false
       cite: [i5695] p. 2, Residential Clean Energy Credit (Part I), "You may be able to take a credit of 30% of your costs of qualified solar electric property, solar water heating property, small wind energy property, geothermal heat pump property, battery storage technology, and fuel cell property"; p. 1, Purpose of Form, "Also use Form 5695 to take any residential clean energy credit carryforward from 2024" (2025; 55113467)
@@ -1438,9 +1464,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = UNKNOWN (no input supplied for f5695.line21a)
       cite: [f5695] Form 5695 (2025), lines 21b and 29h, "Skip lines 22 through 25 and line 29" (2025; created 2025-03-20; e2ac6a5c)
       note: guard incomplete
-  (helper) Did you occupy the home jointly with someone other than your spouse on a joint return (whether or not the other occupant claims the credit)?
+  (helper) Did you occupy any home for which you enter Part II costs jointly with someone other than your spouse on a joint return (whether or not the other occupant claims the credit)?
       = UNKNOWN (no input supplied for f5695.joint_occupancy)
-      cite: [i5695] p. 3, Joint occupancy, "If you occupied your home jointly with someone, each occupant must complete their own Form 5695" and "If the aggregate credit that would be allowed to all occupants for any item of property exceeds the credit limit below, then you must figure your allocable share of the credit from each property"; p. 3, Joint ownership of qualified property, "You figure your credit on the part of the cost you paid" (2025; 55113467)
+      cite: [i5695] p. 3, Joint occupancy, "If you occupied your home jointly with someone, each occupant must complete their own Form 5695" and "If the aggregate credit that would be allowed to all occupants for any item of property exceeds the credit limit below, then you must figure your allocable share of the credit from each property"; p. 3, Joint ownership of qualified property, "You figure your credit on the part of the cost you paid"; p. 3, Section B—Residential Energy Property Expenditures, "installed on or in connection with a home that you used during 2025"; p. 6, Lines 21a Through 21c, "Enter the full address of each home where you installed qualified energy property" (2025; 55113467)
   (helper) Did you and your spouse own and live apart in separate main homes?
       = UNKNOWN (no input supplied for f5695.separate_homes)
       cite: [i5695] p. 3, Married taxpayers with more than one home, "If both you and your spouse owned and lived apart in separate main homes, the limit on the amount of the credit applies to each of you separately" (2025; 55113467)
@@ -1462,11 +1488,15 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   31  Limitation based on tax liability. Enter the amount from the Energy Efficient Home Improvement Credit Limit Worksheet
       = $18,500
       cite: [i5695] p. 7, Line 31, "Complete the worksheet below to figure the amount to enter on line 31" (2025; 55113467)
-  32  Energy efficient home improvement credit. Enter the smaller of line 30 or line 31. Also include this amount on Schedule 3 (Form 1040), line 5b
+  (helper) The smaller of line 30 or line 31
       = UNKNOWN (no input supplied for f5695.business_use)
-      cite: [f5695] Form 5695 (2025), line 32 (2025; created 2025-03-20; e2ac6a5c)
+      cite: [f5695] Form 5695 (2025), line 32, "Enter the smaller of line 30 or line 31" (2025; created 2025-03-20; e2ac6a5c)
+  32  Energy efficient home improvement credit. Enter the smaller of line 30 or line 31. Also include this amount on Schedule 3 (Form 1040), line 5b
+      = $0
+      cite: [f5695] Form 5695 (2025), line 32 (zero when Part II is not completed) (2025; created 2025-03-20; e2ac6a5c)
+      note: taken: {"eq":["f5695.part2_any",{"const":false}],"op":"test"}
   32a If the special rule for joint occupants applies, check here and attach a statement
-      = UNKNOWN (no input supplied for f5695.joint_occupancy)
+      = false
       cite: [i5695] p. 7, Lines 32a and 32b, "Line 32a. Joint occupants of a home who are claiming the energy efficient home improvement credit must check the box on line 32a" (2025; 55113467)
   (helper) Do you live in a condominium or cooperative and claim a fractional share of its costs?
       = UNKNOWN (no input supplied for f5695.condo)
@@ -1753,9 +1783,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f8959] p. 1, Part V, line 24, "Total Additional Medicare Tax withholding. Add lines 22 and 23"; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
 
 == Form 8960 — wage, interest, dividend and securities slice ==
-  (helper) Any annuity, rental, royalty, business or pass-through income; a CFC or PFIC holding; a section 911 exclusion; a disposition adjustment (Form 8960 line 5b or 5c, for example gain on employer securities attributable to net unrealized appreciation (NUA) from a qualified plan, or the sale of property held in a trade or business or of an interest in a partnership or S corporation); a section 1411 net operating loss; excluded savings bond interest (Form 8815); a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment?
+  (helper) Any annuity, rental, royalty, business or pass-through income; a CFC or PFIC holding; a section 911 exclusion; a disposition adjustment (Form 8960 line 5b or 5c, for example gain on employer securities attributable to net unrealized appreciation (NUA) from a qualified plan, or the sale of property held in a trade or business or of an interest in a partnership or S corporation); a section 1411 net operating loss; section 404(k) dividends on employer securities held in an employee stock ownership plan (ESOP) and paid directly to you (Form 1099-DIV box 1a); excluded savings bond interest (Form 8815); a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment?
       = false
-      cite: [f8960] Form 8960 (2025), Parts I–III, individual lines 1–17; i8960 p. 9, line 5b, "Any gain attributable to NUA (within the meaning of section 402(e)(4)) that you realize on a disposition of employer securities held by a qualified plan is a distribution within the meaning of section 1411(c)(5) and isn’t included in NII." (2025; created 2025-08-19; 9b323b71)
+      cite: [f8960] Form 8960 (2025), Parts I–III, individual lines 1–17; i8960 p. 9, line 5b, "Any gain attributable to NUA (within the meaning of section 402(e)(4)) that you realize on a disposition of employer securities held by a qualified plan is a distribution within the meaning of section 1411(c)(5) and isn’t included in NII."; i8960 p. 7, Line 2—Ordinary Dividends, "If line 2 includes dividends from employer securities held in an employee stock ownership plan (ESOP) that are deductible under section 404(k) or Alaska Permanent Fund Dividends, include those amounts as negative modifications on line 7"; i8960 p. 13, Line 7—Other Modifications to Investment Income, "Section 404(k) dividends reported on line 2 (enter as a negative amount)"; i1099div p. 4, Box 1a, "Include reinvested dividends and section 404(k) dividends paid directly from the corporation" (2025; created 2025-08-19; 9b323b71)
   (gate) Was there an amount on line 2(i) of the Net Gains and Losses Worksheet (Form 8960 instructions) when you figured your 2024 net investment income tax?
       = UNKNOWN (no input supplied for f8960.prior_2i)
       cite: [i8960] p. 10, Net Gains and Losses Worksheet, line 2(h), "Enter the amount reported on line 2(i) of this worksheet from your prior tax year return calculations"; p. 9, "capital loss carryforwards must be adjusted" (2025; printed date 2026-02-04; b10fbb23)
@@ -1887,9 +1917,12 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) A Form 1095-A entered is marked VOID or replaced by a corrected form
       = false
       cite: [i8962] p. 2, "Do not use the information on the Form 1095-A with the “VOID” box checked or the previously received Form 1095-A to complete Form 8962."; p. 2, "If you receive a Form 1095-A with the “CORRECTED” box checked at the top of the form, use the information on the Form 1095-A with the “CORRECTED” box checked to figure the PTC and reconcile any APTC on Form 8962." (2025; f4ac86ad)
-  (gate) Column B counted on two Forms 1095-A from the same state for the same month
+  (gate) Column B counted on two Forms 1095-A from the same state for the same month, or a covered month with zero in column (b)
       = false
       cite: [i8962] p. 15, Column (b), "Enter the amount from column B of only one Form 1095-A—do not add the amounts from each form." (2025; f4ac86ad)
+  (helper) A month of lines 12 to 23 with enrollment premiums in column (a) and zero in column (b), for an applicable taxpayer
+      = false
+      cite: [p974] p. 6, "To qualify for a monthly credit amount, at least one individual in your tax family must be enrolled in a qualified health plan on the first day of that month.", "The applicable SLCSP premium is the second lowest cost silver plan premium offered through the Marketplace where you reside that applies to your coverage family", "may report your applicable SLCSP premium as -0-", "In either case, you must determine your correct applicable SLCSP premium."; i8962 p. 16, Column (b), "Enter on lines 12 through 23, column (b), the amount of the monthly applicable SLCSP premium reported on Form 1095-A, lines 21 through 32, column B, for the corresponding month"; i8962 p. 17, "credit amount because your enrollment premiums for the month were unpaid, enter -0- on the appropriate line on Form 8962, column (b)" (2025; e17265a7)
   (gate) Did you count column B on two Forms 1095-A from the same state that show coverage in the same month?
       = UNKNOWN (no input supplied for f8962.same_state_counted)
       cite: [i8962] p. 16, Column (b), "If you have more than one Form 1095-A showing coverage in a particular month, use the following rules to determine the amounts to enter on Form 8962, column (b), for that month." (2025; f4ac86ad)
@@ -2318,6 +2351,12 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Was your EIC for a year after 1996, or your child tax credit, additional child tax credit or credit for other dependents for a year after 2015, reduced or disallowed other than for a math or clerical error, or are you in a 2- or 10-year disallowance period?
       = false
       cite: [i1040gi] p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" and "don’t file Form 8862 or take the credit for the ... 2 years after the most recent tax year for which there was a final determination that your EIC claim was due to reckless or intentional disregard of the EIC rules ... 10 years after the most recent tax year for which there was a final determination that your EIC claim was due to fraud"; p. 39, Form 8862, who must file, "You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit (refundable or nonrefundable depending on the tax year), additional child tax credit, or credit for other dependents for a year after 2015 was denied or reduced for any reason other than a math or clerical error"; i1040s8812 p. 2, Form 8862 may be required, "If your CTC, ACTC, or ODC for a year after 2015 was denied or reduced for any reason other than a math or clerical error, you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) An earlier credit was reduced or disallowed (or a disallowance period applies) and Schedule 8812 line 8 is more than line 11 (a child tax credit or credit for other dependents is figured)
+      = false
+      cite: [i1040s8812] p. 2, Form 8862 may be required, "If your CTC, ACTC, or ODC for a year after 2015 was denied or reduced for any reason other than a math or clerical error, you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies" (2025; printed date 2026-01-23; bb9788cd)
+  (gate) An earlier credit was reduced or disallowed (or a disallowance period applies) and Steps 1 to 5 of the earned income credit are passed with a credit above zero (Worksheet A line 6)
+      = false
+      cite: [i1040gi] p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Number of parents who qualify you under Test 1
       = 0
       cite: [i1040gi] p. 14, Head of Household, Test 1 (2025; printed date 2026-02-25; 482e9c48)
@@ -2609,6 +2648,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) The mid-quarter convention applies: the October to December bases are more than 40% of all 2025 bases
       = false
       cite: [p946] p. 34, Which Convention Applies?, Mid-quarter convention, "are more than 40% of the total depreciable bases of all MACRS property you placed in service during the entire year" (For use in preparing 2025 returns; 07fadfb2)
+      note: Interpretation amb.2025.mq_joint: Both spouses' property together (mq.q4 and mq.total sum over every person on the return). The owner's ruling; section 179's limits are already figured once for a joint return (i4562 line 11, "combine the total taxable incomes for you and your spouse"). (p946-html, Chapter 4, Which Convention Applies?, Mid-quarter convention)
 
 == Each person on the return — per-person facts and totals (excess Social Security tax, Schedule SE, SEP and SIMPLE plans, health insurance and others) — person[taxpayer] ==
   (helper) Whose entry is this, yours or your spouse's?
@@ -2620,13 +2660,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Were you born before January 2, 1961?
       = false
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
-  (helper) Are you blind under the standard-deduction instructions?
+  (helper) Were you blind at the end of 2025 (totally blind, or partly blind with a statement certified by your eye doctor)?
       = false
-      cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
+      cite: [i1040gi] p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; p. 33, Blindness, "If you weren’t totally blind as of December 31, 2025, you must get a statement certified by your eye doctor (ophthalmologist or optometrist) that:", "You can't see better than 20/200 in your better eye with glasses or contact lenses, or", "Your field of vision is 20 degrees or less.", "If your eye condition isn’t likely to improve beyond the conditions listed above, you can get a statement certified by your eye doctor (ophthalmologist or optometrist) to this effect instead." and "You must keep the statement for your records."; p501 p. 23, Not totally blind, "If your vision can be corrected beyond these limits only by contact lenses that you can wear only briefly because of pain, infection, or ulcers, you can take the higher standard deduction for blindness if you otherwise qualify." (2025; printed date 2026-02-25; 482e9c48)
   (helper) Do you have an SSN or ITIN issued on or before the due date of your return?
       = true
       cite: [i1040gi] p. 17, Before you begin, "The other spouse must have either an SSN or ITIN, and it must have been issued on or before the due date of the return (including extensions)"; p. 19, Step 5, question 1; p503 p. 3, "If your ITIN wasn’t included on at least one U.S. federal tax return for the last 3 consecutive tax years, it expires on December 31 of the third consecutive tax year, and must be renewed before being used again on a U.S. federal tax return." (2025; printed date 2026-02-25; 482e9c48)
-  (helper) If not, have you applied for an ITIN on or before the due date of your return?
+  (helper) If not, have you applied for an ITIN, or for the renewal of your expired ITIN, on or before the due date of your return?
       = UNKNOWN (no input supplied for person[taxpayer].itin_applied)
       cite: [i1040gi] p. 19, Step 5, question 1, "(Answer 'Yes' if you are applying for an ITIN on or before the return due date (including extensions).)" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Do you have an SSN valid for employment issued before the due date of your return?
@@ -2848,7 +2888,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: confirmed roster $sc@person[taxpayer]:
   (screen) Does any of these apply to this person's self-employment?
       = UNKNOWN (no input supplied for person[taxpayer].se_screen)
-      cite: [i1040sse] pp. 1-5, Who Must Pay Self-Employment (SE) Tax, Net Earnings From Self-Employment, Instructions for Part II; f1040sse lines 1a, 1b, 5a, 8b and 8c (2025; ea9e3120)
+      cite: [i1040sse] pp. 1-5, Who Must Pay Self-Employment (SE) Tax, Net Earnings From Self-Employment, Instructions for Part II; f1040sse lines 1a, 1b, 5a, 8b and 8c; p. 1, Employees of Churches and Church Organizations, "Church employee income is wages you received as an employee (other than as a minister, member of a religious order, or Christian Science practitioner) of a church or qualified church-controlled organization that has a certificate in effect electing an exemption from employer social security and Medicare taxes." (2025; ea9e3120)
   (gate) This person's self-employment tax is outside this tool
       = UNKNOWN (no input supplied for person[taxpayer].se_screen)
       cite: [i1040sse] pp. 1-5 (2025; ea9e3120)
@@ -2911,6 +2951,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   Step 5 Multiply step 3 by step 4 (the plan rate divided by the plan rate plus 1, to six decimal places)
       = UNKNOWN (no input supplied for person[taxpayer].se_screen)
       cite: [p560] pp. 39–40, chapter 5, Deduction Worksheet for Self-Employed, Steps 4 and 5, "Enter your rate from the Rate Table for Self-Employed or Rate Worksheet for Self-Employed", "Multiply step 3 by step 4"; p. 38, chapter 5, Rate Table for Self-Employed, "If your plan's contribution rate is 10% of a participant's compensation, your rate is 0.090909" (amb.2025.sep_rate_places) (For use in preparing 2025 returns; 1f1f7abe)
+      note: Interpretation amb.2025.sep_rate_places: Six decimal places, half-up (person.sep_s5); only whole-percent plan rates are accepted, which the Rate Table covers. For whole-percent plan rates the Rate Table applies, and it prints six places; "at least 3" permits six. (p560, chapter 5, Rate Table for Self-Employed and Rate Worksheet for Self-Employed)
   (helper) $350,000
       = $350,000
       cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 6, "Multiply $350,000" (For use in preparing 2025 returns; 1f1f7abe)
@@ -3067,7 +3108,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = $120,000
       cite: [i2441] p. 4, Lines 4 and 5, "The amount shown on Form 1040, 1040-SR, or 1040-NR, line 1z" and "The amount shown on Schedule SE (Form 1040), line 3, minus any deduction you claim on Schedule 1 (Form 1040), line 15"; p503 p. 11, Self-employment earnings, "Include your self-employment earnings in earned income, even if they are less than $400 and you didn't file Schedule SE (Form 1040)" (2025; 86f0669e)
       note: Interpretation amb.2025.dc_line1e_attribution: The first (person.dc_1e, f2441.attrib_gate). On a return that is not joint there is one person and line 1e is theirs. When the split is undetermined but no credit remains (line 31 is zero, so line 3 and line 6 are zero whatever lines 4 and 5 hold), line 1e is shown in the taxpayer's line 4, keeping lines 4 and 5 together equal to line 1z plus self-employment earnings; the credit cannot differ. The owner's decision (Stage 15, decision 6). Taxable benefits arise from one spouse's plan; the instructions give no rule for dividing a joint line 26, and the case where it matters (benefits over the exclusion with a credit still left) is rare, since excluded benefits of $5,000 leave at most $1,000 of the $6,000 limit. (i2441, p. 4, Lines 4 and 5, "If filing jointly, figure your and your spouse's earned income separately")
-  (helper) This person's earned income for Form 2441 lines 18 and 19: as for lines 4 and 5, without the dependent care benefits of line 12 (so without line 1e)
+  (helper) This person's earned income for Form 2441 lines 18 and 19: as for lines 4 and 5, without line 1e (the taxable benefits of line 12; when a line 13 grace-period amount could make part of line 1e earned income and change the excluded benefits, Form 2441 line 25 refuses)
       = $120,000
       cite: [i2441] p. 5, Line 18, "Earned income for figuring the amount of dependent care benefits you are able to exclude or deduct from your income is determined in the same way as earned income for figuring the credit is determined" and "for purposes of lines 18 and 19, earned income doesn’t include any dependent care benefits shown on line 12" (2025; 86f0669e)
   (helper) Were you born before January 2, 2008?
@@ -3141,7 +3182,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f8880] Form 8880 (2025), line 1, "Traditional and Roth IRA contributions" (2025; created 2025-11-04; ba2b2877)
   (screen) Were your 2025 IRA contributions more than allowed, recharacterized, or did an earlier excess contribution remain in your traditional or Roth IRA at the end of 2025?
       = UNKNOWN (no input supplied for person[taxpayer].ira_excess)
-      cite: [p590a] p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of"; p. 30, "Recharacterizing excess contributions"; i1040gi p. 95, Line 20, "If the total of your IRA deduction on line 20 plus any nondeductible contributions to your traditional IRAs shown on Form 8606 is less than your total traditional IRA contributions for 2025, see Pub. 590-A for special rules" (2025; ca0e4287)
+      cite: [p590a] p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional IRAs for the year that is more than the smaller of"; p. 35, Tax on Excess Contributions, "In general, if the excess contributions for a year aren’t withdrawn by the date your return for the year is due (including extensions), you are subject to a 6% tax"; p. 30, "Recharacterizing excess contributions"; i1040gi p. 95, Line 20, "If the total of your IRA deduction on line 20 plus any nondeductible contributions to your traditional IRAs shown on Form 8606 is less than your total traditional IRA contributions for 2025, see Pub. 590-A for special rules" (2025; ca0e4287)
   (gate) This person's IRA contributions for 2025 are excess or recharacterized, or an earlier excess remained at the end of 2025 (screen)
       = false
       cite: [p590a] p. 35, Excess Contributions, "In general, if the excess contributions for a year aren’t withdrawn by the date your return for the year is due (including extensions), you are subject to a 6% tax" (2025; ca0e4287)
@@ -3990,7 +4031,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (gate) Is any of these refunds of a state or local income tax that applies only to income from a trade or business?
       = UNKNOWN (no input supplied for refund.box8)
       cite: [f1099g] p. 5, Instructions for Recipient, "Box 8. If this box is checked, the amount in box 2 is attributable to an income tax that applies exclusively to income from a trade or business" and "If taxable, report the amount in box 2 on Schedule C or F (Form 1040), as appropriate" (Rev. March 2024 (continuous-use form for calendar year 2025; the December 2026 revision is first used for 2026); fe46acb4)
-  (gate) Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you pay any of your 2024 state or local income tax in 2025?
+  (gate) Is any of these refunds for a tax year other than 2024 (box 3 of Form 1099-G), or did you pay any of your 2024 state or local income tax in 2025 or before 2024?
       = UNKNOWN (no input supplied for refund.not_2024)
       cite: [i1040gi] p. 89, Line 1, "1. You received a refund in 2025 that is for a tax year other than 2024" and "5. You made your last payment of 2024 estimated state or local income tax in 2025"; f1099g p. 5, Instructions for Recipient, "Box 3. Identifies the tax year for which the box 2 refunds, credits, or offsets shown were made"; p525 p. 24, Recovery for 2 or more years, "If you receive a refund or other recovery that is for amounts you paid in 2 or more separate years, you must allocate, on a pro rata basis, the recovered amount between the years in which you paid it." (2025; printed date 2026-02-25; 482e9c48)
       note: Interpretation amb.2025.refund_exceptions: The first (refund.box8 and refund.not_2024 on refund.taxable; refund.exc_tax and refund.exc_who on refund.line1; refund.other on Schedule 1 line 1). The TIP is stated for "the year you paid the tax", which is 2024 only when the refund is for 2024 and was paid then, so items 1 and 5 can make a refund taxable even when you did not itemize for 2024, and a part of the refund for a 2025 payment changes the 2025 deduction for taxes (Pub. 525 p. 24, Example 28). Items 3, 4, 6, 7, 8 and 9 and the nonresident rule change only how much of a refund of a deducted tax is included; when no income tax was deducted for 2024, none is (Pub. 525 p. 24, Deductions not itemized). Box 8 sends a taxable refund to Schedule C or F whatever the itemizing. A recovery deducted on an earlier Form 8960 is refused by the existing screen f8960.refund, asked of every return. (i1040gi, pp. 88–89, Line 1, "Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet"; p525 p. 24, Deductions not itemized)
@@ -4162,7 +4203,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Amount of a 2025 overpayment of unemployment compensation you repaid in 2025
       = UNKNOWN (no input supplied for s1.uc_repaid)
       cite: [i1040gi] p. 89, Schedule 1, line 7, 'If you received an overpayment of unemployment compensation in 2025, subtract the amount you repaid from the total amount you received' (2025; printed date 2026-02-25; 482e9c48)
-  (helper) Did you, in 2025 or any earlier year, make contributions to a governmental unemployment compensation program (including amounts withheld from your wages for it; not counting employer-paid tax, paid family leave or disability insurance contributions), or repay in 2025 any unemployment compensation you included in income in an earlier year?
+  (helper) Did you, in 2025 or any earlier year, make contributions to a governmental unemployment compensation program (including amounts withheld from your wages for it, and payments you made yourself, such as for coverage you elected as a self-employed person; not counting tax an employer paid on your wages, paid family leave or disability insurance contributions), or repay in 2025 any unemployment compensation you included in income in an earlier year?
       = UNKNOWN (no input supplied for s1.uc_unsupported)
       cite: [i1040gi] p. 89, Schedule 1, line 7, contributions to a governmental unemployment compensation program and repayments of more than $3,000 included in income in an earlier year (Pub. 525); p. 89, "If you made contributions to a governmental unemployment compensation program and you aren't itemizing deductions, reduce the amount you report on line 7 by those contributions." (2025; printed date 2026-02-25; 482e9c48)
   (helper) Unemployment compensation less the amount of a 2025 overpayment repaid
@@ -4251,16 +4292,16 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: confirmed roster $oi8z:
   (helper) Did you receive or pay alimony or separate maintenance in 2025 under a divorce or separation agreement entered into on or before December 31, 2018, or must you include or may you deduct a recapture of alimony?
       = false
-      cite: [i1040gi] p. 89, Line 2a, "Enter amounts received as alimony or separate maintenance pursuant to a divorce or separation agreement entered into on or before December 31, 2018"; p. 95, Line 19a, "You can't take a deduction for alimony payments you made to or for your spouse if you entered into your divorce or separation agreement after December 31, 2018"; p504 p. 16, Example 2, "The alimony payments made in January 2025 through May 2025 are includible in the recipient’s income and deductible from the payer’s income." (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 89, Line 2a, "Enter amounts received as alimony or separate maintenance pursuant to a divorce or separation agreement entered into on or before December 31, 2018"; p. 95, Line 19a, "You can't take a deduction for alimony payments you made to or for your spouse if you entered into your divorce or separation agreement after December 31, 2018"; p504 p. 16, Certain Rules for Instruments Executed or Modified After 2018, "if the modification expressly states that the alimony isn’t deductible to the payer or includible in the income of the recipient", and Example 2, "the modification expressly provided that the post-2018 alimony rules apply" and "The alimony payments made in January 2025 through May 2025 are includible in the recipient’s income and deductible from the payer’s income." (2025; printed date 2026-02-25; 482e9c48)
   (helper) Alimony or separate maintenance received in 2025 under an agreement entered into on or before December 31, 2018
       = UNKNOWN (no input supplied for s1.alimony_received)
-      cite: [i1040gi] p. 89, Line 2a, "Enter amounts received as alimony or separate maintenance pursuant to a divorce or separation agreement entered into on or before December 31, 2018, unless that agreement was changed after December 31, 2018, to expressly provide that alimony received isn't included in your income" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 89, Line 2a, "Enter amounts received as alimony or separate maintenance pursuant to a divorce or separation agreement entered into on or before December 31, 2018, unless that agreement was changed after December 31, 2018, to expressly provide that alimony received isn't included in your income"; p504 p. 16, Certain Rules for Instruments Executed or Modified After 2018, "if the modification expressly states that the alimony isn’t deductible to the payer or includible in the income of the recipient", and Example 2, "the modification expressly provided that the post-2018 alimony rules apply" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Alimony or separate maintenance paid in 2025 under an agreement entered into on or before December 31, 2018
       = UNKNOWN (no input supplied for s1.alimony_paid)
-      cite: [i1040gi] p. 95, Line 19a, "If you made payments to or for your spouse or former spouse under a divorce or separation agreement entered into on or before December 31, 2018, you may be able to take this deduction" (2025; printed date 2026-02-25; 482e9c48)
-  (gate) Does any of these apply to alimony you received or paid: payments under more than one divorce or separation agreement, or paid to more than one person; a recapture of alimony; or payments of which part is not alimony (child support, including an amount reduced on a contingency relating to a child; or payments for a home either of you owns)?
+      cite: [i1040gi] p. 95, Line 19a, "If you made payments to or for your spouse or former spouse under a divorce or separation agreement entered into on or before December 31, 2018, you may be able to take this deduction"; p504 p. 16, Certain Rules for Instruments Executed or Modified After 2018, "if the modification expressly states that the alimony isn’t deductible to the payer or includible in the income of the recipient", and Example 2, "the modification expressly provided that the post-2018 alimony rules apply" (2025; printed date 2026-02-25; 482e9c48)
+  (gate) Does any of these apply to alimony you received or paid: payments under more than one divorce or separation agreement, or paid to more than one person; a recapture of alimony; or payments of which part is not alimony (child support, including an amount reduced on a contingency relating to a child; payments for a home either of you owns; or a part that must continue after the recipient's death)?
       = UNKNOWN (no input supplied for s1.alimony_unsupported)
-      cite: [p504] p. 12, Alimony, "If you paid alimony to more than one person, enter the SSN or ITIN of one of the recipients"; p. 13, Underpayment, "the payments apply first to child support and then to alimony"; p. 16, Recapture of Alimony, "If your alimony payments decrease or end during the first 3 calendar years, you may be subject to the recapture rule"; p. 13, "Alimony doesn’t include" child support, noncash property settlements, community income, payments to keep up or use of the payer’s property; p. 15, "On the happening of a contingency relating to your child"; p. 13, "If you owned the home jointly with your spouse, see Table 4" (2025; 61bb4d52)
+      cite: [p504] p. 12, Alimony, "If you paid alimony to more than one person, enter the SSN or ITIN of one of the recipients"; p. 13, Underpayment, "the payments apply first to child support and then to alimony"; p. 16, Recapture of Alimony, "If your alimony payments decrease or end during the first 3 calendar years, you may be subject to the recapture rule"; p. 13, "Alimony doesn’t include" child support, noncash property settlements, community income, payments to keep up or use of the payer’s property; p. 15, "On the happening of a contingency relating to your child"; p. 13, "If you owned the home jointly with your spouse, see Table 4"; p. 15, Liability for payments after death of recipient spouse, "If any part of payments you make must continue to be made for any period after your spouse’s death, that part of your payments isn’t alimony" and "If you must make any payments in cash or property after your spouse’s death as a substitute for continuing otherwise qualifying payments before the death, the otherwise qualifying payments aren’t alimony" (2025; 61bb4d52)
   (helper) Alimony received, before the screen for more than one agreement, recapture and child support
       = UNKNOWN (no input supplied for s1.alimony_unsupported)
       cite: [i1040gi] p. 89, Line 2a; Line 2b, "Attach a statement listing the month and year of the other agreements" (2025; printed date 2026-02-25; 482e9c48)
@@ -5275,16 +5316,16 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
   1   Unreimbursed eligible medical and dental expenses
       = $0
-      cite: [i1040sca] p. 1, Medical and Dental Expenses, "If you received a distribution from a health savings account or a medical savings account in 2025, see Pub. 969 to figure your deduction", "Certain medical expenses paid out of a deceased taxpayer's estate can be claimed on the deceased taxpayer's final return", "You can't include insurance premiums paid by making a pretax reduction to your employee compensation", "If you are a retired public safety officer, you can't include any premiums you paid to the extent they were paid for with a tax-free distribution from your retirement plan", "If you paid someone to do both nursing and housework, you can deduct only the cost of the nursing help", "Hospital care (including meals and lodging), clinic costs, and lab fees", "Lodging expenses (but not meals) while away from home to receive medical care"; p. 2, "Don't deduct more than $50 a night for each person who meets the requirements in Pub. 502 under Lodging", "Limit on long-term care premiums you can include. The amount you can include for qualified long-term care insurance contracts (as defined in Pub. 502) depends on the age at the end of 2025 of the person for whom the premiums were paid", Line 1 Medical and Dental Expenses, "Enter the total of your medical and dental expenses after you reduce these expenses by any payments received from insurance or other sources", "self-employed health insurance deduction on Schedule 1 (Form 1040), line 17, reduce the premiums by the amount on line 17"; p969 p. 9, "You can’t deduct qualified medical expenses as an itemized deduction on Schedule A (Form 1040) that are equal to the tax-free distribution from your HSA"; p969 p. 13, "You can’t deduct qualified medical expenses as an itemized deduction on Schedule A (Form 1040) that are equal to the tax-free distribution from your Archer MSA" (2025; printed date 2025-12-08; b0999b12)
+      cite: [i1040sca] p. 1, Medical and Dental Expenses, "If you received a distribution from a health savings account or a medical savings account in 2025, see Pub. 969 to figure your deduction", "Certain medical expenses paid out of a deceased taxpayer's estate can be claimed on the deceased taxpayer's final return", "You can't include insurance premiums paid by making a pretax reduction to your employee compensation", "If you are a retired public safety officer, you can't include any premiums you paid to the extent they were paid for with a tax-free distribution from your retirement plan", "If you paid someone to do both nursing and housework, you can deduct only the cost of the nursing help", "Hospital care (including meals and lodging), clinic costs, and lab fees", "Lodging expenses (but not meals) while away from home to receive medical care"; p. 2, "Don't deduct more than $50 a night for each person who meets the requirements in Pub. 502 under Lodging", "Limit on long-term care premiums you can include. The amount you can include for qualified long-term care insurance contracts (as defined in Pub. 502) depends on the age at the end of 2025 of the person for whom the premiums were paid", Line 1 Medical and Dental Expenses, "Enter the total of your medical and dental expenses after you reduce these expenses by any payments received from insurance or other sources", "If advance payments of the premium tax credit were made or you think you may be eligible to claim a premium tax credit, fill out Form 8962 before filling out Schedule A, line 1", "self-employed health insurance deduction on Schedule 1 (Form 1040), line 17, reduce the premiums by the amount on line 17", "You can include medical and dental bills you paid in 2025 for anyone who was one of the following either when the services were provided or when you paid for them", "Your child whom you don't claim as a dependent because of the rules for children of divorced or separated parents", "Any person you could have claimed as a dependent on your return except that person received $5,200 or more of gross income or filed a joint return", "You can't deduct any premiums attributable to this individual unless this individual is a person described under Whose medical and dental expenses can you include, earlier", "However, if you had family coverage when you added this individual to your policy and your premiums didn't increase, you can enter on line 1 the full amount of your medical and dental insurance premiums", "If you received a reimbursement in 2025 for prior year medical or dental expenses, don't reduce your 2025 expenses by this amount", "don’t include on line 1 insurance premiums paid by an employer-sponsored health insurance plan (cafeteria plan) unless the premiums are included in box 1 of your Form(s) W-2", "Also, don't include any other medical and dental expenses paid by the plan unless the amount paid is included in box 1 of your Form(s) W-2"; p502 p. 12, Premium Tax Credit, "You can’t include in medical expenses the amount of health insurance premiums paid by or through the premium tax credit", "You also can’t include in medical expenses any amount of advance payments of the premium tax credit made that you did not have to pay back", "However, any amount of advance payments of the premium tax credit that you did have to pay back can be included in medical expenses", "You are treated as paying $5,100 ($8,700 less the allowed premium tax credit of $3,600)"; i8962 p. 2, "You cannot deduct the portion of your health insurance premium on your tax return that is paid for by the PTC or APTC (after you determine how much of any excess APTC you must repay)"; p969 p. 9, "You can’t deduct qualified medical expenses as an itemized deduction on Schedule A (Form 1040) that are equal to the tax-free distribution from your HSA"; p969 p. 13, "You can’t deduct qualified medical expenses as an itemized deduction on Schedule A (Form 1040) that are equal to the tax-free distribution from your Archer MSA" (2025; printed date 2025-12-08; b0999b12)
   5a  State/local income taxes paid, including withholding; no sales-tax election
       = $0
-      cite: [i1040sca] p. 3, U.S. territory taxes, "Include taxes imposed by a U.S. territory with your state and local taxes on lines 5a, 5b, and 5c", "However, don't include any U.S. territory taxes you paid that are allocable to excluded income", "You may want to take a credit for U.S. territory tax instead of a deduction"; p. 7, Line 6, "Don't include taxes you paid to a U.S. territory on this line; instead, include U.S. territory taxes on the appropriate state and local tax line" (2025; printed date 2025-12-08; b0999b12)
+      cite: [i1040sca] p. 3, U.S. territory taxes, "Include taxes imposed by a U.S. territory with your state and local taxes on lines 5a, 5b, and 5c", "However, don't include any U.S. territory taxes you paid that are allocable to excluded income", "You may want to take a credit for U.S. territory tax instead of a deduction", Line 5a, "don't include on line 5a any withheld taxes you deducted on other forms, such as Schedule C, E, or F", "State and local estimated tax payments made during 2025, including any part of a prior year refund that you chose to have credited to your 2025 state or local income taxes", "State and local income taxes paid in 2025 for a prior year, such as taxes paid with your 2024 state or local income tax return. Don't include penalties or interest.", "Mandatory contributions you made to the California, New Jersey, or New York Nonoccupational Disability Benefit Fund", "Mandatory contributions to the Alaska, California, New Jersey, or Pennsylvania state unemployment fund", "Mandatory contributions to state family leave programs", "Refund of or credit for prior year state and local income taxes you actually received in 2025", Safe harbor for certain charitable contributions made in exchange for a state or local tax credit, "If you meet these conditions and to the extent you apply the state or local tax credit to this or a prior year's state or local tax liability, you may include this amount on line 5a, 5b, or 5c, whichever is appropriate"; p. 7, Line 6, "Don't include taxes you paid to a U.S. territory on this line; instead, include U.S. territory taxes on the appropriate state and local tax line" (2025; printed date 2025-12-08; b0999b12)
   5b  Deductible state/local real estate taxes
       = $0
-      cite: [i1040sca] p. 3, U.S. territory taxes, "Include taxes imposed by a U.S. territory with your state and local taxes on lines 5a, 5b, and 5c", "However, don't include any U.S. territory taxes you paid that are allocable to excluded income"; p. 6, Line 5b, "Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025", "State or local law determines whether and when a property tax is assessed, which is generally when the taxpayer becomes liable for the property tax imposed" (2025; printed date 2025-12-08; b0999b12)
+      cite: [i1040sca] p. 3, U.S. territory taxes, "Include taxes imposed by a U.S. territory with your state and local taxes on lines 5a, 5b, and 5c", "However, don't include any U.S. territory taxes you paid that are allocable to excluded income"; p. 6, Line 5b, "Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025", "State or local law determines whether and when a property tax is assessed, which is generally when the taxpayer becomes liable for the property tax imposed", "Enter on line 5b the state and local taxes you paid on real estate you own that wasn't used for business, but only if the taxes are assessed uniformly at a like rate on all real property throughout the community, and the proceeds are used for general community or governmental purposes", "Foreign taxes you paid on real estate", "Itemized charges for services to specific property or persons", "Charges for improvements that tend to increase the value of your property", "However, a charge is deductible if it is used only to maintain an existing public facility in service", "If your mortgage payments include your real estate taxes, you can include only the amount the mortgage company actually paid to the taxing authority in 2025", "any real estate tax charged to the buyer should be shown on your settlement statement and in box 6 of any Form 1099-S you received", "This amount is considered a refund of real estate taxes", "If you received a refund or rebate in 2025 of real estate taxes you paid in 2025, reduce your deduction by the amount of the refund or rebate", "If you received a refund or rebate in 2025 of real estate taxes you paid in an earlier year, don't reduce your deduction by this amount" (2025; printed date 2025-12-08; b0999b12)
   5c  Deductible state/local personal property taxes
       = $0
-      cite: [i1040sca] p. 3, U.S. territory taxes, "Include taxes imposed by a U.S. territory with your state and local taxes on lines 5a, 5b, and 5c", "However, don't include any U.S. territory taxes you paid that are allocable to excluded income" (2025; printed date 2025-12-08; b0999b12)
+      cite: [i1040sca] p. 3, U.S. territory taxes, "Include taxes imposed by a U.S. territory with your state and local taxes on lines 5a, 5b, and 5c", "However, don't include any U.S. territory taxes you paid that are allocable to excluded income"; p. 6, Line 5c, "Enter on line 5c the state and local personal property taxes you paid, but only if the taxes were based on value alone and were imposed on a yearly basis", "You can deduct only the part of the fee that was based on the car's value"; p. 7, "Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025" (2025; printed date 2025-12-08; b0999b12)
   8a  Eligible home mortgage interest and points on Form 1098, after confirming the debt/use limits do not apply
       = $0
       cite: [f1040sa] Schedule A (2025), lines 1–18 (2025; created 2025-11-20; c14acf34)
@@ -5480,9 +5521,9 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [i1040sb] pp. 1–3, interest, dividends and foreign accounts/trusts (TY2025; printed April 23, 2025; b92f31ec)
 
 == Proof-of-concept scope screening ==
-  (helper) Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately (business income or loss from Schedule C; a taxable state or local income tax refund; alimony under an agreement made before 2019; unemployment compensation; the line 8 items asked one by one; educator expenses; the HSA deduction; the deductible part of self-employment tax; self-employed SEP and SIMPLE contributions; the self-employed health insurance deduction; the penalty on early withdrawal of savings; the IRA deduction; student loan interest; jury duty pay you gave your employer), including statutory-employee wages or income as a minister, a member of a religious order who has not taken a vow of poverty, or a Christian Science practitioner; church employee income (wages from a church that elected exemption from social security and Medicare taxes); other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan); a refund or other recovery of an amount you deducted or took a credit for in an earlier year, other than a state or local income tax refund (for example a refund of general sales tax, real estate tax or personal property tax, a refund of mortgage interest in box 4 of Form 1098, a reimbursement of medical expenses, or a payment on a bad debt you deducted); sales of business property (Form 4797); a net operating loss deduction; rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); an exclusion of Medicaid waiver payments (Schedule 1 line 8s); or an adjustment on Schedule 1 line 12, 14 or 23? (Schedule 1-A deductions are asked separately.)
+  (helper) Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately (business income or loss from Schedule C; a taxable state or local income tax refund; alimony under an agreement made before 2019; unemployment compensation; the line 8 items asked one by one; educator expenses; the HSA deduction; the deductible part of self-employment tax; self-employed SEP and SIMPLE contributions; the self-employed health insurance deduction; the penalty on early withdrawal of savings; the IRA deduction; student loan interest; jury duty pay you gave your employer), including statutory-employee wages or income as a minister, a member of a religious order who has not taken a vow of poverty, or a Christian Science practitioner; church employee income (wages from a church or qualified church-controlled organization that elected exemption from social security and Medicare taxes); other qualified retirement plans for the self-employed (such as a solo 401(k) or other Keogh plan); a refund or other recovery of an amount you deducted or took a credit for in an earlier year, other than a state or local income tax refund (for example a refund of general sales tax, real estate tax or personal property tax, a refund of mortgage interest in box 4 of Form 1098, a reimbursement of medical expenses, or a payment on a bad debt you deducted); sales of business property (Form 4797); a net operating loss deduction; rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1); rental of personal property; farm income (Schedule F); an exclusion of Medicaid waiver payments (Schedule 1 line 8s); or an adjustment on Schedule 1 line 12, 14 or 23? (Schedule 1-A deductions are asked separately.)
       = false
-      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31; i1040gi p. 43, Clergy, "The following instructions apply to ministers, members of religious orders who have not taken a vow of poverty, and Christian Science practitioners." (2025; created 2025-09-05; 3d31c226)
+      cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31; i1040gi p. 43, Clergy, "The following instructions apply to ministers, members of religious orders who have not taken a vow of poverty, and Christian Science practitioners."; i1040sse p. 1, Employees of Churches and Church Organizations, "Church employee income is wages you received as an employee (other than as a minister, member of a religious order, or Christian Science practitioner) of a church or qualified church-controlled organization that has a certificate in effect electing an exemption from employer social security and Medicare taxes." (2025; created 2025-09-05; 3d31c226)
   (helper) Do you want to claim any credit other than the foreign tax credit claimed without Form 1116, the excess social security credit, the child tax credit, the credit for other dependents, the additional child tax credit, the earned income credit, the credit for child and dependent care expenses (Form 2441), the retirement savings contributions credit (Form 8880), the residential energy credits (Form 5695), the net premium tax credit this tool figures on Form 8962 from your Forms 1095-A (Schedule 3 line 9) and the education credits this tool figures on Form 8863 (the American opportunity and lifetime learning credits), or do you have any other amount for Schedule 3 Part I (for example a Form 8978 adjustment)?
       = false
       cite: [f1040] Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31 (2025; created 2025-09-05; 3d31c226)
@@ -5529,7 +5570,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f1040sd] p. 1, Capital Gains and Losses, "Use Form 8949 to list your transactions for lines 1b, 2, 3, 8b, 9, and 10" (2025; created 2025-10-06; 90564c8b)
   (helper) Schedule D required for entered sales, special distribution gains or a capital loss carryover
       = false
-      cite: [f1040sd] i1040gi p. 31, Line 7a, "If you sold a capital asset, such as a stock, bond, or digital asset, you must complete and attach Form 8949 and Schedule D", "None of the Form(s) 1099-DIV (or substitute statements) have an amount in box 2b (unrecaptured section 1250 gain), box 2c (section 1202 gain), or box 2d (collectibles (28%) gain)", "You have no capital losses" (2025; created 2025-10-06; 90564c8b)
+      cite: [i1040gi] p. 31, Line 7a, "If you sold a capital asset, such as a stock, bond, or digital asset, you must complete and attach Form 8949 and Schedule D", "None of the Form(s) 1099-DIV (or substitute statements) have an amount in box 2b (unrecaptured section 1250 gain), box 2c (section 1202 gain), or box 2d (collectibles (28%) gain)", "You have no capital losses" (2025; printed date 2026-02-25; 482e9c48)
   (helper) No amount on an inapplicable line
       = $0
       cite: [f1040sd] Schedule D (2025), Parts I–III (2025; created 2025-10-06; 90564c8b)
@@ -6217,7 +6258,7 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   sa.saltlimit: chose $40,000 (guard 1)
       not taken: guard 0 = false
-  f4952.line2: chose $0 (guard 1)
+  f4952.line8: chose $0 (guard 1)
       not taken: guard 0 = false
   sa.line16: chose $0 (guard 1)
       not taken: guard 0 = false
@@ -6330,6 +6371,10 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   person[taxpayer].w2[emp_a].dc_benefits: chose UNKNOWN (no input supplied for person[taxpayer].w2[emp_a].box10)
   person[taxpayer].w2[emp_b].dc_benefits: chose UNKNOWN (no input supplied for person[taxpayer].w2[emp_b].box10)
+  f4952.line2: chose $0 (guard 1)
+      not taken: guard 0 = false
+  f4952.election: chose $0 (guard 1)
+      not taken: guard 0 = false
   f5695.line5b: chose UNKNOWN (no input supplied for f5695.line5a)
   f5695.ctc: chose $0 (guard 1)
       not taken: guard 0 = false
@@ -6342,6 +6387,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   f5695.line25e: chose UNKNOWN (no input supplied for f5695.line21a)
   f5695.line26c: chose UNKNOWN (no input supplied for f5695.line26a)
   f5695.line29h: chose UNKNOWN (no input supplied for f5695.line21a)
+  f5695.line32: chose $0 (guard 1)
+      not taken: guard 0 = false
   person[taxpayer].edu_line30: chose $0 (guard 1)
       not taken: guard 0 = false
   f8863.line1: chose $0 (guard 1)
@@ -6706,25 +6753,10 @@ Derivations:
   sa.line8b: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
   sa.line8c: copy(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false; sa.zero = $0)
   sa.line8e: sum(sa.line8a = $0; sa.line8b = $0; sa.line8c = $0)
+  f4952.has_election: test(f4952.line4g = $0; 0 = $0)
+  f4952.used: test(f4952.has_election = false; true = true; f4952.carryover = false; true = true; f4952.line1 = $0; 0 = $0)
   f4952.zero: param(#sales.zero = $0)
-  f4952.line2: choose(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.carryover = false; true = true; f4952.carryover = false; false = false; f4952.zero = $0)
-  f4952.line3: sum(f4952.line1 = $0; f4952.line2 = $0)
-  f4952.line4b: copy(f1040.line3a = $1,500)
-  f4952.line4a: sum(sb.line2 = $1,200; sb.line6 = $2,000)
-  f4952.bad_dividends: test(f4952.line4b = $1,500; f4952.line4a = $3,200)
-  f4952.line4c: subtract(f4952.bad_dividends = false; f4952.line4a = $3,200; f4952.line4b = $1,500)
-  f4952.line4d: subtract_floor0(sd.line16 = $0; 0 = $0)
-  sd.net_gain_raw: smaller_of(sd.line15 = $0; sd.line16 = $0)
-  sd.net_gain: subtract_floor0(sd.net_gain_raw = $0; 0 = $0)
-  f4952.line4e: smaller_of(f4952.line4d = $0; sd.net_gain = $0)
-  f4952.line4f: subtract(f4952.line4d = $0; f4952.line4e = $0)
-  f4952.election_limit: sum(f4952.line4b = $1,500; f4952.line4e = $0)
-  f4952.bad_election: test(f4952.line4g = $0; f4952.election_limit = $1,500)
-  f4952.election: copy(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.bad_election = false; f4952.line4g = $0)
-  f4952.line4h: sum(f4952.line4c = $1,700; f4952.line4f = $0; f4952.election = $0)
-  f4952.line5: copy(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.zero = $0)
-  f4952.line6: subtract_floor0(f4952.line4h = $1,700; f4952.line5 = $0)
-  f4952.line8: smaller_of(f4952.line3 = $0; f4952.line6 = $1,700)
+  f4952.line8: choose(f4952.used = false; true = true; f4952.used = false; false = false; f4952.zero = $0)
   sa.line9: copy(f4952.line8 = $0)
   sa.line10: sum(sa.line8e = $0; sa.line9 = $0)
   sa.line12: sum_over(sa.unsupported = false; sa.charity_limited = false; sa.excluded_income = false)
@@ -6776,6 +6808,8 @@ Derivations:
   f8995.line9: multiply_rate(f8995.line8 = $0; #qbi.rate = 1/5)
   f8995.line10: sum(f8995.line5 = $0; f8995.line9 = $0)
   f8995.line11: copy(qbi.taxable_before = $107,450)
+  sd.net_gain_raw: smaller_of(sd.line15 = $0; sd.line16 = $0)
+  sd.net_gain: subtract_floor0(sd.net_gain_raw = $0; 0 = $0)
   qbi.net_capital_gain: sum(sd.net_gain = $0; f1040.line3a = $1,500)
   f8995.line12: copy(qbi.net_capital_gain = $1,500)
   f8995.line13: subtract_floor0(f8995.line11 = $107,450; f8995.line12 = $1,500)
@@ -6884,7 +6918,8 @@ Derivations:
   eic.smaller: smaller_of(eic.line5 = UNKNOWN (no band for 12320000 cents); eic.line2 = UNKNOWN (no band for 12000000 cents))
   eic.after_line4: choose(eic.line5_blank = false; true = true; eic.line5_blank = false; false = false; eic.smaller = UNKNOWN (no band for 12320000 cents))
   eic.line6: choose(eic.line4 = false; true = true; eic.line4 = false; false = false; eic.after_line4 = UNKNOWN (no band for 12320000 cents))
-  eic.credit: choose(household.credit_disallowed = false; eic.eligible = false; true = true; eic.eligible = false; false = false; eic.zero = $0)
+  household.eic_disallowed_claim: test(household.credit_disallowed = false; true = true)
+  eic.credit: choose(household.eic_disallowed_claim = false; eic.eligible = false; true = true; eic.eligible = false; false = false; eic.zero = $0)
   eic.wsb_line5_stop: test(eic.below_top = false; true = true)
   eic.check_27c: test(eic.below_top = false; true = true; eic.reached_step3 = false; true = true; eic.reached_step3 = false; true = true; eic.reached_step3 = false; true = true; eic.eligible = false; true = true; eic.wsb_line5_stop = false; true = true)
   eic.wsb_4b_positive: test(eic.wsb_4b = $120,000; #sales.zero = $0)
@@ -6902,7 +6937,7 @@ Derivations:
   f1040.line15: subtract_floor0(f1040.line11b = $123,200; f1040.line14 = $15,750)
   f1040.gate.qdcg_applies: test(f1040.line15 = $107,450; 0 = $0; f1040.line3a = $1,500; 0 = $0)
   sd.line17: test(sd.line15 = $0; 0 = $0)
-  f4952.required: test(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.election = $0; 0 = $0; f4952.line3 = $0; 0 = $0)
+  f4952.required: test(f4952.used = false; true = true)
   sd.filing4952: copy(f4952.required = false)
   f1040.gate.sdtw: test(f1040.gate.qdcg_applies = true; true = true; sd.line17 = false; true = true; sd.filing4952 = false; true = true)
   qdcg.line1: copy(f1040.line15 = $107,450)
@@ -6966,6 +7001,7 @@ Derivations:
   s2.line3: sum(s2.amt = false; s2.other = false; s2.line1z = $0; s2.line2 = $0)
   f1040.line17: copy(s2.line3 = $0)
   f1040.line18: sum(f1040.line16 = $18,500; f1040.line17 = $0)
+  household.ctc_disallowed_claim: test(household.credit_disallowed = false; true = true)
   s8812.line8: sum(s8812.line5 = $0; s8812.line7 = $0)
   s8812.line1: copy(f1040.line11a = $123,200)
   s8812.zero: param(#sales.zero = $0)
@@ -6978,7 +7014,7 @@ Derivations:
   s8812.excess: subtract_floor0(s8812.line3 = $123,200; s8812.line9 = $200,000)
   s8812.line10: round(s8812.excess = $0)
   s8812.line11: multiply_rate(s8812.line10 = $0; #ctc.phaseout_rate = 5/100)
-  s8812.line12: subtract_floor0(household.credit_disallowed = false; s8812.line8 = $0; s8812.line11 = $0)
+  s8812.line12: subtract_floor0(household.ctc_disallowed_claim = false; s8812.line8 = $0; s8812.line11 = $0)
   s8812.clw_a1: copy(f1040.line18 = $18,500)
   ftc.has_tax: test(ftc.taxes = $0; 0 = $0)
   ftc.needs1116: test(ftc.has_tax = false; true = true)
@@ -7245,15 +7281,34 @@ Derivations:
   f2441.line23: subtract(f2441.line15 = UNKNOWN (no input supplied for f2441.line14); f2441.line22 = $0)
   f2441.line24_20_21: smaller_of(f2441.line20 = UNKNOWN (no input supplied for f2441.line14); f2441.line21 = UNKNOWN (no input supplied for f2441.plans_differ))
   f2441.line24: smaller_of(f2441.line24_20_21 = UNKNOWN (no input supplied for f2441.line14); f2441.line22 = $0)
-  f2441.line25: subtract_floor0(f2441.line24_20_21 = UNKNOWN (no input supplied for f2441.line14); f2441.line24 = UNKNOWN (no input supplied for f2441.line14))
-  f2441.line26: subtract_floor0(s3.mfs = false; f2441.line23 = UNKNOWN (no input supplied for f2441.line14); f2441.line25 = UNKNOWN (no input supplied for f2441.line14))
+  f2441.line13_earned: test(f2441.line13 = UNKNOWN (no input supplied for f2441.line13); f2441.zero = $0; f2441.line20 = UNKNOWN (no input supplied for f2441.line14); f2441.line17 = UNKNOWN (no input supplied for f2441.line14); f2441.line20 = UNKNOWN (no input supplied for f2441.line14); f2441.line21 = UNKNOWN (no input supplied for f2441.plans_differ); f2441.line23 = UNKNOWN (no input supplied for f2441.line14); f2441.line20 = UNKNOWN (no input supplied for f2441.line14))
+  f2441.line25: gate(f2441.line13_earned = UNKNOWN (no input supplied for f2441.line13))
+  f2441.line26: subtract_floor0(s3.mfs = false; f2441.line23 = UNKNOWN (no input supplied for f2441.line14); f2441.line25 = UNKNOWN (no input supplied for f2441.line13))
   f2441.line27: copy(f2441.limit = $3,000)
-  f2441.line28: sum(f2441.line24 = UNKNOWN (no input supplied for f2441.line14); f2441.line25 = UNKNOWN (no input supplied for f2441.line14))
+  f2441.line28: sum(f2441.line24 = UNKNOWN (no input supplied for f2441.line14); f2441.line25 = UNKNOWN (no input supplied for f2441.line13))
   f2441.line29: subtract_floor0(f2441.line27 = $3,000; f2441.line28 = UNKNOWN (no input supplied for f2441.line14))
   f2441.line30: subtract_floor0(f2441.employer_care_gate = false; f2441.paid_total = UNKNOWN (collection roster not confirmed); f2441.line28 = UNKNOWN (no input supplied for f2441.line14))
   f2441.line31: smaller_of(f2441.line29 = UNKNOWN (no input supplied for f2441.line14); f2441.line30 = UNKNOWN (collection roster not confirmed))
+  f4952.line4a: sum(sb.line2 = $1,200; sb.line6 = $2,000)
+  f4952.line2: choose(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.carryover = false; true = true; f4952.carryover = false; false = false; f4952.zero = $0)
+  f4952.line3: sum(f4952.line1 = $0; f4952.line2 = $0)
+  f4952.line4b: copy(f1040.line3a = $1,500)
+  f4952.bad_dividends: test(f4952.line4b = $1,500; f4952.line4a = $3,200)
+  f4952.line4c: subtract(f4952.bad_dividends = false; f4952.line4a = $3,200; f4952.line4b = $1,500)
+  f4952.line4d: subtract_floor0(sd.line16 = $0; 0 = $0)
+  f4952.line4e: smaller_of(f4952.line4d = $0; sd.net_gain = $0)
+  f4952.line4f: subtract(f4952.line4d = $0; f4952.line4e = $0)
+  f4952.election_limit: sum(f4952.line4b = $1,500; f4952.line4e = $0)
+  f4952.bad_election: test(f4952.line4g = $0; f4952.election_limit = $1,500)
+  f4952.election_checked: copy(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.bad_election = false; f4952.line4g = $0)
+  f4952.election: choose(f4952.has_election = false; true = true; f4952.has_election = false; false = false; f4952.zero = $0)
+  f4952.line4h: sum(f4952.line4c = $1,700; f4952.line4f = $0; f4952.election = $0)
+  f4952.line5: copy(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.zero = $0)
+  f4952.line6: subtract_floor0(f4952.line4h = $1,700; f4952.line5 = $0)
   f4952.line7: subtract_floor0(f4952.line3 = $0; f4952.line6 = $1,700)
+  f4952.deduction: smaller_of(f4952.line3 = $0; f4952.line6 = $1,700)
   f4952.exception: test(f4952.line4c = $1,700; f4952.line1 = $0; f4952.line5 = $0; 0 = $0; f4952.carryover = false; false = false)
+  f4952.required_test: test(f4952.unsupported = false; f4952.alternative_allocation = false; f4952.election = $0; 0 = $0; f4952.line3 = $0; 0 = $0)
   f5695.zero: param(#sales.zero = $0)
   f5695.line5b: choose(f5695.line5a = UNKNOWN (no input supplied for f5695.line5a); true = true)
   f5695.line6a: gate(f5695.business_use = UNKNOWN (no input supplied for f5695.business_use))
@@ -7335,8 +7390,9 @@ Derivations:
   f5695.eehi_ws2: sum(scope.credits = false; s3.line1 = $0; s3.line2 = $0; s3.line3 = $0; s3.line4 = $0)
   f5695.eehi_ws3: subtract_floor0(f5695.eehi_ws1 = $18,500; f5695.eehi_ws2 = $0)
   f5695.line31: copy(f5695.eehi_ws3 = $18,500)
-  f5695.line32: smaller_of(f5695.line30 = UNKNOWN (no input supplied for f5695.business_use); f5695.line31 = $18,500)
-  f5695.line32a: test(f5695.joint_occupancy = UNKNOWN (no input supplied for f5695.joint_occupancy); true = true)
+  f5695.eehi_credit: smaller_of(f5695.line30 = UNKNOWN (no input supplied for f5695.business_use); f5695.line31 = $18,500)
+  f5695.line32: choose(f5695.part2_any = false; true = true; f5695.part2_any = false; false = false; f5695.zero = $0)
+  f5695.line32a: test(f5695.part2_any = false; true = true)
   f5695.line32b: test(f5695.part2_any = false; true = true)
   person[taxpayer].edu_student: test(f8863.paid = false; true = true)
   person[taxpayer].edu_over_refused: test(person[taxpayer].edu_student = false; true = true)
@@ -7422,7 +7478,9 @@ Derivations:
   f8962.zero: param(#sales.zero = $0)
   f8962.marriage: test(f1040.status = single; "mfj" = mfj)
   f8962.void_form: test(f8962.void_forms = 0; 0 = 0)
-  f8962.two_counted: test(f8962.forms = 0; 1 = 1)
+  f8962.show_applicable: test(f8962.any = false; true = true)
+  f8962.b_zero: test(f8962.show_applicable = false; true = true)
+  f8962.two_counted: test(f8962.forms = 0; 1 = 1; f8962.b_zero = false; true = true)
   f8962.line1: sum(household.persons = 1; f8962.deps = 0)
   f8962.ws1_1: copy(f1040.line11a = $123,200)
   f8962.ws1_2: copy(f1040.line2a = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
@@ -7436,7 +7494,6 @@ Derivations:
   f8962.line5: percent_floor(f8962.line3 = UNKNOWN (no input supplied for f1040.tax_exempt_interest); f8962.line4 = UNKNOWN (no input supplied for f8962.fpl_table))
   f8962.aptc: test(f8962.aptc_total = $0; 0 = $0)
   f8962.applicable: test(f8962.line5 = UNKNOWN (no input supplied for f1040.tax_exempt_interest); 100 = 100; f8962.aptc = false; true = true)
-  f8962.show_applicable: test(f8962.any = false; true = true)
   f8962.filing: test(f8962.any = false; true = true)
   f8962.alien_branch: test(f8962.any = false; true = true)
   f8962.line7: keyed_lookup(f8962.line5 = UNKNOWN (no input supplied for f1040.tax_exempt_interest))
@@ -8217,6 +8274,8 @@ Derivations:
   person[taxpayer].w2[emp_b].sav_listed: gate(person[taxpayer].w2[emp_b].box12_userra = UNKNOWN (no input supplied for person[taxpayer].w2[emp_b].box12_userra))
 Interpretation amb.2025.clcw_line1_signed: The second. Both lines are printed on the 2024 return, so nothing is computed by hand, and their difference is the amount the worksheet describes (2024 Form 1040 line 15 subtracts line 14 from line 11, archived under sources/2024). Owner's decision D2(a), 2026-10-27. (i1040sd, p. 10, Capital Loss Carryover Worksheet—Lines 6 and 14, line 1, "If the amount would have been a loss if you could enter a negative number on that line, enclose the amount in parentheses")
 Interpretation amb.2025.clcw_line2_printed: The first (clcw.line2, refused on clcw.bad; the lower bound is $1,500 because the 2024 status is not asked). The worksheet names the printed line, and the second reading needs the 2024 filing status as another question. The $3,000 bound applies whatever the 2024 status was, since a 2024 return married filing separately can precede a 2025 single return and its $1,500 limit cannot be assumed. Owner's decision D2(b), 2026-10-27. (p550, p. 102, Capital Losses, "whether or not you claimed it and whether or not you filed a return for the current year")
+Interpretation amb.2025.div_gain_portions_disjoint: The first (div.bad_special tests div.special_total, boxes 2b plus 2c plus 2d, against box 2a). The issuer instructions define each box by a different kind of property: box 2b is unrecaptured section 1250 gain "from certain depreciable real property", box 2c section 1202 gain "from certain qualified small business stock", box 2d 28% rate gain "from sales or exchanges of collectibles"; and box 2a must "Include all amounts shown in boxes 2b, 2c, 2d, and 2f". No one gain comes from two of those kinds. Box 2f (section 897 gain from US real property interests) can share an amount with box 2b, and it is not in the sum. The reading can only refuse an entry, never change a computed amount, and any box 2c amount is refused in any case (div.section1202). Recorded under T-006.
+ (i1099div, p. 4, Box 2a, "Include all amounts shown in boxes 2b, 2c, 2d, and 2f"; Box 2b; Box 2c; Box 2d)
 Interpretation amb.2025.box2c_scope: Refuse nonzero box 2c; no exclusion or AMT amount is silently omitted. Archived Schedule D instructions require the exclusion on Form 8949 code Q and describe an AMT adjustment for 50/60/75-percent exclusions. The existing explicit exclusions are retained; the owner was notified and asked, then said continue without selecting an expansion. (i1040sd, p. 8, Gain from Form 1099-DIV and Alternative Minimum Tax)
 Interpretation amb.2025.clcw_to_2026: The second. The archived 2024 and 2025 editions of the worksheet differ only in their years (sources/2024/i1040sd p. 11, sources/2025/i1040sd p. 10), and the lines give Pub. 550's rule, "the amount of your total net loss that is more than the lesser of" the allowable deduction and taxable income increased by it (checked by brute force over random cases in the Stage 20 premise map and its verification). The figures are the inputs the 2026 return needs. Owner's decision D4, 2026-10-27. (i1040sd, p. 14, Line 21, "If you want to figure your carryover to 2026 now, see Pub. 550")
 Interpretation amb.2025.filer_under_16: The second. The refusal cites the one sentence the text has about age 16 and names the register entry; it does not claim the text forbids the return. The owner's decision of 2026-10-22 (integrity plan decision 10). A return for a child under 16 is one the tool's slice does not model well (Form 8615 is refused through scope.other_line16 only when the filer knows to answer it); the refusal makes the age an explicit entry rather than a silent assumption. (i1040gi, p. 66, Self-Select PIN, "You can’t use the Self-Select PIN method if you are a first-time filer under age 16 at the end of 2025")
@@ -8229,6 +8288,8 @@ Interpretation amb.2025.multiplication_subcent: Round the product half-up to the
  (i1040gi, QDCGT worksheet, lines 18 and 21; Rounding Off to Whole Dollars, p. 23)
 Interpretation amb.2025.qbi_cooperative_patron: Refuse any patron of an agricultural or horticultural cooperative, specified or not (qbi.unsupported). The owner asked for the strictly accurate reading. Refusing every patron satisfies both texts: a filer the form excludes is never computed on it, and a filer the instructions exclude is a patron the form also excludes. The cost is a refusal for a patron of a cooperative that is not specified, which the instructions would allow.
  (f8995, Form 8995 (2025), note above line 1; i8995, Who Can Use Form 8995; i1040gi line 13a)
+Interpretation amb.2025.eic_below_table: The credit on line 2 is zero. Every column of the table is zero at the far end and rises from $2 to $11 in the first row, so the credit is built up from earned income; with no row for less than $1 the table grants nothing there, and the worksheet's own instruction for a zero line 2 ends the computation. Rev. Proc. 2024-40 section 3.06(1) describes the credit as a percentage of earned income up to the earned income amount, which is zero at zero earned income.
+ (i1040gi, p. 46, Worksheet A, line 2; p. 49, EIC Table, first row)
 Interpretation amb.2025.separated_spouses_box: The first (eic.separated_box, copied to f1040.separated_spouses). The owner's decision (2026-10-26, source adjudication). The only instructions for the box are the earned income credit's, and no amount depends on it; the alternative would add questions for the separation-agreement branch on returns that do not claim the credit. (f1040, Form 1040 (2025), Dependents section, the box for the special rule for separated spouses)
 Interpretation amb.2025.sd4952_selection: Use the detailed worksheet conditions, including line 4g and exceptions. The worksheet explicitly limits its own use and the Form 1040 line 16 instructions repeat the line 4g condition. (i1040sd, p. 15, Schedule D Tax Worksheet, applicability; compare f1040sd line 20 and i1040gi p. 36)
 Interpretation amb.2025.savers_traditional: The first (person.sav_line1 adds person.ira_contrib). The owner's decision (Stage 16 decision 10). The line names traditional IRA contributions without limiting them to the deductible ones. Excess or recharacterized contributions, traditional or Roth, are refused by one screen per person (person.ira_excess), which also answers Stage 15 owner question 4. (f8880, Form 8880 (2025), line 1, "Traditional and Roth IRA contributions")
@@ -8242,6 +8303,7 @@ Interpretation amb.2025.dc_ineligible_providers: The first (dcprov.related asks 
 Interpretation amb.2025.dc_line30: The first (f2441.line30; dependent.dc_paid and dependent.dc_line2d ask and show each person's expenses including those paid with dependent care benefits). The owner's decision (Stage 15, decision 6). The total is determined by the text and verifiable; an allocation of line 28 among persons is not. In Pub. 503's example (the Paris family, p. 13) the benefits covered one child's expenses and the total less the benefits is the line 30 the example uses ($19,500 less $1,000). (f2441, Form 2441 (2025), line 30)
 Interpretation amb.2025.dc_line1e_attribution: The first (person.dc_1e, f2441.attrib_gate). On a return that is not joint there is one person and line 1e is theirs. When the split is undetermined but no credit remains (line 31 is zero, so line 3 and line 6 are zero whatever lines 4 and 5 hold), line 1e is shown in the taxpayer's line 4, keeping lines 4 and 5 together equal to line 1z plus self-employment earnings; the credit cannot differ. The owner's decision (Stage 15, decision 6). Taxable benefits arise from one spouse's plan; the instructions give no rule for dividing a joint line 26, and the case where it matters (benefits over the exclusion with a credit still left) is rare, since excluded benefits of $5,000 leave at most $1,000 of the $6,000 limit. (i2441, p. 4, Lines 4 and 5, "If filing jointly, figure your and your spouse's earned income separately")
 Interpretation amb.2025.dc_rate_nonpositive_agi: The first (tables/2025/dc_rate.yaml, the first band open below). The owner's ruling. Line 7 (adjusted gross income) of zero or less gives taxable income of zero and no tax on Form 1040 line 16, but since Stage 18 Schedule 2 line 1a can be positive there (a repayment of excess advance premium tax credit, limited by Table 5 to $375 or $750 when household income is below the poverty line), so line 18, and with it the Credit Limit Worksheet's lines 3 and 10, can be above zero, and the readings can differ in the credit. The ruling chose the first reading, a rate for line 8, regardless of that; T-049 re-examined the reason after Stage 18. (f2441, Form 2441 (2025), line 8)
+Interpretation amb.2025.dc_employer_care_value: The first when line 16 is at least line 15, where line 17 is line 15 under either reading and no amount differs; otherwise the return is refused (f2441.employer_care_l16). The questions tell the filer to leave the value out. Session reading under the owner's standing delegation (2026-11-03, T-123); a refusal covers the only case in which the readings give different amounts. (i2441, p. 5, Line 16; p. 3, Columns (a) and (b))
 Interpretation amb.2025.dc_plan_maximum: The first (f2441.plan_max, f2441.plans_differ). The owner's decision (Stage 15, decision 6), confirmed 2026-10-30. Where every plan allows the same maximum, readings 1 and 2 agree but reading 3 differs (two $3,000 plans give $3,000 under reading 1 and $5,000 under reading 3); the owner keeps reading 1 for that case. Where the plans allow different maximums the text does not decide, so that case is refused. (i2441, p. 5, Line 21, "Don't enter more than the maximum amount allowed under your dependent care plan")
 Interpretation amb.2025.f5695_battery_second_home: The first (f5695.line5a asks for battery storage technology installed in connection with your home in the United States, not your main home). The owner's decision. The text names the main home where it means it (fuel cell property, line 7a) and does not for the battery; the Part I general rule is that improvements to "more than one home that you used as a residence" go on one Form 5695 (i5695 p. 2). (i5695, p. 2, Qualified battery storage technology costs, "installed in connection with your home located in the United States")
 Interpretation amb.2025.f5695_17abc_section_a: The first (f5695.sec_a_claimed gates lines 18b, 19h and 20d only). The owner's decision. Section B has its own residence test on line 21a, "a home located in the United States that you use as a residence", which is not limited to the main home, and its own original-use test on line 21b, and the audit has its own test on line 26a; the form's direction is "Do not complete Part II, Section A". Reading the No as disallowing Section B would make line 21a's wider residence test unreachable for anyone without Section A improvements on a main home. (f5695, Form 5695 (2025), lines 17a to 17c and 21a; i5695 p. 5, Lines 17a Through 17e)
@@ -8267,6 +8329,7 @@ Interpretation amb.2025.ira_age50: The first. The owner's decision (Stage 16 dec
 Interpretation amb.2025.ira_both_kinds: The first (ira.both_kinds). The owner's decision (Stage 16 decision 8). The Kay Bailey Hutchison limit reduces one spouse's limit by Roth contributions made for the other spouse (p590a p. 10), so the cross case can matter; the broad reading is the one that cannot leave a return the worksheet does not serve. (i1040gi, p. 95, Line 20, "If you are filing a joint return and you or your spouse made contributions to both a traditional IRA and a Roth IRA for 2025, don’t use the IRA Deduction Worksheet in these instructions")
 Interpretation amb.2025.ira_fellowship: The first. The owner's decision (Stage 16 decision 8). The worksheet and the publication disagree; refusing cannot be wrong. Box 11 and code Z amounts are refused rather than taken as W-2 inputs, by the same decision. (p590a, p. 6, What Is Compensation?, "certain non-tuition fellowship and stipend payments not reported to you on Form W-2 are treated as taxable compensation for IRA purposes")
 Interpretation amb.2025.ira_deduct_less: The first. The owner's decision (Stage 16 decision 8). An input with no default would be asked of every filer with a deduction; the election is rare. (i1040gi, p. 98, IRA Deduction Worksheet—Continued, line 12, "Or, if you want, you can deduct a smaller amount and treat the rest as a nondeductible contribution (see Form 8606)")
+Interpretation amb.2025.mq_joint: Both spouses' property together (mq.q4 and mq.total sum over every person on the return). The owner's ruling; section 179's limits are already figured once for a joint return (i4562 line 11, "combine the total taxable incomes for you and your spouse"). (p946-html, Chapter 4, Which Convention Applies?, Mid-quarter convention)
 Interpretation amb.2025.refund_exceptions: The first (refund.box8 and refund.not_2024 on refund.taxable; refund.exc_tax and refund.exc_who on refund.line1; refund.other on Schedule 1 line 1). The TIP is stated for "the year you paid the tax", which is 2024 only when the refund is for 2024 and was paid then, so items 1 and 5 can make a refund taxable even when you did not itemize for 2024, and a part of the refund for a 2025 payment changes the 2025 deduction for taxes (Pub. 525 p. 24, Example 28). Items 3, 4, 6, 7, 8 and 9 and the nonresident rule change only how much of a refund of a deducted tax is included; when no income tax was deducted for 2024, none is (Pub. 525 p. 24, Deductions not itemized). Box 8 sends a taxable refund to Schedule C or F whatever the itemizing. A recovery deducted on an earlier Form 8960 is refused by the existing screen f8960.refund, asked of every return. (i1040gi, pp. 88–89, Line 1, "Exception. See Itemized Deduction Recoveries in Pub. 525 instead of using the State and Local Income Tax Refund Worksheet"; p525 p. 24, Deductions not itemized)
 Interpretation amb.2025.refund_not_itemized: The first (refund.worksheet, refund.taxable). The owner's decision D5, with the verification's correction E5 of the premise map. The cap in Pub. 525 limits the refund of the tax you chose to deduct; for an income tax refund when sales tax was deducted, Pub. 525 p. 24, Example 27, says "Because you didn’t choose to deduct the state income tax, you don’t include the state income tax refund in income", agreeing with the TIP. A refund of the sales tax itself is a different recovery, refused (refund.other). (i1040gi, p. 88, Line 1, "None of your refund is taxable if, in the year you paid the tax"; p525 p. 24, State tax refund, "Because you didn’t choose to deduct the state income tax, you don’t include the state income tax refund in income")
 Interpretation amb.2025.refund_paid_5d: The first (refund.line5d_2024). The owner's decision D6(b). The worksheet itself takes line 5d as the usual amount, and a filer reads it from the 2024 return. (i1040gi, p. 90, State and Local Income Tax Refund Worksheet—Schedule 1, Line 1, line 2, "(generally, this is the amount reported on your 2024 Schedule A, line 5d)")
@@ -8279,6 +8342,7 @@ Interpretation amb.2025.gambling_losses: The first (sa.line16_gambling, sa.line1
 Interpretation amb.2025.sli_ratio_places: Round the ratio half-up to three decimal places (the prorate atom with places 3 on sli.line8_figured). The owner's ruling. Three places is the least precision the text allows and the usual hand computation; the readings differ by at most a few cents of deduction (for example $167.50 against $166.67 on line 8 when line 6 is $1,000 and line 1 is $2,500).
  (i1040gi, p. 99, Student Loan Interest Deduction Worksheet—Schedule 1, Line 21, line 7)
 Interpretation amb.2025.sep_loss_floor: The second. A maximum deductible contribution below zero has no meaning, and the first reading would make a zero contribution exceed it, refusing every return with a SEP plan and a Schedule C loss at person.sep_excess. On the second, a zero contribution deducts zero and any contribution above zero is refused as excess, which is the deduction the first reading gives wherever it gives one. Where both readings complete the return, no Form 1040 or Schedule 1 amount differs; only the printed worksheet steps do (BUG-0180, regression stage14.sep.loss_floor). (p560, p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 3, "Subtract step 2 from step 1", and Step 21, "This is your maximum deductible contribution")
+Interpretation amb.2025.sep_rate_places: Six decimal places, half-up (person.sep_s5); only whole-percent plan rates are accepted, which the Rate Table covers. For whole-percent plan rates the Rate Table applies, and it prints six places; "at least 3" permits six. (p560, chapter 5, Rate Table for Self-Employed and Rate Worksheet for Self-Employed)
 Interpretation amb.2025.savers_sep_contrib: The first (person.sav_simple_plan). The owner's decision (Stage 15 premise map, decision 2). Only elective deferrals to a SEP (code F, a salary reduction SEP) are named; a SEP contribution a self-employed person makes for themselves is a nonelective contribution. (f8880, p. 2, Line 2, "Elective deferrals (including designated Roth contributions under section 402A, if applicable) to a 401(k), 403(b), governmental 457(b), SEP, SIMPLE, or the federal TSP")
 Interpretation amb.2025.ira_line7_cents: The first. The project's rule for products (amb.2025.multiplication_subcent). The readings differ only when the exact product is less than half a cent above a multiple of $10. (i1040gi, p. 98, IRA Deduction Worksheet—Continued, line 7, "If the result isn’t a multiple of $10, increase it to the next multiple of $10 (for example, increase $490.30 to $500)")
 Interpretation amb.2025.edu_1098t_date: The first, in the help text of person.edu_1098t and dependent.edu_1098t. Pub. 970 is the later revision and explains the shift (January 31 falls on a Saturday). Owner's decision D7(d), 2026-10-29. (p970, p. 2, Reminders, "After February 2, 2026 (January 31 falls on a Saturday), but before you file your 2025 tax return, you or the student must request that the educational institution furnish Form 1098-T.")

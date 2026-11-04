@@ -2,7 +2,54 @@
 
 Method: `README.md` in this directory.
 
-## Fix round 2
+## Backlog round
+
+Subject after the person-dep package (T-101, PENDING-9). The `eic.credit` refusal now reads `household.eic_disallowed_claim`,
+which is `household.credit_disallowed` and `eic.eligible`; before, it read `household.credit_disallowed` alone. The p4-docs
+package added the `amb.2025.eic_below_table` link. No other eic expression changed.
+
+Fresh reviews of 2026-11-03 (Claude, deepseek-flash and gpt-6-astra). The previous logs are archived in
+`.transcription/archive/before-p4-persondep-2026-11-03/`. Rulings are in `.transcription/proposed/bklg/` (`transcription.eic.json`,
+`.deepseek.json`, `.gpt.json` and `render.eic.deepseek.json`). Findings are in `.transcription/proposed/bklg/eic.findings.md`.
+
+Triage records `../triage/eic.json`, `eic.deepseek.json` and `eic.gpt.json` are executable-triage-v2, rerun today: 1,495
+fixtures, 500 generated returns seed 20261026, and 140 / 159 / 140 partial records. Completed-return witnesses were listed with
+the cap lifted (scratch `/tmp/adj-bklg-dems/`).
+
+- The deepseek reply is invalid: it writes instances of a nonexistent definition `eic` and has unresolved Worksheet B
+  references. Its lines eligible, credit, check_27c, 4b, wsb_6, 2 and 5 are ruled by reading. It also writes eic.line6 as
+  printed "6", so "6 (eic.line6)" is missing.
+- `eic.eligible` is new to the logs, because household now reads it. Both executable replies read it as "a credit is
+  figured". It differs from the project in value on 19 (Claude) and 16 (gpt) completed returns of the triage records, all with no earned income for the
+  credit. eic.credit agrees on every completed return.
+- Render: only deepseek line 1 is open (the merged Worksheet A/B line, representation, as before). Class M is outside this
+  pass.
+
+Counts:
+- transcription eic: model error 13, scope 3, representation 1
+- transcription eic.deepseek: representation 1, model error 14, scope 3
+- transcription eic.gpt: model error 14, scope 3
+- render eic.deepseek: representation 1
+
+| family | kind | lines | class |
+| --- | --- | --- | --- |
+| claude | transcription | eic.eligible, eic.credit, eic.check_27c, (Step 5, 1), (Step 5, 3), (Step 5, 5), 3, 4b, 6 (eic.wsb_6), 1, 2, 6 (eic.line6), 5 | model error |
+| claude | transcription | eic.separated_box, (Step 5, 2), (Step 5, 4) | scope |
+| claude | transcription | eic.clergy | representation |
+| deepseek | transcription | eic.self_employed | representation |
+| deepseek | transcription | eic.eligible, eic.credit, eic.check_27c, 4b, 6 (eic.wsb_6), 2, 5, eic.separated_box, (Step 5, 1), (Step 5, 3), (Step 5, 5), 3, 1, 6 (eic.line6) | model error |
+| deepseek | transcription | eic.clergy, (Step 5, 2), (Step 5, 4) | scope |
+| gpt | transcription | eic.eligible, eic.credit, eic.check_27c, eic.clergy, (Step 5, 1), (Step 5, 3), (Step 5, 5), 3, 4b, 6 (eic.wsb_6), 1, 2, 5, 6 (eic.line6) | model error |
+| gpt | transcription | eic.separated_box, (Step 5, 2), (Step 5, 4) | scope |
+| deepseek | render | 1 | representation |
+
+Package check (T-101). The narrowing is correct for Steps 1 to 4: a filer stopped there is no longer refused.
+`f2.t101.credit_disallowed_no_credit_claimed` completes. But `eic.eligible` stays true past Worksheet A line 2 or Worksheet B
+line 4b being zero, and those filers are still refused. Witness: `classm.ssb.4` with the Form 8862 answer Yes is refused at
+eic.credit and Form 1040 lines 27a, 34 and 37, though its EIC is $0.00. Finding F1 (medium), an incomplete fix of PENDING-9
+and not a regression. A low note covers the same pattern on the CTC gate.
+
+## Fix round 2 (superseded subject)
 
 Subject after BUG-0241: a new screen, `eic.died_2025`, refuses `eic.age_range` with the Pub. 596 referral. No other eic
 expression changed. The dependent lines read by the EIC were reworded (BUG-0211 to BUG-0217, BUG-0221 to BUG-0229, BUG-0234).
@@ -291,7 +338,7 @@ comparisons). Full ruling text is in `.transcription/proposed/eic.json` and `eic
 Findings: F1 (Worksheet A line 5 not zero when skipped or blank) and F2 (Worksheet A evaluated on returns that STOP
 before it; depends on reading a STOP as a skip), both under the skipped-line rule; Form 1040 line 27a is unaffected.
 
-## Household pass, round 3 — 2026-11-01
+## Household pass, round 3 — 2026-11-01 (superseded subject)
 
 Subject after `BUG-0280` (rewording of the `household.married` question, which `eic` reads as an input; no authored eic expression changed). Fresh transcription reviews ran in the hh3 refresh (`.transcription/hh3-{claude,flash}-summary.json`). The previous logs were archived under `.transcription/archive/before-household-definition-review-2026-11-01/` with a checked hash manifest; they are identical to the last committed versions (84fa330). `check_logs.py` reports the current snapshots and subjects current. Models: `claude-opus-5-5` and `deepseek-flash` (render `eic` and `eic.deepseek` were unaffected and remain 0 open). The Claude transcription reply validates and executes (`triage/eic.json`, `executable-triage-v2`: 1,425 fixtures, 500 generated returns seed 20261026, 156 partial records from 40 bases; 2,081 comparisons per line; zero completed-return value differences). The DeepSeek transcription reply fails type validation at `eic.self_employed` and `eic.clergy` (`collection reference requires sum_over`; `triage/eic.deepseek.json`, state `invalid`); lines outside their dependency closure are ruled by reading. Proposed rulings are in `.transcription/proposed/hhpass4/`.
 

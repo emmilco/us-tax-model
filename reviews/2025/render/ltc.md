@@ -4,17 +4,17 @@ The rendered English of every printed line of `Form 7206, line 2 — qualified l
 
 | field | value |
 | --- | --- |
-| date | 2026-11-02 |
+| date | 2026-11-03 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 98dcb5fd5496a0a0beb16828b8347396bf996e433a913272a3345e25a6c83de1 |
+| prompt sha256 | 0a51f41f1998b0894db66094f29f41374b76073dc0ae97f8467b0af64660a45e |
 | prompt policy | render-source-comparison-v2 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
-| subject sha256 | d3da815e06eeea1e381805a795dd0c772122a188eb854cd37cc6f033559b5d2c |
+| subject sha256 | fc82dc24c2a922c439a73bcedac40d3a03522d6a921a9ff0bfa927cc2e1939b4 |
 | lines judged | 2 |
-| match / mismatch / unclear / missing | 1 / 0 / 1 / 0 |
+| match / mismatch / unclear / missing | 2 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -29,16 +29,12 @@ The rendered English of every printed line of `Form 7206, line 2 — qualified l
 ### 2(a) — Total payments made for that person during the year
 Status: **MATCH**
 
-Model: The restatement matches line 2(a), "Total payments made for that person during the year," and correctly applies the line 2 note excluding months of eligibility for a subsidized long-term care plan through the listed employers. Its limit to a policy established under this business is consistent with the form's note and the instructions requiring a separate Form 7206 for each business.
+Model: Line 2(a) asks for 'Total payments made for that person during the year' under a qualified long-term care contract, and its note excludes months eligible for an employer-subsidized long-term care plan (yours, your spouse's, or that of your dependent's or under-27 child's employer). The restatement adds the covered-person rule (you, spouse, dependents, child under 27) and the one-form-per-business rule, which agree with the form and instructions. The cap on the total across all Forms 7206 per person applies across forms, not to this line.
 
 ### 2(b) — The amount for that person's age
-Status: **UNCLEAR**
+Status: **MATCH**
 
-Restated: Find the entry in Qualified long-term care premium limit by age (Form 7206, line 2(b)) for age helper "That person's age at the end of 2025".
-
-Model: The age bands and use of age at year-end match "Use the person's age at the end of the tax year," but the restated table's dollar amounts are not provided, so they cannot be compared with the IRS's $480, $900, $1,800, $4,810, and $6,020. The restatement also does not show how it handles the multiple-business rule that the total on line 2 of "all Form(s) 7206 can't be more than the appropriate limit shown on line 2 for that person."
-
-Ruling: representation; restatement accepted. tables/2025/ltc_limit.yaml holds $480, $900, $1,800, $4,810 and $6,020, the f7206 line 2 amounts by age at year-end. The multiple-business rule is refused by sc.hi_screen ("anyone is covered by qualified long-term care insurance entered for more than one business on this return").
+Model: Line 2(b) says to use 'the person's age at the end of the tax year' with the bands 40 or younger, 41 to 50, 51 to 60, 61 to 70, and 71 or older, which the age helper's enum reproduces. The program's lookup table values are not shown, so they could not be checked against the printed $480/$900/$1,800/$4,810/$6,020.
 
 ## Raw response
 
@@ -47,9 +43,9 @@ Ruling: representation; restatement accepted. tables/2025/ltc_limit.yaml holds $
 lines:
   - key: "2(a)"
     status: MATCH
-    reason: "The restatement matches line 2(a), \"Total payments made for that person during the year,\" and correctly applies the line 2 note excluding months of eligibility for a subsidized long-term care plan through the listed employers. Its limit to a policy established under this business is consistent with the form's note and the instructions requiring a separate Form 7206 for each business."
+    reason: "Line 2(a) asks for 'Total payments made for that person during the year' under a qualified long-term care contract, and its note excludes months eligible for an employer-subsidized long-term care plan (yours, your spouse's, or that of your dependent's or under-27 child's employer). The restatement adds the covered-person rule (you, spouse, dependents, child under 27) and the one-form-per-business rule, which agree with the form and instructions. The cap on the total across all Forms 7206 per person applies across forms, not to this line."
   - key: "2(b)"
-    status: UNCLEAR
-    reason: "The age bands and use of age at year-end match \"Use the person's age at the end of the tax year,\" but the restated table's dollar amounts are not provided, so they cannot be compared with the IRS's $480, $900, $1,800, $4,810, and $6,020. The restatement also does not show how it handles the multiple-business rule that the total on line 2 of \"all Form(s) 7206 can't be more than the appropriate limit shown on line 2 for that person.\""
+    status: MATCH
+    reason: "Line 2(b) says to use 'the person's age at the end of the tax year' with the bands 40 or younger, 41 to 50, 51 to 60, 61 to 70, and 71 or older, which the age helper's enum reproduces. The program's lookup table values are not shown, so they could not be checked against the printed $480/$900/$1,800/$4,810/$6,020."
 ```
 ```

@@ -411,9 +411,21 @@ def table_notes(tables=None):
     return "\n".join(out)
 
 
+# Signed Dollars interfaces whose printed line is a loss in parentheses: Schedule D lines 6 and 14
+# (f1040sd p. 1) and the worksheet lines that copy line 14 (i1040sd p. 11, 28% Rate Gain Worksheet
+# line 5; p. 13, Unrecaptured Section 1250 Gain Worksheet line 16). A reader holding them positive
+# disagrees on every line that combines them.
+NEGATIVE_INTERFACES = frozenset({"sd.line6", "sd.line14", "g28.line5", "u1250.line16"})
+NEGATIVE_NOTE = "a loss carryover printed in parentheses, held as a negative amount"
+
+
+def sign_note(line_id):
+    return f"; {NEGATIVE_NOTE}" if line_id in NEGATIVE_INTERFACES else ""
+
+
 def reference_note(doc, line):
     """Shared interface metadata, without project-written computed labels or expressions."""
-    text = f"{line['id']} (form {doc['id']}; printed {str(line['printed'])!r}; type {line['type']})"
+    text = f"{line['id']} (form {doc['id']}; printed {str(line['printed'])!r}; type {line['type']}{sign_note(line['id'])})"
     if line["expr"].get("op") == "input":
         text += ": input " + " ".join(line["expr"].get("source", "").split())
     return text
@@ -493,7 +505,7 @@ def build_prompt(form_doc, excerpt, params, other_lines, param_types=None):
     targets = [l for l in lines if l["printed"] not in HELPER_PRINTED and l["expr"].get("op") != "input"]
     keys = marker_keys(lines)
     shared = any(keys[l["id"]] != str(l["printed"]) for l in lines)
-    tgt = "\n".join(f"  - printed {keys[l['id']]!r} (id {l['id']}; type {l['type']})" for l in targets)
+    tgt = "\n".join(f"  - printed {keys[l['id']]!r} (id {l['id']}; type {l['type']}{sign_note(l['id'])})" for l in targets)
     exported = exported_lines(form_doc)
     exp = "\n".join(f"  - id {l['id']} ({l['type']})" for l in exported)
     inp = "\n".join(f"  - {l['id']} (printed {keys[l['id']]!r}, type {l['type']}): {l['expr'].get('source','')}" for l in inputs)

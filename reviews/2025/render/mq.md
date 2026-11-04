@@ -4,65 +4,65 @@ The rendered English of every printed line of `Mid-quarter convention test for p
 
 | field | value |
 | --- | --- |
-| date | 2026-10-19 |
+| date | 2026-11-03 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 997576f594498bf787b99b8115599d0178508758c6515c0daf65058e883ed3a9 |
-| subject sha256 | 86bffe68cb283040dd41dc7e6fa521e2be2eb6bf380631710c0ccacb172dcca2 |
+| prompt sha256 | ed2012d56af003f8cd72f08513c47b52051dc14005fb0cc7e180ae4925f84e1c |
+| prompt policy | render-source-comparison-v2 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| subject sha256 | 14c8d1cb3687941f18ad0ab19aed76e58f9f2590b11d21c2251c63b2a1820f64 |
 | lines judged | 7 |
-| match / mismatch / unclear / missing | 5 / 2 / 0 / 0 |
+| match / mismatch / unclear / missing | 7 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
 
 | document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
 | --- | --- | --- | --- | --- | --- | --- |
-| p946 | For use in preparing 2025 returns | 34 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 34 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
+| p946 | For use in preparing 2025 returns | 17, 34, 37, 39, 41, 59, 61, 62, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 17, 34, 37, 39, 41 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
+| i1040sc | 2025 | 6, 7, 14, 15 | cited pages | dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a | 6, 7, 14, 15 | 616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918 |
+| i4562 | 2025 | 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 2, 3, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
+| f1040sc | 2025; created 2025-04-03 | 1, 2 | whole document | ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022 | - | 44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376 |
+| n-25-05 | Notice 2025-5 | 1, 2, 3, 4, 5 | whole document | 394f6b5ffb7c30e745322f0f20d9137608b1e2429fc4c76b06dedd690d4fb6e3 | - | 349e2797f87c588214722bcd22b7ec317c86c90a255ec8496941ac0c09909a8d |
 
 ## Lines
 
 ### q4 — Depreciable bases of property placed in service October to December 2025
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: Add person.mq_q4 over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
-
-Model: Pub 946 counts only 'MACRS property you placed in service during the last 3 months of the tax year (excluding nonresidential real property, residential rental property, any railroad grading or tunnel bore, property placed in service and disposed of in the same year, and property that is being depreciated under a method other than MACRS)'. The label covers all property placed in service October to December 2025 and states none of these exclusions. It also fixes the period to calendar months instead of the last 3 months of the tax year.
-
-Ruling: representation; restatement accepted. The line sums the per-person amounts, each the sum of the property's own mid-quarter basis (asset.mq_q4, scveh.mq_q4), where the Pub. 946 rules are applied (p. 41: the section 179 and personal-use reductions, not the special allowance); property outside MACRS (real property, ADS, other methods, property disposed of in 2025) is refused by asset.screen and the recovery-class lookup, so every entry counted is MACRS property. Calendar quarters are the last three months of the tax year for the calendar-year returns this tool prepares (spec 2.1).
+Model: Pub. 946 tests 'the total depreciable bases of MACRS property you placed in service during the last 3 months of the tax year'. Summing each business's October–December assets and owned actual-expense vehicles does that for a calendar year. Real property, dispositions, non-MACRS methods and short tax years are screened out by refusals.
 
 ### total — Depreciable bases of all property placed in service in 2025
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: Add person.mq_total over every confirmed person entry, within the current person when parent-bound. An unanswered roster is unknown.
-
-Model: The text compares against 'the total depreciable bases of all MACRS property you placed in service during the entire year', but the label says 'all property', not MACRS property only. The restatement also never mentions the Caution basis rules: the section 179 and personal-use reductions are included, and special depreciation allowance reductions are not.
-
-Ruling: representation; restatement accepted. As q4: the per-property amounts (asset.mq_total, scveh.mq_total) carry the Pub. 946 basis rules (p. 41, Caution), and property other than MACRS property is refused on the asset.
+Model: This sums the depreciable bases of all 2025 property across every business, matching 'the total depreciable bases of all MACRS property you placed in service during the entire year'. Those bases are reduced for section 179 and personal use and are before any special allowance, as the Pub. 946 Caution requires.
 
 ### five — Five
 Status: **MATCH**
 
-Model: This constant only turns the 'more than 40%' test into integer math (5 × Q4 > 2 × total is the same as Q4/total > 40%). It does not change the result.
+Model: This is a constant 5 used to express the 40% threshold as an exact integer comparison (5 × Q4 > 2 × total is the same as Q4 > 40% of total).
 
 ### two — Two
 Status: **MATCH**
 
-Model: This is the other constant in the 5:2 version of the 'more than 40%' threshold. It matches the text.
+Model: This is a constant 2 used with the constant 5 to express the 40% threshold exactly.
 
 ### q4x5 — Five times the October to December bases
 Status: **MATCH**
 
-Model: Multiplying the last-quarter bases by 5 is a correct step in testing whether they are 'more than 40%' of the year's total. Any problem with the operand itself is covered under q4.
+Model: Five times the fourth-quarter bases is the left side of the exact form of the 'more than 40%' comparison.
 
 ### totalx2 — Two times all 2025 bases
 Status: **MATCH**
 
-Model: Multiplying the total bases by 2 is the matching side of the 40% comparison. Any problem with the operand itself is covered under total.
+Model: Two times all 2025 bases is the right side of the exact form of the 'more than 40%' comparison.
 
 ### applies — The mid-quarter convention applies: the October to December bases are more than 40% of all
 Status: **MATCH**
 
-Model: A strict 5 × Q4 > 2 × total is the same as 'are more than 40% of the total depreciable bases'. When the total is zero, it correctly gives false. The text's precondition 'if the mid-month convention does not apply' is not part of this helper's stated meaning, so its absence doesn't change the result.
+Model: 5 × Q4 > 2 × total is equivalent to Q4 > 0.40 × total, matching 'are more than 40% of' (Pub. 946) and 'exceed 40%' (i4562). The strict inequality agrees with both texts.
 
 ## Raw response
 
@@ -70,25 +70,25 @@ Model: A strict 5 × Q4 > 2 × total is the same as 'are more than 40% of the to
 ```yaml
 lines:
   - key: "q4"
-    status: MISMATCH
-    reason: "Pub 946 counts only 'MACRS property you placed in service during the last 3 months of the tax year (excluding nonresidential real property, residential rental property, any railroad grading or tunnel bore, property placed in service and disposed of in the same year, and property that is being depreciated under a method other than MACRS)'. The label covers all property placed in service October to December 2025 and states none of these exclusions. It also fixes the period to calendar months instead of the last 3 months of the tax year."
+    status: MATCH
+    reason: "Pub. 946 tests 'the total depreciable bases of MACRS property you placed in service during the last 3 months of the tax year'. Summing each business's October–December assets and owned actual-expense vehicles does that for a calendar year. Real property, dispositions, non-MACRS methods and short tax years are screened out by refusals."
   - key: "total"
-    status: MISMATCH
-    reason: "The text compares against 'the total depreciable bases of all MACRS property you placed in service during the entire year', but the label says 'all property', not MACRS property only. The restatement also never mentions the Caution basis rules: the section 179 and personal-use reductions are included, and special depreciation allowance reductions are not."
+    status: MATCH
+    reason: "This sums the depreciable bases of all 2025 property across every business, matching 'the total depreciable bases of all MACRS property you placed in service during the entire year'. Those bases are reduced for section 179 and personal use and are before any special allowance, as the Pub. 946 Caution requires."
   - key: "five"
     status: MATCH
-    reason: "This constant only turns the 'more than 40%' test into integer math (5 × Q4 > 2 × total is the same as Q4/total > 40%). It does not change the result."
+    reason: "This is a constant 5 used to express the 40% threshold as an exact integer comparison (5 × Q4 > 2 × total is the same as Q4 > 40% of total)."
   - key: "two"
     status: MATCH
-    reason: "This is the other constant in the 5:2 version of the 'more than 40%' threshold. It matches the text."
+    reason: "This is a constant 2 used with the constant 5 to express the 40% threshold exactly."
   - key: "q4x5"
     status: MATCH
-    reason: "Multiplying the last-quarter bases by 5 is a correct step in testing whether they are 'more than 40%' of the year's total. Any problem with the operand itself is covered under q4."
+    reason: "Five times the fourth-quarter bases is the left side of the exact form of the 'more than 40%' comparison."
   - key: "totalx2"
     status: MATCH
-    reason: "Multiplying the total bases by 2 is the matching side of the 40% comparison. Any problem with the operand itself is covered under total."
+    reason: "Two times all 2025 bases is the right side of the exact form of the 'more than 40%' comparison."
   - key: "applies"
     status: MATCH
-    reason: "A strict 5 × Q4 > 2 × total is the same as 'are more than 40% of the total depreciable bases'. When the total is zero, it correctly gives false. The text's precondition 'if the mid-month convention does not apply' is not part of this helper's stated meaning, so its absence doesn't change the result."
+    reason: "5 × Q4 > 2 × total is equivalent to Q4 > 0.40 × total, matching 'are more than 40% of' (Pub. 946) and 'exceed 40%' (i4562). The strict inequality agrees with both texts."
 ```
 ```

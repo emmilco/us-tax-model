@@ -48,14 +48,16 @@ form:
         locator: pp. 7–11, columns (e) through (h), codes B and W
     - id: sales.special
       printed: (helper)
-      label: 'Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?'
+      label: 'Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property, such as stock of an S corporation that owns art or gold worth more than its cost?'
       type: Bool
       expr:
         op: input
-        source: 'Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust holding such property?'
+        source: 'Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property, such as stock of an S corporation that owns art or gold worth more than its cost?'
       cite:
         doc: i1040sd
-        locator: pp. 11–12, lines 18 and 19; p. 11, line 18, "Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles."
+        locator: pp. 11–12, lines 18 and 19; p. 11, line 18, "Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles."; p. 12,
+          line 19, "You reported a long-term capital gain from the sale or exchange of an interest in a partnership that owned
+          section 1250 property"
     - id: sales.aggregate_eligible
       printed: (helper)
       label: "Confirm all aggregate conditions: basis reported, no broker adjustments,
@@ -103,12 +105,13 @@ form:
     - id: sales.wash_loss
       printed: (helper)
       label: Correct nondeductible wash-sale loss; positive cents, including losses
-        not reported by broker
+        not reported by broker; not more than the loss on this sale
       type: NonNegDollars
       expr:
         op: input
         source: Correct nondeductible wash-sale loss; positive cents, including losses
-          not reported by broker
+          not reported by broker. It cannot be more than the loss on this sale (column (e) less
+          column (d), after any code B basis correction).
       cite:
         doc: i8949
         locator: p. 10, code W; a lower corrected loss requires an explanation statement
@@ -385,6 +388,44 @@ form:
       cite:
         doc: i8949
         locator: pp. 7–11, columns (e) through (h), codes B and W
+    - id: sales.wash_over
+      printed: (helper)
+      label: Gain or loss before the wash-sale adjustment, plus the entered wash-sale loss
+      type: Dollars
+      expr:
+        op: sum
+        of:
+          - sales.before_adjustment
+          - sales.b
+          - sales.wash_loss
+      cite:
+        doc: i8949
+        locator: p. 10, code W, "You have a nondeductible loss from a wash sale" and "enter the amount of the nondeductible
+          loss as a positive number in column (g)"
+    - id: sales.wash_bad
+      printed: (gate)
+      label: Code W with a wash-sale loss larger than the loss figured from columns (d), (e) and the code B adjustment
+      type: Bool
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - sales.has_w
+              - const: true
+          - op: test
+            gt:
+              - sales.wash_loss
+              - param: sales.zero
+          - op: test
+            gt:
+              - sales.wash_over
+              - param: sales.zero
+      cite:
+        doc: i8949
+        locator: p. 10, code W, "You have a nondeductible loss from a wash sale" and "enter the amount of the nondeductible
+          loss as a positive number in column (g)"; p550 p. 86, Wash Sales, "A wash sale occurs when you sell or trade stock
+          or securities at a loss"
     - id: sales.w
       printed: (helper)
       label: Wash-sale adjustment in column (g)
@@ -407,6 +448,14 @@ form:
       cite:
         doc: i8949
         locator: pp. 7–11, columns (e) through (h), codes B and W
+      refuses:
+        - when: sales.wash_bad
+          form: Form 8949, column (g), code W
+          remedy: The nondeductible wash-sale loss entered is more than the loss on this sale (column (e) less column
+            (d), after any code B correction). Check the amount against your Form 1099-B and your records.
+          cite:
+            doc: i8949
+            locator: p. 10, code W, "enter the amount of the nondeductible loss as a positive number in column (g)"
     - id: sales.g
       printed: (g)
       label: "Column (g): net adjustments"

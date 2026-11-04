@@ -255,7 +255,7 @@ finding, because the return is refused.
 
 Findings: none. F5 and F6 are closed by BUG-0207 and BUG-0208. F3 (SMW-SHOWN) is closed.
 
-## Fix round 2
+## Fix round 2 (superseded subject)
 
 The subject after BUG-0243 widened the `retirement.special` question. It now also lists a military disability pension, an
 annuity received as the beneficiary of an employee who died or shared among beneficiaries, and a rollover of property
@@ -291,3 +291,43 @@ QDRO items match i1040gi pp. 28 and 30. Two items refuse more than the source do
 employee who died" can be read by a survivor of a retiree, a case p. 30 computes and `retirement.age` provides for. F2
 (PROPERTY-ROLLOVER, low): "a rollover of property other than cash" covers whole in-kind rollovers, where p. 30 names only
 "partial rollovers of property".
+
+## Backlog round
+
+The subject after the income package (PENDING-4, now in BUG-0351 to BUG-0357) narrowed `retirement.special`. It now
+refuses the beneficiary of an employee who died before retiring, guaranteed payments under a life annuity contract and
+shared annuities, but not a survivor under a retiree's joint and survivor annuity. It refuses a property rollover only
+when the property was sold and the proceeds rolled over, or only part of it was rolled over. Survivor wording was added
+to the worksheet questions. No compared expression changed. The comparison has included `shown_when` since the
+hardening round, so the ten `(SMW n)` lines are now compared with `retirement.smw_shown` inlined, and nine of them open
+for the first time. The replies are fresh and declare no `shown_when`. Triage is `../triage/retirement[.deepseek].json`
+(executable-triage-v2: 1,495 fixtures, 500 generated returns, seed 20261026; 1,002 / 1,066 partial records from 40
+bases; 2,129 / 2,344 comparisons). An uncapped scratch re-run of `triage.mjs` gave the same counts. Every completed
+witness was rebuilt and its entry (account, code, annuity, cost, recovered, `smw_shown`) read. The rulings are in
+`.transcription/proposed/bklg/` (`transcription.retirement[.deepseek].json`, `render.retirement[.deepseek].json`). "Screens"
+has the same meaning as in the Stage 21 table.
+
+| family | kind | line | class | evidence | deciding source | reason |
+| --- | --- | --- | --- | --- | --- | --- |
+| deepseek | transcription | retirement.is_ira | representation | 2,344/2,344 | i1040gi p. 26 | Same set. |
+| both | transcription | retirement.has_rollover | scope | nothing completed; project-refuses (bad_code, special) and partials withholding account, special or code | i1040gi pp. 27, 30 | Same predicate; the round-2 code G $0 values no longer occur. |
+| both | transcription | retirement.taxable | model error and scope | 1 completed value (generated 395 r2: $0.00 vs $22,738.41, recovered above cost); deepseek also 13 completed candidate-unknown (annuity on IRAs 8, rollover on code Q 3, box 5 on IRAs 2) | i1040gi pp. 27-29 | Signed worksheet line 7; deepseek reads plan-only answers on IRAs. |
+| claude | transcription | retirement.amount_a | model error and scope | 1 completed value (generated 421 r1: code 4 annuity, cost not recovered, last line 4 $0: $29,413.54 vs $0.00) | i1040gi p. 28 | "Fully taxable" is a cost test, not taxable = box 1. |
+| deepseek | transcription | retirement.amount_a | model error and scope | 114 completed value, each checked: project $0.00, candidate box 1, fully taxable entry | i1040gi pp. 27, 28 | Copies box 1 to line 4a/5a. |
+| both | transcription | retirement.sav_amount | model error and scope | 6 / 9 completed candidate-unknown (sav_military, sav_404k, sav_inherited partials); no value | f8880 p. 2, Line 4 | Exclusions asked of the wrong account kinds. |
+| claude | transcription | retirement.l1, l2 | model error and scope | 21 completed candidate-unknown each (early_screen 18, code_screen 3); no value | i5329 pp. 3, 5 | Screens on every entry. |
+| claude | transcription | retirement.l2_e05, e09, e19, e22, e23, l2_s | model error | 35 / 35 / 35 / 35 / 2 / 12 candidate-unknown, none completed | i5329 p. 5 | Screens through line 1. |
+| claude | transcription | retirement.is_e23 | representation | 2,129/2,129 | p590b p. 28 | Redundant conjunct dropped. |
+| claude | transcription | retirement.l1_s | scope | nothing completed; 10 project-refuses (bad_code) | i5329 p. 5, Line 4 | Same share on completed returns. |
+| deepseek | transcription | retirement.l1, l2 | ambiguity, model error and scope | 6 completed value each (generated 22, 175, 314, 348, 381, 421: codes 2 and 4 on lines 1 and 2, line 3 unchanged); 25 / 31 completed candidate-unknown | i5329 pp. 1, 3, 5; amb.2025.f5329_line1_codes | The register's second reading (offset now present), extended to codes 3 and 4; screens on every entry. |
+| deepseek | transcription | retirement.l2_e05 to e23, l1_s, l2_s | model error and scope | 31 / 24 completed candidate-unknown (early_screen 22, code_screen 2, exception 7); no value | i5329 p. 5 | Screens and exception on every entry. |
+| deepseek | transcription | retirement.is_e23 | model error | 22 completed candidate-unknown | p590b p. 28 | Exception answer on every entry. |
+| both | transcription | (SMW 1), (SMW 2), (SMW 4) to (SMW 11) | model error (deepseek + scope) | all differences on project-hidden entries (IRA, non-annuity plan, cost recovered); no witness has `smw_shown` true; e.g. (SMW 1) 154 / 224 completed candidate-shows-skipped | i1040gi pp. 28-30 | No hiding condition in the reply; value matches where shown. |
+| both | render | (SMW 2), (SMW 4), (SMW 6), (SMW 7), (SMW 8), (SMW 10), (SMW 11) | scope | MISMATCH (7 claude, 6 deepseek) | i1040gi p. 29 | Death benefit exclusion and pre-November-19-1996 annuities still refused by `special`. |
+
+The brief's check: the PENDING-4 narrowing causes no transcription or render difference. Read against p575 pp. 12, 23
+and 34, it is neither wider nor narrower than the source for the cases it names. The survivor wording gives the
+retiree's tax-free amount, as p575 p. 34 requires. Findings (`.transcription/proposed/bklg/retirement.findings.md`): none
+medium or higher. Low: L1 (SURVIVOR-PRE-1996-DATE), the pre-November-19-1996 item does not say a survivor answers for
+the retiree's starting date. L2 (PROPERTY-SUBSTITUTE-CASH), the item does not name keeping the property and rolling
+over cash (p575 p. 23).

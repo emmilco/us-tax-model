@@ -37,13 +37,26 @@ form:
     - id: person.blind
       printed: (helper)
       type: Bool
-      label: Are you blind under the standard-deduction instructions?
+      label: Were you blind at the end of 2025 (totally blind, or partly blind with a statement certified by your eye doctor)?
       expr:
         op: input
-        source: Are you blind under the standard-deduction instructions?
+        source: Were you blind at the end of 2025? Answer yes if you were totally blind as of December 31, 2025. If you weren't
+          totally blind, answer yes only if you have a statement certified by your eye doctor (ophthalmologist or optometrist)
+          that you can't see better than 20/200 in your better eye with glasses or contact lenses, or that your field of
+          vision is 20 degrees or less (or, if your eye condition isn't likely to improve beyond these conditions, a
+          certified statement to that effect). If your vision can be corrected beyond these limits only by contact lenses
+          that you can wear only briefly because of pain, infection or ulcers, answer yes. Keep the statement for your records.
       cite:
-        doc: f1040sa
-        locator: Schedule A (2025), lines 1–18
+        doc: i1040gi
+        locator: 'p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
+          January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; p. 33, Blindness, "If you weren’t
+          totally blind as of December 31, 2025, you must get a statement certified by your eye doctor (ophthalmologist or
+          optometrist) that:", "You can''t see better than 20/200 in your better eye with glasses or contact lenses, or",
+          "Your field of vision is 20 degrees or less.", "If your eye condition isn’t likely to improve beyond the conditions
+          listed above, you can get a statement certified by your eye doctor (ophthalmologist or optometrist) to this effect
+          instead." and "You must keep the statement for your records."; p501 p. 23, Not totally blind, "If your vision
+          can be corrected beyond these limits only by contact lenses that you can wear only briefly because of pain, infection,
+          or ulcers, you can take the higher standard deduction for blindness if you otherwise qualify."'
     - id: person.tin
       printed: (helper)
       type: Bool
@@ -58,7 +71,8 @@ form:
     - id: person.itin_applied
       printed: (helper)
       type: Bool
-      label: If not, have you applied for an ITIN on or before the due date of your return?
+      label: If not, have you applied for an ITIN, or for the renewal of your expired ITIN, on or before the due date of your
+        return?
       expr:
         op: input
         source: If you have neither (or your ITIN has expired and was not renewed), have you applied for an ITIN, or for the renewal
@@ -954,8 +968,8 @@ form:
       type: Bool
       expr:
         op: input
-        source: 'Does any of these apply to this person: church employee income (wages from a church that elected exemption from
-          social security and Medicare taxes); being a minister, a member of a religious order or a Christian Science practitioner,
+        source: 'Does any of these apply to this person: church employee income (wages from a church or qualified
+          church-controlled organization that elected exemption from social security and Medicare taxes); being a minister, a member of a religious order or a Christian Science practitioner,
           or having an approved Form 4361 or Form 4029; net earnings from self-employment from a partnership (Schedule K-1, box
           14, code A) or other self-employment income not on a Schedule C (such as director''s fees, fiduciary fees, or fees as
           a fee-basis state or local government employee); farm income (Schedule F) or Conservation Reserve Program payments;
@@ -965,7 +979,10 @@ form:
       cite:
         doc: i1040sse
         locator: pp. 1-5, Who Must Pay Self-Employment (SE) Tax, Net Earnings From Self-Employment, Instructions for Part II;
-          f1040sse lines 1a, 1b, 5a, 8b and 8c
+          f1040sse lines 1a, 1b, 5a, 8b and 8c; p. 1, Employees of Churches and Church Organizations, "Church employee income
+          is wages you received as an employee (other than as a minister, member of a religious order, or Christian Science
+          practitioner) of a church or qualified church-controlled organization that has a certificate in effect electing an
+          exemption from employer social security and Medicare taxes."
     - id: person.se_screened
       printed: (gate)
       label: This person's self-employment tax is outside this tool
@@ -1320,6 +1337,7 @@ form:
           Rate Table for Self-Employed or Rate Worksheet for Self-Employed", "Multiply step 3 by step 4"; p. 38,
           chapter 5, Rate Table for Self-Employed, "If your plan's contribution rate is 10% of a participant's
           compensation, your rate is 0.090909" (amb.2025.sep_rate_places)
+      ambiguity: amb.2025.sep_rate_places
     - id: person.comp_limit
       printed: (helper)
       label: $350,000
@@ -1993,7 +2011,7 @@ form:
       ambiguity: amb.2025.dc_line1e_attribution
     - id: person.dc_earned_b
       printed: (helper)
-      label: 'This person''s earned income for Form 2441 lines 18 and 19: as for lines 4 and 5, without the dependent care benefits of line 12 (so without line 1e)'
+      label: 'This person''s earned income for Form 2441 lines 18 and 19: as for lines 4 and 5, without line 1e (the taxable benefits of line 12; when a line 13 grace-period amount could make part of line 1e earned income and change the excluded benefits, Form 2441 line 25 refuses)'
       type: Dollars
       expr:
         op: sum
@@ -2410,12 +2428,14 @@ form:
         source: 'Does any of these apply to you: your contributions for 2025 to traditional and Roth IRAs together were more than
           you were allowed to contribute (more than $7,000, or $8,000 if age 50 or older at the end of 2025, or more than your
           taxable compensation, or a Roth contribution above the limit for your income), and the excess was not withdrawn with
-          its earnings by the due date of your return; you recharacterized a 2025 contribution (moved it from a traditional to
+          its earnings by the due date of your return (including extensions); you recharacterized a 2025 contribution (moved it from a traditional to
           a Roth IRA or the reverse); or an excess contribution from an earlier year remained in your traditional or Roth IRA at the end of 2025?'
       cite:
         doc: p590a
         locator: 'p. 35, Excess Contributions, "Generally, an excess contribution is the amount contributed to your traditional
-          IRAs for the year that is more than the smaller of"; p. 30, "Recharacterizing excess contributions"; i1040gi p. 95,
+          IRAs for the year that is more than the smaller of"; p. 35, Tax on Excess Contributions, "In general, if the excess
+          contributions for a year aren’t withdrawn by the date your return for the year is due (including extensions), you
+          are subject to a 6% tax"; p. 30, "Recharacterizing excess contributions"; i1040gi p. 95,
           Line 20, "If the total of your IRA deduction on line 20 plus any nondeductible contributions to your traditional IRAs
           shown on Form 8606 is less than your total traditional IRA contributions for 2025, see Pub. 590-A for special rules"'
     - id: person.ira_excess_gate

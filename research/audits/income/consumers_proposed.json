@@ -1,0 +1,24 @@
+{
+ "note": "Proposed verdicts for reviews/2025/consumers.json (not editable from a package worktree). retirement.annuity's question gained a sentence telling a survivor of a retiree to answer for the retiree's annuity (T-128), which reopened its two baseline pairs. Apply these and remove the two baseline entries consumer:retirement.annuity@i1040gi:p27 and consumer:retirement.annuity@i1040gi:p29.",
+ "rulings": {
+  "consumer:retirement.annuity@i1040gi:p29": {
+   "verdict": "same",
+   "question_phrase": "Is this a pension or annuity from a qualified plan, section 403(b) plan or tax-sheltered annuity, paid in periodic payments in which you have after-tax cost ... with an annuity starting date after November 18, 1996, and on that date you were under age 75 or had fewer than 5 years of guaranteed payments? ... If you are the survivor of a retiree, answer for the retiree's annuity",
+   "source_phrase": "i1040gi p. 29, Simplified Method Worksheet, line 9 (read by retirement.plan_taxable)",
+   "reason": "The worksheet page is the computation the question's Simplified Method conditions select (p. 30, conditions 1 and 2), and p. 30 tells a survivor of a retiree to use the retiree's annuity starting date and age, which the added sentence states."
+  },
+  "consumer:retirement.annuity@i1040gi:p27": {
+   "verdict": "same",
+   "question_phrase": "Is this a pension or annuity ... in which you have after-tax cost ... (This is when the Simplified Method applies.)",
+   "source_phrase": "i1040gi p. 27, line 4b, \"If the distribution from your IRA is fully taxable, enter the total distribution on line 4b; don't make an entry on line 4a\" (read by retirement.show_a)",
+   "reason": "retirement.show_a reads the input only to route a partly taxable plan annuity to line 5a as well as 5b; p. 27's rule turns on whether the distribution is fully taxable, which an annuity with after-tax cost figured by the Simplified Method is not, for a retiree or a survivor of one."
+  }
+ },
+ "limits_proposed": {
+  "note": "Proposed ruling for reviews/2025/limits.json: a new limit sentence on a page the retirement form now cites (p575 p. 12, cited by retirement.recovered).",
+  "limit:p575:p12:7e883646": {
+   "enforced_by": ["retirement.smw7", "retirement.smw8"],
+   "reason": "The lifetime exclusion is limited to cost by Simplified Method Worksheet lines 7 and 8 (line 7 is cost less the amount recovered tax free after 1986, line 8 the smaller of line 5 or line 7); retirement.recovered asks a survivor of a retiree to include the retiree's recovery, so the limit covers both annuitants."
+  }
+ }
+}

@@ -37,6 +37,13 @@
   {
    "printed": "(b)",
    "restated": "Input — The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in service earlier is outside this tool)",
+   "model": "Form 4562 column (b) says \"Enter the date the property was placed in service\". The restatement collects only the year (2019–2025), so the printed entry is not the date. The low-use refusal for line 27 property is otherwise correct.",
+   "ruling": "Ruling: representation; restatement accepted. i4562 p. 14, Column (b), \"Enter the date the property was placed in service\": the tool needs the year (and the quarter, asked separately, for 2025 property); the filer writes the date from their records.",
+   "context": "f6345ae61a79869f6f57bc9e71269feb338df13f10b69919164501985a59dd89"
+  },
+  {
+   "printed": "(b)",
+   "restated": "Input — The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in service earlier is outside this tool)",
    "model": "Form 4562 column (b) says \"Enter the date the property was placed in service.\" The restatement records only the year. The refusal for 50%-or-less use (line 27, ADS) is otherwise appropriate.",
    "ruling": "Ruling: representation; restatement accepted. As line 43: the year chooses the recovery year and the limits, the quarter (asked separately) the mid-quarter table; the filer enters the full date on Form 4562 column (b)."
   },
@@ -204,6 +211,13 @@
   {
    "printed": "20a",
    "restated": "Choose — [helper \"Leased and on actual expenses\" = true → helper \"The business portion of the lease payments\"] [helper \"Leased and on actual expenses\" = false → helper \"Zero\"]",
+   "model": "The restatement enters the full business portion of the lease payments and has no refusal for long leases. The instructions add: \"But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount.\"",
+   "ruling": "Ruling: scope; refusal located elsewhere, restatement accepted. i1040sc line 20a, \"if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount\": sc.special refuses \"an inclusion amount for leased property\" for the business, read for every Schedule C (the wording is unchanged by this package; checked in forms/2025/sc.yaml).",
+   "context": "f6345ae61a79869f6f57bc9e71269feb338df13f10b69919164501985a59dd89"
+  },
+  {
+   "printed": "20a",
+   "restated": "Choose — [helper \"Leased and on actual expenses\" = true → helper \"The business portion of the lease payments\"] [helper \"Leased and on actual expenses\" = false → helper \"Zero\"]",
    "model": "The restatement takes the business portion of the lease payments but leaves out the reduction the instructions require: \"if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount.\" No refusal covers this case.",
    "ruling": "Ruling: refusal located elsewhere; restatement accepted. An inclusion amount for leased property is refused for the business through sc.special ('an inclusion amount for leased property'), so the business portion of the lease payments is the line 20a amount for every vehicle that reaches it."
   },
@@ -245,6 +259,13 @@
    "restated": "Enter the smaller of line 16 or line 11.",
    "model": "The program applies the line 11 cap even when the vehicle is not subject to the passenger-automobile limits, and it does model such vehicles (helper 'Subject to the limits for passenger automobiles'). The instructions say the limit applies 'For any passenger automobile' and list 'Exception. The following vehicles are not considered passenger automobiles'. For those vehicles line 25 should not be capped by line 11.",
    "ruling": "Ruling: representation; project retained. The automobile worksheet lines are figured for every vehicle but read only for a passenger automobile: the vehicle's special allowance (scveh.bonus_v) takes line 25 only when scveh.passenger is true and line 16 otherwise, and column (h) takes line 20 only through scveh.macrs_pass, the passenger-automobile route. A vehicle that is not a passenger automobile is not limited."
+  },
+  {
+   "printed": "43",
+   "restated": "Input — The year you first placed this vehicle in service for business purposes (for example 2023)",
+   "model": "Schedule C line 43 asks for a full date: \"When did you place your vehicle in service for business purposes? (month/day/year)\". The restatement collects only the year (a Count), so the printed entry would lack the month and day.",
+   "ruling": "Ruling: representation; restatement accepted. The tool needs the year (and, for 2025 property, the quarter) to choose the tables and limits; the filer writes the full date on the form from their own records. No value depends on the month or day except through the quarter, asked separately.",
+   "context": "f6345ae61a79869f6f57bc9e71269feb338df13f10b69919164501985a59dd89"
   },
   {
    "printed": "43",
@@ -316,6 +337,13 @@
    "model": "The passenger-automobile limit table is applied to every vehicle, including those flagged as not subject to the limits (scveh.passenger = false, e.g. SUVs over 6,000 lbs). The text says \"For any passenger automobile ... cannot exceed the applicable limit\" and lists vehicles that \"are not considered passenger automobiles\". Table values used otherwise match (2025: $20,200 with allowance, $12,200 without).",
    "ruling": "Ruling: representation; restatement accepted. The worksheet line is figured for every vehicle but read only for a passenger automobile (scveh.bonus_v, scveh.macrs_pass); checked by evaluation on stage14.veh.suv_179 with passenger answered both ways: the allowance is $20,200 and $70,000.",
    "context": "44c333ff2e4ccbe6920c76149bb551f944e79921c58d7537b434cb5d687ddfee"
+  },
+  {
+   "printed": "7",
+   "restated": "Choose — [helper \"Placed in service in 2025\" = true → helper \"Limit for a 2025 vehicle\"] [helper \"Placed in service in 2025\" = false → helper \"Limit for the vehicle's 2025 year of recovery\"]",
+   "model": "The restatement always uses the passenger-automobile table, including for vehicles the program treats as not subject to the limits (passenger = false). The text says \"For any passenger automobile ... cannot exceed the applicable limit\", and heavier vehicles are not passenger automobiles. Because of this, lines 11, 17, 20 and 25 also cap non-passenger vehicles. For passenger automobiles, the values are correct: $20,200 with the special allowance or $12,200 without for a 2025 vehicle, and the year-of-recovery entry for earlier vehicles.",
+   "ruling": "Ruling: representation; restatement accepted. The worksheet line is figured for every vehicle but read only for a passenger automobile (scveh.bonus_v, scveh.macrs_pass); a vehicle that is not a passenger automobile takes lines 16 and 19 directly (scveh.bonus_o, scveh.macrs_heavy), checked earlier by evaluation on stage14.veh.suv_179 with passenger answered both ways.",
+   "context": "f6345ae61a79869f6f57bc9e71269feb338df13f10b69919164501985a59dd89"
   },
   {
    "printed": "7",

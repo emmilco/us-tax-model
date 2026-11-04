@@ -394,8 +394,17 @@
 - Candidate readings: A person over 12 unable to care for themselves who was born or died in 2025 qualifies on the time they were alive, as Pub. 503 says. | The dependent tests' answer stands, so such a person may not be counted.
 - **Chosen:** The second, as encoded (no question is added); it can only leave out a qualifying person, so it never overstates the credit.
 - Reason: The owner's ruling (Stage 15 question 13). The case is rare, and asking it would add a question for every dependent.
-- Status: Owner ruling, Stage 15 (handoffs/HANDOFF-STAGE-15.md, question 13).
+- Status: Owner ruling, Stage 15 (handoffs/HANDOFF-STAGE-15.md, question 13). Superseded by BUG-0157: dependent.dc_disabled_qp reads dependent.dc_lived_half, which applies the first reading from the Pub. 503 text; no ambiguity remains, and the entry is kept as the record of the ruling (BUG-0341).
 - Cite: [p503] p. 3, Who Is a Qualifying Person? (For use in preparing 2025 returns; sha256 3a00d0c1)
+
+## amb.2025.dc_employer_care_value
+
+- Text at issue: Form 2441 instructions, Line 16, "Enter the total of all qualified expenses incurred in 2025 for the care of your qualifying person(s)"; Columns (a) and (b), "If you were covered by your employer's dependent care plan and your employer furnished the care (either at your workplace or by hiring a care provider), enter your employer's name in column (a)". The archived sources do not say whether the value of care the employer furnished is an expense incurred for line 16 (BUG-0262).
+- Candidate readings: The value of employer-furnished care is not a qualified expense incurred for line 16. | It is a qualified expense incurred for line 16.
+- **Chosen:** The first when line 16 is at least line 15, where line 17 is line 15 under either reading and no amount differs; otherwise the return is refused (f2441.employer_care_l16). The questions tell the filer to leave the value out.
+- Reason: Session reading under the owner's standing delegation (2026-11-03, T-123); a refusal covers the only case in which the readings give different amounts.
+- Status: Session reading, 2026-11-03 (T-123, BUG-0343).
+- Cite: [i2441] p. 5, Line 16; p. 3, Columns (a) and (b) (2025; sha256 86f0669e)
 
 ## amb.2025.line8z_kinds
 
@@ -828,3 +837,13 @@
 
 - Status: Session reading under the owner's delegation, 2026-10-30.
 - Cite: [i1040s8812] SSN Required Before the Due Date of Your Return To Claim the CTC and ACTC; TIN Required by Due Date of Your Return To Claim the ODC (2025; printed date 2026-01-23; sha256 bb9788cd)
+
+## amb.2025.div_gain_portions_disjoint
+
+- Text at issue: Form 1099-DIV boxes 2b, 2c and 2d each show "the portion of the amount in box 2a" of one kind of gain; no instruction says whether one amount can be in two of them. div.bad_special refuses when boxes 2b, 2c and 2d together exceed box 2a, as well as when any one of them does.
+- Candidate readings: The three portions are disjoint, so their sum cannot exceed box 2a; a larger sum is refused as an inconsistent entry. | The portions may overlap; only each box against box 2a is tested.
+- **Chosen:** The first (div.bad_special tests div.special_total, boxes 2b plus 2c plus 2d, against box 2a).
+- Reason: The issuer instructions define each box by a different kind of property: box 2b is unrecaptured section 1250 gain "from certain depreciable real property", box 2c section 1202 gain "from certain qualified small business stock", box 2d 28% rate gain "from sales or exchanges of collectibles"; and box 2a must "Include all amounts shown in boxes 2b, 2c, 2d, and 2f". No one gain comes from two of those kinds. Box 2f (section 897 gain from US real property interests) can share an amount with box 2b, and it is not in the sum. The reading can only refuse an entry, never change a computed amount, and any box 2c amount is refused in any case (div.section1202). Recorded under T-006.
+
+- Status: Session reading under the owner's standing delegation (2026-11-03); the encoding is unchanged.
+- Cite: [i1099div] p. 4, Box 2a, "Include all amounts shown in boxes 2b, 2c, 2d, and 2f"; Box 2b; Box 2c; Box 2d (January 2024 (continuous-use instructions); sha256 af89ec14)

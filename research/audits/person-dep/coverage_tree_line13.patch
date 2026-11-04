@@ -1,0 +1,10 @@
+--- a/tools/coverage/tree.json
++++ b/tools/coverage/tree.json
+@@ -219,6 +219,7 @@
+   {"gate": "f2441.employer_care_l16", "topic": "dependent_care", "kind": "situation", "question": "Did your employer furnish care, with the expenses you entered less than your benefits?"},
+   {"gate": "f2441.spouse_died_gate", "topic": "dependent_care", "kind": "situation", "question": "On a joint return claiming the dependent care credit, did your spouse die in 2025?"},
+   {"gate": "f2441.attrib_gate", "topic": "dependent_care", "kind": "situation", "question": "On a joint return, are taxable dependent care benefits not all from one spouse's Forms W-2, with a credit remaining?"},
++  {"gate": "f2441.line13_earned", "topic": "dependent_care", "kind": "situation", "question": "Did you use a grace-period amount carried over from 2024, with taxable benefits and your earned income limiting the exclusion?"},
+   {"gate": "f2441.line14_bad", "topic": "dependent_care", "kind": "entry"},
+ 
+   {"gate": "f8863.ban_refused", "topic": "education", "kind": "situation", "question": "Are you claiming the American opportunity credit after an earlier denial (Form 8862), or within a ban period?"},
