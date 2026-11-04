@@ -111,3 +111,10 @@ encoding.
 
 `tools/fetch_sources.py --year 2026` (verify) therefore reports the archive complete for the 2026 catalog; the
 missing documents are outside the catalog until they post.
+
+## Addendum (step 3): three new 2026 drafts named by the 2026 Form 1040
+
+Reading the 2026 Form 1040 draft in step 3 found two forms that are not in the 2025 catalog: Schedule 3-A (Form
+1040), Federal Public Benefit (line 32b), and Form 1062 (line 24b). Their drafts were archived with the draft flags:
+`f1040s3a` (2026 edition, posted 2026-08-20), `f1062` (Dec 2026 edition, posted 2026-08-04), `i1062` (Dec 2026
+edition, posted 2026-04-14). The archive now holds 91 documents, 55 of them IRS drafts.

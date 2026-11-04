@@ -552,5 +552,29 @@
     "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ21/pdf/PLAW-119publ21.pdf",
     "document_tax_year": 2026,
     "purpose": "Public Law 119-21 as printed: the statute behind the amounts it fixes for 2026 (Schedule 1-A and others); the same document the 2025 catalog holds"
+  },
+  {
+    "id": "f1040s3a",
+    "url": "https://www.irs.gov/pub/irs-dft/f1040s3a--dft.pdf",
+    "draft": true,
+    "draft_edition": "2026",
+    "draft_posted": "2026-08-20",
+    "description": "Schedule 3-A (Form 1040), Federal Public Benefit: new for 2026, named on the 2026 Form 1040 draft, lines 32b and 32c"
+  },
+  {
+    "id": "f1062",
+    "url": "https://www.irs.gov/pub/irs-dft/f1062--dft.pdf",
+    "draft": true,
+    "draft_edition": "Dec 2026",
+    "draft_posted": "2026-08-04",
+    "description": "Form 1062: new, named on the 2026 Form 1040 draft, line 24b"
+  },
+  {
+    "id": "i1062",
+    "url": "https://www.irs.gov/pub/irs-dft/i1062--dft.pdf",
+    "draft": true,
+    "draft_edition": "Dec 2026",
+    "draft_posted": "2026-04-14",
+    "description": "Instructions for Form 1062: new, the instructions behind the 2026 Form 1040 draft, line 24b"
   }
 ]
