@@ -1293,14 +1293,20 @@ params:
         doc: ny_it270i
         locator: 'p. 1, General information, "your federal adjusted gross income (FAGI) is no more than $5,000 above your applicable income thresholds"; Line 2: Income thresholds table, "$91,902", "$88,361"'
     ny.zero:
-      type: Dollars
+      type: NonNegDollars
       value: 0
       cite:
         doc: ny_it201i
         locator: 'p. 7, Lines 1 through 19: Federal income tax return information, "If you did not file a federal return, you must report the same income and adjustments that you would have reported for federal income tax purposes"'
-    ny.zero_count:
-      type: Count
-      value: 0
+    ny.mctmt.zone1:
+      type: Rate
+      value: { num: 60, den: 10000 }
       cite:
-        doc: ny_it201i-html
-        locator: 'New York State household credit table 2, "plus one for you (and one for your spouse if Married filing joint return)"'
+        doc: ny_it201i
+        locator: 'p. 17, Line 54c: MCTMT for Zone 1, "Multiply the amount on line 54a by 0.60% (0.0060)."'
+    ny.mctmt.zone2:
+      type: Rate
+      value: { num: 34, den: 10000 }
+      cite:
+        doc: ny_it201i
+        locator: 'p. 17, Line 54d: MCTMT for Zone 2, "Multiply the amount on line 54b by 0.34% (0.0034)."'

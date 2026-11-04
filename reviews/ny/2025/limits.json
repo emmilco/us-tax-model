@@ -1,0 +1,69 @@
+{
+ "rulings": {
+  "limit:ny_it201i:p9:fa97357b": {
+   "enforced_by": [
+    "ny_it201.gate.line29"
+   ],
+   "reason": "The $20,000 limit of the pension and annuity income exclusion (line 29); the exclusion is refused, not computed (decision B4)."
+  },
+  "limit:ny_it201i:p9:aa7e7dff": {
+   "enforced_by": [
+    "ny_it201.gate.line29"
+   ],
+   "reason": "Line 29 for a filer who became 59 1/2 during 2025; refused (decision B4)."
+  },
+  "limit:ny_it201i:p10:d4c10dca": {
+   "enforced_by": [
+    "ny_it201.gate.line29"
+   ],
+   "reason": "Line 29 for a beneficiary; refused (decision B4)."
+  },
+  "limit:ny_it201i:p10:63f43992": {
+   "enforced_by": [
+    "ny_it201.gate.line29"
+   ],
+   "reason": "Line 29's combined limit for a decedent and beneficiaries; refused (decision B4)."
+  },
+  "limit:ny_it201i:p10:0ae0aab4": {
+   "enforced_by": [
+    "ny_it201.gate.line29"
+   ],
+   "reason": "Line 29's beneficiary share; refused (decision B4)."
+  },
+  "limit:ny_it201i:p10:85f96cc1": {
+   "enforced_by": [
+    "ny_it201.gate.line29",
+    "ny_it201.gate.it225"
+   ],
+   "reason": "The combined pension and disability income exclusion limit; both lines are refused (line 29 and Form IT-225)."
+  },
+  "limit:ny_it201i:p10:e0b6f345": {
+   "enforced_by": [
+    "ny_it201.gate.line30"
+   ],
+   "reason": "The $5,000 / $10,000 cap of the New York 529 deduction (line 30 worksheet); refused (decision B4)."
+  },
+  "limit:ny_it201i:p30:34b8cdd2": {
+   "enforced_by": [
+    "ny_it201.gate.part_year_state"
+   ],
+   "reason": "Group B of the domicile exception (a nonresident despite New York domicile); the residency question asks whether the filer was a resident for all of 2025 and refuses otherwise."
+  },
+  "limit:ny_it201i:p31:37c5358b": {
+   "not_applicable": "The New York NOL limit applies only with a federal NOL deduction, which the federal encoding refuses (scope.schedule1, \"a net operating loss deduction\")."
+  },
+  "limit:ny_it270i:p1:b4532fb1": {
+   "enforced_by": [
+    "ny_it201.gate.it270"
+   ],
+   "reason": "IT-270 eligibility (dependents, income thresholds, investment income); the credit is refused wherever dependents are claimed and federal AGI is within $5,000 of the highest threshold (decision B10)."
+  },
+  "limit:ny_it270i:p1:e84b0eb1": {
+   "enforced_by": [
+    "ny_it201.gate.it270"
+   ],
+   "reason": "The partial credit up to $5,000 above the threshold; the screen's bound is the highest threshold plus $5,000 (ny.it270.max_threshold_plus), so no case with a partial credit passes it."
+  }
+ },
+ "baseline": {}
+}

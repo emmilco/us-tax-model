@@ -1,0 +1,105 @@
+# Tax computation worksheets 1, 7 and 12 (IT-201-I pp. 34, 36, 37; web edition): New York AGI of more than
+# $107,650 and taxable income within the bracket that holds $107,650 to $157,650 of AGI. The whole of taxable
+# income is phased into a flat rate (5.5% for worksheet 1, 6% for 7 and 12, bound as `rate`) over $50,000 of AGI;
+# at $157,650 or more the flat-rate amount is the tax ("Stop"). One definition for the three (decision C2).
+
+def:
+  id: ny_tcw_first
+  kind: def
+  title: "Tax computation worksheets 1, 7 and 12 (New York AGI of more than $107,650)"
+  tax_year: 2025
+  parameters: [agi, ti, status, rate]
+  lines:
+    - id: agi
+      printed: "1"
+      label: "Enter your New York adjusted gross income from line 33"
+      type: Dollars
+      expr: { op: input, source: "Bound by the calling line (Form IT-201 line 33)." }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 1, "1. Enter your New York adjusted gross income from line 33"' }
+    - id: ti
+      printed: "2"
+      label: "Enter your taxable income from line 38"
+      type: NonNegDollars
+      expr: { op: input, source: "Bound by the calling line (Form IT-201 line 38)." }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 1, "2. Enter your taxable income from line 38"' }
+    - id: status
+      printed: "(status)"
+      label: "Filing status"
+      type: Enum(filing_status)
+      expr: { op: input, source: "Bound by the calling line (the federal filing status, IT-201 item A)." }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation—New York adjusted gross income of more than $107,650, "Find your New York State tax by using the correct tax computation worksheet within your filing status (see below)."' }
+    - id: rate
+      printed: "(3)"
+      label: "The worksheet's flat rate (5.5% on worksheet 1; 6% on worksheets 7 and 12)"
+      type: Rate
+      expr: { op: input, source: "Bound by the calling line (ny.tcw.first.rate or ny.tcw.first.rate6)." }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 1, "3. Multiply line 2 by 5.5% (0.055)"; Tax computation worksheet 7, "3. Multiply line 2 by 6% (0.06)"' }
+    - id: line3
+      printed: "3"
+      label: "Multiply line 2 by the flat rate"
+      type: NonNegDollars
+      expr: { op: multiply_rate, amount: "ti", rate: "rate", unit: 100 }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 1, "3. Multiply line 2 by 5.5% (0.055)"' }
+      ambiguity: amb.ny.2025.whole_dollars
+    - id: stop
+      printed: "(3, Stop)"
+      label: "Is the line 1 amount $157,650 or more?"
+      type: Bool
+      expr: { op: test, ge: ["agi", { param: "ny.tcw.first.stop" }] }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 1, "(Stop: If the line 1 amount is $157,650 or more, skip lines 4 through 8 and enter the line 3 amount on line 9)"' }
+    - id: line4
+      printed: "4"
+      label: "Enter your New York State tax on the line 2 amount from the New York State tax rate schedule"
+      type: NonNegDollars
+      expr:
+        op: copy
+        from:
+          def: ny_rs
+          bind: { amount: "ti", status: "status" }
+          line: "tax"
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 1, "4. Enter your New York State tax on the line 2 amount from the New York State tax rate schedule"' }
+    - id: line5
+      printed: "5"
+      label: "Subtract line 4 from line 3"
+      type: NonNegDollars
+      expr: { op: subtract_floor0, from: "line3", take: "line4" }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 1, "5. Subtract line 4 from line 3"' }
+      note: Line 3 is never less than line 4 here (the flat rate is the top rate of every band below the worksheet's taxable-income limit), so the floor at zero never acts; it keeps the amount prorated on line 8 non-negative.
+    - id: line6
+      printed: "6"
+      label: "Enter the excess of line 1 over $107,650"
+      type: NonNegDollars
+      expr: { op: subtract_floor0, from: "agi", take: { param: "ny.tcw.first.start" } }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 1, "6. Enter the excess of line 1 over $107,650"' }
+    - id: line8_cents
+      printed: "7, 8"
+      label: "Divide line 6 by $50,000 and round the result to the fourth decimal place (line 7); multiply line 5 by line 7 (line 8)"
+      type: NonNegDollars
+      expr: { op: prorate, amount: "line5", part: "line6", whole: { param: "ny.tcw.phase" }, places: 4 }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 1, "7. Divide line 6 by $50,000 and round the result to the fourth decimal place", "8. Multiply line 5 by line 7"' }
+      ambiguity: amb.ny.2025.fourth_decimal
+    - id: line8
+      printed: "8"
+      label: "Multiply line 5 by line 7 (whole dollars)"
+      type: NonNegDollars
+      expr: { op: round, of: "line8_cents", unit: 100, rule: half_up }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 1, "8. Multiply line 5 by line 7"' }
+      ambiguity: amb.ny.2025.whole_dollars
+    - id: line9_phased
+      printed: "9"
+      label: "Add lines 4 and 8"
+      type: NonNegDollars
+      expr: { op: sum, of: ["line4", "line8"] }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 1, "9. Add lines 4 and 8. Enter here and on line 39."' }
+    - id: tax
+      printed: "9"
+      label: "Add lines 4 and 8, or, at the Stop, the line 3 amount. Enter here and on line 39."
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+          - guard: { op: test, eq: ["stop", { const: true }] }
+            then: "line3"
+          - guard: { op: test, eq: ["stop", { const: false }] }
+            then: "line9_phased"
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 1, "(Stop: If the line 1 amount is $157,650 or more, skip lines 4 through 8 and enter the line 3 amount on line 9)", "9. Add lines 4 and 8. Enter here and on line 39."' }

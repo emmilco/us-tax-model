@@ -1,0 +1,98 @@
+# Tax computation worksheets 2 to 5, 8 to 10 and 13 to 15 (IT-201-I pp. 34–39; read from the web edition, which
+# keeps each printed amount on its line): the recapture of the tax table benefit for New York AGI above a bracket
+# start. One definition instantiated per worksheet (decision C2), its start, Recapture Base and Incremental Benefit
+# amounts bound by the calling line from params/ny/2025.yaml (ny.tcw.<group>.w<N>.*). Worksheets 1, 7 and 12
+# differ in shape (a flat-rate step and a stop) and are ny_tcw_first.
+
+def:
+  id: ny_tcw
+  kind: def
+  title: "Tax computation worksheets 2–5, 8–10, 13–15 (New York AGI of more than $107,650)"
+  tax_year: 2025
+  parameters: [agi, ti, status, start, recapture, incremental]
+  lines:
+    - id: agi
+      printed: "1"
+      label: "Enter your New York adjusted gross income from line 33"
+      type: Dollars
+      expr: { op: input, source: "Bound by the calling line (Form IT-201 line 33)." }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 2, "1. Enter your New York adjusted gross income from line 33"' }
+    - id: ti
+      printed: "2"
+      label: "Enter your taxable income from line 38"
+      type: NonNegDollars
+      expr: { op: input, source: "Bound by the calling line (Form IT-201 line 38)." }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 2, "2. Enter your taxable income from line 38"' }
+    - id: status
+      printed: "(status)"
+      label: "Filing status"
+      type: Enum(filing_status)
+      expr: { op: input, source: "Bound by the calling line (the federal filing status, IT-201 item A)." }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation—New York adjusted gross income of more than $107,650, "Find your New York State tax by using the correct tax computation worksheet within your filing status (see below)."' }
+    - id: start
+      printed: "(6)"
+      label: "The amount the excess of line 1 is measured over"
+      type: NonNegDollars
+      expr: { op: input, source: "Bound by the calling line (the worksheet's printed amount, ny.tcw.<group>.w<N>.start)." }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 2, "6. Enter the excess of line 1 over $161,550"' }
+    - id: line3
+      printed: "3"
+      label: "Enter your New York State tax on the line 2 amount from the New York State tax rate schedule"
+      type: NonNegDollars
+      expr:
+        op: copy
+        from:
+          def: ny_rs
+          bind: { amount: "ti", status: "status" }
+          line: "tax"
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 2, "3. Enter your New York State tax on the line 2 amount from the New York State tax rate schedule"' }
+    - id: recapture
+      printed: "4"
+      label: "Recapture Base amount"
+      type: NonNegDollars
+      expr: { op: input, source: "Bound by the calling line (the worksheet's printed Recapture Base amount, ny.tcw.<group>.w<N>.recapture)." }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 2, "4. Recapture Base amount"' }
+    - id: incremental
+      printed: "5"
+      label: "Incremental Benefit amount"
+      type: NonNegDollars
+      expr: { op: input, source: "Bound by the calling line (the worksheet's printed Incremental Benefit amount, ny.tcw.<group>.w<N>.incremental)." }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 2, "5. Incremental Benefit amount"' }
+    - id: line6
+      printed: "6"
+      label: "Enter the excess of line 1 over the worksheet's amount"
+      type: NonNegDollars
+      expr: { op: subtract_floor0, from: "agi", take: "start" }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 2, "6. Enter the excess of line 1 over $161,550"' }
+    - id: phase
+      printed: "(7)"
+      label: "$50,000"
+      type: NonNegDollars
+      expr: { op: param, ref: "ny.tcw.phase" }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 2, "7. Enter the lesser of line 6 or $50,000"' }
+    - id: line7
+      printed: "7"
+      label: "Enter the lesser of line 6 or $50,000"
+      type: NonNegDollars
+      expr: { op: smaller_of, of: ["line6", "phase"] }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 2, "7. Enter the lesser of line 6 or $50,000"' }
+    - id: line9_cents
+      printed: "8, 9"
+      label: "Divide line 7 by $50,000 and round the result to the fourth decimal place (line 8); multiply line 5 by line 8 (line 9)"
+      type: NonNegDollars
+      expr: { op: prorate, amount: "incremental", part: "line7", whole: { param: "ny.tcw.phase" }, places: 4 }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 2, "8. Divide line 7 by $50,000 and round the result to the fourth decimal place", "9. Multiply line 5 by line 8"' }
+      ambiguity: amb.ny.2025.fourth_decimal
+    - id: line9
+      printed: "9"
+      label: "Multiply line 5 by line 8 (whole dollars)"
+      type: NonNegDollars
+      expr: { op: round, of: "line9_cents", unit: 100, rule: half_up }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 2, "9. Multiply line 5 by line 8"' }
+      ambiguity: amb.ny.2025.whole_dollars
+    - id: tax
+      printed: "10"
+      label: "Add lines 3, 4, and 9. Enter here and on line 39."
+      type: NonNegDollars
+      expr: { op: sum, of: ["line3", "recapture", "line9"] }
+      cite: { doc: ny_it201i-html, locator: 'Tax computation worksheet 2, "10. Add lines 3, 4, and 9. Enter here and on line 39."' }

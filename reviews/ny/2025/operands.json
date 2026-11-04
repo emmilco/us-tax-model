@@ -1,0 +1,8 @@
+{
+ "rulings": {
+  "operands:tax": {
+   "reason": "ny_tcw_first.tax is the worksheet's line 9 with its Stop: a choose between line 3 (at $157,650 or more of line 1, \"enter the line 3 amount on line 9\") and line9_phased, which adds lines 4 and 8 as printed; the printed operands are those of line9_phased."
+  }
+ },
+ "baseline": {}
+}

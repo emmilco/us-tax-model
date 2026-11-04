@@ -1,0 +1,93 @@
+register:
+  tax_year: 2025
+  entries:
+    - id: amb.ny.2025.whole_dollars
+      text_at_issue: New York requires whole-dollar entries ("enter whole dollar amounts only ... round cents to the
+        nearest dollar"), but does not say whether a federal amount carried in cents is rounded as it is entered, or
+        whether a computed amount (a rate times an amount) is rounded where it is computed.
+      readings:
+        - Round each federal amount half-up to the dollar as it is entered on lines 1 to 18, and each computed tax,
+          credit or worksheet line half-up to the dollar where it is computed.
+        - Round only the federal adjusted gross income, treating the federal amounts as already whole.
+        - Keep cents and round only the final tax lines.
+      chosen: Round each federal amount half-up to the dollar as it is entered on lines 1 to 18, and each computed tax,
+        credit or worksheet line half-up to the dollar where it is computed.
+      reason: >
+        Owner decision C4 (docs/ny/DECISIONS.md, 2026-11-04). The instructions require every entry on the return and
+        its worksheets to be a whole dollar and give the half-up rule; rounding where a line is entered is the literal
+        reading. Rounding lines 1 to 18 separately can make line 19 differ by a few dollars from federal AGI rounded
+        once; ny_it201.line19_agrees shows whether they agree. A product of a rate and an amount is rounded once to the
+        dollar (multiply_rate with unit 100), not first to the cent.
+      cite:
+        doc: ny_it201i
+        locator: 'p. 2, Entering whole dollar amounts, "When you enter amounts on your return, enter whole dollar amounts only."'
+        quote: "Increase amounts that are 50 cents or more to the next dollar."
+    - id: amb.ny.2025.fourth_decimal
+      text_at_issue: The tax computation worksheets say "Divide line 6 by $50,000 and round the result to the fourth
+        decimal place" without saying in which direction a fifth decimal is rounded; the product of that ratio and a
+        whole-dollar amount is then rounded to the dollar (amb.ny.2025.whole_dollars).
+      readings:
+        - Round the ratio half-up at the fourth decimal place.
+        - Truncate the ratio at the fourth decimal place.
+      chosen: Round the ratio half-up at the fourth decimal place.
+      reason: >
+        "Round" without a direction is read as ordinary half-up rounding, the reading the federal register takes for
+        the same instruction on the Student Loan Interest Deduction Worksheet (amb.2025.sli_ratio_places). The
+        product is computed by the prorate atom, which rounds it half-up to the cent, and is then rounded half-up to
+        the dollar; the two roundings can differ from one rounding of the exact product only when the exact product
+        has a fractional part from $0.495 up to $0.50, by $1.
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 1, "7. Divide line 6 by $50,000 and round the result to the fourth decimal place"'
+    - id: amb.ny.2025.line25
+      text_at_issue: The 2025 form labels line 4 "(also enter on line 25)" and line 25 "(from line 4)", but the 2025
+        instructions for line 25 mention only New York's inflation refund check included in federal adjusted gross
+        income.
+      readings:
+        - Line 25 is the amount on line 4 (the form's labels).
+        - Line 25 is only an inflation refund check included in federal AGI (the instructions).
+      chosen: Refuse when line 4 is more than zero or an inflation refund check was included in federal AGI; line 25 is
+        zero otherwise, where both readings agree.
+      reason: Owner decision B1 (docs/ny/DECISIONS.md). A refusal cannot give a wrong answer; revisit with the 2026
+        instructions.
+      cite:
+        doc: ny_it201i
+        locator: 'p. 8, Line 25, "If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25."'
+    - id: amb.ny.2025.school_credit_income
+      text_at_issue: Line 69a disqualifies a filer whose "income (see below) is more than $500,000", but the text below
+        line 69a defines only "New York City taxable income"; "income" is defined above, under line 69, "for purposes
+        of determining your New York City school tax credit".
+      readings:
+        - The line 69 income (federal AGI less IRA distributions included in it).
+        - New York City taxable income (line 47).
+      chosen: Refuse line 69a when either amount is more than $500,000; below that both readings agree.
+      reason: Owner decision B7 (docs/ny/DECISIONS.md); the verification of the premise map notes that the stated
+        scope of the definition favours the first reading.
+      cite:
+        doc: ny_it201i
+        locator: 'p. 20, Line 69a, "or your income (see below) is more than $500,000, you do not qualify to claim this credit"'
+    - id: amb.ny.2025.item_c
+      text_at_issue: New York's item C asks whether you "can be claimed as a dependent on another taxpayer's federal
+        return" and says to mark Yes "even if the other taxpayer did not claim you"; the federal question this project
+        asks (sa.dependent) excludes the case where the person who could claim you is not required to file.
+      readings:
+        - Ask item C as a New York question of its own, in New York's words.
+        - Reuse the federal answer.
+      chosen: Ask item C as a New York question of its own, in New York's words.
+      reason: Owner decision B8 (docs/ny/DECISIONS.md).
+      cite:
+        doc: ny_it201i
+        locator: 'p. 5, Item C, "You must mark the Yes box even if the other taxpayer did not claim you as a dependent."'
+    - id: amb.ny.2025.eic_could_claim
+      text_at_issue: Lines 65 and 70 ask whether you claimed the federal earned income credit "or could you have claimed
+        it based on your federal adjusted gross income", without saying how that is judged.
+      readings:
+        - Refuse when the federal earned income credit is more than zero, or federal AGI is less than the federal credit's
+          income limit for the filing status and number of qualifying children.
+        - Refuse only when the federal earned income credit is more than zero.
+      chosen: Refuse when the federal earned income credit is more than zero, or federal AGI is less than the federal
+        credit's income limit for the filing status and number of qualifying children.
+      reason: Owner decision B9 (docs/ny/DECISIONS.md); the federal limit is the encoded federal one (eic.limit_*).
+      cite:
+        doc: ny_it201i
+        locator: 'p. 19, Line 65, "Did you claim the federal earned income credit for 2025 on your federal income tax return, or could you have claimed it based on your federal adjusted gross income?"'
