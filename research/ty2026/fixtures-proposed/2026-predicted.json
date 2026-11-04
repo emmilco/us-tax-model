@@ -1,0 +1,302 @@
+{
+  "tax_year": 2026,
+  "status": "PROPOSED source-predicted cases (TY2026 step 5): predicted by hand from the cited 2026 sources before any evaluation; partial inputs (only the facts the predicted lines read); not read by the test suite. At adoption each becomes a full fixture (every input answered) in fixtures/2026/ and is re-checked against the final 2026 documents; draft-sourced cases are labelled. Values in cents.",
+  "cases": [
+    {
+      "id": "ty2026.s3a.eligible_wants_benefit",
+      "covers": [
+        "s3a.line2",
+        "s3a.line5",
+        "s3a.line6",
+        "s3a.line8",
+        "f1040.line32b",
+        "f1040.line32c"
+      ],
+      "evidence": "source-predicted (draft)",
+      "evidence_note": "Schedule 3-A (2026 draft, f1040s3a p. 2): line 1a $5,000 (Form 1040 line 32a), 1b $0 (line 31) -> line 2 $5,000; line 3 $1,200 (Form 1040 line 24a), line 4 $200 (Schedule 2 line 20) -> line 5 $1,000; line 6: 2 more than 5, $5,000 - $1,000 = $4,000; line 7 Yes; line 8 Yes -> enter -0- on Form 1040 line 32b; line 32c = $5,000 - $0.",
+      "inputs_partial": {
+        "f1040.line32": 500000,
+        "f1040.line31": 0,
+        "f1040.line24": 120000,
+        "s2.line20": 20000,
+        "s3a.wants_benefit": true,
+        "s3a.eligible": true
+      },
+      "expected": {
+        "s3a.line2": 500000,
+        "s3a.line5": 100000,
+        "s3a.line6": 400000,
+        "s3a.line8": 0,
+        "f1040.line32b": 0,
+        "f1040.line32c": 500000
+      }
+    },
+    {
+      "id": "ty2026.s3a.not_eligible",
+      "covers": [
+        "s3a.line8",
+        "f1040.line32c"
+      ],
+      "evidence": "source-predicted (draft)",
+      "evidence_note": "As ty2026.s3a.eligible_wants_benefit but line 8 No: 'Enter the amount from line 6 here and on Form 1040 ... line 32b' -> $4,000; line 32c = $5,000 - $4,000 = $1,000.",
+      "inputs_partial": {
+        "f1040.line32": 500000,
+        "f1040.line31": 0,
+        "f1040.line24": 120000,
+        "s2.line20": 20000,
+        "s3a.wants_benefit": true,
+        "s3a.eligible": false
+      },
+      "expected": {
+        "s3a.line8": 400000,
+        "f1040.line32b": 400000,
+        "f1040.line32c": 100000
+      }
+    },
+    {
+      "id": "ty2026.s3a.declines_benefit",
+      "covers": [
+        "s3a.line8"
+      ],
+      "evidence": "source-predicted (draft)",
+      "evidence_note": "As ty2026.s3a.eligible_wants_benefit but line 7 No: 'Stop. Enter the amount from line 6 on Form 1040 ... line 32b' -> $4,000 (line 8 not asked).",
+      "inputs_partial": {
+        "f1040.line32": 500000,
+        "f1040.line31": 0,
+        "f1040.line24": 120000,
+        "s2.line20": 20000,
+        "s3a.wants_benefit": false
+      },
+      "expected": {
+        "s3a.line8": 400000,
+        "f1040.line32b": 400000
+      }
+    },
+    {
+      "id": "ty2026.s3a.tax_exceeds_credits",
+      "covers": [
+        "s3a.line6",
+        "s3a.line8"
+      ],
+      "evidence": "source-predicted (draft)",
+      "evidence_note": "Line 1a $2,000, 1b $500 -> line 2 $1,500; line 3 $3,000, line 4 $0 -> line 5 $3,000; line 2 is not more than line 5 -> 'No. Stop. Enter -0- here. Enter -0- on Form 1040 ... line 32b'.",
+      "inputs_partial": {
+        "f1040.line32": 200000,
+        "f1040.line31": 50000,
+        "f1040.line24": 300000,
+        "s2.line20": 0,
+        "s3a.wants_benefit": false
+      },
+      "expected": {
+        "s3a.line6": 0,
+        "s3a.line8": 0,
+        "f1040.line32b": 0
+      }
+    },
+    {
+      "id": "ty2026.sa.salt_phasedown_single",
+      "covers": [
+        "sa.line5e"
+      ],
+      "evidence": "source-predicted (final (statute) and draft (Schedule A))",
+      "evidence_note": "Single, Form 1040 line 11b $600,000, line 5d $50,000. Statute section 164(b)(7) (plaw-119-21 p. 99): 2026 applicable limitation $40,400 reduced by 30 percent of the excess of MAGI over $505,000: 30% of $95,000 = $28,500; $40,400 - $28,500 = $11,900, not less than $10,000. Line 5e = smaller of $50,000 or $11,900 = $11,900. No excluded income (MAGI = AGI).",
+      "inputs_partial": {
+        "f1040.status": "single",
+        "f1040.line11b": 60000000,
+        "sa.line5a": 5000000,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.excluded_income": false
+      },
+      "expected": {
+        "sa.line5e": 1190000
+      }
+    },
+    {
+      "id": "ty2026.sa.salt_floor_single",
+      "covers": [
+        "sa.line5e"
+      ],
+      "evidence": "source-predicted (final (statute) and draft (Schedule A))",
+      "evidence_note": "Single, line 11b $700,000, line 5d $50,000: 30% of $195,000 = $58,500 exceeds $40,400; the reduction 'shall not result in the applicable limitation amount being less than $10,000' -> $10,000; line 5e $10,000.",
+      "inputs_partial": {
+        "f1040.status": "single",
+        "f1040.line11b": 70000000,
+        "sa.line5a": 5000000,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.excluded_income": false
+      },
+      "expected": {
+        "sa.line5e": 1000000
+      }
+    },
+    {
+      "id": "ty2026.sa.salt_mfs",
+      "covers": [
+        "sa.line5e"
+      ],
+      "evidence": "source-predicted (final (statute) and draft (Schedule A))",
+      "evidence_note": "Married filing separately, line 11b $300,000, line 5d $30,000. Threshold halved to $252,500 (Schedule A 2026 draft line 5e; statute 'half the threshold amount'): 30% of $47,500 = $14,250; $40,400 - $14,250 = $26,150 (not below $10,000); half for a married individual filing separately = $13,075; line 5e = smaller of $30,000 or $13,075 = $13,075. Ambiguity: the order of the floor and the halving is not printed on the form; the statute applies the $10,000 floor to the applicable limitation amount and halves the amount for a separate return.",
+      "inputs_partial": {
+        "f1040.status": "mfs",
+        "f1040.line11b": 30000000,
+        "sa.line5a": 3000000,
+        "sa.line5b": 0,
+        "sa.line5c": 0,
+        "sa.excluded_income": false
+      },
+      "expected": {
+        "sa.line5e": 1307500
+      }
+    },
+    {
+      "id": "ty2026.sa.gambling_90_limited_by_winnings",
+      "covers": [
+        "sa.line16_gambling",
+        "sa.line16"
+      ],
+      "evidence": "source-predicted (final (statute) and draft (Schedule A))",
+      "evidence_note": "Itemizing; gambling winnings on Schedule 1 line 8b $8,000; losses $10,000. Statute section 165(d)(1) (plaw-119-21 p. 96): '(A) shall be equal to 90 percent of the amount of such losses' = $9,000 '(B) ... allowed only to the extent of the gains' = $8,000. Schedule A (2026 draft) line 17a = $8,000.",
+      "inputs_partial": {
+        "s1.has_gambling": true,
+        "s1.line8b": 800000,
+        "sa.gambling_losses": 1000000
+      },
+      "expected": {
+        "sa.line16": 800000
+      }
+    },
+    {
+      "id": "ty2026.sa.gambling_90_below_winnings",
+      "covers": [
+        "sa.line16_gambling",
+        "sa.line16"
+      ],
+      "evidence": "source-predicted (final (statute) and draft (Schedule A))",
+      "evidence_note": "Winnings $8,000, losses $5,000: 90% of $5,000 = $4,500, under the winnings: line 17a = $4,500 (2025 rule: $5,000).",
+      "inputs_partial": {
+        "s1.has_gambling": true,
+        "s1.line8b": 800000,
+        "sa.gambling_losses": 500000
+      },
+      "expected": {
+        "sa.line16": 450000
+      }
+    },
+    {
+      "id": "ty2026.f1040.std_deduction_single_65",
+      "covers": [
+        "sa.standard"
+      ],
+      "evidence": "source-predicted (final)",
+      "evidence_note": "Single, born before January 2, 1962, not blind. Rev. Proc. 2025-32 section 4.14 (p. 18): basic standard deduction $16,100; additional amount $1,650 'increased to $2,050 if the individual is also unmarried'. $16,100 + $2,050 = $18,150.",
+      "inputs_partial": {
+        "f1040.status": "single",
+        "person[taxpayer].age65": true,
+        "person[taxpayer].blind": false,
+        "sa.dependent": false
+      },
+      "expected": {
+        "sa.standard": 1815000
+      }
+    },
+    {
+      "id": "ty2026.f1040.std_deduction_mfj_both_65",
+      "covers": [
+        "sa.standard"
+      ],
+      "evidence": "source-predicted (final)",
+      "evidence_note": "Married filing jointly, both born before January 2, 1962. $32,200 + 2 x $1,650 = $35,500 (Rev. Proc. 2025-32 p. 18).",
+      "inputs_partial": {
+        "f1040.status": "mfj",
+        "person[taxpayer].age65": true,
+        "person[spouse].age65": true,
+        "person[taxpayer].blind": false,
+        "person[spouse].blind": false,
+        "sa.dependent": false
+      },
+      "expected": {
+        "sa.standard": 3550000
+      }
+    },
+    {
+      "id": "ty2026.f8889.self_only_full_year",
+      "covers": [
+        "f8889.line3"
+      ],
+      "evidence": "source-predicted (final (Rev. Proc. 2025-19) and draft (i8889))",
+      "evidence_note": "Self-only HDHP coverage on the first day of every month of 2026, under 55, not married: Line 3 Limitation Chart 'Enter $4,400 on the line below for the month' x 12 / 12 = $4,400; rp-25-19 p. 2 'is $4,400'.",
+      "inputs_partial": {
+        "hsa_coverage_all_months": "self_only",
+        "age55": false
+      },
+      "expected": {
+        "f8889.line3": 440000
+      }
+    },
+    {
+      "id": "ty2026.f8889.family_55_unmarried",
+      "covers": [
+        "f8889.line3"
+      ],
+      "evidence": "source-predicted (draft)",
+      "evidence_note": "Family coverage all year, unmarried, 55 or older at the end of 2026: chart 'If, at the end of 2026, you were unmarried and age 55 or older, enter $9,750 for the month' -> $9,750 (i8889 2026 draft p. 7).",
+      "inputs_partial": {
+        "hsa_coverage_all_months": "family",
+        "age55": true,
+        "married": false
+      },
+      "expected": {
+        "f8889.line3": 975000
+      }
+    },
+    {
+      "id": "ty2026.f1040.line12f_refused",
+      "covers": [
+        "f1040.line12f"
+      ],
+      "evidence": "source-predicted (draft)",
+      "evidence_note": "Standard deduction taken (not itemizing) and $500 of cash gifts to charity on Schedule A line 11's question: Form 1040 (2026 draft) line 12f 'Charitable contribution deduction for non-itemizers (see instructions)'; the instructions are not published, so the proposal refuses (forms-proposed/f1040.yaml, f1040.gate.nonitemizer_gifts).",
+      "inputs_partial": {
+        "sa.itemizes": false,
+        "sa.line11": 50000
+      },
+      "expected": {},
+      "expect_refusal": "f1040.line12f"
+    },
+    {
+      "id": "ty2026.f1040.itemized_limit_screen",
+      "covers": [
+        "f1040.gate.itemized_limit"
+      ],
+      "evidence": "source-predicted (draft)",
+      "evidence_note": "Itemizing; Form 1040 line 11b $500,000; lines 13a and 13b $0. Schedule A (2026 draft) line 18: $500,000 is more than $384,350 -> 'Yes. Your deductions may be limited'; the worksheet is not published, so the proposal refuses on Form 1040 line 15.",
+      "inputs_partial": {
+        "sa.itemizes": true,
+        "f1040.line11b": 50000000,
+        "f1040.line13a": 0,
+        "f1040.line13b": 0
+      },
+      "expected": {},
+      "expect_refusal": "f1040.line15"
+    },
+    {
+      "id": "ty2026.f1040.itemized_limit_screen_below",
+      "covers": [
+        "f1040.gate.itemized_limit"
+      ],
+      "evidence": "source-predicted (draft)",
+      "evidence_note": "As above with line 11b $384,350: not more than $384,350 -> 'No. Your deductions are not limited'; no refusal.",
+      "inputs_partial": {
+        "sa.itemizes": true,
+        "f1040.line11b": 38435000,
+        "f1040.line13a": 0,
+        "f1040.line13b": 0
+      },
+      "expected": {
+        "f1040.gate.itemized_limit": false
+      }
+    }
+  ]
+}
