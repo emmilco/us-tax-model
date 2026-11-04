@@ -209,7 +209,8 @@
     "id": "rp-2024-40",
     "url": "https://www.irs.gov/pub/irs-drop/rp-24-40.pdf",
     "document_tax_year": 2025,
-    "purpose": "Stage 1 rate schedule for the Tax Table midpoint conjecture and a 2025 parameter cross-check; not a form or worksheet source"
+    "purpose": "Stage 1 rate schedule for the Tax Table midpoint conjecture and a 2025 parameter cross-check; not a form or worksheet source",
+    "next": "rp-25-32"
   },
   {
     "id": "i1040sb",
@@ -431,7 +432,8 @@
   },
   {
     "id": "n-25-05",
-    "url": "https://www.irs.gov/pub/irs-drop/n-25-05.pdf"
+    "url": "https://www.irs.gov/pub/irs-drop/n-25-05.pdf",
+    "next": "n-26-10"
   },
   {
     "id": "soi-nonfarm-sp",
@@ -657,7 +659,8 @@
     "id": "fr-2024-00796",
     "url": "https://www.govinfo.gov/content/pkg/FR-2024-01-17/pdf/2024-00796.pdf",
     "document_tax_year": 2025,
-    "purpose": "Stage 18: the 2024 HHS poverty guidelines (89 FR 2961), the second printing of Form 8962 Tables 1-1 to 1-3"
+    "purpose": "Stage 18: the 2024 HHS poverty guidelines (89 FR 2961), the second printing of Form 8962 Tables 1-1 to 1-3",
+    "next": "fr-2025-01377"
   },
   {
     "id": "usc-26-25a",
