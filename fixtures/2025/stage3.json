@@ -3427,7 +3427,7 @@
         "sales.loss.mfs.0"
       ],
       "evidence": "synthetic regression (not independently hand-worked)",
-      "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim.",
+      "evidence_note": "Synthetic inputs and manually calculated expectations; no class B claim. Mutation-score assertion (T-159), checked against the archived i1040gi: a married filer filing separately with no qualifying child answers Yes to Step 4, question 1 (p. 41, \"Yes. STOP You can't take the credit.\"), a stop that does not say to check line 27c; no stop before it says so.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": false,
@@ -3555,6 +3555,10 @@
           "cents": 0
         },
         "sd.line22": {
+          "kind": "bool",
+          "value": false
+        },
+        "eic.check_27c": {
           "kind": "bool",
           "value": false
         }

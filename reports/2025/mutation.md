@@ -9,7 +9,7 @@ the fixture test compares).
 | --- | --- |
 | Mutants | 2816 |
 | Killed by the checker | 300 |
-| Killed by fixtures | 2389 (10 only by class M cases) |
+| Killed by fixtures | 2389 (9 only by class M cases) |
 | Surviving | 127 (127 provably equivalent) |
 | Mutation score (raw) | 95.5% |
 | Mutation score (equivalent mutants excluded) | 100.0% |
@@ -22,7 +22,6 @@ keep it (or a stage fixture with the same facts and source-predicted values) amo
 | Mutant | Kind | Location | First class M case killing it |
 | --- | --- | --- | --- |
 | filter.f8880.f8880.line2a | remove collection filter | f8880.f8880.line2a | classm.f8880.2.deepseek |
-| boundary.person.person.ira_files_8606 | replace strict greater-than with inclusive | person.person.ira_files_8606 | classm.f8606.1 |
 | operand.s3.s3.line15.line9 | replace an operand | s3.s3.line15 | classm.s3.2.deepseek |
 | operand.sales.sales.wash_over.b | replace an operand | sales.sales.wash_over | classm.f1040.6.deepseek |
 | operand.scveh.scveh.line19_hy.rate_hy.rate | replace an operand | scveh.scveh.line19_hy | classm.sc.2 |
