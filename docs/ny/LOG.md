@@ -13,27 +13,35 @@ Session: https://claude.ai/code/session_01STA2Jxb5LuWnA1Q6LPZzfH
 history (commits 4b4b161, df4895c, 640f150); removing them from history needs a rewrite and force push, which is the
 owner's decision.
 
-**Done** (commits "NY Phase 3.1" to "NY Phase 3.8"):
+**Done and verified** (commits "NY Phase 3.1" to "NY Phase 3.4", each with the federal canonical output
+byte-identical to the starting point):
 1. The jurisdiction layout in the build (New York documents in the one canonical build, written to files of their
    own) and in the Python tools (`tools/jurisdiction.py`, `--jurisdiction ny`).
 2. Parameters (`params/ny/2025.yaml`) and tables: the State and City Tax Tables extracted from the web page and
    checked against the rate schedules (all 7,812 cells explained), the household credit tables.
 3. Form IT-201 (`forms/ny/2025/`), with the refusal screens of the decisions; the ambiguity register.
 4. The New York interview (`interview/ny/`), asked after the federal questions.
-5. 135 fixtures (`fixtures/ny/2025/it201.json`), every value predicted by `tools/ny_predict.py` from the archived
-   sources before the encoding ran; the two official tax-table examples as class A; every New York branch taken;
-   135/135 pass; the New York interview walked over every fixture at build.
-6. PolicyEngine-US differential: 442 line comparisons, every difference explained (the Tax Table, rounded printed
-   bases), two of them the open item on recapture worksheet selection. The Lean change is written but untested (no
-   toolchain here); OpenTaxSolver needs a manual download. Mutation: see the step commit.
-7. Three independent in-session reviews; every medium-or-higher finding ruled, the defects fixed with a fixture each
+
+**Done but committed only as work in progress** (the session ran out of budget before the step commits):
+5. Fixtures: 135 cases (`fixtures/ny/2025/it201.json`), every value predicted by `tools/ny_predict.py` from the
+   archived sources before the encoding ran; the two official tax-table examples as class A. 135/135 pass
+   (`test-fixtures --ny`) on the final forms, and every New York branch was taken on the run before the review fixes
+   (`coverage --ny` was not rerun after them). The build with the review fixes passed, and the federal canonical
+   output stayed byte-identical. **Not finished:** the build that walks the New York interview over the final
+   fixtures was stopped unfinished; the previous walk failed only because the joint-return paths need more than 200
+   questions, now raised to 600 for New York.
+6. PolicyEngine-US differential: 442 line comparisons, every difference with a stated cause, two of them the open
+   item on recapture worksheet selection (`reports/ny/2025/engine_differential.md`). **Not done:** the Lean change is
+   written but untested (no toolchain here); OpenTaxSolver needs a manual download; mutation (`mutate --ny`, code
+   written) was not run.
+7. Three independent in-session reviews; every medium-or-higher finding ruled and each defect fixed with a fixture
    (`research/audits/ny/2025-phase3-review.md`).
-8. Values sheet, `PROJECT_INDEX.md`, `docs/ny/INTEGRATION.md`.
+8. `PROJECT_INDEX.md` and `docs/ny/INTEGRATION.md` written. **Not done:** the values sheet (`render`, and the CLI
+   values sheet for one synthetic case).
 
-**Federal unchanged** at every step: the federal canonical output byte-identical to the starting point; federal
-reports unchanged; the federal fixtures 1637/1637 (before the change; the evaluator is untouched).
-
-**Next:** Phase 4 on the owner's machine (`docs/ny/INTEGRATION.md`).
+**Next session:** rerun `node engine/dist/main.js build` (the New York interview walk), `coverage --ny` and
+`mutate --ny`; render the values sheet; then make the step commits 3.5 to 3.8 and push. Then Phase 4 on the owner's
+machine (`docs/ny/INTEGRATION.md`).
 
 **Cost:** this session's cost was not shown. Subagents: one Phase 2 verification and three Phase 3 reviews (logged in
 `research/costs/agent_runs.jsonl`). No paid review call.
