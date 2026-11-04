@@ -44,7 +44,7 @@ const NY_REGISTER_PATH = join(ROOT, "ambiguities", "ny", `${YEAR}.yaml`);
 
 interface BankQuestion { input: string; order: number; help: string; prompt?: string; cite?: CiteAuthored }
 interface QuestionBank { tax_year: number; frames: Record<string, string>; questions: BankQuestion[] }
-interface InterviewProfile { tax_year: number; targets: string[]; initial: InterviewData["initial"]; cite: CiteAuthored; questions: string[] | "all" }
+interface InterviewProfile { tax_year: number; targets: string[]; initial: InterviewData["initial"]; cite: CiteAuthored; questions: string[] | "all"; questions_from?: string }
 
 interface ManifestEntry {
   id: string;
@@ -198,6 +198,19 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   // bank states its own; stating one equal to the derived value is an error, so copies of form
   // data do not creep back into the interview.
   const bank = (parseYaml(readFileSync(join(ROOT, "interview", `questions-${YEAR}.yaml`), "utf8")) as { bank: QuestionBank }).bank;
+  // The New York question bank (decision C5), merged into the federal one: its inputs are New York lines
+  // (ids ny_) and rosters ($ny_), asked by the New York profile only.
+  const NY_BANK = join(ROOT, "interview", "ny", `questions-${YEAR}.yaml`);
+  const NY_PROFILE = join(ROOT, "interview", "ny", `${YEAR}.yaml`);
+  // "all" in a profile means every federal question, so the federal profiles are unchanged by the New York bank.
+  const federalInputs = bank.questions.map((q) => q.input);
+  if (existsSync(NY_BANK)) {
+    const nyBank = (parseYaml(readFileSync(NY_BANK, "utf8")) as { bank: QuestionBank }).bank;
+    if (nyBank.tax_year !== YEAR) errors.push(`New York question bank: tax_year ${nyBank.tax_year}, but the build is for ${YEAR}`);
+    for (const q of nyBank.questions) if (!q.input.replace(/^\$/, "").startsWith("ny_")) errors.push(`New York question bank: input '${q.input}' is not a New York line`);
+    bank.questions = [...bank.questions, ...nyBank.questions];
+    bank.frames = { ...bank.frames, ...nyBank.frames };
+  }
   const bankByInput = new Map(bank.questions.map((q) => [q.input, q]));
   if (bankByInput.size !== bank.questions.length) errors.push("question bank: duplicate inputs");
   const resolveQuestion = (q: BankQuestion): InterviewData["questions"][number] | null => {
@@ -225,7 +238,13 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   const resolved = new Map(bank.questions.flatMap((q) => { const r = resolveQuestion(q); return r ? [[q.input, r] as const] : []; }));
   const loadProfile = (file: string, name: string): InterviewData => {
     const profile = (parseYaml(readFileSync(join(ROOT, "interview", file), "utf8")) as { interview: InterviewProfile }).interview;
-    const inputs = profile.questions === "all" ? bank.questions.map((q) => q.input) : profile.questions;
+    const own = profile.questions === "all" ? federalInputs : profile.questions;
+    // questions_from: a profile (in interview/) whose questions come first, as the New York profile takes the
+    // federal full profile's.
+    const before = profile.questions_from
+      ? (parseYaml(readFileSync(join(ROOT, "interview", profile.questions_from), "utf8")) as { interview: InterviewProfile }).interview.questions
+      : [];
+    const inputs = [...(before === "all" ? federalInputs : before), ...own];
     if (new Set(inputs).size !== inputs.length) errors.push(`${name}: duplicate questions`);
     for (const input of inputs) if (!bankByInput.has(input)) errors.push(`${name}: question ${input} is not in the question bank`);
     return {
@@ -238,12 +257,14 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   const salesInterview = loadProfile(`sales-${YEAR}.yaml`, "sales interview");
   const stage4Interview = loadProfile(`stage4-${YEAR}.yaml`, "Stage 4 interview");
   const fullInterview = loadProfile(`full-${YEAR}.yaml`, "full interview");
+  const nyInterview = existsSync(NY_PROFILE) ? loadProfile(join("ny", `${YEAR}.yaml`), "New York interview") : null;
   // Every document under the year's directories must state that year.
   const stated: [string, number][] = [
     ["sources manifest", (JSON.parse(readFileSync(MANIFEST_PATH, "utf-8")) as { tax_year: number }).tax_year],
     ["params", params.tax_year], ["ambiguity register", register.tax_year],
     ["question bank", bank.tax_year], ["interview", interview.tax_year], ["sales interview", salesInterview.tax_year],
     ["Stage 4 interview", stage4Interview.tax_year], ["full interview", fullInterview.tax_year],
+    ...(nyInterview ? [["New York interview", nyInterview.tax_year] as [string, number]] : []),
     ...[...forms, ...defs].map((d): [string, number] => [d.id, d.tax_year]),
     ...tables.map((t): [string, number] => [`table ${t.id}`, t.tax_year]),
     ...(existsSync(NY_MANIFEST_PATH) ? [["New York sources manifest", nyManifestYear] as [string, number]] : []),
@@ -282,6 +303,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   validate(validateWith("interview"), salesInterview, "sales interview");
   validate(validateWith("interview"), stage4Interview, "Stage 4 interview");
   validate(validateWith("interview"), fullInterview, "full interview");
+  if (nyInterview) validate(validateWith("interview"), nyInterview, "New York interview");
   for (const doc of forms) validate(formFileValidator, { form: doc }, `form ${doc.id}`);
   for (const doc of defs) validate(defFileValidator, { def: doc }, `def ${doc.id}`);
   validate(paramsValidator, { params }, "params");
@@ -309,8 +331,9 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
       if (n && typeof n === "object") for (const [k, v] of Object.entries(n)) if (!["cite", "source", "label", "op", "ref"].includes(k)) walk(v);
     };
     for (const d of docs) for (const l of d.lines) { walk(l.expr); for (const r of l.refuses ?? []) read.add(r.when); if (l.shown_when) read.add(l.shown_when); }
-    const targets = new Set([interview, salesInterview, stage4Interview, fullInterview].flatMap((i) => i.targets));
-    const asked = new Set([interview, salesInterview, stage4Interview, fullInterview].flatMap((i) => i.questions.map((q) => q.input)));
+    const profiles = [interview, salesInterview, stage4Interview, fullInterview, ...(nyInterview ? [nyInterview] : [])];
+    const targets = new Set(profiles.flatMap((i) => i.targets));
+    const asked = new Set(profiles.flatMap((i) => i.questions.map((q) => q.input)));
     for (const d of data.forms) if (d.collection?.implicit && asked.has(`$${d.id}`)) errors.push(`${d.id}: an implicit collection's entry is never asked, but an interview asks $${d.id}`);
     for (const d of data.forms) for (const l of d.lines) {
       if (!isMarkedLine(l)) continue; // numbered lines are the form's own lines; helper, column and worksheet-step lines are checked
@@ -323,6 +346,12 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   // tools/fixtures_year.py carries them over, which needs this build.
   if (!existsSync(yearPath("fixtures"))) stats.push(`interview path checks skipped: no fixtures/${YEAR}/ yet`);
   else if (errors.length === 0) errors.push(...checkInterview(data, interview), ...checkSalesInterview(data, salesInterview), ...checkSalesInterview(data, stage4Interview, "stage4"), ...checkSalesInterview(data, fullInterview, "stage5"));
+  // The New York profile walks the New York fixtures' paths (fixtures/ny/<year>/), once they exist.
+  if (nyInterview && errors.length === 0 && existsSync(nyPath("fixtures"))) {
+    for (const f of readdirSync(nyPath("fixtures")).filter((n) => n.endsWith(".json")).sort()) {
+      errors.push(...checkSalesInterview(data, nyInterview, "ny", join(nyPath("fixtures"), f)).map((e) => `New York interview: ${e}`));
+    }
+  }
   stats.push("interview: Stage 2 finite domains checked; Stage 3 fixture paths checked for reachability, termination and answer-order invariance (not exhaustive)");
 
   // Write canonical output.
@@ -339,6 +368,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     writeFileSync(join(OUT_DIR, "interview-sales.json"), stableStringify(salesInterview));
     writeFileSync(join(OUT_DIR, "interview-stage4.json"), stableStringify(stage4Interview));
     writeFileSync(join(OUT_DIR, "interview-full.json"), stableStringify(fullInterview));
+    if (nyInterview) writeFileSync(join(OUT_DIR, "interview-ny.json"), stableStringify(nyInterview));
     writeFileSync(join(OUT_DIR, "params.json"), stableStringify({ params }));
     for (const table of tables) {
       writeFileSync(join(OUT_DIR, "tables", `${table.id}.json`), stableStringify({ table }));

@@ -14,6 +14,7 @@ import { loadCases } from "./fixtures.js";
 import { runChecks } from "./check.js";
 import type { CanonicalData, Expr, FormDoc, Line } from "./types.js";
 import { YEAR, yearPath } from "./year.js";
+import { reportPath } from "./year.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
 const FIXTURES = yearPath("fixtures", "stage1.json");
@@ -1940,7 +1941,7 @@ export async function runMutation(): Promise<number> {
     }
     report.push("");
   }
-  const outDir = yearPath("reports");
+  const outDir = reportPath();
   mkdirSync(outDir, { recursive: true });
   writeFileSync(join(outDir, "mutation.md"), report.join("\n"));
   console.log(`mutation: ${total} mutants, killed by checker ${killedByCheck}, by fixtures ${killedByFixtures} (${classmOnly.length} only by class M cases), surviving ${survivors.length} (${equivalentSurvivors.length} equivalent; score ${(score * 100).toFixed(1)}%, adjusted ${(adjusted * 100).toFixed(1)}%)`);

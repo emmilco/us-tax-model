@@ -51,9 +51,10 @@ export function checkInterview(data: CanonicalData, config: InterviewData, paths
 
 // Sales fixtures cover complete paths and refusal paths. Unlike the Stage 2
 // enumeration above, this is representative coverage, not a Cartesian proof.
-export function checkSalesInterview(data: CanonicalData, config: InterviewData, stage = "stage3"): string[] {
+export function checkSalesInterview(data: CanonicalData, config: InterviewData, stage = "stage3", file?: string): string[] {
   const errors: string[]=[];
-  const fixtures=JSON.parse(readFileSync(yearPath("fixtures", `${stage}.json`),"utf8")) as {cases:{id:string;inputs:Inputs}[]};
+  // `file`: a fixtures file outside fixtures/<year>/ (the New York fixtures, fixtures/ny/<year>/).
+  const fixtures=JSON.parse(readFileSync(file ?? yearPath("fixtures", `${stage}.json`),"utf8")) as {cases:{id:string;inputs:Inputs}[]};
   fixtures.cases=fixtures.cases.map(c=>({...c,inputs:resolveInputs(c.inputs,data.params,c.id)}));
   for (const fixture of fixtures.cases) {
     try {
