@@ -188,10 +188,14 @@ form:
       type: NonNegDollars
       expr:
         op: input
-        source: Amount paid with request for extension to file
+        source: Amount paid with request for extension to file (the payment you made to get an automatic extension, or any
+          amount you paid with Form 4868 or Form 2350), not counting any fee you were charged for making the payment; zero if
+          none
       cite:
         doc: f1040s3
-        locator: Schedule 3 (2025), line 10
+        locator: 'Schedule 3 (2025), line 10; i1040gi p. 117, Line 10, "enter the amount of the payment or any amount you
+          paid with Form 4868", "If you paid a fee when making your payment, don’t include on line 10 the fee you were
+          charged" and "Also, include any amounts paid with Form 2350"'
     - id: s3.line11
       printed: "11"
       label: Excess social security and tier 1 RRTA tax withheld

@@ -8,9 +8,11 @@
    "printed": "person[taxpayer].wages",
    "project": "$44,754.00",
    "model": "$29,524.00",
-   "ruling": "Ruling: model error; w2.wages is Social Security wages plus Social Security tips, boxes 3 and 7 (iw2w3 p. 18; amb.2025.ss_wages, owner approved). The second W-2 reports $15,230 of tips in box 7, which the model left out: $29,524 + $15,230 = $44,754, the project amount.",
+   "ruling": "Ruling: model error; same case and reply as the refresh-round ruling. w2.wages is social security wages plus social security tips, boxes 3 and 7 (iw2w3 p. 18; amb.2025.ss_wages, owner approved). The model left out the $15,230 of box 7 tips on the second W-2: $29,524 + $15,230 = $44,754, the project amount.",
    "drop": true,
-   "context": "dd9f02730c98b8e026b7ae7c9c6961bf4a6f0c766c0f32399f539e08eeadde37"
+   "context": "f58bf7406ce21682f1dbdea12d6cc50da7bfad58dfe380165be36c6fdfcfe4ab",
+   "date": "2026-11-04",
+   "run": "f6b8e1f09ab73d9d75ca99de42466c2c1daabb8d76a794b0e90effedf9766828"
   }
  ]
 }

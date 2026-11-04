@@ -71,9 +71,9 @@
 ## (helper) — `person.educator_expenses`
 
 - **Authored helper label:** Qualified educator expenses you paid in 2025
-- **Encoded (NonNegDollars):** Input — Qualified educator expenses you paid in 2025 (professional development courses, and books, supplies, equipment and other materials used in the classroom; not expenses for home schooling or nonathletic supplies for courses in health or physical education), reduced by excludable savings bond interest (Form 8815), nontaxable qualified tuition program or Coverdell earnings or distributions, and reimbursements not reported in box 1 of your Form W-2; zero if none
-- Expr: `{"op":"input","source":"Qualified educator expenses you paid in 2025 (professional development courses, and books, supplies, equipment and other materials used in the classroom; not expenses for home schooling or nonathletic supplies for courses in health or physical education), reduced by excludable savings bond interest (Form 8815), nontaxable qualified tuition program or Coverdell earnings or distributions, and reimbursements not reported in box 1 of your Form W-2; zero if none"}`
-- Cite: [i1040gi] p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following amounts'; p. 93, 'Qualified expenses don’t include expenses for home schooling or for nonathletic supplies for courses in health or physical education.' (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Encoded (NonNegDollars):** Input — Qualified educator expenses you paid in 2025 (professional development courses, and books, supplies, equipment (including computer equipment, software and services) and other materials used in the classroom, including personal protective equipment, disinfectant and other supplies used to prevent the spread of coronavirus; not expenses for home schooling or nonathletic supplies for courses in health or physical education), reduced by excludable savings bond interest (Form 8815), nontaxable qualified tuition program or Coverdell earnings or distributions, and reimbursements not reported in box 1 of your Form W-2; zero if none
+- Expr: `{"op":"input","source":"Qualified educator expenses you paid in 2025 (professional development courses, and books, supplies, equipment (including computer equipment, software and services) and other materials used in the classroom, including personal protective equipment, disinfectant and other supplies used to prevent the spread of coronavirus; not expenses for home schooling or nonathletic supplies for courses in health or physical education), reduced by excludable savings bond interest (Form 8815), nontaxable qualified tuition program or Coverdell earnings or distributions, and reimbursements not reported in box 1 of your Form W-2; zero if none"}`
+- Cite: [i1040gi] p. 93, Schedule 1, line 11, Qualified expenses, 'equipment (including computer equipment, software, and services)', 'for personal protective equipment, disinfectant, and other supplies used for the prevention of the spread of coronavirus', and 'You must reduce your qualified expenses by the following amounts'; p. 93, 'Qualified expenses don’t include expenses for home schooling or for nonathletic supplies for courses in health or physical education.' (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `person.eligible_educator`
 
@@ -592,11 +592,19 @@
 - Expr: `{"of":["person.sep_rate_c","person.hundred"],"op":"sum"}`
 - Cite: [p560] pp. 38–40, chapter 5, Rate Worksheet for Self-Employed, line 2, "Rate in line 1 plus 1" (For use in preparing 2025 returns; sha256 1f1f7abe)
 
+## (helper) — `person.sep_shown`
+
+- **Authored helper label:** This person contributed to a SEP IRA for themselves (the SEP deduction worksheet is completed)
+- **Encoded (Bool):** helper "Retirement plan of this self-employed person" = 'sep'
+- Expr: `{"eq":["person.plan",{"const":"sep"}],"op":"test"}`
+- Cite: [p560] p. 38, chapter 5, "if you are self-employed, you must use the rate table or rate worksheet and deduction worksheet to figure your deduction for contributions you made for yourself to a SEP IRA or qualified plan" (For use in preparing 2025 returns; sha256 1f1f7abe)
+
 ## Step 1 — `person.sep_s1`
 
 - **Authored helper label:** Net profit from Schedule C, line 31
 - **Encoded (Dollars):** Enter the amount from helper "This person's Schedule C net profit or loss (all businesses)".
 - **Refusal:** when person.se_screened is true, cannot complete SEP Deduction Worksheet Step 1 with self-employment income not on a Schedule C (Schedule F, Schedule K-1 box 14 code A and the other items of the self-employment screen). These self-employment items are outside this tool. Cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 1, "Enter your net profit from" (For use in preparing 2025 returns; sha256 1f1f7abe)
+- **Shown on the values sheet only when:** This person contributed to a SEP IRA for themselves (the SEP deduction worksheet is completed) (`person.sep_shown`)
 - Expr: `{"from":"person.sc_total","op":"copy"}`
 - Cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 1 (For use in preparing 2025 returns; sha256 1f1f7abe)
 
@@ -604,6 +612,7 @@
 
 - **Authored helper label:** Deduction for self-employment tax from Schedule 1, line 15
 - **Encoded (NonNegDollars):** Enter the amount from helper "Schedule SE line 13 (deduction for one-half of self-employment tax) for this person".
+- **Shown on the values sheet only when:** This person contributed to a SEP IRA for themselves (the SEP deduction worksheet is completed) (`person.sep_shown`)
 - Expr: `{"from":"person.se_line13","op":"copy"}`
 - Cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 2 (this person's own Schedule SE, line 13) (For use in preparing 2025 returns; sha256 1f1f7abe)
 
@@ -611,6 +620,7 @@
 
 - **Authored helper label:** Net earnings from self-employment. Subtract step 2 from step 1
 - **Encoded (NonNegDollars):** Subtract line Step 2 from line Step 1. If zero or less, enter -0-.
+- **Shown on the values sheet only when:** This person contributed to a SEP IRA for themselves (the SEP deduction worksheet is completed) (`person.sep_shown`)
 - Interpretation: amb.2025.sep_loss_floor
 - Expr: `{"from":"person.sep_s1","op":"subtract_floor0","take":"person.sep_s2"}`
 - Cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 3 (For use in preparing 2025 returns; sha256 1f1f7abe)
@@ -619,6 +629,7 @@
 
 - **Authored helper label:** Multiply step 3 by step 4 (the plan rate divided by the plan rate plus 1, to six decimal places)
 - **Encoded (NonNegDollars):** Divide helper "The plan rate, as cents" by helper "The plan rate plus 100%, as cents", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply line Step 3 by the result.
+- **Shown on the values sheet only when:** This person contributed to a SEP IRA for themselves (the SEP deduction worksheet is completed) (`person.sep_shown`)
 - Interpretation: amb.2025.sep_rate_places
 - Expr: `{"amount":"person.sep_s3","op":"prorate","part":"person.sep_rate_c","places":6,"whole":"person.sep_rate_plus"}`
 - Cite: [p560] pp. 39–40, chapter 5, Deduction Worksheet for Self-Employed, Steps 4 and 5, "Enter your rate from the Rate Table for Self-Employed or Rate Worksheet for Self-Employed", "Multiply step 3 by step 4"; p. 38, chapter 5, Rate Table for Self-Employed, "If your plan's contribution rate is 10% of a participant's compensation, your rate is 0.090909" (amb.2025.sep_rate_places) (For use in preparing 2025 returns; sha256 1f1f7abe)
@@ -634,6 +645,7 @@
 
 - **Authored helper label:** Multiply $350,000 by your plan contribution rate (not the reduced rate)
 - **Encoded (NonNegDollars):** Divide helper "The plan rate, as cents" by helper "100%, as cents", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper "$350,000" by the result.
+- **Shown on the values sheet only when:** This person contributed to a SEP IRA for themselves (the SEP deduction worksheet is completed) (`person.sep_shown`)
 - Expr: `{"amount":"person.comp_limit","op":"prorate","part":"person.sep_rate_c","places":6,"whole":"person.hundred"}`
 - Cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 6 (For use in preparing 2025 returns; sha256 1f1f7abe)
 
@@ -641,6 +653,7 @@
 
 - **Authored helper label:** Enter the smaller of step 5 or step 6
 - **Encoded (NonNegDollars):** Enter the smaller of line Step 5 or line Step 6.
+- **Shown on the values sheet only when:** This person contributed to a SEP IRA for themselves (the SEP deduction worksheet is completed) (`person.sep_shown`)
 - Expr: `{"of":["person.sep_s5","person.sep_s6"],"op":"smaller_of"}`
 - Cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 7 (For use in preparing 2025 returns; sha256 1f1f7abe)
 
@@ -648,6 +661,7 @@
 
 - **Authored helper label:** Contribution dollar limit
 - **Encoded (NonNegDollars):** Enter $70,000 (ret.sep_dollar_limit).
+- **Shown on the values sheet only when:** This person contributed to a SEP IRA for themselves (the SEP deduction worksheet is completed) (`person.sep_shown`)
 - Expr: `{"op":"param","ref":"ret.sep_dollar_limit"}`
 - Cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 8, "$70,000" (For use in preparing 2025 returns; sha256 1f1f7abe)
 
@@ -655,6 +669,7 @@
 
 - **Authored helper label:** Maximum deductible contribution (the smaller of step 7 or step 8; no elective deferrals)
 - **Encoded (NonNegDollars):** Enter the smaller of line Step 7 or line Step 8.
+- **Shown on the values sheet only when:** This person contributed to a SEP IRA for themselves (the SEP deduction worksheet is completed) (`person.sep_shown`)
 - Expr: `{"of":["person.sep_s7","person.sep_s8"],"op":"smaller_of"}`
 - Cite: [p560] p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 8 note, "Otherwise, skip steps 9 through 20 and enter the smaller of step 7 or step 8 on step 21" (For use in preparing 2025 returns; sha256 1f1f7abe)
 
@@ -980,7 +995,7 @@
 - **Authored helper label:** Are you claimed as a dependent on someone else's 2025 tax return?
 - **Encoded (Bool):** Input — Are you claimed as a dependent on someone else's 2025 tax return?
 - Expr: `{"op":"input","source":"Are you claimed as a dependent on someone else's 2025 tax return?"}`
-- Cite: [f8880] p. 2, Who Can Take This Credit, "(b) is claimed as a dependent on someone else’s 2025 tax return" (2025; created 2025-11-04; sha256 ba2b2877)
+- Cite: [f8880] p. 2, Who Can Take This Credit, "(b) is claimed as a dependent on someone else’s 2025 tax return"; i1040gi p. 98, Line 21, "You, or your spouse if filing jointly, aren’t claimed as a dependent on someone else's (such as your parent’s) 2025 tax return" (2025; created 2025-11-04; sha256 ba2b2877)
 
 ## (helper) — `person.sav_ineligible`
 

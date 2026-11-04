@@ -4,14 +4,14 @@
 
 | field | value |
 | --- | --- |
-| date | 2026-11-03 |
+| date | 2026-11-04 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt policy | worked-values-request-bound-v2 |
 | system sha256 | 18ff9cfe094eedd0548bba02012b0ebf2a58d0606e834e3633432585b4192cb7 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
-| subject sha256 | 54958fc3117ecdaaad7099f11b85dce793e38d9cf4128b64dbf2e195d0ab8920 |
+| subject sha256 | 5b5a5637379bc8f46305623119d5d808ddf465babcd9005327df3be2d5661ee8 |
 | cases | 1 |
 | worked target scope | printed IRS lines |
 
@@ -21,7 +21,7 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | f1040 | 2025; created 2025-09-05 | 1, 2 | whole document | ac32f00aed489e0722d0b409c0eb12915801d66f3a2fab05bc8391af61426383 | - | 72926cc2b256a68592e6cf0f2aa384ef8371eec968a0c8c62e050edf5bfea76a |
 | f1040sa | 2025; created 2025-11-20 | 1 | whole document | 225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd | - | bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe |
-| i1040gi | 2025; printed date 2026-02-25 | 17, 18, 19, 26, 27, 28, 29, 30, 31, 32, 40, 41, 44, 45, 47, 66, 93, 95, 96, 97, 98, 104, 108, 110, 117 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 17, 18, 19, 26, 27, 28, 30, 31, 40, 41, 44, 45, 66, 93, 95, 96, 98, 104, 110, 117 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| i1040gi | 2025; printed date 2026-02-25 | 17, 18, 19, 26, 27, 28, 29, 30, 31, 32, 33, 40, 41, 44, 45, 47, 66, 93, 95, 96, 97, 98, 104, 108, 110, 117 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 17, 18, 19, 26, 27, 28, 30, 31, 33, 40, 41, 44, 45, 66, 93, 95, 96, 98, 104, 110, 117 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
 | i8889 | 2025 | 3, 4, 7 | cited pages | bfbdc8bbe0b85d088325243f176d4c8261b0ca2428f75f4f41e4a339ecb5495c | 3, 4, 7 | 533a42f870f12dc6c1984815eae1a4bf59d6fde28cbc909d9a4e76ff41c6eda7 |
 | f8889 | 2025; created 2025-03-28 | 1 | whole document | f1ae3589453f3dd1d5277a79409bd7d0bf4772715fa8bd11d58126e6f387c0cf | - | 85ba6183eb2c35cf7b6d63eb6fd515be7234f5f938da39d7d000a6a7f2359d4e |
 | iw2w3 | 2025; printed date 2025-02-19 | 12, 13, 18, 20 | cited pages | 27ad850a44d58d9186afcccb33b8a32f4747911e2b1b3138de515f44d4de33f3 | 12, 13, 18, 20 | 3876738db222e8abe6103f29d8a8654a3139b9896f97e325d50e80b87ed5b26a |
@@ -45,13 +45,14 @@
 | f1040s2 | 2025; created 2025-05-08 | 1, 2 | whole document | 29e3a05ca4dca4b5316833984170cff8815045c2e3957d048cb713ad90cb728f | - | 129b2541cce9743c9bde3a48fdfcc2512767d88b7cbbbe562d7989b117232d62 |
 | f5329 | 2025 | 1, 2, 3 | whole document | 53ac10ecce39dbd1cc0a3b88c04e351c2a61f3ad35d145d5d847f30f47a1b945 | - | c65e0cd9d9ad8e8a04899ec87a11393ad5a3e281543eb6720b72357811f8f51d |
 | i4562 | 2025 | 4, 11 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 11 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
+| p501 | 2025 returns; PDF created 2026-02-04 | 23 | pages named by another document's citation | 6aca9108a08fb6d4725c630023df5e17084d92135c6607cd7c536e8e0c67f19b | 23 | 2e0a281a7d3f73f1334d5f59a39a9fe4c393fd10dd6e6c6b1b8639c5ef038671 |
 | p503 | For use in preparing 2025 returns | 3, 11 | pages named by another document's citation | a1ff9e2c3120455f6049fc50f0af8c5b8160302c198162dede66b2c8a5640607 | 3, 11 | 44d87f0ddfd4f953ea02cf5cc31e203e754c88aa74627dac5a551f46c6bf65b9 |
 | i8959 | 2025; printed date 2025-08-07 | 1, 2, 3, 4 | whole document | 0ec9603864196115a05c89675c3cf1ea20ce0384fb59e2195b2dbd8c65d3e85d | 1, 2, 3, 4 | 926d666edb486650f74da8863ef35ce5a9fe82c240719196138fdc8d40bf40df |
 | p970 | 2025 | 11 | pages named by another document's citation | a5c80030374da420bbaf3118a8a42fe79092e8529663d02ef601b6ae06657e00 | 11 | f6622ed07641c7d4e2a217fb9d9b1fecb7ab16f08dbc758f1a0963e1fe677e0a |
 
 ## Lines
 
-### case classm.person.1 — prompt sha256 6dd990f0fa42a2658deb1a5b788eba42e49b16b47dbe08b7210ef8f6b289af4f; branches: person.age65:false, person.blind:false, person.tin:true, person.itin_applied:false, person.work_ssn:true, person.eic_ssn:true, person.under16:false, person.eligible_educator:false, person.born_before_2001:false, person.born_after_1960:true, person.died_before_65:false, person.has_educator_expenses:false, person.educator_limited:left, person.educator_eligible_amount#1, person.educator_deduction#1, person.hsa_repeated:false, person.rrta:false, person.se_rrta:false, person.over:false, person.eligible:false, person.excess:floor, person.credit#1, person.has_sc:false, person.se_screen:false, person.se_screened:false, person.se_line6#1, person.se_line12#1, person.se_line13#1, person.se_line4c#1, person.plan_screen:false, person.plan_screened:false, person.sep_s3:floor, person.sep_s7:left, person.sep_s21:left, person.sep_excess:false, person.simple_regular:left, person.simple_catchup:floor, person.comp_after_regular:floor, person.catchup_max:left, person.match_max:left, person.ne_comp:left, person.employer_max#1, person.simple_excess:false, person.plan_deduction#1, person.s16#1, person.files_se:false, person.eic_se_has#1, person.eic_se#1, person.dc_has_box10:false, person.dc_1e_mine:true, person.dc_1e_counted:false, person.dc_1e#1, person.sav_born:true, person.sav_student:true, person.sav_claimed:false, person.sav_ineligible:true, person.sav_trad:false, person.sav_able:false, person.sav_excess:false, person.sav_excess_gate:false, person.sav_simple_plan#1, person.sav_simple#1, person.ira_contrib#1, person.ira_has:false, person.ira_any_contrib:false, person.ira_excess:false, person.ira_excess_gate:false, person.ira_age50:false, person.ira_work_plan:false, person.ira_se_plan:false, person.ira_cov:false, person.ira_limit#1, person.ira_not_covered_joint:false, person.ira_line2#1, person.ira_line6:positive, person.ira_line6_yes:true, person.ira_wide:true, person.ira_full#0, person.ira_at_full:true, person.ira_prod_wide#1, person.ira_prod_joint#1, person.ira_prod#0, person.ira_floor:left, person.ira_below#0, person.ira_line7_figured#0, person.ira_line7#1, person.ira_over_limit:false, person.ira_7or10:left, person.ira_line12:right, person.ira_deduction#1, person.ira_10or11:right, person.ira_nd_figured:floor, person.ira_nondeductible#1, person.ira_files_8606:false, person.ira_basis_adjusted:false, person.ira_basis_gate:false, person.ira_8606_line2#1, person.ira_dist:false, person.ira_dist_gate:false, person.ira_ssb_lim:left, person.ira_ssb_figured:right, person.ira_ssb#1, person.ira_se_figured:floor, person.ira_se#1, person.edu:false, person.edu_1098t:false, person.edu_student:false, person.edu_adj#1, person.edu_over:false, person.edu_over_refused:false, person.edu_line23:false, person.edu_show24:false, person.edu_line24:false, person.edu_show25:false, person.edu_line25:false, person.edu_show26:false, person.edu_line26:false, person.edu_ein:false, person.edu_aoc:false, person.edu_llc:false, person.edu_llc_tin_refused:false, person.edu_line27#1, person.edu_line28#1, person.edu_line29#1, person.edu_line30#1, person.edu_line31#1, person.edu_born_2007:false, person.edu_born_2002:false, person.edu_fulltime:true, person.edu_half_support:false, person.edu_parent:true, person.edu_kid:false, person.x_cap09:positive, person.x_c05#1, person.x_has05:false, person.x_c05_min:left, person.x_has09:false, person.x_c09_min:left, person.x_c09#1, person.x_has19:false, person.x_c19_min:left, person.x_c19#1, person.x_c22:left, person.x_c23:left, person.x_two23:false, person.x_other_exc:floor, person.x_limit_binds:false, person.x_other:false
+### case classm.person.1 — prompt sha256 b7e7c89f6430cb1414c652ab109f1accb7190a265f14c0293e629bc5578c7c4e; branches: person.age65:false, person.blind:false, person.tin:true, person.work_ssn:true, person.under16:false, person.has_educator_expenses:false, person.educator_limited:left, person.educator_deduction#1, person.hsa_repeated:false, person.rrta:false, person.se_rrta:false, person.over:false, person.eligible:false, person.excess:floor, person.credit#1, person.has_sc:true, person.se_screen:false, person.se_screened:false, person.se_line6#0, person.se_line12#0, person.se_line13#0, person.se_line4c#0, person.sep_shown:false, person.sep_s3:floor, person.ne_comp:left, person.plan_deduction#0, person.s16#0, person.files_se:false, person.eic_se_has#1, person.eic_se#0, person.dc_1e_counted:false, person.dc_1e#1, person.sav_trad:false, person.sav_able:false, person.sav_excess_gate:false, person.sav_simple_plan#0, person.sav_simple#0, person.ira_contrib#1, person.ira_has:false, person.ira_any_contrib:false, person.ira_excess_gate:false, person.ira_se_plan:false, person.ira_not_covered_joint:false, person.ira_line2#1, person.ira_line6:positive, person.ira_line6_yes:true, person.ira_wide:true, person.ira_full#0, person.ira_at_full:true, person.ira_prod#0, person.ira_below#0, person.ira_line7_figured#0, person.ira_over_limit:false, person.ira_deduction#1, person.ira_10or11:right, person.ira_nondeductible#1, person.ira_files_8606:false, person.ira_basis_gate:false, person.ira_8606_line2#1, person.ira_dist_gate:false, person.ira_ssb#1, person.ira_se_figured:floor, person.ira_se#0, person.edu_student:false, person.edu_adj#1, person.edu_over_refused:false, person.edu_show24:false, person.edu_show25:false, person.edu_show26:false, person.edu_aoc:false, person.edu_llc:false, person.edu_llc_tin_refused:false, person.edu_line27#1, person.edu_line28#1, person.edu_line29#1, person.edu_line30#1, person.edu_line31#1, person.edu_kid:false, person.x_c05#1, person.x_has05:false, person.x_c05_min:left, person.x_has09:false, person.x_c09#1, person.x_has19:false, person.x_c19#1, person.x_c22:left, person.x_c23:left, person.x_two23:false, person.x_other_exc:floor, person.x_limit_binds:false, person.x_other:false
 
 ### classm.person.1 — person[taxpayer].employers — Total w2.one for this person
 Status: **AGREE**
@@ -69,9 +70,13 @@ Status: **AGREE**
 Value: no
 
 ### classm.person.1 — person[taxpayer].wages — Total w2.wages for this person
-Status: **AGREE**
+Status: **DISAGREE**
 
-Value: $44,754.00
+Project: $44,754.00
+Model: $29,524.00
+Work: Box 1 wages: 29,524.00 + 0.00 = 29,524.00
+
+Ruling: model error; the same point as the DeepSeek ruling of this case. w2.wages is social security wages plus social security tips, boxes 3 and 7 (iw2w3 p. 18; amb.2025.ss_wages, owner approved). The model added box 1 wages instead ('Box 1 wages: 29,524.00 + 0.00'), leaving out the $15,230 of box 7 tips: $29,524 + $15,230 = $44,754, the project amount. [dropped]
 
 ### classm.person.1 — person[taxpayer].withheld — Total w2.box4 for this person
 Status: **AGREE**
@@ -93,41 +98,6 @@ Status: **AGREE**
 
 Value: $0.00
 
-### classm.person.1 — person[taxpayer].sep_s1 — Net profit from Schedule C, line 31
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.person.1 — person[taxpayer].sep_s2 — Deduction for self-employment tax from Schedule 1, line 15
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.person.1 — person[taxpayer].sep_s3 — Net earnings from self-employment. Subtract step 2 from step 1
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.person.1 — person[taxpayer].sep_s5 — Multiply step 3 by step 4 (the plan rate divided by the plan rate plus 1, to six
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.person.1 — person[taxpayer].sep_s6 — Multiply $350,000 by your plan contribution rate (not the reduced rate)
-Status: **AGREE**
-
-Value: $52,500.00
-
-### classm.person.1 — person[taxpayer].sep_s7 — Enter the smaller of step 5 or step 6
-Status: **AGREE**
-
-Value: $0.00
-
-### classm.person.1 — person[taxpayer].sep_s21 — Maximum deductible contribution (the smaller of step 7 or step 8; no elective de
-Status: **AGREE**
-
-Value: $0.00
-
 ## Raw responses
 
 ### classm.person.1
@@ -137,48 +107,27 @@ Value: $0.00
 lines:
   - printed: "person[taxpayer].employers"
     value: "2"
-    work: "Two Forms W-2 (emp_a, emp_b), 1 + 1 = 2"
+    work: "w2.one totals: emp_a 1 + emp_b 1 = 2"
   - printed: "person[taxpayer].overcount"
     value: "0"
-    work: "Neither employer withheld more than $10,918.20"
+    work: "Neither emp_a nor emp_b withheld more than $10,918.20"
   - printed: "person[taxpayer].over"
     value: "no"
-    work: "Overcount is 0"
+    work: "overcount is 0, so no employer withheld more than the limit"
   - printed: "person[taxpayer].wages"
-    value: "44754.00"
-    work: "Social security wages and tips used for the $176,100 test: 29,524 + 15,230 = 44,754"
+    value: "29524.00"
+    work: "Box 1 wages: 29,524.00 + 0.00 = 29,524.00"
   - printed: "person[taxpayer].withheld"
     value: "2775.00"
-    work: "W-2 box 4 totals: 1,831 + 944 = 2,775"
+    work: "Box 4 withholding: 1,831.00 + 944.00 = 2,775.00"
   - printed: "person[taxpayer].eligible"
     value: "no"
-    work: "More than one employer, but 44,754 is not over $176,100"
+    work: "Two employers, but total SS wages are 29,524 + 15,230 = 44,754, not over $176,100"
   - printed: "person[taxpayer].excess"
     value: "0.00"
-    work: "2,775 is not above $10,918.20, so 0"
+    work: "2,775.00 is not above $10,918.20, so the excess is 0"
   - printed: "person[taxpayer].credit"
     value: "0.00"
-    work: "Not eligible, so no excess social security tax credit"
-  - printed: "person[taxpayer].sep_s1"
-    value: "0.00"
-    work: "No Schedule C net profit was given; Schedule SE line 4c is 0"
-  - printed: "person[taxpayer].sep_s2"
-    value: "0.00"
-    work: "Schedule SE line 13 (Schedule 1 line 15) is 0"
-  - printed: "person[taxpayer].sep_s3"
-    value: "0.00"
-    work: "Step 1 minus step 2: 0 - 0 = 0"
-  - printed: "person[taxpayer].sep_s5"
-    value: "0.00"
-    work: "Step 3 times rate 0.130435 (15% plan rate): 0 x 0.130435 = 0"
-  - printed: "person[taxpayer].sep_s6"
-    value: "52500.00"
-    work: "$350,000 x 0.15 = 52,500"
-  - printed: "person[taxpayer].sep_s7"
-    value: "0.00"
-    work: "Smaller of step 5 (0) or step 6 (52,500) is 0"
-  - printed: "person[taxpayer].sep_s21"
-    value: "0.00"
-    work: "No elective deferrals; smaller of step 7 (0) or step 8 ($70,000) is 0"
+    work: "Not eligible and no excess, so the Sch 3 line 11 credit is 0"
 ```
 ```

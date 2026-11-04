@@ -845,6 +845,12 @@
    "question_phrase": "Is this a passenger automobile subject to the depreciation limits: a 4-wheeled vehicle made mainly for public roads rated at 6,000 pounds unloaded gross vehicle weight or less",
    "source_phrase": "p946 p. 62, Depreciation Worksheet for Passenger Automobiles (read by scveh.on_auto_limits)",
    "reason": "The worksheet's limit lines apply to passenger automobiles in the sense i4562 pp. 14-15 and Pub. 946 define, which the question states; the ambulance, hearse and for-hire exceptions are refused by scveh.screen."
+  },
+  "consumer:scveh.miles_commuting@i4562:p14": {
+   "verdict": "same",
+   "question_phrase": "The commuting miles you drove this vehicle in 2025 (travel between your home and a work location",
+   "source_phrase": "(not to include any commuting mileage) by the total number of miles the vehicle is driven for all purposes",
+   "reason": "scveh.cm_c adds the commuting miles to the total miles only, never to the business miles, as i4562 p. 14 requires for the business-use percentage."
   }
  },
  "baseline": {

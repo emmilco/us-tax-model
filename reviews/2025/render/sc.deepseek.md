@@ -5,6 +5,7 @@ The rendered English of every printed line of `Schedule C (Form 1040) — Profit
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
+| line-scoped reviews | 1 (latest 2026-11-04); see Line-scoped reviews |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
 | prompt sha256 | 4a5a760dd9440b77acff50e01a51a324e65821b1dd5314e468fc83dc1da28f7c |
@@ -14,7 +15,7 @@ The rendered English of every printed line of `Schedule C (Form 1040) — Profit
 | output token budget | 65536 |
 | subject sha256 | bcf2bc57eaed5335fa82db1b7a05d5d76cae7fedb326ebbd7ae8ff9eb4310271 |
 | lines judged | 75 |
-| match / mismatch / unclear / missing | 71 / 4 / 0 / 0 |
+| match / mismatch / unclear / missing | 72 / 3 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -196,13 +197,10 @@ Status: **MATCH**
 Model: Matches business taxes and licenses on line 23 within the stated screens.
 
 ### 24a — Travel
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: Input — Lodging and transportation for overnight business travel away from your tax home, and incidental expenses of that travel (fees and tips to porters, baggage carriers, bellhops, hotel maids, stewards and others on ships, and hotel servants in foreign countries; not laundry, lodging taxes or telephone calls), either at their actual cost or, for a travel day on which you paid or incurred no meal expenses and did not use the standard meal allowance, at $5 for that day (not meals and not entertainment; on a day you use the standard meal allowance, incidental expenses are part of that allowance); not expenses of employment away from home for a period of more than 1 year; not travel expenses for your spouse, your dependent or any other person unless that person is your employee, the travel is for a bona fide business purpose and the expenses would otherwise be deductible by that person; and not a convention, seminar or similar meeting held outside the North American area unless it is directly related to your business and it is as reasonable to hold it outside the North American area as within it; zero if none
-
-Model: IRS instructions say incidental expenses do not include 'laundry, cleaning and pressing of clothing, lodging taxes, or the costs of telegrams or telephone calls'; the restatement omits cleaning and pressing and telegrams.
-
-Ruling: finding (low); the model says the question's incidental-expense exclusions omit "cleaning and pressing of clothing" and "telegrams". p463 p. 7, Incidental expenses: "Incidental expenses don’t include expenses for laundry, cleaning and pressing of clothing, lodging taxes, costs of telegrams or telephone calls"; the question names only "laundry, lodging taxes or telephone calls". Small effect (laundry and dry cleaning are deductible travel expenses, p463 Table 1-1); see `.transcription/proposed/rf/sc.findings.md`, Low.
+Model: The restatement tracks the Schedule C line 24a instructions for lodging, transportation, incidental expenses and the $5 optional method, meals/entertainment exclusions, one-year employment limit, spouse/dependent rule, and North American convention rule.
+Reviewed in: pass 8166f29208ff
 
 ### 24b — Deductible meals
 Status: **MATCH**
@@ -237,7 +235,8 @@ Model: Enters the line 48 amount on line 27b.
 ### 28 — Total expenses before expenses for business use of home. Add lines 8 through 27b
 Status: **MATCH**
 
-Model: Adds lines 8 through 27b, matching line 28.
+Model: Schedule C line 28 says to add lines 8 through 27b, and the restatement enumerates exactly those lines, including the 16a/16b, 20a/20b, 24a/24b, and 27a/27b pairs.
+Reviewed in: pass 8166f29208ff
 
 ### 29 — Tentative profit or (loss). Subtract line 28 from line 7
 Status: **MATCH**
@@ -282,7 +281,8 @@ Model: Within the supported cases, the gross income limitation equals Schedule C
 ### 5 (sc.ho_line5) — Allowable expenses using the simplified method. Enter the smaller of line 1 or line 4
 Status: **MATCH**
 
-Model: Computes the smaller of line 1 or line 4, with the stated section 179 complexity refused.
+Model: Simplified Method Worksheet line 5 is the smaller of line 1 or line 4; the restatement uses line 4 when it cannot exceed any possible line 29 limitation, otherwise computes or refuses the section 179 interaction cases, which is a valid narrowing.
+Reviewed in: pass 8166f29208ff
 
 ### 30 — Expenses for business use of your home
 Status: **MATCH**
@@ -347,7 +347,8 @@ Model: Subtracts line 41 from line 40, matching line 42.
 ### 12 (sc.s179_allowed) — Section 179 expense deduction for this business
 Status: **MATCH**
 
-Model: Uses the elected amount when no difference exists, otherwise the return's section 179 deduction with the stated multi-business refusal.
+Model: This matches Form 4562 line 12 allocation: where line 12 equals the elected amounts it uses this business’s elected section 179 amount, and where it differs and there is only one Schedule C it uses the return’s line 12 deduction, refusing allocation among multiple businesses.
+Reviewed in: pass 8166f29208ff
 
 ### (screen) (sc.hi_uses) — Health insurance established under this business
 Status: **MATCH**
@@ -431,6 +432,141 @@ Model: Computes QBI by reducing the business result by the deductions attributab
 Status: **MATCH**
 
 Model: Matches the IRS treatment of qualified tips and qualified overtime as Schedule 1-A items, not Schedule C deductions.
+
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| (screen) (sc.statutory) | d2f688ee3fcd674f963ab54362478a207a821a94dbfefcc681cbe090a7e701ce |
+| G | 9336293c87a3010625acd5ec878f0a51d8d1235bfa2fce813a1742c7fecd6965 |
+| (screen) (sc.spouse_owned) | 50e12d17c0ac2c9df9a2a093f8ecbf7b395ecf60a6ae926d89771d9bbbdd97ee |
+| F | 64a4b664c7e9c5e00f93761d29f2348d5763768424d47ddb0889ba3785b68039 |
+| (screen) (sc.special) | c229fb69f1b41b60d14096cc4dd7ffd9d6cdeb7f3ba8c1007703b4e4f2fd43f7 |
+| 1 (sc.line1) | aae12502fafcc14ed224230205b06d036404ff069342467abf80e263bbe4fe80 |
+| 2 (sc.line2) | a740eed3e32368c0a0975232c06d42726848f95d06bb1bddc037583ac496e10b |
+| 3 (sc.line3) | 32dfb404a18c1f8633e0318597f3f2d8b2053aa400441bccc2b375867c25a6d3 |
+| 4 (sc.line4) | 7b85ae1e7bcd8268c76f2f79ad655b96c785b5c0fdd697ebc6f61267b02caa44 |
+| 5 (sc.line5) | 47740fe30007eb21334133749240887288f65f6e778209a425ecd20a93f45048 |
+| 6 | 1f493718ee3436e80c160291430e5d61df692217454968863ed4adb17c6dad73 |
+| 7 (sc.line7) | aaaa2c5c17ffeca5bdda093346fce4ab45952c057bf2ab939301a3e7ad379254 |
+| 8 (sc.line8) | d902ac0c28f9c6eac684b610b8143faf793e4e163cda80f03ca2eaca5035c3bf |
+| 9 (sc.line9) | 9aefea8c8c0a9be5851271590bfbcab3691e3eb71297df7a8d82235f9baf50cf |
+| 10 (sc.line10) | 596b8a3ccc22de340a5b754b6fd63d9263530ce36c7c37aca16cc8ae555de789 |
+| 11 | c860f599f3f0b7c2101bfb57cddda3031e0917a5b9d2d3ec935b643942b45930 |
+| 12 (sc.line12) | a39929fe1712d2f6d15a1f390a4fc55229124d31030280ae077282980e7dc67c |
+| 13 (sc.line13) | e19962e88f0a52f9ecbad7c1a8904d178038ca6bd871bee2ad0c34c76c5a002a |
+| 14 (sc.line14) | 7aa0f97754f1d5cdd4f062aa15d5b277af14a0a1cc2e10a94c619a55b3f2fdef |
+| 15 | 68445504d79347896522b2b40b5774ea7aabd2b07366884369ebbea6f60d2f9a |
+| 16a | 655f63ef4b8c69b66fd0543bf5f126822a11e6a73aefe93c6061236f9362c766 |
+| 16b | 932de183ab38295ccc43a9e59f73ae78ab3decf693620fdeca293f5d43f465e9 |
+| 17 | 42aa865dbe72d2693ea13a5dceb35a31ca25350fc58cdc2f5901f02a2877d157 |
+| 18 | acd5391daa65da1b6e5bb3dda39a15cb428dc31d4ad96d02f6823af5f7453003 |
+| 19 | 337923fa22d7496de27efabfdb27b7f8d97a9c68000d4722ded9eacfaa917db5 |
+| 20a | 8e4e6556211dd7aed7078cdd15c2ae1202af3b925d4c771c7f8370fd8c9c6083 |
+| 20b | 7d5b7ebbdaf7e6563b90dde494a063bdf591e0841121dd6f6b6de1ac0d10771a |
+| 21 | 0c641002fd40d82e0b86031578e5cb6fe7150bc98088af93b3e79403e8b4c63c |
+| 22 | be932e2a45ec9b9ad7bc7afe6900e0e71f5f82c93ba3dc23e5b498300853251d |
+| 23 | 6bd230c2a980411ead0ef77e480a5ab35e21811e887dd12ded3b2b403a23be25 |
+| 24a | 61be18934afb302c308a7669a7d78604adfbf8e4adc8d26a43bd4f69e94b86d4 |
+| 24b | 70b55924d05eb90ead1028c95268bdd9225d2ed1721a9d7abdd224f42158fa0e |
+| 25 | a09c6adc64416a35c8a026a4cae38890eb5ccfac787c63a568a96244dbac5164 |
+| 26 | a3d438611bbce53f4df601f6e0e2877deac87ec458f3a1c1d49f944563b3a409 |
+| 27a | 4543d2ec340b33f1758027df6f9f7e5bc36c55d528e9d8123d43625074a84236 |
+| 48 | 2407fa82672e5b3a4962333281572936acbc2ad935216f4cf18202717201cda6 |
+| 27b | 6ae07cb4f45d196fb8d96b5f216a6b7ee44a2ca355fbdb1e3b6c2e12f395b42d |
+| 28 | 8ae1f80b5e86d49e381329f764361503c18a1297c3c69509ce174769e64adb9a |
+| 29 | 5e252890f40ebaf167e76d93a87be5b2a3c16bad2464fb510c868ba8b9b3d2b4 |
+| (screen) (sc.ho_uses) | ef5c3e8372d70c514df195b4e4fa6991b5208e5280292707d1fc1b3e8a0c05bd |
+| (screen) (sc.ho_other) | f4b5d7242f56552080b3617765afc533d194fdc9ec282dc5eb90d8a356eeb249 |
+| 30(b) | 8be6705f90cf2410bb97c9f40f3bcaba508b2b02aed286f6d9d25eb8b69a7a07 |
+| 30(a) | 13030153eb4fc7138847565a2dd0f31b86210da3fddf1871bf13337c2d2fc447 |
+| 3a | f032c1aa616e675b295a4be9748270b4c92a3dca1786e32bc1cd1ed510b6c140 |
+| 4 (sc.ho_line4) | c16a11b8934124f13c7226b8945dc16407c6b35e3e0612405a2ad90352ed45cd |
+| 1 (sc.ho_line1) | 93604a87acc0da5e391576b70009e23bb7c8d01a2bc4e755bdb9b477e0d452c3 |
+| 5 (sc.ho_line5) | 24e5511527e374fee7d8da0116ff7a2e97ee30416a4107c734a02ebf27b2853c |
+| 30 | 2b2454406fde06a52b62715df8f45ee04691af33384cb10429efa6adda93e364 |
+| 31 | 1422a43a9afabd8d0b571ce73dc64eb53b2e044a0ae273a7ae4fa0bcf181f6ac |
+| 32 | b25d38d7fe4a3729fd765e7af7fd4e8de7a41893f83623de88158cddf985c07b |
+| 33 | 50711830f2371d36d966b1736e7b670c93dfd77ae213accbd336eb605498fd3a |
+| 35 | de04f0367e91980c5c24c0536a271c0782e32bd6f9ce4cb52653404c5f14911e |
+| 36 | b389efa972b467de26b52ac3de52917a94d1ac63227c13c40b3b5c02e259f423 |
+| 37 | bf3bbee7cfdb8ecb5d89fe9d0ec0aa16800102f3e43e327b6199cb2da08eed37 |
+| 38 | 1f1d505299d54c4175324e87abdf408fb00d21fe7f81fd80003a38fe2476dac8 |
+| 39 | 0ef5ce9ed8cf850cc78f66035dabffd60b00d761f00d7d724550f210c37b5a71 |
+| 40 | 033bea5099029a14cbec4b858fe135c0c759ace2d8cfbfc7e65d1d15c432984f |
+| 41 | ac91ba25000990d92da68710d46ca204aaa6e9d40a7cc2d3bcb6ac1ccb2c4d95 |
+| 42 | 278262894b269d7757fb3a8c270656a79d5e44a2dca3b867e8628a5d9490f2e9 |
+| 12 (sc.s179_allowed) | c5dc7c8608867829b9824c36d32ae28e59f1c59fc21e37ad9680bfbd4a57ed7e |
+| (screen) (sc.hi_uses) | d780af140ed61b7636e582896ef38a06a901001438731a5df5133ab2e56bb73a |
+| (screen) (sc.hi_screen) | a2dec570d2e040adde80c037b79193fe9da036b710becfa33502a71209a7c117 |
+| 1 (sc.f7206_line1) | ca22ab0386d35458dca2d715df8e9f925b61ddfda12d1e3708023992f07ff124 |
+| 2 (sc.f7206_line2) | 4a8f3bc38b51a3f22cb9c88722a242193ce322c350c38175024a52896c2c7433 |
+| 3 (sc.f7206_line3) | ce1706c34d2dd588f8bee4a51e6124f12cc7e138897b6ac75c224aac3a434adb |
+| 4 (sc.f7206_line4) | 7185c97a5e68441ae339f83b1976c871b54aeeb3bb98a6229b6488ded57bf79e |
+| 5 (sc.f7206_line5) | 1e4d8104b52947e1b606366f9dbbf92ea57041036e8c26f0893f9a9a1b210069 |
+| 7 (sc.f7206_line7) | bef18a7fbf8a0cac2e552e60da39d58068257d1449770b432afae5ed4398b24a |
+| 8 (sc.f7206_line8) | a25c1b9cfc5a2fb7c531e3ccd16f759b968a4fd1767e2fb9f5ea58c859e6d814 |
+| 9 (sc.f7206_line9) | 55682ff4ca61a3c39016a7cda38325fe21a61d302b1b24366bbbe8ee97fab3e4 |
+| 10 (sc.f7206_line10) | 4a6fc23293b452a587c8c681fed56f7847ca1a8659fe9eca1087cc54255ba119 |
+| 13 (sc.f7206_line13) | 99c5774896376db77445b76f8b1b95eb36cbf116da9176acaca129b728f56de6 |
+| 14 (sc.f7206_line14) | 0d0fbf293b1249e6e33b3d7cd621a712654c312e3eb03ec95bddbf2d6a777459 |
+| 1(c) | 37936dcc3e8495d753da824fee76a6d1afc169abaaa8f34982a815eb98305bfe |
+| (screen) (sc.tips_ot) | fdb948c18792a3f705d0fc12465389f045c5185076bb24a588958840d81e5685 |
+| (rest of the document) | ed53d3203d917abafab1d2fe4da410ba4fc100b32f1ed5882f9e7962dd130f66 |
+
+## Line-scoped reviews
+
+Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
+
+#### Pass 8166f29208ff
+
+| field | value |
+| --- | --- |
+| date | 2026-11-04 |
+| review scope | lines 24a, 28, 5 (sc.ho_line5), 12 (sc.s179_allowed) |
+| model requested | deepseek-flash |
+| model reported | deepseek-flash |
+| prompt sha256 | 8166f29208ff96258e58a47f9aaec30ef78d8f38bc4a116def8588c7d71ec9f1 |
+| prompt policy | render-source-comparison-v2+lines-v1 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | 65536 |
+| subject sha256 | 398fe31625350637521ab496bdc58d2f7b0ac7c51fe9cfd63688da848f9f4d99 |
+| receipt | .transcription/sc.deepseek.render.lines-514702a2772a |
+| lines judged | 4 |
+| match / mismatch / unclear / missing | 4 / 0 / 0 / 0 |
+| verdicts for lines not in the form | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i1040sc | 2025 | 3, 6, 7, 8, 9, 10, 12, 14, 15 | cited pages | dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a | 3, 6, 7, 8, 9, 10, 14, 15 | 616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918 |
+| f1040sc | 2025; created 2025-04-03 | 1, 2 | whole document | ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022 | - | 44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376 |
+| p946 | For use in preparing 2025 returns | 17, 18, 19, 31, 32, 33, 34, 37, 39, 41, 59, 61, 62, 63, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 17, 18, 19, 31, 32, 33, 34, 37, 39, 41, 63 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
+| f4562 | 2025; created 2025-10-09 | 1, 2, 3 | whole document | 71e2ace527072aaa7293e77897bb4ab8e473fa9c47b6b1ccb977fdc58a93bc2d | - | a1330c49d931e7ecdc867aef2d9e01390fc7b4d7e9321943a21ed0f8e883ed18 |
+| i4562 | 2025 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
+| n-25-05 | Notice 2025-5 | 1, 2, 3, 4, 5 | whole document | 394f6b5ffb7c30e745322f0f20d9137608b1e2429fc4c76b06dedd690d4fb6e3 | - | 349e2797f87c588214722bcd22b7ec317c86c90a255ec8496941ac0c09909a8d |
+
+##### Raw response
+
+```yaml
+lines:
+  - key: "24a"
+    status: MATCH
+    reason: "The restatement tracks the Schedule C line 24a instructions for lodging, transportation, incidental expenses and the $5 optional method, meals/entertainment exclusions, one-year employment limit, spouse/dependent rule, and North American convention rule."
+  - key: "28"
+    status: MATCH
+    reason: "Schedule C line 28 says to add lines 8 through 27b, and the restatement enumerates exactly those lines, including the 16a/16b, 20a/20b, 24a/24b, and 27a/27b pairs."
+  - key: "5 (sc.ho_line5)"
+    status: MATCH
+    reason: "Simplified Method Worksheet line 5 is the smaller of line 1 or line 4; the restatement uses line 4 when it cannot exceed any possible line 29 limitation, otherwise computes or refuses the section 179 interaction cases, which is a valid narrowing."
+  - key: "12 (sc.s179_allowed)"
+    status: MATCH
+    reason: "This matches Form 4562 line 12 allocation: where line 12 equals the elected amounts it uses this business’s elected section 179 amount, and where it differs and there is only one Schedule C it uses the return’s line 12 deduction, refusing allocation among multiple businesses."
+```
 
 ## Raw response
 

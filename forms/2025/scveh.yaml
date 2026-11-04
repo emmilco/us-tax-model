@@ -67,10 +67,12 @@ form:
     expr:
       op: input
       source: The commuting miles you drove this vehicle in 2025 (travel between your home and a work location, as defined
-        in the instructions for line 44b)
+        in the instructions for line 44b); if you converted this vehicle during 2025 from personal to business use (or from
+        business to personal use), only your commuting miles for the period you drove it for business
     cite:
       doc: i1040sc
-      locator: p. 15, Line 44b
+      locator: p. 15, Line 44b, "If you converted your vehicle during the year from personal to business use (or vice versa),
+        enter your commuting miles only for the period you drove your vehicle for business"
   - id: scveh.miles_other
     printed: 44c
     label: Other miles
@@ -436,18 +438,22 @@ form:
       locator: p. 8, Lines 20a and 20b, "enter on line 20a the business portion of your rental cost"
   - id: scveh.lease_smr_before
     printed: (screen)
-    label: The standard mileage rate was used for this leased vehicle before
+    label: The standard mileage rate was used for this leased vehicle before, or it was converted between personal and business
+      use in 2025
     type: Bool
     expr:
       op: input
-      source: Did you use the standard mileage rate for this leased vehicle in an earlier year?
+      source: Did you use the standard mileage rate for this leased vehicle in an earlier year, or did you convert it during
+        2025 from personal use to business use or from business use to personal use?
     cite:
       doc: i1040sc
       locator: p. 6, Line 9, "You can't use actual expenses for a leased vehicle if you previously used the standard mileage
-        rate for that vehicle"
+        rate for that vehicle"; p. 15, Line 44b, "If you converted your vehicle during the year from personal to business
+        use (or vice versa)"; p463 pp. 25-26, Change from personal to business use, "you figure the percentage of business use
+        for the year as follows"
   - id: scveh.lease_smr_bad
     printed: (gate)
-    label: Actual expenses on a leased vehicle after the standard mileage rate
+    label: Actual expenses on a leased vehicle after the standard mileage rate, or converted in 2025
     type: Bool
     expr:
       op: test
@@ -472,11 +478,14 @@ form:
       locator: p. 8, Lines 20a and 20b
     refuses:
     - when: scveh.lease_smr_bad
-      form: Actual expenses on a leased vehicle after using the standard mileage rate for it in an earlier year
-      remedy: You can't use actual expenses for this leased vehicle; use the standard mileage rate for the rest of the lease.
+      form: Actual expenses on a leased vehicle after using the standard mileage rate for it in an earlier year, or on a
+        leased vehicle converted between personal and business use in 2025
+      remedy: You can't use actual expenses for a leased vehicle after using the standard mileage rate for it; use the
+        standard mileage rate for the rest of the lease. Actual expenses for a leased vehicle converted between personal
+        and business use in 2025 are outside this tool.
       cite:
         doc: i1040sc
-        locator: p. 6, Line 9
+        locator: p. 6, Line 9; p. 15, Line 44b; p463 pp. 25-26, Change from personal to business use
   - id: scveh.line20a
     printed: 20a
     label: Rent or lease of this vehicle (business portion)
@@ -726,7 +735,7 @@ form:
         your business/investment cost"
     ambiguity: amb.2025.vehicle_business_pct
   - id: scveh.s179_elect
-    printed: (i)
+    printed: (helper)
     label: Elected section 179 cost
     type: NonNegDollars
     expr:
@@ -2035,7 +2044,8 @@ form:
       doc: i4562
       locator: p. 13, Part V, Section A
   - id: scveh.s179_2025
-    printed: (helper)
+    printed: (i)
+    shown_when: scveh.is_actual_owned
     label: 'Column (i): elected section 179 cost of this vehicle'
     type: NonNegDollars
     expr:

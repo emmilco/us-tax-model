@@ -29,11 +29,29 @@
    "context": "87c3097dba05d20ef2705a4e6447fa11213991d41c4ff07fd73c8b78ca25aaaf"
   },
   {
+   "printed": "19a",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"s1.alimony\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.alimony\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"s1.alimony_paid\"}}], \"op\": \"choose\"}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.alimony\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"s1.alimony_paid\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.alimony\"}], \"test\": \"ne\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: representation; as line 2a: s1.alimony_paid when s1.alimony is true, zero otherwise, the project's line for every answered value; the agreement-date and changed-agreement conditions are in the s1.alimony question and the refused cases in s1.alimony_unsupported.",
+   "context": "8e168fabc80dfefb262160cd14a5e60237388cc494bb39524df4d05c54793b4d",
+   "date": "2026-11-04",
+   "run": "68116d69bff88edfcc71d7837f31274043094232b8876dfc88021ac84175d7fc"
+  },
+  {
    "printed": "20",
    "project": "{\"collection\": \"person\", \"field\": \"person.ira_deduction\", \"op\": \"sum_over\", \"where\": null}",
    "second": "{\"of\": [{\"ref\": \"ira.line12a\"}, {\"ref\": \"ira.line12b\"}], \"op\": \"sum\"}",
    "ruling": "Ruling: representation; i1040gi p. 98, IRA Deduction Worksheet, line 12: \"Add the amounts on lines 12a and 12b and enter the total on Schedule 1, line 20\". The candidate's ira.line12a plus ira.line12b is the same total of person.ira_deduction over you and your spouse as the project's ira.total. executable-triage-v2 (`reviews/2025/transcription/triage/s1.json`, written by triage.py this round; 1,495 fixtures, 500 generated returns seed 20261026, 639 partial records from 40 bases; 2,634 comparisons per line; completed-return witnesses listed from an uncapped scratch re-run of triage.mjs, /tmp/adj-bklg-income/full/, same counts): 2,605 of 2,634 agree; no value differences and no difference on a completed return. The 22 candidate-unknown (21 incomplete, 1 refused; e.g. stage16.ira.i1 to i10, stage16.mut.ira_kbh_one_edge, audit.ira.covered_age50_single_phaseout, ss.person.separation) stop inside person.ira_deduction on modified AGI, which the candidate builds from its own Schedule 1 lines (line 1 needing refund.box8, ruled above, and the ungated refusal declarations on lines 2a and 19a that read s1.alimony_unsupported on every return); the 7 project-refuses (stage16.refuse.ira.kbh_short, .over_comp, .special, .excluded_income, .combat_pay, .dist, .deduct_less) are the IRA worksheet gates inside person.ira_deduction, which the candidate reaches too once those answers exist. Same expression and ruling as fix round 3. Project stands.",
    "context": "cf52b5b82eaefdc17c5fb53020a6dab28ac825051d33fc5bb8eea2bf3e93719f"
+  },
+  {
+   "printed": "2a",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"s1.alimony\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.alimony\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"s1.alimony_received\"}}], \"op\": \"choose\"}",
+   "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.alimony\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"s1.alimony_received\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.alimony\"}], \"test\": \"ne\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",
+   "ruling": "Ruling: representation; the reply enters s1.alimony_received when s1.alimony is true and zero otherwise; the project enters zero when false and the amount when true. For an answered Bool these are the same; both need s1.alimony. The round-2 wording of the alimony inputs (A2, s1#4) is what the reply read (\"agreement entered into on or before December 31, 2018, unless a later change expressly provides that alimony isn't included in income\"); its refusals (more than one agreement, recapture, payments partly not alimony) go through s1.alimony_unsupported as in the project.",
+   "context": "8e168fabc80dfefb262160cd14a5e60237388cc494bb39524df4d05c54793b4d",
+   "date": "2026-11-04",
+   "run": "68116d69bff88edfcc71d7837f31274043094232b8876dfc88021ac84175d7fc"
   },
   {
    "printed": "7",

@@ -76,6 +76,15 @@
   {
    "printed": "Step 3",
    "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
+   "model": "IRS Step 3 says only 'Net earnings from self-employment. Subtract step 2 from step 1'; the restatement adds 'If zero or less, enter -0-,' which changes a negative subtraction result.",
+   "ruling": "Ruling: ambiguity; amb.2025.sep_loss_floor (BUG-0181). p560 p. 39, \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" prints no floor; person.sep_s3 floors Step 3 at zero and its English says so, the register's chosen reading. Same restatement and objection as the refresh-round ruling. Project stands.",
+   "context": "a3f51b27c17b0c92f1943a6e1d9109f687f114d9ddcfb07a3643c188a09e3c47",
+   "date": "2026-11-04",
+   "run": "58b149768492a9fc1833fed9fb6806bf2c3f6ee33fb3c3c93b34d48efc674b9e"
+  },
+  {
+   "printed": "Step 3",
+   "restated": "Subtract line Step 2 from line Step 1. If zero or less, enter -0-.",
    "model": "IRS Step 3 says only 'Subtract step 2 from step 1'; it does not say to enter -0- if zero or less, so a negative result should not be floored.",
    "ruling": "Ruling: ambiguity; amb.2025.sep_loss_floor (BUG-0181, the disposition of the round-4 finding BUG-0180). p560 p. 39, Deduction Worksheet for Self-Employed: \"Step 3 Net earnings from self-employment. Subtract step 2 from step 1\" prints no floor. The model read the page and the English correctly: person.sep_s3 floors Step 3 at zero and the English says so (\"If zero or less, enter -0-\"). The register records both readings and chooses the floor (\"A maximum deductible contribution below zero has no meaning\"; where both readings complete the return no Form 1040 or Schedule 1 amount differs, only the printed worksheet steps), naming person.sep_s3 in its chosen reading; the line itself still carries no ambiguity field pointing back to the entry (a traceability gap only, noted in round 1). Unchanged since round 1 (the round-3 reply repeats the round-2 reading); project stands.",
    "context": "732da67b91f0140d9f0bd64f773859473c2dcb1f3c8cb892632167e36e8cad11"

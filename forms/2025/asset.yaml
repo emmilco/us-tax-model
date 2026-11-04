@@ -33,7 +33,9 @@ form:
         after the date the building was first placed in service by anyone; it does not include an improvement attributable
         to the enlargement of the building, any elevator or escalator, or the internal structural framework of the building,
         nor an improvement to residential rental property: such an improvement is real property, not qualified improvement
-        property)'
+        property). An addition or improvement you made to other depreciable property is separate property with the class
+        of the property it was made to (the class that would apply to that property if you had placed it in service when
+        you placed the addition or improvement in service)'
     cite:
       doc: p946
       locator: p. 98, Appendix B, How To Use the Tables; i4562 p. 10, Determining the classification; p946 p. 31, Qualified
@@ -41,7 +43,10 @@ form:
         real property, and the improvement is section 1250 property, is made by you, and is placed in service by you after
         2017 and after the date the building was first placed in service by any person", "However, a qualified improvement
         does not include any improvement for which the expenditure is attributable to any of the following" and "The enlargement
-        of the building. • Any elevator or escalator. • The internal structural framework of the building"
+        of the building. • Any elevator or escalator. • The internal structural framework of the building"; p946 p. 33,
+        Additions and Improvements, "An addition or improvement you make to depreciable property is treated as separate
+        depreciable property" and "Its property class and recovery period are the same as those that would apply to the
+        original property if you had placed it in service at the same time you placed the addition or improvement in service"
   - id: asset.period
     printed: (d)
     label: Recovery period under GDS for the asset class
@@ -94,7 +99,8 @@ form:
     type: Bool
     expr:
       op: input
-      source: 'Does any of these apply to this property: you disposed of it or converted it to personal use in 2025; you acquired
+      source: 'Does any of these apply to this property: you disposed of it, or of a portion of it, or converted it to personal use
+        in 2025; you acquired
         it in a like-kind exchange or an involuntary conversion, with a trade-in (you traded in other property as part of
         its price), from a related person, or by gift or inheritance; it is real
         property (a building or a structural component, other than qualified improvement property) or land; it is a car, truck
@@ -143,7 +149,8 @@ form:
         income for the use and any required income tax was withheld; and use that is nondeductible under section 274)?'
     cite:
       doc: i4562
-      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 7, Exceptions, "Property described in section
+      locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
+        MACRS asset and are required to (or elect to) take the basis of the asset into account"; p. 7, Exceptions, "Property described in section
         168(k)(9)(A) or 168(k)(9)(B)" (the description in the question restates IRC section 168(k)(9), which is not archived);
         p. 6, "Qualified property can be either new property or certain used property"; p946 p. 31, "Original use means the
         first use to which the property is put, whether or not by you"; p. 8, Line 16, "Computer software.
@@ -188,14 +195,17 @@ form:
       op: input
       source: The year you placed this property in service in the business (2005 to 2025). Property is placed in service
         when it is ready and available for a specific use, even if you have not yet used it; property you converted from
-        personal use to use in the business is placed in service on the date of the conversion
+        personal use to use in the business is placed in service on the date of the conversion; for an addition or improvement,
+        the later of the year you placed it in service and the year you placed in service the property it was made to
     cite:
       doc: i4562
       locator: p. 11, Column (b)—Month and year placed in service; p946 p. 39, Using the MACRS Percentage Tables, the example of the third recovery year;
         p946 p. 32, "The placed in service date for your property is the date the property is ready and available for a specific
         use. It is therefore not necessarily the date it is first used." and "If you converted property held for personal use
         to use in a trade or business or for the production of income, treat the property as being placed in service on the
-        conversion date"
+        conversion date"; p946 pp. 33-34, Additions and Improvements, "The recovery period begins on the later of the following
+        dates", "The date you place the addition or improvement in service" and "The date you place in service the property
+        to which you made the addition or improvement"
   - id: asset.cost
     printed: (helper)
     label: Cost or other basis

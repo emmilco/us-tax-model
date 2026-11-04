@@ -1,3 +1,27 @@
+# Round 2 and the tooling batch — 2026-11-04
+
+**State:** the tooling batch is f27d71d (T-218 carry-over, T-219 line-scoped reviews, T-220 yield, T-225, T-228 and
+the P5 rows). Round 2 is the commit after it:
+- the review-tool rows T-223 (ruling stamps), T-224 (mechanical model-error rulings), T-226 (BUG-0411), T-227 (foreign interfaces);
+- the engine rows T-206 (class M selection on route branches) and T-213's input check (BUG-0412);
+- the form pass: every BUG-0402 low (BUG-0408), T-216 (BUG-0409), T-215 (BUG-0410), the NUA refusal (BUG-0413), T-201 and T-207;
+- the first real line-scoped review round on the 17 changed forms, with completeness and screens, all adjudicated.
+
+Round 2 cost $41.12 in paid calls (90 calls); the yield report has an exact-join table from now on.
+
+**Decisions taken under the standing instruction (Elliot can reverse):**
+- T-191: the `bracket_schedule` op form stays in the frozen vocabulary.
+- T-181 and T-208: left open as coverage expansion.
+- Stale DeepSeek transcription logs of ineligible changed forms are archived (`.transcription/archive/stale-deepseek-transcription-2026-11-04/`), not rerun.
+- `--lines auto` records a verified line-subject table for a pre-table log with no stale line, with no model call.
+- Sibling-form review evidence comes from a line-scoped review of the sibling lines alone (f1040, f8863).
+
+**Owner questions:** T-232 (`expect_shown`, a fixture-schema and spec change); whether transcription reviews should stop running on wording-only changes (round 2: $20.48 for 0 findings; completeness $6.70 for 1 medium and 12 lows).
+
+**Next:** T-229 (BUG-0414 lows) and T-231 at each form's next pass; T-217 after 2026-11-06 15:49; T-196 if a reader changes; coverage expansion stays last.
+
+---
+
 # Backlog and refresh rounds — 2026-11-03
 
 **Owner decisions (2026-11-03):**

@@ -99,13 +99,13 @@ bank:
       with IRS consent; this tool does not make it automatically.
   - input: f8959.unsupported
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: "True if any of the listed items applies to you: church employee income, RRTA compensation, unreported or allocated tips (Form W-2 box 8), Form 8919 wages, uncollected Medicare tax (Form W-2 box 12 codes B or N), or territory wage statements. Answer true or false."
   - input: f8960.unsupported
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations. A penalty on early withdrawal of savings
-      (Schedule 1 line 18) is not another adjustment here; this tool enters it on line 10.
+    help: Answer true or false. True if any item the question lists applies to you for 2025; each is a net investment
+      income or modified AGI adjustment of Form 8960 that this tool does not figure, so true refuses the return when Form
+      8960 is required. A penalty on early withdrawal of savings (Schedule 1 line 18) is not another adjustment here; this
+      tool enters it on line 10.
   - input: f8960.prior_2i
     order: 11
     help: Answer true or false. Asked only when a capital loss is carried into 2025 and your modified adjusted gross income
@@ -113,48 +113,42 @@ bank:
       2024.
   - input: f8960.refund
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: Answer true or false. True if in 2025 you recovered or were refunded any amount deducted on an earlier year's
+      Form 8960 (such as state, local or foreign income tax), whether or not any of it is taxable on Form 1040; the
+      recovery needs the Form 8960 Deduction Recoveries Worksheet, which this tool does not figure.
   - input: f8960.allocated_taxes
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: Integer cents. The part of the state and local income and property taxes you deduct on Schedule A that you
+      allocate to net investment income by a reasonable method (Form 8960 line 9b), leaving out foreign taxes you take a
+      credit for. Used only if you itemize; it cannot exceed the Schedule A tax deduction. Zero if none.
   - input: ftc.taxes
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: Foreign income taxes you paid, after any required reductions. Usually the total of Form 1099-INT box 6 and Form 1099-DIV box 7. In cents; zero if none.
   - input: ftc.all_passive
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: True if all of your foreign-source gross income was passive category income. Passive income is mostly interest and dividends. Answer true or false.
   - input: ftc.statements
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: True if every foreign income and tax amount was reported to you on a qualified payee statement, such as Form 1099-INT or 1099-DIV. Answer true or false.
   - input: ftc.eligible
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: True if the foreign taxes are creditable and the holding-period, related-payment and required foreign-tax reduction rules have all been met. Answer true or false.
   - input: ftc.elect
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: True if you choose to claim the foreign tax credit without filing Form 1116, with no carryover to or from this year. Answer true or false.
   - input: $gift
     order: 5
     help: Enter a JSON array of distinct keys. Empty [] means none. For gifts, group similar items across all donees.
     prompt: List stable keys for Form 8283 — groups of similar noncash property.
   - input: gift.deduction
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: The deduction for this item, or group of similar items given to all donees together, before income limits and after required value or basis reductions. In cents; zero if none.
   - input: gift.public_securities
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: True if this group is publicly traded securities, such as stock listed on an exchange, traded over the counter, or mutual fund shares quoted daily in a national newspaper. Answer true or false.
   - input: gift.special
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: True if this group needs an appraisal or other special treatment, such as a deduction or value over $5,000, a vehicle, a pass-through entity interest, intellectual property, inventory, or a partial interest. Answer true or false.
   - input: $interest
     order: 8
     help: Enter a JSON array of distinct keys. Include all taxable interest payers.
@@ -176,101 +170,84 @@ bank:
       do not guess. Married filing separately and unsupported items are refused with citations.
   - input: person.rrta
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: True if any Form W-2 of this person reports railroad retirement (RRTA) compensation or tax in box 14, or
+      this person filed Form CT-2 as an employee representative. Railroad retirement compensation is outside this tool
+      and is refused.
   - input: qbi.dividends
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: Qualified section 199A dividends, found in Form 1099-DIV box 5, once the holding-period and related-payment requirements are met. In cents; zero if none.
   - input: qbi.unsupported
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: True if you have qualified business or PTP income or loss other than section 199A dividends and your Schedule C businesses, a prior-year REIT or PTP loss carryforward, or agricultural cooperative patronage (Form 1099-PATR). Answer true or false.
   - input: s2.amt
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: True if you must file Form 6251 or have an alternative minimum tax adjustment that needs review. Answer true or false.
   - input: s2.other
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations. The additional 20% tax on taxable HSA
-      distributions (Form 8889 line 17b) is figured by this tool; it is not another amount here.
+    help: True if Schedule 2 has any amount this tool does not figure, such as alternative minimum tax, a clean vehicle credit repayment, household employment taxes, or tax on unreported tips. Answer true or false.
   - input: s3.line10
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: The amount paid with Form 4868 or Form 2350, or paid to get an automatic extension of time to file, without
+      any fee charged for making the payment. In cents; zero if none.
   - input: s3.line12
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: The credit for federal tax on fuels from Form 4136, which this tool does not prepare. In cents; zero if
+      none.
   - input: s3.line14
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: The total of Schedule 3 lines 13a through 13z (other payments and refundable credits), which this tool does
+      not prepare. In cents; zero if none.
   - input: sa.gambling_losses
     order: 11
     help: Money is integer cents. Enter all your gambling losses; the deduction on Schedule A line 16 is limited to your
       winnings on Schedule 1 line 8b and counts only if you itemize.
   - input: sa.unsupported
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: True if you have a casualty or theft loss, a Schedule A line 16 deduction other than gambling losses, a foreign or generation-skipping tax deduction, mortgage interest or points not on Form 1098 or subject to limits, or you elect sales tax. Answer true or false.
   - input: sa.charity_limited
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: True if any charitable deduction is reduced by an income limit or carried over from a prior year. Check Publication 526 first. Answer true or false.
   - input: sa.excluded_income
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: True if you file Form 2555 or Form 4563, or exclude income as a bona fide resident of Puerto Rico. Answer true or false.
   - input: sa.dependent
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: True if someone else can claim you or your spouse as a dependent for 2025, or you are a dual-status alien. Answer false if the person who could claim you does not have to file and files only for a refund. Answer true or false.
   - input: sa.spouse_extra
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: True if you are married filing separately and claim age or blindness boxes for a spouse who had no income, is not filing, and cannot be claimed as a dependent. Answer true or false.
   - input: person.age65
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: True if this person was born before January 2, 1961. It counts for the age box on Form 1040 line 12d and the
+      higher standard deduction.
   - input: person.blind
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: True if this person was blind at the end of 2025, as the question defines it; if not totally blind, a
+      statement certified by an eye doctor is needed. It counts for the blindness box on Form 1040 line 12d.
   - input: sa.spouse_itemizes
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: True if you are married filing separately and your spouse itemizes deductions. Answer true or false.
   - input: sa.elect_itemize
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: True if you choose to itemize even though the standard deduction is larger. Answer true or false.
   - input: sa.line1
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: Your unreimbursed medical and dental expenses for 2025, such as hospital care, clinic costs, lab fees, and premiums not paid pretax. In cents; zero if none.
   - input: sa.line5a
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: State and local income taxes paid in 2025, including withholding, estimated payments, and prior-year taxes paid this year. In cents; zero if none.
   - input: sa.line5b
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: State and local real estate taxes you paid in 2025 on property you own that is not used for business. In cents; zero if none.
   - input: sa.line5c
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: State and local personal property taxes you paid in 2025 that were based on value alone and imposed yearly, such as the value-based part of a car fee. In cents; zero if none.
   - input: sa.line8a
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: Home mortgage interest and points reported to you on Form 1098, when no debt or use limit applies. In cents; zero if none.
   - input: sa.line11
     order: 10
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: Charitable gifts by cash or check in 2025, before income limits, after subtracting benefits you received. In cents; zero if none.
   - input: $sales
     order: 1
     help: Enter a JSON array of distinct keys. Enter each transaction once; the route selects Form 8949 or Schedule
@@ -334,20 +311,21 @@ bank:
     help: Money is integer cents. Answer true/false to screening questions. Unknown may be null.
   - input: scope.schedule1
     order: 0
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: Answer true or false. True if you have any Schedule 1 income or adjustment other than the items in the
+      parentheses, which this tool asks about elsewhere, including the kinds the question names; true refuses the return.
   - input: scope.credits
     order: 0
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: Answer true or false. True if you want any credit not in the question's list of credits this tool figures, or
+      have any other amount for Schedule 3 Part I; true refuses the return.
   - input: scope.other_income
     order: 0
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: Answer true or false. True if you or your spouse were a nonresident alien for any part of 2025, or you have any
+      income or return treatment the question names, or any other outside the wages, interest, dividends, securities
+      sales, Form 1099-R distributions and social security benefits this tool handles; true refuses the return.
   - input: scope.other_line16
     order: 0
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: Answer true or false. True if any tax or filing the question names applies to you, including Schedule J income
+      averaging you choose and stock you own in a CFC or PFIC; true refuses the return.
   - input: sd.other_forms
     order: 10
     help: Money is integer cents; enter true/false for questions and one of the stated values for classifications.
@@ -391,28 +369,26 @@ bank:
       you a Form W-2. If one employer gave you more than one Form W-2, use one key and enter their boxes combined.
   - input: w2.box1
     order: 3
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: Box 1 of this Form W-2 is wages, tips and other compensation, which leaves out elective deferrals such as
+      401(k) or 403(b) contributions. In cents.
   - input: w2.box3
     order: 4
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: Box 3 of this Form W-2 is social security wages, not counting social security tips, which are in box 7. In
+      cents.
   - input: w2.box7
     order: 4
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: Box 7 of this Form W-2 is social security tips, the tips you reported to this employer. In cents.
   - input: w2.box4
     order: 3
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: Box 4 of this Form W-2 is the employee social security tax withheld. In cents.
   - input: w2.box5
     order: 4
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: Box 5 of this Form W-2 is Medicare wages and tips, which have no wage base limit and so can be more than
+      boxes 3 and 7. In cents.
   - input: w2.box6
     order: 4
-    help: Money is integer cents. Answer true/false for screening questions. Unknown may be null; do not guess.
-      Married filing separately and unsupported items are refused with citations.
+    help: Box 6 of this Form W-2 is the employee Medicare tax withheld, including any Additional Medicare Tax. In
+      cents.
   - input: w2.box2
     order: 3
     help: Read iw2w3, p. 17, box 2. Enter cents for money. Enter null if you do not know; it never becomes zero.
@@ -1450,10 +1426,6 @@ bank:
     order: 10
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
       do not guess. Married filing separately and unsupported items are refused with citations.
-  - input: sli.claimed
-    order: 10
-    help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
-      do not guess. Married filing separately and unsupported items are refused with citations.
   - input: s1a.tips
     order: 10
     help: Money is integer cents. Answer true/false for questions; a count is a whole number. Unknown may be null;
@@ -2052,9 +2024,10 @@ bank:
     help: A student for the saver's credit (Form 8880). Answer true or false.
   - input: person.sav_claimed
     order: 25
-    help: Asked for the saver's credit when someone can claim you or your spouse as a dependent, and for the education
-      credits when qualified education expenses were paid. Answer true only if this person is actually claimed on someone
-      else's 2025 return. Answer true or false.
+    help: Asked for the saver's credit when someone can claim you or your spouse as a dependent, for the education
+      credits when qualified education expenses were paid, and for the student loan interest deduction when student loan
+      interest was paid. Answer true only if this person is actually claimed on someone else's 2025 return. Answer true
+      or false.
   - input: person.sav_trad
     order: 22
     help: Contributions to a traditional IRA (including a SEP IRA you contribute to yourself, but not employer contributions

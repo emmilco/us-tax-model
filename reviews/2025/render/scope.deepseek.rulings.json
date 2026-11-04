@@ -75,6 +75,15 @@
   },
   {
    "printed": "other_line16",
+   "restated": "Input — Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax), Form 4972, Form 8615 (required if you had more than $2,700 of unearned income, are required to file, do not file jointly, have a parent who was alive at the end of 2025, and were under 18 at the end of 2025, or 18 with earned income of not more than half your support, or a full-time student 19 to 23 with earned income of not more than half your support), a section 962 election, Form 8621, a Form 8978 amount, recapture of an education credit, income averaging of farming or fishing income on Schedule J (if you choose it), or stock you own, directly or indirectly, in a controlled foreign corporation (CFC) or a passive foreign investment company (PFIC), even with nothing to include in income for 2025 (its distributions, dispositions and related adjustments can make the modified AGI of Form 8960 line 13 differ from AGI)?",
+   "model": "The restatement includes CFC/PFIC ownership under Form 1040 line 16, but the IRS text says those interests affect the 'modified AGI of Form 8960 line 13' (MAGI), not line 16; line 16 instead involves items such as Form 8615, Schedule D, qualified dividends, Schedule J, and Form 2555.",
+   "ruling": "Ruling: model error; i8960 p. 22: \"If you exclude amounts under section 911 or own certain CFCs or PFICs, your MAGI is your AGI as modified by certain rules\". The model is right that CFC/PFIC stock bears on Form 8960 line 13 rather than on a Form 1040 line 16 tax, but the restatement does not say otherwise: this is a refusal screen, and the round-2 change (T-216, A1) adds CFC/PFIC ownership to it deliberately, stating why (\"its distributions, dispositions and related adjustments can make the modified AGI of Form 8960 line 13 differ from AGI\"); the over-refusal of a CFC/PFIC owner with no NIIT was accepted. No amount is computed from the question. Project stands.",
+   "context": "2619fe07e9c2bef1b2164d7cd1ad44420b7dd8677bf8fc20aa59a80e41b84758",
+   "date": "2026-11-04",
+   "run": "d5a124edbe2055623b2028f630912bcfc29a067599ff5955450adfecab593011"
+  },
+  {
+   "printed": "other_line16",
    "restated": "Input — Any additional Form 1040 line 16 tax or filing, including filing Form 8814 (even with no tax), Form 4972, Form 8615, a section 962 election, Form 8621, a Form 8978 amount, or recapture of an education credit?",
    "model": "Form 1040 line 16 says only 'Tax (see instructions)' and names forms 8814 and 4972; the referenced instructions and the other listed line 16 items are not provided.",
    "ruling": "Ruling: interface gap; f1040 (2025) line 16, the Form 8814 and Form 4972 boxes. The pages given were Form 1040 pp. 1-2 and i1040gi p. 14 only; the text that would decide the listed items is not among them: interface gap (a coverage gap of the review). The listed forms are refusals cited on the lines that read this question (f1040.line16). Its \"recapture of an education credit\" item keeps Form 8863 recapture refused, as Stage 19’s D1 decided. Unchanged. Restatement accepted.",

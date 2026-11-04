@@ -47,6 +47,14 @@ Chosen from the source pages above (catalog_selection); refusal-gate inputs are 
 
 ## Lines
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| (rest of the document) | fde1e09fb5f15ec7d98fd2c143f7cfa2b78064540e4c9fc1b494e4cef06a4cc6 |
+
 ## Raw second transcription
 
 ```yaml

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Carry an earlier ruling over to a repeat review disagreement.
+"""Rule review disagreements without adjudication: model errors on the declaration, and earlier
+rulings carried over to repeat disagreements.
 
 A rerun (a prompt change, a new model reply) reopens every disagreement whose
 recorded review context changed, even where the same objection recurs on the
@@ -22,6 +23,17 @@ adjudicator sees only new disagreements. A ruling carries only when all hold:
 
 A class M ruling that dropped the line from the fixture is carried with its
 drop, which rule.py repeats on the fixture.
+
+Before carrying, a transcription disagreement whose reply fails the host's
+schema, type or reference validation on the line or a line it reads (the
+comparison records those failures beside the reply's tree as
+`invalid_model_types`) is ruled a model error on the declaration mechanically,
+with the validation messages: the project's own rules class it so whatever the
+source says (reviews/<year>/transcription/adjudication/README.md, "model
+error"), and the line was not executed. No earlier ruling is needed. A reply
+that merely omits a `shown_when` is not ruled this way: whether the source
+conditions the line's display is a source reading, and earlier rulings on such
+lines split between model error, scope, representation and interface gap.
 
 A render objection is free text, so render matches on the restated English and
 the status (MISMATCH, UNCLEAR, MISSING), not on the objection's wording.
@@ -301,6 +313,30 @@ def excluded(ruling):
     return None
 
 
+MECHANICAL = "Ruling: model error on the declaration, ruled mechanically"
+
+
+def mechanical(kind, sec):
+    """The ruling the project's own rules give a section without a source reading, else None: a
+    transcription disagreement whose second side is the reply's tree beside the validation
+    failures that reach the line (transcribe.checked_second)."""
+    if kind != "transcription" or sec["status"] != "DISAGREE":
+        return None
+    try:
+        second = json.loads(sec["key"][2])
+    except (ValueError, TypeError):
+        return None
+    if not isinstance(second, dict) or set(second) != {"invalid_model_types", "expression"} or not second["invalid_model_types"]:
+        return None
+    messages = sorted({f'{e.get("line") or "the reply"}: "{" ".join(str(e.get("message", "")).split())}"'
+                       for e in second["invalid_model_types"] if isinstance(e, dict)})
+    if not messages:
+        return None
+    return (f"{MECHANICAL}: the reply fails the host's schema, type or reference validation on this line or a line "
+            f"it reads ({'; '.join(messages)}), so the line was not executed. This adjudicates the declaration, "
+            "not the tax reading.")
+
+
 def carried_text(ruling, source, date):
     text = sidecar.split_ruling(ruling)[0]
     if CARRIED.search(text):
@@ -399,14 +435,19 @@ def plan(kind, form, family=families.DEFAULT, origin=None, current=None):
     reviewed = current.read(os.path.relpath(subjects.path(kind, form, Y), ROOT))
     if reviewed is None or recorded(text, "subject sha256") != subjects.of_text(kind, reviewed):
         return {}, stats, [(s["handle"], "the log is stale; rerun first") for s in targets]
+    out = {s["handle"]: m for s in targets for m in [mechanical(kind, s)] if m}
+    stats["mechanical"] = len(out)
+    targets = [s for s in targets if s["handle"] not in out]
+    if not targets:
+        return out, stats, []
     src, label, snap = source_log(kind, form, family, origin)
     if src is None:
-        return {}, stats, [(s["handle"], label) for s in targets]
+        return out, stats, [(s["handle"], label) for s in targets]
     date = recorded(src, "date") or "unknown date"
     earlier = {}
     for s in sections(kind, src):
         earlier.setdefault(s["handle"], []).append(s)
-    out, left = {}, []
+    left = []
     for s in targets:
         cands = [e for e in earlier.get(s["handle"], []) if content(kind, e) == content(kind, s)]
         if not cands:
@@ -424,7 +465,7 @@ def plan(kind, form, family=families.DEFAULT, origin=None, current=None):
         text = carried_text(e["ruling"], label, date)
         # A class M model error dropped from the fixture is dropped again (rule.py does it).
         out[s["handle"]] = {"ruling": text, "drop": True} if sidecar.split_ruling(e["ruling"])[1] else text
-    stats["carried"] = len(out)
+    stats["carried"] = len(out) - stats["mechanical"]
     return out, stats, left
 
 
@@ -457,12 +498,14 @@ def main(argv=None):
         reasons = collections.Counter(w for _, w in left)
         total.update({"left: " + w: n for w, n in reasons.items()})
         if stats["open"]:
-            print(f"{families.stem(form, a.family)}: {stats['open']} open, {len(ruled)} carried"
+            print(f"{families.stem(form, a.family)}: {stats['open']} open, {stats['mechanical']} ruled mechanically, "
+                  f"{stats['carried']} carried"
                   + (" (dry run)" if a.dry_run else "") + "".join(f"; {n} {w}" for w, n in sorted(reasons.items())))
         if a.verbose:
             for h, w in left:
                 print(f"  open {h}: {w}")
-    print(f"{a.kind} [{a.family}]: {total['carried']} carried, {total['open'] - total['carried']} left open of {total['open']}"
+    print(f"{a.kind} [{a.family}]: {total['mechanical']} ruled mechanically, {total['carried']} carried, "
+          f"{total['open'] - total['carried'] - total['mechanical']} left open of {total['open']}"
           + (" (dry run; nothing written)" if a.dry_run else ""))
     return 0
 

@@ -13,6 +13,15 @@
   {
    "printed": "14b",
    "restated": "Choose — [helper \"Any HSA distributions in 2025\" = true → helper \"Distributions included on line 14a that you rolled over to another HSA\"] [helper \"Any HSA distributions in 2025\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "Form 8889 line 14b also requires 'any excess contributions (and the earnings on those excess contributions) included on line 14a that were withdrawn by the due date of your return'; the restatement computes only the rollover portion and omits withdrawn excess contributions and earnings.",
+   "ruling": "Ruling: scope; same objection and restatement as the refresh-round ruling. Withdrawals of excess contributions by the due date are refused by f8889.unsupported (at lines 13 and 16), so line 14b holds rollovers only on a completed return.",
+   "context": "52da021392e3559e1b977fe5d901806d15c6275488f31a10ced686a3b78499d4",
+   "date": "2026-11-04",
+   "run": "e6680e9ec8e9d8738db36aa0bb9b7e5bd8d043b8a6282a527a87db556b04e821"
+  },
+  {
+   "printed": "14b",
+   "restated": "Choose — [helper \"Any HSA distributions in 2025\" = true → helper \"Distributions included on line 14a that you rolled over to another HSA\"] [helper \"Any HSA distributions in 2025\" = false → helper \"Year parameter sales.zero\"]",
    "model": "The IRS line says 'Distributions included on line 14a that you rolled over to another HSA. Also include any excess contributions (and the earnings on those excess contributions) included on line 14a that were withdrawn by the due date'; the restatement includes only rollovers.",
    "ruling": "Ruling: scope; f8889 p. 1, line 14b; i8889 p. 8, Line 14b. Excess contributions withdrawn by the due date are refused by f8889.unsupported (\"a withdrawal of excess contributions or their earnings, made in 2025 or in 2026 by the due date of your 2025 return, including extensions\"), as the line's cite says, so on a completed return line 14b holds rollovers only.",
    "context": "6e0ce3fbedf9395d0661300a38d173855326834fc50e83310bba70f6918708bb"
@@ -58,6 +67,15 @@
    "model": "The IRS worksheet counts months where 'You or your spouse had family coverage under an HDHP and were, or were considered to be, an eligible individual on the first day of the month,' but the program uses the general number of eligible months, overstating line 7 when family coverage exists only part of the year.",
    "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months (owner accepted after Stage 13). The model reads \"number of months eligible\" as only the months of family coverage and says the restatement overstates line 7 when family coverage did not last all year. i8889 p. 7, Additional Contribution Amount Worksheet: \"1. $1,000 × number of months eligible\"; the English states the project's chosen reading (every month treated as eligible) accurately. Under the model's reading the $1,000 for the self-only months would be lost, since i8889 p. 5, Line 3, Note says \"If you are married and had family coverage at any time during the year, the additional contribution amount is figured on line 7 and is not included on line 3\", the register's reason. Same model reading as round 2.",
    "context": "f1a41d42596ab807ff84c3526be2fc5ecba466a1a3ce5e08910eb5f0b5b10753"
+  },
+  {
+   "printed": "7",
+   "restated": "Choose — [helper \"Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025\" = true → helper \"Additional Contribution Amount Worksheet, line 2: divide line 1 by 12\"] [helper \"Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The line 7 worksheet counts months in which 'You or your spouse had family coverage under an HDHP and were, or were considered to be, an eligible individual on the first day of the month' and 'were not enrolled in Medicare for the month'; the restatement instead uses the broader count of all months the filer was an eligible individual, so it can overstate the additional contribution amount when some eligible months had only self-only coverage.",
+   "ruling": "Ruling: ambiguity; amb.2025.hsa_line7_months (reading 1, owner accepted) and amb.2025.hsa_last_month_all_year: the model's reading (family-coverage months only) is the register's reading 2. Same point as the Claude ruling of this line. Project stands.",
+   "context": "52da021392e3559e1b977fe5d901806d15c6275488f31a10ced686a3b78499d4",
+   "date": "2026-11-04",
+   "run": "e6680e9ec8e9d8738db36aa0bb9b7e5bd8d043b8a6282a527a87db556b04e821"
   },
   {
    "printed": "7",

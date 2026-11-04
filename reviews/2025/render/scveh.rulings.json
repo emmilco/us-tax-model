@@ -68,6 +68,15 @@
    "context": "33e428133077416cb394847bd6dcb894f78612b1132d951f4f348a530353efb0"
   },
   {
+   "printed": "(b)",
+   "restated": "Input — The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in service earlier is outside this tool)",
+   "model": "The restatement records only a year from 2019 to 2025, but Form 4562 Part V asks for the full date: \"Column (b)—Date placed in service. Enter the date the property was placed in service. If property held for personal use is converted to business/investment use, treat the property as placed in service on the date of conversion.\"",
+   "ruling": "Ruling: representation; same restatement and objection as the refresh-round ruling. The tool needs the year (and, for 2025 property, the quarter, asked separately) to choose the tables and limits; no value depends on the month or day otherwise. A vehicle converted from personal use in 2025 is refused by scveh.screen.",
+   "context": "7b13317adf83477a162c905de7c23d518be26cf1a633f8f2394e5fa4420117c2",
+   "date": "2026-11-04",
+   "run": "9cab38678813e5f916f12bc77194da8ac2bdda550e06ed4deabcca4a07687b9f"
+  },
+  {
    "printed": "(d)",
    "restated": "Input — The vehicle's cost (including sales tax) or other basis, not reduced by any section 179 deduction or depreciation",
    "model": "The restatement matches \"actual cost (including sales tax) or other basis (unadjusted for prior years' depreciation)\", but it leaves out the rule for converted vehicles: \"If you converted the property from personal use to business/investment use, your basis for depreciation is the smaller of the property's adjusted basis or its fair market value on the date of conversion.\" The screen does not exclude conversions.",
@@ -104,6 +113,15 @@
    "restated": "Divide helper \"Business miles, as cents\" by helper \"Total miles, as cents\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply column (d) by the result.",
    "model": "Worksheet line 13 is line 12 times the column (c) business-use percentage, and the mileage ratio is right in most years. It omits the conversion rule: 'If during the tax year you convert property used solely for personal purposes to business/investment use ... Multiply that percentage by the number of months you use the property in your business ... and divide the result by 12.' Column (d) expressly accepts converted vehicles.",
    "ruling": "Ruling: model right in substance; resolved by refusal (owner, BUG-0072). The conversion-year proration (i4562 p. 14, 'If during the tax year you convert property used solely for personal purposes to business/investment use ... Multiply that percentage by the number of months you use the property in your business ... and divide the result by 12') was neither applied nor refused. A vehicle converted from personal use during 2025 is now refused through scveh.screen; a vehicle converted in an earlier year needs no proration in 2025."
+  },
+  {
+   "printed": "13",
+   "restated": "Divide helper \"Business miles, as cents\" by helper \"Total miles, as cents\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply column (d) by the result.",
+   "model": "Worksheet line 13 multiplies line 12 by line 8, the business/investment-use percentage. For a vehicle converted from personal use during the year, Form 4562 column (c) and Pub. 463 say to \"figure the percentage of business/investment use only for the number of months you use the property in your business ... Multiply that percentage by the number of months ... and divide the result by 12.\" The restatement instead uses whole-year business miles over total miles, and conversions of owned vehicles are not refused. (This assumes \"13\" is worksheet line 13, the business/investment cost; it is not Schedule C line 13.)",
+   "ruling": "Ruling: scope; the model's converted-vehicle months proration applies to an owned vehicle converted from personal to business use during the year, which scveh.screen refuses (\"you converted it from personal use to business use during 2025\"; i4562 p. 14, \"If during the tax year you convert property used solely for personal purposes to business/investment use\"). The model's \"conversions of owned vehicles are not refused\" is wrong. For a vehicle used in the business all year, business miles over total miles is the percentage (i4562 p. 14, Column (c)). Project stands.",
+   "context": "7b13317adf83477a162c905de7c23d518be26cf1a633f8f2394e5fa4420117c2",
+   "date": "2026-11-04",
+   "run": "9cab38678813e5f916f12bc77194da8ac2bdda550e06ed4deabcca4a07687b9f"
   },
   {
    "printed": "19",
@@ -228,6 +246,15 @@
    "model": "The restatement enters the full business portion of the lease payments and has no refusal for long leases. The instructions add: \"But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount.\"",
    "ruling": "Ruling: scope; refusal located elsewhere, restatement accepted. i1040sc line 20a, \"if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount\": sc.special refuses \"an inclusion amount for leased property\" for the business, read for every Schedule C (the wording is unchanged by this package; checked in forms/2025/sc.yaml).",
    "context": "f6345ae61a79869f6f57bc9e71269feb338df13f10b69919164501985a59dd89"
+  },
+  {
+   "printed": "20a",
+   "restated": "Choose — [helper \"Leased and on actual expenses\" = true → helper \"The business portion of the lease payments\"] [helper \"Leased and on actual expenses\" = false → helper \"Zero\"]",
+   "model": "The restatement enters the full business portion of the lease payments and never applies the inclusion amount, and no refusal covers it. The IRS text says \"if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount.\"",
+   "ruling": "Ruling: scope; An inclusion amount for leased property is refused for the business through sc.special (\"an inclusion amount for leased property\"), so the business portion of the lease payments is the line 20a amount for every vehicle that reaches it. The model's \"no refusal covers it\" is wrong. Same point as the deepseek refresh-round ruling.",
+   "context": "7b13317adf83477a162c905de7c23d518be26cf1a633f8f2394e5fa4420117c2",
+   "date": "2026-11-04",
+   "run": "9cab38678813e5f916f12bc77194da8ac2bdda550e06ed4deabcca4a07687b9f"
   },
   {
    "printed": "20a",
@@ -424,6 +451,15 @@
    "restated": "Divide helper \"Business miles, as cents\" by helper \"Total miles, as cents\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply line 7 by the result.",
    "model": "Line 9 is 'Multiply line 7 by line 8', and the business-use percentage omits the conversion-year proration: 'Multiply that percentage by the number of months you use the property in your business ... and divide the result by 12.'",
    "ruling": "Ruling: model right in substance; resolved by refusal (owner, BUG-0072). As line 13: the conversion-year proration of the business-use percentage applies only in the year of conversion, and a vehicle converted from personal use during 2025 is now refused through scveh.screen."
+  },
+  {
+   "printed": "9 (scveh.line9w)",
+   "restated": "Divide helper \"Business miles, as cents\" by helper \"Total miles, as cents\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply line 7 by the result.",
+   "model": "Worksheet line 9 is \"Multiply line 7 by line 8,\" and line 8 is the business/investment-use percentage. For an owned vehicle converted in 2025, that percentage must use the months fraction (\"Multiply that percentage by the number of months you use the property in your business ... and divide the result by 12\"). The restatement uses whole-year business miles over total miles, which gives a different value.",
+   "ruling": "Ruling: scope; as worksheet line 13: the months proration applies only to a vehicle converted in 2025, refused by scveh.screen; otherwise line 9 is line 7 times the business-use percentage. Project stands.",
+   "context": "7b13317adf83477a162c905de7c23d518be26cf1a633f8f2394e5fa4420117c2",
+   "date": "2026-11-04",
+   "run": "9cab38678813e5f916f12bc77194da8ac2bdda550e06ed4deabcca4a07687b9f"
   }
  ]
 }

@@ -9,7 +9,7 @@ import { spawnSync } from "node:child_process";
 import { loadCanonical } from "./canonical.js";
 import { allTargets, evaluate } from "./eval.js";
 import { loadCases } from "./fixtures.js";
-import type { Inputs } from "./types.js";
+import type { CanonicalData, Inputs } from "./types.js";
 import type { Value } from "./eval.js";
 import { YEAR, yearPath } from "./year.js";
 
@@ -28,7 +28,9 @@ function fixtureCases(): Case[] {
   return file.cases.map((c) => ({ id: c.id, inputs: c.inputs }));
 }
 
-function generatedCases(n: number): Case[] {
+function generatedCases(data: CanonicalData, n: number): Case[] {
+  // The standard deduction by filing status, from the year's parameters.
+  const standard = data.params.values["sa.standard_base"]!.value as Record<string, number>;
   let s = 20261014;
   const rnd = () => {
     s = (s * 1103515245 + 12345) % 2147483648;
@@ -40,7 +42,6 @@ function generatedCases(n: number): Case[] {
     const status = statuses[Math.floor(rnd() * statuses.length)]!;
     const line15 = Math.floor(rnd() * 120000000); // up to $1.2M
     const line3a = rnd() < 0.6 ? Math.floor(rnd() * line15) : 0;
-    const standard: Record<string, number> = { single: 1575000, mfj: 3150000, mfs: 1575000, hoh: 2362500, qss: 3150000 };
     const line7a = rnd() < 0.3 ? Math.floor(rnd() * 3000000) : 0;
     const sdFiled = rnd() < 0.25;
     const inputs: Inputs = {
@@ -119,7 +120,7 @@ export function compareEvaluators(): number {
   }
   const data = loadCanonical();
   const targets = data.forms.filter(d => !d.collection).flatMap((doc) => doc.lines.map((l) => l.id));
-  const cases = [...fixtureCases(), ...generatedCases(200)];
+  const cases = [...fixtureCases(), ...generatedCases(data, 200)];
   const tmp = mkdtempSync(join(tmpdir(), "compare-"));
   let failures = 0;
   let comparedLines = 0;

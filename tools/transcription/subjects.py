@@ -226,12 +226,17 @@ def table(per_key, rest):
     return out
 
 
-def table_for(kind, fid, year):
-    """The current "## Line subjects" section of a document's log; none for a document with no
-    file (a synthetic test document)."""
+def table_for(kind, fid, year, foreign=None):
+    """The current "## Line subjects" section of a document's log, and for a transcription log the
+    "## Foreign interfaces" section: `foreign` rows ({log key: hash}), or the current rows of every
+    compared line when None (a review of the whole document). None for a document with no file (a
+    synthetic test document)."""
     if not os.path.exists(path(kind, fid, year)):
         return []
-    return table(*current_line_subjects(kind, fid, year))
+    out = table(*current_line_subjects(kind, fid, year))
+    if kind == "transcription":
+        out += foreign_table(current_foreign(fid, year) if foreign is None else foreign)
+    return out
 
 
 def recorded(text):
@@ -243,6 +248,89 @@ def recorded(text):
     rows = dict((k, v) for k, v in SUBJECT_ROW.findall(body))
     rest = rows.pop(REST_KEY, None)
     return rows, rest
+
+
+# ---------- foreign interfaces ----------
+#
+# A transcription request carries the interface of every other document's line the reviewed form
+# reads: its id, printed marker, type and, for an input, its complete question (transcribe.
+# reference_note). Rewording such a question (person.blind) changes what a reader's review (sa) was
+# asked without changing the reader's own lines. A transcription log written since this table exists
+# records, per compared line, the hash of the foreign interfaces its in-document reach names, in a
+# "## Foreign interfaces" table; a row that differs from the current interfaces stales that line
+# (log_state), and `--lines auto` reviews it again. A line-scoped review rewrites the rows of the
+# lines it judged and keeps the others; a log or a line without a row (written before the table
+# existed) is not checked, so the check applies from each log's next review on.
+
+FOREIGN = "## Foreign interfaces"
+_ALL = {}
+
+
+def _all_lines(year):
+    """{line id: (document id, line)} over every document of a year, read once per process."""
+    if year not in _ALL:
+        loader = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
+        d = os.path.join(ROOT, "forms", str(year))
+        out = {}
+        for name in sorted(os.listdir(d)):
+            if name.endswith(".yaml"):
+                raw = yaml.load(open(os.path.join(d, name), encoding="utf-8"), Loader=loader) or {}
+                doc = raw.get("form") or raw.get("def") or {}
+                for l in doc.get("lines", []):
+                    out.setdefault(l["id"], (doc.get("id"), l))
+        _ALL[year] = out
+    return _ALL[year]
+
+
+def foreign_interfaces(doc, line_id, index):
+    """The hash of the interfaces of the other documents' lines that a line's reach names: id,
+    document, printed marker, type and an input's question, as a request lists them."""
+    members, _ = reach(doc, line_id)
+    by_id = {l["id"]: l for l in doc["lines"]}
+    names = {s for i in members for s in _strings({k: v for k, v in by_id[i].items() if k != "id"})
+             if s in index and s not in by_id}
+    rows = []
+    for n in sorted(names):
+        fid, line = index[n]
+        row = {"id": n, "doc": fid, "printed": str(line.get("printed")), "type": line.get("type")}
+        if (line.get("expr") or {}).get("op") == "input":
+            row["source"] = " ".join(str(line["expr"].get("source", "")).split())
+        rows.append(row)
+    return _sha(rows)
+
+
+def current_foreign(fid, year):
+    """{log key: foreign-interface hash} of every compared line of a transcription log, as now."""
+    import transcribe as T
+    doc = T.load_form(fid)
+    index = _all_lines(year)
+    return {k: foreign_interfaces(doc, i, index) for k, i in T.line_keys(doc)}
+
+
+def recorded_foreign(text):
+    """{log key: hash} from a log's "## Foreign interfaces" table, or None when it has none."""
+    _, sep, tail = text.partition("\n" + FOREIGN + "\n")
+    if not sep:
+        return None
+    return dict(SUBJECT_ROW.findall(re.split(r"\n## ", tail, maxsplit=1)[0]))
+
+
+def foreign_table(rows):
+    if not rows:
+        return []
+    return [FOREIGN, "",
+            "The interfaces (id, printed marker, type, input question) of other documents' lines that each compared "
+            "line reads, as the request carried them (tools/transcription/subjects.py); a changed row stales that line.", "",
+            "| line | foreign interfaces sha256 |", "| --- | --- |", *[f"| {k} | {v} |" for k, v in rows.items()], ""]
+
+
+def foreign_stale(fid, year, text):
+    """The keys of a transcription log whose recorded foreign interfaces differ from the current ones."""
+    rec = recorded_foreign(text)
+    if not rec or not os.path.exists(path("transcription", fid, year)):
+        return []
+    cur = current_foreign(fid, year)
+    return [k for k in cur if k in rec and rec[k] != cur[k]]
 
 
 def has_line_scoped_passes(text):
@@ -264,12 +352,24 @@ def stale_lines(kind, fid, year, text):
 def log_state(kind, fid, year, text):
     """None when a log describes the current document, else what is stale. A log reviewed whole
     is current when its subject is; a log with line-scoped reviews, or a reviewed-whole log whose
-    subject changed, is current when every compared line's subject and the rest are."""
+    subject changed, is current when every compared line's subject and the rest are. A transcription
+    log with a foreign-interfaces table is stale besides for each line whose row differs."""
     subject = re.search(r"^\| subject sha256 \| ([0-9a-f]{64}) \|$", text, flags=re.M)
     if not subject:
         return f"the {kind} log records no subject hash (tools/transcription/subjects.py)"
+    own = _own_state(kind, fid, year, text, subject.group(1))
+    if own is None and kind == "transcription":
+        moved = foreign_stale(fid, year, text)
+        if moved:
+            return (f"the transcription log is stale for lines whose foreign interfaces (another document's input question, "
+                    f"marker or type) changed: {', '.join(moved)}; rerun them: transcribe.py --form {fid} --lines auto")
+    return own
+
+
+def _own_state(kind, fid, year, text, recorded_subject):
+    """log_state from the document's own subjects alone."""
     what = {"transcription": "form", "render": "rendered English", "classm": "computation"}[kind]
-    whole = subject.group(1) == current(kind, fid, year)
+    whole = recorded_subject == current(kind, fid, year)
     if kind == "classm" or (whole and not has_line_scoped_passes(text)):
         return None if whole else f"the {kind} log reviewed an earlier {what} of {fid}; rerun the review"
     found = stale_lines(kind, fid, year, text)

@@ -14,11 +14,11 @@ form:
   lines:
     - id: sales.box
       printed: (helper)
-      label: "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets. Property you inherited is long-term however long you held it. To count the holding period, begin on the day after you acquired the property and include the day you sold it. If your basis in property you received as a gift is the donor's adjusted basis, your holding period began on the day the donor's did. A block acquired on different dates is entered as separate transactions for its short-term and long-term parts."
+      label: "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets. Property you inherited is long-term however long you held it. To count the holding period, begin on the day after you acquired the property and include the day you sold it. If your basis in property you received as a gift is the donor's adjusted basis, your holding period began on the day the donor's did. A block acquired on different dates is entered as separate transactions for its short-term and long-term parts. Stock or securities bought in a wash sale include the holding period of those sold. New stock from a nontaxable stock dividend or a spin-off, and nontaxable stock rights, include the holding period of the old stock; stock from a taxable stock dividend begins on the date of distribution, stock acquired by exercising stock rights on the date the right was exercised, and property acquired by exercising an option the day after the option was exercised. A nonbusiness bad debt is short-term, and so is a gain or loss under the net asset value (NAV) method for a money market fund. A loss on a short sale is long-term if, on the date of the short sale, you held substantially identical property for more than 1 year."
       type: Enum(sales_box)
       expr:
         op: input
-        source: "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets. Property you inherited is long-term however long you held it. To count the holding period, begin on the day after you acquired the property and include the day you sold it. If your basis in property you received as a gift is the donor's adjusted basis, your holding period began on the day the donor's did. A block acquired on different dates is entered as separate transactions for its short-term and long-term parts."
+        source: "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets. Property you inherited is long-term however long you held it. To count the holding period, begin on the day after you acquired the property and include the day you sold it. If your basis in property you received as a gift is the donor's adjusted basis, your holding period began on the day the donor's did. A block acquired on different dates is entered as separate transactions for its short-term and long-term parts. Stock or securities bought in a wash sale include the holding period of those sold. New stock from a nontaxable stock dividend or a spin-off, and nontaxable stock rights, include the holding period of the old stock; stock from a taxable stock dividend begins on the date of distribution, stock acquired by exercising stock rights on the date the right was exercised, and property acquired by exercising an option the day after the option was exercised. A nonbusiness bad debt is short-term, and so is a gain or loss under the net asset value (NAV) method for a money market fund. A loss on a short sale is long-term if, on the date of the short sale, you held substantially identical property for more than 1 year."
       cite:
         doc: i8949
         locator: pp. 2–5, holding period and checkbox classifications; p. 2, "To figure the holding period, begin counting
@@ -27,7 +27,18 @@ form:
           regardless of how long you held the property."; p. 6, "However, you must still report the short-term gain (or
           loss) on the sale on Part I and the long-term gain (or loss) on Part II."; p550 p. 82, Property received as a
           gift, "If you receive a gift of property and your basis is determined by the donor's adjusted basis, your holding
-          period is considered to have started on the same day the donor's holding period started."
+          period is considered to have started on the same day the donor's holding period started.", Stock dividends, "The
+          holding period for stock you received as a taxable stock dividend begins on the date of distribution. The holding
+          period for new stock you received as a nontaxable stock dividend begins on the same day as the holding period of
+          the old stock. This rule also applies to stock acquired in a spin-off", Nontaxable stock rights, "Your holding
+          period for nontaxable stock rights includes the holding period of the underlying stock. The holding period for
+          stock acquired through the exercise of stock rights begins on the date the right was exercised." and Option
+          exercised, "Your holding period for property you acquire when you exercise an option begins the day after you
+          exercise the option."; p550 p. 86, "Your holding period for the new stock or securities includes the holding
+          period of the stock or securities sold." and "If, on the date of the short sale, you held substantially identical
+          property for more than 1 year, any loss you realize on the short sale is a long-term capital loss"; i8949 p. 2, "A
+          nonbusiness bad debt must be treated as a short-term capital loss."; i8949 p. 5, Net asset value (NAV) method for
+          money market funds, "No long-term capital gain (or loss) can be entered under the NAV method."
     - id: sales.route
       printed: (helper)
       label: Report this transaction in detail on Form 8949 or directly in Schedule D
@@ -52,14 +63,14 @@ form:
         locator: pp. 7–11, columns (e) through (h), codes B and W
     - id: sales.special
       printed: (helper)
-      label: 'Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost?'
+      label: 'Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property: generally, real property that you depreciated, such as a home you once rented out or used in part as a home office), or an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost?'
       type: Bool
       expr:
         op: input
-        source: 'Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property), or an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost?'
+        source: 'Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property: generally, real property that you depreciated, such as a home you once rented out or used in part as a home office), or an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost?'
       cite:
         doc: i1040sd
-        locator: pp. 11–12, lines 18 and 19; p. 11, line 18, "Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles."; p. 12,
+        locator: pp. 11–12, lines 18 and 19; p. 11, Line 19, "section 1250 property (generally, real property that you depreciated)"; p. 11, line 18, "Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles."; p. 12,
           line 19, "You reported a long-term capital gain from the sale or exchange of an interest in a partnership that owned
           section 1250 property"
     - id: sales.aggregate_eligible
@@ -108,12 +119,22 @@ form:
         op: input
         source: Correct adjusted basis from records. For property you inherited, if a Schedule A (Form 8971) you received
           shows in Part II, column (f), that the property increased the estate tax liability, start from an initial basis
-          equal to or less than the final estate tax value in Part II, column (h), then adjust it.
+          equal to or less than the final estate tax value in Part II, column (h), then adjust it. Among the adjustments,
+          add a loss disallowed by the wash sale rules when you bought this stock or security as the replacement (unless
+          the replacement was bought for an IRA or Roth IRA); add payments in lieu of dividends you could not deduct because
+          you closed a short sale by the 45th day (to the stock used to close it); for stock from a compensatory option,
+          add any amount you included in income upon grant or exercise that the reported basis does not reflect; and
+          subtract nondividend distributions that were a return of your basis.
       cite:
         doc: i8949
         locator: pp. 7–11, columns (e) through (h), codes B and W; p. 6, Schedule A (Form 8971)—Consistent basis
           reporting, "In this case, first use an amount that is equal to or less than the final estate tax value listed in
-          Part II, column (h), of the Schedule A (Form 8971). This amount is your initial basis in the property."
+          Part II, column (h), of the Schedule A (Form 8971). This amount is your initial basis in the property."; p550
+          p. 86, "If your loss was disallowed because of the wash sale rules, add the disallowed loss to the cost of the new
+          stock or securities (except in (4) above)." and "Instead, you must increase the basis of the stock used to close
+          the short sale by that amount."; i8949 p. 7, "Increase your basis by any amount you included in income upon grant
+          or exercise of the option."; i8949 p. 5, Nondividend distributions, "Reduce your cost (or other basis) in a share
+          by the distributions allocable to such share."
     - id: sales.wash_loss
       printed: (helper)
       label: Correct nondeductible wash-sale loss; positive cents, including losses

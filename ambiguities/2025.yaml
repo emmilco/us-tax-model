@@ -943,8 +943,10 @@ register:
         more than one agreement or recipient, a recapture of alimony, and payments of which part is child support.
       - Compute them for any number of agreements, as line 2a's total, refusing only the recapture.
       - Refuse alimony altogether.
-      chosen: The first (s1.alimony, s1.alimony_unsupported; amounts under an agreement entered into after 2018, or after
-        a change that expressly excludes them, are not asked, as the questions say, and are neither income nor deductible).
+      chosen: The first (s1.alimony, s1.alimony_unsupported; amounts under an agreement entered into after 2018, or paid
+        after a change after 2018 that expressly applies the post-2018 rules (one that states that those rules apply, or
+        that alimony isn't deductible by the payer or isn't included in the recipient's income), are not asked, as the
+        questions say, and are neither income nor deductible).
       reason: The owner's decision (Stage 16 decision batch, D2, with the screens of the premise map, R-ALI-1 and R-ALI-2).
         The statement listing the other agreements and recipients, and the recapture worksheet, are not prepared; a payment
         partly child support needs the Pub. 504 allocation rules.

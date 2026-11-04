@@ -7,15 +7,17 @@ Sources: the cost ledger (.transcription/costs.jsonl), research/costs/agent_runs
 reviews/<year>/{transcription,render,classm}/*.rulings.json, reviews/<year>/completeness/rulings.json and
 reviews/<year>/screens/rulings.json, and the "Caught by" lines of BUG_INVENTORY.md.
 
-The ledger covers only calls since it began; rulings carry no date. The "window" table therefore counts only
-rulings and bug entries that are absent at --window-ref (the commit just before the ledger began), which
-pairs the dollars with the evidence they bought. The "all-time" table counts every ruling and has no cost.
+The ledger covers only calls since it began; rulings written before stamping carry no date. The "window"
+table therefore counts only rulings and bug entries that are absent at --window-ref (the commit just before
+the ledger began), which pairs the dollars with the evidence they bought. The "all-time" table counts every
+ruling and has no cost. The "exact join" table joins each stamped ruling (rule.py stamps the reply it rules,
+`run`) to the ledger call that returned that reply (`response_sha256`), with findings by severity.
 
 Ruling classes are read from the head of the ruling text ("Ruling: model error; ..."). Noise is a ruling
 whose head names a model error (transcription, render, class M, screens); for completeness it is the model's
 claim ruled covered or wrong. A finding is a ruling classed finding, defect or real gap, and a screen
-NARROW finding ruled a defect. Severity is not recorded on rulings and appears in one bug entry, so it is
-not tabulated.
+NARROW finding ruled a defect. Severity is recorded only on stamped findings (rule.py requires it), so it is
+tabulated only in the exact-join table.
 """
 import argparse, glob, json, os, re, subprocess, sys
 from collections import Counter, defaultdict
@@ -96,6 +98,45 @@ def ruling_items(root, ref=None):
                 yield "screen", families.DEFAULT, cls, changed
 
 
+def stamped_items(root):
+    """Yield (kind, family, cls, run, severity) for every transcription, render and class M ruling
+    stamped with the reply it rules (rulings.STAMPS; rule.py stamps every ruling it writes)."""
+    for kind in ("transcription", "render", "classm"):
+        for path in sorted(glob.glob(os.path.join(root, "reviews", "*", kind, "*.rulings.json"))):
+            doc = json.load(open(path, encoding="utf-8"))
+            fam = family_of_file(path, doc)
+            for r in doc.get("rulings", []):
+                if r.get("run"):
+                    yield kind, fam, classify(r.get("ruling")), r["run"], r.get("severity")
+
+
+def exact_table(ledger, stamped):
+    """Per (kind, family): the calls that returned a reply the ledger identifies, their cost, and the
+    stamped rulings joined to them by reply identity. A stamped ruling whose reply no ledger call
+    returned (a call made before the ledger recorded reply identities) is counted apart."""
+    calls = {}
+    t = defaultdict(lambda: {"calls": 0, "usd": 0.0, "ruled_calls": set(), "rulings": 0, "classes": Counter(),
+                             "severity": Counter(), "unjoined": 0})
+    for r in ledger:
+        if r.get("response_sha256"):
+            k = (r.get("kind") or "-", families.family_of(r.get("model_requested") or "-"))
+            calls.setdefault(r["response_sha256"], (k, r))
+            t[k]["calls"] += 1
+            t[k]["usd"] += r.get("estimated_cost_usd") or 0
+    for kind, fam, cls, run, severity in stamped:
+        hit = calls.get(run)
+        if hit is None:
+            t[(kind, fam)]["unjoined"] += 1
+            continue
+        g = t[hit[0]]
+        g["ruled_calls"].add(run)
+        g["rulings"] += 1
+        g["classes"][cls] += 1
+        if cls == "finding":
+            g["severity"][severity or "unstated"] += 1
+    return t
+
+
 def bug_entries(root, ref=None):
     """Yield (kind, family, is_new) per BUG_INVENTORY entry, by what its Caught by line names."""
     text = open(os.path.join(root, "BUG_INVENTORY.md"), encoding="utf-8").read()
@@ -165,8 +206,8 @@ def noise(classes, n):
     return f"{100 * classes['model error'] / n:.0f}" if n else "-"
 
 
-def render(ledger, runs, items, bugs, ref):
-    items, bugs = list(items), list(bugs)
+def render(ledger, runs, items, bugs, ref, stamped=()):
+    items, bugs, stamped = list(items), list(bugs), list(stamped)
     cost = cost_table(ledger)
     out = []
     w = out.append
@@ -175,12 +216,13 @@ def render(ledger, runs, items, bugs, ref):
     first = min((r.get("timestamp", "") for r in ledger), default="-")
     last = max((r.get("timestamp", "") for r in ledger), default="-")
     w(f"- The ledger covers only {len(ledger)} calls from {first[:16]} to {last[:16]} UTC. Earlier reviews have rulings but no cost.")
-    w(f"- Rulings carry no date. The window table counts rulings and bug entries absent at `{ref}` (the commit before the ledger began), so the "
-      "dollars sit beside the evidence they bought. A ruling edited in the window counts as new; window output not yet ruled is cost with no evidence.")
+    w(f"- Rulings written before stamping (T-223) carry no date. The window table counts rulings and bug entries absent at `{ref}` (the commit before the ledger began), so the "
+      "dollars sit beside the evidence they bought. A ruling edited in the window counts as new; window output not yet ruled is cost with no evidence. "
+      "Stamped rulings are also joined to their calls exactly (the exact-join table).")
     w("- Dollars are the ledger's estimated cost (the transport-reported cost where one exists, else the cited list price). "
       "gpt-6-astra calls were mostly usage-limit failures and cost nothing.")
-    w("- A finding is a ruling classed finding, defect or real gap, or a screen NARROW finding ruled a defect. Severity is not recorded on rulings "
-      "and appears in one bug entry, so findings are not split by severity. Bugs are the BUG_INVENTORY entries whose Caught by line names the kind.")
+    w("- A finding is a ruling classed finding, defect or real gap, or a screen NARROW finding ruled a defect. Severity is recorded only on stamped "
+      "findings, so only the exact-join table splits findings by severity. Bugs are the BUG_INVENTORY entries whose Caught by line names the kind.")
     w("- Noise is the model-error share of rulings (completeness: claims ruled covered or wrong). A transcription or render ruling is a "
       "disagreement to adjudicate, not a claimed defect, so the model-error share is the adjudication cost of the kind.\n")
     for title, new_only in (("Window (rulings and bugs new since the ledger began)", True), ("All-time (no cost attached)", False)):
@@ -217,6 +259,25 @@ def render(ledger, runs, items, bugs, ref):
         if new_only:
             row += [per(tot["usd"], tot["classes"]["finding"]), per(tot["usd"], tot["bugs"])]
         w("| " + " | ".join(row) + " |\n")
+    w("## Exact join (stamped rulings)\n")
+    w("Rulings rule.py wrote since stamping (T-223) name the reply they rule (`run`); calls the ledger recorded since then name "
+      "the reply they returned (`response_sha256`). Joined on that identity, cost and evidence need no git window. Ledger calls "
+      "without a reply identity (before stamping, or failed) are not counted here; a stamped ruling on a reply no such call "
+      "returned is counted as unjoined.\n")
+    exact = exact_table(ledger, stamped)
+    if not exact:
+        w("No stamped ruling and no ledger call with a reply identity yet.\n")
+    else:
+        head = ["kind", "family", "calls", "$", "calls ruled", "rulings"] + CLASSES + ["findings by severity", "$/finding", "unjoined rulings"]
+        w("| " + " | ".join(head) + " |")
+        w("|" + " --- |" * len(head))
+        for k in sorted(exact, key=lambda k: (KINDS.index(k[0]) if k[0] in KINDS else 99, k[1])):
+            g = exact[k]
+            sev = ", ".join(f"{s} {n}" for s, n in sorted(g["severity"].items())) or "-"
+            w("| " + " | ".join([k[0], k[1], str(g["calls"]), f"{g['usd']:.2f}", str(len(g["ruled_calls"])), str(g["rulings"])]
+                                + [str(g["classes"][x]) for x in CLASSES]
+                                + [sev, per(g["usd"], g["classes"]["finding"]), str(g["unjoined"])]) + " |")
+        w("")
     w("## Agent tokens per day (research/costs/agent_runs.jsonl)\n")
     w("Subagent tokens are as the task notifications reported them (cost_usd is null). They are not comparable to ledger dollars.\n")
     w("| day | runs | subagent tokens | tool uses | minutes |")
@@ -227,7 +288,8 @@ def render(ledger, runs, items, bugs, ref):
 
 
 def run(ledger_path, runs_path, ref, root=ROOT, out=None):
-    text = render(read_jsonl(ledger_path), read_jsonl(runs_path), ruling_items(root, ref), bug_entries(root, ref), ref)
+    text = render(read_jsonl(ledger_path), read_jsonl(runs_path), ruling_items(root, ref), bug_entries(root, ref), ref,
+                  stamped_items(root))
     if out:
         with open(out, "w", encoding="utf-8") as f:
             f.write(text)

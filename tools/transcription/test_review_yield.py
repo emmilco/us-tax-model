@@ -45,6 +45,25 @@ def main():
         text = ry.render(ledger, runs, items, bugs, None)
         assert "| completeness | claude | 2 | 1 | 2.00 | 0 |" in text
         assert "| 2026-11-03 | 2 | 15 | 3 | 2 |" in text
+        assert "No stamped ruling" in text
+
+        # Exact join: a stamped ruling meets the call that returned the reply it rules.
+        run_a, run_b, run_old = "a" * 64, "b" * 64, "c" * 64
+        write(os.path.join(r, "transcription", "b.deepseek.rulings.json"), {"family": "deepseek", "rulings": [
+            {"ruling": "Ruling: model error; x", "run": run_a, "date": "2026-11-05"},
+            {"ruling": "Ruling: finding; y", "run": run_a, "date": "2026-11-05", "severity": "high"},
+            {"ruling": "Ruling: scope; z", "run": run_old, "date": "2026-11-05"},
+            {"ruling": "Ruling: scope; unstamped"}]})
+        ledger2 = ledger + [
+            {"kind": "transcription", "model_requested": "deepseek-flash", "estimated_cost_usd": 0.5, "outcome": "ok", "response_sha256": run_a},
+            {"kind": "transcription", "model_requested": "deepseek-flash", "estimated_cost_usd": 0.25, "outcome": "ok", "response_sha256": run_b}]
+        stamped = list(ry.stamped_items(root))
+        assert len(stamped) == 3, stamped
+        g = ry.exact_table(ledger2, stamped)[("transcription", "deepseek")]
+        assert (g["calls"], g["usd"], len(g["ruled_calls"]), g["rulings"], g["unjoined"]) == (2, 0.75, 1, 2, 1), g
+        assert g["severity"] == {"high": 1} and g["classes"]["finding"] == 1
+        text = ry.render(ledger2, runs, items, bugs, None, stamped)
+        assert "| transcription | deepseek | 2 | 0.75 | 1 | 2 | 1 | 0 | 0 | 0 | 0 | 1 | 0 | high 1 | 0.75 | 1 |" in text, text
     print("test_review_yield: ok")
 
 

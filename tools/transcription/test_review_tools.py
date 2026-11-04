@@ -1623,7 +1623,8 @@ class CarryOver(unittest.TestCase):
             p.start()
         Path(self.temp.name, "transcription").mkdir()
         self.write(self.rows())
-        rule.apply("x", {"2": "model error; the reply copies an unrelated line", "3": "finding; line 3 reads the wrong input"})
+        rule.apply("x", {"2": "model error; the reply copies an unrelated line",
+                         "3": {"ruling": "finding; line 3 reads the wrong input", "severity": "medium"}})
         self.source = Path(rulings.log_path("transcription", "x")).read_text()
 
     def tearDown(self):
@@ -1688,6 +1689,75 @@ class CarryOver(unittest.TestCase):
             ruled, _, left = carry.plan("transcription", "x", origin="old.md", current=_Files(self.files()))
         self.assertEqual(ruled, {})
         self.assertEqual({w for _, w in left}, {"the log is stale; rerun first"})
+
+    def test_validation_failure_is_ruled_mechanically_and_shown_when_is_not(self):
+        invalid = T.canonical({"invalid_model_types": [{"line": "x.h", "message": "x.x.h: whole operand\nis not money"},
+                                                       {"line": None, "message": "model contains a non-finite numeric value"}],
+                               "expression": {"op": "copy", "from": "x.h"}})
+        rows = [{"printed": "2", "label": "B", "status": "DISAGREE", "project": '{"from":"x.a","op":"copy"}', "second": invalid},
+                {"printed": "3", "label": "C", "status": "DISAGREE", "project": '{"shown_when":{"line":"x.a"},"value":{"const":0}}',
+                 "second": '{"shown_when":null,"value":{"const":0}}'}]
+        self.write(rows, prompt="a changed prompt")
+        with patch.object(carry, "source_log", return_value=(None, "no source log", None)), \
+                patch.object(carry.subjects, "of_text", return_value="a" * 64):
+            ruled, stats, left = carry.carry("transcription", "x", current=_Files(self.files()))
+        self.assertEqual((list(ruled), stats["mechanical"], stats["carried"]), (["2"], 1, 0))
+        self.assertEqual(left, [("3", "no source log")])  # a missing shown_when is a source reading
+        text = Path(rulings.log_path("transcription", "x")).read_text()
+        line = next(l for l in text.splitlines() if l.startswith(carry.MECHANICAL))
+        self.assertIn('x.h: "x.x.h: whole operand is not money"', line)
+        self.assertIn('the reply: "model contains a non-finite numeric value"', line)
+        self.assertEqual(C.ruling_category(line[len("Ruling: "):]), "model_error")
+        entry = next(v for v in rulings.load("transcription", "x").values() if v["ruling"] == line)
+        self.assertEqual(entry["run"], T.response_sha256("lines: []"))
+        self.assertRegex(entry["date"], r"^\d{4}-\d{2}-\d{2}$")
+        # Not mechanical: a valid reply, a MISSING line, another kind.
+        valid = {"status": "DISAGREE", "key": ("2", "{}", '{"op":"copy","from":"x.a"}')}
+        self.assertIsNone(carry.mechanical("transcription", valid))
+        self.assertIsNone(carry.mechanical("transcription", {"status": "MISSING", "key": ("2", "{}", "None")}))
+        self.assertIsNone(carry.mechanical("render", {"status": "MISMATCH", "key": ("2", "x", invalid)}))
+        self.assertEqual(rulings.check(), 0)
+
+    def test_rulings_are_stamped_and_a_finding_needs_a_severity(self):
+        side = rulings.load("transcription", "x")
+        finding = next(v for v in side.values() if v["ruling"].startswith("Ruling: finding"))
+        self.assertEqual((finding["severity"], finding["run"]), ("medium", T.response_sha256("lines: []")))
+        self.write(self.rows(), prompt="a changed prompt")
+        with self.assertRaisesRegex(SystemExit, "needs a severity"):
+            rule.apply("x", {"3": "finding; again"})
+        with self.assertRaisesRegex(SystemExit, "severity"):
+            rule.apply("x", {"3": {"ruling": "defect in the line", "severity": "grave"}})
+        self.assertEqual(rule.apply("x", {"3": "scope; no severity needed"}), ["3"])
+        # Stamps survive a load/save round trip and malformed stamps fail the check.
+        before = rulings.load("transcription", "x")
+        self.assertTrue(all("date" in v for v in before.values()))
+        rulings.save("transcription", "x", before)
+        self.assertEqual(rulings.load("transcription", "x"), before)
+        path = Path(rulings.sidecar_path("transcription", "x"))
+        data = json.loads(path.read_text())
+        data["rulings"][0]["run"] = "not-a-hash"
+        path.write_text(json.dumps(data))
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            self.assertEqual(rulings.check(), 1)
+
+    def test_a_section_names_the_reply_it_records(self):
+        text = Path(rulings.log_path("transcription", "x")).read_text()
+        self.assertEqual(rulings.section_reply("transcription", text, "2 — B", "Status: **DISAGREE**\n"), "lines: []")
+        fenced = "```yaml\nlines:\n  - id: a\n```"
+        classm_log = ("x\n## Lines\n\n### case c.1 — prompt sha256 " + "0" * 64 + "; branches: b\n\n## Raw responses\n\n"
+                      "### c.1\n\n```yaml\n" + fenced + "\n```\n\n### c.2\n\n```yaml\nlines: []\n```\n")
+        self.assertEqual(rulings.section_reply("classm", classm_log, "c.1 — 2 — L", ""), fenced)
+        self.assertEqual(rulings.section_reply("classm", classm_log, "c.2 — 2 — L", ""), "lines: []")
+        self.assertIsNone(rulings.section_reply("classm", classm_log, "c.3 — 2 — L", ""))
+
+    def test_ledger_names_the_reply_a_ruling_stamps(self):
+        with tempfile.TemporaryDirectory() as temp, patch.object(T, "RAW", temp), \
+                patch.object(families, "selected_model", return_value="deepseek-flash"), \
+                patch.object(T, "_call_deepseek", return_value=("\nlines: []\n", {"usage": {}, "cost_usd": None})):
+            T.call_model("PUBLIC", "deepseek-flash", kind="transcription", subject="x")
+            row = json.loads(Path(temp, T.LEDGER_NAME).read_text())
+        self.assertEqual(row["response_sha256"], T.response_sha256("lines: []"))
+        self.assertEqual(row["prompt_sha256"], T.hashlib.sha256(b"PUBLIC").hexdigest())
 
     def test_classes_that_are_re_judged(self):
         self.assertEqual(carry.excluded("Ruling: finding; wrong line"), "finding or defect")
@@ -1770,15 +1840,22 @@ class LineScopedReviews(unittest.TestCase):
         T.write_log(self.doc, "claude-opus-5-5", "BASE PROMPT", [], results, extra, raw, {"prompt_policy": T.PROMPT_POLICY})
         return Path(rulings.log_path("transcription", self.FORM)).read_text()
 
-    def scoped(self, names, reply_lines, recorded=None):
-        """Run transcribe.py's --lines path with a synthetic saved reply."""
+    def scoped(self, names, reply_lines, recorded=None, receipts=False):
+        """Run transcribe.py's --lines path with a synthetic saved reply; with `receipts`, the reply's
+        receipt is saved where the pass records it, as review_response saves it."""
         args = type("A", (), {"form": self.FORM, "model": "claude-opus-5-5", "lines": names, "dry_run": False,
                               "from_response": False, "reasoning_effort": None, "max_output_tokens": None})()
         params_doc = T.project_yaml(Path(T.ROOT) / "params" / f"{T.Y}.yaml")
         values = (params_doc.get("params") or params_doc)["values"]
         reply = (synthetic_reply(reply_lines), {"prompt_policy": T.LINE_PROMPT_POLICY, "model_reported": ["claude-opus-5-5"]})
+
+        def respond(prompt, model, base, policy, *rest, **kw):
+            meta = {**reply[1], **self.bound_meta(prompt, policy, model)}
+            for suffix, value in ((".prompt.txt", prompt), (".response.txt", reply[0]), (".meta.json", json.dumps(meta))):
+                Path(base + suffix).write_text(value)
+            return reply[0], meta
         with contextlib.ExitStack() as stack:
-            stack.enter_context(patch.object(T, "review_response", return_value=reply))
+            stack.enter_context(patch.object(T, "review_response", **({"side_effect": respond} if receipts else {"return_value": reply})))
             stack.enter_context(patch.object(T, "call_model", side_effect=AssertionError("offline")))
             if recorded is not None:
                 stack.enter_context(patch.object(T, "recorded_line_subjects", return_value=(recorded, "test")))
@@ -1876,6 +1953,101 @@ class LineScopedReviews(unittest.TestCase):
         self.base_log()
         self.assertEqual(rulings.pass_blocks(Path(rulings.log_path("transcription", self.FORM)).read_text()), {})
 
+    @staticmethod
+    def bound_meta(prompt, policy, model="claude-opus-5-5"):
+        return {"prompt_sha256": transcription_audit.sha(prompt), "system_sha256": transcription_audit.sha(T.TRANSCRIBE_SYSTEM),
+                "prompt_policy": policy, "model_requested": model}
+
+    def test_audit_verifies_each_line_scoped_pass(self):
+        reply = [dict(l) for l in self.computed]
+        raw = synthetic_reply(reply)
+        meta = self.bound_meta("BASE PROMPT", T.PROMPT_POLICY)
+        results, extra = T.compare(self.FORM, self.doc["lines"], T.extract_yaml(raw)["lines"])
+        T.write_log(self.doc, "claude-opus-5-5", "BASE PROMPT", [], results, extra, raw, meta)
+        for suffix, value in ((".prompt.txt", "BASE PROMPT"), (".response.txt", raw), (".meta.json", json.dumps(meta))):
+            Path(T.RAW, self.FORM + suffix).write_text(value)
+        path = Path(rulings.log_path("transcription", self.FORM))
+        old = path.read_text()
+        rows, rest = T.subjects.recorded(old)
+        line1 = [{"id": "f8960.line1", "printed": "1", "type": "Dollars", "expr": {"op": "copy", "from": "f1040.line2a"}}]
+        new = self.scoped("auto", [l for l in self.computed if l["id"] == "f8960.line8"] + line1,
+                          recorded=(dict(rows, **{"1": "0" * 64}), rest), receipts=True)
+        (pid, block), = rulings.pass_blocks(new).items()
+        with patch.object(T.subjects, "log_state", return_value=None):
+            result = transcription_audit.audit(path)
+        self.assertEqual(result["request_provenance"], "bound")
+        (p,) = result["passes"]
+        self.assertEqual((p["pass"], p["request_provenance"], p["type_errors"], p["changes"]), (pid, "bound", [], []))
+        self.assertEqual(p["scope"], ["1"])
+        self.assertEqual(p["input_context"]["required_sha256"], C.parse_log_text("transcription", new)["passes"][pid]["input_context_sha256"])
+        # The pass is held to its own receipt.
+        receipt = Path(T.ROOT, transcription_audit.fields_of(block)["receipt"] + ".response.txt")
+        receipt.write_text(receipt.read_text() + "\n  - id: extra\n")
+        with patch.object(T.subjects, "log_state", return_value=None), self.assertRaisesRegex(ValueError, "embedded in the pass"):
+            transcription_audit.audit(path)
+        # A stale line fails the merged log before any reply is compared.
+        with patch.object(T.subjects, "log_state", return_value="the transcription log is stale for lines 1"), \
+                self.assertRaisesRegex(ValueError, "stale"):
+            transcription_audit.audit(path)
+
+    @contextlib.contextmanager
+    def reworded(self, line_id, question):
+        """The year's documents with one other document's input question reworded."""
+        index = T.subjects._all_lines(T.Y)
+        fid, line = index[line_id]
+        changed = {**line, "expr": {**line["expr"], "source": question}}
+        with patch.dict(T.subjects._ALL, {T.Y: {**index, line_id: (fid, changed)}}):
+            yield
+
+    def test_a_reworded_foreign_question_stales_exactly_its_readers(self):
+        before = T.subjects.current_foreign("sa", T.Y)
+        with self.reworded("person.blind", "Were you blind? (reworded)"):
+            after = T.subjects.current_foreign("sa", T.Y)
+        self.assertEqual(sorted(k for k in before if before[k] != after[k]), ["sa.deduction", "sa.itemizes"])
+        # A log of the reader records the rows; the rewording stales those lines, and --lines auto takes them.
+        old = self.base_log()
+        rows = T.subjects.recorded_foreign(old)
+        self.assertEqual(set(rows), {k for k, _ in T.line_keys(self.doc)})
+        self.assertIsNone(T.subjects.log_state("transcription", self.FORM, T.Y, old))
+        read = sorted({s for l in self.doc["lines"] for s in T.subjects._strings({k: v for k, v in l.items() if k != "id"})
+                       if s in T.subjects._all_lines(T.Y) and not s.startswith(self.FORM + ".")
+                       and (T.subjects._all_lines(T.Y)[s][1].get("expr") or {}).get("op") == "input"})
+        target = read[0]
+        with self.reworded(target, "A reworded question"):
+            moved = T.subjects.foreign_stale(self.FORM, T.Y, old)
+            self.assertTrue(moved)
+            self.assertIn("foreign interfaces", T.subjects.log_state("transcription", self.FORM, T.Y, old))
+            with contextlib.redirect_stdout(io.StringIO()):
+                keys, *_ = T.plan_scope("transcription", self.FORM, old, ["auto"])
+            self.assertEqual(sorted(keys), sorted(moved))
+            # A line-scoped review of those lines rewrites their rows and keeps the others.
+            by_id = dict(T.line_keys(self.doc))
+            new = self.scoped("auto", [l for l in self.computed if l["id"] in T.members_of(self.doc, {by_id[k] for k in moved})])
+            self.assertIsNone(T.subjects.log_state("transcription", self.FORM, T.Y, new))
+            after = T.subjects.recorded_foreign(new)
+        self.assertEqual({k for k in rows if rows[k] != after[k]}, set(moved))
+        # Back to the original wording, the rewritten rows are stale and the others are not.
+        self.assertEqual(sorted(T.subjects.foreign_stale(self.FORM, T.Y, new)), sorted(moved))
+        # A log written before the table existed is not checked (the check is prospective).
+        legacy = re.sub(r"\n## Foreign interfaces\n.*?(?=\n## )", "", old, flags=re.S)
+        self.assertIsNone(T.subjects.recorded_foreign(legacy))
+        with self.reworded(target, "A reworded question"):
+            self.assertIsNone(T.subjects.log_state("transcription", self.FORM, T.Y, legacy))
+
+    def test_a_pass_record_is_held_to_the_header_conditions(self):
+        good = {"model": "deepseek-flash", "reported": "deepseek-flash", "policy": T.LINE_PROMPT_POLICY,
+                "comparison_policy": T.COMPARISON_POLICY, "type_policy": T.TYPE_VALIDATION_POLICY, "model_types": "pass",
+                "input_context_policy": T.INPUT_CONTEXT_POLICY, "complete_inputs": "pass", "input_context_sha256": "a" * 64}
+        with patch.object(families, "selected_model", return_value="deepseek-flash"):
+            self.assertEqual(C.pass_blockers("transcription", "deepseek", good), [])
+            for change, blocker in [({"policy": "source-only-computation-v1+lines-v1"}, "prompt-independence"),
+                                    ({"model_types": "fail"}, "type validation"), ({"complete_inputs": "fail"}, "input context"),
+                                    ({"comparison_policy": "legacy"}, "unit-preserving"),
+                                    ({"reported": "claude-opus-5-5"}, "named second family")]:
+                with self.subTest(change=change):
+                    self.assertTrue(any(blocker in b for b in C.pass_blockers("transcription", "deepseek", {**good, **change})))
+            self.assertEqual(C.pass_blockers("render", "deepseek", {**good, "policy": "anything"}), [])
+
     def test_per_line_staleness_names_exactly_the_lines_not_yet_reviewed(self):
         old = self.base_log()
         self.assertIsNone(T.subjects.log_state("transcription", self.FORM, T.Y, old))
@@ -1895,6 +2067,23 @@ class LineScopedReviews(unittest.TestCase):
             with patch.object(T, "recorded_line_subjects", return_value=((dict(rows, **{"16": "0" * 64}), rest), "test")):
                 T.plan_scope("transcription", self.FORM, old, ["f8960.line1"])
         self.assertIn("16", str(raised.exception))
+
+    def test_legacy_log_with_every_line_current_records_its_table_without_a_call(self):
+        old = self.base_log()
+        cur = T.subjects.recorded(old)
+        subject = re.search(r"^\| subject sha256 \| ([0-9a-f]{64}) \|$", old, re.M).group(1)
+        # Reviewed whole before tables existed, of a version that differs from the current one only
+        # outside every line subject (e.g. a reworded refusal no compared line reaches).
+        legacy = (old.partition("\n" + T.subjects.LINE_SUBJECTS + "\n")[0] + "\n## Raw second transcription\n"
+                  + old.partition("\n## Raw second transcription\n")[2]).replace(subject, "1" * 64)
+        Path(rulings.log_path("transcription", self.FORM)).write_text(legacy)
+        self.assertIn("earlier form", T.subjects.log_state("transcription", self.FORM, T.Y, legacy))
+        new = self.scoped("auto", [], recorded=cur)
+        self.assertEqual(T.subjects.recorded(new), cur)
+        self.assertIsNone(T.subjects.log_state("transcription", self.FORM, T.Y, new))
+        self.assertEqual(self.sections(new), self.sections(legacy))
+        # A second run finds the table and leaves the log as it is.
+        self.assertEqual(self.scoped("auto", []), new)
 
     def test_legacy_log_finds_the_reviewed_version(self):
         old = self.base_log()

@@ -6,6 +6,15 @@
   {
    "printed": "(e)",
    "restated": "Choose — [helper \"Basis reported to IRS\" = true → helper \"Basis shown on broker report\"] [helper \"Basis reported to IRS\" = false → helper \"Correct adjusted basis from records (for inherited property shown on a Schedule A (Form 8971) as increasing the estate tax, starting from no more than its final estate tax value)\"]",
+   "model": "The IRS says \"Box A or Box G\" and \"Box D or Box J\" cover transactions with an amount shown for cost or other basis reported to the IRS; the program's \"Basis reported to IRS\" helper is only boxes A or D, so for boxes G/J it would enter the correct adjusted basis instead of the reported basis.",
+   "ruling": "Ruling: scope; same as the refresh-round ruling: boxes G to L are refused at the transaction by sales.digital at sales.one, so the correct-basis branch is never used for them. Project stands.",
+   "context": "a06a73a5eac540a8032f1f08b61e36040fe97872b714ab5f484b56e8cb9de780",
+   "date": "2026-11-04",
+   "run": "a679e48ffed4242240a512d7bce7c4f2aed0dab1a5ed138be8a404d39da624cc"
+  },
+  {
+   "printed": "(e)",
+   "restated": "Choose — [helper \"Basis reported to IRS\" = true → helper \"Basis shown on broker report\"] [helper \"Basis reported to IRS\" = false → helper \"Correct adjusted basis from records (for inherited property shown on a Schedule A (Form 8971) as increasing the estate tax, starting from no more than its final estate tax value)\"]",
    "model": "The helper treats only boxes A and D as basis-reported, but the form note says for box A or box G with incorrect reported basis, enter the basis as reported in column (e), and the instructions likewise say box D or box J; G/J would wrongly use the correct-basis branch.",
    "ruling": "Ruling: scope; f8949 p. 1, box G; i8949 p. 8, code B. The model is right that boxes G and J take the reported basis, but boxes G to L are refused at the transaction by sales.digital at sales.one (checked this round: sales.refuse.digital.G refuses Form 1040 lines 7a and 16 on sales[a].digital), so the correct-basis branch is never used for them. Same point as the earlier rounds. Project stands on the English.",
    "context": "cf9ab01e6f7cae1b41ff3f0a234d076e2783160e4ee8e14dd7a6bfa2e83bd0a6"
@@ -30,6 +39,15 @@
    "model": "IRS column (g) says 'Enter in this column any necessary adjustments to gain (or loss)' and, for multiple codes, 'enter the net adjustment in column (g)'; the restatement only adds B basis correction and W wash-sale adjustment, omitting other required adjustment codes.",
    "ruling": "Ruling: scope; i8949 p. 8, code B; i8949 pp. 7–11, columns (f) and (g). Boxes G and J are refused with every digital-asset box (see column (e)), so the A/D condition of the basis correction is the whole supported case. Codes other than B and W are refused: sales.one refuses when sales.bad_code (\"Only applicable B and W adjustments are supported\"), and the refusal reaches the Schedule D totals and Form 1040 (checked: sales.refuse.code gives sd.line15, f1040.line7a and f1040.line16 refused on sales.bad_code while the row's own column (g) shows $0.00). Project stands on the English.",
    "context": "9b43e79c4bfb09f4d39ad5c2d32acbcc705214faf4e7e317f51933b0d55f06b4"
+  },
+  {
+   "printed": "(g)",
+   "restated": "Add helper \"Basis correction in column (g)\" and helper \"Wash-sale adjustment in column (g)\".",
+   "model": "The IRS says \"Enter in this column any necessary adjustments to gain (or loss)\" and, for multiple codes, \"enter the net adjustment in column (g)\"; the restatement only adds code B and code W adjustments, omitting other necessary adjustments such as codes E, H, or L.",
+   "ruling": "Ruling: scope; the model names other codes (E, H, L); codes other than B and W are refused at sales.one on sales.bad_code (\"Only applicable B and W adjustments are supported\"), and boxes G and J with every digital-asset box, so on a completed return column (g) is the code B correction plus the code W adjustment. Project stands.",
+   "context": "a06a73a5eac540a8032f1f08b61e36040fe97872b714ab5f484b56e8cb9de780",
+   "date": "2026-11-04",
+   "run": "a679e48ffed4242240a512d7bce7c4f2aed0dab1a5ed138be8a404d39da624cc"
   }
  ]
 }

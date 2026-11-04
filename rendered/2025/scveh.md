@@ -42,9 +42,9 @@
 ## 44b — `scveh.miles_commuting`
 
 - **IRS:** Commuting miles
-- **Encoded (Count):** Input — The commuting miles you drove this vehicle in 2025 (travel between your home and a work location, as defined in the instructions for line 44b)
-- Expr: `{"op":"input","source":"The commuting miles you drove this vehicle in 2025 (travel between your home and a work location, as defined in the instructions for line 44b)"}`
-- Cite: [i1040sc] p. 15, Line 44b (2025; sha256 b5536db9)
+- **Encoded (Count):** Input — The commuting miles you drove this vehicle in 2025 (travel between your home and a work location, as defined in the instructions for line 44b); if you converted this vehicle during 2025 from personal to business use (or from business to personal use), only your commuting miles for the period you drove it for business
+- Expr: `{"op":"input","source":"The commuting miles you drove this vehicle in 2025 (travel between your home and a work location, as defined in the instructions for line 44b); if you converted this vehicle during 2025 from personal to business use (or from business to personal use), only your commuting miles for the period you drove it for business"}`
+- Cite: [i1040sc] p. 15, Line 44b, "If you converted your vehicle during the year from personal to business use (or vice versa), enter your commuting miles only for the period you drove your vehicle for business" (2025; sha256 b5536db9)
 
 ## 44c — `scveh.miles_other`
 
@@ -226,15 +226,15 @@
 
 ## (screen) — `scveh.lease_smr_before`
 
-- **Authored helper label:** The standard mileage rate was used for this leased vehicle before
-- **Encoded (Bool):** Input — Did you use the standard mileage rate for this leased vehicle in an earlier year?
-- Expr: `{"op":"input","source":"Did you use the standard mileage rate for this leased vehicle in an earlier year?"}`
-- Cite: [i1040sc] p. 6, Line 9, "You can't use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle" (2025; sha256 b5536db9)
+- **Authored helper label:** The standard mileage rate was used for this leased vehicle before, or it was converted between personal and business use in 2025
+- **Encoded (Bool):** Input — Did you use the standard mileage rate for this leased vehicle in an earlier year, or did you convert it during 2025 from personal use to business use or from business use to personal use?
+- Expr: `{"op":"input","source":"Did you use the standard mileage rate for this leased vehicle in an earlier year, or did you convert it during 2025 from personal use to business use or from business use to personal use?"}`
+- Cite: [i1040sc] p. 6, Line 9, "You can't use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle"; p. 15, Line 44b, "If you converted your vehicle during the year from personal to business use (or vice versa)"; p463 pp. 25-26, Change from personal to business use, "you figure the percentage of business use for the year as follows" (2025; sha256 b5536db9)
 
 ## (gate) — `scveh.lease_smr_bad`
 
-- **Authored helper label:** Actual expenses on a leased vehicle after the standard mileage rate
-- **Encoded (Bool):** helper "The standard mileage rate was used for this leased vehicle before" = true
+- **Authored helper label:** Actual expenses on a leased vehicle after the standard mileage rate, or converted in 2025
+- **Encoded (Bool):** helper "The standard mileage rate was used for this leased vehicle before, or it was converted between personal and business use in 2025" = true
 - Expr: `{"eq":["scveh.lease_smr_before",{"const":true}],"op":"test"}`
 - Cite: [i1040sc] p. 6, Line 9 (2025; sha256 b5536db9)
 
@@ -242,7 +242,7 @@
 
 - **Authored helper label:** The business portion of the lease payments
 - **Encoded (NonNegDollars):** Divide helper "Business miles, as cents" by helper "Total miles, as cents", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper "Lease payments for the vehicle" by the result.
-- **Refusal:** when scveh.lease_smr_bad is true, cannot complete Actual expenses on a leased vehicle after using the standard mileage rate for it in an earlier year. You can't use actual expenses for this leased vehicle; use the standard mileage rate for the rest of the lease. Cite: [i1040sc] p. 6, Line 9 (2025; sha256 b5536db9)
+- **Refusal:** when scveh.lease_smr_bad is true, cannot complete Actual expenses on a leased vehicle after using the standard mileage rate for it in an earlier year, or on a leased vehicle converted between personal and business use in 2025. You can't use actual expenses for a leased vehicle after using the standard mileage rate for it; use the standard mileage rate for the rest of the lease. Actual expenses for a leased vehicle converted between personal and business use in 2025 are outside this tool. Cite: [i1040sc] p. 6, Line 9; p. 15, Line 44b; p463 pp. 25-26, Change from personal to business use (2025; sha256 b5536db9)
 - Expr: `{"amount":"scveh.lease","op":"prorate","part":"scveh.bm_c","places":6,"whole":"scveh.total_c"}`
 - Cite: [i1040sc] p. 8, Lines 20a and 20b (2025; sha256 b5536db9)
 
@@ -343,7 +343,7 @@
 - Expr: `{"amount":"scveh.cost","op":"prorate","part":"scveh.bm_c","places":6,"whole":"scveh.total_c"}`
 - Cite: [p946] pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 13, "Multiply line 12 by line 8. This is your business/investment cost" (For use in preparing 2025 returns; sha256 07fadfb2)
 
-## (i) — `scveh.s179_elect`
+## (helper) — `scveh.s179_elect`
 
 - **Authored helper label:** Elected section 179 cost
 - **Encoded (NonNegDollars):** Input — The amount of this vehicle's cost you elect to expense under section 179 (zero if none)
@@ -360,7 +360,7 @@
 ## (gate) — `scveh.s179_bad`
 
 - **Authored helper label:** The section 179 election is more than the business cost, or than the SUV limit
-- **Encoded (Bool):** (column (i) > line 13 or helper "Subject to the limits for passenger automobiles" = false and helper "An SUV or similar vehicle rated 6,000 to 14,000 pounds" = true and column (i) > helper "SUV section 179 limit")
+- **Encoded (Bool):** (helper "Elected section 179 cost" > line 13 or helper "Subject to the limits for passenger automobiles" = false and helper "An SUV or similar vehicle rated 6,000 to 14,000 pounds" = true and helper "Elected section 179 cost" > helper "SUV section 179 limit")
 - Expr: `{"any":[{"gt":["scveh.s179_elect","scveh.bus_cost"],"op":"test"},{"all":[{"eq":["scveh.passenger",{"const":false}],"op":"test"},{"eq":["scveh.suv",{"const":true}],"op":"test"},{"gt":["scveh.s179_elect","scveh.suv_cap"],"op":"test"}],"op":"test"}],"op":"test"}`
 - Cite: [i4562] p. 16, Column (i) (2025; sha256 5c1c95b7)
 
@@ -453,7 +453,7 @@
 ## (helper) — `scveh.s179_2025_ok`
 
 - **Authored helper label:** Section 179 elected for a 2025 vehicle
-- **Encoded (NonNegDollars):** Enter the amount from column (i).
+- **Encoded (NonNegDollars):** Enter the amount from helper "Elected section 179 cost".
 - **Refusal:** when scveh.s179_bad is true, cannot complete Section 179 election above the vehicle's business cost or the SUV limit. A section 179 election must not exceed the business cost, or $31,300 for an SUV. Cite: [i4562] p. 16, Column (i) (2025; sha256 5c1c95b7)
 - Expr: `{"from":"scveh.s179_elect","op":"copy"}`
 - Cite: [i4562] p. 16, Column (i) (2025; sha256 5c1c95b7)
@@ -976,10 +976,11 @@
 - Expr: `{"alternatives":[{"guard":{"eq":["scveh.is_actual_owned",{"const":true}],"op":"test"},"then":"scveh.macrs_o"},{"guard":{"eq":["scveh.is_actual_owned",{"const":false}],"op":"test"},"then":"scveh.zero"}],"op":"choose"}`
 - Cite: [i4562] p. 13, Part V, Section A (2025; sha256 5c1c95b7)
 
-## (helper) — `scveh.s179_2025`
+## (i) — `scveh.s179_2025`
 
 - **Authored helper label:** Column (i): elected section 179 cost of this vehicle
 - **Encoded (NonNegDollars):** Choose — [helper "Owned and on actual expenses" = true → helper "Section 179 (owned, actual expenses)"] [helper "Owned and on actual expenses" = false → helper "Zero"]
+- **Shown on the values sheet only when:** Owned and on actual expenses (`scveh.is_actual_owned`)
 - Expr: `{"alternatives":[{"guard":{"eq":["scveh.is_actual_owned",{"const":true}],"op":"test"},"then":"scveh.s179_2025_o"},{"guard":{"eq":["scveh.is_actual_owned",{"const":false}],"op":"test"},"then":"scveh.zero"}],"op":"choose"}`
 - Cite: [i4562] p. 13, Part V, Section A (2025; sha256 5c1c95b7)
 

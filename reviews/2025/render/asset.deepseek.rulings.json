@@ -18,11 +18,29 @@
    "context": "fa97ab9d907d2dfc68fa7f04dbf351f76f38f99c2b817598f907a37025aa5fd5"
   },
   {
+   "printed": "(b)",
+   "restated": "Input — The year you placed this property in service in the business (2005 to 2025). Property is placed in service when it is ready and available for a specific use, even if you have not yet used it; property you converted from personal use to use in the business is placed in service on the date of the conversion; for an addition or improvement, the later of the year you placed it in service and the year you placed in service the property it was made to",
+   "model": "the model returned no verdict for this line",
+   "ruling": "Ruling: model error; the model returned no verdict for this line.",
+   "context": "3ee89151d414149e3f969cee1458e28bf63806de8c0b928300cb8bfe1d3980ed",
+   "date": "2026-11-04",
+   "run": "3da0e7083893f74e162c0a0a385b59ccb642ef00952782c133e17db8328074d3"
+  },
+  {
    "printed": "(c)",
    "restated": "Divide helper \"The business use percentage, as cents\" by helper \"One hundred cents (100%)\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper \"Cost or other basis\" by the result.",
    "model": "IRS column (c) says to multiply cost by business-use percentage and then 'subtract any credits and deductions allocable to the property', including 'Section 179 expense deduction' and 'any special depreciation allowance'; the restatement stops after multiplying by the business-use percentage.",
    "ruling": "Ruling: scope; asset.screen refuses property whose basis was adjusted for anything other than depreciation, so on a computed return the only reductions are section 179 and the special allowance, which the project subtracts at 19(c).",
    "context": "d1c0518ed5c7af2569758ae9d739c80030cb9a9adc562d8fec4ec7c54247ab3f"
+  },
+  {
+   "printed": "(c)",
+   "restated": "Divide helper \"The business use percentage, as cents\" by helper \"One hundred cents (100%)\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper \"Cost or other basis\" by the result.",
+   "model": "IRS column (c) says: 'To find the basis for depreciation, multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property.' The restatement only multiplies cost by the business-use percentage and omits the required subtraction.",
+   "ruling": "Ruling: scope; as the Claude ruling of this marker: the subtraction of section 179 and the special allowance is printed at 19(c), and asset.screen refuses any other basis-reducing credit or deduction (i4562 p. 11, Column (c)).",
+   "context": "3ee89151d414149e3f969cee1458e28bf63806de8c0b928300cb8bfe1d3980ed",
+   "date": "2026-11-04",
+   "run": "3da0e7083893f74e162c0a0a385b59ccb642ef00952782c133e17db8328074d3"
   },
   {
    "printed": "(c)",

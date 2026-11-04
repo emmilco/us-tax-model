@@ -5,6 +5,7 @@ The rendered English of every printed line of `Each person on the return — per
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
+| line-scoped reviews | 1 (latest 2026-11-04); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 4a463469695f692171c99d1fd3b66d05d02ba647f45a2516554a2df009b4d850 |
@@ -122,42 +123,50 @@ Model: Pub. 560 chapter 5 says the worksheets apply only to 'only one defined co
 ### Step 1 — Net profit from Schedule C, line 31
 Status: **MATCH**
 
-Model: Uses 'net profit from Schedule C (Form 1040), line 31' for this person. Schedule F, K-1 and the line 1b reduction are refused through the self-employment screen.
+Model: Pub. 560 Step 1 asks for net profit from Schedule C, line 31, or from Schedule F or Schedule K-1, which the restatement covers by summing this person's Schedule C results. The non-Schedule C sources, and the Schedule SE line 1b reduction that applies only to farm income, are refused by the self-employment screen. A plan with more than one Schedule C is refused by the plan screen, consistent with Pub. 560's rule that only the earned income of the business that has the plan counts.
+Reviewed in: pass 431c866fff3d
 
 ### Step 2 — Deduction for self-employment tax from Schedule 1, line 15
 Status: **MATCH**
 
-Model: Uses this person's Schedule SE line 13, which is the amount carried to Schedule 1 line 15 ('deduction for self-employment tax from Schedule 1 (Form 1040), line 15').
+Model: Step 2 asks for the 'deduction for self-employment tax from Schedule 1 (Form 1040), line 15', which the Form 1040 instructions say is Schedule SE line 13. The restatement uses this person's Schedule SE line 13, which is the right per-person figure on a joint return.
+Reviewed in: pass 431c866fff3d
 
 ### Step 3 — Net earnings from self-employment. Subtract step 2 from step 1
 Status: **MATCH**
 
-Model: Matches 'Subtract step 2 from step 1'. The zero floor changes the value only when there is a loss, and no SEP deduction arises in that case.
+Model: Pub. 560 says 'Subtract step 2 from step 1', and the restatement does this. The added floor at zero changes only a net-loss case, where the maximum deductible contribution is zero either way.
+Reviewed in: pass 431c866fff3d
 
 ### Step 5 — Multiply step 3 by step 4 (the plan rate divided by the plan rate plus 1, to six decimal p
 Status: **MATCH**
 
-Model: Uses the Rate Worksheet formula, line 1 ÷ (line 1 + 1), rounded to 6 decimals. This reproduces the Rate Table values (for example 10% gives 0.090909 and 25% gives 0.200000). The result is then multiplied by Step 3, as in 'Multiply step 3 by step 4.'
+Model: Pub. 560 says 'Multiply step 3 by step 4', where step 4 is the rate from the Rate Table or Rate Worksheet, defined as plan rate ÷ (plan rate + 1). For whole-percent rates, the plan rate divided by the plan rate plus 100%, rounded to 6 decimals, reproduces the table values (for example 10% → 0.090909, 7% → 0.065421).
+Reviewed in: pass 431c866fff3d
 
 ### Step 6 — Multiply $350,000 by your plan contribution rate (not the reduced rate)
 Status: **MATCH**
 
-Model: Matches 'Multiply $350,000 by your plan contribution rate (not the reduced rate).'
+Model: The IRS text is 'Multiply $350,000 by your plan contribution rate (not the reduced rate)'. The restatement multiplies $350,000 by the plan rate divided by 100%, which is the unreduced rate.
+Reviewed in: pass 431c866fff3d
 
 ### Step 7 — Enter the smaller of step 5 or step 6
 Status: **MATCH**
 
-Model: Matches 'Enter the smaller of step 5 or step 6.'
+Model: The IRS text is 'Enter the smaller of step 5 or step 6', and the restatement does the same.
+Reviewed in: pass 431c866fff3d
 
 ### Step 8 — Contribution dollar limit
 Status: **MATCH**
 
-Model: Matches the 'Contribution dollar limit ... $70,000.'
+Model: The worksheet shows a contribution dollar limit of $70,000, and the restatement enters $70,000.
+Reviewed in: pass 431c866fff3d
 
 ### Step 21 — Maximum deductible contribution (the smaller of step 7 or step 8; no elective deferrals)
 Status: **MATCH**
 
-Model: Matches 'Otherwise, skip steps 9 through 20 and enter the smaller of step 7 or step 8 on step 21.' Elective deferrals are excluded by the plan screen.
+Model: With no elective deferrals, Pub. 560 says to 'skip steps 9 through 20 and enter the smaller of step 7 or step 8 on step 21'. A SEP without salary reduction has no elective deferrals, and SARSEPs and elective deferrals are refused by the plan screen, so the restatement matches.
+Reviewed in: pass 431c866fff3d
 
 ### (screen) (person.sav_able) — As the designated beneficiary of an ABLE account, did you contribute to it for 2025, or di
 Status: **MATCH**
@@ -238,6 +247,120 @@ Restated: Choose — [helper "A lifetime learning credit student: an eligible st
 Model: The worksheet uses only expenses required to be paid to the institution less line 3, as the lifetime learning credit requires, and the TIN refusal is a valid narrowing. The student gate uses 'after February 2, 2026' for a requested Form 1098-T, while the IRS text says 'After January 31, 2026.'
 
 Ruling: ambiguity; amb.2025.edu_1098t_date (owner decision D7(d), 2026-10-29): i8863 p. 1, "After January 31, 2026, but before you file the return"; p970 p. 2, "After February 2, 2026 (January 31 falls on a Saturday)"; the register chooses Pub. 970. The reviewer now accepts the TIN gate (the T-113 point is no longer raised) and the arithmetic. render MISMATCH. Project stands.
+
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| rrta | c288d66fc0f67a39aebb651525bd843ea9349d3ed442ec217c0f6b87e8491641 |
+| employers | 08db99585cb04c792038309076c08f4a25e53de478703fbeda72de2fb371c53b |
+| overcount | 09ea1d2d60f982805105b3a93befc7303a0de55c8d3de283a6ddb62694dd6741 |
+| over | da0cb84ba3b2f215c551b8517f33892c0e8df9c6dce69f97c5cf79d684ad9815 |
+| wages | ef55de63eecf9940ed7ddc4524060e242c1ac3627a6a21df545d29ed78e168be |
+| withheld | 5dab9ef0579d279bb77cbc94ca90c5869f94016d96bf65afe4b34aaa22af019a |
+| eligible | 6b2594067f72412d9f12c77b8627857f26c0aa81b9c1419b2f55922fecb8a726 |
+| excess | 2ec6c73ca182e811cf7259d5a2359870a6b4847c23b1a1213dd210cceb89c0f9 |
+| zero | 56a11e09deb0116e1f3c128f1752c8b174532238c961ae27a9a708421219f121 |
+| credit | 04f651e17bd41d95113216306e28f5303f80898e3ef2041e1a151adc423b3e75 |
+| (screen) (person.se_screen) | b0d1e9b80b73ff047c2ba94e65ff5b6abcef473d6027d9c9e88b75e9ecc90d16 |
+| (screen) (person.plan_screen) | ed86e8484bea910c1df4dd0d64973e941cda2456c239f982c52205101ac3bd51 |
+| Step 1 | d23b32679a21fbba0e911b2e02b78190ebe05c185873f50e336f36baa90f93ab |
+| Step 2 | c599a94352d406cd05554510b9453e72799c2ed3210561e2365fab12b51af2e1 |
+| Step 3 | 6dc9e181cefa05af31b1d01d394d867ff43f957d419f78037ca796695fe1f2fa |
+| Step 5 | e00f89f146804b9f4194bc873efd88c70e6260f55aa15c548921892b6bdd3c0d |
+| Step 6 | 5c109917e19c8a33451ba0d9c242848d4f96a7a3812418f2d5d77536f94746a0 |
+| Step 7 | 4785acf98f3e9e7f81ba9b4142b456ed5dcc40b05432d2aac35039d71f2e8b1f |
+| Step 8 | 4d37fed6cb8938331b58ff550c7a9144c7e9a75890f7b63ad4c24ac1dd9007f6 |
+| Step 21 | c09eb630c2d318f1edb9dbc207e75c4ce84b690f82647c535d3a905095456a44 |
+| (screen) (person.sav_able) | 4dac837ece8f3062a726a3909e8e873a3c1a610a0dc74c0fe2bb112fbf2fb6e6 |
+| (screen) (person.sav_excess) | 8268c2fc44d105f215387ac095fc2d13542bd84d97ae1432802d40bdd791497e |
+| (screen) (person.ira_excess) | fad6ca1db48468bf005a8a6f78cbd76556fe1fbb6c8911d71fa27e5690355329 |
+| 23 | 9223c23e3c46b26b83ccb5d841633f2f1b39bbf9863863f6d107c062cbebd231 |
+| 24 | 9f1d38d7e493b18f7b91c64374bad4f7eaa16e7049076217bf16d8d3c87ed5a7 |
+| 25 | 92bbf9d23da231a378008f560b77f4ecc9287bdf9de6a32bb55f97d1df37d95c |
+| 26 | 5e230914a1d319de23b13cb4bc87ab8ec9fae1f62dbbda87ffa25dcff0585388 |
+| 27 | 5ef37e070b23e6a98285fa4b0e0cd9726a40cd65c86dfb962b21c02c23edc8c9 |
+| 28 | 6c1f2a168e9868523fed8f2c32fc66e42a716d026f5a9f020316b2887ecab81f |
+| 29 | ee7befdce4550952ab00442bb5d9727836d56b5abbbcf4b0a5b85f9fc6294ec2 |
+| 30 | ed27bcd7d876d97eb839b2ab5dfc58f0a4d3a0f76be0b814b8c73ce0ac7e5a0a |
+| 31 | 2e2cf650db9042c47f251df02c2bf685a8204fe8ced1bc6904642a2634133c65 |
+| (rest of the document) | 774637a29894532eb1f17ff28873aee0739a6158bd21538f87516cd8da60346c |
+
+## Line-scoped reviews
+
+Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
+
+#### Pass 431c866fff3d
+
+| field | value |
+| --- | --- |
+| date | 2026-11-04 |
+| review scope | lines Step 1, Step 2, Step 3, Step 5, Step 6, Step 7, Step 8, Step 21 |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | 431c866fff3d39a71db7e878f8aeca4070123dacbee3c91383fd3a05fd3d1cc3 |
+| prompt policy | render-source-comparison-v2+lines-v1 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| subject sha256 | 042c599231fdffe2732c9f69946822d5f258a6ae8e0bdb1ed6016b3aa4a30e89 |
+| receipt | .transcription/person.render.lines-5c98605ef622 |
+| lines judged | 8 |
+| match / mismatch / unclear / missing | 8 / 0 / 0 / 0 |
+| verdicts for lines not in the form | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| f1040sse | 2025; created 2025-05-07 | 1, 2 | whole document | d214b41a4e42da1953a1ee216b6f9d263be284a90cf9f7f28dcb87cd0e9913e6 | - | fbeaf5e9b8509f8fe754b52a6b5a643934ae2ff1a6f76e6e69af8be42fcd2cdd |
+| i1040sc | 2025 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | cited pages | dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a | 2, 3, 4, 5, 6, 7, 8, 9, 10, 13, 14, 15 | 616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918 |
+| i1040sse | 2025 | 1, 2, 3, 4, 5 | whole document | bd4768e77e9087e707701447574c3fd8b1b6ac8deca77fcf2e1bce4c50b7db28 | 1, 2, 3, 4, 5 | 6cb68f929e214450ea7ffa33648d5602e2431f38e91c7a6c83dfbee0ab23f08c |
+| p560 | For use in preparing 2025 returns | 7, 8, 9, 10, 11, 14, 15, 16, 17, 38, 39, 40 | cited pages | 38bbfa2efb2894e2527d66cd3478f33c6ceae4b777f78674c22bec16db9809aa | 7, 8, 9, 10, 11, 14, 15, 16, 17, 38, 40 | 7ef279c8f34addc2ff13420e35fab4a092bf8027f53907c28a5f46d2c21da737 |
+| i1040gi | 2025; printed date 2026-02-25 | 93, 94, 95 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 93, 95 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| i7206 | 2025 | 1, 2 | whole document | 88aebffe01e22b57dadeb703483459075718cb0b2514fe8f00185975cfbeef3a | 1, 2 | 5bfa308e7e4634d4a0162d76b4af6a4182b8539a390109360875303222231cfe |
+| f1040sc | 2025; created 2025-04-03 | 1, 2 | whole document | ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022 | - | 44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376 |
+| f7206 | 2025; created 2025-10-02 | 1 | whole document | 1f54af11e092a24258ac71f29d2bcfeeda1d6100ca332357d4569eea889e1dbb | - | e3b265efad583dd859c584d4e7e8a17d7b6e927878922ab5f020e2ff79a18d87 |
+| i4562 | 2025 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
+| p946 | For use in preparing 2025 returns | 17, 18, 19, 31, 32, 33, 34, 37, 39, 41, 59, 61, 62, 63, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 17, 18, 19, 31, 32, 33, 34, 37, 39, 41, 63 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
+| f4562 | 2025; created 2025-10-09 | 1, 2, 3 | whole document | 71e2ace527072aaa7293e77897bb4ab8e473fa9c47b6b1ccb977fdc58a93bc2d | - | a1330c49d931e7ecdc867aef2d9e01390fc7b4d7e9321943a21ed0f8e883ed18 |
+| n-25-05 | Notice 2025-5 | 1, 2, 3, 4, 5 | whole document | 394f6b5ffb7c30e745322f0f20d9137608b1e2429fc4c76b06dedd690d4fb6e3 | - | 349e2797f87c588214722bcd22b7ec317c86c90a255ec8496941ac0c09909a8d |
+| p463 | For use in preparing 2025 returns | 25, 26 | pages named by another document's citation | 153efad2a94bcccadf643b0f28f913d74b7d70b727f73eca540a2ce4d32bbfda | 25, 26 | a0b14576fdb49a7ba3e7a90092c1b8f6b8ba33889c8c35da5629156346581326 |
+| p538 | None | 17 | pages named by another document's citation | 4186d7aaa8f711c9a524b87fac1e3df05640b6d66130093b2469480acb06ef6c | 17 | f500211df18a4aafd843e48bbad4b9102c598cf5ccc0fae96c7814a4bef0ae00 |
+
+##### Raw response
+
+```yaml
+```yaml
+lines:
+  - key: "Step 1"
+    status: MATCH
+    reason: "Pub. 560 Step 1 asks for net profit from Schedule C, line 31, or from Schedule F or Schedule K-1, which the restatement covers by summing this person's Schedule C results. The non-Schedule C sources, and the Schedule SE line 1b reduction that applies only to farm income, are refused by the self-employment screen. A plan with more than one Schedule C is refused by the plan screen, consistent with Pub. 560's rule that only the earned income of the business that has the plan counts."
+  - key: "Step 2"
+    status: MATCH
+    reason: "Step 2 asks for the 'deduction for self-employment tax from Schedule 1 (Form 1040), line 15', which the Form 1040 instructions say is Schedule SE line 13. The restatement uses this person's Schedule SE line 13, which is the right per-person figure on a joint return."
+  - key: "Step 3"
+    status: MATCH
+    reason: "Pub. 560 says 'Subtract step 2 from step 1', and the restatement does this. The added floor at zero changes only a net-loss case, where the maximum deductible contribution is zero either way."
+  - key: "Step 5"
+    status: MATCH
+    reason: "Pub. 560 says 'Multiply step 3 by step 4', where step 4 is the rate from the Rate Table or Rate Worksheet, defined as plan rate ÷ (plan rate + 1). For whole-percent rates, the plan rate divided by the plan rate plus 100%, rounded to 6 decimals, reproduces the table values (for example 10% → 0.090909, 7% → 0.065421)."
+  - key: "Step 6"
+    status: MATCH
+    reason: "The IRS text is 'Multiply $350,000 by your plan contribution rate (not the reduced rate)'. The restatement multiplies $350,000 by the plan rate divided by 100%, which is the unreduced rate."
+  - key: "Step 7"
+    status: MATCH
+    reason: "The IRS text is 'Enter the smaller of step 5 or step 6', and the restatement does the same."
+  - key: "Step 8"
+    status: MATCH
+    reason: "The worksheet shows a contribution dollar limit of $70,000, and the restatement enters $70,000."
+  - key: "Step 21"
+    status: MATCH
+    reason: "With no elective deferrals, Pub. 560 says to 'skip steps 9 through 20 and enter the smaller of step 7 or step 8 on step 21'. A SEP without salary reduction has no elective deferrals, and SARSEPs and elective deferrals are refused by the plan screen, so the restatement matches."
+```
+```
 
 ## Raw response
 

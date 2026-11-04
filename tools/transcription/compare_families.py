@@ -36,11 +36,25 @@ AGREE = {"transcription": "AGREE", "render": "MATCH", "classm": "AGREE"}
 TITLE = {"transcription": "Transcription agreement", "render": "Render comparison", "classm": "Class M hand-work"}
 
 
+PASS_FIELDS = {"model": "model requested", "reported": "model reported", "policy": "prompt policy",
+               "comparison_policy": "comparison policy", "type_policy": "type validation policy",
+               "model_types": "model type validation", "input_context_policy": "input context policy",
+               "complete_inputs": "complete input context", "input_context_sha256": "required input context sha256"}
+
+
 def parse_log(kind, path):
     """The log's header fields and, per judged line, its status and the model's stated reason."""
     with open(path, encoding="utf-8") as f:
-        text = f.read()
+        return parse_log_text(kind, f.read())
+
+
+def parse_log_text(kind, text):
+    """parse_log of a log's text. `passes` holds, for each line-scoped review the log holds, the same
+    header fields from that review's own record."""
     field = lambda name: (re.search(rf"^\| {re.escape(name)} \| (.*?) \|$", text, flags=re.M) or [None, ""])[1]
+    passes = {pid: {k: (re.search(rf"^\| {re.escape(name)} \| (.*?) \|$", block, flags=re.M) or [None, ""])[1]
+                    for k, name in PASS_FIELDS.items()}
+              for pid, block in rulings.pass_blocks(text).items()}
     _, _, rest = text.partition("\n## Lines\n")
     body = re.split(r"\n## ", rest)[0]
     lines, duplicates = {}, []
@@ -79,6 +93,7 @@ def parse_log(kind, path):
             "input_context_sha256": field("required input context sha256"),
             "partial_policy": field("partial-input policy"), "partial_bank": field("partial-input bank sha256"),
             "partial_context": field("partial-input request context"), "partial_result": field("partial-input result"),
+            "passes": passes, "text": text,
             "sources": re.findall(r"^\| (\S+) \| [^|]* \| [^|]* \| [^|]* \| ([0-9a-f]{64}) \|(?: [^|]* \| ([0-9a-f]{64}|-) \|)?$", text, flags=re.M)}
 
 
@@ -149,6 +164,26 @@ def model_blockers(kind, family, log):
     return blockers
 
 
+def pass_blockers(kind, family, p):
+    """Why a line-scoped review recorded in a log cannot share the credit of the log's header review:
+    the conditions compare() puts on a header, read from the pass's own record. `family` is the
+    second family's name, or None for the Claude log (whose model is not checked against a family)."""
+    out = []
+    if family is not None:
+        out += model_blockers(kind, family, p)
+    if kind != "transcription":
+        return out
+    if p["policy"] not in transcribe.INDEPENDENT_LINE_PROMPT_POLICIES:
+        out.append("predates the prompt-independence policy")
+    if p["comparison_policy"] != transcribe.COMPARISON_POLICY:
+        out.append("predates unit-preserving comparison")
+    if p["type_policy"] != transcribe.TYPE_VALIDATION_POLICY or p["model_types"] != "pass":
+        out.append("no passing current expression type validation")
+    if p["input_context_policy"] != transcribe.INPUT_CONTEXT_POLICY or p["complete_inputs"] != "pass":
+        out.append("no verified complete input context in the request")
+    return out
+
+
 def compare(kind, form, family):
     a = parse_log(kind, rulings.log_path(kind, form, families.DEFAULT))
     b = parse_log(kind, rulings.log_path(kind, form, family))
@@ -168,8 +203,15 @@ def compare(kind, form, family):
         current = subjects.current(kind, form, Y)
     except FileNotFoundError:
         current = None
-    stale = [fam for fam, log in ((families.DEFAULT, a), (family, b)) if current is None or log["subject"] != current]
+    # A log holding line-scoped reviews is current when every compared line's subject is (the rule
+    # check_logs.py applies); its header keeps the subject its first review saw.
+    stale = [fam for fam, log in ((families.DEFAULT, a), (family, b))
+             if current is None or (subjects.log_state(kind, form, Y, log["text"]) is not None if log.get("passes")
+                                    else log["subject"] != current)]
     q = quality(kind, a, b, stale)
+    for fam, record in ((families.DEFAULT, a), (family, b)):
+        for pid, p in sorted((record.get("passes") or {}).items()):
+            q["blockers"] += [f"pass {pid} of {fam}: {x}" for x in pass_blockers(kind, fam if fam != families.DEFAULT else None, p)]
     if excluded and not judged:
         q["blockers"].append("no source-defined computed targets; internal adapter checks earn no tax-evidence credit")
     if kind == "transcription":
@@ -211,6 +253,20 @@ def compare(kind, form, family):
                     raise ValueError("required input/interface wording is missing or stale")
                 if record.get("input_context_sha256") != replay["input_context"]["required_sha256"]:
                     raise ValueError("required input/interface hash differs")
+                # Each line-scoped review the log holds is verified like the header review.
+                checked = {r["pass"]: r for r in replay.get("passes", [])}
+                for pid, p in sorted((record.get("passes") or {}).items()):
+                    r = checked.get(pid)
+                    if r is None:
+                        raise ValueError(f"pass {pid} was not verified")
+                    if r["request_provenance"] != "bound":
+                        raise ValueError(f"pass {pid}: request metadata is legacy-limited")
+                    if r["type_errors"]:
+                        raise ValueError(f"pass {pid}: current expression/refusal validation fails")
+                    if r["input_context"]["state"] != "pass":
+                        raise ValueError(f"pass {pid}: required input/interface wording is missing or stale")
+                    if p.get("input_context_sha256") != r["input_context"]["required_sha256"]:
+                        raise ValueError(f"pass {pid}: required input/interface hash differs")
             except (ValueError, OSError, KeyError, TypeError, RuntimeError) as exc:
                 q["blockers"].append(f"no verified current request context for {fam}: {exc}")
         bank = input_contracts.load(form, Y)

@@ -1,0 +1,16 @@
+{
+ "kind": "render",
+ "form": "w2",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "printed": "2",
+   "restated": "Input — Federal income tax withheld (box 2 of a Form W-2; on a Form W-2AS, W-2CM, W-2GU or W-2VI, box 2 is American Samoa, CNMI, Guam or U.S. Virgin Islands income tax, not federal income tax, so enter zero for it)",
+   "model": "The restatement says to enter zero for box 2 on Forms W-2AS, W-2CM, W-2GU, or W-2VI, but the IRS text says: “For Forms W-2AS, W-2CM, W-2GU, or W-2VI, show the total American Samoa, CNMI, Guam, or U.S. Virgin Islands income tax withheld.”",
+   "ruling": "Ruling: model error; iw2w3 p. 17, Box 2: \"Show the total federal income tax withheld from the employee's wages for the year\" and \"For Forms W-2AS, W-2CM, W-2GU, or W-2VI, show the total American Samoa, CNMI, Guam, or U.S. Virgin Islands income tax withheld.\" The quote supports the restatement (round-2 fix, w2#2): on those forms box 2 is territorial tax, not federal income tax withheld, so the federal withholding entered from them is zero. Project stands.",
+   "context": "e463add6cf745702f7a0ec65ba07e0e0b00453e0eff0a394d22cc55cf7796b5b",
+   "date": "2026-11-04",
+   "run": "7f8f3c66e8c0f85bb1a9e9da123ee5c1b3b2fa8dff2f02f0857326ebf571e0ff"
+  }
+ ]
+}

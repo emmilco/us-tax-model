@@ -46,6 +46,24 @@
    "context": "666a951d2c298d4fe1840fea772d3fb97120ab013823d2e09e183799e840eaa6"
   },
   {
+   "printed": "(b)",
+   "restated": "Input — The year you placed this vehicle in service in the business (2019 to 2025; a vehicle placed in service earlier is outside this tool)",
+   "model": "The IRS column (b) instruction says 'Enter the date the property was placed in service' and treats converted property as placed in service on the conversion date; the restatement asks only for the year.",
+   "ruling": "Ruling: representation; same as the refresh-round ruling: no value depends on the month or day except through the quarter, asked separately.",
+   "context": "afe9eb5058d0ff5a13ae5ccf7394c2acadb528690ad739565ba221d89754f74c",
+   "date": "2026-11-04",
+   "run": "b300dfa121ff047c848b162bb9381fad45f0604f2c8420e6e7defb6f42ccc415"
+  },
+  {
+   "printed": "13",
+   "restated": "Divide helper \"Business miles, as cents\" by helper \"Total miles, as cents\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply column (d) by the result.",
+   "model": "The IRS business/investment-use percentage for converted property must be figured only for the months used in business and multiplied by months/12; the restatement simply divides annual business miles by total miles without that conversion proration.",
+   "ruling": "Ruling: scope; the converted-vehicle months proration applies only to an owned vehicle converted from personal use in 2025, which scveh.screen refuses (\"you converted it from personal use to business use during 2025\"). Project stands.",
+   "context": "afe9eb5058d0ff5a13ae5ccf7394c2acadb528690ad739565ba221d89754f74c",
+   "date": "2026-11-04",
+   "run": "b300dfa121ff047c848b162bb9381fad45f0604f2c8420e6e7defb6f42ccc415"
+  },
+  {
    "printed": "19",
    "restated": "Choose — [helper \"Placed in service in 2025\" = true → helper \"Line 19 for a 2025 vehicle, half-year or mid-quarter\"] [helper \"Placed in service in 2025\" = false → helper \"Line 19 for a vehicle placed in service before 2025 (zero after the recovery period, when the worksheet is not used)\"]",
    "model": "For a 2019 vehicle, the IRS says 'If the recovery period for an automobile ended before your tax year beginning in 2025, enter your unrecovered basis, if any, in column (h)' and permits deductions after the recovery period; the restatement returns zero for a 2019 vehicle.",
@@ -95,6 +113,15 @@
    "context": "5506eb798c3a6f707b769e989b5eb088b509a7825a8d69f7a0fcf65723baed56"
   },
   {
+   "printed": "20a",
+   "restated": "Choose — [helper \"Leased and on actual expenses\" = true → helper \"The business portion of the lease payments\"] [helper \"Leased and on actual expenses\" = false → helper \"Zero\"]",
+   "model": "The IRS says 'if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount'; the restatement computes only the business portion of lease payments and omits that reduction.",
+   "ruling": "Ruling: scope; same as the refresh-round ruling: an inclusion amount for leased property is refused for the business through sc.special, so line 20a is the business portion of the lease payments on every vehicle that reaches it.",
+   "context": "afe9eb5058d0ff5a13ae5ccf7394c2acadb528690ad739565ba221d89754f74c",
+   "date": "2026-11-04",
+   "run": "b300dfa121ff047c848b162bb9381fad45f0604f2c8420e6e7defb6f42ccc415"
+  },
+  {
    "printed": "43",
    "restated": "Input — The year you first placed this vehicle in service for business purposes (for example 2023)",
    "model": "IRS line 43 asks \"When did you place your vehicle in service for business purposes? (month/day/year)\"; the restatement asks only for the year, omitting month/day.",
@@ -135,6 +162,15 @@
    "model": "The IRS text limits the deduction for passenger automobiles; the restatement uses the passenger-automobile limit table helper for every 2025 vehicle, even when the vehicle is not a passenger automobile.",
    "ruling": "Ruling: representation; restatement accepted. The worksheet line is figured for every vehicle but read only for a passenger automobile (scveh.bonus_v, scveh.macrs_pass); checked by evaluation on stage14.veh.suv_179 with passenger answered both ways: the allowance is $20,200 and $70,000.",
    "context": "9cf77a8b2fc649ccb86911bce6b85ebe8d60ceaf65a95c6a907be7e5689f615b"
+  },
+  {
+   "printed": "9 (scveh.line9w)",
+   "restated": "Divide helper \"Business miles, as cents\" by helper \"Total miles, as cents\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply line 7 by the result.",
+   "model": "Worksheet line 9 multiplies line 7 by the business/investment-use percentage; for a converted vehicle that percentage must be prorated by the months used in business, which the restatement's business-miles/total-miles calculation omits.",
+   "ruling": "Ruling: scope; as line 13: a vehicle converted in 2025 is refused by scveh.screen, so line 7 times the business-use percentage is the whole supported case. Project stands.",
+   "context": "afe9eb5058d0ff5a13ae5ccf7394c2acadb528690ad739565ba221d89754f74c",
+   "date": "2026-11-04",
+   "run": "b300dfa121ff047c848b162bb9381fad45f0604f2c8420e6e7defb6f42ccc415"
   }
  ]
 }

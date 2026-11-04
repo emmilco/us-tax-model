@@ -72,6 +72,28 @@
     "scope.other_income"
    ],
    "reason": "The $22,000 per-disaster limit across plans is never reached: retirement.special asks for \"a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one (Form 8915-F)\" and refuses the distribution on yes, and scope.other_income asks for \"the 2025 part of a qualified disaster recovery distribution you received in 2023 or 2024, or a 2025 repayment of one (Form 8915-F)\" and refuses the return on yes."
+  },
+  "limit:p463:p25:dd77fe6a": {
+   "enforced_by": [
+    "scveh.line7",
+    "scveh.line9w",
+    "scveh.line10",
+    "scveh.line11",
+    "scveh.line17",
+    "scveh.line20"
+   ],
+   "reason": "Pub. 463 restates the Pub. 946 depreciation limits for passenger automobiles that these worksheet lines apply; pp. 25-26 are cited only for the refusal of a vehicle converted to or from personal use."
+  },
+  "limit:p463:p26:f59d4da6": {
+   "enforced_by": [
+    "scveh.line7",
+    "scveh.line9w",
+    "scveh.line10",
+    "scveh.line11",
+    "scveh.line17",
+    "scveh.line20"
+   ],
+   "reason": "Pub. 463 restates the Pub. 946 depreciation limits for passenger automobiles that these worksheet lines apply; pp. 25-26 are cited only for the refusal of a vehicle converted to or from personal use."
   }
  },
  "baseline": {

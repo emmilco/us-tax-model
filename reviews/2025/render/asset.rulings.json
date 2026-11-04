@@ -11,6 +11,15 @@
   {
    "printed": "(c)",
    "restated": "Divide helper \"The business use percentage, as cents\" by helper \"One hundred cents (100%)\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper \"Cost or other basis\" by the result.",
+   "model": "The restatement stops at cost times business-use percentage. The IRS column (c) basis is reduced further: 'multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property ... Section 179 expense deduction ... Any special depreciation allowance included on line 14.' The printed (c) does not subtract the section 179 deduction or the special allowance.",
+   "ruling": "Ruling: scope; same point as the backlog-round deepseek ruling of this marker. i4562 p. 11, Column (c): \"multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property.\" This marker is the business basis before section 179 and the special allowance (its label); the reduced basis is printed at 19(c) (asset.col19c copies asset.ub, cited \"From that result, subtract ... Section 179 expense deduction ... Any special depreciation allowance included on line 14\"). asset.screen refuses property whose basis is reduced by any other credit or deduction, so on a computed return the only reductions are the two the project subtracts at 19(c). Project stands.",
+   "context": "1e0d31ad0b525edd672d047a786917a3b9a9991a63117c1a4555712942f8d58f",
+   "date": "2026-11-04",
+   "run": "40c4b29e724d3387bbf75c7d12e1f2c480ba91c56e7fb5c6b961d7e71cc6f74f"
+  },
+  {
+   "printed": "(c)",
+   "restated": "Divide helper \"The business use percentage, as cents\" by helper \"One hundred cents (100%)\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper \"Cost or other basis\" by the result.",
    "model": "The restatement stops at cost times the business-use percentage. Line 19 column (c) says 'multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property', including the 'Section 179 expense deduction' and 'Any special depreciation allowance included on line 14'.",
    "ruling": "Ruling: deferred to T-030 (owner); values unaffected. The line is the business-use basis before the section 179 deduction and the special allowance; the form's column (c) subtracts them, which the project does on asset.ub, the basis every MACRS amount uses. Entry lines are not printed on the values sheet (TASKS.md T-030), and the Form 4562 totals take the asset's amounts only where they belong (the sc sums select 2025 property, earlier property and listed property: sc.f14, sc.f17, sc.f19_*, sc.f25, sc.f26h). The owner chose that, when entry lines are printed, each per-asset printed line will carry the form's value for that asset (T-030)."
   },

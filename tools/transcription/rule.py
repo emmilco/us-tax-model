@@ -8,17 +8,34 @@ Claude log when omitted. Only sections whose ruling is open are changed. In a cl
 section is keyed "<case> — <printed>" and a ruling given as {"ruling": "...",
 "drop": true} also removes that line from the fixture (a model arithmetic error is not
 evidence); the ruling text is suffixed "[dropped]".
+
+Each sidecar entry written is stamped (rulings.STAMPS) with the date, the identity of the
+reply it rules (`run`, which the cost ledger records for the call that returned it) and, for a
+finding, its severity: a finding is given as {"ruling": "Ruling: finding; ...", "severity":
+"high|medium|low"} and is refused without one.
 """
-import argparse, json, os, re, sys
+import argparse, datetime, json, os, re, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import families  # noqa: E402
 import rulings as sidecar  # noqa: E402
+import compare_families  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 from taxyear import Y  # noqa: E402
 REVIEWS = os.path.join(ROOT, "reviews", Y)
+
+
+def today():
+    return datetime.date.today().isoformat()
+
+
+def is_finding(ruling):
+    """Whether a ruling's class is a finding against the project (compare_families.ruling_category;
+    a ruling headed "defect" counts too, as in carry.py and review_yield.py)."""
+    body = ruling[len("Ruling: "):] if ruling.startswith("Ruling: ") else ruling
+    return compare_families.ruling_category(body) == "finding" or bool(re.match(r"defect\b", body, re.I))
 
 
 def apply(form, rulings, kind="transcription", family=families.DEFAULT):
@@ -44,6 +61,7 @@ def apply(form, rulings, kind="transcription", family=families.DEFAULT):
         ruling = rulings.get(printed) or rulings.get("*")
         if ruling:
             drop = isinstance(ruling, dict) and ruling.get("drop")
+            severity = ruling.get("severity") if isinstance(ruling, dict) else None
             ruling = ruling["ruling"] if isinstance(ruling, dict) else ruling
             if not ruling.startswith("Ruling:"):
                 ruling = "Ruling: " + ruling
@@ -52,7 +70,14 @@ def apply(form, rulings, kind="transcription", family=families.DEFAULT):
                 raise SystemExit(f"{form}: cannot key the disagreement at {printed} for the sidecar")
             if context is None:
                 raise SystemExit(f"{form}: the section at {printed} names a line-scoped pass the log does not hold")
-            stored[found[0]] = {"ruling": ruling.rstrip(), "drop": bool(drop), "context": context}
+            if is_finding(ruling) and severity not in sidecar.SEVERITIES:
+                raise SystemExit(f"{form}: the finding at {printed} needs a severity "
+                                 f"({{\"ruling\": \"...\", \"severity\": \"{'|'.join(sidecar.SEVERITIES)}\"}})")
+            if severity is not None and severity not in sidecar.SEVERITIES:
+                raise SystemExit(f"{form}: severity at {printed} is not one of {', '.join(sidecar.SEVERITIES)}")
+            run = sidecar.section_run(kind, text, title, content, blocks)
+            stored[found[0]] = {"ruling": ruling.rstrip(), "drop": bool(drop), "context": context, "date": today(),
+                                **({"run": run} if run else {}), **({"severity": severity} if severity else {})}
             if drop:
                 ruling = ruling.rstrip() + " [dropped]"
                 drop_from_fixture(form, printed.split(" \u2014 ")[0], rest.split(" \u2014 ")[0], family)

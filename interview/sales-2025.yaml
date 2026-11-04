@@ -212,7 +212,7 @@ interview:
   - f8889.line17a
   - f8889.subject_part
   - sli.interest
-  - sli.claimed
+  - person.sav_claimed
   - person.sav_trad
   - person.ira_trad
   - person.ira_excess

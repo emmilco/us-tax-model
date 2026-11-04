@@ -227,7 +227,6 @@
         "f8962.alien_below": false,
         "f8962.same_state_counted": false,
         "f8863.ban": false,
-        "sli.claimed": false,
         "person[taxpayer].edu": false,
         "person[spouse].edu": false,
         "dependent[k0].relationship": "child",
@@ -532,7 +531,6 @@
         "f8962.alien_below": false,
         "f8962.same_state_counted": false,
         "f8863.ban": false,
-        "sli.claimed": false,
         "person[taxpayer].edu": false,
         "person[spouse].edu": true,
         "person[spouse].edu_1098t": true,
@@ -811,7 +809,6 @@
         "f8962.alien_below": false,
         "f8962.same_state_counted": false,
         "f8863.ban": false,
-        "sli.claimed": false,
         "person[taxpayer].edu": true,
         "person[spouse].edu": false,
         "person[taxpayer].edu_1098t": true,
@@ -1086,7 +1083,6 @@
         "f8962.alien_below": false,
         "f8962.same_state_counted": false,
         "f8863.ban": false,
-        "sli.claimed": false,
         "person[taxpayer].edu": true,
         "person[spouse].edu": false,
         "person[taxpayer].edu_1098t": true,
@@ -1355,7 +1351,6 @@
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
         "f8863.ban": false,
-        "sli.claimed": false,
         "person[taxpayer].edu": false,
         "dependent[k0].relationship": "child",
         "dependent[k0].age": 18,
@@ -1644,7 +1639,6 @@
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
         "f8863.ban": false,
-        "sli.claimed": false,
         "person[taxpayer].edu": false,
         "dependent[k0].relationship": "child",
         "dependent[k0].age": 18,
@@ -1928,7 +1922,6 @@
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
         "f8863.ban": false,
-        "sli.claimed": false,
         "person[taxpayer].edu": false,
         "dependent[k0].relationship": "child",
         "dependent[k0].age": 18,
@@ -2224,7 +2217,6 @@
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
         "f8863.ban": false,
-        "sli.claimed": false,
         "person[taxpayer].edu": true,
         "person[taxpayer].edu_1098t": true,
         "person[taxpayer].edu_inst": 560000,
@@ -2507,7 +2499,6 @@
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
         "f8863.ban": false,
-        "sli.claimed": false,
         "person[taxpayer].edu": true,
         "person[taxpayer].edu_1098t": true,
         "person[taxpayer].edu_inst": 560000,
@@ -2775,7 +2766,6 @@
         "f1040.tax_exempt_interest": 0,
         "div.box12": 0,
         "f8863.ban": false,
-        "sli.claimed": false,
         "person[taxpayer].edu": true,
         "person[taxpayer].edu_1098t": true,
         "person[taxpayer].edu_inst": 560000,
@@ -3088,7 +3078,6 @@
         "div.box12": 0,
         "eic.qc_of_another": false,
         "f8863.ban": false,
-        "sli.claimed": false,
         "person[taxpayer].edu": true,
         "dependent[k0].edu": false,
         "person[taxpayer].edu_1098t": true,
@@ -3405,7 +3394,6 @@
         "div.box12": 0,
         "eic.qc_of_another": false,
         "f8863.ban": false,
-        "sli.claimed": false,
         "person[taxpayer].edu": true,
         "dependent[k0].edu": false,
         "person[taxpayer].edu_1098t": true,
@@ -3722,7 +3710,6 @@
         "div.box12": 0,
         "eic.qc_of_another": false,
         "f8863.ban": false,
-        "sli.claimed": false,
         "person[taxpayer].edu": true,
         "dependent[k0].edu": false,
         "person[taxpayer].edu_1098t": true,
@@ -4039,7 +4026,6 @@
         "div.box12": 0,
         "eic.qc_of_another": false,
         "f8863.ban": false,
-        "sli.claimed": false,
         "person[taxpayer].edu": true,
         "dependent[k0].edu": false,
         "person[taxpayer].edu_1098t": true,
@@ -4335,7 +4321,6 @@
         "sd.carryover": false,
         "sd.distributions": 0,
         "sd.other_forms": false,
-        "sli.claimed": false,
         "sli.interest": 0,
         "ssb.benefits": 0
       },
@@ -4750,7 +4735,6 @@
         "sd.carryover": false,
         "sd.distributions": 0,
         "sd.other_forms": false,
-        "sli.claimed": false,
         "sli.interest": 0,
         "ssb.benefits": 0
       },
@@ -5200,7 +5184,6 @@
         "sd.carryover": false,
         "sd.distributions": 0,
         "sd.other_forms": false,
-        "sli.claimed": false,
         "sli.interest": 0,
         "ssb.benefits": 0
       },
@@ -5652,7 +5635,6 @@
         "sd.carryover": false,
         "sd.distributions": 0,
         "sd.other_forms": false,
-        "sli.claimed": false,
         "sli.interest": 0,
         "ssb.benefits": 0
       },
@@ -6018,7 +6000,6 @@
         "sd.carryover": false,
         "sd.distributions": 0,
         "sd.other_forms": false,
-        "sli.claimed": false,
         "sli.interest": 0,
         "ssb.benefits": 0
       },
@@ -6380,7 +6361,6 @@
         "sd.carryover": false,
         "sd.distributions": 0,
         "sd.other_forms": false,
-        "sli.claimed": false,
         "sli.interest": 0,
         "ssb.benefits": 0
       },
@@ -6742,7 +6722,6 @@
         "sd.carryover": false,
         "sd.distributions": 0,
         "sd.other_forms": false,
-        "sli.claimed": false,
         "sli.interest": 0,
         "ssb.benefits": 0
       },
@@ -7104,7 +7083,6 @@
         "sd.carryover": false,
         "sd.distributions": 0,
         "sd.other_forms": false,
-        "sli.claimed": false,
         "sli.interest": 0,
         "ssb.benefits": 0
       },
@@ -7543,7 +7521,6 @@
         "sd.carryover": false,
         "sd.distributions": 0,
         "sd.other_forms": false,
-        "sli.claimed": false,
         "sli.interest": 0,
         "ssb.benefits": 0
       },
@@ -7929,7 +7906,6 @@
         "sd.carryover": false,
         "sd.distributions": 0,
         "sd.other_forms": false,
-        "sli.claimed": false,
         "sli.interest": 0,
         "ssb.benefits": 0
       },
@@ -8298,7 +8274,6 @@
         "sd.carryover": false,
         "sd.distributions": 0,
         "sd.other_forms": false,
-        "sli.claimed": false,
         "sli.interest": 0,
         "ssb.benefits": 0
       },
@@ -8596,7 +8571,6 @@
         "sd.carryover": false,
         "sd.distributions": 0,
         "sd.other_forms": false,
-        "sli.claimed": false,
         "sli.interest": 0,
         "ssb.benefits": 0
       },
@@ -8893,7 +8867,6 @@
         "sd.carryover": false,
         "sd.distributions": 0,
         "sd.other_forms": false,
-        "sli.claimed": false,
         "sli.interest": 0,
         "ssb.benefits": 0
       },
@@ -9191,7 +9164,6 @@
         "sd.carryover": false,
         "sd.distributions": 0,
         "sd.other_forms": false,
-        "sli.claimed": false,
         "sli.interest": 0,
         "ssb.benefits": 0
       },
@@ -9450,7 +9422,6 @@
         "sd.carryover": false,
         "sd.distributions": 0,
         "sd.other_forms": false,
-        "sli.claimed": false,
         "sli.interest": 0,
         "ssb.benefits": 0
       },
@@ -9696,7 +9667,6 @@
         "sd.carryover": false,
         "sd.distributions": 0,
         "sd.other_forms": false,
-        "sli.claimed": false,
         "sli.interest": 0,
         "ssb.benefits": 0
       },
@@ -9725,7 +9695,7 @@
         "dependent"
       ],
       "evidence": "synthetic regression (not class B)",
-      "evidence_note": "Stage 19 mutation scenario: blind return E3 (two lifetime learning credit students) where the filer is claimed as a dependent on another return: i8863 p. 3, \"You cannot claim an education credit ... 1. You're claimed as a dependent on another person's tax return\"; line 10 and line 11 are $0. The filer's dependency answer is person[taxpayer].sav_claimed (true), the question Form 8863 reads for this test; sli.claimed (true) is the student loan worksheet's own copy of the question.",
+      "evidence_note": "Stage 19 mutation scenario: blind return E3 (two lifetime learning credit students) where the filer is claimed as a dependent on another return: i8863 p. 3, \"You cannot claim an education credit ... 1. You're claimed as a dependent on another person's tax return\"; line 10 and line 11 are $0. The filer's dependency answer is person[taxpayer].sav_claimed (true), the question Form 8863 and the student loan worksheet read for this test.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "$dependent": [
@@ -9985,7 +9955,6 @@
         "sd.carryover": false,
         "sd.distributions": 0,
         "sd.other_forms": false,
-        "sli.claimed": true,
         "sli.interest": 0,
         "ssb.benefits": 0
       },

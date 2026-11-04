@@ -104,7 +104,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       note: taken: {"eq":["f8962.any",{"const":false}],"op":"test"}
   10  Amount paid with request for extension to file (see instructions)
       = $0
-      cite: [f1040s3] Schedule 3 (2025), line 10 (2025; created 2025-11-17; 008cfd3f)
+      cite: [f1040s3] Schedule 3 (2025), line 10; i1040gi p. 117, Line 10, "enter the amount of the payment or any amount you paid with Form 4868", "If you paid a fee when making your payment, don’t include on line 10 the fee you were charged" and "Also, include any amounts paid with Form 2350" (2025; created 2025-11-17; 008cfd3f)
   11  Excess social security and tier 1 RRTA tax withheld
       = $1,481.80
       cite: [i1040gi] p. 117, Line 11, Excess Social Security and Tier 1 RRTA Tax Withheld, "Figure this amount separately for you and your spouse" (2025; printed date 2026-02-25; 482e9c48)

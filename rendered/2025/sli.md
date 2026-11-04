@@ -13,9 +13,9 @@
 ## (helper) — `sli.interest`
 
 - **Authored helper label:** Total interest you paid in 2025 on qualified student loans
-- **Encoded (NonNegDollars):** Input — Total interest you paid in 2025 on qualified student loans (generally Form 1098-E box 1), not counting any amount paid from tax-free qualified tuition program earnings; zero if none
-- Expr: `{"op":"input","source":"Total interest you paid in 2025 on qualified student loans (generally Form 1098-E box 1), not counting any amount paid from tax-free qualified tuition program earnings; zero if none"}`
-- Cite: [i1040gi] p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' and 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)' (2025; printed date 2026-02-25; sha256 482e9c48)
+- **Encoded (NonNegDollars):** Input — Total interest you paid in 2025 on qualified student loans (generally Form 1098-E box 1), not counting any amount paid from tax-free qualified tuition program earnings; zero if none. A qualified student loan is a loan you took out to pay the qualified higher education expenses (tuition, fees, room and board, and related expenses such as books and supplies, for education in a degree, certificate or similar program at an eligible educational institution) of an eligible student who was you, your spouse, a person who was your dependent when the loan was taken out, or a person you could have claimed as a dependent for that year except that the person filed a joint return, had gross income of at least the exemption amount for that year, or you (or your spouse if filing jointly) could be claimed as a dependent. It is not a qualified student loan if any of its proceeds were used for other purposes, or if it was from a related person or from a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan.
+- Expr: `{"op":"input","source":"Total interest you paid in 2025 on qualified student loans (generally Form 1098-E box 1), not counting any amount paid from tax-free qualified tuition program earnings; zero if none. A qualified student loan is a loan you took out to pay the qualified higher education expenses (tuition, fees, room and board, and related expenses such as books and supplies, for education in a degree, certificate or similar program at an eligible educational institution) of an eligible student who was you, your spouse, a person who was your dependent when the loan was taken out, or a person you could have claimed as a dependent for that year except that the person filed a joint return, had gross income of at least the exemption amount for that year, or you (or your spouse if filing jointly) could be claimed as a dependent. It is not a qualified student loan if any of its proceeds were used for other purposes, or if it was from a related person or from a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan."}`
+- Cite: [i1040gi] p. 98, Schedule 1, line 21, 'You paid interest in 2025 on a qualified student loan' and 'Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP)'; pp. 98–99, Qualified student loan, 'A qualified student loan is any loan you took out to pay the qualified higher education expenses for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified higher education expenses (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sli.has`
 
@@ -24,11 +24,11 @@
 - Expr: `{"gt":["sli.interest",{"param":"sales.zero"}],"op":"test"}`
 - Cite: [i1040gi] p. 98, Schedule 1, line 21 (2025; printed date 2026-02-25; sha256 482e9c48)
 
-## (helper) — `sli.claimed`
+## (helper) — `sli.claimed_count`
 
-- **Authored helper label:** Are you, or your spouse if filing jointly, claimed as a dependent on someone else's (such as your parent's) 2025 tax return?
-- **Encoded (Bool):** Input — Are you, or your spouse if filing jointly, claimed as a dependent on someone else's (such as your parent's) 2025 tax return?
-- Expr: `{"op":"input","source":"Are you, or your spouse if filing jointly, claimed as a dependent on someone else's (such as your parent's) 2025 tax return?"}`
+- **Authored helper label:** Number of the people on the return (you, and your spouse if filing jointly) claimed as a dependent on someone else's 2025 tax return
+- **Encoded (Count):** Add person.one over every confirmed person entry for which helper "Are you claimed as a dependent on someone else's 2025 tax return?" = true, within the current person when parent-bound. An unanswered roster is unknown.
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"eq":["person.sav_claimed",{"const":true}],"op":"test"}}`
 - Cite: [i1040gi] p. 98, Schedule 1, line 21, 'You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return' (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sli.max`
@@ -148,8 +148,8 @@
 ## (helper) — `sli.eligible`
 
 - **Authored helper label:** You can take the deduction: a filing status other than married filing separately, and not claimed as a dependent
-- **Encoded (Bool):** f1040 line Filing Status ≠ 'mfs' and helper "Are you, or your spouse if filing jointly, claimed as a dependent on someone else's (such as your parent's) 2025 tax return?" = false
-- Expr: `{"all":[{"ne":["f1040.status",{"const":"mfs"}],"op":"test"},{"eq":["sli.claimed",{"const":false}],"op":"test"}],"op":"test"}`
+- **Encoded (Bool):** f1040 line Filing Status ≠ 'mfs' and helper "Number of the people on the return (you, and your spouse if filing jointly) claimed as a dependent on someone else's 2025 tax return" = 0 (a count)
+- Expr: `{"all":[{"ne":["f1040.status",{"const":"mfs"}],"op":"test"},{"eq":["sli.claimed_count",{"const":0,"type":"Count"}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 98, Schedule 1, line 21, 'You can take this deduction only if all of the following apply' (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `sli.allowed`

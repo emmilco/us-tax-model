@@ -123,14 +123,16 @@ form:
       expr:
         op: input
         source: Qualified educator expenses you paid in 2025 (professional development courses, and books, supplies, equipment
-          and other materials used in the classroom; not expenses for home schooling or nonathletic supplies for courses in
-          health or physical education), reduced by excludable savings bond interest (Form 8815), nontaxable qualified
+          (including computer equipment, software and services) and other materials used in the classroom, including personal
+          protective equipment, disinfectant and other supplies used to prevent the spread of coronavirus; not expenses for
+          home schooling or nonathletic supplies for courses in health or physical education), reduced by excludable savings bond interest (Form 8815), nontaxable qualified
           tuition program or Coverdell earnings or distributions, and reimbursements not reported in box 1 of your Form W-2;
           zero if none
       cite:
         doc: i1040gi
-        locator: p. 93, Schedule 1, line 11, Qualified expenses and 'You must reduce your qualified expenses by the following
-          amounts'; p. 93, 'Qualified expenses don’t include expenses for home schooling or for nonathletic supplies for courses
+        locator: p. 93, Schedule 1, line 11, Qualified expenses, 'equipment (including computer equipment, software, and
+          services)', 'for personal protective equipment, disinfectant, and other supplies used for the prevention of the
+          spread of coronavirus', and 'You must reduce your qualified expenses by the following amounts'; p. 93, 'Qualified expenses don’t include expenses for home schooling or for nonathletic supplies for courses
           in health or physical education.'
     - id: person.eligible_educator
       printed: (helper)
@@ -1283,8 +1285,22 @@ form:
       cite:
         doc: p560
         locator: pp. 38–40, chapter 5, Rate Worksheet for Self-Employed, line 2, "Rate in line 1 plus 1"
+    - id: person.sep_shown
+      printed: (helper)
+      label: This person contributed to a SEP IRA for themselves (the SEP deduction worksheet is completed)
+      type: Bool
+      expr:
+        op: test
+        eq:
+        - person.plan
+        - const: sep
+      cite:
+        doc: p560
+        locator: p. 38, chapter 5, "if you are self-employed, you must use the rate table or rate worksheet and deduction
+          worksheet to figure your deduction for contributions you made for yourself to a SEP IRA or qualified plan"
     - id: person.sep_s1
       printed: Step 1
+      shown_when: person.sep_shown
       label: Net profit from Schedule C, line 31
       type: Dollars
       expr:
@@ -1303,6 +1319,7 @@ form:
           locator: p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 1, "Enter your net profit from"
     - id: person.sep_s2
       printed: Step 2
+      shown_when: person.sep_shown
       label: Deduction for self-employment tax from Schedule 1, line 15
       type: NonNegDollars
       expr:
@@ -1313,6 +1330,7 @@ form:
         locator: p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 2 (this person's own Schedule SE, line 13)
     - id: person.sep_s3
       printed: Step 3
+      shown_when: person.sep_shown
       label: Net earnings from self-employment. Subtract step 2 from step 1
       type: NonNegDollars
       expr:
@@ -1325,6 +1343,7 @@ form:
       ambiguity: amb.2025.sep_loss_floor
     - id: person.sep_s5
       printed: Step 5
+      shown_when: person.sep_shown
       label: Multiply step 3 by step 4 (the plan rate divided by the plan rate plus 1, to six decimal places)
       type: NonNegDollars
       expr:
@@ -1352,6 +1371,7 @@ form:
         locator: p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 6, "Multiply $350,000"
     - id: person.sep_s6
       printed: Step 6
+      shown_when: person.sep_shown
       label: Multiply $350,000 by your plan contribution rate (not the reduced rate)
       type: NonNegDollars
       expr:
@@ -1365,6 +1385,7 @@ form:
         locator: p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 6
     - id: person.sep_s7
       printed: Step 7
+      shown_when: person.sep_shown
       label: Enter the smaller of step 5 or step 6
       type: NonNegDollars
       expr:
@@ -1377,6 +1398,7 @@ form:
         locator: p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 7
     - id: person.sep_s8
       printed: Step 8
+      shown_when: person.sep_shown
       label: Contribution dollar limit
       type: NonNegDollars
       expr:
@@ -1387,6 +1409,7 @@ form:
         locator: p. 39, chapter 5, Deduction Worksheet for Self-Employed, Step 8, "$70,000"
     - id: person.sep_s21
       printed: Step 21
+      shown_when: person.sep_shown
       label: Maximum deductible contribution (the smaller of step 7 or step 8; no elective deferrals)
       type: NonNegDollars
       expr:
@@ -2059,7 +2082,8 @@ form:
         source: Are you claimed as a dependent on someone else's 2025 tax return?
       cite:
         doc: f8880
-        locator: 'p. 2, Who Can Take This Credit, "(b) is claimed as a dependent on someone else’s 2025 tax return"'
+        locator: 'p. 2, Who Can Take This Credit, "(b) is claimed as a dependent on someone else’s 2025 tax return"; i1040gi p. 98,
+          Line 21, "You, or your spouse if filing jointly, aren’t claimed as a dependent on someone else''s (such as your parent’s) 2025 tax return"'
     - id: person.sav_ineligible
       printed: (helper)
       label: Born after January 1, 2008, claimed as a dependent on someone else's 2025 return, or a student (the dependent question

@@ -145,7 +145,7 @@
 
 - **IRS:** $32,000 if married filing jointly; $25,000 if single, head of household, qualifying surviving spouse, or married filing separately and living apart all year
 - **Encoded (NonNegDollars):** Choose — [f1040 line Filing Status = 'single' → helper "Line 8 amount, $25,000"] [f1040 line Filing Status = 'mfj' → helper "Line 8 amount, $32,000"] [f1040 line Filing Status = 'mfs' → helper "Line 8 for married filing separately: $25,000 if you lived apart all year (otherwise lines 8 to 15 are skipped)"] [f1040 line Filing Status = 'hoh' → helper "Line 8 amount, $25,000"] [f1040 line Filing Status = 'qss' → helper "Line 8 amount, $25,000"]
-- **Shown on the values sheet only when:** Lines 8 through 15 are completed (not married filing separately with your spouse living with you at any time in 2025) (`ssb.lines8_to_15`)
+- **Shown on the values sheet only when:** Lines 8 and 9 are completed (lines 8 to 15 are not skipped, and the worksheet did not stop at line 7) (`ssb.show8_9`)
 - Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"ssb.base_single"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"ssb.base_joint"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"ssb.mfs_base"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"ssb.base_single"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"ssb.base_single"}],"op":"choose"}`
 - Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 8 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -153,9 +153,44 @@
 
 - **IRS:** Is the amount on line 8 less than the amount on line 7? If yes, subtract line 8 from line 7 (if no, none of the benefits are taxable)
 - **Encoded (NonNegDollars):** Subtract line 8 from line 7. If zero or less, enter -0-.
-- **Shown on the values sheet only when:** Lines 8 through 15 are completed (not married filing separately with your spouse living with you at any time in 2025) (`ssb.lines8_to_15`)
+- **Shown on the values sheet only when:** Lines 8 and 9 are completed (lines 8 to 15 are not skipped, and the worksheet did not stop at line 7) (`ssb.show8_9`)
 - Expr: `{"from":"ssb.line7","op":"subtract_floor0","take":"ssb.line8"}`
 - Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 9 (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `ssb.past7`
+
+- **Authored helper label:** Line 6 is less than line 5, so the worksheet goes on past line 7 (otherwise it stops there)
+- **Encoded (Bool):** line 7 > $0 (sales.zero)
+- Expr: `{"gt":["ssb.line7",{"param":"sales.zero"}],"op":"test"}`
+- Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 7, "Is the amount on line 6 less than the amount on line 5?" and "No. None of your social security benefits are taxable" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `ssb.past9`
+
+- **Authored helper label:** Line 8 is less than line 7, so the worksheet goes on past line 9 (otherwise it stops there)
+- **Encoded (Bool):** line 9 > $0 (sales.zero)
+- Expr: `{"gt":["ssb.line9",{"param":"sales.zero"}],"op":"test"}`
+- Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 9, "Is the amount on line 8 less than the amount on line 7?" and "No. None of your social security benefits are taxable" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `ssb.show8_9`
+
+- **Authored helper label:** Lines 8 and 9 are completed (lines 8 to 15 are not skipped, and the worksheet did not stop at line 7)
+- **Encoded (Bool):** helper "Lines 8 through 15 are completed (not married filing separately with your spouse living with you at any time in 2025)" = true and helper "Line 6 is less than line 5, so the worksheet goes on past line 7 (otherwise it stops there)" = true
+- Expr: `{"all":[{"eq":["ssb.lines8_to_15",{"const":true}],"op":"test"},{"eq":["ssb.past7",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 7, "Is the amount on line 6 less than the amount on line 5?" and "No. None of your social security benefits are taxable"; line 8, "skip lines 8 through 15" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `ssb.show10_15`
+
+- **Authored helper label:** Lines 10 through 15 are completed (lines 8 and 9 are completed, and the worksheet did not stop at line 9)
+- **Encoded (Bool):** helper "Lines 8 and 9 are completed (lines 8 to 15 are not skipped, and the worksheet did not stop at line 7)" = true and helper "Line 8 is less than line 7, so the worksheet goes on past line 9 (otherwise it stops there)" = true
+- Expr: `{"all":[{"eq":["ssb.show8_9",{"const":true}],"op":"test"},{"eq":["ssb.past9",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 9, "Is the amount on line 8 less than the amount on line 7?" and "No. None of your social security benefits are taxable" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `ssb.show16_18`
+
+- **Authored helper label:** Lines 16 through 18 are completed (the worksheet did not stop at line 7, nor at line 9 when lines 8 to 15 are completed)
+- **Encoded (Bool):** helper "Line 6 is less than line 5, so the worksheet goes on past line 7 (otherwise it stops there)" = true and (helper "Married filing separately and lived with your spouse at any time in 2025" = true or helper "Line 8 is less than line 7, so the worksheet goes on past line 9 (otherwise it stops there)" = true)
+- Expr: `{"all":[{"eq":["ssb.past7",{"const":true}],"op":"test"},{"any":[{"eq":["ssb.mfs_together",{"const":true}],"op":"test"},{"eq":["ssb.past9",{"const":true}],"op":"test"}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 9, "Is the amount on line 8 less than the amount on line 7?" and "No. None of your social security benefits are taxable"; line 8, "skip lines 8 through 15; multiply line 7 by 85% (0.85) and enter the result on line 16. Then, go to line 17" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `ssb.adjust_single`
 
@@ -182,7 +217,7 @@
 
 - **IRS:** Enter $12,000 if married filing jointly; $9,000 if single, head of household, qualifying surviving spouse, or married filing separately and living apart all year
 - **Encoded (NonNegDollars):** Choose — [f1040 line Filing Status = 'single' → helper "Line 10 amount, $9,000"] [f1040 line Filing Status = 'mfj' → helper "Line 10 amount, $12,000"] [f1040 line Filing Status = 'mfs' → helper "Line 10 for married filing separately: $9,000 if you lived apart all year"] [f1040 line Filing Status = 'hoh' → helper "Line 10 amount, $9,000"] [f1040 line Filing Status = 'qss' → helper "Line 10 amount, $9,000"]
-- **Shown on the values sheet only when:** Lines 8 through 15 are completed (not married filing separately with your spouse living with you at any time in 2025) (`ssb.lines8_to_15`)
+- **Shown on the values sheet only when:** Lines 10 through 15 are completed (lines 8 and 9 are completed, and the worksheet did not stop at line 9) (`ssb.show10_15`)
 - Expr: `{"alternatives":[{"guard":{"eq":["f1040.status",{"const":"single"}],"op":"test"},"then":"ssb.adjust_single"},{"guard":{"eq":["f1040.status",{"const":"mfj"}],"op":"test"},"then":"ssb.adjust_joint"},{"guard":{"eq":["f1040.status",{"const":"mfs"}],"op":"test"},"then":"ssb.mfs_adjust"},{"guard":{"eq":["f1040.status",{"const":"hoh"}],"op":"test"},"then":"ssb.adjust_single"},{"guard":{"eq":["f1040.status",{"const":"qss"}],"op":"test"},"then":"ssb.adjust_single"}],"op":"choose"}`
 - Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 10 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -190,7 +225,7 @@
 
 - **IRS:** Subtract line 10 from line 9. If zero or less, enter -0-
 - **Encoded (NonNegDollars):** Subtract line 10 from line 9. If zero or less, enter -0-.
-- **Shown on the values sheet only when:** Lines 8 through 15 are completed (not married filing separately with your spouse living with you at any time in 2025) (`ssb.lines8_to_15`)
+- **Shown on the values sheet only when:** Lines 10 through 15 are completed (lines 8 and 9 are completed, and the worksheet did not stop at line 9) (`ssb.show10_15`)
 - Expr: `{"from":"ssb.line9","op":"subtract_floor0","take":"ssb.line10"}`
 - Cite: [i1040gi] p. 32, line 11 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -198,7 +233,7 @@
 
 - **IRS:** Enter the smaller of line 9 or line 10
 - **Encoded (NonNegDollars):** Enter the smaller of line 9 or line 10.
-- **Shown on the values sheet only when:** Lines 8 through 15 are completed (not married filing separately with your spouse living with you at any time in 2025) (`ssb.lines8_to_15`)
+- **Shown on the values sheet only when:** Lines 10 through 15 are completed (lines 8 and 9 are completed, and the worksheet did not stop at line 9) (`ssb.show10_15`)
 - Expr: `{"of":["ssb.line9","ssb.line10"],"op":"smaller_of"}`
 - Cite: [i1040gi] p. 32, line 12 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -206,7 +241,7 @@
 
 - **IRS:** Enter one-half of line 12
 - **Encoded (NonNegDollars):** Multiply line 12 by 1/2 (ssb.half).
-- **Shown on the values sheet only when:** Lines 8 through 15 are completed (not married filing separately with your spouse living with you at any time in 2025) (`ssb.lines8_to_15`)
+- **Shown on the values sheet only when:** Lines 10 through 15 are completed (lines 8 and 9 are completed, and the worksheet did not stop at line 9) (`ssb.show10_15`)
 - Expr: `{"amount":"ssb.line12","op":"multiply_rate","rate":{"param":"ssb.half"}}`
 - Cite: [i1040gi] p. 32, line 13 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -214,7 +249,7 @@
 
 - **IRS:** Enter the smaller of line 2 or line 13
 - **Encoded (NonNegDollars):** Enter the smaller of line 2 or line 13.
-- **Shown on the values sheet only when:** Lines 8 through 15 are completed (not married filing separately with your spouse living with you at any time in 2025) (`ssb.lines8_to_15`)
+- **Shown on the values sheet only when:** Lines 10 through 15 are completed (lines 8 and 9 are completed, and the worksheet did not stop at line 9) (`ssb.show10_15`)
 - Expr: `{"of":["ssb.line2","ssb.line13"],"op":"smaller_of"}`
 - Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 14 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -222,7 +257,7 @@
 
 - **IRS:** Multiply line 11 by 85% (0.85). If line 11 is zero, enter -0-
 - **Encoded (NonNegDollars):** Multiply line 11 by 85% (0.85) (ssb.rate85).
-- **Shown on the values sheet only when:** Lines 8 through 15 are completed (not married filing separately with your spouse living with you at any time in 2025) (`ssb.lines8_to_15`)
+- **Shown on the values sheet only when:** Lines 10 through 15 are completed (lines 8 and 9 are completed, and the worksheet did not stop at line 9) (`ssb.show10_15`)
 - Expr: `{"amount":"ssb.line11","op":"multiply_rate","rate":{"param":"ssb.rate85"}}`
 - Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 15 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -249,8 +284,9 @@
 
 ## 16 — `ssb.line16`
 
-- **IRS:** Add lines 14 and 15
+- **IRS:** Add lines 14 and 15 (if married filing separately and you lived with your spouse at any time in 2025, multiply line 7 by 85% (0.85) instead)
 - **Encoded (NonNegDollars):** Choose — [helper "Married filing separately and lived with your spouse at any time in 2025" = true → helper "Married filing separately and living with your spouse: line 7 times 85% (0.85)"] [helper "Married filing separately and lived with your spouse at any time in 2025" = false → helper "Add lines 14 and 15"]
+- **Shown on the values sheet only when:** Lines 16 through 18 are completed (the worksheet did not stop at line 7, nor at line 9 when lines 8 to 15 are completed) (`ssb.show16_18`)
 - Expr: `{"alternatives":[{"guard":{"eq":["ssb.mfs_together",{"const":true}],"op":"test"},"then":"ssb.line16_together"},{"guard":{"eq":["ssb.mfs_together",{"const":false}],"op":"test"},"then":"ssb.line16_sum"}],"op":"choose"}`
 - Cite: [i1040gi] p. 32, line 16 (and line 8 for married filing separately and living with the spouse) (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -258,6 +294,7 @@
 
 - **IRS:** Multiply line 1 by 85% (0.85)
 - **Encoded (NonNegDollars):** Multiply line 1 by 85% (0.85) (ssb.rate85).
+- **Shown on the values sheet only when:** Lines 16 through 18 are completed (the worksheet did not stop at line 7, nor at line 9 when lines 8 to 15 are completed) (`ssb.show16_18`)
 - Expr: `{"amount":"ssb.line1","op":"multiply_rate","rate":{"param":"ssb.rate85"}}`
 - Cite: [i1040gi] p. 32, line 17 (2025; printed date 2026-02-25; sha256 482e9c48)
 
@@ -272,5 +309,6 @@
 
 - **IRS:** Taxable social security benefits. Enter the smaller of line 16 or line 17
 - **Encoded (NonNegDollars):** Choose — [helper "Any social security benefits (otherwise the worksheet is not needed)" = true → helper "The smaller of line 16 or line 17"] [helper "Any social security benefits (otherwise the worksheet is not needed)" = false → helper "No amount"]
+- **Shown on the values sheet only when:** Lines 16 through 18 are completed (the worksheet did not stop at line 7, nor at line 9 when lines 8 to 15 are completed) (`ssb.show16_18`)
 - Expr: `{"alternatives":[{"guard":{"eq":["ssb.has_benefits",{"const":true}],"op":"test"},"then":"ssb.line18_figured"},{"guard":{"eq":["ssb.has_benefits",{"const":false}],"op":"test"},"then":"ssb.zero"}],"op":"choose"}`
 - Cite: [i1040gi] p. 32, Social Security Benefits Worksheet, line 18 (with no benefits, none are taxable) (2025; printed date 2026-02-25; sha256 482e9c48)

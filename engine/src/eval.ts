@@ -730,4 +730,9 @@ export function validateInputs(data: CanonicalData, inputs: Inputs): void {
     if (raw === null) continue;
     if (line.type === "Bool" ? typeof raw !== "boolean" : line.type.startsWith("Enum(") ? !data.params.enums[line.type.slice(5, -1)]!.values.includes(raw as string) : typeof raw !== "number" || !Number.isSafeInteger(raw) || (line.type !== "Dollars" && raw < 0)) throw new Error(`${key}: invalid ${line.type} input`);
   }
+  // A return has one filer: at most one listed person entry is the taxpayer's. Lines that pick
+  // "the taxpayer's entry" out of the person collection (Schedule 1-A's senior deduction) rely on it.
+  const people = Array.isArray(inputs["$person"]) ? inputs["$person"] as string[] : [];
+  const taxpayers = people.filter((k) => inputs[`person[${k}].role`] === "taxpayer");
+  if (taxpayers.length > 1) throw new Error(`$person: ${taxpayers.length} entries have role taxpayer (${taxpayers.join(", ")}); a return has at most one`);
 }

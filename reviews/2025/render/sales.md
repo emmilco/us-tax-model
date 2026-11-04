@@ -5,6 +5,7 @@ The rendered English of every printed line of `Form 8949 and Schedule D — manu
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
+| line-scoped reviews | 1 (latest 2026-11-04); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | f060738f207fba5a8b02602760fd1393eceab283f4c36c09f35ddf1997ab97bf |
@@ -33,23 +34,80 @@ Status: **MISMATCH**
 
 Restated: Choose — [helper "Basis reported to IRS" = true → helper "Basis shown on broker report"] [helper "Basis reported to IRS" = false → helper "Correct adjusted basis from records (for inherited property shown on a Schedule A (Form 8971) as increasing the estate tax, starting from no more than its final estate tax value)"]
 
-Model: The program uses the broker-reported basis only for boxes A and D. For digital-asset boxes G and J it enters the correct basis instead, but the IRS says "If this transaction is reported on Part I with box A or box G checked ... or on Part II with box D or box J checked ... enter the basis shown on Form 1099-B or Form 1099-DA ... in column (e), even though that basis is incorrect."
+Model: Per its glossary entry, "Basis reported to IRS" is true only for box 'A' or 'D', yet the classification input also allows digital-asset boxes G–L, and no refusal excludes them. For G or J the program enters the correct basis, but the IRS says "If this transaction is reported on Part I with box A or box G checked ... or on Part II with box D or box J checked ..., enter the basis shown on Form 1099-B or Form 1099-DA (or substitute statement) in column (e), even though that basis is incorrect."
 
-Ruling: scope; f8949 p. 1, box G: "Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS"; i8949 p. 8, code B. The model is right that the instructions treat boxes G and J like A and D, but boxes G to L are refused at the transaction: sales.one refuses when sales.digital ("Form 8949 digital asset boxes G–L"), and the refusal reaches every Schedule D total and Form 1040 (checked this round: sales.refuse.digital.G refuses Form 1040 lines 7a and 16 on sales[a].digital). Same point as the bklg ruling. The restatement's new Form 8971 wording (BUG-0395) matches i8949 p. 6: "first use an amount that is equal to or less than the final estate tax value listed in Part II, column (h)". Project stands on the English.
+Ruling: scope; same restatement and objection as the refresh-round ruling. f8949 p. 1, box G: "Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS"; i8949 p. 8, code B. Boxes G to L are refused at the transaction (sales.one refuses on sales.digital), so the reported-basis branch for A and D is the whole supported case. Project stands.
+Reviewed in: pass 0845778b81ca
 
 ### (g) — Column (g): net adjustments
 Status: **MISMATCH**
 
 Restated: Add helper "Basis correction in column (g)" and helper "Wash-sale adjustment in column (g)".
 
-Model: The code B adjustment applies only to boxes A and D, so a box G or J transaction with an incorrect basis gets no column (g) correction, although the IRS says for box A, G, D or J to "Correct the error by entering an adjustment in column (g)." Also, choosing "other" for an additional code gives $0 with no refusal, although the IRS requires the adjustment for codes such as E, H, L and Q (for example "enter the amount of the nondeductible loss as a positive number in column (g)").
+Model: The code B correction applies only when "Basis reported to IRS" is true, which covers boxes A and D only, so G and J transactions with an incorrect reported basis get no column (g) correction. The IRS says for box A, G, D or J to "Correct the error by entering an adjustment in column (g)" using the Worksheet for Basis Adjustments. Within boxes A and D, the reported-minus-correct sign and the positive code W amount match the worksheet and the code W instructions.
 
-Ruling: scope; i8949 p. 8, code B; i8949 pp. 7–11, columns (f) and (g). Boxes G and J are refused with every digital-asset box (see column (e)), so the A/D condition of the basis correction is the whole supported case; codes other than B and W are refused at sales.one on sales.bad_code ("Only applicable B and W adjustments are supported"; checked this round: sales.refuse.code refuses Form 1040 lines 7a and 16 on sales[a].bad_code), so "other" never gives a printed $0 on a completed return. Same point as the bklg ruling. Project stands on the English.
+Ruling: scope; same as the refresh-round ruling. i8949 p. 8, code B: "Correct the error by entering an adjustment in column (g)"; boxes G and J are refused with every digital-asset box, and codes other than B and W are refused at sales.one on sales.bad_code. Project stands.
+Reviewed in: pass 0845778b81ca
 
 ### (h) — Column (h): proceeds less basis plus adjustments
 Status: **MATCH**
 
 Model: The program takes column (d) minus column (e), plus column (g). This matches the IRS: "subtract the cost or other basis in column (e) from the proceeds (sales price) in column (d). Then take into account any adjustments in column (g)."
+
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| (e) | a3b4334e08d3611cf8f8349137afa279c9654770eafa9c32228c7a574b9926d6 |
+| (g) | cf6116d2fb9f040bc5769c5ed47067fcbd8c86a495774d4cec8ce77de6ba6224 |
+| (h) | d2faff0dc9a5bf174d1054ce0c9e3f82d26b6e89cc5d7782def754bd47f4f988 |
+| (rest of the document) | 173d9d26e48e7de243e42df8a66476933ccaf441a5d2d8dd3a5d3a9677bc158c |
+
+## Line-scoped reviews
+
+Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
+
+#### Pass 0845778b81ca
+
+| field | value |
+| --- | --- |
+| date | 2026-11-04 |
+| review scope | lines (e), (g) |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | 0845778b81ca5ea27c0a41d92c9831f1ab3ddbedd1af8c2ecbfb4839fbbaac15 |
+| prompt policy | render-source-comparison-v2+lines-v1 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| subject sha256 | 58233cc66194913d2c2c2f683c230a91c126ebcbdb27c02ada234bda0f73f108 |
+| receipt | .transcription/sales.render.lines-e48cb2ddc847 |
+| lines judged | 2 |
+| match / mismatch / unclear / missing | 0 / 2 / 0 / 0 |
+| verdicts for lines not in the form | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i8949 | 2025; printed date 2026-01-20 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 | cited pages | d3ddc2b91cf89087ca348ebb00dbd1c80bbc025fa4df1176753d25013f581a67 | 2, 3, 4, 5, 6, 7, 9, 10 | cabdc81a0677c0e4de4a89f9a71d328395c4cc839206ebadb56aeb54bf954b85 |
+| p550 | 2025 returns; printed date 2026-03-05 | 82, 86 | pages named by another document's citation | e40622e028486d7eb31a6da342ba2ba3c8b2f7ea9d341d9f47a1d33407d5aa26 | 82, 86 | 7629580e9cb35aa5f67e5d7c035b45850164eb1fe458f8acaa2781578ad0bf51 |
+
+##### Raw response
+
+```yaml
+```yaml
+lines:
+  - key: "(e)"
+    status: MISMATCH
+    reason: "Per its glossary entry, \"Basis reported to IRS\" is true only for box 'A' or 'D', yet the classification input also allows digital-asset boxes G–L, and no refusal excludes them. For G or J the program enters the correct basis, but the IRS says \"If this transaction is reported on Part I with box A or box G checked ... or on Part II with box D or box J checked ..., enter the basis shown on Form 1099-B or Form 1099-DA (or substitute statement) in column (e), even though that basis is incorrect.\""
+  - key: "(g)"
+    status: MISMATCH
+    reason: "The code B correction applies only when \"Basis reported to IRS\" is true, which covers boxes A and D only, so G and J transactions with an incorrect reported basis get no column (g) correction. The IRS says for box A, G, D or J to \"Correct the error by entering an adjustment in column (g)\" using the Worksheet for Basis Adjustments. Within boxes A and D, the reported-minus-correct sign and the positive code W amount match the worksheet and the code W instructions."
+```
+```
 
 ## Raw response
 

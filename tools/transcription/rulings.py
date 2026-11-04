@@ -30,6 +30,12 @@ KINDS = {
 }
 OPEN = "Ruling: open"
 DROPPED = " [dropped]"
+# Stamps a sidecar entry carries when rule.py writes it: the date it was ruled, the reply it rules
+# (`run`: transcribe.response_sha256 of the reply, as the cost ledger records the call that returned
+# it) and, for a finding, its severity. Entries written before stamping have none of them; a stamp
+# is never inferred for them.
+STAMPS = ("date", "run", "severity")
+SEVERITIES = ("high", "medium", "low")
 
 
 def sidecar_path(kind, form, family=families.DEFAULT):
@@ -48,7 +54,8 @@ def load(kind, form, family=families.DEFAULT):
     data = json.load(open(path, encoding="utf-8"))
     fields = KINDS[kind]
     return {tuple(r[f] for f in fields): {"ruling": r["ruling"], "drop": bool(r.get("drop")),
-                                        **({"context": r["context"]} if r.get("context") else {})}
+                                        **({"context": r["context"]} if r.get("context") else {}),
+                                        **{s: r[s] for s in STAMPS if r.get(s)}}
             for r in data["rulings"]}
 
 
@@ -62,6 +69,9 @@ def save(kind, form, rulings, family=families.DEFAULT):
             row["drop"] = True
         if rulings[key].get("context"):
             row["context"] = rulings[key]["context"]
+        for s in STAMPS:
+            if rulings[key].get(s):
+                row[s] = rulings[key][s]
         rows.append(row)
     path = sidecar_path(kind, form, family)
     head = {"kind": kind, "form": form}
@@ -127,6 +137,64 @@ def section_context(kind, text, content, blocks=None):
         return review_context(kind, text)
     blocks = pass_blocks(text) if blocks is None else blocks
     return review_context(kind, blocks[tag.group(1)]) if tag.group(1) in blocks else None
+
+
+RAW_HEADINGS = {"transcription": "Raw second transcription", "render": "Raw response"}
+
+
+def _fenced(text, start):
+    """The reply a log embeds after `start` ("```yaml" fence), to the last closing fence of `text`."""
+    at = text.find(start)
+    if at < 0:
+        return None
+    body = text[at + len(start):]
+    end = body.rfind("\n```")
+    return body[:end] if end >= 0 else None
+
+
+def section_reply(kind, text, title, content, blocks=None):
+    """The reply (stripped, as embedded) whose verdict a section of a log records, else None: the
+    raw reply of the line-scoped pass the section names, of the review in the log's header, or for
+    class M of the section's case."""
+    if kind == "classm":
+        case = title.split(" — ")[0]
+        _, sep, tail = text.partition("\n## Raw responses\n")
+        if not sep:
+            return None
+        start = f"\n### {case}\n\n```yaml\n"
+        at = tail.find(start)
+        if at < 0:
+            return None
+        body = tail[at + len(start):]
+        nxt = re.search(r"\n```\n\n### \S+\n\n```yaml\n", body)
+        end = nxt.start() if nxt else body.rfind("\n```")
+        return body[:end] if end >= 0 else None
+    tag = PASS_TAG.search(content.split("\n## ", 1)[0])
+    if tag:
+        blocks = pass_blocks(text) if blocks is None else blocks
+        block = blocks.get(tag.group(1))
+        return _fenced(block, f"\n##### {RAW_HEADINGS[kind]}\n\n```yaml\n") if block else None
+    _, sep, tail = text.partition(f"\n## {RAW_HEADINGS[kind]}\n")
+    return _fenced("\n" + tail, "\n```yaml\n") if sep else None
+
+
+def section_run(kind, text, title, content, blocks=None):
+    """The run stamp of a section: the identity of the reply it records (transcribe.response_sha256),
+    which the cost ledger records for the call that returned it; None when the log holds no reply."""
+    reply = section_reply(kind, text, title, content, blocks)
+    return hashlib.sha256(reply.strip().encode()).hexdigest() if reply is not None else None
+
+
+def stamp_errors(row):
+    """What is malformed in a sidecar entry's stamps (absent stamps are not errors)."""
+    errs = []
+    if row.get("date") and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(row["date"])):
+        errs.append("date is not YYYY-MM-DD")
+    if row.get("run") and not re.fullmatch(r"[0-9a-f]{64}", str(row["run"])):
+        errs.append("run is not a sha256")
+    if row.get("severity") and row["severity"] not in SEVERITIES:
+        errs.append("severity is not one of " + ", ".join(SEVERITIES))
+    return errs
 
 
 def kept(kind, form, family=families.DEFAULT, *, context):
@@ -249,6 +317,8 @@ def check():
                 elif s.get("context") and s["context"] != section_context(kind, text, content, blocks):
                     problems.append(f"{kind}/{stem}: ruling on {key[:2]} belongs to a different review context")
             stale += sum(1 for k in side if k not in seen)
+            for key, v in side.items():
+                problems += [f"{kind}/{stem}: ruling on {key[:2]} in {stem}.rulings.json: {e}" for e in stamp_errors(v)]
     for p in problems:
         print(p, file=sys.stderr)
     print(f"rulings: {total} in logs, all in sidecars" if not problems else f"rulings: {len(problems)} log/sidecar disagreement(s)", f"({stale} sidecar entries without a current disagreement)" if stale else "")

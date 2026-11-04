@@ -252,7 +252,7 @@ def gen_case(rng, i):
     inputs.update({f"$f8889@{TAXPAYER}": ["hsa"], f"{HSA}.line2": contrib, f"{HSA}.line9": employer, f"{HSA}.line14a": 0,
                    f"{HSA}.unsupported": False}); facts["hsa_deduction"] = hsa_deduction
     sli = rng.randint(1_000, 300_000) if rng.random() < 0.15 else 0
-    inputs.update({"sli.interest": sli, "sli.claimed": False}); facts["student_loan_interest"] = sli
+    inputs.update({"sli.interest": sli}); facts["student_loan_interest"] = sli
     if sli: features.add("student_loan_interest")
 
     # Foreign tax within the simple-path limit.

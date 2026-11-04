@@ -1323,7 +1323,7 @@ def call_model(prompt, model, timeout=900, system=TRANSCRIBE_SYSTEM, reasoning_e
     else:
         raise ValueError(f"no transport for model {model!r}: a model name begins with 'claude', 'deepseek' or 'gpt'")
     started, clock = datetime.datetime.now(datetime.timezone.utc), time.monotonic()
-    meta, outcome = None, "ok"
+    meta, outcome, text = None, "ok", None
     try:
         text, meta = call()
         if meta.get("finish_reason") == "length":
@@ -1334,7 +1334,8 @@ def call_model(prompt, model, timeout=900, system=TRANSCRIBE_SYSTEM, reasoning_e
         raise
     finally:
         try:
-            record_cost(started, time.monotonic() - clock, model, transport, prompt, system, meta, outcome, kind, subject)
+            record_cost(started, time.monotonic() - clock, model, transport, prompt, system, meta, outcome, kind, subject,
+                        response=text)
         except Exception as ex:  # the ledger must never lose or alter a review result
             print(f"warning: cost ledger not written: {type(ex).__name__}: {ex}", file=sys.stderr)
 
@@ -1383,7 +1384,14 @@ def estimate_cost(model, usage, reported_cost, when, prices=None):
     return None, f"unknown price basis {basis!r}"
 
 
-def record_cost(started, seconds, model, transport, prompt, system, meta, outcome, kind=None, subject=None):
+def response_sha256(text):
+    """The identity of a reply: the hash of the text as a review log embeds it (stripped at its
+    edges). The ledger records it for every call that returned text, and a ruling is stamped with
+    the identity of the reply it rules (rulings.section_run), which names the call that bought it."""
+    return hashlib.sha256(text.strip().encode()).hexdigest()
+
+
+def record_cost(started, seconds, model, transport, prompt, system, meta, outcome, kind=None, subject=None, response=None):
     """Append one JSON line to RAW/costs.jsonl: one write() on an O_APPEND descriptor, so lines from
     concurrent processes do not interleave."""
     tool = os.path.basename(sys.argv[0]) if sys.argv and sys.argv[0] else "-"
@@ -1397,6 +1405,8 @@ def record_cost(started, seconds, model, transport, prompt, system, meta, outcom
               "kind": kind or TOOL_KINDS.get(tool, "unknown"), "subject": subject,
               "model_requested": model, "model_reported": meta.get("model_reported"),
               "transport": meta.get("transport", transport), "prompt_chars": len(prompt), "system_chars": len(system),
+              "prompt_sha256": hashlib.sha256(prompt.encode()).hexdigest(),
+              "response_sha256": response_sha256(response) if isinstance(response, str) else None,
               "usage": usage, "cost_usd": meta.get("cost_usd"),
               "estimated_cost_usd": estimated, "price_basis": basis,
               "duration_s": round(seconds, 3), "outcome": outcome}
@@ -1633,6 +1643,8 @@ def extract_yaml(text):
 
 PASS_HEADING = "## Line-scoped reviews"
 LINE_PROMPT_POLICY = PROMPT_POLICY + "+lines-v1"
+# Line-scoped prompt policies under which a pass is as independent as a whole review under PROMPT_POLICY.
+INDEPENDENT_LINE_PROMPT_POLICIES = frozenset({LINE_PROMPT_POLICY})
 
 
 def _review_rows(form_doc, model, prompt, used, results, extra, meta, interfaces, contract, replay_receipt=None,
@@ -1851,6 +1863,8 @@ def plan_scope(kind, fid, log_text, names):
     if rest != cur_rest:
         raise SystemExit(f"{fid}: the document changed outside every compared line since the {kind} log ({where}); run the whole review")
     stale = [k for k in cur if rows.get(k) != cur[k]]
+    if kind == "transcription":
+        stale += [k for k in subjects.foreign_stale(fid, Y, log_text) if k not in stale]
     gone = sorted(set(rows) - set(cur))
     keys = subjects.target_keys(kind, fid)
     if names == ["auto"]:
@@ -1937,7 +1951,13 @@ def merge_log(kind, fid, old, raw_heading, fresh, key_order, gone, block, pid, c
     tail = []
     if kind == "transcription":
         tail += _gates_section([gates[k] for k in order if k in gates])
-    tail += subjects.table_for(kind, fid, Y)
+    foreign = None
+    if kind == "transcription":
+        # Only the lines this review judged were asked with the current foreign interfaces.
+        recorded = subjects.recorded_foreign(old) or {}
+        now = subjects.current_foreign(fid, Y) if fresh and os.path.exists(subjects.path(kind, fid, Y)) else {}
+        foreign = {k: now[k] if k in fresh and k in now else recorded[k] for k in order if (k in fresh and k in now) or k in recorded}
+    tail += subjects.table_for(kind, fid, Y, foreign)
     if blocks:
         tail += [PASS_HEADING, "", PASS_INTRO, ""]
         for pid in sorted(blocks, key=lambda p: re.search(r"^\| date \| (.*?) \|$", blocks[p], re.M).group(1) + p):
@@ -1968,6 +1988,13 @@ def scoped_main(a, form_doc, mani, params, values):
         if not gone:
             print(f"{fid}: " + ("every compared line is current; nothing to review" if names == ["auto"]
                                 else f"no compared line reads {', '.join(names)}; nothing to review"))
+            if subjects.recorded(old) is None:
+                # Every line's subject and the rest were verified equal to the reviewed version
+                # (plan_scope), so the current table records what the log reviewed.
+                merged = merge_log("transcription", fid, old, "## Raw second transcription", {}, key_order, [], None, None, _transcription_counts)
+                if not a.dry_run:
+                    open(path, "w", encoding="utf-8").write(merged)
+                print(f"{fid}: recorded the line subjects the log reviewed; no model call")
             return
         merged = merge_log("transcription", fid, old, "## Raw second transcription", {}, key_order, gone, None, None,
                            _transcription_counts)

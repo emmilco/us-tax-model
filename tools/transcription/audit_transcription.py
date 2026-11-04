@@ -18,6 +18,7 @@ import transcribe as T
 import input_contracts
 import adapter_contracts
 import input_context
+import rulings
 
 
 def sha(text):
@@ -129,6 +130,68 @@ def verify_replay_archive(path, log, prompt, response, meta, current_subject, de
     verify_replay_archive(folder/path.name,parent_log,prompt,response,meta,current_subject,depth+1)
 
 
+def fields_of(text):
+    return dict(re.findall(r"^\| ([^|]+) \| ([^|]*) \|$", text, re.M))
+
+
+def section_passes(log):
+    """{log key: pass id} of the sections a line-scoped review judged ("Reviewed in: pass <id>")."""
+    body = log.partition("\n## Lines\n")[2].split("\n## ", 1)[0]
+    out = {}
+    for part in body.split("\n### ")[1:]:
+        title, _, content = part.partition("\n")
+        tag = rulings.PASS_TAG.search(content)
+        if tag:
+            out[title.split(" — ")[0]] = tag.group(1)
+    return out
+
+
+def audit_pass(form_doc, log, pid, block, tagged):
+    """Verify one line-scoped pass of a merged log as `audit` verifies the review in its header:
+    the receipt the pass names holds the request whose hash it records and the reply it embeds, and
+    the reply, compared again on the lines of the pass, passes the current type and input checks."""
+    form = form_doc["id"]
+    fields = fields_of(block)
+    receipt = fields.get("receipt")
+    if not receipt:
+        raise ValueError(f"pass {pid} records no receipt")
+    base = Path(T.ROOT) / receipt
+    prompt = Path(str(base) + ".prompt.txt").read_text()
+    response = Path(str(base) + ".response.txt").read_text()
+    meta = json.loads(Path(str(base) + ".meta.json").read_text())
+    if fields.get("prompt sha256") != sha(prompt) or pid != sha(prompt)[:12]:
+        raise ValueError(f"pass {pid}: saved prompt differs from the pass's receipt")
+    embedded = rulings._fenced(block, "\n##### Raw second transcription\n\n```yaml\n")
+    if embedded is None or embedded != response.strip():
+        raise ValueError(f"pass {pid}: saved response differs from the reply embedded in the pass")
+    for key, field in [("prompt_sha256", "prompt sha256"), ("system_sha256", "system sha256"),
+                       ("prompt_policy", "prompt policy"), ("model_requested", "model requested")]:
+        if key in meta and meta[key] != fields.get(field):
+            raise ValueError(f"pass {pid}: saved metadata differs from the pass's {field}")
+    if meta.get("finish_reason") == "length":
+        raise ValueError(f"pass {pid}: response exhausted its output budget")
+    bound = all(key in meta for key in ("prompt_sha256", "system_sha256", "prompt_policy", "model_requested"))
+    scope = [k.strip() for k in re.sub(r"^lines ", "", fields.get("review scope", "")).split(",") if k.strip()]
+    keyed = dict(T.line_keys(form_doc))
+    unknown = [k for k in scope if k not in keyed]
+    if not scope or unknown:
+        raise ValueError(f"pass {pid}: review scope names no current compared line" + (f" ({', '.join(unknown)})" if unknown else ""))
+    ids = {keyed[k] for k in scope}
+    second = T.extract_yaml(response)["lines"]
+    current, _ = T.compare(form, form_doc["lines"], second, only=ids)
+    reach = T.members_of(form_doc, ids)
+    assessed = {**form_doc, "lines": [l for l in form_doc["lines"] if l["id"] in reach or l["expr"].get("op") == "input"]}
+    interfaces = input_context.assess(assessed, second, T.model_type_context(), prompt)
+    judged = sorted(k for k, p in tagged.items() if p == pid)
+    statuses = {row["printed"]: row["status"] for row in current}
+    before = comparison.parse_log_text("transcription", log)["lines"]
+    changes = [{"line": k, "before": before.get(k, {}).get("status", "ABSENT"), "after": statuses.get(k, "ABSENT")}
+               for k in judged if before.get(k, {}).get("status") != statuses.get(k)]
+    return {"pass": pid, "prompt_sha256": sha(prompt), "response_sha256": sha(response),
+            "request_provenance": "bound" if bound else "legacy-limited", "scope": scope,
+            "type_errors": current.validation_errors, "input_context": interfaces, "changes": changes}
+
+
 def audit(path):
     form, family = families.split_stem(path.stem)
     base = Path(T.RAW) / path.stem
@@ -136,18 +199,31 @@ def audit(path):
     prompt = base.with_suffix(base.suffix + ".prompt.txt").read_text()
     response = base.with_suffix(base.suffix + ".response.txt").read_text()
     meta = json.loads(base.with_suffix(base.suffix + ".meta.json").read_text())
-    receipt = verify_saved(log, prompt, response, meta, T.subjects.current("transcription", form, T.Y))
+    merged = T.subjects.has_line_scoped_passes(log)
+    if merged:
+        # A merged log's header records the subject its first review saw; what keeps it current is
+        # that every compared line's subject is current (subjects.log_state, as check_logs.py holds it).
+        state = T.subjects.log_state("transcription", form, T.Y, log)
+        if state:
+            raise ValueError(state)
+        subject = fields_of(log.partition("\n## Lines\n")[0]).get("subject sha256")
+    else:
+        subject = T.subjects.current("transcription", form, T.Y)
+    receipt = verify_saved(log, prompt, response, meta, subject)
     verify_replay_archive(path, log, prompt, response, meta, receipt['subject_sha256'])
-    before = comparison.parse_log("transcription", str(path))["lines"]
+    tagged = section_passes(log)
+    before = {k: v for k, v in comparison.parse_log("transcription", str(path))["lines"].items() if k not in tagged}
     second = T.extract_yaml(response)["lines"]
     form_doc = T.load_form(form)
     current, extra = T.compare(form, form_doc["lines"], second)
     interfaces = input_context.assess(form_doc, second, T.model_type_context(), prompt)
     partial = input_contracts.assess(form, T.Y, second, T.model_type_context(), prompt) if input_contracts.load(form, T.Y) else None
+    current_header = [row for row in current if row["printed"] not in tagged]
     changes = [{"line": row["printed"], "before": before.get(row["printed"], {}).get("status", "ABSENT"),
                 "after": row["status"], "project": row["project"], "second": row["second"]}
-               for row in current if before.get(row["printed"], {}).get("status") != row["status"]]
-    return {"form": form, "family": family, **receipt, "comparison_policy": T.COMPARISON_POLICY,
+               for row in current_header if before.get(row["printed"], {}).get("status") != row["status"]]
+    passes = [audit_pass(form_doc, log, pid, block, tagged) for pid, block in sorted(rulings.pass_blocks(log).items())]
+    return {"form": form, "family": family, **receipt, "comparison_policy": T.COMPARISON_POLICY, "passes": passes,
             "input_context_policy": input_context.POLICY, "missing_input_context": interfaces["missing"],
             "input_context": interfaces,
             "legacy_global_missing_input_context": T.missing_input_context(prompt),
@@ -156,7 +232,7 @@ def audit(path):
             "partial_inputs": partial,
             "excluded_adapters": sorted(adapter_contracts.excluded_ids(form, T.Y)),
             "before_agree": sum(row["status"] == "AGREE" for row in before.values()),
-            "after_agree": sum(row["status"] == "AGREE" for row in current),
+            "after_agree": sum(row["status"] == "AGREE" for row in current_header),
             "new_disagreements": sum(row["before"] == "AGREE" and row["after"] == "DISAGREE" for row in changes),
             "extra_lines": extra, "changes": changes}
 

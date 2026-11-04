@@ -15,10 +15,21 @@ form:
       label: Investment interest paid or accrued in 2025
       expr:
         op: input
-        source: Investment interest paid or accrued in 2025
+        source: Investment interest paid or accrued in 2025, regardless of when you incurred the debt, meaning interest on a
+          loan or the part of a loan allocable to property held for investment (if you used a loan's proceeds for more than
+          one purpose, only the interest allocable to the investment use). Do not include personal interest (including
+          qualified residence interest), interest allocable to a passive activity, interest that is capitalized (such as
+          construction interest subject to section 263A), interest related to tax-exempt interest income, or interest
+          disallowed under section 264 on debt with respect to life insurance, endowment or annuity contracts.
       cite:
         doc: f4952
-        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction; p. 3, Allocation of Interest Expense, "If you paid or
+          accrued interest on a loan and used the loan proceeds for more than one purpose, you may have to allocate the
+          interest."; p. 3, Line 1, "Investment interest expense is interest paid or accrued on a loan or part of a loan
+          that is allocable to property held for investment (as defined later).", "Personal interest under section 163(h),
+          including qualified residence interest.", "Any interest expense that is capitalized, such as construction
+          interest subject to section 263A." and "Interest expense, disallowed under section 264, on indebtedness with
+          respect to life insurance, endowment, or annuity contracts issued after June 8, 1997"
     - id: f4952.carryover
       printed: (helper)
       type: Bool

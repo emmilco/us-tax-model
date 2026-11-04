@@ -107,6 +107,27 @@ Status: **MATCH**
 
 Model: If line 4 is Yes, enter line 2. If No and line 5 is left blank, enter line 2. Otherwise 'enter the smaller amount' of lines 5 and 2.
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| (Step 5, 1) | 1ef8158708475b572809e15915810b286872ea6f239fb66c92cd8c1c74a5a0c1 |
+| (Step 5, 2) | e335e8076f503454b40025991609193c4c4e8beaca3bd921d9687537f3f5c3f1 |
+| (Step 5, 3) | fe995124e8022c9da5908d70286fa0dd1534677ef174fc601dae11f79df529b6 |
+| (Step 5, 4) | c2e1b81d402cb239d9ede1ecdfe725488451710620cf87d94b19d7472e963175 |
+| (Step 5, 5) | 845221e785022b555bf69f6d66ea4712d5d0b37cbe65ba33007436323ddef40a |
+| 4b | 2b4afa0797268c5f7779a5cb1ad27cda5d81c1ae9332b754818d5e97736b5efa |
+| 6 (eic.wsb_6) | 549d6e2fac12cf69493cd25e4fac0fb3a10aed8b677b5d14e703897e0defcded |
+| 1 | e488edd7b38e59ed81e35d55065cf740a6afe91343b63c1dadc8df9bb8ad5fbd |
+| 2 | 608bc7d3c751c626c585480308c6dcb16d0d2b3c983a1de1c0aecf204bb8d984 |
+| 3 | 2aef122521f1abecea444961128327c608507d9f41d4b27fa38fd0f89d743aa7 |
+| 4 | 7e2af1d5c114b3f5be650aa502486bc72419469d5419a3bdaaaae8c95d0396ea |
+| 5 | 7d62d98cd6e6d51cc2018e531d1c664a3c85f2088111e14149962fc9f813aaa8 |
+| 6 (eic.line6) | 5152574387f2b02be0e34034d34cdeecc8f31244fc843b81dd4e9e0850fc4e7b |
+| (rest of the document) | 1bf540cbaae3925793d7602e3366ba0a498ad5392b6332deb6a94eb8274fead4 |
+
 ## Raw response
 
 ```yaml

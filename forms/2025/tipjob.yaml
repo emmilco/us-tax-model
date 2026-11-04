@@ -20,19 +20,22 @@ form:
     printed: (helper)
     label: Were all the tips you are counting from this employer received in an occupation on the IRS list of occupations
       that customarily and regularly received tips on or before December 31, 2024, paid in cash (including by check,
-      card or app), voluntarily, without negotiation and in an amount the customer decided, and not for a service that
-      is a crime under applicable law?
+      card or app), voluntarily, without negotiation and in an amount the customer decided, not for a service that
+      is a crime under applicable law, and not for prostitution or pornographic activity?
     type: Bool
     expr:
       op: input
       source: Were all the tips you are counting from this employer received in an occupation on the IRS list of occupations
         that customarily and regularly received tips on or before December 31, 2024 (IRS.gov/TippedOccupations), paid
         in cash (including by check, card or app), voluntarily, without negotiation and in an amount the customer decided,
-        and not for a service that is a crime under applicable law?
+        not for a service that is a felony or misdemeanor under applicable law, and not for prostitution or pornographic
+        activity?
     cite:
       doc: i1040gi
       locator: pp. 101-103, Schedule 1-A, Qualified Tips, Cash tips, "Paid voluntarily, not subject to negotiation,
-        and determined by the customer/payor," "Amounts received that are not qualified tips" and "Occupations that
+        and determined by the customer/payor," "Amounts received that are not qualified tips", "Tips received while
+        performing a service that is a felony or misdemeanor under applicable law are not qualified tips", "Amounts
+        received for prostitution and pornographic activity are not qualified tips" and "Occupations that
         customarily and regularly received tips"; "Do not include tips received in occupations that are not included
         on this list"
   - id: tipjob.amount

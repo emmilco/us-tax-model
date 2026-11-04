@@ -20,12 +20,6 @@
    "prompt_sha": "063521ea1ebf8bd512df0d941aebcde3c07bcbd7f2fac0bfa28445325c27fc43",
    "line": "dependent.edu_line31"
   },
-  "unruled:asset#1": {
-   "class": "real gap",
-   "evidence": "i4562 p. 10; p946 pp. 33-34. Rental real estate is Schedule E, refused by scope.schedule1 (asset entries belong to a Schedule C business). Open: asset.class does not say that an addition or improvement to personal property takes the original property's class, with its recovery period starting at the later placed-in-service date. Low; BUG-0402.",
-   "prompt_sha": "0277b66fec2086b3769307a000f3d46a264788e38499caff212cc461cc4e03c8",
-   "bug": "BUG-0402"
-  },
   "unruled:carloan#1": {
    "class": "presentation",
    "evidence": "i1040gi pp. 109-110. The VIN on Schedule 1-A line 22, the substitute VIN and the statement for more than two VINs are filing information; the loan and vehicle tests are asked (carloan.requirements, carloan.vehicle).",
@@ -342,20 +336,15 @@
   },
   "unruled:f8889#1": {
    "class": "real gap",
-   "evidence": "i8889 p. 4. f8889.line2 counts contributions made by April 15, 2026; a combat-zone or contingency-operation filer may contribute later, and nothing asks about it. Rare; understates line 2. Low; BUG-0402.",
-   "prompt_sha": "cb1c06117f5c4621e01c3d8d884af18fec8171795cfc771eb0318c784080a399",
-   "bug": "BUG-0402"
+   "evidence": "i8889 pp. 2-3. f8889.medical limits line 15 to unreimbursed expenses incurred after the HSA was established, for the listed people; it does not say that insurance premiums count only for long-term care insurance, continuation coverage (COBRA), coverage while receiving unemployment compensation, or Medicare and other coverage at 65 or older (not Medigap), nor that an account beneficiary under 65 cannot count Medicare premiums for a spouse or dependent. Premiums paid from the HSA would understate line 16. Low; BUG-0414.",
+   "prompt_sha": "495f0fd776f8758fd92439d1deca2222e750768d832985eaf51e472e7dc126c9",
+   "bug": "BUG-0414"
   },
   "unruled:f8889#2": {
    "class": "real gap",
-   "evidence": "i8889 p. 3. f8889.rollover asks only the 60-day test; it does not say one rollover per 12 months into an HSA of the same account beneficiary. Rare. Low; BUG-0402.",
-   "prompt_sha": "cb1c06117f5c4621e01c3d8d884af18fec8171795cfc771eb0318c784080a399",
-   "bug": "BUG-0402"
-  },
-  "unruled:f8889#3": {
-   "class": "presentation",
-   "evidence": "i8889 p. 4. The line 1 self-only/family checkbox is filing information; the coverage facts are asked (f8889.months_family, f8889.dec_coverage) and the limits use them.",
-   "prompt_sha": "cb1c06117f5c4621e01c3d8d884af18fec8171795cfc771eb0318c784080a399"
+   "evidence": "i8889 pp. 3-4. f8889.line2 excludes rollovers but not a direct trustee-to-trustee transfer between the filer's own HSAs, which the instructions say is not a rollover and is not deducted as a contribution. Line 14a is limited to Form 1099-SA box 1, so only line 2 is open. Rare. Low; BUG-0414.",
+   "prompt_sha": "495f0fd776f8758fd92439d1deca2222e750768d832985eaf51e472e7dc126c9",
+   "bug": "BUG-0414"
   },
   "unruled:f8959#1": {
    "class": "covered",
@@ -494,10 +483,10 @@
    "line": "asset.mqbase"
   },
   "unruled:otjob#1": {
-   "class": "real gap",
-   "evidence": "i1040gi p. 106. otjob.statement does not say to leave out amounts that are qualified tips or weekend and holiday premiums in workweeks of 40 hours or fewer. Low; BUG-0402.",
-   "prompt_sha": "5ff6d952bc1ffe8c8c1bde257634afa6323e1cf06cacd0d77d4fc10b89e20e25",
-   "bug": "BUG-0402"
+   "class": "covered",
+   "evidence": "i1040gi pp. 106, 108. otjob rows are per person: s1a.line14a_calc sums person.ot_total only over persons whose person.work_ssn (SSN valid for employment, issued by the due date including extensions) is Yes, so a spouse's overtime without a valid SSN does not reach line 14a; s1a.ot_ssn gates Part III.",
+   "prompt_sha": "1c82805dfb71a7aa808a431bffde395c3fb27e97a77e17b828a365476634a96a",
+   "line": "s1a.line14a_calc"
   },
   "unruled:qbi#1": {
    "class": "wrong",
@@ -529,56 +518,51 @@
    "gate": "oi8z.recovery"
   },
   "unruled:retirement#1": {
-   "class": "out of scope",
-   "evidence": "i1040gi p. 27; i5329 p. 1; p575 p. 34. As retirement#3 of the backlog round (rechecked): person.x_other names a required minimum distribution not received in full and refuses Form 5329 lines 4 and 49.",
-   "prompt_sha": "da670c5b54832683802832df6b3b1d8ba55e7c43809c83405e704aa3d9b53caa",
-   "gate": "person.x_other"
+   "class": "real gap",
+   "evidence": "p575 p. 21; i5329 p. 2. BUG-0408 added the required minimum distribution to retirement.rollover (rechecked: correct). Open: the other distributions that are not eligible rollover distributions (a series of substantially equal payments, hardship distributions, dividends on employer securities, the cost of life insurance coverage, most distributions to a beneficiary), the first-2-years SIMPLE IRA limit (a code S distribution may be rolled over only to another SIMPLE IRA), and a recontribution of a wrongfully levied amount by the due date. Rare. Low; BUG-0414.",
+   "prompt_sha": "32b67274862b0a9b6e33dfda0a88872561d9a6ff7876811bc1e37c88e6742eee",
+   "bug": "BUG-0414"
   },
   "unruled:retirement#2": {
-   "class": "presentation",
-   "evidence": "i1040gi p. 27. As retirement#2 of the backlog round: the statement for a rollover into a qualified plan or made in 2026 is an attachment; the amount is unaffected.",
-   "prompt_sha": "da670c5b54832683802832df6b3b1d8ba55e7c43809c83405e704aa3d9b53caa"
+   "class": "out of scope",
+   "evidence": "i5329 p. 1; p575 p. 34. person.x_other asks about 'a required minimum distribution from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)' and refuses Form 5329.",
+   "prompt_sha": "32b67274862b0a9b6e33dfda0a88872561d9a6ff7876811bc1e37c88e6742eee",
+   "gate": "person.x_other"
   },
   "unruled:retirement#3": {
    "class": "real gap",
-   "evidence": "p575 p. 23. retirement.rollover does not say that only an eligible rollover distribution (not a required minimum distribution) can be rolled over. Low; BUG-0402.",
-   "prompt_sha": "da670c5b54832683802832df6b3b1d8ba55e7c43809c83405e704aa3d9b53caa",
-   "bug": "BUG-0402"
+   "evidence": "p575 p. 16: 'If you receive a nonperiodic payment from your annuity contract on or after the annuity starting date, you must generally include all of the payment in gross income.' retirement.annuity asks whether the distribution is paid in periodic payments but does not say a box 1 that includes a nonperiodic payment is not; on the Simplified Method path the periodic exclusion would then reach it. Rare; low.",
+   "prompt_sha": "32b67274862b0a9b6e33dfda0a88872561d9a6ff7876811bc1e37c88e6742eee",
+   "bug": "BUG-0414"
   },
   "unruled:retirement#4": {
-   "class": "real gap",
-   "evidence": "p590b p. 28; i5329 p. 5. BUG-0393 stated the conditions of exceptions 01 to 04 only; retirement.exception still names 09 (first home), the reservist exception and 19 (birth or adoption) without the 2-year no-ownership test (spouse included), the reservist call-up and plan-source conditions, or the eligible-adoptee definition. The $10,000 and $5,000 caps are applied. Low; BUG-0402. The statement is filing information.",
-   "prompt_sha": "da670c5b54832683802832df6b3b1d8ba55e7c43809c83405e704aa3d9b53caa",
-   "bug": "BUG-0402"
+   "class": "presentation",
+   "evidence": "i5329 p. 5. The statement with the child's or eligible adoptee's name, age and TIN (or the death documentation) is an attachment; exception 19's conditions are stated in retirement.exception (BUG-0408) and its $5,000 cap is applied.",
+   "prompt_sha": "32b67274862b0a9b6e33dfda0a88872561d9a6ff7876811bc1e37c88e6742eee"
   },
   "unruled:s1#1": {
    "class": "covered",
-   "evidence": "i1040gi p. 93. person.eligible_educator states the 900-hour test; person.educator_expenses excludes home schooling and nonathletic health or PE supplies and states the reductions (Form 8815, QTP and Coverdell, unreported reimbursements) (BUG-0394).",
-   "prompt_sha": "6b2336343b2e20aff5117261764413a140d03cc7c20b8ccda639c7ee53a1a578",
+   "evidence": "i1040gi p. 93. As s1#1 of the refresh round (rechecked): person.eligible_educator states the 900-hour test; person.educator_expenses excludes home schooling and nonathletic health or PE supplies and states the reductions (Form 8815, QTP and Coverdell, unreported reimbursements).",
+   "prompt_sha": "bcfbe856bc39385a09847d13eb41e8c71b49895bb0faf7f1a10f16d07e87b111",
    "line": "person.educator_expenses"
   },
   "unruled:s1#2": {
-   "class": "covered",
-   "evidence": "i1040gi pp. 98-99. Married filing separately is refused (s3.mfs); sli.claimed asks the dependency bar; sli.interest excludes interest paid from tax-free QTP earnings; sli.line1 refuses the Pub. 970 exception (sa.excluded_income). The loan definition is sli#1.",
-   "prompt_sha": "6b2336343b2e20aff5117261764413a140d03cc7c20b8ccda639c7ee53a1a578",
-   "line": "sli.line1"
+   "class": "real gap",
+   "evidence": "i1040gi pp. 98-99; p4681 p. 5. Covered: married filing separately is refused (s3.mfs); sli.eligible requires sli.claimed_count 0 (the dependency bar); sli.interest excludes interest paid from tax-free QTP earnings and states the qualified student loan definition, mixed-use and related-person lender included (BUG-0408). Open: sli.interest does not leave out interest paid through a student loan repayment assistance program whose payments are tax free (Pub. 4681: the NHSC Loan Repayment Program and state health-service programs). Rare. Low; BUG-0414.",
+   "prompt_sha": "bcfbe856bc39385a09847d13eb41e8c71b49895bb0faf7f1a10f16d07e87b111",
+   "bug": "BUG-0414"
   },
   "unruled:s1#3": {
-   "class": "out of scope",
-   "evidence": "i1040gi p. 96. The line 20 checkbox is for married filing separately, which is refused (s3.mfs).",
-   "prompt_sha": "6b2336343b2e20aff5117261764413a140d03cc7c20b8ccda639c7ee53a1a578",
-   "gate": "s3.mfs"
+   "class": "real gap",
+   "evidence": "p504 pp. 13-14. s1.alimony_received says 'cash payments only' and does not say that cash paid to a third party under the instrument counts, including premiums on insurance on the payer's life to the extent the recipient owns the policy; a recipient could leave them out. Rare. Low; BUG-0414. Attaching the designating instrument is filing information.",
+   "prompt_sha": "bcfbe856bc39385a09847d13eb41e8c71b49895bb0faf7f1a10f16d07e87b111",
+   "bug": "BUG-0414"
   },
   "unruled:s1#4": {
-   "class": "real gap",
-   "evidence": "p504 p. 14. s1.alimony_received and s1.alimony_paid do not exclude payments between spouses filing a joint return with each other. Rare. Low; BUG-0402.",
-   "prompt_sha": "6b2336343b2e20aff5117261764413a140d03cc7c20b8ccda639c7ee53a1a578",
-   "bug": "BUG-0402"
-  },
-  "unruled:s1#5": {
-   "class": "presentation",
-   "evidence": "p504 p. 14. Attaching the designating instrument is filing information; s1.alimony_received excludes payments the instrument designates as not alimony.",
-   "prompt_sha": "6b2336343b2e20aff5117261764413a140d03cc7c20b8ccda639c7ee53a1a578"
+   "class": "out of scope",
+   "evidence": "i1040gi p. 96. As s1#3 of the refresh round: the line 20 checkbox is for married filing separately, which is refused (s3.mfs).",
+   "prompt_sha": "bcfbe856bc39385a09847d13eb41e8c71b49895bb0faf7f1a10f16d07e87b111",
+   "gate": "s3.mfs"
   },
   "unruled:s179#1": {
    "class": "covered",
@@ -620,12 +604,6 @@
    "evidence": "i1040gi p. 112; i1040sse p. 2. person.se_screen names an approved Form 4029, an international social security agreement, community income on a separate return, a chapter 11 case and a U.S. citizen employed by a foreign government; notary fees are refused by sc.statutory.",
    "prompt_sha": "8dadfe475b22d43406d536a742bcd2ac2d4a9dd508878490d6ac20abc1056ffe",
    "gate": "person.se_screened"
-  },
-  "unruled:s3#1": {
-   "class": "real gap",
-   "evidence": "i1040gi p. 117. s3.line10 does not say to leave out a payment fee. Low; BUG-0402. Form 2350 is for filers abroad (Form 2555), which is refused.",
-   "prompt_sha": "5df44714178d6ac3a29259a1f8b2fd06722a64f64a3de3bfe29586072a3b4e8a",
-   "bug": "BUG-0402"
   },
   "unruled:s8812#1": {
    "class": "out of scope",
@@ -671,15 +649,38 @@
   },
   "unruled:sales#1": {
    "class": "real gap",
-   "evidence": "i8949 pp. 2, 5; p550 pp. 82, 86. sales.box states the general count, inherited property, carryover-basis gifts and split blocks (BUG-0395); it does not state the other tacking and forced-term rules (wash-sale replacement stock, stock dividends and rights, options, nonbusiness bad debts, NAV money market funds, short sales). Section 1256 contracts are refused by sd.other_forms. Low; BUG-0402.",
-   "prompt_sha": "9d459984b492a1ce5c6825fa6cb8b81ac20a0815cde8753c9594f6d7e0a322d9",
-   "bug": "BUG-0402"
+   "evidence": "p550 p. 82; i8949 p. 6. BUG-0408 added the wash-sale, stock dividend and rights, option, bad debt, NAV and short-sale loss rules to sales.box (rechecked against p550 pp. 82, 86 and i8949 p. 5: correct). Open: Treasury auction and subscription start dates, shares bought through an automatic investment service, tacking for property received in a nontaxable trade, inherited property of a 2010 decedent with a Form 8939 election, real property (title or possession), trade date rather than settlement date, and the 2001 deemed sale. Rare. Low; BUG-0414. The short-sale dates in column (b) and (c) are presentation.",
+   "prompt_sha": "21309c68fbcda870148713b2f62576a5f635730e47a3b0b66e8610132565415d",
+   "bug": "BUG-0414"
   },
   "unruled:sales#2": {
    "class": "real gap",
-   "evidence": "p550 p. 86; i8949 pp. 6-7. sales.correct_basis does not name the wash-sale, short-sale dividend, compensatory option and nondividend-distribution basis adjustments. Low; BUG-0402. The explanation statement is filing information.",
-   "prompt_sha": "9d459984b492a1ce5c6825fa6cb8b81ac20a0815cde8753c9594f6d7e0a322d9",
-   "bug": "BUG-0402"
+   "evidence": "i8949 p. 6. sales.proceeds does not say that, for property sold under a call option you wrote that was exercised, the option premium increases the sales price (when there is no report or the report does not include it). Rare. Low; BUG-0414.",
+   "prompt_sha": "21309c68fbcda870148713b2f62576a5f635730e47a3b0b66e8610132565415d",
+   "bug": "BUG-0414"
+  },
+  "unruled:sales#3": {
+   "class": "real gap",
+   "evidence": "i8949 pp. 6-7; p550 p. 86. sales.correct_basis states the Form 8971 limit and, since BUG-0408, the wash-sale, short-sale, compensatory option and nondividend distribution adjustments (rechecked: correct). Open: the general basis of gifts (the donor's basis) and inherited property (fair market value at death), the 2001 deemed-sale basis, stock splits, OID and market discount included in income, bond premium amortization, bargain sales to charity and the average basis method are not named; 'correct adjusted basis from records' leaves them to the filer. Low; BUG-0414. The basis explanation is filing information.",
+   "prompt_sha": "21309c68fbcda870148713b2f62576a5f635730e47a3b0b66e8610132565415d",
+   "bug": "BUG-0414"
+  },
+  "unruled:sales#4": {
+   "class": "real gap",
+   "evidence": "p550 p. 86; i8949 p. 10. sales.wash_loss asks for the nondeductible wash-sale loss, including losses the broker did not report, without the definition: a purchase or acquisition (including a contract or option, an IRA or Roth IRA purchase, or a purchase by a spouse or a controlled corporation) of substantially identical stock or securities within 30 days before or after the sale, and the dealer exception. Low; BUG-0414. The statement for a lower loss is filing information.",
+   "prompt_sha": "21309c68fbcda870148713b2f62576a5f635730e47a3b0b66e8610132565415d",
+   "bug": "BUG-0414"
+  },
+  "unruled:sales#5": {
+   "class": "out of scope",
+   "evidence": "i8949 pp. 5, 11. sb.unsupported names 'accrued market discount' and 'a contingent payment debt instrument' and refuses Schedule B lines 2, 3 and 6, so a sale with code D or ordinary CPDI gain does not reach Form 1040; sales.code 'other' (code D) is refused by sales.bad_code.",
+   "prompt_sha": "21309c68fbcda870148713b2f62576a5f635730e47a3b0b66e8610132565415d",
+   "gate": "sb.unsupported"
+  },
+  "unruled:sales#6": {
+   "class": "presentation",
+   "evidence": "i1040sd p. 10. As sales#4 of the backlog round: the Schedule D QOF box and Form 8997 Part III are filing information; a QOF deferral or inclusion code (Z, Y) is 'other' in sales.code and refused by sales.bad_code.",
+   "prompt_sha": "21309c68fbcda870148713b2f62576a5f635730e47a3b0b66e8610132565415d"
   },
   "unruled:sb#1": {
    "class": "presentation",
@@ -687,85 +688,84 @@
    "prompt_sha": "32955922f455df75581cd15d151a76520a7da3875fd5e9405909fac3c24eb841"
   },
   "unruled:sc#1": {
-   "class": "out of scope",
-   "evidence": "i1040sc pp. 4-5, 14-15. sc.passive (material participation and not a rental) feeds sc.screened, which refuses sc.line1 when No; a section 461(l) excess business loss is refused by s1.line8_other (8p).",
-   "prompt_sha": "27b6c044d5dfb64b84da32682d7957f4e486bfeb91bba5d92ae80eb25f9e8729",
-   "gate": "sc.screened"
-  },
-  "unruled:sc#2": {
    "class": "covered",
-   "evidence": "i1040sc p. 6. As sc#1 of the backlog round: scveh.smr_ok asks the first-year, whole-lease and five-vehicle rules; scveh.lease_smr_bad refuses actual expenses on a leased vehicle after the standard rate.",
-   "prompt_sha": "27b6c044d5dfb64b84da32682d7957f4e486bfeb91bba5d92ae80eb25f9e8729",
+   "evidence": "i1040sc pp. 6-7. As sc#2 of the refresh round: scveh.smr_ok asks the first-year, whole-lease and five-vehicle rules; scveh.lease_smr_bad refuses actual expenses on a leased vehicle after the standard rate. The Part IV statement for additional vehicles is filing information.",
+   "prompt_sha": "bc5f16d45d8555e54bea39a0ee6a2d216dc1089186cf1152339683e60b6d9a53",
    "line": "scveh.smr_ok"
   },
-  "unruled:sc#3": {
+  "unruled:sc#2": {
    "class": "out of scope",
-   "evidence": "i1040sc p. 13. As sc#3 of the backlog round: a home is real property, refused by asset.screen, so no home depreciation reaches line 13.",
-   "prompt_sha": "27b6c044d5dfb64b84da32682d7957f4e486bfeb91bba5d92ae80eb25f9e8729",
+   "evidence": "i1040sc p. 13. As sc#3 of the refresh round: a home is real property, refused by asset.screen, so no home depreciation or section 179 reaches line 13.",
+   "prompt_sha": "bc5f16d45d8555e54bea39a0ee6a2d216dc1089186cf1152339683e60b6d9a53",
    "gate": "asset.screened"
   },
-  "unruled:sc#4": {
+  "unruled:sc#3": {
    "class": "covered",
-   "evidence": "i7206 p. 2. ltc.payments excludes months the person was eligible for a long-term care plan subsidized by an employer.",
-   "prompt_sha": "27b6c044d5dfb64b84da32682d7957f4e486bfeb91bba5d92ae80eb25f9e8729",
+   "evidence": "i7206 p. 2. As sc#4 of the refresh round: ltc.payments excludes months the person was eligible for a long-term care plan subsidized by an employer (the separate test for long-term care plans).",
+   "prompt_sha": "bc5f16d45d8555e54bea39a0ee6a2d216dc1089186cf1152339683e60b6d9a53",
    "line": "ltc.payments"
+  },
+  "unruled:sc#4": {
+   "class": "out of scope",
+   "evidence": "i1040sc pp. 1, 14. As sc#1 of the refresh round: a section 461(l) excess business loss adjustment (Form 461, Schedule 1 line 8p) is named and refused by s1.line8_other.",
+   "prompt_sha": "bc5f16d45d8555e54bea39a0ee6a2d216dc1089186cf1152339683e60b6d9a53",
+   "gate": "s1.line8_other"
   },
   "unruled:sc#5": {
    "class": "presentation",
-   "evidence": "i1040sc p. 5. As sc#4 of the backlog round: the Form 1099-NEC difference statement is filing information.",
-   "prompt_sha": "27b6c044d5dfb64b84da32682d7957f4e486bfeb91bba5d92ae80eb25f9e8729"
+   "evidence": "i1040sc p. 5. As sc#5 of the refresh round: the Form 1099-NEC difference statement is filing information.",
+   "prompt_sha": "bc5f16d45d8555e54bea39a0ee6a2d216dc1089186cf1152339683e60b6d9a53"
   },
   "unruled:sc#6": {
    "class": "presentation",
-   "evidence": "i1040sc p. 8. As sc#5 of the backlog round: the statement and margin notation for interest above Form 1098 are filing information.",
-   "prompt_sha": "27b6c044d5dfb64b84da32682d7957f4e486bfeb91bba5d92ae80eb25f9e8729"
+   "evidence": "i1040sc p. 8. As sc#6 and sc#7 of the refresh round: the statements and margin notations for lines 16a and 16b are filing information; the interest is entered.",
+   "prompt_sha": "bc5f16d45d8555e54bea39a0ee6a2d216dc1089186cf1152339683e60b6d9a53"
   },
   "unruled:sc#7": {
    "class": "presentation",
-   "evidence": "i1040sc p. 8. The line 16b statement and margin notation are filing information; the interest is entered.",
-   "prompt_sha": "27b6c044d5dfb64b84da32682d7957f4e486bfeb91bba5d92ae80eb25f9e8729"
+   "evidence": "i1040sc pp. 3-5. The header entries (lines A, B, D, E, H and I) are filing information; no amount depends on them.",
+   "prompt_sha": "bc5f16d45d8555e54bea39a0ee6a2d216dc1089186cf1152339683e60b6d9a53"
   },
   "unruled:scope#1": {
-   "class": "real gap",
-   "evidence": "p575 p. 35. A qualified disaster recovery distribution received in 2025 is refused by retirement.special (BUG-0393). Open: the recontribution of a home-purchase or construction distribution canceled because of a qualified disaster (Form 8915-F) is not named; the same point is screen finding retirement.special 1. Low; BUG-0402.",
-   "prompt_sha": "b246eee0df84e699db2e0e01676f089239f55769be235388a72e05f7a73061a8",
-   "bug": "BUG-0402"
+   "class": "out of scope",
+   "evidence": "p575 p. 35. retirement.special names 'a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one, or a recontribution of a distribution to purchase or construct a main home that was canceled because of a qualified disaster (Form 8915-F)' (BUG-0408) and refuses the distribution's taxable amount; scope.other_income asks the 2023 and 2024 parts and repayments.",
+   "prompt_sha": "73a0944f68f6fb2fb1c48d46108e1d95f142381d0da9ce064b8639c839f2b258",
+   "gate": "retirement.special"
   },
   "unruled:scope#2": {
-   "class": "real gap",
-   "evidence": "i1040gi p. 36. The Schedule D Tax Worksheet is routed by f1040.gate.sdtw (as scope#2 of the backlog round). Open: Schedule J income averaging for fishing income on Schedule C is not offered; it is an election that can only lower tax. Low; BUG-0402.",
-   "prompt_sha": "b246eee0df84e699db2e0e01676f089239f55769be235388a72e05f7a73061a8",
-   "bug": "BUG-0402"
+   "class": "covered",
+   "evidence": "i1040gi p. 36. As scope#2 of the refresh round: f1040.gate.sdtw routes the Schedule D Tax Worksheet when Schedule D line 18 or 19 is more than zero (sd.line18 and sd.line19 are figured from Form 1099-DIV boxes 2d and 2b) or Form 4952 line 4g has an election (sd.investment_election).",
+   "prompt_sha": "73a0944f68f6fb2fb1c48d46108e1d95f142381d0da9ce064b8639c839f2b258",
+   "line": "f1040.gate.sdtw"
   },
   "unruled:scope#3": {
    "class": "out of scope",
-   "evidence": "i1040sse p. 1. As scope#1 of the backlog round: person.se_screen names an approved Form 4029 and refuses Schedule SE.",
-   "prompt_sha": "b246eee0df84e699db2e0e01676f089239f55769be235388a72e05f7a73061a8",
+   "evidence": "i1040sse p. 1. As scope#3 of the refresh round: person.se_screen names an approved Form 4029 or Form 4361 and refuses Schedule SE.",
+   "prompt_sha": "73a0944f68f6fb2fb1c48d46108e1d95f142381d0da9ce064b8639c839f2b258",
    "gate": "person.se_screened"
   },
-  "unruled:scope#4": {
-   "class": "out of scope",
-   "evidence": "i1040gi p. 43. household.credit_disallowed asks about an earlier EIC reduction or disallowance and the disallowance periods; household.eic_disallowed_claim refuses eic.credit.",
-   "prompt_sha": "b246eee0df84e699db2e0e01676f089239f55769be235388a72e05f7a73061a8",
-   "gate": "household.eic_disallowed_claim"
-  },
   "unruled:scveh#1": {
-   "class": "real gap",
-   "evidence": "i1040sc p. 8; p946 p. 59; i4562 p. 14. The lease inclusion amount is refused by sc.special (as scveh#1 of the backlog round). Open: a leased vehicle converted to or from personal use in 2025 is not refused (scveh.screened gates only scveh.cost), so its business share uses full-year miles and payments. Low; BUG-0402.",
-   "prompt_sha": "8c884f8a8e3cd9a11825f4714bc22649925d6f14811e7bebb0120e6979aed90b",
-   "bug": "BUG-0402"
+   "class": "out of scope",
+   "evidence": "i1040sc p. 8; p946 p. 59. As scveh#1 of the refresh round: sc.special names 'an inclusion amount for leased property' and sc.screened refuses the business; the conversion part was fixed by BUG-0408 (scveh.lease_smr_before).",
+   "prompt_sha": "6a9d0cb117e33d2f8eec1dc08eddfa4ebb260530b4eb4adb37a5def29754fa3a",
+   "gate": "sc.screened"
   },
   "unruled:scveh#2": {
-   "class": "out of scope",
-   "evidence": "i1040sc p. 6. As scveh#2 of the backlog round: a small business taxpayer is exempt from the uniform capitalization rules; one that is not is refused by sc.method_other (sc.screened).",
-   "prompt_sha": "8c884f8a8e3cd9a11825f4714bc22649925d6f14811e7bebb0120e6979aed90b",
-   "gate": "sc.screened"
+   "class": "real gap",
+   "evidence": "p463 p. 26. scveh.cost names sales tax but not destination charges and dealer preparation, nor the reduction for gas guzzler tax; scveh.screen does not name a substantial improvement to the vehicle, which is a separate 5-year asset sharing the vehicle's depreciation limits. Rare. Low; BUG-0414.",
+   "prompt_sha": "6a9d0cb117e33d2f8eec1dc08eddfa4ebb260530b4eb4adb37a5def29754fa3a",
+   "bug": "BUG-0414"
   },
   "unruled:scveh#3": {
    "class": "real gap",
-   "evidence": "i1040sc p. 15. Same point as scveh#1: commuting miles for a leased or standard-mileage vehicle converted in 2025 are not limited to the business period, and they enter total miles (scveh.total_c). Low; BUG-0402.",
-   "prompt_sha": "8c884f8a8e3cd9a11825f4714bc22649925d6f14811e7bebb0120e6979aed90b",
-   "bug": "BUG-0402"
+   "evidence": "i4562 p. 14; p463 p. 25. The business/investment use percentage counts miles driven for the production of income; scveh asks only business, commuting and other miles, and scveh.screen refuses investment use only when it brings qualified business use to 50% or less. A vehicle with some investment use above that line gets a lower percentage (depreciation understated). Rare. Low; BUG-0414.",
+   "prompt_sha": "6a9d0cb117e33d2f8eec1dc08eddfa4ebb260530b4eb4adb37a5def29754fa3a",
+   "bug": "BUG-0414"
+  },
+  "unruled:scveh#4": {
+   "class": "presentation",
+   "evidence": "i1040sc p. 7; i4562 p. 16. Schedule C lines 45 to 47b and Form 4562 Part V Section B (lines 30 to 36) are filing information; no amount depends on them, and scveh.screen refuses a vehicle whose use is not supported by adequate records.",
+   "prompt_sha": "6a9d0cb117e33d2f8eec1dc08eddfa4ebb260530b4eb4adb37a5def29754fa3a"
   },
   "unruled:sd#1": {
    "class": "out of scope",
@@ -803,15 +803,15 @@
    "gate": "person.se_screened"
   },
   "unruled:sli#1": {
-   "class": "real gap",
-   "evidence": "i1040gi pp. 98-99. sli.interest uses 'qualified student loans' without the definition (whose expenses, eligible student, related-person lender, mixed-use proceeds, qualified employer plan loans). Low; BUG-0402.",
-   "prompt_sha": "5c5eb60e30832e9d92cd3adf9628571540731f6e76465c87d81dc29c00b53bed",
-   "bug": "BUG-0402"
+   "class": "out of scope",
+   "evidence": "i1040gi p. 99. The only overlap the claim names, a home-secured loan, is refused on Schedule A: sa.unsupported names mortgage interest on a loan whose proceeds were not all used to buy, build or improve the home. Interest on a qualified student loan (proceeds used only for education, sli.interest) is not a Schedule C business expense.",
+   "prompt_sha": "bc247ab882fd02afa70110f2eca756b902fb57e7e601ab42cfe9d8624f46d913",
+   "gate": "sa.unsupported"
   },
   "unruled:ssb#1": {
    "class": "out of scope",
-   "evidence": "i1040gi pp. 31-32. The line 6d checkbox is for married filing separately, which is refused (s3.mfs).",
-   "prompt_sha": "af2df1e76e8a890ea441ba07c72efd73bd3023b441b9054facb81ac0cd072a34",
+   "evidence": "i1040gi pp. 31-32. As ssb#1 of the refresh round: the line 6d checkbox is for married filing separately, which is refused (s3.mfs).",
+   "prompt_sha": "6f4db40fe027fd1f99941f1b4ea979627dc2997f20635ef0f0e14183589400a1",
    "gate": "s3.mfs"
   },
   "unruled:tax_on_amount#1": {
@@ -819,12 +819,6 @@
    "evidence": "i1040gi p. 68. The tax_table columns map qss to the joint column ('This column must also be used by a qualifying surviving spouse').",
    "prompt_sha": "cf77a506618119c7060955f974db3e5c859eda544dab84470a3eb02147401b81",
    "line": "table_tax"
-  },
-  "unruled:tipjob#1": {
-   "class": "real gap",
-   "evidence": "i1040gi p. 102. tipjob.qualified does not exclude prostitution and pornographic activity outright. Low; BUG-0402.",
-   "prompt_sha": "fb8ec3c464f1cb16bfcc48cf8ce302334389bc536c80087c1059fca3b2bb2251",
-   "bug": "BUG-0402"
   },
   "unruled:u1250#1": {
    "class": "out of scope",
@@ -840,26 +834,32 @@
   },
   "unruled:w2#1": {
    "class": "out of scope",
-   "evidence": "i1040gi p. 117. person.rrta asks about railroad retirement compensation or taxes (W-2 box 14) and refuses person.credit, the excess social security credit.",
-   "prompt_sha": "f53ceb571a792b779ef1dd0aec8caf6bfc13317b4dabb840e44577f3e1005302",
-   "gate": "person.rrta"
+   "evidence": "i8959 p. 1. w2.box5 feeds only Form 8959 (person.medicare5); f8959.unsupported names 'Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)' and refuses Form 8959.",
+   "prompt_sha": "b09d0516a0fd8987fce1e3c82d700704a06f52f71355b8ccf8fff4164be906dc",
+   "gate": "f8959.unsupported"
   },
   "unruled:w2#2": {
-   "class": "real gap",
-   "evidence": "iw2w3 p. 17. w2.box2 does not say that box 2 of a Form W-2AS, W-2CM, W-2GU or W-2VI is territorial income tax, not federal withholding. Rare. Low; BUG-0402.",
-   "prompt_sha": "f53ceb571a792b779ef1dd0aec8caf6bfc13317b4dabb840e44577f3e1005302",
-   "bug": "BUG-0402"
+   "class": "out of scope",
+   "evidence": "i8959 p. 1. As w2#1: w2.box6 feeds only Form 8959 (person.medicare6), refused by f8959.unsupported for a Form 499R-2/W-2PR.",
+   "prompt_sha": "b09d0516a0fd8987fce1e3c82d700704a06f52f71355b8ccf8fff4164be906dc",
+   "gate": "f8959.unsupported"
   },
   "unruled:w2#3": {
    "class": "out of scope",
-   "evidence": "i8959 p. 1. f8959.unsupported names 'Medicare wages on a wage statement from a U.S. territory (such as Form 499R-2/W-2PR)' and refuses Form 8959.",
-   "prompt_sha": "f53ceb571a792b779ef1dd0aec8caf6bfc13317b4dabb840e44577f3e1005302",
-   "gate": "f8959.unsupported"
+   "evidence": "iw2w3 p. 21; f1040s2 line 17h. The additional tax on code Z income is a Schedule 2 amount; s2.other asks about 'any amount on Schedule 2' other than the taxes this tool figures and refuses.",
+   "prompt_sha": "b09d0516a0fd8987fce1e3c82d700704a06f52f71355b8ccf8fff4164be906dc",
+   "gate": "s2.other"
   },
   "unruled:w2#4": {
    "class": "out of scope",
-   "evidence": "i2441 p. 5. s8812.combat_pay asks about nontaxable combat pay and refuses Form 2441 lines 4, 5, 18 and 19.",
-   "prompt_sha": "f53ceb571a792b779ef1dd0aec8caf6bfc13317b4dabb840e44577f3e1005302",
+   "evidence": "iw2w3 pp. 17, 20; f1040s2 line 17k. The excise tax on golden parachute payments is a Schedule 2 amount, refused by s2.other.",
+   "prompt_sha": "b09d0516a0fd8987fce1e3c82d700704a06f52f71355b8ccf8fff4164be906dc",
+   "gate": "s2.other"
+  },
+  "unruled:w2#5": {
+   "class": "out of scope",
+   "evidence": "i2441 p. 5. As w2#4 of the refresh round: s8812.combat_pay asks about nontaxable combat pay and refuses Form 2441 lines 4, 5, 18 and 19.",
+   "prompt_sha": "b09d0516a0fd8987fce1e3c82d700704a06f52f71355b8ccf8fff4164be906dc",
    "gate": "s8812.combat_pay"
   }
  }

@@ -11,6 +11,7 @@
 // route reads, as an interview would ask them (routeJob).
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
+import { createHash } from "node:crypto";
 import { loadCanonical } from "./canonical.js";
 import { evaluate, evaluateAll } from "./eval.js";
 import type { EvalResult, Value } from "./eval.js";
@@ -471,13 +472,31 @@ export function classmJobs(args: string[]): void {
     .map((c) => c.inputs) : [];
   const corpus = [...sampleReturns(data, corpusSize, SEED), ...seeds].map((c) => roundInputs(c, data));
   const results = corpus.map((inputs) => evaluateAll(data, inputs));
-  const keysPerCase = results.map((r) => { const s = new Set<string>(); for (const d of r.derivations.values()) { const b = branchKeys(d); for (const k of [...b.sides, ...b.guards]) s.add(k); } return s; });
+  // A return's branch keys among the documents' own (all that selection counts), kept small per return.
+  const formKeys = new Set(data.forms.flatMap(docKeys));
+  const branchesOf = (r: EvalResult): Set<string> => { const s = new Set<string>(); for (const d of r.derivations.values()) { const b = branchKeys(d); for (const k of [...b.sides, ...b.guards]) if (formKeys.has(k)) s.add(k); } return s; };
+  const keysPerCase = results.map(branchesOf);
   const jobs: Job[] = [];
   const summary: string[] = [];
   // The interview's targets, evaluated lazily, give the route a return takes: the answers it asks.
   const targets = loadInterview("full").targets;
   const reach = new Map<number, EvalResult>();
   const targetsReach = (i: number): EvalResult => { if (!reach.has(i)) reach.set(i, evaluate(data, corpus[i]!, targets)); return reach.get(i)!; };
+  // The branches a return takes once a job on it is routed (routeJob): evaluated on the answers the
+  // interview's route asks and those the requested lines read, so selection counts only branches a
+  // job can take. Cached per return and answer set (most documents add no answer to the route's).
+  const asked = new Map<number, Set<string>>();
+  const routed = new Map<number, Map<string, Set<string>>>();
+  const onRoute = (i: number, roots: string[]): Set<string> => {
+    const full = corpus[i]!;
+    if (!asked.has(i)) asked.set(i, answersRead(reach.get(i) ?? evaluate(data, full, targets), full));
+    const requested = answersRead(evaluate(data, full, roots), full);
+    const kept = Object.keys(full).filter((k) => k.startsWith("$") || k === "f1040.status" || asked.get(i)!.has(k) || requested.has(k));
+    const sig = createHash("sha256").update(kept.join("\n")).digest("hex");
+    const cache = routed.get(i) ?? new Map<string, Set<string>>(); routed.set(i, cache);
+    if (!cache.has(sig)) cache.set(sig, branchesOf(evaluateAll(data, Object.fromEntries(kept.map((k) => [k, full[k]!])))));
+    return cache.get(sig)!;
+  };
   const problems: string[] = [];
   const routedCover = (built: Job[]): number => new Set(built.flatMap((j) => j.branches)).size;
   for (const doc of data.forms) {
@@ -508,13 +527,23 @@ export function classmJobs(args: string[]): void {
     // the richest returns, those where a summed entry refuses, and build nothing.
     const buildable = candidates.filter((i) => (isCollection ? buildCollectionJob : buildJob)(data, doc, corpus[i]!, results[i]!, 0, []) !== null);
     candidates.splice(0, candidates.length, ...buildable);
-    const reachable = new Set(keys.filter((k) => candidates.some((i) => keysPerCase[i]!.has(k))));
+    const reachableAll = keys.filter((k) => candidates.some((i) => keysPerCase[i]!.has(k))).length;
+    // The lines a job on the return requests, as buildJob and buildCollectionJob choose them (a
+    // collection's live-entry filter aside), and the branches the routed job then takes.
+    const isDefLine = (l: Line): boolean => { const o = { refs: new Set<string>(), defs: false, sums: [] as { collection: string; field: string; where: Set<string> }[] }; walk(l.expr as Expr, o); return o.defs; };
+    const printedFill = isCollection ? [] : doc.lines.filter((l) => !isHelperLine(l) && l.expr.op !== "input" && !isDefLine(l));
+    const rootsOf = (i: number): string[] => isCollection
+      ? [...entriesOf(doc.id, results[i]!).values()].flatMap((f) => collectionFill(doc).map((l) => f.get(l.id)).filter((k): k is string => !!k))
+      : printedFill.filter((l) => !hiddenLine(l, results[i]!)).map((l) => l.id);
+    const routeKeys = new Map<number, Set<string>>();
+    for (const i of candidates) routeKeys.set(i, onRoute(i, rootsOf(i)));
+    const reachable = new Set(keys.filter((k) => candidates.some((i) => routeKeys.get(i)!.has(k))));
     const covered = new Set<string>(); const chosen: number[] = [];
     while (covered.size < reachable.size) {
       let best = -1, gain = 0;
-      for (const i of candidates) { let g = 0; for (const k of reachable) if (!covered.has(k) && keysPerCase[i]!.has(k)) g++; if (g > gain) { gain = g; best = i; } }
+      for (const i of candidates) { let g = 0; for (const k of reachable) if (!covered.has(k) && routeKeys.get(i)!.has(k)) g++; if (g > gain) { gain = g; best = i; } }
       if (best < 0) break;
-      chosen.push(best); for (const k of keysPerCase[best]!) if (reachable.has(k)) covered.add(k);
+      chosen.push(best); for (const k of routeKeys.get(best)!) if (reachable.has(k)) covered.add(k);
     }
     // A document with no branch of its own (copies and sums) is still worked once, on the case
     // whose worked lines carry the most nonzero amounts (a case of zeros would test no arithmetic).
@@ -547,13 +576,13 @@ export function classmJobs(args: string[]): void {
     let n = 0;
     const built: Job[] = [];
     for (const i of chosen) {
-      const branches = keys.filter((k) => keysPerCase[i]!.has(k));
+      const branches = keys.filter((k) => (routeKeys.get(i) ?? keysPerCase[i]!).has(k));
       const made = isCollection ? buildCollectionJob(data, doc, corpus[i]!, results[i]!, ++n, branches) : buildJob(data, doc, corpus[i]!, results[i]!, ++n, branches);
       const job = made && routeJob(data, doc, made, results[i]!, targetsReach(i), targets, problems);
       if (job) built.push(job); else n--;
     }
     jobs.push(...built);
-    summary.push(`${doc.id}: ${n} case(s) cover ${routedCover(built)}/${keys.length} branches on the interview's route (${covered.size} with every answer; ${keys.length - reachable.size} not reachable by a computed case)`);
+    summary.push(`${doc.id}: ${n} case(s) cover ${routedCover(built)}/${keys.length} branches on the interview's route (${covered.size} selected on the route; ${keys.length - reachable.size} not reachable on the route by a computed case, ${keys.length - reachableAll} with every answer)`);
   }
   // Shared definitions: instances (an amount and a filing status) drawn from the corpus, chosen to
   // take every reachable branch of the definition.

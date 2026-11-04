@@ -476,7 +476,8 @@ form:
       op: input
       source: Lodging and transportation for overnight business travel away from your tax home, and incidental expenses
         of that travel (fees and tips to porters, baggage carriers, bellhops, hotel maids, stewards and others on ships, and
-        hotel servants in foreign countries; not laundry, lodging taxes or telephone calls), either at their actual cost
+        hotel servants in foreign countries; not laundry, cleaning and pressing of clothing, lodging taxes, or the costs of telegrams
+        or telephone calls), either at their actual cost
         or, for a travel day on which you paid or incurred no meal expenses and did not use the standard meal allowance, at
         $5 for that day (not meals and not entertainment; on a day you use the standard meal allowance, incidental expenses
         are part of that allowance);
@@ -489,7 +490,8 @@ form:
       doc: i1040sc
       locator: p. 9, Line 24a, "you can use an optional method for deducting incidental expenses only if you did not pay
         or incur meal expenses on a day you were traveling away from your tax home", "The amount of the deduction is $5 a
-        day" and "You cannot use this method on any day that you use the standard meal allowance", "You can’t deduct expenses paid or incurred in connection with employment away from home if
+        day", "They do not include expenses for laundry, cleaning and pressing of clothing, lodging taxes, or the costs of
+        telegrams or telephone calls" and "You cannot use this method on any day that you use the standard meal allowance", "You can’t deduct expenses paid or incurred in connection with employment away from home if
         that period of employment exceeds 1 year", "you cannot deduct travel expenses for your spouse, your dependent, or
         any other individual unless" and "held outside the North American area unless"; p. 9, Line 24b, "you can use the standard
         meal allowance for your daily meals and incidental expenses"

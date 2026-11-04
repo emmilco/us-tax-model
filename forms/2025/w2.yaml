@@ -20,10 +20,13 @@ form:
       type: NonNegDollars
       expr:
         op: input
-        source: Federal income tax withheld
+        source: Federal income tax withheld (box 2 of a Form W-2; on a Form W-2AS, W-2CM, W-2GU or W-2VI, box 2 is American
+          Samoa, CNMI, Guam or U.S. Virgin Islands income tax, not federal income tax, so enter zero for it)
       cite:
         doc: iw2w3
-        locator: p. 17, box 2
+        locator: 'p. 17, Box 2—Federal income tax withheld, "Show the total federal income tax withheld from the employee''s
+          wages for the year" and "For Forms W-2AS, W-2CM, W-2GU, or W-2VI, show the total American Samoa, CNMI, Guam, or
+          U.S. Virgin Islands income tax withheld"'
     - id: w2.box3
       printed: "3"
       label: Social security wages

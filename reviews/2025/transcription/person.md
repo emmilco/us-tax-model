@@ -5,6 +5,7 @@ Second transcription of `Each person on the return — per-person facts and tota
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
+| line-scoped reviews | 1 (latest 2026-11-04); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 5acd7748711e48a20b6b569cd453aba96958feda7e44fb1d7eb742f56cf15cdd |
@@ -21,7 +22,7 @@ Second transcription of `Each person on the return — per-person facts and tota
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
 | subject sha256 | 0b36a8a0f52fc76d4f7330c090070e80439bb12436d36e0b1788c257489b6c1b |
 | printed lines compared | 99 |
-| agree / disagree / missing | 42 / 57 / 0 |
+| agree / disagree / missing | 47 / 52 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -90,7 +91,10 @@ Second:
 {"alternatives": [{"guard": {"args": [{"const": false}, {"input": "person.eligible_educator"}], "test": "eq"}, "then": {"line": "zero"}}, {"guard": {"args": [{"const": true}, {"input": "person.eligible_educator"}], "test": "eq"}, "then": {"of": [{"input": "person.educator_expenses"}, {"param": "s1.educator_max"}], "op": "smaller_of"}}], "op": "choose"}
 ```
 
-Ruling: model error; i1040gi p. 93, Line 11, "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025.". The reply asks person.eligible_educator of filers with no educator expenses entered; the project skips it when the expense is zero. The candidate reads answers this line does not need on the project's interview (the differences are candidate-unknown, or a candidate refusal on a screen the source does not apply here); it gives no different completed-return amount. Reused from the prior ruling (`.transcription/archive/before-catalog-refresh-2026-11-03/`), re-checked: project line unchanged; counts below supersede any in the reused text. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,565 fixtures, 500 generated returns seed 20261026, 1,859 partial records; 5,033 comparisons): 3,124 of 5,033 agree; 1,888 candidate-unknown, 21 project-unknown; on returns the full interview completes: 204 candidate-unknown. Project stands.
+Second transcription's note: Read as this person's contribution to Schedule 1 line 11: the qualified expenses, reduced as the instructions require (already reduced in the input), capped at $300, and zero if the person was not an eligible educator.
+
+Ruling: model error; same line and candidate as the refresh-round ruling. i1040gi p. 93, Line 11, "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025." The reply asks person.eligible_educator of filers with no educator expenses; the project skips it when the expense is zero. No amount differs. The round-2 wording of person.educator_expenses (computer equipment and protective equipment, i1040gi p. 93) is not at issue. Project stands.
+Reviewed in: pass 031dac8cecc9
 
 ### person.hsa_forms — Number of Forms 8889 entered for this person
 Status: **AGREE**
@@ -983,7 +987,10 @@ Second:
 {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}
 ```
 
-Ruling: scope; p560 p. 39, Step 1. As the prior ruling (`.transcription/archive/before-catalog-refresh-2026-11-03/`): the reply sums sc.line31 with no refusal; the project copies person.sc_total and refuses at person.se_screened (cited) where there is self-employment income not on a Schedule C. The 91 completed project-unknowns (person.se_screen, for example classm.f4952.1.deepseek taxpayer) are persons with no Schedule C on returns that do not use the worksheet; the 1 completed project-refuses is classm.ssb.5. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,565 fixtures, 500 generated returns seed 20261026, 1,859 partial records; 5,033 comparisons): 3,195 of 5,033 agree; 1,690 project-unknown, 147 project-refuses, 1 candidate-refuses; on returns the full interview completes: 91 project-unknown, 1 project-refuses. Project stands.
+Second transcription's note: Schedule F, partnership (K-1) income and the Schedule SE line 1b reduction (CRP payments) are covered by the self-employment screening question, so Step 1 is the total of this person's Schedule C line 31 amounts.
+
+Ruling: scope; same line and candidate as the refresh-round ruling. p560 p. 39, Step 1: both sum the person's Schedule C results; the project refuses at person.se_screened (cited) where there is self-employment income not on a Schedule C, and in this pass the reply refuses on person.se_screen too. The round-2 display condition person.sep_shown (plan is SEP) matches the reply's own (its h_is_sep). Project stands.
+Reviewed in: pass 031dac8cecc9
 
 ### Step 2 — Deduction for self-employment tax from Schedule 1, line 15
 Status: **DISAGREE**
@@ -997,48 +1004,21 @@ Project:
 Second:
 
 ```json
-{"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, {"const": 0}], "test": "le"}, "then": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}}, {"guard": {"args": [{"const": 0}, {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}], "test": "lt"}, "then": {"amount": {"from": {"collection": "sc", "field": "sc.line31", "op": "sum_over", "where": null}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"line": "wages"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}
+{"amount": {"of": [{"amount": {"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"line": "Step 1"}, {"const": 0}], "test": "le"}, "then": {"line": "Step 1"}}, {"guard": {"args": [{"const": 0}, {"line": "Step 1"}], "test": "lt"}, "then": {"amount": {"from": {"line": "Step 1"}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"line": "Step 1"}, {"const": 0}], "test": "le"}, "then": {"line": "Step 1"}}, {"guard": {"args": [{"const": 0}, {"line": "Step 1"}], "test": "lt"}, "then": {"amount": {"from": {"line": "Step 1"}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"line": "Step 1"}, {"const": 0}], "test": "le"}, "then": {"line": "Step 1"}}, {"guard": {"args": [{"const": 0}, {"line": "Step 1"}], "test": "lt"}, "then": {"amount": {"from": {"line": "Step 1"}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, "op": "multiply_rate", "rate": {"param": "se.rate_029"}}, {"amount": {"of": [{"alternatives": [{"guard": {"args": [{"param": "se.floor"}, {"alternatives": [{"guard": {"args": [{"line": "Step 1"}, {"const": 0}], "test": "le"}, "then": {"line": "Step 1"}}, {"guard": {"args": [{"const": 0}, {"line": "Step 1"}], "test": "lt"}, "then": {"amount": {"from": {"line": "Step 1"}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}], "test": "le"}, "then": {"from": {"alternatives": [{"guard": {"args": [{"line": "Step 1"}, {"const": 0}], "test": "le"}, "then": {"line": "Step 1"}}, {"guard": {"args": [{"const": 0}, {"line": "Step 1"}], "test": "lt"}, "then": {"amount": {"from": {"line": "Step 1"}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, "op": "subtract_floor0", "take": {"const": 0}}}, {"guard": {"args": [{"alternatives": [{"guard": {"args": [{"line": "Step 1"}, {"const": 0}], "test": "le"}, "then": {"line": "Step 1"}}, {"guard": {"args": [{"const": 0}, {"line": "Step 1"}], "test": "lt"}, "then": {"amount": {"from": {"line": "Step 1"}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "se.rate_9235"}}}], "op": "choose"}, {"param": "se.floor"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}, {"from": {"param": "se.wage_base"}, "op": "subtract_floor0", "take": {"of": [{"collection": "w2", "field": "w2.box3", "op": "sum_over", "where": null}, {"collection": "w2", "field": "w2.box7", "op": "sum_over", "where": null}], "op": "sum"}}], "op": "smaller_of"}, "op": "multiply_rate", "rate": {"param": "se.rate_124"}}], "op": "sum"}, "op": "multiply_rate", "rate": {"param": "se.rate_50"}}
 ```
 
-Ruling: model error; p560 p. 39, Step 2. As the prior ruling (`.transcription/archive/before-catalog-refresh-2026-11-03/`): it reads its own person.se_screen for every person (91 completed unknowns). executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,565 fixtures, 500 generated returns seed 20261026, 1,859 partial records; 5,033 comparisons): 3,183 of 5,033 agree; 1,701 candidate-unknown, 147 candidate-refuses, 2 project-refuses; on returns the full interview completes: 91 candidate-unknown, 1 candidate-refuses. Project stands.
+Second transcription's note: Schedule 1 line 15 combines both spouses on a joint return. For the worksheet of one person, this uses that person's own Schedule SE line 13. The definition name 'se' for the shared Schedule SE definition is assumed. Railroad retirement compensation (line 8a) is refused.
+
+Ruling: model error; p560 p. 39, Step 2. The reply's Step 2 refuses on person.se_screen and person.rrta for every person, with no Schedule C guard, so it asks the self-employment screen of persons with no business; the project gives zero without asking when the person has no Schedule C. Values agree where both compute. Same point as the refresh-round ruling. Project stands.
+Reviewed in: pass 031dac8cecc9
 
 ### Step 3 — Net earnings from self-employment. Subtract step 2 from step 1
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"shown_when": null, "value": {"from": {"line": "Step 1"}, "op": "subtract_floor0", "take": {"line": "Step 2"}}}
-```
-
-Second:
-
-```json
-{"shown_when": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "value": {"from": {"line": "Step 1"}, "op": "subtract_floor0", "take": {"line": "Step 2"}}}
-```
-
-Second transcription's note: The worksheet gives no floor for a loss. A negative result is held as zero, since no SEP deduction can arise from it.
-
-Ruling: representation; p560 pp. 39-40, Deduction Worksheet for Self-Employed, Step 3. The formula is the project's; every difference is on an incomplete or refused record (the reply's person.rrta question and refusals reached through Steps 1 and 2); no completed return differs. The reply now adds shown_when person.plan == "sep"; the project's person worksheet computes and shows the Deduction Worksheet for Self-Employed steps for every person (display only, recorded under Low in the findings file); triage compares the project's display. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,565 fixtures, 500 generated returns seed 20261026, 1,859 partial records; 5,033 comparisons): 5,003 of 5,033 agree; 20 candidate-unknown, 8 candidate-refuses, 2 project-refuses; on returns the full interview completes: none. Project stands.
+Status: **AGREE**
+Reviewed in: pass 031dac8cecc9
 
 ### Step 5 — Multiply step 3 by step 4 (the plan rate divided by the plan rate plus 1, to six decimal p
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"shown_when": null, "value": {"amount": {"line": "Step 3"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "person.sep_rate"}, "op": "multiply_count"}, "places": 6, "whole": {"of": [{"amount": {"const": 1}, "count": {"input": "person.sep_rate"}, "op": "multiply_count"}, {"param": "sc.hundred_cents"}], "op": "sum"}}}
-```
-
-Second:
-
-```json
-{"shown_when": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "value": {"amount": {"line": "Step 3"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "person.sep_rate"}, "op": "multiply_count"}, "places": 6, "whole": {"of": [{"amount": {"const": 1}, "count": {"input": "person.sep_rate"}, "op": "multiply_count"}, {"param": "sc.hundred_cents"}], "op": "sum"}}}
-```
-
-Second transcription's note: No table of Column B rates is supplied. The table rate equals rate ÷ (1 + rate) rounded to six decimal places (for example 10% gives 0.090909 and 25% gives 0.200000). This line reproduces it with prorate at 6 places. Non-whole rates are screened by person.plan_screen.
-
-Ruling: representation; p560 pp. 39-40, Step 5. The prorate is the project's; every difference is on an incomplete or refused record; no completed return differs. The reply now adds shown_when person.plan == "sep"; the project's person worksheet computes and shows the Deduction Worksheet for Self-Employed steps for every person (display only, recorded under Low in the findings file); triage compares the project's display. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,565 fixtures, 500 generated returns seed 20261026, 1,859 partial records; 5,033 comparisons): 5,003 of 5,033 agree; 20 candidate-unknown, 8 candidate-refuses, 2 project-refuses; on returns the full interview completes: none. Project stands.
+Status: **AGREE**
+Reviewed in: pass 031dac8cecc9
 
 ### Step 6 — Multiply $350,000 by your plan contribution rate (not the reduced rate)
 Status: **DISAGREE**
@@ -1055,60 +1035,22 @@ Second:
 {"amount": {"param": "ret.comp_limit"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "person.sep_rate"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}
 ```
 
-Ruling: representation; p560 p. 40, Step 6. The reply rounds to 2 places where the project uses 6; for the whole-percent rates the interview takes the results are the same. No difference. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,565 fixtures, 500 generated returns seed 20261026, 1,859 partial records; 5,033 comparisons): 5,033 of 5,033 agree; none; on returns the full interview completes: none. Project stands.
+Second transcription's note: The plan rate is a whole percent of at most 25, so sep_rate/100 is exact at 2 decimal places.
+
+Ruling: representation; same line and candidate as the refresh-round ruling. p560 p. 40, Step 6: the reply rounds the whole-percent rate to 2 places where the project uses 6; for whole percents the results are the same.
+Reviewed in: pass 031dac8cecc9
 
 ### Step 7 — Enter the smaller of step 5 or step 6
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"shown_when": null, "value": {"of": [{"line": "Step 5"}, {"line": "Step 6"}], "op": "smaller_of"}}
-```
-
-Second:
-
-```json
-{"shown_when": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "value": {"of": [{"line": "Step 5"}, {"line": "Step 6"}], "op": "smaller_of"}}
-```
-
-Ruling: representation; p560 pp. 39-40, Deduction Worksheet for Self-Employed, Step 7. The formula is the project's; every difference is on an incomplete or refused record (the reply's person.rrta question and refusals reached through Steps 1 and 2); no completed return differs. The reply now adds shown_when person.plan == "sep"; the project's person worksheet computes and shows the Deduction Worksheet for Self-Employed steps for every person (display only, recorded under Low in the findings file); triage compares the project's display. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,565 fixtures, 500 generated returns seed 20261026, 1,859 partial records; 5,033 comparisons): 5,003 of 5,033 agree; 20 candidate-unknown, 8 candidate-refuses, 2 project-refuses; on returns the full interview completes: none. Project stands.
+Status: **AGREE**
+Reviewed in: pass 031dac8cecc9
 
 ### Step 8 — Contribution dollar limit
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"shown_when": null, "value": {"param": "ret.sep_dollar_limit"}}
-```
-
-Second:
-
-```json
-{"shown_when": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "value": {"param": "ret.sep_dollar_limit"}}
-```
-
-Ruling: representation; p560 p. 40, Step 8, the dollar limit. Same parameter; the only disagreement is the visibility. The reply now adds shown_when person.plan == "sep"; the project's person worksheet computes and shows the Deduction Worksheet for Self-Employed steps for every person (display only, recorded under Low in the findings file); triage compares the project's display. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,565 fixtures, 500 generated returns seed 20261026, 1,859 partial records; 5,033 comparisons): 5,033 of 5,033 agree; none; on returns the full interview completes: none. Project stands.
+Status: **AGREE**
+Reviewed in: pass 031dac8cecc9
 
 ### Step 21 — Maximum deductible contribution (the smaller of step 7 or step 8; no elective deferrals)
-Status: **DISAGREE**
-
-Project:
-
-```json
-{"shown_when": null, "value": {"of": [{"line": "Step 7"}, {"line": "Step 8"}], "op": "smaller_of"}}
-```
-
-Second:
-
-```json
-{"shown_when": {"args": [{"const": "sep"}, {"input": "person.plan"}], "test": "eq"}, "value": {"of": [{"line": "Step 7"}, {"line": "Step 8"}], "op": "smaller_of"}}
-```
-
-Second transcription's note: Steps 9-20 apply only to elective deferrals to the self-employed plan. Those are screened by person.plan_screen (SARSEP and other deferrals), so step 21 is the smaller of step 7 or step 8.
-
-Ruling: representation; p560 pp. 39-40, Deduction Worksheet for Self-Employed, Step 21. The formula is the project's; every difference is on an incomplete or refused record (the reply's person.rrta question and refusals reached through Steps 1 and 2); no completed return differs. The reply now adds shown_when person.plan == "sep"; the project's person worksheet computes and shows the Deduction Worksheet for Self-Employed steps for every person (display only, recorded under Low in the findings file); triage compares the project's display. executable-triage-v2 (`reviews/2025/transcription/triage/person.json`; 1,565 fixtures, 500 generated returns seed 20261026, 1,859 partial records; 5,033 comparisons): 5,003 of 5,033 agree; 20 candidate-unknown, 8 candidate-refuses, 2 project-refuses; on returns the full interview completes: none. Project stands.
+Status: **AGREE**
+Reviewed in: pass 031dac8cecc9
 
 ### 27 — Adjusted qualified education expenses. Don't enter more than $4,000
 Status: **DISAGREE**
@@ -1221,16 +1163,346 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | person.ira_se | person.plan_screen, person.rrta, person.se_screen | person.plan_screen, person.rrta, person.se_screen |
 | person.x_tax | person.h_s_split, person.x_other | person.h_s_split |
 | credit | person.rrta | - |
+| Step 1 | person.se_screen | person.se_screen |
 | Step 2 | person.rrta, person.se_screen | person.rrta, person.se_screen |
 | Step 3 | person.rrta, person.se_screen | person.rrta, person.se_screen |
-| Step 5 | person.rrta, person.se_screen | person.rrta, person.se_screen |
-| Step 7 | person.rrta, person.se_screen | person.rrta, person.se_screen |
-| Step 21 | person.rrta, person.se_screen | person.rrta, person.se_screen |
+| Step 5 | person.plan_screen, person.rrta, person.se_screen | person.plan_screen, person.rrta, person.se_screen |
+| Step 6 | person.plan_screen | person.plan_screen |
+| Step 7 | person.plan_screen, person.rrta, person.se_screen | person.plan_screen, person.rrta, person.se_screen |
+| Step 21 | person.plan_screen, person.rrta, person.se_screen | person.plan_screen, person.rrta, person.se_screen |
 | 27 | person.edu_over | person.edu_over |
 | 28 | person.edu_over | person.edu_over |
 | 29 | person.edu_over | person.edu_over |
 | 30 | person.edu_over | person.edu_over |
 | 31 | person.edu_over | person.edu_over |
+
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| person.one | fe9dba8545bb39dfad0d517c019c09e79842bdc7787e1daa14b586b4e660c47f |
+| person.educator_deduction | 38bfd880449141295988a0205ba030c162a02927fd98dcf27f4a26cdebb45dae |
+| person.hsa_forms | 0be7a095813ab656e47303a2a64013c20462a7c0fefc7e4a2a93538e9d9213d7 |
+| person.hsa_split | e89b246066251ab493b530e5cf3d1147be3e710b82ac94fa7201e907f73fc470 |
+| person.hsa_agreed | a1f7458ddbd8b61028e03841fc8fc2ef32e2e9c2c3bd1cb1c7af86d8f4b78bb8 |
+| person.hsa_step1 | 16b63447b74398fab889bcf01042e9ceb06be89e1da3c410dacbab2c9877268c |
+| person.hsa_share | 96756bb74672a6eb86be7eea1d95681336c54e6829d546dad5c1e8d4724d6334 |
+| person.hsa_deduction | 66c8a27ce21ac2bd292111bea72420aad4d789694b1818db035d7a8b6c5cb2b8 |
+| person.hsa_taxable | 71766a3a543c1e548633f813f00c89c13926cb1aa273964680e79f6b0ae81ee7 |
+| person.hsa_addtax | 79c66facd2cda3d724b280e97ff3487e76df3d786ee7d045b606b414e9fa377e |
+| person.tip_employers | d2c7ee22b22dbc674f4911da058857050290bf14046d4c36b676a5219ead59bf |
+| person.tip_total | b7543483c4e8415c3f445e50dce2fee457cbcfdceb0e92350298f82a0f0b6b2b |
+| person.tip_reported | 9d2dd2c1534c9a47d78dce6fa289641b29208dab6b0d67fb4f2b93225eb54e36 |
+| person.ot_employers | 835d63a96c01a201f1493b1ecbdedb8def2232decaa427923758ec6f452d5d0c |
+| person.ot_total | 60cc0210a3d98fa1e5e7a4659d17a2dab6fd798e0ad2c0b4432fe94ebe274b4e |
+| person.box1 | 048347476ad795db20c566e4abf89a85b9711d80902d4f92b4f5ed25390e3510 |
+| person.box2 | 332464f06085666fb1036ec2389d4b7a1f876f0e759d1227572e183827e55713 |
+| person.ira_amount_a | 8023b079fd2808531f01f294fd873fca50f003767d28c4b8b12664a7256a3f5f |
+| person.ira_taxable | ea1f5e0a4757317cfb183a16dc6d5c641015ef11f961d25d0c5661f694b2caf6 |
+| person.ira_rollovers | 84fd7d3b80a50a2f78281a6e7dd090f90e03050acfea52edd16cde75ddb5ef7b |
+| person.plan_amount_a | 863db048c9c6bba5dc93efce2e6ef3a9c9bcdbaf75c809dd6851cdf11fc46119 |
+| person.plan_taxable | 172449d935854338adc5b4d87e8724fc7a1b5db6349db55d48f20fdef150f364 |
+| person.plan_rollovers | 00ee4cc49f68efd0c4d98d7f1425ca81681d76fdf5885b09c30d4e4c49215642 |
+| person.sav_dist | f16e9253c78a0b2431ef1ffaa51a165e4ac6635459acd5e4ee27d632b192141f |
+| person.medicare5 | 1489105c6645a952a1e7556cb2fcb6dd765af4b5ef13f4cc2bb6a7ff0f72afba |
+| person.medicare6 | 924dca04484add817692cec88a00a383cbd011fe9d03144a3c6700f41b48c3b0 |
+| person.sc_count | ad3f687fe1f52970cad315aa63714b95a7830bf39c3c9b23b0d70ec7363cb4e6 |
+| person.ho_count | c815f001fd7c4943a6da1bcdfff26515e8c97f7f516f1129e0640d2d1d5bac42 |
+| person.mq_q4 | 6aeb6e3a88dc22eb3d3f43fc4529e8f69cfa3be71e5d9df8c54f66e748e88231 |
+| person.mq_total | 2e77bff4b1224a946722f15909d65a546afa8817bf23d2cf3646028a696bfda0 |
+| person.cost179 | bdaec3faf1ff8a1cb451d6bb87ca89abe5135ddc92e57eba085fdf5ad37f8ee0 |
+| person.s179_nonlisted | eed1e8f693928880efed2183c84000648fb1f6cbd03af9c41f0c5365f9857615 |
+| person.s179_listed | 946c1d932438ee5d12aea02072e3cf27c3a5cce6cc9ff28442da184ce0b4ea3b |
+| person.income179 | 1c1c0443448a6d33995cb0808c8744aa1ea6ff9c8d949cf32ffcc55b1c113fd4 |
+| person.sc_total | 83123af697bbbe7be36d30b4a995e99818e4eefcd298d0b557d527d6dc6d8e8b |
+| person.se_line6 | e34f5784f4155132df3b2589cb7bed871184978efb60b68d4f1b40b8f29f8fec |
+| person.se_line12 | 427ef2e9d6593a4f39f1c16afefb9fe9dacd56e0a62b798624618a4cf07b02f2 |
+| person.se_line13 | 1383718f666a86415b5ebd001a4771f40da3ce2ad08ec9a1b45e3975f3ef02cf |
+| person.s16 | f6d9dadaff6464a555bb30700c16afc8e629662974e03bed2cad502a66bbe7af |
+| person.positive_profits | c8f8db0109ef7010f25a63f3ee34b022f9c4cac243b0541d8e227bc452b65884 |
+| person.sehi | 594b112fa4067e629530b2d5a22163255d45921307bf2ee3330ddc224dee7b23 |
+| person.qbi | f6f88fbee37c549b1e641eac4bb908526d1da8eeef10d61aaffae60be4af2b88 |
+| person.eic_se | 70223fbc6b3c7659f3e1c4937baae746246ee739ba99ebc8e3679c3b46b6a322 |
+| person.sc_1a | 717d9ee4adc1ab22a58ae5ff1f14b179ffdd30f00d242472f137fd9b39faa316 |
+| person.dc_benefits | aaaa475edf3a82fd71aefb9ee15d39578e0bb59915ff8be4b57e0a8947831942 |
+| person.dc_has_box10 | 4d8c800ae4204045c8dd4b306bb5d17eed808a4d9040ffc2a0d38e0b78ed5186 |
+| person.dc_earned | 1f54435ede85206f742268b5dc25917a2590f5fee330349a5ab5f5336a2bf9b3 |
+| person.dc_earned_b | 4364a0f7cd981861a9924cb482104fd2d952b3e295eb3fe167ecfd4ccb1bffb8 |
+| person.sav_ineligible | 9dd1f0dbceaf5370c9a85145fb01fe1b1474c4ee83b013b6a53d385f2bc4da9c |
+| person.sav_line1 | cca89cca5e0a4bc63cc128052b5bf8f5dde70fa50b36cd912b32835aeff926b6 |
+| person.sav_line2 | 3a951f19d608732cf775b569885d98e68218f44d7f8dc748e305d7851b362a26 |
+| person.ira_contrib | ee540b4422de8ebf8a73f3f018c15eb8f1d23fcf3275d02596cd6e7859f93155 |
+| person.ira_cov | e2669175377d1df72ad5d989b24c0d6a30c3e803a47803baec00d5171b70650e |
+| person.ira_line2 | 907e32969f4e2bc56ade9ea1787bffd139f0d9738a332dd407acc6101fc336fa |
+| person.ira_line6 | b4a0b8644be3047ef1552587b977baaf03aded852bc5127c1534dbe0c12eeab1 |
+| person.ira_line7 | 970fca83831b1ae5a72d7555cb93f743cc73af5ef04c9e0e996f35edf64135d9 |
+| person.ira_deduction | 32a8854f4d8f5bacbdfeb9d0834f6d7511a6f03e938fcf3b479978b058e36d20 |
+| person.ira_nondeductible | 37f7921daf983cfd552a66e9a84fd626053c39fabced569d21144ee1b81646b7 |
+| person.ira_files_8606 | 4adf465e26ab6610f7e1240ecf696b0c28bca766d95b474efcdb4b0ef803a782 |
+| person.ira_8606_line2 | 97a1ec4921f14c456e0be411df4d5ad816894617a4a08aa9c636b9abc0bba9ba |
+| person.ira_dist_gate | 823c5b9406f54fefc2ad757de64acec3445c6d9c6423a104a77e7a8b49995b42 |
+| person.ira_8606_line14 | 07378f70e2cdcb754ca46594eea324627af99ca81746e6659928867b8ddfc8be |
+| person.ira_ssb | 215461fe39fa25b0206f0ae846975c0298f83410d7bf8980c3fcd43423a0d533 |
+| person.ira_se | d284c86ebdd1d0fd2c89da2f00962dc5a4f5cb43719b08a47e072fbf9db25bcf |
+| person.edu_kid | 139f80dd6430543caa002f93a61b040d5cf918f49747652484af498a3274d4e3 |
+| person.x_l1 | aab488d0bd003a020b7dcf4c3d4c29ee4a8eba7c5f821578f60a11f24725fec6 |
+| person.x_l2_all | 3638ff8e071dc9f78228b2dc9e0f36da6e14c86e4a54a74f8e625f4e34d27037 |
+| person.x_l1_s | d5ee53b6a9d062ab63e43b9df2e306febcc3c9cbb574d0be6420cf2118cb89c7 |
+| person.x_l2_s | 7422be1bc93f026317b7c806b78894a4e0d62e3e987099ca9df268f887f5d980 |
+| person.x_tax | 331b451b6fda8436c64b6ddb4b2b6617c05cf6176c362c9ed9f37e3ce1896ff5 |
+| person.x_must | aad87664aab1b78d240e4e9a94fa760330349b35ae77ee42b8ba0c75653d3c1c |
+| person.x_c05 | a293679e3a4a62a61733350b94a0d7b886100a29f52c70c57742e2d888b6cab9 |
+| person.x_two23 | dd51c965fce9308d98cb63451115c0caf059f79ec1333edd573b0f7ba0b3363a |
+| person.x_limited_sum | f4ba53557dc542d91f47fdb1818e07fdb3f45a19b5785c649d36b8f4bb6d53a3 |
+| person.x_other_exc | 1c109995949c716933f0a9e32e48a5efd6f13b9c93e6b53a72c3b834724ade23 |
+| person.x_limit_binds | c9de31dfa4f5698c047399f8981c44356a83499030e4e8ee10d44aed68227ff2 |
+| person.x_hsa_excess | 12c8a67973d6cc3b8be8bf420d32748842c759ad9a50200c9d9931e538236983 |
+| employers | 12b75a01c53b5fd36ae6313504a4b66325e3e3c48a2563eb568ee5c32c275ae8 |
+| overcount | ce14d5e0c9f1db2063c400db52f675f7cfc05f510cdd6364e44cb7a6b28ad86f |
+| over | 522d1b3ecc12678942c0ba8e69e00e1138d162e391c48243f16cae08adc064dd |
+| wages | b9d72baf7d7b376e449a5723a12baf34a326e07547dab90d1e09f5ebe2e4855a |
+| withheld | 14ce88cdae180acc820d92c3539da1e7833c8c08cfae009097a59575aa80d822 |
+| eligible | cec0ba22c962c8746ea758f501033cda667744acae8687fed9121378bc2b9433 |
+| excess | 5b052ba5bea6f2405f80f58b31efdac16bf70387e02a7a3e38a833071f1088f9 |
+| zero | 93ab426aabe69c883486395b43240c32ec2d947d00fa47bbfc3d76c39ffe0148 |
+| credit | 107e46a78936cabc2c6e60ddea7b3e44367c263e9ad43a23190b6e03daca4e1f |
+| Step 1 | 80764f499a63a2658d06d21f1d014dfe154c870feca4917c2c2c15753e214581 |
+| Step 2 | b273d7ef1f2339675d2ada863a2a3e71d2a62caf7e462ba64dc1f94c1d20026c |
+| Step 3 | 9100b5a2bd286b2d5ad061532e74152a8a5b56289c9c08b2497fc6eac0cdc380 |
+| Step 5 | 5193265a514ba8765170d99336c4ac18cf7fea21a653e9dad11161754af17c62 |
+| Step 6 | f56b5c513e0560c1a16f816aa0f410f2c728c2f80551849fe190eae11f946284 |
+| Step 7 | 7125d8da8bdeabdfdcdb1facd502054236590ec34c7d384f797bc8edcbae1379 |
+| Step 8 | e897e0332855ddf7e0e91b0b3938e5e736fbf53aa63e2ef9e70a15ce2049be92 |
+| Step 21 | 201d3f646fff7e33c12483cc15ce260bbf07ee60e91e97ce30ce1ca5d26f5e6b |
+| 27 | b1ae1219647fbd0a66a635249d5c6377a4d2f2bfe77fce39194f6fb2b863390c |
+| 28 | 46d79287be8baf611cc011b50cd6b99bbd68cac9cc1969fbf0aa3d0d1397b873 |
+| 29 | 11905c95592caa86c19cbaa42e0c1249d6b348106a6bf7a658c24536450fc899 |
+| 30 | a660decf76eec1cf59d7d0cec5d2cd0e43e25957286312c98bc9b19db2365b0e |
+| 31 | bc6a6f06ed29aaaaae5dd624958de7de9a17d7937ae55885ff9fe842b378b863 |
+| (rest of the document) | b55350678d254cf410c23dbf63ce10937586959ed5aab87fbbab4191485cb582 |
+
+## Foreign interfaces
+
+The interfaces (id, printed marker, type, input question) of other documents' lines that each compared line reads, as the request carried them (tools/transcription/subjects.py); a changed row stales that line.
+
+| line | foreign interfaces sha256 |
+| --- | --- |
+| person.educator_deduction | 24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325 |
+| Step 1 | aa58c401ba6049531b4a2a1b0b52711807523298b7fe41548a7fff9ff611bb51 |
+| Step 2 | 0ae710212c76b1f262d318ec7fc3be591859167d0241c14f451008bf5d66b7b3 |
+| Step 3 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
+| Step 5 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
+| Step 6 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
+| Step 7 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
+| Step 8 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
+| Step 21 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
+
+## Line-scoped reviews
+
+Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
+
+#### Pass 031dac8cecc9
+
+| field | value |
+| --- | --- |
+| date | 2026-11-04 |
+| review scope | lines person.educator_deduction, Step 1, Step 2, Step 3, Step 5, Step 6, Step 7, Step 8, Step 21 |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | 031dac8cecc9c3003d6468e903cc250e51dd9bc8bd97194f48e45d10b30da9c1 |
+| prompt policy | source-only-computation-v3+lines-v1 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | required-review-interfaces-v2 |
+| complete input context | pass |
+| required input context sha256 | 6c07cafc35c353446956d80fcc3740ed26c501aa5fab3759b97798c4b968bd5b |
+| type validation policy | project-expression-types-v3 |
+| model type validation | pass |
+| system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
+| subject sha256 | 6d0c4a0d212f978edd8c09568ed07fb543433af7934122e5f0a73a23b46825f5 |
+| receipt | .transcription/person.lines-7e31d3f8e548 |
+| printed lines compared | 9 |
+| agree / disagree / missing | 5 / 4 / 0 |
+| extra printed lines in second | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i1040gi | 2025; printed date 2026-02-25 | 93 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 93 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| f1040sse | 2025; created 2025-05-07 | 1, 2 | whole document | d214b41a4e42da1953a1ee216b6f9d263be284a90cf9f7f28dcb87cd0e9913e6 | - | fbeaf5e9b8509f8fe754b52a6b5a643934ae2ff1a6f76e6e69af8be42fcd2cdd |
+| i1040sc | 2025 | 14 | cited pages | dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a | 14 | 616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918 |
+| i1040sse | 2025 | 1, 2, 3, 4, 5 | whole document | bd4768e77e9087e707701447574c3fd8b1b6ac8deca77fcf2e1bce4c50b7db28 | 1, 2, 3, 4, 5 | 6cb68f929e214450ea7ffa33648d5602e2431f38e91c7a6c83dfbee0ab23f08c |
+| p560 | For use in preparing 2025 returns | 8, 9, 10, 11, 14, 15, 16, 17, 38, 39, 40 | cited pages | 38bbfa2efb2894e2527d66cd3478f33c6ceae4b777f78674c22bec16db9809aa | 8, 9, 10, 11, 14, 15, 16, 17, 38, 40 | 7ef279c8f34addc2ff13420e35fab4a092bf8027f53907c28a5f46d2c21da737 |
+| i4562 | 2025 | 4, 11 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 11 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
+
+##### Other documents in the catalog
+
+Chosen from the source pages above (catalog_selection); refusal-gate inputs are in the screening list.
+
+| reason | documents |
+| --- | --- |
+| definition | aqee, se, tax_on_amount, tcw |
+| named form | dependent, f1040, f4562, f5329, f8889, f8959, household, ltc, retirement, sa, w2 |
+| named line | eic |
+| shared page | asset, oi8z, s1, s179, s2, s8812, sc, scope, scveh |
+
+##### Raw second transcription
+
+```yaml
+```yaml
+lines:
+  - id: person.h_is_sep
+    printed: "(helper)"
+    label: "This person contributed for themself, as a self-employed person, to a SEP IRA (the Deduction Worksheet for Self-Employed applies)"
+    type: Bool
+    expr: {op: test, eq: [person.plan, {const: "sep"}]}
+
+  - id: person.sep_s1
+    printed: "Step 1"
+    label: "Enter your net profit from Schedule C (Form 1040), line 31; Schedule F (Form 1040), line 34; or Schedule K-1 (Form 1065), box 14, code A. Reduce this amount by any amount reported on Schedule SE (Form 1040), line 1b."
+    type: Dollars
+    expr: {op: sum_over, collection: sc, field: sc.line31}
+    refuses: [person.se_screen]
+    shown_when: person.h_is_sep
+    note: "Schedule F, partnership (K-1) income and the Schedule SE line 1b reduction (CRP payments) are covered by the self-employment screening question, so Step 1 is the total of this person's Schedule C line 31 amounts."
+
+  - id: person.h_ss_box3
+    printed: "(helper)"
+    label: "Total social security wages, Form(s) W-2 box 3"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: w2, field: w2.box3}
+
+  - id: person.h_ss_box7
+    printed: "(helper)"
+    label: "Total social security tips, Form(s) W-2 box 7"
+    type: NonNegDollars
+    expr: {op: sum_over, collection: w2, field: w2.box7}
+
+  - id: person.h_line8a
+    printed: "(helper)"
+    label: "Total social security wages and tips (total of boxes 3 and 7 on Form(s) W-2) (Schedule SE line 8a)"
+    type: NonNegDollars
+    expr: {op: sum, of: [person.h_ss_box3, person.h_ss_box7]}
+
+  - id: person.sep_s2
+    printed: "Step 2"
+    label: "Enter your deduction for self-employment tax from Schedule 1 (Form 1040), line 15"
+    type: NonNegDollars
+    expr: {op: copy, from: {def: se, bind: {line2: person.sep_s1, line8a: person.h_line8a}, line: line13}}
+    refuses: [person.rrta, person.se_screen]
+    shown_when: person.h_is_sep
+    note: "Schedule 1 line 15 combines both spouses on a joint return. For the worksheet of one person, this uses that person's own Schedule SE line 13. The definition name 'se' for the shared Schedule SE definition is assumed. Railroad retirement compensation (line 8a) is refused."
+
+  - id: person.sep_s3
+    printed: "Step 3"
+    label: "Net earnings from self-employment. Subtract step 2 from step 1"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: person.sep_s1, take: person.sep_s2}
+    shown_when: person.h_is_sep
+    note: "The worksheet does not say what to do if the result is negative. Because the declared type is NonNegDollars, a result below zero is entered as zero, which gives no deduction."
+
+  - id: person.h_cent
+    printed: "(helper)"
+    label: "One cent (unit for expressing the plan contribution rate as an amount)"
+    type: NonNegDollars
+    expr: {op: param, ref: sc.one_cent}
+
+  - id: person.h_hundred
+    printed: "(helper)"
+    label: "100 cents (100%)"
+    type: NonNegDollars
+    expr: {op: param, ref: sc.hundred_cents}
+
+  - id: person.h_rate_c
+    printed: "(helper)"
+    label: "Plan contribution rate (whole percent) expressed in cents"
+    type: NonNegDollars
+    expr: {op: multiply_count, amount: person.h_cent, count: person.sep_rate}
+
+  - id: person.h_rate_plus
+    printed: "(helper)"
+    label: "Plan contribution rate plus 100 (whole percent), expressed in cents"
+    type: NonNegDollars
+    expr: {op: sum, of: [person.h_hundred, person.h_rate_c]}
+
+  - id: person.sep_s5
+    printed: "Step 5"
+    label: "Multiply step 3 by step 4"
+    type: NonNegDollars
+    expr: {op: prorate, amount: person.sep_s3, part: person.h_rate_c, whole: person.h_rate_plus, places: 6}
+    refuses: [person.plan_screen]
+    shown_when: person.h_is_sep
+    note: "Step 4 (the rate from the Rate Table for Self-Employed) cannot be a line of its own, because no table is supplied. For whole percentages the Column B entries equal rate ÷ (1 + rate), rounded to 6 decimal places (for example, 10 gives 0.090909 and 25 gives 0.200000). Step 5 therefore multiplies step 3 by sep_rate/(100+sep_rate), rounded to 6 places. A rate that is not a whole percentage or is above 25% is screened out."
+
+  - id: person.h_comp_limit
+    printed: "(helper)"
+    label: "$350,000"
+    type: NonNegDollars
+    expr: {op: param, ref: ret.comp_limit}
+
+  - id: person.sep_s6
+    printed: "Step 6"
+    label: "Multiply $350,000 by your plan contribution rate (not the reduced rate)"
+    type: NonNegDollars
+    expr: {op: prorate, amount: person.h_comp_limit, part: person.h_rate_c, whole: person.h_hundred, places: 2}
+    refuses: [person.plan_screen]
+    shown_when: person.h_is_sep
+    note: "The plan rate is a whole percent of at most 25, so sep_rate/100 is exact at 2 decimal places."
+
+  - id: person.sep_s7
+    printed: "Step 7"
+    label: "Enter the smaller of step 5 or step 6"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.sep_s5, person.sep_s6]}
+    shown_when: person.h_is_sep
+
+  - id: person.sep_s8
+    printed: "Step 8"
+    label: "Contribution dollar limit"
+    type: NonNegDollars
+    expr: {op: param, ref: ret.sep_dollar_limit}
+    shown_when: person.h_is_sep
+
+  - id: person.sep_s21
+    printed: "Step 21"
+    label: "Subtract step 20 from step 19. This is your maximum deductible contribution (with no elective deferrals: enter the smaller of step 7 or step 8 on step 21)"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.sep_s7, person.sep_s8]}
+    refuses: [person.plan_screen]
+    shown_when: person.h_is_sep
+    note: "Elective deferrals to a self-employed SEP exist only under a SARSEP, and SARSEPs and other deferrals are screened out. So the worksheet's 'Otherwise, skip steps 9 through 20 and enter the smaller of step 7 or step 8 on step 21' applies."
+
+  - id: person.h_edu_max
+    printed: "(helper)"
+    label: "Maximum educator expense deduction per eligible educator ($300)"
+    type: NonNegDollars
+    expr: {op: param, ref: s1.educator_max}
+
+  - id: person.h_edu_capped
+    printed: "(helper)"
+    label: "Qualified educator expenses, up to $300"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [person.educator_expenses, person.h_edu_max]}
+
+  - id: person.educator_deduction
+    printed: "(helper)"
+    label: "If you were an eligible educator in 2025, you can deduct on line 11 up to $300 of qualified expenses you paid in 2025; neither spouse can deduct more than $300 of their qualified expenses"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [person.eligible_educator, {const: true}]}
+          then: person.h_edu_capped
+        - guard: {op: test, eq: [person.eligible_educator, {const: false}]}
+          then: person.zero
+    note: "Read as this person's contribution to Schedule 1 line 11: the qualified expenses, reduced as the instructions require (already reduced in the input), capped at $300, and zero if the person was not an eligible educator."
+```
+```
 
 ## Raw second transcription
 

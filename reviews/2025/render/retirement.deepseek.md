@@ -104,6 +104,24 @@ Model: Line 11 is part of the 'Do not complete the rest of this worksheet' branc
 
 Ruling: scope; i1040gi p. 29, Simplified Method Worksheet, line 5: "If your annuity starting date was before 1987, skip lines 6 and 7 and enter this amount on line 8. Otherwise, go to line 6", and line 10's before-1987 STOP. A starting date before 1987 is before November 19, 1996, which retirement.special refuses for an annuity with after-tax cost, and retirement.annuity asks for a starting date after November 18, 1996. So the post-1986 path of line 11 is the only one reached. Re-checked against the current forms/2025/retirement.yaml this round: BUG-0393 added the qualified disaster recovery distribution (Form 8915-F) to retirement.special and reworded retirement.rollover and retirement.exception; retirement.special still names "a death benefit exclusion" and "a pension or annuity in which you have after-tax cost whose annuity starting date ... was before November 19, 1996", and the worksheet expressions are unchanged. Same model reading as earlier rounds. Project stands on the English.
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| (SMW 1) | ad87260361bfb295a11bb9e2bfc483b0a1fe062286ab2bc8254ee0b919dc3a44 |
+| (SMW 2) | c78a1d6263be1b778d5f1def78a0ced131c2ff5ae07cfa65abd87cd115c011db |
+| (SMW 4) | 1f109d32140745bf81f3a038ac561f6354aae2fd1988978b8448dad9411f081e |
+| (SMW 5) | 4cabf643166f0252f22fb0efd0b55b279686e3a40a017cddccc288fc2d938c99 |
+| (SMW 6) | 68aba9ecbd1a084a843adad94467c55267f75d5ae74be3750ff9cec72e05faeb |
+| (SMW 7) | 3704eb0af67c1b531972d00771e6a875dfcce5f2a8271ad5f14ddf279a678d86 |
+| (SMW 8) | 253f26399e33f6afc971a9544c2bf14bf4ba5b5e563ed05a7243512587b5d1e4 |
+| (SMW 9) | f7fdcbce1f79d9f3532d9be9146982af2d96b76a4e62f8d6126d2f8856f9e991 |
+| (SMW 10) | 3be0ed9f69859e3c6f67e4a6160dfdd194baefa615913a7a84d8ae7447d168d6 |
+| (SMW 11) | 03c2e089823e048dc2c3605f60dedc5390529644bb650ded91ed0f8eefa9aa82 |
+| (rest of the document) | d95625ddc7958711f2a65aa5f70fa8dbc1b3359bd5c28e1fcaa7b9c0de49457b |
+
 ## Raw response
 
 ```yaml

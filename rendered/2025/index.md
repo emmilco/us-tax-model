@@ -39,7 +39,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | mq.md | worksheet | 7 |
 | oi8z.md | worksheet | 6 |
 | otjob.md | form | 12 |
-| person.md | worksheet | 283 |
+| person.md | worksheet | 284 |
 | qbi.md | form | 13 |
 | qdcg.md | worksheet | 27 |
 | refund.md | form | 48 |
@@ -60,7 +60,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | sdtw.md | worksheet | 75 |
 | se.md | def | 28 |
 | sli.md | form | 23 |
-| ssb.md | worksheet | 37 |
+| ssb.md | worksheet | 42 |
 | tax_on_amount.md | def | 6 |
 | tcw.md | def | 47 |
 | tipjob.md | form | 6 |

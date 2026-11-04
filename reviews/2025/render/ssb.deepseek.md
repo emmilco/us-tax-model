@@ -5,6 +5,7 @@ The rendered English of every printed line of `Social Security Benefits Workshee
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
+| line-scoped reviews | 1 (latest 2026-11-04); see Line-scoped reviews |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
 | prompt sha256 | 3aaeb2737002e5a69c2727d08be1bd797e5d35c387369e52fe26a35aa6b1f1b6 |
@@ -14,7 +15,7 @@ The rendered English of every printed line of `Social Security Benefits Workshee
 | output token budget | 65536 |
 | subject sha256 | 1b486e66d1e17c5909dc6d27b0fe20b0bed14846b8af225e05ccf176d48bca71 |
 | lines judged | 18 |
-| match / mismatch / unclear / missing | 18 / 0 / 0 / 0 |
+| match / mismatch / unclear / missing | 17 / 1 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -83,57 +84,166 @@ Model: IRS line 7 subtracts line 6 from line 5 when line 6 is less, otherwise no
 ### 8 — $32,000 if married filing jointly; $25,000 if single, head of household, qualifying surviv
 Status: **MATCH**
 
-Model: IRS line 8 uses $32,000 for MFJ and $25,000 for single, HOH, QSS, or MFS lived apart all year; MFS lived with spouse skips lines 8 through 15, as restated.
+Model: It uses $32,000 for married filing jointly and $25,000 for single, HOH, QSS, or MFS lived apart all year, and skips lines 8 through 15 for MFS lived with the spouse, matching the worksheet line 8 instructions.
+Reviewed in: pass fcd47be8e69f
 
 ### 9 — Is the amount on line 8 less than the amount on line 7? If yes, subtract line 8 from line
-Status: **MATCH**
+Status: **MISMATCH**
 
-Model: IRS line 9 subtracts line 8 from line 7 when line 8 is less, otherwise no benefits are taxable; the restatement's zero-or-less rule gives the same line value.
+Restated: Subtract line 8 from line 7. If zero or less, enter -0-.
+
+Model: The IRS line 9 is conditional: “Is the amount on line 8 less than the amount on line 7? No. STOP None of your social security benefits are taxable... Yes. Subtract line 8 from line 7.” The restatement instead always subtracts and floors at zero, omitting the No/STOP condition.
+
+Ruling: representation; i1040gi p. 32, worksheet line 9: "Is the amount on line 8 less than the amount on line 7? No. None of your social security benefits are taxable. Enter -0- on Form 1040 or 1040-SR, line 6b. ... STOP". On the No branch the restatement's floor gives $0, and the round-2 display conditions stop the worksheet there (ssb.past9 is line 9 above zero; ssb.show10_15 hides lines 10 to 15 and ssb.show16_18 hides lines 16 to 18 unless married filing separately and living together, a return refused by s3.mfs), so no amount is shown past the STOP. Project stands.
+Reviewed in: pass fcd47be8e69f
 
 ### 10 — Enter $12,000 if married filing jointly; $9,000 if single, head of household, qualifying s
 Status: **MATCH**
 
-Model: IRS line 10 uses $12,000 for MFJ and $9,000 for single, HOH, QSS, or MFS lived apart all year, matching the restatement.
+Model: It uses $12,000 for married filing jointly and $9,000 for single, HOH, QSS, or MFS lived apart all year, matching line 10.
+Reviewed in: pass fcd47be8e69f
 
 ### 11 — Subtract line 10 from line 9. If zero or less, enter -0-
 Status: **MATCH**
 
-Model: IRS line 11 subtracts line 10 from line 9 and enters -0- if zero or less, exactly as restated.
+Model: It says to subtract line 10 from line 9 and enter -0- if zero or less, matching line 11.
+Reviewed in: pass fcd47be8e69f
 
 ### 12 — Enter the smaller of line 9 or line 10
 Status: **MATCH**
 
-Model: IRS line 12 enters the smaller of line 9 or line 10, exactly as restated.
+Model: It enters the smaller of line 9 or line 10, matching line 12.
+Reviewed in: pass fcd47be8e69f
 
 ### 13 — Enter one-half of line 12
 Status: **MATCH**
 
-Model: IRS line 13 enters one-half of line 12, which is the same as multiplying by 1/2.
+Model: It computes one-half of line 12, matching line 13.
+Reviewed in: pass fcd47be8e69f
 
 ### 14 — Enter the smaller of line 2 or line 13
 Status: **MATCH**
 
-Model: IRS line 14 enters the smaller of line 2 or line 13, exactly as restated.
+Model: It enters the smaller of line 2 or line 13, matching line 14.
+Reviewed in: pass fcd47be8e69f
 
 ### 15 — Multiply line 11 by 85% (0.85). If line 11 is zero, enter -0-
 Status: **MATCH**
 
-Model: IRS line 15 multiplies line 11 by 85% (0.85); omitting the zero instruction does not change the computed value.
+Model: It multiplies line 11 by 85% (0.85), matching line 15; omitting the redundant zero instruction does not change the value.
+Reviewed in: pass fcd47be8e69f
 
-### 16 — Add lines 14 and 15
+### 16 — Add lines 14 and 15 (if married filing separately and you lived with your spouse at any ti
 Status: **MATCH**
 
-Model: IRS line 16 normally adds lines 14 and 15, but for MFS lived with spouse it uses line 7 times 85%; the restatement captures both branches.
+Model: It adds lines 14 and 15 except for MFS lived with the spouse, where it uses line 7 times 85%, matching the line 8 skip instruction and line 16.
+Reviewed in: pass fcd47be8e69f
 
 ### 17 — Multiply line 1 by 85% (0.85)
 Status: **MATCH**
 
-Model: IRS line 17 multiplies line 1 by 85% (0.85), exactly as restated.
+Model: It multiplies line 1 by 85% (0.85), matching line 17.
+Reviewed in: pass fcd47be8e69f
 
 ### 18 — Taxable social security benefits. Enter the smaller of line 16 or line 17
 Status: **MATCH**
 
-Model: IRS line 18 enters the smaller of line 16 or line 17; when there are no benefits the result is zero, matching the restatement's no-amount branch.
+Model: It enters the smaller of line 16 or line 17 when benefits exist, and returns no amount ($0) otherwise, consistent with line 18 and the worksheet-not-needed case.
+Reviewed in: pass fcd47be8e69f
+
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| 1 | 76637e5095bbc4d0d073bba07d2128b25ceec89a0f14ae365c41a77daf7a59c3 |
+| 2 | 4476a2567813553419a59cc599b4bc876a8fb1a608252175ec6967e3525371c0 |
+| 3 | 04a638edf0cfaadaf2e62796865d9920e7b6a2fe2d8f0b64cd604f34f13b8f52 |
+| 4 | aa744040bb91dc6c31d93efc105025d1cdcdb1cbd76995d1f6175b0967ff6d95 |
+| 5 | 44f9f14f0311182e2b2f3ecbcd93f14c54fd4b5d05dff78bdeeeac9acb468225 |
+| 6 | be21631703fce01e8481d78349579ebea19f7d331d228371b8bf34d62f541010 |
+| 7 | 152433cd6dd9464b00bf9db4a45eec5b53f906d1652cd5e9bdebeded584f0b4f |
+| 8 | a84a9a1898f157e9dd752da10009a3e155ddda71f74e7c5700ff0f1c7beac583 |
+| 9 | d92325b7e03e35ddc8cd65ca3ae5c6316f2bb4239b96956a5fdb76aaacb62346 |
+| 10 | f513705fe0d2abe0fdfdfd5744357ee9f67949b60c71d65dfa178553feb7fc3e |
+| 11 | e493cef3008a752abbfa3f39d5bb2a86be51f5d4a09c598129c363effbe76ec6 |
+| 12 | 23a3ed2ef9769c4bd181c1935fe380f7e894df0be969f85535c1b366712efd43 |
+| 13 | 3b41141dcf12fe6a46ffd559b888de52cf278553d128a8025534bbf667a4e6dc |
+| 14 | 829698b340cb990f8ba20f832f928b48f56c85ca141e11a7d8d2ec7b6eade7ba |
+| 15 | 0de672202e97284f3a651f35a5b384206f74b45434a10e0a32b016216f83fd96 |
+| 16 | 1c3ed3979220e486ec26775efba103ccec55e418d25353d6114ebc7ab8991619 |
+| 17 | d984d8f690104b305a693e51a6e9bc3d73e3d0915ee4f558e1d5b423178653b6 |
+| 18 | b53a99500f17b04ec4b1d8ac037fe378519d3996dc11725ae62a32241d20ffb4 |
+| (rest of the document) | 142145d6f88cbae0819a2535132ef458f8a2a8752d791971a6ce0ecec72fac7c |
+
+## Line-scoped reviews
+
+Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
+
+#### Pass fcd47be8e69f
+
+| field | value |
+| --- | --- |
+| date | 2026-11-04 |
+| review scope | lines 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 |
+| model requested | deepseek-flash |
+| model reported | deepseek-flash |
+| prompt sha256 | fcd47be8e69f9624fa1cad577d2f5f33d74e583ece00a52ecb3227249fcc4c0e |
+| prompt policy | render-source-comparison-v2+lines-v1 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | 65536 |
+| subject sha256 | 4d78d21dc78432d288d2ebf19e09a9931f07d25669bd931ece3593ef4c4e9b04 |
+| receipt | .transcription/ssb.deepseek.render.lines-38ff4c33403d |
+| lines judged | 11 |
+| match / mismatch / unclear / missing | 10 / 1 / 0 / 0 |
+| verdicts for lines not in the form | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i1040gi | 2025; printed date 2026-02-25 | 31, 32 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 31 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+
+##### Raw response
+
+```yaml
+lines:
+  - key: "8"
+    status: MATCH
+    reason: "It uses $32,000 for married filing jointly and $25,000 for single, HOH, QSS, or MFS lived apart all year, and skips lines 8 through 15 for MFS lived with the spouse, matching the worksheet line 8 instructions."
+  - key: "9"
+    status: MISMATCH
+    reason: "The IRS line 9 is conditional: “Is the amount on line 8 less than the amount on line 7? No. STOP None of your social security benefits are taxable... Yes. Subtract line 8 from line 7.” The restatement instead always subtracts and floors at zero, omitting the No/STOP condition."
+  - key: "10"
+    status: MATCH
+    reason: "It uses $12,000 for married filing jointly and $9,000 for single, HOH, QSS, or MFS lived apart all year, matching line 10."
+  - key: "11"
+    status: MATCH
+    reason: "It says to subtract line 10 from line 9 and enter -0- if zero or less, matching line 11."
+  - key: "12"
+    status: MATCH
+    reason: "It enters the smaller of line 9 or line 10, matching line 12."
+  - key: "13"
+    status: MATCH
+    reason: "It computes one-half of line 12, matching line 13."
+  - key: "14"
+    status: MATCH
+    reason: "It enters the smaller of line 2 or line 13, matching line 14."
+  - key: "15"
+    status: MATCH
+    reason: "It multiplies line 11 by 85% (0.85), matching line 15; omitting the redundant zero instruction does not change the value."
+  - key: "16"
+    status: MATCH
+    reason: "It adds lines 14 and 15 except for MFS lived with the spouse, where it uses line 7 times 85%, matching the line 8 skip instruction and line 16."
+  - key: "17"
+    status: MATCH
+    reason: "It multiplies line 1 by 85% (0.85), matching line 17."
+  - key: "18"
+    status: MATCH
+    reason: "It enters the smaller of line 16 or line 17 when benefits exist, and returns no amount ($0) otherwise, consistent with line 18 and the worksheet-not-needed case."
+```
 
 ## Raw response
 

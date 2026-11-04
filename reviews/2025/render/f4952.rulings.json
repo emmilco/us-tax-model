@@ -3,6 +3,24 @@
  "form": "f4952",
  "rulings": [
   {
+   "printed": "1",
+   "restated": "Input — Investment interest paid or accrued in 2025, regardless of when you incurred the debt, meaning interest on a loan or the part of a loan allocable to property held for investment (if you used a loan's proceeds for more than one purpose, only the interest allocable to the investment use). Do not include personal interest (including qualified residence interest), interest allocable to a passive activity, interest that is capitalized (such as construction interest subject to section 263A), interest related to tax-exempt interest income, or interest disallowed under section 264 on debt with respect to life insurance, endowment or annuity contracts.",
+   "model": "The restatement excludes all section 264 interest. The IRS excludes only interest 'disallowed under section 264, on indebtedness with respect to life insurance, endowment, or annuity contracts issued after June 8, 1997, even if the proceeds were used to purchase any property held for investment', so dropping the date limit changes the amount. It also leaves out the IRS instruction to 'Include investment interest expense reported to you on Schedule K-1 from a partnership or an S corporation.'",
+   "ruling": "Ruling: scope; f4952 p. 3, Line 1: \"Include investment interest expense reported to you on Schedule K-1 from a partnership or an S corporation\" and \"Interest expense, disallowed under section 264, on indebtedness with respect to life insurance, endowment, or annuity contracts issued after June 8, 1997, even if the proceeds were used to purchase any property held for investment.\" Schedule K-1 interest: partnerships and S corporations (\"Schedule E or a Schedule K-1\") are refused for the return by scope.schedule1, so no completed return has K-1 investment interest. Section 264: the round-2 wording of f4952.line1 excludes only interest \"disallowed under section 264\"; interest that section 264 disallows is not deductible at all, and the date clause says why such interest is excluded even when traced to investment property, so dropping it does not exclude any deductible interest. The model's claim that the amount changes is not borne out. Project stands.",
+   "context": "16e2a22b98a489ddc2f44cebdc481c859d622f433648e4b5328510af70ae6ed2",
+   "date": "2026-11-04",
+   "run": "fef95f021fa97c06d90117208b50f6deeff5a23ce5d7d697484f379dae9f452c"
+  },
+  {
+   "printed": "3",
+   "restated": "Add line 1 and line 2.",
+   "model": "This matches the IRS text 'Total investment interest expense. Add lines 1 and 2' as a computation. It is marked MISMATCH only because line 1, an operand, is mismatched.",
+   "ruling": "Ruling: model error; the model agrees that line 3 is \"Add lines 1 and 2\" (f4952 p. 1, line 3) and marks it MISMATCH only for its line 1 objection, ruled at line 1 (scope).",
+   "context": "16e2a22b98a489ddc2f44cebdc481c859d622f433648e4b5328510af70ae6ed2",
+   "date": "2026-11-04",
+   "run": "fef95f021fa97c06d90117208b50f6deeff5a23ce5d7d697484f379dae9f452c"
+  },
+  {
    "printed": "4a",
    "restated": "Add sb line 2 and sb line 6.",
    "model": "Line 4a is 'Gross income from property held for investment', but Schedule B line 2 comes before line 3, where 'you may be able to exclude part or all of the interest' on series EE or I savings bonds (Form 8815). Using line 2 would count excludable interest that is not gross income, where the taxable total after line 3 should be used. The text given does not show any other mismatch for ordinary dividends.",

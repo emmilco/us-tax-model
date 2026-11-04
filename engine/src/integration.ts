@@ -93,6 +93,13 @@ export function integrationChecks(): void {
     evaluate({...inputs,"$w2@person[taxpayer]":["a","a"]},false);
     evaluate({...inputs,"person[taxpayer].w2[ghost].box4":1},false);
     evaluate({...inputs,"person[taxpayer].w2[a].box3":Number.MAX_SAFE_INTEGER,"person[taxpayer].w2[a].box7":1},false);
+    // At most one person entry has role taxpayer: a second one is an input error, while the same
+    // second entry as a spouse evaluates (the roster refusal handles a spouse the status does not allow).
+    {
+      const people=(inputs["$person"] as string[]|undefined)??["taxpayer"];
+      evaluate({...inputs,"$person":[...people,"t2"],"person[t2].role":"taxpayer"},false);
+      evaluate({...inputs,"$person":[...people,"t2"],"person[t2].role":"spouse"});
+    }
     const htmlPath=join(dir,"html-input.json");writeFileSync(htmlPath,JSON.stringify(inputs));
     const html=spawnSync(process.execPath,[resolve(import.meta.dirname,"main.js"),...YEAR_ARGS,"eval","--inputs",htmlPath,"--target","f1040.line31","--html"],{ encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
     assert.equal(html.status,0);assert.match(html.stdout,/<!doctype html>/);assert.match(html.stdout,/\$1,481\.80/);checks++;

@@ -5,6 +5,7 @@ Second transcription of `Form 4562 — one item of depreciable property (other t
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
+| line-scoped reviews | 1 (latest 2026-11-04); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 3bd958c1cda7b95c1eefe8deed517d8b2b0fa71fac8a0a039a084661fd161b3f |
@@ -56,12 +57,13 @@ Project:
 Second:
 
 ```json
-{"of": [{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}, {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}], "test": "le"}, "then": {"amount": {"from": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"param": "sc.conv_hy"}, {"const": 1, "type": "Count"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}], "test": "lt"}, "then": {"amount": {"from": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"keys": [{"input": "asset.quarter"}], "op": "keyed_lookup", "table": "quarter_convention"}, {"const": 1, "type": "Count"}], "op": "keyed_lookup", "table": "macrs_gds"}}}], "op": "choose"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}], "op": "sum"}
+{"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}, {"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}], "test": "le"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"line": "(e)"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"args": [{"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "test": "lt"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}], "test": "le"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"param": "sc.conv_hy"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}], "test": "lt"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"keys": [{"input": "asset.quarter"}], "op": "keyed_lookup", "table": "quarter_convention"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}], "op": "choose"}}], "op": "choose"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Second transcription's note: The meaning of this interface is not fixed by the IRS pages. It is read as this property's 2025 depreciation other than section 179 when placed in service in 2025: line 14 or 25 plus line 19(g) or 26(h). The section 179 amount is excluded.
+Second transcription's note: The pages do not define this interface. My reading: the regular MACRS deduction for property placed in service in 2025, listed or not, without the section 179 deduction or the special allowance.
 
-Ruling: model error; the candidate asks asset.bonus_same of property whose bonus_choice is none, an answer the source does not need (same as the backlog-round ruling; witnesses classm.f8962.4 and .deepseek item_1, classm.sc.1 biz_b item_1) (i4562 p. 7, Election out: "You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class placed in service during the tax year"). The values are an interface gap on the values: the published interface gives only the name (labels are withheld by design) and the pages do not fix whether it includes the special allowance; the candidate said so in its note. The project's helper is MACRS (line 19(g)) on 2025 property, the special allowance being the separate asset.bonus_2025; the candidate adds line 14, so every completed value difference is a 2025 asset with a special allowance: classm.f8960.1.deepseek, classm.g28.1.deepseek, classm.sd.1.deepseek, classm.u1250.1.deepseek and classm.clcw26.1.deepseek item_1 project $0.00 (mid-quarter rate on a fully expensed basis), candidate $46,128.00 (the 100% allowance); classm.f8962.4.deepseek item_2 $372.43 against $1,365.56 (40% allowance added). Triage executable-triage-v2 (`../triage/asset.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 713 partial records): 1,087 of 1,364 agree; on completed returns 65 value, 8 candidate-unknown.
+Ruling: model error; the pass reply's asset.h_bonus_mixed (placed in 2025 and asset.bonus_same false) refuses asset.bonus_2025 whatever asset.bonus_choice is, so it asks asset.bonus_same of 2025 property whose choice is none; the project asks it only on the full and forty branches (asset.bonus_full, asset.bonus_forty refuse on asset.bonus_mixed). i4562 p. 7, Election out: "You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class placed in service during the tax year" makes the same-class question matter only where an allowance is claimed. Same point as the backlog and refresh rulings. The values are now representation: the reply's dep_2025 is the table rate times its (c), which for 2025 property is cost times business use less the section 179 cost and the special allowance, the project's 19(g) basis (asset.ub); the refresh round's added line 14 is gone (i4562 p. 9, Line 17 and Lines 19a Through 19j). Round-2 rulings are from reading the pass reply (.transcription/asset.lines-70ea95948c1d) against the project; triage was not rerun.
+Reviewed in: pass 752f59790b4e
 
 ### asset.bonus_2025 — Special allowance on 2025 property
 Status: **DISAGREE**
@@ -78,12 +80,14 @@ Second:
 {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Second transcription's note: Property acquired after September 27, 2017, and before January 20, 2025, gets 40% whether the choice is full or forty. Qualified property must have a recovery period of 20 years or less, so a period outside the tables is refused.
+Second transcription's note: My reading: this is this property's total 2025 special depreciation allowance (line 14 when not listed, line 25 when listed). The allowance applies only in the year the property is placed in service. Every GDS recovery period handled here is 20 years or less.
 
-Ruling: model error; same as the backlog-round ruling. i4562 p. 7, Election out: "You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class placed in service during the tax year"; the candidate asks asset.bonus_same of property whose bonus_choice is none, an answer the source does not need (same as the backlog-round ruling; witnesses classm.f8962.4 and .deepseek item_1, classm.sc.1 biz_b item_1). No value differs. Triage executable-triage-v2 (`../triage/asset.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 713 partial records): 1,204 of 1,364 agree; on completed returns 8 candidate-unknown. Every other difference is a record withholding an answer the interview asks of the asset (placed, class, screen, pct, listed, cost) or a cited refusal (asset.screened, asset.outside, asset.qip_early, asset.listed_low; fixtures stage14.asset.refuse_*), on refused or incomplete returns.
+Ruling: model error; the pass reply's asset.h_bonus_mixed (placed in 2025 and asset.bonus_same false) refuses asset.bonus_2025 whatever asset.bonus_choice is, so it asks asset.bonus_same of 2025 property whose choice is none; the project asks it only on the full and forty branches (asset.bonus_full, asset.bonus_forty refuse on asset.bonus_mixed). i4562 p. 7, Election out: "You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class placed in service during the tax year" makes the same-class question matter only where an allowance is claimed. Same point as the backlog and refresh rulings. Values: 100% for full after January 19, 40% for forty or before January 20, none for none, on the basis after section 179, the project's reading. Round-2 rulings are from reading the pass reply (.transcription/asset.lines-70ea95948c1d) against the project; triage was not rerun.
+Reviewed in: pass 752f59790b4e
 
 ### asset.s179_2025 — Section 179 elected on 2025 property
 Status: **AGREE**
+Reviewed in: pass 752f59790b4e
 
 ### asset.mq_q4 — Mid-quarter test basis, fourth quarter
 Status: **DISAGREE**
@@ -100,7 +104,8 @@ Second:
 {"alternatives": [{"guard": {"args": [{"args": [{"const": "q4"}, {"input": "asset.quarter"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "q4"}, {"input": "asset.quarter"}], "test": "ne"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: representation; same as the backlog-round ruling (line, candidate and evidence unchanged). p946 p. 34, "the total depreciable bases of MACRS property you placed in service during the last 3 months". Triage executable-triage-v2 (`../triage/asset.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 713 partial records): 1,316 of 1,364 agree; the only differences are 48 project-unknown on partial records withholding placed or class; no completed return differs.
+Ruling: representation; same line and candidate as the refresh-round ruling. p946 p. 34, "the total depreciable bases of MACRS property you placed in service during the last 3 months of the tax year"; both take the business cost less the section 179 cost of 2025 property placed in the fourth quarter.
+Reviewed in: pass 752f59790b4e
 
 ### asset.mq_total — Mid-quarter test basis, all of 2025
 Status: **DISAGREE**
@@ -117,7 +122,8 @@ Second:
 {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: representation; same as the backlog-round ruling. p946 p. 34, the same test over the entire year. Triage executable-triage-v2 (`../triage/asset.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 713 partial records): 1,303 of 1,364 agree; no completed return differs. Every other difference is a record withholding an answer the interview asks of the asset (placed, class, screen, pct, listed, cost) or a cited refusal (asset.screened, asset.outside, asset.qip_early, asset.listed_low; fixtures stage14.asset.refuse_*), on refused or incomplete returns.
+Ruling: representation; same line and candidate as the refresh-round ruling (p946 p. 34, the same test over the whole year).
+Reviewed in: pass 752f59790b4e
 
 ### asset.cost179 — Cost of section 179 property placed in service in 2025
 Status: **DISAGREE**
@@ -131,10 +137,13 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": 0}, {"line": "6(c)"}], "test": "lt"}, {"args": [{"const": "cqip"}, {"line": "(a)"}], "test": "ne"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.not179"}], "test": "eq"}, {"args": [{"const": 50, "type": "Count"}, {"input": "asset.pct"}], "test": "lt"}], "test": "all"}, "then": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}}, {"guard": {"args": [{"args": [{"args": [{"const": "cqip"}, {"line": "(a)"}], "test": "eq"}, {"args": [{"line": "6(c)"}, {"const": 0}], "test": "le"}], "test": "all"}, {"args": [{"input": "asset.pct"}, {"const": 50, "type": "Count"}], "test": "le"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, {"args": [{"const": false}, {"input": "asset.not179"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.not179"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}}, {"guard": {"args": [{"args": [{"const": true}, {"input": "asset.not179"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: representation; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during the tax year (including the total cost of qualified real property that you elect to treat as section 179 property)". The candidate counts 2025 property used more than 50% that is not excluded, and qualified improvement property only with an election, the project's reading; the backlog-round value difference (stage14.asset.qip) is gone. Triage executable-triage-v2 (`../triage/asset.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 713 partial records): 1,334 of 1,364 agree; no completed return differs. Every other difference is a record withholding an answer the interview asks of the asset (placed, class, screen, pct, listed, cost) or a cited refusal (asset.screened, asset.outside, asset.qip_early, asset.listed_low; fixtures stage14.asset.refuse_*), on refused or incomplete returns.
+Second transcription's note: Open point: line 2 says 'total cost of all section 179 property', but line 6 column (b) is 'Cost (business use only)'. I use the business-use cost. I do not leave out property used 50% or less in the business, because the definition of section 179 property does not include the more-than-50% test (that test limits the election).
+
+Ruling: model error; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during the tax year", and Worksheet 1, "include the total amount of eligible section 179 property"; p946 p. 16, Partial business use, "you can elect the section 179 deduction only if you use the property more than 50% for business in the year you place it in service". The reply now counts 2025 property used 50% or less (its note says so); such property is not eligible, and the project counts the business cost only when asset.over_half (asset.cost179_2025). The difference reaches Form 4562 line 2 for a 2025 asset used 50% or less (and the line 5 threshold only above $4,000,000 of cost). Project stands. Round-2 rulings are from reading the pass reply (.transcription/asset.lines-70ea95948c1d) against the project; triage was not rerun.
+Reviewed in: pass 752f59790b4e
 
 ### asset.dep_prior — MACRS on property placed in service before 2025
 Status: **DISAGREE**
@@ -148,15 +157,17 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"alternatives": [{"guard": {"args": [{"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}, {"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}], "test": "le"}, "then": {"amount": {"from": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"input": "asset.prior_179"}}, "op": "subtract_floor0", "take": {"input": "asset.prior_bonus"}}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"line": "(e)"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}, {"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}], "test": "le"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"line": "(e)"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"args": [{"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "test": "lt"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}], "test": "le"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"param": "sc.conv_hy"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}], "test": "lt"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"keys": [{"input": "asset.quarter"}], "op": "keyed_lookup", "table": "quarter_convention"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}], "op": "choose"}}], "op": "choose"}}], "op": "choose"}
 ```
 
-Second transcription's note: The meaning of this interface is not fixed by the IRS pages. It is read as this property's 2025 MACRS deduction when placed in service before 2025 (line 17 or line 26(h)), the complement of asset.dep_2025. It is not accumulated prior-year depreciation, which the closed inputs cannot determine.
+Second transcription's note: The pages do not define this interface. My reading: the MACRS deduction for property placed in service before 2025, listed or not.
 
-Ruling: representation; i4562 p. 9, Line 17, "enter the deductions for the current year". The candidate now has the recovery-year branch and no period cycle (the backlog-round error is gone); its amount is the project's line 17 on every completed return. Triage executable-triage-v2 (`../triage/asset.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 713 partial records): 1,325 of 1,364 agree; no completed return differs. Every other difference is a record withholding an answer the interview asks of the asset (placed, class, screen, pct, listed, cost) or a cited refusal (asset.screened, asset.outside, asset.qip_early, asset.listed_low; fixtures stage14.asset.refuse_*), on refused or incomplete returns.
+Ruling: representation; i4562 p. 9, Line 17, "enter the deductions for the current year". For property placed before 2025 the reply takes the table rate (the convention used when placed in service, the recovery year from asset.placed) times the business cost less the earlier section 179 deduction and special allowance, zero after the recovery period; the project's line 17 reads the same answers (asset.prior_179, asset.prior_bonus). The reply's bonus refusal is not reached for property placed before 2025 (asset.h_bonus_mixed is false there). Same reading as the refresh-round ruling. Round-2 rulings are from reading the pass reply (.transcription/asset.lines-70ea95948c1d) against the project; triage was not rerun.
+Reviewed in: pass 752f59790b4e
 
 ### (d) — Recovery period under GDS for the asset class
 Status: **AGREE**
+Reviewed in: pass 752f59790b4e
 
 ### (c) — Basis for depreciation (business/investment use only), before section 179 and the special
 Status: **DISAGREE**
@@ -173,7 +184,10 @@ Second:
 {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"from": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"from": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"input": "asset.prior_179"}}, "op": "subtract_floor0", "take": {"input": "asset.prior_bonus"}}}], "op": "choose"}
 ```
 
-Ruling: model error; same as the backlog-round ruling. i4562 p. 11, Column (c). The values are representation: the project shows at this marker the business basis before section 179 and the special allowance and the reduced basis at 19(c); the candidate nets them here, so every completed value difference is an asset with an election or allowance (classm.f8960.1.deepseek, classm.g28.1.deepseek, classm.sd.1.deepseek, classm.u1250.1.deepseek, classm.clcw26.1.deepseek item_1 $46,128.00 against $0.00; classm.f8962.4.deepseek item_2 $2,482.83 against $1,489.70). The model error is the unknowns: the candidate asks asset.bonus_same of property whose bonus_choice is none, an answer the source does not need (same as the backlog-round ruling; witnesses classm.f8962.4 and .deepseek item_1, classm.sc.1 biz_b item_1). Triage executable-triage-v2 (`../triage/asset.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 713 partial records): 624 of 1,364 agree; on completed returns 101 value, 10 candidate-unknown.
+Second transcription's note: For property placed in service before 2025, this is the unadjusted basis that the table rates apply to (Pub. 946: cost less the section 179 deduction and the special allowance, without subtracting earlier MACRS depreciation). It uses the current business-use percentage because the screen rules out any change in that percentage.
+
+Ruling: model error; same candidate as the refresh-round ruling. the pass reply's asset.h_bonus_mixed (placed in 2025 and asset.bonus_same false) refuses asset.bonus_2025 whatever asset.bonus_choice is, so it asks asset.bonus_same of 2025 property whose choice is none; the project asks it only on the full and forty branches (asset.bonus_full, asset.bonus_forty refuse on asset.bonus_mixed). i4562 p. 7, Election out: "You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class placed in service during the tax year" makes the same-class question matter only where an allowance is claimed. Same point as the backlog and refresh rulings. Values: the project shows at this marker the business basis before section 179 and the special allowance (its label; the reduced basis is 19(c)); the reply nets them here, so its amount differs for every 2025 asset with an election or allowance (i4562 p. 11, Column (c), "From that result, subtract any credits and deductions allocable to the property"; the project shows the subtraction at 19(c)).
+Reviewed in: pass 752f59790b4e
 
 ### 14 — Special depreciation allowance for this property
 Status: **DISAGREE**
@@ -187,10 +201,11 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}, {"guard": {"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: model error; same as the backlog-round ruling. i4562 p. 7, Election out: "You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class placed in service during the tax year"; the candidate asks asset.bonus_same of property whose bonus_choice is none, an answer the source does not need (same as the backlog-round ruling; witnesses classm.f8962.4 and .deepseek item_1, classm.sc.1 biz_b item_1). No value differs. Triage executable-triage-v2 (`../triage/asset.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 713 partial records): 1,251 of 1,364 agree; on completed returns 8 candidate-unknown.
+Ruling: model error; the pass reply's asset.h_bonus_mixed (placed in 2025 and asset.bonus_same false) refuses asset.bonus_2025 whatever asset.bonus_choice is, so it asks asset.bonus_same of 2025 property whose choice is none; the project asks it only on the full and forty branches (asset.bonus_full, asset.bonus_forty refuse on asset.bonus_mixed). i4562 p. 7, Election out: "You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class placed in service during the tax year" makes the same-class question matter only where an allowance is claimed. Same point as the backlog and refresh rulings. Values: the reply's line 14 is its allowance for 2025 property that is not listed, the project's reading (i4562 pp. 5-6, Line 14). Round-2 rulings are from reading the pass reply (.transcription/asset.lines-70ea95948c1d) against the project; triage was not rerun.
+Reviewed in: pass 752f59790b4e
 
 ### 25 — Special depreciation allowance for this listed property (line 25)
 Status: **DISAGREE**
@@ -204,10 +219,11 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, {"args": [{"const": true}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}], "op": "choose"}
 ```
 
-Ruling: representation; same as the backlog-round ruling. i4562 p. 14, Line 25. Triage executable-triage-v2 (`../triage/asset.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 713 partial records): 1,363 of 1,364 agree; the one difference is a record withholding asset.listed on a refused return; no completed return differs.
+Ruling: model error; the pass reply's asset.h_bonus_mixed (placed in 2025 and asset.bonus_same false) refuses asset.bonus_2025 whatever asset.bonus_choice is, so it asks asset.bonus_same of 2025 property whose choice is none; the project asks it only on the full and forty branches (asset.bonus_full, asset.bonus_forty refuse on asset.bonus_mixed). i4562 p. 7, Election out: "You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class placed in service during the tax year" makes the same-class question matter only where an allowance is claimed. Same point as the backlog and refresh rulings. Values: the allowance for listed property placed in 2025, the project's line 25 (i4562 p. 13, Line 25, "If you placed in service certain qualified listed property during the tax year, you may be able to deduct the special depreciation allowance"). Round-2 rulings are from reading the pass reply (.transcription/asset.lines-70ea95948c1d) against the project; triage was not rerun.
+Reviewed in: pass 752f59790b4e
 
 ### 26(i) — Elected section 179 cost of this listed property (column (i))
 Status: **DISAGREE**
@@ -221,10 +237,11 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, {"guard": {"args": [{"const": true}, {"input": "asset.listed"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}], "op": "choose"}
 ```
 
-Ruling: representation; same as the backlog-round ruling. i4562 p. 5, Line 6, "Enter the elected section 179 cost of listed property in column (i) of line 26". Triage executable-triage-v2 (`../triage/asset.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 713 partial records): 1,349 of 1,364 agree; the only differences are records withholding asset.listed on refused or incomplete returns; no completed return differs.
+Ruling: representation; i4562 p. 5, Line 6, "Enter the elected section 179 cost of listed property in column (i) of line 26". The reply's column (i) is the elected cost of listed 2025 property, shown only for it; the project's line reads the same answers. Same reading as the refresh-round ruling. Round-2 rulings are from reading the pass reply (.transcription/asset.lines-70ea95948c1d) against the project; triage was not rerun.
+Reviewed in: pass 752f59790b4e
 
 ### 19(c) — Basis for depreciation (business/investment use only), column (c), after the section 179 d
 Status: **DISAGREE**
@@ -238,10 +255,11 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}], "test": "all"}, "then": {"from": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"line": "(c)"}
 ```
 
-Ruling: model error; same as the backlog-round ruling. i4562 p. 9, Lines 19a Through 19j; the candidate asks asset.bonus_same of property whose bonus_choice is none, an answer the source does not need (same as the backlog-round ruling; witnesses classm.f8962.4 and .deepseek item_1, classm.sc.1 biz_b item_1). No value differs. Triage executable-triage-v2 (`../triage/asset.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 713 partial records): 1,283 of 1,364 agree; on completed returns 8 candidate-unknown. Every other difference is a record withholding an answer the interview asks of the asset (placed, class, screen, pct, listed, cost) or a cited refusal (asset.screened, asset.outside, asset.qip_early, asset.listed_low; fixtures stage14.asset.refuse_*), on refused or incomplete returns.
+Ruling: model error; the pass reply's asset.h_bonus_mixed (placed in 2025 and asset.bonus_same false) refuses asset.bonus_2025 whatever asset.bonus_choice is, so it asks asset.bonus_same of 2025 property whose choice is none; the project asks it only on the full and forty branches (asset.bonus_full, asset.bonus_forty refuse on asset.bonus_mixed). i4562 p. 7, Election out: "You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class placed in service during the tax year" makes the same-class question matter only where an allowance is claimed. Same point as the backlog and refresh rulings. Values: the reply copies its (c), for 2025 property the business cost less section 179 and the allowance, the project's 19(c) (asset.ub; i4562 p. 11, Column (c)). Round-2 rulings are from reading the pass reply (.transcription/asset.lines-70ea95948c1d) against the project; triage was not rerun.
+Reviewed in: pass 752f59790b4e
 
 ### 19(g) — MACRS depreciation for 2025 property
 Status: **DISAGREE**
@@ -255,10 +273,11 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}], "test": "le"}, "then": {"amount": {"from": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"param": "sc.conv_hy"}, {"const": 1, "type": "Count"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}], "test": "lt"}, "then": {"amount": {"from": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"keys": [{"input": "asset.quarter"}], "op": "keyed_lookup", "table": "quarter_convention"}, {"const": 1, "type": "Count"}], "op": "keyed_lookup", "table": "macrs_gds"}}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}, {"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}], "test": "le"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"line": "(e)"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"args": [{"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "test": "lt"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}], "test": "le"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"param": "sc.conv_hy"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}], "test": "lt"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"keys": [{"input": "asset.quarter"}], "op": "keyed_lookup", "table": "quarter_convention"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}], "op": "choose"}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: model error; i4562 p. 9, Lines 19a Through 19j. The reply no longer has the period cycle of the backlog round; the candidate asks asset.bonus_same of property whose bonus_choice is none, an answer the source does not need (same as the backlog-round ruling; witnesses classm.f8962.4 and .deepseek item_1, classm.sc.1 biz_b item_1). No value differs. Triage executable-triage-v2 (`../triage/asset.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 713 partial records): 1,306 of 1,364 agree; on completed returns 8 candidate-unknown. Every other difference is a record withholding an answer the interview asks of the asset (placed, class, screen, pct, listed, cost) or a cited refusal (asset.screened, asset.outside, asset.qip_early, asset.listed_low; fixtures stage14.asset.refuse_*), on refused or incomplete returns.
+Ruling: model error; the pass reply's asset.h_bonus_mixed (placed in 2025 and asset.bonus_same false) refuses asset.bonus_2025 whatever asset.bonus_choice is, so it asks asset.bonus_same of 2025 property whose choice is none; the project asks it only on the full and forty branches (asset.bonus_full, asset.bonus_forty refuse on asset.bonus_mixed). i4562 p. 7, Election out: "You can elect, for any class of property, to not deduct any special depreciation allowance for all such property in such class placed in service during the tax year" makes the same-class question matter only where an allowance is claimed. Same point as the backlog and refresh rulings. Values: the table rate (mid-quarter when mq.applies, else half-year) times the reduced basis, the project's reading (i4562 p. 9, Lines 19a Through 19j). Round-2 rulings are from reading the pass reply (.transcription/asset.lines-70ea95948c1d) against the project; triage was not rerun.
+Reviewed in: pass 752f59790b4e
 
 ### 17 — MACRS deduction for 2025 on property placed in service before 2025
 Status: **DISAGREE**
@@ -272,10 +291,11 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}, {"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}], "test": "le"}, "then": {"amount": {"from": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"input": "asset.prior_179"}}, "op": "subtract_floor0", "take": {"input": "asset.prior_bonus"}}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"line": "(e)"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}, {"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}], "test": "le"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"line": "(e)"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"args": [{"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "test": "lt"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}], "test": "le"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"param": "sc.conv_hy"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}], "test": "lt"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"keys": [{"input": "asset.quarter"}], "op": "keyed_lookup", "table": "quarter_convention"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}], "op": "choose"}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.listed"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Ruling: representation; i4562 p. 9, Line 17. The reply no longer has the period cycle of the backlog round. Triage executable-triage-v2 (`../triage/asset.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 713 partial records): 1,341 of 1,364 agree; the only differences are project refusals on cited screens (stage14.asset.refuse_qip_2017, refuse_ads_past_gds) and partial records withholding screen or pct; no completed return differs.
+Ruling: representation; i4562 p. 9, Line 17, "enter the deductions for the current year. To figure the deductions, see the instructions for line 19, column (g)". As asset.dep_prior: for property placed before 2025 and not listed the reply's amount is the project's; the bonus refusal is not reached there. Same reading as the refresh-round ruling. Round-2 rulings are from reading the pass reply (.transcription/asset.lines-70ea95948c1d) against the project; triage was not rerun.
+Reviewed in: pass 752f59790b4e
 
 ### 26(h) — Depreciation of this listed property (column (h))
 Status: **DISAGREE**
@@ -289,10 +309,11 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}], "test": "le"}, "then": {"amount": {"from": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"param": "sc.conv_hy"}, {"const": 1, "type": "Count"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}], "test": "lt"}, "then": {"amount": {"from": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"args": [{"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": false}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, {"args": [{"const": "forty"}, {"input": "asset.bonus_choice"}], "test": "eq"}], "test": "any"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}], "test": "all"}, "then": {"amount": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"param": "sc.bonus_rate_40"}}}, {"guard": {"args": [{"args": [{"const": "full"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, {"args": [{"const": true}, {"input": "asset.after_jan19"}], "test": "eq"}], "test": "all"}, "then": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"alternatives": [{"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"line": "6(c)"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}}}, {"guard": {"args": [{"args": [{"const": "none"}, {"input": "asset.bonus_choice"}], "test": "eq"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"keys": [{"input": "asset.quarter"}], "op": "keyed_lookup", "table": "quarter_convention"}, {"const": 1, "type": "Count"}], "op": "keyed_lookup", "table": "macrs_gds"}}}], "op": "choose"}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}, "then": {"alternatives": [{"guard": {"args": [{"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}, {"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}], "test": "le"}, "then": {"amount": {"from": {"from": {"amount": {"input": "asset.cost"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"input": "asset.pct"}, "op": "multiply_count"}, "places": 2, "whole": {"param": "sc.hundred_cents"}}, "op": "subtract_floor0", "take": {"input": "asset.prior_179"}}, "op": "subtract_floor0", "take": {"input": "asset.prior_bonus"}}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"line": "(e)"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "test": "lt"}, "then": {"const": 0}}], "op": "choose"}}], "op": "choose"}}, {"guard": {"args": [{"const": true}, {"input": "asset.listed"}], "test": "ne"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"const": false}, {"input": "asset.listed"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"input": "asset.listed"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}, {"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}], "test": "le"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"line": "(e)"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"args": [{"keys": [{"line": "(d)"}], "op": "keyed_lookup", "table": "macrs_last_year"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "test": "lt"}, {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "ne"}], "test": "all"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "y2025"}, {"line": "(b)"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}], "test": "le"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"param": "sc.conv_hy"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}, {"guard": {"args": [{"amount": {"collection": "person", "field": "person.mq_total", "op": "sum_over", "where": null}, "count": {"param": "sc.count2"}, "op": "multiply_count"}, {"amount": {"collection": "person", "field": "person.mq_q4", "op": "sum_over", "where": null}, "count": {"param": "sc.count5"}, "op": "multiply_count"}], "test": "lt"}, "then": {"amount": {"line": "(c)"}, "op": "multiply_rate", "rate": {"keys": [{"line": "(d)"}, {"keys": [{"input": "asset.quarter"}], "op": "keyed_lookup", "table": "quarter_convention"}, {"keys": [{"line": "(b)"}], "op": "keyed_lookup", "table": "recovery_year"}], "op": "keyed_lookup", "table": "macrs_gds"}}}], "op": "choose"}}], "op": "choose"}}], "op": "choose"}
 ```
 
-Ruling: representation; i4562 p. 15, Column (h). The reply no longer has the period cycle of the backlog round. Triage executable-triage-v2 (`../triage/asset.json`, refresh round; 1,565 fixtures, 500 generated returns seed 20261026, 713 partial records): 1,350 of 1,364 agree; the only differences are cited project refusals and records withholding answers the interview asks; no completed return differs.
+Ruling: model error; for listed property placed in 2025 the reply's column (h) reads its (c), which reaches asset.bonus_2025 and so asks asset.bonus_same when the choice is none (as at line 14; i4562 p. 7, Election out). For listed property placed earlier the amount is line 17's reading, the project's (i4562 p. 15, Column (h), "figure column (h) by following the instructions for line 19, column (g)"). Round-2 rulings are from reading the pass reply (.transcription/asset.lines-70ea95948c1d) against the project; triage was not rerun.
+Reviewed in: pass 752f59790b4e
 
 ## Refusal gates listed by the second transcription
 
@@ -300,21 +321,566 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 
 | line | gates listed | not read by the project's line |
 | --- | --- | --- |
-| asset.dep_2025 | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.screen | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.screen |
-| asset.bonus_2025 | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.screen | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.screen |
-| asset.s179_2025 | asset.h_s179_bad | asset.h_s179_bad |
-| asset.mq_q4 | asset.h_s179_bad, asset.screen | asset.h_s179_bad, asset.screen |
-| asset.mq_total | asset.h_s179_bad, asset.screen | asset.h_s179_bad, asset.screen |
+| asset.dep_2025 | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.h_s179_over, asset.screen | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.h_s179_over, asset.screen |
+| asset.bonus_2025 | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.h_s179_over, asset.screen | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.h_s179_over, asset.screen |
+| asset.s179_2025 | asset.h_s179_bad, asset.h_s179_over, asset.screen | asset.h_s179_bad, asset.h_s179_over, asset.screen |
+| asset.mq_q4 | asset.h_s179_bad, asset.h_s179_over, asset.screen | asset.h_s179_bad, asset.h_s179_over, asset.screen |
+| asset.mq_total | asset.h_s179_bad, asset.h_s179_over, asset.screen | asset.h_s179_bad, asset.h_s179_over, asset.screen |
 | asset.cost179 | asset.screen | asset.screen |
-| asset.dep_prior | asset.h_outside, asset.screen | asset.h_outside, asset.screen |
-| (c) | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.screen | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.screen |
-| 14 | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.screen | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.screen |
-| 25 | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.screen | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.screen |
-| 26(i) | asset.h_s179_bad | asset.h_s179_bad |
-| 19(c) | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.screen | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.screen |
-| 19(g) | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.screen | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.screen |
-| 17 | asset.h_outside, asset.screen | asset.h_outside, asset.screen |
-| 26(h) | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.screen | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.screen |
+| asset.dep_prior | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.h_s179_over, asset.screen | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.h_s179_over, asset.screen |
+| (d) | asset.screen | asset.screen |
+| (c) | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.h_s179_over, asset.screen | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.h_s179_over, asset.screen |
+| 14 | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.h_s179_over, asset.screen | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.h_s179_over, asset.screen |
+| 25 | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.h_s179_over, asset.screen | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.h_s179_over, asset.screen |
+| 26(i) | asset.h_s179_bad, asset.h_s179_over, asset.screen | asset.h_s179_bad, asset.h_s179_over, asset.screen |
+| 19(c) | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.h_s179_over, asset.screen | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.h_s179_over, asset.screen |
+| 19(g) | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.h_s179_over, asset.screen | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.h_s179_over, asset.screen |
+| 17 | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.h_s179_over, asset.screen | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.h_s179_over, asset.screen |
+| 26(h) | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.h_s179_over, asset.screen | asset.h_bonus_mixed, asset.h_outside, asset.h_s179_bad, asset.h_s179_over, asset.screen |
+
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| asset.dep_2025 | 8354cd5b78680599a47bc423e0b8f779dd73e3cd8dfa32531afe143216e9173a |
+| asset.bonus_2025 | 992be1aa01714fedf074aad758b9ec48b27390c1c85111befd88cd6ec3b6a110 |
+| asset.s179_2025 | fa7c7066e41de8c17f12e436e607dfeb2be8ce283c55e0bb43c127c8f7b13eff |
+| asset.mq_q4 | 1a9b8f67f38f1b6b58b1968c4a9e896eb60b9571c18c43aff234dd927ba10e19 |
+| asset.mq_total | c91ab589b223fd6b4c4d9ba157d43e3a599d9e16e382eb068e23b7ae8e6ffcaa |
+| asset.cost179 | 36e454dd9b45a8ae6cc71c6fbabfb48ee1e323141046e0926e6cca4a67f96af0 |
+| asset.dep_prior | fb2d345ad3b8279b5963bc7b458c4f367bd51f928e72b535b3cfff221029b764 |
+| (d) | bb010f0dfd8e8e567a43b9d496a4919a40dcd32261237f90c7dbe77ed65fd57c |
+| (c) | 679ed2f38b59f2b5e2ef0a51c7ed2f677ee3b72eddd9ba0ac76f1e1b9f64f14f |
+| 14 | 943407da951756b339085c821a63ede3aa4672762c13a037f0b9a2dc2494a941 |
+| 25 | 52627f6d5d11aaa64864c4065923630ec740994659cbffde36f8d9912a9c7a2b |
+| 26(i) | 909a939371b56d2c6aa5577231ff17b78e0d62e63816a1a0d78d7f0535097fd1 |
+| 19(c) | 25586376f88e0953090ed5071d578fc012cf043f5e664692468008242ee048cd |
+| 19(g) | ba41436b17465a140b119d3e2d8058aecb0614042d9a5ce8238008ed4528f722 |
+| 17 | d67733c1bd467e7287099ceacfd4655459534f39d9ebb5fcebf0cfb273324772 |
+| 26(h) | c1d4f84ff30a7a350cda292c7dc079fc53a71e0dd3390eb39f6c88402db4d42a |
+| (rest of the document) | 23cd60eb4e18c4e6e6eabade0d61151d78a280570c80a0789d7c6bdabc33c4ef |
+
+## Foreign interfaces
+
+The interfaces (id, printed marker, type, input question) of other documents' lines that each compared line reads, as the request carried them (tools/transcription/subjects.py); a changed row stales that line.
+
+| line | foreign interfaces sha256 |
+| --- | --- |
+| asset.dep_2025 | 24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325 |
+| asset.bonus_2025 | 24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325 |
+| asset.s179_2025 | 24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325 |
+| asset.mq_q4 | 24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325 |
+| asset.mq_total | 24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325 |
+| asset.cost179 | 24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325 |
+| asset.dep_prior | 24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325 |
+| (d) | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
+| (c) | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
+| 14 | 24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325 |
+| 25 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
+| 26(i) | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
+| 19(c) | 24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325 |
+| 19(g) | 14ab4862811584dfd01cb4c921ce8aa19deac170e103f50c05485c1ee3465442 |
+| 17 | 24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325 |
+| 26(h) | 24437f0ae25c96e08f723cc22bfd2479b7d086195d47d1dbab794b000d4bb325 |
+
+## Line-scoped reviews
+
+Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
+
+#### Pass 752f59790b4e
+
+| field | value |
+| --- | --- |
+| date | 2026-11-04 |
+| review scope | lines asset.dep_2025, asset.bonus_2025, asset.s179_2025, asset.mq_q4, asset.mq_total, asset.cost179, asset.dep_prior, (d), (c), 14, 25, 26(i), 19(c), 19(g), 17, 26(h) |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | 752f59790b4e1c82d68567ca4ce5aa540d66ccec0c85b6f4f8f515b4b710fb23 |
+| prompt policy | source-only-computation-v3+lines-v1 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | required-review-interfaces-v2 |
+| complete input context | pass |
+| required input context sha256 | 2a605d1c9ccb832ac689a14c9906c9af955bf9b73e377198a12586acd73910e8 |
+| type validation policy | project-expression-types-v3 |
+| model type validation | pass |
+| system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
+| subject sha256 | 09e40eb85eee7286d785f0f46ce3575296ca5322e1414811ab3122c147143b77 |
+| receipt | .transcription/asset.lines-70ea95948c1d |
+| printed lines compared | 16 |
+| agree / disagree / missing | 2 / 14 / 0 |
+| extra printed lines in second | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i4562 | 2025 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
+| p946 | For use in preparing 2025 returns | 17, 31, 32, 33, 34, 37, 39, 41, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 17, 31, 32, 33, 34, 37, 39, 41 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
+
+##### Other documents in the catalog
+
+Chosen from the source pages above (catalog_selection); refusal-gate inputs are in the screening list.
+
+| reason | documents |
+| --- | --- |
+| definition | aqee, se, tax_on_amount, tcw |
+| named form | dependent, f1040, household, scope |
+| named line | s1 |
+| shared page | f4562, mq, person, s179, sc, scveh |
+
+##### Raw second transcription
+
+```yaml
+```yaml
+lines:
+  - id: asset.h_outside
+    printed: "(helper)"
+    label: "The property's recovery period is not 3, 5, 7, 10, 15 or 20 years under GDS (for example 25-year water utility property or 50-year railroad gradings), so the percentage tables used here do not apply"
+    type: Bool
+    expr: {op: test, eq: [asset.period, {const: "outside"}]}
+  - id: asset.h_zero
+    printed: "(helper)"
+    label: "Zero"
+    type: NonNegDollars
+    expr: {op: param, ref: ss.zero}
+  - id: asset.h_cent
+    printed: "(helper)"
+    label: "One cent"
+    type: NonNegDollars
+    expr: {op: param, ref: sc.one_cent}
+  - id: asset.h_pct_c
+    printed: "(helper)"
+    label: "Business/investment use percentage, written as cents (percent x 1 cent)"
+    type: NonNegDollars
+    expr: {op: multiply_count, amount: asset.h_cent, count: asset.pct}
+  - id: asset.h_bus_cost
+    printed: "(helper)"
+    label: "Multiply the cost or other basis of the property by the percentage of business/investment use"
+    type: NonNegDollars
+    expr: {op: prorate, amount: asset.cost, part: asset.h_pct_c, whole: {param: sc.hundred_cents}, places: 2}
+    refuses: [asset.screen]
+  - id: asset.h_is2025
+    printed: "(helper)"
+    label: "Placed in service during the tax year beginning in 2025"
+    type: Bool
+    expr: {op: test, eq: [asset.placed, {const: "y2025"}]}
+  - id: asset.h_s179_over
+    printed: "(helper)"
+    label: "Consistency check: the elected section 179 cost is more than the property's business cost"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [asset.h_is2025, {const: true}]}
+        - {op: test, gt: [asset.s179, asset.h_bus_cost]}
+  - id: asset.h_s179_bad
+    printed: "(helper)"
+    label: "Consistency check: a section 179 cost is elected for property that is not section 179 property, or that is not used predominantly (more than 50%) in the business"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [asset.h_is2025, {const: true}]}
+        - {op: test, gt: [asset.s179, {const: 0}]}
+        - op: test
+          any:
+            - {op: test, eq: [asset.not179, {const: true}]}
+            - {op: test, le: [asset.pct, {const: 50, type: Count}]}
+  - id: asset.s179_2025
+    printed: "(helper)"
+    label: "Column (c)—Elected cost. Enter the amount you elect to expense (section 179 property placed in service during the tax year)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [asset.h_is2025, {const: true}]}
+          then: asset.s179
+        - guard: {op: test, eq: [asset.h_is2025, {const: false}]}
+          then: asset.h_zero
+    refuses:
+      - asset.screen
+      - {when: asset.h_s179_over, when_known: true}
+      - {when: asset.h_s179_bad, when_known: true}
+    note: "Open point: the text does not say whether depreciable basis is reduced by the elected section 179 cost or only by the part that is allowed after the business income limit (line 11). I reduce it by the elected amount, and the other lines build on that."
+  - id: asset.h_mq_basis
+    printed: "(helper)"
+    label: "Depreciable basis before any special depreciation allowance: business/investment portion of cost minus the section 179 expense deduction"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: asset.h_bus_cost, take: asset.s179_2025}
+    refuses:
+      - asset.screen
+      - {when: asset.h_s179_over, when_known: true}
+  - id: asset.h_bonus_mixed
+    printed: "(helper)"
+    label: "The special depreciation allowance choice is not the same for all property in this class placed in service in 2025 (the election applies to all such property in the class)"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [asset.h_is2025, {const: true}]}
+        - {op: test, eq: [asset.bonus_same, {const: false}]}
+  - id: asset.h_bonus_40
+    printed: "(helper)"
+    label: "40% special depreciation allowance: depreciable basis multiplied by 40%"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: asset.h_mq_basis, rate: {param: sc.bonus_rate_40}}
+  - id: asset.bonus_2025
+    printed: "(helper)"
+    label: "Special depreciation allowance: multiply the depreciable basis of the property by the applicable percentage (100% for qualified property acquired after January 19, 2025, or 40% if elected; 40% for qualified property acquired after September 27, 2017, and before January 20, 2025; none if you elected not to claim it)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard:
+            op: test
+            all:
+              - {op: test, eq: [asset.h_is2025, {const: true}]}
+              - {op: test, eq: [asset.bonus_choice, {const: "full"}]}
+              - {op: test, eq: [asset.after_jan19, {const: true}]}
+          then: asset.h_mq_basis
+        - guard:
+            op: test
+            all:
+              - {op: test, eq: [asset.h_is2025, {const: true}]}
+              - op: test
+                any:
+                  - {op: test, eq: [asset.bonus_choice, {const: "forty"}]}
+                  - op: test
+                    all:
+                      - {op: test, eq: [asset.bonus_choice, {const: "full"}]}
+                      - {op: test, eq: [asset.after_jan19, {const: false}]}
+          then: asset.h_bonus_40
+        - guard:
+            op: test
+            any:
+              - {op: test, eq: [asset.h_is2025, {const: false}]}
+              - {op: test, eq: [asset.bonus_choice, {const: "none"}]}
+          then: asset.h_zero
+    refuses: [asset.screen, asset.h_outside, asset.h_bonus_mixed]
+    note: "My reading: this is this property's total 2025 special depreciation allowance (line 14 when not listed, line 25 when listed). The allowance applies only in the year the property is placed in service. Every GDS recovery period handled here is 20 years or less."
+  - id: asset.h_cur_basis
+    printed: "(helper)"
+    label: "Basis for depreciation, 2025 property: business/investment cost minus section 179 expense deduction minus special depreciation allowance"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: asset.h_mq_basis, take: asset.bonus_2025}
+  - id: asset.h_prior_a
+    printed: "(helper)"
+    label: "Business/investment cost minus the section 179 deduction claimed in the year placed in service"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: asset.h_bus_cost, take: asset.prior_179}
+  - id: asset.h_prior_basis
+    printed: "(helper)"
+    label: "Unadjusted basis, earlier-year property: business/investment cost minus section 179 deduction minus special depreciation allowance taken"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: asset.h_prior_a, take: asset.prior_bonus}
+  - id: asset.h_hy
+    printed: "(helper)"
+    label: "Half-year convention"
+    type: Enum(macrs_convention)
+    expr: {op: param, ref: sc.conv_hy}
+  - id: asset.h_qconv
+    printed: "(helper)"
+    label: "Mid-quarter convention for the quarter of 2025 in which the property was placed in service"
+    type: Enum(macrs_convention)
+    expr: {op: keyed_lookup, table: quarter_convention, keys: [asset.quarter]}
+  - id: asset.h_year
+    printed: "(helper)"
+    label: "Year of the recovery period that 2025 is for this property"
+    type: Count
+    expr: {op: keyed_lookup, table: recovery_year, keys: [asset.placed]}
+  - id: asset.h_last
+    printed: "(helper)"
+    label: "Last year of the recovery period in the percentage table"
+    type: Count
+    expr: {op: keyed_lookup, table: macrs_last_year, keys: [asset.period]}
+    refuses: [asset.h_outside]
+  - id: asset.h_ended
+    printed: "(helper)"
+    label: "The recovery period ended before 2025 (the depreciable basis has been fully recovered)"
+    type: Bool
+    expr: {op: test, gt: [asset.h_year, asset.h_last]}
+  - id: asset.h_rate_hy
+    printed: "(helper)"
+    label: "Applicable rate from the MACRS percentage table, half-year convention"
+    type: Rate
+    expr: {op: keyed_lookup, table: macrs_gds, keys: [asset.period, asset.h_hy, asset.h_year]}
+  - id: asset.h_rate_mq
+    printed: "(helper)"
+    label: "Applicable rate from the MACRS percentage table, mid-quarter convention for the quarter placed in service"
+    type: Rate
+    expr: {op: keyed_lookup, table: macrs_gds, keys: [asset.period, asset.h_qconv, asset.h_year]}
+  - id: asset.h_rate_prior
+    printed: "(helper)"
+    label: "Applicable rate from the MACRS percentage table, convention used in the year placed in service"
+    type: Rate
+    expr: {op: keyed_lookup, table: macrs_gds, keys: [asset.period, asset.prior_conv, asset.h_year]}
+  - id: asset.h_dep_hy
+    printed: "(helper)"
+    label: "Multiply column (c) by the applicable rate (half-year convention)"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: asset.basis, rate: asset.h_rate_hy}
+  - id: asset.h_dep_mq
+    printed: "(helper)"
+    label: "Multiply column (c) by the applicable rate (mid-quarter convention)"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: asset.basis, rate: asset.h_rate_mq}
+  - id: asset.h_dep_prior_amt
+    printed: "(helper)"
+    label: "Multiply the unadjusted basis by the applicable rate (convention used when placed in service)"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: asset.basis, rate: asset.h_rate_prior}
+  - id: asset.h_dep_cur
+    printed: "(helper)"
+    label: "Depreciation for 2025 property: mid-quarter convention if the depreciable bases of property placed in service in the last 3 months are more than 40% of the total, otherwise half-year convention"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [mq.applies, {const: true}]}
+          then: asset.h_dep_mq
+        - guard: {op: test, eq: [mq.applies, {const: false}]}
+          then: asset.h_dep_hy
+  - id: asset.h_dep_all
+    printed: "(helper)"
+    label: "MACRS depreciation deduction for this property for 2025"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [asset.h_is2025, {const: true}]}
+          then: asset.h_dep_cur
+        - guard:
+            op: test
+            all:
+              - {op: test, eq: [asset.h_is2025, {const: false}]}
+              - {op: test, eq: [asset.h_ended, {const: true}]}
+          then: asset.h_zero
+        - guard:
+            op: test
+            all:
+              - {op: test, eq: [asset.h_is2025, {const: false}]}
+              - {op: test, eq: [asset.h_ended, {const: false}]}
+          then: asset.h_dep_prior_amt
+    refuses: [asset.screen, asset.h_outside]
+  - id: asset.h_show14
+    printed: "(helper)"
+    label: "Placed in service in 2025 and not listed property (reported on lines 14 and 19)"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [asset.h_is2025, {const: true}]}
+        - {op: test, eq: [asset.listed, {const: false}]}
+  - id: asset.h_show17
+    printed: "(helper)"
+    label: "Placed in service before 2025 and not listed property (reported on line 17)"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [asset.h_is2025, {const: false}]}
+        - {op: test, eq: [asset.listed, {const: false}]}
+  - id: asset.h_show_l25
+    printed: "(helper)"
+    label: "Listed property placed in service in 2025 (lines 25 and 26(i))"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [asset.h_is2025, {const: true}]}
+        - {op: test, eq: [asset.listed, {const: true}]}
+
+  - id: asset.period
+    printed: "(d)"
+    label: "Column (d)—Recovery period. Determine the recovery period (Pub. 946, Appendix B, Table of Class Lives and Recovery Periods)"
+    type: Enum(macrs_period)
+    expr: {op: keyed_lookup, table: class_lives, keys: [asset.class]}
+    refuses: [asset.screen]
+  - id: asset.basis
+    printed: "(c)"
+    label: "Basis for depreciation (business/investment use only): multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property (section 179 expense deduction, any special depreciation allowance)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [asset.h_is2025, {const: true}]}
+          then: asset.h_cur_basis
+        - guard: {op: test, eq: [asset.h_is2025, {const: false}]}
+          then: asset.h_prior_basis
+    refuses: [asset.screen, asset.h_outside]
+    note: "For property placed in service before 2025, this is the unadjusted basis that the table rates apply to (Pub. 946: cost less the section 179 deduction and the special allowance, without subtracting earlier MACRS depreciation). It uses the current business-use percentage because the screen rules out any change in that percentage."
+  - id: asset.bonus
+    printed: "14"
+    label: "Special depreciation allowance for qualified property (other than listed property) placed in service during the tax year"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [asset.listed, {const: false}]}
+          then: asset.bonus_2025
+        - guard: {op: test, eq: [asset.listed, {const: true}]}
+          then: asset.h_zero
+    refuses: [asset.screen, asset.h_outside, asset.h_bonus_mixed]
+    shown_when: asset.h_show14
+  - id: asset.f25
+    printed: "25"
+    label: "Special depreciation allowance for qualified listed property placed in service during the tax year and used more than 50% in a qualified business use"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [asset.listed, {const: true}]}
+          then: asset.bonus_2025
+        - guard: {op: test, eq: [asset.listed, {const: false}]}
+          then: asset.h_zero
+    refuses: [asset.screen, asset.h_outside, asset.h_bonus_mixed]
+    shown_when: asset.h_show_l25
+  - id: asset.f26i
+    printed: "26(i)"
+    label: "Column (i)—Elected section 179 cost. Enter the amount you elect to expense for section 179 property used more than 50% in a qualified business use"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [asset.listed, {const: true}]}
+          then: asset.s179_2025
+        - guard: {op: test, eq: [asset.listed, {const: false}]}
+          then: asset.h_zero
+    refuses: [asset.screen]
+    shown_when: asset.h_show_l25
+  - id: asset.col19c
+    printed: "19(c)"
+    label: "Column (c)—Basis for depreciation (business/investment use only)"
+    type: NonNegDollars
+    expr: {op: copy, from: asset.basis}
+    refuses: [asset.screen, asset.h_outside]
+    shown_when: asset.h_show14
+  - id: asset.macrs2025
+    printed: "19(g)"
+    label: "Column (g)—Depreciation deduction. Multiply column (c) by the applicable rate from the appropriate table"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [asset.h_show14, {const: true}]}
+          then: asset.h_dep_all
+        - guard: {op: test, eq: [asset.h_show14, {const: false}]}
+          then: asset.h_zero
+    refuses: [asset.screen, asset.h_outside]
+    shown_when: asset.h_show14
+  - id: asset.macrs_prior
+    printed: "17"
+    label: "MACRS deductions for assets placed in service in tax years beginning before 2025"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [asset.h_show17, {const: true}]}
+          then: asset.h_dep_all
+        - guard: {op: test, eq: [asset.h_show17, {const: false}]}
+          then: asset.h_zero
+    refuses: [asset.screen, asset.h_outside]
+    shown_when: asset.h_show17
+  - id: asset.dep_listed
+    printed: "26(h)"
+    label: "Column (h)—Depreciation deduction. For property used more than 50% in a qualified business use and placed in service after 1986, figure column (h) by following the instructions for line 19, column (g)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [asset.listed, {const: true}]}
+          then: asset.h_dep_all
+        - guard: {op: test, eq: [asset.listed, {const: false}]}
+          then: asset.h_zero
+    refuses: [asset.screen, asset.h_outside]
+    shown_when: asset.listed
+
+  - id: asset.dep_2025
+    printed: "(helper)"
+    label: "MACRS depreciation deduction for this property placed in service in 2025 (line 19(g), or line 26(h) if listed)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [asset.h_is2025, {const: true}]}
+          then: asset.h_dep_all
+        - guard: {op: test, eq: [asset.h_is2025, {const: false}]}
+          then: asset.h_zero
+    refuses: [asset.screen, asset.h_outside]
+    note: "The pages do not define this interface. My reading: the regular MACRS deduction for property placed in service in 2025, listed or not, without the section 179 deduction or the special allowance."
+  - id: asset.dep_prior
+    printed: "(helper)"
+    label: "MACRS depreciation deduction for this property placed in service before 2025 (line 17, or line 26(h) if listed)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [asset.h_is2025, {const: false}]}
+          then: asset.h_dep_all
+        - guard: {op: test, eq: [asset.h_is2025, {const: true}]}
+          then: asset.h_zero
+    refuses: [asset.screen, asset.h_outside]
+    note: "The pages do not define this interface. My reading: the MACRS deduction for property placed in service before 2025, listed or not."
+  - id: asset.mq_q4
+    printed: "(helper)"
+    label: "Depreciable basis (before any special depreciation allowance, after section 179 and personal-use reduction) of this MACRS property if placed in service during the last 3 months of the tax year"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard:
+            op: test
+            all:
+              - {op: test, eq: [asset.h_is2025, {const: true}]}
+              - {op: test, eq: [asset.quarter, {const: "q4"}]}
+          then: asset.h_mq_basis
+        - guard:
+            op: test
+            any:
+              - {op: test, eq: [asset.h_is2025, {const: false}]}
+              - {op: test, ne: [asset.quarter, {const: "q4"}]}
+          then: asset.h_zero
+    refuses: [asset.screen]
+  - id: asset.mq_total
+    printed: "(helper)"
+    label: "Depreciable basis (before any special depreciation allowance, after section 179 and personal-use reduction) of this MACRS property if placed in service during the tax year"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [asset.h_is2025, {const: true}]}
+          then: asset.h_mq_basis
+        - guard: {op: test, eq: [asset.h_is2025, {const: false}]}
+          then: asset.h_zero
+    refuses: [asset.screen]
+  - id: asset.cost179
+    printed: "(helper)"
+    label: "Cost of section 179 property placed in service during the tax year (Form 4562, line 2, including listed property)"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard:
+            op: test
+            all:
+              - {op: test, eq: [asset.h_is2025, {const: true}]}
+              - {op: test, eq: [asset.not179, {const: false}]}
+          then: asset.h_bus_cost
+        - guard:
+            op: test
+            any:
+              - {op: test, eq: [asset.h_is2025, {const: false}]}
+              - {op: test, eq: [asset.not179, {const: true}]}
+          then: asset.h_zero
+    refuses: [asset.screen]
+    note: "Open point: line 2 says 'total cost of all section 179 property', but line 6 column (b) is 'Cost (business use only)'. I use the business-use cost. I do not leave out property used 50% or less in the business, because the definition of section 179 property does not include the more-than-50% test (that test limits the election)."
+```
+```
 
 ## Raw second transcription
 

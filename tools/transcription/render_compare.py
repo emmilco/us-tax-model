@@ -504,6 +504,13 @@ def scoped_main(a, form_doc):
         if not gone:
             print(f"{fid}: " + ("every judged line is current; nothing to review" if asked == ["auto"]
                                 else f"no judged line reads {', '.join(asked)}; nothing to review"))
+            if subjects.recorded(old) is None:
+                # Every line's subject and the rest were verified equal to the reviewed version
+                # (plan_scope), so the current table records what the log reviewed.
+                merged = T.merge_log("render", fid, old, "## Raw response", {}, key_order, [], None, None, _counts)
+                if not a.dry_run:
+                    open(path, "w", encoding="utf-8").write(merged)
+                print(f"{fid}: recorded the line subjects the log reviewed; no model call")
             return
         merged = T.merge_log("render", fid, old, "## Raw response", {}, key_order, gone, None, None, _counts)
         if not a.dry_run:

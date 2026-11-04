@@ -36,11 +36,13 @@ form:
     expr:
       op: input
       source: HSA contributions you made for 2025 (or those made on your behalf), including those made by April 15, 2026 that
-        were for 2025; do not include employer contributions, payroll contributions through a cafeteria plan, rollovers, or
+        were for 2025 (or by a later date if you served in, or in support of, the U.S. Armed Forces in a designated combat zone
+        or contingency operation); do not include employer contributions, payroll contributions through a cafeteria plan, rollovers, or
         qualified HSA funding distributions; zero if none
     cite:
       doc: f8889
-      locator: Form 8889 (2025), line 2; i8889 p. 4, Line 2
+      locator: Form 8889 (2025), line 2; i8889 p. 4, Line 2, "Thus, you may contribute to your 2025 HSA through April 15, 2026,
+        or a later date if you served in a designated combat zone or contingency operation."
   - id: f8889.line9
     printed: '9'
     label: Employer contributions made to your HSAs for 2025
@@ -1392,12 +1394,15 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: The part of those distributions that you rolled over to another HSA within 60 days (a rollover); zero if none
+      source: The part of those distributions that you rolled over within 60 days to another HSA of yours (an HSA of the same
+        account beneficiary); do not count a rollover into an HSA that had already received a rollover contribution in the
+        1-year period before it, since an HSA can receive only one rollover contribution during a 1-year period; zero if none
     cite:
       doc: i8889
       locator: p. 8, Line 14b, "Include on line 14b any distributions your HSA made in 2025 that qualified as a rollover
         contribution to another HSA"; p. 3, Rollovers, "Generally, you must complete the rollover within 60 days after you
-        received the distribution"
+        received the distribution", "reinvested in another HSA of the same account beneficiary" and "An HSA can only receive
+        one rollover contribution during a 1-year period."
   - id: f8889.rollover_bad
     printed: (gate)
     label: The distributions rolled over are more than the total distributions

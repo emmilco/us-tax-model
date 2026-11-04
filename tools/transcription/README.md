@@ -77,7 +77,8 @@ Every call that reaches a transport (`call_model`, used by transcription,
 render, class M, completeness, screen, table and transport checks) appends one
 JSON line to `.transcription/costs.jsonl`, success or failure: timestamp,
 tool, kind, subject (form, job or screen), model requested and reported,
-transport, prompt and system characters, the usage fields as reported,
+transport, prompt and system characters, the prompt's sha256 and the reply's
+(`response_sha256`, the identity a ruling's `run` stamp names), the usage fields as reported,
 `cost_usd` as reported, `estimated_cost_usd` with its `price_basis`, duration
 and outcome. Each line is one `write()` on an `O_APPEND` descriptor, so
 concurrent reviews do not interleave lines. Receipts are overwritten at each
@@ -459,7 +460,8 @@ amounts that flow into it, for the generated returns that together take every
 reachable branch of the document. `node engine/dist/main.js classm-jobs`
 chooses those returns (whole-dollar inputs, a greedy cover of the document's
 choose guards, Bool sides and floor/min/max sides over a 2,000-return
-corpus) and writes `.classm/jobs.json` with, per case, the whole-return
+corpus; a return's branches are those of its routed evaluation, the answers the interview's route asks plus
+those the requested lines read, the same answers the job keeps, T-206) and writes `.classm/jobs.json` with, per case, the whole-return
 inputs, the values the document reads from other documents (printed lines by
 title and number, helpers by label, collection entries field by field), the
 filer's own inputs, and the project's values for comparison, which the model
@@ -532,6 +534,31 @@ off). Measured precision against hand rulings: 50 of 50 on the 2026-11-03 refres
 round; it removes a small share of open handles (about 7%), because most repeats on an unchanged line come with a
 different model reply.
 
+Before carrying, `carry.py` rules mechanically (T-224) every open transcription disagreement whose second side
+records `invalid_model_types`: the reply fails the host's schema, type or reference validation on the line or a line
+it reads, so by the adjudication method (`reviews/<year>/transcription/adjudication/README.md`, "model error") it is a
+model error on the declaration and the line was not executed. The ruling reads "Ruling: model error on the
+declaration, ruled mechanically: ..." and quotes each validation message; it needs no earlier ruling. Measured over
+the committed sidecars before the change: 917 of 5,102 transcription rulings (18%; DeepSeek 871 of 2,643) were on
+such sections, and 914 of them were ruled model error by hand (the other three added an interface gap, an ambiguity
+or a scope note to the model error); in the current logs 136 of 1,445 ruled sections, all model error (scveh's
+DeepSeek log: 20 of 21). A reply that only omits a `shown_when` the project has is not ruled mechanically: under the
+v3 prompt such sections were ruled model error 12 times of 26 (the rest scope, representation or interface gap),
+because whether the source conditions the line's display is a source reading.
+
+## Ruling stamps (T-223)
+
+`rule.py` stamps every sidecar entry it writes (`rulings.STAMPS`): `date` (the day it was ruled), `run` (the
+identity of the reply the section records: `transcribe.response_sha256`, the hash of the reply as the log embeds it,
+taken from the log itself, the pass's raw reply for a line-scoped section, the case's raw reply for class M) and, for a
+finding (or a ruling headed "defect"), `severity` (`high`, `medium` or `low`; rule.py refuses a finding without
+one: `{"<printed>": {"ruling": "Ruling: finding; ...", "severity": "medium"}}`). Every ledger line records
+`prompt_sha256` and, for a call that returned text, `response_sha256`, so `costs.py --yield` joins a stamped ruling to
+the call that bought it exactly (the exact-join table) instead of by git window. Entries written before stamping are
+not backfilled: their ruling date is not recorded anywhere (a commit date is later than the ruling), and the ledger
+lines of their calls carry no reply identity, so a backfilled `run` would join nothing. `rulings.py --check` fails a
+malformed stamp. Completeness and screen rulings (hand-written JSON) are not stamped.
+
 ## Line-scoped reviews (T-219)
 
 `transcribe.py --form F --lines <ids|auto>` and `render_compare.py --form F --lines <ids|auto>` review only the named
@@ -542,5 +569,23 @@ carries the target lines, every other printed computed line by id, marker and ty
 targets and their helpers and inputs cite, and the source-derived catalog for those pages only. Each log records a
 `## Line subjects` table; `check_logs.py` names exactly the stale lines and suggests `--lines auto`. Owner decision
 2026-11-04: a log goes stale only for the lines whose subject changed (a line no compared line reaches does not stale
-it). Forms with partial-input banks (dependent, f8889) are reviewed whole. Merged logs earn no second-family credit
-until `compare_families.py` verifies each pass (T-226).
+it). Forms with partial-input banks (dependent, f8889) are reviewed whole. `rerun_all.py --lines auto` runs the transcription and render reviews this way.
+When `--lines auto` finds every compared line current in a log written before line-subject tables existed (a whole
+subject that changed only outside every line subject), it records the table it verified against the reviewed version
+and makes no model call, so `check_logs.py` holds the log current by its lines.
+
+A merged log earns second-family credit only when every review in it qualifies (T-226). `compare_families.py` holds
+a log with passes current by its line subjects (`subjects.log_state`, as `check_logs.py` does) instead of its header's
+subject, and applies the header's conditions to each pass's own record: the named family and selected model,
+`source-only-computation-v3+lines-v1`, the current comparison, type-validation and input-context policies with
+passing results. `audit_transcription.py` verifies the header review against its receipt (subject check replaced by
+the line-subject check) and comparing it again only on the sections it still holds, and each pass against the receipt
+it names: the prompt hash, the embedded reply, bound request metadata, and the reply compared again on the pass's
+scope with current type and input-context checks, whose fingerprint must equal the pass's.
+
+A transcription log also records a `## Foreign interfaces` table (T-227): per compared line, the hash of the
+interfaces (id, document, printed marker, type, input question) of other documents' lines its reach names, which the
+request carries. A rewording of such a question (`person.blind`, read by `sa`) stales exactly the lines whose row
+changed (`check_logs.py`, `--lines auto`). A whole review writes every row; a line-scoped review rewrites the rows
+of the lines it judged and keeps the others. A log, or a line, without a row is not checked, so the check applies
+from each log's next review on and no existing log went stale when it was added.
