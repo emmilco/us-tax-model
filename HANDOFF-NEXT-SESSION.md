@@ -18,6 +18,9 @@ Round 2 cost $41.12 in paid calls (90 calls); the yield report has an exact-join
 
 **Owner questions:** T-232 (`expect_shown`, a fixture-schema and spec change); whether transcription reviews should stop running on wording-only changes (round 2: $20.48 for 0 findings; completeness $6.70 for 1 medium and 12 lows).
 
+**After the round-2 commit (T-094):** every form is now completeness-reviewed. f4952 and f8880 use their printed instructions; person is reviewed
+whole, with the prompt limit raised to 700k characters. Cost $2.23; 2 more lows were added to BUG-0414's list.
+
 **Next:** T-229 (BUG-0414 lows) and T-231 at each form's next pass; T-217 after 2026-11-06 15:49; T-196 if a reader changes; coverage expansion stays last.
 
 ---

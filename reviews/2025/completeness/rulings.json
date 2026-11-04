@@ -237,6 +237,18 @@
    "prompt_sha": "9afaef214a68d24f65ef14e2aa93dbbfbb39331676a2fc9757ac823f776f56e9",
    "gate": "asset.listed_low"
   },
+  "unruled:f4952#1": {
+   "class": "covered",
+   "evidence": "f4952 p. 3. f4952.line4d is Schedule D line 16 floored at zero (sd.line16 = sd.line7 + sd.line15), and those lines include the capital gain distributions (sd.line13) and the short- and long-term capital loss carryovers (sd.line6, sd.line14). The label does not name the carryovers; the amount includes them.",
+   "prompt_sha": "a2e900a8fd4de0683d66209b292cedf124ba89905b09c80eb7531b6b9c2d907e",
+   "line": "f4952.line4d"
+  },
+  "unruled:f4952#2": {
+   "class": "real gap",
+   "evidence": "f4952 p. 4. The amended-return election within 6 months, the 'Filed pursuant to section 301.9100-2' notation and revoking with IRS consent are amended-return matters; the tool prepares the original return (as s179#3 of round 2). Open: 'Generally, you must make this election on a timely filed return, including extensions.' f4952.line4g takes any elected amount without saying so, so a late-filed original return gets the election (sc.ho_other asks the same timely-filed condition for the home office election). Rare. Low; BUG-0414.",
+   "prompt_sha": "a2e900a8fd4de0683d66209b292cedf124ba89905b09c80eb7531b6b9c2d907e",
+   "bug": "BUG-0414"
+  },
   "unruled:f5329#1": {
    "class": "real gap",
    "evidence": "i5329 p. 5; p590b p. 28. retirement.exception names the exception but does not test its conditions (plan type, separation age, physician certification, reservist call-up, adoptee). Open in BUG-0369 (T-175). The 3-year emergency-distribution bar is refused by retirement.early_screen.",
@@ -333,6 +345,12 @@
    "evidence": "i8863 p. 1. dependent.edu_student requires dependent.edu_1098t (person.edu_1098t for the filers), which asks whether a Form 1098-T was received and states the exceptions (not required, or requested after February 2, 2026; amb.2025.edu_1098t_date).",
    "prompt_sha": "8f54531a0797a04d8342880daf8ed18760e235f5aecd8c20eed8eb5f9e871347",
    "line": "dependent.edu_1098t"
+  },
+  "unruled:f8880#1": {
+   "class": "covered",
+   "evidence": "f8880 p. 2. Line 2 is person.sav_line2 = person.sav_w2 (Form W-2 box 12 deferrals) + person.sav_voluntary + person.sav_simple. person.sav_voluntary excludes 'contributions designated under section 414(h)(2) (treated as employer contributions)'. Pick-ups are shown in box 14, not as box 12 deferrals, so they do not reach person.sav_w2.",
+   "prompt_sha": "b282e9213f26acda6108e8b80666abc6592e4f2d35151c3b71b8b89eff8d773a",
+   "line": "person.sav_voluntary"
   },
   "unruled:f8889#1": {
    "class": "real gap",
@@ -487,6 +505,36 @@
    "evidence": "i1040gi pp. 106, 108. otjob rows are per person: s1a.line14a_calc sums person.ot_total only over persons whose person.work_ssn (SSN valid for employment, issued by the due date including extensions) is Yes, so a spouse's overtime without a valid SSN does not reach line 14a; s1a.ot_ssn gates Part III.",
    "prompt_sha": "1c82805dfb71a7aa808a431bffde395c3fb27e97a77e17b828a365476634a96a",
    "line": "s1a.line14a_calc"
+  },
+  "unruled:person#1": {
+   "class": "out of scope",
+   "evidence": "i1040sse p. 4; i1040sc p. 14. sc.statutory asks whether the Schedule C is statutory employee income or notary public fees, and sc.screened refuses the Schedule C (sc.line1). So no such line 31 reaches person.se_line2, the SE tax deduction or the SEP or SIMPLE compensation (as the notary rulings of round 2).",
+   "prompt_sha": "42d4b257695804e9cf34c436ebcdec0170021cc8221490c5b47abaa79ba7f29c",
+   "gate": "sc.screened"
+  },
+  "unruled:person#2": {
+   "class": "real gap",
+   "evidence": "p560 p. 17: 'You must make matching contributions or nonelective contributions by the due date (including extensions) for filing your federal income tax return for the year.' person.sep_contrib says 'by the due date of the return, including extensions'; person.simple_employer asks only for the contributions 'for 2025', so a contribution made after the due date could reach Schedule 1 line 16. Rare. Low; BUG-0414.",
+   "prompt_sha": "42d4b257695804e9cf34c436ebcdec0170021cc8221490c5b47abaa79ba7f29c",
+   "bug": "BUG-0414"
+  },
+  "unruled:person#3": {
+   "class": "out of scope",
+   "evidence": "i8863 pp. 1, 3. As dependent#1 (rechecked): f8863.ban asks about a post-2015 denial or reduction that needs Form 8862 and about the 2-year and 10-year bans, and f8863.ban_refused refuses the American opportunity credit (f8863.line7). person.edu_aoc feeds f8863.line1 through f8863.aoc_sum.",
+   "prompt_sha": "42d4b257695804e9cf34c436ebcdec0170021cc8221490c5b47abaa79ba7f29c",
+   "gate": "f8863.ban_refused"
+  },
+  "unruled:person#4": {
+   "class": "covered",
+   "evidence": "p590b p. 28. retirement.exc_amount tells the filer to enter, for exception 22, 'no more than 50% of the present value of the IRA or plan account'. The per-row amount is capped at 50% there, and person.x_c22 applies the $10,300 cap per person.",
+   "prompt_sha": "42d4b257695804e9cf34c436ebcdec0170021cc8221490c5b47abaa79ba7f29c",
+   "line": "retirement.exc_amount"
+  },
+  "unruled:person#5": {
+   "class": "covered",
+   "evidence": "p590b p. 28. retirement.exc_amount tells the filer to enter, for exception 23, 'no more than your total interest in the IRA or plan account minus $1,000', and person.x_c23 applies the $1,000 cap. retirement.early_screen asks about 'an emergency personal expense distribution within 3 years after an earlier one you have not repaid' and refuses it. It does not name the alternative of later contributions at least equal to the unrepaid amount, so it refuses more than it must but never computes wrongly. person.x_two23 refuses more than one in a year.",
+   "prompt_sha": "42d4b257695804e9cf34c436ebcdec0170021cc8221490c5b47abaa79ba7f29c",
+   "line": "retirement.exc_amount"
   },
   "unruled:qbi#1": {
    "class": "wrong",

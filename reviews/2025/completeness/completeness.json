@@ -1746,6 +1746,65 @@
   "model": "claude-opus-5-5"
  },
  {
+  "form": "f4952",
+  "prompt_sha": "a2e900a8fd4de0683d66209b292cedf124ba89905b09c80eb7531b6b9c2d907e",
+  "claims": [
+   {
+    "item": "f4952.line4d",
+    "sentences": [
+     {
+      "quote": "When figuring this amount, include capital gain distributions from mutual funds and capital loss carryovers.",
+      "page": "f4952 p. 3"
+     }
+    ],
+    "quote": "When figuring this amount, include capital gain distributions from mutual funds and capital loss carryovers.",
+    "page": "f4952 p. 3",
+    "why_uncovered": "Line 4d is described only as net gain from investment-property dispositions 'including distributions'. No line, question or refusal mentions a capital loss carryover reducing line 4d. Without it, line 4d, and line 4e, the 4g election limit and line 4h, may be overstated.",
+    "closest_item": "f4952.line4d",
+    "effect": "amount"
+   },
+   {
+    "item": "f4952.line4g",
+    "sentences": [
+     {
+      "quote": "Once made, the election can be revoked only with IRS consent.",
+      "page": "f4952 p. 4"
+     },
+     {
+      "quote": "Generally, you must make this election on a timely filed return, including extensions.",
+      "page": "f4952 p. 4"
+     },
+     {
+      "quote": "However, if you timely filed your return without making the election, you can make the election on an amended return filed within 6 months of the due date of your return (excluding extensions).",
+      "page": "f4952 p. 4"
+     },
+     {
+      "quote": "Write “Filed pursuant to section 301.9100-2” on the amended return and file it at the same place you filed the original return.",
+      "page": "f4952 p. 4"
+     }
+    ],
+    "quote": "Once made, the election can be revoked only with IRS consent. / Generally, you must make this election on a timely filed return, including extensions. / However, if you timely filed your return without making the election, you can make the election on an amended return filed within 6 months of the due date of your return (excluding extensions). / Write “Filed pursuant to section 301.9100-2” on the amended return and file it at the same place you filed the original return.",
+    "page": "f4952 p. 4",
+    "why_uncovered": "The line 4g question takes any elected amount up to lines 4b plus 4e. It never asks whether the return is timely filed, whether this is an amended return made within the 6-month window, or whether a prior election is being revoked without IRS consent. No refusal covers a late or revoked election, and the required amended-return statement is not produced.",
+    "closest_item": "f4952.line4g",
+    "effect": "eligibility"
+   }
+  ],
+  "used": [
+   {
+    "doc": "f4952",
+    "pages": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  ],
+  "cost": 0.1454,
+  "model": "claude-opus-5-5"
+ },
+ {
   "form": "f5329",
   "prompt_sha": "0b4701be72c2e089e3c91f98c96ad85faa219ffee038b13cbbad12d2b613f382",
   "claims": [
@@ -2245,6 +2304,37 @@
    }
   ],
   "cost": 0.2007908,
+  "model": "claude-opus-5-5"
+ },
+ {
+  "form": "f8880",
+  "prompt_sha": "b282e9213f26acda6108e8b80666abc6592e4f2d35151c3b71b8b89eff8d773a",
+  "claims": [
+   {
+    "item": "f8880.line2a",
+    "sentences": [
+     {
+      "quote": "Note: Contributions designated under section 414(h)(2) are treated as employer contributions and, as such, they aren't voluntary contributions made by the employee. They don't qualify for the credit and shouldn't be included on line 2.",
+      "page": "f8880 p. 2"
+     }
+    ],
+    "quote": "Note: Contributions designated under section 414(h)(2) are treated as employer contributions and, as such, they aren't voluntary contributions made by the employee. They don't qualify for the credit and shouldn't be included on line 2.",
+    "page": "f8880 p. 2",
+    "why_uncovered": "Lines 2(a) and 2(b) cover elective deferrals, voluntary employee contributions and 501(c)(18)(D) contributions. The encoding states no rule that excludes section 414(h)(2) pick-up contributions, and it has no question or refusal for them. These amounts are often reported on Form W-2 as employee contributions, so they could be counted as voluntary contributions on line 2. The same gap applies to f8880.line2b.",
+    "closest_item": "f8880.line2a",
+    "effect": "amount"
+   }
+  ],
+  "used": [
+   {
+    "doc": "f8880",
+    "pages": [
+     1,
+     2
+    ]
+   }
+  ],
+  "cost": 0.13674,
   "model": "claude-opus-5-5"
  },
  {
@@ -3287,6 +3377,377 @@
    }
   ],
   "cost": 0.1411508,
+  "model": "claude-opus-5-5"
+ },
+ {
+  "form": "person",
+  "prompt_sha": "42d4b257695804e9cf34c436ebcdec0170021cc8221490c5b47abaa79ba7f29c",
+  "claims": [
+   {
+    "item": "person.se_line2",
+    "sentences": [
+     {
+      "quote": "If you were a statutory employee, don’t include the net profit or (loss) from Schedule C, line 31, on Schedule SE, line 2.",
+      "page": "i1040sse p. 4"
+     },
+     {
+      "quote": "However, do not report this amount on Schedule SE (Form 1040), line 2.",
+      "page": "i1040sc p. 14"
+     },
+     {
+      "quote": "Fees received for services performed as a notary public.",
+      "page": "i1040sse p. 4"
+     },
+     {
+      "quote": "Notary public. Do not enter your net profit from line 31 on Schedule SE (Form 1040), line 2, unless you are required to file Schedule SE (Form 1040) because you have other self-employment income.",
+      "page": "i1040sc p. 14"
+     }
+    ],
+    "quote": "If you were a statutory employee, don’t include the net profit or (loss) from Schedule C, line 31, on Schedule SE, line 2. / However, do not report this amount on Schedule SE (Form 1040), line 2. / Fees received for services performed as a notary public. / Notary public. Do not enter your net profit from line 31 on Schedule SE (Form 1040), line 2, unless you are required to file Schedule SE (Form 1040) because you have other self-employment income.",
+    "page": "i1040sse p. 4; i1040sc p. 14",
+    "why_uncovered": "person.se_line2 takes the Schedule C line 31 profit or loss of every Schedule C as it is. The se_screen question lists church employee income, clergy, partnerships, farms, CRP, optional methods, chapter 11, community income, exempt foreign income and Forms 4137/8919. It does not ask about statutory employee income or notary public fees. The only statutory-employee refusal in HANDLED ELSEWHERE is on the EIC, so it does not stop Schedule SE (or the SE tax deduction and SEP Step 2) when no EIC is claimed.",
+    "closest_item": "person.se_line2",
+    "effect": "amount"
+   },
+   {
+    "item": "person.simple_employer",
+    "sentences": [
+     {
+      "quote": "You must make matching contributions or nonelective contributions by the due date (including extensions) for filing your federal income tax return for the year.",
+      "page": "p560 p. 17"
+     },
+     {
+      "quote": "You can deduct contributions for a particular tax year if they are made for that tax year and are made by the due date (including extensions) of your federal income tax return for that year.",
+      "page": "p560 p. 17"
+     }
+    ],
+    "quote": "You must make matching contributions or nonelective contributions by the due date (including extensions) for filing your federal income tax return for the year. / You can deduct contributions for a particular tax year if they are made for that tax year and are made by the due date (including extensions) of your federal income tax return for that year.",
+    "page": "p560 p. 17",
+    "why_uncovered": "The SEP contribution question limits contributions to those made by the due date, including extensions. The SIMPLE employer-contribution question only asks for contributions 'for 2025', with no deadline. No gate or refusal handles contributions made after the due date, so they would count toward the Schedule 1 line 16 deduction.",
+    "closest_item": "person.simple_employer",
+    "effect": "amount"
+   },
+   {
+    "item": "person.edu_aoc",
+    "sentences": [
+     {
+      "quote": "Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.",
+      "page": "i8863 p. 3"
+     },
+     {
+      "quote": "If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
+      "page": "i8863 p. 1"
+     }
+    ],
+    "quote": "Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud. / If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
+    "page": "i8863 p. 3; i8863 p. 1",
+    "why_uncovered": "person.edu_aoc depends only on lines 23–26, the TINs and the institution's EIN. No question asks whether a 2- or 10-year ban applies from an earlier final determination, or whether an earlier AOC was denied or reduced so that Form 8862 must be attached. No refusal covers either case.",
+    "closest_item": "person.edu_aoc",
+    "effect": "eligibility"
+   },
+   {
+    "item": "person.x_c22",
+    "sentences": [
+     {
+      "quote": "An eligible distribution to a domestic abuse victim must not exceed the lesser of $10,300 for 2025 or 50% of the present value of the IRA.",
+      "page": "p590b p. 28"
+     }
+    ],
+    "quote": "An eligible distribution to a domestic abuse victim must not exceed the lesser of $10,300 for 2025 or 50% of the present value of the IRA.",
+    "page": "p590b p. 28",
+    "why_uncovered": "person.x_c22 limits exception 22 only to the $10,300 year parameter (person.x_cap22). No question asks for the present value of the IRA, so the 50%-of-value limit is never applied.",
+    "closest_item": "person.x_c22",
+    "effect": "amount"
+   },
+   {
+    "item": "person.x_c23",
+    "sentences": [
+     {
+      "quote": "You are limited to taking one emergency personal expense distribution per calendar year and the amount that may be treated as an emergency personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000.",
+      "page": "p590b p. 28"
+     },
+     {
+      "quote": "You are also limited in taking emergency personal expense distributions in subsequent years as you may not take this type of distribution in the following 3 calendar years unless:",
+      "page": "p590b p. 28"
+     }
+    ],
+    "quote": "You are limited to taking one emergency personal expense distribution per calendar year and the amount that may be treated as an emergency personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000. / You are also limited in taking emergency personal expense distributions in subsequent years as you may not take this type of distribution in the following 3 calendar years unless:",
+    "page": "p590b p. 28",
+    "why_uncovered": "person.x_c23 limits exception 23 only to $1,000 (person.x_cap23), and person.x_two23 only enforces one distribution per year. No question asks for the total interest in the IRA, so the 'interest minus $1,000' limit is never applied. No question asks whether an emergency distribution was taken in any of the prior 3 years and not repaid or recontributed, so that bar is never checked.",
+    "closest_item": "person.x_c23",
+    "effect": "amount"
+   }
+  ],
+  "used": [
+   {
+    "doc": "i1040gi",
+    "pages": [
+     17,
+     18,
+     19
+    ]
+   },
+   {
+    "doc": "i1040gi",
+    "pages": [
+     26,
+     27,
+     28,
+     29,
+     30,
+     31,
+     32,
+     33
+    ]
+   },
+   {
+    "doc": "i1040gi",
+    "pages": [
+     40,
+     41,
+     42,
+     43,
+     44,
+     45,
+     46,
+     47
+    ]
+   },
+   {
+    "doc": "i1040gi",
+    "pages": [
+     66
+    ]
+   },
+   {
+    "doc": "i1040gi",
+    "pages": [
+     93,
+     94,
+     95,
+     96,
+     97,
+     98
+    ]
+   },
+   {
+    "doc": "i1040gi",
+    "pages": [
+     104
+    ]
+   },
+   {
+    "doc": "i1040gi",
+    "pages": [
+     108,
+     109,
+     110
+    ]
+   },
+   {
+    "doc": "i1040gi",
+    "pages": [
+     117
+    ]
+   },
+   {
+    "doc": "i1040sc",
+    "pages": [
+     10
+    ]
+   },
+   {
+    "doc": "i1040sc",
+    "pages": [
+     14
+    ]
+   },
+   {
+    "doc": "i1040sse",
+    "pages": [
+     1,
+     2,
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "doc": "i2441",
+    "pages": [
+     4,
+     5
+    ]
+   },
+   {
+    "doc": "i4562",
+    "pages": [
+     4
+    ]
+   },
+   {
+    "doc": "i5329",
+    "pages": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9
+    ]
+   },
+   {
+    "doc": "i8606",
+    "pages": [
+     2,
+     3,
+     4,
+     5
+    ]
+   },
+   {
+    "doc": "i8606",
+    "pages": [
+     9
+    ]
+   },
+   {
+    "doc": "i8863",
+    "pages": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9
+    ]
+   },
+   {
+    "doc": "i8889",
+    "pages": [
+     3,
+     4,
+     5,
+     6,
+     7
+    ]
+   },
+   {
+    "doc": "i8959",
+    "pages": [
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "doc": "i8995",
+    "pages": [
+     2,
+     3,
+     4
+    ]
+   },
+   {
+    "doc": "iw2w3",
+    "pages": [
+     12,
+     13
+    ]
+   },
+   {
+    "doc": "iw2w3",
+    "pages": [
+     20
+    ]
+   },
+   {
+    "doc": "p501",
+    "pages": [
+     23
+    ]
+   },
+   {
+    "doc": "p503",
+    "pages": [
+     3
+    ]
+   },
+   {
+    "doc": "p503",
+    "pages": [
+     11
+    ]
+   },
+   {
+    "doc": "p560",
+    "pages": [
+     7,
+     8,
+     9,
+     10,
+     11,
+     12,
+     13,
+     14,
+     15,
+     16,
+     17
+    ]
+   },
+   {
+    "doc": "p560",
+    "pages": [
+     38,
+     39,
+     40
+    ]
+   },
+   {
+    "doc": "p590a",
+    "pages": [
+     6
+    ]
+   },
+   {
+    "doc": "p590a",
+    "pages": [
+     15
+    ]
+   },
+   {
+    "doc": "p590a",
+    "pages": [
+     30
+    ]
+   },
+   {
+    "doc": "p590a",
+    "pages": [
+     35
+    ]
+   },
+   {
+    "doc": "p590b",
+    "pages": [
+     27,
+     28
+    ]
+   },
+   {
+    "doc": "p970",
+    "pages": [
+     11
+    ]
+   }
+  ],
+  "cost": 1.948156,
   "model": "claude-opus-5-5"
  },
  {

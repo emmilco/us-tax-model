@@ -18,3 +18,11 @@ pass, T-229). No screen lows this round.
 | scveh#2 | p463 p. 26 | `scveh.cost` does not mention destination charges, dealer preparation or the gas guzzler tax reduction; `scveh.screen` does not name substantial improvements [name these in `scveh.cost`; add substantial improvements to `scveh.screen`]. |
 | scveh#3 | i4562 p. 14; p463 p. 25 | investment-use miles are not asked, so the business/investment use percentage is understated [ask for them, or refuse any investment use]. |
 | retirement#3 (rerun after BUG-0413) | p575 p. 16 | `retirement.annuity` does not say that a box 1 including a nonperiodic payment received on or after the annuity starting date is not paid in periodic payments; on the Simplified Method path the periodic exclusion would reach it [say so in `retirement.annuity`, or refuse in `retirement.special`]. |
+
+Added by the first completeness reviews of f4952, f8880 and person (T-094, 2026-11-04), after the BUG-0414 entry was
+written:
+
+| claim | source | gap [fix] |
+| --- | --- | --- |
+| f4952#2 | f4952 p. 4 | `f4952.line4g` takes any elected amount without saying the election must be made "on a timely filed return, including extensions"; the amended-return election, the 301.9100-2 notation and revocation are amended-return matters, out of scope [say timely filed, including extensions, in `f4952.line4g`, or refuse an election on a late-filed return, as `sc.ho_other` does for the home office election]. |
+| person#2 | p560 p. 17 | `person.simple_employer` asks for employer contributions "for 2025" without the deadline, "by the due date (including extensions)", which `person.sep_contrib` states [add it to `person.simple_employer`]. |

@@ -1799,6 +1799,18 @@ class CarryOver(unittest.TestCase):
         m2 = {"key": ("classm.x.1", "2", "$1.00", "$3.00"), "status": "DISAGREE"}
         self.assertNotEqual(carry.content("classm", m1), carry.content("classm", m2))
 
+class CompletenessPages(unittest.TestCase):
+    """The pages a completeness review is given."""
+
+    def test_instructions_printed_on_the_form_are_used_only_when_no_other_document_is_cited(self):
+        import completeness_review as CR
+        line = lambda doc, loc: {"cite": {"doc": doc, "locator": loc}, "refuses": []}
+        on_form = {"lines": [line("f4952", "p. 3, Line 1"), line("f4952", "p. 4")]}
+        self.assertEqual(CR.cited_pages(on_form), {"f4952": {3, 4}})
+        mixed = {"lines": [line("f4952", "p. 3"), line("i8960", "p. 9")]}
+        self.assertEqual(CR.cited_pages(mixed), {"i8960": {9}})
+
+
 class LocatorPages(unittest.TestCase):
     """transcribe.py reads page lists with tools/citations.py's grammar."""
     def test_pages_joined_by_and_are_all_read(self):

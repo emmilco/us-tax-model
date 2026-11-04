@@ -5,7 +5,8 @@ sections that the encoding neither implements, asks about, nor refuses.
 
 One unit per form (canonical/<year>/*.json). The sections are the instruction or publication pages (documents not
 starting with "f") that the form's lines and refusals cite, grouped into contiguous page runs (gaps of at most 2
-pages filled), given whole from the reading-order text. The encoding list is every line of the form: id, printed
+pages filled), given whole from the reading-order text; a form that cites no such document is reviewed on its cited
+form pages (instructions printed on the form). The encoding list is every line of the form: id, printed
 marker, label, input question, refusals and citation. A HANDLED ELSEWHERE list adds the refusals on other forms tied to lines the form reads, the return-wide refusals (scope inputs, Form 1040), and the refusals on forms that read this form. The model returns YAML
 claims grouped by encoded item (item, sentences[quote, page], why_uncovered, effect). Each call is one fixed-prompt `claude -p` with no tools.
 
@@ -33,7 +34,7 @@ import citations  # noqa: E402
 
 OUT = os.path.join(ROOT, "reviews", Y, "completeness")
 RAW = os.path.join(ROOT, ".transcription", "completeness")
-MAX_CHARS = 400_000
+MAX_CHARS = 700_000
 GAP = 2
 EFFECTS = ("amount", "eligibility", "presentation")
 SYSTEM = ("You review a software encoding of US federal tax instructions for completeness. You are given the "
@@ -67,14 +68,15 @@ def load_forms():
 
 
 def cited_pages(form):
-    """{doc: set of pages} cited by the form's lines and refusals, instruction and publication documents only."""
-    out = {}
+    """{doc: set of pages} cited by the form's lines and refusals, instruction and publication documents only;
+    for a form whose instructions are printed on the form itself (it cites no other document, as Forms 4952 and
+    8880), the cited form pages."""
+    out, forms_cited = {}, {}
     for line in form["lines"]:
         for c in [line["cite"]] + [r["cite"] for r in line.get("refuses") or []]:
             for doc, pages, *_ in citations.segments(c["doc"], c["locator"]):
-                if not doc.startswith("f"):
-                    out.setdefault(doc, set()).update(pages)
-    return out
+                (forms_cited if doc.startswith("f") else out).setdefault(doc, set()).update(pages)
+    return out or forms_cited
 
 
 def runs(pages, gap=GAP):
