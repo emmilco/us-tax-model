@@ -30,9 +30,13 @@ verification and decision batch"):
 - `research/premises/ny-it201-nyc-resident.md`: every IT-201 line in order, the tax computation (tax tables, rate
   schedules, the 16 recapture worksheets, the City tax), the household and school tax credits, refusal screens, the
   owner checklist, open items. Its quotes were checked by a script against the archive.
-- `research/premises/ny-it201-nyc-resident.verification.md`: an independent subagent's verification.
+- `research/premises/ny-it201-nyc-resident.verification.md`: an independent subagent's verification: 14 errors (1
+  medium: line 20's bond-purchase rule; 13 low: three wrong pages, a section cross-reference, unmarked inferences,
+  incomplete screen wording), 8 omissions (1 medium: the line 77 to 80 arithmetic), no number in any table wrong, all
+  27 federal ids present, every IT-201 line 1 to 84 and item A to H present in order. Its findings that bear on the
+  owner's questions are folded into DECISIONS.md.
 - `docs/ny/DECISIONS.md`: the owner's questions (profile checklist A1 to A13, scope choices B1 to B11, design C1 to
-  C8).
+  C8) and the points settled by the source (Part D).
 
 **Not done, by the brief:** no New York form, parameter, table, interview or fixture was authored (Phase 3 waits for the
 decisions). No paid model call was made; the review tools under `tools/transcription/` were not run. `check-all` was
@@ -43,5 +47,5 @@ before each commit (it does not read the New York archive yet: C1, C8).
 tool coverage (C1, C8), the New York forms, parameters and tables (tax tables extracted from the web page), interview
 questions and fixtures (the two official tax-table examples first).
 
-**Cost:** this session's cost was not shown in the session. One verification subagent was run (logged in
-`research/costs/agent_runs.jsonl`); no paid review calls (`.transcription/costs.jsonl` unchanged).
+**Cost:** this session's cost was not shown in the session. One verification subagent was run (252,405 subagent tokens, 53 tool uses, about 8 minutes; logged in
+`research/costs/agent_runs.jsonl`, dollar cost not reported); no paid review calls (`.transcription/costs.jsonl` unchanged).

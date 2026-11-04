@@ -23,13 +23,17 @@ find any line that would move it outside. For each, look at your most recent IT-
 **A1. Filing status (item A).** Which box was marked: ① single, ② married filing jointly, ③ married filing separately,
 ④ head of household, ⑤ qualifying surviving spouse? Do you expect the same for 2026?
 *Why:* every table and rate schedule is by status. ③ needs your spouse's federal AGI and dependents for the household
-credits; a joint return with a spouse who was not a full-year New York City resident is refused.
+credits. A joint federal return with a spouse who was not a full-year New York resident would be refused: New York
+allows either separate New York returns or a joint New York return taxing both as full-year residents, and neither is
+in the target.
 
 **A2. Item C.** Was "Can you be claimed as a dependent on another taxpayer's federal return?" marked Yes?
 *Why:* Yes gives the $3,100 single standard deduction and no household or school tax credit.
 
 **A3. Residency.** For all of 2026, will you (and a spouse on a joint return) be a resident of New York State and of
-New York City (one of the five boroughs) for the whole year? Do you expect to move out of the City or the State on or
+New York City (one of the five boroughs) for the whole year? (New York's test: domiciled there, or keeping a permanent
+place of abode there for substantially all of the year and spending 184 days or more there; the City test is the same
+with "New York City" in place of "New York State".) Do you expect to move out of the City or the State on or
 before January 1, 2027? Were items D2 (Yonkers), E (days in NYC) and F (months in NYC, expected 12) as expected?
 *Why:* part-year residence, Yonkers, and the "special accrual" rules for a move are refused.
 
@@ -62,7 +66,8 @@ credits), 78a (529 deposit of a refund), 81 (estimated tax penalty), 82 (other p
 
 **A10. Household and school tax credits.** Were lines 40 and 48 (household credits) zero, and lines 69 and 69a (NYC
 school tax credit, fixed amount and rate reduction) nonzero? (Expected: 40 and 48 zero unless federal AGI was under
-about $28,000 to $32,000; 69 and 69a nonzero.)
+the tables' limits: State $28,000 single or $32,000 other statuses, City $12,500 single or $22,500 other statuses; 69
+and 69a nonzero.)
 
 **A11. Line 59, sales or use tax.** What kind of entry was it: 0, an amount from the chart in the instructions, or an
 exact figure from Form ST-141? (Feeds question B3.)
@@ -116,14 +121,18 @@ taxed at 0.60%. The federal encoding computes Schedule SE per person. Options: (
 
 **B6. Estimated tax penalty (line 81).** The federal encoding has no estimated-tax penalty line. Options: (a) no line
 81; the tool states that a penalty may be owed if line 80 is $300 or more and over 10% of the tax; (b) a screen
-refusing unless your 2026 withholding and estimates were at least 100% (110% above $150,000 of New York AGI) of your
-2025 New York tax, which you would type; (c) compute Form IT-2105.9 (a separate form; not suggested).
+refusing unless your 2026 withholding and estimates were at least 100% of your 2025 New York tax (110% if your 2025
+New York AGI was over $150,000, or over $75,000 married filing separately, unless you are a farmer or fisherman), which
+you would type; (c) compute Form IT-2105.9 (a separate form; not suggested).
 *Suggested: (a).*
 
 **B7. School tax credit, rate reduction (line 69a), the $500,000 test.** The instructions disqualify "income" over
 $500,000 but define "income" only for line 69 (federal AGI less IRA distributions), while the 69a tables run on New York
-City taxable income up to $500,000. Options: (a) refuse when either measure is over $500,000; (b) pick one reading and
-record it in the ambiguity register. *Suggested: (a).* Is your income anywhere near $500,000? (If not, this never
+City taxable income up to $500,000. The verification notes that the definition is
+stated "for purposes of determining your New York City school tax credit", with no limit to the fixed amount, which
+favours reading it as federal AGI less IRA distributions for 69a too. Options: (a) refuse when either measure is over
+$500,000; (b) take that reading and record it in the ambiguity register. *Suggested: (a)* (a refusal cannot be wrong;
+it only matters near $500,000). Is your income anywhere near $500,000? (If not, this never
 matters to your return.)
 
 **B8. Item C (can be claimed as a dependent).** The federal question excludes the case where the person who could
@@ -196,3 +205,18 @@ met". Should the spec record this branch's exception (your 2026-11-04 decision) 
 `tools/year_diff.py` and `tools/fixtures_year.py`. Those tools read the federal catalog only. Extend them to the New
 York catalog in Phase 3, or at the 2026 adoption (Phase 5)? *Suggested:* Phase 3, so the 2025 New York data is
 adopted the same way as the federal.
+
+---
+
+## Part D. Settled by the source (done this way unless you object)
+
+- **Lines 77 to 80** follow the printed arithmetic: line 77 is the overpayment less only the estimated tax penalty
+  (other penalties and interest never go on line 77); if that penalty is more than the overpayment, the difference goes
+  on line 80; line 80 is the tax owed plus lines 81 and 82; lines 78a through 79 add up to line 77.
+- **Federal lines feeding New York lines 1 to 18** are taken by the printed labels (only line 1 is tied to federal
+  line 1z by the instructions); the verification found the mapping complete, with every component of federal AGI on an
+  IT-201 line.
+- **Household credit tables 3 and 6** (married filing separately) and every other table are pinned cell by cell as
+  printed, not derived.
+- **Tax rate schedule bases and the recapture amounts** are pinned as printed (they are roundings of exact running
+  totals, so recomputing them would differ by a dollar in one place).

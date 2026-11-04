@@ -2,7 +2,8 @@
 > (brief: `docs/ny/2026-11-04_ny_cloud_brief.md`, Phase 2) from the archived New York sources in `sources/ny/2025/`,
 > before any New York encoding. Every claim about a form carries a locator and is testimony until checked again at
 > authoring. Nothing here is decided: the owner's questions are in `docs/ny/DECISIONS.md`.
-> **Verified:** see `ny-it201-nyc-resident.verification.md`, which supersedes this map where they differ.
+> **Verified:** see `ny-it201-nyc-resident.verification.md` (14 errors, 1 medium and 13 low, none in a table's numbers; 8
+> omissions, 1 medium), which supersedes this map where they differ.
 
 # Premise map — New York Form IT-201 for a full-year New York City resident (tax year 2025 documents)
 
