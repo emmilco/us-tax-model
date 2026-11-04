@@ -36,12 +36,28 @@ NO = {"state_resident": True, "city_resident": True, "special_accrual": False, "
       "529_owner": False, "itemize": False, "resident_credit": False, "other_credits": False, "other_taxes": False,
       "city_credits": False, "mctmt": False, "owes_use_tax": False, "use_tax_st141": False, "contributions": False,
       "dependent_care": False, "noncustodial": False, "real_property_credit": False, "college_tuition": False,
-      "other_withholding": False, "refund_529": False, "late_penalty": False, "prior_agi_high": False, "spouse_resident": True}
+      "other_withholding": False, "refund_529": False, "late_penalty": False, "prior_agi_high": False, "spouse_resident": True,
+      "abode_part_year": False, "prior_full_year": True, "est_late": False}
 
 
 def base(file, case_id):
     d = json.loads((ROOT / "fixtures" / "2025" / file).read_text())
-    return copy.deepcopy(next(c for c in d["cases"] if c["id"] == case_id)["inputs"])
+    inputs = copy.deepcopy(next(c for c in d["cases"] if c["id"] == case_id)["inputs"])
+    if case_id != "stage5.return.owed":
+        # Answers the federal full interview asks that this base (written for a narrower federal profile) does not
+        # carry: the whole-return base's answers to return-level questions, where the key is missing. None of them is
+        # about a person, an entry or an amount that reaches the New York lines.
+        whole = next(c for c in json.loads((ROOT / "fixtures" / "2025" / "stage5.json").read_text())["cases"]
+                     if c["id"] == "stage5.return.owed")["inputs"]
+        for k, v in whole.items():
+            if k not in inputs and not k.startswith(("$", "person[", "interest[", "div[", "sales[", "dependent[")):
+                inputs[k] = v
+    if case_id == "stage5.return.owed":
+        # Wages only, so that low taxable incomes are reachable: the base's interest and dividends set to zero.
+        inputs["interest[bank_a].amount"] = 0
+        inputs["sb.ordinary_dividends"] = 0
+        inputs["f1040.line3a"] = 0
+    return inputs
 
 
 BASES = {  # status: (file, case id, the W-2 whose wages are varied)
@@ -141,7 +157,8 @@ def make_case(cid, status, wages, ans=None, w2s=((0, 0),), line75=0, line79=0, p
         deps = sum(1 for k in inputs["$dependent"])  # every listed dependent of these bases is a claimed dependent
     ny = {"item_c": (ans or {}).get("item_c", False), "dependents": deps, "owes_use_tax": (ans or {}).get("owes_use_tax", False),
           "state_withheld": [s for s, _ in w2s], "city_withheld": [c for _, c in w2s], "line75": line75, "line79": line79,
-          "prior_year_tax": prior_tax, "prior_agi_high": (ans or {}).get("prior_agi_high", False), "under17": fed.get("under17", 0)}
+          "prior_year_tax": prior_tax, "prior_agi_high": (ans or {}).get("prior_agi_high", False), "under17": fed.get("under17", 0),
+          "prior_full_year": (ans or {}).get("prior_full_year", True), "est_late": (ans or {}).get("est_late", False)}
     case = {"id": f"ny.{cid}", "covers": covers or ["ny_it201"], "inputs": inputs}
     if refuse:
         gate, line = refuse
@@ -191,6 +208,7 @@ def make_case(cid, status, wages, ans=None, w2s=((0, 0),), line75=0, line79=0, p
                              f"evaluated (method for line 39: {pred['_method']}). Federal amounts copied (from the federal encoding): "
                              f"status {fed['status']}, {fedtxt}. {note}").strip()
     case["expect"] = {f"ny_it201.{k}": money(pred[f"ny_it201.{k}"]) for k in ASSERT}
+    case["evidence_note"] += f" Taxable income reached (line 38): ${pred['ny_it201.line38'] // 100:,}; New York AGI (line 33): ${pred['ny_it201.line33'] // 100:,}."
     return case
 
 
@@ -223,23 +241,23 @@ def main():
         for ti in (0, 12, 13, 24999, 25000, 38275, 64999):
             if status == "mfj" and ti == 38275:
                 continue
-            cases.append(make_case(f"table.{status}.{ti}", status, wages_for_taxable(status, ti), note=f"Tax Table at taxable income ${ti:,}."))
+            cases.append(make_case(f"table.{status}.{ti}", status, wages_for_taxable(status, ti), note=f"Tax Table (target taxable income ${ti:,})."))
     # the rate schedule ($65,000 or more of taxable income, NY AGI $107,650 or less)
     for status in ("single", "mfj", "hoh"):
         for ti in (65000, 80650, 80651, 95000):
-            cases.append(make_case(f"schedule.{status}.{ti}", status, wages_for_taxable(status, ti), note=f"Rate schedule at taxable income ${ti:,}."))
+            cases.append(make_case(f"schedule.{status}.{ti}", status, wages_for_taxable(status, ti), note=f"Rate schedule (target taxable income ${ti:,})."))
     # the recapture worksheets
     for status, tis in (("single", (100000, 120000, 150000, 160000, 215400, 215401, 240000, 300000, 1077551, 1200000, 5000001, 26000000)),
                         ("mfj", (100000, 140000, 161550, 161551, 200000, 323201, 400000, 2155351, 5000001)),
                         ("hoh", (110000, 150000, 269301, 300000, 1616451, 5000001))):
         for ti in tis:
             cases.append(make_case(f"worksheet.{status}.{ti}", status, wages_for_taxable(status, ti),
-                                   note=f"Tax computation worksheets at taxable income ${ti:,}."))
+                                   note=f"Tax computation worksheets (target taxable income ${ti:,})."))
     # household credits and the school tax credits at low income
     for status, tis in (("single", (2000, 4000, 12000, 19000, 21000)), ("mfj", (1000, 5000, 12000, 16000)), ("hoh", (500, 3000, 9000, 14000))):
         for ti in tis:
             cases.append(make_case(f"household.{status}.{ti}", status, wages_for_taxable(status, ti),
-                                   note=f"Household credits at taxable income ${ti:,}."))
+                                   note=f"Household credits (target taxable income ${ti:,})."))
     # item C (dependent filer): $3,100 deduction, no household or school tax credit
     cases.append(make_case("item_c.single", "single", wages_for_taxable("single", 20000), ans={"item_c": True},
                            note="Item C Yes: the $3,100 standard deduction; no household credit; no school tax credit."))
@@ -302,7 +320,7 @@ def main():
                            note="a dependent under 17 (the Empire State child credit, Form IT-213).") if False else None)
     for st, tis in (("qss", (30000, 70000, 140000, 200000)), ("mfs", (40000, 70000, 120000, 300000))):
         for ti in tis:
-            cases.append(make_case(f"status.{st}.{ti}", st, wages_for_taxable(st, ti), note=f"Filing status {st} at taxable income ${ti:,}."
+            cases.append(make_case(f"status.{st}.{ti}", st, wages_for_taxable(st, ti), note=f"Filing status {st} (target taxable income ${ti:,})."
                                    + (" The federal return refuses married filing separately at line 37 (s3.mfs); the New York lines asserted do not read it." if st == "mfs" else "")))
     for n in range(1, 7):
         cases.append(make_case(f"household.hoh.parents{n}", "hoh", wages_for_taxable("hoh", 13800), parents=n,
@@ -311,6 +329,22 @@ def main():
                            note="married filing separately with federal AGI within the household credit rows (table 3 needs the spouse's AGI)."))
     cases.append(make_case("refuse.hh_over7", "hoh", wages_for_taxable("hoh", 13800), parents=7, refuse=("gate.hh_state_over7", "line40"),
                            note="eight people (seven dependents) with federal AGI within the household credit rows (Note 3)."))
+    # in-session review fixes (step 7), each with its case
+    cases.append(make_case("review.it2_whole_dollars", "single", wages_for_taxable("single", 70000), w2s=((300049, 200050), (100050, 49)),
+                           note="Each IT-2 record's withholding is rounded to the whole dollar before the totals (IT-2 p. 2, \"drop amounts "
+                                "below 50 cents and increase amounts from 50 to 99 cents to the next dollar\"): $3,000.49 and $1,000.50 "
+                                "State, $2,000.50 and $0.49 City."))
+    cases.append(make_case("review.worksheet_single_rounding", "mfj", wages_for_taxable("mfj", 162820 - 16050),
+                           note="Worksheet 2 at New York AGI $162,820 (married filing jointly): 807 x 0.0254 = 20.4978, entered as $20 "
+                                "(rounded once; cent-then-dollar rounding gave $21)."))
+    cases.append(make_case("refuse.use_tax_abode", "single", S, ans={"owes_use_tax": True, "abode_part_year": True}, w2s=((300000, 200000),),
+                           refuse=("gate.use_tax_abode", "line59"), note="use tax owed with a New York abode for only part of the year."))
+    cases.append(make_case("refuse.no_prior_full_year", "single", wages_for_taxable("single", 150000), w2s=((600000, 300000),),
+                           prior_tax=800000, ans={"prior_full_year": False}, refuse=("gate.estimated_penalty", "line81"),
+                           note="a balance due and no full-year 2024 return (no prior-year safe harbor)."))
+    cases.append(make_case("refuse.est_late", "single", wages_for_taxable("single", 70000), w2s=((900000, 500000),), line75=100000,
+                           ans={"est_late": True}, refuse=("gate.estimated_penalty", "line81"),
+                           note="an estimated installment paid late or short, even with a refund."))
     cases = [c for c in cases if c]
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({"tax_year": 2025, "cases": cases}, indent=1) + "\n")

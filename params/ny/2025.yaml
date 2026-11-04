@@ -1310,3 +1310,15 @@ params:
       cite:
         doc: ny_it201i
         locator: 'p. 17, Line 54d: MCTMT for Zone 2, "Multiply the amount on line 54b by 0.34% (0.0034)."'
+    ny.hundred:
+      type: Count
+      value: 100
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 2, "8. Divide line 7 by $50,000 and round the result to the fourth decimal place"'
+    ny.hundredth:
+      type: Rate
+      value: { num: 1, den: 100 }
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 2, "9. Multiply line 5 by line 8"'

@@ -41,6 +41,7 @@ interview:
   - ny_it201.ask.mctmt
   - ny_it201.ask.owes_use_tax
   - ny_it201.ask.use_tax_st141
+  - ny_it201.ask.abode_part_year
   - ny_it201.ask.contributions
   - ny_it201.ask.dependent_care
   - ny_it201.ask.noncustodial
@@ -54,6 +55,8 @@ interview:
   - ny_it201.line75
   - ny_it201.ask.prior_year_tax
   - ny_it201.ask.prior_agi_high
+  - ny_it201.ask.prior_full_year
+  - ny_it201.ask.est_late
   - ny_it201.ask.late_penalty
   - ny_it201.line79
   - ny_it201.ask.refund_529

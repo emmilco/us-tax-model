@@ -134,13 +134,13 @@ def worksheet(agi, ti, status):
         line4 = schedule(ti, status)
         line5 = line3 - line4
         line7 = ratio4(agi - 107650, 50000)
-        # line 8: the prorate atom rounds the product to the cent, then the line is rounded to the dollar
-        return "first", line4 + r_dollar(F(r_dollar(line5 * line7 * 100), 100))
+        # line 8: the product rounded once to the whole dollar (decision C4)
+        return "first", line4 + r_dollar(line5 * line7)
     for start, tlim, base, incr in LATER[g]:
         if tlim is None or ti <= tlim:
             line7 = min(agi - start, 50000)
             line8 = ratio4(line7, 50000)
-            return f"later-{start}", schedule(ti, status) + base + r_dollar(F(r_dollar(incr * line8 * 100), 100))
+            return f"later-{start}", schedule(ti, status) + base + r_dollar(incr * line8)
     raise ValueError(ti)
 
 
@@ -276,7 +276,7 @@ def predict(fed, ny):
     L[76] = L[69] + L["69a"] + L[72] + L[73] + L[75]
     due = max(L[62] - L[76], 0)
     prior = F(ny.get("prior_year_tax", 0), 100) * (F(11, 10) if ny.get("prior_agi_high") else 1)
-    if due > 0 and (L[72] + L[73] + L[75]) < prior:
+    if (due > 0 and ((L[72] + L[73] + L[75]) < prior or not ny.get("prior_full_year", True))) or (L[75] > 0 and ny.get("est_late")):
         return {"refused": "estimated_penalty"}
     L[77] = max(L[76] - L[62], 0)
     L[79] = r_dollar(F(ny.get("line79", 0), 100))

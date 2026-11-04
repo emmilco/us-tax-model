@@ -111,63 +111,76 @@ bank:
     help: The chart in the instructions covers purchases under $1,000 each that are not for a business, rental or
       royalty activity. Otherwise, or if you want the exact figure, use tax is calculated on Form ST-141, which
       this tool does not do.
-  - input: ny_it201.ask.contributions
+  - input: ny_it201.ask.abode_part_year
     order: 1025
+    help: The use tax chart amount is for a full year; with a New York permanent place of abode for only part of
+      2025 it is prorated by months, which this tool does not do.
+  - input: ny_it201.ask.contributions
+    order: 1026
     help: Voluntary contributions to the funds on Form IT-227 are outside this tool.
   - input: ny_it201.ask.dependent_care
-    order: 1026
+    order: 1027
     help: If you could claim the federal child and dependent care credit, New York has its own credit (Form IT-216),
       which this tool does not compute.
   - input: ny_it201.ask.noncustodial
-    order: 1027
+    order: 1028
     help: Paying child support through a New York Support Collection Unit may earn the noncustodial parent earned
       income credit (Form IT-209), which this tool does not compute.
   - input: ny_it201.ask.real_property_credit
-    order: 1028
+    order: 1029
     help: The real property tax credit (Form IT-214) is for homeowners and renters with low household income; this
       tool does not compute it.
   - input: ny_it201.ask.college_tuition
-    order: 1029
+    order: 1030
     help: College tuition paid may earn a New York credit or itemized deduction (Form IT-272); this tool does not
       compute it.
   - input: ny_it201.ask.other_withholding
-    order: 1030
+    order: 1031
     help: This tool totals New York withholding from Forms W-2 only.
   - input: $ny_it2
-    order: 1031
-    prompt: 'Which Forms W-2 did you receive? List one key per Form W-2 (for example ["a", "b"]), even for a W-2 that shows no New York wages or tax.'
+    order: 1032
+    prompt: Which Forms W-2 did you receive? List one key per Form W-2 (for example ["a", "b"]), even for a W-2
+      that shows no New York wages or tax.
     help: One record per Form W-2 you received, keyed as on your federal Forms W-2, even if it shows no New York
       wages or tax (Form IT-2).
   - input: ny_it2.state_withheld
-    order: 1032
+    order: 1033
     help: Box 17 of the Form W-2, the state income tax withheld, where box 15 shows NY. Enter 0 if none.
   - input: ny_it2.city_withheld
-    order: 1033
+    order: 1034
     help: Box 19 of the Form W-2, the local income tax withheld, where box 20 shows New York City (NYC). Enter 0
       if none.
   - input: ny_it2.yonkers_withheld
-    order: 1034
+    order: 1035
     help: Box 19 of the Form W-2 where box 20 shows Yonkers. Enter 0 if none; Yonkers tax is outside this tool.
   - input: ny_it201.line75
-    order: 1035
+    order: 1036
     help: Include all 2025 New York estimated tax payments (including the last installment paid in 2026), any 2024
       overpayment applied to 2025, and any amount paid with an extension (Form IT-370). Enter 0 if none.
   - input: ny_it201.ask.prior_year_tax
-    order: 1036
+    order: 1037
     help: 'Used only for the estimated tax penalty check: with a balance due, New York charges no penalty if your
       2025 withholding and estimated payments were at least 100% of your 2024 New York tax (110% if your 2024 New
       York AGI was over $150,000). Enter the total New York State and City tax on your 2024 return.'
   - input: ny_it201.ask.prior_agi_high
-    order: 1037
+    order: 1038
     help: Above $150,000 ($75,000 married filing separately) of 2024 New York adjusted gross income, the safe harbor
       is 110% of the 2024 tax instead of 100%.
+  - input: ny_it201.ask.prior_full_year
+    order: 1039
+    help: Without a 2024 New York return covering 12 months there is no prior-year safe harbor for the estimated
+      tax penalty, so a balance due is refused here.
+  - input: ny_it201.ask.est_late
+    order: 1040
+    help: A penalty can apply for any payment period in which an installment was late or short, even when the year's
+      total was enough or a refund is due.
   - input: ny_it201.ask.late_penalty
-    order: 1038
+    order: 1041
     help: Late filing or late payment penalties and interest are outside this tool.
   - input: ny_it201.line79
-    order: 1039
+    order: 1042
     help: Any part of an overpayment can be applied to your 2026 New York estimated tax instead of refunded. Enter
       0 to have it all refunded.
   - input: ny_it201.ask.refund_529
-    order: 1040
+    order: 1043
     help: Depositing part of a refund into a New York 529 account (Form IT-195) is outside this tool.

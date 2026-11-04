@@ -33,9 +33,10 @@ register:
       reason: >
         "Round" without a direction is read as ordinary half-up rounding, the reading the federal register takes for
         the same instruction on the Student Loan Interest Deduction Worksheet (amb.2025.sli_ratio_places). The
-        product is computed by the prorate atom, which rounds it half-up to the cent, and is then rounded half-up to
-        the dollar; the two roundings can differ from one rounding of the exact product only when the exact product
-        has a fractional part from $0.495 up to $0.50, by $1.
+        product of the ratio and the whole-dollar amount is rounded once, half-up, to the dollar: the amount is
+        scaled by 100 so that prorate's product is exact, and the scaled product is divided by 100 with one rounding
+        (an earlier version rounded to the cent first, which the in-session review found gave $1 too much on some
+        returns).
       cite:
         doc: ny_it201i-html
         locator: 'Tax computation worksheet 1, "7. Divide line 6 by $50,000 and round the result to the fourth decimal place"'

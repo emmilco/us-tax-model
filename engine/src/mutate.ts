@@ -13,7 +13,7 @@ import { allTargets, evaluate } from "./eval.js";
 import { loadCases } from "./fixtures.js";
 import { runChecks } from "./check.js";
 import type { CanonicalData, Expr, FormDoc, Line } from "./types.js";
-import { YEAR, yearPath } from "./year.js";
+import { NY_MODE, YEAR, yearPath } from "./year.js";
 import { reportPath } from "./year.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
@@ -1787,6 +1787,12 @@ function outcome(baseline: CanonicalData, cases: ReturnType<typeof loadCases>["c
   return classm ? `classm:${classm.id}` : "survives";
 }
 
+// --ny: only the New York mutants (documents ny_*, parameters ny.*, tables ny_*), judged by the New York fixtures;
+// otherwise every mutant, as before (a New York mutant is then judged by the federal fixtures, which never read it).
+function selectMutants(muts: Mutation[]): Mutation[] {
+  return NY_MODE ? muts.filter((m) => /\bny[_.]/.test(m.where)) : muts;
+}
+
 function mutantsDigest(muts: Mutation[]): string {
   return createHash("sha256").update(muts.map((m) => m.id).join("\n")).digest("hex");
 }
@@ -1796,7 +1802,7 @@ function mutantsDigest(muts: Mutation[]): string {
 export function mutantShare(index: number, count: number): { digest: string; outcomes: [number, Outcome][] } {
   const baseline = loadCanonical();
   const cases = loadCases().cases;
-  const muts = mutations(baseline);
+  const muts = selectMutants(mutations(baseline));
   const outcomes: [number, Outcome][] = [];
   for (let i = index; i < muts.length; i += count) outcomes.push([i, outcome(baseline, cases, muts[i]!)]);
   return { digest: mutantsDigest(muts), outcomes };
@@ -1814,7 +1820,7 @@ async function outcomesOf(baseline: CanonicalData, cases: ReturnType<typeof load
   if (count === 1) return muts.map((m) => outcome(baseline, cases, m));
   const digest = mutantsDigest(muts);
   const shares = await Promise.all(Array.from({ length: count }, (_, index) => new Promise<ReturnType<typeof mutantShare>>((done, fail) => {
-    const w = new Worker(new URL("./mutate-worker.js", import.meta.url), { workerData: { year: YEAR, index, count } });
+    const w = new Worker(new URL("./mutate-worker.js", import.meta.url), { workerData: { year: YEAR, index, count, ny: NY_MODE } });
     w.once("message", done);
     w.once("error", fail);
     w.once("exit", (code) => { if (code !== 0) fail(new Error(`mutation worker ${index} exited with ${code}`)); });
@@ -1850,7 +1856,7 @@ export async function runMutation(): Promise<number> {
       if (!actual || normal(actual)!==normal(expected)) throw new Error(`mutation baseline mismatch: ${c.id} ${key}`);
     }
   }
-  const muts = mutations(baseline);
+  const muts = selectMutants(mutations(baseline));
   const retarget = retargetSelfTest(baseline, muts);
   const survivors: Mutation[] = [];
   const classmOnly: { m: Mutation; case: string }[] = [];
