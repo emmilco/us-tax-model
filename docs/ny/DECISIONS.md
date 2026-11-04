@@ -79,6 +79,45 @@ pension or IRA (Form 1099-R), unemployment (1099-G) or gambling (W-2G)? Any esti
 **A13. Federal items that reach New York.** Do you expect, for 2026, any self-employment income (Schedule C) with net
 earnings over $50,000, any federal earned income credit, or taxable IRA distributions? (Each changes a New York screen.)
 
+### Answers to Part A (2026-11-04)
+
+The owner shared images of their 2025 IT-201 in the session (identifiers cropped). They were read to answer the
+checklist; no image, amount or identifier from them is stored in the repository, and only the yes/no and zero/nonzero
+answers below are recorded.
+
+- A1: ① single. (2026 expectation not yet stated.)
+- A2: item C No.
+- A3: item D2 No on (1) and (4); item E blank; item F 12 months. (2026 residency and any planned move not yet stated.)
+- A4: no special condition code.
+- A5: no dependents (item H empty; line 36 zero).
+- A6: lines 20 to 23 and 25 to 31 all zero.
+- A7: New York AGI was above $107,650, so a tax computation worksheet (single: worksheet 7) applied.
+- A8: Standard box marked. Item B (itemized federally) was **Yes**: the owner itemizes on the federal return and takes
+  the New York standard deduction.
+- A9: lines 41, 42, 45, 51, 53, 54a to 54e, 60, 63 to 68, 70, 70a, 71, 78a, 81 and 82 all zero.
+- A10: lines 40 and 48 zero; lines 69 and 69a nonzero.
+- A11: line 59 was 0.
+- A12: New York State and City withholding (lines 72, 73) nonzero; Yonkers and line 75 (estimated and extension
+  payments) zero. Whether any withholding came from forms other than W-2 is not visible on IT-201 (Form IT-2 was not
+  shared). There was a balance due, paid by electronic funds withdrawal.
+- A13: not answered (it is about 2026).
+- Also seen: the federal lines in use were wages, taxable interest, ordinary dividends, capital gain, and other income
+  identified as Form 8889 (HSA) income; no adjustments to income; lines 4 to 6, 8 to 15 zero.
+
+What this settles or raises:
+- The profile is the target: single, full-year City resident, standard deduction, no New York additions, subtractions or
+  credits beyond the school tax credit, no other taxes.
+- Every line the map computes for this profile reproduces the filed return: line 39 by worksheet 7's flat-rate step
+  (6% of taxable income once New York AGI is $157,650 or more), line 47a by the City rate schedule, lines 69 and 69a,
+  and the totals on lines 61, 76 and 80. Line 69a matches only when the computed credit is rounded half-up to the whole
+  dollar, which supports the whole-dollar reading in C4.
+- Because the owner itemizes federally, a state or local income tax refund can be taxable on a future federal return
+  (federal Schedule 1 line 1), which makes **B1** live in any year after a New York refund; 2025 had a balance due,
+  so no refund arises from it.
+- **B3** (line 59): the owner entered 0, so option (a) or (c) fits.
+- **B6** (line 81): a 2025 balance due with no estimated payments makes the estimated-tax penalty screen relevant for
+  2026; the safe-harbor comparison needs the 2025 New York tax, which the owner would type.
+
 ---
 
 ## Part B. Scope choices the map raises
