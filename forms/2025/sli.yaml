@@ -23,7 +23,10 @@ form:
     expr:
       op: input
       source: Total interest you paid in 2025 on qualified student loans (generally Form 1098-E box 1), not counting any amount
-        paid from tax-free qualified tuition program earnings; zero if none. A qualified student loan is a loan you took out
+        paid from tax-free qualified tuition program earnings or through tax-free student loan repayment assistance (the
+        National Health Service Corps Loan Repayment Program, a state education loan repayment program eligible for funds
+        under the Public Health Service Act, or another state loan repayment or loan forgiveness program intended to increase
+        the availability of health services in underserved or health professional shortage areas); zero if none. A qualified student loan is a loan you took out
         to pay the qualified higher education expenses (tuition, fees, room and board, and related expenses such as books
         and supplies, for education in a degree, certificate or similar program at an eligible educational institution) of
         an eligible student who was you, your spouse, a person who was your dependent when the loan was taken out, or a
@@ -40,7 +43,9 @@ form:
         for any of the following individuals who were eligible students', 'a loan isn’t a qualified student loan if (a)
         any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who
         borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan', and Qualified
-        higher education expenses
+        higher education expenses; p4681 p. 5, Student loan repayment assistance, "You can’t deduct the interest you paid
+        on a student loan to the extent payments were made through your participation in any of the above programs" and
+        "The National Health Service Corps (NHSC) Loan Repayment Program"
   - id: sli.has
     printed: (helper)
     label: Any student loan interest

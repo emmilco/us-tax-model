@@ -546,7 +546,9 @@ form:
       op: input
       source: 'Does any of these apply to this vehicle: you placed it in service before 2019; you claimed a special depreciation
         allowance for it in an earlier year; you used the standard mileage rate for it in an earlier year; you disposed of
-        it in 2025; you acquired it in a trade-in or from a related person; you placed it in service in 2025 but acquired it before September 28, 2017; its business use was 50% or less in any earlier
+        it in 2025; you made a substantial improvement to it in 2025 or an earlier year (such as adding air conditioning or
+        a new engine); you used it in 2025 for investment, that is, for the production of income outside your trade or
+        business; you acquired it in a trade-in or from a related person; you placed it in service in 2025 but acquired it before September 28, 2017; its business use was 50% or less in any earlier
         year; it is an electric vehicle placed in service before 2007; you reduced its basis by a clean-fuel deduction
         or a vehicle credit; you converted it from personal use to business use during 2025; or you use it in your
         business of transporting persons or property for hire, or it is an ambulance
@@ -604,7 +606,11 @@ form:
         met, you cannot elect the section 179 deduction for the following property" and Leased property; i4562 p. 3, "for
         taxpayers other than a corporation, this election does not apply to any section 179 property you purchased and leased
         to others unless"; i4562 p. 4, Line 2, "Enter the total cost of all section 179 property you placed in service during
-        the tax year"
+        the tax year"; i4562 p. 14, Column (c)—Business/investment use percentage, "for trade or business purposes or for
+        the production of income during the year"; p463 p. 25, Qualified business use, "However, you do combine your business
+        and investment use to figure your depreciation deduction for the tax year"; p463 p. 26, Improvements, "A major improvement
+        to a car is treated as a new item of 5-year recovery property" and "you must treat the improvement and the car as
+        a whole when applying the limits on the depreciation deductions"
     ambiguity: amb.2025.auto_later_year_basis
   - id: scveh.screened
     printed: (gate)
@@ -624,12 +630,14 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: The vehicle's cost (including sales tax) or other basis, not reduced by any section 179 deduction or depreciation
-        (for a vehicle converted from personal use, the smaller of its adjusted basis or its fair market value on the date
-        of conversion)
+      source: The vehicle's cost (including sales tax, destination charges and dealer preparation, and reduced by any gas
+        guzzler tax) or other basis, not reduced by any section 179 deduction or depreciation (for a vehicle converted from
+        personal use, the smaller of its adjusted basis or its fair market value on the date of conversion)
     cite:
       doc: i4562
-      locator: p. 14, Column (d)—Cost or other basis
+      locator: p. 14, Column (d)—Cost or other basis; p463 p. 26, Unadjusted basis, "Cost includes sales taxes (see Sales
+        taxes, earlier), destination charges, and dealer preparation" and "Decrease your basis by any section 179 deduction,
+        special depreciation allowance, gas guzzler tax, and vehicle credits claimed"
     refuses:
     - when: scveh.screened
       form: Vehicle depreciation outside this tool (placed in service before 2019, an earlier special allowance, an earlier

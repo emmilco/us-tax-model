@@ -14,11 +14,11 @@ form:
   lines:
     - id: sales.box
       printed: (helper)
-      label: "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets. Property you inherited is long-term however long you held it. To count the holding period, begin on the day after you acquired the property and include the day you sold it. If your basis in property you received as a gift is the donor's adjusted basis, your holding period began on the day the donor's did. A block acquired on different dates is entered as separate transactions for its short-term and long-term parts. Stock or securities bought in a wash sale include the holding period of those sold. New stock from a nontaxable stock dividend or a spin-off, and nontaxable stock rights, include the holding period of the old stock; stock from a taxable stock dividend begins on the date of distribution, stock acquired by exercising stock rights on the date the right was exercised, and property acquired by exercising an option the day after the option was exercised. A nonbusiness bad debt is short-term, and so is a gain or loss under the net asset value (NAV) method for a money market fund. A loss on a short sale is long-term if, on the date of the short sale, you held substantially identical property for more than 1 year."
+      label: "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets. Property you inherited is long-term however long you held it, unless the decedent died in 2010 and the executor elected to file Form 8939 (Revenue Procedure 2011-41 then sets the holding period). To count the holding period, begin on the day after you acquired the property and include the day you sold it. If your basis in property you received as a gift is the donor's adjusted basis, your holding period began on the day the donor's did. A block acquired on different dates is entered as separate transactions for its short-term and long-term parts. Stock or securities bought in a wash sale include the holding period of those sold. New stock from a nontaxable stock dividend or a spin-off, and nontaxable stock rights, include the holding period of the old stock; stock from a taxable stock dividend begins on the date of distribution, stock acquired by exercising stock rights on the date the right was exercised, and property acquired by exercising an option the day after the option was exercised. A nonbusiness bad debt is short-term, and so is a gain or loss under the net asset value (NAV) method for a money market fund. A short sale is reported in the year it closes. A gain on closing a short sale is short-term if, on the date of the short sale, you held substantially identical property for 1 year or less, or if you acquired substantially identical property after the short sale but on or before the date you closed it; a loss on a short sale is long-term if, on the date of the short sale, you held substantially identical property for more than 1 year. For securities traded on an established market, the holding period begins the day after the trade date you bought them and ends on the trade date you sold them, not the settlement date. U.S. Treasury notes and bonds bought at auction start the day after the Treasury gives notice of acceptance to successful bidders, and those bought by subscription at a specified yield the day after the subscription is submitted. For shares bought for you by an automatic investment service, the holding period starts the day after the bank's purchase date; full shares are bought first and fractional shares last, and a share bought over more than one purchase date has a split holding period. Investment property acquired in a nontaxable trade, with a basis figured in whole or in part from the property traded, is held from the day after you acquired the old property. If your basis in a gift is its fair market value, the holding period starts the day after the gift. Property you elected to treat as sold and reacquired on January 1, 2001 (January 2, 2001, for readily tradable stock) is treated as acquired on that date. Real property bought under an unconditional contract is held from the day after you received title or took possession and assumed the burdens and privileges of ownership, whichever came first; for real property you repossessed after selling it, include the time you held it before the original sale and after the repossession, but not the time between."
       type: Enum(sales_box)
       expr:
         op: input
-        source: "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets. Property you inherited is long-term however long you held it. To count the holding period, begin on the day after you acquired the property and include the day you sold it. If your basis in property you received as a gift is the donor's adjusted basis, your holding period began on the day the donor's did. A block acquired on different dates is entered as separate transactions for its short-term and long-term parts. Stock or securities bought in a wash sale include the holding period of those sold. New stock from a nontaxable stock dividend or a spin-off, and nontaxable stock rights, include the holding period of the old stock; stock from a taxable stock dividend begins on the date of distribution, stock acquired by exercising stock rights on the date the right was exercised, and property acquired by exercising an option the day after the option was exercised. A nonbusiness bad debt is short-term, and so is a gain or loss under the net asset value (NAV) method for a money market fund. A loss on a short sale is long-term if, on the date of the short sale, you held substantially identical property for more than 1 year."
+        source: "Classification from records: A/B/C short-term (held 1 year or less), D/E/F long-term (held more than 1 year); G–L digital assets. Property you inherited is long-term however long you held it, unless the decedent died in 2010 and the executor elected to file Form 8939 (Revenue Procedure 2011-41 then sets the holding period). To count the holding period, begin on the day after you acquired the property and include the day you sold it. If your basis in property you received as a gift is the donor's adjusted basis, your holding period began on the day the donor's did. A block acquired on different dates is entered as separate transactions for its short-term and long-term parts. Stock or securities bought in a wash sale include the holding period of those sold. New stock from a nontaxable stock dividend or a spin-off, and nontaxable stock rights, include the holding period of the old stock; stock from a taxable stock dividend begins on the date of distribution, stock acquired by exercising stock rights on the date the right was exercised, and property acquired by exercising an option the day after the option was exercised. A nonbusiness bad debt is short-term, and so is a gain or loss under the net asset value (NAV) method for a money market fund. A short sale is reported in the year it closes. A gain on closing a short sale is short-term if, on the date of the short sale, you held substantially identical property for 1 year or less, or if you acquired substantially identical property after the short sale but on or before the date you closed it; a loss on a short sale is long-term if, on the date of the short sale, you held substantially identical property for more than 1 year. For securities traded on an established market, the holding period begins the day after the trade date you bought them and ends on the trade date you sold them, not the settlement date. U.S. Treasury notes and bonds bought at auction start the day after the Treasury gives notice of acceptance to successful bidders, and those bought by subscription at a specified yield the day after the subscription is submitted. For shares bought for you by an automatic investment service, the holding period starts the day after the bank's purchase date; full shares are bought first and fractional shares last, and a share bought over more than one purchase date has a split holding period. Investment property acquired in a nontaxable trade, with a basis figured in whole or in part from the property traded, is held from the day after you acquired the old property. If your basis in a gift is its fair market value, the holding period starts the day after the gift. Property you elected to treat as sold and reacquired on January 1, 2001 (January 2, 2001, for readily tradable stock) is treated as acquired on that date. Real property bought under an unconditional contract is held from the day after you received title or took possession and assumed the burdens and privileges of ownership, whichever came first; for real property you repossessed after selling it, include the time you held it before the original sale and after the repossession, but not the time between."
       cite:
         doc: i8949
         locator: pp. 2–5, holding period and checkbox classifications; p. 2, "To figure the holding period, begin counting
@@ -38,7 +38,27 @@ form:
           period of the stock or securities sold." and "If, on the date of the short sale, you held substantially identical
           property for more than 1 year, any loss you realize on the short sale is a long-term capital loss"; i8949 p. 2, "A
           nonbusiness bad debt must be treated as a short-term capital loss."; i8949 p. 5, Net asset value (NAV) method for
-          money market funds, "No long-term capital gain (or loss) can be entered under the NAV method."
+          money market funds, "No long-term capital gain (or loss) can be entered under the NAV method."; p550 p. 82,
+          Inherited property, "If you acquired the property from someone who died in 2010 and the executor made the
+          election to file Form 8939, see Revenue Procedure 2011-41 to determine your holding period."; p550 p. 81,
+          Securities traded on an established market, "your holding period begins the day after the trade date you bought
+          the securities, and ends on the trade date you sold them" and "Do not confuse the trade date with the"; p550
+          p. 82, U.S. Treasury notes and bonds, "starts the day after the Secretary of the Treasury, through news releases,
+          gives notification of acceptance to successful bidders" and "starts the day after the subscription is
+          submitted", Automatic investment service, "full shares are considered bought first and any fractional shares are
+          considered bought last. Your holding period starts on the day after the bank's purchase date." and "your holding
+          period for that share is a split holding period", Nontaxable trades, "your holding period for the new property
+          begins on the day following the date you acquired the old property", Property received as a gift, "If your basis
+          is determined by the fair market value of the property, your holding period starts on the day after the date of
+          the gift.", Real property bought, "begin counting on the day after you received title to it or on the day after
+          you took possession of it and assumed the burdens and privileges of ownership, whichever happened first" and Real
+          property repossessed, "Your holding period does not include the time between the original sale and the
+          repossession."; i8949 p. 6, Column (b)—Date Acquired, "For property you previously elected to treat as having
+          been sold and reacquired on January 1, 2001 (or January 2, 2001, for readily tradable stock), enter the date of
+          the deemed sale and reacquisition."; i1040sd p. 6, Short Sales, "your gain when closing a short sale is short
+          term if you (a) held substantially identical property for 1 year or less on the date of the short sale, or (b)
+          acquired property substantially identical to the property sold short after the short sale but on or before the
+          date you close the short sale" and "Report any short sale on Form 8949 in the year it closes."
     - id: sales.route
       printed: (helper)
       label: Report this transaction in detail on Form 8949 or directly in Schedule D
@@ -53,14 +73,19 @@ form:
         locator: p. 10, lines 1a and 8a
     - id: sales.code
       printed: (helper)
-      label: "Adjustment codes: none, B, W, BW; choose other for any additional code"
+      label: "Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling
+        expenses or option premiums the broker report does not reflect"
       type: Enum(sales_code)
       expr:
         op: input
-        source: "Adjustment codes: none, B, W, BW; choose other for any additional code"
+        source: "Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E for selling
+          expenses or option premiums that the Form 1099-B (or substitute statement) does not reflect in its proceeds
+          or basis"
       cite:
         doc: i8949
-        locator: pp. 7–11, columns (e) through (h), codes B and W
+        locator: pp. 7–11, columns (e) through (h), codes B and W; p. 6, Column (d)—Proceeds (Sales Price), "If there are
+          any selling expenses or option premiums that aren't reflected on the form or statement you received (by an
+          adjustment to either the proceeds or basis shown)"
     - id: sales.special
       printed: (helper)
       label: 'Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property: generally, real property that you depreciated, such as a home you once rented out or used in part as a home office), or an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost?'
@@ -90,16 +115,26 @@ form:
     - id: sales.proceeds
       printed: (helper)
       label: "Column (d): proceeds per broker report (or the correct proceeds if you received more than the report shows),
-        or net proceeds if no report"
+        or net proceeds if no report; the premium of a call you wrote that was exercised is part of the proceeds"
       type: NonNegDollars
       expr:
         op: input
         source: "Column (d): proceeds per broker report (or the correct proceeds if you received more than the report
-          shows), or net proceeds if no report"
+          shows), or, if no report, the net proceeds: gross proceeds minus selling expenses such as broker's fees,
+          commissions and state and local transfer taxes. If you sold (wrote) a call option that was exercised, the
+          premium you received is part of the proceeds of the property sold under the option: a Form 1099-B includes it
+          in the proceeds for a call sold after 2013, and without a report you add it to the net proceeds. Do not add here
+          a premium or selling expense that the broker report does not reflect; that needs code E (choose other among the
+          adjustment codes)."
       cite:
         doc: i8949
         locator: p. 6, column (d); p. 6, "If the proceeds you received were more than shown on Form 1099-B, Form 1099-DA,
-          or Form 1099-S (or substitute statement), enter the correct proceeds in column (d)."
+          or Form 1099-S (or substitute statement), enter the correct proceeds in column (d)."; p. 6, Column (d)—Proceeds
+          (Sales Price), "The net proceeds equal the gross proceeds minus any selling expenses (such as broker's fees,
+          commissions, and state and local transfer taxes)." and "If you sold a call option and it was exercised, you
+          adjust the sales price of the property sold under the option for any option premiums"; i1040sd p. 6, Gain or Loss
+          From Options, "If a call option you sold after 2013 was exercised, the option premium you received will be
+          reflected in the proceeds shown in box 1d of Form 1099-B"
     - id: sales.reported_basis
       printed: (helper)
       label: Basis shown on broker report
@@ -112,19 +147,57 @@ form:
         locator: pp. 7–11, columns (e) through (h), codes B and W
     - id: sales.correct_basis
       printed: (helper)
-      label: Correct adjusted basis from records (for inherited property shown on a Schedule A (Form 8971) as increasing
-        the estate tax, starting from no more than its final estate tax value)
+      label: Correct adjusted basis from records (cost; the donor's basis for a gift; for inherited property, value at death
+        or on an elected alternate valuation date or special-use value, within the Schedule A (Form 8971) final estate tax
+        value where it applies; the basis of property from a trade, from a spouse or incident to divorce, or received for
+        services), with the adjustments to basis
       type: NonNegDollars
       expr:
         op: input
-        source: Correct adjusted basis from records. For property you inherited, if a Schedule A (Form 8971) you received
+        source: Correct adjusted basis from records. The basis of property you buy is usually its cost, including costs of
+          purchase such as commissions. The basis of property you received as a gift is generally the donor's adjusted
+          basis just before the gift, increased (for a gift after 1976) by the part of any gift tax paid that was for the
+          net increase in value of the gift; but if the gift's fair market value at the time of the gift was less than the
+          donor's adjusted basis, use the donor's adjusted basis if that gives a gain, the fair market value at the time of
+          the gift if that gives a loss, and the proceeds if neither does (no gain or loss), each with the adjustments
+          below. For property you got in a transfer that is partly a sale and partly a gift, your basis is the larger of
+          the amount you paid and the transferor's adjusted basis at the time of the transfer, plus any gift tax figured as above, but for
+          figuring a loss not more than the property's fair market value at the time of the transfer. The basis of
+          inherited property is generally its fair market value at the date of death; or its fair market value on the
+          alternate valuation date, or the special-use value of real property used in farming or another closely held
+          business, if the personal representative elected that valuation; or the decedent's adjusted basis in land to the
+          extent of the value excluded from the taxable estate as a qualified conservation easement. If no Form 706 was
+          filed, or the executor was not required to give you a Schedule A (Form 8971), use the appraised value on the date
+          of death for state inheritance or transmission taxes. For appreciated property (fair market value more than its
+          adjusted basis on the day it was given) that you or your spouse gave the decedent as a gift during the 1-year
+          period ending on the date of death, your basis is the decedent's adjusted basis immediately before death. Property
+          you received in a taxable trade has a basis equal to its fair market value at the time of the trade; property
+          from a nontaxable or partly nontaxable trade takes the adjusted basis of the property you gave up, increased by
+          any cash you paid, additional costs and gain recognized, and reduced by any cash or unlike property you received,
+          loss recognized and liability of yours assumed. Property from your spouse (or former spouse, if the transfer is
+          incident to your divorce) takes your spouse's or former spouse's adjusted basis just before the transfer.
+          Property received for services has a basis equal to the fair market value you included in income; restricted
+          property received for services, generally its fair market value when it becomes substantially vested; and
+          investment property bought at less than fair market value as payment for services, the price you paid plus the
+          amount you included in income. If you elected to
+          recognize gain on property held on January 1, 2001, your basis is its closing market price or fair market value,
+          whichever applies, on the date of that deemed sale and reacquisition. For property you inherited, if a Schedule A (Form 8971) you received
           shows in Part II, column (f), that the property increased the estate tax liability, start from an initial basis
           equal to or less than the final estate tax value in Part II, column (h), then adjust it. Among the adjustments,
           add a loss disallowed by the wash sale rules when you bought this stock or security as the replacement (unless
           the replacement was bought for an IRA or Roth IRA); add payments in lieu of dividends you could not deduct because
-          you closed a short sale by the 45th day (to the stock used to close it); for stock from a compensatory option,
-          add any amount you included in income upon grant or exercise that the reported basis does not reflect; and
-          subtract nondividend distributions that were a return of your basis.
+          you closed a short sale by the 45th day (to the stock used to close it); add to the cost of stock you sold short
+          a payment in lieu of a liquidating or nontaxable stock distribution, or for shares you bought equal to a stock
+          distribution on the borrowed stock (a capital expense); for stock from a compensatory option,
+          add any amount you included in income upon grant or exercise that the reported basis does not reflect; subtract
+          nondividend distributions that were a return of your basis; adjust the basis of each share for any stock splits;
+          add the OID you included in income on a taxable OID debt instrument, or the tax-exempt OID that accrued while
+          you held a tax-exempt one; add market discount you elected to include in income currently; and subtract bond
+          premium amortization on a taxable bond whose premium you elected to amortize, and on a tax-exempt bond. If a
+          charitable contribution deduction is allowable for a bargain sale of this property to a charitable organization,
+          allocate your basis between the part sold and the part contributed by their fair market values and enter the
+          part sold. For identical shares of a mutual fund, or of a dividend reinvestment plan, left with a custodian or
+          agent, you may use the average basis method.
       cite:
         doc: i8949
         locator: pp. 7–11, columns (e) through (h), codes B and W; p. 6, Schedule A (Form 8971)—Consistent basis
@@ -134,20 +207,91 @@ form:
           stock or securities (except in (4) above)." and "Instead, you must increase the basis of the stock used to close
           the short sale by that amount."; i8949 p. 7, "Increase your basis by any amount you included in income upon grant
           or exercise of the option."; i8949 p. 5, Nondividend distributions, "Reduce your cost (or other basis) in a share
-          by the distributions allocable to such share."
+          by the distributions allocable to such share."; i8949 p. 6, Column (e)—Cost or Other Basis, "The basis of
+          property you buy is usually its cost, including the purchase price and any costs of purchase, such as
+          commissions.", "The basis of property acquired by gift is generally the basis of the property in the hands of the
+          donor. The basis of inherited property is generally the fair market value at the date of death." and "If you
+          elected to recognize gain on property held on January 1, 2001, your basis in the property is its closing market
+          price or fair market value, whichever applies, on the date of the deemed sale and reacquisition"; p550 p. 60,
+          Fair market value less than donor's adjusted basis, "your basis for gain on its sale or other disposition is the
+          same as the donor's adjusted basis plus or minus any required adjustments to basis during the period you hold the
+          property. Your basis for loss is its fair market value at the time of the gift" and "You have neither gain nor
+          loss."; p550 p. 61, Gift received after 1976, "your basis is the donor's adjusted basis increased by the part of
+          the gift tax paid that was for the net increase in value of the gift" and Part sale, part gift, "your basis is the
+          larger of the amount you paid for the property or the transferor's adjusted basis in the property at the time of
+          the transfer" and "For figuring loss, your basis is limited to the property's fair market value at the time of
+          the transfer."; i8949 p. 7, Adjustments to basis, "Also,
+          adjust your basis for any stock splits.", "Increase the cost or other basis of a taxable OID debt instrument by
+          the amount of OID that you have included in gross income for that instrument.", "Increase the cost or other
+          basis of a tax-exempt OID debt instrument by the amount of tax-exempt OID that accrued on the debt instrument
+          while held by you.", "If you elect to currently include in income the market discount on a bond, increase the
+          basis of the bond by the market discount that has been included in income for that bond.", "If you elect to
+          amortize bond premium on a taxable bond, reduce the basis of the bond by any bond premium amortization allowed as
+          either an offset to interest income or as a deduction for that bond. Reduce the basis of a tax-exempt bond by any
+          bond premium amortization for that bond.", "you must allocate your basis in the property between the part sold
+          and the part contributed based on the fair market value of each" and Average basis, "You can use the average
+          basis method to determine the basis of shares of stock if the shares are identical to each other"; p550 p. 61,
+          Property Received as Inheritance, "The FMV on the alternate valuation date", "The value under the special-use
+          valuation method for real property used in farming or other closely held business, if elected by the personal
+          representative.", "to the extent of the value excluded from the decedent's taxable estate as a qualified
+          conservation easement", "If no Form 706 was filed, or the executor was not required to provide you Schedule A (Form
+          8971), use the appraised value on the date of death for state inheritance or transmission taxes." and Appreciated
+          property you gave the decedent, "Your basis in certain appreciated property that you inherited is the decedent's
+          adjusted basis in the property immediately before death rather than its fair market value." and "gave the decedent
+          as a gift during the 1-year period ending on the date of death"; p550 p. 60, Property Received in Taxable Trades,
+          "the basis of the new property is its fair market value at the time of the trade", Property Received in
+          Nontaxable Trades, "is generally the same as the adjusted basis of the property you gave up. Increase this amount
+          by any cash you paid, additional costs you had, and any gain recognized.", Property Received From Your Spouse,
+          "your basis is the same as your spouse's or former spouse's adjusted basis just before the transfer", Restricted
+          property, "your basis in the property is generally its fair market value when it becomes substantially vested" and
+          Bargain purchases, "Your basis in the property is the price you pay plus the amount you include in income."; p550
+          p. 59, Property Received for Services, "The amount you include in income then becomes your basis in the
+          property."; p550 p. 86, Payments in lieu of dividends, "If your payment is made for a liquidating distribution or
+          nontaxable stock distribution" and "you have a capital expense. You must add the payment to the cost of the stock
+          sold short."
     - id: sales.wash_loss
       printed: (helper)
-      label: Correct nondeductible wash-sale loss; positive cents, including losses
-        not reported by broker; not more than the loss on this sale
+      label: Correct nondeductible wash-sale loss (a loss on stock or securities with substantially identical stock or
+        securities bought within 30 days before or after the sale, or, for a loss on a short sale, substantially identical
+        stock or securities sold or sold short again within 30 days before or after the short sale is complete); positive cents, including losses not reported by
+        broker; not more than the loss on this sale
       type: NonNegDollars
       expr:
         op: input
-        source: Correct nondeductible wash-sale loss; positive cents, including losses
-          not reported by broker. It cannot be more than the loss on this sale (column (e) less
-          column (d), after any code B basis correction).
+        source: Correct nondeductible wash-sale loss; positive cents, including losses not reported by broker, and 0 if
+          no part of the loss is from a wash sale. A wash sale occurs when you sell or trade stock or securities
+          (including a contract or option to acquire or sell stock or securities) at a loss and, within 30 days before or
+          after the sale, you buy substantially identical stock or securities, acquire them in a fully taxable trade,
+          acquire a contract or option to buy them, or acquire substantially identical stock or securities for your IRA or
+          Roth IRA; it is also a wash sale if your spouse or a corporation you control buys substantially identical stock.
+          A loss on a short sale is a wash sale if you sell, or enter into another short sale of, substantially identical
+          stock or securities within 30 days before or after the date the short sale is complete. A short sale is complete
+          when you deliver the property to close it; but if, on the date you entered into it, you owned stock or securities
+          identical to those sold short (or had a contract or option to acquire them) and you later deliver them to close
+          it, it is complete on the date you entered into it.
+          If you bought more or fewer shares than you sold, the rules apply only to the sold shares matched with shares
+          bought, in the order you bought them. The rules do not apply to a loss incurred in the ordinary course of your
+          business as a dealer in stock or securities, to commodity futures contracts or foreign currencies, or to a
+          redemption of shares in a floating-NAV money market fund. The loss entered cannot be more than the loss on this
+          sale (column (e) less column (d), after any code B basis correction).
       cite:
         doc: i8949
-        locator: p. 10, code W; a lower corrected loss requires an explanation statement
+        locator: p. 10, code W; a lower corrected loss requires an explanation statement; i1040sd p. 5, Wash Sales, "A
+          wash sale occurs when you sell or otherwise dispose of stock or securities (including a contract or option to
+          acquire or sell stock or securities) at a loss and, within 30 days before or after the sale or disposition, you"
+          and "These wash sale rules don't apply to a redemption of shares in a floating-NAV (net asset value) money market
+          fund."; p550 p. 86, Wash Sales, "unless the loss was incurred in the ordinary course of your business as a
+          dealer in stock or securities", "Acquire substantially identical stock for your individual retirement
+          arrangement (IRA) or Roth IRA." and "If you sell stock and your spouse or a corporation you control buys
+          substantially identical stock, you also have a wash sale."; p550 p. 87, Options and futures contracts, "They do
+          not apply to losses from sales or trades of commodity futures contracts and foreign currencies." and More or
+          less stock bought than sold, "You do this by matching the shares bought with an equal number of the shares
+          sold."; p550 pp. 87–88, Short sales, "The wash sale rules apply to a loss realized on a short sale if you sell, or
+          enter into another short sale of, substantially identical stock or securities within a period beginning 30 days
+          before the date the short sale is complete and ending 30 days after that date.", "a short sale is considered
+          complete on the date the short sale is entered into if" and "Otherwise, a short sale is not considered complete
+          until the property is delivered to close the sale."; i8949 p. 10, "If no part of the loss is a nondeductible loss from a wash sale transaction, enter -0- in
+          column (g)."
     - id: sales.covered
       printed: (helper)
       label: Basis reported to IRS

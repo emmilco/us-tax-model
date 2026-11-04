@@ -37,6 +37,16 @@
    "model": "The IRS line uses 'your net capital gain from the disposition of property held for investment'; the restatement uses the QDCGT helper based on the smaller of Schedule D lines 15 and 16, which is not limited to property held for investment.",
    "ruling": "Ruling: scope; f4952 (2025) p.3 Lines4d/4e restrict disposition amounts to property held for investment. The supported ScheduleD stream is manually classified securities and fund capital-gain distributions; sales.special refuses special/nonsecurities property and sd.other_forms refuses Forms4797/6252/4684/6781/8824 and K-1 gains. f4952.unsupported at line2 screens other investment income/expenses beyond interest, dividends and securities sales. Within this declared completed-return slice the ScheduleD totals/net-capital-gain helper are the investment amounts. The broader IRS cases are excluded; the ruling does not assert that arbitrary ScheduleD amounts from an excluded return are investment-property amounts.",
    "context": "a4d9d892f344de4921870980e203a48fd23b96694153a378f20eefba436b8b8d"
+  },
+  {
+   "printed": "4g",
+   "restated": "Input — Amount of qualified dividends and net capital gain elected into investment income. The election must be made on a timely filed return, including extensions; enter 0 if this return will not be filed by its due date (including extensions).",
+   "model": "The IRS says the election is generally timely filed but allows a late election: 'if you timely filed your return without making the election, you can make the election on an amended return filed within 6 months of the due date of your return (excluding extensions).' The restatement instead says to enter 0 if the return will not be filed by its due date, omitting that exception.",
+   "ruling": "Ruling: finding; i4952 p. 4, Line 4g, \"Generally, you must make this election on a timely filed return, including extensions. However, if you timely filed your return without making the election, you can make the election on an amended return filed within 6 months of the due date of your return (excluding extensions).\" The round-3 wording (BUG-0414 low f4952#2) tells the filer to enter 0 unless this return is filed on time, including extensions, which omits the amended-return election a filer may make after a timely original return; the question is narrower than its source for that case. Proposed fix (not applied): add to the label and source \"or it is an amended return filed within 6 months of the original due date (excluding extensions) after a timely filed return that did not make the election\". BUG-0417.",
+   "context": "cb2f7a37146ad439ea251c417b872890eba0a40c2f6bed9e74010043c0f044e4",
+   "date": "2026-11-04",
+   "run": "3c43ead49f14edb500fd7f24e130092037daade4c1b0d1d8b25cc5b3fb56b74b",
+   "severity": "low"
   }
  ]
 }

@@ -111,6 +111,15 @@
   {
    "printed": "13",
    "restated": "Divide helper \"Business miles, as cents\" by helper \"Total miles, as cents\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply column (d) by the result.",
+   "model": "The restatement multiplies column (d) by the business-use percentage. That is the first step of Form 4562 column (e) ('Multiply column (d) by the percentage in column (c)'), not 'Depreciation and section 179 expense deduction' as Schedule C line 13 requires. It omits the section 179 and special-allowance subtraction, the column (h) depreciation rate ('follow the instructions for line 19, column (g)'), and the passenger automobile limits ('cannot exceed the applicable limit shown in Table 1, 2, 3, or 4').",
+   "ruling": "Ruling: model error; p946 pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 13, \"Multiply line 12 by line 8. This is your business/investment cost\" (the line's cite). The printed handle 13 is that worksheet line, not Schedule C line 13; the depreciation rate, section 179 and special-allowance subtraction and the automobile limits are on the project's later worksheet lines (column (h), scveh.macrs). The restatement states the line. Project stands.",
+   "context": "cd68b64f8739b1117ce80eda0171917e4a2ebd4919aac09ad0dbb33ec71c4735",
+   "date": "2026-11-04",
+   "run": "2169a5d74510e27c96fd83615bed288a4a9493151dce38c2a5a04e8ea078f330"
+  },
+  {
+   "printed": "13",
+   "restated": "Divide helper \"Business miles, as cents\" by helper \"Total miles, as cents\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply column (d) by the result.",
    "model": "Worksheet line 13 is line 12 times the column (c) business-use percentage, and the mileage ratio is right in most years. It omits the conversion rule: 'If during the tax year you convert property used solely for personal purposes to business/investment use ... Multiply that percentage by the number of months you use the property in your business ... and divide the result by 12.' Column (d) expressly accepts converted vehicles.",
    "ruling": "Ruling: model right in substance; resolved by refusal (owner, BUG-0072). The conversion-year proration (i4562 p. 14, 'If during the tax year you convert property used solely for personal purposes to business/investment use ... Multiply that percentage by the number of months you use the property in your business ... and divide the result by 12') was neither applied nor refused. A vehicle converted from personal use during 2025 is now refused through scveh.screen; a vehicle converted in an earlier year needs no proration in 2025."
   },

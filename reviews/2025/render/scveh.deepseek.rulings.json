@@ -64,6 +64,15 @@
    "run": "b300dfa121ff047c848b162bb9381fad45f0604f2c8420e6e7defb6f42ccc415"
   },
   {
+   "printed": "13",
+   "restated": "Divide helper \"Business miles, as cents\" by helper \"Total miles, as cents\", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply column (d) by the result.",
+   "model": "The IRS line is 'Depreciation and section 179 expense deduction'; the restatement instead computes Form 4562 Part V column (e), 'Basis for depreciation (business/investment use only),' by multiplying column (d) by business-use percentage, omitting the depreciation rate and passenger automobile limits.",
+   "ruling": "Ruling: model error; p946 pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 13, \"Multiply line 12 by line 8. This is your business/investment cost\". The handle 13 is that worksheet line, not Schedule C line 13; depreciation and the automobile limits are on later worksheet lines (scveh.macrs). Same point as the Claude ruling of this line. Project stands.",
+   "context": "eed466f87803a3b21978d947f64322034433b0531090f6bbcb37ed0e70266234",
+   "date": "2026-11-04",
+   "run": "b9e375fc83b2b6b6b88a983d3ce5751c54ac4f2fb66625d914c080b7c539ac6d"
+  },
+  {
    "printed": "19",
    "restated": "Choose — [helper \"Placed in service in 2025\" = true → helper \"Line 19 for a 2025 vehicle, half-year or mid-quarter\"] [helper \"Placed in service in 2025\" = false → helper \"Line 19 for a vehicle placed in service before 2025 (zero after the recovery period, when the worksheet is not used)\"]",
    "model": "For a 2019 vehicle, the IRS says 'If the recovery period for an automobile ended before your tax year beginning in 2025, enter your unrecovered basis, if any, in column (h)' and permits deductions after the recovery period; the restatement returns zero for a 2019 vehicle.",

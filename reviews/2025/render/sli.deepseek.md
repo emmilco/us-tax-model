@@ -29,8 +29,8 @@ The rendered English of every printed line of `Student Loan Interest Deduction W
 ### 1 — Enter the total interest you paid in 2025 on qualified student loans (see the instructions
 Status: **MATCH**
 
-Model: IRS line 1 says to enter total 2025 qualified student loan interest and not more than $2,500; the restatement’s smaller-of computation matches. The refusal also matches the IRS exception to use Pub. 970 for Form 2555, Form 4563, or Puerto Rico excluded income.
-Reviewed in: pass db44072c0395
+Model: The IRS line says to enter total interest paid in 2025 on qualified student loans and not enter more than $2,500, which the restatement computes as the smaller of those two amounts. The refusal correctly mirrors the Exception requiring Pub. 970 for Form 2555, Form 4563, or excluded Puerto Rico income.
+Reviewed in: pass 751dd786467e
 
 ### 2 — Enter the amount from Form 1040 or 1040-SR, line 9
 Status: **MATCH**
@@ -85,7 +85,7 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 | line | subject sha256 |
 | --- | --- |
-| 1 | 699c234e8f57d5bd55deefdeb8a4a09d7bc7a7488b79b03c2cbc006cad4d0efd |
+| 1 | 7c4dbaaa35532b3e06522ca9e324fbffe4b43eb335ff32b4da97d2a4ef49e9b2 |
 | 2 | 44a322e52fce7e7a028df233a318d945fcc9a2726176337b964ce5f20c99d463 |
 | 3 | 9a7502bf57f013ced47f8150707fb8e150be4eb5138caec1da8a48527632a73b |
 | 4 | e4e03402ab3d98b2d59c43c95d6607f6b5291dadd68687d950576d408e73913f |
@@ -99,7 +99,7 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
 
-#### Pass db44072c0395
+#### Pass 751dd786467e
 
 | field | value |
 | --- | --- |
@@ -107,12 +107,12 @@ Lines reviewed again after a change, each pass by its own isolated request (tran
 | review scope | lines 1 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | db44072c03958c5673c635c9cbc89a88e25e97816b344f433bcee3ead7f635fa |
+| prompt sha256 | 751dd786467e9323ebfc2146ac9e69579c335af528597549b10ba6653071183c |
 | prompt policy | render-source-comparison-v2+lines-v1 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
-| subject sha256 | 469a209c45a4a7efd37fa7e717ce64032380050604de071f5da931956a59b566 |
+| subject sha256 | 63584a89dc97ecdde8f26dd31069530cf9800f2f788d3960a48a72ddea4faff4 |
 | receipt | .transcription/sli.deepseek.render.lines-6b86b273ff34 |
 | lines judged | 1 |
 | match / mismatch / unclear / missing | 1 / 0 / 0 / 0 |
@@ -124,6 +124,7 @@ Lines reviewed again after a change, each pass by its own isolated request (tran
 | --- | --- | --- | --- | --- | --- | --- |
 | i1040gi | 2025; printed date 2026-02-25 | 98, 99 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 98 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
 | f1040sa | 2025; created 2025-11-20 | 1 | whole document | 225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd | - | bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe |
+| p4681 | 2025 | 5 | pages named by another document's citation | c280f0029d95f9f4186840c73600efd2af4bd3370a86a31fb4f2a9391887b2b6 | 5 | 21875d96efa2d4d7885584db3cf06d5830154aeff1eaf3370efad4fab5cc3a17 |
 
 ##### Raw response
 
@@ -131,7 +132,7 @@ Lines reviewed again after a change, each pass by its own isolated request (tran
 lines:
   - key: "1"
     status: MATCH
-    reason: "IRS line 1 says to enter total 2025 qualified student loan interest and not more than $2,500; the restatement’s smaller-of computation matches. The refusal also matches the IRS exception to use Pub. 970 for Form 2555, Form 4563, or Puerto Rico excluded income."
+    reason: "The IRS line says to enter total interest paid in 2025 on qualified student loans and not enter more than $2,500, which the restatement computes as the smaller of those two amounts. The refusal correctly mirrors the Exception requiring Pub. 970 for Form 2555, Form 4563, or excluded Puerto Rico income."
 ```
 
 ## Raw response

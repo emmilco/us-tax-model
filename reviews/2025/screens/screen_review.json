@@ -2685,7 +2685,7 @@
  },
  {
   "screen": "retirement.special",
-  "question": "Does this distribution involve any of these: a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025; a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972; a distribution of employer securities with net unrealized appreciation (an amount in box 6); a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree's joint and survivor annuity is not one of these); a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead; a rollover of a distribution under a qualified domestic relations order; a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one, or a recontribution of a distribution to purchase or construct a main home that was canceled because of a qualified disaster (Form 8915-F); a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree's annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?",
+  "question": "Does this distribution involve any of these: a disability pension received before minimum retirement age, or a pension partly excludable because you were disabled as a result of a terrorist attack; a corrective distribution of excess deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025; a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972; a distribution of employer securities with net unrealized appreciation (an amount in box 6); a nonperiodic payment received on or after the annuity starting date of an annuity in which you have after-tax cost that is a single-sum payment in connection with the start of the annuity payments, fully discharges the contract, or reduced your later annuity payments; a distribution the IRS wrongfully levied, any part of which was returned to you and contributed back to a retirement plan or IRA; a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree's joint and survivor annuity is not one of these); a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead; a rollover of a distribution under a qualified domestic relations order; a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one, or a recontribution of a distribution to purchase or construct a main home that was canceled because of a qualified disaster (Form 8915-F); a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree's annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?",
   "lines": [
    "retirement.rolled",
    "retirement.taxable",
@@ -2695,30 +2695,36 @@
   "findings": [
    {
     "kind": "NARROW",
-    "situation": "The filer receives a Roth IRA distribution that is not coded Q, for example code J, or code T where the first Roth contribution was after 2020; none of the listed items applies, so the filer answers NO.",
-    "irs_text": "i1040gi 2025 p. 27, Exception 2: \"2. You received a distribution from a Roth IRA. But if either (a) or (b) below applies, enter -0- on line 4b... a. Distribution code T ... and you made a contribution (including a conversion) to a Roth IRA for 2020 or an earlier year. b. Distribution code Q\"",
-    "why": "The IRS requires Form 8606 to figure line 4b for any Roth IRA distribution other than the two -0- cases. The question lists only conversions, recharacterizations and nondeductible traditional IRA contributions, so the tool taxes the full non-rolled amount and ignores the filer's Roth contribution basis."
+    "situation": "A filer takes a nonqualified Roth IRA distribution (for example code J, or code T with a first Roth contribution for 2021 or later) with no conversion, recharacterization or returned contribution in 2025, and answers NO.",
+    "irs_text": "i1040gi p. 27, Exception 2: \"2. You received a distribution from a Roth IRA. But if either (a) or (b) below applies, enter -0- on line 4b ... a. Distribution code T ... and you made a contribution (including a conversion) to a Roth IRA for 2020 or an earlier year. b. Distribution code Q\"",
+    "why": "Every Roth IRA distribution that is not covered by (a) or (b) needs Form 8606 to recover Roth basis. The question names only nondeductible traditional IRA contributions, conversions and recharacterizations. So the filer answers NO, and the tool taxes the whole part not rolled over."
    },
    {
     "kind": "NARROW",
-    "situation": "The filer receives a nonperiodic distribution (not an annuity) from a qualified plan that includes after-tax contributions, such as a partial lump sum or a 401(k) cash-out not reported on Form 4972, and answers NO because it is not 'a pension or annuity ... (the General Rule)'.",
-    "irs_text": "p575 2025 p. 16: \"How you figure the taxable amount of a nonperiodic distribution depends on whether it is made before the annuity starting date, or on or after the annuity starting date\"; i1040gi p. 30: \"subtract any contributions (usually shown in box 5) that were taxable to you when made\"",
-    "why": "The question's after-tax-cost item covers only annuities that use the General Rule or started before Nov. 19, 1996. A nonperiodic distribution with cost before the annuity starting date, or a reduced-annuity nonperiodic payment after it, is excluded from the Simplified Method, and the wording does not make the filer answer YES."
+    "situation": "A filer receives a nonperiodic (non-annuity) distribution before the annuity starting date from a qualified plan in which they have after-tax cost (box 5/9b), with no rollover, and answers NO.",
+    "irs_text": "p575 p. 17: \"If you receive a nonperiodic distribution before the annuity starting date from a qualified retirement plan, you can generally allocate only part of it to the cost of the contract ... Cost of contract x Amount received / Account balance = Tax-free amount\"",
+    "why": "The question lists only nonperiodic payments on or after the annuity starting date. The tool's pension computation applies the Simplified Method only to annuities, so the pro-rata exclusion for a pre-annuity distribution is ignored and the distribution is overtaxed."
+   },
+   {
+    "kind": "NARROW",
+    "situation": "A filer receives a nonperiodic distribution before the annuity starting date from a pension plan that, as of May 5, 1986, permitted withdrawal of pre-1987 employee contributions, and answers NO.",
+    "irs_text": "p575 p. 17: \"any distribution before your annuity starting date is tax free to the extent that it, when added to earlier distributions received after 1986, doesn't exceed your cost as of December 31, 1986\"",
+    "why": "Nothing in the question reaches pre-annuity-starting-date distributions with cost. The tool therefore does not apply this cost-first recovery."
    },
    {
     "kind": "WIDE",
-    "situation": "The filer receives a fully taxable 401(k) or pension distribution reported on line 5 and has made nondeductible contributions to a traditional IRA, so the filer answers YES to the IRA item.",
-    "irs_text": "Question: \"nondeductible contributions to any traditional IRA\"; i1040gi 2025 p. 27, Exception 2(1): \"You received a distribution from an IRA (other than a Roth IRA) and you made nondeductible contributions to any of your traditional IRAs\"",
-    "why": "Nondeductible IRA basis matters only for a distribution from a non-Roth IRA. The tool computes a line 5 pension distribution correctly, but the unqualified wording makes such a filer answer YES."
+    "situation": "A filer whose plan loan offset is simply taxable, with no after-tax cost and no rollover, must answer YES, although the tool computes the fully taxable amount from box 1 correctly.",
+    "irs_text": "Question: \"a plan loan offset\"; p575 p. 23: \"A plan loan offset is the amount your employer plan account balance is reduced, or offset, to repay a loan from the plan.\"",
+    "why": "The offset needs special handling only because of its extended rollover deadline. An unrolled offset with no basis is an ordinary fully taxable distribution, which the tool handles."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer whose traditional IRA was converted or recharacterized in an earlier year, and who now takes an ordinary traditional IRA distribution, cannot tell whether 'this distribution involve[s] ... a conversion or recharacterization'.",
-    "irs_text": "i1040gi 2025 p. 27, Exception 2(3): \"You converted part or all of a traditional IRA or traditional SIMPLE IRA to a Roth IRA in 2025\"",
-    "why": "The IRS trigger is a 2025 conversion, while the question gives no year. A filer could read it to include past conversions (answering YES) or only this distribution being converted (answering NO)."
+    "situation": "A filer who made nondeductible traditional IRA contributions receives a pension distribution or a qualified Roth IRA distribution, and cannot tell whether to answer YES.",
+    "irs_text": "Question: \"Does this distribution involve ... nondeductible contributions to any traditional IRA\"; i1040gi p. 27: \"1. You received a distribution from an IRA (other than a Roth IRA) and you made nondeductible contributions to any of your traditional IRAs\"",
+    "why": "Read literally, \"any traditional IRA\" can prompt a YES even when the distribution is not from a traditional IRA, and the tool computes that case correctly. A filer could also reasonably read \"this distribution involve\" as limiting it to the account paid from."
    }
   ],
-  "prompt_sha": "0668ad143648db2015f1f311e06f404526b9249d90ab21755169ab00a5407591",
+  "prompt_sha": "cf08af5350ea5fd74e853d1cb32d55486b923ac31492833f03422dfd66150477",
   "used": [
    {
     "doc": "i1040gi",
@@ -2737,7 +2743,7 @@
      "p. 30, Rollovers, 'See Pub. 575 for more details on rollovers'",
      "pp. 27-30, lines 4a and 5a",
      "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method",
-     "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method; f1099r Box 7 codes; p. 28, \"For details on military disability pensions, see Pub. 525.\"; p. 30, \"If you are the beneficiary of an employee who died, see Pub. 575. If there is more than one beneficiary, see Pub. 575 or Pub. 721 to figure each beneficiary’s taxable amount.\" and \"See Pub. 575 for more details on rollovers, including special rules that apply to rollovers from designated Roth accounts, partial rollovers of property, and distributions under qualified domestic relations orders.\"; p. 30, Age (or Combined Ages) at Annuity Starting Date, \"If you are the survivor of a retiree, use the retiree’s age on their annuity starting date\"; , Survivors of retirees, \"Benefits paid to you as a survivor under a joint and survivor annuity must be included in your gross income\", \"If the retiree was reporting the annuity under the Simplified Method, the part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting date\" and \"If you receive guaranteed payments as the decedent’s beneficiary under a life annuity contract\"; , Rollovers of property, \"To roll over an eligible rollover distribution of property, you must either roll over the actual property distributed or sell it and roll over the proceeds\", \"You can’t keep the distributed property and roll over cash or other property.\" and \"If you roll over only part of the proceeds, you are taxed on the part you keep\"; , \"If you received a qualified disaster recovery distribution, it is taxable but isn’t subject to the 10% additional tax on early distributions\" and \"the distribution is included in income ratably over 3 years unless you elect to report the entire amount in the year of distribution\"; , \"Use Form 8915-F to report qualified disaster recovery distributions and repayments.\" and \"Also report recontributions of qualified distributions for home purchases and construction that were canceled because of qualified disasters on Form 8915-F, as applicable.\"; , Distributions of employer securities, \"The NUA on which tax is deferred should be shown in box 6 of the Form 1099-R you receive from the payer of the distribution.\"",
+     "pp. 27-30, lines 4a-5b: Exceptions 2-4, Lump-Sum Distributions, Insurance Premiums for Retired Public Safety Officers, Simplified Method; f1099r Box 7 codes; p. 28, \"For details on military disability pensions, see Pub. 525.\"; p. 30, \"If you are the beneficiary of an employee who died, see Pub. 575. If there is more than one beneficiary, see Pub. 575 or Pub. 721 to figure each beneficiary’s taxable amount.\" and \"See Pub. 575 for more details on rollovers, including special rules that apply to rollovers from designated Roth accounts, partial rollovers of property, and distributions under qualified domestic relations orders.\"; p. 30, Age (or Combined Ages) at Annuity Starting Date, \"If you are the survivor of a retiree, use the retiree’s age on their annuity starting date\"; , Survivors of retirees, \"Benefits paid to you as a survivor under a joint and survivor annuity must be included in your gross income\", \"If the retiree was reporting the annuity under the Simplified Method, the part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting date\" and \"If you receive guaranteed payments as the decedent’s beneficiary under a life annuity contract\"; , Rollovers of property, \"To roll over an eligible rollover distribution of property, you must either roll over the actual property distributed or sell it and roll over the proceeds\", \"You can’t keep the distributed property and roll over cash or other property.\" and \"If you roll over only part of the proceeds, you are taxed on the part you keep\"; , \"If you received a qualified disaster recovery distribution, it is taxable but isn’t subject to the 10% additional tax on early distributions\" and \"the distribution is included in income ratably over 3 years unless you elect to report the entire amount in the year of distribution\"; , \"Use Form 8915-F to report qualified disaster recovery distributions and repayments.\" and \"Also report recontributions of qualified distributions for home purchases and construction that were canceled because of qualified disasters on Form 8915-F, as applicable.\"; , Distributions of employer securities, \"The NUA on which tax is deferred should be shown in box 6 of the Form 1099-R you receive from the payer of the distribution.\"; , Reduction in subsequent payments, \"If the annuity payments you receive are reduced because you received a nonperiodic distribution, you can exclude part of the nonperiodic distribution from gross income.\"; , Single-sum payment in connection with the start of annuity payments, \"treat the single-sum payment as if it were received before your annuity starting date\" and Distribution in full discharge of contract, \"Include the amount in gross income only to the extent that it exceeds the remaining cost of the contract.\"; , Qualified retirement plan rollover, \"If a retirement account has been wrongfully levied by the IRS, the amount returned plus interest on such amount may be contributed to the account or to an IRA\"",
      "pp. 27-30, lines 4b and 5b"
     ],
     "cols_pages": [
@@ -2752,6 +2758,7 @@
     "revision": "2025",
     "text_sha256": "bc85a048e4293ab244d68023ac7bb45333ceede0763b3b1cb3430eb4829a18bf",
     "pages": [
+     2,
      5
     ],
     "how": "cited pages",
@@ -2759,6 +2766,7 @@
      "p. 5, Line 2, \"Enter on line 2 the amount that you can exclude.\""
     ],
     "cols_pages": [
+     2,
      5
     ],
     "cols_sha256": "e46adbf118d780a00b73957b6ef4c6e436e651f6f076a36fa9b6717bd138ee5d"
@@ -2769,6 +2777,7 @@
     "text_sha256": "4d6ee3802a2906a4633dcfc104aa33bb3d9ddedebddc9eadbd0393cfdb61e07b",
     "pages": [
      16,
+     17,
      23,
      34,
      35
@@ -2777,6 +2786,7 @@
     "locators": [],
     "cols_pages": [
      16,
+     17,
      23,
      34,
      35
@@ -2784,7 +2794,7 @@
     "cols_sha256": "3962801dde168fda9f4ee239245d9746b12e2d60bf358b25186ae4a57aa5b837"
    }
   ],
-  "cost": 0.222924,
+  "cost": 0.262644,
   "model": "claude-opus-5-5"
  },
  {

@@ -1500,10 +1500,13 @@ form:
       type: NonNegDollars
       expr:
         op: input
-        source: The employer matching or nonelective contributions you made for yourself to your SIMPLE IRA for 2025
+        source: The employer matching or nonelective contributions you made for yourself to your SIMPLE IRA for 2025 (by the due
+          date of the return, including extensions)
       cite:
         doc: p560
-        locator: pp. 16–17, chapter 3, Employer matching contributions and Nonelective contributions
+        locator: pp. 16–17, chapter 3, Employer matching contributions and Nonelective contributions; p. 17, Time limits for
+          contributing funds, "You must make matching contributions or nonelective contributions by the due date (including
+          extensions) for filing your federal income tax return for the year."
     - id: person.simple_comp
       printed: (helper)
       label: 'Compensation: net earnings from self-employment (Schedule SE, line 4)'

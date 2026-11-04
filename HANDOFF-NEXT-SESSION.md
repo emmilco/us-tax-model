@@ -21,7 +21,15 @@ Round 2 cost $41.12 in paid calls (90 calls); the yield report has an exact-join
 **After the round-2 commit (T-094):** every form is now completeness-reviewed. f4952 and f8880 use their printed instructions; person is reviewed
 whole, with the prompt limit raised to 700k characters. Cost $2.23; 2 more lows were added to BUG-0414's list.
 
-**Next:** T-229 (BUG-0414 lows) and T-231 at each form's next pass; T-217 after 2026-11-06 15:49; T-196 if a reader changes; coverage expansion stays last.
+**Round 3 (after the T-094 commit):**
+- every BUG-0414 low is fixed (BUG-0415), and round 3's own lows are fixed too (BUG-0416);
+- T-232's no-schema route ran: 21 of 145 display-condition mutants are killed by source-predicted gate values on class A cases;
+- T-231 and T-196 were closed by cost decision;
+- two rare sales lows remain (BUG-0417, T-233); sales completeness keeps finding Pub. 550 detail, so lows are batched per the protocol.
+
+Paid calls this round: $24.90 (46 calls).
+
+**Next:** T-233 and T-231 at each form's next pass; T-217 after 2026-11-06 15:49; T-196 if a reader changes; coverage expansion stays last.
 
 ---
 

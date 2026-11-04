@@ -713,9 +713,9 @@
 ## (helper) — `person.simple_employer`
 
 - **Authored helper label:** Employer contributions for yourself to your SIMPLE IRA
-- **Encoded (NonNegDollars):** Input — The employer matching or nonelective contributions you made for yourself to your SIMPLE IRA for 2025
-- Expr: `{"op":"input","source":"The employer matching or nonelective contributions you made for yourself to your SIMPLE IRA for 2025"}`
-- Cite: [p560] pp. 16–17, chapter 3, Employer matching contributions and Nonelective contributions (For use in preparing 2025 returns; sha256 1f1f7abe)
+- **Encoded (NonNegDollars):** Input — The employer matching or nonelective contributions you made for yourself to your SIMPLE IRA for 2025 (by the due date of the return, including extensions)
+- Expr: `{"op":"input","source":"The employer matching or nonelective contributions you made for yourself to your SIMPLE IRA for 2025 (by the due date of the return, including extensions)"}`
+- Cite: [p560] pp. 16–17, chapter 3, Employer matching contributions and Nonelective contributions; p. 17, Time limits for contributing funds, "You must make matching contributions or nonelective contributions by the due date (including extensions) for filing your federal income tax return for the year." (For use in preparing 2025 returns; sha256 1f1f7abe)
 
 ## (helper) — `person.simple_comp`
 

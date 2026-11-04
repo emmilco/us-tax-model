@@ -27,11 +27,29 @@
    "context": "6e0ce3fbedf9395d0661300a38d173855326834fc50e83310bba70f6918708bb"
   },
   {
+   "printed": "14b",
+   "restated": "Choose — [helper \"Any HSA distributions in 2025\" = true → helper \"Distributions included on line 14a that you rolled over to another HSA\"] [helper \"Any HSA distributions in 2025\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The restatement includes only rollovers, but the IRS line says 'Also include any excess contributions (and the earnings on those excess contributions) included on line 14a that were withdrawn by the due date of your return'; the f8889.rollover_bad refusal does not exclude that case.",
+   "ruling": "Ruling: scope; same objection as the earlier ruling. Excess contributions withdrawn by the due date are refused by f8889.unsupported, so on a completed return line 14b holds rollovers only.",
+   "context": "5063e218389e3f17882bb3e7637b08b51c12c7b682fb797bbc997bb42419acd1",
+   "date": "2026-11-04",
+   "run": "aa112beed2a3a19a3d065415155f650d12e478b02cb0c10c85f0922a375df422"
+  },
+  {
    "printed": "15",
    "restated": "Choose — [helper \"Any HSA distributions in 2025\" = true → helper \"Qualified medical expenses paid using HSA distributions\"] [helper \"Any HSA distributions in 2025\" = false → helper \"Year parameter sales.zero\"]",
    "model": "The IRS instructions say 'Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses'; the restatement omits that exclusion.",
    "ruling": "Ruling: scope; i8889 p. 8, Line 15 (\"Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses\"). Any withdrawal of excess contributions made in 2025, and any earlier-year excess remaining in the HSA, is refused by f8889.unsupported, so the case cannot reach line 15 on a completed return.",
    "context": "6e0ce3fbedf9395d0661300a38d173855326834fc50e83310bba70f6918708bb"
+  },
+  {
+   "printed": "15",
+   "restated": "Choose — [helper \"Any HSA distributions in 2025\" = true → helper \"Qualified medical expenses paid using HSA distributions\"] [helper \"Any HSA distributions in 2025\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The helper describes distributions used for qualified medical expenses but omits the IRS line 15 caution 'Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses'; no line-15 refusal excludes that case.",
+   "ruling": "Ruling: scope; same objection as the earlier ruling. A withdrawal of excess contributions, and any earlier-year excess remaining in the HSA, is refused by f8889.unsupported, so the case cannot reach line 15 on a completed return.",
+   "context": "5063e218389e3f17882bb3e7637b08b51c12c7b682fb797bbc997bb42419acd1",
+   "date": "2026-11-04",
+   "run": "aa112beed2a3a19a3d065415155f650d12e478b02cb0c10c85f0922a375df422"
   },
   {
    "printed": "17a",
@@ -76,6 +94,15 @@
    "context": "52da021392e3559e1b977fe5d901806d15c6275488f31a10ced686a3b78499d4",
    "date": "2026-11-04",
    "run": "e6680e9ec8e9d8738db36aa0bb9b7e5bd8d043b8a6282a527a87db556b04e821"
+  },
+  {
+   "printed": "7",
+   "restated": "Choose — [helper \"Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025\" = true → helper \"Additional Contribution Amount Worksheet, line 2: divide line 1 by 12\"] [helper \"Age 55 or older at the end of 2025, married, and treated as having family coverage at any time during 2025\" = false → helper \"Year parameter sales.zero\"]",
+   "model": "The restatement keys the family-coverage condition to being treated as having family coverage and, when the last-month rule applies, checks only December 1 coverage; the IRS line requires 'you or your spouse had family coverage under an HDHP at any time during 2025,' so earlier family coverage followed by December self-only coverage is wrongly excluded.",
+   "ruling": "Ruling: ambiguity; amb.2025.hsa_last_month_all_year (owner's reading 1, read by f8889.married_family and line 7): a filer who uses the last-month rule is treated as having the December 1 coverage for the whole year (i8889 p. 4, Line 3, rule 2, \"You are treated as having the same HDHP coverage for the entire year as you had on the first day of the last month\"), so earlier family months followed by December 1 self-only coverage are not family coverage under the rule; a filer who does not use it keeps the actual months (f8889.months_family). The restatement states this. Project stands.",
+   "context": "5063e218389e3f17882bb3e7637b08b51c12c7b682fb797bbc997bb42419acd1",
+   "date": "2026-11-04",
+   "run": "aa112beed2a3a19a3d065415155f650d12e478b02cb0c10c85f0922a375df422"
   },
   {
    "printed": "7",

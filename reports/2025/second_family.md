@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 140 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 8.1% (337/4164 second-family lines judged; pending reviews are provisional); 64 eligible, 76 pending; raw agreement 80.7% (diagnostic only); current independence yield 161 line(s); both families disputed 579
+Summary: 140 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 8.1% (338/4164 second-family lines judged; pending reviews are provisional); 64 eligible, 76 pending; raw agreement 80.7% (diagnostic only); current independence yield 162 line(s); both families disputed 577
 
 Written by `tools/transcription/compare_families.py` on 2026-11-04 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -57,7 +57,7 @@ Written by `tools/transcription/compare_families.py` on 2026-11-04 from the revi
 | s2 | deepseek (deepseek-flash) | 13 | 8 | 61.5% | 4/13 (30.8%) | pending | 4 | 1 | 0 | 0 |
 | s8812 | deepseek (deepseek-flash) | 51 | 12 | 23.5% | 32/51 (62.7%) | pending | 1 | 38 | 0 | 0 |
 | sa | deepseek (deepseek-flash) | 22 | 16 | 72.7% | 4/22 (18.2%) | pending | 2 | 4 | 0 | 0 |
-| sales | deepseek (deepseek-flash) | 4 | 2 | 50.0% | 0/4 (0.0%) | pending | 0 | 2 | 0 | 0 |
+| sales | deepseek (deepseek-flash) | 4 | 1 | 25.0% | 0/4 (0.0%) | pending | 0 | 2 | 1 | 0 |
 | sb | deepseek (deepseek-flash) | 4 | 4 | 100.0% | 0/4 (0.0%) | pending | 0 | 0 | 0 | 0 |
 | scope | deepseek (deepseek-flash) | 0 | 0 | n/a | 0/0 (n/a) | pending | 0 | 0 | 0 | 0 |
 | sd | deepseek (deepseek-flash) | 55 | 9 | 16.4% | 7/55 (12.7%) | pending | 7 | 37 | 2 | 0 |
@@ -68,7 +68,7 @@ Written by `tools/transcription/compare_families.py` on 2026-11-04 from the revi
 | tcw | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 1 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 0 | 0.0% | 7/18 (38.9%) | pending | 0 | 18 | 0 | 0 |
 | w2 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 0 | 1 | 1 | 0 |
-| **all** | | 909 | 294 | 32.3% | | | 93 | 500 | 22 | 4 |
+| **all** | | 909 | 293 | 32.2% | | | 93 | 500 | 23 | 4 |
 
 Pending aqee [deepseek]: no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending carloan [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
@@ -634,7 +634,7 @@ Pending w2 [deepseek]: stale subject: claude, deepseek; transcription predates u
 | sa | deepseek | sa.deduction | DISAGREE | DISAGREE | (no reason given) |
 | sa | deepseek | sa.itemizes | DISAGREE | DISAGREE | (no reason given) |
 | sales | deepseek | (e) | DISAGREE | DISAGREE | (no reason given) |
-| sales | deepseek | (g) | DISAGREE | DISAGREE | (no reason given) |
+| sales | deepseek | (g) | DISAGREE | DISAGREE | The tool does not compute column (g) for code other or for the special property classes screened by sales.special; the choose branch for other is unreachable because the line refuses first. |
 | sd | deepseek | 10(d) | DISAGREE | DISAGREE | (no reason given) |
 | sd | deepseek | 10(e) | DISAGREE | DISAGREE | (no reason given) |
 | sd | deepseek | 10(g) | DISAGREE | DISAGREE | (no reason given) |
@@ -749,7 +749,7 @@ Pending w2 [deepseek]: stale subject: claude, deepseek; transcription predates u
 | f8606 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 1 | 0 | 1 | 0 |
 | f8863 | deepseek (deepseek-flash) | 25 | 19 | 76.0% | 0/25 (0.0%) | pass | 2 | 4 | 0 | 0 |
 | f8880 | deepseek (deepseek-flash) | 21 | 17 | 81.0% | 0/21 (0.0%) | pass | 3 | 1 | 0 | 0 |
-| f8889 | deepseek (deepseek-flash) | 19 | 12 | 63.2% | 0/19 (0.0%) | pass | 4 | 2 | 1 | 0 |
+| f8889 | deepseek (deepseek-flash) | 19 | 12 | 63.2% | 0/19 (0.0%) | pass | 5 | 1 | 1 | 0 |
 | f8959 | deepseek (deepseek-flash) | 24 | 23 | 95.8% | 0/24 (0.0%) | pass | 0 | 0 | 1 | 0 |
 | f8960 | deepseek (deepseek-flash) | 25 | 23 | 92.0% | 0/25 (0.0%) | pass | 1 | 1 | 0 | 0 |
 | f8962 | deepseek (deepseek-flash) | 95 | 92 | 96.8% | 0/95 (0.0%) | pass | 0 | 1 | 2 | 0 |
@@ -777,11 +777,11 @@ Pending w2 [deepseek]: stale subject: claude, deepseek; transcription predates u
 | s3 | deepseek (deepseek-flash) | 13 | 10 | 76.9% | 0/13 (0.0%) | pass | 2 | 1 | 0 | 0 |
 | s8812 | deepseek (deepseek-flash) | 50 | 48 | 96.0% | 0/50 (0.0%) | pass | 0 | 2 | 0 | 0 |
 | sa | deepseek (deepseek-flash) | 24 | 21 | 87.5% | 0/24 (0.0%) | pass | 1 | 1 | 1 | 0 |
-| sales | deepseek (deepseek-flash) | 3 | 1 | 33.3% | 0/3 (0.0%) | pass | 0 | 2 | 0 | 0 |
+| sales | deepseek (deepseek-flash) | 3 | 1 | 33.3% | 0/3 (0.0%) | pass | 0 | 1 | 1 | 0 |
 | sb | deepseek (deepseek-flash) | 6 | 4 | 66.7% | 0/6 (0.0%) | pending | 1 | 1 | 0 | 0 |
 | sc | deepseek (deepseek-flash) | 75 | 72 | 96.0% | 0/75 (0.0%) | pass | 3 | 0 | 0 | 0 |
 | scope | deepseek (deepseek-flash) | 5 | 2 | 40.0% | 1/5 (20.0%) | pending | 3 | 0 | 0 | 0 |
-| scveh | deepseek (deepseek-flash) | 27 | 21 | 77.8% | 0/27 (0.0%) | pass | 0 | 5 | 1 | 0 |
+| scveh | deepseek (deepseek-flash) | 27 | 21 | 77.8% | 1/27 (3.7%) | pass | 0 | 5 | 1 | 0 |
 | sd | deepseek (deepseek-flash) | 46 | 44 | 95.7% | 0/46 (0.0%) | pass | 0 | 1 | 1 | 0 |
 | sdtw | deepseek (deepseek-flash) | 47 | 46 | 97.9% | 0/47 (0.0%) | pass | 0 | 1 | 0 | 0 |
 | se | deepseek (deepseek-flash) | 15 | 10 | 66.7% | 0/15 (0.0%) | pending | 0 | 5 | 0 | 0 |
@@ -792,7 +792,7 @@ Pending w2 [deepseek]: stale subject: claude, deepseek; transcription predates u
 | tipjob | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 4 | 22.2% | 0/18 (0.0%) | pass | 5 | 8 | 1 | 0 |
 | w2 | deepseek (deepseek-flash) | 17 | 16 | 94.1% | 1/17 (5.9%) | pass | 1 | 0 | 0 | 0 |
-| **all** | | 1325 | 1158 | 87.4% | | | 65 | 75 | 27 | 1 |
+| **all** | | 1325 | 1158 | 87.4% | | | 66 | 73 | 28 | 1 |
 
 Pending asset [deepseek]: 1 missing expected lines.
 Pending eic [deepseek]: stale subject: claude, deepseek.
@@ -834,7 +834,8 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | f8880 | deepseek | 2(b) | MISMATCH | The IRS says 'Complete column (b) only if you're filing a joint return'; the restatement sums spouse entries without an MFJ gate. |
 | f8880 | deepseek | 4(a) | MISMATCH | The IRS line says 'If married filing jointly, include both spouses’ amounts in both columns'; the restatement's dist_2025 sums every confirmed person's 2025 distributions even on a nonjoint return. |
 | f8889 | deepseek | 10 | MISMATCH | The IRS line is 'Qualified HSA funding distributions' and the instructions say 'Enter this amount on line 10'; the restatement always enters zero. |
-| f8889 | deepseek | 15 | MISMATCH | The IRS instructions say 'Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses'; the restatement omits that exclusion. |
+| f8889 | deepseek | 14b | MISMATCH | The restatement includes only rollovers, but the IRS line says 'Also include any excess contributions (and the earnings on those excess contributions) included on line 14a that were withdrawn by the due date of your return'; the f8889.rollover_bad refusal does not exclude that case. |
+| f8889 | deepseek | 15 | MISMATCH | The helper describes distributions used for qualified medical expenses but omits the IRS line 15 caution 'Do not include the distribution of an excess contribution taken out after the due date, including extensions, of your return even if used for qualified medical expenses'; no line-15 refusal excludes that case. |
 | f8889 | deepseek | 17a | MISMATCH | The IRS exceptions are distributions made after the account beneficiary 'Dies, Becomes disabled or Turns age 65'; the restatement lists only disabled or age 65. |
 | f8889 | deepseek | 4 | MISMATCH | The IRS line says 'Enter the amount you and your employer contributed to your Archer MSAs for 2025 from Form 8853, lines 1 and 2' and to include spouse's Archer MSA contributions in family-coverage cases; the restatement always enters zero. |
 | f8960 | deepseek | 9b | MISMATCH | IRS says to include 'state, local, and foreign income taxes' and 'state, local, and foreign real property taxes,' but the restatement mentions only state/local income and property taxes and an exclusion for foreign taxes claimed as a credit. |
@@ -899,8 +900,7 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | f8863 | deepseek | 2 | MISMATCH | MISMATCH | IRS line 2 says '$180,000 if married filing jointly; or $90,000 if single, head of household, or qualifying surviving spouse'; the restatement also gives $90,000 for married filing separately, which the instructions say cannot claim an education credit. |
 | f8863 | deepseek | 5 | MISMATCH | MISMATCH | IRS line 5 says '$20,000 if married filing jointly; or $10,000 if single, head of household, or qualifying surviving spouse'; the restatement adds $10,000 for married filing separately, which cannot claim the credit. |
 | f8880 | deepseek | (CLW 2) | MISMATCH | MISMATCH | The IRS says 'Enter the total of your credits from Schedule 3, lines 1 through 3, 6d, and 6l'; the restatement adds only s3 lines 1, 2, and 3, omitting 6d and 6l. |
-| f8889 | deepseek | 14b | MISMATCH | MISMATCH | Form 8889 line 14b also requires 'any excess contributions (and the earnings on those excess contributions) included on line 14a that were withdrawn by the due date of your return'; the restatement computes only the rollover portion and omits withdrawn excess contributions and earnings. |
-| f8889 | deepseek | 7 | MISMATCH | MISMATCH | The line 7 worksheet counts months in which 'You or your spouse had family coverage under an HDHP and were, or were considered to be, an eligible individual on the first day of the month' and 'were not enrolled in Medicare for the month'; the restatement instead uses the broader count of all months the filer was an eligible individual, so it can overstate the additional contribution amount when so… |
+| f8889 | deepseek | 7 | MISMATCH | MISMATCH | The restatement keys the family-coverage condition to being treated as having family coverage and, when the last-month rule applies, checks only December 1 coverage; the IRS line requires 'you or your spouse had family coverage under an HDHP at any time during 2025,' so earlier family coverage followed by December self-only coverage is wrongly excluded. |
 | f8960 | deepseek | 5a | MISMATCH | MISMATCH | IRS says to combine 'Form 1040 or 1040-SR, line 7a, and Schedule 1 (Form 1040), line 4,' but the restatement uses only f1040 line 7a and omits Schedule 1 line 4. |
 | f8962 | deepseek | 28 | MISMATCH | MISMATCH | The IRS line 28 instructions say that if you are self-employed and claiming the self-employed health insurance deduction, see Pub. 974 for the amount to enter; the restatement only uses the Table 5 limitation and has no adjustment or refusal for that case. |
 | f8995 | deepseek | 12 | MISMATCH | MISMATCH | IRS line 12 instructions say if you're not required to file Schedule D, your net capital gain is the amount on Form 1040 line 7a; the restatement uses only the smaller of Schedule D lines 15 and 16. |
@@ -932,11 +932,10 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | s8812 | deepseek | 18a | UNCLEAR | MISMATCH | The Earned Income Chart says a filer with net earnings from self-employment who uses either optional method enters the Earned Income Worksheet amount 'even if you are also taking the EIC,' and its Worksheet B branch is for filers who 'completed Worksheet B.' The restatement instead always uses Worksheet B line 4b whenever its self-employed helper is true. |
 | s8812 | deepseek | 21 | UNCLEAR | MISMATCH | The Additional Medicare Tax and RRTA Tax Worksheet line 16 says 'Add lines 6, 7, 11, and 15' and enter on line 21. The restatement adds only worksheet lines 6 and 7, omitting Tier 1 RRTA lines 11 and 15, with no RRTA refusal. |
 | sa | deepseek | 1 | MISMATCH | MISMATCH | The restatement omits the eligible category in the IRS instructions: 'Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return.' |
-| sales | deepseek | (e) | MISMATCH | MISMATCH | The IRS says "Box A or Box G" and "Box D or Box J" cover transactions with an amount shown for cost or other basis reported to the IRS; the program's "Basis reported to IRS" helper is only boxes A or D, so for boxes G/J it would enter the correct adjusted basis instead of the reported basis. |
-| sales | deepseek | (g) | MISMATCH | MISMATCH | The IRS says "Enter in this column any necessary adjustments to gain (or loss)" and, for multiple codes, "enter the net adjustment in column (g)"; the restatement only adds code B and code W adjustments, omitting other necessary adjustments such as codes E, H, or L. |
+| sales | deepseek | (g) | MISMATCH | MISMATCH | The restatement adds only a code B basis correction and a code W wash-sale adjustment, but IRS column (g) says 'Enter in this column any necessary adjustments to gain (or loss)' and, for multiple codes, 'enter the net adjustment in column (g),' so it omits other adjustments such as code E selling expenses or option premiums. |
 | sb | deepseek | 4 | UNCLEAR | UNCLEAR | The provided IRS text contains no line 4 instruction or statement that line 4 is line 2 minus line 3, so the arithmetic cannot be verified from the text given. |
 | scveh | deepseek | (b) | MISMATCH | MISMATCH | The IRS column (b) instruction says 'Enter the date the property was placed in service' and treats converted property as placed in service on the conversion date; the restatement asks only for the year. |
-| scveh | deepseek | 13 | MISMATCH | MISMATCH | The IRS business/investment-use percentage for converted property must be figured only for the months used in business and multiplied by months/12; the restatement simply divides annual business miles by total miles without that conversion proration. |
+| scveh | deepseek | 13 | MISMATCH | MISMATCH | The IRS line is 'Depreciation and section 179 expense deduction'; the restatement instead computes Form 4562 Part V column (e), 'Basis for depreciation (business/investment use only),' by multiplying column (d) by business-use percentage, omitting the depreciation rate and passenger automobile limits. |
 | scveh | deepseek | 20a | MISMATCH | MISMATCH | The IRS says 'if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount'; the restatement computes only the business portion of lease payments and omits that reduction. |
 | scveh | deepseek | 43 | MISMATCH | MISMATCH | IRS line 43 asks "When did you place your vehicle in service for business purposes? (month/day/year)"; the restatement asks only for the year. |
 | scveh | deepseek | 9 (scveh.line9w) | MISMATCH | MISMATCH | Worksheet line 9 multiplies line 7 by the business/investment-use percentage; for a converted vehicle that percentage must be prorated by the months used in business, which the restatement's business-miles/total-miles calculation omits. |

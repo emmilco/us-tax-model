@@ -16803,9 +16803,13 @@
             "locator": "pp. 1\u20133, Who Must File and Which Sections To Complete; f8283 Section A",
             "snapshot": "2de015f75bcf2fa9222f8ce6f5ab394d1845ec64ec6cb53ce4e60a4c88150073"
           }
+        },
+        "s8812.show_clwb": {
+          "kind": "bool",
+          "value": false
         }
       },
-      "evidence_note": "i8283 p. 2: books $2,000 + $2,500 + $900, total $5,400, require Section B across donees. Class A concerns Section B routing; tool refusal wording is authored."
+      "evidence_note": "i8283 p. 2: books $2,000 + $2,500 + $900, total $5,400, require Section B across donees. Class A concerns Section B routing; tool refusal wording is authored. Shown state (from the forms, scaffolding; T-232): no dependents, so Schedule 8812 line 8 is $0 and line 12 is \"No. Stop here\"; Credit Limit Worksheet B is not completed (i1040s8812: only if claiming a listed credit, here no Form 5695 Part I, and \"Line 4 of Schedule 8812 is more than zero\")."
     },
     {
       "id": "stage4.refuse.gift.special",
@@ -18460,7 +18464,7 @@
         "official.medicare_example5"
       ],
       "evidence": "A \u2014 official IRS example",
-      "evidence_note": "i8959 p. 2, Example 5: $150,000 plus $175,000 wages less $250,000 threshold gives $75,000 subject to Additional Medicare Tax. Combined wages supplied as one total for this assertion; per-spouse interview remains refused.",
+      "evidence_note": "i8959 p. 2, Example 5: $150,000 plus $175,000 wages less $250,000 threshold gives $75,000 subject to Additional Medicare Tax. Combined wages supplied as one total for this assertion; per-spouse interview remains refused. Shown state (from the forms, scaffolding; T-232): no Form 1095-A, no APTC and no PTC, so Form 8962 is not filed (i8962 p. 1, Who Must File: \"if any of the following apply ... You are taking the PTC. APTC was paid ...\") and its line 11 is not used. The Form 4562 section 179 gate is true: line 1 is $2,500,000 (i4562 Line 1), line 4 is $0 with no section 179 property, so line 5 is $2,500,000 and \"If line 5 is zero ... skip lines 6 through 11\" does not apply; this asserts the gate's value, not that Form 4562 is filed.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[spouse].x_other": false,
@@ -18624,6 +18628,18 @@
         "f8959.line6": {
           "kind": "money",
           "cents": 7500000
+        },
+        "f8962.show_annual": {
+          "kind": "bool",
+          "value": false
+        },
+        "f8962.show_annual_calc": {
+          "kind": "bool",
+          "value": false
+        },
+        "s179.show10": {
+          "kind": "bool",
+          "value": true
         }
       }
     },

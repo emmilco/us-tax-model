@@ -1747,7 +1747,7 @@
  },
  {
   "form": "f4952",
-  "prompt_sha": "a2e900a8fd4de0683d66209b292cedf124ba89905b09c80eb7531b6b9c2d907e",
+  "prompt_sha": "ac257421c0e745a465c23fd064fff66ddc3f8ca38e500515c92c6ae683b982b0",
   "claims": [
    {
     "item": "f4952.line4d",
@@ -1759,35 +1759,9 @@
     ],
     "quote": "When figuring this amount, include capital gain distributions from mutual funds and capital loss carryovers.",
     "page": "f4952 p. 3",
-    "why_uncovered": "Line 4d is described only as net gain from investment-property dispositions 'including distributions'. No line, question or refusal mentions a capital loss carryover reducing line 4d. Without it, line 4d, and line 4e, the 4g election limit and line 4h, may be overstated.",
+    "why_uncovered": "Line 4d is described only as 'Net gain from investment-property dispositions, including distributions.' That covers capital gain distributions but says nothing about capital loss carryovers. No question asks about a carryover, and no refusal applies when one exists. A capital loss carryover from 2024 could therefore be left out of line 4d. That would overstate lines 4d, 4e and 4f, and could raise net investment income and the line 8 deduction.",
     "closest_item": "f4952.line4d",
     "effect": "amount"
-   },
-   {
-    "item": "f4952.line4g",
-    "sentences": [
-     {
-      "quote": "Once made, the election can be revoked only with IRS consent.",
-      "page": "f4952 p. 4"
-     },
-     {
-      "quote": "Generally, you must make this election on a timely filed return, including extensions.",
-      "page": "f4952 p. 4"
-     },
-     {
-      "quote": "However, if you timely filed your return without making the election, you can make the election on an amended return filed within 6 months of the due date of your return (excluding extensions).",
-      "page": "f4952 p. 4"
-     },
-     {
-      "quote": "Write “Filed pursuant to section 301.9100-2” on the amended return and file it at the same place you filed the original return.",
-      "page": "f4952 p. 4"
-     }
-    ],
-    "quote": "Once made, the election can be revoked only with IRS consent. / Generally, you must make this election on a timely filed return, including extensions. / However, if you timely filed your return without making the election, you can make the election on an amended return filed within 6 months of the due date of your return (excluding extensions). / Write “Filed pursuant to section 301.9100-2” on the amended return and file it at the same place you filed the original return.",
-    "page": "f4952 p. 4",
-    "why_uncovered": "The line 4g question takes any elected amount up to lines 4b plus 4e. It never asks whether the return is timely filed, whether this is an amended return made within the 6-month window, or whether a prior election is being revoked without IRS consent. No refusal covers a late or revoked election, and the required amended-return statement is not produced.",
-    "closest_item": "f4952.line4g",
-    "effect": "eligibility"
    }
   ],
   "used": [
@@ -1801,7 +1775,7 @@
     ]
    }
   ],
-  "cost": 0.1454,
+  "cost": 0.13755080000000003,
   "model": "claude-opus-5-5"
  },
  {
@@ -2339,43 +2313,25 @@
  },
  {
   "form": "f8889",
-  "prompt_sha": "495f0fd776f8758fd92439d1deca2222e750768d832985eaf51e472e7dc126c9",
+  "prompt_sha": "efc0b167f0378c62a12f728446e7d4cdbfbb94684233d583178e55cc09404b2e",
   "claims": [
    {
-    "item": "f8889.medical",
+    "item": "f8889.dec_coverage",
     "sentences": [
      {
-      "quote": "You cannot treat insurance premiums as qualified medical expenses unless the premiums are for: 1. Long-term care (LTC) insurance, 2. Health care continuation coverage (such as coverage under COBRA), 3. Health care coverage while receiving unemployment compensation under federal or state law, or",
-      "page": "i8889 p. 2"
+      "quote": "If you were covered, or considered covered, by a self-only HDHP and a family HDHP at different times during the year, check the box for the plan that was in effect for a longer period.",
+      "page": "i8889 p. 4"
      },
      {
-      "quote": "4. Medicare and other health care coverage if you were 65 or older (other than premiums for a Medicare supplemental policy, such as Medigap).",
-      "page": "i8889 p. 3"
-     },
-     {
-      "quote": "For (4), if you, the account beneficiary, are under age 65, Medicare premiums for your spouse or dependents (who are age 65 or older) are generally not qualified medical expenses.",
-      "page": "i8889 p. 3"
+      "quote": "If, on the first day of the last month of your tax year (December 1 for most taxpayers), you had family coverage, check the “family” box.",
+      "page": "i8889 p. 4"
      }
     ],
-    "quote": "You cannot treat insurance premiums as qualified medical expenses unless the premiums are for: 1. Long-term care (LTC) insurance, 2. Health care continuation coverage (such as coverage under COBRA), 3. Health care coverage while receiving unemployment compensation under federal or state law, or / 4. Medicare and other health care coverage if you were 65 or older (other than premiums for a Medicare supplemental policy, such as Medigap). / For (4), if you, the account beneficiary, are under age 65, Medicare premiums for your spouse or dependents (who are age 65 or older) are generally not qualified medical expenses.",
-    "page": "i8889 p. 2; i8889 p. 3",
-    "why_uncovered": "The line 15 question limits qualified medical expenses to unreimbursed expenses incurred after the HSA was established, for the listed people. It never excludes insurance premiums or names the four allowed premium types. It also omits the Medigap exclusion and the under-65 Medicare rule. A filer could count ordinary health insurance premiums paid from the HSA on line 15, which would understate line 16.",
-    "closest_item": "f8889.medical",
-    "effect": "amount"
-   },
-   {
-    "item": "f8889.line2",
-    "sentences": [
-     {
-      "quote": "If you instruct the trustee of your HSA to transfer funds directly to the trustee of another of your HSAs, the transfer is not considered a rollover. There is no limit on the number of these transfers. Do not include the amount transferred in income, deduct it as a contribution, or include it as a distribution on line 14a.",
-      "page": "i8889 pp. 3-4"
-     }
-    ],
-    "quote": "If you instruct the trustee of your HSA to transfer funds directly to the trustee of another of your HSAs, the transfer is not considered a rollover. There is no limit on the number of these transfers. Do not include the amount transferred in income, deduct it as a contribution, or include it as a distribution on line 14a.",
-    "page": "i8889 pp. 3-4",
-    "why_uncovered": "The line 2 question excludes employer contributions, cafeteria-plan contributions, rollovers and qualified HSA funding distributions. It does not exclude direct trustee-to-trustee transfers between the filer's own HSAs. The instructions state that such a transfer is not a rollover, so the existing rollover exclusion does not reach it. A filer could report the transferred amount as a contribution and deduct it.",
-    "closest_item": "f8889.line2",
-    "effect": "amount"
+    "quote": "If you were covered, or considered covered, by a self-only HDHP and a family HDHP at different times during the year, check the box for the plan that was in effect for a longer period. / If, on the first day of the last month of your tax year (December 1 for most taxpayers), you had family coverage, check the “family” box.",
+    "page": "i8889 p. 4",
+    "why_uncovered": "The encoding has no Form 8889 line 1 item. Nothing chooses or reports the self-only or family checkbox. The December 1 coverage question and the month counts feed only the line 3 and line 6 computations. Neither the longer-period rule nor the December 1 family override is applied to an entry for the checkbox.",
+    "closest_item": "f8889.dec_coverage",
+    "effect": "presentation"
    }
   ],
   "used": [
@@ -2406,7 +2362,7 @@
     ]
    }
   ],
-  "cost": 0.344868,
+  "cost": 0.33744,
   "model": "claude-opus-5-5"
  },
  {
@@ -3381,7 +3337,7 @@
  },
  {
   "form": "person",
-  "prompt_sha": "42d4b257695804e9cf34c436ebcdec0170021cc8221490c5b47abaa79ba7f29c",
+  "prompt_sha": "846ae740c1e1d09d15fc9619c87a00e15edb46953c686daf98a079c032fae9bc",
   "claims": [
    {
     "item": "person.se_line2",
@@ -3391,47 +3347,47 @@
       "page": "i1040sse p. 4"
      },
      {
-      "quote": "However, do not report this amount on Schedule SE (Form 1040), line 2.",
-      "page": "i1040sc p. 14"
-     },
-     {
       "quote": "Fees received for services performed as a notary public.",
       "page": "i1040sse p. 4"
+     },
+     {
+      "quote": "However, do not report this amount on Schedule SE (Form 1040), line 2.",
+      "page": "i1040sc p. 14"
      },
      {
       "quote": "Notary public. Do not enter your net profit from line 31 on Schedule SE (Form 1040), line 2, unless you are required to file Schedule SE (Form 1040) because you have other self-employment income.",
       "page": "i1040sc p. 14"
      }
     ],
-    "quote": "If you were a statutory employee, don’t include the net profit or (loss) from Schedule C, line 31, on Schedule SE, line 2. / However, do not report this amount on Schedule SE (Form 1040), line 2. / Fees received for services performed as a notary public. / Notary public. Do not enter your net profit from line 31 on Schedule SE (Form 1040), line 2, unless you are required to file Schedule SE (Form 1040) because you have other self-employment income.",
+    "quote": "If you were a statutory employee, don’t include the net profit or (loss) from Schedule C, line 31, on Schedule SE, line 2. / Fees received for services performed as a notary public. / However, do not report this amount on Schedule SE (Form 1040), line 2. / Notary public. Do not enter your net profit from line 31 on Schedule SE (Form 1040), line 2, unless you are required to file Schedule SE (Form 1040) because you have other self-employment income.",
     "page": "i1040sse p. 4; i1040sc p. 14",
-    "why_uncovered": "person.se_line2 takes the Schedule C line 31 profit or loss of every Schedule C as it is. The se_screen question lists church employee income, clergy, partnerships, farms, CRP, optional methods, chapter 11, community income, exempt foreign income and Forms 4137/8919. It does not ask about statutory employee income or notary public fees. The only statutory-employee refusal in HANDLED ELSEWHERE is on the EIC, so it does not stop Schedule SE (or the SE tax deduction and SEP Step 2) when no EIC is claimed.",
+    "why_uncovered": "person.se_line2 is computed as the Schedule C line 31 net profit for every Schedule C. The self-employment screen (person.se_screen) does not ask about statutory employees or notary publics, and it does not refuse them. The only statutory-employee refusal in HANDLED ELSEWHERE covers the EIC, not Schedule SE. A statutory employee's or notary's Schedule C profit would therefore flow into Schedule SE line 2. It would also flow into the SE tax and deduction, SEP Step 1, and Form 2441 and EIC self-employment earned income.",
     "closest_item": "person.se_line2",
     "effect": "amount"
    },
    {
-    "item": "person.simple_employer",
+    "item": "person.ira_trad",
     "sentences": [
      {
-      "quote": "You must make matching contributions or nonelective contributions by the due date (including extensions) for filing your federal income tax return for the year.",
-      "page": "p560 p. 17"
+      "quote": "Don’t include any repayments of qualified reservist distributions. You can’t deduct them.",
+      "page": "i1040gi p. 95"
      },
      {
-      "quote": "You can deduct contributions for a particular tax year if they are made for that tax year and are made by the due date (including extensions) of your federal income tax return for that year.",
-      "page": "p560 p. 17"
+      "quote": "Include on line 1 any repayment of a qualified reservist distribution.",
+      "page": "i8606 p. 9"
      }
     ],
-    "quote": "You must make matching contributions or nonelective contributions by the due date (including extensions) for filing your federal income tax return for the year. / You can deduct contributions for a particular tax year if they are made for that tax year and are made by the due date (including extensions) of your federal income tax return for that year.",
-    "page": "p560 p. 17",
-    "why_uncovered": "The SEP contribution question limits contributions to those made by the due date, including extensions. The SIMPLE employer-contribution question only asks for contributions 'for 2025', with no deadline. No gate or refusal handles contributions made after the due date, so they would count toward the Schedule 1 line 16 deduction.",
-    "closest_item": "person.simple_employer",
+    "quote": "Don’t include any repayments of qualified reservist distributions. You can’t deduct them. / Include on line 1 any repayment of a qualified reservist distribution.",
+    "page": "i1040gi p. 95; i8606 p. 9",
+    "why_uncovered": "The traditional IRA contribution question lists several things to exclude: rollovers, prior-year-deducted contributions, withdrawn contributions, separately billed fees and employer SEP/SIMPLE contributions. It does not mention repayments of qualified reservist distributions. Nothing asks about them or refuses them. A repayment entered as a contribution would be deducted. A repayment left out would never reach Form 8606 line 1 as nondeductible basis.",
+    "closest_item": "person.ira_trad",
     "effect": "amount"
    },
    {
     "item": "person.edu_aoc",
     "sentences": [
      {
-      "quote": "Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.",
+      "quote": "Caution: Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud.",
       "page": "i8863 p. 3"
      },
      {
@@ -3439,9 +3395,9 @@
       "page": "i8863 p. 1"
      }
     ],
-    "quote": "Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud. / If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
+    "quote": "Caution: Don’t claim the American opportunity credit for 2 years after there was a final determination that your claim was due to reckless or intentional disregard of the rules or 10 years after there was a final determination that your claim was due to fraud. / If your American opportunity credit was denied or reduced for any reason other than a math or clerical error for any tax year beginning after 2015, you must attach a completed Form 8862, Information To Claim Certain Credits After Disallowance, to your tax return for the next tax year for which you claim the credit.",
     "page": "i8863 p. 3; i8863 p. 1",
-    "why_uncovered": "person.edu_aoc depends only on lines 23–26, the TINs and the institution's EIN. No question asks whether a 2- or 10-year ban applies from an earlier final determination, or whether an earlier AOC was denied or reduced so that Form 8862 must be attached. No refusal covers either case.",
+    "why_uncovered": "person.edu_aoc depends only on lines 23–26, filer TINs and the institution's EIN. No question asks about a prior American opportunity credit disallowance, a reckless-disregard or fraud determination, or Form 8862. No refusal covers the 2-year or 10-year ban or the Form 8862 requirement.",
     "closest_item": "person.edu_aoc",
     "effect": "eligibility"
    },
@@ -3455,7 +3411,7 @@
     ],
     "quote": "An eligible distribution to a domestic abuse victim must not exceed the lesser of $10,300 for 2025 or 50% of the present value of the IRA.",
     "page": "p590b p. 28",
-    "why_uncovered": "person.x_c22 limits exception 22 only to the $10,300 year parameter (person.x_cap22). No question asks for the present value of the IRA, so the 50%-of-value limit is never applied.",
+    "why_uncovered": "person.x_c22 limits exception 22 only to the $10,300 parameter (person.x_cap22). No question asks for the present value of the IRA, so the alternative 50%-of-value limit is never applied, and nothing refuses that case.",
     "closest_item": "person.x_c22",
     "effect": "amount"
    },
@@ -3473,7 +3429,7 @@
     ],
     "quote": "You are limited to taking one emergency personal expense distribution per calendar year and the amount that may be treated as an emergency personal expense distribution must not exceed the lesser of $1,000 or your total interest in the IRA minus $1,000. / You are also limited in taking emergency personal expense distributions in subsequent years as you may not take this type of distribution in the following 3 calendar years unless:",
     "page": "p590b p. 28",
-    "why_uncovered": "person.x_c23 limits exception 23 only to $1,000 (person.x_cap23), and person.x_two23 only enforces one distribution per year. No question asks for the total interest in the IRA, so the 'interest minus $1,000' limit is never applied. No question asks whether an emergency distribution was taken in any of the prior 3 years and not repaid or recontributed, so that bar is never checked.",
+    "why_uncovered": "person.x_c23 caps exception 23 at $1,000, and person.x_two23 handles more than one distribution in 2025. Nothing applies the alternative limit of total IRA interest minus $1,000, because the account value is never asked. Nothing asks whether an emergency distribution was taken in the prior 3 calendar years without repayment or replacement contributions, which would bar the exception.",
     "closest_item": "person.x_c23",
     "effect": "amount"
    }
@@ -3747,7 +3703,7 @@
     ]
    }
   ],
-  "cost": 1.948156,
+  "cost": 1.908404,
   "model": "claude-opus-5-5"
  },
  {
@@ -3924,97 +3880,21 @@
  },
  {
   "form": "retirement",
-  "prompt_sha": "32b67274862b0a9b6e33dfda0a88872561d9a6ff7876811bc1e37c88e6742eee",
+  "prompt_sha": "2f9dab0131912eb4c8121b2e9db5fc0b2561d257bd4aa0e5b2c0d0e2539109af",
   "claims": [
    {
-    "item": "retirement.rollover",
+    "item": "retirement.has_rollover",
     "sentences": [
-     {
-      "quote": "Any of a series of substantially equal distributions paid at least once a year over:",
-      "page": "p575 p. 21"
-     },
-     {
-      "quote": "Hardship distributions.",
-      "page": "p575 p. 21"
-     },
-     {
-      "quote": "Dividends paid on employer securities.",
-      "page": "p575 p. 21"
-     },
-     {
-      "quote": "The cost of life insurance coverage.",
-      "page": "p575 p. 21"
-     },
-     {
-      "quote": "In addition, a distribution to the plan participant's beneficiary isn't generally treated as an eligible rollover distribution.",
-      "page": "p575 p. 21"
-     },
-     {
-      "quote": "During the first 2 years of participation in a SIMPLE retirement account, you may roll over amounts from one SIMPLE retirement account into another SIMPLE retirement account.",
-      "page": "p575 p. 21"
-     },
-     {
-      "quote": "After 2 years of participation in a SIMPLE retirement account, you may roll over amounts from a SIMPLE retirement account, a qualified retirement plan, or an IRA into a SIMPLE retirement account.",
-      "page": "p575 p. 21"
-     },
      {
       "quote": "If you rolled over the distribution into a qualified plan or you made the rollover in 2026, include a statement explaining what you did.",
       "page": "i1040gi p. 27"
      }
     ],
-    "quote": "Any of a series of substantially equal distributions paid at least once a year over: / Hardship distributions. / Dividends paid on employer securities. / The cost of life insurance coverage. / In addition, a distribution to the plan participant's beneficiary isn't generally treated as an eligible rollover distribution. / During the first 2 years of participation in a SIMPLE retirement account, you may roll over amounts from one SIMPLE retirement account into another SIMPLE retirement account. / After 2 years of participation in a SIMPLE retirement account, you may roll over amounts from a SIMPLE retirement account, a qualified retirement plan, or an IRA into a SIMPLE retirement account. / If you rolled over the distribution into a qualified plan or you made the rollover in 2026, include a statement explaining what you did.",
-    "page": "p575 p. 21; i1040gi p. 27",
-    "why_uncovered": "The rollover question excludes only required minimum distributions from the amount that can be rolled over. It accepts any amount the filer says was rolled over to a qualified plan or non-Roth IRA. Several kinds of distribution are not eligible rollover distributions: substantially equal periodic payments, hardship distributions, section 404(k) dividends, the cost of life insurance, and (generally) distributions to a beneficiary. The rollover question and the rollover computation do not exclude them. Neither applies the SIMPLE IRA 2-year limit on rollover destinations, such as a code S distribution rolled into a traditional IRA. No item produces the required explanatory statement for a rollover into a qualified plan or a rollover made in 2026.",
-    "closest_item": "retirement.rollover",
-    "effect": "amount"
-   },
-   {
-    "item": "retirement.screen_refused",
-    "sentences": [
-     {
-      "quote": "You didn't receive the minimum required distribution from your qualified retirement plan.",
-      "page": "i5329 p. 1"
-     },
-     {
-      "quote": "If you don't receive the minimum distribution amount, you may have to pay an additional tax on the amount that should have been distributed.",
-      "page": "i1040gi p. 27"
-     },
-     {
-      "quote": "You can't keep funds in a traditional IRA (including SEP and SIMPLE IRAs) indefinitely.",
-      "page": "p590b p. 6"
-     },
-     {
-      "quote": "If you reach age 72 after December 31, 2022, you must begin receiving required minimum distributions by April 1 of the year following the year you reach the age 73.",
-      "page": "p590b p. 6"
-     },
-     {
-      "quote": "Generally, the RMD must be figured separately for each account.",
-      "page": "p575 p. 34"
-     }
-    ],
-    "quote": "You didn't receive the minimum required distribution from your qualified retirement plan. / If you don't receive the minimum distribution amount, you may have to pay an additional tax on the amount that should have been distributed. / You can't keep funds in a traditional IRA (including SEP and SIMPLE IRAs) indefinitely. / If you reach age 72 after December 31, 2022, you must begin receiving required minimum distributions by April 1 of the year following the year you reach the age 73. / Generally, the RMD must be figured separately for each account.",
-    "page": "i5329 p. 1; i1040gi p. 27; p590b p. 6; p575 p. 34",
-    "why_uncovered": "The Form 5329 screens and refusals cover only Part I, the early distribution tax. No question asks whether the filer took less than the required minimum distribution, and no refusal handles it. As a result, the Form 5329 filing requirement and the excise tax on excess accumulations are never triggered.",
-    "closest_item": "retirement.screen_refused",
-    "effect": "amount"
-   },
-   {
-    "item": "retirement.annuity",
-    "sentences": [
-     {
-      "quote": "If you receive a nonperiodic payment from your annuity contract on or after the annuity starting date, you must generally include all of the payment in gross income.",
-      "page": "p575 p. 16"
-     },
-     {
-      "quote": "If the annuity payments you receive are reduced because you received a nonperiodic distribution, you can exclude part of the nonperiodic distribution from gross income.",
-      "page": "p575 p. 16"
-     }
-    ],
-    "quote": "If you receive a nonperiodic payment from your annuity contract on or after the annuity starting date, you must generally include all of the payment in gross income. / If the annuity payments you receive are reduced because you received a nonperiodic distribution, you can exclude part of the nonperiodic distribution from gross income.",
-    "page": "p575 p. 16",
-    "why_uncovered": "The Simplified Method path takes the whole of box 1 as periodic payments. Nothing asks whether box 1 includes a nonperiodic payment received on or after the annuity starting date. Nothing screens for the partial exclusion that applies when such a payment reduces later annuity payments, and the special-case refusal does not list it.",
-    "closest_item": "retirement.annuity",
-    "effect": "amount"
+    "quote": "If you rolled over the distribution into a qualified plan or you made the rollover in 2026, include a statement explaining what you did.",
+    "page": "i1040gi p. 27",
+    "why_uncovered": "The rollover question asks only for the amount rolled over. It does not ask whether the IRA distribution went into a qualified plan or whether the rollover was completed in 2026. The encoding also produces no attachment or statement, so this filing requirement is neither implemented nor refused.",
+    "closest_item": "retirement.has_rollover",
+    "effect": "presentation"
    },
    {
     "item": "retirement.exception",
@@ -4024,15 +3904,49 @@
       "page": "i5329 p. 5"
      },
      {
-      "quote": "If the child died before you obtained a TIN, then write that the child died on the statement and include a copy of the child's birth certificate, death certificate, or hospital records.",
+      "quote": "If the child died before you obtained a TIN, then write that the child died on the statement and include a copy of the child’s birth certificate, death certificate, or hospital records.",
       "page": "i5329 p. 5"
      }
     ],
-    "quote": "Attach a statement that provides the name, age, and TIN of the child or eligible adoptee. / If the child died before you obtained a TIN, then write that the child died on the statement and include a copy of the child's birth certificate, death certificate, or hospital records.",
+    "quote": "Attach a statement that provides the name, age, and TIN of the child or eligible adoptee. / If the child died before you obtained a TIN, then write that the child died on the statement and include a copy of the child’s birth certificate, death certificate, or hospital records.",
     "page": "i5329 p. 5",
-    "why_uncovered": "Exception 19 is accepted and computed. However, no item produces or asks for the required attachment identifying the child or eligible adoptee, or the substitute documents used when the child died before getting a TIN.",
+    "why_uncovered": "Exception 19 is encoded: its 1-year window, eligible-adoptee definition and $5,000 cap are applied. Nothing collects the child's name, age and TIN, or produces the required statement and supporting records. No refusal covers this either.",
     "closest_item": "retirement.exception",
     "effect": "presentation"
+   },
+   {
+    "item": "retirement.plan_taxable",
+    "sentences": [
+     {
+      "quote": "If you receive a nonperiodic distribution before the annuity starting date from a qualified retirement plan, you can generally allocate only part of it to the cost of the contract.",
+      "page": "p575 p. 17"
+     },
+     {
+      "quote": "For this purpose, your account balance includes only amounts to which you have a nonforfeitable right (a right that can’t be taken away).",
+      "page": "p575 p. 17"
+     },
+     {
+      "quote": "Under a defined contribution plan, your contributions (and income allocable to those contributions) may be treated as a separate contract for figuring the taxable part of any distribution.",
+      "page": "p575 p. 17"
+     },
+     {
+      "quote": "If you contributed before 1987 to a pension plan that, as of May 5, 1986, permitted you to withdraw your contributions before your separation from service, any distribution before your annuity starting date is tax free to the extent that it, when added to earlier distributions received after 1986, doesn’t exceed your cost as of December 31, 1986.",
+      "page": "p575 p. 17"
+     },
+     {
+      "quote": "If you are a beneficiary of an employee who was covered by any of the retirement plans mentioned, you can exclude from income nonperiodic distributions received that totally relieve the payer from the obligation to pay an annuity.",
+      "page": "p575 p. 34"
+     },
+     {
+      "quote": "The amount that you can exclude is equal to the deceased employee’s investment in the contract (cost).",
+      "page": "p575 p. 34"
+     }
+    ],
+    "quote": "If you receive a nonperiodic distribution before the annuity starting date from a qualified retirement plan, you can generally allocate only part of it to the cost of the contract. / For this purpose, your account balance includes only amounts to which you have a nonforfeitable right (a right that can’t be taken away). / Under a defined contribution plan, your contributions (and income allocable to those contributions) may be treated as a separate contract for figuring the taxable part of any distribution. / If you contributed before 1987 to a pension plan that, as of May 5, 1986, permitted you to withdraw your contributions before your separation from service, any distribution before your annuity starting date is tax free to the extent that it, when added to earlier distributions received after 1986, doesn’t exceed your cost as of December 31, 1986. / If you are a beneficiary of an employee who was covered by any of the retirement plans mentioned, you can exclude from income nonperiodic distributions received that totally relieve the payer from the obligation to pay an annuity. / The amount that you can exclude is equal to the deceased employee’s investment in the contract (cost).",
+    "page": "p575 p. 17; p575 p. 34",
+    "why_uncovered": "For a nonperiodic plan distribution, the filer answers No to retirement.annuity, and the tool computes box 1 less box 5 less the rollover. The tool never applies the pro-rata cost allocation (cost x amount received / nonforfeitable account balance). It also does not apply the separate-contract option for defined contribution plans, the pre-1987 withdrawable-contribution rule, or the exclusion of the deceased employee's cost for a beneficiary's discharging payment. The special question refuses nonperiodic payments only on or after the annuity starting date, nonqualified annuities, and annuities to an employee's beneficiary. It does not refuse nonperiodic distributions before the annuity starting date, or lump payments to a beneficiary that discharge the contract. The taxable amount is therefore right only if box 5 happens to reflect these rules.",
+    "closest_item": "retirement.plan_taxable",
+    "effect": "amount"
    }
   ],
   "used": [
@@ -4058,6 +3972,12 @@
     ]
    },
    {
+    "doc": "p560",
+    "pages": [
+     18
+    ]
+   },
+   {
     "doc": "p575",
     "pages": [
      12
@@ -4066,7 +3986,8 @@
    {
     "doc": "p575",
     "pages": [
-     16
+     16,
+     17
     ]
    },
    {
@@ -4074,7 +3995,8 @@
     "pages": [
      21,
      22,
-     23
+     23,
+     24
     ]
    },
    {
@@ -4087,6 +4009,7 @@
    {
     "doc": "p590b",
     "pages": [
+     5,
      6
     ]
    },
@@ -4097,13 +4020,31 @@
     ]
    }
   ],
-  "cost": 0.5726988000000001,
+  "cost": 0.6559108,
   "model": "claude-opus-5-5"
  },
  {
   "form": "s1",
-  "prompt_sha": "bcfbe856bc39385a09847d13eb41e8c71b49895bb0faf7f1a10f16d07e87b111",
+  "prompt_sha": "c7416aee4f877fc10e01915e07bfda8832e6ae6f5c2dc9b81da372c210f03498",
   "claims": [
+   {
+    "item": "s1.line2a",
+    "sentences": [
+     {
+      "quote": "Your spouse can exclude the payments from income only if they attach a copy of the instrument designating them as not alimony to their return. The copy must be attached each year the designation applies.",
+      "page": "p504 p. 14"
+     },
+     {
+      "quote": "If you're subject to temporary support orders, the designation must be made in the original or a later temporary support order.",
+      "page": "p504 p. 14"
+     }
+    ],
+    "quote": "Your spouse can exclude the payments from income only if they attach a copy of the instrument designating them as not alimony to their return. The copy must be attached each year the designation applies. / If you're subject to temporary support orders, the designation must be made in the original or a later temporary support order.",
+    "page": "p504 p. 14",
+    "why_uncovered": "The s1.alimony_received question tells the recipient to leave out payments the instrument designates as not alimony. It never says the exclusion holds only if a copy of the instrument is attached to the return each year. It also never says that, under temporary support orders, the designation must appear in the original or a later temporary order. No notice tells the filer to attach the instrument, and no refusal covers a missing attachment.",
+    "closest_item": "s1.line2a",
+    "effect": "amount"
+   },
    {
     "item": "s1.line11",
     "sentences": [
@@ -4122,7 +4063,7 @@
     ],
     "quote": "An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year. / Qualified expenses don’t include expenses for home schooling or for nonathletic supplies for courses in health or physical education. / You must reduce your qualified expenses by the following amounts. • Excludable U.S. series EE and I savings bond interest from Form 8815. • Nontaxable qualified tuition program earnings or distributions. • Any nontaxable distribution of Coverdell education savings account earnings. • Any reimbursements you received for these expenses that weren’t reported to you in box 1 of your Form W-2.",
     "page": "i1040gi p. 93",
-    "why_uncovered": "Line 11 cites only the $300/$600 caps. No listed question asks whether the filer meets the eligible educator test (K-12, 900 hours). No question or refusal excludes home-schooling or nonathletic health/PE supplies. Nothing requires reducing expenses by excludable bond interest, tax-free QTP or Coverdell amounts, or unreported reimbursements.",
+    "why_uncovered": "s1.line11 implements and cites only the $300/$600 per-spouse caps. No encoded question asks about the 900-hour K-12 eligibility test, the exclusion of home-schooling and nonathletic health/PE supplies, or the required reductions. Those reductions are Form 8815 interest, nontaxable QTP and Coverdell amounts, and reimbursements not reported in box 1. No refusal covers any of these rules.",
     "closest_item": "s1.line11",
     "effect": "amount"
    },
@@ -4130,7 +4071,7 @@
     "item": "s1.line21",
     "sentences": [
      {
-      "quote": "Your filing status is any status except married filing separately.",
+      "quote": "You can take this deduction only if all of the following apply. • You paid interest in 2025 on a qualified student loan (defined later). • Your filing status is any status except married filing separately.",
       "page": "i1040gi p. 98"
      },
      {
@@ -4142,7 +4083,15 @@
       "page": "i1040gi p. 98"
      },
      {
+      "quote": "Exception. Use Pub. 970 instead of the worksheet in these instructions to figure your student loan interest deduction if you file Form 2555 or 4563, or you exclude income from sources within Puerto Rico.",
+      "page": "i1040gi p. 98"
+     },
+     {
       "quote": "However, a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan.",
+      "page": "i1040gi p. 99"
+     },
+     {
+      "quote": "Enter the total interest you paid in 2025 on qualified student loans (see the instructions for line 21). Don’t enter more than $2,500",
       "page": "i1040gi p. 99"
      },
      {
@@ -4150,43 +4099,11 @@
       "page": "p4681 p. 5"
      }
     ],
-    "quote": "Your filing status is any status except married filing separately. / You, or your spouse if filing jointly, aren’t claimed as a dependent on someone else's (such as your parent’s) 2025 tax return. / Don’t include any amount paid from a distribution of earnings made from a qualified tuition program (QTP) after 2018 to the extent the earnings are treated as tax free because they were used to pay student loan interest. / However, a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan. / You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs.",
+    "quote": "You can take this deduction only if all of the following apply. • You paid interest in 2025 on a qualified student loan (defined later). • Your filing status is any status except married filing separately. / You, or your spouse if filing jointly, aren’t claimed as a dependent on someone else's (such as your parent’s) 2025 tax return. / Don’t include any amount paid from a distribution of earnings made from a qualified tuition program (QTP) after 2018 to the extent the earnings are treated as tax free because they were used to pay student loan interest. / Exception. Use Pub. 970 instead of the worksheet in these instructions to figure your student loan interest deduction if you file Form 2555 or 4563, or you exclude income from sources within Puerto Rico. / However, a loan isn’t a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan. / Enter the total interest you paid in 2025 on qualified student loans (see the instructions for line 21). Don’t enter more than $2,500 / You can’t deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs.",
     "page": "i1040gi p. 98; i1040gi p. 99; p4681 p. 5",
-    "why_uncovered": "Line 21 lists only the form line. None of the listed items applies the eligibility tests (not married filing separately, not claimed as a dependent). No question or refusal excludes interest paid with tax-free QTP earnings or through student loan repayment assistance programs. Nothing applies the qualified student loan definition (no mixed-use proceeds, no related-person lender).",
+    "why_uncovered": "s1.line21 cites only the form line. It has no question, worksheet citation or refusal for any of these rules: - the married-filing-separately bar - the dependent bar - the qualified-student-loan definition and its exclusions (mixed-use proceeds, related-party lender) - the exclusion of interest paid with tax-free QTP earnings - interest paid through loan repayment assistance programs - the $2,500 cap - the Pub. 970 exception for Form 2555/4563 or Puerto Rico exclusion filers",
     "closest_item": "s1.line21",
     "effect": "eligibility"
-   },
-   {
-    "item": "s1.alimony_received",
-    "sentences": [
-     {
-      "quote": "Your spouse can exclude the payments from income only if they attach a copy of the instrument designating them as not alimony to their return. The copy must be attached each year the designation applies.",
-      "page": "p504 p. 14"
-     },
-     {
-      "quote": "Alimony includes premiums you must pay under your divorce or separation instrument for insurance on your life to the extent your spouse owns the policy.",
-      "page": "p504 p. 13"
-     }
-    ],
-    "quote": "Your spouse can exclude the payments from income only if they attach a copy of the instrument designating them as not alimony to their return. The copy must be attached each year the designation applies. / Alimony includes premiums you must pay under your divorce or separation instrument for insurance on your life to the extent your spouse owns the policy.",
-    "page": "p504 p. 14; p504 p. 13",
-    "why_uncovered": "The question lets the recipient leave out payments designated as not alimony. No notice or question tells the recipient that the exclusion depends on attaching the instrument each year. The question also does not say that life insurance premiums on a policy the recipient owns count as alimony, so a filer could omit them.",
-    "closest_item": "s1.alimony_received",
-    "effect": "amount"
-   },
-   {
-    "item": "s1.line20",
-    "sentences": [
-     {
-      "quote": "If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 20. If you don’t check the box on line 20, you may get a math error notice from the IRS.",
-      "page": "i1040gi p. 96"
-     }
-    ],
-    "quote": "If you are married filing separately and you lived apart from your spouse for all of 2025, check the box on line 20. If you don’t check the box on line 20, you may get a math error notice from the IRS.",
-    "page": "i1040gi p. 96",
-    "why_uncovered": "The encoding has no line 20 checkbox item or notice for married filing separately filers who lived apart all year. Only the deduction amount is computed.",
-    "closest_item": "s1.line20",
-    "effect": "presentation"
    }
   ],
   "used": [
@@ -4290,7 +4207,7 @@
     ]
    }
   ],
-  "cost": 0.7066588,
+  "cost": 0.7176588,
   "model": "claude-opus-5-5"
  },
  {
@@ -4891,178 +4808,78 @@
  },
  {
   "form": "sales",
-  "prompt_sha": "21309c68fbcda870148713b2f62576a5f635730e47a3b0b66e8610132565415d",
+  "prompt_sha": "2b0ee0732654e2949325098aaec1cb11d71e5b0ee2aa03332690685462957ec0",
   "claims": [
+   {
+    "item": "sales.one",
+    "sentences": [
+     {
+      "quote": "However, if a trader previously made the mark-to-market election (explained below), each transaction is reported in Part II of Form 4797 instead of on Form 8949.",
+      "page": "i1040sd p. 5"
+     },
+     {
+      "quote": "Starting with the year the election becomes effective, a trader reports all gains and losses from securities held in connection with the trading business, including securities held at the end of the year, in Part II of Form 4797.",
+      "page": "i1040sd p. 5"
+     },
+     {
+      "quote": "Securities held at the end of the year are “marked to market” by treating them as if they were sold for fair market value on the last business day of the year.",
+      "page": "i1040sd p. 5"
+     },
+     {
+      "quote": "If you are an investor in SBIC stock, you can deduct as an ordinary loss, rather than a capital loss, a loss from the sale, trade, or worthlessness of that stock.",
+      "page": "p550 p. 81"
+     },
+     {
+      "quote": "You report this type of ordinary loss on Form 4797, Part II, line 10.",
+      "page": "p550 p. 81"
+     },
+     {
+      "quote": "If you close a short sale of SBIC stock with other SBIC stock you bought only for that purpose, any loss you have on the sale is a capital loss.",
+      "page": "p550 p. 81"
+     },
+     {
+      "quote": "If the basis of your section 1244 stock has increased, through contributions to capital or otherwise, you must treat this increase as applying to stock that is not section 1244 stock when you figure an ordinary loss on its sale.",
+      "page": "p550 p. 81"
+     },
+     {
+      "quote": "If you disposed of any investment in a QOF during the tax year, check the box on page 1 of Schedule D and see the Instructions for Form 8949 for additional reporting requirements. You must also complete Part III of Form 8997.",
+      "page": "i1040sd p. 10"
+     }
+    ],
+    "quote": "However, if a trader previously made the mark-to-market election (explained below), each transaction is reported in Part II of Form 4797 instead of on Form 8949. / Starting with the year the election becomes effective, a trader reports all gains and losses from securities held in connection with the trading business, including securities held at the end of the year, in Part II of Form 4797. / Securities held at the end of the year are “marked to market” by treating them as if they were sold for fair market value on the last business day of the year. / If you are an investor in SBIC stock, you can deduct as an ordinary loss, rather than a capital loss, a loss from the sale, trade, or worthlessness of that stock. / You report this type of ordinary loss on Form 4797, Part II, line 10. / If you close a short sale of SBIC stock with other SBIC stock you bought only for that purpose, any loss you have on the sale is a capital loss. / If the basis of your section 1244 stock has increased, through contributions to capital or otherwise, you must treat this increase as applying to stock that is not section 1244 stock when you figure an ordinary loss on its sale. / If you disposed of any investment in a QOF during the tax year, check the box on page 1 of Schedule D and see the Instructions for Form 8949 for additional reporting requirements. You must also complete Part III of Form 8997.",
+    "page": "i1040sd p. 5; p550 p. 81; i1040sd p. 10",
+    "why_uncovered": "The transaction screen refuses only digital assets, the sales.special categories, unsupported codes and failed aggregate routing. No question asks whether the filer is a trader with a section 475(f) mark-to-market election, whose sales go on Form 4797 rather than Form 8949. No question asks whether the stock sold is SBIC stock, whose losses are ordinary and go on Form 4797, or section 1244 stock, whose losses are ordinary up to a limit. On the detailed Form 8949 route, nothing asks about a disposition of a QOF investment, which requires the Schedule D checkbox and Form 8997. QOF is screened only in the aggregate-eligibility confirmation.",
+    "closest_item": "sales.one",
+    "effect": "amount"
+   },
    {
     "item": "sales.box",
     "sentences": [
      {
-      "quote": "The holding period of U.S. Treasury notes and bonds sold at auction on the basis of yield starts the day after the Secretary of the Treasury, through news releases, gives notification of acceptance to successful bidders.",
-      "page": "p550 p. 82"
+      "quote": "If you are not in the business of writing options and an option you write on stocks, securities, commodities, or commodity futures is not exercised (or repurchased), the amount you receive is a short-term capital gain.",
+      "page": "p550 p. 88"
      },
      {
-      "quote": "The holding period of U.S. Treasury notes and bonds sold through an offering on a subscription basis at a specified yield starts the day after the subscription is submitted.",
-      "page": "p550 p. 82"
+      "quote": "If you have a loss because you did not exercise an option to buy or sell, you are considered to have sold or traded the option on the date it expired.",
+      "page": "p550 p. 88"
      },
      {
-      "quote": "In determining your holding period for shares bought by the bank or other agent, full shares are considered bought first and any fractional shares are considered bought last.",
-      "page": "p550 p. 82"
+      "quote": "Any capital gain or loss on a sale, exchange, or termination of a contract to sell property will be considered short term, regardless of how long you hold the contract.",
+      "page": "p550 p. 88"
      },
      {
-      "quote": "Your holding period starts on the day after the bank's purchase date.",
-      "page": "p550 p. 82"
+      "quote": "Your holding period for the new stock includes the period you held an equity interest in the mutual company.",
+      "page": "i1040sd p. 6"
      },
      {
-      "quote": "If you acquire investment property in a trade for other investment property and your basis for the new property is determined, in whole or in part, by your basis in the old property, your holding period for the new property begins on the day following the date you acquired the old property.",
-      "page": "p550 p. 82"
-     },
-     {
-      "quote": "If you acquired the property from someone who died in 2010 and the executor made the election to file Form 8939, see Revenue Procedure 2011-41 to determine your holding period.",
-      "page": "p550 p. 82"
-     },
-     {
-      "quote": "To figure how long you have held real property bought under an unconditional contract, begin counting on the day after you received title to it or on the day after you took possession of it and assumed the burdens and privileges of ownership, whichever happened first.",
-      "page": "p550 p. 82"
-     },
-     {
-      "quote": "The holding period cannot start until there is an actual contract of sale.",
-      "page": "p550 p. 82"
-     },
-     {
-      "quote": "Enter the trade date for stocks and bonds you purchased on an exchange or over-the-counter market.",
-      "page": "i8949 p. 6"
-     },
-     {
-      "quote": "Use the trade date for stocks and bonds traded on an exchange or over-the-counter market.",
-      "page": "i8949 p. 6"
-     },
-     {
-      "quote": "For a short sale, enter the date you acquired the property delivered to the broker or lender to close the short sale.",
-      "page": "i8949 p. 6"
-     },
-     {
-      "quote": "For a short sale, enter the date you delivered the property to the broker or lender to close the short sale.",
-      "page": "i8949 p. 6"
-     },
-     {
-      "quote": "For property you previously elected to treat as having been sold and reacquired on January 1, 2001 (or January 2, 2001, for readily tradable stock), enter the date of the deemed sale and reacquisition.",
-      "page": "i8949 p. 6"
+      "quote": "Your holding period for the new stock begins on the day after you received the stock.",
+      "page": "i1040sd p. 6"
      }
     ],
-    "quote": "The holding period of U.S. Treasury notes and bonds sold at auction on the basis of yield starts the day after the Secretary of the Treasury, through news releases, gives notification of acceptance to successful bidders. / The holding period of U.S. Treasury notes and bonds sold through an offering on a subscription basis at a specified yield starts the day after the subscription is submitted. / In determining your holding period for shares bought by the bank or other agent, full shares are considered bought first and any fractional shares are considered bought last. / Your holding period starts on the day after the bank's purchase date. / If you acquire investment property in a trade for other investment property and your basis for the new property is determined, in whole or in part, by your basis in the old property, your holding period for the new property begins on the day following the date you acquired the old property. / If you acquired the property from someone who died in 2010 and the executor made the election to file Form 8939, see Revenue Procedure 2011-41 to determine your holding period. / To figure how long you have held real property bought under an unconditional contract, begin counting on the day after you received title to it or on the day after you took possession of it and assumed the burdens and privileges of ownership, whichever happened first. / The holding period cannot start until there is an actual contract of sale. / Enter the trade date for stocks and bonds you purchased on an exchange or over-the-counter market. / Use the trade date for stocks and bonds traded on an exchange or over-the-counter market. / For a short sale, enter the date you acquired the property delivered to the broker or lender to close the short sale. / For a short sale, enter the date you delivered the property to the broker or lender to close the short sale. / For property you previously elected to treat as having been sold and reacquired on January 1, 2001 (or January 2, 2001, for readily tradable stock), enter the date of the deemed sale and reacquisition.",
-    "page": "p550 p. 82; i8949 p. 6",
-    "why_uncovered": "The classification question lists specific holding-period rules: inheritance, gifts with donor basis, wash sales, stock dividends and rights, options, nonbusiness bad debts, NAV, and short-sale losses. It omits all of these. Missing are the Treasury auction and subscription start dates, the automatic investment service ordering, tacking for nontaxable trades, the 2010 Form 8939 exception to the inherited-is-long-term rule, the real property start date, the use of trade date rather than settlement date, the acquisition and disposition dates for short sales, and the deemed 2001 reacquisition date. No refusal covers these situations.",
+    "quote": "If you are not in the business of writing options and an option you write on stocks, securities, commodities, or commodity futures is not exercised (or repurchased), the amount you receive is a short-term capital gain. / If you have a loss because you did not exercise an option to buy or sell, you are considered to have sold or traded the option on the date it expired. / Any capital gain or loss on a sale, exchange, or termination of a contract to sell property will be considered short term, regardless of how long you hold the contract. / Your holding period for the new stock includes the period you held an equity interest in the mutual company. / Your holding period for the new stock begins on the day after you received the stock.",
+    "page": "p550 p. 88; i1040sd p. 6",
+    "why_uncovered": "The classification question lists many holding-period rules but leaves several out. It omits that an unexercised written option's premium is always short-term. It omits that an expired purchased option is treated as sold on the expiration date. It omits that a securities futures contract to sell always produces short-term gain or loss. It also omits the holding-period rules for stock received in a demutualization, which differ depending on whether the exchange was a tax-free reorganization.",
     "closest_item": "sales.box",
-    "effect": "amount"
-   },
-   {
-    "item": "sales.proceeds",
-    "sentences": [
-     {
-      "quote": "If you sold a call option and it was exercised, you adjust the sales price of the property sold under the option for any option premiums (as instructed under Gain or Loss From Options in the Instructions for Schedule D (Form 1040)).",
-      "page": "i8949 p. 6"
-     }
-    ],
-    "quote": "If you sold a call option and it was exercised, you adjust the sales price of the property sold under the option for any option premiums (as instructed under Gain or Loss From Options in the Instructions for Schedule D (Form 1040)).",
-    "page": "i8949 p. 6",
-    "why_uncovered": "The proceeds question asks only for proceeds per the broker report, the correct higher proceeds, or net proceeds after selling expenses. When there is no report, it never tells the filer to adjust the sales price for premiums from an exercised call option.",
-    "closest_item": "sales.proceeds",
-    "effect": "amount"
-   },
-   {
-    "item": "sales.correct_basis",
-    "sentences": [
-     {
-      "quote": "If you don't use the actual cost, attach an explanation of your basis.",
-      "page": "i8949 p. 6"
-     },
-     {
-      "quote": "The basis of property acquired by gift is generally the basis of the property in the hands of the donor.",
-      "page": "i8949 p. 6"
-     },
-     {
-      "quote": "The basis of inherited property is generally the fair market value at the date of death.",
-      "page": "i8949 p. 6"
-     },
-     {
-      "quote": "If you elected to recognize gain on property held on January 1, 2001, your basis in the property is its closing market price or fair market value, whichever applies, on the date of the deemed sale and reacquisition, whether the deemed sale resulted in a gain or an unallowed loss.",
-      "page": "i8949 p. 6"
-     },
-     {
-      "quote": "Also, adjust your basis for any stock splits.",
-      "page": "i8949 p. 7"
-     },
-     {
-      "quote": "Increase the cost or other basis of a taxable OID debt instrument by the amount of OID that you have included in gross income for that instrument.",
-      "page": "i8949 p. 7"
-     },
-     {
-      "quote": "Increase the cost or other basis of a tax-exempt OID debt instrument by the amount of tax-exempt OID that accrued on the debt instrument while held by you.",
-      "page": "i8949 p. 7"
-     },
-     {
-      "quote": "If you elect to currently include in income the market discount on a bond, increase the basis of the bond by the market discount that has been included in income for that bond.",
-      "page": "i8949 p. 7"
-     },
-     {
-      "quote": "If you elect to amortize bond premium on a taxable bond, reduce the basis of the bond by any bond premium amortization allowed as either an offset to interest income or as a deduction for that bond.",
-      "page": "i8949 p. 7"
-     },
-     {
-      "quote": "Reduce the basis of a tax-exempt bond by any bond premium amortization for that bond.",
-      "page": "i8949 p. 7"
-     },
-     {
-      "quote": "If a charitable contribution deduction is allowable because of a bargain sale of property to a charitable organization, you must allocate your basis in the property between the part sold and the part contributed based on the fair market value of each.",
-      "page": "i8949 p. 7"
-     },
-     {
-      "quote": "You can use the average basis method to determine the basis of shares of stock if the shares are identical to each other, you acquired them at different prices and left them in an account with a custodian or agent, and either:",
-      "page": "i8949 p. 7"
-     },
-     {
-      "quote": "You must add the payment to the cost of the stock sold short.",
-      "page": "p550 p. 86"
-     },
-     {
-      "quote": "If you close the short sale within 45 days, the deduction for amounts you pay in lieu of dividends will be disallowed only to the extent the payments are more than the amount you receive as ordinary income from the lender of the stock for the use of collateral with the short sale.",
-      "page": "p550 p. 86"
-     },
-     {
-      "quote": "To determine how long a short sale is kept open, do not include any period during which you hold, have an option to buy, or are under a contractual obligation to buy substantially identical stock or securities.",
-      "page": "p550 p. 86"
-     }
-    ],
-    "quote": "If you don't use the actual cost, attach an explanation of your basis. / The basis of property acquired by gift is generally the basis of the property in the hands of the donor. / The basis of inherited property is generally the fair market value at the date of death. / If you elected to recognize gain on property held on January 1, 2001, your basis in the property is its closing market price or fair market value, whichever applies, on the date of the deemed sale and reacquisition, whether the deemed sale resulted in a gain or an unallowed loss. / Also, adjust your basis for any stock splits. / Increase the cost or other basis of a taxable OID debt instrument by the amount of OID that you have included in gross income for that instrument. / Increase the cost or other basis of a tax-exempt OID debt instrument by the amount of tax-exempt OID that accrued on the debt instrument while held by you. / If you elect to currently include in income the market discount on a bond, increase the basis of the bond by the market discount that has been included in income for that bond. / If you elect to amortize bond premium on a taxable bond, reduce the basis of the bond by any bond premium amortization allowed as either an offset to interest income or as a deduction for that bond. / Reduce the basis of a tax-exempt bond by any bond premium amortization for that bond. / If a charitable contribution deduction is allowable because of a bargain sale of property to a charitable organization, you must allocate your basis in the property between the part sold and the part contributed based on the fair market value of each. / You can use the average basis method to determine the basis of shares of stock if the shares are identical to each other, you acquired them at different prices and left them in an account with a custodian or agent, and either: / You must add the payment to the cost of the stock sold short. / If you close the short sale within 45 days, the deduction for amounts you pay in lieu of dividends will be disallowed only to the extent the payments are more than the amount you receive as ordinary income from the lender of the stock for the use of collateral with the short sale. / To determine how long a short sale is kept open, do not include any period during which you hold, have an option to buy, or are under a contractual obligation to buy substantially identical stock or securities.",
-    "page": "i8949 p. 6; i8949 p. 7; p550 p. 86",
-    "why_uncovered": "The basis question lists only these adjustments: the Form 8971 consistent basis, wash-sale additions, short-sale in-lieu payments closed by day 45, compensatory option income, and nondividend distributions. It omits the following:",
-    "closest_item": "sales.correct_basis",
-    "effect": "amount"
-   },
-   {
-    "item": "sales.wash_loss",
-    "sentences": [
-     {
-      "quote": "You cannot deduct losses from sales or trades of stock or securities in a wash sale unless the loss was incurred in the ordinary course of your business as a dealer in stock or securities.",
-      "page": "p550 p. 86"
-     },
-     {
-      "quote": "A wash sale occurs when you sell or trade stock or securities at a loss and within 30 days before or after the sale you:",
-      "page": "p550 p. 86"
-     },
-     {
-      "quote": "If you sell stock and your spouse or a corporation you control buys substantially identical stock, you also have a wash sale.",
-      "page": "p550 p. 86"
-     },
-     {
-      "quote": "If the amount of the nondeductible loss is less than the amount shown on Form 1099-B or Form 1099-DA (or substitute statement), attach a statement explaining the difference.",
-      "page": "i8949 p. 10"
-     }
-    ],
-    "quote": "You cannot deduct losses from sales or trades of stock or securities in a wash sale unless the loss was incurred in the ordinary course of your business as a dealer in stock or securities. / A wash sale occurs when you sell or trade stock or securities at a loss and within 30 days before or after the sale you: / If you sell stock and your spouse or a corporation you control buys substantially identical stock, you also have a wash sale. / If the amount of the nondeductible loss is less than the amount shown on Form 1099-B or Form 1099-DA (or substitute statement), attach a statement explaining the difference.",
-    "page": "p550 p. 86; i8949 p. 10",
-    "why_uncovered": "The wash-sale question asks for the amount of the loss but never states when a wash sale exists. It omits the 30-day window before or after the sale, purchases of options or contracts, IRA purchases, purchases by a spouse or a controlled corporation, and the dealer exception. The required explanation statement for a reduced loss appears only in the cite. No line or question produces it.",
-    "closest_item": "sales.wash_loss",
     "effect": "amount"
    },
    {
@@ -5077,36 +4894,57 @@
       "page": "i8949 p. 5"
      },
      {
-      "quote": "If you received a Form 1099-B or Form 1099-DA (or substitute statement) reporting the sale or retirement of a market discount bond, enter code “D” for the transaction in column (f) of the appropriate part of Form 8949 and complete this worksheet to figure the amount to enter in column (g).",
+      "quote": "Report the transaction on Form 8949 and complete the form’s Worksheet for Contingent Payment Debt Instrument Adjustment in Column (g) to figure the adjustment to enter in column (g) of Form 8949.",
+      "page": "i1040sd p. 5"
+     },
+     {
+      "quote": "Enter the smaller of line 3 or line 4, or, if lines 3 and 4 are the same, enter the amount from line 3. This is the amount of your gain that is ordinary income. Enter it as a negative amount (in parentheses) in Form 8949, column (g). Also, report it as interest income on your tax return.",
       "page": "i8949 p. 11"
      }
     ],
-    "quote": "If you sell a taxable contingent payment debt instrument subject to the noncontingent bond method at a gain, your gain is ordinary income (interest income), even if you hold the debt instrument as a capital asset. / If you sell a taxable contingent payment debt instrument subject to the noncontingent bond method at a loss, your loss is an ordinary loss to the extent of your prior original issue discount (OID) inclusions on the debt instrument. / If you received a Form 1099-B or Form 1099-DA (or substitute statement) reporting the sale or retirement of a market discount bond, enter code “D” for the transaction in column (f) of the appropriate part of Form 8949 and complete this worksheet to figure the amount to enter in column (g).",
-    "page": "i8949 p. 5; i8949 p. 11",
-    "why_uncovered": "The code question offers only none, B, W or BW, or 'other', which leads to a refusal. The Ordinary-box check is asked only on the aggregate route. On the detailed Form 8949 route, nothing asks whether the security is a contingent payment debt instrument or a market discount bond. Such a sale can therefore be computed as a pure capital gain with no refusal triggered.",
+    "quote": "If you sell a taxable contingent payment debt instrument subject to the noncontingent bond method at a gain, your gain is ordinary income (interest income), even if you hold the debt instrument as a capital asset. / If you sell a taxable contingent payment debt instrument subject to the noncontingent bond method at a loss, your loss is an ordinary loss to the extent of your prior original issue discount (OID) inclusions on the debt instrument. / Report the transaction on Form 8949 and complete the form’s Worksheet for Contingent Payment Debt Instrument Adjustment in Column (g) to figure the adjustment to enter in column (g) of Form 8949. / Enter the smaller of line 3 or line 4, or, if lines 3 and 4 are the same, enter the amount from line 3. This is the amount of your gain that is ordinary income. Enter it as a negative amount (in parentheses) in Form 8949, column (g). Also, report it as interest income on your tax return.",
+    "page": "i8949 p. 5; i1040sd p. 5; i8949 p. 11",
+    "why_uncovered": "The Ordinary box on Form 1099-B is checked only in the aggregate-eligibility confirmation. For sales reported in detail, nothing asks whether the 1099-B Ordinary box is checked or whether accrued market discount is shown in box 1f. The code question offers only none/B/W/BW, and its 'other' choice is illustrated only by code E. As a result, a contingent payment debt instrument sale (code O) or a market discount bond sale (code D) can be reported entirely as capital gain without the ordinary-income adjustment.",
     "closest_item": "sales.code",
     "effect": "amount"
    },
    {
-    "item": "sales.one",
+    "item": "sales.wash_loss",
     "sentences": [
      {
-      "quote": "If you disposed of any investment in a QOF during the tax year, check the box on page 1 of Schedule D and see the Instructions for Form 8949 for additional reporting requirements.",
-      "page": "i1040sd p. 10"
-     },
-     {
-      "quote": "You must also complete Part III of Form 8997.",
-      "page": "i1040sd p. 10"
+      "quote": "The wash sale rules will generally apply to the sale of your residual interest in a REMIC if, during the period beginning 6 months before the sale of the interest and ending 6 months after that sale, you acquire any residual interest in any REMIC or any interest in a taxable mortgage pool that is comparable to a residual interest.",
+      "page": "p550 p. 88"
      }
     ],
-    "quote": "If you disposed of any investment in a QOF during the tax year, check the box on page 1 of Schedule D and see the Instructions for Form 8949 for additional reporting requirements. / You must also complete Part III of Form 8997.",
-    "page": "i1040sd p. 10",
-    "why_uncovered": "QOF disposition is asked about only in the aggregate-eligibility confirmation. A detailed-route sale of a QOF investment with no code is neither asked about nor refused. As a result, the Schedule D QOF checkbox and the Form 8997 requirement are never triggered.",
-    "closest_item": "sales.one",
+    "quote": "The wash sale rules will generally apply to the sale of your residual interest in a REMIC if, during the period beginning 6 months before the sale of the interest and ending 6 months after that sale, you acquire any residual interest in any REMIC or any interest in a taxable mortgage pool that is comparable to a residual interest.",
+    "page": "p550 p. 88",
+    "why_uncovered": "The wash-sale question defines the window only as 30 days before or after the sale. It does not tell the filer about the 6-month window for REMIC residual interests, or that comparable taxable mortgage pool interests count as replacements.",
+    "closest_item": "sales.wash_loss",
+    "effect": "amount"
+   },
+   {
+    "item": "sales.correct_basis",
+    "sentences": [
+     {
+      "quote": "If you don't use the actual cost, attach an explanation of your basis.",
+      "page": "i8949 p. 6"
+     }
+    ],
+    "quote": "If you don't use the actual cost, attach an explanation of your basis.",
+    "page": "i8949 p. 6",
+    "why_uncovered": "The basis question collects a non-cost basis (gift, inheritance, trade, wash sale and so on), but nothing requires or produces the attached explanation of that basis.",
+    "closest_item": "sales.correct_basis",
     "effect": "presentation"
    }
   ],
   "used": [
+   {
+    "doc": "i1040sd",
+    "pages": [
+     5,
+     6
+    ]
+   },
    {
     "doc": "i1040sd",
     "pages": [
@@ -5133,17 +4971,28 @@
    {
     "doc": "p550",
     "pages": [
+     59,
+     60,
+     61
+    ]
+   },
+   {
+    "doc": "p550",
+    "pages": [
+     81,
      82
     ]
    },
    {
     "doc": "p550",
     "pages": [
-     86
+     86,
+     87,
+     88
     ]
    }
   ],
-  "cost": 0.49229080000000003,
+  "cost": 0.5767468,
   "model": "claude-opus-5-5"
  },
  {
@@ -5560,7 +5409,7 @@
  },
  {
   "form": "scveh",
-  "prompt_sha": "6a9d0cb117e33d2f8eec1dc08eddfa4ebb260530b4eb4adb37a5def29754fa3a",
+  "prompt_sha": "a543fb2e5f6e3c986e3eb3b38d34d01b2cbe3250a9df434f17bf12dd101c31eb",
   "claims": [
    {
     "item": "scveh.lease_business",
@@ -5576,73 +5425,47 @@
     ],
     "quote": "But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount. / Report the inclusion amount figured (as described in the preceding discussions) as other income on the same form or schedule on which you took the deduction for your rental costs.",
     "page": "i1040sc p. 8; p946 p. 59",
-    "why_uncovered": "The lease path asks only for the 2025 lease payments and takes the business portion for line 20a. Nothing asks about the lease term, computes an inclusion amount, or refuses a lease of 30 days or more. The refusals on this path cover only earlier use of the standard mileage rate and a conversion during 2025.",
+    "why_uncovered": "The business portion of the lease payments is the lease payments times the business-use percentage. No question asks for the lease term, the vehicle's fair market value or an inclusion amount. The lease_smr_before screen refuses only two cases: a leased vehicle that used the standard mileage rate earlier, and one converted in 2025. A leased vehicle on actual expenses with a lease of 30 days or more therefore gets its full business-portion lease deduction, with no inclusion-amount reduction and no other-income entry.",
     "closest_item": "scveh.lease_business",
     "effect": "amount"
    },
    {
-    "item": "scveh.cost",
+    "item": "scveh.line9",
     "sentences": [
      {
-      "quote": "Cost includes sales taxes (see Sales taxes, earlier), destination charges, and dealer preparation.",
-      "page": "p463 p. 26"
+      "quote": "If you produced real or tangible personal property or acquired real or personal property for resale, you must generally capitalize certain expenses in inventory or other property.",
+      "page": "i1040sc p. 6"
      },
      {
-      "quote": "Increase your basis by any substantial improvements you make to your car, such as adding air conditioning or a new engine.",
-      "page": "p463 p. 26"
-     },
-     {
-      "quote": "Decrease your basis by any section 179 deduction, special depreciation allowance, gas guzzler tax, and vehicle credits claimed.",
-      "page": "p463 p. 26"
-     },
-     {
-      "quote": "A major improvement to a car is treated as a new item of 5-year recovery property.",
-      "page": "p463 p. 26"
-     },
-     {
-      "quote": "However, you must treat the improvement and the car as a whole when applying the limits on the depreciation deductions.",
-      "page": "p463 p. 26"
+      "quote": "Reduce the amounts on lines 8 through 27a and Part V by amounts capitalized.",
+      "page": "i1040sc p. 6"
      }
     ],
-    "quote": "Cost includes sales taxes (see Sales taxes, earlier), destination charges, and dealer preparation. / Increase your basis by any substantial improvements you make to your car, such as adding air conditioning or a new engine. / Decrease your basis by any section 179 deduction, special depreciation allowance, gas guzzler tax, and vehicle credits claimed. / A major improvement to a car is treated as a new item of 5-year recovery property. / However, you must treat the improvement and the car as a whole when applying the limits on the depreciation deductions.",
-    "page": "p463 p. 26",
-    "why_uncovered": "The cost question mentions sales tax but not destination charges or dealer preparation. It does not mention the gas guzzler tax reduction. The screen covers vehicle credits, clean-fuel deductions and casualty reductions, but not substantial improvements. An improvement is a separate 5-year asset with its own placed-in-service date that shares the vehicle's limit, and no question or refusal deals with that.",
-    "closest_item": "scveh.cost",
-    "effect": "amount"
-   },
-   {
-    "item": "scveh.miles_business",
-    "sentences": [
-     {
-      "quote": "For automobiles and other vehicles, determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes or for the production of income during the year (not to include any commuting mileage) by the total number of miles the vehicle is driven for all purposes.",
-      "page": "i4562 p. 14"
-     },
-     {
-      "quote": "However, you do combine your business and investment use to figure your depreciation deduction for the tax year.",
-      "page": "p463 p. 25"
-     }
-    ],
-    "quote": "For automobiles and other vehicles, determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes or for the production of income during the year (not to include any commuting mileage) by the total number of miles the vehicle is driven for all purposes. / However, you do combine your business and investment use to figure your depreciation deduction for the tax year.",
-    "page": "i4562 p. 14; p463 p. 25",
-    "why_uncovered": "The mileage questions ask only for miles driven for this business, commuting miles and personal miles. Miles driven for the production of income (investment use) count in the business/investment use percentage that drives the basis for depreciation and the limit. No question collects those miles, and the screen refuses investment use only when it pulls qualified business use to 50% or less.",
-    "closest_item": "scveh.miles_business",
+    "quote": "If you produced real or tangible personal property or acquired real or personal property for resale, you must generally capitalize certain expenses in inventory or other property. / Reduce the amounts on lines 8 through 27a and Part V by amounts capitalized.",
+    "page": "i1040sc p. 6",
+    "why_uncovered": "Line 9 is the standard mileage amount or the business portion of operating expenses, plus parking and tolls. Nothing asks whether any vehicle cost must be capitalized under the uniform capitalization rules. Nothing asks whether the small business taxpayer exception applies. No refusal or HANDLED ELSEWHERE item covers producers or resellers that must capitalize vehicle costs. So line 9, and the depreciation in Part V, are never reduced by capitalized amounts.",
+    "closest_item": "scveh.line9",
     "effect": "amount"
    },
    {
     "item": "scveh.placed_date",
     "sentences": [
      {
-      "quote": "If you claim any car and truck expenses, you must provide certain information on the use of your vehicle by completing one of the following.",
+      "quote": "Complete Schedule C, Part IV, if (a) you are claiming the standard mileage rate, you lease your vehicle, or your vehicle is fully depreciated; and (b) you are not required to file Form 4562 for any other reason.",
       "page": "i1040sc p. 7"
      },
      {
-      "quote": "Except as noted below, you must complete lines 30 through 36 for each vehicle identified in Section A.",
-      "page": "i4562 p. 16"
+      "quote": "Complete Form 4562, Part V, if you are claiming depreciation on your vehicle or you are required to file Form 4562 for any other reason (see Line 13, later).",
+      "page": "i1040sc p. 7"
+     },
+     {
+      "quote": "Also, if you file Schedule C (Form 1040) and are claiming the standard mileage rate or actual vehicle expenses (except depreciation), and you are not required to file Form 4562 for any other reason, report vehicle information in Part IV of Schedule C and not on Form 4562.",
+      "page": "i4562 p. 13"
      }
     ],
-    "quote": "If you claim any car and truck expenses, you must provide certain information on the use of your vehicle by completing one of the following. / Except as noted below, you must complete lines 30 through 36 for each vehicle identified in Section A.",
-    "page": "i1040sc p. 7; i4562 p. 16",
-    "why_uncovered": "The encoding produces Schedule C lines 43 and 44a–44c only. It does not produce the remaining Part IV questions (lines 45–47b) or Form 4562 Part V Section B lines 30–36, and no question collects those answers.",
+    "quote": "Complete Schedule C, Part IV, if (a) you are claiming the standard mileage rate, you lease your vehicle, or your vehicle is fully depreciated; and (b) you are not required to file Form 4562 for any other reason. / Complete Form 4562, Part V, if you are claiming depreciation on your vehicle or you are required to file Form 4562 for any other reason (see Line 13, later). / Also, if you file Schedule C (Form 1040) and are claiming the standard mileage rate or actual vehicle expenses (except depreciation), and you are not required to file Form 4562 for any other reason, report vehicle information in Part IV of Schedule C and not on Form 4562.",
+    "page": "i1040sc p. 7; i4562 p. 13",
+    "why_uncovered": "The encoding computes the Schedule C Part IV lines (43, 44a–44c). Nothing asks whether the filer must file Form 4562 for another reason, such as other property placed in service in 2025, a section 179 deduction, or other listed property. So the encoding cannot decide whether the vehicle information belongs in Schedule C Part IV or in Form 4562 Part V.",
     "closest_item": "scveh.placed_date",
     "effect": "presentation"
    }
@@ -5731,7 +5554,7 @@
     ]
    }
   ],
-  "cost": 0.7569428,
+  "cost": 0.7650428,
   "model": "claude-opus-5-5"
  },
  {
@@ -5958,23 +5781,8 @@
  },
  {
   "form": "sli",
-  "prompt_sha": "bc247ab882fd02afa70110f2eca756b902fb57e7e601ab42cfe9d8624f46d913",
-  "claims": [
-   {
-    "item": "sli.line9",
-    "sentences": [
-     {
-      "quote": "Don’t include this amount in figuring any other deduction on your return (such as on Schedule A, C, E, etc.)",
-      "page": "i1040gi p. 99"
-     }
-    ],
-    "quote": "Don’t include this amount in figuring any other deduction on your return (such as on Schedule A, C, E, etc.)",
-    "page": "i1040gi p. 99",
-    "why_uncovered": "The encoding computes line 9 and carries it to Schedule 1, line 21. Nothing stops the same interest from also being deducted elsewhere. One example is interest on a home-secured loan used for education, which could also be counted as Schedule A mortgage interest. The sli.interest question does not tell the filer to leave out interest deducted elsewhere, and no line or refusal coordinates the two deductions.",
-    "closest_item": "sli.line9",
-    "effect": "amount"
-   }
-  ],
+  "prompt_sha": "cffccf9a5bb75e23022a7f3b8abd1a42a395b1b45da5f8c0ec1ca933e2aff0b3",
+  "claims": [],
   "used": [
    {
     "doc": "i1040gi",
@@ -5982,9 +5790,15 @@
      98,
      99
     ]
+   },
+   {
+    "doc": "p4681",
+    "pages": [
+     5
+    ]
    }
   ],
-  "cost": 0.1066388,
+  "cost": 0.1193748,
   "model": "claude-opus-5-5"
  },
  {

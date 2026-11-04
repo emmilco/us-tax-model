@@ -93,13 +93,23 @@ form:
     - id: f4952.line4g
       printed: 4g
       type: NonNegDollars
-      label: Amount of qualified dividends and net capital gain elected into investment income
+      label: Amount of qualified dividends and net capital gain elected into investment income (0 unless this return is
+        filed on time, including extensions, or is an amended return filed within 6 months of the due date, excluding
+        extensions, after a timely filed return that did not make the election)
       expr:
         op: input
-        source: Amount of qualified dividends and net capital gain elected into investment income
+        source: Amount of qualified dividends and net capital gain elected into investment income. The election must be
+          made on a timely filed return, including extensions. However, if you timely filed your return without making the
+          election, you can make it on an amended return filed within 6 months of the due date of your return (excluding
+          extensions); write "Filed pursuant to section 301.9100-2" on the amended return and file it at the same place you
+          filed the original return. Enter 0 if neither applies.
       cite:
         doc: f4952
-        locator: pp. 1, 3–4, Investment Interest Expense Deduction
+        locator: pp. 1, 3–4, Investment Interest Expense Deduction; p. 4, "Generally, you must make this election on a
+          timely filed return, including extensions." and "However, if you timely filed your return without making the
+          election, you can make the election on an amended return filed within 6 months of the due date of your return
+          (excluding extensions)." and "Write “Filed pursuant to section 301.9100-2” on the amended return and file it at the
+          same place you filed the original return."
     - id: f4952.zero
       printed: (helper)
       type: NonNegDollars

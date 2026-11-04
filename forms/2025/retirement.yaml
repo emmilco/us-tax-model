@@ -64,14 +64,26 @@ form:
         or the period was extended because the amount was a frozen deposit, and an IRA distribution to buy, build or rebuild
         a first home that you contributed back to a traditional IRA within 120 days of the distribution because the purchase
         or construction was canceled or delayed. Do not count any part of a required minimum distribution, which is not
-        eligible for rollover.
+        eligible for rollover, nor, from a pension, annuity, 401(k), 403(b) or 457(b) plan, any part of a series of
+        substantially equal payments over your life or life expectancy (or yours and your beneficiary's) or over 10 years
+        or more, a hardship distribution, dividends on employer securities, or the cost of life insurance coverage. If you
+        received this distribution as a beneficiary other than the surviving spouse, count only an amount paid by direct
+        trustee-to-trustee transfer to an inherited IRA. For code S (a SIMPLE IRA in its first 2 years), count only an
+        amount rolled over to another SIMPLE IRA.
     cite:
       doc: i1040gi
       locator: p. 27, Exception 1 (IRA rollovers); p. 30, Rollovers; p575 p. 21, Eligible rollover distribution, "An
         eligible rollover distribution is any distribution of all or any part of the balance to your credit in a qualified
         retirement plan except the following." and "A required minimum distribution (RMD)"; p590b p. 6, Distributions
         not eligible for rollover, "Amounts that must be distributed (required minimum distributions) during a particular
-        year aren't eligible for rollover treatment."; p575 p. 23, Ways to get a waiver of the 60-day rollover
+        year aren't eligible for rollover treatment."; p575 p. 21, Eligible rollover distribution, "Any of a series of substantially equal
+        distributions paid at least once a year over", "Hardship distributions.", "Dividends paid on employer securities.",
+        "The cost of life insurance coverage." and "a distribution to the plan participant’s beneficiary isn’t generally
+        treated as an eligible rollover distribution"; p575 p. 24, Rollovers by nonspouse beneficiary, "The distribution must
+        be a direct trustee-to-trustee transfer to your traditional or Roth IRA that was set up to receive the distribution.";
+        p590b p. 5, Inherited from someone other than spouse, "you can't roll over any amounts into or out of the inherited
+        IRA"; p560 p. 18, Distributions (Withdrawals), "a rollover from a SIMPLE IRA to a non-SIMPLE IRA can be made tax free only after a 2-year
+        participation in the SIMPLE IRA plan"; p575 p. 23, Ways to get a waiver of the 60-day rollover
         requirement, "There are three ways to obtain a waiver of the 60-day requirement." and Frozen deposits, "The 60-day
         rollover period is extended by the period for which the amount is a frozen deposit"; p590b p. 28, "the purchase or
         construction was canceled or delayed, you could generally contribute the amount of the distribution to an IRA within
@@ -83,7 +95,7 @@ form:
       deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible
       contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025;
       a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972;
-      a distribution of employer securities with net unrealized appreciation (an amount in box 6); a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree''s joint and survivor annuity is not one of these); a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead; a rollover of a distribution under a qualified domestic relations order; a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one, or a recontribution of a distribution to purchase or construct a main home that was canceled because of a qualified disaster (Form 8915-F); a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree''s annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?'
+      a distribution of employer securities with net unrealized appreciation (an amount in box 6); a nonperiodic payment received on or after the annuity starting date of an annuity in which you have after-tax cost that is a single-sum payment in connection with the start of the annuity payments, fully discharges the contract, or reduced your later annuity payments; a distribution the IRS wrongfully levied, any part of which was returned to you and contributed back to a retirement plan or IRA; a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree''s joint and survivor annuity is not one of these); a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead; a rollover of a distribution under a qualified domestic relations order; a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one, or a recontribution of a distribution to purchase or construct a main home that was canceled because of a qualified disaster (Form 8915-F); a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree''s annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?'
     type: Bool
     expr:
       op: input
@@ -91,7 +103,7 @@ form:
         deferrals or contributions; a qualified charitable distribution or HSA funding distribution; nondeductible
         contributions to any traditional IRA; a conversion or recharacterization (Form 8606); a 2024 or 2025 IRA contribution returned to you, or excess contributions for an earlier year returned to you in 2025;
         a rollover to a Roth IRA or designated Roth account; a lump-sum distribution you may report on Form 4972;
-        a distribution of employer securities with net unrealized appreciation (an amount in box 6); a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree''s joint and survivor annuity is not one of these); a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead; a rollover of a distribution under a qualified domestic relations order; a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one, or a recontribution of a distribution to purchase or construct a main home that was canceled because of a qualified disaster (Form 8915-F);
+        a distribution of employer securities with net unrealized appreciation (an amount in box 6); a nonperiodic payment received on or after the annuity starting date of an annuity in which you have after-tax cost that is a single-sum payment in connection with the start of the annuity payments, fully discharges the contract, or reduced your later annuity payments; a distribution the IRS wrongfully levied, any part of which was returned to you and contributed back to a retirement plan or IRA; a nonqualified annuity; the retired public safety officer premium exclusion; a death benefit exclusion; a military disability pension; an annuity you receive as the beneficiary of an employee who died before retiring (before their annuity starting date), guaranteed payments you receive as the beneficiary of a retiree under a life annuity contract, or an annuity that is shared among more than one beneficiary (a survivor annuity you receive under a retiree''s joint and survivor annuity is not one of these); a rollover of property other than cash in which you sold the property and rolled over the proceeds, or rolled over only part of the property you received, or kept the property and rolled over cash or other property instead; a rollover of a distribution under a qualified domestic relations order; a qualified disaster recovery distribution (whatever the code in box 7), or a repayment of one, or a recontribution of a distribution to purchase or construct a main home that was canceled because of a qualified disaster (Form 8915-F);
         a plan loan offset; a Form RRB-1099-R; U.S. Civil Service retirement benefits under the alternative annuity option (Pub. 721); or a pension or annuity in which you have after-tax cost whose annuity starting date (for a survivor of a retiree, the retiree''s annuity starting date) was before November 19, 1996, or for which the Simplified Method does not apply (the General Rule)?'
     cite:
       doc: i1040gi
@@ -115,13 +127,21 @@ form:
         distributions and repayments." and "Also report recontributions of qualified distributions for home purchases and
         construction that were canceled because of qualified disasters on Form 8915-F, as applicable."; p575 p. 16, Distributions
         of employer securities, "The NUA on which tax is deferred should be shown in box 6 of the Form 1099-R you receive from
-        the payer of the distribution."'
+        the payer of the distribution."; p575 p. 16, Reduction in subsequent payments, "If the annuity payments you receive
+        are reduced because you received a nonperiodic distribution, you can exclude part of the nonperiodic distribution from
+        gross income."; p575 p. 17, Single-sum payment in connection with the start of annuity payments, "treat the single-sum
+        payment as if it were received before your annuity starting date" and Distribution in full discharge of contract,
+        "Include the amount in gross income only to the extent that it exceeds the remaining cost of the contract."; i5329
+        p. 2, Qualified retirement plan rollover, "If a retirement account has been wrongfully levied by the IRS, the amount
+        returned plus interest on such amount may be contributed to the account or to an IRA"'
   - id: retirement.annuity
     printed: (helper)
     label: Is this a pension or annuity from a qualified plan, section 403(b) plan or tax-sheltered annuity, paid
       in periodic payments in which you have after-tax cost (box 9b or your records), with an annuity starting date
       after November 18, 1996, and on that date you were under age 75 or had fewer than 5 years of guaranteed payments?
-      (This is when the Simplified Method applies.)
+      (This is when the Simplified Method applies. A nonperiodic payment received on or after the annuity starting date,
+      one that is not one of the periodic payments, is generally fully taxable, so if box 1 is only such a payment, answer
+      No; if box 1 also includes the periodic payments, answer for those payments.)
     type: Bool
     expr:
       op: input
@@ -129,10 +149,14 @@ form:
         paid in periodic payments in which you have after-tax cost (box 9b or your records), with an annuity starting
         date after November 18, 1996, and on that date you were under age 75 or had fewer than 5 years of guaranteed
         payments? (This is when the Simplified Method applies. If you are the survivor of a retiree, answer for the retiree's
-        annuity, with its starting date and the retiree's age on that date.)
+        annuity, with its starting date and the retiree's age on that date. A nonperiodic payment received on or after the
+        annuity starting date, one that is not one of the periodic payments, is generally fully taxable, so if box 1 is only
+        such a payment, answer No; if box 1 also includes the periodic payments, answer for those payments.)
     cite:
       doc: i1040gi
-      locator: p. 30, Simplified Method, conditions 1 and 2; p. 28, Partially Taxable Pensions and Annuities;
+      locator: p. 30, Simplified Method, conditions 1 and 2; p. 28, Partially Taxable Pensions and Annuities; p575 p. 16,
+        Distribution On or After Annuity Starting Date, "If you receive a nonperiodic payment from your annuity contract on or
+        after the annuity starting date, you must generally include all of the payment in gross income.";
         p575 p. 34, Survivors of retirees, "If the retiree was reporting the annuity under the Simplified Method, the
         part of each payment that is tax free is the same as the tax-free amount figured by the retiree at the annuity starting
         date"

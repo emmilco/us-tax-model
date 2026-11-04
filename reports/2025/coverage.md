@@ -4079,11 +4079,11 @@ Synthetic regressions are not class B; independent human hand-work remains pendi
 | dependent.edu_over | unobserved |
 | dependent.edu_over_refused | unobserved |
 | dependent.edu_line23 | synthetic regression (not class B) |
-| dependent.edu_show24 | unobserved |
+| dependent.edu_show24 | A — official IRS example |
 | dependent.edu_line24 | synthetic regression (not class B) |
-| dependent.edu_show25 | unobserved |
+| dependent.edu_show25 | A — official IRS example |
 | dependent.edu_line25 | synthetic regression (not class B) |
-| dependent.edu_show26 | unobserved |
+| dependent.edu_show26 | A — official IRS example |
 | dependent.edu_line26 | synthetic regression (not class B) |
 | dependent.edu_ein | unobserved |
 | dependent.edu_aoc | unobserved |
@@ -4154,7 +4154,7 @@ Synthetic regressions are not class B; independent human hand-work remains pendi
 | eic.step3 | unobserved |
 | eic.step4 | synthetic regression (not class B) |
 | eic.step34 | unobserved |
-| eic.reached_step5 | synthetic regression (not class B) |
+| eic.reached_step5 | A — official IRS example, synthetic regression (not class B) |
 | eic.step5_line1 | M, synthetic refusal regression |
 | eic.step5_line2 | M, synthetic refusal regression |
 | eic.step5_line3 | M |
@@ -4163,7 +4163,7 @@ Synthetic regressions are not class B; independent human hand-work remains pendi
 | eic.sc_count | unobserved |
 | eic.self_employed | unobserved |
 | eic.wsb_se | unobserved |
-| eic.show_wsb4b | synthetic regression (not class B) |
+| eic.show_wsb4b | A — official IRS example, synthetic regression (not class B) |
 | eic.wsb_4b | M, synthetic refusal regression, synthetic regression (not class B) |
 | eic.show_wsb6 | synthetic regression (not class B) |
 | eic.wsb_6 | M, synthetic regression (not class B) |
@@ -4178,7 +4178,7 @@ Synthetic regressions are not class B; independent human hand-work remains pendi
 | eic.line1_table3 | unobserved |
 | eic.line1_table | unobserved |
 | eic.line2 | M, synthetic regression (not class B) |
-| eic.show3 | synthetic regression (not class B) |
+| eic.show3 | A — official IRS example, synthetic regression (not class B) |
 | eic.line3 | M |
 | eic.line4 | M, synthetic regression (not class B) |
 | eic.threshold_other | unobserved |
@@ -4193,7 +4193,7 @@ Synthetic regressions are not class B; independent human hand-work remains pendi
 | eic.line3_table1 | unobserved |
 | eic.line3_table2 | unobserved |
 | eic.line3_table3 | unobserved |
-| eic.show5 | synthetic regression (not class B) |
+| eic.show5 | A — official IRS example, synthetic regression (not class B) |
 | eic.line5 | M, synthetic regression (not class B) |
 | eic.smaller | unobserved |
 | eic.after_line4 | unobserved |
@@ -4675,7 +4675,7 @@ Synthetic regressions are not class B; independent human hand-work remains pendi
 | f8863.llc_sum | unobserved |
 | f8863.line10 | A — official IRS example, M, synthetic regression (not class B) |
 | f8863.llc_cap | unobserved |
-| f8863.show_llc | unobserved |
+| f8863.show_llc | A — official IRS example |
 | f8863.line11 | A — official IRS example, M, synthetic regression (not class B) |
 | f8863.llc_rate | unobserved |
 | f8863.line12 | A — official IRS example, M, synthetic regression (not class B) |
@@ -4935,8 +4935,8 @@ Synthetic regressions are not class B; independent human hand-work remains pendi
 | f8962.line9 | M |
 | f8962.nonuniform | unobserved |
 | f8962.line10 | M, synthetic regression (not class B) |
-| f8962.show_annual | unobserved |
-| f8962.show_annual_calc | unobserved |
+| f8962.show_annual | A — official IRS example |
+| f8962.show_annual_calc | A — official IRS example |
 | f8962.line11a | M, synthetic regression (not class B) |
 | f8962.line11b | M, synthetic regression (not class B) |
 | f8962.line11c | M, synthetic regression (not class B) |
@@ -5472,11 +5472,11 @@ Synthetic regressions are not class B; independent human hand-work remains pendi
 | person.edu_over | unobserved |
 | person.edu_over_refused | unobserved |
 | person.edu_line23 | synthetic regression (not class B) |
-| person.edu_show24 | unobserved |
+| person.edu_show24 | A — official IRS example |
 | person.edu_line24 | synthetic regression (not class B) |
-| person.edu_show25 | unobserved |
+| person.edu_show25 | A — official IRS example |
 | person.edu_line25 | synthetic regression (not class B) |
-| person.edu_show26 | unobserved |
+| person.edu_show26 | A — official IRS example |
 | person.edu_line26 | synthetic regression (not class B) |
 | person.edu_ein | unobserved |
 | person.edu_aoc | unobserved |
@@ -5790,7 +5790,7 @@ Synthetic regressions are not class B; independent human hand-work remains pendi
 | s179.line8 | M |
 | s179.over_limit | unobserved |
 | s179.line9 | M, synthetic regression (not class B) |
-| s179.show10 | synthetic regression (not class B) |
+| s179.show10 | A — official IRS example, synthetic regression (not class B) |
 | s179.line10 | unobserved |
 | s179.income_sc | unobserved |
 | s179.income | unobserved |
@@ -6001,7 +6001,7 @@ Synthetic regressions are not class B; independent human hand-work remains pendi
 | s8812.line16a | M, synthetic refusal regression, synthetic regression (not class B) |
 | s8812.show16b | synthetic regression (not class B) |
 | s8812.line16b | M, synthetic refusal regression, synthetic regression (not class B) |
-| s8812.show_iia | synthetic regression (not class B) |
+| s8812.show_iia | A — official IRS example, synthetic regression (not class B) |
 | s8812.line17 | M, synthetic refusal regression, synthetic regression (not class B) |
 | s8812.combat_pay | unobserved |
 | s8812.puerto_rico | unobserved |
@@ -6042,7 +6042,7 @@ Synthetic regressions are not class B; independent human hand-work remains pendi
 | s8812.part_iib_figured | unobserved |
 | s8812.line27 | M, R, synthetic refusal regression, synthetic regression (not class B) |
 | s8812.clwb_complete | unobserved |
-| s8812.show_clwb | synthetic regression (not class B) |
+| s8812.show_clwb | A — official IRS example, A — official IRS routing example, synthetic regression (not class B) |
 | s8812.clwb_1 | M, synthetic regression (not class B) |
 | s8812.clwb_2 | M, synthetic regression (not class B) |
 | s8812.clwb_3 | M, synthetic regression (not class B) |

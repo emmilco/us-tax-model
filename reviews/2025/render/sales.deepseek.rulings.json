@@ -48,6 +48,24 @@
    "context": "a06a73a5eac540a8032f1f08b61e36040fe97872b714ab5f484b56e8cb9de780",
    "date": "2026-11-04",
    "run": "a679e48ffed4242240a512d7bce7c4f2aed0dab1a5ed138be8a404d39da624cc"
+  },
+  {
+   "printed": "(g)",
+   "restated": "Add helper \"Basis correction in column (g)\" and helper \"Wash-sale adjustment in column (g)\".",
+   "model": "The restatement adds only a code B basis correction and a code W wash-sale adjustment, but IRS column (g) says 'Enter in this column any necessary adjustments to gain (or loss)' and, for multiple codes, 'enter the net adjustment in column (g),' so it omits other adjustments such as code E selling expenses or option premiums.",
+   "ruling": "Ruling: scope; as the earlier ruling of this round, the same objection. same objection as the round-2 ruling (other codes, here code E). Codes other than B and W are refused at sales.one on sales.bad_code (\"Only applicable B and W adjustments are supported\"), and the round-3 sales.code and sales.proceeds wording sends an unreflected selling expense or option premium to code E (choose other), so on a completed return column (g) is the code B correction plus the code W adjustment. Project stands.",
+   "context": "2e0080fa00883e76bdd1e35882be112772682a401c088137c87dbaed5e3e3d63",
+   "date": "2026-11-04",
+   "run": "1c8a38c9b5c4079ac7201f1ea7575fffaeba62739fa98cd5e8576f6416d5408e"
+  },
+  {
+   "printed": "(g)",
+   "restated": "Add helper \"Basis correction in column (g)\" and helper \"Wash-sale adjustment in column (g)\".",
+   "model": "The restatement only adds the code B basis correction and code W wash-sale adjustment. The IRS instruction says \"Enter in this column any necessary adjustments to gain (or loss)\" and, for multiple codes, \"enter the net adjustment in column (g),\" so other adjustments such as code E selling expenses or option premiums are omitted and would change the value.",
+   "ruling": "Ruling: scope; same objection as the round-2 ruling (other codes, here code E). Codes other than B and W are refused at sales.one on sales.bad_code (\"Only applicable B and W adjustments are supported\"), and the round-3 sales.code and sales.proceeds wording sends an unreflected selling expense or option premium to code E (choose other), so on a completed return column (g) is the code B correction plus the code W adjustment. Project stands.",
+   "context": "3433856ea8fec0ab6e2f7f75bad314e0e2df9aec9b02049062704b129b4a0abc",
+   "date": "2026-11-04",
+   "run": "a9db55620d85145bbf0e5ed81a029e3e7959554939b804eccd43ab8d67881149"
   }
  ]
 }

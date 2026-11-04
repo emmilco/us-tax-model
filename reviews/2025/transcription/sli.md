@@ -37,14 +37,14 @@ Second:
 {"alternatives": [{"guard": {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, "then": {"line": "9"}}], "op": "choose"}
 ```
 
-Second transcription's note: The line 21 instructions allow the deduction only if the filing status is not married filing separately, so this result is zero for MFS and line 9 otherwise. The instructions also require that neither you nor your spouse (if filing jointly) is claimed as a dependent on someone else's return. No interface input says whether the filer is actually claimed. The closest screening input, sa.dependent, asks whether someone can claim you or your spouse, and it excludes a person who could claim you but does not file or files only for a refund. I chose to refuse on it rather than invent an input. This is broader than the IRS condition: it also refuses a filer who could be claimed but is not. The modified AGI limit ($100,000, or $200,000 MFJ) needs no separate test, because lines 4 to 8 already reduce the deduction to zero at those amounts.
+Second transcription's note: The deduction is the worksheet's line 9. Line 21 allows the deduction only for a filing status other than married filing separately, and this line returns zero for that status. The Exception says to use Pub. 970 instead of the worksheet if you file Form 2555 or 4563 or exclude Puerto Rico income; this line refuses for that through sa.excluded_income. The IRS text also requires that neither you nor your spouse (if filing jointly) is claimed as a dependent on someone else's return. The closed input interface has no line that answers that question: sa.dependent asks whether someone can claim you, which is a different question. So this condition is not encoded and must be met outside this slice. The modified AGI condition (less than $100,000 or $200,000) is already enforced by lines 5 to 8, because line 7 is capped at 1.000 and line 8 then equals line 1.
 
-Ruling: model error; i1040gi p. 98, Line 21: "You, or your spouse if filing jointly, aren’t claimed as a dependent on someone else's (such as your parent’s) 2025 tax return." The condition is being claimed, not being claimable. The reply's note says no interface input says whether the filer is actually claimed and refuses on sa.dependent (who can claim you) instead; but person.sav_claimed ("Are you claimed as a dependent on someone else's 2025 tax return?") was in the request (collection person, entry fields), and the project counts it (sli.claimed_count, BUG-0402/T-215 round-2 change). The reply therefore refuses a filer who could be claimed but is not, whom the project computes, and enters line 9 instead of zero for no return (an actually claimed filer is also claimable, so the reply refuses). The dropped interest-above-zero guard changes no value (line 9 is zero without interest). Project stands.
-Reviewed in: pass bf573de94e42
+Ruling: model error; same reply and project as the round-2 ruling. i1040gi p. 98, Line 21: "You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's ... 2025 tax return." The reply refuses on sa.dependent (who can be claimed) where the source and the project (sli.claimed_count, person.sav_claimed) test being claimed. Scratch run of triage.mjs on the round-3 reply (.transcription/sli.lines-b2eae3131c48) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 40 partial records; 2,118 comparisons per line): 1,709 agree; no completed-return difference (367 candidate refusals on refused returns, the rest unknowns on incomplete returns). The round-3 sli.interest wording fix (loan repayment assistance) does not bear on it. Project stands.
+Reviewed in: pass ccd4e7366637
 
 ### 1 — Enter the total interest you paid in 2025 on qualified student loans (see the instructions
 Status: **AGREE**
-Reviewed in: pass bf573de94e42
+Reviewed in: pass ccd4e7366637
 
 ### 2 — Enter the amount from Form 1040 or 1040-SR, line 9
 Status: **AGREE**
@@ -137,8 +137,7 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 
 | line | gates listed | not read by the project's line |
 | --- | --- | --- |
-| sli.deduction | sa.dependent, sa.excluded_income | sa.dependent |
-| 1 | sa.excluded_income | - |
+| sli.deduction | sa.excluded_income | - |
 | 9 | sa.excluded_income | - |
 
 ## Line subjects
@@ -147,8 +146,8 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 | line | subject sha256 |
 | --- | --- |
-| sli.deduction | 5dc3bc4b5657270a8a63c809ebf0defda8260efc682ae6a295e635fe8b92cf09 |
-| 1 | 9b632db546bab24340697ef374a897d9698c216ccb8b93e5846732a6e18c6cb1 |
+| sli.deduction | 862ef1699430fe3b9ccaf295e068445b5bdbe85e87b9fdfbd5425150f05d1b0a |
+| 1 | 1ced912c20d68e56c83d1595c8f3938887308d7caf7d36e8ac6277d393d4be35 |
 | 2 | 15ebca49b82ea0ae3cf755e0eb28d25ad933c055f37a808b67670a19a74f58f1 |
 | 3 | 4be66246618cf1e7c9e0d68e53afc47d42cd6e8f9ae47ed623990aa08f669938 |
 | 4 | 0a12f16437423be4047991e4de990d68f3d404b3a72951ce03c5b55cfb53f3e7 |
@@ -171,7 +170,7 @@ The interfaces (id, printed marker, type, input question) of other documents' li
 
 Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
 
-#### Pass bf573de94e42
+#### Pass ccd4e7366637
 
 | field | value |
 | --- | --- |
@@ -179,19 +178,19 @@ Lines reviewed again after a change, each pass by its own isolated request (tran
 | review scope | lines sli.deduction, 1 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | bf573de94e42f23c6c2a7ac44c06362048bf06c14fcf009271878b7135b8448b |
+| prompt sha256 | ccd4e736663700bb7103cd3c88d9382dbfe473308efbc4b64f4e793e1b50ead3 |
 | prompt policy | source-only-computation-v3+lines-v1 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
 | complete input context | pass |
-| required input context sha256 | ca7eb86377ebe60f31f76105f4f0e66b5dba7707f71b13d581ccef6976f0d88e |
+| required input context sha256 | 44e4d561295e5a7e836b4ff99f303cd9ce40fdf111376f44c0ad8818c2b48bbc |
 | type validation policy | project-expression-types-v3 |
 | model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 7b50929e44b5fcc7287996ec8b42c58a0071256e63acb4d22f10acaabe2ea312 |
+| subject sha256 | 04481cafa1b7d4d1f4b9d71f66584716defecf410c35a60d23079e188c97e84b |
 | receipt | .transcription/sli.lines-b2eae3131c48 |
 | printed lines compared | 2 |
 | agree / disagree / missing | 1 / 1 / 0 |
@@ -202,6 +201,7 @@ Lines reviewed again after a change, each pass by its own isolated request (tran
 | document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
 | --- | --- | --- | --- | --- | --- | --- |
 | i1040gi | 2025; printed date 2026-02-25 | 98, 99 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 98 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| p4681 | 2025 | 5 | pages named by another document's citation | c280f0029d95f9f4186840c73600efd2af4bd3370a86a31fb4f2a9391887b2b6 | 5 | 21875d96efa2d4d7885584db3cf06d5830154aeff1eaf3370efad4fab5cc3a17 |
 
 ##### Other documents in the catalog
 
@@ -219,32 +219,30 @@ Chosen from the source pages above (catalog_selection); refusal-gate inputs are 
 ```yaml
 ```yaml
 lines:
-  - id: sli.h_max
-    printed: "(helper)"
-    label: "Maximum amount for line 1 ($2,500)"
-    type: NonNegDollars
-    expr: {op: param, ref: sli.max}
-
   - id: sli.line1
     printed: "1"
     label: "Enter the total interest you paid in 2025 on qualified student loans (see the instructions for line 21). Don't enter more than $2,500"
     type: NonNegDollars
-    expr: {op: smaller_of, of: [sli.interest, sli.h_max]}
-    refuses: [sa.excluded_income]
-    note: "The Exception says to use Pub. 970 instead of this worksheet if the filer files Form 2555 or 4563 or excludes income from sources within Puerto Rico. The screening input sa.excluded_income asks exactly that question, so this line refuses when it is true."
-
+    expr:
+      op: smaller_of
+      of: [sli.interest, sli.h_max]
+    cite: "i1040gi 2025, p. 99, Student Loan Interest Deduction Worksheet, line 1"
+  - id: sli.h_max
+    printed: "(helper)"
+    label: "$2,500 limit on line 1"
+    type: NonNegDollars
+    expr:
+      op: param
+      ref: sli.max
+    cite: "i1040gi 2025, p. 99, Student Loan Interest Deduction Worksheet, line 1 (\"Don't enter more than $2,500\")"
   - id: sli.h_zero
     printed: "(helper)"
-    label: "Zero (no deduction allowed)"
+    label: "Zero, no deduction when married filing separately"
     type: NonNegDollars
-    expr: {op: param, ref: ss.zero}
-
-  - id: sli.h_mfs
-    printed: "(helper)"
-    label: "Filing status is married filing separately"
-    type: Bool
-    expr: {op: test, eq: [f1040.status, {const: "mfs"}]}
-
+    expr:
+      op: param
+      ref: ss.zero
+    cite: "i1040gi 2025, p. 98, Line 21 (\"Your filing status is any status except married filing separately\")"
   - id: sli.deduction
     printed: "(helper)"
     label: "Student loan interest deduction (Schedule 1, line 21)"
@@ -252,20 +250,13 @@ lines:
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [sli.h_mfs, {const: true}]}
+        - guard: {op: test, eq: [f1040.status, {const: "mfs"}]}
           then: sli.h_zero
-        - guard: {op: test, eq: [sli.h_mfs, {const: false}]}
+        - guard: {op: test, ne: [f1040.status, {const: "mfs"}]}
           then: sli.line9
-    refuses: [sa.dependent, sa.excluded_income]
-    note: >-
-      The line 21 instructions allow the deduction only if the filing status is not married filing separately, so this
-      result is zero for MFS and line 9 otherwise. The instructions also require that neither you nor your spouse
-      (if filing jointly) is claimed as a dependent on someone else's return. No interface input says whether the
-      filer is actually claimed. The closest screening input, sa.dependent, asks whether someone can claim you or your
-      spouse, and it excludes a person who could claim you but does not file or files only for a refund. I chose to
-      refuse on it rather than invent an input. This is broader than the IRS condition: it also refuses a filer who
-      could be claimed but is not. The modified AGI limit ($100,000, or $200,000 MFJ) needs no separate test, because
-      lines 4 to 8 already reduce the deduction to zero at those amounts.
+    refuses: [sa.excluded_income]
+    cite: "i1040gi 2025, p. 98, Line 21 (eligibility conditions and Exception); p. 99, worksheet line 9 (\"Enter the result here and on Schedule 1, line 21\")"
+    note: "The deduction is the worksheet's line 9. Line 21 allows the deduction only for a filing status other than married filing separately, and this line returns zero for that status. The Exception says to use Pub. 970 instead of the worksheet if you file Form 2555 or 4563 or exclude Puerto Rico income; this line refuses for that through sa.excluded_income. The IRS text also requires that neither you nor your spouse (if filing jointly) is claimed as a dependent on someone else's return. The closed input interface has no line that answers that question: sa.dependent asks whether someone can claim you, which is a different question. So this condition is not encoded and must be met outside this slice. The modified AGI condition (less than $100,000 or $200,000) is already enforced by lines 5 to 8, because line 7 is capped at 1.000 and line 8 then equals line 1."
 ```
 ```
 

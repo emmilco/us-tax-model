@@ -239,15 +239,9 @@
   },
   "unruled:f4952#1": {
    "class": "covered",
-   "evidence": "f4952 p. 3. f4952.line4d is Schedule D line 16 floored at zero (sd.line16 = sd.line7 + sd.line15), and those lines include the capital gain distributions (sd.line13) and the short- and long-term capital loss carryovers (sd.line6, sd.line14). The label does not name the carryovers; the amount includes them.",
-   "prompt_sha": "a2e900a8fd4de0683d66209b292cedf124ba89905b09c80eb7531b6b9c2d907e",
+   "evidence": "f4952 p. 3. As f4952#1 of the T-094 review (rechecked): f4952.line4d is Schedule D line 16 floored at zero (sd.line16 = sd.line7 + sd.line15), and those lines include the capital gain distributions (sd.line13) and the short- and long-term capital loss carryovers (sd.line6, sd.line14). The label does not name the carryovers; the amount includes them.",
+   "prompt_sha": "ac257421c0e745a465c23fd064fff66ddc3f8ca38e500515c92c6ae683b982b0",
    "line": "f4952.line4d"
-  },
-  "unruled:f4952#2": {
-   "class": "real gap",
-   "evidence": "f4952 p. 4. The amended-return election within 6 months, the 'Filed pursuant to section 301.9100-2' notation and revoking with IRS consent are amended-return matters; the tool prepares the original return (as s179#3 of round 2). Open: 'Generally, you must make this election on a timely filed return, including extensions.' f4952.line4g takes any elected amount without saying so, so a late-filed original return gets the election (sc.ho_other asks the same timely-filed condition for the home office election). Rare. Low; BUG-0414.",
-   "prompt_sha": "a2e900a8fd4de0683d66209b292cedf124ba89905b09c80eb7531b6b9c2d907e",
-   "bug": "BUG-0414"
   },
   "unruled:f5329#1": {
    "class": "real gap",
@@ -353,16 +347,9 @@
    "line": "person.sav_voluntary"
   },
   "unruled:f8889#1": {
-   "class": "real gap",
-   "evidence": "i8889 pp. 2-3. f8889.medical limits line 15 to unreimbursed expenses incurred after the HSA was established, for the listed people; it does not say that insurance premiums count only for long-term care insurance, continuation coverage (COBRA), coverage while receiving unemployment compensation, or Medicare and other coverage at 65 or older (not Medigap), nor that an account beneficiary under 65 cannot count Medicare premiums for a spouse or dependent. Premiums paid from the HSA would understate line 16. Low; BUG-0414.",
-   "prompt_sha": "495f0fd776f8758fd92439d1deca2222e750768d832985eaf51e472e7dc126c9",
-   "bug": "BUG-0414"
-  },
-  "unruled:f8889#2": {
-   "class": "real gap",
-   "evidence": "i8889 pp. 3-4. f8889.line2 excludes rollovers but not a direct trustee-to-trustee transfer between the filer's own HSAs, which the instructions say is not a rollover and is not deducted as a contribution. Line 14a is limited to Form 1099-SA box 1, so only line 2 is open. Rare. Low; BUG-0414.",
-   "prompt_sha": "495f0fd776f8758fd92439d1deca2222e750768d832985eaf51e472e7dc126c9",
-   "bug": "BUG-0414"
+   "class": "presentation",
+   "evidence": "i8889 p. 4. The line 1 self-only/family checkbox is filing information; no amount depends on it. The amounts use the coverage rules directly: f8889.dec_coverage (December 1 coverage, with the family rule for spouses) and the monthly coverage feed lines 3 and 6. The round-3 fixes (f8889.medical premiums; f8889.line2 and line14a trustee-to-trustee transfers, i8889 pp. 2-4) closed BUG-0414's two lows and drew no claim.",
+   "prompt_sha": "efc0b167f0378c62a12f728446e7d4cdbfbb94684233d583178e55cc09404b2e"
   },
   "unruled:f8959#1": {
    "class": "covered",
@@ -508,32 +495,32 @@
   },
   "unruled:person#1": {
    "class": "out of scope",
-   "evidence": "i1040sse p. 4; i1040sc p. 14. sc.statutory asks whether the Schedule C is statutory employee income or notary public fees, and sc.screened refuses the Schedule C (sc.line1). So no such line 31 reaches person.se_line2, the SE tax deduction or the SEP or SIMPLE compensation (as the notary rulings of round 2).",
-   "prompt_sha": "42d4b257695804e9cf34c436ebcdec0170021cc8221490c5b47abaa79ba7f29c",
+   "evidence": "i1040sse p. 4; i1040sc p. 14. As person#1 of the T-094 review (rechecked): sc.statutory asks whether the Schedule C is statutory employee income or notary public fees, and sc.screened refuses the Schedule C (sc.line1). So no such line 31 reaches person.se_line2, the SE tax deduction or the SEP or SIMPLE compensation.",
+   "prompt_sha": "846ae740c1e1d09d15fc9619c87a00e15edb46953c686daf98a079c032fae9bc",
    "gate": "sc.screened"
   },
   "unruled:person#2": {
-   "class": "real gap",
-   "evidence": "p560 p. 17: 'You must make matching contributions or nonelective contributions by the due date (including extensions) for filing your federal income tax return for the year.' person.sep_contrib says 'by the due date of the return, including extensions'; person.simple_employer asks only for the contributions 'for 2025', so a contribution made after the due date could reach Schedule 1 line 16. Rare. Low; BUG-0414.",
-   "prompt_sha": "42d4b257695804e9cf34c436ebcdec0170021cc8221490c5b47abaa79ba7f29c",
-   "bug": "BUG-0414"
+   "class": "out of scope",
+   "evidence": "i1040gi p. 95; i8606 p. 9. scope.other_income asks about 'a repayment to an IRA of a qualified reservist distribution (Form 8606 line 1)' and refuses the return, so no such repayment reaches person.ira_trad or Form 8606 line 1.",
+   "prompt_sha": "846ae740c1e1d09d15fc9619c87a00e15edb46953c686daf98a079c032fae9bc",
+   "gate": "scope.other_income"
   },
   "unruled:person#3": {
    "class": "out of scope",
-   "evidence": "i8863 pp. 1, 3. As dependent#1 (rechecked): f8863.ban asks about a post-2015 denial or reduction that needs Form 8862 and about the 2-year and 10-year bans, and f8863.ban_refused refuses the American opportunity credit (f8863.line7). person.edu_aoc feeds f8863.line1 through f8863.aoc_sum.",
-   "prompt_sha": "42d4b257695804e9cf34c436ebcdec0170021cc8221490c5b47abaa79ba7f29c",
+   "evidence": "i8863 pp. 1, 3. As person#3 of the T-094 review (rechecked): f8863.ban asks about a post-2015 denial or reduction that needs Form 8862 and about the 2-year and 10-year bans, and f8863.ban_refused refuses the American opportunity credit (f8863.line7). person.edu_aoc feeds f8863.line1 through f8863.aoc_sum.",
+   "prompt_sha": "846ae740c1e1d09d15fc9619c87a00e15edb46953c686daf98a079c032fae9bc",
    "gate": "f8863.ban_refused"
   },
   "unruled:person#4": {
    "class": "covered",
-   "evidence": "p590b p. 28. retirement.exc_amount tells the filer to enter, for exception 22, 'no more than 50% of the present value of the IRA or plan account'. The per-row amount is capped at 50% there, and person.x_c22 applies the $10,300 cap per person.",
-   "prompt_sha": "42d4b257695804e9cf34c436ebcdec0170021cc8221490c5b47abaa79ba7f29c",
+   "evidence": "p590b p. 28. As person#4 of the T-094 review (rechecked): retirement.exc_amount tells the filer to enter, for exception 22, 'no more than 50% of the present value of the IRA or plan account'. The per-row amount is capped at 50% there, and person.x_c22 applies the $10,300 cap per person.",
+   "prompt_sha": "846ae740c1e1d09d15fc9619c87a00e15edb46953c686daf98a079c032fae9bc",
    "line": "retirement.exc_amount"
   },
   "unruled:person#5": {
    "class": "covered",
-   "evidence": "p590b p. 28. retirement.exc_amount tells the filer to enter, for exception 23, 'no more than your total interest in the IRA or plan account minus $1,000', and person.x_c23 applies the $1,000 cap. retirement.early_screen asks about 'an emergency personal expense distribution within 3 years after an earlier one you have not repaid' and refuses it. It does not name the alternative of later contributions at least equal to the unrepaid amount, so it refuses more than it must but never computes wrongly. person.x_two23 refuses more than one in a year.",
-   "prompt_sha": "42d4b257695804e9cf34c436ebcdec0170021cc8221490c5b47abaa79ba7f29c",
+   "evidence": "p590b p. 28. As person#5 of the T-094 review (rechecked): retirement.exc_amount tells the filer to enter, for exception 23, 'no more than your total interest in the IRA or plan account minus $1,000', and person.x_c23 applies the $1,000 cap. retirement.early_screen asks about 'an emergency personal expense distribution within 3 years after an earlier one you have not repaid' and refuses it (it refuses more than it must, never computes wrongly). person.x_two23 refuses more than one in a year.",
+   "prompt_sha": "846ae740c1e1d09d15fc9619c87a00e15edb46953c686daf98a079c032fae9bc",
    "line": "retirement.exc_amount"
   },
   "unruled:qbi#1": {
@@ -566,51 +553,37 @@
    "gate": "oi8z.recovery"
   },
   "unruled:retirement#1": {
-   "class": "real gap",
-   "evidence": "p575 p. 21; i5329 p. 2. BUG-0408 added the required minimum distribution to retirement.rollover (rechecked: correct). Open: the other distributions that are not eligible rollover distributions (a series of substantially equal payments, hardship distributions, dividends on employer securities, the cost of life insurance coverage, most distributions to a beneficiary), the first-2-years SIMPLE IRA limit (a code S distribution may be rolled over only to another SIMPLE IRA), and a recontribution of a wrongfully levied amount by the due date. Rare. Low; BUG-0414.",
-   "prompt_sha": "32b67274862b0a9b6e33dfda0a88872561d9a6ff7876811bc1e37c88e6742eee",
-   "bug": "BUG-0414"
+   "class": "presentation",
+   "evidence": "i1040gi p. 27. The statement explaining a rollover into a qualified plan, or one made in 2026, is an attachment; the amount rolled over is asked (retirement.rollover) and excluded. The round-3 fix to retirement.rollover (non-eligible distributions, nonspouse beneficiaries, code S) and the wrongful-levy refusal in retirement.special closed BUG-0414's low (p575 pp. 21, 24; p560 p. 18; i5329 p. 2; rechecked: correct).",
+   "prompt_sha": "2f9dab0131912eb4c8121b2e9db5fc0b2561d257bd4aa0e5b2c0d0e2539109af"
   },
   "unruled:retirement#2": {
-   "class": "out of scope",
-   "evidence": "i5329 p. 1; p575 p. 34. person.x_other asks about 'a required minimum distribution from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)' and refuses Form 5329.",
-   "prompt_sha": "32b67274862b0a9b6e33dfda0a88872561d9a6ff7876811bc1e37c88e6742eee",
-   "gate": "person.x_other"
+   "class": "presentation",
+   "evidence": "i5329 p. 5. As retirement#4 of the T-094 round: the statement with the child's or eligible adoptee's name, age and TIN (or the death documentation) is an attachment; exception 19's conditions are stated in retirement.exception and its $5,000 cap is applied.",
+   "prompt_sha": "2f9dab0131912eb4c8121b2e9db5fc0b2561d257bd4aa0e5b2c0d0e2539109af"
   },
   "unruled:retirement#3": {
-   "class": "real gap",
-   "evidence": "p575 p. 16: 'If you receive a nonperiodic payment from your annuity contract on or after the annuity starting date, you must generally include all of the payment in gross income.' retirement.annuity asks whether the distribution is paid in periodic payments but does not say a box 1 that includes a nonperiodic payment is not; on the Simplified Method path the periodic exclusion would then reach it. Rare; low.",
-   "prompt_sha": "32b67274862b0a9b6e33dfda0a88872561d9a6ff7876811bc1e37c88e6742eee",
-   "bug": "BUG-0414"
-  },
-  "unruled:retirement#4": {
-   "class": "presentation",
-   "evidence": "i5329 p. 5. The statement with the child's or eligible adoptee's name, age and TIN (or the death documentation) is an attachment; exception 19's conditions are stated in retirement.exception (BUG-0408) and its $5,000 cap is applied.",
-   "prompt_sha": "32b67274862b0a9b6e33dfda0a88872561d9a6ff7876811bc1e37c88e6742eee"
+   "class": "covered",
+   "evidence": "p575 pp. 17, 34; i1099r pp. 13, 15. As screen group 9 and 10, finding 1: retirement.plan_simple subtracts box 5 (retirement.plan_excluded) for any plan distribution, periodic or not, and box 5 is the employee's cost 'that the employee may recover tax free this year', which the payer must 'make every effort to compute' (box 2b). The pro-rata, separate-contract, pre-1987 and beneficiary-discharge rules are how that amount is figured. The round-3 fix (retirement.annuity, and retirement.special for single-sum, full-discharge and reduced-payment nonperiodic payments on or after the annuity starting date) closed BUG-0414's low; the single-sum payment treated as received before the starting date is refused.",
+   "prompt_sha": "2f9dab0131912eb4c8121b2e9db5fc0b2561d257bd4aa0e5b2c0d0e2539109af",
+   "line": "retirement.plan_simple"
   },
   "unruled:s1#1": {
-   "class": "covered",
-   "evidence": "i1040gi p. 93. As s1#1 of the refresh round (rechecked): person.eligible_educator states the 900-hour test; person.educator_expenses excludes home schooling and nonathletic health or PE supplies and states the reductions (Form 8815, QTP and Coverdell, unreported reimbursements).",
-   "prompt_sha": "bcfbe856bc39385a09847d13eb41e8c71b49895bb0faf7f1a10f16d07e87b111",
-   "line": "person.educator_expenses"
+   "class": "presentation",
+   "evidence": "p504 p. 14. As s1#3 of round 2: attaching the instrument that designates payments as not alimony, each year, is filing information; s1.alimony_received leaves designated payments out. A temporary support order is itself the instrument. The round-3 fix (third-party payments and life insurance premiums in s1.alimony_received and s1.alimony_paid, p504 pp. 13-14) closed BUG-0414's low and drew no claim.",
+   "prompt_sha": "c7416aee4f877fc10e01915e07bfda8832e6ae6f5c2dc9b81da372c210f03498"
   },
   "unruled:s1#2": {
-   "class": "real gap",
-   "evidence": "i1040gi pp. 98-99; p4681 p. 5. Covered: married filing separately is refused (s3.mfs); sli.eligible requires sli.claimed_count 0 (the dependency bar); sli.interest excludes interest paid from tax-free QTP earnings and states the qualified student loan definition, mixed-use and related-person lender included (BUG-0408). Open: sli.interest does not leave out interest paid through a student loan repayment assistance program whose payments are tax free (Pub. 4681: the NHSC Loan Repayment Program and state health-service programs). Rare. Low; BUG-0414.",
-   "prompt_sha": "bcfbe856bc39385a09847d13eb41e8c71b49895bb0faf7f1a10f16d07e87b111",
-   "bug": "BUG-0414"
+   "class": "covered",
+   "evidence": "i1040gi p. 93. As s1#1 of the refresh round and of round 2 (rechecked): person.eligible_educator states the 900-hour test; person.educator_expenses excludes home schooling and nonathletic health or PE supplies and states the reductions (Form 8815, QTP and Coverdell, unreported reimbursements).",
+   "prompt_sha": "c7416aee4f877fc10e01915e07bfda8832e6ae6f5c2dc9b81da372c210f03498",
+   "line": "person.educator_expenses"
   },
   "unruled:s1#3": {
-   "class": "real gap",
-   "evidence": "p504 pp. 13-14. s1.alimony_received says 'cash payments only' and does not say that cash paid to a third party under the instrument counts, including premiums on insurance on the payer's life to the extent the recipient owns the policy; a recipient could leave them out. Rare. Low; BUG-0414. Attaching the designating instrument is filing information.",
-   "prompt_sha": "bcfbe856bc39385a09847d13eb41e8c71b49895bb0faf7f1a10f16d07e87b111",
-   "bug": "BUG-0414"
-  },
-  "unruled:s1#4": {
-   "class": "out of scope",
-   "evidence": "i1040gi p. 96. As s1#3 of the refresh round: the line 20 checkbox is for married filing separately, which is refused (s3.mfs).",
-   "prompt_sha": "bcfbe856bc39385a09847d13eb41e8c71b49895bb0faf7f1a10f16d07e87b111",
-   "gate": "s3.mfs"
+   "class": "covered",
+   "evidence": "i1040gi pp. 98-99; p4681 p. 5. Married filing separately is refused (s3.mfs) and sli.eligible requires a status other than mfs and sli.claimed_count 0 (the dependency bar); sli.interest states the qualified student loan definition (mixed-use and related-person lender included) and excludes interest paid from tax-free QTP earnings and, since the round-3 fix that closed BUG-0414's low, interest paid through the NHSC and state health-service loan repayment programs; sli.line1 caps at sli.max ($2,500); the Pub. 970 exception (Form 2555 or 4563, excluded Puerto Rico income) is refused at sli.line1 (sa.excluded_income).",
+   "prompt_sha": "c7416aee4f877fc10e01915e07bfda8832e6ae6f5c2dc9b81da372c210f03498",
+   "line": "sli.interest"
   },
   "unruled:s179#1": {
    "class": "covered",
@@ -696,39 +669,33 @@
    "line": "gift.deduction"
   },
   "unruled:sales#1": {
-   "class": "real gap",
-   "evidence": "p550 p. 82; i8949 p. 6. BUG-0408 added the wash-sale, stock dividend and rights, option, bad debt, NAV and short-sale loss rules to sales.box (rechecked against p550 pp. 82, 86 and i8949 p. 5: correct). Open: Treasury auction and subscription start dates, shares bought through an automatic investment service, tacking for property received in a nontaxable trade, inherited property of a 2010 decedent with a Form 8939 election, real property (title or possession), trade date rather than settlement date, and the 2001 deemed sale. Rare. Low; BUG-0414. The short-sale dates in column (b) and (c) are presentation.",
-   "prompt_sha": "21309c68fbcda870148713b2f62576a5f635730e47a3b0b66e8610132565415d",
-   "bug": "BUG-0414"
+   "class": "out of scope",
+   "evidence": "i1040sd pp. 5-6; p550 p. 81. sd.other_forms asks whether there are gains or losses 'from (or that belong on) Forms 4797, 2439, 6252' and refuses Schedule D: a section 475(f) trader's securities, an SBIC stock loss and a section 1244 ordinary loss belong on Form 4797 Part II, and an installment sale on Form 6252. Reporting the whole gain on Form 8949 is how a seller elects out of the installment method.",
+   "prompt_sha": "2b0ee0732654e2949325098aaec1cb11d71e5b0ee2aa03332690685462957ec0",
+   "gate": "sd.other_forms"
   },
   "unruled:sales#2": {
    "class": "real gap",
-   "evidence": "i8949 p. 6. sales.proceeds does not say that, for property sold under a call option you wrote that was exercised, the option premium increases the sales price (when there is no report or the report does not include it). Rare. Low; BUG-0414.",
-   "prompt_sha": "21309c68fbcda870148713b2f62576a5f635730e47a3b0b66e8610132565415d",
-   "bug": "BUG-0414"
+   "evidence": "p550 p. 88; i1040sd p. 6. Further holding-period details beyond the round-3 sales.box list (rechecked: correct): the premium of an unexercised written option is short-term, a purchased option that expired is treated as sold on its expiration date, a securities futures contract to sell gives short-term gain or loss, and stock received in a demutualization has its own holding period. Rare; low.",
+   "prompt_sha": "2b0ee0732654e2949325098aaec1cb11d71e5b0ee2aa03332690685462957ec0",
+   "bug": "BUG-0417"
   },
   "unruled:sales#3": {
-   "class": "real gap",
-   "evidence": "i8949 pp. 6-7; p550 p. 86. sales.correct_basis states the Form 8971 limit and, since BUG-0408, the wash-sale, short-sale, compensatory option and nondividend distribution adjustments (rechecked: correct). Open: the general basis of gifts (the donor's basis) and inherited property (fair market value at death), the 2001 deemed-sale basis, stock splits, OID and market discount included in income, bond premium amortization, bargain sales to charity and the average basis method are not named; 'correct adjusted basis from records' leaves them to the filer. Low; BUG-0414. The basis explanation is filing information.",
-   "prompt_sha": "21309c68fbcda870148713b2f62576a5f635730e47a3b0b66e8610132565415d",
-   "bug": "BUG-0414"
+   "class": "out of scope",
+   "evidence": "i8949 pp. 5, 11. As sales#5 of round 2 (rechecked): sb.unsupported names 'accrued market discount' and 'a contingent payment debt instrument' and refuses Schedule B, so a sale with code D or ordinary CPDI gain does not reach Form 1040; sales.code 'other' (codes D, O) is refused by sales.bad_code. The round-3 wording of sales.code (code E) does not change this.",
+   "prompt_sha": "2b0ee0732654e2949325098aaec1cb11d71e5b0ee2aa03332690685462957ec0",
+   "gate": "sb.unsupported"
   },
   "unruled:sales#4": {
    "class": "real gap",
-   "evidence": "p550 p. 86; i8949 p. 10. sales.wash_loss asks for the nondeductible wash-sale loss, including losses the broker did not report, without the definition: a purchase or acquisition (including a contract or option, an IRA or Roth IRA purchase, or a purchase by a spouse or a controlled corporation) of substantially identical stock or securities within 30 days before or after the sale, and the dealer exception. Low; BUG-0414. The statement for a lower loss is filing information.",
-   "prompt_sha": "21309c68fbcda870148713b2f62576a5f635730e47a3b0b66e8610132565415d",
-   "bug": "BUG-0414"
+   "evidence": "p550 p. 88. sales.wash_loss gives the 30-day window; for a REMIC residual interest the window is 6 months and comparable taxable mortgage pool interests count as replacements. Rare; low.",
+   "prompt_sha": "2b0ee0732654e2949325098aaec1cb11d71e5b0ee2aa03332690685462957ec0",
+   "bug": "BUG-0417"
   },
   "unruled:sales#5": {
-   "class": "out of scope",
-   "evidence": "i8949 pp. 5, 11. sb.unsupported names 'accrued market discount' and 'a contingent payment debt instrument' and refuses Schedule B lines 2, 3 and 6, so a sale with code D or ordinary CPDI gain does not reach Form 1040; sales.code 'other' (code D) is refused by sales.bad_code.",
-   "prompt_sha": "21309c68fbcda870148713b2f62576a5f635730e47a3b0b66e8610132565415d",
-   "gate": "sb.unsupported"
-  },
-  "unruled:sales#6": {
    "class": "presentation",
-   "evidence": "i1040sd p. 10. As sales#4 of the backlog round: the Schedule D QOF box and Form 8997 Part III are filing information; a QOF deferral or inclusion code (Z, Y) is 'other' in sales.code and refused by sales.bad_code.",
-   "prompt_sha": "21309c68fbcda870148713b2f62576a5f635730e47a3b0b66e8610132565415d"
+   "evidence": "i8949 p. 6. The explanation of a basis other than cost is an attachment to Form 8949; the corrected basis is entered as an amount (sales.correct_basis). As the earlier presentation rulings.",
+   "prompt_sha": "2b0ee0732654e2949325098aaec1cb11d71e5b0ee2aa03332690685462957ec0"
   },
   "unruled:sb#1": {
    "class": "presentation",
@@ -794,26 +761,20 @@
   },
   "unruled:scveh#1": {
    "class": "out of scope",
-   "evidence": "i1040sc p. 8; p946 p. 59. As scveh#1 of the refresh round: sc.special names 'an inclusion amount for leased property' and sc.screened refuses the business; the conversion part was fixed by BUG-0408 (scveh.lease_smr_before).",
-   "prompt_sha": "6a9d0cb117e33d2f8eec1dc08eddfa4ebb260530b4eb4adb37a5def29754fa3a",
+   "evidence": "i1040sc p. 8; p946 p. 59. As scveh#1 of the refresh round and round 2 (rechecked): sc.special names 'an inclusion amount for leased property' and sc.screened refuses the business; the conversion part is scveh.lease_smr_before.",
+   "prompt_sha": "a543fb2e5f6e3c986e3eb3b38d34d01b2cbe3250a9df434f17bf12dd101c31eb",
    "gate": "sc.screened"
   },
   "unruled:scveh#2": {
-   "class": "real gap",
-   "evidence": "p463 p. 26. scveh.cost names sales tax but not destination charges and dealer preparation, nor the reduction for gas guzzler tax; scveh.screen does not name a substantial improvement to the vehicle, which is a separate 5-year asset sharing the vehicle's depreciation limits. Rare. Low; BUG-0414.",
-   "prompt_sha": "6a9d0cb117e33d2f8eec1dc08eddfa4ebb260530b4eb4adb37a5def29754fa3a",
-   "bug": "BUG-0414"
+   "class": "out of scope",
+   "evidence": "i1040sc p. 6. sc.method_other asks whether the business must capitalize costs under the uniform capitalization rules (section 263A) because it is not a small business taxpayer (gross receipts above $31 million, or a tax shelter), and sc.screened refuses the business; a small business taxpayer is exempt (p538 p. 17), so no vehicle cost is capitalized. The round-3 fixes (scveh.cost: destination charges, dealer preparation, gas guzzler tax; scveh.screen: substantial improvements and any 2025 investment use, which refuses more than it must) closed BUG-0414's two lows (p463 pp. 25-26, i4562 p. 14; rechecked: correct).",
+   "prompt_sha": "a543fb2e5f6e3c986e3eb3b38d34d01b2cbe3250a9df434f17bf12dd101c31eb",
+   "gate": "sc.screened"
   },
   "unruled:scveh#3": {
-   "class": "real gap",
-   "evidence": "i4562 p. 14; p463 p. 25. The business/investment use percentage counts miles driven for the production of income; scveh asks only business, commuting and other miles, and scveh.screen refuses investment use only when it brings qualified business use to 50% or less. A vehicle with some investment use above that line gets a lower percentage (depreciation understated). Rare. Low; BUG-0414.",
-   "prompt_sha": "6a9d0cb117e33d2f8eec1dc08eddfa4ebb260530b4eb4adb37a5def29754fa3a",
-   "bug": "BUG-0414"
-  },
-  "unruled:scveh#4": {
    "class": "presentation",
-   "evidence": "i1040sc p. 7; i4562 p. 16. Schedule C lines 45 to 47b and Form 4562 Part V Section B (lines 30 to 36) are filing information; no amount depends on them, and scveh.screen refuses a vehicle whose use is not supported by adequate records.",
-   "prompt_sha": "6a9d0cb117e33d2f8eec1dc08eddfa4ebb260530b4eb4adb37a5def29754fa3a"
+   "evidence": "i1040sc p. 7; i4562 p. 13. As scveh#4 of round 2: whether the vehicle information goes in Schedule C Part IV or Form 4562 Part V is filing information; no amount depends on it.",
+   "prompt_sha": "a543fb2e5f6e3c986e3eb3b38d34d01b2cbe3250a9df434f17bf12dd101c31eb"
   },
   "unruled:sd#1": {
    "class": "out of scope",
@@ -849,12 +810,6 @@
    "evidence": "i1040sse p. 2. person.se_screen names an approved Form 4029 and self-employment income exempt under an international social security agreement.",
    "prompt_sha": "59a082d58632329dc60fe301dd4f18a9bb4c11fecce3f9476c03219e515e03f7",
    "gate": "person.se_screened"
-  },
-  "unruled:sli#1": {
-   "class": "out of scope",
-   "evidence": "i1040gi p. 99. The only overlap the claim names, a home-secured loan, is refused on Schedule A: sa.unsupported names mortgage interest on a loan whose proceeds were not all used to buy, build or improve the home. Interest on a qualified student loan (proceeds used only for education, sli.interest) is not a Schedule C business expense.",
-   "prompt_sha": "bc247ab882fd02afa70110f2eca756b902fb57e7e601ab42cfe9d8624f46d913",
-   "gate": "sa.unsupported"
   },
   "unruled:ssb#1": {
    "class": "out of scope",

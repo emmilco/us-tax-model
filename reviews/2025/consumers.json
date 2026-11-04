@@ -851,6 +851,12 @@
    "question_phrase": "The commuting miles you drove this vehicle in 2025 (travel between your home and a work location",
    "source_phrase": "(not to include any commuting mileage) by the total number of miles the vehicle is driven for all purposes",
    "reason": "scveh.cm_c adds the commuting miles to the total miles only, never to the business miles, as i4562 p. 14 requires for the business-use percentage."
+  },
+  "consumer:sales.code@i1040sd:p10": {
+   "verdict": "same",
+   "question_phrase": "Adjustment codes: none, B, W, BW; choose other for any additional code",
+   "source_phrase": "You don't need to make any adjustments to the basis or type of gain or loss reported on Form 1099-B",
+   "reason": "sales.bad_aggregate treats any code other than none as an adjustment, which is the condition for reporting on Schedule D line 1a or 8a rather than Form 8949."
   }
  },
  "baseline": {

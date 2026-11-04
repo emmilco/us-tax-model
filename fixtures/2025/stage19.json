@@ -9,7 +9,7 @@
         "dependent"
       ],
       "evidence": "A — official IRS example",
-      "evidence_note": "p970 p. 19, Figuring the Credit, Example: joint return, dependent child in the junior (third) year, MAGI $70,000, qualified education expenses $4,300, \"Jack and Kay can claim a $2,500 American opportunity credit in 2025. This is 100% of the first $2,000 of qualified education expenses, plus 25% of the next $2,000.\" Class A covers lines 27, 30, 1 and 7 ($4,000 and $2,500). The 40%/60% split (line 8 $1,000, line 9 and line 19 $1,500, Form 1040 line 29 $1,000) follows from the form, not the example; line 19 is $1,500 because the scaffolded tax exceeds it. Synthetic scaffolding (not in the example): the $70,000 MAGI is taxpayer W-2 wages; the child is 20, a full-time student, a qualifying child for the credit for other dependents only; all $4,300 is paid to the institution; \"meet all of the requirements\" is read as a 1098-T and EIN available, line 23 No, line 24 Yes, line 25 No (a junior has not completed 4 years), line 26 No.",
+      "evidence_note": "p970 p. 19, Figuring the Credit, Example: joint return, dependent child in the junior (third) year, MAGI $70,000, qualified education expenses $4,300, \"Jack and Kay can claim a $2,500 American opportunity credit in 2025. This is 100% of the first $2,000 of qualified education expenses, plus 25% of the next $2,000.\" Class A covers lines 27, 30, 1 and 7 ($4,000 and $2,500). The 40%/60% split (line 8 $1,000, line 9 and line 19 $1,500, Form 1040 line 29 $1,000) follows from the form, not the example; line 19 is $1,500 because the scaffolded tax exceeds it. Synthetic scaffolding (not in the example): the $70,000 MAGI is taxpayer W-2 wages; the child is 20, a full-time student, a qualifying child for the credit for other dependents only; all $4,300 is paid to the institution; \"meet all of the requirements\" is read as a 1098-T and EIN available, line 23 No, line 24 Yes, line 25 No (a junior has not completed 4 years), line 26 No. Shown state (from the forms, not the example; T-232): Form 8863 Part III for the child reaches lines 24, 25 and 26 (line 23 No, \"No—Go to line 24\"; line 24 Yes, \"Yes—Go to line 25\"; line 25 No, \"No—Go to line 26\"). No student has line 31, so line 10 is zero: \"If zero, skip lines 11 through 17\". EIC Worksheet A line 3 is not reached: i1040gi p. 42, Step 5 question 3, earned income of $70,000 is not \"less than ... $57,554 if married filing jointly\" for one qualifying child (nor $26,214 for none), \"No. STOP You can't take the credit.\" Credit Limit Worksheet B is not completed: i1040s8812, \"Complete Credit Limit Worksheet B only if you meet all of the following\", which include claiming a listed credit (no Form 5695 Part I here) and \"Line 4 of Schedule 8812 is more than zero\" (the 20-year-old is not under 17, so line 4 is 0).",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[spouse].x_other": false,
@@ -304,6 +304,30 @@
         "f1040.line11b": {
           "kind": "money",
           "cents": 7000000
+        },
+        "dependent[k0].edu_show24": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[k0].edu_show25": {
+          "kind": "bool",
+          "value": true
+        },
+        "dependent[k0].edu_show26": {
+          "kind": "bool",
+          "value": true
+        },
+        "f8863.show_llc": {
+          "kind": "bool",
+          "value": false
+        },
+        "eic.show3": {
+          "kind": "bool",
+          "value": false
+        },
+        "s8812.show_clwb": {
+          "kind": "bool",
+          "value": false
         }
       }
     },
@@ -593,7 +617,7 @@
         "person"
       ],
       "evidence": "A — official IRS example",
-      "evidence_note": "p970 p. 20, Phaseout, Example: joint return, MAGI $165,000, $5,000 of qualified education expenses, tentative credit $2,500, ($180,000 - $165,000) / $20,000, \"The result is the amount of your phased out (reduced) American opportunity credit ($1,875).\" Class A covers lines 30, 1, 3, 4 and 7. Line 8 $750 and line 9 and line 19 $1,125 follow from the form (joint, so line 7 is refundable at 40%; the tax exceeds $1,125). The example does not say who the student is: the taxpayer is the student (adult, so the line 7 age test does not arise; joint in any case). Synthetic scaffolding: MAGI is taxpayer W-2 wages; the $5,000 is paid to the institution; Form 1098-T and EIN available; lines 23, 25, 26 No, line 24 Yes. The ratio 0.750 is exact, so the rounding ambiguity is not exercised.",
+      "evidence_note": "p970 p. 20, Phaseout, Example: joint return, MAGI $165,000, $5,000 of qualified education expenses, tentative credit $2,500, ($180,000 - $165,000) / $20,000, \"The result is the amount of your phased out (reduced) American opportunity credit ($1,875).\" Class A covers lines 30, 1, 3, 4 and 7. Line 8 $750 and line 9 and line 19 $1,125 follow from the form (joint, so line 7 is refundable at 40%; the tax exceeds $1,125). The example does not say who the student is: the taxpayer is the student (adult, so the line 7 age test does not arise; joint in any case). Synthetic scaffolding: MAGI is taxpayer W-2 wages; the $5,000 is paid to the institution; Form 1098-T and EIN available; lines 23, 25, 26 No, line 24 Yes. The ratio 0.750 is exact, so the rounding ambiguity is not exercised. Shown state (from the form, not the example; T-232): Form 8863 Part III for the taxpayer reaches lines 24, 25 and 26 (line 23 No, \"No—Go to line 24\"; line 24 Yes, \"Yes—Go to line 25\"; line 25 No, \"No—Go to line 26\").",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[spouse].x_other": false,
@@ -856,6 +880,18 @@
         "f8863.line19": {
           "kind": "money",
           "cents": 112500
+        },
+        "person[taxpayer].edu_show24": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].edu_show25": {
+          "kind": "bool",
+          "value": true
+        },
+        "person[taxpayer].edu_show26": {
+          "kind": "bool",
+          "value": true
         }
       }
     },
@@ -867,7 +903,7 @@
         "person"
       ],
       "evidence": "A — official IRS example",
-      "evidence_note": "p970 p. 29, Phaseout, Example: joint return, MAGI $161,000, $6,600 of qualified education expenses, \"a $1,320 (20% x $6,600) tentative credit\", ($180,000 - $161,000) / $20,000, \"The result is the amount of your phased-out (reduced) lifetime learning credit ($1,254).\" Class A covers lines 31, 10, 11, 12, 14, 15 and 18. Line 19 $1,254 follows because the tax exceeds it. The example does not name the student or say why the American opportunity credit is not used: the taxpayer is the student and has completed the first 4 years (line 25 Yes), so only the lifetime learning credit applies. Synthetic scaffolding: MAGI is taxpayer W-2 wages; the $6,600 is paid to the institution; Form 1098-T and EIN available. The ratio 0.950 is exact.",
+      "evidence_note": "p970 p. 29, Phaseout, Example: joint return, MAGI $161,000, $6,600 of qualified education expenses, \"a $1,320 (20% x $6,600) tentative credit\", ($180,000 - $161,000) / $20,000, \"The result is the amount of your phased-out (reduced) lifetime learning credit ($1,254).\" Class A covers lines 31, 10, 11, 12, 14, 15 and 18. Line 19 $1,254 follows because the tax exceeds it. The example does not name the student or say why the American opportunity credit is not used: the taxpayer is the student and has completed the first 4 years (line 25 Yes), so only the lifetime learning credit applies. Synthetic scaffolding: MAGI is taxpayer W-2 wages; the $6,600 is paid to the institution; Form 1098-T and EIN available. The ratio 0.950 is exact. Shown state (from the form; T-232): Form 8863 line 4 is $19,000 ($180,000 less $161,000; \"If zero or less, stop\" does not apply) and line 10 is $6,600, so lines 11 through 17 are completed (\"If zero, skip lines 11 through 17\" does not apply).",
       "inputs": {
         "person[taxpayer].x_other": false,
         "person[spouse].x_other": false,
@@ -1130,6 +1166,10 @@
         "f8863.line19": {
           "kind": "money",
           "cents": 125400
+        },
+        "f8863.show_llc": {
+          "kind": "bool",
+          "value": true
         }
       }
     },
@@ -1722,7 +1762,7 @@
         "f1040"
       ],
       "evidence": "A — official IRS example",
-      "evidence_note": "i8863 p. 5, Example 2, last sentence: \"If you're not otherwise required to file a tax return, you should file to get a refund of your $1,000 refundable credit, but your tax liability and nonrefundable credit will be $0.\" Class A covers line 8, Form 1040 line 29 and the $1,000 refund (lines 33, 34), line 19 $0 and line 22 $0. Line 9 $1,500 follows from the form. The \"not otherwise required to file\" parent is scaffolded with no income at all (no W-2), single, claiming the 18-year-old student child; the other scaffolding is as in pell.ex2.",
+      "evidence_note": "i8863 p. 5, Example 2, last sentence: \"If you're not otherwise required to file a tax return, you should file to get a refund of your $1,000 refundable credit, but your tax liability and nonrefundable credit will be $0.\" Class A covers line 8, Form 1040 line 29 and the $1,000 refund (lines 33, 34), line 19 $0 and line 22 $0. Line 9 $1,500 follows from the form. The \"not otherwise required to file\" parent is scaffolded with no income at all (no W-2), single, claiming the 18-year-old student child; the other scaffolding is as in pell.ex2. Shown state (from the form; T-232): the 18-year-old is not under 17, so Schedule 8812 line 16b is $0 (\"Number of qualifying children under age 17 ... x $1,700 ... If zero, stop here; you cannot claim the additional child tax credit\"), and Part II-A stops there.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": true,
@@ -1997,6 +2037,10 @@
         "f1040.line34": {
           "kind": "money",
           "cents": 100000
+        },
+        "s8812.show_iia": {
+          "kind": "bool",
+          "value": false
         }
       }
     },
@@ -3158,7 +3202,7 @@
         "s1"
       ],
       "evidence": "A — official IRS example",
-      "evidence_note": "p970 p. 16, Example 5, entire scholarship included: \"The qualified education expenses would be $6,000, and the AGI and MAGI would be $29,625. The tax liability before any credits would be $603. Jane would be able to receive a $1,603 American opportunity credit ($1,000 refundable and $603 nonrefundable), a $1,700 additional child tax credit, and a $3,325 EIC. In total, Jane would be able to receive a tax refund of $6,025.\" Class A covers lines 11b, 16, 8, 19, 29, 28, 27a and 33/34; line 27 is the $4,000 cap of the stated $6,000 and line 7 $2,500 follows. Schedule 1 line 8r $5,500, worksheet line 2a $0. The EIC at $3,325 requires the line 8r scholarship to be outside earned income (AGI phase-out). Jane is 28, unmarried, files head of household with her 10-year-old qualifying child (EIC and child tax credit), first-year full-time certificate student; wages $24,125 on a W-2 with no withholding and no other income or adjustments, except the scholarship she includes in income, entered on Schedule 1 line 8r. \"Jane and the college meet all the requirements\" is read as Form 1098-T and EIN available, line 23 No, line 24 Yes, line 25 No, line 26 No; born before 2002, so the line 7 refundability test does not apply. Synthetic scaffolding: head of household (the example says unmarried with a dependent child; household.home_cost Yes); the $6,000 is paid to the institution; the scholarship allocated to tuition does not exceed the period's expenses. The publication's \"American opportunity credit\" total is the allowed amount: Form 8863 line 8 (refundable) plus line 19 (nonrefundable, limited by the tax).",
+      "evidence_note": "p970 p. 16, Example 5, entire scholarship included: \"The qualified education expenses would be $6,000, and the AGI and MAGI would be $29,625. The tax liability before any credits would be $603. Jane would be able to receive a $1,603 American opportunity credit ($1,000 refundable and $603 nonrefundable), a $1,700 additional child tax credit, and a $3,325 EIC. In total, Jane would be able to receive a tax refund of $6,025.\" Class A covers lines 11b, 16, 8, 19, 29, 28, 27a and 33/34; line 27 is the $4,000 cap of the stated $6,000 and line 7 $2,500 follows. Schedule 1 line 8r $5,500, worksheet line 2a $0. The EIC at $3,325 requires the line 8r scholarship to be outside earned income (AGI phase-out). Jane is 28, unmarried, files head of household with her 10-year-old qualifying child (EIC and child tax credit), first-year full-time certificate student; wages $24,125 on a W-2 with no withholding and no other income or adjustments, except the scholarship she includes in income, entered on Schedule 1 line 8r. \"Jane and the college meet all the requirements\" is read as Form 1098-T and EIN available, line 23 No, line 24 Yes, line 25 No, line 26 No; born before 2002, so the line 7 refundability test does not apply. Synthetic scaffolding: head of household (the example says unmarried with a dependent child; household.home_cost Yes); the $6,000 is paid to the institution; the scholarship allocated to tuition does not exceed the period's expenses. The publication's \"American opportunity credit\" total is the allowed amount: Form 8863 line 8 (refundable) plus line 19 (nonrefundable, limited by the tax). Shown state (from the instructions; T-232): the example allows a $3,325 EIC, so the i1040gi flowchart passes Steps 1 to 3 and reaches Step 5 (each earlier \"STOP You can't take the credit\" would deny it). Step 5 question 2 (self-employment, clergy, statutory employee) is No for wages only, so Worksheet A is used, not Worksheet B (\"Use this worksheet if you answered “Yes” to Step 5, question 2\"). Worksheet A line 4: line 3 $29,625 and line 1 $24,125 differ, \"No. Go to line 5\"; line 5: with one qualifying child, $29,625 is not \"less than $23,350\", so \"No. Look up the amount on line 3\" and line 5 is completed.",
       "inputs": {
         "person[taxpayer].x_other": false,
         "f8863.paid": true,
@@ -3459,6 +3503,18 @@
         "f1040.line34": {
           "kind": "money",
           "cents": 602500
+        },
+        "eic.reached_step5": {
+          "kind": "bool",
+          "value": true
+        },
+        "eic.show5": {
+          "kind": "bool",
+          "value": true
+        },
+        "eic.show_wsb4b": {
+          "kind": "bool",
+          "value": false
         }
       }
     },

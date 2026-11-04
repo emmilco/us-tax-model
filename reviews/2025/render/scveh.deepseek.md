@@ -5,7 +5,7 @@ The rendered English of every printed line of `Schedule C line 9 and Part IV, an
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
-| line-scoped reviews | 1 (latest 2026-11-04); see Line-scoped reviews |
+| line-scoped reviews | 2 (latest 2026-11-04); see Line-scoped reviews |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
 | prompt sha256 | fca791ca88a08e3788c1c72c0e83aea2e256f2ecb27cede0cb2db8a45809a55a |
@@ -100,22 +100,24 @@ Reviewed in: pass f7924f6e6504
 ### (screen) (scveh.screen) — Does any of these apply to this vehicle?
 Status: **MATCH**
 
-Model: The screen narrows the tool by naming the excluded vehicle situations; within the supported cases the line is not misstated.
+Model: The listed conditions correspond to IRS exclusions and complications (prior standard mileage, ADS/straight line/150% DB, listed property 50% or less, insufficient records, special-allowance exceptions), so the program's screen is a permissible narrowing and names the excluded cases.
+Reviewed in: pass 7790431cc057
 
 ### (d) — Cost or other basis
 Status: **MATCH**
 
-Model: Matches the vehicle cost or other basis within the supported cases, with excluded credit/trade-in/conversion situations covered by the screen and refusal.
+Model: Matches Form 4562 Part V column (d): actual cost (including sales tax; Pub. 463 adds destination charges and dealer preparation) or other basis unadjusted for prior depreciation, with converted property using the lesser of adjusted basis or FMV, and Pub. 463's gas guzzler tax reduction.
+Reviewed in: pass 7790431cc057
 
 ### 13 — Business/investment cost (cost times business use)
 Status: **MISMATCH**
 
 Restated: Divide helper "Business miles, as cents" by helper "Total miles, as cents", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply column (d) by the result.
 
-Model: The IRS business/investment-use percentage for converted property must be figured only for the months used in business and multiplied by months/12; the restatement simply divides annual business miles by total miles without that conversion proration.
+Model: The IRS line is 'Depreciation and section 179 expense deduction'; the restatement instead computes Form 4562 Part V column (e), 'Basis for depreciation (business/investment use only),' by multiplying column (d) by business-use percentage, omitting the depreciation rate and passenger automobile limits.
 
-Ruling: scope; the converted-vehicle months proration applies only to an owned vehicle converted from personal use in 2025, which scveh.screen refuses ("you converted it from personal use to business use during 2025"). Project stands.
-Reviewed in: pass f7924f6e6504
+Ruling: model error; p946 pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 13, "Multiply line 12 by line 8. This is your business/investment cost". The handle 13 is that worksheet line, not Schedule C line 13; depreciation and the automobile limits are on later worksheet lines (scveh.macrs). Same point as the Claude ruling of this line. Project stands.
+Reviewed in: pass 7790431cc057
 
 ### (screen) (scveh.bonus_same) — Is the choice the same for all 5-year property placed in service in 2025?
 Status: **MATCH**
@@ -210,9 +212,9 @@ What each compared line's verdict depends on within the document (tools/transcri
 | (screen) (scveh.lease_smr_before) | 3b7b3aabbc6c5d31b1c98695ea76b5ebda1e48236a80be3d7d009a3c51d93807 |
 | 20a | bdae3ad9304c24d80874654c5098bdea7b7b46c534edf85e944e4f3a456df4ad |
 | (b) | 3d1072852e40be84db47283401be422fb858a0c61b8ba666b2b967fbc82bb104 |
-| (screen) (scveh.screen) | 3453b1f7b0ba579acf09040791dd0e2bbc659c52c7c528efcc1933e3e350428f |
-| (d) | 1379ef76efc8e9d8723d89f43e96c55de8067a00b0cf1d5f01284594debe466f |
-| 13 | 49f5983d1b56a715d3a938d732b7f76f5fc189e3e7688afe7ef4d431e0ac9259 |
+| (screen) (scveh.screen) | 2e4c203329b67946eaadee7b40d5e5a5efe193ef6fa98aa7f2b0b14fcb000144 |
+| (d) | 08427331c7ae9558829419cdbb0913d4bebf8f41d9028fcc1383858dbb1a1fd9 |
+| 13 | 392f341557b6cc28e59c9ebf8308e0364afc87e1a3c66a6f5df892433fd21133 |
 | (screen) (scveh.bonus_same) | bcc0a3d54012fab053eedd53cdfdd1d7d0a471c32654babe2b00b4cf3cc2d878 |
 | 7 | 7abf8db58a329d5016a0adcdd95e4c171494f2cfa2c13c57c7e54b1b2b5b52c5 |
 | 9 (scveh.line9w) | d456efa786a3ce1221cc59286357f5c111d0c4c34d469456b480450792d994f4 |
@@ -232,6 +234,50 @@ What each compared line's verdict depends on within the document (tools/transcri
 ## Line-scoped reviews
 
 Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
+
+#### Pass 7790431cc057
+
+| field | value |
+| --- | --- |
+| date | 2026-11-04 |
+| review scope | lines (screen) (scveh.screen), (d), 13 |
+| model requested | deepseek-flash |
+| model reported | deepseek-flash |
+| prompt sha256 | 7790431cc0571127e26cf3f38c496526895ba92630753e855f808edfc01811f8 |
+| prompt policy | render-source-comparison-v2+lines-v1 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | 65536 |
+| subject sha256 | 12d53698e1663e72a7bc327c42b631f778d2e2bcaabbd1d9bd454da956bc193d |
+| receipt | .transcription/scveh.deepseek.render.lines-ce6853f5a230 |
+| lines judged | 3 |
+| match / mismatch / unclear / missing | 2 / 1 / 0 / 0 |
+| verdicts for lines not in the form | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i1040sc | 2025 | 6, 7, 15 | cited pages | dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a | 6, 7, 15 | 616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918 |
+| f1040sc | 2025; created 2025-04-03 | 1, 2 | whole document | ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022 | - | 44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376 |
+| i4562 | 2025 | 3, 4, 5, 6, 7, 9, 11, 12, 13, 14, 15 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 3, 5, 6, 7, 9, 11, 12, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
+| p946 | For use in preparing 2025 returns | 17, 31, 37, 60, 61, 62, 63 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 17, 31, 37, 63 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
+| p463 | For use in preparing 2025 returns | 25, 26 | pages named by another document's citation | 153efad2a94bcccadf643b0f28f913d74b7d70b727f73eca540a2ce4d32bbfda | 25, 26 | a0b14576fdb49a7ba3e7a90092c1b8f6b8ba33889c8c35da5629156346581326 |
+
+##### Raw response
+
+```yaml
+lines:
+  - key: "(screen) (scveh.screen)"
+    status: MATCH
+    reason: "The listed conditions correspond to IRS exclusions and complications (prior standard mileage, ADS/straight line/150% DB, listed property 50% or less, insufficient records, special-allowance exceptions), so the program's screen is a permissible narrowing and names the excluded cases."
+  - key: "(d)"
+    status: MATCH
+    reason: "Matches Form 4562 Part V column (d): actual cost (including sales tax; Pub. 463 adds destination charges and dealer preparation) or other basis unadjusted for prior depreciation, with converted property using the lesser of adjusted basis or FMV, and Pub. 463's gas guzzler tax reduction."
+  - key: "13"
+    status: MISMATCH
+    reason: "The IRS line is 'Depreciation and section 179 expense deduction'; the restatement instead computes Form 4562 Part V column (e), 'Basis for depreciation (business/investment use only),' by multiplying column (d) by business-use percentage, omitting the depreciation rate and passenger automobile limits."
+```
 
 #### Pass f7924f6e6504
 

@@ -487,8 +487,12 @@ form:
     expr:
       op: input
       source: Alimony or separate maintenance you received in 2025 under a divorce or separation agreement entered into on
-        or before December 31, 2018 (cash payments only, so do not include child support, noncash property settlements, your own part of community
-        income, or payments to keep up or the use of the payer's property, or payments your divorce or separation instrument
+        or before December 31, 2018 (cash payments only, counting cash, checks or money orders the payer paid to a third
+        party for you under the instrument, such as for your medical expenses, rent, utilities or tuition, or at your written
+        request in place of alimony paid to you, if the request states that you both intend the payments to be alimony and
+        the payer received it before filing the return for the year of the payments, and premiums the payer must pay under
+        the instrument for insurance on the payer's life to the extent you own the policy; do not include child support,
+        noncash property settlements, your own part of community income, or payments to keep up or the use of the payer's property, or payments your divorce or separation instrument
         designates as not alimony (it states that the payments aren't deductible as alimony by the payer and are excludable
         from your income), or payments from a spouse with whom you file a joint return, or payments made while you and the
         payer were members of the same household if you were legally
@@ -513,7 +517,12 @@ form:
         a decree of divorce or separate maintenance" and "A home you formerly shared is considered one household, even if
         you physically separate yourselves in the home"; p504 p. 15, "You aren’t treated as members of the same household
         if one of you is preparing to leave the household and does leave no later than 1 month after the date of the
-        payment"
+        payment"; p504 p. 13, Payments to a third party, "Cash payments, checks, or money orders to a third party on behalf of
+        your spouse under the terms of your divorce or separation instrument can be alimony, if they otherwise qualify",
+        "These include payments for your spouse’s medical expenses, housing costs (rent, utilities, etc.), taxes, tuition,
+        etc.", and Life insurance premiums, "Alimony includes premiums you must pay under your divorce or separation instrument
+        for insurance on your life to the extent your spouse owns the policy"; p504 p. 14, "cash payments made to a third
+        party at the written request of your spouse may qualify as alimony if all the following requirements are met"
   - id: s1.alimony_paid
     printed: (helper)
     label: Alimony or separate maintenance paid in 2025 under an agreement entered into on or before December 31, 2018
@@ -521,7 +530,12 @@ form:
     expr:
       op: input
       source: Alimony or separate maintenance you paid in 2025 to or for a spouse or former spouse under a divorce or separation
-        agreement entered into on or before December 31, 2018 (cash payments only, so do not include child support, noncash property settlements, your spouse's part of community
+        agreement entered into on or before December 31, 2018 (cash payments only, counting cash, checks or money orders
+        you paid to a third party for your spouse under the instrument, such as for your spouse's medical expenses, rent,
+        utilities or tuition, or at your spouse's written request in place of alimony paid to your spouse, if the request
+        states that you both intend the payments to be alimony and you received it before filing your return for the year
+        of the payments, and premiums you must pay under the instrument for insurance on your life to the extent your spouse
+        owns the policy; do not include child support, noncash property settlements, your spouse's part of community
         income, or payments to keep up or the use of your property, or payments your divorce or separation instrument
         designates as not alimony (it states that the payments aren't deductible as alimony by you and are excludable from
         your spouse's income), or payments to a spouse with whom you file a joint return, or payments made while you and
@@ -546,7 +560,12 @@ form:
         a decree of divorce or separate maintenance" and "A home you formerly shared is considered one household, even if
         you physically separate yourselves in the home"; p504 p. 15, "You aren’t treated as members of the same household
         if one of you is preparing to leave the household and does leave no later than 1 month after the date of the
-        payment"
+        payment"; p504 p. 13, Payments to a third party, "Cash payments, checks, or money orders to a third party on behalf of
+        your spouse under the terms of your divorce or separation instrument can be alimony, if they otherwise qualify",
+        "These include payments for your spouse’s medical expenses, housing costs (rent, utilities, etc.), taxes, tuition,
+        etc.", and Life insurance premiums, "Alimony includes premiums you must pay under your divorce or separation instrument
+        for insurance on your life to the extent your spouse owns the policy"; p504 p. 14, "cash payments made to a third
+        party at the written request of your spouse may qualify as alimony if all the following requirements are met"
   - id: s1.alimony_unsupported
     printed: (gate)
     label: 'Does any of these apply to alimony you received or paid: payments under more than one divorce or separation agreement,

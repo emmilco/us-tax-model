@@ -1199,36 +1199,42 @@
    "adjudication": "reviews/2025/screens/adjudication/group7.md"
   },
   "unruled:retirement.special": {
-   "prompt_sha": "0668ad143648db2015f1f311e06f404526b9249d90ab21755169ab00a5407591",
-   "reason": "No defect. BUG-0413's addition (employer securities with net unrealized appreciation) drew no finding; the four findings repeat group 9's.",
+   "prompt_sha": "cf08af5350ea5fd74e853d1cb32d55486b923ac31492833f03422dfd66150477",
+   "reason": "No defect. Round 3's additions (nonperiodic payments on or after the annuity starting date that are a single sum at the start, fully discharge the contract or reduce later payments; a recontribution of a wrongfully levied distribution) drew no finding. Findings 0, 1 and 4 repeat groups 9 and 10; finding 2 is finding 1's pre-1987 variant; finding 3 can only refuse.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "i1040gi p. 27, Exception 2. retirement.bad_code refuses a roth_ira account with any code other than qualified_roth_Q and gates the same lines. As group 9 finding 0."
+     "evidence": "i1040gi p. 27, Exception 2. retirement.bad_code refuses a roth_ira account with any code other than qualified_roth_Q and gates the same lines. As groups 9 and 10, finding 0."
     },
     {
      "n": 1,
      "kind": "NARROW",
      "class": "model error",
-     "evidence": "i1040gi p. 30. Box 5 is subtracted: retirement.plan_excluded is box 5 plus the amount rolled over, and retirement.plan_simple subtracts it for any plan distribution, periodic or not. As group 9 finding 1."
+     "evidence": "p575 p. 17; i1099r pp. 13, 15. Box 5 is subtracted: retirement.plan_excluded is box 5 plus the amount rolled over, and retirement.plan_simple subtracts it for any plan distribution, periodic or not. Box 5 is the cost 'that the employee may recover tax free this year', which the payer figures (by the pro-rata rule for a distribution before the annuity starting date). As groups 9 and 10, finding 1."
     },
     {
      "n": 2,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "i1040gi p. 27, Exception 2(1). A pension filer with IRA basis may answer Yes; refusal only. As group 9 finding 2."
+     "kind": "NARROW",
+     "class": "model error",
+     "evidence": "p575 p. 17; i1099r p. 15. As finding 1: the cost-first recovery of pre-1987 contributions is part of the tax-free amount the payer reports in box 5, which retirement.plan_simple subtracts."
     },
     {
      "n": 3,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "p575 p. 23. A plan loan offset with no basis and no rollover is refused though the tool would compute it; refusal only."
+    },
+    {
+     "n": 4,
      "kind": "UNCLEAR",
      "class": "accepted (minor UNCLEAR, leans WIDE)",
-     "evidence": "i1040gi p. 27, Exception 2(3). A filer who reads an earlier year's conversion as included answers Yes and is refused; nondeductible IRA basis, the case where an earlier conversion matters, is a separate item of the same question. Refusal only."
+     "evidence": "i1040gi p. 27, Exception 1. A pension or qualified Roth filer with nondeductible traditional IRA basis may answer Yes and be refused; refusal only. As groups 9 and 10, finding 2."
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group10.md"
+   "adjudication": "reviews/2025/screens/adjudication/group11.md"
   },
   "unruled:s1.alimony_unsupported": {
    "prompt_sha": "94fb0d5ea859724e5140c196c2d633d657e425a3ab14423081386376fc384bec",

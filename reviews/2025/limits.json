@@ -94,6 +94,24 @@
     "scveh.line20"
    ],
    "reason": "Pub. 463 restates the Pub. 946 depreciation limits for passenger automobiles that these worksheet lines apply; pp. 25-26 are cited only for the refusal of a vehicle converted to or from personal use."
+  },
+  "limit:p550:p61:ef3a86cd": {
+   "enforced_by": [
+    "sales.correct_basis"
+   ],
+   "reason": "The question states the part-sale, part-gift rule, including that for figuring a loss the basis is limited to the property's fair market value at the transfer; the filer enters the corrected basis."
+  },
+  "limit:p550:p81:8bbd9946": {
+   "enforced_by": [
+    "sales.box"
+   ],
+   "reason": "An example of the one-year holding-period rule; sales.box asks the filer to classify the sale as short- or long-term by that rule (holding period counted from the day after acquisition, through the sale date)."
+  },
+  "limit:p560:p18:df370206": {
+   "not_applicable": "SIMPLE 401(k) plan rule; a SIMPLE 401(k) is a qualified plan, refused by person.plan_screened (person.plan_screen: 'to a qualified plan (such as a solo 401(k))'); p560 p. 18 is cited by retirement.rollover only for the SIMPLE IRA 2-year rollover rule."
+  },
+  "limit:p560:p18:e80dbc74": {
+   "not_applicable": "SIMPLE 401(k) plan rule; a SIMPLE 401(k) is a qualified plan, refused by person.plan_screened (person.plan_screen: 'to a qualified plan (such as a solo 401(k))'); p560 p. 18 is cited by retirement.rollover only for the SIMPLE IRA 2-year rollover rule."
   }
  },
  "baseline": {

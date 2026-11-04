@@ -5,7 +5,7 @@ The rendered English of every printed line of `Schedule C line 9 and Part IV, an
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
-| line-scoped reviews | 1 (latest 2026-11-04); see Line-scoped reviews |
+| line-scoped reviews | 2 (latest 2026-11-04); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | fca791ca88a08e3788c1c72c0e83aea2e256f2ecb27cede0cb2db8a45809a55a |
@@ -100,22 +100,24 @@ Reviewed in: pass f7924f6e6504
 ### (screen) (scveh.screen) — Does any of these apply to this vehicle?
 Status: **MATCH**
 
-Model: The excluded cases match the IRS text. They include trade-ins, ADS, the listed-property exclusions, the qualified-business-use exclusions, the special-allowance exceptions, the casualty basis adjustment, short tax years, leasing and recordkeeping. Each falls outside what the program computes and is refused.
+Model: The screen only narrows scope. Its items follow the given text: the Form 4562 line 14 exceptions (section 168(k)(9)(A)/(B), ADS, conversions), qualified business use exclusions ('Leasing the property to a 5% owner or related person if the value related to such usage is not reported as income'), the noncorporate lessor tests, the tax-exempt, governmental and foreign-use exceptions, the records requirement, casualty basis reductions, short tax years, trade-ins and original use. The refusal on column (d) names these exclusions.
+Reviewed in: pass 7790431cc057
 
 ### (d) — Cost or other basis
 Status: **MATCH**
 
-Model: This matches column (d): "actual cost (including sales tax) or other basis (unadjusted for prior years' depreciation)". A converted vehicle uses the smaller of adjusted basis or FMV. Vehicle-credit reductions and trade-ins are refused through the screen.
+Model: This matches i4562 column (d), 'actual cost (including sales tax) or other basis (unadjusted for prior years' depreciation),' with the smaller of adjusted basis or FMV for conversions. It also matches Pub. 463: cost 'includes sales taxes..., destination charges, and dealer preparation' and is decreased by 'gas guzzler tax'. Section 179 is correctly left for column (e), and credit reductions are screened out.
+Reviewed in: pass 7790431cc057
 
 ### 13 — Business/investment cost (cost times business use)
 Status: **MISMATCH**
 
 Restated: Divide helper "Business miles, as cents" by helper "Total miles, as cents", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply column (d) by the result.
 
-Model: Worksheet line 13 multiplies line 12 by line 8, the business/investment-use percentage. For a vehicle converted from personal use during the year, Form 4562 column (c) and Pub. 463 say to "figure the percentage of business/investment use only for the number of months you use the property in your business ... Multiply that percentage by the number of months ... and divide the result by 12." The restatement instead uses whole-year business miles over total miles, and conversions of owned vehicles are not refused. (This assumes "13" is worksheet line 13, the business/investment cost; it is not Schedule C line 13.)
+Model: The restatement multiplies column (d) by the business-use percentage. That is the first step of Form 4562 column (e) ('Multiply column (d) by the percentage in column (c)'), not 'Depreciation and section 179 expense deduction' as Schedule C line 13 requires. It omits the section 179 and special-allowance subtraction, the column (h) depreciation rate ('follow the instructions for line 19, column (g)'), and the passenger automobile limits ('cannot exceed the applicable limit shown in Table 1, 2, 3, or 4').
 
-Ruling: scope; the model's converted-vehicle months proration applies to an owned vehicle converted from personal to business use during the year, which scveh.screen refuses ("you converted it from personal use to business use during 2025"; i4562 p. 14, "If during the tax year you convert property used solely for personal purposes to business/investment use"). The model's "conversions of owned vehicles are not refused" is wrong. For a vehicle used in the business all year, business miles over total miles is the percentage (i4562 p. 14, Column (c)). Project stands.
-Reviewed in: pass f7924f6e6504
+Ruling: model error; p946 pp. 61-62, Depreciation Worksheet for Passenger Automobiles, line 13, "Multiply line 12 by line 8. This is your business/investment cost" (the line's cite). The printed handle 13 is that worksheet line, not Schedule C line 13; the depreciation rate, section 179 and special-allowance subtraction and the automobile limits are on the project's later worksheet lines (column (h), scveh.macrs). The restatement states the line. Project stands.
+Reviewed in: pass 7790431cc057
 
 ### (screen) (scveh.bonus_same) — Is the choice the same for all 5-year property placed in service in 2025?
 Status: **MATCH**
@@ -214,9 +216,9 @@ What each compared line's verdict depends on within the document (tools/transcri
 | (screen) (scveh.lease_smr_before) | 3b7b3aabbc6c5d31b1c98695ea76b5ebda1e48236a80be3d7d009a3c51d93807 |
 | 20a | bdae3ad9304c24d80874654c5098bdea7b7b46c534edf85e944e4f3a456df4ad |
 | (b) | 3d1072852e40be84db47283401be422fb858a0c61b8ba666b2b967fbc82bb104 |
-| (screen) (scveh.screen) | 3453b1f7b0ba579acf09040791dd0e2bbc659c52c7c528efcc1933e3e350428f |
-| (d) | 1379ef76efc8e9d8723d89f43e96c55de8067a00b0cf1d5f01284594debe466f |
-| 13 | 49f5983d1b56a715d3a938d732b7f76f5fc189e3e7688afe7ef4d431e0ac9259 |
+| (screen) (scveh.screen) | 2e4c203329b67946eaadee7b40d5e5a5efe193ef6fa98aa7f2b0b14fcb000144 |
+| (d) | 08427331c7ae9558829419cdbb0913d4bebf8f41d9028fcc1383858dbb1a1fd9 |
+| 13 | 392f341557b6cc28e59c9ebf8308e0364afc87e1a3c66a6f5df892433fd21133 |
 | (screen) (scveh.bonus_same) | bcc0a3d54012fab053eedd53cdfdd1d7d0a471c32654babe2b00b4cf3cc2d878 |
 | 7 | 7abf8db58a329d5016a0adcdd95e4c171494f2cfa2c13c57c7e54b1b2b5b52c5 |
 | 9 (scveh.line9w) | d456efa786a3ce1221cc59286357f5c111d0c4c34d469456b480450792d994f4 |
@@ -236,6 +238,52 @@ What each compared line's verdict depends on within the document (tools/transcri
 ## Line-scoped reviews
 
 Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
+
+#### Pass 7790431cc057
+
+| field | value |
+| --- | --- |
+| date | 2026-11-04 |
+| review scope | lines (screen) (scveh.screen), (d), 13 |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | 7790431cc0571127e26cf3f38c496526895ba92630753e855f808edfc01811f8 |
+| prompt policy | render-source-comparison-v2+lines-v1 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| subject sha256 | 12d53698e1663e72a7bc327c42b631f778d2e2bcaabbd1d9bd454da956bc193d |
+| receipt | .transcription/scveh.render.lines-ce6853f5a230 |
+| lines judged | 3 |
+| match / mismatch / unclear / missing | 2 / 1 / 0 / 0 |
+| verdicts for lines not in the form | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i1040sc | 2025 | 6, 7, 15 | cited pages | dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a | 6, 7, 15 | 616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918 |
+| f1040sc | 2025; created 2025-04-03 | 1, 2 | whole document | ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022 | - | 44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376 |
+| i4562 | 2025 | 3, 4, 5, 6, 7, 9, 11, 12, 13, 14, 15 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 3, 5, 6, 7, 9, 11, 12, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
+| p946 | For use in preparing 2025 returns | 17, 31, 37, 60, 61, 62, 63 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 17, 31, 37, 63 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
+| p463 | For use in preparing 2025 returns | 25, 26 | pages named by another document's citation | 153efad2a94bcccadf643b0f28f913d74b7d70b727f73eca540a2ce4d32bbfda | 25, 26 | a0b14576fdb49a7ba3e7a90092c1b8f6b8ba33889c8c35da5629156346581326 |
+
+##### Raw response
+
+```yaml
+```yaml
+lines:
+  - key: "(screen) (scveh.screen)"
+    status: MATCH
+    reason: "The screen only narrows scope. Its items follow the given text: the Form 4562 line 14 exceptions (section 168(k)(9)(A)/(B), ADS, conversions), qualified business use exclusions ('Leasing the property to a 5% owner or related person if the value related to such usage is not reported as income'), the noncorporate lessor tests, the tax-exempt, governmental and foreign-use exceptions, the records requirement, casualty basis reductions, short tax years, trade-ins and original use. The refusal on column (d) names these exclusions."
+  - key: "(d)"
+    status: MATCH
+    reason: "This matches i4562 column (d), 'actual cost (including sales tax) or other basis (unadjusted for prior years' depreciation),' with the smaller of adjusted basis or FMV for conversions. It also matches Pub. 463: cost 'includes sales taxes..., destination charges, and dealer preparation' and is decreased by 'gas guzzler tax'. Section 179 is correctly left for column (e), and credit reductions are screened out."
+  - key: "13"
+    status: MISMATCH
+    reason: "The restatement multiplies column (d) by the business-use percentage. That is the first step of Form 4562 column (e) ('Multiply column (d) by the percentage in column (c)'), not 'Depreciation and section 179 expense deduction' as Schedule C line 13 requires. It omits the section 179 and special-allowance subtraction, the column (h) depreciation rate ('follow the instructions for line 19, column (g)'), and the passenger automobile limits ('cannot exceed the applicable limit shown in Table 1, 2, 3, or 4')."
+```
+```
 
 #### Pass f7924f6e6504
 
