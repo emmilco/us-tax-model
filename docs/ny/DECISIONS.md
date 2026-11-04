@@ -1,5 +1,8 @@
 # New York: decisions for the owner (batch 1, 2026-11-04)
 
+> **Decided 2026-11-04.** The owner answered Part A (below) and accepted every suggestion in Parts B and C ("accept all
+> suggestions"), as summarized in "Decisions taken" at the end. Phase 3 starts with a new section of the brief.
+
 Written at the end of Phase 2 of `docs/ny/2026-11-04_ny_cloud_brief.md`. Each question stands on its own; the premise
 map behind it (`research/premises/ny-it201-nyc-resident.md`, with its independent verification
 `research/premises/ny-it201-nyc-resident.verification.md`) is there if you want the quoted source, but you should not
@@ -259,3 +262,39 @@ adopted the same way as the federal.
   printed, not derived.
 - **Tax rate schedule bases and the recapture amounts** are pinned as printed (they are roundings of exact running
   totals, so recomputing them would differ by a dollar in one place).
+
+---
+
+## Decisions taken (owner, 2026-11-04: "accept all suggestions")
+
+The suggestions as last put to the owner in the session (which differ from the text above only in B6, changed to (b)
+once Part A showed a balance due with no estimated payments):
+
+- **B1** refuse when federal Schedule 1 line 1 (IT-201 line 4) is nonzero or a New York inflation refund check was
+  included in federal AGI; revisit with the 2026 instructions.
+- **B2** a separate New York collection mirroring Form IT-2's W-2 records, keyed to the federal W-2 entries; the federal
+  W-2 definition is unchanged; New York withholding on any other form is refused.
+- **B3** ask whether any sales or use tax is owed: No enters 0; Yes uses the chart from federal AGI, refusing the cases
+  that need Form ST-141.
+- **B4** refuse lines 20, 21, 22, 26, 28, 29 and 30 when they apply (the owner did not ask for line 28 to be computed).
+- **B5** refuse the MCTMT when the $50,000 threshold is met.
+- **B6** (b): a screen on the estimated-tax safe harbor, with the prior year's New York tax typed; refuse when not met.
+- **B7** refuse line 69a when either "income" reading is over $500,000.
+- **B8** a New York question of its own for item C.
+- **B9** refuse lines 65 and 70 when the federal EIC is more than zero or federal AGI is under the federal EIC's limit.
+- **B10** line 70a zero with no dependents; refused otherwise.
+- **B11** lines 60, 78a, 82, item G codes and decedent returns refused; personal data never encoded (a reminder only).
+- **C1** (a) a separate tree by jurisdiction: `sources/ny/<year>/`, `forms/ny/<year>/`, `params/ny/<year>.yaml`,
+  `tables/ny/<year>/`, `ambiguities/ny/<year>.yaml`, `fixtures/ny/<year>/`, `interview/ny/`, `reports/ny/<year>/`;
+  the citation, year-diff and source-coverage tools are taught the New York archive.
+- **C2** line ids `ny_it201.lineN` and `ny_it201.<name>`; one `ny_tcw` definition instantiated per worksheet.
+- **C3** New York lines `copy` federal lines; line 19 by its printed arithmetic, checked against `f1040.line11a`.
+- **C4** whole dollars, half-up, on each federal amount copied and on each computed tax and credit line; one
+  ambiguity-register entry.
+- **C5** a New York interview profile run after the federal one, residency screens first; a New York refusal stops only
+  the New York return.
+- **C6** the two tax-table examples as class A; synthetic regression cases predicted from the source; check in Phase 3
+  whether PolicyEngine-US or OpenTaxSolver compute New York tax for a class C differential; the owner's return is never
+  a fixture.
+- **C7** the spec records this branch's exception now (spec 2.3).
+- **C8** `tools/year_diff.py` and `tools/fixtures_year.py` learn the New York catalog in Phase 3.
