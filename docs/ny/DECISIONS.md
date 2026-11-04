@@ -85,9 +85,9 @@ The owner shared images of their 2025 IT-201 in the session (identifiers cropped
 checklist; no image, amount or identifier from them is stored in the repository, and only the yes/no and zero/nonzero
 answers below are recorded.
 
-- A1: ① single. (2026 expectation not yet stated.)
+- A1: ① single; the same for 2026 (owner, 2026-11-04).
 - A2: item C No.
-- A3: item D2 No on (1) and (4); item E blank; item F 12 months. (2026 residency and any planned move not yet stated.)
+- A3: item D2 No on (1) and (4); item E blank; item F 12 months. For 2026: still a full-year New York City resident (owner, 2026-11-04).
 - A4: no special condition code.
 - A5: no dependents (item H empty; line 36 zero).
 - A6: lines 20 to 23 and 25 to 31 all zero.
@@ -98,9 +98,9 @@ answers below are recorded.
 - A10: lines 40 and 48 zero; lines 69 and 69a nonzero.
 - A11: line 59 was 0.
 - A12: New York State and City withholding (lines 72, 73) nonzero; Yonkers and line 75 (estimated and extension
-  payments) zero. Whether any withholding came from forms other than W-2 is not visible on IT-201 (Form IT-2 was not
-  shared). There was a balance due, paid by electronic funds withdrawal.
-- A13: not answered (it is about 2026).
+  payments) zero. All New York withholding is from Forms W-2 (owner, 2026-11-04). There was a balance due, paid by electronic funds withdrawal.
+- A13: for 2026, no self-employment income, no federal earned income credit, no IRA distributions (owner,
+  2026-11-04).
 - Also seen: the federal lines in use were wages, taxable interest, ordinary dividends, capital gain, and other income
   identified as Form 8889 (HSA) income; no adjustments to income; lines 4 to 6, 8 to 15 zero.
 
