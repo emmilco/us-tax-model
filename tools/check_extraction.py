@@ -28,13 +28,16 @@ For every archived PDF, per page:
                                are listed with their reason in tools/extraction/exceptions.json;
                                the report prints them, and any other difference fails.
 
-Writes reports/<year>/extraction.md and exits 1 on any failure.
+Writes reports/<year>/extraction.md and exits 1 on any failure. With `--jurisdiction ny`
+it checks the New York archive (sources/ny/<year>/, fetch_sources.py --jurisdiction ny)
+and writes reports/ny/<year>/extraction.md; the HTML twin of `<id>` is `<id>-html` in
+either archive.
 
 PDFKit is Apple's, so check 2 needs macOS and Swift. Off macOS, with no `swift` on the
 PATH, check 2 is skipped: the report and the summary line say so, and its check is not
 claimed. On macOS a missing Swift is an error, not a skip.
 
-    check_extraction.py [--no-pdfkit]
+    check_extraction.py [--no-pdfkit] [--jurisdiction us|ny]
 """
 import argparse
 import json
@@ -311,9 +314,14 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--no-pdfkit", action="store_true", help="skip the PDFKit cross-reading")
     ap.add_argument("--self-test", action="store_true", help="the synthetic check of the token matching (in check-all)")
+    ap.add_argument("--jurisdiction", choices=("us", "ny"), default="us",
+                    help="the federal archive (default) or the New York one, sources/ny/<year>/")
     a = ap.parse_args()
     if a.self_test:
         sys.exit(self_test())
+    global ARCHIVE, REPORT
+    if a.jurisdiction == "ny":
+        ARCHIVE, REPORT = ROOT / "sources" / "ny" / Y, ROOT / "reports" / "ny" / Y / "extraction.md"
     skip_pdfkit = pdfkit_skip_reason(a.no_pdfkit, sys.platform, shutil.which("swift"))
     docs = json.loads((ARCHIVE / "manifest.json").read_text())["documents"]
     html_docs = {d["id"][: -len("-html")]: d for d in docs if d["id"].endswith("-html")}
