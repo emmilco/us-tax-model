@@ -1,0 +1,337 @@
+diff --git a/forms/2025/f1040.yaml b/research/ty2026/forms-proposed/f1040.yaml
+index b057fb8..7bfde6e 100644
+--- a/forms/2025/f1040.yaml
++++ b/research/ty2026/forms-proposed/f1040.yaml
+@@ -1,8 +1,11 @@
++# PROPOSED 2026 definition (TY2026 step 5), not read by the build. A copy of forms/2025/f1040.yaml with the
++# definition changes of research/ty2026/changes.md C-PRI-01 to C-PRI-08 (all from the IRS 2026 draft of Form 1040).
++# Year constants and other citations are left for tools/year_diff.py --adopt. See README.md.
+ form:
+   id: f1040
+   kind: form
+   title: Form 1040 — U.S. Individual Income Tax Return (the lines this tool computes)
+-  tax_year: 2025
++  tax_year: 2026
+   lines:
+     - id: f1040.status
+       printed: Filing Status
+@@ -422,8 +425,45 @@ form:
+           cite:
+             doc: i1040gi
+             locator: 'p. 15, Qualifying Surviving Spouse; p501 p. 11, Kidnapped child, "You may be eligible to file as a qualifying surviving spouse even if the child who qualifies you for this filing status has been kidnapped."'
++    - id: f1040.gate.nonitemizer_gifts
++      printed: (gate)
++      type: Bool
++      label: Standard deduction taken and cash or check gifts to charity entered (Form 1040 line 12f)
++      expr:
++        op: test
++        all:
++          - op: test
++            eq:
++              - sa.itemizes
++              - const: false
++          - op: test
++            gt:
++              - sa.line11
++              - const: 0
++      cite:
++        doc: f1040
++        locator: 'Form 1040 (2026), line 12f (draft), "Charitable contribution deduction for non-itemizers (see instructions)"'
++    - id: f1040.line12f
++      printed: 12f
++      label: Charitable contribution deduction for non-itemizers (see instructions)
++      type: NonNegDollars
++      expr:
++        op: copy
++        from: sa.zero
++      cite:
++        doc: f1040
++        locator: 'Form 1040 (2026), line 12f (draft), "Charitable contribution deduction for non-itemizers (see instructions)"'
++      refuses:
++        - when: f1040.gate.nonitemizer_gifts
++          form: The charitable contribution deduction for non-itemizers (Form 1040, line 12f)
++          remedy: You took the standard deduction and gave cash or checks to charity. For 2026 a filer who does not
++            itemize may deduct some of these gifts on line 12f; this tool does not yet figure that deduction (the 2026
++            Form 1040 instructions that define it are not published).
++          cite:
++            doc: plaw-119-21
++            locator: 'p. 165, section 70424, amending section 170(p), "by striking ‘‘$300 ($600’’ and inserting ‘‘$1,000 ($2,000’’"'
+     - id: f1040.line13a
+-      printed: 13a
++      printed: 13b
+       label: Qualified business income deduction from Form 8995 or Form 8995-A
+       type: NonNegDollars
+       expr:
+@@ -431,30 +471,82 @@ form:
+         from: qbi.deduction
+       cite:
+         doc: f1040
+-        locator: Form 1040 (2025), line 13a
++        locator: Form 1040 (2026), line 13b (draft)
+     - id: f1040.line13b
+-      printed: 13b
+-      label: Additional deductions from Schedule 1-A, line 38
++      printed: 13a
++      label: Additional deductions from Schedule 1-A, line 44
+       type: NonNegDollars
+       expr:
+         op: copy
+         from: s1a.line38
+       cite:
+         doc: f1040
+-        locator: Form 1040 (2025), line 13b; i1040gi p. 34, Line 13b, "enter on line 13b the amount, if any, from Schedule 1-A, line 38"
++        locator: 'Form 1040 (2026), line 13a (draft), "Additional deductions from Schedule 1-A, line 44"'
+     - id: f1040.line14
+       printed: "14"
+-      label: Add lines 12e, 13a, and 13b
++      label: Add lines 12e, 12f, 13a, and 13b
+       type: NonNegDollars
+       expr:
+         op: sum
+         of:
+           - f1040.line12e
++          - f1040.line12f
+           - f1040.line13a
+           - f1040.line13b
+       cite:
+         doc: f1040
+         locator: Form 1040 (2025), line 14
++    - id: f1040.line13_total
++      printed: (helper)
++      type: NonNegDollars
++      label: Add lines 13a and 13b
++      expr:
++        op: sum
++        of:
++          - f1040.line13a
++          - f1040.line13b
++      cite:
++        doc: f1040sa
++        locator: 'Schedule A (2026), line 18 (draft), "Is the amount on Form 1040 or 1040-SR, line 11b, minus the amounts on lines 13a and 13b of that form, more than $384,350?"'
++    - id: f1040.limit_base
++      printed: (helper)
++      type: Dollars
++      label: Form 1040 line 11b minus lines 13a and 13b
++      expr:
++        op: subtract
++        from: f1040.line11b
++        take: f1040.line13_total
++      cite:
++        doc: f1040sa
++        locator: 'Schedule A (2026), line 18 (draft), "minus the amounts on lines 13a and 13b of that form, more than $384,350?"'
++    - id: f1040.limit_screen
++      printed: (helper)
++      type: Dollars
++      label: Year parameter sa.limit_screen
++      expr:
++        op: param
++        ref: sa.limit_screen
++      cite:
++        doc: f1040sa
++        locator: 'Schedule A (2026), line 18 (draft), "more than $384,350?"'
++    - id: f1040.gate.itemized_limit
++      printed: (gate)
++      type: Bool
++      label: Itemizing, and line 11b minus lines 13a and 13b is more than the Schedule A line 18 amount
++      expr:
++        op: test
++        all:
++          - op: test
++            eq:
++              - sa.itemizes
++              - const: true
++          - op: test
++            gt:
++              - f1040.limit_base
++              - f1040.limit_screen
++      cite:
++        doc: f1040sa
++        locator: 'Schedule A (2026), line 18 (draft), "Yes. Your deductions may be limited. See the Itemized Deductions Worksheet in the instructions to figure the amount to enter"'
+     - id: f1040.line15
+       printed: "15"
+       label: Subtract line 14 from line 11b. If zero or less, enter -0-. This is your taxable income
+@@ -467,6 +559,14 @@ form:
+         doc: i1040gi
+         locator: f1040 Form 1040 (2025), line 15, "Subtract line 14 from line 11b. If zero or less, enter -0-. This is
+           your taxable income"
++      refuses:
++        - when: f1040.gate.itemized_limit
++          form: Schedule A Itemized Deductions Worksheet (2026)
++          remedy: Your itemized deductions may be limited for 2026 (Schedule A line 18, "Yes"); the worksheet that
++            figures the limit is in the 2026 Schedule A instructions, which are not published yet.
++          cite:
++            doc: plaw-119-21
++            locator: 'p. 94, section 70111, section 68(a), "shall be reduced by 2⁄37 of the lesser of"'
+     - id: f1040.gate.qdcg_applies
+       printed: (gate)
+       label: Use the Qualified Dividends and Capital Gain Tax Worksheet?
+@@ -677,7 +777,7 @@ form:
+         locator: Form 1040 (2025), line 22
+     - id: f1040.line23
+       printed: "23"
+-      label: Other taxes, including self-employment tax, from Schedule 2, line 21
++      label: Additional taxes, including self-employment tax, from Schedule 2, line 21
+       type: NonNegDollars
+       expr:
+         op: copy
+@@ -686,7 +786,7 @@ form:
+         doc: f1040
+         locator: Form 1040 (2025), line 23
+     - id: f1040.line24
+-      printed: "24"
++      printed: 24a
+       label: Add lines 22 and 23. This is your total tax
+       type: NonNegDollars
+       expr:
+@@ -696,7 +796,47 @@ form:
+           - f1040.line23
+       cite:
+         doc: f1040
+-        locator: Form 1040 (2025), line 24
++        locator: Form 1040 (2026), line 24a (draft)
++    - id: f1040.form1062
++      printed: (helper)
++      type: Bool
++      label: Are you electing to pay the tax on gain from a sale or exchange of qualified farmland property to a
++        qualified farmer in four annual installments (Form 1062)?
++      expr:
++        op: input
++        source: Form 1062 election (interview question)
++      cite:
++        doc: i1062
++        locator: 'p. 2 (draft), What’s New, "New election to pay the tax on gain from the sale or exchange of qualified farmland property to qualified farmers in installments"'
++    - id: f1040.line24b
++      printed: 24b
++      label: Enter amount from Form 1062, line 15
++      type: NonNegDollars
++      expr:
++        op: copy
++        from: sa.zero
++      cite:
++        doc: f1040
++        locator: 'Form 1040 (2026), line 24b (draft), "Enter amount from Form 1062, line 15"'
++      refuses:
++        - when: f1040.form1062
++          form: Form 1062 (installment payment of tax on a sale of qualified farmland property)
++          remedy: This tool does not prepare Form 1062 or Schedule A (Form 1062).
++          cite:
++            doc: f1062
++            locator: 'p. 2 (draft), line 15, "First installment due. Enter 25% (0.25) of line 14 here"'
++    - id: f1040.line24c
++      printed: 24c
++      label: Add lines 24a and 24b
++      type: NonNegDollars
++      expr:
++        op: sum
++        of:
++          - f1040.line24
++          - f1040.line24b
++      cite:
++        doc: f1040
++        locator: 'Form 1040 (2026), line 24c (draft), "Add lines 24a and 24b"'
+     - id: f1040.line25a
+       printed: 25a
+       label: Federal income tax withheld from Form(s) W-2
+@@ -818,21 +958,9 @@ form:
+       cite:
+         doc: f1040
+         locator: Form 1040 (2025), line 28
+-    - id: f1040.line28_box
+-      printed: 28 (box)
+-      label: If you do not want to claim the ACTC, check here (not asked; this tool always claims the credit)
+-      type: Bool
+-      expr:
+-        op: test
+-        eq:
+-          - const: true
+-          - const: false
+-      cite:
+-        doc: i1040gi
+-        locator: p. 61, Line 28, "If you do not want to claim the additional child tax credit, check the box on line 28"
+     - id: f1040.line29
+       printed: "29"
+-      label: American opportunity credit from Form 8863, line 8
++      label: Refundable American opportunity credit from Form 8863, line 8
+       type: NonNegDollars
+       expr:
+         op: choose
+@@ -880,8 +1008,8 @@ form:
+         doc: f1040
+         locator: Form 1040 (2025), line 31
+     - id: f1040.line32
+-      printed: "32"
+-      label: Add lines 27a, 28, 29, 30, and 31. These are your total other payments and refundable credits
++      printed: 32a
++      label: Add lines 27a, 28, 29, 30, and 31
+       type: NonNegDollars
+       expr:
+         op: sum
+@@ -893,28 +1021,49 @@ form:
+           - f1040.line31
+       cite:
+         doc: f1040
+-        locator: Form 1040 (2025), line 32
++        locator: 'Form 1040 (2026), line 32a (draft), "Add lines 27a, 28, 29, 30, and 31"'
++    - id: f1040.line32b
++      printed: 32b
++      label: Amount from Schedule 3-A
++      type: NonNegDollars
++      expr:
++        op: copy
++        from: s3a.line8
++      cite:
++        doc: f1040
++        locator: 'Form 1040 (2026), line 32b (draft), "Amount from Schedule 3-A"'
++    - id: f1040.line32c
++      printed: 32c
++      label: Subtract line 32b from line 32a
++      type: NonNegDollars
++      expr:
++        op: subtract_floor0
++        from: f1040.line32
++        take: f1040.line32b
++      cite:
++        doc: f1040
++        locator: 'Form 1040 (2026), line 32c (draft), "Subtract line 32b from line 32a"'
+     - id: f1040.line33
+       printed: "33"
+-      label: Add lines 25d, 26, and 32. These are your total payments
++      label: Add lines 25d, 26, and 32c. These are your total payments
+       type: NonNegDollars
+       expr:
+         op: sum
+         of:
+           - f1040.line25d
+           - f1040.line26
+-          - f1040.line32
++          - f1040.line32c
+       cite:
+         doc: f1040
+         locator: Form 1040 (2025), line 33
+     - id: f1040.line34
+       printed: "34"
+-      label: If line 33 is more than line 24, subtract line 24 from line 33. This is the amount you overpaid
++      label: If line 33 is more than line 24c, subtract line 24c from line 33. This is the amount you overpaid
+       type: NonNegDollars
+       expr:
+         op: subtract_floor0
+         from: f1040.line33
+-        take: f1040.line24
++        take: f1040.line24c
+       cite:
+         doc: f1040
+         locator: Form 1040 (2025), line 34
+@@ -940,11 +1089,11 @@ form:
+         locator: Form 1040 (2025), line 36
+     - id: f1040.line37
+       printed: "37"
+-      label: Subtract line 33 from line 24. This is the amount you owe
++      label: Subtract line 33 from line 24c. This is the amount you owe
+       type: NonNegDollars
+       expr:
+         op: subtract_floor0
+-        from: f1040.line24
++        from: f1040.line24c
+         take: f1040.line33
+       cite:
+         doc: f1040

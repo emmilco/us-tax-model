@@ -1,0 +1,156 @@
+diff --git a/forms/2025/scveh.yaml b/research/ty2026/forms-proposed/scveh.yaml
+index 9f1b25e..4c9ae44 100644
+--- a/forms/2025/scveh.yaml
++++ b/research/ty2026/forms-proposed/scveh.yaml
+@@ -1,8 +1,13 @@
++# PROPOSED 2026 definition (TY2026), not read by the build. A copy of forms/2025/scveh.yaml with the definition
++# change of research/ty2026/changes.md C-BUS-01: two business standard mileage rates, held as exact rates (dollars per
++# mile) and rounded half-up to the cent at the product line (owner decision 2026-11-04). New parameters
++# sc.mileage_rate_h1 and sc.mileage_rate_h2 replace sc.mileage_rate (research/ty2026/params-2026.proposed.yaml). Other
++# year text (2025 in questions, i4562 and Pub. 946 tables) is left to tools/year_diff.py --adopt. See README.md.
+ form:
+   id: scveh
+   kind: form
+   title: Schedule C line 9 and Part IV, and Form 4562 Part V — one vehicle used in a business
+-  tax_year: 2025
++  tax_year: 2026
+   note: 'One entry per car, truck or van used in the business: the standard mileage rate or actual expenses (Schedule C line
+     9 and, for a lease, line 20a), and for an owned vehicle on actual expenses its depreciation by Pub. 946''s Depreciation
+     Worksheet for Passenger Automobiles (Form 4562 Part V): placed in service 2019 to 2025, a 2019 vehicle''s first year after
+@@ -50,16 +55,40 @@ form:
+     cite:
+       doc: f1040sc
+       locator: Schedule C (2025), line 43
++  - id: scveh.miles_business_h1
++    printed: (helper)
++    label: Business miles, January 1 to June 30, 2026
++    type: Count
++    expr:
++      op: input
++      source: The miles you drove this vehicle for this business (not commuting) from January 1, 2026, to June 30, 2026
++    cite:
++      doc: i1040sc
++      locator: 'p. 7 (draft), Line 9, "Multiply your business miles driven from January 1, 2026, to June 30, 2026, by 72.5
++        cents per mile"'
++  - id: scveh.miles_business_h2
++    printed: (helper)
++    label: Business miles, July 1 to December 31, 2026
++    type: Count
++    expr:
++      op: input
++      source: The miles you drove this vehicle for this business (not commuting) from July 1, 2026, to December 31, 2026
++    cite:
++      doc: i1040sc
++      locator: 'p. 7 (draft), Line 9, "Multiply your business miles driven from July 1, 2026, to December 31, 2026, by 76 cents
++        per mile"'
+   - id: scveh.miles_business
+     printed: 44a
+-    label: Business miles
++    label: Add scveh.miles_business_h1, scveh.miles_business_h2
+     type: Count
+     expr:
+-      op: input
+-      source: The miles you drove this vehicle in 2025 for this business (not commuting)
++      op: sum
++      of:
++      - scveh.miles_business_h1
++      - scveh.miles_business_h2
+     cite:
+       doc: f1040sc
+-      locator: Schedule C (2025), line 44a; i1040sc p. 15, Line 44b
++      locator: Schedule C (2026), line 44a, Business; the miles of both periods (C-BUS-01)
+   - id: scveh.miles_commuting
+     printed: 44b
+     label: Commuting miles
+@@ -235,28 +264,80 @@ form:
+     cite:
+       doc: i1040sc
+       locator: p. 6, Line 9
+-  - id: scveh.rate
++  - id: scveh.dollar
+     printed: (helper)
+-    label: Standard mileage rate per mile
++    label: One dollar
+     type: NonNegDollars
+     expr:
+       op: param
+-      ref: sc.mileage_rate
++      ref: sc.hundred_cents
+     cite:
+-      doc: n-25-05
+-      locator: Section 3, "The standard mileage rate for transportation or travel expenses for 2025 is 70 cents per mile for
+-        all miles of business use"
+-  - id: scveh.smr_amount
++      doc: n-26-10
++      locator: 'p. 3, section 3, the rate is stated per mile ("72.5 cents per mile"); it is held as dollars per mile (an exact rate)
++        and applied to the business miles as dollars'
++  - id: scveh.miles_h1_dollars
+     printed: (helper)
+-    label: Business miles times the standard mileage rate
++    label: Business miles January 1 to June 30, as dollars
+     type: NonNegDollars
+     expr:
+       op: multiply_count
+-      amount: scveh.rate
+-      count: scveh.miles_business
++      amount: scveh.dollar
++      count: scveh.miles_business_h1
++    cite:
++      doc: i1040sc
++      locator: 'p. 7 (draft), Line 9, "Multiply your business miles driven from January 1, 2026, to June 30, 2026, by 72.5
++        cents per mile"'
++  - id: scveh.miles_h2_dollars
++    printed: (helper)
++    label: Business miles July 1 to December 31, as dollars
++    type: NonNegDollars
++    expr:
++      op: multiply_count
++      amount: scveh.dollar
++      count: scveh.miles_business_h2
++    cite:
++      doc: i1040sc
++      locator: 'p. 7 (draft), Line 9, "Multiply your business miles driven from July 1, 2026, to December 31, 2026, by 76 cents
++        per mile"'
++  - id: scveh.smr_h1
++    printed: (helper)
++    label: Business miles January 1 to June 30 times 72.5 cents, rounded to the cent
++    type: NonNegDollars
++    expr:
++      op: multiply_rate
++      amount: scveh.miles_h1_dollars
++      rate:
++        param: sc.mileage_rate_h1
++    cite:
++      doc: n-26-10
++      locator: 'p. 3, section 3, "The standard mileage rate for transportation or travel expenses for 2026 is 72.5 cents per
++        mile for all miles of business use"; i1040sc p. 7 (draft), Line 9'
++    ambiguity: amb.2025.multiplication_subcent
++  - id: scveh.smr_h2
++    printed: (helper)
++    label: Business miles July 1 to December 31 times 76 cents
++    type: NonNegDollars
++    expr:
++      op: multiply_rate
++      amount: scveh.miles_h2_dollars
++      rate:
++        param: sc.mileage_rate_h2
++    cite:
++      doc: irb26-29
++      locator: 'p. 13, Announcement 2026-11, "(1) Business 76 cents per mile"; "apply to deductible transportation expenses
++        paid or incurred for business, medical, or moving expense purposes on or after July 1, 2026"'
++  - id: scveh.smr_amount
++    printed: (helper)
++    label: Add scveh.smr_h1, scveh.smr_h2
++    type: NonNegDollars
++    expr:
++      op: sum
++      of:
++      - scveh.smr_h1
++      - scveh.smr_h2
+     cite:
+       doc: i1040sc
+-      locator: p. 6, Line 9, "Multiply the number of business miles driven by 0.70"
++      locator: 'p. 7 (draft), Line 9, the two products: "by 72.5 cents per mile" and "by 76 cents per mile"'
+     refuses:
+     - when: scveh.smr_bad
+       form: Standard mileage rate not available (not used in the vehicle's first year or for the whole lease, or five or more

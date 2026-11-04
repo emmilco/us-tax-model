@@ -50,10 +50,8 @@
   },
   {
     "id": "f4952",
-    "url": "https://www.irs.gov/pub/irs-dft/f4952--dft.pdf",
-    "draft": true,
-    "draft_edition": "2026",
-    "draft_posted": "2026-05-29"
+    "url": "https://www.irs.gov/pub/irs-pdf/f4952.pdf",
+    "description": "Final 2026 edition (checked 2026-11-04); supersedes the IRS draft (2026 edition, posted 2026-05-29) archived in the rehearsal"
   },
   {
     "id": "f8959",
@@ -113,10 +111,8 @@
   },
   {
     "id": "iw2w3",
-    "url": "https://www.irs.gov/pub/irs-dft/iw2w3--dft.pdf",
-    "draft": true,
-    "draft_edition": "2026",
-    "draft_posted": "2026-01-30"
+    "url": "https://www.irs.gov/pub/irs-pdf/iw2w3.pdf",
+    "description": "Final 2026 edition (checked 2026-11-04); supersedes the IRS draft (2026 edition, posted 2026-01-30) archived in the rehearsal"
   },
   {
     "id": "i1099int",
@@ -148,10 +144,8 @@
   },
   {
     "id": "i1099r",
-    "url": "https://www.irs.gov/pub/irs-dft/i1099r--dft.pdf",
-    "draft": true,
-    "draft_edition": "2026",
-    "draft_posted": "2026-06-18"
+    "url": "https://www.irs.gov/pub/irs-pdf/i1099r.pdf",
+    "description": "Final 2026 edition (checked 2026-11-04); supersedes the IRS draft (2026 edition, posted 2026-06-18) archived in the rehearsal"
   },
   {
     "id": "f1040s1",
@@ -176,10 +170,8 @@
   },
   {
     "id": "f1099g",
-    "url": "https://www.irs.gov/pub/irs-dft/f1099g--dft.pdf",
-    "draft": true,
-    "draft_edition": "Dec 2026",
-    "draft_posted": "2025-10-15"
+    "url": "https://www.irs.gov/pub/irs-pdf/f1099g.pdf",
+    "description": "Final Form 1099-G (Rev. December 2026), the revision for calendar year 2026 (checked 2026-11-04); supersedes the IRS draft (Dec 2026 edition, posted 2025-10-15)"
   },
   {
     "id": "f1040s1a",
@@ -190,10 +182,8 @@
   },
   {
     "id": "f1040sc",
-    "url": "https://www.irs.gov/pub/irs-dft/f1040sc--dft.pdf",
-    "draft": true,
-    "draft_edition": "2026",
-    "draft_posted": "2026-05-28"
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040sc.pdf",
+    "description": "Final 2026 edition (checked 2026-11-04); supersedes the IRS draft (2026 edition, posted 2026-05-28) archived in the rehearsal"
   },
   {
     "id": "i1040sc",
@@ -204,17 +194,13 @@
   },
   {
     "id": "f1040sse",
-    "url": "https://www.irs.gov/pub/irs-dft/f1040sse--dft.pdf",
-    "draft": true,
-    "draft_edition": "2026",
-    "draft_posted": "2026-05-21"
+    "url": "https://www.irs.gov/pub/irs-pdf/f1040sse.pdf",
+    "description": "Final 2026 edition (checked 2026-11-04); supersedes the IRS draft (2026 edition, posted 2026-05-21) archived in the rehearsal"
   },
   {
     "id": "i1040sse",
-    "url": "https://www.irs.gov/pub/irs-dft/i1040sse--dft.pdf",
-    "draft": true,
-    "draft_edition": "2026",
-    "draft_posted": "2026-08-14"
+    "url": "https://www.irs.gov/pub/irs-pdf/i1040sse.pdf",
+    "description": "Final 2026 edition (checked 2026-11-04); supersedes the IRS draft (2026 edition, posted 2026-08-14) archived in the rehearsal"
   },
   {
     "id": "f4562",
@@ -351,10 +337,8 @@
   },
   {
     "id": "f1095a",
-    "url": "https://www.irs.gov/pub/irs-dft/f1095a--dft.pdf",
-    "draft": true,
-    "draft_edition": "2026",
-    "draft_posted": "2026-07-08"
+    "url": "https://www.irs.gov/pub/irs-pdf/f1095a.pdf",
+    "description": "Final 2026 edition (checked 2026-11-04); supersedes the IRS draft (2026 edition, posted 2026-07-08) archived in the rehearsal"
   },
   {
     "id": "i1095a",
@@ -397,5 +381,200 @@
     "draft": true,
     "draft_edition": "2026",
     "draft_posted": "2026-10-22"
+  },
+  {
+    "id": "p503",
+    "url": "https://www.irs.gov/pub/irs-dft/p503--dft.pdf",
+    "draft": true,
+    "draft_edition": "2026",
+    "draft_posted": "2026-10-29"
+  },
+  {
+    "id": "p590b",
+    "url": "https://www.irs.gov/pub/irs-dft/p590b--dft.pdf",
+    "draft": true,
+    "draft_edition": "2026",
+    "draft_posted": "2026-11-03"
+  },
+  {
+    "id": "p575",
+    "url": "https://www.irs.gov/pub/irs-dft/p575--dft.pdf",
+    "draft": true,
+    "draft_edition": "2026",
+    "draft_posted": "2026-10-02"
+  },
+  {
+    "id": "fw2",
+    "url": "https://www.irs.gov/pub/irs-pdf/fw2.pdf",
+    "description": "Final 2026 Form W-2 (checked 2026-11-04)"
+  },
+  {
+    "id": "f1099r",
+    "url": "https://www.irs.gov/pub/irs-pdf/f1099r.pdf",
+    "description": "Final 2026 Form 1099-R (checked 2026-11-04)"
+  },
+  {
+    "id": "f1098t",
+    "url": "https://www.irs.gov/pub/irs-pdf/f1098t.pdf",
+    "description": "Final 2026 Form 1098-T (checked 2026-11-04)"
+  },
+  {
+    "id": "i1098et",
+    "url": "https://www.irs.gov/pub/irs-pdf/i1098et.pdf",
+    "description": "Final 2026 Instructions for Forms 1098-E and 1098-T (checked 2026-11-04)"
+  },
+  {
+    "id": "p15",
+    "url": "https://www.irs.gov/pub/irs-pdf/p15.pdf",
+    "description": "Publication 15 (2026), for use in 2026 (final, checked 2026-11-04)"
+  },
+  {
+    "id": "p505-2026",
+    "url": "https://www.irs.gov/pub/irs-pdf/p505.pdf",
+    "document_tax_year": 2026,
+    "description": "Publication 505 (2026), for use in 2026 (final); the same document the 2025 catalog holds as Stage 0 evidence"
+  },
+  {
+    "id": "f1099int",
+    "url": "https://www.irs.gov/pub/irs-pdf/f1099int.pdf",
+    "description": "Continuous-use revision (Rev. January 2024), current on 2026-11-04 with no later draft posted; applies to 2026 unless superseded"
+  },
+  {
+    "id": "f1099div",
+    "url": "https://www.irs.gov/pub/irs-pdf/f1099div.pdf",
+    "description": "Continuous-use revision (Rev. January 2024), current on 2026-11-04; the posted draft is a Dec 2027 revision, so this revision applies to 2026"
+  },
+  {
+    "id": "i1099div",
+    "url": "https://www.irs.gov/pub/irs-pdf/i1099div.pdf",
+    "description": "Continuous-use revision (Rev. January 2024), current on 2026-11-04; the posted draft is a Dec 2027 revision"
+  },
+  {
+    "id": "f1099c",
+    "url": "https://www.irs.gov/pub/irs-pdf/f1099c.pdf",
+    "description": "Continuous-use revision (Rev. April 2025), current on 2026-11-04; applies to 2026 unless superseded"
+  },
+  {
+    "id": "i1099ac",
+    "url": "https://www.irs.gov/pub/irs-pdf/i1099ac.pdf",
+    "description": "Continuous-use revision (Rev. April 2025), current on 2026-11-04; applies to 2026 unless superseded"
+  },
+  {
+    "id": "f1099sa",
+    "url": "https://www.irs.gov/pub/irs-pdf/f1099sa.pdf",
+    "description": "Continuous-use revision (Rev. April 2025), current on 2026-11-04; applies to 2026 unless superseded"
+  },
+  {
+    "id": "f8283",
+    "url": "https://www.irs.gov/pub/irs-pdf/f8283.pdf",
+    "description": "Continuous-use revision (Rev. December 2025), current on 2026-11-04; applies to 2026 unless superseded"
+  },
+  {
+    "id": "i8283",
+    "url": "https://www.irs.gov/pub/irs-pdf/i8283.pdf",
+    "description": "Continuous-use revision (Rev. December 2025), current on 2026-11-04; applies to 2026 unless superseded"
+  },
+  {
+    "id": "f6198",
+    "url": "https://www.irs.gov/pub/irs-pdf/f6198.pdf",
+    "description": "Continuous-use revision (Rev. November 2025), current on 2026-11-04; applies to 2026 unless superseded"
+  },
+  {
+    "id": "i6198",
+    "url": "https://www.irs.gov/pub/irs-pdf/i6198.pdf",
+    "description": "Continuous-use revision (Rev. November 2025), current on 2026-11-04; applies to 2026 unless superseded"
+  },
+  {
+    "id": "p529",
+    "url": "https://www.irs.gov/pub/irs-pdf/p529.pdf",
+    "description": "Continuous-use revision (Rev. December 2020), current on 2026-11-04; applies to 2026 unless superseded"
+  },
+  {
+    "id": "p538",
+    "url": "https://www.irs.gov/pub/irs-pdf/p538.pdf",
+    "description": "Continuous-use revision (Rev. January 2022), current on 2026-11-04; applies to 2026 unless superseded"
+  },
+  {
+    "id": "i982",
+    "url": "https://www.irs.gov/pub/irs-pdf/i982.pdf",
+    "description": "Continuous-use revision (Rev. December 2021), current on 2026-11-04; applies to 2026 unless superseded"
+  },
+  {
+    "id": "rp-25-32",
+    "url": "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf",
+    "document_tax_year": 2026,
+    "purpose": "Rev. Proc. 2025-32: the 2026 inflation-adjusted amounts (brackets, standard deduction, credits, phase-outs); final guidance, the 2026 counterpart of rp-2024-40"
+  },
+  {
+    "id": "rp-25-19",
+    "url": "https://www.irs.gov/pub/irs-drop/rp-25-19.pdf",
+    "document_tax_year": 2026,
+    "purpose": "Rev. Proc. 2025-19: the 2026 HSA amounts under section 223 (Form 8889); final guidance"
+  },
+  {
+    "id": "n-25-67",
+    "url": "https://www.irs.gov/pub/irs-drop/n-25-67.pdf",
+    "document_tax_year": 2026,
+    "purpose": "Notice 2025-67: the 2026 cost-of-living adjustments of retirement plan and IRA limits; final guidance"
+  },
+  {
+    "id": "rp-25-25",
+    "url": "https://www.irs.gov/pub/irs-drop/rp-25-25.pdf",
+    "document_tax_year": 2026,
+    "purpose": "Rev. Proc. 2025-25: the 2026 applicable percentage table and required contribution percentage under section 36B (Form 8962); final guidance"
+  },
+  {
+    "id": "rp-26-15",
+    "url": "https://www.irs.gov/pub/irs-drop/rp-26-15.pdf",
+    "document_tax_year": 2026,
+    "purpose": "Rev. Proc. 2026-15: the limits on depreciation of passenger automobiles placed in service in 2026 (Form 4562, Schedule C vehicles); final guidance"
+  },
+  {
+    "id": "n-26-10",
+    "url": "https://www.irs.gov/pub/irs-drop/n-26-10.pdf",
+    "document_tax_year": 2026,
+    "purpose": "Notice 2026-10: the 2026 standard mileage rates (Schedule C line 9), modified for travel on or after July 1, 2026 by Announcement 2026-11 (irb26-29); final guidance"
+  },
+  {
+    "id": "irb26-29",
+    "url": "https://www.irs.gov/pub/irs-irbs/irb26-29.pdf",
+    "document_tax_year": 2026,
+    "purpose": "Internal Revenue Bulletin 2026-29, which prints Announcement 2026-11 (the revised 2026 standard mileage rates from July 1, 2026; no separate PDF is posted); final guidance"
+  },
+  {
+    "id": "fr-2025-01377",
+    "url": "https://www.govinfo.gov/content/pkg/FR-2025-01-17/pdf/2025-01377.pdf",
+    "document_tax_year": 2026,
+    "purpose": "The 2025 HHS poverty guidelines (90 FR 5917), the counterpart of fr-2024-00796 for the 2026 Form 8962 tables; that 2026 Form 8962 uses them must be confirmed from the 2026 Instructions for Form 8962 (not yet posted)"
+  },
+  {
+    "id": "plaw-119-21",
+    "url": "https://www.govinfo.gov/content/pkg/PLAW-119publ21/pdf/PLAW-119publ21.pdf",
+    "document_tax_year": 2026,
+    "purpose": "Public Law 119-21 as printed: the statute behind the amounts it fixes for 2026 (Schedule 1-A and others); the same document the 2025 catalog holds"
+  },
+  {
+    "id": "f1040s3a",
+    "url": "https://www.irs.gov/pub/irs-dft/f1040s3a--dft.pdf",
+    "draft": true,
+    "draft_edition": "2026",
+    "draft_posted": "2026-08-20",
+    "description": "Schedule 3-A (Form 1040), Federal Public Benefit: new for 2026, named on the 2026 Form 1040 draft, lines 32b and 32c"
+  },
+  {
+    "id": "f1062",
+    "url": "https://www.irs.gov/pub/irs-dft/f1062--dft.pdf",
+    "draft": true,
+    "draft_edition": "Dec 2026",
+    "draft_posted": "2026-08-04",
+    "description": "Form 1062: new, named on the 2026 Form 1040 draft, line 24b"
+  },
+  {
+    "id": "i1062",
+    "url": "https://www.irs.gov/pub/irs-dft/i1062--dft.pdf",
+    "draft": true,
+    "draft_edition": "Dec 2026",
+    "draft_posted": "2026-04-14",
+    "description": "Instructions for Form 1062: new, the instructions behind the 2026 Form 1040 draft, line 24b"
   }
 ]

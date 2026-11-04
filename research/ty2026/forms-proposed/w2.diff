@@ -1,0 +1,45 @@
+diff --git a/forms/2025/w2.yaml b/research/ty2026/forms-proposed/w2.yaml
+index 42eac27..e803828 100644
+--- a/forms/2025/w2.yaml
++++ b/research/ty2026/forms-proposed/w2.yaml
+@@ -1,8 +1,12 @@
++# PROPOSED 2026 definition (TY2026 step 5), not read by the build. A copy of forms/2025/w2.yaml with the two new
++# box 12 inputs of the final 2026 Form W-2 instructions (change map C-PRI-24). They have no reader yet: the Schedule 1-A
++# tip and overtime entries that use them wait on the 2026 Form 1040 instructions (C-SCHED-03, C-SCHED-05). The box 14b
++# occupation code and code TA are not proposed as inputs (see README.md).
+ form:
+   id: w2
+   kind: form
+   title: Form W-2 — wage, withholding and Social Security boxes by employer
+-  tax_year: 2025
++  tax_year: 2026
+   lines:
+     - id: w2.box1
+       printed: "1"
+@@ -231,6 +235,26 @@ form:
+         doc: iw2w3
+         locator: 'p. 20, Box 12—Codes, "for a prior year, you must enter the prior-year contributions separately. Beginning
+           with the earliest year, enter the code, the year, and the amount"'
++    - id: w2.box12_tp
++      printed: 12 (TP)
++      label: Box 12, code TP. Total amount of cash tips reported to the employer
++      type: NonNegDollars
++      expr:
++        op: input
++        source: Form W-2 box 12, code TP (total cash tips reported to the employer); zero if none
++      cite:
++        doc: iw2w3
++        locator: 'p. 23, Box 12—Codes, "Code TP—Total amount of cash tips reported to the employer"'
++    - id: w2.box12_tt
++      printed: 12 (TT)
++      label: Box 12, code TT. Total amount of qualified overtime compensation
++      type: NonNegDollars
++      expr:
++        op: input
++        source: Form W-2 box 12, code TT (total qualified overtime compensation); zero if none
++      cite:
++        doc: iw2w3
++        locator: 'p. 23, Box 12—Codes, "Code TT—Total amount of qualified overtime compensation"'
+     - id: w2.box12_d
+       printed: 12 (D)
+       label: Box 12, code D. Elective deferrals under a section 401(k) cash or deferred arrangement (plan), including a SIMPLE

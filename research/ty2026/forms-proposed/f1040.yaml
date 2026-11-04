@@ -1,0 +1,1100 @@
+# PROPOSED 2026 definition (TY2026 step 5), not read by the build. A copy of forms/2025/f1040.yaml with the
+# definition changes of research/ty2026/changes.md C-PRI-01 to C-PRI-08 (all from the IRS 2026 draft of Form 1040).
+# Year constants and other citations are left for tools/year_diff.py --adopt. See README.md.
+form:
+  id: f1040
+  kind: form
+  title: Form 1040 — U.S. Individual Income Tax Return (the lines this tool computes)
+  tax_year: 2026
+  lines:
+    - id: f1040.status
+      printed: Filing Status
+      label: Single. Married filing jointly (even if only one had income). Married filing separately. Head
+        of household (HOH). Qualifying surviving spouse (QSS).
+      type: Enum(filing_status)
+      expr:
+        op: input
+        source: Form 1040, Filing Status checkboxes
+      cite:
+        doc: f1040
+        locator: Form 1040, Filing Status
+    - id: f1040.line1a
+      printed: 1a
+      label: Total amount from Form(s) W-2, box 1
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: person
+        field: person.box1
+      cite:
+        doc: i1040gi
+        locator: pp. 23–24, Line 1a, Total Amount From Form(s) W-2, Box 1, "Enter the total amount from Form(s) W-2,
+          box 1. If a joint return, also include your spouse’s income from Form(s) W-2, box 1"
+      refuses:
+        - when: household.roster_bad
+          form: The people on the return
+          remedy: Enter one person with the role taxpayer, and, only when married filing jointly, one person with the
+            role spouse.
+          cite:
+            doc: f1040
+            locator: Form 1040 (2025), page 1, "Your first name and middle initial" and "If joint return, spouse’s first
+              name and middle initial"; Filing Status
+        - when: household.cp_marriage_ended
+          form: Community income of a marriage that ended in 2025 (Form 8958; Pub. 555)
+          remedy: Income earned while you were married and living in a community property state may be community income
+            under state law, half yours and half your former spouse's; Form 8958 and the community property rules of Pub.
+            555 are outside this tool.
+          cite:
+            doc: i1040gi
+            locator: 'p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555."'
+        - when: household.rdp_community_property
+          form: Community income of a registered domestic partner (Form 8958; Pub. 555)
+          remedy: A registered domestic partner in Nevada, Washington or California must generally report half the combined
+            community income of the partners; Form 8958 and the community property rules of Pub. 555 are outside this tool.
+          cite:
+            doc: i1040gi
+            locator: 'p. 23, Community Property States, Nevada, Washington, and California domestic partners, "A registered domestic partner in Nevada, Washington, or California must generally report half the combined community income of the individual and their domestic partner. See Form 8958 and Pub. 555"'
+    - id: f1040.line1e
+      printed: 1e
+      label: Taxable dependent care benefits from Form 2441, line 26
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f2441.benefits
+                - const: true
+            then: f2441.line26
+          - guard:
+              op: test
+              eq:
+                - f2441.benefits
+                - const: false
+            then: f2441.zero
+      cite:
+        doc: i1040gi
+        locator: 'p. 24, Line 1e, "Taxable Dependent Care Benefits From Form 2441, Line 26" and "But first complete Form 2441 to see if you can exclude part or all of the benefits"'
+      note: Zero when you received no dependent care benefits (Form 2441 Part III is then not completed).
+    - id: f1040.line1z
+      printed: 1z
+      label: Add lines 1a through 1h
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+          - f1040.line1a
+          - f1040.line1e
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 1z
+    - id: f1040.tax_exempt_interest
+      printed: (helper)
+      label: Tax-exempt interest and tax-exempt OID, net of amortized premium
+      type: NonNegDollars
+      expr:
+        op: input
+        source: 'Total tax-exempt interest and tax-exempt OID for 2025 (Form 1099-INT box 8; Form 1099-OID boxes 2 and 11), net of amortized bond premium and acquisition premium; do not include exempt-interest dividends (Form 1099-DIV box 12) or interest earned in an IRA, HSA, Archer or Medicare Advantage MSA, or Coverdell education savings account'
+      cite:
+        doc: i1040gi
+        locator: Instructions for Form 1040, p. 25, line 2a, "Enter the total on line 2a" (Form 1099-INT box 8, Form
+          1099-OID boxes 2 and 11, net of amortized bond premium and acquisition premium)
+    - id: f1040.line2a
+      printed: 2a
+      label: Tax-exempt interest
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+          - f1040.tax_exempt_interest
+          - div.box12
+      cite:
+        doc: i1040gi
+        locator: Instructions for Form 1040, p. 25, line 2a, "Enter the total on line 2a" and "Also include on line 2a any
+          exempt-interest dividends from a mutual fund or other regulated investment company. This amount should be
+          shown in box 12 of Form 1099-DIV"
+    - id: f1040.line2b
+      printed: 2b
+      label: Taxable interest
+      type: Dollars
+      expr:
+        op: copy
+        from: sb.line4
+      cite:
+        doc: i1040gi
+        locator: Instructions for Form 1040, p. 25, line 2b
+    - id: f1040.line3b
+      printed: 3b
+      label: Ordinary dividends
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: sb.line6
+      cite:
+        doc: i1040gi
+        locator: Instructions for Form 1040, p. 26, line 3b
+    - id: f1040.line3a
+      printed: 3a
+      label: Qualified dividends
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Form 1040 line 3a total qualified dividends, generally Form 1099-DIV box 1b, after the line
+          3a exceptions. Supplied as a subtotal; qualification checks are outside this stage.
+      cite:
+        doc: i1040gi
+        locator: Instructions for Form 1040, pp. 25–26, line 3a and exceptions
+    - id: f1040.line4a
+      printed: 4a
+      label: IRA distributions
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: person
+        field: person.ira_amount_a
+      cite:
+        doc: i1040gi
+        locator: pp. 26-27, Lines 4a and 4b (total distributions where an exception applies; 'More than one distribution')
+    - id: f1040.line4b
+      printed: 4b
+      label: IRA distributions, taxable amount
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: person
+        field: person.ira_taxable
+      cite:
+        doc: i1040gi
+        locator: p. 27, line 4b, 'figure the taxable amount of each distribution and enter the total of the taxable
+          amounts on line 4b'
+    - id: f1040.ira_rollovers
+      printed: (helper)
+      label: Number of IRA distributions with a rollover
+      type: Count
+      expr:
+        op: sum_over
+        collection: person
+        field: person.ira_rollovers
+      cite:
+        doc: i1040gi
+        locator: p. 27, Exception 1, 'Also check box 1 on line 4c'
+    - id: f1040.line4c_rollover
+      printed: 4c
+      label: Check if (box 1) Rollover
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - f1040.ira_rollovers
+        - const: 0
+          type: Count
+      cite:
+        doc: i1040gi
+        locator: p. 27, Exception 1, 'Also check box 1 on line 4c'
+    - id: f1040.line5a
+      printed: 5a
+      label: Pensions and annuities
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: person
+        field: person.plan_amount_a
+      cite:
+        doc: i1040gi
+        locator: pp. 28-30, Lines 5a and 5b
+    - id: f1040.line5b
+      printed: 5b
+      label: Pensions and annuities, taxable amount
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: person
+        field: person.plan_taxable
+      cite:
+        doc: i1040gi
+        locator: pp. 28-30, Lines 5a and 5b; p. 29, Simplified Method Worksheet, 'Enter the total of the taxable parts
+          on Form 1040 or 1040-SR, line 5b'
+    - id: f1040.plan_rollovers
+      printed: (helper)
+      label: Number of pension distributions with a rollover
+      type: Count
+      expr:
+        op: sum_over
+        collection: person
+        field: person.plan_rollovers
+      cite:
+        doc: i1040gi
+        locator: p. 30, Rollovers, 'Also check box 1 on line 5c'
+    - id: f1040.line5c_rollover
+      printed: 5c
+      label: Check if (box 1) Rollover
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - f1040.plan_rollovers
+        - const: 0
+          type: Count
+      cite:
+        doc: i1040gi
+        locator: pp. 30-31, Line 5c, 'If you have a rollover ... check box 1 on line 5c'
+    - id: f1040.line6a
+      printed: 6a
+      label: Social security benefits
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: ssb.line1
+      cite:
+        doc: i1040gi
+        locator: p. 32, Social Security Benefits Worksheet, line 1, 'Also enter this amount on Form 1040 or 1040-SR,
+          line 6a'
+    - id: f1040.line6b
+      printed: 6b
+      label: Social security benefits, taxable amount
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: ssb.line18
+      cite:
+        doc: i1040gi
+        locator: p. 32, Social Security Benefits Worksheet, line 18
+    - id: f1040.line6c
+      printed: 6c
+      label: If you elect to use the lump-sum election method, check here
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - ssb.has_benefits
+          - const: true
+        - op: test
+          eq:
+          - ssb.lump_sum
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 31, Line 6c (the election itself is refused on the Social Security Benefits Worksheet)
+    - id: f1040.line6d
+      printed: 6d
+      label: If you are married filing separately and lived apart from your spouse the entire year, check here
+      type: Bool
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - f1040.status
+          - const: mfs
+        - op: test
+          eq:
+          - ssb.lived_apart
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 31, Line 6d
+    - id: f1040.line7a
+      printed: 7a
+      label: Capital gain or (loss). Attach Schedule D if required
+      type: Dollars
+      expr:
+        op: copy
+        from: sd.to1040
+      cite:
+        doc: i1040gi
+        locator: Instructions for Form 1040, line 7a
+    - id: f1040.line8
+      printed: "8"
+      label: Additional income from Schedule 1, line 10
+      type: Dollars
+      expr:
+        op: copy
+        from: s1.line10
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 8
+      refuses:
+        - when: scope.schedule1
+          form: Schedule 1
+          remedy: Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.
+          cite:
+            doc: f1040
+            locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+        - when: scope.other_income
+          form: Form 1040 additional income/return forms
+          remedy: Prepare the required unsupported income or return treatment.
+          cite:
+            doc: f1040
+            locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+    - id: f1040.line9
+      printed: "9"
+      label: Add lines 1z, 2b, 3b, 4b, 5b, 6b, 7a, and 8. This is your total income
+      type: Dollars
+      expr:
+        op: sum
+        of:
+          - f1040.line1z
+          - f1040.line2b
+          - f1040.line3b
+          - f1040.line4b
+          - f1040.line5b
+          - f1040.line6b
+          - f1040.line7a
+          - f1040.line8
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 9
+    - id: f1040.line10
+      printed: "10"
+      label: Adjustments to income from Schedule 1, line 26
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: s1.line26
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 10
+      refuses:
+        - when: scope.schedule1
+          form: Schedule 1
+          remedy: Schedule 1 income and adjustments other than the ones this tool computes (Schedule C business income, a taxable state or local income tax refund, alimony under an agreement made before 2019, unemployment compensation, the supported line 8 items, educator expenses, the HSA deduction, the deductible part of self-employment tax, self-employed SEP and SIMPLE contributions, the self-employed health insurance deduction, the early withdrawal penalty, the IRA deduction, student loan interest and jury duty pay given to your employer) are outside this tool.
+          cite:
+            doc: f1040
+            locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+    - id: f1040.line11a
+      printed: 11a
+      label: Subtract line 10 from line 9. This is your adjusted gross income
+      type: Dollars
+      expr:
+        op: subtract
+        from: f1040.line9
+        take: f1040.line10
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 11a
+    - id: f1040.line11b
+      printed: 11b
+      label: Amount from line 11a (adjusted gross income)
+      type: Dollars
+      expr:
+        op: copy
+        from: f1040.line11a
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 11b
+    - id: f1040.line12e
+      printed: 12e
+      label: Standard deduction or itemized deductions (from Schedule A)
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: sa.deduction
+      cite:
+        doc: i1040gi
+        locator: pp. 34–35, line 12e and Standard Deduction Chart
+      refuses:
+        - when: household.filing_status_conflict
+          form: Filing status inconsistent with your marriage facts
+          remedy: Correct the filing status or marriage facts. A person married at the end of 2025 cannot file as single;
+            filing jointly requires marriage at year end or the death of a spouse during 2025. The head of household
+            and qualifying surviving spouse tests are checked separately.
+          cite:
+            doc: i1040gi
+            locator: 'p. 13, Single and Married Filing Jointly, "You were married at the end of 2025" and "Your spouse died in 2025 and you didn’t remarry in 2025."'
+
+        - when: household.hoh_fails
+          form: Head of household filing status
+          remedy: Head of household is checked but the tests are not met; you must be unmarried or considered unmarried, have paid over half the cost of keeping up your home, and have a qualifying person.
+          cite:
+            doc: i1040gi
+            locator: p. 14, Head of Household
+        - when: household.widowed_2025
+          form: Filing status after a spouse's death in 2025
+          remedy: Your spouse died in 2025, so you are considered married for the whole year for filing status; file a joint
+            return with your deceased spouse (married filing jointly), or a separate return, which this tool does not
+            support.
+          cite:
+            doc: i1040gi
+            locator: 'p. 13, Single, "You were widowed before January 1, 2025, and didn’t remarry before the end of 2025"; p. 13, Married Filing Jointly, "Your spouse died in 2025 and you didn’t remarry in 2025."; p501 p. 6, Spouse died during the year, "If your spouse died during the year, you are considered married for the whole year for filing status purposes."'
+        - when: household.qss_fails
+          form: Qualifying surviving spouse filing status
+          remedy: Qualifying surviving spouse is checked but the tests are not met; your spouse must have died in 2023 or 2024 and you must not have remarried before the end of 2025, a child or stepchild (not a foster child) you can claim as a dependent must have lived in your home all year, you must have paid over half the cost of keeping up your home, and you must have been able to file jointly the year your spouse died; or the qualifying child was presumed kidnapped, whose rule (Pub. 501) is outside this tool.
+          cite:
+            doc: i1040gi
+            locator: 'p. 15, Qualifying Surviving Spouse; p501 p. 11, Kidnapped child, "You may be eligible to file as a qualifying surviving spouse even if the child who qualifies you for this filing status has been kidnapped."'
+    - id: f1040.gate.nonitemizer_gifts
+      printed: (gate)
+      type: Bool
+      label: Standard deduction taken and cash or check gifts to charity entered (Form 1040 line 12f)
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - sa.itemizes
+              - const: false
+          - op: test
+            gt:
+              - sa.line11
+              - const: 0
+      cite:
+        doc: f1040
+        locator: 'Form 1040 (2026), line 12f (draft), "Charitable contribution deduction for non-itemizers (see instructions)"'
+    - id: f1040.line12f
+      printed: 12f
+      label: Charitable contribution deduction for non-itemizers (see instructions)
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: sa.zero
+      cite:
+        doc: f1040
+        locator: 'Form 1040 (2026), line 12f (draft), "Charitable contribution deduction for non-itemizers (see instructions)"'
+      refuses:
+        - when: f1040.gate.nonitemizer_gifts
+          form: The charitable contribution deduction for non-itemizers (Form 1040, line 12f)
+          remedy: You took the standard deduction and gave cash or checks to charity. For 2026 a filer who does not
+            itemize may deduct some of these gifts on line 12f; this tool does not yet figure that deduction (the 2026
+            Form 1040 instructions that define it are not published).
+          cite:
+            doc: plaw-119-21
+            locator: 'p. 165, section 70424, amending section 170(p), "by striking ‘‘$300 ($600’’ and inserting ‘‘$1,000 ($2,000’’"'
+    - id: f1040.line13a
+      printed: 13b
+      label: Qualified business income deduction from Form 8995 or Form 8995-A
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: qbi.deduction
+      cite:
+        doc: f1040
+        locator: Form 1040 (2026), line 13b (draft)
+    - id: f1040.line13b
+      printed: 13a
+      label: Additional deductions from Schedule 1-A, line 44
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: s1a.line38
+      cite:
+        doc: f1040
+        locator: 'Form 1040 (2026), line 13a (draft), "Additional deductions from Schedule 1-A, line 44"'
+    - id: f1040.line14
+      printed: "14"
+      label: Add lines 12e, 12f, 13a, and 13b
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+          - f1040.line12e
+          - f1040.line12f
+          - f1040.line13a
+          - f1040.line13b
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 14
+    - id: f1040.line13_total
+      printed: (helper)
+      type: NonNegDollars
+      label: Add lines 13a and 13b
+      expr:
+        op: sum
+        of:
+          - f1040.line13a
+          - f1040.line13b
+      cite:
+        doc: f1040sa
+        locator: 'Schedule A (2026), line 18 (draft), "Is the amount on Form 1040 or 1040-SR, line 11b, minus the amounts on lines 13a and 13b of that form, more than $384,350?"'
+    - id: f1040.limit_base
+      printed: (helper)
+      type: Dollars
+      label: Form 1040 line 11b minus lines 13a and 13b
+      expr:
+        op: subtract
+        from: f1040.line11b
+        take: f1040.line13_total
+      cite:
+        doc: f1040sa
+        locator: 'Schedule A (2026), line 18 (draft), "minus the amounts on lines 13a and 13b of that form, more than $384,350?"'
+    - id: f1040.limit_screen
+      printed: (helper)
+      type: Dollars
+      label: Year parameter sa.limit_screen
+      expr:
+        op: param
+        ref: sa.limit_screen
+      cite:
+        doc: f1040sa
+        locator: 'Schedule A (2026), line 18 (draft), "more than $384,350?"'
+    - id: f1040.gate.itemized_limit
+      printed: (gate)
+      type: Bool
+      label: Itemizing, and line 11b minus lines 13a and 13b is more than the Schedule A line 18 amount
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - sa.itemizes
+              - const: true
+          - op: test
+            gt:
+              - f1040.limit_base
+              - f1040.limit_screen
+      cite:
+        doc: f1040sa
+        locator: 'Schedule A (2026), line 18 (draft), "Yes. Your deductions may be limited. See the Itemized Deductions Worksheet in the instructions to figure the amount to enter"'
+    - id: f1040.line15
+      printed: "15"
+      label: Subtract line 14 from line 11b. If zero or less, enter -0-. This is your taxable income
+      type: NonNegDollars
+      expr:
+        op: subtract_floor0
+        from: f1040.line11b
+        take: f1040.line14
+      cite:
+        doc: i1040gi
+        locator: f1040 Form 1040 (2025), line 15, "Subtract line 14 from line 11b. If zero or less, enter -0-. This is
+          your taxable income"
+      refuses:
+        - when: f1040.gate.itemized_limit
+          form: Schedule A Itemized Deductions Worksheet (2026)
+          remedy: Your itemized deductions may be limited for 2026 (Schedule A line 18, "Yes"); the worksheet that
+            figures the limit is in the 2026 Schedule A instructions, which are not published yet.
+          cite:
+            doc: plaw-119-21
+            locator: 'p. 94, section 70111, section 68(a), "shall be reduced by 2⁄37 of the lesser of"'
+    - id: f1040.gate.qdcg_applies
+      printed: (gate)
+      label: Use the Qualified Dividends and Capital Gain Tax Worksheet?
+      type: Bool
+      expr:
+        op: test
+        all:
+          - op: test
+            gt:
+              - f1040.line15
+              - const: 0
+          - op: test
+            any:
+              - op: test
+                gt:
+                  - f1040.line3a
+                  - const: 0
+              - op: test
+                all:
+                  - op: test
+                    eq:
+                      - sd.filed
+                      - const: false
+                  - op: test
+                    gt:
+                      - sd.distributions
+                      - const: 0
+              - op: test
+                eq:
+                  - sd.line17
+                  - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 36, Line 16, Qualified Dividends and Capital Gain Tax Worksheet, "Use the Qualified Dividends and
+          Capital Gain Tax Worksheet, later, to figure your tax if you don’t have to use the Schedule D Tax Worksheet
+          and if any of the following applies", "You reported qualified dividends on Form 1040 or 1040-SR, line 3a",
+          "You don’t have to file Schedule D and you reported capital gain distributions on Form 1040 or 1040-SR, line
+          7a", "You are filing Schedule D, and Schedule D, lines 15 and 16, are both more than zero"
+    - id: f1040.gate.sdtw
+      printed: (gate)
+      type: Bool
+      label: Schedule D Tax Worksheet required after its exceptions
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - f1040.gate.qdcg_applies
+              - const: true
+          - op: test
+            any:
+              - op: test
+                all:
+                  - op: test
+                    eq:
+                      - sd.line17
+                      - const: true
+                  - op: test
+                    any:
+                      - op: test
+                        gt:
+                          - sd.line18
+                          - const: 0
+                      - op: test
+                        gt:
+                          - sd.line19
+                          - const: 0
+              - op: test
+                all:
+                  - op: test
+                    eq:
+                      - sd.filing4952
+                      - const: true
+                  - op: test
+                    gt:
+                      - sd.investment_election
+                      - const: 0
+      cite:
+        doc: i1040sd
+        locator: p. 15, Schedule D Tax Worksheet, applicability and exceptions
+      ambiguity: amb.2025.sd4952_selection
+    - id: f1040.non_sdtw_tax
+      printed: (helper)
+      label: Tax when Schedule D Tax Worksheet does not apply
+      type: Dollars
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f1040.gate.qdcg_applies
+                - const: true
+            then: qdcg.line25
+          - guard:
+              op: test
+              eq:
+                - f1040.gate.qdcg_applies
+                - const: false
+            then:
+              def: tax_on_amount
+              bind:
+                amount: f1040.line15
+                status: f1040.status
+              line: tax
+      cite:
+        doc: i1040gi
+        locator: p. 36, Line 16, "No. Use one of the following methods to figure your tax", "If your taxable income is
+          less than $100,000, you must use the Tax Table", "If your taxable income is $100,000 or more, use the Tax
+          Computation Worksheet", "Use the Qualified Dividends and Capital Gain Tax Worksheet, later, to figure your
+          tax if you don’t have to use the Schedule D Tax Worksheet"
+    - id: f1040.line16
+      printed: "16"
+      label: "Tax (see instructions). Check if any from Form(s): 1 8814 2 4972 3"
+      type: Dollars
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f1040.gate.sdtw
+                - const: true
+            then: sdtw.line47
+          - guard:
+              op: test
+              eq:
+                - f1040.gate.sdtw
+                - const: false
+            then: f1040.non_sdtw_tax
+      cite:
+        doc: i1040gi
+        locator: p. 34, Line 16, Tax, "Tax on your taxable income. Figure the tax using one of the methods described
+          later"; p. 36, Line 16, "Use the Schedule D Tax Worksheet in the Instructions for Schedule D to figure the
+          amount to enter on Form 1040 or 1040-SR, line 16", "Use the Qualified Dividends and Capital Gain Tax
+          Worksheet, later, to figure your tax if you don’t have to use the Schedule D Tax Worksheet"
+      refuses:
+        - when: scope.other_line16
+          form: Forms 8814, 4972, 8615, 8621 or 8978, a section 962 election, or an education credit recapture
+          remedy: Additional Form 1040 line 16 taxes are outside this proof of concept.
+          cite:
+            doc: f1040
+            locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+    - id: f1040.line17
+      printed: "17"
+      label: Amount from Schedule 2, line 3
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: s2.line3
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 17
+    - id: f1040.line18
+      printed: "18"
+      label: Add lines 16 and 17
+      type: Dollars
+      expr:
+        op: sum
+        of:
+          - f1040.line16
+          - f1040.line17
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 18
+    - id: f1040.line19
+      printed: "19"
+      label: Child tax credit or credit for other dependents from Schedule 8812
+      type: Dollars
+      expr:
+        op: copy
+        from: s8812.line14
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 19
+    - id: f1040.line20
+      printed: "20"
+      label: Amount from Schedule 3, line 8
+      type: Dollars
+      expr:
+        op: copy
+        from: s3.line8
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 20
+    - id: f1040.line21
+      printed: "21"
+      label: Add lines 19 and 20
+      type: Dollars
+      expr:
+        op: sum
+        of:
+          - f1040.line19
+          - f1040.line20
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 21
+    - id: f1040.line22
+      printed: "22"
+      label: Subtract line 21 from line 18. If zero or less, enter -0-
+      type: NonNegDollars
+      expr:
+        op: subtract_floor0
+        from: f1040.line18
+        take: f1040.line21
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 22
+    - id: f1040.line23
+      printed: "23"
+      label: Additional taxes, including self-employment tax, from Schedule 2, line 21
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: s2.line21
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 23
+    - id: f1040.line24
+      printed: 24a
+      label: Add lines 22 and 23. This is your total tax
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+          - f1040.line22
+          - f1040.line23
+      cite:
+        doc: f1040
+        locator: Form 1040 (2026), line 24a (draft)
+    - id: f1040.form1062
+      printed: (helper)
+      type: Bool
+      label: Are you electing to pay the tax on gain from a sale or exchange of qualified farmland property to a
+        qualified farmer in four annual installments (Form 1062)?
+      expr:
+        op: input
+        source: Form 1062 election (interview question)
+      cite:
+        doc: i1062
+        locator: 'p. 2 (draft), What’s New, "New election to pay the tax on gain from the sale or exchange of qualified farmland property to qualified farmers in installments"'
+    - id: f1040.line24b
+      printed: 24b
+      label: Enter amount from Form 1062, line 15
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: sa.zero
+      cite:
+        doc: f1040
+        locator: 'Form 1040 (2026), line 24b (draft), "Enter amount from Form 1062, line 15"'
+      refuses:
+        - when: f1040.form1062
+          form: Form 1062 (installment payment of tax on a sale of qualified farmland property)
+          remedy: This tool does not prepare Form 1062 or Schedule A (Form 1062).
+          cite:
+            doc: f1062
+            locator: 'p. 2 (draft), line 15, "First installment due. Enter 25% (0.25) of line 14 here"'
+    - id: f1040.line24c
+      printed: 24c
+      label: Add lines 24a and 24b
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+          - f1040.line24
+          - f1040.line24b
+      cite:
+        doc: f1040
+        locator: 'Form 1040 (2026), line 24c (draft), "Add lines 24a and 24b"'
+    - id: f1040.line25a
+      printed: 25a
+      label: Federal income tax withheld from Form(s) W-2
+      type: NonNegDollars
+      expr:
+        op: sum_over
+        collection: person
+        field: person.box2
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 25a
+    - id: f1040.line25b
+      printed: 25b
+      label: Federal income tax withheld from Form(s) 1099
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Federal income tax withheld shown on your Forms 1099 (supplied total of box 4 of Forms 1099-R, 1099-INT,
+          1099-DIV, 1099-G and other Forms 1099, box 6 of Form SSA-1099 and box 10 of Form RRB-1099)
+      cite:
+        doc: i1040gi
+        locator: p. 39, Line 25b, "This should be shown in box 4 of Form 1099, box 6, of Form SSA-1099, or box 10 of Form RRB-1099"
+    - id: f1040.line25c_other
+      printed: (helper)
+      label: Federal income tax withheld on Forms W-2G, Schedules K-1 and Forms 1042-S, 8805 and 8288-A
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Federal income tax withheld shown on your Forms W-2G (box 4), Schedules K-1, and Forms 1042-S, 8805 and 8288-A
+          (supplied total; not Additional Medicare Tax, which Form 8959 figures)
+      cite:
+        doc: i1040gi
+        locator: p. 39, Line 25c—Other Forms, "Federal income tax withheld on your Form(s) W-2G"; "Federal income tax withheld
+          that is shown on a Schedule K-1"; "Tax withheld that is shown on Form 1042-S, Form 8805, or Form 8288-A"
+    - id: f1040.line25c
+      printed: 25c
+      label: Federal income tax withheld from other forms (see instructions)
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+          - f1040.line25c_other
+          - f8959.line24
+      cite:
+        doc: i1040gi
+        locator: p. 39, Line 25c—Other Forms, "Additional Medicare Tax you had withheld. Include the amount shown on Form 8959,
+          line 24, in the total on line 25c"
+    - id: f1040.line25d
+      printed: 25d
+      label: Add lines 25a through 25c
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+          - f1040.line25a
+          - f1040.line25b
+          - f1040.line25c
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 25d
+    - id: f1040.line26
+      printed: "26"
+      label: 2025 estimated tax payments and amount applied from 2024 return
+      type: NonNegDollars
+      expr:
+        op: input
+        source: 2025 estimated tax payments and amount applied from your 2024 return (supplied total)
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 26
+    - id: f1040.line27a
+      printed: 27a
+      label: Earned income credit (EIC)
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: eic.credit
+      cite:
+        doc: i1040gi
+        locator: pp. 40–48, Lines 27a, 27b, and 27c—Earned Income Credit (EIC), Worksheet A line 6, "Enter this amount on
+          Form 1040 or 1040-SR, line 27a"
+    - id: f1040.line27b
+      printed: 27b
+      label: Clergy filing Schedule SE (see instructions)
+      type: Bool
+      expr:
+        op: copy
+        from: eic.clergy
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 27b
+    - id: f1040.line27c
+      printed: 27c
+      label: If you do not want to claim the EIC, check here
+      type: Bool
+      expr:
+        op: copy
+        from: eic.check_27c
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 27c
+    - id: f1040.separated_spouses
+      printed: Dependents (separated spouses)
+      label: Check if your filing status is MFS or HOH and you lived apart from your spouse for the last 6 months of 2025, or you are legally separated according to your state law under a written separation agreement or a decree of separate maintenance and you did not live in the same household as your spouse at the end of 2025.
+      type: Bool
+      expr:
+        op: copy
+        from: eic.separated_box
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), Dependents section, box below row (7)
+    - id: f1040.line28
+      printed: "28"
+      label: Additional child tax credit (ACTC) from Schedule 8812
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: s8812.line27
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 28
+    - id: f1040.line29
+      printed: "29"
+      label: Refundable American opportunity credit from Form 8863, line 8
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - f8863.eligible
+                - const: true
+            then: f8863.line8
+          - guard:
+              op: test
+              eq:
+                - f8863.eligible
+                - const: false
+            then: f8863.zero
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 29
+    - id: f1040.line30
+      printed: "30"
+      label: Refundable adoption credit from Form 8839, line 13
+      type: NonNegDollars
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 30
+      refuses:
+        - when: scope.credits
+          form: Other credit forms (Schedule 3 lines 6a to 6z; Form 1040 lines 30 and 31)
+          remedy: Credits other than the foreign tax credit by election, the excess social security credit, the Schedule 8812 credits, the earned income credit, the child and dependent care credit, the saver's credit, the residential energy credits, the net premium tax credit figured on Form 8962 and the education credits (Form 8863) require forms outside this proof of concept.
+          cite:
+            doc: f1040
+            locator: Form 1040 (2025), lines 8, 10, 13b, 16, 19–20 and 27–31
+    - id: f1040.line31
+      printed: "31"
+      label: Amount from Schedule 3, line 15
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: s3.line15
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 31
+    - id: f1040.line32
+      printed: 32a
+      label: Add lines 27a, 28, 29, 30, and 31
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+          - f1040.line27a
+          - f1040.line28
+          - f1040.line29
+          - f1040.line30
+          - f1040.line31
+      cite:
+        doc: f1040
+        locator: 'Form 1040 (2026), line 32a (draft), "Add lines 27a, 28, 29, 30, and 31"'
+    - id: f1040.line32b
+      printed: 32b
+      label: Amount from Schedule 3-A
+      type: NonNegDollars
+      expr:
+        op: copy
+        from: s3a.line8
+      cite:
+        doc: f1040
+        locator: 'Form 1040 (2026), line 32b (draft), "Amount from Schedule 3-A"'
+    - id: f1040.line32c
+      printed: 32c
+      label: Subtract line 32b from line 32a
+      type: NonNegDollars
+      expr:
+        op: subtract_floor0
+        from: f1040.line32
+        take: f1040.line32b
+      cite:
+        doc: f1040
+        locator: 'Form 1040 (2026), line 32c (draft), "Subtract line 32b from line 32a"'
+    - id: f1040.line33
+      printed: "33"
+      label: Add lines 25d, 26, and 32c. These are your total payments
+      type: NonNegDollars
+      expr:
+        op: sum
+        of:
+          - f1040.line25d
+          - f1040.line26
+          - f1040.line32c
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 33
+    - id: f1040.line34
+      printed: "34"
+      label: If line 33 is more than line 24c, subtract line 24c from line 33. This is the amount you overpaid
+      type: NonNegDollars
+      expr:
+        op: subtract_floor0
+        from: f1040.line33
+        take: f1040.line24c
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 34
+    - id: f1040.line35a
+      printed: 35a
+      label: Amount of line 34 you want refunded to you
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Amount of line 34 you want refunded to you (supplied election)
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 35a
+    - id: f1040.line36
+      printed: "36"
+      label: Amount of line 34 you want applied to your 2026 estimated tax
+      type: NonNegDollars
+      expr:
+        op: input
+        source: Amount of line 34 you want applied to your 2026 estimated tax (supplied election)
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 36
+    - id: f1040.line37
+      printed: "37"
+      label: Subtract line 33 from line 24c. This is the amount you owe
+      type: NonNegDollars
+      expr:
+        op: subtract_floor0
+        from: f1040.line24c
+        take: f1040.line33
+      cite:
+        doc: f1040
+        locator: Form 1040 (2025), line 37

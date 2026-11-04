@@ -1,0 +1,1222 @@
+# PROPOSED 2026 definition (TY2026 step 5), not read by the build. A copy of forms/2025/sa.yaml with the definition
+# changes of research/ty2026/changes.md C-PRI-13 to C-PRI-18 (IRS 2026 draft of Schedule A; Public Law 119-21 as printed).
+# New parameters: sa.gambling_rate (90/100, plaw-119-21 p. 96, final) and sa.gift_floor_rate (5/1000, plaw-119-21 p. 165,
+# final; the 0.5% charitable floor encoded from the statute, owner decision 2026-11-04). See README.md.
+form:
+  id: sa
+  kind: form
+  title: Schedule A — supported itemized deductions and standard comparison
+  tax_year: 2026
+  note: Income and deduction eligibility are explicit supplied facts. Charity valuation,
+    substantiation and income-limit screening are not computed; an affirmative limitation answer is
+    refused. The SALT formula follows the printed 2025 worksheet, including its MFS halving step.
+  lines:
+    - id: sa.unsupported
+      printed: (helper)
+      type: Bool
+      label: 'Any casualty or theft loss (from a federally or state-declared disaster, or a disaster loss added to the standard deduction); a deduction on Schedule A lines 17b to 17k (other than gambling losses); a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); mortgage insurance premiums; or the sales-tax election?'
+      expr:
+        op: input
+        source: 'Any casualty or theft loss (from a federally or state-declared disaster, or a disaster loss added to the standard deduction); a deduction on Schedule A lines 17b to 17k (other than gambling losses); a foreign tax or generation-skipping tax deduction; mortgage interest or points not on Form 1098 or subject to the debt or use limits (loan proceeds not all used to buy, build or improve the home, or debt over the limit); mortgage insurance premiums; or the sales-tax election?'
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.charity_limited
+      printed: (helper)
+      type: Bool
+      label: Are any charitable deductions reduced by income limits (other than the 0.5% floor, which this tool figures),
+        or carried over from a prior year? Determine under Publication 526 before answering.
+      expr:
+        op: input
+        source: Are any charitable deductions reduced by income limits (other than the 0.5% floor, which this tool figures),
+          or carried over from a prior year? Determine under Publication 526 before answering.
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18; plaw-119-21 p. 166, section 70425(a)(2), section 170(d)(1)(C), "CONTRIBUTIONS
+          DISALLOWED BY 0.5-PERCENT FLOOR CARRIED FORWARD ONLY FROM YEARS IN WHICH LIMITATION IS EXCEEDED"
+    - id: sa.excluded_income
+      printed: (helper)
+      type: Bool
+      label: 'Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?'
+      expr:
+        op: input
+        source: 'Are you filing Form 2555 or Form 4563, or do you have income excluded as a bona fide resident of Puerto Rico?'
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.dependent
+      printed: (helper)
+      type: Bool
+      label: 'Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)'
+      expr:
+        op: input
+        source: 'Can someone claim you or your spouse as a dependent for 2025, or are you a dual-status alien? (Answer no if the person who could claim you is not required to file and does not file, or files only to claim a refund of withheld or estimated tax.)'
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.spouse_extra
+      printed: (helper)
+      type: Bool
+      label: Married filing separately and claiming age or blindness boxes for your spouse (who had no income, isn't filing a return and can't be claimed as a dependent)?
+      expr:
+        op: input
+        source: Married filing separately and claiming age or blindness boxes for your spouse (who had no income, isn't filing a return and can't be claimed as a dependent)?
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.mfs_spouse_extra
+      printed: (gate)
+      type: Bool
+      label: Married filing separately and claiming age or blindness boxes for your spouse
+      expr:
+        op: test
+        all:
+        - op: test
+          eq:
+          - f1040.status
+          - const: mfs
+        - op: test
+          eq:
+          - sa.spouse_extra
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 33, Line 12d, "If your filing status is married filing separately and your spouse was born before
+          January 2, 1961, or was blind at the end of 2025, you can check the appropriate box(es) on line 12d if your
+          spouse had no income, isn't filing a return, and can't be claimed as a dependent on another person's return"
+    - id: sa.age65_count
+      printed: (helper)
+      label: Your entry, if the answer is yes
+      type: Count
+      expr:
+        op: sum_over
+        collection: person
+        field: person.one
+        where:
+          op: test
+          all:
+          - op: test
+            eq:
+            - person.role
+            - const: taxpayer
+          - op: test
+            eq:
+            - person.age65
+            - const: true
+      cite:
+        doc: f1040sa
+        locator: i1040gi p. 35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were
+          Blind, "You were born before January 2, 1961", "Enter the total number of boxes checked"
+    - id: sa.age65
+      printed: (helper)
+      label: Were you born before January 2, 1961?
+      type: Bool
+      expr:
+        op: test
+        gt:
+        - sa.age65_count
+        - const: 0
+          type: Count
+      cite:
+        doc: f1040sa
+        locator: i1040gi p. 35, Standard Deduction Chart for People Who Were Born Before January 2, 1961, or Were
+          Blind, "You were born before January 2, 1961", "Enter the total number of boxes checked"
+    - id: sa.spouse_itemizes
+      printed: (helper)
+      type: Bool
+      label: Married filing separately with a spouse who itemizes?
+      expr:
+        op: input
+        source: Married filing separately with a spouse who itemizes?
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.elect_itemize
+      printed: (helper)
+      type: Bool
+      label: Elect to itemize even if the standard deduction is larger?
+      expr:
+        op: input
+        source: Elect to itemize even if the standard deduction is larger?
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.agi
+      printed: (helper)
+      type: Dollars
+      label: Form 1040 line 11b adjusted gross income
+      expr:
+        op: copy
+        from: f1040.line11b
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.line1
+      printed: "1"
+      type: NonNegDollars
+      label: Unreimbursed eligible medical and dental expenses
+      expr:
+        op: input
+        source: 'Unreimbursed eligible medical and dental expenses paid in 2025 (Pub. 502 lists what counts) for
+          yourself, your spouse, your dependents, your child whom you do not claim only because of the rules for
+          children of divorced or separated parents, and anyone you could have claimed as a dependent except that the
+          person had gross income of $5,200 or more or filed a joint return. Reduce them by payments from insurance or
+          other sources, but do not reduce them by a 2025 reimbursement of expenses paid in an earlier year. Leave
+          out: amounts equal to tax-free distributions from a health savings account (HSA) or an Archer MSA; insurance
+          premiums paid by a pretax reduction of your pay, and premiums and other medical and dental expenses paid by
+          an employer-sponsored health plan (cafeteria plan) unless they are included in box 1 of your Form W-2;
+          premiums for someone on your policy who is not one of the people listed above (for example a nondependent
+          child under age 27), unless you had family coverage when you added that person and your premiums did not
+          increase; if you are a retired public safety officer, premiums to the extent paid with a tax-free
+          distribution from your retirement plan; the housework part of pay to someone who did both nursing and
+          housework (only the nursing help counts); and meals while away from home for medical care, other than
+          hospital care, which includes its meals and lodging (other lodging for medical care counts at no more than
+          $50 a night for each person who meets the Pub. 502 lodging requirements). Reduce health insurance premiums
+          by any self-employed health insurance deduction on Schedule 1 (Form 1040), line 17. For Marketplace coverage
+          on a Form 1095-A, include the total premiums (including the part paid by advance payments of the premium tax
+          credit), minus the premium tax credit allowed on Form 8962, line 24, and minus any excess advance payments
+          you do not have to repay because of the repayment limit (Form 8962, line 27 minus line 29); advance payments
+          you do repay count as premiums you paid. Include qualified long-term care insurance premiums only up to the
+          limit for the age at the end of 2025 of the person for whom they were paid: $480 if 40 or under, $900 if 41
+          to 50, $1,800 if 51 to 60, $4,810 if 61 to 70, $6,020 if 71 or older. On the final return of a person who
+          died in 2025, include the medical expenses paid out of that person''s estate that Pub. 502 allows on the
+          final return.'
+      cite:
+        doc: i1040sca
+        locator: 'p. 1, Medical and Dental Expenses, "If you received a distribution from a health savings account or a
+          medical savings account in 2025, see Pub. 969 to figure your deduction", "Certain medical expenses paid out of a
+          deceased taxpayer''s estate can be claimed on the deceased taxpayer''s final return", "You can''t include
+          insurance premiums paid by making a pretax reduction to your employee compensation", "If you are a retired public
+          safety officer, you can''t include any premiums you paid to the extent they were paid for with a tax-free
+          distribution from your retirement plan", "If you paid someone to do both nursing and housework, you can deduct
+          only the cost of the nursing help", "Hospital care (including meals and lodging), clinic costs, and lab fees",
+          "Lodging expenses (but not meals) while away from home to receive medical care"; p. 2, "Don''t deduct more than
+          $50 a night for each person who meets the requirements in Pub. 502 under Lodging", "Limit on long-term care
+          premiums you can include. The amount you can include for qualified long-term care insurance contracts (as defined
+          in Pub. 502) depends on the age at the end of 2025 of the person for whom the premiums were paid", Line 1 Medical
+          and Dental Expenses, "Enter the total of your medical and dental expenses after you reduce these expenses by any
+          payments received from insurance or other sources", "If advance payments of the premium tax credit were made or
+          you think you may be eligible to claim a premium tax credit, fill out Form 8962 before filling out Schedule A, line
+          1", "self-employed health insurance deduction on Schedule 1 (Form 1040), line 17, reduce the premiums by the
+          amount on line 17", "You can include medical and dental bills you paid in 2025 for anyone who was one of the
+          following either when the services were provided or when you paid for them", "Your child whom you don''t claim as
+          a dependent because of the rules for children of divorced or separated parents", "Any person you could have
+          claimed as a dependent on your return except that person received $5,200 or more of gross income or filed a joint
+          return", "You can''t deduct any premiums attributable to this individual unless this individual is a person
+          described under Whose medical and dental expenses can you include, earlier", "However, if you had family coverage
+          when you added this individual to your policy and your premiums didn''t increase, you can enter on line 1 the full
+          amount of your medical and dental insurance premiums", "If you received a reimbursement in 2025 for prior year
+          medical or dental expenses, don''t reduce your 2025 expenses by this amount", "don’t include on line 1 insurance
+          premiums paid by an employer-sponsored health insurance plan (cafeteria plan) unless the premiums are included in
+          box 1 of your Form(s) W-2", "Also, don''t include any other medical and dental expenses paid by the plan unless the
+          amount paid is included in box 1 of your Form(s) W-2"; p502 p. 12, Premium Tax Credit, "You can’t include in
+          medical expenses the amount of health insurance premiums paid by or through the premium tax credit", "You also
+          can’t include in medical expenses any amount of advance payments of the premium tax credit made that you did not
+          have to pay back", "However, any amount of advance payments of the premium tax credit that you did have to pay
+          back can be included in medical expenses", "You are treated as paying $5,100 ($8,700 less the allowed premium tax
+          credit of $3,600)"; i8962 p. 2, "You cannot deduct the portion of your health insurance premium on your tax return
+          that is paid for by the PTC or APTC (after you determine how much of any excess APTC you must repay)"; p969 p. 9, "You can’t deduct qualified medical expenses as
+          an itemized deduction on Schedule A (Form 1040) that are equal to the tax-free distribution from your HSA"; p969
+          p. 13, "You can’t deduct qualified medical expenses as an itemized deduction on Schedule A (Form 1040) that are
+          equal to the tax-free distribution from your Archer MSA"'
+    - id: sa.line5a
+      printed: 5a
+      type: NonNegDollars
+      label: State/local income taxes paid, including withholding; no sales-tax election
+      expr:
+        op: input
+        source: 'State/local income taxes paid, including withholding; no sales-tax election. Include state and local
+          income taxes withheld in 2025 (but not withholding you deducted on another form, such as Schedule C),
+          estimated payments made in 2025 (including a prior-year refund credited to 2025), and taxes paid in 2025 for
+          a prior year, but not penalties or interest. Include mandatory contributions to the California, New Jersey
+          or New York Nonoccupational Disability Benefit Fund, the Rhode Island Temporary Disability Benefit Fund, the
+          Washington State Supplemental Workmen''s Compensation Fund, the Alaska, California, New Jersey or
+          Pennsylvania state unemployment fund, and state family leave programs (such as New Jersey Family Leave
+          Insurance or California Paid Family Leave). Do not reduce the amount by a state or local income tax refund
+          or credit you expect for 2025, or by a refund or credit of prior-year state and local income taxes received
+          in 2025. If you made a cash charitable contribution in return for a state or local tax credit and reduced
+          your charitable deduction by that credit, you may include here (or on line 5b or 5c, whichever tax the
+          credit offsets) the part of the credit you applied to your 2025 or an earlier year''s state or local tax
+          liability. Include income taxes imposed by a U.S. territory here (not as foreign taxes), except territory
+          taxes allocable to excluded income and territory taxes you take as a credit instead of a deduction.'
+      cite:
+        doc: i1040sca
+        locator: 'p. 3, U.S. territory taxes, "Include taxes imposed by a U.S. territory with your state and local taxes on
+          lines 5a, 5b, and 5c", "However, don''t include any U.S. territory taxes you paid that are allocable to excluded
+          income", "You may want to take a credit for U.S. territory tax instead of a deduction", Line 5a, "don''t include on
+          line 5a any withheld taxes you deducted on other forms, such as Schedule C, E, or F", "State and local estimated tax
+          payments made during 2025, including any part of a prior year refund that you chose to have credited to your 2025
+          state or local income taxes", "State and local income taxes paid in 2025 for a prior year, such as taxes paid with
+          your 2024 state or local income tax return. Don''t include penalties or interest.", "Mandatory contributions you
+          made to the California, New Jersey, or New York Nonoccupational Disability Benefit Fund", "Mandatory contributions
+          to the Alaska, California, New Jersey, or Pennsylvania state unemployment fund", "Mandatory contributions to state
+          family leave programs", "Refund of or credit for prior year state and local income taxes you actually received in
+          2025", Safe harbor for certain charitable contributions made in exchange for a state or local tax credit, "If you
+          meet these conditions and to the extent you apply the state or local tax credit to this or a prior year''s state or
+          local tax liability, you may include this amount on line 5a, 5b, or 5c, whichever is appropriate"; p. 7, Line 6,
+          "Don''t include taxes you paid to a U.S. territory on this line; instead, include U.S. territory taxes on the
+          appropriate state and local tax line"'
+    - id: sa.line5b
+      printed: 5b
+      type: NonNegDollars
+      label: Deductible state/local real estate taxes
+      expr:
+        op: input
+        source: 'Deductible state/local real estate taxes on real estate you own that was not used for business, only
+          if the taxes are assessed uniformly at a like rate on all real property in the community and used for
+          general community or governmental purposes. Leave out foreign real estate taxes; itemized charges for
+          services to specific property or persons (for example trash collection, water use or mowing charges); and
+          charges for improvements that tend to increase the property''s value (for example an assessment to build a
+          new sidewalk), except a charge used only to maintain an existing public facility (for example to repair an
+          existing sidewalk). If your mortgage payments include real estate taxes, include only what the mortgage
+          company actually paid to the taxing authority in 2025. Reduce the amount by a 2025 refund or rebate of real
+          estate taxes paid in 2025, and by real estate tax charged to the buyer if you sold your home in 2025
+          (settlement statement, Form 1099-S box 6); do not reduce it by a refund of taxes paid in an earlier year.
+          Only taxes paid in 2025 and assessed before 2026 count (state or local law determines when a tax is
+          assessed, generally when you become liable for it), so leave out a prepayment of 2026 property tax not
+          assessed before 2026. Include real estate taxes imposed by a U.S. territory, except those allocable to
+          excluded income.'
+      cite:
+        doc: i1040sca
+        locator: 'p. 3, U.S. territory taxes, "Include taxes imposed by a U.S. territory with your state and local taxes on
+          lines 5a, 5b, and 5c", "However, don''t include any U.S. territory taxes you paid that are allocable to excluded
+          income"; p. 6, Line 5b, "Only taxes paid in 2025 and assessed prior to 2026 can be deducted for 2025", "State or local
+          law determines whether and when a property tax is assessed, which is generally when the taxpayer becomes liable
+          for the property tax imposed", "Enter on line 5b the state and local taxes you paid on real estate you own that
+          wasn''t used for business, but only if the taxes are assessed uniformly at a like rate on all real property
+          throughout the community, and the proceeds are used for general community or governmental purposes", "Foreign
+          taxes you paid on real estate", "Itemized charges for services to specific property or persons", "Charges for
+          improvements that tend to increase the value of your property", "However, a charge is deductible if it is used
+          only to maintain an existing public facility in service", "If your mortgage payments include your real estate
+          taxes, you can include only the amount the mortgage company actually paid to the taxing authority in 2025", "any
+          real estate tax charged to the buyer should be shown on your settlement statement and in box 6 of any Form 1099-S
+          you received", "This amount is considered a refund of real estate taxes", "If you received a refund or rebate in
+          2025 of real estate taxes you paid in 2025, reduce your deduction by the amount of the refund or rebate", "If you
+          received a refund or rebate in 2025 of real estate taxes you paid in an earlier year, don''t reduce your deduction
+          by this amount"'
+    - id: sa.line5c
+      printed: 5c
+      type: NonNegDollars
+      label: Deductible state/local personal property taxes
+      expr:
+        op: input
+        source: 'Deductible state/local personal property taxes: only taxes based on value alone and imposed on a
+          yearly basis (for a yearly car registration fee based partly on value, only the part based on value), paid
+          in 2025 and assessed before 2026. Include personal property taxes imposed by a U.S. territory, except those
+          allocable to excluded income.'
+      cite:
+        doc: i1040sca
+        locator: 'p. 3, U.S. territory taxes, "Include taxes imposed by a U.S. territory with your state and local taxes on
+          lines 5a, 5b, and 5c", "However, don''t include any U.S. territory taxes you paid that are allocable to excluded
+          income"; p. 6, Line 5c, "Enter on line 5c the state and local personal property taxes you paid, but only if the
+          taxes were based on value alone and were imposed on a yearly basis", "You can deduct only the part of the fee that
+          was based on the car''s value"; p. 7, "Only taxes paid in 2025 and assessed prior to 2026 can be deducted for
+          2025"'
+    - id: sa.line8a
+      printed: 8a
+      type: NonNegDollars
+      label: Eligible home mortgage interest and points on Form 1098, after confirming the debt/use limits
+        do not apply
+      expr:
+        op: input
+        source: Eligible home mortgage interest and points on Form 1098, after confirming the debt/use
+          limits do not apply
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.line11
+      printed: "11"
+      type: NonNegDollars
+      label: Deductible cash/check charitable gifts before income limits, after benefits received and
+        required substantiation
+      expr:
+        op: input
+        source: Deductible cash/check charitable gifts before income limits, after benefits received and
+          required substantiation
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.zero
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter sales.zero
+      expr:
+        op: param
+        ref: sales.zero
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.agi_floor
+      printed: (helper)
+      type: NonNegDollars
+      label: Form 1040 line 11b adjusted gross income, but not less than zero
+      expr:
+        op: subtract_floor0
+        from: sa.agi
+        take: sa.zero
+      cite:
+        doc: i1040sca
+        locator: 'p. 1, Medical and Dental Expenses, "You can deduct only the part of your medical and dental expenses that
+          exceeds 7.5% of the amount of your adjusted gross income on Form 1040 or 1040-SR, line 11b"'
+      ambiguity: amb.2025.sa_medical_negative_agi
+    - id: sa.line2
+      printed: "2"
+      type: NonNegDollars
+      label: Amount from sa.agi_floor
+      expr:
+        op: copy
+        from: sa.agi_floor
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+      ambiguity: amb.2025.sa_medical_negative_agi
+    - id: sa.line3
+      printed: "3"
+      type: NonNegDollars
+      label: Multiply sa.line2 by sa.medical_rate
+      expr:
+        op: multiply_rate
+        amount: sa.line2
+        rate:
+          param: sa.medical_rate
+      cite:
+        doc: f1040sa
+        locator: p. 1, Medical and Dental Expenses, line 3, "Multiply line 2 by 7.5% (0.075)"
+      ambiguity: amb.2025.multiplication_subcent
+    - id: sa.line4
+      printed: "4"
+      type: NonNegDollars
+      label: Subtract sa.line3 from sa.line1; if zero or less, enter zero
+      expr:
+        op: subtract_floor0
+        from: sa.line1
+        take: sa.line3
+      cite:
+        doc: f1040sa
+        locator: p. 1, Medical and Dental Expenses, line 4, "Subtract line 3 from line 1. If line 3 is more than line
+          1, enter -0-"
+    - id: sa.line5d
+      printed: 5d
+      type: NonNegDollars
+      label: Add sa.line5a, sa.line5b, sa.line5c
+      expr:
+        op: sum
+        of:
+          - sa.line5a
+          - sa.line5b
+          - sa.line5c
+      cite:
+        doc: f1040sa
+        locator: p. 1, Taxes You Paid, line 5d, "d Add lines 5a through 5c"
+    - id: sa.saltbase
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter sa.salt_base
+      expr:
+        op: param
+        ref: sa.salt_base
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.saltfloor
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter sa.salt_floor
+      expr:
+        op: param
+        ref: sa.salt_floor
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.saltthreshold
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter sa.salt_threshold
+      expr:
+        op: param
+        ref: sa.salt_threshold
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.saltexcess
+      printed: (helper)
+      type: NonNegDollars
+      label: Subtract sa.saltthreshold from sa.agi; if zero or less, enter zero
+      expr:
+        op: subtract_floor0
+        from: sa.agi
+        take: sa.saltthreshold
+      cite:
+        doc: f1040sa
+        locator: i1040sca p. 7, State and Local Tax Deduction Worksheet, "Enter $500,000 ($250,000 if married filing
+          separately)", "Is the amount on line 4 more than the amount on line 5?", "Subtract line 5 from line 4"
+    - id: sa.saltreduction
+      printed: (helper)
+      type: NonNegDollars
+      label: Multiply sa.saltexcess by sa.salt_rate
+      expr:
+        op: multiply_rate
+        amount: sa.saltexcess
+        rate:
+          param: sa.salt_rate
+      cite:
+        doc: f1040sa
+        locator: i1040sca p. 7, State and Local Tax Deduction Worksheet, "Multiply line 6 by 30% (0.30)"
+      ambiguity: amb.2025.multiplication_subcent
+    - id: sa.saltremaining
+      printed: (helper)
+      type: NonNegDollars
+      label: Subtract sa.saltreduction from sa.saltbase; if zero or less, enter zero
+      expr:
+        op: subtract_floor0
+        from: sa.saltbase
+        take: sa.saltreduction
+      cite:
+        doc: f1040sa
+        locator: i1040sca p. 7, State and Local Tax Deduction Worksheet, "Subtract line 7 from line 1", "Enter
+          $40,000"
+    - id: sa.saltfloor_applied
+      printed: (helper)
+      type: NonNegDollars
+      label: Larger of remaining ceiling and $10,000
+      expr:
+        op: larger_of
+        of:
+          - sa.saltremaining
+          - sa.saltfloor
+      cite:
+        doc: i1040sca
+        locator: p. 7, State and Local Tax Deduction Worksheet
+    - id: sa.salthalf
+      printed: (helper)
+      type: NonNegDollars
+      label: Multiply sa.saltfloor_applied by sa.half
+      expr:
+        op: multiply_rate
+        amount: sa.saltfloor_applied
+        rate:
+          param: sa.half
+      cite:
+        doc: f1040sa
+        locator: i1040sca p. 7, State and Local Tax Deduction Worksheet, "State and local tax deduction. Enter the
+          smaller of the amount on line 9 (half the amount on line 9 if married filing separately) or the amount from
+          Schedule A, line 5d"
+      ambiguity: amb.2025.multiplication_subcent
+    - id: sa.mfs
+      printed: (helper)
+      type: Bool
+      label: Married filing separately
+      expr:
+        op: test
+        eq:
+          - f1040.status
+          - const: mfs
+      cite:
+        doc: f1040sa
+        locator: i1040sca p. 7, State and Local Tax Deduction Worksheet, "(half the amount on line 9 if married filing
+          separately)"
+    - id: sa.saltlimit
+      printed: (helper)
+      type: NonNegDollars
+      label: Half the worksheet ceiling if married filing separately
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sa.mfs
+                - const: true
+            then: sa.salthalf
+          - guard:
+              op: test
+              eq:
+                - sa.mfs
+                - const: false
+            then: sa.saltfloor_applied
+      cite:
+        doc: i1040sca
+        locator: p. 7, State and Local Tax Deduction Worksheet
+    - id: sa.line5e
+      printed: 5e
+      type: NonNegDollars
+      label: Smaller of sa.line5d, sa.saltlimit
+      expr:
+        op: smaller_of
+        of:
+          - sa.line5d
+          - sa.saltlimit
+      cite:
+        doc: f1040sa
+        locator: p. 1, Taxes You Paid, line 5e, "Enter the smaller of line 5d or $40,000 ($20,000 if married filing
+          separately)"; i1040sca p. 7, Line 5e, "If Form 1040 or 1040-SR, line 11b is more than $500,000 ($250,000 if
+          married filing separately), or if you completed Form 2555, Form 4563, or excluded income from Puerto Rico,
+          complete the State and Local Tax Deduction Worksheet to figure the amount to enter on line 5e"
+    - id: sa.line6
+      printed: "6"
+      type: NonNegDollars
+      label: Amount from sa.zero
+      expr:
+        op: copy
+        from: sa.zero
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+      refuses:
+        - when: sa.unsupported
+          form: Schedule A unsupported item / Form 4684
+          remedy: Prepare the applicable deduction or limitation; only the listed Schedule A items are
+            supported.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.charity_limited
+          form: Schedule A charitable limitation / carryover
+          remedy: Income-limited and carried-over charitable deductions are outside scope.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.excluded_income
+          form: Schedule A SALT Worksheet / Forms 2555 and 4563
+          remedy: Excluded-income addbacks are outside scope.
+          cite:
+            doc: i1040sca
+            locator: p. 7, State and Local Tax Deduction Worksheet
+    - id: sa.line8b
+      printed: 8b
+      type: NonNegDollars
+      label: Amount from sa.zero
+      expr:
+        op: copy
+        from: sa.zero
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+      refuses:
+        - when: sa.unsupported
+          form: Schedule A unsupported item / Form 4684
+          remedy: Prepare the applicable deduction or limitation; only the listed Schedule A items are
+            supported.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.charity_limited
+          form: Schedule A charitable limitation / carryover
+          remedy: Income-limited and carried-over charitable deductions are outside scope.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.excluded_income
+          form: Schedule A SALT Worksheet / Forms 2555 and 4563
+          remedy: Excluded-income addbacks are outside scope.
+          cite:
+            doc: i1040sca
+            locator: p. 7, State and Local Tax Deduction Worksheet
+    - id: sa.line8c
+      printed: 8c
+      type: NonNegDollars
+      label: Amount from sa.zero
+      expr:
+        op: copy
+        from: sa.zero
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+      refuses:
+        - when: sa.unsupported
+          form: Schedule A unsupported item / Form 4684
+          remedy: Prepare the applicable deduction or limitation; only the listed Schedule A items are
+            supported.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.charity_limited
+          form: Schedule A charitable limitation / carryover
+          remedy: Income-limited and carried-over charitable deductions are outside scope.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.excluded_income
+          form: Schedule A SALT Worksheet / Forms 2555 and 4563
+          remedy: Excluded-income addbacks are outside scope.
+          cite:
+            doc: i1040sca
+            locator: p. 7, State and Local Tax Deduction Worksheet
+    - id: sa.gifts_total
+      printed: (helper)
+      type: NonNegDollars
+      label: Add sa.line11, sa.line12
+      expr:
+        op: sum
+        of:
+          - sa.line11
+          - sa.line12
+      cite:
+        doc: f1040sa
+        locator: 'Schedule A (2026), lines 11 and 12 (draft)'
+    - id: sa.gift_floor
+      printed: (helper)
+      type: NonNegDollars
+      label: Multiply sa.agi_floor by sa.gift_floor_rate (0.5% of the contribution base)
+      expr:
+        op: multiply_rate
+        amount: sa.agi_floor
+        rate:
+          param: sa.gift_floor_rate
+      cite:
+        doc: plaw-119-21
+        locator: 'p. 165, section 70425, section 170(b)(1)(I), "shall be allowed only to the extent that the aggregate of such
+          contributions exceeds 0.5 percent of the taxpayer’s contribution base"'
+      ambiguity: amb.2026.gift_floor_base
+    - id: sa.line13_ws
+      printed: "13"
+      type: NonNegDollars
+      label: Subtract sa.gift_floor from sa.gifts_total; if zero or less, enter zero (the Charitable Contribution Limitation
+        Worksheet, line 6, as the statute fixes it)
+      expr:
+        op: subtract_floor0
+        from: sa.gifts_total
+        take: sa.gift_floor
+      cite:
+        doc: f1040sa
+        locator: 'Schedule A (2026), line 13 (draft), "Enter the amount from line 6 of the Charitable Contribution Limitation
+          Worksheet"; plaw-119-21 p. 165, section 70425 (final), "Any charitable contribution otherwise allowable (without
+          regard to this subparagraph) as a deduction under this section shall be allowed only to the extent that the
+          aggregate of such contributions exceeds 0.5 percent of the taxpayer’s contribution base"'
+      ambiguity: amb.2026.gift_floor_base
+    - id: sa.line13
+      printed: "14"
+      type: NonNegDollars
+      label: Amount from sa.zero
+      expr:
+        op: copy
+        from: sa.zero
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+      refuses:
+        - when: sa.unsupported
+          form: Schedule A unsupported item / Form 4684
+          remedy: Prepare the applicable deduction or limitation; only the listed Schedule A items are
+            supported.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.charity_limited
+          form: Schedule A charitable limitation / carryover
+          remedy: Income-limited and carried-over charitable deductions are outside scope.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.excluded_income
+          form: Schedule A SALT Worksheet / Forms 2555 and 4563
+          remedy: Excluded-income addbacks are outside scope.
+          cite:
+            doc: i1040sca
+            locator: p. 7, State and Local Tax Deduction Worksheet
+    - id: sa.line15
+      printed: "16"
+      type: NonNegDollars
+      label: Amount from sa.zero
+      expr:
+        op: copy
+        from: sa.zero
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+      refuses:
+        - when: sa.unsupported
+          form: Schedule A unsupported item / Form 4684
+          remedy: Prepare the applicable deduction or limitation; only the listed Schedule A items are
+            supported.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.charity_limited
+          form: Schedule A charitable limitation / carryover
+          remedy: Income-limited and carried-over charitable deductions are outside scope.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.excluded_income
+          form: Schedule A SALT Worksheet / Forms 2555 and 4563
+          remedy: Excluded-income addbacks are outside scope.
+          cite:
+            doc: i1040sca
+            locator: p. 7, State and Local Tax Deduction Worksheet
+    - id: sa.gambling_losses
+      printed: (helper)
+      type: NonNegDollars
+      label: Gambling losses you had during 2025
+      expr:
+        op: input
+        source: 'Your gambling losses during 2025 (you and, on a joint return, your spouse), including the cost of
+          nonwinning bingo, lottery and raffle tickets, in full, whether or not more than your winnings; zero if none'
+      cite:
+        doc: i1040sca
+        locator: 'p. 11, Other Itemized Deductions, "Gambling losses (gambling losses include, but aren''t limited to, the
+          cost of nonwinning bingo, lottery, and raffle tickets)"'
+    - id: sa.gambling_90
+      printed: (helper)
+      type: NonNegDollars
+      label: 90 percent of your gambling losses
+      expr:
+        op: multiply_rate
+        amount: sa.gambling_losses
+        rate:
+          param: sa.gambling_rate
+      cite:
+        doc: plaw-119-21
+        locator: 'p. 96, section 70114, section 165(d)(1)(A), "shall be equal to 90 percent of the amount of such losses during such taxable year"'
+    - id: sa.line16_gambling
+      printed: (helper)
+      type: NonNegDollars
+      label: 90 percent of gambling losses, but only to the extent of gambling winnings reported on Schedule 1, line 8b
+      expr:
+        op: smaller_of
+        of:
+          - sa.gambling_90
+          - s1.line8b
+      cite:
+        doc: i1040sca
+        locator: 'p. 11, Other Itemized Deductions, "but only to the extent of gambling winnings reported on Schedule 1 (Form
+          1040), line 8b"; p525 p. 33, Gambling winnings, "If you itemize your deductions on Schedule A (Form 1040), you can
+          deduct gambling losses you had during the year, but only up to the amount of your winnings"'
+      ambiguity: amb.2025.gambling_losses
+    - id: sa.line16
+      printed: 17a
+      type: NonNegDollars
+      label: Deductible gambling losses
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - s1.has_gambling
+                - const: true
+            then: sa.line16_gambling
+          - guard:
+              op: test
+              eq:
+                - s1.has_gambling
+                - const: false
+            then: sa.zero
+      cite:
+        doc: f1040sa
+        locator: 'Schedule A (2026), line 17a (draft), "17a Deductible gambling losses"'
+      refuses:
+        - when: sa.unsupported
+          form: Schedule A unsupported item / Form 4684
+          remedy: Prepare the applicable deduction or limitation; only the listed Schedule A items are
+            supported.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.charity_limited
+          form: Schedule A charitable limitation / carryover
+          remedy: Income-limited and carried-over charitable deductions are outside scope.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.excluded_income
+          form: Schedule A SALT Worksheet / Forms 2555 and 4563
+          remedy: Excluded-income addbacks are outside scope.
+          cite:
+            doc: i1040sca
+            locator: p. 7, State and Local Tax Deduction Worksheet
+    - id: sa.line7
+      printed: "7"
+      type: NonNegDollars
+      label: Add sa.line5e, sa.line6
+      expr:
+        op: sum
+        of:
+          - sa.line5e
+          - sa.line6
+      cite:
+        doc: f1040sa
+        locator: p. 1, Taxes You Paid, line 7, "Add lines 5e and 6"
+    - id: sa.line8d
+      printed: 8d
+      type: NonNegDollars
+      label: Amount from sa.zero
+      expr:
+        op: copy
+        from: sa.zero
+      cite:
+        doc: f1040sa
+        locator: 'Schedule A (2026), line 8d (draft), "8d Mortgage insurance premiums (see instructions)"'
+      refuses:
+        - when: sa.unsupported
+          form: Schedule A unsupported item / Form 4684
+          remedy: Prepare the applicable deduction or limitation; only the listed Schedule A items are
+            supported.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.charity_limited
+          form: Schedule A charitable limitation / carryover
+          remedy: Income-limited and carried-over charitable deductions are outside scope.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.excluded_income
+          form: Schedule A SALT Worksheet / Forms 2555 and 4563
+          remedy: Excluded-income addbacks are outside scope.
+          cite:
+            doc: i1040sca
+            locator: p. 7, State and Local Tax Deduction Worksheet
+    - id: sa.line8e
+      printed: 8e
+      type: NonNegDollars
+      label: Add sa.line8a, sa.line8b, sa.line8c, sa.line8d
+      expr:
+        op: sum
+        of:
+          - sa.line8a
+          - sa.line8b
+          - sa.line8c
+          - sa.line8d
+      cite:
+        doc: f1040sa
+        locator: p. 2 (draft), Interest You Paid, line 8e, "8e Add lines 8a through 8d"
+    - id: sa.line9
+      printed: "9"
+      type: NonNegDollars
+      label: Amount from f4952.line8
+      expr:
+        op: copy
+        from: f4952.line8
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.line10
+      printed: "10"
+      type: NonNegDollars
+      label: Add sa.line8e, sa.line9
+      expr:
+        op: sum
+        of:
+          - sa.line8e
+          - sa.line9
+      cite:
+        doc: f1040sa
+        locator: p. 1, Interest You Paid, line 10, "Add lines 8e and 9"
+    - id: sa.line12
+      printed: "12"
+      type: NonNegDollars
+      label: Total supported noncash donations before income limits
+      expr:
+        op: sum_over
+        collection: gift
+        field: gift.allowed
+      cite:
+        doc: f1040sa
+        locator: p. 1, Gifts to Charity, line 12, "Other than by cash or check. If you made any gift of $250 or more,
+          see instructions"
+      refuses:
+        - when: sa.unsupported
+          form: Schedule A unsupported item / Form 4684
+          remedy: Prepare the applicable deduction or limitation; only the listed Schedule A items are
+            supported.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.charity_limited
+          form: Schedule A charitable limitation / carryover
+          remedy: Income-limited and carried-over charitable deductions are outside scope.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.excluded_income
+          form: Schedule A SALT Worksheet / Forms 2555 and 4563
+          remedy: Excluded-income addbacks are outside scope.
+          cite:
+            doc: i1040sca
+            locator: p. 7, State and Local Tax Deduction Worksheet
+    - id: sa.form8283
+      printed: (helper)
+      display: 'Attachment notice on the values sheet: Form 8283 must be attached when noncash gifts exceed $500.'
+      type: Bool
+      label: Noncash total exceeds $500; Form 8283 attachment required
+      expr:
+        op: test
+        gt:
+          - sa.line12
+          - const: 50000
+      cite:
+        doc: f1040sa
+        locator: p. 1, Gifts to Charity, line 12, "You must attach Form 8283 if over $500"
+    - id: sa.line14
+      printed: "15"
+      type: NonNegDollars
+      label: Add sa.line13_ws, sa.line13
+      expr:
+        op: sum
+        of:
+          - sa.line13_ws
+          - sa.line13
+      cite:
+        doc: f1040sa
+        locator: p. 3 (draft), Gifts to Charity, line 15, "15 Add lines 13 and 14"
+    - id: sa.line17z
+      printed: 17z
+      type: NonNegDollars
+      label: Add lines 17a through 17k (only 17a is figured; 17b to 17k are refused)
+      expr:
+        op: copy
+        from: sa.line16
+      cite:
+        doc: f1040sa
+        locator: 'Schedule A (2026), line 17z (draft), "17z Add lines 17a through 17k"'
+    - id: sa.line17
+      printed: "18"
+      type: NonNegDollars
+      label: Add sa.line4, sa.line7, sa.line10, sa.line14, sa.line15, sa.line17z
+      expr:
+        op: sum
+        of:
+          - sa.line4
+          - sa.line7
+          - sa.line10
+          - sa.line14
+          - sa.line15
+          - sa.line17z
+      cite:
+        doc: f1040sa
+        locator: 'p. 3 (draft), Total Itemized Deductions, line 18, "No. Your deductions are not limited. Add the amounts in far-right column for lines 4 through 17z" (the Yes branch, the Itemized Deductions Worksheet, is refused on Form 1040 line 15: f1040.gate.itemized_limit)'
+      refuses:
+        - when: sa.unsupported
+          form: Schedule A unsupported item / Form 4684
+          remedy: Prepare the applicable deduction or limitation; only the listed Schedule A items are
+            supported.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.charity_limited
+          form: Schedule A charitable limitation / carryover
+          remedy: Income-limited and carried-over charitable deductions are outside scope.
+          cite:
+            doc: f1040sa
+            locator: Schedule A (2025), lines 1–18
+        - when: sa.excluded_income
+          form: Schedule A SALT Worksheet / Forms 2555 and 4563
+          remedy: Excluded-income addbacks are outside scope.
+          cite:
+            doc: i1040sca
+            locator: p. 7, State and Local Tax Deduction Worksheet
+    - id: sa.standardbase
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter sa.standard_base
+      expr:
+        op: param
+        ref: sa.standard_base
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.extra
+      printed: (helper)
+      type: NonNegDollars
+      label: Year parameter sa.standard_extra
+      expr:
+        op: param
+        ref: sa.standard_extra
+      cite:
+        doc: f1040sa
+        locator: Schedule A (2025), lines 1–18
+    - id: sa.boxes_age65
+      printed: (helper)
+      type: Count
+      label: Number of boxes checked for born before January 2, 1961 (you, and your spouse if filing jointly), not counting a
+        person who died in 2025 before reaching 65
+      expr:
+        op: sum_over
+        collection: person
+        field: person.one
+        where:
+          op: test
+          all:
+          - op: test
+            eq:
+            - person.age65
+            - const: true
+          - op: test
+            eq:
+            - person.died_before_65
+            - const: false
+      cite:
+        doc: i1040gi
+        locator: p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
+          January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction
+          Chart for People Who Were Born Before January 2, 1961, or Were Blind
+    - id: sa.extra_age65
+      printed: (helper)
+      type: NonNegDollars
+      label: Additional standard deduction for each box checked for age
+      expr:
+        op: multiply_count
+        amount: sa.extra
+        count: sa.boxes_age65
+      cite:
+        doc: i1040gi
+        locator: p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
+          January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction
+          Chart for People Who Were Born Before January 2, 1961, or Were Blind
+    - id: sa.boxes_blind
+      printed: (helper)
+      type: Count
+      label: Number of boxes checked for blindness (you, and your spouse if filing jointly)
+      expr:
+        op: sum_over
+        collection: person
+        field: person.one
+        where:
+          op: test
+          eq:
+          - person.blind
+          - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
+          January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction
+          Chart for People Who Were Born Before January 2, 1961, or Were Blind
+    - id: sa.extra_blind
+      printed: (helper)
+      type: NonNegDollars
+      label: Additional standard deduction for each box checked for blindness
+      expr:
+        op: multiply_count
+        amount: sa.extra
+        count: sa.boxes_blind
+      cite:
+        doc: i1040gi
+        locator: p. 33, Line 12d, "If you or your spouse (if you are married and filing a joint return) were born before
+          January 2, 1961, or were blind at the end of 2025, check the appropriate box(es)"; pp. 34–35, Standard Deduction
+          Chart for People Who Were Born Before January 2, 1961, or Were Blind
+    - id: sa.standardraw
+      printed: (helper)
+      type: NonNegDollars
+      label: Add sa.standardbase, sa.extra_age65, sa.extra_blind
+      expr:
+        op: sum
+        of:
+          - sa.standardbase
+          - sa.extra_age65
+          - sa.extra_blind
+      cite:
+        doc: f1040sa
+        locator: i1040gi pp. 34–35, Line 12e Standard Deduction or Itemized Deductions, "Exception 4—Born before
+          January 2, 1961, or blind", "Standard Deduction Chart for People Who Were Born Before January 2, 1961, or
+          Were Blind", "If born before January 2, 1961, or blind, multiply the number on line 1 by $1,600 ($2,000 if
+          single or head of household)"
+    - id: sa.standard
+      printed: (helper)
+      type: NonNegDollars
+      label: Standard deduction, zero when MFS spouse itemizes
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sa.mfs_spouse_itemizes
+                - const: true
+            then: sa.zero
+          - guard:
+              op: test
+              eq:
+                - sa.mfs_spouse_itemizes
+                - const: false
+            then: sa.standardraw
+      cite:
+        doc: i1040gi
+        locator: pp. 34–35, line 12e and Standard Deduction Chart
+      refuses:
+        - when: sa.dependent
+          form: Standard Deduction Worksheet for Dependents / dual-status rules
+          remedy: Dependent and dual-status standard deductions are outside this resident nondependent slice.
+          cite:
+            doc: i1040gi
+            locator: pp. 34–35, line 12e and Standard Deduction Chart
+        - when: sa.mfs_spouse_extra
+          form: Standard Deduction Chart spouse boxes on a separate return
+          remedy: Checking age or blindness boxes for your spouse on a married filing separately return is outside
+            this tool.
+          cite:
+            doc: i1040gi
+            locator: pp. 34–35, line 12e and Standard Deduction Chart
+    - id: sa.itemizes
+      printed: (helper)
+      type: Bool
+      label: Itemize if elected, required, or itemized total exceeds standard
+      expr:
+        op: test
+        any:
+          - op: test
+            eq:
+              - sa.elect_itemize
+              - const: true
+          - op: test
+            eq:
+              - sa.mfs_spouse_itemizes
+              - const: true
+          - op: test
+            gt:
+              - sa.line17
+              - sa.standard
+      cite:
+        doc: f1040sa
+        locator: p. 1, Total Itemized Deductions, line 18, "If you elect to itemize deductions even though they are
+          less than your standard deduction, check this box"; i1040gi p. 34, Line 12e Standard Deduction or Itemized
+          Deductions, "In most cases, your federal income tax will be less if you take the larger of your standard
+          deduction or itemized deductions", "If you checked the box on line 12b, your standard deduction is zero"
+    - id: sa.deduction
+      printed: (helper)
+      type: NonNegDollars
+      label: Deduction selected for Form 1040 line 12e
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - sa.itemizes
+                - const: true
+            then: sa.line17
+          - guard:
+              op: test
+              eq:
+                - sa.itemizes
+                - const: false
+            then: sa.standard
+      cite:
+        doc: i1040gi
+        locator: pp. 34–35, line 12e and Standard Deduction Chart
+      refuses:
+        - when: sa.dependent
+          form: A return for a dependent or dual-status alien
+          remedy: A return for a filer or spouse who can be claimed as a dependent, or a dual-status alien, is outside
+            this resident nondependent slice, whether the deduction is standard or itemized.
+          cite:
+            doc: i1040gi
+            locator: pp. 34–35, line 12e and Standard Deduction Chart
+    - id: sa.mfs_spouse_itemizes
+      printed: (helper)
+      type: Bool
+      label: MFS with spouse itemizing
+      expr:
+        op: test
+        all:
+          - op: test
+            eq:
+              - sa.mfs
+              - const: true
+          - op: test
+            eq:
+              - sa.spouse_itemizes
+              - const: true
+      cite:
+        doc: i1040gi
+        locator: p. 34, Line 12e, Exception 2
