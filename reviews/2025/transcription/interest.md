@@ -23,6 +23,14 @@ Second transcription of `Schedule B — interest payer entries` by an isolated m
 
 ## Lines
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| (rest of the document) | 7146ac163b923be9faaf647558a37bd8aea7c6a313f2a1ef97d169fb9ee99b49 |
+
 ## Raw second transcription
 
 ```yaml

@@ -72,6 +72,27 @@ Status: **AGREE**
 ### 13 — Long-term capital loss carryover to 2026. Subtract line 12 from line 9. If zero or less, e
 Status: **AGREE**
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| 1 | 550b397c4b362f80a9b6a034614e74a77c90f2e31cedfa51018f8d00c106c380 |
+| 2 | 66ed6da5210206bb0263abc2cf8f017e4100698221623a70f93d83cfb3f0677c |
+| 3 | 55877193329f7118d29109b0322e8c2833960c5f23d5bfde8948c70d6b8ede62 |
+| 4 | ae8e2621a6a20ef7536aabbd26654dd6bff79d1c119ed188dd9f7501e2a53846 |
+| 5 | c002940c512a9a8cc5fc525f1ace2a5f7226890ba4d8479f8cefc4e25858c323 |
+| 6 | efd121ac2431f5de134a97168576be088f2c18ecde23c38e7a2cb245e898ce2e |
+| 7 | 6202d090890b561f4c432bf66cd733885f5879ea7ab0ccd8ffada1e42ccf4df8 |
+| 8 | f204c4b1c45f587c3d09f46b017240f85e56c3fef27fd954c557ff34d9d9680f |
+| 9 | ec2a220bb984a782080e0d4a61056149e1e9c7fdd1754522ec75539b7b3e71d6 |
+| 10 | 9be608fd79d2df2414c528f2c440819252f77a7acaa8bd897b6e9c1491ebd247 |
+| 11 | 70c6077b57c96b400d30303abb17cdd552705dd44e2f586c1b9f4c70e214327a |
+| 12 | 02d2ab2a23bc0cee9efbb1e9ce1fe70e2f7390e700cc867ab65168eca5fef03f |
+| 13 | 7e6f8036a273b031a0492148dbb92c8478b45c207a70d0fe2f25aae2a72ec9b2 |
+| (rest of the document) | 4e4a319214c0092429d52e55a08780c6fada5ffb8d6a8651674b431950556488 |
+
 ## Raw second transcription
 
 ```yaml

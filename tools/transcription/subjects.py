@@ -83,12 +83,16 @@ def current(kind, fid, year):
 #                  named anywhere in an expression, refusals or shown_when), and, of each other
 #                  printed computed line reached, only its id, printed marker and type (the
 #                  comparison references a printed line by its marker); in a shared definition
-#                  every line is followed. Citations left out;
+#                  every line is followed. Citations and wording (WORDING: a line's label, help,
+#                  note, display and ambiguity link, which the request does not carry and the
+#                  comparison does not read)
+#                  left out; an input's question (expr.source) is kept, since the request carries it;
 #   render         the line's rendered section and the sections of the in-document glossary
 #                  entries it names (render_compare.glossary, which stops at the document's other
 #                  judged lines), citations left out;
-#   rest           the document's own fields without its lines (transcription), or the rendered
-#                  head before the first line (render). A line no compared line reaches enters no
+#   rest           the document's own fields without its lines and its WORDING fields (transcription; the
+#                  title is kept, since the request carries it), or the rendered head before the
+#                  first line (render). A line no compared line reaches enters no
 #                  verdict of this review (the reviews of the documents that read it judge it).
 #
 # Like the whole-document subject, lines of other documents are not included.
@@ -145,8 +149,19 @@ def _doc(yaml_text):
     return raw.get("form") or raw.get("def"), ("form" if "form" in raw else "def")
 
 
-def transcription_line_subjects(yaml_text, targets):
-    """({line id: subject} for each target id present, rest subject) of a form's YAML."""
+# Fields of a line or a document that a transcription verdict does not depend on: the
+# request omits them and compare() decides from expressions. The render and completeness reviews judge them.
+WORDING = ("label", "help", "note", "display", "ambiguity")
+
+
+def _unworded(o):
+    return {k: v for k, v in o.items() if k not in WORDING}
+
+
+def transcription_line_subjects(yaml_text, targets, view=None):
+    """({line id: subject} for each target id present, rest subject) of a form's YAML. `view` maps a
+    line, and the document's fields, to what is hashed (default: citations and WORDING left out)."""
+    view = view or (lambda o: _without_cites(_unworded(o)))
     doc, wrapper = _doc(yaml_text)
     by_id = {l["id"]: l for l in doc["lines"]}
     out = {}
@@ -154,9 +169,9 @@ def transcription_line_subjects(yaml_text, targets):
         if t not in by_id:
             continue
         members, boundary = reach(doc, t)
-        out[t] = _sha([_without_cites(by_id[i]) for i in sorted(members)] +
+        out[t] = _sha([view(by_id[i]) for i in sorted(members)] +
                       [{"boundary": i, "printed": str(by_id[i]["printed"]), "type": by_id[i]["type"]} for i in sorted(boundary)])
-    return out, _sha({wrapper: _without_cites({k: v for k, v in doc.items() if k != "lines"})})
+    return out, _sha({wrapper: view({k: v for k, v in doc.items() if k != "lines"})})
 
 
 def rendered_sections(md_text):

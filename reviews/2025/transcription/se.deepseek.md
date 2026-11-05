@@ -49,6 +49,15 @@ Second:
 
 Ruling: representation of the exported deduction; f1040sse (2025) p.1 line4c says STOP below$400, with no church employee income in the admitted slice. The returned transcription applies that STOP at line6 rather than on its intermediate line4c, making lines10-13 zero in precisely the stopped cases. Above the threshold both use the same92.35%, wage-base floor,12.4%,2.9% and50% operations. The project floor before the positive-line3 multiplication is also redundant under that branch guard. This adjudicates the exported line13 result only, not identical intermediate printed values in a stopped worksheet. The fresh response passes expression checks.
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| line13 | 4c17bb5ce32845c5ef6bfc8f3bfce76bc472081a0ed9df8a05b35eb64c177158 |
+| (rest of the document) | 2fcc27079d66d7d1e57c61912db88d50ec4a5c94226e88fc5faef18b50cf56c9 |
+
 ## Raw second transcription
 
 ```yaml

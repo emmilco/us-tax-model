@@ -51,6 +51,15 @@ Second transcription's note: 'More than 40%' is tested exactly: percent_floor re
 
 Ruling: representation; p946 p. 34, Which Convention Applies?, Mid-quarter convention: the convention applies if "the total depreciable bases of MACRS property you placed in service during the last 3 months of the tax year (...) are more than 40% of the total depreciable bases of all MACRS property you placed in service during the entire year". The project tests 2 x total < 5 x fourth-quarter bases; the reply's percent_floor(fourth-quarter, larger of the constant 1 and the total, cap 40) returns 41 exactly when 100 x fourth-quarter > 40 x the whole (engine percent_floor), the same strict test, and with no basis both give false. executable-triage-v2 (`reviews/2025/transcription/triage/mq.json`; 1,495 fixtures, 500 generated returns seed 20261026, 0 partial records; 1,995 comparisons): 1,995 of 1,995 agree; differences none; on returns the full interview completes: none. No difference on any compared record. The package change to this form only links amb.2025.mq_joint; the expression is unchanged.
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| mq.applies | 841640d8b5aa7843d721d3614eedbbc4d662a791d25eccdf20f1951055d6619b |
+| (rest of the document) | 176aa12f2dffc5143614105feaac9bce99368c09a467cee0c5571a7675dfbc40 |
+
 ## Raw second transcription
 
 ```yaml

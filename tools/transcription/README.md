@@ -205,7 +205,10 @@ are bound to the exact prompt, system prompt, model, policy and explicit
 reasoning effort. A changed request requires a fresh call; it cannot relabel
 an old response. `--dry-run` writes a separate `.preview.prompt.txt`.
 `rerun_all.py --resume` reuses only matching receipts and saves progress after
-each completed job. `--reasoning-effort low|high|max` is supported for DeepSeek
+each completed job. A model family's first usage-limit failure (an exhausted allowance or balance, not a
+rate limit or timeout) stops `rerun_all.py` calling that family: calls in flight finish, later jobs of the
+family are not run (a `--resume` reuse still runs; it makes no call), and the end of the run lists every
+job the limit stopped with the command that reruns it. `--reasoning-effort low|high|max` is supported for DeepSeek
 reviews; it is recorded and checked on reuse. Class M rebuilds current jobs
 even when reusing a response, so changed supplied amounts require fresh work.
 `--max-output-tokens N` raises the DeepSeek allowance for reasoning plus the
@@ -624,7 +627,12 @@ lines (a compared line; any line of the form, meaning the compared lines that re
 meaning this form's lines reading it; or `auto`, the lines whose subject changed) and merge the result into the
 existing log of that family as a `#### Pass <prompt sha>` block under `## Line-scoped reviews`. The scoped prompt
 carries the target lines, every other printed computed line by id, marker and type, all inputs, the excerpt the
-targets and their helpers and inputs cite, and the source-derived catalog for those pages only. Each log records a
+targets and their helpers and inputs cite, and the source-derived catalog for those pages only
+(`source-only-computation-v3+lines-v2`), narrowed as a New York catalog is: a form the excerpt names only as a form
+("Form 1040") is listed whole only where the scoped lines' own citations name it; otherwise its input lines and the
+lines the excerpt names by form and line are listed (reason `named form, inputs and named lines: ...`), and a
+collection named only as a form only by its named lines. Definitions, shared pages, worksheets, named lines (a form feeding a line the excerpt names) and the
+screening list are as in a whole review. Each log records a
 `## Line subjects` table; `check_logs.py` names exactly the stale lines and suggests `--lines auto`. Owner decision
 2026-11-04: a log goes stale only for the lines whose subject changed (a line no compared line reaches does not stale
 it). Forms with partial-input banks (dependent, f8889) are reviewed whole. `rerun_all.py --lines auto` runs the transcription and render reviews this way.
@@ -632,8 +640,18 @@ When `--lines auto` finds every compared line current in a log written before li
 subject that changed only outside every line subject), it records the table it verified against the reviewed version
 and makes no model call, so `check_logs.py` holds the log current by its lines.
 
+A transcription line subject leaves out wording: the `label`, `help`, `note`, `display` and `ambiguity` fields of a line
+and of the document (`subjects.WORDING`), which the request does not carry and the comparison does not read; an input's question
+(`expr.source`) and the document's title, which the request carries, stay in. A wording edit therefore stales no
+transcription log that has a line-subject table (the render and completeness reviews judge wording); the log's header
+subject still records the whole definition it reviewed. `migrate_line_subjects.py [--jurisdiction ny] [--dry-run]`
+rewrites each log's table to these subjects of the version the log reviewed, found by its recorded hashes in the
+working tree or git history, and gives a log reviewed whole without a table the table of its reviewed version; no
+model call, idempotent. It writes a log only when the log's state (stale or current) is unchanged, so a stale log stays
+stale; a log it would turn current is named and left for `--lines auto`.
+
 A merged log earns second-family credit only when every review in it qualifies (T-226). `compare_families.py` holds
-a log with passes current by its line subjects (`subjects.log_state`, as `check_logs.py` does) instead of its header's
+a log with passes or a line-subject table current by its line subjects (`subjects.log_state`, as `check_logs.py` does) instead of its header's
 subject, and applies the header's conditions to each pass's own record: the named family and selected model,
 `source-only-computation-v3+lines-v1`, the current comparison, type-validation and input-context policies with
 passing results. `audit_transcription.py` verifies the header review against its receipt (subject check replaced by

@@ -67,7 +67,7 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 | line | subject sha256 |
 | --- | --- |
-| tax | b13ecf82613a7fe299a90e6645faa58b513a47d3fa7ffa91366fb4abcd93eb7b |
+| tax | 1375f6457f620b10ddc65ea24a408dfb6d075a751a59f7e4d39a2a8e8f25a1c5 |
 | (rest of the document) | c7c692de84a1a626df677d175d6b407414322e8610a485411895dfd2800f052c |
 
 ## Foreign interfaces

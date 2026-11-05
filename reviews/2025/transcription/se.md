@@ -49,6 +49,15 @@ Second:
 
 Ruling: representation; f1040sse (2025) p.1 line4a multiplies line3 by92.35% only when line3 is positive, otherwise copying line3. The project floors line3 at zero inside that positive branch; the returned transcription multiplies the signed Dollars line directly in that branch. The floor cannot bind when the guard is true. Both retain the same $400 STOP on line4c, zero for the screened farm/optional/church/Form4137/Form8919 regimes, the wage-base floor on line9, the same line10/11 rates, and 50% of line12 on line13. This fresh reply passes the schema/reference/type checks; the archived conflicting-id reply is not repaired or reused.
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| line13 | 4c17bb5ce32845c5ef6bfc8f3bfce76bc472081a0ed9df8a05b35eb64c177158 |
+| (rest of the document) | 2fcc27079d66d7d1e57c61912db88d50ec4a5c94226e88fc5faef18b50cf56c9 |
+
 ## Raw second transcription
 
 ```yaml

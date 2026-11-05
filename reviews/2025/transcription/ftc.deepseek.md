@@ -59,6 +59,15 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | --- | --- | --- |
 | ftc.credit | scope.other_line16 | - |
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| ftc.credit | f9c818d41b5754899ccd54cccb094aaa08a3f49586c788c317f5bd476e635cc1 |
+| (rest of the document) | 0b27c1db7e23a8e90ed880b6d5e278e7ce96926cdbe182df2a1cfd1afeed920d |
+
 ## Raw second transcription
 
 ```yaml

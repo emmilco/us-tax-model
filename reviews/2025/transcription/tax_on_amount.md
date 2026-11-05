@@ -50,6 +50,15 @@ Second transcription's note: The line 16 instructions that say which method to u
 
 Ruling: representation within the selected worksheet domain; i1040gi (2025) Tax Table and Tax Computation Worksheet (SectionsA-D, first row At least$100,000) split ordinary tax at$100,000. Both returned branches use the Tax Table below the boundary and the same worksheet row rates/subtractions at or above it. The reply flattens filing-status and bracket guards into one choose, omits each first-row lower bound already guaranteed by the outer selector, and groups mfj/qss in SectionB. The project nests the status/bracket choices and keeps the redundant lower bound. No equivalence of standalone worksheet evaluation below$100,000 is claimed.
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| tax | b16ef72066d2fbd6bbce82fcb5a6a7205b683a22e4c8176c95d4081dc5ed0387 |
+| (rest of the document) | edb32cec6f9f046018a7ddf75a29d6f8e93d799f7e6d0bd24d4c0479b08af544 |
+
 ## Raw second transcription
 
 ```yaml

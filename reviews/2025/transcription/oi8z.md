@@ -33,6 +33,15 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | --- | --- | --- |
 | oi8z.taxable | oi8z.h_education_refused, oi8z.h_recapture_refused, oi8z.h_recovery_refused | oi8z.h_education_refused, oi8z.h_recapture_refused, oi8z.h_recovery_refused |
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| oi8z.taxable | ad038942e2cfbe737c83a207437ba13f15e8ad9a97d680d2e88144e80b9cb03b |
+| (rest of the document) | 9b11cc29785845924b626fad6f7f0a62bdf1f9b626cc1aab9a2c543ecad4736e |
+
 ## Raw second transcription
 
 ```yaml

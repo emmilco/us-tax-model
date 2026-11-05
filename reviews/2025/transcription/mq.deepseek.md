@@ -49,6 +49,15 @@ Second:
 
 Ruling: model error; p946 p. 34, Which Convention Applies?, Mid-quarter convention: the convention applies if "the total depreciable bases of MACRS property you placed in service during the last 3 months of the tax year (...) are more than 40% of the total depreciable bases of all MACRS property you placed in service during the entire year". executable-triage-v2 (`reviews/2025/transcription/triage/mq.deepseek.json`; 1,495 fixtures, 500 generated returns seed 20261026, 0 partial records; 1,995 comparisons): 1,995 of 1,995 agree; differences none; on returns the full interview completes: none. No difference on the sample, but the reply multiplies the total by the parameter sc.bonus_rate_40 (40%) with multiply_rate, which rounds the product to cents before the strict comparison. Counterexample (as ruled before on the same expression): total $1,000.02 and fourth quarter $400.01; exactly 40% is $400.008, so the source test is true (5 x 40,001 > 2 x 100,002), while the rounded $400.01 is not less than $400.01. Project stands.
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| mq.applies | 841640d8b5aa7843d721d3614eedbbc4d662a791d25eccdf20f1951055d6619b |
+| (rest of the document) | 176aa12f2dffc5143614105feaac9bce99368c09a467cee0c5571a7675dfbc40 |
+
 ## Raw second transcription
 
 ```yaml

@@ -53,7 +53,7 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 | line | subject sha256 |
 | --- | --- |
-| (rest of the document) | fde1e09fb5f15ec7d98fd2c143f7cfa2b78064540e4c9fc1b494e4cef06a4cc6 |
+| (rest of the document) | c0448cd138abd167fdf478a533908ab7d7dbffd5aa5e7a74d1e438f35e949699 |
 
 ## Raw second transcription
 

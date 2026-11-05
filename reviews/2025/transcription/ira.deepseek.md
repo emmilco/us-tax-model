@@ -459,6 +459,43 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | 12a | ira.both_kinds, ira.kbh_short, ira.se_capital, ira.special, scope.schedule1 | ira.se_capital, ira.special |
 | 12b | ira.both_kinds, ira.kbh_short, ira.se_capital, ira.special, scope.schedule1 | ira.se_capital, ira.special |
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| ira.joint | 365ccaca121eb16b932e2022f643d66aee0844b00391a8bb1b74a6f4a88037be |
+| ira.joint_type | 1a8ea69d2a1cc0353622a72fb5471b38fcec12960d77a79b56ba45207815e306 |
+| ira.anyone_covered | b7db71ab3bed181a7b39a82f25a2de45f393378839d46f09b280c39b1dc21ece |
+| ira.cov_gate | 42e34fb72af678637525cb7d96066015972e411b333ab68dc6982455ce23883b |
+| ira.kbh_short | 8471d8496289d4b1b3ed6d47555a1876a0e972a225541c2699e0f867f289e4f2 |
+| ira.both_kinds | 685e53786f58b5dd7566565bcba2eb87e34321c6c6742dbf674150b103133bbd |
+| ira.over_comp | 52312a29a87661c0b3bbeb0f73a944e94eaa0659aa21a60b0e4a37f469b7bae7 |
+| ira.special_gate | 78ff47ae51b6551a9a428636bef048582633ffe14db3c26de52f0af739bfa8c7 |
+| ira.combat_gate | 14a3c3b59daa2cdfbe197c4a58413d73c4115ae56b144dd666e3fdb88fd88f2a |
+| ira.excl_gate | 24f0f6dcaa11552258cefbe852fa5180dda40ee575e960b8a22b3ffa31c53d5d |
+| ira.line20 | 4684b87b7d7cadb71376be1fa615ab5c7cb06d31cad7067cc609fe3f5997b865 |
+| 1a | c718de8917f5f3888088c2a52e5ab3577d2839ec4b9db9f6e8aac2bdeb20785c |
+| 1b | 0b5459110e122f5244fe421f199b71693e94bdb2b298b595bbfb7047e07cdb7e |
+| 2a | ccb0da605717d3932003df64bc4c824dfdd9fae011ed6963ab02690e3f898f08 |
+| 2b | ddf84c2e73e1ce075545e6d4029961148bf976a6d1b808435a89033fdac21ce0 |
+| 3 | bc14901fb260ce8688f9c8baededb5672681a68ce774fe262e2565cc57242b02 |
+| 4 | 69cb0dabe8a28bcada7ace583db4be72b7c505dcb00b5c82633156eff3997582 |
+| 5 | fe50f22bd737d68fd830892f141a3015680f501d8429a822e94f34e127296812 |
+| 6a | 6f180290ff561ad4086e053e82f7dfff76cf663585ceb09697c39866c82d70ec |
+| 6b | 22a0cfbc9aab2c14dab9a7aed3ebbe0e79e3317a623d7d21e2c95d061cfd2e8c |
+| 7a | 91c5dba4d0d8f4c5f8fe4c956633c4388eb0ee3087a5450b792f59da64367c12 |
+| 7b | 009b873ffbba562008d783dd1dbe365542d24f1a185698fe385c1bd2b767348b |
+| 8 | 7597109de3fec41b733a74816d8a220d240e9ecde0bf76774502bdbce079b654 |
+| 9 | 0b806f1a31e147b2cbc269826fa9e900506495312ab407c0c8f74f3f2de8fda2 |
+| 10 | bca4d9e6e7600ac219f8466c342382500fa2e0de9bac73aa2670bcec80f6fe6a |
+| 11a | 9f9c7a464eb572ffd5a9e421c438ffeb0251460c5da96d152c2666972981acd3 |
+| 11b | 25435b164251aec5cb70ef5bcb9a9bf2111fdbb4d90739305808653e93b34838 |
+| 12a | b82f13e6cb42f6758d3a0c95c27f44da7b3260011de4b745d26c3f3b6ad947e2 |
+| 12b | d2de7691f80a33c706c2a569fc632d89caec7b5b00593c7d63c0743147dc6522 |
+| (rest of the document) | 51bd60f3e1f3c5dc4a9156da6cc70b2d7fd330e94846768242fe389be4a6c05d |
+
 ## Raw second transcription
 
 ```yaml

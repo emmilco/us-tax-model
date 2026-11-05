@@ -454,6 +454,36 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | 30 | dependent.divorced_rule, dependent.h_edu_over_gate, dependent.h_kidnap_gate, dependent.h_multi_gate, dependent.h_tie_gate, dependent.married | dependent.h_edu_over_gate, dependent.h_kidnap_gate, dependent.h_multi_gate, dependent.h_tie_gate |
 | 31 | dependent.divorced_rule, dependent.h_edu_over_gate, dependent.h_kidnap_gate, dependent.h_multi_gate, dependent.h_tie_gate, dependent.married | dependent.h_edu_over_gate, dependent.h_kidnap_gate, dependent.h_multi_gate, dependent.h_tie_gate |
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| dependent.one | 858660bbf031f30a7be0943c8d565dfd22a05dfea0dff850664c1d7d444819a0 |
+| dependent.claimed | e4a13f3bc02a15e6bb3475678c2a32907d9b7d91c64a823d6ffd8a7fe77fd5ec |
+| dependent.ctc_child | dcc8110d28956deb5237a7323317203cb8c8606210023d949859fbd1ee798529 |
+| dependent.odc_person | 0cfa792a6c80fb2adb0bfddd2a321cbc9a5d7e61d5779327daa9f41c9d4adf33 |
+| dependent.ctc_amount | d7ea9946fea39bf9f179dd5a62aeeaa451a1637ea2a27f2e7a41892d1349a6bd |
+| dependent.odc_amount | 4c94879b92dacb40e641993154870f51e567e08e45326605b2deda3c0502dd25 |
+| dependent.actc_amount | e1b04901b6a49b1889617978d07081c4ad8263f07a854235cce90244630a1e54 |
+| dependent.hoh_absence | 5235a46a0ce9aa4fe5874ff809ed92718c547909d7955c5345f807c73d2c37d3 |
+| dependent.hoh_test2 | 7842fa8167b80f36c86c445184c993fd751fc61de0dc316269e153800409da2c |
+| dependent.hoh_test1 | f1699d3e33dcde6ec3997fe45b13873770b612b8b89f2e3f844038caf236a273 |
+| dependent.eic_child | e424843358f7cd2eb147dfbbd3ef70ff912d994c0f5d97b77f442ae3df4b0f42 |
+| dependent.eic_ssn_child | 4a2f43c1e97f9121b1ba81ef1e07c5f4de62b6baadca756f272fdbeaef43caf9 |
+| dependent.dc_qp | d26168eb710562ba3e0e1063ebfc459e75b5c456498e5d92706266917e04a02a |
+| dependent.dc_count | 6e8b475ab185eebd8f897a7b2cceeb2d4e5cd73e196df35ea0733c70f0d819bd |
+| dependent.ptc_magi_counted | dc37480e7a684ec9e368613070ff4c1c2bfe572c940ed65972af335d9f08ded4 |
+| 2(d) | 847c92a4c60dfc5e43f6911ea1bb996831f2cf8ebd22bd3aaf9feee973fbf999 |
+| 2(c) | 21e1b3cae9bd8ed8e8e210b0305aee29a2a3e6ec9cef03d6ddd88fb71d865976 |
+| 27 | 2b5ac8c28d87fe25d98b41adbb34ab42e285e727c49bc58f6308d4588607ee9d |
+| 28 | a4f946c3829258b9f48877345777305a3f86f869005c1ccdc0353efe45efd0fd |
+| 29 | f58335a0cf72c6a11189e7956eab6b3c163656de38eed09e7564ddff31b0128c |
+| 30 | ffc5026d3cf5cecda1ae34e71069042d7799051b30fe47bb0d8f930e1d31a3dc |
+| 31 | 6adfc7e42001df688f1eedbfe8e4a29cf09f916daf1d47313ea27f0f19475644 |
+| (rest of the document) | f028e8ebb7d35d80df5faee4808d2ffdf5d99bfea35f697361138bde2dc82f12 |
+
 ## Raw second transcription
 
 ```yaml

@@ -70,9 +70,9 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 | line | subject sha256 |
 | --- | --- |
-| otjob.one | 78a311600c98cd7a271db753b884e86e6e696db4cf59b37be12290473f3f53db |
-| 1(b) | fab9aa027a5cb3f610fa00858462d893bbf07b6aa71a26ca0f1ecfbcbd35f8e4 |
-| (rest of the document) | 46ba4777ca71cd28543a8ddcc7a7a9d929ff27e90a3d1bcf07c09087714515b6 |
+| otjob.one | e7838e18a06ea1557e24647d8e8d5758f1dfb5aa7312dbe9c799c9bf240c2849 |
+| 1(b) | 2ebb919e0e5b2f7a2d30ef1013c4ef754f808c522d781c87dd475cda5265d0a6 |
+| (rest of the document) | 5f0e2ac2178da2fba490ba4af97d9a79fe7483433bb4466a6d27d9210dcf2cad |
 
 ## Foreign interfaces
 

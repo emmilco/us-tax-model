@@ -50,6 +50,15 @@ Second transcription's note: The Tax Table is used below ordinary.table_boundary
 
 Ruling: representation; i1040gi (2025) Tax Table and Tax Computation Worksheet SectionsA-D use the$100,000 split. The returned tax selector makes that same split and uses the same filing-status row rates/subtractions above it. Its status-specific worksheet helpers also return Tax Table amounts below$100,000, but those extra helper branches are never selected by tax in that range; the outer tax selector already uses the Tax Table. All admitted final tax results therefore use the same source computations. No identical standalone behavior is claimed for unselected worksheet helpers.
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| tax | b16ef72066d2fbd6bbce82fcb5a6a7205b683a22e4c8176c95d4081dc5ed0387 |
+| (rest of the document) | edb32cec6f9f046018a7ddf75a29d6f8e93d799f7e6d0bd24d4c0479b08af544 |
+
 ## Raw second transcription
 
 ```yaml

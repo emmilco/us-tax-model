@@ -12,8 +12,13 @@ themselves; this driver only schedules and summarises.
 The forms of a kind are those with a log of any model family; each tool writes the log of
 the family `--model` names (families.py), so a second family's run leaves the Claude logs as
 they are.
+
+A model family's first usage-limit failure (USAGE_LIMIT) opens its breaker: no further job of that
+family calls the model in this run (a --resume reuse of a matching saved response still runs, since it
+makes no call). Calls already in flight finish. The jobs not run are listed at the end with the command
+that reruns them, and recorded in the summary file with "skipped": "usage limit".
 """
-import argparse, json, os, subprocess, sys, time
+import argparse, json, os, re, subprocess, sys, threading, time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -24,6 +29,26 @@ from taxyear import Y, YEAR_ARGS  # noqa: E402
 import jurisdiction  # noqa: E402  (--jurisdiction ny: the New York documents; passed on to each tool)
 import families  # noqa: E402
 TOOLS = {"transcription": ("transcribe.py", "--form"), "render": ("render_compare.py", "--form"), "classm": ("classm.py", "--doc")}
+# A transport's report that the account's usage allowance or balance is spent (codex: "You've hit your usage
+# limit"; claude -p: "Claude AI usage limit reached", "5-hour limit reached", "You've hit your limit";
+# DeepSeek: HTTP 402 "Insufficient Balance"). A rate limit, a timeout or an oversized request is not one.
+USAGE_LIMIT = re.compile(r"usage limit|hit your (?:\w+ )?limit|(?:hour|weekly|session) limit reached|"
+                         r"insufficient balance|exceeded your (?:current )?quota|deepseek HTTP 402", re.I)
+
+
+class Breaker:
+    """Per model family: the job whose usage-limit failure opened it, or nothing while closed."""
+
+    def __init__(self):
+        self.lock, self.opened = threading.Lock(), {}
+
+    def open_for(self, family):
+        with self.lock:
+            return self.opened.get(family)
+
+    def trip(self, family, job):
+        with self.lock:
+            self.opened.setdefault(family, job)
 
 
 def forms_for(kind):
@@ -37,8 +62,10 @@ def forms_for(kind):
     return sorted(logged)
 
 
-def run(kind, form, model, resume=False, reasoning_effort=None, max_output_tokens=None, case_jobs=1, carry=True, lines=None):
+def run(kind, form, model, resume=False, reasoning_effort=None, max_output_tokens=None, case_jobs=1, carry=True, lines=None,
+        breaker=None):
     script, flag = TOOLS[kind]
+    family = families.family_of(model) if model else families.DEFAULT
     cmd = [sys.executable, os.path.join(HERE, script), flag, form, *YEAR_ARGS, *jurisdiction.J_ARGS] + (["--model", model] if model else [])
     if reasoning_effort:
         cmd += ["--reasoning-effort", reasoning_effort]
@@ -54,7 +81,14 @@ def run(kind, form, model, resume=False, reasoning_effort=None, max_output_token
         r = subprocess.run([*cmd, "--from-response"], capture_output=True, text=True, cwd=ROOT)
         reused = r.returncode in (0, 3)
     if not reused:
+        tripped = breaker.open_for(family) if breaker else None
+        if tripped:
+            return {"kind": kind, "form": form, "exit": None, "seconds": round(time.time() - t0), "reused": False,
+                    "last": f"not run: the {family} family hit its usage limit ({tripped})", "stderr": "",
+                    "skipped": "usage limit", "family": family}
         r = subprocess.run(cmd, capture_output=True, text=True, cwd=ROOT)
+        if r.returncode not in (0, 3) and USAGE_LIMIT.search(r.stderr + "\n" + r.stdout) and breaker:
+            breaker.trip(family, f"{kind} {form}")
     last = (r.stdout.strip().splitlines() or [""])[-1]
     if r.returncode == 3 and carry:
         # T-218: carry earlier rulings over to repeat disagreements (same line, same content, line unchanged)
@@ -65,8 +99,11 @@ def run(kind, form, model, resume=False, reasoning_effort=None, max_output_token
         c = subprocess.run(ccmd, capture_output=True, text=True, cwd=ROOT)
         cl = (c.stdout.strip().splitlines() or [""])[-1]
         last = f"{last} | carry: {cl}"
-    return {"kind": kind, "form": form, "exit": r.returncode, "seconds": round(time.time() - t0), "reused": reused,
-            "last": last, "stderr": r.stderr[-400:] if r.returncode not in (0, 3) else ""}
+    out = {"kind": kind, "form": form, "exit": r.returncode, "seconds": round(time.time() - t0), "reused": reused,
+           "last": last, "stderr": r.stderr[-400:] if r.returncode not in (0, 3) else ""}
+    if r.returncode not in (0, 3) and USAGE_LIMIT.search(r.stderr + "\n" + r.stdout):
+        out["usage_limit"], out["family"] = True, family
+    return out
 
 
 def eligible(kind, form, family):
@@ -115,22 +152,49 @@ def main():
     print(f"{len(jobs)} runs, {a.jobs} at a time", flush=True)
     results = []
     os.makedirs(os.path.dirname(a.summary), exist_ok=True)
+    breaker = Breaker()
     with ThreadPoolExecutor(max_workers=a.jobs) as ex:
-        pending = [ex.submit(run, kind, form, a.model, a.resume, a.reasoning_effort, a.max_output_tokens, a.case_jobs, not a.no_carry, a.lines) for kind, form in jobs]
+        pending = [ex.submit(run, kind, form, a.model, a.resume, a.reasoning_effort, a.max_output_tokens, a.case_jobs, not a.no_carry, a.lines,
+                             breaker) for kind, form in jobs]
         for future in as_completed(pending):
             res = future.result()
             results.append(res)
-            tag = "ok" if res["exit"] == 0 else "rule" if res["exit"] == 3 else f"EXIT {res['exit']}"
+            tag = ("ok" if res["exit"] == 0 else "rule" if res["exit"] == 3 else "skip" if res.get("skipped")
+                   else "LIMIT" if res.get("usage_limit") else f"EXIT {res['exit']}")
             print(f"[{tag:6s}] {res['kind']:13s} {res['form']:16s} {res['seconds']:4d}s  {res['last'][:110]}", flush=True)
             if res["stderr"]:
                 print("         " + res["stderr"].replace("\n", "\n         "), flush=True)
             with open(a.summary + ".tmp", "w", encoding="utf-8") as f:
                 json.dump(results, f, indent=1)
             os.replace(a.summary + ".tmp", a.summary)
-    bad = [r for r in results if r["exit"] not in (0, 3)]
+    skipped_jobs = [r for r in results if r.get("skipped")]
+    bad = [r for r in results if r["exit"] not in (0, 3) and not r.get("skipped")]
     open_rulings = [r for r in results if r["exit"] == 3]
-    print(f"\ndone: {len(results)} runs; {len(open_rulings)} with disagreements to rule on; {len(bad)} failed")
-    sys.exit(1 if bad else 0)
+    print(f"\ndone: {len(results)} runs; {len(open_rulings)} with disagreements to rule on; {len(bad)} failed"
+          + (f"; {len(skipped_jobs)} not run after a usage limit" if skipped_jobs else ""))
+    print(skipped_report(results, a), end="")
+    sys.exit(1 if bad or skipped_jobs else 0)
+
+
+def skipped_report(results, a):
+    """The jobs a usage limit stopped (the failed call and those never run), per family and kind, each
+    group with the command that reruns it; '' when none."""
+    groups = {}
+    for r in results:
+        if r.get("skipped") or r.get("usage_limit"):
+            groups.setdefault((r["family"], r["kind"]), []).append(r["form"])
+    if not groups:
+        return ""
+    out = ["", "Usage limit: these jobs did not complete; rerun them when the allowance resets:"]
+    for (family, kind), forms in sorted(groups.items()):
+        cmd = ["python3", "tools/transcription/rerun_all.py", "--kinds", kind, "--forms", ",".join(sorted(forms)),
+               *YEAR_ARGS, *jurisdiction.J_ARGS, *(["--model", a.model] if a.model else []),
+               *(["--lines", a.lines] if a.lines and kind in ("transcription", "render") else []),
+               *(["--reasoning-effort", a.reasoning_effort] if a.reasoning_effort else []),
+               *(["--max-output-tokens", str(a.max_output_tokens)] if a.max_output_tokens is not None else []),
+               *(["--case-jobs", str(a.case_jobs)] if kind == "classm" and a.case_jobs != 1 else [])]
+        out += [f"  {family} {kind} ({len(forms)}): {', '.join(sorted(forms))}", "    " + " ".join(cmd)]
+    return "\n".join(out) + "\n"
 
 
 if __name__ == "__main__":

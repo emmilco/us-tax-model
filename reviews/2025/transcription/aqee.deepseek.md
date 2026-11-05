@@ -42,6 +42,17 @@ Status: **AGREE**
 ### line30 — If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on
 Status: **AGREE**
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| ws4_llc | 8b5c7ce4ffc02b7090bac6fd1c647701488ace71ea7489b8272c9a984efc301c |
+| zero | f6eae38375d474fbf3c1cb2a6625fd4892928e86598e4dacff4ac864f36f3ccb |
+| line30 | 7d9c2253c7621ae1e1ee8727ffe4197d94fc6dc48fe0093cd7c5fb42edb98353 |
+| (rest of the document) | 55159c35252d56e7b0da2002e792007601b30321e14ef308a56e662a269a8f8a |
+
 ## Raw second transcription
 
 ```yaml

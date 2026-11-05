@@ -48,10 +48,10 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 | line | subject sha256 |
 | --- | --- |
-| tipjob.one | 89714a0cb67ca33c33d5d021e3ea7c093359afc1825e22eef5e9e6c2a3f8101b |
-| 1(c) | 77fbe1f702739598adba88692198eea2d36a6235f56316db3ccdd3b150d8936c |
-| 1(d) | eca25e28e7ef2dc31b1fb06bfc57a9d03b2bfd63cfaecfcbf7800a8ef79efa13 |
-| (rest of the document) | 20acc5f91a6d8939245104a61352ad2f9665689d8cbe4cf8240cfecb7fd1c18f |
+| tipjob.one | 5974fbc80063c865a4337eaabedcd9f3fc8ff2a5ae649aac66251445d00d35df |
+| 1(c) | f3f65ff93abdd04fec92f4d420d611be1c57cbd795849bc0e0bc28010d010509 |
+| 1(d) | dbfb2a9be3e01963951104913de8e086b4ef5cd0247fd41b20789fbaecd24020 |
+| (rest of the document) | 0300589bc312f32bcfc4776d58448bd7eab5d75748435f116e1b132ae92c1f76 |
 
 ## Foreign interfaces
 

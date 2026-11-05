@@ -204,10 +204,11 @@ def compare(kind, form, family):
         current = subjects.current(kind, form, Y)
     except FileNotFoundError:
         current = None
-    # A log holding line-scoped reviews is current when every compared line's subject is (the rule
-    # check_logs.py applies); its header keeps the subject its first review saw.
+    # A log holding line-scoped reviews or a line-subject table is current when every compared line's
+    # subject is (the rule check_logs.py applies); its header keeps the subject its first review saw.
     stale = [fam for fam, log in ((families.DEFAULT, a), (family, b))
-             if current is None or (subjects.log_state(kind, form, Y, log["text"]) is not None if log.get("passes")
+             if current is None or (subjects.log_state(kind, form, Y, log["text"]) is not None
+                                    if log.get("passes") or subjects.recorded(log.get("text") or "") is not None
                                     else log["subject"] != current)]
     q = quality(kind, a, b, stale)
     for fam, record in ((families.DEFAULT, a), (family, b)):

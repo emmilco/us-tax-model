@@ -141,6 +141,25 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | 3 | refund.box8, refund.exc_tax, refund.exc_who, refund.not_2024 | refund.box8, refund.not_2024 |
 | 9 | refund.box8, refund.exc_tax, refund.exc_who, refund.not_2024 | refund.box8, refund.not_2024 |
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| refund.has | 6bd0ea50399f2920d7ff293034a6853e1de7c6cfc1f1b0dc94229cbd400ab049 |
+| refund.taxable | 44e2ccc3c429357f1e1bf8789bbf3172ac3da031a3bdd8cd3d2169683d15b7d9 |
+| 1 | c7db273fdb74a02c74e40bf81a97232f756a677bb3dd7be39a63f54709999fda |
+| 2 | 91eb1ef47a73d5a7374918887568614cf502d38e4d54dd584ff71e4c439c2fc6 |
+| 3 | dee0b86519f8bb9ddf2c825b78358413221b68d930a03e98e7344a8d18bf6ede |
+| 4 | 3c5a9ffb234d55e9d92f41c2448191732b0c6e38e87d64a593f5b1a5603fc4e3 |
+| 5 | c02e5042fa5062503cbaf42cafe2f64610447e57d9faf525a0e1904747cfda6f |
+| 6 | bd0f71484f4b227904202cecbc11ee69fc6b5c8cda8b7ca7fa271046dbc23630 |
+| 7 | 5d74c147b1a5ab8fec6ef3b481bfde13d4561526952288baa8079115adfad20c |
+| 8 | 3f62e583d65006a11a37557b8c3af5e2fea48bf36f8e191f1cced570c6f3cb8c |
+| 9 | 17798256689f7d38756c72948184990c053352ca7de96936fb93cb52982ee74e |
+| (rest of the document) | 9a12945506dcc91b7709e71f5f54423e182739ad982dde223b33e1168f0e0716 |
+
 ## Raw second transcription
 
 ```yaml

@@ -213,6 +213,36 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | 14 | sa.charity_limited | - |
 | 17 | f4952.alternative_allocation, f4952.unsupported, sa.charity_limited, sa.excluded_income, sa.unsupported | - |
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| sa.age65 | 768f14dd86250bfb0df776167739722ee3b518315715c3b6282afb7074c8541b |
+| sa.agi | 7ac40a0d224f103b5668b2d9b355ac1ecb9b68c3d5235bd8ae09b20888315bc8 |
+| sa.itemizes | ad4db0f95ab83183ecdedb3a2b0d58c4d33534be64ba6ab315ad5cad220949be |
+| sa.deduction | cadc70373beef251c7ce5e4a979aafa7485532c86652393a759e1036cc0ef0cc |
+| 2 | 6ed9e8826b6917afade8428ad8ba0ef06fdbb723500482b53bce904f69e95014 |
+| 3 | 4606a9bdca74892e9959452bafe144fe3a9c24d25b48c83ee961469221a4b4c3 |
+| 4 | 3e76ff364e4e11c3472e01259f76b707dfc78422a8c93abe7d4e9deb5d8fafbe |
+| 5d | fb4eee7436051e32595ede198f689933a427b0f7416511f9c4194a0cfb7febdf |
+| 5e | 0762d68e00b9d72f8d0f0038205ed4ce3626ba29164c5743fb3d673cc4d286ef |
+| 6 | 8e7cfae2b9add8293cde806261e2967eec63604ca5d8c96c919f57e050d97b0f |
+| 8b | 08e60f0d38ae0fe9c5aa02875e5b98f24cb3d837d65ca474ee364f3f1c3ce5db |
+| 8c | ed964e2d8103bb043e16af84ffda146b310095768d2bf3ba5affbf75c73bbc22 |
+| 13 | 3b2f227fc6f9276a14fc2e95225c3ce6ebb2e6540eec1675158b44b73d4e78ff |
+| 15 | 6f20b2760034d6da2085c4c5eaeaf6ec12bb56641fefcb87dfec425ea5466ba1 |
+| 16 | bc94551e3e016b4a7a61a6231b190fb8b3e57cad86bee2639e9ec4e5d7fac4a7 |
+| 7 | f01dc441865ba4d227e6810328f38376b883f341b25679842cfe8a31fbf9aee0 |
+| 8e | 5f6bb65fc20292add3f19c02137e4eab05e81a61f2a1e8da6bec29434b678658 |
+| 9 | 6afefd4a342b5f5749c93d7aab8c5b7494cd95445e619cb164a79b29df97b69b |
+| 10 | 320b71964696452137d0967c5995c1f6bc29fe3f800b4d8feff670ecdcf79f8a |
+| 12 | f7798b1da5cd3cbbdaece0aa7f693e350ece6c4141530d0cd53593556cbd3b7a |
+| 14 | c37b1e535791ea619bf78cfdf3ffcf20d537bef0eb764479222f46493ccda43b |
+| 17 | 1627818731b5bbf9dd5e60d5830e64f50beb2c702503544e409ba1b280568c1c |
+| (rest of the document) | 4ab44412ed063c2bc602f385d7b58b759dbf415cd3a4e78f694db4b2cde08b0a |
+
 ## Raw second transcription
 
 ```yaml

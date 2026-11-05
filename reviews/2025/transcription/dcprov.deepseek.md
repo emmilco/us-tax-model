@@ -38,6 +38,16 @@ Status: **AGREE**
 ### dcprov.see_statement — Column (c) reads "See Attached Statement"
 Status: **AGREE**
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| dcprov.one | 40d62414e1066a94bbf1d1394d27fc67c54442accd404a6dca2a4026e58a6961 |
+| dcprov.see_statement | a51a50b914bc89763684dcadbc2acb17e21d5838b5f67ec3d412ef2fd900b823 |
+| (rest of the document) | 4ae26dd2b340e2e5f23433a7a855d5e8deddca7f6623ee5a64f3ebd7f33200ec |
+
 ## Raw second transcription
 
 ```yaml

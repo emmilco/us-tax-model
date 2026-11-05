@@ -81,6 +81,19 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | qbi.eligible | qbi.unsupported | - |
 | qbi.deduction | qbi.unsupported | - |
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| qbi.zero | d351e905679017dd4f47fae49b296df613ed439c812435776e137e37960346b9 |
+| qbi.eligible | 89df4a43629e5362b3721b7fdbe0f71badd568ffd6315d95f86caf6b14820177 |
+| qbi.taxable_before | b83f0cad61a74d71f14d043cea5f54ced08d9f944f7c5fa4e5bb4d6b5a4302f0 |
+| qbi.net_capital_gain | d124683365e2e0299bde158194b9e151884b237e5b3cafa2ea2f063f0934af85 |
+| qbi.deduction | 8ad77c43b32b60307aca48df5f4cf13e85a666d68b12b6eb9508b6cadcb82f65 |
+| (rest of the document) | 3ecd850aa0c9743f71e02cf3a8fda571cbba92fac4295ed77a1231fbce2a3a92 |
+
 ## Raw second transcription
 
 ```yaml

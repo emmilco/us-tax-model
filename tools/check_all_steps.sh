@@ -78,6 +78,8 @@ step check_auto_limits_self_test python3 tools/check_auto_limits.py --self-test 
 step check_bug_inventory python3 tools/check_bug_inventory.py
 step review_tools python3 tools/transcription/test_review_tools.py
 step input_context python3 tools/transcription/test_input_context.py
+step rerun_all_tools python3 tools/transcription/test_rerun_all.py
+step bookkeeping_tools python3 -m unittest tools/test_bookkeeping_tools.py
 step pre_push_self_test bash tools/hooks/test_pre_push.sh
 step green_self_test bash tools/hooks/test_green.sh
 step consistency_checks node tools/test_consistency_checks.mjs

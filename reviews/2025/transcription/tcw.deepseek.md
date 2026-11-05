@@ -49,6 +49,15 @@ Second:
 
 Ruling: representation; project retained on the worksheet's printed domain. The only expression difference is the first-row lower bound of $100,000 in each filing-status section: the project includes it and the second transcription leaves it implicit. Removing only the test ordinary.table_boundary <= amount, collapsing singleton conjunctions and re-sorting the choose alternatives makes the two expanded trees identical. The archived i1040gi p. 80 Tax Computation Worksheet says 'At least $100,000 but not over' on every first row and directs the reader to the line 16 instructions; p. 33 line 16 says amounts below $100,000 must use the Tax Table. In the project the only tcw caller is tax_on_amount.worksheet_tax, selected by tax_on_amount.tax only when below_boundary is false (forms/2025/tax_on_amount.yaml). Thus both readings produce the same tax on every amount for which this worksheet is used; they intentionally differ outside that domain. This is a representation difference, not model-error noise. No data change.
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| tax | d7dd4057a49b39916f8e8be8d0cbf4b88f21d591c25bb04fcb0028e1d01edb3f |
+| (rest of the document) | ce156e2fc8d5c8722d681db1471a9e010091a883824ab4687ccd938508ef34e3 |
+
 ## Raw second transcription
 
 ```yaml

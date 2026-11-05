@@ -89,8 +89,8 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 | line | subject sha256 |
 | --- | --- |
-| 17a (whole dollars) | 3667ce6499586d9d8e6f29a97233246ebab0656c3c25f67e0b1a9acd2f3aa4d8 |
-| 19 (whole dollars) | 2640222756230b06d2f34c5434d92c4c9a248dd23ed8065a732af1567a054ba4 |
+| 17a (whole dollars) | b889dd5c68284e54638c814182aba8d34d9165d00207640c37c81a16ea2a1d67 |
+| 19 (whole dollars) | bea2f03fe1d7613fd2dfd0b3d12f211bdd15bcba73e4e08f702b0127f9e1ff87 |
 | (rest of the document) | 563acf0600ec1c8f1741f1d64d2bad8c9b36d45c64ada15fec51979356f9b8d0 |
 
 ## Foreign interfaces

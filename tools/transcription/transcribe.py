@@ -644,7 +644,7 @@ def source_profile(doc, mani):
     return profile
 
 
-def catalog_selection(form_doc, excerpt, used, mani=None, whole_text=True):
+def catalog_selection(form_doc, excerpt, used, mani=None, whole_text=True, cited=None):
     """{document id: reason} for every other form, definition and collection the catalog lists.
 
     Chosen from the reviewed form's source only: the excerpt given to the model and the whole
@@ -658,7 +658,13 @@ def catalog_selection(form_doc, excerpt, used, mani=None, whole_text=True):
                    that the other form feeds, by its IRS title or by its source's "enter ... on".
     Refusal-gate inputs are listed for every form in the screening list instead. Without
     `whole_text` (a line-scoped review), "that text" is the excerpt alone: the catalog is chosen
-    from the pages given."""
+    from the pages given. `cited` (a line-scoped review: the document cut to the scoped lines' reach)
+    narrows it as a New York catalog is narrowed, with that document's citations in place of the whole
+    form's (federal_whole). Federally, a form the excerpt names only as a form is listed whole only
+    where those citations name its IRS form; otherwise its input lines and the lines the excerpt names
+    by form and line are listed (NAMED_FORM_INPUTS), and a collection named only as a form only by
+    those named lines (NAMED_LINES). Definitions, shared pages, worksheets and named lines are listed
+    as without `cited`."""
     mani = manifest() if mani is None else mani
     defs = load_defs()
     mine = {(u["doc"], p) for u in used if "lines" not in u for p in u["pages"]}
@@ -685,14 +691,27 @@ def catalog_selection(form_doc, excerpt, used, mani=None, whole_text=True):
             out[doc["id"]] = "worksheet"
         elif p["fed"] & lines_named:
             out[doc["id"]] = "named line"
-    if jurisdiction.NY:
-        whole = federal_whole(form_doc, mani)
-        out = {d: why for d, why in out.items() if jurisdiction.is_ny(d) or d in whole}
+    if jurisdiction.NY or cited is not None:
+        whole = federal_whole(form_doc if cited is None else cited, mani)
+        inputs = {}
+        if jurisdiction.NY:
+            out = {d: why for d, why in out.items() if jurisdiction.is_ny(d) or d in whole}
+        else:
+            # A form named only as a form keeps its input lines, the return's facts the text may rely on
+            # without naming a line (filing status); a collection named only as a form is not listed.
+            for d in [d for d, why in out.items() if why == "named form" and d not in whole]:
+                doc = load_form(d)
+                del out[d]
+                if not doc.get("collection"):
+                    inputs[d] = {l["id"] for l in doc["lines"] if l["expr"].get("op") == "input"}
         named = federal_named(lines_named, mani)
-        for d, ids in federal_labelled(text, mani).items():
-            named.setdefault(d, set()).update(ids)
-        for d, ids in named.items():
-            out.setdefault(d, NAMED_LINES + ", ".join(sorted(ids)))
+        if jurisdiction.NY:
+            for d, ids in federal_labelled(text, mani).items():
+                named.setdefault(d, set()).update(ids)
+        for d in sorted(set(named) | set(inputs)):
+            ids = named.get(d, set()) | inputs.get(d, set())
+            if d != form_doc["id"] and d not in out and ids:
+                out[d] = (NAMED_FORM_INPUTS if d in inputs else NAMED_LINES) + ", ".join(sorted(ids))
     return out
 
 
@@ -707,6 +726,9 @@ def catalog_selection(form_doc, excerpt, used, mani=None, whole_text=True):
 # A New York form copies most federal amounts by their federal labels ("Wages, salaries, tips",
 # "Federal adjusted gross income") without naming the line, so both are needed.
 NAMED_LINES = "named lines: "
+# A line-scoped federal catalog (catalog_selection with `cited`): of a form the excerpt names only as a form,
+# its input lines and the lines the excerpt names by form and line.
+NAMED_FORM_INPUTS = "named form, inputs and named lines: "
 
 
 def federal_named(pairs, mani):
@@ -880,15 +902,29 @@ and the federal definitions, are not listed.
 """
 
 
-def ny_catalog_notes(form_doc):
-    """What build_prompt adds after the catalog in New York mode (NY_CATALOG_NOTE); '' federally."""
-    return "\n" + NY_CATALOG_NOTE if jurisdiction.NY else ""
+SCOPED_CATALOG_NOTE = """In this line-scoped request the catalog above lists a form the text names only as a form (not
+by a line, worksheet or shared page) by its input lines and the lines the text names by form and line,
+or whole where a line under review cites that form's own pages; such a collection is listed only by
+its named lines.
+"""
+
+
+def ny_catalog_notes(form_doc, scope=None):
+    """What build_prompt adds after the catalog: in New York mode NY_CATALOG_NOTE; federally, for a
+    line-scoped request (`scope`), SCOPED_CATALOG_NOTE; otherwise ''."""
+    if jurisdiction.NY:
+        return "\n" + NY_CATALOG_NOTE
+    return "\n" + SCOPED_CATALOG_NOTE if scope is not None else ""
 
 
 def listed_lines(reviewed, doc_id, selected):
-    """The lines of `doc_id` a catalog lists: all of them (None), or (NAMED_LINES) only those named."""
+    """The lines of `doc_id` a catalog lists: all of them (None), or (NAMED_LINES, NAMED_FORM_INPUTS) only
+    those its reason names."""
     why = selected.get(doc_id) or ""
-    return set(why[len(NAMED_LINES):].split(", ")) if why.startswith(NAMED_LINES) else None
+    for prefix in (NAMED_LINES, NAMED_FORM_INPUTS):
+        if why.startswith(prefix):
+            return set(why[len(prefix):].split(", "))
+    return None
 
 
 def catalog_lines(reviewed, selected):
@@ -1092,7 +1128,7 @@ that this text or the IRS documents it comes from name (as a form or schedule, a
 line that form feeds), and every shared definition. The selection is made from the IRS documents
 alone, not from this project's encoding, so a listed line is not a hint that it is needed:
 {oth if oth else '  (none)'}
-{ny_catalog_notes(form_doc)}
+{ny_catalog_notes(form_doc, scope)}
 {contract_block}# Output
 
 Keep the exact declared type on every requested result id. A mathematically nonnegative result
@@ -1931,9 +1967,11 @@ def extract_yaml(text):
 # ---------- log ----------
 
 PASS_HEADING = "## Line-scoped reviews"
-LINE_PROMPT_POLICY = PROMPT_POLICY + "+lines-v1"
+# A line-scoped request's policy: lines-v1 chooses its catalog from the excerpt alone; lines-v2 also
+# narrows it by the scoped lines' citations (catalog_selection with `cited`). Both are chosen from the source.
+LINE_PROMPT_POLICY = PROMPT_POLICY + "+lines-v2"
 # Line-scoped prompt policies under which a pass is as independent as a whole review under PROMPT_POLICY.
-INDEPENDENT_LINE_PROMPT_POLICIES = frozenset({LINE_PROMPT_POLICY})
+INDEPENDENT_LINE_PROMPT_POLICIES = frozenset({PROMPT_POLICY + "+lines-v1", LINE_PROMPT_POLICY})
 
 
 def _review_rows(form_doc, model, prompt, used, results, extra, meta, interfaces, contract, replay_receipt=None,
@@ -2293,7 +2331,7 @@ def scoped_main(a, form_doc, mani, params, values):
         return
     scoped_doc = {**form_doc, "lines": [l for l in form_doc["lines"] if l["id"] in reach]}
     excerpt, used = excerpt_for(scoped_doc, mani)
-    selected = catalog_selection(form_doc, excerpt, used, mani, whole_text=False)
+    selected = catalog_selection(form_doc, excerpt, used, mani, whole_text=False, cited=scoped_doc)
     other = catalog_lines(fid, selected)
     prompt = build_prompt(form_doc, excerpt, params, other, {k: v["type"] for k, v in values.items()},
                           collection_notes(fid, selected), scope=scope_ids)

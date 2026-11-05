@@ -45,6 +45,15 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | --- | --- | --- |
 | gift.allowed | gift.h_nonpublic_over_5000, gift.special | gift.h_nonpublic_over_5000 |
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| gift.allowed | f0ba33d7bf10d3898f978e90e3867b89a60b61992f6d9a4e6c8356dd2601971f |
+| (rest of the document) | ddbcf2f1a297aa931cad1239e9a5fd1dd8e5972b3c96439aab19e487bc291084 |
+
 ## Raw second transcription
 
 ```yaml

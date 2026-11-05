@@ -26,6 +26,8 @@ import audit_transcription as transcription_audit
 import input_contracts as contracts
 import adapter_contracts as adapters
 import carry
+import migrate_line_subjects as ML
+import input_context
 
 
 def log(statuses, rulings=None):
@@ -2135,6 +2137,182 @@ class LineScopedReviews(unittest.TestCase):
         self.assertIsNone(T.subjects.log_state("render", self.FORM, T.Y, new))
         with contextlib.redirect_stdout(io.StringIO()):
             self.assertEqual(rulings.check(), 0)
+
+
+class ScopedCatalog(unittest.TestCase):
+    """A line-scoped request's catalog is narrowed by the scoped lines' citations; no model call."""
+
+    def scoped(self, fid, names):
+        mani = T.manifest()
+        doc = T.load_form(fid)
+        scope, reach = T.scoped_lines(doc, names)
+        scoped_doc = {**doc, "lines": [l for l in doc["lines"] if l["id"] in reach]}
+        excerpt, used = T.excerpt_for(scoped_doc, mani)
+        return doc, scope, reach, excerpt, used, mani, scoped_doc
+
+    def test_named_forms_are_narrowed_and_required_interfaces_stay(self):
+        for fid, names in (("sales", ["sales.e", "sales.g"]), ("sli", ["1"])):
+            doc, scope, reach, excerpt, used, mani, scoped_doc = self.scoped(fid, names)
+            before = T.catalog_selection(doc, excerpt, used, mani, whole_text=False)
+            after = T.catalog_selection(doc, excerpt, used, mani, whole_text=False, cited=scoped_doc)
+            for d, why in before.items():
+                if why != "named form":
+                    self.assertEqual(after[d], why, d)        # the other source rules are unchanged
+                elif d in after and after[d] != why:
+                    listed = T.listed_lines(fid, d, after)
+                    self.assertTrue(after[d].startswith(T.NAMED_FORM_INPUTS), d)
+                    self.assertFalse(T.load_form(d).get("collection"), d)
+                    self.assertTrue({l["id"] for l in T.load_form(d)["lines"] if l["expr"].get("op") == "input"} <= listed)
+                elif d not in after:   # a collection, or a form with no input the excerpt names no line of
+                    other = T.load_form(d)
+                    self.assertTrue(other.get("collection") or not any(l["expr"].get("op") == "input" for l in other["lines"]), d)
+            self.assertNotIn(fid, after)
+            prompt = T.build_prompt(doc, excerpt, {}, T.catalog_lines(fid, after), None, T.collection_notes(fid, after), scope=scope)
+            assessed = {**doc, "lines": [l for l in doc["lines"] if l["id"] in reach or l["expr"].get("op") == "input"]}
+            self.assertEqual(input_context.assess(assessed, [], T.model_type_context(), prompt)["missing"], [], fid)
+            if fid == "sales":
+                self.assertNotIn("person", after)
+                self.assertIn("f1040.status", T.listed_lines(fid, "f1040", after))
+                self.assertIn("sales.e", prompt)                  # the reviewed collection's fields are all listed
+                whole = T.build_prompt(doc, excerpt, {}, T.catalog_lines(fid, before), None, T.collection_notes(fid, before), scope=scope)
+                self.assertLess(len(prompt), 0.75 * len(whole))
+
+    def test_a_whole_review_catalog_is_unchanged(self):
+        doc = T.load_form("sales")
+        mani = T.manifest()
+        excerpt, used = T.excerpt_for(doc, mani)
+        whole = T.catalog_selection(doc, excerpt, used, mani)
+        self.assertFalse(any(why.startswith((T.NAMED_LINES, T.NAMED_FORM_INPUTS)) for why in whole.values()))
+        self.assertIn("named form", whole.values())
+
+
+class WordingBlindSubjects(unittest.TestCase):
+    """A transcription log's line subjects leave out wording (label, help, note), and the no-call
+    migration rewrites a table to them without turning a stale log current."""
+    FORM = "f8960"
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        Path(self.temp.name, "transcription").mkdir()
+        self.yaml = Path(self.temp.name, self.FORM + ".yaml")
+        self.orig = Path(T.FORMS, self.FORM + ".yaml").read_text()
+        self.yaml.write_text(self.orig)
+        real = T.subjects.path
+        for target, value, new in ((rulings, "REVIEWS", self.temp.name), (T, "LOGS", str(Path(self.temp.name, "transcription"))),
+                                   (T, "RAW", self.temp.name),
+                                   (T.subjects, "path", lambda kind, fid, year: str(self.yaml) if kind == "transcription" and fid == self.FORM
+                                    else real(kind, fid, year))):
+            p = patch.object(target, value, new)
+            p.start(); self.addCleanup(p.stop)
+        self.doc = T.load_form(self.FORM)
+        self.keys = T.line_keys(self.doc)
+
+    def edited(self, change):
+        """The YAML of the form with `change(document)` applied; written as the working tree."""
+        raw = yaml.safe_load(self.orig)
+        change(raw["form"])
+        text = yaml.safe_dump(raw, sort_keys=False, allow_unicode=True)
+        self.yaml.write_text(text)
+        return text
+
+    def line(self, doc, line_id):
+        return next(l for l in doc["lines"] if l["id"] == line_id)
+
+    def base_log(self):
+        """A whole review written while the working tree is the original YAML (synthetic agreeing reply)."""
+        self.yaml.write_text(self.orig)
+        computed = [l for l in self.doc["lines"] if l["expr"].get("op") != "input"]
+        raw = synthetic_reply(computed)
+        results, extra = T.compare(self.FORM, self.doc["lines"], T.extract_yaml(raw)["lines"])
+        T.write_log(self.doc, "claude-opus-5-5", "BASE PROMPT", [], results, extra, raw, {"prompt_policy": T.PROMPT_POLICY})
+        return Path(rulings.log_path("transcription", self.FORM)).read_text()
+
+    def citation_only_log(self):
+        """The same review with the line subjects the table recorded before wording was left out."""
+        with ML.citation_only_subjects():
+            return self.base_log()
+
+    def state(self, text):
+        return T.subjects.log_state("transcription", self.FORM, T.Y, text)
+
+    def wording(self, doc):
+        doc["note"] = "Reworded document note."
+        self.line(doc, "f8960.line8")["label"] = "Reworded label of line 8"
+        self.line(doc, "f8960.prior_2i")["label"] = "Reworded label of an input"
+        self.line(doc, "f8960.line17")["note"] = "A new note on line 17."
+
+    def test_a_wording_edit_does_not_stale_a_log(self):
+        log = self.base_log()
+        self.assertIsNone(self.state(log))
+        text = self.edited(self.wording)
+        self.assertNotEqual(T.subjects.of_form(text), T.subjects.of_form(self.orig))   # the whole subject moved
+        self.assertIsNone(self.state(log))
+
+    def test_an_input_question_or_title_edit_stales(self):
+        log = self.base_log()
+        self.edited(lambda d: self.line(d, "f8960.prior_2i")["expr"].update(source="A reworded question?"))
+        state = self.state(log)
+        self.assertIn("lines changed or not yet reviewed:", state)
+        stale = state.partition("lines changed or not yet reviewed: ")[2].partition(";")[0].split(", ")
+        readers = sorted(k for k, i in self.keys if "f8960.prior_2i" in T.subjects.closure(self.doc, i))
+        self.assertEqual(sorted(stale), readers)
+        self.assertTrue(readers)
+        self.edited(lambda d: d.update(title="Another title"))     # the request carries the title
+        self.assertIn("outside every compared line", self.state(log))
+
+    def test_migration_rewrites_a_citation_only_table_and_is_idempotent(self):
+        old = self.citation_only_log()
+        self.assertIsNone(self.state(old))
+        self.assertIsNone(ML.state_before(self.FORM, old))
+        self.edited(self.wording)
+        self.assertIsNotNone(self.state(old))   # unmigrated, a wording edit stales it
+        self.yaml.write_text(self.orig)
+        versions = ML.Versions(self.FORM, T.Y, texts=[("working tree", self.orig)])
+        new, how, before, after = ML.migrate_one(self.FORM, old, T.Y, versions, self.keys)
+        self.assertIn("rows rewritten from the working tree", how)
+        self.assertEqual((before, after), (None, None))
+        self.assertEqual(T.subjects.recorded(new), T.subjects.current_line_subjects("transcription", self.FORM, T.Y))
+        self.assertEqual(new.replace(T.subjects.LINE_SUBJECTS, "").count("\n"), old.replace(T.subjects.LINE_SUBJECTS, "").count("\n"))
+        outside = lambda t: t.partition("\n" + T.subjects.LINE_SUBJECTS + "\n")[0] + t.partition("\n" + T.subjects.FOREIGN + "\n")[2]
+        self.assertEqual(outside(new), outside(old))                   # nothing else in the log changes
+        again, how, _, _ = ML.migrate_one(self.FORM, new, T.Y, versions, self.keys)
+        self.assertEqual(again, new)
+        self.assertEqual(how, "already wording-blind")
+        # Migrated, the log stays current through a wording edit.
+        self.edited(self.wording)
+        self.assertIsNone(self.state(new))
+
+    def test_a_genuinely_stale_log_stays_stale(self):
+        old = self.citation_only_log()
+        changed = self.edited(lambda d: (self.wording(d), self.line(d, "f8960.line1")["expr"].update({"from": "f1040.line2a"})))
+        versions = lambda: ML.Versions(self.FORM, T.Y, texts=[("working tree", changed), ("revision 0123456789ab", self.orig)])
+        self.assertIsNotNone(ML.state_before(self.FORM, old))
+        new, how, before, after = ML.migrate_one(self.FORM, old, T.Y, versions(), self.keys)
+        self.assertIn("revision 0123456789ab", how)
+        self.assertEqual(after, "the transcription log is stale for lines changed or not yet reviewed: 1; "
+                                f"rerun them: transcribe.py --form {self.FORM} --lines auto")
+        self.assertEqual(ML.migrate_one(self.FORM, new, T.Y, versions(), self.keys)[0], new)
+        # A log reviewed whole with no table: the table of its reviewed version is recorded, still stale for line 1.
+        legacy = (old.partition("\n" + T.subjects.LINE_SUBJECTS + "\n")[0] + "\n## Raw second transcription\n"
+                  + old.partition("\n## Raw second transcription\n")[2])
+        self.assertIn("reviewed an earlier form", ML.state_before(self.FORM, legacy))
+        new, how, _, after = ML.migrate_one(self.FORM, legacy, T.Y, versions(), self.keys)
+        self.assertEqual(how, "table recorded from the revision 0123456789ab")
+        self.assertIn("lines changed or not yet reviewed: 1;", after)
+        self.assertIsNone(T.subjects.recorded_foreign(new))
+
+    def test_a_stale_log_the_migration_would_make_current_is_left_as_it_is(self):
+        old = self.base_log()
+        legacy = (old.partition("\n" + T.subjects.LINE_SUBJECTS + "\n")[0] + "\n## Raw second transcription\n"
+                  + old.partition("\n## Raw second transcription\n")[2])
+        changed = self.edited(self.wording)
+        versions = ML.Versions(self.FORM, T.Y, texts=[("working tree", changed), ("revision 0123456789ab", self.orig)])
+        new, how, before, after = ML.migrate_one(self.FORM, legacy, T.Y, versions, self.keys)
+        self.assertEqual(new, legacy)
+        self.assertIn("would turn stale -> current, left as it is", how)
+        self.assertIsNotNone(before)
+        self.assertEqual(after, before)
 
 
 if __name__ == "__main__":

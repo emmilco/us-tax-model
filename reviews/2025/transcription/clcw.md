@@ -88,6 +88,27 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | 12 | clcw.spouse_screen | - |
 | 13 | clcw.spouse_screen | - |
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| 1 | 87ea0b475b431509d2f4efe54c41a9847cbe96f3334b9b39c132d09b03ac921e |
+| 2 | c0079d0c227193a4948b971bdbb04d6f7dd072a9ef09831e6ab5377086848456 |
+| 3 | 554ceca242024273b60a44537056d788c47bab6ec97b3e7c4bf736d8b19b01cf |
+| 4 | 8aced6d5379bb7680acaba843c8c790e6b1ed94a287d07b8d2712ed23b078d30 |
+| 5 | c5b7e3a20605bb0b2b2e2c1ce6c92fd39175cb3ec7c808160e2ccd90cba8b47b |
+| 6 | 54beb5a5e8032b3d7098edd3efbf2d2378296e2460a494bd6dff692e8beb87b6 |
+| 7 | b2ef60ba66bd0b97634c5b2bf9514fd0a601560fa683133c7b54847decb5d9d0 |
+| 8 | 0ce56cd8a99632d54771757a611ae4f7a6ddf68ed77f2f376765582a6534b23f |
+| 9 | fa1d7c8b4c8c44b5c9c06baf2678998c2fd8edae4512f2cd1ebafeef03af8a3d |
+| 10 | bbba156a5874b863d73a3bf6a10b3820c27e613d9a7cfc88d2a0a7fdeff6af4f |
+| 11 | 603174d8aeae5158ff020597a075c3fe23220f952c4388a5bcfa4105ca28c9e5 |
+| 12 | 24c507ffb885b7aab1114e89c581cb9cc574ee9cf520d772ae235cc1ec60a165 |
+| 13 | bdf40efed1e064c6194763b4e9baf1ce46b3eee7b956e4c30ce9db822798b38f |
+| (rest of the document) | 06b25a0db0dfdaef7a95b5deeae884cbb0cb10f3f5a86b0c35e017beef08b6f1 |
+
 ## Raw second transcription
 
 ```yaml

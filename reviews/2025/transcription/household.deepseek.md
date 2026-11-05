@@ -278,6 +278,33 @@ Second:
 
 Ruling: model error; i1040gi pp. 13-15. As the prior ruling (`.transcription/archive/before-catalog-refresh-2026-11-03/`): the reply folds its own HOH and QSS tests into the marriage-entry gate, inheriting household.hoh_fails's error: completed mutation.t2.eic.hoh_child_line5_skip and generated 381 (HOH returns) are flagged, project false, candidate true. executable-triage-v2 (`reviews/2025/transcription/triage/household.deepseek.json`; 1,565 fixtures, 500 generated returns seed 20261026, 235 partial records; 2,300 comparisons): 2,018 of 2,300 agree; 191 value, 68 candidate-unknown, 23 candidate-refuses; on returns the full interview completes: 2 value. Project stands.
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| household.persons | 051f56aed77ac065bdcc00895a0e699ac8f949543491df2f2b7868a8b9123bd2 |
+| household.roster_bad | cc4f520f3f6cefa637d7eda3c50f4bc3afba32dcfba9900bf9bee06ff65d2f10 |
+| household.hsa_both | 09ffc95f78a86ec051d152745f229d228dbd57c22f76733efec28059d1a080c9 |
+| household.hsa_split_count | 1b3d4587ff65d664f0bac78aaac8fbaf8d6fc209ea0d6fd1b403158c000bf84b |
+| household.hsa_agreed_count | 3d1960a8e76f2da1770bb3012f6d001a4a6a4a689e1ef5c386cbf99732f4ff73 |
+| household.hsa_step1_sum | 1fece38e47b55ebe85dd98adf3393ed0a87805d9c5da12cd11169c3aaa3dacad |
+| household.hsa_share_sum | 138cbed91d7485649cecaa1bb38bf2b8936ec59e97a66a8580e15a0561027ea9 |
+| household.all_eic_ssn | 1a65caecfbe742ef3e79e731a1c7bc61c045f8752ed33f5747af5b94cda971f6 |
+| household.all_tin | 39a0a9dbbd692b85be692db919a5bdf229cf569008c30a8593aa85ea600cfeb4 |
+| household.ctc_ssn | d41be11acea17875358a482ebdc70634b707036b885d9cb80416783951b70fb3 |
+| household.taxpayer_work_ssn | 3cf01354a8ba1896a5b3b46b1cfbfc4f2dcbb8cd6b40afeee98735599ebc1f3e |
+| household.ctc_disallowed_claim | 4a06637253d0668367f26a8d1d7ec3662cf53fb0758ff101ff3986a981ab1498 |
+| household.eic_disallowed_claim | efddafab5daea23b0099f138ddfe738db71ef5e6ecb55d22bcacf90854919ac4 |
+| household.hoh_fails | f805f41ff116774be413dacefff6ef9054a8da39fcd28ea00f333aa94deb86f6 |
+| household.qss_fails | 4c91091ff3c1e9f73454fdf5b6cf3b98e9eace607a354f600805df1695f19d67 |
+| household.widowed_2025 | 161fcf97bb6e3d4edd76f62b4971c15375c5df3847a8896afe5b31853f07b7e5 |
+| household.cp_marriage_ended | f4fedf869eb928f65552c6617ff7eb907b92c7ddd344073487df677bf3f1907b |
+| household.rdp_community_property | cb7ac4eaf81490b4b959f5e229c0a0c49d5f3d3cc6e4f3ab0c18cc7a4c0311ba |
+| household.filing_status_conflict | 43897d8c3cd18dc0be6d9c5ec38323d054e630ecce1639dbc012edbaea23f9e9 |
+| (rest of the document) | 92bf81ae283c1e0d5fa92ecd444c292ac15487a8e6ed56b6d46422a82d26927b |
+
 ## Raw second transcription
 
 ```yaml

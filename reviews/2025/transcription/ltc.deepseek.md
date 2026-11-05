@@ -50,6 +50,16 @@ Status: **AGREE**
 ### 2(b) — The amount for that person's age
 Status: **AGREE**
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| ltc.amount | a29486b4d08cc662ade5dc14580cc1eb6b7b4bfcf43a036809b49e41bef8265f |
+| 2(b) | be1bc3486c4ac604c2230b183e578bff0751dbaab1c1ee0190d642a68419b0e2 |
+| (rest of the document) | d7dc454d6b46478b770b8f3bc4c29597a7902f0a42eba92c01e52c69c90a55c8 |
+
 ## Raw second transcription
 
 ```yaml

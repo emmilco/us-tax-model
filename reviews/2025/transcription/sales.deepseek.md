@@ -109,11 +109,11 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 | line | subject sha256 |
 | --- | --- |
-| sales.one | c67ee5ae0f460c919f0be5b8f038ae80dc4c6270406b728f0b3c91dc6a91dd8f |
-| (e) | d3d50baa9c23dc9bff0375818e7910228652d8a801caacb4acab98b18d6ea470 |
-| (g) | 77fa70f9061da2d07b975c536b2a72ef07fe97a96b305978b873e4ef59d32269 |
-| (h) | 2422451df8e177d55abe45d3f471d4c89063e2ddde31e6b78d028783cf6be82d |
-| (rest of the document) | bd65df118805874cff9360e29b8978e3a8b739647bd7439342d356bc47841505 |
+| sales.one | a70b7497279033c84a840775fe2abf33e7dc779b790b06545bb95616abb2a372 |
+| (e) | 928d0501e109c53449f47130796703fdca3be62e5ad5cfa8a75b4e411545cce6 |
+| (g) | e345be671a45479e4277d1d58ae8e8cb4073bac0b4df3cb8d74cc84d48424fa9 |
+| (h) | 99ee2a26d2615b358c59742db7fe5cb7211304df3fd2300bdc0b375bc504b241 |
+| (rest of the document) | d66e458afa5745f8eec417fb8e25dc768244f7e1dca0d2d0114dfbf47d7cba76 |
 
 ## Foreign interfaces
 

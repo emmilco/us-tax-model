@@ -199,10 +199,11 @@ def audit(path):
     prompt = base.with_suffix(base.suffix + ".prompt.txt").read_text()
     response = base.with_suffix(base.suffix + ".response.txt").read_text()
     meta = json.loads(base.with_suffix(base.suffix + ".meta.json").read_text())
-    merged = T.subjects.has_line_scoped_passes(log)
-    if merged:
-        # A merged log's header records the subject its first review saw; what keeps it current is
-        # that every compared line's subject is current (subjects.log_state, as check_logs.py holds it).
+    by_lines = T.subjects.has_line_scoped_passes(log) or T.subjects.recorded(log) is not None
+    if by_lines:
+        # A log with line-scoped reviews or a line-subject table is current when every compared line's
+        # subject is (subjects.log_state, as check_logs.py holds it); its header records the subject its
+        # first review saw, which the receipt binds.
         state = T.subjects.log_state("transcription", form, T.Y, log)
         if state:
             raise ValueError(state)

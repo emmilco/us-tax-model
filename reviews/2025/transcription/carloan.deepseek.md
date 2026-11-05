@@ -77,6 +77,16 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | 22(ii) | carloan.h_refi_bad | carloan.h_refi_bad |
 | 22(iii) | carloan.h_refi_bad | carloan.h_refi_bad |
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| 22(ii) | f69df561d7c990fc844293b438a52023d96b2aad8fd05986bc5a2b8e98a1b4e3 |
+| 22(iii) | 4f034ea6f43eeb7f9995e00b8c59f7a773e0dfbd1d48ba9656ac85a03e6f51d0 |
+| (rest of the document) | deb19ff2f95d69c9289f6e2fec1090a13ac53679980606283ce9079810026314 |
+
 ## Raw second transcription
 
 ```yaml

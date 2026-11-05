@@ -55,6 +55,18 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | 4 | sb.fbar_required, sb.form8938, sb.line8, sb.unsupported | - |
 | 6 | sb.fbar_required, sb.form8938, sb.line8, sb.unsupported | - |
 
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| 2 | c50077315e01753f305aeb2faefdec8cf47b1b1b5c07cec069ab870b435db8cc |
+| 3 | adc59757e6a1b9b5432546a2629e52eb2085417f19b75ae843e9098856165263 |
+| 4 | d225f28e9701cf230747bff686459225d04bd398ce08e2040a616fb8958167c4 |
+| 6 | 592f2cf2def1924c2c4599e2709a3a18aa5910d0457f75ea5f71c12ba4bc7469 |
+| (rest of the document) | 013e58d3d274e971cd170d48794200b98ac690d600b9af1e38e8133de7ae11db |
+
 ## Raw second transcription
 
 ```yaml

@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 138 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 7.5% (311/4127 second-family lines judged; pending reviews are provisional); 65 eligible, 73 pending; raw agreement 81.3% (diagnostic only); current independence yield 161 line(s); both families disputed 545
+Summary: 138 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 7.5% (311/4127 second-family lines judged; pending reviews are provisional); 66 eligible, 72 pending; raw agreement 81.3% (diagnostic only); current independence yield 161 line(s); both families disputed 545
 
 Written by `tools/transcription/compare_families.py` on 2026-11-05 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -75,7 +75,7 @@ Pending clcw26 [deepseek]: no verified current request context for claude: saved
 Pending dcprov [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending dependent [deepseek]: model-error noise above 10%; no passing current source-based partial-input checks: deepseek.
 Excluded internal adapters for div: div.screen. Original logs/rulings are preserved; separate engineering checks earn no independent tax-evidence credit.
-Pending div [deepseek]: stale subject: claude, deepseek; no source-defined computed targets; internal adapter checks earn no tax-evidence credit; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending div [deepseek]: no source-defined computed targets; internal adapter checks earn no tax-evidence credit; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending f1040 [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending f1095a [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending f2441 [deepseek]: 3 missing expected lines; model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
@@ -109,7 +109,7 @@ Pending s8812 [deepseek]: model-error noise above 10%; no passing current expres
 Pending sa [deepseek]: 1 open, unclassified or interface-gap rulings; model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending sales [deepseek]: no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
 Pending sb [deepseek]: no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
-Pending scope [deepseek]: stale subject: claude, deepseek; no verified current request context for claude: log subject no longer matches the project definition; no verified current request context for deepseek: log subject no longer matches the project definition.
+Pending scope [deepseek]: no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
 Pending sd [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending sdtw [deepseek]: model-error noise above 10%; no passing current expression type validation: claude; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending se [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
@@ -117,7 +117,7 @@ Pending ssb [deepseek]: model-error noise above 10%.
 Pending tax_on_amount [deepseek]: no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending tcw [deepseek]: no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending u1250 [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
-Pending w2 [deepseek]: stale subject: claude, deepseek; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending w2 [deepseek]: transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 
 ### Independence yield
 
@@ -731,7 +731,7 @@ Pending w2 [deepseek]: stale subject: claude, deepseek; transcription predates u
 | qbi | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 1/1 (100.0%) | pending | 0 | 1 | 0 | 0 |
 | qdcg | deepseek (deepseek-flash) | 25 | 24 | 96.0% | 0/25 (0.0%) | pass | 0 | 0 | 1 | 0 |
 | refund | deepseek (deepseek-flash) | 9 | 7 | 77.8% | 0/9 (0.0%) | pass | 0 | 2 | 0 | 0 |
-| retirement | deepseek (deepseek-flash) | 10 | 3 | 30.0% | 0/10 (0.0%) | pending | 2 | 4 | 1 | 0 |
+| retirement | deepseek (deepseek-flash) | 10 | 3 | 30.0% | 0/10 (0.0%) | pass | 2 | 4 | 1 | 0 |
 | s1 | deepseek (deepseek-flash) | 29 | 21 | 72.4% | 0/29 (0.0%) | pass | 5 | 3 | 0 | 0 |
 | s179 | deepseek (deepseek-flash) | 13 | 11 | 84.6% | 1/13 (7.7%) | pass | 0 | 2 | 0 | 0 |
 | s1a | deepseek (deepseek-flash) | 43 | 41 | 95.3% | 0/43 (0.0%) | pass | 1 | 1 | 0 | 0 |
@@ -763,7 +763,6 @@ Pending f8995a [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending ira [deepseek]: 5 open, unclassified or interface-gap rulings.
 Pending oi8z [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending qbi [deepseek]: model-error noise above 10%.
-Pending retirement [deepseek]: stale subject: claude, deepseek.
 Pending sb [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending scope [deepseek]: 2 open, unclassified or interface-gap rulings; model-error noise above 10%.
 Pending se [deepseek]: 5 open, unclassified or interface-gap rulings.
