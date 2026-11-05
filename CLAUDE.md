@@ -24,5 +24,11 @@ advisory only).
     (owner decision 2026-11-04).
   - Mechanical agent work (applying rulings, bug-entry formatting, input ripple, bookkeeping)
     runs on Sonnet; judgment (adjudication, source reading, design) on Opus.
+  - One review per form per round, run after all of that form's fixes in the round
+    have landed; a round whose reviews find only lows starts no further round (the
+    lows wait for the form's next substantive change).
+  - Every agent brief states the agent's model and its class (mechanical or
+    judgment), and every `agent_runs.jsonl` row records both, as `model` and
+    `class` fields.
   - Every paid review call is logged in `.transcription/costs.jsonl` (`tools/transcription/costs.py`)
     and every agent run in `research/costs/agent_runs.jsonl`.
