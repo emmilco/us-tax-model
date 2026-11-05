@@ -121,7 +121,8 @@ if (command === "review-stage5") {
 } else if (command === "coverage") {
   coverageReport();
 } else if (command === "evidence") {
-  evidenceReport();
+  const at = process.argv.indexOf("--engine-release");
+  evidenceReport(at > 0 ? process.argv[at + 1] ?? "none" : undefined);
 } else if (command === "differential") {
   process.exit(differential() === 0 ? 0 : 1);
 } else if (command === "compare") {

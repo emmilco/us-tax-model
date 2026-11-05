@@ -5984,3 +5984,13 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Tool change:** as federally, the New York walk covers the hand-authored stage fixtures only (`engine/src/build.ts`), and a path's step bound is the fixture's input count plus one, exact because each step answers a distinct input (`engine/src/interview-check.ts`).
 - **Validation:** build OK in about 2.5 minutes; `test-fixtures --ny` passes.
 - **Tags:** interview; jurisdiction; tool change
+
+## BUG-0426 — Background check-all runs compared HEAD-relative checks with the snapshot itself
+
+- **Caught by:** T-238 implementation agent, reading `tools/check_all_bg.sh`; confirmed by a probe, 2026-11-05.
+- **Source:** `tools/check_bug_inventory.py` ("The committed content (git HEAD) must be a byte-for-byte prefix of the working file") against `tools/check_all_bg.sh` `prepare()`.
+- **Symptom:** the background runner checked the snapshot out with HEAD at the snapshot commit, so `git show HEAD:BUG_INVENTORY.md` equalled the working file and the append-only check could not fail; `siblings.py` and `human_review/logs.py`, which also read HEAD, saw no uncommitted change. A probe snapshot that edited BUG-0001's heading passed (425 entries, append-only). Latent: all 71 committed changes to BUG_INVENTORY.md are pure appends.
+- **Why the checks missed it:** the foreground run (`tools/check_all.sh`) has HEAD at the real commit; the background runner was tested for tree identity, not for what HEAD-relative steps see.
+- **Tool change:** `prepare` takes the base and resets HEAD to it softly after the checkout, so the snapshot's changes are uncommitted against the commit it was taken on.
+- **Validation:** the same probe fails with the fix ("committed content was modified"); the full background run of this change.
+- **Tags:** commit-guard; tool change

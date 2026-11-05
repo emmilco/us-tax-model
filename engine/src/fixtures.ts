@@ -169,7 +169,9 @@ function classMModel(note: string | undefined): string | undefined {
   return note?.match(/Class M: ([^;]+);/)?.[1]?.trim();
 }
 
-export function evidenceReport(): void {
+// engineRelease: set by a fast check-all run, which does not rerun the engine differential; the
+// latest release tag reachable from HEAD, or "none". The report then says how old its E column may be.
+export function evidenceReport(engineRelease?: string): void {
   const data = loadCanonical();
   const file = loadCases();
   // H is a source reading, not a human-computed expected value (class B).
@@ -320,6 +322,10 @@ export function evidenceReport(): void {
   const out: string[] = [];
   out.push("# Evidence coverage per line", "");
   out.push(`**Scoreboard.** ${scoreboard}`, "");
+  if (engineRelease !== undefined) {
+    const asOf = engineRelease === "none" ? "Engine evidence: no release yet." : `Engine evidence as of release ${engineRelease}.`;
+    out.push(`**${asOf}** This report was written by a fast check-all run, which does not rerun the engine differential: the E column comes from reports/${YEAR}/engine_differential.json as the last full run wrote it, so a line changed since then can show an engine assertion made on its earlier encoding. A release (tools/release.sh) reruns the differential and rewrites this report without this note.`, "");
+  }
   out.push("A computed line is one whose atom is not `input`, `param` or `copy`. An outside-family assertion is a signed human source reading (H), a class B fixture (human worked values), a class M fixture whose recorded model is not a Claude model (second-family M), or an engine assertion (E) under the rule below. The sub-counts overlap: a line with several kinds counts once in the share. H checks the encoded rule against IRS text; B and M check worked values. Second-family transcription and render readings are reported separately in second_family.md and do not yet enter this scoreboard. Class A, Claude-family M, C and R do not move it.", "");
   out.push("H — a MATCH verdict and a reason in the reader's own words, with a current per-line receipt covering the displayed reading, folded helpers, dependencies and sources. The log's exact contents must have been committed by its named reader. A guided question credits only its own computation. Other packets credit their printed line and helpers actually expanded in the reading; referenced amounts do not receive credit. See the linked human logs for the scope of each reading. H supplies no hand-calculated expected value and never fills the B column.", "");
   if (human.pending.length) out.push("Optional human readings pending or ineligible (no H credit; original findings retained): " + human.pending.join("; ") + ".", "");

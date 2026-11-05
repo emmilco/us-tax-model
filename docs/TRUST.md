@@ -156,15 +156,25 @@ claim to test, the stated invariants hold, and the interview has no dead end on 
 `BUG_INVENTORY.md` records every defect caught by any check or reading, before or with its fix: how it
 was caught, the symptom, the root cause, why the existing checks missed it, the fix and its commit. It
 is append-only; `check-all` fails if the committed prefix changes or the ids are not sequential.
-`tools/hooks/pre-commit` refuses any commit whose tree is not a tree a green check-all run tested (in
-the working tree, or on a snapshot in a separate worktree), `tools/hooks/pre-push` refuses a push whose
-commits' trees no green run tested (git runs no pre-commit hook on a merge), and a run is green only if
-nothing outside its own outputs changed while it ran (`tools/README.md`, "Commit guard").
+check-all runs in three tiers: full (every step), fast (every step but mutation testing and the
+comparisons with the independent evaluators: the engine differential and the Lean evaluator, federal
+and New York) and docs (the build and the checks that read the bookkeeping files of
+`tools/docs_paths.txt`). `tools/hooks/pre-commit` refuses any commit whose tree is not a tree a green
+run of the tier the commit needs tested (in the working tree, or on a snapshot in a separate worktree):
+full when it changes the mutation tool or the evaluators (`tools/full_paths.txt`), docs when it changes
+bookkeeping files only, fast otherwise (`tools/tier_paths.py`). `tools/hooks/pre-push` applies the same
+rule to every pushed commit (git runs no pre-commit hook on a merge) and refuses a release tag
+`r<year>.<month>.<day>.<n>` whose tree is not full-green; a run is green only if nothing outside its
+own outputs changed while it ran (`tools/README.md`, "Commit guard").
 **Guarantees:** a change to the committed defect record fails the suite, and in a clone with the hooks
-enabled (`git config core.hooksPath tools/hooks`) no commit lands, and nothing is pushed, unless the
-whole suite passed on that exact tree. **Does not guarantee:** that the suite catches
-what it does not test for (the "why it survived" field exists to turn each such miss into a new check),
-or anything in a clone without the hook, or a commit made with `--no-verify`.
+enabled (`git config core.hooksPath tools/hooks`): every release tag is on a tree the whole suite
+passed; every commit pushed between releases passed the fast tier on its exact tree, or changed only
+bookkeeping files that no fast-tier check outside the docs tier reads, and passed the docs tier. **Does not
+guarantee:** mutation adequacy or agreement with the independent evaluators on a commit after the
+latest release (its `mutation.md`, `evaluator_agreement.md`, `engine_differential.{md,json}` and the E
+column of `evidence.md` can predate its tree; `evidence.md` then names the release they come from),
+that the suite catches what it does not test for (the "why it survived" field exists to turn each such
+miss into a new check), or anything in a clone without the hook, or a commit made with `--no-verify`.
 
 ## 12. Source-coverage checks and standing reviews
 

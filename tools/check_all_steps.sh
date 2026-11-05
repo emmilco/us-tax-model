@@ -12,8 +12,37 @@
 # build's data, wave 2 runs the evaluator checks, wave 3 writes the evidence report
 # and review packets. A failing step fails the run after its wave. Each step's wall time, in seconds,
 # goes to .git/check-all-times (not tracked).
+#
+# --tier full|fast|docs selects the steps (default full: every step). fast skips slow_steps, the
+# mutation and independent-evaluator checks a release runs; evidence then marks its E column with the
+# latest release reachable from HEAD, because the engine differential it reads was not rerun. docs
+# runs docs_steps: compile, the build without render, and the checks that read the bookkeeping paths
+# of tools/docs_paths.txt (tools/tier_paths.py lists every reader of them).
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
+tier=full
+args=()
+while [ "$#" -gt 0 ]; do
+  case "$1" in
+    --tier) tier="${2:-}"; shift; [ "$#" -gt 0 ] && shift ;;
+    --tier=*) tier="${1#--tier=}"; shift ;;
+    *) args+=("$1"); shift ;;
+  esac
+done
+set -- ${args[@]+"${args[@]}"}
+slow_steps=" mutate engine_differential compare ny_compare ny_mutate "
+docs_steps=" compile build check_bug_inventory siblings_check siblings_self_test bookkeeping_tools coverage_tree green_self_test "
+case "$tier" in
+  full|fast|docs) ;;
+  *) echo "check-all: unknown tier '$tier' (full, fast or docs)" >&2; exit 2 ;;
+esac
+in_tier() {
+  case "$tier" in
+    full) return 0 ;;
+    fast) [[ "$slow_steps" != *" $1 "* ]] ;;
+    docs) [[ "$docs_steps" == *" $1 "* ]] ;;
+  esac
+}
 node=(node engine/dist/main.js)
 times="$(git rev-parse --git-path check-all-times)"
 : > "$times"
@@ -22,9 +51,10 @@ trap 'rm -rf "$logs"' EXIT
 names=()
 pids=()
 
-# step NAME COMMAND...: start COMMAND in the background, logging to its own file.
+# step NAME COMMAND...: start COMMAND in the background, logging to its own file, when NAME is in the tier.
 step() {
   local name="$1"; shift
+  in_tier "$name" || return 0
   ( t0=$(date +%s); rc=0; "$@" > "$logs/$name.log" 2>&1 || rc=$?
     echo "$(( $(date +%s) - t0 )) $name" >> "$times"; exit "$rc" ) &
   names+=("$name"); pids+=("$!")
@@ -34,6 +64,7 @@ step() {
 # and stop the run if any failed.
 wave() {
   local i failed=()
+  [ "${#pids[@]}" -gt 0 ] || return 0
   for i in "${!pids[@]}"; do
     wait "${pids[$i]}" || failed+=("${names[$i]}")
   done
@@ -61,7 +92,7 @@ lean_compare() {
 step compile npm run compile --silent
 wave
 
-step build build_and_render "$@"
+if [ "$tier" = docs ]; then step build "${node[@]}" build "$@"; else step build build_and_render "$@"; fi
 step check_self_test "${node[@]}" check-self-test
 wave
 
@@ -147,7 +178,11 @@ step compare lean_compare "$@"
 step ny_test_fixtures "${node[@]}" test-fixtures --ny "$@"
 wave
 
-step evidence "${node[@]}" evidence "$@"
+evidence_args=()
+if [ "$tier" = fast ]; then
+  evidence_args=(--engine-release "$(git describe --match 'r[0-9]*' --abbrev=0 HEAD 2>/dev/null || echo none)")
+fi
+step evidence "${node[@]}" evidence ${evidence_args[@]+"${evidence_args[@]}"} "$@"
 step review_stage2 "${node[@]}" review-stage2 "$@"
 step review_stage3 "${node[@]}" review-stage3 "$@"
 step review_stage4 "${node[@]}" review-stage4 "$@"

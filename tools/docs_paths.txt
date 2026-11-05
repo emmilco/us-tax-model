@@ -1,0 +1,14 @@
+# Bookkeeping paths: a commit whose changes all match these needs only the docs tier of check-all
+# (tools/tier_paths.py). One pattern per line, matched against the whole repository-relative path
+# (shell-style; `*` also matches `/`). Only exact files and whole directories (`dir/*`) are allowed.
+# Every reference to these paths in the tools, engine and Lean code is listed in tier_paths.py
+# (READERS), which fails on an unlisted one; a step that reads one of them runs in the docs tier.
+TASKS.md
+TASKS-DONE.md
+BUG_INVENTORY.md
+HANDOFF-NEXT-SESSION.md
+PROJECT_INDEX.md
+handoffs/*
+docs/*
+research/costs/*
+research/audits/*

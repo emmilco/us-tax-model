@@ -391,8 +391,15 @@ Around the stack sit tests of whether the tests are any good.
 - **The bug inventory.** [`BUG_INVENTORY.md`](BUG_INVENTORY.md) records every defect caught (263 at the
   last commit) with how it was caught, its root cause, and *why the existing checks missed it*. It is
   append-only; the suite fails if its committed history changes.
-- **The commit guard.** A git hook, enabled per clone, refuses any commit whose tree is not exactly the
-  tree the last green run of the full suite tested.
+- **The commit guard.** A git hook, enabled per clone, refuses any commit whose tree is not exactly a
+  tree a green run of the suite tested. Only releases carry the full guarantee: a release is a tag
+  `r<year>.<month>.<day>.<n>` (the newest is the latest release), and its tree passed the whole suite.
+  A commit on `main` between releases passed the fast tier, which skips mutation testing and the
+  comparisons with the independent evaluators (the engine differential and the Lean evaluator); its
+  mutation and evaluator reports, and the engine column of its evidence report, can date from the last
+  release, and the evidence report names that release. A commit that changes only bookkeeping files (the
+  task and bug registers, handoffs, `docs/`) passed the checks that read them. A commit that changes the
+  mutation tool or the evaluators needs the full suite even on `main`.
 
 **What it earns.** The tests are sensitive to what they claim to test, the defect record is public and
 append-only, and each miss is meant to become a new check. **Where it stops:** a suite catches what it

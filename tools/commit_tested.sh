@@ -3,7 +3,8 @@
 # (tools/check_all_bg.sh), leaving edits made since its snapshot uncommitted in
 # the working tree. Arguments go to `git commit`, e.g. tools/commit_tested.sh -F msg.
 #
-# Refuses when the run was not green, when HEAD has moved since the snapshot
+# Refuses when the run was not green, when its tier is below the one the commit
+# needs (tools/tier_paths.py: docs, fast or full), when HEAD has moved since the snapshot
 # (committing the old tree would undo what came after), or when anything is
 # staged (the tested tree replaces the index). The commit passes through
 # tools/hooks/pre-commit as usual. Files the run regenerated (reports/,
@@ -23,9 +24,13 @@ get() { sed -n "s/^$1=//p" "$last"; }
 tested="$(get tested)"
 snapshot="$(get snapshot)"
 base="$(get base)"
-is_green "$tested" || die "tree $tested is not in the record of green runs"
+tier="$(get tier)"
+tier="${tier:-full}"
+is_tier_green "$tier" "$tested" || die "tree $tested is not in the record of green $tier-tier runs"
 [ "$(git rev-parse HEAD)" = "$base" ] || die "HEAD has moved since the snapshot (taken on $base); start a new run"
 git diff --cached --quiet || die "the index has staged changes; unstage them first (the tested tree replaces the index)"
+required_tier "$tested" "$base" || die "could not classify the tested tree's changes (tools/tier_paths.py)"
+is_tier_green "$REQUIRED" "$tested" || die "the run was $tier-tier, but this commit needs the $REQUIRED tier: $REQUIRED_WHY"
 
 carry=()
 while IFS= read -r p; do

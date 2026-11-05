@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
-# Refuses a push unless the tree of every commit being pushed to a ref passed a
-# green check-all run (tools/green.sh: is_green). Commits are checked by
-# tools/hooks/pre-commit, but git runs no pre-commit hook on a merge, so a merge
-# made by `git pull` reaches this hook untested; run check-all on it first.
-# The whole pushed range is checked, not only the tip: an untested intermediate
-# commit would otherwise reach the remote inside a green tip's range.
+# Refuses a push unless every commit being pushed to a ref has a tree green in
+# the tier that commit needs against its own parents (tools/green.sh:
+# tree_accepted; the tiers are described in tools/hooks/pre-commit). Commits are
+# checked by tools/hooks/pre-commit, but git runs no pre-commit hook on a merge,
+# so a merge made by `git pull` reaches this hook untested; run check-all on it
+# first. The whole pushed range is checked, not only the tip: an untested
+# intermediate commit would otherwise reach the remote inside a green tip's range.
+# A release tag (refs/tags/r*) is refused unless its commit's tree is full-green.
 # Enabled with the other hooks:
 #   git config core.hooksPath tools/hooks
 set -euo pipefail
@@ -14,6 +16,19 @@ cd "$(git rev-parse --show-toplevel)"
 failed=0
 while read -r local_ref local_sha _remote_ref remote_sha; do
   [[ "$local_sha" =~ ^0+$ ]] && continue
+  if [[ "$local_ref" == refs/tags/r* ]]; then
+    if ! tagged="$(git rev-parse -q --verify "$local_sha^{commit}")"; then
+      echo "pre-push: release tag $local_ref does not point to a commit" >&2
+      failed=1
+      continue
+    fi
+    tree="$(git rev-parse "$tagged^{tree}")"
+    if ! is_green "$tree"; then
+      echo "pre-push: release tag $local_ref is on commit $(git rev-parse --short "$tagged") (tree $tree), which no green full-tier check-all run tested; run tools/release.sh" >&2
+      failed=1
+      continue
+    fi
+  fi
   if [[ "$remote_sha" =~ ^0+$ ]]; then
     # A new ref: every commit reachable here and from no remote-tracking ref is being pushed.
     commits="$(git rev-list "$local_sha" --not --remotes)"
@@ -22,8 +37,16 @@ while read -r local_ref local_sha _remote_ref remote_sha; do
   fi
   for commit in $commits; do
     tree="$(git rev-parse "$commit^{tree}")"
-    if ! is_green "$tree"; then
-      echo "pre-push: $local_ref commit $(git rev-parse --short "$commit") (tree $tree) has a tree no green check-all run tested; run npm run check-all (or npm run check-all-bg) on it first" >&2
+    # The commit's parents; none for a root commit (cut -s drops a line with no parent).
+    parents="$(git rev-list --no-walk --parents "$commit" | cut -s -d' ' -f2-)"
+    # shellcheck disable=SC2086
+    if ! required_tier "$tree" $parents; then
+      echo "pre-push: $local_ref commit $(git rev-parse --short "$commit"): could not classify its changes (tools/tier_paths.py)" >&2
+      failed=1
+      break
+    fi
+    if ! is_tier_green "$REQUIRED" "$tree"; then
+      echo "pre-push: $local_ref commit $(git rev-parse --short "$commit") (tree $tree) needs a green $REQUIRED-tier check-all run on its tree ($REQUIRED_WHY), and none is recorded; run tools/check_all.sh --tier $REQUIRED (or tools/check_all_bg.sh --tier $REQUIRED) on it first" >&2
       failed=1
       break
     fi

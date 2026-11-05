@@ -32,24 +32,57 @@ No project toolchain is pinned yet; engine/proof configuration belongs to Stage 
 
 ## Commit guard
 
-`npm run check-all` runs `tools/check_all.sh`, which runs the whole suite
+`npm run check-all` runs `tools/check_all.sh`, which runs the suite
 (`tools/check_all_steps.sh`, for the default year or the one given with
 `npm run check-all -- --year N`) and, when it passes, writes the hash of the tested
-working tree to `.git/check-all-green` and appends it to `.git/check-all-green-trees`
-(the last 50 green trees of the clone). The run counts as green only if nothing
-outside the suite's own outputs (`reports/`, `rendered/`) changed while it ran.
+working tree to its tier's marker and list of green trees (the last 50 of the clone):
+`.git/check-all-green` and `.git/check-all-green-trees` for the full tier,
+`check-all-green-fast` and `check-all-green-fast-trees` for fast, and the same with
+`docs`. The run counts as green only if nothing outside the suite's own outputs
+(`reports/`, `rendered/`) changed while it ran.
+
+The suite has three tiers, chosen with `--tier` (`tools/check_all.sh --tier fast`):
+
+- **full** (the default): every step, about 38 minutes. A release needs it.
+- **fast**: every step except `mutate`, `engine_differential`, `compare`, `ny_compare`
+  and `ny_mutate`, about 10 minutes. It does not check mutation adequacy or agreement
+  with the independent evaluators, and leaves `mutation.md`, `evaluator_agreement.md`
+  and `engine_differential.{md,json}` as the last full run wrote them; `evidence.md`
+  then says that its E column dates from the latest release.
+- **docs**: compile, the build, and the checks that read the bookkeeping paths in
+  `tools/docs_paths.txt` (`check_bug_inventory`, `siblings_check`,
+  `siblings_self_test`, `bookkeeping_tools`, `coverage_tree`, `green_self_test`),
+  about 3 minutes, nearly all of it the build.
+
+A full-green tree is also fast- and docs-green, and a fast-green tree is docs-green.
+Which tier a commit needs is decided from the paths it changes against its parent
+(`tools/tier_paths.py`): **full** if it changes a path in `tools/full_paths.txt` (the
+mutation tool and its equivalence and pinned lists, the Lean evaluator and its
+comparison, the engine differential), **docs** if every changed path is in
+`tools/docs_paths.txt`, **fast** otherwise; a merge needs at least fast, a commit with
+no parent full. The lists are read from the parent, so a commit cannot widen the list
+it is judged by. `tools/tier_paths.py --self-test` (run by `green_self_test`) checks
+that every reference to a docs-tier path in the code check-all runs is listed with the
+steps that read it, and that those steps are in the docs tier.
 
 `npm run check-all-bg` (`tools/check_all_bg.sh`) runs the same suite on a snapshot of
 the working tree in `.git/check-all-worktree`, detached, so the main tree can be
-edited while it runs (`--wait` runs it in the foreground; `--status` reports the
-running and last runs; the log is `.git/check-all-bg/log`). The snapshot is the tree
+edited while it runs (`--wait` runs it in the foreground; `--tier` as above; `--status`
+reports the running and last runs; the log is `.git/check-all-bg/log`). The snapshot is the tree
 `git add -A` would commit; the worktree is the script's own and is reset before each
 run; ignored data the suite reads is copied in as copy-on-write clones, and the build
 outputs are rebuilt from the snapshot. One run at a time. When it is green,
 `tools/commit_tested.sh -F <file>` commits exactly that tree, leaving edits made since
-the snapshot uncommitted; it refuses if HEAD has moved since the snapshot or anything
-is staged, and writes the regenerated `reports/` and `rendered/` files into the
-working tree where it still holds the snapshot's version.
+the snapshot uncommitted; it refuses if the run's tier is below the one the commit
+needs, if HEAD has moved since the snapshot or if anything is staged, and writes the
+regenerated `reports/` and `rendered/` files into the working tree where it still holds
+the snapshot's version.
+
+`tools/release.sh` makes a release: on the clean tip of `main` it runs
+`tools/check_all_bg.sh --wait --tier full`, and when the run is green it commits the
+reports the run rewrote (if any, with `tools/commit_tested.sh`; `-F <file>` gives the
+message) and puts the annotated tag `r<YYYY>.<MM>.<DD>.<n>` on the tested commit. It
+pushes the tag only with `--push`. A red run tags nothing.
 
 A run for a year other than the default passes or fails as usual but writes no
 marker.
@@ -59,11 +92,13 @@ After compiling and building, the steps run in three waves of side-by-side steps
 each step's wall time is in `.git/check-all-times`. Mutation spreads its mutants
 over worker threads; `MUTATE_WORKERS=1` runs it on one.
 
-`tools/hooks/pre-commit` refuses any commit whose tree is not exactly a tested
-tree (the marker, or one of the recorded green trees): no green run, a tree changed
-since the run, or a partial stage. Git runs no pre-commit hook on a merge, so
-`tools/hooks/pre-push` refuses a push whose commits' trees no green run tested, which
-catches a merge made by `git pull`. Enable both once per clone:
+`tools/hooks/pre-commit` refuses any commit whose tree is not exactly a tree a green
+run of the tier the commit needs tested (a marker, or one of the recorded green
+trees): no green run, a run of too low a tier, a tree changed since the run, or a
+partial stage. Git runs no pre-commit hook on a merge, so `tools/hooks/pre-push`
+checks every commit of the pushed range by the same rule, against its own parents,
+which catches a merge made by `git pull`; it also refuses a release tag (`refs/tags/r*`)
+whose commit's tree is not full-green. Enable both once per clone:
 
     git config core.hooksPath tools/hooks
 

@@ -2,8 +2,9 @@
 # Runs check-all on a snapshot of the working tree in a separate worktree, so the
 # main tree stays free to edit while it runs.
 #
-#   tools/check_all_bg.sh [--wait] [--year N]   snapshot now and test it (detached unless --wait)
-#   tools/check_all_bg.sh --status              the running run and the last finished one
+#   tools/check_all_bg.sh [--wait] [--tier full|fast|docs] [--year N]
+#                                     snapshot now and test it (detached unless --wait; tier full by default)
+#   tools/check_all_bg.sh --status    the running run and the last finished one
 #
 # The snapshot is the tree a full `git add -A` would commit (tools/green.sh),
 # wrapped in a commit object no ref points to. It is checked out in
@@ -14,7 +15,7 @@
 # .engines folders linked (read-only installs); lean/.lake is kept between runs;
 # canonical/ and engine/dist are removed so the suite rebuilds them from the
 # snapshot. tools/check_all.sh does the run; a green run records its tree in the
-# clone's list of green trees, which both hooks accept, and
+# clone's list of green trees for its tier, which both hooks read, and
 # tools/commit_tested.sh commits that tree. One run at a time.
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
@@ -46,8 +47,11 @@ take_lock() {
   fi
 }
 
+# prepare SNAP BASE: check out the snapshot's files with HEAD at BASE, the commit the snapshot was taken
+# on, so that steps comparing the tree with HEAD (check_bug_inventory, siblings, human_review) see the
+# snapshot's changes as uncommitted, as they would in the main worktree.
 prepare() {
-  local snap="$1" e n
+  local snap="$1" base="$2" e n
   if [ -e "$wt/.git" ]; then
     git -C "$wt" checkout -q --detach --force "$snap"
     git -C "$wt" clean -fdq
@@ -55,6 +59,7 @@ prepare() {
     git worktree prune
     git worktree add -q --detach "$wt" "$snap"
   fi
+  git -C "$wt" reset -q --soft "$base"
   rm -rf "$wt/canonical" "$wt/engine/dist"
   for e in "${cloned[@]}"; do
     rm -rf "${wt:?}/$e"
@@ -74,21 +79,27 @@ prepare() {
 
 # run BASE TREE SNAP [check-all args]: test the snapshot and write $state/last.
 run() {
-  local base="$1" tree="$2" snap="$3" rc tested="" result
+  local base="$1" tree="$2" snap="$3" rc tested="" result tier=full a prev=""
   shift 3
+  for a in "$@"; do
+    case "$a" in --tier=*) tier="${a#--tier=}" ;; esac
+    [ "$prev" = --tier ] && tier="$a"
+    prev="$a"
+  done
   trap 'rm -rf "$lock"' EXIT
-  echo "check-all-bg: snapshot tree $tree (on $base), started $(date '+%Y-%m-%d %H:%M:%S')"
-  prepare "$snap"
+  echo "check-all-bg: snapshot tree $tree (on $base), $tier tier, started $(date '+%Y-%m-%d %H:%M:%S')"
+  prepare "$snap" "$base"
   set +e
   (cd "$wt" && tools/check_all.sh "$@")
   rc=$?
   set -e
   if [ "$rc" -eq 0 ]; then
-    tested="$(cd "$wt" && m="$(git rev-parse --git-path check-all-green)" && { [ -s "$m" ] && cat "$m" || true; })"
+    tested="$(cd "$wt" && . tools/green.sh && m="$(marker_of "$tier")" && { [ -s "$m" ] && cat "$m" || true; })"
   fi
   if [ "$rc" -ne 0 ]; then result=failed; elif [ -n "$tested" ]; then result=green; else result=passed-unmarked; fi
   {
     echo "status=$result"
+    echo "tier=$tier"
     echo "base=$base"
     echo "snapshot=$tree"
     echo "snapshot_commit=$snap"

@@ -1,23 +1,44 @@
 #!/usr/bin/env bash
-# Refuses a commit unless its tree is exactly a tree a green check-all run
-# tested: the last run in this worktree (tools/check_all.sh) or any recent
-# green run of the clone, including one on a snapshot (tools/check_all_bg.sh).
+# Refuses a commit unless its tree is exactly a tree a green check-all run of the
+# tier the commit needs tested (tools/green.sh: tree_accepted): the last run of that
+# tier in this worktree (tools/check_all.sh) or any recent green run of the clone,
+# including one on a snapshot (tools/check_all_bg.sh). The tier, from the paths the
+# commit changes against HEAD (and MERGE_HEAD when concluding a merge), is
+# (tools/tier_paths.py):
+#   full  when a path in tools/full_paths.txt changed (or there is no parent);
+#   docs  when every changed path is in tools/docs_paths.txt;
+#   fast  otherwise.
+# A full-green tree is also fast- and docs-green, and a fast-green tree docs-green.
+# `git commit --amend` is judged against the commit it replaces; pre-push judges each
+# pushed commit against its real parents.
 # Enable once per clone with
 #   git config core.hooksPath tools/hooks
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
 . tools/green.sh
 
-if [ ! -s "$MARKER" ] && [ ! -s "$GREEN_TREES" ]; then
-  echo "pre-commit: no green check-all run recorded; run npm run check-all" >&2
+if ! any_record; then
+  echo "pre-commit: no green check-all run recorded; run npm run check-all (or tools/check_all.sh --tier fast)" >&2
   exit 1
 fi
 staged="$(git write-tree)"
-is_green "$staged" && exit 0
-
-if [ -s "$MARKER" ] && [ "$(worktree_tree)" = "$(cat "$MARKER")" ]; then
-  echo "pre-commit: the staged tree is only part of the tested tree; stage everything (git add -A) or rerun check-all" >&2
-else
-  echo "pre-commit: no green check-all run tested this tree; run npm run check-all, or commit a background run's tree with tools/commit_tested.sh" >&2
+parents=()
+if head="$(git rev-parse -q --verify HEAD)"; then parents+=("$head"); fi
+merge_head="$(git rev-parse --git-path MERGE_HEAD)"
+if [ -f "$merge_head" ]; then
+  while read -r p; do [ -n "$p" ] && parents+=("$p"); done < "$merge_head"
 fi
+required_tier "$staged" ${parents[@]+"${parents[@]}"} || { echo "pre-commit: could not classify the commit (tools/tier_paths.py)" >&2; exit 1; }
+is_tier_green "$REQUIRED" "$staged" && exit 0
+
+whole="$(worktree_tree)"
+for t in full fast docs; do
+  m="$(marker_of "$t")"
+  if [ -s "$m" ] && [ "$whole" = "$(cat "$m")" ] && [ "$whole" != "$staged" ]; then
+    echo "pre-commit: the staged tree is only part of the tree the last $t-tier run tested; stage everything (git add -A) or rerun check-all" >&2
+    exit 1
+  fi
+done
+echo "pre-commit: this commit needs a green $REQUIRED-tier run on its tree ($REQUIRED_WHY), and none is recorded;" >&2
+echo "  run tools/check_all.sh --tier $REQUIRED, or tools/check_all_bg.sh --tier $REQUIRED and commit its tree with tools/commit_tested.sh" >&2
 exit 1
