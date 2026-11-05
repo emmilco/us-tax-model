@@ -19,16 +19,17 @@ import yaml
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from transcribe import ROOT, RAW, manifest, excerpt_for, call_model, load_form, review_response, project_yaml  # noqa: E402
 from taxyear import Y  # noqa: E402
+import jurisdiction  # noqa: E402  (--jurisdiction ny: rendered/ny/<year>/, reviews/ny/<year>/render/)
 import families  # noqa: E402
 import rulings  # noqa: E402
 import subjects  # noqa: E402
 import transcribe as T  # noqa: E402
 
-RENDERED = os.path.join(ROOT, "rendered", Y)
-LOGS = os.path.join(ROOT, "reviews", Y, "render")
+RENDERED = str(jurisdiction.ypath("rendered", Y))
+LOGS = str(jurisdiction.ypath("reviews", Y, "render"))
 HELPER_MARKERS = {"(helper)", "(gate)", "(computed helper)", "(question)", "(status)"}
-SYSTEM = ("You check whether plain-English restatements of IRS form and worksheet lines say what the IRS text "
-          "says. You have no tools and no other sources. Output only the YAML requested.")
+SYSTEM = jurisdiction.system("You check whether plain-English restatements of IRS form and worksheet lines say what the IRS text "
+                             "says. You have no tools and no other sources. Output only the YAML requested.")
 STATUSES = ("MATCH", "MISMATCH", "UNCLEAR")
 PROMPT_POLICY = "render-source-comparison-v2"
 LINE_PROMPT_POLICY = PROMPT_POLICY + "+lines-v1"
@@ -36,7 +37,13 @@ LINE_PROMPT_POLICY = PROMPT_POLICY + "+lines-v1"
 
 def parse_rendered(form_id):
     """Every line of a rendered document: printed marker, id, type, label, encoded English, refusals."""
-    return parse_rendered_text(open(os.path.join(RENDERED, form_id + ".md"), encoding="utf-8").read())
+    return parse_rendered_text(open(rendered_path(form_id), encoding="utf-8").read())
+
+
+def rendered_path(form_id):
+    """A document's rendering: rendered/<year>/, or rendered/ny/<year>/ for a New York document."""
+    d = RENDERED if jurisdiction.mine(form_id) else str(jurisdiction.doc_dir("rendered", Y, form_id))
+    return os.path.join(d, form_id + ".md")
 
 
 def parse_rendered_text(text):
@@ -67,7 +74,8 @@ def rendered(form_id):
 
 @cache
 def form_ids():
-    return {f[:-3] for f in os.listdir(RENDERED) if f.endswith(".md")}
+    dirs = [RENDERED] if not jurisdiction.NY else [str(d) for d in jurisdiction.read_dirs("rendered", Y)]
+    return {f[:-3] for d in dirs for f in os.listdir(d) if f.endswith(".md")}
 
 
 def helper_refs(text, form_id):
@@ -86,10 +94,9 @@ def def_titles():
     """Shared definitions by title ({title: def id}); a restatement invokes one as
     '"<output>" of <title>'."""
     out = {}
-    forms_dir = os.path.join(ROOT, "forms", Y)
-    for f in sorted(os.listdir(forms_dir)):
+    for f, path in T.form_files():
         if f.endswith(".yaml"):
-            d = project_yaml(os.path.join(forms_dir, f))
+            d = project_yaml(path)
             if isinstance(d, dict) and "def" in d:
                 out[d["def"]["title"]] = d["def"]["id"]
     return out
@@ -304,7 +311,7 @@ def build_prompt(form_doc, excerpt, scope=None):
         gl += ["", "Lines of other forms named above, with the IRS wording of each:"]
         for rfid, word, e in refd:
             gl.append(f'- {rfid} {word} {e["printed"]}: "{e["label"]}"')
-    return f"""You are checking whether a program's plain-English restatement of each printed line of an IRS form
+    return jurisdiction.preface(f"""You are checking whether a program's plain-English restatement of each printed line of an IRS form
 or worksheet says what the IRS text says. Work ONLY from the IRS text provided below. Do not rely on
 memory of the tax law or of any software; if the text does not say it, it is not evidence.
 
@@ -363,7 +370,7 @@ No prose before or after the YAML.
 # IRS text (archived snapshots; page markers show document, revision and page)
 
 {excerpt}
-"""
+""")
 
 
 def extract(text):
@@ -449,7 +456,7 @@ def write_log(form_doc, model, prompt, used, printed, verdicts, raw_text, meta):
     extra = sorted(set(verdicts) - {e["key"] for e in printed})
     rows, counts = _rows(form_doc, model, prompt, used, results, extra, meta)
     out = [f"# Render comparison — {fid}", "",
-           f"The rendered English of every printed line of `{form_doc['title']}` (`rendered/{Y}/{fid}.md`) read against the archived IRS pages by an isolated model that saw the rendering and the pages, not the YAML (spec 6.5).", "",
+           f"The rendered English of every printed line of `{form_doc['title']}` (`{jurisdiction.doc_dir('rendered', Y, fid).relative_to(jurisdiction.ROOT)}/{fid}.md`) read against the archived IRS pages by an isolated model that saw the rendering and the pages, not the YAML (spec 6.5).", "",
            *rows]
     out += ["", "## Lines", ""]
     kept = rulings.kept("render", fid, family, context=rulings.review_context("render", "\n".join(out)))

@@ -1,0 +1,61 @@
+# Ambiguity register, tax year 2025
+
+## amb.ny.2025.whole_dollars
+
+- Text at issue: New York requires whole-dollar entries ("enter whole dollar amounts only ... round cents to the nearest dollar"), but does not say whether a federal amount carried in cents is rounded as it is entered, or whether a computed amount (a rate times an amount) is rounded where it is computed.
+- Candidate readings: Round each federal amount half-up to the dollar as it is entered on lines 1 to 18, and each computed tax, credit or worksheet line half-up to the dollar where it is computed. | Round only the federal adjusted gross income, treating the federal amounts as already whole. | Keep cents and round only the final tax lines.
+- **Chosen:** Round each federal amount half-up to the dollar as it is entered on lines 1 to 18, and each computed tax, credit or worksheet line half-up to the dollar where it is computed.
+- Reason: Owner decision C4 (docs/ny/DECISIONS.md, 2026-11-04). The instructions require every entry on the return and its worksheets to be a whole dollar and give the half-up rule; rounding where a line is entered is the literal reading. Rounding lines 1 to 18 separately can make line 19 differ by a few dollars from federal AGI rounded once; ny_it201.line19_agrees shows whether they agree. A product of a rate and an amount is rounded once to the dollar (multiply_rate with unit 100), not first to the cent.
+
+- Cite: [ny_it201i] p. 2, Entering whole dollar amounts, "When you enter amounts on your return, enter whole dollar amounts only." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## amb.ny.2025.fourth_decimal
+
+- Text at issue: The tax computation worksheets say "Divide line 6 by $50,000 and round the result to the fourth decimal place" without saying in which direction a fifth decimal is rounded; the product of that ratio and a whole-dollar amount is then rounded to the dollar (amb.ny.2025.whole_dollars).
+- Candidate readings: Round the ratio half-up at the fourth decimal place. | Truncate the ratio at the fourth decimal place.
+- **Chosen:** Round the ratio half-up at the fourth decimal place.
+- Reason: "Round" without a direction is read as ordinary half-up rounding, the reading the federal register takes for the same instruction on the Student Loan Interest Deduction Worksheet (amb.2025.sli_ratio_places). The product of the ratio and the whole-dollar amount is rounded once, half-up, to the dollar: the amount is scaled by 100 so that prorate's product is exact, and the scaled product is divided by 100 with one rounding (an earlier version rounded to the cent first, which the in-session review found gave $1 too much on some returns).
+
+- Cite: [ny_it201i-html] Tax computation worksheet 1, "7. Divide line 6 by $50,000 and round the result to the fourth decimal place" (Web edition of Form IT-201-I (2025) ('2025 Form IT-201-I, Instructions for Form IT-201'); page 'Updated: July 27, 2026'. Every number of the PDF edition occurs in it and every word of every PDF page bar the six excepted pages (check_extraction.py --jurisdiction ny); sha256 b866b238)
+
+## amb.ny.2025.line25
+
+- Text at issue: The 2025 form labels line 4 "(also enter on line 25)" and line 25 "(from line 4)", but the 2025 instructions for line 25 mention only New York's inflation refund check included in federal adjusted gross income.
+- Candidate readings: Line 25 is the amount on line 4 (the form's labels). | Line 25 is only an inflation refund check included in federal AGI (the instructions).
+- **Chosen:** Refuse when line 4 is more than zero or an inflation refund check was included in federal AGI; line 25 is zero otherwise, where both readings agree.
+- Reason: Owner decision B1 (docs/ny/DECISIONS.md). A refusal cannot give a wrong answer; revisit with the 2026 instructions.
+- Cite: [ny_it201i] p. 8, Line 25, "If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## amb.ny.2025.school_credit_income
+
+- Text at issue: Line 69a disqualifies a filer whose "income (see below) is more than $500,000", but the text below line 69a defines only "New York City taxable income"; "income" is defined above, under line 69, "for purposes of determining your New York City school tax credit".
+- Candidate readings: The line 69 income (federal AGI less IRA distributions included in it). | New York City taxable income (line 47).
+- **Chosen:** Refuse line 69a when either amount is more than $500,000; below that both readings agree.
+- Reason: Owner decision B7 (docs/ny/DECISIONS.md); the verification of the premise map notes that the stated scope of the definition favours the first reading.
+- Cite: [ny_it201i] p. 20, Line 69a, "or your income (see below) is more than $500,000, you do not qualify to claim this credit" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## amb.ny.2025.item_c
+
+- Text at issue: New York's item C asks whether you "can be claimed as a dependent on another taxpayer's federal return" and says to mark Yes "even if the other taxpayer did not claim you"; the federal question this project asks (sa.dependent) excludes the case where the person who could claim you is not required to file.
+- Candidate readings: Ask item C as a New York question of its own, in New York's words. | Reuse the federal answer.
+- **Chosen:** Ask item C as a New York question of its own, in New York's words.
+- Reason: Owner decision B8 (docs/ny/DECISIONS.md).
+- Cite: [ny_it201i] p. 5, Item C, "You must mark the Yes box even if the other taxpayer did not claim you as a dependent." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## amb.ny.2025.eic_could_claim
+
+- Text at issue: Lines 65 and 70 ask whether you claimed the federal earned income credit "or could you have claimed it based on your federal adjusted gross income", without saying how that is judged.
+- Candidate readings: Refuse when the federal earned income credit is more than zero, or federal AGI is less than the federal credit's income limit for the filing status and number of qualifying children. | Refuse only when the federal earned income credit is more than zero.
+- **Chosen:** Refuse when the federal earned income credit is more than zero, or federal AGI is less than the federal credit's income limit for the filing status and number of qualifying children.
+- Reason: Owner decision B9 (docs/ny/DECISIONS.md); the federal limit is the encoded federal one (eic.limit_*).
+- Cite: [ny_it201i] p. 19, Line 65, "Did you claim the federal earned income credit for 2025 on your federal income tax return, or could you have claimed it based on your federal adjusted gross income?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## amb.ny.2025.recapture_selection
+
+- Text at issue: Each tax computation worksheet (IT-201-I pp. 34 to 39) tests New York AGI (line 33) and also taxable income (line 38), for example worksheet 7, "If your New York adjusted gross income (line 33) is more than $107,650, but not more than $25,000,000, and your taxable income (line 38) is $215,400 or less", and worksheet 8, "more than $215,400, but not more than $25,000,000, and your taxable income (line 38) is more than $215,400 but not more than $1,077,550". PolicyEngine-US selects the recapture amounts by New York AGI alone, which differs where New York AGI is above a bracket start and taxable income is not (reports/ny/2025/engine_differential.md, ny.worksheet.single.215400 and ny.worksheet.mfj.161550).
+- Candidate readings: Taxable income selects the Recapture Base, Incremental Benefit and the amount the excess of New York AGI is measured over; New York AGI only gates the worksheets (more than $107,650; more than $25,000,000 is the flat 10.9%) and measures the phase-in (the worksheets' conditions). | New York AGI selects the recapture amounts (PolicyEngine-US).
+- **Chosen:** Taxable income selects the Recapture Base, Incremental Benefit and the amount the excess of New York AGI is measured over; New York AGI only gates the worksheets (more than $107,650; more than $25,000,000 is the flat 10.9%) and measures the phase-in (the worksheets' conditions).
+- Reason: Tax Law § 601(d-4) (ny_tax_law_601, the 2025-07-11 revision, for "taxable years beginning on or after two thousand twenty-three and before two thousand twenty-six") is the first reading, for every filing status. For resident unmarried individuals and married individuals filing separately, (d-4)(3)(A): "If New York adjusted gross income is greater than $107,650, but not over $25,000,000: (i) the recapture base and incremental benefit shall be determined by New York taxable income as follows:" (rows greater than $80,650 not over $215,400, $0 and $568; greater than $215,400 not over $1,077,550, $568 and $1,831; to $5,000,000, $2,399 and $30,172; to $25,000,000, $32,571 and $32,500), and "(ii) the applicable amount shall be determined by New York taxable income as follows:" (greater than $80,650 not over $215,400, "New York adjusted gross income minus $107,650"; greater than $215,400 not over $1,077,550, "New York adjusted gross income minus $215,400"; and so on); the supplemental tax is the recapture base plus the incremental benefit times the lesser of $50,000 or the applicable amount over $50,000. Paragraph (1) (joint returns and surviving spouses; taxable-income rows from $27,900, $161,550, $323,200, $2,155,350, $5,000,000; amounts $333/$807, $1,140/$2,747, $3,887/$60,350, $64,237/$32,500) and paragraph (2) (heads of households; rows from $107,650, $269,300, $1,616,450, $5,000,000; amounts $787/$2,289, $3,076/$45,261, $48,337/$32,500) have the same form. Below the first row the proviso takes the flat rate (5.50% joint, 6.00% the others) times taxable income less the table tax, times the lesser of $50,000 or New York AGI minus $107,650 over $50,000, which is worksheets 1, 7 and 12; above $25,000,000 of New York AGI, 10.90% of taxable income (worksheets 6, 11 and 16). Every amount and threshold the worksheets print (params/ny/2025.yaml ny.tcw.*) equals the statute's. The worksheets' extra New York AGI floor on worksheets 2 onward (for example "more than $215,400" on worksheet 8) is implied by the taxable-income test, since taxable income is not more than New York AGI. Two differences are immaterial here: the statute's rows ("greater than $80,650") and proviso ("less than eighty thousand six hundred fifty dollars") both leave out taxable income of exactly $80,650 (and $27,900, $107,650), where the two formulas give the same amount; and the statute's fraction is not rounded, the worksheets' is, to four places (amb.ny.2025.fourth_decimal). Owner decision 2026-11-04: follow the statute; the statute and the instructions agree, so the differential cases are PolicyEngine-US's departure from both.
+
+- Status: Closed by the statute; the encoding is unchanged.
+- Cite: [ny_tax_law_601] § 601(d-4)(3)(A), "(i) the recapture base and incremental benefit shall be determined by New York taxable income as follows:", "(ii) the applicable amount shall be determined by New York taxable income as follows:" (New York Tax Law (Consolidated Laws, chapter 60, article 22) section 601, Imposition of tax, as served by the New York State Senate's laws site on 2026-11-04; the text of the revision from 2025-07-11, the latest (the Senate's page for the section, www.nysenate.gov/legislation/laws/TAX/601, read 2026-11-04: 'Viewing most recent revision (from 2025-07-11)'; earlier 2025 revisions 2025-06-20 and 2025-05-16); sha256 03a64cf5)

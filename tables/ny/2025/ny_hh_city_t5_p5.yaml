@@ -1,0 +1,24 @@
+# New York City household credit table 5 (Filing status ②, ④ and ⑤), column 5, transcribed from the web edition of IT-201-I (the PDF's columns are scattered; sources/ny/2025/README.md),
+# cell by cell as printed (docs/ny/DECISIONS.md Part D). Bands are the printed 'Over / but not over' rows of federal
+# adjusted gross income in cents: over X and not over Y is [X + 1 cent, Y + 1 cent). The first row, from "(see Note 2)",
+# includes zero and negative income ("Note 2 This amount could be 0 or a negative amount."): the line that reads
+# this table looks up federal AGI floored at zero. The last band, open above, is "No credit is allowed".
+# Column 5 of the printed table (that many people); the line chooses the column, the "over 7" column (Note 3) is refused where a credit is allowed.
+table:
+  id: ny_hh_city_t5_p5
+  kind: tax_table
+  title: "New York City household credit table 5 (Filing status ②, ④ and ⑤), column 5"
+  tax_year: 2025
+  cite:
+    doc: ny_it201i-html
+    locator: 'New York City household credit table 5—Filing status ②, ④, and ⑤, "And the number of dependents listed on Form IT-201, item H, plus one for you (and one for your spouse if Married filing joint return) is:", "Enter on Form IT-201, line 48:"'
+    quote: "No credit is allowed; do not make an entry on Form IT-201, line 48."
+  bounds: { at_least: 0, less_than: 100000000000000 }
+  columns:
+    - { key: amount, statuses: [single, mfj, mfs, hoh, qss] }
+  bands:
+    - { at_least: 0, less_than: 1500001, tax: [15000] }
+    - { at_least: 1500001, less_than: 1750001, tax: [12500] }
+    - { at_least: 1750001, less_than: 2000001, tax: [7500] }
+    - { at_least: 2000001, less_than: 2250001, tax: [5000] }
+    - { at_least: 2250001, less_than: 100000000000000, tax: [0] }

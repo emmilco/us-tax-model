@@ -552,3 +552,99 @@ run); that the target paths found in the static reader index are taken dynamical
 described (I traced the guards by hand, not by running the interview); that the semantics I applied by
 hand match `eval.ts` beyond the lines cited. Not checked: the readers of `def` lines, which the static
 index does not see.
+
+## New York arguments — second reading, 2026-11-04
+
+Reviewer for every verdict below: **Claude Opus 5.5 (second reader, 2026-11-04)**. Subject: the 65 New York
+entries in `nyEquivalences()` and their structural helpers, in the uncommitted change to `engine/src/mutate.ts`
+in the `tf-ny-int` worktree (`git diff origin/ny/2025-foundation -- engine/src/mutate.ts`). The question is the
+one the earlier sections asked: can the mutant change any line's value on any input on a reachable route
+(refusals compared whole, unknowns as one token, spec 4.7)? The observation standard is the 2026-10-27 one: an
+argument holds when no printed line, meaning any line not printed `(helper)`, can change.
+
+### Method
+
+- **Reading.** The reasons arrived with the diff, so I did not read the forms before them. I checked each one
+  against `forms/ny/2025/ny_rs.yaml`, `ny_city_rs.yaml`, `ny_tcw_first.yaml` and Form IT-201 lines 1–58 and
+  77–81 in `ny_it201.yaml`. I also checked them against `params/ny/2025.yaml`, `tables/ny/2025/ny_hh_city_t4.yaml`,
+  and `engine/src/eval.ts` (`multiplyRateHalfUp`, `multiply_rate` with a unit, `round` and `choose`). The rules
+  applied were spec 4.7.1–4.7.7. Every structural helper in the diff was read against what its reason claims.
+- **Arithmetic.** A script outside the repository mirrors `bandTax` and `scheduleTax` and works from the
+  parameter YAML. It covered all 33 schedule edges (the 31 argued and the two left out), and it checked the
+  first-worksheet premise at every whole-dollar taxable income up to each worksheet's limit. It checked that
+  premise under all three schedules, not only the worksheet's own group.
+- **Whole dollars.** By hand I traced line 38 (and so line 47, which copies it) back to roundings and parameters.
+  Lines 1–7, 9, 10, 14–16 and 18 are `round` to 100 cents. Lines 8, 11–13, 20–23, 25, 26 and 28–31 are
+  `ny.zero`. Line 27 copies line 15. Line 34 is a choice between status-keyed standard-deduction parameters, all
+  multiples of 100. Line 36 is `multiply_count` of the $1,000 exemption. The rest are sums, differences, floors
+  and copies. `ny_tcw` and `ny_tcw_first` bind `ti` to line 38 on every site. `wholeRef` makes the same trace
+  mechanically on every run.
+- **What counts as printed.** `(39)`, `(40)` and `(47a)` are not `(helper)`. They are not in
+  `HELPER_MARKERS` (`util.ts`) either. They are marked lines (`isMarkedLine`), and `classm.ts` keeps them in the
+  fill set, while the values sheet (`output.ts`) shows every line that has a value. All of these lines have no
+  gates, so every one of them is evaluated as a target (4.7.7). **Under this review's standard they count as
+  printed.** An argument that concedes a change to its own value, as a "helper", therefore fails the standard
+  as written, even when the numbered line that reads it does not change.
+
+### Verdicts
+
+**65 entries: 38 sound (32 clean; 6 with a wrong premise in the prose but a correct conclusion), and 27 that
+fail the standard as written on a marked line. No numbered line (39, 40, 47a, 54c–58, 78) changes under any of
+the 65.**
+
+| Class (members) | Verdict | Reasoning or counterexample |
+| --- | --- | --- |
+| Band edge +$1, State and City (31) | sound | Read in full for `ny_rs` `single.result`, `hoh.result` and the City `single.result`; the script covered all 31. Each edge parameter is read only by its group's `result` guards (`paramReaders` checks this; the band's own `over` is a separate parameter). The mutant moves only amounts in (e, e + $1]. Every binding of `amount` is line 38 or line 47, which are whole dollars (traced above), so only e + $1 moves. At e + $1, band k's tax equals band k+1's for all 31 argued edges. The two unequal edges, State single and HOH band 7 ($5,000,000, which differ by $1), are rightly left out. No line of the def changes value, so neither does any reader. Minor gap in the checker: `wholeParam` accepts any parameter that is not a `Rate` and is a multiple of 100, including `Count` parameters (`ny.hundred` = 100 would read as $1). No such parameter is on line 38's chain. |
+| City bands never read (18) | **fails the standard on a marked line**; sound for line 47a | Members read: `single.b3.base`, `single.b1.over`, `hoh.b2.over`, `mfj.b2.base`, `b1.rate`, `b2.rate`, plus the upper bound of every member band (12,000 / 25,000 / 50,000; 21,600 / 45,000; 14,400 / 30,000 / 60,000, all below $65,000). Line 47a takes `city_tax_schedule` only when `city_table_range` is known false, that is with line 47 at least $65,000, and there none of these bands is taken. But `city_tax_schedule` (`(47a)`, no gates) is a target at every line 47. Counterexample: single, line 47 $30,000. Under `ny.city.single.b3.base.$1`, `city_tax_schedule` goes from $1,049 to $1,050. Under `ny.city.b2.rate.+1pt` at line 47 $20,000, it goes from $670 to $750. Line 47a takes the City Tax Table and does not change. Unpinned premise: `cityScheduleFloor` checks the binding site's line, its `amount` and the reader of `city_tax_schedule`, but not the instance's `from.line`. If that line named a band's tax directly, `holds` would still pass. There is no digest on `def:ny_city_rs` or `city_tax_schedule`. |
+| State band 9 (7) | **fails the standard on a marked line**; sound for line 39 | One argument covers all seven. The checked parts: the def's local readers, the three `ny_rs` sites and the 13 worksheet bindings. The line-39 reach is pinned by the digest: line 39 reads the schedule only under AGI ≤ $107,650 (via `tax_low`) or AGI ≤ $25,000,000 (via `tax_high` and `by_status`). Line 38 ≤ max(line 33, 0) (lines 34 and 36 are non-negative, both steps floored), so line 39 never takes band 9. But `tax_schedule`, `tax_low` and `tcw.*` (all `(39)`) take band 9 as targets. Counterexample: single, line 33 $30,000,000, line 38 $29,992,000. Under `ny.rs.single.b9.base.$1`, `tax_schedule` goes from $3,054,057 to $3,054,058. Line 39 is `tcw.top` and does not change. The reason concedes these lines are "helpers". Under the standard they are printed. |
+| `param.ny.tcw.first.stop.$1` (1) | **fails the standard on a marked line, and the reason is wrong as stated**; sound for line 39 | At AGI = stop, line 6 = $50,000 = `ny.tcw.phase`. So line 8 = line 5 exactly, and the mutant's line 9 is line 4 + max(line 3 − line 4, 0). `holds` checks line 3 ≥ line 4 only against the worksheet's own group's schedule. But each of `tcw.w1`, `w7` and `w12` (`(39)`, no gates) is evaluated as a target under the filer's actual status. Worksheet 1's 5.5% falls below the single schedule from taxable income $113,609, and below the HOH schedule from $157,409. HOH cannot reach $157,409 at AGI $157,650, because its standard deduction is $11,200. Counterexample: single (or MFS), line 33 $157,650, no dependents, line 38 $149,650. `tcw.w1` goes from $8,231 (line 3) to $8,411 (line 4). Line 39 reads `tcw.w7`, which is $8,979 on both routes. The sentence "line 9 is line 3 on both routes" is false for `tcw.w1`, and the reason never mentions the change. (The `ny_tcw_first` line 5 note, "Line 3 is never less than line 4 here", is true only on the route.) |
+| MCTMT rates (2) | sound, with a prose caveat | Each rate is read only by line 54c or 54d (checked). The amount is line 54a or 54b, which is `ny.zero` behind `gate.mctmt`. The product is $0 at any rate, or else the same refusal or unknown on both routes. Caveat: for zone 2 the reason says line 54b has "no gates". It does have one: line 54b carries the same MCTMT refusal as 54a. The conclusion is unaffected. |
+| Always-$0 lines (4: `line54e.line54d`, `line58.line55/56/57`) | sound, with a prose caveat | The shared premise "none of the five has a refusal gate, so each is a complete $0 at every input" is false for 54b and 54d, which refuse or are unknown with `gate.mctmt`. The conclusions still hold. In line 54e, line 54c is read first and carries the same gate (refusal: the sum stops there on both routes; unknown: both sums are unknown; false: 54b = 54d = $0). In line 58, line 54e (position 2) carries the gate ahead of the replaced position 3–5 operand, with the same three cases. The digest pins 54b's actual refusal list, so only the prose misstates the premise. |
+| `operand.ny_it201.ny_it201.line78.line77` (1) | sound | `gate.line79_over` (`gt` line 79, line 77) is known false only with line 77 complete. Then line 81 is complete (because `subtract_floor0` evaluates both operands) and so is $0, and line 77 equals `overpaid_before_penalty`. Otherwise the gate's value is line 78's on both routes (4.7.1). |
+| `operand.ny_it201.ny_it201.hh_state_by_status.zero.then4` (1) | **fails the standard on a marked line**; sound for line 40 | Line 40 reads the MFS alternative only when `gate.hh_state_mfs` is known false with status MFS and item C false. That requires `hh_state_in_range` to be known false, so `hh_agi` > $32,000, where table 4 gives $0. But `hh_state_by_status` (`(40)`) is a target. Counterexample: MFS, item C No, line 19 $10,000. `hh_state_by_status` goes from $0 to $15 (table 4's first band; the table has an MFS column). Line 40 refuses on both routes. |
+
+**On the 27 failures.** All four classes have the same shape. The numbered line takes the mutated value only on a
+route where it equals the base. A marked worksheet or column line, evaluated as a target, carries the changed
+value elsewhere. For the 26 arguments that call these lines "helpers" this is not a hidden test gap in the
+numbered lines. It is a gap in the marked lines: no fixture asserts `city_tax_schedule` below $65,000,
+`tax_schedule` above $25,000,000, `tcw.w1` for a single filer, or `hh_state_by_status` for an MFS filer under the
+limit. In every counterexample the base side is the correct transcription (the schedule's or table's own figure).
+**Decision for the owner (not made here):** either (a) keep the standard and add fixture cases asserting those
+marked lines, about 13 cases: one per City band and group (8), one per State group above $25,000,000 (3), one single
+filer at AGI $157,650, and one MFS filer under $32,000; these would kill the 27 mutants, and the entries would
+then be dead, or (b) amend the standard so that a marked line counts as observed only where its reader takes it,
+and have each reason say so. Under (b), 26 of the 27 become "sound, with a caveat". `first.stop` would still need
+its reason corrected, because it claims no change at all.
+
+### Proposed fixes (not made here)
+
+- `firstStop`: correct the reason (name `tcw.w1` under the single schedule as the line that changes). If the
+  standard is amended, have `holds` state the narrower claim it actually checks.
+- `cityLowBand` / `cityScheduleFloor`: check `from.line === "tax"` on the one site, or pin `city_tax_schedule`
+  and `def:ny_city_rs` with a digest.
+- The MCTMT zone-2 reason and `zeroWhy`: line 54b and line 54d carry the MCTMT gate. The equivalence holds
+  because line 54c (in line 54e) or line 54e (in line 58) is read first and carries the same gate.
+- `wholeParam`: require type `Dollars` or `NonNegDollars`.
+
+### Provenance (this reading)
+
+Inspected: `git -C tf-ny-int diff origin/ny/2025-foundation -- engine/src/mutate.ts` (all 65 entries,
+`defBindings`, `paramReaders`, `wholeParam`, `wholeRef`, `wholeExpr`, `bandShape`, `bandTax`, `bandEdges`,
+`scheduleTax`, `bandEdge`, `bandUnread`, `cityScheduleFloor`, `stateTopBand`, `nyScheduleSites`, `firstStop`,
+`zeroPinned`); `mutate.ts` `premiseDigest`, `pinned`, `equivalenceReason`, `bindsBranches`, `ungated`,
+`operandRefsLocal`, and the parameter-shift generator; `eval.ts` `multiplyRateHalfUp`, `multiply_rate`, `round`,
+`choose`; `util.ts` `HELPER_MARKERS`, `isMarkedLine`; `output.ts` `pushSection`; `classm.ts` fill selection;
+spec 4.3 and 4.7. From the forms and data: `ny_rs.yaml` (band lines, `single.result`, `hoh.result`, `tax`);
+`ny_city_rs.yaml` (`single.result`, `tax`); `ny_tcw_first.yaml` (all lines); the `ny_rs` site in `ny_tcw.yaml`;
+`ny_it201.yaml` lines 1–58 as listed, `tax_table` to `line39`, `hh_state_by_status`, `line40` and its gates,
+`hh_city_t4`, and lines 77–81; `params/ny/2025.yaml` (every `ny.rs.*` and `ny.city.*` value, the TCW, table,
+MCTMT and household limits, and the standard deduction); `ny_hh_city_t4.yaml`. Run: the arithmetic script
+described above (31 of 31 argued edges equal, the 2 unargued ones unequal; the cross-status first-worksheet
+failures at $113,609 single and $157,409 HOH; the counterexample values).
+
+Inferred (unverified): that each `holds` passes, and each digest matches, on the current canonical data.
+Nothing in the engine was run, and `canonical/` was not read, so this reading rests on the YAML sources. That
+the counterexample values are what the evaluator gives: they come from the script's mirror of `bandTax` and
+the hand-traced worksheet, not from `evaluate`. That the HOH and dependent-single standard deductions keep HOH
+below $157,409 at AGI $157,650 (read from `ny.std_deduction`). Which side of the printed-line standard the owner
+intends for marked lines.

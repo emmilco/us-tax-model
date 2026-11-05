@@ -16,7 +16,7 @@ import { allTargets, evaluate } from "./eval.js";
 import { differentialClassC } from "./differential.js";
 import type { FormDoc, Inputs, Line, LineRef } from "./types.js";
 import type { Value } from "./eval.js";
-import { YEAR, YEAR_ARGS, yearPath } from "./year.js";
+import { NY_MODE, YEAR, YEAR_ARGS, nyPath, reportName, reportPath, yearPath } from "./year.js";
 import { resolveInputs } from "./fixture-inputs.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
@@ -39,9 +39,10 @@ export interface FixtureFile {
 
 // Every fixture of the year, its inputs resolved (parameter-relative ones: fixture-inputs.ts).
 export function loadCases(): FixtureFile {
-  const dir = yearPath("fixtures");
+  // --ny: the New York fixtures (fixtures/ny/<year>/*.json) only; otherwise the federal fixtures, as before.
+  const dir = NY_MODE ? nyPath("fixtures") : yearPath("fixtures");
   const params = loadCanonical().params;
-  const cases = readdirSync(dir).filter(f => /^(stage[0-9]+|classm|classm\.[a-z]+|mutation)\.json$/.test(f)).sort().flatMap(f => (JSON.parse(readFileSync(join(dir,f),"utf8")) as FixtureFile).cases);
+  const cases = readdirSync(dir).filter(f => NY_MODE ? f.endsWith(".json") : /^(stage[0-9]+|classm|classm\.[a-z]+|mutation)\.json$/.test(f)).sort().flatMap(f => (JSON.parse(readFileSync(join(dir,f),"utf8")) as FixtureFile).cases);
   return { tax_year: YEAR, cases: cases.map(c => ({ ...c, inputs: resolveInputs(c.inputs, params, c.id) })) };
 }
 
@@ -359,11 +360,11 @@ export function evidenceReport(): void {
   out.push(`Unasserted computed lines across all documents: ${totalGaps}. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/${YEAR}/mutation.md.)`);
   if (neverSupplied.length > 0) out.push("", `Input lines never supplied by any fixture: ${neverSupplied.join(", ")}.`);
   if (unknownKeys.size > 0) out.push(`Asserted keys not matching a line id: ${[...unknownKeys].slice(0, 40).join(", ")}${unknownKeys.size > 40 ? " …" : ""}`);
-  writeFileSync(yearPath("reports", "evidence.md"), out.join("\n"));
+  writeFileSync(reportPath("evidence.md"), out.join("\n"));
   console.log(`evidence: ${scoreboard}`);
   console.log(`evidence: credited through copies — B cases ${creditedB}, second-family M cases ${creditedM2}, engine-line assertions ${creditedE}; source lines gaining E: ${eSourcesGained.length ? eSourcesGained.join(", ") : "none"}; unresolved copy references: ${unresolvedCopies.length ? unresolvedCopies.join(", ") : "none"}`);
   console.log(`evidence: per-line class coverage written; unasserted lines: ${totalGaps}`);
-  console.log(`report: reports/${YEAR}/evidence.md`);
+  console.log(`report: ${reportName("evidence.md")}`);
 }
 
 export function coverageReport(): void {
@@ -463,10 +464,10 @@ export function coverageReport(): void {
   const allLines = [...data.forms, ...data.defs].flatMap((d) => d.lines);
   const opaqueLines = allLines.filter((l) => l.expr.op === "opaque");
   out.push("", "## Opaque escapes", "", `${opaqueLines.length} of ${allLines.length} lines use \`opaque\` (share ${(opaqueLines.length / allLines.length).toFixed(4)}); the design's stop condition is one in eight.${opaqueLines.length ? " Lines: " + opaqueLines.map((l) => l.id).join(", ") : ""}`, "");
-  const outPath = yearPath("reports", "coverage.md");
+  const outPath = reportPath("coverage.md");
   writeFileSync(outPath, out.join("\n"));
   console.log(`coverage: ${taken.size} guards observed; ${uncovered} guards unobserved`);
-  console.log(`report: reports/${YEAR}/coverage.md`);
+  console.log(`report: ${reportName("coverage.md")}`);
 }
 
 /** Review packet: fixture expectations remain candidate answers, not class B. */

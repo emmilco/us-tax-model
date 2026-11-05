@@ -13,10 +13,13 @@ import hashlib
 import json
 import os
 import re
+import sys
 
 import yaml
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, os.path.join(ROOT, "tools"))
+import jurisdiction  # noqa: E402  (a New York document's files are under forms/ny/, rendered/ny/)
 # A rendered citation runs from its [doc] tag to "; sha256 <hex>)"; the document details may
 # themselves contain parentheses ("January 2024 (continuous-use form)").
 CITE_TEXT = re.compile(r"\[[a-z0-9-]+\] [^\n]*?; sha256 [0-9a-f]+\)")
@@ -55,8 +58,8 @@ def of_computation(yaml_text):
 
 def path(kind, fid, year):
     if kind == "render":
-        return os.path.join(ROOT, "rendered", str(year), fid + ".md")
-    return os.path.join(ROOT, "forms", str(year), fid + ".yaml")
+        return os.path.join(str(jurisdiction.doc_dir("rendered", year, fid)), fid + ".md")
+    return os.path.join(str(jurisdiction.doc_dir("forms", year, fid)), fid + ".yaml")
 
 
 def of_text(kind, text):
@@ -270,9 +273,8 @@ def _all_lines(year):
     """{line id: (document id, line)} over every document of a year, read once per process."""
     if year not in _ALL:
         loader = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
-        d = os.path.join(ROOT, "forms", str(year))
         out = {}
-        for name in sorted(os.listdir(d)):
+        for d, name in [(d, name) for d in jurisdiction.read_dirs("forms", year) for name in sorted(os.listdir(d))]:
             if name.endswith(".yaml"):
                 raw = yaml.load(open(os.path.join(d, name), encoding="utf-8"), Loader=loader) or {}
                 doc = raw.get("form") or raw.get("def") or {}

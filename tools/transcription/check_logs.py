@@ -22,15 +22,22 @@ import families  # noqa: E402
 import rulings  # noqa: E402
 import subjects  # noqa: E402
 import compare_families  # noqa: E402
+import pending  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 from taxyear import Y  # noqa: E402
-FORMS = os.path.join(ROOT, "forms", Y)
-REVIEWS = os.path.join(ROOT, "reviews", Y)
-SECOND_FAMILY_REPORT = os.path.join(ROOT, "reports", Y, "second_family.md")
-m = json.load(open(os.path.join(ROOT, "sources", Y, "manifest.json")))
-docs = {d["id"]: d for d in (m["documents"] if isinstance(m, dict) else m)}
+import jurisdiction  # noqa: E402  (--jurisdiction ny: the New York documents and reviews/ny/<year>/)
+FORMS = str(jurisdiction.ypath("forms", Y))
+REVIEWS = str(jurisdiction.ypath("reviews", Y))
+SECOND_FAMILY_REPORT = str(jurisdiction.ypath("reports", Y, "second_family.md"))
+docs = {}
+# A New York log also records the federal pages it was given (a federal line's interface and its source).
+for _sources in jurisdiction.read_dirs("sources", Y):
+    m = json.load(open(os.path.join(str(_sources), "manifest.json")))
+    docs.update({d["id"]: d for d in (m["documents"] if isinstance(m, dict) else m)})
+# Documents whose first review of a kind is not yet run (pending.py; New York only): reported, not failed.
+PENDING = pending.load()
 
 forms = sorted(f[:-5] for f in os.listdir(FORMS) if f.endswith(".yaml"))
 
@@ -88,10 +95,15 @@ def check(kind, logs, optional_env, expected=None, family=families.DEFAULT, requ
     allowed and open rulings are counted, not failed."""
     problems, open_counts = [], {}
     tag = f"{kind} logs [{family}{'' if required else ', optional'}]"
+    waiting = PENDING.get(kind, set()) if required else set()
     for fid in (expected if expected is not None else forms):
         path = os.path.join(logs, families.stem(fid, family) + ".md")
         if not os.path.exists(path):
+            if fid in waiting:
+                print(f"{tag}: {fid}: pending, no review yet (listed in {pending.name()})"); continue
             problems.append(f"{fid}: no {kind} log"); continue
+        if fid in waiting:
+            problems.append(f"{fid}: has a {kind} log but is still listed as pending; remove it from {pending.name()}")
         text = open(path, encoding="utf-8").read()
         if family != families.DEFAULT and os.path.exists(os.path.join(logs, fid + ".md")):
             quality = compare_families.compare(kind, fid, family)["quality"]
@@ -120,13 +132,17 @@ def check(kind, logs, optional_env, expected=None, family=families.DEFAULT, requ
     for p in hard:
         print(f"[{family}] {p}", file=sys.stderr)
     total = len(expected if expected is not None else forms)
-    logged = total - len(missing)
+    waited = sum(1 for fid in (expected if expected is not None else forms)
+                 if fid in waiting and not os.path.exists(os.path.join(logs, families.stem(fid, family) + ".md")))
+    logged = total - len(missing) - waited
     if not required:
         opened = (f"; open rulings in {len(open_counts)} log(s): " + ", ".join(f"{f} ({n})" for f, n in sorted(open_counts.items()))) if open_counts else "; no open rulings"
         state = "" if hard else "; snapshots and subjects current"
         print(f"{tag}: {logged}/{total} forms logged" + (f" ({', '.join(sorted(set(forms) - {p.split(':')[0] for p in missing}) if expected is None else sorted(set(expected) - {p.split(':')[0] for p in missing}))})" if 0 < logged <= 8 else "") + opened + state)
     elif missing:
         print(f"{tag}: {logged}/{total} forms logged; missing: " + ", ".join(p.split(':')[0] for p in missing))
+    elif not hard and waited:
+        print(f"{tag} OK for {logged}/{total} forms logged, {waited} pending (no open rulings, snapshots and subjects current)")
     elif not hard:
         print(f"{tag} OK ({total} forms, no open rulings, snapshots and subjects current)")
     return bool(hard or (missing and not allow_missing))
@@ -172,6 +188,9 @@ def second_family_summary():
 
 def check_human():
     """Validate record integrity; optional unfinished readings earn no H and do not fail."""
+    if jurisdiction.NY:
+        print("human logs: none for New York (human reading packets cover the federal documents)")
+        return False
     sys.path.insert(0, os.path.join(ROOT, "tools", "human_review"))
     import logs as human_logs
     result = human_logs.evidence()

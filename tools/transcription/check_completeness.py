@@ -39,10 +39,12 @@ from taxyear import Y  # noqa: E402
 import baseline_check  # noqa: E402
 import completeness_debt  # noqa: E402
 from completeness_review import sections, SYSTEM  # noqa: E402
+import jurisdiction  # noqa: E402  (--jurisdiction ny: the New York forms, reviews/ny/<year>/, reports/ny/<year>/)
+import pending  # noqa: E402
 
 RECORD = Path(OUT) / "completeness.json"
 RULINGS = Path(OUT) / "rulings.json"
-REPORT = Path(ROOT) / "reports" / Y / "completeness.md"
+REPORT = jurisdiction.ypath("reports", Y, "completeness.md")
 CLASSES = ("real gap", "covered", "out of scope", "presentation", "wrong")
 NEEDS = {"real gap": "bug", "covered": "line"}
 
@@ -127,11 +129,17 @@ def check(rebaseline=False):
     reviewed = {r["form"]: r for r in json.loads(RECORD.read_text())} if RECORD.exists() else {}
     data = json.loads(RULINGS.read_text()) if RULINGS.exists() else {}
     found, notes = findings(forms, manifest(), reviewed, data.get("deferred_debt"), data.get("baseline"))
+    # A form whose first review is pending (pending.py; New York only) is reported, not failed, until reviewed.
+    waiting = pending.listed("completeness")
+    errors = [f"{f}: reviewed but still listed as pending; remove it from {pending.name()}" for f in sorted(waiting & set(reviewed))]
+    for f in [f for f in found if f["kind"] == "stale" and f["form"] in waiting and f["form"] not in reviewed]:
+        notes.append(f"{f['form']}: pending, never reviewed (listed in {pending.name()})")
+        found.remove(f)
     line_ids = {l["id"] for f in forms for l in f["lines"]}
     data = json.loads(RULINGS.read_text()) if RULINGS.exists() else {}
     rulings = data.get("rulings", {})
     shas = {f["form"]: f["subject"] for f in found if f["kind"] == "unruled"}
-    errors = validate_all(rulings, line_ids, shas)
+    errors = validate_all(rulings, line_ids, shas) + errors
     for e in errors:
         print(f"  ruling error: {e}")
     for n in notes:

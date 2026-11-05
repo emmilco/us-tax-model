@@ -1,0 +1,24 @@
+{
+ "kind": "transcription",
+ "form": "ny_it2",
+ "rulings": [
+  {
+   "printed": "17a (whole dollars)",
+   "project": "{\"shown_when\": null, \"value\": {\"of\": {\"line\": \"17a\"}, \"op\": \"round\", \"rule\": \"half_up\", \"unit\": 100}}",
+   "second": "{\"shown_when\": {\"args\": [{\"const\": 0}, {\"line\": \"17a\"}], \"test\": \"lt\"}, \"value\": {\"of\": {\"line\": \"17a\"}, \"op\": \"round\", \"rule\": \"half_up\", \"unit\": 100}}",
+   "ruling": "Ruling: model error on shown_when; the reply shows the whole-dollar line only when the amount is more than zero. The project shows it on every record, as the source requires a record for every W-2: IT-201-I p. 21, \"You must complete a W-2 record for each W-2 you receive, even if it does not show any New York State, New York City (NYC), or Yonkers wages or tax withheld.\" The value expressions are the same (half-up to the dollar; IT-2 p. 2, \"drop amounts below 50 cents and increase amounts from 50 to 99 cents to the next dollar\").",
+   "context": "0a9db825d54378bdd60374965d62d4dafa766cdaca3d3f4c60cacba88e7f990f",
+   "date": "2026-11-04",
+   "run": "1d360a5d9b090c655763095bb8197d585a04c4b3685f22273792a6769820bf1f"
+  },
+  {
+   "printed": "19 (whole dollars)",
+   "project": "{\"shown_when\": null, \"value\": {\"of\": {\"line\": \"19\"}, \"op\": \"round\", \"rule\": \"half_up\", \"unit\": 100}}",
+   "second": "{\"shown_when\": {\"args\": [{\"const\": 0}, {\"line\": \"19\"}], \"test\": \"lt\"}, \"value\": {\"of\": {\"line\": \"19\"}, \"op\": \"round\", \"rule\": \"half_up\", \"unit\": 100}}",
+   "ruling": "Ruling: model error on shown_when; the reply shows the whole-dollar line only when the amount is more than zero. The project shows it on every record, as the source requires a record for every W-2: IT-201-I p. 21, \"You must complete a W-2 record for each W-2 you receive, even if it does not show any New York State, New York City (NYC), or Yonkers wages or tax withheld.\" The value expressions are the same (half-up to the dollar; IT-2 p. 2, \"drop amounts below 50 cents and increase amounts from 50 to 99 cents to the next dollar\").",
+   "context": "0a9db825d54378bdd60374965d62d4dafa766cdaca3d3f4c60cacba88e7f990f",
+   "date": "2026-11-04",
+   "run": "1d360a5d9b090c655763095bb8197d585a04c4b3685f22273792a6769820bf1f"
+  }
+ ]
+}

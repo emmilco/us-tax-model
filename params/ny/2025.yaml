@@ -1,0 +1,1324 @@
+params:
+  tax_year: 2025
+  enums: {}
+  values:
+    ny.rs.b1.rate:
+      type: Rate
+      value: { num: 4, den: 100 }
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "If line 38 is:", "The tax is:", band 1 rate'
+    ny.rs.b2.rate:
+      type: Rate
+      value: { num: 45, den: 1000 }
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "If line 38 is:", "The tax is:", band 2 rate'
+    ny.rs.b3.rate:
+      type: Rate
+      value: { num: 525, den: 10000 }
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "If line 38 is:", "The tax is:", band 3 rate'
+    ny.rs.b4.rate:
+      type: Rate
+      value: { num: 55, den: 1000 }
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "If line 38 is:", "The tax is:", band 4 rate'
+    ny.rs.b5.rate:
+      type: Rate
+      value: { num: 6, den: 100 }
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "If line 38 is:", "The tax is:", band 5 rate'
+    ny.rs.b6.rate:
+      type: Rate
+      value: { num: 685, den: 10000 }
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "If line 38 is:", "The tax is:", band 6 rate'
+    ny.rs.b7.rate:
+      type: Rate
+      value: { num: 965, den: 10000 }
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "If line 38 is:", "The tax is:", band 7 rate'
+    ny.rs.b8.rate:
+      type: Rate
+      value: { num: 103, den: 1000 }
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "If line 38 is:", "The tax is:", band 8 rate'
+    ny.rs.b9.rate:
+      type: Rate
+      value: { num: 109, den: 1000 }
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "If line 38 is:", "The tax is:", band 9 rate'
+    ny.rs.mfj.b1.over:
+      type: Dollars
+      value: 0
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 1, over'
+    ny.rs.mfj.b1.upper:
+      type: Dollars
+      value: 1715000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 1, but not over'
+    ny.rs.mfj.b1.base:
+      type: Dollars
+      value: 0
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 1, the tax: base amount'
+    ny.rs.mfj.b2.over:
+      type: Dollars
+      value: 1715000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 2, over'
+    ny.rs.mfj.b2.upper:
+      type: Dollars
+      value: 2360000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 2, but not over'
+    ny.rs.mfj.b2.base:
+      type: Dollars
+      value: 68600
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 2, the tax: base amount'
+    ny.rs.mfj.b3.over:
+      type: Dollars
+      value: 2360000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 3, over'
+    ny.rs.mfj.b3.upper:
+      type: Dollars
+      value: 2790000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 3, but not over'
+    ny.rs.mfj.b3.base:
+      type: Dollars
+      value: 97600
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 3, the tax: base amount'
+    ny.rs.mfj.b4.over:
+      type: Dollars
+      value: 2790000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 4, over'
+    ny.rs.mfj.b4.upper:
+      type: Dollars
+      value: 16155000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 4, but not over'
+    ny.rs.mfj.b4.base:
+      type: Dollars
+      value: 120200
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 4, the tax: base amount'
+    ny.rs.mfj.b5.over:
+      type: Dollars
+      value: 16155000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 5, over'
+    ny.rs.mfj.b5.upper:
+      type: Dollars
+      value: 32320000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 5, but not over'
+    ny.rs.mfj.b5.base:
+      type: Dollars
+      value: 855300
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 5, the tax: base amount'
+    ny.rs.mfj.b6.over:
+      type: Dollars
+      value: 32320000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 6, over'
+    ny.rs.mfj.b6.upper:
+      type: Dollars
+      value: 215535000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 6, but not over'
+    ny.rs.mfj.b6.base:
+      type: Dollars
+      value: 1825200
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 6, the tax: base amount'
+    ny.rs.mfj.b7.over:
+      type: Dollars
+      value: 215535000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 7, over'
+    ny.rs.mfj.b7.upper:
+      type: Dollars
+      value: 500000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 7, but not over'
+    ny.rs.mfj.b7.base:
+      type: Dollars
+      value: 14375400
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 7, the tax: base amount'
+    ny.rs.mfj.b8.over:
+      type: Dollars
+      value: 500000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 8, over'
+    ny.rs.mfj.b8.upper:
+      type: Dollars
+      value: 2500000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 8, but not over'
+    ny.rs.mfj.b8.base:
+      type: Dollars
+      value: 41826300
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 8, the tax: base amount'
+    ny.rs.mfj.b9.over:
+      type: Dollars
+      value: 2500000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 9, over'
+    ny.rs.mfj.b9.base:
+      type: Dollars
+      value: 247826300
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 9, the tax: base amount'
+    ny.rs.single.b1.over:
+      type: Dollars
+      value: 0
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 1, over'
+    ny.rs.single.b1.upper:
+      type: Dollars
+      value: 850000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 1, but not over'
+    ny.rs.single.b1.base:
+      type: Dollars
+      value: 0
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 1, the tax: base amount'
+    ny.rs.single.b2.over:
+      type: Dollars
+      value: 850000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 2, over'
+    ny.rs.single.b2.upper:
+      type: Dollars
+      value: 1170000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 2, but not over'
+    ny.rs.single.b2.base:
+      type: Dollars
+      value: 34000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 2, the tax: base amount'
+    ny.rs.single.b3.over:
+      type: Dollars
+      value: 1170000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 3, over'
+    ny.rs.single.b3.upper:
+      type: Dollars
+      value: 1390000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 3, but not over'
+    ny.rs.single.b3.base:
+      type: Dollars
+      value: 48400
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 3, the tax: base amount'
+    ny.rs.single.b4.over:
+      type: Dollars
+      value: 1390000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 4, over'
+    ny.rs.single.b4.upper:
+      type: Dollars
+      value: 8065000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 4, but not over'
+    ny.rs.single.b4.base:
+      type: Dollars
+      value: 60000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 4, the tax: base amount'
+    ny.rs.single.b5.over:
+      type: Dollars
+      value: 8065000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 5, over'
+    ny.rs.single.b5.upper:
+      type: Dollars
+      value: 21540000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 5, but not over'
+    ny.rs.single.b5.base:
+      type: Dollars
+      value: 427100
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 5, the tax: base amount'
+    ny.rs.single.b6.over:
+      type: Dollars
+      value: 21540000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 6, over'
+    ny.rs.single.b6.upper:
+      type: Dollars
+      value: 107755000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 6, but not over'
+    ny.rs.single.b6.base:
+      type: Dollars
+      value: 1235600
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 6, the tax: base amount'
+    ny.rs.single.b7.over:
+      type: Dollars
+      value: 107755000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 7, over'
+    ny.rs.single.b7.upper:
+      type: Dollars
+      value: 500000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 7, but not over'
+    ny.rs.single.b7.base:
+      type: Dollars
+      value: 7141300
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 7, the tax: base amount'
+    ny.rs.single.b8.over:
+      type: Dollars
+      value: 500000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 8, over'
+    ny.rs.single.b8.upper:
+      type: Dollars
+      value: 2500000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 8, but not over'
+    ny.rs.single.b8.base:
+      type: Dollars
+      value: 44992900
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 8, the tax: base amount'
+    ny.rs.single.b9.over:
+      type: Dollars
+      value: 2500000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 9, over'
+    ny.rs.single.b9.base:
+      type: Dollars
+      value: 250992900
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Single and married filing separately—filing status ① and ③", band 9, the tax: base amount'
+    ny.rs.hoh.b1.over:
+      type: Dollars
+      value: 0
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 1, over'
+    ny.rs.hoh.b1.upper:
+      type: Dollars
+      value: 1280000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 1, but not over'
+    ny.rs.hoh.b1.base:
+      type: Dollars
+      value: 0
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 1, the tax: base amount'
+    ny.rs.hoh.b2.over:
+      type: Dollars
+      value: 1280000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 2, over'
+    ny.rs.hoh.b2.upper:
+      type: Dollars
+      value: 1765000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 2, but not over'
+    ny.rs.hoh.b2.base:
+      type: Dollars
+      value: 51200
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 2, the tax: base amount'
+    ny.rs.hoh.b3.over:
+      type: Dollars
+      value: 1765000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 3, over'
+    ny.rs.hoh.b3.upper:
+      type: Dollars
+      value: 2090000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 3, but not over'
+    ny.rs.hoh.b3.base:
+      type: Dollars
+      value: 73000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 3, the tax: base amount'
+    ny.rs.hoh.b4.over:
+      type: Dollars
+      value: 2090000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 4, over'
+    ny.rs.hoh.b4.upper:
+      type: Dollars
+      value: 10765000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 4, but not over'
+    ny.rs.hoh.b4.base:
+      type: Dollars
+      value: 90100
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 4, the tax: base amount'
+    ny.rs.hoh.b5.over:
+      type: Dollars
+      value: 10765000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 5, over'
+    ny.rs.hoh.b5.upper:
+      type: Dollars
+      value: 26930000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 5, but not over'
+    ny.rs.hoh.b5.base:
+      type: Dollars
+      value: 567200
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 5, the tax: base amount'
+    ny.rs.hoh.b6.over:
+      type: Dollars
+      value: 26930000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 6, over'
+    ny.rs.hoh.b6.upper:
+      type: Dollars
+      value: 161645000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 6, but not over'
+    ny.rs.hoh.b6.base:
+      type: Dollars
+      value: 1537100
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 6, the tax: base amount'
+    ny.rs.hoh.b7.over:
+      type: Dollars
+      value: 161645000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 7, over'
+    ny.rs.hoh.b7.upper:
+      type: Dollars
+      value: 500000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 7, but not over'
+    ny.rs.hoh.b7.base:
+      type: Dollars
+      value: 10765100
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 7, the tax: base amount'
+    ny.rs.hoh.b8.over:
+      type: Dollars
+      value: 500000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 8, over'
+    ny.rs.hoh.b8.upper:
+      type: Dollars
+      value: 2500000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 8, but not over'
+    ny.rs.hoh.b8.base:
+      type: Dollars
+      value: 43416300
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 8, the tax: base amount'
+    ny.rs.hoh.b9.over:
+      type: Dollars
+      value: 2500000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 9, over'
+    ny.rs.hoh.b9.base:
+      type: Dollars
+      value: 249416300
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State tax rate schedule, "Head of household—filing status ④", band 9, the tax: base amount'
+    ny.city.b1.rate:
+      type: Rate
+      value: { num: 3078, den: 100000 }
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "If line 47 is:", "The tax is:", band 1 rate'
+    ny.city.b2.rate:
+      type: Rate
+      value: { num: 3762, den: 100000 }
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "If line 47 is:", "The tax is:", band 2 rate'
+    ny.city.b3.rate:
+      type: Rate
+      value: { num: 3819, den: 100000 }
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "If line 47 is:", "The tax is:", band 3 rate'
+    ny.city.b4.rate:
+      type: Rate
+      value: { num: 3876, den: 100000 }
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "If line 47 is:", "The tax is:", band 4 rate'
+    ny.city.mfj.b1.over:
+      type: Dollars
+      value: 0
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 1, over'
+    ny.city.mfj.b1.upper:
+      type: Dollars
+      value: 2160000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 1, but not over'
+    ny.city.mfj.b1.base:
+      type: Dollars
+      value: 0
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 1, the tax: base amount'
+    ny.city.mfj.b2.over:
+      type: Dollars
+      value: 2160000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 2, over'
+    ny.city.mfj.b2.upper:
+      type: Dollars
+      value: 4500000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 2, but not over'
+    ny.city.mfj.b2.base:
+      type: Dollars
+      value: 66500
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 2, the tax: base amount'
+    ny.city.mfj.b3.over:
+      type: Dollars
+      value: 4500000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 3, over'
+    ny.city.mfj.b3.upper:
+      type: Dollars
+      value: 9000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 3, but not over'
+    ny.city.mfj.b3.base:
+      type: Dollars
+      value: 154500
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 3, the tax: base amount'
+    ny.city.mfj.b4.over:
+      type: Dollars
+      value: 9000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 4, over'
+    ny.city.mfj.b4.base:
+      type: Dollars
+      value: 326400
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 4, the tax: base amount'
+    ny.city.single.b1.over:
+      type: Dollars
+      value: 0
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 1, over'
+    ny.city.single.b1.upper:
+      type: Dollars
+      value: 1200000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 1, but not over'
+    ny.city.single.b1.base:
+      type: Dollars
+      value: 0
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 1, the tax: base amount'
+    ny.city.single.b2.over:
+      type: Dollars
+      value: 1200000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 2, over'
+    ny.city.single.b2.upper:
+      type: Dollars
+      value: 2500000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 2, but not over'
+    ny.city.single.b2.base:
+      type: Dollars
+      value: 36900
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 2, the tax: base amount'
+    ny.city.single.b3.over:
+      type: Dollars
+      value: 2500000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 3, over'
+    ny.city.single.b3.upper:
+      type: Dollars
+      value: 5000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 3, but not over'
+    ny.city.single.b3.base:
+      type: Dollars
+      value: 85800
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 3, the tax: base amount'
+    ny.city.single.b4.over:
+      type: Dollars
+      value: 5000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 4, over'
+    ny.city.single.b4.base:
+      type: Dollars
+      value: 181300
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 4, the tax: base amount'
+    ny.city.hoh.b1.over:
+      type: Dollars
+      value: 0
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 1, over'
+    ny.city.hoh.b1.upper:
+      type: Dollars
+      value: 1440000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 1, but not over'
+    ny.city.hoh.b1.base:
+      type: Dollars
+      value: 0
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 1, the tax: base amount'
+    ny.city.hoh.b2.over:
+      type: Dollars
+      value: 1440000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 2, over'
+    ny.city.hoh.b2.upper:
+      type: Dollars
+      value: 3000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 2, but not over'
+    ny.city.hoh.b2.base:
+      type: Dollars
+      value: 44300
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 2, the tax: base amount'
+    ny.city.hoh.b3.over:
+      type: Dollars
+      value: 3000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 3, over'
+    ny.city.hoh.b3.upper:
+      type: Dollars
+      value: 6000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 3, but not over'
+    ny.city.hoh.b3.base:
+      type: Dollars
+      value: 103000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 3, the tax: base amount'
+    ny.city.hoh.b4.over:
+      type: Dollars
+      value: 6000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 4, over'
+    ny.city.hoh.b4.base:
+      type: Dollars
+      value: 217600
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 4, the tax: base amount'
+    ny.table.agi_limit:
+      type: Dollars
+      value: 10765000
+      cite:
+        doc: ny_it201i
+        locator: 'p. 12, Line 39, "Is line 33 (your New York adjusted gross income) $107,650 or less?"'
+    ny.table.limit:
+      type: Dollars
+      value: 6500000
+      cite:
+        doc: ny_it201i
+        locator: 'p. 12, Line 39, "or if line 38 is $65,000 or more, use the New York State tax rate schedule below"'
+    ny.city.table.limit:
+      type: Dollars
+      value: 6500000
+      cite:
+        doc: ny_it201i
+        locator: 'p. 13, Line 47a, "Is line 47 (your New York City taxable income) less than $65,000?"'
+    ny.tcw.agi_top:
+      type: Dollars
+      value: 2500000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 6, "If your New York adjusted gross income (line 33) is more than $25,000,000, then you must calculate your tax using this worksheet."'
+    ny.tcw.top_rate:
+      type: Rate
+      value: { num: 109, den: 1000 }
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 6, "Multiply line 1 by 10.9% (0.109)"'
+    ny.tcw.phase:
+      type: Dollars
+      value: 5000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 2, "Enter the lesser of line 6 or $50,000", "Divide line 7 by $50,000 and round the result to the fourth decimal place"'
+    ny.tcw.first.start:
+      type: Dollars
+      value: 10765000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 1, "Enter the excess of line 1 over $107,650"'
+    ny.tcw.first.stop:
+      type: Dollars
+      value: 15765000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 1, "Stop: If the line 1 amount is $157,650 or more, skip lines 4 through 8 and enter the line 3 amount on line 9"'
+    ny.tcw.first.rate:
+      type: Rate
+      value: { num: 55, den: 1000 }
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 1, "Multiply line 2 by 5.5% (0.055)"'
+    ny.tcw.first.rate6:
+      type: Rate
+      value: { num: 6, den: 100 }
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 7, "Multiply line 2 by 6% (0.06)"'
+    ny.tcw.mfj.w1.ti_limit:
+      type: Dollars
+      value: 16155000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 1, "and your taxable income (line 38) is $161,550 or less"'
+    ny.tcw.single.w1.ti_limit:
+      type: Dollars
+      value: 21540000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 7, "and your taxable income (line 38) is $215,400 or less"'
+    ny.tcw.hoh.w1.ti_limit:
+      type: Dollars
+      value: 26930000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 12, "and your taxable income (line 38) is $269,300 or less"'
+    ny.tcw.mfj.w2.start:
+      type: Dollars
+      value: 16155000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 2, "Enter the excess of line 1 over $161,550"'
+    ny.tcw.mfj.w2.ti_limit:
+      type: Dollars
+      value: 32320000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 2, "and your taxable income (line 38) is more than $161,550 but not more than $323,200"'
+    ny.tcw.mfj.w2.recapture:
+      type: Dollars
+      value: 33300
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 2, "4. Recapture Base amount", "333"'
+    ny.tcw.mfj.w2.incremental:
+      type: Dollars
+      value: 80700
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 2, "5. Incremental Benefit amount", "807"'
+    ny.tcw.mfj.w3.start:
+      type: Dollars
+      value: 32320000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 3, "Enter the excess of line 1 over $323,200"'
+    ny.tcw.mfj.w3.ti_limit:
+      type: Dollars
+      value: 215535000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 3, "and your taxable income (line 38) is more than $323,200 but not more than $2,155,350"'
+    ny.tcw.mfj.w3.recapture:
+      type: Dollars
+      value: 114000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 3, "4. Recapture Base amount", "1,140"'
+    ny.tcw.mfj.w3.incremental:
+      type: Dollars
+      value: 274700
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 3, "5. Incremental Benefit amount", "2,747"'
+    ny.tcw.mfj.w4.start:
+      type: Dollars
+      value: 215535000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 4, "Enter the excess of line 1 over $2,155,350"'
+    ny.tcw.mfj.w4.ti_limit:
+      type: Dollars
+      value: 500000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 4, "and your taxable income (line 38) is more than $2,155,350 but not more than $5,000,000"'
+    ny.tcw.mfj.w4.recapture:
+      type: Dollars
+      value: 388700
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 4, "4. Recapture Base amount", "3,887"'
+    ny.tcw.mfj.w4.incremental:
+      type: Dollars
+      value: 6035000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 4, "5. Incremental Benefit amount", "60,350"'
+    ny.tcw.mfj.w5.start:
+      type: Dollars
+      value: 500000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 5, "Enter the excess of line 1 over $5,000,000"'
+    ny.tcw.mfj.w5.recapture:
+      type: Dollars
+      value: 6423700
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 5, "4. Recapture Base amount", "64,237"'
+    ny.tcw.mfj.w5.incremental:
+      type: Dollars
+      value: 3250000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 5, "5. Incremental Benefit amount", "32,500"'
+    ny.tcw.single.w8.start:
+      type: Dollars
+      value: 21540000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 8, "Enter the excess of line 1 over $215,400"'
+    ny.tcw.single.w8.ti_limit:
+      type: Dollars
+      value: 107755000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 8, "and your taxable income (line 38) is more than $215,400 but not more than $1,077,550"'
+    ny.tcw.single.w8.recapture:
+      type: Dollars
+      value: 56800
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 8, "4. Recapture Base amount", "568"'
+    ny.tcw.single.w8.incremental:
+      type: Dollars
+      value: 183100
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 8, "5. Incremental Benefit amount", "1,831"'
+    ny.tcw.single.w9.start:
+      type: Dollars
+      value: 107755000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 9, "Enter the excess of line 1 over $1,077,550"'
+    ny.tcw.single.w9.ti_limit:
+      type: Dollars
+      value: 500000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 9, "and your taxable income (line 38) is more than $1,077,550 but not more than $5,000,000"'
+    ny.tcw.single.w9.recapture:
+      type: Dollars
+      value: 239900
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 9, "4. Recapture Base amount", "2,399"'
+    ny.tcw.single.w9.incremental:
+      type: Dollars
+      value: 3017200
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 9, "5. Incremental Benefit amount", "30,172"'
+    ny.tcw.single.w10.start:
+      type: Dollars
+      value: 500000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 10, "Enter the excess of line 1 over $5,000,000"'
+    ny.tcw.single.w10.recapture:
+      type: Dollars
+      value: 3257100
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 10, "4. Recapture Base amount", "32,571"'
+    ny.tcw.single.w10.incremental:
+      type: Dollars
+      value: 3250000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 10, "5. Incremental Benefit amount", "32,500"'
+    ny.tcw.hoh.w13.start:
+      type: Dollars
+      value: 26930000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 13, "Enter the excess of line 1 over $269,300"'
+    ny.tcw.hoh.w13.ti_limit:
+      type: Dollars
+      value: 161645000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 13, "and your taxable income (line 38) is more than $269,300 but not more than $1,616,450"'
+    ny.tcw.hoh.w13.recapture:
+      type: Dollars
+      value: 78700
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 13, "4. Recapture Base amount", "787"'
+    ny.tcw.hoh.w13.incremental:
+      type: Dollars
+      value: 228900
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 13, "5. Incremental Benefit amount", "2,289"'
+    ny.tcw.hoh.w14.start:
+      type: Dollars
+      value: 161645000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 14, "Enter the excess of line 1 over $1,616,450"'
+    ny.tcw.hoh.w14.ti_limit:
+      type: Dollars
+      value: 500000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 14, "and your taxable income (line 38) is more than $1,616,450 but not more than $5,000,000"'
+    ny.tcw.hoh.w14.recapture:
+      type: Dollars
+      value: 307600
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 14, "4. Recapture Base amount", "3,076"'
+    ny.tcw.hoh.w14.incremental:
+      type: Dollars
+      value: 4526100
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 14, "5. Incremental Benefit amount", "45,261"'
+    ny.tcw.hoh.w15.start:
+      type: Dollars
+      value: 500000000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 15, "Enter the excess of line 1 over $5,000,000"'
+    ny.tcw.hoh.w15.recapture:
+      type: Dollars
+      value: 4833700
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 15, "4. Recapture Base amount", "48,337"'
+    ny.tcw.hoh.w15.incremental:
+      type: Dollars
+      value: 3250000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 15, "5. Incremental Benefit amount", "32,500"'
+    ny.std_deduction:
+      type: Dollars
+      value:
+        single: 800000
+        mfj: 1605000
+        mfs: 800000
+        hoh: 1120000
+        qss: 1605000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State standard deduction table, "① Single and you marked item C No", "$8,000", "② Married filing joint return", "$16,050", "③ Married filing separate return", "④ Head of household (with qualifying person)", "$11,200", "⑤ Qualifying surviving spouse"'
+    ny.std_deduction.dependent_single:
+      type: Dollars
+      value: 310000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State standard deduction table, "① Single and you marked item C Yes", "$3,100"'
+    ny.dependent_exemption:
+      type: Dollars
+      value: 100000
+      cite:
+        doc: ny_it201i
+        locator: 'p. 11, Line 36: Dependent exemption amount, "The value of each New York State dependent exemption is $1,000."'
+    ny.hh.state.limit:
+      type: Dollars
+      value: 3200000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State household credit table 3, "32,000", "No credit is allowed; do not make an entry on Form IT-201, line 40."'
+    ny.hh.city.limit:
+      type: Dollars
+      value: 2250000
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York City household credit table 6, "22,500", "No credit is allowed; do not make an entry on Form IT-201, line 48."'
+    ny.hh.max_people:
+      type: Count
+      value: 7
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State household credit table 2, "Note 3", "For each individual over 7, add the amount in this column to the column 7 amount."'
+    ny.one:
+      type: Count
+      value: 1
+      cite:
+        doc: ny_it201i-html
+        locator: 'New York State household credit table 2, "plus one for you (and one for your spouse if Married filing joint return)"'
+    ny.stc.fixed:
+      type: Dollars
+      value:
+        single: 6300
+        mfj: 12500
+        mfs: 6300
+        hoh: 6300
+        qss: 12500
+      cite:
+        doc: ny_it201i-html
+        locator: 'Table 1 - Full-year New York City residents, "$63", "$125", "$250,000 or less"'
+    ny.stc.fixed.limit:
+      type: Dollars
+      value: 25000000
+      cite:
+        doc: ny_it201i
+        locator: 'p. 20, Line 69, "or your income (see below) is more than $250,000, you do not qualify for this credit"'
+    ny.stc.rr.limit:
+      type: Dollars
+      value: 50000000
+      cite:
+        doc: ny_it201i
+        locator: 'p. 20, Line 69a, "or your income (see below) is more than $500,000, you do not qualify to claim this credit"'
+    ny.stc.rr.low_rate:
+      type: Rate
+      value: { num: 171, den: 100000 }
+      cite:
+        doc: ny_it201i-html
+        locator: 'Calculation of NYC school tax credit (rate reduction amount), "0.171% of taxable income"'
+    ny.stc.rr.high_rate:
+      type: Rate
+      value: { num: 228, den: 100000 }
+      cite:
+        doc: ny_it201i-html
+        locator: 'Calculation of NYC school tax credit (rate reduction amount), "plus 0.228% of the excess over"'
+    ny.stc.rr.over:
+      type: Dollars
+      value:
+        single: 1200000
+        mfj: 2160000
+        mfs: 1200000
+        hoh: 1440000
+        qss: 2160000
+      cite:
+        doc: ny_it201i-html
+        locator: 'Calculation of NYC school tax credit (rate reduction amount), "$21,600", "$12,000", "$14,400"'
+    ny.stc.rr.base:
+      type: Dollars
+      value:
+        single: 2100
+        mfj: 3700
+        mfs: 2100
+        hoh: 2500
+        qss: 3700
+      cite:
+        doc: ny_it201i-html
+        locator: 'Calculation of NYC school tax credit (rate reduction amount), "$37", "$21", "$25"'
+    ny.sut.b1.upper:
+      type: Dollars
+      value: 1500000
+      cite:
+        doc: ny_it201i
+        locator: 'p. 18, Sales and use tax chart, "15,000"'
+    ny.sut.b1.amount:
+      type: Dollars
+      value: 300
+      cite:
+        doc: ny_it201i
+        locator: 'p. 18, Sales and use tax chart, "Enter on line 59:"'
+    ny.sut.b2.upper:
+      type: Dollars
+      value: 3000000
+      cite:
+        doc: ny_it201i
+        locator: 'p. 18, Sales and use tax chart, "30,000"'
+    ny.sut.b2.amount:
+      type: Dollars
+      value: 600
+      cite:
+        doc: ny_it201i
+        locator: 'p. 18, Sales and use tax chart, "Enter on line 59:"'
+    ny.sut.b3.upper:
+      type: Dollars
+      value: 5000000
+      cite:
+        doc: ny_it201i
+        locator: 'p. 18, Sales and use tax chart, "50,000"'
+    ny.sut.b3.amount:
+      type: Dollars
+      value: 1000
+      cite:
+        doc: ny_it201i
+        locator: 'p. 18, Sales and use tax chart, "Enter on line 59:"'
+    ny.sut.b4.upper:
+      type: Dollars
+      value: 7500000
+      cite:
+        doc: ny_it201i
+        locator: 'p. 18, Sales and use tax chart, "75,000"'
+    ny.sut.b4.amount:
+      type: Dollars
+      value: 1500
+      cite:
+        doc: ny_it201i
+        locator: 'p. 18, Sales and use tax chart, "Enter on line 59:"'
+    ny.sut.b5.upper:
+      type: Dollars
+      value: 10000000
+      cite:
+        doc: ny_it201i
+        locator: 'p. 18, Sales and use tax chart, "100,000"'
+    ny.sut.b5.amount:
+      type: Dollars
+      value: 1800
+      cite:
+        doc: ny_it201i
+        locator: 'p. 18, Sales and use tax chart, "Enter on line 59:"'
+    ny.sut.b6.upper:
+      type: Dollars
+      value: 15000000
+      cite:
+        doc: ny_it201i
+        locator: 'p. 18, Sales and use tax chart, "150,000"'
+    ny.sut.b6.amount:
+      type: Dollars
+      value: 2600
+      cite:
+        doc: ny_it201i
+        locator: 'p. 18, Sales and use tax chart, "Enter on line 59:"'
+    ny.sut.b7.upper:
+      type: Dollars
+      value: 20000000
+      cite:
+        doc: ny_it201i
+        locator: 'p. 18, Sales and use tax chart, "200,000"'
+    ny.sut.b7.amount:
+      type: Dollars
+      value: 3400
+      cite:
+        doc: ny_it201i
+        locator: 'p. 18, Sales and use tax chart, "Enter on line 59:"'
+    ny.sut.top_rate:
+      type: Rate
+      value: { num: 175, den: 1000000 }
+      cite:
+        doc: ny_it201i
+        locator: 'p. 18, Sales and use tax chart, "0.0175% (0.000175)"'
+    ny.sut.cap:
+      type: Dollars
+      value: 12500
+      cite:
+        doc: ny_it201i
+        locator: 'p. 18, Sales and use tax chart, "or $125, whichever amount is smaller"'
+    ny.est.min_due:
+      type: Dollars
+      value: 30000
+      cite:
+        doc: ny_it201i
+        locator: 'p. 23, Line 81, "if line 80 is $300 or more and represents more than 10% of the income tax shown on your 2025 return"'
+    ny.est.share:
+      type: Rate
+      value: { num: 10, den: 100 }
+      cite:
+        doc: ny_it201i
+        locator: 'p. 23, Line 81, "and represents more than 10% of the income tax shown on your 2025 return"'
+    ny.est.prior_rate:
+      type: Rate
+      value: { num: 1, den: 1 }
+      cite:
+        doc: ny_it201i
+        locator: 'p. 23, Line 81, "at least 100% of your 2024 New York income tax based on a 12-month return"'
+    ny.est.prior_rate_high:
+      type: Rate
+      value: { num: 110, den: 100 }
+      cite:
+        doc: ny_it201i
+        locator: 'p. 23, Line 81, "your 2025 prepayments must equal at least 110% of your 2024 New York income tax"'
+    ny.est.high_agi:
+      type: Dollars
+      value:
+        single: 15000000
+        mfj: 15000000
+        mfs: 7500000
+        hoh: 15000000
+        qss: 15000000
+      cite:
+        doc: ny_it201i
+        locator: 'p. 23, Line 81, "if your 2024 New York adjusted gross income was more than $150,000 (or $75,000 if you are married filing separately for 2025)"'
+    ny.it270.max_threshold_plus:
+      type: Dollars
+      value:
+        single: 9336100
+        mfs: 9336100
+        hoh: 9336100
+        mfj: 9690200
+        qss: 9690200
+      cite:
+        doc: ny_it270i
+        locator: 'p. 1, General information, "your federal adjusted gross income (FAGI) is no more than $5,000 above your applicable income thresholds"; Line 2: Income thresholds table, "$91,902", "$88,361"'
+    ny.zero:
+      type: NonNegDollars
+      value: 0
+      cite:
+        doc: ny_it201i
+        locator: 'p. 7, Lines 1 through 19: Federal income tax return information, "If you did not file a federal return, you must report the same income and adjustments that you would have reported for federal income tax purposes"'
+    ny.mctmt.zone1:
+      type: Rate
+      value: { num: 60, den: 10000 }
+      cite:
+        doc: ny_it201i
+        locator: 'p. 17, Line 54c: MCTMT for Zone 1, "Multiply the amount on line 54a by 0.60% (0.0060)."'
+    ny.mctmt.zone2:
+      type: Rate
+      value: { num: 34, den: 10000 }
+      cite:
+        doc: ny_it201i
+        locator: 'p. 17, Line 54d: MCTMT for Zone 2, "Multiply the amount on line 54b by 0.34% (0.0034)."'
+    ny.hundred:
+      type: Count
+      value: 100
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 2, "8. Divide line 7 by $50,000 and round the result to the fourth decimal place"'
+    ny.hundredth:
+      type: Rate
+      value: { num: 1, den: 100 }
+      cite:
+        doc: ny_it201i-html
+        locator: 'Tax computation worksheet 2, "9. Multiply line 5 by line 8"'

@@ -1,0 +1,33 @@
+{
+ "kind": "render",
+ "form": "ny_tcw_first",
+ "rulings": [
+  {
+   "printed": "(3)",
+   "restated": "Input — Bound by the calling line (ny.tcw.first.rate or ny.tcw.first.rate6).",
+   "model": "The text sets the rate at 5.5% (0.055) for worksheet 1 and 6% (0.06) for worksheets 7 and 12. The values behind ny.tcw.first.rate and ny.tcw.first.rate6, and which worksheet gets which, are not given, so the binding cannot be checked.",
+   "ruling": "Ruling: interface gap; the rate is bound by the calling lines, which the reviewer of this definition does not see. Checked: ny_it201.tcw.w1 (married filing jointly and qualifying surviving spouse) binds ny.tcw.first.rate = 55/1000, and ny_it201.tcw.w7 (single and married filing separately) and ny_it201.tcw.w12 (head of household) bind ny.tcw.first.rate6 = 6/100, as IT-201-I-html prints: Tax computation worksheet 1, \"3. Multiply line 2 by 5.5% (0.055)\"; worksheets 7 and 12, \"3. Multiply line 2 by 6% (0.06)\".",
+   "context": "46628d28b118aec59079ac10608476facb5ef89768a52c8bd9f94ca90d82dde1",
+   "date": "2026-11-04",
+   "run": "363636885469e51aee5e4c4ed37cca3705a480819d4ba7592c1b6c0a681758c7"
+  },
+  {
+   "printed": "3",
+   "restated": "Multiply line 2 by column (3), rounded to the nearest multiple of $1 (half up).",
+   "model": "The text says only \"Multiply line 2 by 5.5% (0.055)\" (6% on worksheets 7 and 12) and says nothing about rounding. The pages given contain no whole-dollar rule, so the restatement's rounding to the nearest $1 cannot be confirmed.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. Worksheet 1 line 3 is \"Multiply line 2 by 5.5% (0.055)\"; the product is rounded once to the dollar.",
+   "context": "46628d28b118aec59079ac10608476facb5ef89768a52c8bd9f94ca90d82dde1",
+   "date": "2026-11-04",
+   "run": "363636885469e51aee5e4c4ed37cca3705a480819d4ba7592c1b6c0a681758c7"
+  },
+  {
+   "printed": "8",
+   "restated": "Multiply line 7, 8 by 1% (0.01) (ny.hundredth), rounded to the nearest multiple of $1 (half up).",
+   "model": "The text says \"Multiply line 5 by line 7\" and says nothing about rounding. The pages given contain no whole-dollar rule, so the restatement's rounding to the nearest $1 cannot be confirmed.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. Line 8, \"Multiply line 5 by line 7\", is the exact product of line 5 and the four-place ratio (amb.ny.2025.fourth_decimal; the \"7, 8\" helper carries it times 100 so it is exact), rounded once to the dollar.",
+   "context": "46628d28b118aec59079ac10608476facb5ef89768a52c8bd9f94ca90d82dde1",
+   "date": "2026-11-04",
+   "run": "363636885469e51aee5e4c4ed37cca3705a480819d4ba7592c1b6c0a681758c7"
+  }
+ ]
+}

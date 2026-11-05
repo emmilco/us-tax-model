@@ -9,11 +9,12 @@ import { Worker } from "node:worker_threads";
 import { createHash } from "node:crypto";
 import { stableStringify } from "./util.js";
 import { loadCanonical } from "./canonical.js";
-import { allTargets, evaluate } from "./eval.js";
+import { allTargets, evaluate, multiplyRateHalfUp } from "./eval.js";
 import { loadCases } from "./fixtures.js";
 import { runChecks } from "./check.js";
 import type { CanonicalData, Expr, FormDoc, Line } from "./types.js";
-import { YEAR, yearPath } from "./year.js";
+import { NY_MODE, YEAR, yearPath } from "./year.js";
+import { reportName, reportPath } from "./year.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
 const FIXTURES = yearPath("fixtures", "stage1.json");
@@ -149,18 +150,20 @@ export function mutations(data: CanonicalData): Mutation[] {
     doc.lines.forEach((line, idx) => {
       const expr = line.expr as Expr;
       const where = `${doc.id}.${line.id}`;
+      // The mutated line in the clone, found in its own document: def-local ids repeat across defs.
+      const own = (d: CanonicalData): Line => allDocs(d).find((x) => x.id === doc.id)!.lines[idx]!;
 
-      if (expr.op === "sum_over" && expr.where) out.push({id:`filter.${where}`,kind:"remove collection filter",where,apply:d=>{const e=findLine(d,line.id)!.expr; if(e.op==="sum_over") delete e.where;}});
-      for (let i=0;i<(line.refuses?.length??0);i++) out.push({id:`refusal.${where}.${i}`,kind:"remove refusal",where,apply:d=>{findLine(d,line.id)!.refuses!.splice(i,1);}});
-      for (let i=0;i<(line.refuses?.length??0);i++) if (line.refuses![i]!.when_known) out.push({id:`consistency.${where}.${i}`,kind:"require unanswered consistency check",where,apply:d=>{delete findLine(d,line.id)!.refuses![i]!.when_known;}});
-      if (expr.op === "test" && "gt" in expr && expr.gt) out.push({id:`boundary.${where}`,kind:"replace strict greater-than with inclusive",where,apply:d=>{const e=findLine(d,line.id)!.expr as {op:"test";gt?:unknown;ge?:unknown};e.ge=e.gt;delete e.gt;}});
+      if (expr.op === "sum_over" && expr.where) out.push({id:`filter.${where}`,kind:"remove collection filter",where,apply:d=>{const e=own(d).expr; if(e.op==="sum_over") delete e.where;}});
+      for (let i=0;i<(line.refuses?.length??0);i++) out.push({id:`refusal.${where}.${i}`,kind:"remove refusal",where,apply:d=>{own(d).refuses!.splice(i,1);}});
+      for (let i=0;i<(line.refuses?.length??0);i++) if (line.refuses![i]!.when_known) out.push({id:`consistency.${where}.${i}`,kind:"require unanswered consistency check",where,apply:d=>{delete own(d).refuses![i]!.when_known;}});
+      if (expr.op === "test" && "gt" in expr && expr.gt) out.push({id:`boundary.${where}`,kind:"replace strict greater-than with inclusive",where,apply:d=>{const e=own(d).expr as {op:"test";gt?:unknown;ge?:unknown};e.ge=e.gt;delete e.gt;}});
       if (expr.op === "smaller_of" || expr.op === "larger_of") {
         out.push({
           id: `minmax.${where}`,
           kind: "swap smaller_of/larger_of",
           where,
           apply: (d) => {
-            const l = findLine(d, line.id)!;
+            const l = own(d);
             (l.expr as { op: string }).op = expr.op === "smaller_of" ? "larger_of" : "smaller_of";
           },
         });
@@ -171,7 +174,7 @@ export function mutations(data: CanonicalData): Mutation[] {
           kind: "change the rounding rule",
           where,
           apply: (d) => {
-            const l = findLine(d, line.id)!;
+            const l = own(d);
             (l.expr as { rule: string }).rule = expr.rule === "up" ? "down" : "up";
           },
         });
@@ -182,7 +185,7 @@ export function mutations(data: CanonicalData): Mutation[] {
           kind: "drop the floor",
           where,
           apply: (d) => {
-            const l = findLine(d, line.id)!;
+            const l = own(d);
             (l.expr as { op: string }).op = "subtract";
           },
         });
@@ -216,7 +219,7 @@ export function mutations(data: CanonicalData): Mutation[] {
           note: `${ref} -> ${candidate.id} (${candidate.type})`,
           replacement: candidate.id,
           apply: (d) => {
-            replaceAtPath(findLine(d, line.id)!.expr, site.path, candidate.id);
+            replaceAtPath(own(d).expr, site.path, candidate.id);
           },
         });
       }
@@ -1199,6 +1202,219 @@ export function structuralReason(data: CanonicalData, mutation: Mutation): strin
 // mutant reads: a mutant id names only the replaced operand, and the replacement is the nearest earlier
 // same-typed line, so a line inserted between them retargets the id while the premise digest is unchanged.
 type Conditional = { reason: string; holds: (data: CanonicalData) => boolean; reads?: string };
+
+// ---- New York (forms/ny): rate schedules, tax computation worksheets and zero lines ----
+
+function defOf(d: CanonicalData, id: string): FormDoc | undefined {
+  return d.defs.find((x) => x.id === id);
+}
+
+function localLine(def: FormDoc, id: string): Line | undefined {
+  return def.lines.find((l) => l.id === id);
+}
+
+function paramMoney(d: CanonicalData, name: string | undefined): number | undefined {
+  const v = name === undefined ? undefined : d.params.values[name]?.value;
+  return typeof v === "number" ? v : undefined;
+}
+
+function paramRefOf(x: unknown): string | undefined {
+  return (x as { param?: string } | undefined)?.param;
+}
+
+// Every site in a form or def line that binds def `defId`: the line, the def it sits in (undefined for a form line) and its bindings.
+function defBindings(d: CanonicalData, defId: string): { scope: FormDoc | undefined; line: Line; bind: Record<string, unknown> }[] {
+  const out: { scope: FormDoc | undefined; line: Line; bind: Record<string, unknown> }[] = [];
+  const walk = (n: unknown, scope: FormDoc | undefined, line: Line): void => {
+    if (Array.isArray(n)) { for (const x of n) walk(x, scope, line); return; }
+    if (n === null || typeof n !== "object") return;
+    const o = n as Record<string, unknown>;
+    if (o["def"] === defId && o["bind"] && typeof o["bind"] === "object") out.push({ scope, line, bind: o["bind"] as Record<string, unknown> });
+    for (const v of Object.values(o)) walk(v, scope, line);
+  };
+  for (const f of d.forms) for (const l of f.lines) walk(l.expr, undefined, l);
+  for (const f of d.defs) for (const l of f.lines) walk(l.expr, f, l);
+  return out;
+}
+
+// Every line of any form or def that reads parameter `name` (as an operand or a `param` line).
+function paramReaders(d: CanonicalData, name: string): { scope: FormDoc; line: Line }[] {
+  const reads = (n: unknown): boolean => {
+    if (Array.isArray(n)) return n.some(reads);
+    if (n === null || typeof n !== "object") return false;
+    const o = n as Record<string, unknown>;
+    if (o["param"] === name || (o["op"] === "param" && o["ref"] === name)) return true;
+    return Object.values(o).some(reads);
+  };
+  return allDocs(d).flatMap((scope) => scope.lines.filter((l) => reads(l.expr) || (l.refuses ?? []).some((r) => reads(r))).map((line) => ({ scope, line })));
+}
+
+// A money parameter (Dollars or NonNegDollars, a number or a status-keyed record of numbers) whose every value is a
+// multiple of 100 cents. Counts, rates and other types are not money, whatever their value.
+function wholeParam(d: CanonicalData, name: string): boolean {
+  const entry = d.params.values[name];
+  if (entry?.type !== "Dollars" && entry?.type !== "NonNegDollars") return false;
+  const v = entry.value;
+  if (typeof v === "number") return v % 100 === 0;
+  return v !== null && typeof v === "object" && Object.values(v as Record<string, unknown>).every((x) => typeof x === "number" && x % 100 === 0);
+}
+
+// Self-test of wholeParam on synthetic parameters: whole-dollar money (a number and a status-keyed record) is whole;
+// a Count, a Rate, and money with cents are not. Returns the problems found.
+export function wholeParamSelfTest(): string[] {
+  const values: Record<string, { type: string; value: unknown }> = {
+    dollars: { type: "Dollars", value: 100 }, nonneg: { type: "NonNegDollars", value: 0 }, keyed: { type: "Dollars", value: { single: 800000, mfj: 1605000 } },
+    count: { type: "Count", value: 100 }, rate: { type: "Rate", value: { num: 100, den: 1 } }, cents: { type: "Dollars", value: 150 }, keyedCents: { type: "Dollars", value: { single: 800000, mfj: 50 } },
+  };
+  const d = { params: { values } } as unknown as CanonicalData;
+  const want: Record<string, boolean> = { dollars: true, nonneg: true, keyed: true, count: false, rate: false, cents: false, keyedCents: false };
+  return Object.entries(want).filter(([n, w]) => wholeParam(d, n) !== w).map(([n, w]) => `wholeParam(${n}) is ${!w}, expected ${w}`);
+}
+
+// A value that is a whole number of dollars (a multiple of 100 cents) wherever it is complete: a rounding to
+// whole dollars, a whole-dollar parameter or constant, or sums, differences, copies, counts of and choices among
+// such values. A def parameter is whole when every binding of it, traced to its caller, is.
+function wholeRef(d: CanonicalData, scope: FormDoc | undefined, ref: unknown, depth = 0): boolean {
+  if (depth > 80) return false;
+  if (typeof ref !== "string") {
+    const p = paramRefOf(ref);
+    if (p !== undefined) return wholeParam(d, p);
+    const c = (ref as { const?: unknown } | undefined)?.const;
+    return typeof c === "number" && c % 100 === 0;
+  }
+  if (scope) {
+    const l = localLine(scope, ref);
+    if (!l) return false;
+    if (l.expr.op === "input" && (scope.parameters ?? []).includes(ref)) {
+      const sites = defBindings(d, scope.id);
+      return sites.length > 0 && sites.every((s) => ref in s.bind && wholeRef(d, s.scope, s.bind[ref], depth + 1));
+    }
+    return wholeExpr(d, scope, l.expr as unknown as Record<string, unknown>, depth + 1);
+  }
+  const l = d.forms.flatMap((f) => f.lines).find((x) => x.id === ref);
+  return !!l && wholeExpr(d, undefined, l.expr as unknown as Record<string, unknown>, depth + 1);
+}
+
+function wholeExpr(d: CanonicalData, scope: FormDoc | undefined, e: Record<string, unknown>, depth: number): boolean {
+  const w = (x: unknown): boolean => wholeRef(d, scope, x, depth);
+  switch (e["op"]) {
+    case "round": return typeof e["unit"] === "number" && e["unit"] % 100 === 0;
+    case "param": return wholeParam(d, e["ref"] as string);
+    case "copy": return typeof e["from"] === "string" && w(e["from"]);
+    case "sum": return Array.isArray(e["of"]) && (e["of"] as unknown[]).every(w);
+    case "subtract": case "subtract_floor0": return w(e["from"]) && w(e["take"]);
+    case "multiply_count": return w(e["amount"]);
+    case "choose": return (e["alternatives"] as { then: unknown }[]).every((a) => w(a.then));
+    default: return false;
+  }
+}
+
+// One band of a rate-schedule def: `<g>.b<k>.excess` (amount less the band's lower bound, floored), `.product`
+// (the excess times the band's rate, rounded once to the whole dollar), `.base` and `.tax` (base plus product),
+// none gated. Returns the band's parameters, or undefined when the def is not of that shape.
+function bandShape(d: CanonicalData, def: FormDoc, g: string, k: number): { over: number; num: number; den: number; base: number; lines: string[] } | undefined {
+  const p = `${g}.b${k}`;
+  const ex = localLine(def, `${p}.excess`), pr = localLine(def, `${p}.product`), ba = localLine(def, `${p}.base`), tx = localLine(def, `${p}.tax`);
+  if (!ex || !pr || !ba || !tx || [ex, pr, ba, tx].some((l) => (l.refuses ?? []).length)) return undefined;
+  const e = ex.expr as unknown as Record<string, unknown>, r = pr.expr as unknown as Record<string, unknown>, b = ba.expr as unknown as Record<string, unknown>, t = tx.expr as unknown as Record<string, unknown>;
+  if (e["op"] !== "subtract_floor0" || e["from"] !== "amount") return undefined;
+  if (r["op"] !== "multiply_rate" || r["amount"] !== `${p}.excess` || r["unit"] !== 100) return undefined;
+  if (b["op"] !== "param" || t["op"] !== "sum" || stableStringify([...(t["of"] as string[])].sort()) !== stableStringify([`${p}.base`, `${p}.product`])) return undefined;
+  const over = paramMoney(d, paramRefOf(e["take"])), base = paramMoney(d, b["ref"] as string);
+  const rate = d.params.values[paramRefOf(r["rate"]) ?? ""]?.value as { num?: number; den?: number } | undefined;
+  if (over === undefined || base === undefined || typeof rate?.num !== "number" || typeof rate.den !== "number") return undefined;
+  return { over, num: rate.num, den: rate.den, base, lines: [`${p}.excess`, `${p}.product`, `${p}.base`, `${p}.tax`] };
+}
+
+function bandTax(s: { over: number; num: number; den: number; base: number }, cents: number): number {
+  return s.base + multiplyRateHalfUp(Math.max(cents - s.over, 0), s.num, s.den * 100) * 100;
+}
+
+// `<g>.result`: a choose whose alternative k-1 takes band k under all[amount above the previous edge (or at least 0),
+// amount at most edge k] and whose last alternative takes the last band above the last edge. Returns the bands' edges
+// (parameter names, the last undefined) or undefined when the result line is not of that shape.
+function bandEdges(def: FormDoc, g: string): (string | undefined)[] | undefined {
+  const res = localLine(def, `${g}.result`);
+  if (!res || res.expr.op !== "choose" || (res.refuses ?? []).length) return undefined;
+  const alts = res.expr.alternatives as { guard: unknown; then: unknown }[];
+  const edges: (string | undefined)[] = [];
+  for (let i = 0; i < alts.length; i++) {
+    const a = alts[i]!, k = i + 1, prev = edges[i - 1];
+    if (a.then !== `${g}.b${k}.tax`) return undefined;
+    const lower = i === 0 ? { op: "test", ge: ["amount", { const: 0 }] } : { op: "test", gt: ["amount", { param: prev }] };
+    if (i === alts.length - 1) {
+      if (stableStringify(a.guard) !== stableStringify(lower)) return undefined;
+      edges.push(undefined);
+    } else {
+      const all = (a.guard as { all?: unknown[] }).all;
+      const le = (all?.[1] as { le?: unknown[] } | undefined)?.le;
+      const edge = paramRefOf(le?.[1]);
+      if (!all || all.length !== 2 || stableStringify(all[0]) !== stableStringify(lower) || le?.[0] !== "amount" || edge === undefined) return undefined;
+      edges.push(edge);
+    }
+  }
+  return edges;
+}
+
+function defAmountsWhole(d: CanonicalData, defId: string): boolean {
+  const sites = defBindings(d, defId);
+  return sites.length > 0 && sites.every((s) => "amount" in s.bind && wholeRef(d, s.scope, s.bind["amount"]));
+}
+
+// A band edge +$1 in a rate-schedule def: the edge is read only by the two guards of `<g>.result` that choose band k
+// (amount at most the edge) or band k+1 (above it), so the mutant moves only amounts in (edge, edge + $1] from band
+// k+1 to band k. Every amount the def is bound to is whole dollars, so only edge + $1 moves, and there the two
+// bands' taxes are equal (computed from the current parameters on every run): the def's tax is unchanged at every input.
+function bandEdge(defId: string, g: string, k: number) {
+  const param = `${defId === "ny_rs" ? "ny.rs" : "ny.city"}.${g}.b${k}.upper`;
+  return {
+    reason: `Band edge ${param}: in def ${defId} it is read only by ${g}.result's guards choosing band ${k} (amount at most the edge) and band ${k + 1} (amount above it), so +$1 moves only amounts in (edge, edge + $1] from band ${k + 1} to band ${k}. Every binding of the def's amount is a whole-dollar line (each traced through copies, sums, differences, roundings to whole dollars and whole-dollar parameters, and through the worksheet defs' ti to Form IT-201 line 38, or to line 47), so only edge + $1 moves, and there band ${k}'s tax (base plus rate times the excess, rounded once to the whole dollar) equals band ${k + 1}'s, computed from the current parameters on every run: the def's tax is the same at every input, and so is every line that reads it.`,
+    holds: (d: CanonicalData): boolean => {
+      const def = defOf(d, defId), v = paramMoney(d, param);
+      if (!def || v === undefined) return false;
+      const edges = bandEdges(def, g), a = bandShape(d, def, g, k), b = bandShape(d, def, g, k + 1);
+      if (!edges || edges[k - 1] !== param || !a || !b) return false;
+      const readers = paramReaders(d, param);
+      if (readers.length !== 1 || readers[0]!.scope.id !== defId || readers[0]!.line.id !== `${g}.result`) return false;
+      return defAmountsWhole(d, defId) && bandTax(a, v + 100) === bandTax(b, v + 100);
+    },
+  };
+}
+
+function nyEquivalences(): Record<string, Conditional> {
+  const out: Record<string, Conditional> = {};
+  const edges: [string, string, number[]][] = [
+    ["ny_rs", "single", [1, 2, 3, 4, 5, 6, 8]], ["ny_rs", "mfj", [1, 2, 3, 4, 5, 6, 7, 8]], ["ny_rs", "hoh", [1, 2, 3, 4, 5, 6, 8]],
+    ["ny_city_rs", "single", [1, 2, 3]], ["ny_city_rs", "mfj", [1, 2, 3]], ["ny_city_rs", "hoh", [1, 2, 3]],
+  ];
+  for (const [def, g, ks] of edges) for (const k of ks) out[`param.${def === "ny_rs" ? "ny.rs" : "ny.city"}.${g}.b${k}.upper.$1`] = bandEdge(def, g, k);
+  const mctmt = (param: string, line: string, what: string, digest: string): Conditional => {
+    const lines = ["ny_it201.line54a", "ny_it201.line54b", "ny_it201.line54c", "ny_it201.line54d", "param:ny.zero"];
+    return {
+      reason: `${param} is read only by ${line}, the rate times ${what}, which is the parameter ny.zero ($0) behind ${what}'s MCTMT refusal gate (gate.mctmt, a refusal of ${what} where the MCTMT applies): with the gate a known false the product is $0 at any rate, and otherwise ${line} is ${what}'s refusal or unknown on both routes. (Premises pinned: ${lines.join(", ")}.)`,
+      holds: (d) => premiseDigest(d, lines) === digest && d.params.values["ny.zero"]?.value === 0
+        && stableStringify(paramReaders(d, param).map((r) => r.line.id)) === stableStringify([line]),
+    };
+  };
+  out["param.ny.mctmt.zone1.+1pt"] = mctmt("ny.mctmt.zone1", "ny_it201.line54c", "line 54a", NY_MCTMT_DIGEST);
+  out["param.ny.mctmt.zone2.+1pt"] = mctmt("ny.mctmt.zone2", "ny_it201.line54d", "line 54b", NY_MCTMT_DIGEST);
+  const zeros = ["ny_it201.line54a", "ny_it201.line54b", "ny_it201.line54c", "ny_it201.line54d", "ny_it201.line55", "ny_it201.line56", "ny_it201.line57", "ny_it201.line54e", "ny_it201.line58", "param:ny.zero"];
+  const zeroWhy = "Lines 55, 56 and 57 are the parameter ny.zero ($0, checked) with no refusal gate, so each is a complete $0 at every input. Lines 54a and 54b are ny.zero behind the same MCTMT refusal gate (gate.mctmt), and lines 54c and 54d are line 54a and line 54b times their zone's rate, rounded: with the gate a known false all four are a complete $0; otherwise 54a and 54b are the gate's refusal or unknown, and 54c and 54d carry it";
+  out["operand.ny_it201.ny_it201.line54e.line54d"] = zeroPinned(`${zeroWhy}. Line 54e sums line 54c and line 54d; the mutant sums line 54c and line 54b. Line 54c is read first on both routes: with the gate not a known false it is the gate's refusal or unknown, which is the sum's value on both routes; with the gate a known false the second operand is $0 on both.`, zeros, NY_ZERO_DIGEST, "ny_it201.line54b");
+  for (const n of [55, 56, 57]) out[`operand.ny_it201.ny_it201.line58.line${n}`] = zeroPinned(`${zeroWhy}. Line 58 sums lines 54, 54e, 55, 56 and 57; the mutant reads line 54d in place of line ${n}. With the gate a known false line 54d is a complete $0, the same as line ${n}, in the same position. Otherwise line 54e, in position 2 ahead of the replaced operand, already carries the gate's refusal or unknown (its first operand is line 54c), so the sum meets the same first refusal or unknown (from line 54 or 54e) on both routes.`, zeros, NY_ZERO_DIGEST, "ny_it201.line54d");
+  out["operand.ny_it201.ny_it201.line78.line77"] = pinned("line78 refuses when gate.line79_over (line 79 more than line 77) is true, and a gate that is not a known false stops the line at entry with the gate's refusal, unknown or pending value (spec 4.7.1); the expression, the only part the mutant changes, is evaluated only when the gate is a known false, so line 77 is complete there. Line 77 is overpaid_before_penalty less line 81, floored at zero; a complete line 77 means line 81 is complete, and line 81 is the parameter ny.zero ($0) behind the estimated-penalty gate, so line 77 is overpaid_before_penalty (not negative) less $0, the same value the mutant reads.", ["ny_it201.line78", "ny_it201.line77", "ny_it201.line81", "ny_it201.overpaid_before_penalty", "ny_it201.gate.line79_over", "param:ny.zero"], NY_LINE78_DIGEST, "ny_it201.overpaid_before_penalty");
+  return out;
+}
+
+function zeroPinned(reason: string, lines: string[], digest: string, reads: string): Conditional & { reads: string } {
+  const p = pinned(reason, lines, digest, reads);
+  return { reason: p.reason, reads: p.reads, holds: (d) => p.holds(d) && d.params.values["ny.zero"]?.value === 0 };
+}
+
+const NY_MCTMT_DIGEST = "8b0afa35bde6f3ef";
+const NY_ZERO_DIGEST = "5415abe9ac1ca45d";
+const NY_LINE78_DIGEST = "32103cdd494c472d";
+
 const EQUIVALENT_IF: Record<string, Conditional> = {
   "param.eic.ws_threshold0.other.$1": thresholdAtPlateau("eic.ws_threshold0.other", ["eic_0"], 0),
   "param.eic.ws_threshold0.joint.$1": thresholdAtPlateau("eic.ws_threshold0.joint", ["eic_0"], 1),
@@ -1384,7 +1600,7 @@ const EQUIVALENT_IF: Record<string, Conditional> = {
     } };
   })(),
   "operand.eic.eic.show5.eligible.all.0.eq.0": pinned("show5 is all[eligible, line4 false, line5_blank false, line2 > 0]; the mutant reads show3, all[eligible, line2 > 0], in place of eligible. With eligible false or a refusal both tests end at their first conjunct with that value. With eligible true, step1_income (line 11b below eic.limit) and step5_income (earned_for_limit below eic.limit) are complete, so eic.limit, a choice on the filing status and then on ssn_count's bands, is complete: the status is supplied and ssn_count is not a refusal. Then line3 (a copy of line 11b) is complete; line1 takes earned_income, or wsb_6 (wsb_4b floored at zero), on the same self_employed guard as earned_for_limit, so it is complete; line4 is a complete comparison; line5_blank compares line3 with line5_threshold, a choice on the status and ssn_count's bands among parameters, so it is complete or unknown; line2 chooses on line1_in_table (complete) between eic.zero and a table lookup keyed on line1 and the status in a table chosen by ssn_count's bands, so it is complete or unknown. None of these lines has a refusal gate, so no conjunct refuses, and show3 is line2 > 0's value V. V false makes both tests false (the base reaches V after line4 and line5_blank, which cannot refuse); V true leaves both the same remaining conjuncts; V unknown makes both unknown unless line4 or line5_blank is false, which makes both false. With eligible unknown, the tests could differ only if line2 refused, and line2 can refuse only through ssn_count, which counts the dependents whose eic_ssn_child (and so eic_child) is true; a refusal there also refuses qc_count, has_qc and step34, which eligible reads, so eligible would be a refusal, not unknown.",
-    ["eic.show5", "eic.show3", "eic.eligible", "eic.step1_income", "eic.step5_income", "eic.limit", "eic.limit_other", "eic.limit_joint", "eic.earned_for_limit", "eic.self_employed", "eic.line4", "eic.line5_blank", "eic.line3", "eic.line1", "eic.wsb_6", "eic.zero", "eic.line2", "eic.line1_in_table", "eic.line1_table", "eic.line1_table0", "eic.line1_table1", "eic.line1_table2", "eic.line1_table3", "eic.line5_threshold", "eic.threshold_other", "eic.threshold_joint", "eic.threshold0_other", "eic.threshold1_other", "eic.threshold0_joint", "eic.threshold1_joint", "eic.ssn_count", "dependent.eic_ssn_child", "dependent.eic_child", "eic.qc_count", "eic.has_qc", "eic.step34"], "6610d4054db409bb", "eic.show3"),
+    ["eic.show5", "eic.show3", "eic.eligible", "eic.step1_income", "eic.step5_income", "eic.limit", "eic.limit_other", "eic.limit_joint", "eic.earned_for_limit", "eic.self_employed", "eic.line4", "eic.line5_blank", "eic.line3", "eic.line1", "eic.wsb_6", "eic.zero", "eic.line2", "eic.line1_in_table", "eic.line1_table", "eic.line1_table0", "eic.line1_table1", "eic.line1_table2", "eic.line1_table3", "eic.line5_threshold", "eic.threshold_other", "eic.threshold_joint", "eic.threshold0_other", "eic.threshold1_other", "eic.threshold0_joint", "eic.threshold1_joint", "eic.ssn_count", "dependent.eic_ssn_child", "dependent.eic_child", "eic.qc_count", "eic.has_qc", "eic.step34"], "f357f815ada7cf16", "eic.show3"),
   "operand.dependent.dependent.dc_line2c.dc_incapable.all.1.eq.0": pinned("dc_line2c is all[dc_qp, dc_incapable, age test]; the mutant reads dc_disabled_qp, all[dc_incapable, dc_lived_half], in place of dc_incapable. The second conjunct is reached only when dc_qp is true or unknown (a refusal ends both tests). dc_qp true means its any-test found dc_child_all_year, dc_disabled_qp or dc_child true. dc_child_all_year and dc_child (through dc_age13) each need qc_dependent true, which needs qualifying_child true, an all-test whose last conjunct is lived_half true; lived_half is then a memoized true in the dependent's frame (spec 4.7.6), and dc_lived_half, an any-test whose first disjunct is lived_half true, is true. dc_disabled_qp true needs dc_lived_half true. So wherever dc_qp is true, dc_lived_half is true and dc_disabled_qp is dc_incapable's value (an input with no gates): the conjuncts agree. dc_qp is unknown only with an input it reads unanswered; there the mutant can be false or a refusal (through dc_lived_half) where the base is unknown, so the argument is over answered inputs: dc_qp is read by f2441.qp_count and f2441.paid_total for every dependent, and its inputs are asked on any return that reaches Form 2441.",
     ["dependent.dc_line2c", "dependent.dc_incapable", "dependent.dc_disabled_qp", "dependent.dc_qp", "dependent.dc_lived_half", "dependent.dc_child_all_year", "dependent.dc_child", "dependent.dc_age13", "dependent.qc_dependent", "dependent.qualifying_child", "dependent.lived_half"], "a98e2f80b674a40f", "dependent.dc_disabled_qp"),
   "operand.household.household.roster_ok.taxpayers.any.1.all.1.eq.0": (() => {
@@ -1401,12 +1617,13 @@ const EQUIVALENT_IF: Record<string, Conditional> = {
     ["f2441.attrib_gate", "f2441.line3", "f2441.line31", "f2441.has_1e", "f1040.line1e", "f2441.benefits", "f2441.zero", "param:sales.zero"], "3ffd86c3d5aab30e", "f2441.line3"),
   "operand.s8812.s8812.line18a.chart_eic.then0": (() => {
     const p = pinned("line18a's taking_eic-true alternative is chart_eic; the mutant reads eiw_7_figured (eiw_3 less eiw_6). It is taken only when Form 1040 line 27a, a copy of eic.credit, is above $0, so eligible is true and line6 is above $0; line6 is line2 or the smaller of line5 and line2, so line2 is above $0, line1_in_table is true and line1 is at least table_start (positive, checked). eligible true makes step1_income and step5_income complete. Line 11b (line 9 less line 10) is complete; line 9 sums line 8, a copy of Schedule 1 line 10, which sums Schedule 1 line 3, and line 10 copies Schedule 1 line 26, which sums Schedule 1 line 15, so both are complete. earned_for_limit is complete, so earned_income (Step 5 line 1, line 1z behind scope.schedule1; less line 2, $0 behind scope.other_income; plus line 4, $0 behind s8812.combat_pay) is complete and those gates are false. Then eiw_1a is line 1z, eiw_1b $0 (the same combat-pay gate), eiw_2b Schedule 1 line 3, eiw_3 eiw_3sum floored at zero, eiw_4 $0 (scope.schedule1) and eiw_5 Schedule 1 line 15: eiw_7_figured is max(line 1z + S1 line 3, 0) less S1 line 15. S1 line 3 sums each person's sc_total and line 15 each person's se_line13. With self_employed false every Schedule C roster is empty, line 3 is $0 and each se_line13 is person.zero; chart_eic is earned_income, line 1z, and so is eiw_7_figured. With it true chart_eic is wsb_4b, line 1z plus the sum of each person's eic_se: person.zero for a person with no Schedule C (whose sc_total and se_line13 are $0), sc_total less se_line13 when files_se, and sc_total otherwise, where files_se false means Schedule SE line 4c is $0, so lines 6, the social security base, 10, 11, 12 and 13 of that person's Schedule SE are $0. So wsb_4b is line 1z + S1 line 3 less S1 line 15; line1 (wsb_6, wsb_4b floored) is above $0, so line 1z + S1 line 3 is above $0, no floor applies, and eiw_7_figured equals chart_eic. Where taking_eic is false or incomplete the alternative is not evaluated (spec 4.7.3). A Schedule C roster is empty when self_employed is false because self_employed tests sc_count > 0 and sc_count sums sc.one, a positive parameter (pinned).",
-      ["s8812.line18a", "s8812.chart_eic", "s8812.eiw_7_figured", "s8812.taking_eic", "f1040.line27a", "eic.credit", "eic.zero", "eic.line6", "eic.after_line4", "eic.smaller", "eic.line2", "eic.line1_in_table", "eic.line1", "eic.wsb_6", "eic.eligible", "eic.step1_income", "eic.step5_income", "eic.earned_for_limit", "eic.earned_income", "eic.step5_line1", "eic.step5_line2", "eic.step5_line3", "eic.step5_line4", "eic.wsb_4b", "eic.wsb_se", "eic.self_employed", "eic.sc_count", "s8812.eiw_3", "s8812.eiw_3sum", "s8812.eiw_1a", "s8812.eiw_1b", "s8812.eiw_2b", "s8812.eiw_6", "s8812.eiw_4", "s8812.eiw_5", "s8812.zero", "f1040.line11b", "f1040.line11a", "f1040.line9", "f1040.line8", "f1040.line10", "s1.line10", "s1.line26", "s1.line3", "s1.line15", "person.sc_total", "person.se_line13", "person.se_line4c", "person.files_se", "person.eic_se", "person.eic_se_has", "person.eic_part1", "person.has_sc", "person.sc_count", "person.zero", "def:se", "param:sales.zero", "param:ss.zero", "sc.one", "param:sc.one"], "7e18110c797169e6", "s8812.eiw_7_figured");
+      ["s8812.line18a", "s8812.chart_eic", "s8812.eiw_7_figured", "s8812.taking_eic", "f1040.line27a", "eic.credit", "eic.zero", "eic.line6", "eic.after_line4", "eic.smaller", "eic.line2", "eic.line1_in_table", "eic.line1", "eic.wsb_6", "eic.eligible", "eic.step1_income", "eic.step5_income", "eic.earned_for_limit", "eic.earned_income", "eic.step5_line1", "eic.step5_line2", "eic.step5_line3", "eic.step5_line4", "eic.wsb_4b", "eic.wsb_se", "eic.self_employed", "eic.sc_count", "s8812.eiw_3", "s8812.eiw_3sum", "s8812.eiw_1a", "s8812.eiw_1b", "s8812.eiw_2b", "s8812.eiw_6", "s8812.eiw_4", "s8812.eiw_5", "s8812.zero", "f1040.line11b", "f1040.line11a", "f1040.line9", "f1040.line8", "f1040.line10", "s1.line10", "s1.line26", "s1.line3", "s1.line15", "person.sc_total", "person.se_line13", "person.se_line4c", "person.files_se", "person.eic_se", "person.eic_se_has", "person.eic_part1", "person.has_sc", "person.sc_count", "person.zero", "def:se", "param:sales.zero", "param:ss.zero", "sc.one", "param:sc.one"], "85e03ab658c0f702", "s8812.eiw_7_figured");
     return { reason: p.reason, reads: p.reads, holds: (d: CanonicalData): boolean => {
       const start = d.params.values["eic.table_start"]?.value;
       return p.holds(d) && typeof start === "number" && start > 0;
     } };
   })(),
+  ...nyEquivalences(),
 };
 
 // A keyed argument pinned to the lines it reads: the digest of each named line's expression, refusal
@@ -1786,6 +2003,15 @@ function outcome(baseline: CanonicalData, cases: ReturnType<typeof loadCases>["c
   return classm ? `classm:${classm.id}` : "survives";
 }
 
+// --ny: only the New York mutants (documents ny_*, parameters ny.*, tables ny_*), judged by the New York fixtures;
+// otherwise every mutant, as before (a New York mutant is then judged by the federal fixtures, which never read it).
+function selectMutants(muts: Mutation[]): Mutation[] {
+  // Each jurisdiction's run takes only its own mutants: the federal fixtures never read a New York line, so a
+  // New York mutant can be killed only by the New York fixtures (`mutate --ny`, its own check-all step).
+  const ny = (m: Mutation): boolean => /\bny[_.]/.test(m.where);
+  return NY_MODE ? muts.filter(ny) : muts.filter((m) => !ny(m));
+}
+
 function mutantsDigest(muts: Mutation[]): string {
   return createHash("sha256").update(muts.map((m) => m.id).join("\n")).digest("hex");
 }
@@ -1795,7 +2021,7 @@ function mutantsDigest(muts: Mutation[]): string {
 export function mutantShare(index: number, count: number): { digest: string; outcomes: [number, Outcome][] } {
   const baseline = loadCanonical();
   const cases = loadCases().cases;
-  const muts = mutations(baseline);
+  const muts = selectMutants(mutations(baseline));
   const outcomes: [number, Outcome][] = [];
   for (let i = index; i < muts.length; i += count) outcomes.push([i, outcome(baseline, cases, muts[i]!)]);
   return { digest: mutantsDigest(muts), outcomes };
@@ -1813,7 +2039,7 @@ async function outcomesOf(baseline: CanonicalData, cases: ReturnType<typeof load
   if (count === 1) return muts.map((m) => outcome(baseline, cases, m));
   const digest = mutantsDigest(muts);
   const shares = await Promise.all(Array.from({ length: count }, (_, index) => new Promise<ReturnType<typeof mutantShare>>((done, fail) => {
-    const w = new Worker(new URL("./mutate-worker.js", import.meta.url), { workerData: { year: YEAR, index, count } });
+    const w = new Worker(new URL("./mutate-worker.js", import.meta.url), { workerData: { year: YEAR, index, count, ny: NY_MODE } });
     w.once("message", done);
     w.once("error", fail);
     w.once("exit", (code) => { if (code !== 0) fail(new Error(`mutation worker ${index} exited with ${code}`)); });
@@ -1849,7 +2075,7 @@ export async function runMutation(): Promise<number> {
       if (!actual || normal(actual)!==normal(expected)) throw new Error(`mutation baseline mismatch: ${c.id} ${key}`);
     }
   }
-  const muts = mutations(baseline);
+  const muts = selectMutants(mutations(baseline));
   const retarget = retargetSelfTest(baseline, muts);
   const survivors: Mutation[] = [];
   const classmOnly: { m: Mutation; case: string }[] = [];
@@ -1940,13 +2166,16 @@ export async function runMutation(): Promise<number> {
     }
     report.push("");
   }
-  const outDir = yearPath("reports");
+  const outDir = reportPath();
   mkdirSync(outDir, { recursive: true });
   writeFileSync(join(outDir, "mutation.md"), report.join("\n"));
   console.log(`mutation: ${total} mutants, killed by checker ${killedByCheck}, by fixtures ${killedByFixtures} (${classmOnly.length} only by class M cases), surviving ${survivors.length} (${equivalentSurvivors.length} equivalent; score ${(score * 100).toFixed(1)}%, adjusted ${(adjusted * 100).toFixed(1)}%)`);
-  console.log(`report: reports/${YEAR}/mutation.md`);
+  console.log(`report: ${reportName("mutation.md")}`);
   for (const p of openDefectProblems) console.log(`mutation: ${p}`);
   console.log(`mutation: retargeting self-test: ${retarget.tested} pinned arguments retargeted and rejected, ${retarget.problems.length} problems`);
   for (const p of retarget.problems) console.log(`mutation: ${p}`);
-  return unexplained.length === 0 && openDefectProblems.length === 0 && retarget.problems.length === 0 ? 0 : 1;
+  const wholeProblems = wholeParamSelfTest();
+  console.log(`mutation: whole-dollar parameter self-test: ${wholeProblems.length} problems`);
+  for (const p of wholeProblems) console.log(`mutation: ${p}`);
+  return unexplained.length === 0 && openDefectProblems.length === 0 && retarget.problems.length === 0 && wholeProblems.length === 0 ? 0 : 1;
 }

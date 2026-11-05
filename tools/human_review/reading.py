@@ -79,6 +79,10 @@ class Canon:
         for p in sorted(CANON.glob("*.json")):
             d = json.loads(p.read_text(encoding="utf-8"))
             top = d.get("form") or d.get("def")
+            if top and str(top["id"]).startswith("ny_"):
+                # The New York documents the build writes beside the federal ones (ny_*.json, docs/ny/DECISIONS.md
+                # C1) are not in the federal reading packets; their source is forms/ny/<year>/.
+                continue
             if top:
                 source = yaml.safe_load((ROOT / "forms" / Y / f"{top['id']}.yaml").read_text(encoding="utf-8"))
                 if without_snapshot(source) != without_snapshot(d):

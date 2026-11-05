@@ -1,0 +1,186 @@
+# The New York question bank (decision C5): asked after the federal interview (orders from 1000, above every federal
+# question), residency screens first. Prompts and citations come from the form lines (forms/ny/2025/), as for the
+# federal bank. A New York refusal stops only the New York profile (interview/ny/2025.yaml); the federal profiles
+# are unchanged.
+bank:
+  tax_year: 2025
+  frames:
+    ny_it2: 'For this Form W-2 (Form IT-2, W-2 record) — '
+  questions:
+  - input: ny_it201.ask.state_resident
+    order: 1000
+    help: Residency decides which New York return you file. Form IT-201 is for full-year residents only; a part-year
+      resident or nonresident files Form IT-203, which this tool does not prepare. You are a resident if New York
+      State is your domicile (your permanent home), or if you kept a permanent place of abode in New York for substantially
+      all of the year and spent 184 days or more there (any part of a day counts).
+  - input: ny_it201.ask.city_resident
+    order: 1001
+    help: The New York City resident tax applies to full-year City residents; the test is the State test with New
+      York City (the five boroughs) in place of New York State. A part-year City resident files Form IT-360.1, which
+      this tool does not prepare.
+  - input: ny_it201.ask.spouse_resident
+    order: 1002
+    help: On a joint federal return, New York requires both spouses to be residents for this return; otherwise you
+      file separate New York returns or a joint return as if both were residents, which this tool does not do.
+  - input: ny_it201.ask.special_accrual
+    order: 1003
+    help: If you moved into or out of New York City or State around the turn of the year, income earned in one period
+      but reported federally in another (for example a bonus fixed in 2025 but paid in 2026) needs the special accrual
+      rules, which this tool does not apply.
+  - input: ny_it201.ask.yonkers
+    order: 1004
+    help: Living quarters or wages in Yonkers bring the Yonkers resident surcharge or nonresident earnings tax,
+      which this tool does not compute.
+  - input: ny_it201.ask.special_code
+    order: 1005
+    help: Special condition codes mark situations such as Build America Bond interest, a combat zone, a filing extension,
+      an installment agreement or a military residence election; this tool does not handle them.
+  - input: ny_it201.ask.decedent
+    order: 1006
+    help: A return for a taxpayer who died is outside this tool.
+  - input: ny_it201.ask.item_c
+    order: 1007
+    help: Answer Yes if another taxpayer could claim you as a dependent on their federal return, even if they did
+      not. A Yes gives a $3,100 standard deduction (single) and no household or school tax credit.
+  - input: ny_it201.ask.inflation_check
+    order: 1008
+    help: New York mailed inflation refund checks in the fall of 2025. If you included one in federal adjusted gross
+      income, New York subtracts it; whether that line also takes a taxable state refund is unsettled for 2025,
+      so this tool refuses either case.
+  - input: ny_it201.ask.out_of_state_bond_interest
+    order: 1009
+    help: Interest from municipal bonds of other states (or tax-exempt funds holding them) is exempt federally but
+      taxed by New York; this tool does not compute that addition.
+  - input: ny_it201.ask.414h
+    order: 1010
+    help: Members of New York public retirement systems add back 414(h) contributions shown on Form W-2; this tool
+      does not compute that addition.
+  - input: ny_it201.ask.529_nonqualified
+    order: 1011
+    help: A nonqualified withdrawal from a New York 529 account may have to be added back; this tool does not compute
+      it.
+  - input: ny_it201.ask.it225
+    order: 1012
+    help: Form IT-225 holds the New York modifications not printed on Form IT-201 (many come from a partnership,
+      S corporation, estate or trust); this tool does not compute them.
+  - input: ny_it201.ask.gov_pension
+    order: 1013
+    help: New York exempts New York State, local and federal government pensions; this tool does not compute the
+      subtraction.
+  - input: ny_it201.ask.us_obligation_interest
+    order: 1014
+    help: New York does not tax interest on U.S. government obligations (Treasury bills, notes, bonds, savings bonds).
+      This tool does not compute the subtraction, so it refuses rather than overstate your New York tax.
+  - input: ny_it201.ask.pension_exclusion
+    order: 1015
+    help: Up to $20,000 of other pension and annuity income may be excluded at 59 1/2 or older; this tool does not
+      compute it.
+  - input: ny_it201.ask.529_owner
+    order: 1016
+    help: Contributions to a New York 529 account are deductible up to $5,000 ($10,000 joint); this tool does not
+      compute the deduction.
+  - input: ny_it201.ask.itemize
+    order: 1017
+    help: This tool takes the New York standard deduction. If your New York itemized deduction (Form IT-196) would
+      be larger, you should itemize, which this tool does not do.
+  - input: ny_it201.ask.resident_credit
+    order: 1018
+    help: Tax paid to another state on income from there earns a New York resident credit (Form IT-112-R), which
+      this tool does not compute.
+  - input: ny_it201.ask.other_credits
+    order: 1019
+    help: Other New York credits are claimed on their own forms and Form IT-201-ATT; this tool computes only the
+      household credits and the New York City school tax credit.
+  - input: ny_it201.ask.other_taxes
+    order: 1020
+    help: Other New York taxes (for example on a lump-sum distribution, Form IT-230) are reported on Form IT-201-ATT;
+      this tool does not compute them.
+  - input: ny_it201.ask.city_credits
+    order: 1021
+    help: These New York City credits are claimed on Form IT-201-ATT; this tool does not compute them.
+  - input: ny_it201.ask.mctmt
+    order: 1022
+    help: Self-employment earnings over $50,000 allocated to New York City (Zone 1) or the suburban counties (Zone
+      2) bring the metropolitan commuter transportation mobility tax, which this tool does not compute.
+  - input: ny_it201.ask.owes_use_tax
+    order: 1023
+    help: Line 59 cannot be left blank. If you bought taxable items or services without paying New York sales tax
+      (online, by catalog, or out of state for use here), you owe use tax; otherwise the line is 0.
+  - input: ny_it201.ask.use_tax_st141
+    order: 1024
+    help: The chart in the instructions covers purchases under $1,000 each that are not for a business, rental or
+      royalty activity. Otherwise, or if you want the exact figure, use tax is calculated on Form ST-141, which
+      this tool does not do.
+  - input: ny_it201.ask.abode_part_year
+    order: 1025
+    help: The use tax chart amount is for a full year; with a New York permanent place of abode for only part of
+      2025 it is prorated by months, which this tool does not do.
+  - input: ny_it201.ask.contributions
+    order: 1026
+    help: Voluntary contributions to the funds on Form IT-227 are outside this tool.
+  - input: ny_it201.ask.dependent_care
+    order: 1027
+    help: If you could claim the federal child and dependent care credit, New York has its own credit (Form IT-216),
+      which this tool does not compute.
+  - input: ny_it201.ask.noncustodial
+    order: 1028
+    help: Paying child support through a New York Support Collection Unit may earn the noncustodial parent earned
+      income credit (Form IT-209), which this tool does not compute.
+  - input: ny_it201.ask.real_property_credit
+    order: 1029
+    help: The real property tax credit (Form IT-214) is for homeowners and renters with low household income; this
+      tool does not compute it.
+  - input: ny_it201.ask.college_tuition
+    order: 1030
+    help: College tuition paid may earn a New York credit or itemized deduction (Form IT-272); this tool does not
+      compute it.
+  - input: ny_it201.ask.other_withholding
+    order: 1031
+    help: This tool totals New York withholding from Forms W-2 only.
+  - input: $ny_it2
+    order: 1032
+    prompt: Which Forms W-2 did you receive? List one key per Form W-2 (for example ["a", "b"]), even for a W-2
+      that shows no New York wages or tax.
+    help: One record per Form W-2 you received, keyed as on your federal Forms W-2, even if it shows no New York
+      wages or tax (Form IT-2).
+  - input: ny_it2.state_withheld
+    order: 1033
+    help: Box 17 of the Form W-2, the state income tax withheld, where box 15 shows NY. Enter 0 if none.
+  - input: ny_it2.city_withheld
+    order: 1034
+    help: Box 19 of the Form W-2, the local income tax withheld, where box 20 shows New York City (NYC). Enter 0
+      if none.
+  - input: ny_it2.yonkers_withheld
+    order: 1035
+    help: Box 19 of the Form W-2 where box 20 shows Yonkers. Enter 0 if none; Yonkers tax is outside this tool.
+  - input: ny_it201.line75
+    order: 1036
+    help: Include all 2025 New York estimated tax payments (including the last installment paid in 2026), any 2024
+      overpayment applied to 2025, and any amount paid with an extension (Form IT-370). Enter 0 if none.
+  - input: ny_it201.ask.prior_year_tax
+    order: 1037
+    help: 'Used only for the estimated tax penalty check: with a balance due, New York charges no penalty if your
+      2025 withholding and estimated payments were at least 100% of your 2024 New York tax (110% if your 2024 New
+      York AGI was over $150,000). Enter the total New York State and City tax on your 2024 return.'
+  - input: ny_it201.ask.prior_agi_high
+    order: 1038
+    help: Above $150,000 ($75,000 married filing separately) of 2024 New York adjusted gross income, the safe harbor
+      is 110% of the 2024 tax instead of 100%.
+  - input: ny_it201.ask.prior_full_year
+    order: 1039
+    help: Without a 2024 New York return covering 12 months there is no prior-year safe harbor for the estimated
+      tax penalty, so a balance due is refused here.
+  - input: ny_it201.ask.est_late
+    order: 1040
+    help: A penalty can apply for any payment period in which an installment was late or short, even when the year's
+      total was enough or a refund is due.
+  - input: ny_it201.ask.late_penalty
+    order: 1041
+    help: Late filing or late payment penalties and interest are outside this tool.
+  - input: ny_it201.line79
+    order: 1042
+    help: Any part of an overpayment can be applied to your 2026 New York estimated tax instead of refunded. Enter
+      0 to have it all refunded.
+  - input: ny_it201.ask.refund_529
+    order: 1043
+    help: Depositing part of a refund into a New York 529 account (Form IT-195) is outside this tool.

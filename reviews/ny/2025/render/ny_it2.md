@@ -1,0 +1,88 @@
+# Render comparison — ny_it2
+
+The rendered English of every printed line of `Form IT-2 (2025), Summary of W-2 Statements — one record per Form W-2` (`rendered/ny/2025/ny_it2.md`) read against the archived IRS pages by an isolated model that saw the rendering and the pages, not the YAML (spec 6.5).
+
+| field | value |
+| --- | --- |
+| date | 2026-11-04 |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | 7273649eaa6b75230612d890b670d181a8605eb15023eb2241baa439975e7d01 |
+| prompt policy | render-source-comparison-v2 |
+| system sha256 | 390d22ff0e196470cf6119d363b160934f85d1c37fcc6196dd053b2d9797cb11 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| subject sha256 | f8d0bf882b1d8990e6a8156ba05a00d63c5018bd6ae203ab9306a4569503b1ee |
+| lines judged | 5 |
+| match / mismatch / unclear / missing | 5 / 0 / 0 / 0 |
+| verdicts for lines not in the form | none |
+
+## Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| ny_it2 | Form IT-2 (2025), Summary of W-2 Statements; final 2025 edition (footer 'IT-2 (2025) (back)'); PDF modified 2025-09-26 | 1, 2 | whole document | 4884d0d4403f8d1f3bd71a6834951e51fca1ca288ff3ecbab3c6866a286c10b8 | 2 | a6e61a9d7a0cd5464a36232dae9d0f4d5ca5380323f1117a2077f7e621049739 |
+| ny_it201i | Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20 | 17, 21 | cited pages | 05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9 | 17, 21 | 460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf |
+
+## Lines
+
+### 17a — NYS income tax withheld
+Status: **MATCH**
+
+Model: The instructions say to 'Enter in box 17a the NYS withholding, labeled as State income tax on federal Form W-2' and to leave it blank if there is no NYS withholding. A blank entry is treated as 0.
+
+### 19 (Yonkers) — Local income tax withheld for Yonkers
+Status: **MATCH**
+
+Model: Box 19 holds 'Local income tax withheld' for the locality named in box 20, and the instructions allow only NYC or Yonkers there. Entering the box 19 amount for the Yonkers locality, or 0 if none, follows the text.
+
+### 17a (whole dollars) — NYS income tax withheld, in whole dollars
+Status: **MATCH**
+
+Model: The text says to 'drop amounts below 50 cents and increase amounts from 50 to 99 cents to the next dollar.' That is rounding half up to the nearest $1.
+
+### 19 — Local income tax withheld (New York City)
+Status: **MATCH**
+
+Model: Box 19 holds the local income tax withheld for the locality written as 'NYC for New York City', so this input is the NYC amount. The refusal excludes W-2s with Yonkers withholding and names the Yonkers total on Form IT-201, line 74, so the line is correct within the cases the program supports.
+
+### 19 (whole dollars) — Local income tax withheld (New York City), in whole dollars
+Status: **MATCH**
+
+Model: This applies the same whole-dollar rule as line 17a: 'drop amounts below 50 cents and increase amounts from 50 to 99 cents to the next dollar.'
+
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| 17a | 38f8018270f6c45ec8c67642733480a4a03520b4d911cda1c953c11ceb22fc45 |
+| 19 (Yonkers) | b53af12b55449117fb336286ecdc8976b5dba8c610f622ec0b7c832916570b08 |
+| 17a (whole dollars) | 0b6f7417bc0b1dbaa59920c4395b90dd61d7617085190c60e50787ace963123a |
+| 19 | 42f6704f169107132afac5ba739572859e679c60f2fb820e8efba842805fa5a2 |
+| 19 (whole dollars) | c949a6ba803777466f49b9b648fda8edfa748627167d624e6da2565bb5c3ccfa |
+| (rest of the document) | 7f81808e16a3ebcf41cacb68d9a14af68fedf63abaf5e1f8751b95630ee7ab75 |
+
+## Raw response
+
+```yaml
+```yaml
+lines:
+  - key: "17a"
+    status: MATCH
+    reason: "The instructions say to 'Enter in box 17a the NYS withholding, labeled as State income tax on federal Form W-2' and to leave it blank if there is no NYS withholding. A blank entry is treated as 0."
+  - key: "19 (Yonkers)"
+    status: MATCH
+    reason: "Box 19 holds 'Local income tax withheld' for the locality named in box 20, and the instructions allow only NYC or Yonkers there. Entering the box 19 amount for the Yonkers locality, or 0 if none, follows the text."
+  - key: "17a (whole dollars)"
+    status: MATCH
+    reason: "The text says to 'drop amounts below 50 cents and increase amounts from 50 to 99 cents to the next dollar.' That is rounding half up to the nearest $1."
+  - key: "19"
+    status: MATCH
+    reason: "Box 19 holds the local income tax withheld for the locality written as 'NYC for New York City', so this input is the NYC amount. The refusal excludes W-2s with Yonkers withholding and names the Yonkers total on Form IT-201, line 74, so the line is correct within the cases the program supports."
+  - key: "19 (whole dollars)"
+    status: MATCH
+    reason: "This applies the same whole-dollar rule as line 17a: 'drop amounts below 50 cents and increase amounts from 50 to 99 cents to the next dollar.'"
+```
+```

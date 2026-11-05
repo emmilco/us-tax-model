@@ -1,0 +1,161 @@
+# Transcription agreement — ny_tcw
+
+Second transcription of `Tax computation worksheets 2–5, 8–10, 13–15 (New York AGI of more than $107,650)` by an isolated model (spec 6.5), compared line by line with `forms/ny/2025/ny_tcw.yaml`.
+
+| field | value |
+| --- | --- |
+| date | 2026-11-04 |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | e3817e1e3f0932bec57755dab220de98e8f985aa3d8482a51b9846e7b9b17a0f |
+| prompt policy | source-only-computation-v3 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | required-review-interfaces-v2 |
+| complete input context | pass |
+| required input context sha256 | 640b77f0b8c46f42c91bb557709ca30224ac37cbaea629e8158721280ae1f0a0 |
+| type validation policy | project-expression-types-v3 |
+| model type validation | fail |
+| system sha256 | 83e9ed0ae4edc40db4c301ed52bf00d46afb0b4bd30dea929e35960993911093 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
+| subject sha256 | 22e721032759ace53c29ad7f5e574696fd35aeea8d153f2ff41e0fadcc626f0c |
+| printed lines compared | 1 |
+| agree / disagree / missing | 0 / 1 / 0 |
+| extra printed lines in second | none |
+
+## Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| ny_it201i-html | Web edition of Form IT-201-I (2025) ('2025 Form IT-201-I, Instructions for Form IT-201'); page 'Updated: July 27, 2026'. Every number of the PDF edition occurs in it and every word of every PDF page bar the six excepted pages (check_extraction.py --jurisdiction ny) | 1 | cited sections: Tax computation worksheet 2; Tax computation—New York adjusted gross income of more than $107,650 | 63863fe461c33d052e26a67c87d000ed70b896c72437350880a9e1c680104982 | - | - |
+
+## Other documents in the catalog
+
+Chosen from the source pages above (catalog_selection); refusal-gate inputs are in the screening list.
+
+| reason | documents |
+| --- | --- |
+| definition | ny_city_rs, ny_rs, ny_tcw_first |
+| shared page | ny_it201 |
+
+## Host-side model expression type checks
+
+The build's reference/type checker rejected these model expressions; none were executed.
+- ny_tcw.line3: instance of 'ny_rs' must bind exactly [amount, status]
+- ny_tcw.line3: instance of 'ny_rs' must bind exactly [amount, status]
+- ny_tcw.line3: instance of 'ny_rs' must bind exactly [amount, status]
+
+## Lines
+
+### tax — Add lines 3, 4, and 9. Enter here and on line 39.
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"of": [{"input": "recapture"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "mfj"}, {"input": "status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"input": "status"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": 0}, {"input": "ti"}], "test": "le"}, {"args": [{"input": "ti"}, {"param": "ny.rs.mfj.b1.upper"}], "test": "le"}], "test": "all"}, "then": {"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b1.rate"}, "unit": 100}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.mfj.b2.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.mfj.b1.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.mfj.b2.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b2.rate"}, "unit": 100}, {"param": "ny.rs.mfj.b2.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.mfj.b3.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.mfj.b2.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.mfj.b3.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b3.rate"}, "unit": 100}, {"param": "ny.rs.mfj.b3.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.mfj.b4.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.mfj.b3.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.mfj.b4.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b4.rate"}, "unit": 100}, {"param": "ny.rs.mfj.b4.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.mfj.b5.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.mfj.b4.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.mfj.b5.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b5.rate"}, "unit": 100}, {"param": "ny.rs.mfj.b5.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.mfj.b6.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.mfj.b5.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.mfj.b6.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b6.rate"}, "unit": 100}, {"param": "ny.rs.mfj.b6.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.mfj.b7.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.mfj.b6.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.mfj.b7.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b7.rate"}, "unit": 100}, {"param": "ny.rs.mfj.b7.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.mfj.b8.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.mfj.b7.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.mfj.b8.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b8.rate"}, "unit": 100}, {"param": "ny.rs.mfj.b8.base"}], "op": "sum"}}, {"guard": {"args": [{"param": "ny.rs.mfj.b8.upper"}, {"input": "ti"}], "test": "lt"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.mfj.b9.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b9.rate"}, "unit": 100}, {"param": "ny.rs.mfj.b9.base"}], "op": "sum"}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"input": "status"}], "test": "eq"}, {"args": [{"const": "single"}, {"input": "status"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": 0}, {"input": "ti"}], "test": "le"}, {"args": [{"input": "ti"}, {"param": "ny.rs.single.b1.upper"}], "test": "le"}], "test": "all"}, "then": {"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b1.rate"}, "unit": 100}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.single.b2.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.single.b1.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.single.b2.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b2.rate"}, "unit": 100}, {"param": "ny.rs.single.b2.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.single.b3.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.single.b2.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.single.b3.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b3.rate"}, "unit": 100}, {"param": "ny.rs.single.b3.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.single.b4.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.single.b3.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.single.b4.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b4.rate"}, "unit": 100}, {"param": "ny.rs.single.b4.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.single.b5.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.single.b4.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.single.b5.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b5.rate"}, "unit": 100}, {"param": "ny.rs.single.b5.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.single.b6.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.single.b5.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.single.b6.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b6.rate"}, "unit": 100}, {"param": "ny.rs.single.b6.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.single.b7.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.single.b6.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.single.b7.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b7.rate"}, "unit": 100}, {"param": "ny.rs.single.b7.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.single.b8.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.single.b7.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.single.b8.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b8.rate"}, "unit": 100}, {"param": "ny.rs.single.b8.base"}], "op": "sum"}}, {"guard": {"args": [{"param": "ny.rs.single.b8.upper"}, {"input": "ti"}], "test": "lt"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.single.b9.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b9.rate"}, "unit": 100}, {"param": "ny.rs.single.b9.base"}], "op": "sum"}}], "op": "choose"}}, {"guard": {"args": [{"const": "hoh"}, {"input": "status"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": 0}, {"input": "ti"}], "test": "le"}, {"args": [{"input": "ti"}, {"param": "ny.rs.hoh.b1.upper"}], "test": "le"}], "test": "all"}, "then": {"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b1.rate"}, "unit": 100}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.hoh.b2.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.hoh.b1.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.hoh.b2.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b2.rate"}, "unit": 100}, {"param": "ny.rs.hoh.b2.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.hoh.b3.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.hoh.b2.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.hoh.b3.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b3.rate"}, "unit": 100}, {"param": "ny.rs.hoh.b3.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.hoh.b4.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.hoh.b3.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.hoh.b4.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b4.rate"}, "unit": 100}, {"param": "ny.rs.hoh.b4.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.hoh.b5.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.hoh.b4.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.hoh.b5.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b5.rate"}, "unit": 100}, {"param": "ny.rs.hoh.b5.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.hoh.b6.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.hoh.b5.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.hoh.b6.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b6.rate"}, "unit": 100}, {"param": "ny.rs.hoh.b6.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.hoh.b7.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.hoh.b6.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.hoh.b7.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b7.rate"}, "unit": 100}, {"param": "ny.rs.hoh.b7.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.hoh.b8.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.hoh.b7.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.hoh.b8.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b8.rate"}, "unit": 100}, {"param": "ny.rs.hoh.b8.base"}], "op": "sum"}}, {"guard": {"args": [{"param": "ny.rs.hoh.b8.upper"}, {"input": "ti"}], "test": "lt"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.hoh.b9.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b9.rate"}, "unit": 100}, {"param": "ny.rs.hoh.b9.base"}], "op": "sum"}}], "op": "choose"}}], "op": "choose"}, {"amount": {"amount": {"amount": {"input": "incremental"}, "count": {"param": "ny.hundred"}, "op": "multiply_count"}, "op": "prorate", "part": {"of": [{"from": {"input": "agi"}, "op": "subtract_floor0", "take": {"input": "start"}}, {"param": "ny.tcw.phase"}], "op": "smaller_of"}, "places": 4, "whole": {"param": "ny.tcw.phase"}}, "op": "multiply_rate", "rate": {"param": "ny.hundredth"}, "unit": 100}], "op": "sum"}
+```
+
+Second:
+
+```json
+{"expression": {"of": [{"input": "recapture"}, {"alternatives": [{"guard": {"args": [{"args": [{"const": "mfj"}, {"input": "status"}], "test": "eq"}, {"args": [{"const": "qss"}, {"input": "status"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": 0}, {"input": "ti"}], "test": "le"}, {"args": [{"input": "ti"}, {"param": "ny.rs.mfj.b1.upper"}], "test": "le"}], "test": "all"}, "then": {"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b1.rate"}, "unit": 100}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.mfj.b2.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.mfj.b1.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.mfj.b2.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b2.rate"}, "unit": 100}, {"param": "ny.rs.mfj.b2.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.mfj.b3.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.mfj.b2.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.mfj.b3.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b3.rate"}, "unit": 100}, {"param": "ny.rs.mfj.b3.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.mfj.b4.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.mfj.b3.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.mfj.b4.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b4.rate"}, "unit": 100}, {"param": "ny.rs.mfj.b4.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.mfj.b5.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.mfj.b4.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.mfj.b5.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b5.rate"}, "unit": 100}, {"param": "ny.rs.mfj.b5.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.mfj.b6.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.mfj.b5.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.mfj.b6.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b6.rate"}, "unit": 100}, {"param": "ny.rs.mfj.b6.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.mfj.b7.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.mfj.b6.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.mfj.b7.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b7.rate"}, "unit": 100}, {"param": "ny.rs.mfj.b7.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.mfj.b8.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.mfj.b7.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.mfj.b8.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b8.rate"}, "unit": 100}, {"param": "ny.rs.mfj.b8.base"}], "op": "sum"}}, {"guard": {"args": [{"param": "ny.rs.mfj.b8.upper"}, {"input": "ti"}], "test": "lt"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.mfj.b9.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b9.rate"}, "unit": 100}, {"param": "ny.rs.mfj.b9.base"}], "op": "sum"}}], "op": "choose"}}, {"guard": {"args": [{"args": [{"const": "mfs"}, {"input": "status"}], "test": "eq"}, {"args": [{"const": "single"}, {"input": "status"}], "test": "eq"}], "test": "any"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": 0}, {"input": "ti"}], "test": "le"}, {"args": [{"input": "ti"}, {"param": "ny.rs.single.b1.upper"}], "test": "le"}], "test": "all"}, "then": {"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b1.rate"}, "unit": 100}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.single.b2.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.single.b1.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.single.b2.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b2.rate"}, "unit": 100}, {"param": "ny.rs.single.b2.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.single.b3.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.single.b2.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.single.b3.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b3.rate"}, "unit": 100}, {"param": "ny.rs.single.b3.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.single.b4.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.single.b3.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.single.b4.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b4.rate"}, "unit": 100}, {"param": "ny.rs.single.b4.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.single.b5.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.single.b4.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.single.b5.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b5.rate"}, "unit": 100}, {"param": "ny.rs.single.b5.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.single.b6.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.single.b5.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.single.b6.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b6.rate"}, "unit": 100}, {"param": "ny.rs.single.b6.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.single.b7.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.single.b6.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.single.b7.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b7.rate"}, "unit": 100}, {"param": "ny.rs.single.b7.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.single.b8.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.single.b7.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.single.b8.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b8.rate"}, "unit": 100}, {"param": "ny.rs.single.b8.base"}], "op": "sum"}}, {"guard": {"args": [{"param": "ny.rs.single.b8.upper"}, {"input": "ti"}], "test": "lt"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.single.b9.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b9.rate"}, "unit": 100}, {"param": "ny.rs.single.b9.base"}], "op": "sum"}}], "op": "choose"}}, {"guard": {"args": [{"const": "hoh"}, {"input": "status"}], "test": "eq"}, "then": {"alternatives": [{"guard": {"args": [{"args": [{"const": 0}, {"input": "ti"}], "test": "le"}, {"args": [{"input": "ti"}, {"param": "ny.rs.hoh.b1.upper"}], "test": "le"}], "test": "all"}, "then": {"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"const": 0}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b1.rate"}, "unit": 100}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.hoh.b2.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.hoh.b1.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.hoh.b2.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b2.rate"}, "unit": 100}, {"param": "ny.rs.hoh.b2.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.hoh.b3.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.hoh.b2.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.hoh.b3.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b3.rate"}, "unit": 100}, {"param": "ny.rs.hoh.b3.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.hoh.b4.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.hoh.b3.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.hoh.b4.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b4.rate"}, "unit": 100}, {"param": "ny.rs.hoh.b4.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.hoh.b5.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.hoh.b4.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.hoh.b5.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b5.rate"}, "unit": 100}, {"param": "ny.rs.hoh.b5.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.hoh.b6.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.hoh.b5.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.hoh.b6.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b6.rate"}, "unit": 100}, {"param": "ny.rs.hoh.b6.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.hoh.b7.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.hoh.b6.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.hoh.b7.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b7.rate"}, "unit": 100}, {"param": "ny.rs.hoh.b7.base"}], "op": "sum"}}, {"guard": {"args": [{"args": [{"input": "ti"}, {"param": "ny.rs.hoh.b8.upper"}], "test": "le"}, {"args": [{"param": "ny.rs.hoh.b7.upper"}, {"input": "ti"}], "test": "lt"}], "test": "all"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.hoh.b8.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b8.rate"}, "unit": 100}, {"param": "ny.rs.hoh.b8.base"}], "op": "sum"}}, {"guard": {"args": [{"param": "ny.rs.hoh.b8.upper"}, {"input": "ti"}], "test": "lt"}, "then": {"of": [{"amount": {"from": {"input": "ti"}, "op": "subtract_floor0", "take": {"param": "ny.rs.hoh.b9.over"}}, "op": "multiply_rate", "rate": {"param": "ny.rs.b9.rate"}, "unit": 100}, {"param": "ny.rs.hoh.b9.base"}], "op": "sum"}}], "op": "choose"}}], "op": "choose"}, {"amount": {"amount": {"amount": {"input": "incremental"}, "count": {"param": "ny.hundred"}, "op": "multiply_count"}, "op": "prorate", "part": {"of": [{"from": {"input": "agi"}, "op": "subtract_floor0", "take": {"input": "start"}}, {"from": {"param": "ny.tcw.phase"}, "op": "subtract_floor0", "take": {"const": 0}}], "op": "smaller_of"}, "places": 4, "whole": {"from": {"param": "ny.tcw.phase"}, "op": "subtract_floor0", "take": {"const": 0}}}, "op": "multiply_rate", "rate": {"param": "ny.hundredth"}}], "op": "sum"}, "invalid_model_types": [{"line": "line3", "message": "ny_tcw.line3: instance of 'ny_rs' must bind exactly [amount, status]"}, {"line": "line3", "message": "ny_tcw.line3: instance of 'ny_rs' must bind exactly [amount, status]"}, {"line": "line3", "message": "ny_tcw.line3: instance of 'ny_rs' must bind exactly [amount, status]"}]}
+```
+
+Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (line3: "ny_tcw.line3: instance of 'ny_rs' must bind exactly [amount, status]"), so the line was not executed. This adjudicates the declaration, not the tax reading.
+
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| tax | 7b20ad56f1bb3b68e9723bc254d36c2d60e075d91cbf92bbcaaff1ba2b52e314 |
+| (rest of the document) | 06dd9418b27c5e8a1e6741a0f9b10946b53091ccaa46f23188eb44aa8b5b5271 |
+
+## Foreign interfaces
+
+The interfaces (id, printed marker, type, input question) of other documents' lines that each compared line reads, as the request carried them (tools/transcription/subjects.py); a changed row stales that line.
+
+| line | foreign interfaces sha256 |
+| --- | --- |
+| tax | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
+
+## Raw second transcription
+
+```yaml
+```yaml
+lines:
+  - id: line3
+    printed: "3"
+    label: "Enter your New York State tax on the line 2 amount from the New York State tax rate schedule"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard:
+            op: test
+            any:
+              - {op: test, eq: [status, {const: "mfj"}]}
+              - {op: test, eq: [status, {const: "qss"}]}
+          then: {def: ny_rs, bind: {amount: ti}, line: mfj.result}
+        - guard:
+            op: test
+            any:
+              - {op: test, eq: [status, {const: "single"}]}
+              - {op: test, eq: [status, {const: "mfs"}]}
+          then: {def: ny_rs, bind: {amount: ti}, line: single.result}
+        - guard: {op: test, eq: [status, {const: "hoh"}]}
+          then: {def: ny_rs, bind: {amount: ti}, line: hoh.result}
+    note: "The instructions group the worksheets by filing status: married filing jointly and qualifying surviving spouse (worksheets 2-5), single and married filing separately (worksheets 8-10), and head of household (worksheets 13-15). The tax is read from the matching column of the New York State tax rate schedule, with the schedule's amount bound to line 2."
+  - id: line6
+    printed: "6"
+    label: "Enter the excess of line 1 over the worksheet's printed amount ($161,550, $323,200, $2,155,350, $5,000,000, $215,400, $1,077,550, $269,300 or $1,616,450)"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: agi, take: start}
+    note: "An 'excess' is never negative, so this line is floored at zero. The worksheet's conditions make line 1 more than the printed amount anyway."
+  - id: ny_tcw.h_phase_param
+    printed: "(helper)"
+    label: "$50,000"
+    type: Dollars
+    expr: {op: param, ref: ny.tcw.phase}
+  - id: phase
+    printed: "(7)"
+    label: "$50,000"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: ny_tcw.h_phase_param, take: {const: 0}}
+  - id: line7
+    printed: "7"
+    label: "Enter the lesser of line 6 or $50,000"
+    type: NonNegDollars
+    expr: {op: smaller_of, of: [line6, phase]}
+  - id: hundred
+    printed: "(scale) (hundred)"
+    label: "100 (scale factor)"
+    type: Count
+    expr: {op: param, ref: ny.hundred}
+  - id: line9_scaled
+    printed: "(scale) (line9_scaled)"
+    label: "Incremental Benefit amount (line 5) times 100"
+    type: NonNegDollars
+    expr: {op: multiply_count, amount: incremental, count: hundred}
+  - id: line9_exact
+    printed: "8, 9"
+    label: "Divide line 7 by $50,000 and round the result to the fourth decimal place; multiply line 5 by line 8 (scaled by 100)"
+    type: NonNegDollars
+    expr: {op: prorate, amount: line9_scaled, part: line7, whole: phase, places: 4}
+    note: "Line 8 is rounded to the fourth decimal place as printed. The product is computed on line 5 times 100, so that it is exact in cents before being scaled back down."
+  - id: line9
+    printed: "9"
+    label: "Multiply line 5 by line 8"
+    type: NonNegDollars
+    expr: {op: multiply_rate, amount: line9_exact, rate: {param: ny.hundredth}}
+    note: "The instructions give no rounding rule for line 9. This line rounds to the cent, half up. The scaled product times 1/100 is the exact product of line 5 and line 8."
+  - id: tax
+    printed: "10"
+    label: "Add lines 3, 4, and 9. Enter here and on line 39."
+    type: NonNegDollars
+    expr: {op: sum, of: [line3, recapture, line9]}
+```
+```

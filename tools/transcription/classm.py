@@ -27,20 +27,23 @@ import yaml
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from transcribe import ROOT, manifest, excerpt_for, load_form, review_response  # noqa: E402
 from taxyear import YEAR, Y, YEAR_ARGS  # noqa: E402
+import jurisdiction  # noqa: E402  (--jurisdiction ny: reviews/ny/<year>/classm/, fixtures/ny/<year>/)
 import families  # noqa: E402
 import rulings  # noqa: E402
 import subjects  # noqa: E402
 
 JOBS = os.path.join(ROOT, ".classm", "jobs.json")
 RAW = os.path.join(ROOT, ".classm")
-LOGS = os.path.join(ROOT, "reviews", Y, "classm")
+LOGS = str(jurisdiction.ypath("reviews", Y, "classm"))
+# The engine's flag for the New York fixtures (classm-jobs seeds its corpus from them).
+ENGINE_ARGS = ["--ny"] if jurisdiction.NY else []
 PROMPT_POLICY = "worked-values-request-bound-v2"
 
 
 def fixture_path(family=families.DEFAULT):
-    return os.path.join(ROOT, "fixtures", Y, families.fixture_name(family))
-SYSTEM = ("You work IRS forms and worksheets by hand from the text given to you and the amounts you are "
-          "given. You have no tools and no other sources. Output only the YAML requested.")
+    return str(jurisdiction.ypath("fixtures", Y, families.fixture_name(family)))
+SYSTEM = jurisdiction.system("You work IRS forms and worksheets by hand from the text given to you and the amounts you are "
+                             "given. You have no tools and no other sources. Output only the YAML requested.")
 STATUS_WORDS = {"single": "Single", "mfj": "Married filing jointly", "mfs": "Married filing separately",
                 "hoh": "Head of household", "qss": "Qualifying surviving spouse"}
 
@@ -118,7 +121,7 @@ def build_prompt(form_doc, excerpt, job):
     # The value type follows the label in brackets: in parentheses after the number it reads as
     # part of the handle (the form shared line numbers take) and is echoed back.
     fill = "\n".join(f'- line {handle(job, l)}: {l["label"]} [value type: {l["type"]}]' for l in job["fill"])
-    return f"""You are filling in one IRS form or worksheet by hand for one taxpayer, working ONLY from the IRS
+    return jurisdiction.preface(f"""You are filling in one IRS form or worksheet by hand for one taxpayer, working ONLY from the IRS
 text provided below and the amounts given here. Do not rely on memory of the tax law or of any
 software. Follow the printed line instructions exactly, including every "if zero or less, enter -0-",
 every "smaller of" and "larger of", every skip instruction, and every filing-status choice.
@@ -162,7 +165,7 @@ No prose before or after the YAML.
 # IRS text (archived snapshots; page markers show document, revision and page)
 
 {excerpt}
-"""
+""")
 
 
 def build_entry_prompt(form_doc, excerpt, job):
@@ -193,7 +196,7 @@ def build_entry_prompt(form_doc, excerpt, job):
     else:
         what = ("This document is filled in once per entry (one row or one record per person, employer, sale "
                 "or gift). Each entry below is named by its key; work every listed line for every entry.")
-    return f"""You are working one IRS computation by hand for one taxpayer, working ONLY from the IRS text
+    return jurisdiction.preface(f"""You are working one IRS computation by hand for one taxpayer, working ONLY from the IRS text
 provided below and the amounts given here. Do not rely on memory of the tax law or of any software.
 Follow the printed instructions exactly, including every test, every "if zero or less, enter -0-",
 every "smaller of" and "larger of", and every filing-status choice.
@@ -239,7 +242,7 @@ No prose before or after the YAML.
 # IRS text (archived snapshots; page markers show document, revision and page)
 
 {excerpt}
-"""
+""")
 
 
 def parse_value(raw, vtype):
@@ -333,7 +336,7 @@ def write_outputs(form_doc, model, jobs, runs, meta_all):
     fixture = fixture_path(family)
     counts = {"AGREE": 0, "DISAGREE": 0, "SKIPPED": 0, "MISSING": 0}
     out = [f"# Class M hand-work — {fid}", "",
-           f"`{form_doc['title']}` worked by hand by an isolated model from its archived pages and the amounts flowing into it, for generated returns that together take every reachable branch (spec 6.1, class M; spec 6.5). Agreements are class M fixtures in `fixtures/{Y}/{families.fixture_name(family)}`; each disagreement carries a ruling.", "",
+           f"`{form_doc['title']}` worked by hand by an isolated model from its archived pages and the amounts flowing into it, for generated returns that together take every reachable branch (spec 6.1, class M; spec 6.5). Agreements are class M fixtures in `{jurisdiction.ypath('fixtures', Y).relative_to(jurisdiction.ROOT)}/{families.fixture_name(family)}`; each disagreement carries a ruling.", "",
            "| field | value |", "| --- | --- |",
            f"| date | {datetime.date.today().isoformat()} |",
            f"| model requested | {model} |",
@@ -444,7 +447,7 @@ def main():
         fcntl.flock(lock, fcntl.LOCK_EX)
         main_js = os.path.join(ROOT, "engine", "dist", "main.js")
         subprocess.run(["node", main_js, "build", *YEAR_ARGS], check=True, stdout=subprocess.DEVNULL)
-        subprocess.run(["node", "--max-old-space-size=8192", main_js, "classm-jobs", "--docs", a.doc, "--include-fixtures", *YEAR_ARGS], check=True, stdout=subprocess.DEVNULL)
+        subprocess.run(["node", "--max-old-space-size=8192", main_js, "classm-jobs", "--docs", a.doc, "--include-fixtures", *YEAR_ARGS, *ENGINE_ARGS], check=True, stdout=subprocess.DEVNULL)
         jobs = [j for j in json.load(open(JOBS))["jobs"] if j["doc"] == a.doc]
     if not jobs:
         sys.exit(f"{a.doc}: no jobs in {JOBS}; run classm-jobs")

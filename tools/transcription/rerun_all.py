@@ -21,18 +21,25 @@ ROOT = os.path.dirname(os.path.dirname(HERE))
 sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 from taxyear import Y, YEAR_ARGS  # noqa: E402
+import jurisdiction  # noqa: E402  (--jurisdiction ny: the New York documents; passed on to each tool)
 import families  # noqa: E402
 TOOLS = {"transcription": ("transcribe.py", "--form"), "render": ("render_compare.py", "--form"), "classm": ("classm.py", "--doc")}
 
 
 def forms_for(kind):
-    d = os.path.join(ROOT, "reviews", Y, kind)
-    return sorted({families.split_stem(f[:-3])[0] for f in os.listdir(d) if f.endswith(".md")})
+    """The forms with a log of the kind; in New York mode also the New York documents whose first review
+    is pending (pending.py), so the first run reviews them."""
+    d = os.path.join(str(jurisdiction.ypath("reviews", Y)), kind)
+    logged = {families.split_stem(f[:-3])[0] for f in os.listdir(d) if f.endswith(".md")} if os.path.isdir(d) else set()
+    if jurisdiction.NY:
+        import pending
+        logged |= pending.listed(kind)
+    return sorted(logged)
 
 
 def run(kind, form, model, resume=False, reasoning_effort=None, max_output_tokens=None, case_jobs=1, carry=True, lines=None):
     script, flag = TOOLS[kind]
-    cmd = [sys.executable, os.path.join(HERE, script), flag, form, *YEAR_ARGS] + (["--model", model] if model else [])
+    cmd = [sys.executable, os.path.join(HERE, script), flag, form, *YEAR_ARGS, *jurisdiction.J_ARGS] + (["--model", model] if model else [])
     if reasoning_effort:
         cmd += ["--reasoning-effort", reasoning_effort]
     if max_output_tokens is not None:
@@ -52,7 +59,7 @@ def run(kind, form, model, resume=False, reasoning_effort=None, max_output_token
     if r.returncode == 3 and carry:
         # T-218: carry earlier rulings over to repeat disagreements (same line, same content, line unchanged)
         fam = families.family_of(model) if model else families.DEFAULT
-        ccmd = [sys.executable, os.path.join(HERE, "carry.py"), "--kind", kind, "--form", form]
+        ccmd = [sys.executable, os.path.join(HERE, "carry.py"), "--kind", kind, "--form", form, *jurisdiction.J_ARGS]
         if fam != families.DEFAULT:
             ccmd += ["--family", fam]
         c = subprocess.run(ccmd, capture_output=True, text=True, cwd=ROOT)

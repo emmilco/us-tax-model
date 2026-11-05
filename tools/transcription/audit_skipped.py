@@ -14,6 +14,7 @@ from pathlib import Path
 import classm as M
 import families
 from taxyear import Y
+import jurisdiction  # --jurisdiction ny: fixtures/ny/<year>/, reviews/ny/<year>/
 
 ROOT = Path(M.ROOT)
 BLANK = {"", "blank", "skip", "skipped", "none", "n/a"}
@@ -97,11 +98,11 @@ def main():
     ap.add_argument("--apply", action="store_true")
     args = ap.parse_args()
     writes, removed, changed = {}, [], 0
-    for fixture in sorted((ROOT / "fixtures" / Y).glob("classm*.json")):
+    for fixture in sorted(jurisdiction.ypath("fixtures", Y).glob("classm*.json")):
         family = fixture.stem.partition(".")[2] or families.DEFAULT
         fx = json.loads(fixture.read_text())
         before = json.dumps(fx, sort_keys=True)
-        for log in sorted((ROOT / "reviews" / Y / "classm").glob("*.md")):
+        for log in sorted(jurisdiction.ypath("reviews", Y, "classm").glob("*.md")):
             fid, log_family = families.split_stem(log.stem)
             if log_family != family:
                 continue

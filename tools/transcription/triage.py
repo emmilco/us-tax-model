@@ -25,7 +25,7 @@ import transcribe as T  # noqa: E402
 
 ROOT = T.ROOT
 POLICY = "executable-triage-v2"
-OUT = os.path.join(ROOT, "reviews", T.Y, "transcription", "triage")
+OUT = str(T.jurisdiction.ypath("reviews", T.Y, "transcription", "triage"))
 
 
 def disagreement_handles(form, family):

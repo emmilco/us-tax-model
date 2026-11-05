@@ -62,6 +62,8 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 import citations as C  # noqa: E402
+import jurisdiction  # noqa: E402  (--jurisdiction ny, docs/ny/DECISIONS.md C1, C8)
+from jurisdiction import ypath  # noqa: E402
 
 WINDOW = 8  # sentences from the heading's sentence that a citation is read to rest on
 PRINTED = {}  # (doc, shift, page, compared sentence) -> the sentence as printed
@@ -142,7 +144,7 @@ def carriers(year):
     def add(kind, ident, path, cite):
         if isinstance(cite, dict) and isinstance(cite.get("locator"), str) and cite.get("doc"):
             out.append((kind, ident, C.rel(path), cite["doc"], cite["locator"]))
-    for path in sorted((ROOT / "forms" / y).glob("*.yaml")):
+    for path in sorted((ypath("forms", y)).glob("*.yaml")):
         raw = yaml.safe_load(path.read_text(encoding="utf-8"))
         doc = raw.get("form") or raw.get("def")
         if doc.get("collection"):
@@ -151,21 +153,21 @@ def carriers(year):
             add("line", line["id"], path, line.get("cite"))
             for r in line.get("refuses", []) or []:
                 add("refusal", line["id"], path, r.get("cite"))
-    for path in sorted((ROOT / "tables" / y).glob("*.yaml")):
+    for path in sorted((ypath("tables", y)).glob("*.yaml")):
         t = yaml.safe_load(path.read_text(encoding="utf-8"))["table"]
         add("table", t["id"], path, t.get("cite"))
-    p = ROOT / "params" / f"{y}.yaml"
+    p = jurisdiction.params_file(y)
     if p.exists():
         params = yaml.safe_load(p.read_text(encoding="utf-8"))["params"]
         for name, v in params.get("values", {}).items():
             add("parameter", name, p, v.get("cite"))
         for name, v in params.get("enums", {}).items():
             add("enum", name, p, v.get("cite"))
-    p = ROOT / "ambiguities" / f"{y}.yaml"
+    p = jurisdiction.register_file(y)
     if p.exists():
         for e in yaml.safe_load(p.read_text(encoding="utf-8"))["register"]["entries"]:
             add("ambiguity", e["id"], p, e.get("cite"))
-    p = ROOT / "interview" / f"questions-{y}.yaml"
+    p = jurisdiction.interview_dir() / f"questions-{y}.yaml"
     if p.exists():
         for q in yaml.safe_load(p.read_text(encoding="utf-8"))["bank"]["questions"]:
             add("question", q["input"], p, q.get("cite"))
@@ -174,7 +176,7 @@ def carriers(year):
 
 def param_values(year):
     """Dollar-amount parameters' values (rates and counts are not looked for in the text)."""
-    p = ROOT / "params" / f"{year}.yaml"
+    p = jurisdiction.params_file(year)
     if not p.exists():
         return {}
     values = yaml.safe_load(p.read_text(encoding="utf-8"))["params"].get("values", {})
@@ -215,7 +217,7 @@ def counterparts(from_year, to_year):
     """data-year doc id -> other-year doc id, by "next" in the earlier year's catalog."""
     early, late = sorted((from_year, to_year))
     nxt = {}
-    cat = ROOT / "tools" / f"sources-{early}.json"
+    cat = jurisdiction.catalog(early)
     if cat.exists():
         for item in json.loads(cat.read_text()):
             if item.get("next"):
@@ -377,7 +379,7 @@ def on_worklist(e):
 
 
 def write_report(r):
-    out_dir = ROOT / "reports" / str(r["to"])
+    out_dir = ypath("reports", str(r["to"]))
     out_dir.mkdir(parents=True, exist_ok=True)
     stem = out_dir / f"year_diff_from_{r['from']}"
     by_strength = collections.Counter(top_strength(e) for e in r["flagged"])
@@ -392,7 +394,7 @@ def write_report(r):
     lines += [f"| {STRENGTH[ORDER[k]]} | {v} |" for k, v in sorted(by_strength.items())]
     lines += ["", "| Kind (worklist) | Items |", "| --- | --- |"] + [f"| {k} | {v} |" for k, v in kinds.most_common()]
     lines += ["", "## Documents", ""] + [f"- `{d}`: {s}" for d, s in sorted(r["docs"].items())] + ["", "## Worklist", ""]
-    literals_file = ROOT / "reports" / str(r["to"]) / f"year_literals_from_{r['from']}.json"
+    literals_file = ypath("reports", str(r["to"])) / f"year_literals_from_{r['from']}.json"
     if r["data"] == r["to"] and literals_file.exists():
         literals = json.loads(literals_file.read_text())
         lines += [f"### Definitions that still name {r['from']} ({len(literals)})", ""]
@@ -471,14 +473,14 @@ def adopt(from_year, to_year):
     """Copy the from-year definitions to the to-year (refusing to overwrite), with the
     year replaced where it names the year, and relocate their pages."""
     f, t = str(from_year), str(to_year)
-    pairs = [(ROOT / "forms" / f, ROOT / "forms" / t), (ROOT / "tables" / f, ROOT / "tables" / t),
-             (ROOT / "params" / f"{f}.yaml", ROOT / "params" / f"{t}.yaml"),
-             (ROOT / "ambiguities" / f"{f}.yaml", ROOT / "ambiguities" / f"{t}.yaml")]
-    pairs += [(p, p.with_name(p.name.replace(f, t))) for p in sorted((ROOT / "interview").glob(f"*{f}.yaml"))]
+    pairs = [(ypath("forms", f), ypath("forms", t)), (ypath("tables", f), ypath("tables", t)),
+             (jurisdiction.params_file(f), jurisdiction.params_file(t)),
+             (jurisdiction.register_file(f), jurisdiction.register_file(t))]
+    pairs += [(p, p.with_name(p.name.replace(f, t))) for p in sorted((jurisdiction.interview_dir()).glob(f"*{f}.yaml"))]
     clash = [str(dst.relative_to(ROOT)) for _, dst in pairs if dst.exists()]
     if clash:
         sys.exit("adopt: refusing to overwrite " + ", ".join(clash))
-    if not (ROOT / "sources" / t / "manifest.json").exists():
+    if not (ypath("sources", t) / "manifest.json").exists():
         sys.exit(f"adopt: archive the {t} sources first (tools/fetch_sources.py --year {t} --fetch)")
 
     def convert(text):
@@ -492,26 +494,26 @@ def adopt(from_year, to_year):
                 (dst / p.name).write_text(convert(p.read_text(encoding="utf-8")), encoding="utf-8")
         elif src.exists():
             dst.write_text(convert(src.read_text(encoding="utf-8")), encoding="utf-8")
-    rulings = ROOT / "reviews" / f / "citations.json"
-    if rulings.exists() and not (ROOT / "reviews" / t / "citations.json").exists():
+    rulings = ypath("reviews", f) / "citations.json"
+    if rulings.exists() and not (ypath("reviews", t) / "citations.json").exists():
         data = json.loads(rulings.read_text())
         for r in data.get("anchors", []) + data.get("quotes", []):
             r["status"] = f"carried from {f}"
-        (ROOT / "reviews" / t).mkdir(parents=True, exist_ok=True)
-        (ROOT / "reviews" / t / "citations.json").write_text(json.dumps(data, indent=1, ensure_ascii=False) + "\n")
+        (ypath("reviews", t)).mkdir(parents=True, exist_ok=True)
+        (ypath("reviews", t) / "citations.json").write_text(json.dumps(data, indent=1, ensure_ascii=False) + "\n")
     literals = []
     for _, dst in pairs:
         for p in (sorted(dst.glob("*.yaml")) if dst.is_dir() else [dst]):
             for n, line in enumerate(p.read_text(encoding="utf-8").split("\n"), 1):
                 if year_literal(line, f):
                     literals.append((str(p.relative_to(ROOT)), n, line.strip()))
-    (ROOT / "reports" / t).mkdir(parents=True, exist_ok=True)
-    (ROOT / "reports" / t / f"year_literals_from_{f}.json").write_text(json.dumps(literals, indent=1) + "\n")
+    (ypath("reports", t)).mkdir(parents=True, exist_ok=True)
+    (ypath("reports", t) / f"year_literals_from_{f}.json").write_text(json.dumps(literals, indent=1) + "\n")
     print(f"adopt: {len(literals)} line(s) of the {t} definitions still name {f} outside citations "
           f"(reports/{t}/year_literals_from_{f}.json); each is on the worklist")
     print(f"adopt: copied the {f} definitions (and citation rulings, to be reviewed again) to {t}; "
           f"relocating page numbers against the {t} archive")
-    subprocess.run([sys.executable, str(ROOT / "tools" / "citations.py"), "--relocate", "--from", f, "--year", t], check=True)
+    subprocess.run([sys.executable, str(ROOT / "tools" / "citations.py"), "--relocate", "--from", f, "--year", t, *jurisdiction.J_ARGS], check=True)
 
 
 # ---------- self-test ----------

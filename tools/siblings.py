@@ -293,7 +293,8 @@ def line_ids_at(rev):
 
 def changed_logs(base):
     changed = subprocess.run(["git", "diff", "--name-only", base, "--",
-                              f"reviews/{Y}/transcription", f"reviews/{Y}/render"],
+                              f"reviews/{Y}/transcription", f"reviews/{Y}/render",
+                              f"reviews/ny/{Y}/transcription", f"reviews/ny/{Y}/render"],
                              capture_output=True, text=True, check=False).stdout
     forms = set()
     for path in changed.splitlines():

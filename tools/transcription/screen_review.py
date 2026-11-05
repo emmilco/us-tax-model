@@ -23,16 +23,19 @@ import yaml
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from transcribe import ROOT, manifest, excerpt_for, call_model  # noqa: E402
 from taxyear import Y  # noqa: E402
+import jurisdiction  # noqa: E402  (--jurisdiction ny: the screens of New York lines; reviews/ny/<year>/screens/)
 
-OUT = os.path.join(ROOT, "reviews", Y, "screens")
-RAW = os.path.join(ROOT, ".transcription", "screens")
-SYSTEM = ("You review the questions a tax tool asks a filer against the IRS text the questions stand in "
-          "for. You have no tools and no other sources. Output only the YAML requested.")
+OUT = str(jurisdiction.ypath("reviews", Y, "screens"))
+# A New York screen review may share its screen (a federal scope question gating New York lines) with a federal
+# one, so its raw prompts and responses are kept apart.
+RAW = os.path.join(ROOT, ".transcription", *(["ny"] if jurisdiction.NY else []), "screens")
+SYSTEM = jurisdiction.system("You review the questions a tax tool asks a filer against the IRS text the questions stand in "
+                             "for. You have no tools and no other sources. Output only the YAML requested.")
 
 
 def load_lines():
     lines = {}
-    for path in sorted(glob.glob(os.path.join(ROOT, "forms", Y, "*.yaml"))):
+    for path in [p for d in jurisdiction.read_dirs("forms", Y) for p in sorted(glob.glob(os.path.join(str(d), "*.yaml")))]:
         d = yaml.safe_load(open(path, encoding="utf-8"))
         doc = d.get("form") or d.get("def")
         for l in doc["lines"]:
@@ -41,7 +44,7 @@ def load_lines():
 
 
 def encoded_english(doc_id, line_id):
-    path = os.path.join(ROOT, "rendered", Y, doc_id + ".md")
+    path = os.path.join(str(jurisdiction.doc_dir("rendered", Y, doc_id)), doc_id + ".md")
     text = open(path, encoding="utf-8").read()
     m = re.search(r"^## [^\n]*`" + re.escape(line_id) + r"`\n(.*?)(?=^## |\Z)", text, re.S | re.M)
     if not m:
@@ -51,8 +54,12 @@ def encoded_english(doc_id, line_id):
 
 
 def screens(lines):
+    """{screen: [(doc, gated line, refusal)]}: every input that gates a line, with the lines of the jurisdiction
+    under review it gates (in New York mode a federal screen gating New York lines is reviewed for those)."""
     gates = {}
     for lid, (doc, l) in lines.items():
+        if not jurisdiction.mine(doc):
+            continue
         for r in l.get("refuses", []) or []:
             gates.setdefault(r["when"], []).append((doc, l, r))
     return {g: v for g, v in sorted(gates.items()) if g in lines and lines[g][1]["expr"].get("op") == "input"}
@@ -65,7 +72,7 @@ def build_prompt(screen, sline, gated, excerpt):
   Computed as (when the screen is answered no): {encoded_english(doc, l['id'])}
   Refusal when the screen is answered yes: {r['form']} — {r['remedy']}
   Cited: {l['cite']['doc']} {l['cite']['locator']}; refusal cites {r['cite']['doc']} {r['cite']['locator']}""")
-    return f"""A tax preparation tool asks the filer a yes/no screening question. If the filer answers YES, the
+    return jurisdiction.preface(f"""A tax preparation tool asks the filer a yes/no screening question. If the filer answers YES, the
 tool refuses the lines listed below (it stops and names the form the filer needs). If the filer
 answers NO, the tool computes those lines as shown, which usually means the amounts the screen
 covers are treated as zero.
@@ -110,7 +117,7 @@ Use an empty list when the question covers the lines exactly. No prose before or
 # IRS text (archived snapshots; page markers show document, revision and page)
 
 {excerpt}
-"""
+""")
 
 
 def prompt_for(screen, gated, lines, mani):

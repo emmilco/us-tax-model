@@ -1,0 +1,249 @@
+{
+ "kind": "render",
+ "form": "ny_rs",
+ "rulings": [
+  {
+   "printed": "(band 1) (hoh.b1.product)",
+   "restated": "Multiply column (band 1) (hoh.b1.excess) by 4% (0.04) (ny.rs.b1.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 4% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 1) (mfj.b1.product)",
+   "restated": "Multiply column (band 1) (mfj.b1.excess) by 4% (0.04) (ny.rs.b1.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 4% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 1) (single.b1.product)",
+   "restated": "Multiply column (band 1) (single.b1.excess) by 4% (0.04) (ny.rs.b1.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The schedule says '4% of line 38' and gives no rounding. The pages provided do not support rounding the product to the nearest dollar, half up.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 2) (hoh.b2.product)",
+   "restated": "Multiply column (band 2) (hoh.b2.excess) by 45/1000 (ny.rs.b2.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 4.5% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 2) (mfj.b2.product)",
+   "restated": "Multiply column (band 2) (mfj.b2.excess) by 45/1000 (ny.rs.b2.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 4.5% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 2) (single.b2.product)",
+   "restated": "Multiply column (band 2) (single.b2.excess) by 45/1000 (ny.rs.b2.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 4.5% rate matches. The schedule states no rounding, so rounding to the nearest dollar, half up, cannot be confirmed from the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 3) (hoh.b3.product)",
+   "restated": "Multiply column (band 3) (hoh.b3.excess) by 525/10000 (ny.rs.b3.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 5.25% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 3) (mfj.b3.product)",
+   "restated": "Multiply column (band 3) (mfj.b3.excess) by 525/10000 (ny.rs.b3.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 5.25% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 3) (single.b3.product)",
+   "restated": "Multiply column (band 3) (single.b3.excess) by 525/10000 (ny.rs.b3.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 5.25% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 4) (hoh.b4.product)",
+   "restated": "Multiply column (band 4) (hoh.b4.excess) by 55/1000 (ny.rs.b4.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 5.5% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 4) (mfj.b4.product)",
+   "restated": "Multiply column (band 4) (mfj.b4.excess) by 55/1000 (ny.rs.b4.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 5.5% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 4) (single.b4.product)",
+   "restated": "Multiply column (band 4) (single.b4.excess) by 55/1000 (ny.rs.b4.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 5.5% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 5) (hoh.b5.product)",
+   "restated": "Multiply column (band 5) (hoh.b5.excess) by 6% (0.06) (ny.rs.b5.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 6% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 5) (mfj.b5.product)",
+   "restated": "Multiply column (band 5) (mfj.b5.excess) by 6% (0.06) (ny.rs.b5.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 6% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 5) (single.b5.product)",
+   "restated": "Multiply column (band 5) (single.b5.excess) by 6% (0.06) (ny.rs.b5.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 6% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 6) (hoh.b6.product)",
+   "restated": "Multiply column (band 6) (hoh.b6.excess) by 685/10000 (ny.rs.b6.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 6.85% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 6) (mfj.b6.product)",
+   "restated": "Multiply column (band 6) (mfj.b6.excess) by 685/10000 (ny.rs.b6.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 6.85% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 6) (single.b6.product)",
+   "restated": "Multiply column (band 6) (single.b6.excess) by 685/10000 (ny.rs.b6.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 6.85% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 7) (hoh.b7.product)",
+   "restated": "Multiply column (band 7) (hoh.b7.excess) by 965/10000 (ny.rs.b7.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 9.65% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 7) (mfj.b7.product)",
+   "restated": "Multiply column (band 7) (mfj.b7.excess) by 965/10000 (ny.rs.b7.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 9.65% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 7) (single.b7.product)",
+   "restated": "Multiply column (band 7) (single.b7.excess) by 965/10000 (ny.rs.b7.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 9.65% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 8) (hoh.b8.product)",
+   "restated": "Multiply column (band 8) (hoh.b8.excess) by 103/1000 (ny.rs.b8.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 10.3% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 8) (mfj.b8.product)",
+   "restated": "Multiply column (band 8) (mfj.b8.excess) by 103/1000 (ny.rs.b8.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 10.3% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 8) (single.b8.product)",
+   "restated": "Multiply column (band 8) (single.b8.excess) by 103/1000 (ny.rs.b8.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 10.3% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 9) (hoh.b9.product)",
+   "restated": "Multiply column (band 9) (hoh.b9.excess) by 109/1000 (ny.rs.b9.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 10.9% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 9) (mfj.b9.product)",
+   "restated": "Multiply column (band 9) (mfj.b9.excess) by 109/1000 (ny.rs.b9.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 10.9% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  },
+  {
+   "printed": "(band 9) (single.b9.product)",
+   "restated": "Multiply column (band 9) (single.b9.excess) by 109/1000 (ny.rs.b9.rate), rounded to the nearest multiple of $1 (half up).",
+   "model": "The 10.9% rate matches. No rounding is stated in the text given.",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4), which the rendering names (\"Interpretation\"): IT-201-I p. 7, \"Enter only whole dollar amounts on your New York return.\", and p. 2, \"When you enter amounts on your return, enter whole dollar amounts only\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" The register rounds a product of a rate and an amount once, half-up, to the dollar. The schedule's rate and band are as printed (the reviewer confirms the rate); its pages, the rate schedule section, do not carry the whole-dollar rule.",
+   "context": "c9dbc7ac593902bb0b45b34a5d946c206b8c76083b5e9636939de22c3b8ccec7",
+   "date": "2026-11-04",
+   "run": "7716eaa50791fab52c52fb3a7bcd589227b6a23547a30d509596ff3bdbc49183"
+  }
+ ]
+}

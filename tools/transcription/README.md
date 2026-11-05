@@ -215,6 +215,64 @@ recorded in logs. A response ending because of length cannot be accepted, even
 if its partial content happens to parse. Original bound receipts predating this
 option retain their fixed 65536 allowance and cannot be relabeled as larger calls.
 
+## New York (`--jurisdiction ny`)
+
+Every review tool and check takes `--jurisdiction ny` (read by `tools/jurisdiction.py`; default
+federal, whose paths, prompts and outputs it leaves as they are). In New York mode the tools review
+the New York documents (`forms/ny/<year>/`: `ny_it201`, `ny_it2`, `ny_rs`, `ny_city_rs`, `ny_tcw`,
+`ny_tcw_first`) against `sources/ny/<year>/`, write their logs under `reviews/ny/<year>/` and their
+reports under `reports/ny/<year>/`, and read the rendering in `rendered/ny/<year>/`
+(`node engine/dist/main.js render --ny`). Because a New York line copies federal lines, the tools
+read across both trees: the manifest, the documents, tables and parameters of the catalog and
+type checker are the federal ones and the New York ones. A New York request:
+
+- opens with a short jurisdiction note (`jurisdiction.NY_NOTE`; the system prompt gains one
+  sentence), the fixed wording after it unchanged;
+- cites only New York pages for the document's own lines; a render or class M glossary entry of a
+  federal line brings that line's own federal pages, as across federal forms;
+- lists the New York year parameters (`ny.`) only;
+- keeps the catalog source-selected. Of the federal return it lists the federal lines the New York
+  text names (catalog reason `named lines: ...`): by form and line ("federal Form 1040, line 1z"), or
+  by printed label (`federal_labelled`), since the New York form copies most federal amounts by their
+  federal labels without naming the line. A label match is the whole label phrase, normalized (case,
+  parentheses and punctuation dropped), from the line's printed label as printed on the federal form's
+  own archived pages (its sentences, less "This is your" and instruction sentences such as "Add lines
+  ..."; "Earned income credit (EIC)" also without "(EIC)"; "IRA distributions, taxable amount" also as
+  "taxable amount of IRA distributions"); it counts only where the 50 words before it name the line's
+  federal form or say "federal" (implying Form 1040 and its numbered schedules), not where the text
+  qualifies it as New York's ("New York adjusted gross income", "city taxable income"), and not inside
+  a longer phrase matched at the same place. A federal document is listed whole only where a line of
+  the document cites its pages or the document instantiates a federal definition; a federal form the
+  text names without naming a line, and the federal definitions, are not listed (a note after the
+  catalog says so). A federal line the encoding reads that the text does not name stays out, and the
+  input-context check (`input_context.py`) reports it. The IT-201 instructions are, like `i1040gi`, left
+  out of the whole-text catalog selection;
+- gives of the IT-201-I web edition (`ny_it201i-html`, archived as one page) only the sections its
+  locators name by heading (`html_sections.py`): the heading's section, widened to the enclosing
+  section where the locator quotes a phrase outside it, with the headings above it and their lead
+  text; a locator naming no heading gives the whole page. Its citations are its tables and
+  worksheets, the IT-201-I pages whose PDF text is out of reading order
+  (`sources/ny/<year>/README.md`), and name no PDF page, so the web text is kept for them.
+
+Class M runs `classm-jobs --ny`, which seeds its corpus from the New York fixtures; agreements go to
+`fixtures/ny/<year>/classm.json`. The screen review covers input screens only, and every New York
+refusal is gated by a computed gate over interview answers, so New York mode has no screens (the
+gates are judged in the render review's glossary).
+
+```
+python3 tools/transcription/transcribe.py --jurisdiction ny --form ny_it201 --dry-run
+python3 tools/transcription/rerun_all.py --jurisdiction ny --kinds transcription,render,classm
+python3 tools/transcription/completeness_review.py --jurisdiction ny
+python3 tools/transcription/check_logs.py --jurisdiction ny
+```
+
+Until a New York document's first review of a kind is run, it is listed in
+`reviews/ny/<year>/pending.json` (`pending.py`): `check_logs.py`, `check_completeness.py` and
+`check_screens.py` in New York mode report it as pending instead of failing. A listed document that
+has a review fails the check until it is removed from the list, so the list only shrinks; deleting the
+file makes the checks strict. `rerun_all.py --jurisdiction ny` runs the logged documents and the
+pending ones.
+
 ## Excerpt selection
 
 The pages a form's citations name (`p. N`, `pp. N–M`), cut at the archived

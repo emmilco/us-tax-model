@@ -1,0 +1,42 @@
+{
+ "kind": "render",
+ "form": "ny_it201",
+ "rulings": [
+  {
+   "printed": "11",
+   "restated": "Enter $0 (ny.zero).",
+   "model": "The form asks for 'Rental real estate, royalties, partnerships, S corporations, trusts, etc. (submit copy of federal Schedule E)'. The program always enters $0, and no refusal names Schedule E income.",
+   "ruling": "Ruling: model error; the line is zero because the federal return it copies cannot hold Schedule E income: this tool refuses it on the federal return (scope.schedule1, \"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately\"; the federal encoding has no Schedule 1 line 5 (\"Rental real estate, royalties, partnerships, S corporations, trusts, etc. Attach Schedule E\"); f1040s1 p. 1), and the New York return is computed only from a computed federal return. The rendering's note says so. Not a defect.",
+   "context": "9abcae0aba916408bf708704d4956c338404333d5fa26955eb8a6a2dcb9cee88",
+   "date": "2026-11-04",
+   "run": "a16937af81995ef2abcf910af40903a615deb1559128d218f86c360bd3399678"
+  },
+  {
+   "printed": "12",
+   "restated": "Enter $0 (ny.zero).",
+   "model": "The form asks for 'Rental real estate included in line 11'. This is fixed at $0 with no refusal for rental income, so it is wrong whenever line 11 should include rental real estate.",
+   "ruling": "Ruling: model error; line 12 is the rental real estate included in line 11, and line 11 is always zero because the federal return refuses Schedule E (scope.schedule1; no federal Schedule 1 line 5), so line 12 is zero too. Not a defect.",
+   "context": "9abcae0aba916408bf708704d4956c338404333d5fa26955eb8a6a2dcb9cee88",
+   "date": "2026-11-04",
+   "run": "a16937af81995ef2abcf910af40903a615deb1559128d218f86c360bd3399678"
+  },
+  {
+   "printed": "13",
+   "restated": "Enter $0 (ny.zero).",
+   "model": "The form asks for 'Farm income or loss (submit a copy of federal Schedule F)'. The program always enters $0, and no refusal names farm income.",
+   "ruling": "Ruling: model error; the line is zero because the federal return it copies cannot hold Schedule F income: this tool refuses it on the federal return (scope.schedule1, \"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately\"; the federal encoding has no Schedule 1 line 6 (\"Farm income or (loss). Attach Schedule F\"); f1040s1 p. 1), and the New York return is computed only from a computed federal return. The rendering's note says so. Not a defect.",
+   "context": "9abcae0aba916408bf708704d4956c338404333d5fa26955eb8a6a2dcb9cee88",
+   "date": "2026-11-04",
+   "run": "a16937af81995ef2abcf910af40903a615deb1559128d218f86c360bd3399678"
+  },
+  {
+   "printed": "8",
+   "restated": "Enter $0 (ny.zero).",
+   "model": "The form asks for 'Other gains or losses (submit a copy of federal Form 4797)'. The program always enters $0, and no refusal names Form 4797 gains. Only the line 19 check against federal AGI would catch a nonzero amount.",
+   "ruling": "Ruling: model error; the line is zero because the federal return it copies cannot hold Form 4797 gains or losses: this tool refuses it on the federal return (scope.schedule1, \"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately\"; the federal encoding has no Schedule 1 line 4 (\"Other gains or (losses). Check if any from Form(s): ... 4797\"); f1040s1 p. 1), and the New York return is computed only from a computed federal return. The rendering's note says so. Not a defect.",
+   "context": "9abcae0aba916408bf708704d4956c338404333d5fa26955eb8a6a2dcb9cee88",
+   "date": "2026-11-04",
+   "run": "a16937af81995ef2abcf910af40903a615deb1559128d218f86c360bd3399678"
+  }
+ ]
+}

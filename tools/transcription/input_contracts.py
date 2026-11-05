@@ -20,7 +20,8 @@ def encoded(value):
 
 
 def load(form, year):
-    path = DIRECTORY / str(year) / f"{form}.json"
+    # A New York document's bank (id ny_) would sit under <directory>/ny/<year>/.
+    path = DIRECTORY / ("ny" if str(form).startswith("ny_") else "") / str(year) / f"{form}.json"
     if not path.exists():
         if form in REQUIRED.get(str(year), set()):
             raise FileNotFoundError("required source input-contract bank is missing: " + str(path))
@@ -32,7 +33,7 @@ def load(form, year):
         raise ValueError("invalid input-contract cases")
     if len({test['id'] for test in bank['cases']}) != len(bank['cases']):
         raise ValueError("duplicate input-contract case id")
-    manifest = json.loads((ROOT / 'sources' / str(year) / 'manifest.json').read_text())
+    manifest = json.loads((ROOT / 'sources' / ('ny' if str(form).startswith('ny_') else '') / str(year) / 'manifest.json').read_text())
     sources = {source['id']: source for source in manifest['documents']}
     if not bank.get('sources') or any(source['text_sha256'] != sources.get(source['doc'], {}).get('text_sha256') for source in bank['sources']):
         raise ValueError("stale input-contract source snapshot")

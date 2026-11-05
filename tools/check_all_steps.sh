@@ -48,9 +48,10 @@ wave() {
   fi
 }
 
-# Chained with && because set -e does not apply inside a command whose status is tested.
+# Chained with && because set -e does not apply inside a command whose status is tested. The build
+# writes both jurisdictions' canonical data; the New York documents render to rendered/ny/<year>/.
 build_and_render() {
-  "${node[@]}" build "$@" && "${node[@]}" render "$@"
+  "${node[@]}" build "$@" && "${node[@]}" render "$@" && "${node[@]}" render --ny "$@"
 }
 
 lean_compare() {
@@ -107,6 +108,24 @@ step limits python3 tools/check_limits.py "$@"
 step limits_self_test python3 tools/check_limits.py --self-test "$@"
 step completeness python3 tools/transcription/check_completeness.py "$@"
 step completeness_self_test python3 tools/transcription/check_completeness.py --self-test "$@"
+# New York (docs/ny/): its sources, citations and source-coverage checks, its tax table and predictor, and
+# its review logs. A New York document whose first review is not yet run is listed in
+# reviews/ny/<year>/pending.json and reported as pending by the log checks; the list only shrinks
+# (tools/transcription/pending.py), and deleting it makes them strict.
+step ny_fetch_sources python3 tools/fetch_sources.py --jurisdiction ny "$@"
+step ny_check_extraction python3 tools/check_extraction.py --jurisdiction ny "$@"
+step ny_citations python3 tools/citations.py --strict --jurisdiction ny "$@"
+step ny_instruction_cites python3 tools/check_instruction_cites.py --jurisdiction ny "$@"
+step ny_operands python3 tools/check_operands.py --jurisdiction ny "$@"
+step ny_signs python3 tools/check_signs.py --jurisdiction ny "$@"
+step ny_consumers python3 tools/check_consumers.py --jurisdiction ny "$@"
+step ny_limits python3 tools/check_limits.py --jurisdiction ny "$@"
+step ny_tax_table python3 tools/extract_ny_tax_table.py --check "$@"
+step ny_predict_self_test python3 tools/ny_predict.py --self-test
+step ny_review_tools python3 tools/transcription/test_ny_review.py
+step ny_check_logs python3 tools/transcription/check_logs.py --jurisdiction ny "$@"
+step ny_completeness python3 tools/transcription/check_completeness.py --jurisdiction ny "$@"
+step ny_screen_currency python3 tools/transcription/check_screens.py --jurisdiction ny "$@"
 wave
 
 step conjecture "${node[@]}" conjecture "$@"
@@ -123,6 +142,7 @@ step differential "${node[@]}" differential "$@"
 step engine_differential tools/engines/run.sh "$@"
 step mutate "${node[@]}" mutate "$@"
 step compare lean_compare "$@"
+step ny_test_fixtures "${node[@]}" test-fixtures --ny "$@"
 wave
 
 step evidence "${node[@]}" evidence "$@"
@@ -130,4 +150,8 @@ step review_stage2 "${node[@]}" review-stage2 "$@"
 step review_stage3 "${node[@]}" review-stage3 "$@"
 step review_stage4 "${node[@]}" review-stage4 "$@"
 step review_stage5 "${node[@]}" review-stage5 "$@"
+# After the compare wave, which builds the Lean evaluator.
+step ny_compare "${node[@]}" compare --ny "$@"
+# New York mutants, killed only by the New York fixtures (the federal run takes federal mutants only).
+step ny_mutate "${node[@]}" mutate --ny "$@"
 wave

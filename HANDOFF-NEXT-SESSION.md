@@ -1,3 +1,24 @@
+# New York integration — 2026-11-05
+
+**State:** New York (Form IT-201, full-year New York City resident, tax year 2025) is on `main`. That includes the
+cloud session's Phases 1 to 3 (branch `ny/2025-foundation` keeps its history) and the local integration
+(`docs/ny/INTEGRATION.md`, last section). Paid review calls cost $11.64; there were no medium or higher findings; the
+lows are BUG-0424 (T-244). Tax-year 2026 preparation is `d601762` (`docs/ty2026/ADOPTION.md`).
+
+**Owner decisions (2026-11-04):**
+- Keep the equivalence-review standard (parenthesized lines count as printed).
+- New York reviews staged.
+- The New York catalog is source-only, with printed-label matching.
+- The GPT family becomes GPT-6.1 Sol (T-217).
+- The process-optimization plan (`docs/2026-11-04_process_optimization.md`): register, then implement (T-237 to T-241).
+- Package B is to be redesigned around release-gated check-all.
+- Package C auto-rules identical-value disagreements, sampling 1 in 10.
+
+**Next:** T-237 items 2, 3 and 9, then T-240, the T-238 release-gating design for the owner, and T-239; T-236 (the web UI
+pilot, tax year 2025, local and single-user) before coverage expansion resumes; T-217 with Sol after that.
+
+---
+
 # Round 2 and the tooling batch — 2026-11-04
 
 **State:** the tooling batch is f27d71d (T-218 carry-over, T-219 line-scoped reviews, T-220 yield, T-225, T-228 and

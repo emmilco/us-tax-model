@@ -111,10 +111,22 @@ def main (args : List String) : IO UInt32 := do
     let forms ← readDocs canon
     let tables ← readDocs (canon / "tables")
     let paramsRaw ← IO.FS.readFile (canon / "params.json")
-    let params :=
+    let fedParams :=
       match Json.parse paramsRaw with
       | .ok j => (j.getObjVal? "params").toOption.getD Json.null
       | .error _ => Json.null
+    -- New York parameters (decision C1, docs/ny/DECISIONS.md) are written to params-ny.json by the
+    -- build; their `values` are merged into the federal ones, as engine/src/canonical.ts does.
+    let nyPath := canon / "params-ny.json"
+    let params ← if ← nyPath.pathExists then do
+        let nyRaw ← IO.FS.readFile nyPath
+        let nyValues :=
+          match Json.parse nyRaw with
+          | .ok j => ((j.getObjVal? "params").toOption.bind (fun p => (p.getObjVal? "values").toOption)).getD (Json.mkObj [])
+          | .error _ => Json.mkObj []
+        let fedValues := (fedParams.getObjVal? "values").toOption.getD (Json.mkObj [])
+        pure (fedParams.setObjVal! "values" (fedValues.mergeObj nyValues))
+      else pure fedParams
     let inputsRaw ← IO.FS.readFile inp
     let inputs :=
       match Json.parse inputsRaw with

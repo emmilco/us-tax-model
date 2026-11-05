@@ -24,13 +24,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 from taxyear import Y  # noqa: E402
+from jurisdiction import ypath  # noqa: E402  (--jurisdiction ny, docs/ny/DECISIONS.md C1)
 from citations import split_top  # noqa: E402
 import baseline_check  # noqa: E402
 from baseline_check import line_subject  # noqa: E402
 
 CANONICAL = ROOT / "canonical" / Y
-RULINGS = ROOT / "reviews" / Y / "operands.json"
-REPORT = ROOT / "reports" / Y / "operands.md"
+RULINGS = ypath("reviews", Y, "operands.json")
+REPORT = ypath("reports", Y, "operands.md")
 
 PRINTED = re.compile(r"^\d{1,2}[a-z]?$")
 NUM = r"\d{1,2}[a-z]?"

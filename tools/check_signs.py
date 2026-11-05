@@ -17,12 +17,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 from taxyear import Y  # noqa: E402
+from jurisdiction import ypath  # noqa: E402  (--jurisdiction ny, docs/ny/DECISIONS.md C1)
 import baseline_check  # noqa: E402
 from baseline_check import line_subject  # noqa: E402
 
 CANONICAL = ROOT / "canonical" / Y
-RULINGS = ROOT / "reviews" / Y / "signs.json"
-REPORT = ROOT / "reports" / Y / "signs.md"
+RULINGS = ypath("reviews", Y, "signs.json")
+REPORT = ypath("reports", Y, "signs.md")
 RATE_OPS = {"multiply_rate": "amount", "prorate": "amount"}
 
 

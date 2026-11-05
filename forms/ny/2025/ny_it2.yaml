@@ -1,0 +1,54 @@
+# Form IT-2 (2025), Summary of W-2 Statements: one New York record per federal Form W-2 (decision B2), keyed like the
+# federal W-2 entries; the federal W-2 definition is unchanged. Only the New York boxes the target reads are asked:
+# box 17 (state income tax, New York State) and box 19 (local income tax, New York City). Yonkers withholding is
+# refused (Yonkers is outside this tool).
+
+form:
+  id: ny_it2
+  kind: form
+  title: "Form IT-2 (2025), Summary of W-2 Statements — one record per Form W-2"
+  tax_year: 2025
+  collection:
+    cite: { doc: ny_it201i, locator: 'p. 21, Lines 72, 73, and 74, "You must complete a W-2 record for each W-2 you receive, even if it does not show any New York State, New York City (NYC), or Yonkers wages or tax withheld."' }
+  lines:
+    - id: ny_it2.state_withheld
+      printed: "17a"
+      label: "NYS income tax withheld"
+      type: NonNegDollars
+      expr: { op: input, source: "New York State income tax withheld on this Form W-2 (box 17 for New York State; 0 if none)" }
+      cite: { doc: ny_it2, locator: 'p. 1, W-2 Record 1, "Box 17a NYS income tax withheld"' }
+    - id: ny_it2.yonkers_withheld
+      printed: "19 (Yonkers)"
+      label: "Local income tax withheld for Yonkers"
+      type: NonNegDollars
+      expr: { op: input, source: "Form W-2 box 19, local income tax withheld for Yonkers (0 if none)" }
+      cite: { doc: ny_it2, locator: 'p. 1, W-2 Record 1, "Box 19 Local income tax withheld"' }
+    - id: ny_it2.yonkers_gate
+      printed: "(gate)"
+      label: "This W-2 shows Yonkers tax withheld"
+      type: Bool
+      expr: { op: test, gt: ["ny_it2.yonkers_withheld", { const: 0 }] }
+      cite: { doc: ny_it201i, locator: 'p. 21, Lines 72, 73, and 74, "Enter on the appropriate line your total New York State, New York City, and Yonkers tax withheld from any of the following:"' }
+    - id: ny_it2.state_whole
+      printed: "17a (whole dollars)"
+      label: "NYS income tax withheld, in whole dollars"
+      type: NonNegDollars
+      expr: { op: round, of: "ny_it2.state_withheld", unit: 100, rule: half_up }
+      cite: { doc: ny_it2, locator: 'p. 2, Entering whole dollar amounts, "drop amounts below 50 cents and increase amounts from 50 to 99 cents to the next dollar"' }
+    - id: ny_it2.city_withheld
+      printed: "19"
+      label: "Local income tax withheld (New York City)"
+      type: NonNegDollars
+      expr: { op: input, source: "Form W-2 box 19, local income tax withheld for New York City (0 if none)" }
+      cite: { doc: ny_it2, locator: 'p. 1, W-2 Record 1, "Box 19 Local income tax withheld"' }
+      refuses:
+        - when: ny_it2.yonkers_gate
+          form: "Yonkers tax withheld (Form IT-201 line 74)"
+          remedy: "Yonkers withholding means Yonkers tax may be owed, which is outside this tool."
+          cite: { doc: ny_it201i, locator: 'p. 17, Line 55: Yonkers resident income tax surcharge, "If you were a resident of Yonkers, did you enter an amount that is more than 0 on line 46?"' }
+    - id: ny_it2.city_whole
+      printed: "19 (whole dollars)"
+      label: "Local income tax withheld (New York City), in whole dollars"
+      type: NonNegDollars
+      expr: { op: round, of: "ny_it2.city_withheld", unit: 100, rule: half_up }
+      cite: { doc: ny_it2, locator: 'p. 2, Entering whole dollar amounts, "drop amounts below 50 cents and increase amounts from 50 to 99 cents to the next dollar"' }

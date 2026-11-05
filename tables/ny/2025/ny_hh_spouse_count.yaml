@@ -1,0 +1,19 @@
+# One for your spouse on a joint return, for the household credit tables' column (the number of dependents listed
+# in item H, plus one for you, and one for your spouse if married filing joint return), by filing status.
+table:
+  id: ny_hh_spouse_count
+  kind: keyed
+  title: "Household credit tables: one for your spouse if married filing joint return"
+  tax_year: 2025
+  cite:
+    doc: ny_it201i-html
+    locator: 'New York State household credit table 2—Filing status ②, ④, and ⑤, "plus one for you (and one for your spouse if Married filing joint return) is:"'
+  keys:
+    - { name: status, type: Enum(filing_status) }
+  cell: Count
+  rows:
+    - { keys: [single], value: 0 }
+    - { keys: [mfj], value: 1 }
+    - { keys: [mfs], value: 0 }
+    - { keys: [hoh], value: 0 }
+    - { keys: [qss], value: 0 }

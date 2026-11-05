@@ -26,18 +26,19 @@ import yaml
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 sys.path.insert(0, os.path.dirname(HERE))
-from transcribe import ROOT, SOURCES, manifest, call_model  # noqa: E402
+from transcribe import ROOT, SOURCES, manifest, call_model, source_dir  # noqa: E402
 from taxyear import Y  # noqa: E402
+import jurisdiction  # noqa: E402  (--jurisdiction ny: the New York forms; reviews/ny/<year>/completeness/)
 import archive_text  # noqa: E402
 import baseline_check  # noqa: E402
 import citations  # noqa: E402
 
-OUT = os.path.join(ROOT, "reviews", Y, "completeness")
+OUT = str(jurisdiction.ypath("reviews", Y, "completeness"))
 RAW = os.path.join(ROOT, ".transcription", "completeness")
 MAX_CHARS = 700_000
 GAP = 2
 EFFECTS = ("amount", "eligibility", "presentation")
-SYSTEM = ("You review a software encoding of US federal tax instructions for completeness. You are given the "
+SYSTEM = jurisdiction.system("You review a software encoding of US federal tax instructions for completeness. You are given the "
           "pages of the 2025 IRS instructions or publications that a form's lines cite, and the list of what the "
           "software encodes for the form: its computed lines, the questions it asks the filer, and the situations "
           "it refuses to handle. A HANDLED ELSEWHERE list gives refusals on other forms tied to lines this form "
@@ -67,6 +68,30 @@ def load_forms():
     return baseline_check.load_forms(os.path.join(ROOT, "canonical", Y))
 
 
+def context_forms():
+    """The documents whose refusals a review lists as HANDLED ELSEWHERE: the reviewed jurisdiction's; in
+    New York mode the federal ones too, since a New York return reads the federal return's lines."""
+    if not jurisdiction.NY:
+        return load_forms()
+    import json as _json
+    from pathlib import Path
+    docs = []
+    for path in sorted(Path(ROOT, "canonical", Y).glob("*.json")):
+        doc = next(iter(_json.loads(path.read_text()).values()))
+        if isinstance(doc, dict) and "lines" in doc:
+            docs.append(doc)
+    return docs
+
+
+def is_form_doc(doc):
+    """An archived form (its instructions printed on it) rather than instructions or a publication: a federal
+    id starting "f"; a New York form id (ny_it201, ny_it2, ny_it201att), not its instructions (ny_it201i,
+    ny_it201i-html, ny_it270i) or tax tables."""
+    if jurisdiction.is_ny(doc):
+        return not re.search(r"i(-html)?$|tax_tables", doc)
+    return doc.startswith("f")
+
+
 def cited_pages(form):
     """{doc: set of pages} cited by the form's lines and refusals, instruction and publication documents only;
     for a form whose instructions are printed on the form itself (it cites no other document, as Forms 4952 and
@@ -75,7 +100,7 @@ def cited_pages(form):
     for line in form["lines"]:
         for c in [line["cite"]] + [r["cite"] for r in line.get("refuses") or []]:
             for doc, pages, *_ in citations.segments(c["doc"], c["locator"]):
-                (forms_cited if doc.startswith("f") else out).setdefault(doc, set()).update(pages)
+                (forms_cited if is_form_doc(doc) else out).setdefault(doc, set()).update(pages)
     return out or forms_cited
 
 
@@ -94,7 +119,7 @@ def layer(doc, mani):
     """The pages of a document's reading-order text (its text layer when it has no reading-order one)."""
     entry = mani[doc]
     key = "cols_file" if "cols_file" in entry else "text_file"
-    pages = archive_text.read(SOURCES, entry, key=key).split("\f")
+    pages = archive_text.read(source_dir(doc), entry, key=key).split("\f")
     return pages[:-1] if pages and not pages[-1].strip() else pages
 
 
@@ -189,7 +214,7 @@ def prompt_for(form, mani, forms=None):
     secs, used = sections(form, mani)
     if not secs:
         return None
-    prompt = build_prompt(form, secs, forms if forms is not None else load_forms())
+    prompt = jurisdiction.preface(build_prompt(form, secs, forms if forms is not None else context_forms()))
     return prompt, used, hashlib.sha256((SYSTEM + "\n" + prompt).encode()).hexdigest()
 
 
@@ -258,7 +283,7 @@ def main():
     ap.add_argument("--forms"); ap.add_argument("--dry-run", action="store_true"); ap.add_argument("--from-response", action="store_true")
     ap.add_argument("--jobs", type=int, default=4); ap.add_argument("--model", default="claude-opus-5-5")
     a = ap.parse_args()
-    forms = everything = load_forms(); mani = manifest()
+    forms = load_forms(); everything = context_forms(); mani = manifest()
     if a.forms:
         want = a.forms.split(",")
         missing = [w for w in want if w not in {f["id"] for f in forms}]

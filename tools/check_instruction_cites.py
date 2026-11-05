@@ -26,15 +26,16 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 import taxyear  # noqa: E402
 from taxyear import Y  # noqa: E402
+from jurisdiction import ypath  # noqa: E402  (--jurisdiction ny, docs/ny/DECISIONS.md C1)
 from citations import segments  # noqa: E402
 import baseline_check  # noqa: E402
 from baseline_check import line_subject  # noqa: E402
 import archive_text  # noqa: E402
 
-SOURCES = ROOT / "sources" / Y
+SOURCES = ypath("sources", Y)
 CANONICAL = ROOT / "canonical" / Y
-RULINGS = ROOT / "reviews" / Y / "instruction_cites.json"
-REPORT = ROOT / "reports" / Y / "instruction_cites.md"
+RULINGS = ypath("reviews", Y, "instruction_cites.json")
+REPORT = ypath("reports", Y, "instruction_cites.md")
 
 PRINTED = re.compile(r"^\d{1,2}[a-z]?$")
 # The general instructions cover Form 1040 and Schedules 1, 1-A, 2 and 3, each in its own page range (line numbers

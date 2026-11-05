@@ -1,0 +1,36 @@
+{
+ "baseline": {},
+ "deferred_debt": {},
+ "rulings": {
+  "unruled:ny_city_rs#1": {
+   "class": "out of scope",
+   "evidence": "ny_it201i p. 4, Item A. A joint return with a spouse who was not a full-year New York State and City resident is refused: ny_it201.gate.spouse_nonresident (federal status mfj and ny_it201.ask.spouse_resident No).",
+   "prompt_sha": "23a3a8ff01f89c6582f5fb01ae867292613e4048700c745cbb0ae5fdd999e89b",
+   "gate": "ny_it201.gate.spouse_nonresident"
+  },
+  "unruled:ny_it2#1": {
+   "class": "real gap",
+   "evidence": "ny_it201i p. 21, Form IT-2: a W-2c's corrected amounts are not asked for, and the IT-2 record required for foreign income received without a Form W-2 is neither built nor refused. Rare; low.",
+   "prompt_sha": "92e34be93caf8fecb4a31ba29bf9a0dcd95ac13e7d20f49c1cf84de0e5fd630c",
+   "bug": "BUG-0424"
+  },
+  "unruled:ny_it201#1": {
+   "class": "real gap",
+   "evidence": "ny_it201i p. 5, Item A: a filer on a joint federal return who cannot file a joint New York return because the spouse's whereabouts are unknown or the spouse refuses to sign files separately; no question asks it and the return is computed jointly. Rare; low.",
+   "prompt_sha": "e015c813b8021a6c3aa4147dcb17b8d0e1fa39d9a84d1187ff7eea79bd4116f9",
+   "bug": "BUG-0424"
+  },
+  "unruled:ny_it201#2": {
+   "class": "covered",
+   "evidence": "ny_it201i p. 20, Line 69a. ny_it201.line69a chooses ny_it201.zero_stc when ny_it201.item_c is Yes (can be claimed as a dependent) and the rate-reduction amount only when it is No; the claim missed the expression's guard.",
+   "prompt_sha": "e015c813b8021a6c3aa4147dcb17b8d0e1fa39d9a84d1187ff7eea79bd4116f9",
+   "line": "ny_it201.line69a"
+  },
+  "unruled:ny_rs#1": {
+   "class": "out of scope",
+   "evidence": "ny_it201i p. 4, Item A. As ny_city_rs#1: the mixed-residency joint return is refused by ny_it201.gate.spouse_nonresident.",
+   "prompt_sha": "487565a2fc4af66144ff91b2b07857bffaa33efbee15eefff20309daa556d4dd",
+   "gate": "ny_it201.gate.spouse_nonresident"
+  }
+ }
+}

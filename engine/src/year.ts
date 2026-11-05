@@ -31,9 +31,36 @@ function resolveYear(): number {
 }
 
 export const YEAR = resolveYear();
+
+// `--ny` (decision C6): the fixture commands (test-fixtures, coverage, evidence, compare, mutate) work on the New York
+// fixtures (fixtures/ny/<YEAR>/) and write their reports to reports/ny/<YEAR>/. Without it they work on the federal
+// fixtures exactly as before. Removed from process.argv here, like --year.
+function resolveNy(): boolean {
+  const i = process.argv.indexOf("--ny", 2);
+  if (i < 0) return false;
+  process.argv.splice(i, 1);
+  return true;
+}
+export const NY_MODE = resolveNy();
 export const YEAR_ARGS = ["--year", String(YEAR)];
+// The reports directory of the fixture commands: reports/<YEAR>/, or reports/ny/<YEAR>/ with --ny.
+export function reportPath(...rest: string[]): string {
+  return NY_MODE ? join(ROOT, "reports", "ny", String(YEAR), ...rest) : join(ROOT, "reports", String(YEAR), ...rest);
+}
+
+// The same report as a command prints it: reports/<YEAR>/<name>, or reports/ny/<YEAR>/<name> with --ny.
+export function reportName(name: string): string {
+  return NY_MODE ? `reports/ny/${YEAR}/${name}` : `reports/${YEAR}/${name}`;
+}
 
 // A path under one of the per-year directories: yearPath("canonical") is canonical/<YEAR>.
 export function yearPath(top: string, ...rest: string[]): string {
   return join(ROOT, top, String(YEAR), ...rest);
+}
+
+// New York (owner decision C1, docs/ny/DECISIONS.md): the New York data sits in a tree of its own beside
+// the federal one, nyPath("forms") being forms/ny/<YEAR>/. Its documents (ids prefixed `ny_`) enter the
+// same canonical build, so a New York line can read a federal line; the federal files are unchanged.
+export function nyPath(top: string, ...rest: string[]): string {
+  return join(ROOT, top, "ny", String(YEAR), ...rest);
 }

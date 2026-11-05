@@ -28,10 +28,12 @@ from screen_review import load_lines, screens, prompt_for, OUT  # noqa: E402
 from transcribe import ROOT, manifest  # noqa: E402
 from taxyear import Y  # noqa: E402
 import baseline_check  # noqa: E402
+import jurisdiction  # noqa: E402  (--jurisdiction ny: the screens of New York lines, reviews/ny/<year>/screens/)
+import pending  # noqa: E402
 
 RECORD = Path(OUT) / "screen_review.json"
 RULINGS = Path(OUT) / "rulings.json"
-REPORT = Path(ROOT) / "reports" / Y / "screen_currency.md"
+REPORT = jurisdiction.ypath("reports", Y, "screen_currency.md")
 
 
 def findings():
@@ -40,12 +42,18 @@ def findings():
     reviewed = {r["screen"]: r for r in json.loads(RECORD.read_text())} if RECORD.exists() else {}
     rulings = json.loads(RULINGS.read_text()).get("rulings", {}) if RULINGS.exists() else {}
     out = []
+    waiting = pending.listed("screens")
+    for screen in sorted(waiting & set(reviewed)):
+        out.append({"kind": "pending", "line": screen, "form": lines[screen][0] if screen in lines else "?", "subject": "-",
+                    "detail": f"reviewed but still listed as pending; remove it from {pending.name()}"})
     for screen, gated in screens(lines).items():
         prompt, _ = prompt_for(screen, gated, lines, mani)
         sha = hashlib.sha256(prompt.encode()).hexdigest()
         form = lines[screen][0]
         r = reviewed.get(screen)
-        if not r or r.get("prompt_sha") != sha:
+        if not r and screen in waiting:
+            print(f"  pending: {screen}: never reviewed (listed in {pending.name()})")
+        elif not r or r.get("prompt_sha") != sha:
             why = "never reviewed" if not r else "question, gated lines or their citations changed since the review"
             out.append({"kind": "stale", "line": screen, "form": form, "subject": sha,
                         "detail": f"{why}; rerun screen_review.py --screens {screen}"})

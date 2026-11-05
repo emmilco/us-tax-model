@@ -15,7 +15,8 @@ REQUIRED = {"2025": {"div", "f4952"}}
 
 
 def load(form, year):
-    path = DIRECTORY / str(year) / f"{form}.json"
+    # A New York document's bank (id ny_) would sit under <directory>/ny/<year>/.
+    path = DIRECTORY / ("ny" if str(form).startswith("ny_") else "") / str(year) / f"{form}.json"
     if not path.exists():
         if form in REQUIRED.get(str(year), set()):
             raise FileNotFoundError("required adapter contract is missing: " + str(path))

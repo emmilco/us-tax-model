@@ -1,0 +1,393 @@
+# New York City tax rate schedule.
+#
+# Transcribed from the web edition of IT-201-I (the PDF's rows are flattened; sources/ny/2025/README.md).
+# Each band: "over / but not over / The tax is: <base> plus <rate> of the excess over <over>"; the first band's
+# base is 0 ("<rate> of line 47"). The product is rounded once to the whole dollar (decision C4,
+# amb.ny.2025.whole_dollars); the printed bases are whole dollars, so base + rounded product is the rounding of
+# the printed sum. Bands by filing-status group; a status reaches its group's section.
+
+def:
+  id: ny_city_rs
+  kind: def
+  title: 'New York City tax rate schedule'
+  tax_year: 2025
+  parameters: [amount, status]
+  lines:
+    - id: amount
+      printed: "(line 47)"
+      label: 'New York City taxable income (line 47)'
+      type: NonNegDollars
+      expr: { op: input, source: "Bound by the calling line (the taxable income whose tax is computed)." }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "If line 47 is:"' }
+    - id: status
+      printed: "(status)"
+      label: "Use the schedule for your filing status"
+      type: Enum(filing_status)
+      expr: { op: input, source: "Bound by the calling line (the federal filing status, IT-201 item A)." }
+      cite: { doc: ny_it201i, locator: 'p. 4, Item A, "In most cases, you must use the same filing status you used on your federal return."' }
+    - id: single.b1.excess
+      printed: "(band 1)"
+      label: "The amount over the band's lower bound (the excess over)"
+      type: NonNegDollars
+      expr: { op: subtract_floor0, from: "amount", take: { param: "ny.city.single.b1.over" } }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 1' }
+    - id: single.b1.product
+      printed: "(band 1)"
+      label: "Multiply the excess by the band's rate, rounded to the whole dollar"
+      type: NonNegDollars
+      expr: { op: multiply_rate, amount: "single.b1.excess", rate: { param: "ny.city.b1.rate" }, unit: 100 }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 1' }
+      ambiguity: amb.ny.2025.whole_dollars
+    - id: single.b1.base
+      printed: "(band 1)"
+      label: "The band's base amount"
+      type: NonNegDollars
+      expr: { op: param, ref: "ny.city.single.b1.base" }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 1' }
+    - id: single.b1.tax
+      printed: "The tax is"
+      label: "The base amount plus the rate times the excess"
+      type: NonNegDollars
+      expr: { op: sum, of: ["single.b1.base", "single.b1.product"] }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 1' }
+    - id: single.b2.excess
+      printed: "(band 2)"
+      label: "The amount over the band's lower bound (the excess over)"
+      type: NonNegDollars
+      expr: { op: subtract_floor0, from: "amount", take: { param: "ny.city.single.b2.over" } }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 2' }
+    - id: single.b2.product
+      printed: "(band 2)"
+      label: "Multiply the excess by the band's rate, rounded to the whole dollar"
+      type: NonNegDollars
+      expr: { op: multiply_rate, amount: "single.b2.excess", rate: { param: "ny.city.b2.rate" }, unit: 100 }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 2' }
+      ambiguity: amb.ny.2025.whole_dollars
+    - id: single.b2.base
+      printed: "(band 2)"
+      label: "The band's base amount"
+      type: NonNegDollars
+      expr: { op: param, ref: "ny.city.single.b2.base" }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 2' }
+    - id: single.b2.tax
+      printed: "The tax is"
+      label: "The base amount plus the rate times the excess"
+      type: NonNegDollars
+      expr: { op: sum, of: ["single.b2.base", "single.b2.product"] }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 2' }
+    - id: single.b3.excess
+      printed: "(band 3)"
+      label: "The amount over the band's lower bound (the excess over)"
+      type: NonNegDollars
+      expr: { op: subtract_floor0, from: "amount", take: { param: "ny.city.single.b3.over" } }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 3' }
+    - id: single.b3.product
+      printed: "(band 3)"
+      label: "Multiply the excess by the band's rate, rounded to the whole dollar"
+      type: NonNegDollars
+      expr: { op: multiply_rate, amount: "single.b3.excess", rate: { param: "ny.city.b3.rate" }, unit: 100 }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 3' }
+      ambiguity: amb.ny.2025.whole_dollars
+    - id: single.b3.base
+      printed: "(band 3)"
+      label: "The band's base amount"
+      type: NonNegDollars
+      expr: { op: param, ref: "ny.city.single.b3.base" }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 3' }
+    - id: single.b3.tax
+      printed: "The tax is"
+      label: "The base amount plus the rate times the excess"
+      type: NonNegDollars
+      expr: { op: sum, of: ["single.b3.base", "single.b3.product"] }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 3' }
+    - id: single.b4.excess
+      printed: "(band 4)"
+      label: "The amount over the band's lower bound (the excess over)"
+      type: NonNegDollars
+      expr: { op: subtract_floor0, from: "amount", take: { param: "ny.city.single.b4.over" } }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 4' }
+    - id: single.b4.product
+      printed: "(band 4)"
+      label: "Multiply the excess by the band's rate, rounded to the whole dollar"
+      type: NonNegDollars
+      expr: { op: multiply_rate, amount: "single.b4.excess", rate: { param: "ny.city.b4.rate" }, unit: 100 }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 4' }
+      ambiguity: amb.ny.2025.whole_dollars
+    - id: single.b4.base
+      printed: "(band 4)"
+      label: "The band's base amount"
+      type: NonNegDollars
+      expr: { op: param, ref: "ny.city.single.b4.base" }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 4' }
+    - id: single.b4.tax
+      printed: "The tax is"
+      label: "The base amount plus the rate times the excess"
+      type: NonNegDollars
+      expr: { op: sum, of: ["single.b4.base", "single.b4.product"] }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", band 4' }
+    - id: single.result
+      printed: "The tax is"
+      label: 'Single and married filing separately—filing status ① and ③: the tax for the band that holds the amount'
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+          - guard: { op: test, all: [{ op: test, ge: ["amount", { const: 0 }] }, { op: test, le: ["amount", { param: "ny.city.single.b1.upper" }] }] }
+            then: "single.b1.tax"
+          - guard: { op: test, all: [{ op: test, gt: ["amount", { param: "ny.city.single.b1.upper" }] }, { op: test, le: ["amount", { param: "ny.city.single.b2.upper" }] }] }
+            then: "single.b2.tax"
+          - guard: { op: test, all: [{ op: test, gt: ["amount", { param: "ny.city.single.b2.upper" }] }, { op: test, le: ["amount", { param: "ny.city.single.b3.upper" }] }] }
+            then: "single.b3.tax"
+          - guard: { op: test, gt: ["amount", { param: "ny.city.single.b3.upper" }] }
+            then: "single.b4.tax"
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Single and married filing separately—filing status ① and ③", "If line 47 is:", "over", "but not over"' }
+    - id: mfj.b1.excess
+      printed: "(band 1)"
+      label: "The amount over the band's lower bound (the excess over)"
+      type: NonNegDollars
+      expr: { op: subtract_floor0, from: "amount", take: { param: "ny.city.mfj.b1.over" } }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 1' }
+    - id: mfj.b1.product
+      printed: "(band 1)"
+      label: "Multiply the excess by the band's rate, rounded to the whole dollar"
+      type: NonNegDollars
+      expr: { op: multiply_rate, amount: "mfj.b1.excess", rate: { param: "ny.city.b1.rate" }, unit: 100 }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 1' }
+      ambiguity: amb.ny.2025.whole_dollars
+    - id: mfj.b1.base
+      printed: "(band 1)"
+      label: "The band's base amount"
+      type: NonNegDollars
+      expr: { op: param, ref: "ny.city.mfj.b1.base" }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 1' }
+    - id: mfj.b1.tax
+      printed: "The tax is"
+      label: "The base amount plus the rate times the excess"
+      type: NonNegDollars
+      expr: { op: sum, of: ["mfj.b1.base", "mfj.b1.product"] }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 1' }
+    - id: mfj.b2.excess
+      printed: "(band 2)"
+      label: "The amount over the band's lower bound (the excess over)"
+      type: NonNegDollars
+      expr: { op: subtract_floor0, from: "amount", take: { param: "ny.city.mfj.b2.over" } }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 2' }
+    - id: mfj.b2.product
+      printed: "(band 2)"
+      label: "Multiply the excess by the band's rate, rounded to the whole dollar"
+      type: NonNegDollars
+      expr: { op: multiply_rate, amount: "mfj.b2.excess", rate: { param: "ny.city.b2.rate" }, unit: 100 }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 2' }
+      ambiguity: amb.ny.2025.whole_dollars
+    - id: mfj.b2.base
+      printed: "(band 2)"
+      label: "The band's base amount"
+      type: NonNegDollars
+      expr: { op: param, ref: "ny.city.mfj.b2.base" }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 2' }
+    - id: mfj.b2.tax
+      printed: "The tax is"
+      label: "The base amount plus the rate times the excess"
+      type: NonNegDollars
+      expr: { op: sum, of: ["mfj.b2.base", "mfj.b2.product"] }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 2' }
+    - id: mfj.b3.excess
+      printed: "(band 3)"
+      label: "The amount over the band's lower bound (the excess over)"
+      type: NonNegDollars
+      expr: { op: subtract_floor0, from: "amount", take: { param: "ny.city.mfj.b3.over" } }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 3' }
+    - id: mfj.b3.product
+      printed: "(band 3)"
+      label: "Multiply the excess by the band's rate, rounded to the whole dollar"
+      type: NonNegDollars
+      expr: { op: multiply_rate, amount: "mfj.b3.excess", rate: { param: "ny.city.b3.rate" }, unit: 100 }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 3' }
+      ambiguity: amb.ny.2025.whole_dollars
+    - id: mfj.b3.base
+      printed: "(band 3)"
+      label: "The band's base amount"
+      type: NonNegDollars
+      expr: { op: param, ref: "ny.city.mfj.b3.base" }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 3' }
+    - id: mfj.b3.tax
+      printed: "The tax is"
+      label: "The base amount plus the rate times the excess"
+      type: NonNegDollars
+      expr: { op: sum, of: ["mfj.b3.base", "mfj.b3.product"] }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 3' }
+    - id: mfj.b4.excess
+      printed: "(band 4)"
+      label: "The amount over the band's lower bound (the excess over)"
+      type: NonNegDollars
+      expr: { op: subtract_floor0, from: "amount", take: { param: "ny.city.mfj.b4.over" } }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 4' }
+    - id: mfj.b4.product
+      printed: "(band 4)"
+      label: "Multiply the excess by the band's rate, rounded to the whole dollar"
+      type: NonNegDollars
+      expr: { op: multiply_rate, amount: "mfj.b4.excess", rate: { param: "ny.city.b4.rate" }, unit: 100 }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 4' }
+      ambiguity: amb.ny.2025.whole_dollars
+    - id: mfj.b4.base
+      printed: "(band 4)"
+      label: "The band's base amount"
+      type: NonNegDollars
+      expr: { op: param, ref: "ny.city.mfj.b4.base" }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 4' }
+    - id: mfj.b4.tax
+      printed: "The tax is"
+      label: "The base amount plus the rate times the excess"
+      type: NonNegDollars
+      expr: { op: sum, of: ["mfj.b4.base", "mfj.b4.product"] }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", band 4' }
+    - id: mfj.result
+      printed: "The tax is"
+      label: 'Married filing jointly and qualifying surviving spouse—filing status ② and ⑤: the tax for the band that holds the amount'
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+          - guard: { op: test, all: [{ op: test, ge: ["amount", { const: 0 }] }, { op: test, le: ["amount", { param: "ny.city.mfj.b1.upper" }] }] }
+            then: "mfj.b1.tax"
+          - guard: { op: test, all: [{ op: test, gt: ["amount", { param: "ny.city.mfj.b1.upper" }] }, { op: test, le: ["amount", { param: "ny.city.mfj.b2.upper" }] }] }
+            then: "mfj.b2.tax"
+          - guard: { op: test, all: [{ op: test, gt: ["amount", { param: "ny.city.mfj.b2.upper" }] }, { op: test, le: ["amount", { param: "ny.city.mfj.b3.upper" }] }] }
+            then: "mfj.b3.tax"
+          - guard: { op: test, gt: ["amount", { param: "ny.city.mfj.b3.upper" }] }
+            then: "mfj.b4.tax"
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", "If line 47 is:", "over", "but not over"' }
+    - id: hoh.b1.excess
+      printed: "(band 1)"
+      label: "The amount over the band's lower bound (the excess over)"
+      type: NonNegDollars
+      expr: { op: subtract_floor0, from: "amount", take: { param: "ny.city.hoh.b1.over" } }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 1' }
+    - id: hoh.b1.product
+      printed: "(band 1)"
+      label: "Multiply the excess by the band's rate, rounded to the whole dollar"
+      type: NonNegDollars
+      expr: { op: multiply_rate, amount: "hoh.b1.excess", rate: { param: "ny.city.b1.rate" }, unit: 100 }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 1' }
+      ambiguity: amb.ny.2025.whole_dollars
+    - id: hoh.b1.base
+      printed: "(band 1)"
+      label: "The band's base amount"
+      type: NonNegDollars
+      expr: { op: param, ref: "ny.city.hoh.b1.base" }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 1' }
+    - id: hoh.b1.tax
+      printed: "The tax is"
+      label: "The base amount plus the rate times the excess"
+      type: NonNegDollars
+      expr: { op: sum, of: ["hoh.b1.base", "hoh.b1.product"] }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 1' }
+    - id: hoh.b2.excess
+      printed: "(band 2)"
+      label: "The amount over the band's lower bound (the excess over)"
+      type: NonNegDollars
+      expr: { op: subtract_floor0, from: "amount", take: { param: "ny.city.hoh.b2.over" } }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 2' }
+    - id: hoh.b2.product
+      printed: "(band 2)"
+      label: "Multiply the excess by the band's rate, rounded to the whole dollar"
+      type: NonNegDollars
+      expr: { op: multiply_rate, amount: "hoh.b2.excess", rate: { param: "ny.city.b2.rate" }, unit: 100 }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 2' }
+      ambiguity: amb.ny.2025.whole_dollars
+    - id: hoh.b2.base
+      printed: "(band 2)"
+      label: "The band's base amount"
+      type: NonNegDollars
+      expr: { op: param, ref: "ny.city.hoh.b2.base" }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 2' }
+    - id: hoh.b2.tax
+      printed: "The tax is"
+      label: "The base amount plus the rate times the excess"
+      type: NonNegDollars
+      expr: { op: sum, of: ["hoh.b2.base", "hoh.b2.product"] }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 2' }
+    - id: hoh.b3.excess
+      printed: "(band 3)"
+      label: "The amount over the band's lower bound (the excess over)"
+      type: NonNegDollars
+      expr: { op: subtract_floor0, from: "amount", take: { param: "ny.city.hoh.b3.over" } }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 3' }
+    - id: hoh.b3.product
+      printed: "(band 3)"
+      label: "Multiply the excess by the band's rate, rounded to the whole dollar"
+      type: NonNegDollars
+      expr: { op: multiply_rate, amount: "hoh.b3.excess", rate: { param: "ny.city.b3.rate" }, unit: 100 }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 3' }
+      ambiguity: amb.ny.2025.whole_dollars
+    - id: hoh.b3.base
+      printed: "(band 3)"
+      label: "The band's base amount"
+      type: NonNegDollars
+      expr: { op: param, ref: "ny.city.hoh.b3.base" }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 3' }
+    - id: hoh.b3.tax
+      printed: "The tax is"
+      label: "The base amount plus the rate times the excess"
+      type: NonNegDollars
+      expr: { op: sum, of: ["hoh.b3.base", "hoh.b3.product"] }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 3' }
+    - id: hoh.b4.excess
+      printed: "(band 4)"
+      label: "The amount over the band's lower bound (the excess over)"
+      type: NonNegDollars
+      expr: { op: subtract_floor0, from: "amount", take: { param: "ny.city.hoh.b4.over" } }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 4' }
+    - id: hoh.b4.product
+      printed: "(band 4)"
+      label: "Multiply the excess by the band's rate, rounded to the whole dollar"
+      type: NonNegDollars
+      expr: { op: multiply_rate, amount: "hoh.b4.excess", rate: { param: "ny.city.b4.rate" }, unit: 100 }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 4' }
+      ambiguity: amb.ny.2025.whole_dollars
+    - id: hoh.b4.base
+      printed: "(band 4)"
+      label: "The band's base amount"
+      type: NonNegDollars
+      expr: { op: param, ref: "ny.city.hoh.b4.base" }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 4' }
+    - id: hoh.b4.tax
+      printed: "The tax is"
+      label: "The base amount plus the rate times the excess"
+      type: NonNegDollars
+      expr: { op: sum, of: ["hoh.b4.base", "hoh.b4.product"] }
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Head of household—filing status ④", band 4' }
+    - id: hoh.result
+      printed: "The tax is"
+      label: 'Head of household—filing status ④: the tax for the band that holds the amount'
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+          - guard: { op: test, all: [{ op: test, ge: ["amount", { const: 0 }] }, { op: test, le: ["amount", { param: "ny.city.hoh.b1.upper" }] }] }
+            then: "hoh.b1.tax"
+          - guard: { op: test, all: [{ op: test, gt: ["amount", { param: "ny.city.hoh.b1.upper" }] }, { op: test, le: ["amount", { param: "ny.city.hoh.b2.upper" }] }] }
+            then: "hoh.b2.tax"
+          - guard: { op: test, all: [{ op: test, gt: ["amount", { param: "ny.city.hoh.b2.upper" }] }, { op: test, le: ["amount", { param: "ny.city.hoh.b3.upper" }] }] }
+            then: "hoh.b3.tax"
+          - guard: { op: test, gt: ["amount", { param: "ny.city.hoh.b3.upper" }] }
+            then: "hoh.b4.tax"
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Head of household—filing status ④", "If line 47 is:", "over", "but not over"' }
+    - id: tax
+      printed: "The tax is"
+      label: "The tax from the schedule for the filing status"
+      type: NonNegDollars
+      expr:
+        op: choose
+        alternatives:
+          - guard: { op: test, eq: ["status", { const: "single" }] }
+            then: "single.result"
+          - guard: { op: test, eq: ["status", { const: "mfj" }] }
+            then: "mfj.result"
+          - guard: { op: test, eq: ["status", { const: "qss" }] }
+            then: "mfj.result"
+          - guard: { op: test, eq: ["status", { const: "mfs" }] }
+            then: "single.result"
+          - guard: { op: test, eq: ["status", { const: "hoh" }] }
+            then: "hoh.result"
+      cite: { doc: ny_it201i-html, locator: 'New York City tax rate schedule, "Married filing jointly and qualifying surviving spouse—filing status ② and ⑤", "Single and married filing separately—filing status ① and ③", "Head of household—filing status ④"' }

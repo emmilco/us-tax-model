@@ -10,14 +10,21 @@ entry or ruling that no longer fails is an error.
 """
 import hashlib
 import json
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import jurisdiction  # noqa: E402
 
 
 def load_forms(canonical):
+    """The jurisdiction's documents of the canonical build: the federal ones by default, the New York
+    ones (ids `ny_`) with --jurisdiction ny. The build writes both into canonical/<year>/ (decision C1);
+    each check looks at its own jurisdiction's documents, so federal findings are unchanged."""
     forms = []
     for path in sorted(Path(canonical).glob("*.json")):
         doc = next(iter(json.loads(path.read_text()).values()))
-        if isinstance(doc, dict) and "lines" in doc:
+        if isinstance(doc, dict) and "lines" in doc and str(doc.get("id", "")).startswith("ny_") == jurisdiction.NY:
             forms.append(doc)
     return forms
 

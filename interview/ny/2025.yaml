@@ -1,0 +1,62 @@
+# The New York profile (decision C5): Form IT-201 for a full-year New York City resident. It asks every question of
+# the federal full profile (questions_from) the New York lines need, then the New York questions. Its targets include
+# the federal full profile's (targets_from), so a refused federal return is a refused New York return too.
+interview:
+  tax_year: 2025
+  targets:
+  - ny_it201.line61
+  - ny_it201.line76
+  - ny_it201.line78b
+  - ny_it201.line80
+  initial: {}
+  cite:
+    doc: ny_it201i
+    locator: 'p. 3, New York State full-year residents: Who must file?, "You must file a New York State resident
+      return if you meet any of the following conditions:"'
+  questions_from: full-2025.yaml
+  targets_from: full-2025.yaml
+  questions:
+  - ny_it201.ask.state_resident
+  - ny_it201.ask.city_resident
+  - ny_it201.ask.spouse_resident
+  - ny_it201.ask.special_accrual
+  - ny_it201.ask.yonkers
+  - ny_it201.ask.special_code
+  - ny_it201.ask.decedent
+  - ny_it201.ask.item_c
+  - ny_it201.ask.inflation_check
+  - ny_it201.ask.out_of_state_bond_interest
+  - ny_it201.ask.414h
+  - ny_it201.ask.529_nonqualified
+  - ny_it201.ask.it225
+  - ny_it201.ask.gov_pension
+  - ny_it201.ask.us_obligation_interest
+  - ny_it201.ask.pension_exclusion
+  - ny_it201.ask.529_owner
+  - ny_it201.ask.itemize
+  - ny_it201.ask.resident_credit
+  - ny_it201.ask.other_credits
+  - ny_it201.ask.other_taxes
+  - ny_it201.ask.city_credits
+  - ny_it201.ask.mctmt
+  - ny_it201.ask.owes_use_tax
+  - ny_it201.ask.use_tax_st141
+  - ny_it201.ask.abode_part_year
+  - ny_it201.ask.contributions
+  - ny_it201.ask.dependent_care
+  - ny_it201.ask.noncustodial
+  - ny_it201.ask.real_property_credit
+  - ny_it201.ask.college_tuition
+  - ny_it201.ask.other_withholding
+  - $ny_it2
+  - ny_it2.state_withheld
+  - ny_it2.city_withheld
+  - ny_it2.yonkers_withheld
+  - ny_it201.line75
+  - ny_it201.ask.prior_year_tax
+  - ny_it201.ask.prior_agi_high
+  - ny_it201.ask.prior_full_year
+  - ny_it201.ask.est_late
+  - ny_it201.ask.late_penalty
+  - ny_it201.line79
+  - ny_it201.ask.refund_529

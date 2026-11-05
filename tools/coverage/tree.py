@@ -37,7 +37,8 @@ KINDS = ("situation", "entry")
 def load_gates(canonical=CANONICAL):
     """Every gate in the built forms and definitions: its line and the refusals that use it, in file order."""
     lines, gates = {}, {}
-    for path in sorted(canonical.glob("*.json")):
+    # The federal tree: the New York documents (ny_*.json, built beside the federal ones) have no place in it.
+    for path in sorted(p for p in canonical.glob("*.json") if not p.name.startswith("ny_")):
         data = json.loads(path.read_text())
         for kind in ("form", "def"):
             doc = data.get(kind)

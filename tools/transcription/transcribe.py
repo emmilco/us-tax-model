@@ -15,7 +15,7 @@ The log is reviews/<year>/transcription/<form>.md for a Claude model and <form>.
 another family (families.py), each with its own rulings sidecar; the raw prompt and response
 under .transcription/ take the same stem.
 """
-import argparse, datetime, hashlib, json, os, re, subprocess, sys
+import argparse, bisect, datetime, hashlib, json, os, re, subprocess, sys
 from functools import cache
 import yaml
 
@@ -30,11 +30,13 @@ import input_context  # noqa: E402
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 from taxyear import Y  # noqa: E402
+import jurisdiction  # noqa: E402  (--jurisdiction ny: the New York documents, sources and logs)
 import archive_text  # noqa: E402
 import citations  # noqa: E402
-SOURCES = os.path.join(ROOT, "sources", Y)
-FORMS = os.path.join(ROOT, "forms", Y)
-LOGS = os.path.join(ROOT, "reviews", Y, "transcription")
+import html_sections  # noqa: E402  (a web edition cut by the headings its locators name)
+SOURCES = str(jurisdiction.ypath("sources", Y))
+FORMS = str(jurisdiction.ypath("forms", Y))
+LOGS = str(jurisdiction.ypath("reviews", Y, "transcription"))
 RAW = os.path.join(ROOT, ".transcription")
 WHOLE_DOC_MAX_PAGES = 6
 HELPER_PRINTED = {"(helper)", "(gate)", "(computed helper)"}
@@ -68,18 +70,62 @@ def marker_keys(lines):
 # ---------- sources ----------
 
 def manifest():
-    m = json.load(open(os.path.join(SOURCES, "manifest.json")))
-    docs = m["documents"] if isinstance(m, dict) else m
-    return {d["id"]: d for d in docs}
+    """The archive's documents by id. In New York mode the federal documents follow the New York
+    ones: a New York review cites only New York pages, but the other-form catalog reads the federal
+    forms' own pages to choose the federal lines a New York text names."""
+    out = {}
+    for sources in source_dirs():
+        m = json.load(open(os.path.join(sources, "manifest.json")))
+        docs = m["documents"] if isinstance(m, dict) else m
+        out.update({d["id"]: d for d in docs if d["id"] not in out})
+    return out
+
+
+def source_dirs():
+    return [SOURCES] + ([os.path.join(ROOT, "sources", Y)] if jurisdiction.NY else [])
+
+
+def source_dir(doc_id):
+    """The archive directory of a document: sources/ny/<year>/ for a New York document."""
+    return SOURCES if jurisdiction.mine(doc_id) else str(jurisdiction.doc_dir("sources", Y, doc_id))
+
+
+def form_files(sort=True):
+    """(file name, path) of every document the jurisdiction reads: federally forms/<year>/ alone
+    (listed as before, sorted or in directory order); in New York mode the federal documents, then
+    the New York ones, which read federal lines."""
+    out = []
+    for d in [FORMS] if not jurisdiction.NY else [str(p) for p in jurisdiction.read_dirs("forms", Y)]:
+        names = sorted(os.listdir(d)) if sort else os.listdir(d)
+        out += [(f, os.path.join(d, f)) for f in names]
+    return out
+
+
+def form_path(form_id):
+    d = FORMS if jurisdiction.mine(form_id) else str(jurisdiction.doc_dir("forms", Y, form_id))
+    return os.path.join(d, form_id + ".yaml")
+
+
+def year_params():
+    """The year parameters a review reads: params/<year>.yaml; in New York mode merged with
+    params/ny/<year>.yaml (names prefixed `ny.`), as the canonical build merges them."""
+    doc = project_yaml(os.path.join(ROOT, "params", f"{Y}.yaml"))
+    if jurisdiction.NY and os.path.exists(jurisdiction.params_file(Y)):
+        fed = doc.get("params") or doc
+        ny = project_yaml(str(jurisdiction.params_file(Y)))
+        ny = ny.get("params") or ny
+        doc = {"params": {**fed, "values": {**fed["values"], **ny.get("values", {})},
+                          "enums": {**fed.get("enums", {}), **ny.get("enums", {})}}}
+    return doc
 
 
 _PAGES = {}
 
 
 def doc_pages(doc, key="text_file"):
-    memo = (SOURCES, doc["id"], key, doc.get(key), doc.get("text_sha256"), doc.get("cols_sha256"))
+    memo = (source_dir(doc["id"]), doc["id"], key, doc.get(key), doc.get("text_sha256"), doc.get("cols_sha256"))
     if memo not in _PAGES:
-        text = archive_text.read(SOURCES, doc, key)
+        text = archive_text.read(source_dir(doc["id"]), doc, key)
         pages = text.split("\f")
         if pages and not pages[-1].strip():
             pages = pages[:-1]
@@ -91,7 +137,7 @@ def page_kinds(doc):
     """The per-page classification of the reading-order extraction, or None."""
     if "pages_file" not in doc:
         return None
-    return json.load(open(os.path.join(SOURCES, doc["pages_file"]), encoding="utf-8"))["pages"]
+    return json.load(open(os.path.join(source_dir(doc["id"]), doc["pages_file"]), encoding="utf-8"))["pages"]
 
 
 PAGE_LIST = re.compile(r"\bpp?\.\s*" + citations.PAGES_RE)
@@ -160,7 +206,7 @@ def param_cites(form_doc):
         names.update(re.findall(r'"param": "([a-z0-9_.]+)"', text))
         if line.get("expr", {}).get("op") == "param":
             names.add(line["expr"]["ref"])
-    params_doc = project_yaml(os.path.join(ROOT, "params", f"{Y}.yaml"))
+    params_doc = year_params()
     values = (params_doc.get("params") or params_doc)["values"]
     # Structural constants (a zero amount, a count of one) cite the pages that
     # justify their use, not a figure to check; they are left out.
@@ -181,6 +227,13 @@ def excerpt_for(form_doc, mani):
         kinds = page_kinds(doc)
         cols = doc_pages(doc, "cols_file") if kinds else None
         cols_pages = [p for p in chosen if kinds and kinds[p - 1] == "prose"]
+        cut = sectioned(doc_id, mani, how, locators)
+        if cut:
+            used.append({"doc": doc_id, "revision": doc.get("revision", ""), "text_sha256": doc["text_sha256"],
+                         "pages": chosen, "how": "cited sections: " + "; ".join(cut[1]), "locators": sorted(locators),
+                         "cols_pages": [], "cols_sha256": doc.get("cols_sha256", "-"), "lines": [list(r) for r in cut[2]]})
+            excerpt.append(f"===== {doc_id} ({doc.get('revision','')}), the sections cited, of a single web page =====\n{cut[0]}")
+            continue
         used.append({"doc": doc_id, "revision": doc.get("revision", ""), "text_sha256": doc["text_sha256"],
                      "pages": chosen, "how": how, "locators": sorted(locators),
                      "cols_pages": cols_pages, "cols_sha256": doc.get("cols_sha256", "-")})
@@ -190,6 +243,27 @@ def excerpt_for(form_doc, mani):
             else:
                 excerpt.append(f"===== {doc_id} ({doc.get('revision','')}) page {p} of {len(pages)}, as laid out =====\n{pages[p - 1]}")
     return "\n\n".join(excerpt), used
+
+
+def sectioned(doc_id, mani, how, locators):
+    """A web edition archived as one page and cut by its headings (html_sections.py): (text, section titles,
+    line ranges of the sections) of the sections its locators name; None for its whole page (another
+    document, or a locator naming no heading)."""
+    if doc_id not in html_sections.SECTIONED or how != "whole document":
+        return None
+    pages = doc_pages(mani[doc_id])
+    return html_sections.cut(source_dir(doc_id), mani[doc_id], "\f".join(pages), locators) if len(pages) == 1 else None
+
+
+def source_units(doc_id, chosen, how, locators, mani):
+    """(keys, texts) of one document's chosen pages, as the catalog compares them: (doc, page) keys and the
+    page texts; for a web edition cut by headings, (doc, ("line", n)) keys of its cited sections' lines and
+    the cut text, so two documents share its page only where they cite the same part of it."""
+    cut = sectioned(doc_id, mani, how, locators)
+    if cut:
+        return {(doc_id, ("line", n)) for a, b in cut[2] for n in range(a, b)}, [cut[0]]
+    pages = doc_pages(mani[doc_id])
+    return {(doc_id, p) for p in chosen}, [pages[p - 1] for p in chosen]
 
 
 def excerpt_pages(form_doc, mani):
@@ -374,18 +448,19 @@ def collection_notes(reviewed=None, selected=None):
     """Published collection interfaces; own computed fields are not supplied facts. With
     `selected`, only the reviewed collection and the selected others (catalog_selection)."""
     out = []
-    for f in sorted(os.listdir(FORMS)):
+    for f, path in form_files():
         if not f.endswith(".yaml"):
             continue
         if selected is not None and f[:-5] != reviewed and f[:-5] not in selected:
             continue
-        d = project_yaml(os.path.join(FORMS, f))
+        d = project_yaml(path)
         doc = d.get("form")
         if not doc or not doc.get("collection"):
             continue
         parent = doc["collection"].get("parent")
+        only = listed_lines(reviewed, doc["id"], selected) if selected is not None else None
         fields = "; ".join(reference_note(doc, l) for l in doc["lines"]
-                           if doc['id'] != reviewed or l['expr'].get('op') == 'input')
+                           if (doc['id'] != reviewed or l['expr'].get('op') == 'input') and (only is None or l["id"] in only))
         out.append(f"  - collection `{doc['id']}`" + (f" nested in each `{parent}` entry" if parent else "") +
                    f" — one entry per {doc['title'][:70]}; entry fields: {fields}")
     return "\n".join(out)
@@ -419,8 +494,8 @@ def expression_schema():
 
 
 def load_tables():
-    path = os.path.join(ROOT, "tables", str(Y))
-    return [project_yaml(os.path.join(path, name))["table"] for name in sorted(os.listdir(path)) if name.endswith(".yaml")]
+    return [project_yaml(os.path.join(str(path), name))["table"] for path in jurisdiction.read_dirs("tables", Y)
+            for name in sorted(os.listdir(path)) if name.endswith(".yaml")]
 
 
 def table_notes(tables=None):
@@ -485,7 +560,9 @@ def screen_notes():
 # pages, IRS documents and IRS title. Nothing here reads the reviewed form's expressions,
 # refusal lists or visibility conditions.
 
-CATALOG_WHOLE_TEXT_EXCLUDED = frozenset({"i1040gi"})
+# The general instructions name every form of the return: the federal Form 1040 instructions, and in New
+# York mode the IT-201 instructions (PDF and web text).
+CATALOG_WHOLE_TEXT_EXCLUDED = frozenset({"i1040gi", "ny_it201i", "ny_it201i-html"})
 CATALOG_ID = r"(\d{3,4}(?:-[A-Z]{1,3})?|W-2|[1-3](?:-A)?|8812|SE|[A-E])"
 CATALOG_NAME = re.compile(r"\b(Form|Schedule)s?\s+" + CATALOG_ID + r"\b")
 CATALOG_LINE = re.compile(r"\b(Form|Schedule)\s+" + CATALOG_ID +
@@ -552,7 +629,8 @@ def source_profile(doc, mani):
     forms = {d for d in cited if d.startswith("f") and d in mani}
     families = {doc_family(d) for d in (forms or cited)}
     own_forms = {"f" + f for f in families if ("f" + f) in mani}
-    text = [doc_pages(mani[d])[p - 1] for d, chosen, _, _ in pages for p in chosen]
+    units = [source_units(d, chosen, how, locators, mani) for d, chosen, how, locators in pages]
+    text = [t for _, texts in units for t in texts]
     text += [page for d in sorted(own_forms) for page in doc_pages(mani[d])]
     head, _, tail = doc["title"].partition("—")
     worksheet = " ".join(head.split()).lower() if "Worksheet" in head else None
@@ -560,7 +638,7 @@ def source_profile(doc, mani):
     for kind, number, first, second in CATALOG_TITLE_LINE.findall(tail):
         family = named_family(kind, number, mani) if kind else "1040"
         fed |= {(family, n) for n in (first, second) if n}
-    profile = {"pages": {(d, p) for d, chosen, _, _ in pages for p in chosen},
+    profile = {"pages": {k for keys, _ in units for k in keys},
                "families": families, "worksheet": worksheet, "fed": fed}
     _PROFILES[memo] = profile
     return profile
@@ -583,14 +661,15 @@ def catalog_selection(form_doc, excerpt, used, mani=None, whole_text=True):
     from the pages given."""
     mani = manifest() if mani is None else mani
     defs = load_defs()
-    mine = {(u["doc"], p) for u in used for p in u["pages"]}
+    mine = {(u["doc"], p) for u in used if "lines" not in u for p in u["pages"]}
+    mine |= {(u["doc"], ("line", n)) for u in used for a, b in u.get("lines", []) for n in range(a, b)}
     text = "\n".join([excerpt] + (["\n".join(doc_pages(mani[u["doc"]])) for u in used
                                    if u["doc"] not in CATALOG_WHOLE_TEXT_EXCLUDED and u["doc"] in mani] if whole_text else []))
     names = named_forms(text, mani)
     lines_named = named_lines(text, mani)
     flat = " ".join(text.split()).lower()
     out = {}
-    for f in sorted(os.listdir(FORMS)):
+    for f, _ in form_files():
         if not f.endswith(".yaml") or f[:-5] == form_doc["id"]:
             continue
         doc = load_form(f[:-5])
@@ -606,19 +685,226 @@ def catalog_selection(form_doc, excerpt, used, mani=None, whole_text=True):
             out[doc["id"]] = "worksheet"
         elif p["fed"] & lines_named:
             out[doc["id"]] = "named line"
+    if jurisdiction.NY:
+        whole = federal_whole(form_doc, mani)
+        out = {d: why for d, why in out.items() if jurisdiction.is_ny(d) or d in whole}
+        named = federal_named(lines_named, mani)
+        for d, ids in federal_labelled(text, mani).items():
+            named.setdefault(d, set()).update(ids)
+        for d, ids in named.items():
+            out.setdefault(d, NAMED_LINES + ", ".join(sorted(ids)))
     return out
+
+
+# New York mode: the federal part of the catalog. The source rules above, run on New York text, name
+# federal forms ("federal Form 1040", "Schedule C") whose lines a New York document does not read. So, from
+# the same source text, a federal document is listed whole only where a line of the reviewed document
+# states its rule on that document's own pages (cites it) or the document is a federal definition it
+# instantiates; otherwise the catalog lists the federal lines the text names, reason NAMED_LINES:
+#   by form and line   "federal Form 1040, line 1z" (named_lines, as the federal rule reads it);
+#   by printed label   the line's printed IRS label, as a whole phrase, in a passage that names or implies
+#                      the line's federal form (federal_labelled).
+# A New York form copies most federal amounts by their federal labels ("Wages, salaries, tips",
+# "Federal adjusted gross income") without naming the line, so both are needed.
+NAMED_LINES = "named lines: "
+
+
+def federal_named(pairs, mani):
+    """{federal document id: line ids} of the printed federal lines that (family, printed line) pairs name,
+    a document's family being its IRS forms (source_profile)."""
+    out = {}
+    defs = load_defs()
+    for f, _ in form_files():
+        if not f.endswith(".yaml") or jurisdiction.is_ny(f[:-5]) or f[:-5] in defs:
+            continue
+        doc = load_form(f[:-5])
+        fams = source_profile(doc, mani)["families"]
+        for l in doc["lines"]:
+            if l["printed"] not in HELPER_PRINTED and any((fam, str(l["printed"])) in pairs for fam in fams):
+                out.setdefault(doc["id"], set()).add(l["id"])
+    return out
+
+
+LABEL_INSTRUCTION = re.compile(r"^(add|subtract|multiply|divide|enter|combine|attach|check|see|if|include|"
+                               r"complete|use|amount|list|from)\b")
+LABEL_LEAD = re.compile(r"^(this is your|these are your|this is the|these are the)\s+")
+
+
+def label_norm(text):
+    """Text as label matching compares it: lower case, parentheses dropped, every other character that is not a
+    letter or digit a space, spaces collapsed; padded with one space each side."""
+    t = re.sub(r"[()]", "", str(text).lower())
+    return " " + " ".join(re.sub(r"[^a-z0-9]+", " ", t).split()) + " "
+
+
+def label_phrases(label, form_text):
+    """The phrases a printed federal label can be named by, each printed on the federal form's own IRS text:
+    its sentences, less a lead such as "This is your" and less instruction sentences ("Add lines 1a
+    through 1h", "Attach Schedule C"); a sentence ending in an abbreviation in parentheses ("Earned income
+    credit (EIC)") also without it; a two-part label "IRA distributions, taxable amount" (a line and its
+    sub-line) also as "taxable amount of IRA distributions". A phrase of fewer than two words is dropped."""
+    out = set()
+    for raw in re.split(r"[.:](?:\s+|$)", " ".join(str(label or "").split())):
+        for sentence in {raw, re.sub(r"\s*\([A-Z]{2,6}\)\s*$", "", raw)}:
+            sentence = LABEL_LEAD.sub("", sentence.strip().lower())
+            if not sentence or LABEL_INSTRUCTION.match(sentence):
+                continue
+            parts = [x.strip() for x in sentence.split(",")]
+            if not all(label_norm(x) in form_text for x in parts):
+                continue                     # not the form's printed wording
+            out.add(label_norm(sentence))
+            if len(parts) == 2:
+                out.add(label_norm(f"{parts[1]} of {parts[0]}"))
+    return {x for x in out if len(x.split()) >= 2}
+
+
+# The federal return a New York passage implies when it says "federal" without naming a form: Form 1040
+# and its numbered schedules.
+FEDERAL_RETURN = ("f1040", "f1040s1", "f1040s1a", "f1040s2", "f1040s3")
+LABEL_WINDOW = 50        # words before a phrase that make up its passage
+NEW_YORK_QUALIFIER = re.compile(r" (new york|new york state|new york city|nys|nyc|city|yonkers|state) $")
+NORM_NAME = re.compile(r" (form|schedule)s? (\d{3,4}(?: [a-z]{1,3})?|w 2|[1-3](?: a)?|8812|se|[a-e])(?= )")
+
+
+def passage_families(passage, mani):
+    """The IRS forms a normalized passage names ("form 1040", "schedule c") or implies (FEDERAL_RETURN) by
+    saying "federal" other than before a form's name ("federal Form W-2" names Form W-2)."""
+    out = {f for kind, n in NORM_NAME.findall(passage)
+           if (f := named_family(kind.title(), n.upper().replace(" ", "-"), mani))}
+    if re.search(r" federal (?!forms? |schedules? )", passage):
+        out |= {doc_family(d) for d in FEDERAL_RETURN if d in mani}
+    return out
+
+
+def federal_labelled(text, mani):
+    """{federal document id: line ids} of the printed federal lines the text names by printed label.
+
+    Text and labels are compared normalized (label_norm). A line's label phrases (label_phrases) are looked
+    for in the text as whole phrases. An occurrence counts only where
+      - its passage, the LABEL_WINDOW words before it and the phrase itself, names the line's IRS form or,
+        saying "federal", implies the federal return (passage_families): the IRS form the text names or
+        implies for that passage;
+      - the text does not qualify it as a New York amount ("New York adjusted gross income", "New York
+        State earned income credit", "city taxable income"): NEW_YORK_QUALIFIER just before it;
+      - it does not lie inside a longer phrase found at the same place ("IRA distributions" inside "taxable
+        amount of IRA distributions"); only the longer one counts.
+    Federal definitions are not eligible."""
+    flat = label_norm(text)
+    starts = [m.start() for m in re.finditer(r"\S+", flat)]
+    defs = load_defs()
+    found = []                           # (start, end, doc id, line id, the IRS forms of the line's document)
+    for f, _ in form_files():
+        if not f.endswith(".yaml") or jurisdiction.is_ny(f[:-5]) or f[:-5] in defs:
+            continue
+        doc = load_form(f[:-5])
+        fams = source_profile(doc, mani)["families"]
+        form_text = label_norm(" ".join(page for fam in sorted(fams) if ("f" + fam) in mani
+                                        for page in doc_pages(mani["f" + fam])))
+        for l in doc["lines"]:
+            if l["printed"] in HELPER_PRINTED:
+                continue
+            for ph in label_phrases(l.get("label"), form_text):
+                start = flat.find(ph)
+                while start >= 0:
+                    found.append((start, start + len(ph), doc["id"], l["id"], fams))
+                    start = flat.find(ph, start + 1)
+    out = {}
+    for a, b, d, i, fams in found:
+        if any(a2 <= a and b <= b2 and b2 - a2 > b - a for a2, b2, *_ in found):
+            continue
+        if NEW_YORK_QUALIFIER.search(flat[max(0, a - 20):a + 1]):
+            continue
+        first = starts[max(0, bisect.bisect_left(starts, a + 1) - LABEL_WINDOW)]
+        if fams & passage_families(flat[max(0, first - 1):b + 1], mani):
+            out.setdefault(d, set()).add(i)
+    return out
+
+
+def federal_reads(form_doc):
+    """{federal document id: line ids} of the federal lines a New York document's lines read (copies of
+    federal return lines, refusal gates, visibility conditions); federal definitions excluded."""
+    lines = load_all_lines()
+    refs = set()
+    for line in form_doc["lines"]:
+        refs |= operand_refs(line.get("expr", {}))
+        refs |= {r if isinstance(r, str) else r.get("when") for r in line.get("refuses") or []}
+        if line.get("shown_when"):
+            refs.add(line["shown_when"])
+    defs = load_defs()
+    out = {}
+    for r in refs:
+        if r in lines and not jurisdiction.is_ny(lines[r][0]) and lines[r][0] not in defs:
+            out.setdefault(lines[r][0], set()).add(r)
+    return out
+
+
+def definition_refs(form_doc):
+    """The definitions a document's lines instantiate ({def: <id>, ...})."""
+    out = set()
+    def walk(x):
+        if isinstance(x, dict):
+            if isinstance(x.get("def"), str):
+                out.add(x["def"])
+            for v in x.values():
+                walk(v)
+        elif isinstance(x, list):
+            for v in x:
+                walk(v)
+    for line in form_doc["lines"]:
+        walk(line.get("expr", {}))
+    return out
+
+
+def federal_whole(form_doc, mani):
+    """The federal documents a New York catalog lists whole: those whose IRS forms the reviewed document's
+    own citations name (a line's rule stated on the federal document), and the federal definitions it
+    instantiates."""
+    cited = {c["doc"] for line in form_doc["lines"] + [{"cite": c} for c in param_cites(form_doc)]
+             for c in [line["cite"]] + [r["cite"] for r in line.get("refuses") or []]
+             if not jurisdiction.is_ny(c["doc"])}
+    families = {doc_family(d) for d in cited}
+    out = definition_refs(form_doc) - {d for d in load_defs() if jurisdiction.is_ny(d)}
+    if families:
+        for f, _ in form_files():
+            if f.endswith(".yaml") and not jurisdiction.is_ny(f[:-5]):
+                doc = load_form(f[:-5])
+                if source_profile(doc, mani)["families"] & families:
+                    out.add(doc["id"])
+    return out
+
+
+NY_CATALOG_NOTE = """In this New York request the catalog above lists a federal form only by the federal lines the
+New York text names, by form and line or by the line's printed label (or whole, where a line of this
+document cites that federal form's own pages); a federal form the text names without naming a line,
+and the federal definitions, are not listed.
+"""
+
+
+def ny_catalog_notes(form_doc):
+    """What build_prompt adds after the catalog in New York mode (NY_CATALOG_NOTE); '' federally."""
+    return "\n" + NY_CATALOG_NOTE if jurisdiction.NY else ""
+
+
+def listed_lines(reviewed, doc_id, selected):
+    """The lines of `doc_id` a catalog lists: all of them (None), or (NAMED_LINES) only those named."""
+    why = selected.get(doc_id) or ""
+    return set(why[len(NAMED_LINES):].split(", ")) if why.startswith(NAMED_LINES) else None
 
 
 def catalog_lines(reviewed, selected):
     """The other-form catalog entries ({line id: note}) of the selected non-collection forms."""
     other = {}
-    for f in sorted(os.listdir(FORMS)):
+    for f, _ in form_files():
         if f.endswith(".yaml") and f[:-5] != reviewed and f[:-5] in selected:
             d = load_form(f[:-5])
             if d.get("collection"):
                 continue   # listed with the collections instead
+            only = listed_lines(reviewed, d["id"], selected)
             for l in d["lines"]:
-                other[l["id"]] = reference_note(d, l)
+                if only is None:
+                    other[l["id"]] = reference_note(d, l)
+                elif l["id"] in only:
+                    other[l["id"]] = reference_note(d, l)
     return other
 
 
@@ -667,7 +953,7 @@ def second_gates(line, by_id, seen=None):
 
 
 def enum_notes():
-    params_doc = project_yaml(os.path.join(ROOT, "params", f"{Y}.yaml"))
+    params_doc = year_params()
     enums = (params_doc.get("params") or params_doc).get("enums", {})
     return "\n".join(f"  - Enum({name}): " + ", ".join(f'"{v}"' for v in e["values"]) for name, e in enums.items())
 
@@ -719,7 +1005,7 @@ def build_prompt(form_doc, excerpt, params, other_lines, param_types=None, colle
     contract_block = input_contracts.public_prompt(input_contracts.load(form_doc['id'], Y))
     if contract_block:
         contract_block += "\n\n"
-    return f"""You are producing an independent transcription of the IRS worksheet or form below into a
+    return jurisdiction.preface(f"""You are producing an independent transcription of the IRS worksheet or form below into a
 formal data model, working ONLY from the IRS text provided here. Do not rely on memory of the tax law
 or of any software; if the text does not say it, do not encode it.
 
@@ -806,7 +1092,7 @@ that this text or the IRS documents it comes from name (as a form or schedule, a
 line that form feeds), and every shared definition. The selection is made from the IRS documents
 alone, not from this project's encoding, so a listed line is not a hint that it is needed:
 {oth if oth else '  (none)'}
-
+{ny_catalog_notes(form_doc)}
 {contract_block}# Output
 
 Keep the exact declared type on every requested result id. A mathematically nonnegative result
@@ -835,13 +1121,13 @@ or after the YAML. Where the IRS text leaves a point genuinely open, choose a re
 # IRS text (archived snapshots; page markers show document, revision and page)
 
 {excerpt}
-"""
+""")
 
 
 # ---------- comparison ----------
 
 def load_form(form_id):
-    d = project_yaml(os.path.join(FORMS, form_id + ".yaml"))
+    d = project_yaml(form_path(form_id))
     return d.get("form") or d.get("def")
 
 
@@ -853,9 +1139,9 @@ def norm_ref(ref):
 
 def load_defs():
     defs = {}
-    for f in os.listdir(FORMS):
+    for f, path in form_files(sort=False):
         if f.endswith(".yaml"):
-            d = project_yaml(os.path.join(FORMS, f))
+            d = project_yaml(path)
             if "def" in d:
                 defs[d["def"]["id"]] = d["def"]
     return defs
@@ -864,9 +1150,9 @@ def load_defs():
 def load_all_lines():
     """Every line of every form, for expanding helper lines referenced across forms."""
     out = {}
-    for f in os.listdir(FORMS):
+    for f, path in form_files(sort=False):
         if f.endswith(".yaml"):
-            d = project_yaml(os.path.join(FORMS, f))
+            d = project_yaml(path)
             doc = d.get("form") or d.get("def")
             for l in doc["lines"]:
                 out[l["id"]] = (doc["id"], l)
@@ -883,9 +1169,9 @@ TYPE_VALIDATION_POLICY = "project-expression-types-v3"
 @cache
 def model_type_context():
     """Live authored interfaces for the host validator, never supplied to the model."""
-    docs = [load_form(path[:-5]) for path in sorted(os.listdir(FORMS)) if path.endswith(".yaml")]
+    docs = [load_form(f[:-5]) for f, _ in form_files() if f.endswith(".yaml")]
     tables = load_tables()
-    params = project_yaml(os.path.join(ROOT, "params", f"{Y}.yaml"))
+    params = year_params()
     return {"forms": [d for d in docs if d.get("kind") != "def"],
             "defs": [d for d in docs if d.get("kind") == "def"],
             "params": params.get("params", params), "tables": tables, "register": {"entries": []}}
@@ -1186,7 +1472,7 @@ def compare(form_id, project_lines, second_lines, only=None):
         own = {l["id"] for l in second_lines}
         support = [l for l in project_lines if l["id"] not in own and l["id"] not in only and l["expr"].get("op") != "input"]
         type_errors = [e for e in validate_model_types(form_id, second_lines + support) if e["line"] is None or e["line"] in own]
-    params_doc = project_yaml(os.path.join(ROOT, "params", f"{Y}.yaml"))
+    params_doc = year_params()
     parameter_rows = (params_doc.get("params") or params_doc)["values"]
     pvals = {k: v["value"] for k, v in parameter_rows.items()}
     ptypes = {k: v["type"] for k, v in parameter_rows.items()}
@@ -1278,8 +1564,8 @@ def normalize_definition_ids(form_id, project_lines, second_lines):
 
 # ---------- model call ----------
 
-TRANSCRIBE_SYSTEM = ("You transcribe IRS worksheets into a formal data model from the text given to you. "
-                     "You have no tools and no other sources. Output only the YAML requested.")
+TRANSCRIBE_SYSTEM = jurisdiction.system("You transcribe IRS worksheets into a formal data model from the text given to you. "
+                                        "You have no tools and no other sources. Output only the YAML requested.")
 
 
 DEEPSEEK_URL = "https://api.deepseek.com/chat/completions"
@@ -1423,7 +1709,10 @@ def _call_claude(prompt, model, timeout, system):
     cmd = ["claude", "-p", "--no-session-persistence", "--setting-sources", "", "--tools", "",
            "--permission-prompts", "none", "--output-format", "json", "--model", model,
            "--system-prompt", system]
-    proc = subprocess.run(cmd, input=prompt, capture_output=True, text=True, timeout=timeout)
+    # A review call is one-shot: a prompt cache written for it is never read, and writing it costs more than
+    # plain input, so caching is off for these calls (the prompt, model and policy are unchanged).
+    env = dict(os.environ, DISABLE_PROMPT_CACHING="1")
+    proc = subprocess.run(cmd, input=prompt, capture_output=True, text=True, timeout=timeout, env=env)
     if proc.returncode != 0:
         raise RuntimeError(f"claude exited {proc.returncode}: {proc.stderr[:400]}")
     events = json.loads(proc.stdout)
@@ -1765,7 +2054,7 @@ def write_log(form_doc, model, prompt, used, results, extra, raw_text, meta, dry
         results.interface_check = interfaces
     rows, counts = _review_rows(form_doc, model, prompt, used, results, extra, meta, interfaces, contract, replay_receipt, catalog)
     out = [f"# Transcription agreement — {fid}", "",
-           f"Second transcription of `{form_doc['title']}` by an isolated model (spec 6.5), compared line by line with `forms/{Y}/{fid}.yaml`.", "",
+           f"Second transcription of `{form_doc['title']}` by an isolated model (spec 6.5), compared line by line with `{jurisdiction.doc_dir('forms', Y, fid).relative_to(jurisdiction.ROOT)}/{fid}.yaml`.", "",
            *rows]
     out += ["", "## Lines", ""]
     kept = rulings.kept("transcription", fid, family, context=rulings.review_context("transcription", "\n".join(out)))
@@ -2073,9 +2362,11 @@ def main():
     a = ap.parse_args()
     mani = manifest()
     form_doc = load_form(a.form)
-    params_doc = project_yaml(os.path.join(ROOT, "params", f"{Y}.yaml"))
+    params_doc = year_params()
     values = (params_doc.get("params") or params_doc)["values"]
-    params = {k: v["value"] for k, v in values.items()}
+    # The year parameters the request lists: in New York mode the New York ones (`ny.`), all a New York
+    # document reads; the federal lines it copies are listed as other forms' lines.
+    params = {k: v["value"] for k, v in values.items() if not jurisdiction.NY or k.startswith("ny.")}
     if a.lines:
         return scoped_main(a, form_doc, mani, params, values)
     excerpt, used = excerpt_for(form_doc, mani)

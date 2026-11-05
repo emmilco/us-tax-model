@@ -24,7 +24,8 @@ import compare_families  # noqa: E402
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 from taxyear import Y  # noqa: E402
-REVIEWS = os.path.join(ROOT, "reviews", Y)
+import jurisdiction  # noqa: E402  (--jurisdiction ny: reviews/ny/<year>/, fixtures/ny/<year>/)
+REVIEWS = str(jurisdiction.ypath("reviews", Y))
 
 
 def today():
@@ -93,7 +94,7 @@ def apply(form, rulings, kind="transcription", family=families.DEFAULT):
 
 def drop_from_fixture(form, case_id, printed, family=families.DEFAULT):
     """Remove one line's expectation from a class M fixture case of the family's fixture file."""
-    fx_path = os.path.join(ROOT, "fixtures", Y, families.fixture_name(family))
+    fx_path = str(jurisdiction.ypath("fixtures", Y, families.fixture_name(family)))
     fx = json.load(open(fx_path))
     jobs = json.load(open(os.path.join(ROOT, ".classm", "jobs.json")))["jobs"]
     job = next(j for j in jobs if j["id"] == case_id)

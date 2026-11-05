@@ -22,7 +22,8 @@ import families  # noqa: E402
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 from taxyear import Y  # noqa: E402
-REVIEWS = os.path.join(ROOT, "reviews", Y)
+import jurisdiction  # noqa: E402  (--jurisdiction ny: reviews/ny/<year>/)
+REVIEWS = str(jurisdiction.ypath("reviews", Y))
 KINDS = {
     "transcription": ("printed", "project", "second"),
     "render": ("printed", "restated", "model"),

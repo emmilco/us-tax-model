@@ -20,6 +20,7 @@ import { loadInterview } from "./interview.js";
 import { branchKeys, templateKey } from "./branches.js";
 import { isHelperLine } from "./util.js";
 import { loadCases } from "./fixtures.js";
+import { NY_MODE } from "./year.js";
 import type { CanonicalData, Expr, FormDoc, Inputs, Line, Operand, TestExpr } from "./types.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
@@ -467,8 +468,10 @@ export function classmJobs(args: string[]): void {
   const data = loadCanonical();
   // Narrow regimes can disappear from a random corpus after a validation fix.
   // Seed with existing non-M facts as well; expected values never enter a job.
+  // With --ny the seeds are every New York fixture (fixtures/ny/<year>/): the random corpus supplies no New York
+  // answers, so they are the only returns a New York job can be built on, whichever document a fixture covers.
   const seeds = includeFixtures ? loadCases().cases
-    .filter((c) => c.evidence !== "M" && (!only || c.covers.some((id) => only.includes(id))))
+    .filter((c) => c.evidence !== "M" && (NY_MODE || !only || c.covers.some((id) => only.includes(id))))
     .map((c) => c.inputs) : [];
   const corpus = [...sampleReturns(data, corpusSize, SEED), ...seeds].map((c) => roundInputs(c, data));
   const results = corpus.map((inputs) => evaluateAll(data, inputs));

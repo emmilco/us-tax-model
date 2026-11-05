@@ -81,7 +81,10 @@ function runProperty<T>(id: string, statement: string, arb: fc.Arbitrary<T>, che
 }
 
 export function runProperties(): number {
-  const data = loadCanonical();
+  // The federal properties over federal generated returns: the New York documents the loader merges answer no
+  // question of these returns, so they are left out (no federal line reads a New York line).
+  const all = loadCanonical();
+  const data = { ...all, forms: all.forms.filter((d) => !d.id.startsWith("ny_")), defs: all.defs.filter((d) => !d.id.startsWith("ny_")) };
   const arb = returnArbitrary(data);
   const results: PropertyResult[] = [];
 

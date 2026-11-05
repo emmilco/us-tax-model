@@ -7,10 +7,29 @@ import { join, resolve } from "node:path";
 import { fmtMoney, fmtRate, isHelperLine, isMarkedLine, shortHash } from "./util.js";
 import { loadCanonical } from "./canonical.js";
 import type { CanonicalData, CiteFilled, Expr, FormDoc, Line, Operand, TestExpr } from "./types.js";
-import { YEAR, yearPath } from "./year.js";
+import { NY_MODE, YEAR, nyPath, yearPath } from "./year.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
-const OUT = yearPath("rendered");
+// rendered/<YEAR>/ for the federal documents; with --ny, rendered/ny/<YEAR>/ for the New York ones.
+const OUT = NY_MODE ? nyPath("rendered") : yearPath("rendered");
+
+// The canonical build holds both jurisdictions (New York ids prefixed `ny_`, parameters `ny.`, register
+// entries `amb.ny.`); a render writes its own jurisdiction's documents, parameters, tables and register,
+// and reads every document for the references they make (a New York line copies federal lines).
+const own = (id: string, prefix: string): boolean => id.startsWith(prefix) === NY_MODE;
+function ownData(data: CanonicalData): CanonicalData {
+  return {
+    forms: data.forms.filter((d) => own(d.id, "ny_")),
+    defs: data.defs.filter((d) => own(d.id, "ny_")),
+    tables: data.tables.filter((t) => own(t.id, "ny_")),
+    params: {
+      ...data.params,
+      enums: Object.fromEntries(Object.entries(data.params.enums).filter(([name]) => own(name, "ny_"))),
+      values: Object.fromEntries(Object.entries(data.params.values).filter(([name]) => own(name, "ny."))),
+    },
+    register: { ...data.register, entries: data.register.entries.filter((e) => own(e.id, "amb.ny.")) },
+  };
+}
 
 interface RenderCtx {
   forms: Map<string, FormDoc>;
@@ -19,12 +38,13 @@ interface RenderCtx {
 }
 
 export function renderAll(): void {
-  const data = loadCanonical();
+  const all = loadCanonical();
   const ctx: RenderCtx = {
-    forms: new Map([...data.forms, ...data.defs].map((d) => [d.id, d])),
-    params: data.params,
-    tables: data.tables,
+    forms: new Map([...all.forms, ...all.defs].map((d) => [d.id, d])),
+    params: all.params,
+    tables: all.tables,
   };
+  const data = ownData(all);
 
   rmSync(OUT, { recursive: true, force: true });
   mkdirSync(OUT, { recursive: true });
@@ -38,7 +58,7 @@ export function renderAll(): void {
   }
   writeFileSync(join(OUT, "ambiguities.md"), renderRegister(data.register));
   writeFileSync(join(OUT, "index.md"), renderIndex(data));
-  console.log(`rendered ${2 + 1 + 2 + 1 + data.forms.length + data.defs.length} files to rendered/${YEAR}/`);
+  console.log(`rendered ${2 + 1 + 2 + 1 + data.forms.length + data.defs.length} files to rendered/${NY_MODE ? "ny/" : ""}${YEAR}/`);
 }
 
 // ---------------------------------------------------------------------------
@@ -338,7 +358,8 @@ function renderIndex(data: CanonicalData): string {
   const out: string[] = [];
   out.push("# Rendered data — implemented stages");
   out.push("");
-  out.push(`Review these renderings line by line against the archived IRS sources in \`sources/${YEAR}/\`.`);
+  out.push(NY_MODE ? `Review these renderings line by line against the archived New York State sources in \`sources/ny/${YEAR}/\`.`
+    : `Review these renderings line by line against the archived IRS sources in \`sources/${YEAR}/\`.`);
   out.push("");
   out.push("| File | Kind | Lines |");
   out.push("| --- | --- | --- |");

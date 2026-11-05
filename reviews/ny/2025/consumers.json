@@ -1,0 +1,35 @@
+{
+ "rulings": {
+  "consumer:ny_it201.ask.state_resident@ny_it201i:p3": {
+   "verdict": "same",
+   "question_phrase": "a New York State resident for all of 2025",
+   "source_phrase": "p. 3, \"If you were a New York State resident for only part of the year, do not file Form IT-201.\"",
+   "reason": "The gate refuses the part-year (or nonresident) case p. 3 sends to Form IT-203; the question asks the full-year residence p. 30 defines."
+  },
+  "consumer:ny_it201.ask.city_resident@ny_it201i:p14": {
+   "verdict": "same",
+   "question_phrase": "a New York City resident ... for all of 2025",
+   "source_phrase": "p. 14, Line 50, \"If you were a New York City resident for only part of 2025, complete Form IT-360.1\"",
+   "reason": "A No is the part-year (or non-) City resident case line 50 sends to Form IT-360.1; the gate refuses it."
+  },
+  "consumer:ny_it201.ask.it225@ny_it201i:p7": {
+   "verdict": "same",
+   "question_phrase": "any other New York addition or subtraction on Form IT-225",
+   "source_phrase": "p. 7, Step 4, \"See below and Form IT-225, New York State Modifications, and its instructions.\"",
+   "reason": "The question asks whether any IT-225 modification applies, which is what p. 7 and the line 23 and 31 instructions (p. 8, p. 10) send to Form IT-225."
+  },
+  "consumer:ny_it201.ask.itemize@ny_it201i:p11": {
+   "verdict": "same",
+   "question_phrase": "itemize deductions on your New York return (Form IT-196)",
+   "source_phrase": "p. 11, \"To calculate your New York itemized deduction, use Form IT-196\"",
+   "reason": "The question asks whether the filer itemizes on Form IT-196, the case p. 11 describes; the gate refuses it."
+  },
+  "consumer:ny_it201.ask.owes_use_tax@ny_it201i:p19": {
+   "verdict": "same",
+   "question_phrase": "owe New York sales or use tax on purchases made without paying New York tax",
+   "source_phrase": "p. 19, \"If you do not owe any sales or use tax, you must enter 0 on line 59.\"",
+   "reason": "A No is the case p. 19 says to enter 0 for; the question restates p. 18's \"You owe sales or compensating use tax if you\" conditions."
+  }
+ },
+ "baseline": {}
+}

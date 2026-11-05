@@ -241,7 +241,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--forms", help="comma-separated form ids")
     parser.add_argument("--family", choices=["claude", "deepseek"])
-    parser.add_argument("--report", default=str(Path(T.RAW) / "expression-type-audit-current.json"))
+    parser.add_argument("--report", default=str(Path(T.RAW) / (("ny-" if T.jurisdiction.NY else "") + "expression-type-audit-current.json")))
     args = parser.parse_args()
     selected = set(args.forms.split(",")) if args.forms else None
     results, errors = [], []

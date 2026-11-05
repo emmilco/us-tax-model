@@ -70,6 +70,16 @@ import compare_families  # noqa: E402
 
 ROOT = sidecar.ROOT
 Y = sidecar.Y
+jurisdiction = sidecar.jurisdiction  # --jurisdiction ny: the New York documents, which read federal ones
+
+
+def _dirs(top):
+    """Repository-relative per-year directories the jurisdiction reads: <top>/<year>, then (New York) <top>/ny/<year>."""
+    return [f"{top}/{Y}"] + ([f"{top}/ny/{Y}"] if jurisdiction.NY else [])
+
+
+def _rel(top, doc_id, ext):
+    return f"{top}/ny/{Y}/{doc_id}{ext}" if jurisdiction.is_ny(doc_id) else f"{top}/{Y}/{doc_id}{ext}"
 CARRIED = re.compile(r" \(carried over from [^()]*\)$")
 ARCHIVE_PREFIX = {"transcription": "", "render": "render.", "classm": "classm."}
 STATUS = re.compile(r"^Status: \*\*(\w+)\*\*", re.M)
@@ -100,27 +110,33 @@ class Snapshot:
 
     def forms(self):
         if "__forms" not in self._cache:
-            if self.rev is None:
-                names = os.listdir(os.path.join(ROOT, "forms", Y))
-            else:
-                names = [os.path.basename(n) for n in (_git("ls-tree", "--name-only", self.rev, f"forms/{Y}/") or "").split()]
+            names = []
+            for rel in _dirs("forms"):
+                if self.rev is None:
+                    names += os.listdir(os.path.join(ROOT, rel)) if os.path.isdir(os.path.join(ROOT, rel)) else []
+                else:
+                    names += [os.path.basename(n) for n in (_git("ls-tree", "--name-only", self.rev, f"{rel}/") or "").split()]
             self._cache["__forms"] = sorted(n[:-5] for n in names if n.endswith(".yaml"))
         return self._cache["__forms"]
 
     def tables(self):
+        """{table id: repository-relative path}."""
         if "__tables" not in self._cache:
-            if self.rev is None:
-                d = os.path.join(ROOT, "tables", Y)
-                names = os.listdir(d) if os.path.isdir(d) else []
-            else:
-                names = [os.path.basename(n) for n in (_git("ls-tree", "--name-only", self.rev, f"tables/{Y}/") or "").split()]
-            self._cache["__tables"] = {n.split(".")[0]: n for n in sorted(names)}
+            out = {}
+            for rel in _dirs("tables"):
+                if self.rev is None:
+                    d = os.path.join(ROOT, rel)
+                    names = os.listdir(d) if os.path.isdir(d) else []
+                else:
+                    names = [os.path.basename(n) for n in (_git("ls-tree", "--name-only", self.rev, f"{rel}/") or "").split()]
+                out.update({n.split(".")[0]: f"{rel}/{n}" for n in sorted(names)})
+            self._cache["__tables"] = out
         return self._cache["__tables"]
 
     def doc(self, fid):
         key = "__doc " + fid
         if key not in self._cache:
-            text = self.read(f"forms/{Y}/{fid}.yaml")
+            text = self.read(_rel("forms", fid, ".yaml"))
             raw = yaml.load(text, Loader=_Loader) if text else None
             self._cache[key] = (raw.get("form") or raw.get("def")) if raw else None
             self._cache["__subject " + fid] = subjects._sha(subjects._without_cites(raw)) if raw else None
@@ -169,7 +185,10 @@ def closure(snap, fid, line, depth=None):
     makes a carry less likely."""
     idx, forms, tables = snap.line_index(), set(snap.forms()), snap.tables()
     if "__params" not in snap._cache:
-        snap._cache["__params"] = hashlib.sha256((snap.read(f"params/{Y}.yaml") or "").encode()).hexdigest()
+        text = snap.read(f"params/{Y}.yaml") or ""
+        if jurisdiction.NY:
+            text += snap.read(f"params/ny/{Y}.yaml") or ""
+        snap._cache["__params"] = hashlib.sha256(text.encode()).hexdigest()
     out = {"params": snap._cache["__params"]}
     todo, seen = [(fid, line, 0)], set()
     while todo:
@@ -187,7 +206,7 @@ def closure(snap, fid, line, depth=None):
                 continue
             head = re.split(r"[.\[]", s)[0]
             if s in tables:
-                out["table " + s] = hashlib.sha256((snap.read(f"tables/{Y}/{tables[s]}") or "").encode()).hexdigest()
+                out["table " + s] = hashlib.sha256((snap.read(tables[s]) or "").encode()).hexdigest()
             elif head in forms and head != f or s in forms:
                 d = head if head in forms else s
                 if "doc " + d not in out:
@@ -222,7 +241,7 @@ def find_line(snap, fid, handle):
 
 
 def rendered_section(snap, fid, line_id):
-    text = snap.read(f"rendered/{Y}/{fid}.md")
+    text = snap.read(_rel("rendered", fid, ".md"))
     if not text:
         return None
     for sec in re.split(r"(?m)^## ", text)[1:]:
@@ -383,7 +402,7 @@ def recorded(text, field):
 def source_log(kind, form, family, origin):
     """(source text, label, snapshot) for the earlier log, or (None, reason, None)."""
     stem = families.stem(form, family)
-    rel = f"reviews/{Y}/{kind}/{stem}.md"  # where the log is committed
+    rel = f"{_dirs('reviews')[-1]}/{kind}/{stem}.md"  # where the log is committed
     if origin is None or origin.startswith("git:"):
         rev = "HEAD" if origin is None else origin[4:]
         text = _git("show", f"{rev}:{rel}")

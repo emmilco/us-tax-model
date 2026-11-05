@@ -29,8 +29,9 @@ import adapter_contracts  # noqa: E402
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(ROOT, "tools"))
 from taxyear import Y  # noqa: E402
+import jurisdiction  # noqa: E402  (--jurisdiction ny: reviews/ny/<year>/, reports/ny/<year>/)
 
-REPORT = os.path.join(ROOT, "reports", Y, "second_family.md")
+REPORT = str(jurisdiction.ypath("reports", Y, "second_family.md"))
 KINDS = ("transcription", "render", "classm")
 AGREE = {"transcription": "AGREE", "render": "MATCH", "classm": "AGREE"}
 TITLE = {"transcription": "Transcription agreement", "render": "Render comparison", "classm": "Class M hand-work"}
@@ -280,9 +281,7 @@ def compare(kind, form, family):
     if kind == "transcription" and b["policy"] not in transcribe.INDEPENDENT_PROMPT_POLICIES:
         q["blockers"].append("transcription predates the prompt-independence policy")
     q["blockers"].extend(model_blockers(kind, family, b))
-    with open(os.path.join(ROOT, "sources", Y, "manifest.json"), encoding="utf-8") as f:
-        manifest = json.load(f)
-    sources = {d["id"]: d for d in manifest["documents"]}
+    sources = transcribe.manifest()  # in New York mode the New York and the federal documents
     if q["judged"] and not b["sources"]:
         q["blockers"].append("no archived source snapshots recorded")
     for doc, sha, cols_sha in b["sources"]:
@@ -334,9 +333,9 @@ def main():
                    f"current independence yield {yield_n} line(s); both families disputed {both_n}")
     else:
         summary = "no second-family logs yet"
-    out = [f"# Second-family review comparison — {Y}", "",
+    out = [f"# Second-family review comparison — {Y}{jurisdiction.label()}", "",
            f"Summary: {summary}", "",
-           f"Written by `tools/transcription/compare_families.py` on {datetime.date.today().isoformat()} from the review logs under `reviews/{Y}/`. "
+           f"Written by `tools/transcription/compare_families.py` on {datetime.date.today().isoformat()} from the review logs under `{jurisdiction.ypath('reviews', Y).relative_to(jurisdiction.ROOT)}/`. "
            "For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.", "",
            "- **Noise rule** (owner's decision 12, integrity plan item 1.3): second-family disputes ruled **model error**, divided by the lines that family judged, must be at most 10% for each form-kind run. Findings, representation differences, scope differences and ambiguities are not model noise. The threshold uses integer arithmetic; 1/10 passes and 1/9 does not. Rates for pending reviews are provisional: an unresolved objection has not yet been classified, and zero ruled model errors does not mean every objection was correct.",
            "- **Eligibility** also requires current subjects/sources, the named second-family model, no missing or invalid verdicts, and no open or unclassified ruling. Empty reviews earn no assertion. Optional-family results can remain pending without becoming evidence.",

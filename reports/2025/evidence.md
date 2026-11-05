@@ -1,6 +1,6 @@
 # Evidence coverage per line
 
-**Scoreboard.** Share of computed lines with at least one outside-family assertion: 548 of 1958 (28.0%). H (human source reading): 0, B (human worked values): 0, second-family M: 427, E: 220.
+**Scoreboard.** Share of computed lines with at least one outside-family assertion: 548 of 2248 (24.4%). H (human source reading): 0, B (human worked values): 0, second-family M: 427, E: 220.
 
 A computed line is one whose atom is not `input`, `param` or `copy`. An outside-family assertion is a signed human source reading (H), a class B fixture (human worked values), a class M fixture whose recorded model is not a Claude model (second-family M), or an engine assertion (E) under the rule below. The sub-counts overlap: a line with several kinds counts once in the share. H checks the encoded rule against IRS text; B and M check worked values. Second-family transcription and render readings are reported separately in second_family.md and do not yet enter this scoreboard. Class A, Claude-family M, C and R do not move it.
 
@@ -1632,6 +1632,291 @@ Unasserted lines: ira.zero, ira.joint, ira.joint_type, ira.contrib_total, ira.ro
 | mq.applies | — | — | — | — | — | — | 6 |
 
 Unasserted lines: mq.q4, mq.total, mq.five, mq.two, mq.q4x5, mq.totalx2
+
+## Form IT-2 (2025), Summary of W-2 Statements — one record per Form W-2
+
+| line | A | B | C | M | H | E | R |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ny_it2.state_withheld | — | — | — | — | — | — | — |
+| ny_it2.yonkers_withheld | — | — | — | — | — | — | — |
+| ny_it2.yonkers_gate | — | — | — | — | — | — | — |
+| ny_it2.state_whole | — | — | — | — | — | — | — |
+| ny_it2.city_withheld | — | — | — | — | — | — | — |
+| ny_it2.city_whole | — | — | — | — | — | — | — |
+
+Unasserted lines: ny_it2.yonkers_gate, ny_it2.state_whole, ny_it2.city_whole
+
+## Form IT-201 (2025), Resident Income Tax Return — New York State and New York City
+
+| line | A | B | C | M | H | E | R |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| ny_it201.ask.state_resident | — | — | — | — | — | — | — |
+| ny_it201.ask.city_resident | — | — | — | — | — | — | — |
+| ny_it201.ask.special_accrual | — | — | — | — | — | — | — |
+| ny_it201.ask.yonkers | — | — | — | — | — | — | — |
+| ny_it201.ask.special_code | — | — | — | — | — | — | — |
+| ny_it201.ask.decedent | — | — | — | — | — | — | — |
+| ny_it201.ask.item_c | — | — | — | — | — | — | — |
+| ny_it201.ask.inflation_check | — | — | — | — | — | — | — |
+| ny_it201.ask.out_of_state_bond_interest | — | — | — | — | — | — | — |
+| ny_it201.ask.414h | — | — | — | — | — | — | — |
+| ny_it201.ask.529_nonqualified | — | — | — | — | — | — | — |
+| ny_it201.ask.it225 | — | — | — | — | — | — | — |
+| ny_it201.ask.gov_pension | — | — | — | — | — | — | — |
+| ny_it201.ask.us_obligation_interest | — | — | — | — | — | — | — |
+| ny_it201.ask.pension_exclusion | — | — | — | — | — | — | — |
+| ny_it201.ask.529_owner | — | — | — | — | — | — | — |
+| ny_it201.ask.itemize | — | — | — | — | — | — | — |
+| ny_it201.ask.resident_credit | — | — | — | — | — | — | — |
+| ny_it201.ask.other_credits | — | — | — | — | — | — | — |
+| ny_it201.ask.other_taxes | — | — | — | — | — | — | — |
+| ny_it201.ask.city_credits | — | — | — | — | — | — | — |
+| ny_it201.ask.mctmt | — | — | — | — | — | — | — |
+| ny_it201.ask.owes_use_tax | — | — | — | — | — | — | — |
+| ny_it201.ask.use_tax_st141 | — | — | — | — | — | — | — |
+| ny_it201.ask.contributions | — | — | — | — | — | — | — |
+| ny_it201.ask.dependent_care | — | — | — | — | — | — | — |
+| ny_it201.ask.noncustodial | — | — | — | — | — | — | — |
+| ny_it201.ask.real_property_credit | — | — | — | — | — | — | — |
+| ny_it201.ask.college_tuition | — | — | — | — | — | — | — |
+| ny_it201.ask.other_withholding | — | — | — | — | — | — | — |
+| ny_it201.ask.refund_529 | — | — | — | — | — | — | — |
+| ny_it201.ask.late_penalty | — | — | — | — | — | — | — |
+| ny_it201.ask.prior_agi_high | — | — | — | — | — | — | — |
+| ny_it201.ask.abode_part_year | — | — | — | — | — | — | — |
+| ny_it201.ask.prior_full_year | — | — | — | — | — | — | — |
+| ny_it201.ask.est_late | — | — | — | — | — | — | — |
+| ny_it201.ask.spouse_resident | — | — | — | — | — | — | — |
+| ny_it201.ask.prior_year_tax | — | — | — | — | — | — | — |
+| ny_it201.gate.part_year_state | — | — | — | — | — | — | — |
+| ny_it201.gate.part_year_city | — | — | — | — | — | — | — |
+| ny_it201.gate.spouse_nonresident | — | — | — | — | — | — | — |
+| ny_it201.gate.special_accrual | — | — | — | — | — | — | — |
+| ny_it201.gate.yonkers | — | — | — | — | — | — | — |
+| ny_it201.gate.special_code | — | — | — | — | — | — | — |
+| ny_it201.gate.decedent | — | — | — | — | — | — | — |
+| ny_it201.item_c | — | — | — | — | — | — | — |
+| ny_it201.item_h_count | — | — | — | — | — | — | — |
+| ny_it201.line1 | — | — | — | — | — | — | — |
+| ny_it201.line2 | — | — | — | — | — | — | — |
+| ny_it201.line3 | — | — | — | — | — | — | — |
+| ny_it201.line4 | — | — | — | — | — | — | — |
+| ny_it201.line5 | — | — | — | — | — | — | — |
+| ny_it201.line6 | — | — | — | — | — | — | — |
+| ny_it201.line7 | — | — | — | — | — | — | — |
+| ny_it201.line8 | — | — | — | — | — | — | — |
+| ny_it201.line9 | — | — | — | — | — | — | — |
+| ny_it201.line10 | — | — | — | — | — | — | — |
+| ny_it201.line11 | — | — | — | — | — | — | — |
+| ny_it201.line12 | — | — | — | — | — | — | — |
+| ny_it201.line13 | — | — | — | — | — | — | — |
+| ny_it201.line14 | — | — | — | — | — | — | — |
+| ny_it201.line15 | — | — | — | — | — | — | — |
+| ny_it201.line16 | — | — | — | — | — | — | — |
+| ny_it201.line17 | — | — | — | — | — | — | — |
+| ny_it201.line18 | — | — | — | — | — | — | — |
+| ny_it201.line19 | — | — | — | — | — | — | — |
+| ny_it201.fagi_rounded | — | — | — | — | — | — | — |
+| ny_it201.line19_agrees | — | — | — | — | — | — | — |
+| ny_it201.gate.line20 | — | — | — | — | — | — | — |
+| ny_it201.line20 | — | — | — | — | — | — | — |
+| ny_it201.gate.line21 | — | — | — | — | — | — | — |
+| ny_it201.line21 | — | — | — | — | — | — | — |
+| ny_it201.gate.line22 | — | — | — | — | — | — | — |
+| ny_it201.line22 | — | — | — | — | — | — | — |
+| ny_it201.gate.it225 | — | — | — | — | — | — | — |
+| ny_it201.line23 | — | — | — | — | — | — | — |
+| ny_it201.line24 | — | — | — | — | — | — | — |
+| ny_it201.gate.line25 | — | — | — | — | — | — | — |
+| ny_it201.line25 | — | — | — | — | — | — | — |
+| ny_it201.gate.line26 | — | — | — | — | — | — | — |
+| ny_it201.line26 | — | — | — | — | — | — | — |
+| ny_it201.line27 | — | — | — | — | — | — | — |
+| ny_it201.gate.line28 | — | — | — | — | — | — | — |
+| ny_it201.line28 | — | — | — | — | — | — | — |
+| ny_it201.gate.line29 | — | — | — | — | — | — | — |
+| ny_it201.line29 | — | — | — | — | — | — | — |
+| ny_it201.gate.line30 | — | — | — | — | — | — | — |
+| ny_it201.line30 | — | — | — | — | — | — | — |
+| ny_it201.line31 | — | — | — | — | — | — | — |
+| ny_it201.line32 | — | — | — | — | — | — | — |
+| ny_it201.line33 | — | — | — | — | — | — | — |
+| ny_it201.gate.itemize | — | — | — | — | — | — | — |
+| ny_it201.dependent_single | — | — | — | — | — | — | — |
+| ny_it201.std_deduction | — | — | — | — | — | — | — |
+| ny_it201.std_deduction_dependent | — | — | — | — | — | — | — |
+| ny_it201.line34 | — | — | — | — | — | — | — |
+| ny_it201.line35 | — | — | — | — | — | — | — |
+| ny_it201.exemption | — | — | — | — | — | — | — |
+| ny_it201.line36 | — | — | — | — | — | — | — |
+| ny_it201.line37 | — | — | — | — | — | — | — |
+| ny_it201.line38 | — | — | — | — | — | — | — |
+| ny_it201.agi_table_range | — | — | — | — | — | — | — |
+| ny_it201.ti_table_range | — | — | — | — | — | — | — |
+| ny_it201.tax_table | — | — | — | — | — | — | — |
+| ny_it201.tax_schedule | — | — | — | — | — | — | — |
+| ny_it201.tax_low | — | — | — | — | — | — | — |
+| ny_it201.tcw.w1 | — | — | — | — | — | — | — |
+| ny_it201.tcw.w7 | — | — | — | — | — | — | — |
+| ny_it201.tcw.w12 | — | — | — | — | — | — | — |
+| ny_it201.tcw.w2 | — | — | — | — | — | — | — |
+| ny_it201.tcw.w3 | — | — | — | — | — | — | — |
+| ny_it201.tcw.w4 | — | — | — | — | — | — | — |
+| ny_it201.tcw.w5 | — | — | — | — | — | — | — |
+| ny_it201.tcw.w8 | — | — | — | — | — | — | — |
+| ny_it201.tcw.w9 | — | — | — | — | — | — | — |
+| ny_it201.tcw.w10 | — | — | — | — | — | — | — |
+| ny_it201.tcw.w13 | — | — | — | — | — | — | — |
+| ny_it201.tcw.w14 | — | — | — | — | — | — | — |
+| ny_it201.tcw.w15 | — | — | — | — | — | — | — |
+| ny_it201.tcw.top | — | — | — | — | — | — | — |
+| ny_it201.tcw.mfj | — | — | — | — | — | — | — |
+| ny_it201.tcw.single | — | — | — | — | — | — | — |
+| ny_it201.tcw.hoh | — | — | — | — | — | — | — |
+| ny_it201.tcw.by_status | — | — | — | — | — | — | — |
+| ny_it201.agi_top | — | — | — | — | — | — | — |
+| ny_it201.tax_high | — | — | — | — | — | — | — |
+| ny_it201.line39 | — | — | — | — | — | — | — |
+| ny_it201.hh_agi | — | — | — | — | — | — | — |
+| ny_it201.one | — | — | — | — | — | — | — |
+| ny_it201.spouse_count | — | — | — | — | — | — | — |
+| ny_it201.hh_people | — | — | — | — | — | — | — |
+| ny_it201.hh_state_p1 | — | — | — | — | — | — | — |
+| ny_it201.hh_city_p1 | — | — | — | — | — | — | — |
+| ny_it201.hh_state_p2 | — | — | — | — | — | — | — |
+| ny_it201.hh_city_p2 | — | — | — | — | — | — | — |
+| ny_it201.hh_state_p3 | — | — | — | — | — | — | — |
+| ny_it201.hh_city_p3 | — | — | — | — | — | — | — |
+| ny_it201.hh_state_p4 | — | — | — | — | — | — | — |
+| ny_it201.hh_city_p4 | — | — | — | — | — | — | — |
+| ny_it201.hh_state_p5 | — | — | — | — | — | — | — |
+| ny_it201.hh_city_p5 | — | — | — | — | — | — | — |
+| ny_it201.hh_state_p6 | — | — | — | — | — | — | — |
+| ny_it201.hh_city_p6 | — | — | — | — | — | — | — |
+| ny_it201.hh_state_p7 | — | — | — | — | — | — | — |
+| ny_it201.hh_city_p7 | — | — | — | — | — | — | — |
+| ny_it201.hh_state_t2 | — | — | — | — | — | — | — |
+| ny_it201.hh_city_t5 | — | — | — | — | — | — | — |
+| ny_it201.hh_state_t1 | — | — | — | — | — | — | — |
+| ny_it201.hh_city_t4 | — | — | — | — | — | — | — |
+| ny_it201.zero | — | — | — | — | — | — | — |
+| ny_it201.hh_state_in_range | — | — | — | — | — | — | — |
+| ny_it201.gate.hh_state_mfs | — | — | — | — | — | — | — |
+| ny_it201.gate.hh_state_over7 | — | — | — | — | — | — | — |
+| ny_it201.hh_state_by_status | — | — | — | — | — | — | — |
+| ny_it201.hh_city_in_range | — | — | — | — | — | — | — |
+| ny_it201.gate.hh_city_mfs | — | — | — | — | — | — | — |
+| ny_it201.gate.hh_city_over7 | — | — | — | — | — | — | — |
+| ny_it201.hh_city_by_status | — | — | — | — | — | — | — |
+| ny_it201.line40 | — | — | — | — | — | — | — |
+| ny_it201.gate.resident_credit | — | — | — | — | — | — | — |
+| ny_it201.line41 | — | — | — | — | — | — | — |
+| ny_it201.gate.other_credits | — | — | — | — | — | — | — |
+| ny_it201.line42 | — | — | — | — | — | — | — |
+| ny_it201.line43 | — | — | — | — | — | — | — |
+| ny_it201.line44 | — | — | — | — | — | — | — |
+| ny_it201.gate.other_taxes | — | — | — | — | — | — | — |
+| ny_it201.line45 | — | — | — | — | — | — | — |
+| ny_it201.line46 | — | — | — | — | — | — | — |
+| ny_it201.line47 | — | — | — | — | — | — | — |
+| ny_it201.city_table_range | — | — | — | — | — | — | — |
+| ny_it201.city_tax_table | — | — | — | — | — | — | — |
+| ny_it201.city_tax_schedule | — | — | — | — | — | — | — |
+| ny_it201.line47a | — | — | — | — | — | — | — |
+| ny_it201.line48 | — | — | — | — | — | — | — |
+| ny_it201.line49 | — | — | — | — | — | — | — |
+| ny_it201.line50 | — | — | — | — | — | — | — |
+| ny_it201.line51 | — | — | — | — | — | — | — |
+| ny_it201.line52 | — | — | — | — | — | — | — |
+| ny_it201.gate.city_credits | — | — | — | — | — | — | — |
+| ny_it201.line53 | — | — | — | — | — | — | — |
+| ny_it201.line54 | — | — | — | — | — | — | — |
+| ny_it201.gate.mctmt | — | — | — | — | — | — | — |
+| ny_it201.line54a | — | — | — | — | — | — | — |
+| ny_it201.line54b | — | — | — | — | — | — | — |
+| ny_it201.line54c | — | — | — | — | — | — | — |
+| ny_it201.line54d | — | — | — | — | — | — | — |
+| ny_it201.line54e | — | — | — | — | — | — | — |
+| ny_it201.line55 | — | — | — | — | — | — | — |
+| ny_it201.line56 | — | — | — | — | — | — | — |
+| ny_it201.line57 | — | — | — | — | — | — | — |
+| ny_it201.line58 | — | — | — | — | — | — | — |
+| ny_it201.sut.b1 | — | — | — | — | — | — | — |
+| ny_it201.sut.b2 | — | — | — | — | — | — | — |
+| ny_it201.sut.b3 | — | — | — | — | — | — | — |
+| ny_it201.sut.b4 | — | — | — | — | — | — | — |
+| ny_it201.sut.b5 | — | — | — | — | — | — | — |
+| ny_it201.sut.b6 | — | — | — | — | — | — | — |
+| ny_it201.sut.b7 | — | — | — | — | — | — | — |
+| ny_it201.sut.top_product | — | — | — | — | — | — | — |
+| ny_it201.sut.cap | — | — | — | — | — | — | — |
+| ny_it201.sut.top | — | — | — | — | — | — | — |
+| ny_it201.sut.chart | — | — | — | — | — | — | — |
+| ny_it201.gate.use_tax_abode | — | — | — | — | — | — | — |
+| ny_it201.gate.use_tax_st141 | — | — | — | — | — | — | — |
+| ny_it201.line59 | — | — | — | — | — | — | — |
+| ny_it201.zero_sut | — | — | — | — | — | — | — |
+| ny_it201.gate.contributions | — | — | — | — | — | — | — |
+| ny_it201.line60 | — | — | — | — | — | — | — |
+| ny_it201.line61 | — | — | — | — | — | — | — |
+| ny_it201.line62 | — | — | — | — | — | — | — |
+| ny_it201.under17_count | — | — | — | — | — | — | — |
+| ny_it201.gate.child_credit | — | — | — | — | — | — | — |
+| ny_it201.line63 | — | — | — | — | — | — | — |
+| ny_it201.gate.dependent_care | — | — | — | — | — | — | — |
+| ny_it201.line64 | — | — | — | — | — | — | — |
+| ny_it201.gate.eic | — | — | — | — | — | — | — |
+| ny_it201.line65 | — | — | — | — | — | — | — |
+| ny_it201.gate.noncustodial | — | — | — | — | — | — | — |
+| ny_it201.line66 | — | — | — | — | — | — | — |
+| ny_it201.gate.real_property | — | — | — | — | — | — | — |
+| ny_it201.line67 | — | — | — | — | — | — | — |
+| ny_it201.gate.college_tuition | — | — | — | — | — | — | — |
+| ny_it201.line68 | — | — | — | — | — | — | — |
+| ny_it201.stc_income | — | — | — | — | — | — | — |
+| ny_it201.stc_fixed_eligible | — | — | — | — | — | — | — |
+| ny_it201.stc_fixed_amount | — | — | — | — | — | — | — |
+| ny_it201.line69 | — | — | — | — | — | — | — |
+| ny_it201.zero_stc | — | — | — | — | — | — | — |
+| ny_it201.gate.stc_rr_income | — | — | — | — | — | — | — |
+| ny_it201.stc_rr_low | — | — | — | — | — | — | — |
+| ny_it201.stc_rr_excess | — | — | — | — | — | — | — |
+| ny_it201.stc_rr_excess_product | — | — | — | — | — | — | — |
+| ny_it201.stc_rr_base | — | — | — | — | — | — | — |
+| ny_it201.stc_rr_high | — | — | — | — | — | — | — |
+| ny_it201.stc_rr_low_band | — | — | — | — | — | — | — |
+| ny_it201.stc_rr | — | — | — | — | — | — | — |
+| ny_it201.line69a | — | — | — | — | — | — | — |
+| ny_it201.line70 | — | — | — | — | — | — | — |
+| ny_it201.gate.it270 | — | — | — | — | — | — | — |
+| ny_it201.line70a | — | — | — | — | — | — | — |
+| ny_it201.line71 | — | — | — | — | — | — | — |
+| ny_it201.gate.other_withholding | — | — | — | — | — | — | — |
+| ny_it201.line72 | — | — | — | — | — | — | — |
+| ny_it201.line73 | — | — | — | — | — | — | — |
+| ny_it201.line74 | — | — | — | — | — | — | — |
+| ny_it201.line75 | — | — | — | — | — | — | — |
+| ny_it201.line76 | — | — | — | — | — | — | — |
+| ny_it201.tax_due | — | — | — | — | — | — | — |
+| ny_it201.prepayments | — | — | — | — | — | — | — |
+| ny_it201.safe_harbor_100 | — | — | — | — | — | — | — |
+| ny_it201.safe_harbor_110 | — | — | — | — | — | — | — |
+| ny_it201.safe_harbor | — | — | — | — | — | — | — |
+| ny_it201.gate.estimated_penalty | — | — | — | — | — | — | — |
+| ny_it201.line81 | — | — | — | — | — | — | — |
+| ny_it201.gate.late | — | — | — | — | — | — | — |
+| ny_it201.line82 | — | — | — | — | — | — | — |
+| ny_it201.overpaid_before_penalty | — | — | — | — | — | — | — |
+| ny_it201.line77 | — | — | — | — | — | — | — |
+| ny_it201.line79 | — | — | — | — | — | — | — |
+| ny_it201.gate.line79_over | — | — | — | — | — | — | — |
+| ny_it201.line78 | — | — | — | — | — | — | — |
+| ny_it201.gate.refund_529 | — | — | — | — | — | — | — |
+| ny_it201.line78a | — | — | — | — | — | — | — |
+| ny_it201.line78b | — | — | — | — | — | — | — |
+| ny_it201.line80 | — | — | — | — | — | — | — |
+
+Unasserted lines: ny_it201.gate.part_year_state, ny_it201.gate.part_year_city, ny_it201.gate.spouse_nonresident, ny_it201.gate.special_accrual, ny_it201.gate.yonkers, ny_it201.gate.special_code, ny_it201.gate.decedent, ny_it201.item_c, ny_it201.item_h_count, ny_it201.line1, ny_it201.line2, ny_it201.line3, ny_it201.line4, ny_it201.line5, ny_it201.line6, ny_it201.line7, ny_it201.line8, ny_it201.line9, ny_it201.line10, ny_it201.line11, ny_it201.line12, ny_it201.line13, ny_it201.line14, ny_it201.line15, ny_it201.line16, ny_it201.line17, ny_it201.line18, ny_it201.line19, ny_it201.fagi_rounded, ny_it201.line19_agrees, ny_it201.gate.line20, ny_it201.line20, ny_it201.gate.line21, ny_it201.line21, ny_it201.gate.line22, ny_it201.line22, ny_it201.gate.it225, ny_it201.line23, ny_it201.line24, ny_it201.gate.line25, ny_it201.line25, ny_it201.gate.line26, ny_it201.line26, ny_it201.line27, ny_it201.gate.line28, ny_it201.line28, ny_it201.gate.line29, ny_it201.line29, ny_it201.gate.line30, ny_it201.line30, ny_it201.line31, ny_it201.line32, ny_it201.line33, ny_it201.gate.itemize, ny_it201.dependent_single, ny_it201.std_deduction, ny_it201.std_deduction_dependent, ny_it201.line34, ny_it201.line35, ny_it201.exemption, ny_it201.line36, ny_it201.line37, ny_it201.line38, ny_it201.agi_table_range, ny_it201.ti_table_range, ny_it201.tax_table, ny_it201.tax_schedule, ny_it201.tax_low, ny_it201.tcw.w1, ny_it201.tcw.w7, ny_it201.tcw.w12, ny_it201.tcw.w2, ny_it201.tcw.w3, ny_it201.tcw.w4, ny_it201.tcw.w5, ny_it201.tcw.w8, ny_it201.tcw.w9, ny_it201.tcw.w10, ny_it201.tcw.w13, ny_it201.tcw.w14, ny_it201.tcw.w15, ny_it201.tcw.top, ny_it201.tcw.mfj, ny_it201.tcw.single, ny_it201.tcw.hoh, ny_it201.tcw.by_status, ny_it201.agi_top, ny_it201.tax_high, ny_it201.line39, ny_it201.hh_agi, ny_it201.one, ny_it201.spouse_count, ny_it201.hh_people, ny_it201.hh_state_p1, ny_it201.hh_city_p1, ny_it201.hh_state_p2, ny_it201.hh_city_p2, ny_it201.hh_state_p3, ny_it201.hh_city_p3, ny_it201.hh_state_p4, ny_it201.hh_city_p4, ny_it201.hh_state_p5, ny_it201.hh_city_p5, ny_it201.hh_state_p6, ny_it201.hh_city_p6, ny_it201.hh_state_p7, ny_it201.hh_city_p7, ny_it201.hh_state_t2, ny_it201.hh_city_t5, ny_it201.hh_state_t1, ny_it201.hh_city_t4, ny_it201.zero, ny_it201.hh_state_in_range, ny_it201.gate.hh_state_mfs, ny_it201.gate.hh_state_over7, ny_it201.hh_state_by_status, ny_it201.hh_city_in_range, ny_it201.gate.hh_city_mfs, ny_it201.gate.hh_city_over7, ny_it201.hh_city_by_status, ny_it201.line40, ny_it201.gate.resident_credit, ny_it201.line41, ny_it201.gate.other_credits, ny_it201.line42, ny_it201.line43, ny_it201.line44, ny_it201.gate.other_taxes, ny_it201.line45, ny_it201.line46, ny_it201.line47, ny_it201.city_table_range, ny_it201.city_tax_table, ny_it201.city_tax_schedule, ny_it201.line47a, ny_it201.line48, ny_it201.line49, ny_it201.line50, ny_it201.line51, ny_it201.line52, ny_it201.gate.city_credits, ny_it201.line53, ny_it201.line54, ny_it201.gate.mctmt, ny_it201.line54a, ny_it201.line54b, ny_it201.line54c, ny_it201.line54d, ny_it201.line54e, ny_it201.line55, ny_it201.line56, ny_it201.line57, ny_it201.line58, ny_it201.sut.b1, ny_it201.sut.b2, ny_it201.sut.b3, ny_it201.sut.b4, ny_it201.sut.b5, ny_it201.sut.b6, ny_it201.sut.b7, ny_it201.sut.top_product, ny_it201.sut.cap, ny_it201.sut.top, ny_it201.sut.chart, ny_it201.gate.use_tax_abode, ny_it201.gate.use_tax_st141, ny_it201.line59, ny_it201.zero_sut, ny_it201.gate.contributions, ny_it201.line60, ny_it201.line61, ny_it201.line62, ny_it201.under17_count, ny_it201.gate.child_credit, ny_it201.line63, ny_it201.gate.dependent_care, ny_it201.line64, ny_it201.gate.eic, ny_it201.line65, ny_it201.gate.noncustodial, ny_it201.line66, ny_it201.gate.real_property, ny_it201.line67, ny_it201.gate.college_tuition, ny_it201.line68, ny_it201.stc_income, ny_it201.stc_fixed_eligible, ny_it201.stc_fixed_amount, ny_it201.line69, ny_it201.zero_stc, ny_it201.gate.stc_rr_income, ny_it201.stc_rr_low, ny_it201.stc_rr_excess, ny_it201.stc_rr_excess_product, ny_it201.stc_rr_base, ny_it201.stc_rr_high, ny_it201.stc_rr_low_band, ny_it201.stc_rr, ny_it201.line69a, ny_it201.line70, ny_it201.gate.it270, ny_it201.line70a, ny_it201.line71, ny_it201.gate.other_withholding, ny_it201.line72, ny_it201.line73, ny_it201.line74, ny_it201.line76, ny_it201.tax_due, ny_it201.prepayments, ny_it201.safe_harbor_100, ny_it201.safe_harbor_110, ny_it201.safe_harbor, ny_it201.gate.estimated_penalty, ny_it201.line81, ny_it201.gate.late, ny_it201.line82, ny_it201.overpaid_before_penalty, ny_it201.line77, ny_it201.gate.line79_over, ny_it201.line78, ny_it201.gate.refund_529, ny_it201.line78a, ny_it201.line78b, ny_it201.line80
 
 ## Schedule 1, line 8z — other income, one entry per item listed
 
@@ -3339,6 +3624,232 @@ Unasserted lines: w2.one, w2.dc_zero, w2.zero
 
 Unasserted lines: ws1_aoc, ws4_aoc, ws4_llc, cap, band, rate25, zero, line27, line28, line29, line29_plus, line28_zero, line30
 
+## New York City tax rate schedule
+
+| line | A | B | C | M | H | E | R |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| amount | — | — | — | — | — | — | — |
+| status | — | — | — | — | — | — | — |
+| single.b1.excess | — | — | — | — | — | — | — |
+| single.b1.product | — | — | — | — | — | — | — |
+| single.b1.base | — | — | — | — | — | — | — |
+| single.b1.tax | — | — | — | — | — | — | — |
+| single.b2.excess | — | — | — | — | — | — | — |
+| single.b2.product | — | — | — | — | — | — | — |
+| single.b2.base | — | — | — | — | — | — | — |
+| single.b2.tax | — | — | — | — | — | — | — |
+| single.b3.excess | — | — | — | — | — | — | — |
+| single.b3.product | — | — | — | — | — | — | — |
+| single.b3.base | — | — | — | — | — | — | — |
+| single.b3.tax | — | — | — | — | — | — | — |
+| single.b4.excess | — | — | — | — | — | — | — |
+| single.b4.product | — | — | — | — | — | — | — |
+| single.b4.base | — | — | — | — | — | — | — |
+| single.b4.tax | — | — | — | — | — | — | — |
+| single.result | — | — | — | — | — | — | — |
+| mfj.b1.excess | — | — | — | — | — | — | — |
+| mfj.b1.product | — | — | — | — | — | — | — |
+| mfj.b1.base | — | — | — | — | — | — | — |
+| mfj.b1.tax | — | — | — | — | — | — | — |
+| mfj.b2.excess | — | — | — | — | — | — | — |
+| mfj.b2.product | — | — | — | — | — | — | — |
+| mfj.b2.base | — | — | — | — | — | — | — |
+| mfj.b2.tax | — | — | — | — | — | — | — |
+| mfj.b3.excess | — | — | — | — | — | — | — |
+| mfj.b3.product | — | — | — | — | — | — | — |
+| mfj.b3.base | — | — | — | — | — | — | — |
+| mfj.b3.tax | — | — | — | — | — | — | — |
+| mfj.b4.excess | — | — | — | — | — | — | — |
+| mfj.b4.product | — | — | — | — | — | — | — |
+| mfj.b4.base | — | — | — | — | — | — | — |
+| mfj.b4.tax | — | — | — | — | — | — | — |
+| mfj.result | — | — | — | — | — | — | — |
+| hoh.b1.excess | — | — | — | — | — | — | — |
+| hoh.b1.product | — | — | — | — | — | — | — |
+| hoh.b1.base | — | — | — | — | — | — | — |
+| hoh.b1.tax | — | — | — | — | — | — | — |
+| hoh.b2.excess | — | — | — | — | — | — | — |
+| hoh.b2.product | — | — | — | — | — | — | — |
+| hoh.b2.base | — | — | — | — | — | — | — |
+| hoh.b2.tax | — | — | — | — | — | — | — |
+| hoh.b3.excess | — | — | — | — | — | — | — |
+| hoh.b3.product | — | — | — | — | — | — | — |
+| hoh.b3.base | — | — | — | — | — | — | — |
+| hoh.b3.tax | — | — | — | — | — | — | — |
+| hoh.b4.excess | — | — | — | — | — | — | — |
+| hoh.b4.product | — | — | — | — | — | — | — |
+| hoh.b4.base | — | — | — | — | — | — | — |
+| hoh.b4.tax | — | — | — | — | — | — | — |
+| hoh.result | — | — | — | — | — | — | — |
+| tax | — | — | — | — | — | — | — |
+
+Unasserted lines: single.b1.excess, single.b1.product, single.b1.base, single.b1.tax, single.b2.excess, single.b2.product, single.b2.base, single.b2.tax, single.b3.excess, single.b3.product, single.b3.base, single.b3.tax, single.b4.excess, single.b4.product, single.b4.base, single.b4.tax, single.result, mfj.b1.excess, mfj.b1.product, mfj.b1.base, mfj.b1.tax, mfj.b2.excess, mfj.b2.product, mfj.b2.base, mfj.b2.tax, mfj.b3.excess, mfj.b3.product, mfj.b3.base, mfj.b3.tax, mfj.b4.excess, mfj.b4.product, mfj.b4.base, mfj.b4.tax, mfj.result, hoh.b1.excess, hoh.b1.product, hoh.b1.base, hoh.b1.tax, hoh.b2.excess, hoh.b2.product, hoh.b2.base, hoh.b2.tax, hoh.b3.excess, hoh.b3.product, hoh.b3.base, hoh.b3.tax, hoh.b4.excess, hoh.b4.product, hoh.b4.base, hoh.b4.tax, hoh.result, tax
+
+## New York State tax rate schedule
+
+| line | A | B | C | M | H | E | R |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| amount | — | — | — | — | — | — | — |
+| status | — | — | — | — | — | — | — |
+| single.b1.excess | — | — | — | — | — | — | — |
+| single.b1.product | — | — | — | — | — | — | — |
+| single.b1.base | — | — | — | — | — | — | — |
+| single.b1.tax | — | — | — | — | — | — | — |
+| single.b2.excess | — | — | — | — | — | — | — |
+| single.b2.product | — | — | — | — | — | — | — |
+| single.b2.base | — | — | — | — | — | — | — |
+| single.b2.tax | — | — | — | — | — | — | — |
+| single.b3.excess | — | — | — | — | — | — | — |
+| single.b3.product | — | — | — | — | — | — | — |
+| single.b3.base | — | — | — | — | — | — | — |
+| single.b3.tax | — | — | — | — | — | — | — |
+| single.b4.excess | — | — | — | — | — | — | — |
+| single.b4.product | — | — | — | — | — | — | — |
+| single.b4.base | — | — | — | — | — | — | — |
+| single.b4.tax | — | — | — | — | — | — | — |
+| single.b5.excess | — | — | — | — | — | — | — |
+| single.b5.product | — | — | — | — | — | — | — |
+| single.b5.base | — | — | — | — | — | — | — |
+| single.b5.tax | — | — | — | — | — | — | — |
+| single.b6.excess | — | — | — | — | — | — | — |
+| single.b6.product | — | — | — | — | — | — | — |
+| single.b6.base | — | — | — | — | — | — | — |
+| single.b6.tax | — | — | — | — | — | — | — |
+| single.b7.excess | — | — | — | — | — | — | — |
+| single.b7.product | — | — | — | — | — | — | — |
+| single.b7.base | — | — | — | — | — | — | — |
+| single.b7.tax | — | — | — | — | — | — | — |
+| single.b8.excess | — | — | — | — | — | — | — |
+| single.b8.product | — | — | — | — | — | — | — |
+| single.b8.base | — | — | — | — | — | — | — |
+| single.b8.tax | — | — | — | — | — | — | — |
+| single.b9.excess | — | — | — | — | — | — | — |
+| single.b9.product | — | — | — | — | — | — | — |
+| single.b9.base | — | — | — | — | — | — | — |
+| single.b9.tax | — | — | — | — | — | — | — |
+| single.result | — | — | — | — | — | — | — |
+| mfj.b1.excess | — | — | — | — | — | — | — |
+| mfj.b1.product | — | — | — | — | — | — | — |
+| mfj.b1.base | — | — | — | — | — | — | — |
+| mfj.b1.tax | — | — | — | — | — | — | — |
+| mfj.b2.excess | — | — | — | — | — | — | — |
+| mfj.b2.product | — | — | — | — | — | — | — |
+| mfj.b2.base | — | — | — | — | — | — | — |
+| mfj.b2.tax | — | — | — | — | — | — | — |
+| mfj.b3.excess | — | — | — | — | — | — | — |
+| mfj.b3.product | — | — | — | — | — | — | — |
+| mfj.b3.base | — | — | — | — | — | — | — |
+| mfj.b3.tax | — | — | — | — | — | — | — |
+| mfj.b4.excess | — | — | — | — | — | — | — |
+| mfj.b4.product | — | — | — | — | — | — | — |
+| mfj.b4.base | — | — | — | — | — | — | — |
+| mfj.b4.tax | — | — | — | — | — | — | — |
+| mfj.b5.excess | — | — | — | — | — | — | — |
+| mfj.b5.product | — | — | — | — | — | — | — |
+| mfj.b5.base | — | — | — | — | — | — | — |
+| mfj.b5.tax | — | — | — | — | — | — | — |
+| mfj.b6.excess | — | — | — | — | — | — | — |
+| mfj.b6.product | — | — | — | — | — | — | — |
+| mfj.b6.base | — | — | — | — | — | — | — |
+| mfj.b6.tax | — | — | — | — | — | — | — |
+| mfj.b7.excess | — | — | — | — | — | — | — |
+| mfj.b7.product | — | — | — | — | — | — | — |
+| mfj.b7.base | — | — | — | — | — | — | — |
+| mfj.b7.tax | — | — | — | — | — | — | — |
+| mfj.b8.excess | — | — | — | — | — | — | — |
+| mfj.b8.product | — | — | — | — | — | — | — |
+| mfj.b8.base | — | — | — | — | — | — | — |
+| mfj.b8.tax | — | — | — | — | — | — | — |
+| mfj.b9.excess | — | — | — | — | — | — | — |
+| mfj.b9.product | — | — | — | — | — | — | — |
+| mfj.b9.base | — | — | — | — | — | — | — |
+| mfj.b9.tax | — | — | — | — | — | — | — |
+| mfj.result | — | — | — | — | — | — | — |
+| hoh.b1.excess | — | — | — | — | — | — | — |
+| hoh.b1.product | — | — | — | — | — | — | — |
+| hoh.b1.base | — | — | — | — | — | — | — |
+| hoh.b1.tax | — | — | — | — | — | — | — |
+| hoh.b2.excess | — | — | — | — | — | — | — |
+| hoh.b2.product | — | — | — | — | — | — | — |
+| hoh.b2.base | — | — | — | — | — | — | — |
+| hoh.b2.tax | — | — | — | — | — | — | — |
+| hoh.b3.excess | — | — | — | — | — | — | — |
+| hoh.b3.product | — | — | — | — | — | — | — |
+| hoh.b3.base | — | — | — | — | — | — | — |
+| hoh.b3.tax | — | — | — | — | — | — | — |
+| hoh.b4.excess | — | — | — | — | — | — | — |
+| hoh.b4.product | — | — | — | — | — | — | — |
+| hoh.b4.base | — | — | — | — | — | — | — |
+| hoh.b4.tax | — | — | — | — | — | — | — |
+| hoh.b5.excess | — | — | — | — | — | — | — |
+| hoh.b5.product | — | — | — | — | — | — | — |
+| hoh.b5.base | — | — | — | — | — | — | — |
+| hoh.b5.tax | — | — | — | — | — | — | — |
+| hoh.b6.excess | — | — | — | — | — | — | — |
+| hoh.b6.product | — | — | — | — | — | — | — |
+| hoh.b6.base | — | — | — | — | — | — | — |
+| hoh.b6.tax | — | — | — | — | — | — | — |
+| hoh.b7.excess | — | — | — | — | — | — | — |
+| hoh.b7.product | — | — | — | — | — | — | — |
+| hoh.b7.base | — | — | — | — | — | — | — |
+| hoh.b7.tax | — | — | — | — | — | — | — |
+| hoh.b8.excess | — | — | — | — | — | — | — |
+| hoh.b8.product | — | — | — | — | — | — | — |
+| hoh.b8.base | — | — | — | — | — | — | — |
+| hoh.b8.tax | — | — | — | — | — | — | — |
+| hoh.b9.excess | — | — | — | — | — | — | — |
+| hoh.b9.product | — | — | — | — | — | — | — |
+| hoh.b9.base | — | — | — | — | — | — | — |
+| hoh.b9.tax | — | — | — | — | — | — | — |
+| hoh.result | — | — | — | — | — | — | — |
+| tax | — | — | — | — | — | — | — |
+
+Unasserted lines: single.b1.excess, single.b1.product, single.b1.base, single.b1.tax, single.b2.excess, single.b2.product, single.b2.base, single.b2.tax, single.b3.excess, single.b3.product, single.b3.base, single.b3.tax, single.b4.excess, single.b4.product, single.b4.base, single.b4.tax, single.b5.excess, single.b5.product, single.b5.base, single.b5.tax, single.b6.excess, single.b6.product, single.b6.base, single.b6.tax, single.b7.excess, single.b7.product, single.b7.base, single.b7.tax, single.b8.excess, single.b8.product, single.b8.base, single.b8.tax, single.b9.excess, single.b9.product, single.b9.base, single.b9.tax, single.result, mfj.b1.excess, mfj.b1.product, mfj.b1.base, mfj.b1.tax, mfj.b2.excess, mfj.b2.product, mfj.b2.base, mfj.b2.tax, mfj.b3.excess, mfj.b3.product, mfj.b3.base, mfj.b3.tax, mfj.b4.excess, mfj.b4.product, mfj.b4.base, mfj.b4.tax, mfj.b5.excess, mfj.b5.product, mfj.b5.base, mfj.b5.tax, mfj.b6.excess, mfj.b6.product, mfj.b6.base, mfj.b6.tax, mfj.b7.excess, mfj.b7.product, mfj.b7.base, mfj.b7.tax, mfj.b8.excess, mfj.b8.product, mfj.b8.base, mfj.b8.tax, mfj.b9.excess, mfj.b9.product, mfj.b9.base, mfj.b9.tax, mfj.result, hoh.b1.excess, hoh.b1.product, hoh.b1.base, hoh.b1.tax, hoh.b2.excess, hoh.b2.product, hoh.b2.base, hoh.b2.tax, hoh.b3.excess, hoh.b3.product, hoh.b3.base, hoh.b3.tax, hoh.b4.excess, hoh.b4.product, hoh.b4.base, hoh.b4.tax, hoh.b5.excess, hoh.b5.product, hoh.b5.base, hoh.b5.tax, hoh.b6.excess, hoh.b6.product, hoh.b6.base, hoh.b6.tax, hoh.b7.excess, hoh.b7.product, hoh.b7.base, hoh.b7.tax, hoh.b8.excess, hoh.b8.product, hoh.b8.base, hoh.b8.tax, hoh.b9.excess, hoh.b9.product, hoh.b9.base, hoh.b9.tax, hoh.result, tax
+
+## Tax computation worksheets 2–5, 8–10, 13–15 (New York AGI of more than $107,650)
+
+| line | A | B | C | M | H | E | R |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| agi | — | — | — | — | — | — | — |
+| ti | — | — | — | — | — | — | — |
+| status | — | — | — | — | — | — | — |
+| start | — | — | — | — | — | — | — |
+| line3 | — | — | — | — | — | — | — |
+| recapture | — | — | — | — | — | — | — |
+| incremental | — | — | — | — | — | — | — |
+| line6 | — | — | — | — | — | — | — |
+| phase | — | — | — | — | — | — | — |
+| line7 | — | — | — | — | — | — | — |
+| hundred | — | — | — | — | — | — | — |
+| line9_scaled | — | — | — | — | — | — | — |
+| line9_exact | — | — | — | — | — | — | — |
+| line9 | — | — | — | — | — | — | — |
+| tax | — | — | — | — | — | — | — |
+
+Unasserted lines: line3, line6, phase, line7, hundred, line9_scaled, line9_exact, line9, tax
+
+## Tax computation worksheets 1, 7 and 12 (New York AGI of more than $107,650)
+
+| line | A | B | C | M | H | E | R |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| agi | — | — | — | — | — | — | — |
+| ti | — | — | — | — | — | — | — |
+| status | — | — | — | — | — | — | — |
+| rate | — | — | — | — | — | — | — |
+| line3 | — | — | — | — | — | — | — |
+| stop | — | — | — | — | — | — | — |
+| line4 | — | — | — | — | — | — | — |
+| line5 | — | — | — | — | — | — | — |
+| line6 | — | — | — | — | — | — | — |
+| hundred | — | — | — | — | — | — | — |
+| line8_scaled | — | — | — | — | — | — | — |
+| line8_exact | — | — | — | — | — | — | — |
+| line8 | — | — | — | — | — | — | — |
+| line9_phased | — | — | — | — | — | — | — |
+| tax | — | — | — | — | — | — | — |
+
+Unasserted lines: line3, stop, line4, line5, line6, hundred, line8_scaled, line8_exact, line8, line9_phased, tax
+
 ## Schedule SE (Form 1040) — Self-Employment Tax, one per person
 
 | line | A | B | C | M | H | E | R |
@@ -3441,5 +3952,7 @@ Unasserted lines: below_boundary, table_tax, worksheet_tax, tax
 
 Unasserted lines: single.row1.product, single.row1.tax, single.row2.product, single.row2.tax, single.row3.product, single.row3.tax, single.row4.product, single.row4.tax, single.row5.product, single.row5.tax, single.result, mfj.row1.product, mfj.row1.tax, mfj.row2.product, mfj.row2.tax, mfj.row3.product, mfj.row3.tax, mfj.row4.product, mfj.row4.tax, mfj.row5.product, mfj.row5.tax, mfj.result, mfs.row1.product, mfs.row1.tax, mfs.row2.product, mfs.row2.tax, mfs.row3.product, mfs.row3.tax, mfs.row4.product, mfs.row4.tax, mfs.row5.product, mfs.row5.tax, mfs.result, hoh.row1.product, hoh.row1.tax, hoh.row2.product, hoh.row2.tax, hoh.row3.product, hoh.row3.tax, hoh.row4.product, hoh.row4.tax, hoh.row5.product, hoh.row5.tax, hoh.result, tax
 
-Unasserted computed lines across all documents: 1109. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
+Unasserted computed lines across all documents: 1521. (Supplied input lines are excluded; their correctness rests on reading the source document. Intermediate lines listed as unasserted are still exercised transitively; their detectability is tracked in reports/2025/mutation.md.)
+
+Input lines never supplied by any fixture: ny_it2.state_withheld, ny_it2.yonkers_withheld, ny_it2.city_withheld, ny_it201.ask.state_resident, ny_it201.ask.city_resident, ny_it201.ask.special_accrual, ny_it201.ask.yonkers, ny_it201.ask.special_code, ny_it201.ask.decedent, ny_it201.ask.item_c, ny_it201.ask.inflation_check, ny_it201.ask.out_of_state_bond_interest, ny_it201.ask.414h, ny_it201.ask.529_nonqualified, ny_it201.ask.it225, ny_it201.ask.gov_pension, ny_it201.ask.us_obligation_interest, ny_it201.ask.pension_exclusion, ny_it201.ask.529_owner, ny_it201.ask.itemize, ny_it201.ask.resident_credit, ny_it201.ask.other_credits, ny_it201.ask.other_taxes, ny_it201.ask.city_credits, ny_it201.ask.mctmt, ny_it201.ask.owes_use_tax, ny_it201.ask.use_tax_st141, ny_it201.ask.contributions, ny_it201.ask.dependent_care, ny_it201.ask.noncustodial, ny_it201.ask.real_property_credit, ny_it201.ask.college_tuition, ny_it201.ask.other_withholding, ny_it201.ask.refund_529, ny_it201.ask.late_penalty, ny_it201.ask.prior_agi_high, ny_it201.ask.abode_part_year, ny_it201.ask.prior_full_year, ny_it201.ask.est_late, ny_it201.ask.spouse_resident, ny_it201.ask.prior_year_tax, ny_it201.line75, ny_it201.line79.
 Asserted keys not matching a line id: dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line27, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line29, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28_zero, dependent[dep_a]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line30, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line27, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line29, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line28_zero, dependent[k0]|inst:aqee#{"adj":"dependent.edu_adj","inst":"dependent.edu_inst","mat":"dependent.edu_mat"}.line30, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line3, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.positive, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4a, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.owes, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line4c, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line5b, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line6, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line7, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line8d, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line9, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line10, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line11, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line12, person[taxpayer]|inst:se#{"line2":"person.se_line2","line8a":"person.wages"}.line13, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line5","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"qdcg.line1","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax, root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}|inst:tcw#{"amount":"amount","status":"status"}.tax

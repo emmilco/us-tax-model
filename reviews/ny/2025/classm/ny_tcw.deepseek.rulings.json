@@ -1,0 +1,51 @@
+{
+ "kind": "classm",
+ "form": "ny_tcw",
+ "family": "deepseek",
+ "rulings": [
+  {
+   "case": "classm.ny_tcw.1",
+   "printed": "line3",
+   "project": "$1,773.00",
+   "model": "$1,772.63",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" IT-201-I (web edition), Tax computation worksheet 2, line 3, the New York State tax rate schedule (married filing jointly) on $38,275: $1,202 plus 5.5% of the excess over $27,900: exactly $1,772.625, which the project rounds half-up to $1,773.00; the model's $1,772.63 is the same amount in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "e3487190264bccf08b11c502028ff8b4ba8ffb727a4b52284e91d221d96a48eb",
+   "date": "2026-11-05",
+   "run": "4b2bc948ee1e9f9daf8667f655aa227821a7ca0a6ad63570de505654af18cbd7"
+  },
+  {
+   "case": "classm.ny_tcw.1",
+   "printed": "tax",
+   "project": "$2,106.00",
+   "model": "$2,105.63",
+   "ruling": "Ruling: ambiguity; amb.ny.2025.whole_dollars (owner decision C4; chosen reading: each computed tax, credit or worksheet line rounded half-up to the dollar where it is computed): IT-201-I p. 2, Entering whole dollar amounts, \"When you enter amounts on your return, enter whole dollar amounts only.\" ... \"Increase amounts that are 50 cents or more to the next dollar.\" Tax computation worksheet 2, line 10 (tax), \"Add lines 3, 4, and 9\": $1,773 (line 3 rounded where computed, $1,772.625 exactly) + $333 + $0 (line 1 does not exceed $161,550) = $2,106, the project's; the model's $2,105.63 adds line 3 in cents. The model kept cents (the register's third reading, round only the final lines); the class M prompt carries neither the whole-dollar page nor the register entry (the tooling low in research/audits/ny/BUG-0424_lows.md). Recomputed from the source, not from the engine. Model value dropped from the fixture as not evidence.",
+   "drop": true,
+   "context": "e3487190264bccf08b11c502028ff8b4ba8ffb727a4b52284e91d221d96a48eb",
+   "date": "2026-11-05",
+   "run": "4b2bc948ee1e9f9daf8667f655aa227821a7ca0a6ad63570de505654af18cbd7"
+  },
+  {
+   "case": "classm.ny_tcw.2",
+   "printed": "line3",
+   "project": "$12,356.00",
+   "model": "$11,784.00",
+   "ruling": "Ruling: scope; the case pairs the worksheet 2 binding of ny_tcw (the married-filing-jointly amounts: line 1 excess measured over $161,550, Recapture Base $333, Incremental Benefit $807, ny.tcw.mfj.w2.*) with a single filer, a combination no return takes (IT-201 routes single filers to worksheets 7 to 10). Line 3 is \"Enter your New York State tax on the line 2 amount from the New York State tax rate schedule\", which the definition reads for the case's filing status: the single schedule on $215,400 is $4,271 + 6% x $134,750 = $12,356 (IT-201-I web edition, New York State tax rate schedule, \"Single and married filing separately\"), and tax = $12,356 + $333 + $807 x 1.0000 = $13,496, the project's. The model read the worksheet as worksheet 2 and took the joint schedule ($8,553 + 6% x $53,850 = $11,784; tax $12,924), right for a joint filer. Neither side is evidence for the bound definition: the job is a construction artifact of classm-jobs (instance binding chosen independently of the filing status; tooling low in research/audits/ny/BUG-0424_lows.md). Dropped from the fixture.",
+   "drop": true,
+   "context": "e3487190264bccf08b11c502028ff8b4ba8ffb727a4b52284e91d221d96a48eb",
+   "date": "2026-11-05",
+   "run": "66a8137a9081069bceb5c59558cfa8e98ded99cbd9cafcf7eb8f826a61a293d4"
+  },
+  {
+   "case": "classm.ny_tcw.2",
+   "printed": "tax",
+   "project": "$13,496.00",
+   "model": "$12,924.00",
+   "ruling": "Ruling: scope; the case pairs the worksheet 2 binding of ny_tcw (the married-filing-jointly amounts: line 1 excess measured over $161,550, Recapture Base $333, Incremental Benefit $807, ny.tcw.mfj.w2.*) with a single filer, a combination no return takes (IT-201 routes single filers to worksheets 7 to 10). Line 3 is \"Enter your New York State tax on the line 2 amount from the New York State tax rate schedule\", which the definition reads for the case's filing status: the single schedule on $215,400 is $4,271 + 6% x $134,750 = $12,356 (IT-201-I web edition, New York State tax rate schedule, \"Single and married filing separately\"), and tax = $12,356 + $333 + $807 x 1.0000 = $13,496, the project's. The model read the worksheet as worksheet 2 and took the joint schedule ($8,553 + 6% x $53,850 = $11,784; tax $12,924), right for a joint filer. Neither side is evidence for the bound definition: the job is a construction artifact of classm-jobs (instance binding chosen independently of the filing status; tooling low in research/audits/ny/BUG-0424_lows.md). Dropped from the fixture.",
+   "drop": true,
+   "context": "e3487190264bccf08b11c502028ff8b4ba8ffb727a4b52284e91d221d96a48eb",
+   "date": "2026-11-05",
+   "run": "66a8137a9081069bceb5c59558cfa8e98ded99cbd9cafcf7eb8f826a61a293d4"
+  }
+ ]
+}
