@@ -1,3 +1,66 @@
+# Process packages, release gating and T-245 — 2026-11-05/06
+
+**State:** `main` is pushed through `f2850ce`, release **`r2026.11.06.1`** (the first release, made by `tools/release.sh --push`: a full
+run on `e04b741`, whose only rewritten report, a date stamp in `second_family.md`, is the release commit). The
+working tree is clean apart from this handoff.
+
+**Landed this session:**
+- `ce1e69a`, T-237 and T-240:
+  - wording-blind transcription subjects (`WORDING` = label, help, note, display, ambiguity; display and ambiguity added
+    by the owner), with a no-call migration;
+  - a scoped catalog on line-scoped prompts (lines-v2). The A/B cost $2.75: prompts were 33–40% cheaper, and the
+    verdicts were identical except for one sales model-error disagreement, which became AGREE;
+  - a usage-limit circuit breaker;
+  - `tools/new_bug.py` and `tools/task_row.py`.
+- `e2adfe6`, T-238, release-gated check-all (`docs/2026-11-05_release_gating_design.md`, owner-approved). Also BUG-0426:
+  background runs had compared HEAD-relative checks with the snapshot itself.
+- `90d823d`, T-241: inference-cost guidance in `CLAUDE.md`. It was the first fast-tier commit (7.5 min).
+- `e04b741`, T-245 (BUG-0427):
+  - a choose past an unknown guard is a refusal only when every way refuses, in both evaluators;
+  - `properties --ny`;
+  - the mutation rules sharpened, with 21 pinned arguments.
+
+  An independent review found BUG-0428 (fixed) and BUG-0429 (labelled). BUG-0430 is registered open.
+
+**Committing now (the tiers, T-238):** the hooks require the exact tree green in the tier the commit needs. The hook
+names the path that decides it (`tools/tier_paths.py`).
+- Code or data change: `tools/check_all_bg.sh --tier fast` (about 7.5 min), then `tools/commit_tested.sh -F <msg>`.
+- Bookkeeping only (`tools/docs_paths.txt`): `--tier docs` (about 3 min).
+- Full-tier triggers (`tools/full_paths.txt`: mutate*.ts, compare.ts, lean/, tools/engines/, engine_investigations):
+  `--tier full` (about 40 min).
+- Session end: commit and push, then `tools/release.sh --push`. If it commits rewritten reports, `git push` again.
+
+**Owner decisions (2026-11-05):**
+- T-238 design: fast commits on main; release at session end plus the path triggers; the docs tier kept at ~3 min.
+- Sentinel alert (lab-server): a Safari top-hit preload from the owner's own phone. No action.
+- T-245: the engine rule; survivors handled by the sharpened rule plus pins, after an independent check; the seven
+  answered-only pins registered for later (T-250).
+- New backlog after T-236: T-246 (file-tree and docs sweep) and T-247 (contributor strategy).
+
+**Next:**
+1. T-236, the web UI pilot. An AP-12 readback is required first. Decide T-248 (eager all/any refusals, BUG-0430),
+   T-249 (BUG-0083 refusal gates) and T-250 (seven answered-only pins) at that readback: the UI will show refusals on
+   incomplete returns.
+2. T-239 (triage auto-rulings) can run alongside the pilot or after it.
+3. Unregistered:
+   - the NY case `ny.household.single.4000`, whose id and note misstate its taxable income ($32,000);
+   - `new_bug.py` accepts a Fix field without Fix lines, a rule only `siblings.py --check` enforces. It should refuse
+     or warn.
+4. Leftover agent worktree `.claude/worktrees/agent-aaacbb6063a95164a`: its work is in `e04b741`. Removal needs the
+   owner's command (the classifier blocks a forced removal).
+
+**Cost this session:**
+- paid review calls: $2.75 (the A/B);
+- agents: Opus about 1.53M tokens (A 290k, T-238 272k, T-245 723k, review 245k); Sonnet 59k.
+
+**Verified vs inferred:**
+- Verified: every commit's tree was green in its tier, and each was pushed; the A/B results; the BUG-0426 probe; the
+  T-245 full run (mutation 280+7 federal and 44 NY; compare 0 differing).
+- Inferred: the 21 pinned arguments and the transparency reasoning in BUG-0428's fix. These are hand-reasoned. The
+  review covered the arguments, but came before the transparency fix.
+
+---
+
 # New York integration — 2026-11-05
 
 **State:** New York (Form IT-201, full-year New York City resident, tax year 2025) is on `main`. That includes the
