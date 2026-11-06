@@ -6,8 +6,6 @@ One entry per session on branch `ny/2025-foundation` (brief: `docs/ny/2026-11-04
 
 ## 2026-11-04 — Phase 3, steps 1 to 8 (cloud session, continued)
 
-Session: https://claude.ai/code/session_01STA2Jxb5LuWnA1Q6LPZzfH
-
 **Repository hygiene first.** The repository is public: the owner's own checklist answers, recorded earlier in
 `docs/ny/DECISIONS.md` and this log, were removed from the files (commit 0301f3c). They remain in the branch's
 history (commits 4b4b161, df4895c, 640f150); removing them from history needs a rewrite and force push, which is the
@@ -49,8 +47,6 @@ machine (`docs/ny/INTEGRATION.md`).
 ---
 
 ## 2026-11-04 — Phases 1 and 2 (cloud session)
-
-Session: https://claude.ai/code/session_01STA2Jxb5LuWnA1Q6LPZzfH
 
 **Environment.** The environment allowed `tax.ny.gov`, which redirects every document to `www.tax.ny.gov`; the owner
 approved adding `www.tax.ny.gov` to the environment's allowed hosts at the start of the session.
