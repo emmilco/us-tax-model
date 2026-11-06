@@ -176,6 +176,8 @@ step engine_differential tools/engines/run.sh "$@"
 step mutate "${node[@]}" mutate "$@"
 step compare lean_compare "$@"
 step ny_test_fixtures "${node[@]}" test-fixtures --ny "$@"
+# The refusal properties over generated returns with New York answers, every federal and New York line evaluated.
+step ny_properties "${node[@]}" properties --ny "$@"
 wave
 
 evidence_args=()

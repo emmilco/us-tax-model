@@ -940,3 +940,62 @@ function putCarryovers(inputs: Inputs): void {
 export function sampleReturns(data: CanonicalData, n: number, seed: number): Inputs[] {
   return fc.sample(returnArbitrary(data), { seed, numRuns: n });
 }
+
+// The answer to each New York screening question under which Form IT-201 is computed (a full-year New York State and
+// City resident, with nothing the tool refuses); the other answer reaches a refusal or a part the tool does not
+// compute. Every Bool input of the New York documents must be listed.
+const NY_IN_SCOPE: Record<string, boolean> = {
+  state_resident: true, city_resident: true, spouse_resident: true, prior_full_year: true,
+  special_accrual: false, yonkers: false, special_code: false, decedent: false, item_c: false, inflation_check: false,
+  out_of_state_bond_interest: false, "414h": false, "529_nonqualified": false, it225: false, gov_pension: false,
+  us_obligation_interest: false, pension_exclusion: false, "529_owner": false, itemize: false, resident_credit: false,
+  other_credits: false, other_taxes: false, city_credits: false, mctmt: false, owes_use_tax: false, use_tax_st141: false,
+  contributions: false, dependent_care: false, noncustodial: false, real_property_credit: false, college_tuition: false,
+  other_withholding: false, refund_529: false, late_penalty: false, prior_agi_high: false, abode_part_year: false,
+  est_late: false,
+};
+
+/** Whole returns with New York answers: a generated federal return (returnArbitrary over the federal documents, so
+ * its random stream is the federal one) and, drawn after it, the answers of the New York documents. Most returns
+ * answer every screening question in scope; the rest answer each one the other way one time in twenty-five. Every
+ * other New York root input is drawn (the overpayment applied to next year's estimated tax rarely nonzero), and each
+ * top-level New York collection has one entry per federal Form W-2, up to four, its amounts drawn, Yonkers
+ * withholding rarely nonzero. */
+export function nyReturnArbitrary(all: CanonicalData): fc.Arbitrary<Inputs> {
+  const isNy = (id: string) => id.startsWith("ny_");
+  const federal = { ...all, forms: all.forms.filter((d) => !isNy(d.id)), defs: all.defs.filter((d) => !isNy(d.id)) };
+  const nyForms = all.forms.filter((d) => isNy(d.id));
+  const inputLines = (d: FormDoc) => d.lines.filter((l) => l.expr.op === "input");
+  const roots = nyForms.filter((d) => !d.collection).flatMap(inputLines);
+  const collections = nyForms.filter((d) => d.collection);
+  if (collections.some((d) => d.collection!.parent)) throw new Error("nyReturnArbitrary: a nested New York collection is not generated");
+  const draw = (l: Line): fc.Arbitrary<number | boolean | string> => {
+    if (l.type === "Bool") {
+      const v = NY_IN_SCOPE[l.id.slice(l.id.lastIndexOf(".") + 1)];
+      if (v === undefined) throw new Error(`nyReturnArbitrary: no in-scope answer for ${l.id}`);
+      return fc.constant(v);
+    }
+    if (l.type.startsWith("Enum(")) return fc.constantFrom(...all.params.enums[l.type.slice(5, -1)]!.values);
+    return /yonkers|line79/.test(l.id) ? rareMoney(500_000, 4) : money(2_000_000);
+  };
+  const entry = fc.record(Object.fromEntries(collections.flatMap(inputLines).map((l) => [l.id, draw(l)])));
+  const answers = fc.record({
+    clean: rareTrue(60),
+    flips: fc.record(Object.fromEntries(roots.filter((l) => l.type === "Bool").map((l) => [l.id, rareTrue(4)]))),
+    roots: fc.record(Object.fromEntries(roots.map((l) => [l.id, draw(l)]))),
+    entries: fc.array(entry, { minLength: 4, maxLength: 4 }),
+  });
+  return fc.tuple(returnArbitrary(federal), answers).map(([inputs, ny]) => {
+    const out: Inputs = { ...inputs };
+    for (const [id, v] of Object.entries(ny.roots)) out[id] = typeof v === "boolean" && !ny.clean && ny.flips[id] ? !v : v;
+    const w2s = Object.entries(inputs).filter(([k, v]) => k.startsWith("$w2@") && Array.isArray(v)).reduce((n, [, v]) => n + (v as string[]).length, 0);
+    for (const doc of collections) {
+      const keys = Array.from({ length: Math.min(w2s, ny.entries.length) }, (_, i) => `w${i}`);
+      out[`$${doc.id}`] = keys;
+      keys.forEach((k, i) => {
+        for (const l of inputLines(doc)) out[`${doc.id}[${k}].${l.id.slice(doc.id.length + 1)}`] = ny.entries[i]![l.id]!;
+      });
+    }
+    return out;
+  });
+}

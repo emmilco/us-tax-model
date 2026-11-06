@@ -5994,3 +5994,40 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Tool change:** `prepare` takes the base and resets HEAD to it softly after the checkout, so the snapshot's changes are uncommitted against the commit it was taken on.
 - **Validation:** the same probe fails with the fix ("committed content was modified"); the full background run of this change.
 - **Tags:** commit-guard; tool change
+
+## BUG-0427 — A choose stopped at an unknown guard hid a refusal on every way
+
+- **Caught by:** New York integration check-all (properties with the New York documents in scope), 2026-11-05; T-245.
+- **Source:** spec 4.7.3 (choose) and the property refusal_outranks_unknown ("an unknown operand does not hide a refused one").
+- **Symptom:** with the filing status unanswered and New York taxable income refused, ny_it201.tax_schedule, city_tax_schedule, tcw.w1/w7/w12 and ny_tcw line 3 were unknown though every status's schedule is that refusal; federally eic.limit and eic.line5_threshold behaved the same. No wrong number; the refusal surfaced later in the interview.
+- **Root cause:** choose (eval.ts and Eval.lean) returned the first unknown or refused guard without evaluating the other alternatives, so refusal versus unknown depended on guard order.
+- **Why it survived:** properties ran on federal-only data, and federal tax_on_amount tests the amount before the status; no New York return generator existed; Lean shares the semantics, so compare agreed; at the choose itself no refused operand was recorded, only one level up at a copy(instance) binding.
+- **Tool change:** past the first unknown guard, every alternative still possible is evaluated; the line is a refusal when every way refuses (the first way's refusal), else the guard's unknown with the memo undone. Both evaluators; spec 4.7.3 rewritten; properties --ny added (check-all step ny_properties).
+- **Regression predictions:** fixtures ny.reg.choose.status_unanswered_refused_income and stage21.choose.eic_limit_status_unanswered fail on the old engine; unasserted values in 231 federal fixture cases move from unknown to refusal; no recorded expectation changes; Lean compare agrees.
+- **Validation:** test-fixtures 1638/1638 and --ny 332/332; properties and properties --ny clean; compare 0 differing (2,238 and 932 cases); mutation kills unchanged.
+- **Tags:** engine; lean; refusal; new-york; tool change
+
+## BUG-0428 — Mutation path dominance trusted refusalsSame past guard reads
+
+- **Caught by:** independent review of the T-245 mutation rules, 2026-11-05 (synthetic counterexample).
+- **Source:** engine/src/mutate.ts dominatedBy against spec 4.7.3.
+- **Symptom:** a step's fact counted when hidden or refusalsSame, but refusalsSame held only for the start line; a downstream guard reading a helper could turn a value difference into a refusal difference. Synthetic form t: mutant operand.t.t.H.gated was accepted as Guarded figure while base t.Rd is unknown and the mutant's a refusal with t.f unanswered. Latent: no current equivalent relied on it.
+- **Tool change:** refusalsSame applies only along refusal-transparent steps (ungated copy, round, sum, subtract, subtract_floor0, smaller_of, larger_of, multiply_rate, multiply_count, prorate, or a choose taking the line as an alternative); a def-instance binding fails closed; guardedFigureSelfTest rejects the counterexample, with a control.
+- **Validation:** mutate and mutate --ny: kills and classifications unchanged; self-tests clean.
+- **Tags:** mutation; tool change
+
+## BUG-0429 — Seven pinned equivalence arguments were counted as proven on every input
+
+- **Caught by:** independent review of the T-245 mutation rules, 2026-11-05 (fuzz over all 287 equivalents, 171,817 partial returns).
+- **Source:** the arguments' own text, which scopes them to answered inputs, against reports/2025/mutation.md ("provably equivalent").
+- **Symptom:** f2441.attrib_gate (operand ... line31.all.3.gt.0) is killed with f2441.benefits and f1040.status unanswered (base refusal f2441.student_disabled, mutant unknown); sc.qbi_se, sdtw.line4, dependent.dc_line2c, roster_ok, eic.step5_income and s8812.line18a carry the same caveat. The report counted all seven as equivalent.
+- **Tool change:** the report lists them as equivalent on answered inputs only and gives the score both ways (99.9% on every input, 100.0% with them); killing or re-arguing them is T-250.
+- **Tags:** mutation; report; tool change
+
+## BUG-0430 — all and any refuse eagerly on incomplete returns
+
+- **Caught by:** T-245 completion-soundness probe, 2026-11-05.
+- **Source:** spec 4.7.2 (a conjunct that is a refusal ends the test, after an earlier unknown conjunct).
+- **Symptom:** a partial return shows a refusal that answering the unknown conjunct could clear: over 400 federal partial returns, 741 line values are a refusal on the partial return and a value on the full one. Mid-interview only; complete returns are unaffected.
+- **Disposition:** open: T-248 (fix under the T-245 rule, or label refusals on incomplete returns as provisional in the T-236 UI).
+- **Tags:** engine; refusal; open

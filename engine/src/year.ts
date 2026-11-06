@@ -34,7 +34,8 @@ export const YEAR = resolveYear();
 
 // `--ny` (decision C6): the fixture commands (test-fixtures, coverage, evidence, compare, mutate) work on the New York
 // fixtures (fixtures/ny/<YEAR>/) and write their reports to reports/ny/<YEAR>/. Without it they work on the federal
-// fixtures exactly as before. Removed from process.argv here, like --year.
+// fixtures exactly as before. `properties --ny` checks the refusal properties over generated returns with New York
+// answers and writes reports/ny/<YEAR>/properties.md. Removed from process.argv here, like --year.
 function resolveNy(): boolean {
   const i = process.argv.indexOf("--ny", 2);
   if (i < 0) return false;

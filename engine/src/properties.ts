@@ -9,11 +9,11 @@ import { join, resolve } from "node:path";
 import { loadCanonical } from "./canonical.js";
 import { evaluate, evaluateAll } from "./eval.js";
 import type { EvalResult, Value } from "./eval.js";
-import { returnArbitrary, sampleReturns, screenInstances } from "./generate.js";
+import { nyReturnArbitrary, returnArbitrary, sampleReturns, screenInstances } from "./generate.js";
 import { loadInterview } from "./interview.js";
 import { branchKeys } from "./branches.js";
 import type { CanonicalData, Expr, Inputs, TestExpr } from "./types.js";
-import { YEAR, yearPath } from "./year.js";
+import { NY_MODE, YEAR, reportName, reportPath, yearPath } from "./year.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
 const SEED = 7;
@@ -80,9 +80,150 @@ function runProperty<T>(id: string, statement: string, arb: fc.Arbitrary<T>, che
   return result;
 }
 
+/** A choose stopped at an unknown guard (spec 4.7.3) is a refusal exactly when every way it can still resolve is a
+ * refusal, and then it is the first way's; any other line evaluated from a refused operand is a refusal. */
+function refusedOperandCheck(r: EvalResult): Verdict & { both: number; unresolved: number; unresolvedRefused: number } {
+  let anyRefused = false;
+  let both = 0;
+  let unresolved = 0;
+  let unresolvedRefused = 0;
+  const fail = (detail: string) => ({ applicable: true, ok: false, both, unresolved, unresolvedRefused, detail });
+  for (const der of r.derivations.values()) {
+    if (der.paths) {
+      unresolved++;
+      const every = der.paths.length > 0 && der.paths.every((p) => p.value.kind === "refusal");
+      if (every !== (der.value.kind === "refusal")) return fail(`${der.line} (choose with an unknown guard) is ${der.value.kind} while ${every ? "every" : "not every"} way it can still resolve is a refusal`);
+      if (every) {
+        anyRefused = true;
+        unresolvedRefused++;
+        if (JSON.stringify(der.value) !== JSON.stringify(der.paths[0]!.value)) return fail(`${der.line} (choose with an unknown guard) is not its first way's refusal`);
+      }
+      continue;
+    }
+    const fromRefusal = der.operands.some((o) => o.value.kind === "refusal") || der.guardsNotTaken.some((g) => g.value.kind === "refusal");
+    if (!fromRefusal) continue;
+    anyRefused = true;
+    if (der.operands.some((o) => o.value.kind === "unknown")) both++;
+    if (der.value.kind !== "refusal") return fail(`${der.line} (${der.op}) has value ${der.value.kind} from a refused operand`);
+  }
+  return { applicable: anyRefused, ok: true, both, unresolved, unresolvedRefused };
+}
+
+/** The two refusal properties over generated returns `arb`, every document of `data` evaluated. */
+function refusalProperties(data: CanonicalData, arb: fc.Arbitrary<Inputs>): PropertyResult[] {
+  const results: PropertyResult[] = [];
+  // 4. A refusal never becomes a number: a line whose evaluated operands
+  // include a refusal is itself a refusal.
+  results.push(runProperty("refusal_propagates", "No line computes a value from an operand that is a refusal; every line evaluated from a refused operand is a refusal.", arb, (inputs) => {
+    const r = evaluateAll(data, inputs);
+    let anyRefusal = false;
+    for (const der of r.derivations.values()) if (der.value.kind === "refusal") anyRefusal = true;
+    const v = refusedOperandCheck(r);
+    return v.ok ? { applicable: anyRefusal, ok: true } : v;
+  }));
+
+  // 4b. A refusal outranks an unknown. The same check on returns with some
+  // answers removed: a line one of whose evaluated operands is a refusal is a
+  // refusal, even when another of its operands is unknown, so a refusal is not
+  // held back behind an operand that cannot change the outcome. A choose whose
+  // guard is unknown is a refusal exactly when every alternative it may still
+  // take (and taking none, unless its guards are exhaustive) is a refusal,
+  // whatever the order of its guards.
+  {
+    let partialCases = 0;
+    let bothCases = 0;
+    let unresolvedCases = 0;
+    let unresolvedRefusedCases = 0;
+    const obs: string[] = [];
+    const r = runProperty("refusal_outranks_unknown", "On generated returns with up to eight answers removed, every line evaluated from a refused operand is a refusal, whatever its other operands are; in particular an unknown operand does not hide a refused one. A choose whose guard is unknown is a refusal exactly when every way it can still resolve is a refusal, whatever the order of its guards.", fc.tuple(arb, fc.uniqueArray(fc.nat(), { minLength: 1, maxLength: 8 })), ([inputs, drop]) => {
+      const keys = Object.keys(inputs).filter((k) => !k.startsWith("$")).sort();
+      if (keys.length === 0) return { applicable: false, ok: true };
+      const partial: Inputs = { ...inputs };
+      for (const i of drop) delete partial[keys[i % keys.length]!];
+      const v = refusedOperandCheck(evaluateAll(data, partial));
+      if (v.applicable) partialCases++;
+      if (v.both > 0) bothCases++;
+      if (v.unresolved > 0) unresolvedCases++;
+      if (v.unresolvedRefused > 0) unresolvedRefusedCases++;
+      return v;
+    }, obs);
+    obs.push(`Cases with a refused operand somewhere: ${partialCases}; cases with a line that has both a refused and an unknown operand (the order this property guards): ${bothCases}; cases with a choose stopped at an unknown guard: ${unresolvedCases}, of which ${unresolvedRefusedCases} have one refused on every way it can still resolve.`);
+    results.push(r);
+  }
+  return results;
+}
+
+/** Branch coverage of a generated corpus over the given documents: which choose guards and arithmetic sides it
+ * reaches. Informational; feeds class M. */
+function branchCoverage(data: CanonicalData, corpus: Inputs[], docs: CanonicalData["forms"]): { total: number; unreached: string[] } {
+  const seen = new Map<string, number>();
+  for (const inputs of corpus) {
+    const r: EvalResult = evaluateAll(data, inputs);
+    for (const der of r.derivations.values()) { const b = branchKeys(der); for (const k of [...b.sides, ...b.guards]) seen.set(k, (seen.get(k) ?? 0) + 1); }
+  }
+  const unreached: string[] = [];
+  let total = 0;
+  for (const doc of docs) for (const line of doc.lines) {
+    const expr = line.expr as Expr;
+    const keys: string[] = [];
+    if (expr.op === "choose") expr.alternatives.forEach((_, i) => keys.push(`${line.id}#${i}`));
+    if (line.type === "Bool") keys.push(`${line.id}:false`, `${line.id}:true`);
+    if (expr.op === "subtract_floor0") keys.push(`${line.id}:floor`, `${line.id}:positive`);
+    if (expr.op === "smaller_of" || expr.op === "larger_of") keys.push(`${line.id}:left`, `${line.id}:right`);
+    for (const k of keys) { total++; if (!seen.has(k)) unreached.push(k); }
+  }
+  return { total, unreached };
+}
+
+/** The report of a property run, written to `path`; the exit status (0 when every property holds and applies). */
+function report(results: PropertyResult[], intro: string, coverage: { total: number; unreached: string[]; corpus: number }, path: string, shown: string): number {
+  const failures = results.filter((r) => r.failure);
+  const out: string[] = [];
+  out.push("# Data-level properties", "");
+  out.push(intro, "");
+  out.push("| Property | Statement | Cases | Applicable | Result |", "| --- | --- | --- | --- | --- |");
+  for (const r of results) out.push(`| ${r.id} | ${r.statement} | ${r.runs} | ${r.applicable} | ${r.failure ? "**FAIL**" : r.applicable === 0 ? "**never applicable**" : "holds"} |`);
+  out.push("");
+  for (const r of results) {
+    if (r.observations.length === 0 && !r.failure) continue;
+    out.push(`## ${r.id}`, "");
+    for (const o of r.observations) out.push(`- ${o}`);
+    if (r.failure) {
+      out.push("", `**Counterexample:** ${r.failure.detail}`, "", "```json", JSON.stringify(r.failure.inputs, null, 1), "```");
+    }
+    out.push("");
+  }
+  const { total, unreached } = coverage;
+  out.push("## Branch coverage of the generated corpus", "");
+  out.push(`${total - unreached.length} of ${total} branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the ${coverage.corpus} generated returns. Unreached:`, "");
+  for (const k of unreached) out.push(`- ${k}`);
+  out.push("");
+  mkdirSync(join(path, ".."), { recursive: true });
+  writeFileSync(path, out.join("\n"));
+  const neverApplicable = results.filter((r) => r.applicable === 0 && !r.failure);
+  console.log(`properties: ${results.length} properties over ${RUNS} generated returns; ${failures.length} failing, ${neverApplicable.length} never applicable; branches reached ${total - unreached.length}/${total}`);
+  for (const r of failures) console.log(`  FAIL ${r.id}: ${r.failure!.detail}`);
+  for (const r of neverApplicable) console.log(`  NEVER APPLICABLE ${r.id}`);
+  console.log(`report: ${shown}`);
+  return failures.length + neverApplicable.length === 0 ? 0 : 1;
+}
+
+/** `properties --ny`: the refusal properties over generated returns that carry New York answers (nyReturnArbitrary),
+ * every federal and New York document evaluated, and the branch coverage of the New York documents. */
+function runNyProperties(): number {
+  const all = loadCanonical();
+  const arb = nyReturnArbitrary(all);
+  const results = refusalProperties(all, arb);
+  const corpus = fc.sample(arb, { seed: SEED, numRuns: RUNS });
+  const coverage = { ...branchCoverage(all, corpus, all.forms.filter((d) => d.id.startsWith("ny_"))), corpus: corpus.length };
+  return report(results, `The refusal properties of spec 6.3 checked over ${RUNS} generated returns with New York answers (fast-check, seed ${SEED}, every filing status): a generated federal return and the answers of the New York documents (\`generate.ts\` \`nyReturnArbitrary\`), every federal and New York line evaluated. "Applicable" counts the cases where the property's premise held. A failure is reported with the smallest counterexample fast-check found. The branch coverage below is of the New York documents.`, coverage, reportPath("properties.md"), reportName("properties.md"));
+}
+
 export function runProperties(): number {
+  if (NY_MODE) return runNyProperties();
   // The federal properties over federal generated returns: the New York documents the loader merges answer no
-  // question of these returns, so they are left out (no federal line reads a New York line).
+  // question of these returns, so they are left out (no federal line reads a New York line). `properties --ny`
+  // checks the refusal properties with them.
   const all = loadCanonical();
   const data = { ...all, forms: all.forms.filter((d) => !d.id.startsWith("ny_")), defs: all.defs.filter((d) => !d.id.startsWith("ny_")) };
   const arb = returnArbitrary(data);
@@ -196,49 +337,8 @@ export function runProperties(): number {
     return v >= 0 ? { applicable: true, ok: true } : { applicable: true, ok: false, detail: `f8863.clw6 ${v} cents` };
   }));
 
-  // 4. A refusal never becomes a number: a line whose evaluated operands
-  // include a refusal is itself a refusal.
-  const refusedOperandCheck = (r: EvalResult): Verdict & { both: number } => {
-    let anyRefused = false;
-    let both = 0;
-    for (const der of r.derivations.values()) {
-      const fromRefusal = der.operands.some((o) => o.value.kind === "refusal") || der.guardsNotTaken.some((g) => g.value.kind === "refusal");
-      if (!fromRefusal) continue;
-      anyRefused = true;
-      if (der.operands.some((o) => o.value.kind === "unknown")) both++;
-      if (der.value.kind !== "refusal") return { applicable: true, ok: false, both, detail: `${der.line} (${der.op}) has value ${der.value.kind} from a refused operand` };
-    }
-    return { applicable: anyRefused, ok: true, both };
-  };
-  results.push(runProperty("refusal_propagates", "No line computes a value from an operand that is a refusal; every line evaluated from a refused operand is a refusal.", arb, (inputs) => {
-    const r = evaluateAll(data, inputs);
-    let anyRefusal = false;
-    for (const der of r.derivations.values()) if (der.value.kind === "refusal") anyRefusal = true;
-    const v = refusedOperandCheck(r);
-    return v.ok ? { applicable: anyRefusal, ok: true } : v;
-  }));
-
-  // 4b. A refusal outranks an unknown. The same check on returns with some
-  // answers removed: a line one of whose evaluated operands is a refusal is a
-  // refusal, even when another of its operands is unknown, so a refusal is not
-  // held back behind an operand that cannot change the outcome.
-  {
-    let partialCases = 0;
-    let bothCases = 0;
-    const obs: string[] = [];
-    const r = runProperty("refusal_outranks_unknown", "On generated returns with up to eight answers removed, every line evaluated from a refused operand is a refusal, whatever its other operands are; in particular an unknown operand does not hide a refused one.", fc.tuple(arb, fc.uniqueArray(fc.nat(), { minLength: 1, maxLength: 8 })), ([inputs, drop]) => {
-      const keys = Object.keys(inputs).filter((k) => !k.startsWith("$")).sort();
-      if (keys.length === 0) return { applicable: false, ok: true };
-      const partial: Inputs = { ...inputs };
-      for (const i of drop) delete partial[keys[i % keys.length]!];
-      const v = refusedOperandCheck(evaluateAll(data, partial));
-      if (v.applicable) partialCases++;
-      if (v.both > 0) bothCases++;
-      return v;
-    }, obs);
-    obs.push(`Cases with a refused operand somewhere: ${partialCases}; cases with a line that has both a refused and an unknown operand (the order this property guards): ${bothCases}.`);
-    results.push(r);
-  }
+  // 4 and 4b. A refusal never becomes a number, and a refusal outranks an unknown.
+  results.push(...refusalProperties(data, arb));
 
   // 5. Tax does not decrease as wages rise, other inputs fixed. Raising box 1
   // of the first W-2 raises ordinary income without changing the method gates.
@@ -348,50 +448,6 @@ export function runProperties(): number {
   // Branch coverage of the generated corpus: which choose guards and
   // arithmetic sides the generator reaches. Informational; feeds class M.
   const corpus = sampleReturns(data, RUNS, SEED);
-  const seen = new Map<string, number>();
-  for (const inputs of corpus) {
-    const r: EvalResult = evaluateAll(data, inputs);
-    for (const der of r.derivations.values()) { const b = branchKeys(der); for (const k of [...b.sides, ...b.guards]) seen.set(k, (seen.get(k) ?? 0) + 1); }
-  }
-  const unreached: string[] = [];
-  let total = 0;
-  for (const doc of data.forms) for (const line of doc.lines) {
-    const expr = line.expr as Expr;
-    const keys: string[] = [];
-    if (expr.op === "choose") expr.alternatives.forEach((_, i) => keys.push(`${line.id}#${i}`));
-    if (line.type === "Bool") keys.push(`${line.id}:false`, `${line.id}:true`);
-    if (expr.op === "subtract_floor0") keys.push(`${line.id}:floor`, `${line.id}:positive`);
-    if (expr.op === "smaller_of" || expr.op === "larger_of") keys.push(`${line.id}:left`, `${line.id}:right`);
-    for (const k of keys) { total++; if (!seen.has(k)) unreached.push(k); }
-  }
-
-  // Report.
-  const failures = results.filter((r) => r.failure);
-  const out: string[] = [];
-  out.push("# Data-level properties", "");
-  out.push(`Properties of spec 6.3 checked over ${RUNS} generated returns (fast-check, seed ${SEED}, every filing status). "Applicable" counts the cases where the property's premise held and its values were computed; a refusal or an unknown makes a case inapplicable. A failure is reported with the smallest counterexample fast-check found.`, "");
-  out.push("| Property | Statement | Cases | Applicable | Result |", "| --- | --- | --- | --- | --- |");
-  for (const r of results) out.push(`| ${r.id} | ${r.statement} | ${r.runs} | ${r.applicable} | ${r.failure ? "**FAIL**" : r.applicable === 0 ? "**never applicable**" : "holds"} |`);
-  out.push("");
-  for (const r of results) {
-    if (r.observations.length === 0 && !r.failure) continue;
-    out.push(`## ${r.id}`, "");
-    for (const o of r.observations) out.push(`- ${o}`);
-    if (r.failure) {
-      out.push("", `**Counterexample:** ${r.failure.detail}`, "", "```json", JSON.stringify(r.failure.inputs, null, 1), "```");
-    }
-    out.push("");
-  }
-  out.push("## Branch coverage of the generated corpus", "");
-  out.push(`${total - unreached.length} of ${total} branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the ${corpus.length} generated returns. Unreached:`, "");
-  for (const k of unreached) out.push(`- ${k}`);
-  out.push("");
-  mkdirSync(yearPath("reports"), { recursive: true });
-  writeFileSync(yearPath("reports", "properties.md"), out.join("\n"));
-  const neverApplicable = results.filter((r) => r.applicable === 0 && !r.failure);
-  console.log(`properties: ${results.length} properties over ${RUNS} generated returns; ${failures.length} failing, ${neverApplicable.length} never applicable; branches reached ${total - unreached.length}/${total}`);
-  for (const r of failures) console.log(`  FAIL ${r.id}: ${r.failure!.detail}`);
-  for (const r of neverApplicable) console.log(`  NEVER APPLICABLE ${r.id}`);
-  console.log(`report: reports/${YEAR}/properties.md`);
-  return failures.length + neverApplicable.length === 0 ? 0 : 1;
+  const coverage = { ...branchCoverage(data, corpus, data.forms), corpus: corpus.length };
+  return report(results, `Properties of spec 6.3 checked over ${RUNS} generated returns (fast-check, seed ${SEED}, every filing status). "Applicable" counts the cases where the property's premise held and its values were computed; a refusal or an unknown makes a case inapplicable. A failure is reported with the smallest counterexample fast-check found.`, coverage, yearPath("reports", "properties.md"), `reports/${YEAR}/properties.md`);
 }

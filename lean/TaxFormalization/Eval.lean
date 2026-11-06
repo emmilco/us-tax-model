@@ -220,6 +220,66 @@ def evalParam (ctx : Ctx) (name : String) : Json :=
         | _ => (unknown "filing status not supplied for status-keyed parameter")
     | _ => (unknown s!"parameter {name} has bad value")
 
+/-- A guard under its `not` wrappers, and whether an odd number of them negates it (at most `n` unwrapped). -/
+def unwrapNot : Nat → Json → Bool → Json × Bool
+  | 0, g, neg => (g, neg)
+  | n + 1, g, neg =>
+    match objGet g "not" with
+    | some inner => unwrapNot n inner (!neg)
+    | none => (g, neg)
+
+/-- The declared type of a reference read in a frame: a line of the frame's document, else of the
+document its prefix names. -/
+def refType (ctx : Ctx) (frame : Frame) (ref : String) : Option String :=
+  match findLine frame.doc ref with
+  | some l => strGet l "type"
+  | none =>
+    match ctx.forms.get? ((ref.splitOn ".").headD "") with
+    | some doc => (findLine doc ref).bind (fun l => strGet l "type")
+    | none => none
+
+/-- Whether a choose's guards select an alternative whatever their operand's value (the TypeScript
+evaluator's `guardsCover`): every guard, under any `not`, compares one and the same reference for
+equality with a constant, and the constants cover the reference's declared type, true and false for a
+Bool line and every value for an enum line. -/
+def guardsCover (ctx : Ctx) (frame : Frame) (alts : List Json) : Bool := Id.run do
+  let mut ref : Option String := none
+  let mut bools : List Bool := []
+  let mut strs : List String := []
+  for alt in alts do
+    let (g, neg) := unwrapNot 64 (objGetD alt "guard" Json.null) false
+    match objGet g "eq" with
+    | some (.arr #[a, b]) =>
+      let (r, c) := match a, b with
+        | .str x, c => (some x, c)
+        | c, .str x => (some x, c)
+        | _, c => (none, c)
+      match r, objGet c "const" with
+      | some x, some k =>
+        if ref.isSome && ref != some x then return false
+        ref := some x
+        match k with
+        | .bool v => bools := (if neg then !v else v) :: bools
+        | .str s => if neg then return false else strs := s :: strs
+        | _ => return false
+      | _, _ => return false
+    | _ => return false
+  match ref with
+  | none => return false
+  | some x =>
+    match refType ctx frame x with
+    | some "Bool" => return bools.contains true && bools.contains false
+    | some ty =>
+      if ty.startsWith "Enum(" then
+        let name := String.ofList ((ty.toList.drop 5).dropLast)
+        match objGet (objGetD (objGetD ctx.params "enums" Json.null) name Json.null) "values" with
+        | some (.arr vs) =>
+          let values := vs.toList.filterMap (fun v => (v.getStr?).toOption)
+          return !values.isEmpty && values.all (fun v => strs.contains v)
+        | _ => return false
+      else return false
+    | none => return false
+
 /-- The step budget exhausted: the value an evaluation gives when it runs out of fuel. -/
 def budgetExhausted : Json := unknown "step budget exhausted"
 
@@ -660,28 +720,60 @@ def eval (ctx : Ctx) : Nat → Frame → Cmd → EvalM Json
     | "choose" =>
       match objGet expr "alternatives" with
       | some (.arr alts) =>
+        let thenOf : Json → EvalM Json := fun alt => do
+          match objGet alt "then" with
+          | some (.str ref) => eval ctx fuel frame (.line ref)
+          | some v@(.obj _) =>
+            let defId := (strGet v "def").getD ""
+            let bind := objGetD v "bind" (Json.mkObj [])
+            let ln := (strGet v "line").getD ""
+            match ctx.forms.get? defId with
+            | some doc =>
+              let parent := frame.instKey.getD "root"
+              let key := parent ++ "|inst:" ++ defId ++ "#" ++ bind.compress
+              -- Binding operands are evaluated in the caller frame for the record, as the TypeScript evaluator does.
+              match bind with
+              | .obj kvs => for (_, op) in kvs.toArray do let _ ← eval ctx fuel frame (.operand op)
+              | _ => pure ()
+              eval ctx fuel { docId := defId, doc, instKey := some key, bind, caller := some frame } (.line ln)
+            | none => pure (unknown s!"def {defId} missing")
+          | _ => pure (unknown "choose branch missing")
+        let mut i := 0
         for alt in alts do
           let guard := objGetD alt "guard" Json.null
           let gv ← eval ctx fuel frame (.test guard)
-          if isUnknown gv then return gv
+          if isRefusal gv then return gv
+          if kindOf gv == some "unknown" then
+            -- The first unknown guard: every alternative still possible is evaluated (the TypeScript
+            -- evaluator's `chooseUnresolved`). The line is the first way's refusal when every way refuses;
+            -- otherwise this guard's unknown, unchanged, with the state restored.
+            let before ← get
+            let mut paths : Array Json := #[← thenOf alt]
+            let mut closed := false
+            let mut undetermined := false
+            for later in alts.extract (i + 1) alts.size do
+              if closed then break
+              let g ← eval ctx fuel frame (.test (objGetD later "guard" Json.null))
+              if isRefusal g then
+                paths := paths.push g
+                closed := true
+              else if kindOf g == some "unknown" then
+                paths := paths.push (← thenOf later)
+              else if !(isBool g) then
+                undetermined := true
+                closed := true
+              else if objGet g "value" == some (Json.bool true) then
+                paths := paths.push (← thenOf later)
+                closed := true
+            if !closed && !(guardsCover ctx frame alts.toList) then
+              paths := paths.push (unknown "no guard matched")
+            if !undetermined && paths.all isRefusal then
+              return paths[0]!
+            set before
+            return gv
           if objGet gv "value" == some (Json.bool true) then
-            match objGet alt "then" with
-            | some (.str ref) => return (← eval ctx fuel frame (.line ref))
-            | some v@(.obj _) =>
-              let defId := (strGet v "def").getD ""
-              let bind := objGetD v "bind" (Json.mkObj [])
-              let ln := (strGet v "line").getD ""
-              match ctx.forms.get? defId with
-              | some doc =>
-                let parent := frame.instKey.getD "root"
-                let key := parent ++ "|inst:" ++ defId ++ "#" ++ bind.compress
-                -- Binding operands are evaluated in the caller frame for the record, as the TypeScript evaluator does.
-                match bind with
-                | .obj kvs => for (_, op) in kvs.toArray do let _ ← eval ctx fuel frame (.operand op)
-                | _ => pure ()
-                return (← eval ctx fuel { docId := defId, doc, instKey := some key, bind, caller := some frame } (.line ln))
-              | none => return unknown s!"def {defId} missing"
-            | _ => return unknown "choose branch missing"
+            return (← thenOf alt)
+          i := i + 1
         return unknown "no guard matched"
       | _ => pure (unknown "choose has no alternatives")
     | "test" => eval ctx fuel frame (.test expr)

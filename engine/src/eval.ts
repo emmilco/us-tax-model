@@ -28,7 +28,14 @@ export interface Derivation {
   guardsNotTaken: { guard: string; value: Value }[];
   notes: string[];
   takenGuardIndex?: number;
+  /** A choose with an unknown guard: every way the line can still resolve, in alternative order (chooseUnresolved). */
+  paths?: ChoosePath[];
 }
+
+/** One way an unresolved choose can still resolve: taking alternative `alternative` (`by: "then"`, its value), reaching
+ * a refused guard (`by: "guard"`, that alternative's guard, whose refusal every later way shares), or taking no
+ * alternative (`by: "none"`, alternative null). */
+export interface ChoosePath { by: "then" | "guard" | "none"; alternative: number | null; value: Value }
 
 export interface EvalResult {
   values: Map<string, Value>;
@@ -47,6 +54,8 @@ interface Ctx {
   byId: Map<string, FormDoc>;
   inputs: Inputs;
   memo: Map<string, Derivation>;
+  /** Every key memoized, in order, so that an evaluation can be undone (chooseUnresolved). */
+  memoLog: string[];
   inProgress: Set<string>;
   errors: string[];
 }
@@ -62,6 +71,7 @@ export function evaluate(
     byId: new Map([...data.forms, ...data.defs].map((d) => [d.id, d])),
     inputs,
     memo: new Map(),
+    memoLog: [],
     inProgress: new Set(),
     errors: [],
   };
@@ -250,6 +260,7 @@ function evalLine(ctx: Ctx, frame: Frame, lineId: string): Derivation {
     if(entry) result.notes.push(`Interpretation ${entry.id}: ${entry.chosen} ${entry.reason} (${entry.cite.doc}, ${entry.cite.locator})`);
   }
   ctx.memo.set(key, result);
+  ctx.memoLog.push(key);
   ctx.inProgress.delete(key);
   return result;
 }
@@ -601,28 +612,29 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
     }
     case "choose": {
       const guardsNotTaken: { guard: string; value: Value }[] = [];
+      const thenValue = (alt: (typeof expr.alternatives)[number]): Value =>
+        typeof alt.then === "string"
+          ? evalOperand(ctx, frame, alt.then, ops)
+          : (() => {
+              const def = ctx.byId.get(alt.then.def);
+              if (!def) return { kind: "unknown", reason: `def ${alt.then.def} missing` } as Value;
+              const key = `${frame.instKey ?? "root"}|inst:${alt.then.def}#${JSON.stringify(alt.then.bind)}`;
+              const inner: Frame = { doc: def, instKey: key, bind: alt.then.bind, caller: frame };
+              for (const [name, op] of Object.entries(alt.then.bind)) {
+                const v = evalOperand(ctx, frame, op);
+                ops.push({ ref: `bind ${name} = ${operandDisplay(op)}`, value: v });
+              }
+              return evalLine(ctx, inner, alt.then.line).value;
+            })();
       for (let gi = 0; gi < expr.alternatives.length; gi++) {
         const alt = expr.alternatives[gi]!;
         const g = evalTest(ctx, frame, alt.guard, ops);
         const gText = JSON.stringify(alt.guard);
-        if ((g.kind === "unknown" || g.kind === "refusal")) return d(g, "choose", ops, guardsNotTaken, [`guard incomplete`]);
+        if (g.kind === "refusal") return d(g, "choose", ops, guardsNotTaken, [`guard incomplete`]);
+        if (g.kind === "unknown") return chooseUnresolved(ctx, frame, expr.alternatives, gi, g, thenValue, ops, guardsNotTaken, d);
         if (g.kind !== "bool") return d({ kind: "unknown", reason: "guard not bool" }, "choose", ops);
         if (g.value) {
-          const then =
-            typeof alt.then === "string"
-              ? evalOperand(ctx, frame, alt.then, ops)
-              : (() => {
-                  const def = ctx.byId.get(alt.then.def);
-                  if (!def) return { kind: "unknown", reason: `def ${alt.then.def} missing` } as Value;
-                  const key = `${frame.instKey ?? "root"}|inst:${alt.then.def}#${JSON.stringify(alt.then.bind)}`;
-                  const inner: Frame = { doc: def, instKey: key, bind: alt.then.bind, caller: frame };
-                  for (const [name, op] of Object.entries(alt.then.bind)) {
-                    const v = evalOperand(ctx, frame, op);
-                    ops.push({ ref: `bind ${name} = ${operandDisplay(op)}`, value: v });
-                  }
-                  return evalLine(ctx, inner, alt.then.line).value;
-                })();
-          const der = d(then, "choose", ops, guardsNotTaken, [`taken: ${gText}`]);
+          const der = d(thenValue(alt), "choose", ops, guardsNotTaken, [`taken: ${gText}`]);
           der.takenGuardIndex = gi;
           return der;
         }
@@ -637,6 +649,83 @@ function evalExpr(ctx: Ctx, frame: Frame, lineId: string, expr: Expr, cite: Cite
     default:
       return d({ kind: "unknown", reason: `atom ${expr.op} not implemented` }, expr.op, ops);
   }
+}
+
+/** A choose whose guard `first` is the first unknown one, `unknown`. The guards after it are evaluated as well, and
+ * an alternative is still possible unless its guard is false or an earlier guard is true: alternative `first`, each
+ * later one whose guard is unknown, and the first later one whose guard is true, which ends the list. A refused guard
+ * after `first` refuses the alternatives from it on, and taking none, and also ends the list. Taking no alternative is
+ * possible when no guard is true or refused and the guards are not exhaustive (guardsCover). The `then` of every
+ * possible alternative is evaluated.
+ *
+ * The line is a refusal when every possible way is a refusal: then it is the first way's refusal, in alternative
+ * order. Otherwise it is `unknown`, unchanged (its gate-pending mark included), and the lines
+ * evaluated past `first` are forgotten (the memo is restored), so they are evaluated only where they are reached and
+ * an unknown line creates the same interview dependencies as the guard alone. A guard that is neither a Bool nor
+ * incomplete leaves the line unknown. The derivation records every way in `paths`; its operands are those of every
+ * guard and `then` evaluated, and guardsNotTaken stays the false guards before `first`. */
+function chooseUnresolved(
+  ctx: Ctx, frame: Frame, alts: Extract<Expr, { op: "choose" }>["alternatives"], first: number, unknown: Value,
+  thenValue: (alt: Extract<Expr, { op: "choose" }>["alternatives"][number]) => Value,
+  ops: { ref: string; value: Value }[], guardsNotTaken: { guard: string; value: Value }[],
+  d: (value: Value, op: string, operands: { ref: string; value: Value }[], guardsNotTaken?: { guard: string; value: Value }[], notes?: string[]) => Derivation,
+): Derivation {
+  const mark = ctx.memoLog.length;
+  const paths: ChoosePath[] = [{ by: "then", alternative: first, value: thenValue(alts[first]!) }];
+  let closed = false;
+  let undetermined = false;
+  for (let gi = first + 1; gi < alts.length && !closed; gi++) {
+    const alt = alts[gi]!;
+    const g = evalTest(ctx, frame, alt.guard, ops);
+    if (g.kind === "refusal") { paths.push({ by: "guard", alternative: gi, value: g }); closed = true; }
+    else if (g.kind === "unknown") paths.push({ by: "then", alternative: gi, value: thenValue(alt) });
+    else if (g.kind !== "bool") { undetermined = true; closed = true; }
+    else if (g.value) { paths.push({ by: "then", alternative: gi, value: thenValue(alt) }); closed = true; }
+  }
+  if (!closed && !guardsCover(ctx, frame, alts)) paths.push({ by: "none", alternative: null, value: { kind: "unknown", reason: "no guard matched" } });
+  const where = (p: ChoosePath): string => p.by === "none" ? "none" : `${p.by === "guard" ? "guard " : ""}#${p.alternative}`;
+  const notes = [`guard incomplete`, `possible: ${paths.map((p) => `${where(p)} ${p.value.kind}`).join(", ")}`];
+  if (!undetermined && paths.every((p) => p.value.kind === "refusal")) {
+    const der = d(paths[0]!.value, "choose", ops, guardsNotTaken, [...notes, "every possible alternative refuses"]);
+    der.paths = paths;
+    return der;
+  }
+  for (const key of ctx.memoLog.splice(mark)) ctx.memo.delete(key);
+  const der = d(unknown, "choose", ops, guardsNotTaken, notes);
+  der.paths = paths;
+  return der;
+}
+
+/** Whether a choose's guards select an alternative whatever their operand's value: every guard (under any `not`)
+ * compares one and the same reference for equality with a constant, and the constants cover the reference's declared
+ * type, true and false for a Bool line and every value for an enum line. Other guard forms, interval tilings among
+ * them, are not established as exhaustive here. */
+export function guardsCover(ctx: { byId: Map<string, FormDoc>; data: CanonicalData }, frame: { doc: FormDoc }, alts: { guard: TestExpr }[]): boolean {
+  let ref: string | null = null;
+  const seen = new Set<string | boolean>();
+  for (const alt of alts) {
+    let g: TestExpr = alt.guard;
+    let negated = false;
+    while ("not" in g) { g = g.not; negated = !negated; }
+    const eq = "eq" in g ? g.eq : undefined;
+    if (!eq) return false;
+    const [a, b] = eq;
+    const r = typeof a === "string" ? a : typeof b === "string" ? b : null;
+    const c = typeof a === "string" ? b : a;
+    if (r === null || typeof c !== "object" || !("const" in c)) return false;
+    if (ref !== null && r !== ref) return false;
+    ref = r;
+    if (typeof c.const === "boolean") seen.add(negated ? !c.const : c.const);
+    else if (negated || typeof c.const !== "string") return false;
+    else seen.add(c.const);
+  }
+  if (ref === null) return false;
+  const own = frame.doc.lines.find((l) => l.id === ref);
+  const dot = ref.indexOf(".");
+  const type = own?.type ?? (dot > 0 ? ctx.byId.get(ref.slice(0, dot))?.lines.find((l) => l.id === ref)?.type : undefined);
+  if (type === "Bool") return seen.has(true) && seen.has(false);
+  const values = type?.startsWith("Enum(") ? ctx.data.params.enums[type.slice(5, -1)]?.values : undefined;
+  return values !== undefined && values.length > 0 && values.every((v) => seen.has(v));
 }
 
 function findBand(table: TableDoc, cents: number): { at_least: number; less_than: number; tax: number[] } | null {

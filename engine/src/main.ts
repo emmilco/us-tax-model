@@ -8,6 +8,7 @@
 //   node engine/dist/main.js eval --batch F        evaluate many returns ([{id, inputs}]) as JSON
 //   node engine/dist/main.js conjecture            test the Tax Table conjecture
 //   node engine/dist/main.js properties            check the data-level properties over generated returns
+//   node engine/dist/main.js properties --ny       the refusal properties over generated returns with New York answers
 //   node engine/dist/main.js classm-jobs [--docs a,b] write the class M hand-work jobs (branch-covering cases)
 //   node engine/dist/main.js check-self-test       test check rules against constructed violations
 
@@ -137,7 +138,7 @@ if (command === "review-stage5") {
   runCheckSelfTest();
 } else {
   console.error(
-    "usage: main.js [--year N] build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | conjecture | record-fixtures | test-fixtures | test-integration | coverage | properties | mutate | compare | check-self-test",
+    "usage: main.js [--year N] build | render | eval --inputs <file> [--json|--html] [--target <lines>] | eval --batch <file> | interview start|advance|answer --log <file> | conjecture | record-fixtures | test-fixtures | test-integration | coverage | properties [--ny] | mutate | compare | check-self-test",
   );
   process.exit(2);
 }

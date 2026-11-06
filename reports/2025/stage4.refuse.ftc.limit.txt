@@ -676,7 +676,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Select Form 8995 or dividend-only Form 8995-A
       = UNKNOWN (no input supplied for s1a.tips)
       cite: [f8995] p. 1, "Use this form if your taxable income, before your qualified business income deduction, is at or below $197,300 ($394,600 if married filing jointly)", "Qualified business income deduction. Enter the smaller of line 10 or line 14" (line 15); i8995 pp. 3–4 (2025; created 2025-09-12; 55380ad2)
-      note: guard incomplete
+      note: guard incomplete; possible: #0 unknown, #1 unknown
 
 == State and Local Income Tax Refund Worksheet—Schedule 1, Line 1 ==
   (helper) State or local income tax refunds, credits or offsets you received in 2025
@@ -850,21 +850,21 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   13  Qualified tips deduction. Subtract line 12 from line 7. If zero or less, enter -0-
       = UNKNOWN (no input supplied for s1a.tips)
       cite: [f1040s1a] Schedule 1-A (2025), line 13; i1040gi p. 101, "Fill out Schedule 1-A, Part II, only if" (2025; created 2025-11-04; 64f97b38)
-      note: guard incomplete
+      note: guard incomplete; possible: #0 money, #1 unknown
   (helper) Did you receive qualified overtime compensation in 2025 that you want to deduct?
       = UNKNOWN (no input supplied for s1a.overtime)
       cite: [i1040gi] p. 106, Schedule 1-A, Part III, "Fill out Schedule 1-A, Part III, only if" (2025; printed date 2026-02-25; 482e9c48)
   21  Qualified overtime compensation deduction. Subtract line 20 from line 15. If zero or less, enter -0-
       = UNKNOWN (no input supplied for s1a.overtime)
       cite: [f1040s1a] Schedule 1-A (2025), line 21; i1040gi p. 106, "Fill out Schedule 1-A, Part III, only if" (2025; created 2025-11-04; 64f97b38)
-      note: guard incomplete
+      note: guard incomplete; possible: #0 money, #1 unknown
   (helper) Did you pay or accrue interest in 2025 on a loan to buy a new passenger vehicle that you want to deduct?
       = UNKNOWN (no input supplied for s1a.carloan)
       cite: [i1040gi] p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025" (2025; printed date 2026-02-25; 482e9c48)
   30  Qualified passenger vehicle loan interest deduction. Subtract line 29 from line 24. If zero or less, enter -0-
       = UNKNOWN (no input supplied for s1a.carloan)
       cite: [i1040gi] p. 109, Schedule 1-A, Part IV, "Fill out Schedule 1-A, Part IV, only if you paid or accrued QPVLI in 2025" (2025; printed date 2026-02-25; 482e9c48)
-      note: guard incomplete
+      note: guard incomplete; possible: #0 money, #1 unknown
   36a If you have a valid social security number (see instructions) and were born before January 2, 1961, enter the amount from line 35
       = $0
       cite: [f1040s1a] Schedule 1-A (2025), line 36a (2025; created 2025-11-04; 64f97b38)
@@ -1547,9 +1547,9 @@ Derivations:
   f1040.line12e: copy(household.filing_status_conflict = false; household.hoh_fails = false; household.widowed_2025 = false; household.qss_fails = false; sa.deduction = $15,750)
   s1.sc_1a_count: sum_over(person[taxpayer].sc_1a = 0)
   s1.sc_1a: test(s1.sc_1a_count = 0; 0 = 0)
-  s1a.line13: choose(s1.sc_1a = false; s1a.tips = UNKNOWN (no input supplied for s1a.tips); false = false)
-  s1a.line21: choose(s1.sc_1a = false; s1a.overtime = UNKNOWN (no input supplied for s1a.overtime); false = false)
-  s1a.line30: choose(s1a.carloan = UNKNOWN (no input supplied for s1a.carloan); false = false)
+  s1a.line13: choose(s1.sc_1a = false; s1a.tips = UNKNOWN (no input supplied for s1a.tips); false = false; s1a.zero = $0; s1a.tips = UNKNOWN (no input supplied for s1a.tips); true = true; s1a.line13_claim = UNKNOWN (no input supplied for s1a.tips))
+  s1a.line21: choose(s1.sc_1a = false; s1a.overtime = UNKNOWN (no input supplied for s1a.overtime); false = false; s1a.zero = $0; s1a.overtime = UNKNOWN (no input supplied for s1a.overtime); true = true; s1a.line21_claim = UNKNOWN (no input supplied for s1a.overtime))
+  s1a.line30: choose(s1a.carloan = UNKNOWN (no input supplied for s1a.carloan); false = false; s1a.zero = $0; s1a.carloan = UNKNOWN (no input supplied for s1a.carloan); true = true; s1a.line30_amount = UNKNOWN (no input supplied for s1a.carloan))
   sa.age65_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].age65 = false; true = true)
   sa.age65: test(sa.age65_count = 0; 0 = 0)
   s1a.zero: param(#sales.zero = $0)
@@ -1564,7 +1564,7 @@ Derivations:
   qbi.taxable_before: subtract_floor0(sa.agi = $100,000; qbi.deductions_before = UNKNOWN (no input supplied for s1a.tips))
   qbi.threshold: param(#qbi.threshold = $197,300)
   qbi.use_8995a: test(qbi.taxable_before = UNKNOWN (no input supplied for s1a.tips); qbi.threshold = $197,300)
-  qbi.deduction: choose(qbi.use_8995a = UNKNOWN (no input supplied for s1a.tips); true = true)
+  qbi.deduction: choose(qbi.use_8995a = UNKNOWN (no input supplied for s1a.tips); true = true; qbi.via_8995a = UNKNOWN (no input supplied for s1a.tips); qbi.use_8995a = UNKNOWN (no input supplied for s1a.tips); false = false; f8995.line15 = UNKNOWN (no input supplied for s1a.tips))
   f1040.line13a: copy(qbi.deduction = UNKNOWN (no input supplied for s1a.tips))
   f1040.line14: sum(f1040.line12e = $15,750; f1040.line13a = UNKNOWN (no input supplied for s1a.tips); f1040.line13b = UNKNOWN (no input supplied for s1a.tips))
   f1040.line15: subtract_floor0(f1040.line11b = $100,000; f1040.line14 = UNKNOWN (no input supplied for s1a.tips))
@@ -1576,7 +1576,7 @@ Derivations:
   f1040.gate.sdtw: test(f1040.gate.qdcg_applies = false; true = true)
   root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.amount: bound(f1040.line15 = UNKNOWN (no input supplied for s1a.tips))
   root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary: test(root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.amount = UNKNOWN (no input supplied for s1a.tips); #ordinary.table_boundary = $100,000)
-  root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax: choose(root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary = UNKNOWN (no input supplied for s1a.tips); true = true)
+  root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.tax: choose(root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary = UNKNOWN (no input supplied for s1a.tips); true = true; root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.table_tax = UNKNOWN (no input supplied for s1a.tips); root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.below_boundary = UNKNOWN (no input supplied for s1a.tips); false = false; root|inst:tax_on_amount#{"amount":"f1040.line15","status":"f1040.status"}.worksheet_tax = UNKNOWN (no input supplied for s1a.tips))
   f1040.non_sdtw_tax: choose(f1040.gate.qdcg_applies = false; true = true; f1040.gate.qdcg_applies = false; false = false; bind amount = f1040.line15 = UNKNOWN (no input supplied for s1a.tips); bind status = f1040.status = single)
   f1040.line16: choose(scope.other_line16 = false; f1040.gate.sdtw = false; true = true; f1040.gate.sdtw = false; false = false; f1040.non_sdtw_tax = UNKNOWN (no input supplied for s1a.tips))
   person[taxpayer].se_line12: choose(person[taxpayer].se_rrta = false; person[taxpayer].has_sc = false; true = true; person[taxpayer].has_sc = false; false = false; person[taxpayer].zero = $0)
