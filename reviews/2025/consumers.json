@@ -899,6 +899,12 @@
    "question_phrase": "Any amount on Schedule 2 other than the following? ... self-employment tax from Schedule SE ... Additional Medicare Tax ... Net Investment Income Tax ... the additional 20% tax on taxable HSA distributions ... Other amounts, for example: ... the alternative minimum tax ... tax on unreported tips (Form 4137)",
    "source_phrase": "Additions to tax: 1a Excess advance premium tax credit repayment ... 1b ... 1y Other additions to tax ... 2 Alternative minimum tax ... 3 Add lines 1z and 2",
    "reason": "s2.line3 adds line 1z (line 1a from Form 8962, which the tool figures) and line 2, and refuses on yes; every other Part I amount (lines 1b to 1y, line 2) is an amount the question asks about, so a no leaves only the figured line 1a (a filer who reads line 1a as another amount answers yes and is refused, which is safe, as the screen ruling's finding 2 notes)."
+  },
+  "consumer:s8812.puerto_rico@i1040s8812:p3": {
+   "verdict": "same",
+   "question_phrase": "Were you (or, on a joint return, your spouse) a bona fide resident of Puerto Rico in 2025?",
+   "source_phrase": "Bona Fide Residents of Puerto Rico, \"If you were a bona fide resident of Puerto Rico, you may be eligible to claim the ACTC if you had at least one qualifying child\"",
+   "reason": "The gate s8812.puerto_rico_if_child reads the same bona fide residence the question asks, and asks it only with a qualifying child as the page states; the page's residence test (presence test, tax home, closer connection) is in the question's help."
   }
  },
  "baseline": {
@@ -1152,8 +1158,6 @@
   "consumer:s8812.combat_pay@i1040gi:p95": "50fff57981f89a2b",
   "consumer:s8812.combat_pay@i2441:p4": "50fff57981f89a2b",
   "consumer:s8812.combat_pay@i2441:p5": "50fff57981f89a2b",
-  "consumer:s8812.puerto_rico@f1040s8812:p2": "7c704e9e92d9c3d4",
-  "consumer:s8812.puerto_rico@i1040s8812:p5": "7c704e9e92d9c3d4",
   "consumer:sa.charity_limited@f1040sa:p1": "ee2aec28c729e062",
   "consumer:sa.charity_limited@i1040sca:p11": "ee2aec28c729e062",
   "consumer:sa.dependent@f8880:p2": "2c0be795eaccc311",

@@ -25,7 +25,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## refusal_outranks_unknown
 
-- Cases with a refused operand somewhere: 323; cases with a line that has both a refused and an unknown operand (the order this property guards): 244; cases with a choose stopped at an unknown guard: 390, of which 17 have one refused on every way it can still resolve.
+- Cases with a refused operand somewhere: 323; cases with a line that has both a refused and an unknown operand (the order this property guards): 243; cases with a choose stopped at an unknown guard: 390, of which 13 have one refused on every way it can still resolve.
 
 ## tax_monotone
 
@@ -41,7 +41,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 
 ## Branch coverage of the generated corpus
 
-2633 of 2979 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
+2654 of 3005 branches (choose guards, Bool lines both ways, floor and positive sides of subtract_floor0, left and right of smaller_of and larger_of) reached by the 400 generated returns. Unreached:
 
 - asset.outside:true
 - asset.screen:true
@@ -172,6 +172,8 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - household.community_property:true
 - household.hoh_community_property:true
 - household.credit_disallowed:true
+- household.no:true
+- household.credit_disallowed_if_claimed:true
 - household.ctc_disallowed_claim:true
 - household.eic_disallowed_claim:true
 - household.hoh_absence:true
@@ -325,6 +327,8 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - s1.line19a#0
 - s1.line19b_notice:true
 - s1.line19c_notice:true
+- s1.has_jury_pay:true
+- s1.jury_to_employer_if_pay#0
 - s1.jury_over:true
 - s179.line4:positive
 - s179.line5_full:floor
@@ -340,6 +344,7 @@ Properties of spec 6.3 checked over 400 generated returns (fast-check, seed 7, e
 - s1a.line27_pos:positive
 - s1a.line30_amount#1
 - s2.e05_over:true
+- s8812.no:true
 - s8812.show_iib:true
 - s8812.few_children:false
 - s8812.line27#1

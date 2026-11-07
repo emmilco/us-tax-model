@@ -6135,3 +6135,29 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Symptom:** the line 15 question lists the premium limits but not these inclusions, so a filer reading qualified medical expenses as Schedule A expenses can leave them out of line 15 and overstate line 16. Pre-existing; the gate round changed only f8889.use_last_month.
 - **Disposition:** open, low: name the inclusions in the f8889.medical question at the form's next substantive change; rerun the f8889 reviews.
 - **Tags:** completeness; f8889; open
+
+## BUG-0444 — Form 8862 and Puerto Rico questions asked of you alone on a joint return, with narrow or unrelated help
+
+- **Caught by:** the false-no review of the new formal gates `gate:household.claims_8862_credit` and `gate:s8812.has_qualifying_child` (`tools/transcription/false_no_review.py`, claude-opus-5-5), 2026-11-07.
+- **Source:** `forms/2025/household.yaml` (`household.credit_disallowed`), `forms/2025/s8812.yaml` (`s8812.puerto_rico`), `interview/questions-2025.yaml` (their help, and the help of `s1.line8h` and `s1.jury_to_employer`).
+- **Symptom:** on a joint return the Form 8862 question asked only whether "your" earlier credit was reduced or disallowed, and the Puerto Rico question only whether "you" were a bona fide resident, so a filer could answer No for a spouse whose own history or residence makes the answer Yes (a wrong No silently drops a refusal). The Form 8862 help named only "an IRS notice"; the help of `s8812.puerto_rico`, `s1.line8h` and `s1.jury_to_employer` was an unrelated stock sentence ("Married filing separately and unsupported items are refused with citations.").
+- **Why the checks missed it:** the render and transcription reviews judge the encoded line against the page, not whether a per-return question names the spouse; the screen review of these questions read the same pages and found them covering.
+- **Wording fix:** both questions now name the spouse on a joint return ("you (or, on a joint return, your spouse)"); the Form 8862 help covers any earlier return either spouse filed, any reduction by notice, letter, audit or court decision, a refund issued without the credit, and "If you are not sure, answer Yes"; the Puerto Rico help gives the three-part residence test of i1040s8812 p. 3 and "If you are not sure, answer Yes"; the jury pay help says to include pay given to the employer whatever form reported it. A Yes to either question refuses, so the wider wording can only refuse more. The fix is to question wording, not to a line's rule: the lines `tools/siblings.py` lists for the two inputs (their gate lines, and `eic.credit`, `s8812.line12` and the household helpers anchored on the same pages) ask nothing and were not changed for it.
+- **Validation:** the false-no reviews rerun on the new wording (Puerto Rico SOUND; Form 8862 and jury pay findings ruled in `reviews/2025/false_no/rulings.json`); the gate screen reviews COVERS; `test-fixtures` unchanged.
+- **Tags:** interview-wording; spouse; formal-gates; false-no-review; fixed
+
+## BUG-0445 — A gated refusal screen leaves the screen review
+
+- **Caught by:** `check_screens.py` after `s8812.puerto_rico` was gated (`s8812.puerto_rico_if_child`), 2026-11-07: "unruled:s8812.puerto_rico no longer fails; remove it from rulings.json".
+- **Source:** `tools/transcription/screen_review.py` (`screens`: a refusal screen is a refusal `when` that is an input line).
+- **Symptom:** when a refusal screen's input is gated, the refusals name the gate line (a `choose`), not the input, so the input is no longer a screen and its refusal screen review (does the question cover every case the refused lines need?) stops applying. The gate's own screen and false-no reviews judge the condition and the input's wording against the pages, but not the refusal the input triggers. Here the Puerto Rico screen (`s8812.line27`, `s8812.clwb_11`) lost its standing screen review; its earlier ruling was removed as stale.
+- **Why the checks missed it:** `check_screens.py` reports a screen that disappears only as a stale ruling, not as lost coverage.
+- **Disposition:** open, low: `screens()` should follow a refusal `when` that is a gate line to its gated input (`gated_by`), so the screen keeps its key and review; not changed in this lane, whose scope excludes the review tools shared with the other gate lanes.
+- **Tags:** review-tools; screen-review; formal-gates; low; open
+
+## BUG-0446 — person.edu_line23 left reachable at completion in a random answering order
+
+- **Caught by:** interview-rules on the gate lane B merge, 2026-11-07.
+- **Symptom:** ny.status.qss.200000 answered in a random order reports complete while person.edu_line23 is reachable and unanswered (a conjunction that reads past an unknown operand, as the five leaks gate round 1 fixed). Not seen on main before the merge; probably exposed by the changed answering order, not caused by lane B (unconfirmed).
+- **Disposition:** open: held in tools/interview_rules_baseline.json until a nested-choose fix.
+- **Tags:** interview; leak; open

@@ -646,9 +646,13 @@ bank:
       requires all five tests.
   - input: household.credit_disallowed
     order: 20
-    help: A reduction or disallowance by an IRS notice for any year after 1996 counts, other than a math or clerical error; a
-      Yes refuses the earned income credit and Schedule 8812, since Form 8862 and the disallowance periods are outside
-      this tool.
+    help: Asked only when this return claims the earned income credit, the child tax credit, the additional child tax credit or
+      the credit for other dependents. It covers a credit on any earlier return either of you filed, including a joint return
+      with someone else. Any reduction or denial counts, by notice, letter, audit or court decision (the earned income credit
+      for any year after 1996; the other three credits for any year after 2015), including a refund issued smaller than
+      claimed, or without the credit, after the IRS asked you to show you qualified; only a math or clerical error does not.
+      If you are not sure, answer Yes. A Yes refuses the earned income credit and Schedule 8812, since Form 8862 and the
+      disallowance periods are outside this tool.
   - input: eic.same_home
     order: 30
     help: Married filing separately and unsupported items are refused with citations.
@@ -663,7 +667,11 @@ bank:
     help: Married filing separately and unsupported items are refused with citations.
   - input: s8812.puerto_rico
     order: 20
-    help: Married filing separately and unsupported items are refused with citations.
+    help: Asked only when you have a qualifying child for the child tax credit. Generally, you were a bona fide resident of
+      Puerto Rico if, during 2025, you met the presence test, did not have a tax home outside Puerto Rico, and did not have
+      a closer connection to the United States or to a foreign country than to Puerto Rico (Pub. 570). If you are not sure,
+      answer Yes. A Yes refuses the Puerto Rico path through Schedule 8812 Part II-B and Credit Limit Worksheet B, which is
+      outside this tool.
   - input: $f1095a
     order: 1
     help: Married filing separately and unsupported items are refused with citations.
@@ -1056,7 +1064,8 @@ bank:
     help: Married filing separately and unsupported items are refused with citations.
   - input: s1.line8h
     order: 10
-    help: Married filing separately and unsupported items are refused with citations.
+    help: All jury duty pay received in 2025, whether or not a form reported it, including any pay you gave to your
+      employer.
   - input: s1.line8i
     order: 10
     help: Olympic and Paralympic medals and USOC prize money (usually in Form 1099-MISC box 3) go on line 8m, which this tool
@@ -1080,7 +1089,8 @@ bank:
     help: Married filing separately and unsupported items are refused with citations.
   - input: s1.jury_to_employer
     order: 10
-    help: Married filing separately and unsupported items are refused with citations.
+    help: Asked only when you entered jury duty pay. The part of that pay you gave to your employer because your employer paid
+      your salary while you served on the jury.
   - input: refund.received
     order: 10
     help: Zero if none. A refund of federal income tax is not included. Interest paid on a state or local refund is interest

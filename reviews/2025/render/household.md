@@ -5,7 +5,7 @@ The rendered English of every printed line of `Household facts for dependents an
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
-| line-scoped reviews | 1 (latest 2026-11-07); see Line-scoped reviews |
+| line-scoped reviews | 3 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 17422f5dec7c2102012a5d0047e50131b253903349a5dc9f0d163bb74d1e6512 |
@@ -14,8 +14,8 @@ The rendered English of every printed line of `Household facts for dependents an
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
 | subject sha256 | e89c8acf56b6ac52b1f4b39d5fe29e0394cfc792d6fdc49ad1a313ec2e57f213 |
-| lines judged | 48 |
-| match / mismatch / unclear / missing | 48 / 0 / 0 / 0 |
+| lines judged | 53 |
+| match / mismatch / unclear / missing | 53 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -192,21 +192,53 @@ Status: **MATCH**
 Model: This is a refusal gate for married head-of-household filers who lived in a community property state. It is consistent with the Pub 501 caution that special community property rules may apply (Pub 555).
 Reviewed in: pass 43add74104ac
 
-### credit_disallowed — Was your EIC for a year after 1996, or your child tax credit, additional child tax credit
+### credit_disallowed — Was your (or, on a joint return, your spouse's) EIC for a year after 1996, or child tax cr
 Status: **MATCH**
 
-Model: This combines the Form 8862 triggers: EIC 'for a year after 1996', CTC/ACTC/ODC 'for a year after 2015', reduced or disallowed other than for a math or clerical error. It also includes the 2-year and 10-year bans.
+Model: The question follows the IRS triggers. For the EIC: "your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error." For CTC/ACTC/ODC: "for a year after 2015 was denied or reduced for any reason other than a math or clerical error." It also covers the 2-year (reckless or intentional disregard) and 10-year (fraud) disallowance periods. It is a fact question, so the Form 8862 exceptions are not needed here.
+Reviewed in: pass 4bb8e0ece148
 
-### ctc_disallowed_claim — An earlier credit was reduced or disallowed (or a disallowance period applies) and Schedul
+### no — Year parameter household.no (false)
 Status: **MATCH**
 
-Model: Uses Schedule 8812 line 12, 'Is the amount on line 8 more than the amount on line 11?', to mean that a CTC or ODC is figured, combined with a prior disallowance.
+Model: This is a constant false used as the 'otherwise' branch of the choices below. No IRS line corresponds to it.
+Reviewed in: pass 4bb8e0ece148
 
-### eic_disallowed_claim — An earlier credit was reduced or disallowed (or a disallowance period applies) and Steps 1
+### eic_above_zero — The earned income credit figured in Step 6 (Worksheet A line 6, or Worksheet B line 11 for
 Status: **MATCH**
 
-Model: The computation matches the label: a prior reduction or disallowance (or a 2/10-year ban) per i1040gi 'Form 8862, who must file', combined with passing Steps 1-5 and a credit above zero. One caveat: the glossary lists two 'eic line 6' wordings (Worksheet A and Worksheet B), and either is a positive EIC amount. Including CTC/ACTC/ODC disallowance only makes the gate broader, which does not cause a miscalculation.
-Reviewed in: pass 43add74104ac
+Model: Worksheet A line 6 is 'This is your earned income credit', and a credit above zero is what is claimed on line 27a. Testing eic line 6 > $0 matches the label. Worksheet B line 11 is not among the pages given, but the restatement only compares whichever line-6 credit the program figures with zero.
+Reviewed in: pass c7c3bf2210c2
+
+### eic_claimed — The earned income credit is claimed (Steps 1 to 5 are passed and the credit figured in Ste
+Status: **MATCH**
+
+Model: The IRS flow lets the credit be figured in Step 6 only after Steps 1 to 5 are passed in order. Choosing the above-zero test when eic.eligible is true, and false otherwise, matches that flow. The Step 1 q4, Step 2 q3/Form 4797 and Step 5 clergy branches are excluded by named refusals.
+Reviewed in: pass c7c3bf2210c2
+
+### claims_8862_credit — The return claims the earned income credit, the child tax credit, the credit for other dep
+Status: **MATCH**
+
+Model: Schedule 8812 line 12 asks 'Is the amount on line 8 more than the amount on line 11?' and, if No, says 'You cannot take the child tax credit, credit for other dependents, or additional child tax credit.' So line 8 > line 11, or an EIC claim, identifies a return claiming one of these credits.
+Reviewed in: pass c7c3bf2210c2
+
+### credit_disallowed_if_claimed — Whether an earlier earned income credit, child tax credit, additional child tax credit or
+Status: **MATCH**
+
+Model: The input combines the two IRS Form 8862 triggers. One is 'EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error'. The other is 'child tax credit..., additional child tax credit, or credit for other dependents for a year after 2015 was denied or reduced', together with the 2- and 10-year bans. Asking it only when such a credit is claimed, and false otherwise, matches the label.
+Reviewed in: pass c7c3bf2210c2
+
+### ctc_disallowed_claim — Schedule 8812 line 8 is more than line 11 (a child tax credit or credit for other dependen
+Status: **MATCH**
+
+Model: The line is computed as its label states: a CTC/ODC figured (line 8 > line 11) and the combined disallowance answer is yes. The combined question is broader than the IRS CTC rule, which only counts CTC, ACTC or ODC history after 2015. It can therefore only over-include cases, which is acceptable if the line is used as a refusal gate.
+Reviewed in: pass c7c3bf2210c2
+
+### eic_disallowed_claim — The earned income credit is claimed (Steps 1 to 5 are passed with a credit above zero on W
+Status: **MATCH**
+
+Model: The line is computed as its label states: EIC claimed and the combined disallowance answer is yes. The combined question is broader than the IRS EIC rule, which only counts EIC reduced or disallowed after 1996 or an EIC disallowance period. It can therefore only over-include cases, which is acceptable if the line is used as a refusal gate.
+Reviewed in: pass c7c3bf2210c2
 
 ### test1_persons — Number of parents who qualify you under Test 1
 Status: **MATCH**
@@ -333,9 +365,14 @@ What each compared line's verdict depends on within the document (tools/transcri
 | married | 2d20e6ac24216b13d34a9e8a4c579dc854b0e47935eed788dabcf90dd9b86fd7 |
 | community_property | b9aff9b390e2a39a45d6d12d52893607f842b1ed5bef3be8d1561f5b1cd099b3 |
 | hoh_community_property | e2566e71d47655f6c2406035873f820859bb85fa8082259b0a7545c8f60b3e8f |
-| credit_disallowed | 8485b83c733a6701e3e9a3c627d4eba39fe966958915d4b8c4ab8b8ceab69f17 |
-| ctc_disallowed_claim | 1e81abeb3d880d4d1476c80abf1e06e003d69d3efadf284ff11a2d256c4ce8f6 |
-| eic_disallowed_claim | 60a97eba03f3522969bf1ef925e40868de1eeaf8977ab508b4fc9182af988223 |
+| credit_disallowed | 989dc700b136c7dd4a99e966063cb8c6ffc7c021dce2fde70b2e601395506ae8 |
+| no | 862ec62b4d8d1425bef39d73175d5475dc393df0e53f24087769a96a2f481bc5 |
+| eic_above_zero | ba8cc62641f042b53a3e8556e037fcff9cb04f69869ee89aa107eea31fdbe42f |
+| eic_claimed | 472baf74f6ab93118321b78d8a272026dbcd847d19833768a300cdd189ef8b07 |
+| claims_8862_credit | 8abcb4b35afc133d6a4f2952c3d7fa264a53eb4d080bfbd3afb41cc618920f6c |
+| credit_disallowed_if_claimed | bcb5d7482711ff551bdc48062745ad7ec0253ce750ed43effeb3b25897a177b3 |
+| ctc_disallowed_claim | ff0a4426a96732faca61875426cd70a142d6ed45de77395a933dbf27b25a8e21 |
+| eic_disallowed_claim | 68941b7b335d727ca6facfa551bc70e57e0c23c724dc811377ae1b4c6eecafd0 |
 | test1_persons | 61eba99c99a2954329aae0987e04656665117574a385f2411b3d8a05bbd064b6 |
 | test2_persons | 1d35fdd798dd9a81ca48f308819882a59628f8aa6ff5b53f9d8cc9ca342486f5 |
 | test2_absence_persons | e3a1d693ed3c732ef3d443dfe9d56839b0bd3174ead47afc92e93275b833d8ea |
@@ -449,6 +486,156 @@ lines:
   - key: "filing_status_conflict"
     status: MATCH
     reason: "Single conflicts with being married at year end: i1040gi limits Single to never married, legally separated, or widowed before 2025, and Pub 501 says Single requires being unmarried with no other status available. Married filing jointly conflicts with not being married at year end unless the spouse died in 2025, per i1040gi Married Filing Jointly."
+```
+```
+
+#### Pass 4bb8e0ece148
+
+| field | value |
+| --- | --- |
+| date | 2026-11-07 |
+| review scope | lines credit_disallowed, no, eic_above_zero, eic_claimed, claims_8862_credit, credit_disallowed_if_claimed, ctc_disallowed_claim, eic_disallowed_claim |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | 4bb8e0ece148235168527b9e35864d29000f99e72c99ce008611fe4fc17e4fa0 |
+| prompt policy | render-source-comparison-v2+lines-v1 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| subject sha256 | d96ff2fcab9085491b73b4f75ad410130634d80b0c68d3aa00ff59519324dde0 |
+| receipt | .transcription/household.render.lines-9d0adc3914f8 |
+| lines judged | 8 |
+| match / mismatch / unclear / missing | 7 / 0 / 1 / 0 |
+| verdicts for lines not in the form | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i1040gi | 2025; printed date 2026-02-25 | 36, 39, 40, 41, 42, 43, 44, 45, 46, 47, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 93, 94, 95, 117 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 36, 39, 40, 41, 42, 43, 44, 45, 93, 95, 117 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| i1040s8812 | 2025; printed date 2026-01-23 | 2, 8 | cited pages | fd50a5266cc20aa5a31de0535658793f75c7abbb12fd83b65dc5b21c6ede2765 | 2 | e6ba91f54df679c9c19c23169c369f14bff012ba2fe110c3973bde59676c1d45 |
+| f1040sa | 2025; created 2025-11-20 | 1 | whole document | 225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd | - | bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe |
+| f1040 | 2025; created 2025-09-05 | 1, 2 | whole document | ac32f00aed489e0722d0b409c0eb12915801d66f3a2fab05bc8391af61426383 | - | 72926cc2b256a68592e6cf0f2aa384ef8371eec968a0c8c62e050edf5bfea76a |
+| f1040s8812 | 2025; created 2025-07-30 | 1, 2 | whole document | 9b38295071c42fe489ec8f93e117b31eda11355b5a95e3fe388eeee69601c8c9 | - | 3525d47f51cb713591081610a862cae77eff08a8aa7e2064a96b15cee4fd5cb9 |
+| i1040sc | 2025 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | cited pages | dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a | 2, 3, 4, 5, 6, 7, 8, 9, 10, 13, 14, 15 | 616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918 |
+| i1040sse | 2025 | 1, 2, 3, 4, 5 | whole document | bd4768e77e9087e707701447574c3fd8b1b6ac8deca77fcf2e1bce4c50b7db28 | 1, 2, 3, 4, 5 | 6cb68f929e214450ea7ffa33648d5602e2431f38e91c7a6c83dfbee0ab23f08c |
+| f1040sse | 2025; created 2025-05-07 | 1, 2 | whole document | d214b41a4e42da1953a1ee216b6f9d263be284a90cf9f7f28dcb87cd0e9913e6 | - | fbeaf5e9b8509f8fe754b52a6b5a643934ae2ff1a6f76e6e69af8be42fcd2cdd |
+| f1040sc | 2025; created 2025-04-03 | 1, 2 | whole document | ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022 | - | 44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376 |
+| iw2w3 | 2025; printed date 2025-02-19 | 18 | cited pages | 27ad850a44d58d9186afcccb33b8a32f4747911e2b1b3138de515f44d4de33f3 | 18 | 3876738db222e8abe6103f29d8a8654a3139b9896f97e325d50e80b87ed5b26a |
+| f7206 | 2025; created 2025-10-02 | 1 | whole document | 1f54af11e092a24258ac71f29d2bcfeeda1d6100ca332357d4569eea889e1dbb | - | e3b265efad583dd859c584d4e7e8a17d7b6e927878922ab5f020e2ff79a18d87 |
+| i4562 | 2025 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
+| p946 | For use in preparing 2025 returns | 17, 18, 19, 31, 32, 33, 34, 37, 39, 41, 59, 61, 62, 63, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 17, 18, 19, 31, 32, 33, 34, 37, 39, 41, 63 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
+| i7206 | 2025 | 1, 2 | whole document | 88aebffe01e22b57dadeb703483459075718cb0b2514fe8f00185975cfbeef3a | 1, 2 | 5bfa308e7e4634d4a0162d76b4af6a4182b8539a390109360875303222231cfe |
+| f4562 | 2025; created 2025-10-09 | 1, 2, 3 | whole document | 71e2ace527072aaa7293e77897bb4ab8e473fa9c47b6b1ccb977fdc58a93bc2d | - | a1330c49d931e7ecdc867aef2d9e01390fc7b4d7e9321943a21ed0f8e883ed18 |
+| n-25-05 | Notice 2025-5 | 1, 2, 3, 4, 5 | whole document | 394f6b5ffb7c30e745322f0f20d9137608b1e2429fc4c76b06dedd690d4fb6e3 | - | 349e2797f87c588214722bcd22b7ec317c86c90a255ec8496941ac0c09909a8d |
+| p560 | For use in preparing 2025 returns | 7, 8, 9, 10, 11, 14, 15, 16, 17, 38, 39, 40 | cited pages | 38bbfa2efb2894e2527d66cd3478f33c6ceae4b777f78674c22bec16db9809aa | 7, 8, 9, 10, 11, 14, 15, 16, 17, 38, 40 | 7ef279c8f34addc2ff13420e35fab4a092bf8027f53907c28a5f46d2c21da737 |
+| p575 | None | 35 | pages named by another document's citation | 4d6ee3802a2906a4633dcfc104aa33bb3d9ddedebddc9eadbd0393cfdb61e07b | 35 | 3962801dde168fda9f4ee239245d9746b12e2d60bf358b25186ae4a57aa5b837 |
+| i8606 | 2025 | 9 | pages named by another document's citation | 242e712835ef634f3af8f1d0f19435b236e9c54b80921d6017c153b3e6c2aec6 | 9 | 805e59f2458d33a3fc0a1d17ebede2ecd59e18d911069bbe84987e53e297ec79 |
+| i8960 | 2025; printed date 2026-02-04 | 22 | pages named by another document's citation | fcae098ebc1ad79343de101a66765d3b3597f664dc744de3a7588be123c900a1 | - | d6dc1f475c511790abb02d6d6cfff554a59b40c0da1c56eb2f26af4e3cb7fa51 |
+| p463 | For use in preparing 2025 returns | 25, 26 | pages named by another document's citation | 153efad2a94bcccadf643b0f28f913d74b7d70b727f73eca540a2ce4d32bbfda | 25, 26 | a0b14576fdb49a7ba3e7a90092c1b8f6b8ba33889c8c35da5629156346581326 |
+| p538 | None | 17 | pages named by another document's citation | 4186d7aaa8f711c9a524b87fac1e3df05640b6d66130093b2469480acb06ef6c | 17 | f500211df18a4aafd843e48bbad4b9102c598cf5ccc0fae96c7814a4bef0ae00 |
+
+##### Raw response
+
+```yaml
+```yaml
+lines:
+  - key: "credit_disallowed"
+    status: MATCH
+    reason: "The question follows the IRS triggers. For the EIC: \"your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error.\" For CTC/ACTC/ODC: \"for a year after 2015 was denied or reduced for any reason other than a math or clerical error.\" It also covers the 2-year (reckless or intentional disregard) and 10-year (fraud) disallowance periods. It is a fact question, so the Form 8862 exceptions are not needed here."
+  - key: "no"
+    status: MATCH
+    reason: "This is a constant false used as the 'otherwise' branch of the choices below. No IRS line corresponds to it."
+  - key: "eic_above_zero"
+    status: UNCLEAR
+    reason: "The label means Worksheet A line 6 (\"This is your earned income credit\"). However, the glossary lists two different 'eic line 6' entries. The other is \"Worksheet B, line 6. Enter your total earned income from Part 4, line 4b.\" The text cannot show which one eic.line6 resolves to. If it is the Worksheet B earned-income line, the test is not 'credit above zero'. Self-employed filers figure the credit on Worksheet B, not Worksheet A."
+  - key: "eic_claimed"
+    status: MATCH
+    reason: "Steps 1 to 5 lead to Step 6 and the worksheet; a credit above zero means the EIC is taken. The value is false when any Step 1–5 question stops the filer (\"You can't take the credit\"). This depends on eic_above_zero reading the actual credit line."
+  - key: "claims_8862_credit"
+    status: MATCH
+    reason: "Schedule 8812 line 12 says: \"Is the amount on line 8 more than the amount on line 11? No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit.\" So line 8 > line 11 shows these credits are figured. That condition is OR'd with the EIC being claimed."
+  - key: "credit_disallowed_if_claimed"
+    status: MATCH
+    reason: "The prior-disallowance question is asked only when a credit that Form 8862 can govern is claimed. Otherwise the value is false, which is consistent with the Form 8862 who-must-file rules for EIC and CTC/ACTC/ODC."
+  - key: "ctc_disallowed_claim"
+    status: MATCH
+    reason: "The computation matches its label: some earlier credit was reduced or disallowed, AND 8812 line 8 > line 11. As a Form 8862 trigger for the CTC, it is broader than the IRS rule. That rule turns only on whether \"your child tax credit..., additional child tax credit, or credit for other dependents for a year after 2015 was denied or reduced.\" An EIC-only disallowance also sets this value."
+  - key: "eic_disallowed_claim"
+    status: MATCH
+    reason: "The computation matches its label: the EIC is claimed (Steps 1–5 passed, credit above zero) AND some earlier credit was disallowed. As an EIC Form 8862 trigger, it is broader than the IRS rule (\"if your EIC for a year after 1996 was reduced or disallowed\"), since a CTC-only disallowance also sets it. It also does not apply the listed exceptions (Form 8862 previously filed and EIC allowed; no-qualifying-child case)."
+```
+```
+
+#### Pass c7c3bf2210c2
+
+| field | value |
+| --- | --- |
+| date | 2026-11-07 |
+| review scope | lines eic_above_zero, eic_claimed, claims_8862_credit, credit_disallowed_if_claimed, ctc_disallowed_claim, eic_disallowed_claim |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | c7c3bf2210c2c16f8c9b4b1aaf6deaaab0db532465f0396ba99432f6b305e0ba |
+| prompt policy | render-source-comparison-v2+lines-v1 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| subject sha256 | 7c1990f745c4a5cc4c20c5827dcce7cf08b0ea2880e60d61ed47f38b40b537c4 |
+| receipt | .transcription/household.render.lines-8229d0a58f9c |
+| lines judged | 6 |
+| match / mismatch / unclear / missing | 6 / 0 / 0 / 0 |
+| verdicts for lines not in the form | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i1040gi | 2025; printed date 2026-02-25 | 36, 39, 40, 41, 42, 43, 44, 45, 46, 47, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 93, 94, 95, 117 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 36, 39, 40, 41, 42, 43, 44, 45, 93, 95, 117 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| i1040s8812 | 2025; printed date 2026-01-23 | 2, 8 | cited pages | fd50a5266cc20aa5a31de0535658793f75c7abbb12fd83b65dc5b21c6ede2765 | 2 | e6ba91f54df679c9c19c23169c369f14bff012ba2fe110c3973bde59676c1d45 |
+| f1040sa | 2025; created 2025-11-20 | 1 | whole document | 225b3ec4aa83600179f177807a26d8976343af5c2664b8eb6614fb6abcf8fadd | - | bfe55c01a948d1f96bacf363a8b5cbb1bf7273cbc8672598f1a66c31504a59fe |
+| f1040 | 2025; created 2025-09-05 | 1, 2 | whole document | ac32f00aed489e0722d0b409c0eb12915801d66f3a2fab05bc8391af61426383 | - | 72926cc2b256a68592e6cf0f2aa384ef8371eec968a0c8c62e050edf5bfea76a |
+| f1040s8812 | 2025; created 2025-07-30 | 1, 2 | whole document | 9b38295071c42fe489ec8f93e117b31eda11355b5a95e3fe388eeee69601c8c9 | - | 3525d47f51cb713591081610a862cae77eff08a8aa7e2064a96b15cee4fd5cb9 |
+| i1040sc | 2025 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | cited pages | dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a | 2, 3, 4, 5, 6, 7, 8, 9, 10, 13, 14, 15 | 616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918 |
+| i1040sse | 2025 | 1, 2, 3, 4, 5 | whole document | bd4768e77e9087e707701447574c3fd8b1b6ac8deca77fcf2e1bce4c50b7db28 | 1, 2, 3, 4, 5 | 6cb68f929e214450ea7ffa33648d5602e2431f38e91c7a6c83dfbee0ab23f08c |
+| f1040sse | 2025; created 2025-05-07 | 1, 2 | whole document | d214b41a4e42da1953a1ee216b6f9d263be284a90cf9f7f28dcb87cd0e9913e6 | - | fbeaf5e9b8509f8fe754b52a6b5a643934ae2ff1a6f76e6e69af8be42fcd2cdd |
+| f1040sc | 2025; created 2025-04-03 | 1, 2 | whole document | ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022 | - | 44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376 |
+| iw2w3 | 2025; printed date 2025-02-19 | 18 | cited pages | 27ad850a44d58d9186afcccb33b8a32f4747911e2b1b3138de515f44d4de33f3 | 18 | 3876738db222e8abe6103f29d8a8654a3139b9896f97e325d50e80b87ed5b26a |
+| f7206 | 2025; created 2025-10-02 | 1 | whole document | 1f54af11e092a24258ac71f29d2bcfeeda1d6100ca332357d4569eea889e1dbb | - | e3b265efad583dd859c584d4e7e8a17d7b6e927878922ab5f020e2ff79a18d87 |
+| i4562 | 2025 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
+| p946 | For use in preparing 2025 returns | 17, 18, 19, 31, 32, 33, 34, 37, 39, 41, 59, 61, 62, 63, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 17, 18, 19, 31, 32, 33, 34, 37, 39, 41, 63 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
+| i7206 | 2025 | 1, 2 | whole document | 88aebffe01e22b57dadeb703483459075718cb0b2514fe8f00185975cfbeef3a | 1, 2 | 5bfa308e7e4634d4a0162d76b4af6a4182b8539a390109360875303222231cfe |
+| f4562 | 2025; created 2025-10-09 | 1, 2, 3 | whole document | 71e2ace527072aaa7293e77897bb4ab8e473fa9c47b6b1ccb977fdc58a93bc2d | - | a1330c49d931e7ecdc867aef2d9e01390fc7b4d7e9321943a21ed0f8e883ed18 |
+| n-25-05 | Notice 2025-5 | 1, 2, 3, 4, 5 | whole document | 394f6b5ffb7c30e745322f0f20d9137608b1e2429fc4c76b06dedd690d4fb6e3 | - | 349e2797f87c588214722bcd22b7ec317c86c90a255ec8496941ac0c09909a8d |
+| p560 | For use in preparing 2025 returns | 7, 8, 9, 10, 11, 14, 15, 16, 17, 38, 39, 40 | cited pages | 38bbfa2efb2894e2527d66cd3478f33c6ceae4b777f78674c22bec16db9809aa | 7, 8, 9, 10, 11, 14, 15, 16, 17, 38, 40 | 7ef279c8f34addc2ff13420e35fab4a092bf8027f53907c28a5f46d2c21da737 |
+| p575 | None | 35 | pages named by another document's citation | 4d6ee3802a2906a4633dcfc104aa33bb3d9ddedebddc9eadbd0393cfdb61e07b | 35 | 3962801dde168fda9f4ee239245d9746b12e2d60bf358b25186ae4a57aa5b837 |
+| i8606 | 2025 | 9 | pages named by another document's citation | 242e712835ef634f3af8f1d0f19435b236e9c54b80921d6017c153b3e6c2aec6 | 9 | 805e59f2458d33a3fc0a1d17ebede2ecd59e18d911069bbe84987e53e297ec79 |
+| i8960 | 2025; printed date 2026-02-04 | 22 | pages named by another document's citation | fcae098ebc1ad79343de101a66765d3b3597f664dc744de3a7588be123c900a1 | - | d6dc1f475c511790abb02d6d6cfff554a59b40c0da1c56eb2f26af4e3cb7fa51 |
+| p463 | For use in preparing 2025 returns | 25, 26 | pages named by another document's citation | 153efad2a94bcccadf643b0f28f913d74b7d70b727f73eca540a2ce4d32bbfda | 25, 26 | a0b14576fdb49a7ba3e7a90092c1b8f6b8ba33889c8c35da5629156346581326 |
+| p538 | None | 17 | pages named by another document's citation | 4186d7aaa8f711c9a524b87fac1e3df05640b6d66130093b2469480acb06ef6c | 17 | f500211df18a4aafd843e48bbad4b9102c598cf5ccc0fae96c7814a4bef0ae00 |
+
+##### Raw response
+
+```yaml
+```yaml
+lines:
+  - key: "eic_above_zero"
+    status: MATCH
+    reason: "Worksheet A line 6 is 'This is your earned income credit', and a credit above zero is what is claimed on line 27a. Testing eic line 6 > $0 matches the label. Worksheet B line 11 is not among the pages given, but the restatement only compares whichever line-6 credit the program figures with zero."
+  - key: "eic_claimed"
+    status: MATCH
+    reason: "The IRS flow lets the credit be figured in Step 6 only after Steps 1 to 5 are passed in order. Choosing the above-zero test when eic.eligible is true, and false otherwise, matches that flow. The Step 1 q4, Step 2 q3/Form 4797 and Step 5 clergy branches are excluded by named refusals."
+  - key: "claims_8862_credit"
+    status: MATCH
+    reason: "Schedule 8812 line 12 asks 'Is the amount on line 8 more than the amount on line 11?' and, if No, says 'You cannot take the child tax credit, credit for other dependents, or additional child tax credit.' So line 8 > line 11, or an EIC claim, identifies a return claiming one of these credits."
+  - key: "credit_disallowed_if_claimed"
+    status: MATCH
+    reason: "The input combines the two IRS Form 8862 triggers. One is 'EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error'. The other is 'child tax credit..., additional child tax credit, or credit for other dependents for a year after 2015 was denied or reduced', together with the 2- and 10-year bans. Asking it only when such a credit is claimed, and false otherwise, matches the label."
+  - key: "ctc_disallowed_claim"
+    status: MATCH
+    reason: "The line is computed as its label states: a CTC/ODC figured (line 8 > line 11) and the combined disallowance answer is yes. The combined question is broader than the IRS CTC rule, which only counts CTC, ACTC or ODC history after 2015. It can therefore only over-include cases, which is acceptable if the line is used as a refusal gate."
+  - key: "eic_disallowed_claim"
+    status: MATCH
+    reason: "The line is computed as its label states: EIC claimed and the combined disallowance answer is yes. The combined question is broader than the IRS EIC rule, which only counts EIC reduced or disallowed after 1996 or an EIC disallowance period. It can therefore only over-include cases, which is acceptable if the line is used as a refusal gate."
 ```
 ```
 

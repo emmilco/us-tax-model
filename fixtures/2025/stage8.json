@@ -15858,7 +15858,7 @@
         },
         "f1040.line28": {
           "kind": "refusal",
-          "gate": "s8812.puerto_rico",
+          "gate": "s8812.puerto_rico_if_child",
           "form": "Schedule 8812 Part II-B for bona fide residents of Puerto Rico",
           "remedy": "The Puerto Rico path through Part II-B is outside this tool.",
           "cite": {
@@ -15871,7 +15871,7 @@
         },
         "f1040.line34": {
           "kind": "refusal",
-          "gate": "s8812.puerto_rico",
+          "gate": "s8812.puerto_rico_if_child",
           "form": "Schedule 8812 Part II-B for bona fide residents of Puerto Rico",
           "remedy": "The Puerto Rico path through Part II-B is outside this tool.",
           "cite": {
@@ -15884,7 +15884,7 @@
         },
         "f1040.line37": {
           "kind": "refusal",
-          "gate": "s8812.puerto_rico",
+          "gate": "s8812.puerto_rico_if_child",
           "form": "Schedule 8812 Part II-B for bona fide residents of Puerto Rico",
           "remedy": "The Puerto Rico path through Part II-B is outside this tool.",
           "cite": {
@@ -16069,7 +16069,7 @@
         },
         "s8812.line27": {
           "kind": "refusal",
-          "gate": "s8812.puerto_rico",
+          "gate": "s8812.puerto_rico_if_child",
           "form": "Schedule 8812 Part II-B for bona fide residents of Puerto Rico",
           "remedy": "The Puerto Rico path through Part II-B is outside this tool.",
           "cite": {

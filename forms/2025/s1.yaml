@@ -1023,6 +1023,7 @@ form:
     printed: (helper)
     label: Jury duty pay you gave to your employer because your employer paid your salary while you served on the jury
     type: NonNegDollars
+    gated_by: s1.jury_to_employer_if_pay
     expr:
       op: input
       source: The part of the jury duty pay on line 8h that you (or, on a joint return, your spouse) gave to your employer
@@ -1032,6 +1033,44 @@ form:
       locator: 'p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer because your employer paid
         your salary while you served on the jury"; p525 p. 34, Jury duty, "you can deduct the amount turned over to your
         employer as an adjustment to income"'
+  - id: s1.has_jury_pay
+    printed: (helper)
+    label: Jury duty pay on line 8h is more than zero
+    type: Bool
+    expr:
+      op: test
+      gt:
+      - s1.line8h
+      - s1.zero
+    cite:
+      doc: i1040gi
+      locator: 'p. 91, Line 8h, "Enter any jury duty pay and see the instructions for line 24a"; p. 99, Line 24a, "Enter your
+        jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the
+        jury"'
+  - id: s1.jury_to_employer_if_pay
+    printed: (helper)
+    label: Jury duty pay you gave to your employer, asked only when there is jury duty pay on line 8h (zero otherwise)
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+      - guard:
+          op: test
+          eq:
+          - s1.has_jury_pay
+          - const: true
+        then: s1.jury_to_employer
+      - guard:
+          op: test
+          eq:
+          - s1.has_jury_pay
+          - const: false
+        then: s1.zero
+    cite:
+      doc: i1040gi
+      locator: 'p. 91, Line 8h, "Enter any jury duty pay and see the instructions for line 24a"; p. 99, Line 24a, "Enter your
+        jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the
+        jury"'
   - id: s1.jury_over
     printed: (gate)
     label: The jury duty pay given to the employer is more than the jury duty pay on line 8h
@@ -1039,7 +1078,7 @@ form:
     expr:
       op: test
       gt:
-      - s1.jury_to_employer
+      - s1.jury_to_employer_if_pay
       - s1.line8h
     cite:
       doc: i1040gi
@@ -1051,7 +1090,7 @@ form:
     type: NonNegDollars
     expr:
       op: copy
-      from: s1.jury_to_employer
+      from: s1.jury_to_employer_if_pay
     cite:
       doc: f1040s1
       locator: Schedule 1 (2025), line 24a; i1040gi p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your

@@ -468,13 +468,66 @@ form:
     - id: s8812.puerto_rico
       printed: (helper)
       type: Bool
-      label: Bona fide resident of Puerto Rico?
+      gated_by: s8812.puerto_rico_if_child
+      label: Bona fide resident of Puerto Rico (you, or your spouse on a joint return)?
       expr:
         op: input
-        source: Were you a bona fide resident of Puerto Rico in 2025?
+        source: Were you (or, on a joint return, your spouse) a bona fide resident of Puerto Rico in 2025?
       cite:
         doc: f1040s8812
         locator: Schedule 8812 (2025), after line 20, "If you are a bona fide resident of Puerto Rico, go to line 21"
+    - id: s8812.no
+      printed: (helper)
+      type: Bool
+      label: Year parameter s8812.no (false)
+      expr:
+        op: param
+        ref: s8812.no
+      cite:
+        doc: i1040s8812
+        locator: 'p. 3, Bona Fide Residents of Puerto Rico, "If you were a bona fide resident of Puerto Rico, you may be eligible to claim the ACTC if you had at least one qualifying child"'
+    - id: s8812.has_qualifying_child
+      printed: (helper)
+      type: Bool
+      label: At least one qualifying child under age 17 with the required social security number (line 4 is more than zero)
+      expr:
+        op: test
+        gt:
+          - s8812.line4
+          - const: 0
+            type: Count
+      cite:
+        doc: i1040s8812
+        locator: 'p. 3, Bona Fide Residents of Puerto Rico, "If you were a bona fide resident of Puerto Rico, you may be eligible to claim the ACTC if you had at least one qualifying child"'
+      note: With line 4 zero, line 16b is zero ("If zero, stop here; you cannot claim the additional child tax credit") and
+        Credit Limit Worksheet B line 2 is zero, so its line 13 ("Enter the smaller of line 2 or line 12", i1040s8812 p. 6) is
+        zero whatever line 11 is; the Puerto Rico path changes no amount.
+    - id: s8812.puerto_rico_if_child
+      printed: (helper)
+      type: Bool
+      label: Whether you were a bona fide resident of Puerto Rico, asked only with a qualifying child on line 4 (false otherwise,
+        where line 16b and Credit Limit Worksheet B line 2 are zero and the Puerto Rico path changes no amount)
+      expr:
+        op: choose
+        alternatives:
+          - guard:
+              op: test
+              eq:
+                - s8812.has_qualifying_child
+                - const: true
+            then: s8812.puerto_rico
+          - guard:
+              op: test
+              eq:
+                - s8812.has_qualifying_child
+                - const: false
+            then: s8812.no
+      cite:
+        doc: i1040s8812
+        locator: 'p. 3, Bona Fide Residents of Puerto Rico, "If you were a bona fide resident of Puerto Rico, you may be eligible to claim the ACTC if you had at least one qualifying child"'
+      note: With line 4 zero, line 16b is zero ("If zero, stop here; you cannot claim the additional child tax credit") and
+        Credit Limit Worksheet B line 2 is zero, so its line 13 ("Enter the smaller of line 2 or line 12", i1040s8812 p. 6) is
+        zero whatever line 11 is; the Puerto Rico path changes no amount.
     - id: s8812.eiw_1a
       printed: (helper)
       type: NonNegDollars
@@ -1025,7 +1078,7 @@ form:
           Part II-B and enter the amount from line 17 on line 27. Otherwise, go to line 21", "Next, enter the smaller
           of line 17 or line 26 on line 27", "This is your additional child tax credit"
       refuses:
-        - when: s8812.puerto_rico
+        - when: s8812.puerto_rico_if_child
           form: Schedule 8812 Part II-B for bona fide residents of Puerto Rico
           remedy: The Puerto Rico path through Part II-B is outside this tool.
           cite:
@@ -1303,7 +1356,7 @@ form:
         locator: p. 5, Credit Limit Worksheet B, line 6, "No. If you are a bona fide resident of Puerto Rico and line 5 above
           is less than line 1 above, go to line 7. Otherwise, leave lines 7 through 10 blank, enter -0- on line 11"
       refuses:
-        - when: s8812.puerto_rico
+        - when: s8812.puerto_rico_if_child
           form: Credit Limit Worksheet B, line 6, for bona fide residents of Puerto Rico
           remedy: The Puerto Rico path through Credit Limit Worksheet B is outside this tool.
           cite:

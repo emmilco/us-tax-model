@@ -204,6 +204,15 @@
    "ruling": "Ruling: refusal located elsewhere; project retained. Lines 24b to 24z are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately\", which lists jury duty pay you gave your employer, line 24a, among those asked), which refuses Form 1040 line 10, the line line 26 is entered on; within scope they are zero, as the line's citation says (f1040s1, line 25, \"Add lines 24a through 24z\"). Line 24a is figured (decision D3)."
   },
   {
+   "printed": "25",
+   "restated": "Enter the amount from line 24a.",
+   "model": "The form says 'Total other adjustments. Add lines 24a through 24z,' but the restatement enters only line 24a. It leaves out lines 24b–24k and 24z, and no refusal names that exclusion.",
+   "ruling": "Ruling: scope; f1040s1 line 25, \"Add lines 24a through 24z\". Lines 24b to 24z are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (it lists jury duty pay given to the employer, line 24a, among the items asked separately); within scope they are zero, as the line's citation says. Line 24a is figured (decision D3). Same ruling as the earlier rounds; re-judged because line 24a now reads its gate line s1.jury_to_employer_if_pay. Project stands on the English.",
+   "context": "2e5ce5373743763500df344d5798a3526abddbbc0346432b909f901eb6cc3ab1",
+   "date": "2026-11-07",
+   "run": "212ac5b445e5eb5e3b71f4e19ef5484ed090c756433174e8c83cf410410e9645"
+  },
+  {
    "printed": "26",
    "restated": "Add line 11, line 13, and line 21.",
    "model": "The form says \"Add lines 11 through 23 and 25.\" The restatement adds only lines 11, 13 and 21 and has no refusal naming lines 12, 14–20, 22–23 and 25 as excluded.",

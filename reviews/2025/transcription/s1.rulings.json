@@ -45,6 +45,15 @@
    "context": "cf52b5b82eaefdc17c5fb53020a6dab28ac825051d33fc5bb8eea2bf3e93719f"
   },
   {
+   "printed": "24a",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"8h\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"line\": \"8h\"}], \"test\": \"lt\"}, \"then\": {\"input\": \"s1.jury_to_employer\"}}], \"op\": \"choose\"}",
+   "second": "{\"input\": \"s1.jury_to_employer\"}",
+   "ruling": "Ruling: ambiguity; amb.2025.jury_24a_cap. i1040gi p. 91, Line 8h, \"Enter any jury duty pay and see the instructions for line 24a\"; p. 99, Line 24a, \"Enter your jury duty pay if you gave the pay to your employer\"; p525 p. 34, Jury duty, \"Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h. If you must give the pay to your employer ... you can deduct the amount turned over to your employer\". The candidate reads the amount given to the employer directly; the project reads it through s1.jury_to_employer_if_pay, which asks it only when line 8h is above zero and is zero otherwise. They differ only where line 8h is zero and an amount given is entered, which the chosen reading of amb.2025.jury_24a_cap treats as an impossible entry (the pay given is part of the pay on line 8h); with line 8h zero the project no longer asks it. executable-triage-v2 (`../triage/s1.json`; 1,638 fixtures, 500 generated returns seed 20261026, 586 partial records): no value difference; 41 candidate-unknown (21 on completed returns, where line 8h is zero and the amount given is withheld) and 40 project-unknown, on incomplete or refused records. Project stands.",
+   "context": "4b2dc67a3c1284bfbd9ffdf9825834c041c32bcc87d7242c6ec55f8b8a54f53d",
+   "date": "2026-11-07",
+   "run": "c5beecd6ca67caf19cbe478a6e5be7c34d74d126b442a9bb7544de5ba2f65b05"
+  },
+  {
    "printed": "2a",
    "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": false}, {\"input\": \"s1.alimony\"}], \"test\": \"eq\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.alimony\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"s1.alimony_received\"}}], \"op\": \"choose\"}",
    "second": "{\"alternatives\": [{\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.alimony\"}], \"test\": \"eq\"}, \"then\": {\"input\": \"s1.alimony_received\"}}, {\"guard\": {\"args\": [{\"const\": true}, {\"input\": \"s1.alimony\"}], \"test\": \"ne\"}, \"then\": {\"const\": 0}}], \"op\": \"choose\"}",

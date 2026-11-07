@@ -11,11 +11,47 @@
    "context": "c9e490fe070734b59fab26b3b99b0acef73659e813676a911a5d7dc44630714f"
   },
   {
+   "printed": "ctc_disallowed_claim",
+   "restated": "s8812 line 8 > s8812 line 11 and helper \"Whether an earlier earned income credit, child tax credit, additional child tax credit or credit for other dependents was reduced or disallowed (or a disallowance period applies), asked only when the return claims one of these credits (false otherwise, where Form 8862 does not apply)\" = true",
+   "model": "It uses the combined any-credit disallowance answer. The IRS requires Form 8862 for CTC/ACTC/ODC only if 'your child tax credit ... additional child tax credit, or credit for other dependents for a year after 2015 was denied or reduced,' not merely because an EIC was disallowed.",
+   "ruling": "Ruling: scope; i1040gi p. 39, Form 8862, who must file, \"You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit\" ... \"for a year after 2015 was denied or reduced\"; i1040s8812 p. 2, Form 8862 may be required. The restatement is the gate as encoded: one combined question for the earlier earned income credit and child tax credit histories (household.credit_disallowed, T-101), so a Yes for an earned income credit disallowance alone also refuses Schedule 8812. That is a wider refusal only, never a wrong amount (a Yes refuses; Form 8862 and the disallowance periods are outside the tool). The line 8 more than line 11 test is unchanged from the earlier ruling (BUG-0350 review correction, accepted low). This round only moved the answer behind its gate line household.credit_disallowed_if_claimed. render MISMATCH. Project stands.",
+   "context": "ccf6342d01d2df7156bbb4d85cdc5d1d30488cdb1d40087534b5acbea2646eb1",
+   "date": "2026-11-07",
+   "run": "ea80ee7038b0b68eeb3e822092a2cb696c4ff9f61a8b829caa10da64f7e1df21"
+  },
+  {
    "printed": "ctc_ssn",
    "restated": "helper \"You, or your spouse if filing jointly, have an SSN valid for employment\" = true and helper \"Number of people on the return with an SSN valid for employment or an SSN or ITIN\" = helper \"Number of people on the return (you, and your spouse if filing jointly)\"",
    "model": "The IRS says 'To claim the child tax credit, you must have a valid SSN, which means it must be valid for employment' and 'If your qualifying child didn’t have an SSN valid for employment... you can’t claim the child tax credit for that child'; the restatement allows SSN or ITIN for each other person and does not check the qualifying children.",
    "ruling": "Ruling: model error; i1040gi p. 7, \"If you are filing a joint return, only one spouse is required to have a valid SSN in order to be eligible for the CTC and ACTC. The other spouse must have either an SSN or ITIN\" (amb.2025.ctc_spouse_itin_application). The helper is the filer-side test; the qualifying child's SSN valid for employment is tested per child in dependent.ctc_child, which the reviewer reads as missing here. Project stands.",
    "context": "1d0ffbd7e13b3cc8d0f91942e13336a011fbb6cbf9168ea885eeb4a990e2015d"
+  },
+  {
+   "printed": "eic_above_zero",
+   "restated": "eic line 6 (eic.line6) > eic helper \"No amount\"",
+   "model": "Worksheet B does not use line 11 here; the IRS text says 'enter the amount from line 4b on line 6 of this worksheet,' and Worksheet A line 6 is 'your earned income credit.'",
+   "ruling": "Ruling: model error; i1040gi p. 48, Worksheet B, Part 7, line 11, \"Look at the amounts on lines 10 and 7. Then, enter the smaller amount on line 11.\" and \"This is your earned income credit\" (Enter this amount on Form 1040 or 1040-SR, line 27a); p. 46, Worksheet A, line 6, \"This is your earned income credit\". The reviewer read Worksheet B line 6 (earned income, from line 4b) for line 11; Worksheet B line 11 is the credit, and eic.line6 is that credit for a filer who answered Yes to Step 5, question 2 (eic.line1 reads Worksheet B line 6 for that filer; eic.yaml, Worksheet A lines 2 to 6 are Worksheet B lines 7 to 11). Project stands on the English.",
+   "context": "ccf6342d01d2df7156bbb4d85cdc5d1d30488cdb1d40087534b5acbea2646eb1",
+   "date": "2026-11-07",
+   "run": "ea80ee7038b0b68eeb3e822092a2cb696c4ff9f61a8b829caa10da64f7e1df21"
+  },
+  {
+   "printed": "eic_claimed",
+   "restated": "Choose — [eic helper \"Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)\" = true → helper \"The earned income credit figured in Step 6 (Worksheet A line 6, or Worksheet B line 11 for a filer who answered Yes to Step 5, question 2) is more than zero\"] [eic helper \"Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)\" = false → helper \"Year parameter household.no (false)\"]",
+   "model": "It repeats the Worksheet B line 11 error and gates on the Worksheet A Step 6 path; the IRS text says a filer answering Yes to Step 5 question 2 should 'Skip question 3 and Step 6; go to Worksheet B.'",
+   "ruling": "Ruling: model error; i1040gi p. 48, Worksheet B, Part 7, line 11, \"This is your earned income credit\"; p. 46, Worksheet A, line 6, \"This is your earned income credit\". As for eic_above_zero: Worksheet B line 11 is the credit of a filer who goes to Worksheet B after Step 5, question 2, and the label names it as the alternative to Worksheet A line 6; Step 6 for that filer is figured on Worksheet B, which the project computes through eic.line6. Project stands on the English.",
+   "context": "ccf6342d01d2df7156bbb4d85cdc5d1d30488cdb1d40087534b5acbea2646eb1",
+   "date": "2026-11-07",
+   "run": "ea80ee7038b0b68eeb3e822092a2cb696c4ff9f61a8b829caa10da64f7e1df21"
+  },
+  {
+   "printed": "eic_disallowed_claim",
+   "restated": "helper \"The earned income credit is claimed (Steps 1 to 5 are passed and the credit figured in Step 6, Worksheet A line 6 or Worksheet B line 11, is more than zero; false when Steps 1 to 5 are not passed)\" = true and helper \"Whether an earlier earned income credit, child tax credit, additional child tax credit or credit for other dependents was reduced or disallowed (or a disallowance period applies), asked only when the return claims one of these credits (false otherwise, where Form 8862 does not apply)\" = true",
+   "model": "It uses the combined any-credit disallowance answer. The IRS says Form 8862 for EIC applies when 'your EIC for a year after 1996 was reduced or disallowed,' not when only a child-tax credit was disallowed; it also repeats the Worksheet B line 11 error.",
+   "ruling": "Ruling: scope; i1040gi p. 43, Form 8862, who must file, \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error\". The restatement is the gate as encoded: one combined question for the earlier earned income credit and child tax credit histories (household.credit_disallowed, T-101), so a Yes for a child tax credit disallowance alone also refuses the earned income credit. That is a wider refusal only, never a wrong amount. The Worksheet B point is a model error as ruled on eic_above_zero (i1040gi p. 48, Worksheet B line 11, \"This is your earned income credit\"). render MISMATCH. Project stands.",
+   "context": "ccf6342d01d2df7156bbb4d85cdc5d1d30488cdb1d40087534b5acbea2646eb1",
+   "date": "2026-11-07",
+   "run": "ea80ee7038b0b68eeb3e822092a2cb696c4ff9f61a8b829caa10da64f7e1df21"
   },
   {
    "printed": "filer_under16",

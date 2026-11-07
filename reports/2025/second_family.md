@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 135 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 7.1% (290/4058 second-family lines judged; pending reviews are provisional); 63 eligible, 72 pending; raw agreement 81.9% (diagnostic only); current independence yield 147 line(s); both families disputed 522
+Summary: 135 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 7.2% (292/4038 second-family lines judged; pending reviews are provisional); 62 eligible, 73 pending; raw agreement 81.8% (diagnostic only); current independence yield 151 line(s); both families disputed 522
 
 Written by `tools/transcription/compare_families.py` on 2026-11-07 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -88,7 +88,7 @@ Pending f8995a [deepseek]: model-error noise above 10%; no passing current expre
 Pending ftc [deepseek]: model-error noise above 10%; pass d9bfe3c08a2f of claude: no verified complete input context in the request; pass d9bfe3c08a2f of deepseek: no verified complete input context in the request; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending g28 [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending gift [deepseek]: no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
-Pending household [deepseek]: model-error noise above 10%; no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
+Pending household [deepseek]: stale subject: deepseek; model-error noise above 10%; no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: the transcription log is stale for lines changed or not yet reviewed: household.ctc_disallowed_claim, household.eic_disallowed_claim; rerun them: transcribe.py --form household --lines auto.
 Pending interest [deepseek]: transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending ira [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending ltc [deepseek]: no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
@@ -101,7 +101,7 @@ Pending refund [deepseek]: model-error noise above 10%; no verified current requ
 Pending s179 [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending s1a [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending s2 [deepseek]: 1 open, unclassified or interface-gap rulings; model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
-Pending s8812 [deepseek]: model-error noise above 10%; no passing current expression type validation: claude, deepseek; no verified current request context for claude: current expression/refusal validation fails; no verified current request context for deepseek: current expression/refusal validation fails.
+Pending s8812 [deepseek]: stale subject: deepseek; model-error noise above 10%; no passing current expression type validation: claude, deepseek; no verified current request context for claude: current expression/refusal validation fails; no verified current request context for deepseek: the transcription log is stale for lines changed or not yet reviewed: 27, (CLW B 11); rerun them: transcribe.py --form s8812 --lines auto.
 Pending sales [deepseek]: no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
 Pending sb [deepseek]: no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending scope [deepseek]: no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
@@ -667,7 +667,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | ftc | deepseek (deepseek-flash) | 17 | 15 | 88.2% | 1/17 (5.9%) | pass | 1 | 1 | 0 | 0 |
 | g28 | deepseek (deepseek-flash) | 7 | 3 | 42.9% | 0/7 (0.0%) | pass | 0 | 4 | 0 | 0 |
 | gift | deepseek (deepseek-flash) | 4 | 4 | 100.0% | 0/4 (0.0%) | pending | 0 | 0 | 0 | 1 |
-| household | deepseek (deepseek-flash) | 48 | 41 | 85.4% | 2/48 (4.2%) | pending | 7 | 0 | 0 | 0 |
+| household | deepseek (deepseek-flash) | 53 | 42 | 79.2% | 4/53 (7.5%) | pending | 11 | 0 | 0 | 0 |
 | interest | deepseek (deepseek-flash) | 2 | 2 | 100.0% | 0/2 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | ira | deepseek (deepseek-flash) | 21 | 13 | 61.9% | 0/21 (0.0%) | pending | 2 | 4 | 2 | 0 |
 | ltc | deepseek (deepseek-flash) | 2 | 2 | 100.0% | 0/2 (0.0%) | pass | 0 | 0 | 0 | 0 |
@@ -701,7 +701,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | tipjob | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 4 | 22.2% | 0/18 (0.0%) | pass | 5 | 8 | 1 | 0 |
 | w2 | deepseek (deepseek-flash) | 17 | 16 | 94.1% | 1/17 (5.9%) | pass | 1 | 0 | 0 | 0 |
-| **all** | | 1328 | 1160 | 87.3% | | | 73 | 71 | 24 | 3 |
+| **all** | | 1333 | 1161 | 87.1% | | | 77 | 71 | 24 | 3 |
 
 Pending asset [deepseek]: 2 missing expected lines.
 Pending f8606 [deepseek]: 1 open, unclassified or interface-gap rulings.
@@ -751,7 +751,11 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | f8995 | deepseek | 11 | MISMATCH | IRS line 11 instructions compute 'Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b' and do not provide a zero floor; the restatement adds an 'If zero or less, enter -0-' condition. |
 | f8995a | deepseek | 33 | MISMATCH | The restatement adds an 'if zero or less, enter -0-' floor, but the IRS instruction is only 'Form 1040 or 1040-SR, line 11a, minus lines 12e and 13b'; no zero floor is stated for line 33. |
 | ftc | deepseek | elect | MISMATCH | IRS says: "You can’t carry over to or from any other year any foreign taxes paid or accrued in a tax year to which the election applies (but carryovers to and from other years are unaffected)." The restatement's "no carryover to or from this election year" is broader/different. |
+| household | deepseek | ctc_disallowed_claim | MISMATCH | It uses the combined any-credit disallowance answer. The IRS requires Form 8862 for CTC/ACTC/ODC only if 'your child tax credit ... additional child tax credit, or credit for other dependents for a year after 2015 was denied or reduced,' not merely because an EIC was disallowed. |
 | household | deepseek | ctc_ssn | MISMATCH | The IRS says 'To claim the child tax credit, you must have a valid SSN, which means it must be valid for employment' and 'If your qualifying child didn’t have an SSN valid for employment... you can’t claim the child tax credit for that child'; the restatement allows SSN or ITIN for each other person and does not check the qualifying children. |
+| household | deepseek | eic_above_zero | MISMATCH | Worksheet B does not use line 11 here; the IRS text says 'enter the amount from line 4b on line 6 of this worksheet,' and Worksheet A line 6 is 'your earned income credit.' |
+| household | deepseek | eic_claimed | MISMATCH | It repeats the Worksheet B line 11 error and gates on the Worksheet A Step 6 path; the IRS text says a filer answering Yes to Step 5 question 2 should 'Skip question 3 and Step 6; go to Worksheet B.' |
+| household | deepseek | eic_disallowed_claim | MISMATCH | It uses the combined any-credit disallowance answer. The IRS says Form 8862 for EIC applies when 'your EIC for a year after 1996 was reduced or disallowed,' not when only a child-tax credit was disallowed; it also repeats the Worksheet B line 11 error. |
 | household | deepseek | filing_status_conflict | MISMATCH | The helper omits a married-filing-separately return when the filer was not married at year end, although the IRS says 'Check the Married filing separately box ... if you are married at the end of 2025'; it also does not flag single when the spouse died in 2025, whom the IRS treats as married for the whole year. |
 | household | deepseek | home_cost | MISMATCH | The IRS note says TANF used 'to support another person' is considered support you provided for that person, and amounts in a child's or qualifying person's name are considered paid by the child; the restatement instead treats TANF used for the home as paid by you and refers to any person living in the home. |
 | household | deepseek | hsa_share_sum | MISMATCH | IRS line 6 Step 3 says 'Subtract the part of the contribution limit allocated to your spouse in Step 2 from the amount determined in Step 1'; line 6 is one spouse's share, not the sum of both spouses' shares. |
@@ -836,7 +840,7 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | retirement | deepseek | (SMW 4) | MISMATCH | MISMATCH | Table 1 has separate numbers for an annuity starting date before November 19, 1996 (300/260/240/170/120) and after November 18, 1996 (360/310/260/210/160); the restatement uses only the after-November-18-1996 numbers. |
 | retirement | deepseek | (SMW 8) | MISMATCH | MISMATCH | For a pre-1987 annuity starting date the worksheet says to enter the line 5 amount on line 8, not the smaller of line 5 or line 7 as the restatement does. |
 | s1 | deepseek | 10 | MISMATCH | MISMATCH | IRS line 10 says 'Combine lines 1 through 7 and 9.' The restatement adds only lines 1, 2a, 3, 7, and 9, omitting lines 4 through 6. |
-| s1 | deepseek | 25 | MISMATCH | MISMATCH | IRS line 25 says 'Total other adjustments. Add lines 24a through 24z.' The restatement enters only line 24a, omitting lines 24b through 24z. |
+| s1 | deepseek | 25 | MISMATCH | MISMATCH | The IRS line says "Total other adjustments. Add lines 24a through 24z," but the restatement says to enter only the amount from line 24a, omitting lines 24b through 24z. |
 | s1 | deepseek | 26 | MISMATCH | MISMATCH | IRS line 26 says 'Add lines 11 through 23 and 25.' The restatement omits lines 12, 14, and 23 (among others) without a refusal naming them. |
 | s179 | deepseek | 1 | UNCLEAR | MISMATCH | Worksheet 1 says to "Enter the smaller of line 1 or line 2 here" and then "Enter the amount from line 3 here and on Form 4562, line 1"; the restatement enters only the $2,500,000 maximum. |
 | s179 | deepseek | 13 | UNCLEAR | MISMATCH | The line 5 instructions say: "If line 5 is zero... enter the carryover of any disallowed deduction from 2024 ... on line 13." The restatement leaves line 10 out when line 5 is zero and then computes line 13 from lines 9 and 10 only, so it drops that carryover. |
@@ -897,11 +901,11 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | retirement | deepseek (deepseek-flash) | 50 | 50 | 100.0% | 0/50 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | s2 | deepseek (deepseek-flash) | 36 | 36 | 100.0% | 0/36 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | s3 | deepseek (deepseek-flash) | 30 | 30 | 100.0% | 0/30 (0.0%) | pending | 0 | 0 | 0 | 10 |
-| s8812 | deepseek (deepseek-flash) | 129 | 129 | 100.0% | 0/129 (0.0%) | pass | 0 | 0 | 0 | 5 |
+| s8812 | deepseek (deepseek-flash) | 104 | 104 | 100.0% | 0/104 (0.0%) | pending | 0 | 0 | 0 | 12 |
 | sd | deepseek (deepseek-flash) | 41 | 41 | 100.0% | 0/41 (0.0%) | pending | 0 | 0 | 0 | 97 |
 | u1250 | deepseek (deepseek-flash) | 18 | 18 | 100.0% | 0/18 (0.0%) | pass | 0 | 0 | 0 | 18 |
 | w2 | deepseek (deepseek-flash) | 39 | 39 | 100.0% | 0/39 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| **all** | | 1905 | 1878 | 98.6% | | | 7 | 7 | 13 | 628 |
+| **all** | | 1880 | 1853 | 98.6% | | | 7 | 7 | 13 | 635 |
 
 Pending clcw26 [deepseek]: 5 missing expected lines.
 Pending eic [deepseek]: 19 missing expected lines; 50 unexpected line keys.
@@ -914,6 +918,7 @@ Pending f8880 [deepseek]: model-error noise above 10%.
 Pending g28 [deepseek]: 11 missing expected lines.
 Pending person [deepseek]: model-error noise above 10%.
 Pending s3 [deepseek]: 10 missing expected lines.
+Pending s8812 [deepseek]: 4 missing expected lines.
 Pending sd [deepseek]: 32 missing expected lines.
 
 ### Independence yield

@@ -32,7 +32,7 @@ Review these renderings line by line against the archived IRS sources in `source
 | ftc.md | form | 17 |
 | g28.md | form | 9 |
 | gift.md | form | 5 |
-| household.md | form | 48 |
+| household.md | form | 53 |
 | interest.md | form | 2 |
 | ira.md | worksheet | 57 |
 | ltc.md | form | 4 |
@@ -44,12 +44,12 @@ Review these renderings line by line against the archived IRS sources in `source
 | qdcg.md | worksheet | 27 |
 | refund.md | form | 48 |
 | retirement.md | form | 89 |
-| s1.md | form | 66 |
+| s1.md | form | 68 |
 | s179.md | form | 28 |
 | s1a.md | form | 136 |
 | s2.md | form | 19 |
 | s3.md | form | 15 |
-| s8812.md | form | 89 |
+| s8812.md | form | 92 |
 | sa.md | form | 61 |
 | sales.md | form | 27 |
 | sb.md | form | 12 |

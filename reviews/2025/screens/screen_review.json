@@ -1913,6 +1913,184 @@
   "date": "2026-11-07"
  },
  {
+  "screen": "gate:household.claims_8862_credit",
+  "kind": "gate",
+  "condition": "household.claims_8862_credit",
+  "lines": [
+   "household.credit_disallowed_if_claimed"
+  ],
+  "inputs": [
+   "household.credit_disallowed"
+  ],
+  "verdict": "COVERS",
+  "findings": [
+   {
+    "kind": "WIDE",
+    "situation": "Schedule 8812 line 8 is more than line 11 only because of the credit for other dependents, but Form 1040 line 18 is zero, so no ODC can be taken and the ACTC is not available; the gate still asks the disallowance question.",
+    "irs_text": "i1040s8812 p. 2: \"If the amount is zero, you cannot take either credit because there is no tax to reduce. But you may be able to take the ACTC if you are claiming the CTC (you cannot take the ACTC if you are only claiming the ODC).\"",
+    "why": "No CTC, ACTC or ODC is actually allowed, so Form 8862 adds nothing. Asking costs only a question, and gates lean to yes by design."
+   }
+  ],
+  "prompt_sha": "49fafcfc3652fecd15d1afed6c8b5cad0f45a9b3fd27ee83872a14b98cc5974a",
+  "subject_sha": "b494e1f4194e473918ba06868d2269cacbefe031c1de55f445795b80cf5eb998",
+  "used": [
+   {
+    "doc": "i1040gi",
+    "revision": "2025; printed date 2026-02-25",
+    "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+    "pages": [
+     39,
+     43
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 39, Form 8862, who must file, \"You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit\"; p. 43, Form 8862, who must file, \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error\"",
+     "p. 39, Form 8862, who must file, \"You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit\"; p. 43, Form 8862, who must file, \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error\"; , Form 8862 may be required, \"you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies\"",
+     "p. 43, Form 8862, who must file, \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error\" and \"don’t file Form 8862 or take the credit for the ... 2 years after the most recent tax year for which there was a final determination that your EIC claim was due to reckless or intentional disregard of the EIC rules ... 10 years after the most recent tax year for which there was a final determination that your EIC claim was due to fraud\"; p. 39, Form 8862, who must file, \"You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit (refundable or nonrefundable depending on the tax year), additional child tax credit, or credit for other dependents for a year after 2015 was denied or reduced for any reason other than a math or clerical error\"; , Form 8862 may be required, \"If your CTC, ACTC, or ODC for a year after 2015 was denied or reduced for any reason other than a math or clerical error, you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies\""
+    ],
+    "cols_pages": [
+     39,
+     43
+    ],
+    "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+   },
+   {
+    "doc": "i1040s8812",
+    "revision": "2025; printed date 2026-01-23",
+    "text_sha256": "fd50a5266cc20aa5a31de0535658793f75c7abbb12fd83b65dc5b21c6ede2765",
+    "pages": [
+     2
+    ],
+    "how": "pages named by another document's citation",
+    "locators": [],
+    "cols_pages": [
+     2
+    ],
+    "cols_sha256": "e6ba91f54df679c9c19c23169c369f14bff012ba2fe110c3973bde59676c1d45"
+   }
+  ],
+  "cost": 0.059628,
+  "model": "claude-opus-5-5",
+  "date": "2026-11-07"
+ },
+ {
+  "screen": "gate:s1.has_jury_pay",
+  "kind": "gate",
+  "condition": "s1.has_jury_pay",
+  "lines": [
+   "s1.jury_to_employer_if_pay"
+  ],
+  "inputs": [
+   "s1.jury_to_employer"
+  ],
+  "verdict": "COVERS",
+  "findings": [
+   {
+    "kind": "WIDE",
+    "situation": "A filer (or spouse) receives jury duty pay and keeps it, so the gate holds and the question is asked, but line 24a has no amount.",
+    "irs_text": "i1040gi p. 99, Line 24a: \"Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury.\"",
+    "why": "Line 24a needs jury pay that was given to the employer, so any jury pay on line 8h triggers the question even when nothing was turned over. This costs only one question."
+   }
+  ],
+  "prompt_sha": "b1be958798772ccb1785238038b78db231b768b023839c4a073253e0c19cc80b",
+  "subject_sha": "89d52a3191553404d36fafa53304fea78ba3465ca843c7e50087b291199fd307",
+  "used": [
+   {
+    "doc": "i1040gi",
+    "revision": "2025; printed date 2026-02-25",
+    "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+    "pages": [
+     91,
+     99
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 91, Line 8h, \"Enter any jury duty pay and see the instructions for line 24a\"; p. 99, Line 24a, \"Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury\"",
+     "p. 99, Line 24a, \"Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury\"; , Jury duty, \"you can deduct the amount turned over to your employer as an adjustment to income\""
+    ],
+    "cols_pages": [
+     91
+    ],
+    "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+   },
+   {
+    "doc": "p525",
+    "revision": "2025",
+    "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+    "pages": [
+     34
+    ],
+    "how": "pages named by another document's citation",
+    "locators": [],
+    "cols_pages": [
+     34
+    ],
+    "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+   }
+  ],
+  "cost": 0.043392,
+  "model": "claude-opus-5-5",
+  "date": "2026-11-07"
+ },
+ {
+  "screen": "gate:s8812.has_qualifying_child",
+  "kind": "gate",
+  "condition": "s8812.has_qualifying_child",
+  "lines": [
+   "s8812.puerto_rico_if_child"
+  ],
+  "inputs": [
+   "s8812.puerto_rico"
+  ],
+  "verdict": "COVERS",
+  "findings": [
+   {
+    "kind": "WIDE",
+    "situation": "The filer has a child on line 4, but line 12 does not exceed line 14 (line 16a is zero), so the Puerto Rico path through Part II-B changes no amount, yet the question is still asked.",
+    "irs_text": "f1040s8812 (2025) p. 2, line 16a: \"Subtract line 14 from line 12. If zero, stop here; you cannot take the additional child tax credit\"",
+    "why": "Part II-B and line 21 can only matter once line 16a and line 16b are both positive. Line 16b is line 4 times $1,700, and Credit Limit Worksheet B requires \"Line 4 of Schedule 8812 is more than zero\", so line 4 > 0 is necessary but not sufficient. This is extra asking, not a dropped amount."
+   }
+  ],
+  "prompt_sha": "0e252a864d0d9165866c9e38abeb964e0dd31d779346a284af03d3a4cfebd3b4",
+  "subject_sha": "bcb6a8c3cbe4638fac33e6ecf1f2bbf3874d8ad342ca1c48def13e4b0d8bc745",
+  "used": [
+   {
+    "doc": "i1040s8812",
+    "revision": "2025; printed date 2026-01-23",
+    "text_sha256": "fd50a5266cc20aa5a31de0535658793f75c7abbb12fd83b65dc5b21c6ede2765",
+    "pages": [
+     3
+    ],
+    "how": "cited pages",
+    "locators": [
+     "p. 3, Bona Fide Residents of Puerto Rico, \"If you were a bona fide resident of Puerto Rico, you may be eligible to claim the ACTC if you had at least one qualifying child\""
+    ],
+    "cols_pages": [
+     3
+    ],
+    "cols_sha256": "e6ba91f54df679c9c19c23169c369f14bff012ba2fe110c3973bde59676c1d45"
+   },
+   {
+    "doc": "f1040s8812",
+    "revision": "2025; created 2025-07-30",
+    "text_sha256": "9b38295071c42fe489ec8f93e117b31eda11355b5a95e3fe388eeee69601c8c9",
+    "pages": [
+     1,
+     2
+    ],
+    "how": "whole document",
+    "locators": [
+     "Schedule 8812 (2025), after line 20, \"If you are a bona fide resident of Puerto Rico, go to line 21\""
+    ],
+    "cols_pages": [],
+    "cols_sha256": "3525d47f51cb713591081610a862cae77eff08a8aa7e2064a96b15cee4fd5cb9"
+   }
+  ],
+  "cost": 0.039896,
+  "model": "claude-opus-5-5",
+  "date": "2026-11-07"
+ },
+ {
   "screen": "gift.special",
   "question": "Does this group need an appraisal or other special treatment: any of the following?\n\n- a deduction over $5,000 (before any income limit), or property worth more than $5,000, for one item or for similar items given to all donees together, other than publicly traded securities\n  - similar items: items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land or buildings\n  - publicly traded securities: listed on a recognized stock exchange whose quotations are published daily, regularly traded on a national or regional over-the-counter market, or mutual fund shares quoted daily in a national newspaper\n- a noncash contribution reaching you through a Schedule K-1\n- vehicles\n- pass-through entity interests\n- intellectual property\n- inventory\n- conservation or partial interests\n- property with restrictions on its use\n- a clothing or household item over $500 not in good used condition",
   "lines": [

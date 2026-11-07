@@ -488,30 +488,6 @@
    "evidence": "i1040sse p. 2. As the earlier s2#1 ruling: person.se_screen names \"a chapter 11 bankruptcy case\" and \"self-employment income exempt under an international social security agreement or earned as a U.S. citizen employed by a foreign government\" and refuses.",
    "prompt_sha": "d7c2b91fe9c409d3ed99c6669d07785a47248aab31eac089c61796dc1095dd3c"
   },
-  "unruled:s8812#1": {
-   "class": "out of scope",
-   "evidence": "i1040gi p. 18; i1040s8812 p. 1. As s8812#1 of the backlog round (rechecked): a filer who can be claimed is refused for the whole return (sa.dependent); dependent.married asks the married-child test; a child born and died without an SSN is refused by dependent.claimed_no_tin; the adopted-child citizen exception is stated in dependent.citizen.",
-   "prompt_sha": "e1ff4af6f8a0ef4447763a53eec288345608891f2b1fe1b8ec11d634bcc3f312",
-   "gate": "sa.dependent"
-  },
-  "unruled:s8812#2": {
-   "class": "covered",
-   "evidence": "i1040gi p. 19; i1040s8812 p. 2. As s8812#2 of the backlog round: dependent.odc_person requires dependent.claimed, which applies the qualifying-relative tests and sa.dependent.",
-   "prompt_sha": "e1ff4af6f8a0ef4447763a53eec288345608891f2b1fe1b8ec11d634bcc3f312",
-   "line": "dependent.odc_person"
-  },
-  "unruled:s8812#3": {
-   "class": "out of scope",
-   "evidence": "i1040s8812 p. 3. As s8812#3 of the backlog round: an optional method is refused by person.se_screen; treaty-excluded income is a Schedule 1 line 8 exclusion refused by s1.line8_other.",
-   "prompt_sha": "e1ff4af6f8a0ef4447763a53eec288345608891f2b1fe1b8ec11d634bcc3f312",
-   "gate": "person.se_screened"
-  },
-  "unruled:s8812#4": {
-   "class": "out of scope",
-   "evidence": "i1040s8812 p. 8. As s8812#5 of the backlog round: married filing separately is refused (s3.mfs) and community income on a separate return by person.se_screen, so community wages do not arise.",
-   "prompt_sha": "e1ff4af6f8a0ef4447763a53eec288345608891f2b1fe1b8ec11d634bcc3f312",
-   "gate": "s3.mfs"
-  },
   "unruled:sales#1": {
    "class": "real gap",
    "bug": "BUG-0436",
@@ -759,34 +735,6 @@
    "evidence": "i4562 p. 3, listed property exceptions. The exception for a computer used exclusively at a regular business establishment owned or leased by its operator, and the employee's employer-establishment rule, change no amount here: a Schedule C proprietor's regular business establishment is the one the proprietor operates, employees' property is not Schedule C property, and a computer placed in service before 2018 is past its 5-year recovery in 2025 (property placed in service before 2005, ADS and other methods are refused by asset.screen). The asset.listed wording is unchanged by R3.",
    "prompt_sha": "883ef58dbdaa8d8b440a6af6f489dbed80063693dc77e43d4e7cb50d8833df01"
   },
-  "unruled:household#1": {
-   "class": "covered",
-   "line": "dependent.parent_home_paid",
-   "evidence": "p501 p. 9. As the prior household#1 ruling: Test 1 reads dependent.parent_home_paid, which asks about the parent's main home (a rest home counts) for all of 2025 or the part of the year the parent was alive.",
-   "prompt_sha": "76941c20b8e418fe5c2eb8d844f062762a8048ea886a762dffa2abe6674e9765"
-  },
-  "unruled:household#2": {
-   "class": "out of scope",
-   "gate": "dependent.qc_tiebreak",
-   "evidence": "p501 pp. 9-10; i1040gi p. 44. As the prior household#2 and #3 rulings: dependent.kidnapped is asked and dependent.kidnap_residency refuses the residency of a kidnapped child; dependent.other_claimant asks whether the child is another person's qualifying child and dependent.qc_tiebreak refuses the tie-breaker case, so head of household is not decided on a person another taxpayer can use.",
-   "prompt_sha": "76941c20b8e418fe5c2eb8d844f062762a8048ea886a762dffa2abe6674e9765"
-  },
-  "unruled:household#3": {
-   "class": "presentation",
-   "evidence": "i1040gi p. 14. As earlier rulings: the name of a nondependent qualifying child in the filing-status entry space is filing information; head of household eligibility is asked and the name changes no amount.",
-   "prompt_sha": "76941c20b8e418fe5c2eb8d844f062762a8048ea886a762dffa2abe6674e9765"
-  },
-  "unruled:household#4": {
-   "class": "presentation",
-   "evidence": "i1040gi p. 15. As earlier rulings: the child's name in the entry space is filing information; the qualifying surviving spouse tests are asked (household.qss_eligible) and the name changes no amount.",
-   "prompt_sha": "76941c20b8e418fe5c2eb8d844f062762a8048ea886a762dffa2abe6674e9765"
-  },
-  "unruled:household#5": {
-   "class": "out of scope",
-   "gate": "scope.other_income",
-   "evidence": "i1040gi p. 13, \"Generally, a married couple can't file a joint return if either spouse is a nonresident alien at any time during the year.\" As earlier rulings: scope.other_income asks about nonresident alien status of you or your spouse for any part of 2025 and refuses the return, so neither the joint-return bar nor the election arises.",
-   "prompt_sha": "76941c20b8e418fe5c2eb8d844f062762a8048ea886a762dffa2abe6674e9765"
-  },
   "unruled:person#1": {
    "class": "out of scope",
    "gate": "f8863.ban_refused",
@@ -817,41 +765,6 @@
    "evidence": "p560 p. 16. A SIMPLE matching contribution above the rate the plan elected (1% to 3%) is a contribution above the maximum deductible amount, which person.plan_screen names (\"contributions that are more than the maximum deductible amount\") and refuses; the elected rate itself is the plan's term, not a figure the return computes.",
    "prompt_sha": "fa8e7d08c25571c253d4d81162478d591528c2f071b5a56c2292d3a6cb22ec03"
   },
-  "unruled:s1#1": {
-   "class": "real gap",
-   "bug": "BUG-0438",
-   "evidence": "p525 p. 35: the part of a scholarship or fellowship that pays for required teaching, research or other services is income even for a degree candidate. s1.line8r asks a degree candidate only for the part used for expenses other than tuition and course-related expenses, so a services part not on a Form W-2 can be left out. Rare (such pay is usually on a Form W-2); low. Unchanged by the R4 restructuring.",
-   "prompt_sha": "72e78dc40701faa79c2890f3227682e2f52bd3081f5cdce7d02b3a893c742281"
-  },
-  "unruled:s1#2": {
-   "class": "presentation",
-   "evidence": "p504 p. 14. As the prior s1#1 ruling: attaching the instrument that designates payments as not alimony, each year, is filing information; s1.alimony_received leaves designated payments out. A temporary support order is itself the instrument.",
-   "prompt_sha": "72e78dc40701faa79c2890f3227682e2f52bd3081f5cdce7d02b3a893c742281"
-  },
-  "unruled:s1#3": {
-   "class": "covered",
-   "line": "person.educator_expenses",
-   "evidence": "i1040gi p. 93. As the prior s1#2 ruling: person.eligible_educator states the 900-hour test; person.educator_expenses excludes home schooling and nonathletic health or PE supplies and states the reductions.",
-   "prompt_sha": "72e78dc40701faa79c2890f3227682e2f52bd3081f5cdce7d02b3a893c742281"
-  },
-  "unruled:s1#4": {
-   "class": "covered",
-   "line": "sli.interest",
-   "evidence": "i1040gi pp. 98-99; p4681 p. 5. As the prior s1#3 ruling: married filing separately is refused (s3.mfs); sli.eligible requires a status other than mfs and no dependency claim; sli.interest states the qualified student loan definition and excludes interest paid from tax-free QTP earnings and through the loan repayment programs; the Pub. 970 exception is refused (sa.excluded_income).",
-   "prompt_sha": "72e78dc40701faa79c2890f3227682e2f52bd3081f5cdce7d02b3a893c742281"
-  },
-  "unruled:s1#5": {
-   "class": "out of scope",
-   "gate": "ssb.pub915",
-   "evidence": "i1040gi pp. 96, 98; p525 p. 31. The Pub. 590-A cases are refused: a Form 8815 exclusion by sb.unsupported and excluded adoption benefits by scope.other_income; a joint return under the $14,000 ($15,000, $16,000) floor at ira.kbh_short (Pub. 590-A worksheet); and IRA contributions with plan coverage and social security benefits by ssb.pub915 (\"you made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan\").",
-   "prompt_sha": "72e78dc40701faa79c2890f3227682e2f52bd3081f5cdce7d02b3a893c742281"
-  },
-  "unruled:s1#6": {
-   "class": "out of scope",
-   "gate": "sc.hi_screened",
-   "evidence": "i1040gi p. 95. sc.hi_screen asks whether \"the insurance was obtained through the Marketplace and advance payments of the premium tax credit were made or you are claiming the premium tax credit\" and sc.hi_screened refuses (\"Self-employed health insurance with the premium tax credit (Pub. 974)\").",
-   "prompt_sha": "72e78dc40701faa79c2890f3227682e2f52bd3081f5cdce7d02b3a893c742281"
-  },
   "unruled:sa#1": {
    "class": "covered",
    "line": "person.blind",
@@ -869,6 +782,70 @@
    "line": "gift.deduction",
    "evidence": "i1040sca p. 11. As the prior sa#3 ruling: gift.deduction states the good-used-condition rule and the $250 contemporaneous written acknowledgment (BUG-0319).",
    "prompt_sha": "1c6961042db0a6ac25246c57a98326cd29f96ca3cbc33d3cc2b7c3182b14503b"
+  },
+  "unruled:household#1": {
+   "class": "out of scope",
+   "gate": "dependent.qc_tiebreak",
+   "evidence": "p501 pp. 9-10; i1040gi p. 44. As the prior household#2 and #3 rulings: dependent.kidnapped is asked and dependent.kidnap_residency refuses the residency of a kidnapped child; dependent.other_claimant asks whether the child is another person's qualifying child and dependent.qc_tiebreak refuses the tie-breaker case, so head of household is not decided on a person another taxpayer can use. Re-ruled on the review rerun after the formal-gate changes (was household#2).",
+   "prompt_sha": "060b0159fcd396d7986b43646c7498fce9320bda88bc8e2d460b5565c0fbfef2"
+  },
+  "unruled:household#2": {
+   "class": "covered",
+   "line": "dependent.parent_home_paid",
+   "evidence": "p501 p. 9. As the prior household#1 ruling: Test 1 reads dependent.parent_home_paid, which asks about the parent's main home (a rest home counts) for all of 2025 or the part of the year the parent was alive. Re-ruled on the review rerun after the formal-gate changes (was household#1).",
+   "prompt_sha": "060b0159fcd396d7986b43646c7498fce9320bda88bc8e2d460b5565c0fbfef2"
+  },
+  "unruled:household#3": {
+   "class": "out of scope",
+   "gate": "scope.other_income",
+   "evidence": "i1040gi p. 13, \"Generally, a married couple can't file a joint return if either spouse is a nonresident alien at any time during the year.\" As earlier rulings: scope.other_income asks about nonresident alien status of you or your spouse for any part of 2025 and refuses the return, so neither the joint-return bar nor the election arises. Re-ruled on the review rerun after the formal-gate changes (was household#5).",
+   "prompt_sha": "060b0159fcd396d7986b43646c7498fce9320bda88bc8e2d460b5565c0fbfef2"
+  },
+  "unruled:household#4": {
+   "class": "presentation",
+   "evidence": "i1040gi p. 14. As earlier rulings: the name of a nondependent qualifying child in the filing-status entry space is filing information; head of household eligibility is asked and the name changes no amount. Re-ruled on the review rerun after the formal-gate changes (was household#3).",
+   "prompt_sha": "060b0159fcd396d7986b43646c7498fce9320bda88bc8e2d460b5565c0fbfef2"
+  },
+  "unruled:household#5": {
+   "class": "presentation",
+   "evidence": "i1040gi p. 15. As earlier rulings: the child's name in the entry space is filing information; the qualifying surviving spouse tests are asked (household.qss_eligible) and the name changes no amount. Re-ruled on the review rerun after the formal-gate changes (was household#4).",
+   "prompt_sha": "060b0159fcd396d7986b43646c7498fce9320bda88bc8e2d460b5565c0fbfef2"
+  },
+  "unruled:s1#1": {
+   "class": "real gap",
+   "bug": "BUG-0438",
+   "evidence": "p525 p. 35: the part of a scholarship or fellowship that pays for required teaching, research or other services is income even for a degree candidate. s1.line8r asks a degree candidate only for the part used for expenses other than tuition and course-related expenses, so a services part not on a Form W-2 can be left out. Rare (such pay is usually on a Form W-2); low. Unchanged by the R4 restructuring. Re-ruled on the review rerun after the formal-gate changes.",
+   "prompt_sha": "6b3fbe8d906b4c461e678584586ec993e1388957b97b0ad66c4a4408b4fd0703"
+  },
+  "unruled:s1#2": {
+   "class": "covered",
+   "line": "sli.interest",
+   "evidence": "i1040gi pp. 98-99; p4681 p. 5. As the prior s1#3 ruling: married filing separately is refused (s3.mfs); sli.eligible requires a status other than mfs and no dependency claim; sli.interest states the qualified student loan definition and excludes interest paid from tax-free QTP earnings and through the loan repayment programs; the Pub. 970 exception is refused (sa.excluded_income). Re-ruled on the review rerun after the formal-gate changes (was s1#4).",
+   "prompt_sha": "6b3fbe8d906b4c461e678584586ec993e1388957b97b0ad66c4a4408b4fd0703"
+  },
+  "unruled:s1#3": {
+   "class": "out of scope",
+   "gate": "ssb.pub915",
+   "evidence": "i1040gi pp. 96, 98; p525 p. 31. The Pub. 590-A cases are refused: a Form 8815 exclusion by sb.unsupported and excluded adoption benefits by scope.other_income; a joint return under the $14,000 ($15,000, $16,000) floor at ira.kbh_short (Pub. 590-A worksheet); and IRA contributions with plan coverage and social security benefits by ssb.pub915 (\"you made contributions to a traditional IRA for 2025 and you or your spouse were covered by a retirement plan\"). Re-ruled on the review rerun after the formal-gate changes (was s1#5).",
+   "prompt_sha": "6b3fbe8d906b4c461e678584586ec993e1388957b97b0ad66c4a4408b4fd0703"
+  },
+  "unruled:s8812#1": {
+   "class": "out of scope",
+   "gate": "sa.dependent",
+   "prompt_sha": "99721b0c3a1aaf6960a9083c68e15655772b70d0564edb1545c23da3c05bf973",
+   "evidence": "i1040gi pp. 17-18; i1040s8812 p. 1. As s8812#1 of the earlier rounds: a filer who can be claimed as a dependent is refused for the whole return (sa.dependent); dependent.married asks the married-child test; a child born and died without an SSN is refused by dependent.claimed_no_tin; the adopted-child citizen exception is stated in dependent.citizen. Re-ruled on the review rerun after the formal-gate changes."
+  },
+  "unruled:s8812#2": {
+   "class": "out of scope",
+   "gate": "sa.dependent",
+   "prompt_sha": "99721b0c3a1aaf6960a9083c68e15655772b70d0564edb1545c23da3c05bf973",
+   "evidence": "i1040gi p. 19; i1040s8812 p. 2. A filer who can be claimed as a dependent is refused for the whole return (sa.dependent), so no dependent is claimed on such a return; dependent.odc_person requires dependent.claimed, which applies the qualifying-relative tests; the adopted-child citizen exception is stated in dependent.citizen (as s8812#1 and #2 of the earlier rounds). Re-ruled on the review rerun after the formal-gate changes."
+  },
+  "unruled:s8812#3": {
+   "class": "out of scope",
+   "gate": "person.se_screened",
+   "prompt_sha": "99721b0c3a1aaf6960a9083c68e15655772b70d0564edb1545c23da3c05bf973",
+   "evidence": "i1040s8812 p. 3. As s8812#3 of the earlier rounds: an optional method, farm or nonfarm, is refused by person.se_screen (\"electing an optional method (Schedule SE Part II)\"), not only lines 2c to 2e as the claim says; treaty-excluded income is a Schedule 1 line 8 exclusion refused by s1.line8_other. Re-ruled on the review rerun after the formal-gate changes."
   }
  }
 }

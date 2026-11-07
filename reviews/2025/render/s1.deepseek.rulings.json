@@ -123,6 +123,15 @@
    "context": "b259df0e66ea9451b53acac1f7f3cdf75d9aec84fe9ffcae9c79a8aa50b3105e"
   },
   {
+   "printed": "25",
+   "restated": "Enter the amount from line 24a.",
+   "model": "The IRS line says \"Total other adjustments. Add lines 24a through 24z,\" but the restatement says to enter only the amount from line 24a, omitting lines 24b through 24z.",
+   "ruling": "Ruling: scope; f1040s1 line 25, \"Add lines 24a through 24z\". Lines 24b to 24z are refused by scope.schedule1 (\"Any income or adjustment requiring Schedule 1 other than the ones this tool asks about separately ...\"), which refuses Form 1040 line 8 and line 10 and every line after them (it lists jury duty pay given to the employer, line 24a, among the items asked separately); within scope they are zero, as the line's citation says. Line 24a is figured (decision D3). Same ruling as the earlier rounds; re-judged because line 24a now reads its gate line s1.jury_to_employer_if_pay. Project stands on the English.",
+   "context": "86b29c1884445341692e2e59e7ca21192825215b5b10d3fa754888608f34c771",
+   "date": "2026-11-07",
+   "run": "1574ec7ed2fb97ccfd627f7665c7312eaee179eda6310ae7415c96282e67b719"
+  },
+  {
    "printed": "26",
    "restated": "Add line 11, line 13, line 15, line 16, line 17, line 18, line 19a, line 20, line 21, and line 25.",
    "model": "IRS line 26 says 'Add lines 11 through 23 and 25'; the restatement omits lines 12, 14, and 23 from the sum.",

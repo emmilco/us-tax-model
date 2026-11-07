@@ -1,0 +1,78 @@
+{
+ "form": "household",
+ "reviews": {
+  "gate:household.claims_8862_credit": {
+   "condition": "household.claims_8862_credit",
+   "lines": [
+    "household.credit_disallowed_if_claimed"
+   ],
+   "inputs": [
+    "household.credit_disallowed"
+   ],
+   "verdict": "UNCLEAR",
+   "findings": [
+    {
+     "kind": "UNCLEAR",
+     "pattern": "5",
+     "who": "A filer who qualifies for the earned income credit and answers Yes at Step 6 to have the IRS figure it. They enter \"EIC\" on the dotted line next to line 27a, and their EIC for a prior year was disallowed after an audit.",
+     "why_no": "The computed helper counts the EIC as claimed only when Worksheet A line 6 or Worksheet B line 11 is more than zero. A filer who has the IRS figure the credit never completes either worksheet, so the computed condition is false, unless the tool fills in the worksheet anyway. The disallowance question is then never asked, and the return asks for the EIC without Form 8862.",
+     "line": "household.credit_disallowed_if_claimed",
+     "irs_text": "i1040gi p. 43, Credit figured by the IRS: \"If your EIC for a year after 1996 was reduced or disallowed, see Form 8862, who must file, later.\"; p. 43: \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error\"",
+     "severity": "medium",
+     "fix": "Make the gate also true when the filer asks the IRS to figure the EIC (Step 6 answer Yes, or \"EIC\" entered next to line 27a). A broader option is to make it true whenever Steps 1 to 5 are passed, whether or not a worksheet amount is computed."
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "other",
+     "who": "A filer whose EIC helper fails Steps 1 to 5, or whose credit would be computed as zero, only because an input was entered wrongly. The filer still intends to claim the credit, and on paper would attach Form 8862.",
+     "why_no": "The gate is computed rather than asked, so the disallowance question is never shown when the tool's own figure is zero. This is correct when the credit really is zero, because nothing is claimed and Form 8862 does not apply.",
+     "line": "household.credit_disallowed_if_claimed",
+     "irs_text": "i1040s8812 p. 2: \"you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies\"",
+     "severity": "low",
+     "fix": "No change is needed for correctness, because no credit means no Form 8862. Optionally, state in the help that the question appears only once a credit amount is computed."
+    }
+   ],
+   "prompt_sha": "8b227daceb9910ca136e808dd3c866a7c4c04b4ce9a3b389b980655930ea1148",
+   "subject_sha": "b494e1f4194e473918ba06868d2269cacbefe031c1de55f445795b80cf5eb998",
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      39,
+      43
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 39, Form 8862, who must file, \"You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit\"; p. 43, Form 8862, who must file, \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error\"",
+      "p. 39, Form 8862, who must file, \"You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit\"; p. 43, Form 8862, who must file, \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error\"; , Form 8862 may be required, \"you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies\"",
+      "p. 43, Form 8862, who must file, \"You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error\" and \"don’t file Form 8862 or take the credit for the ... 2 years after the most recent tax year for which there was a final determination that your EIC claim was due to reckless or intentional disregard of the EIC rules ... 10 years after the most recent tax year for which there was a final determination that your EIC claim was due to fraud\"; p. 39, Form 8862, who must file, \"You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit (refundable or nonrefundable depending on the tax year), additional child tax credit, or credit for other dependents for a year after 2015 was denied or reduced for any reason other than a math or clerical error\"; , Form 8862 may be required, \"If your CTC, ACTC, or ODC for a year after 2015 was denied or reduced for any reason other than a math or clerical error, you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies\""
+     ],
+     "cols_pages": [
+      39,
+      43
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "i1040s8812",
+     "revision": "2025; printed date 2026-01-23",
+     "text_sha256": "fd50a5266cc20aa5a31de0535658793f75c7abbb12fd83b65dc5b21c6ede2765",
+     "pages": [
+      2
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      2
+     ],
+     "cols_sha256": "e6ba91f54df679c9c19c23169c369f14bff012ba2fe110c3973bde59676c1d45"
+    }
+   ],
+   "model": "claude-opus-5-5",
+   "cost": 0.086388,
+   "date": "2026-11-07"
+  }
+ }
+}

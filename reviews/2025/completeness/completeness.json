@@ -2825,8 +2825,38 @@
  },
  {
   "form": "household",
-  "prompt_sha": "76941c20b8e418fe5c2eb8d844f062762a8048ea886a762dffa2abe6674e9765",
+  "prompt_sha": "060b0159fcd396d7986b43646c7498fce9320bda88bc8e2d460b5565c0fbfef2",
   "claims": [
+   {
+    "item": "household.test2_persons",
+    "sentences": [
+     {
+      "quote": "You may be eligible to file as head of household even if the child who is your qualifying person has been kidnapped. You can claim head of household filing status if all the following statements are true.",
+      "page": "p501 p. 9"
+     },
+     {
+      "quote": "1. The child is presumed by law enforcement authorities to have been kidnapped by someone who isn't a member of your family or the child's family.",
+      "page": "p501 p. 9"
+     },
+     {
+      "quote": "2. In the year of the kidnapping, the child lived with you for more than half the part of the year before the kidnapping.",
+      "page": "p501 p. 10"
+     },
+     {
+      "quote": "3. In the year of the child's return, the child lived with you for more than half the part of the year following the date of the child's return.",
+      "page": "p501 p. 10"
+     },
+     {
+      "quote": "4. You would have qualified for head of household filing status if the child hadn't been kidnapped.",
+      "page": "p501 p. 10"
+     }
+    ],
+    "quote": "You may be eligible to file as head of household even if the child who is your qualifying person has been kidnapped. You can claim head of household filing status if all the following statements are true. / 1. The child is presumed by law enforcement authorities to have been kidnapped by someone who isn't a member of your family or the child's family. / 2. In the year of the kidnapping, the child lived with you for more than half the part of the year before the kidnapping. / 3. In the year of the child's return, the child lived with you for more than half the part of the year following the date of the child's return. / 4. You would have qualified for head of household filing status if the child hadn't been kidnapped.",
+    "page": "p501 p. 9; p501 p. 10",
+    "why_uncovered": "The encoding handles the kidnapped-child rule only for qualifying surviving spouse, where the question tells the filer to answer No. Nothing handles it for head of household. The Test 2 person count, the time-lived absence gate and the refusal cover temporary absences but not kidnapping. No refusal names the head of household kidnapped-child case.",
+    "closest_item": "household.test2_persons",
+    "effect": "eligibility"
+   },
    {
     "item": "household.test1_persons",
     "sentences": [
@@ -2841,67 +2871,9 @@
     ],
     "quote": "If you pay more than half the cost of keeping your parent in a rest home or home for the elderly, that counts as paying more than half the cost of keeping up your parent's main home. / Your parent for whom you paid, for the entire part of the year your parent was alive, more than half the cost of keeping up the home your parent lived in.",
     "page": "p501 p. 9",
-    "why_uncovered": "Test 1 is encoded only from i1040gi p. 14, which requires a home that was the parent's main home for all of 2025. The only cost question (household.home_cost) asks about your own home, not the parent's. No question or refusal says that paying for a rest home or home for the elderly counts. None covers a parent who died during 2025, for whom you only need to have paid for the part of the year the parent was alive.",
+    "why_uncovered": "Test 1 is cited only as 'main home for all of 2025'. The only cost question (household.home_cost) asks about the filer's own home, not the parent's home. Nothing asks about the cost of a parent's separate home or a rest home. Nothing applies the rule for a parent who died partway through the year.",
     "closest_item": "household.test1_persons",
     "effect": "eligibility"
-   },
-   {
-    "item": "household.test2_persons",
-    "sentences": [
-     {
-      "quote": "You may be eligible to file as head of household even if the child who is your qualifying person has been kidnapped.",
-      "page": "p501 p. 9"
-     },
-     {
-      "quote": "You can claim head of household filing status if all the following statements are true.",
-      "page": "p501 p. 9"
-     },
-     {
-      "quote": "A person can't qualify more than one taxpayer to use the head of household filing status for the year.",
-      "page": "p501 p. 10"
-     },
-     {
-      "quote": "Even if a child meets the conditions to be the qualifying child of more than one person, only one person can claim the child as a qualifying child for all of the following tax benefits, unless the special rule for Children of divorced or separated parents under Who Qualifies as Your Dependent, earlier, applies.",
-      "page": "i1040gi p. 44"
-     }
-    ],
-    "quote": "You may be eligible to file as head of household even if the child who is your qualifying person has been kidnapped. / You can claim head of household filing status if all the following statements are true. / A person can't qualify more than one taxpayer to use the head of household filing status for the year. / Even if a child meets the conditions to be the qualifying child of more than one person, only one person can claim the child as a qualifying child for all of the following tax benefits, unless the special rule for Children of divorced or separated parents under Who Qualifies as Your Dependent, earlier, applies.",
-    "page": "p501 p. 9; p501 p. 10; i1040gi p. 44",
-    "why_uncovered": "The kidnapped-child rule is mentioned only in the qualifying surviving spouse question, which tells the filer to answer No. There is no matching question or refusal for the head of household Test 2 count or for the living-apart test in household.unmarried. Nothing asks whether another taxpayer is using the same person for head of household. Nothing asks whether the tie-breaker rules give the child to someone else when the child is not your dependent, such as an unmarried qualifying child who isn't your dependent.",
-    "closest_item": "household.test2_persons",
-    "effect": "eligibility"
-   },
-   {
-    "item": "household.hoh_eligible",
-    "sentences": [
-     {
-      "quote": "If the child isn't claimed as your dependent, enter the child's name in the entry space below qualifying surviving spouse.",
-      "page": "i1040gi p. 14"
-     },
-     {
-      "quote": "If the child who qualifies you for this filing status isn't claimed as your dependent in the Dependents section of Form 1040 or 1040-SR, enter the child's name in the entry space below the filing status checkboxes.",
-      "page": "p501 p. 8"
-     }
-    ],
-    "quote": "If the child isn't claimed as your dependent, enter the child's name in the entry space below qualifying surviving spouse. / If the child who qualifies you for this filing status isn't claimed as your dependent in the Dependents section of Form 1040 or 1040-SR, enter the child's name in the entry space below the filing status checkboxes.",
-    "page": "i1040gi p. 14; p501 p. 8",
-    "why_uncovered": "No line or question records or outputs the name of a qualifying child who isn't claimed as a dependent when filing as head of household.",
-    "closest_item": "household.hoh_eligible",
-    "effect": "presentation"
-   },
-   {
-    "item": "household.qss_eligible",
-    "sentences": [
-     {
-      "quote": "If the child isn't claimed as your dependent, enter the child's name in the entry space.",
-      "page": "i1040gi p. 15"
-     }
-    ],
-    "quote": "If the child isn't claimed as your dependent, enter the child's name in the entry space.",
-    "page": "i1040gi p. 15",
-    "why_uncovered": "The qualifying surviving spouse question decides eligibility. No line records the name of a child who isn't claimed as a dependent, which must be entered.",
-    "closest_item": "household.qss_eligible",
-    "effect": "presentation"
    },
    {
     "item": "household.filing_status_conflict",
@@ -2915,15 +2887,43 @@
       "page": "i1040gi p. 14"
      },
      {
-      "quote": "If your spouse is a nonresident alien, your spouse must have either an SSN or an ITIN if: • You file a joint return, or • Your spouse is filing a separate return.",
-      "page": "i1040gi p. 13"
+      "quote": "If you and your spouse are making either of these choices to be treated as U.S. residents for 2025, check the box in the Filing Status section and enter the name of the nonresident spouse or dual-status spouse(s) (whichever applies to you) in the entry space.",
+      "page": "i1040gi p. 14"
      }
     ],
-    "quote": "Generally, a married couple can't file a joint return if either spouse is a nonresident alien at any time during the year. / To make either choice for 2025, you and your spouse must file a joint return and attach a statement, signed by both spouses, to your return. / If your spouse is a nonresident alien, your spouse must have either an SSN or an ITIN if: • You file a joint return, or • Your spouse is filing a separate return.",
+    "quote": "Generally, a married couple can't file a joint return if either spouse is a nonresident alien at any time during the year. / To make either choice for 2025, you and your spouse must file a joint return and attach a statement, signed by both spouses, to your return. / If you and your spouse are making either of these choices to be treated as U.S. residents for 2025, check the box in the Filing Status section and enter the name of the nonresident spouse or dual-status spouse(s) (whichever applies to you) in the entry space.",
     "page": "i1040gi p. 13; i1040gi p. 14",
-    "why_uncovered": "The filing-status conflict check and the roster check use only the marriage, death and divorce facts. Nothing asks whether either spouse was a nonresident or dual-status alien during 2025, or whether the election to be treated as residents was made. A nonresident alien is refused only for the EIC (on another form). So a joint return with a nonresident spouse who never made the election is neither blocked nor refused. Nothing checks for the required signed statement or the spouse's SSN or ITIN.",
+    "why_uncovered": "The nonresident-alien spouse appears only inside the 'considered unmarried' question for head of household. Nothing asks whether a spouse on a joint return was a nonresident alien, or whether the resident election was made. Nothing refuses that case either; the nonresident-alien refusal elsewhere is limited to the EIC. As a result, a joint return with a nonresident spouse and no election is not blocked, and the election box and statement are not produced.",
     "closest_item": "household.filing_status_conflict",
     "effect": "eligibility"
+   },
+   {
+    "item": "household.hoh_eligible",
+    "sentences": [
+     {
+      "quote": "If the child isn't claimed as your dependent, enter the child's name in the entry space below qualifying surviving spouse.",
+      "page": "i1040gi p. 14"
+     }
+    ],
+    "quote": "If the child isn't claimed as your dependent, enter the child's name in the entry space below qualifying surviving spouse.",
+    "page": "i1040gi p. 14",
+    "why_uncovered": "No encoded line or question captures or enters the name of a non-dependent qualifying child who qualifies the filer for head of household.",
+    "closest_item": "household.hoh_eligible",
+    "effect": "presentation"
+   },
+   {
+    "item": "household.qss_eligible",
+    "sentences": [
+     {
+      "quote": "If the child isn't claimed as your dependent, enter the child's name in the entry space.",
+      "page": "i1040gi p. 15"
+     }
+    ],
+    "quote": "If the child isn't claimed as your dependent, enter the child's name in the entry space.",
+    "page": "i1040gi p. 15",
+    "why_uncovered": "The qualifying surviving spouse question covers eligibility. No line enters the name of a qualifying child who is not claimed as a dependent.",
+    "closest_item": "household.qss_eligible",
+    "effect": "presentation"
    }
   ],
   "used": [
@@ -3006,7 +3006,7 @@
     ]
    }
   ],
-  "cost": 0.379636,
+  "cost": 0.35962799999999995,
   "model": "claude-opus-5-5"
  },
  {
@@ -4103,7 +4103,7 @@
  },
  {
   "form": "s1",
-  "prompt_sha": "72e78dc40701faa79c2890f3227682e2f52bd3081f5cdce7d02b3a893c742281",
+  "prompt_sha": "6b3fbe8d906b4c461e678584586ec993e1388957b97b0ad66c4a4408b4fd0703",
   "claims": [
    {
     "item": "s1.line8r",
@@ -4117,69 +4117,25 @@
       "page": "p525 p. 35"
      },
      {
+      "quote": "You don't have to include in income the part of any scholarship or fellowship that represents payment for teaching, research, or other services if you receive the amount under: • The National Health Services Corps Scholarship Program, • The Armed Forces Health Professions Scholarship and Financial Assistance Program, or • A comprehensive student work-learning-service program (as defined in section 448(e) of the Higher Education Act of 1965) operated by a work college (as defined in that section).",
+      "page": "p525 p. 35"
+     },
+     {
       "quote": "These items must be required of all students in your course of instruction.",
       "page": "p525 p. 35"
      }
     ],
-    "quote": "Generally, you can't exclude from your gross income the part of any scholarship or fellowship that represents payment for teaching, research, or other services required as a condition for receiving the scholarship. / This applies even if all candidates for a degree must perform the services to receive the degree. / These items must be required of all students in your course of instruction.",
+    "quote": "Generally, you can't exclude from your gross income the part of any scholarship or fellowship that represents payment for teaching, research, or other services required as a condition for receiving the scholarship. / This applies even if all candidates for a degree must perform the services to receive the degree. / You don't have to include in income the part of any scholarship or fellowship that represents payment for teaching, research, or other services if you receive the amount under: • The National Health Services Corps Scholarship Program, • The Armed Forces Health Professions Scholarship and Financial Assistance Program, or • A comprehensive student work-learning-service program (as defined in section 448(e) of the Higher Education Act of 1965) operated by a work college (as defined in that section). / These items must be required of all students in your course of instruction.",
     "page": "p525 p. 35",
-    "why_uncovered": "The line 8r question tells a degree candidate to report only the part used for things other than tuition and course-related expenses. It never asks whether any part of the grant pays for teaching, research or other required services. That part is taxable even when it is spent on tuition, unless one of the listed program exceptions applies. The question also lets the filer leave out course-related expenses without checking that every student in the course of instruction must pay them.",
+    "why_uncovered": "The line 8r question tells a degree candidate to report only the part used for expenses other than tuition and course-related expenses. It never says that the part representing payment for required teaching, research or other services is taxable even when used for tuition, and it does not give the exceptions to that rule. It also does not limit 'course-related expenses' to items required of all students in the course. A filer following the question would leave these taxable amounts off line 8r, and no refusal screens for them.",
     "closest_item": "s1.line8r",
-    "effect": "amount"
-   },
-   {
-    "item": "s1.alimony_received",
-    "sentences": [
-     {
-      "quote": "Your spouse can exclude the payments from income only if they attach a copy of the instrument designating them as not alimony to their return.",
-      "page": "p504 p. 14"
-     },
-     {
-      "quote": "The copy must be attached each year the designation applies.",
-      "page": "p504 p. 14"
-     },
-     {
-      "quote": "If you're subject to temporary support orders, the designation must be made in the original or a later temporary support order.",
-      "page": "p504 p. 14"
-     }
-    ],
-    "quote": "Your spouse can exclude the payments from income only if they attach a copy of the instrument designating them as not alimony to their return. / The copy must be attached each year the designation applies. / If you're subject to temporary support orders, the designation must be made in the original or a later temporary support order.",
-    "page": "p504 p. 14",
-    "why_uncovered": "The alimony-received question tells the filer to leave out payments the instrument designates as not alimony. It does not make that exclusion depend on attaching a copy of the instrument every year, and no notice tells the filer to attach it. It also does not check that, under temporary support orders, the designation was made in the original or a later temporary order.",
-    "closest_item": "s1.alimony_received",
-    "effect": "amount"
-   },
-   {
-    "item": "s1.line11",
-    "sentences": [
-     {
-      "quote": "An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year.",
-      "page": "i1040gi p. 93"
-     },
-     {
-      "quote": "Qualified expenses don't include expenses for home schooling or for nonathletic supplies for courses in health or physical education.",
-      "page": "i1040gi p. 93"
-     },
-     {
-      "quote": "You must reduce your qualified expenses by the following amounts.",
-      "page": "i1040gi p. 93"
-     }
-    ],
-    "quote": "An eligible educator is a kindergarten through grade 12 teacher, instructor, counselor, principal, or aide who worked in a school for at least 900 hours during a school year. / Qualified expenses don't include expenses for home schooling or for nonathletic supplies for courses in health or physical education. / You must reduce your qualified expenses by the following amounts.",
-    "page": "i1040gi p. 93",
-    "why_uncovered": "Line 11 only cites the $300/$600 cap. No listed question or refusal tests who counts as an eligible educator (K-12 role, 900 hours). Nothing leaves out home-schooling or health and physical education supply costs. Nothing reduces expenses by excludable savings bond interest, nontaxable qualified tuition program or Coverdell amounts, or reimbursements not shown in Form W-2 box 1.",
-    "closest_item": "s1.line11",
     "effect": "amount"
    },
    {
     "item": "s1.line21",
     "sentences": [
      {
-      "quote": "Your filing status is any status except married filing separately.",
-      "page": "i1040gi p. 98"
-     },
-     {
-      "quote": "You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return.",
+      "quote": "Exception. Use Pub. 970 instead of the worksheet in these instructions to figure your student loan interest deduction if you file Form 2555 or 4563, or you exclude income from sources within Puerto Rico.",
       "page": "i1040gi p. 98"
      },
      {
@@ -4187,23 +4143,15 @@
       "page": "i1040gi p. 98"
      },
      {
-      "quote": "Exception. Use Pub. 970 instead of the worksheet in these instructions to figure your student loan interest deduction if you file Form 2555 or 4563, or you exclude income from sources within Puerto Rico.",
-      "page": "i1040gi p. 98"
-     },
-     {
-      "quote": "However, a loan isn't a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan.",
-      "page": "i1040gi p. 99"
-     },
-     {
       "quote": "You can't deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs.",
       "page": "p4681 p. 5"
      }
     ],
-    "quote": "Your filing status is any status except married filing separately. / You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's (such as your parent's) 2025 tax return. / Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP) after 2018 to the extent the earnings are treated as tax free because they were used to pay student loan interest. / Exception. Use Pub. 970 instead of the worksheet in these instructions to figure your student loan interest deduction if you file Form 2555 or 4563, or you exclude income from sources within Puerto Rico. / However, a loan isn't a qualified student loan if (a) any of the proceeds were used for other purposes, or (b) the loan was from either a related person or a person who borrowed the proceeds under a qualified employer plan or a contract purchased under such a plan. / You can't deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs.",
-    "page": "i1040gi p. 98; i1040gi p. 99; p4681 p. 5",
-    "why_uncovered": "Line 21 cites only the form line. No listed question, gate or refusal covers the bar on married filing separately or on filers claimed as a dependent. Nothing covers the qualified-student-loan definition (related-person loans, proceeds used for other purposes), leaving out interest paid with tax-free qualified tuition program earnings or through loan repayment assistance programs, or the Pub. 970 exception for Form 4563 or Puerto Rico income.",
+    "quote": "Exception. Use Pub. 970 instead of the worksheet in these instructions to figure your student loan interest deduction if you file Form 2555 or 4563, or you exclude income from sources within Puerto Rico. / Don't include any amount paid from a distribution of earnings made from a qualified tuition program (QTP) after 2018 to the extent the earnings are treated as tax free because they were used to pay student loan interest. / You can't deduct the interest you paid on a student loan to the extent payments were made through your participation in any of the above programs.",
+    "page": "i1040gi p. 98; p4681 p. 5",
+    "why_uncovered": "Line 21 cites only the form line, and the encoding has no question or refusal for these rules. Form 2555 reaches the line 8 screen, but nothing covers Form 4563 or the Puerto Rico income exclusion, which require the Pub. 970 computation. Nothing asks the filer to remove interest paid with tax-free QTP earnings or interest paid through a student loan repayment assistance program.",
     "closest_item": "s1.line21",
-    "effect": "eligibility"
+    "effect": "amount"
    },
    {
     "item": "s1.line20",
@@ -4213,32 +4161,14 @@
       "page": "i1040gi p. 96"
      },
      {
-      "quote": "If married filing jointly and line 10 is less than $14,000 ($15,000 if one spouse is age 50 or older at the end of 2025; $16,000 if both spouses are age 50 or older at the end of 2025), stop here and use the worksheet in Pub. 590-A to figure your IRA deduction.",
-      "page": "i1040gi p. 98"
-     },
-     {
       "quote": "You must use the special worksheets in Appendix B of Pub. 590-A to figure your taxable benefits and your IRA deduction if all of the following conditions apply.",
       "page": "p525 p. 31"
      }
     ],
-    "quote": "If you were covered by a retirement plan and you file Form 2555 or 8815, or you exclude employer-provided adoption benefits, see Pub. 590-A to figure the amount, if any, of your IRA deduction. / If married filing jointly and line 10 is less than $14,000 ($15,000 if one spouse is age 50 or older at the end of 2025; $16,000 if both spouses are age 50 or older at the end of 2025), stop here and use the worksheet in Pub. 590-A to figure your IRA deduction. / You must use the special worksheets in Appendix B of Pub. 590-A to figure your taxable benefits and your IRA deduction if all of the following conditions apply.",
-    "page": "i1040gi p. 96; i1040gi p. 98; p525 p. 31",
-    "why_uncovered": "Line 20 cites only worksheet line 12. The visible refusals cover only a deduction smaller than the maximum and traditional plus Roth contributions on a joint return. Nothing refuses or handles the Pub. 590-A cases: a covered filer with Form 8815 or excluded adoption benefits, joint compensation under the $14,000–$16,000 floor, or a filer with social security benefits, taxable compensation, IRA contributions and retirement plan coverage (Appendix B worksheets).",
+    "quote": "If you were covered by a retirement plan and you file Form 2555 or 8815, or you exclude employer-provided adoption benefits, see Pub. 590-A to figure the amount, if any, of your IRA deduction. / You must use the special worksheets in Appendix B of Pub. 590-A to figure your taxable benefits and your IRA deduction if all of the following conditions apply.",
+    "page": "i1040gi p. 96; p525 p. 31",
+    "why_uncovered": "Line 20 cites only the IRA Deduction Worksheet total. No question or refusal routes these cases to Pub. 590-A: a filer covered by a retirement plan who files Form 8815 or excludes employer-provided adoption benefits, or a filer covered at work who has social security benefits, taxable compensation and IRA contributions. The handled-elsewhere refusals cover only joint traditional-plus-Roth contributors and Form 2555 at line 8. The modified AGI used in the worksheet would therefore be wrong in these cases.",
     "closest_item": "s1.line20",
-    "effect": "amount"
-   },
-   {
-    "item": "s1.line17",
-    "sentences": [
-     {
-      "quote": "Use Pub. 974 instead of the worksheet in these instructions if the insurance plan was considered to be established under your business and was obtained through the Marketplace, and advance payments of the premium tax credit were made or you are claiming the premium tax credit.",
-      "page": "i1040gi p. 95"
-     }
-    ],
-    "quote": "Use Pub. 974 instead of the worksheet in these instructions if the insurance plan was considered to be established under your business and was obtained through the Marketplace, and advance payments of the premium tax credit were made or you are claiming the premium tax credit.",
-    "page": "i1040gi p. 95",
-    "why_uncovered": "Line 17 cites the worksheet and Form 7206 line 14. No question or refusal finds Marketplace coverage with advance premium tax credit payments or a premium tax credit claim. In that case the deduction must be figured together with the credit under Pub. 974.",
-    "closest_item": "s1.line17",
     "effect": "amount"
    }
   ],
@@ -4343,7 +4273,7 @@
     ]
    }
   ],
-  "cost": 0.49048,
+  "cost": 0.3952,
   "model": "claude-opus-5-5"
  },
  {
@@ -4648,31 +4578,27 @@
  },
  {
   "form": "s8812",
-  "prompt_sha": "e1ff4af6f8a0ef4447763a53eec288345608891f2b1fe1b8ec11d634bcc3f312",
+  "prompt_sha": "99721b0c3a1aaf6960a9083c68e15655772b70d0564edb1545c23da3c05bf973",
   "claims": [
    {
     "item": "s8812.line4",
     "sentences": [
      {
-      "quote": "Could you be claimed as a dependent on someone else’s 2025 tax return? (If the person who could claim you on their 2025 tax return is not required to file, and isn’t filing a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid, check “No.”)",
-      "page": "i1040gi p. 18"
-     },
-     {
-      "quote": "Was the child married? Yes. See Married person, later.",
-      "page": "i1040gi p. 18"
-     },
-     {
-      "quote": "If the child was adopted, see Exception to citizen test, later.",
+      "quote": "Could you be claimed as a dependent on someone else’s 2025 tax return? (If the person who could claim you on their 2025 tax return is not required to file, and isn’t filing a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid, check “No.”) No. You can claim this Yes. STOP child as a dependent. You can't claim any dependents.",
       "page": "i1040gi p. 18"
      },
      {
       "quote": "Death or birth of child. If your qualifying child was born and died in 2025 and you do not have an SSN for the child, attach a copy of the child’s birth certificate, death certificate, or hospital records. The document must show the child was born alive.",
       "page": "i1040s8812 p. 1"
+     },
+     {
+      "quote": "If you are a U.S. citizen or U.S. national and your adopted child lived with you all year as a member of your household in 2025, that child meets condition (3), earlier, to be a qualifying person for the ODC.",
+      "page": "i1040s8812 p. 2"
      }
     ],
-    "quote": "Could you be claimed as a dependent on someone else’s 2025 tax return? (If the person who could claim you on their 2025 tax return is not required to file, and isn’t filing a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid, check “No.”) / Was the child married? Yes. See Married person, later. / If the child was adopted, see Exception to citizen test, later. / Death or birth of child. If your qualifying child was born and died in 2025 and you do not have an SSN for the child, attach a copy of the child’s birth certificate, death certificate, or hospital records. The document must show the child was born alive.",
-    "page": "i1040gi p. 18; i1040s8812 p. 1",
-    "why_uncovered": "Line 4 cites the Step 1 qualifying-child question and the Step 3 SSN, citizenship and age questions. It does not cite or ask about the Step 2 tests that decide whether the child is your dependent. One is the rule that a filer who can be claimed as someone else's dependent can't claim any dependents. Another is the married-child test. The encoding also has nothing for the adopted-child exception to the citizen test, and nothing for the birth-certificate attachment rule for a child born and died in 2025 without an SSN.",
+    "quote": "Could you be claimed as a dependent on someone else’s 2025 tax return? (If the person who could claim you on their 2025 tax return is not required to file, and isn’t filing a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid, check “No.”) No. You can claim this Yes. STOP child as a dependent. You can't claim any dependents. / Death or birth of child. If your qualifying child was born and died in 2025 and you do not have an SSN for the child, attach a copy of the child’s birth certificate, death certificate, or hospital records. The document must show the child was born alive. / If you are a U.S. citizen or U.S. national and your adopted child lived with you all year as a member of your household in 2025, that child meets condition (3), earlier, to be a qualifying person for the ODC.",
+    "page": "i1040gi p. 18; i1040s8812 p. 1; i1040s8812 p. 2",
+    "why_uncovered": "Line 4 cites only the Step 3 child-level tests and the SSN rules. It does not cite the Step 2 question 4 rule that a filer who can be claimed as someone else's dependent can't claim any dependents, so no question or refusal tests it. It also does not handle the child who was born and died in 2025 without an SSN, which has its own documentation requirement and exception path, so that case is neither asked about nor refused. Step 3 question 2 sends adopted children to the 'Exception to citizen test', and no question or refusal covers that exception either.",
     "closest_item": "s8812.line4",
     "effect": "eligibility"
    },
@@ -4680,27 +4606,7 @@
     "item": "s8812.line6",
     "sentences": [
      {
-      "quote": "Who wasn’t a qualifying child (see Step 1) of any taxpayer for 2025.",
-      "page": "i1040gi p. 19"
-     },
-     {
-      "quote": "Who had gross income of less than $5,200 in 2025. If the person was permanently and totally disabled, see Exception to gross income test, later.",
-      "page": "i1040gi p. 19"
-     },
-     {
-      "quote": "For whom you provided over half of the person’s support in 2025. But see Children of divorced or separated parents, Multiple support agreements, and Kidnapped child, later.",
-      "page": "i1040gi p. 19"
-     },
-     {
-      "quote": "Any other person (other than your spouse) who lived with you all year as a member of your household if your relationship didn’t violate local law.",
-      "page": "i1040gi p. 19"
-     },
-     {
-      "quote": "Could you be claimed as a dependent on someone else’s 2025 tax return? (If the person who could claim you on their 2025 tax return is not required to file, and isn’t filing a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid, check “No.”)",
-      "page": "i1040gi p. 19"
-     },
-     {
-      "quote": "Was your qualifying relative married? Yes. See Married person, later.",
+      "quote": "Could you be claimed as a dependent on someone else’s 2025 tax return? (If the person who could claim you on their 2025 tax return is not required to file, and isn’t filing a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid, check “No.”) No. You can claim this Yes. STOP person as a dependent. You can’t claim any dependents.",
       "page": "i1040gi p. 19"
      },
      {
@@ -4708,9 +4614,9 @@
       "page": "i1040s8812 p. 2"
      }
     ],
-    "quote": "Who wasn’t a qualifying child (see Step 1) of any taxpayer for 2025. / Who had gross income of less than $5,200 in 2025. If the person was permanently and totally disabled, see Exception to gross income test, later. / For whom you provided over half of the person’s support in 2025. But see Children of divorced or separated parents, Multiple support agreements, and Kidnapped child, later. / Any other person (other than your spouse) who lived with you all year as a member of your household if your relationship didn’t violate local law. / Could you be claimed as a dependent on someone else’s 2025 tax return? (If the person who could claim you on their 2025 tax return is not required to file, and isn’t filing a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid, check “No.”) / Was your qualifying relative married? Yes. See Married person, later. / If you are a U.S. citizen or U.S. national and your adopted child lived with you all year as a member of your household in 2025, that child meets condition (3), earlier, to be a qualifying person for the ODC.",
+    "quote": "Could you be claimed as a dependent on someone else’s 2025 tax return? (If the person who could claim you on their 2025 tax return is not required to file, and isn’t filing a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid, check “No.”) No. You can claim this Yes. STOP person as a dependent. You can’t claim any dependents. / If you are a U.S. citizen or U.S. national and your adopted child lived with you all year as a member of your household in 2025, that child meets condition (3), earlier, to be a qualifying person for the ODC.",
     "page": "i1040gi p. 19; i1040s8812 p. 2",
-    "why_uncovered": "Line 6 cites only the qualifying relative's TIN and citizenship questions. No question asks whether a person meets the qualifying-relative tests: the gross income limit, the support test, the not-a-qualifying-child-of-anyone test, and the member-of-household test. No question asks whether the filer could be claimed as a dependent, or about the married-relative test. Nothing covers the adopted-child exception that satisfies the citizenship condition.",
+    "why_uncovered": "Line 6 cites the TIN and citizenship tests for other dependents. It does not cite the rule that a filer who can be claimed as a dependent can't claim any dependents, and nothing asks about it. It also does not cite the adopted-child exception that treats a noncitizen adopted child as meeting the citizenship condition for the ODC, so that child would be wrongly excluded.",
     "closest_item": "s8812.line6",
     "effect": "eligibility"
    },
@@ -4724,26 +4630,16 @@
      {
       "quote": "If you have net earnings from self-employment and you use either optional method to figure those net earnings, use the Earned Income Worksheet, later, to figure the amount to enter on line 18a; otherwise, all other taxpayers can use the Earned Income Chart, later, to figure the amount to enter on line 18a.",
       "page": "i1040s8812 p. 3"
-     }
-    ],
-    "quote": "Income excluded under a tax treaty is also excluded from the computation of earned income on line 18a. / If you have net earnings from self-employment and you use either optional method to figure those net earnings, use the Earned Income Worksheet, later, to figure the amount to enter on line 18a; otherwise, all other taxpayers can use the Earned Income Chart, later, to figure the amount to enter on line 18a.",
-    "page": "i1040s8812 p. 3",
-    "why_uncovered": "Line 18a covers only two chart paths: taking the EIC (Worksheet B or Step 5) and not taking the EIC. It has no question or refusal for treaty-excluded income. It also has none for the SE optional-method row, which sends the filer to the Earned Income Worksheet even when the filer is taking the EIC.",
-    "closest_item": "s8812.line18a",
-    "effect": "amount"
-   },
-   {
-    "item": "s8812.eiw_1a",
-    "sentences": [
+     },
      {
-      "quote": "Disregard community property laws when figuring the amounts to enter on this worksheet.",
-      "page": "i1040s8812 p. 8"
+      "quote": "use either optional method to figure those net earnings, ... the amount figured using the Earned Income Worksheet next (even if you are also taking the EIC).",
+      "page": "i1040s8812 p. 7"
      }
     ],
-    "quote": "Disregard community property laws when figuring the amounts to enter on this worksheet.",
-    "page": "i1040s8812 p. 8",
-    "why_uncovered": "The Earned Income Worksheet takes Form 1040 line 1z as reported. The HANDLED ELSEWHERE community-income refusals cover only a marriage that ended in 2025 and registered domestic partners. Nothing removes community-property splits for other married filers, such as married filing separately in a community property state.",
-    "closest_item": "s8812.eiw_1a",
+    "quote": "Income excluded under a tax treaty is also excluded from the computation of earned income on line 18a. / If you have net earnings from self-employment and you use either optional method to figure those net earnings, use the Earned Income Worksheet, later, to figure the amount to enter on line 18a; otherwise, all other taxpayers can use the Earned Income Chart, later, to figure the amount to enter on line 18a. / use either optional method to figure those net earnings, ... the amount figured using the Earned Income Worksheet next (even if you are also taking the EIC).",
+    "page": "i1040s8812 p. 3; i1040s8812 p. 7",
+    "why_uncovered": "Line 18a covers two paths: taking the EIC without Worksheet B, and not taking the EIC. It does not cover the chart row that sends optional-method self-employment filers to the Earned Income Worksheet even when they take the EIC. Only the farm optional method lines (2c–2e) are refused, and nothing asks about or refuses the nonfarm optional method. Nothing asks about or refuses income excluded under a tax treaty, which must be left out of earned income.",
+    "closest_item": "s8812.line18a",
     "effect": "amount"
    }
   ],
@@ -4771,7 +4667,7 @@
     ]
    }
   ],
-  "cost": 0.3370628,
+  "cost": 0.195936,
   "model": "claude-opus-5-5"
  },
  {

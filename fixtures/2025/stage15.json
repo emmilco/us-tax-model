@@ -32409,7 +32409,7 @@
       "expect": {
         "s8812.clwb_11": {
           "kind": "refusal",
-          "gate": "s8812.puerto_rico",
+          "gate": "s8812.puerto_rico_if_child",
           "form": "Credit Limit Worksheet B, line 6, for bona fide residents of Puerto Rico",
           "remedy": "The Puerto Rico path through Credit Limit Worksheet B is outside this tool.",
           "cite": {

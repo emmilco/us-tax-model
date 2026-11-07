@@ -131,8 +131,8 @@ The data holds **199 refusal gates**: 160 tax situations the tool does not prepa
     *Source:* [i1040gi] p. 98, Schedule 1, line 21, Exception
   - *Refused at:* `eic.step1_foreign`, `f2441.line4`, `f2441.line5`, `f2441.line18`, `f2441.line19`, `f8863.line3`, `f8863.line14`, `f8880.line8`, `f8962.ws1_3`, `s1a.line2a`, `s8812.line2a`, `s8812.line2b`, `s8812.line2c`, `sa.line6`, `sa.line8b`, `sa.line8c`, `sa.line13`, `sa.line15`, `sa.line16`, `sa.line12`, `sa.line17`, `sli.line1`
   - *Share of returns (coverage estimate):* Foreign earned income exclusion (Form 2555), 0.3%
-- **`s8812.puerto_rico`**: Were you a bona fide resident of Puerto Rico?
-  - *The data asks or tests:* Bona fide resident of Puerto Rico? (`input`)
+- **`s8812.puerto_rico_if_child`**: Were you a bona fide resident of Puerto Rico?
+  - *The data asks or tests:* Whether you were a bona fide resident of Puerto Rico, asked only with a qualifying child on line 4 (false otherwise, where line 16b and Credit Limit Worksheet B line 2 are zero and the Puerto Rico path changes no amount) (`choose`)
   - *Stops the return as:* Schedule 8812 Part II-B and Credit Limit Worksheet B for bona fide residents of Puerto Rico
   - *Not covered:* Schedule 8812 Part II-B for bona fide residents of Puerto Rico. The Puerto Rico path through Part II-B is outside this tool.
     *Source:* [f1040s8812] Schedule 8812 (2025), after line 20, "If you are a bona fide resident of Puerto Rico, go to line 21"
@@ -417,7 +417,7 @@ The data holds **199 refusal gates**: 160 tax situations the tool does not prepa
     *Source:* [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555"
   - *Refused at:* `household.hoh_eligible`
 - **`household.ctc_disallowed_claim`**: Claiming the child tax credit or credit for other dependents after an earlier credit was reduced or disallowed, or in a disallowance period (Form 8862)?
-  - *The data asks or tests:* An earlier credit was reduced or disallowed (or a disallowance period applies) and Schedule 8812 line 8 is more than line 11 (a child tax credit or credit for other dependents is figured) (`test`)
+  - *The data asks or tests:* Schedule 8812 line 8 is more than line 11 (a child tax credit or credit for other dependents is figured) and an earlier credit was reduced or disallowed (or a disallowance period applies) (`test`)
   - *Not covered:* Form 8862 and the CTC, ACTC and ODC disallowance period (Form 8862 may be required). Your EIC, child tax credit, additional child tax credit or credit for other dependents for an earlier year was reduced or disallowed, or you are in a disallowance period; Form 8862 and the disallowance period are outside this tool.
     *Source:* [i1040s8812] p. 2, Form 8862 may be required, "If your CTC, ACTC, or ODC for a year after 2015 was denied or reduced for any reason other than a math or clerical error, you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies" and "you will not be allowed to claim any of these credits for 2 years even if you are otherwise eligible to do so. If it is determined that your error was due to fraud, you will not be allowed to claim any of these credits for 10 years"
   - *Refused at:* `s8812.line12`
@@ -1029,7 +1029,7 @@ The data holds **199 refusal gates**: 160 tax situations the tool does not prepa
     *Source:* [i1040gi] p. 42, Step 4, question 2, "spouse died in 2025 or if you are preparing a return for someone who died in 2025, see Pub. 596 before you answer."
   - *Refused at:* `eic.age_range`
 - **`household.eic_disallowed_claim`**: Claiming the earned income credit after an earlier credit was reduced or disallowed, or in a disallowance period (Form 8862)?
-  - *The data asks or tests:* An earlier credit was reduced or disallowed (or a disallowance period applies) and Steps 1 to 5 of the earned income credit are passed with a credit above zero (Worksheet A line 6) (`test`)
+  - *The data asks or tests:* The earned income credit is claimed (Steps 1 to 5 are passed with a credit above zero on Worksheet A line 6 or Worksheet B line 11) and an earlier credit was reduced or disallowed (or a disallowance period applies) (`test`)
   - *Not covered:* Form 8862 and the EIC disallowance period (Form 8862, who must file). Your EIC, child tax credit, additional child tax credit or credit for other dependents for an earlier year was reduced or disallowed, or you are in a disallowance period; Form 8862 and the disallowance period are outside this tool.
     *Source:* [i1040gi] p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" and "don’t file Form 8862 or take the credit for the ... 2 years after the most recent tax year for which there was a final determination that your EIC claim was due to reckless or intentional disregard of the EIC rules ... 10 years after the most recent tax year for which there was a final determination that your EIC claim was due to fraud"
   - *Refused at:* `eic.credit`

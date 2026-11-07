@@ -2410,13 +2410,30 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = false
       cite: [i1040gi] p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income" (2025; printed date 2026-02-25; 482e9c48)
       note: Interpretation amb.2025.hoh_community_property: The second, for the nine states the instructions list (Direct File''s knockout tests eight; Louisiana is in the text and so in the question). The owner's decision of 2026-10-22 (integrity plan decision 10). The archived text states the community income rule but not a prohibition on the filing status; the refusal rests on the rule being outside the tool, not on a forbidden status. Married filing separately, the other case Direct File knocks out, is refused throughout the tool already. A registered domestic partner in Nevada, Washington or California (same paragraph) is asked and refused by household.rdp_community_property (BUG-0220). (i1040gi, p. 23, Community Property States, "If you and your spouse lived in a community property state, you must usually follow state law to determine what is community income and what is separate income. For details, see Form 8958 and Pub. 555")
-  (helper) Was your EIC for a year after 1996, or your child tax credit, additional child tax credit or credit for other dependents for a year after 2015, reduced or disallowed other than for a math or clerical error, or are you in a 2- or 10-year disallowance period?
+  (helper) Was your (or, on a joint return, your spouse's) EIC for a year after 1996, or child tax credit, additional child tax credit or credit for other dependents for a year after 2015, reduced or disallowed other than for a math or clerical error, or is either of you in a 2- or 10-year disallowance period?
       = false
       cite: [i1040gi] p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" and "don’t file Form 8862 or take the credit for the ... 2 years after the most recent tax year for which there was a final determination that your EIC claim was due to reckless or intentional disregard of the EIC rules ... 10 years after the most recent tax year for which there was a final determination that your EIC claim was due to fraud"; p. 39, Form 8862, who must file, "You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit (refundable or nonrefundable depending on the tax year), additional child tax credit, or credit for other dependents for a year after 2015 was denied or reduced for any reason other than a math or clerical error"; i1040s8812 p. 2, Form 8862 may be required, "If your CTC, ACTC, or ODC for a year after 2015 was denied or reduced for any reason other than a math or clerical error, you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies" (2025; printed date 2026-02-25; 482e9c48)
-  (gate) An earlier credit was reduced or disallowed (or a disallowance period applies) and Schedule 8812 line 8 is more than line 11 (a child tax credit or credit for other dependents is figured)
+  (helper) Year parameter household.no (false)
+      = false
+      cite: [i1040gi] p. 39, Form 8862, who must file, "You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit"; p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) The earned income credit figured in Step 6 (Worksheet A line 6, or Worksheet B line 11 for a filer who answered Yes to Step 5, question 2) is more than zero
+      = UNKNOWN (no band for 13000000 cents)
+      cite: [i1040gi] p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) The earned income credit is claimed (Steps 1 to 5 are passed and the credit figured in Step 6, Worksheet A line 6 or Worksheet B line 11, is more than zero; false when Steps 1 to 5 are not passed)
+      = false
+      cite: [i1040gi] p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["eic.eligible",{"const":false}],"op":"test"}
+  (helper) The return claims the earned income credit, the child tax credit, the credit for other dependents or the additional child tax credit (the earned income credit is claimed, or Schedule 8812 line 8 is more than line 11)
+      = false
+      cite: [i1040gi] p. 39, Form 8862, who must file, "You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit"; p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error"; i1040s8812 p. 2, Form 8862 may be required, "you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Whether an earlier earned income credit, child tax credit, additional child tax credit or credit for other dependents was reduced or disallowed (or a disallowance period applies), asked only when the return claims one of these credits (false otherwise, where Form 8862 does not apply)
+      = false
+      cite: [i1040gi] p. 39, Form 8862, who must file, "You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit"; p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["household.claims_8862_credit",{"const":false}],"op":"test"}
+  (gate) Schedule 8812 line 8 is more than line 11 (a child tax credit or credit for other dependents is figured) and an earlier credit was reduced or disallowed (or a disallowance period applies)
       = false
       cite: [i1040s8812] p. 2, Form 8862 may be required, "If your CTC, ACTC, or ODC for a year after 2015 was denied or reduced for any reason other than a math or clerical error, you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies" (2025; printed date 2026-01-23; bb9788cd)
-  (gate) An earlier credit was reduced or disallowed (or a disallowance period applies) and Steps 1 to 5 of the earned income credit are passed with a credit above zero (Worksheet A line 6)
+  (gate) The earned income credit is claimed (Steps 1 to 5 are passed with a credit above zero on Worksheet A line 6 or Worksheet B line 11) and an earlier credit was reduced or disallowed (or a disallowance period applies)
       = false
       cite: [i1040gi] p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" (2025; printed date 2026-02-25; 482e9c48)
   (helper) Number of parents who qualify you under Test 1
@@ -5216,6 +5233,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Jury duty pay you gave to your employer because your employer paid your salary while you served on the jury
       = $0
       cite: [i1040gi] p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury"; p525 p. 34, Jury duty, "you can deduct the amount turned over to your employer as an adjustment to income" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Jury duty pay on line 8h is more than zero
+      = false
+      cite: [i1040gi] p. 91, Line 8h, "Enter any jury duty pay and see the instructions for line 24a"; p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Jury duty pay you gave to your employer, asked only when there is jury duty pay on line 8h (zero otherwise)
+      = $0
+      cite: [i1040gi] p. 91, Line 8h, "Enter any jury duty pay and see the instructions for line 24a"; p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1.has_jury_pay",{"const":false}],"op":"test"}
   (gate) The jury duty pay given to the employer is more than the jury duty pay on line 8h
       = false
       cite: [i1040gi] p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer" (2025; printed date 2026-02-25; 482e9c48)
@@ -6013,9 +6037,19 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Any nontaxable combat pay (Form W-2, box 12, code Q)?
       = false
       cite: [i1040s8812] p. 8, Earned Income Worksheet, line 1b (2025; printed date 2026-01-23; bb9788cd)
-  (helper) Bona fide resident of Puerto Rico?
+  (helper) Bona fide resident of Puerto Rico (you, or your spouse on a joint return)?
       = false
       cite: [f1040s8812] Schedule 8812 (2025), after line 20, "If you are a bona fide resident of Puerto Rico, go to line 21" (2025; created 2025-07-30; 6936462d)
+  (helper) Year parameter s8812.no (false)
+      = false
+      cite: [i1040s8812] p. 3, Bona Fide Residents of Puerto Rico, "If you were a bona fide resident of Puerto Rico, you may be eligible to claim the ACTC if you had at least one qualifying child" (2025; printed date 2026-01-23; bb9788cd)
+  (helper) At least one qualifying child under age 17 with the required social security number (line 4 is more than zero)
+      = false
+      cite: [i1040s8812] p. 3, Bona Fide Residents of Puerto Rico, "If you were a bona fide resident of Puerto Rico, you may be eligible to claim the ACTC if you had at least one qualifying child" (2025; printed date 2026-01-23; bb9788cd)
+  (helper) Whether you were a bona fide resident of Puerto Rico, asked only with a qualifying child on line 4 (false otherwise, where line 16b and Credit Limit Worksheet B line 2 are zero and the Puerto Rico path changes no amount)
+      = false
+      cite: [i1040s8812] p. 3, Bona Fide Residents of Puerto Rico, "If you were a bona fide resident of Puerto Rico, you may be eligible to claim the ACTC if you had at least one qualifying child" (2025; printed date 2026-01-23; bb9788cd)
+      note: taken: {"eq":["s8812.has_qualifying_child",{"const":false}],"op":"test"}
   (helper) Earned Income Worksheet, line 1a. Enter the amount from line 1z of Form 1040
       = $130,000
       cite: [i1040s8812] p. 8, Earned Income Worksheet, line 1a (2025; printed date 2026-01-23; bb9788cd)
@@ -7211,6 +7245,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   sli.deduction: chose $0 (guard 1)
       not taken: guard 0 = false
+  s1.jury_to_employer_if_pay: chose $0 (guard 1)
+      not taken: guard 0 = false
   sa.saltlimit: chose $40,000 (guard 1)
       not taken: guard 0 = false
   f4952.line8: chose $0 (guard 1)
@@ -7247,6 +7283,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   eic.after_line4: chose UNKNOWN (no band for 13000000 cents) (guard 1)
       not taken: guard 0 = false
   eic.line6: chose UNKNOWN (no band for 13000000 cents) (guard 0)
+  household.eic_claimed: chose false (guard 1)
+      not taken: guard 0 = false
   eic.credit: chose $0 (guard 1)
       not taken: guard 0 = false
   sd.line18: chose $0 (guard 1)
@@ -7297,6 +7335,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   person[taxpayer].se_line6: chose $0 (guard 1)
       not taken: guard 0 = false
   f8960.line16: chose $0 (guard 1)
+      not taken: guard 0 = false
+  s8812.puerto_rico_if_child: chose false (guard 1)
       not taken: guard 0 = false
   s8812.from_part_iia: chose $0 (guard 1)
       not taken: guard 0 = false
@@ -7366,6 +7406,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   ftc.eligible_if_tax: chose false (guard 1)
       not taken: guard 0 = false
   ftc.elect_if_tax: chose false (guard 1)
+      not taken: guard 0 = false
+  household.credit_disallowed_if_claimed: chose false (guard 1)
       not taken: guard 0 = false
   person[taxpayer].ira_line2: chose $89,000 (guard 1)
       not taken: guard 0 = false
@@ -7737,8 +7779,10 @@ Derivations:
   sli.zero: param(#sales.zero = $0)
   sli.deduction: choose(sli.has = false; true = true; sli.has = false; false = false; sli.zero = $0)
   s1.line21: copy(sli.deduction = $0)
-  s1.jury_over: test(s1.jury_to_employer = $0; s1.line8h = $0)
-  s1.line24a: copy(s1.jury_over = false; s1.jury_to_employer = $0)
+  s1.has_jury_pay: test(s1.line8h = $0; s1.zero = $0)
+  s1.jury_to_employer_if_pay: choose(s1.has_jury_pay = false; true = true; s1.has_jury_pay = false; false = false; s1.zero = $0)
+  s1.jury_over: test(s1.jury_to_employer_if_pay = $0; s1.line8h = $0)
+  s1.line24a: copy(s1.jury_over = false; s1.jury_to_employer_if_pay = $0)
   s1.line25: copy(s1.line24a = $0)
   s1.line26: sum(s1.line11 = $0; s1.line13 = $0; s1.line15 = $0; s1.line16 = $0; s1.line17 = $0; s1.line18 = $0; s1.line19a = $0; s1.line20 = $0; s1.line21 = $0; s1.line25 = $0)
   f1040.line10: copy(scope.schedule1 = false; s1.line26 = $0)
@@ -7936,7 +7980,9 @@ Derivations:
   eic.smaller: smaller_of(eic.line5 = UNKNOWN (no band for 13000000 cents); eic.line2 = UNKNOWN (no band for 13000000 cents))
   eic.after_line4: choose(eic.line5_blank = false; true = true; eic.line5_blank = false; false = false; eic.smaller = UNKNOWN (no band for 13000000 cents))
   eic.line6: choose(eic.line4 = true; true = true; eic.line2 = UNKNOWN (no band for 13000000 cents))
-  household.eic_disallowed_claim: test(household.credit_disallowed = false; true = true)
+  household.no: param(#household.no = false)
+  household.eic_claimed: choose(eic.eligible = false; true = true; eic.eligible = false; false = false; household.no = false)
+  household.eic_disallowed_claim: test(household.eic_claimed = false; true = true)
   eic.credit: choose(household.eic_disallowed_claim = false; eic.eligible = false; true = true; eic.eligible = false; false = false; eic.zero = $0)
   eic.wsb_line5_stop: test(eic.below_top = false; true = true)
   eic.check_27c: test(eic.below_top = false; true = true; eic.reached_step3 = false; true = true; eic.reached_step3 = false; true = true; eic.reached_step3 = false; true = true; eic.eligible = false; true = true; eic.wsb_line5_stop = false; true = true)
@@ -7980,7 +8026,6 @@ Derivations:
   s2.line3: sum(s2.amt = false; s2.other = false; s2.line1z = $0; s2.line2 = $0)
   f1040.line17: copy(s2.line3 = $0)
   f1040.line18: sum(f1040.line16 = $20,267; f1040.line17 = $0)
-  household.ctc_disallowed_claim: test(household.credit_disallowed = false; true = true)
   s8812.line8: sum(s8812.line5 = $0; s8812.line7 = $0)
   s8812.line1: copy(f1040.line11a = $130,000)
   s8812.zero: param(#sales.zero = $0)
@@ -7993,6 +8038,7 @@ Derivations:
   s8812.excess: subtract_floor0(s8812.line3 = $130,000; s8812.line9 = $200,000)
   s8812.line10: round(s8812.excess = $0)
   s8812.line11: multiply_rate(s8812.line10 = $0; #ctc.phaseout_rate = 5/100)
+  household.ctc_disallowed_claim: test(s8812.line8 = $0; s8812.line11 = $0)
   s8812.line12: subtract_floor0(household.ctc_disallowed_claim = false; s8812.line8 = $0; s8812.line11 = $0)
   s8812.clw_a1: copy(f1040.line18 = $20,267)
   ftc.has_tax: test(ftc.taxes = $0; 0 = $0)
@@ -8126,12 +8172,15 @@ Derivations:
   f1040.line27b: copy(eic.clergy = false)
   f1040.line27c: copy(eic.check_27c = false)
   f1040.separated_spouses: copy(eic.separated_box = false)
+  s8812.has_qualifying_child: test(s8812.line4 = 0; 0 = 0)
+  s8812.no: param(#s8812.no = false)
+  s8812.puerto_rico_if_child: choose(s8812.has_qualifying_child = false; true = true; s8812.has_qualifying_child = false; false = false; s8812.no = false)
   s8812.few_children: test(s8812.line16b = $0; #actc.three_children = $5,100)
   s8812.show13: test(s8812.line12 = $0; #sales.zero = $0)
   s8812.show16b: test(s8812.show13 = false; true = true)
   s8812.show_iia: test(s8812.show16b = false; true = true)
   s8812.from_part_iia: choose(s8812.show_iia = false; true = true; s8812.show_iia = false; false = false; s8812.zero = $0)
-  s8812.line27: choose(s8812.puerto_rico = false; s8812.few_children = true; true = true; s8812.from_part_iia = $0)
+  s8812.line27: choose(s8812.puerto_rico_if_child = false; s8812.few_children = true; true = true; s8812.from_part_iia = $0)
   f1040.line28: copy(s8812.line27 = $0)
   f1040.line28_box: test(true = true; false = false)
   f8863.zero: param(#sales.zero = $0)
@@ -8598,6 +8647,9 @@ Derivations:
   household.taxpayer_work_ssn_count: sum_over(person[taxpayer].role = taxpayer; "taxpayer" = taxpayer; person[taxpayer].work_ssn = true; true = true; person[taxpayer].one = 1)
   household.taxpayer_work_ssn: test(household.taxpayer_work_ssn_count = 1; 0 = 0)
   household.hoh_community_property: test(f1040.status = single; "hoh" = hoh)
+  household.eic_above_zero: test(eic.line6 = UNKNOWN (no band for 13000000 cents); eic.zero = $0)
+  household.claims_8862_credit: test(s8812.line8 = $0; s8812.line11 = $0; household.eic_claimed = false; true = true)
+  household.credit_disallowed_if_claimed: choose(household.claims_8862_credit = false; true = true; household.claims_8862_credit = false; false = false; household.no = false)
   household.test1_met: test(household.test1_persons = 0; 0 = 0)
   household.hoh_absence: test(household.unmarried = true; true = true; household.test1_met = false; false = false; household.home_cost = false; true = true)
   household.test2_met: test(household.home_cost = false; true = true)
@@ -9375,7 +9427,7 @@ Derivations:
   s8812.clwb_10: sum(f1040.line27a = $0; s3.line11 = $0)
   s8812.clwb_11_figured: subtract_floor0(s8812.clwb_9 = $9,945; s8812.clwb_10 = $0)
   s8812.clwb_11_three: choose(s8812.clwb_5_covers = true; true = true; s8812.zero = $0)
-  s8812.clwb_11: choose(s8812.puerto_rico = false; s8812.clwb_three = false; true = true; s8812.clwb_three = false; false = false; s8812.zero = $0)
+  s8812.clwb_11: choose(s8812.puerto_rico_if_child = false; s8812.clwb_three = false; true = true; s8812.clwb_three = false; false = false; s8812.zero = $0)
   s8812.clwb_12: larger_of(s8812.clwb_5 = $19,125; s8812.clwb_11 = $0)
   s8812.clwb_13: smaller_of(s8812.clwb_2 = $0; s8812.clwb_12 = $19,125)
   s8812.clwb_14: subtract_floor0(s8812.clwb_1 = $0; s8812.clwb_13 = $0)

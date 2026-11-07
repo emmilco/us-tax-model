@@ -6,9 +6,9 @@
   "partial_bases": 40,
   "partial_records": 586,
   "return_states": {
-   "completed": 445,
-   "incomplete": 1166,
-   "refused": 1113
+   "completed": 470,
+   "incomplete": 1147,
+   "refused": 1107
   },
   "seed": 20261026
  },
@@ -342,14 +342,14 @@
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-unknown": 180
+     "candidate-unknown": 191
     },
     "incomplete": {
-     "candidate-unknown": 1007
+     "candidate-unknown": 998
     },
     "refused": {
      "candidate-refuses": 1,
-     "candidate-unknown": 484
+     "candidate-unknown": 482
     }
    },
    "open_at_triage": false,
@@ -1049,13 +1049,13 @@
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-unknown": 170
+     "candidate-unknown": 181
     },
     "incomplete": {
-     "candidate-unknown": 1023
+     "candidate-unknown": 1014
     },
     "refused": {
-     "candidate-unknown": 476
+     "candidate-unknown": 474
     }
    },
    "open_at_triage": false,
@@ -1918,15 +1918,15 @@
    "kinds_by_return": {
     "completed": {
      "candidate-refuses": 2,
-     "candidate-unknown": 182
+     "candidate-unknown": 192
     },
     "incomplete": {
      "candidate-refuses": 2,
-     "candidate-unknown": 865
+     "candidate-unknown": 856
     },
     "refused": {
      "candidate-refuses": 42,
-     "candidate-unknown": 396
+     "candidate-unknown": 395
     }
    },
    "open_at_triage": false,
@@ -3160,16 +3160,16 @@
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-unknown": 180
+     "candidate-unknown": 191
     },
     "incomplete": {
-     "candidate-unknown": 1015
+     "candidate-unknown": 1006
     },
     "refused": {
-     "candidate-unknown": 488
+     "candidate-unknown": 486
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "s1.line8c",
    "shown_when": null,
    "sources": {
@@ -4164,16 +4164,16 @@
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-refuses": 68,
-     "candidate-unknown": 71
+     "candidate-refuses": 71,
+     "candidate-unknown": 81
     },
     "incomplete": {
-     "candidate-refuses": 35,
-     "candidate-unknown": 1006
+     "candidate-refuses": 32,
+     "candidate-unknown": 997
     },
     "refused": {
      "candidate-refuses": 87,
-     "candidate-unknown": 380
+     "candidate-unknown": 379
     }
    },
    "open_at_triage": false,
@@ -4763,12 +4763,821 @@
      }
     }
    ]
+  },
+  {
+   "absent": 0,
+   "agree": 2643,
+   "candidate": "s1.line24a",
+   "compared": 2724,
+   "completed_witnesses": [
+    {
+     "candidate": {
+      "input": "s1.jury_to_employer",
+      "kind": "unknown",
+      "reason": "no input supplied for s1.jury_to_employer"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s1.jury_to_employer",
+       "value": {
+        "input": "s1.jury_to_employer",
+        "kind": "unknown",
+        "reason": "no input supplied for s1.jury_to_employer"
+       }
+      }
+     ],
+     "instance": "s1",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s1.jury_over",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.jury_to_employer_if_pay",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f4952.1.deepseek",
+      "kind": "partial",
+      "withheld": "s1.jury_to_employer"
+     }
+    },
+    {
+     "candidate": {
+      "input": "s1.jury_to_employer",
+      "kind": "unknown",
+      "reason": "no input supplied for s1.jury_to_employer"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s1.jury_to_employer",
+       "value": {
+        "input": "s1.jury_to_employer",
+        "kind": "unknown",
+        "reason": "no input supplied for s1.jury_to_employer"
+       }
+      }
+     ],
+     "instance": "s1",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s1.jury_over",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.jury_to_employer_if_pay",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f8960.1.deepseek",
+      "kind": "partial",
+      "withheld": "s1.jury_to_employer"
+     }
+    },
+    {
+     "candidate": {
+      "input": "s1.jury_to_employer",
+      "kind": "unknown",
+      "reason": "no input supplied for s1.jury_to_employer"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s1.jury_to_employer",
+       "value": {
+        "input": "s1.jury_to_employer",
+        "kind": "unknown",
+        "reason": "no input supplied for s1.jury_to_employer"
+       }
+      }
+     ],
+     "instance": "s1",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s1.jury_over",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.jury_to_employer_if_pay",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.u1250.1.deepseek",
+      "kind": "partial",
+      "withheld": "s1.jury_to_employer"
+     }
+    },
+    {
+     "candidate": {
+      "input": "s1.jury_to_employer",
+      "kind": "unknown",
+      "reason": "no input supplied for s1.jury_to_employer"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s1.jury_to_employer",
+       "value": {
+        "input": "s1.jury_to_employer",
+        "kind": "unknown",
+        "reason": "no input supplied for s1.jury_to_employer"
+       }
+      }
+     ],
+     "instance": "s1",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s1.jury_over",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.jury_to_employer_if_pay",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.s2.3.deepseek",
+      "kind": "partial",
+      "withheld": "s1.jury_to_employer"
+     }
+    },
+    {
+     "candidate": {
+      "input": "s1.jury_to_employer",
+      "kind": "unknown",
+      "reason": "no input supplied for s1.jury_to_employer"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s1.jury_to_employer",
+       "value": {
+        "input": "s1.jury_to_employer",
+        "kind": "unknown",
+        "reason": "no input supplied for s1.jury_to_employer"
+       }
+      }
+     ],
+     "instance": "s1",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s1.jury_over",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.jury_to_employer_if_pay",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.s3.4.deepseek",
+      "kind": "partial",
+      "withheld": "s1.jury_to_employer"
+     }
+    },
+    {
+     "candidate": {
+      "input": "s1.jury_to_employer",
+      "kind": "unknown",
+      "reason": "no input supplied for s1.jury_to_employer"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s1.jury_to_employer",
+       "value": {
+        "input": "s1.jury_to_employer",
+        "kind": "unknown",
+        "reason": "no input supplied for s1.jury_to_employer"
+       }
+      }
+     ],
+     "instance": "s1",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s1.jury_over",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.jury_to_employer_if_pay",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f8962.3.deepseek",
+      "kind": "partial",
+      "withheld": "s1.jury_to_employer"
+     }
+    }
+   ],
+   "differ": 81,
+   "handle": "24a",
+   "in_scope": 2723,
+   "in_scope_agree": 2642,
+   "invalid": 0,
+   "kinds": {
+    "candidate-unknown": 41,
+    "project-unknown": 40
+   },
+   "kinds_by_return": {
+    "completed": {
+     "candidate-unknown": 21
+    },
+    "incomplete": {
+     "candidate-unknown": 11,
+     "project-unknown": 32
+    },
+    "refused": {
+     "candidate-unknown": 9,
+     "project-unknown": 8
+    }
+   },
+   "open_at_triage": true,
+   "project": "s1.line24a",
+   "shown_when": null,
+   "sources": {
+    "fixture": 1638,
+    "generated": 500,
+    "partial": 586
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "input": "s1.jury_to_employer",
+      "kind": "unknown",
+      "reason": "no input supplied for s1.jury_to_employer"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s1.jury_to_employer",
+       "value": {
+        "input": "s1.jury_to_employer",
+        "kind": "unknown",
+        "reason": "no input supplied for s1.jury_to_employer"
+       }
+      }
+     ],
+     "instance": "s1",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s1.jury_over",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.jury_to_employer_if_pay",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.sc.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s1.jury_to_employer",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s1",
+     "kind": "project-unknown",
+     "project": {
+      "input": "s1.line8h",
+      "kind": "unknown",
+      "reason": "no input supplied for s1.line8h"
+     },
+     "project_operands": [
+      {
+       "ref": "s1.jury_over",
+       "value": {
+        "input": "s1.line8h",
+        "kind": "unknown",
+        "reason": "no input supplied for s1.line8h"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f2441.1.deepseek",
+      "kind": "partial",
+      "withheld": "s1.line8h"
+     }
+    },
+    {
+     "candidate": {
+      "input": "s1.jury_to_employer",
+      "kind": "unknown",
+      "reason": "no input supplied for s1.jury_to_employer"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s1.jury_to_employer",
+       "value": {
+        "input": "s1.jury_to_employer",
+        "kind": "unknown",
+        "reason": "no input supplied for s1.jury_to_employer"
+       }
+      }
+     ],
+     "instance": "s1",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s1.jury_over",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.jury_to_employer_if_pay",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f2441.1.deepseek",
+      "kind": "partial",
+      "withheld": "s1.jury_to_employer"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s1.jury_to_employer",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s1",
+     "kind": "project-unknown",
+     "project": {
+      "input": "s1.line8h",
+      "kind": "unknown",
+      "reason": "no input supplied for s1.line8h"
+     },
+     "project_operands": [
+      {
+       "ref": "s1.jury_over",
+       "value": {
+        "input": "s1.line8h",
+        "kind": "unknown",
+        "reason": "no input supplied for s1.line8h"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f2441.5.deepseek",
+      "kind": "partial",
+      "withheld": "s1.line8h"
+     }
+    },
+    {
+     "candidate": {
+      "input": "s1.jury_to_employer",
+      "kind": "unknown",
+      "reason": "no input supplied for s1.jury_to_employer"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s1.jury_to_employer",
+       "value": {
+        "input": "s1.jury_to_employer",
+        "kind": "unknown",
+        "reason": "no input supplied for s1.jury_to_employer"
+       }
+      }
+     ],
+     "instance": "s1",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s1.jury_over",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.jury_to_employer_if_pay",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f2441.5.deepseek",
+      "kind": "partial",
+      "withheld": "s1.jury_to_employer"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s1.jury_to_employer",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s1",
+     "kind": "project-unknown",
+     "project": {
+      "input": "s1.line8h",
+      "kind": "unknown",
+      "reason": "no input supplied for s1.line8h"
+     },
+     "project_operands": [
+      {
+       "ref": "s1.jury_over",
+       "value": {
+        "input": "s1.line8h",
+        "kind": "unknown",
+        "reason": "no input supplied for s1.line8h"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.2.deepseek",
+      "kind": "partial",
+      "withheld": "s1.line8h"
+     }
+    },
+    {
+     "candidate": {
+      "input": "s1.jury_to_employer",
+      "kind": "unknown",
+      "reason": "no input supplied for s1.jury_to_employer"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s1.jury_to_employer",
+       "value": {
+        "input": "s1.jury_to_employer",
+        "kind": "unknown",
+        "reason": "no input supplied for s1.jury_to_employer"
+       }
+      }
+     ],
+     "instance": "s1",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s1.jury_over",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.jury_to_employer_if_pay",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f8889.2.deepseek",
+      "kind": "partial",
+      "withheld": "s1.jury_to_employer"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s1.jury_to_employer",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s1",
+     "kind": "project-unknown",
+     "project": {
+      "input": "s1.line8h",
+      "kind": "unknown",
+      "reason": "no input supplied for s1.line8h"
+     },
+     "project_operands": [
+      {
+       "ref": "s1.jury_over",
+       "value": {
+        "input": "s1.line8h",
+        "kind": "unknown",
+        "reason": "no input supplied for s1.line8h"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f4952.1.deepseek",
+      "kind": "partial",
+      "withheld": "s1.line8h"
+     }
+    },
+    {
+     "candidate": {
+      "input": "s1.jury_to_employer",
+      "kind": "unknown",
+      "reason": "no input supplied for s1.jury_to_employer"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s1.jury_to_employer",
+       "value": {
+        "input": "s1.jury_to_employer",
+        "kind": "unknown",
+        "reason": "no input supplied for s1.jury_to_employer"
+       }
+      }
+     ],
+     "instance": "s1",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s1.jury_over",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.jury_to_employer_if_pay",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f4952.1.deepseek",
+      "kind": "partial",
+      "withheld": "s1.jury_to_employer"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s1.jury_to_employer",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s1",
+     "kind": "project-unknown",
+     "project": {
+      "input": "s1.line8h",
+      "kind": "unknown",
+      "reason": "no input supplied for s1.line8h"
+     },
+     "project_operands": [
+      {
+       "ref": "s1.jury_over",
+       "value": {
+        "input": "s1.line8h",
+        "kind": "unknown",
+        "reason": "no input supplied for s1.line8h"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.f8960.1.deepseek",
+      "kind": "partial",
+      "withheld": "s1.line8h"
+     }
+    },
+    {
+     "candidate": {
+      "input": "s1.jury_to_employer",
+      "kind": "unknown",
+      "reason": "no input supplied for s1.jury_to_employer"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s1.jury_to_employer",
+       "value": {
+        "input": "s1.jury_to_employer",
+        "kind": "unknown",
+        "reason": "no input supplied for s1.jury_to_employer"
+       }
+      }
+     ],
+     "instance": "s1",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "s1.jury_over",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "s1.jury_to_employer_if_pay",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "base": "classm.f8960.1.deepseek",
+      "kind": "partial",
+      "withheld": "s1.jury_to_employer"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "s1.jury_to_employer",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "s1",
+     "kind": "project-unknown",
+     "project": {
+      "input": "s1.line8h",
+      "kind": "unknown",
+      "reason": "no input supplied for s1.line8h"
+     },
+     "project_operands": [
+      {
+       "ref": "s1.jury_over",
+       "value": {
+        "input": "s1.line8h",
+        "kind": "unknown",
+        "reason": "no input supplied for s1.line8h"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.g28.2.deepseek",
+      "kind": "partial",
+      "withheld": "s1.line8h"
+     }
+    }
+   ]
   }
  ],
- "log_sha256_at_triage": "80a710428b6c31909f9f4781213302189d79959f5c246a0191a73d64c50195f8",
+ "log_sha256_at_triage": "0ae78d9d1fbbc80fed693eb0a128fd6689ab06b298786826c9fb5b0156f1f471",
  "policy": "executable-triage-v2",
  "response_sha256": "8ba5edbc8454317ecd7de2818747236ae11a5d255e77caa0c274ecca1b72cf0f",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "evaluated",
- "subject_sha256": "887078fe05413a5f759ba7f5b303bafcadd888dc6885940277051fe5851f5f4c"
+ "subject_sha256": "6204c88477beec696354f13daed0ccace12bbd6a1ae2285b2a7dc95e2f1de023"
 }

@@ -565,32 +565,6 @@
    "bugs": [],
    "adjudication": "reviews/2025/screens/adjudication/group0.md"
   },
-  "unruled:s8812.puerto_rico": {
-   "prompt_sha": "221fe600ca058eb08ced490fee435167e15d53a11913c0829583757f0b77b4fe",
-   "reason": "No defect; as group 7 (rechecked): WIDE accepted; the residency-term doubt can only lower the credit.",
-   "findings": [
-    {
-     "n": 0,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "f1040s8812 p. 2. A resident who stops at line 12, 16a or 16b is refused though line 27 is zero. Safe; as group 7 finding 1."
-    },
-    {
-     "n": 1,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "i1040s8812 p. 5, CLW B line 6. A resident whose line 5 is not less than line 1 is refused though line 11 is zero. Safe."
-    },
-    {
-     "n": 2,
-     "kind": "UNCLEAR",
-     "class": "out of scope / presentation",
-     "evidence": "f1040s8812 p. 2. The question uses the form's term; a wrong No can only lower the credit (line 26 is the larger of lines 20 and 25; CLW B line 11 is zero off the Puerto Rico path). As group 7 findings 2 and 3."
-    }
-   ],
-   "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group8.md"
-  },
   "unruled:sa.charity_limited": {
    "prompt_sha": "a6fdc61edefeab935a2c622f9221de0c9c35bfdb9b67afb1ddb48c18f1aa9925",
    "reason": "No defect: every non-charitable item is screened by sa.unsupported, which gates the same eight lines; the two UNCLEARs compute correctly on NO.",

@@ -6,9 +6,9 @@
   "partial_bases": 40,
   "partial_records": 235,
   "return_states": {
-   "completed": 400,
-   "incomplete": 926,
-   "refused": 1047
+   "completed": 404,
+   "incomplete": 928,
+   "refused": 1041
   },
   "seed": 20261026
  },
@@ -2482,7 +2482,7 @@
   },
   {
    "absent": 0,
-   "agree": 2368,
+   "agree": 1694,
    "candidate": "household.ctc_disallowed_claim",
    "compared": 2373,
    "completed_witnesses": [
@@ -2531,21 +2531,6 @@
      },
      "project_operands": [
       {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
        "ref": "s8812.line8",
        "value": {
         "cents": 150000,
@@ -2568,24 +2553,29 @@
      }
     }
    ],
-   "differ": 5,
+   "differ": 679,
    "handle": "household.ctc_disallowed_claim",
-   "in_scope": 2367,
-   "in_scope_agree": 2366,
+   "in_scope": 1771,
+   "in_scope_agree": 1692,
    "invalid": 0,
    "kinds": {
     "candidate-unknown": 1,
-    "project-refuses": 4
+    "project-refuses": 600,
+    "project-unknown": 78
    },
    "kinds_by_return": {
     "completed": {
      "candidate-unknown": 1
     },
+    "incomplete": {
+     "project-unknown": 55
+    },
     "refused": {
-     "project-refuses": 4
+     "project-refuses": 600,
+     "project-unknown": 23
     }
    },
-   "open_at_triage": false,
+   "open_at_triage": true,
    "project": "household.ctc_disallowed_claim",
    "shown_when": null,
    "sources": {
@@ -2605,9 +2595,8 @@
       {
        "ref": "household.credit_disallowed",
        "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
+        "kind": "bool",
+        "value": false
        }
       },
       {
@@ -2616,19 +2605,66 @@
         "kind": "bool",
         "value": true
        }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 14, \"enter on line 14 the total of the following amounts included on line 12\""
       },
+      "form": "Form 2441 line 14 amounts",
+      "gate": "f2441.line14_bad",
+      "kind": "refusal",
+      "remedy": "The amounts forfeited or carried forward on line 14 are amounts included on line 12, so line 14 cannot be more than line 12. Check the amounts with your employer."
+     },
+     "project_operands": [
       {
-       "ref": "household.h_ctc_odc_count",
+       "ref": "s8812.line8",
        "value": {
-        "kind": "count",
-        "value": 0
+        "cents": 0,
+        "kind": "money"
        }
       },
       {
-       "ref": "1",
+       "ref": "s8812.line11",
        "value": {
-        "kind": "count",
-        "value": 1
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 14, \"enter on line 14 the total of the following amounts included on line 12\""
+        },
+        "form": "Form 2441 line 14 amounts",
+        "gate": "f2441.line14_bad",
+        "kind": "refusal",
+        "remedy": "The amounts forfeited or carried forward on line 14 are amounts included on line 12, so line 14 cannot be more than line 12. Check the amounts with your employer."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.w2.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
        }
       }
      ],
@@ -2645,21 +2681,6 @@
       "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope."
      },
      "project_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
       {
        "ref": "s8812.line8",
        "value": {
@@ -2683,24 +2704,21 @@
      ],
      "project_return": "refused",
      "source": {
-      "base": "classm.f8889.2.deepseek",
-      "kind": "partial",
-      "withheld": "household.credit_disallowed"
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
      }
     },
     {
      "candidate": {
-      "input": "household.credit_disallowed",
-      "kind": "unknown",
-      "reason": "no input supplied for household.credit_disallowed"
+      "kind": "bool",
+      "value": false
      },
      "candidate_operands": [
       {
        "ref": "household.credit_disallowed",
        "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
+        "kind": "bool",
+        "value": false
        }
       },
       {
@@ -2709,19 +2727,66 @@
         "kind": "bool",
         "value": true
        }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 4, Lines 4 and 5, \"Excluded as foreign earned income (including any housing exclusion) on Form 2555, line 43\""
       },
+      "form": "Earned income less excluded foreign earned income (Form 2441, lines 4, 5, 18 and 19; Forms 2555 and 4563)",
+      "gate": "sa.excluded_income",
+      "kind": "refusal",
+      "remedy": "Excluded foreign earned income, foreign housing and possessions income are outside this tool."
+     },
+     "project_operands": [
       {
-       "ref": "household.h_ctc_odc_count",
+       "ref": "s8812.line8",
        "value": {
-        "kind": "count",
-        "value": 2
+        "cents": 50000,
+        "kind": "money"
        }
       },
       {
-       "ref": "1",
+       "ref": "s8812.line11",
        "value": {
-        "kind": "count",
-        "value": 1
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 4, Lines 4 and 5, \"Excluded as foreign earned income (including any housing exclusion) on Form 2555, line 43\""
+        },
+        "form": "Earned income less excluded foreign earned income (Form 2441, lines 4, 5, 18 and 19; Forms 2555 and 4563)",
+        "gate": "sa.excluded_income",
+        "kind": "refusal",
+        "remedy": "Excluded foreign earned income, foreign housing and possessions income are outside this tool."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
        }
       }
      ],
@@ -2730,20 +2795,52 @@
      "project": {
       "cite": {
        "doc": "i1040gi",
-       "locator": "p. 27, Exception 2; f1099r Box 7"
+       "locator": "p. 22, Social security number, \"You must enter each dependent\u2019s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter \u201cDied\u201d on row (3) of the Dependents section and include a copy of the child\u2019s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\""
       },
-      "form": "Form 8606 or another Form 1099-R code",
-      "gate": "person[taxpayer].retirement[r1].bad_code",
+      "form": "Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3))",
+      "gate": "dependent[dep_c].claimed_no_tin",
       "kind": "refusal",
-      "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside this tool."
+      "remedy": "Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool."
      },
      "project_operands": [
       {
+       "ref": "s8812.line8",
+       "value": {
+        "cite": {
+         "doc": "i1040gi",
+         "locator": "p. 22, Social security number, \"You must enter each dependent\u2019s social security number (SSN)\" and \"If your dependent child was born and died in 2025 and you do not have an SSN for the child, enter \u201cDied\u201d on row (3) of the Dependents section and include a copy of the child\u2019s birth certificate, death certificate, or hospital records\"; p. 14, Head of Household, \"The dependents you claim are those you list by name and SSN ... in the Dependents section on Form 1040 or 1040-SR\""
+        },
+        "form": "Dependent without an SSN, ITIN or ATIN (Form 1040, Dependents, row (3))",
+        "gate": "dependent[dep_c].claimed_no_tin",
+        "kind": "refusal",
+        "remedy": "Each dependent must be listed with an SSN (or ITIN or ATIN) issued on or before the due date of your return. A dependent child who was born and died in 2025 without an SSN, entered as \"Died\" on row (3) with a copy of the birth certificate, death certificate or hospital records, is outside this tool."
+       }
+      },
+      {
+       "ref": "s8812.line11",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8960.3.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
        "ref": "household.credit_disallowed",
        "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
+        "kind": "bool",
+        "value": false
        }
       },
       {
@@ -2752,11 +2849,25 @@
         "kind": "bool",
         "value": true
        }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
       },
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+      "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+      "kind": "refusal",
+      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+     },
+     "project_operands": [
       {
        "ref": "s8812.line8",
        "value": {
-        "cents": 440000,
+        "cents": 220000,
         "kind": "money"
        }
       },
@@ -2764,21 +2875,477 @@
        "ref": "s8812.line11",
        "value": {
         "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 27, Exception 2; f1099r Box 7"
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
         },
-        "form": "Form 8606 or another Form 1099-R code",
-        "gate": "person[taxpayer].retirement[r1].bad_code",
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
         "kind": "refusal",
-        "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside this tool."
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
        }
       }
      ],
      "project_return": "refused",
      "source": {
-      "base": "classm.dependent.2.deepseek",
-      "kind": "partial",
-      "withheld": "household.credit_disallowed"
+      "id": "classm.g28.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "Schedule B special treatment / Form 8815",
+      "gate": "sb.unsupported",
+      "kind": "refusal",
+      "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
+     },
+     "project_operands": [
+      {
+       "ref": "s8812.line8",
+       "value": {
+        "cents": 50000,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s8812.line11",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "Schedule B special treatment / Form 8815",
+        "gate": "sb.unsupported",
+        "kind": "refusal",
+        "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-unknown",
+     "project": {
+      "input": "dependent[dep_a].other_nontaxpayer",
+      "kind": "unknown",
+      "reason": "no input supplied for dependent[dep_a].other_nontaxpayer"
+     },
+     "project_operands": [
+      {
+       "ref": "s8812.line8",
+       "value": {
+        "input": "dependent[dep_a].other_nontaxpayer",
+        "kind": "unknown",
+        "reason": "no input supplied for dependent[dep_a].other_nontaxpayer"
+       }
+      },
+      {
+       "ref": "s8812.line11",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "household.credit_disallowed_if_claimed",
+       "value": {
+        "input": "dependent[dep_a].other_nontaxpayer",
+        "kind": "unknown",
+        "reason": "no input supplied for dependent[dep_a].other_nontaxpayer"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.retirement.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-unknown",
+     "project": {
+      "input": "clcw.prior_sd7",
+      "kind": "unknown",
+      "reason": "no input supplied for clcw.prior_sd7"
+     },
+     "project_operands": [
+      {
+       "ref": "s8812.line8",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s8812.line11",
+       "value": {
+        "input": "clcw.prior_sd7",
+        "kind": "unknown",
+        "reason": "no input supplied for clcw.prior_sd7"
+       }
+      },
+      {
+       "ref": "household.credit_disallowed_if_claimed",
+       "value": {
+        "input": "clcw.prior_sd7",
+        "kind": "unknown",
+        "reason": "no input supplied for clcw.prior_sd7"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "classm.carloan.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-unknown",
+     "project": {
+      "input": "dependent[dep_a].other_nontaxpayer",
+      "kind": "unknown",
+      "reason": "no input supplied for dependent[dep_a].other_nontaxpayer"
+     },
+     "project_operands": [
+      {
+       "ref": "s8812.line8",
+       "value": {
+        "input": "dependent[dep_a].other_nontaxpayer",
+        "kind": "unknown",
+        "reason": "no input supplied for dependent[dep_a].other_nontaxpayer"
+       }
+      },
+      {
+       "ref": "s8812.line11",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "household.credit_disallowed_if_claimed",
+       "value": {
+        "input": "dependent[dep_a].other_nontaxpayer",
+        "kind": "unknown",
+        "reason": "no input supplied for dependent[dep_a].other_nontaxpayer"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.retirement.2",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].f8889[hsa].dec_coverage",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].f8889[hsa].dec_coverage"
+     },
+     "project_operands": [
+      {
+       "ref": "s8812.line8",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s8812.line11",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].dec_coverage",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].dec_coverage"
+       }
+      },
+      {
+       "ref": "household.credit_disallowed_if_claimed",
+       "value": {
+        "input": "person[taxpayer].f8889[hsa].dec_coverage",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].f8889[hsa].dec_coverage"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "mutation.t2.f8889.all_year_dec_unanswered",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].sc[biz_a].scveh[car_2].employee_use",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_2].employee_use"
+     },
+     "project_operands": [
+      {
+       "ref": "s8812.line8",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s8812.line11",
+       "value": {
+        "input": "person[taxpayer].sc[biz_a].scveh[car_2].employee_use",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_2].employee_use"
+       }
+      },
+      {
+       "ref": "household.credit_disallowed_if_claimed",
+       "value": {
+        "input": "person[taxpayer].sc[biz_a].scveh[car_2].employee_use",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_2].employee_use"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "mutation.t2.scveh.mq_prior_car_q4",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].sc[biz_a].scveh[car_2].employee_use",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_2].employee_use"
+     },
+     "project_operands": [
+      {
+       "ref": "s8812.line8",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      },
+      {
+       "ref": "s8812.line11",
+       "value": {
+        "input": "person[taxpayer].sc[biz_a].scveh[car_2].employee_use",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_2].employee_use"
+       }
+      },
+      {
+       "ref": "household.credit_disallowed_if_claimed",
+       "value": {
+        "input": "person[taxpayer].sc[biz_a].scveh[car_2].employee_use",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[biz_a].scveh[car_2].employee_use"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "mutation.t2.scveh.mq_2025_car_q2",
+      "kind": "fixture"
      }
     },
     {
@@ -2826,21 +3393,6 @@
      },
      "project_operands": [
       {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
        "ref": "s8812.line8",
        "value": {
         "cents": 150000,
@@ -2861,198 +3413,12 @@
       "kind": "partial",
       "withheld": "household.credit_disallowed"
      }
-    },
-    {
-     "candidate": {
-      "input": "household.credit_disallowed",
-      "kind": "unknown",
-      "reason": "no input supplied for household.credit_disallowed"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_ctc_odc_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "f1040s8812",
-       "locator": "Schedule 8812 (2025), lines 2a\u20132c"
-      },
-      "form": "Schedule 8812 lines 2a\u20132c",
-      "gate": "sa.excluded_income",
-      "kind": "refusal",
-      "remedy": "Excluded Puerto Rico income, Form 2555 and Form 4563 amounts are outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "s8812.line8",
-       "value": {
-        "cents": 50000,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "s8812.line11",
-       "value": {
-        "cite": {
-         "doc": "f1040s8812",
-         "locator": "Schedule 8812 (2025), lines 2a\u20132c"
-        },
-        "form": "Schedule 8812 lines 2a\u20132c",
-        "gate": "sa.excluded_income",
-        "kind": "refusal",
-        "remedy": "Excluded Puerto Rico income, Form 2555 and Form 4563 amounts are outside this tool."
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.eic.6.deepseek",
-      "kind": "partial",
-      "withheld": "household.credit_disallowed"
-     }
-    },
-    {
-     "candidate": {
-      "input": "household.credit_disallowed",
-      "kind": "unknown",
-      "reason": "no input supplied for household.credit_disallowed"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "household.h_ctc_odc_count",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      },
-      {
-       "ref": "1",
-       "value": {
-        "kind": "count",
-        "value": 1
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040sb",
-       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
-      },
-      "form": "FinCEN Form 114 (FBAR)",
-      "gate": "sb.fbar_required",
-      "kind": "refusal",
-      "remedy": "Foreign-account reporting and the required country list are outside this tool. Prepare the separate FBAR and Schedule B disclosures."
-     },
-     "project_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "s8812.line8",
-       "value": {
-        "cents": 50000,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "s8812.line11",
-       "value": {
-        "cite": {
-         "doc": "i1040sb",
-         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
-        },
-        "form": "FinCEN Form 114 (FBAR)",
-        "gate": "sb.fbar_required",
-        "kind": "refusal",
-        "remedy": "Foreign-account reporting and the required country list are outside this tool. Prepare the separate FBAR and Schedule B disclosures."
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.dcprov.1",
-      "kind": "partial",
-      "withheld": "household.credit_disallowed"
-     }
     }
    ]
   },
   {
    "absent": 0,
-   "agree": 2339,
+   "agree": 1707,
    "candidate": "household.eic_disallowed_claim",
    "compared": 2373,
    "completed_witnesses": [
@@ -3085,21 +3451,7 @@
      },
      "project_operands": [
       {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "eic.eligible",
+       "ref": "household.eic_claimed",
        "value": {
         "kind": "bool",
         "value": false
@@ -3148,10 +3500,10 @@
      },
      "project_operands": [
       {
-       "ref": "household.credit_disallowed",
+       "ref": "household.eic_claimed",
        "value": {
         "kind": "bool",
-        "value": true
+        "value": false
        }
       },
       {
@@ -3159,34 +3511,6 @@
        "value": {
         "kind": "bool",
         "value": true
-       }
-      },
-      {
-       "ref": "eic.eligible",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "eic.line6",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "eic.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
        }
       }
      ],
@@ -3227,22 +3551,7 @@
      },
      "project_operands": [
       {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "eic.eligible",
+       "ref": "household.eic_claimed",
        "value": {
         "kind": "bool",
         "value": false
@@ -3294,22 +3603,7 @@
      },
      "project_operands": [
       {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "eic.eligible",
+       "ref": "household.eic_claimed",
        "value": {
         "kind": "bool",
         "value": false
@@ -3361,22 +3655,7 @@
      },
      "project_operands": [
       {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "eic.eligible",
+       "ref": "household.eic_claimed",
        "value": {
         "kind": "bool",
         "value": false
@@ -3398,14 +3677,15 @@
      }
     }
    ],
-   "differ": 34,
+   "differ": 666,
    "handle": "household.eic_disallowed_claim",
-   "in_scope": 2368,
-   "in_scope_agree": 2339,
+   "in_scope": 1861,
+   "in_scope_agree": 1707,
    "invalid": 0,
    "kinds": {
     "candidate-unknown": 26,
-    "project-refuses": 5,
+    "project-refuses": 512,
+    "project-unknown": 125,
     "value": 3
    },
    "kinds_by_return": {
@@ -3414,15 +3694,17 @@
      "value": 2
     },
     "incomplete": {
-     "candidate-unknown": 16
+     "candidate-unknown": 16,
+     "project-unknown": 109
     },
     "refused": {
      "candidate-unknown": 7,
-     "project-refuses": 5,
+     "project-refuses": 512,
+     "project-unknown": 16,
      "value": 1
     }
    },
-   "open_at_triage": false,
+   "open_at_triage": true,
    "project": "household.eic_disallowed_claim",
    "shown_when": null,
    "sources": {
@@ -3433,6 +3715,771 @@
    "status": "DISAGREE",
    "triage": "differs",
    "witnesses": [
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 5, Line 14, \"enter on line 14 the total of the following amounts included on line 12\""
+      },
+      "form": "Form 2441 line 14 amounts",
+      "gate": "f2441.line14_bad",
+      "kind": "refusal",
+      "remedy": "The amounts forfeited or carried forward on line 14 are amounts included on line 12, so line 14 cannot be more than line 12. Check the amounts with your employer."
+     },
+     "project_operands": [
+      {
+       "ref": "household.eic_claimed",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 5, Line 14, \"enter on line 14 the total of the following amounts included on line 12\""
+        },
+        "form": "Form 2441 line 14 amounts",
+        "gate": "f2441.line14_bad",
+        "kind": "refusal",
+        "remedy": "The amounts forfeited or carried forward on line 14 are amounts included on line 12, so line 14 cannot be more than line 12. Check the amounts with your employer."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.w2.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "Form 3520 / Form 3520-A",
+      "gate": "sb.line8",
+      "kind": "refusal",
+      "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope."
+     },
+     "project_operands": [
+      {
+       "ref": "household.eic_claimed",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "Form 3520 / Form 3520-A",
+        "gate": "sb.line8",
+        "kind": "refusal",
+        "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i2441",
+       "locator": "p. 4, Lines 4 and 5, \"Excluded as foreign earned income (including any housing exclusion) on Form 2555, line 43\""
+      },
+      "form": "Earned income less excluded foreign earned income (Form 2441, lines 4, 5, 18 and 19; Forms 2555 and 4563)",
+      "gate": "sa.excluded_income",
+      "kind": "refusal",
+      "remedy": "Excluded foreign earned income, foreign housing and possessions income are outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "household.eic_claimed",
+       "value": {
+        "cite": {
+         "doc": "i2441",
+         "locator": "p. 4, Lines 4 and 5, \"Excluded as foreign earned income (including any housing exclusion) on Form 2555, line 43\""
+        },
+        "form": "Earned income less excluded foreign earned income (Form 2441, lines 4, 5, 18 and 19; Forms 2555 and 4563)",
+        "gate": "sa.excluded_income",
+        "kind": "refusal",
+        "remedy": "Excluded foreign earned income, foreign housing and possessions income are outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.f8889.5.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i4562",
+       "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+      },
+      "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+      "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+      "kind": "refusal",
+      "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "household.eic_claimed",
+       "value": {
+        "cite": {
+         "doc": "i4562",
+         "locator": "p. 14, Lines 26 and 27; p. 15, Column (f)"
+        },
+        "form": "Listed property used 50% or less in a qualified business use (Form 4562 line 27)",
+        "gate": "person[spouse].sc[biz_a].scveh[car_1].low_use",
+        "kind": "refusal",
+        "remedy": "A vehicle used 50% or less for business is depreciated under ADS and is outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.g28.2.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040sb",
+       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+      },
+      "form": "Schedule B special treatment / Form 8815",
+      "gate": "sb.unsupported",
+      "kind": "refusal",
+      "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
+     },
+     "project_operands": [
+      {
+       "ref": "household.eic_claimed",
+       "value": {
+        "cite": {
+         "doc": "i1040sb",
+         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
+        },
+        "form": "Schedule B special treatment / Form 8815",
+        "gate": "sb.unsupported",
+        "kind": "refusal",
+        "remedy": "Prepare the applicable adjustment or exclusion; this tool supports unadjusted taxable interest and ordinary dividends."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "p560",
+       "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
+      },
+      "form": "Retirement plan contributions outside this tool",
+      "gate": "person[taxpayer].plan_screened",
+      "kind": "refusal",
+      "remedy": "These retirement contributions are outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "household.eic_claimed",
+       "value": {
+        "cite": {
+         "doc": "p560",
+         "locator": "pp. 8\u201311, 14\u201317, 38\u201340, chapters 2, 3 and 5"
+        },
+        "form": "Retirement plan contributions outside this tool",
+        "gate": "person[taxpayer].plan_screened",
+        "kind": "refusal",
+        "remedy": "These retirement contributions are outside this tool."
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.clcw.4.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[spouse].eic_ssn",
+      "kind": "unknown",
+      "lowerBound": 0,
+      "reason": "no input supplied for person[spouse].eic_ssn"
+     },
+     "project_operands": [
+      {
+       "ref": "household.eic_claimed",
+       "value": {
+        "input": "person[spouse].eic_ssn",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[spouse].eic_ssn"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "household.credit_disallowed_if_claimed",
+       "value": {
+        "input": "person[spouse].eic_ssn",
+        "kind": "unknown",
+        "lowerBound": 0,
+        "reason": "no input supplied for person[spouse].eic_ssn"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.eic.7",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f1040.tax_exempt_interest",
+      "kind": "unknown",
+      "reason": "no input supplied for f1040.tax_exempt_interest"
+     },
+     "project_operands": [
+      {
+       "ref": "household.eic_claimed",
+       "value": {
+        "input": "f1040.tax_exempt_interest",
+        "kind": "unknown",
+        "reason": "no input supplied for f1040.tax_exempt_interest"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "household.credit_disallowed_if_claimed",
+       "value": {
+        "input": "f1040.tax_exempt_interest",
+        "kind": "unknown",
+        "reason": "no input supplied for f1040.tax_exempt_interest"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "mutation.t2.no_itemize_f8960_9a",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-unknown",
+     "project": {
+      "input": "f1040.tax_exempt_interest",
+      "kind": "unknown",
+      "reason": "no input supplied for f1040.tax_exempt_interest"
+     },
+     "project_operands": [
+      {
+       "ref": "household.eic_claimed",
+       "value": {
+        "input": "f1040.tax_exempt_interest",
+        "kind": "unknown",
+        "reason": "no input supplied for f1040.tax_exempt_interest"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "household.credit_disallowed_if_claimed",
+       "value": {
+        "input": "f1040.tax_exempt_interest",
+        "kind": "unknown",
+        "reason": "no input supplied for f1040.tax_exempt_interest"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "mutation.t2.eic.single_line5_skip",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].sc[r].scveh[car].employee_use",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sc[r].scveh[car].employee_use"
+     },
+     "project_operands": [
+      {
+       "ref": "household.eic_claimed",
+       "value": {
+        "input": "person[taxpayer].sc[r].scveh[car].employee_use",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[r].scveh[car].employee_use"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "household.credit_disallowed_if_claimed",
+       "value": {
+        "input": "person[taxpayer].sc[r].scveh[car].employee_use",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[r].scveh[car].employee_use"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "mutation.t2.scveh.s179_line2_car_cost",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].sc[haul].scveh[suv].employee_use",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sc[haul].scveh[suv].employee_use"
+     },
+     "project_operands": [
+      {
+       "ref": "household.eic_claimed",
+       "value": {
+        "input": "person[taxpayer].sc[haul].scveh[suv].employee_use",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[haul].scveh[suv].employee_use"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "household.credit_disallowed_if_claimed",
+       "value": {
+        "input": "person[taxpayer].sc[haul].scveh[suv].employee_use",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[haul].scveh[suv].employee_use"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "mutation.t2.scveh.mq_q1_suv_179",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "kind": "bool",
+      "value": false
+     },
+     "candidate_operands": [
+      {
+       "ref": "household.credit_disallowed",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "instance": "household",
+     "kind": "project-unknown",
+     "project": {
+      "input": "person[taxpayer].sc[haul].scveh[suv].employee_use",
+      "kind": "unknown",
+      "reason": "no input supplied for person[taxpayer].sc[haul].scveh[suv].employee_use"
+     },
+     "project_operands": [
+      {
+       "ref": "household.eic_claimed",
+       "value": {
+        "input": "person[taxpayer].sc[haul].scveh[suv].employee_use",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[haul].scveh[suv].employee_use"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "household.credit_disallowed_if_claimed",
+       "value": {
+        "input": "person[taxpayer].sc[haul].scveh[suv].employee_use",
+        "kind": "unknown",
+        "reason": "no input supplied for person[taxpayer].sc[haul].scveh[suv].employee_use"
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "id": "mutation.t2.scveh.mq_q3_suv_179",
+      "kind": "fixture"
+     }
+    },
     {
      "candidate": {
       "kind": "bool",
@@ -3462,21 +4509,7 @@
      },
      "project_operands": [
       {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "eic.eligible",
+       "ref": "household.eic_claimed",
        "value": {
         "kind": "bool",
         "value": false
@@ -3525,21 +4558,7 @@
      },
      "project_operands": [
       {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "eic.eligible",
+       "ref": "household.eic_claimed",
        "value": {
         "kind": "bool",
         "value": false
@@ -3588,10 +4607,10 @@
      },
      "project_operands": [
       {
-       "ref": "household.credit_disallowed",
+       "ref": "household.eic_claimed",
        "value": {
         "kind": "bool",
-        "value": true
+        "value": false
        }
       },
       {
@@ -3599,34 +4618,6 @@
        "value": {
         "kind": "bool",
         "value": true
-       }
-      },
-      {
-       "ref": "eic.eligible",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "eic.line6",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "eic.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
        }
       }
      ],
@@ -3660,85 +4651,6 @@
       }
      ],
      "instance": "household",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040sb",
-       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
-      },
-      "form": "Form 3520 / Form 3520-A",
-      "gate": "sb.line8",
-      "kind": "refusal",
-      "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope."
-     },
-     "project_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "eic.eligible",
-       "value": {
-        "cite": {
-         "doc": "i1040sb",
-         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
-        },
-        "form": "Form 3520 / Form 3520-A",
-        "gate": "sb.line8",
-        "kind": "refusal",
-        "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.f8889.2.deepseek",
-      "kind": "partial",
-      "withheld": "household.credit_disallowed"
-     }
-    },
-    {
-     "candidate": {
-      "input": "household.credit_disallowed",
-      "kind": "unknown",
-      "reason": "no input supplied for household.credit_disallowed"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
      "kind": "candidate-unknown",
      "project": {
       "kind": "bool",
@@ -3746,22 +4658,7 @@
      },
      "project_operands": [
       {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "eic.eligible",
+       "ref": "household.eic_claimed",
        "value": {
         "kind": "bool",
         "value": false
@@ -3813,22 +4710,7 @@
      },
      "project_operands": [
       {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "eic.eligible",
+       "ref": "household.eic_claimed",
        "value": {
         "kind": "bool",
         "value": false
@@ -3880,22 +4762,7 @@
      },
      "project_operands": [
       {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "eic.eligible",
+       "ref": "household.eic_claimed",
        "value": {
         "kind": "bool",
         "value": false
@@ -3947,22 +4814,7 @@
      },
      "project_operands": [
       {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "eic.eligible",
+       "ref": "household.eic_claimed",
        "value": {
         "kind": "bool",
         "value": false
@@ -4014,22 +4866,7 @@
      },
      "project_operands": [
       {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "eic.eligible",
+       "ref": "household.eic_claimed",
        "value": {
         "kind": "bool",
         "value": false
@@ -4074,85 +4911,6 @@
       }
      ],
      "instance": "household",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 27, Exception 2; f1099r Box 7"
-      },
-      "form": "Form 8606 or another Form 1099-R code",
-      "gate": "person[taxpayer].retirement[r1].bad_code",
-      "kind": "refusal",
-      "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "eic.eligible",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 27, Exception 2; f1099r Box 7"
-        },
-        "form": "Form 8606 or another Form 1099-R code",
-        "gate": "person[taxpayer].retirement[r1].bad_code",
-        "kind": "refusal",
-        "remedy": "A Roth IRA distribution other than a qualified distribution (code Q), code S other than from a traditional SIMPLE IRA, code 3 other than from an IRA, or a distribution code other than 7, 4, 2, 1, S, 3, G or Q, is outside this tool."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.dependent.2.deepseek",
-      "kind": "partial",
-      "withheld": "household.credit_disallowed"
-     }
-    },
-    {
-     "candidate": {
-      "input": "household.credit_disallowed",
-      "kind": "unknown",
-      "reason": "no input supplied for household.credit_disallowed"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
      "kind": "candidate-unknown",
      "project": {
       "kind": "bool",
@@ -4160,22 +4918,7 @@
      },
      "project_operands": [
       {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "eic.eligible",
+       "ref": "household.eic_claimed",
        "value": {
         "kind": "bool",
         "value": false
@@ -4192,243 +4935,6 @@
      "project_return": "completed",
      "source": {
       "base": "classm.s2.2.deepseek",
-      "kind": "partial",
-      "withheld": "household.credit_disallowed"
-     }
-    },
-    {
-     "candidate": {
-      "input": "household.credit_disallowed",
-      "kind": "unknown",
-      "reason": "no input supplied for household.credit_disallowed"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040gi",
-       "locator": "p. 40, Step 1, question 3, \"Are you filing Form 2555 (relating to foreign earned income)? ... Yes. STOP\""
-      },
-      "form": "Form 2555 (EIC, Step 1, question 3)",
-      "gate": "sa.excluded_income",
-      "kind": "refusal",
-      "remedy": "A filer excluding foreign earned income can't take the EIC; Form 2555 and excluded income are outside this tool."
-     },
-     "project_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "eic.eligible",
-       "value": {
-        "cite": {
-         "doc": "i1040gi",
-         "locator": "p. 40, Step 1, question 3, \"Are you filing Form 2555 (relating to foreign earned income)? ... Yes. STOP\""
-        },
-        "form": "Form 2555 (EIC, Step 1, question 3)",
-        "gate": "sa.excluded_income",
-        "kind": "refusal",
-        "remedy": "A filer excluding foreign earned income can't take the EIC; Form 2555 and excluded income are outside this tool."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.eic.6.deepseek",
-      "kind": "partial",
-      "withheld": "household.credit_disallowed"
-     }
-    },
-    {
-     "candidate": {
-      "input": "household.credit_disallowed",
-      "kind": "unknown",
-      "reason": "no input supplied for household.credit_disallowed"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040sb",
-       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
-      },
-      "form": "FinCEN Form 114 (FBAR)",
-      "gate": "sb.fbar_required",
-      "kind": "refusal",
-      "remedy": "Foreign-account reporting and the required country list are outside this tool. Prepare the separate FBAR and Schedule B disclosures."
-     },
-     "project_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "eic.eligible",
-       "value": {
-        "cite": {
-         "doc": "i1040sb",
-         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
-        },
-        "form": "FinCEN Form 114 (FBAR)",
-        "gate": "sb.fbar_required",
-        "kind": "refusal",
-        "remedy": "Foreign-account reporting and the required country list are outside this tool. Prepare the separate FBAR and Schedule B disclosures."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.dcprov.1",
-      "kind": "partial",
-      "withheld": "household.credit_disallowed"
-     }
-    },
-    {
-     "candidate": {
-      "input": "household.credit_disallowed",
-      "kind": "unknown",
-      "reason": "no input supplied for household.credit_disallowed"
-     },
-     "candidate_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "instance": "household",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i1040sb",
-       "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
-      },
-      "form": "Form 3520 / Form 3520-A",
-      "gate": "sb.line8",
-      "kind": "refusal",
-      "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope."
-     },
-     "project_operands": [
-      {
-       "ref": "household.credit_disallowed",
-       "value": {
-        "input": "household.credit_disallowed",
-        "kind": "unknown",
-        "reason": "no input supplied for household.credit_disallowed"
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "eic.eligible",
-       "value": {
-        "cite": {
-         "doc": "i1040sb",
-         "locator": "pp. 1\u20133, interest, dividends and foreign accounts/trusts"
-        },
-        "form": "Form 3520 / Form 3520-A",
-        "gate": "sb.line8",
-        "kind": "refusal",
-        "remedy": "Review and prepare the required foreign-trust information returns; this path is outside scope."
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.f8959.2",
       "kind": "partial",
       "withheld": "household.credit_disallowed"
      }
@@ -4459,7 +4965,7 @@
      "project-unknown": 1
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "household.hoh_fails",
    "shown_when": null,
    "sources": {
@@ -5765,13 +6271,13 @@
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-unknown": 268
+     "candidate-unknown": 271
     },
     "incomplete": {
-     "candidate-unknown": 890
+     "candidate-unknown": 892
     },
     "refused": {
-     "candidate-unknown": 603
+     "candidate-unknown": 598
     }
    },
    "open_at_triage": false,
@@ -6187,7 +6693,7 @@
      "value": 158
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "household.filing_status_conflict",
    "shown_when": null,
    "sources": {
@@ -7501,10 +8007,10 @@
    ]
   }
  ],
- "log_sha256_at_triage": "eba8c0c282e5fbd708b2b5938ef33f02910691bb572be9427deac725755ea3dd",
+ "log_sha256_at_triage": "5a22b2b664ec5ec8b352be6de09529c25109a304d404b4c3df2e898eba8e2419",
  "policy": "executable-triage-v2",
  "response_sha256": "408c52a1c05d95282470a1f4ba174bd101c0310910b1386b6c2b880e390bc205",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "evaluated",
- "subject_sha256": "877d0d54921e64f9c104d4b53ea77cd4216946a2bb5fddeb853f010608dfdcbd"
+ "subject_sha256": "b06611b3ea9a98240f07a21e3fbc2887d57e3771bbd340eb189b9e905ff33752"
 }

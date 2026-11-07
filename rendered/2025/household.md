@@ -231,23 +231,58 @@
 
 ## (helper) — `household.credit_disallowed`
 
-- **Authored helper label:** Was your EIC for a year after 1996, or your child tax credit, additional child tax credit or credit for other dependents for a year after 2015, reduced or disallowed other than for a math or clerical error, or are you in a 2- or 10-year disallowance period?
-- **Encoded (Bool):** Input — Was your earned income credit for any year after 1996, or your child tax credit, additional child tax credit or credit for other dependents for any year after 2015, reduced or disallowed for any reason other than a math or clerical error, or are you in a 2- or 10-year period during which you can't take one of these credits because an earlier claim was found to be reckless, intentional or fraudulent?
-- Expr: `{"op":"input","source":"Was your earned income credit for any year after 1996, or your child tax credit, additional child tax credit or credit for other dependents for any year after 2015, reduced or disallowed for any reason other than a math or clerical error, or are you in a 2- or 10-year period during which you can't take one of these credits because an earlier claim was found to be reckless, intentional or fraudulent?"}`
+- **Authored helper label:** Was your (or, on a joint return, your spouse's) EIC for a year after 1996, or child tax credit, additional child tax credit or credit for other dependents for a year after 2015, reduced or disallowed other than for a math or clerical error, or is either of you in a 2- or 10-year disallowance period?
+- **Encoded (Bool):** Input — Was the earned income credit of you (or, on a joint return, your spouse) for any year after 1996, or the child tax credit, additional child tax credit or credit for other dependents of either of you for any year after 2015, reduced or disallowed for any reason other than a math or clerical error, or is either of you in a 2- or 10-year period during which you can't take one of these credits because an earlier claim was found to be reckless, intentional or fraudulent?
+- Expr: `{"op":"input","source":"Was the earned income credit of you (or, on a joint return, your spouse) for any year after 1996, or the child tax credit, additional child tax credit or credit for other dependents of either of you for any year after 2015, reduced or disallowed for any reason other than a math or clerical error, or is either of you in a 2- or 10-year period during which you can't take one of these credits because an earlier claim was found to be reckless, intentional or fraudulent?"}`
 - Cite: [i1040gi] p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" and "don’t file Form 8862 or take the credit for the ... 2 years after the most recent tax year for which there was a final determination that your EIC claim was due to reckless or intentional disregard of the EIC rules ... 10 years after the most recent tax year for which there was a final determination that your EIC claim was due to fraud"; p. 39, Form 8862, who must file, "You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit (refundable or nonrefundable depending on the tax year), additional child tax credit, or credit for other dependents for a year after 2015 was denied or reduced for any reason other than a math or clerical error"; i1040s8812 p. 2, Form 8862 may be required, "If your CTC, ACTC, or ODC for a year after 2015 was denied or reduced for any reason other than a math or clerical error, you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.no`
+
+- **Authored helper label:** Year parameter household.no (false)
+- **Encoded (Bool):** Enter false (household.no).
+- Expr: `{"op":"param","ref":"household.no"}`
+- Cite: [i1040gi] p. 39, Form 8862, who must file, "You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit"; p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.eic_above_zero`
+
+- **Authored helper label:** The earned income credit figured in Step 6 (Worksheet A line 6, or Worksheet B line 11 for a filer who answered Yes to Step 5, question 2) is more than zero
+- **Encoded (Bool):** eic line 6 (eic.line6) > eic helper "No amount"
+- Expr: `{"gt":["eic.line6","eic.zero"],"op":"test"}`
+- Cite: [i1040gi] p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.eic_claimed`
+
+- **Authored helper label:** The earned income credit is claimed (Steps 1 to 5 are passed and the credit figured in Step 6, Worksheet A line 6 or Worksheet B line 11, is more than zero; false when Steps 1 to 5 are not passed)
+- **Encoded (Bool):** Choose — [eic helper "Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)" = true → helper "The earned income credit figured in Step 6 (Worksheet A line 6, or Worksheet B line 11 for a filer who answered Yes to Step 5, question 2) is more than zero"] [eic helper "Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["eic.eligible",{"const":true}],"op":"test"},"then":"household.eic_above_zero"},{"guard":{"eq":["eic.eligible",{"const":false}],"op":"test"},"then":"household.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.claims_8862_credit`
+
+- **Authored helper label:** The return claims the earned income credit, the child tax credit, the credit for other dependents or the additional child tax credit (the earned income credit is claimed, or Schedule 8812 line 8 is more than line 11)
+- **Encoded (Bool):** (s8812 line 8 > s8812 line 11 or helper "The earned income credit is claimed (Steps 1 to 5 are passed and the credit figured in Step 6, Worksheet A line 6 or Worksheet B line 11, is more than zero; false when Steps 1 to 5 are not passed)" = true)
+- Expr: `{"any":[{"gt":["s8812.line8","s8812.line11"],"op":"test"},{"eq":["household.eic_claimed",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [i1040gi] p. 39, Form 8862, who must file, "You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit"; p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error"; i1040s8812 p. 2, Form 8862 may be required, "you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies" (2025; printed date 2026-02-25; sha256 482e9c48)
+
+## (helper) — `household.credit_disallowed_if_claimed`
+
+- **Authored helper label:** Whether an earlier earned income credit, child tax credit, additional child tax credit or credit for other dependents was reduced or disallowed (or a disallowance period applies), asked only when the return claims one of these credits (false otherwise, where Form 8862 does not apply)
+- **Encoded (Bool):** Choose — [helper "The return claims the earned income credit, the child tax credit, the credit for other dependents or the additional child tax credit (the earned income credit is claimed, or Schedule 8812 line 8 is more than line 11)" = true → helper "Was your (or, on a joint return, your spouse's) EIC for a year after 1996, or child tax credit, additional child tax credit or credit for other dependents for a year after 2015, reduced or disallowed other than for a math or clerical error, or is either of you in a 2- or 10-year disallowance period?"] [helper "The return claims the earned income credit, the child tax credit, the credit for other dependents or the additional child tax credit (the earned income credit is claimed, or Schedule 8812 line 8 is more than line 11)" = false → helper "Year parameter household.no (false)"]
+- Expr: `{"alternatives":[{"guard":{"eq":["household.claims_8862_credit",{"const":true}],"op":"test"},"then":"household.credit_disallowed"},{"guard":{"eq":["household.claims_8862_credit",{"const":false}],"op":"test"},"then":"household.no"}],"op":"choose"}`
+- Cite: [i1040gi] p. 39, Form 8862, who must file, "You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit"; p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (gate) — `household.ctc_disallowed_claim`
 
-- **Authored helper label:** An earlier credit was reduced or disallowed (or a disallowance period applies) and Schedule 8812 line 8 is more than line 11 (a child tax credit or credit for other dependents is figured)
-- **Encoded (Bool):** helper "Was your EIC for a year after 1996, or your child tax credit, additional child tax credit or credit for other dependents for a year after 2015, reduced or disallowed other than for a math or clerical error, or are you in a 2- or 10-year disallowance period?" = true and s8812 line 8 > s8812 line 11
-- Expr: `{"all":[{"eq":["household.credit_disallowed",{"const":true}],"op":"test"},{"gt":["s8812.line8","s8812.line11"],"op":"test"}],"op":"test"}`
+- **Authored helper label:** Schedule 8812 line 8 is more than line 11 (a child tax credit or credit for other dependents is figured) and an earlier credit was reduced or disallowed (or a disallowance period applies)
+- **Encoded (Bool):** s8812 line 8 > s8812 line 11 and helper "Whether an earlier earned income credit, child tax credit, additional child tax credit or credit for other dependents was reduced or disallowed (or a disallowance period applies), asked only when the return claims one of these credits (false otherwise, where Form 8862 does not apply)" = true
+- Expr: `{"all":[{"gt":["s8812.line8","s8812.line11"],"op":"test"},{"eq":["household.credit_disallowed_if_claimed",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040s8812] p. 2, Form 8862 may be required, "If your CTC, ACTC, or ODC for a year after 2015 was denied or reduced for any reason other than a math or clerical error, you must attach Form 8862 to your tax return to claim the CTC, ACTC, or ODC unless an exception applies" (2025; printed date 2026-01-23; sha256 bb9788cd)
 
 ## (gate) — `household.eic_disallowed_claim`
 
-- **Authored helper label:** An earlier credit was reduced or disallowed (or a disallowance period applies) and Steps 1 to 5 of the earned income credit are passed with a credit above zero (Worksheet A line 6)
-- **Encoded (Bool):** helper "Was your EIC for a year after 1996, or your child tax credit, additional child tax credit or credit for other dependents for a year after 2015, reduced or disallowed other than for a math or clerical error, or are you in a 2- or 10-year disallowance period?" = true and eic helper "Steps 1 to 5 passed in order (Step 6, figure the credit on Worksheet A)" = true and eic line 6 (eic.line6) > eic helper "No amount"
-- Expr: `{"all":[{"eq":["household.credit_disallowed",{"const":true}],"op":"test"},{"eq":["eic.eligible",{"const":true}],"op":"test"},{"gt":["eic.line6","eic.zero"],"op":"test"}],"op":"test"}`
+- **Authored helper label:** The earned income credit is claimed (Steps 1 to 5 are passed with a credit above zero on Worksheet A line 6 or Worksheet B line 11) and an earlier credit was reduced or disallowed (or a disallowance period applies)
+- **Encoded (Bool):** helper "The earned income credit is claimed (Steps 1 to 5 are passed and the credit figured in Step 6, Worksheet A line 6 or Worksheet B line 11, is more than zero; false when Steps 1 to 5 are not passed)" = true and helper "Whether an earlier earned income credit, child tax credit, additional child tax credit or credit for other dependents was reduced or disallowed (or a disallowance period applies), asked only when the return claims one of these credits (false otherwise, where Form 8862 does not apply)" = true
+- Expr: `{"all":[{"eq":["household.eic_claimed",{"const":true}],"op":"test"},{"eq":["household.credit_disallowed_if_claimed",{"const":true}],"op":"test"}],"op":"test"}`
 - Cite: [i1040gi] p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" (2025; printed date 2026-02-25; sha256 482e9c48)
 
 ## (helper) — `household.test1_persons`

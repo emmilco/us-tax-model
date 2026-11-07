@@ -1,0 +1,86 @@
+{
+ "form": "s1",
+ "reviews": {
+  "gate:s1.has_jury_pay": {
+   "condition": "s1.has_jury_pay",
+   "lines": [
+    "s1.jury_to_employer_if_pay"
+   ],
+   "inputs": [
+    "s1.jury_to_employer"
+   ],
+   "verdict": "FALSE_NO",
+   "findings": [
+    {
+     "kind": "FALSE_NO",
+     "pattern": "1",
+     "who": "A filer, or the spouse on a joint return, served on a jury in late 2024 and got the jury pay in 2024, which went on the 2024 return. In 2025 they turned that pay over to the employer that kept paying their salary while they served, and they got no new jury pay in 2025.",
+     "why_no": "Line 8h is truthfully zero for 2025, so the computed gate is false. The gated question also limits the amount to 'the part of the jury duty pay on line 8h', which leaves out pay received in an earlier year. The deduction belongs to the year the pay is handed over, not the year it was received.",
+     "line": "s1.jury_to_employer_if_pay (Schedule 1, line 24a)",
+     "irs_text": "p525 (2025) p. 34, Jury duty: 'you can deduct the amount turned over to your employer as an adjustment to income. Enter the amount you repay your employer on Schedule 1 (Form 1040), line 24a.'",
+     "severity": "high",
+     "fix": "Ask everyone (or gate on 'Did you or your spouse serve on a jury in 2025, or give jury duty pay to an employer in 2025?'): 'Jury duty pay you or your spouse gave to your employer in 2025 because the employer paid your salary while you served, including pay you received in an earlier year.' Don't cap the amount at line 8h."
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "4",
+     "who": "A court paid the filer's jury fee and reported it on Form 1099-MISC (box 3, other income), or on a form the filer entered as other income. The filer gave the fee to the employer, which kept paying their salary.",
+     "why_no": "The filer, or the tool's 1099-MISC flow, puts the amount on line 8z 'other income' instead of line 8h. Line 8h stays zero, so the gate is false and the question about pay given to the employer is never asked.",
+     "line": "s1.jury_to_employer_if_pay (Schedule 1, line 24a)",
+     "irs_text": "p525 (2025) p. 34: 'Jury duty pay you receive must be included in your income on Schedule 1 (Form 1040), line 8h. If you must give the pay to your employer ... you can deduct the amount turned over to your employer'",
+     "severity": "medium",
+     "fix": "When the filer enters line 8z or 1099-MISC other income, ask whether any of it was jury duty pay and send it to line 8h. Or gate on the fact the filer can check ('Did you or your spouse get paid for jury duty?') rather than on line 8h alone."
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "8",
+     "who": "A filer signed the jury check over to the employer, or the employer collected it, because the employer kept paying their salary. They treat it as a wash and never enter it as jury duty pay.",
+     "why_no": "They see nothing to report as 'jury duty pay' because they kept none of it. Line 8h is left at zero and the gate turns off line 24a. The net effect on AGI is usually zero, but the return then doesn't follow the instruction to put the pay on line 8h and the repayment on line 24a.",
+     "line": "s1.jury_to_employer_if_pay (Schedule 1, line 24a)",
+     "irs_text": "i1040gi (2025) p. 91, Line 8h: 'Enter any jury duty pay and see the instructions for line 24a'; p. 99, Line 24a: 'Enter your jury duty pay if you gave the pay to your employer'",
+     "severity": "low",
+     "fix": "Add help to the line 8h question: 'Include jury duty pay even if you gave it to your employer; you'll deduct that part on line 24a.'"
+    }
+   ],
+   "prompt_sha": "f67ac280d9cf5ac6b95d90c44a19badd75f04b6bbd6c2ba64839c0a5bdc0d234",
+   "subject_sha": "89d52a3191553404d36fafa53304fea78ba3465ca843c7e50087b291199fd307",
+   "used": [
+    {
+     "doc": "i1040gi",
+     "revision": "2025; printed date 2026-02-25",
+     "text_sha256": "6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1",
+     "pages": [
+      91,
+      99
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 91, Line 8h, \"Enter any jury duty pay and see the instructions for line 24a\"; p. 99, Line 24a, \"Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury\"",
+      "p. 99, Line 24a, \"Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury\"; , Jury duty, \"you can deduct the amount turned over to your employer as an adjustment to income\""
+     ],
+     "cols_pages": [
+      91
+     ],
+     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
+    },
+    {
+     "doc": "p525",
+     "revision": "2025",
+     "text_sha256": "7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182",
+     "pages": [
+      34
+     ],
+     "how": "pages named by another document's citation",
+     "locators": [],
+     "cols_pages": [
+      34
+     ],
+     "cols_sha256": "27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65"
+    }
+   ],
+   "model": "claude-opus-5-5",
+   "cost": 0.09942000000000001,
+   "date": "2026-11-07"
+  }
+ }
+}

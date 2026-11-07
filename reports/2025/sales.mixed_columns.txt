@@ -700,9 +700,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   21  Student loan interest deduction
       = $0
       cite: [f1040s1] Schedule 1 (2025), line 21 (2025; created 2025-07-25; 8dafec71)
-  (helper) Jury duty pay you gave to your employer because your employer paid your salary while you served on the jury
+  (helper) Jury duty pay on line 8h is more than zero
+      = false
+      cite: [i1040gi] p. 91, Line 8h, "Enter any jury duty pay and see the instructions for line 24a"; p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury" (2025; printed date 2026-02-25; 482e9c48)
+  (helper) Jury duty pay you gave to your employer, asked only when there is jury duty pay on line 8h (zero otherwise)
       = $0
-      cite: [i1040gi] p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury"; p525 p. 34, Jury duty, "you can deduct the amount turned over to your employer as an adjustment to income" (2025; printed date 2026-02-25; 482e9c48)
+      cite: [i1040gi] p. 91, Line 8h, "Enter any jury duty pay and see the instructions for line 24a"; p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer because your employer paid your salary while you served on the jury" (2025; printed date 2026-02-25; 482e9c48)
+      note: taken: {"eq":["s1.has_jury_pay",{"const":false}],"op":"test"}
   (gate) The jury duty pay given to the employer is more than the jury duty pay on line 8h
       = false
       cite: [i1040gi] p. 99, Line 24a, "Enter your jury duty pay if you gave the pay to your employer" (2025; printed date 2026-02-25; 482e9c48)
@@ -2210,6 +2214,8 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   sli.deduction: chose $0 (guard 1)
       not taken: guard 0 = false
+  s1.jury_to_employer_if_pay: chose $0 (guard 1)
+      not taken: guard 0 = false
   sa.saltlimit: chose $40,000 (guard 1)
       not taken: guard 0 = false
   f4952.line8: chose $0 (guard 1)
@@ -2476,8 +2482,10 @@ Derivations:
   sli.zero: param(#sales.zero = $0)
   sli.deduction: choose(sli.has = false; true = true; sli.has = false; false = false; sli.zero = $0)
   s1.line21: copy(sli.deduction = $0)
-  s1.jury_over: test(s1.jury_to_employer = $0; s1.line8h = $0)
-  s1.line24a: copy(s1.jury_over = false; s1.jury_to_employer = $0)
+  s1.has_jury_pay: test(s1.line8h = $0; s1.zero = $0)
+  s1.jury_to_employer_if_pay: choose(s1.has_jury_pay = false; true = true; s1.has_jury_pay = false; false = false; s1.zero = $0)
+  s1.jury_over: test(s1.jury_to_employer_if_pay = $0; s1.line8h = $0)
+  s1.line24a: copy(s1.jury_over = false; s1.jury_to_employer_if_pay = $0)
   s1.line25: copy(s1.line24a = $0)
   s1.line26: sum(s1.line11 = $0; s1.line13 = $0; s1.line15 = $0; s1.line16 = $0; s1.line17 = $0; s1.line18 = $0; s1.line19a = $0; s1.line20 = $0; s1.line21 = $0; s1.line25 = $0)
   f1040.line10: copy(scope.schedule1 = false; s1.line26 = $0)

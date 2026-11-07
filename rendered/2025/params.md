@@ -99,6 +99,7 @@
 | `f5695.windows_max` | NonNegDollars | $600 | [f5695] Form 5695 (2025), line 20d, "Do not enter more than $600"; i5695 p. 2, Energy Efficient Home Improvement Credit (Part II), "A combined credit limit of $600 for all exterior windows and skylights" (2025; created 2025-03-20; sha256 e2ac6a5c) |
 | `ftc.limit` | NonNegDollars | single $300; mfj $600; mfs $300; hoh $300; qss $300 | [i1116] pp. 1–2, election to claim the foreign tax credit without filing Form 1116; line 20 regular tax (2025; printed date 2025-12-23; sha256 6998cf8c) |
 | `ftc.no` | Bool | false | [i1116] p. 2, Purpose of Form, "File Form 1116 to claim the foreign tax credit if the election, earlier, doesn’t apply and", "You paid or accrued certain foreign taxes to a foreign country or U.S. territory" (2025; printed date 2025-12-23; sha256 6998cf8c) |
+| `household.no` | Bool | false | [i1040gi] p. 39, Form 8862, who must file, "You must file Form 8862 to claim the child tax credit or credit for other dependents if your child tax credit"; p. 43, Form 8862, who must file, "You must file Form 8862 if your EIC for a year after 1996 was reduced or disallowed for any reason other than a math or clerical error" (2025; printed date 2026-02-25; sha256 482e9c48) |
 | `hsa.additional` | NonNegDollars | $1,000 | [i8889] p. 7, Additional Contribution Amount Worksheet, line 1, "$1,000 × number of months eligible" (2025; sha256 da6f2f58) |
 | `hsa.additional_rate` | Rate | 20% (0.20) | [f8889] Form 8889 (2025), line 17b, "Enter 20% (0.20) of the distributions included on line 16 that are subject to the additional 20% tax" (2025; created 2025-03-28; sha256 15ed4587) |
 | `hsa.family` | NonNegDollars | $8,550 | [i8889] p. 6, Line 3 Limitation Chart, family coverage, "Enter $8,550 on the line below for the month" (2025; sha256 da6f2f58) |
@@ -182,6 +183,7 @@
 | `s1a.senior_rate` | Rate | 6% (0.06) | [f1040s1a] Schedule 1-A (2025), line 34, "Multiply line 33 by 6% (0.06)" (2025; created 2025-11-04; sha256 64f97b38) |
 | `s1a.tips_max` | NonNegDollars | $25,000 | [f1040s1a] Schedule 1-A (2025), line 7, "Enter the smaller of the amount on line 6 or $25,000" (2025; created 2025-11-04; sha256 64f97b38) |
 | `s1a.two_hundred_per_thousand` | Rate | 1/5 | [f1040s1a] Schedule 1-A (2025), lines 28-29: the whole number of $1,000 units, rounded up, times $200 (2025; created 2025-11-04; sha256 64f97b38) |
+| `s8812.no` | Bool | false | [i1040s8812] p. 3, Bona Fide Residents of Puerto Rico, "If you were a bona fide resident of Puerto Rico, you may be eligible to claim the ACTC if you had at least one qualifying child" (2025; printed date 2026-01-23; sha256 bb9788cd) |
 | `sa.half` | Rate | 1/2 | [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12) |
 | `sa.medical_rate` | Rate | 75/1000 | [f1040sa] Schedule A (2025), line 3 (2025; created 2025-11-20; sha256 c14acf34) |
 | `sa.salt_base` | NonNegDollars | $40,000 | [i1040sca] p. 7, State and Local Tax Deduction Worksheet (2025; printed date 2025-12-08; sha256 b0999b12) |
