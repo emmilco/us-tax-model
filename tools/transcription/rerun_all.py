@@ -107,10 +107,12 @@ def run(kind, form, model, resume=False, reasoning_effort=None, max_output_token
 
 
 def eligible(kind, form, family):
-    """A second family's log of this form currently qualifies for second-family credit (compare_families.py)."""
+    """A second family's log of this form would qualify for second-family credit once current
+    (compare_families.eligible_when_current): staleness alone does not disqualify it, so a stale log that would
+    earn credit is rerun, as check_logs requires."""
     import compare_families
     try:
-        return compare_families.compare(kind, form, family)["quality"]["state"] != "pending"
+        return compare_families.eligible_when_current(compare_families.compare(kind, form, family)["quality"])[0]
     except Exception:
         return False
 
