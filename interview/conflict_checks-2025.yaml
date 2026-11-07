@@ -1,0 +1,87 @@
+# Refusal gates that are consistency checks: each fires only when answers contradict each other or are impossible
+# (more family months than eligible months, a part larger than its whole), never for a situation the tool does not
+# prepare. The web UI shows such a refusal as conflicting answers, with this explanation and the answers the gate
+# reads, instead of as an unsupported case. Every other refusal gate is a scope refusal and is shown as one.
+#
+# Presentation only: an explanation words a check the form data already makes; it decides nothing. The key is the
+# gate line (a line some `refuses: - when:` names); the build checks each key is one.
+tax_year: 2025
+conflicts:
+  asset.s179_bad: >-
+    A section 179 election is entered for this property, but the other answers about it do not allow one: the election
+    is more than the property's business cost, the property is used 50% or less in the business, or it is not section
+    179 property.
+  clcw.bad: >-
+    The loss entered for 2024 Schedule D line 21 does not fit the other 2024 Schedule D amounts entered: it cannot be a
+    larger loss than $3,000 or than the line 16 loss, nor a smaller loss than the line 16 loss or $1,500, whichever is
+    less.
+  div.bad_special: >-
+    Form 1099-DIV boxes 2b, 2c and 2d are parts of the total capital gain distributions in box 2a, but the amounts
+    entered for them are more than box 2a.
+  div.bad_components: >-
+    Qualified dividends (Form 1099-DIV box 1b) and section 199A dividends (box 5) are parts of the ordinary dividends
+    in box 1a, but the amounts entered are more than the ordinary dividends.
+  household.roster_bad: >-
+    The people entered do not match the filing status: a return has one taxpayer, and a spouse only when married
+    filing jointly.
+  household.filing_status_conflict: >-
+    The filing status does not match the answers about your marriage: a person married at the end of 2025 cannot file
+    as single, and filing jointly needs a marriage at the end of 2025 or a spouse's death during 2025.
+  f2441.line14_bad: >-
+    The dependent care benefits forfeited or carried forward (Form 2441 line 14) are part of the benefits on line 12,
+    but the amount entered is more than line 12.
+  f4952.bad_dividends: >-
+    The qualified dividends on Form 4952 line 4b are part of the gross investment income on line 4a, but they are more
+    than line 4a.
+  f4952.bad_election: >-
+    The amount elected on Form 4952 line 4g is more than lines 4b and 4e together.
+  person.x_two23: >-
+    Exception 23 (an emergency personal expense distribution) is claimed on more than one Form 1099-R, but only one
+    distribution a calendar year can be one.
+  f8889.bad_months: >-
+    The HSA month counts and the December 1 coverage do not fit together. There are at most 12 eligible months, the
+    family months are some of the eligible months, and December is one of the months counted: self-only coverage on
+    December 1 means at least one eligible month without family coverage, family coverage on December 1 means at least
+    one family month, any coverage on December 1 means at least one eligible month, and no coverage on December 1 means
+    fewer than 12 eligible months.
+  f8889.rollover_bad: >-
+    The HSA distributions rolled over are part of the total distributions on Form 8889 line 14a, but the amount
+    entered is more than line 14a.
+  f8889.subject_bad: >-
+    The part of the taxable HSA distributions subject to the additional 20% tax is part of Form 8889 line 16, but the
+    amount entered is more than line 16.
+  f8960.bad_allocation: >-
+    The taxes allocated to net investment income on Form 8960 line 9b are more than the Schedule A tax deduction they
+    are allocated from.
+  refund.line5e_bad: >-
+    The amount entered for 2024 Schedule A line 5e is more than the amount entered for line 5d. Line 5e is the smaller
+    of line 5d and the limit, so it cannot be more than line 5d.
+  retirement.wrong_kind: >-
+    The Form 5329 exception number does not match the kind of account: exceptions 01 and 06 do not apply to IRAs, and
+    exceptions 07, 08 and 09 apply only to IRAs.
+  s1.jury_over: >-
+    The jury duty pay given to your employer is more than the jury duty pay reported on Schedule 1 line 8h.
+  s179.over_limit: >-
+    The section 179 elections are more than the dollar limitation on Form 4562 line 5.
+  s2.e05_over: >-
+    On this joint return, the medical-expense exceptions (exception 05) of both spouses together are more than the
+    medical expenses above 7.5% of your joint AGI.
+  sales.bad_aggregate: >-
+    This sale is entered for the aggregate route (Schedule D line 1a or 8a), but the other answers about it rule that
+    route out: its basis was not reported to the IRS, it has an adjustment code, or it does not meet the route's other
+    conditions.
+  sales.wash_bad: >-
+    The nondeductible wash-sale loss entered (code W) is more than the loss on this sale: column (e) less column (d),
+    after any code B correction.
+  scveh.no_miles: >-
+    Actual expenses are chosen for a vehicle with no miles entered for 2025. The business-use share of actual expenses
+    is business miles divided by total miles, so it needs the vehicle's miles.
+  scveh.s179_bad: >-
+    The section 179 election for this vehicle is more than its business cost or, for an SUV, more than the $31,300
+    limit.
+  w2.box10_bad: >-
+    The part of Form W-2 box 10 entered as included in the box 1 wages is more than box 10.
+  w2.g_bad: >-
+    The elective deferrals entered for Form W-2 box 12, code G are more than the code G amount.
+  ny_it201.gate.line79_over: >-
+    The amount to apply to 2026 estimated tax (Form IT-201 line 79) is more than the overpayment on line 77.

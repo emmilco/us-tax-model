@@ -5,7 +5,10 @@
 //   GET  /api/returns                 the return logs in the returns directory, and each source document's title
 //   POST /api/returns {name}          starts a log <name>.jsonl (mode 0600; an existing name is refused)
 //   GET  /api/returns/:name           the return's state; each question carries `forms`, the forms its prompt and
-//                                     help name that the catalogs hold, with designation, title and purpose
+//                                     help name that the catalogs hold, with designation, title and purpose; and
+//                                     `conflicts`, each refusal whose gate is a consistency check
+//                                     (interview/conflict_checks-<year>.yaml) with its explanation and the answers and
+//                                     figures the gate reads
 //   POST /api/returns/:name/answer {input, value[, labels]}
 //                                     (labels: a roster answer's label for each entry key, kept in the log)
 //                                     appends the answer and returns the new state, or 400 with the reason
@@ -16,8 +19,9 @@ import { createServer, type IncomingMessage, type ServerResponse } from "node:ht
 import { appendFileSync, existsSync, readFileSync, readdirSync, realpathSync, statSync, writeFileSync } from "node:fs";
 import { join, resolve, sep } from "node:path";
 import { isDeepStrictEqual } from "node:util";
-import { loadCanonical } from "./canonical.js";
-import { applyAnswer, inputMeta, interviewView, loadInterview, questionTemplate, replay, type Event, type InterviewData } from "./interview.js";
+import { CANON_DIR, loadCanonical } from "./canonical.js";
+import { applyAnswer, inputMeta, interviewView, loadInterview, questionTemplate, replay, type Event, type InterviewData, type JsonDerivation } from "./interview.js";
+import { templateKey } from "./branches.js";
 import { standingNotices, type SheetSection } from "./output.js";
 import { formResolver, type FormEntry, type FormRef, type Purpose } from "./form-refs.js";
 import type { CanonicalData } from "./types.js";
@@ -85,6 +89,44 @@ export function questionForms(config: InterviewData, forms: FormEntry[]): Map<st
   return out;
 }
 
+/** The refusal gates that are consistency checks, by gate line, each with its explanation
+ * (interview/conflict_checks-<year>.yaml, checked and written by the build); empty when the build wrote none. */
+export function loadConflicts(dir: string = CANON_DIR): Record<string, string> {
+  const path = join(dir, "conflicts.json");
+  return existsSync(path) ? (JSON.parse(readFileSync(path, "utf8")) as { conflicts: Record<string, string> }).conflicts : {};
+}
+
+/** A figured line a conflict reads that stands for many answers, shown as the figure rather than every answer. */
+const FIGURE_ABOVE = 6;
+
+/** What a consistency check reads, from its derivation: the answered inputs among its operands, and through each
+ * figured operand that rests on at most FIGURE_ABOVE answers, those answers; a figured operand resting on more, or on
+ * none (a fixed amount), is listed as a figure. In order of first use; nothing is computed, only derivations read. */
+export function conflictReads(values: Record<string, JsonDerivation>, gate: string, isAnswered: (key: string) => boolean): { inputs: string[]; figures: string[] } {
+  const memo = new Map<string, string[]>();
+  const reach = (key: string): string[] => {
+    const known = memo.get(key);
+    if (known) return known;
+    memo.set(key, []);
+    const d = values[key];
+    let out: string[] = [];
+    if (d?.op === "input") out = isAnswered(key) ? [key] : [];
+    else if (d) out = [...new Set(d.operands.filter((o) => o.ref in values).flatMap((o) => reach(o.ref)))];
+    memo.set(key, out);
+    return out;
+  };
+  const inputs: string[] = [];
+  const figures: string[] = [];
+  for (const { ref } of values[gate]?.operands ?? []) {
+    if (!(ref in values) || figures.includes(ref)) continue;
+    if (values[ref]!.op === "input") { if (isAnswered(ref) && !inputs.includes(ref)) inputs.push(ref); continue; }
+    const under = reach(ref);
+    if (under.length === 0 || under.length > FIGURE_ABOVE) figures.push(ref);
+    else for (const k of under) if (!inputs.includes(k)) inputs.push(k);
+  }
+  return { inputs, figures };
+}
+
 class HttpError extends Error { constructor(readonly status: number, message: string) { super(message); } }
 
 /** Lines changed between two evaluations: the keys whose value differs or that only one of them has. */
@@ -94,8 +136,9 @@ function changedKeys(before: Record<string, { value: unknown }> | null, after: R
   return [...keys].filter((k) => !isDeepStrictEqual(before[k]?.value, after[k]?.value)).sort();
 }
 
-export function createApp(data: CanonicalData, config: InterviewData, dir: string) {
+export function createApp(data: CanonicalData, config: InterviewData, dir: string, conflictChecks: Record<string, string> = loadConflicts()) {
   const names = docNames(config.tax_year);
+  const lineById = new Map([...data.forms, ...data.defs].flatMap((d) => d.lines.map((l) => [l.id, l] as const)));
   const formsOf = questionForms(config, names.forms);
   const formsFor = (key: string) => (formsOf.get(questionTemplate(key)) ?? []).filter((f) => f.id !== null);
   const logPath = (name: string) => {
@@ -130,12 +173,27 @@ export function createApp(data: CanonicalData, config: InterviewData, dir: strin
       const [coll, parent] = rk.slice(1).split("@") as [string, string | undefined];
       for (const k of keys as string[]) if (labels[k]) entryLabels[`${parent ? parent + "." : ""}${coll}[${k}]`] = labels[k];
     }
+    // Each refusal among the values whose gate is a consistency check, as a conflict: its explanation, the answers
+    // the gate reads (as the answered list gives them) and the figured lines it reads that stand for many answers.
+    const conflicts = [...new Set(Object.values(view.values).flatMap((d) => d.value.kind === "refusal" && templateKey(d.value.gate) in conflictChecks ? [d.value.gate] : []))]
+      .sort().map((gate) => {
+        const reads = conflictReads(view.values, gate, (key) => inputs[key] !== undefined && inputs[key] !== null);
+        return {
+          gate, explanation: conflictChecks[templateKey(gate)]!,
+          answers: reads.inputs.flatMap((key) => answered.filter((a) => a.input === key)),
+          figures: reads.figures.map((line) => {
+            const l = lineById.get(templateKey(line));
+            return { line, printed: l?.printed ?? "", label: l?.label.split("\n")[0] ?? line, value: view.values[line]!.value };
+          }),
+        };
+      });
     const { sheet, ...rest } = view;
     const isNy = (s: SheetSection) => s.doc.startsWith("ny_");
     return {
       name, ...rest,
       pending: view.pending.map((q) => ({ ...q, ...inputMeta(data, q.input), forms: formsFor(q.input) })),
       refusalFinal: view.refusal !== null && view.pending.length === 0,
+      conflicts,
       standingNotices: standingNotices(),
       sheets: { federal: sheet.sections.filter((s) => !isNy(s)), newYork: sheet.sections.filter(isNy) },
       answered,

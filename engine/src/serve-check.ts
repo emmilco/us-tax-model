@@ -1,10 +1,11 @@
 // Tests of the web UI server (`serve`), on synthetic returns in temporary directories: the returns-directory
 // refusals, file modes, the Host and Origin checks, that the server and the CLI give the same state on the same
-// log, that a rejected answer appends nothing, roster removal and re-adding, the forms a question names and their
-// quoted purposes, and fixture interview paths replayed through the server against the fixtures' expected values.
+// log, that a rejected answer appends nothing, roster removal and re-adding, a consistency check served as a
+// conflict, the forms a question names and their quoted purposes, and fixture interview paths replayed through the
+// server against the fixtures' expected values.
 import assert from "node:assert/strict";
 import { spawn, spawnSync, type ChildProcess } from "node:child_process";
-import { chmodSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, symlinkSync } from "node:fs";
+import { chmodSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, symlinkSync, writeFileSync } from "node:fs";
 import { request } from "node:http";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
@@ -268,6 +269,23 @@ export async function serveChecks(): Promise<void> {
     cli(["answer", "--input", gate, "--value", "false"]);
     ok((await get("/api/returns/synthetic")).body.refusal?.gate === "ny_it201.gate.part_year_state", "the server reads the CLI's answer");
     cli(["answer", "--input", gate, "--value", "\"yes\""], false);
+
+    // A consistency check is served as a conflict, not as an unsupported case: Form 8889 with self-only coverage on
+    // December 1 and every eligible month a family month (stage11.hsa.self_full_year, its month answers changed).
+    const hsaCase = fixtures(yearPath("fixtures", "stage11.json")).find((c) => c.id === "stage11.hsa.self_full_year")!;
+    const hsa = "person[taxpayer].f8889[hsa].";
+    const hsaInputs: Inputs = { ...hsaCase.inputs, [`${hsa}dec_coverage`]: "self_only", [`${hsa}months_eligible`]: 12, [`${hsa}months_family`]: 12 };
+    writeFileSync(join(dir, "conflict.jsonl"), [{ version: 1, tax_year: config.tax_year, profile: "ny" }, ...Object.entries(hsaInputs).map(([input, value]) => ({ input, value }))]
+      .map((e) => JSON.stringify(e)).join("\n") + "\n", { mode: 0o600 });
+    const conflicted = (await get("/api/returns/conflict")).body;
+    ok(conflicted.status === "refused" && conflicted.refusal?.gate === `${hsa}bad_months`, `the conflicting month answers refuse at the consistency check: ${JSON.stringify(conflicted.refusal).slice(0, 200)}`);
+    const conflict = conflicted.conflicts?.find((c: any) => c.gate === `${hsa}bad_months`);
+    ok(conflict && /month counts and the December 1 coverage do not fit together/.test(conflict.explanation) && !/cannot prepare/.test(conflict.explanation),
+      `the refusal is served as a conflict with its explanation: ${JSON.stringify(conflicted.conflicts).slice(0, 300)}`);
+    ok(isDeepStrictEqual(conflict.answers.map((a: any) => a.input).sort(), ["dec_coverage", "months_eligible", "months_family"].map((k) => hsa + k))
+      && conflict.answers.every((a: any) => a.value === hsaInputs[a.input] && typeof a.prompt === "string" && a.prompt !== "") && conflict.figures.length === 0,
+      `the conflict names the three answers it reads, with their answers and prompts: ${JSON.stringify(conflict.answers.map((a: any) => [a.input, a.value]))}`);
+    ok((await get("/api/returns/synthetic")).body.conflicts.length === 0, "a scope refusal is not a conflict");
 
     // Fixture interview paths replayed through the server: the federal Stage 5 cases (the federal questions; their
     // fixtures have no New York answers) and a sample of the New York cases. Each walk answers the first pending

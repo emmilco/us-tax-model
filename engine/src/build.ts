@@ -304,6 +304,22 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
   const stage4Interview = loadProfile(`stage4-${YEAR}.yaml`, "Stage 4 interview");
   const fullInterview = loadProfile(`full-${YEAR}.yaml`, "full interview");
   const nyInterview = existsSync(NY_PROFILE) ? loadProfile(join("ny", `${YEAR}.yaml`), "New York interview") : null;
+  // The refusal gates that are consistency checks, each with the explanation the web UI shows for its conflict
+  // (presentation only). Every key must be a gate line: a line that some line's `refuses` names in `when`.
+  const CONFLICTS = join(ROOT, "interview", `conflict_checks-${YEAR}.yaml`);
+  const conflictChecks = existsSync(CONFLICTS)
+    ? parseYaml(readFileSync(CONFLICTS, "utf8")) as { tax_year: number; conflicts: Record<string, string> }
+    : null;
+  if (conflictChecks) {
+    const gateLines = new Set([...forms, ...defs].flatMap((d) => d.lines.flatMap((l) => (l.refuses ?? []).map((r) => r.when))));
+    if (!conflictChecks.conflicts || typeof conflictChecks.conflicts !== "object") errors.push(`conflict_checks-${YEAR}.yaml: no conflicts map`);
+    for (const [gate, text] of Object.entries(conflictChecks.conflicts ?? {})) {
+      const where = `conflict_checks-${YEAR}.yaml: ${gate}`;
+      if (!gateLines.has(gate)) errors.push(`${where}: not a refusal gate (no line's refuses names it)`);
+      if (typeof text !== "string" || text.trim() === "" || text.includes("\n")) errors.push(`${where}: the explanation must be one non-empty paragraph`);
+      else if (/cannot prepare|outside this tool|not supported/i.test(text)) errors.push(`${where}: the explanation of a conflict must not describe it as unsupported`);
+    }
+  }
   // Every document under the year's directories must state that year.
   const stated: [string, number][] = [
     ["sources manifest", (JSON.parse(readFileSync(MANIFEST_PATH, "utf-8")) as { tax_year: number }).tax_year],
@@ -311,6 +327,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     ["question bank", bank.tax_year], ["interview", interview.tax_year], ["sales interview", salesInterview.tax_year],
     ["Stage 4 interview", stage4Interview.tax_year], ["full interview", fullInterview.tax_year],
     ...(nyInterview ? [["New York interview", nyInterview.tax_year] as [string, number]] : []),
+    ...(conflictChecks ? [["conflict checks", conflictChecks.tax_year] as [string, number]] : []),
     ...[...forms, ...defs].map((d): [string, number] => [d.id, d.tax_year]),
     ...tables.map((t): [string, number] => [`table ${t.id}`, t.tax_year]),
     ...(existsSync(NY_MANIFEST_PATH) ? [["New York sources manifest", nyManifestYear] as [string, number]] : []),
@@ -417,6 +434,7 @@ export function runBuild(): { data: CanonicalData | null; errors: string[]; stat
     writeFileSync(join(OUT_DIR, "interview-stage4.json"), stableStringify(stage4Interview));
     writeFileSync(join(OUT_DIR, "interview-full.json"), stableStringify(fullInterview));
     if (nyInterview) writeFileSync(join(OUT_DIR, "interview-ny.json"), stableStringify(nyInterview));
+    if (conflictChecks) writeFileSync(join(OUT_DIR, "conflicts.json"), stableStringify({ conflicts: conflictChecks.conflicts }));
     writeFileSync(join(OUT_DIR, "params.json"), stableStringify({ params }));
     for (const table of tables) {
       writeFileSync(join(OUT_DIR, "tables", `${table.id}.json`), stableStringify({ table }));

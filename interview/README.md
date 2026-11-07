@@ -79,7 +79,11 @@ shows the title once), every reference of
 the citation's locator with the quoted words set apart, and the document's id and revision. A
 status line under the tabs shows the return's progress, or its refusal, labelled provisional
 while questions are pending and final once none are, with the refusal's form, remedy, trigger
-and source in a dialog. Everything else is one tab away: the answered questions (choosing one
+and source in a dialog. A refusal whose gate is a consistency check (`conflict_checks-2025.yaml`:
+answers that contradict each other or are impossible, such as more family months than eligible
+months) is shown instead as conflicting answers, neither unsupported nor provisional: the
+check's explanation and the answers it reads, each a link that reopens its question, above the
+current question. Everything else is one tab away: the answered questions (choosing one
 reopens it for correction); "Your return so far", the federal and New York values sheets (the
 return first, then its schedules, the other forms, and worksheets and helper sections last;
 the order is the page's, the text sheet keeps the engine's), where the lines the last answer

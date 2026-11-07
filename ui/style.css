@@ -82,6 +82,8 @@ h1 span { font-weight: 400; color: var(--muted); }
 .status.refused.provisional p { color: var(--ink); }
 .status.refused.provisional strong { color: var(--refused); }
 .status.complete p { color: var(--done); }
+.status.conflicting p { color: var(--ink); }
+.status.conflicting strong { color: var(--unknown); }
 .status button.link { font-size: inherit; }
 
 /* ---- pages ---- */
@@ -103,6 +105,16 @@ h1 span { font-weight: 400; color: var(--muted); }
 .saved button { white-space: nowrap; flex: none; }
 .question { display: grid; grid-template-columns: minmax(0, var(--measure)) minmax(16rem, 22rem); gap: 4rem; justify-content: space-between; padding-top: 1.2rem; }
 .ask { min-width: 0; }
+/* conflicting answers: a correction to make, not an unsupported case */
+.conflict { border-left: 3px solid var(--unknown); background: #fbf5e6; border-radius: 0 4px 4px 0; padding: 0.8rem 1rem 0.7rem; margin-bottom: 1.6rem; max-width: 50rem; }
+.conflict h2 { font-size: 1rem; color: var(--unknown); margin-bottom: 0.3rem; }
+.conflict > p { max-width: var(--measure); }
+.conflict-answers { list-style: none; padding: 0; margin: 0.6rem 0 0.4rem; }
+.conflict-answers li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, max-content); gap: 1rem; padding: 0.3rem 0; border-bottom: 1px solid #eadfc4; font-size: 0.9375rem; }
+.conflict-answers li:last-child { border-bottom: 0; }
+.conflict-value { font-variant-numeric: tabular-nums; text-align: right; font-weight: 600; }
+.conflict-figures-head { margin-top: 0.6rem; font-size: 0.875rem; color: var(--muted); }
+.conflict-help { font-size: 0.8125rem; color: var(--muted); margin-top: 0.3rem; }
 .correcting { background: var(--accent-soft); border-radius: 4px; padding: 0.5rem 0.75rem; margin-bottom: 1.2rem; font-size: 0.875rem; }
 .about { font-size: 0.875rem; color: var(--muted); margin-bottom: 0.5rem; }
 .prompt-text { font-family: var(--serif); font-size: 1.1875rem; line-height: 1.55; overflow-wrap: break-word; }

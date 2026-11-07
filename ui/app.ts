@@ -18,8 +18,11 @@ interface FormRef { designation: string; id: string; title?: string; purpose?: {
 interface Question { input: string; prompt: string; help: string; cite: Cite; helpRequested?: boolean; type: string; values?: string[]; choices?: Choice[]; value?: unknown; forms?: FormRef[] }
 interface SheetLine { key: string; printed: string; label: string; value: Value; status: string; shown: boolean; notes: string[] }
 interface Section { doc: string; title: string; entry: string | null; lines: SheetLine[] }
+/** A refusal whose gate is a consistency check: answers that contradict each other, not an unsupported case. */
+interface Conflict { gate: string; explanation: string; answers: Question[]; figures: { line: string; printed: string; label: string; value: Value }[] }
 interface State {
   name: string; status: "incomplete" | "complete" | "refused"; refusal: (Value & { kind: "refusal" }) | null; refusalFinal: boolean;
+  conflicts: Conflict[];
   pending: Question[]; answered: Question[]; scope: string; notices: string; standingNotices: string[];
   values: Record<string, Derivation>; sheets: { federal: Section[]; newYork: Section[] }; changed: string[];
   entryLabels: Record<string, string>;
@@ -416,13 +419,50 @@ function refusalDetails(r: Value & { kind: "refusal" }, final: boolean): HTMLEle
       el("dt", {}, "Trigger"), el("dd", { class: "mono" }, r.gate),
       el("dt", {}, "Source"), el("dd", {}, citeText(r.cite))));
 }
+/** The conflict a refusal stands for, when its gate is a consistency check. */
+function conflictOf(gate: string): Conflict | null {
+  return state!.conflicts.find((c) => c.gate === gate) ?? null;
+}
+/** Every conflict among the answers: its explanation, and each answer it reads as a link that reopens the question
+ * (a figure that stands for many answers opens its derivation). */
+function conflictBlocks(): HTMLElement[] {
+  return state!.conflicts.map((c, i) => {
+    const answers = c.answers.map((a) => {
+      const about = entryContext(a.input);
+      return el("li", {},
+        button(`${about ? about + ": " : ""}${shortPrompt(firstLine(a.prompt), 180)}`, { class: "link", "data-input": a.input, title: displayKey(a.input) }, () => reopen(a.input)),
+        el("span", { class: "conflict-value" }, fmtAnswer(a, a.value)));
+    });
+    const figures = c.figures.map((f) => el("li", {},
+      button(`${f.printed && !/^\(/.test(f.printed) ? f.printed + " " : ""}${shortPrompt(f.label, 110)}`, { class: "link", "data-ref": f.line, title: displayKey(f.line) }, () => {
+        trail = [f.line]; renderDerivation(); renderSheet(); showView("return");
+      }),
+      el("span", { class: "conflict-value" }, fmtValue(f.value))));
+    return el("section", { class: "conflict", ...(i === 0 ? { id: "conflict" } : {}), "aria-labelledby": `conflict-title-${i}` },
+      el("h2", { id: `conflict-title-${i}` }, "These answers conflict"),
+      el("p", {}, c.explanation),
+      answers.length ? el("ul", { class: "conflict-answers" }, ...answers) : null,
+      figures.length ? el("p", { class: "conflict-figures-head" }, "Figured from other answers:") : null,
+      figures.length ? el("ul", { class: "conflict-answers" }, ...figures) : null,
+      el("p", { class: "conflict-help" }, "Choose an answer to change it. The return is figured again after each answer."));
+  });
+}
 function renderBanner(): void {
   const s = state!;
   const b = $("status-banner");
   const status = $("status");
   status.className = `status ${s.status}${s.status === "refused" ? (s.refusalFinal ? " final" : " provisional") : ""}`;
   const pending = plural(s.pending.length, "question");
-  if (s.status === "refused" && s.refusal) {
+  const conflict = s.status === "refused" && s.refusal ? conflictOf(s.refusal.gate) : null;
+  if (conflict) {
+    // Conflicting answers: neither unsupported nor provisional, whatever is still pending.
+    status.className = "status conflicting";
+    const review = button("Show the answers", { class: "link", id: "conflict-open" }, () => {
+      reopened = null; renderQuestion(); showView("question");
+      document.getElementById("conflict")?.scrollIntoView({ block: "start", behavior: "instant" });
+    });
+    b.replaceChildren(el("strong", {}, "These answers conflict."), el("span", { class: "status-form", title: conflict.explanation }, conflict.explanation), review);
+  } else if (s.status === "refused" && s.refusal) {
     const r = s.refusal;
     const details = button("Details", { class: "link", id: "refusal-open" }, () => {
       $("refusal-body").replaceChildren(refusalDetails(r, s.refusalFinal));
@@ -464,7 +504,7 @@ function renderQuestion(): void {
   const current = currentQuestion();
   if (!current) {
     const s = state!;
-    panel.replaceChildren(el("div", { class: "page narrow empty" }, savedLine(),
+    panel.replaceChildren(el("div", { class: "page narrow empty" }, savedLine(), ...conflictBlocks(),
       el("h2", { class: "prompt-text" }, s.status === "complete" ? "Every question is answered." : "No questions are pending."),
       el("p", { class: "lede" }, "You can change any answer from the Answered tab, or see how each line was figured under Your return so far.")));
     return;
@@ -580,7 +620,7 @@ function renderQuestion(): void {
     q.help ? el("section", { class: "help", "aria-label": "Explanation" }, longText(q.help, "help-text", "help", "explanation", true)) : null,
     formsBlock(q.forms ?? []),
     el("div", { class: "actions" }, help));
-  panel.replaceChildren(savedLine(), el("article", { class: "question", "data-input": q.input }, main, sourceBlock(q.cite, q.input)));
+  panel.replaceChildren(savedLine(), ...conflictBlocks(), el("article", { class: "question", "data-input": q.input }, main, sourceBlock(q.cite, q.input)));
   if (view === "question") (panel.querySelector("#answer-input, .widget .choice, .roster-row input") as HTMLElement | null)?.focus({ preventScroll: true });
 }
 function shortPrompt(text: string, n: number): string {
@@ -606,7 +646,8 @@ function reopen(input: string): void {
   ($("question-panel").querySelector("#answer-input, .widget .choice, .roster-row input") as HTMLElement | null)?.focus({ preventScroll: true });
 }
 
-function statusTag(line: { status: string }): HTMLElement | null {
+function statusTag(line: { status: string; value?: Value }): HTMLElement | null {
+  if (line.status === "refused" && line.value?.kind === "refusal" && conflictOf(line.value.gate)) return el("span", { class: "tag" }, "conflicting answers");
   if (line.status === "refused") return el("span", { class: "tag" }, state!.refusalFinal ? "refused" : "refused, provisional");
   if (line.status === "unknown") return el("span", { class: "tag" }, "unknown");
   return null;
@@ -698,7 +739,10 @@ function renderDerivation(): void {
   });
   const close = button("Close", { class: "quiet" }, () => { trail = []; renderDerivation(); renderSheet(); });
   const back = button("Back", { class: "quiet", id: "derivation-back" }, () => { trail.pop(); renderDerivation(); renderSheet(); });
-  const valueText = d.value.kind === "refusal"
+  const conflict = d.value.kind === "refusal" ? conflictOf(d.value.gate) : null;
+  const valueText = conflict
+    ? el("span", { class: "refused-value" }, `These answers conflict. ${conflict.explanation}`)
+    : d.value.kind === "refusal"
     ? el("span", { class: "refused-value" }, `${s.refusalFinal ? "Refused (final)" : "Refused, provisional: later answers may clear it"}. This tool cannot prepare ${d.value.form}. ${d.value.remedy}`)
     : d.value.kind === "unknown"
       ? el("span", {}, el("span", { class: "figure unknown-value" }, "Unknown"), el("span", { class: "reason" }, labelKeys(d.value.reason)))

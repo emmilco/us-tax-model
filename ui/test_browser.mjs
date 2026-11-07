@@ -9,7 +9,9 @@
 // provisional refusal becoming final once nothing is pending. The answered list, the values sheets and the scope and
 // notices are tabs; a refusal's details open in a dialog. A question that names forms lists them under its
 // explanation, each with its title and quoted purpose. Screenshots of each view go to /private/tmp/tax-ui-design-*.png,
-// and of the forms a question names to /private/tmp/tax-ui-glosses.png.
+// and of the forms a question names to /private/tmp/tax-ui-glosses.png. A second return, written as a log, has
+// conflicting Form 8889 month answers: it is shown as a conflict with links to the answers involved, not as a
+// refusal (screenshot /private/tmp/tax-ui-conflict.png).
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
@@ -345,11 +347,39 @@ try {
   // A reload keeps the state.
   await cdp("Page.reload");
   await until("/Refused \\(final\\)/.test(document.getElementById('status-banner').textContent)", "the reloaded page");
+  assert.equal(await evaluate("document.querySelectorAll('.conflict').length"), 0, "a scope refusal shows no conflict");
+
+  // Conflicting answers are shown as a conflict, not as a refusal: Form 8889 with self-only coverage on December 1 and
+  // every eligible month a family month (stage11.hsa.self_full_year, its month answers changed), written as a log.
+  const hsaCase = JSON.parse(readFileSync(join(root, "fixtures/2025/stage11.json"), "utf8")).cases.find(c => c.id === "stage11.hsa.self_full_year");
+  const hsa = "person[taxpayer].f8889[hsa].";
+  const hsaInputs = { ...resolveInputs(hsaCase.inputs, loadCanonical().params, hsaCase.id), [`${hsa}dec_coverage`]: "self_only", [`${hsa}months_eligible`]: 12, [`${hsa}months_family`]: 12 };
+  writeFileSync(join(dir, "conflict.jsonl"), [{ version: 1, tax_year: 2025, profile: "ny" }, ...Object.entries(hsaInputs).map(([input, value]) => ({ input, value }))]
+    .map(e => JSON.stringify(e)).join("\n") + "\n", { mode: 0o600 });
+  await cdp("Page.navigate", { url: origin + "/#conflict" });
+  await until("/These answers conflict/.test(document.getElementById('status-banner').textContent)", "the conflict in the status line");
+  await view("question");
+  await until("!!document.querySelector('#conflict')", "the conflict on the question page");
+  const conflictText = await evaluate("document.getElementById('conflict').innerText");
+  assert.match(conflictText, /These answers conflict[\s\S]*December 1 coverage do not fit together/);
+  assert.doesNotMatch(await banner() + conflictText, /cannot prepare|provisional|Refused/, "a conflict is neither unsupported nor provisional");
+  const links = await evaluate("[...document.querySelectorAll('#conflict button[data-input]')].map(b=>b.dataset.input)");
+  assert.deepEqual([...links].sort(), ["dec_coverage", "months_eligible", "months_family"].map(k => hsa + k), "the conflict links the three answers it reads");
+  const conflictShown = Object.fromEntries(await evaluate("[...document.querySelectorAll('#conflict li')].map(l=>[l.querySelector('button').dataset.input,l.querySelector('.conflict-value').textContent])"));
+  assert.deepEqual(conflictShown, { [`${hsa}dec_coverage`]: "self_only", [`${hsa}months_eligible`]: "12", [`${hsa}months_family`]: "12" }, "each answer is shown beside its question");
+  await evaluate("window.scrollTo(0, 0)");
+  await screenshot("/private/tmp/tax-ui-conflict.png");
+  await click(`#conflict button[data-input="${hsa}months_family"]`);
+  await until(`document.querySelector('.question[data-input]')?.dataset.input === ${JSON.stringify(hsa + "months_family")}`, "the conflicting question reopened");
+  assert(await evaluate("!!document.querySelector('.correcting') && !!document.getElementById('conflict')"), "the reopened question is a correction, with the conflict still shown above it");
+  await view("return");
+  assert(await evaluate("[...document.querySelectorAll('#sheet .tag')].some(t=>t.textContent==='conflicting answers') && ![...document.querySelectorAll('#sheet .tag')].some(t=>/^refused/.test(t.textContent))"),
+    "the lines the conflict stops are tagged as conflicting answers");
   assert.deepEqual(errors, []);
-  console.log(`Browser passed: the person selector with no entry syntax, ${answered} answers through the page's widgets, labelled roster entries (a colliding label suffixed; labels in the answered list, a sheet heading and a question's entry), a help request, a refused blank amount, a correction through the answered list, a derivation with operand links and the answer it depends on, a provisional refusal that became final, a reload.`);
+  console.log(`Browser passed: the person selector with no entry syntax, ${answered} answers through the page's widgets, labelled roster entries (a colliding label suffixed; labels in the answered list, a sheet heading and a question's entry), a help request, a refused blank amount, a correction through the answered list, a derivation with operand links and the answer it depends on, a provisional refusal that became final, a reload, conflicting answers shown as a conflict with links that reopen them.`);
   assert(longShot, "the long question scope.other_line16 was shown in full");
   assert(sawFolded, "a question naming more than two forms was shown with each form folded to one line");
-  console.log("Screenshots: /private/tmp/tax-ui-design-{question,long,roster,answered,return,sheet-order,refusal-provisional,refusal,refused-sheet,about,narrow}.png, /private/tmp/tax-ui-glosses.png");
+  console.log("Screenshots: /private/tmp/tax-ui-design-{question,long,roster,answered,return,sheet-order,refusal-provisional,refusal,refused-sheet,about,narrow}.png, /private/tmp/tax-ui-glosses.png, /private/tmp/tax-ui-conflict.png");
 } finally {
   server?.kill(); ws.close();
   rmSync(dir, { recursive: true, force: true });
