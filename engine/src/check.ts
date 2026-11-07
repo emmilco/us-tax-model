@@ -195,6 +195,10 @@ function tyMoney(nonneg: boolean): Ty {
   return { kind: "money", nonneg };
 }
 
+function tyText(ty: Ty): string {
+  return ty.kind === "enum" ? `Enum(${ty.name})` : ty.kind === "bool" ? "Bool" : ty.kind;
+}
+
 /** declared must be able to hold inferred (money widens NonNeg -> Dollars). */
 function compatible(ctx: Ctx, declared: Ty, inferred: Ty, where: string): void {
   if (declared.kind === "money" && inferred.kind === "money") {
@@ -530,25 +534,38 @@ function checkLine(ctx: Ctx, doc: FormDoc, line: Line): void {
       break;
     }
     case "choose": {
+      // The alternatives produce money, Bool or enum values, all of one type (an enum's alternatives one enum); the
+      // line is that type, and NonNegDollars only when every alternative is.
       if (expr.alternatives.length === 0) ctx.errors.push(`${where}: choose with no alternatives`);
       let allNonneg = true;
+      let first: Ty | null = null;
       for (const alt of expr.alternatives) {
         checkTestType(ctx, doc, alt.guard, where);
+        let ty: Ty | null = null;
         if (typeof alt.then === "string") {
           const hit = requireRef(ctx, doc, alt.then, where);
-          if (hit) {
-            const ty = declaredTyOf(ctx, hit.doc, hit.line);
-            if (ty.kind !== "money") ctx.errors.push(`${where}: choose branch '${alt.then}' is not money`);
-            allNonneg = allNonneg && ty.kind === "money" && ty.nonneg;
-          }
+          if (hit) ty = declaredTyOf(ctx, hit.doc, hit.line);
         } else {
-          const ty = checkInstance(ctx, doc, alt.then, where);
-          if (ty && ty.kind !== "money") ctx.errors.push(`${where}: choose branch is not money`);
           // An instance's result has its def line's declared type, which the def's own check proves.
-          allNonneg = allNonneg && ty !== null && ty.kind === "money" && ty.nonneg;
+          ty = checkInstance(ctx, doc, alt.then, where);
         }
+        const branch = typeof alt.then === "string" ? `choose branch '${alt.then}'` : `choose branch ${alt.then.def}.${alt.then.line}`;
+        if (!ty) { if (typeof alt.then !== "string") allNonneg = false; continue; }
+        if (ty.kind !== "money" && ty.kind !== "bool" && ty.kind !== "enum") {
+          ctx.errors.push(`${where}: ${branch} is a ${ty.kind}; a choose's alternatives are money, Bool or enum`);
+          allNonneg = false;
+          continue;
+        }
+        allNonneg = allNonneg && ty.kind === "money" && ty.nonneg;
+        if (!first) first = ty;
+        else if (ty.kind !== first.kind) ctx.errors.push(`${where}: ${branch} is ${tyText(ty)}, but an earlier alternative is ${tyText(first)}; a choose's alternatives share one type`);
+        else if (ty.kind === "enum" && first.kind === "enum" && ty.name !== first.name) ctx.errors.push(`${where}: ${branch} is ${tyText(ty)}, but an earlier alternative is ${tyText(first)}; a choose's alternatives share one type`);
       }
-      compatible(ctx, declared, tyMoney(allNonneg), where);
+      if (!first || first.kind === "money") compatible(ctx, declared, tyMoney(allNonneg), where);
+      else {
+        compatible(ctx, declared, first, where);
+        if (first.kind === "enum" && declared.kind === "enum" && declared.name !== first.name) ctx.errors.push(`${where}: declared ${tyText(declared)} but the alternatives are ${tyText(first)}`);
+      }
       break;
     }
     case "test": {

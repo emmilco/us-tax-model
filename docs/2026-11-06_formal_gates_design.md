@@ -78,7 +78,8 @@ form is filed, never whether an amount exists, so they never hide an amount inpu
   The gated input carries the marker: `gated_by: <gate line>` (`schema/data.schema.json`, `engine/src/gates.ts`). The
   marker sits on the input because the rule protects the input: any new reader of it fails the build, wherever it is
   added. The gate line is a `choose` of the same document that takes the input as an alternative's `then`, whose guards
-  do not read it, and whose other alternatives are a zero or false parameter; it gates one input.
+  do not read it, and whose other alternatives are a parameter of the input's type: zero, false, or a designated enum
+  value (a `choose`'s alternatives are money, Bool or enum, all of one type). It gates one input.
 - **Leaking conjunctions are rewritten as nested `choose`** where order matters, so the second question waits for the
   first. The evaluator's `all`/`any` semantics stay unchanged. A change there would alter reachability across the
   whole model and the Lean evaluator, and belongs with T-248.

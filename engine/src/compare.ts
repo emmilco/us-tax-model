@@ -13,6 +13,7 @@ import type { CanonicalData, Inputs } from "./types.js";
 import type { Value } from "./eval.js";
 import { YEAR, yearPath } from "./year.js";
 import { reportName, reportPath } from "./year.js";
+import { TYPED_CHOOSE_CASES, typedChooseData, valueText } from "./check-selftest.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
 const LEAN_BIN = join(ROOT, "lean", ".lake", "build", "bin", "taxeval");
@@ -114,11 +115,51 @@ function normalize(v: Value | Record<string, unknown>): string {
   return `${val.kind}:${JSON.stringify(val.value)}`;
 }
 
+/** The self-test: the Bool and enum `choose` lines of check-selftest's synthetic document, evaluated by both
+ * evaluators on each of its cases. Every line must agree, and each choose line must have the value the case states.
+ * Returns the problems found. */
+function typedChooseAgreement(): string[] {
+  const data = typedChooseData();
+  const dir = mkdtempSync(join(tmpdir(), "compare-typed-"));
+  const problems: string[] = [];
+  try {
+    mkdirSync(join(dir, "tables"));
+    writeFileSync(join(dir, "c.json"), JSON.stringify({ form: data.forms[0] }));
+    writeFileSync(join(dir, "params.json"), JSON.stringify({ params: data.params }));
+    const targets = data.forms[0]!.lines.map((l) => l.id);
+    TYPED_CHOOSE_CASES.forEach(({ inputs, expect }, i) => {
+      const inputsPath = join(dir, `case${i}.inputs.json`);
+      const outPath = join(dir, `case${i}.lean.json`);
+      writeFileSync(inputsPath, JSON.stringify(inputs));
+      const proc = spawnSync(LEAN_BIN, ["--canonical", dir, "--inputs", inputsPath, "--out", outPath], { encoding: "utf-8" });
+      if (proc.status !== 0) { problems.push(`case ${i}: lean evaluator exited ${proc.status}: ${proc.stderr.slice(0, 200)}`); return; }
+      const lean = JSON.parse(readFileSync(outPath, "utf-8")) as Record<string, Record<string, unknown>>;
+      const ts = evaluate(data, inputs as Inputs, targets).values;
+      for (const id of targets) {
+        const a = ts.get(id), b = lean[id];
+        if (!a || !b) problems.push(`case ${i}: ${id} missing (ts ${a ? "present" : "absent"}, lean ${b ? "present" : "absent"})`);
+        else if (normalize(a) !== normalize(b)) problems.push(`case ${i}: ${id}: ts=${normalize(a)} lean=${normalize(b)}`);
+      }
+      for (const [id, want] of Object.entries(expect)) {
+        const got = ts.get(id);
+        if (!got || valueText(got) !== want) problems.push(`case ${i}: ${id} is ${got ? valueText(got) : "absent"}, not ${want}`);
+      }
+    });
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+  return problems;
+}
+
 export function compareEvaluators(): number {
   if (!existsSync(LEAN_BIN)) {
     console.error(`lean binary not found at ${LEAN_BIN}; run: cd lean && lake build`);
     return 2;
   }
+  const selfTest = typedChooseAgreement();
+  for (const p of selfTest) console.error(`compare self-test (Bool and enum choose): ${p}`);
+  console.log(`compare self-test: ${TYPED_CHOOSE_CASES.length} cases of Bool and enum choose, ${selfTest.length} problem(s)`);
+  if (selfTest.length) return 1;
   const data = loadCanonical();
   const targets = data.forms.filter(d => !d.collection).flatMap((doc) => doc.lines.map((l) => l.id));
   const cases = [...fixtureCases(), ...generatedCases(data, 200)];

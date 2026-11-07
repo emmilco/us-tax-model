@@ -911,7 +911,7 @@
         "gated_by": {
           "type": "string",
           "minLength": 1,
-          "description": "On an input line: its gate line, a choose of the same document that takes this input as an alternative's then and has an else of a zero or false parameter. The gate line is the input's only reader (engine/src/gates.ts; docs/2026-11-06_formal_gates_design.md)."
+          "description": "On an input line: its gate line, a choose of the same document that takes this input as an alternative's then and has an else of a parameter of the input's type (zero for money, false for a Bool, a designated value for an enum). The gate line is the input's only reader (engine/src/gates.ts; docs/2026-11-06_formal_gates_design.md)."
         },
         "display": {
           "type": "string",

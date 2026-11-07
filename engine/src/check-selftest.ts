@@ -1,7 +1,7 @@
 // Self-test of the check rules that have no failing case in the shipped data: each rule must
 // flag a constructed violation and pass the corresponding clean case.
 import assert from "node:assert/strict";
-import { registerLinkProblems, tableBandMonoProblems } from "./check.js";
+import { checkExpressionTypes, registerLinkProblems, tableBandMonoProblems } from "./check.js";
 import { entrySyntax } from "./interview.js";
 import { gateProblems } from "./gates.js";
 import { evaluate } from "./eval.js";
@@ -38,6 +38,68 @@ function gated(edit: (lines: Line[]) => void = () => {}): CanonicalData {
     params: { tax_year: 2025, enums: {}, values: { z: { type: "NonNegDollars", value: 0, cite: null } } }, register: { tax_year: 2025, entries: [] } } as unknown as CanonicalData;
 }
 const line = (lines: Line[], id: string) => lines.find((l) => l.id === id)!;
+
+/** A document `c` of Bool and enum `choose` lines (enum `cv`: a, b, c), for the checker's typing rules here and for the
+ * two evaluators' agreement (compare.ts). `c.bsel` takes the screened `c.yes` when `c.flag` is true and the false
+ * parameter `c.no` when it is false; `c.esel` takes the input `c.pick` when `c.kind` is a and the enum parameter
+ * `c.dflt` (a) otherwise; `c.nest` is a choose on `c.yes` whose true alternative is `c.bsel`; `c.allref` takes two
+ * lines that both refuse when `c.bad` is true; `c.use` tests `c.bsel`, and `c.money` is a money choose on `c.esel`.
+ * `edit` changes the lines before the data is made. */
+export function typedChooseData(edit: (lines: Line[]) => void = () => {}): CanonicalData {
+  const cite = { doc: "c", revision: "r", locator: "p. 1", snapshot: "s" };
+  const eq = (ref: string, v: boolean | string) => ({ op: "test", eq: [ref, { const: v }] });
+  const choose = (ref: string, alts: [boolean | string, string][]) => ({ op: "choose", alternatives: alts.map(([v, then]) => ({ guard: eq(ref, v), then })) });
+  const l = (id: string, type: string, expr: unknown, extra: object = {}) => ({ id, printed: "1", label: id, type, expr, cite, ...extra });
+  const screened = { refuses: [{ when: "c.bad", form: "Screened", remedy: "Outside the test.", cite }] };
+  const lines = [
+    l("c.flag", "Bool", { op: "input", source: "Flag?" }),
+    l("c.yes", "Bool", { op: "input", source: "Yes?" }),
+    l("c.bad", "Bool", { op: "input", source: "Bad?" }),
+    l("c.kind", "Enum(cv)", { op: "input", source: "Kind?" }),
+    l("c.pick", "Enum(cv)", { op: "input", source: "Pick?" }),
+    l("c.amount", "NonNegDollars", { op: "input", source: "Amount?" }),
+    l("c.no", "Bool", { op: "param", ref: "cno" }),
+    l("c.dflt", "Enum(cv)", { op: "param", ref: "cdflt" }),
+    l("c.zero", "NonNegDollars", { op: "param", ref: "z" }),
+    l("c.yes_screened", "Bool", { op: "copy", from: "c.yes" }, screened),
+    l("c.no_screened", "Bool", { op: "copy", from: "c.no" }, screened),
+    l("c.bsel", "Bool", choose("c.flag", [[true, "c.yes_screened"], [false, "c.no"]])),
+    l("c.esel", "Enum(cv)", choose("c.kind", [["a", "c.pick"], ["b", "c.dflt"], ["c", "c.dflt"]])),
+    l("c.nest", "Bool", choose("c.yes", [[true, "c.bsel"], [false, "c.no"]])),
+    l("c.allref", "Bool", choose("c.flag", [[true, "c.yes_screened"], [false, "c.no_screened"]])),
+    l("c.use", "Bool", eq("c.bsel", true)),
+    l("c.money", "NonNegDollars", choose("c.esel", [["a", "c.amount"], ["b", "c.zero"], ["c", "c.zero"]])),
+  ] as unknown as Line[];
+  edit(lines);
+  return { forms: [{ id: "c", kind: "form", tax_year: 2025, title: "c", lines }], defs: [], tables: [],
+    params: { tax_year: 2025, enums: { cv: { values: ["a", "b", "c"], cite } }, values: {
+      cno: { type: "Bool", value: false, cite }, cdflt: { type: "Enum(cv)", value: "a", cite }, z: { type: "NonNegDollars", value: 0, cite } } },
+    register: { tax_year: 2025, entries: [] } } as unknown as CanonicalData;
+}
+
+/** Inputs for `typedChooseData` and the values the evaluator gives its choose lines (a refusal by its gate). */
+export const TYPED_CHOOSE_CASES: { inputs: Record<string, unknown>; expect: Record<string, string> }[] = [
+  { inputs: {}, expect: { "c.bsel": "unknown", "c.esel": "unknown", "c.allref": "unknown", "c.money": "unknown" } },
+  { inputs: { "c.flag": false }, expect: { "c.bsel": "bool:false", "c.use": "bool:false", "c.allref": "unknown" } },
+  { inputs: { "c.flag": false, "c.bad": true }, expect: { "c.bsel": "bool:false", "c.allref": "refusal:c.bad" } },
+  // An unknown guard: every way refuses, so the line refuses; one way is a value, so the line is the guard's unknown.
+  { inputs: { "c.bad": true }, expect: { "c.allref": "refusal:c.bad", "c.bsel": "unknown" } },
+  { inputs: { "c.flag": true, "c.yes": true }, expect: { "c.bsel": "unknown", "c.nest": "unknown" } },
+  { inputs: { "c.flag": true, "c.yes": true, "c.bad": false }, expect: { "c.bsel": "bool:true", "c.use": "bool:true", "c.nest": "bool:true", "c.allref": "bool:true" } },
+  { inputs: { "c.flag": true, "c.yes": false, "c.bad": true }, expect: { "c.bsel": "refusal:c.bad", "c.nest": "bool:false", "c.use": "refusal:c.bad" } },
+  { inputs: { "c.kind": "b" }, expect: { "c.esel": "enum:a", "c.money": "unknown" } },
+  { inputs: { "c.kind": "a", "c.pick": "c", "c.amount": 500 }, expect: { "c.esel": "enum:c", "c.money": "money:0" } },
+  { inputs: { "c.kind": "a", "c.pick": "a", "c.amount": 500 }, expect: { "c.esel": "enum:a", "c.money": "money:500" } },
+  { inputs: { "c.kind": "c", "c.amount": 7 }, expect: { "c.esel": "enum:a", "c.money": "money:7" } },
+];
+
+/** A value as the typed-choose cases state it. */
+export function valueText(v: { kind: string; [k: string]: unknown }): string {
+  if (v.kind === "refusal") return `refusal:${String(v["gate"])}`;
+  if (v.kind === "unknown") return "unknown";
+  if (v.kind === "money") return `money:${String(v["cents"])}`;
+  return `${v.kind}:${String(v["value"])}`;
+}
 
 export function runCheckSelfTest(): void {
   // tableBand_mono's condition
@@ -91,6 +153,42 @@ export function runCheckSelfTest(): void {
   assert.deepEqual(asked({ "g.any": false }), []);
   assert.deepEqual(asked({ "g.any": true }), ["g.box_amount"]);
 
+  // Typed choose: Bool and enum alternatives of one type check; mixed, other-enum, count and mistyped lines do not.
+  const typeErrors = (edit?: (lines: Line[]) => void) => checkExpressionTypes(typedChooseData(edit), "c").map((e) => e.message).join("\n");
+  assert.equal(typeErrors(), "");
+  const alt = (ls: Line[], id: string, i: number) => (line(ls, id).expr as { alternatives: { then: string }[] }).alternatives[i]!;
+  const chooseCases: [string, (lines: Line[]) => void, RegExp][] = [
+    ["a Bool and a money alternative", (ls) => { alt(ls, "c.bsel", 1).then = "c.zero"; }, /c\.bsel: choose branch 'c\.zero' is money, but an earlier alternative is Bool; a choose's alternatives share one type/],
+    ["a money and an enum alternative", (ls) => { alt(ls, "c.money", 0).then = "c.pick"; }, /c\.money: choose branch 'c\.zero' is money, but an earlier alternative is Enum\(cv\)/],
+    ["alternatives of two enums", (ls) => { ls.push({ ...line(ls, "c.kind"), id: "c.other", type: "Enum(ov)" }); alt(ls, "c.esel", 1).then = "c.other"; }, /c\.esel: choose branch 'c\.other' is Enum\(ov\), but an earlier alternative is Enum\(cv\)/],
+    ["a count alternative", (ls) => { ls.push({ ...line(ls, "c.amount"), id: "c.n", type: "Count" }); alt(ls, "c.money", 0).then = "c.n"; }, /choose branch 'c\.n' is a count; a choose's alternatives are money, Bool or enum/],
+    ["a Bool choose declared money", (ls) => { line(ls, "c.bsel").type = "NonNegDollars"; }, /c\.bsel: declared money but the expression produces bool/],
+    ["an enum choose declared another enum", (ls) => { line(ls, "c.esel").type = "Enum(ov)"; }, /c\.esel: declared Enum\(ov\) but the alternatives are Enum\(cv\)/],
+  ];
+  for (const [name, edit, re] of chooseCases) assert.match(typeErrors(edit), re, `choose typing missed: ${name}`);
+  // Its evaluation, value by value (the Lean evaluator's agreement on the same cases is compare's self-test).
+  for (const { inputs, expect } of TYPED_CHOOSE_CASES) {
+    const values = evaluate(typedChooseData(), inputs as never, Object.keys(expect)).values;
+    for (const [id, want] of Object.entries(expect)) assert.equal(valueText(values.get(id)!), want, `${id} on ${JSON.stringify(inputs)}`);
+  }
+  // A Bool or enum input gated with a false or enum parameter as its else; a money else for either is not one.
+  const typedGate = (edit: (lines: Line[]) => void = () => {}) => typedChooseData((ls) => {
+    for (const [input, gate] of [["c.yes", "c.bsel"], ["c.pick", "c.esel"]] as const) line(ls, input).gated_by = gate;
+    alt(ls, "c.bsel", 0).then = "c.yes";
+    ls.splice(ls.findIndex((x) => x.id === "c.nest"), 1); ls.splice(ls.findIndex((x) => x.id === "c.yes_screened"), 1);
+    line(ls, "c.allref").expr = { op: "copy", from: "c.no_screened" } as never;
+    edit(ls);
+  });
+  assert.deepEqual(gateProblems(typedGate()), []);
+  assert.match(gateProblems(typedGate((ls) => { alt(ls, "c.bsel", 1).then = "c.zero"; })).join("\n"), /c\.yes \(gated_by c\.bsel\): the gate has no else alternative/);
+  assert.match(gateProblems(typedGate((ls) => { alt(ls, "c.esel", 1).then = "c.zero"; })).join("\n"), /c\.pick \(gated_by c\.esel\): alternative c\.zero is neither the gated input nor a parameter of the input's type/);
+  assert.match(gateProblems(typedGate((ls) => { line(ls, "c.no").expr = { op: "param", ref: "cdflt" } as never; })).join("\n"), /c\.yes \(gated_by c\.bsel\): the gate has no else alternative/);
+  const typedAsked = (inputs: Record<string, unknown>) => [...new Set([...evaluate(typedGate(), inputs as never, ["c.bsel", "c.esel"]).derivations.values()]
+    .flatMap((d) => d.value.kind === "unknown" && d.value.input ? [d.value.input] : []))].sort();
+  assert.deepEqual(typedAsked({}), ["c.flag", "c.kind"]);
+  assert.deepEqual(typedAsked({ "c.flag": false, "c.kind": "b" }), []);
+  assert.deepEqual(typedAsked({ "c.flag": true, "c.kind": "a" }), ["c.pick", "c.yes"]);
+  const typedCount = 1 + chooseCases.length + TYPED_CHOOSE_CASES.length + 4 + 3;
   // Structured text (text.ts): the subset parses to its blocks; everything else is a named problem; plain text is untouched.
   const good = "Any of these?\n\nWork:\n- wages (Form W-2)\n- tips, for example:\n  - cash tips\n\nA closing note, with a colon:\n\n- a list after a blank line";
   const parsed = parseStructured(good);
@@ -127,5 +225,5 @@ export function runCheckSelfTest(): void {
   ];
   for (const [text, re] of bad) assert.match(parseStructured(text).problems.join("\n"), re, `not flagged: ${JSON.stringify(text)}`);
   assert.deepEqual(parseStructured("Q?\n\n- employer_reported, an enum value").problems, []);
-  console.log(`check self-test: ${9 + syntax.length + substance.length + 1 + gateCases.length + 3 + 10 + bad.length} cases passed (tableBand_mono condition, register links, entry syntax in question wording, gate conventions, structured text)`);
+  console.log(`check self-test: ${9 + syntax.length + substance.length + 1 + gateCases.length + 3 + typedCount + 10 + bad.length} cases passed (tableBand_mono condition, register links, entry syntax in question wording, gate conventions, Bool and enum choose, structured text)`);
 }

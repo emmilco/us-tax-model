@@ -3,8 +3,8 @@
 """Formal gates as the review tools see them.
 
 A gated input is an input line marked `gated_by: <gate line>`; the gate line is a `choose` of the same document that
-takes the input when its guard holds and a zero parameter otherwise (engine/src/gates.ts checks the convention). The
-review unit is the gate's condition: the one line every guard of a gate line reads (an applicability or existence
+takes the input when its guard holds and otherwise a parameter of the input's type: zero, false or a designated enum
+value (engine/src/gates.ts checks the convention). The review unit is the gate's condition: the one line every guard of a gate line reads (an applicability or existence
 `Bool` the filer answers, or a computed condition), with every gate line that guards on it. A gate line whose guards
 read more than one line is a unit of its own. Units are keyed `gate:<condition>`.
 

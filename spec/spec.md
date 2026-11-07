@@ -159,7 +159,7 @@ Every value also has a completeness state: unknown, placeholder, or known. A ret
 | `bracket_schedule` | Tax from a rate schedule |
 | `sum_over` | Total of one column over a collection, with an optional filter |
 | `test` | A comparison yielding `Bool`, with `all`, `any`, `not` |
-| `choose` | Guarded alternatives; the guards must be exhaustive and disjoint |
+| `choose` | Guarded alternatives; the guards must be exhaustive and disjoint; the alternatives are money, `Bool` or enum values, all of one type (one enum) |
 | `opaque` | A named host-language function with its own citation and tests |
 
 There are no user-defined functions, loops, local variables, strings or recursion. Adding an atom requires a written justification, a rendering template, a Lean definition and its lemmas. The vocabulary is cross-checked against the IRS Fact Graph operator list before it is frozen.

@@ -1,6 +1,7 @@
 // Gate conventions. A gated input is an input line
 // marked `gated_by: <gate line>`; its gate line is a `choose` of the same document that reads it as the `then` of an
-// alternative and has an else alternative of a zero or false parameter. The marker sits on the input because the
+// alternative and has an else alternative of a parameter of the input's type: zero for money, false for a Bool, a
+// designated value for an enum. The marker sits on the input because the
 // rule protects the input: no line other than its gate may read it, so a reader added anywhere fails at the build.
 import type { CanonicalData, Expr, FormDoc, Line } from "./types.js";
 
@@ -69,21 +70,28 @@ export function gateProblems(data: CanonicalData, targets: string[] = []): strin
     const alts = (gate.expr as Extract<Expr, { op: "choose" }>).alternatives;
     if (alts.some((a) => refsOf(a.guard).has(l.id))) problems.push(`${where}: a guard of the gate reads the gated input`);
     if (!alts.some((a) => a.then === l.id)) problems.push(`${where}: no alternative of the gate takes the gated input as its then`);
-    const elseAlt = alts.find((a) => typeof a.then === "string" && a.then !== l.id && isZeroLine(data, doc, a.then));
-    if (!elseAlt) problems.push(`${where}: the gate has no else alternative of a zero or false parameter`);
+    const elseAlt = alts.find((a) => typeof a.then === "string" && a.then !== l.id && isElseLine(data, doc, a.then, l.type));
+    if (!elseAlt) problems.push(`${where}: the gate has no else alternative of ${ELSE_TEXT}`);
     for (const a of alts) {
       if (typeof a.then !== "string") problems.push(`${where}: an alternative of the gate is a definition instance; a gate's alternatives are the gated input and its else`);
-      else if (a.then !== l.id && !isZeroLine(data, doc, a.then)) problems.push(`${where}: alternative ${a.then} is neither the gated input nor a zero or false parameter`);
+      else if (a.then !== l.id && !isElseLine(data, doc, a.then, l.type)) problems.push(`${where}: alternative ${a.then} is neither the gated input nor ${ELSE_TEXT}`);
     }
   }
   for (const [gate, inputs] of gateOf) if (inputs.length > 1) problems.push(`${gate}: gates ${inputs.sort().join(", ")}; a gate line gates one input`);
   return problems;
 }
 
-/** Whether `ref` names a line of `doc` (or another form) that is a parameter whose value is 0 or false. */
-function isZeroLine(data: CanonicalData, doc: FormDoc, ref: string): boolean {
+const ELSE_TEXT = "a parameter of the input's type (zero for money, false for a Bool, an enum value for an enum)";
+
+/** Whether `ref` names a line of `doc` (or another form) that is a parameter fit to be the else of a gated input of type
+ * `type`: a money parameter of 0 for a money input; a Bool line on a false parameter for a Bool input; a line of the
+ * input's enum type on a parameter of that enum (its value the designated else) for an enum input. */
+function isElseLine(data: CanonicalData, doc: FormDoc, ref: string, type: string): boolean {
   const line = doc.lines.find((x) => x.id === ref) ?? data.forms.flatMap((d) => d.lines).find((x) => x.id === ref);
   if (!line || line.expr.op !== "param") return false;
   const p = data.params.values[(line.expr as { ref: string }).ref];
-  return p !== undefined && (p.value === 0 || p.value === false);
+  if (p === undefined) return false;
+  if (type === "Bool") return line.type === "Bool" && p.type === "Bool" && p.value === false;
+  if (type.startsWith("Enum(")) return line.type === type && p.type === type && typeof p.value === "string";
+  return (type === "Dollars" || type === "NonNegDollars") && p.value === 0 && (p.type === "Dollars" || p.type === "NonNegDollars");
 }
