@@ -1,0 +1,392 @@
+{
+ "form": "ny_it201",
+ "reviews": {
+  "gate:ny_it201.federal_care": {
+   "condition": "ny_it201.federal_care",
+   "lines": [
+    "ny_it201.gate.dependent_care"
+   ],
+   "inputs": [
+    "ny_it201.ask.dependent_care"
+   ],
+   "verdict": "FALSE_NO",
+   "findings": [
+    {
+     "kind": "FALSE_NO",
+     "pattern": "3",
+     "who": "A married couple filing jointly. The spouse alone paid the daycare provider or babysitter so both could work, and the spouse's dependent care FSA appears on the spouse's W-2.",
+     "why_no": "The display text says 'you (or your spouse)', but the computed gate reads two Form 2441 helpers that ask only 'Did you pay for the care…' and 'Did you receive dependent care benefits?'. The primary filer truthfully answers no to both.",
+     "line": "ny_it201.gate.dependent_care",
+     "irs_text": "ny_it216i p. 1: \"The care was provided so you (and your spouse, if you were married) could work or look for work.\"; ny_it201i p. 19, Line 64: \"Would you qualify to claim the federal child and dependent care credit for 2025…\"",
+     "severity": "high",
+     "fix": "Make both helpers per-return: 'Did you or your spouse pay for care…' and 'Did you or your spouse receive dependent care benefits (W-2 box 10, FSA, employer-provided care)?'"
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "4",
+     "who": "A low-income filer, or a couple not required to file federally, who paid for after-school care while working. They did not file Form 2441 because the federal credit gave no benefit or no federal return was filed.",
+     "why_no": "The gate ends with '(federal Form 2441)'. A filer who never filed Form 2441 reads the question as asking whether they filed that form and answers no.",
+     "line": "ny_it201.gate.dependent_care",
+     "irs_text": "ny_it216i p. 1: \"If you did not file federal Form 2441 … you can still claim the New York State child and dependent care credit on Form IT-216 if all four of the following apply\"; \"whether you actually claim the federal credit or not\"",
+     "severity": "medium",
+     "fix": "Drop the form reference or say 'whether or not you filed federal Form 2441 or a federal return'."
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "6",
+     "who": "A working filer who paid for adult day care or an in-home aide for a disabled spouse or a disabled parent who lived with them and is (or could be) their dependent.",
+     "why_no": "'Care expenses for a qualifying person' and 'dependent care' read as child care. With no children under 13, the filer answers no.",
+     "line": "ny_it201.gate.dependent_care",
+     "irs_text": "ny_it216i p. 1, Important terms: \"Your spouse who is disabled and not able to care for themself…\"; \"Any person who is disabled and not able to care for themself who lived with you more than half of the year and whom you can claim as a dependent (or could claim…)\"",
+     "severity": "medium",
+     "fix": "Add to the help: 'A qualifying person includes a child under 13, or a spouse or other dependent who is physically or mentally unable to care for themself, including adult day care or in-home care.'"
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "8",
+     "who": "A working parent who paid for summer day camp, preschool, before- or after-school programs, a nanny treated as household employment, or a grandparent who is not their dependent.",
+     "why_no": "The filer does not see camp, preschool tuition, a household employee, or a paid relative as 'care expenses for a qualifying person' and answers no.",
+     "line": "ny_it201.gate.dependent_care",
+     "irs_text": "ny_it216i p. 1, item 4: \"The person who provided the care was not your spouse, the parent of your qualifying child under age 13, or a person whom you can claim as a dependent.\" (other paid providers, including relatives, qualify)",
+     "severity": "medium",
+     "fix": "List examples in the help: daycare, babysitters, nannies, day camp, preschool, before- or after-school programs, and relatives who are not your dependents."
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "8",
+     "who": "A filer whose dependent care FSA reimbursed part of the daycare cost, with the remaining expenses paid out of pocket.",
+     "why_no": "The filer thinks 'the FSA paid for it' and answers no to 'Did you pay for care'. Salary-reduction FSA amounts do not feel like 'receiving dependent care benefits', so the filer answers no to that helper too.",
+     "line": "ny_it201.gate.dependent_care",
+     "irs_text": "ny_it216i p. 1: \"Caution: Taxpayers who receive dependent care benefits from their employer must complete Worksheet 1 – Dependent care benefits.\"",
+     "severity": "medium",
+     "fix": "Ask: 'Did you or your spouse have a dependent care FSA, employer-provided or employer-paid care, or an amount in W-2 box 10?'"
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "other",
+     "who": "A married filer who worked while the spouse was a full-time student or disabled, and who paid for child care during the spouse's school hours.",
+     "why_no": "The wording 'so you (and your spouse) could work or look for work' leads the filer to answer no, because the spouse went to school rather than working or looking for work.",
+     "line": "ny_it201.gate.dependent_care",
+     "irs_text": "ny_it216i p. 1, item 2: \"If you or your spouse was a student or disabled, see the lines 6 and 7 instructions on page 5.\"",
+     "severity": "medium",
+     "fix": "Add 'or attend school full time, or because your spouse was disabled' to the gate wording."
+    }
+   ],
+   "prompt_sha": "d864564b515c4400c443e4816550de6d6139a030cae9129829e856838924723c",
+   "subject_sha": "4212165716570ac81140e158b6e66ac46e5f89e93734b8591e5fcee4b0611cb5",
+   "used": [
+    {
+     "doc": "ny_it216i",
+     "revision": "2025",
+     "text_sha256": "aaccbcdb1a41b6e6221e3b0f908cb845e48bb0435b736ce2cd8ed75239deb6ac",
+     "pages": [
+      1
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 1, Who qualifies, \"If you qualify to claim the federal child and dependent care credit, you can claim the New York State credit (whether you actually claim the federal credit or not).\" and \"The care was provided so you (and your spouse, if you were married) could work or look for work.\" and \"Caution: Taxpayers who receive dependent care benefits from their employer must complete Worksheet 1 – Dependent care benefits.\""
+     ],
+     "cols_pages": [
+      1
+     ],
+     "cols_sha256": "64200221fb39e0126f8748f9cd859793e2faf9c24c3f4b9a0134ee079251128b"
+    },
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      19
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 19, Line 64, \"If Yes, complete Form IT-216, Claim for Child and Dependent Care Credit, to determine your New York State child and dependent care credit.\"",
+      "p. 19, Line 64, \"Would you qualify to claim the federal child and dependent care credit for 2025 (whether or not you actually claimed it)?\""
+     ],
+     "cols_pages": [
+      19
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ],
+   "model": "claude-opus-5-5",
+   "cost": 0.102612,
+   "date": "2026-11-07"
+  },
+  "gate:ny_it201.has_line28_income": {
+   "condition": "ny_it201.has_line28_income",
+   "lines": [
+    "ny_it201.gate.line28"
+   ],
+   "inputs": [
+    "ny_it201.ask.us_obligation_interest"
+   ],
+   "verdict": "SOUND",
+   "findings": [
+    {
+     "kind": "UNCLEAR",
+     "pattern": "other",
+     "who": "A partner or S corporation shareholder whose federal Schedule E total on line 11 nets to exactly $0. One K-1 passes through Treasury interest and a loss elsewhere offsets it. The filer has no interest, dividends or business income on lines 2, 3 or 6.",
+     "why_no": "The gate is computed, not asked. It tests only whether line 11 is non-zero, so a net $0 hides the U.S. obligation interest included in it. This is rare because Schedule B normally carries K-1 interest to line 2.",
+     "line": "ny_it201.gate.line28",
+     "irs_text": "ny_it201i p. 9, Line 28: \"Did you include interest income from U.S. government bonds or other U.S. government obligations on lines 2, 6, or 11? ... If Yes, enter the amount of interest income you earned from bonds or other obligations of the U.S. government.\"",
+     "severity": "low",
+     "fix": "Also fire the gate when the filer reports any Schedule K-1 (partnership, S corporation, estate or trust), whatever the net on line 11. Or ask directly whether any interest or fund dividends from U.S. government obligations passed through to the filer or their spouse."
+    }
+   ],
+   "prompt_sha": "e8d9dbf9f8d5721b3695d84356bc15233455ad2b72c99e1bb2c2b03ebb201d49",
+   "subject_sha": "c6640539d8e1d728e74ca8120ac4c7bc4240bbb2b2d0e885fdbea07b75b334e6",
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Line 28, \"Did you include interest income from U.S. government bonds or other U.S. government obligations on lines 2, 6, or 11?\"",
+      "p. 9, Line 28, \"Did you include interest income from U.S. government bonds or other U.S. government obligations on lines 2, 6, or 11?\" and \"Dividends you received from a regulated investment company (mutual fund) that invests in obligations of the U.S. government and meet the 50% asset requirement each quarter qualify for this subtraction.\"",
+      "p. 9, Line 28, \"If Yes, enter the amount of interest income you earned from bonds or other obligations of the U.S. government.\""
+     ],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ],
+   "model": "claude-opus-5-5",
+   "cost": 0.055216,
+   "date": "2026-11-07"
+  },
+  "gate:ny_it201.has_overpayment": {
+   "condition": "ny_it201.has_overpayment",
+   "lines": [
+    "ny_it201.line79"
+   ],
+   "inputs": [
+    "ny_it201.line79_amount"
+   ],
+   "verdict": "SOUND",
+   "findings": [],
+   "prompt_sha": "595906be597d4a2027360cf6afa84244fe6b3aa85966f73a5ebaa345b88aab9c",
+   "subject_sha": "2fec6b02c0749f5ae8e4abc87e30345ae335e58812457f2b1b4bdd4e5b82ae58",
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      23
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 23, Line 79: Estimated tax, \"Enter the amount of overpayment from line 77 that you want applied to your New York State, New York City, Yonkers, and metropolitan commuter transportation mobility tax estimated tax for 2026.\""
+     ],
+     "cols_pages": [
+      23
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ],
+   "model": "claude-opus-5-5",
+   "cost": 0.035276,
+   "date": "2026-11-07"
+  },
+  "gate:ny_it201.has_pension_income": {
+   "condition": "ny_it201.has_pension_income",
+   "lines": [
+    "ny_it201.gate.line26",
+    "ny_it201.gate.line29"
+   ],
+   "inputs": [
+    "ny_it201.ask.gov_pension",
+    "ny_it201.ask.pension_exclusion"
+   ],
+   "verdict": "FALSE_NO",
+   "findings": [
+    {
+     "kind": "FALSE_NO",
+     "pattern": "5",
+     "who": "A retired NYPD officer, a New York State employee or a federal civil-service or military retiree under 59 1/2 who receives a disability retirement pension before reaching the plan's minimum retirement age. Federally it is reported as wages (federal Form 1040 line 1h), so it lands on IT-201 line 1, and lines 9 and 10 are zero.",
+     "why_no": "The gate is computed from line 9 > 0 or line 10 > 0 only. The instructions say pension income is only 'generally reported on line 9 or 10'. A government pension included in federal AGI through the wage line makes the computed condition false, so the line 26 question is never asked.",
+     "line": "ny_it201.gate.line26",
+     "irs_text": "ny_it201i p. 9, Line 26: 'Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income? ... If Yes, enter the amount of any pension you received'",
+     "severity": "high",
+     "fix": "Don't compute the gate from lines 9 and 10 alone. Add a direct question: 'Did you or your spouse receive any pension, annuity, disability retirement or IRA distribution in 2025, including one reported as wages on your federal return or passed through to you on a Schedule K-1?' Ask lines 26 and 29 whenever lines 9 or 10 are above zero or this answer is yes."
+    },
+    {
+     "kind": "FALSE_NO",
+     "pattern": "5",
+     "who": "A private-employer retiree aged 60 who receives a disability pension from a corporate plan before the plan's minimum retirement age (for example 62 or 65). Federally it is reported as wages, so IT-201 line 1 includes it and lines 9 and 10 are zero.",
+     "why_no": "The computed gate looks only at lines 9 and 10. The line 29 instructions say the income is 'generally', not always, reported there, so this pension never reaches the exclusion question.",
+     "line": "ny_it201.gate.line29",
+     "irs_text": "ny_it201i p. 9, Line 29: 'Did you enter an amount of pension income or annuity income, or both (generally reported on line 9 or 10) ... Qualifying pension and annuity income includes ... periodic payments for services you performed as an employee before you retired'",
+     "severity": "high",
+     "fix": "Use the same broadened gate as for line 26. Ask the pension questions when lines 9 or 10 are above zero, or when the filer says a pension, annuity or disability retirement payment was included in federal AGI on any other line."
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "5",
+     "who": "A surviving child or spouse of a deceased New York State or federal employee. The survivor pension is paid to the decedent's estate or trust and passed through to them on a Schedule K-1 (IT-201 line 17 or other income), so lines 9 and 10 are zero.",
+     "why_no": "The gate reads only lines 9 and 10. Pension income that reaches the beneficiary through an estate or trust K-1 never makes the condition true. Line 26 covers 'beneficiary of an officer or employee', and line 29 has a Beneficiaries rule.",
+     "line": "ny_it201.gate.line26",
+     "irs_text": "ny_it201i p. 9, Line 26: 'enter the amount of any pension you received ... as an officer, employee, or beneficiary of an officer or employee of any of the following'",
+     "severity": "medium",
+     "fix": "Include 'or a pension or annuity passed through to you as a beneficiary of an estate or trust' in the direct pension question that opens the gate. The line 26 and line 29 questions then decide whether the amount qualifies."
+    }
+   ],
+   "prompt_sha": "6be5ac7f04b8347b834823e8f6375ddf40608e3e525056068b5bd94f40ebcc97",
+   "subject_sha": "285f702efc172e4efe2a8e6df978198bf000d5cb2561e4fa4bb92c79d2228a57",
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      9
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 9, Line 26, \"Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?\"",
+      "p. 9, Line 26, \"If Yes, enter the amount of any pension you received\"",
+      "p. 9, Line 29, \"Did you enter an amount of pension income or annuity income, or both (generally reported on line 9 or 10) that was not from a New York State or local government pension plan or federal government pension plan?\"",
+      "p. 9, Line 29, \"Did you enter an amount of pension income or annuity income, or both (generally reported on line 9 or 10)\"; p. 9, Line 26, \"Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?\"",
+      "p. 9, Line 29, \"If Yes, and you were 59½ before January 1, 2025, enter the qualifying pension and annuity income included in your 2025 federal adjusted gross income, but not more than $20,000.\""
+     ],
+     "cols_pages": [
+      9
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ],
+   "model": "claude-opus-5-5",
+   "cost": 0.084188,
+   "date": "2026-11-07"
+  },
+  "gate:ny_it201.has_refund": {
+   "condition": "ny_it201.has_refund",
+   "lines": [
+    "ny_it201.gate.refund_529"
+   ],
+   "inputs": [
+    "ny_it201.ask.refund_529"
+   ],
+   "verdict": "SOUND",
+   "findings": [
+    {
+     "kind": "UNCLEAR",
+     "pattern": "other",
+     "who": "A filer with an overpayment on line 77 who, before learning of the 529 option, puts the whole overpayment on line 79 for 2026 estimated tax. Line 78 is then $0. Had they known of the 529 option, they would have split the overpayment.",
+     "why_no": "The gate is computed after the line 79 election, so line 78 = line 77 - line 79 = $0. The 529 question never appears, and nothing tells the filer the option existed.",
+     "line": "ny_it201.gate.refund_529 (line 78a)",
+     "irs_text": "ny_it201i p. 23, Line 79: \"Enter the amount of overpayment from line 77 that you want applied to your ... estimated tax for 2026. The total of lines 78a through 79 should equal the amount on line 77.\"; Line 78b: \"If you choose to deposit all or a portion of your overpayment amount (line 77) into one or more NYS 529 accounts, see the instructions for line 78a and Form IT-195\"",
+     "severity": "low",
+     "fix": "Gate on line 77 > $0, or ask the 529 and refund allocation before the line 79 election. Then compute line 78 = line 77 - line 79 and check that line 78a does not exceed line 78."
+    }
+   ],
+   "prompt_sha": "fc158633035af5d99330e156c2f71405eb9ff3f0b5c2c24f18f0085f328fdb63",
+   "subject_sha": "a110facf90999343731b210d8101040c4a273386b443a67b92833429da805876",
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      23
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 23, Line 78a, \"Enter on line 78a the amount from Form IT-195, line 4.\"",
+      "p. 23, Line 78a: NYS 529 account deposit, \"You may directly deposit all or a portion of your refund in up to three NYS 529 college savings accounts.\""
+     ],
+     "cols_pages": [
+      23
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ],
+   "model": "claude-opus-5-5",
+   "cost": 0.044808,
+   "date": "2026-11-07"
+  },
+  "gate:ny_it201.mctmt_possible": {
+   "condition": "ny_it201.mctmt_possible",
+   "lines": [
+    "ny_it201.gate.mctmt"
+   ],
+   "inputs": [
+    "ny_it201.ask.mctmt"
+   ],
+   "verdict": "FALSE_NO",
+   "findings": [
+    {
+     "kind": "FALSE_NO",
+     "pattern": "5",
+     "who": "A general partner, or a member of an LLC taxed as a partnership, in a Manhattan law, medical or consulting firm. Their Schedule K-1 shows $300,000 of self-employment earnings, and they file no Schedule C. Or a joint return where only the spouse is such a partner.",
+     "why_no": "The gate is computed only from Schedule C: more than one Schedule C, or Schedule C net profit over $50,000. A partner's earnings come through Schedule K-1 and Schedule E, so the count is 0. The tool never asks the MCTMT question, even though the instructions name partners as self-employed individuals.",
+     "line": "ny_it201.gate.mctmt (and with it lines 54a/54b, the MCTMT net earnings base)",
+     "irs_text": "ny_it201i p. 15: \"For purposes of the MCTMT, self-employed individuals include: • Sole proprietors • Partners in partnerships • Members of limited liability companies (LLCs) that are treated as partnerships • Partners of limited liability partnerships (LLPs) that are treated as partnerships\"",
+     "severity": "high",
+     "fix": "Count every person with any net earnings from self-employment (Schedule SE, or Schedule K-1 box 14 code A), not only Schedule C filers. At minimum add 'or with a partnership/LLC K-1 reporting self-employment earnings' to the helper. Better: ask directly 'Did you or your spouse have income from a business you own, a partnership or LLC you are a member of, or a farm?'"
+    },
+    {
+     "kind": "FALSE_NO",
+     "pattern": "4",
+     "who": "A sole proprietor in Suffolk or Orange County who runs a farm and reports $90,000 net profit on Schedule F, with no Schedule C.",
+     "why_no": "The helper counts only Schedule C returns. Farm self-employment income is on Schedule F, so the count is 0 and the question is skipped.",
+     "line": "ny_it201.gate.mctmt (lines 54a/54b)",
+     "irs_text": "ny_it201i p. 15: \"The metropolitan commuter transportation mobility tax (MCTMT) is imposed on self-employed individuals with net earnings from self-employment allocated to Metropolitan Commuter Transportation District (MCTD).\"",
+     "severity": "high",
+     "fix": "Base the gate on net earnings from self-employment from all sources (Schedule C, Schedule F, partnership K-1s), not on the Schedule C count."
+    },
+    {
+     "kind": "FALSE_NO",
+     "pattern": "6",
+     "who": "A Brooklyn individual with one Schedule C showing $40,000 net profit who is also a partner earning $45,000 of self-employment income from a Zone 1 partnership. The combined Zone 1 base is about $78,000.",
+     "why_no": "The helper fires on 'more than one Schedule C' or 'one Schedule C over $50,000'. One Schedule C under $50,000 plus partnership or farm income matches neither test, so the tool computes no. The instructions, however, combine all sources per zone.",
+     "line": "ny_it201.gate.mctmt (lines 54a/54b)",
+     "irs_text": "ny_it201i p. 15: \"You must calculate your MCTMT net earnings base separately for each source of self-employment income ... If you have more than one source, combine all the individual amounts on line 54a (Zone 1 amounts) or line 54b (Zone 2 amounts)\"",
+     "severity": "high",
+     "fix": "Trigger the gate when a person has more than one source of self-employment income of any kind, or when total self-employment earnings exceed $50,000, rather than counting Schedule Cs only."
+    },
+    {
+     "kind": "UNCLEAR",
+     "pattern": "8",
+     "who": "A minister in Westchester with a $35,000 Schedule C for fees and a $30,000 parsonage/housing allowance that is included in self-employment earnings on Schedule SE but not in Schedule C profit.",
+     "why_no": "Schedule C net profit is under $50,000 and there is only one Schedule C, so the computed gate is false. Net earnings from self-employment, which include the housing allowance, exceed $50,000.",
+     "line": "ny_it201.gate.mctmt (line 54b)",
+     "irs_text": "ny_it201i p. 15: \"If an individual’s net earnings from self-employment allocated to either zone exceed $50,000 for the tax year, then you are subject to the MCTMT.\"",
+     "severity": "medium",
+     "fix": "Compute the gate from Schedule SE net earnings from self-employment (before the 92.35% factor, or simply any Schedule SE filed) rather than from Schedule C net profit."
+    }
+   ],
+   "prompt_sha": "773f5a3f9c5d0fcc9daae249045a6d591b5548cbcd0e2b79fa3945358a119509",
+   "subject_sha": "438944083b1c5c15db499765401f008eaae3cc99d738248fc93432aaca27bcea",
+   "used": [
+    {
+     "doc": "ny_it201i",
+     "revision": "Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20",
+     "text_sha256": "05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9",
+     "pages": [
+      15
+     ],
+     "how": "cited pages",
+     "locators": [
+      "p. 15, Lines 54a through 54e, \"Did you or your spouse have net earnings from self-employment allocated to Zone 1 or Zone 2, or both that exceed $50,000?\"",
+      "p. 15, Lines 54a through 54e, \"If Yes, you are subject to MCTMT. Go to lines 54a and 54b, as applicable.\"",
+      "p. 15, Lines 54a through 54e, \"If an individual’s net earnings from self-employment allocated to either zone exceed $50,000 for the tax year, then you are subject to the MCTMT.\""
+     ],
+     "cols_pages": [
+      15
+     ],
+     "cols_sha256": "460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf"
+    }
+   ],
+   "model": "claude-opus-5-5",
+   "cost": 0.07522400000000001,
+   "date": "2026-11-07"
+  }
+ }
+}

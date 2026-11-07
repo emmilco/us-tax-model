@@ -98,9 +98,9 @@
 
 ## (question) — `ny_it201.ask.gov_pension`
 
-- **Authored helper label:** Did you receive a pension or other distribution from a New York State or local government or federal government pension plan that was included in federal adjusted gross income?
-- **Encoded (Bool):** Input — Did you receive a pension or other distribution from a New York State or local government or federal government pension plan that was included in federal adjusted gross income?
-- Expr: `{"op":"input","source":"Did you receive a pension or other distribution from a New York State or local government or federal government pension plan that was included in federal adjusted gross income?"}`
+- **Authored helper label:** Did you or your spouse receive a pension or other distribution included in federal adjusted gross income from a New York State or local government pension plan or a federal government pension plan, including a return of your own contributions before retirement? Count the military, a U.S. territory or the District of Columbia, the MTA Police 20-Year Retirement Program, MABSTOA, the Long Island Rail Road, and the Optional Retirement Program of SUNY, CUNY or the State Education Department (for example an annuity paid by TIAA), whether received as an employee, as a beneficiary, or as a former spouse under a domestic relations order.
+- **Encoded (Bool):** Input — Did you or your spouse receive a pension or other distribution included in federal adjusted gross income from a New York State or local government pension plan or a federal government pension plan, including a return of your own contributions before retirement? Count the military, a U.S. territory or the District of Columbia, the MTA Police 20-Year Retirement Program, MABSTOA, the Long Island Rail Road, and the Optional Retirement Program of SUNY, CUNY or the State Education Department (for example an annuity paid by TIAA), whether received as an employee, as a beneficiary, or as a former spouse under a domestic relations order.
+- Expr: `{"op":"input","source":"Did you or your spouse receive a pension or other distribution included in federal adjusted gross income from a New York State or local government pension plan or a federal government pension plan, including a return of your own contributions before retirement? Count the military, a U.S. territory or the District of Columbia, the MTA Police 20-Year Retirement Program, MABSTOA, the Long Island Rail Road, and the Optional Retirement Program of SUNY, CUNY or the State Education Department (for example an annuity paid by TIAA), whether received as an employee, as a beneficiary, or as a former spouse under a domestic relations order."}`
 - Cite: [ny_it201i] p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (question) — `ny_it201.ask.us_obligation_interest`
@@ -112,9 +112,9 @@
 
 ## (question) — `ny_it201.ask.pension_exclusion`
 
-- **Authored helper label:** Did you have pension or annuity income, or IRA distributions (periodic or lump-sum), other than from a New York State or local or federal government plan, and were you 59 1/2 or older in 2025 (or receive it as a beneficiary)?
-- **Encoded (Bool):** Input — Did you have pension or annuity income, or IRA distributions (periodic or lump-sum), other than from a New York State or local or federal government plan, and were you 59 1/2 or older in 2025 (or receive it as a beneficiary)?
-- Expr: `{"op":"input","source":"Did you have pension or annuity income, or IRA distributions (periodic or lump-sum), other than from a New York State or local or federal government plan, and were you 59 1/2 or older in 2025 (or receive it as a beneficiary)?"}`
+- **Authored helper label:** Did you or your spouse have pension or annuity income or IRA distributions (periodic or lump-sum) included in federal adjusted gross income other than a government pension subtracted on line 26 (periodic distributions from a government section 457 deferred compensation plan count here), and was the person who received it 59 1/2 or older in 2025 (or did they receive it as a beneficiary)?
+- **Encoded (Bool):** Input — Did you or your spouse have pension or annuity income or IRA distributions (periodic or lump-sum) included in federal adjusted gross income other than a government pension subtracted on line 26 (periodic distributions from a government section 457 deferred compensation plan count here), and was the person who received it 59 1/2 or older in 2025 (or did they receive it as a beneficiary)?
+- Expr: `{"op":"input","source":"Did you or your spouse have pension or annuity income or IRA distributions (periodic or lump-sum) included in federal adjusted gross income other than a government pension subtracted on line 26 (periodic distributions from a government section 457 deferred compensation plan count here), and was the person who received it 59 1/2 or older in 2025 (or did they receive it as a beneficiary)?"}`
 - Cite: [ny_it201i] p. 9, Line 29, "Did you enter an amount of pension income or annuity income, or both (generally reported on line 9 or 10) that was not from a New York State or local government pension plan or federal government pension plan?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (question) — `ny_it201.ask.529_owner`
@@ -597,11 +597,26 @@
 - Expr: `{"op":"param","ref":"ny.zero"}`
 - Cite: [ny_it201] p. 2, New York subtractions, "Taxable refunds, credits, or offsets of state and local income taxes (from line 4)" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; sha256 cfe63039)
 
+## (helper) — `ny_it201.no`
+
+- **Authored helper label:** No
+- **Encoded (Bool):** Enter false (ny.false).
+- Expr: `{"op":"param","ref":"ny.false"}`
+- Cite: [ny_it201i] p. 9, Line 26, "If No, go to line 27." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## (gate) — `ny_it201.has_pension_income`
+
+- **Authored helper label:** Is there taxable IRA, pension or annuity income on line 9 or 10?
+- **Encoded (Bool):** (line 9 > $0 or line 10 > $0)
+- Note: Within this tool, pension, annuity and IRA income in federal adjusted gross income is on federal lines 4b and 5b (IT-201 lines 9 and 10): the federal screens refuse a disability pension reported as wages (retirement.special, scope.other_income) and a pension from a nonqualified plan or a nongovernmental section 457 plan on Schedule 1 line 8t (s1.line8_other).
+- Expr: `{"any":[{"gt":["ny_it201.line9",{"const":0}],"op":"test"},{"gt":["ny_it201.line10",{"const":0}],"op":"test"}],"op":"test"}`
+- Cite: [ny_it201i] p. 9, Line 29, "Did you enter an amount of pension income or annuity income, or both (generally reported on line 9 or 10)"; p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
 ## (gate) — `ny_it201.gate.line26`
 
 - **Authored helper label:** A New York or federal government pension
-- **Encoded (Bool):** helper "Did you receive a pension or other distribution from a New York State or local government or federal government pension plan that was included in federal adjusted gross income?" = true
-- Expr: `{"eq":["ny_it201.ask.gov_pension",{"const":true}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Is there taxable IRA, pension or annuity income on line 9 or 10?" = true → helper "Did you or your spouse receive a pension or other distribution included in federal adjusted gross income from a New York State or local government pension plan or a federal government pension plan, including a return of your own contributions before retirement? Count the military, a U.S. territory or the District of Columbia, the MTA Police 20-Year Retirement Program, MABSTOA, the Long Island Rail Road, and the Optional Retirement Program of SUNY, CUNY or the State Education Department (for example an annuity paid by TIAA), whether received as an employee, as a beneficiary, or as a former spouse under a domestic relations order."] [helper "Is there taxable IRA, pension or annuity income on line 9 or 10?" = false → helper "No"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.has_pension_income",{"const":true}],"op":"test"},"then":"ny_it201.ask.gov_pension"},{"guard":{"eq":["ny_it201.has_pension_income",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 9, Line 26, "If Yes, enter the amount of any pension you received" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## 26 — `ny_it201.line26`
@@ -619,11 +634,18 @@
 - Expr: `{"from":"ny_it201.line15","op":"copy"}`
 - Cite: [ny_it201] p. 2, New York subtractions, "Taxable amount of Social Security benefits (from line 15)" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; sha256 cfe63039)
 
+## (gate) — `ny_it201.has_line28_income`
+
+- **Authored helper label:** Is there an amount on line 2, 3, 6 or 11 (interest, dividends, business income, or partnership and similar income)?
+- **Encoded (Bool):** (line 2 ≠ $0 or line 3 ≠ $0 or line 6 ≠ $0 or line 11 ≠ $0)
+- Expr: `{"any":[{"ne":["ny_it201.line2",{"const":0}],"op":"test"},{"ne":["ny_it201.line3",{"const":0}],"op":"test"},{"ne":["ny_it201.line6",{"const":0}],"op":"test"},{"ne":["ny_it201.line11",{"const":0}],"op":"test"}],"op":"test"}`
+- Cite: [ny_it201i] p. 9, Line 28, "Did you include interest income from U.S. government bonds or other U.S. government obligations on lines 2, 6, or 11?" and "Dividends you received from a regulated investment company (mutual fund) that invests in obligations of the U.S. government and meet the 50% asset requirement each quarter qualify for this subtraction." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
 ## (gate) — `ny_it201.gate.line28`
 
 - **Authored helper label:** Interest on U.S. government obligations
-- **Encoded (Bool):** helper "Did you include interest from U.S. government bonds or other U.S. government obligations (for example Treasury bills, notes or bonds, or U.S. savings bonds), or dividends from a fund investing in them, in federal income?" = true
-- Expr: `{"eq":["ny_it201.ask.us_obligation_interest",{"const":true}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Is there an amount on line 2, 3, 6 or 11 (interest, dividends, business income, or partnership and similar income)?" = true → helper "Did you include interest from U.S. government bonds or other U.S. government obligations (for example Treasury bills, notes or bonds, or U.S. savings bonds), or dividends from a fund investing in them, in federal income?"] [helper "Is there an amount on line 2, 3, 6 or 11 (interest, dividends, business income, or partnership and similar income)?" = false → helper "No"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.has_line28_income",{"const":true}],"op":"test"},"then":"ny_it201.ask.us_obligation_interest"},{"guard":{"eq":["ny_it201.has_line28_income",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 9, Line 28, "If Yes, enter the amount of interest income you earned from bonds or other obligations of the U.S. government." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## 28 — `ny_it201.line28`
@@ -637,8 +659,8 @@
 ## (gate) — `ny_it201.gate.line29`
 
 - **Authored helper label:** Pension and annuity income exclusion may apply
-- **Encoded (Bool):** helper "Did you have pension or annuity income, or IRA distributions (periodic or lump-sum), other than from a New York State or local or federal government plan, and were you 59 1/2 or older in 2025 (or receive it as a beneficiary)?" = true
-- Expr: `{"eq":["ny_it201.ask.pension_exclusion",{"const":true}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Is there taxable IRA, pension or annuity income on line 9 or 10?" = true → helper "Did you or your spouse have pension or annuity income or IRA distributions (periodic or lump-sum) included in federal adjusted gross income other than a government pension subtracted on line 26 (periodic distributions from a government section 457 deferred compensation plan count here), and was the person who received it 59 1/2 or older in 2025 (or did they receive it as a beneficiary)?"] [helper "Is there taxable IRA, pension or annuity income on line 9 or 10?" = false → helper "No"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.has_pension_income",{"const":true}],"op":"test"},"then":"ny_it201.ask.pension_exclusion"},{"guard":{"eq":["ny_it201.has_pension_income",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 9, Line 29, "If Yes, and you were 59½ before January 1, 2025, enter the qualifying pension and annuity income included in your 2025 federal adjusted gross income, but not more than $20,000." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## 29 — `ny_it201.line29`
@@ -1335,11 +1357,26 @@
 - Expr: `{"from":"ny_it201.line52","op":"subtract_floor0","take":"ny_it201.line53"}`
 - Cite: [ny_it201] p. 3, New York City and Yonkers taxes, credits, and surcharges, and MCTMT, "Subtract line 53 from line 52" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; sha256 cfe63039)
 
+## (helper) — `ny_it201.mctmt_people`
+
+- **Authored helper label:** Number of persons with more than one Schedule C, or with Schedule C net profit over $50,000
+- **Encoded (Count):** Add person.one over every confirmed person entry for which (helper "Number of Schedules C for this person" > 1 (a count) or helper "This person's Schedule C net profit or loss (all businesses)" > $50,000 (ny.mctmt.threshold)), within the current person when parent-bound. An unanswered roster is unknown.
+- Note: A person with one Schedule C has one source, whose net earnings from self-employment (Schedule SE line 6) are at most its net profit, so a profit of $50,000 or less cannot exceed the threshold in either zone. With two or more Schedules C, whether a loss from one source reduces another is not settled here, so the question is asked. Self-employment income other than Schedule C (a partnership, farm or other source) is refused by the federal screens (scope.schedule1, person.se_screen).
+- Expr: `{"collection":"person","field":"person.one","op":"sum_over","where":{"any":[{"gt":["person.sc_count",{"const":1,"type":"Count"}],"op":"test"},{"gt":["person.sc_total",{"param":"ny.mctmt.threshold"}],"op":"test"}],"op":"test"}}`
+- Cite: [ny_it201i] p. 15, Lines 54a through 54e, "The $50,000 threshold is calculated on an individual basis, even if you file a joint income tax return." and "You must calculate your MCTMT net earnings base separately for each source of self-employment income that has business activity in one or both zones."; p. 16, "Net earnings from self-employment generally is the amount reported on federal Schedule SE (Form 1040), Part 1, line 6, derived from the source of self-employment income." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## (gate) — `ny_it201.mctmt_possible`
+
+- **Authored helper label:** Can you or your spouse have net earnings from self-employment over $50,000 in a zone?
+- **Encoded (Bool):** helper "Number of persons with more than one Schedule C, or with Schedule C net profit over $50,000" > 0 (a count)
+- Expr: `{"gt":["ny_it201.mctmt_people",{"const":0,"type":"Count"}],"op":"test"}`
+- Cite: [ny_it201i] p. 15, Lines 54a through 54e, "If an individual’s net earnings from self-employment allocated to either zone exceed $50,000 for the tax year, then you are subject to the MCTMT." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
 ## (gate) — `ny_it201.gate.mctmt`
 
 - **Authored helper label:** Self-employment earnings over $50,000 in an MCTD zone
-- **Encoded (Bool):** helper "Did you or your spouse have net earnings from self-employment allocated to New York City (MCTD Zone 1) or to Zone 2 of more than $50,000?" = true
-- Expr: `{"eq":["ny_it201.ask.mctmt",{"const":true}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Can you or your spouse have net earnings from self-employment over $50,000 in a zone?" = true → helper "Did you or your spouse have net earnings from self-employment allocated to New York City (MCTD Zone 1) or to Zone 2 of more than $50,000?"] [helper "Can you or your spouse have net earnings from self-employment over $50,000 in a zone?" = false → helper "No"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.mctmt_possible",{"const":true}],"op":"test"},"then":"ny_it201.ask.mctmt"},{"guard":{"eq":["ny_it201.mctmt_possible",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 15, Lines 54a through 54e, "If Yes, you are subject to MCTMT. Go to lines 54a and 54b, as applicable." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## 54a — `ny_it201.line54a`
@@ -1570,11 +1607,19 @@
 - Expr: `{"op":"param","ref":"ny.zero"}`
 - Cite: [ny_it201] p. 4, Payments and refundable credits, "Empire State child credit" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; sha256 cfe63039)
 
+## (gate) — `ny_it201.federal_care`
+
+- **Authored helper label:** Did you (or your spouse) have care expenses for a qualifying person so you (and your spouse) could work or look for work, or receive dependent care benefits (federal Form 2441)?
+- **Encoded (Bool):** (f2441 helper "Did you pay for the care of a qualifying person so you could work or look for work?" = true or f2441 helper "Did you receive dependent care benefits?" = true)
+- Note: The federal credit and the New York credit both need care expenses for a qualifying person so you could work or look for work (i2441 p. 2, Who Can Take the Credit or Exclude Dependent Care Benefits?, items 2 and 3). Dependent care benefits count too, since care paid through them is a care expense (Form IT-216 Worksheet 1).
+- Expr: `{"any":[{"eq":["f2441.care",{"const":true}],"op":"test"},{"eq":["f2441.benefits",{"const":true}],"op":"test"}],"op":"test"}`
+- Cite: [ny_it216i] p. 1, Who qualifies, "If you qualify to claim the federal child and dependent care credit, you can claim the New York State credit (whether you actually claim the federal credit or not)." and "The care was provided so you (and your spouse, if you were married) could work or look for work." and "Caution: Taxpayers who receive dependent care benefits from their employer must complete Worksheet 1 – Dependent care benefits." (2025; sha256 e9ff8282)
+
 ## (gate) — `ny_it201.gate.dependent_care`
 
 - **Authored helper label:** The child and dependent care credit may apply
-- **Encoded (Bool):** helper "Would you qualify to claim the federal child and dependent care credit for 2025 (whether or not you claimed it)?" = true
-- Expr: `{"eq":["ny_it201.ask.dependent_care",{"const":true}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Did you (or your spouse) have care expenses for a qualifying person so you (and your spouse) could work or look for work, or receive dependent care benefits (federal Form 2441)?" = true → helper "Would you qualify to claim the federal child and dependent care credit for 2025 (whether or not you claimed it)?"] [helper "Did you (or your spouse) have care expenses for a qualifying person so you (and your spouse) could work or look for work, or receive dependent care benefits (federal Form 2441)?" = false → helper "No"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.federal_care",{"const":true}],"op":"test"},"then":"ny_it201.ask.dependent_care"},{"guard":{"eq":["ny_it201.federal_care",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 19, Line 64, "If Yes, complete Form IT-216, Claim for Child and Dependent Care Credit, to determine your New York State child and dependent care credit." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## 64 — `ny_it201.line64`
@@ -1905,11 +1950,25 @@
 - Expr: `{"from":"ny_it201.overpaid_before_penalty","op":"subtract_floor0","take":"ny_it201.line81"}`
 - Cite: [ny_it201i] p. 22, Line 77: Amount overpaid, "If you have to pay an estimated tax penalty (see line 81 instructions), subtract the penalty from the overpayment and enter the net overpayment on line 77." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
+## (gate) — `ny_it201.has_overpayment`
+
+- **Authored helper label:** Is there an overpayment on line 77?
+- **Encoded (Bool):** line 77 > $0
+- Expr: `{"gt":["ny_it201.line77",{"const":0}],"op":"test"}`
+- Cite: [ny_it201i] p. 23, Line 79: Estimated tax, "Enter the amount of overpayment from line 77 that you want applied to your New York State, New York City, Yonkers, and metropolitan commuter transportation mobility tax estimated tax for 2026." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
+## (question) — `ny_it201.line79_amount`
+
+- **Authored helper label:** Amount of line 77 that you want applied to your 2026 estimated tax
+- **Encoded (NonNegDollars):** Input — How much of your overpayment (line 77) do you want applied to your 2026 estimated tax for New York State, New York City, Yonkers and the metropolitan commuter transportation mobility tax? (0 for none)
+- Expr: `{"op":"input","source":"How much of your overpayment (line 77) do you want applied to your 2026 estimated tax for New York State, New York City, Yonkers and the metropolitan commuter transportation mobility tax? (0 for none)"}`
+- Cite: [ny_it201i] p. 23, Line 79: Estimated tax, "Enter the amount of overpayment from line 77 that you want applied to your New York State, New York City, Yonkers, and metropolitan commuter transportation mobility tax estimated tax for 2026." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
 ## 79 — `ny_it201.line79`
 
 - **IRS:** Amount of line 77 that you want applied to your 2026 estimated tax
-- **Encoded (NonNegDollars):** Input — How much of your overpayment (line 77) do you want applied to your 2026 New York estimated tax? (0 for none)
-- Expr: `{"op":"input","source":"How much of your overpayment (line 77) do you want applied to your 2026 New York estimated tax? (0 for none)"}`
+- **Encoded (NonNegDollars):** Choose — [helper "Is there an overpayment on line 77?" = true → helper "Amount of line 77 that you want applied to your 2026 estimated tax"] [helper "Is there an overpayment on line 77?" = false → helper "Zero"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.has_overpayment",{"const":true}],"op":"test"},"then":"ny_it201.line79_amount"},{"guard":{"eq":["ny_it201.has_overpayment",{"const":false}],"op":"test"},"then":"ny_it201.zero"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 23, Line 79: Estimated tax, "Enter the amount of overpayment from line 77 that you want applied to your New York State, New York City, Yonkers, and metropolitan commuter transportation mobility tax estimated tax for 2026." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## (gate) — `ny_it201.gate.line79_over`
@@ -1927,11 +1986,18 @@
 - Expr: `{"from":"ny_it201.line77","op":"subtract_floor0","take":"ny_it201.line79"}`
 - Cite: [ny_it201i] p. 23, Line 78: Amount of line 77 available for refund, "Subtract the amount on line 79 (estimated tax) from line 77." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
+## (gate) — `ny_it201.has_refund`
+
+- **Authored helper label:** Is there an amount available for refund on line 78?
+- **Encoded (Bool):** line 78 > $0
+- Expr: `{"gt":["ny_it201.line78",{"const":0}],"op":"test"}`
+- Cite: [ny_it201i] p. 23, Line 78a: NYS 529 account deposit, "You may directly deposit all or a portion of your refund in up to three NYS 529 college savings accounts." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
+
 ## (gate) — `ny_it201.gate.refund_529`
 
 - **Authored helper label:** A refund deposit into a New York 529 account
-- **Encoded (Bool):** helper "Do you want part of a refund deposited into a New York 529 college savings account (Form IT-195)?" = true
-- Expr: `{"eq":["ny_it201.ask.refund_529",{"const":true}],"op":"test"}`
+- **Encoded (Bool):** Choose — [helper "Is there an amount available for refund on line 78?" = true → helper "Do you want part of a refund deposited into a New York 529 college savings account (Form IT-195)?"] [helper "Is there an amount available for refund on line 78?" = false → helper "No"]
+- Expr: `{"alternatives":[{"guard":{"eq":["ny_it201.has_refund",{"const":true}],"op":"test"},"then":"ny_it201.ask.refund_529"},{"guard":{"eq":["ny_it201.has_refund",{"const":false}],"op":"test"},"then":"ny_it201.no"}],"op":"choose"}`
 - Cite: [ny_it201i] p. 23, Line 78a: NYS 529 account deposit, "You may directly deposit all or a portion of your refund in up to three NYS 529 college savings accounts." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; sha256 29489d6e)
 
 ## 78a — `ny_it201.line78a`

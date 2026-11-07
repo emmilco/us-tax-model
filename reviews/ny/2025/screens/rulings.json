@@ -1,0 +1,210 @@
+{
+ "rulings": {
+  "unruled:gate:ny_it201.mctmt_possible": {
+   "prompt_sha": "cce25ad808757f8aa7bebd5ba2259e4d9faaceb3ac0dfe1078c5e46b6992ac13",
+   "reason": "Three NARROW findings are self-employment income other than Schedule C, refused federally; one WIDE accepted.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "scope: refused federally",
+     "evidence": "Outside the tool's scope, refused on the federal return before New York is reached (a refused federal return is a refused New York return: interview/ny/2025.yaml, targets_from). scope.schedule1 refuses \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\"; person.se_screen refuses \"net earnings from self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C\", \"farm income (Schedule F)\" and \"being a minister, a member of a religious order or a Christian Science practitioner\". Within the tool the only self-employment income is Schedule C, which the condition reads (ny_it201.mctmt_people, note)."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "scope: refused federally",
+     "evidence": "Outside the tool's scope, refused on the federal return before New York is reached (a refused federal return is a refused New York return: interview/ny/2025.yaml, targets_from). scope.schedule1 refuses \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\"; person.se_screen refuses \"net earnings from self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C\", \"farm income (Schedule F)\" and \"being a minister, a member of a religious order or a Christian Science practitioner\". Within the tool the only self-employment income is Schedule C, which the condition reads (ny_it201.mctmt_people, note)."
+    },
+    {
+     "n": 2,
+     "kind": "NARROW",
+     "class": "scope: refused federally",
+     "evidence": "Outside the tool's scope, refused on the federal return before New York is reached (a refused federal return is a refused New York return: interview/ny/2025.yaml, targets_from). scope.schedule1 refuses \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\"; person.se_screen refuses \"net earnings from self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C\", \"farm income (Schedule F)\" and \"being a minister, a member of a religious order or a Christian Science practitioner\". Within the tool the only self-employment income is Schedule C, which the condition reads (ny_it201.mctmt_people, note)."
+    },
+    {
+     "n": 3,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "A profit just over $50,000, or two businesses, asks the question though no MCTMT may arise; gate wording leans to yes, and with two or more sources the netting is not settled (L-41)."
+    }
+   ],
+   "bugs": []
+  },
+  "unruled:gate:ny_it201.federal_care": {
+   "prompt_sha": "f01dba6362ba8c887be82312f2494bb54a0d841d2f64085943b428e1596e7551",
+   "reason": "The spouse finding reads the federal questions' labels; their prompts name the spouse. One WIDE accepted.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "not a defect: the prompts include the spouse",
+     "evidence": "The filer answers the federal questions' prompts, not their short labels: f2441.care asks \"did you (or your spouse, if filing jointly) pay for, or incur expenses for, the care of a qualifying person — your child under age 13, or a dependent or spouse who was not able to care for themselves — so that you (and your spouse) could work or look for work?\", and f2441.benefits \"Did you (or your spouse, if filing jointly) receive dependent care benefits for 2025 — amounts shown in box 10 of a Form W-2, or an amount from your 2024 dependent care plan that you used in 2025 during a grace period?\" (forms/2025/f2441.yaml). A spouse who paid the care or received the benefits makes the answer Yes. The New York return here is a single full-year resident return of the filer (or a joint one); a separate New York return of one spouse is refused (ny_it201.ask.spouse_resident)."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "No earned income, a disqualified provider or a married-filing-separately filer asks the line 64 question for nothing; gate wording leans to yes."
+    }
+   ],
+   "bugs": []
+  },
+  "unruled:gate:ny_it201.has_pension_income": {
+   "prompt_sha": "2d54a7f627287e61a93eb97aae1169a8e739e52f964d549349952695b4579d79",
+   "reason": "Both NARROW findings are pension income outside lines 9 and 10, refused federally; one WIDE accepted.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "scope: refused federally",
+     "evidence": "Outside the tool's scope, refused on the federal return before New York is reached (a refused federal return is a refused New York return: interview/ny/2025.yaml, targets_from). A disability pension before minimum retirement age comes on a Form 1099-R, and retirement.special refuses \"a disability pension received before minimum retirement age\" and \"a military disability pension\"; scope.other_income refuses \"other earned income (Form 1040 lines 1b to 1d and 1f to 1h)\"; s1.line8_other refuses \"a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (8t)\" (which i1040gi p. 24 sends to Schedule 1 line 8t, not line 1a, when it is in W-2 box 1); scope.schedule1 refuses estates and trusts (\"Schedule E or a Schedule K-1\"). Within the tool, pension, annuity and IRA income in federal AGI is on federal lines 4b and 5b, IT-201 lines 9 and 10 (ny_it201.has_pension_income, note)."
+    },
+    {
+     "n": 1,
+     "kind": "NARROW",
+     "class": "scope: refused federally",
+     "evidence": "Outside the tool's scope, refused on the federal return before New York is reached (a refused federal return is a refused New York return: interview/ny/2025.yaml, targets_from). A disability pension before minimum retirement age comes on a Form 1099-R, and retirement.special refuses \"a disability pension received before minimum retirement age\" and \"a military disability pension\"; scope.other_income refuses \"other earned income (Form 1040 lines 1b to 1d and 1f to 1h)\"; s1.line8_other refuses \"a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (8t)\" (which i1040gi p. 24 sends to Schedule 1 line 8t, not line 1a, when it is in W-2 box 1); scope.schedule1 refuses estates and trusts (\"Schedule E or a Schedule K-1\"). Within the tool, pension, annuity and IRA income in federal AGI is on federal lines 4b and 5b, IT-201 lines 9 and 10 (ny_it201.has_pension_income, note)."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "A filer under 59 1/2 with an IRA or private pension is asked both questions for nothing; gate wording leans to yes."
+    }
+   ],
+   "bugs": []
+  },
+  "unruled:ny_it201.ask.dependent_care": {
+   "prompt_sha": "9d179625f93827274980698d3a306ed336126b77034d0f3af9d8c26a934e3815",
+   "reason": "The question is the IT-201-I line 64 question word for word; the zero-federal-tax reading is the source's own, and the gate already requires care expenses.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "out of scope / presentation",
+     "evidence": "ny_it201i p. 19, Line 64: \"Would you qualify to claim the federal child and dependent care credit for 2025 (whether or not you actually claimed it)?\" The question repeats it; \"qualify to claim\" asks about eligibility, not a nonzero credit, and is reached only when ny_it201.federal_care holds (the filer paid care so they could work, or received dependent care benefits: f2441.care, f2441.benefits). The adverse No, by a filer reading \"qualify\" as \"got an amount\", understates a refundable credit; a paper filer faces the same words. Accepted as the source's wording, as f5695.line7a; an optional gloss (\"even if your federal tax was zero\") would close it."
+    }
+   ],
+   "bugs": [],
+   "adjudication": "reviews/ny/2025/screens/adjudication/gates-d.md"
+  },
+  "unruled:ny_it201.ask.gov_pension": {
+   "prompt_sha": "80ff59cc87d98c30ab690955f0e556a8f11f5495c3881ef1e684f73798a1f1e9",
+   "reason": "Two WIDE accepted; the UNCLEAR on the employer list is the federal-government clause and the source's own \"certain public authorities, including\".",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "ny_it201i p. 9, Line 26: periodic 457 distributions may not be subtracted, so line 26 is 0; the filer who answers Yes is refused for nothing (and ny_it201.ask.pension_exclusion names such distributions too). Safe."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "ny_it201i p. 9, Line 26: private-university and supplemental-annuity parts may not be subtracted; a TIAA recipient answering Yes is refused for nothing. Safe."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "accepted (minor UNCLEAR)",
+     "evidence": "ny_it201i p. 9, Line 26 lists \"The United States, its territories, possessions (or political subdivisions thereof), or any agency or instrumentality of the United States (including the military)\". The question's \"a federal government pension plan\" covers an agency or instrumentality, and \"a U.S. territory\" a possession or its subdivision in ordinary reading. Other public authorities: the source itself says \"Certain public authorities, including\" the three the question names. A wrong No leaves line 26 at 0, overstating New York tax; a filer 59 1/2 or older is still refused by ny_it201.ask.pension_exclusion (\"other than a government pension subtracted on line 26\")."
+    }
+   ],
+   "bugs": [],
+   "adjudication": "reviews/ny/2025/screens/adjudication/gates-d.md"
+  },
+  "unruled:ny_it201.ask.mctmt": {
+   "prompt_sha": "c03518473a9f4a47d4ce431e2dc85bf58ace1e74563a1c33d5f9f0676970d43e",
+   "reason": "The combined-zones reading leans WIDE; the undefined Zone 2 is a low wording gap (BUG-0450).",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "UNCLEAR",
+     "class": "accepted (minor UNCLEAR, leans WIDE)",
+     "evidence": "ny_it201i p. 15: the test is per zone and per person (\"allocated to either zone exceed $50,000\"; notes to lines 54a and 54b). Reading the question as Zone 1 plus Zone 2 combined only gives Yes and a refusal where the tool's 0 is right. Safe."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "defect",
+     "evidence": "ny_it201i p. 15: \"Zone 2 includes the counties of: Dutchess, Nassau, Orange, Putnam, Rockland, Suffolk, Westchester\". The question says only \"Zone 2\" and the help \"the suburban counties (Zone 2)\"; a filer with earnings over $50,000 allocated to such a county may answer No, and lines 54a and 54b are 0 with the MCTMT omitted. No other question covers it. Low; BUG-0450."
+    }
+   ],
+   "bugs": [
+    "BUG-0450"
+   ],
+   "adjudication": "reviews/ny/2025/screens/adjudication/gates-d.md"
+  },
+  "unruled:ny_it201.ask.pension_exclusion": {
+   "prompt_sha": "b1ec125fce5691a50cfe450db010bb22726fc03a27dd6fb8d27904179e676d0a",
+   "reason": "WIDE only; each finding refuses a filer whose qualifying amount is 0.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "ny_it201i p. 9, Line 29: lump sums qualify only from an IRA or an HR-10 plan; a filer with only a non-qualifying lump sum is refused though line 29 is 0. Safe."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "ny_it201i pp. 9-10, Line 29: QDRO distributions to a nonemployee spouse, annuities bought with own funds and post-retirement contributions do not qualify; such filers are refused for nothing. Safe."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "ny_it201i p. 9, Line 29: \"If you became 59 1/2 during 2025, enter only the amount you received after you became 59 1/2\"; income received entirely before is refused for nothing. Safe."
+    }
+   ],
+   "bugs": [],
+   "adjudication": "reviews/ny/2025/screens/adjudication/gates-d.md"
+  },
+  "unruled:ny_it201.ask.refund_529": {
+   "prompt_sha": "747f7e22d7a11a9fc3452a4cb831af827dc5e9c56c52b7cd756811f42be36b88",
+   "reason": "Real, low gap: \"part of a refund\" may draw No from a filer wanting the whole refund deposited (BUG-0449).",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "NARROW",
+     "class": "low",
+     "evidence": "ny_it201i p. 23, Line 78a: \"You may directly deposit all or a portion of your refund\". The question and help say \"part of a refund\"; a filer electing the whole refund may answer No, and line 78a is 0 with the refund paid to the filer. No other question or refusal covers Form IT-195. No tax amount is wrong; the election is lost. Low; BUG-0449."
+    }
+   ],
+   "bugs": [
+    "BUG-0449"
+   ],
+   "adjudication": "reviews/ny/2025/screens/adjudication/gates-d.md"
+  },
+  "unruled:ny_it201.ask.us_obligation_interest": {
+   "prompt_sha": "09535ba9aee3c14c466752d3e5570a2b952b343b238597fe6690fa0732189f5a",
+   "reason": "One WIDE accepted; the agency-obligation UNCLEAR is the source's own term, and the K-1 case is refused federally.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "ny_it201i p. 9, Line 28: fund dividends qualify only if the fund meets the 50% asset requirement each quarter; a holder of a fund that does not is refused though line 28 is 0. Safe."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "class": "out of scope / presentation",
+     "evidence": "ny_it201i p. 9, Line 28 says only \"bonds or other obligations of the U.S. government\"; the question uses the same term, and the archive gives no list of agency or sponsored-entity obligations to sharpen it. A doubting filer answering Yes is refused (WIDE); the help explains the refusal guards against overstated tax."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "scope: refused federally",
+     "evidence": "Line 11 interest (a partnership, S corporation, estate or trust K-1) is outside the tool: scope.schedule1 refuses \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\", and a refused federal return is a refused New York return (interview/ny/2025.yaml, targets_from). Line 6 (Schedule C) interest on U.S. obligations is interest the filer \"include[d] ... in federal income\", which the question asks about without limiting it to directly held bonds; minor."
+    }
+   ],
+   "bugs": [],
+   "adjudication": "reviews/ny/2025/screens/adjudication/gates-d.md"
+  }
+ },
+ "baseline": {}
+}

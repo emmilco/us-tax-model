@@ -1298,6 +1298,18 @@ params:
       cite:
         doc: ny_it201i
         locator: 'p. 7, Lines 1 through 19: Federal income tax return information, "If you did not file a federal return, you must report the same income and adjustments that you would have reported for federal income tax purposes"'
+    ny.false:
+      type: Bool
+      value: false
+      cite:
+        doc: ny_it201i
+        locator: 'p. 9, Line 26, "If No, go to line 27."'
+    ny.mctmt.threshold:
+      type: NonNegDollars
+      value: 5000000
+      cite:
+        doc: ny_it201i
+        locator: 'p. 15, Lines 54a through 54e, "If an individual’s net earnings from self-employment allocated to either zone exceed $50,000 for the tax year, then you are subject to the MCTMT."'
     ny.mctmt.zone1:
       type: Rate
       value: { num: 60, den: 10000 }

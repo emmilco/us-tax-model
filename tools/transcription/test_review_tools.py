@@ -2532,6 +2532,80 @@ class GateReviewRuns(unittest.TestCase):
             self.assertEqual(CFN.baseline_check.run("false_no", [], found, Path(self.temp.name) / "none.json", report, "t", "l"), 1)
 
 
+def _screen_lines(gated):
+    """Document `div` with a refusal screen `div.pr` (a Bool input) and the line `div.line` that refuses on it; with
+    `gated`, the screen's input is gated on `div.any` by the gate line `div.pr_if_any`, which the refusal names."""
+    cite = {"doc": "i1099div", "locator": "p. 1"}
+    eq = lambda ref, v: {"op": "test", "eq": [ref, {"const": v}]}
+    refusal = {"when": "div.pr_if_any" if gated else "div.pr", "form": "Form X", "remedy": "file it", "cite": cite}
+    ls = [
+        {"id": "div.any", "printed": "(gate)", "label": "Any", "type": "Bool", "cite": cite, "expr": {"op": "input", "source": "Any dividends?"}},
+        {"id": "div.pr", "printed": "(screen)", "label": "Screen", "type": "Bool", "cite": cite, "expr": {"op": "input", "source": "Outside scope?"}},
+        {"id": "div.line", "printed": "1", "label": "Line", "type": "NonNegDollars", "cite": cite, "refuses": [refusal],
+         "expr": {"op": "const", "value": 0}},
+        {"id": "div.false", "printed": "f", "label": "false", "type": "Bool", "cite": cite, "expr": {"op": "param", "ref": "div.false"}},
+    ]
+    if gated:
+        ls[1]["gated_by"] = "div.pr_if_any"
+        ls.append({"id": "div.pr_if_any", "printed": "g", "label": "gate", "type": "Bool", "cite": cite,
+                   "expr": {"op": "choose", "alternatives": [{"guard": eq("div.any", True), "then": "div.pr"},
+                                                             {"guard": eq("div.any", False), "then": "div.false"}]}})
+    return {l["id"]: ("div", l) for l in ls}
+
+
+class GatedScreens(unittest.TestCase):
+    """A refusal screen whose input is gated stays a screen: its refusals name the gate line, not the input."""
+
+    def setUp(self):
+        stack = contextlib.ExitStack()
+        self.addCleanup(stack.close)
+        stack.enter_context(patch.object(G, "_QUESTIONS", {}))
+        stack.enter_context(patch.object(SR, "encoded_english", ENGLISH))
+        stack.enter_context(patch.object(SR, "excerpt_for", return_value=("ARCHIVED PAGES", [])))
+
+    def test_a_gated_screen_is_still_a_screen(self):
+        for gated in (False, True):
+            found = SR.screens(_screen_lines(gated))
+            self.assertEqual(list(found), ["div.pr"])
+            self.assertEqual([l["id"] for _, l, _ in found["div.pr"]], ["div.line"])
+
+    def test_a_refusal_on_a_gate_of_a_non_bool_input_is_not_a_screen(self):
+        lines = _screen_lines(True)
+        lines["div.pr"][1]["type"] = "NonNegDollars"
+        self.assertEqual(SR.screens(lines), {})
+
+    def test_the_prompt_shows_the_gate_and_the_subject_ignores_it(self):
+        plain, gated = _screen_lines(False), _screen_lines(True)
+        p_plain, _ = SR.prompt_for("div.pr", SR.screens(plain)["div.pr"], plain, {})
+        p_gated, _ = SR.prompt_for("div.pr", SR.screens(gated)["div.pr"], gated, {})
+        self.assertNotIn("Gate condition", p_plain)
+        self.assertIn("Gate condition: The filer is asked (input `div.any`", p_gated)
+        self.assertIn("Any dividends?", p_gated)
+        self.assertIn("Outside scope?", p_gated)
+        self.assertEqual(SR.screen_subject("div.pr", SR.screens(plain)["div.pr"], plain, {}),
+                         SR.screen_subject("div.pr", SR.screens(gated)["div.pr"], gated, {}))
+        self.assertEqual(SR.screen_subject("div.pr", SR.screens(plain)["div.pr"], plain, {}),
+                         __import__("hashlib").sha256(p_plain.encode()).hexdigest())
+
+    def test_a_review_recorded_before_the_gate_stays_current_and_a_reworded_screen_does_not(self):
+        plain, gated = _screen_lines(False), _screen_lines(True)
+        old = SR.screen_subject("div.pr", SR.screens(plain)["div.pr"], plain, {})
+        for lines, record in ((gated, {"prompt_sha": old, "verdict": "COVERS"}),
+                              (plain, {"prompt_sha": old, "verdict": "COVERS"})):
+            with patch.object(CS, "load_lines", return_value=lines), patch.object(CS, "manifest", return_value={}), \
+                    patch.object(CS, "screens", SR.screens), patch.object(CS, "RECORD", Path(tempfile.mkdtemp()) / "r.json"), \
+                    patch.object(CS, "RULINGS", Path("/nonexistent")), patch.object(CS.pending, "listed", return_value=set()):
+                CS.RECORD.write_text(json.dumps([{"screen": "div.pr", **record}]))
+                self.assertEqual([f for f in CS.findings() if f["line"] == "div.pr"], [])
+        reworded = _screen_lines(True)
+        reworded["div.pr"][1]["expr"]["source"] = "Outside scope or abroad?"
+        with patch.object(CS, "load_lines", return_value=reworded), patch.object(CS, "manifest", return_value={}), \
+                patch.object(CS, "RECORD", Path(tempfile.mkdtemp()) / "r.json"), patch.object(CS, "RULINGS", Path("/nonexistent")), \
+                patch.object(CS.pending, "listed", return_value=set()):
+            CS.RECORD.write_text(json.dumps([{"screen": "div.pr", "prompt_sha": old, "verdict": "COVERS"}]))
+            self.assertEqual([f["kind"] for f in CS.findings() if f["line"] == "div.pr"], ["stale"])
+
+
 class StructuredTextOneLineTests(unittest.TestCase):
     """Where a question or label shares a line with what follows it, structured text keeps its items and nesting."""
     STRUCTURED = "Does any of these apply?\n\nIncluding:\n- a\n  - c\n  - d\n- b\n\nIf none, answer no."

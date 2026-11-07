@@ -1,6 +1,4 @@
 {
  "about": "Inputs the interview leaves reachable and unanswered when it reports a return complete (engine/src/interview-rules.ts, check completion), held until their leaking conjunctions are rewritten as nested choose. Keyed by input template; the list may only shrink: a template no longer seen fails the check until it is removed.",
- "early_completion": {
-  "person.edu_line23": "seen in a random answering order of ny.status.qss.200000 after the gate lane B merge (BUG-0446); held until its conjunction is rewritten as nested choose"
- }
+ "early_completion": {}
 }

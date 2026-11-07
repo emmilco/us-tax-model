@@ -62,19 +62,54 @@ def encoded_english(doc_id, line_id):
     return (enc.group(1) + continued(m.group(1), enc.start())).strip() if enc else "(no rendering)"
 
 
+def gate_inputs(lines):
+    """{gate line: its gated Bool input} (gates.py convention: the input is marked `gated_by` and the gate line is a
+    `choose` of the same document). A refusal that names such a gate line is the refusal of the input's screen."""
+    out = {}
+    for lid, (doc, l) in lines.items():
+        g = l.get("gated_by")
+        if g and g in lines and l.get("type") == "Bool" and (l.get("expr") or {}).get("op") == "input" \
+                and (lines[g][1].get("expr") or {}).get("op") == "choose":
+            out.setdefault(g, []).append(lid)
+    return {g: ids[0] for g, ids in out.items() if len(ids) == 1}
+
+
 def screens(lines):
     """{screen: [(doc, gated line, refusal)]}: every input that gates a line, with the lines of the jurisdiction
-    under review it gates (in New York mode a federal screen gating New York lines is reviewed for those)."""
-    gates = {}
+    under review it gates (in New York mode a federal screen gating New York lines is reviewed for those). A refusal
+    whose `when` is the gate line of a gated Bool input counts for that input."""
+    gated = gate_inputs(lines)
+    found = {}
     for lid, (doc, l) in lines.items():
         if not jurisdiction.mine(doc):
             continue
         for r in l.get("refuses", []) or []:
-            gates.setdefault(r["when"], []).append((doc, l, r))
-    return {g: v for g, v in sorted(gates.items()) if g in lines and lines[g][1]["expr"].get("op") == "input"}
+            found.setdefault(gated.get(r["when"], r["when"]), []).append((doc, l, r))
+    return {g: v for g, v in sorted(found.items()) if g in lines and lines[g][1]["expr"].get("op") == "input"}
 
 
-def build_prompt(screen, sline, gated, excerpt):
+def screen_gate(screen, lines):
+    """The gate condition text of a gated screen input (shown in its prompt, not part of its subject), or ""."""
+    sdoc, sline = lines[screen]
+    gid = sline.get("gated_by")
+    if not gid or gid not in lines or gate_inputs(lines).get(gid) != screen:
+        return ""
+    gdoc, gate = lines[gid]
+    guard_refs = sorted(gates.refs([a.get("guard") for a in gate["expr"].get("alternatives", [])]) & set(lines))
+    cond = guard_refs[0] if len(guard_refs) == 1 else None
+    text, _ = gates.describe({"condition": cond, "gates": [(gdoc, gate, sline)]}, lines, encoded_english)
+    return text
+
+
+def gate_note(gate):
+    if not gate:
+        return ""
+    return ("\nThe filer is asked this question only when its gate condition holds; otherwise it is not asked and the "
+            "answer is no (the lines then compute as shown). The gate condition is reviewed separately.\n"
+            f"Gate condition: {gate}\n")
+
+
+def build_prompt(screen, sline, gated, excerpt, gate=""):
     items = []
     for doc, l, r in gated:
         items.append(f"""- Line `{l['id']}` (document {doc}, printed {l['printed']}): {indent_rest(l['label'], "    ")}
@@ -93,7 +128,7 @@ situation the tool does compute correctly.
 # The screening question
 
 Input `{screen}`: {sline['expr']['source']}
-
+{gate_note(gate)}
 # Lines that refuse when the answer is yes
 
 {chr(10).join(items)}
@@ -197,14 +232,23 @@ def gate_prompt_for(unit, lines, mani):
     return build_gate_prompt(unit, lines, excerpt), used
 
 
-def prompt_for(screen, gated, lines, mani):
-    """The review prompt of one screen and the pages it gives; its hash is the screen's review subject."""
+def prompt_for(screen, gated, lines, mani, with_gate=True):
+    """The review prompt of one screen and the pages it gives. A gated screen's prompt shows its gate condition;
+    `with_gate=False` is the prompt without it, which is the screen's review subject (screen_subject)."""
     if screen.startswith("gate:"):
         return gate_prompt_for(gated, lines, mani)
     sdoc, sline = lines[screen]
     pseudo = {"id": screen, "lines": [sline] + [l for _, l, _ in gated] + [{"cite": r["cite"], "expr": {}} for _, _, r in gated]}
     excerpt, used = excerpt_for(pseudo, mani)
-    return build_prompt(screen, sline, gated, excerpt), used
+    return build_prompt(screen, sline, gated, excerpt, screen_gate(screen, lines) if with_gate else ""), used
+
+
+def screen_subject(screen, gated, lines, mani):
+    """The hash a screen's review is current against: the prompt without the gate condition, so gating a screen's
+    input changes it only through the wording or gated lines it already depended on. The gate condition is the subject of
+    the gate's own review (gate:<condition>)."""
+    prompt, _ = prompt_for(screen, gated, lines, mani, with_gate=False)
+    return hashlib.sha256(prompt.encode()).hexdigest()
 
 
 def run_one(screen, gated, lines, mani, model, dry, from_response):
@@ -233,8 +277,8 @@ def run_one(screen, gated, lines, mani, model, dry, from_response):
     sline = lines[screen][1]
     return {"screen": screen, "question": sline["expr"]["source"], "lines": [l["id"] for _, l, _ in gated],
             "verdict": str(doc.get("verdict", "UNPARSED")), "findings": doc.get("findings") or [],
-            "prompt_sha": hashlib.sha256(prompt.encode()).hexdigest(), "used": used, "cost": meta.get("cost_usd") or 0,
-            "model": ", ".join(meta.get("model_reported", []))}
+            "prompt_sha": hashlib.sha256(prompt.encode()).hexdigest(), "subject_sha": screen_subject(screen, gated, lines, mani),
+            "used": used, "cost": meta.get("cost_usd") or 0, "model": ", ".join(meta.get("model_reported", []))}
 
 
 # The cost of a Claude screen review by prompt size: a least-squares fit to the cost ledger's 17 successful screen calls

@@ -177,7 +177,7 @@ bank:
   - input: ny_it201.ask.late_penalty
     order: 1041
     help: Late filing or late payment penalties and interest are outside this tool.
-  - input: ny_it201.line79
+  - input: ny_it201.line79_amount
     order: 1042
     help: Any part of an overpayment can be applied to your 2026 New York estimated tax instead of refunded. Enter
       0 to have it all refunded.

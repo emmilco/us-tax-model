@@ -1,0 +1,121 @@
+{
+ "rulings": {
+  "unruled:gate:ny_it201.mctmt_possible": {
+   "prompt_sha": "773f5a3f9c5d0fcc9daae249045a6d591b5548cbcd0e2b79fa3945358a119509",
+   "reason": "Every finding is self-employment income other than Schedule C (partnership, farm, minister), refused federally.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "severity": "high",
+     "class": "scope: refused federally",
+     "evidence": "Outside the tool's scope, refused on the federal return before New York is reached (a refused federal return is a refused New York return: interview/ny/2025.yaml, targets_from). scope.schedule1 refuses \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\"; person.se_screen refuses \"net earnings from self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C\", \"farm income (Schedule F)\" and \"being a minister, a member of a religious order or a Christian Science practitioner\". Within the tool the only self-employment income is Schedule C, which the condition reads (ny_it201.mctmt_people, note)."
+    },
+    {
+     "n": 1,
+     "kind": "FALSE_NO",
+     "severity": "high",
+     "class": "scope: refused federally",
+     "evidence": "Outside the tool's scope, refused on the federal return before New York is reached (a refused federal return is a refused New York return: interview/ny/2025.yaml, targets_from). scope.schedule1 refuses \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\"; person.se_screen refuses \"net earnings from self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C\", \"farm income (Schedule F)\" and \"being a minister, a member of a religious order or a Christian Science practitioner\". Within the tool the only self-employment income is Schedule C, which the condition reads (ny_it201.mctmt_people, note)."
+    },
+    {
+     "n": 2,
+     "kind": "FALSE_NO",
+     "severity": "high",
+     "class": "scope: refused federally",
+     "evidence": "Outside the tool's scope, refused on the federal return before New York is reached (a refused federal return is a refused New York return: interview/ny/2025.yaml, targets_from). scope.schedule1 refuses \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\"; person.se_screen refuses \"net earnings from self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C\", \"farm income (Schedule F)\" and \"being a minister, a member of a religious order or a Christian Science practitioner\". Within the tool the only self-employment income is Schedule C, which the condition reads (ny_it201.mctmt_people, note)."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "severity": "medium",
+     "class": "scope: refused federally",
+     "evidence": "Outside the tool's scope, refused on the federal return before New York is reached (a refused federal return is a refused New York return: interview/ny/2025.yaml, targets_from). scope.schedule1 refuses \"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\" and \"farm income (Schedule F)\"; person.se_screen refuses \"net earnings from self-employment from a partnership (Schedule K-1, box 14, code A) or other self-employment income not on a Schedule C\", \"farm income (Schedule F)\" and \"being a minister, a member of a religious order or a Christian Science practitioner\". Within the tool the only self-employment income is Schedule C, which the condition reads (ny_it201.mctmt_people, note)."
+    }
+   ],
+   "bugs": []
+  },
+  "unruled:gate:ny_it201.federal_care": {
+   "prompt_sha": "d864564b515c4400c443e4816550de6d6139a030cae9129829e856838924723c",
+   "reason": "The gate is the federal credit's own condition (the New York credit follows the federal one); the findings are about the federal questions' wording, or read their labels for their prompts. The wording findings that hold are registered against f2441.care (BUG-0447), the federal form's lane.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "severity": "high",
+     "class": "not a defect: the prompts include the spouse",
+     "evidence": "The filer answers the federal questions' prompts, not their short labels: f2441.care asks \"did you (or your spouse, if filing jointly) pay for, or incur expenses for, the care of a qualifying person — your child under age 13, or a dependent or spouse who was not able to care for themselves — so that you (and your spouse) could work or look for work?\", and f2441.benefits \"Did you (or your spouse, if filing jointly) receive dependent care benefits for 2025 — amounts shown in box 10 of a Form W-2, or an amount from your 2024 dependent care plan that you used in 2025 during a grace period?\" (forms/2025/f2441.yaml)."
+    },
+    {
+     "n": 1,
+     "kind": "UNCLEAR",
+     "severity": "medium",
+     "class": "not a defect: the label is not asked",
+     "evidence": "ny_it201.federal_care is computed from the two federal answers; its label, with \"(federal Form 2441)\", is never shown to the filer, and the federal prompts do not ask whether Form 2441 was filed."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "severity": "medium",
+     "class": "not a defect: the prompt names them",
+     "evidence": "The filer answers the federal questions' prompts, not their short labels: f2441.care asks \"did you (or your spouse, if filing jointly) pay for, or incur expenses for, the care of a qualifying person — your child under age 13, or a dependent or spouse who was not able to care for themselves — so that you (and your spouse) could work or look for work?\", and f2441.benefits \"Did you (or your spouse, if filing jointly) receive dependent care benefits for 2025 — amounts shown in box 10 of a Form W-2, or an amount from your 2024 dependent care plan that you used in 2025 during a grace period?\" (forms/2025/f2441.yaml). A disabled spouse or a dependent not able to care for themselves is named in the care prompt."
+    },
+    {
+     "n": 3,
+     "kind": "UNCLEAR",
+     "severity": "medium",
+     "class": "federal wording, registered",
+     "bug": "BUG-0447",
+     "evidence": "The care prompt gives no examples of care (day camp, before- or after-school programs, a household employee); recorded in BUG-0447 for f2441.care."
+    },
+    {
+     "n": 4,
+     "kind": "UNCLEAR",
+     "severity": "medium",
+     "class": "not a defect: the prompt names box 10",
+     "evidence": "The filer answers the federal questions' prompts, not their short labels: f2441.care asks \"did you (or your spouse, if filing jointly) pay for, or incur expenses for, the care of a qualifying person — your child under age 13, or a dependent or spouse who was not able to care for themselves — so that you (and your spouse) could work or look for work?\", and f2441.benefits \"Did you (or your spouse, if filing jointly) receive dependent care benefits for 2025 — amounts shown in box 10 of a Form W-2, or an amount from your 2024 dependent care plan that you used in 2025 during a grace period?\" (forms/2025/f2441.yaml). Dependent care FSA amounts are reported in W-2 box 10, which the benefits prompt names; either answer Yes asks line 64."
+    },
+    {
+     "n": 5,
+     "kind": "UNCLEAR",
+     "severity": "medium",
+     "class": "federal wording, registered",
+     "bug": "BUG-0447",
+     "evidence": "Care while a spouse was a full-time student or disabled: the care prompt says \"so that you (and your spouse) could work or look for work\"; i2441 p. 2 item 2 and IT-216-I p. 1 treat a student or disabled spouse separately. Recorded in BUG-0447 for f2441.care; the federal credit is lost the same way."
+    }
+   ],
+   "bugs": [
+    "BUG-0447"
+   ]
+  },
+  "unruled:gate:ny_it201.has_pension_income": {
+   "prompt_sha": "6be5ac7f04b8347b834823e8f6375ddf40608e3e525056068b5bd94f40ebcc97",
+   "reason": "Every finding is pension income reported outside lines 9 and 10 (wages, an estate or trust K-1), refused federally.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "FALSE_NO",
+     "severity": "high",
+     "class": "scope: refused federally",
+     "evidence": "Outside the tool's scope, refused on the federal return before New York is reached (a refused federal return is a refused New York return: interview/ny/2025.yaml, targets_from). A disability pension before minimum retirement age comes on a Form 1099-R, and retirement.special refuses \"a disability pension received before minimum retirement age\" and \"a military disability pension\"; scope.other_income refuses \"other earned income (Form 1040 lines 1b to 1d and 1f to 1h)\"; s1.line8_other refuses \"a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (8t)\" (which i1040gi p. 24 sends to Schedule 1 line 8t, not line 1a, when it is in W-2 box 1); scope.schedule1 refuses estates and trusts (\"Schedule E or a Schedule K-1\"). Within the tool, pension, annuity and IRA income in federal AGI is on federal lines 4b and 5b, IT-201 lines 9 and 10 (ny_it201.has_pension_income, note)."
+    },
+    {
+     "n": 1,
+     "kind": "FALSE_NO",
+     "severity": "high",
+     "class": "scope: refused federally",
+     "evidence": "Outside the tool's scope, refused on the federal return before New York is reached (a refused federal return is a refused New York return: interview/ny/2025.yaml, targets_from). A disability pension before minimum retirement age comes on a Form 1099-R, and retirement.special refuses \"a disability pension received before minimum retirement age\" and \"a military disability pension\"; scope.other_income refuses \"other earned income (Form 1040 lines 1b to 1d and 1f to 1h)\"; s1.line8_other refuses \"a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (8t)\" (which i1040gi p. 24 sends to Schedule 1 line 8t, not line 1a, when it is in W-2 box 1); scope.schedule1 refuses estates and trusts (\"Schedule E or a Schedule K-1\"). Within the tool, pension, annuity and IRA income in federal AGI is on federal lines 4b and 5b, IT-201 lines 9 and 10 (ny_it201.has_pension_income, note)."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "severity": "medium",
+     "class": "scope: refused federally",
+     "evidence": "Outside the tool's scope, refused on the federal return before New York is reached (a refused federal return is a refused New York return: interview/ny/2025.yaml, targets_from). A disability pension before minimum retirement age comes on a Form 1099-R, and retirement.special refuses \"a disability pension received before minimum retirement age\" and \"a military disability pension\"; scope.other_income refuses \"other earned income (Form 1040 lines 1b to 1d and 1f to 1h)\"; s1.line8_other refuses \"a pension or annuity from a nonqualified deferred compensation plan or a nongovernmental section 457 plan (8t)\" (which i1040gi p. 24 sends to Schedule 1 line 8t, not line 1a, when it is in W-2 box 1); scope.schedule1 refuses estates and trusts (\"Schedule E or a Schedule K-1\"). Within the tool, pension, annuity and IRA income in federal AGI is on federal lines 4b and 5b, IT-201 lines 9 and 10 (ny_it201.has_pension_income, note)."
+    }
+   ],
+   "bugs": []
+  }
+ },
+ "baseline": {}
+}

@@ -121,7 +121,9 @@ class NewYorkMode(unittest.TestCase):
         self.assertIn("s1", got["ny_it201"]["federal"])
         # Federal helper lines the encoding reads, which no source text can name: review evidence.
         self.assertEqual(got["ny_it201"]["missing"], ["dependent:dependent.claimed", "dependent:dependent.one",
-                                                      "dependent:dependent.under_ctc_age", "eic:eic.limit"])
+                                                      "dependent:dependent.under_ctc_age", "eic:eic.limit",
+                                                      "f2441:f2441.benefits", "f2441:f2441.care", "person:person.one",
+                                                      "person:person.sc_count", "person:person.sc_total"])
 
     def test_render_prompt_reads_the_new_york_rendering(self):
         got = run_ny("import json, render_compare as R\n"
@@ -147,8 +149,11 @@ class NewYorkMode(unittest.TestCase):
         self.assertEqual(got["forms"], sorted(NY_DOCS))
         self.assertTrue(got["context_federal"])
         self.assertEqual(got["form_docs"], [True, True, False, False, False])
-        # Every New York refusal is gated by a computed gate over interview answers, not by an input screen.
-        self.assertEqual(got["screens"], [])
+        # The New York screens are the Yes/No questions whose Yes refuses; each is a gated input (asked only when a
+        # computed amount makes it matter), and a gated screen is still a screen.
+        self.assertEqual(got["screens"], ["ny_it201.ask.dependent_care", "ny_it201.ask.gov_pension", "ny_it201.ask.mctmt",
+                                          "ny_it201.ask.pension_exclusion", "ny_it201.ask.refund_529",
+                                          "ny_it201.ask.us_obligation_interest"])
 
 
 class WebEditionSections(unittest.TestCase):
@@ -260,11 +265,13 @@ class NewYorkFederalCatalog(unittest.TestCase):
                      "print(json.dumps(out))")
         it201, stated = got.pop("ny_it201"), got.pop("stated")
         self.assertTrue(all(r.startswith(T.NAMED_LINES) for r in it201["fed"].values()))
-        # The federal lines the New York text names (by form and line: 1z, 2a, 2b, 3b, 7a; the rest by label).
+        # The federal lines the New York text names (by form and line: 1z, 2a, 2b, 3b, 7a, and the Schedule 1 and Schedule C
+        # lines the cited IT-216-I page names; the rest by label).
         self.assertEqual(it201["listed"], sorted([
             "f1040.line11a", "f1040.line15", "f1040.line1z", "f1040.line27a", "f1040.line2a", "f1040.line2b",
             "f1040.line3b", "f1040.line4b", "f1040.line5b", "f1040.line6b", "f1040.line7a", "f1040.status",
-            "person.sep_s3", "s1.line1", "s1.line26", "s1.line2a", "s1.line3", "s1.line7", "s1.line9", "s2.line4"]))
+            "person.sep_s3", "s1.line1", "s1.line15", "s1.line26", "s1.line2a", "s1.line3", "s1.line7", "s1.line9", "s2.line4",
+            "sc.f7206_line3", "sc.line3"]))
         for fid, r in got.items():
             self.assertTrue(r["notes"].strip().startswith("In this New York request"), fid)
             if fid != "ny_it2":

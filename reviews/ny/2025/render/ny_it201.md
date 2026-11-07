@@ -5,7 +5,7 @@ The rendered English of every printed line of `Form IT-201 (2025), Resident Inco
 | field | value |
 | --- | --- |
 | date | 2026-11-04 |
-| line-scoped reviews | 2 (latest 2026-11-07); see Line-scoped reviews |
+| line-scoped reviews | 3 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 81d9fe83915746ba73187579ffca2b953cfb6545ea4e32efd364d62173e181a5 |
@@ -15,7 +15,7 @@ The rendered English of every printed line of `Form IT-201 (2025), Resident Inco
 | output token budget | transport default (65536 for DeepSeek) |
 | subject sha256 | 446aa9d889a2b5621e01ece80ccbb9df74d330db1e7cb0822188e8736c9e8bce |
 | lines judged | 168 |
-| match / mismatch / unclear / missing | 163 / 4 / 1 / 0 |
+| match / mismatch / unclear / missing | 161 / 6 / 1 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -196,7 +196,8 @@ Model: Zero, and the program refuses whenever line 4 is above zero or an inflati
 ### 26 — Pensions of NYS and local governments and the federal government
 Status: **MATCH**
 
-Model: Zero unless the filer has a government pension. That case is refused.
+Model: The tool enters $0 and refuses whenever line 9 or 10 shows pension or IRA income and the filer reports a NYS, local or federal government pension, which covers what the line 26 instruction allows to be subtracted. The question also names the listed authorities, the ORP and the domestic-relations-order spouses.
+Reviewed in: pass aafab4291976
 
 ### 27 — Taxable amount of Social Security benefits (from line 15)
 Status: **MATCH**
@@ -206,12 +207,14 @@ Model: The form says 'Taxable amount of Social Security benefits (from line 15)'
 ### 28 — Interest income on U.S. government bonds
 Status: **MATCH**
 
-Model: Zero unless the filer has U.S. government obligation interest. That case is refused.
+Model: The tool enters $0 and refuses whenever lines 2, 3, 6 or 11 show income and the filer included interest on U.S. government obligations or dividends from a fund holding them. That covers the instruction's 'interest income from U.S. government bonds or other U.S. government obligations on lines 2, 6, or 11' and its qualifying mutual-fund dividends.
+Reviewed in: pass aafab4291976
 
 ### 29 — Pension and annuity income exclusion
 Status: **MATCH**
 
-Model: Zero unless the pension and annuity exclusion may apply. That case is refused.
+Model: The tool enters $0 and refuses whenever line 9 or 10 shows pension income that is not a government pension and the recipient was 59½ or older during 2025 or received it as a beneficiary. This covers every case where the instruction allows an exclusion ('59½ before January 1, 2025' or 'became 59½ during 2025').
+Reviewed in: pass aafab4291976
 
 ### 30 — New York’s 529 college savings program deduction/earnings
 Status: **MATCH**
@@ -591,15 +594,24 @@ Status: **MATCH**
 Model: The form says 'Subtract line 53 from line 52 (if line 53 is more than line 52, enter 0)'.
 
 ### 54a — MCTMT net earnings base for Zone 1
-Status: **MATCH**
+Status: **MISMATCH**
 
-Model: Zero unless self-employment earnings over $50,000 are allocated to either MCTMT zone. That case is refused.
+Restated: Enter $0 (ny.zero).
+
+Model: The screening question is asked only of people with more than one Schedule C or Schedule C profit over $50,000, so other self-employment earnings get $0 with no refusal. The instructions say MCTMT net earnings include amounts on 'federal Schedule SE (Form 1040), Part 1, line 6', including IRC § 1402 income such as 'services performed by a United States citizen employed by a foreign government, the United Nations, or other international organization', which need not come from a Schedule C.
+
+Ruling: scope; self-employment income other than Schedule C is refused on the federal return before New York is reached (a refused federal return is a refused New York return, interview/ny/2025.yaml targets_from): scope.schedule1 refuses partnerships and other Schedule K-1 income, farm income (Schedule F), church employee income and income as a minister; scope.other_income refuses "wages or tips not on a Form W-2" and "other earned income (Form 1040 lines 1b to 1d and 1f to 1h)" (the salary of a U.S. citizen employed by a foreign government or an international organization comes without a Form W-2); person.se_screen refuses "other self-employment income not on a Schedule C" and income "earned as a U.S. citizen employed by a foreign government". Within the tool Schedule C is the only source, which ny_it201.mctmt_people reads (its note says so).
+Reviewed in: pass aafab4291976
 
 ### 54b — MCTMT net earnings base for Zone 2
-Status: **MATCH**
+Status: **MISMATCH**
 
-Model: If neither spouse has net earnings from self-employment over $50,000 allocated to either zone, the instructions say 'skip lines 54a through 54e', so $0 is correct. The refusal names the excluded case, where the MCTMT applies.
-Reviewed in: pass b59076746e74
+Restated: Enter $0 (ny.zero).
+
+Model: The same screen is used as for line 54a, so Zone 2 self-employment earnings from sources other than Schedule C get $0 without a refusal. The instructions treat IRC § 1402 income reported on 'federal Schedule SE (Form 1040), Part 1, line 6' as net earnings 'subject to the MCTMT'.
+
+Ruling: scope; as line 54a: every source of self-employment income other than Schedule C is refused federally, so the condition's reading of Schedule C alone drops no Zone 2 amount the tool can reach.
+Reviewed in: pass aafab4291976
 
 ### 54c — MCTMT for Zone 1
 Status: **MATCH**
@@ -720,7 +732,8 @@ Model: Zero when there is no child under 17, and refused otherwise, matching the
 ### 64 — NYS/NYC child and dependent care credit
 Status: **MATCH**
 
-Model: Zero unless the filer would qualify for the federal child and dependent care credit. That case is refused.
+Model: The tool enters $0 and refuses whenever the filer had care expenses or benefits and 'Would you qualify to claim the federal child and dependent care credit for 2025 (whether or not you actually claimed it)?' is answered yes. That is the instruction's own test for completing Form IT-216.
+Reviewed in: pass aafab4291976
 
 ### 65 — NYS earned income credit (EIC)
 Status: **MATCH**
@@ -880,17 +893,20 @@ Model: The instructions say to 'subtract the penalty from the overpayment and en
 ### 79 — Amount of line 77 that you want applied to your 2026 estimated tax
 Status: **MATCH**
 
-Model: The form asks for the 'Amount of line 77 that you want applied to your 2026 estimated tax'.
+Model: When line 77 shows an overpayment, the tool uses the filer's chosen 'amount of overpayment from line 77 that you want applied to your ... estimated tax for 2026'; otherwise it enters zero. This matches the line 79 instruction.
+Reviewed in: pass aafab4291976
 
 ### 78 — Amount of line 77 available for refund (subtract line 79 from line 77)
 Status: **MATCH**
 
-Model: The form says 'subtract line 79 from line 77'. Line 79 larger than line 77 is refused.
+Model: The tool computes 'subtract line 79 from line 77', floored at zero, and refuses when line 79 is more than line 77. This matches the line 78 text and instruction.
+Reviewed in: pass aafab4291976
 
 ### 78a — Amount of line 78 that you want to deposit into a NYS 529 account (Form IT-195, line 4)
 Status: **MATCH**
 
-Model: Zero, and a 529 deposit is refused (Form IT-195).
+Model: The tool enters $0 and refuses whenever a refund exists and the filer wants a NYS 529 deposit via Form IT-195. That is the only case where line 78a takes an amount ('Enter on line 78a the amount from Form IT-195, line 4').
+Reviewed in: pass aafab4291976
 
 ### 78b — Total refund after NYS 529 account deposit (subtract line 78a from line 78)
 Status: **MATCH**
@@ -936,10 +952,10 @@ What each compared line's verdict depends on within the document (tools/transcri
 | 23 | 9462caffa68f1e9961478ad54d8387e58fd23f5bec240a1d08fd58d271ed0759 |
 | 24 | 8c9a6ce3ad8284582054a2a18d11a3530b7d42fd1eceb4ffc225cf6f95bb5315 |
 | 25 | ba0407c3752f220d0a58de49ad8ce27624bf03fab0477bcb3873e53f2eefdea7 |
-| 26 | 82c76bfe4ca8e6bfec215ebf3122633a5777e5df1db95db6880e150cfab97a65 |
+| 26 | a1d30f523fb437a8c3c79bb0ed3698b61d70ded981c7f25ec3fea74d863adb7a |
 | 27 | ef46a52e6b14e33021b324fe149004c417bc54ee7800843188ba1fc4fba78e36 |
-| 28 | 43b56f7ed7945104c6c288565bf925d0458a4d755f941ff6b735aaef1305bc94 |
-| 29 | c2b258c4fe977ac83e43384b2b798cf12e2e315146721163444db2cfd8b1cabc |
+| 28 | 10da1d6ef569ec0386da996fd8b7f172ca2ae495adb26b41e78e60e3b7548991 |
+| 29 | 2f8d71cff9a7f3c5f522ef1f106f1060930ddbc398d85ac73067f91fece1ac25 |
 | 30 | 40dc0624b2968f29c94dc17fefcc0c41e378546a1691f0ecdc91605f75018338 |
 | 31 | 55c1f5580047d968273a02c5f223c44c911eb6cd1ad6d6f3a0ec8ba21cf54147 |
 | 32 | f594bf709a4c5f0afd174d32acc1943f10ecc5b329502bdd0a5c8af0954befc6 |
@@ -1014,8 +1030,8 @@ What each compared line's verdict depends on within the document (tools/transcri
 | 52 | 7690406c9c23247e330709f2bf007a36a5eacf7431410f2da6d6535a0e50ebc4 |
 | 53 | 466cc37329c0a2b8c09874334c0fd61ac0401db563dd73b902beb25a6541458b |
 | 54 | 7e1e452513fae92f3ff51828f5e7e174032e1bda227d2052f1aabc31af278e89 |
-| 54a | 4dcf3eb0b46887709bb0837eaa746752bc1afa13b650079c63fbb5940c9e190d |
-| 54b | ea64bb7db2a930aa795eac5955412c63377faf3fd0d3052c64ed7ff7fe32e041 |
+| 54a | 0cb2702f7081d5653cdb88626d5282009bd8cce70b70816a3230cd224991999b |
+| 54b | 7bc3a7ce99e59311d3b023163a612624395fac872f75e417b749422633a9b8d2 |
 | 54c | dc290918b70f6f5b9e9ec1999a3444b509104fd6616e8c4e2eb6fd2dddf86131 |
 | 54d | 4b47ec5976c61ebbfc50b9ba99d0b9b0885a0f6976b916584125700949cafebc |
 | 54e | 363a24922a6e8efe1fe270587a0bb9349804e9bf92bb0a759a12c506911d2ac7 |
@@ -1039,7 +1055,7 @@ What each compared line's verdict depends on within the document (tools/transcri
 | 61 | 95411e1d41538d66f1651ea42f62ece8d3f365a6cdfe2dce6a0fcac46810e83f |
 | 62 | 624417f0c5415c0364412c313e174c575d0f60f18edb757bafe6cef37871cf5a |
 | 63 | 116e4c60c910ef8aa80ff6cf65e23c5fd7fe1b775e02b00d1655445396f6594f |
-| 64 | 9b4e87543dd22b5734e456d6220db1012681d56b5a7a1ab9de29293013ea7db4 |
+| 64 | 6969c713ff6bce01679a0879d435f94ebdc1053c4ab8423a21430e8c3ca7e38c |
 | 65 | 9e31cadedda4bf6b230eb458cacc032a09ccd052221ec1304cd46c228ecdfd4a |
 | 66 | cf60c0a98c5c05ec04a370d0a624eb29cc64db709fb89aa6f704ec61e0df3e10 |
 | 67 | bcdd51d96ce219344ab65342ea21ccff7ccdb239f4a7abc717d638e06674dba1 |
@@ -1071,9 +1087,9 @@ What each compared line's verdict depends on within the document (tools/transcri
 | 82 | a8b44b754142c484f8a5b288f15843a649fea7a6f96afeb173b4f2012c3963ad |
 | (77) | b620cd8da4d6b8bb0b16851566574d7b3c0ecfdbe41656a6a003565b43b50dcf |
 | 77 | 39167c32d56a1003b448f8bfec8ae7098ccd9febb46ea4b93e75aa4c2e24a3b0 |
-| 79 | 3cc65191422e35790cddef826319b945fa85462e7b73366fc5e90b2e746cf12a |
-| 78 | 218c11d4ad6d3f2337373fe22edfea38df6044dd368ee7726f3336b86018538e |
-| 78a | 0165c359d58b03a7d38af886ba810e12505f402bcfd53b52173ba7bfaba6f9a8 |
+| 79 | 4c3717f5ac7363450544036df39fddf2253e2ba454ce23b566a6163560d6ec0c |
+| 78 | f08ea0aa827d718b485cc1bb05fdc2ee50db17c837651617732c9a5828448c26 |
+| 78a | bf5b3713b257994c48ecef4d585529abbd38d8f935780e46d5cad6d80af9fd60 |
 | 78b | 24d520cf3f6dc798998e1f90b5a40dd7f38843ae1de48b354a3da321cb38a4f6 |
 | 80 | c3e95064e42b75d697f018c796f3a9261573236c0005b609cf5c2dedb9708bb5 |
 | (rest of the document) | eff327fea59ac4f2d56d292426436dddf9389d4a6daf829d71258d67638e5517 |
@@ -1141,6 +1157,71 @@ lines:
   - key: "54d"
     status: MATCH
     reason: "The instructions say 'Multiply the amount on line 54b by 0.34% (0.0034).' Rounding to whole dollars agrees with the form's 'Whole dollars only' and with the example '$57,000 x 0.0034 = $194'."
+```
+```
+
+#### Pass aafab4291976
+
+| field | value |
+| --- | --- |
+| date | 2026-11-07 |
+| review scope | lines 26, 28, 29, 54a, 54b, 64, 79, 78, 78a |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | aafab4291976fa5385147217b2c472a6191c5620e1329eda8f9c10f81dc4ebb4 |
+| prompt policy | render-source-comparison-v2+lines-v1 |
+| system sha256 | 390d22ff0e196470cf6119d363b160934f85d1c37fcc6196dd053b2d9797cb11 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| subject sha256 | ca877a7318f657df6bfb31a2d547ce43aa29912069432cb8425352afa69f90f7 |
+| receipt | .transcription/ny_it201.render.lines-adb75db56cdc |
+| lines judged | 9 |
+| match / mismatch / unclear / missing | 7 / 2 / 0 / 0 |
+| verdicts for lines not in the form | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| ny_it201i | Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20 | 9, 12, 15, 16, 19, 23 | cited pages | 05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9 | 9, 15, 16, 19, 23 | 460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf |
+| ny_it201 | Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12 | 1, 2, 3, 4 | whole document | c924371c32a986a1903c9216bd60c6df8fb52f8e506e5c462851226b71e2154d | - | 895c4b15bba606353fd49f5779f969877e55196eda7f7b9f633f02cbd3dbbb3d |
+| ny_it216i | 2025 | 1 | cited pages | aaccbcdb1a41b6e6221e3b0f908cb845e48bb0435b736ce2cd8ed75239deb6ac | 1 | 64200221fb39e0126f8748f9cd859793e2faf9c24c3f4b9a0134ee079251128b |
+| i2441 | 2025 | 1 | cited pages | 361baee739cc7cb7b6a84c7412397cfba901c1a3e5f225a8077cb8716917887e | 1 | 3046d96b0769e20213f700deb20a0de9edc6a4572eda61bd70f5c8c88bc912ee |
+| f2441 | 2025; created 2025-03-18 | 1, 2 | whole document | f39ca34d11c156e1ac55f4e2b5f16ef03c919773245cd7e50836e4c1555339c7 | - | 0e24fa891992674b84736c78565752c4a7d6f411fca4e24e5bb1307f239f60d6 |
+| f1040 | 2025; created 2025-09-05 | 1, 2 | whole document | ac32f00aed489e0722d0b409c0eb12915801d66f3a2fab05bc8391af61426383 | - | 72926cc2b256a68592e6cf0f2aa384ef8371eec968a0c8c62e050edf5bfea76a |
+
+##### Raw response
+
+```yaml
+```yaml
+lines:
+  - key: "26"
+    status: MATCH
+    reason: "The tool enters $0 and refuses whenever line 9 or 10 shows pension or IRA income and the filer reports a NYS, local or federal government pension, which covers what the line 26 instruction allows to be subtracted. The question also names the listed authorities, the ORP and the domestic-relations-order spouses."
+  - key: "28"
+    status: MATCH
+    reason: "The tool enters $0 and refuses whenever lines 2, 3, 6 or 11 show income and the filer included interest on U.S. government obligations or dividends from a fund holding them. That covers the instruction's 'interest income from U.S. government bonds or other U.S. government obligations on lines 2, 6, or 11' and its qualifying mutual-fund dividends."
+  - key: "29"
+    status: MATCH
+    reason: "The tool enters $0 and refuses whenever line 9 or 10 shows pension income that is not a government pension and the recipient was 59½ or older during 2025 or received it as a beneficiary. This covers every case where the instruction allows an exclusion ('59½ before January 1, 2025' or 'became 59½ during 2025')."
+  - key: "54a"
+    status: MISMATCH
+    reason: "The screening question is asked only of people with more than one Schedule C or Schedule C profit over $50,000, so other self-employment earnings get $0 with no refusal. The instructions say MCTMT net earnings include amounts on 'federal Schedule SE (Form 1040), Part 1, line 6', including IRC § 1402 income such as 'services performed by a United States citizen employed by a foreign government, the United Nations, or other international organization', which need not come from a Schedule C."
+  - key: "54b"
+    status: MISMATCH
+    reason: "The same screen is used as for line 54a, so Zone 2 self-employment earnings from sources other than Schedule C get $0 without a refusal. The instructions treat IRC § 1402 income reported on 'federal Schedule SE (Form 1040), Part 1, line 6' as net earnings 'subject to the MCTMT'."
+  - key: "64"
+    status: MATCH
+    reason: "The tool enters $0 and refuses whenever the filer had care expenses or benefits and 'Would you qualify to claim the federal child and dependent care credit for 2025 (whether or not you actually claimed it)?' is answered yes. That is the instruction's own test for completing Form IT-216."
+  - key: "79"
+    status: MATCH
+    reason: "When line 77 shows an overpayment, the tool uses the filer's chosen 'amount of overpayment from line 77 that you want applied to your ... estimated tax for 2026'; otherwise it enters zero. This matches the line 79 instruction."
+  - key: "78"
+    status: MATCH
+    reason: "The tool computes 'subtract line 79 from line 77', floored at zero, and refuses when line 79 is more than line 77. This matches the line 78 text and instruction."
+  - key: "78a"
+    status: MATCH
+    reason: "The tool enters $0 and refuses whenever a refund exists and the filer wants a NYS 529 deposit via Form IT-195. That is the only case where line 78a takes an amount ('Enter on line 78a the amount from Form IT-195, line 4')."
 ```
 ```
 

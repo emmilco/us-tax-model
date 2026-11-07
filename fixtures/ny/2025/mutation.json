@@ -298,7 +298,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-161550). Federal amounts copied (from the federal encoding): status mfj, f1040.line1z 177,609.00, f1040.line11a 177,609.00, eic.limit 26,214.00. Taxable income in band 5 of worksheet 2: the New York State tax rate schedule (IT-201-I web edition), \"$8,553 plus 6% of the excess over $161,550\" for taxable income over $161,550 but not over $323,200. Taxable income reached (line 38): $161,559; New York AGI (line 33): $177,609.",
@@ -653,7 +653,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first). Federal amounts copied (from the federal encoding): status hoh, f1040.line1z 119,859.00, f1040.line11a 119,859.00, eic.limit 19,104.00. Taxable income in band 5 of worksheet 12: the New York State tax rate schedule (IT-201-I web edition), \"$5,672 plus 6% of the excess over $107,650\" for taxable income over $107,650 but not over $269,300. Taxable income reached (line 38): $107,659; New York AGI (line 33): $119,859.",
@@ -994,7 +994,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-215400). Federal amounts copied (from the federal encoding): status single, f1040.line1z 240,473.00, f1040.line11a 240,473.00, eic.limit 19,104.00. Worksheet 8 with line 7 under $50,000: Tax computation worksheet 8 (IT-201-I web edition): \"Enter the excess of line 1 over $215,400\", \"Enter the lesser of line 6 or $50,000\" and \"Divide line 7 by $50,000 and round the result to the fourth decimal place\"; the New York State tax rate schedule (IT-201-I web edition), \"$12,356 plus 6.85% of the excess over $215,400\" for taxable income over $215,400 but not over $1,077,550. Taxable income reached (line 38): $232,473; New York AGI (line 33): $240,473.",
@@ -1335,7 +1335,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-1077550). Federal amounts copied (from the federal encoding): status single, f1040.line1z 1,102,613.00, f1040.line11a 1,102,613.00, eic.limit 19,104.00. Worksheet 9 with line 7 under $50,000: Tax computation worksheet 9 (IT-201-I web edition): \"Enter the excess of line 1 over $1,077,550\", \"Enter the lesser of line 6 or $50,000\" and \"Divide line 7 by $50,000 and round the result to the fourth decimal place\"; the New York State tax rate schedule (IT-201-I web edition), \"$71,413 plus 9.65% of the excess over $1,077,550\" for taxable income over $1,077,550 but not over $5,000,000. Income over $500,000: line 69a refuses (decision B7), so lines 76 to 80 are not asserted. Taxable income reached (line 38): $1,094,613; New York AGI (line 33): $1,102,613.",
@@ -1657,7 +1657,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-5000000). Federal amounts copied (from the federal encoding): status single, f1040.line1z 5,025,073.00, f1040.line11a 5,025,073.00, eic.limit 19,104.00. Worksheet 10 with line 7 under $50,000: Tax computation worksheet 10 (IT-201-I web edition): \"Enter the excess of line 1 over $5,000,000\", \"Enter the lesser of line 6 or $50,000\" and \"Divide line 7 by $50,000 and round the result to the fourth decimal place\"; the New York State tax rate schedule (IT-201-I web edition), \"$449,929 plus 10.3% of the excess over $5,000,000\" for taxable income over $5,000,000 but not over $25,000,000. Income over $500,000: line 69a refuses (decision B7), so lines 76 to 80 are not asserted. Taxable income reached (line 38): $5,017,073; New York AGI (line 33): $5,025,073.",
@@ -2070,7 +2070,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-323200). Federal amounts copied (from the federal encoding): status mfj, f1040.line1z 348,323.00, f1040.line11a 348,323.00, eic.limit 26,214.00. Worksheet 3 with line 7 under $50,000: Tax computation worksheet 3 (IT-201-I web edition): \"Enter the excess of line 1 over $323,200\", \"Enter the lesser of line 6 or $50,000\" and \"Divide line 7 by $50,000 and round the result to the fourth decimal place\"; the New York State tax rate schedule (IT-201-I web edition), \"$18,252 plus 6.85% of the excess over $323,200\" for taxable income over $323,200 but not over $2,155,350. Taxable income reached (line 38): $332,273; New York AGI (line 33): $348,323.",
@@ -2502,7 +2502,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-2155350). Federal amounts copied (from the federal encoding): status mfj, f1040.line1z 2,180,463.00, f1040.line11a 2,180,463.00, eic.limit 26,214.00. Worksheet 4 with line 7 under $50,000: Tax computation worksheet 4 (IT-201-I web edition): \"Enter the excess of line 1 over $2,155,350\", \"Enter the lesser of line 6 or $50,000\" and \"Divide line 7 by $50,000 and round the result to the fourth decimal place\"; the New York State tax rate schedule (IT-201-I web edition), \"$143,754 plus 9.65% of the excess over $2,155,350\" for taxable income over $2,155,350 but not over $5,000,000. Income over $500,000: line 69a refuses (decision B7), so lines 76 to 80 are not asserted. Taxable income reached (line 38): $2,164,413; New York AGI (line 33): $2,180,463.",
@@ -2915,7 +2915,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-5000000). Federal amounts copied (from the federal encoding): status mfj, f1040.line1z 5,025,123.00, f1040.line11a 5,025,123.00, eic.limit 26,214.00. Worksheet 5 with line 7 under $50,000: Tax computation worksheet 5 (IT-201-I web edition): \"Enter the excess of line 1 over $5,000,000\", \"Enter the lesser of line 6 or $50,000\" and \"Divide line 7 by $50,000 and round the result to the fourth decimal place\"; the New York State tax rate schedule (IT-201-I web edition), \"$418,263 plus 10.3% of the excess over $5,000,000\" for taxable income over $5,000,000 but not over $25,000,000. Income over $500,000: line 69a refuses (decision B7), so lines 76 to 80 are not asserted. Taxable income reached (line 38): $5,009,073; New York AGI (line 33): $5,025,123.",
@@ -3251,7 +3251,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-269300). Federal amounts copied (from the federal encoding): status hoh, f1040.line1z 294,398.00, f1040.line11a 294,398.00, eic.limit 19,104.00. Worksheet 13 with line 7 under $50,000: Tax computation worksheet 13 (IT-201-I web edition): \"Enter the excess of line 1 over $269,300\", \"Enter the lesser of line 6 or $50,000\" and \"Divide line 7 by $50,000 and round the result to the fourth decimal place\"; the New York State tax rate schedule (IT-201-I web edition), \"$15,371 plus 6.85% of the excess over $269,300\" for taxable income over $269,300 but not over $1,616,450. Taxable income reached (line 38): $282,198; New York AGI (line 33): $294,398.",
@@ -3606,7 +3606,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-1616450). Federal amounts copied (from the federal encoding): status hoh, f1040.line1z 1,641,568.00, f1040.line11a 1,641,568.00, eic.limit 19,104.00. Worksheet 14 with line 7 under $50,000: Tax computation worksheet 14 (IT-201-I web edition): \"Enter the excess of line 1 over $1,616,450\", \"Enter the lesser of line 6 or $50,000\" and \"Divide line 7 by $50,000 and round the result to the fourth decimal place\"; the New York State tax rate schedule (IT-201-I web edition), \"$107,651 plus 9.65% of the excess over $1,616,450\" for taxable income over $1,616,450 but not over $5,000,000. Income over $500,000: line 69a refuses (decision B7), so lines 76 to 80 are not asserted. Taxable income reached (line 38): $1,629,368; New York AGI (line 33): $1,641,568.",
@@ -3942,7 +3942,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-5000000). Federal amounts copied (from the federal encoding): status hoh, f1040.line1z 5,025,108.00, f1040.line11a 5,025,108.00, eic.limit 19,104.00. Worksheet 15 with line 7 under $50,000: Tax computation worksheet 15 (IT-201-I web edition): \"Enter the excess of line 1 over $5,000,000\", \"Enter the lesser of line 6 or $50,000\" and \"Divide line 7 by $50,000 and round the result to the fourth decimal place\"; the New York State tax rate schedule (IT-201-I web edition), \"$434,163 plus 10.3% of the excess over $5,000,000\" for taxable income over $5,000,000 but not over $25,000,000. Income over $500,000: line 69a refuses (decision B7), so lines 76 to 80 are not asserted. Taxable income reached (line 38): $5,012,908; New York AGI (line 33): $5,025,108.",
@@ -4278,7 +4278,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-5000000). Federal amounts copied (from the federal encoding): status hoh, f1040.line1z 6,012,200.00, f1040.line11a 6,012,200.00, eic.limit 19,104.00. Worksheet 15 with the full $50,000 on line 7: Tax computation worksheet 15 (IT-201-I web edition): \"Enter the excess of line 1 over $5,000,000\", \"Enter the lesser of line 6 or $50,000\" and \"Divide line 7 by $50,000 and round the result to the fourth decimal place\"; the New York State tax rate schedule (IT-201-I web edition), \"$434,163 plus 10.3% of the excess over $5,000,000\" for taxable income over $5,000,000 but not over $25,000,000. Income over $500,000: line 69a refuses (decision B7), so lines 76 to 80 are not asserted. Taxable income reached (line 38): $6,000,000; New York AGI (line 33): $6,012,200.",
@@ -4691,7 +4691,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first). Federal amounts copied (from the federal encoding): status mfj, f1040.line1z 132,728.00, f1040.line11a 132,728.00, eic.limit 26,214.00. Worksheet 1 between $107,650 and $157,650 of New York AGI: Tax computation worksheet 1 (IT-201-I web edition): \"Enter your New York State tax on the line 2 amount from the New York State tax rate schedule\", \"Enter the excess of line 1 over $107,650\", \"Divide line 6 by $50,000 and round the result to the fourth decimal place\", \"Multiply line 5 by line 7\" and \"Add lines 4 and 8\". Taxable income reached (line 38): $116,678; New York AGI (line 33): $132,728.",
@@ -7412,7 +7412,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first). Federal amounts copied (from the federal encoding): status mfs, f1040.line1z 107,688.00, f1040.line11a 107,688.00, eic.limit 19,104.00. 92 qualifying-relative dependents (parents) bring taxable income to band 1 with New York AGI $107,688: Tax computation worksheet 7 (IT-201-I web edition): \"Enter your New York State tax on the line 2 amount from the New York State tax rate schedule\", \"Enter the excess of line 1 over $107,650\", \"Divide line 6 by $50,000 and round the result to the fourth decimal place\", \"Multiply line 5 by line 7\" and \"Add lines 4 and 8\"; the New York State tax rate schedule (IT-201-I web edition), \"$0 plus 4% of the excess over $0\" for taxable income over $0 but not over $8,500; and line 36, \"The value of each New York State dependent exemption is $1,000.\" Line 6 is $38, so line 7 is at most 0.0010. Taxable income reached (line 38): $7,688; New York AGI (line 33): $107,688.",
@@ -10029,7 +10029,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first). Federal amounts copied (from the federal encoding): status mfs, f1040.line1z 107,689.00, f1040.line11a 107,689.00, eic.limit 19,104.00. 88 qualifying-relative dependents (parents) bring taxable income to band 2 with New York AGI $107,689: Tax computation worksheet 7 (IT-201-I web edition): \"Enter your New York State tax on the line 2 amount from the New York State tax rate schedule\", \"Enter the excess of line 1 over $107,650\", \"Divide line 6 by $50,000 and round the result to the fourth decimal place\", \"Multiply line 5 by line 7\" and \"Add lines 4 and 8\"; the New York State tax rate schedule (IT-201-I web edition), \"$340 plus 4.5% of the excess over $8,500\" for taxable income over $8,500 but not over $11,700; and line 36, \"The value of each New York State dependent exemption is $1,000.\" Line 6 is $39, so line 7 is at most 0.0010. Taxable income reached (line 38): $11,689; New York AGI (line 33): $107,689.",
@@ -12594,7 +12594,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first). Federal amounts copied (from the federal encoding): status mfs, f1040.line1z 107,691.00, f1040.line11a 107,691.00, eic.limit 19,104.00. 86 qualifying-relative dependents (parents) bring taxable income to band 3 with New York AGI $107,691: Tax computation worksheet 7 (IT-201-I web edition): \"Enter your New York State tax on the line 2 amount from the New York State tax rate schedule\", \"Enter the excess of line 1 over $107,650\", \"Divide line 6 by $50,000 and round the result to the fourth decimal place\", \"Multiply line 5 by line 7\" and \"Add lines 4 and 8\"; the New York State tax rate schedule (IT-201-I web edition), \"$484 plus 5.25% of the excess over $11,700\" for taxable income over $11,700 but not over $13,900; and line 36, \"The value of each New York State dependent exemption is $1,000.\" Line 6 is $41, so line 7 is at most 0.0010. Taxable income reached (line 38): $13,691; New York AGI (line 33): $107,691.",
@@ -14977,7 +14977,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first). Federal amounts copied (from the federal encoding): status mfj, f1040.line1z 107,688.00, f1040.line11a 107,688.00, eic.limit 26,214.00. 75 qualifying-relative dependents (parents) bring taxable income to band 1 with New York AGI $107,688: Tax computation worksheet 1 (IT-201-I web edition): \"Enter your New York State tax on the line 2 amount from the New York State tax rate schedule\", \"Enter the excess of line 1 over $107,650\", \"Divide line 6 by $50,000 and round the result to the fourth decimal place\", \"Multiply line 5 by line 7\" and \"Add lines 4 and 8\"; the New York State tax rate schedule (IT-201-I web edition), \"$0 plus 4% of the excess over $0\" for taxable income over $0 but not over $17,150; and line 36, \"The value of each New York State dependent exemption is $1,000.\" Line 6 is $38, so line 7 is at most 0.0010. Taxable income reached (line 38): $16,638; New York AGI (line 33): $107,688.",
@@ -17204,7 +17204,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first). Federal amounts copied (from the federal encoding): status mfj, f1040.line1z 107,700.00, f1040.line11a 107,700.00, eic.limit 26,214.00. 69 qualifying-relative dependents (parents) bring taxable income to band 2 with New York AGI $107,700: Tax computation worksheet 1 (IT-201-I web edition): \"Enter your New York State tax on the line 2 amount from the New York State tax rate schedule\", \"Enter the excess of line 1 over $107,650\", \"Divide line 6 by $50,000 and round the result to the fourth decimal place\", \"Multiply line 5 by line 7\" and \"Add lines 4 and 8\"; the New York State tax rate schedule (IT-201-I web edition), \"$686 plus 4.5% of the excess over $17,150\" for taxable income over $17,150 but not over $23,600; and line 36, \"The value of each New York State dependent exemption is $1,000.\" Line 6 is $50, so line 7 is at most 0.0010. Taxable income reached (line 38): $22,650; New York AGI (line 33): $107,700.",
@@ -19301,7 +19301,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first). Federal amounts copied (from the federal encoding): status mfj, f1040.line1z 107,698.00, f1040.line11a 107,698.00, eic.limit 26,214.00. 64 qualifying-relative dependents (parents) bring taxable income to band 3 with New York AGI $107,698: Tax computation worksheet 1 (IT-201-I web edition): \"Enter your New York State tax on the line 2 amount from the New York State tax rate schedule\", \"Enter the excess of line 1 over $107,650\", \"Divide line 6 by $50,000 and round the result to the fourth decimal place\", \"Multiply line 5 by line 7\" and \"Add lines 4 and 8\"; the New York State tax rate schedule (IT-201-I web edition), \"$976 plus 5.25% of the excess over $23,600\" for taxable income over $23,600 but not over $27,900; and line 36, \"The value of each New York State dependent exemption is $1,000.\" Line 6 is $48, so line 7 is at most 0.0010. Taxable income reached (line 38): $27,648; New York AGI (line 33): $107,698.",
@@ -21814,7 +21814,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first). Federal amounts copied (from the federal encoding): status hoh, f1040.line1z 107,688.00, f1040.line11a 107,688.00, eic.limit 19,104.00. 84 qualifying-relative dependents (parents) bring taxable income to band 1 with New York AGI $107,688: Tax computation worksheet 12 (IT-201-I web edition): \"Enter your New York State tax on the line 2 amount from the New York State tax rate schedule\", \"Enter the excess of line 1 over $107,650\", \"Divide line 6 by $50,000 and round the result to the fourth decimal place\", \"Multiply line 5 by line 7\" and \"Add lines 4 and 8\"; the New York State tax rate schedule (IT-201-I web edition), \"$0 plus 4% of the excess over $0\" for taxable income over $0 but not over $12,800; and line 36, \"The value of each New York State dependent exemption is $1,000.\" Line 6 is $38, so line 7 is at most 0.0010. Taxable income reached (line 38): $12,488; New York AGI (line 33): $107,688.",
@@ -24197,7 +24197,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first). Federal amounts copied (from the federal encoding): status hoh, f1040.line1z 107,700.00, f1040.line11a 107,700.00, eic.limit 19,104.00. 79 qualifying-relative dependents (parents) bring taxable income to band 2 with New York AGI $107,700: Tax computation worksheet 12 (IT-201-I web edition): \"Enter your New York State tax on the line 2 amount from the New York State tax rate schedule\", \"Enter the excess of line 1 over $107,650\", \"Divide line 6 by $50,000 and round the result to the fourth decimal place\", \"Multiply line 5 by line 7\" and \"Add lines 4 and 8\"; the New York State tax rate schedule (IT-201-I web edition), \"$512 plus 4.5% of the excess over $12,800\" for taxable income over $12,800 but not over $17,650; and line 36, \"The value of each New York State dependent exemption is $1,000.\" Line 6 is $50, so line 7 is at most 0.0010. Taxable income reached (line 38): $17,500; New York AGI (line 33): $107,700.",
@@ -26502,7 +26502,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first). Federal amounts copied (from the federal encoding): status hoh, f1040.line1z 107,698.00, f1040.line11a 107,698.00, eic.limit 19,104.00. 76 qualifying-relative dependents (parents) bring taxable income to band 3 with New York AGI $107,698: Tax computation worksheet 12 (IT-201-I web edition): \"Enter your New York State tax on the line 2 amount from the New York State tax rate schedule\", \"Enter the excess of line 1 over $107,650\", \"Divide line 6 by $50,000 and round the result to the fourth decimal place\", \"Multiply line 5 by line 7\" and \"Add lines 4 and 8\"; the New York State tax rate schedule (IT-201-I web edition), \"$730 plus 5.25% of the excess over $17,650\" for taxable income over $17,650 but not over $20,900; and line 36, \"The value of each New York State dependent exemption is $1,000.\" Line 6 is $48, so line 7 is at most 0.0010. Taxable income reached (line 38): $20,498; New York AGI (line 33): $107,698.",
@@ -26843,7 +26843,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-215400). Federal amounts copied (from the federal encoding): status single, f1040.line1z 223,413.00, f1040.line11a 223,413.00, eic.limit 19,104.00. Worksheet 8, line 6 $8,013: Tax computation worksheet 8 (IT-201-I web edition): \"Enter the excess of line 1 over $215,400\", \"Enter the lesser of line 6 or $50,000\" and \"Divide line 7 by $50,000 and round the result to the fourth decimal place\"; the New York State tax rate schedule (IT-201-I web edition), \"$12,356 plus 6.85% of the excess over $215,400\" for taxable income over $215,400 but not over $1,077,550. Taxable income reached (line 38): $215,413; New York AGI (line 33): $223,413.",
@@ -27275,7 +27275,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-161550). Federal amounts copied (from the federal encoding): status mfj, f1040.line1z 177,628.00, f1040.line11a 177,628.00, eic.limit 26,214.00. Worksheet 2, line 6 $16,078: Tax computation worksheet 2 (IT-201-I web edition): \"Enter the excess of line 1 over $161,550\", \"Enter the lesser of line 6 or $50,000\" and \"Divide line 7 by $50,000 and round the result to the fourth decimal place\"; the New York State tax rate schedule (IT-201-I web edition), \"$8,553 plus 6% of the excess over $161,550\" for taxable income over $161,550 but not over $323,200. Taxable income reached (line 38): $161,578; New York AGI (line 33): $177,628.",
@@ -27707,7 +27707,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-323200). Federal amounts copied (from the federal encoding): status mfj, f1040.line1z 339,263.00, f1040.line11a 339,263.00, eic.limit 26,214.00. Worksheet 3, line 6 $16,063: Tax computation worksheet 3 (IT-201-I web edition): \"Enter the excess of line 1 over $323,200\", \"Enter the lesser of line 6 or $50,000\" and \"Divide line 7 by $50,000 and round the result to the fourth decimal place\"; the New York State tax rate schedule (IT-201-I web edition), \"$18,252 plus 6.85% of the excess over $323,200\" for taxable income over $323,200 but not over $2,155,350. Taxable income reached (line 38): $323,213; New York AGI (line 33): $339,263.",
@@ -28062,7 +28062,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-269300). Federal amounts copied (from the federal encoding): status hoh, f1040.line1z 281,523.00, f1040.line11a 281,523.00, eic.limit 19,104.00. Worksheet 13, line 6 $12,223: Tax computation worksheet 13 (IT-201-I web edition): \"Enter the excess of line 1 over $269,300\", \"Enter the lesser of line 6 or $50,000\" and \"Divide line 7 by $50,000 and round the result to the fourth decimal place\"; the New York State tax rate schedule (IT-201-I web edition), \"$15,371 plus 6.85% of the excess over $269,300\" for taxable income over $269,300 but not over $1,616,450. Taxable income reached (line 38): $269,323; New York AGI (line 33): $281,523.",
@@ -28403,7 +28403,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). Federal amounts copied (from the federal encoding): status single, f1040.line1z 10,000.00, f1040.line11a 10,000.00, eic.limit 19,104.00. Use tax owed, federal AGI (line 19) $10,000: Line 59 (IT-201-I p. 18), the sales and use tax chart: \"up to $15,000* ... $3\", \"$15,001 - $30,000 ... 6\", \"30,001 - 50,000 ... 10\", \"50,001 - 75,000 ... 15\", \"75,001 - 100,000 ... 18\", \"100,001 - 150,000 ... 26\", \"150,001 - 200,000 ... 34\", \"200,001 and greater ... 0.0175% (0.000175) of income, or $125, whichever amount is smaller\". Federal AGI is under the federal earned income credit's limit, so lines 65 and 70 refuse (decision B9) and lines 63 to 80 are not asserted otherwise; lines 1 to 62 do not read the credit and are the predictor's values with its earned income credit test set aside (f1040.line27a and eic.limit passed as 0, which no line before 63 reads). Taxable income reached (line 38): $2,000; New York AGI (line 33): $10,000.",
@@ -28734,7 +28734,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). Federal amounts copied (from the federal encoding): status single, f1040.line1z 15,001.00, f1040.line11a 15,001.00, eic.limit 19,104.00. Use tax owed, federal AGI (line 19) $15,001: Line 59 (IT-201-I p. 18), the sales and use tax chart: \"up to $15,000* ... $3\", \"$15,001 - $30,000 ... 6\", \"30,001 - 50,000 ... 10\", \"50,001 - 75,000 ... 15\", \"75,001 - 100,000 ... 18\", \"100,001 - 150,000 ... 26\", \"150,001 - 200,000 ... 34\", \"200,001 and greater ... 0.0175% (0.000175) of income, or $125, whichever amount is smaller\". Federal AGI is under the federal earned income credit's limit, so lines 65 and 70 refuse (decision B9) and lines 63 to 80 are not asserted otherwise; lines 1 to 62 do not read the credit and are the predictor's values with its earned income credit test set aside (f1040.line27a and eic.limit passed as 0, which no line before 63 reads). Taxable income reached (line 38): $7,001; New York AGI (line 33): $15,001.",
@@ -29065,7 +29065,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). Federal amounts copied (from the federal encoding): status single, f1040.line1z 30,001.00, f1040.line11a 30,001.00, eic.limit 19,104.00. Use tax owed, federal AGI (line 19) $30,001: Line 59 (IT-201-I p. 18), the sales and use tax chart: \"up to $15,000* ... $3\", \"$15,001 - $30,000 ... 6\", \"30,001 - 50,000 ... 10\", \"50,001 - 75,000 ... 15\", \"75,001 - 100,000 ... 18\", \"100,001 - 150,000 ... 26\", \"150,001 - 200,000 ... 34\", \"200,001 and greater ... 0.0175% (0.000175) of income, or $125, whichever amount is smaller\". Taxable income reached (line 38): $22,001; New York AGI (line 33): $30,001.",
@@ -29406,7 +29406,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). Federal amounts copied (from the federal encoding): status single, f1040.line1z 50,001.00, f1040.line11a 50,001.00, eic.limit 19,104.00. Use tax owed, federal AGI (line 19) $50,001: Line 59 (IT-201-I p. 18), the sales and use tax chart: \"up to $15,000* ... $3\", \"$15,001 - $30,000 ... 6\", \"30,001 - 50,000 ... 10\", \"50,001 - 75,000 ... 15\", \"75,001 - 100,000 ... 18\", \"100,001 - 150,000 ... 26\", \"150,001 - 200,000 ... 34\", \"200,001 and greater ... 0.0175% (0.000175) of income, or $125, whichever amount is smaller\". Taxable income reached (line 38): $42,001; New York AGI (line 33): $50,001.",
@@ -29747,7 +29747,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: schedule). Federal amounts copied (from the federal encoding): status single, f1040.line1z 75,001.00, f1040.line11a 75,001.00, eic.limit 19,104.00. Use tax owed, federal AGI (line 19) $75,001: Line 59 (IT-201-I p. 18), the sales and use tax chart: \"up to $15,000* ... $3\", \"$15,001 - $30,000 ... 6\", \"30,001 - 50,000 ... 10\", \"50,001 - 75,000 ... 15\", \"75,001 - 100,000 ... 18\", \"100,001 - 150,000 ... 26\", \"150,001 - 200,000 ... 34\", \"200,001 and greater ... 0.0175% (0.000175) of income, or $125, whichever amount is smaller\". Taxable income reached (line 38): $67,001; New York AGI (line 33): $75,001.",
@@ -30088,7 +30088,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: schedule). Federal amounts copied (from the federal encoding): status single, f1040.line1z 100,001.00, f1040.line11a 100,001.00, eic.limit 19,104.00. Use tax owed, federal AGI (line 19) $100,001: Line 59 (IT-201-I p. 18), the sales and use tax chart: \"up to $15,000* ... $3\", \"$15,001 - $30,000 ... 6\", \"30,001 - 50,000 ... 10\", \"50,001 - 75,000 ... 15\", \"75,001 - 100,000 ... 18\", \"100,001 - 150,000 ... 26\", \"150,001 - 200,000 ... 34\", \"200,001 and greater ... 0.0175% (0.000175) of income, or $125, whichever amount is smaller\". Taxable income reached (line 38): $92,001; New York AGI (line 33): $100,001.",
@@ -30429,7 +30429,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first). Federal amounts copied (from the federal encoding): status single, f1040.line1z 150,001.00, f1040.line11a 150,001.00, eic.limit 19,104.00. Use tax owed, federal AGI (line 19) $150,001: Line 59 (IT-201-I p. 18), the sales and use tax chart: \"up to $15,000* ... $3\", \"$15,001 - $30,000 ... 6\", \"30,001 - 50,000 ... 10\", \"50,001 - 75,000 ... 15\", \"75,001 - 100,000 ... 18\", \"100,001 - 150,000 ... 26\", \"150,001 - 200,000 ... 34\", \"200,001 and greater ... 0.0175% (0.000175) of income, or $125, whichever amount is smaller\". Taxable income reached (line 38): $142,001; New York AGI (line 33): $150,001.",
@@ -30770,7 +30770,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first-stop). Federal amounts copied (from the federal encoding): status single, f1040.line1z 200,001.00, f1040.line11a 200,001.00, eic.limit 19,104.00. Use tax owed, federal AGI (line 19) $200,001: Line 59 (IT-201-I p. 18), the sales and use tax chart: \"up to $15,000* ... $3\", \"$15,001 - $30,000 ... 6\", \"30,001 - 50,000 ... 10\", \"50,001 - 75,000 ... 15\", \"75,001 - 100,000 ... 18\", \"100,001 - 150,000 ... 26\", \"150,001 - 200,000 ... 34\", \"200,001 and greater ... 0.0175% (0.000175) of income, or $125, whichever amount is smaller\". Taxable income reached (line 38): $192,001; New York AGI (line 33): $200,001.",
@@ -31111,7 +31111,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-215400). Federal amounts copied (from the federal encoding): status single, f1040.line1z 600,000.00, f1040.line11a 600,000.00, eic.limit 19,104.00. Use tax owed, federal AGI (line 19) $600,000: Line 59 (IT-201-I p. 18), the sales and use tax chart: \"up to $15,000* ... $3\", \"$15,001 - $30,000 ... 6\", \"30,001 - 50,000 ... 10\", \"50,001 - 75,000 ... 15\", \"75,001 - 100,000 ... 18\", \"100,001 - 150,000 ... 26\", \"150,001 - 200,000 ... 34\", \"200,001 and greater ... 0.0175% (0.000175) of income, or $125, whichever amount is smaller\". Income over $500,000: line 69a refuses (decision B7), so lines 76 to 80 are not asserted. Taxable income reached (line 38): $592,000; New York AGI (line 33): $600,000.",
@@ -31433,7 +31433,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-215400). Federal amounts copied (from the federal encoding): status single, f1040.line1z 800,000.00, f1040.line11a 800,000.00, eic.limit 19,104.00. Use tax owed, federal AGI (line 19) $800,000: Line 59 (IT-201-I p. 18), the sales and use tax chart: \"up to $15,000* ... $3\", \"$15,001 - $30,000 ... 6\", \"30,001 - 50,000 ... 10\", \"50,001 - 75,000 ... 15\", \"75,001 - 100,000 ... 18\", \"100,001 - 150,000 ... 26\", \"150,001 - 200,000 ... 34\", \"200,001 and greater ... 0.0175% (0.000175) of income, or $125, whichever amount is smaller\". Income over $500,000: line 69a refuses (decision B7), so lines 76 to 80 are not asserted. Taxable income reached (line 38): $792,000; New York AGI (line 33): $800,000.",
@@ -31894,7 +31894,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0,
+    "ny_it201.line79_amount": 0,
     "sa.gambling_losses": 0
    },
    "evidence": "synthetic regression (not class B)",
@@ -32354,7 +32354,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). Federal amounts copied (from the federal encoding): status single, f1040.line1z 60,000.40, s1.line26 1,000.00, f1040.line11a 59,000.40, eic.limit 19,104.00. Wages of $60,000.40 (line 1 is $60,000: IT-201-I p. 2, Entering whole dollar amounts: \"Drop amounts that are less than 50 cents ... Increase amounts that are 50 cents or more to the next dollar.\") and a student loan interest deduction (Schedule 1 line 21, so line 18 is more than $0): line 19, \"Federal adjusted gross income (subtract line 18 from line 17)\", equals federal AGI rounded to the whole dollar; the check ny_it201.line19_agrees is true. Taxable income reached (line 38): $51,000; New York AGI (line 33): $59,000.",
@@ -32827,7 +32827,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). Federal amounts copied (from the federal encoding): status single, f1040.line1z 50,000.00, s1.line1 300.20, f1040.line11a 50,300.20, eic.limit 19,104.00. A taxable state refund with cents: IT-201-I p. 2, Entering whole dollar amounts: \"Drop amounts that are less than 50 cents ... Increase amounts that are 50 cents or more to the next dollar.\" Line 25 (IT-201-I p. 9): \"Enter the amount of any taxable refunds, credits, or offsets of state and local income taxes reported on line 4\"; the tool refuses line 25 when line 4 is more than $0 (decision B1), so line 25 and the lines that read it (32, 33) are that refusal. Taxable income reached (line 38): $42,300; New York AGI (line 33): $50,300.",
@@ -33158,7 +33158,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first-stop). Federal amounts copied (from the federal encoding): status single, f1040.line1z 212,500.00, f1040.line6b 42,500.00, f1040.line11a 255,000.00, eic.limit 19,104.00. Taxable social security (line 27 subtracted for line 33) with line 19 $255,000: Line 69 (IT-201-I p. 20): \"Income, for purposes of determining your New York City school tax credit, means your federal adjusted gross income from Form IT-201, line 19, minus distributions from an individual retirement account and an individual retirement annuity, from Form IT-201, line 9\"; \"You do not qualify for this credit if your income is more than $250,000\". Taxable income reached (line 38): $204,500; New York AGI (line 33): $212,500.",
@@ -33563,7 +33563,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-215400). Federal amounts copied (from the federal encoding): status single, f1040.line1z 477,500.00, f1040.line6b 42,500.00, f1040.line11a 520,000.00, eic.limit 19,104.00. Taxable social security with line 19 $520,000 (New York AGI under $500,000): Line 69 (IT-201-I p. 20): \"Income, for purposes of determining your New York City school tax credit, means your federal adjusted gross income from Form IT-201, line 19, minus distributions from an individual retirement account and an individual retirement annuity, from Form IT-201, line 9\"; \"You do not qualify for this credit if your income is more than $250,000\"; the rate reduction (line 69a) is refused over $500,000 of income (decision B7). Income over $500,000: line 69a refuses (decision B7), so lines 76 to 80 are not asserted. Taxable income reached (line 38): $469,500; New York AGI (line 33): $477,500.",
@@ -33959,7 +33959,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-215400). Federal amounts copied (from the federal encoding): status single, f1040.line1z 490,000.00, f1040.line4b 70,000.00, f1040.line11a 560,000.00, eic.limit 19,104.00. An IRA distribution of $70,000 with line 19 $560,000, so income for the credit is $490,000 and line 47 is $552,000: Line 69 (IT-201-I p. 20): \"Income, for purposes of determining your New York City school tax credit, means your federal adjusted gross income from Form IT-201, line 19, minus distributions from an individual retirement account and an individual retirement annuity, from Form IT-201, line 9\"; \"You do not qualify for this credit if your income is more than $250,000\"; line 69a is refused when income or line 47 is over $500,000 (decision B7). Income over $500,000: line 69a refuses (decision B7), so lines 76 to 80 are not asserted. Taxable income reached (line 38): $552,000; New York AGI (line 33): $560,000.",
@@ -34281,7 +34281,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-215400). Federal amounts copied (from the federal encoding): status single, f1040.line1z 600,000.00, f1040.line11a 600,000.00, eic.limit 19,104.00. Item C Yes with line 19 $600,000: line 69a, \"If you marked the Yes box at item C ... you do not qualify for this credit\" (IT-201-I p. 20). Taxable income reached (line 38): $596,900; New York AGI (line 33): $600,000.",
@@ -34622,7 +34622,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-215400). Federal amounts copied (from the federal encoding): status single, f1040.line1z 250,001.00, f1040.line11a 250,001.00, eic.limit 19,104.00. Line 19 $250,001: Line 69 (IT-201-I p. 20): \"Income, for purposes of determining your New York City school tax credit, means your federal adjusted gross income from Form IT-201, line 19, minus distributions from an individual retirement account and an individual retirement annuity, from Form IT-201, line 9\"; \"You do not qualify for this credit if your income is more than $250,000\". Taxable income reached (line 38): $242,001; New York AGI (line 33): $250,001.",
@@ -34963,7 +34963,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-215400). Federal amounts copied (from the federal encoding): status single, f1040.line1z 500,001.00, f1040.line11a 500,001.00, eic.limit 19,104.00. Line 19 $500,001: income over $500,000 (decision B7). Income over $500,000: line 69a refuses (decision B7), so lines 76 to 80 are not asserted. Taxable income reached (line 38): $492,001; New York AGI (line 33): $500,001.",
@@ -35285,7 +35285,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). Federal amounts copied (from the federal encoding): status single, f1040.line1z 40,395.00, f1040.line11a 40,395.00, eic.limit 19,104.00. Line 69a (IT-201-I p. 20), single: \"If line 47 is: over $12,000 ... $21 plus 0.228% of the excess over $12,000\" (\"$12,000 or less: 0.171% of line 47\"). Taxable income reached (line 38): $32,395; New York AGI (line 33): $40,395.",
@@ -35640,7 +35640,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: schedule). Federal amounts copied (from the federal encoding): status hoh, f1040.line1z 93,362.00, f1040.line11a 93,362.00, eic.limit 19,104.00. One dependent, line 19 $93,362, $1 over $88,361 + $5,000: Line 70a (IT-201-I p. 21; IT-270-I p. 1): the New York City income tax elimination credit; the tool refuses it with a dependent on item H and federal AGI (line 19) within $5,000 of the highest income threshold ($88,361 for filing statuses other than married filing jointly), decision B10. Taxable income reached (line 38): $81,162; New York AGI (line 33): $93,362.",
@@ -36069,7 +36069,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: schedule). Federal amounts copied (from the federal encoding): status hoh, f1040.line1z 90,000.00, f1040.line4b 5,000.00, f1040.line11a 95,000.00, eic.limit 19,104.00. One dependent, line 19 $95,000 including an IRA distribution of $5,000: Line 70a (IT-201-I p. 21; IT-270-I p. 1): the New York City income tax elimination credit; the tool refuses it with a dependent on item H and federal AGI (line 19) within $5,000 of the highest income threshold ($88,361 for filing statuses other than married filing jointly), decision B10; the test reads line 19, not the school tax credit's income (line 19 less line 9). Taxable income reached (line 38): $82,800; New York AGI (line 33): $95,000.",
@@ -36410,7 +36410,7 @@
     "ny_it2[w0].city_withheld": 300000,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Refusal predicted from the source: Prior-year AGI over $150,000, 2024 tax $8,000, prepayments $8,500, a balance due: Line 81 (IT-201-I p. 23): \"In general, you are not subject to a penalty if your 2025 prepayments equal at least 100% of your 2024 New York income tax\" and \"However, if your 2024 New York adjusted gross income was more than $150,000 ... your 2025 prepayments must equal at least 110% of your 2024 New York income tax\"; the tool refuses the penalty (line 81) when the prepayments are short (decision B6). The New York answers make ny_it201.gate.estimated_penalty true, so ny_it201.line81 refuse with that gate; the refusal's form, remedy and citation are the refusing line's recorded refusal text.",
@@ -36636,7 +36636,7 @@
     "ny_it2[w0].city_withheld": 300000,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first-stop). Federal amounts copied (from the federal encoding): status single, f1040.line1z 158,000.00, f1040.line11a 158,000.00, eic.limit 19,104.00. Prior-year AGI not over $150,000, 2024 tax $8,000, prepayments $8,500, a balance due: Line 81 (IT-201-I p. 23): \"In general, you are not subject to a penalty if your 2025 prepayments equal at least 100% of your 2024 New York income tax\" and \"However, if your 2024 New York adjusted gross income was more than $150,000 ... your 2025 prepayments must equal at least 110% of your 2024 New York income tax\"; the tool refuses the penalty (line 81) when the prepayments are short (decision B6). Taxable income reached (line 38): $150,000; New York AGI (line 33): $158,000.",
@@ -36977,7 +36977,7 @@
     "ny_it2[w0].city_withheld": 800000,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first-stop). Federal amounts copied (from the federal encoding): status single, f1040.line1z 158,000.00, f1040.line11a 158,000.00, eic.limit 19,104.00. A refund with prepayments ($20,000) below the 2024 tax ($25,000): Line 81 (IT-201-I p. 23): \"In general, you are not subject to a penalty if your 2025 prepayments equal at least 100% of your 2024 New York income tax\" and \"However, if your 2024 New York adjusted gross income was more than $150,000 ... your 2025 prepayments must equal at least 110% of your 2024 New York income tax\"; the tool refuses the penalty (line 81) when the prepayments are short (decision B6); with no balance due there is no underpayment. Taxable income reached (line 38): $150,000; New York AGI (line 33): $158,000.",
@@ -37318,7 +37318,7 @@
     "ny_it2[w0].city_withheld": 300000,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first-stop). Federal amounts copied (from the federal encoding): status single, f1040.line1z 158,000.00, f1040.line11a 158,000.00, eic.limit 19,104.00. Prior-year AGI over $150,000, 2024 tax $8,004.50, prepayments $8,805 (110% is $8,804.95): Line 81 (IT-201-I p. 23): \"In general, you are not subject to a penalty if your 2025 prepayments equal at least 100% of your 2024 New York income tax\" and \"However, if your 2024 New York adjusted gross income was more than $150,000 ... your 2025 prepayments must equal at least 110% of your 2024 New York income tax\"; the tool refuses the penalty (line 81) when the prepayments are short (decision B6). Taxable income reached (line 38): $150,000; New York AGI (line 33): $158,000.",
@@ -37673,7 +37673,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first-stop). Federal amounts copied (from the federal encoding): status hoh, f1040.line1z 252,200.00, f1040.line11a 252,200.00, eic.limit 19,104.00. Head of household, taxable income $240,000 (over $215,400, not over $269,300): Tax computation worksheet 12 (IT-201-I web edition), \"and your taxable income (line 38) is $269,300 or less\". Taxable income reached (line 38): $240,000; New York AGI (line 33): $252,200.",
@@ -38014,7 +38014,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: top). Federal amounts copied (from the federal encoding): status single, f1040.line1z 25,000,001.00, f1040.line11a 25,000,001.00, eic.limit 19,104.00. New York AGI $25,000,001: \"Tax computation worksheet 11 ... If your New York adjusted gross income (line 33) is more than $25,000,000\" ... \"Multiply line 1 by 10.9% (0.109)\". Income over $500,000: line 69a refuses (decision B7), so lines 76 to 80 are not asserted. Taxable income reached (line 38): $24,992,001; New York AGI (line 33): $25,000,001.",
@@ -38336,7 +38336,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: later-5000000). Federal amounts copied (from the federal encoding): status single, f1040.line1z 25,000,000.00, f1040.line11a 25,000,000.00, eic.limit 19,104.00. New York AGI $25,000,000: worksheet 10, \"more than $5,000,000, but not more than $25,000,000\". Income over $500,000: line 69a refuses (decision B7), so lines 76 to 80 are not asserted. Taxable income reached (line 38): $24,992,000; New York AGI (line 33): $25,000,000.",
@@ -38658,7 +38658,7 @@
     "ny_it2[w0].city_withheld": 200000,
     "ny_it2[w0].yonkers_withheld": 10000,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Refusal predicted from the source: A Form W-2 with Yonkers tax withheld (box 19) while the Yonkers screen is No: the IT-2 record's New York City withholding refuses (IT-2 p. 2, \"Yonkers tax withheld \u2013 Include on Form IT-201, line 74\").",
@@ -38898,7 +38898,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). Federal amounts copied (from the federal encoding): status hoh, f1040.line1z 20,000.00, f1040.line11a 20,000.00, eic.limit 19,104.00. Head of household with no claimed dependent (the parent's gross income is over the qualifying-relative limit, so the federal head-of-household test refuses at the federal lines that read it; the New York lines copy only federal income amounts and the status), federal AGI $20,000: Line 40 and line 48 (IT-201-I pp. 12-14), the household credit tables: \"Filing status \u2460 only (Single): Use New York State household credit table 1\", \"Filing status \u2461, \u2463, and \u2464: Use New York State household credit table 2\", \"Filing status \u2462 only (Married filing separate return): New York State household credit table 3\", the column \"the number of dependents listed on Form IT-201, item H, plus one\" (two on a joint return); the column is one person. Taxable income reached (line 38): $8,800; New York AGI (line 33): $20,000.",
@@ -39253,7 +39253,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Refusal predicted from the source: A dependent child aged 7: line 63 (IT-201-I p. 19), \"Do you have at least one qualifying child? (A qualifying child must be less than 17 years old on December 31st of the tax year.)\" With one, Form IT-213 is needed. The New York answers make ny_it201.gate.child_credit true, so ny_it201.line63 refuse with that gate; the refusal's form, remedy and citation are the refusing line's recorded refusal text.",
@@ -39466,7 +39466,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Refusal predicted from the source: Married filing separately with federal AGI $20,000, within both household credit tables' rows: Line 40 and line 48 (IT-201-I pp. 12-14), the household credit tables: \"Filing status \u2460 only (Single): Use New York State household credit table 1\", \"Filing status \u2461, \u2463, and \u2464: Use New York State household credit table 2\", \"Filing status \u2462 only (Married filing separate return): New York State household credit table 3\", the column \"the number of dependents listed on Form IT-201, item H, plus one\" (two on a joint return); table 3 and NYC table 6 need the spouse's AGI (refused). The New York answers make ny_it201.gate.hh_state_mfs and ny_it201.gate.hh_city_mfs true, so ny_it201.line40, ny_it201.line48 refuse with that gate; the refusal's form, remedy and citation are the refusing line's recorded refusal text.",
@@ -39875,7 +39875,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Refusal predicted from the source: Eight people (seven dependents) with federal AGI $20,000: Line 40 and line 48 (IT-201-I pp. 12-14), the household credit tables: \"Filing status \u2460 only (Single): Use New York State household credit table 1\", \"Filing status \u2461, \u2463, and \u2464: Use New York State household credit table 2\", \"Filing status \u2462 only (Married filing separate return): New York State household credit table 3\", the column \"the number of dependents listed on Form IT-201, item H, plus one\" (two on a joint return); Note 3 (more than seven) is refused. The New York answers make ny_it201.gate.hh_state_over7 and ny_it201.gate.hh_city_over7 true, so ny_it201.line40, ny_it201.line48 refuse with that gate; the refusal's form, remedy and citation are the refusing line's recorded refusal text.",
@@ -40101,7 +40101,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). Federal amounts copied (from the federal encoding): status mfs, f1040.line1z 32,001.00, f1040.line11a 32,001.00, eic.limit 19,104.00. Married filing separately, federal AGI $32,001: Line 40 and line 48 (IT-201-I pp. 12-14), the household credit tables: \"Filing status \u2460 only (Single): Use New York State household credit table 1\", \"Filing status \u2461, \u2463, and \u2464: Use New York State household credit table 2\", \"Filing status \u2462 only (Married filing separate return): New York State household credit table 3\", the column \"the number of dependents listed on Form IT-201, item H, plus one\" (two on a joint return); table 3's rows end at $32,000. Taxable income reached (line 38): $24,001; New York AGI (line 33): $32,001.",
@@ -40429,7 +40429,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Refusal predicted from the source: Married filing separately, federal AGI $22,501: Line 40 and line 48 (IT-201-I pp. 12-14), the household credit tables: \"Filing status \u2460 only (Single): Use New York State household credit table 1\", \"Filing status \u2461, \u2463, and \u2464: Use New York State household credit table 2\", \"Filing status \u2462 only (Married filing separate return): New York State household credit table 3\", the column \"the number of dependents listed on Form IT-201, item H, plus one\" (two on a joint return); NYC table 6's rows end at $22,500, so line 48 is $0 while line 40 refuses. The New York answers make ny_it201.gate.hh_state_mfs true, so ny_it201.line40 refuse with that gate; the refusal's form, remedy and citation are the refusing line's recorded refusal text.",
@@ -40659,7 +40659,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Refusal predicted from the source: The college tuition credit screen Yes with line 19 $300,000: line 68 refuses; Line 69 (IT-201-I p. 20): \"Income, for purposes of determining your New York City school tax credit, means your federal adjusted gross income from Form IT-201, line 19, minus distributions from an individual retirement account and an individual retirement annuity, from Form IT-201, line 9\"; \"You do not qualify for this credit if your income is more than $250,000\", so line 69 is $0. The New York answers make ny_it201.gate.college_tuition true, so ny_it201.line68 refuse with that gate; the refusal's form, remedy and citation are the refusing line's recorded refusal text.",
@@ -41917,7 +41917,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first). Federal amounts copied (from the federal encoding): status hoh, f1040.line1z 107,651.00, f1040.line11a 107,651.00, eic.limit 19,104.00. New York AGI $107,651 with 40 dependents (taxable income under $65,000): line 39, \"Is line 33 (your New York adjusted gross income) $107,650 or less? ... If No, see Tax computation\"; Tax computation worksheet 12 (IT-201-I web edition): \"Enter your New York State tax on the line 2 amount from the New York State tax rate schedule\", \"Enter the excess of line 1 over $107,650\", \"Divide line 6 by $50,000 and round the result to the fourth decimal place\", \"Multiply line 5 by line 7\" and \"Add lines 4 and 8\". Taxable income reached (line 38): $56,451; New York AGI (line 33): $107,651.",
@@ -42310,7 +42310,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). Federal amounts copied (from the federal encoding): status mfs, f1040.line1z 25,000.00, f1040.line6b 8,500.00, f1040.line11a 33,500.00, eic.limit 19,104.00. Married filing separately with taxable social security (subtracted on line 27), federal AGI over $32,000 and New York AGI under it: Line 40 and line 48 (IT-201-I pp. 12-14), the household credit tables: \"Filing status \u2460 only (Single): Use New York State household credit table 1\", \"Filing status \u2461, \u2463, and \u2464: Use New York State household credit table 2\", \"Filing status \u2462 only (Married filing separate return): New York State household credit table 3\", the column \"the number of dependents listed on Form IT-201, item H, plus one\" (two on a joint return); the tables read federal adjusted gross income (line 19), \"(see Note 1)\". Taxable income reached (line 38): $17,000; New York AGI (line 33): $25,000.",
@@ -42703,7 +42703,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Refusal predicted from the source: Married filing separately with taxable social security, federal AGI over $22,500 and New York AGI under it: Line 40 and line 48 (IT-201-I pp. 12-14), the household credit tables: \"Filing status \u2460 only (Single): Use New York State household credit table 1\", \"Filing status \u2461, \u2463, and \u2464: Use New York State household credit table 2\", \"Filing status \u2462 only (Married filing separate return): New York State household credit table 3\", the column \"the number of dependents listed on Form IT-201, item H, plus one\" (two on a joint return); NYC table 6's rows end at $22,500, so line 48 is $0, while line 40 refuses (table 3). The New York answers make ny_it201.gate.hh_state_mfs true, so ny_it201.line40 refuse with that gate; the refusal's form, remedy and citation are the refusing line's recorded refusal text.",
@@ -42920,7 +42920,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). Federal amounts copied (from the federal encoding): status mfs, f1040.line1z 15,000.00, f1040.line11a 15,000.00, eic.limit 19,104.00. Married filing separately, item C Yes, federal AGI $15,000: line 40, \"If you marked the Yes box at item C ... you do not qualify for this credit\", and line 48 likewise (IT-201-I pp. 12-13). Federal AGI is under the federal earned income credit's limit, so lines 65 and 70 refuse (decision B9) and lines 63 to 80 are not asserted otherwise; lines 1 to 62 do not read the credit and are the predictor's values with its earned income credit test set aside (f1040.line27a and eic.limit passed as 0, which no line before 63 reads). Taxable income reached (line 38): $7,000; New York AGI (line 33): $15,000.",
@@ -43421,7 +43421,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). Federal amounts copied (from the federal encoding): status hoh, f1040.line1z 15,000.00, f1040.line11a 15,000.00, eic.limit 19,104.00. Eight people, item C Yes, federal AGI $15,000: line 40, \"If you marked the Yes box at item C ... you do not qualify for this credit\", and line 48 likewise. A dependent on item H with federal AGI within $5,000 of the highest IT-270 threshold: line 70a refuses (decision B10), so lines 76 to 80 are not asserted. Federal AGI is under the federal earned income credit's limit, so lines 65 and 70 refuse (decision B9) and lines 63 to 80 are not asserted otherwise; lines 1 to 62 do not read the credit and are the predictor's values with its earned income credit test set aside (f1040.line27a and eic.limit passed as 0, which no line before 63 reads). Taxable income reached (line 38): $0; New York AGI (line 33): $15,000.",
@@ -43873,7 +43873,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). Federal amounts copied (from the federal encoding): status qss, f1040.line1z 15,000.00, f1040.line11a 15,000.00, f1040.line27a 4,328.00, eic.limit 50,434.00. Qualifying surviving spouse, federal AGI $15,000: Line 40 and line 48 (IT-201-I pp. 12-14), the household credit tables: \"Filing status \u2460 only (Single): Use New York State household credit table 1\", \"Filing status \u2461, \u2463, and \u2464: Use New York State household credit table 2\", \"Filing status \u2462 only (Married filing separate return): New York State household credit table 3\", the column \"the number of dependents listed on Form IT-201, item H, plus one\" (two on a joint return). A dependent on item H with federal AGI within $5,000 of the highest IT-270 threshold: line 70a refuses (decision B10), so lines 76 to 80 are not asserted. Federal AGI is under the federal earned income credit's limit, so lines 65 and 70 refuse (decision B9) and lines 63 to 80 are not asserted otherwise; lines 1 to 62 do not read the credit and are the predictor's values with its earned income credit test set aside (f1040.line27a and eic.limit passed as 0, which no line before 63 reads). Taxable income reached (line 38): $0; New York AGI (line 33): $15,000.",
@@ -44217,7 +44217,7 @@
     "ny_it2[w0].city_withheld": 500000,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 100000,
-    "ny_it201.line79": 50000000
+    "ny_it201.line79_amount": 50000000
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Refusal predicted from the source: An estimated installment paid late, with a refund and line 79 more than the overpayment: line 81 refuses (the estimated tax penalty, decision B6); line 77, \"If you have to pay an estimated tax penalty (see line 81 instructions), subtract the penalty from the overpayment\" (IT-201-I p. 22), carries that refusal, and so does line 78, line 77 less line 79. The New York answers make ny_it201.gate.estimated_penalty true, so ny_it201.line81 refuse with that gate; the refusal's form, remedy and citation are the refusing line's recorded refusal text.",
@@ -46212,7 +46212,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first). Federal amounts copied (from the federal encoding): status mfj, f1040.line1z 107,945.00, f1040.line11a 107,945.00, eic.limit 26,214.00. 64 qualifying-relative dependents (parents) bring taxable income to band 3 with New York AGI $107,945: Tax computation worksheet 1 (IT-201-I web edition): \"Enter your New York State tax on the line 2 amount from the New York State tax rate schedule\", \"Enter the excess of line 1 over $107,650\", \"Divide line 6 by $50,000 and round the result to the fourth decimal place\", \"Multiply line 5 by line 7\" and \"Add lines 4 and 8\"; the New York State tax rate schedule (IT-201-I web edition), \"$976 plus 5.25% of the excess over $23,600\" for taxable income over $23,600 but not over $27,900. Taxable income reached (line 38): $27,895; New York AGI (line 33): $107,945.",
@@ -46644,7 +46644,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). Federal amounts copied (from the federal encoding): status mfj, f1040.line1z 26,850.00, f1040.line11a 26,850.00, eic.limit 26,214.00. City schedule band 1 (target line 47 $10,800). Taxable income reached (line 38): $10,800; New York AGI (line 33): $26,850. Marked line asserted, predicted from the source before the New York encoding was evaluated (tools/ny_predict.py schedule(), which reads no New York encoding): ny_it201.city_tax_schedule (printed (47a)), the New York City tax rate schedule (IT-201-I web edition, Married filing jointly and qualifying surviving spouse) at line 47 $10,800: \"$0 $21,600 3.078% of line 47\", $0 + 3.078% x $10,800 rounded to the whole dollar = $332. Line 47a takes the City Tax Table here (line 47 below $65,000); the schedule line is asserted as a printed line. The amount is chosen so that the band rate's next unit (3.079%) rounds to a different dollar.",
@@ -47080,7 +47080,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). Federal amounts copied (from the federal encoding): status mfj, f1040.line1z 49,357.00, f1040.line11a 49,357.00, eic.limit 26,214.00. City schedule band 2 (target line 47 $33,307). Taxable income reached (line 38): $33,307; New York AGI (line 33): $49,357. Marked line asserted, predicted from the source before the New York encoding was evaluated (tools/ny_predict.py schedule(), which reads no New York encoding): ny_it201.city_tax_schedule (printed (47a)), the New York City tax rate schedule (IT-201-I web edition, Married filing jointly and qualifying surviving spouse) at line 47 $33,307: \"21,600 45,000 $665 plus 3.762% of the excess over $21,600\", $665 + 3.762% x $11,707 rounded to the whole dollar = $1,105. Line 47a takes the City Tax Table here (line 47 below $65,000); the schedule line is asserted as a printed line. The amount is chosen so that the band rate's next unit (3.763%) rounds to a different dollar.",
@@ -47516,7 +47516,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). Federal amounts copied (from the federal encoding): status mfj, f1040.line1z 26,853.00, f1040.line11a 26,853.00, eic.limit 26,214.00. City schedule band 1 (target line 47 $10,803). Taxable income reached (line 38): $10,803; New York AGI (line 33): $26,853. Marked line asserted, predicted from the source before the New York encoding was evaluated (tools/ny_predict.py schedule(), which reads no New York encoding): ny_it201.city_tax_schedule (printed (47a)), the New York City tax rate schedule (IT-201-I web edition, Married filing jointly and qualifying surviving spouse) at line 47 $10,803: \"$0 $21,600 3.078% of line 47\", $0 + 3.078% x $10,803 rounded to the whole dollar = $333. Line 47a takes the City Tax Table here (line 47 below $65,000); the schedule line is asserted as a printed line. The amount is chosen so that one dollar less of excess rounds to a different dollar.",
@@ -47952,7 +47952,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). Federal amounts copied (from the federal encoding): status mfj, f1040.line1z 49,360.00, f1040.line11a 49,360.00, eic.limit 26,214.00. City schedule band 2 (target line 47 $33,310). Taxable income reached (line 38): $33,310; New York AGI (line 33): $49,360. Marked line asserted, predicted from the source before the New York encoding was evaluated (tools/ny_predict.py schedule(), which reads no New York encoding): ny_it201.city_tax_schedule (printed (47a)), the New York City tax rate schedule (IT-201-I web edition, Married filing jointly and qualifying surviving spouse) at line 47 $33,310: \"21,600 45,000 $665 plus 3.762% of the excess over $21,600\", $665 + 3.762% x $11,710 rounded to the whole dollar = $1,106. Line 47a takes the City Tax Table here (line 47 below $65,000); the schedule line is asserted as a printed line. The amount is chosen so that one dollar less of excess rounds to a different dollar.",
@@ -48297,7 +48297,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Refusal predicted from the source: federal AGI 13,995.00 is under the federal earned income credit's limit 19,104.00 (or the credit is claimed), so lines 65 and 70 refuse (decision B9). City schedule band 1 (target line 47 $5,995). Marked line asserted, predicted from the source before the New York encoding was evaluated (tools/ny_predict.py schedule(), which reads no New York encoding): ny_it201.city_tax_schedule (printed (47a)), the New York City tax rate schedule (IT-201-I web edition, Single and married filing separately) at line 47 $5,995: \"$0 $12,000 3.078% of line 47\", $0 + 3.078% x $5,995 rounded to the whole dollar = $185. Line 47a takes the City Tax Table here (line 47 below $65,000); the schedule line is asserted as a printed line. The amount is chosen so that one dollar less of excess rounds to a different dollar.",
@@ -48540,7 +48540,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). Federal amounts copied (from the federal encoding): status single, f1040.line1z 26,500.00, f1040.line11a 26,500.00, eic.limit 19,104.00. City schedule band 2 (target line 47 $18,500). Taxable income reached (line 38): $18,500; New York AGI (line 33): $26,500. Marked line asserted, predicted from the source before the New York encoding was evaluated (tools/ny_predict.py schedule(), which reads no New York encoding): ny_it201.city_tax_schedule (printed (47a)), the New York City tax rate schedule (IT-201-I web edition, Single and married filing separately) at line 47 $18,500: \"12,000 25,000 $369 plus 3.762% of the excess over $12,000\", $369 + 3.762% x $6,500 rounded to the whole dollar = $614. Line 47a takes the City Tax Table here (line 47 below $65,000); the schedule line is asserted as a printed line. The amount is chosen so that one dollar less of excess rounds to a different dollar.",
@@ -48885,7 +48885,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). Federal amounts copied (from the federal encoding): status single, f1040.line1z 45,504.00, f1040.line11a 45,504.00, eic.limit 19,104.00. City schedule band 3 (target line 47 $37,504). Taxable income reached (line 38): $37,504; New York AGI (line 33): $45,504. Marked line asserted, predicted from the source before the New York encoding was evaluated (tools/ny_predict.py schedule(), which reads no New York encoding): ny_it201.city_tax_schedule (printed (47a)), the New York City tax rate schedule (IT-201-I web edition, Single and married filing separately) at line 47 $37,504: \"25,000 50,000 858 plus 3.819% of the excess over 25,000\", $858 + 3.819% x $12,504 rounded to the whole dollar = $1,336. Line 47a takes the City Tax Table here (line 47 below $65,000); the schedule line is asserted as a printed line. The amount is chosen so that one dollar less of excess rounds to a different dollar.",
@@ -49244,7 +49244,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). A dependent on item H with federal AGI within $5,000 of the highest IT-270 threshold: line 70a refuses (decision B10), so lines 76 to 80 are not asserted. City schedule band 1 (target line 47 $7,197). Marked line asserted, predicted from the source before the New York encoding was evaluated (tools/ny_predict.py schedule(), which reads no New York encoding): ny_it201.city_tax_schedule (printed (47a)), the New York City tax rate schedule (IT-201-I web edition, Head of household) at line 47 $7,197: \"$0 $14,400 3.078% of line 47\", $0 + 3.078% x $7,197 rounded to the whole dollar = $222. Line 47a takes the City Tax Table here (line 47 below $65,000); the schedule line is asserted as a printed line. The amount is chosen so that one dollar less of excess rounds to a different dollar.",
@@ -49584,7 +49584,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). A dependent on item H with federal AGI within $5,000 of the highest IT-270 threshold: line 70a refuses (decision B10), so lines 76 to 80 are not asserted. City schedule band 2 (target line 47 $22,202). Marked line asserted, predicted from the source before the New York encoding was evaluated (tools/ny_predict.py schedule(), which reads no New York encoding): ny_it201.city_tax_schedule (printed (47a)), the New York City tax rate schedule (IT-201-I web edition, Head of household) at line 47 $22,202: \"14,400 30,000 $443 plus 3.762% of the excess over $14,400\", $443 + 3.762% x $7,802 rounded to the whole dollar = $737. Line 47a takes the City Tax Table here (line 47 below $65,000); the schedule line is asserted as a printed line. The amount is chosen so that one dollar less of excess rounds to a different dollar.",
@@ -49924,7 +49924,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: table). A dependent on item H with federal AGI within $5,000 of the highest IT-270 threshold: line 70a refuses (decision B10), so lines 76 to 80 are not asserted. City schedule band 3 (target line 47 $44,991). Marked line asserted, predicted from the source before the New York encoding was evaluated (tools/ny_predict.py schedule(), which reads no New York encoding): ny_it201.city_tax_schedule (printed (47a)), the New York City tax rate schedule (IT-201-I web edition, Head of household) at line 47 $44,991: \"30,000 60,000 1,030 plus 3.819% of the excess over 30,000\", $1,030 + 3.819% x $14,991 rounded to the whole dollar = $1,603. Line 47a takes the City Tax Table here (line 47 below $65,000); the schedule line is asserted as a printed line. The amount is chosen so that one dollar less of excess rounds to a different dollar.",
@@ -50250,7 +50250,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: top). Income over $500,000: line 69a refuses (decision B7), so lines 76 to 80 are not asserted. State schedule band 9 (target line 38 $25,499,996). Marked line asserted, predicted from the source before the New York encoding was evaluated (tools/ny_predict.py schedule(), which reads no New York encoding): ny_it201.tax_schedule (printed (39)), the New York State tax rate schedule (IT-201-I web edition) at line 38 $25,499,996: \"25,000,000 ---- 2,509,929 plus 10.9% of the excess over 25,000,000\", so 2,509,929 + 10.9% x $499,996 rounded to the whole dollar = $2,564,429. Line 39 is worksheet 11's (New York AGI over $25,000,000); the schedule line is asserted as a printed line. The amount is chosen so that one dollar less of excess rounds to a different dollar.",
@@ -50667,7 +50667,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: top). Income over $500,000: line 69a refuses (decision B7), so lines 76 to 80 are not asserted. State schedule band 9 (target line 38 $25,499,996). Marked line asserted, predicted from the source before the New York encoding was evaluated (tools/ny_predict.py schedule(), which reads no New York encoding): ny_it201.tax_schedule (printed (39)), the New York State tax rate schedule (IT-201-I web edition) at line 38 $25,499,996: \"25,000,000 ---- 2,478,263 plus 10.9% of the excess over 25,000,000\", so 2,478,263 + 10.9% x $499,996 rounded to the whole dollar = $2,532,763. Line 39 is worksheet 6's (New York AGI over $25,000,000); the schedule line is asserted as a printed line. The amount is chosen so that one dollar less of excess rounds to a different dollar.",
@@ -51007,7 +51007,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: top). Income over $500,000: line 69a refuses (decision B7), so lines 76 to 80 are not asserted. State schedule band 9 (target line 38 $25,499,996). Marked line asserted, predicted from the source before the New York encoding was evaluated (tools/ny_predict.py schedule(), which reads no New York encoding): ny_it201.tax_schedule (printed (39)), the New York State tax rate schedule (IT-201-I web edition) at line 38 $25,499,996: \"25,000,000 ---- 2,494,163 plus 10.9% of the excess over 25,000,000\", so 2,494,163 + 10.9% x $499,996 rounded to the whole dollar = $2,548,663. Line 39 is worksheet 16's (New York AGI over $25,000,000); the schedule line is asserted as a printed line. The amount is chosen so that one dollar less of excess rounds to a different dollar.",
@@ -51333,7 +51333,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Predicted from the archived IT-201-I and tax tables by tools/ny_predict.py before the New York encoding was evaluated (method for line 39: first-stop). Federal amounts copied (from the federal encoding): status single, f1040.line1z 157,650.00, f1040.line11a 157,650.00, eic.limit 19,104.00. New York AGI $157,650, single. Taxable income reached (line 38): $149,650; New York AGI (line 33): $157,650. Marked line asserted, predicted by hand from the source before the New York encoding was evaluated: ny_it201.tcw.w1 (printed (39)), Tax computation worksheet 1 (IT-201-I web edition) applied to this return: \"1. Enter your New York adjusted gross income from line 33\" ($157,650); \"2. Enter your taxable income from line 38\" ($149,650); \"3. Multiply line 2 by 5.5% (0.055) ( Stop: If the line 1 amount is $157,650 or more , skip lines 4 through 8 and enter the line 3 amount on line 9)\": $149,650 x 0.055 = $8,230.75, $8,231. Line 39 is worksheet 7's (single); worksheet 1's line is asserted as a printed line.",
@@ -51665,7 +51665,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "evidence": "synthetic regression (not class B)",
    "evidence_note": "Refusal predicted from the source: married filing separately with federal AGI $9,000, within the household credit rows. The New York answers make ny_it201.gate.hh_state_mfs true, so ny_it201.line40 is a refusal carrying that gate; the refusal's form, remedy and citation are the line's recorded refusal text. Marked line asserted: ny_it201.hh_state_by_status (printed (40)), the State credit table for the filing status. Line 40 (IT-201-I p. 12): \"use the appropriate table (1, 2, or 3)\"; a married-filing-separately filer's table is table 3, which needs the spouse's federal AGI (p. 13, Note 4) and which this return refuses; the column's married-filing-separately value is $0 (line 40 refuses wherever table 3 allows a credit), not New York City household credit table 4's amount at federal AGI $9,000 ($15, table 4's first row), which is the City table for single filers.",
@@ -51989,7 +51989,7 @@
     "ny_it2[w0].city_withheld": 0,
     "ny_it2[w0].yonkers_withheld": 0,
     "ny_it201.line75": 0,
-    "ny_it201.line79": 0
+    "ny_it201.line79_amount": 0
    },
    "expect": {
     "ny_it201.line38": {

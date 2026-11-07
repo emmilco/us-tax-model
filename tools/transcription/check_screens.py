@@ -10,6 +10,10 @@ question, gated lines or citations changed is `stale` and is rerun with
 `unruled` until its findings are adjudicated and ruled in reviews/<year>/screens/rulings.json under
 "unruled:<screen>" with the `prompt_sha` of the review it rules (so a rerun needs a new ruling).
 
+The hash a screen is current against is its subject: the prompt without the gate condition shown for a screen whose
+input is gated (gates.py), recorded as `subject_sha` (an older record's `prompt_sha`, the same hash for an ungated
+screen). Gating a screen's input therefore does not make its review stale.
+
 A choose-guard gate (gates.py, keyed `gate:<condition>`) is reviewed by the same tool and recorded in the same file.
 Its review is current while its subject (gates.subject: the condition's wording and line, each gate line and gated
 input with their English and wording, citations included) equals the recorded `subject_sha`; the prompt's own text is
@@ -30,7 +34,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent))
-from screen_review import load_lines, screens, prompt_for, encoded_english, OUT  # noqa: E402
+from screen_review import load_lines, screens, screen_subject, encoded_english, OUT  # noqa: E402
 import gates  # noqa: E402
 from transcribe import ROOT, manifest  # noqa: E402
 from taxyear import Y  # noqa: E402
@@ -54,13 +58,12 @@ def findings():
         out.append({"kind": "pending", "line": screen, "form": lines[screen][0] if screen in lines else "?", "subject": "-",
                     "detail": f"reviewed but still listed as pending; remove it from {pending.name()}"})
     for screen, gated in screens(lines).items():
-        prompt, _ = prompt_for(screen, gated, lines, mani)
-        sha = hashlib.sha256(prompt.encode()).hexdigest()
+        sha = screen_subject(screen, gated, lines, mani)
         form = lines[screen][0]
         r = reviewed.get(screen)
         if not r and screen in waiting:
             print(f"  pending: {screen}: never reviewed (listed in {pending.name()})")
-        elif not r or r.get("prompt_sha") != sha:
+        elif not r or (r.get("subject_sha") or r.get("prompt_sha")) != sha:
             why = "never reviewed" if not r else "question, gated lines or their citations changed since the review"
             out.append({"kind": "stale", "line": screen, "form": form, "subject": sha,
                         "detail": f"{why}; rerun screen_review.py --screens {screen}"})
@@ -68,10 +71,10 @@ def findings():
             ruling = rulings.get(f"unruled:{screen}")
             # A ruling judges one review: it names the prompt hash of the review it ruled. A ruling of an earlier
             # review does not accept this one; the finding then has its own key, and the old ruling goes stale.
-            kind = "rerun" if isinstance(ruling, dict) and ruling.get("prompt_sha") not in (None, sha) else "unruled"
+            kind = "rerun" if isinstance(ruling, dict) and ruling.get("prompt_sha") not in (None, r.get("prompt_sha")) else "unruled"
             out.append({"kind": kind, "line": screen, "form": form, "subject": sha,
                         "detail": f"verdict {r.get('verdict')} with {len(r.get('findings') or [])} finding(s); "
-                                  f"adjudicate and rule with prompt_sha {sha[:12]}"})
+                                  f"adjudicate and rule with prompt_sha {str(r.get('prompt_sha'))[:12]}"})
     out.extend(gate_findings(lines, reviewed, rulings))
     return out
 

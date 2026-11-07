@@ -3597,7 +3597,7 @@
  },
  {
   "screen": "s8812.puerto_rico",
-  "question": "Were you a bona fide resident of Puerto Rico in 2025?",
+  "question": "Were you (or, on a joint return, your spouse) a bona fide resident of Puerto Rico in 2025?",
   "lines": [
    "s8812.line27",
    "s8812.clwb_11"
@@ -3606,24 +3606,25 @@
   "findings": [
    {
     "kind": "WIDE",
-    "situation": "A bona fide resident of Puerto Rico who stops at line 12, 16a or 16b has an additional child tax credit of zero, which the tool computes, yet the question makes them answer YES and the tool refuses.",
-    "irs_text": "f1040s8812 p. 1, line 12: \"No. Stop here. You cannot take the child tax credit, credit for other dependents, or additional child tax credit\"; p. 2, line 16b: \"If zero, stop here; you cannot claim the additional child tax credit\"; question: \"Were you a bona fide resident of Puerto Rico in 2025?\"",
-    "why": "The Puerto Rico branch matters only after line 20 when the filer has not stopped earlier. The question asks only about residency, so it refuses Puerto Rico residents whose line 27 is a zero the tool already computes correctly."
+    "situation": "A filer who was a bona fide resident of Puerto Rico in 2025, with earned-income amount (line 20) equal to or more than line 17, answers YES and is refused, though the result does not depend on Part II-B.",
+    "irs_text": "f1040s8812 p. 2: \"Yes. If line 20 is equal to or more than line 17, skip Part II-B and enter the amount from line 17 on line 27\"; \"Next, enter the smaller of line 17 or line 26 on line 27\" (line 26 is \"the larger of line 20 or line 25\")",
+    "why": "The question \"Were you ... a bona fide resident of Puerto Rico in 2025?\" draws YES from every Puerto Rico resident. When line 20 is at least line 17, line 26 is also at least line 17, so line 27 equals line 17 on either branch. The tool's non-Puerto Rico computation already gives that amount, so it would compute these filers correctly."
    },
    {
     "kind": "WIDE",
-    "situation": "A bona fide resident of Puerto Rico whose Credit Limit Worksheet B line 5 is equal to or more than line 1 gets -0- on line 11, which the tool computes, but must answer YES and is refused.",
-    "irs_text": "i1040s8812 p. 5, CLW B line 6: \"No. If you are a bona fide resident of Puerto Rico and line 5 above is less than line 1 above, go to line 7. Otherwise, leave lines 7 through 10 blank, enter -0- on line 11\"; question: \"Were you a bona fide resident of Puerto Rico in 2025?\"",
-    "why": "The IRS text sends a Puerto Rico resident to line 7 only when line 5 is less than line 1. Otherwise line 11 is zero, as the tool computes, but the residency-only question still triggers the refusal."
+    "situation": "A bona fide resident of Puerto Rico whose Credit Limit Worksheet B line 5 is equal to or more than line 1 answers YES and is refused, though line 11 is zero on every branch.",
+    "irs_text": "i1040s8812 p. 5, CLW B line 6: \"No. If you are a bona fide resident of Puerto Rico and line 5 above is less than line 1 above, go to line 7. Otherwise, leave lines 7 through 10 blank, enter -0- on line 11\"",
+    "why": "The Puerto Rico path through lines 7–10 applies only when line 5 is less than line 1. Otherwise line 11 is zero for a Puerto Rico resident too, which the tool already computes, but the question refuses the filer anyway."
    },
    {
-    "kind": "UNCLEAR",
-    "situation": "A filer who lived in Puerto Rico for only part of 2025, or who uses \"resident\" in its everyday sense, may not know whether they meet the statutory bona fide residence tests.",
-    "irs_text": "f1040s8812 p. 2: \"If you are a bona fide resident of Puerto Rico, go to line 21\"",
-    "why": "\"Bona fide resident\" is a technical status with presence, tax-home and closer-connection tests and year-of-move rules. The question gives no definition or pointer, so a part-year or recently moved filer could reasonably answer either way."
+    "kind": "WIDE",
+    "situation": "A bona fide resident of Puerto Rico who stops at line 12 or line 16a (line 16a is zero) answers YES and is refused, though line 27 is simply zero.",
+    "irs_text": "f1040s8812 p. 2, line 16a: \"Subtract line 14 from line 12. If zero, stop here; you cannot take the additional child tax credit\"",
+    "why": "Part II-B is never reached after these stops, so the tool's zero is correct. The residency question still refuses these filers."
    }
   ],
-  "prompt_sha": "221fe600ca058eb08ced490fee435167e15d53a11913c0829583757f0b77b4fe",
+  "prompt_sha": "e3cd2a7f646dd06124ee476f6c2637c2dd451f9b67369ba6d8eb45fc236a419d",
+  "subject_sha": "405ae657096b6835160a12b67ae8eea0ce1ef5552b5009a0fcd989ef9f31b172",
   "used": [
    {
     "doc": "f1040s8812",
@@ -3657,7 +3658,7 @@
     "cols_sha256": "e6ba91f54df679c9c19c23169c369f14bff012ba2fe110c3973bde59676c1d45"
    }
   ],
-  "cost": 0.088128,
+  "cost": 0.057468000000000005,
   "model": "claude-opus-5-5"
  },
  {

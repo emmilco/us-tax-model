@@ -2821,13 +2821,13 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (question) Does any other New York addition or subtraction on Form IT-225 apply to you, for example modifications passed through from a partnership, S corporation, estate or trust, the disability income exclusion (S-124), combat pay (S-118), a net operating loss (A-215) or an accumulation distribution reported on federal Form 4970?
       = UNKNOWN (no input supplied for ny_it201.ask.it225)
       cite: [ny_it201i] p. 8, Line 23, "Use this line to report other additions that are not specifically listed on Form IT-201." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-  (question) Did you receive a pension or other distribution from a New York State or local government or federal government pension plan that was included in federal adjusted gross income?
+  (question) Did you or your spouse receive a pension or other distribution included in federal adjusted gross income from a New York State or local government pension plan or a federal government pension plan, including a return of your own contributions before retirement? Count the military, a U.S. territory or the District of Columbia, the MTA Police 20-Year Retirement Program, MABSTOA, the Long Island Rail Road, and the Optional Retirement Program of SUNY, CUNY or the State Education Department (for example an annuity paid by TIAA), whether received as an employee, as a beneficiary, or as a former spouse under a domestic relations order.
       = UNKNOWN (no input supplied for ny_it201.ask.gov_pension)
       cite: [ny_it201i] p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   (question) Did you include interest from U.S. government bonds or other U.S. government obligations (for example Treasury bills, notes or bonds, or U.S. savings bonds), or dividends from a fund investing in them, in federal income?
       = UNKNOWN (no input supplied for ny_it201.ask.us_obligation_interest)
       cite: [ny_it201i] p. 9, Line 28, "Did you include interest income from U.S. government bonds or other U.S. government obligations on lines 2, 6, or 11?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-  (question) Did you have pension or annuity income, or IRA distributions (periodic or lump-sum), other than from a New York State or local or federal government plan, and were you 59 1/2 or older in 2025 (or receive it as a beneficiary)?
+  (question) Did you or your spouse have pension or annuity income or IRA distributions (periodic or lump-sum) included in federal adjusted gross income other than a government pension subtracted on line 26 (periodic distributions from a government section 457 deferred compensation plan count here), and was the person who received it 59 1/2 or older in 2025 (or did they receive it as a beneficiary)?
       = UNKNOWN (no input supplied for ny_it201.ask.pension_exclusion)
       cite: [ny_it201i] p. 9, Line 29, "Did you enter an amount of pension income or annuity income, or both (generally reported on line 9 or 10) that was not from a New York State or local government pension plan or federal government pension plan?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   (question) During 2025, did you, as an account owner, contribute to or withdraw from a New York 529 college savings account, or, as a beneficiary, receive a withdrawal included in federal adjusted gross income?
@@ -3055,26 +3055,38 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = UNKNOWN (no input supplied for ny_it201.ask.inflation_check)
       cite: [ny_it201] p. 2, New York subtractions, "Taxable refunds, credits, or offsets of state and local income taxes (from line 4)" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; cfe63039)
       note: Interpretation amb.ny.2025.line25: Refuse when line 4 is more than zero or an inflation refund check was included in federal AGI; line 25 is zero otherwise, where both readings agree. Owner decision B1 (docs/ny/DECISIONS.md). A refusal cannot give a wrong answer; revisit with the 2026 instructions. (ny_it201i, p. 8, Line 25, "If you received an inflation refund check from the Tax Department and included the check amount in the calculation of federal adjusted gross income reported on line 19, then enter that amount on line 25.")
+  (helper) No
+      = false
+      cite: [ny_it201i] p. 9, Line 26, "If No, go to line 27." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
+  (gate) Is there taxable IRA, pension or annuity income on line 9 or 10?
+      = false
+      cite: [ny_it201i] p. 9, Line 29, "Did you enter an amount of pension income or annuity income, or both (generally reported on line 9 or 10)"; p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   (gate) A New York or federal government pension
-      = UNKNOWN (no input supplied for ny_it201.ask.gov_pension)
+      = false
       cite: [ny_it201i] p. 9, Line 26, "If Yes, enter the amount of any pension you received" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
+      note: taken: {"eq":["ny_it201.has_pension_income",{"const":false}],"op":"test"}
   26  Pensions of NYS and local governments and the federal government
-      = UNKNOWN (no input supplied for ny_it201.ask.gov_pension)
+      = $0
       cite: [ny_it201] p. 2, New York subtractions, "Pensions of NYS and local governments and the federal government" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; cfe63039)
   27  Taxable amount of Social Security benefits (from line 15)
       = $0
       cite: [ny_it201] p. 2, New York subtractions, "Taxable amount of Social Security benefits (from line 15)" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; cfe63039)
+  (gate) Is there an amount on line 2, 3, 6 or 11 (interest, dividends, business income, or partnership and similar income)?
+      = true
+      cite: [ny_it201i] p. 9, Line 28, "Did you include interest income from U.S. government bonds or other U.S. government obligations on lines 2, 6, or 11?" and "Dividends you received from a regulated investment company (mutual fund) that invests in obligations of the U.S. government and meet the 50% asset requirement each quarter qualify for this subtraction." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   (gate) Interest on U.S. government obligations
       = UNKNOWN (no input supplied for ny_it201.ask.us_obligation_interest)
       cite: [ny_it201i] p. 9, Line 28, "If Yes, enter the amount of interest income you earned from bonds or other obligations of the U.S. government." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
+      note: taken: {"eq":["ny_it201.has_line28_income",{"const":true}],"op":"test"}
   28  Interest income on U.S. government bonds
       = UNKNOWN (no input supplied for ny_it201.ask.us_obligation_interest)
       cite: [ny_it201] p. 2, New York subtractions, "Interest income on U.S. government bonds" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; cfe63039)
   (gate) Pension and annuity income exclusion may apply
-      = UNKNOWN (no input supplied for ny_it201.ask.pension_exclusion)
+      = false
       cite: [ny_it201i] p. 9, Line 29, "If Yes, and you were 59½ before January 1, 2025, enter the qualifying pension and annuity income included in your 2025 federal adjusted gross income, but not more than $20,000." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
+      note: taken: {"eq":["ny_it201.has_pension_income",{"const":false}],"op":"test"}
   29  Pension and annuity income exclusion
-      = UNKNOWN (no input supplied for ny_it201.ask.pension_exclusion)
+      = $0
       cite: [ny_it201] p. 2, New York subtractions, "Pension and annuity income exclusion" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; cfe63039)
   (gate) New York 529 contributions or withdrawals
       = UNKNOWN (no input supplied for ny_it201.ask.529_owner)
@@ -3396,23 +3408,33 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   54  Subtract line 53 from line 52 (if line 53 is more than line 52, enter 0)
       = UNKNOWN (no input supplied for ny_it201.ask.state_resident)
       cite: [ny_it201] p. 3, New York City and Yonkers taxes, credits, and surcharges, and MCTMT, "Subtract line 53 from line 52" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; cfe63039)
+  (helper) Number of persons with more than one Schedule C, or with Schedule C net profit over $50,000
+      = 0
+      cite: [ny_it201i] p. 15, Lines 54a through 54e, "The $50,000 threshold is calculated on an individual basis, even if you file a joint income tax return." and "You must calculate your MCTMT net earnings base separately for each source of self-employment income that has business activity in one or both zones."; p. 16, "Net earnings from self-employment generally is the amount reported on federal Schedule SE (Form 1040), Part 1, line 6, derived from the source of self-employment income." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
+      note: confirmed roster $person: taxpayer
+  (gate) Can you or your spouse have net earnings from self-employment over $50,000 in a zone?
+      = false
+      cite: [ny_it201i] p. 15, Lines 54a through 54e, "If an individual’s net earnings from self-employment allocated to either zone exceed $50,000 for the tax year, then you are subject to the MCTMT." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   (gate) Self-employment earnings over $50,000 in an MCTD zone
-      = UNKNOWN (no input supplied for ny_it201.ask.mctmt)
+      = false
       cite: [ny_it201i] p. 15, Lines 54a through 54e, "If Yes, you are subject to MCTMT. Go to lines 54a and 54b, as applicable." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
+      note: taken: {"eq":["ny_it201.mctmt_possible",{"const":false}],"op":"test"}
   54a MCTMT net earnings base for Zone 1
-      = UNKNOWN (no input supplied for ny_it201.ask.mctmt)
+      = $0
       cite: [ny_it201] p. 3, New York City and Yonkers taxes, credits, and surcharges, and MCTMT, "MCTMT net earnings" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; cfe63039)
   54b MCTMT net earnings base for Zone 2
-      = UNKNOWN (no input supplied for ny_it201.ask.mctmt)
+      = $0
       cite: [ny_it201] p. 3, New York City and Yonkers taxes, credits, and surcharges, and MCTMT, "MCTMT net earnings" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; cfe63039)
   54c MCTMT for Zone 1
-      = UNKNOWN (no input supplied for ny_it201.ask.mctmt)
+      = $0
       cite: [ny_it201i] p. 17, Line 54c: MCTMT for Zone 1, "Multiply the amount on line 54a by 0.60% (0.0060)." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
+      note: exact product rounded once, half-up to a multiple of 100 cents
   54d MCTMT for Zone 2
-      = UNKNOWN (no input supplied for ny_it201.ask.mctmt)
+      = $0
       cite: [ny_it201i] p. 17, Line 54d: MCTMT for Zone 2, "Multiply the amount on line 54b by 0.34% (0.0034)." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
+      note: exact product rounded once, half-up to a multiple of 100 cents
   54e Total MCTMT (add lines 54c and 54d)
-      = UNKNOWN (no input supplied for ny_it201.ask.mctmt)
+      = $0
       cite: [ny_it201] p. 3, New York City and Yonkers taxes, credits, and surcharges, and MCTMT, "Total MCTMT (add lines 54c and 54d)" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; cfe63039)
   55  Yonkers resident income tax surcharge
       = $0
@@ -3496,11 +3518,15 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   63  Empire State child credit
       = $0
       cite: [ny_it201] p. 4, Payments and refundable credits, "Empire State child credit" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; cfe63039)
+  (gate) Did you (or your spouse) have care expenses for a qualifying person so you (and your spouse) could work or look for work, or receive dependent care benefits (federal Form 2441)?
+      = false
+      cite: [ny_it216i] p. 1, Who qualifies, "If you qualify to claim the federal child and dependent care credit, you can claim the New York State credit (whether you actually claim the federal credit or not)." and "The care was provided so you (and your spouse, if you were married) could work or look for work." and "Caution: Taxpayers who receive dependent care benefits from their employer must complete Worksheet 1 – Dependent care benefits." (2025; e9ff8282)
   (gate) The child and dependent care credit may apply
-      = UNKNOWN (no input supplied for ny_it201.ask.dependent_care)
+      = false
       cite: [ny_it201i] p. 19, Line 64, "If Yes, complete Form IT-216, Claim for Child and Dependent Care Credit, to determine your New York State child and dependent care credit." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
+      note: taken: {"eq":["ny_it201.federal_care",{"const":false}],"op":"test"}
   64  NYS/NYC child and dependent care credit
-      = UNKNOWN (no input supplied for ny_it201.ask.dependent_care)
+      = $0
       cite: [ny_it201] p. 4, Payments and refundable credits, "NYS/NYC child and dependent care credit" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; cfe63039)
   (gate) The federal earned income credit was claimed, or federal AGI is below its income limit
       = false
@@ -3605,7 +3631,7 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = UNKNOWN (no input supplied for ny_it201.line75)
       cite: [ny_it201i] p. 22, Line 75: Total estimated tax payments and amount paid with Form IT-370, "your 2025 estimated tax payments for New York State, New York City, Yonkers, and metropolitan commuter transportation mobility tax" (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   76  Total payments (add lines 63 through 75)
-      = UNKNOWN (no input supplied for ny_it201.ask.dependent_care)
+      = UNKNOWN (no input supplied for ny_it201.ask.noncustodial)
       cite: [ny_it201] p. 4, Payments and refundable credits, "Total payments (add lines 63 through 75)" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; cfe63039)
   (80) If line 76 is less than line 62, subtract line 76 from line 62
       = UNKNOWN (no input supplied for ny_it201.ask.state_resident)
@@ -3636,28 +3662,39 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       = UNKNOWN (no input supplied for ny_it201.ask.late_penalty)
       cite: [ny_it201] p. 4, Your refund, amount you owe, and account information, "Other penalties and interest" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; cfe63039)
   (77) If line 76 is more than line 62, subtract line 62 from line 76
-      = UNKNOWN (no input supplied for ny_it201.ask.dependent_care)
+      = UNKNOWN (no input supplied for ny_it201.ask.noncustodial)
       cite: [ny_it201] p. 4, Your refund, amount you owe, and account information, "Amount overpaid (if line 76 is more than line 62, subtract line 62 from line 76)" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; cfe63039)
   77  Amount overpaid
-      = UNKNOWN (no input supplied for ny_it201.ask.dependent_care)
+      = UNKNOWN (no input supplied for ny_it201.ask.noncustodial)
       cite: [ny_it201i] p. 22, Line 77: Amount overpaid, "If you have to pay an estimated tax penalty (see line 81 instructions), subtract the penalty from the overpayment and enter the net overpayment on line 77." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-  79  Amount of line 77 that you want applied to your 2026 estimated tax
-      = UNKNOWN (no input supplied for ny_it201.line79)
+  (gate) Is there an overpayment on line 77?
+      = UNKNOWN (no input supplied for ny_it201.ask.noncustodial)
       cite: [ny_it201i] p. 23, Line 79: Estimated tax, "Enter the amount of overpayment from line 77 that you want applied to your New York State, New York City, Yonkers, and metropolitan commuter transportation mobility tax estimated tax for 2026." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
+  (question) Amount of line 77 that you want applied to your 2026 estimated tax
+      = UNKNOWN (no input supplied for ny_it201.line79_amount)
+      cite: [ny_it201i] p. 23, Line 79: Estimated tax, "Enter the amount of overpayment from line 77 that you want applied to your New York State, New York City, Yonkers, and metropolitan commuter transportation mobility tax estimated tax for 2026." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
+  79  Amount of line 77 that you want applied to your 2026 estimated tax
+      = UNKNOWN (no input supplied for ny_it201.ask.noncustodial)
+      cite: [ny_it201i] p. 23, Line 79: Estimated tax, "Enter the amount of overpayment from line 77 that you want applied to your New York State, New York City, Yonkers, and metropolitan commuter transportation mobility tax estimated tax for 2026." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
+      note: guard incomplete; possible: #0 unknown, #1 money
   (gate) Line 79 is more than line 77
-      = UNKNOWN (no input supplied for ny_it201.line79)
+      = UNKNOWN (no input supplied for ny_it201.ask.noncustodial)
       cite: [ny_it201i] p. 23, Line 79: Estimated tax, "The total of lines 78a through 79 should equal the amount on line 77." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
   78  Amount of line 77 available for refund (subtract line 79 from line 77)
-      = UNKNOWN (no input supplied for ny_it201.line79)
+      = UNKNOWN (no input supplied for ny_it201.ask.noncustodial)
       cite: [ny_it201i] p. 23, Line 78: Amount of line 77 available for refund, "Subtract the amount on line 79 (estimated tax) from line 77." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
-  (gate) A refund deposit into a New York 529 account
-      = UNKNOWN (no input supplied for ny_it201.ask.refund_529)
+  (gate) Is there an amount available for refund on line 78?
+      = UNKNOWN (no input supplied for ny_it201.ask.noncustodial)
       cite: [ny_it201i] p. 23, Line 78a: NYS 529 account deposit, "You may directly deposit all or a portion of your refund in up to three NYS 529 college savings accounts." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
+  (gate) A refund deposit into a New York 529 account
+      = UNKNOWN (no input supplied for ny_it201.ask.noncustodial)
+      cite: [ny_it201i] p. 23, Line 78a: NYS 529 account deposit, "You may directly deposit all or a portion of your refund in up to three NYS 529 college savings accounts." (Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20; 29489d6e)
+      note: guard incomplete; possible: #0 unknown, #1 bool
   78a Amount of line 78 that you want to deposit into a NYS 529 account (Form IT-195, line 4)
-      = UNKNOWN (no input supplied for ny_it201.ask.refund_529)
+      = UNKNOWN (no input supplied for ny_it201.ask.noncustodial)
       cite: [ny_it201] p. 4, Your refund, amount you owe, and account information, "Amount of line 78 that you want to deposit into a NYS 529 account" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; cfe63039)
   78b Total refund after NYS 529 account deposit (subtract line 78a from line 78)
-      = UNKNOWN (no input supplied for ny_it201.line79)
+      = UNKNOWN (no input supplied for ny_it201.ask.noncustodial)
       cite: [ny_it201] p. 4, Your refund, amount you owe, and account information, "Total refund after NYS 529 account deposit (subtract line 78a from line 78)" (Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12; cfe63039)
   80  Amount you owe
       = UNKNOWN (no input supplied for ny_it201.ask.state_resident)
@@ -7657,6 +7694,11 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
       not taken: guard 0 = false
   person[taxpayer].ira_8606_line2: chose $0 (guard 1)
       not taken: guard 0 = false
+  ny_it201.gate.line26: chose false (guard 1)
+      not taken: guard 0 = false
+  ny_it201.gate.line28: chose UNKNOWN (no input supplied for ny_it201.ask.us_obligation_interest) (guard 0)
+  ny_it201.gate.line29: chose false (guard 1)
+      not taken: guard 0 = false
   root|inst:ny_rs#{"amount":"ny_it201.line38","status":"f1040.status"}.single.result: chose UNKNOWN (no input supplied for ny_it201.ask.state_resident)
   root|inst:ny_rs#{"amount":"ny_it201.line38","status":"f1040.status"}.tax: chose UNKNOWN (no input supplied for ny_it201.ask.state_resident) (guard 0)
   ny_it201.tax_low: chose UNKNOWN (no input supplied for ny_it201.ask.state_resident)
@@ -7697,10 +7739,16 @@ Path choices (guard wording per the rendered worksheets in rendered/2025/):
   root|inst:ny_city_rs#{"amount":"ny_it201.line47","status":"f1040.status"}.tax: chose UNKNOWN (no input supplied for ny_it201.ask.state_resident) (guard 0)
   ny_it201.line47a: chose UNKNOWN (no input supplied for ny_it201.ask.state_resident)
   ny_it201.line48: chose UNKNOWN (no input supplied for ny_it201.ask.item_c)
+  ny_it201.gate.mctmt: chose false (guard 1)
+      not taken: guard 0 = false
   ny_it201.sut.chart: chose UNKNOWN (no input supplied for ny_it201.ask.state_resident)
+  ny_it201.gate.dependent_care: chose false (guard 1)
+      not taken: guard 0 = false
   ny_it201.line69: chose UNKNOWN (no input supplied for ny_it201.ask.item_c)
   ny_it201.stc_rr: chose UNKNOWN (no input supplied for ny_it201.ask.state_resident)
   ny_it201.safe_harbor: chose UNKNOWN (no input supplied for ny_it201.ask.prior_agi_high)
+  ny_it201.line79: chose UNKNOWN (no input supplied for ny_it201.ask.noncustodial)
+  ny_it201.gate.refund_529: chose UNKNOWN (no input supplied for ny_it201.ask.noncustodial)
   refund.line5: chose UNKNOWN (no input supplied for refund.status)
   refund.per_box: chose UNKNOWN (no input supplied for refund.status)
   refund.amt_you_born: chose UNKNOWN (no input supplied for refund.you_born)
@@ -9033,17 +9081,20 @@ Derivations:
   ny_it201.line24: sum(ny_it201.line19 = UNKNOWN (no input supplied for ny_it201.ask.state_resident); ny_it201.line20 = UNKNOWN (no input supplied for ny_it201.ask.out_of_state_bond_interest); ny_it201.line21 = UNKNOWN (no input supplied for ny_it201.ask.414h); ny_it201.line22 = UNKNOWN (no input supplied for ny_it201.ask.529_nonqualified); ny_it201.line23 = UNKNOWN (no input supplied for ny_it201.ask.it225))
   ny_it201.gate.line25: test(ny_it201.line4 = $0; 0 = $0; ny_it201.ask.inflation_check = UNKNOWN (no input supplied for ny_it201.ask.inflation_check); true = true)
   ny_it201.line25: gate(ny_it201.gate.line25 = UNKNOWN (no input supplied for ny_it201.ask.inflation_check))
-  ny_it201.gate.line26: test(ny_it201.ask.gov_pension = UNKNOWN (no input supplied for ny_it201.ask.gov_pension); true = true)
-  ny_it201.line26: gate(ny_it201.gate.line26 = UNKNOWN (no input supplied for ny_it201.ask.gov_pension))
+  ny_it201.no: param(#ny.false = false)
+  ny_it201.has_pension_income: test(ny_it201.line9 = $0; 0 = $0; ny_it201.line10 = $0; 0 = $0)
+  ny_it201.gate.line26: choose(ny_it201.has_pension_income = false; true = true; ny_it201.has_pension_income = false; false = false; ny_it201.no = false)
+  ny_it201.line26: param(ny_it201.gate.line26 = false; #ny.zero = $0)
   ny_it201.line27: copy(ny_it201.line15 = $0)
-  ny_it201.gate.line28: test(ny_it201.ask.us_obligation_interest = UNKNOWN (no input supplied for ny_it201.ask.us_obligation_interest); true = true)
+  ny_it201.has_line28_income: test(ny_it201.line2 = $1,000; 0 = $0)
+  ny_it201.gate.line28: choose(ny_it201.has_line28_income = true; true = true; ny_it201.ask.us_obligation_interest = UNKNOWN (no input supplied for ny_it201.ask.us_obligation_interest))
   ny_it201.line28: gate(ny_it201.gate.line28 = UNKNOWN (no input supplied for ny_it201.ask.us_obligation_interest))
-  ny_it201.gate.line29: test(ny_it201.ask.pension_exclusion = UNKNOWN (no input supplied for ny_it201.ask.pension_exclusion); true = true)
-  ny_it201.line29: gate(ny_it201.gate.line29 = UNKNOWN (no input supplied for ny_it201.ask.pension_exclusion))
+  ny_it201.gate.line29: choose(ny_it201.has_pension_income = false; true = true; ny_it201.has_pension_income = false; false = false; ny_it201.no = false)
+  ny_it201.line29: param(ny_it201.gate.line29 = false; #ny.zero = $0)
   ny_it201.gate.line30: test(ny_it201.ask.529_owner = UNKNOWN (no input supplied for ny_it201.ask.529_owner); true = true)
   ny_it201.line30: gate(ny_it201.gate.line30 = UNKNOWN (no input supplied for ny_it201.ask.529_owner))
   ny_it201.line31: gate(ny_it201.gate.it225 = UNKNOWN (no input supplied for ny_it201.ask.it225))
-  ny_it201.line32: sum(ny_it201.line25 = UNKNOWN (no input supplied for ny_it201.ask.inflation_check); ny_it201.line26 = UNKNOWN (no input supplied for ny_it201.ask.gov_pension); ny_it201.line27 = $0; ny_it201.line28 = UNKNOWN (no input supplied for ny_it201.ask.us_obligation_interest); ny_it201.line29 = UNKNOWN (no input supplied for ny_it201.ask.pension_exclusion); ny_it201.line30 = UNKNOWN (no input supplied for ny_it201.ask.529_owner); ny_it201.line31 = UNKNOWN (no input supplied for ny_it201.ask.it225))
+  ny_it201.line32: sum(ny_it201.line25 = UNKNOWN (no input supplied for ny_it201.ask.inflation_check); ny_it201.line26 = $0; ny_it201.line27 = $0; ny_it201.line28 = UNKNOWN (no input supplied for ny_it201.ask.us_obligation_interest); ny_it201.line29 = $0; ny_it201.line30 = UNKNOWN (no input supplied for ny_it201.ask.529_owner); ny_it201.line31 = UNKNOWN (no input supplied for ny_it201.ask.it225))
   ny_it201.line33: subtract(ny_it201.line24 = UNKNOWN (no input supplied for ny_it201.ask.state_resident); ny_it201.line32 = UNKNOWN (no input supplied for ny_it201.ask.inflation_check))
   ny_it201.gate.itemize: test(ny_it201.ask.itemize = UNKNOWN (no input supplied for ny_it201.ask.itemize); true = true)
   ny_it201.dependent_single: test(f1040.status = single; "single" = single; ny_it201.item_c = UNKNOWN (no input supplied for ny_it201.ask.item_c); true = true)
@@ -9309,16 +9360,18 @@ Derivations:
   ny_it201.gate.city_credits: test(ny_it201.ask.city_credits = UNKNOWN (no input supplied for ny_it201.ask.city_credits); true = true)
   ny_it201.line53: gate(ny_it201.gate.city_credits = UNKNOWN (no input supplied for ny_it201.ask.city_credits))
   ny_it201.line54: subtract_floor0(ny_it201.line52 = UNKNOWN (no input supplied for ny_it201.ask.state_resident); ny_it201.line53 = UNKNOWN (no input supplied for ny_it201.ask.city_credits))
-  ny_it201.gate.mctmt: test(ny_it201.ask.mctmt = UNKNOWN (no input supplied for ny_it201.ask.mctmt); true = true)
-  ny_it201.line54a: gate(ny_it201.gate.mctmt = UNKNOWN (no input supplied for ny_it201.ask.mctmt))
-  ny_it201.line54b: gate(ny_it201.gate.mctmt = UNKNOWN (no input supplied for ny_it201.ask.mctmt))
-  ny_it201.line54c: multiply_rate(ny_it201.line54a = UNKNOWN (no input supplied for ny_it201.ask.mctmt); #ny.mctmt.zone1 = 60/10000)
-  ny_it201.line54d: multiply_rate(ny_it201.line54b = UNKNOWN (no input supplied for ny_it201.ask.mctmt); #ny.mctmt.zone2 = 34/10000)
-  ny_it201.line54e: sum(ny_it201.line54c = UNKNOWN (no input supplied for ny_it201.ask.mctmt); ny_it201.line54d = UNKNOWN (no input supplied for ny_it201.ask.mctmt))
+  ny_it201.mctmt_people: sum_over(person[taxpayer].sc_count = 0; 1 = 1; person[taxpayer].sc_total = $0; #ny.mctmt.threshold = $50,000)
+  ny_it201.mctmt_possible: test(ny_it201.mctmt_people = 0; 0 = 0)
+  ny_it201.gate.mctmt: choose(ny_it201.mctmt_possible = false; true = true; ny_it201.mctmt_possible = false; false = false; ny_it201.no = false)
+  ny_it201.line54a: param(ny_it201.gate.mctmt = false; #ny.zero = $0)
+  ny_it201.line54b: param(ny_it201.gate.mctmt = false; #ny.zero = $0)
+  ny_it201.line54c: multiply_rate(ny_it201.line54a = $0; #ny.mctmt.zone1 = 60/10000)
+  ny_it201.line54d: multiply_rate(ny_it201.line54b = $0; #ny.mctmt.zone2 = 34/10000)
+  ny_it201.line54e: sum(ny_it201.line54c = $0; ny_it201.line54d = $0)
   ny_it201.line55: param(#ny.zero = $0)
   ny_it201.line56: param(#ny.zero = $0)
   ny_it201.line57: param(#ny.zero = $0)
-  ny_it201.line58: sum(ny_it201.line54 = UNKNOWN (no input supplied for ny_it201.ask.state_resident); ny_it201.line54e = UNKNOWN (no input supplied for ny_it201.ask.mctmt); ny_it201.line55 = $0; ny_it201.line56 = $0; ny_it201.line57 = $0)
+  ny_it201.line58: sum(ny_it201.line54 = UNKNOWN (no input supplied for ny_it201.ask.state_resident); ny_it201.line54e = $0; ny_it201.line55 = $0; ny_it201.line56 = $0; ny_it201.line57 = $0)
   ny_it201.sut.b1: param(#ny.sut.b1.amount = $3)
   ny_it201.sut.b2: param(#ny.sut.b2.amount = $6)
   ny_it201.sut.b3: param(#ny.sut.b3.amount = $10)
@@ -9340,8 +9393,9 @@ Derivations:
   ny_it201.line62: copy(ny_it201.line61 = UNKNOWN (no input supplied for ny_it201.ask.state_resident))
   ny_it201.gate.child_credit: test(ny_it201.under17_count = 0; 0 = 0)
   ny_it201.line63: param(ny_it201.gate.child_credit = false; #ny.zero = $0)
-  ny_it201.gate.dependent_care: test(ny_it201.ask.dependent_care = UNKNOWN (no input supplied for ny_it201.ask.dependent_care); true = true)
-  ny_it201.line64: gate(ny_it201.gate.dependent_care = UNKNOWN (no input supplied for ny_it201.ask.dependent_care))
+  ny_it201.federal_care: test(f2441.care = false; true = true; f2441.benefits = false; true = true)
+  ny_it201.gate.dependent_care: choose(ny_it201.federal_care = false; true = true; ny_it201.federal_care = false; false = false; ny_it201.no = false)
+  ny_it201.line64: param(ny_it201.gate.dependent_care = false; #ny.zero = $0)
   ny_it201.gate.eic: test(f1040.line27a = $0; 0 = $0; f1040.line11a = $102,500; eic.limit = $19,104)
   ny_it201.line65: param(ny_it201.gate.eic = false; #ny.zero = $0)
   ny_it201.gate.noncustodial: test(ny_it201.ask.noncustodial = UNKNOWN (no input supplied for ny_it201.ask.noncustodial); true = true)
@@ -9372,8 +9426,8 @@ Derivations:
   ny_it201.line72: gate(ny_it201.gate.other_withholding = UNKNOWN (no input supplied for ny_it201.ask.other_withholding))
   ny_it201.line73: gate(ny_it201.gate.other_withholding = UNKNOWN (no input supplied for ny_it201.ask.other_withholding))
   ny_it201.line74: param(#ny.zero = $0)
-  ny_it201.line76: sum(ny_it201.line63 = $0; ny_it201.line64 = UNKNOWN (no input supplied for ny_it201.ask.dependent_care); ny_it201.line65 = $0; ny_it201.line66 = UNKNOWN (no input supplied for ny_it201.ask.noncustodial); ny_it201.line67 = UNKNOWN (no input supplied for ny_it201.ask.real_property_credit); ny_it201.line68 = UNKNOWN (no input supplied for ny_it201.ask.college_tuition); ny_it201.line69 = UNKNOWN (no input supplied for ny_it201.ask.item_c); ny_it201.line69a = UNKNOWN (no input supplied for ny_it201.ask.item_c); ny_it201.line70 = $0; ny_it201.line70a = $0; ny_it201.line71 = UNKNOWN (no input supplied for ny_it201.ask.other_credits); ny_it201.line72 = UNKNOWN (no input supplied for ny_it201.ask.other_withholding); ny_it201.line73 = UNKNOWN (no input supplied for ny_it201.ask.other_withholding); ny_it201.line74 = $0; ny_it201.line75 = UNKNOWN (no input supplied for ny_it201.line75))
-  ny_it201.tax_due: subtract_floor0(ny_it201.line62 = UNKNOWN (no input supplied for ny_it201.ask.state_resident); ny_it201.line76 = UNKNOWN (no input supplied for ny_it201.ask.dependent_care))
+  ny_it201.line76: sum(ny_it201.line63 = $0; ny_it201.line64 = $0; ny_it201.line65 = $0; ny_it201.line66 = UNKNOWN (no input supplied for ny_it201.ask.noncustodial); ny_it201.line67 = UNKNOWN (no input supplied for ny_it201.ask.real_property_credit); ny_it201.line68 = UNKNOWN (no input supplied for ny_it201.ask.college_tuition); ny_it201.line69 = UNKNOWN (no input supplied for ny_it201.ask.item_c); ny_it201.line69a = UNKNOWN (no input supplied for ny_it201.ask.item_c); ny_it201.line70 = $0; ny_it201.line70a = $0; ny_it201.line71 = UNKNOWN (no input supplied for ny_it201.ask.other_credits); ny_it201.line72 = UNKNOWN (no input supplied for ny_it201.ask.other_withholding); ny_it201.line73 = UNKNOWN (no input supplied for ny_it201.ask.other_withholding); ny_it201.line74 = $0; ny_it201.line75 = UNKNOWN (no input supplied for ny_it201.line75))
+  ny_it201.tax_due: subtract_floor0(ny_it201.line62 = UNKNOWN (no input supplied for ny_it201.ask.state_resident); ny_it201.line76 = UNKNOWN (no input supplied for ny_it201.ask.noncustodial))
   ny_it201.prepayments: sum(ny_it201.line72 = UNKNOWN (no input supplied for ny_it201.ask.other_withholding); ny_it201.line73 = UNKNOWN (no input supplied for ny_it201.ask.other_withholding); ny_it201.line74 = $0; ny_it201.line75 = UNKNOWN (no input supplied for ny_it201.line75))
   ny_it201.safe_harbor_100: multiply_rate(ny_it201.ask.prior_year_tax = UNKNOWN (no input supplied for ny_it201.ask.prior_year_tax); #ny.est.prior_rate = 1/1)
   ny_it201.safe_harbor_110: multiply_rate(ny_it201.ask.prior_year_tax = UNKNOWN (no input supplied for ny_it201.ask.prior_year_tax); #ny.est.prior_rate_high = 110/100)
@@ -9382,13 +9436,16 @@ Derivations:
   ny_it201.line81: gate(ny_it201.gate.estimated_penalty = UNKNOWN (no input supplied for ny_it201.ask.state_resident))
   ny_it201.gate.late: test(ny_it201.ask.late_penalty = UNKNOWN (no input supplied for ny_it201.ask.late_penalty); true = true)
   ny_it201.line82: gate(ny_it201.gate.late = UNKNOWN (no input supplied for ny_it201.ask.late_penalty))
-  ny_it201.overpaid_before_penalty: subtract_floor0(ny_it201.line76 = UNKNOWN (no input supplied for ny_it201.ask.dependent_care); ny_it201.line62 = UNKNOWN (no input supplied for ny_it201.ask.state_resident))
-  ny_it201.line77: subtract_floor0(ny_it201.overpaid_before_penalty = UNKNOWN (no input supplied for ny_it201.ask.dependent_care); ny_it201.line81 = UNKNOWN (no input supplied for ny_it201.ask.state_resident))
-  ny_it201.gate.line79_over: test(ny_it201.line79 = UNKNOWN (no input supplied for ny_it201.line79); ny_it201.line77 = UNKNOWN (no input supplied for ny_it201.ask.dependent_care))
-  ny_it201.line78: gate(ny_it201.gate.line79_over = UNKNOWN (no input supplied for ny_it201.line79))
-  ny_it201.gate.refund_529: test(ny_it201.ask.refund_529 = UNKNOWN (no input supplied for ny_it201.ask.refund_529); true = true)
-  ny_it201.line78a: gate(ny_it201.gate.refund_529 = UNKNOWN (no input supplied for ny_it201.ask.refund_529))
-  ny_it201.line78b: subtract_floor0(ny_it201.line78 = UNKNOWN (no input supplied for ny_it201.line79); ny_it201.line78a = UNKNOWN (no input supplied for ny_it201.ask.refund_529))
+  ny_it201.overpaid_before_penalty: subtract_floor0(ny_it201.line76 = UNKNOWN (no input supplied for ny_it201.ask.noncustodial); ny_it201.line62 = UNKNOWN (no input supplied for ny_it201.ask.state_resident))
+  ny_it201.line77: subtract_floor0(ny_it201.overpaid_before_penalty = UNKNOWN (no input supplied for ny_it201.ask.noncustodial); ny_it201.line81 = UNKNOWN (no input supplied for ny_it201.ask.state_resident))
+  ny_it201.has_overpayment: test(ny_it201.line77 = UNKNOWN (no input supplied for ny_it201.ask.noncustodial); 0 = $0)
+  ny_it201.line79: choose(ny_it201.has_overpayment = UNKNOWN (no input supplied for ny_it201.ask.noncustodial); true = true; ny_it201.line79_amount = UNKNOWN (no input supplied for ny_it201.line79_amount); ny_it201.has_overpayment = UNKNOWN (no input supplied for ny_it201.ask.noncustodial); false = false; ny_it201.zero = $0)
+  ny_it201.gate.line79_over: test(ny_it201.line79 = UNKNOWN (no input supplied for ny_it201.ask.noncustodial); ny_it201.line77 = UNKNOWN (no input supplied for ny_it201.ask.noncustodial))
+  ny_it201.line78: gate(ny_it201.gate.line79_over = UNKNOWN (no input supplied for ny_it201.ask.noncustodial))
+  ny_it201.has_refund: test(ny_it201.line78 = UNKNOWN (no input supplied for ny_it201.ask.noncustodial); 0 = $0)
+  ny_it201.gate.refund_529: choose(ny_it201.has_refund = UNKNOWN (no input supplied for ny_it201.ask.noncustodial); true = true; ny_it201.ask.refund_529 = UNKNOWN (no input supplied for ny_it201.ask.refund_529); ny_it201.has_refund = UNKNOWN (no input supplied for ny_it201.ask.noncustodial); false = false; ny_it201.no = false)
+  ny_it201.line78a: gate(ny_it201.gate.refund_529 = UNKNOWN (no input supplied for ny_it201.ask.noncustodial))
+  ny_it201.line78b: subtract_floor0(ny_it201.line78 = UNKNOWN (no input supplied for ny_it201.ask.noncustodial); ny_it201.line78a = UNKNOWN (no input supplied for ny_it201.ask.noncustodial))
   ny_it201.line80: sum(ny_it201.tax_due = UNKNOWN (no input supplied for ny_it201.ask.state_resident); ny_it201.line81 = UNKNOWN (no input supplied for ny_it201.ask.state_resident); ny_it201.line82 = UNKNOWN (no input supplied for ny_it201.ask.late_penalty))
   qbi.business_any: test(f8995.line2 = $0; #sales.zero = $0; qbi.carryforward = $0; #sales.zero = $0)
   qbi.via_8995a: copy(qbi.business_any = false; f8995a.line39 = $60)

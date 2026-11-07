@@ -588,6 +588,24 @@
    "run": "176175cec16c2f18e46cba63d86caf553a78b332cb12d6ff476637e8e81161bb"
   },
   {
+   "printed": "54a",
+   "project": "{\"shown_when\": null, \"value\": {\"const\": 0}}",
+   "second": "{\"shown_when\": {\"line\": \"(question) (ny_it201.ask.mctmt)\"}, \"value\": {\"const\": 0}}",
+   "ruling": "Ruling: representation; both sides enter $0 for line 54a. The second adds shown_when ny_it201.ask.mctmt, which the evaluator does not read (display only); where the source says to skip lines 54a through 54e (IT-201-I p. 15, \"If No, skip lines 54a through 54e, and go to line 55\") the project enters zero, which lines 54c, 54e and 58 read, as the adjudication method allows. The Yes case is refused on both sides (the project through ny_it201.gate.mctmt).",
+   "context": "28dfd8d072497566ac4686c658ebc3a916f40d01c7bebcf79a245debffcd584c",
+   "date": "2026-11-07",
+   "run": "4a5db1523f9f6fc8e761c8e644e3f1093ba9190209cc4a75839500b1939f65ae"
+  },
+  {
+   "printed": "54b",
+   "project": "{\"shown_when\": null, \"value\": {\"const\": 0}}",
+   "second": "{\"shown_when\": {\"line\": \"(question) (ny_it201.ask.mctmt)\"}, \"value\": {\"const\": 0}}",
+   "ruling": "Ruling: representation; as line 54a: both sides enter $0, the second's shown_when is display only, and the Yes case is refused on both sides.",
+   "context": "28dfd8d072497566ac4686c658ebc3a916f40d01c7bebcf79a245debffcd584c",
+   "date": "2026-11-07",
+   "run": "4a5db1523f9f6fc8e761c8e644e3f1093ba9190209cc4a75839500b1939f65ae"
+  },
+  {
    "printed": "54c",
    "project": "{\"amount\": {\"line\": \"54a\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"ny.mctmt.zone1\"}, \"unit\": 100}",
    "second": "{\"amount\": {\"line\": \"54a\"}, \"op\": \"multiply_rate\", \"rate\": {\"param\": \"ny.mctmt.zone1\"}}",
@@ -712,6 +730,15 @@
    "context": "c81d86a5be048bb9e8df1e1ec97c51b1cba8ffb0b3d49ee1167d741cada0dfb5",
    "date": "2026-11-04",
    "run": "176175cec16c2f18e46cba63d86caf553a78b332cb12d6ff476637e8e81161bb"
+  },
+  {
+   "printed": "79",
+   "project": "{\"alternatives\": [{\"guard\": {\"args\": [{\"line\": \"77\"}, {\"const\": 0}], \"test\": \"le\"}, \"then\": {\"const\": 0}}, {\"guard\": {\"args\": [{\"const\": 0}, {\"line\": \"77\"}], \"test\": \"lt\"}, \"then\": {\"line\": \"(question) (ny_it201.line79_amount)\"}}], \"op\": \"choose\"}",
+   "second": "{\"line\": \"(question) (ny_it201.line79_amount)\"}",
+   "ruling": "Ruling: representation; the project asks the line 79 amount only when line 77 is above zero (ny_it201.has_overpayment; IT-201-I p. 23, Line 79, \"Enter the amount of overpayment from line 77 that you want applied\") and is $0 otherwise; the second copies the amount. They differ only where line 77 is $0 and a positive amount is supplied, a record the interview cannot produce (the amount is not asked then), and where the second's own check (line 79 more than line 77) refuses. Equal wherever line 77 is above zero.",
+   "context": "28dfd8d072497566ac4686c658ebc3a916f40d01c7bebcf79a245debffcd584c",
+   "date": "2026-11-07",
+   "run": "4a5db1523f9f6fc8e761c8e644e3f1093ba9190209cc4a75839500b1939f65ae"
   },
   {
    "printed": "80",

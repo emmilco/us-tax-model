@@ -1491,6 +1491,32 @@
   "unruled:sa.dependent": {
    "prompt_sha": "ed663816b735dbfc49af3fa0ce3e076713185f92fdb0104a368707b0d0425394",
    "reason": "No defect: the parenthetical is the Form 1040 dependent-question carve-out, not an EIC import. i1040gi pp. 18–19, Step 4/5: \"If the person who could claim you on their 2025 tax return is not required to file, and isn’t filing a 2025 tax return or is filing a 2025 return only to claim a refund of withheld income tax or estimated tax paid, check ‘No.’\" The reviewer's pages (34–35, 41–42) do not include pp. 18–19. The line 12a checkbox and the Standard Deduction Worksheet for Dependents use that answer, so a filer in the carve-out is not claimable for this purpose and the full standard deduction is right."
+  },
+  "unruled:s8812.puerto_rico": {
+   "prompt_sha": "e3cd2a7f646dd06124ee476f6c2637c2dd451f9b67369ba6d8eb45fc236a419d",
+   "reason": "WIDE only; each finding refuses a Puerto Rico resident whose line 27 or line 11 the non-Puerto Rico computation already gets right.",
+   "findings": [
+    {
+     "n": 0,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "f1040s8812 p. 2, line 16b Yes branch: with line 20 at least line 17, line 27 is line 17 on either branch; the resident is refused though the tool's value is right. The help says \"If you are not sure, answer Yes\". Safe."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "i1040s8812 p. 5, CLW B line 6: with line 5 not less than line 1, lines 7 to 10 are blank and line 11 is 0 for a resident too; refused though the tool computes 0. Safe."
+    },
+    {
+     "n": 2,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "f1040s8812 p. 2, line 16a (\"If zero, stop here\") and line 16b: Part II-B is never reached, line 27 is 0; refused for nothing. Safe."
+    }
+   ],
+   "bugs": [],
+   "adjudication": "reviews/2025/screens/adjudication/gates-b.md"
   }
  },
  "baseline": {

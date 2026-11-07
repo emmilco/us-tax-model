@@ -6161,3 +6161,37 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Symptom:** ny.status.qss.200000 answered in a random order reports complete while person.edu_line23 is reachable and unanswered (a conjunction that reads past an unknown operand, as the five leaks gate round 1 fixed). Not seen on main before the merge; probably exposed by the changed answering order, not caused by lane B (unconfirmed).
 - **Disposition:** open: held in tools/interview_rules_baseline.json until a nested-choose fix.
 - **Tags:** interview; leak; open
+
+## BUG-0447 — The federal care-expense question can be answered No when the care let one spouse work while the other studied or was disabled
+
+- **Caught by:** the false-no review of the New York gate `gate:ny_it201.federal_care` (claude-opus-5-5), 2026-11-07, finding 2 (pattern 6, high), and the gate screen review of the same unit (UNCLEAR).
+- **Source:** `forms/2025/f2441.yaml`, `f2441.care` (question: "did you (or your spouse, if filing jointly) pay for, or incur expenses for, the care of a qualifying person ... so that you (and your spouse) could work or look for work?"), against i2441 p. 2, Who Can Take the Credit or Exclude Dependent Care Benefits?, item 2: "The care was provided so you (or your spouse if filing jointly) could work or look for work. ... But if you or your spouse was a full-time student or disabled, see the instructions for lines 4 and 5, later."
+- **Symptom:** a married filer whose care let one spouse work while the other attended school full time, or was not able to care for themself, can answer No honestly, because the care was not so that both spouses "could work". The federal credit is then never reached (the student-or-disabled screen `f2441.student_disabled` sits behind this question), and since the New York credit follows the federal one, New York line 64 (`ny_it201.federal_care`) is not asked either. Not measured on a fixture; the reading is the reviewer's, checked against the cited text. The rerun review of the same gate adds (medium) that the question names no examples of care (day camp, before- or after-school programs, a household employee), which a filer may not count as care.
+- **Disposition:** open, medium: word `f2441.care` to include care while a spouse was a full-time student or not able to care for themself (the federal form's lane, not the New York gate's), then rerun f2441's reviews and the New York gate's screen and false-no reviews.
+- **Tags:** wording; false-no; f2441; new-york; medium; open
+
+## BUG-0448 — A gated refusal screen dropped out of the screen review because its refusals name the gate line
+
+- **Caught by:** gate lane B (registered on its branch as BUG-0444; this entry is the main-line record), 2026-11-07.
+- **Source:** `tools/transcription/screen_review.py` (`screens`: a screen is an input some line's `refuses.when` names) and `tools/transcription/check_screens.py`.
+- **Symptom:** once a refusal screen's input is gated (gates.py), the refusing lines' `when` names the gate line, so `screens()` no longer found the input and its standing screen review silently left the currency check (the Schedule 8812 Puerto Rico screen lost its review this way); every gated screen would.
+- **Why the checks missed it:** check_screens reports only screens it discovers; a screen that vanished from discovery produced no finding.
+- **Tool change:** `screens()` maps a refusal whose `when` is the gate line of a gated Bool input (`gate_inputs`) to that input. A gated screen's prompt shows its gate condition; the hash its review is current against (`screen_subject`, recorded as `subject_sha`) is the prompt without that condition, so gating an input does not make its review stale (the condition is the subject of the gate's own review) and an older record's `prompt_sha` still matches. A ruling still names the review's own `prompt_sha`. No existing screen's subject changes: no screen is gated on main.
+- **Validation:** `test_review_tools.py` `GatedScreens`: a gated screen is still a screen, a non-Bool gated input is not, the subject is equal with and without the gate, a review recorded before the gate stays current, a reworded screen goes stale; check_screens on the real data: 0 stale.
+- **Tags:** review-tools; screens; gates; tool change; fixed
+
+## BUG-0449 — ny_it201.ask.refund_529 asks about part of a refund; a filer who wants the whole refund in a 529 account may answer No
+
+- **Caught by:** the screen review of ny_it201.ask.refund_529 (Claude, NARROW), 2026-11-07.
+- **Source:** ny_it201i p. 23, Line 78a ("You may directly deposit all or a portion of your refund in up to three NYS 529 college savings accounts.").
+- **Symptom:** the question and help say "part of a refund". A filer who wants all of the refund deposited may read "part" as less than all and answer No; line 78a is then 0 and the whole refund goes to the filer, without the deposit the filer meant to elect and without the Form IT-195 refusal. No tax amount is wrong; the election is lost. No other question covers it.
+- **Disposition:** open, low: say "all or part of your refund" in the question and help (ny_it201.ask.refund_529, interview/ny/questions-2025.yaml); rerun its screen review.
+- **Tags:** new-york; screen; wording; low; open
+
+## BUG-0450 — ny_it201.ask.mctmt does not name the Zone 2 counties; a filer with a business in Orange, Dutchess or Putnam may answer No
+
+- **Caught by:** the screen review of ny_it201.ask.mctmt (Claude, UNCLEAR finding 1), 2026-11-07.
+- **Source:** ny_it201i p. 15, Lines 54a through 54e ("Zone 2 includes the counties of: – Dutchess – Nassau – Orange – Putnam – Rockland – Suffolk – Westchester").
+- **Symptom:** the question names New York City for Zone 1 but says only "Zone 2", and the help "the suburban counties (Zone 2)". A self-employed filer whose earnings over $50,000 are allocated to a Zone 2 county, chiefly an exurban one, may not know it is in the MCTD and answer No; lines 54a and 54b are then 0 and the MCTMT is omitted, understating tax. No other question covers it.
+- **Disposition:** open, low: name the seven Zone 2 counties (and the five Zone 1 boroughs) in the question or help, and say the $50,000 test is per zone and per person; rerun its screen review.
+- **Tags:** new-york; screen; wording; low; open

@@ -99,22 +99,25 @@ form:
       cite: { doc: ny_it201i, locator: 'p. 8, Line 23, "Use this line to report other additions that are not specifically listed on Form IT-201."' }
     - id: ny_it201.ask.gov_pension
       printed: '(question)'
-      label: 'Did you receive a pension or other distribution from a New York State or local government or federal government pension plan that was included in federal adjusted gross income?'
+      label: 'Did you or your spouse receive a pension or other distribution included in federal adjusted gross income from a New York State or local government pension plan or a federal government pension plan, including a return of your own contributions before retirement? Count the military, a U.S. territory or the District of Columbia, the MTA Police 20-Year Retirement Program, MABSTOA, the Long Island Rail Road, and the Optional Retirement Program of SUNY, CUNY or the State Education Department (for example an annuity paid by TIAA), whether received as an employee, as a beneficiary, or as a former spouse under a domestic relations order.'
       type: Bool
-      expr: { op: input, source: 'Did you receive a pension or other distribution from a New York State or local government or federal government pension plan that was included in federal adjusted gross income?' }
+      expr: { op: input, source: 'Did you or your spouse receive a pension or other distribution included in federal adjusted gross income from a New York State or local government pension plan or a federal government pension plan, including a return of your own contributions before retirement? Count the military, a U.S. territory or the District of Columbia, the MTA Police 20-Year Retirement Program, MABSTOA, the Long Island Rail Road, and the Optional Retirement Program of SUNY, CUNY or the State Education Department (for example an annuity paid by TIAA), whether received as an employee, as a beneficiary, or as a former spouse under a domestic relations order.' }
       cite: { doc: ny_it201i, locator: 'p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?"' }
+      gated_by: ny_it201.gate.line26
     - id: ny_it201.ask.us_obligation_interest
       printed: '(question)'
       label: 'Did you include interest from U.S. government bonds or other U.S. government obligations (for example Treasury bills, notes or bonds, or U.S. savings bonds), or dividends from a fund investing in them, in federal income?'
       type: Bool
       expr: { op: input, source: 'Did you include interest from U.S. government bonds or other U.S. government obligations (for example Treasury bills, notes or bonds, or U.S. savings bonds), or dividends from a fund investing in them, in federal income?' }
       cite: { doc: ny_it201i, locator: 'p. 9, Line 28, "Did you include interest income from U.S. government bonds or other U.S. government obligations on lines 2, 6, or 11?"' }
+      gated_by: ny_it201.gate.line28
     - id: ny_it201.ask.pension_exclusion
       printed: '(question)'
-      label: 'Did you have pension or annuity income, or IRA distributions (periodic or lump-sum), other than from a New York State or local or federal government plan, and were you 59 1/2 or older in 2025 (or receive it as a beneficiary)?'
+      label: 'Did you or your spouse have pension or annuity income or IRA distributions (periodic or lump-sum) included in federal adjusted gross income other than a government pension subtracted on line 26 (periodic distributions from a government section 457 deferred compensation plan count here), and was the person who received it 59 1/2 or older in 2025 (or did they receive it as a beneficiary)?'
       type: Bool
-      expr: { op: input, source: 'Did you have pension or annuity income, or IRA distributions (periodic or lump-sum), other than from a New York State or local or federal government plan, and were you 59 1/2 or older in 2025 (or receive it as a beneficiary)?' }
+      expr: { op: input, source: 'Did you or your spouse have pension or annuity income or IRA distributions (periodic or lump-sum) included in federal adjusted gross income other than a government pension subtracted on line 26 (periodic distributions from a government section 457 deferred compensation plan count here), and was the person who received it 59 1/2 or older in 2025 (or did they receive it as a beneficiary)?' }
       cite: { doc: ny_it201i, locator: 'p. 9, Line 29, "Did you enter an amount of pension income or annuity income, or both (generally reported on line 9 or 10) that was not from a New York State or local government pension plan or federal government pension plan?"' }
+      gated_by: ny_it201.gate.line29
     - id: ny_it201.ask.529_owner
       printed: '(question)'
       label: 'During 2025, did you, as an account owner, contribute to or withdraw from a New York 529 college savings account, or, as a beneficiary, receive a withdrawal included in federal adjusted gross income?'
@@ -157,6 +160,7 @@ form:
       type: Bool
       expr: { op: input, source: 'Did you or your spouse have net earnings from self-employment allocated to New York City (MCTD Zone 1) or to Zone 2 of more than $50,000?' }
       cite: { doc: ny_it201i, locator: 'p. 15, Lines 54a through 54e, "Did you or your spouse have net earnings from self-employment allocated to Zone 1 or Zone 2, or both that exceed $50,000?"' }
+      gated_by: ny_it201.gate.mctmt
     - id: ny_it201.ask.owes_use_tax
       printed: '(question)'
       label: 'Do you owe New York sales or use tax on purchases made without paying New York tax (for example online, by catalog, or out of state and brought into New York)?'
@@ -181,6 +185,7 @@ form:
       type: Bool
       expr: { op: input, source: 'Would you qualify to claim the federal child and dependent care credit for 2025 (whether or not you claimed it)?' }
       cite: { doc: ny_it201i, locator: 'p. 19, Line 64, "Would you qualify to claim the federal child and dependent care credit for 2025 (whether or not you actually claimed it)?"' }
+      gated_by: ny_it201.gate.dependent_care
     - id: ny_it201.ask.noncustodial
       printed: '(question)'
       label: 'Did you make child support payments payable through a New York State Support Collection Unit?'
@@ -211,6 +216,7 @@ form:
       type: Bool
       expr: { op: input, source: 'Do you want part of a refund deposited into a New York 529 college savings account (Form IT-195)?' }
       cite: { doc: ny_it201i, locator: 'p. 23, Line 78a, "Enter on line 78a the amount from Form IT-195, line 4."' }
+      gated_by: ny_it201.gate.refund_529
     - id: ny_it201.ask.late_penalty
       printed: '(question)'
       label: 'Are you filing late or paying late, so that you owe a late filing or late payment penalty or interest?'
@@ -579,11 +585,34 @@ form:
           form: 'Form IT-201 line 25'
           remedy: 'Whether line 25 is the line 4 amount (the form) or only an inflation refund check (the 2025 instructions) is unsettled; this tool refuses either case (decision B1).'
           cite: { doc: ny_it201i, locator: 'p. 8, Line 25, "then enter that amount on line 25"' }
+    - id: ny_it201.no
+      printed: '(helper)'
+      label: 'No'
+      type: Bool
+      expr: { op: param, ref: "ny.false" }
+      cite: { doc: ny_it201i, locator: 'p. 9, Line 26, "If No, go to line 27."' }
+    - id: ny_it201.has_pension_income
+      printed: '(gate)'
+      label: 'Is there taxable IRA, pension or annuity income on line 9 or 10?'
+      type: Bool
+      expr:
+        op: test
+        any:
+          - { op: test, gt: ["ny_it201.line9", { const: 0 }] }
+          - { op: test, gt: ["ny_it201.line10", { const: 0 }] }
+      cite: { doc: ny_it201i, locator: 'p. 9, Line 29, "Did you enter an amount of pension income or annuity income, or both (generally reported on line 9 or 10)"; p. 9, Line 26, "Did you receive a pension or other distribution from a New York State or local government pension plan or federal government pension plan that was included in your federal adjusted gross income?"' }
+      note: 'Within this tool, pension, annuity and IRA income in federal adjusted gross income is on federal lines 4b and 5b (IT-201 lines 9 and 10): the federal screens refuse a disability pension reported as wages (retirement.special, scope.other_income) and a pension from a nonqualified plan or a nongovernmental section 457 plan on Schedule 1 line 8t (s1.line8_other).'
     - id: ny_it201.gate.line26
       printed: '(gate)'
       label: 'A New York or federal government pension'
       type: Bool
-      expr: { op: test, eq: ["ny_it201.ask.gov_pension", { const: true }] }
+      expr:
+        op: choose
+        alternatives:
+          - guard: { op: test, eq: ["ny_it201.has_pension_income", { const: true }] }
+            then: ny_it201.ask.gov_pension
+          - guard: { op: test, eq: ["ny_it201.has_pension_income", { const: false }] }
+            then: ny_it201.no
       cite: { doc: ny_it201i, locator: 'p. 9, Line 26, "If Yes, enter the amount of any pension you received"' }
     - id: ny_it201.line26
       printed: '26'
@@ -602,11 +631,29 @@ form:
       type: Dollars
       expr: { op: copy, from: "ny_it201.line15" }
       cite: { doc: ny_it201, locator: 'p. 2, New York subtractions, "Taxable amount of Social Security benefits (from line 15)"' }
+    - id: ny_it201.has_line28_income
+      printed: '(gate)'
+      label: 'Is there an amount on line 2, 3, 6 or 11 (interest, dividends, business income, or partnership and similar income)?'
+      type: Bool
+      expr:
+        op: test
+        any:
+          - { op: test, ne: ["ny_it201.line2", { const: 0 }] }
+          - { op: test, ne: ["ny_it201.line3", { const: 0 }] }
+          - { op: test, ne: ["ny_it201.line6", { const: 0 }] }
+          - { op: test, ne: ["ny_it201.line11", { const: 0 }] }
+      cite: { doc: ny_it201i, locator: 'p. 9, Line 28, "Did you include interest income from U.S. government bonds or other U.S. government obligations on lines 2, 6, or 11?" and "Dividends you received from a regulated investment company (mutual fund) that invests in obligations of the U.S. government and meet the 50% asset requirement each quarter qualify for this subtraction."' }
     - id: ny_it201.gate.line28
       printed: '(gate)'
       label: 'Interest on U.S. government obligations'
       type: Bool
-      expr: { op: test, eq: ["ny_it201.ask.us_obligation_interest", { const: true }] }
+      expr:
+        op: choose
+        alternatives:
+          - guard: { op: test, eq: ["ny_it201.has_line28_income", { const: true }] }
+            then: ny_it201.ask.us_obligation_interest
+          - guard: { op: test, eq: ["ny_it201.has_line28_income", { const: false }] }
+            then: ny_it201.no
       cite: { doc: ny_it201i, locator: 'p. 9, Line 28, "If Yes, enter the amount of interest income you earned from bonds or other obligations of the U.S. government."' }
     - id: ny_it201.line28
       printed: '28'
@@ -623,7 +670,13 @@ form:
       printed: '(gate)'
       label: 'Pension and annuity income exclusion may apply'
       type: Bool
-      expr: { op: test, eq: ["ny_it201.ask.pension_exclusion", { const: true }] }
+      expr:
+        op: choose
+        alternatives:
+          - guard: { op: test, eq: ["ny_it201.has_pension_income", { const: true }] }
+            then: ny_it201.ask.pension_exclusion
+          - guard: { op: test, eq: ["ny_it201.has_pension_income", { const: false }] }
+            then: ny_it201.no
       cite: { doc: ny_it201i, locator: 'p. 9, Line 29, "If Yes, and you were 59½ before January 1, 2025, enter the qualifying pension and annuity income included in your 2025 federal adjusted gross income, but not more than $20,000."' }
     - id: ny_it201.line29
       printed: '29'
@@ -1490,11 +1543,38 @@ form:
       type: NonNegDollars
       expr: { op: subtract_floor0, from: "ny_it201.line52", take: "ny_it201.line53" }
       cite: { doc: ny_it201, locator: 'p. 3, New York City and Yonkers taxes, credits, and surcharges, and MCTMT, "Subtract line 53 from line 52"' }
+    - id: ny_it201.mctmt_people
+      printed: '(helper)'
+      label: 'Number of persons with more than one Schedule C, or with Schedule C net profit over $50,000'
+      type: Count
+      expr:
+        op: sum_over
+        collection: person
+        field: person.one
+        where:
+          op: test
+          any:
+            - { op: test, gt: ["person.sc_count", { const: 1, type: Count }] }
+            - { op: test, gt: ["person.sc_total", { param: "ny.mctmt.threshold" }] }
+      cite: { doc: ny_it201i, locator: 'p. 15, Lines 54a through 54e, "The $50,000 threshold is calculated on an individual basis, even if you file a joint income tax return." and "You must calculate your MCTMT net earnings base separately for each source of self-employment income that has business activity in one or both zones."; p. 16, "Net earnings from self-employment generally is the amount reported on federal Schedule SE (Form 1040), Part 1, line 6, derived from the source of self-employment income."' }
+      note: 'A person with one Schedule C has one source, whose net earnings from self-employment (Schedule SE line 6) are at most its net profit, so a profit of $50,000 or less cannot exceed the threshold in either zone. With two or more Schedules C, whether a loss from one source reduces another is not settled here, so the question is asked. Self-employment income other than Schedule C (a partnership, farm or other source) is refused by the federal screens (scope.schedule1, person.se_screen).'
+    - id: ny_it201.mctmt_possible
+      printed: '(gate)'
+      label: 'Can you or your spouse have net earnings from self-employment over $50,000 in a zone?'
+      type: Bool
+      expr: { op: test, gt: ["ny_it201.mctmt_people", { const: 0, type: Count }] }
+      cite: { doc: ny_it201i, locator: 'p. 15, Lines 54a through 54e, "If an individual’s net earnings from self-employment allocated to either zone exceed $50,000 for the tax year, then you are subject to the MCTMT."' }
     - id: ny_it201.gate.mctmt
       printed: '(gate)'
       label: 'Self-employment earnings over $50,000 in an MCTD zone'
       type: Bool
-      expr: { op: test, eq: ["ny_it201.ask.mctmt", { const: true }] }
+      expr:
+        op: choose
+        alternatives:
+          - guard: { op: test, eq: ["ny_it201.mctmt_possible", { const: true }] }
+            then: ny_it201.ask.mctmt
+          - guard: { op: test, eq: ["ny_it201.mctmt_possible", { const: false }] }
+            then: ny_it201.no
       cite: { doc: ny_it201i, locator: 'p. 15, Lines 54a through 54e, "If Yes, you are subject to MCTMT. Go to lines 54a and 54b, as applicable."' }
     - id: ny_it201.line54a
       printed: '54a'
@@ -1744,11 +1824,28 @@ form:
           form: 'Form IT-213, Claim for Empire State Child Credit'
           remedy: 'The Empire State child credit is not computed by this tool.'
           cite: { doc: ny_it201i, locator: 'p. 19, Line 63: Empire State child credit, "review the instructions for Form IT-213, Claim for Empire State Child Credit, to see if you qualify for this credit"' }
+    - id: ny_it201.federal_care
+      printed: '(gate)'
+      label: 'Did you (or your spouse) have care expenses for a qualifying person so you (and your spouse) could work or look for work, or receive dependent care benefits (federal Form 2441)?'
+      type: Bool
+      expr:
+        op: test
+        any:
+          - { op: test, eq: ["f2441.care", { const: true }] }
+          - { op: test, eq: ["f2441.benefits", { const: true }] }
+      cite: { doc: ny_it216i, locator: 'p. 1, Who qualifies, "If you qualify to claim the federal child and dependent care credit, you can claim the New York State credit (whether you actually claim the federal credit or not)." and "The care was provided so you (and your spouse, if you were married) could work or look for work." and "Caution: Taxpayers who receive dependent care benefits from their employer must complete Worksheet 1 – Dependent care benefits."' }
+      note: 'The federal credit and the New York credit both need care expenses for a qualifying person so you could work or look for work (i2441 p. 2, Who Can Take the Credit or Exclude Dependent Care Benefits?, items 2 and 3). Dependent care benefits count too, since care paid through them is a care expense (Form IT-216 Worksheet 1).'
     - id: ny_it201.gate.dependent_care
       printed: '(gate)'
       label: 'The child and dependent care credit may apply'
       type: Bool
-      expr: { op: test, eq: ["ny_it201.ask.dependent_care", { const: true }] }
+      expr:
+        op: choose
+        alternatives:
+          - guard: { op: test, eq: ["ny_it201.federal_care", { const: true }] }
+            then: ny_it201.ask.dependent_care
+          - guard: { op: test, eq: ["ny_it201.federal_care", { const: false }] }
+            then: ny_it201.no
       cite: { doc: ny_it201i, locator: 'p. 19, Line 64, "If Yes, complete Form IT-216, Claim for Child and Dependent Care Credit, to determine your New York State child and dependent care credit."' }
     - id: ny_it201.line64
       printed: '64'
@@ -2110,11 +2207,30 @@ form:
       type: NonNegDollars
       expr: { op: subtract_floor0, from: "ny_it201.overpaid_before_penalty", take: "ny_it201.line81" }
       cite: { doc: ny_it201i, locator: 'p. 22, Line 77: Amount overpaid, "If you have to pay an estimated tax penalty (see line 81 instructions), subtract the penalty from the overpayment and enter the net overpayment on line 77."' }
+    - id: ny_it201.has_overpayment
+      printed: '(gate)'
+      label: 'Is there an overpayment on line 77?'
+      type: Bool
+      expr: { op: test, gt: ["ny_it201.line77", { const: 0 }] }
+      cite: { doc: ny_it201i, locator: 'p. 23, Line 79: Estimated tax, "Enter the amount of overpayment from line 77 that you want applied to your New York State, New York City, Yonkers, and metropolitan commuter transportation mobility tax estimated tax for 2026."' }
+    - id: ny_it201.line79_amount
+      printed: '(question)'
+      label: 'Amount of line 77 that you want applied to your 2026 estimated tax'
+      type: NonNegDollars
+      expr: { op: input, source: 'How much of your overpayment (line 77) do you want applied to your 2026 estimated tax for New York State, New York City, Yonkers and the metropolitan commuter transportation mobility tax? (0 for none)' }
+      cite: { doc: ny_it201i, locator: 'p. 23, Line 79: Estimated tax, "Enter the amount of overpayment from line 77 that you want applied to your New York State, New York City, Yonkers, and metropolitan commuter transportation mobility tax estimated tax for 2026."' }
+      gated_by: ny_it201.line79
     - id: ny_it201.line79
       printed: '79'
       label: 'Amount of line 77 that you want applied to your 2026 estimated tax'
       type: NonNegDollars
-      expr: { op: input, source: 'How much of your overpayment (line 77) do you want applied to your 2026 New York estimated tax? (0 for none)' }
+      expr:
+        op: choose
+        alternatives:
+          - guard: { op: test, eq: ["ny_it201.has_overpayment", { const: true }] }
+            then: ny_it201.line79_amount
+          - guard: { op: test, eq: ["ny_it201.has_overpayment", { const: false }] }
+            then: ny_it201.zero
       cite: { doc: ny_it201i, locator: 'p. 23, Line 79: Estimated tax, "Enter the amount of overpayment from line 77 that you want applied to your New York State, New York City, Yonkers, and metropolitan commuter transportation mobility tax estimated tax for 2026."' }
     - id: ny_it201.gate.line79_over
       printed: '(gate)'
@@ -2133,11 +2249,23 @@ form:
           form: 'Line 79 more than the overpayment'
           remedy: 'The amount applied to 2026 estimated tax cannot be more than the overpayment on line 77; correct line 79.'
           cite: { doc: ny_it201i, locator: 'p. 23, Line 79: Estimated tax, "The total of lines 78a through 79 should equal the amount on line 77."' }
+    - id: ny_it201.has_refund
+      printed: '(gate)'
+      label: 'Is there an amount available for refund on line 78?'
+      type: Bool
+      expr: { op: test, gt: ["ny_it201.line78", { const: 0 }] }
+      cite: { doc: ny_it201i, locator: 'p. 23, Line 78a: NYS 529 account deposit, "You may directly deposit all or a portion of your refund in up to three NYS 529 college savings accounts."' }
     - id: ny_it201.gate.refund_529
       printed: '(gate)'
       label: 'A refund deposit into a New York 529 account'
       type: Bool
-      expr: { op: test, eq: ["ny_it201.ask.refund_529", { const: true }] }
+      expr:
+        op: choose
+        alternatives:
+          - guard: { op: test, eq: ["ny_it201.has_refund", { const: true }] }
+            then: ny_it201.ask.refund_529
+          - guard: { op: test, eq: ["ny_it201.has_refund", { const: false }] }
+            then: ny_it201.no
       cite: { doc: ny_it201i, locator: 'p. 23, Line 78a: NYS 529 account deposit, "You may directly deposit all or a portion of your refund in up to three NYS 529 college savings accounts."' }
     - id: ny_it201.line78a
       printed: '78a'

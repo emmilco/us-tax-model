@@ -39,6 +39,24 @@
    "run": "a16937af81995ef2abcf910af40903a615deb1559128d218f86c360bd3399678"
   },
   {
+   "printed": "54a",
+   "restated": "Enter $0 (ny.zero).",
+   "model": "The screening question is asked only of people with more than one Schedule C or Schedule C profit over $50,000, so other self-employment earnings get $0 with no refusal. The instructions say MCTMT net earnings include amounts on 'federal Schedule SE (Form 1040), Part 1, line 6', including IRC § 1402 income such as 'services performed by a United States citizen employed by a foreign government, the United Nations, or other international organization', which need not come from a Schedule C.",
+   "ruling": "Ruling: scope; self-employment income other than Schedule C is refused on the federal return before New York is reached (a refused federal return is a refused New York return, interview/ny/2025.yaml targets_from): scope.schedule1 refuses partnerships and other Schedule K-1 income, farm income (Schedule F), church employee income and income as a minister; scope.other_income refuses \"wages or tips not on a Form W-2\" and \"other earned income (Form 1040 lines 1b to 1d and 1f to 1h)\" (the salary of a U.S. citizen employed by a foreign government or an international organization comes without a Form W-2); person.se_screen refuses \"other self-employment income not on a Schedule C\" and income \"earned as a U.S. citizen employed by a foreign government\". Within the tool Schedule C is the only source, which ny_it201.mctmt_people reads (its note says so).",
+   "context": "585972fb5603add3ab94315a340b347888c168268f4754b217801a1bbafb694f",
+   "date": "2026-11-07",
+   "run": "e973bae9d38b2ef0267f277ccfc6cace2db1c02d2264d9bc2aff37acdb646a65"
+  },
+  {
+   "printed": "54b",
+   "restated": "Enter $0 (ny.zero).",
+   "model": "The same screen is used as for line 54a, so Zone 2 self-employment earnings from sources other than Schedule C get $0 without a refusal. The instructions treat IRC § 1402 income reported on 'federal Schedule SE (Form 1040), Part 1, line 6' as net earnings 'subject to the MCTMT'.",
+   "ruling": "Ruling: scope; as line 54a: every source of self-employment income other than Schedule C is refused federally, so the condition's reading of Schedule C alone drops no Zone 2 amount the tool can reach.",
+   "context": "585972fb5603add3ab94315a340b347888c168268f4754b217801a1bbafb694f",
+   "date": "2026-11-07",
+   "run": "e973bae9d38b2ef0267f277ccfc6cace2db1c02d2264d9bc2aff37acdb646a65"
+  },
+  {
    "printed": "8",
    "restated": "Enter $0 (ny.zero).",
    "model": "The form asks for 'Other gains or losses (submit a copy of federal Form 4797)'. The program always enters $0, and no refusal names Form 4797 gains. Only the line 19 check against federal AGI would catch a nonzero amount.",

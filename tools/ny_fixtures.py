@@ -109,7 +109,7 @@ def ny_inputs(ans, w2s, line75=0, line79=0, prior_tax=0):
         out[f"ny_it2[w{i}].city_withheld"] = c
         out[f"ny_it2[w{i}].yonkers_withheld"] = 0
     out["ny_it201.line75"] = line75
-    out["ny_it201.line79"] = line79
+    out["ny_it201.line79_amount"] = line79
     return out
 
 
@@ -143,7 +143,47 @@ def more_parents(inputs, n):
     inputs["$dependent"] = ["parent"] + [f"parent{i}" for i in range(2, n + 1)]
 
 
-def make_case(cid, status, wages, ans=None, w2s=((0, 0),), line75=0, line79=0, prior_tax=0, note="", refuse=None, evidence=None, covers=None, parents=None):
+def fixture_inputs(file, case_id, keep):
+    """The inputs of a federal fixture whose keys pass `keep`."""
+    case = next(c for c in json.loads((ROOT / "fixtures" / "2025" / file).read_text())["cases"] if c["id"] == case_id)
+    return {k: v for k, v in case["inputs"].items() if keep(k)}
+
+
+def gated_federal(gate):
+    """For a refusal case whose screen is asked only when a gate's condition holds: (the federal inputs that make the
+    condition hold, the New York withholding records, the sentence the evidence note ends with)."""
+    pension = (" The federal return carries one Form 1099-R pension (box 1 $12,000, box 5 $1,200; fixture stage10.plan.box5), so "
+               "line 10 is above zero and the screen is asked (ny_it201.has_pension_income).")
+    if gate in ("gate.line26", "gate.line29"):
+        return fixture_inputs("stage10.json", "stage10.plan.box5", lambda k: "retirement" in k), None, pension
+    if gate == "gate.line28":
+        return ({"interest[bank_a].amount": 10000}, None,
+                " The interest payer reports $100, so line 2 is not zero and the screen is asked (ny_it201.has_line28_income).")
+    if gate == "gate.mctmt":
+        fed = fixture_inputs("stage14.json", "stage14.f8959.se_above_threshold", lambda k: k.startswith((
+            "person[taxpayer].sc[", "$sc@person[taxpayer]", "$scveh@person[taxpayer]", "$asset@person[taxpayer]",
+            "$ltc@person[taxpayer]")) or k == "person[taxpayer].se_screen")
+        fed["person[taxpayer].sc[big].line1"] = 8000000
+        fed["person[taxpayer].plan"] = "none"
+        return (fed, None, " The taxpayer has one Schedule C with $80,000 of gross receipts and no expenses (fixture "
+                           "stage14.f8959.se_above_threshold's business), so its net profit is over $50,000 and the screen is asked "
+                           "(ny_it201.mctmt_possible).")
+    if gate == "gate.dependent_care":
+        return ({"f2441.care": True, "f2441.nondependent": False, "f2441.prior_year": False, "f2441.student_disabled": False,
+                 "$dcprov": ["p0"], "dcprov[p0].household": False, "dcprov[p0].paid": 600000, "dcprov[p0].related": False,
+                 "dcprov[p0].tin_kind": "tin"}, None,
+                " The federal care question (f2441.care) is answered Yes, so the screen is asked (ny_it201.federal_care); its "
+                "other Form 2441 answers (one care provider paid $6,000; fixture classm.f2441.1's answers) complete the "
+                "interview; line 64 does not read them.")
+    if gate == "gate.refund_529":
+        return ({}, ((900000, 500000),),
+                " The New York withholding ($9,000 State, $5,000 City) is more than the tax, so line 78 is above zero and the "
+                "screen is asked (ny_it201.has_refund).")
+    return {}, None, ""
+
+
+def make_case(cid, status, wages, ans=None, w2s=((0, 0),), line75=0, line79=0, prior_tax=0, note="", refuse=None, evidence=None, covers=None, parents=None,
+              fed_inputs=None, note_after=""):
     file, case_id, _ = BASES[status]
     inputs = base(file, case_id)
     if parents:
@@ -151,6 +191,7 @@ def make_case(cid, status, wages, ans=None, w2s=((0, 0),), line75=0, line79=0, p
     if wages is not None:
         set_wages(inputs, wages)
     inputs.update(ny_inputs(ans or {}, list(w2s), line75, line79, prior_tax))
+    inputs.update(fed_inputs or {})
     fed, _ = federal(inputs)
     deps = 0
     if inputs.get("$dependent"):
@@ -165,7 +206,7 @@ def make_case(cid, status, wages, ans=None, w2s=((0, 0),), line75=0, line79=0, p
         case["evidence"] = "synthetic regression (not class B)"
         case["evidence_note"] = (f"Refusal predicted from the source: {note} The New York answers make ny_it201.{gate} true, so "
                                  f"ny_it201.{line} is a refusal carrying that gate; the refusal's form, remedy and citation are the "
-                                 f"line's recorded refusal text.")
+                                 f"line's recorded refusal text.{note_after}")
         case["expect"] = {f"ny_it201.{line}": refusal(line, gate)}
         return case
     pred = ny_predict.predict(fed, ny)
@@ -307,8 +348,9 @@ def main():
         ("gate.refund_529", {"refund_529": True}, "line78a", "a refund deposit into a 529 account (B11)."),
         ("gate.late", {"late_penalty": True}, "line82", "late filing or payment penalties (B11)."),
     ]:
-        cases.append(make_case(f"refuse.{gate.split('.', 1)[1]}", "single", S, ans=ans, w2s=((300000, 200000),), refuse=(gate, line),
-                               note=f"the screen's Yes refuses: {why}"))
+        fed_inputs, w2s, note_after = gated_federal(gate)
+        cases.append(make_case(f"refuse.{gate.split('.', 1)[1]}", "single", S, ans=ans, w2s=w2s or ((300000, 200000),), refuse=(gate, line),
+                               note=f"the screen's Yes refuses: {why}", fed_inputs=fed_inputs, note_after=note_after))
     cases.append(make_case("refuse.spouse_nonresident", "mfj", wages_for_taxable("mfj", 70000), ans={"spouse_resident": False},
                            refuse=("gate.spouse_nonresident", "line1"), note="a joint return with a nonresident spouse."))
     cases.append(make_case("refuse.estimated_penalty", "single", wages_for_taxable("single", 150000), w2s=((300000, 100000),),

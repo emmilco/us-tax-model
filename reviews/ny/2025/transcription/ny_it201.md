@@ -5,7 +5,7 @@ Second transcription of `Form IT-201 (2025), Resident Income Tax Return — New 
 | field | value |
 | --- | --- |
 | date | 2026-11-04 |
-| line-scoped reviews | 1 (latest 2026-11-07); see Line-scoped reviews |
+| line-scoped reviews | 2 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | f3f8c326d3828cbc0684a46ec47d3e018d206a842853958ee0bad5afb279af0b |
@@ -21,8 +21,8 @@ Second transcription of `Form IT-201 (2025), Resident Income Tax Return — New 
 | output token budget | transport default (65536 for DeepSeek) |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
 | subject sha256 | 2393cb72f2535e7c3f747e4b47682ef39151358f6455398ceb716845b03a9c6b |
-| printed lines compared | 166 |
-| agree / disagree / missing | 85 / 81 / 0 |
+| printed lines compared | 167 |
+| agree / disagree / missing | 84 / 83 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -377,6 +377,7 @@ Ruling: ambiguity; amb.ny.2025.line25 (owner decision B1): the form labels line 
 
 ### 26 — Pensions of NYS and local governments and the federal government
 Status: **AGREE**
+Reviewed in: pass eb1ce5a46b94
 
 ### 27 — Taxable amount of Social Security benefits (from line 15)
 Status: **DISAGREE**
@@ -397,9 +398,11 @@ Ruling: model error on the declaration, ruled mechanically: the reply fails the 
 
 ### 28 — Interest income on U.S. government bonds
 Status: **AGREE**
+Reviewed in: pass eb1ce5a46b94
 
 ### 29 — Pension and annuity income exclusion
 Status: **AGREE**
+Reviewed in: pass eb1ce5a46b94
 
 ### 30 — New York’s 529 college savings program deduction/earnings
 Status: **AGREE**
@@ -1192,10 +1195,44 @@ Second:
 Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: "model changed a published result type"; ny_it201.line32: "model changed a published result type"), so the line was not executed. This adjudicates the declaration, not the tax reading.
 
 ### 54a — MCTMT net earnings base for Zone 1
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"shown_when": null, "value": {"const": 0}}
+```
+
+Second:
+
+```json
+{"shown_when": {"line": "(question) (ny_it201.ask.mctmt)"}, "value": {"const": 0}}
+```
+
+Second transcription's note: Lines 54a-54e instructions: if neither spouse had net earnings from self-employment over $50,000 allocated to Zone 1 or Zone 2, skip lines 54a through 54e. The Yes case is refused through ny_it201.ask.mctmt. The skipped case is encoded as zero, and the line is shown only when the question is answered Yes.
+
+Ruling: representation; both sides enter $0 for line 54a. The second adds shown_when ny_it201.ask.mctmt, which the evaluator does not read (display only); where the source says to skip lines 54a through 54e (IT-201-I p. 15, "If No, skip lines 54a through 54e, and go to line 55") the project enters zero, which lines 54c, 54e and 58 read, as the adjudication method allows. The Yes case is refused on both sides (the project through ny_it201.gate.mctmt).
+Reviewed in: pass eb1ce5a46b94
 
 ### 54b — MCTMT net earnings base for Zone 2
-Status: **AGREE**
+Status: **DISAGREE**
+
+Project:
+
+```json
+{"shown_when": null, "value": {"const": 0}}
+```
+
+Second:
+
+```json
+{"shown_when": {"line": "(question) (ny_it201.ask.mctmt)"}, "value": {"const": 0}}
+```
+
+Second transcription's note: As for line 54a: the Yes case is refused through ny_it201.ask.mctmt, and the skipped case is zero.
+
+Ruling: representation; as line 54a: both sides enter $0, the second's shown_when is display only, and the Yes case is refused on both sides.
+Reviewed in: pass eb1ce5a46b94
 
 ### 54c — MCTMT for Zone 1
 Status: **DISAGREE**
@@ -1368,6 +1405,7 @@ Status: **AGREE**
 
 ### 64 — NYS/NYC child and dependent care credit
 Status: **AGREE**
+Reviewed in: pass eb1ce5a46b94
 
 ### 65 — NYS earned income credit (EIC)
 Status: **AGREE**
@@ -1657,25 +1695,31 @@ Second:
 
 Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: "model changed a published result type"; ny_it201.line32: "model changed a published result type"; ny_it201.tax_schedule: "ny_it201.ny_it201.tax_schedule: instance of 'ny_rs' must bind exactly [amount, status]"), so the line was not executed. This adjudicates the declaration, not the tax reading.
 
-### 78 — Amount of line 77 available for refund (subtract line 79 from line 77)
+### 79 — Amount of line 77 that you want applied to your 2026 estimated tax
 Status: **DISAGREE**
 
 Project:
 
 ```json
-{"from": {"line": "77"}, "op": "subtract_floor0", "take": {"line": "79"}}
+{"alternatives": [{"guard": {"args": [{"line": "77"}, {"const": 0}], "test": "le"}, "then": {"const": 0}}, {"guard": {"args": [{"const": 0}, {"line": "77"}], "test": "lt"}, "then": {"line": "(question) (ny_it201.line79_amount)"}}], "op": "choose"}
 ```
 
 Second:
 
 ```json
-{"expression": {"from": {"line": "77"}, "op": "subtract_floor0", "take": {"line": "79"}}, "invalid_model_types": [{"line": "ny_it201.line27", "message": "model changed a published result type"}, {"line": "ny_it201.line32", "message": "model changed a published result type"}, {"line": "ny_it201.tax_schedule", "message": "ny_it201.ny_it201.tax_schedule: instance of 'ny_rs' must bind exactly [amount, status]"}, {"line": "ny_it201.tax_schedule", "message": "ny_it201.ny_it201.tax_schedule: instance of 'ny_rs' must bind exactly [amount, status]"}, {"line": "ny_it201.tax_schedule", "message": "ny_it201.ny_it201.tax_schedule: instance of 'ny_rs' must bind exactly [amount, status]"}]}
+{"line": "(question) (ny_it201.line79_amount)"}
 ```
 
-Ruling: model error on the declaration, ruled mechanically: the reply fails the host's schema, type or reference validation on this line or a line it reads (ny_it201.line27: "model changed a published result type"; ny_it201.line32: "model changed a published result type"; ny_it201.tax_schedule: "ny_it201.ny_it201.tax_schedule: instance of 'ny_rs' must bind exactly [amount, status]"), so the line was not executed. This adjudicates the declaration, not the tax reading.
+Ruling: representation; the project asks the line 79 amount only when line 77 is above zero (ny_it201.has_overpayment; IT-201-I p. 23, Line 79, "Enter the amount of overpayment from line 77 that you want applied") and is $0 otherwise; the second copies the amount. They differ only where line 77 is $0 and a positive amount is supplied, a record the interview cannot produce (the amount is not asked then), and where the second's own check (line 79 more than line 77) refuses. Equal wherever line 77 is above zero.
+Reviewed in: pass eb1ce5a46b94
+
+### 78 — Amount of line 77 available for refund (subtract line 79 from line 77)
+Status: **AGREE**
+Reviewed in: pass eb1ce5a46b94
 
 ### 78a — Amount of line 78 that you want to deposit into a NYS 529 account (Form IT-195, line 4)
 Status: **AGREE**
+Reviewed in: pass eb1ce5a46b94
 
 ### 78b — Total refund after NYS 529 account deposit (subtract line 78a from line 78)
 Status: **DISAGREE**
@@ -1846,7 +1890,8 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | 82 | ny_it201.ask.late_penalty | ny_it201.ask.late_penalty |
 | (77) | ny_it201.ask.414h, ny_it201.ask.529_nonqualified, ny_it201.ask.529_owner, ny_it201.ask.abode_part_year, ny_it201.ask.city_credits, ny_it201.ask.college_tuition, ny_it201.ask.contributions, ny_it201.ask.decedent, ny_it201.ask.dependent_care, ny_it201.ask.gov_pension, ny_it201.ask.inflation_check, ny_it201.ask.it225, ny_it201.ask.itemize, ny_it201.ask.mctmt, ny_it201.ask.noncustodial, ny_it201.ask.other_credits, ny_it201.ask.other_taxes, ny_it201.ask.other_withholding, ny_it201.ask.out_of_state_bond_interest, ny_it201.ask.pension_exclusion, ny_it201.ask.real_property_credit, ny_it201.ask.resident_credit, ny_it201.ask.special_accrual, ny_it201.ask.special_code, ny_it201.ask.us_obligation_interest, ny_it201.ask.use_tax_st141, ny_it201.ask.yonkers, ny_it201.h_fed_eic, ny_it201.h_fs_mfs, ny_it201.h_it270_possible, ny_it201.h_line19_mismatch, ny_it201.h_not_state_resident, ny_it201.h_spouse_nonres, scope.schedule1, sd.other_forms | ny_it201.ask.414h, ny_it201.ask.529_nonqualified, ny_it201.ask.529_owner, ny_it201.ask.abode_part_year, ny_it201.ask.city_credits, ny_it201.ask.college_tuition, ny_it201.ask.contributions, ny_it201.ask.decedent, ny_it201.ask.dependent_care, ny_it201.ask.gov_pension, ny_it201.ask.inflation_check, ny_it201.ask.it225, ny_it201.ask.itemize, ny_it201.ask.mctmt, ny_it201.ask.noncustodial, ny_it201.ask.other_credits, ny_it201.ask.other_taxes, ny_it201.ask.other_withholding, ny_it201.ask.out_of_state_bond_interest, ny_it201.ask.pension_exclusion, ny_it201.ask.real_property_credit, ny_it201.ask.resident_credit, ny_it201.ask.special_accrual, ny_it201.ask.special_code, ny_it201.ask.us_obligation_interest, ny_it201.ask.use_tax_st141, ny_it201.ask.yonkers, ny_it201.h_fed_eic, ny_it201.h_fs_mfs, ny_it201.h_it270_possible, ny_it201.h_line19_mismatch, ny_it201.h_not_state_resident, ny_it201.h_spouse_nonres |
 | 77 | ny_it201.ask.414h, ny_it201.ask.529_nonqualified, ny_it201.ask.529_owner, ny_it201.ask.abode_part_year, ny_it201.ask.city_credits, ny_it201.ask.college_tuition, ny_it201.ask.contributions, ny_it201.ask.decedent, ny_it201.ask.dependent_care, ny_it201.ask.gov_pension, ny_it201.ask.inflation_check, ny_it201.ask.it225, ny_it201.ask.itemize, ny_it201.ask.mctmt, ny_it201.ask.noncustodial, ny_it201.ask.other_credits, ny_it201.ask.other_taxes, ny_it201.ask.other_withholding, ny_it201.ask.out_of_state_bond_interest, ny_it201.ask.pension_exclusion, ny_it201.ask.real_property_credit, ny_it201.ask.resident_credit, ny_it201.ask.special_accrual, ny_it201.ask.special_code, ny_it201.ask.us_obligation_interest, ny_it201.ask.use_tax_st141, ny_it201.ask.yonkers, ny_it201.h_fed_eic, ny_it201.h_fs_mfs, ny_it201.h_it270_possible, ny_it201.h_line19_mismatch, ny_it201.h_not_state_resident, ny_it201.h_pen_possible, ny_it201.h_spouse_nonres, scope.schedule1, sd.other_forms | ny_it201.ask.414h, ny_it201.ask.529_nonqualified, ny_it201.ask.529_owner, ny_it201.ask.abode_part_year, ny_it201.ask.city_credits, ny_it201.ask.college_tuition, ny_it201.ask.contributions, ny_it201.ask.decedent, ny_it201.ask.dependent_care, ny_it201.ask.gov_pension, ny_it201.ask.inflation_check, ny_it201.ask.it225, ny_it201.ask.itemize, ny_it201.ask.mctmt, ny_it201.ask.noncustodial, ny_it201.ask.other_credits, ny_it201.ask.other_taxes, ny_it201.ask.other_withholding, ny_it201.ask.out_of_state_bond_interest, ny_it201.ask.pension_exclusion, ny_it201.ask.real_property_credit, ny_it201.ask.resident_credit, ny_it201.ask.special_accrual, ny_it201.ask.special_code, ny_it201.ask.us_obligation_interest, ny_it201.ask.use_tax_st141, ny_it201.ask.yonkers, ny_it201.h_fed_eic, ny_it201.h_fs_mfs, ny_it201.h_it270_possible, ny_it201.h_line19_mismatch, ny_it201.h_not_state_resident, ny_it201.h_pen_possible, ny_it201.h_spouse_nonres |
-| 78 | ny_it201.ask.414h, ny_it201.ask.529_nonqualified, ny_it201.ask.529_owner, ny_it201.ask.abode_part_year, ny_it201.ask.city_credits, ny_it201.ask.college_tuition, ny_it201.ask.contributions, ny_it201.ask.decedent, ny_it201.ask.dependent_care, ny_it201.ask.gov_pension, ny_it201.ask.inflation_check, ny_it201.ask.it225, ny_it201.ask.itemize, ny_it201.ask.mctmt, ny_it201.ask.noncustodial, ny_it201.ask.other_credits, ny_it201.ask.other_taxes, ny_it201.ask.other_withholding, ny_it201.ask.out_of_state_bond_interest, ny_it201.ask.pension_exclusion, ny_it201.ask.real_property_credit, ny_it201.ask.resident_credit, ny_it201.ask.special_accrual, ny_it201.ask.special_code, ny_it201.ask.us_obligation_interest, ny_it201.ask.use_tax_st141, ny_it201.ask.yonkers, ny_it201.h_fed_eic, ny_it201.h_fs_mfs, ny_it201.h_it270_possible, ny_it201.h_line19_mismatch, ny_it201.h_line79_excess, ny_it201.h_not_state_resident, ny_it201.h_pen_possible, ny_it201.h_spouse_nonres, scope.schedule1, sd.other_forms | ny_it201.ask.414h, ny_it201.ask.529_nonqualified, ny_it201.ask.529_owner, ny_it201.ask.abode_part_year, ny_it201.ask.city_credits, ny_it201.ask.college_tuition, ny_it201.ask.contributions, ny_it201.ask.decedent, ny_it201.ask.dependent_care, ny_it201.ask.gov_pension, ny_it201.ask.inflation_check, ny_it201.ask.it225, ny_it201.ask.itemize, ny_it201.ask.mctmt, ny_it201.ask.noncustodial, ny_it201.ask.other_credits, ny_it201.ask.other_taxes, ny_it201.ask.other_withholding, ny_it201.ask.out_of_state_bond_interest, ny_it201.ask.pension_exclusion, ny_it201.ask.real_property_credit, ny_it201.ask.resident_credit, ny_it201.ask.special_accrual, ny_it201.ask.special_code, ny_it201.ask.us_obligation_interest, ny_it201.ask.use_tax_st141, ny_it201.ask.yonkers, ny_it201.h_fed_eic, ny_it201.h_fs_mfs, ny_it201.h_it270_possible, ny_it201.h_line19_mismatch, ny_it201.h_line79_excess, ny_it201.h_not_state_resident, ny_it201.h_pen_possible, ny_it201.h_spouse_nonres |
+| 79 | ny_it201.h_line79_exceeds_77 | ny_it201.h_line79_exceeds_77 |
+| 78 | ny_it201.h_line79_exceeds_77 | ny_it201.h_line79_exceeds_77 |
 | 78a | ny_it201.ask.refund_529 | ny_it201.ask.refund_529 |
 | 78b | ny_it201.ask.414h, ny_it201.ask.529_nonqualified, ny_it201.ask.529_owner, ny_it201.ask.abode_part_year, ny_it201.ask.city_credits, ny_it201.ask.college_tuition, ny_it201.ask.contributions, ny_it201.ask.decedent, ny_it201.ask.dependent_care, ny_it201.ask.gov_pension, ny_it201.ask.inflation_check, ny_it201.ask.it225, ny_it201.ask.itemize, ny_it201.ask.mctmt, ny_it201.ask.noncustodial, ny_it201.ask.other_credits, ny_it201.ask.other_taxes, ny_it201.ask.other_withholding, ny_it201.ask.out_of_state_bond_interest, ny_it201.ask.pension_exclusion, ny_it201.ask.real_property_credit, ny_it201.ask.refund_529, ny_it201.ask.resident_credit, ny_it201.ask.special_accrual, ny_it201.ask.special_code, ny_it201.ask.us_obligation_interest, ny_it201.ask.use_tax_st141, ny_it201.ask.yonkers, ny_it201.h_fed_eic, ny_it201.h_fs_mfs, ny_it201.h_it270_possible, ny_it201.h_line19_mismatch, ny_it201.h_line79_excess, ny_it201.h_not_state_resident, ny_it201.h_pen_possible, ny_it201.h_spouse_nonres, scope.schedule1, sd.other_forms | ny_it201.ask.414h, ny_it201.ask.529_nonqualified, ny_it201.ask.529_owner, ny_it201.ask.abode_part_year, ny_it201.ask.city_credits, ny_it201.ask.college_tuition, ny_it201.ask.contributions, ny_it201.ask.decedent, ny_it201.ask.dependent_care, ny_it201.ask.gov_pension, ny_it201.ask.inflation_check, ny_it201.ask.it225, ny_it201.ask.itemize, ny_it201.ask.mctmt, ny_it201.ask.noncustodial, ny_it201.ask.other_credits, ny_it201.ask.other_taxes, ny_it201.ask.other_withholding, ny_it201.ask.out_of_state_bond_interest, ny_it201.ask.pension_exclusion, ny_it201.ask.real_property_credit, ny_it201.ask.refund_529, ny_it201.ask.resident_credit, ny_it201.ask.special_accrual, ny_it201.ask.special_code, ny_it201.ask.us_obligation_interest, ny_it201.ask.use_tax_st141, ny_it201.ask.yonkers, ny_it201.h_fed_eic, ny_it201.h_fs_mfs, ny_it201.h_it270_possible, ny_it201.h_line19_mismatch, ny_it201.h_line79_excess, ny_it201.h_not_state_resident, ny_it201.h_pen_possible, ny_it201.h_spouse_nonres |
 | 80 | ny_it201.ask.414h, ny_it201.ask.529_nonqualified, ny_it201.ask.529_owner, ny_it201.ask.abode_part_year, ny_it201.ask.city_credits, ny_it201.ask.college_tuition, ny_it201.ask.contributions, ny_it201.ask.decedent, ny_it201.ask.dependent_care, ny_it201.ask.gov_pension, ny_it201.ask.inflation_check, ny_it201.ask.it225, ny_it201.ask.itemize, ny_it201.ask.late_penalty, ny_it201.ask.mctmt, ny_it201.ask.noncustodial, ny_it201.ask.other_credits, ny_it201.ask.other_taxes, ny_it201.ask.other_withholding, ny_it201.ask.out_of_state_bond_interest, ny_it201.ask.pension_exclusion, ny_it201.ask.real_property_credit, ny_it201.ask.resident_credit, ny_it201.ask.special_accrual, ny_it201.ask.special_code, ny_it201.ask.us_obligation_interest, ny_it201.ask.use_tax_st141, ny_it201.ask.yonkers, ny_it201.h_fed_eic, ny_it201.h_fs_mfs, ny_it201.h_it270_possible, ny_it201.h_line19_mismatch, ny_it201.h_not_state_resident, ny_it201.h_pen_possible, ny_it201.h_spouse_nonres, scope.schedule1, sd.other_forms | ny_it201.ask.414h, ny_it201.ask.529_nonqualified, ny_it201.ask.529_owner, ny_it201.ask.abode_part_year, ny_it201.ask.city_credits, ny_it201.ask.college_tuition, ny_it201.ask.contributions, ny_it201.ask.decedent, ny_it201.ask.dependent_care, ny_it201.ask.gov_pension, ny_it201.ask.inflation_check, ny_it201.ask.it225, ny_it201.ask.itemize, ny_it201.ask.late_penalty, ny_it201.ask.mctmt, ny_it201.ask.noncustodial, ny_it201.ask.other_credits, ny_it201.ask.other_taxes, ny_it201.ask.other_withholding, ny_it201.ask.out_of_state_bond_interest, ny_it201.ask.pension_exclusion, ny_it201.ask.real_property_credit, ny_it201.ask.resident_credit, ny_it201.ask.special_accrual, ny_it201.ask.special_code, ny_it201.ask.us_obligation_interest, ny_it201.ask.use_tax_st141, ny_it201.ask.yonkers, ny_it201.h_fed_eic, ny_it201.h_fs_mfs, ny_it201.h_it270_possible, ny_it201.h_line19_mismatch, ny_it201.h_not_state_resident, ny_it201.h_pen_possible, ny_it201.h_spouse_nonres |
@@ -1885,10 +1930,10 @@ What each compared line's verdict depends on within the document (tools/transcri
 | 23 | 5f6e9136f6366d6a8b34269668769646ed0f64834225510e482c8bdf72923580 |
 | 24 | 21c0d2dfdd9596d93a352afde0aed197eaace4975ae4b553cc352faebfc98614 |
 | 25 | de58098410f407e1c01c87e3cb686ffee38e692005dbdab7ce229ce8e27d6cb2 |
-| 26 | 9ff90ad759ccc41be7374dd66694efdabada8127a8b6a72fd2db294693eebb67 |
+| 26 | d1f68152b516f0bcb6ed88f676b3e6e049b95368336581ccaadc90eed3c45bfb |
 | 27 | 3408d939107960440ca6f29c6127ff6b3b38dcb7addc6b2f81154360af68bc35 |
-| 28 | 4097087a54b20b00c3903e405f2687cf0088b67429dd5a481752dc8cae59f33f |
-| 29 | 1989d14580b73c66be8bcd89989c2fb63687766403d913d8b87dc6c1cc9689d4 |
+| 28 | 581b6c7221fb58a0c32840a593873435e47b461da699ada8cf3359e9eb6872f0 |
+| 29 | d69a2eb963dbfdacf5f4123f9b8c2e509f18db5bf102f44d9b7e00b7febdfedb |
 | 30 | 09f1cf6c47cc4b6c10b8bd6306b25342787e09159a30b9ea719655b429cc8d48 |
 | 31 | 4698820240520cad69161260266f113cfd5b3fd7152dc7ea1bff5e3f15a0df1c |
 | 32 | ebbcaf666cfcea9cf9853233fe4f7e1b523ff86345bf133e3fa5bcf60d74792b |
@@ -1963,8 +2008,8 @@ What each compared line's verdict depends on within the document (tools/transcri
 | 52 | c82b7d8d8e9aa1d59a34e2e84824bed2ccb3dbfa7bd53fb5c3a3b7c24ef2f339 |
 | 53 | c2d0dccc536ae22102e706b0aa8c87b1851dee4c48337d39c342599e0d7455f2 |
 | 54 | 1f5ae71234b822f1433ce55adc77874d354366d3d7b7b517fbc1c509d226562f |
-| 54a | 534de1ccd3484bd9464cdc8950ce30dae5ed5bb8c53e91d34eb686dbd473b275 |
-| 54b | 9c9350e37ad12fdce5a9ec2ee615e69a3798275398bfee3384b30a5eb68abced |
+| 54a | 2ae9049d329fb56af0d08c13dc1a8ce2d53e021d5ed491b086a7081cd81423ce |
+| 54b | ca9c5733c1ad8c0afc63d2ad9341547f60e1cbe2fe57594c6114f344031db068 |
 | 54c | 783501a8ad15a7530e67431a2524856557bb9964d6b14d150a1a09017c24b61f |
 | 54d | 6802883037aba3880ae4f2fbe220d6e9aa6aedc2b66e6b10ff74f7e77ce9c932 |
 | 54e | 92d48f290f85d3d7dd60fe620655c3a3a265eee311bebb06013d174a23f05fbd |
@@ -1988,7 +2033,7 @@ What each compared line's verdict depends on within the document (tools/transcri
 | 61 | 0b1b43168dba06f33619b3fe34032977426efaeca1c9b52368dfb6046db94791 |
 | 62 | 6f15d5a82c661c9f283180e613bb2b496ada9cadd3c892cb5f65dcbf5a2ca901 |
 | 63 | e639b93848b4db093b37f67361d8e81fad11f6b9a75a47905985bf8a85d8065c |
-| 64 | a5f0618ac2bdd918bd9ec453f260c77349d8577320a0378415df1452a6705d7b |
+| 64 | c71166797a30ba2eaad8ab5ae966d6e54c82a9cc554e3077e72afa82957977b6 |
 | 65 | 608d5c54b046b0074bcc8348156bd1f8277fe57f0f2e287e2bc232815463d3d4 |
 | 66 | 9184d921bf71f25c0b753169559508fa01f5f34f8035a24e2c258c01cfba3389 |
 | 67 | ad1ffde0f4c0943b7555852ac0ebdfdd7c0a43ba7c71f2ea134e48a162294d53 |
@@ -2019,8 +2064,9 @@ What each compared line's verdict depends on within the document (tools/transcri
 | 82 | 92127e1f501aba9e24c5a5d194b0fc49526947578561e9c63c364b1847e69e47 |
 | (77) | 4375e1f0e0866c428c3d6d860b0d2ffb70bb1e712f017ae7680d9e995df42049 |
 | 77 | 29fd7542de31bcd9346db1baf2ae8a85089faa1b107e02260b5e7fbe5a35dcea |
-| 78 | 4039d7e36e0e536e72d121bd698abf2f5b07cfc55f2ee4c4f8512f6b6aed9882 |
-| 78a | ac82020b889e0fa3a5dec9ec25ff3e2c17ff9dcf2c2335b28e3238c6e2ba61cf |
+| 79 | 45b0a28e7fd35b290c7d85c48be9a8475c9b305cff08a20a49fc1cd7244323fe |
+| 78 | 0d8a419b2badd40c527f68a3ce1f765d979d77e67c537e8c074a8cb4b6b8d9c6 |
+| 78a | b60d840810ba0accc5c6f818b2e4578d8abf62ce54bed1eb3d61198c9dc57dce |
 | 78b | 952a2407b88a305131f59dbc5b01d3c958037b4dc8c3814213eaaef2b2a23517 |
 | 80 | 69f908b3b7023775621c35f6979f28695581a441a69f7ab6f7ffae21196cc082 |
 | (rest of the document) | 9b8e1400e9ed29bae97a2ef3b82bfebd260de441d31e5edaee1d2a9cc93e1284 |
@@ -2137,8 +2183,8 @@ The interfaces (id, printed marker, type, input question) of other documents' li
 | 52 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
 | 53 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
 | 54 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
-| 54a | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
-| 54b | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
+| 54a | 5b32ca2cb27655f655096a0caa7ee74f8dce7a85894316e7b6b7b74384756b8a |
+| 54b | 5b32ca2cb27655f655096a0caa7ee74f8dce7a85894316e7b6b7b74384756b8a |
 | 54c | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
 | 54d | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
 | 54e | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
@@ -2162,7 +2208,7 @@ The interfaces (id, printed marker, type, input question) of other documents' li
 | 61 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
 | 62 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
 | 63 | ae083ca1e053beaf072d860c3f4538073c2ec04c5212631a92f5ddb1c98f9c68 |
-| 64 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
+| 64 | d7a178975feb28d030c9e65166597f5830e1042ee3ce2286c014931593396e11 |
 | 65 | dcd9172040fa80b96b5cfdea5d56ff709411c35bd1952db1164291b1e4a20b1b |
 | 66 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
 | 67 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
@@ -2193,6 +2239,7 @@ The interfaces (id, printed marker, type, input question) of other documents' li
 | 82 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
 | (77) | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
 | 77 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
+| 79 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
 | 78 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
 | 78a | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
 | 78b | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
@@ -2269,6 +2316,129 @@ lines:
       only well-formed expression available; it encodes no amount from the IRS or New York text.
       Fix: replace it with {op: copy, from: <federal Form 1040 line 1z id>} once that line, and
       the New York line 1 instruction naming it, are added to the catalog.
+```
+```
+
+#### Pass eb1ce5a46b94
+
+| field | value |
+| --- | --- |
+| date | 2026-11-07 |
+| review scope | lines 26, 28, 29, 54a, 54b, 64, 79, 78, 78a |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | eb1ce5a46b9461698baf89a25d5651dced4a6770782013164a99bebd75c55d37 |
+| prompt policy | source-only-computation-v3+lines-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | required-review-interfaces-v2 |
+| complete input context | fail |
+| required input context sha256 | 9c9527c26107fa8fc556efa0606105dabc337090df4f437f8488add03d2ca573 |
+| type validation policy | project-expression-types-v3 |
+| model type validation | pass |
+| system sha256 | 83e9ed0ae4edc40db4c301ed52bf00d46afb0b4bd30dea929e35960993911093 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
+| subject sha256 | bdbaabef089d389a2636de8cec840f9a958707f040e96414608d9f5654c8888c |
+| receipt | .transcription/ny_it201.lines-adb75db56cdc |
+| printed lines compared | 9 |
+| agree / disagree / missing | 6 / 3 / 0 |
+| extra printed lines in second | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| ny_it201i | Form IT-201-I (2025), Instructions for Form IT-201 (including instructions for Forms IT-195 and IT-201-ATT), 41 pages; final 2025 edition; PDF modified 2025-11-20 | 9, 12, 15, 16, 19, 23 | cited pages | 05f677379d60faca0da08ac2dc171a937cf56878f73956511975c1dcc48aeff9 | 9, 15, 16, 19, 23 | 460f67bd9e14ac9d7ed2e001426510569307546a5c2cf0a97784808e2678eeaf |
+| ny_it201 | Form IT-201 (2025), Resident Income Tax Return; final 2025 edition (page footers 'IT-201 (2025)', scan lines 201001250094 to 201004250094); PDF modified 2025-11-12 | 1, 2, 3, 4 | whole document | c924371c32a986a1903c9216bd60c6df8fb52f8e506e5c462851226b71e2154d | - | 895c4b15bba606353fd49f5779f969877e55196eda7f7b9f633f02cbd3dbbb3d |
+| ny_it216i | 2025 | 1 | cited pages | aaccbcdb1a41b6e6221e3b0f908cb845e48bb0435b736ce2cd8ed75239deb6ac | 1 | 64200221fb39e0126f8748f9cd859793e2faf9c24c3f4b9a0134ee079251128b |
+
+##### Other documents in the catalog
+
+Chosen from the source pages above (catalog_selection); refusal-gate inputs are in the screening list.
+
+| reason | documents |
+| --- | --- |
+| definition | ny_city_rs, ny_rs, ny_tcw, ny_tcw_first |
+| named lines: f1040.line11a, f1040.line15, f1040.line27a, f1040.line2b, f1040.line3b, f1040.line4b, f1040.line5b, f1040.line6b, f1040.line7a, f1040.status | f1040 |
+| named lines: person.sep_s3 | person |
+| named lines: s1.line1, s1.line26, s1.line2a, s1.line3 | s1 |
+
+##### Raw second transcription
+
+```yaml
+```yaml
+lines:
+  - id: ny_it201.line26
+    printed: "26"
+    label: "Pensions of NYS and local governments and the federal government"
+    type: NonNegDollars
+    expr: {op: param, ref: ny.zero}
+    refuses: [ny_it201.ask.gov_pension]
+    note: "Line 26 instructions: if you received no such pension or distribution included in federal AGI, go to line 27, so no amount is entered. The Yes case is refused through ny_it201.ask.gov_pension, and the No case is encoded as zero. The supplied interface has no input for the pension amount."
+  - id: ny_it201.line28
+    printed: "28"
+    label: "Interest income on U.S. government bonds"
+    type: NonNegDollars
+    expr: {op: param, ref: ny.zero}
+    refuses: [ny_it201.ask.us_obligation_interest]
+    note: "Line 28 instructions: if no U.S. government obligation interest is included on lines 2, 6 or 11, go to line 29. The Yes case, including qualifying mutual fund dividends, is refused through ny_it201.ask.us_obligation_interest. The No case is zero. No amount input is supplied."
+  - id: ny_it201.line29
+    printed: "29"
+    label: "Pension and annuity income exclusion"
+    type: NonNegDollars
+    expr: {op: param, ref: ny.zero}
+    refuses: [ny_it201.ask.pension_exclusion]
+    note: "Line 29 instructions: if no qualifying pension or annuity income (other than line 26 government pensions) applies, go to line 30. The Yes case is refused through ny_it201.ask.pension_exclusion. That case covers the 59 1/2 age rule and the $20,000 limit, and no qualifying-income input is supplied. The No case is zero."
+  - id: ny_it201.line54a
+    printed: "54a"
+    label: "MCTMT net earnings base for Zone 1"
+    type: NonNegDollars
+    expr: {op: param, ref: ny.zero}
+    refuses: [ny_it201.ask.mctmt]
+    shown_when: ny_it201.ask.mctmt
+    note: "Lines 54a-54e instructions: if neither spouse had net earnings from self-employment over $50,000 allocated to Zone 1 or Zone 2, skip lines 54a through 54e. The Yes case is refused through ny_it201.ask.mctmt. The skipped case is encoded as zero, and the line is shown only when the question is answered Yes."
+  - id: ny_it201.line54b
+    printed: "54b"
+    label: "MCTMT net earnings base for Zone 2"
+    type: NonNegDollars
+    expr: {op: param, ref: ny.zero}
+    refuses: [ny_it201.ask.mctmt]
+    shown_when: ny_it201.ask.mctmt
+    note: "As for line 54a: the Yes case is refused through ny_it201.ask.mctmt, and the skipped case is zero."
+  - id: ny_it201.line64
+    printed: "64"
+    label: "NYS/NYC child and dependent care credit"
+    type: NonNegDollars
+    expr: {op: param, ref: ny.zero}
+    refuses: [ny_it201.ask.dependent_care]
+    note: "Line 64 instructions: if you would not qualify for the federal child and dependent care credit, you do not qualify for this credit. The qualifying case requires Form IT-216, which is outside this slice, so it is refused through ny_it201.ask.dependent_care. The No case is zero."
+  - id: ny_it201.h_line79_exceeds_77
+    printed: "(helper)"
+    label: "Amount of line 77 you want applied to 2026 estimated tax is more than the amount overpaid on line 77"
+    type: Bool
+    expr: {op: test, gt: [ny_it201.line79_amount, ny_it201.line77]}
+    note: "Consistency check inferred from the line 79 caption 'Amount of line 77 that you want applied' and the instruction that lines 78a through 79 should total line 77."
+  - id: ny_it201.line79
+    printed: "79"
+    label: "Amount of line 77 that you want applied to your 2026 estimated tax (see instructions)"
+    type: NonNegDollars
+    expr: {op: copy, from: ny_it201.line79_amount}
+    refuses:
+      - {when: ny_it201.h_line79_exceeds_77, when_known: true}
+  - id: ny_it201.line78
+    printed: "78"
+    label: "Amount of line 77 available for refund (subtract line 79 from line 77)"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: ny_it201.line77, take: ny_it201.line79}
+    note: "The form says to subtract line 79 from line 77. The consistency check on line 79 keeps line 79 at or below line 77. A zero floor is used so the declared NonNegDollars type holds."
+  - id: ny_it201.line78a
+    printed: "78a"
+    label: "Amount of line 78 that you want to deposit into a NYS 529 account (Form IT-195, line 4) (also submit Form IT-195)"
+    type: NonNegDollars
+    expr: {op: param, ref: ny.zero}
+    refuses: [ny_it201.ask.refund_529]
+    note: "Line 78a takes Form IT-195 line 4, which is outside this slice and has no supplied input. A deposit request is refused through ny_it201.ask.refund_529. With no deposit requested, the line is zero."
 ```
 ```
 
