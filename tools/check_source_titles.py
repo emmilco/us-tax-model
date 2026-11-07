@@ -20,6 +20,11 @@ instructions to its recipient, printed on the form), on page `page` of its archi
 PDF (pages counted as the archived text layers count them, from 1). The web UI shows it, with that source, beside a
 question that names the form. Its text must occur on that page, compared with whitespace collapsed.
 
+A form whose own text layers do not carry its printed title as a run (the title is interleaved with other text) may
+name `title_source`, the id of its own instructions document in the same catalog. Its title and designation are then
+checked, with the same verbatim rule, against that document's text instead of its own. The named document must be
+another entry whose designation is "Instructions for " plus this entry's designation; any other document is refused.
+
     check_source_titles.py               check the year's catalogs (taxyear: --year N, default the newest adopted)
     check_source_titles.py --self-test   (in check-all) a missing, absent or unmatched title, designation or form purpose
                                          is reported
@@ -93,9 +98,24 @@ def check(catalogs, required):
     for catalog, archive in catalogs:
         if not catalog.exists():
             continue
-        for entry in load_catalog(catalog):
+        entries = load_catalog(catalog)
+        by_id = {e["id"]: e for e in entries}
+        for entry in entries:
             doc_id = entry["id"]
             where = f"{catalog.relative_to(catalog.parents[1])}: {doc_id}"
+            source_id = doc_id
+            if "title_source" in entry:
+                source_id = entry["title_source"]
+                source = by_id.get(source_id) if isinstance(source_id, str) else None
+                designation = entry.get("designation")
+                if source is None or source_id == doc_id:
+                    problems.append(f"{where}: title_source must name another document of the catalog")
+                    continue
+                if not (isinstance(designation, str) and norm(designation) and isinstance(source.get("designation"), str)
+                        and source["designation"].startswith("Instructions for ") and norm(designation) in norm(source["designation"])):
+                    problems.append(f"{where}: title_source {source_id} must be this form's own instructions "
+                                    f"(designation 'Instructions for ' plus this designation)")
+                    continue
             for field in ("title", "designation"):
                 value = entry.get(field)
                 if value is None:
@@ -105,11 +125,11 @@ def check(catalogs, required):
                 if not isinstance(value, str) or not norm(value):
                     problems.append(f"{where}: the {field} is empty")
                     continue
-                texts = archived_texts(archive, doc_id, manifests)
+                texts = archived_texts(archive, source_id, manifests)
                 if not texts:
                     problems.append(f"{where}: no archived text to check the {field} against")
                 elif not any(norm(value) in t for t in texts):
-                    problems.append(f"{where}: {field} {value!r} does not occur in the archived text")
+                    problems.append(f"{where}: {field} {value!r} does not occur in the archived {'text' if source_id == doc_id else 'text of ' + source_id}")
             if "form_purpose" in entry:
                 problems += purpose_problems(where, entry["form_purpose"], archive, manifests)
     return problems
@@ -148,6 +168,28 @@ def self_test():
         rows = [{"id": "sheet", "designation": "Table 1."}, {"id": "gone", "designation": "Form G"}]
         catalog.write_text(json.dumps(rows), encoding="utf-8")
         assert check([(catalog, archive)], False) == ["tools/sources-2025.json: gone: no archived text to check the designation against"], "a designation may stand without a title and is checked"
+        (archive / "fj.txt").write_text("Sched J\nIncome Averaging\n", encoding="utf-8")
+        (archive / "ij.txt").write_text("Instructions for Schedule J\n(Form 1040)\nIncome Averaging for\nFarmers\n", encoding="utf-8")
+        man = json.loads((archive / "manifest.json").read_text(encoding="utf-8"))
+        man["documents"] += [{"id": "fj", "file": "fj.pdf", "text_file": "fj.txt"}, {"id": "ij", "file": "ij.pdf", "text_file": "ij.txt"}]
+        (archive / "manifest.json").write_text(json.dumps(man), encoding="utf-8")
+        ij = {"id": "ij", "title": "Instructions for Schedule J (Form 1040)", "designation": "Instructions for Schedule J (Form 1040)"}
+        fj = {"id": "fj", "title": "Income Averaging for Farmers", "designation": "Schedule J (Form 1040)", "title_source": "ij"}
+        catalog.write_text(json.dumps([ij, fj]), encoding="utf-8")
+        assert check([(catalog, archive)], True) == [], "a title and designation checked against the form's own instructions match"
+        bad_source = lambda doc: f"title_source {doc} must be this form's own instructions (designation 'Instructions for ' plus this designation)"
+        fb = {"id": "fb", "title": "Instructions for Form B", "designation": "Instructions for Form B"}
+        rows = [ij, fb, {**fj, "title": "Income Averaging for Farmers and Fishermen"}, {**fj, "title_source": "fj"}, {**fj, "title_source": "nope"},
+                {**fj, "title_source": "fb"}, {**fj, "designation": "Schedule K (Form 1040)"}, {**fj, "designation": None}, {**fj, "title_source": 7}]
+        catalog.write_text(json.dumps(rows), encoding="utf-8")
+        got = check([(catalog, archive)], True)
+        where = "tools/sources-2025.json: fj"
+        assert got == [f"{where}: title 'Income Averaging for Farmers and Fishermen' does not occur in the archived text of ij",
+                       f"{where}: title_source must name another document of the catalog",
+                       f"{where}: title_source must name another document of the catalog",
+                       f"{where}: {bad_source('fb')}",
+                       f"{where}: {bad_source('ij')}", f"{where}: {bad_source('ij')}",
+                       f"{where}: title_source must name another document of the catalog"], got
         (archive / "ib.txt").write_text("Instructions for Form B\n\fPurpose of Form\nUse Form B\n  to figure\nthe B tax.\n", encoding="utf-8")
         (archive / "ib.cols.txt").write_text("Instructions for Form B\n\fUse Form B to\nfigure the B tax. Who Must File\n", encoding="utf-8")
         man = json.loads((archive / "manifest.json").read_text(encoding="utf-8"))

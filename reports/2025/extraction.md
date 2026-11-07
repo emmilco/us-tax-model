@@ -4,8 +4,8 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
 
 | check | documents | failing |
 | --- | --- | --- |
-| layout vs reading order | 229 | 0 |
-| PDFKit against poppler | 229 | 0 |
+| layout vs reading order | 233 | 0 |
+| PDFKit against poppler | 233 | 0 |
 | PDF vs HTML snapshot | 12 | 0 |
 
 ## Per document
@@ -41,6 +41,8 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
 - **f1040se** layout vs reading order: 2 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **f1040sf** layout vs reading order: 2 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **f1040sj** layout vs reading order: 2 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **f1040sse** layout vs reading order: 2 pages, identical characters (2 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 4 words poppler reads that PDFKit skips)
@@ -223,6 +225,8 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
 - **f982** layout vs reading order: 1 pages, identical characters (1 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (4 such occurrences; 2 words poppler reads that PDFKit skips)
 - **fct2** layout vs reading order: 3 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **fincen114** layout vs reading order: 22 pages, identical characters
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **fr-2024-00796** layout vs reading order: 3 pages, identical characters (2 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
@@ -497,6 +501,10 @@ Offline checks that the archived IRS text is a faithful reading of the archived 
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (1 such occurrences; 3 words poppler reads that PDFKit skips)
 - **rp-2024-40** layout vs reading order: 27 pages, identical characters (2 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (1 such occurrences; 2 words poppler reads that PDFKit skips)
+- **rrb1099** layout vs reading order: 2 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
+- **rrb1099r** layout vs reading order: 2 pages, identical characters
+    - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **usc-26-179** layout vs reading order: 7 pages, identical characters (4 page(s) differ only in word spacing)
     - PDFKit: no page where PDFKit reads words poppler lacks beyond tolerance (0 such occurrences; 0 words poppler reads that PDFKit skips)
 - **usc-26-25a** layout vs reading order: 6 pages, identical characters (4 page(s) differ only in word spacing)

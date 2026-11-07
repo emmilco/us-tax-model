@@ -7,7 +7,7 @@ instructions and tax tables, and the Tax Law as published on the New York State
 Senate's laws site; never accepts return data.
 
 Jurisdictions. Each has its own catalog, archive directory and allow-listed hosts:
-  us  tools/sources-<year>.json     sources/<year>/     www.irs.gov, www.govinfo.gov
+  us  tools/sources-<year>.json     sources/<year>/     www.irs.gov, www.govinfo.gov, www.fincen.gov, www.ssa.gov, www.rrb.gov
   ny  tools/sources-ny-<year>.json  sources/ny/<year>/  www.tax.ny.gov, under /pdf/, /forms/
                                                         or /pit/file/tax-tables/ only;
                                                         legislation.nysenate.gov, under
@@ -55,7 +55,7 @@ from taxyear import YEAR, Y  # noqa: E402
 EXTRACT = ROOT / "tools" / "extract_text.py"
 DERIVED = [("file", "sha256"), ("text_file", "text_sha256"), ("cols_file", "cols_sha256"), ("pages_file", "pages_sha256")]
 JURISDICTIONS = {
-    "us": {"hosts": ("www.irs.gov", "www.govinfo.gov"), "paths": None,
+    "us": {"hosts": ("www.irs.gov", "www.govinfo.gov", "www.fincen.gov", "www.ssa.gov", "www.rrb.gov"), "paths": None,
            "archive": ROOT / "sources" / Y, "catalog": Path(__file__).with_name(f"sources-{Y}.json")},
     "ny": {"hosts": ("www.tax.ny.gov", "legislation.nysenate.gov"),
            "paths": {"www.tax.ny.gov": ("/pdf/", "/forms/", "/pit/file/tax-tables/"),
@@ -167,11 +167,19 @@ def self_test():
     us, ny = JURISDICTIONS["us"], JURISDICTIONS["ny"]
     accepted = [(us, "https://www.irs.gov/pub/irs-pdf/f1040.pdf"),
                 (us, "https://www.govinfo.gov/content/pkg/FR-2024-01-01/pdf/x.pdf"),
+                (us, "https://www.fincen.gov/sites/default/files/shared/FBAR%20Line%20Item%20Filing%20Instructions.pdf"),
+                (us, "https://www.ssa.gov/forms/ssa-1099.pdf"),
+                (us, "https://www.rrb.gov/sites/default/files/2017-03/txl-1099_0.pdf"),
                 (ny, "https://www.tax.ny.gov/pdf/2025/inc/it201i_2025.pdf"),
                 (ny, "https://www.tax.ny.gov/forms/current-forms/it/it201i.htm"),
                 (ny, "https://www.tax.ny.gov/pit/file/tax-tables/it201i-2025.htm"),
                 (ny, "https://legislation.nysenate.gov/pdf/laws/TAX601/")]
     refused = [(us, "https://www.tax.ny.gov/pdf/2025/inc/it201i_2025.pdf"),   # another jurisdiction's host
+               (ny, "https://www.fincen.gov/sites/default/files/shared/FBAR.pdf"),
+               (us, "https://fincen.gov/x.pdf"),                              # a host not listed
+               (us, "https://bsaefiling.fincen.gov/files/FBAR_EFILING.pdf"),
+               (us, "https://www.ssa.gov.example.com/forms/ssa-1099.pdf"),
+               (us, "http://www.rrb.gov/x.pdf"),                              # not HTTPS
                (ny, "https://www.irs.gov/pub/irs-pdf/f1040.pdf"),
                (ny, "http://www.tax.ny.gov/pdf/2025/inc/it201i_2025.pdf"),     # not HTTPS
                (ny, "https://tax.ny.gov/pdf/2025/inc/it201i_2025.pdf"),        # a host not listed

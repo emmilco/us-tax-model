@@ -18,7 +18,7 @@ import { nyPath, YEAR_ARGS, yearPath } from "./year.js";
 import type { Inputs } from "./types.js";
 import { mapPool, poolSize } from "./pool.js";
 import { docNames, questionForms } from "./serve.js";
-import { namedDesignations } from "./form-refs.js";
+import { formResolver, namedDesignations, type FormEntry } from "./form-refs.js";
 
 const MAIN = resolve(import.meta.dirname, "main.js");
 const ROOT = resolve(import.meta.dirname, "../..");
@@ -136,11 +136,20 @@ export async function serveChecks(): Promise<void> {
     ok(isDeepStrictEqual(named("Schedules C, E, and F (Form 1040 or 1040-SR), and Schedule A (Form 8971)"),
       ["Schedule C (Form 1040)", "Schedule E (Form 1040)", "Schedule F (Form 1040)", "Schedule A (Form 8971)"]), "a list of schedules takes its parent form");
     ok(isDeepStrictEqual(named("Form 1040, Filing Status; Form 2441, Part II; Form 1040 line 16; Pub. 501"), ["Form 1040", "Form 2441", "Form 1040"]), "words after a form are not form numbers");
+    const nyNumbers = ["IT-214", "IT-112-R", "IT-360.1", "IT-201", "IT-201-I"];
+    const bare = (text: string) => namedDesignations(text, nyNumbers).map((d) => d.designation);
+    ok(isDeepStrictEqual(named("Form IT-360.1, Form IT-360 and Form 1040."), ["Form IT-360.1", "Form IT-360", "Form 1040"]), "a dotted form number is one number");
+    ok(isDeepStrictEqual(bare("File IT-214 or IT-112-R; see IT-360.1, IT-201-I, IT-2, W-2, IT-2140, IT-360.15, IT-214A, XIT-214."),
+      ["Form IT-214", "Form IT-112-R", "Form IT-360.1", "Form IT-201-I"]), `a New York designation is found without "Form" only where catalogued: ${bare("File IT-214 or IT-112-R; see IT-360.1, IT-201-I, IT-2, W-2, IT-2140, IT-360.15, IT-214A, XIT-214.")}`);
+    const entry = (id: string, designation: string): FormEntry => ({ id, designation });
+    const resolve = formResolver([entry("a", "IT-214"), entry("b", "IT-112-R"), entry("c", "Form IT-360.1"), entry("d", "Form 1040"), entry("e", "SSA-1099")]);
+    ok(isDeepStrictEqual(resolve(["Claim Form IT-214, IT-112-R and Form IT-360.1 (not IT-360), W-2, SSA-1099"]).map((r) => `${r.designation}=${r.id}`),
+      ["IT-214=a", "IT-112-R=b", "Form IT-360.1=c"]), "a bare or dotted New York number resolves to its catalog entry; an uncatalogued bare number is not read as a form");
     const names = docNames(config.tax_year);
     const byQuestion = questionForms(config, names.forms);
     const formsOf = (input: string) => byQuestion.get(input)!.map((f) => `${f.designation}${f.id === null ? "?" : f.purpose ? "+" : ""}`);
-    ok(isDeepStrictEqual(formsOf("scope.other_line16"), ["Form 1040", "Form 8814+", "Form 8615+", "Form 8621", "Form 8960+", "Form 4972+", "Form 8978+", "Schedule J?"]),
-      `scope.other_line16 names Schedule J, which the catalogs lack, Form 8621, held without a purpose, and Forms 8814 and 8960, glossed: ${formsOf("scope.other_line16")}`);
+    ok(isDeepStrictEqual(formsOf("scope.other_line16"), ["Form 1040", "Form 8814+", "Form 8615+", "Form 8621", "Form 8960+", "Form 4972+", "Form 8978+", "Schedule J (Form 1040)+"]),
+      `scope.other_line16 names Schedule J (resolved to Schedule J (Form 1040)), Form 8621, held without a purpose, and Forms 8814 and 8960, glossed: ${formsOf("scope.other_line16")}`);
     ok(isDeepStrictEqual(formsOf("interest.penalty"), ["Form 1099-INT+", "Form 1099-OID+", "Schedule 1 (Form 1040)+"]), `a bare "Schedule 1" is Schedule 1 (Form 1040), the catalogs' only Schedule 1: ${formsOf("interest.penalty")}`);
     ok(formsOf("gift.special").includes("Schedule K-1?"), "a bare Schedule K-1, of three parent forms in the catalogs, stays unresolved");
     ok(isDeepStrictEqual(formsOf("ny_it2.state_withheld"), ["Form W-2", "Form IT-2+"]), `a New York question names Form W-2 and Form IT-2: ${formsOf("ny_it2.state_withheld")}`);

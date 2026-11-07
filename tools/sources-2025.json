@@ -2020,6 +2020,18 @@
     "url": "https://www.irs.gov/pub/irs-prior/i1040sf--2025.pdf"
   },
   {
+    "id": "f1040sj",
+    "title": "Income Averaging for Individuals With Income from Farming or Fishing",
+    "designation": "Schedule J (Form 1040)",
+    "title_source": "i1040sj",
+    "url": "https://www.irs.gov/pub/irs-prior/f1040sj--2025.pdf",
+    "form_purpose": {
+      "text": "Use Schedule J (Form 1040) to elect to figure your 2025 income tax by averaging, over the previous 3 years (base years), all or part of your 2025 taxable income from your trade or business of farming or fishing.",
+      "doc": "i1040sj",
+      "page": 1
+    }
+  },
+  {
     "id": "i1040sj",
     "title": "Instructions for Schedule J (Form 1040)",
     "designation": "Instructions for Schedule J (Form 1040)",
@@ -2051,6 +2063,39 @@
       "text": "Use this form to report railroad retirement taxes imposed on compensation received by employee representatives.",
       "doc": "fct2",
       "page": 2
+    }
+  },
+  {
+    "id": "fincen114",
+    "title": "BSA Electronic Filing Requirements For Report of Foreign Bank and Financial Accounts",
+    "designation": "Form 114",
+    "url": "https://www.fincen.gov/sites/default/files/shared/FBAR%20Line%20Item%20Filing%20Instructions.pdf",
+    "form_purpose": {
+      "text": "FinCEN Form 114, Report of Foreign Bank and Financial Accounts, is used to report a financial interest in or signature authority over a foreign financial account.",
+      "doc": "fincen114",
+      "page": 4
+    }
+  },
+  {
+    "id": "rrb1099",
+    "title": "Tax Statement General Information",
+    "designation": "Form RRB-1099",
+    "url": "https://www.rrb.gov/sites/default/files/2017-03/txl-1099_0.pdf",
+    "form_purpose": {
+      "text": "Form RRB-1099 reports the Social Security Equivalent Benefit (SSEB) portion of tier 1 and special guaranty benefits paid and repaid to citizens and/or residents of the United States, and the related U.S. Federal income tax withheld.",
+      "doc": "rrb1099",
+      "page": 1
+    }
+  },
+  {
+    "id": "rrb1099r",
+    "title": "Tax Statement General Information",
+    "designation": "Form RRB-1099-R",
+    "url": "https://www.rrb.gov/sites/default/files/2019-02/TXL-1099R%2001-19.pdf",
+    "form_purpose": {
+      "text": "Form RRB-1099-R reports the total gross payments, repayments and the related U.S. Federal income tax withheld from the Non-Social Security Equivalent Benefit (NSSEB) portion of tier 1, tier 2, vested dual benefit (VDB), and supplemental annuity payments.",
+      "doc": "rrb1099r",
+      "page": 1
     }
   }
 ]

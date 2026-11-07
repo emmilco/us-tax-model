@@ -145,8 +145,9 @@ Paid review costs are logged per round in `.transcription/costs.jsonl`, and each
 
 A presentation rule within the interview layer's grouping; it changes where a gate appears, never what is computed.
 
-- Gates answered yes by fewer than about 10% of all filers are not asked one by one up front. They are gathered at the
-  end under "Less common situations". The exact cut is set at the natural gap in the frequency distribution.
+- Gates answered yes by fewer than 5% of all filers are not asked one by one up front. They are gathered at the end
+  under "Less common situations". The cut is a fixed 5% (owner, 2026-11-07): the estimated shares
+  (`interview/gate_frequencies-2025.yaml`) taper evenly between 3% and 30%, with no natural gap to cut at.
 - Frequencies come from the coverage estimate (`tools/coverage/`: IRS Statistics of Income counts and PolicyEngine
   microdata) where it can measure them, otherwise from a recorded judgment. Each gate's estimate and its source are
   recorded beside it in the data.
