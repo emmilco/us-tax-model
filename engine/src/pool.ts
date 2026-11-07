@@ -1,5 +1,6 @@
 // A bounded pool for the test commands (test-fixtures, test-integration, test-serve), which run independent
-// command-line invocations: results come back in input order whatever order the work finishes in.
+// command-line invocations, and for interview-rules, which runs independent walks on worker threads: results come back
+// in input order whatever order the work finishes in.
 import { spawn } from "node:child_process";
 import { availableParallelism } from "node:os";
 

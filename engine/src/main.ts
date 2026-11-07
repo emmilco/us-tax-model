@@ -146,7 +146,7 @@ if (command === "review-stage5") {
 } else if (command === "classm-jobs") {
   classmJobs(process.argv.slice(3));
 } else if (command === "interview-rules") {
-  process.exit(interviewRules(process.argv.slice(3)));
+  process.exit(await interviewRules(process.argv.slice(3)));
 } else if (command === "check-self-test") {
   runCheckSelfTest();
 } else {

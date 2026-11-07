@@ -19,18 +19,24 @@
 // question it does not answer is counted as not walkable, not failed (the generator does not answer every input). The
 // random traversals take every New York fixture of RANDOM_EVERY and every other case.
 //
+// The walks are independent: each loop's iterations run on worker threads (pool.ts's size), each with its own copy of
+// the data and the seed the serial loop would give it, and their results are taken back in the loop's order, so the
+// output and verdicts are those of a serial run (bar the printed times).
+//
 //   interview-rules [--self-test]
 import assert from "node:assert/strict";
 import { readdirSync, readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
+import { Worker } from "node:worker_threads";
 import fc from "fast-check";
+import { mapPool, poolSize } from "./pool.js";
 import { loadCanonical } from "./canonical.js";
 import { interviewStatus, loadInterview, questionTemplate, replay, type InterviewData } from "./interview.js";
 import { evaluate } from "./eval.js";
 import { gateProblems } from "./gates.js";
 import { nyReturnArbitrary, sampleReturns } from "./generate.js";
 import { resolveInputs } from "./fixture-inputs.js";
-import { nyPath, yearPath } from "./year.js";
+import { YEAR, nyPath, yearPath } from "./year.js";
 import type { CanonicalData, Inputs } from "./types.js";
 
 const PROFILES = ["social-security", "sales", "stage4", "full", "ny"] as const;
@@ -146,105 +152,204 @@ export function leakProblems(seen: Map<string, string>, baseline: Record<string,
   return out;
 }
 
-export function interviewRules(args: string[] = []): number {
+/** One unit of the walks' work, done by a worker thread (interview-rules-worker.ts) on its own copy of the data. Each
+ * kind is the body of one serial loop over cases or walks, for one case or walk; its seed comes from the main thread,
+ * so the work is the same whichever thread does it. Leaks come back as lists of reachable inputs, in the order the
+ * serial loop met them, and the main thread applies them in case order, so the first case named for each template is
+ * the serial run's. */
+export type Task =
+  | { kind: "walk"; profile: "full" | "ny"; c: Case }
+  | { kind: "order"; profile: "full" | "ny"; group: string; c: Case; w: Walk }
+  | { kind: "random"; profile: "full" | "ny"; group: string; c: Case; w: Walk; seed: number }
+  | { kind: "subsets"; profile: "full" | "ny"; w: Walk; seed: number };
+export type TaskResult =
+  | { kind: "walked"; w: Walk; leaks: string[][]; bad: string | null }
+  | { kind: "unanswered"; input: string; leaks: string[][] }
+  | { kind: "failed"; error: string; leaks: string[][] }
+  | { kind: "errors"; errors: string[]; leaks: string[][] };
+
+export interface Context { data: CanonicalData; configs: Record<(typeof PROFILES)[number], InterviewData> }
+
+export function loadContext(): Context {
+  return { data: loadCanonical(), configs: Object.fromEntries(PROFILES.map((p) => [p, loadInterview(p)])) as Context["configs"] };
+}
+
+export function runTask({ data, configs }: Context, task: Task): TaskResult {
+  const leaks: string[][] = [];
+  const config = configs[task.profile];
+  if (task.kind === "walk") {
+    try {
+      const w = walk(data, config, task.c.inputs, bankOrder(config), 800, (r) => leaks.push(r));
+      return { kind: "walked", w, leaks, bad: onlyGiven(config, w.events) };
+    } catch (e) {
+      return e instanceof Unanswered ? { kind: "unanswered", input: e.message, leaks } : { kind: "failed", error: String(e), leaks };
+    }
+  }
+  const errors: string[] = [];
+  const { w } = task;
+  if (task.kind === "order") {
+    const { group, c } = task;
+    const rand = rng(SEED + w.events.length);
+    for (const [how, events] of [["reversed", w.events.toReversed()], ["shuffled", shuffled(w.events, rand)]] as const) {
+      const inputs = replayed(config, events);
+      const st = interviewStatus(data, config, inputs);
+      if (st.status !== w.status || targetKey(data, config, inputs) !== w.valuesKey) errors.push(`order: ${group}: ${c.id}: the answers ${how} give a different ${st.status !== w.status ? `status (${st.status}, not ${w.status})` : "value"}`);
+      const bad = onlyGiven(config, events);
+      if (bad) errors.push(`no-input-set: ${group}: ${c.id} (${how}): ${bad}`);
+    }
+  } else if (task.kind === "random") {
+    const { group, c } = task;
+    const rand = rng(task.seed);
+    try {
+      const r = walk(data, config, c.inputs, (open) => open[Math.floor(rand() * open.length)]!, 800, (x) => leaks.push(x));
+      if (r.status !== w.status || r.valuesKey !== w.valuesKey) errors.push(`order: ${group}: ${c.id}: a random answering order gives a different ${r.status !== w.status ? `status (${r.status}, not ${w.status})` : "value"}`);
+    } catch (e) {
+      errors.push(`order: ${group}: ${c.id}: random answering order: ${e instanceof Unanswered ? `asks ${e.message}, which the answers in bank order never reach` : String(e)}`);
+    }
+  } else {
+    const rand = rng(task.seed);
+    for (let k = 0; k < 3; k++) {
+      const kept = w.events.filter(() => rand() < 0.5);
+      const st = interviewStatus(data, config, replayed(config, kept));
+      if (st.status === "complete" && st.reachableInputs.length) leaks.push(st.reachableInputs);
+    }
+  }
+  return { kind: "errors", errors, leaks };
+}
+
+/** Threads that each load the data once and do tasks one at a time (interview-rules-worker.ts). */
+class Workers {
+  private idle: Worker[] = [];
+  private all: Worker[] = [];
+  constructor(count: number) {
+    for (let i = 0; i < count; i++) {
+      const w = new Worker(new URL("./interview-rules-worker.js", import.meta.url), { workerData: { year: YEAR } });
+      this.all.push(w);
+      this.idle.push(w);
+    }
+  }
+  run(task: Task): Promise<TaskResult> {
+    const w = this.idle.pop();
+    if (!w) throw new Error("interview-rules: no idle worker (the pool's limit is the worker count)");
+    return new Promise((done, fail) => {
+      const onError = (e: Error) => { w.off("message", onMessage); fail(e); };
+      const onMessage = (m: { ok: true; result: TaskResult } | { ok: false; error: string }) => {
+        w.off("error", onError);
+        this.idle.push(w);
+        if (m.ok) done(m.result); else fail(new Error(m.error));
+      };
+      w.once("message", onMessage);
+      w.once("error", onError);
+      w.postMessage(task);
+    });
+  }
+  /** Asks each worker to end and waits for it: a worker that ends of itself runs its exit handlers, as a terminated
+   * one does not. */
+  async close(): Promise<void> {
+    await Promise.all(this.all.map((w) => new Promise<void>((done) => { w.once("exit", () => done()); w.postMessage(null); })));
+  }
+}
+
+export async function interviewRules(args: string[] = []): Promise<number> {
   if (args.includes("--self-test")) return selfTest();
-  const data = loadCanonical();
-  const configs = Object.fromEntries(PROFILES.map((p) => [p, loadInterview(p)])) as Record<(typeof PROFILES)[number], InterviewData>;
+  const { data, configs } = loadContext();
   const errors: string[] = [];
   const times: string[] = [];
-  const timed = <T>(name: string, f: () => T): T => {
+  const timed = async <T>(name: string, f: () => T | Promise<T>): Promise<T> => {
     const t0 = performance.now();
-    const r = f();
+    const r = await f();
     times.push(`${name} ${((performance.now() - t0) / 1000).toFixed(1)} s`);
     return r;
   };
 
-  timed("no-input-set (profiles, choices, gated targets)", () => errors.push(...staticProblems(data, configs)));
+  await timed("no-input-set (profiles, choices, gated targets)", () => errors.push(...staticProblems(data, configs)));
   const seen = new Map<string, string>();
   const leakIn = (where: string) => (reachable: string[]) => { for (const k of reachable) if (!seen.has(questionTemplate(k))) seen.set(questionTemplate(k), where); };
 
   // The walks: (profile, case) pairs from the fixtures and generated returns.
   const nyFiles = readdirSync(nyPath("fixtures")).filter((n) => n.endsWith(".json") && !n.startsWith("classm") && n !== "mutation.json").sort();
-  const groups: { name: string; profile: "full" | "ny"; cases: Case[]; generated: boolean }[] = timed("generate returns", () => [
+  const groups: { name: string; profile: "full" | "ny"; cases: Case[]; generated: boolean }[] = await timed("generate returns", () => [
     { name: "full: Stage 5 fixtures", profile: "full", cases: fixtureCases(yearPath("fixtures", "stage5.json"), data), generated: false },
     { name: "ny: New York fixtures", profile: "ny", cases: nyFiles.flatMap((f) => fixtureCases(join(nyPath("fixtures"), f), data)), generated: false },
     { name: "full: generated returns", profile: "full", cases: sampleReturns(data, GENERATED, SEED).map((inputs, i) => ({ id: `generated.${i}`, inputs })), generated: true },
     { name: "ny: generated returns", profile: "ny", cases: fc.sample(nyReturnArbitrary(data), { seed: SEED, numRuns: GENERATED }).map((inputs, i) => ({ id: `ny.generated.${i}`, inputs })), generated: true },
   ]);
 
-  const walks: { group: string; profile: "full" | "ny"; c: Case; w: Walk }[] = [];
-  const counts: string[] = [];
-  timed("completion and no-input-set: walks in bank order", () => {
-    for (const g of groups) {
-      let walked = 0, unwalkable = 0, states = 0;
-      for (const c of g.cases) {
-        try {
-          const w = walk(data, configs[g.profile], c.inputs, bankOrder(configs[g.profile]), 800, leakIn(`${g.name}: ${c.id}`));
-          walks.push({ group: g.name, profile: g.profile, c, w });
-          walked++; states += w.states;
-          const bad = onlyGiven(configs[g.profile], w.events);
-          if (bad) errors.push(`no-input-set: ${g.name}: ${c.id}: ${bad}`);
-        } catch (e) {
-          if (e instanceof Unanswered && g.generated) { unwalkable++; continue; }
-          errors.push(`walk: ${g.name}: ${c.id}: ${e instanceof Unanswered ? `no answer for asked question ${e.message}` : String(e)}`);
+  // Each loop below sends its iterations to the workers and takes the results back in the loop's order.
+  const limit = poolSize();
+  const workers = new Workers(limit);
+  try {
+    const walks: { group: string; profile: "full" | "ny"; c: Case; w: Walk }[] = [];
+    const counts: string[] = [];
+    await timed("completion and no-input-set: walks in bank order", async () => {
+      const flat = groups.flatMap((g) => g.cases.map((c) => ({ g, c })));
+      const results = await mapPool(flat, ({ g, c }) => workers.run({ kind: "walk", profile: g.profile, c }), limit);
+      for (const g of groups) {
+        let walked = 0, unwalkable = 0, states = 0;
+        for (const [i, { c }] of flat.entries()) {
+          if (flat[i]!.g !== g) continue;
+          const r = results[i]!;
+          for (const reachable of r.leaks) leakIn(`${g.name}: ${c.id}`)(reachable);
+          if (r.kind === "walked") {
+            walks.push({ group: g.name, profile: g.profile, c, w: r.w });
+            walked++; states += r.w.states;
+            if (r.bad) errors.push(`no-input-set: ${g.name}: ${c.id}: ${r.bad}`);
+          } else if (r.kind === "unanswered" && g.generated) {
+            unwalkable++;
+          } else {
+            errors.push(`walk: ${g.name}: ${c.id}: ${r.kind === "unanswered" ? `no answer for asked question ${r.input}` : r.kind === "failed" ? r.error : ""}`);
+          }
         }
+        counts.push(`${g.name}: ${walked} walked (${states} states)${g.generated ? `, ${unwalkable} not walkable` : ""}`);
       }
-      counts.push(`${g.name}: ${walked} walked (${states} states)${g.generated ? `, ${unwalkable} not walkable` : ""}`);
-    }
-  });
+    });
 
-  timed("order: reversed and shuffled replays", () => {
-    for (const { group, profile, c, w } of walks) {
-      const config = configs[profile];
-      const rand = rng(SEED + w.events.length);
-      for (const [how, events] of [["reversed", w.events.toReversed()], ["shuffled", shuffled(w.events, rand)]] as const) {
-        const inputs = replayed(config, events);
-        const st = interviewStatus(data, config, inputs);
-        if (st.status !== w.status || targetKey(data, config, inputs) !== w.valuesKey) errors.push(`order: ${group}: ${c.id}: the answers ${how} give a different ${st.status !== w.status ? `status (${st.status}, not ${w.status})` : "value"}`);
-        const bad = onlyGiven(config, events);
-        if (bad) errors.push(`no-input-set: ${group}: ${c.id} (${how}): ${bad}`);
+    await timed("order: reversed and shuffled replays", async () => {
+      const results = await mapPool(walks, ({ group, profile, c, w }) => workers.run({ kind: "order", profile, group, c, w }), limit);
+      for (const r of results) if (r.kind === "errors") errors.push(...r.errors);
+    });
+
+    let traversals = 0;
+    await timed("order: random traversals", async () => {
+      let i = 0, ny = 0;
+      const chosen: { group: string; profile: "full" | "ny"; c: Case; w: Walk; seed: number }[] = [];
+      for (const x of walks) {
+        const seed = SEED * 1000 + i++;
+        if (x.group === "ny: New York fixtures" && ny++ % RANDOM_EVERY) continue;
+        chosen.push({ ...x, seed });
       }
-    }
-  });
-
-  let traversals = 0;
-  timed("order: random traversals", () => {
-    let i = 0, ny = 0;
-    for (const { group, profile, c, w } of walks) {
-      const rand = rng(SEED * 1000 + i++);
-      if (group === "ny: New York fixtures" && ny++ % RANDOM_EVERY) continue;
-      traversals++;
-      try {
-        const r = walk(data, configs[profile], c.inputs, (open) => open[Math.floor(rand() * open.length)]!, 800, leakIn(`${group}: ${c.id} (random order)`));
-        if (r.status !== w.status || r.valuesKey !== w.valuesKey) errors.push(`order: ${group}: ${c.id}: a random answering order gives a different ${r.status !== w.status ? `status (${r.status}, not ${w.status})` : "value"}`);
-      } catch (e) {
-        errors.push(`order: ${group}: ${c.id}: random answering order: ${e instanceof Unanswered ? `asks ${e.message}, which the answers in bank order never reach` : String(e)}`);
+      traversals = chosen.length;
+      const results = await mapPool(chosen, ({ group, profile, c, w, seed }) => workers.run({ kind: "random", profile, group, c, w, seed }), limit);
+      for (const [k, r] of results.entries()) {
+        const { group, c } = chosen[k]!;
+        for (const reachable of r.leaks) leakIn(`${group}: ${c.id} (random order)`)(reachable);
+        if (r.kind === "errors") errors.push(...r.errors);
       }
-    }
-  });
+    });
 
-  timed("completion: random subsets of the answers", () => {
-    let i = 0;
-    for (const { group, profile, c, w } of walks) {
-      const rand = rng(SEED * 7919 + i++);
-      const config = configs[profile];
-      for (let k = 0; k < 3; k++) {
-        const kept = w.events.filter(() => rand() < 0.5);
-        const st = interviewStatus(data, config, replayed(config, kept));
-        if (st.status === "complete" && st.reachableInputs.length) leakIn(`${group}: ${c.id} (a subset of its answers)`)(st.reachableInputs);
+    await timed("completion: random subsets of the answers", async () => {
+      const results = await mapPool(walks, ({ profile, w }, i) => workers.run({ kind: "subsets", profile, w, seed: SEED * 7919 + i }), limit);
+      for (const [k, r] of results.entries()) {
+        const { group, c } = walks[k]!;
+        for (const reachable of r.leaks) leakIn(`${group}: ${c.id} (a subset of its answers)`)(reachable);
       }
-    }
-  });
+    });
+    return report(walks.length, traversals, counts);
+  } finally {
+    await workers.close();
+  }
 
-  const baseline = (JSON.parse(readFileSync(BASELINE, "utf8")) as { early_completion: Record<string, string> }).early_completion;
-  errors.push(...leakProblems(seen, baseline));
-  for (const line of counts) console.log(`  ${line}`);
-  console.log(`  early completion: ${seen.size} input template(s) left reachable at completion, ${Object.keys(baseline).length} held by the baseline`);
-  for (const t of times) console.log(`  time: ${t}`);
-  for (const e of errors.slice(0, 60)) console.error(`  ${e}`);
-  if (errors.length > 60) console.error(`  ... and ${errors.length - 60} more`);
-  console.log(`interview-rules: ${errors.length} problem(s); ${walks.length} walks, each replayed reversed and shuffled; ${traversals} answered in a random order`);
-  return errors.length ? 1 : 0;
+  function report(walkCount: number, traversals: number, counts: string[]): number {
+    const baseline = (JSON.parse(readFileSync(BASELINE, "utf8")) as { early_completion: Record<string, string> }).early_completion;
+    errors.push(...leakProblems(seen, baseline));
+    for (const line of counts) console.log(`  ${line}`);
+    console.log(`  early completion: ${seen.size} input template(s) left reachable at completion, ${Object.keys(baseline).length} held by the baseline`);
+    for (const t of times) console.log(`  time: ${t}`);
+    for (const e of errors.slice(0, 60)) console.error(`  ${e}`);
+    if (errors.length > 60) console.error(`  ... and ${errors.length - 60} more`);
+    console.log(`interview-rules: ${errors.length} problem(s); ${walkCount} walks, each replayed reversed and shuffled; ${traversals} answered in a random order`);
+    return errors.length ? 1 : 0;
+  }
 }
 
 /** Each rule flags a planted violation and passes the clean case. */
