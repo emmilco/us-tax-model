@@ -6031,3 +6031,17 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Symptom:** a partial return shows a refusal that answering the unknown conjunct could clear: over 400 federal partial returns, 741 line values are a refusal on the partial return and a value on the full one. Mid-interview only; complete returns are unaffected.
 - **Disposition:** open: T-248 (fix under the T-245 rule, or label refusals on incomplete returns as provisional in the T-236 UI).
 - **Tags:** engine; refusal; open
+
+## BUG-0431 — check-all in an agent worktree regenerates reports from partial review data
+
+- **Caught by:** T-254 item 1 and the T-236 design agents, 2026-11-06.
+- **Symptom:** A linked worktree has only part of the git-ignored review data (.transcription/: 15 entries against 1430 in the main checkout), so tools/check_all.sh run there regenerates reports/2025/second_family.md from partial data and still reports green; one agent committed the wrong report (35d04c3, not merged).
+- **Disposition:** open: check-all should refuse when the review data is incomplete, or the worktree setup should clone it in.
+- **Tags:** tooling; worktree; open
+
+## BUG-0432 — the social-security interview profile fails to start
+
+- **Caught by:** T-254 item 1 agent, 2026-11-06.
+- **Symptom:** interview start --profile social-security fails on a fresh build with: no question for reachable input f8962.alloc (also on the code before T-254).
+- **Disposition:** open.
+- **Tags:** interview; open
