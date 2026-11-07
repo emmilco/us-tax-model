@@ -5,8 +5,7 @@
 // and inputs the interview never reaches add no work.
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { isDeepStrictEqual } from "node:util";
-import { interviewState, replay, type InterviewData } from "./interview.js";
+import { interviewStatus, replay, type InterviewData } from "./interview.js";
 import type { CanonicalData, Inputs } from "./types.js";
 import { yearPath } from "./year.js";
 import { resolveInputs } from "./fixture-inputs.js";
@@ -28,12 +27,12 @@ export function checkInterview(data: CanonicalData, config: InterviewData, paths
     const walk = (current: Inputs, events: {input:string;value:unknown}[]): void => {
       try {
         if (events.length >= 100) throw new Error("path did not terminate");
-        const state=interviewState(data,config,current);
+        const state=interviewStatus(data,config,current);
         if(state.status!=="incomplete") {
           paths?.push(`${fixture.id} ${JSON.stringify(events)}`);
           const reversed=replay(config,[{version:1,tax_year:config.tax_year},...events.toReversed()]);
-          const b=interviewState(data,config,reversed);
-          if(!isDeepStrictEqual(state.values,b.values)||state.status!==b.status) throw new Error("answer order changes result");
+          const b=interviewStatus(data,config,reversed);
+          if(state.valuesKey()!==b.valuesKey()||state.status!==b.status) throw new Error("answer order changes result");
           return;
         }
         const question=state.question;
@@ -65,7 +64,7 @@ export function checkSalesInterview(data: CanonicalData, config: InterviewData, 
       // per input plus the final check: the bound is exact, not a guess.
       const bound=Math.max(maxSteps,Object.keys(fixture.inputs).length+1);
       for(let step=0;step<bound;step++) {
-        const state=interviewState(data,config,current);
+        const state=interviewStatus(data,config,current);
         if(state.status!=="incomplete") {ended=true;break;}
         const key=state.question?.input;
         if(!key || !(key in fixture.inputs) || key in current) throw new Error(`missing or repeated question ${key}`);
@@ -75,8 +74,8 @@ export function checkSalesInterview(data: CanonicalData, config: InterviewData, 
       }
       if(!ended) throw new Error("path did not terminate");
       const reversed=replay(config,[{version:1,tax_year:config.tax_year},...events.toReversed()]);
-      const a=interviewState(data,config,current), b=interviewState(data,config,reversed);
-      if(!isDeepStrictEqual(a.values,b.values)||a.status!==b.status)throw new Error("answer order changes result");
+      const a=interviewStatus(data,config,current), b=interviewStatus(data,config,reversed);
+      if(a.valuesKey()!==b.valuesKey()||a.status!==b.status)throw new Error("answer order changes result");
     } catch(e) {errors.push(`${fixture.id}: ${String(e)}`);}
   }
   return errors;

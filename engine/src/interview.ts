@@ -43,6 +43,27 @@ export function questionTemplate(key: string): string {
   if (key.startsWith("$")) return key.split("@")[0]!;
   return templateKey(key);
 }
+/** Per-(data, config) indexes: a question by its input template, an input line by its template. The first match wins. */
+const questionIndex = new WeakMap<InterviewData, Map<string, InterviewData["questions"][number]>>();
+const inputLineIndex = new WeakMap<CanonicalData, Map<string, CanonicalData["forms"][number]["lines"][number]>>();
+function questionFor(config: InterviewData, template: string) {
+  let index = questionIndex.get(config);
+  if (!index) {
+    index = new Map();
+    for (const q of config.questions) if (!index.has(q.input)) index.set(q.input, q);
+    questionIndex.set(config, index);
+  }
+  return index.get(template);
+}
+function inputLine(data: CanonicalData, template: string) {
+  let index = inputLineIndex.get(data);
+  if (!index) {
+    index = new Map();
+    for (const d of data.forms) for (const l of d.lines) if (l.expr.op === "input" && !index.has(l.id)) index.set(l.id, l);
+    inputLineIndex.set(data, index);
+  }
+  return index.get(template);
+}
 export interface Question { input: string; prompt: string; help: string; order: number; cite: CiteFilled; choices?: RosterChoice[]; helpRequested: boolean; entry: string }
 /** A derivation as `resultToJson` writes it. */
 export interface JsonDerivation { value: Value; op: string; cite: CiteFilled | null; operands: { ref: string; value: Value }[]; guardsNotTaken: { guard: string; value: Value }[]; notes: string[] }
@@ -56,7 +77,7 @@ export function interviewView(data: CanonicalData, config: InterviewData, inputs
   const needed = new Set<string>();
   for (const der of result.derivations.values()) if (der.value.kind === "unknown" && der.value.input) needed.add(der.value.input);
   const pending: Question[] = [...needed].map(key => {
-    const q = config.questions.find(q => q.input === questionTemplate(key));
+    const q = questionFor(config, questionTemplate(key));
     if (!q) throw new Error(`no question for reachable input ${key}`);
     return { ...q, input: key, helpRequested: inputs[key] === null, entry: entryHint(data, key, q.choices) };
   }).sort((a,b) => a.order - b.order || a.input.localeCompare(b.input));
@@ -70,6 +91,32 @@ export function interviewView(data: CanonicalData, config: InterviewData, inputs
     values: JSON.parse(resultToJson(result)).values as Record<string, JsonDerivation>,
     sheet: valuesSheet(data, result, data.forms.map(f=>f.id)) };
 }
+/** What a caller that only steps through or compares states reads: status, refusal, the next question's input, the
+ * reachable inputs and, as the function `valuesKey`, computed on demand, the derivations of `interviewView`'s `values` serialized in key order, so two
+ * states' derivations are equal exactly when their keys are; no sheet, entry hints or question wording. */
+export function interviewStatus(data: CanonicalData, config: InterviewData, inputs: Inputs) {
+  const result = evaluate(data, inputs, config.targets);
+  const targetValues = config.targets.map(t => result.values.get(t)!);
+  const refused = targetValues.find(v => v.kind === "refusal");
+  const needed = new Set<string>();
+  for (const der of result.derivations.values()) if (der.value.kind === "unknown" && der.value.input) needed.add(der.value.input);
+  const complete = targetValues.every(v => v.kind !== "unknown" && v.kind !== "refusal");
+  let first: { input: string; order: number } | null = null;
+  for (const key of needed) {
+    const q = questionFor(config, questionTemplate(key));
+    if (!q) throw new Error(`no question for reachable input ${key}`);
+    if (!first || q.order < first.order || (q.order === first.order && key.localeCompare(first.input) < 0)) first = { input: key, order: q.order };
+  }
+  return { status: refused ? "refused" : complete ? "complete" : "incomplete", refusal: refused ?? null,
+    question: refused || complete ? null : first,
+    reachableInputs: [...needed].sort(),
+    valuesKey: () => {
+      const values: Record<string, unknown> = {};
+      for (const [key, der] of [...result.derivations.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1)))
+        values[key] = { value: der.value, op: der.op, cite: der.cite, operands: der.operands, guardsNotTaken: der.guardsNotTaken, notes: der.notes };
+      return JSON.stringify(values);
+    } };
+}
 /** The state the CLI prints: `interviewView` with the values sheet as text. */
 export function interviewState(data: CanonicalData, config: InterviewData, inputs: Inputs) {
   const view = interviewView(data, config, inputs);
@@ -79,7 +126,7 @@ export function interviewState(data: CanonicalData, config: InterviewData, input
 export function inputMeta(data: CanonicalData, key: string): { type: string; values?: string[] } {
   if (key.startsWith("$")) return { type: "Roster" };
   const template = questionTemplate(key);
-  const line = data.forms.flatMap(d => d.lines).find(l => l.id === template && l.expr.op === "input");
+  const line = inputLine(data, template);
   if (!line) throw new Error(`${key}: not an input`);
   if (line.type.startsWith("Enum(")) return { type: "Enum", values: data.params.enums[line.type.slice(5, -1)]!.values };
   return { type: line.type };
