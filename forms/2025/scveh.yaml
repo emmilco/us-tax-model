@@ -544,45 +544,41 @@ form:
     type: Bool
     expr:
       op: input
-      source: 'Does any of these apply to this vehicle: you placed it in service before 2019; you claimed a special depreciation
-        allowance for it in an earlier year; you used the standard mileage rate for it in an earlier year; you disposed of
-        it in 2025; you made a substantial improvement to it in 2025 or an earlier year (such as adding air conditioning or
-        a new engine); you used it in 2025 for investment, that is, for the production of income outside your trade or
-        business; you acquired it in a trade-in or from a related person; you placed it in service in 2025 but acquired it before September 28, 2017; its business use was 50% or less in any earlier
-        year; it is an electric vehicle placed in service before 2007; you reduced its basis by a clean-fuel deduction
-        or a vehicle credit; you converted it from personal use to business use during 2025; or you use it in your
-        business of transporting persons or property for hire, or it is an ambulance
-        or hearse; you converted it from business use to personal use during 2025; you acquired it in an involuntary conversion
-        or a like-kind exchange; you must depreciate it under ADS (for example, it is used predominantly outside the United
-        States), or you elected ADS, the straight line method or the 150% declining balance method for it; you reduced its
-        basis because of a casualty; your 2025 tax year, or any tax year since you placed it in service, is shorter than 12
-        months; you are regularly engaged in the business of leasing passenger automobiles; you are not a corporation and you
-        purchased it and lease it to others, unless you manufactured or produced it, or the lease term (including options to
-        renew) is less than 50% of its class life and for the first 12 months after the transfer to the lessee your business
-        deductions for it (other than rents and reimbursed amounts) are more than 15% of its rental income; it is used by a
-        tax-exempt organization, unless used in connection with the production of income subject to the tax on unrelated
-        trade or business income; it is used by a governmental unit or a foreign person or entity, unless used under a lease
-        with a term of less than 6 months; you cannot prove its business
-        use with adequate records or with sufficient evidence to support your own statements; you claim a special depreciation
-        allowance for it in 2025 and its original use did not begin with you (original use is the first use to which the vehicle
-        is put, whether or not by you, so a vehicle someone else used before you acquired it is used property, and so is a
-        reconditioned or rebuilt vehicle you acquired unless the cost of its used parts is not more than 20% of its total
-        cost); you claim
-        a special depreciation allowance for it in 2025 and it is property described in section 168(k)(9)(A) or 168(k)(9)(B),
-        that is, property primarily used in a trade or business of furnishing or selling electrical energy, water or sewage
-        disposal services, gas or steam through a local distribution system, or transportation of gas or steam by pipeline,
-        whose rates are established or approved by a State or political subdivision, an agency or instrumentality of
-        the United States, a public service or public utility commission or similar body of a State or political
-        subdivision, or the governing or ratemaking body of an electric cooperative, or property used in a trade or
-        business that
-        has had floor plan financing indebtedness (a loan used to buy motor vehicles, boats, farm machinery or
-        equipment, or trailers or campers held for sale or lease, and secured by them) whose interest was taken into
-        account under section 163(j)(1)(C) in figuring the business interest expense limit; or its qualified business
-        use is 50% or less once you leave out uses that are not qualified business
-        use (investment use; leasing it to a 5% owner or related person, or using it as compensation for services of a 5%
-        owner or related person, unless for the lease the value is reported as income to that person; using it as compensation
-        for services of anyone else unless an amount is included in that person''s income for the use and any required income
-        tax was withheld; and use that is nondeductible under section 274)?'
+      source: |-
+        Does any of these apply to this vehicle?
+
+        - you placed it in service before 2019
+        - you claimed a special depreciation allowance for it in an earlier year
+        - you used the standard mileage rate for it in an earlier year
+        - you disposed of it in 2025
+        - you made a substantial improvement to it in 2025 or an earlier year (such as adding air conditioning or a new engine)
+        - you used it in 2025 for investment, that is, for the production of income outside your trade or business
+        - you acquired it in a trade-in or from a related person
+        - you placed it in service in 2025 but acquired it before September 28, 2017
+        - its business use was 50% or less in any earlier year
+        - it is an electric vehicle placed in service before 2007
+        - you reduced its basis by a clean-fuel deduction or a vehicle credit
+        - you converted it from personal use to business use during 2025
+        - you use it in your business of transporting persons or property for hire, or it is an ambulance or hearse
+        - you converted it from business use to personal use during 2025
+        - you acquired it in an involuntary conversion or a like-kind exchange
+        - you must depreciate it under ADS (for example, it is used predominantly outside the United States), or you elected ADS, the straight line method or the 150% declining balance method for it
+        - you reduced its basis because of a casualty
+        - your 2025 tax year, or any tax year since you placed it in service, is shorter than 12 months
+        - you are regularly engaged in the business of leasing passenger automobiles
+        - you are not a corporation and you purchased it and lease it to others, unless you manufactured or produced it, or the lease term (including options to renew) is less than 50% of its class life and for the first 12 months after the transfer to the lessee your business deductions for it (other than rents and reimbursed amounts) are more than 15% of its rental income
+        - it is used by a tax-exempt organization, unless used in connection with the production of income subject to the tax on unrelated trade or business income
+        - it is used by a governmental unit or a foreign person or entity, unless used under a lease with a term of less than 6 months
+        - you cannot prove its business use with adequate records or with sufficient evidence to support your own statements
+        - you claim a special depreciation allowance for it in 2025 and its original use did not begin with you (original use is the first use to which the vehicle is put, whether or not by you, so a vehicle someone else used before you acquired it is used property, and so is a reconditioned or rebuilt vehicle you acquired unless the cost of its used parts is not more than 20% of its total cost)
+        - you claim a special depreciation allowance for it in 2025 and it is property described in section 168(k)(9)(A) or 168(k)(9)(B), that is:
+          - property primarily used in a trade or business of furnishing or selling electrical energy, water or sewage disposal services, gas or steam through a local distribution system, or transportation of gas or steam by pipeline, whose rates are established or approved by a State or political subdivision, an agency or instrumentality of the United States, a public service or public utility commission or similar body of a State or political subdivision, or the governing or ratemaking body of an electric cooperative
+          - property used in a trade or business that has had floor plan financing indebtedness (a loan used to buy motor vehicles, boats, farm machinery or equipment, or trailers or campers held for sale or lease, and secured by them) whose interest was taken into account under section 163(j)(1)(C) in figuring the business interest expense limit
+        - its qualified business use is 50% or less once you leave out uses that are not qualified business use:
+          - investment use
+          - leasing it to a 5% owner or related person, or using it as compensation for services of a 5% owner or related person, unless for the lease the value is reported as income to that person
+          - using it as compensation for services of anyone else unless an amount is included in that person's income for the use and any required income tax was withheld
+          - use that is nondeductible under section 274
     cite:
       doc: i4562
       locator: pp. 13-15, Part V, Lines 26 and 27 and Limits for passenger automobiles (p. 14, "If during the tax year you convert

@@ -113,8 +113,41 @@
  },
  {
   "form": "asset",
-  "prompt_sha": "baaf8598deee2a81843e9282e47d706014d3af2f0e60a30aa3fa16a9aaa25cb3",
-  "claims": [],
+  "prompt_sha": "883ef58dbdaa8d8b440a6af6f489dbed80063693dc77e43d4e7cb50d8833df01",
+  "claims": [
+   {
+    "item": "asset.listed",
+    "sentences": [
+     {
+      "quote": "Any computer or peripheral equipment used exclusively at a regular business establishment and owned or leased by the person operating the establishment;",
+      "page": "i4562 p. 3"
+     },
+     {
+      "quote": "However, for any property listed in (1) above, the regular business establishment of an employee is their employer's regular business establishment.",
+      "page": "i4562 p. 3"
+     }
+    ],
+    "quote": "Any computer or peripheral equipment used exclusively at a regular business establishment and owned or leased by the person operating the establishment; / However, for any property listed in (1) above, the regular business establishment of an employee is their employer's regular business establishment.",
+    "page": "i4562 p. 3",
+    "why_uncovered": "The listed-property question only asks whether a pre-2018 computer is used exclusively at the regular business establishment. It does not require that the computer be owned or leased by the person operating the establishment, which is a condition of the exception. It also does not treat an employer's establishment as an employee's regular business establishment for the photographic, phonographic, communication and video equipment exception. Nothing else in the encoding asks about or refuses these cases.",
+    "closest_item": "asset.listed",
+    "effect": "presentation"
+   },
+   {
+    "item": "asset.class",
+    "sentences": [
+     {
+      "quote": "Appliances, carpets, furniture, etc., used in a rental real estate activity.",
+      "page": "i4562 p. 10"
+     }
+    ],
+    "quote": "Appliances, carpets, furniture, etc., used in a rental real estate activity.",
+    "page": "i4562 p. 10",
+    "why_uncovered": "The asset-class question sends the filer to Pub. 946 Appendix B Tables B-1/B-2, or to the A, B, C or qualified improvement options. It does not say that appliances, carpets and furniture used in a rental real estate activity are 5-year property. A filer following the question would likely pick class 00.11 (office furniture, 7-year) for such furniture. No screen item or gate covers rental real estate personal property.",
+    "closest_item": "asset.class",
+    "effect": "amount"
+   }
+  ],
   "used": [
    {
     "doc": "i4562",
@@ -194,7 +227,7 @@
     ]
    }
   ],
-  "cost": 0.942912,
+  "cost": 0.525,
   "model": "claude-opus-5-5"
  },
  {
@@ -2423,8 +2456,31 @@
  },
  {
   "form": "f8960",
-  "prompt_sha": "0bbee2ee7e56485bb3c83c33dcf78659ccf178f9551caf6f1f15c7eec29c1927",
-  "claims": [],
+  "prompt_sha": "17731723808a0dd3e6131ce754c63f95ac445aedc5d5bb2fe12df2452323f18c",
+  "claims": [
+   {
+    "item": "f8960.allocated_taxes",
+    "sentences": [
+     {
+      "quote": "Include state, local, and foreign income taxes you paid for the tax year that are attributable to NII.",
+      "page": "i8960 p. 17"
+     },
+     {
+      "quote": "Include also state, local, and foreign real property taxes paid for the tax year, as well as state and local personal property taxes paid that are attributable to NII.",
+      "page": "i8960 p. 17"
+     },
+     {
+      "quote": "You can determine the portion of your state, local, and foreign income taxes; state, local, and foreign real property taxes; as well as state and local personal property taxes allocable to NII using any reasonable method.",
+      "page": "i8960 p. 18"
+     }
+    ],
+    "quote": "Include state, local, and foreign income taxes you paid for the tax year that are attributable to NII. / Include also state, local, and foreign real property taxes paid for the tax year, as well as state and local personal property taxes paid that are attributable to NII. / You can determine the portion of your state, local, and foreign income taxes; state, local, and foreign real property taxes; as well as state and local personal property taxes allocable to NII using any reasonable method.",
+    "page": "i8960 p. 17; i8960 p. 18",
+    "why_uncovered": "The question that feeds line 9b asks only for state and local income and property taxes. Its only mention of foreign taxes is an exclusion of those claimed as a credit. It never asks for deductible foreign income taxes or foreign real property taxes, both of which the instructions say to include on line 9b. A filer who deducts foreign income tax on Schedule A instead of claiming the credit, and has some of it attributable to NII, gets no line 9b deduction for that tax. No refusal covers this case: the bad_allocation gate only stops amounts that are too large, not amounts that are left out.",
+    "closest_item": "f8960.allocated_taxes",
+    "effect": "amount"
+   }
+  ],
   "used": [
    {
     "doc": "i1099div",
@@ -2462,7 +2518,7 @@
     ]
    }
   ],
-  "cost": 0.338472,
+  "cost": 0.19408799999999998,
   "model": "claude-opus-5-5"
  },
  {
@@ -2675,7 +2731,7 @@
  },
  {
   "form": "gift",
-  "prompt_sha": "f1e2a1ceca4ea6862bdc4fc227aa85290f337f15e226394b691535680fe6d270",
+  "prompt_sha": "f9841054b4a6c8b965b81198928fff2bf1b5ed86f1b1723ec30567927230d5c8",
   "claims": [
    {
     "item": "gift.deduction",
@@ -2683,15 +2739,11 @@
      {
       "quote": "Attach a statement to your tax return showing how you figured the reduction.",
       "page": "i8283 p. 3"
-     },
-     {
-      "quote": "Do not use Form 8283 to report out-of-pocket expenses for volunteer work or amounts you gave by check or credit card. Treat these items as cash contributions.",
-      "page": "i8283 p. 1"
      }
     ],
-    "quote": "Attach a statement to your tax return showing how you figured the reduction. / Do not use Form 8283 to report out-of-pocket expenses for volunteer work or amounts you gave by check or credit card. Treat these items as cash contributions.",
-    "page": "i8283 p. 3; i8283 p. 1",
-    "why_uncovered": "The deduction question tells the filer to enter the amount after any required valuation or basis reductions, so the reduced amount is covered. Nothing produces or asks for the required statement showing how the reduction was figured. The question also never says to leave out volunteer out-of-pocket expenses or check and credit card gifts. A filer could include those cash-type amounts in the noncash group reported on Form 8283.",
+    "quote": "Attach a statement to your tax return showing how you figured the reduction.",
+    "page": "i8283 p. 3",
+    "why_uncovered": "The gift.deduction question asks for the amount after the required valuation and basis reductions. It does not ask whether a reduction was made, and nothing produces or prompts for the statement that must be attached showing how the reduction was figured.",
     "closest_item": "gift.deduction",
     "effect": "presentation"
    },
@@ -2715,17 +2767,25 @@
       "page": "i8283 p. 2"
      },
      {
-      "quote": "You may not indicate that the information is “available upon request.” Such a statement will cause the filing of your Form 8283 to be treated as incomplete or non-responsive.",
+      "quote": "You may not indicate that the information is “available upon request.”",
       "page": "i8283 p. 2"
      },
      {
       "quote": "If you are electronically filing your tax return, you must include the Form 8283 data in the electronic submission.",
       "page": "i8283 p. 2"
+     },
+     {
+      "quote": "Caution: You must attach the completed Form 8283 with all the required signatures to your tax return, either as a PDF attachment when electronically filed, or mailed to the IRS with Form 8453.",
+      "page": "i8283 p. 2"
+     },
+     {
+      "quote": "Although the amount of your deduction determines if you have to file Form 8283, you also need to have information about the FMV of your contribution to complete the form.",
+      "page": "i8283 p. 3"
      }
     ],
-    "quote": "Filers must fully complete Section A if they are reporting a noncash charitable contribution of more than $500 but not more than $5,000. / The failure to fully complete either of these two sections may result in an incomplete filing of Form 8283. / Provide all information required by the Form 8283 and its instructions. / If a box is provided for entry of a number, Form 8283 will not be considered complete unless a number is entered in the box. / You may not indicate that the information is “available upon request.” Such a statement will cause the filing of your Form 8283 to be treated as incomplete or non-responsive. / If you are electronically filing your tax return, you must include the Form 8283 data in the electronic submission.",
-    "page": "i8283 p. 1; i8283 p. 2",
-    "why_uncovered": "The encoding computes only the deduction amount for the group and refuses Section B and special cases. It collects none of the Section A entries the form requires: donee information, property description, dates, how acquired, cost or basis, FMV and valuation method. It has no check that every numeric box is filled in or explained. An incomplete Section A can be treated as a failure to file Form 8283, which can lead to the deduction being denied.",
+    "quote": "Filers must fully complete Section A if they are reporting a noncash charitable contribution of more than $500 but not more than $5,000. / The failure to fully complete either of these two sections may result in an incomplete filing of Form 8283. / Provide all information required by the Form 8283 and its instructions. / If a box is provided for entry of a number, Form 8283 will not be considered complete unless a number is entered in the box. / You may not indicate that the information is “available upon request.” / If you are electronically filing your tax return, you must include the Form 8283 data in the electronic submission. / Caution: You must attach the completed Form 8283 with all the required signatures to your tax return, either as a PDF attachment when electronically filed, or mailed to the IRS with Form 8453. / Although the amount of your deduction determines if you have to file Form 8283, you also need to have information about the FMV of your contribution to complete the form.",
+    "page": "i8283 p. 1; i8283 p. 2; i8283 p. 3",
+    "why_uncovered": "For Section A groups, the encoding only passes the deduction amount through. It does not collect the Section A entries the form requires, such as the donee, a description of the property, fair market value, and the other numeric boxes. It also does not address completeness, the e-file data requirement, or attaching the form. The refusals cover only Section B and special-treatment groups.",
     "closest_item": "gift.allowed",
     "effect": "presentation"
    }
@@ -2752,7 +2812,7 @@
     ]
    }
   ],
-  "cost": 0.1499988,
+  "cost": 0.09573200000000001,
   "model": "claude-opus-5-5"
  },
  {
@@ -3103,15 +3163,29 @@
  },
  {
   "form": "ltc",
-  "prompt_sha": "a6e3287a027310c31c7e0165b4b23f6febadbebe20a2f9dac8da7d18ce328cd8",
+  "prompt_sha": "d4383ad7d223f7f5f298da55349c28a1e11f14a614e547bd86f6ed4cbcc6003d",
   "claims": [
+   {
+    "item": "ltc.amount",
+    "sentences": [
+     {
+      "quote": "For a plan that provides long-term care insurance, the total of the amounts entered for each person on line 2 of all Form(s) 7206 can’t be more than the appropriate limit shown on line 2 for that person.",
+      "page": "i7206 p. 2"
+     },
+     {
+      "quote": "If you have more than one health plan during the year and each plan is established under a different business, you must use a separate Form 7206 to figure each plan's net earnings limit.",
+      "page": "i7206 p. 2"
+     }
+    ],
+    "quote": "For a plan that provides long-term care insurance, the total of the amounts entered for each person on line 2 of all Form(s) 7206 can’t be more than the appropriate limit shown on line 2 for that person. / If you have more than one health plan during the year and each plan is established under a different business, you must use a separate Form 7206 to figure each plan's net earnings limit.",
+    "page": "i7206 p. 2",
+    "why_uncovered": "ltc.amount takes the smaller of (a) or (b) for each person on one form. No line, question or refusal combines one person's line 2 amounts across several Forms 7206, so that person's age limit could be applied more than once. Nothing asks whether there is another plan under a different business, and nothing refuses that case.",
+    "closest_item": "ltc.amount",
+    "effect": "amount"
+   },
    {
     "item": "ltc.payments",
     "sentences": [
-     {
-      "quote": "Amounts paid for health insurance coverage from retirement plan distributions that were nontaxable because you are a retired public safety officer can’t be used to figure the deduction.",
-      "page": "i7206 p. 1"
-     },
      {
       "quote": "However, if the policy is in your name and you pay the premiums yourself, the partnership must reimburse you and report the premium amounts on Schedule K-1 (Form 1065) as guaranteed payments to be included in your gross income. Otherwise, the insurance plan won’t be considered to be established under your business.",
       "page": "i7206 p. 1"
@@ -3121,36 +3195,18 @@
       "page": "i7206 p. 1"
      },
      {
-      "quote": "The services must be required by a chronically ill individual and prescribed by a licensed health care practitioner.",
-      "page": "i7206 p. 2"
+      "quote": "Amounts paid for health insurance coverage from retirement plan distributions that were nontaxable because you are a retired public safety officer can’t be used to figure the deduction.",
+      "page": "i7206 p. 1"
      },
      {
-      "quote": "The certification must have been made by a licensed health care practitioner within the previous 12 months.",
-      "page": "i7206 p. 2"
+      "quote": "If you are a retired public safety officer, amounts excluded from gross income, not to exceed $3,000, if the amounts (1) were paid by your retirement plan directly to the insurer for qualified health insurance premiums or (2) were received by you from that retirement plan and used to pay those premiums.",
+      "page": "i7206 p. 1"
      }
     ],
-    "quote": "Amounts paid for health insurance coverage from retirement plan distributions that were nontaxable because you are a retired public safety officer can’t be used to figure the deduction. / However, if the policy is in your name and you pay the premiums yourself, the partnership must reimburse you and report the premium amounts on Schedule K-1 (Form 1065) as guaranteed payments to be included in your gross income. Otherwise, the insurance plan won’t be considered to be established under your business. / However, if the policy is in your name and you pay the premiums yourself, the S corporation must reimburse you and report the premium amounts in box 1 of Form W-2 as wages to be included in your gross income. Otherwise, the insurance plan won’t be considered to be established under your business. / The services must be required by a chronically ill individual and prescribed by a licensed health care practitioner. / The certification must have been made by a licensed health care practitioner within the previous 12 months.",
-    "page": "i7206 p. 1; i7206 p. 2",
-    "why_uncovered": "The payments question asks for premiums under a policy 'established under this business' on a contract covering 'qualified long-term care services'. It does not tell the filer to leave out premiums paid with nontaxable retired public safety officer distributions. It does not state the reimbursement and reporting condition that a partner or more-than-2% S corporation shareholder must meet when the policy is in their own name. It never defines qualified long-term care services, so it omits the requirements that the services be needed by a chronically ill individual, be prescribed by a licensed practitioner, and rest on a certification made within the previous 12 months. No refusal covers any of these points.",
+    "quote": "However, if the policy is in your name and you pay the premiums yourself, the partnership must reimburse you and report the premium amounts on Schedule K-1 (Form 1065) as guaranteed payments to be included in your gross income. Otherwise, the insurance plan won’t be considered to be established under your business. / However, if the policy is in your name and you pay the premiums yourself, the S corporation must reimburse you and report the premium amounts in box 1 of Form W-2 as wages to be included in your gross income. Otherwise, the insurance plan won’t be considered to be established under your business. / Amounts paid for health insurance coverage from retirement plan distributions that were nontaxable because you are a retired public safety officer can’t be used to figure the deduction. / If you are a retired public safety officer, amounts excluded from gross income, not to exceed $3,000, if the amounts (1) were paid by your retirement plan directly to the insurer for qualified health insurance premiums or (2) were received by you from that retirement plan and used to pay those premiums.",
+    "page": "i7206 p. 1",
+    "why_uncovered": "The ltc.payments question says only 'under a policy established under this business'. It does not state that a partner or more-than-2% S corporation shareholder who holds the policy and pays the premiums personally must be reimbursed by the business, with the amounts reported as guaranteed payments or W-2 wages. Without that, the plan is not considered established under the business. The question also does not exclude premiums paid with nontaxable retired public safety officer distributions. No refusal covers either case.",
     "closest_item": "ltc.payments",
-    "effect": "amount"
-   },
-   {
-    "item": "ltc.amount",
-    "sentences": [
-     {
-      "quote": "If you have more than one health plan during the year and each plan is established under a different business, you must use a separate Form 7206 to figure each plan's net earnings limit.",
-      "page": "i7206 p. 2"
-     },
-     {
-      "quote": "For a plan that provides long-term care insurance, the total of the amounts entered for each person on line 2 of all Form(s) 7206 can’t be more than the appropriate limit shown on line 2 for that person.",
-      "page": "i7206 p. 2"
-     }
-    ],
-    "quote": "If you have more than one health plan during the year and each plan is established under a different business, you must use a separate Form 7206 to figure each plan's net earnings limit. / For a plan that provides long-term care insurance, the total of the amounts entered for each person on line 2 of all Form(s) 7206 can’t be more than the appropriate limit shown on line 2 for that person.",
-    "page": "i7206 p. 2",
-    "why_uncovered": "The encoding applies the age-based limit to each person on a single Form 7206 only. No question asks whether premiums for the same person are also entered on another Form 7206 for a different business. Nothing caps the combined line 2 amounts across all forms at the person's age limit. No refusal covers filers with multiple plans established under different businesses.",
-    "closest_item": "ltc.amount",
     "effect": "amount"
    }
   ],
@@ -3163,7 +3219,7 @@
     ]
    }
   ],
-  "cost": 0.1012388,
+  "cost": 0.07047600000000001,
   "model": "claude-opus-5-5"
  },
  {
@@ -3228,7 +3284,7 @@
  },
  {
   "form": "oi8z",
-  "prompt_sha": "686d46c57cd015a1c9e8edb0e94484d94ff2ce53e1fe87fef50d1463abfe17b4",
+  "prompt_sha": "ed8fd8a7345a0c62c19a2e46aa87dc71c061bb0567ec8ec8be7a5de83b6d7a01",
   "claims": [],
   "used": [
    {
@@ -3245,7 +3301,7 @@
     ]
    }
   ],
-  "cost": 0.0953988,
+  "cost": 0.05954,
   "model": "claude-opus-5-5"
  },
  {
@@ -4408,65 +4464,17 @@
  },
  {
   "form": "s2",
-  "prompt_sha": "8dadfe475b22d43406d536a742bcd2ac2d4a9dd508878490d6ac20abc1056ffe",
+  "prompt_sha": "d7c2b91fe9c409d3ed99c6669d07785a47248aab31eac089c61796dc1095dd3c",
   "claims": [
    {
     "item": "s2.line4",
     "sentences": [
      {
-      "quote": "If you filed Form 4029 and received IRS approval, check box 2 on line 4.",
-      "page": "i1040gi p. 112"
-     },
-     {
-      "quote": "Instead, check box number 2 for Form 4029 on Schedule 2 (Form 1040), line 4.",
-      "page": "i1040sse p. 2"
-     },
-     {
-      "quote": "If you are a U.S. citizen or resident alien living outside the United States and your self-employment income is exempt from self-employment tax, you should get a statement from the appropriate agency of the foreign country verifying that your self-employment income is subject to social security in that country.",
-      "page": "i1040gi p. 112"
-     },
-     {
-      "quote": "Attach a copy of the statement, check box 3, and enter “EAS” on the entry space next to box 3.",
-      "page": "i1040gi p. 112"
-     },
-     {
-      "quote": "Under these agreements, you must generally pay social security and Medicare taxes to only the country in which you live.",
-      "page": "i1040sse p. 2"
-     },
-     {
-      "quote": "Don’t complete Schedule SE. Instead, attach a copy of the statement to Form 1040, 1040-SR, or 1040-NR, and on Schedule 2 (Form 1040), line 4, check box number 3 and enter “Exempt, see attached statement.”",
-      "page": "i1040sse p. 2"
-     },
-     {
-      "quote": "Foreign earnings from self-employment can’t be reduced by your foreign earned income exclusion when computing SE tax.",
-      "page": "i1040sse p. 2"
-     },
-     {
-      "quote": "If you have income from a business (including farming) and the income is community income, but you aren’t the spouse who carried on the business and you had no other income subject to self-employment tax, check box 3 and enter “ECI” on the entry space next to box 3.",
-      "page": "i1040gi p. 112"
-     },
-     {
-      "quote": "If only one spouse participates in the business, all of the income from that business is the self-employment earnings of the spouse who carried on the business.",
-      "page": "i1040sse p. 2"
-     },
-     {
-      "quote": "If you are the only spouse who carried on the business, you must include on Schedule SE, line 3, the net profit or (loss) reported on the other spouse’s Schedule C or F (except in those cases described later under Income and Losses Not Included in Net Earnings From Self-Employment).",
-      "page": "i1040sse p. 2"
-     },
-     {
-      "quote": "But if you have $400 or more of other earnings subject to SE tax, you must file Schedule SE.",
-      "page": "i1040sse p. 2"
-     },
-     {
-      "quote": "If you received fees for services performed as a notary public and you had no other income subject to self-employment tax, check box 3 and enter “EN” on the entry space next to box 3.",
-      "page": "i1040gi p. 112"
-     },
-     {
-      "quote": "If you did have other earnings of $400 or more subject to self-employment tax, check box 3 and enter “EN” and the amount of your net profit as a notary public from Schedule C on the entry space next to box 3.",
-      "page": "i1040gi p. 112"
-     },
-     {
       "quote": "You must pay SE tax on income you earned as a U.S. citizen employed by a foreign government (or, in certain cases, by a wholly owned instrumentality of a foreign government or an international organization under the International Organizations Immunities Act) for services performed in the United States, Puerto Rico, Guam, American Samoa, the Commonwealth of the Northern Mariana Islands, or the U.S. Virgin Islands.",
+      "page": "i1040sse p. 2"
+     },
+     {
+      "quote": "Report income from this employment on Schedule SE, line 2.",
       "page": "i1040sse p. 2"
      },
      {
@@ -4478,17 +4486,21 @@
       "page": "i1040sse p. 2"
      },
      {
+      "quote": "While you are a debtor in a chapter 11 bankruptcy case, your net profit or loss from self-employment (for example, from Schedule C or Schedule F) won’t be included in your Form 1040 or 1040-SR income.",
+      "page": "i1040sse p. 2"
+     },
+     {
       "quote": "However, you (not the bankruptcy estate) are responsible for paying SE tax on your net earnings from self-employment.",
       "page": "i1040sse p. 2"
      },
      {
-      "quote": "Enter on the dotted line to the left of Schedule SE, line 3, “Chap. 11 bankruptcy income” and the amount of your net profit or (loss).",
+      "quote": "Enter on the dotted line to the left of Schedule SE, line 3, “Chap. 11 bankruptcy income” and the amount of your net profit or (loss). Combine that amount with the total of lines 1a, 1b, and 2 (if any) and enter the result on line 3.",
       "page": "i1040sse p. 2"
      }
     ],
-    "quote": "If you filed Form 4029 and received IRS approval, check box 2 on line 4. / Instead, check box number 2 for Form 4029 on Schedule 2 (Form 1040), line 4. / If you are a U.S. citizen or resident alien living outside the United States and your self-employment income is exempt from self-employment tax, you should get a statement from the appropriate agency of the foreign country verifying that your self-employment income is subject to social security in that country. / Attach a copy of the statement, check box 3, and enter “EAS” on the entry space next to box 3. / Under these agreements, you must generally pay social security and Medicare taxes to only the country in which you live. / Don’t complete Schedule SE. Instead, attach a copy of the statement to Form 1040, 1040-SR, or 1040-NR, and on Schedule 2 (Form 1040), line 4, check box number 3 and enter “Exempt, see attached statement.” / Foreign earnings from self-employment can’t be reduced by your foreign earned income exclusion when computing SE tax. / If you have income from a business (including farming) and the income is community income, but you aren’t the spouse who carried on the business and you had no other income subject to self-employment tax, check box 3 and enter “ECI” on the entry space next to box 3. / If only one spouse participates in the business, all of the income from that business is the self-employment earnings of the spouse who carried on the business. / If you are the only spouse who carried on the business, you must include on Schedule SE, line 3, the net profit or (loss) reported on the other spouse’s Schedule C or F (except in those cases described later under Income and Losses Not Included in Net Earnings From Self-Employment). / But if you have $400 or more of other earnings subject to SE tax, you must file Schedule SE. / If you received fees for services performed as a notary public and you had no other income subject to self-employment tax, check box 3 and enter “EN” on the entry space next to box 3. / If you did have other earnings of $400 or more subject to self-employment tax, check box 3 and enter “EN” and the amount of your net profit as a notary public from Schedule C on the entry space next to box 3. / You must pay SE tax on income you earned as a U.S. citizen employed by a foreign government (or, in certain cases, by a wholly owned instrumentality of a foreign government or an international organization under the International Organizations Immunities Act) for services performed in the United States, Puerto Rico, Guam, American Samoa, the Commonwealth of the Northern Mariana Islands, or the U.S. Virgin Islands. / If you performed services elsewhere as an employee of a foreign government or an international organization, those earnings are exempt from SE tax. / However, if you are a U.S. citizen and also a citizen of a country with which the United States has a bilateral social security agreement, your work for the government of that foreign country may be exempt from U.S. social security taxes. / However, you (not the bankruptcy estate) are responsible for paying SE tax on your net earnings from self-employment. / Enter on the dotted line to the left of Schedule SE, line 3, “Chap. 11 bankruptcy income” and the amount of your net profit or (loss).",
-    "page": "i1040gi p. 112; i1040sse p. 2",
-    "why_uncovered": "Line 4 is computed directly from Schedule SE, and nothing asks about or refuses these situations. The encoding has no question about a Form 4029 exemption, a totalization-agreement exemption (EAS), exempt community income of the non-business spouse (ECI), notary public fees (EN), wages from a foreign government or international organization, or chapter 11 bankruptcy SE income. Several items on the HANDLED ELSEWHERE list come close but do not reach these rules. The clergy refusal covers Form 4361 ministers only, not Form 4029 sect members. The community-income refusals apply only to a marriage that ended in 2025 or to registered domestic partners. The nonresident refusal is limited to the EIC.",
+    "quote": "You must pay SE tax on income you earned as a U.S. citizen employed by a foreign government (or, in certain cases, by a wholly owned instrumentality of a foreign government or an international organization under the International Organizations Immunities Act) for services performed in the United States, Puerto Rico, Guam, American Samoa, the Commonwealth of the Northern Mariana Islands, or the U.S. Virgin Islands. / Report income from this employment on Schedule SE, line 2. / If you performed services elsewhere as an employee of a foreign government or an international organization, those earnings are exempt from SE tax. / However, if you are a U.S. citizen and also a citizen of a country with which the United States has a bilateral social security agreement, your work for the government of that foreign country may be exempt from U.S. social security taxes. / While you are a debtor in a chapter 11 bankruptcy case, your net profit or loss from self-employment (for example, from Schedule C or Schedule F) won’t be included in your Form 1040 or 1040-SR income. / However, you (not the bankruptcy estate) are responsible for paying SE tax on your net earnings from self-employment. / Enter on the dotted line to the left of Schedule SE, line 3, “Chap. 11 bankruptcy income” and the amount of your net profit or (loss). Combine that amount with the total of lines 1a, 1b, and 2 (if any) and enter the result on line 3.",
+    "page": "i1040sse p. 2",
+    "why_uncovered": "Line 4 takes SE tax from Schedule SE, but no question or refusal covers two sources of SE income. The first is a U.S. citizen's wages from a foreign government or international organization for services performed in the U.S. These wages are reported on Schedule SE line 2 rather than through Schedule C/F, and there is a related exemption for services abroad and for dual citizens under a totalization agreement. The second is a chapter 11 debtor's self-employment income. That income is excluded from Form 1040 income but still subject to SE tax on the debtor's Schedule SE. Neither source reaches Schedule SE through Schedule C business income on the return, so the Schedule 1/Schedule C refusals do not trigger. s2.other asks only about amounts other than SE tax, so it does not catch either case.",
     "closest_item": "s2.line4",
     "effect": "amount"
    }
@@ -4520,7 +4532,7 @@
     ]
    }
   ],
-  "cost": 0.1975588,
+  "cost": 0.14111200000000002,
   "model": "claude-opus-5-5"
  },
  {
@@ -4798,90 +4810,8 @@
  },
  {
   "form": "sales",
-  "prompt_sha": "c257e41caff8965b2327407a18b1ae9b36784449d1bcaf05f2a5cc728a705d15",
+  "prompt_sha": "ef2cf4a54e6d1f6ab0ee0123fb104f97a532bb37d2dd597e7f9973b747f0452e",
   "claims": [
-   {
-    "item": "sales.route",
-    "sentences": [
-     {
-      "quote": "However, if a trader previously made the mark-to-market election (explained below), each transaction is reported in Part II of Form 4797 instead of on Form 8949.",
-      "page": "i1040sd p. 5"
-     },
-     {
-      "quote": "A trader may make an election under section 475(f) to report all gains and losses from securities held in connection with a trading business as ordinary income (or loss), including those from securities held at the end of the year.",
-      "page": "i1040sd p. 5"
-     },
-     {
-      "quote": "Starting with the year the election becomes effective, a trader reports all gains and losses from securities held in connection with the trading business, including securities held at the end of the year, in Part II of Form 4797.",
-      "page": "i1040sd p. 5"
-     },
-     {
-      "quote": "Securities that you hold for investment aren't marked to market.",
-      "page": "i1040sd p. 5"
-     }
-    ],
-    "quote": "However, if a trader previously made the mark-to-market election (explained below), each transaction is reported in Part II of Form 4797 instead of on Form 8949. / A trader may make an election under section 475(f) to report all gains and losses from securities held in connection with a trading business as ordinary income (or loss), including those from securities held at the end of the year. / Starting with the year the election becomes effective, a trader reports all gains and losses from securities held in connection with the trading business, including securities held at the end of the year, in Part II of Form 4797. / Securities that you hold for investment aren't marked to market.",
-    "page": "i1040sd p. 5",
-    "why_uncovered": "The route question offers only Form 8949 or the Schedule D aggregate lines. No question asks whether the filer is a trader with a section 475(f) election in effect, and no refusal sends those trading-business securities to Form 4797. The encoding would treat ordinary mark-to-market gains and losses as capital.",
-    "closest_item": "sales.route",
-    "effect": "amount"
-   },
-   {
-    "item": "sales.proceeds",
-    "sentences": [
-     {
-      "quote": "If you sold property (other than publicly traded stocks or securities) at a gain and you will receive a payment in a tax year after the year of sale, you must generally report the sale on the installment method unless you elect not to.",
-      "page": "i1040sd p. 6"
-     },
-     {
-      "quote": "To elect out of the installment method, report the full amount of the gain on Form 8949 on a timely filed return (including extensions) for the year of the sale.",
-      "page": "i1040sd p. 6"
-     },
-     {
-      "quote": "If an option you purchased expired, enter the expiration date in column (c) and enter “EXPIRED” in column (d).",
-      "page": "i1040sd p. 6"
-     },
-     {
-      "quote": "If an option that was granted (written) expired, enter the expiration date in column (b) and enter “EXPIRED” in column (e).",
-      "page": "i1040sd p. 6"
-     }
-    ],
-    "quote": "If you sold property (other than publicly traded stocks or securities) at a gain and you will receive a payment in a tax year after the year of sale, you must generally report the sale on the installment method unless you elect not to. / To elect out of the installment method, report the full amount of the gain on Form 8949 on a timely filed return (including extensions) for the year of the sale. / If an option you purchased expired, enter the expiration date in column (c) and enter “EXPIRED” in column (d). / If an option that was granted (written) expired, enter the expiration date in column (b) and enter “EXPIRED” in column (e).",
-    "page": "i1040sd p. 6",
-    "why_uncovered": "Column (d) is always entered as the full proceeds. Nothing asks whether a sale of stock or securities that are not publicly traded has deferred payments, and nothing refuses the installment-method or Form 6252 case. The required 'EXPIRED' entries for expired options are not encoded either.",
-    "closest_item": "sales.proceeds",
-    "effect": "amount"
-   },
-   {
-    "item": "sales.special",
-    "sentences": [
-     {
-      "quote": "Report an ordinary loss from the sale, exchange, or worthlessness of small",
-      "page": "i1040sd p. 6"
-     },
-     {
-      "quote": "If the basis of your section 1244 stock has increased, through contributions to capital or otherwise, you must treat this increase as applying to stock that is not section 1244 stock when you figure an ordinary loss on its sale.",
-      "page": "p550 p. 81"
-     },
-     {
-      "quote": "If you are an investor in SBIC stock, you can deduct as an ordinary loss, rather than a capital loss, a loss from the sale, trade, or worthlessness of that stock.",
-      "page": "p550 p. 81"
-     },
-     {
-      "quote": "You report this type of ordinary loss on Form 4797, Part II, line 10.",
-      "page": "p550 p. 81"
-     },
-     {
-      "quote": "If you close a short sale of SBIC stock with other SBIC stock you bought only for that purpose, any loss you have on the sale is a capital loss.",
-      "page": "p550 p. 81"
-     }
-    ],
-    "quote": "Report an ordinary loss from the sale, exchange, or worthlessness of small / If the basis of your section 1244 stock has increased, through contributions to capital or otherwise, you must treat this increase as applying to stock that is not section 1244 stock when you figure an ordinary loss on its sale. / If you are an investor in SBIC stock, you can deduct as an ordinary loss, rather than a capital loss, a loss from the sale, trade, or worthlessness of that stock. / You report this type of ordinary loss on Form 4797, Part II, line 10. / If you close a short sale of SBIC stock with other SBIC stock you bought only for that purpose, any loss you have on the sale is a capital loss.",
-    "page": "i1040sd p. 6; p550 p. 81",
-    "why_uncovered": "The special-situations question lists collectibles, QSB stock, section 1250 property, pass-through interests and QOFs. It does not list section 1244 stock or small business investment company stock. A loss on such stock would be reported as a capital loss on Form 8949 instead of being treated as an ordinary loss.",
-    "closest_item": "sales.special",
-    "effect": "amount"
-   },
    {
     "item": "sales.code",
     "sentences": [
@@ -4894,14 +4824,64 @@
       "page": "i8949 p. 5"
      },
      {
-      "quote": "If you received a Form 1099-B or Form 1099-DA (or substitute statement) reporting the sale of a taxable contingent payment debt instrument subject to the noncontingent bond method and the Ordinary box in box 2 on Form 1099-B or the Ordinary box in box 6 on Form 1099-DA is checked, an adjustment may be required.",
-      "page": "i8949 p. 5"
+      "quote": "If you received a Form 1099-B or Form 1099-DA (or substiture statement) with the Ordinary box in box 2 on Form 1099-B or box 6 on Form 1099-DA checked and the security is a taxable contingent payment debt instrument subject to the noncontingent bond method, enter code “O” for the transaction in column (f) of the appropriate part of Form 8949 and complete the Worksheet for Contingent Payment Debt Instrument Adjustment in Column (g), later, to figure the amount to enter in column (g).",
+      "page": "i8949 p. 10"
+     },
+     {
+      "quote": "Use the Worksheet for Accrued Market Discount Adjustment in Column (g), later, to figure the amount to enter in column (g).",
+      "page": "i8949 p. 8"
+     },
+     {
+      "quote": "This is the amount of your gain that is ordinary income.",
+      "page": "i8949 p. 11"
+     },
+     {
+      "quote": "Loss on the sale of personal property is not deductible, and generally should not be reported on Form 8949.",
+      "page": "i8949 p. 3"
+     },
+     {
+      "quote": "Report the transaction on Form 8949 as you would if you were the actual owner, but also enter any resulting gain as a negative adjustment (in parentheses) in column (g) or any resulting loss as a positive adjustment in column (g).",
+      "page": "i8949 p. 9"
      }
     ],
-    "quote": "If you sell a taxable contingent payment debt instrument subject to the noncontingent bond method at a gain, your gain is ordinary income (interest income), even if you hold the debt instrument as a capital asset. / If you sell a taxable contingent payment debt instrument subject to the noncontingent bond method at a loss, your loss is an ordinary loss to the extent of your prior original issue discount (OID) inclusions on the debt instrument. / If you received a Form 1099-B or Form 1099-DA (or substitute statement) reporting the sale of a taxable contingent payment debt instrument subject to the noncontingent bond method and the Ordinary box in box 2 on Form 1099-B or the Ordinary box in box 6 on Form 1099-DA is checked, an adjustment may be required.",
-    "page": "i8949 p. 5",
-    "why_uncovered": "The Ordinary box is checked only as an aggregate-route condition. On the Form 8949 route, nothing asks whether the security is a contingent payment debt instrument or whether the Ordinary box is checked. The code question's examples point only to code E, so a filer could choose 'none' and report ordinary income or loss as capital.",
+    "quote": "If you sell a taxable contingent payment debt instrument subject to the noncontingent bond method at a gain, your gain is ordinary income (interest income), even if you hold the debt instrument as a capital asset. / If you sell a taxable contingent payment debt instrument subject to the noncontingent bond method at a loss, your loss is an ordinary loss to the extent of your prior original issue discount (OID) inclusions on the debt instrument. / If you received a Form 1099-B or Form 1099-DA (or substiture statement) with the Ordinary box in box 2 on Form 1099-B or box 6 on Form 1099-DA checked and the security is a taxable contingent payment debt instrument subject to the noncontingent bond method, enter code “O” for the transaction in column (f) of the appropriate part of Form 8949 and complete the Worksheet for Contingent Payment Debt Instrument Adjustment in Column (g), later, to figure the amount to enter in column (g). / Use the Worksheet for Accrued Market Discount Adjustment in Column (g), later, to figure the amount to enter in column (g). / This is the amount of your gain that is ordinary income. / Loss on the sale of personal property is not deductible, and generally should not be reported on Form 8949. / Report the transaction on Form 8949 as you would if you were the actual owner, but also enter any resulting gain as a negative adjustment (in parentheses) in column (g) or any resulting loss as a positive adjustment in column (g).",
+    "page": "i8949 p. 5; i8949 p. 10; i8949 p. 8; i8949 p. 11; i8949 p. 3; i8949 p. 9",
+    "why_uncovered": "The adjustment-code question offers none/B/W/BW and a generic 'other', and its only example is code E. Nothing asks whether the security is a contingent payment debt instrument, whether it is a bond with accrued market discount, whether the loss is on personal-use property, or whether the filer received the report as a nominee. A filer can therefore answer 'none' and have ordinary-income or nondeductible amounts computed as capital gain or loss. The aggregate-eligibility check covers the Ordinary box only for the Schedule D aggregate route, not for transactions reported on Form 8949.",
     "closest_item": "sales.code",
+    "effect": "amount"
+   },
+   {
+    "item": "sales.one",
+    "sentences": [
+     {
+      "quote": "However, if a trader previously made the mark-to-market election (explained below), each transaction is reported in Part II of Form 4797 instead of on Form 8949.",
+      "page": "i1040sd p. 5"
+     },
+     {
+      "quote": "Starting with the year the election becomes effective, a trader reports all gains and losses from securities held in connection with the trading business, including securities held at the end of the year, in Part II of Form 4797.",
+      "page": "i1040sd p. 5"
+     },
+     {
+      "quote": "If you are an investor in SBIC stock, you can deduct as an ordinary loss, rather than a capital loss, a loss from the sale, trade, or worthlessness of that stock.",
+      "page": "p550 p. 81"
+     },
+     {
+      "quote": "You report this type of ordinary loss on Form 4797, Part II, line 10.",
+      "page": "p550 p. 81"
+     },
+     {
+      "quote": "If the basis of your section 1244 stock has increased, through contributions to capital or otherwise, you must treat this increase as applying to stock that is not section 1244 stock when you figure an ordinary loss on its sale.",
+      "page": "p550 p. 81"
+     },
+     {
+      "quote": "If you sold property (other than publicly traded stocks or securities) at a gain and you will receive a payment in a tax year after the year of sale, you must generally report the sale on the installment method unless you elect not to.",
+      "page": "i1040sd p. 6"
+     }
+    ],
+    "quote": "However, if a trader previously made the mark-to-market election (explained below), each transaction is reported in Part II of Form 4797 instead of on Form 8949. / Starting with the year the election becomes effective, a trader reports all gains and losses from securities held in connection with the trading business, including securities held at the end of the year, in Part II of Form 4797. / If you are an investor in SBIC stock, you can deduct as an ordinary loss, rather than a capital loss, a loss from the sale, trade, or worthlessness of that stock. / You report this type of ordinary loss on Form 4797, Part II, line 10. / If the basis of your section 1244 stock has increased, through contributions to capital or otherwise, you must treat this increase as applying to stock that is not section 1244 stock when you figure an ordinary loss on its sale. / If you sold property (other than publicly traded stocks or securities) at a gain and you will receive a payment in a tax year after the year of sale, you must generally report the sale on the installment method unless you elect not to.",
+    "page": "i1040sd p. 5; p550 p. 81; i1040sd p. 6",
+    "why_uncovered": "The transaction screen refuses only digital assets, the listed special items (collectibles, section 1202 stock, section 1250 property, QOF), unsupported codes and an ineligible aggregate route. It never asks whether the filer is a trader with a section 475(f) mark-to-market election, whether the stock is SBIC or section 1244 stock that qualifies for ordinary-loss treatment, or whether a non-publicly-traded sale at a gain has deferred payments that require the installment method. These transactions would be computed as ordinary capital transactions on Form 8949.",
+    "closest_item": "sales.one",
     "effect": "amount"
    },
    {
@@ -4912,13 +4892,25 @@
       "page": "p550 p. 82"
      },
      {
+      "quote": "Report on Form 8949 gain or loss from the closing or expiration of an option that isn't a section 1256 contract but is a capital asset in your hands.",
+      "page": "i1040sd p. 6"
+     },
+     {
+      "quote": "Section 1061 recharacterizes certain long-term capital gains of a partner that holds one or more applicable partnership interests as short-term capital gains.",
+      "page": "i8949 p. 3"
+     },
+     {
+      "quote": "Taxpayers that hold certain partnership interests in connection with the performance of services may be subject to different holding period rules.",
+      "page": "i8949 p. 2"
+     },
+     {
       "quote": "If the property is not or would not be a capital asset, the gain or loss is ordinary gain or loss.",
       "page": "p550 p. 88"
      }
     ],
-    "quote": "Gains or losses on section 1256 contracts open at the end of the year, or terminated during the year, are treated as 60% long-term and 40% short-term, regardless of how long the contracts were held. / If the property is not or would not be a capital asset, the gain or loss is ordinary gain or loss.",
-    "page": "p550 p. 82; p550 p. 88",
-    "why_uncovered": "The classification question has no rule for section 1256 contracts, which require the 60/40 split on Form 6781. It also has no rule for options on property that is not a capital asset, whose gain or loss is ordinary. Nothing refuses either case, so these would be classified by actual holding period as capital gains or losses.",
+    "quote": "Gains or losses on section 1256 contracts open at the end of the year, or terminated during the year, are treated as 60% long-term and 40% short-term, regardless of how long the contracts were held. / Report on Form 8949 gain or loss from the closing or expiration of an option that isn't a section 1256 contract but is a capital asset in your hands. / Section 1061 recharacterizes certain long-term capital gains of a partner that holds one or more applicable partnership interests as short-term capital gains. / Taxpayers that hold certain partnership interests in connection with the performance of services may be subject to different holding period rules. / If the property is not or would not be a capital asset, the gain or loss is ordinary gain or loss.",
+    "page": "p550 p. 82; i1040sd p. 6; i8949 p. 3; i8949 p. 2; p550 p. 88",
+    "why_uncovered": "The classification question gives detailed holding-period rules but does not exclude section 1256 contracts, which get 60/40 treatment and belong on Form 6781. It does not address section 1061 recharacterization of applicable partnership interests. It also does not exclude options on property that is not a capital asset, whose gain or loss is ordinary. A filer could classify any of these by actual holding period as an ordinary capital transaction.",
     "closest_item": "sales.box",
     "effect": "amount"
    }
@@ -4978,7 +4970,7 @@
     ]
    }
   ],
-  "cost": 0.5867867999999999,
+  "cost": 0.38850799999999996,
   "model": "claude-opus-5-5"
  },
  {
@@ -5019,7 +5011,7 @@
  },
  {
   "form": "sc",
-  "prompt_sha": "bc5f16d45d8555e54bea39a0ee6a2d216dc1089186cf1152339683e60b6d9a53",
+  "prompt_sha": "8dea291408596b5763517c96610a2bdda84d8af49c8101a2fff2c8d76b6e4a68",
   "claims": [
    {
     "item": "sc.line9",
@@ -5037,13 +5029,13 @@
       "page": "i1040sc p. 6"
      },
      {
-      "quote": "Complete Schedule C, Part IV, if (a) you are claiming the standard mileage rate, you lease your vehicle, or your vehicle is fully depreciated; and (b) you are not required to file Form 4562 for any other reason. If you used more than one vehicle during the year, attach a statement with the information requested in Schedule C, Part IV, for each additional vehicle.",
-      "page": "i1040sc p. 7"
+      "quote": "Do not deduct depreciation, rent or lease payments, or your actual operating expenses.",
+      "page": "i1040sc p. 6"
      }
     ],
-    "quote": "You must use actual expenses if you used five or more vehicles simultaneously in your business (such as in fleet operations). / You can’t use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle. / You can take the standard mileage rate for 2025 only if you: • Owned the vehicle and used the standard mileage rate for the first year you placed the vehicle in service, or • Leased the vehicle and are using the standard mileage rate for the entire lease period. / Complete Schedule C, Part IV, if (a) you are claiming the standard mileage rate, you lease your vehicle, or your vehicle is fully depreciated; and (b) you are not required to file Form 4562 for any other reason. If you used more than one vehicle during the year, attach a statement with the information requested in Schedule C, Part IV, for each additional vehicle.",
-    "page": "i1040sc p. 6; i1040sc p. 7",
-    "why_uncovered": "Line 9 is computed by standard mileage rate or actual expenses for each vehicle. No question, screen or refusal tests the standard-mileage eligibility conditions: the first-year use of the standard rate for an owned vehicle, use of the standard rate for the entire lease period, and the bar on actual expenses after the standard rate was used. Nothing tests the five-or-more-vehicles fleet rule. No item produces the Schedule C Part IV vehicle information or the statement for additional vehicles.",
+    "quote": "You must use actual expenses if you used five or more vehicles simultaneously in your business (such as in fleet operations). / You can’t use actual expenses for a leased vehicle if you previously used the standard mileage rate for that vehicle. / You can take the standard mileage rate for 2025 only if you: • Owned the vehicle and used the standard mileage rate for the first year you placed the vehicle in service, or • Leased the vehicle and are using the standard mileage rate for the entire lease period. / Do not deduct depreciation, rent or lease payments, or your actual operating expenses.",
+    "page": "i1040sc p. 6",
+    "why_uncovered": "Line 9 is computed per vehicle as standard mileage or actual expenses. No listed question, screen or refusal checks the fleet (five or more vehicles at once) rule, the first-year and whole-lease-period conditions for the standard mileage rate, or the bar on switching a leased vehicle to actual expenses. Nothing visible stops depreciation or lease payments for a standard-mileage vehicle from also reaching line 13 or line 20a.",
     "closest_item": "sc.line9",
     "effect": "amount"
    },
@@ -5055,54 +5047,30 @@
       "page": "i1040sc p. 13"
      },
      {
-      "quote": "The depreciation deduction allowable for that portion of the home for that year is deemed to be zero.",
-      "page": "i1040sc p. 13"
+      "quote": "The following types of property must be depreciated under ADS. • Tangible property used predominantly outside the United States. • Tax-exempt use property. • Tax-exempt bond financed property. • Imported property covered by an executive order of the President of the United States.",
+      "page": "i4562 p. 12"
+     },
+     {
+      "quote": "Even if the requirements explained earlier under What Property Qualifies? are met, you cannot elect the section 179 deduction for the following property.",
+      "page": "p946 p. 17"
+     },
+     {
+      "quote": "Generally, you cannot claim a section 179 deduction based on the cost of property you lease to someone else.",
+      "page": "p946 p. 17"
+     },
+     {
+      "quote": "Land and land improvements do not qualify as section 179 property.",
+      "page": "p946 p. 17"
+     },
+     {
+      "quote": "Generally, you must depreciate the carryover basis of property you acquire in a like-kind exchange or involuntary conversion during the current tax year over the remaining recovery period of the property exchanged or involuntarily converted.",
+      "page": "i4562 p. 9"
      }
     ],
-    "quote": "You can’t deduct any depreciation (including any additional first-year depreciation) or section 179 expense for the portion of your home that is used in a qualified business use if you figure the deduction for the business use of your home using the simplified method. / The depreciation deduction allowable for that portion of the home for that year is deemed to be zero.",
-    "page": "i1040sc p. 13",
-    "why_uncovered": "The home office path supports only the simplified method. Line 13 depreciation and section 179 are computed from the assets entered. No question, screen or refusal excludes depreciation or section 179 on the business-use portion of the home when the simplified method is used.",
+    "quote": "You can’t deduct any depreciation (including any additional first-year depreciation) or section 179 expense for the portion of your home that is used in a qualified business use if you figure the deduction for the business use of your home using the simplified method. / The following types of property must be depreciated under ADS. • Tangible property used predominantly outside the United States. • Tax-exempt use property. • Tax-exempt bond financed property. • Imported property covered by an executive order of the President of the United States. / Even if the requirements explained earlier under What Property Qualifies? are met, you cannot elect the section 179 deduction for the following property. / Generally, you cannot claim a section 179 deduction based on the cost of property you lease to someone else. / Land and land improvements do not qualify as section 179 property. / Generally, you must depreciate the carryover basis of property you acquire in a like-kind exchange or involuntary conversion during the current tax year over the remaining recovery period of the property exchanged or involuntarily converted.",
+    "page": "i1040sc p. 13; i4562 p. 12; p946 p. 17; i4562 p. 9",
+    "why_uncovered": "The depreciation and section 179 helpers read asset inputs. No listed question or refusal does any of the following: excludes home depreciation when the simplified home office method is used; requires ADS for property that must use it; bars section 179 for land improvements, property leased to others or property used outside the United States; or handles carryover basis from a like-kind exchange or involuntary conversion.",
     "closest_item": "sc.line13",
-    "effect": "amount"
-   },
-   {
-    "item": "sc.f7206_line2",
-    "sentences": [
-     {
-      "quote": "These rules are applied separately to plans that provide long-term care insurance and plans that don’t provide long-term care insurance.",
-      "page": "i7206 p. 2"
-     },
-     {
-      "quote": "You can’t take the deduction for any month you were eligible to participate in any employer (including your spouse's) subsidized health plan at any time during that month, even if you didn’t actually participate.",
-      "page": "i7206 p. 2"
-     }
-    ],
-    "quote": "These rules are applied separately to plans that provide long-term care insurance and plans that don’t provide long-term care insurance. / You can’t take the deduction for any month you were eligible to participate in any employer (including your spouse's) subsidized health plan at any time during that month, even if you didn’t actually participate.",
-    "page": "i7206 p. 2",
-    "why_uncovered": "The months-of-eligibility exclusion for employer-subsidized plans appears only in the line 1 question, and that question expressly excludes long-term care insurance. No question or refusal applies the separate eligibility test for employer-subsidized long-term care plans to the line 2 premiums.",
-    "closest_item": "sc.f7206_line2",
-    "effect": "amount"
-   },
-   {
-    "item": "sc.loss_allowed",
-    "sentences": [
-     {
-      "quote": "If you enter a loss on line 31, you may have an excess business loss. Use Form 461 to figure your excess business loss.",
-      "page": "i1040sc p. 14"
-     },
-     {
-      "quote": "Instead, use Form 461 to determine the amount of your excess business loss, which will be included as income on Schedule 1 (Form 1040), line 8p.",
-      "page": "i1040sc p. 1"
-     },
-     {
-      "quote": "Any disallowed loss resulting from this limitation will be treated as a net operating loss that must be carried forward and deducted in a subsequent year.",
-      "page": "i1040sc p. 1"
-     }
-    ],
-    "quote": "If you enter a loss on line 31, you may have an excess business loss. Use Form 461 to figure your excess business loss. / Instead, use Form 461 to determine the amount of your excess business loss, which will be included as income on Schedule 1 (Form 1040), line 8p. / Any disallowed loss resulting from this limitation will be treated as a net operating loss that must be carried forward and deducted in a subsequent year.",
-    "page": "i1040sc p. 14; i1040sc p. 1",
-    "why_uncovered": "The loss path refuses only when some investment is not at risk (Form 6198). No question, screen or refusal addresses the excess business loss limitation, and Form 461 is not named in any HANDLED ELSEWHERE item.",
-    "closest_item": "sc.loss_allowed",
     "effect": "amount"
    },
    {
@@ -5115,7 +5083,7 @@
     ],
     "quote": "If the total amounts that were reported in box 1 of Forms 1099-NEC are more than the total you are reporting on line 1, attach a statement explaining the difference.",
     "page": "i1040sc p. 5",
-    "why_uncovered": "The line 1 question asks for gross receipts including Form 1099-NEC amounts. Nothing compares that figure with the Form 1099-NEC totals or produces the required explanatory statement.",
+    "why_uncovered": "The line 1 question asks for gross receipts including Form 1099-NEC amounts. Nothing asks whether the Form 1099-NEC box 1 total is more than line 1, or produces the required explanatory statement.",
     "closest_item": "sc.line1",
     "effect": "presentation"
    },
@@ -5133,38 +5101,8 @@
     ],
     "quote": "If you paid more mortgage interest than is shown on Form 1098, include the amount on line 16a. Attach a statement to your return explaining the difference and enter “See attached” in the margin next to line 16a. / Attach a statement to your return showing the name and address of the person who received the Form 1098. In the margin next to line 16b, enter “See attached.”",
     "page": "i1040sc p. 8",
-    "why_uncovered": "The line 16a and 16b questions collect the amounts only. No item produces the required statements or the 'See attached' margin entries.",
+    "why_uncovered": "The 16a and 16b questions take the interest amounts. Nothing asks whether line 16a is more than the Form 1098 amount, or for the name and address of the co-borrower who received the Form 1098. The required statements and margin entries are therefore never produced.",
     "closest_item": "sc.line16a",
-    "effect": "presentation"
-   },
-   {
-    "item": "sc.one",
-    "sentences": [
-     {
-      "quote": "Enter on line B the six-digit code from the Principal Business or Professional Activity Codes chart at the end of these instructions.",
-      "page": "i1040sc pp. 3-4"
-     },
-     {
-      "quote": "Enter on line D the EIN that was issued to you on Form SS-4. Do not enter your SSN on this line.",
-      "page": "i1040sc p. 4"
-     },
-     {
-      "quote": "Enter your business address. Show a street address instead of a box number.",
-      "page": "i1040sc p. 4"
-     },
-     {
-      "quote": "If you started or acquired this business in 2025, check the box on line H.",
-      "page": "i1040sc p. 5"
-     },
-     {
-      "quote": "If you made any payment in 2025 that would require you to file any Forms 1099, check the “Yes” box. Otherwise, check the “No” box.",
-      "page": "i1040sc p. 5"
-     }
-    ],
-    "quote": "Enter on line B the six-digit code from the Principal Business or Professional Activity Codes chart at the end of these instructions. / Enter on line D the EIN that was issued to you on Form SS-4. Do not enter your SSN on this line. / Enter your business address. Show a street address instead of a box number. / If you started or acquired this business in 2025, check the box on line H. / If you made any payment in 2025 that would require you to file any Forms 1099, check the “Yes” box. Otherwise, check the “No” box.",
-    "page": "i1040sc pp. 3-4; i1040sc p. 4; i1040sc p. 5",
-    "why_uncovered": "The encoding computes no header entries for Schedule C lines A, B, D, E, H or I, and no question collects them.",
-    "closest_item": "sc.one",
     "effect": "presentation"
    }
   ],
@@ -5272,7 +5210,7 @@
     ]
    }
   ],
-  "cost": 0.9091228,
+  "cost": 0.485904,
   "model": "claude-opus-5-5"
  },
  {
@@ -5407,10 +5345,10 @@
  },
  {
   "form": "scveh",
-  "prompt_sha": "a543fb2e5f6e3c986e3eb3b38d34d01b2cbe3250a9df434f17bf12dd101c31eb",
+  "prompt_sha": "e25acd8e7c4e06c5dbfd94738442ef537236e429b3b649f6d203bb2338663358",
   "claims": [
    {
-    "item": "scveh.lease_business",
+    "item": "scveh.line20a",
     "sentences": [
      {
       "quote": "But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount.",
@@ -5423,49 +5361,9 @@
     ],
     "quote": "But if you leased a vehicle for a term of 30 days or more, you may have to reduce your deduction by the inclusion amount. / Report the inclusion amount figured (as described in the preceding discussions) as other income on the same form or schedule on which you took the deduction for your rental costs.",
     "page": "i1040sc p. 8; p946 p. 59",
-    "why_uncovered": "The business portion of the lease payments is the lease payments times the business-use percentage. No question asks for the lease term, the vehicle's fair market value or an inclusion amount. The lease_smr_before screen refuses only two cases: a leased vehicle that used the standard mileage rate earlier, and one converted in 2025. A leased vehicle on actual expenses with a lease of 30 days or more therefore gets its full business-portion lease deduction, with no inclusion-amount reduction and no other-income entry.",
-    "closest_item": "scveh.lease_business",
+    "why_uncovered": "For a leased vehicle on actual expenses, line 20a is computed as the business portion of the lease payments. No question asks about the lease term or the vehicle's fair market value. No refusal is triggered for a lease of 30 days or more, and nothing computes the inclusion amount or reports it as other income on Schedule C. The lease screen covers only an earlier standard mileage rate and a 2025 conversion. The 'regularly engaged in the business of leasing' screen item covers lessors, not lessees.",
+    "closest_item": "scveh.line20a",
     "effect": "amount"
-   },
-   {
-    "item": "scveh.line9",
-    "sentences": [
-     {
-      "quote": "If you produced real or tangible personal property or acquired real or personal property for resale, you must generally capitalize certain expenses in inventory or other property.",
-      "page": "i1040sc p. 6"
-     },
-     {
-      "quote": "Reduce the amounts on lines 8 through 27a and Part V by amounts capitalized.",
-      "page": "i1040sc p. 6"
-     }
-    ],
-    "quote": "If you produced real or tangible personal property or acquired real or personal property for resale, you must generally capitalize certain expenses in inventory or other property. / Reduce the amounts on lines 8 through 27a and Part V by amounts capitalized.",
-    "page": "i1040sc p. 6",
-    "why_uncovered": "Line 9 is the standard mileage amount or the business portion of operating expenses, plus parking and tolls. Nothing asks whether any vehicle cost must be capitalized under the uniform capitalization rules. Nothing asks whether the small business taxpayer exception applies. No refusal or HANDLED ELSEWHERE item covers producers or resellers that must capitalize vehicle costs. So line 9, and the depreciation in Part V, are never reduced by capitalized amounts.",
-    "closest_item": "scveh.line9",
-    "effect": "amount"
-   },
-   {
-    "item": "scveh.placed_date",
-    "sentences": [
-     {
-      "quote": "Complete Schedule C, Part IV, if (a) you are claiming the standard mileage rate, you lease your vehicle, or your vehicle is fully depreciated; and (b) you are not required to file Form 4562 for any other reason.",
-      "page": "i1040sc p. 7"
-     },
-     {
-      "quote": "Complete Form 4562, Part V, if you are claiming depreciation on your vehicle or you are required to file Form 4562 for any other reason (see Line 13, later).",
-      "page": "i1040sc p. 7"
-     },
-     {
-      "quote": "Also, if you file Schedule C (Form 1040) and are claiming the standard mileage rate or actual vehicle expenses (except depreciation), and you are not required to file Form 4562 for any other reason, report vehicle information in Part IV of Schedule C and not on Form 4562.",
-      "page": "i4562 p. 13"
-     }
-    ],
-    "quote": "Complete Schedule C, Part IV, if (a) you are claiming the standard mileage rate, you lease your vehicle, or your vehicle is fully depreciated; and (b) you are not required to file Form 4562 for any other reason. / Complete Form 4562, Part V, if you are claiming depreciation on your vehicle or you are required to file Form 4562 for any other reason (see Line 13, later). / Also, if you file Schedule C (Form 1040) and are claiming the standard mileage rate or actual vehicle expenses (except depreciation), and you are not required to file Form 4562 for any other reason, report vehicle information in Part IV of Schedule C and not on Form 4562.",
-    "page": "i1040sc p. 7; i4562 p. 13",
-    "why_uncovered": "The encoding computes the Schedule C Part IV lines (43, 44a–44c). Nothing asks whether the filer must file Form 4562 for another reason, such as other property placed in service in 2025, a section 179 deduction, or other listed property. So the encoding cannot decide whether the vehicle information belongs in Schedule C Part IV or in Form 4562 Part V.",
-    "closest_item": "scveh.placed_date",
-    "effect": "presentation"
    }
   ],
   "used": [
@@ -5552,7 +5450,7 @@
     ]
    }
   ],
-  "cost": 0.7650428,
+  "cost": 0.38548,
   "model": "claude-opus-5-5"
  },
  {
@@ -5779,7 +5677,7 @@
  },
  {
   "form": "sli",
-  "prompt_sha": "cffccf9a5bb75e23022a7f3b8abd1a42a395b1b45da5f8c0ec1ca933e2aff0b3",
+  "prompt_sha": "30edb829058433dc8184c347ecfb3aaba7f9d5c18c6cf9ee25e3eff468aae231",
   "claims": [],
   "used": [
    {
@@ -5796,7 +5694,7 @@
     ]
    }
   ],
-  "cost": 0.1193748,
+  "cost": 0.071196,
   "model": "claude-opus-5-5"
  },
  {

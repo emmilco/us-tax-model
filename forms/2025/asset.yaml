@@ -25,17 +25,19 @@ form:
     type: Enum(asset_class)
     expr:
       op: input
-      source: 'The asset class of this property: find the property in Pub. 946 Appendix B, Table B-1, and the activity it
-        is used in in Table B-2 (use the Table B-2 class when the property is specifically listed there under your activity);
-        or choose A (personal property with no class life), B (qualified technological equipment), C (property used in research
-        and experimentation), or qualified improvement property (an improvement you made to an interior part of a building
-        that is nonresidential real property, that is section 1250 property, and that you placed in service after 2017 and
-        after the date the building was first placed in service by anyone; it does not include an improvement attributable
-        to the enlargement of the building, any elevator or escalator, or the internal structural framework of the building,
-        nor an improvement to residential rental property: such an improvement is real property, not qualified improvement
-        property). An addition or improvement you made to other depreciable property is separate property with the class
-        of the property it was made to (the class that would apply to that property if you had placed it in service when
-        you placed the addition or improvement in service)'
+      source: |-
+        The asset class of this property.
+
+        Find the property in Pub. 946 Appendix B, Table B-1, and the activity it is used in in Table B-2 (use the Table B-2 class when the property is specifically listed there under your activity).
+
+        Or choose:
+        - A (personal property with no class life)
+        - B (qualified technological equipment)
+        - C (property used in research and experimentation)
+        - qualified improvement property (an improvement you made to an interior part of a building that is nonresidential real property, that is section 1250 property, and that you placed in service after 2017 and after the date the building was first placed in service by anyone)
+          - it does not include an improvement attributable to the enlargement of the building, any elevator or escalator, or the internal structural framework of the building, nor an improvement to residential rental property: such an improvement is real property, not qualified improvement property
+
+        An addition or improvement you made to other depreciable property is separate property with the class of the property it was made to (the class that would apply to that property if you had placed it in service when you placed the addition or improvement in service).
     cite:
       doc: p946
       locator: p. 98, Appendix B, How To Use the Tables; i4562 p. 10, Determining the classification; p946 p. 31, Qualified
@@ -99,54 +101,57 @@ form:
     type: Bool
     expr:
       op: input
-      source: 'Does any of these apply to this property: you disposed of it, or of a portion of it, or converted it to personal use
-        in 2025; you acquired
-        it in a like-kind exchange or an involuntary conversion, with a trade-in (you traded in other property as part of
-        its price), from a related person, or by gift or inheritance; it is real
-        property (a building or a structural component, other than qualified improvement property) or land; it is a car, truck
-        or other vehicle (enter vehicles separately); you must depreciate it under ADS (for example, it is imported property
-        covered by an executive order of the President of the United States; it is used predominantly in a farming business
-        and placed in service in a tax year in which you made an election under section 263A(d)(3) not to have the uniform
-        capitalization rules apply; it is qualified improvement property held by an electing real property trade or business;
-        or it has a recovery period of 10 years or more and is held by an electing farming business), or you elected ADS, the
-        straight line method or the 150% declining balance method for it, or you depreciate it by a method other than the MACRS
-        percentage tables; it is a film, videotape or sound recording; it is computer software, unless you placed it in service
-        in 2025 and deduct all of its business cost in 2025 through section 179 and the special depreciation allowance; it
-        is an initial clearing and grading land improvement for gas utility property or for electric utility transmission and
-        distribution plants; its basis was adjusted for anything other than depreciation (for example a casualty loss), or is
-        reduced by a credit or deduction other than the section 179 deduction and the special depreciation allowance (for
-        example the section 179D deduction for energy efficient commercial building property, the deduction for removal of
-        barriers to the disabled and the elderly, the disabled access credit, the enhanced oil recovery credit, the credit
-        for alternative fuel vehicle refueling property, the credit for employer-provided childcare facilities and services,
-        or a basis adjustment for investment credit property or advanced manufacturing investment credit property); it is
-        in a general asset account; you amortize it; it is used
-        predominantly outside the United States, or is tax-exempt use or tax-exempt bond financed property; it was placed
-        in service before 2005; its business use percentage has changed since you placed it in service; it is qualified
-        reuse and recycling property (machinery or equipment used exclusively to collect, distribute or recycle reuse and
-        recyclable materials, section 168(m)); you acquired it before September 28, 2017; it is property with a long
-        production period, an aircraft, or qualified production property; you claim a special depreciation allowance for
-        it in 2025 and its original use did not begin with you (original use is the first use to which the property is put,
-        whether or not by you, so property someone else used before you acquired it is used property, and so is reconditioned
-        or rebuilt property you acquired unless the cost of its used parts is not more than 20% of its total cost); you claim a special
-        depreciation allowance for it in 2025 and it is property described in section 168(k)(9)(A) or 168(k)(9)(B), that is,
-        property primarily used in a trade or business of furnishing or selling electrical energy, water or sewage disposal
-        services, gas or steam through a local distribution system, or transportation of gas or steam by pipeline,
-        whose rates are established or approved by a State or political subdivision, an agency or instrumentality of
-        the United States, a public service or public utility commission or similar body of a State or political
-        subdivision, or the governing or ratemaking body of an electric cooperative, or property used in a trade or
-        business that has had
-        floor plan financing indebtedness (a loan used to buy motor vehicles, boats, farm machinery or equipment, or
-        trailers or campers held for sale or lease, and secured by them) whose interest was taken into account under
-        section 163(j)(1)(C) in figuring the business interest expense limit; it is qualified rent-to-own property
-        (section 168(i)(14)), energy property specified in section
-        168(e)(3)(B)(vi), a motorsports entertainment complex (section 168(i)(15)), a natural gas gathering line (section
-        168(i)(17)), qualified smart electric meter or qualified smart electric grid system property, or electric transmission
-        property specified in section 168(e)(3)(E)(v); your 2025 tax year, or any tax year since you placed it in service,
-        is shorter than 12 months; or it is listed property whose qualified business use is 50% or less once you leave out
-        uses that are not qualified business use (investment use; leasing it to a 5% owner or related person, or using it
-        as compensation for services of a 5% owner or related person, unless for the lease the value is reported as income
-        to that person; using it as compensation for services of anyone else unless an amount is included in that person''s
-        income for the use and any required income tax was withheld; and use that is nondeductible under section 274)?'
+      source: |-
+        Does any of these apply to this property?
+
+        - you disposed of it, or of a portion of it, or converted it to personal use in 2025
+        - you acquired it in a like-kind exchange or an involuntary conversion, with a trade-in (you traded in other property as part of its price), from a related person, or by gift or inheritance
+        - it is real property (a building or a structural component, other than qualified improvement property) or land
+        - it is a car, truck or other vehicle (enter vehicles separately)
+        - you must depreciate it under ADS, for example:
+          - it is imported property covered by an executive order of the President of the United States
+          - it is used predominantly in a farming business and placed in service in a tax year in which you made an election under section 263A(d)(3) not to have the uniform capitalization rules apply
+          - it is qualified improvement property held by an electing real property trade or business
+          - it has a recovery period of 10 years or more and is held by an electing farming business
+        - you elected ADS, the straight line method or the 150% declining balance method for it
+        - you depreciate it by a method other than the MACRS percentage tables
+        - it is a film, videotape or sound recording
+        - it is computer software, unless you placed it in service in 2025 and deduct all of its business cost in 2025 through section 179 and the special depreciation allowance
+        - it is an initial clearing and grading land improvement for gas utility property or for electric utility transmission and distribution plants
+        - its basis was adjusted for anything other than depreciation (for example a casualty loss)
+        - its basis is reduced by a credit or deduction other than the section 179 deduction and the special depreciation allowance, for example:
+          - the section 179D deduction for energy efficient commercial building property
+          - the deduction for removal of barriers to the disabled and the elderly
+          - the disabled access credit
+          - the enhanced oil recovery credit
+          - the credit for alternative fuel vehicle refueling property
+          - the credit for employer-provided childcare facilities and services
+          - a basis adjustment for investment credit property or advanced manufacturing investment credit property
+        - it is in a general asset account
+        - you amortize it
+        - it is used predominantly outside the United States, or is tax-exempt use or tax-exempt bond financed property
+        - it was placed in service before 2005
+        - its business use percentage has changed since you placed it in service
+        - it is qualified reuse and recycling property (machinery or equipment used exclusively to collect, distribute or recycle reuse and recyclable materials, section 168(m))
+        - you acquired it before September 28, 2017
+        - it is property with a long production period, an aircraft, or qualified production property
+        - you claim a special depreciation allowance for it in 2025 and its original use did not begin with you (original use is the first use to which the property is put, whether or not by you, so property someone else used before you acquired it is used property, and so is reconditioned or rebuilt property you acquired unless the cost of its used parts is not more than 20% of its total cost)
+        - you claim a special depreciation allowance for it in 2025 and it is property described in section 168(k)(9)(A) or 168(k)(9)(B), that is:
+          - property primarily used in a trade or business of furnishing or selling electrical energy, water or sewage disposal services, gas or steam through a local distribution system, or transportation of gas or steam by pipeline, whose rates are established or approved by a State or political subdivision, an agency or instrumentality of the United States, a public service or public utility commission or similar body of a State or political subdivision, or the governing or ratemaking body of an electric cooperative
+          - property used in a trade or business that has had floor plan financing indebtedness (a loan used to buy motor vehicles, boats, farm machinery or equipment, or trailers or campers held for sale or lease, and secured by them) whose interest was taken into account under section 163(j)(1)(C) in figuring the business interest expense limit
+        - it is any of these:
+          - qualified rent-to-own property (section 168(i)(14))
+          - energy property specified in section 168(e)(3)(B)(vi)
+          - a motorsports entertainment complex (section 168(i)(15))
+          - a natural gas gathering line (section 168(i)(17))
+          - qualified smart electric meter or qualified smart electric grid system property
+          - electric transmission property specified in section 168(e)(3)(E)(v)
+        - your 2025 tax year, or any tax year since you placed it in service, is shorter than 12 months
+        - it is listed property whose qualified business use is 50% or less once you leave out uses that are not qualified business use:
+          - investment use
+          - leasing it to a 5% owner or related person, or using it as compensation for services of a 5% owner or related person, unless for the lease the value is reported as income to that person
+          - using it as compensation for services of anyone else unless an amount is included in that person's income for the use and any required income tax was withheld
+          - use that is nondeductible under section 274
     cite:
       doc: i4562
       locator: pp. 8-12, Part III, Lines 16 to 20 and MACRS recapture; p. 9, Line 17, "If you dispose of a portion of a
@@ -532,20 +537,24 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: 'The amount of this property''s cost you elect to expense under section 179 (zero if none; not more than its
-        business cost). Only section 179 property qualifies: property you acquired by purchase for use in the active conduct
-        of your business that is tangible personal property or off-the-shelf computer software, or other tangible property
-        (not a building or its structural components) used as an integral part of manufacturing, production or extraction
-        or of furnishing transportation, communications, electricity, gas, water or sewage disposal services (or as a research
-        or bulk storage facility used with those activities), a storage facility (other than a building or its structural
-        components) used in connection with distributing petroleum or any primary product of petroleum, or qualified improvement
-        property you elect to treat as section 179 property. Enter zero for land and land improvements (such as swimming pools, paved parking areas, wharves, docks,
-        bridges and fences), property held for investment, and property you purchased and lease to others, unless you manufactured
-        or produced it, or the lease term is less than 50% of its class life and for the first 12 months after the transfer
-        to the lessee your deductions for it as trade or business expenses (other than rents and reimbursed amounts) are more
-        than 15% of its rental income. Also enter zero for property used by a tax-exempt organization (unless used in connection
-        with the production of income subject to the tax on unrelated trade or business income) and property used by a governmental
-        unit or a foreign person or entity (unless used under a lease with a term of less than 6 months).'
+      source: |-
+        The amount of this property's cost you elect to expense under section 179 (zero if none; not more than its business cost).
+
+        Only section 179 property qualifies: property you acquired by purchase for use in the active conduct of your business that is any of these:
+
+        - tangible personal property or off-the-shelf computer software
+        - other tangible property (not a building or its structural components) used as an integral part of manufacturing, production or extraction or of furnishing transportation, communications, electricity, gas, water or sewage disposal services (or as a research or bulk storage facility used with those activities)
+        - a storage facility (other than a building or its structural components) used in connection with distributing petroleum or any primary product of petroleum
+        - qualified improvement property you elect to treat as section 179 property
+
+        Enter zero for:
+        - land and land improvements (such as swimming pools, paved parking areas, wharves, docks, bridges and fences)
+        - property held for investment
+        - property you purchased and lease to others, unless you manufactured or produced it, or the lease term is less than 50% of its class life and for the first 12 months after the transfer to the lessee your deductions for it as trade or business expenses (other than rents and reimbursed amounts) are more than 15% of its rental income
+
+        Also enter zero for:
+        - property used by a tax-exempt organization (unless used in connection with the production of income subject to the tax on unrelated trade or business income)
+        - property used by a governmental unit or a foreign person or entity (unless used under a lease with a term of less than 6 months)
     cite:
       doc: i4562
       locator: p. 5, Line 6, Column (c)—Elected cost; pp. 2-3, Section 179 property, "Section 179 property is property
@@ -561,14 +570,14 @@ form:
     type: Bool
     expr:
       op: input
-      source: 'Is this property one that does not qualify for the section 179 deduction: a land improvement (such as a swimming
-        pool, paved parking area, wharf, dock, bridge or fence); property held for investment; property you purchased and
-        lease to others, unless you manufactured or produced it, or the lease term (including options to renew) is less than
-        50% of its class life and for the first 12 months after the transfer to the lessee your business deductions for it
-        (other than rents and reimbursed amounts) are more than 15% of its rental income; property used by a tax-exempt organization,
-        unless used in connection with the production of income subject to the tax on unrelated trade or business income;
-        or property used by a governmental unit or a foreign person or entity, unless used under a lease with a term of less
-        than 6 months?'
+      source: |-
+        Is this property one that does not qualify for the section 179 deduction: any of these?
+
+        - a land improvement (such as a swimming pool, paved parking area, wharf, dock, bridge or fence)
+        - property held for investment
+        - property you purchased and lease to others, unless you manufactured or produced it, or the lease term (including options to renew) is less than 50% of its class life and for the first 12 months after the transfer to the lessee your business deductions for it (other than rents and reimbursed amounts) are more than 15% of its rental income
+        - property used by a tax-exempt organization, unless used in connection with the production of income subject to the tax on unrelated trade or business income
+        - property used by a governmental unit or a foreign person or entity, unless used under a lease with a term of less than 6 months
     cite:
       doc: p946
       locator: p. 17, What Property Does Not Qualify?, "Land and land improvements do not qualify as section 179 property",

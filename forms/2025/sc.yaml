@@ -97,23 +97,55 @@ form:
         and "A small business taxpayer that meets the gross receipts test under section 448(c) and that is not a tax shelter"
   - id: sc.special
     printed: (screen)
-    label: 'For this business, do you have any of these: depletion (line 12); the energy efficient commercial buildings deduction
-      (Form 7205); wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994); business
-      interest limited by Form 8990; recapture of depreciation or section 179 on listed property, recapture of section 179
-      on other property no longer used more than 50% in the business, or an inclusion amount for leased property; a chapter
-      11 bankruptcy case; extraterritorial income (Form 8873); income you report under the installment method (including installment sales
-      of timeshares or residential lots); nontaxable Medicaid waiver payments (Notice 2014-7); research or experimental expenditures you
-      elect to capitalize; a capital construction fund; contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III); qualified sound recording production costs you elect to deduct under section 181; prior year unallowed passive activity losses from this activity; services you provide to a business that employed you within the last 3 years, substantially the same as the services you provided as its employee; Form 1099-PATR amounts in this business''s income that the cooperative did not report to you as qualified items of income; an activity that is not a business (for example a sporadic activity, a not-for-profit activity or a hobby); licenses or other costs you must amortize (for example, some liquor licenses); travel by ocean liner, cruise ship or other luxury water transportation; or a domestic LLC of which you are the sole member that elected to be treated as a corporation?'
+    label: |-
+      For this business, do you have any of these?
+
+      - depletion (line 12)
+      - the energy efficient commercial buildings deduction (Form 7205)
+      - wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994)
+      - business interest limited by Form 8990
+      - recapture of depreciation or section 179 on listed property, recapture of section 179 on other property no longer used more than 50% in the business, or an inclusion amount for leased property
+      - a chapter 11 bankruptcy case
+      - extraterritorial income (Form 8873)
+      - income you report under the installment method (including installment sales of timeshares or residential lots)
+      - nontaxable Medicaid waiver payments (Notice 2014-7)
+      - research or experimental expenditures you elect to capitalize
+      - a capital construction fund
+      - contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III)
+      - qualified sound recording production costs you elect to deduct under section 181
+      - prior year unallowed passive activity losses from this activity
+      - services you provide to a business that employed you within the last 3 years, substantially the same as the services you provided as its employee
+      - Form 1099-PATR amounts in this business's income that the cooperative did not report to you as qualified items of income
+      - an activity that is not a business (for example a sporadic activity, a not-for-profit activity or a hobby)
+      - licenses or other costs you must amortize (for example, some liquor licenses)
+      - travel by ocean liner, cruise ship or other luxury water transportation
+      - a domestic LLC of which you are the sole member that elected to be treated as a corporation
     type: Bool
     expr:
       op: input
-      source: 'For this business, do you have any of these: depletion (line 12); the energy efficient commercial buildings
-        deduction (Form 7205); wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994);
-        business interest limited by Form 8990; recapture of depreciation or section 179 on listed property, recapture of
-        section 179 on other property no longer used more than 50% in the business, or an inclusion amount for leased property;
-        a chapter 11 bankruptcy case; extraterritorial income (Form 8873); income you report under the installment method (including
-        installment sales of timeshares or residential lots); nontaxable Medicaid waiver payments (Notice 2014-7); research or experimental expenditures
-        you elect to capitalize; a capital construction fund; contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III); qualified sound recording production costs you elect to deduct under section 181; prior year unallowed passive activity losses from this activity; services you provide to a business that employed you within the last 3 years, substantially the same as the services you provided as its employee; Form 1099-PATR amounts in this business''s income that the cooperative did not report to you as qualified items of income; an activity that is not a business (for example a sporadic activity, a not-for-profit activity or a hobby); licenses or other costs you must amortize (for example, some liquor licenses); travel by ocean liner, cruise ship or other luxury water transportation; or a domestic LLC of which you are the sole member that elected to be treated as a corporation?'
+      source: |-
+        For this business, do you have any of these?
+
+        - depletion (line 12)
+        - the energy efficient commercial buildings deduction (Form 7205)
+        - wages or benefits reduced by an employment credit (Forms 5884, 8844, 8846, 8932, 8941 or 8994)
+        - business interest limited by Form 8990
+        - recapture of depreciation or section 179 on listed property, recapture of section 179 on other property no longer used more than 50% in the business, or an inclusion amount for leased property
+        - a chapter 11 bankruptcy case
+        - extraterritorial income (Form 8873)
+        - income you report under the installment method (including installment sales of timeshares or residential lots)
+        - nontaxable Medicaid waiver payments (Notice 2014-7)
+        - research or experimental expenditures you elect to capitalize
+        - a capital construction fund
+        - contributions you made on your own behalf, as a self-employed person, to a dependent care assistance program (Form 2441, Parts I and III)
+        - qualified sound recording production costs you elect to deduct under section 181
+        - prior year unallowed passive activity losses from this activity
+        - services you provide to a business that employed you within the last 3 years, substantially the same as the services you provided as its employee
+        - Form 1099-PATR amounts in this business's income that the cooperative did not report to you as qualified items of income
+        - an activity that is not a business (for example a sporadic activity, a not-for-profit activity or a hobby)
+        - licenses or other costs you must amortize (for example, some liquor licenses)
+        - travel by ocean liner, cruise ship or other luxury water transportation
+        - a domestic LLC of which you are the sole member that elected to be treated as a corporation
     cite:
       doc: i1040sc
       locator: p. 1, What's New (research and experimental expenditures); p. 3, Capital Construction Fund; p. 5, Part I; p.
@@ -474,18 +506,18 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: Lodging and transportation for overnight business travel away from your tax home, and incidental expenses
-        of that travel (fees and tips to porters, baggage carriers, bellhops, hotel maids, stewards and others on ships, and
-        hotel servants in foreign countries; not laundry, cleaning and pressing of clothing, lodging taxes, or the costs of telegrams
-        or telephone calls), either at their actual cost
-        or, for a travel day on which you paid or incurred no meal expenses and did not use the standard meal allowance, at
-        $5 for that day (not meals and not entertainment; on a day you use the standard meal allowance, incidental expenses
-        are part of that allowance);
-        not expenses of employment away from home for a period of more than 1 year; not travel expenses for your spouse, your
-        dependent or any other person unless that person is your employee, the travel is for a bona fide business purpose
-        and the expenses would otherwise be deductible by that person; and not a convention, seminar or similar meeting held
-        outside the North American area unless it is directly related to your business and it is as reasonable to hold it
-        outside the North American area as within it; zero if none
+      source: |-
+        Lodging and transportation for overnight business travel away from your tax home, and incidental expenses of that travel, as described below; zero if none.
+
+        Incidental expenses of that travel:
+        - fees and tips to porters, baggage carriers, bellhops, hotel maids, stewards and others on ships, and hotel servants in foreign countries
+        - not laundry, cleaning and pressing of clothing, lodging taxes, or the costs of telegrams or telephone calls
+        - either at their actual cost or, for a travel day on which you paid or incurred no meal expenses and did not use the standard meal allowance, at $5 for that day (not meals and not entertainment; on a day you use the standard meal allowance, incidental expenses are part of that allowance)
+
+        Other limits:
+        - not expenses of employment away from home for a period of more than 1 year
+        - not travel expenses for your spouse, your dependent or any other person unless that person is your employee, the travel is for a bona fide business purpose and the expenses would otherwise be deductible by that person
+        - not a convention, seminar or similar meeting held outside the North American area unless it is directly related to your business and it is as reasonable to hold it outside the North American area as within it
     cite:
       doc: i1040sc
       locator: p. 9, Line 24a, "you can use an optional method for deducting incidental expenses only if you did not pay

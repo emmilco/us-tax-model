@@ -1353,7 +1353,7 @@
  },
  {
   "screen": "f8960.unsupported",
-  "question": "Any annuity, rental, royalty, business or pass-through income; a CFC or PFIC holding; a section 911 exclusion; a disposition adjustment (Form 8960 line 5b or 5c, for example gain on employer securities attributable to net unrealized appreciation (NUA) from a qualified plan, or the sale of property held in a trade or business or of an interest in a partnership or S corporation, and an adjustment to a capital loss carryforward for losses excluded on those lines in an earlier year); a gain or loss from surrendering or otherwise disposing of a life insurance contract; a section 1411 net operating loss; section 404(k) dividends on employer securities held in an employee stock ownership plan (ESOP) and paid directly to you (Form 1099-DIV box 1a); excluded savings bond interest (Form 8815); a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment?",
+  "question": "Any of the following?\n\n- annuity, rental, royalty, business or pass-through income\n- a CFC or PFIC holding\n- a section 911 exclusion\n- a disposition adjustment (Form 8960 line 5b or 5c), for example:\n  - gain on employer securities attributable to net unrealized appreciation (NUA) from a qualified plan\n  - the sale of property held in a trade or business or of an interest in a partnership or S corporation\n  - an adjustment to a capital loss carryforward for losses excluded on those lines in an earlier year\n- a gain or loss from surrendering or otherwise disposing of a life insurance contract\n- a section 1411 net operating loss\n- section 404(k) dividends on employer securities held in an employee stock ownership plan (ESOP) and paid directly to you (Form 1099-DIV box 1a)\n- excluded savings bond interest (Form 8815)\n- a deductible investment expense other than investment interest or state and local tax\n- another net investment income adjustment",
   "lines": [
    "f8960.line1",
    "f8960.line3",
@@ -1371,54 +1371,54 @@
   "findings": [
    {
     "kind": "NARROW",
-    "situation": "A filer receives a taxable state or local income tax refund (Schedule 1, line 1) for taxes deducted on a prior-year Form 8960, line 9b; this is a deduction recovery that belongs on line 7.",
-    "irs_text": "i8960 p. 13, Line 7: \"Recoveries of deductions taken on a prior year's Form 8960. See Deduction recoveries\"; p. 14: \"if a taxpayer receives a refund of state income taxes from a prior year, such a refund would be included in the taxpayer's gross income.\"",
-    "why": "The question names no deduction recoveries or tax refunds, so a filer with only a state refund would answer NO. Line 7 would then be zero instead of including the recovery."
+    "situation": "A filer who itemized and deducted state income tax on a prior-year Form 8960 line 9b gets a taxable state refund this year (Schedule 1 line 1).",
+    "irs_text": "i8960 p. 13, Line 7: \"Recoveries of deductions taken on a prior year's Form 8960. See Deduction recoveries, later.\"; p. 14: \"A recovery or refund of a previously deducted item increases NII in the year of the recovery.\"",
+    "why": "Nothing in the list names a state tax refund or the recovery of a deduction, so the filer would answer NO. The tool then sets line 7 to zero and leaves out the required line 7 addition."
    },
    {
     "kind": "NARROW",
-    "situation": "A parent elects Form 8814 to report a child's interest and dividends, and the Form 8814 line 12 amount must go on Form 8960, line 7.",
+    "situation": "A parent files Form 8814 to report a child's interest and dividends on the parent's return.",
     "irs_text": "i8960 p. 13: \"Parents electing to include their child's dividends and capital gain distributions in their income by filing Form 8814 must include on Form 8960, line 7, the amount on Form 8814, line 12\"",
-    "why": "The child's investment income is not annuity, rental, royalty, business or pass-through income, and the question does not mention Form 8814. A truthful filer could answer NO, and the tool would leave line 7 at zero."
+    "why": "The child's amounts reach Schedule 1 line 8z, not lines 1 or 2. None of the listed items describes this, so the filer answers NO and the tool sets line 7 to zero."
    },
    {
     "kind": "NARROW",
-    "situation": "A filer has substitute interest or dividend payments (Form 1099-MISC) or net positive payments from a notional principal contract, reported on Schedule 1, line 8z.",
-    "irs_text": "i8960 p. 13, Line 7: \"Other items of NII ... reported on Schedule 1 (Form 1040), line 8z ... 2. Substitute interest and dividend payments ... 3. Net positive periodic payments received from a notional principal contract\"",
-    "why": "None of the listed categories describes these items. Only the vague catch-all \"another net investment income adjustment\" reaches them, so line 7 would be computed as zero."
+    "situation": "A filer receives substitute interest or dividend payments on Form 1099-MISC, or net periodic payments from an equity or interest rate swap.",
+    "irs_text": "i8960 p. 13, Line 7: \"Substitute interest and dividend payments (generally reported on Form 1099-MISC...)\" and \"Net positive periodic payments received from a notional principal contract (NPC)\"",
+    "why": "These amounts are not annuity, rental, royalty, business or pass-through income, and no listed item names them. A filer could answer NO, and the tool would drop them from line 7."
    },
    {
     "kind": "NARROW",
-    "situation": "A filer deducts a casualty or theft loss on Schedule A, line 15, which line 7 must show as a negative modification.",
+    "situation": "A filer deducts a casualty or theft loss on Schedule A line 15 for a non-business asset.",
     "irs_text": "i8960 p. 13, Line 7: \"Casualty and theft losses reported on Schedule A (Form 1040), Itemized Deductions, line 15 (enter as a negative amount).\"",
-    "why": "A casualty loss is not an investment expense or a disposition adjustment as the question describes them. A filer would answer NO, and line 7 would omit the loss."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A filer's ordinary dividends on line 2 include Alaska Permanent Fund Dividends, which must be removed on line 7.",
-    "irs_text": "i8960 p. 7, Line 2: \"If line 2 includes dividends from employer securities held in an employee stock ownership plan (ESOP) that are deductible under section 404(k) or Alaska Permanent Fund Dividends, include those amounts as negative modifications on line 7.\"",
-    "why": "The question lists the section 404(k) half of this adjustment but omits Alaska Permanent Fund Dividends. A filer with only those dividends would answer NO."
+    "why": "A casualty loss is not an investment expense and is not listed. The filer would answer NO, and the tool sets line 7 to zero instead of entering the negative amount."
    },
    {
     "kind": "WIDE",
-    "situation": "A filer receives annuity payments only from a qualified pension, 403(b) plan or IRA, which are excluded from line 3.",
-    "irs_text": "Question: \"Any annuity ... income\"; i8960 p. 7, Line 3: \"Enter the gross income from all annuities, except annuities paid from the following. • Section 401 ... • Section 403(b) ... • Section 408—individual retirement accounts (IRAs) or annuities\"",
-    "why": "The filer truthfully has annuity income and must answer YES. Line 3 is correctly zero, so the tool would have computed it correctly."
+    "situation": "A filer receives annuity payments only from a 401(k), 403(b), IRA, governmental 457(b) or other qualified pension plan.",
+    "irs_text": "Question: \"annuity, rental, royalty, business or pass-through income\"; i8960 p. 7, Line 3: \"Enter the gross income from all annuities, except annuities paid from ... Section 401 ... Section 403(b) ... Section 408 ... Section 457(b)\"",
+    "why": "These annuities are excluded from line 3, so the tool's zero is correct. The bare word \"annuity\" still makes such a filer answer YES."
    },
    {
     "kind": "WIDE",
-    "situation": "A filer excludes savings bond interest on Form 8815; the exclusion already reduces Form 1040 line 2b and AGI, and Form 8960 makes no separate adjustment for it.",
+    "situation": "A filer excludes savings bond interest on Form 8815 and has no other listed item.",
     "irs_text": "Question: \"excluded savings bond interest (Form 8815)\"; i8960 p. 7, Line 1: \"Enter the amount of taxable interest received. Include the following amount from your return. • Form 1040 or 1040-SR, line 2b.\"",
-    "why": "Line 1 takes the already-reduced line 2b and line 13 takes AGI, so the tool computes both correctly. The question still forces a YES and a refusal."
+    "why": "Line 1 takes Form 1040 line 2b, which is already net of the Form 8815 exclusion. AGI also already reflects the exclusion. The quoted text gives no further line 1–13 adjustment, so the tool computes this correctly, yet the filer must answer YES."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer must decide whether an item fits the catch-all \"another net investment income adjustment\" or \"pass-through income\", for example a Schedule K-1 (Form 1041) box 14 code H amount or a K-1 that reports only interest and dividends.",
-    "irs_text": "i8960 p. 13: \"Distributions from estates and trusts. Enter the amount from box 14, code H, of Schedule K-1 (Form 1041)\"; p. 13, Line 7: \"Use line 7 to report additional NII modifications to NII that aren't otherwise specified on lines 1–6.\"",
-    "why": "A filer cannot tell which items count as an \"adjustment\" without already knowing the Form 8960 instructions. It is also unclear whether trust distributions or a K-1 showing only portfolio income count as \"pass-through income\"."
+    "situation": "A filer receives ordinary dividends from mutual funds or REITs, or a Schedule K-1 (Form 1041) from a trust or estate.",
+    "irs_text": "Question: \"pass-through income\"; i8960 p. 13: \"Distributions from estates and trusts. Enter the amount from box 14, code H, of Schedule K-1 (Form 1041)\"",
+    "why": "\"Pass-through\" could be read to include RIC/REIT dividends, which line 2 handles and which need no refused adjustment. A filer could also read it to exclude a trust K-1, which does need a line 7 and line 13 adjustment."
+   },
+   {
+    "kind": "UNCLEAR",
+    "situation": "A filer who itemizes deducts foreign income tax paid, for example tax shown in Form 1099-DIV box 7, instead of claiming the credit.",
+    "irs_text": "Question: \"a deductible investment expense other than investment interest or state and local tax\"; i8960 p. 18: \"Enter the amount of state, local, or foreign income taxes ... on Form 8960, line 9b.\"",
+    "why": "The exception names only state and local tax. A filer could read deductible foreign tax as a YES item even though it belongs on line 9b, which is not refused here."
    }
   ],
-  "prompt_sha": "51dca85fe7808f0d5d601673c14529f61cb40e0b365833129573d9843e972149",
+  "prompt_sha": "97fff2485bb61620ccb672b2f0eae50392183135ee684473a35124e7b00286f9",
   "used": [
    {
     "doc": "f8960",
@@ -1499,7 +1499,7 @@
     "cols_sha256": "af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420"
    }
   ],
-  "cost": 0.31013999999999997,
+  "cost": 0.197868,
   "model": "claude-opus-5-5"
  },
  {
@@ -1820,7 +1820,7 @@
  },
  {
   "screen": "gift.special",
-  "question": "Does this group need an appraisal or other special treatment: a deduction over $5,000 (before any income limit), or property worth more than $5,000, for one item or for similar items (items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land or buildings) given to all donees together (other than publicly traded securities: listed on a recognized stock exchange whose quotations are published daily, regularly traded on a national or regional over-the-counter market, or mutual fund shares quoted daily in a national newspaper), a noncash contribution reaching you through a Schedule K-1, vehicles, pass-through entity interests, intellectual property, inventory, conservation or partial interests, property with restrictions on its use, or a clothing or household item over $500 not in good used condition?",
+  "question": "Does this group need an appraisal or other special treatment: any of the following?\n\n- a deduction over $5,000 (before any income limit), or property worth more than $5,000, for one item or for similar items given to all donees together, other than publicly traded securities\n  - similar items: items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land or buildings\n  - publicly traded securities: listed on a recognized stock exchange whose quotations are published daily, regularly traded on a national or regional over-the-counter market, or mutual fund shares quoted daily in a national newspaper\n- a noncash contribution reaching you through a Schedule K-1\n- vehicles\n- pass-through entity interests\n- intellectual property\n- inventory\n- conservation or partial interests\n- property with restrictions on its use\n- a clothing or household item over $500 not in good used condition",
   "lines": [
    "gift.allowed"
   ],
@@ -1828,18 +1828,24 @@
   "findings": [
    {
     "kind": "WIDE",
-    "situation": "A filer gives property worth more than $5,000 whose deduction, after the required ordinary-income or basis reduction, is $5,000 or less. An example is a short-term-held item with FMV $8,000 and basis $3,000. The filer must answer YES because of the 'property worth more than $5,000' clause, yet the item belongs in Section A and the tool's helper already applies the reduction.",
-    "irs_text": "i8283 p.3: \"Include in Section B only items (or groups of similar items) for which you claimed a deduction of more than $5,000.\" i8283 p.1: \"Make any required reductions to the amount of the contributions before you determine if you must file Form 8283.\"",
-    "why": "Which section applies depends on the deduction after reductions, not on FMV. Asking about property 'worth' more than $5,000 refuses Section A gifts the tool computes correctly. The p.3 sentence about property 'valued in excess of $5,000' sits inside the Section B instructions and does not override the deduction test."
+    "situation": "A filer gives more than $5,000 of securities that are not publicly traded in the listed sense but qualify under Regulations section 1.170A-13(c)(7)(xi)(B), so they belong in Section A and need no appraisal. The question still makes the filer answer YES.",
+    "irs_text": "i8283 p.3: 'The following items even if the claimed value was more than $5,000 ... d. Certain other securities even though the securities do not meet any of the criteria described in paragraphs 2.a through 2.c above (for more information, see Regulations section 1.170A-13(c)(7)(xi)(B))'",
+    "why": "The question exempts only 'publicly traded securities' as it defines them. These Section A securities fall outside that definition, so the tool refuses a gift it could compute as a normal Section A amount."
+   },
+   {
+    "kind": "UNCLEAR",
+    "situation": "Property is worth more than $5,000, but the required reductions bring the deduction to $5,000 or less. Examples are ordinary income property limited to basis, or capital gain property reduced to basis.",
+    "irs_text": "i8283 p.3: 'Include in Section B only items (or groups of similar items) for which you claimed a deduction of more than $5,000' versus 'A separate, qualified appraisal is required for any gift of property valued in excess of $5,000'; i8283 p.1: 'Make any required reductions to the amount of the contributions before you determine if you must file Form 8283.'",
+    "why": "The question says 'a deduction over $5,000 (before any income limit), or property worth more than $5,000' and never says the deduction test comes after the required reductions. A filer cannot tell whether a reduced deduction of $5,000 or less still means YES, and the IRS text itself points both ways."
    },
    {
     "kind": "WIDE",
-    "situation": "A filer donates a vehicle with a deduction of $5,000 or less. Or the vehicle's deduction is limited to the gross proceeds of its sale and the filer has a contemporaneous written acknowledgment. The bare word 'vehicles' makes this filer answer YES, although the IRS places it in Section A as an ordinary amount-from-deduction line.",
-    "irs_text": "i8283 p.3, Section A item 2.e: \"A vehicle (including a car, boat, or airplane) if your deduction for the vehicle is limited to the gross proceeds from its sale and you obtained a contemporaneous written acknowledgment\"; i8283 p.9: \"Do not include donated vehicles reportable in Section A in Section B.\"",
-    "why": "Only vehicles claimed above $5,000 and not limited to gross proceeds need Section B and the attached Form 1098-C. Listing every vehicle refuses Section A vehicle gifts whose deduction the helper already holds."
+    "situation": "A filer donates a partial interest or property with use restrictions, and the deduction is $5,000 or less. The question's list covers 'conservation or partial interests' and 'property with restrictions on its use' with no dollar threshold, so the filer answers YES.",
+    "irs_text": "i8283 p.3: 'You must also file Form 8283, Section B, if conditions were placed on the use of the property or you gave less than an entire interest in a property and the contribution was for more than $5,000.'",
+    "why": "The IRS requires Section B special treatment for these gifts only above $5,000. The question's blanket wording sweeps in smaller gifts that are ordinary Section A items. This finding stands only if the tool computes such gifts correctly; any further partial-interest valuation rules are outside the cited text."
    }
   ],
-  "prompt_sha": "a40a89440fcaba8f0412c905e779e991bb8c89710284c4d22c6aecea8f97ab28",
+  "prompt_sha": "5b99367c0332d9be1e1f0867ac0cd5b27183eefd419759eb6a1ccef0484b9964",
   "used": [
    {
     "doc": "i8283",
@@ -1865,7 +1871,7 @@
     "cols_sha256": "53a4b54ff613d5c600c1af7ba5bf9024418fe89441ae8d629a955bd59aa6e3c7"
    }
   ],
-  "cost": 0.118112,
+  "cost": 0.08099200000000001,
   "model": "claude-opus-5-5"
  },
  {
@@ -3149,7 +3155,7 @@
  },
  {
   "screen": "s2.other",
-  "question": "Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax, Net Investment Income Tax or the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures), for example the alternative minimum tax, repayment of a clean vehicle credit, household employment taxes, the additional tax on an HSA you did not keep as an eligible individual (Form 8889 Part III), uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N), tax on unreported tips (Form 4137), or interest on deferred tax? (Form 5329 Part I, early distributions, and the 2025 HSA excess are figured by this tool and are not other amounts.)",
+  "question": "Any amount on Schedule 2 other than the following?\n\n- self-employment tax from Schedule SE\n- Additional Medicare Tax\n- Net Investment Income Tax\n- the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures)\n\nOther amounts, for example:\n- the alternative minimum tax\n- repayment of a clean vehicle credit\n- household employment taxes\n- the additional tax on an HSA you did not keep as an eligible individual (Form 8889 Part III)\n- uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N)\n- tax on unreported tips (Form 4137)\n- interest on deferred tax\n\nForm 5329 Part I, early distributions, and the 2025 HSA excess are figured by this tool and are not other amounts.",
   "lines": [
    "s1a.line4b_calc",
    "s2.line2",
@@ -3162,30 +3168,18 @@
   "findings": [
    {
     "kind": "NARROW",
-    "situation": "A filer's W-2 box 8 shows allocated tips that must be reported as income, but the filer does not think of them as unreported tips and has not prepared Form 4137.",
-    "irs_text": "i1040gi p. 101: \"You must also file Form 4137 if your Form(s) W-2, box 8, shows allocated tips that you must report as income.\"",
-    "why": "The question names only \"tax on unreported tips (Form 4137)\" and never mentions allocated tips or box 8, so this filer could answer NO. The tool would then enter $0 for Form 4137 tips and omit the Schedule 2 line 5 tax from line 22 of Schedule 8812 and from total other taxes."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A worker who owes uncollected social security and Medicare tax on wages through Form 8919 has not yet prepared that form or a Schedule 2.",
-    "irs_text": "f1040s2 p. 1, line 6: \"Uncollected social security and Medicare tax on wages. Attach Form 8919\"; f1040s8812 p. 2, line 22 includes \"Schedule 2 (Form 1040), line 6\"",
-    "why": "The question's only uncollected-tax example is limited to tips or group-term life insurance with W-2 box 12 codes, which suggests that uncollected tax on wages is not meant. Only the general \"any amount\" wording reaches this filer, who could answer NO if no Schedule 2 amount exists yet, leaving the tax out of lines 21 and 22."
-   },
-   {
-    "kind": "NARROW",
-    "situation": "A filer who must repay excess advance premium tax credit has not yet completed Form 8962, so no amount appears on a Schedule 2.",
-    "irs_text": "f1040s2 p. 1, line 1a: \"Excess advance premium tax credit repayment. Attach Form 8962\"; line 3: \"Add lines 1z and 2.\"",
-    "why": "The question's examples include repayment of a clean vehicle credit but not this repayment, and the question gives no instruction to prepare source forms first. A filer could truthfully say no such amount is on a Schedule 2, leaving line 3 understated."
+    "situation": "A filer whose W-2 box 8 shows allocated tips must file Form 4137 and owes Schedule 2 line 5 tax, but may answer NO because the employer already reported those tips on the W-2, so they do not seem to be 'unreported tips'.",
+    "irs_text": "i1040gi p. 101: \"You must also file Form 4137 if your Form(s) W-2, box 8, shows allocated tips that you must report as income.\"; f1040s2 p. 1, line 5: \"Social security and Medicare tax on unreported tip income. Attach Form 4137\"",
+    "why": "The only tip example in the question is 'tax on unreported tips (Form 4137)', which does not cover allocated tips the filer sees printed on the W-2. The tool would then set Schedule 2 lines 5 and 21, Schedule 8812 line 22, and the Form 4137 qualified tips on Schedule 1-A line 4b and worksheet column 1(c) to zero."
    },
    {
     "kind": "UNCLEAR",
-    "situation": "A filer owes a Form 5329 additional tax other than the early-distribution tax or 2025 HSA excess, such as a tax on excess IRA contributions, and reports it on Schedule 2 line 8.",
+    "situation": "A filer with an HSA excess contribution from a prior year that was not withdrawn, and so still owes the 6% tax in 2025, cannot tell whether that is 'the 2025 HSA excess' the tool figures or an 'other amount'.",
     "irs_text": "f1040s2 p. 1, line 8: \"Additional tax on IRAs or other tax-favored accounts. Attach Form 5329 if required.\"",
-    "why": "The parenthetical says Form 5329 Part I, early distributions and the 2025 HSA excess \"are figured by this tool,\" but the question never says other Form 5329 taxes require YES. A filer could read the general wording as requiring YES or read the Form 5329 note as meaning the tool handles line 8."
+    "why": "'The 2025 HSA excess' can mean only contributions made for 2025, or the whole excess subject to tax for the 2025 year, which includes carryover. The filer could answer YES or NO, and if the tool figures only current-year contributions, a NO answer leaves line 8 and line 21 understated."
    }
   ],
-  "prompt_sha": "5fe541b2cf37988d88e621709c9eae3ab4594cfc846e3a6793df2eede5e14821",
+  "prompt_sha": "e8c1cc5cb94dc9a077e95b57cbe8f40c94314bf0dd3b63b658db2f378b93e2cd",
   "used": [
    {
     "doc": "f1040s2",
@@ -3244,7 +3238,7 @@
     "cols_sha256": "3525d47f51cb713591081610a862cae77eff08a8aa7e2064a96b15cee4fd5cb9"
    }
   ],
-  "cost": 0.22666399999999998,
+  "cost": 0.12038,
   "model": "claude-opus-5-5"
  },
  {
@@ -4010,7 +4004,7 @@
  },
  {
   "screen": "sales.special",
-  "question": "Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property: generally, real property for which depreciation was allowed or allowable (claimed, or that you could have claimed), such as a home you once rented out or used in part as a home office), or an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost; or does it dispose of an investment in a qualified opportunity fund (QOF), or is any of its gain deferred by an investment in a QOF?",
+  "question": "Does any of the following apply to this sale?\n\nDoes this sale involve:\n- collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind)\n- qualified small business stock with a section 1202 exclusion\n- depreciable real property (section 1250 property: generally, real property for which depreciation was allowed or allowable (claimed, or that you could have claimed), such as a home you once rented out or used in part as a home office)\n- an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost\n\nOr does it dispose of an investment in a qualified opportunity fund (QOF), or is any of its gain deferred by an investment in a QOF?",
   "lines": [
    "sales.one"
   ],
@@ -4018,12 +4012,24 @@
   "findings": [
    {
     "kind": "WIDE",
-    "situation": "A filer sells S corporation stock or a trust interest at a long-term gain, where the entity owns depreciated rental real estate but no collectibles.",
-    "irs_text": "i1040sd p.12, Line 19: \"You reported a long-term capital gain from the sale or exchange of an interest in a partnership that owned section 1250 property.\" Compare i1040sd p.11, Line 18: \"gain ... from the sale or exchange of an interest in a partnership, S corporation, or trust ... attributable to unrealized appreciation of collectibles.\"",
-    "why": "The question asks about \"an interest in a partnership, S corporation or trust (including S corporation stock) that holds ... section 1250 property,\" so this filer must answer YES. Under the IRS text, the section 1250 look-through applies only to partnership interests. The S corporation stock or trust interest sale is an ordinary capital gain, which the tool computes correctly."
+    "situation": "The filer sells S corporation stock or a trust interest where the entity holds section 1250 property but no collectibles, so the question's fourth bullet makes the filer answer YES, yet the Line 19 triggers reach only partnership interests.",
+    "irs_text": "i1040sd p.12, Line 19: \"You reported a long-term capital gain from the sale or exchange of an interest in a partnership that owned section 1250 property.\" Question: \"an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property\"",
+    "why": "No Line 19 trigger covers selling S corporation stock or a trust interest backed by section 1250 property, so the tool's computation is correct. The question still forces a refusal."
+   },
+   {
+    "kind": "WIDE",
+    "situation": "The filer sells an interest in a partnership, S corporation or trust that holds collectibles or section 1250 property at a loss, or after holding it 1 year or less, and must answer YES.",
+    "irs_text": "i1040sd p.11, Line 18: \"Include on the worksheet any gain (but not loss) from the sale or exchange of an interest in a partnership, S corporation, or trust held for more than 1 year and attributable to unrealized appreciation of collectibles.\" p.12, Line 19: \"You reported a long-term capital gain from the sale or exchange of an interest in a partnership that owned section 1250 property.\"",
+    "why": "Lines 18 and 19 need an entry only for long-term gain from such an interest, and for collectibles only gain from unrealized appreciation. A loss sale, or a sale of an interest held 1 year or less, needs nothing from these worksheets, but the question's wording (\"holds collectibles or section 1250 property\") still requires YES."
+   },
+   {
+    "kind": "UNCLEAR",
+    "situation": "A filer selling shares of a REIT or of a C corporation that owns depreciable buildings might read \"involve depreciable real property\" as covering the sale.",
+    "irs_text": "i1040sd p.11, Line 19: \"You sold or otherwise disposed of section 1250 property (generally, real property that you depreciated) held more than 1 year.\"",
+    "why": "The IRS trigger is the filer's own disposal of real property they depreciated. The question's \"involve\" wording, together with a separate bullet limited to partnership, S corporation and trust interests, leaves unclear whether stock in other entities that own real estate counts."
    }
   ],
-  "prompt_sha": "6b0eab8bead3c47add501283fc08f2136d10997c011d1c1e137300ee54538f83",
+  "prompt_sha": "418fd7f545387e3c14cca5a2872ea4d0333ee2e33b61397f83c5a2af961ead46",
   "used": [
    {
     "doc": "i1040sd",
@@ -4084,7 +4090,7 @@
     "cols_sha256": "cc308c3ff7751456647bed9c2855d077dcbd0a55469b57f9e8cccb6f4927f232"
    }
   ],
-  "cost": 0.21671200000000002,
+  "cost": 0.135468,
   "model": "claude-opus-5-5"
  },
  {

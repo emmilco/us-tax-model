@@ -881,6 +881,24 @@
    "question_phrase": "Do you want to claim any credit other than the following, or do you have any other amount for Schedule 3 Part I ... the foreign tax credit claimed without Form 1116 ... the credit for child and dependent care expenses (Form 2441), the retirement savings contributions credit (Form 8880), the residential energy credits (Form 5695) ... the education credits this tool figures on Form 8863",
    "source_phrase": "5. Enter the total of your credits from Schedule 3 (Form 1040), lines 1, 2, 6d, and 6l",
    "reason": "Lines 1 and 2 are figured by the tool; lines 6d and 6l are credits other than the listed ones, which the question asks about and refuses on yes."
+  },
+  "consumer:oi8z.kind@i1040gi:p93": {
+   "verdict": "same",
+   "question_phrase": "What kind of income is this line 8z item? ... education_distribution (taxable distributions from a Coverdell education savings account or a qualified tuition program)",
+   "source_phrase": "You may have to pay an additional tax if you received a taxable distribution from a Coverdell ESA or a QTP. See the Instructions for Form 5329.",
+   "reason": "oi8z.additional_tax reads the education_distribution kind, which the question defines as the taxable Coverdell ESA or QTP distribution the page names, so the additional-tax gate fires on exactly that item."
+  },
+  "consumer:s2.other@i1040gi:p104": {
+   "verdict": "same",
+   "question_phrase": "Any amount on Schedule 2 other than the following? ... self-employment tax from Schedule SE ... Additional Medicare Tax ... Net Investment Income Tax ... the additional 20% tax on taxable HSA distributions ... Other amounts, for example: ... the alternative minimum tax ... tax on unreported tips (Form 4137)",
+   "source_phrase": "Line 4b. Enter the qualified tips included on Form 4137, line 1, row A, column (c).",
+   "reason": "s1a.line4b_calc is zero unless Form 4137 is filed and refuses on yes; the question names tax on unreported tips (Form 4137) among the other amounts, so a filer with a Form 4137 answers yes and line 4b is never zeroed wrongly."
+  },
+  "consumer:s2.other@f1040s2:p1": {
+   "verdict": "same",
+   "question_phrase": "Any amount on Schedule 2 other than the following? ... self-employment tax from Schedule SE ... Additional Medicare Tax ... Net Investment Income Tax ... the additional 20% tax on taxable HSA distributions ... Other amounts, for example: ... the alternative minimum tax ... tax on unreported tips (Form 4137)",
+   "source_phrase": "Additions to tax: 1a Excess advance premium tax credit repayment ... 1b ... 1y Other additions to tax ... 2 Alternative minimum tax ... 3 Add lines 1z and 2",
+   "reason": "s2.line3 adds line 1z (line 1a from Form 8962, which the tool figures) and line 2, and refuses on yes; every other Part I amount (lines 1b to 1y, line 2) is an amount the question asks about, so a no leaves only the figured line 1a (a filer who reads line 1a as another amount answers yes and is refused, which is safe, as the screen ruling's finding 2 notes)."
   }
  },
  "baseline": {

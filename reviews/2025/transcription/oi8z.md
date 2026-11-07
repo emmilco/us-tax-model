@@ -5,12 +5,13 @@ Second transcription of `Schedule 1, line 8z — other income, one entry per ite
 | field | value |
 | --- | --- |
 | date | 2026-10-22 |
+| line-scoped reviews | 1 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 2f958a72b7b2cb4bc24fc82202aba6652f5f70c9d6f61a5ec738313bf16b1a6c |
 | subject sha256 | 0a3972a97621761568f216084d2c414b170914aa8b5e5d68ee32d22416a36b94 |
 | printed lines compared | 1 |
-| agree / disagree / missing | 1 / 0 / 0 |
+| agree / disagree / missing | 0 / 1 / 0 |
 | extra printed lines in second | none |
 
 ## Source pages given to the model
@@ -23,15 +24,24 @@ Second transcription of `Schedule 1, line 8z — other income, one entry per ite
 ## Lines
 
 ### oi8z.taxable — The amount of this item included on line 8z
-Status: **AGREE**
+Status: **DISAGREE**
 
-## Refusal gates listed by the second transcription
+Project:
 
-Reported, not judged: the project often refuses before a worksheet is used, on the line that chooses it, which a per-line comparison cannot see.
+```json
+{"line": "8z (amount)"}
+```
 
-| line | gates listed | not read by the project's line |
-| --- | --- | --- |
-| oi8z.taxable | oi8z.h_education_refused, oi8z.h_recapture_refused, oi8z.h_recovery_refused | oi8z.h_education_refused, oi8z.h_recapture_refused, oi8z.h_recovery_refused |
+Second:
+
+```json
+{"alternatives": [{"guard": {"args": [{"const": "corrective_distribution"}, {"line": "8z (type)"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "corrective_distribution"}, {"line": "8z (type)"}], "test": "ne"}, "then": {"line": "8z (amount)"}}], "op": "choose"}
+```
+
+Second transcription's note: Open point: what the interface oi8z.taxable means. The IRS text says to list the type and amount of each taxable income item on line 8z. The input oi8z.amount is already the amount to include in income, so the taxable amount of a positive item is that amount. Pub. 525 governs how to figure a recovery or the taxable part of disaster relief, and the filer applies those rules before entering the amount. One kind, "loss on certain corrective distributions of excess deferrals", is a loss. A loss reduces line 8z rather than adding to it. A NonNegDollars result cannot carry a negative amount, so I read oi8z.taxable as the item's positive taxable income and set it to zero for that kind. Schedule 1 line 8z must therefore subtract the corrective-distribution losses separately, by summing oi8z.amount where oi8z.kind is corrective_distribution. If the interface was meant to be the signed contribution to line 8z, it would need the type Dollars and a subtraction from zero, which the declared type does not allow.
+
+Ruling: scope; i1040gi p. 92, Line 8z, "List the type and amount of each item of other income". The reply zeroes the corrective-distribution kind, reading it as a loss; the project copies the item's amount and computes only RTAA payments and kickbacks: every other kind, the corrective distribution included, is refused at oi8z.figured ("a corrective distribution, disaster relief payments, insurance dividends, or any other kind") or oi8z.additional_tax. Triage executable-triage-v2 (reviews/2025/transcription/triage/oi8z.json; 1,638 fixtures, 500 generated returns seed 20261026, 44 partial records): 109 of 180 comparisons agree; 49 project-refuses and 22 project-unknown, all on refused or incomplete returns; no completed return differs. The R3 restructuring of the oi8z.kind question kept each kind's words (word check: none lost). Project stands.
+Reviewed in: pass dd6b6292bb45
 
 ## Line subjects
 
@@ -39,8 +49,117 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 | line | subject sha256 |
 | --- | --- |
-| oi8z.taxable | ad038942e2cfbe737c83a207437ba13f15e8ad9a97d680d2e88144e80b9cb03b |
+| oi8z.taxable | a5d72d82366bd7b6155acbee656cdf1ae81a8a937da73a21b23e20401fb8c511 |
 | (rest of the document) | 9b11cc29785845924b626fad6f7f0a62bdf1f9b626cc1aab9a2c543ecad4736e |
+
+## Foreign interfaces
+
+The interfaces (id, printed marker, type, input question) of other documents' lines that each compared line reads, as the request carried them (tools/transcription/subjects.py); a changed row stales that line.
+
+| line | foreign interfaces sha256 |
+| --- | --- |
+| oi8z.taxable | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
+
+## Line-scoped reviews
+
+Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
+
+#### Pass dd6b6292bb45
+
+| field | value |
+| --- | --- |
+| date | 2026-11-07 |
+| review scope | lines oi8z.taxable |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | dd6b6292bb456de6c0792669d7988fcb5889ac7699af1bd05bce0122d553c45b |
+| prompt policy | source-only-computation-v3+lines-v2 |
+| comparison policy | checked-expression-types-v2 |
+| input context policy | required-review-interfaces-v2 |
+| complete input context | pass |
+| required input context sha256 | b56a61b58788cb5c3e5b03d0c5fcf2de86754947436cbadb4b8b19e2797021d3 |
+| type validation policy | project-expression-types-v3 |
+| model type validation | pass |
+| system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
+| subject sha256 | 932eff95e003b50204b0725d8dd3c385c260666e430efd80051d13569518f6eb |
+| receipt | .transcription/oi8z.lines-191e65963821 |
+| printed lines compared | 1 |
+| agree / disagree / missing | 0 / 1 / 0 |
+| extra printed lines in second | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i1040gi | 2025; printed date 2026-02-25 | 92, 93 | cited pages | 6024dc94dd1f545ed6e2068a42ea11859be546e8fe18ec3082021259f9b45ff1 | 92, 93 | af24119d58f0b99fbe0f83494c36b62e6d043170ab7fe810469f9c5230cf8420 |
+| p525 | 2025 | 34 | pages named by another document's citation | 7df495537860edb313c70301e591c2a0775567fab771e3d5f9bbb0cbccb69182 | 34 | 27f9e8c0836aae6360658725d1b0db69ecaf91bfa77998e1637b51f92b18df65 |
+
+##### Other documents in the catalog
+
+Chosen from the source pages above (catalog_selection); refusal-gate inputs are in the screening list.
+
+| reason | documents |
+| --- | --- |
+| definition | aqee, se, tax_on_amount, tcw |
+| named form, inputs and named lines: clcw.prior_11, clcw.prior_14, clcw.prior_sd15, clcw.prior_sd21, clcw.prior_sd7, clcw.spouse_screen | clcw |
+| named form, inputs and named lines: f1040.line1a, f1040.line25b, f1040.line25c_other, f1040.line26, f1040.line35a, f1040.line36, f1040.line3a, f1040.status, f1040.tax_exempt_interest | f1040 |
+| named form, inputs and named lines: household.community_property, household.cp_married, household.credit_disallowed, household.home_cost, household.married, household.qss_eligible, household.rdp, household.spouse_died_2025, household.unmarried | household |
+| named form, inputs and named lines: refund.box8, refund.exc_tax, refund.exc_who, refund.itemized, refund.line17_2024, refund.line5d_2024, refund.line5e_2024, refund.mfs_spouse_itemized, refund.not_2024, refund.received, refund.sales, refund.spouse_blind, refund.spouse_born, refund.status, refund.you_blind, refund.you_born | refund |
+| named form, inputs and named lines: s2.amt, s2.other | s2 |
+| named form, inputs and named lines: sa.charity_limited, sa.dependent, sa.elect_itemize, sa.excluded_income, sa.gambling_losses, sa.line1, sa.line11, sa.line5a, sa.line5b, sa.line5c, sa.line8a, sa.spouse_extra, sa.spouse_itemizes, sa.unsupported | sa |
+| named form, inputs and named lines: scope.credits, scope.other_income, scope.other_line16, scope.schedule1 | scope |
+| named form, inputs and named lines: sd.carryover, sd.distributions, sd.other_forms | sd |
+| named line | eic, s8812 |
+| named lines: sc.f7206_line13, sc.line13 | sc |
+| shared page | person, s1 |
+
+##### Raw second transcription
+
+```yaml
+```yaml
+lines:
+  - id: oi8z.h_is_loss
+    printed: "(helper)"
+    label: "Is this item a loss on certain corrective distributions of excess deferrals?"
+    type: Bool
+    expr:
+      op: test
+      eq: ["oi8z.kind", {const: "corrective_distribution"}]
+  - id: oi8z.h_zero
+    printed: "(helper)"
+    label: "Zero"
+    type: NonNegDollars
+    expr: {op: param, ref: sales.zero}
+  - id: oi8z.taxable
+    printed: "(helper)"
+    label: "Use line 8z to report any taxable income not reported elsewhere on your return or other schedules. List the type and amount of income."
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: ["oi8z.h_is_loss", {const: false}]}
+          then: "oi8z.amount"
+        - guard: {op: test, eq: ["oi8z.h_is_loss", {const: true}]}
+          then: "oi8z.h_zero"
+    note: >-
+      Open point: what the interface oi8z.taxable means. The IRS text says to list the type and
+      amount of each taxable income item on line 8z. The input oi8z.amount is already the amount
+      to include in income, so the taxable amount of a positive item is that amount. Pub. 525
+      governs how to figure a recovery or the taxable part of disaster relief, and the filer
+      applies those rules before entering the amount.
+      One kind, "loss on certain corrective distributions of excess deferrals", is a loss. A loss
+      reduces line 8z rather than adding to it. A NonNegDollars result cannot carry a negative
+      amount, so I read oi8z.taxable as the item's positive taxable income and set it to zero
+      for that kind.
+      Schedule 1 line 8z must therefore subtract the corrective-distribution losses separately,
+      by summing oi8z.amount where oi8z.kind is corrective_distribution. If the interface was
+      meant to be the signed contribution to line 8z, it would need the type Dollars and a
+      subtraction from zero, which the declared type does not allow.
+```
+```
 
 ## Raw second transcription
 

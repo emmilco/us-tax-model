@@ -5,7 +5,7 @@ The rendered English of every printed line of `Schedule C line 9 and Part IV, an
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
-| line-scoped reviews | 2 (latest 2026-11-04); see Line-scoped reviews |
+| line-scoped reviews | 3 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
 | prompt sha256 | fca791ca88a08e3788c1c72c0e83aea2e256f2ecb27cede0cb2db8a45809a55a |
@@ -15,7 +15,7 @@ The rendered English of every printed line of `Schedule C line 9 and Part IV, an
 | output token budget | 65536 |
 | subject sha256 | 7abd522bb45beed38ca4fc7a89f8396f00d00202ca111a9ed0ef64d93db512cb |
 | lines judged | 27 |
-| match / mismatch / unclear / missing | 22 / 5 / 0 / 0 |
+| match / mismatch / unclear / missing | 21 / 6 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -98,10 +98,47 @@ Ruling: representation; same as the refresh-round ruling: no value depends on th
 Reviewed in: pass f7924f6e6504
 
 ### (screen) (scveh.screen) — Does any of these apply to this vehicle?
-Status: **MATCH**
+Status: **MISMATCH**
 
-Model: The listed conditions correspond to IRS exclusions and complications (prior standard mileage, ADS/straight line/150% DB, listed property 50% or less, insufficient records, special-allowance exceptions), so the program's screen is a permissible narrowing and names the excluded cases.
-Reviewed in: pass 7790431cc057
+Restated: Input — Does any of these apply to this vehicle?
+
+- you placed it in service before 2019
+- you claimed a special depreciation allowance for it in an earlier year
+- you used the standard mileage rate for it in an earlier year
+- you disposed of it in 2025
+- you made a substantial improvement to it in 2025 or an earlier year (such as adding air conditioning or a new engine)
+- you used it in 2025 for investment, that is, for the production of income outside your trade or business
+- you acquired it in a trade-in or from a related person
+- you placed it in service in 2025 but acquired it before September 28, 2017
+- its business use was 50% or less in any earlier year
+- it is an electric vehicle placed in service before 2007
+- you reduced its basis by a clean-fuel deduction or a vehicle credit
+- you converted it from personal use to business use during 2025
+- you use it in your business of transporting persons or property for hire, or it is an ambulance or hearse
+- you converted it from business use to personal use during 2025
+- you acquired it in an involuntary conversion or a like-kind exchange
+- you must depreciate it under ADS (for example, it is used predominantly outside the United States), or you elected ADS, the straight line method or the 150% declining balance method for it
+- you reduced its basis because of a casualty
+- your 2025 tax year, or any tax year since you placed it in service, is shorter than 12 months
+- you are regularly engaged in the business of leasing passenger automobiles
+- you are not a corporation and you purchased it and lease it to others, unless you manufactured or produced it, or the lease term (including options to renew) is less than 50% of its class life and for the first 12 months after the transfer to the lessee your business deductions for it (other than rents and reimbursed amounts) are more than 15% of its rental income
+- it is used by a tax-exempt organization, unless used in connection with the production of income subject to the tax on unrelated trade or business income
+- it is used by a governmental unit or a foreign person or entity, unless used under a lease with a term of less than 6 months
+- you cannot prove its business use with adequate records or with sufficient evidence to support your own statements
+- you claim a special depreciation allowance for it in 2025 and its original use did not begin with you (original use is the first use to which the vehicle is put, whether or not by you, so a vehicle someone else used before you acquired it is used property, and so is a reconditioned or rebuilt vehicle you acquired unless the cost of its used parts is not more than 20% of its total cost)
+- you claim a special depreciation allowance for it in 2025 and it is property described in section 168(k)(9)(A) or 168(k)(9)(B), that is:
+  - property primarily used in a trade or business of furnishing or selling electrical energy, water or sewage disposal services, gas or steam through a local distribution system, or transportation of gas or steam by pipeline, whose rates are established or approved by a State or political subdivision, an agency or instrumentality of the United States, a public service or public utility commission or similar body of a State or political subdivision, or the governing or ratemaking body of an electric cooperative
+  - property used in a trade or business that has had floor plan financing indebtedness (a loan used to buy motor vehicles, boats, farm machinery or equipment, or trailers or campers held for sale or lease, and secured by them) whose interest was taken into account under section 163(j)(1)(C) in figuring the business interest expense limit
+- its qualified business use is 50% or less once you leave out uses that are not qualified business use:
+  - investment use
+  - leasing it to a 5% owner or related person, or using it as compensation for services of a 5% owner or related person, unless for the lease the value is reported as income to that person
+  - using it as compensation for services of anyone else unless an amount is included in that person's income for the use and any required income tax was withheld
+  - use that is nondeductible under section 274
+
+Model: The screen treats 'an electric vehicle placed in service before 2007' as a special case, but the IRS text defines the special electric-vehicle category as 'vehicles produced by an original equipment manufacturer and designed to run primarily on electricity, placed in service after August 5, 1997, and before January 1, 2007'; the lower date and design/OEM limits are omitted.
+
+Ruling: representation (a screen wider than the source); i4562 p. 15 and p946 p. 60 define the electric-vehicle category as vehicles produced by an original equipment manufacturer, designed to run primarily on electricity and placed in service after August 5, 1997, and before 2007. The screen item "it is an electric vehicle placed in service before 2007" refuses every such vehicle and more; any vehicle placed in service before 2007 is also refused by the first item ("you placed it in service before 2019"). A wider refusal changes no computed amount. The item's wording is unchanged by the R3 restructuring. Project stands.
+Reviewed in: pass 5e6c27f2bfbb
 
 ### (d) — Cost or other basis
 Status: **MATCH**
@@ -212,7 +249,7 @@ What each compared line's verdict depends on within the document (tools/transcri
 | (screen) (scveh.lease_smr_before) | 3b7b3aabbc6c5d31b1c98695ea76b5ebda1e48236a80be3d7d009a3c51d93807 |
 | 20a | bdae3ad9304c24d80874654c5098bdea7b7b46c534edf85e944e4f3a456df4ad |
 | (b) | 3d1072852e40be84db47283401be422fb858a0c61b8ba666b2b967fbc82bb104 |
-| (screen) (scveh.screen) | 2e4c203329b67946eaadee7b40d5e5a5efe193ef6fa98aa7f2b0b14fcb000144 |
+| (screen) (scveh.screen) | 8e05c51fb73208ef560cbdf7d2afcaf4eec521001c018878bc47a2a6a66e189c |
 | (d) | 08427331c7ae9558829419cdbb0913d4bebf8f41d9028fcc1383858dbb1a1fd9 |
 | 13 | 392f341557b6cc28e59c9ebf8308e0364afc87e1a3c66a6f5df892433fd21133 |
 | (screen) (scveh.bonus_same) | bcc0a3d54012fab053eedd53cdfdd1d7d0a471c32654babe2b00b4cf3cc2d878 |
@@ -340,6 +377,42 @@ lines:
   - key: "(i)"
     status: MATCH
     reason: "The restatement takes column (i) from line 10 for owned actual-expense vehicles and zero otherwise, matching the elected section 179 cost for listed property subject to the passenger-automobile limits."
+```
+
+#### Pass 5e6c27f2bfbb
+
+| field | value |
+| --- | --- |
+| date | 2026-11-07 |
+| review scope | lines (screen) (scveh.screen) |
+| model requested | deepseek-flash |
+| model reported | deepseek-flash |
+| prompt sha256 | 5e6c27f2bfbb686e3f1b2ce9da4ee2d8fb4938b2e8e35bf6ddeaa453f78480b6 |
+| prompt policy | render-source-comparison-v2+lines-v1 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | 65536 |
+| subject sha256 | a3bf05f389eeb8e2c721d02820ff275ae575845995ab29c15ae1f31290e56a2c |
+| receipt | .transcription/scveh.deepseek.render.lines-28e8aef8e1b0 |
+| lines judged | 1 |
+| match / mismatch / unclear / missing | 0 / 1 / 0 / 0 |
+| verdicts for lines not in the form | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i4562 | 2025 | 3, 4, 5, 6, 7, 9, 11, 12, 13, 14, 15 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 3, 5, 6, 7, 9, 11, 12, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
+| p946 | For use in preparing 2025 returns | 17, 31, 37, 60, 63 | pages named by another document's citation | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 17, 31, 37, 63 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
+| p463 | For use in preparing 2025 returns | 25, 26 | pages named by another document's citation | 153efad2a94bcccadf643b0f28f913d74b7d70b727f73eca540a2ce4d32bbfda | 25, 26 | a0b14576fdb49a7ba3e7a90092c1b8f6b8ba33889c8c35da5629156346581326 |
+
+##### Raw response
+
+```yaml
+lines:
+  - key: "(screen) (scveh.screen)"
+    status: MISMATCH
+    reason: "The screen treats 'an electric vehicle placed in service before 2007' as a special case, but the IRS text defines the special electric-vehicle category as 'vehicles produced by an original equipment manufacturer and designed to run primarily on electricity, placed in service after August 5, 1997, and before January 1, 2007'; the lower date and design/OEM limits are omitted."
 ```
 
 ## Raw response

@@ -5,6 +5,7 @@ The rendered English of every printed line of `Form 8283 — groups of similar n
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
+| line-scoped reviews | 1 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
 | prompt sha256 | c75f31927102ad5339d8700749ae2d47de7fe82777ecdfe00e08ac2445d883fa |
@@ -14,7 +15,7 @@ The rendered English of every printed line of `Form 8283 — groups of similar n
 | output token budget | 65536 |
 | subject sha256 | 1102a5e587158cec42118ecc1bfba1831269200b78d784b95cf3f0f74177302d |
 | lines judged | 5 |
-| match / mismatch / unclear / missing | 5 / 0 / 0 / 0 |
+| match / mismatch / unclear / missing | 4 / 0 / 0 / 1 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -37,10 +38,27 @@ Status: **MATCH**
 
 Model: The restatement tracks the IRS definition of publicly traded securities and reasonably says privately held stock, LLC/partnership interests, and stock not listed or regularly traded over the counter are not publicly traded.
 
-### special — Does this group need an appraisal or other special treatment: a deduction over $5,000 (bef
-Status: **MATCH**
+### special — Does this group need an appraisal or other special treatment: any of the following?
+Status: **MISSING**
 
-Model: The triggers align with the IRS appraisal/Section B and special-property rules, including the >$5,000 group threshold, public-securities exception, and special categories such as vehicles, IP, inventory, conservation/partial interests, restrictions, and clothing/household items over $500.
+Restated: Input — Does this group need an appraisal or other special treatment: any of the following?
+
+- a deduction over $5,000 (before any income limit), or property worth more than $5,000, for one item or for similar items given to all donees together, other than publicly traded securities
+  - similar items: items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land or buildings
+  - publicly traded securities: listed on a recognized stock exchange whose quotations are published daily, regularly traded on a national or regional over-the-counter market, or mutual fund shares quoted daily in a national newspaper
+- a noncash contribution reaching you through a Schedule K-1
+- vehicles
+- pass-through entity interests
+- intellectual property
+- inventory
+- conservation or partial interests
+- property with restrictions on its use
+- a clothing or household item over $500 not in good used condition
+
+Model: the model returned no verdict for this line
+
+Ruling: model error; the reply returned no verdict for this line. The restructured gift.special question was judged MATCH in the Claude render pass of the same restatement (reviews/2025/render/gift.md), and its words are the earlier question's (R3 word check: none lost).
+Reviewed in: pass 9c89307c0d01
 
 ### section_b — Appraisal threshold: non-publicly-traded group over $5,000
 Status: **MATCH**
@@ -50,7 +68,64 @@ Model: For supported non-special groups, Section B applies when the deduction be
 ### allowed — Amount from gift.deduction
 Status: **MATCH**
 
-Model: It takes the amount from the deduction helper and refuses only special-property or Section B cases, naming those exclusions consistently with the form's supported Section A scope.
+Model: It pulls the deduction before income limits after required reductions for the item or similar-items group across all donees, and its refusals exclude special-property and Section B over-$5,000 appraisal cases as named exceptions.
+Reviewed in: pass 9c89307c0d01
+
+## Line subjects
+
+What each compared line's verdict depends on within the document (tools/transcription/subjects.py); a line-scoped review reruns the lines whose hash changed.
+
+| line | subject sha256 |
+| --- | --- |
+| deduction | 2c743be67b29b3d1bc72955e6d9df9a4cf4ff957f8e03656f34f2f1651dd1275 |
+| public_securities | e6a87578d54851f8c4cc5e873fc24302bc51124ced33e09660437210e75e16f2 |
+| special | 40a1549aba0e72b0e00eb760f5c2ed54b7f87008bc774e60be9e4adb6e91a76c |
+| section_b | fdd56aa6def13688379691e2f7ed3f09c3ef237261221d1270f801cf95b4b926 |
+| allowed | 1909c76d9da152f266e6bddbfca9f739dd5937760ba9142253b89c4b7cbf44b1 |
+| (rest of the document) | 453167e36426ad055796eee7ca39439492a94ba8c947ab84ce7cc052e0dd764e |
+
+## Line-scoped reviews
+
+Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
+
+#### Pass 9c89307c0d01
+
+| field | value |
+| --- | --- |
+| date | 2026-11-07 |
+| review scope | lines special, allowed |
+| model requested | deepseek-flash |
+| model reported | deepseek-flash |
+| prompt sha256 | 9c89307c0d010ddd65a040509647b6a7bc61a69d144c7db7f26351d5fd5f6388 |
+| prompt policy | render-source-comparison-v2+lines-v1 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | 65536 |
+| subject sha256 | 6bca41da3d345f96f385d3a5e7ee1bbf5263011c5e7cd811c6cff72c0691246c |
+| receipt | .transcription/gift.deepseek.render.lines-07041c01d2ea |
+| lines judged | 2 |
+| match / mismatch / unclear / missing | 1 / 0 / 0 / 1 |
+| verdicts for lines not in the form | Does this group need an appraisal or other special treatment: any of the following? - a deduction over $5,000 (before any income limit), or property worth more than $5,000, for one item or for similar items given to all donees together, other than publicly traded securities - similar items: items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land or buildings - publicly traded securities: listed on a recognized stock exchange whose quotations are published daily, regularly traded on a national or regional over-the-counter market, or mutual fund shares quoted daily in a national newspaper - a noncash contribution reaching you through a Schedule K-1 - vehicles - pass-through entity interests - intellectual property - inventory - conservation or partial interests - property with restrictions on its use - a clothing or household item over $500 not in good used condition |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i8283 | December 2025; printed date 2026-01-30 | 1, 2, 3, 9 | cited pages | cd582a9f231564c755d552a21d937b33e24df8b9fe65f4f823b7c9eca9dfe1ad | 1, 2, 3, 9 | 53a4b54ff613d5c600c1af7ba5bf9024418fe89441ae8d629a955bd59aa6e3c7 |
+| i1040sca | 2025; printed date 2025-12-08 | 11 | pages named by another document's citation | 18001c3e295230bbac198d1982e4c52265139aa983ef9cb9fb69d2a41a06119b | 11 | 5e2e018247f585c4ecb192b2c1a75e444bbf96b9653026722bc9720d70cc114c |
+| f8283 | December 2025; created 2025-07-01 | 1, 2 | whole document | d33f4c2762c7366b560ae700f7c403b698b6567187a94eb4f7943b3ab6c20219 | - | 2a4ef5ee41c489f0de7f68915540d45a11937f39759f0c9ffb0f326461ee9320 |
+
+##### Raw response
+
+```yaml
+lines:
+  - key: "Does this group need an appraisal or other special treatment: any of the following? - a deduction over $5,000 (before any income limit), or property worth more than $5,000, for one item or for similar items given to all donees together, other than publicly traded securities - similar items: items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land or buildings - publicly traded securities: listed on a recognized stock exchange whose quotations are published daily, regularly traded on a national or regional over-the-counter market, or mutual fund shares quoted daily in a national newspaper - a noncash contribution reaching you through a Schedule K-1 - vehicles - pass-through entity interests - intellectual property - inventory - conservation or partial interests - property with restrictions on its use - a clothing or household item over $500 not in good used condition"
+    status: MATCH
+    reason: "The gate tracks the IRS appraisal and Section B/special-property triggers, including the >$5,000 item/group threshold, similar-items aggregation, publicly traded securities exception, K-1 and special property categories, and clothing/household item rule; any broader exclusions are named."
+  - key: "Amount from gift.deduction"
+    status: MATCH
+    reason: "It pulls the deduction before income limits after required reductions for the item or similar-items group across all donees, and its refusals exclude special-property and Section B over-$5,000 appraisal cases as named exceptions."
+```
 
 ## Raw response
 

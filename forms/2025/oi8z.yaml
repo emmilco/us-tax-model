@@ -13,17 +13,18 @@ form:
       label: Type of other income
       expr:
         op: input
-        source: 'What kind of income is this line 8z item? rtaa (reemployment trade adjustment assistance (RTAA) payments
-          from a state agency, shown in box 5 of Form 1099-G); kickbacks (kickbacks, side commissions, push money or
-          similar payments you received; those from your self-employment activity go on Schedule C instead); insurance_dividends
-          (dividends on insurance policies that are more than the total of all net premiums you paid for the contract);
-          recovery (a reimbursement or other amount received for an item deducted in an earlier year, such as medical
-          expenses, real estate taxes, general sales taxes or home mortgage interest; a state or local income tax refund
-          belongs on line 1 instead); corrective_distribution (a loss on certain corrective distributions of excess
-          deferrals); charitable_recapture (recapture of a charitable contribution deduction, for a fractional interest in
-          tangible personal property or property the charity disposed of within 3 years); disaster_relief (the taxable part
-          of disaster relief payments); education_distribution (taxable distributions from a Coverdell education savings
-          account or a qualified tuition program); or other (any other taxable income for line 8z)'
+        source: |-
+          What kind of income is this line 8z item?
+
+          - rtaa (reemployment trade adjustment assistance (RTAA) payments from a state agency, shown in box 5 of Form 1099-G)
+          - kickbacks (kickbacks, side commissions, push money or similar payments you received; those from your self-employment activity go on Schedule C instead)
+          - insurance_dividends (dividends on insurance policies that are more than the total of all net premiums you paid for the contract)
+          - recovery (a reimbursement or other amount received for an item deducted in an earlier year, such as medical expenses, real estate taxes, general sales taxes or home mortgage interest; a state or local income tax refund belongs on line 1 instead)
+          - corrective_distribution (a loss on certain corrective distributions of excess deferrals)
+          - charitable_recapture (recapture of a charitable contribution deduction, for a fractional interest in tangible personal property or property the charity disposed of within 3 years)
+          - disaster_relief (the taxable part of disaster relief payments)
+          - education_distribution (taxable distributions from a Coverdell education savings account or a qualified tuition program)
+          - other (any other taxable income for line 8z)
       cite:
         doc: i1040gi
         locator: 'p. 92, Line 8z, "Examples of income to report on line 8z include the following"; p525 p. 34, Kickbacks,

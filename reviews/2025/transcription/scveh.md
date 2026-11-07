@@ -5,7 +5,7 @@ Second transcription of `Schedule C line 9 and Part IV, and Form 4562 Part V —
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
-| line-scoped reviews | 2 (latest 2026-11-04); see Line-scoped reviews |
+| line-scoped reviews | 2 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 188f739e19ea7dc521c63b15d0fde95ed4b810efe83f27d6daadeea1427e3f84 |
@@ -77,13 +77,13 @@ Project:
 Second:
 
 ```json
-{"alternatives": [{"guard": {"args": [{"args": [{"args": [{"const": "actual"}, {"input": "scveh.method"}], "test": "eq"}, {"args": [{"const": true}, {"input": "scveh.owned"}], "test": "eq"}, {"args": [{"line": "10"}, {"line": "9 (scveh.line9w)"}], "test": "lt"}], "test": "all"}, {"args": [{"line": "16"}, {"line": "11"}], "test": "lt"}], "test": "all"}, "then": {"line": "20"}}, {"guard": {"args": [{"args": [{"args": [{"line": "9 (scveh.line9w)"}, {"line": "10"}], "test": "le"}, {"args": [{"const": "actual"}, {"input": "scveh.method"}], "test": "ne"}, {"args": [{"const": true}, {"input": "scveh.owned"}], "test": "ne"}], "test": "any"}, {"args": [{"line": "11"}, {"line": "16"}], "test": "le"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
+{"alternatives": [{"guard": {"args": [{"args": [{"const": "actual"}, {"input": "scveh.method"}], "test": "eq"}, {"args": [{"const": true}, {"input": "scveh.owned"}], "test": "eq"}], "test": "all"}, "then": {"line": "20"}}, {"guard": {"args": [{"args": [{"const": "actual"}, {"input": "scveh.method"}], "test": "ne"}, {"args": [{"const": true}, {"input": "scveh.owned"}], "test": "ne"}], "test": "any"}, "then": {"const": 0}}], "op": "choose"}
 ```
 
-Second transcription's note: Interface meaning inferred from Pub. 946: the MACRS depreciation deduction is worksheet line 20 ('Enter the lesser of line 17 or line 19. This is your MACRS depreciation deduction'). Where the worksheet says to stop (line 10 equals line 9 after Part I, or line 16 equals line 11 after Part II), or the vehicle is not owned and depreciated under actual expenses, no MACRS depreciation is figured and zero is returned. Any deduction of unrecovered basis after the recovery period is not separately addressed here; it is left to line 20 as defined elsewhere.
+Second transcription's note: The pages do not name this interface. Read as the regular MACRS depreciation for the vehicle (worksheet line 20, 'This is your MACRS depreciation deduction'), excluding the section 179 deduction (line 10/column (i)) and the special allowance (line 16/line 25). Under the standard mileage rate or for a leased vehicle the instructions say not to deduct depreciation, so zero is used there. Deductions of unrecovered basis after the recovery period are assumed to be reflected in line 20 as transcribed separately.
 
-Ruling: ambiguity and model error; p946 p. 61, Depreciation Worksheet for Passenger Automobiles, line 20, "Enter the lesser of line 17 or line 19. This is your MACRS depreciation deduction", and Deductions After the Recovery Period, "you can deduct that unrecovered basis after the recovery period ends". New in this reply: line 20 is zero where its worksheet stops (line 10 equal to line 9, or line 16 equal to line 11), and its note leaves the deduction of unrecovered basis after the recovery period unaddressed, so a 2019 vehicle in 2025 gets $0 where the project takes the unrecovered basis (scveh.post, amb.2025.auto_unrecovered_basis): model error. The rest is the earlier ruling's rounding of the business-use percentage (amb.2025.vehicle_business_pct, the reply 4 places against the project's 6). Scratch run of triage.mjs on the round-3 reply (.transcription/scveh.lines-3f683c3702ef) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 1,151 partial records; 2,454 comparisons per line): 1,971 agree; on completed returns 52 value differences: 6 with the reply $0 on a 2019 vehicle after its recovery period (stage14.veh.2019_post and two partial-record copies, $4,320.00; stage14.veh.2019_mq_179, $5,760.00; classm.asset.1 biz_b car_1, $4,223.68; generated 135 car_2, $4,181.63) and 46 of 1 to 22 cents (rounding). The round-3 scveh.cost and scveh.screen wording fixes do not bear on it. Project stands.
-Reviewed in: pass b87b5d77db86
+Ruling: ambiguity (amb.2025.vehicle_business_pct, owner's ruling); same reply and project as the earlier ruling. i4562 p. 14, Column (c), "determine this percentage by dividing the number of miles the vehicle is driven for trade or business purposes ... by the total number of miles". The project prorates at six places, half-up; the reply at four, so amounts differ by cents. Triage executable-triage-v2 (reviews/2025/transcription/triage/scveh.json; 1,638 fixtures, 500 generated returns seed 20261026, 1237 partial records): 2,189 of 2,809 comparisons agree; on completed returns 41 value differences of cents (e.g. classm.f8962.4.deepseek car_2 $782.01/$782.03, classm.person.1.deepseek car_1 $10,208.44/$10,208.43); the other differences are on refused or incomplete returns, where the reply asks scveh.employee_use or declares its own gates. Project stands.
+Reviewed in: pass f61d4ae4f863
 
 ### scveh.mq_q4 — Mid-quarter test basis, fourth quarter of this vehicle
 Status: **DISAGREE**
@@ -198,10 +198,10 @@ Second:
 {"amount": {"line": "(d)"}, "op": "prorate", "part": {"amount": {"const": 1}, "count": {"line": "44a"}, "op": "multiply_count"}, "places": 4, "whole": {"of": [{"amount": {"const": 1}, "count": {"line": "44a"}, "op": "multiply_count"}, {"amount": {"const": 1}, "count": {"line": "44b"}, "op": "multiply_count"}, {"amount": {"const": 1}, "count": {"line": "44c"}, "op": "multiply_count"}], "op": "sum"}}
 ```
 
-Second transcription's note: Line 12 (cost or other basis reduced by any alternative motor vehicle or electric vehicle credit) is taken as scveh.cost; basis reduced by a vehicle credit is screened out by scveh.screen. Line 8, the business/investment-use percentage, is figured per i4562 column (c) as business miles divided by total miles (business + commuting + other). The IRS text states no rounding for the percentage; chosen reading: ratio rounded half-up to 4 decimal places (a percentage to two decimals). The rule treating employee personal use as 100% business use cannot be determined from the supplied inputs, so that case is refused (scveh.employee_use). If total miles are zero the ratio is undefined and the line stays unknown.
+Second transcription's note: Line 8 (business/investment-use percentage) is figured per i4562 column (c): miles driven for business (not commuting) divided by total miles driven for all purposes. The IRS text states no rounding for this percentage; chose to round the ratio half-up to 4 decimal places (a percentage to hundredths). Line 12 is the cost or other basis reduced by vehicle credits; such credits are excluded by scveh.screen, so line 12 is the supplied cost (not reduced by section 179, per footnote 1). Employee personal use (treated as 100% business use in some cases) is refused rather than computed. Part II is shown only when line 10 is less than line 9; the value is computed either way.
 
-Ruling: ambiguity; same reply and project as the round-2 ruling. i4562 p. 14, Column (c) (amb.2025.vehicle_business_pct, owner's ruling): cost times the business-use percentage, the reply rounding to 4 places against the project's 6. Scratch run of triage.mjs on the round-3 reply (.transcription/scveh.lines-3f683c3702ef) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 1,151 partial records; 2,454 comparisons per line): 543 agree; on completed returns 128 value differences of at most $3.00 (relative difference under 0.008%, e.g. classm.g28.1.deepseek $2,565.15 against $2,565.00), 135 candidate-unknown and 45 candidate-shows-skipped, all on vehicles where the project's line is hidden (not owned on actual expenses), where the reply enters zero or reads unasked answers. The round-3 screen now refuses any 2025 investment use (i4562 p. 14, Column (c), "for trade or business purposes or for the production of income"), so business miles over total miles is the whole percentage on a completed return. Project stands.
-Reviewed in: pass b87b5d77db86
+Ruling: ambiguity; same reply and project as the round-2 and round-3 rulings. i4562 p. 14, Column (c) (amb.2025.vehicle_business_pct, owner's ruling): cost times the business-use percentage, the reply rounding to 4 places against the project's 6. Triage executable-triage-v2 (reviews/2025/transcription/triage/scveh.json; 1,638 fixtures, 500 generated returns seed 20261026, 1237 partial records): 1,015 of 2,809 comparisons agree; on completed returns 119 value differences of cents to a few dollars (e.g. classm.g28.1.deepseek car_1 $2,565.15/$2,565.00) and 193 candidate-unknown, where the reply asks scveh.employee_use on vehicles whose line the project hides (not owned on actual expenses). Project stands.
+Reviewed in: pass f61d4ae4f863
 
 ### 7 — Maximum depreciation deduction for this year from the appropriate table
 Status: **DISAGREE**
@@ -391,13 +391,13 @@ What each compared line's verdict depends on within the document (tools/transcri
 | line | subject sha256 |
 | --- | --- |
 | scveh.bonus | 742b28a7e18afe73f81ab72579aa98aba41ae4a1f65b9df3eb8d540b82d07f8b |
-| scveh.macrs | 3fab35c4e17910662e4938cb2aadec68dc25484bbb609998147766bb1686c766 |
+| scveh.macrs | 7a894626cf48e456434644a2dceb4a20ac3c5799a653906c56b625e48673bc5a |
 | scveh.mq_q4 | 30c30fd47a8d18657eea5ecc909fca377551a9490b88d8db97882f7cf4155e4b |
 | scveh.mq_total | 63e064a9d7d1ac94ba031579c827f90df5d7701427e046d9f86615f171268773 |
 | scveh.cost179 | 4b8feef910e50f3d528d90c4d15c6eef2084b1d91a7ea86f3627c81506556dda |
 | 9 (scveh.line9) | 9be49d6edd181fe87af603e939ccb428536e47eb16ed850b35fcf24076c3f154 |
 | 20a | 96d723a1b3c3cf32fae25b6c60ce842dbf589aa58bd1c4064796708800161fd4 |
-| 13 | f55561bc11fdbb6645501001480e0a5f49b7d1e0e8bd9549ea1b3960b5316d5a |
+| 13 | cc77c285c92b421b6807cc27ded09aaf40cc71767ca4b8217d9ab4211f53a992 |
 | 7 | cb76130f5c976d2f02b86ff3340948350908a3f8802446848fe8eb9c8328289f |
 | 9 (scveh.line9w) | acc6e565d97b05e004a6c7e7b50d34dbcd9d3cbe8361f64e5e8962f9f3f97013 |
 | 10 | 0cdd1bd8ddd9805e288b2e95b6b48de7e9f84f0499a30c04e56a4136f71d28c2 |
@@ -1137,27 +1137,27 @@ lines:
 ```
 ```
 
-#### Pass b87b5d77db86
+#### Pass f61d4ae4f863
 
 | field | value |
 | --- | --- |
-| date | 2026-11-04 |
+| date | 2026-11-07 |
 | review scope | lines scveh.macrs, 13 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | b87b5d77db8661a4f1cf186026da89e65131486a08a0670a13470c64177d0442 |
-| prompt policy | source-only-computation-v3+lines-v1 |
+| prompt sha256 | f61d4ae4f863a7640939800abe7c87be4ab88eb2e44cde36911a8fd7a703aa39 |
+| prompt policy | source-only-computation-v3+lines-v2 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
 | complete input context | pass |
-| required input context sha256 | ab91a8769492badf4050512a4f31be14befd0cd22abbf298d10fa01c12dc8cf5 |
+| required input context sha256 | fdeb08511675196b9b914903c4764310518eb3b52ab158ed4c6b111be787f545 |
 | type validation policy | project-expression-types-v3 |
 | model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 2ce6961a44e3e3f04887d9e8c74c41a6eea28d9e3c744dc533fcdcf18d937400 |
+| subject sha256 | e26779a68c787c1cc13ee3b6dda8f3a1e091e0f1bb4b224d599eaf5ce96837fd |
 | receipt | .transcription/scveh.lines-3f683c3702ef |
 | printed lines compared | 2 |
 | agree / disagree / missing | 0 / 2 / 0 |
@@ -1180,7 +1180,13 @@ Chosen from the source pages above (catalog_selection); refusal-gate inputs are 
 | reason | documents |
 | --- | --- |
 | definition | aqee, se, tax_on_amount, tcw |
-| named form | dcprov, dependent, f1040, f2441, f5329, household, s1, s1a, s2, scope |
+| named form, inputs and named lines: f1040.line1a, f1040.line25b, f1040.line25c_other, f1040.line26, f1040.line35a, f1040.line36, f1040.line3a, f1040.status, f1040.tax_exempt_interest | f1040 |
+| named form, inputs and named lines: f2441.benefits, f2441.care, f2441.employer_care, f2441.line13, f2441.line14, f2441.nondependent, f2441.paid_2026, f2441.plan_max, f2441.plans_differ, f2441.prior_year, f2441.spouse_died, f2441.student_disabled | f2441 |
+| named form, inputs and named lines: household.community_property, household.cp_married, household.credit_disallowed, household.home_cost, household.married, household.qss_eligible, household.rdp, household.spouse_died_2025, household.unmarried | household |
+| named form, inputs and named lines: s1.alimony, s1.alimony_paid, s1.alimony_received, s1.alimony_unsupported, s1.cod_amount, s1.cod_any, s1.cod_unsupported, s1.gambling_pro, s1.gambling_winnings, s1.jury_to_employer, s1.line17, s1.line3, s1.line8_other, s1.line8g, s1.line8h, s1.line8i, s1.line8j, s1.line8r, s1.line8z, s1.uc_paid, s1.uc_repaid, s1.uc_unsupported | s1 |
+| named form, inputs and named lines: s1a.carloan, s1a.overtime, s1a.tips | s1a |
+| named form, inputs and named lines: s2.amt, s2.other | s2 |
+| named form, inputs and named lines: scope.credits, scope.other_income, scope.other_line16, scope.schedule1 | scope |
 | named line | ltc |
 | shared page | asset, carloan, f4562, person, s179, sc |
 
@@ -1191,38 +1197,46 @@ Chosen from the source pages above (catalog_selection); refusal-gate inputs are 
 lines:
   - id: scveh.h_cent
     printed: "(helper)"
-    label: "One cent, used to express a mileage count as an amount for the business-use ratio"
+    label: "One cent, used to carry a mile count as a money amount for the business-use ratio"
     type: NonNegDollars
     expr: {op: param, ref: sc.one_cent}
-  - id: scveh.h_miles_business_m
+  - id: scveh.h_miles_bus_m
     printed: "(helper)"
-    label: "Business miles (line 44a) expressed in cents"
+    label: "Business miles (line 44a), carried as cents"
     type: NonNegDollars
     expr: {op: multiply_count, amount: scveh.h_cent, count: scveh.miles_business}
-  - id: scveh.h_miles_commuting_m
+  - id: scveh.h_miles_comm_m
     printed: "(helper)"
-    label: "Commuting miles (line 44b) expressed in cents"
+    label: "Commuting miles (line 44b), carried as cents"
     type: NonNegDollars
     expr: {op: multiply_count, amount: scveh.h_cent, count: scveh.miles_commuting}
   - id: scveh.h_miles_other_m
     printed: "(helper)"
-    label: "Other miles (line 44c) expressed in cents"
+    label: "Other miles (line 44c), carried as cents"
     type: NonNegDollars
     expr: {op: multiply_count, amount: scveh.h_cent, count: scveh.miles_other}
   - id: scveh.h_miles_total_m
     printed: "(helper)"
-    label: "Total number of miles the vehicle is driven for all purposes, expressed in cents"
+    label: "Total number of miles the vehicle is driven for all purposes, carried as cents"
     type: NonNegDollars
-    expr: {op: sum, of: [scveh.h_miles_business_m, scveh.h_miles_commuting_m, scveh.h_miles_other_m]}
-  - id: scveh.h_part2
+    expr: {op: sum, of: [scveh.h_miles_bus_m, scveh.h_miles_comm_m, scveh.h_miles_other_m]}
+  - id: scveh.h_is_actual_owned
     printed: "(helper)"
-    label: "If line 10 is less than line 9, complete Part II (vehicle owned and depreciated under the actual expense method)"
+    label: "Owned vehicle for which actual expenses (including depreciation) are deducted"
     type: Bool
     expr:
       op: test
       all:
         - {op: test, eq: [scveh.method, {const: "actual"}]}
         - {op: test, eq: [scveh.owned, {const: true}]}
+  - id: scveh.h_part2_shown
+    printed: "(helper)"
+    label: "If line 10 is less than line 9, complete Part II"
+    type: Bool
+    expr:
+      op: test
+      all:
+        - {op: test, eq: [scveh.h_is_actual_owned, {const: true}]}
         - {op: test, lt: [scveh.line10, scveh.line9w]}
   - id: scveh.bus_cost
     printed: "13"
@@ -1231,38 +1245,29 @@ lines:
     expr:
       op: prorate
       amount: scveh.cost
-      part: scveh.h_miles_business_m
+      part: scveh.h_miles_bus_m
       whole: scveh.h_miles_total_m
       places: 4
-    refuses: [scveh.screen, scveh.employee_use]
-    shown_when: scveh.h_part2
-    note: "Line 12 (cost or other basis reduced by any alternative motor vehicle or electric vehicle credit) is taken as scveh.cost; basis reduced by a vehicle credit is screened out by scveh.screen. Line 8, the business/investment-use percentage, is figured per i4562 column (c) as business miles divided by total miles (business + commuting + other). The IRS text states no rounding for the percentage; chosen reading: ratio rounded half-up to 4 decimal places (a percentage to two decimals). The rule treating employee personal use as 100% business use cannot be determined from the supplied inputs, so that case is refused (scveh.employee_use). If total miles are zero the ratio is undefined and the line stays unknown."
+    refuses: [scveh.employee_use, scveh.screen]
+    shown_when: scveh.h_part2_shown
+    note: "Line 8 (business/investment-use percentage) is figured per i4562 column (c): miles driven for business (not commuting) divided by total miles driven for all purposes. The IRS text states no rounding for this percentage; chose to round the ratio half-up to 4 decimal places (a percentage to hundredths). Line 12 is the cost or other basis reduced by vehicle credits; such credits are excluded by scveh.screen, so line 12 is the supplied cost (not reduced by section 179, per footnote 1). Employee personal use (treated as 100% business use in some cases) is refused rather than computed. Part II is shown only when line 10 is less than line 9; the value is computed either way."
   - id: scveh.h_zero
     printed: "(helper)"
-    label: "Zero (no MACRS depreciation deduction)"
+    label: "Zero"
     type: NonNegDollars
-    expr: {op: param, ref: sales.zero}
-  - id: scveh.h_part3
-    printed: "(helper)"
-    label: "Part III of the Depreciation Worksheet for Passenger Automobiles is completed: line 10 is less than line 9 and line 16 is less than line 11"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [scveh.h_part2, {const: true}]}
-        - {op: test, lt: [scveh.line16, scveh.line11]}
+    expr: {op: param, ref: ss.zero}
   - id: scveh.macrs
     printed: "(helper)"
-    label: "MACRS depreciation deduction for this vehicle (Depreciation Worksheet for Passenger Automobiles, line 20)"
+    label: "MACRS depreciation deduction for this vehicle (Depreciation Worksheet for Passenger Automobiles, line 20), for an owned vehicle whose actual expenses are deducted; zero otherwise"
     type: NonNegDollars
     expr:
       op: choose
       alternatives:
-        - guard: {op: test, eq: [scveh.h_part3, {const: true}]}
+        - guard: {op: test, eq: [scveh.h_is_actual_owned, {const: true}]}
           then: scveh.line20
-        - guard: {op: test, not: {op: test, eq: [scveh.h_part3, {const: true}]}}
+        - guard: {op: test, eq: [scveh.h_is_actual_owned, {const: false}]}
           then: scveh.h_zero
-    note: "Interface meaning inferred from Pub. 946: the MACRS depreciation deduction is worksheet line 20 ('Enter the lesser of line 17 or line 19. This is your MACRS depreciation deduction'). Where the worksheet says to stop (line 10 equals line 9 after Part I, or line 16 equals line 11 after Part II), or the vehicle is not owned and depreciated under actual expenses, no MACRS depreciation is figured and zero is returned. Any deduction of unrecovered basis after the recovery period is not separately addressed here; it is left to line 20 as defined elsewhere."
+    note: "The pages do not name this interface. Read as the regular MACRS depreciation for the vehicle (worksheet line 20, 'This is your MACRS depreciation deduction'), excluding the section 179 deduction (line 10/column (i)) and the special allowance (line 16/line 25). Under the standard mileage rate or for a leased vehicle the instructions say not to deduct depreciation, so zero is used there. Deductions of unrecovered basis after the recovery period are assumed to be reflected in line 20 as transcribed separately."
 ```
 ```
 

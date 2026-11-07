@@ -11,18 +11,18 @@ form:
     type: NonNegDollars
     expr:
       op: input
-      source: The qualified long-term care insurance premiums paid in 2025 for this person under a policy established under
-        this business (not for any month you were eligible to participate in a long-term care insurance plan subsidized
-        by your employer or your spouse's employer, or the employer of your dependent or of your child under age 27 at the
-        end of 2025). This person must be you, your spouse, your dependent, or your child (son, daughter, stepchild,
-        adopted child or foster child) who was under age 27 at the end of 2025 even if not your dependent; enter zero for
-        anyone else, such as a parent who is not your dependent or a child 27 or older who is not your dependent. Enter
-        only premiums on a qualified long-term care insurance contract, that is, one that only provides coverage of qualified long-term
-        care services, is guaranteed renewable, provides that refunds (other than on the death of the insured or the complete
-        surrender or cancellation of the contract) and dividends may be used only to reduce future premiums or increase future
-        benefits, generally does not provide for a cash surrender value or other money that can be paid, assigned, pledged
-        or borrowed, and generally does not pay or reimburse expenses that would be reimbursed under Medicare (except where
-        Medicare is a secondary payer or the contract makes per diem or other periodic payments without regard to expenses).
+      source: |-
+        The qualified long-term care insurance premiums paid in 2025 for this person under a policy established under this business (not for any month you were eligible to participate in a long-term care insurance plan subsidized by your employer or your spouse's employer, or the employer of your dependent or of your child under age 27 at the end of 2025).
+
+        This person must be you, your spouse, your dependent, or your child (son, daughter, stepchild, adopted child or foster child) who was under age 27 at the end of 2025 even if not your dependent; enter zero for anyone else, such as a parent who is not your dependent or a child 27 or older who is not your dependent.
+
+        Enter only premiums on a qualified long-term care insurance contract, that is, one that meets all of these:
+
+        - it only provides coverage of qualified long-term care services
+        - it is guaranteed renewable
+        - it provides that refunds (other than on the death of the insured or the complete surrender or cancellation of the contract) and dividends may be used only to reduce future premiums or increase future benefits
+        - it generally does not provide for a cash surrender value or other money that can be paid, assigned, pledged or borrowed
+        - it generally does not pay or reimburse expenses that would be reimbursed under Medicare (except where Medicare is a secondary payer or the contract makes per diem or other periodic payments without regard to expenses)
     cite:
       doc: f7206
       locator: Form 7206 (2025), line 2(a); i7206 p. 1, "You may be able to deduct the amount you paid for health insurance,

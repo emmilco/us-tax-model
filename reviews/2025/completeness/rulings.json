@@ -349,13 +349,13 @@
   },
   "unruled:gift#1": {
    "class": "presentation",
-   "evidence": "i8283 pp. 1, 3: the attached statement of how a reduction was figured, and which form not to use, are filing instructions; no amount the tool computes depends on them.",
-   "prompt_sha": "f1e2a1ceca4ea6862bdc4fc227aa85290f337f15e226394b691535680fe6d270"
+   "evidence": "i8283 p. 3. As the earlier gift#1 ruling: the attached statement of how a reduction was figured is filing information; no amount the tool computes depends on it.",
+   "prompt_sha": "f9841054b4a6c8b965b81198928fff2bf1b5ed86f1b1723ec30567927230d5c8"
   },
   "unruled:gift#2": {
    "class": "presentation",
-   "evidence": "i8283 pp. 1-2: which section of Form 8283 the filer completes is presentation; the tool's gift groups apply the $500 and $5,000 thresholds (gift.special refuses Section B).",
-   "prompt_sha": "f1e2a1ceca4ea6862bdc4fc227aa85290f337f15e226394b691535680fe6d270"
+   "evidence": "i8283 pp. 1-3. As the earlier gift#2 ruling: completing Section A's entries, the e-file data and attaching the form are filing information; the tool's gift groups apply the $500 and $5,000 thresholds and gift.special refuses Section B.",
+   "prompt_sha": "f9841054b4a6c8b965b81198928fff2bf1b5ed86f1b1723ec30567927230d5c8"
   },
   "unruled:household#1": {
    "class": "covered",
@@ -407,15 +407,15 @@
   },
   "unruled:ltc#1": {
    "class": "out of scope",
-   "evidence": "i7206 pp. 1-2. sc.hi_screen refuses a retired public safety officer who paid premiums from retirement distributions and a more-than-2% S corporation shareholder; partnerships are not Schedule C (scope.schedule1). ltc.payments states the qualified contract requirements.",
-   "prompt_sha": "a6e3287a027310c31c7e0165b4b23f6febadbebe20a2f9dac8da7d18ce328cd8",
-   "gate": "sc.hi_screened"
+   "gate": "sc.hi_screened",
+   "evidence": "i7206 p. 2. As the earlier ltc#2 ruling: sc.hi_screen refuses when \"anyone is covered by qualified long-term care insurance entered for more than one business on this return (yours or your spouse's)\", so one person's limit is applied on one form only.",
+   "prompt_sha": "d4383ad7d223f7f5f298da55349c28a1e11f14a614e547bd86f6ed4cbcc6003d"
   },
   "unruled:ltc#2": {
    "class": "out of scope",
-   "evidence": "i7206 p. 2. sc.hi_screen refuses 'anyone ... covered by qualified long-term care insurance entered for more than one business on this return'.",
-   "prompt_sha": "a6e3287a027310c31c7e0165b4b23f6febadbebe20a2f9dac8da7d18ce328cd8",
-   "gate": "sc.hi_screened"
+   "gate": "sc.hi_screened",
+   "evidence": "i7206 p. 1. As the earlier ltc#1 ruling: sc.hi_screen refuses a more-than-2% S corporation shareholder and a retired public safety officer who paid premiums from retirement plan distributions; partnerships are not Schedule C (scope.schedule1 refuses partnership income). ltc.payments states the qualified contract requirements.",
+   "prompt_sha": "d4383ad7d223f7f5f298da55349c28a1e11f14a614e547bd86f6ed4cbcc6003d"
   },
   "unruled:mq#1": {
    "class": "covered",
@@ -548,9 +548,9 @@
   },
   "unruled:s2#1": {
    "class": "out of scope",
-   "evidence": "i1040gi p. 112; i1040sse p. 2. person.se_screen names an approved Form 4029, an international social security agreement, community income on a separate return, a chapter 11 case and a U.S. citizen employed by a foreign government; notary fees are refused by sc.statutory.",
-   "prompt_sha": "8dadfe475b22d43406d536a742bcd2ac2d4a9dd508878490d6ac20abc1056ffe",
-   "gate": "person.se_screened"
+   "gate": "person.se_screened",
+   "evidence": "i1040sse p. 2. As the earlier s2#1 ruling: person.se_screen names \"a chapter 11 bankruptcy case\" and \"self-employment income exempt under an international social security agreement or earned as a U.S. citizen employed by a foreign government\" and refuses.",
+   "prompt_sha": "d7c2b91fe9c409d3ed99c6669d07785a47248aab31eac089c61796dc1095dd3c"
   },
   "unruled:s8812#1": {
    "class": "out of scope",
@@ -595,34 +595,22 @@
    "line": "gift.deduction"
   },
   "unruled:sales#1": {
-   "class": "out of scope",
-   "evidence": "i1040sd p. 5. A trader's section 475(f) mark-to-market gains and losses belong on Form 4797; sd.other_forms asks whether there are gains or losses 'from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824' and refuses Schedule D.",
-   "prompt_sha": "c257e41caff8965b2327407a18b1ae9b36784449d1bcaf05f2a5cc728a705d15",
-   "gate": "sd.other_forms"
+   "class": "real gap",
+   "bug": "BUG-0436",
+   "evidence": "i8949 pp. 5, 8-11: a contingent payment debt instrument and accrued market discount are named and refused by sb.unsupported (as the earlier sales#4 ruling). i8949 pp. 3 and 9: a nominee's transaction and a loss on personal-use property need an offsetting column (g) adjustment, which sales.code does not name (its only example is code E); a filer who answers other is refused (sales.bad_code), one who answers none is not. Low; BUG-0436. sales.code is not among the R3 restructured questions.",
+   "prompt_sha": "ef2cf4a54e6d1f6ab0ee0123fb104f97a532bb37d2dd597e7f9973b747f0452e"
   },
   "unruled:sales#2": {
    "class": "out of scope",
-   "evidence": "i1040sd p. 6. A sale reported on the installment method belongs on Form 6252, which sd.other_forms names and refuses; the 'EXPIRED' entries for options are presentation (the zero proceeds or basis are entered as amounts).",
-   "prompt_sha": "c257e41caff8965b2327407a18b1ae9b36784449d1bcaf05f2a5cc728a705d15",
-   "gate": "sd.other_forms"
+   "gate": "sd.other_forms",
+   "evidence": "i1040sd pp. 5-6; p550 p. 81. As the earlier sales#1 to #3 rulings: a trader's section 475(f) gains and losses, an ordinary loss on section 1244 or SBIC stock (Form 4797) and an installment sale (Form 6252) belong on forms sd.other_forms names (\"gains or losses from (or that belong on) Forms 4797, 2439, 6252, 4684, 6781 or 8824\") and refuses.",
+   "prompt_sha": "ef2cf4a54e6d1f6ab0ee0123fb104f97a532bb37d2dd597e7f9973b747f0452e"
   },
   "unruled:sales#3": {
    "class": "out of scope",
-   "evidence": "i1040sd p. 6; p550 p. 81. An ordinary loss on section 1244 or SBIC stock belongs on Form 4797; sd.other_forms refuses any gain or loss that belongs on Form 4797.",
-   "prompt_sha": "c257e41caff8965b2327407a18b1ae9b36784449d1bcaf05f2a5cc728a705d15",
-   "gate": "sd.other_forms"
-  },
-  "unruled:sales#4": {
-   "class": "out of scope",
-   "evidence": "i8949 pp. 5, 11. As the earlier rulings: sb.unsupported names 'accrued market discount' and 'a contingent payment debt instrument' and refuses Schedule B and the return.",
-   "prompt_sha": "c257e41caff8965b2327407a18b1ae9b36784449d1bcaf05f2a5cc728a705d15",
-   "gate": "sb.unsupported"
-  },
-  "unruled:sales#5": {
-   "class": "out of scope",
-   "evidence": "p550 pp. 82, 88. Section 1256 contracts go on Form 6781, and sd.other_forms names Form 6781 ('Count section 1256 contracts'); gain or loss on an option on property that is not a capital asset is ordinary and belongs on Form 4797, also refused by sd.other_forms.",
-   "prompt_sha": "c257e41caff8965b2327407a18b1ae9b36784449d1bcaf05f2a5cc728a705d15",
-   "gate": "sd.other_forms"
+   "gate": "sd.other_forms",
+   "evidence": "p550 pp. 82, 88; i8949 pp. 2-3. As the earlier sales#5 ruling: section 1256 contracts belong on Form 6781 (\"Count section 1256 contracts\") and an option on property that is not a capital asset gives ordinary gain or loss on Form 4797, both refused by sd.other_forms; section 1061 recharacterization applies to a partner holding an applicable partnership interest, whose partnership income (Schedule K-1) scope.schedule1 refuses. The restructured sales.box keeps every holding-period rule (R3 word check: none lost).",
+   "prompt_sha": "ef2cf4a54e6d1f6ab0ee0123fb104f97a532bb37d2dd597e7f9973b747f0452e"
   },
   "unruled:sb#1": {
    "class": "presentation",
@@ -631,42 +619,25 @@
   },
   "unruled:sc#1": {
    "class": "covered",
-   "evidence": "i1040sc pp. 6-7. As sc#2 of the refresh round: scveh.smr_ok asks the first-year, whole-lease and five-vehicle rules; scveh.lease_smr_bad refuses actual expenses on a leased vehicle after the standard rate. The Part IV statement for additional vehicles is filing information.",
-   "prompt_sha": "bc5f16d45d8555e54bea39a0ee6a2d216dc1089186cf1152339683e60b6d9a53",
-   "line": "scveh.smr_ok"
+   "line": "scveh.smr_ok",
+   "evidence": "i1040sc p. 6. As the earlier sc#1 ruling: scveh.smr_ok asks the first-year, whole-lease and five-vehicle rules (\"Answer No if this is one of five or more vehicles you used in the business at the same time\"); scveh.lease_smr_bad refuses actual expenses on a leased vehicle after the standard rate.",
+   "prompt_sha": "8dea291408596b5763517c96610a2bdda84d8af49c8101a2fff2c8d76b6e4a68"
   },
   "unruled:sc#2": {
    "class": "out of scope",
-   "evidence": "i1040sc p. 13. As sc#3 of the refresh round: a home is real property, refused by asset.screen, so no home depreciation or section 179 reaches line 13.",
-   "prompt_sha": "bc5f16d45d8555e54bea39a0ee6a2d216dc1089186cf1152339683e60b6d9a53",
-   "gate": "asset.screened"
+   "gate": "asset.screened",
+   "evidence": "i1040sc p. 13; i4562 pp. 9, 12; p946 p. 17. As the earlier sc#2 ruling: a home is real property, refused by asset.screen. asset.screen also refuses property that must be depreciated under ADS (tax-exempt use, tax-exempt bond financed, imported property, use predominantly outside the United States) and like-kind or involuntary-conversion property; asset.s179 has land improvements, investment property and property leased to others entered as zero, and asset.not179 asks them.",
+   "prompt_sha": "8dea291408596b5763517c96610a2bdda84d8af49c8101a2fff2c8d76b6e4a68"
   },
   "unruled:sc#3": {
-   "class": "covered",
-   "evidence": "i7206 p. 2. As sc#4 of the refresh round: ltc.payments excludes months the person was eligible for a long-term care plan subsidized by an employer (the separate test for long-term care plans).",
-   "prompt_sha": "bc5f16d45d8555e54bea39a0ee6a2d216dc1089186cf1152339683e60b6d9a53",
-   "line": "ltc.payments"
+   "class": "presentation",
+   "evidence": "i1040sc p. 5. As the earlier sc#5 ruling: the Form 1099-NEC difference statement is filing information.",
+   "prompt_sha": "8dea291408596b5763517c96610a2bdda84d8af49c8101a2fff2c8d76b6e4a68"
   },
   "unruled:sc#4": {
-   "class": "out of scope",
-   "evidence": "i1040sc pp. 1, 14. As sc#1 of the refresh round: a section 461(l) excess business loss adjustment (Form 461, Schedule 1 line 8p) is named and refused by s1.line8_other.",
-   "prompt_sha": "bc5f16d45d8555e54bea39a0ee6a2d216dc1089186cf1152339683e60b6d9a53",
-   "gate": "s1.line8_other"
-  },
-  "unruled:sc#5": {
    "class": "presentation",
-   "evidence": "i1040sc p. 5. As sc#5 of the refresh round: the Form 1099-NEC difference statement is filing information.",
-   "prompt_sha": "bc5f16d45d8555e54bea39a0ee6a2d216dc1089186cf1152339683e60b6d9a53"
-  },
-  "unruled:sc#6": {
-   "class": "presentation",
-   "evidence": "i1040sc p. 8. As sc#6 and sc#7 of the refresh round: the statements and margin notations for lines 16a and 16b are filing information; the interest is entered.",
-   "prompt_sha": "bc5f16d45d8555e54bea39a0ee6a2d216dc1089186cf1152339683e60b6d9a53"
-  },
-  "unruled:sc#7": {
-   "class": "presentation",
-   "evidence": "i1040sc pp. 3-5. The header entries (lines A, B, D, E, H and I) are filing information; no amount depends on them.",
-   "prompt_sha": "bc5f16d45d8555e54bea39a0ee6a2d216dc1089186cf1152339683e60b6d9a53"
+   "evidence": "i1040sc p. 8. As the earlier sc#6 ruling: the statements and margin notations for lines 16a and 16b are filing information; the interest is entered.",
+   "prompt_sha": "8dea291408596b5763517c96610a2bdda84d8af49c8101a2fff2c8d76b6e4a68"
   },
   "unruled:scope#1": {
    "class": "out of scope",
@@ -688,20 +659,9 @@
   },
   "unruled:scveh#1": {
    "class": "out of scope",
-   "evidence": "i1040sc p. 8; p946 p. 59. As scveh#1 of the refresh round and round 2 (rechecked): sc.special names 'an inclusion amount for leased property' and sc.screened refuses the business; the conversion part is scveh.lease_smr_before.",
-   "prompt_sha": "a543fb2e5f6e3c986e3eb3b38d34d01b2cbe3250a9df434f17bf12dd101c31eb",
-   "gate": "sc.screened"
-  },
-  "unruled:scveh#2": {
-   "class": "out of scope",
-   "evidence": "i1040sc p. 6. sc.method_other asks whether the business must capitalize costs under the uniform capitalization rules (section 263A) because it is not a small business taxpayer (gross receipts above $31 million, or a tax shelter), and sc.screened refuses the business; a small business taxpayer is exempt (p538 p. 17), so no vehicle cost is capitalized. The round-3 fixes (scveh.cost: destination charges, dealer preparation, gas guzzler tax; scveh.screen: substantial improvements and any 2025 investment use, which refuses more than it must) closed BUG-0414's two lows (p463 pp. 25-26, i4562 p. 14; rechecked: correct).",
-   "prompt_sha": "a543fb2e5f6e3c986e3eb3b38d34d01b2cbe3250a9df434f17bf12dd101c31eb",
-   "gate": "sc.screened"
-  },
-  "unruled:scveh#3": {
-   "class": "presentation",
-   "evidence": "i1040sc p. 7; i4562 p. 13. As scveh#4 of round 2: whether the vehicle information goes in Schedule C Part IV or Form 4562 Part V is filing information; no amount depends on it.",
-   "prompt_sha": "a543fb2e5f6e3c986e3eb3b38d34d01b2cbe3250a9df434f17bf12dd101c31eb"
+   "gate": "sc.screened",
+   "evidence": "i1040sc p. 8; p946 p. 59. As the earlier scveh#1 ruling: sc.special names \"an inclusion amount for leased property\" and sc.screened refuses the business.",
+   "prompt_sha": "e25acd8e7c4e06c5dbfd94738442ef537236e429b3b649f6d203bb2338663358"
   },
   "unruled:sd#1": {
    "class": "out of scope",
@@ -863,6 +823,23 @@
    "evidence": "i5329 p. 1, Part IX; i5329 p. 9. person.x_other asks whether 'a required minimum distribution from an IRA or plan that you did not receive in full by its deadline (including a shortfall you made up later)' applies and refuses the Form 5329 parts the tool does not prepare.",
    "gate": "person.x_other",
    "prompt_sha": "377a98553625cb07e87d01d528797703544943cd90d7f4045b8ef8d1d70a1ad5"
+  },
+  "unruled:asset#2": {
+   "class": "out of scope",
+   "gate": "scope.schedule1",
+   "evidence": "i4562 p. 10, 5-year property, \"Appliances, carpets, furniture, etc., used in a rental real estate activity\". A rental real estate activity is reported on Schedule E, which scope.schedule1 names (\"rental real estate, royalties, partnerships, S corporations, estates or trusts (Schedule E or a Schedule K-1)\") and refuses; asset entries are Schedule C property, whose class the question takes from Pub. 946 Table B-1 and the activity's Table B-2 class. The asset.class wording is the earlier question's (R3 word check: none lost).",
+   "prompt_sha": "883ef58dbdaa8d8b440a6af6f489dbed80063693dc77e43d4e7cb50d8833df01"
+  },
+  "unruled:f8960#1": {
+   "class": "out of scope",
+   "gate": "sa.unsupported",
+   "evidence": "i8960 pp. 17-18, Line 9b. A deduction of foreign income tax on Schedule A is refused by sa.unsupported (\"a foreign tax or generation-skipping tax deduction\"), as the ftc#1 ruling; foreign real property taxes are not deductible on Schedule A (sa leaves out foreign real estate taxes), and line 9b is limited to the allowed Schedule A deduction, so on a computed return the state and local taxes f8960.allocated_taxes asks for are the whole of line 9b.",
+   "prompt_sha": "17731723808a0dd3e6131ce754c63f95ac445aedc5d5bb2fe12df2452323f18c"
+  },
+  "unruled:asset#1": {
+   "class": "presentation",
+   "evidence": "i4562 p. 3, listed property exceptions. The exception for a computer used exclusively at a regular business establishment owned or leased by its operator, and the employee's employer-establishment rule, change no amount here: a Schedule C proprietor's regular business establishment is the one the proprietor operates, employees' property is not Schedule C property, and a computer placed in service before 2018 is past its 5-year recovery in 2025 (property placed in service before 2005, ADS and other methods are refused by asset.screen). The asset.listed wording is unchanged by R3.",
+   "prompt_sha": "883ef58dbdaa8d8b440a6af6f489dbed80063693dc77e43d4e7cb50d8833df01"
   }
  }
 }

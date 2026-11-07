@@ -6066,3 +6066,11 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Symptom:** p575 p. 21, Rollovers to SIMPLE retirement accounts: "During the first 2 years of participation in a SIMPLE retirement account, you may roll over amounts from one SIMPLE retirement account into another SIMPLE retirement account." The rollover question counts any amount rolled over to "an IRA other than a Roth IRA" and limits only code S distributions out of a SIMPLE IRA, so a plan or non-SIMPLE IRA distribution rolled into a SIMPLE IRA in its first 2 years would be excluded though it stays taxable. The wording predates R2 (R2 kept it word for word).
 - **Disposition:** open; low. Fix at the form's next substantive change by excluding that case from the question (or refusing it), a content change outside R2's no-new-clauses rule, with the completeness and render reviews rerun.
 - **Tags:** retirement; question wording; open
+
+## BUG-0436 — sales.code does not name the nominee or personal-use loss adjustments
+
+- **Caught by:** the sales completeness review rerun after the R3 restructuring, 2026-11-07 (sales#1).
+- **Source:** i8949 p. 3 ("Loss on the sale of personal property is not deductible ... you should report the loss with an offsetting entry ... on Form 8949, by entering an adjustment"); i8949 p. 9 (a Form 1099-B, 1099-DA or 1099-S received as a nominee for the actual owner: report the transaction and enter the resulting gain or loss as an offsetting adjustment in column (g)).
+- **Symptom:** the adjustment-code question (Adjustment codes: none, B, W, BW; choose other for any additional code, such as code E ...) names only code E as an example, so a filer who received a broker or payment report as a nominee, or who sold personal-use property at a loss, can answer none; the tool then reports a gain or loss the source offsets to zero. A filer who answers other is refused (sales.bad_code). Pre-existing; not caused by the R3 restructuring, which did not touch sales.code.
+- **Disposition:** open, low: name the nominee and personal-use-loss situations in sales.code (or ask them and refuse); rerun the sales reviews.
+- **Tags:** completeness; sales; open

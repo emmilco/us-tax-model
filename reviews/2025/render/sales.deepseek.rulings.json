@@ -23,6 +23,15 @@
   },
   {
    "printed": "(e)",
+   "restated": "Choose — [helper \"Basis reported to IRS\" = true → helper \"Basis shown on broker report\"] [helper \"Basis reported to IRS\" = false → helper \"Correct adjusted basis from records (cost; the donor's basis for a gift; for inherited property, value at death or on an elected alternate valuation date or special-use value, within the Schedule A (Form 8971) final estate tax value where it applies; the basis of property from a trade, from a spouse or incident to divorce, or received for services), with the adjustments to basis\"]",
+   "model": "The restatement routes basis-reported transactions by the helper “Basis reported to IRS,” which is true only for boxes A or D. IRS also says “Box A or Box G” and “Box D or Box J” transactions with an amount shown for cost or other basis were reported to the IRS, so G/J digital-asset transactions would use the records-basis branch instead of the broker-reported basis required for column (e).",
+   "ruling": "Ruling: scope; same objection as the earlier rulings (boxes G and J). f8949 p. 1, box G: \"Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\"; i8949 p. 8, code B. The helper is true only for boxes A and D because boxes G to L are refused at the transaction: sales.one refuses when sales.digital (\"Digital asset box G–L\"), and the refusal reaches every Schedule D total and Form 1040 line 7a (fixture sales.refuse.digital.G). Within boxes A to F the condition reads as the instructions do. The R3 restructuring of the sales questions changed the glossary text, not this line. Project stands on the English.",
+   "context": "b5f464238146791a5a90d5ec705b3c62fcabb9b711122add7bc25797c3d00ee7",
+   "date": "2026-11-07",
+   "run": "0e0893ed362449a1e27633da469276c4810bcb1960903545cf58149ac9faf9c4"
+  },
+  {
+   "printed": "(e)",
    "restated": "Choose — [helper \"Basis reported to IRS\" = true → helper \"Basis shown on broker report\"] [helper \"Basis reported to IRS\" = false → helper \"Correct adjusted basis from records (for inherited property shown on a Schedule A (Form 8971) as increasing the estate tax, starting from no more than its final estate tax value)\"]",
    "model": "The IRS says \"Box A or Box G\" and \"Box D or Box J\" cover transactions with an amount shown for cost or other basis reported to the IRS; the program's \"Basis reported to IRS\" helper is only boxes A or D, so for boxes G/J it would enter the correct adjusted basis instead of the reported basis.",
    "ruling": "Ruling: scope; same as the refresh-round ruling: boxes G to L are refused at the transaction by sales.digital at sales.one, so the correct-basis branch is never used for them. Project stands.",
@@ -50,6 +59,15 @@
    "model": "Because the basis-reported gate omits box G and box J, no code B adjustment is made for those reported-basis transactions; the IRS code B instruction says for box A or box G (and box D or box J) enter the reported basis in column (e) and 'Correct the error by entering an adjustment in column (g).'",
    "ruling": "Ruling: scope; i8949 p. 8, code B: \"Correct the error by entering an adjustment in column (g)\". As column (e): boxes G and J are refused with every digital-asset box, so the A/D condition is the whole supported case. Same point as the earlier rounds. Project stands on the English.",
    "context": "cf9ab01e6f7cae1b41ff3f0a234d076e2783160e4ee8e14dd7a6bfa2e83bd0a6"
+  },
+  {
+   "printed": "(g)",
+   "restated": "Add helper \"Basis correction in column (g)\" and helper \"Wash-sale adjustment in column (g)\".",
+   "model": "IRS column (g) is for “any necessary adjustments to gain (or loss)” and specifically includes code E selling expenses, digital asset transaction costs, and option premiums; the restatement only adds the code B basis correction and code W wash-sale adjustment, omitting other column (g) adjustments.",
+   "ruling": "Ruling: scope; same objection as the round-2 and round-3 rulings (other codes, here code E selling expenses, digital asset transaction costs and option premiums). Codes other than B and W are refused at sales.one on sales.bad_code (\"Unsupported adjustment or code B without a broker basis report\"), and the sales.code question sends an unreflected selling expense or option premium to code E (choose other), so on a completed return column (g) is the code B correction plus the code W adjustment; digital asset rows never reach the line (boxes G to L are refused at the transaction: sales.one refuses when sales.digital (\"Digital asset box G–L\"), and the refusal reaches every Schedule D total and Form 1040 line 7a (fixture sales.refuse.digital.G)). Project stands.",
+   "context": "b5f464238146791a5a90d5ec705b3c62fcabb9b711122add7bc25797c3d00ee7",
+   "date": "2026-11-07",
+   "run": "0e0893ed362449a1e27633da469276c4810bcb1960903545cf58149ac9faf9c4"
   },
   {
    "printed": "(g)",

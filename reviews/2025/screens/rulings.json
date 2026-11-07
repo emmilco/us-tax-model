@@ -538,36 +538,24 @@
    "adjudication": "reviews/2025/screens/adjudication/group3.md"
   },
   "unruled:s2.other": {
-   "prompt_sha": "5fe541b2cf37988d88e621709c9eae3ab4594cfc846e3a6793df2eede5e14821",
-   "reason": "Allocated tips and Form 8919 are caught by f8959.unsupported (and scope.other_income); the Form 8962 finding misreads the tool, which computes line 1a; other Form 5329 taxes are refused by person.x_other.",
+   "prompt_sha": "e8c1cc5cb94dc9a077e95b57cbe8f40c94314bf0dd3b63b658db2f378b93e2cd",
+   "reason": "No defect. Finding 0 covered by f8959.unsupported (allocated tips in Form W-2 box 8); finding 1 covered by person.x_other and f8889.unsupported (an earlier year's HSA excess). As group 3.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "f8959.unsupported names 'tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137)'; it gates f8959 lines feeding s2.line11 -> s2.line21. Eval (stage1 and stage12 bases): f8959.unsupported yes -> s2.line11 and f1040.line24 refuse, so the return cannot complete."
+     "evidence": "f8959.unsupported names \"tips not reported to your employer or allocated tips in Form W-2 box 8 (Form 4137)\" and gates the f8959 lines feeding s2.line11 and s2.line21. As group 3 finding 0."
     },
     {
      "n": 1,
-     "kind": "NARROW",
-     "class": "covered",
-     "evidence": "f8959.unsupported names 'Form 8919 wages'; scope.other_income names 'wages or tips not on a Form W-2'. Both refuse the return."
-    },
-    {
-     "n": 2,
-     "kind": "NARROW",
-     "class": "model error",
-     "evidence": "s2.line1a is computed from f8962.line29 when f8962.any; line 3 = line1z + line2. The repayment is not set to zero. (Side note: the question's exception list does not name the Form 8962 repayment, so a literal reader with a repayment answers YES; that is WIDE, not NARROW.)"
-    },
-    {
-     "n": 3,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "s2.line8 sums person.x_tax; person.x_other ('excess contributions to a traditional or Roth IRA for an earlier year that are still in the IRA; excess contributions to a Coverdell ESA, an Archer MSA or an ABLE account; ... a required minimum distribution ... that you did not take') refuses it. Eval: person[taxpayer].x_other yes -> s2.line8, s2.line21, f1040.line24 refuse."
+     "evidence": "person.x_other names \"excess HSA contributions from an earlier year that you had not removed or used up before 2025 (including any amount on line 48 of your 2024 Form 5329, or an excess you never reported), whether or not you have a Form 8889 for 2025\" and f8889.unsupported \"excess HSA contributions from an earlier year that remain in your HSA\"; both refuse, so the 6% tax on a carried excess never reaches line 8 unasked. As group 3 finding 3."
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group3.md"
+   "adjudication": "reviews/2025/screens/adjudication/r3.md"
   },
   "unruled:s8812.combat_pay": {
    "prompt_sha": "af0845899f94ca1a60463af6135e84ca01bc0b9eb5b4235c23e88c0927772072",
@@ -1047,80 +1035,86 @@
    "adjudication": "reviews/2025/screens/adjudication/group7.md"
   },
   "unruled:f8960.unsupported": {
-   "prompt_sha": "51dca85fe7808f0d5d601673c14529f61cb40e0b365833129573d9843e972149",
-   "reason": "No defect. BUG-0408's additions (life insurance contract gain or loss, the capital loss carryforward adjustment) drew no finding and closed group 8's two lows. Findings 0 to 3 and 7 covered by siblings as in group 8; finding 4 is a model error; WIDE accepted.",
+   "prompt_sha": "97fff2485bb61620ccb672b2f0eae50392183135ee684473a35124e7b00286f9",
+   "reason": "No defect; as group 9. Findings 0 to 3 are covered by sibling screens, 4 and 5 are the accepted WIDE findings, 6 and 7 are covered. The restructuring drew no finding of a narrowed item.",
    "findings": [
     {
      "n": 0,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "i8960 pp. 13-14. f8960.refund asks about any recovery or refund of an amount deducted on an earlier Form 8960 (naming a state income tax refund) and gates the same lines. As group 8 finding 0."
+     "evidence": "i8960 pp. 13-14. f8960.refund asks about any recovery or refund of an amount deducted on an earlier Form 8960 (naming a state income tax refund) and gates the same lines. As group 9 finding 0."
     },
     {
      "n": 1,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "i8960 p. 13. Form 8814: scope.other_line16 ('filing Form 8814 (even with no tax)') refuses the return. As group 8 finding 1."
+     "evidence": "i8960 p. 13. Form 8814: scope.other_line16 (\"filing Form 8814 (even with no tax)\") refuses the return. As group 9 finding 1."
     },
     {
      "n": 2,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "i8960 p. 13. Substitute interest and dividend payments and notional principal contract payments are Schedule 1 line 8z kinds refused by oi8z and s1.line8_other. As group 8 finding 1."
+     "evidence": "i8960 p. 13. Substitute interest and dividend payments and notional principal contract payments are Schedule 1 line 8z kinds refused by oi8z and s1.line8_other. As group 9 finding 2."
     },
     {
      "n": 3,
      "kind": "NARROW",
      "class": "covered",
-     "evidence": "i8960 p. 13. A casualty or theft loss is refused by sa.unsupported. As group 8 finding 2."
+     "evidence": "i8960 p. 13. A casualty or theft loss is refused by sa.unsupported. As group 9 finding 3."
     },
     {
      "n": 4,
-     "kind": "NARROW",
-     "class": "model error",
-     "evidence": "i8960 p. 7, Line 2. f8960.line2 copies Form 1040 line 3b; Alaska Permanent Fund dividends are Schedule 1 line 8g (s1.line8g), not in line 3b, so line 2 never includes them and no line 7 modification is needed."
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "i8960 p. 7: qualified-plan annuities draw Yes though line 3 is zero. Safe; as group 9 finding 5."
     },
     {
      "n": 5,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i8960 p. 7: qualified-plan annuities draw Yes though line 3 is zero. Safe; as group 8 finding 5."
+     "evidence": "i8960 pp. 7, 22: Form 8815 draws Yes though line 1 and MAGI are right. Safe; as group 9 finding 6."
     },
     {
      "n": 6,
-     "kind": "WIDE",
-     "class": "accepted WIDE",
-     "evidence": "i8960 pp. 7, 22: Form 8815 draws Yes though line 1 and MAGI are right. Safe; as group 8 finding 6."
+     "kind": "UNCLEAR",
+     "class": "covered",
+     "evidence": "i8960 p. 13. A Schedule K-1 (Form 1041) is refused by scope.schedule1 (\"estates or trusts ... Schedule K-1\"); reading RIC or REIT dividends as pass-through income draws only a safe Yes. As group 9 finding 7."
     },
     {
      "n": 7,
      "kind": "UNCLEAR",
      "class": "covered",
-     "evidence": "i8960 p. 13. A Schedule K-1 (Form 1041) is refused by scope.schedule1 ('estates or trusts ... Schedule K-1'); other pass-through income is named here. As group 8 finding 4."
+     "evidence": "i8960 p. 18, Line 9b. A deduction of foreign income tax on Schedule A is refused by sa.unsupported (\"a foreign tax or generation-skipping tax deduction\"), whichever way the filer reads the investment-expense item."
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group9.md"
+   "adjudication": "reviews/2025/screens/adjudication/r3.md"
   },
   "unruled:gift.special": {
-   "prompt_sha": "a40a89440fcaba8f0412c905e779e991bb8c89710284c4d22c6aecea8f97ab28",
-   "reason": "No defect. Both findings WIDE (accepted); PENDING-4-5 (publicly traded undefined) closed by credits-misc PENDING-4, whose definition matches i8283 p. 9 and does not narrow the exception.",
+   "prompt_sha": "5b99367c0332d9be1e1f0867ac0cd5b27183eefd419759eb6a1ccef0484b9964",
+   "reason": "No defect. Findings 0 and 2 accepted WIDE; finding 1 accepted (minor UNCLEAR, leans WIDE), as group 7 finding 0.",
    "findings": [
     {
      "n": 0,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i8283 pp. 1, 3: Section B turns on the deduction after reductions; property worth over $5,000 with a reduced deduction of $5,000 or less is refused though the helper computes it. Safe (as round 1)."
+     "evidence": "i8283 p. 3, item 2.d: securities that qualify under Regulations section 1.170A-13(c)(7)(xi)(B) but are not publicly traded as the question defines it draw Yes and are refused though Section A would do. Safe."
     },
     {
      "n": 1,
+     "kind": "UNCLEAR",
+     "class": "accepted (minor UNCLEAR, leans WIDE)",
+     "evidence": "i8283 pp. 1, 3. The question asks about \"a deduction over $5,000 (before any income limit), or property worth more than $5,000\", so property worth over $5,000 with a reduced deduction of $5,000 or less draws Yes and is refused though the helper computes it. Safe (as group 7 finding 0)."
+    },
+    {
+     "n": 2,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i8283 pp. 3, 9: vehicles reportable in Section A (deduction $5,000 or less, or limited to gross proceeds with a CWA) are refused. Safe; as group 4 finding 2."
+     "evidence": "i8283 p. 3: partial interests and property with use restrictions need Section B only above $5,000; the question's item has no threshold, so smaller gifts are refused. Safe."
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group7.md"
+   "adjudication": "reviews/2025/screens/adjudication/r3.md"
   },
   "unruled:person.x_other": {
    "prompt_sha": "8679b76a5974e85f81330e8286bda87fd765d8182016f799bd1f337897eb8cc9",
@@ -1321,18 +1315,30 @@
    "adjudication": "reviews/2025/screens/adjudication/group7.md"
   },
   "unruled:sales.special": {
-   "prompt_sha": "6b0eab8bead3c47add501283fc08f2136d10997c011d1c1e137300ee54538f83",
-   "reason": "No defect. The allowed-or-allowable wording (BUG-0418) closed the NARROW finding of the previous rerun (a home whose depreciation was allowable but never claimed); the WIDE finding is accepted as in group 8.",
+   "prompt_sha": "418fd7f545387e3c14cca5a2872ea4d0333ee2e33b61397f83c5a2af961ead46",
+   "reason": "No defect. Findings 0 and 1 accepted WIDE (as group 12); finding 2 accepted (minor UNCLEAR, leans WIDE).",
    "findings": [
     {
      "n": 0,
      "kind": "WIDE",
      "class": "accepted WIDE",
-     "evidence": "i1040sd p. 12, Line 19. An S corporation or trust interest whose entity holds only section 1250 property is refused though no line 19 look-through entry results. Safe; as group 8 finding 0."
+     "evidence": "i1040sd p. 12, Line 19. An S corporation or trust interest whose entity holds only section 1250 property is refused though no line 19 look-through entry results. Safe; as group 12 finding 0."
+    },
+    {
+     "n": 1,
+     "kind": "WIDE",
+     "class": "accepted WIDE",
+     "evidence": "i1040sd pp. 11-12, Lines 18 and 19: a loss sale, or a sale of an interest held 1 year or less, needs no worksheet entry, but the item draws Yes. Safe."
+    },
+    {
+     "n": 2,
+     "kind": "UNCLEAR",
+     "class": "accepted (minor UNCLEAR, leans WIDE)",
+     "evidence": "i1040sd p. 11, Line 19. A filer who reads REIT or C corporation stock as involving depreciable real property answers Yes and is refused; the item's own words (\"depreciable real property (section 1250 property: generally, real property for which depreciation was allowed or allowable ...)\") are the filer's property. Safe."
     }
    ],
    "bugs": [],
-   "adjudication": "reviews/2025/screens/adjudication/group12.md"
+   "adjudication": "reviews/2025/screens/adjudication/r3.md"
   },
   "unruled:sb.line8": {
    "prompt_sha": "bac1d7745a6c4e4b90d1449fbf5df780355eb8cbc0383a8e87dd907469971f1e",

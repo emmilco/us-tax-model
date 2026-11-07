@@ -12,6 +12,15 @@
   {
    "printed": "13",
    "project": "{\"ref\": \"f1040.line11b\"}",
+   "second": "{\"expression\": {\"ref\": \"f1040.line11\"}, \"invalid_model_types\": [{\"line\": \"f8960.line13\", \"message\": \"f8960.f8960.line13: reference 'f1040.line11' does not resolve\"}]}",
+   "ruling": "Ruling: model error on the declaration; the reply reads f1040.line11, which does not resolve (invalid_model_types: \"reference 'f1040.line11' does not resolve\"); its note says the scoped catalog did not list Form 1040 line 11. i8960 p. 22, Line 13: \"If you didn't exclude any amounts from your gross income under section 911 and you don't own an interest in a CFC or PFIC, your MAGI is your AGI as reported on Form 1040 or 1040-SR.\" The project reads f1040.line11b, which copies line 11a, as the earlier rulings. Triage executable-triage-v2 (reviews/2025/transcription/triage/f8960.json; 1,638 fixtures, 500 generated returns seed 20261026, 112 partial records): 2,203 of 2,250 comparisons agree; the 47 differences are the project's line refusing or unknown on f8960.refund (12 and 12 witnesses), which the project's return does not read where it completes. Project stands.",
+   "context": "36c6ef1f9232c4d74cba05c987373858e5f60c42adf0154387ab5823ae8522cc",
+   "date": "2026-11-07",
+   "run": "53ba1474ded783d6002b8bac5b23701e10d4e56f8f977cdf8ee927d2d02bdc84"
+  },
+  {
+   "printed": "13",
+   "project": "{\"ref\": \"f1040.line11b\"}",
    "second": "{\"ref\": \"f1040.line11a\"}",
    "ruling": "Ruling: representation; i8960 p. 22, Line 13: \"If you didn’t exclude any amounts from your gross income under section 911 and you don’t own an interest in a CFC or PFIC, your MAGI is your AGI as reported on Form 1040 or 1040-SR.\" The reply reads f1040.line11a, the project f1040.line11b, which copies line 11a (forms/2025/f1040.yaml, f1040.line11b: op copy from f1040.line11a), so the value is the same on every return. The section 911 and CFC/PFIC cases are refused (f8960.unsupported names both, and since round 2 scope.other_line16 refuses any CFC or PFIC stock; \"If you exclude amounts under section 911 or own certain CFCs or PFICs, your MAGI is your AGI as modified\", i8960 p. 22). Same point as the refresh-round ruling.",
    "context": "a34dbec53049ca7316c78911b5dd88a13c04ceb54806769202a2feea71ca07b0",

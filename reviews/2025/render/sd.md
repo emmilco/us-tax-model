@@ -5,7 +5,7 @@ The rendered English of every printed line of `Schedule D — securities sales a
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
-| line-scoped reviews | 1 (latest 2026-11-04); see Line-scoped reviews |
+| line-scoped reviews | 1 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | d8a1bade7e8895260afb189920619c7b281ba3f35ca05706a6924a7e0636eac5 |
@@ -39,194 +39,194 @@ The rendered English of every printed line of `Schedule D — securities sales a
 ### 1a(d) — Line 1a, column (d) totals
 Status: **MATCH**
 
-Model: Sums proceeds of box A transactions routed to aggregate. This is line 1a's 'short-term transactions reported on Form 1099-B ... for which basis was reported to the IRS and for which you have no adjustments'. Ineligible aggregate entries are refused by sales.bad_aggregate, and Form 1099-DA/digital entries by sales.digital.
-Reviewed in: pass 6d1419919e1c
+Model: Line 1a totals short-term transactions whose basis was reported to the IRS and that need no adjustments. Box A sales on the aggregate route meet this, because bad_aggregate refuses any entry without reported basis, with a code, or with an unconfirmed eligibility. Box G is refused as digital, and column (d) is the reported proceeds.
+Reviewed in: pass 790975e2b01d
 
 ### 1a(e) — Line 1a, column (e) totals
 Status: **MATCH**
 
-Model: For box A (covered), column (e) is the reported broker basis, summed over aggregate-routed box A entries. This matches line 1a's totals of reported basis.
-Reviewed in: pass 6d1419919e1c
+Model: For box A (basis reported), column (e) is the basis shown on the broker report. The Schedule D example for lines 1a/8a enters exactly that cost or other basis in column (e).
+Reviewed in: pass 790975e2b01d
 
 ### 1a(g) — Line 1a, column (g) totals
 Status: **MATCH**
 
-Model: Aggregate entries must have code 'none' or they are refused, so B and W adjustments are zero and this total is zero. That is consistent with line 1a's 'no adjustments'.
-Reviewed in: pass 6d1419919e1c
+Model: Aggregate entries must have code 'none', so both the B correction and the W adjustment are $0. The sum is therefore zero, which fits the IRS condition 'for which you have no adjustments'.
+Reviewed in: pass 790975e2b01d
 
 ### 1a(h) — Line 1a, column (h) totals
 Status: **MATCH**
 
-Model: Sums per-entry (d) − (e) + (g) over the same entries. This matches 'Subtract column (e) from column (d) and combine the result with column (g)'.
-Reviewed in: pass 6d1419919e1c
+Model: Column (h) is (d) less (e) plus (g), with (g) zero, summed over aggregate box A sales. This matches 'Subtract the cost or other basis in column (e) from the proceeds (sales price) in column (d)'.
+Reviewed in: pass 790975e2b01d
 
 ### 1b(d) — Line 1b, column (d) totals
 Status: **MATCH**
 
-Model: Sums proceeds of box A entries reported in detail on Form 8949. This matches line 1b 'Box A or Box G checked'; box G digital assets are refused.
-Reviewed in: pass 6d1419919e1c
+Model: Line 1b is the Form 8949 total for transactions with Box A checked (Box G is refused as digital). Column (d) sums the proceeds of box A detail entries.
+Reviewed in: pass 790975e2b01d
 
 ### 1b(e) — Line 1b, column (e) totals
 Status: **MATCH**
 
-Model: Box A column (e) is the basis shown on the broker report. This matches the Form 8949 note to 'enter in column (e) the basis as reported to the IRS'.
-Reviewed in: pass 6d1419919e1c
+Model: For box A, column (e) is the reported basis even when it is incorrect, as the 8949 instructions require for code B. Adding over the box A detail entries gives the line 2 total that carries to line 1b.
+Reviewed in: pass 790975e2b01d
 
 ### 1b(g) — Line 1b, column (g) totals
 Status: **MATCH**
 
-Model: Sums the code B correction (reported minus correct basis) and the code W wash-sale loss. This matches the column (g) instructions and the Worksheet for Basis Adjustments; other codes are refused.
-Reviewed in: pass 6d1419919e1c
+Model: Column (g) adds the code B correction, figured as reported basis minus correct basis per the Worksheet for Basis Adjustments, and the code W nondeductible loss as a positive number. Other codes are refused.
+Reviewed in: pass 790975e2b01d
 
 ### 1b(h) — Line 1b, column (h) totals
 Status: **MATCH**
 
-Model: Sums (d) − (e) + (g) for box A detail entries, as the line 1b column (h) instructions require.
-Reviewed in: pass 6d1419919e1c
+Model: Column (h) is (d) less (e), combined with (g), summed over box A detail entries. This matches the Lines 1b–10 column (h) instructions.
+Reviewed in: pass 790975e2b01d
 
 ### 2(d) — Line 2, column (d) totals
 Status: **MATCH**
 
-Model: Sums proceeds of box B entries reported in detail. This matches line 2 'Box B or Box H checked'; box H is refused as digital.
-Reviewed in: pass 6d1419919e1c
+Model: Line 2 totals Form 8949 transactions with Box B checked (Box H is refused as digital). Column (d) sums the proceeds of box B entries.
+Reviewed in: pass 790975e2b01d
 
 ### 2(e) — Line 2, column (e) totals
 Status: **MATCH**
 
-Model: Box B is not covered, so column (e) is the correct basis from records. This matches 'If this transaction is reported on Part I with box B ... enter the correct basis in column (e)'.
-Reviewed in: pass 6d1419919e1c
+Model: For box B, basis was not reported, so column (e) is the correct basis. This follows 'enter the correct basis in column (e), and enter -0- in column (g)'.
+Reviewed in: pass 790975e2b01d
 
 ### 2(g) — Line 2, column (g) totals
 Status: **MATCH**
 
-Model: The code B correction is zero for uncovered entries, so (g) holds only the wash-sale adjustment. This matches 'enter -0- in column (g)' for code B on box B, plus code W.
-Reviewed in: pass 6d1419919e1c
+Model: The B correction applies only to covered boxes, so it is $0 for box B, and the W amount is added. This is consistent with the code B and code W instructions.
+Reviewed in: pass 790975e2b01d
 
 ### 2(h) — Line 2, column (h) totals
 Status: **MATCH**
 
-Model: Sums (d) − (e) + (g) for box B detail entries, per the column (h) instructions.
-Reviewed in: pass 6d1419919e1c
+Model: Column (h) is (d) less (e) plus (g), summed over box B entries.
+Reviewed in: pass 790975e2b01d
 
 ### 3(d) — Line 3, column (d) totals
 Status: **MATCH**
 
-Model: Sums proceeds of box C entries reported in detail. This matches line 3 'Box C or Box I checked'; box I is refused as digital.
-Reviewed in: pass 6d1419919e1c
+Model: Line 3 totals Form 8949 transactions with Box C checked (Box I is refused as digital). Column (d) is net proceeds when there is no report.
+Reviewed in: pass 790975e2b01d
 
 ### 3(e) — Line 3, column (e) totals
 Status: **MATCH**
 
-Model: Box C is not covered, so column (e) is the correct basis from records. That is consistent with the instructions for transactions without a broker report.
-Reviewed in: pass 6d1419919e1c
+Model: For box C, column (e) is the correct basis from records.
+Reviewed in: pass 790975e2b01d
 
 ### 3(g) — Line 3, column (g) totals
 Status: **MATCH**
 
-Model: Code B on box C is refused (sales.bad_code), so (g) is only the wash-sale adjustment. That is consistent with the column (g) instructions.
-Reviewed in: pass 6d1419919e1c
+Model: Code B on box C is refused, so column (g) holds only the W amount. Summing it matches the Form 8949 totals.
+Reviewed in: pass 790975e2b01d
 
 ### 3(h) — Line 3, column (h) totals
 Status: **MATCH**
 
-Model: Sums (d) − (e) + (g) for box C detail entries, per the column (h) instructions.
-Reviewed in: pass 6d1419919e1c
+Model: Column (h) is (d) less (e) plus (g), summed over box C entries.
+Reviewed in: pass 790975e2b01d
 
 ### 8a(d) — Line 8a, column (d) totals
 Status: **MATCH**
 
-Model: Sums proceeds of box D entries routed to aggregate. This matches line 8a's 'long-term transactions reported on Form 1099-B ... basis was reported to the IRS and ... no adjustments'; ineligible entries are refused.
-Reviewed in: pass 6d1419919e1c
+Model: Line 8a is the long-term counterpart of line 1a. It sums the proceeds of box D aggregate-route sales, which are restricted to entries with reported basis and no adjustments.
+Reviewed in: pass 790975e2b01d
 
 ### 8a(e) — Line 8a, column (e) totals
 Status: **MATCH**
 
-Model: Box D is covered, so column (e) is the reported broker basis, summed over aggregate-routed box D entries. This matches line 8a.
-Reviewed in: pass 6d1419919e1c
+Model: Column (e) is the reported basis for box D, which matches the line 8a example ($2,000 in column (e)).
+Reviewed in: pass 790975e2b01d
 
 ### 8a(g) — Line 8a, column (g) totals
 Status: **MATCH**
 
-Model: Aggregate eligibility requires code 'none', so this total is zero. That is consistent with line 8a's 'no adjustments'.
-Reviewed in: pass 6d1419919e1c
+Model: Aggregate entries carry no code, so column (g) is zero, consistent with 'no adjustments'.
+Reviewed in: pass 790975e2b01d
 
 ### 8a(h) — Line 8a, column (h) totals
 Status: **MATCH**
 
-Model: Sums (d) − (e) + (g) over the same entries. This matches the line 8a column (h) computation.
-Reviewed in: pass 6d1419919e1c
+Model: Column (h) is (d) less (e), matching the example '$4,000 ($6,000 − $2,000) in column (h)'.
+Reviewed in: pass 790975e2b01d
 
 ### 8b(d) — Line 8b, column (d) totals
 Status: **MATCH**
 
-Model: Sums proceeds of box D detail entries. This matches line 8b 'Box D or Box J checked'; box J is refused as digital.
-Reviewed in: pass 6d1419919e1c
+Model: Line 8b totals Form 8949 transactions with Box D checked (Box J is refused). Column (d) sums the proceeds.
+Reviewed in: pass 790975e2b01d
 
 ### 8b(e) — Line 8b, column (e) totals
 Status: **MATCH**
 
-Model: Box D column (e) is the basis as reported to the IRS. This matches the Form 8949 Part II note.
-Reviewed in: pass 6d1419919e1c
+Model: For box D, column (e) is the reported basis, with any error corrected in column (g).
+Reviewed in: pass 790975e2b01d
 
 ### 8b(g) — Line 8b, column (g) totals
 Status: **MATCH**
 
-Model: Sums the code B correction (reported minus correct basis) and the code W adjustment. This matches the column (g) instructions and the Worksheet for Basis Adjustments.
-Reviewed in: pass 6d1419919e1c
+Model: Column (g) adds the code B worksheet correction (reported minus correct basis) and the code W positive amount.
+Reviewed in: pass 790975e2b01d
 
 ### 8b(h) — Line 8b, column (h) totals
 Status: **MATCH**
 
-Model: Sums (d) − (e) + (g) for box D detail entries, per the column (h) instructions.
-Reviewed in: pass 6d1419919e1c
+Model: Column (h) is (d) less (e) plus (g), summed over box D detail entries.
+Reviewed in: pass 790975e2b01d
 
 ### 9(d) — Line 9, column (d) totals
 Status: **MATCH**
 
-Model: Sums proceeds of box E detail entries. This matches line 9 'Box E or Box K checked'; box K is refused as digital.
-Reviewed in: pass 6d1419919e1c
+Model: Line 9 totals Box E transactions (Box K is refused). Column (d) sums the proceeds.
+Reviewed in: pass 790975e2b01d
 
 ### 9(e) — Line 9, column (e) totals
 Status: **MATCH**
 
-Model: Box E is not covered, so column (e) is the correct basis. This matches 'reported on Part II with box E ... enter the correct basis in column (e)'.
-Reviewed in: pass 6d1419919e1c
+Model: For box E, column (e) is the correct basis, because basis was not reported to the IRS.
+Reviewed in: pass 790975e2b01d
 
 ### 9(g) — Line 9, column (g) totals
 Status: **MATCH**
 
-Model: The code B correction is zero for uncovered entries, leaving only code W. This matches 'enter -0- in column (g)' for box E basis errors.
-Reviewed in: pass 6d1419919e1c
+Model: The B correction is $0 for a non-covered box, and the W amount is added, per the instructions.
+Reviewed in: pass 790975e2b01d
 
 ### 9(h) — Line 9, column (h) totals
 Status: **MATCH**
 
-Model: Sums (d) − (e) + (g) for box E detail entries, per the column (h) instructions.
-Reviewed in: pass 6d1419919e1c
+Model: Column (h) is (d) less (e) plus (g), summed over box E entries.
+Reviewed in: pass 790975e2b01d
 
 ### 10(d) — Line 10, column (d) totals
 Status: **MATCH**
 
-Model: Sums proceeds of box F detail entries. This matches line 10 'Box F or Box L checked'; box L is refused as digital.
-Reviewed in: pass 6d1419919e1c
+Model: Line 10 totals Box F transactions (Box L is refused). Column (d) sums the proceeds.
+Reviewed in: pass 790975e2b01d
 
 ### 10(e) — Line 10, column (e) totals
 Status: **MATCH**
 
-Model: Box F is not covered, so column (e) is the correct basis from records. That is consistent with the instructions.
-Reviewed in: pass 6d1419919e1c
+Model: For box F, column (e) is the correct basis from records.
+Reviewed in: pass 790975e2b01d
 
 ### 10(g) — Line 10, column (g) totals
 Status: **MATCH**
 
-Model: Code B on box F is refused, so (g) is only the wash-sale adjustment. That is consistent with the column (g) instructions.
-Reviewed in: pass 6d1419919e1c
+Model: Code B on box F is refused, so column (g) holds only the W amount, summed.
+Reviewed in: pass 790975e2b01d
 
 ### 10(h) — Line 10, column (h) totals
 Status: **MATCH**
 
-Model: Sums (d) − (e) + (g) for box F detail entries, per the column (h) instructions.
-Reviewed in: pass 6d1419919e1c
+Model: Column (h) is (d) less (e) plus (g), summed over box F entries.
+Reviewed in: pass 790975e2b01d
 
 ### 4 — Line 4: zero only after unsupported source/carryover screening
 Status: **MATCH**
@@ -266,14 +266,14 @@ Model: Line 13 enters total capital gain distributions (Form 1099-DIV box 2a), m
 ### 7 — Combine the amounts for Schedule D line 7
 Status: **MATCH**
 
-Model: Adds lines 1a(h) through 3(h) and lines 4, 5 and 6, with line 6 held as a negative. This matches 'Combine lines 1a through 6 in column (h)'.
-Reviewed in: pass 6d1419919e1c
+Model: The form says 'Combine lines 1a through 6 in column (h)'. The restatement adds the column (h) amounts of lines 1a–3 with lines 4, 5 and 6, and line 6 is held as a negative loss.
+Reviewed in: pass 790975e2b01d
 
 ### 15 — Combine the amounts for Schedule D line 15
 Status: **MATCH**
 
-Model: Adds lines 8a(h) through 10(h) and lines 11–14, with line 14 held as a negative. This matches 'Combine lines 8a through 14 in column (h)'.
-Reviewed in: pass 6d1419919e1c
+Model: The form says 'Combine lines 8a through 14 in column (h)'. The restatement adds lines 8a(h)–10(h) and lines 11–14, and line 14 is held as a negative loss.
+Reviewed in: pass 790975e2b01d
 
 ### 16 — Combine the amounts for Schedule D line 16
 Status: **MATCH**
@@ -314,38 +314,38 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 | line | subject sha256 |
 | --- | --- |
-| 1a(d) | 7787227469e288c247094e959cafce0d3fff7fdd332d66f48977e9068de3e5be |
-| 1a(e) | 8faab2424a1b1392335be37909007f0e27827669618430d5e5eb02afdd94f7e1 |
-| 1a(g) | 769fe9d1946bdcd24329d0a0188151c5372a36df05cfbc70883d0ce1de1fd6ce |
-| 1a(h) | 41556c86d657404043c5ae5ed7ed7f8b5e122abf0d7700707d758cbdc8771fa0 |
-| 1b(d) | 2cfa922ec992e0ae4c464b6eef7f9f25436ac245912bfa640f26c8c58dd7e52e |
-| 1b(e) | 243d6925486c927ecf18e9e836170507557257c738a71c42afbc52bda330482b |
-| 1b(g) | 6cdf4a3559a75677d0f9b7ee0bb4296f57dd45a9fb58122145a4e40da5eda74b |
-| 1b(h) | 9e0aaa4ed88b122fc576dc2b9fc3b9e4cef5d0dc5aa53d19697d6edd6e4221f1 |
-| 2(d) | 626e544b7464834905860e8d57056ee5020cb48f294e85222c89413469f545f4 |
-| 2(e) | bc6e0ad48470dc0be6de3f3a447373ef47bc234c1a6bf7c4057864403bd64965 |
-| 2(g) | 52667e180f69acb7753c1b5f63a4bc2672cf61c110b9ffe55982e46510e6a33d |
-| 2(h) | ddc12db35faff98f4fb60f5f4b764a480e7d507f815f83a5b00fc91cf55c31b1 |
-| 3(d) | 3d1bbc7c4ebb6a2fd2e5be5d08afa48fa43c5948041e05f030f48051b4f075df |
-| 3(e) | c2920f27f02841a69e650c1bed9e47170ecfd091458769d00be3c99b2f248eac |
-| 3(g) | b46a34dc34dca504af9fdde8b077f61cc7f5ba8c476d335beb9c21518ae621bc |
-| 3(h) | 006903b9cba5022102079f043f0d3017274efa748b58f0626a6d49dcf7c248e0 |
-| 8a(d) | b56885b752d8d3f1bd4bdbb2fda1f35f651f60b839b412509f51f01554dc4a33 |
-| 8a(e) | 5440c9182646021cd3dd16ea4faaafd64d537c5fb5dde4db9c3777b57cb3c3c0 |
-| 8a(g) | 143e1502d5cc60d232c0526648719fdda8b1c80d5fbf61a263911d1f0c86c464 |
-| 8a(h) | b073584952008681962c2740a7719d593617cf6ed491e565ac2aad8ade2501c8 |
-| 8b(d) | d91dcc75318a5168141d9441098af8ae99ec85db38002ff62982160e2f702d4f |
-| 8b(e) | 123d9ae79cd6973561b0ce9e6547f2445c061150c6aca68f0cd9d15a6cca70ad |
-| 8b(g) | 82d8b97248bd2509102f1f870c351a8b396b4a5e33ce7fc1bdd963d4c8974e88 |
-| 8b(h) | 66f6d70d1dc65a514085840e6408670d69786b5be0abf299d635d98d9bd04bc2 |
-| 9(d) | e0a70db237f66b4a6693df0de3bf4bb4d1b2259dced1587a0cdf03c46e31704c |
-| 9(e) | d8ae089aee5ba800de7a0d204fe1d94ed5f5b783135ef1bfd7aa084c5229e04f |
-| 9(g) | 6585c51b09bfc2e9a3a65778fd8f40dc03f6d771b10df9b29f23546628f119b7 |
-| 9(h) | ed1de01294f1217a33c05a9c32e79a9cce52e6ad619c6e8daee3ba11bae4044d |
-| 10(d) | cbe503c4e426c9b6b95f112f8c90cdfc53eabfbc898dbfe750b92d3c5dfc557c |
-| 10(e) | 52c425deac01adcdc65636d5f6bbe2d1d1254c08d50d0738ad6df22927fb38cc |
-| 10(g) | a983a2faec9eaf0ca2557fef297b42bb0125cc7aac859dd12f7ad2ce6797044c |
-| 10(h) | 75c7473069b87652e8298a37d746c9a2ab718e8cd96707c37daa57fa282152c0 |
+| 1a(d) | 3bee05cac71f53f3d78d26ecc947f6b8d4a39e3a07c048dbf8c6561261da0cb3 |
+| 1a(e) | dd91e7a1dd80c85ff323decdd4bb8d539743bfa0bdbd49bdc7c7f563763445f0 |
+| 1a(g) | 7729dc65d5eee64c3ddc0023a8076c61bd9ba3aaeddf20236368a06a4e32a9f9 |
+| 1a(h) | 76d0fd19c94dd2674dc9dfd067a38fb1c0369568824cd1feace141efadddff32 |
+| 1b(d) | 0d80e82611214999218549f12740bfaa4960437f08bb1491092b7212db39880a |
+| 1b(e) | 48ceaa71218911e327574465eb9802082ac9e0daa6f2347f4c4494186edea8b1 |
+| 1b(g) | bd6d6ed0b7f99d9eb90ccb85d816396f326bb11bbba6cbcc860caf4ecea12c7b |
+| 1b(h) | faaf5dfe3bc0127faf76d68b3d39cc392fea2fa18125aeaf87c0ea1062ce31ac |
+| 2(d) | d772a1293664eeb806502e1d10580416255ea8f84a838ebc6526cf5aa4c0d595 |
+| 2(e) | cd3592a81ad8d4a3acd16c705de8f926571b25110144c0646fefef1f36e1d1e7 |
+| 2(g) | 78bbc2b4cd507aa20aea002a2529b69e7f46e9086e306c4b60aefb316013aa0f |
+| 2(h) | bc3a118fc2550e059ef4f4f52c8cc2925054f91995ee44249542b66aba69d8ec |
+| 3(d) | 20eec0db6b9f5d8a3e1d35123bb6f1da2b3983b66adb7954c2008ecf0fa8b0c7 |
+| 3(e) | f151c4b82145cee97dec6060df7080e6b89532f0ea9e09dc3131b21498c678de |
+| 3(g) | 09219ae7715e614dcf6f963b0f1b007a2a53c00b87dc4c2e840e296f3d98037b |
+| 3(h) | d4f546067a00d65edbc76372bc1e2577b8391616a1e05714bbe953db5659e72d |
+| 8a(d) | b4134746aaca52f0b6d8dcd91e6d8e5c9469697badd48bcf2465f74a852398f8 |
+| 8a(e) | 282db986e8c73de6ac571187057d76b19c1ca13cbb6a8c48387339a0040badfc |
+| 8a(g) | 2c7d245264d42229c2755688328b669993309f0a109df162c715dece41269a86 |
+| 8a(h) | 015236a2931ff5562b8ea267edda7f5a9c6ac050d7f4115b80550bdb13f131e6 |
+| 8b(d) | 668f55d47f07d496e52df7c5907f350bb87eba75b00526c3974087a164390f6d |
+| 8b(e) | f2ea7e54680ee86ceadc5810eb16b167c51f734e58e8766e1ee39fedfd7825e7 |
+| 8b(g) | 9269902b97764279a2bb50f4189723d1e561d54360111321580a6c496c5ec9e6 |
+| 8b(h) | 9c68703e94e218793ad99367a984ad6603720b42ca7b6bed19e4405af1a52ac6 |
+| 9(d) | 98b830231b4673ce75733ff4794e328562ad5f662b6832645e6d79ef9663a8cd |
+| 9(e) | 8955c31d9eefed98817945f71009ba9eed541fe247a9a6cb752a4714a2c17dae |
+| 9(g) | d64dc1903def1c74cce438fc93f3538018ed1cbaa2d655943cded427b2bff4e7 |
+| 9(h) | 367265e1e0762a7e72071807a191fec220085a941e8b0ec07fa84b1cabae4765 |
+| 10(d) | b2418e70e11bf5216c7757cfb6ec84bdb56d2cbb8a478508126cc0074cd3f07d |
+| 10(e) | b22f066aba03b7649a3688374252aa2128bad7c32780dd8727162da5ddbe3e86 |
+| 10(g) | 72752701757475cc7b0522dd116d8dc3b9133e0ecbe51f94fab1e03bc5903ffd |
+| 10(h) | 31ad9a12544efe55f1459f4d5c1e5f54844bcf6ec5b229dce2316bc702b4089f |
 | 4 | fc140fb363c2880a6ad4044547d651a95f3e0b2331f4c8f24148a188cd5eb60a |
 | 5 | f717c41fbbeaebe05ba5f6d4487fc21983ef8650db4ae4a71665c900956fbedb |
 | 6 | 71e9facbb1accd7b9339b79993aaab8d2829f113250db0b7ee1bdcf2ffae80aa |
@@ -353,8 +353,8 @@ What each compared line's verdict depends on within the document (tools/transcri
 | 12 | 6b73101b3aad0baea3bd1a2ca3d6212077528516b286cb108a32f972c036671e |
 | 14 | 647156c672e55b5f86525437cb48b58f7e69078c9e39ca7e1ba8b729b780c3a6 |
 | 13 | 092e3a4875fe86adf11131745dbc0c146a982515002b44daf6406ee928db9b84 |
-| 7 | e9638d20efdb8776b5d2589678533b9f4b9b11e7097162ebe3721a73d27c9ea1 |
-| 15 | 2b0bca8e8361e2a7eb89f72c426ae7f44a8b0c174636344896ab415bf79212b3 |
+| 7 | dbf8a9a44f37b3cf67dc555dbf48a8664b9a8ebbedfc49924ddb781c800a0110 |
+| 15 | f46e328515e93755eb02d0ea99933ed0d22e405fa0b8c8053db29b66e4cb01f0 |
 | 16 | 0f76ecb634638a67f68c0728370c592d43b31b38b3ccde6dc6c2d7c174edb44e |
 | 17 | 31117d838592d91e2901cdbbbc25ab6ddde06e1f462f23a3d043c8974973312d |
 | 20 | e69c889c4021467127fd0589b3546974c7726f302201f4389749b724db35e7ca |
@@ -366,20 +366,20 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
 
-#### Pass 6d1419919e1c
+#### Pass 790975e2b01d
 
 | field | value |
 | --- | --- |
-| date | 2026-11-04 |
+| date | 2026-11-07 |
 | review scope | lines 1a(d), 1a(e), 1a(g), 1a(h), 1b(d), 1b(e), 1b(g), 1b(h), 2(d), 2(e), 2(g), 2(h), 3(d), 3(e), 3(g), 3(h), 8a(d), 8a(e), 8a(g), 8a(h), 8b(d), 8b(e), 8b(g), 8b(h), 9(d), 9(e), 9(g), 9(h), 10(d), 10(e), 10(g), 10(h), 7, 15 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 6d1419919e1c1551e61173dd905ca370ae49fec742047997cebd9e9432dcb4b1 |
+| prompt sha256 | 790975e2b01d251806ec7900a96a0b7cb849c378d67aa63773d66eba4ffdf4e0 |
 | prompt policy | render-source-comparison-v2+lines-v1 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
-| subject sha256 | e5dd0475ee5085b32f35c6967decaece96ca3b5e204e7d63f30518152395f2e5 |
+| subject sha256 | 329cc96b9d07419958471ec059f8d25fd2da2c05e9915067d6fad57d1b87a01d |
 | receipt | .transcription/sd.render.lines-c9db5685c8a4 |
 | lines judged | 34 |
 | match / mismatch / unclear / missing | 34 / 0 / 0 / 0 |
@@ -402,106 +402,106 @@ Lines reviewed again after a change, each pass by its own isolated request (tran
 lines:
   - key: "1a(d)"
     status: MATCH
-    reason: "Sums proceeds of box A transactions routed to aggregate. This is line 1a's 'short-term transactions reported on Form 1099-B ... for which basis was reported to the IRS and for which you have no adjustments'. Ineligible aggregate entries are refused by sales.bad_aggregate, and Form 1099-DA/digital entries by sales.digital."
+    reason: "Line 1a totals short-term transactions whose basis was reported to the IRS and that need no adjustments. Box A sales on the aggregate route meet this, because bad_aggregate refuses any entry without reported basis, with a code, or with an unconfirmed eligibility. Box G is refused as digital, and column (d) is the reported proceeds."
   - key: "1a(e)"
     status: MATCH
-    reason: "For box A (covered), column (e) is the reported broker basis, summed over aggregate-routed box A entries. This matches line 1a's totals of reported basis."
+    reason: "For box A (basis reported), column (e) is the basis shown on the broker report. The Schedule D example for lines 1a/8a enters exactly that cost or other basis in column (e)."
   - key: "1a(g)"
     status: MATCH
-    reason: "Aggregate entries must have code 'none' or they are refused, so B and W adjustments are zero and this total is zero. That is consistent with line 1a's 'no adjustments'."
+    reason: "Aggregate entries must have code 'none', so both the B correction and the W adjustment are $0. The sum is therefore zero, which fits the IRS condition 'for which you have no adjustments'."
   - key: "1a(h)"
     status: MATCH
-    reason: "Sums per-entry (d) − (e) + (g) over the same entries. This matches 'Subtract column (e) from column (d) and combine the result with column (g)'."
+    reason: "Column (h) is (d) less (e) plus (g), with (g) zero, summed over aggregate box A sales. This matches 'Subtract the cost or other basis in column (e) from the proceeds (sales price) in column (d)'."
   - key: "1b(d)"
     status: MATCH
-    reason: "Sums proceeds of box A entries reported in detail on Form 8949. This matches line 1b 'Box A or Box G checked'; box G digital assets are refused."
+    reason: "Line 1b is the Form 8949 total for transactions with Box A checked (Box G is refused as digital). Column (d) sums the proceeds of box A detail entries."
   - key: "1b(e)"
     status: MATCH
-    reason: "Box A column (e) is the basis shown on the broker report. This matches the Form 8949 note to 'enter in column (e) the basis as reported to the IRS'."
+    reason: "For box A, column (e) is the reported basis even when it is incorrect, as the 8949 instructions require for code B. Adding over the box A detail entries gives the line 2 total that carries to line 1b."
   - key: "1b(g)"
     status: MATCH
-    reason: "Sums the code B correction (reported minus correct basis) and the code W wash-sale loss. This matches the column (g) instructions and the Worksheet for Basis Adjustments; other codes are refused."
+    reason: "Column (g) adds the code B correction, figured as reported basis minus correct basis per the Worksheet for Basis Adjustments, and the code W nondeductible loss as a positive number. Other codes are refused."
   - key: "1b(h)"
     status: MATCH
-    reason: "Sums (d) − (e) + (g) for box A detail entries, as the line 1b column (h) instructions require."
+    reason: "Column (h) is (d) less (e), combined with (g), summed over box A detail entries. This matches the Lines 1b–10 column (h) instructions."
   - key: "2(d)"
     status: MATCH
-    reason: "Sums proceeds of box B entries reported in detail. This matches line 2 'Box B or Box H checked'; box H is refused as digital."
+    reason: "Line 2 totals Form 8949 transactions with Box B checked (Box H is refused as digital). Column (d) sums the proceeds of box B entries."
   - key: "2(e)"
     status: MATCH
-    reason: "Box B is not covered, so column (e) is the correct basis from records. This matches 'If this transaction is reported on Part I with box B ... enter the correct basis in column (e)'."
+    reason: "For box B, basis was not reported, so column (e) is the correct basis. This follows 'enter the correct basis in column (e), and enter -0- in column (g)'."
   - key: "2(g)"
     status: MATCH
-    reason: "The code B correction is zero for uncovered entries, so (g) holds only the wash-sale adjustment. This matches 'enter -0- in column (g)' for code B on box B, plus code W."
+    reason: "The B correction applies only to covered boxes, so it is $0 for box B, and the W amount is added. This is consistent with the code B and code W instructions."
   - key: "2(h)"
     status: MATCH
-    reason: "Sums (d) − (e) + (g) for box B detail entries, per the column (h) instructions."
+    reason: "Column (h) is (d) less (e) plus (g), summed over box B entries."
   - key: "3(d)"
     status: MATCH
-    reason: "Sums proceeds of box C entries reported in detail. This matches line 3 'Box C or Box I checked'; box I is refused as digital."
+    reason: "Line 3 totals Form 8949 transactions with Box C checked (Box I is refused as digital). Column (d) is net proceeds when there is no report."
   - key: "3(e)"
     status: MATCH
-    reason: "Box C is not covered, so column (e) is the correct basis from records. That is consistent with the instructions for transactions without a broker report."
+    reason: "For box C, column (e) is the correct basis from records."
   - key: "3(g)"
     status: MATCH
-    reason: "Code B on box C is refused (sales.bad_code), so (g) is only the wash-sale adjustment. That is consistent with the column (g) instructions."
+    reason: "Code B on box C is refused, so column (g) holds only the W amount. Summing it matches the Form 8949 totals."
   - key: "3(h)"
     status: MATCH
-    reason: "Sums (d) − (e) + (g) for box C detail entries, per the column (h) instructions."
+    reason: "Column (h) is (d) less (e) plus (g), summed over box C entries."
   - key: "8a(d)"
     status: MATCH
-    reason: "Sums proceeds of box D entries routed to aggregate. This matches line 8a's 'long-term transactions reported on Form 1099-B ... basis was reported to the IRS and ... no adjustments'; ineligible entries are refused."
+    reason: "Line 8a is the long-term counterpart of line 1a. It sums the proceeds of box D aggregate-route sales, which are restricted to entries with reported basis and no adjustments."
   - key: "8a(e)"
     status: MATCH
-    reason: "Box D is covered, so column (e) is the reported broker basis, summed over aggregate-routed box D entries. This matches line 8a."
+    reason: "Column (e) is the reported basis for box D, which matches the line 8a example ($2,000 in column (e))."
   - key: "8a(g)"
     status: MATCH
-    reason: "Aggregate eligibility requires code 'none', so this total is zero. That is consistent with line 8a's 'no adjustments'."
+    reason: "Aggregate entries carry no code, so column (g) is zero, consistent with 'no adjustments'."
   - key: "8a(h)"
     status: MATCH
-    reason: "Sums (d) − (e) + (g) over the same entries. This matches the line 8a column (h) computation."
+    reason: "Column (h) is (d) less (e), matching the example '$4,000 ($6,000 − $2,000) in column (h)'."
   - key: "8b(d)"
     status: MATCH
-    reason: "Sums proceeds of box D detail entries. This matches line 8b 'Box D or Box J checked'; box J is refused as digital."
+    reason: "Line 8b totals Form 8949 transactions with Box D checked (Box J is refused). Column (d) sums the proceeds."
   - key: "8b(e)"
     status: MATCH
-    reason: "Box D column (e) is the basis as reported to the IRS. This matches the Form 8949 Part II note."
+    reason: "For box D, column (e) is the reported basis, with any error corrected in column (g)."
   - key: "8b(g)"
     status: MATCH
-    reason: "Sums the code B correction (reported minus correct basis) and the code W adjustment. This matches the column (g) instructions and the Worksheet for Basis Adjustments."
+    reason: "Column (g) adds the code B worksheet correction (reported minus correct basis) and the code W positive amount."
   - key: "8b(h)"
     status: MATCH
-    reason: "Sums (d) − (e) + (g) for box D detail entries, per the column (h) instructions."
+    reason: "Column (h) is (d) less (e) plus (g), summed over box D detail entries."
   - key: "9(d)"
     status: MATCH
-    reason: "Sums proceeds of box E detail entries. This matches line 9 'Box E or Box K checked'; box K is refused as digital."
+    reason: "Line 9 totals Box E transactions (Box K is refused). Column (d) sums the proceeds."
   - key: "9(e)"
     status: MATCH
-    reason: "Box E is not covered, so column (e) is the correct basis. This matches 'reported on Part II with box E ... enter the correct basis in column (e)'."
+    reason: "For box E, column (e) is the correct basis, because basis was not reported to the IRS."
   - key: "9(g)"
     status: MATCH
-    reason: "The code B correction is zero for uncovered entries, leaving only code W. This matches 'enter -0- in column (g)' for box E basis errors."
+    reason: "The B correction is $0 for a non-covered box, and the W amount is added, per the instructions."
   - key: "9(h)"
     status: MATCH
-    reason: "Sums (d) − (e) + (g) for box E detail entries, per the column (h) instructions."
+    reason: "Column (h) is (d) less (e) plus (g), summed over box E entries."
   - key: "10(d)"
     status: MATCH
-    reason: "Sums proceeds of box F detail entries. This matches line 10 'Box F or Box L checked'; box L is refused as digital."
+    reason: "Line 10 totals Box F transactions (Box L is refused). Column (d) sums the proceeds."
   - key: "10(e)"
     status: MATCH
-    reason: "Box F is not covered, so column (e) is the correct basis from records. That is consistent with the instructions."
+    reason: "For box F, column (e) is the correct basis from records."
   - key: "10(g)"
     status: MATCH
-    reason: "Code B on box F is refused, so (g) is only the wash-sale adjustment. That is consistent with the column (g) instructions."
+    reason: "Code B on box F is refused, so column (g) holds only the W amount, summed."
   - key: "10(h)"
     status: MATCH
-    reason: "Sums (d) − (e) + (g) for box F detail entries, per the column (h) instructions."
+    reason: "Column (h) is (d) less (e) plus (g), summed over box F entries."
   - key: "7"
     status: MATCH
-    reason: "Adds lines 1a(h) through 3(h) and lines 4, 5 and 6, with line 6 held as a negative. This matches 'Combine lines 1a through 6 in column (h)'."
+    reason: "The form says 'Combine lines 1a through 6 in column (h)'. The restatement adds the column (h) amounts of lines 1a–3 with lines 4, 5 and 6, and line 6 is held as a negative loss."
   - key: "15"
     status: MATCH
-    reason: "Adds lines 8a(h) through 10(h) and lines 11–14, with line 14 held as a negative. This matches 'Combine lines 8a through 14 in column (h)'."
+    reason: "The form says 'Combine lines 8a through 14 in column (h)'. The restatement adds lines 8a(h)–10(h) and lines 11–14, and line 14 is held as a negative loss."
 ```
 ```
 

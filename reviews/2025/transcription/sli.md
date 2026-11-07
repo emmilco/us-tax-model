@@ -5,7 +5,7 @@ Second transcription of `Student Loan Interest Deduction Worksheet—Schedule 1,
 | field | value |
 | --- | --- |
 | date | 2026-10-22 |
-| line-scoped reviews | 1 (latest 2026-11-04); see Line-scoped reviews |
+| line-scoped reviews | 1 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 4ba7aa15f66ede9994f45c36c46d6906223df273c128f02daa15a0f90fef6db0 |
@@ -37,14 +37,14 @@ Second:
 {"alternatives": [{"guard": {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": "mfs"}, {"ref": "f1040.status"}], "test": "ne"}, "then": {"line": "9"}}], "op": "choose"}
 ```
 
-Second transcription's note: The deduction is the worksheet's line 9. Line 21 allows the deduction only for a filing status other than married filing separately, and this line returns zero for that status. The Exception says to use Pub. 970 instead of the worksheet if you file Form 2555 or 4563 or exclude Puerto Rico income; this line refuses for that through sa.excluded_income. The IRS text also requires that neither you nor your spouse (if filing jointly) is claimed as a dependent on someone else's return. The closed input interface has no line that answers that question: sa.dependent asks whether someone can claim you, which is a different question. So this condition is not encoded and must be met outside this slice. The modified AGI condition (less than $100,000 or $200,000) is already enforced by lines 5 to 8, because line 7 is capped at 1.000 and line 8 then equals line 1.
+Second transcription's note: The line 21 instructions allow the deduction only if 'your filing status is any status except married filing separately'. For MFS the deduction is zero; otherwise it is worksheet line 9. The modified AGI limit ($100,000 / $200,000) is enforced by worksheet lines 5 to 8, where the ratio reaches 1.000 and line 9 becomes zero. The instructions also require that you (or your spouse if filing jointly) are not claimed as a dependent on someone else's 2025 return. The only related input, sa.dependent, asks whether someone 'can claim' you, which is broader than 'claimed', so it is not used. That condition is not encoded and is recorded here as a limitation.
 
-Ruling: model error; same reply and project as the round-2 ruling. i1040gi p. 98, Line 21: "You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's ... 2025 tax return." The reply refuses on sa.dependent (who can be claimed) where the source and the project (sli.claimed_count, person.sav_claimed) test being claimed. Scratch run of triage.mjs on the round-3 reply (.transcription/sli.lines-b2eae3131c48) over the project's other lines (1,578 fixtures, 500 generated returns seed 20261026, 40 partial records; 2,118 comparisons per line): 1,709 agree; no completed-return difference (367 candidate refusals on refused returns, the rest unknowns on incomplete returns). The round-3 sli.interest wording fix (loan repayment assistance) does not bear on it. Project stands.
-Reviewed in: pass ccd4e7366637
+Ruling: model error; same reply and project as the round-2 and round-3 rulings. i1040gi p. 98, Line 21: "You, or your spouse if filing jointly, aren't claimed as a dependent on someone else's ... 2025 tax return." The reply refuses on sa.dependent (who can be claimed) where the source and the project (sli.claimed_count, person.sav_claimed) test being claimed. Triage executable-triage-v2 (reviews/2025/transcription/triage/sli.json; 1,638 fixtures, 500 generated returns seed 20261026, 40 partial records): the candidate declaration is invalid on this pass's scoped interface (candidate-invalid on all 2,178 records), so no value is compared. The R3 restructuring of sli.interest kept its words (word check: none lost). Project stands.
+Reviewed in: pass 147f25f1166e
 
 ### 1 — Enter the total interest you paid in 2025 on qualified student loans (see the instructions
 Status: **AGREE**
-Reviewed in: pass ccd4e7366637
+Reviewed in: pass 147f25f1166e
 
 ### 2 — Enter the amount from Form 1040 or 1040-SR, line 9
 Status: **AGREE**
@@ -138,6 +138,7 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | line | gates listed | not read by the project's line |
 | --- | --- | --- |
 | sli.deduction | sa.excluded_income | - |
+| 1 | sa.excluded_income | - |
 | 9 | sa.excluded_income | - |
 
 ## Line subjects
@@ -146,8 +147,8 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 | line | subject sha256 |
 | --- | --- |
-| sli.deduction | 21399e2a68cd4950bb2e61cb904514e0fc94ee2bc06b6ee10846162f2296706c |
-| 1 | 60db0e3314dd9d8d9445c286fc995295bcbb5bff3a694cf31b1b555cf5933468 |
+| sli.deduction | e510e998d17fa197cdf50db53efa20d06379788a84dcbfc8776a2fd9176bb10f |
+| 1 | 14f6e6e5ef6247b19ad2cc842ee75ae62cc347165052596c02dafcd1794de6d7 |
 | 2 | 03b76842d0b2c01ed25446bb350441f94e4e87fe6f19ca18a3ea8ee9d0f06a4d |
 | 3 | 3a2f5cd698d5de7f0de48e3a76ddcbbd07c2f0b49b90c745ef539cc95ad9986d |
 | 4 | 7525f5f108db9d3ec62d4c245aeea6b7186ca4e6c389a61b6e16750c48e330f2 |
@@ -170,27 +171,27 @@ The interfaces (id, printed marker, type, input question) of other documents' li
 
 Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
 
-#### Pass ccd4e7366637
+#### Pass 147f25f1166e
 
 | field | value |
 | --- | --- |
-| date | 2026-11-04 |
+| date | 2026-11-07 |
 | review scope | lines sli.deduction, 1 |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | ccd4e736663700bb7103cd3c88d9382dbfe473308efbc4b64f4e793e1b50ead3 |
-| prompt policy | source-only-computation-v3+lines-v1 |
+| prompt sha256 | 147f25f1166e8f1a863ff8ec6e69821b163a6b712b552b828d544e55211b208b |
+| prompt policy | source-only-computation-v3+lines-v2 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
 | complete input context | pass |
-| required input context sha256 | 44e4d561295e5a7e836b4ff99f303cd9ce40fdf111376f44c0ad8818c2b48bbc |
+| required input context sha256 | 9759c4963136f3ba645f147b0fc946a9253f5996f15a60e999413c3394a8db8d |
 | type validation policy | project-expression-types-v3 |
 | model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 04481cafa1b7d4d1f4b9d71f66584716defecf410c35a60d23079e188c97e84b |
+| subject sha256 | eeb8294e1e9aee10b8887a58bcfa3b94381c081e71f47e7b6d76ee479b20af5a |
 | receipt | .transcription/sli.lines-b2eae3131c48 |
 | printed lines compared | 2 |
 | agree / disagree / missing | 1 / 1 / 0 |
@@ -210,7 +211,10 @@ Chosen from the source pages above (catalog_selection); refusal-gate inputs are 
 | reason | documents |
 | --- | --- |
 | definition | aqee, se, tax_on_amount, tcw |
-| named form | dependent, f1040, f8606, household, sa, scope |
+| named form, inputs and named lines: f1040.line25b, f1040.line25c_other, f1040.line26, f1040.line35a, f1040.line36, f1040.line3a, f1040.line9, f1040.status, f1040.tax_exempt_interest | f1040 |
+| named form, inputs and named lines: household.community_property, household.cp_married, household.credit_disallowed, household.home_cost, household.married, household.qss_eligible, household.rdp, household.spouse_died_2025, household.unmarried | household |
+| named form, inputs and named lines: sa.charity_limited, sa.dependent, sa.elect_itemize, sa.excluded_income, sa.gambling_losses, sa.line1, sa.line11, sa.line5a, sa.line5b, sa.line5c, sa.line8a, sa.spouse_extra, sa.spouse_itemizes, sa.unsupported | sa |
+| named form, inputs and named lines: scope.credits, scope.other_income, scope.other_line16, scope.schedule1 | scope |
 | named line | f8960, interest, s8812, sc |
 | shared page | ira, person, s1 |
 
@@ -219,33 +223,27 @@ Chosen from the source pages above (catalog_selection); refusal-gate inputs are 
 ```yaml
 ```yaml
 lines:
+  - id: sli.h_max
+    printed: "(helper)"
+    label: "Don't enter more than $2,500"
+    type: NonNegDollars
+    expr: {op: param, ref: sli.max}
   - id: sli.line1
     printed: "1"
     label: "Enter the total interest you paid in 2025 on qualified student loans (see the instructions for line 21). Don't enter more than $2,500"
     type: NonNegDollars
-    expr:
-      op: smaller_of
-      of: [sli.interest, sli.h_max]
-    cite: "i1040gi 2025, p. 99, Student Loan Interest Deduction Worksheet, line 1"
-  - id: sli.h_max
-    printed: "(helper)"
-    label: "$2,500 limit on line 1"
-    type: NonNegDollars
-    expr:
-      op: param
-      ref: sli.max
-    cite: "i1040gi 2025, p. 99, Student Loan Interest Deduction Worksheet, line 1 (\"Don't enter more than $2,500\")"
+    expr: {op: smaller_of, of: [sli.interest, sli.h_max]}
+    refuses: [sa.excluded_income]
+    note: "The Exception in the line 21 instructions sends filers of Form 2555 or 4563, and those excluding income from sources within Puerto Rico, to Pub. 970 instead of this worksheet. The screening input sa.excluded_income asks exactly that question, so line 1 refuses on it."
   - id: sli.h_zero
     printed: "(helper)"
-    label: "Zero, no deduction when married filing separately"
+    label: "Zero (no student loan interest deduction)"
     type: NonNegDollars
-    expr:
-      op: param
-      ref: ss.zero
-    cite: "i1040gi 2025, p. 98, Line 21 (\"Your filing status is any status except married filing separately\")"
+    expr: {op: param, ref: ss.zero}
+    note: "No zero-valued sli parameter is supplied. This uses the zero-valued money parameter ss.zero."
   - id: sli.deduction
     printed: "(helper)"
-    label: "Student loan interest deduction (Schedule 1, line 21)"
+    label: "Student loan interest deduction (worksheet line 9, entered on Schedule 1, line 21)"
     type: NonNegDollars
     expr:
       op: choose
@@ -255,8 +253,7 @@ lines:
         - guard: {op: test, ne: [f1040.status, {const: "mfs"}]}
           then: sli.line9
     refuses: [sa.excluded_income]
-    cite: "i1040gi 2025, p. 98, Line 21 (eligibility conditions and Exception); p. 99, worksheet line 9 (\"Enter the result here and on Schedule 1, line 21\")"
-    note: "The deduction is the worksheet's line 9. Line 21 allows the deduction only for a filing status other than married filing separately, and this line returns zero for that status. The Exception says to use Pub. 970 instead of the worksheet if you file Form 2555 or 4563 or exclude Puerto Rico income; this line refuses for that through sa.excluded_income. The IRS text also requires that neither you nor your spouse (if filing jointly) is claimed as a dependent on someone else's return. The closed input interface has no line that answers that question: sa.dependent asks whether someone can claim you, which is a different question. So this condition is not encoded and must be met outside this slice. The modified AGI condition (less than $100,000 or $200,000) is already enforced by lines 5 to 8, because line 7 is capped at 1.000 and line 8 then equals line 1."
+    note: "The line 21 instructions allow the deduction only if 'your filing status is any status except married filing separately'. For MFS the deduction is zero; otherwise it is worksheet line 9. The modified AGI limit ($100,000 / $200,000) is enforced by worksheet lines 5 to 8, where the ratio reaches 1.000 and line 9 becomes zero. The instructions also require that you (or your spouse if filing jointly) are not claimed as a dependent on someone else's 2025 return. The only related input, sa.dependent, asks whether someone 'can claim' you, which is broader than 'claimed', so it is not used. That condition is not encoded and is recorded here as a limitation."
 ```
 ```
 

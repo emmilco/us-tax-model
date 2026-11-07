@@ -32,6 +32,15 @@
   {
    "printed": "(e)",
    "restated": "Choose — [helper \"Basis reported to IRS\" = true → helper \"Basis shown on broker report\"] [helper \"Basis reported to IRS\" = false → helper \"Correct adjusted basis from records (cost; the donor's basis for a gift; for inherited property, value at death or on an elected alternate valuation date or special-use value, within the Schedule A (Form 8971) final estate tax value where it applies; the basis of property from a trade, from a spouse or incident to divorce, or received for services), with the adjustments to basis\"]",
+   "model": "The helper \"Basis reported to IRS\" is true only for boxes A and D, so G and J digital-asset rows with basis reported get the correct basis in column (e). The IRS says that for a transaction reported \"on Part I with box A or box G checked ... or ... on Part II with box D or box J checked ... enter the basis shown on Form 1099-B or Form 1099-DA (or substitute statement) in column (e), even though that basis is incorrect.\" For boxes B/E/H/K and C/F/I/L, entering the correct basis matches the instructions.",
+   "ruling": "Ruling: scope; same objection as the earlier rulings (boxes G and J). f8949 p. 1, box G: \"Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\"; i8949 p. 8, code B. The helper is true only for boxes A and D because boxes G to L are refused at the transaction: sales.one refuses when sales.digital (\"Digital asset box G–L\"), and the refusal reaches every Schedule D total and Form 1040 line 7a (fixture sales.refuse.digital.G). Within boxes A to F the condition reads as the instructions do. The R3 restructuring of the sales questions changed the glossary text, not this line. Project stands on the English.",
+   "context": "775f1cbcb18729919e66d89c28055001aa89a70c05911323173d5c5e97d33612",
+   "date": "2026-11-07",
+   "run": "152ad99fefe1ba8e0bb4167aacb6dbd157501d9619908c0c4277b6c9e8c56d1f"
+  },
+  {
+   "printed": "(e)",
+   "restated": "Choose — [helper \"Basis reported to IRS\" = true → helper \"Basis shown on broker report\"] [helper \"Basis reported to IRS\" = false → helper \"Correct adjusted basis from records (cost; the donor's basis for a gift; for inherited property, value at death or on an elected alternate valuation date or special-use value, within the Schedule A (Form 8971) final estate tax value where it applies; the basis of property from a trade, from a spouse or incident to divorce, or received for services), with the adjustments to basis\"]",
    "model": "The helper \"Basis reported to IRS\" is true only for boxes A and D, so a digital-asset transaction in box G or J gets the correct basis instead of the broker's. The IRS says: \"If this transaction is reported on Part I with box A or box G checked ... or on Part II with box D or box J checked ... enter the basis shown on Form 1099-B or Form 1099-DA (or substitute statement) in column (e), even though that basis is incorrect.\"",
    "ruling": "Ruling: scope; as the earlier ruling of this round, the same objection. same restatement and objection as the refresh-round ruling. f8949 p. 1, box G: \"Short-term transactions reported on Form(s) 1099-DA showing basis was reported to the IRS\"; i8949 p. 8, code B. Boxes G to L are refused at the transaction (sales.one refuses on sales.digital), so the reported-basis branch for A and D is the whole supported case. Project stands.",
    "context": "d2ef8da95a9bf6de16460609dc5e30f30e799344cb30173a40f7436f51501ef2",
@@ -157,6 +166,15 @@
    "model": "The reported-minus-correct sign and netting with code W match the worksheet for boxes A and D, but code B gets $0 for boxes G and J, where the IRS says to \"Correct the error by entering an adjustment in column (g)\" (no refusal is shown). The \"other\" code also yields $0 with no refusal, although code O says \"Enter the appropriate adjustment amount in column (g).\"",
    "ruling": "Ruling: scope; i8949 p. 8, code B; i8949 pp. 7–11, columns (f) and (g). Boxes G and J are refused with every digital-asset box (see column (e)), so the A/D condition of the basis correction is the whole supported case. Codes other than B and W are refused: sales.one refuses when sales.bad_code (\"Only applicable B and W adjustments are supported\"), and the refusal reaches the Schedule D totals and Form 1040 (checked: sales.refuse.code gives sd.line15, f1040.line7a and f1040.line16 refused on sales.bad_code while the row's own column (g) shows $0.00). Project stands on the English.",
    "context": "d829736289280eae82c0ce4298c24619149d4c3aecf982a3a88c5bc6e9052566"
+  },
+  {
+   "printed": "(g)",
+   "restated": "Add helper \"Basis correction in column (g)\" and helper \"Wash-sale adjustment in column (g)\".",
+   "model": "The sum of the code B difference (reported minus correct, matching worksheet lines 3–4) and the positive wash-sale loss matches \"enter the net adjustment in column (g).\" But the code B part is gated on \"Basis reported to IRS\", which leaves out boxes G and J, so those rows get $0 instead of the adjustment. The IRS requires: \"box A or box G ... box D or box J ... Correct the error by entering an adjustment in column (g).\"",
+   "ruling": "Ruling: scope; same objection as the earlier rulings (boxes G and J). i8949 p. 8, code B: \"Correct the error by entering an adjustment in column (g)\". The code B part is gated on boxes A and D because boxes G to L are refused at the transaction: sales.one refuses when sales.digital (\"Digital asset box G–L\"), and the refusal reaches every Schedule D total and Form 1040 line 7a (fixture sales.refuse.digital.G); the sum of the code B correction and the code W wash-sale loss is the net adjustment the model accepts. Project stands on the English.",
+   "context": "775f1cbcb18729919e66d89c28055001aa89a70c05911323173d5c5e97d33612",
+   "date": "2026-11-07",
+   "run": "152ad99fefe1ba8e0bb4167aacb6dbd157501d9619908c0c4277b6c9e8c56d1f"
   }
  ]
 }

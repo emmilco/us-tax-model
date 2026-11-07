@@ -5,7 +5,7 @@ Second transcription of `Schedule C (Form 1040) — Profit or Loss From Business
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
-| line-scoped reviews | 1 (latest 2026-11-04); see Line-scoped reviews |
+| line-scoped reviews | 1 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 038fcfca2ef7325734be7c3a4aad6c021f885fd3e5e63244d31b77bd2e175a67 |
@@ -90,13 +90,13 @@ Project:
 Second:
 
 ```json
-{"from": {"line": "7 (sc.line7)"}, "op": "subtract", "take": {"of": [{"of": [{"line": "10 (sc.line10)"}, {"line": "11"}, {"line": "12 (sc.line12)"}, {"line": "14 (sc.line14)"}, {"line": "15"}, {"line": "16a"}, {"line": "16b"}, {"line": "17"}, {"line": "18"}, {"line": "19"}, {"line": "20a"}, {"line": "20b"}, {"line": "21"}, {"line": "22"}, {"line": "23"}, {"line": "24a"}, {"line": "24b"}, {"line": "25"}, {"line": "26"}, {"line": "27a"}, {"line": "27b"}, {"line": "8 (sc.line8)"}, {"line": "9 (sc.line9)"}], "op": "sum"}, {"of": [{"collection": "f4562", "field": "f4562.line14", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line17", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line19a", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line19b", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line19c", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line19d", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line19e", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line19f", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line21", "op": "sum_over", "where": null}], "op": "sum"}], "op": "sum"}}
+{"from": {"from": {"line": "7 (sc.line7)"}, "op": "subtract", "take": {"of": [{"line": "10 (sc.line10)"}, {"line": "11"}, {"line": "12 (sc.line12)"}, {"line": "14 (sc.line14)"}, {"line": "15"}, {"line": "16a"}, {"line": "16b"}, {"line": "17"}, {"line": "18"}, {"line": "19"}, {"line": "20a"}, {"line": "20b"}, {"line": "21"}, {"line": "22"}, {"line": "23"}, {"line": "24a"}, {"line": "24b"}, {"line": "25"}, {"line": "26"}, {"line": "27a"}, {"line": "27b"}, {"line": "8 (sc.line8)"}, {"line": "9 (sc.line9)"}, {"of": [{"collection": "f4562", "field": "f4562.line14", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line17", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line19a", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line19b", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line19c", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line19d", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line19e", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line19f", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line21", "op": "sum_over", "where": null}], "op": "sum"}], "op": "sum"}}, "op": "subtract", "take": {"alternatives": [{"guard": {"args": [{"const": false}, {"line": "(screen)"}], "test": "eq"}, "then": {"const": 0}}, {"guard": {"args": [{"const": true}, {"line": "(screen)"}], "test": "eq"}, "then": {"from": {"of": [{"line": "4 (sc.ho_line4)"}, {"from": {"line": "7 (sc.line7)"}, "op": "subtract", "take": {"of": [{"line": "10 (sc.line10)"}, {"line": "11"}, {"line": "12 (sc.line12)"}, {"line": "14 (sc.line14)"}, {"line": "15"}, {"line": "16a"}, {"line": "16b"}, {"line": "17"}, {"line": "18"}, {"line": "19"}, {"line": "20a"}, {"line": "20b"}, {"line": "21"}, {"line": "22"}, {"line": "23"}, {"line": "24a"}, {"line": "24b"}, {"line": "25"}, {"line": "26"}, {"line": "27a"}, {"line": "27b"}, {"line": "8 (sc.line8)"}, {"line": "9 (sc.line9)"}, {"of": [{"collection": "f4562", "field": "f4562.line14", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line17", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line19a", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line19b", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line19c", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line19d", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line19e", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line19f", "op": "sum_over", "where": null}, {"collection": "f4562", "field": "f4562.line21", "op": "sum_over", "where": null}], "op": "sum"}], "op": "sum"}}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"const": 0}}}], "op": "choose"}}
 ```
 
-Second transcription's note: Pub. 946 and the Form 4562 line 11 instructions say to figure business taxable income without regard to any section 179 expense deduction. Adding the allowed section 179 amount back to line 31 would make this line depend on itself, because line 13 includes the allowed deduction, which is limited by this income. Instead the line is figured as line 7 less every Part II expense except line 13, and less line 13's depreciation other than section 179 (Form 4562 lines 14, 17, 19(g) and 21). Lines 15 and 16 of Form 4562 are not in the catalog and are taken to be out of scope. The pages do not settle whether the line 30 home office deduction is subtracted before the section 179 income limit. Its gross income limitation (Simplified Method Worksheet line 1) is itself figured from the post-179 profit, so line 30 is not subtracted here. The result is line 29 without the section 179 deduction.
+Second transcription's note: Open point: the IRS pages do not define this interface. It is read as the business income Form 4562 line 11 needs: line 31 'computed without regard to any section 179 expense deduction' (i4562 line 11; Pub. 946 Business Income Limit). The simplified home-office gross income limitation also depends on line 29. Pub. 946's 'Two different taxable income limits' steps leave open whether that deduction is first figured on a hypothetical section 179 amount. The reading chosen is Pub. 946 Step 1: figure the home-office amount on line 29 without the section 179 deduction, then subtract it. This also avoids a circular dependency on line 13. At-risk and passive-activity adjustments to line 31 are left to the line 31 encoding.
 
-Ruling: model error; p946 p. 19, Two different taxable income limits: "Figure taxable income without the section 179 deduction or the other deduction" ... "Subtract the hypothetical other deduction figured in Step 4 from the taxable income figured in Step 1. 6 Figure your actual section 179 deduction using the taxable income figured in Step 5." The business income limit is figured after the home office deduction, which has its own income limit. The reply no longer subtracts line 30 (its note: the pages do not settle it), so it overstates the limit by the home office deduction whenever a business claims one; the project subtracts sc.line30 and refuses where the two limits could bind together (sc.ho_both_limits). Its Form 4562 terms (lines 14, 17, 19a to 19f and 21) replace the refresh round's inherited vehicle term, which no longer applies. Project stands.
-Reviewed in: pass 7ac1cf00e90d
+Ruling: model error; i4562 p. 5, Line 11, and p946 p. 19, Business Income Limit: the limit is figured without regard to the section 179 deduction only, so a vehicle's special allowance and MACRS depreciation stay deducted. The reply's vehicle terms come through its Form 4562 lines 14, 17, 19a to 19f and 21, which do not carry the project's per-vehicle amounts (scveh.bonus, scveh.macrs): on stage14.veh.suv_179 it leaves out the SUV's $38,700.00 of allowance and MACRS ($161,300.00 project, $200,000.00 reply), and its completed-return refusals and unknowns sit on scveh.low_use and scveh.miles_commuting, which the project does not need for a standard-mileage vehicle. Triage executable-triage-v2 (reviews/2025/transcription/triage/sc.json; 1,638 fixtures, 500 generated returns seed 20261026, 2092 partial records): 2,878 of 3,305 comparisons agree; on completed returns 30 candidate-refuses, 14 candidate-unknown and 1 value difference (stage14.veh.suv_179); the rest on refused or incomplete returns, where the project refuses on sc.ho_both_limits and sc.ho_multi. Project stands.
+Reviewed in: pass 0abdf7c28432
 
 ### sc.result — The amount for Schedule 1, line 3 and Schedule SE, line 2
 Status: **DISAGREE**
@@ -341,6 +341,7 @@ Ruling: model error; the line itself matches the project's reading, but it inher
 
 ### 3 (sc.line3) — Subtract line 2 from line 1
 Status: **AGREE**
+Reviewed in: pass 0abdf7c28432
 
 ### 4 (sc.line4) — Cost of goods sold (from line 42)
 Status: **AGREE**
@@ -390,7 +391,7 @@ Status: **AGREE**
 
 ### 28 — Total expenses before expenses for business use of home. Add lines 8 through 27b
 Status: **AGREE**
-Reviewed in: pass 7ac1cf00e90d
+Reviewed in: pass 0abdf7c28432
 
 ### 29 — Tentative profit or (loss). Subtract line 28 from line 7
 Status: **AGREE**
@@ -467,10 +468,10 @@ Second:
 {"from": {"of": [{"line": "1 (sc.ho_line1)"}, {"line": "4 (sc.ho_line4)"}], "op": "smaller_of"}, "op": "subtract_floor0", "take": {"const": 0}}
 ```
 
-Second transcription's note: The Simplified Method Worksheet is completed only by simplified method filers (Schedule C line 30 instructions); the line is shown when the business claims the home deduction and none of the situations outside the simplified method (sc.ho_other) applies.
+Second transcription's note: The worksheet is used only by filers who elect the simplified method for this home, so the line is shown only when a home-office deduction is claimed (sc.ho_uses). Cases needing Form 8829 or a special allocation (sc.ho_other) are refused here. This assumes sc.ho_other is answered whenever sc.ho_uses is true.
 
-Ruling: scope; i1040sc p. 12, Simplified Method Worksheet, line 5, "Enter the smaller of line 1 or line 4". In this line-scoped pass the reply's line 5 is the smaller of the project's own lines 1 and 4 (floored at zero), the project's value wherever it computes; the project refuses where the gross income limit and the section 179 business income limit could bind together (sc.ho_both_limits; p946 p. 19, Two different taxable income limits, Steps 1 to 8, cited). The refresh round's model error came from the reply's own line 1 and Form 4562 terms, which this pass does not carry. Project stands.
-Reviewed in: pass 7ac1cf00e90d
+Ruling: scope; same reply and project as the earlier ruling. i1040sc p. 12, Simplified Method Worksheet, line 5, "Enter the smaller of line 1 or line 4". The reply's line 5 is the smaller of the project's lines 1 and 4 (floored at zero), the project's value wherever both compute. Triage executable-triage-v2 (reviews/2025/transcription/triage/sc.json; 1,638 fixtures, 500 generated returns seed 20261026, 2092 partial records): 2,602 of 3,305 comparisons agree; on completed returns 41 candidate-refuses and 5 candidate-unknown, all through the reply's line 1 terms (scveh.low_use, scveh.miles_commuting, as at sc.line31_pre179), and 2 project-refuses on sc.ho_both_limits (p946 p. 19, Two different taxable income limits). Project stands.
+Reviewed in: pass 0abdf7c28432
 
 ### 30 — Expenses for business use of your home
 Status: **AGREE**
@@ -706,9 +707,9 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 
 | line | gates listed | not read by the project's line |
 | --- | --- | --- |
+| sc.line31_pre179 | sc.ho_other | sc.ho_other |
 | sc.result | sc.h_atrisk_bad, sc.h_ho_refuse, sc.h_not_material, sc.h_sqft_bad, sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned, sc.statutory | sc.h_atrisk_bad, sc.h_ho_refuse, sc.h_not_material, sc.h_sqft_bad, sc.method_other, sc.special, sc.spouse_owned, sc.statutory |
 | sc.profit_pos | sc.h_atrisk_bad, sc.h_ho_refuse, sc.h_not_material, sc.h_sqft_bad, sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned, sc.statutory | sc.h_atrisk_bad, sc.h_ho_refuse, sc.h_not_material, sc.h_sqft_bad, sc.method_other, sc.special, sc.spouse_owned, sc.statutory |
-| 3 (sc.line3) | sc.method_other, sc.special, sc.spouse_owned, sc.statutory | sc.method_other, sc.special, sc.spouse_owned, sc.statutory |
 | 4 (sc.line4) | sc.inventory_other | - |
 | 5 (sc.line5) | sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned, sc.statutory | sc.method_other, sc.special, sc.spouse_owned, sc.statutory |
 | 7 (sc.line7) | sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned, sc.statutory | sc.method_other, sc.special, sc.spouse_owned, sc.statutory |
@@ -716,6 +717,7 @@ Reported, not judged: the project often refuses before a worksheet is used, on t
 | 27a | sc.special | sc.special |
 | 29 | sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned, sc.statutory | sc.method_other, sc.special, sc.spouse_owned, sc.statutory |
 | 1 (sc.ho_line1) | sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned, sc.statutory | sc.method_other, sc.special, sc.spouse_owned, sc.statutory |
+| 5 (sc.ho_line5) | sc.ho_other | sc.ho_other |
 | 30 | sc.h_ho_refuse, sc.h_sqft_bad, sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned, sc.statutory | sc.h_ho_refuse, sc.h_sqft_bad, sc.method_other, sc.special, sc.spouse_owned, sc.statutory |
 | 31 | sc.h_atrisk_bad, sc.h_ho_refuse, sc.h_not_material, sc.h_sqft_bad, sc.inventory_other, sc.method_other, sc.special, sc.spouse_owned, sc.statutory | sc.h_atrisk_bad, sc.h_ho_refuse, sc.h_not_material, sc.h_sqft_bad, sc.method_other, sc.special, sc.spouse_owned, sc.statutory |
 | 42 | sc.inventory_other | - |
@@ -737,7 +739,7 @@ What each compared line's verdict depends on within the document (tools/transcri
 | --- | --- |
 | sc.one | fe4b914540c0f913191b74b151756095faeea720fe15ae78b479179be072cc04 |
 | sc.rrta | 2f5f806f5ca5f2553486468b22750b9d07c58f257697cf3979fab7fe098784b8 |
-| sc.line31_pre179 | 1094e277bc7846707b39162a1f770fd5887978490e2a1dcd122089ab12522805 |
+| sc.line31_pre179 | 239f1874b909c1ef20f6f235cd16e25084829a38d9969fab113afdc78365c9b2 |
 | sc.result | b6e9aa54038da0677b8de23c9e5e1c97625c3f358996d4892913e3bf2d6aefb6 |
 | sc.f6 | bfc18eca73cf34f81309b71bad47ac1d8a61f308ee17fa67714fd48dffcfe594 |
 | sc.f14 | 9cc2aa405efb6044418c3dc79e3456817190c4ab21b86838a86091f1b52f36d6 |
@@ -757,7 +759,7 @@ What each compared line's verdict depends on within the document (tools/transcri
 | sc.mq_total | 8fffb3718207a976666fec05c4d838d71dfe57e342398c8c51ab7cd6f81de5a5 |
 | sc.cost179 | 16b87f1be299748b61d29f032baf97b674ca4cb68ad633cc75fe209405ca7d17 |
 | sc.profit_pos | f8643c070bbe59001d28cdc7c669edafa0cdb42ea8970dbaa86ed124702a764c |
-| 3 (sc.line3) | 50304f2f3a35f9efe9335f4e71e8e7bfd480274ef02fd3747db977b10641eb0b |
+| 3 (sc.line3) | 7f944b46d75cd47cd2377f9a74e8ce8ed53fbcad42a96c9445e510f4c20c792b |
 | 4 (sc.line4) | 7bd4b774295ebb6907a73453b94e3cafbd8443e8b7f82eae3bd48576d59b5abe |
 | 5 (sc.line5) | 2a876599a38c0e45f4ccade66e1189a489827ebc4cc3945cfc862edf3c0bb799 |
 | 7 (sc.line7) | 09eae94478e71d8e240d442e9d9774723b9003fed0741bd2ab34184e75ef219f |
@@ -768,12 +770,12 @@ What each compared line's verdict depends on within the document (tools/transcri
 | 24b | 65cda2d8033663a64b2db03f16d8211f7c3b62e98dae51ea182521fb6e61a9ae |
 | 27a | 47b043e2748f6706b79d43cd1c0ea62233a0e213a6f86c70822a61b53167c899 |
 | 27b | 50ec5e742de63c33ca3899be73813729399db4b7d036f67ee59d47120353be71 |
-| 28 | 7d61ca82978d3b9551bb8c0272f19adf7364d5da16c23e1851678f4612c83e1a |
+| 28 | f9bdbc8780fe1fa7d92b7736c60efd24243f2dfac61ba763dc319448b7e7a098 |
 | 29 | 0b62b218b5c7e33b5758f98a66818e155ff0a13f2f7ad2fefb693002c1eed2e8 |
 | 3a | bc13ad2a70d877c3e8538eb29c02b2efc099c85cc31be64927b7d5c1a3b93745 |
 | 4 (sc.ho_line4) | f0956dae29a6d49fe91ee3841c5289e873b992980f0fd075a1ff631070959048 |
 | 1 (sc.ho_line1) | 1ac8efe49ede6d2b7aab8c11dd93b36f03fc0474940e78d9a06ab0849ac58779 |
-| 5 (sc.ho_line5) | b6947f6f4e9ba2da61757798aa0383266ab4fd7cd2caf6ea2a93d6fc88db2b9b |
+| 5 (sc.ho_line5) | b2a42a35f84f5c192b62d29f875b85f40093c7fd878a989e004861a5b55474fa |
 | 30 | 732d99153efd1c9b5ca55f8a292da87f235638a3a0b397bc834246b2c4833cf4 |
 | 31 | 460df8d8e36833bfe9e443e8476eb1325910936c32d8279f8813916ef3e52e3a |
 | 40 | bd7875b8014cedfae32a780f455d5f5857821a0b5a45f65c07e87513b8943dce |
@@ -799,6 +801,7 @@ The interfaces (id, printed marker, type, input question) of other documents' li
 | line | foreign interfaces sha256 |
 | --- | --- |
 | sc.line31_pre179 | 5c25ef9a6fc854a28341a3a38deec33f4235de7444d9e90bc27e6ce18033b0d3 |
+| 3 (sc.line3) | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
 | 28 | 4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945 |
 | 5 (sc.ho_line5) | 5457a77866ed383628b777cb114e19d04fb993540a3573c354370d275a02d44f |
 
@@ -806,30 +809,30 @@ The interfaces (id, printed marker, type, input question) of other documents' li
 
 Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
 
-#### Pass 7ac1cf00e90d
+#### Pass 0abdf7c28432
 
 | field | value |
 | --- | --- |
-| date | 2026-11-04 |
-| review scope | lines sc.line31_pre179, 28, 5 (sc.ho_line5) |
+| date | 2026-11-07 |
+| review scope | lines sc.line31_pre179, 3 (sc.line3), 28, 5 (sc.ho_line5) |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
-| prompt sha256 | 7ac1cf00e90d1f9bae96723e71b1239dd88a4734fd4c056e8508e13d97991860 |
-| prompt policy | source-only-computation-v3+lines-v1 |
+| prompt sha256 | 0abdf7c284329d24831eef07ad03cc6b0f25a37ff4a7586abac33c011416ecf6 |
+| prompt policy | source-only-computation-v3+lines-v2 |
 | comparison policy | checked-expression-types-v2 |
 | input context policy | required-review-interfaces-v2 |
 | complete input context | fail |
-| required input context sha256 | d00f2cb409effadbc898c45c9b8e39985f55e0f159b258d5e7d8212a499370bf |
+| required input context sha256 | 8c7ca201701fa68082c831bb1cca01a63d9dfe56c1741a0a1f04cefcab2407d8 |
 | type validation policy | project-expression-types-v3 |
 | model type validation | pass |
 | system sha256 | f8e157616efb47ec346ddc26271ad22feb92b5bf2176e505eff5f7058425cef9 |
 | reasoning effort | provider default |
 | output token budget | transport default (65536 for DeepSeek) |
 | interface normalization | a definition's own namespace prefix may be removed from exact published ids; raw response unchanged |
-| subject sha256 | 996c05e99d20a1c2176ff973208bbd79e9a49d91884852b11316cbd47e7053a2 |
-| receipt | .transcription/sc.lines-513ed8f5b011 |
-| printed lines compared | 3 |
-| agree / disagree / missing | 1 / 2 / 0 |
+| subject sha256 | 867a2a24e4a23b95a50c21630b2b7b269beec70671a97d388340057629cae444 |
+| receipt | .transcription/sc.lines-c22f2f0cb4fd |
+| printed lines compared | 4 |
+| agree / disagree / missing | 2 / 2 / 0 |
 | extra printed lines in second | none |
 
 ##### Source pages given to the model
@@ -837,10 +840,13 @@ Lines reviewed again after a change, each pass by its own isolated request (tran
 | document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
 | --- | --- | --- | --- | --- | --- | --- |
 | f1040sc | 2025; created 2025-04-03 | 1, 2 | whole document | ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022 | - | 44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376 |
-| i1040sc | 2025 | 6, 7, 8, 9, 10, 12, 14 | cited pages | dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a | 6, 7, 8, 9, 10, 14 | 616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918 |
+| i1040sc | 2025 | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | cited pages | dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 13, 14, 15 | 616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918 |
 | p946 | For use in preparing 2025 returns | 17, 18, 19 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 17, 18, 19 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
 | f4562 | 2025; created 2025-10-09 | 1, 2, 3 | whole document | 71e2ace527072aaa7293e77897bb4ab8e473fa9c47b6b1ccb977fdc58a93bc2d | - | a1330c49d931e7ecdc867aef2d9e01390fc7b4d7e9321943a21ed0f8e883ed18 |
-| i4562 | 2025 | 5, 9, 10, 13, 15, 16 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 5, 9, 10, 13, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
+| i4562 | 2025 | 4, 5, 9, 10, 13, 15, 16 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 5, 9, 10, 13, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
+| p538 | None | 17 | pages named by another document's citation | 4186d7aaa8f711c9a524b87fac1e3df05640b6d66130093b2469480acb06ef6c | 17 | f500211df18a4aafd843e48bbad4b9102c598cf5ccc0fae96c7814a4bef0ae00 |
+| p463 | For use in preparing 2025 returns | 12 | pages named by another document's citation | 153efad2a94bcccadf643b0f28f913d74b7d70b727f73eca540a2ce4d32bbfda | 12 | a0b14576fdb49a7ba3e7a90092c1b8f6b8ba33889c8c35da5629156346581326 |
+| i8995 | 2025; printed date 2026-01-26 | 2 | pages named by another document's citation | 96284eaad2fe5ec324de9fd4335cea9ea3260e66ff1d8b1725c1cff7fbe1ddc2 | 2 | 6671a64ba0011f89e03eb5985954073dcd984b3f346495182916b0ecaa42ec1a |
 
 ##### Other documents in the catalog
 
@@ -849,7 +855,18 @@ Chosen from the source pages above (catalog_selection); refusal-gate inputs are 
 | reason | documents |
 | --- | --- |
 | definition | aqee, se, tax_on_amount, tcw |
-| named form | dcprov, dependent, f1040, f2441, f5329, household, s1a, s2, sa, scope |
+| named form, inputs and named lines: clcw.prior_11, clcw.prior_14, clcw.prior_sd15, clcw.prior_sd21, clcw.prior_sd7, clcw.spouse_screen | clcw |
+| named form, inputs and named lines: f1040.line15, f1040.line1a, f1040.line25b, f1040.line25c_other, f1040.line26, f1040.line27a, f1040.line35a, f1040.line36, f1040.line3a, f1040.status, f1040.tax_exempt_interest | f1040 |
+| named form, inputs and named lines: f2441.benefits, f2441.care, f2441.employer_care, f2441.line13, f2441.line14, f2441.nondependent, f2441.paid_2026, f2441.plan_max, f2441.plans_differ, f2441.prior_year, f2441.spouse_died, f2441.student_disabled | f2441 |
+| named form, inputs and named lines: f8960.allocated_taxes, f8960.prior_2i, f8960.refund, f8960.unsupported | f8960 |
+| named form, inputs and named lines: household.community_property, household.cp_married, household.credit_disallowed, household.home_cost, household.married, household.qss_eligible, household.rdp, household.spouse_died_2025, household.unmarried | household |
+| named form, inputs and named lines: qbi.carryforward, qbi.dividends, qbi.unsupported | qbi |
+| named form, inputs and named lines: s1a.carloan, s1a.overtime, s1a.tips | s1a |
+| named form, inputs and named lines: s2.amt, s2.other | s2 |
+| named form, inputs and named lines: sa.charity_limited, sa.dependent, sa.elect_itemize, sa.excluded_income, sa.gambling_losses, sa.line1, sa.line11, sa.line5a, sa.line5b, sa.line5c, sa.line8a, sa.spouse_extra, sa.spouse_itemizes, sa.unsupported | sa |
+| named form, inputs and named lines: sb.fbar_required, sb.form8938, sb.line7a, sb.line8, sb.ordinary_dividends, sb.unsupported | sb |
+| named form, inputs and named lines: scope.credits, scope.other_income, scope.other_line16, scope.schedule1 | scope |
+| named form, inputs and named lines: sd.carryover, sd.distributions, sd.other_forms | sd |
 | named line | eic, ltc, s8812 |
 | shared page | asset, carloan, f4562, person, s1, s179, scveh |
 
@@ -858,23 +875,22 @@ Chosen from the source pages above (catalog_selection); refusal-gate inputs are 
 ```yaml
 ```yaml
 lines:
+  - id: sc.line3
+    printed: "3 (sc.line3)"
+    label: "Subtract line 2 from line 1"
+    type: Dollars
+    expr: {op: subtract, from: sc.line1, take: sc.line2}
+
   - id: sc.line28
     printed: "28"
     label: "Total expenses before expenses for business use of home. Add lines 8 through 27b"
     type: NonNegDollars
     expr:
       op: sum
-      of: [sc.line8, sc.line9, sc.line10, sc.line11, sc.line12, sc.line13, sc.line14, sc.line15, sc.line16a, sc.line16b, sc.line17, sc.line18, sc.line19, sc.line20a, sc.line20b, sc.line21, sc.line22, sc.line23, sc.line24a, sc.line24b, sc.line25, sc.line26, sc.line27a, sc.line27b]
-
-  - id: sc.h_ho_simplified
-    printed: "(helper)"
-    label: "Simplified method filer: claims business use of home and none of the situations outside the simplified method apply"
-    type: Bool
-    expr:
-      op: test
-      all:
-        - {op: test, eq: [sc.ho_uses, {const: true}]}
-        - {op: test, eq: [sc.ho_other, {const: false}]}
+      of: [sc.line8, sc.line9, sc.line10, sc.line11, sc.line12, sc.line13, sc.line14, sc.line15,
+           sc.line16a, sc.line16b, sc.line17, sc.line18, sc.line19, sc.line20a, sc.line20b,
+           sc.line21, sc.line22, sc.line23, sc.line24a, sc.line24b, sc.line25, sc.line26,
+           sc.line27a, sc.line27b]
 
   - id: sc.h_ho_smaller
     printed: "(helper)"
@@ -887,91 +903,128 @@ lines:
     label: "Allowable expenses using the simplified method. Enter the smaller of line 1 or line 4 here and include that amount on Schedule C, line 30. If zero or less, enter -0-"
     type: NonNegDollars
     expr: {op: subtract_floor0, from: sc.h_ho_smaller, take: {const: 0}}
-    shown_when: sc.h_ho_simplified
-    note: "The Simplified Method Worksheet is completed only by simplified method filers (Schedule C line 30 instructions); the line is shown when the business claims the home deduction and none of the situations outside the simplified method (sc.ho_other) applies."
+    refuses: [sc.ho_other]
+    shown_when: sc.ho_uses
+    note: "The worksheet is used only by filers who elect the simplified method for this home, so the line is shown only when a home-office deduction is claimed (sc.ho_uses). Cases needing Form 8829 or a special allocation (sc.ho_other) are refused here. This assumes sc.ho_other is answered whenever sc.ho_uses is true."
 
-  - id: sc.h_exp_no13
+  - id: sc.h_dep14
     printed: "(helper)"
-    label: "Expenses on lines 8 through 27b other than line 13"
-    type: NonNegDollars
-    expr:
-      op: sum
-      of: [sc.line8, sc.line9, sc.line10, sc.line11, sc.line12, sc.line14, sc.line15, sc.line16a, sc.line16b, sc.line17, sc.line18, sc.line19, sc.line20a, sc.line20b, sc.line21, sc.line22, sc.line23, sc.line24a, sc.line24b, sc.line25, sc.line26, sc.line27a, sc.line27b]
-
-  - id: sc.h_dep_14
-    printed: "(helper)"
-    label: "Form 4562 line 14, special depreciation allowance"
+    label: "Form 4562 line 14 for this business (special depreciation allowance)"
     type: NonNegDollars
     expr: {op: sum_over, collection: f4562, field: f4562.line14}
 
-  - id: sc.h_dep_17
+  - id: sc.h_dep17
     printed: "(helper)"
-    label: "Form 4562 line 17, MACRS deductions for assets placed in service before 2025"
+    label: "Form 4562 line 17 for this business (MACRS, assets placed in service before 2025)"
     type: NonNegDollars
     expr: {op: sum_over, collection: f4562, field: f4562.line17}
 
-  - id: sc.h_dep_19a
+  - id: sc.h_dep19a
     printed: "(helper)"
-    label: "Form 4562 line 19a, column (g)"
+    label: "Form 4562 line 19a column (g) for this business"
     type: NonNegDollars
     expr: {op: sum_over, collection: f4562, field: f4562.line19a}
 
-  - id: sc.h_dep_19b
+  - id: sc.h_dep19b
     printed: "(helper)"
-    label: "Form 4562 line 19b, column (g)"
+    label: "Form 4562 line 19b column (g) for this business"
     type: NonNegDollars
     expr: {op: sum_over, collection: f4562, field: f4562.line19b}
 
-  - id: sc.h_dep_19c
+  - id: sc.h_dep19c
     printed: "(helper)"
-    label: "Form 4562 line 19c, column (g)"
+    label: "Form 4562 line 19c column (g) for this business"
     type: NonNegDollars
     expr: {op: sum_over, collection: f4562, field: f4562.line19c}
 
-  - id: sc.h_dep_19d
+  - id: sc.h_dep19d
     printed: "(helper)"
-    label: "Form 4562 line 19d, column (g)"
+    label: "Form 4562 line 19d column (g) for this business"
     type: NonNegDollars
     expr: {op: sum_over, collection: f4562, field: f4562.line19d}
 
-  - id: sc.h_dep_19e
+  - id: sc.h_dep19e
     printed: "(helper)"
-    label: "Form 4562 line 19e, column (g)"
+    label: "Form 4562 line 19e column (g) for this business"
     type: NonNegDollars
     expr: {op: sum_over, collection: f4562, field: f4562.line19e}
 
-  - id: sc.h_dep_19f
+  - id: sc.h_dep19f
     printed: "(helper)"
-    label: "Form 4562 line 19f, column (g)"
+    label: "Form 4562 line 19f column (g) for this business"
     type: NonNegDollars
     expr: {op: sum_over, collection: f4562, field: f4562.line19f}
 
-  - id: sc.h_dep_21
+  - id: sc.h_dep21
     printed: "(helper)"
-    label: "Form 4562 line 21, listed property (column (h) depreciation)"
+    label: "Form 4562 line 21 for this business (listed property, from line 28)"
     type: NonNegDollars
     expr: {op: sum_over, collection: f4562, field: f4562.line21}
 
-  - id: sc.h_dep_no179
+  - id: sc.h_line13_pre179
     printed: "(helper)"
-    label: "Depreciation of this business other than the section 179 expense deduction (Form 4562 lines 14, 17, 19 column (g) and 21)"
+    label: "Depreciation for line 13 figured without the section 179 expense deduction (Form 4562 lines 14 through 17, 19 column (g) and 21; line 12 left out)"
     type: NonNegDollars
     expr:
       op: sum
-      of: [sc.h_dep_14, sc.h_dep_17, sc.h_dep_19a, sc.h_dep_19b, sc.h_dep_19c, sc.h_dep_19d, sc.h_dep_19e, sc.h_dep_19f, sc.h_dep_21]
+      of: [sc.h_dep14, sc.h_dep17, sc.h_dep19a, sc.h_dep19b, sc.h_dep19c, sc.h_dep19d,
+           sc.h_dep19e, sc.h_dep19f, sc.h_dep21]
+    note: "Form 4562 line 22 adds line 12 (section 179), lines 14 through 17, lines 19 and 20 column (g), and line 21. The section 179 business income limit (line 11) is figured 'without regard to any section 179 expense deduction'. This helper therefore adds the line 22 components other than line 12. Lines 15, 16 and 20 have no fields in the supplied catalog and are taken as zero within this tool's scope. This assumes line 13 is the business's Form 4562 line 22."
 
-  - id: sc.h_exp_pre179
+  - id: sc.h_line28_pre179
     printed: "(helper)"
-    label: "Total expenses on lines 8 through 27b figured without the section 179 expense deduction"
+    label: "Line 28 figured without the section 179 expense deduction"
     type: NonNegDollars
-    expr: {op: sum, of: [sc.h_exp_no13, sc.h_dep_no179]}
+    expr:
+      op: sum
+      of: [sc.line8, sc.line9, sc.line10, sc.line11, sc.line12, sc.h_line13_pre179, sc.line14,
+           sc.line15, sc.line16a, sc.line16b, sc.line17, sc.line18, sc.line19, sc.line20a,
+           sc.line20b, sc.line21, sc.line22, sc.line23, sc.line24a, sc.line24b, sc.line25,
+           sc.line26, sc.line27a, sc.line27b]
+
+  - id: sc.h_line29_pre179
+    printed: "(helper)"
+    label: "Line 29 (line 7 minus line 28) figured without the section 179 expense deduction"
+    type: Dollars
+    expr: {op: subtract, from: sc.line7, take: sc.h_line28_pre179}
+
+  - id: sc.h_ho_min_pre179
+    printed: "(helper)"
+    label: "Smaller of the gross income limitation (line 29 figured without section 179) or Simplified Method Worksheet line 4"
+    type: Dollars
+    expr: {op: smaller_of, of: [sc.h_line29_pre179, sc.ho_line4]}
+
+  - id: sc.h_ho5_pre179
+    printed: "(helper)"
+    label: "Simplified method amount (worksheet line 5) figured on line 29 without section 179; if zero or less, -0-"
+    type: NonNegDollars
+    expr: {op: subtract_floor0, from: sc.h_ho_min_pre179, take: {const: 0}}
+    refuses: [sc.ho_other]
+
+  - id: sc.h_zero
+    printed: "(helper)"
+    label: "Zero"
+    type: NonNegDollars
+    expr: {op: param, ref: ss.zero}
+
+  - id: sc.h_line30_pre179
+    printed: "(helper)"
+    label: "Line 30 (business use of home, simplified method) figured without the section 179 expense deduction"
+    type: NonNegDollars
+    expr:
+      op: choose
+      alternatives:
+        - guard: {op: test, eq: [sc.ho_uses, {const: true}]}
+          then: sc.h_ho5_pre179
+        - guard: {op: test, eq: [sc.ho_uses, {const: false}]}
+          then: sc.h_zero
 
   - id: sc.line31_pre179
     printed: "(helper)"
-    label: "Net profit or (loss) of this business figured without regard to the section 179 deduction (for the business income limit, Form 4562 line 11)"
+    label: "Net profit or (loss) of this business (line 29 minus line 30) figured without the section 179 expense deduction, for the Form 4562 line 11 business income limitation"
     type: Dollars
-    expr: {op: subtract, from: sc.line7, take: sc.h_exp_pre179}
-    note: "Pub. 946 and the Form 4562 line 11 instructions say to figure business taxable income without regard to any section 179 expense deduction. Adding the allowed section 179 amount back to line 31 would make this line depend on itself, because line 13 includes the allowed deduction, which is limited by this income. Instead the line is figured as line 7 less every Part II expense except line 13, and less line 13's depreciation other than section 179 (Form 4562 lines 14, 17, 19(g) and 21). Lines 15 and 16 of Form 4562 are not in the catalog and are taken to be out of scope. The pages do not settle whether the line 30 home office deduction is subtracted before the section 179 income limit. Its gross income limitation (Simplified Method Worksheet line 1) is itself figured from the post-179 profit, so line 30 is not subtracted here. The result is line 29 without the section 179 deduction."
+    expr: {op: subtract, from: sc.h_line29_pre179, take: sc.h_line30_pre179}
+    note: "Open point: the IRS pages do not define this interface. It is read as the business income Form 4562 line 11 needs: line 31 'computed without regard to any section 179 expense deduction' (i4562 line 11; Pub. 946 Business Income Limit). The simplified home-office gross income limitation also depends on line 29. Pub. 946's 'Two different taxable income limits' steps leave open whether that deduction is first figured on a hypothetical section 179 amount. The reading chosen is Pub. 946 Step 1: figure the home-office amount on line 29 without the section 179 deduction, then subtract it. This also avoids a circular dependency on line 13. At-risk and passive-activity adjustments to line 31 are left to the line 31 encoding."
 ```
 ```
 

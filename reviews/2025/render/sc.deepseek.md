@@ -5,7 +5,7 @@ The rendered English of every printed line of `Schedule C (Form 1040) — Profit
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
-| line-scoped reviews | 1 (latest 2026-11-04); see Line-scoped reviews |
+| line-scoped reviews | 1 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
 | prompt sha256 | 4a5a760dd9440b77acff50e01a51a324e65821b1dd5314e468fc83dc1da28f7c |
@@ -62,15 +62,17 @@ Status: **MATCH**
 
 Model: Matches the accounting-method and related unsupported-case screen.
 
-### (screen) (sc.special) — For this business, do you have any of these: depletion (line 12); the energy efficient com
+### (screen) (sc.special) — For this business, do you have any of these?
 Status: **MATCH**
 
-Model: Lists the special Schedule C items that the tool screens out.
+Model: The listed special items correspond to the IRS instructions and are used only as a screen to exclude cases outside the tool; no computation is restated.
+Reviewed in: pass 5ea93676fec3
 
 ### 1 (sc.line1) — Gross receipts or sales
 Status: **MATCH**
 
-Model: Matches line 1 gross receipts and the stated refusal for screened-out cases.
+Model: The restatement includes gross receipts and collected seller sales tax, while excluding line 6 other business income and non-self-employment NIL income reported on Schedule E, consistent with the line 1 instructions.
+Reviewed in: pass 5ea93676fec3
 
 ### 2 (sc.line2) — Returns and allowances
 Status: **MATCH**
@@ -199,8 +201,8 @@ Model: Matches business taxes and licenses on line 23 within the stated screens.
 ### 24a — Travel
 Status: **MATCH**
 
-Model: The restatement tracks the Schedule C line 24a instructions for lodging, transportation, incidental expenses and the $5 optional method, meals/entertainment exclusions, one-year employment limit, spouse/dependent rule, and North American convention rule.
-Reviewed in: pass 8166f29208ff
+Model: Lodging, transportation, incidental expenses, the $5 incidental method, spousal/dependent limits, and the North American convention rule match the line 24a instructions.
+Reviewed in: pass 5ea93676fec3
 
 ### 24b — Deductible meals
 Status: **MATCH**
@@ -235,8 +237,8 @@ Model: Enters the line 48 amount on line 27b.
 ### 28 — Total expenses before expenses for business use of home. Add lines 8 through 27b
 Status: **MATCH**
 
-Model: Schedule C line 28 says to add lines 8 through 27b, and the restatement enumerates exactly those lines, including the 16a/16b, 20a/20b, 24a/24b, and 27a/27b pairs.
-Reviewed in: pass 8166f29208ff
+Model: It adds Schedule C lines 8 through 27b, matching the instruction to add lines 8 through 27b for total expenses before home-office expenses.
+Reviewed in: pass 5ea93676fec3
 
 ### 29 — Tentative profit or (loss). Subtract line 28 from line 7
 Status: **MATCH**
@@ -281,8 +283,8 @@ Model: Within the supported cases, the gross income limitation equals Schedule C
 ### 5 (sc.ho_line5) — Allowable expenses using the simplified method. Enter the smaller of line 1 or line 4
 Status: **MATCH**
 
-Model: Simplified Method Worksheet line 5 is the smaller of line 1 or line 4; the restatement uses line 4 when it cannot exceed any possible line 29 limitation, otherwise computes or refuses the section 179 interaction cases, which is a valid narrowing.
-Reviewed in: pass 8166f29208ff
+Model: Within the supported cases, the condition yields the smaller of line 1 or line 4 as the Simplified Method Worksheet requires; the remaining case is refused under the Pub. 946 two-limit rule.
+Reviewed in: pass 5ea93676fec3
 
 ### 30 — Expenses for business use of your home
 Status: **MATCH**
@@ -347,8 +349,8 @@ Model: Subtracts line 41 from line 40, matching line 42.
 ### 12 (sc.s179_allowed) — Section 179 expense deduction for this business
 Status: **MATCH**
 
-Model: This matches Form 4562 line 12 allocation: where line 12 equals the elected amounts it uses this business’s elected section 179 amount, and where it differs and there is only one Schedule C it uses the return’s line 12 deduction, refusing allocation among multiple businesses.
-Reviewed in: pass 8166f29208ff
+Model: It uses the elected section 179 amount when the Form 4562 line 12 deduction equals elected cost, and otherwise uses the return's line 12 deduction for a single Schedule C, consistent with the line 12 cap and allocation rules.
+Reviewed in: pass 5ea93676fec3
 
 ### (screen) (sc.hi_uses) — Health insurance established under this business
 Status: **MATCH**
@@ -443,8 +445,8 @@ What each compared line's verdict depends on within the document (tools/transcri
 | G | 9336293c87a3010625acd5ec878f0a51d8d1235bfa2fce813a1742c7fecd6965 |
 | (screen) (sc.spouse_owned) | 50e12d17c0ac2c9df9a2a093f8ecbf7b395ecf60a6ae926d89771d9bbbdd97ee |
 | F | 64a4b664c7e9c5e00f93761d29f2348d5763768424d47ddb0889ba3785b68039 |
-| (screen) (sc.special) | c229fb69f1b41b60d14096cc4dd7ffd9d6cdeb7f3ba8c1007703b4e4f2fd43f7 |
-| 1 (sc.line1) | aae12502fafcc14ed224230205b06d036404ff069342467abf80e263bbe4fe80 |
+| (screen) (sc.special) | b6054cf6d08de1448607610ff7324be5e50a13132e292f5f5a5fc5dce25a1c89 |
+| 1 (sc.line1) | 9fae6f700a00928210f705396ff73c77d764798966bedf9605838efe8f67b144 |
 | 2 (sc.line2) | a740eed3e32368c0a0975232c06d42726848f95d06bb1bddc037583ac496e10b |
 | 3 (sc.line3) | 32dfb404a18c1f8633e0318597f3f2d8b2053aa400441bccc2b375867c25a6d3 |
 | 4 (sc.line4) | 7b85ae1e7bcd8268c76f2f79ad655b96c785b5c0fdd697ebc6f61267b02caa44 |
@@ -469,14 +471,14 @@ What each compared line's verdict depends on within the document (tools/transcri
 | 21 | 0c641002fd40d82e0b86031578e5cb6fe7150bc98088af93b3e79403e8b4c63c |
 | 22 | be932e2a45ec9b9ad7bc7afe6900e0e71f5f82c93ba3dc23e5b498300853251d |
 | 23 | 6bd230c2a980411ead0ef77e480a5ab35e21811e887dd12ded3b2b403a23be25 |
-| 24a | 61be18934afb302c308a7669a7d78604adfbf8e4adc8d26a43bd4f69e94b86d4 |
+| 24a | 827a15912a1ed16a491da4a23f662a63a6a05cf73ae72846314ba376b2844602 |
 | 24b | 70b55924d05eb90ead1028c95268bdd9225d2ed1721a9d7abdd224f42158fa0e |
 | 25 | a09c6adc64416a35c8a026a4cae38890eb5ccfac787c63a568a96244dbac5164 |
 | 26 | a3d438611bbce53f4df601f6e0e2877deac87ec458f3a1c1d49f944563b3a409 |
 | 27a | 4543d2ec340b33f1758027df6f9f7e5bc36c55d528e9d8123d43625074a84236 |
 | 48 | 2407fa82672e5b3a4962333281572936acbc2ad935216f4cf18202717201cda6 |
 | 27b | 6ae07cb4f45d196fb8d96b5f216a6b7ee44a2ca355fbdb1e3b6c2e12f395b42d |
-| 28 | 8ae1f80b5e86d49e381329f764361503c18a1297c3c69509ce174769e64adb9a |
+| 28 | 790f6b84fb0f37413b47a58268e5590a45e8bd8b5ce6d83e716eb373b699fe9a |
 | 29 | 5e252890f40ebaf167e76d93a87be5b2a3c16bad2464fb510c868ba8b9b3d2b4 |
 | (screen) (sc.ho_uses) | ef5c3e8372d70c514df195b4e4fa6991b5208e5280292707d1fc1b3e8a0c05bd |
 | (screen) (sc.ho_other) | f4b5d7242f56552080b3617765afc533d194fdc9ec282dc5eb90d8a356eeb249 |
@@ -485,7 +487,7 @@ What each compared line's verdict depends on within the document (tools/transcri
 | 3a | f032c1aa616e675b295a4be9748270b4c92a3dca1786e32bc1cd1ed510b6c140 |
 | 4 (sc.ho_line4) | c16a11b8934124f13c7226b8945dc16407c6b35e3e0612405a2ad90352ed45cd |
 | 1 (sc.ho_line1) | 93604a87acc0da5e391576b70009e23bb7c8d01a2bc4e755bdb9b477e0d452c3 |
-| 5 (sc.ho_line5) | 24e5511527e374fee7d8da0116ff7a2e97ee30416a4107c734a02ebf27b2853c |
+| 5 (sc.ho_line5) | 00567f522593e16241e3183efa7321da5b217d4bde8bc477a53e7e734bfc1341 |
 | 30 | 2b2454406fde06a52b62715df8f45ee04691af33384cb10429efa6adda93e364 |
 | 31 | 1422a43a9afabd8d0b571ce73dc64eb53b2e044a0ae273a7ae4fa0bcf181f6ac |
 | 32 | b25d38d7fe4a3729fd765e7af7fd4e8de7a41893f83623de88158cddf985c07b |
@@ -498,7 +500,7 @@ What each compared line's verdict depends on within the document (tools/transcri
 | 40 | 033bea5099029a14cbec4b858fe135c0c759ace2d8cfbfc7e65d1d15c432984f |
 | 41 | ac91ba25000990d92da68710d46ca204aaa6e9d40a7cc2d3bcb6ac1ccb2c4d95 |
 | 42 | 278262894b269d7757fb3a8c270656a79d5e44a2dca3b867e8628a5d9490f2e9 |
-| 12 (sc.s179_allowed) | c5dc7c8608867829b9824c36d32ae28e59f1c59fc21e37ad9680bfbd4a57ed7e |
+| 12 (sc.s179_allowed) | faa8ca3276f114ebcbd751574613fbf2f5d8b7cbf3a87fe2e5a89f44855bc83b |
 | (screen) (sc.hi_uses) | d780af140ed61b7636e582896ef38a06a901001438731a5df5133ab2e56bb73a |
 | (screen) (sc.hi_screen) | a2dec570d2e040adde80c037b79193fe9da036b710becfa33502a71209a7c117 |
 | 1 (sc.f7206_line1) | ca22ab0386d35458dca2d715df8e9f925b61ddfda12d1e3708023992f07ff124 |
@@ -520,52 +522,61 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
 
-#### Pass 8166f29208ff
+#### Pass 5ea93676fec3
 
 | field | value |
 | --- | --- |
-| date | 2026-11-04 |
-| review scope | lines 24a, 28, 5 (sc.ho_line5), 12 (sc.s179_allowed) |
+| date | 2026-11-07 |
+| review scope | lines (screen) (sc.special), 1 (sc.line1), 24a, 28, 5 (sc.ho_line5), 12 (sc.s179_allowed) |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 8166f29208ff96258e58a47f9aaec30ef78d8f38bc4a116def8588c7d71ec9f1 |
+| prompt sha256 | 5ea93676fec3ab6039f3da6b0874a337a7130246de595ada0fe2a254c1a7518d |
 | prompt policy | render-source-comparison-v2+lines-v1 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
-| subject sha256 | 398fe31625350637521ab496bdc58d2f7b0ac7c51fe9cfd63688da848f9f4d99 |
-| receipt | .transcription/sc.deepseek.render.lines-514702a2772a |
-| lines judged | 4 |
-| match / mismatch / unclear / missing | 4 / 0 / 0 / 0 |
+| subject sha256 | c0f4544f7ddaef89d4d8b37cf7b8f05b682f49c103848bfb0a584a9282a43960 |
+| receipt | .transcription/sc.deepseek.render.lines-834a550d92b5 |
+| lines judged | 6 |
+| match / mismatch / unclear / missing | 6 / 0 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ##### Source pages given to the model
 
 | document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
 | --- | --- | --- | --- | --- | --- | --- |
-| i1040sc | 2025 | 3, 6, 7, 8, 9, 10, 12, 14, 15 | cited pages | dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a | 3, 6, 7, 8, 9, 10, 14, 15 | 616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918 |
+| i1040sc | 2025 | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | cited pages | dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 13, 14, 15 | 616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918 |
 | f1040sc | 2025; created 2025-04-03 | 1, 2 | whole document | ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022 | - | 44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376 |
 | p946 | For use in preparing 2025 returns | 17, 18, 19, 31, 32, 33, 34, 37, 39, 41, 59, 61, 62, 63, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 17, 18, 19, 31, 32, 33, 34, 37, 39, 41, 63 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
 | f4562 | 2025; created 2025-10-09 | 1, 2, 3 | whole document | 71e2ace527072aaa7293e77897bb4ab8e473fa9c47b6b1ccb977fdc58a93bc2d | - | a1330c49d931e7ecdc867aef2d9e01390fc7b4d7e9321943a21ed0f8e883ed18 |
 | i4562 | 2025 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
 | n-25-05 | Notice 2025-5 | 1, 2, 3, 4, 5 | whole document | 394f6b5ffb7c30e745322f0f20d9137608b1e2429fc4c76b06dedd690d4fb6e3 | - | 349e2797f87c588214722bcd22b7ec317c86c90a255ec8496941ac0c09909a8d |
+| p538 | None | 17 | pages named by another document's citation | 4186d7aaa8f711c9a524b87fac1e3df05640b6d66130093b2469480acb06ef6c | 17 | f500211df18a4aafd843e48bbad4b9102c598cf5ccc0fae96c7814a4bef0ae00 |
+| p463 | For use in preparing 2025 returns | 12, 26 | pages named by another document's citation | 153efad2a94bcccadf643b0f28f913d74b7d70b727f73eca540a2ce4d32bbfda | 12, 26 | a0b14576fdb49a7ba3e7a90092c1b8f6b8ba33889c8c35da5629156346581326 |
+| i8995 | 2025; printed date 2026-01-26 | 2 | pages named by another document's citation | 96284eaad2fe5ec324de9fd4335cea9ea3260e66ff1d8b1725c1cff7fbe1ddc2 | 2 | 6671a64ba0011f89e03eb5985954073dcd984b3f346495182916b0ecaa42ec1a |
 
 ##### Raw response
 
 ```yaml
 lines:
+  - key: "(screen) (sc.special)"
+    status: MATCH
+    reason: "The listed special items correspond to the IRS instructions and are used only as a screen to exclude cases outside the tool; no computation is restated."
+  - key: "1 (sc.line1)"
+    status: MATCH
+    reason: "The restatement includes gross receipts and collected seller sales tax, while excluding line 6 other business income and non-self-employment NIL income reported on Schedule E, consistent with the line 1 instructions."
   - key: "24a"
     status: MATCH
-    reason: "The restatement tracks the Schedule C line 24a instructions for lodging, transportation, incidental expenses and the $5 optional method, meals/entertainment exclusions, one-year employment limit, spouse/dependent rule, and North American convention rule."
+    reason: "Lodging, transportation, incidental expenses, the $5 incidental method, spousal/dependent limits, and the North American convention rule match the line 24a instructions."
   - key: "28"
     status: MATCH
-    reason: "Schedule C line 28 says to add lines 8 through 27b, and the restatement enumerates exactly those lines, including the 16a/16b, 20a/20b, 24a/24b, and 27a/27b pairs."
+    reason: "It adds Schedule C lines 8 through 27b, matching the instruction to add lines 8 through 27b for total expenses before home-office expenses."
   - key: "5 (sc.ho_line5)"
     status: MATCH
-    reason: "Simplified Method Worksheet line 5 is the smaller of line 1 or line 4; the restatement uses line 4 when it cannot exceed any possible line 29 limitation, otherwise computes or refuses the section 179 interaction cases, which is a valid narrowing."
+    reason: "Within the supported cases, the condition yields the smaller of line 1 or line 4 as the Simplified Method Worksheet requires; the remaining case is refused under the Pub. 946 two-limit rule."
   - key: "12 (sc.s179_allowed)"
     status: MATCH
-    reason: "This matches Form 4562 line 12 allocation: where line 12 equals the elected amounts it uses this business’s elected section 179 amount, and where it differs and there is only one Schedule C it uses the return’s line 12 deduction, refusing allocation among multiple businesses."
+    reason: "It uses the elected section 179 amount when the Form 4562 line 12 deduction equals elected cost, and otherwise uses the return's line 12 deduction for a single Schedule C, consistent with the line 12 cap and allocation rules."
 ```
 
 ## Raw response

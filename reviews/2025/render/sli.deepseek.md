@@ -5,7 +5,7 @@ The rendered English of every printed line of `Student Loan Interest Deduction W
 | field | value |
 | --- | --- |
 | date | 2026-10-23 |
-| line-scoped reviews | 1 (latest 2026-11-04); see Line-scoped reviews |
+| line-scoped reviews | 1 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
 | prompt sha256 | b6d8bb710b67f5296af76c7849ff8e61fc8837977d9e2ebc72cc5cfbe7a82ced |
@@ -29,8 +29,8 @@ The rendered English of every printed line of `Student Loan Interest Deduction W
 ### 1 — Enter the total interest you paid in 2025 on qualified student loans (see the instructions
 Status: **MATCH**
 
-Model: The IRS line says to enter total interest paid in 2025 on qualified student loans and not enter more than $2,500, which the restatement computes as the smaller of those two amounts. The refusal correctly mirrors the Exception requiring Pub. 970 for Form 2555, Form 4563, or excluded Puerto Rico income.
-Reviewed in: pass 751dd786467e
+Model: The IRS line says to enter total 2025 qualified student loan interest and not enter more than $2,500, which is the smaller of the interest paid and the $2,500 cap. The refusal correctly follows the worksheet exception for Form 2555, Form 4563, or excluded Puerto Rico income, directing use of Pub. 970.
+Reviewed in: pass 0b2ccac604e9
 
 ### 2 — Enter the amount from Form 1040 or 1040-SR, line 9
 Status: **MATCH**
@@ -85,7 +85,7 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 | line | subject sha256 |
 | --- | --- |
-| 1 | 7c4dbaaa35532b3e06522ca9e324fbffe4b43eb335ff32b4da97d2a4ef49e9b2 |
+| 1 | 7f3670ef200b4b51c8a107adb53cc44b63efe8de99bc2ea165f65fa2d89a0035 |
 | 2 | 44a322e52fce7e7a028df233a318d945fcc9a2726176337b964ce5f20c99d463 |
 | 3 | 9a7502bf57f013ced47f8150707fb8e150be4eb5138caec1da8a48527632a73b |
 | 4 | e4e03402ab3d98b2d59c43c95d6607f6b5291dadd68687d950576d408e73913f |
@@ -99,20 +99,20 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
 
-#### Pass 751dd786467e
+#### Pass 0b2ccac604e9
 
 | field | value |
 | --- | --- |
-| date | 2026-11-04 |
+| date | 2026-11-07 |
 | review scope | lines 1 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 751dd786467e9323ebfc2146ac9e69579c335af528597549b10ba6653071183c |
+| prompt sha256 | 0b2ccac604e9758c707121874d0e40b81ccf32df80959dbda564321805edd757 |
 | prompt policy | render-source-comparison-v2+lines-v1 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
-| subject sha256 | 63584a89dc97ecdde8f26dd31069530cf9800f2f788d3960a48a72ddea4faff4 |
+| subject sha256 | d98db5ddb641e103f49e73713c89c32cfb8000e3e0d035ff51693196c5a044b4 |
 | receipt | .transcription/sli.deepseek.render.lines-6b86b273ff34 |
 | lines judged | 1 |
 | match / mismatch / unclear / missing | 1 / 0 / 0 / 0 |
@@ -132,7 +132,7 @@ Lines reviewed again after a change, each pass by its own isolated request (tran
 lines:
   - key: "1"
     status: MATCH
-    reason: "The IRS line says to enter total interest paid in 2025 on qualified student loans and not enter more than $2,500, which the restatement computes as the smaller of those two amounts. The refusal correctly mirrors the Exception requiring Pub. 970 for Form 2555, Form 4563, or excluded Puerto Rico income."
+    reason: "The IRS line says to enter total 2025 qualified student loan interest and not enter more than $2,500, which is the smaller of the interest paid and the $2,500 cap. The refusal correctly follows the worksheet exception for Form 2555, Form 4563, or excluded Puerto Rico income, directing use of Pub. 970."
 ```
 
 ## Raw response

@@ -1,0 +1,592 @@
+{
+ "bank": {
+  "evaluation_failures": 0,
+  "fixtures": 1638,
+  "generated": 500,
+  "partial_bases": 40,
+  "partial_records": 44,
+  "return_states": {
+   "completed": 365,
+   "incomplete": 817,
+   "refused": 1000
+  },
+  "seed": 20261026
+ },
+ "errors": [],
+ "failures": [],
+ "family": "claude",
+ "form": "oi8z",
+ "invalid_lines": [],
+ "lines": [
+  {
+   "absent": 0,
+   "agree": 109,
+   "candidate": "oi8z.taxable",
+   "compared": 180,
+   "completed_witnesses": [],
+   "differ": 71,
+   "handle": "oi8z.taxable",
+   "in_scope": 131,
+   "in_scope_agree": 109,
+   "invalid": 0,
+   "kinds": {
+    "project-refuses": 49,
+    "project-unknown": 22
+   },
+   "kinds_by_return": {
+    "incomplete": {
+     "project-unknown": 3
+    },
+    "refused": {
+     "project-refuses": 49,
+     "project-unknown": 19
+    }
+   },
+   "open_at_triage": true,
+   "project": "oi8z.taxable",
+   "shown_when": null,
+   "sources": {
+    "fixture": 40,
+    "generated": 72,
+    "partial": 68
+   },
+   "status": "DISAGREE",
+   "triage": "differs",
+   "witnesses": [
+    {
+     "candidate": {
+      "input": "oi8z[item_a].amount",
+      "kind": "unknown",
+      "reason": "no input supplied for oi8z[item_a].amount"
+     },
+     "candidate_operands": [
+      {
+       "ref": "oi8z[item_a].amount",
+       "value": {
+        "input": "oi8z[item_a].amount",
+        "kind": "unknown",
+        "reason": "no input supplied for oi8z[item_a].amount"
+       }
+      }
+     ],
+     "instance": "oi8z[item_a]",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 92, Line 8z, \"For more details, see Miscellaneous Income in Pub. 525\""
+      },
+      "form": "Pub. 525, Miscellaneous Income (Schedule 1, line 8z)",
+      "gate": "oi8z[item_a].figured",
+      "kind": "refusal",
+      "remedy": "Line 8z items other than RTAA payments and kickbacks are outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "oi8z[item_a].recovery",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "oi8z[item_a].additional_tax",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "oi8z[item_a].figured",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "classm.asset.3",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 150000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "oi8z[z0].amount",
+       "value": {
+        "cents": 150000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "oi8z[z0]",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 92, Line 8z, \"See Recoveries in Pub. 525 for details on how to figure the amount to report\""
+      },
+      "form": "Pub. 525, Recoveries (Schedule 1, line 8z)",
+      "gate": "oi8z[z0].recovery",
+      "kind": "refusal",
+      "remedy": "Figuring the taxable part of a recovery of an amount deducted in an earlier year is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "oi8z[z0].recovery",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.refuse.oi8z.recovery",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 150000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "oi8z[z0].amount",
+       "value": {
+        "cents": 150000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "oi8z[z0]",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 92, Line 8z, \"See the instructions for Schedule 2, line 17g\"; p. 93, Line 8z, \"See the Instructions for Form 5329\""
+      },
+      "form": "Schedule 2, line 17g, or Form 5329 (Schedule 1, line 8z)",
+      "gate": "oi8z[z0].additional_tax",
+      "kind": "refusal",
+      "remedy": "A charitable deduction recapture and taxable Coverdell ESA or qualified tuition program distributions, with their additional tax, are outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "oi8z[z0].recovery",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "oi8z[z0].additional_tax",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.refuse.oi8z.additional_tax",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 150000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "oi8z[z0].amount",
+       "value": {
+        "cents": 150000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "oi8z[z0]",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 92, Line 8z, \"For more details, see Miscellaneous Income in Pub. 525\""
+      },
+      "form": "Pub. 525, Miscellaneous Income (Schedule 1, line 8z)",
+      "gate": "oi8z[z0].figured",
+      "kind": "refusal",
+      "remedy": "Line 8z items other than RTAA payments and kickbacks are outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "oi8z[z0].recovery",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "oi8z[z0].additional_tax",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "oi8z[z0].figured",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "id": "stage16.refuse.oi8z.figured",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "oi8z[item_a].amount",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "oi8z[item_a]",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 92, Line 8z, \"For more details, see Miscellaneous Income in Pub. 525\""
+      },
+      "form": "Pub. 525, Miscellaneous Income (Schedule 1, line 8z)",
+      "gate": "oi8z[item_a].figured",
+      "kind": "refusal",
+      "remedy": "Line 8z items other than RTAA payments and kickbacks are outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "oi8z[item_a].recovery",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "oi8z[item_a].additional_tax",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "oi8z[item_a].figured",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 28,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 1437876,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "oi8z[item_a].amount",
+       "value": {
+        "cents": 1437876,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "oi8z[item_a]",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i1040gi",
+       "locator": "p. 92, Line 8z, \"See Recoveries in Pub. 525 for details on how to figure the amount to report\""
+      },
+      "form": "Pub. 525, Recoveries (Schedule 1, line 8z)",
+      "gate": "oi8z[item_a].recovery",
+      "kind": "refusal",
+      "remedy": "Figuring the taxable part of a recovery of an amount deducted in an earlier year is outside this tool."
+     },
+     "project_operands": [
+      {
+       "ref": "oi8z[item_a].recovery",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "index": 91,
+      "kind": "generated",
+      "seed": 20261026
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "oi8z[item_a].amount",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "oi8z[item_a]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "oi8z[item_a].kind",
+      "kind": "unknown",
+      "reason": "no input supplied for oi8z[item_a].kind"
+     },
+     "project_operands": [
+      {
+       "ref": "oi8z[item_a].recovery",
+       "value": {
+        "input": "oi8z[item_a].kind",
+        "kind": "unknown",
+        "reason": "no input supplied for oi8z[item_a].kind"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f4952.3.deepseek",
+      "kind": "partial",
+      "withheld": "oi8z[item_a].kind"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "oi8z[item_b].amount",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "oi8z[item_b]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "oi8z[item_b].kind",
+      "kind": "unknown",
+      "reason": "no input supplied for oi8z[item_b].kind"
+     },
+     "project_operands": [
+      {
+       "ref": "oi8z[item_b].recovery",
+       "value": {
+        "input": "oi8z[item_b].kind",
+        "kind": "unknown",
+        "reason": "no input supplied for oi8z[item_b].kind"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.f4952.3.deepseek",
+      "kind": "partial",
+      "withheld": "oi8z[item_b].kind"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 1388200,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "oi8z[item_a].amount",
+       "value": {
+        "cents": 1388200,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "oi8z[item_a]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "oi8z[item_a].kind",
+      "kind": "unknown",
+      "reason": "no input supplied for oi8z[item_a].kind"
+     },
+     "project_operands": [
+      {
+       "ref": "oi8z[item_a].recovery",
+       "value": {
+        "input": "oi8z[item_a].kind",
+        "kind": "unknown",
+        "reason": "no input supplied for oi8z[item_a].kind"
+       }
+      }
+     ],
+     "project_return": "incomplete",
+     "source": {
+      "base": "classm.eic.4.deepseek",
+      "kind": "partial",
+      "withheld": "oi8z[item_a].kind"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "oi8z[item_a].amount",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "oi8z[item_a]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "oi8z[item_a].kind",
+      "kind": "unknown",
+      "reason": "no input supplied for oi8z[item_a].kind"
+     },
+     "project_operands": [
+      {
+       "ref": "oi8z[item_a].recovery",
+       "value": {
+        "input": "oi8z[item_a].kind",
+        "kind": "unknown",
+        "reason": "no input supplied for oi8z[item_a].kind"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.oi8z.1",
+      "kind": "partial",
+      "withheld": "oi8z[item_a].kind"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 338500,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "oi8z[item_a].amount",
+       "value": {
+        "cents": 338500,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "oi8z[item_a]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "oi8z[item_a].kind",
+      "kind": "unknown",
+      "reason": "no input supplied for oi8z[item_a].kind"
+     },
+     "project_operands": [
+      {
+       "ref": "oi8z[item_a].recovery",
+       "value": {
+        "input": "oi8z[item_a].kind",
+        "kind": "unknown",
+        "reason": "no input supplied for oi8z[item_a].kind"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.tcw.3",
+      "kind": "partial",
+      "withheld": "oi8z[item_a].kind"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "oi8z[item_b].amount",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "oi8z[item_b]",
+     "kind": "project-unknown",
+     "project": {
+      "input": "oi8z[item_b].kind",
+      "kind": "unknown",
+      "reason": "no input supplied for oi8z[item_b].kind"
+     },
+     "project_operands": [
+      {
+       "ref": "oi8z[item_b].recovery",
+       "value": {
+        "input": "oi8z[item_b].kind",
+        "kind": "unknown",
+        "reason": "no input supplied for oi8z[item_b].kind"
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.tcw.3",
+      "kind": "partial",
+      "withheld": "oi8z[item_b].kind"
+     }
+    }
+   ]
+  }
+ ],
+ "log_sha256_at_triage": "299fdba396040f9c4300d4e58e1865b91ea119634f8d0db27cdfd17113ad4c7d",
+ "policy": "executable-triage-v2",
+ "response_sha256": "e8baadf96b85f27e092afcdb682deef105d9696c504da04eb35f1391689c8490",
+ "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
+ "state": "evaluated",
+ "subject_sha256": "932eff95e003b50204b0725d8dd3c385c260666e430efd80051d13569518f6eb"
+}

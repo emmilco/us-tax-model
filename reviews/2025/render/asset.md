@@ -5,7 +5,7 @@ The rendered English of every printed line of `Form 4562 — one item of depreci
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
-| line-scoped reviews | 1 (latest 2026-11-04); see Line-scoped reviews |
+| line-scoped reviews | 2 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | claude-opus-5-5 |
 | model reported | claude-opus-5-5 |
 | prompt sha256 | 163c18eef4ba8d8e8b74e6775dec40b3cf0a2d940d0c308f57de9d40819d77ee |
@@ -15,7 +15,7 @@ The rendered English of every printed line of `Form 4562 — one item of depreci
 | output token budget | transport default (65536 for DeepSeek) |
 | subject sha256 | fa356e4e0e1f6e98b2766a0aeab30290d5d4508f4c1850ce1017e47bd4473ab9 |
 | lines judged | 15 |
-| match / mismatch / unclear / missing | 13 / 2 / 0 / 0 |
+| match / mismatch / unclear / missing | 14 / 1 / 0 / 0 |
 | verdicts for lines not in the form | none |
 
 ## Source pages given to the model
@@ -33,20 +33,20 @@ The rendered English of every printed line of `Form 4562 — one item of depreci
 ### (a) — Asset class of the property (Pub. 946, Appendix B)
 Status: **MATCH**
 
-Model: This follows Pub. 946 Appendix B 'How To Use the Tables': use Table B-1, but use the Table B-2 period when the property is specifically listed under the activity. Classes A–C match 'Certain Property for Which Recovery Periods Assigned'. The QIP definition and the rule for additions and improvements match Pub. 946 pages 31 and 33.
-Reviewed in: pass cfd34aadb023
+Model: This follows Pub. 946 Appendix B: use Table B-2 when the property is specifically included under your activity, otherwise Table B-1. It also matches Pub. 946's definition of qualified improvement property and its rule that an addition or improvement takes the class of the property it improves.
+Reviewed in: pass 420a0bbe07a6
 
 ### (d) — Recovery period under GDS for the asset class
 Status: **MATCH**
 
-Model: Pub. 946 says 'The GDS recovery periods for property not listed above can be found in Appendix B, Table of Class Lives and Recovery Periods.' The instructions' column (d) table also gives these periods. Looking up the GDS column by asset class matches.
-Reviewed in: pass cfd34aadb023
+Model: Pub. 946 says GDS recovery periods for property not listed in its table 'can be found in Appendix B, Table of Class Lives and Recovery Periods'. The restatement looks up the GDS column for the class in column (a).
+Reviewed in: pass 420a0bbe07a6
 
 ### (screen) (asset.screen) — Does any of these apply to this property?
 Status: **MATCH**
 
-Model: This is an exclusion screen, and its items track the instructions' cases. These include ADS-required property ('Imported property covered by an executive order...'), basis-reducing credits and deductions, the table-use rules (short tax years, basis adjustments), section 168(k)(9) property and qualified business use exclusions. Each excluded case sends the filer outside the tool.
-Reviewed in: pass cfd34aadb023
+Model: This is a filer input that keeps out cases the text treats separately. Those include ADS-required property, other methods, basis adjustments that stop use of the tables, short tax years, used or 168(k)(9) property for the special allowance, and qualified business use of 50% or less. Each item agrees with the cited instruction and Pub. 946 text.
+Reviewed in: pass 420a0bbe07a6
 
 ### (b) — Year placed in service
 Status: **MATCH**
@@ -55,23 +55,36 @@ Model: This matches Pub. 946: 'the date the property is ready and available for 
 Reviewed in: pass cfd34aadb023
 
 ### (c) — Basis for depreciation (business/investment use only), before section 179 and the special
-Status: **MISMATCH**
+Status: **MATCH**
 
-Restated: Divide helper "The business use percentage, as cents" by helper "One hundred cents (100%)", rounded to 6 decimal places; if the result is 1 or more, use 1 (and 0 if it is less than 0). Multiply helper "Cost or other basis" by the result.
-
-Model: The restatement stops at cost times business-use percentage. The IRS column (c) basis is reduced further: 'multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property ... Section 179 expense deduction ... Any special depreciation allowance included on line 14.' The printed (c) does not subtract the section 179 deduction or the special allowance.
-
-Ruling: scope; same point as the backlog-round deepseek ruling of this marker. i4562 p. 11, Column (c): "multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property." This marker is the business basis before section 179 and the special allowance (its label); the reduced basis is printed at 19(c) (asset.col19c copies asset.ub, cited "From that result, subtract ... Section 179 expense deduction ... Any special depreciation allowance included on line 14"). asset.screen refuses property whose basis is reduced by any other credit or deduction, so on a computed return the only reductions are the two the project subtracts at 19(c). Project stands.
-Reviewed in: pass cfd34aadb023
+Model: Pub. 946: 'The basis for depreciation of MACRS property is the property's cost or other basis multiplied by the percentage of business/investment use'. The restatement figures this business cost before the later reductions, which are taken on 19(c).
+Reviewed in: pass 420a0bbe07a6
 
 ### 6(c) — Section 179 elected cost
 Status: **MISMATCH**
 
-Restated: Input — The amount of this property's cost you elect to expense under section 179 (zero if none; not more than its business cost). Only section 179 property qualifies: property you acquired by purchase for use in the active conduct of your business that is tangible personal property or off-the-shelf computer software, or other tangible property (not a building or its structural components) used as an integral part of manufacturing, production or extraction or of furnishing transportation, communications, electricity, gas, water or sewage disposal services (or as a research or bulk storage facility used with those activities), a storage facility (other than a building or its structural components) used in connection with distributing petroleum or any primary product of petroleum, or qualified improvement property you elect to treat as section 179 property. Enter zero for land and land improvements (such as swimming pools, paved parking areas, wharves, docks, bridges and fences), property held for investment, and property you purchased and lease to others, unless you manufactured or produced it, or the lease term is less than 50% of its class life and for the first 12 months after the transfer to the lessee your deductions for it as trade or business expenses (other than rents and reimbursed amounts) are more than 15% of its rental income. Also enter zero for property used by a tax-exempt organization (unless used in connection with the production of income subject to the tax on unrelated trade or business income) and property used by a governmental unit or a foreign person or entity (unless used under a lease with a term of less than 6 months).
+Restated: Input — The amount of this property's cost you elect to expense under section 179 (zero if none; not more than its business cost).
 
-Model: The restatement says 'Only section 179 property qualifies' and lists the categories, but leaves out a category the IRS includes. The instructions list '• Single purpose agricultural (livestock) or horticultural structures' as section 179 property, so the restatement would have the filer enter zero for such a structure.
+Only section 179 property qualifies: property you acquired by purchase for use in the active conduct of your business that is any of these:
 
-Ruling: scope; the model says the restatement omits single purpose agricultural or horticultural structures, which i4562 p. 2 lists as section 179 property. Such a structure is Table B-1 class 01.4 (p946 Appendix B, Agriculture), which tables/2025/class_lives.yaml maps to outside, so asset.outside refuses it before any election is figured; the omission changes no amount the tool computes. (The backlog-round ruling recorded this under BUG-0326; that entry's asset part is closed by BUG-0373 and the agriculture classes are refused.)
+- tangible personal property or off-the-shelf computer software
+- other tangible property (not a building or its structural components) used as an integral part of manufacturing, production or extraction or of furnishing transportation, communications, electricity, gas, water or sewage disposal services (or as a research or bulk storage facility used with those activities)
+- a storage facility (other than a building or its structural components) used in connection with distributing petroleum or any primary product of petroleum
+- qualified improvement property you elect to treat as section 179 property
+
+Enter zero for:
+- land and land improvements (such as swimming pools, paved parking areas, wharves, docks, bridges and fences)
+- property held for investment
+- property you purchased and lease to others, unless you manufactured or produced it, or the lease term is less than 50% of its class life and for the first 12 months after the transfer to the lessee your deductions for it as trade or business expenses (other than rents and reimbursed amounts) are more than 15% of its rental income
+
+Also enter zero for:
+- property used by a tax-exempt organization (unless used in connection with the production of income subject to the tax on unrelated trade or business income)
+- property used by a governmental unit or a foreign person or entity (unless used under a lease with a term of less than 6 months)
+
+Model: The restatement lists only some kinds of section 179 property. It omits a category the instructions include, 'Single purpose agricultural (livestock) or horticultural structures', so a filer with such a structure would be told to enter zero.
+
+Ruling: scope; same objection as the earlier rulings. i4562 p. 2 lists "Single purpose agricultural (livestock) or horticultural structures" as section 179 property; such a structure is Table B-1 class 01.4 (p946 Appendix B, Agriculture), which tables/2025/class_lives.yaml maps to outside, so asset.outside ("The asset class is outside this tool") refuses it before any election is figured. The petroleum storage facility, the other item the earlier finding named, is in the question's list (now its own bullet). The omission changes no amount the tool computes. Project stands.
+Reviewed in: pass 420a0bbe07a6
 
 ### (screen) (asset.bonus_same) — Is the choice the same for all property of this class placed in service in 2025?
 Status: **MATCH**
@@ -81,7 +94,8 @@ Model: The election out applies 'for any class of property ... for all such prop
 ### 14 — Special depreciation allowance for this property
 Status: **MATCH**
 
-Model: Uses 100% for property acquired after January 19, 2025, 40% when that election is made or for property acquired after September 27, 2017 and before January 20, 2025, and zero on election out. The rate is applied to the depreciable basis after section 179. Long-production property, aircraft, used property and other exceptions are screened out.
+Model: The instructions allow 100% for qualified property 'acquired after January 19, 2025', a 40% election 'instead of the 100%', 40% for property 'acquired after September 27, 2017, and before January 20, 2025', and an election out. The allowance is applied to the basis after section 179, matching 'after any section 179 expense deduction'.
+Reviewed in: pass 420a0bbe07a6
 
 ### 25 — Special depreciation allowance for this listed property (line 25)
 Status: **MATCH**
@@ -91,18 +105,20 @@ Model: Line 25 is the special depreciation allowance for qualified listed proper
 ### 26(i) — Elected section 179 cost of this listed property (column (i))
 Status: **MATCH**
 
-Model: Line 6 instructions say: 'Enter the elected section 179 cost of listed property in column (i) of line 26.' Listed property at 50% or less is refused.
+Model: Line 6 instructions: 'Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26.'
+Reviewed in: pass 420a0bbe07a6
 
 ### 19(c) — Basis for depreciation (business/investment use only), column (c), after the section 179 d
 Status: **MATCH**
 
-Model: Column (c) is cost times the business/investment use percentage, less deductions including the 'Section 179 expense deduction' and 'Any special depreciation allowance included on line 14'. Other credits and adjustments are screened out.
+Model: Column (c) instructions: multiply cost by the business/investment use percentage, then subtract the section 179 expense deduction and 'Any special depreciation allowance included on line 14'. Other reductions are screened out.
+Reviewed in: pass 420a0bbe07a6
 
 ### 19(g) — MACRS depreciation for 2025 property
 Status: **MATCH**
 
-Model: The basis times the table rate follows 'Multiply column (c) by the applicable rate from the appropriate table.' The basis is the business basis after section 179 and line 14. The test 5×Q4 > 2×total is the 'exceed 40%' test, applied to bases after section 179 and before the special allowance, as Pub. 946's caution requires. The quarter-specific mid-quarter tables are used.
-Reviewed in: pass cfd34aadb023
+Model: The instructions say to 'Multiply column (c) by the applicable rate from the appropriate table'. Mid-quarter applies when bases (after section 179, before the special allowance) placed in service in the last 3 months 'exceed 40%' of all bases; the test of five times the fourth-quarter bases against two times the total is the same. Otherwise half-year applies.
+Reviewed in: pass 420a0bbe07a6
 
 ### (e) — Convention used in the year placed in service
 Status: **MATCH**
@@ -112,8 +128,8 @@ Model: This is the convention used in the year placed in service, half-year or m
 ### 17 — MACRS deduction for 2025 on property placed in service before 2025
 Status: **MATCH**
 
-Model: Line 17 refers to the line 19(g) method. Pub. 946 says 'You must apply the rates in the percentage tables to your property's unadjusted basis', meaning basis reduced by the section 179 deduction and the special allowance. The original convention and the 2025 year of recovery are used, and zero is entered after the recovery period ends.
-Reviewed in: pass cfd34aadb023
+Model: Line 17 refers to the line 19(g) method, and Pub. 946 applies 'the rates in the percentage tables to your property's unadjusted basis'. Unadjusted basis is reduced by the section 179 deduction and the special allowance. The deduction is zero once the recovery period has ended, which is consistent with non-automobile property.
+Reviewed in: pass 420a0bbe07a6
 
 ### 26(h) — Depreciation of this listed property (column (h))
 Status: **MATCH**
@@ -127,20 +143,20 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 | line | subject sha256 |
 | --- | --- |
-| (a) | aa675ab644b2f8a35e6bf7acf7c32159b2f99b836865096d8a20b2175cd95050 |
-| (d) | 3182f942b566ee9e3a315b09b89e5388c0785adaa7aa2dce113e7406d27b32c0 |
-| (screen) (asset.screen) | 3df7a8a6d93402199693e764fa71178b18b4ae38d40d45df1b009561d0dd6572 |
+| (a) | e7ddc5c08fd4fdfb949997e3fd3aaa39b70c52428a85a8e87272ea5c37bda358 |
+| (d) | b92ddb258734975b9f3862acfd79b1bee56e7844fd13894f7e35d6be7c8d8e54 |
+| (screen) (asset.screen) | 403bea3751c53fd013b85f53589e47ad6da348c6eee96cc150f54b347c4d6009 |
 | (b) | 11c2b67acc1cf618b82feacbaddb645adda0fb28a8d1efc758cf7952f6f6cfd8 |
-| (c) | dbccd7a20e636911bf07ef24dc5576d34b12e3ff67ad8e277378ba33ef38a187 |
-| 6(c) | d5f79bcbeecfded424e48963a0b007790751499ee490e055b79b4c3e1627f753 |
+| (c) | d73586c607b01c97ecdfab67f565e7b67aaf3ed18e11df61d97bab267ebb8f74 |
+| 6(c) | 084dddb1873a0f47ceb66432c36955190ec9664cc738b5f474619c191e8ecce7 |
 | (screen) (asset.bonus_same) | 2f34e9e3885fb3fa0b0ec17dc96999e5445e98b80c54ddbaaa89064cca8fe4ea |
-| 14 | efe1faa232d84d1fa50d0042c6170b1fba6e791d51a4f8d77c78b3fd4a540fc7 |
+| 14 | 27d44495cfd6497c4dfdcdc5e24b593b76bb784200fd9031e9e335cfeb45e781 |
 | 25 | 4b426ebe7b78071c2a8116ed219a8177a4e50a5d5cd1964666a8cbc004017fea |
-| 26(i) | bd8b39d7968abb5158cc9063980a008ae12af3d23b7f787952a7d32d5daff3c9 |
-| 19(c) | a348543ed2f8ce1a5f3364af3b70ff6f70f79f708aea09279eb39440e6fee12b |
-| 19(g) | 4d9b19d140844f675a9f5e137f8603835e1249df6862c8eabeb18f127cf97f2d |
+| 26(i) | 972bf999bb72cb2de985955f855b6d9c9bae4e980b417a580fd7fd6d51ef6d5a |
+| 19(c) | 5b66752b589f0971467311e10fed998f21c63678fcf35bcdfbd9884586abec92 |
+| 19(g) | 03bbe7b036774ffb313bb79f78b8a4f71d9012e5e129191f610ef58659e0be41 |
 | (e) | 58c601084fe91483f688a5198d983bff68af4e5e06906923295c9f5e6a2925d6 |
-| 17 | 5a93b095d7fcd5d079c06e8ad3bfda8011c94dd0d7454fd8a020b8f4a5f3d5c4 |
+| 17 | 6a34fb433b328c67729c214a1ec1207019105c47a5d049f10f94ffc4706a75c5 |
 | 26(h) | c177f61a98dd2618c32a9fb4836533b01729248ee90a47cec70859fcd50cecd9 |
 | (rest of the document) | f636cbc4d4d8b77135b4fed9b7130553c8aeaa64b4580beda19da8d4f7a1c38a |
 
@@ -206,6 +222,74 @@ lines:
   - key: "26(h)"
     status: MATCH
     reason: "For listed property used more than 50%, 'figure column (h) by following the instructions for line 19, column (g)'. The restatement does this, taking the 2025-property or prior-year amount as applicable. Listed property used 50% or less is refused."
+```
+```
+
+#### Pass 420a0bbe07a6
+
+| field | value |
+| --- | --- |
+| date | 2026-11-07 |
+| review scope | lines (a), (d), (screen) (asset.screen), (c), 6(c), 14, 26(i), 19(c), 19(g), 17 |
+| model requested | claude-opus-5-5 |
+| model reported | claude-opus-5-5 |
+| prompt sha256 | 420a0bbe07a6c9933ea3fa233cec4ccef3ede17fe0253bc4c7b54022d05501f1 |
+| prompt policy | render-source-comparison-v2+lines-v1 |
+| system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
+| reasoning effort | provider default |
+| output token budget | transport default (65536 for DeepSeek) |
+| subject sha256 | 9da84f6710dde8fa01520bc38e4565739a737fa2eb5de13af9560462bfe13f3d |
+| receipt | .transcription/asset.render.lines-f9eada4139a6 |
+| lines judged | 10 |
+| match / mismatch / unclear / missing | 9 / 1 / 0 / 0 |
+| verdicts for lines not in the form | none |
+
+##### Source pages given to the model
+
+| document | revision | pages | selection | text sha256 | reading-order pages | cols sha256 |
+| --- | --- | --- | --- | --- | --- | --- |
+| i4562 | 2025 | 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16 | cited pages | cd46d169c3c1fc12d6f86f25fada33320d63996ab97d142a5202b6ede2c588d2 | 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 | 9466038a0fd7f12850357f7b5b2dd8b3de02e81e83face38fb5bc133ffea15c0 |
+| p946 | For use in preparing 2025 returns | 17, 31, 32, 33, 34, 37, 39, 41, 59, 61, 62, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108 | cited pages | 18296345e7f2db8e39983267c3e34105e259e807a64a61abe6cdc3790fab64b2 | 17, 31, 32, 33, 34, 37, 39, 41 | da26519fea1cf47d82c185c15ff4f55c7d7749eda83e608cfd4a597cfdb97fc7 |
+| i1040sc | 2025 | 6, 7, 14, 15 | cited pages | dc6f3ee7c7d3e34e515b9af9c411d94e35dcde16f162b9a07f28ac0a90012c4a | 6, 7, 14, 15 | 616b4ac7b587b39aea0d3295151bd50959103a4b1d2de2355886fd2a18d22918 |
+| f1040sc | 2025; created 2025-04-03 | 1, 2 | whole document | ff225eb24c4b5c837dad07d20c13abedf26000d03bb1fa6f39978de994d90022 | - | 44d2d9cfa2ff0e47f2ade1dd03e972f7c6cb10c7a4e36d882fa5a6ac2fa55376 |
+| n-25-05 | Notice 2025-5 | 1, 2, 3, 4, 5 | whole document | 394f6b5ffb7c30e745322f0f20d9137608b1e2429fc4c76b06dedd690d4fb6e3 | - | 349e2797f87c588214722bcd22b7ec317c86c90a255ec8496941ac0c09909a8d |
+| p463 | For use in preparing 2025 returns | 26 | pages named by another document's citation | 153efad2a94bcccadf643b0f28f913d74b7d70b727f73eca540a2ce4d32bbfda | 26 | a0b14576fdb49a7ba3e7a90092c1b8f6b8ba33889c8c35da5629156346581326 |
+
+##### Raw response
+
+```yaml
+```yaml
+lines:
+  - key: "(a)"
+    status: MATCH
+    reason: "This follows Pub. 946 Appendix B: use Table B-2 when the property is specifically included under your activity, otherwise Table B-1. It also matches Pub. 946's definition of qualified improvement property and its rule that an addition or improvement takes the class of the property it improves."
+  - key: "(d)"
+    status: MATCH
+    reason: "Pub. 946 says GDS recovery periods for property not listed in its table 'can be found in Appendix B, Table of Class Lives and Recovery Periods'. The restatement looks up the GDS column for the class in column (a)."
+  - key: "(screen) (asset.screen)"
+    status: MATCH
+    reason: "This is a filer input that keeps out cases the text treats separately. Those include ADS-required property, other methods, basis adjustments that stop use of the tables, short tax years, used or 168(k)(9) property for the special allowance, and qualified business use of 50% or less. Each item agrees with the cited instruction and Pub. 946 text."
+  - key: "(c)"
+    status: MATCH
+    reason: "Pub. 946: 'The basis for depreciation of MACRS property is the property's cost or other basis multiplied by the percentage of business/investment use'. The restatement figures this business cost before the later reductions, which are taken on 19(c)."
+  - key: "6(c)"
+    status: MISMATCH
+    reason: "The restatement lists only some kinds of section 179 property. It omits a category the instructions include, 'Single purpose agricultural (livestock) or horticultural structures', so a filer with such a structure would be told to enter zero."
+  - key: "14"
+    status: MATCH
+    reason: "The instructions allow 100% for qualified property 'acquired after January 19, 2025', a 40% election 'instead of the 100%', 40% for property 'acquired after September 27, 2017, and before January 20, 2025', and an election out. The allowance is applied to the basis after section 179, matching 'after any section 179 expense deduction'."
+  - key: "26(i)"
+    status: MATCH
+    reason: "Line 6 instructions: 'Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26.'"
+  - key: "19(c)"
+    status: MATCH
+    reason: "Column (c) instructions: multiply cost by the business/investment use percentage, then subtract the section 179 expense deduction and 'Any special depreciation allowance included on line 14'. Other reductions are screened out."
+  - key: "19(g)"
+    status: MATCH
+    reason: "The instructions say to 'Multiply column (c) by the applicable rate from the appropriate table'. Mid-quarter applies when bases (after section 179, before the special allowance) placed in service in the last 3 months 'exceed 40%' of all bases; the test of five times the fourth-quarter bases against two times the total is the same. Otherwise half-year applies."
+  - key: "17"
+    status: MATCH
+    reason: "Line 17 refers to the line 19(g) method, and Pub. 946 applies 'the rates in the percentage tables to your property's unadjusted basis'. Unadjusted basis is reduced by the section 179 deduction and the special allowance. The deduction is zero once the recovery period has ended, which is consistent with non-automobile property."
 ```
 ```
 

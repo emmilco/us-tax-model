@@ -1,14 +1,14 @@
 {
  "bank": {
   "evaluation_failures": 0,
-  "fixtures": 1565,
+  "fixtures": 1638,
   "generated": 500,
   "partial_bases": 40,
-  "partial_records": 589,
+  "partial_records": 476,
   "return_states": {
-   "completed": 389,
-   "incomplete": 915,
-   "refused": 1350
+   "completed": 402,
+   "incomplete": 993,
+   "refused": 1219
   },
   "seed": 20261026
  },
@@ -20,29 +20,27 @@
  "lines": [
   {
    "absent": 0,
-   "agree": 1942,
+   "agree": 1588,
    "candidate": "sales.e",
-   "compared": 2145,
+   "compared": 1765,
    "completed_witnesses": [],
-   "differ": 203,
+   "differ": 177,
    "handle": "(e)",
-   "in_scope": 2137,
-   "in_scope_agree": 1942,
+   "in_scope": 1757,
+   "in_scope_agree": 1588,
    "invalid": 0,
    "kinds": {
     "candidate-refuses": 8,
-    "candidate-unknown": 187,
-    "project-unknown": 1,
+    "candidate-unknown": 162,
     "value": 7
    },
    "kinds_by_return": {
     "incomplete": {
-     "candidate-unknown": 61
+     "candidate-unknown": 75
     },
     "refused": {
      "candidate-refuses": 8,
-     "candidate-unknown": 126,
-     "project-unknown": 1,
+     "candidate-unknown": 87,
      "value": 7
     }
    },
@@ -50,9 +48,9 @@
    "project": "sales.e",
    "shown_when": null,
    "sources": {
-    "fixture": 391,
+    "fixture": 399,
     "generated": 554,
-    "partial": 1200
+    "partial": 812
    },
    "status": "DISAGREE",
    "triage": "differs",
@@ -1483,145 +1481,44 @@
       "kind": "partial",
       "withheld": "sales[s1].code"
      }
-    },
-    {
-     "candidate": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "sales[s1].special",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sales[s1].h_other_code",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sales[s1].h_aggregate_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sales[s1].h_basis_reported",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "sales[s1].reported_basis",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "sales[s1]",
-     "kind": "project-unknown",
-     "project": {
-      "input": "sales[s1].correct_basis",
-      "kind": "unknown",
-      "reason": "no input supplied for sales[s1].correct_basis"
-     },
-     "project_operands": [
-      {
-       "ref": "sales[s1].covered",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "sales[s1].covered",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sales[s1].correct_basis",
-       "value": {
-        "input": "sales[s1].correct_basis",
-        "kind": "unknown",
-        "reason": "no input supplied for sales[s1].correct_basis"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "mutation.t2.person.eic_se_refusal_order",
-      "kind": "partial",
-      "withheld": "sales[s1].correct_basis"
-     }
     }
    ]
   },
   {
    "absent": 0,
-   "agree": 2011,
+   "agree": 1647,
    "candidate": "sales.g",
-   "compared": 2145,
+   "compared": 1765,
    "completed_witnesses": [],
-   "differ": 134,
+   "differ": 118,
    "handle": "(g)",
-   "in_scope": 2134,
-   "in_scope_agree": 2011,
+   "in_scope": 1754,
+   "in_scope_agree": 1647,
    "invalid": 0,
    "kinds": {
     "candidate-refuses": 8,
-    "candidate-unknown": 117,
+    "candidate-unknown": 104,
     "project-refuses": 3,
-    "project-unknown": 6
+    "project-unknown": 3
    },
    "kinds_by_return": {
     "incomplete": {
-     "candidate-unknown": 40
+     "candidate-unknown": 48
     },
     "refused": {
      "candidate-refuses": 8,
-     "candidate-unknown": 77,
+     "candidate-unknown": 56,
      "project-refuses": 3,
-     "project-unknown": 6
+     "project-unknown": 3
     }
    },
    "open_at_triage": true,
    "project": "sales.g",
    "shown_when": null,
    "sources": {
-    "fixture": 391,
+    "fixture": 399,
     "generated": 554,
-    "partial": 1200
+    "partial": 812
    },
    "status": "DISAGREE",
    "triage": "differs",
@@ -2520,225 +2417,6 @@
     },
     {
      "candidate": {
-      "cents": 92400,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "sales[s3].special",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sales[s3].h_other_code",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sales[s3].h_aggregate_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sales[s3].h_basis_adj",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "sales[s3].h_wash_adj",
-       "value": {
-        "cents": 92400,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "sales[s3]",
-     "kind": "project-unknown",
-     "project": {
-      "input": "sales[s3].box",
-      "kind": "unknown",
-      "reason": "no input supplied for sales[s3].box"
-     },
-     "project_operands": [
-      {
-       "ref": "sales[s3].b",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "sales[s3].w",
-       "value": {
-        "input": "sales[s3].box",
-        "kind": "unknown",
-        "reason": "no input supplied for sales[s3].box"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.sli.5",
-      "kind": "partial",
-      "withheld": "sales[s3].box"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 92400,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "sales[s3].special",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sales[s3].h_other_code",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sales[s3].h_aggregate_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sales[s3].h_basis_adj",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "sales[s3].h_wash_adj",
-       "value": {
-        "cents": 92400,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "sales[s3]",
-     "kind": "project-unknown",
-     "project": {
-      "input": "sales[s3].proceeds",
-      "kind": "unknown",
-      "reason": "no input supplied for sales[s3].proceeds"
-     },
-     "project_operands": [
-      {
-       "ref": "sales[s3].b",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "sales[s3].w",
-       "value": {
-        "input": "sales[s3].proceeds",
-        "kind": "unknown",
-        "reason": "no input supplied for sales[s3].proceeds"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.sli.5",
-      "kind": "partial",
-      "withheld": "sales[s3].proceeds"
-     }
-    },
-    {
-     "candidate": {
-      "cents": 92400,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "sales[s3].special",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sales[s3].h_other_code",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sales[s3].h_aggregate_bad",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "sales[s3].h_basis_adj",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "sales[s3].h_wash_adj",
-       "value": {
-        "cents": 92400,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "sales[s3]",
-     "kind": "project-unknown",
-     "project": {
-      "input": "sales[s3].correct_basis",
-      "kind": "unknown",
-      "reason": "no input supplied for sales[s3].correct_basis"
-     },
-     "project_operands": [
-      {
-       "ref": "sales[s3].b",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      },
-      {
-       "ref": "sales[s3].w",
-       "value": {
-        "input": "sales[s3].correct_basis",
-        "kind": "unknown",
-        "reason": "no input supplied for sales[s3].correct_basis"
-       }
-      }
-     ],
-     "project_return": "refused",
-     "source": {
-      "base": "classm.sli.5",
-      "kind": "partial",
-      "withheld": "sales[s3].correct_basis"
-     }
-    },
-    {
-     "candidate": {
       "cents": 4500,
       "kind": "money"
      },
@@ -2959,10 +2637,10 @@
    ]
   }
  ],
- "log_sha256_at_triage": "f91703ace3460f546843f3d6d0114ffacf06e63c5957f5be6a253c14e420bed6",
+ "log_sha256_at_triage": "259b6d0f91841fd1935e64aeea825c45a02e384e5b4405f3a9362b5fe4b441da",
  "policy": "executable-triage-v2",
  "response_sha256": "c76b7a9f97049a0c731c744c609a1c9ac454e207741a730a7b1c2de95738ef17",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "evaluated",
- "subject_sha256": "7555ba030958f03545c2e7c204caccd806775cdf44cd59cc8f0ba649d4b68626"
+ "subject_sha256": "15f6d320df83b57eb64b3394e4f61614b76eef591f460775ea1068ef45a445df"
 }

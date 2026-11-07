@@ -292,7 +292,23 @@ The data holds **199 refusal gates**: 160 tax situations the tool does not prepa
   - *Refused at:* `s2.line2`, `s2.line3`, `s2.line21`
   - *Share of returns (coverage estimate):* Alternative minimum tax, 0.1%
 - **`s2.other`**: Do you owe another Schedule 2 tax, such as household employment taxes, tax on unreported tips, or repayment of a clean vehicle credit?
-  - *The data asks or tests:* Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax, Net Investment Income Tax or the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures), for example the alternative minimum tax, repayment of a clean vehicle credit, household employment taxes, the additional tax on an HSA you did not keep as an eligible individual (Form 8889 Part III), uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N), tax on unreported tips (Form 4137), or interest on deferred tax? (Form 5329 Part I, early distributions, and the 2025 HSA excess are figured by this tool and are not other amounts.) (`input`)
+  - *The data asks or tests:* Any amount on Schedule 2 other than the following?
+
+    - self-employment tax from Schedule SE
+    - Additional Medicare Tax
+    - Net Investment Income Tax
+    - the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures)
+
+    Other amounts, for example:
+    - the alternative minimum tax
+    - repayment of a clean vehicle credit
+    - household employment taxes
+    - the additional tax on an HSA you did not keep as an eligible individual (Form 8889 Part III)
+    - uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N)
+    - tax on unreported tips (Form 4137)
+    - interest on deferred tax
+
+    Form 5329 Part I, early distributions, and the 2025 HSA excess are figured by this tool and are not other amounts. (`input`)
   - *Stops the return as:* Other Schedule 2 taxes
   - *Not covered:* Form 4137 (Social Security and Medicare Tax on Unreported Tip Income). Tips reported on Form 4137 are outside this tool.
     *Source:* [i1040gi] p. 101, Schedule 1-A, Part II, "If you received cash and charge tips of $20 or more in a calendar month and didn't report all of those tips to your employer, you must file Form 4137"; p. 104, line 4b
@@ -364,7 +380,21 @@ The data holds **199 refusal gates**: 160 tax situations the tool does not prepa
   - *Refused at:* `f1040.line30`, `f5695.rce_ws2`, `f5695.eehi_ws2`, `f8863.clw5`, `s3.line8`, `s8812.clw_a2`, `s8812.clw_a4`, `scope.ready`
   - *Share of returns (coverage estimate):* Other nonrefundable credits (general business, adoption, clean vehicle and others), 0.9%
 - **`f8960.unsupported`**: Do you have net investment income or adjustments the tool does not take for the Net Investment Income Tax: annuities, rentals, royalties, a business or pass-through, CFC or PFIC holdings, a section 1411 net operating loss, excluded savings bond interest, or another Form 8960 adjustment?
-  - *The data asks or tests:* Any annuity, rental, royalty, business or pass-through income; a CFC or PFIC holding; a section 911 exclusion; a disposition adjustment (Form 8960 line 5b or 5c, for example gain on employer securities attributable to net unrealized appreciation (NUA) from a qualified plan, or the sale of property held in a trade or business or of an interest in a partnership or S corporation, and an adjustment to a capital loss carryforward for losses excluded on those lines in an earlier year); a gain or loss from surrendering or otherwise disposing of a life insurance contract; a section 1411 net operating loss; section 404(k) dividends on employer securities held in an employee stock ownership plan (ESOP) and paid directly to you (Form 1099-DIV box 1a); excluded savings bond interest (Form 8815); a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment? (`input`)
+  - *The data asks or tests:* Any of the following?
+
+    - annuity, rental, royalty, business or pass-through income
+    - a CFC or PFIC holding
+    - a section 911 exclusion
+    - a disposition adjustment (Form 8960 line 5b or 5c), for example:
+      - gain on employer securities attributable to net unrealized appreciation (NUA) from a qualified plan
+      - the sale of property held in a trade or business or of an interest in a partnership or S corporation
+      - an adjustment to a capital loss carryforward for losses excluded on those lines in an earlier year
+    - a gain or loss from surrendering or otherwise disposing of a life insurance contract
+    - a section 1411 net operating loss
+    - section 404(k) dividends on employer securities held in an employee stock ownership plan (ESOP) and paid directly to you (Form 1099-DIV box 1a)
+    - excluded savings bond interest (Form 8815)
+    - a deductible investment expense other than investment interest or state and local tax
+    - another net investment income adjustment (`input`)
   - *Not covered:* Form 8960 additional adjustments. The required investment-income or MAGI modifications are outside this supported slice.
     *Source:* [f8960] Form 8960 (2025), Parts I–III, individual lines 1–17
   - *Refused at:* `f8960.line1`, `f8960.line3`, `f8960.line4a`, `f8960.line4b`, `f8960.line5b`, `f8960.line5c`, `f8960.line6`, `f8960.line7`, `f8960.line9c`, `f8960.line10`, `f8960.line13`
@@ -492,7 +522,15 @@ The data holds **199 refusal gates**: 160 tax situations the tool does not prepa
     *Source:* [f8949] Parts I and II, boxes G–L
   - *Refused at:* `sales.one`
 - **`sales.special`**: Did you sell collectibles, qualified small business stock (section 1202), or depreciable real property?
-  - *The data asks or tests:* Does this sale involve collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind), qualified small business stock with a section 1202 exclusion, depreciable real property (section 1250 property: generally, real property for which depreciation was allowed or allowable (claimed, or that you could have claimed), such as a home you once rented out or used in part as a home office), or an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost; or does it dispose of an investment in a qualified opportunity fund (QOF), or is any of its gain deferred by an investment in a QOF? (`input`)
+  - *The data asks or tests:* Does any of the following apply to this sale?
+
+    Does this sale involve:
+    - collectibles (works of art, rugs, antiques, metals such as gold, silver or platinum bullion, including shares of an exchange-traded fund or trust that holds gold, silver, platinum or other metals, gems, stamps, coins, alcoholic beverages or other tangible property of that kind)
+    - qualified small business stock with a section 1202 exclusion
+    - depreciable real property (section 1250 property: generally, real property for which depreciation was allowed or allowable (claimed, or that you could have claimed), such as a home you once rented out or used in part as a home office)
+    - an interest in a partnership, S corporation or trust (including S corporation stock) that holds collectibles or section 1250 property directly or through another entity, such as stock of an S corporation that owns art or gold worth more than its cost
+
+    Or does it dispose of an investment in a qualified opportunity fund (QOF), or is any of its gain deferred by an investment in a QOF? (`input`)
   - *Not covered:* Schedule D special gains worksheets. Sales of collectibles, section 1202 stock or section 1250 property, and sales of an interest in a partnership, S corporation or trust that holds collectibles or section 1250 property, are unsupported.
     *Source:* [i1040sd] pp. 11–12, lines 18 and 19
   - *Refused at:* `sales.one`
@@ -906,7 +944,19 @@ The data holds **199 refusal gates**: 160 tax situations the tool does not prepa
     *Source:* [f1040sa] Schedule A (2025), lines 1–18
   - *Refused at:* `sa.line6`, `sa.line8b`, `sa.line8c`, `sa.line13`, `sa.line15`, `sa.line16`, `sa.line12`, `sa.line17`
 - **`gift.special`**: Does a noncash gift need an appraisal or special treatment (over $5,000, a vehicle, intellectual property, inventory and similar)?
-  - *The data asks or tests:* Does this group need an appraisal or other special treatment: a deduction over $5,000 (before any income limit), or property worth more than $5,000, for one item or for similar items (items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land or buildings) given to all donees together (other than publicly traded securities: listed on a recognized stock exchange whose quotations are published daily, regularly traded on a national or regional over-the-counter market, or mutual fund shares quoted daily in a national newspaper), a noncash contribution reaching you through a Schedule K-1, vehicles, pass-through entity interests, intellectual property, inventory, conservation or partial interests, property with restrictions on its use, or a clothing or household item over $500 not in good used condition? (`input`)
+  - *The data asks or tests:* Does this group need an appraisal or other special treatment: any of the following?
+
+    - a deduction over $5,000 (before any income limit), or property worth more than $5,000, for one item or for similar items given to all donees together, other than publicly traded securities
+      - similar items: items of the same general category or type, such as coin collections, paintings, books, clothing, jewelry, nonpublicly traded stock, land or buildings
+      - publicly traded securities: listed on a recognized stock exchange whose quotations are published daily, regularly traded on a national or regional over-the-counter market, or mutual fund shares quoted daily in a national newspaper
+    - a noncash contribution reaching you through a Schedule K-1
+    - vehicles
+    - pass-through entity interests
+    - intellectual property
+    - inventory
+    - conservation or partial interests
+    - property with restrictions on its use
+    - a clothing or household item over $500 not in good used condition (`input`)
   - *Not covered:* Form 8283 special treatment. This contribution requires unsupported appraisal or special-property treatment.
     *Source:* [i8283] pp. 1–3, Who Must File and Which Sections To Complete; f8283 Section A
   - *Refused at:* `gift.allowed`

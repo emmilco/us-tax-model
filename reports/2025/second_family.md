@@ -1,6 +1,6 @@
 # Second-family review comparison — 2025
 
-Summary: 137 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 7.3% (299/4098 second-family lines judged; pending reviews are provisional); 66 eligible, 71 pending; raw agreement 81.8% (diagnostic only); current independence yield 147 line(s); both families disputed 534
+Summary: 137 form-kind pair(s) with logs from Claude and deepseek, gpt; ruled model-error noise 7.3% (299/4096 second-family lines judged; pending reviews are provisional); 64 eligible, 73 pending; raw agreement 81.8% (diagnostic only); current independence yield 148 line(s); both families disputed 534
 
 Written by `tools/transcription/compare_families.py` on 2026-11-07 from the review logs under `reviews/2025/`. For each form with a Claude log and a second model family's log of the same kind (`<form>.<family>.md`, families.py), the lines judged in both are compared.
 
@@ -42,16 +42,16 @@ Written by `tools/transcription/compare_families.py` on 2026-11-07 from the revi
 | household | deepseek (deepseek-flash) | 19 | 5 | 26.3% | 11/19 (57.9%) | pending | 2 | 10 | 2 | 0 |
 | interest | deepseek (deepseek-flash) | 0 | 0 | n/a | 0/0 (n/a) | pending | 0 | 0 | 0 | 0 |
 | ira | deepseek (deepseek-flash) | 29 | 6 | 20.7% | 16/29 (55.2%) | pending | 0 | 22 | 1 | 0 |
-| ltc | deepseek (deepseek-flash) | 2 | 2 | 100.0% | 0/2 (0.0%) | pass | 0 | 0 | 0 | 0 |
+| ltc | deepseek (deepseek-flash) | 2 | 2 | 100.0% | 0/2 (0.0%) | pending | 0 | 0 | 0 | 0 |
 | mq | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 1/1 (100.0%) | pending | 0 | 1 | 0 | 0 |
 | mq | gpt (gpt-6-astra) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 1 | 0 | 0 |
-| oi8z | deepseek (deepseek-flash) | 1 | 1 | 100.0% | 0/1 (0.0%) | pending | 0 | 0 | 0 | 0 |
+| oi8z | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 1/1 (100.0%) | pending | 0 | 1 | 0 | 0 |
 | qbi | deepseek (deepseek-flash) | 5 | 1 | 20.0% | 0/5 (0.0%) | pending | 2 | 2 | 0 | 0 |
 | qdcg | deepseek (deepseek-flash) | 26 | 23 | 88.5% | 0/26 (0.0%) | pending | 0 | 3 | 0 | 0 |
 | refund | deepseek (deepseek-flash) | 11 | 3 | 27.3% | 5/11 (45.5%) | pending | 4 | 4 | 0 | 0 |
 | s179 | deepseek (deepseek-flash) | 14 | 10 | 71.4% | 2/14 (14.3%) | pending | 1 | 2 | 1 | 0 |
 | s1a | deepseek (deepseek-flash) | 43 | 8 | 18.6% | 34/43 (79.1%) | pending | 1 | 34 | 0 | 0 |
-| s2 | deepseek (deepseek-flash) | 13 | 8 | 61.5% | 4/13 (30.8%) | pending | 4 | 1 | 0 | 0 |
+| s2 | deepseek (deepseek-flash) | 13 | 9 | 69.2% | 3/13 (23.1%) | pending | 3 | 1 | 0 | 0 |
 | s8812 | deepseek (deepseek-flash) | 51 | 12 | 23.5% | 32/51 (62.7%) | pending | 1 | 38 | 0 | 0 |
 | sa | deepseek (deepseek-flash) | 22 | 16 | 72.7% | 4/22 (18.2%) | pending | 2 | 4 | 0 | 0 |
 | sales | deepseek (deepseek-flash) | 4 | 1 | 25.0% | 0/4 (0.0%) | pending | 0 | 2 | 1 | 0 |
@@ -65,7 +65,7 @@ Written by `tools/transcription/compare_families.py` on 2026-11-07 from the revi
 | tcw | deepseek (deepseek-flash) | 1 | 0 | 0.0% | 0/1 (0.0%) | pending | 0 | 1 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 0 | 0.0% | 7/18 (38.9%) | pending | 0 | 18 | 0 | 0 |
 | w2 | deepseek (deepseek-flash) | 5 | 3 | 60.0% | 0/5 (0.0%) | pending | 0 | 1 | 1 | 0 |
-| **all** | | 843 | 289 | 34.3% | | | 77 | 456 | 21 | 3 |
+| **all** | | 843 | 289 | 34.3% | | | 76 | 457 | 21 | 3 |
 
 Pending aqee [deepseek]: no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending carloan [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
@@ -94,9 +94,10 @@ Pending gift [deepseek]: no verified current request context for claude: saved p
 Pending household [deepseek]: model-error noise above 10%.
 Pending interest [deepseek]: transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending ira [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
+Pending ltc [deepseek]: no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
 Pending mq [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending mq [gpt]: no verified current request context for claude: saved prompt differs from the original log receipt.
-Pending oi8z [deepseek]: transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
+Pending oi8z [deepseek]: model-error noise above 10%; pass dd6b6292bb45 of deepseek: no passing current expression type validation; no passing current expression type validation: deepseek; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending qbi [deepseek]: 4 open, unclassified or interface-gap rulings; transcription predates unit-preserving comparison; verified re-comparison required: claude, deepseek; no passing current expression type validation: claude, deepseek; no verified complete input context in the request: claude, deepseek.
 Pending qdcg [deepseek]: no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending refund [deepseek]: model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
@@ -105,7 +106,7 @@ Pending s1a [deepseek]: model-error noise above 10%; no passing current expressi
 Pending s2 [deepseek]: 1 open, unclassified or interface-gap rulings; model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending s8812 [deepseek]: model-error noise above 10%; no passing current expression type validation: claude, deepseek; no verified current request context for claude: current expression/refusal validation fails; no verified current request context for deepseek: current expression/refusal validation fails.
 Pending sa [deepseek]: 1 open, unclassified or interface-gap rulings; model-error noise above 10%; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
-Pending sales [deepseek]: no verified current request context for claude: pass 82f67b365891: saved prompt differs from the pass's receipt; no verified current request context for deepseek: pass 82f67b365891: saved prompt differs from the pass's receipt.
+Pending sales [deepseek]: no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
 Pending sb [deepseek]: no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
 Pending scope [deepseek]: no verified current request context for claude: required input/interface wording is missing or stale; no verified current request context for deepseek: required input/interface wording is missing or stale.
 Pending sd [deepseek]: model-error noise above 10%; no passing current expression type validation: deepseek; no verified current request context for claude: saved prompt differs from the original log receipt; no verified current request context for deepseek: saved prompt differs from the original log receipt.
@@ -182,7 +183,6 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | s179 | deepseek | s179.differs | DISAGREE | The IRS pages do not name this interface. Read here as whether the business income limitation reduces the deduction below the sum of lines 9 and 10, i.e. whether a carryover arises. |
 | s1a | deepseek | 38 | DISAGREE | (no reason given) |
 | s2 | deepseek | 11 | DISAGREE | (no reason given) |
-| s2 | deepseek | 21 | DISAGREE | Only the computed Part II amounts are summed; other Part II amounts are outside scope and covered by s2.other. |
 | s2 | deepseek | 4 | DISAGREE | (no reason given) |
 | s2 | deepseek | 8 (box) | DISAGREE | (no reason given) |
 | s8812 | deepseek | s8812.clwb_complete | DISAGREE | (no reason given) |
@@ -479,6 +479,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | ira | deepseek | ira.special_gate | DISAGREE | DISAGREE | (no reason given) |
 | mq | deepseek | mq.applies | DISAGREE | DISAGREE | (no reason given) |
 | mq | gpt | mq.applies | DISAGREE | DISAGREE | Applies to the supported property for which the mid-month convention does not apply. The comparison is strictly more than 40%; equality, including zero total basis, yields false. |
+| oi8z | deepseek | oi8z.taxable | DISAGREE | DISAGREE | (no reason given) |
 | qbi | deepseek | qbi.deduction | DISAGREE | DISAGREE | (no reason given) |
 | qbi | deepseek | qbi.taxable_before | DISAGREE | DISAGREE | (no reason given) |
 | qdcg | deepseek | 13 | DISAGREE | DISAGREE | (no reason given) |
@@ -568,7 +569,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | sa | deepseek | sa.deduction | DISAGREE | DISAGREE | (no reason given) |
 | sa | deepseek | sa.itemizes | DISAGREE | DISAGREE | (no reason given) |
 | sales | deepseek | (e) | DISAGREE | DISAGREE | (no reason given) |
-| sales | deepseek | (g) | DISAGREE | DISAGREE | The tool computes the code B basis adjustment and the code W wash-sale adjustment, including BW. Any other adjustment code is refused because its adjustment amount is not supplied. |
+| sales | deepseek | (g) | DISAGREE | DISAGREE | The closed input interface supplies no amount for adjustment code other (for example code E). The line is refused when sales.code is other; the supported cases none, B, W and BW compute the basis correction and the wash-sale adjustment from the supplied basis and wash-loss inputs. |
 | sd | deepseek | 10(d) | DISAGREE | DISAGREE | (no reason given) |
 | sd | deepseek | 10(e) | DISAGREE | DISAGREE | (no reason given) |
 | sd | deepseek | 10(g) | DISAGREE | DISAGREE | (no reason given) |
@@ -665,7 +666,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | form | second family (model) | lines judged by both | both agree | raw agreement | noise / judged | eligibility | current yield | both disputed | Claude only | not judged by both |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | aqee | deepseek (deepseek-flash) | 4 | 4 | 100.0% | 0/4 (0.0%) | pass | 0 | 0 | 0 | 0 |
-| asset | deepseek (deepseek-flash) | 14 | 10 | 71.4% | 0/14 (0.0%) | pending | 2 | 1 | 1 | 1 |
+| asset | deepseek (deepseek-flash) | 13 | 9 | 69.2% | 0/13 (0.0%) | pending | 3 | 0 | 1 | 2 |
 | carloan | deepseek (deepseek-flash) | 2 | 1 | 50.0% | 0/2 (0.0%) | pass | 0 | 1 | 0 | 0 |
 | clcw | deepseek (deepseek-flash) | 13 | 12 | 92.3% | 0/13 (0.0%) | pass | 0 | 0 | 1 | 0 |
 | clcw26 | deepseek (deepseek-flash) | 13 | 12 | 92.3% | 0/13 (0.0%) | pass | 0 | 0 | 1 | 0 |
@@ -691,7 +692,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | f8995a | deepseek (deepseek-flash) | 14 | 12 | 85.7% | 0/14 (0.0%) | pending | 1 | 0 | 1 | 0 |
 | ftc | deepseek (deepseek-flash) | 12 | 11 | 91.7% | 0/12 (0.0%) | pass | 0 | 1 | 0 | 0 |
 | g28 | deepseek (deepseek-flash) | 7 | 3 | 42.9% | 0/7 (0.0%) | pass | 0 | 4 | 0 | 0 |
-| gift | deepseek (deepseek-flash) | 5 | 5 | 100.0% | 0/5 (0.0%) | pass | 0 | 0 | 0 | 0 |
+| gift | deepseek (deepseek-flash) | 4 | 4 | 100.0% | 0/4 (0.0%) | pending | 0 | 0 | 0 | 1 |
 | household | deepseek (deepseek-flash) | 48 | 41 | 85.4% | 2/48 (4.2%) | pass | 5 | 2 | 0 | 0 |
 | interest | deepseek (deepseek-flash) | 2 | 2 | 100.0% | 0/2 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | ira | deepseek (deepseek-flash) | 21 | 13 | 61.9% | 0/21 (0.0%) | pending | 2 | 4 | 2 | 0 |
@@ -715,7 +716,7 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | sb | deepseek (deepseek-flash) | 6 | 4 | 66.7% | 0/6 (0.0%) | pending | 1 | 1 | 0 | 0 |
 | sc | deepseek (deepseek-flash) | 75 | 72 | 96.0% | 0/75 (0.0%) | pass | 3 | 0 | 0 | 0 |
 | scope | deepseek (deepseek-flash) | 5 | 1 | 20.0% | 2/5 (40.0%) | pending | 4 | 0 | 0 | 0 |
-| scveh | deepseek (deepseek-flash) | 27 | 21 | 77.8% | 1/27 (3.7%) | pass | 0 | 5 | 1 | 0 |
+| scveh | deepseek (deepseek-flash) | 27 | 20 | 74.1% | 1/27 (3.7%) | pass | 1 | 5 | 1 | 0 |
 | sd | deepseek (deepseek-flash) | 46 | 44 | 95.7% | 0/46 (0.0%) | pass | 0 | 1 | 1 | 0 |
 | sdtw | deepseek (deepseek-flash) | 47 | 46 | 97.9% | 0/47 (0.0%) | pass | 0 | 1 | 0 | 0 |
 | se | deepseek (deepseek-flash) | 15 | 10 | 66.7% | 0/15 (0.0%) | pending | 0 | 5 | 0 | 0 |
@@ -726,12 +727,13 @@ Pending w2 [deepseek]: transcription predates unit-preserving comparison; verifi
 | tipjob | deepseek (deepseek-flash) | 3 | 3 | 100.0% | 0/3 (0.0%) | pass | 0 | 0 | 0 | 0 |
 | u1250 | deepseek (deepseek-flash) | 18 | 4 | 22.2% | 0/18 (0.0%) | pass | 5 | 8 | 1 | 0 |
 | w2 | deepseek (deepseek-flash) | 17 | 16 | 94.1% | 1/17 (5.9%) | pass | 1 | 0 | 0 | 0 |
-| **all** | | 1325 | 1157 | 87.3% | | | 67 | 74 | 27 | 1 |
+| **all** | | 1323 | 1154 | 87.2% | | | 69 | 73 | 27 | 3 |
 
-Pending asset [deepseek]: 1 missing expected lines.
+Pending asset [deepseek]: 2 missing expected lines.
 Pending f8606 [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending f8995 [deepseek]: 2 open, unclassified or interface-gap rulings.
 Pending f8995a [deepseek]: 1 open, unclassified or interface-gap rulings.
+Pending gift [deepseek]: 1 missing expected lines.
 Pending ira [deepseek]: 5 open, unclassified or interface-gap rulings.
 Pending oi8z [deepseek]: 1 open, unclassified or interface-gap rulings.
 Pending qbi [deepseek]: model-error noise above 10%.
@@ -744,8 +746,9 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 
 | form | second family | line | second family's verdict | second family's reason |
 | --- | --- | --- | --- | --- |
+| asset | deepseek | (c) | MISMATCH | IRS column (c) says: "From that result, subtract any credits and deductions allocable to the property," including the section 179 expense deduction and special depreciation allowance; the restatement only multiplies cost by the business-use percentage and omits those subtractions. |
 | asset | deepseek | 25 | MISMATCH | IRS line 25 says 'Enter on line 25 your total special depreciation allowance for all qualified listed property'; line 14 is not the listed-property special allowance total, so copying line 14 uses a different operand. |
-| asset | deepseek | 26(i) | MISMATCH | IRS says 'Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26.'; line 6(c) is not the listed-property elected section 179 cost. |
+| asset | deepseek | 26(i) | MISMATCH | IRS line 6 says: "Do not include any listed property on line 6. Enter the elected section 179 cost of listed property in column (i) of line 26." The restatement instead says to enter the amount from line 6(c), which is the non-listed-property line. |
 | div | deepseek | unsupported | MISMATCH | MISMATCH: The IRS text says 'Any amount received in excess of your basis is taxable to you as capital gain.' The condition only flags Box 3 when basis reductions were not applied to records with no distribution exceeding basis, so it omits distributions exceeding basis. |
 | f1040 | deepseek | 16 | MISMATCH | The restatement also requires the Qualified Dividends and Capital Gain Tax Worksheet to apply, but the IRS says to use the Schedule D Tax Worksheet if 'You have to file Form 4952 and you have an amount on line 4g, even if you don’t need to file Schedule D.' |
 | f1040 | deepseek | 1z | MISMATCH | IRS line 1z says 'Add lines 1a through 1h', but the restatement adds only line 1a and line 1e, omitting lines 1b through 1d and 1f through 1h. |
@@ -803,6 +806,7 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | scope | deepseek | other_income | UNCLEAR | The text supports the Form 8915-F disaster-distribution and Form 8606 qualified-reservist repayment items, but it does not cover the nonresident-alien status screen or most other listed income/return treatments, so the full restatement cannot be judged. |
 | scope | deepseek | other_line16 | MISMATCH | The restatement treats CFC/PFIC stock ownership as an additional Form 1040 line 16 tax/filing, but IRS i8960 says CFC/PFIC ownership may require MAGI adjustments on Form 8960 line 13: "If you own, directly or indirectly, stock in a CFC or PFIC ... to calculate your MAGI, you may need to make certain adjustments to your AGI" and "enter your AGI ... on line 13 of Form 8960." |
 | scope | deepseek | schedule1 | MISMATCH | The restatement lists statutory-employee, minister, and church-employee income as Schedule 1 items, but the IRS text directs statutory employee social security wages and tips to Schedule SE line 8a ("be sure to include on line 8a statutory employee social security wages and tips from Form W-2") and minister/church-employee income to Schedule SE lines 2/5a, not Schedule 1. |
+| scveh | deepseek | (screen) (scveh.screen) | MISMATCH | The screen treats 'an electric vehicle placed in service before 2007' as a special case, but the IRS text defines the special electric-vehicle category as 'vehicles produced by an original equipment manufacturer and designed to run primarily on electricity, placed in service after August 5, 1997, and before January 1, 2007'; the lower date and design/OEM limits are omitted. |
 | sli | deepseek | 6 | MISMATCH | The IRS line says "No. Skip lines 6 and 7, enter -0- on line 8, and go to line 9"; the restatement subtracts line 5 from line 4 without that condition, so line 6 would be negative when line 4 is not more than line 5. |
 | ssb | deepseek | 9 | MISMATCH | The IRS line 9 is conditional: “Is the amount on line 8 less than the amount on line 7? No. STOP None of your social security benefits are taxable... Yes. Subtract line 8 from line 7.” The restatement instead always subtracts and floors at zero, omitting the No/STOP condition. |
 | u1250 | deepseek | 2 | MISMATCH | IRS line 2 says 'Enter the amount from Form 4797, line 26g, for the property for which you made an entry on line 1'; the restatement always enters div.screen $0 and does not exclude Form 4797 property. |
@@ -816,7 +820,6 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 
 | form | second family | line | Claude | second family | second family's reason |
 | --- | --- | --- | --- | --- | --- |
-| asset | deepseek | (c) | MISMATCH | MISMATCH | IRS column (c) says: 'To find the basis for depreciation, multiply the cost or other basis of the property by the percentage of business/investment use. From that result, subtract any credits and deductions allocable to the property.' The restatement only multiplies cost by the business-use percentage and omits the required subtraction. |
 | carloan | deepseek | 22(ii) | MISMATCH | MISMATCH | The IRS text says 'enter the amount of the QPVLI, if any, that was deducted elsewhere on your return (for example, on Schedule C, Schedule E, or Schedule F),' but the restatement computes only the QPVLI part of Schedule C interest and omits other elsewhere-deducted QPVLI such as Schedule E or Schedule F. |
 | dependent | deepseek | 2(d) | MISMATCH | MISMATCH | The helper includes 'expenses paid with dependent care benefits', but Form 2441 line 2(d) instructions say 'If you completed Part III, don't include in column (d) any benefits shown on line 28.' |
 | f1040 | deepseek | 29 | UNCLEAR | MISMATCH | The eligibility test uses only expenses paid and dependent status, but Form 8863 instructions state, for example, 'You cannot claim an education credit ... if ... Your filing status is married filing separately' and impose other eligibility limits. |
@@ -865,8 +868,8 @@ Pending sli [deepseek]: 3 open, unclassified or interface-gap rulings.
 | s8812 | deepseek | 18a | UNCLEAR | MISMATCH | The Earned Income Chart says a filer with net earnings from self-employment who uses either optional method enters the Earned Income Worksheet amount 'even if you are also taking the EIC,' and its Worksheet B branch is for filers who 'completed Worksheet B.' The restatement instead always uses Worksheet B line 4b whenever its self-employed helper is true. |
 | s8812 | deepseek | 21 | UNCLEAR | MISMATCH | The Additional Medicare Tax and RRTA Tax Worksheet line 16 says 'Add lines 6, 7, 11, and 15' and enter on line 21. The restatement adds only worksheet lines 6 and 7, omitting Tier 1 RRTA lines 11 and 15, with no RRTA refusal. |
 | sa | deepseek | 1 | MISMATCH | MISMATCH | The restatement omits the eligible category in the IRS instructions: 'Any person you could have claimed as a dependent except that you or your spouse if filing jointly can be claimed as a dependent on someone else's 2025 return.' |
-| sales | deepseek | (e) | MISMATCH | MISMATCH | The program's 'Basis reported to IRS' gate is defined as classification A or D, not whether basis was reported to the IRS; so boxes G/J with basis reported would use the correct basis instead of the reported basis required by 'If the basis was reported to the IRS, enter the reported basis shown ... in column (e).' |
-| sales | deepseek | (g) | MISMATCH | MISMATCH | IRS column (g) says to 'Enter in this column any necessary adjustments to gain (or loss)' and, if more than one code applies, enter the net adjustment; the restatement adds only code B and code W adjustments, omitting other adjustments such as code E. |
+| sales | deepseek | (e) | MISMATCH | MISMATCH | The restatement routes basis-reported transactions by the helper “Basis reported to IRS,” which is true only for boxes A or D. IRS also says “Box A or Box G” and “Box D or Box J” transactions with an amount shown for cost or other basis were reported to the IRS, so G/J digital-asset transactions would use the records-basis branch instead of the broker-reported basis required for column (e). |
+| sales | deepseek | (g) | MISMATCH | MISMATCH | IRS column (g) is for “any necessary adjustments to gain (or loss)” and specifically includes code E selling expenses, digital asset transaction costs, and option premiums; the restatement only adds the code B basis correction and code W wash-sale adjustment, omitting other column (g) adjustments. |
 | sb | deepseek | 4 | UNCLEAR | UNCLEAR | The provided IRS text contains no line 4 instruction or statement that line 4 is line 2 minus line 3, so the arithmetic cannot be verified from the text given. |
 | scveh | deepseek | (b) | MISMATCH | MISMATCH | The IRS column (b) instruction says 'Enter the date the property was placed in service' and treats converted property as placed in service on the conversion date; the restatement asks only for the year. |
 | scveh | deepseek | 13 | MISMATCH | MISMATCH | The IRS line is 'Depreciation and section 179 expense deduction'; the restatement instead computes Form 4562 Part V column (e), 'Basis for depreciation (business/investment use only),' by multiplying column (d) by business-use percentage, omitting the depreciation rate and passenger automobile limits. |

@@ -289,23 +289,27 @@ bank:
     order: 10
     help: Enter the correct disallowed loss. Wash sales are not detected automatically. If correcting a broker amount
       downward, attach the explanation required by code W.
-    prompt: Correct nondeductible wash-sale loss, as a positive amount, including losses not reported by broker, and 0 if no
-      part of the loss is from a wash sale. A wash sale occurs when you sell or trade stock or securities (including a
-      contract or option to acquire or sell stock or securities) at a loss and, within 30 days before or after the sale,
-      you buy substantially identical stock or securities, acquire them in a fully taxable trade, acquire a contract or
-      option to buy them, or acquire substantially identical stock or securities for your IRA or Roth IRA; it is also a
-      wash sale if your spouse or a corporation you control buys substantially identical stock. A loss on a short sale
-      is a wash sale if you sell, or enter into another short sale of, substantially identical stock or securities
-      within 30 days before or after the date the short sale is complete. A short sale is complete when you deliver the
-      property to close it; but if, on the date you entered into it, you owned stock or securities identical to those
-      sold short (or had a contract or option to acquire them) and you later deliver them to close it, it is complete on
-      the date you entered into it. If you bought more or fewer shares than you sold, the rules apply only to the sold
-      shares matched with shares bought, in the order you bought them. The rules do not apply to a loss incurred in the
-      ordinary course of your business as a dealer in stock or securities, to commodity futures contracts or foreign
-      currencies, or to a redemption of shares in a floating-NAV money market fund. For a residual interest in a real
-      estate mortgage investment conduit (REMIC), the period is 6 months before or after the sale, and acquiring any
-      residual interest in any REMIC or a comparable interest in a taxable mortgage pool counts. The loss entered cannot
-      be more than the loss on this sale (column (e) less column (d), after any code B basis correction).
+    prompt: |-
+      Correct nondeductible wash-sale loss, as a positive amount, including losses not reported by broker, and 0 if no part of the loss is from a wash sale.
+
+      Wash sales:
+      - A wash sale occurs when you sell or trade stock or securities (including a contract or option to acquire or sell stock or securities) at a loss and, within 30 days before or after the sale, you:
+        - buy substantially identical stock or securities
+        - acquire them in a fully taxable trade
+        - acquire a contract or option to buy them
+        - acquire substantially identical stock or securities for your IRA or Roth IRA
+      - It is also a wash sale if your spouse or a corporation you control buys substantially identical stock.
+      - A loss on a short sale is a wash sale if you sell, or enter into another short sale of, substantially identical stock or securities within 30 days before or after the date the short sale is complete.
+      - A short sale is complete when you deliver the property to close it; but if, on the date you entered into it, you owned stock or securities identical to those sold short (or had a contract or option to acquire them) and you later deliver them to close it, it is complete on the date you entered into it.
+      - If you bought more or fewer shares than you sold, the rules apply only to the sold shares matched with shares bought, in the order you bought them.
+      - For a residual interest in a real estate mortgage investment conduit (REMIC), the period is 6 months before or after the sale, and acquiring any residual interest in any REMIC or a comparable interest in a taxable mortgage pool counts.
+
+      The rules do not apply:
+      - to a loss incurred in the ordinary course of your business as a dealer in stock or securities
+      - to commodity futures contracts or foreign currencies
+      - to a redemption of shares in a floating-NAV money market fund
+
+      The loss entered cannot be more than the loss on this sale (column (e) less column (d), after any code B basis correction).
   - input: sb.unsupported
     order: 10
   - input: sb.ordinary_dividends

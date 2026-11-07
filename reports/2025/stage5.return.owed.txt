@@ -1784,7 +1784,21 @@ Values sheet — tax year 2025 (not a complete return for all filers)
       cite: [f8959] p. 1, Part V, line 24, "Total Additional Medicare Tax withholding. Add lines 22 and 23"; i8959 pp. 1–3 (2025; created 2025-04-30; 13e64004)
 
 == Form 8960 — wage, interest, dividend and securities slice ==
-  (helper) Any annuity, rental, royalty, business or pass-through income; a CFC or PFIC holding; a section 911 exclusion; a disposition adjustment (Form 8960 line 5b or 5c, for example gain on employer securities attributable to net unrealized appreciation (NUA) from a qualified plan, or the sale of property held in a trade or business or of an interest in a partnership or S corporation, and an adjustment to a capital loss carryforward for losses excluded on those lines in an earlier year); a gain or loss from surrendering or otherwise disposing of a life insurance contract; a section 1411 net operating loss; section 404(k) dividends on employer securities held in an employee stock ownership plan (ESOP) and paid directly to you (Form 1099-DIV box 1a); excluded savings bond interest (Form 8815); a deductible investment expense other than investment interest or state and local tax; or another net investment income adjustment?
+  (helper) Any of the following?
+
+      - annuity, rental, royalty, business or pass-through income
+      - a CFC or PFIC holding
+      - a section 911 exclusion
+      - a disposition adjustment (Form 8960 line 5b or 5c), for example:
+        - gain on employer securities attributable to net unrealized appreciation (NUA) from a qualified plan
+        - the sale of property held in a trade or business or of an interest in a partnership or S corporation
+        - an adjustment to a capital loss carryforward for losses excluded on those lines in an earlier year
+      - a gain or loss from surrendering or otherwise disposing of a life insurance contract
+      - a section 1411 net operating loss
+      - section 404(k) dividends on employer securities held in an employee stock ownership plan (ESOP) and paid directly to you (Form 1099-DIV box 1a)
+      - excluded savings bond interest (Form 8815)
+      - a deductible investment expense other than investment interest or state and local tax
+      - another net investment income adjustment
       = false
       cite: [f8960] Form 8960 (2025), Parts I–III, individual lines 1–17; i8960 p. 9, line 5b, "Any gain attributable to NUA (within the meaning of section 402(e)(4)) that you realize on a disposition of employer securities held by a qualified plan is a distribution within the meaning of section 1411(c)(5) and isn’t included in NII."; i8960 p. 7, Line 2—Ordinary Dividends, "If line 2 includes dividends from employer securities held in an employee stock ownership plan (ESOP) that are deductible under section 404(k) or Alaska Permanent Fund Dividends, include those amounts as negative modifications on line 7"; i8960 p. 13, Line 7—Other Modifications to Investment Income, "Section 404(k) dividends reported on line 2 (enter as a negative amount)" and "Gain or loss from the disposition of an annuity or life insurance contract"; i8960 p. 9, Adjustments to your capital loss carryforwards, "capital loss carryforwards must be adjusted if any sum of all capital gain or loss amounts excluded from NII on lines 5b and 5c was a net loss"; i1099div p. 4, Box 1a, "Include reinvested dividends and section 404(k) dividends paid directly from the corporation" (2025; created 2025-08-19; 9b323b71)
   (gate) Was there an amount on line 2(i) of the Net Gains and Losses Worksheet (Form 8960 instructions) when you figured your 2024 net investment income tax?
@@ -5873,7 +5887,23 @@ Values sheet — tax year 2025 (not a complete return for all filers)
   (helper) Are you required to file Form 6251 or do you have an AMT adjustment requiring its review?
       = false
       cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
-  (helper) Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax, Net Investment Income Tax or the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures), for example the alternative minimum tax, repayment of a clean vehicle credit, household employment taxes, the additional tax on an HSA you did not keep as an eligible individual (Form 8889 Part III), uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N), tax on unreported tips (Form 4137), or interest on deferred tax? (Form 5329 Part I, early distributions, and the 2025 HSA excess are figured by this tool and are not other amounts.)
+  (helper) Any amount on Schedule 2 other than the following?
+
+      - self-employment tax from Schedule SE
+      - Additional Medicare Tax
+      - Net Investment Income Tax
+      - the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures)
+
+      Other amounts, for example:
+      - the alternative minimum tax
+      - repayment of a clean vehicle credit
+      - household employment taxes
+      - the additional tax on an HSA you did not keep as an eligible individual (Form 8889 Part III)
+      - uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N)
+      - tax on unreported tips (Form 4137)
+      - interest on deferred tax
+
+      Form 5329 Part I, early distributions, and the 2025 HSA excess are figured by this tool and are not other amounts.
       = false
       cite: [f1040s2] Schedule 2 (2025), lines 2, 3, 11, 12 and 21 (2025; created 2025-05-08; 64d867b6)
   (helper) Year parameter sales.zero

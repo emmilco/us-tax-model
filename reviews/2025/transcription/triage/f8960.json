@@ -1,14 +1,14 @@
 {
  "bank": {
   "evaluation_failures": 0,
-  "fixtures": 1565,
+  "fixtures": 1638,
   "generated": 500,
   "partial_bases": 40,
-  "partial_records": 121,
+  "partial_records": 112,
   "return_states": {
-   "completed": 410,
-   "incomplete": 818,
-   "refused": 958
+   "completed": 427,
+   "incomplete": 830,
+   "refused": 993
   },
   "seed": 20261026
  },
@@ -20,65 +20,10 @@
  "lines": [
   {
    "absent": 0,
-   "agree": 2128,
+   "agree": 2203,
    "candidate": "f8960.line13",
-   "compared": 2186,
+   "compared": 2250,
    "completed_witnesses": [
-    {
-     "candidate": {
-      "cents": 7313500,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8960.unsupported",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.line11a",
-       "value": {
-        "cents": 7313500,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "f8960",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i8960",
-       "locator": "pp. 14\u201315, deduction recoveries; compare i1040gi p. 90, state/local income tax refund worksheet"
-      },
-      "form": "Form 8960 Deduction Recoveries Worksheet / Schedule 1",
-      "gate": "f8960.refund",
-      "kind": "refusal",
-      "remedy": "A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1 reporting; this path is outside scope."
-     },
-     "project_operands": [
-      {
-       "ref": "f8960.unsupported",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f8960.refund",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.person.1.deepseek",
-      "kind": "fixture"
-     }
-    },
     {
      "candidate": {
       "cents": 7313500,
@@ -350,7 +295,62 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.person.1",
+      "id": "mutation.t2.hoh_s1a_tips_ot",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cents": 13000000,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line11a",
+       "value": {
+        "cents": 13000000,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i8960",
+       "locator": "pp. 14\u201315, deduction recoveries; compare i1040gi p. 90, state/local income tax refund worksheet"
+      },
+      "form": "Form 8960 Deduction Recoveries Worksheet / Schedule 1",
+      "gate": "f8960.refund",
+      "kind": "refusal",
+      "remedy": "A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1 reporting; this path is outside scope."
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage5.return.refund_f8960_refund_unused",
       "kind": "fixture"
      }
     },
@@ -401,14 +401,14 @@
      ],
      "project_return": "completed",
      "source": {
-      "base": "classm.sd.1.deepseek",
+      "base": "classm.g28.1.deepseek",
       "kind": "partial",
       "withheld": "f8960.refund"
      }
     },
     {
      "candidate": {
-      "cents": 6896500,
+      "cents": 16822738,
       "kind": "money"
      },
      "candidate_operands": [
@@ -422,7 +422,7 @@
       {
        "ref": "f1040.line11a",
        "value": {
-        "cents": 6896500,
+        "cents": 16822738,
         "kind": "money"
        }
       }
@@ -453,14 +453,14 @@
      ],
      "project_return": "completed",
      "source": {
-      "base": "classm.u1250.2.deepseek",
+      "base": "classm.u1250.1.deepseek",
       "kind": "partial",
       "withheld": "f8960.refund"
      }
     },
     {
      "candidate": {
-      "cents": 130200,
+      "cents": 16822738,
       "kind": "money"
      },
      "candidate_operands": [
@@ -474,7 +474,7 @@
       {
        "ref": "f1040.line11a",
        "value": {
-        "cents": 130200,
+        "cents": 16822738,
         "kind": "money"
        }
       }
@@ -505,14 +505,14 @@
      ],
      "project_return": "completed",
      "source": {
-      "base": "classm.clcw26.2.deepseek",
+      "base": "classm.clcw26.1.deepseek",
       "kind": "partial",
       "withheld": "f8960.refund"
      }
     },
     {
      "candidate": {
-      "cents": 189300,
+      "cents": 3293600,
       "kind": "money"
      },
      "candidate_operands": [
@@ -526,7 +526,7 @@
       {
        "ref": "f1040.line11a",
        "value": {
-        "cents": 189300,
+        "cents": 3293600,
         "kind": "money"
        }
       }
@@ -557,14 +557,14 @@
      ],
      "project_return": "completed",
      "source": {
-      "base": "classm.s3.3.deepseek",
+      "base": "classm.s2.1.deepseek",
       "kind": "partial",
       "withheld": "f8960.refund"
      }
     },
     {
      "candidate": {
-      "cents": 7313500,
+      "cents": 2712500,
       "kind": "money"
      },
      "candidate_operands": [
@@ -578,7 +578,7 @@
       {
        "ref": "f1040.line11a",
        "value": {
-        "cents": 7313500,
+        "cents": 2712500,
         "kind": "money"
        }
       }
@@ -609,14 +609,14 @@
      ],
      "project_return": "completed",
      "source": {
-      "base": "classm.person.1.deepseek",
+      "base": "classm.s3.2.deepseek",
       "kind": "partial",
       "withheld": "f8960.refund"
      }
     },
     {
      "candidate": {
-      "cents": 7313500,
+      "cents": 2712500,
       "kind": "money"
      },
      "candidate_operands": [
@@ -630,7 +630,7 @@
       {
        "ref": "f1040.line11a",
        "value": {
-        "cents": 7313500,
+        "cents": 2712500,
         "kind": "money"
        }
       }
@@ -661,100 +661,45 @@
      ],
      "project_return": "completed",
      "source": {
-      "base": "classm.f8880.4.deepseek",
+      "base": "classm.f8962.1.deepseek",
       "kind": "partial",
       "withheld": "f8960.refund"
      }
     }
    ],
-   "differ": 58,
+   "differ": 47,
    "handle": "13",
-   "in_scope": 1751,
-   "in_scope_agree": 1712,
+   "in_scope": 1811,
+   "in_scope_agree": 1775,
    "invalid": 0,
    "kinds": {
-    "project-refuses": 19,
-    "project-unknown": 39
+    "project-refuses": 11,
+    "project-unknown": 36
    },
    "kinds_by_return": {
     "completed": {
-     "project-refuses": 15,
-     "project-unknown": 16
+     "project-refuses": 7,
+     "project-unknown": 18
     },
     "incomplete": {
-     "project-unknown": 17
+     "project-unknown": 9
     },
     "refused": {
      "project-refuses": 4,
-     "project-unknown": 6
+     "project-unknown": 9
     }
    },
    "open_at_triage": true,
    "project": "f8960.line13",
    "shown_when": null,
    "sources": {
-    "fixture": 1565,
+    "fixture": 1638,
     "generated": 500,
-    "partial": 121
+    "partial": 112
    },
    "status": "DISAGREE",
    "triage": "differs",
    "witnesses": [
-    {
-     "candidate": {
-      "cents": 7313500,
-      "kind": "money"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8960.unsupported",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f1040.line11a",
-       "value": {
-        "cents": 7313500,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "f8960",
-     "kind": "project-refuses",
-     "project": {
-      "cite": {
-       "doc": "i8960",
-       "locator": "pp. 14\u201315, deduction recoveries; compare i1040gi p. 90, state/local income tax refund worksheet"
-      },
-      "form": "Form 8960 Deduction Recoveries Worksheet / Schedule 1",
-      "gate": "f8960.refund",
-      "kind": "refusal",
-      "remedy": "A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1 reporting; this path is outside scope."
-     },
-     "project_operands": [
-      {
-       "ref": "f8960.unsupported",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f8960.refund",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.person.1.deepseek",
-      "kind": "fixture"
-     }
-    },
     {
      "candidate": {
       "cents": 7313500,
@@ -1032,6 +977,61 @@
     },
     {
      "candidate": {
+      "cents": 7313500,
+      "kind": "money"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f1040.line11a",
+       "value": {
+        "cents": 7313500,
+        "kind": "money"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "i8960",
+       "locator": "pp. 14\u201315, deduction recoveries; compare i1040gi p. 90, state/local income tax refund worksheet"
+      },
+      "form": "Form 8960 Deduction Recoveries Worksheet / Schedule 1",
+      "gate": "f8960.refund",
+      "kind": "refusal",
+      "remedy": "A prior deducted expense recovery needs the NIIT recovery worksheet and review of Schedule 1 reporting; this path is outside scope."
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.unsupported",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.refund",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "mutation.t2.hoh_s1a_tips_ot",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
       "cents": 5000000,
       "kind": "money"
      },
@@ -1233,14 +1233,14 @@
      ],
      "project_return": "completed",
      "source": {
-      "base": "classm.sd.1.deepseek",
+      "base": "classm.g28.1.deepseek",
       "kind": "partial",
       "withheld": "f8960.refund"
      }
     },
     {
      "candidate": {
-      "cents": 6896500,
+      "cents": 16822738,
       "kind": "money"
      },
      "candidate_operands": [
@@ -1254,7 +1254,7 @@
       {
        "ref": "f1040.line11a",
        "value": {
-        "cents": 6896500,
+        "cents": 16822738,
         "kind": "money"
        }
       }
@@ -1285,14 +1285,14 @@
      ],
      "project_return": "completed",
      "source": {
-      "base": "classm.u1250.2.deepseek",
+      "base": "classm.u1250.1.deepseek",
       "kind": "partial",
       "withheld": "f8960.refund"
      }
     },
     {
      "candidate": {
-      "cents": 130200,
+      "cents": 16822738,
       "kind": "money"
      },
      "candidate_operands": [
@@ -1306,7 +1306,7 @@
       {
        "ref": "f1040.line11a",
        "value": {
-        "cents": 130200,
+        "cents": 16822738,
         "kind": "money"
        }
       }
@@ -1337,7 +1337,7 @@
      ],
      "project_return": "completed",
      "source": {
-      "base": "classm.clcw26.2.deepseek",
+      "base": "classm.clcw26.1.deepseek",
       "kind": "partial",
       "withheld": "f8960.refund"
      }
@@ -1346,30 +1346,31 @@
   },
   {
    "absent": 0,
-   "agree": 908,
+   "agree": 913,
    "candidate": "f8960.line16",
-   "compared": 2186,
+   "compared": 2250,
    "completed_witnesses": [
     {
      "candidate": {
-      "input": "f8960.prior_2i",
+      "input": "f8960.unsupported",
       "kind": "unknown",
-      "reason": "no input supplied for f8960.prior_2i"
+      "reason": "no input supplied for f8960.unsupported"
      },
      "candidate_operands": [
       {
        "ref": "f8960.line12",
        "value": {
-        "input": "f8960.prior_2i",
+        "input": "f8960.unsupported",
         "kind": "unknown",
-        "reason": "no input supplied for f8960.prior_2i"
+        "reason": "no input supplied for f8960.unsupported"
        }
       },
       {
        "ref": "f8960.line15",
        "value": {
-        "cents": 0,
-        "kind": "money"
+        "input": "f8960.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.unsupported"
        }
       }
      ],
@@ -1419,6 +1420,79 @@
      "project_return": "completed",
      "source": {
       "id": "classm.f4952.1.deepseek",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "input": "f8960.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.line12",
+       "value": {
+        "input": "f8960.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.unsupported"
+       }
+      },
+      {
+       "ref": "f8960.line15",
+       "value": {
+        "input": "f8960.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.unsupported"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-unknown",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.used",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8960.used",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "classm.f4952.2.deepseek",
       "kind": "fixture"
      }
     },
@@ -1490,7 +1564,7 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f4952.2.deepseek",
+      "id": "classm.f8960.1.deepseek",
       "kind": "fixture"
      }
     },
@@ -1707,147 +1781,6 @@
      "project_return": "completed",
      "source": {
       "id": "classm.s3.3.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "input": "f8960.prior_2i",
-      "kind": "unknown",
-      "reason": "no input supplied for f8960.prior_2i"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8960.line12",
-       "value": {
-        "input": "f8960.prior_2i",
-        "kind": "unknown",
-        "reason": "no input supplied for f8960.prior_2i"
-       }
-      },
-      {
-       "ref": "f8960.line15",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "instance": "f8960",
-     "kind": "candidate-unknown",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "f8960.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f8960.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f8960.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.s3.4.deepseek",
-      "kind": "fixture"
-     }
-    },
-    {
-     "candidate": {
-      "cite": null,
-      "form": "model-declared refusal",
-      "gate": "f8960.refund",
-      "kind": "refusal",
-      "remedy": "Outside candidate scope"
-     },
-     "candidate_operands": [
-      {
-       "ref": "f8960.line12",
-       "value": {
-        "cite": null,
-        "form": "model-declared refusal",
-        "gate": "f8960.refund",
-        "kind": "refusal",
-        "remedy": "Outside candidate scope"
-       }
-      }
-     ],
-     "instance": "f8960",
-     "kind": "candidate-refuses",
-     "project": {
-      "cents": 0,
-      "kind": "money"
-     },
-     "project_operands": [
-      {
-       "ref": "f8960.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "true",
-       "value": {
-        "kind": "bool",
-        "value": true
-       }
-      },
-      {
-       "ref": "f8960.used",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "false",
-       "value": {
-        "kind": "bool",
-        "value": false
-       }
-      },
-      {
-       "ref": "f8960.zero",
-       "value": {
-        "cents": 0,
-        "kind": "money"
-       }
-      }
-     ],
-     "project_return": "completed",
-     "source": {
-      "id": "classm.person.1.deepseek",
       "kind": "fixture"
      }
     },
@@ -2192,43 +2125,112 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.person.1",
+      "id": "mutation.t2.hoh_s1a_tips_ot",
+      "kind": "fixture"
+     }
+    },
+    {
+     "candidate": {
+      "cite": null,
+      "form": "model-declared refusal",
+      "gate": "f8960.unsupported",
+      "kind": "refusal",
+      "remedy": "Outside candidate scope"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.line12",
+       "value": {
+        "cite": null,
+        "form": "model-declared refusal",
+        "gate": "f8960.unsupported",
+        "kind": "refusal",
+        "remedy": "Outside candidate scope"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "candidate-refuses",
+     "project": {
+      "cents": 0,
+      "kind": "money"
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.used",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8960.used",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "false",
+       "value": {
+        "kind": "bool",
+        "value": false
+       }
+      },
+      {
+       "ref": "f8960.zero",
+       "value": {
+        "cents": 0,
+        "kind": "money"
+       }
+      }
+     ],
+     "project_return": "completed",
+     "source": {
+      "id": "stage5.return.refund_f8960_unsupported_unused",
       "kind": "fixture"
      }
     }
    ],
-   "differ": 1278,
+   "differ": 1337,
    "handle": "16",
-   "in_scope": 1590,
-   "in_scope_agree": 449,
+   "in_scope": 1634,
+   "in_scope_agree": 436,
    "invalid": 0,
    "kinds": {
-    "candidate-refuses": 133,
-    "candidate-unknown": 1141,
-    "project-refuses": 4
+    "candidate-refuses": 134,
+    "candidate-unknown": 1198,
+    "project-refuses": 5
    },
    "kinds_by_return": {
     "completed": {
-     "candidate-refuses": 16,
-     "candidate-unknown": 202
+     "candidate-refuses": 9,
+     "candidate-unknown": 230
     },
     "incomplete": {
      "candidate-refuses": 1,
-     "candidate-unknown": 732
+     "candidate-unknown": 750
     },
     "refused": {
-     "candidate-refuses": 116,
-     "candidate-unknown": 207,
-     "project-refuses": 4
+     "candidate-refuses": 124,
+     "candidate-unknown": 218,
+     "project-refuses": 5
     }
    },
-   "open_at_triage": true,
+   "open_at_triage": false,
    "project": "f8960.line16",
    "shown_when": null,
    "sources": {
-    "fixture": 1565,
+    "fixture": 1638,
     "generated": 500,
-    "partial": 121
+    "partial": 112
    },
    "status": "DISAGREE",
    "triage": "differs",
@@ -3030,7 +3032,7 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.person.1.deepseek",
+      "id": "classm.f8880.4.deepseek",
       "kind": "fixture"
      }
     },
@@ -3099,7 +3101,7 @@
      ],
      "project_return": "completed",
      "source": {
-      "id": "classm.f8880.4.deepseek",
+      "id": "classm.f5695.8.deepseek",
       "kind": "fixture"
      }
     },
@@ -3364,14 +3366,86 @@
       "id": "stage4.refuse.niit.allocation",
       "kind": "fixture"
      }
+    },
+    {
+     "candidate": {
+      "input": "f8960.unsupported",
+      "kind": "unknown",
+      "reason": "no input supplied for f8960.unsupported"
+     },
+     "candidate_operands": [
+      {
+       "ref": "f8960.line12",
+       "value": {
+        "input": "f8960.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.unsupported"
+       }
+      },
+      {
+       "ref": "f8960.line15",
+       "value": {
+        "input": "f8960.unsupported",
+        "kind": "unknown",
+        "reason": "no input supplied for f8960.unsupported"
+       }
+      }
+     ],
+     "instance": "f8960",
+     "kind": "project-refuses",
+     "project": {
+      "cite": {
+       "doc": "f4952",
+       "locator": "pp. 1, 3\u20134, Investment Interest Expense Deduction"
+      },
+      "form": "Form 4952 / Form 6198 / Schedule E",
+      "gate": "f4952.unsupported",
+      "kind": "refusal",
+      "remedy": "Allocate the interest and prepare the applicable unsupported schedule or at-risk computation."
+     },
+     "project_operands": [
+      {
+       "ref": "f8960.used",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "true",
+       "value": {
+        "kind": "bool",
+        "value": true
+       }
+      },
+      {
+       "ref": "f8960.line16_figured",
+       "value": {
+        "cite": {
+         "doc": "f4952",
+         "locator": "pp. 1, 3\u20134, Investment Interest Expense Deduction"
+        },
+        "form": "Form 4952 / Form 6198 / Schedule E",
+        "gate": "f4952.unsupported",
+        "kind": "refusal",
+        "remedy": "Allocate the interest and prepare the applicable unsupported schedule or at-risk computation."
+       }
+      }
+     ],
+     "project_return": "refused",
+     "source": {
+      "base": "classm.carloan.1",
+      "kind": "partial",
+      "withheld": "f8960.unsupported"
+     }
     }
    ]
   }
  ],
- "log_sha256_at_triage": "ae995fc94f0577fa3a6eaf43cce6f40dc1107beb25dfacea7ef85ac995c414d6",
+ "log_sha256_at_triage": "b04cd979740c5f35961499bdfbd830a86af1b33568b452cc37469b3ed4d035c3",
  "policy": "executable-triage-v2",
  "response_sha256": "60acd6a89bf6a0411973deaf336ceafec10902e5c9311ebb1bd9f305341e307d",
  "scope": "host-only executable triage; evidence for adjudication, no qualification or scoreboard credit",
  "state": "evaluated",
- "subject_sha256": "732c94aa919f6141f6aa645fd241acbde8262458d4144812877ae0de962754a0"
+ "subject_sha256": "9f49d1689bb97fec66abd36dfe066d6b42629b9ef6acfc1c9a46c5708bd8cec4"
 }

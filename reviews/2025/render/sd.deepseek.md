@@ -5,7 +5,7 @@ The rendered English of every printed line of `Schedule D — securities sales a
 | field | value |
 | --- | --- |
 | date | 2026-11-03 |
-| line-scoped reviews | 1 (latest 2026-11-04); see Line-scoped reviews |
+| line-scoped reviews | 1 (latest 2026-11-07); see Line-scoped reviews |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
 | prompt sha256 | d8a1bade7e8895260afb189920619c7b281ba3f35ca05706a6924a7e0636eac5 |
@@ -39,194 +39,194 @@ The rendered English of every printed line of `Schedule D — securities sales a
 ### 1a(d) — Line 1a, column (d) totals
 Status: **MATCH**
 
-Model: It computes column (d) proceeds for short-term basis-reported, no-adjustment transactions in the supported box A aggregate case; digital G–L cases are excluded by refusal.
-Reviewed in: pass 6d1419919e1c
+Model: Matches Schedule D line 1a column (d): short-term basis-reported no-adjustment aggregate proceeds; digital G cases are excluded by the named digital-asset refusal.
+Reviewed in: pass 790975e2b01d
 
 ### 1a(e) — Line 1a, column (e) totals
 Status: **MATCH**
 
-Model: It computes column (e) basis for the same box A aggregate-route transactions, where reported basis is the required basis because no adjustments are allowed.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 1a column (e): reported cost or other basis for short-term basis-reported no-adjustment aggregate transactions; digital G cases are excluded by the named refusal.
+Reviewed in: pass 790975e2b01d
 
 ### 1a(g) — Line 1a, column (g) totals
 Status: **MATCH**
 
-Model: Line 1a permits no adjustments; within the aggregate-route eligibility gate sales.g is zero, so summing it matches the line's adjustment column.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 1a column (g) within supported aggregate cases; no adjustments are allowed on line 1a, and invalid adjustment cases are refused.
+Reviewed in: pass 790975e2b01d
 
 ### 1a(h) — Line 1a, column (h) totals
 Status: **MATCH**
 
-Model: It computes column (h) as proceeds less column (e) plus column (g), matching Schedule D line 1a column (h).
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 1a column (h): proceeds less column (e) plus column (g) for the supported short-term aggregate transactions.
+Reviewed in: pass 790975e2b01d
 
 ### 1b(d) — Line 1b, column (d) totals
 Status: **MATCH**
 
-Model: It computes column (d) proceeds for box A detail-route transactions reported on Form 8949; box G digital cases are excluded by refusal.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 1b column (d): Box A detail-route proceeds; digital G detail cases are excluded by the named digital-asset refusal.
+Reviewed in: pass 790975e2b01d
 
 ### 1b(e) — Line 1b, column (e) totals
 Status: **MATCH**
 
-Model: It computes column (e) basis for box A detail-route transactions, using reported basis where required and allowing the adjustment column to correct it.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 1b column (e): reported basis for Box A detail-route transactions; digital G cases are excluded by the named refusal.
+Reviewed in: pass 790975e2b01d
 
 ### 1b(g) — Line 1b, column (g) totals
 Status: **MATCH**
 
-Model: It computes column (g) net adjustments for box A detail-route transactions, limited to supported B and W adjustments.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 1b column (g): net supported B and W adjustments for Box A detail-route transactions; other codes are refused.
+Reviewed in: pass 790975e2b01d
 
 ### 1b(h) — Line 1b, column (h) totals
 Status: **MATCH**
 
-Model: It computes column (h) as proceeds less basis plus adjustments, matching Form 8949 and Schedule D line 1b column (h).
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 1b column (h): proceeds less basis plus column (g) adjustments.
+Reviewed in: pass 790975e2b01d
 
 ### 2(d) — Line 2, column (d) totals
 Status: **MATCH**
 
-Model: It computes column (d) proceeds for box B detail-route transactions; box H digital cases are excluded by refusal.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 2 column (d): Box B detail-route proceeds; digital H cases are excluded by the named digital-asset refusal.
+Reviewed in: pass 790975e2b01d
 
 ### 2(e) — Line 2, column (e) totals
 Status: **MATCH**
 
-Model: It computes column (e) basis for box B detail-route transactions, where basis was not reported and the correct basis is required.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 2 column (e): correct basis for Box B transactions where basis was not reported to the IRS; digital H cases are excluded.
+Reviewed in: pass 790975e2b01d
 
 ### 2(g) — Line 2, column (g) totals
 Status: **MATCH**
 
-Model: It computes column (g) net adjustments for box B detail-route transactions, limited to supported B and W adjustments.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 2 column (g): supported net adjustments, including wash-sale losses, for Box B detail-route transactions.
+Reviewed in: pass 790975e2b01d
 
 ### 2(h) — Line 2, column (h) totals
 Status: **MATCH**
 
-Model: It computes column (h) as proceeds less basis plus adjustments, matching Schedule D line 2 column (h).
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 2 column (h): proceeds less basis plus column (g) adjustments.
+Reviewed in: pass 790975e2b01d
 
 ### 3(d) — Line 3, column (d) totals
 Status: **MATCH**
 
-Model: It computes column (d) proceeds for box C detail-route transactions; box I digital cases are excluded by refusal.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 3 column (d): Box C detail-route proceeds; digital I cases are excluded by the named digital-asset refusal.
+Reviewed in: pass 790975e2b01d
 
 ### 3(e) — Line 3, column (e) totals
 Status: **MATCH**
 
-Model: It computes column (e) basis for box C detail-route transactions, using the correct basis where no broker basis was reported.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 3 column (e): correct basis for Box C transactions not reported on Form 1099-B or Form 1099-DA; digital I cases are excluded.
+Reviewed in: pass 790975e2b01d
 
 ### 3(g) — Line 3, column (g) totals
 Status: **MATCH**
 
-Model: It computes column (g) net adjustments for box C detail-route transactions, limited to supported B and W adjustments.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 3 column (g): supported net adjustments for Box C detail-route transactions.
+Reviewed in: pass 790975e2b01d
 
 ### 3(h) — Line 3, column (h) totals
 Status: **MATCH**
 
-Model: It computes column (h) as proceeds less basis plus adjustments, matching Schedule D line 3 column (h).
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 3 column (h): proceeds less basis plus column (g) adjustments.
+Reviewed in: pass 790975e2b01d
 
 ### 8a(d) — Line 8a, column (d) totals
 Status: **MATCH**
 
-Model: It computes column (d) proceeds for long-term basis-reported, no-adjustment transactions in the supported box D aggregate case; digital J–L cases are excluded by refusal.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 8a column (d): long-term basis-reported no-adjustment aggregate proceeds; digital J cases are excluded by the named digital-asset refusal.
+Reviewed in: pass 790975e2b01d
 
 ### 8a(e) — Line 8a, column (e) totals
 Status: **MATCH**
 
-Model: It computes column (e) basis for the same box D aggregate-route transactions, where reported basis is the required basis because no adjustments are allowed.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 8a column (e): reported cost or other basis for long-term basis-reported no-adjustment aggregate transactions; digital J cases are excluded.
+Reviewed in: pass 790975e2b01d
 
 ### 8a(g) — Line 8a, column (g) totals
 Status: **MATCH**
 
-Model: Line 8a permits no adjustments; within the aggregate-route eligibility gate sales.g is zero, so summing it matches the line's adjustment column.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 8a column (g) within supported aggregate cases; no adjustments are allowed on line 8a, and invalid adjustment cases are refused.
+Reviewed in: pass 790975e2b01d
 
 ### 8a(h) — Line 8a, column (h) totals
 Status: **MATCH**
 
-Model: It computes column (h) as proceeds less column (e) plus column (g), matching Schedule D line 8a column (h).
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 8a column (h): proceeds less column (e) plus column (g) for supported long-term aggregate transactions.
+Reviewed in: pass 790975e2b01d
 
 ### 8b(d) — Line 8b, column (d) totals
 Status: **MATCH**
 
-Model: It computes column (d) proceeds for box D detail-route transactions reported on Form 8949; box J digital cases are excluded by refusal.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 8b column (d): Box D detail-route proceeds; digital J detail cases are excluded by the named digital-asset refusal.
+Reviewed in: pass 790975e2b01d
 
 ### 8b(e) — Line 8b, column (e) totals
 Status: **MATCH**
 
-Model: It computes column (e) basis for box D detail-route transactions, using reported basis where required and allowing the adjustment column to correct it.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 8b column (e): reported basis for Box D detail-route transactions; digital J cases are excluded.
+Reviewed in: pass 790975e2b01d
 
 ### 8b(g) — Line 8b, column (g) totals
 Status: **MATCH**
 
-Model: It computes column (g) net adjustments for box D detail-route transactions, limited to supported B and W adjustments.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 8b column (g): net supported B and W adjustments for Box D detail-route transactions.
+Reviewed in: pass 790975e2b01d
 
 ### 8b(h) — Line 8b, column (h) totals
 Status: **MATCH**
 
-Model: It computes column (h) as proceeds less basis plus adjustments, matching Form 8949 and Schedule D line 8b column (h).
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 8b column (h): proceeds less basis plus column (g) adjustments.
+Reviewed in: pass 790975e2b01d
 
 ### 9(d) — Line 9, column (d) totals
 Status: **MATCH**
 
-Model: It computes column (d) proceeds for box E detail-route transactions; box K digital cases are excluded by refusal.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 9 column (d): Box E detail-route proceeds; digital K cases are excluded by the named digital-asset refusal.
+Reviewed in: pass 790975e2b01d
 
 ### 9(e) — Line 9, column (e) totals
 Status: **MATCH**
 
-Model: It computes column (e) basis for box E detail-route transactions, where basis was not reported and the correct basis is required.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 9 column (e): correct basis for Box E transactions where basis was not reported to the IRS; digital K cases are excluded.
+Reviewed in: pass 790975e2b01d
 
 ### 9(g) — Line 9, column (g) totals
 Status: **MATCH**
 
-Model: It computes column (g) net adjustments for box E detail-route transactions, limited to supported B and W adjustments.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 9 column (g): supported net adjustments for Box E detail-route transactions.
+Reviewed in: pass 790975e2b01d
 
 ### 9(h) — Line 9, column (h) totals
 Status: **MATCH**
 
-Model: It computes column (h) as proceeds less basis plus adjustments, matching Schedule D line 9 column (h).
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 9 column (h): proceeds less basis plus column (g) adjustments.
+Reviewed in: pass 790975e2b01d
 
 ### 10(d) — Line 10, column (d) totals
 Status: **MATCH**
 
-Model: It computes column (d) proceeds for box F detail-route transactions; box L digital cases are excluded by refusal.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 10 column (d): Box F detail-route proceeds; digital L cases are excluded by the named digital-asset refusal.
+Reviewed in: pass 790975e2b01d
 
 ### 10(e) — Line 10, column (e) totals
 Status: **MATCH**
 
-Model: It computes column (e) basis for box F detail-route transactions, using the correct basis where no broker basis was reported.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 10 column (e): correct basis for Box F transactions not reported on Form 1099-B or Form 1099-DA; digital L cases are excluded.
+Reviewed in: pass 790975e2b01d
 
 ### 10(g) — Line 10, column (g) totals
 Status: **MATCH**
 
-Model: It computes column (g) net adjustments for box F detail-route transactions, limited to supported B and W adjustments.
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 10 column (g): supported net adjustments for Box F detail-route transactions.
+Reviewed in: pass 790975e2b01d
 
 ### 10(h) — Line 10, column (h) totals
 Status: **MATCH**
 
-Model: It computes column (h) as proceeds less basis plus adjustments, matching Schedule D line 10 column (h).
-Reviewed in: pass 6d1419919e1c
+Model: Matches line 10 column (h): proceeds less basis plus column (g) adjustments.
+Reviewed in: pass 790975e2b01d
 
 ### 4 — Line 4: zero only after unsupported source/carryover screening
 Status: **MATCH**
@@ -266,14 +266,14 @@ Model: Line 13 correctly uses the capital gain distributions amount, with distri
 ### 7 — Combine the amounts for Schedule D line 7
 Status: **MATCH**
 
-Model: Schedule D line 7 combines lines 1a through 6 in column (h); the restated sum of the listed h-column amounts plus lines 4 through 6 is exactly that combination.
-Reviewed in: pass 6d1419919e1c
+Model: Matches Schedule D line 7: combines lines 1a through 6 in column (h).
+Reviewed in: pass 790975e2b01d
 
 ### 15 — Combine the amounts for Schedule D line 15
 Status: **MATCH**
 
-Model: Schedule D line 15 combines lines 8a through 14 in column (h); the restated sum of the listed h-column amounts plus lines 11 through 14 is exactly that combination.
-Reviewed in: pass 6d1419919e1c
+Model: Matches Schedule D line 15: combines lines 8a through 14 in column (h).
+Reviewed in: pass 790975e2b01d
 
 ### 16 — Combine the amounts for Schedule D line 16
 Status: **MATCH**
@@ -310,38 +310,38 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 | line | subject sha256 |
 | --- | --- |
-| 1a(d) | 7787227469e288c247094e959cafce0d3fff7fdd332d66f48977e9068de3e5be |
-| 1a(e) | 8faab2424a1b1392335be37909007f0e27827669618430d5e5eb02afdd94f7e1 |
-| 1a(g) | 769fe9d1946bdcd24329d0a0188151c5372a36df05cfbc70883d0ce1de1fd6ce |
-| 1a(h) | 41556c86d657404043c5ae5ed7ed7f8b5e122abf0d7700707d758cbdc8771fa0 |
-| 1b(d) | 2cfa922ec992e0ae4c464b6eef7f9f25436ac245912bfa640f26c8c58dd7e52e |
-| 1b(e) | 243d6925486c927ecf18e9e836170507557257c738a71c42afbc52bda330482b |
-| 1b(g) | 6cdf4a3559a75677d0f9b7ee0bb4296f57dd45a9fb58122145a4e40da5eda74b |
-| 1b(h) | 9e0aaa4ed88b122fc576dc2b9fc3b9e4cef5d0dc5aa53d19697d6edd6e4221f1 |
-| 2(d) | 626e544b7464834905860e8d57056ee5020cb48f294e85222c89413469f545f4 |
-| 2(e) | bc6e0ad48470dc0be6de3f3a447373ef47bc234c1a6bf7c4057864403bd64965 |
-| 2(g) | 52667e180f69acb7753c1b5f63a4bc2672cf61c110b9ffe55982e46510e6a33d |
-| 2(h) | ddc12db35faff98f4fb60f5f4b764a480e7d507f815f83a5b00fc91cf55c31b1 |
-| 3(d) | 3d1bbc7c4ebb6a2fd2e5be5d08afa48fa43c5948041e05f030f48051b4f075df |
-| 3(e) | c2920f27f02841a69e650c1bed9e47170ecfd091458769d00be3c99b2f248eac |
-| 3(g) | b46a34dc34dca504af9fdde8b077f61cc7f5ba8c476d335beb9c21518ae621bc |
-| 3(h) | 006903b9cba5022102079f043f0d3017274efa748b58f0626a6d49dcf7c248e0 |
-| 8a(d) | b56885b752d8d3f1bd4bdbb2fda1f35f651f60b839b412509f51f01554dc4a33 |
-| 8a(e) | 5440c9182646021cd3dd16ea4faaafd64d537c5fb5dde4db9c3777b57cb3c3c0 |
-| 8a(g) | 143e1502d5cc60d232c0526648719fdda8b1c80d5fbf61a263911d1f0c86c464 |
-| 8a(h) | b073584952008681962c2740a7719d593617cf6ed491e565ac2aad8ade2501c8 |
-| 8b(d) | d91dcc75318a5168141d9441098af8ae99ec85db38002ff62982160e2f702d4f |
-| 8b(e) | 123d9ae79cd6973561b0ce9e6547f2445c061150c6aca68f0cd9d15a6cca70ad |
-| 8b(g) | 82d8b97248bd2509102f1f870c351a8b396b4a5e33ce7fc1bdd963d4c8974e88 |
-| 8b(h) | 66f6d70d1dc65a514085840e6408670d69786b5be0abf299d635d98d9bd04bc2 |
-| 9(d) | e0a70db237f66b4a6693df0de3bf4bb4d1b2259dced1587a0cdf03c46e31704c |
-| 9(e) | d8ae089aee5ba800de7a0d204fe1d94ed5f5b783135ef1bfd7aa084c5229e04f |
-| 9(g) | 6585c51b09bfc2e9a3a65778fd8f40dc03f6d771b10df9b29f23546628f119b7 |
-| 9(h) | ed1de01294f1217a33c05a9c32e79a9cce52e6ad619c6e8daee3ba11bae4044d |
-| 10(d) | cbe503c4e426c9b6b95f112f8c90cdfc53eabfbc898dbfe750b92d3c5dfc557c |
-| 10(e) | 52c425deac01adcdc65636d5f6bbe2d1d1254c08d50d0738ad6df22927fb38cc |
-| 10(g) | a983a2faec9eaf0ca2557fef297b42bb0125cc7aac859dd12f7ad2ce6797044c |
-| 10(h) | 75c7473069b87652e8298a37d746c9a2ab718e8cd96707c37daa57fa282152c0 |
+| 1a(d) | 3bee05cac71f53f3d78d26ecc947f6b8d4a39e3a07c048dbf8c6561261da0cb3 |
+| 1a(e) | dd91e7a1dd80c85ff323decdd4bb8d539743bfa0bdbd49bdc7c7f563763445f0 |
+| 1a(g) | 7729dc65d5eee64c3ddc0023a8076c61bd9ba3aaeddf20236368a06a4e32a9f9 |
+| 1a(h) | 76d0fd19c94dd2674dc9dfd067a38fb1c0369568824cd1feace141efadddff32 |
+| 1b(d) | 0d80e82611214999218549f12740bfaa4960437f08bb1491092b7212db39880a |
+| 1b(e) | 48ceaa71218911e327574465eb9802082ac9e0daa6f2347f4c4494186edea8b1 |
+| 1b(g) | bd6d6ed0b7f99d9eb90ccb85d816396f326bb11bbba6cbcc860caf4ecea12c7b |
+| 1b(h) | faaf5dfe3bc0127faf76d68b3d39cc392fea2fa18125aeaf87c0ea1062ce31ac |
+| 2(d) | d772a1293664eeb806502e1d10580416255ea8f84a838ebc6526cf5aa4c0d595 |
+| 2(e) | cd3592a81ad8d4a3acd16c705de8f926571b25110144c0646fefef1f36e1d1e7 |
+| 2(g) | 78bbc2b4cd507aa20aea002a2529b69e7f46e9086e306c4b60aefb316013aa0f |
+| 2(h) | bc3a118fc2550e059ef4f4f52c8cc2925054f91995ee44249542b66aba69d8ec |
+| 3(d) | 20eec0db6b9f5d8a3e1d35123bb6f1da2b3983b66adb7954c2008ecf0fa8b0c7 |
+| 3(e) | f151c4b82145cee97dec6060df7080e6b89532f0ea9e09dc3131b21498c678de |
+| 3(g) | 09219ae7715e614dcf6f963b0f1b007a2a53c00b87dc4c2e840e296f3d98037b |
+| 3(h) | d4f546067a00d65edbc76372bc1e2577b8391616a1e05714bbe953db5659e72d |
+| 8a(d) | b4134746aaca52f0b6d8dcd91e6d8e5c9469697badd48bcf2465f74a852398f8 |
+| 8a(e) | 282db986e8c73de6ac571187057d76b19c1ca13cbb6a8c48387339a0040badfc |
+| 8a(g) | 2c7d245264d42229c2755688328b669993309f0a109df162c715dece41269a86 |
+| 8a(h) | 015236a2931ff5562b8ea267edda7f5a9c6ac050d7f4115b80550bdb13f131e6 |
+| 8b(d) | 668f55d47f07d496e52df7c5907f350bb87eba75b00526c3974087a164390f6d |
+| 8b(e) | f2ea7e54680ee86ceadc5810eb16b167c51f734e58e8766e1ee39fedfd7825e7 |
+| 8b(g) | 9269902b97764279a2bb50f4189723d1e561d54360111321580a6c496c5ec9e6 |
+| 8b(h) | 9c68703e94e218793ad99367a984ad6603720b42ca7b6bed19e4405af1a52ac6 |
+| 9(d) | 98b830231b4673ce75733ff4794e328562ad5f662b6832645e6d79ef9663a8cd |
+| 9(e) | 8955c31d9eefed98817945f71009ba9eed541fe247a9a6cb752a4714a2c17dae |
+| 9(g) | d64dc1903def1c74cce438fc93f3538018ed1cbaa2d655943cded427b2bff4e7 |
+| 9(h) | 367265e1e0762a7e72071807a191fec220085a941e8b0ec07fa84b1cabae4765 |
+| 10(d) | b2418e70e11bf5216c7757cfb6ec84bdb56d2cbb8a478508126cc0074cd3f07d |
+| 10(e) | b22f066aba03b7649a3688374252aa2128bad7c32780dd8727162da5ddbe3e86 |
+| 10(g) | 72752701757475cc7b0522dd116d8dc3b9133e0ecbe51f94fab1e03bc5903ffd |
+| 10(h) | 31ad9a12544efe55f1459f4d5c1e5f54844bcf6ec5b229dce2316bc702b4089f |
 | 4 | fc140fb363c2880a6ad4044547d651a95f3e0b2331f4c8f24148a188cd5eb60a |
 | 5 | f717c41fbbeaebe05ba5f6d4487fc21983ef8650db4ae4a71665c900956fbedb |
 | 6 | 71e9facbb1accd7b9339b79993aaab8d2829f113250db0b7ee1bdcf2ffae80aa |
@@ -349,8 +349,8 @@ What each compared line's verdict depends on within the document (tools/transcri
 | 12 | 6b73101b3aad0baea3bd1a2ca3d6212077528516b286cb108a32f972c036671e |
 | 14 | 647156c672e55b5f86525437cb48b58f7e69078c9e39ca7e1ba8b729b780c3a6 |
 | 13 | 092e3a4875fe86adf11131745dbc0c146a982515002b44daf6406ee928db9b84 |
-| 7 | e9638d20efdb8776b5d2589678533b9f4b9b11e7097162ebe3721a73d27c9ea1 |
-| 15 | 2b0bca8e8361e2a7eb89f72c426ae7f44a8b0c174636344896ab415bf79212b3 |
+| 7 | dbf8a9a44f37b3cf67dc555dbf48a8664b9a8ebbedfc49924ddb781c800a0110 |
+| 15 | f46e328515e93755eb02d0ea99933ed0d22e405fa0b8c8053db29b66e4cb01f0 |
 | 16 | 0f76ecb634638a67f68c0728370c592d43b31b38b3ccde6dc6c2d7c174edb44e |
 | 17 | 31117d838592d91e2901cdbbbc25ab6ddde06e1f462f23a3d043c8974973312d |
 | 20 | e69c889c4021467127fd0589b3546974c7726f302201f4389749b724db35e7ca |
@@ -362,20 +362,20 @@ What each compared line's verdict depends on within the document (tools/transcri
 
 Lines reviewed again after a change, each pass by its own isolated request (transcribe.py or render_compare.py --lines). A section marked "Reviewed in: pass <id>" was judged in the pass of that id below; every other section in the review recorded at the top of this log.
 
-#### Pass 6d1419919e1c
+#### Pass 790975e2b01d
 
 | field | value |
 | --- | --- |
-| date | 2026-11-04 |
+| date | 2026-11-07 |
 | review scope | lines 1a(d), 1a(e), 1a(g), 1a(h), 1b(d), 1b(e), 1b(g), 1b(h), 2(d), 2(e), 2(g), 2(h), 3(d), 3(e), 3(g), 3(h), 8a(d), 8a(e), 8a(g), 8a(h), 8b(d), 8b(e), 8b(g), 8b(h), 9(d), 9(e), 9(g), 9(h), 10(d), 10(e), 10(g), 10(h), 7, 15 |
 | model requested | deepseek-flash |
 | model reported | deepseek-flash |
-| prompt sha256 | 6d1419919e1c1551e61173dd905ca370ae49fec742047997cebd9e9432dcb4b1 |
+| prompt sha256 | 790975e2b01d251806ec7900a96a0b7cb849c378d67aa63773d66eba4ffdf4e0 |
 | prompt policy | render-source-comparison-v2+lines-v1 |
 | system sha256 | 95fdbb6e2ec61299b6c8deeca3dcf777c61b335eedb7c76706029f6ec83081e4 |
 | reasoning effort | provider default |
 | output token budget | 65536 |
-| subject sha256 | e5dd0475ee5085b32f35c6967decaece96ca3b5e204e7d63f30518152395f2e5 |
+| subject sha256 | 329cc96b9d07419958471ec059f8d25fd2da2c05e9915067d6fad57d1b87a01d |
 | receipt | .transcription/sd.deepseek.render.lines-c9db5685c8a4 |
 | lines judged | 34 |
 | match / mismatch / unclear / missing | 34 / 0 / 0 / 0 |
@@ -397,106 +397,106 @@ Lines reviewed again after a change, each pass by its own isolated request (tran
 lines:
   - key: "1a(d)"
     status: MATCH
-    reason: "It computes column (d) proceeds for short-term basis-reported, no-adjustment transactions in the supported box A aggregate case; digital G–L cases are excluded by refusal."
+    reason: "Matches Schedule D line 1a column (d): short-term basis-reported no-adjustment aggregate proceeds; digital G cases are excluded by the named digital-asset refusal."
   - key: "1a(e)"
     status: MATCH
-    reason: "It computes column (e) basis for the same box A aggregate-route transactions, where reported basis is the required basis because no adjustments are allowed."
+    reason: "Matches line 1a column (e): reported cost or other basis for short-term basis-reported no-adjustment aggregate transactions; digital G cases are excluded by the named refusal."
   - key: "1a(g)"
     status: MATCH
-    reason: "Line 1a permits no adjustments; within the aggregate-route eligibility gate sales.g is zero, so summing it matches the line's adjustment column."
+    reason: "Matches line 1a column (g) within supported aggregate cases; no adjustments are allowed on line 1a, and invalid adjustment cases are refused."
   - key: "1a(h)"
     status: MATCH
-    reason: "It computes column (h) as proceeds less column (e) plus column (g), matching Schedule D line 1a column (h)."
+    reason: "Matches line 1a column (h): proceeds less column (e) plus column (g) for the supported short-term aggregate transactions."
   - key: "1b(d)"
     status: MATCH
-    reason: "It computes column (d) proceeds for box A detail-route transactions reported on Form 8949; box G digital cases are excluded by refusal."
+    reason: "Matches line 1b column (d): Box A detail-route proceeds; digital G detail cases are excluded by the named digital-asset refusal."
   - key: "1b(e)"
     status: MATCH
-    reason: "It computes column (e) basis for box A detail-route transactions, using reported basis where required and allowing the adjustment column to correct it."
+    reason: "Matches line 1b column (e): reported basis for Box A detail-route transactions; digital G cases are excluded by the named refusal."
   - key: "1b(g)"
     status: MATCH
-    reason: "It computes column (g) net adjustments for box A detail-route transactions, limited to supported B and W adjustments."
+    reason: "Matches line 1b column (g): net supported B and W adjustments for Box A detail-route transactions; other codes are refused."
   - key: "1b(h)"
     status: MATCH
-    reason: "It computes column (h) as proceeds less basis plus adjustments, matching Form 8949 and Schedule D line 1b column (h)."
+    reason: "Matches line 1b column (h): proceeds less basis plus column (g) adjustments."
   - key: "2(d)"
     status: MATCH
-    reason: "It computes column (d) proceeds for box B detail-route transactions; box H digital cases are excluded by refusal."
+    reason: "Matches line 2 column (d): Box B detail-route proceeds; digital H cases are excluded by the named digital-asset refusal."
   - key: "2(e)"
     status: MATCH
-    reason: "It computes column (e) basis for box B detail-route transactions, where basis was not reported and the correct basis is required."
+    reason: "Matches line 2 column (e): correct basis for Box B transactions where basis was not reported to the IRS; digital H cases are excluded."
   - key: "2(g)"
     status: MATCH
-    reason: "It computes column (g) net adjustments for box B detail-route transactions, limited to supported B and W adjustments."
+    reason: "Matches line 2 column (g): supported net adjustments, including wash-sale losses, for Box B detail-route transactions."
   - key: "2(h)"
     status: MATCH
-    reason: "It computes column (h) as proceeds less basis plus adjustments, matching Schedule D line 2 column (h)."
+    reason: "Matches line 2 column (h): proceeds less basis plus column (g) adjustments."
   - key: "3(d)"
     status: MATCH
-    reason: "It computes column (d) proceeds for box C detail-route transactions; box I digital cases are excluded by refusal."
+    reason: "Matches line 3 column (d): Box C detail-route proceeds; digital I cases are excluded by the named digital-asset refusal."
   - key: "3(e)"
     status: MATCH
-    reason: "It computes column (e) basis for box C detail-route transactions, using the correct basis where no broker basis was reported."
+    reason: "Matches line 3 column (e): correct basis for Box C transactions not reported on Form 1099-B or Form 1099-DA; digital I cases are excluded."
   - key: "3(g)"
     status: MATCH
-    reason: "It computes column (g) net adjustments for box C detail-route transactions, limited to supported B and W adjustments."
+    reason: "Matches line 3 column (g): supported net adjustments for Box C detail-route transactions."
   - key: "3(h)"
     status: MATCH
-    reason: "It computes column (h) as proceeds less basis plus adjustments, matching Schedule D line 3 column (h)."
+    reason: "Matches line 3 column (h): proceeds less basis plus column (g) adjustments."
   - key: "8a(d)"
     status: MATCH
-    reason: "It computes column (d) proceeds for long-term basis-reported, no-adjustment transactions in the supported box D aggregate case; digital J–L cases are excluded by refusal."
+    reason: "Matches line 8a column (d): long-term basis-reported no-adjustment aggregate proceeds; digital J cases are excluded by the named digital-asset refusal."
   - key: "8a(e)"
     status: MATCH
-    reason: "It computes column (e) basis for the same box D aggregate-route transactions, where reported basis is the required basis because no adjustments are allowed."
+    reason: "Matches line 8a column (e): reported cost or other basis for long-term basis-reported no-adjustment aggregate transactions; digital J cases are excluded."
   - key: "8a(g)"
     status: MATCH
-    reason: "Line 8a permits no adjustments; within the aggregate-route eligibility gate sales.g is zero, so summing it matches the line's adjustment column."
+    reason: "Matches line 8a column (g) within supported aggregate cases; no adjustments are allowed on line 8a, and invalid adjustment cases are refused."
   - key: "8a(h)"
     status: MATCH
-    reason: "It computes column (h) as proceeds less column (e) plus column (g), matching Schedule D line 8a column (h)."
+    reason: "Matches line 8a column (h): proceeds less column (e) plus column (g) for supported long-term aggregate transactions."
   - key: "8b(d)"
     status: MATCH
-    reason: "It computes column (d) proceeds for box D detail-route transactions reported on Form 8949; box J digital cases are excluded by refusal."
+    reason: "Matches line 8b column (d): Box D detail-route proceeds; digital J detail cases are excluded by the named digital-asset refusal."
   - key: "8b(e)"
     status: MATCH
-    reason: "It computes column (e) basis for box D detail-route transactions, using reported basis where required and allowing the adjustment column to correct it."
+    reason: "Matches line 8b column (e): reported basis for Box D detail-route transactions; digital J cases are excluded."
   - key: "8b(g)"
     status: MATCH
-    reason: "It computes column (g) net adjustments for box D detail-route transactions, limited to supported B and W adjustments."
+    reason: "Matches line 8b column (g): net supported B and W adjustments for Box D detail-route transactions."
   - key: "8b(h)"
     status: MATCH
-    reason: "It computes column (h) as proceeds less basis plus adjustments, matching Form 8949 and Schedule D line 8b column (h)."
+    reason: "Matches line 8b column (h): proceeds less basis plus column (g) adjustments."
   - key: "9(d)"
     status: MATCH
-    reason: "It computes column (d) proceeds for box E detail-route transactions; box K digital cases are excluded by refusal."
+    reason: "Matches line 9 column (d): Box E detail-route proceeds; digital K cases are excluded by the named digital-asset refusal."
   - key: "9(e)"
     status: MATCH
-    reason: "It computes column (e) basis for box E detail-route transactions, where basis was not reported and the correct basis is required."
+    reason: "Matches line 9 column (e): correct basis for Box E transactions where basis was not reported to the IRS; digital K cases are excluded."
   - key: "9(g)"
     status: MATCH
-    reason: "It computes column (g) net adjustments for box E detail-route transactions, limited to supported B and W adjustments."
+    reason: "Matches line 9 column (g): supported net adjustments for Box E detail-route transactions."
   - key: "9(h)"
     status: MATCH
-    reason: "It computes column (h) as proceeds less basis plus adjustments, matching Schedule D line 9 column (h)."
+    reason: "Matches line 9 column (h): proceeds less basis plus column (g) adjustments."
   - key: "10(d)"
     status: MATCH
-    reason: "It computes column (d) proceeds for box F detail-route transactions; box L digital cases are excluded by refusal."
+    reason: "Matches line 10 column (d): Box F detail-route proceeds; digital L cases are excluded by the named digital-asset refusal."
   - key: "10(e)"
     status: MATCH
-    reason: "It computes column (e) basis for box F detail-route transactions, using the correct basis where no broker basis was reported."
+    reason: "Matches line 10 column (e): correct basis for Box F transactions not reported on Form 1099-B or Form 1099-DA; digital L cases are excluded."
   - key: "10(g)"
     status: MATCH
-    reason: "It computes column (g) net adjustments for box F detail-route transactions, limited to supported B and W adjustments."
+    reason: "Matches line 10 column (g): supported net adjustments for Box F detail-route transactions."
   - key: "10(h)"
     status: MATCH
-    reason: "It computes column (h) as proceeds less basis plus adjustments, matching Schedule D line 10 column (h)."
+    reason: "Matches line 10 column (h): proceeds less basis plus column (g) adjustments."
   - key: "7"
     status: MATCH
-    reason: "Schedule D line 7 combines lines 1a through 6 in column (h); the restated sum of the listed h-column amounts plus lines 4 through 6 is exactly that combination."
+    reason: "Matches Schedule D line 7: combines lines 1a through 6 in column (h)."
   - key: "15"
     status: MATCH
-    reason: "Schedule D line 15 combines lines 8a through 14 in column (h); the restated sum of the listed h-column amounts plus lines 11 through 14 is exactly that combination."
+    reason: "Matches Schedule D line 15: combines lines 8a through 14 in column (h)."
 ```
 
 ## Raw response

@@ -19,10 +19,44 @@ form:
     - id: s2.other
       printed: (helper)
       type: Bool
-      label: 'Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax, Net Investment Income Tax or the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures), for example the alternative minimum tax, repayment of a clean vehicle credit, household employment taxes, the additional tax on an HSA you did not keep as an eligible individual (Form 8889 Part III), uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N), tax on unreported tips (Form 4137), or interest on deferred tax? (Form 5329 Part I, early distributions, and the 2025 HSA excess are figured by this tool and are not other amounts.)'
+      label: |-
+        Any amount on Schedule 2 other than the following?
+
+        - self-employment tax from Schedule SE
+        - Additional Medicare Tax
+        - Net Investment Income Tax
+        - the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures)
+
+        Other amounts, for example:
+        - the alternative minimum tax
+        - repayment of a clean vehicle credit
+        - household employment taxes
+        - the additional tax on an HSA you did not keep as an eligible individual (Form 8889 Part III)
+        - uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N)
+        - tax on unreported tips (Form 4137)
+        - interest on deferred tax
+
+        Form 5329 Part I, early distributions, and the 2025 HSA excess are figured by this tool and are not other amounts.
       expr:
         op: input
-        source: 'Any amount on Schedule 2 other than self-employment tax from Schedule SE, Additional Medicare Tax, Net Investment Income Tax or the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures), for example the alternative minimum tax, repayment of a clean vehicle credit, household employment taxes, the additional tax on an HSA you did not keep as an eligible individual (Form 8889 Part III), uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N), tax on unreported tips (Form 4137), or interest on deferred tax? (Form 5329 Part I, early distributions, and the 2025 HSA excess are figured by this tool and are not other amounts.)'
+        source: |-
+          Any amount on Schedule 2 other than the following?
+
+          - self-employment tax from Schedule SE
+          - Additional Medicare Tax
+          - Net Investment Income Tax
+          - the additional 20% tax on taxable HSA distributions (Form 8889 line 17b, which this tool figures)
+
+          Other amounts, for example:
+          - the alternative minimum tax
+          - repayment of a clean vehicle credit
+          - household employment taxes
+          - the additional tax on an HSA you did not keep as an eligible individual (Form 8889 Part III)
+          - uncollected social security or Medicare tax on tips or group-term life insurance (W-2 box 12 codes A, B, M or N)
+          - tax on unreported tips (Form 4137)
+          - interest on deferred tax
+
+          Form 5329 Part I, early distributions, and the 2025 HSA excess are figured by this tool and are not other amounts.
       cite:
         doc: f1040s2
         locator: Schedule 2 (2025), lines 2, 3, 11, 12 and 21
