@@ -32,3 +32,6 @@ advisory only).
     `class` fields.
   - Every paid review call is logged in `.transcription/costs.jsonl` (`tools/transcription/costs.py`)
     and every agent run in `research/costs/agent_runs.jsonl`.
+- **Worktrees (owner decision 2026-11-07).** Agents in worktrees clone review data with
+  `tools/worktree_data.py clone` and their results are carried back with `carry-back`; never copy
+  `.transcription/` by hand.

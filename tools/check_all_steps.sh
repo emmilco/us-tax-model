@@ -10,8 +10,12 @@
 # below when the wave ends. No two steps of a wave write the same file, and none
 # reads what another of its wave writes: wave 1 checks the sources, logs and the
 # build's data, wave 2 runs the evaluator checks, wave 3 writes the evidence report
-# and review packets. A failing step fails the run after its wave. Each step's wall time, in seconds,
-# goes to .git/check-all-times (not tracked).
+# and review packets. human_review copies reports/<year>/engine_differential.json,
+# which engine_differential (wave 2, full tier only) rewrites, so in the full tier
+# it runs in wave 3, and in wave 2 otherwise. Nothing checks these rules; a new step
+# must be placed by them. A failing step fails
+# the run after its wave. Each step's wall time, in seconds, goes to
+# .git/check-all-times (not tracked).
 #
 # --tier full|fast|docs selects the steps (default full: every step). fast skips slow_steps, the
 # mutation and independent-evaluator checks a release runs; evidence then marks its E column with the
@@ -116,6 +120,7 @@ step rerun_all_tools python3 tools/transcription/test_rerun_all.py
 step bookkeeping_tools python3 -m unittest tools/test_bookkeeping_tools.py
 step pre_push_self_test bash tools/hooks/test_pre_push.sh
 step green_self_test bash tools/hooks/test_green.sh
+step worktree_data_self_test python3 tools/worktree_data.py --self-test
 step consistency_checks node tools/test_consistency_checks.mjs
 step siblings_self_test python3 tools/siblings.py --self-test
 step siblings_check python3 tools/siblings.py --check "$@"
@@ -174,7 +179,8 @@ step interview_rules "${node[@]}" interview-rules "$@"
 step test_integration "${node[@]}" test-integration "$@"
 # The web UI server (serve): synthetic returns in temporary directories, compared with the CLI and the fixtures.
 step test_serve "${node[@]}" test-serve "$@"
-step human_review python3 tools/human_review/test_review.py "$@"
+# In the full tier, after engine_differential (below), whose report it copies; see wave 3.
+[ "$tier" = full ] || step human_review python3 tools/human_review/test_review.py "$@"
 step classm_job_seeds "${node[0]}" tools/transcription/test_classm_jobs.mjs "$@"
 step coverage "${node[@]}" coverage "$@"
 # Every refusal gate placed in the decision tree, and docs/COVERAGE.md and the README block current.
@@ -198,6 +204,7 @@ step review_stage2 "${node[@]}" review-stage2 "$@"
 step review_stage3 "${node[@]}" review-stage3 "$@"
 step review_stage4 "${node[@]}" review-stage4 "$@"
 step review_stage5 "${node[@]}" review-stage5 "$@"
+[ "$tier" != full ] || step human_review python3 tools/human_review/test_review.py "$@"
 # After the compare wave, which builds the Lean evaluator.
 step ny_compare "${node[@]}" compare --ny "$@"
 # New York mutants, killed only by the New York fixtures (the federal run takes federal mutants only).

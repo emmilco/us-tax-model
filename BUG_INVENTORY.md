@@ -6099,3 +6099,31 @@ fixtures and a dedicated mutation protect the regression. This is not a false/ze
 - **Symptom:** line 1 cites only the form page, so a line-scoped review's request carries neither the p. 7 instruction nor federal Form 1040 line 1z; the transcription reply entered a zero stand-in and the render reply was UNCLEAR. The computed value is right (f1040.line1z rounded by amb.ny.2025.whole_dollars); the gap is in the citation and so in review evidence.
 - **Disposition:** open, low: add the p. 7 locator to ny_it201.line1 (and its siblings on lines 2 to 19 if they lack it), with T-244; rerun the ny_it201 line reviews.
 - **Tags:** new-york; citation; review-tools; low; open
+
+## BUG-0440 — BUG-0431 is fixed: check-all refuses to run on partial git-ignored review data
+
+- **Caught by:** BUG-0431, recorded open; this entry closes it because the inventory is append-only.
+- **Source:** `tools/transcription/compare_families.py` (`compare`: a review whose raw request cannot be read is held pending, "no verified current request context") and `tools/transcription/audit_transcription.py` (reads `.transcription/<stem>.{prompt.txt,response.txt,meta.json}` and each pass's receipt).
+- **Symptom:** as recorded in BUG-0431: with only the tracked part of `.transcription/` and `.classm/`, the review checks treated the missing raw replies as unverified reviews, wrote a different `reports/2025/second_family.md`, and check-all stayed green.
+- **Tool change:** `tools/worktree_data.py check` collects every raw file the review logs reference (each transcription and render log's own request, reply and metadata, and every receipt or class M request a log or rulings file names by path; adjudication notes and findings files are prose and are left out) and fails, naming what is missing and the command that clones it in, when any is absent. `tools/check_all.sh` runs it before any step, and `tools/check_all_bg.sh` before taking a snapshot. `check_all_bg.sh` runs from a linked worktree too: the snapshot and the review data come from that worktree, the installs (`node_modules`, `.engines`, `lean/.lake`) from the main one when it has none, and the run records its worktree, so `tools/commit_tested.sh` commits it only there. `tools/worktree_data.py clone <worktree>` makes complete copy-on-write clones of the review data and installs and records their base; `carry-back <worktree> [--dry-run]` appends to the main `costs.jsonl` the rows the worktree appended since the clone and copies the untracked raw review files it changed, refusing on a rewritten ledger or a file changed on both sides.
+- **Validation:** in a fresh linked worktree the check fails (413 of 418 references missing) and names the clone command; after `worktree_data.py clone` it passes, and it passes on the main checkout (418 references, none missing); `worktree_data.py --self-test` (in check-all) covers the check, clone, ledger rows added on both sides, a repeated carry, tracked files left out, the both-changed refusal, rewritten ledgers and a worktree without a base; the tier run of this change.
+- **Tags:** tooling; worktree; commit-guard; tool change; fixed
+
+## BUG-0441 — Two check-all waves let a step read a report another step of the same wave rewrote
+
+- **Caught by:** the file-access trace of every check-all step made for the dependency scheduler, which was not adopted, 2026-11-07.
+- **Source:** `tools/check_all_steps.sh` ("No two steps of a wave write the same file, and none reads what another of its wave writes").
+- **Symptom:** latent, no wrong result seen. In wave 1, `check_logs` printed the summary line of `reports/<year>/second_family.md` while `compare_families` rewrote that file; a read during the rewrite would have printed "has no summary line" (no failure). In the full tier's wave 2, `human_review` copied `reports/<year>/engine_differential.json` into its sandbox and ran `evidence` on it while `engine_differential` rewrote it.
+- **Why the checks missed it:** the wave rule was stated in a comment and checked by nothing; it still is.
+- **Tool change:** `check_logs` no longer reads `second_family.md`: it printed only the report's summary line, which `compare_families` already prints when it writes the report, so `check_logs` stays in wave 1 and no step moves for it. In the full tier `human_review` runs in wave 3, after `engine_differential` (in the fast tier, which does not run `engine_differential`, it stays in wave 2); the head of `check_all_steps.sh` names the ordering.
+- **Validation:** for these two reports, the traced reads and writes of every step (the trace above) found no other reader in the same wave as the writer; the fast-tier run of this change.
+- **Tags:** tooling; commit-guard; concurrency; tool change; fixed
+
+## BUG-0442 — check_logs failed on a stale optional-family log that could not earn second-family credit
+
+- **Caught by:** owner decision 4, 2026-11-07.
+- **Source:** `tools/transcription/check_logs.py` (`check`: a changed subject or source snapshot failed an optional family's log like a required one's), against the owner decision of 2026-11-04 that DeepSeek transcription is rerun only where its log is eligible for second-family credit (`tools/transcription/rerun_all.py`).
+- **Symptom:** a DeepSeek (or other optional-family) log whose form changed fails check-all until it is rerun, though a review that would not earn credit is not rerun.
+- **Tool change:** a stale optional log fails only when it would earn credit if it were current: `compare_families.eligible_when_current` drops the blockers a change since the review causes (stale subject, stale source snapshot, a target the log never judged, a changed foreign input's wording) and the log is eligible when none remain. Otherwise it is printed as stale-ineligible, with its staleness and the blockers that remain, and does not fail. Required-family logs are unchanged.
+- **Validation:** `test_review_tools.py` `OptionalStaleLogs` (in check-all: review_tools): stale and ineligible passes and is reported; stale and eligible when current fails; current and ineligible passes; a stale required log fails.
+- **Tags:** review-tools; check_logs; owner decision; tool change

@@ -39,7 +39,26 @@ working tree to its tier's marker and list of green trees (the last 50 of the cl
 `.git/check-all-green` and `.git/check-all-green-trees` for the full tier,
 `check-all-green-fast` and `check-all-green-fast-trees` for fast, and the same with
 `docs`. The run counts as green only if nothing outside the suite's own outputs
-(`reports/`, `rendered/`) changed while it ran.
+(`reports/`, `rendered/`) changed while it ran. It refuses to start when a git-ignored
+raw review file the review logs reference (`.transcription/`, `.classm/`) is missing
+(`python3 tools/worktree_data.py check`; `check --list` prints every reference): a
+linked worktree has none of them, and the review checks would otherwise pass on what
+little it has.
+
+A linked worktree (an agent's) gets its git-ignored data from the main worktree with
+`python3 tools/worktree_data.py clone <worktree>`: complete copy-on-write clones
+(`cp -cR`, never links) of the review data (`.transcription/`, `.classm/`,
+`.human-review/`, `.extraction-review/`, `.direct-file/`) and the installs
+(`node_modules/`, `.engines/`, `lean/.lake/`), and a record of the clone's base (the
+hash of every untracked review file, each ledger's length and hash) in the worktree's
+git directory. Reviews run there write their raw files and cost rows into the
+worktree's copies; `python3 tools/worktree_data.py carry-back <worktree>` (`--dry-run`
+first) brings them back: it appends to the main `costs.jsonl` exactly the rows the
+worktree appended since the clone (refusing if either ledger no longer begins with the
+cloned one), and copies each raw file the worktree changed since the base where the
+main copy is unchanged, refusing everything if any file changed on both sides. Files git
+tracks are left to the worktree's commits. A worktree cloned some other way has no base
+and is refused; carry it back by hand. `--self-test` runs in check-all.
 
 The suite has three tiers, chosen with `--tier` (`tools/check_all.sh --tier fast`):
 
@@ -71,10 +90,14 @@ edited while it runs (`--wait` runs it in the foreground; `--tier` as above; `--
 reports the running and last runs; the log is `.git/check-all-bg/log`). The snapshot is the tree
 `git add -A` would commit; the worktree is the script's own and is reset before each
 run; ignored data the suite reads is copied in as copy-on-write clones, and the build
-outputs are rebuilt from the snapshot. One run at a time. When it is green,
+outputs are rebuilt from the snapshot. One run at a time per clone. It runs from the
+main worktree or a linked one: the snapshot and the review data come from the worktree
+it is run in (which must hold the review data in full), and the installs
+(`node_modules`, `.engines`, `lean/.lake`) from the main worktree when that one has
+none. When it is green,
 `tools/commit_tested.sh -F <file>` commits exactly that tree, leaving edits made since
-the snapshot uncommitted; it refuses if the run's tier is below the one the commit
-needs, if HEAD has moved since the snapshot or if anything is staged, and writes the
+the snapshot uncommitted; it refuses if another worktree started the run, if the run's
+tier is below the one the commit needs, if HEAD has moved since the snapshot or if anything is staged, and writes the
 regenerated `reports/` and `rendered/` files into the working tree where it still holds
 the snapshot's version.
 
@@ -88,7 +111,10 @@ A run for a year other than the default passes or fails as usual but writes no
 marker.
 
 After compiling and building, the steps run in three waves of side-by-side steps
-(see the head of `tools/check_all_steps.sh`); a step's output is printed when its wave ends, and
+(see the head of `tools/check_all_steps.sh`); a step that reads what another writes runs
+in a later wave than its writer (in the full tier `human_review` after
+`engine_differential`), a rule no check enforces, so a new
+step must be placed by it. A step's output is printed when its wave ends, and
 each step's wall time is in `.git/check-all-times`. Mutation spreads its mutants
 over worker threads; `MUTATE_WORKERS=1` runs it on one.
 

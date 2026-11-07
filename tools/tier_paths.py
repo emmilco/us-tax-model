@@ -93,6 +93,8 @@ WALKERS = {
     ("tools/transcription/audit_skipped.py", '"archive"'): "the path .classm/archive/...",
     ("tools/transcription/audit_transcription.py", "'archive'"): "the path .transcription/archive/...",
     ("tools/transcription/test_review_tools.py", "'archive'"): "a temporary directory",
+    ("tools/worktree_data.py", "os.walk("): "walks reviews/ and the git-ignored data folders (.transcription/ and the rest)",
+    ("tools/worktree_data.py", "ls-files"): "lists the tracked files under the git-ignored data folders",
 }
 
 # The classifier, its lists and its tests name the allowlisted paths without reading them.

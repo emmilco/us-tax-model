@@ -124,6 +124,49 @@ class RulingContext(unittest.TestCase):
             self.assertIn("Ruling: open", path.read_text())
 
 
+class OptionalStaleLogs(unittest.TestCase):
+    """check_logs.py: a stale optional-family log fails only when it would earn second-family credit if it
+    were current; one that would not is reported as stale-ineligible and passes."""
+
+    def run_check(self, blockers, stale="subject changed since the review"):
+        import check_logs
+        with tempfile.TemporaryDirectory() as d:
+            for stem in ("f1", families.stem("f1", "deepseek")):
+                Path(d, stem + ".md").write_text("# log\n", encoding="utf-8")
+            quality = {"quality": {"state": "pending", "blockers": blockers}}
+            out = io.StringIO()
+            with patch.object(check_logs.subjects, "log_state", return_value=stale), \
+                 patch.object(check_logs.compare_families, "compare", return_value=quality), \
+                 contextlib.redirect_stdout(out), contextlib.redirect_stderr(out):
+                failed = check_logs.check("render", d, "RENDER_LOGS_OPTIONAL", ["f1"], "deepseek", required=False)
+        return failed, out.getvalue()
+
+    def test_stale_ineligible_log_is_reported_not_failed(self):
+        failed, out = self.run_check(["stale subject: deepseek", "model-error noise above 10%"])
+        self.assertFalse(failed)
+        self.assertIn("f1: stale-ineligible", out)
+        self.assertIn("model-error noise above 10%", out)
+
+    def test_stale_log_eligible_when_current_fails(self):
+        failed, out = self.run_check(["stale subject: claude, deepseek", "stale source snapshot: i1040gi",
+                                      "no verified current request context for deepseek: required input/interface hash differs"])
+        self.assertTrue(failed)
+        self.assertNotIn("stale-ineligible", out)
+
+    def test_current_ineligible_log_still_passes(self):
+        failed, out = self.run_check(["model-error noise above 10%"], stale=None)
+        self.assertFalse(failed)
+        self.assertNotIn("stale-ineligible", out)
+
+    def test_required_family_stale_log_fails_whatever_its_eligibility(self):
+        import check_logs
+        with tempfile.TemporaryDirectory() as d:
+            Path(d, "f1.md").write_text("# log\n", encoding="utf-8")
+            with patch.object(check_logs.subjects, "log_state", return_value="subject changed"), \
+                 contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+                self.assertTrue(check_logs.check("render", d, "RENDER_LOGS_OPTIONAL", ["f1"], families.DEFAULT, required=True))
+
+
 class RenderedSubject(unittest.TestCase):
     def test_citation_text_never_reaches_the_rendered_subject(self):
         import subjects

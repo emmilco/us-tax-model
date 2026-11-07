@@ -12,7 +12,7 @@ render, class M; families.py), the lines judged in both logs are read and three 
 
 A line one log judged and the other did not (MISSING, or absent from one log) is left out of the
 floor and counted. A log whose subject hash is no longer current is marked stale in the table.
-The report's "Summary:" line is what check_logs.py prints.
+The report's "Summary:" line is also printed when the report is written.
 
     python3 tools/transcription/compare_families.py
 """
@@ -295,6 +295,21 @@ def compare(kind, form, family):
             "both_agree": both_agree, "yield": yield_, "both_disputed": both_disputed, "claude_only": claude_only,
             "unjudged": len(set(a["lines"]) ^ set(b["lines"])) + len(shared) - len(judged),
             "stale": stale, "quality": q, "excluded_adapters": sorted(excluded)}
+
+
+# The blockers a change since the review causes: its subject or a source snapshot moved on, the form gained
+# a target, or a foreign input's wording changed. A rerun of the review clears them; the other blockers say
+# the review would not earn credit even if it were current.
+CURRENCY = re.compile(r"stale subject: |stale source snapshot: |current source targets not judged by "
+                      r"|no verified current request context for .*(required input/interface wording is missing "
+                      r"or stale|required input/interface hash differs)")
+
+
+def eligible_when_current(q):
+    """(eligible, blockers) for a compare() quality: whether the second family's log would earn credit if it
+    were current, and the blockers other than currency that stop it."""
+    other = [b for b in q["blockers"] if not CURRENCY.match(b)]
+    return not other, other
 
 
 def pct(n, d):

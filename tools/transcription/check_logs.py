@@ -5,11 +5,12 @@ unchanged subject (what the review judged: subjects.py; per compared line for a 
 render log whose form changed or that holds line-scoped reviews, subjects.log_state), and rulings
 that agree with its sidecar.
 An optional family's logs may be missing; those present are held to the same source and subject
-checks, and their open rulings are counted and printed without failing the run. A log whose family
+checks, and their open rulings are counted and printed without failing the run. A stale optional log
+(a changed subject or source snapshot) fails only when it would earn second-family credit if it were
+current (compare_families.eligible_when_current); one that would not is reported as stale-ineligible
+and does not fail, since a review is rerun only where it can earn credit. A log whose family
 is in neither list fails. Counts are printed per kind and family. Runs offline in check-all; the logs
 themselves are produced deliberately by transcribe.py and render_compare.py (network steps).
-
-When reports/<year>/second_family.md exists (compare_families.py), its summary line is printed.
 
 Optional human reading logs (reviews/<year>/human/) earn H only with a current receipt,
 MATCH and reason, and exact contents committed by the named reader. Incomplete, stale or
@@ -30,7 +31,6 @@ from taxyear import Y  # noqa: E402
 import jurisdiction  # noqa: E402  (--jurisdiction ny: the New York documents and reviews/ny/<year>/)
 FORMS = str(jurisdiction.ypath("forms", Y))
 REVIEWS = str(jurisdiction.ypath("reviews", Y))
-SECOND_FAMILY_REPORT = str(jurisdiction.ypath("reports", Y, "second_family.md"))
 docs = {}
 # A New York log also records the federal pages it was given (a federal line's interface and its source).
 for _sources in jurisdiction.read_dirs("sources", Y):
@@ -93,7 +93,7 @@ def check(kind, logs, optional_env, expected=None, family=families.DEFAULT, requ
     """One log per form of the family under `logs`; no open ruling; every source hash current;
     the subject it reviewed (subjects.py) unchanged. For an optional family a missing log is
     allowed and open rulings are counted, not failed."""
-    problems, open_counts = [], {}
+    problems, open_counts, tolerated = [], {}, []
     tag = f"{kind} logs [{family}{'' if required else ', optional'}]"
     waiting = PENDING.get(kind, set()) if required else set()
     for fid in (expected if expected is not None else forms):
@@ -105,6 +105,7 @@ def check(kind, logs, optional_env, expected=None, family=families.DEFAULT, requ
         if fid in waiting:
             problems.append(f"{fid}: has a {kind} log but is still listed as pending; remove it from {pending.name()}")
         text = open(path, encoding="utf-8").read()
+        quality = None
         if family != families.DEFAULT and os.path.exists(os.path.join(logs, fid + ".md")):
             quality = compare_families.compare(kind, fid, family)["quality"]
             if quality["state"] == "pending":
@@ -117,15 +118,25 @@ def check(kind, logs, optional_env, expected=None, family=families.DEFAULT, requ
             open_counts[fid] = text.count("Ruling: open")
             if required:
                 problems.append(f"{fid}: open ruling(s) in the {kind} log")
-        stale = subjects.log_state(kind, fid, Y, text)
-        if stale:
-            problems.append(f"{fid}: {stale}")
+        stale = []
+        state = subjects.log_state(kind, fid, Y, text)
+        if state:
+            stale.append(state)
         for row in re.findall(r"^\| (\S+) \| [^|]* \| [^|]* \| [^|]* \| ([0-9a-f]{64}) \|(?: [^|]* \| ([0-9a-f]{64}|-) \|)?$", text, flags=re.M):
             doc_id, sha, cols_sha = row
             if doc_id in docs and docs[doc_id]["text_sha256"] != sha:
-                problems.append(f"{fid}: {kind} log was made against a different snapshot of {doc_id}")
+                stale.append(f"{kind} log was made against a different snapshot of {doc_id}")
             if doc_id in docs and cols_sha and cols_sha != "-" and docs[doc_id].get("cols_sha256") != cols_sha:
-                problems.append(f"{fid}: {kind} log was made against a different reading-order text of {doc_id}")
+                stale.append(f"{kind} log was made against a different reading-order text of {doc_id}")
+        if stale and not required:
+            eligible, blockers = (compare_families.eligible_when_current(quality) if quality is not None
+                                  else (False, [f"no {families.DEFAULT} log to compare with"]))
+            if not eligible:
+                print(f"[{family}, optional] {fid}: stale-ineligible, not a failure ({'; '.join(stale)}); "
+                      f"not eligible for second-family credit even if current: {'; '.join(blockers)}")
+                tolerated.append(fid)
+                stale = []
+        problems += [f"{fid}: {s}" for s in stale]
     allow_missing = os.environ.get(optional_env) == "1" or not required
     missing = [p for p in problems if p.endswith(f"no {kind} log")]
     hard = [p for p in problems if not p.endswith(f"no {kind} log")]
@@ -137,7 +148,8 @@ def check(kind, logs, optional_env, expected=None, family=families.DEFAULT, requ
     logged = total - len(missing) - waited
     if not required:
         opened = (f"; open rulings in {len(open_counts)} log(s): " + ", ".join(f"{f} ({n})" for f, n in sorted(open_counts.items()))) if open_counts else "; no open rulings"
-        state = "" if hard else "; snapshots and subjects current"
+        state = "" if hard else "; snapshots and subjects current" + (
+            f" except {len(tolerated)} stale-ineligible ({', '.join(tolerated)})" if tolerated else "")
         print(f"{tag}: {logged}/{total} forms logged" + (f" ({', '.join(sorted(set(forms) - {p.split(':')[0] for p in missing}) if expected is None else sorted(set(expected) - {p.split(':')[0] for p in missing}))})" if 0 < logged <= 8 else "") + opened + state)
     elif missing:
         print(f"{tag}: {logged}/{total} forms logged; missing: " + ", ".join(p.split(':')[0] for p in missing))
@@ -176,16 +188,6 @@ def check_kind(kind, expected=None):
     return failed
 
 
-def second_family_summary():
-    """The one-line summary of reports/<year>/second_family.md, when the report exists."""
-    if not os.path.exists(SECOND_FAMILY_REPORT):
-        print("second-family comparison: no report yet (tools/transcription/compare_families.py)"); return
-    for line in open(SECOND_FAMILY_REPORT, encoding="utf-8"):
-        if line.startswith("Summary: "):
-            print("second-family comparison: " + line[len("Summary: "):].strip()); return
-    print(f"second-family comparison: {os.path.relpath(SECOND_FAMILY_REPORT, ROOT)} has no summary line; rerun compare_families.py")
-
-
 def check_human():
     """Validate record integrity; optional unfinished readings earn no H and do not fail."""
     if jurisdiction.NY:
@@ -205,11 +207,15 @@ def check_human():
     return bool(result["problems"])
 
 
-failed = check_kind("transcription", transcription_forms())
-failed = check_kind("render") or failed
-failed = check_kind("classm", classm_forms()) or failed
-failed = check_human() or failed
-failed = bool(rulings.check()) or failed
-second_family_summary()
-if failed:
-    sys.exit(1)
+def main():
+    failed = check_kind("transcription", transcription_forms())
+    failed = check_kind("render") or failed
+    failed = check_kind("classm", classm_forms()) or failed
+    failed = check_human() or failed
+    failed = bool(rulings.check()) or failed
+    if failed:
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()

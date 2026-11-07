@@ -6,7 +6,9 @@
 # A run is green only if nothing outside the suite's own outputs (reports/,
 # rendered/) changed while it ran; an edit made mid-run gets no marker. A run
 # for a year other than the default (--year N) is checked but never marked
-# green: a commit must have passed on the default year.
+# green: a commit must have passed on the default year. It refuses to run when a
+# git-ignored raw review file the review logs reference is missing
+# (tools/worktree_data.py check; a linked worktree has none until cloned in).
 set -euo pipefail
 cd "$(git rev-parse --show-toplevel)"
 . tools/green.sh
@@ -24,6 +26,7 @@ set -- ${rest[@]+"${rest[@]}"}
 marker="$(marker_of "$tier")" || exit 2
 
 rm -f "$marker"
+python3 tools/worktree_data.py check || exit 1
 year_of() { python3 -I -c 'import sys; sys.path.insert(0, "tools"); import taxyear; print(taxyear.Y)' "$@"; }
 year="$(year_of "$@")"
 default_year="$(year_of)"
