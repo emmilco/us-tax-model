@@ -15,6 +15,7 @@ import { renderValuesSheetText } from "./output.js";
 import { resolveInputs } from "./fixture-inputs.js";
 import { nyPath, YEAR_ARGS, yearPath } from "./year.js";
 import type { Inputs } from "./types.js";
+import { mapPool, poolSize } from "./pool.js";
 
 const MAIN = resolve(import.meta.dirname, "main.js");
 const ROOT = resolve(import.meta.dirname, "../..");
@@ -53,6 +54,7 @@ function startServer(dir: string): Promise<{ proc: ChildProcess; port: number }>
 export async function serveChecks(): Promise<void> {
   const tmp = mkdtempSync(join(tmpdir(), "serve-check-"));
   let server: ChildProcess | undefined;
+  const extra: Promise<{ proc: ChildProcess; port: number }>[] = [];
   let checks = 0;
   const ok = (cond: unknown, message: string) => { assert.ok(cond, message); checks++; };
   try {
@@ -75,6 +77,14 @@ export async function serveChecks(): Promise<void> {
 
     const dir = join(tmp, "returns");
     mkdirSync(dir, { mode: 0o700 });
+    // The fixture walks at the end are independent of one another and of everything before them, so they are
+    // spread over several servers (each with its own returns directory, on a port the system picks); the others
+    // start now, while the checks on the first run.
+    for (let i = 1; i < poolSize(); i++) {
+      const d = join(tmp, `returns-${i}`);
+      mkdirSync(d, { mode: 0o700 });
+      extra.push(startServer(d));
+    }
     const started = await startServer(dir);
     server = started.proc;
     const port = started.port;
@@ -238,28 +248,39 @@ export async function serveChecks(): Promise<void> {
     // question the fixture answers, until none is left; every expected value the profile's targets reach must match.
     const fed = fixtures(yearPath("fixtures", "stage5.json"));
     const sample = [...nyCases.filter((_, i) => i % 9 === 0), ...nyCases.filter((c) => c.id.startsWith("ny.refuse.")).slice(0, 2)];
-    let compared = 0, unreached = 0, walks = 0;
-    for (const c of [...fed, ...sample]) {
-      const name = `fx-${walks++}`;
-      let s = (await post("/api/returns", { name })).body;
-      for (let step = 0; ; step++) {
-        assert.ok(step < 800, `${c.id}: the walk did not end`);
-        const q = s.pending.find((p: any) => p.input in c.inputs && !s.answered.some((a: any) => a.input === p.input));
-        if (!q) break;
-        const r = await answer(name, q.input, c.inputs[q.input]);
-        assert.equal(r.status, 200, `${c.id} ${q.input}: ${JSON.stringify(r.body)}`);
-        s = r.body;
-      }
-      for (const [key, expected] of Object.entries(c.expect ?? {})) {
-        if (!(key in s.values)) { unreached++; continue; }
-        assert.deepEqual(s.values[key].value, expected, `${c.id}: ${key} through the server`);
-        compared++;
-      }
-    }
+    const all = [...fed, ...sample];
+    const walkers = [{ port }, ...(await Promise.all(extra))];
+    const idle = walkers.map((_, i) => i);
+    const counts = await mapPool(all, async (c, walk) => {
+      const lane = idle.shift()!;
+      try {
+        const post2 = (path: string, body: unknown) => http(walkers[lane]!.port, "POST", path, { body });
+        const name = `fx-${walk}`;
+        let s = (await post2("/api/returns", { name })).body;
+        for (let step = 0; ; step++) {
+          assert.ok(step < 800, `${c.id}: the walk did not end`);
+          const q = s.pending.find((p: any) => p.input in c.inputs && !s.answered.some((a: any) => a.input === p.input));
+          if (!q) break;
+          const r = await post2(`/api/returns/${name}/answer`, { input: q.input, value: c.inputs[q.input] });
+          assert.equal(r.status, 200, `${c.id} ${q.input}: ${JSON.stringify(r.body)}`);
+          s = r.body;
+        }
+        let compared = 0, unreached = 0;
+        for (const [key, expected] of Object.entries(c.expect ?? {})) {
+          if (!(key in s.values)) { unreached++; continue; }
+          assert.deepEqual(s.values[key].value, expected, `${c.id}: ${key} through the server`);
+          compared++;
+        }
+        return { compared, unreached };
+      } finally { idle.push(lane); }
+    }, walkers.length);
+    const walks = all.length;
+    const compared = counts.reduce((n, c) => n + c.compared, 0), unreached = counts.reduce((n, c) => n + c.unreached, 0);
     ok(compared > 0, "fixture values compared");
     console.log(`serve: ${checks} checks passed; ${walks} fixture paths replayed through the server (${fed.length} federal, ${sample.length} New York), ${compared} expected values matched, ${unreached} not reached by the profile's targets`);
   } finally {
     server?.kill();
+    for (const p of extra) p.then((x) => x.proc.kill(), () => {});
     rmSync(tmp, { recursive: true, force: true });
   }
 }

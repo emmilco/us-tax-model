@@ -18,6 +18,7 @@ import type { FormDoc, Inputs, Line, LineRef } from "./types.js";
 import type { Value } from "./eval.js";
 import { NY_MODE, YEAR, YEAR_ARGS, nyPath, reportName, reportPath, yearPath } from "./year.js";
 import { resolveInputs } from "./fixture-inputs.js";
+import { mapPool, run } from "./pool.js";
 
 const ROOT = resolve(import.meta.dirname, "../..");
 const CASES_PATH = yearPath("fixtures", "stage1.json");
@@ -75,22 +76,18 @@ export function recordFixtures(): void {
   console.log(`recorded expected values for ${file.cases.length} cases in fixtures/${YEAR}/stage1.json`);
 }
 
-export function testFixtures(): number {
+export async function testFixtures(): Promise<number> {
   const file = loadCases();
   const tmp = mkdtempSync(join(tmpdir(), "fixture-"));
   let failures = 0;
-  let cases = 0;
+  const cases = file.cases.length;
   try {
-    for (const c of file.cases) {
-      cases++;
+    // The cases run side by side (pool.ts); their lines are printed in the cases' order.
+    const results = await mapPool(file.cases, async (c): Promise<{ failed: boolean; line: string }> => {
       const inputsPath = join(tmp, `${c.id}.json`);
       writeFileSync(inputsPath, JSON.stringify(c.inputs));
-      const proc = spawnSync(process.execPath, [DIST_MAIN, ...YEAR_ARGS, "eval", "--inputs", inputsPath, "--json"], { encoding: "utf-8", maxBuffer: 256 * 1024 * 1024 });
-      if (proc.status !== 0) {
-        console.error(`FAIL ${c.id}: eval exited ${proc.status}\n${proc.stderr.slice(0, 400)}`);
-        failures++;
-        continue;
-      }
+      const proc = await run(process.execPath, [DIST_MAIN, ...YEAR_ARGS, "eval", "--inputs", inputsPath, "--json"]);
+      if (proc.status !== 0) return { failed: true, line: `FAIL ${c.id}: eval exited ${proc.status}\n${proc.stderr.slice(0, 400)}` };
       const parsed = JSON.parse(proc.stdout) as { values: Record<string, { value: Value }> };
       const got = new Map(Object.entries(parsed.values).map(([k, v]) => [k, v.value]));
       const problems: string[] = [];
@@ -103,11 +100,12 @@ export function testFixtures(): number {
         }
       }
       if (problems.length > 0) {
-        console.error(`FAIL ${c.id}:\n  ${problems.slice(0, 5).join("\n  ")}${problems.length > 5 ? `\n  … ${problems.length - 5} more` : ""}`);
-        failures++;
-      } else {
-        console.log(`ok   ${c.id} (${Object.keys(c.expect ?? {}).length} values)`);
+        return { failed: true, line: `FAIL ${c.id}:\n  ${problems.slice(0, 5).join("\n  ")}${problems.length > 5 ? `\n  … ${problems.length - 5} more` : ""}` };
       }
+      return { failed: false, line: `ok   ${c.id} (${Object.keys(c.expect ?? {}).length} values)` };
+    });
+    for (const r of results) {
+      if (r.failed) { console.error(r.line); failures++; } else console.log(r.line);
     }
   } finally {
     rmSync(tmp, { recursive: true, force: true });

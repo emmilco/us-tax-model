@@ -51,7 +51,7 @@ if (command === "review-stage5") {
 } else if (command === "review-stage2") {
   reviewStage2();
 } else if (command === "test-integration") {
-  integrationChecks();
+  await integrationChecks();
 } else if (command === "check") {
   const result = runChecks(JSON.parse(readFileSync(process.argv[3]!, "utf8")) as CanonicalData);
   console.log(JSON.stringify(result));
@@ -129,7 +129,7 @@ if (command === "review-stage5") {
 } else if (command === "record-fixtures") {
   recordFixtures();
 } else if (command === "test-fixtures") {
-  process.exit(testFixtures() === 0 ? 0 : 1);
+  process.exit(await testFixtures() === 0 ? 0 : 1);
 } else if (command === "coverage") {
   coverageReport();
 } else if (command === "evidence") {
