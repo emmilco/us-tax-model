@@ -31,7 +31,7 @@ import jurisdiction  # noqa: E402  (--jurisdiction ny: reviews/ny/<year>/classm/
 import families  # noqa: E402
 import rulings  # noqa: E402
 import subjects  # noqa: E402
-from structured_text import flat, summary  # noqa: E402
+from structured_text import inline, summary  # noqa: E402
 
 JOBS = os.path.join(ROOT, ".classm", "jobs.json")
 RAW = os.path.join(ROOT, ".classm")
@@ -100,8 +100,8 @@ def given_name(g, fid):
     if g["doc"] == fid:
         return f"this document, line {g['printed']}"
     if re.match(r"^[0-9]", g["printed"]):
-        return f"{title_of(g['doc'])}, line {g['printed']} ({flat(g['label'])})"
-    return f"{title_of(g['doc'])}: {flat(g['label'])}"
+        return f"{title_of(g['doc'])}, line {g['printed']} ({inline(g['label'])})"
+    return f"{title_of(g['doc'])}: {inline(g['label'])}"
 
 
 def build_prompt(form_doc, excerpt, job):
@@ -114,14 +114,14 @@ def build_prompt(form_doc, excerpt, job):
         given.append(f"- {given_name(g, fid)}: {dollars(g['value'])}{note}")
     for o in job["own_inputs"]:
         tag = f"line {o['printed']}" if not o["printed"].startswith("(") else "a record the filer supplies"
-        given.append(f"- {tag}: {flat(o['source'])}: {dollars(o['value'])}")
+        given.append(f"- {tag}: {inline(o['source'])}: {dollars(o['value'])}")
     coll = []
     for cname, entries in job["collections"].items():
         for entry, fields in entries.items():
-            coll.append(f"- {entry}: " + "; ".join(f"{flat(f['label'])} = {dollars(f['value'])}" for f in fields))
+            coll.append(f"- {entry}: " + "; ".join(f"{inline(f['label'])} = {dollars(f['value'])}" for f in fields))
     # The value type follows the label in brackets: in parentheses after the number it reads as
     # part of the handle (the form shared line numbers take) and is echoed back.
-    fill = "\n".join(f'- line {handle(job, l)}: {flat(l["label"])} [value type: {l["type"]}]' for l in job["fill"])
+    fill = "\n".join(f'- line {handle(job, l)}: {inline(l["label"])} [value type: {l["type"]}]' for l in job["fill"])
     return jurisdiction.preface(f"""You are filling in one IRS form or worksheet by hand for one taxpayer, working ONLY from the IRS
 text provided below and the amounts given here. Do not rely on memory of the tax law or of any
 software. Follow the printed line instructions exactly, including every "if zero or less, enter -0-",
@@ -177,18 +177,18 @@ def build_entry_prompt(form_doc, excerpt, job):
         if g["ref"] == "f1040.status":
             continue
         if job.get("kind") == "def":
-            given.append(f"- {flat(g['label'])}: {dollars(g['value'])}")
+            given.append(f"- {inline(g['label'])}: {dollars(g['value'])}")
             continue
         note = f" [{g['note']}]" if g.get("note") else ""
         given.append(f"- {given_name(g, fid)}: {dollars(g['value'])}{note}")
     entries = []
     for entry, fields in (job.get("entries") or {}).items():
-        entries.append(f"- {entry}: " + ("; ".join(f"{flat(f['label'])} = {dollars(f['value'])}" for f in fields) or "(no amounts given)"))
+        entries.append(f"- {entry}: " + ("; ".join(f"{inline(f['label'])} = {dollars(f['value'])}" for f in fields) or "(no amounts given)"))
     coll = []
     for cname, ents in job["collections"].items():
         for entry, fields in ents.items():
-            coll.append(f"- {entry}: " + "; ".join(f"{flat(f['label'])} = {dollars(f['value'])}" for f in fields))
-    fill = "\n".join(f'- "{handle(job, l)}" ({l["type"]}): {flat(l["label"])}' for l in job["fill"])
+            coll.append(f"- {entry}: " + "; ".join(f"{inline(f['label'])} = {dollars(f['value'])}" for f in fields))
+    fill = "\n".join(f'- "{handle(job, l)}" ({l["type"]}): {inline(l["label"])}' for l in job["fill"])
     if job.get("kind") == "def":
         what = ("This is a shared computation the forms invoke on an amount: work it for the one amount and "
                 "filing status given.") if len(job["given"]) <= 1 else (

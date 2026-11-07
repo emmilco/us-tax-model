@@ -32,7 +32,7 @@ sys.path.insert(0, os.path.join(ROOT, "tools"))
 from taxyear import Y  # noqa: E402
 import jurisdiction  # noqa: E402  (--jurisdiction ny: the New York documents, sources and logs)
 import archive_text  # noqa: E402
-from structured_text import indent_rest, summary  # noqa: E402
+from structured_text import indent_rest, inline, summary  # noqa: E402
 import citations  # noqa: E402
 import html_sections  # noqa: E402  (a web edition cut by the headings its locators name)
 SOURCES = str(jurisdiction.ypath("sources", Y))
@@ -535,7 +535,7 @@ def reference_note(doc, line):
     """Shared interface metadata, without project-written computed labels or expressions."""
     text = f"{line['id']} (form {doc['id']}; printed {str(line['printed'])!r}; type {line['type']}{sign_note(line['id'])})"
     if line["expr"].get("op") == "input":
-        text += ": input " + " ".join(line["expr"].get("source", "").split())
+        text += ": input " + " ".join(inline(line["expr"].get("source", "")).split())
     return text
 
 

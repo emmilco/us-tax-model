@@ -2489,5 +2489,26 @@ class GateReviewRuns(unittest.TestCase):
             self.assertEqual(CFN.baseline_check.run("false_no", [], found, Path(self.temp.name) / "none.json", report, "t", "l"), 1)
 
 
+class StructuredTextOneLineTests(unittest.TestCase):
+    """Where a question or label shares a line with what follows it, structured text keeps its items and nesting."""
+    STRUCTURED = "Does any of these apply?\n\nIncluding:\n- a\n  - c\n  - d\n- b\n\nIf none, answer no."
+
+    def test_inline_keeps_item_boundaries_and_nesting(self):
+        import structured_text as S
+        self.assertEqual(S.inline(self.STRUCTURED),
+                         "Does any of these apply? \u2014 Including: (1) a [nested: c; d]; (2) b \u2014 If none, answer no.")
+
+    def test_inline_leaves_plain_text_unchanged(self):
+        import structured_text as S
+        self.assertEqual(S.inline("Plain  question, one line."), "Plain  question, one line.")
+
+    def test_reference_note_and_classm_names_use_it(self):
+        line = {"id": "x.q", "printed": "(gate)", "type": "Bool", "expr": {"op": "input", "source": self.STRUCTURED}}
+        self.assertIn("input Does any of these apply? \u2014 Including: (1) a [nested: c; d]; (2) b", T.reference_note({"id": "x"}, line))
+        given = {"doc": "other", "printed": "(helper)", "label": self.STRUCTURED}
+        with patch.object(M, "title_of", return_value="Other"):
+            self.assertIn("Including: (1) a [nested: c; d]; (2) b", M.given_name(given, "x"))
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
